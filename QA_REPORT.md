@@ -140,12 +140,18 @@ LEVEL 1公立標準、LEVEL 2難関公立、LEVEL 3旭丘の全てで15問・非
 - [愛知県 過去の入試問題](https://www.pref.aichi.jp/soshiki/kotogakko/0000027366.html)
 - [文部科学省 中学校学習指導要領解説](https://www.mext.go.jp/content/1413522_002.pdf)
 
-## 公開後に行う追加確認
+## 公開後の実URL確認
 
-1. 実URLのiPhone幅表示
-2. ホーム画面追加とstandalone起動
-3. 機内モードでの再起動
-4. v1.5利用端末でのv2更新通知
-5. JSON共有と再Import
+GitHub Pages実URLで次を確認した。
 
-物理iOS Safariのホーム画面操作は実機でのみ最終確認できるため、コード監査のPASSと区別して扱う。
+- v2 curriculumとv2 engineを含む3スクリプトの読込
+- LEVEL 1〜3の表示、演習と入試対策テストの分離
+- LEVEL 3国語テストの残り45:00表示
+- 選択後もfeedbackカード0件、選択状態1件、解答確定ボタン有効
+- 分析画面の忘却予測SVGと最適復習ボタン
+- 表示中の横方向overflow 0
+- Service Worker更新操作後もv2を再読込
+- 更新前に保存した途中テストをHOMEから再開可能
+- アプリ由来のconsole error 0
+
+残る物理確認はiOS Safari実機でのホーム画面追加、standalone起動、機内モード再起動、共有シートによるJSON書出し・再Importである。実機でしか確認できない項目は、コード・DOM・公開URL監査のPASSと区別して扱う。
