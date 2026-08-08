@@ -1,103 +1,104 @@
-# 旭丘AA Learning OS v1.5.0
+# 旭丘AA Learning OS v2.0.0
 
-愛知県立旭丘高校普通科を目標に、5教科の得点力を本番で安定して発揮するためのiPhone対応PWAです。英語長文を最優先とし、語彙診断・復習・時間内処理・転移・不確実性を1つのLearning Profileで扱います。
+愛知県立旭丘高校普通科を目標に、5教科の得点力を本番で安定して発揮するためのiPhone対応PWAです。v2では英語の精密学習を維持したまま、国語・数学・理科・社会の知識幅と適応アルゴリズムを全面強化しました。
 
-AA Readinessは公式の合格率・偏差値・合格最低点ではありません。技能別習熟、保持、転移、速度、証拠量などから作る非公式の個人内学習指標です。
+AA Readinessは公式の合格率・偏差値・合格最低点ではありません。技能別習熟、長期保持、時間内正答、転移、速度、誤答、証拠量、不確実性から作る非公式の個人内学習指標です。
 
-## v1.5.0の主な機能
+## 演習と入試対策テスト
 
-- 回答に応じて18〜32語を出題する適応型英語語彙診断
-- 本文ごとの個人語彙カバレッジと95%推定範囲
-- 推定値の下限を基準に選ぶ事前重要語
-- `take part in`、`as a result` などの語句・collocation復習
-- 安定したEvidence IDと段落・文・根拠英文
-- 長文シナリオに合わせた誤答選択肢と誤答タイプ
-- 支援付き長文から辞書OFF実戦への自動移行
-- 愛知県公表の筆記時間に合わせた英語40分シミュレーター（非公式）
-- Beta-Bernoulli型の証拠更新を加えた技能Knowledge Tracingと推定範囲
-- 読み・意味・文脈・類義語を扱う漢字学習
-- 年表の検索・隠す・お気に入りを維持したChronologia想起復習
-- Chronologia・5教科QUEST連携用 `aa-learning-profile/1`
-- オフライン、更新通知、途中再開、JSON Export / Import / Merge
+2つのモードは完全に分離しています。
 
-## 学習履歴を失わないための設計
+| モード | 目的 | 学習中の動作 | 記録 |
+| --- | --- | --- | --- |
+| 適応演習 | 弱点を修正し長期保持へ移す | 1問ごとに正誤、全選択肢理由、解説を表示 | 項目別SRSと技能状態を更新 |
+| 入試対策テスト | 本番での時間内再現性を測る | 試験中は正誤・解説を表示しない | 終了後に全問分析、非公式22点換算、時間内成績を保存 |
 
-保存キーは旧版から変えず、`asahi_learning_os_v1` を維持しています。
+入試対策テストは次の3段階です。
 
-- 回答・現在問題・問題順・経過時間・スクロール位置を自動保存
-- v1.5移行前のJSON原本を端末内に1件保持
-- 最大3世代の端末内セーフティコピー
-- セッション完了・Import前・初期化前に退避
-- 移行またはImportで回答履歴・技能・復習項目が減る場合は処理を中止
-- v1/v2の旧JSONとv3統合バックアップの両方を読込可能
-- JSON v3は状態指紋と共通Learning Profileを同梱
+1. 公立標準 — 教科書事項と愛知県標準形式
+2. 難関公立 — 資料統合、複数段階、紛らわしい誤答
+3. 旭丘レベル — 高密度の根拠判断、転移、時間制約
 
-端末内コピーもSafariのWebサイトデータ削除では消えます。機種変更、Safariデータ削除、ホーム画面版削除、URL変更の前には「設定 → JSONを書き出す・共有」で端末外へ保存してください。
+問題は令和8年度愛知県公表問題の時間・構成・技能をモデル化したオリジナルです。公式問題や公式得点ではありません。
+
+## v2の4教科強化
+
+- 国語: 古文重要語24、漢文句法16、慣用句・四字熟語24、漢字80語の意味・読み・用例に、論理読解を統合
+- 数学: 中学範囲の公式・法則33、方針2、旭丘レベルだけで使う高校的整理5、計算・関数・確率・図形の転移問題
+- 理科: 生物・化学・物理・地学を各15項目、実験、表、グラフ、計算へ接続
+- 社会: 地理・公民40項目と歴史99出来事を、年号、出来事、説明、因果の337学習単位へ展開
+- 年表: 検索、年号/出来事隠し、お気に入りを維持し、項目別の年号・出来事・順序・因果復習を追加
+
+各項目の優先度は、愛知県入試での重要度、個人の弱点、指数型忘却リスク、推定不確実性、難度適合、転移価値、直近出題の偏りを統合します。未知の項目を探索するためBeta分布からのThompson Samplingを使います。理科の暗記事項は必要な再遭遇を妨げないよう、直近重複ペナルティを他教科より弱くしています。
+
+## 英語
+
+v1.5の精密英語機能をすべて維持します。
+
+- 18〜32語の適応型語彙診断
+- Individual Lexical Coverageと推定範囲
+- 重要未知語の事前提示、タップ辞書、collocation
+- Evidence ID、シナリオ専用誤答、文法ゲート
+- 支援付き長文から辞書OFF実戦への移行
+- 愛知県英語筆記40分シミュレーター
+
+## 忘却予測と最適復習
+
+分析画面は項目ごとの記憶安定度Sと経過日数tから R(t)=exp(-t/S) を計算し、4教科の想起可能性を表示します。これはEbbinghaus-inspired forgetting modelであり、エビングハウス本人の厳密な公式とは表示しません。
+
+「明日の失点リスクが高い12問」は忘却だけでなく、入試重要度、技能の不確実性、転移価値、直近の偏り、所要時間を合わせて選びます。
+
+## 学習履歴保護
+
+保存キーは旧版と同じ asahi_learning_os_v1 です。
+
+- v2移行前のJSON原本を端末内に完全保存
+- v1.5の移行前原本と最大3世代の端末内コピーも維持
+- 回答、技能、復習項目、途中問題、問題順、回答、タイマー、スクロール位置を保存
+- 旧データの回答履歴上限を2,000件から10,000件へ拡張
+- 移行・Importで現在の履歴件数が減る場合は保存を中止
+- JSON Export / Import / Mergeと状態指紋
+
+SafariのWebサイトデータ削除では端末内コピーも消えます。機種変更、Safariデータ削除、ホーム画面版削除、URL変更の前には、設定からJSONバックアップを端末外へ保存してください。
 
 ## iPhoneへの追加
 
-1. 公開URLをSafariで開きます。
-2. 画面下の共有ボタンを押します。
-3. 「ホーム画面に追加」を選びます。
-4. 右上の「追加」を押します。
-5. ホーム画面の「旭丘AA OS」から起動します。
+1. 公開URLをSafariで開く
+2. 共有ボタンを押す
+3. 「ホーム画面に追加」を選ぶ
+4. 右上の「追加」を押す
+5. ホーム画面の「旭丘AA OS」から起動する
 
-初回はオンラインで開いてください。Service Workerがアプリ一式を保存した後は、通信がない状態でも基本学習を続けられます。
-
-## 更新
-
-`main` ブランチへ反映すると、GitHub Actionsが静的検査と移行・学習エンジンのafter-checkを通過した場合だけPagesへ公開します。新しいService Workerの準備後、アプリ上部の更新ボタンを押すと学習状態を保存して切り替えます。
-
-版更新時は次をそろえます。
-
-- `index.html` の `APP_VERSION`
-- `sw.js` の `VERSION`
-- README / QA_REPORTの版番号
+初回はオンラインで開いてください。Service Workerがapp shellを保存した後は、通信がなくても基本学習を続けられます。
 
 ## ファイル構成
 
 | パス | 役割 |
 | --- | --- |
-| `index.html` | 教材データ、基本UI、v1.4互換ロジック |
-| `learning-engine-v15.js` | 適応診断、推定区間、Evidence、Chronologia、保存保護 |
-| `manifest.webmanifest` | PWA名、表示、開始URL、アイコン |
-| `sw.js` | v1.5 app shell、オフライン、cache更新 |
-| `offline.html` | 初回cache前のオフライン案内 |
-| `icons/` | iPhone、通常、maskable、favicon用アイコン |
-| `.github/workflows/pages.yml` | 検査合格後のGitHub Pages公開 |
-| `tests/static-audit.mjs` | PWA・構成・構文・アイコンの41項目監査 |
-| `tests/after-check.mjs` | 操作、学習エンジン、旧データ移行の26項目監査 |
-| `QA_REPORT.md` | 公開前の最終監査記録 |
-| `.nojekyll` | Jekyll処理を無効化 |
+| index.html | 教材データ、基本UI、旧版互換ロジック |
+| learning-engine-v15.js | 英語、Evidence、Chronologia、保存保護 |
+| curriculum-v2-data.js | 国語・数学・理科・社会のv2知識バンク |
+| learning-engine-v2.js | 適応出題、3段階入試テスト、忘却予測、v2移行 |
+| manifest.webmanifest | PWA名、開始URL、アイコン |
+| sw.js | v2 app shell、オフライン、cache更新 |
+| offline.html | 初回cache前のオフライン案内 |
+| icons | iPhone、通常、maskable、favicon用アイコン |
+| tests/static-audit.mjs | PWA、構成、構文、アイコンの静的監査 |
+| tests/after-check.mjs | 操作、テスト分離、旧データ移行、強制終了復元 |
+| QA_REPORT.md | 公開前最終監査 |
 
 ## ローカル検査
 
-Service Workerは `file://` では動作しません。HTTPサーバーから開いてください。
+Service Workerはfile URLでは動作しないためHTTPサーバーから開きます。
 
-```bash
-python3 -m http.server 8080
-node tests/static-audit.mjs
-```
+    python3 -m http.server 8080
+    node tests/static-audit.mjs
+    HAPPY_DOM_PATH=/path/to/happy-dom/lib/index.js node tests/after-check.mjs
 
-完全after-checkはHappy DOMを一時ディレクトリへ入れて実行します。
+## 公式情報
 
-```bash
-npm install --prefix /tmp/aa-after-check --no-save happy-dom@20.0.11
-HAPPY_DOM_PATH=/tmp/aa-after-check/node_modules/happy-dom/lib/index.js node tests/after-check.mjs
-```
-
-## 入試情報
-
-2027年度の旭丘普通科は、愛知県の公表資料に基づき一般選抜の校内順位方式Ⅴとして扱っています。方式Ⅴは `評定得点 + 学力検査合計得点 × 2`、学力検査は5教科各22点です。英語はリスニング約10分の後、筆記40分と公表されています。公式合格最低点は表示しません。
-
-- [愛知県：令和9年度 一般選抜の面接・校内順位決定方式](https://www.pref.aichi.jp/press-release/r9kounaijyunni.html)
-- [愛知県：令和9年度資料 PDF](https://www.pref.aichi.jp/uploaded/attachment/623173.pdf)
-- [愛知県：学力検査の実施方法 PDF](https://www.pref.aichi.jp/uploaded/attachment/582102.pdf)
-
-## PWA参照
-
-- [GitHub Docs：Pagesの公開元設定](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
-- [WebKit：iOS/iPadOSのホーム画面Webアプリ](https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/)
-- [Apple：Web App Manifestとアイコン](https://developer.apple.com/videos/play/wwdc2022/10048/)
+- [愛知県：令和8年度入学者選抜 学力検査問題](https://www.pref.aichi.jp/soshiki/kotogakko/r08nyuushimonndai.html)
+- [愛知県：過去の入試問題・5教科各22点](https://www.pref.aichi.jp/soshiki/kotogakko/0000027366.html)
+- [文部科学省：中学校学習指導要領解説](https://www.mext.go.jp/content/1413522_002.pdf)
 
 このアプリは合格を保証しません。推定値は学習の優先順位と次の練習を決めるために使い、公式選抜結果の予測として扱いません。
