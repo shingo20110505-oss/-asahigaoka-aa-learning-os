@@ -5,6 +5,8 @@ import { pathToFileURL } from 'node:url';
 const root = path.resolve(import.meta.dirname, '..');
 const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const engine = fs.readFileSync(path.join(root, 'learning-engine-v15.js'), 'utf8');
+const curriculum = fs.readFileSync(path.join(root, 'curriculum-v2-data.js'), 'utf8');
+const engineV2 = fs.readFileSync(path.join(root, 'learning-engine-v2.js'), 'utf8');
 const inline = [...index.matchAll(/<script(?![^>]*\bsrc=)(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)][0]?.[1] || '';
 const happyPath = process.env.HAPPY_DOM_PATH || '/workspace/sites/aa-v15-preview/node_modules/happy-dom/lib/index.js';
 const { Window } = await import(pathToFileURL(happyPath).href);
@@ -21,6 +23,7 @@ window.__aa = {
   selectAnswer, nextQuestion, startVocabDiagnostic, startSession, handleAction,
   backupPayload, importJSON, mergeState, qaRun, planKanjiQueue,
   lexicalCoverageProfile, preteachPlan, overallReadiness, hash,
+  v2: globalThis.AA_V2_TEST_API,
   version: APP_VERSION, schema: SCHEMA_VERSION, storeKey: STORE_KEY
 };`;
 
@@ -33,7 +36,7 @@ function makeRuntime(entries = {}) {
   window.open = () => null;
   window.scrollTo = () => {};
   for (const [key, value] of Object.entries(entries)) window.localStorage.setItem(key, value);
-  window.eval(`${inline}\n${engine}\n${bridge}`);
+  window.eval(`${inline}\n${engine}\n${curriculum}\n${engineV2}\n${bridge}`);
   return window;
 }
 
@@ -41,13 +44,15 @@ const fresh = makeRuntime();
 try {
   const aa = fresh.__aa;
   check('初期画面描画', fresh.document.querySelector('h1')?.textContent === '旭丘AA Learning OS');
-  check('v1.5・schema 3', aa.version === '1.5.0' && aa.schema === 3, `${aa.version}/${aa.schema}`);
+  check('v2.0・schema 4', aa.version === '2.0.0' && aa.schema === 4, `${aa.version}/${aa.schema}`);
   check('iPhone safe-area設計', /viewport-fit=cover/.test(index) && /safe-area-inset-(?:top|bottom)/.test(index));
   check('レスポンシブ設計', /@media\(max-width:700px\)/.test(index) && /grid-template-columns:1fr/.test(index));
 
   aa.setRoute('subjects');
   check('40分モード導線', fresh.document.querySelectorAll('[data-action="start-reading-simulator"]').length === 1);
   check('漢字意味導線', fresh.document.querySelector('main')?.textContent.includes('漢字・意味'));
+  check('演習/入試テスト分離UI', fresh.document.querySelector('main')?.textContent.includes('教科別演習') && fresh.document.querySelector('main')?.textContent.includes('入試対策テスト'));
+  check('入試3段階コース', fresh.document.querySelectorAll('[data-action="select-course"]').length === 3);
   aa.setRoute('timeline');
   check('年表UI維持', !!fresh.document.querySelector('[data-action="timeline-search"]') && !!fresh.document.querySelector('[data-action="toggle-year"]') && !!fresh.document.querySelector('[data-action="toggle-event"]'));
   check('Chronologia想起導線', !!fresh.document.querySelector('[data-action="start-timeline-recall"]'));
@@ -76,7 +81,10 @@ try {
   aa.state = aa.defaultState(); aa.state.profile.vocabDiagnosticDone = true; aa.save();
   aa.startSession({ kind: 'kanji', subject: 'japanese', mode: 'standard' });
   const kanji = aa.state.session.queue;
-  check('漢字意味を出題', kanji.some(q => q.format === 'meaning') && kanji.every(q => q.source?.meaning && q.source?.example), kanji.map(q => q.format).join(','));
+  const kanjiIndex = kanji.findIndex(q => q.format === 'meaning');
+  const kanjiQuestion = kanji[kanjiIndex];
+  check('漢字意味を出題', kanjiIndex >= 0 && kanjiQuestion.source?.meaning && kanjiQuestion.source?.example, kanji.map(q => q.format).join(','));
+  aa.state.session.index = kanjiIndex; aa.state.session.itemStartedAt = Date.now(); aa.render();
   aa.selectAnswer(aa.currentQ().answerIndex);
   const kanjiFeedback = fresh.document.querySelector('[role="status"]')?.textContent || '';
   check('漢字フィードバックに意味・用例', kanjiFeedback.includes('語彙として確認') && kanjiFeedback.includes('用例'));
@@ -87,12 +95,36 @@ try {
   check('保守的な先取り語彙', taught.assistedLower <= taught.assistedCoverage && taught.words.length <= 14, `${taught.assistedLower}/${taught.assistedCoverage}`);
 
   const payload = aa.backupPayload();
-  check('JSON統合バックアップ', payload.format === 'asahigaoka-aa-learning-os-backup' && payload.schemaVersion === 3 && payload.learningProfile.format === 'aa-learning-profile/1', `${payload.format}/${payload.schemaVersion}`);
+  check('JSON統合バックアップ', payload.format === 'asahigaoka-aa-learning-os-backup' && payload.schemaVersion === 4 && payload.learningProfile.format === 'aa-learning-profile/1', `${payload.format}/${payload.schemaVersion}`);
   check('バックアップ整合指紋', payload.stateFingerprint === aa.hash(JSON.stringify(payload.state)));
+
+  const bankCounts = Object.fromEntries(Object.entries(aa.v2.banks).map(([k, v]) => [k, v.length]));
+  check('非英語4教科知識幅', bankCounts.japanese >= 140 && bankCounts.math >= 40 && bankCounts.science >= 60 && bankCounts.social >= 330, JSON.stringify(bankCounts));
+  const courseQueues = [1, 2, 3].map(level => aa.v2.testQueue('math', level));
+  check('愛知県入試3コース', courseQueues.every(q => q.length === 15 && q.reduce((n, x) => n + x.points, 0) === 22));
+  check('高校内容は旭丘レベル限定', !courseQueues[0].some(q => q.source?.area === 'advanced') && !courseQueues[1].some(q => q.source?.area === 'advanced') && courseQueues[2].some(q => q.source?.area === 'advanced'));
+
+  aa.state = aa.defaultState(); aa.save(); aa.render();
+  aa.v2.startTest('japanese', 3);
+  const firstTestQ = aa.currentQ();
+  aa.selectAnswer(firstTestQ.answerIndex);
+  check('テスト途中解説なし', !aa.state.session.feedback && aa.state.session.answers[firstTestQ.id]?.pending === true && !fresh.document.querySelector('[role="status"]'));
+  aa.v2.commitTestAnswer();
+  check('テスト解答確定で次問', aa.state.session.index === 1 && aa.state.attempts.length === 1 && !aa.state.session.feedback);
+  while (aa.state.session?.active) {
+    const q = aa.currentQ();
+    aa.selectAnswer(q.answerIndex);
+    aa.v2.commitTestAnswer();
+  }
+  check('入試テスト終了後分析', aa.state.route === 'result' && aa.state.stats.aichiTests.length === 1 && aa.state.stats.aichiTests[0].converted22 === 22);
+  check('終了後全問解説', fresh.document.querySelector('main')?.textContent.includes('全問アフターチェック'));
+
+  aa.setRoute('analytics');
+  check('忘却曲線と最適復習', fresh.document.querySelector('.retentionChart') && fresh.document.querySelector('[data-action="start-smart-review"]'));
 
   aa.state = aa.defaultState(); aa.save(); aa.qaRun();
   const failures = aa.state.qa.report.filter(x => !x.ok);
-  check('アプリ内総合QA', aa.state.qa.report.length >= 29 && failures.length === 0, failures.map(x => `${x.name}:${x.detail}`).join(' / '));
+  check('アプリ内総合QA', aa.state.qa.report.length >= 39 && failures.length === 0, failures.map(x => `${x.name}:${x.detail}`).join(' / '));
 } finally {
   fresh.happyDOM.abort();
 }
@@ -114,10 +146,12 @@ let persistedRaw;
 try {
   const aa = migratedRuntime.__aa;
   const migrated = aa.state;
-  check('v1.4履歴欠損なし', migrated.schemaVersion === 3 && migrated.attempts.length === 1 && migrated.mastery['en.read.inference'] && migrated.items['v:v001'], `${migrated.schemaVersion}/${migrated.attempts.length}`);
+  check('v1.4履歴欠損なし', migrated.schemaVersion === 4 && migrated.attempts.length === 1 && migrated.mastery['en.read.inference'] && migrated.items['v:v001'], `${migrated.schemaVersion}/${migrated.attempts.length}`);
   check('途中セッション移行', migrated.session?.id === 'legacy-session' && migrated.session.accumulatedMs === 4567 && migrated.session.scrollY === 137 && migrated.session.queue.length === 1, JSON.stringify(migrated.session));
   const pre = migratedRuntime.localStorage.getItem('asahi_learning_os_v1_pre_v15');
   check('移行前原本を完全保持', pre === legacyRaw);
+  const preV2 = migratedRuntime.localStorage.getItem('asahi_learning_os_v1_pre_v2');
+  check('v2移行前原本を完全保持', preV2 === legacyRaw);
   const snapshots = Object.keys(migratedRuntime.localStorage).filter(k => k.startsWith('asahi_learning_os_v1_snapshot_'));
   check('端末内世代コピー', snapshots.length >= 1, String(snapshots.length));
   persistedRaw = migratedRuntime.localStorage.getItem('asahi_learning_os_v1');
