@@ -1,146 +1,123 @@
-# 旭丘AA Learning OS v1.4.0 最終監査
+# 旭丘AA Learning OS v1.5.0 公開前最終監査
 
-監査日: 2026-08-08
+監査日: 2026-08-08  
+公開条件: after-check合格前はGitHub Pagesへ反映しない
 
 ## 結論
 
-GitHub Pagesへそのまま配置できるPWA構成として完成。既存v1.3の学習ロジックと保存キーを維持し、iPhone向けmanifest、Service Worker、アイコン、オフライン、更新通知、バックアップ共有、GitHub Actions公開、READMEを追加した。
+初回監査でEvidence ID処理が既存根拠を空配列で上書きする不具合を1件検出した。元の根拠を保持してIDだけ付与するよう修正し、全検査を最初から再実行した。
 
-## 1. デザイン監査
+- 静的PWA・構成監査: **41 / 41 PASS**
+- 操作・移行after-check: **26 / 26 PASS**
+- アプリ内総合QA: **全件PASS**
+- JavaScript構文: `index.html` / `learning-engine-v15.js` / `sw.js` **PASS**
+
+## 1. デザイン・iPhone
 
 | 観点 | 結果 | 確認内容 |
 | --- | --- | --- |
-| 既存デザイン継承 | PASS | 紺・白・金、カード、5タブ、ライト/ダークを維持 |
-| iPhone safe area | PASS | `viewport-fit=cover` と上下の `safe-area-inset-*` を使用 |
-| タップ操作 | PASS | 主要ボタンは46px以上、`touch-action: manipulation` |
-| PWA表示 | PASS | 更新・オフライン表示は本文を塞がないsticky banner |
-| アイコン | PASS | 32 / 180 / 192 / 512 / maskable 512を用意 |
-| 横幅 | PASS | 既存v1.3の390px監査で横スクロール0。追加カードも1列化・折返し対応 |
+| 視覚設計 | PASS | ネイビー・白、低刺激のカード、十分な余白、問題中の情報量を抑制 |
+| safe area | PASS | `viewport-fit=cover` と上下の `safe-area-inset-*` |
+| レスポンシブ | PASS | 700px/520px以下で1列化、ボタン折返し |
+| タップ領域 | PASS | 主要ボタン46px以上、touch-action設定 |
+| 認知負荷 | PASS | HOMEは最優先MISSIONを中心にし、教科メニューは別タブ |
+| 年表 | PASS | 縦型一覧・検索・年号/出来事隠し・お気に入りを維持 |
 
-## 2. 操作・バグ監査
+クラウドブラウザはローカルの公開前プレビューへ接続できなかったため、公開前画面試験はDOM実行環境、構文、レスポンシブCSS、safe-areaの組合せで実施した。iOS実機Safariの物理端末試験は別途必要。
+
+## 2. 操作・保存・移行
 
 | テスト | 結果 |
 | --- | --- |
-| 初回HOME表示 | PASS |
-| 初回20語診断の開始 | PASS |
-| 「わからない」回答と解説 | PASS |
-| 回答後に再読込して同じ解説・「次へ」を復元 | PASS |
-| テーマ変更後の再読込復元 | PASS |
-| 設定・バックアップJSON表示 | PASS |
-| バックアップJSONにschemaVersion・attemptsを保持 | PASS |
-| 総合QA modalの表示 | PASS |
-| アプリ由来のJavaScript runtime error | 0 |
+| 初期HOMEとv1.5/schema 3 | PASS |
+| 適応型語彙診断18問で停止するケース | PASS |
+| 語彙診断の標準誤差・上下限 | PASS |
+| 英語筆記40分・3長文・支援OFF | PASS |
+| 漢字セットに意味問題を含む | PASS |
+| 漢字解説に意味・用例を表示 | PASS |
+| Chronologia 8問・8出来事・4選択肢 | PASS |
+| v1.4相当データをschema 3へ移行 | PASS |
+| 回答履歴・技能・復習項目の件数保持 | PASS |
+| 途中問題・経過4567ms・scrollY 137を保持 | PASS |
+| 移行前JSON原本の完全一致 | PASS |
+| 端末内世代コピー作成 | PASS |
+| 強制終了相当の再読込復元 | PASS |
+| JSON v3・共通Learning Profile・状態指紋 | PASS |
 
-Cloud Browserに注入された拡張機能のmetadata送信エラーは記録されたが、アプリ本体URLからのエラーではなく、アプリ操作への影響はなかった。
+保存キー `asahi_learning_os_v1` は変更していない。移行・Importで現在の履歴件数が減る場合は保存を中止する。初期化前にも直前コピーを残す。
 
-## 3. 内容監査
+## 3. 内容・問題品質
 
-### データ構造
+- 英単語107語、漢字語彙80語、歴史99件、英語長文20シナリオ
+- 選択肢一意性720問、生成例外0
+- 英単語穴埋め107語、異常0
+- 長文36本: 文法違反0、高重複0、言語手掛かり0、辞書未登録0
+- 全誤答に理由、長文誤答にシナリオ別タイプ
+- Evidence ID、段落、文番号、根拠英文を保持
+- 漢字は読みだけでなく意味・文脈・類義語・用例を扱う
+- Chronologiaは年号・出来事・順序・因果を項目別SRSへ接続
 
-- 英単語: 107語、重複0
-- 漢字語彙: 80語、重複0
-- 歴史: 99件、年代昇順・ID重複なし
-- 英語長文素材: 20シナリオ
-- 初回語彙診断: 20語
-- 選択肢一意性: 720問、異常0、生成例外0
-- 英単語穴埋め: 107語、異常0
-- 長文生成: 36本、文法違反0、高類似重複0、言語手掛かり0、辞書未登録0
+## 4. 学習科学・教育測定
 
-v1.3完成時の拡張ストレス監査（生成問題9,000問、長文80本、総合20/20 PASS）も継承対象として確認した。今回変更した範囲はPWA・保存UI・公開構成で、問題生成ロジック本体は変更していない。
-
-### 入試情報
-
-2027年度の旭丘普通科について、愛知県が2026年7月7日に公表した一般選抜資料を基準にした。校内順位方式Ⅴ、評定得点最高90点、5教科学力検査最高110点、方式Ⅴの学力検査2倍を前提とする。公式合格最低点は表示しない。
-
-- [愛知県：令和9年度 一般選抜の面接・校内順位決定方式](https://www.pref.aichi.jp/press-release/r9kounaijyunni.html)
-- [令和9年度資料 PDF](https://www.pref.aichi.jp/uploaded/attachment/623173.pdf)
-
-## 4. 学習科学との整合性監査
-
-| 実装 | 判定 | 理由・修正 |
+| 実装 | 判定 | 監査内容 |
 | --- | --- | --- |
-| 想起練習 | 整合 | 答えを見る前の回答、誤答後の再想起を中心化 |
-| 間隔反復 | 整合 | 項目別の保持状態を指数型忘却モデルで近似し、本人の履歴で更新 |
-| インターリーブ | 条件付き整合 | 全面ランダム化せず、技能識別が必要なセットで選択的に使用 |
-| 語彙カバレッジ | 整合・注記強化 | 92%を「支援付き入口」と明示し、94〜98%へ段階化。98%を絶対的合格条件にしない |
-| 読解速度 | 整合 | 辞書・事前語彙を使った初読は支援付きWPMとし、速度masteryを上げない |
-| mastery | 妥当な内部指標 | 正誤だけでなく速度・転移・証拠量を含むが、標準化得点ではない |
-| AA Readiness | 表示上妥当 | 公式合格率・偏差値・cutoffではないことを明示 |
+| Retrieval Practice | 整合 | 診断、漢字、年表とも答えを見る前に回答 |
+| Spacing | 整合 | 項目別の正誤・保持・回答速度からdueを更新 |
+| 忘却モデル | 注記適切 | 指数型近似をEbbinghaus-inspiredとして扱い、本人の履歴で更新 |
+| Interleaving | 条件付き整合 | 基礎取得後に意味/文脈/順序/因果を混ぜ、無差別混合を避ける |
+| Transfer | 整合 | 同一技能を別テーマ・形式で確認 |
+| Feedback | 整合 | 正答、本人誤答、全選択肢理由、本文根拠を表示 |
+| Lexical Coverage | 整合 | 平均だけでなく95%推定範囲、支援後下限を表示 |
+| Knowledge Tracing | 内部推定として妥当 | alpha/betaによる証拠量と範囲を保持、未校正の合格率には変換しない |
+| AA Readiness | 表示適切 | 得点と推定範囲を併記し、公式指標でないことを明示 |
+| Cognitive Load / HCI | 整合 | 難しい問題と簡単な操作を分離 |
 
-参照研究:
+語彙カバレッジの92〜98%は学習設計上の目安で、絶対的な科学基準・合格条件として表示しない。
 
-- [Karpicke & Roediger (2008): The Critical Importance of Retrieval for Learning](https://web.mit.edu/jbelcher/www/learner/retrieval.pdf)
-- [Cepeda et al. (2008): Spacing Effects in Learning](https://pubmed.ncbi.nlm.nih.gov/19076480/)
-- [Settles & Meeder (2016): A Trainable Spaced Repetition Model](https://aclanthology.org/P16-1174/)
-- [Hu & Nation (2000): Unknown Vocabulary Density and Reading Comprehension](https://www.wgtn.ac.nz/lals/resources/paul-nations-resources/paul-nations-publications/publications/documents/2000-Hu-Density-and-comprehension.pdf)
-- [Kremmel et al.: Hu & Nation (2000) replication project](https://osf.io/d3vzs/overview)
-- [Rohrer et al. (2014): Interleaved Mathematics Practice](https://pubmed.ncbi.nlm.nih.gov/24578089/)
+## 5. 入試目的
 
-## 5. PWA要件監査
-
-静的監査 `node tests/static-audit.mjs`: **27 / 27 PASS**
-
-| 要件 | 結果 |
-| --- | --- |
-| HTTPS前提 | PASS（GitHub Pages） |
-| Web App Manifest | PASS |
-| `id / start_url / scope` の相対指定 | PASS（project Pages対応） |
-| standalone表示 | PASS |
-| 192px / 512px icon | PASS |
-| maskable icon | PASS |
-| apple-touch-icon 180px | PASS |
-| Service Worker登録 | PASS |
-| app shell precache | PASS |
-| navigation offline fallback | PASS |
-| 古いcache削除 | PASS |
-| waiting workerをユーザー操作で更新 | PASS |
-| localStorage保存キー維持 | PASS |
-| 更新前save | PASS |
-| `.nojekyll` | PASS |
-| GitHub Actions Pages workflow | PASS |
-
-iOS Safari実機そのものはこの実行環境にないため、Safariエンジンでの物理端末試験は未実施。代わりに、Apple/WebKit公表仕様、iOS用meta、Apple touch icon、safe area、relative scope、ホーム画面追加手順を照合し、Chromiumの実ブラウザで学習操作を確認した。公開後の最終実機確認項目は、ホーム画面追加、単独起動、機内モード再起動、更新banner、JSON共有の5点。
+- 英語長文をMISSION上の最優先に維持
+- 語彙不足時は本文全体を単純化せず重要未知語を事前提示
+- 語彙支援・辞書利用時のWPMは支援付きとして分離
+- 愛知県公表の英語筆記40分に合わせた非公式シミュレーターを追加
+- 公式合格最低点、公式偏差値、公式合格率を表示しない
 
 参照:
 
-- [WebKit: Web Apps on iOS and iPadOS](https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/)
-- [Apple WWDC22: Web App Manifest icons](https://developer.apple.com/videos/play/wwdc2022/10048/)
-- [GitHub Docs: Configuring a Pages publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+- [愛知県：令和9年度 一般選抜方式](https://www.pref.aichi.jp/press-release/r9kounaijyunni.html)
+- [愛知県：令和9年度資料 PDF](https://www.pref.aichi.jp/uploaded/attachment/623173.pdf)
+- [愛知県：学力検査の実施方法 PDF](https://www.pref.aichi.jp/uploaded/attachment/582102.pdf)
 
-## 6. 別観点監査
+## 6. PWA・GitHub Pages
 
-### プライバシー
+| 要件 | 結果 |
+| --- | --- |
+| 相対 `id/start_url/scope` | PASS |
+| standalone / portrait | PASS |
+| 192 / 512 / maskable / Apple 180 icons | PASS |
+| Service Worker v1.5 app shell | PASS |
+| `learning-engine-v15.js` precache | PASS |
+| offline fallback | PASS |
+| 古いcache削除 | PASS |
+| waiting workerの明示更新 | PASS |
+| 更新前save | PASS |
+| `.nojekyll` | PASS |
+| GitHub Actionsで検査後だけ公開 | PASS |
 
-- 学習履歴をGitHubや外部サーバーへ送信しない。
-- ChatGPT相談は問題文と専用promptを本人のクリップボードへコピーし、新しいタブを開く方式。
-- 公開リポジトリに個人の学習履歴・バックアップを含めない。
+iOS Safari実機で未実施の物理確認は、ホーム画面追加、standalone起動、機内モード再起動、更新通知、JSON共有の5点。
 
-### データ消失
+## 7. 別観点監査
 
-- 自動保存、強制終了復元、JSONファイル、共有シート、テキストコピーの複数経路を用意。
-- Safariデータ削除、端末変更、ホーム画面版削除の前にバックアップする説明を追加。
-- URLが変わるとoriginが変わりlocalStorageを自動共有できないため、JSON統合を正式な移行方法とした。
-
-### セキュリティ
-
-- 学習アプリは静的ファイルのみ。認証・APIキー・秘密情報なし。
-- Service Workerは同一origin・自身のscope内のGETだけを処理。
-- 外部originのChatGPT通信はキャッシュしない。
-
-### アクセシビリティ
-
-- `lang=ja`、button要素、keyboard focus、status表示、十分なタップ領域を維持。
-- 色だけでなくPASS/FAIL、オンライン/オフライン、文章labelを併記。
-
-### 性能
-
-- 外部CDN・外部JavaScriptなし。
-- 初回HTMLは大きいが、教材とロジックを1ファイルに含めるためオフライン再現性が高い。
-- 2回目以降はService Worker cacheから即時起動できる。
+- プライバシー: 学習履歴をGitHubや外部サーバーへ送信しない
+- セキュリティ: 静的アプリ、APIキーなし、Service Workerは同一origin/scopeのGETのみ
+- アクセシビリティ: `lang=ja`、button、focus-visible、status、色以外のラベル
+- 性能: 外部CDN/実行時依存なし、app shellをcache
+- 継続性: 連続日数の罰ではなく最低MISSION・途中再開・復帰を支援
+- 機能節制: 今回の追加は語彙障壁、根拠学習、時間内処理、保持、履歴保護へ限定
 
 ## 残る運用上の注意
 
-1. GitHub PagesのURLまたはリポジトリ名を変更するとlocalStorageのoriginが変わる可能性がある。
-2. SafariのWebサイトデータ削除は学習履歴も消すため、JSONバックアップが必要。
-3. 入試制度の公表内容が更新された場合は、設定画面の年度・方式説明を再監査する。
-4. AA Readinessは意思決定補助であり、合否保証には使わない。
+1. SafariのWebサイトデータ削除は端末内コピーも消すため、JSONを端末外へ保存する。
+2. URL・repository名を変更するとoriginが変わるため、JSON統合で移行する。
+3. 愛知県の制度・時間が更新された場合は公式資料で再監査する。
+4. AA Readinessは合否保証・公式確率ではない。

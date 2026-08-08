@@ -1,6 +1,6 @@
 'use strict';
 
-const VERSION = '1.4.0';
+const VERSION = '1.5.0';
 const CACHE_NAME = `asahigaoka-aa-os-${VERSION}`;
 const BASE = self.registration.scope;
 const APP_URL = new URL('./', BASE).href;
@@ -10,6 +10,7 @@ const APP_SHELL = [
   new URL('index.html', BASE).href,
   new URL('offline.html', BASE).href,
   new URL('manifest.webmanifest', BASE).href,
+  new URL('learning-engine-v15.js', BASE).href,
   new URL('icons/favicon-32.png', BASE).href,
   new URL('icons/apple-touch-icon-180.png', BASE).href,
   new URL('icons/icon-192.png', BASE).href,

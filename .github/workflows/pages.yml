@@ -27,6 +27,14 @@ jobs:
       - name: Validate PWA package
         run: node tests/static-audit.mjs
 
+      - name: Install isolated after-check runtime
+        run: npm install --prefix "$RUNNER_TEMP/aa-after-check" --no-save happy-dom@20.0.11
+
+      - name: Run migration and learning-engine after-check
+        env:
+          HAPPY_DOM_PATH: ${{ runner.temp }}/aa-after-check/node_modules/happy-dom/lib/index.js
+        run: node tests/after-check.mjs
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
