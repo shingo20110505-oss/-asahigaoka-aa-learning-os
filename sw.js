@@ -1,6 +1,6 @@
 'use strict';
 
-const VERSION = '2.2.6';
+const VERSION = '2.2.6-c63';
 const CACHE_NAME = `asahigaoka-aa-os-${VERSION}`;
 const BASE = self.registration.scope;
 const APP_URL = new URL('./', BASE).href;
@@ -18,6 +18,8 @@ const APP_SHELL = [
   new URL('japanese-vocabulary-10000.js', BASE).href,
   new URL('japanese-public-domain.js', BASE).href,
   new URL('chronologia.html', BASE).href,
+  new URL('chronologia-live-companion.js', BASE).href,
+  new URL('chronologia-daily-companion.js', BASE).href,
   new URL('icons/favicon-32.png', BASE).href,
   new URL('icons/apple-touch-icon-180.png', BASE).href,
   new URL('icons/icon-192.png', BASE).href,
