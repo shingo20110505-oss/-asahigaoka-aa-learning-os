@@ -22,8 +22,10 @@ window.__aa = {
   defaultState, migrate, save, render, setRoute, currentQ, currentReading,
   selectAnswer, nextQuestion, startVocabDiagnostic, startSession, handleAction,
   backupPayload, importJSON, mergeState, qaRun, planKanjiQueue,
-  lexicalCoverageProfile, preteachPlan, overallReadiness, hash,
+  lexicalCoverageProfile, preteachPlan, overallReadiness, glossLookup, verbFormsFor,
+  generateReading, fullReadingTranslation, importantGrammarNotes, hash,
   v2: globalThis.AA_V2_TEST_API,
+  readingJa: READING_JA,
   version: APP_VERSION, schema: SCHEMA_VERSION, storeKey: STORE_KEY
 };`;
 
@@ -44,7 +46,7 @@ const fresh = makeRuntime();
 try {
   const aa = fresh.__aa;
   check('初期画面描画', fresh.document.querySelector('h1')?.textContent === '旭丘AA Learning OS');
-  check('v2.0・schema 4', aa.version === '2.0.0' && aa.schema === 4, `${aa.version}/${aa.schema}`);
+  check('v2.1・schema 4', aa.version === '2.1.0' && aa.schema === 4, `${aa.version}/${aa.schema}`);
   check('iPhone safe-area設計', /viewport-fit=cover/.test(index) && /safe-area-inset-(?:top|bottom)/.test(index));
   check('レスポンシブ設計', /@media\(max-width:700px\)/.test(index) && /grid-template-columns:1fr/.test(index));
 
@@ -78,6 +80,20 @@ try {
   check('愛知県英語40分セッション', session.kind === 'aichiEnglish40' && session.limitMs === 2400000 && session.queue.length === 3 && session.queue.every(x => x.assistMode === 'exam'), `${session.kind}/${session.limitMs}/${session.queue.length}`);
   check('40分モード支援OFF', fresh.document.querySelectorAll('[data-action="gloss"]').length === 0 && fresh.document.querySelector('[data-timer]')?.textContent.startsWith('残り'));
 
+  const readingSamples = Array.from({ length: 36 }, () => aa.generateReading(9, 'standard'));
+  const japaneseChoices = readingSamples.flatMap(r => r.questions.flatMap(q => q.choices.map(c => c.text))).filter(x => /[ぁ-んァ-ヶ一-龠]/.test(x));
+  check('英語長文の全選択肢が英語', japaneseChoices.length === 0, japaneseChoices.slice(0, 3).join(' / '));
+  check('全文和訳20シナリオ対応', Object.keys(aa.readingJa).length === 20 && readingSamples.every(r => aa.fullReadingTranslation(r).length > 100 && !aa.fullReadingTranslation(r).includes('復元できません')), String(Object.keys(aa.readingJa).length));
+
+  aa.state = aa.defaultState(); aa.state.profile.vocabDiagnosticDone = true; aa.save();
+  aa.startSession({ kind: 'reading', subject: 'english', mode: 'standard', readingAssist: 'scaffold' });
+  const reviewRead = aa.state.session.queue[0];
+  reviewRead.firstReadDone = true; aa.state.session.subIndex = reviewRead.questions.length - 1; aa.render();
+  aa.selectAnswer(aa.currentQ().answerIndex);
+  const afterReading = fresh.document.querySelector('main')?.textContent || '';
+  check('最終設問後に全文和訳', afterReading.includes('全文和訳') && afterReading.includes(aa.fullReadingTranslation(reviewRead).slice(0, 18)));
+  check('最終設問後に重要文法', afterReading.includes('重要文法') && aa.importantGrammarNotes(reviewRead).length > 0 && afterReading.includes('本文例'));
+
   aa.state = aa.defaultState(); aa.state.profile.vocabDiagnosticDone = true; aa.save();
   aa.startSession({ kind: 'kanji', subject: 'japanese', mode: 'standard' });
   const kanji = aa.state.session.queue;
@@ -88,6 +104,16 @@ try {
   aa.selectAnswer(aa.currentQ().answerIndex);
   const kanjiFeedback = fresh.document.querySelector('[role="status"]')?.textContent || '';
   check('漢字フィードバックに意味・用例', kanjiFeedback.includes('語彙として確認') && kanjiFeedback.includes('用例'));
+
+  const irregular = aa.glossLookup('went');
+  const regular = aa.glossLookup('studied');
+  const unchangedNoun = aa.glossLookup('evidence');
+  check('不規則動詞3形式', irregular.verbForms?.base === 'go' && irregular.verbForms?.past === 'went' && irregular.verbForms?.pastParticiple === 'gone', JSON.stringify(irregular.verbForms));
+  check('規則動詞3形式', regular.verbForms?.base === 'study' && regular.verbForms?.past === 'studied' && regular.verbForms?.pastParticiple === 'studied', JSON.stringify(regular.verbForms));
+  check('非動詞に活用欄なし', unchangedNoun.verbForms === null && aa.glossLookup('likely').verbForms === null, JSON.stringify(unchangedNoun.verbForms));
+  aa.state.ui.modal = { type: 'gloss', info: aa.glossLookup('changed') }; aa.render();
+  const formModal = fresh.document.querySelector('.modal')?.textContent || '';
+  check('単語モーダル3形式表示', formModal.includes('原形') && formModal.includes('過去形') && formModal.includes('過去分詞形') && formModal.includes('change'));
 
   const lexical = aa.lexicalCoverageProfile('The students compared the result and changed the plan as a result.');
   const taught = aa.preteachPlan(lexical, .94, 14);
