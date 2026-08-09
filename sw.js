@@ -1,6 +1,6 @@
 'use strict';
 
-const VERSION = '2.2.3';
+const VERSION = '2.2.4';
 const CACHE_NAME = `asahigaoka-aa-os-${VERSION}`;
 const BASE = self.registration.scope;
 const APP_URL = new URL('./', BASE).href;
