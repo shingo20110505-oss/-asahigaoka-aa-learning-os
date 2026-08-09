@@ -52,12 +52,13 @@ const fresh = makeRuntime();
 try {
   const aa = fresh.__aa;
   check('初期画面描画', fresh.document.querySelector('h1')?.textContent === '旭丘AA Learning OS');
-  check('v2.2.1・schema 4', aa.version === '2.2.1' && aa.schema === 4, `${aa.version}/${aa.schema}`);
+  check('v2.2.2・schema 4', aa.version === '2.2.2' && aa.schema === 4, `${aa.version}/${aa.schema}`);
   check('iPhone safe-area設計', /viewport-fit=cover/.test(index) && /safe-area-inset-(?:top|bottom)/.test(index));
   check('レスポンシブ設計', /@media\(max-width:700px\)/.test(index) && /grid-template-columns:1fr/.test(index));
 
   aa.setRoute('subjects');
   check('40分モード導線', fresh.document.querySelectorAll('[data-action="start-reading-simulator"]').length === 1);
+  check('図表＋レポート類題導線', fresh.document.querySelectorAll('[data-action="start-graph-reading"]').length === 1);
   check('漢字意味導線', fresh.document.querySelector('main')?.textContent.includes('漢字・意味'));
   check('演習/入試テスト分離UI', fresh.document.querySelector('main')?.textContent.includes('教科別演習') && fresh.document.querySelector('main')?.textContent.includes('入試対策'));
   aa.setRoute('exam');
@@ -101,9 +102,35 @@ try {
   check('語彙診断の不確実性', Number.isFinite(diagnosis.se) && diagnosis.lowerStage <= diagnosis.theta && diagnosis.theta <= diagnosis.upperStage, JSON.stringify(diagnosis));
 
   aa.state = aa.defaultState(); aa.state.profile.vocabDiagnosticDone = true; aa.save(); aa.render(); aa.setRoute('subjects');
+  check('長文難度帯を画面表示', fresh.document.querySelector('#diffBand')?.textContent === '標準');
+  aa.state.profile.readingLexLevel = 1;
+  aa.state.ui.subjectDifficulty = 1;
+  aa.startSession({ kind:'reading', subject:'english', mode:'standard', readingAssist:'scaffold' });
+  const easyRead = aa.state.session.queue[0];
+  aa.state.session = null;
+  aa.state.ui.subjectDifficulty = 11;
+  aa.startSession({ kind:'reading', subject:'english', mode:'standard', readingAssist:'scaffold' });
+  const hardRead = aa.state.session.queue[0];
+  check('長文難度を指定値どおり反映', easyRead.difficulty === 1 && hardRead.difficulty === 11 && easyRead.requestedDifficulty === 1 && hardRead.requestedDifficulty === 11, `${easyRead.difficulty}/${hardRead.difficulty}`);
+  check('語彙段階が低くても標準長文を維持', easyRead.readingMode === 'standard' && hardRead.readingMode === 'standard', `${easyRead.readingMode}/${hardRead.readingMode}`);
+  check('高難度で本文量と情報密度が増加', hardRead.wordCount > easyRead.wordCount + 100, `${easyRead.wordCount}語→${hardRead.wordCount}語`);
+  check('難度で設問技能を切替', easyRead.questions.length === 4 && !easyRead.questions.some(q => q.type === 'paraphrase') && hardRead.questions.length === 5 && hardRead.questions.some(q => q.type === 'paraphrase') && !hardRead.questions.some(q => q.type === 'detail'), `${easyRead.questions.map(q=>q.type).join(',')} / ${hardRead.questions.map(q=>q.type).join(',')}`);
+  check('出題画面に実際の長文難度を表示', fresh.document.querySelector('main')?.textContent.includes('Level 11（旭丘レベル）'));
+  aa.state.session = null; aa.state.ui.subjectDifficulty = 7; aa.save(); aa.render(); aa.setRoute('subjects');
+  const graphEasy = aa.v22.graphReadingSet(1, 'exam');
+  const graphHard = aa.v22.graphReadingSet(11, 'exam');
+  check('図表類題の難度変化', graphEasy.difficulty === 1 && graphEasy.questions.length === 4 && graphHard.difficulty === 11 && graphHard.questions.length === 6, `${graphEasy.questions.length}問→${graphHard.questions.length}問`);
+  check('割合＋時期の組合せ類題', graphHard.questions[0].choices[graphHard.questions[0].answerIndex].text === 'twice / from July to September');
+  check('語順位置指定の類題', graphHard.questions.find(q => q.code === 'EN-T5')?.choices.find(c => c.ok)?.text === 'can / food / by');
+  check('図表類題の選択肢整合', graphHard.questions.every(q => q.choices.length === 4 && q.choices.filter(c => c.ok).length === 1));
+  aa.state.ui.subjectDifficulty = 11; aa.save(); aa.render(); aa.setRoute('subjects');
+  aa.handleAction({ dataset: { action: 'start-graph-reading' } }, null);
+  check('図表類題を演習開始', aa.state.session.kind === 'reading' && aa.state.session.trackType === 'practice' && aa.state.session.queue[0].scenarioId === 'graph-food-waste' && aa.state.session.queue[0].difficulty === 11 && aa.state.session.queue[0].questions.length === 6);
+  aa.state.session = null; aa.state.ui.subjectDifficulty = 7; aa.save(); aa.render(); aa.setRoute('subjects');
   aa.handleAction({ dataset: { action: 'start-reading-simulator' } }, null);
   session = aa.state.session;
   check('愛知県英語40分セッション', session.kind === 'aichiEnglish40' && session.limitMs === 2400000 && session.queue.length === 3 && session.queue.every(x => x.assistMode === 'exam'), `${session.kind}/${session.limitMs}/${session.queue.length}`);
+  check('40分モードに2資料類題', session.queue[0].scenarioId === 'graph-food-waste' && session.queue[0].questions.length === 5 && session.queue[0].difficulty === 7, `${session.queue[0].scenarioId}/${session.queue[0].questions.length}問`);
   check('40分モード支援OFF', fresh.document.querySelectorAll('[data-action="gloss"]').length === 0 && fresh.document.querySelector('[data-timer]')?.textContent.startsWith('残り'));
 
   const readingSamples = Array.from({ length: 36 }, () => aa.generateReading(9, 'standard'));
