@@ -98,7 +98,8 @@ for (const icon of manifest.icons) {
 }
 
 check('Offline fallback included', fs.existsSync(path.join(root, 'offline.html')) && sw.includes('offline.html'));
-check('Cache version matches app version', /APP_VERSION='2\.2\.1'/.test(index) && /VERSION = '2\.2\.1'/.test(sw));
+check('Cache version matches app version', /APP_VERSION='2\.2\.2'/.test(index) && /VERSION = '2\.2\.2'/.test(sw));
+check('Reading difficulty is exact', /requested=clamp\(Math\.round\(Number\(base\)\|\|7\),1,11\)/.test(index) && /generateReading\(requested,mode\)/.test(index) && /generateReadingForLearner\(base,'standard',assist\)/.test(index));
 check('Indirect-question full-output gate', /hasIndirectQuestion/.test(index) && /generateReadingBeforeFullGrammarGate/.test(index) && /repairSavedReadingGrammarGate/.test(index));
 check('Reading-opening anti-repeat gate', /READING_OPENINGS/.test(index) && /openingSignature/.test(index) && /selectReadingOpening/.test(index) && /openingFirstToken/.test(index));
 check('Reading gloss verb forms', /verbFormsFor/.test(index) && /過去分詞形/.test(index));
@@ -122,6 +123,7 @@ check('Evidence IDs', /E-\$\{passageId\}-P/.test(engine));
 check('Scenario-specific distractors', /aa15ScenarioDistractors/.test(engine) && /distractorType/.test(engine));
 check('Collocations included', /take part in/.test(engine) && /en\.vocab\.collocation/.test(engine));
 check('Aichi English 40-minute simulator', /AA15_MOCK_LIMIT_MS = 40 \* 60 \* 1000/.test(engine) && /start-reading-simulator/.test(index));
+check('English two-graph report practice', /Food Waste Survey — Two Graphs and a Report/.test(engineV22) && /start-graph-reading/.test(engineV22) && /graphReadingSet: aa22GraphReadingSet/.test(engineV22) && /AA_V22_TEST_API\?\.graphReadingSet/.test(engine));
 check('Knowledge tracing uncertainty', /aa15SkillInterval/.test(engine) && /alpha/.test(engine) && /beta/.test(engine));
 check('Shared learning profile', /aa-learning-profile\/1/.test(engine));
 check('Chronologia retrieval', /start-timeline-recall/.test(engine) && /soc\.history\.network/.test(engine));
