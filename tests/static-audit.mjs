@@ -79,7 +79,8 @@ for (const icon of manifest.icons) {
 }
 
 check('Offline fallback included', fs.existsSync(path.join(root, 'offline.html')) && sw.includes('offline.html'));
-check('Cache version matches app version', /APP_VERSION='2\.1\.0'/.test(index) && /VERSION = '2\.1\.0'/.test(sw));
+check('Cache version matches app version', /APP_VERSION='2\.1\.1'/.test(index) && /VERSION = '2\.1\.1'/.test(sw));
+check('Indirect-question full-output gate', /hasIndirectQuestion/.test(index) && /generateReadingBeforeFullGrammarGate/.test(index) && /repairSavedReadingGrammarGate/.test(index));
 check('Reading gloss verb forms', /verbFormsFor/.test(index) && /過去分詞形/.test(index));
 check('Reading full translation and grammar review', /fullReadingTranslation/.test(index) && /importantGrammarNotes/.test(index) && /全文和訳/.test(index));
 check('English-only reading choices', /readingQuestionSetBeforeEnglishChoices/.test(index) && /englishReadingChoice/.test(index));
