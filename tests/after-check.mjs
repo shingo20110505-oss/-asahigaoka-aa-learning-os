@@ -52,7 +52,7 @@ const fresh = makeRuntime();
 try {
   const aa = fresh.__aa;
   check('初期画面描画', fresh.document.querySelector('h1')?.textContent === '旭丘AA Learning OS');
-  check('v2.2.2・schema 4', aa.version === '2.2.2' && aa.schema === 4, `${aa.version}/${aa.schema}`);
+  check('v2.2.3・schema 4', aa.version === '2.2.3' && aa.schema === 4, `${aa.version}/${aa.schema}`);
   check('iPhone safe-area設計', /viewport-fit=cover/.test(index) && /safe-area-inset-(?:top|bottom)/.test(index));
   check('レスポンシブ設計', /@media\(max-width:700px\)/.test(index) && /grid-template-columns:1fr/.test(index));
 
@@ -61,6 +61,7 @@ try {
   check('図表＋レポート類題導線', fresh.document.querySelectorAll('[data-action="start-graph-reading"]').length === 1);
   check('漢字意味導線', fresh.document.querySelector('main')?.textContent.includes('漢字・意味'));
   check('演習/入試テスト分離UI', fresh.document.querySelector('main')?.textContent.includes('教科別演習') && fresh.document.querySelector('main')?.textContent.includes('入試対策'));
+  check('数学公式暗記導線', fresh.document.querySelector('main')?.textContent.includes('中学数学の公式・法則だけ') && fresh.document.querySelector('main')?.textContent.includes('数学公式暗記'));
   aa.setRoute('exam');
   check('独立入試ページ', fresh.document.querySelector('main')?.textContent.includes('出題設定') && fresh.document.querySelector('[data-action="start-exam-v22"]'));
   check('入試3段階コース', fresh.document.querySelectorAll('[data-action="exam-level"]').length === 3);
@@ -82,6 +83,7 @@ try {
     persistedUnitRuntime.happyDOM.abort();
   }
   check('選択中単元を設定画面に表示', fresh.document.querySelector('main')?.textContent.includes('現在の出題対象：確率'));
+  check('入試対策も数学公式暗記限定を明示', fresh.document.querySelector('main')?.textContent.includes('計算・文章題・高校内容は出題しません'));
   aa.setRoute('timeline');
   check('年表UI維持', !!fresh.document.querySelector('[data-action="timeline-search"]') && !!fresh.document.querySelector('[data-action="toggle-year"]') && !!fresh.document.querySelector('[data-action="toggle-event"]'));
   check('Chronologia想起導線', !!fresh.document.querySelector('[data-action="start-timeline-recall"]'));
@@ -219,7 +221,12 @@ try {
   check('非英語4教科知識幅', bankCounts.japanese >= 140 && bankCounts.math >= 40 && bankCounts.science >= 60 && bankCounts.social >= 330, JSON.stringify(bankCounts));
   const courseQueues = [1, 2, 3].map(level => aa.v2.testQueue('math', level));
   check('愛知県入試3コース', courseQueues.every(q => q.length === 15 && q.reduce((n, x) => n + x.points, 0) === 22));
-  check('高校内容は旭丘レベル限定', !courseQueues[0].some(q => q.source?.area === 'advanced') && !courseQueues[1].some(q => q.source?.area === 'advanced') && courseQueues[2].some(q => q.source?.area === 'advanced'));
+  const formulaAreas = new Set(aa.v2.mathFormulaAreas);
+  const formulaOnly = q => q.id.startsWith('v2:math:') && formulaAreas.has(q.source?.area) && q.stem.includes('公式・法則') && q.skills.length === 1 && q.skills[0].id === 'math.formula.recall';
+  check('数学テストは3難度すべて公式暗記だけ', courseQueues.flat().every(formulaOnly));
+  const mathPractice = aa.v2.practiceQueue('math', 15, 3);
+  check('数学通常演習も公式暗記だけ', mathPractice.length === 15 && mathPractice.every(formulaOnly));
+  check('数学の公式対象は中学33項目', aa.v2.subjectRows('math').length === 33 && !aa.v2.units?.math?.some?.(x => x[0] === 'advanced'));
 
   const jaR8 = aa.v22.japaneseExam(3);
   check('国語R8・4大問22点', jaR8.length === 21 && jaR8.reduce((n,q)=>n+q.points,0) === 22 && new Set(jaR8.map(q=>q.bigQuestion)).size === 4);
@@ -230,6 +237,8 @@ try {
     const queue = aa.v22.structuredQueue(subject,3,config);
     check(`${subject}本番構成22点`, queue.length === count && queue.reduce((n,q)=>n+q.points,0) === 22, `${queue.length}/${queue.reduce((n,q)=>n+q.points,0)}`);
   }
+  const structuredMath = aa.v22.structuredQueue('math', 3, aa.v22.normalizeConfig({subject:'math',level:3,scope:'full',units:aa.v22.units.math.map(x=>x[0]),timeMin:45,length:'full'}));
+  check('数学入試対策構成も公式暗記だけ', structuredMath.length === 15 && structuredMath.every(formulaOnly) && !aa.v22.units.math.some(x => x[0] === 'advanced'));
 
   const unitCases = [
     ['english', 'grammar'], ['japanese', 'kanbun'], ['japanese', 'literary'],
@@ -244,7 +253,7 @@ try {
   const geometryConfig = aa.v22.normalizeConfig({ subject:'math', level:3, scope:'custom', units:['geometry'], timeMin:20, length:'mini' });
   aa.v22.startExam(geometryConfig);
   check('開始後セッションへ単元設定を反映', aa.state.session.examConfig.scope === 'custom' && aa.state.session.examConfig.units.join(',') === 'geometry' && aa.state.session.queue.every(q => q.examUnit === 'geometry'));
-  check('試験画面に出題単元を表示', fresh.document.querySelector('main')?.textContent.includes('単元：平面・空間図形'));
+  check('試験画面に出題単元を表示', fresh.document.querySelector('main')?.textContent.includes('単元：図形の定理・面積・体積'));
   aa.v22.startExam({ subject:'english', level:3, scope:'custom', units:['grammar'], timeMin:20, length:'mini' });
   check('英語単元指定も専用セッションで開始', aa.state.session.subject === 'english' && aa.state.session.examConfig.units.join(',') === 'grammar' && aa.state.session.queue.every(q => q.examUnit === 'grammar'));
 
