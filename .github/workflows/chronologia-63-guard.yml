@@ -1,0 +1,135 @@
+name: Chronologia 6.3 Companion Guard
+
+on:
+  push:
+    paths:
+      - 'chronologia.html'
+      - 'chronologia-daily-companion.js'
+      - 'chronologia-live-companion.js'
+      - 'sw.js'
+      - '.chronologia-63-trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore and wire Chronologia 6.3
+        shell: python
+        run: |
+          from pathlib import Path
+          import re, subprocess
+
+          root = Path('.')
+          html_p = root / 'chronologia.html'
+          daily_p = root / 'chronologia-daily-companion.js'
+          live_p = root / 'chronologia-live-companion.js'
+          sw_p = root / 'sw.js'
+
+          # Restore the last verified daily/voice engine if a later app publish removed it.
+          if not daily_p.exists():
+              data = subprocess.check_output([
+                  'git','show','7899cf406a52bb4182b5c2b886daae563980af6d:chronologia-daily-companion.js'
+              ])
+              daily_p.write_bytes(data)
+
+          # Restore the verified visual companion engine if it is ever removed.
+          if not live_p.exists():
+              data = subprocess.check_output([
+                  'git','show','7899cf406a52bb4182b5c2b886daae563980af6d:chronologia-live-companion.js'
+              ])
+              live_p.write_bytes(data)
+
+          # Ensure the voice->expression bridge remains present in both engines.
+          daily = daily_p.read_text(encoding='utf-8')
+          if "new CustomEvent('chronologia:voice'" not in daily:
+              daily = daily.replace(
+                  "function playVoice(name,opt={}){\n  if(!opt.force&&!modeAllows(name))return false;",
+                  "function playVoice(name,opt={}){\n  if(!opt.force&&!modeAllows(name))return false;\n  try{document.dispatchEvent(new CustomEvent('chronologia:voice',{detail:{name}}))}catch(e){}"
+              )
+          daily_p.write_text(daily, encoding='utf-8')
+
+          live = live_p.read_text(encoding='utf-8')
+          if "document.addEventListener('chronologia:voice'" not in live:
+              live = live.replace(
+                  "async function init(){inject();observeAudio();",
+                  "async function init(){inject();observeAudio();document.addEventListener('chronologia:voice',e=>{const name=e.detail?.name||'';setExpression(VOICE_EXPRESSION[name]||'normal',2600)});"
+              )
+          live_p.write_text(live, encoding='utf-8')
+
+          # Rewire the standalone Chronologia page. Remove stale/duplicate loader tags first.
+          html = html_p.read_text(encoding='utf-8')
+          html = re.sub(r'<title>Chronologia\s+6\.\d+', '<title>Chronologia 6.3', html, count=1)
+          html = re.sub(r'const VERSION\s*=\s*[\"\']6\.\d+\.\d+[\"\'];', 'const VERSION = "6.3.0";', html, count=1)
+          html = re.sub(r'\s*<!-- CHRONOLOGIA-DAILY-COMPANION-LOADER -->\s*', '\n', html)
+          html = re.sub(r'\s*<!-- CHRONOLOGIA-LIVE-COMPANION-LOADER -->\s*', '\n', html)
+          html = re.sub(r'\s*<script\s+src=[\"\']\./chronologia-daily-companion\.js[\"\']></script>\s*', '\n', html)
+          html = re.sub(r'\s*<script\s+src=[\"\']\./chronologia-live-companion\.js[\"\']></script>\s*', '\n', html)
+          loader = '''\n<!-- CHRONOLOGIA-DAILY-COMPANION-LOADER -->\n<script src="./chronologia-daily-companion.js?v=6.3.0"></script>\n<!-- CHRONOLOGIA-LIVE-COMPANION-LOADER -->\n<script src="./chronologia-live-companion.js?v=6.3.0"></script>\n'''
+          pos = html.rfind('</body>')
+          if pos < 0:
+              raise SystemExit('chronologia.html has no </body>')
+          html = html[:pos] + loader + html[pos:]
+          html_p.write_text(html, encoding='utf-8')
+
+          # Force iPhone/PWA clients onto a fresh cache and precache both companion engines.
+          sw = sw_p.read_text(encoding='utf-8')
+          sw = re.sub(r"const VERSION = '[^']+';", "const VERSION = '2.2.6-c63';", sw, count=1)
+          for asset in ['chronologia-daily-companion.js','chronologia-live-companion.js']:
+              needle = f"new URL('{asset}', BASE).href,"
+              if needle not in sw:
+                  anchor = "new URL('chronologia.html', BASE).href,"
+                  sw = sw.replace(anchor, anchor + '\n  ' + needle, 1)
+          sw_p.write_text(sw, encoding='utf-8')
+
+          # Keep the repo documentation from describing the old standalone version.
+          readme = root / 'README.md'
+          if readme.exists():
+              s = readme.read_text(encoding='utf-8')
+              s = s.replace('Chronologia 6.1完全版', 'Chronologia 6.3完全版')
+              s = s.replace('Chronologia 6.1歴史年表', 'Chronologia 6.3歴史年表')
+              readme.write_text(s, encoding='utf-8')
+
+      - name: Verify integrated build
+        shell: python
+        run: |
+          from pathlib import Path
+          h=Path('chronologia.html').read_text(encoding='utf-8')
+          d=Path('chronologia-daily-companion.js').read_text(encoding='utf-8')
+          l=Path('chronologia-live-companion.js').read_text(encoding='utf-8')
+          s=Path('sw.js').read_text(encoding='utf-8')
+          checks={
+            'title 6.3':'<title>Chronologia 6.3' in h,
+            'version 6.3.0':'const VERSION = "6.3.0";' in h,
+            'daily loader':h.count('chronologia-daily-companion.js?v=6.3.0')==1,
+            'live loader':h.count('chronologia-live-companion.js?v=6.3.0')==1,
+            'daily engine':"const DAILY_KEY='chronologia-daily-v2'" in d,
+            '30 voices':"finish_02.mp3" in d and "wrong_01.mp3" in d,
+            'voice bridge':"chronologia:voice" in d and "chronologia:voice" in l,
+            '12 expressions':"12_rare.png" in l and "01_normal.png" in l,
+            'PWA daily cache':"chronologia-daily-companion.js" in s,
+            'PWA live cache':"chronologia-live-companion.js" in s,
+            'new cache version':"2.2.6-c63" in s,
+          }
+          failed=[k for k,v in checks.items() if not v]
+          for k,v in checks.items(): print(('PASS' if v else 'FAIL'), k)
+          if failed: raise SystemExit('Failed: '+', '.join(failed))
+
+      - name: Commit repaired integration
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add chronologia.html chronologia-daily-companion.js chronologia-live-companion.js sw.js README.md
+          if git diff --cached --quiet; then
+            echo "Chronologia 6.3 already complete"
+            exit 0
+          fi
+          git commit -m "Complete Chronologia 6.3 daily voice and pseudo Live2D integration"
+          git push
