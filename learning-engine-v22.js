@@ -236,7 +236,7 @@
   }
 
   const EN_DIALOGUE = `【会話文】\nMika: The science club will meet at four today. Can you come?\nLeo: I have piano practice until four fifteen.\nMika: We will begin with the report, and the experiment starts at four thirty.\nLeo: Then I can join the experiment. I will send my report before practice.`;
-  const EN_DATA = `【案内と表】\nLibrary workshops\nA: Book Talk / Tue 16:00 / 40 minutes / Room 2\nB: Research Skills / Wed 16:30 / 60 minutes / Room 1\nC: Local History / Fri 15:50 / 50 minutes / Room 3\nStudents must arrive ten minutes before the starting time.`;
+  const EN_DATA = `【Graph 1】Main Reason for Leaving School Lunch (%)\nReason                         Grade 1  Grade 2  Grade 3\nToo much rice                     20       10       30\nVegetables were difficult to eat  15       30       20\nNot enough time                   40       20       25\nThe first portion was too large   25       40       25\n\n【Graph 2】Number of Leftover Servings\nFood / Period        Apr-Jun  Jul-Sep  Oct-Dec  Jan-Mar\nRice                    30       25       20       18\nVegetables              45       70       50       35\nFish                    20       15       30       45\nSoup                    25       35       40       55\n\n【Report】\nI researched food waste from school lunches last year. The reasons were divided into four groups.\n\nLook at Graph 1. The biggest reason was different in each grade. In Grade 2, the first portion being too large was the biggest reason. In Grade 3, too much rice was the biggest reason. In Grade 1, the percentage for not having enough time was about [ 1 ] as high as the percentage for too much rice.\n\nNext, look at Graph 2. It shows the number of leftover servings during the year. Leftover vegetables were highest [ 2 ]. Fish showed a different pattern: the number increased after September and reached 45 from January to March.\n\nThe two graphs suggest that one fixed solution may not work for every grade or every food. I think [ 3 ]. Students still need enough food, so the school should allow them to take more after choosing a smaller first portion.\n\nI hope this research will help our school reduce food waste.`;
   function aa22EnglishFixedUnit(unit, level) {
     const shared = { subject: 'english', level, unit, bigQuestion: '単元別', bigTitle: aa22UnitLabel('english', unit), points: 1 };
     if (unit === 'dialogue') return [
@@ -245,12 +245,17 @@
       aa22Question({ ...shared, code: 'EN-D3', officialSmallLabel: '問3', passage: EN_DIALOGUE, stem: 'Which activity can Leo join?', choices: ['The report at four.', 'The experiment at four thirty.', 'Piano practice at four thirty.', 'A meeting tomorrow.'], answer: 1, explanation: 'His practice ends at 4:15, so he can join the 4:30 experiment.' }),
       aa22Question({ ...shared, code: 'EN-D4', officialSmallLabel: '問4', passage: EN_DIALOGUE, stem: 'What will Leo do before piano practice?', choices: ['Send his report.', 'Do the experiment.', 'Meet Mika at four.', 'Cancel the club meeting.'], answer: 0, explanation: 'Leo says, “I will send my report before practice.”' })
     ];
-    if (unit === 'data') return [
-      aa22Question({ ...shared, code: 'EN-T1', officialSmallLabel: '問1', passage: EN_DATA, stem: 'Which workshop is held on Wednesday?', choices: ['Book Talk', 'Research Skills', 'Local History', 'Science Report'], answer: 1, explanation: 'The table lists Research Skills on Wednesday.' }),
-      aa22Question({ ...shared, code: 'EN-T2', officialSmallLabel: '問2', passage: EN_DATA, stem: 'When should a student arrive for Book Talk?', choices: ['15:40', '15:50', '16:00', '16:10'], answer: 1, explanation: 'Students arrive ten minutes before the 16:00 start.' }),
-      aa22Question({ ...shared, code: 'EN-T3', officialSmallLabel: '問3', passage: EN_DATA, stem: 'Which workshop is the longest?', choices: ['Book Talk', 'Research Skills', 'Local History', 'They are all the same.'], answer: 1, explanation: 'Research Skills lasts 60 minutes, longer than 40 or 50 minutes.' }),
-      aa22Question({ ...shared, code: 'EN-T4', officialSmallLabel: '問4', passage: EN_DATA, stem: 'Where is Local History held?', choices: ['Room 1', 'Room 2', 'Room 3', 'The library entrance'], answer: 2, explanation: 'The Local History row shows Room 3.' })
-    ];
+    if (unit === 'data') {
+      const questions = [
+        aa22Question({ ...shared, code: 'EN-T1', officialSmallLabel: '問1', passage: EN_DATA, stem: '空欄[ 1 ]・[ 2 ]に入る語句の組合せとして最も適切なものを選びなさい。', choices: ['twice / from July to September', 'half / from July to September', 'twice / from January to March', 'half / from January to March'], answer: 0, explanation: 'Graph 1は40%対20%なのでtwice、Graph 2の野菜の最大値70はJuly–Septemberです。' }),
+        aa22Question({ ...shared, code: 'EN-T2', officialSmallLabel: '問2', passage: EN_DATA, stem: 'Which statement about Graph 1 is correct?', choices: ['Not enough time is the biggest reason in Grade 1.', 'Too much rice is the biggest reason in Grade 2.', 'Vegetables are the biggest reason in Grade 3.', 'The first portion is the smallest reason in Grade 2.'], answer: 0, explanation: 'Grade 1のnot enough timeは40%で最大です。' }),
+        aa22Question({ ...shared, code: 'EN-T3', officialSmallLabel: '問3', passage: EN_DATA, stem: 'Which statement about Graph 2 is correct?', choices: ['Leftover rice increased in every period.', 'Leftover fish was lowest from July to September.', 'Leftover soup was highest from April to June.', 'Leftover vegetables reached 70 from January to March.'], answer: 1, explanation: 'Fishは20→15→30→45で、最小はJuly–Septemberの15です。' }),
+        aa22Question({ ...shared, code: 'EN-T4', officialSmallLabel: '問4', passage: EN_DATA, stem: 'Why does the writer say that one fixed solution may not work?', choices: ['The main reason changes by grade, and the leftover pattern changes by food and period.', 'Every grade gives exactly the same reason for leaving food.', 'Graph 2 contains no information about different foods.', 'Students never need more food after the first portion.'], answer: 0, explanation: '二つの資料は、学年別の理由と食品・時期別の変化が一様でないことを示しています。' }),
+        aa22Question({ ...shared, code: 'EN-T5', officialSmallLabel: '問5', passage: EN_DATA, stem: '空欄[ 3 ]に students / can / reduce / food / waste / by / choosing / carefully を並べるとき、2番目・4番目・6番目の語の組合せを選びなさい。', choices: ['can / food / by', 'students / reduce / waste', 'can / waste / choosing', 'reduce / food / carefully'], answer: 0, explanation: 'students can reduce food waste by choosing carefully の語順なので、2番目can・4番目food・6番目byです。' }),
+        aa22Question({ ...shared, code: 'EN-T6', officialSmallLabel: '問6', passage: EN_DATA, stem: 'Which action best follows from both graphs and the report?', choices: ['Let students choose a smaller first portion and take more later if needed.', 'Give every student the same large portion throughout the year.', 'Remove vegetables only from Grade 1 lunches.', 'Shorten lunch time because speed is the only cause of waste.'], answer: 0, explanation: '理由や残食傾向の違いに対応しながら、必要量を確保できる提案です。' })
+      ];
+      return questions.slice(0, level === 1 ? 4 : level === 2 ? 5 : 6);
+    }
     if (unit === 'grammar') return [
       aa22Question({ ...shared, code: 'EN-G1', officialSmallLabel: '問1', stem: 'If I _____ enough time, I will help you.', choices: ['have', 'had', 'will have', 'having'], answer: 0, explanation: 'A future condition uses the present tense in the if-clause.' }),
       aa22Question({ ...shared, code: 'EN-G2', officialSmallLabel: '問2', stem: 'This book _____ by many students last year.', choices: ['reads', 'read', 'was read', 'is reading'], answer: 2, explanation: 'The passive in the past is “was read.”' }),
@@ -258,6 +263,42 @@
       aa22Question({ ...shared, code: 'EN-G4', officialSmallLabel: '問4', stem: 'Choose the correct sentence.', choices: ['Do you know where is the station?', 'Do you know where the station is?', 'Do you know is where the station?', 'Do you where know the station is?'], answer: 1, explanation: 'An indirect question uses statement word order: where the station is.' })
     ];
     return [];
+  }
+
+  function aa22GraphReadingSet(difficulty = 7, assist = 'exam') {
+    const diff = clamp(Math.round(Number(difficulty) || 7), 1, 11);
+    const level = diff <= 3 ? 1 : diff <= 7 ? 2 : 3;
+    const questions = aa22EnglishFixedUnit('data', level).map((q, index) => ({
+      ...q, id: q.id + ':graph:' + uid('q'), type: 'dataReading', subject: 'english',
+      testMode: assist === 'exam', aichiPassage: '', context: 'aichi-graph-report',
+      skills: [{ id: index === 4 ? 'en.grammar.transfer' : index >= 3 ? 'en.read.inference' : 'en.read.detail', role: 'primary' }]
+    }));
+    const lexicalProfile = lexicalCoverageProfile(EN_DATA);
+    const target = assist === 'exam' ? null : lexicalTarget('standard', 'scaffold');
+    const plan = assist === 'exam' ? { words: [], assistedCoverage: lexicalProfile.coverage } : preteachPlan(lexicalProfile, target, 14);
+    return {
+      id: 'reading:graph-food-waste:' + uid('set'), type: 'readingSet', scenarioId: 'graph-food-waste',
+      title: 'Food Waste Survey — Two Graphs and a Report', passage: EN_DATA, questions,
+      skills: [{ id: 'en.read.detail', role: 'primary' }, { id: 'en.read.inference', role: 'secondary' }],
+      expectedMs: (level === 1 ? 6 : level === 2 ? 8 : 10) * 60000, context: 'aichi-graph-report',
+      wordCount: tokens(EN_DATA).length, difficulty: diff, requestedDifficulty: diff,
+      difficultyLabel: readingDifficultyLabel(diff), readingMode: 'standard', grammarTags: ['comparison'],
+      lesson: '二つのグラフの割合・最大値・時期変化を英文レポートの空欄、語順、提案と結び付ける。',
+      openingJa: '', firstReadDone: false, firstReadMs: null, wpm: null, paceScored: false,
+      assistMode: assist, lexicalProfile, lexicalTarget: target, preteachPlan: plan, lexicalScaffold: plan.words.length > 0
+    };
+  }
+
+  function aa22StartGraphPractice() {
+    const read = aa22GraphReadingSet(state.ui.subjectDifficulty || 7, 'scaffold');
+    registerReading(read);
+    state.session = {
+      id: uid('graphPractice'), active: true, mode: 'standard', trackType: 'practice',
+      kind: 'reading', subject: 'english', queue: [read], index: 0, subIndex: 0,
+      answers: {}, feedback: null, startedAt: now(), accumulatedMs: 0, lastActiveAt: now(),
+      itemStartedAt: now(), scrollY: 0, minimumDone: false, clockPaused: false, pausedAt: null
+    };
+    state.stats.sessions++; state.route = 'study'; save(); render(); window.scrollTo(0, 0); startTicker();
   }
 
   function aa22EnglishUnitQueue(config) {
@@ -543,6 +584,7 @@
     let html = aa22PrevSubjectsHTML();
     html = html.replace(/<div class="sp12"><\/div><section class="card hero"><div class="eyebrow">AICHI EXAM COURSE[\s\S]*?<\/section>(?=<\/main>)/, '');
     html = html.replace('<button class="btn ghost" data-route="timeline">歴史年表</button>', '<a class="btn ghost" href="./chronologia.html">歴史年表</a>');
+    html = html.replace('<button class="btn primary" data-action="start-reading-simulator">愛知県英語・筆記40分</button>', '<button class="btn primary" data-action="start-reading-simulator">愛知県英語・筆記40分</button><button class="btn ghost" data-action="start-graph-reading">図表＋レポート類題</button>');
     const launch = '<div class="sp12"></div><section class="card"><div class="chronologiaLaunch"><div><div class="eyebrow">SEPARATE EXAM MODE</div><h3 class="h3">入試対策は独立ページへ</h3><p class="sub">演習の即時解説と、本番型テストの採点記録を混ぜません。</p></div><button class="btn primary" data-route="exam">入試対策を開く</button></div></section>' +
       '<div class="sp12"></div><section class="card"><div class="chronologiaLaunch"><div><div class="eyebrow">CHRONOLOGIA 6.1</div><h3 class="h3">歴史年表・同時代史</h3><p class="sub">385件の統合年表、クイズ、並べ替え、弱点復習、参考書型解説を別画面で使います。</p></div><a class="btn gold" href="./chronologia.html">年表を開く</a></div></section>';
     return html.replace(/<\/main>/, launch + '</main>');
@@ -595,6 +637,7 @@
     if (action === 'exam-level' || action === 'select-course') {
       state.ui.examConfig = aa22NormalizeConfig({ ...aa22Config(), level: Number(el.dataset.level) }); save(); render(); return;
     }
+    if (action === 'start-graph-reading') return aa22StartGraphPractice();
     if (action === 'start-exam-v22' || action === 'start-aichi-test') return aa22StartExam(aa22Config());
     if (action === 'test-next') return aa22FinalizeCurrent(true);
     if (action === 'repeat-aichi-test') return aa22StartExam(state.session?.examConfig || aa22Config());
@@ -650,6 +693,8 @@
       }
       const vocab = window.AA_JA_VOCAB_10000;
       add('国語1万語索引', vocab?.count === 10000 && vocab.entries.length === 10000 && new Set(vocab.entries.map(x => x[0] + '|' + x[1])).size === 10000, '教育基本語彙DB由来 ' + (vocab?.entries.length || 0) + '件');
+      const graph = aa22GraphReadingSet(11, 'exam');
+      add('英語2資料レポート類題', graph.questions.length === 6 && graph.questions.every(q => q.choices?.length === 4 && q.choices.filter(c => c.ok).length === 1) && graph.questions.some(q => q.code === 'EN-T5'), graph.questions.length + '問 / 比率・時期・推論・語順');
       add('学習履歴キー固定', STORE_KEY === 'asahi_learning_os_v1' && SCHEMA_VERSION === 4, STORE_KEY + ' / schema ' + SCHEMA_VERSION);
       add('独立入試ルート', typeof examHTML === 'function' && aa22Config().timeMin >= 5, '教科・3難度・単元・範囲・時間・問題量');
     } catch (error) { add('v2.2追加検査', false, error.message); }
@@ -659,7 +704,7 @@
   globalThis.AA_V22_TEST_API = {
     units: EXAM_UNITS, japaneseExam: aa22JapaneseExam, structuredQueue: aa22StructuredQueue,
     normalizeConfig: aa22NormalizeConfig, startExam: aa22StartExam, allowedAreas: aa22AllowedAreas,
-    vocabIndex: window.AA_JA_VOCAB_10000
+    vocabIndex: window.AA_JA_VOCAB_10000, graphReadingSet: aa22GraphReadingSet
   };
 
   save(); render();
