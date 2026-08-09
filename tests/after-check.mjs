@@ -24,9 +24,10 @@ window.__aa = {
   backupPayload, importJSON, mergeState, qaRun, planKanjiQueue,
   lexicalCoverageProfile, preteachPlan, overallReadiness, glossLookup, verbFormsFor,
   generateReading, fullReadingTranslation, importantGrammarNotes, hash,
+  grammarLeakAudit, hasIndirectQuestion, repairSavedReadingGrammarGate,
   registerGlossWord, recordLexicalSignal, lexicalPosterior,
   v2: globalThis.AA_V2_TEST_API,
-  readingJa: READING_JA,
+  readingJa: READING_JA, readingScenarios: DATA.readingScenarios,
   version: APP_VERSION, schema: SCHEMA_VERSION, storeKey: STORE_KEY
 };`;
 
@@ -47,7 +48,7 @@ const fresh = makeRuntime();
 try {
   const aa = fresh.__aa;
   check('初期画面描画', fresh.document.querySelector('h1')?.textContent === '旭丘AA Learning OS');
-  check('v2.1・schema 4', aa.version === '2.1.0' && aa.schema === 4, `${aa.version}/${aa.schema}`);
+  check('v2.1.1・schema 4', aa.version === '2.1.1' && aa.schema === 4, `${aa.version}/${aa.schema}`);
   check('iPhone safe-area設計', /viewport-fit=cover/.test(index) && /safe-area-inset-(?:top|bottom)/.test(index));
   check('レスポンシブ設計', /@media\(max-width:700px\)/.test(index) && /grid-template-columns:1fr/.test(index));
 
@@ -85,6 +86,17 @@ try {
   const japaneseChoices = readingSamples.flatMap(r => r.questions.flatMap(q => q.choices.map(c => c.text))).filter(x => /[ぁ-んァ-ヶ一-龠]/.test(x));
   check('英語長文の全選択肢が英語', japaneseChoices.length === 0, japaneseChoices.slice(0, 3).join(' / '));
   check('全文和訳20シナリオ対応', Object.keys(aa.readingJa).length === 20 && readingSamples.every(r => aa.fullReadingTranslation(r).length > 100 && !aa.fullReadingTranslation(r).includes('復元できません')), String(Object.keys(aa.readingJa).length));
+  const gatedOutput = readingSamples.map(r => [r.passage, ...r.questions.flatMap(q => [q.stem, ...q.choices.map(c => c.text)])].join('\n'));
+  check('間接疑問文OFF・生成物全体', gatedOutput.every(text => !aa.hasIndirectQuestion(text)), gatedOutput.filter(aa.hasIndirectQuestion).slice(0, 2).join(' / '));
+  check('間接疑問文OFF・20素材原本', aa.readingScenarios.every(sc => !aa.hasIndirectQuestion([...(sc.facts || []), sc.extension, sc.lesson, sc.inference].join(' '))));
+
+  aa.state = aa.defaultState();
+  aa.state.session = { id:'gate-save', active:true, kind:'reading', subject:'english', queue:[{ id:'saved-read', type:'readingSet', title:'Saved Reading', passage:'Students observed how people moved through the building after school.', wordCount:8, lesson:'The form of information can affect how well people use it.', questions:[{ id:'saved-q', type:'mainIdea', stem:'Choose the best answer.', answerIndex:0, choices:[{ text:'To show, through Saved Reading, why revising an idea with evidence is important.', ok:true, reason:'Correct.' },{ text:'Wrong A.', ok:false, reason:'No.' },{ text:'Wrong B.', ok:false, reason:'No.' },{ text:'Wrong C.', ok:false, reason:'No.' }], evidenceRefs:[] }] }], index:0, subIndex:0, answers:{'saved-q':{idx:0,correct:true,responseMs:5000}}, accumulatedMs:4567, scrollY:137 };
+  const savedPosition = JSON.stringify({index:aa.state.session.index,subIndex:aa.state.session.subIndex,answers:aa.state.session.answers,accumulatedMs:aa.state.session.accumulatedMs,scrollY:aa.state.session.scrollY});
+  const savedRepaired = aa.repairSavedReadingGrammarGate();
+  const repairedOutput = [aa.state.session.queue[0].passage, aa.state.session.queue[0].lesson, ...aa.state.session.queue[0].questions[0].choices.map(c => c.text)].join('\n');
+  check('保存中の間接疑問文を修復', savedRepaired && !aa.hasIndirectQuestion(repairedOutput), repairedOutput);
+  check('修復時に回答・位置・時間を保持', savedPosition === JSON.stringify({index:aa.state.session.index,subIndex:aa.state.session.subIndex,answers:aa.state.session.answers,accumulatedMs:aa.state.session.accumulatedMs,scrollY:aa.state.session.scrollY}));
 
   aa.state = aa.defaultState(); aa.state.profile.vocabDiagnosticDone = true; aa.save();
   aa.startSession({ kind: 'reading', subject: 'english', mode: 'standard', readingAssist: 'scaffold' });
