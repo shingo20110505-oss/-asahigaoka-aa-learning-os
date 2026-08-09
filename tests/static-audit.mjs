@@ -98,7 +98,7 @@ for (const icon of manifest.icons) {
 }
 
 check('Offline fallback included', fs.existsSync(path.join(root, 'offline.html')) && sw.includes('offline.html'));
-check('Cache version matches app version', /APP_VERSION='2\.2\.2'/.test(index) && /VERSION = '2\.2\.2'/.test(sw));
+check('Cache version matches app version', /APP_VERSION='2\.2\.3'/.test(index) && /VERSION = '2\.2\.3'/.test(sw));
 check('Reading difficulty is exact', /requested=clamp\(Math\.round\(Number\(base\)\|\|7\),1,11\)/.test(index) && /generateReading\(requested,mode\)/.test(index) && /generateReadingForLearner\(base,'standard',assist\)/.test(index));
 check('Indirect-question full-output gate', /hasIndirectQuestion/.test(index) && /generateReadingBeforeFullGrammarGate/.test(index) && /repairSavedReadingGrammarGate/.test(index));
 check('Reading-opening anti-repeat gate', /READING_OPENINGS/.test(index) && /openingSignature/.test(index) && /selectReadingOpening/.test(index) && /openingFirstToken/.test(index));
@@ -128,6 +128,8 @@ check('Knowledge tracing uncertainty', /aa15SkillInterval/.test(engine) && /alph
 check('Shared learning profile', /aa-learning-profile\/1/.test(engine));
 check('Chronologia retrieval', /start-timeline-recall/.test(engine) && /soc\.history\.network/.test(engine));
 check('Practice and exam test separated', /trackType: 'practice'/.test(engineV2) && /trackType: 'test'/.test(engineV2) && /test-next/.test(engineV2));
+check('Math formula-only generation gate', /AA2_MATH_FORMULA_AREAS/.test(engineV2) && /if \(subject === 'math'\) return queue\.slice\(0, count\)/.test(engineV2) && /数学公式暗記限定/.test(engineV2));
+check('Math formula-only UI', /中学数学の公式・法則だけ/.test(engineV22) && /数学公式暗記/.test(engineV22) && /計算・文章題・高校内容は出題しません/.test(engineV22));
 check('Three Aichi exam levels', /公立標準/.test(engineV2) && /難関公立/.test(engineV2) && /旭丘レベル/.test(engineV2));
 check('Independent exam route', /state\.route !== 'exam'/.test(engineV22) && /function examHTML/.test(engineV22));
 check('Exam-unit filter enforced', /scope: 'custom', units: checked/.test(engineV22) && /if \(!candidates\.length\) return null/.test(engineV22) && /examUnit/.test(engineV22));
