@@ -376,10 +376,23 @@
     return questions;
   };
 
+  function aa15CollocationCloze(item) {
+    const patterns = {
+      'take part in': /\b(?:take|takes|took|taken|taking) part in\b/i,
+      'be interested in': /\b(?:am|is|are|was|were|be|been|being) interested in\b/i,
+      'be likely to': /\b(?:am|is|are|was|were|be|been|being) likely to\b/i
+    };
+    let sentence = String(item.example || ''), pattern = patterns[item.phrase];
+    if (pattern) sentence = sentence.replace(pattern, '_____');
+    else sentence = clozeSafeText(sentence, item.phrase);
+    if (!sentence.includes('_____') || clozeLeaksAnswer(sentence, item.phrase)) sentence = `文脈に合う語句を選ぶ：_____（${item.meaning}）`;
+    return sentence;
+  }
+
   function aa15MakeCollocationQuestion(item, cloze = false) {
     const correctText = cloze ? item.phrase : item.meaning;
     const wrong = cloze ? item.distractors : shuffle(AA15_COLLOCATIONS.filter(x => x.id !== item.id).map(x => x.meaning)).slice(0, 3);
-    const stem = cloze ? `空所に最も適切な語句を選びなさい。\n\n${item.example.replace(new RegExp(item.phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'), '_____')}` : `「${item.phrase}」の意味として最も適切なものを選びなさい。`;
+    const stem = cloze ? `空所に最も適切な語句を選びなさい。\n\n${aa15CollocationCloze(item)}` : `「${item.phrase}」の意味として最も適切なものを選びなさい。`;
     const choices = shuffleChoices([{ text: correctText, ok: true, reason: `${item.phrase}＝${item.meaning}` }, ...wrong.map(text => ({ text, ok: false, reason: '意味または文脈が異なります。', error: 'collocation_confusion', distractorType: 'collocation_confusion' }))]);
     return { id: `phrase:${item.id}:${cloze ? 'cloze' : 'meaning'}:${uid('q')}`, type: 'vocab', stem, choices, answerIndex: choices.findIndex(c => c.ok), explanation: `${item.phrase}＝${item.meaning}`, skills: [{ id: 'en.vocab.collocation', role: 'primary' }], expectedMs: 18000, context: cloze ? 'phrase-cloze' : 'phrase-meaning', srsId: 'phrase:' + item.id, format: cloze ? 'phraseCloze' : 'phraseMeaning', source: { id: 'phrase_' + item.id, word: item.phrase, meaning: item.meaning, example: item.example } };
   }
@@ -677,8 +690,8 @@
       add('語彙カバレッジ不確実性', lp.lower <= lp.coverage && lp.coverage <= lp.upper && lp.standardError >= 0, `${Math.round(lp.lower * 1000) / 10}〜${Math.round(lp.upper * 1000) / 10}%`);
       const pp = preteachPlan(lp, .94, 14);
       add('保守的語彙先取り', pp.assistedLower <= pp.assistedCoverage && pp.words.length <= 14, `下限 ${Math.round(pp.assistedLower * 1000) / 10}%・${pp.words.length}語`);
-      const cq = aa15MakeCollocationQuestion(AA15_COLLOCATIONS[0], true);
-      add('語句・collocation', cq.choices.length === 4 && cq.choices.filter(c => c.ok).length === 1 && new Set(cq.choices.map(c => c.text)).size === 4, '意味・文脈穴埋め・SRS対象');
+      const collocationCloze = AA15_COLLOCATIONS.map(item => aa15MakeCollocationQuestion(item, true));
+      add('語句・collocation空所', collocationCloze.every(cq => cq.choices.length === 4 && cq.choices.filter(c => c.ok).length === 1 && new Set(cq.choices.map(c => c.text)).size === 4 && cq.stem.includes('_____') && !clozeLeaksAnswer(cq.stem, cq.source.word)), '全語句で空所化・答え露出なし・SRS対象');
       const kanjiPlan = planKanjiQueue(8);
       add('漢字の意味・文脈', kanjiPlan.some(x => x.format === 'meaning') && kanjiPlan.every(x => x.source?.meaning && x.source?.example), '読みだけでなく意味・用例・類義語を全問に保持');
       const read = generateReading(7, 'standard');
