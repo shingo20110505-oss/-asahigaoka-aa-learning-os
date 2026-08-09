@@ -27,11 +27,13 @@ window.__aa = {
   backupPayload, importJSON, mergeState, qaRun, planKanjiQueue,
   lexicalCoverageProfile, preteachPlan, overallReadiness, glossLookup, verbFormsFor,
   generateReading, fullReadingTranslation, importantGrammarNotes, hash,
+  makeVocabQ, clozeSafeText, clozeLeaksAnswer,
   grammarLeakAudit, hasIndirectQuestion, repairSavedReadingGrammarGate,
   registerReading, openingSignature, openingFirstToken, openingSimilarity,
   registerGlossWord, recordLexicalSignal, lexicalPosterior,
   v2: globalThis.AA_V2_TEST_API, v22: globalThis.AA_V22_TEST_API,
   readingJa: READING_JA, readingScenarios: DATA.readingScenarios, readingOpenings: READING_OPENINGS,
+  vocab: DATA.vocab,
   version: APP_VERSION, schema: SCHEMA_VERSION, storeKey: STORE_KEY
 };`;
 
@@ -43,6 +45,14 @@ function makeRuntime(entries = {}) {
   window.confirm = () => true;
   window.open = () => null;
   window.scrollTo = () => {};
+  window.__audioStarts = 0;
+  class TestAudioContext {
+    constructor(){ this.state='running'; this.currentTime=0; this.destination={}; }
+    resume(){ this.state='running'; return Promise.resolve(); }
+    createGain(){ return { gain:{ setValueAtTime(){}, exponentialRampToValueAtTime(){} }, connect(){ return this; } }; }
+    createOscillator(){ return { type:'sine', frequency:{ setValueAtTime(){} }, connect(){ return this; }, start(){ window.__audioStarts++; }, stop(){} }; }
+  }
+  window.AudioContext = TestAudioContext;
   for (const [key, value] of Object.entries(entries)) window.localStorage.setItem(key, value);
   window.eval(`${inline}\n${engine}\n${vocab10000}\n${curriculum}\n${engineV2}\n${engineV22}\n${bridge}`);
   return window;
@@ -52,7 +62,7 @@ const fresh = makeRuntime();
 try {
   const aa = fresh.__aa;
   check('初期画面描画', fresh.document.querySelector('h1')?.textContent === '旭丘AA Learning OS');
-  check('v2.2.4・schema 4', aa.version === '2.2.4' && aa.schema === 4, `${aa.version}/${aa.schema}`);
+  check('v2.2.5・schema 4', aa.version === '2.2.5' && aa.schema === 4, `${aa.version}/${aa.schema}`);
   check('iPhone safe-area設計', /viewport-fit=cover/.test(index) && /safe-area-inset-(?:top|bottom)/.test(index));
   check('レスポンシブ設計', /@media\(max-width:700px\)/.test(index) && /grid-template-columns:1fr/.test(index));
 
@@ -62,6 +72,32 @@ try {
   check('漢字意味導線', fresh.document.querySelector('main')?.textContent.includes('漢字・意味'));
   check('演習/入試テスト分離UI', fresh.document.querySelector('main')?.textContent.includes('教科別演習') && fresh.document.querySelector('main')?.textContent.includes('入試対策'));
   check('数学公式暗記導線', fresh.document.querySelector('main')?.textContent.includes('中学公式＋高校受験で使える高校公式') && fresh.document.querySelector('main')?.textContent.includes('数学公式暗記') && fresh.document.querySelector('[data-action="start-advanced-math-formulas"]'));
+  check('演習の教科内単元設定UI', ['practice-subject','practice-length','practice-unit','start-unit-practice'].every(action => fresh.document.querySelector(`[data-action="${action}"]`)));
+  const practiceSubject = fresh.document.querySelector('[data-action="practice-subject"]');
+  practiceSubject.value = 'social';
+  practiceSubject.dispatchEvent(new fresh.Event('change', { bubbles: true }));
+  const practiceUnits = [...fresh.document.querySelectorAll('[data-action="practice-unit"]')];
+  for (const input of practiceUnits) input.checked = input.value === 'history';
+  practiceUnits.find(input => input.value === 'history').dispatchEvent(new fresh.Event('change', { bubbles: true }));
+  check('演習単元設定を保存', aa.state.ui.practiceConfig.subject === 'social' && aa.state.ui.practiceConfig.unitsBySubject.social.join(',') === 'history');
+  check('演習設定画面に対象単元を表示', fresh.document.querySelector('main')?.textContent.includes('現在の演習対象：歴史'));
+  aa.handleAction({ dataset: { action: 'start-unit-practice' } }, null);
+  check('単元限定演習を開始', aa.state.session.kind === 'unitPractice' && aa.state.session.trackType === 'practice' && aa.state.session.practiceUnits.join(',') === 'history');
+  check('演習キューへ単元設定を完全反映', aa.state.session.queue.length > 0 && aa.state.session.queue.every(q => q.examUnit === 'history'), aa.state.session.queue.map(q => q.examUnit).join(','));
+  check('演習画面に実際の単元を表示', fresh.document.querySelector('main')?.textContent.includes('単元：歴史') && fresh.document.querySelector('main')?.textContent.includes('設定：歴史'));
+  fresh.__audioStarts = 0;
+  aa.selectAnswer(aa.currentQ().answerIndex);
+  check('通常演習の正解時だけ短い成功音', fresh.__audioStarts === 2 && fresh.document.querySelector('.feedback.good.successCue .successMark'), String(fresh.__audioStarts));
+  aa.handleAction({ dataset: { action: 'start-unit-practice' } }, null);
+  const wrongQuestion = aa.currentQ(), wrongIndex = wrongQuestion.choices.findIndex((choice, index) => index !== wrongQuestion.answerIndex);
+  aa.selectAnswer(wrongIndex);
+  check('不正解では成功音なし', fresh.__audioStarts === 2, String(fresh.__audioStarts));
+  aa.handleAction({ dataset: { action: 'success-feedback' } }, null);
+  aa.handleAction({ dataset: { action: 'start-unit-practice' } }, null);
+  aa.selectAnswer(aa.currentQ().answerIndex);
+  check('成功フィードバックOFFを反映', fresh.__audioStarts === 2 && !fresh.document.querySelector('.successCue'), String(fresh.__audioStarts));
+  aa.handleAction({ dataset: { action: 'success-feedback' } }, null);
+  aa.state.session = null; aa.setRoute('subjects');
   aa.setRoute('exam');
   check('独立入試ページ', fresh.document.querySelector('main')?.textContent.includes('出題設定') && fresh.document.querySelector('[data-action="start-exam-v22"]'));
   check('入試3段階コース', fresh.document.querySelectorAll('[data-action="exam-level"]').length === 3);
@@ -103,6 +139,13 @@ try {
   const diagnosis = aa.state.profile.vocabDiagnosis;
   check('適応型語彙診断完了', aa.state.route === 'result' && diagnosis.count >= 18 && diagnosis.count <= 32 && aa.state.session.queue.length === diagnosis.count, JSON.stringify(diagnosis));
   check('語彙診断の不確実性', Number.isFinite(diagnosis.se) && diagnosis.lowerStage <= diagnosis.theta && diagnosis.theta <= diagnosis.upperStage, JSON.stringify(diagnosis));
+
+  const vocabCloze = aa.vocab.map(word => aa.makeVocabQ(word, 'cloze'));
+  const leakedCloze = vocabCloze.filter(q => !q.stem.includes('_____') || aa.clozeLeaksAnswer(q.stem, q.source.word));
+  check('英単語107語の空所を必ず生成', vocabCloze.length === 107 && leakedCloze.length === 0, leakedCloze.map(q => q.source.word).join(','));
+  check('英単語空所の正答を選択肢だけに保持', vocabCloze.every(q => q.choices[q.answerIndex]?.text === q.source.word && new Set(q.choices.map(c => c.text)).size === 4));
+  const availableCloze = vocabCloze.find(q => q.source.word === 'available');
+  check('既知の空所露出例 available を修正', availableCloze?.stem.includes('_____') && !aa.clozeLeaksAnswer(availableCloze.stem, 'available'), availableCloze?.stem || 'missing');
 
   aa.state = aa.defaultState(); aa.state.profile.vocabDiagnosticDone = true; aa.save(); aa.render(); aa.setRoute('subjects');
   check('長文難度帯を画面表示', fresh.document.querySelector('#diffBand')?.textContent === '標準');
@@ -234,6 +277,13 @@ try {
   const jaR8 = aa.v22.japaneseExam(3);
   check('国語R8・4大問22点', jaR8.length === 21 && jaR8.reduce((n,q)=>n+q.points,0) === 22 && new Set(jaR8.map(q=>q.bigQuestion)).size === 4);
   check('国語複数選択', jaR8.filter(q=>q.answerIndices).length >= 3 && jaR8.filter(q=>q.partialPoints).length >= 2);
+  const modernReading = jaR8.filter(q => q.examUnit === 'modern');
+  const literaryReading = aa.v22.japaneseLiterary(3);
+  const qualityReading = [...modernReading, ...literaryReading];
+  check('国語説明文・文学の十分な本文量', modernReading.length === 7 && literaryReading.length === 4 && modernReading[0].aichiPassage.length >= 650 && literaryReading[0].aichiPassage.length >= 550, `${modernReading[0].aichiPassage.length}/${literaryReading[0].aichiPassage.length}`);
+  check('国語全問に根拠と読解観点', qualityReading.every(q => q.evidence && q.reasoningTag), qualityReading.filter(q => !q.evidence || !q.reasoningTag).map(q => q.id).join(','));
+  check('国語誤答に誤りの型と理由', qualityReading.every(q => q.choices.filter(c => !c.ok).every(c => c.error && c.reason)), qualityReading.filter(q => q.choices.filter(c => !c.ok).some(c => !c.error || !c.reason)).map(q => q.id).join(','));
+  check('国語誤答の型を複数設計', new Set(qualityReading.flatMap(q => q.choices.filter(c => !c.ok).map(c => c.error))).size >= 5);
   check('国語1万語索引', aa.v22.vocabIndex.count === 10000 && aa.v22.vocabIndex.entries.length === 10000);
   for (const [subject, count] of [['math',15],['science',20],['social',20]]) {
     const config = aa.v22.normalizeConfig({subject,level:3,scope:'full',units:aa.v22.units[subject].map(x=>x[0]),timeMin:45,length:'full'});
@@ -263,9 +313,12 @@ try {
   }
 
   const geometryConfig = aa.v22.normalizeConfig({ subject:'math', level:3, scope:'custom', units:['geometry'], timeMin:20, length:'mini' });
+  const examAudioBefore = fresh.__audioStarts;
   aa.v22.startExam(geometryConfig);
   check('開始後セッションへ単元設定を反映', aa.state.session.examConfig.scope === 'custom' && aa.state.session.examConfig.units.join(',') === 'geometry' && aa.state.session.queue.every(q => q.examUnit === 'geometry'));
   check('試験画面に出題単元を表示', fresh.document.querySelector('main')?.textContent.includes('単元：図形の定理・面積・体積'));
+  aa.selectAnswer(aa.currentQ().answerIndex);
+  check('入試モードでは成功音なし', fresh.__audioStarts === examAudioBefore, String(fresh.__audioStarts));
   aa.v22.startExam({ subject:'english', level:3, scope:'custom', units:['grammar'], timeMin:20, length:'mini' });
   check('英語単元指定も専用セッションで開始', aa.state.session.subject === 'english' && aa.state.session.examConfig.units.join(',') === 'grammar' && aa.state.session.queue.every(q => q.examUnit === 'grammar'));
 
