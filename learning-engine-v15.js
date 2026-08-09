@@ -394,14 +394,14 @@
     const wrong = cloze ? item.distractors : shuffle(AA15_COLLOCATIONS.filter(x => x.id !== item.id).map(x => x.meaning)).slice(0, 3);
     const stem = cloze ? `空所に最も適切な語句を選びなさい。\n\n${aa15CollocationCloze(item)}` : `「${item.phrase}」の意味として最も適切なものを選びなさい。`;
     const choices = shuffleChoices([{ text: correctText, ok: true, reason: `${item.phrase}＝${item.meaning}` }, ...wrong.map(text => ({ text, ok: false, reason: '意味または文脈が異なります。', error: 'collocation_confusion', distractorType: 'collocation_confusion' }))]);
-    return { id: `phrase:${item.id}:${cloze ? 'cloze' : 'meaning'}:${uid('q')}`, type: 'vocab', stem, choices, answerIndex: choices.findIndex(c => c.ok), explanation: `${item.phrase}＝${item.meaning}`, skills: [{ id: 'en.vocab.collocation', role: 'primary' }], expectedMs: 18000, context: cloze ? 'phrase-cloze' : 'phrase-meaning', srsId: 'phrase:' + item.id, format: cloze ? 'phraseCloze' : 'phraseMeaning', source: { id: 'phrase_' + item.id, word: item.phrase, meaning: item.meaning, example: item.example } };
+    return { id: `phrase:${item.id}:${cloze ? 'cloze' : 'meaning'}:${uid('q')}`, reviewKey: 'phrase:' + item.id, type: 'vocab', stem, choices, answerIndex: choices.findIndex(c => c.ok), explanation: `${item.phrase}＝${item.meaning}`, skills: [{ id: 'en.vocab.collocation', role: 'primary' }], expectedMs: 18000, context: cloze ? 'phrase-cloze' : 'phrase-meaning', srsId: 'phrase:' + item.id, format: cloze ? 'phraseCloze' : 'phraseMeaning', source: { id: 'phrase_' + item.id, word: item.phrase, meaning: item.meaning, example: item.example } };
   }
 
   const aa15BasePlanVocabQueue = planVocabQueue;
   planVocabQueue = function (count = 8) {
     if (count < 4) return aa15BasePlanVocabQueue(count);
     const base = aa15BasePlanVocabQueue(Math.max(1, count - 2));
-    const due = [...AA15_COLLOCATIONS].sort((a, b) => dueScore(itemState('phrase:' + b.id)) - dueScore(itemState('phrase:' + a.id)));
+    const due = [...AA15_COLLOCATIONS].sort((a, b) => (dueScore(itemState('phrase:' + b.id)) - recentCorrectPenaltyForKey('phrase:' + b.id)) - (dueScore(itemState('phrase:' + a.id)) - recentCorrectPenaltyForKey('phrase:' + a.id)));
     return shuffle([...base, aa15MakeCollocationQuestion(due[0], false), aa15MakeCollocationQuestion(due[1], true)]).slice(0, count);
   };
 

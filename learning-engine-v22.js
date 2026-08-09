@@ -1,4 +1,4 @@
-/* 旭丘AA Learning OS v2.2.5
+/* 旭丘AA Learning OS v2.2.6
    独立「入試対策」ページ・愛知県最新公開問題の大問構成・国語原創問題 */
 (function () {
   'use strict';
@@ -136,6 +136,7 @@
     });
     return {
       id: 'aa22:' + spec.subject + ':' + spec.code + ':' + uid('q'),
+      reviewKey: 'aa22:' + spec.subject + ':' + spec.code,
       code: spec.code,
       type: spec.subject, subject: spec.subject, stem: spec.stem, choices,
       answerIndex: answers[0], answerIndices: answers.length > 1 ? answers : undefined,
@@ -209,7 +210,11 @@
     const cap = level === 1 ? 7 : level === 2 ? 9 : 11;
     let candidates = bank.filter(row => allowed.includes(row.area) && row.difficulty <= cap && !(row.area === 'advanced' && level < 3));
     if (!candidates.length) return null;
-    candidates.sort((a, b) => Math.abs((a.difficulty || 5) - (LEVELS[level].target || 5)) - Math.abs((b.difficulty || 5) - (LEVELS[level].target || 5)));
+    candidates.sort((a, b) => {
+      const aRecent = recentCorrectPenaltyForKey('v2:' + subject + ':' + a.id);
+      const bRecent = recentCorrectPenaltyForKey('v2:' + subject + ':' + b.id);
+      return aRecent - bRecent || Math.abs((a.difficulty || 5) - (LEVELS[level].target || 5)) - Math.abs((b.difficulty || 5) - (LEVELS[level].target || 5));
+    });
     const row = candidates[index % candidates.length];
     const q = API.makeQuestion(row, true);
     q.subject = subject; q.testMode = true; q.courseLevel = level; q.points = points;
@@ -259,6 +264,17 @@
     const selected = config.units;
     const queue = aa22JapaneseExam(level).filter(q => selected.includes(q.source?.area)).map(q => aa22TagUnit(q, 'japanese', q.source.area));
     if (selected.includes('literary')) queue.push(...aa22JapaneseLiterary(level));
+    for (const unit of selected.filter(unit => unit === 'modern' || unit === 'literary')) {
+      const used = queue.map(q => q.reviewKey);
+      const diff = level === 1 ? 4 : level === 2 ? 7 : 10;
+      for (let i = 0; i < 6; i++) {
+        const q = makePublicDomainJapaneseQ(diff, used, unit);
+        used.push(q.reviewKey);
+        q.testMode = true; q.points = 1; q.courseLevel = level;
+        q.bigQuestion = '著作権保護期間満了作品'; q.bigTitle = q.source.author + '「' + q.source.title + '」'; q.officialSmallLabel = '問' + (i + 1);
+        queue.push(aa22TagUnit(q, 'japanese', unit));
+      }
+    }
     for (const unit of selected) {
       if (['modern', 'literary', 'discussion'].includes(unit)) continue;
       const existing = queue.filter(q => q.examUnit === unit).length;
@@ -343,6 +359,7 @@
 
   function aa22AdvancedMathQueue(count = 15) {
     return shuffle(API.banks.math.filter(row => row.area === 'advanced'))
+      .sort((a, b) => recentCorrectPenaltyForKey('v2:math:' + a.id) - recentCorrectPenaltyForKey('v2:math:' + b.id))
       .slice(0, Math.max(1, Math.min(Number(count) || 15, 24)))
       .map(row => {
         const q = API.makeQuestion(row, false);
@@ -457,7 +474,7 @@
     return level;
   }
   function aa22BalancedPracticeSlice(queue, units, count) {
-    const groups = new Map(units.map(unit => [unit, shuffle(queue.filter(q => q.examUnit === unit))]));
+    const groups = new Map(units.map(unit => [unit, shuffle(queue.filter(q => q.examUnit === unit)).sort((a, b) => recentCorrectPenaltyForKey(questionReviewKey(a)) - recentCorrectPenaltyForKey(questionReviewKey(b)))]));
     const picked = [];
     let changed = true;
     while (picked.length < count && changed) {

@@ -9,6 +9,7 @@ const curriculum = fs.readFileSync(path.join(root, 'curriculum-v2-data.js'), 'ut
 const engineV2 = fs.readFileSync(path.join(root, 'learning-engine-v2.js'), 'utf8');
 const engineV22 = fs.readFileSync(path.join(root, 'learning-engine-v22.js'), 'utf8');
 const vocab10000 = fs.readFileSync(path.join(root, 'japanese-vocabulary-10000.js'), 'utf8');
+const japanesePublicDomain = fs.readFileSync(path.join(root, 'japanese-public-domain.js'), 'utf8');
 const chronologia = fs.readFileSync(path.join(root, 'chronologia.html'), 'utf8');
 const inline = [...index.matchAll(/<script(?![^>]*\bsrc=)(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)][0]?.[1] || '';
 const happyPath = process.env.HAPPY_DOM_PATH || '/workspace/sites/aa-v15-preview/node_modules/happy-dom/lib/index.js';
@@ -28,10 +29,11 @@ window.__aa = {
   lexicalCoverageProfile, preteachPlan, overallReadiness, glossLookup, verbFormsFor,
   generateReading, fullReadingTranslation, importantGrammarNotes, hash,
   makeVocabQ, clozeSafeText, clozeLeaksAnswer,
+  planVocabQueue, planSubjectQueue, questionReviewKey, recentCorrectPenaltyForKey,
   grammarLeakAudit, hasIndirectQuestion, repairSavedReadingGrammarGate,
   registerReading, openingSignature, openingFirstToken, openingSimilarity,
   registerGlossWord, recordLexicalSignal, lexicalPosterior,
-  v2: globalThis.AA_V2_TEST_API, v22: globalThis.AA_V22_TEST_API,
+  v2: globalThis.AA_V2_TEST_API, v22: globalThis.AA_V22_TEST_API, jaPD: globalThis.AA_JA_PD_TEST_API,
   readingJa: READING_JA, readingScenarios: DATA.readingScenarios, readingOpenings: READING_OPENINGS,
   vocab: DATA.vocab,
   version: APP_VERSION, schema: SCHEMA_VERSION, storeKey: STORE_KEY
@@ -54,7 +56,7 @@ function makeRuntime(entries = {}) {
   }
   window.AudioContext = TestAudioContext;
   for (const [key, value] of Object.entries(entries)) window.localStorage.setItem(key, value);
-  window.eval(`${inline}\n${engine}\n${vocab10000}\n${curriculum}\n${engineV2}\n${engineV22}\n${bridge}`);
+  window.eval(`${inline}\n${engine}\n${vocab10000}\n${curriculum}\n${japanesePublicDomain}\n${engineV2}\n${engineV22}\n${bridge}`);
   return window;
 }
 
@@ -62,7 +64,7 @@ const fresh = makeRuntime();
 try {
   const aa = fresh.__aa;
   check('初期画面描画', fresh.document.querySelector('h1')?.textContent === '旭丘AA Learning OS');
-  check('v2.2.5・schema 4', aa.version === '2.2.5' && aa.schema === 4, `${aa.version}/${aa.schema}`);
+  check('v2.2.6・schema 4', aa.version === '2.2.6' && aa.schema === 4, `${aa.version}/${aa.schema}`);
   check('iPhone safe-area設計', /viewport-fit=cover/.test(index) && /safe-area-inset-(?:top|bottom)/.test(index));
   check('レスポンシブ設計', /@media\(max-width:700px\)/.test(index) && /grid-template-columns:1fr/.test(index));
 
@@ -146,6 +148,34 @@ try {
   check('英単語空所の正答を選択肢だけに保持', vocabCloze.every(q => q.choices[q.answerIndex]?.text === q.source.word && new Set(q.choices.map(c => c.text)).size === 4));
   const availableCloze = vocabCloze.find(q => q.source.word === 'available');
   check('既知の空所露出例 available を修正', availableCloze?.stem.includes('_____') && !aa.clozeLeaksAnswer(availableCloze.stem, 'available'), availableCloze?.stem || 'missing');
+
+  check('著作権保護期間満了の国語問題バンク', aa.jaPD.bank.length >= 20 && Object.keys(aa.jaPD.sources).length >= 8 && aa.jaPD.bank.every(item => item.excerpt && item.correct && item.distractors.length === 3), `${aa.jaPD.bank.length}問／${Object.keys(aa.jaPD.sources).length}作品`);
+  const pdStandard = aa.jaPD.plan(8, 7);
+  check('国語引用問題の出典表示', pdStandard.every(q => q.publicDomain && q.source.publicDomain && q.source.rightsLabel === '著作権保護期間満了' && q.stem.includes('青空文庫') && q.stem.includes(q.source.author)));
+  check('同一国語演習内で引用文を重複しない', new Set(pdStandard.map(q => q.templateId)).size === pdStandard.length, pdStandard.map(q => q.templateId).join(','));
+  const pdEasy = aa.jaPD.plan(3, 3), pdHard = aa.jaPD.plan(8, 11);
+  check('国語引用問題の難易度変化', pdEasy.every(q => q.difficulty <= 4) && pdHard.every(q => q.difficulty >= 8) && Math.min(...pdHard.map(q => q.difficulty)) > Math.max(...pdEasy.map(q => q.difficulty)), `${pdEasy.map(q=>q.difficulty).join(',')} → ${pdHard.map(q=>q.difficulty).join(',')}`);
+  check('固定の便利道具問題を廃止', !index.includes('便利な道具を増やすだけでは') && !japanesePublicDomain.includes('便利な道具を増やすだけでは'));
+  const japanesePracticeConfig = aa.v22.normalizePracticeConfig({ subject:'japanese', length:'standard', unitsBySubject:{ japanese:['modern'] } });
+  const japaneseModernPractice = aa.v22.practiceQueue(japanesePracticeConfig);
+  check('説明文単元演習に著作権消滅作品を反映', japaneseModernPractice.length === 8 && japaneseModernPractice.every(q => q.examUnit === 'modern') && japaneseModernPractice.some(q => q.publicDomain));
+
+  const attemptsBeforeAntiRepeat = [...aa.state.attempts];
+  const antiRepeatResults = [];
+  for (const subject of ['japanese','math','science','social']) {
+    const row = aa.v2.subjectRows(subject)[0], key = `v2:${subject}:${row.id}`;
+    aa.state.attempts.push({ itemId:key+':legacy', reviewKey:key, timestamp:Date.now(), correct:true, skills:[] });
+    antiRepeatResults.push(aa.recentCorrectPenaltyForKey(key) >= 6 && aa.v2.priority(row, 2) < 0);
+  }
+  const vocabBefore = aa.planVocabQueue(8), blockedVocab = vocabBefore[0].reviewKey;
+  aa.state.attempts.push({ itemId:vocabBefore[0].id, reviewKey:blockedVocab, timestamp:Date.now(), correct:true, skills:[] });
+  const vocabAfter = aa.planVocabQueue(8);
+  antiRepeatResults.push(!vocabAfter.some(q => q.reviewKey === blockedVocab));
+  const blockedPd = pdStandard[0];
+  aa.state.attempts.push({ itemId:blockedPd.id, reviewKey:blockedPd.reviewKey, timestamp:Date.now(), correct:true, skills:[] });
+  antiRepeatResults.push(aa.jaPD.plan(1, 7)[0].reviewKey !== blockedPd.reviewKey);
+  check('全5教科で直近正解を強く抑制', antiRepeatResults.every(Boolean), JSON.stringify(antiRepeatResults));
+  aa.state.attempts = attemptsBeforeAntiRepeat;
 
   aa.state = aa.defaultState(); aa.state.profile.vocabDiagnosticDone = true; aa.save(); aa.render(); aa.setRoute('subjects');
   check('長文難度帯を画面表示', fresh.document.querySelector('#diffBand')?.textContent === '標準');

@@ -1,4 +1,4 @@
-/* 旭丘AA Learning OS v2.0.0
+/* 旭丘AA Learning OS v2.2.6
    愛知県入試特化・非英語4教科強化・演習/入試対策テスト分離 */
 (function () {
   'use strict';
@@ -125,10 +125,7 @@
     return AA2_LEVELS[clamp(Number(level) || 1, 1, 3)].target;
   }
   function aa2RecentPenalty(id, subject) {
-    const recent = state.attempts.slice(-28);
-    const hits = recent.filter(a => String(a.itemId).includes(id)).length;
-    const factor = subject === 'science' ? .08 : .16;
-    return hits * factor;
+    return recentCorrectPenaltyForKey('v2:' + subject + ':' + id);
   }
   function aa2Priority(row, level, futureDays = 0) {
     const item = itemState('v2:' + row.subject + ':' + row.id);
@@ -252,6 +249,7 @@
     ]);
     return {
       id: 'v2:' + row.subject + ':' + row.id + ':' + uid('q'), type: row.subject,
+      reviewKey: 'v2:' + row.subject + ':' + row.id,
       stem: labels[row.subject] + '\n\n【' + row.prompt + '】',
       choices, answerIndex: choices.findIndex(c => c.ok), explanation,
       skills: row.subject === 'math'
@@ -324,7 +322,7 @@
   };
 
   function aa2TransferQuestion(subject, diff) {
-    if (subject === 'japanese') return aa2BaseMakeJapaneseQ(diff);
+    if (subject === 'japanese') return typeof makePublicDomainJapaneseQ === 'function' ? makePublicDomainJapaneseQ(diff) : aa2BaseMakeJapaneseQ(diff);
     if (subject === 'math') return aa2MakeKnowledgeQuestion(aa2PickKnowledge('math', diff >= 9 ? 3 : diff >= 6 ? 2 : 1));
     if (subject === 'science') return aa2BaseMakeScienceQ(diff);
     return aa2BaseMakeSocialQ(diff);
@@ -348,7 +346,9 @@
     }
     const queue = selected.slice(0, count).map(row => aa2MakeKnowledgeQuestion(row, false));
     if (subject === 'math') return queue.slice(0, count);
-    const transferCount = Math.max(1, Math.round(count * (level === 3 ? .35 : .22)));
+    const transferCount = subject === 'japanese'
+      ? Math.max(2, Math.round(count * (level === 3 ? .48 : .38)))
+      : Math.max(1, Math.round(count * (level === 3 ? .35 : .22)));
     for (let i = 0; i < transferCount; i++) {
       const index = Math.min(queue.length, 2 + i * 3);
       const q = aa2TransferQuestion(subject, Math.round(aa2TargetDifficulty(level)));

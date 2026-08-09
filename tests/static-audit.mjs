@@ -18,6 +18,7 @@ const curriculum = read('curriculum-v2-data.js');
 const engineV2 = read('learning-engine-v2.js');
 const engineV22 = read('learning-engine-v22.js');
 const vocab10000 = read('japanese-vocabulary-10000.js');
+const japanesePublicDomain = read('japanese-public-domain.js');
 const chronologia = read('chronologia.html');
 const scripts = [...index.matchAll(/<script(?![^>]*\bsrc=)(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(match => match[1]);
 const chronologiaScripts = [...chronologia.matchAll(/<script(?![^>]*\bsrc=)(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(match => match[1]);
@@ -41,6 +42,7 @@ check('One inline application script', scripts.length === 1, `found ${scripts.le
 check('v1.5 engine linked', /src="\.\/learning-engine-v15\.js"/.test(index));
 check('v2 curriculum and engine linked', /src="\.\/curriculum-v2-data\.js"/.test(index) && /src="\.\/learning-engine-v2\.js"/.test(index));
 check('v2.2 exam engine and vocabulary linked', /src="\.\/learning-engine-v22\.js"/.test(index) && /src="\.\/japanese-vocabulary-10000\.js"/.test(index));
+check('Public-domain Japanese bank linked', /src="\.\/japanese-public-domain\.js"/.test(index));
 check('Chronologia standalone route linked', /href="\.\/chronologia\.html"/.test(engineV22));
 
 try {
@@ -61,6 +63,7 @@ try {
   new vm.Script(curriculum, {filename: 'curriculum-v2-data.js'});
   new vm.Script(engineV2, {filename: 'learning-engine-v2.js'});
   new vm.Script(vocab10000, {filename: 'japanese-vocabulary-10000.js'});
+  new vm.Script(japanesePublicDomain, {filename: 'japanese-public-domain.js'});
   new vm.Script(engineV22, {filename: 'learning-engine-v22.js'});
   check('v2 JavaScript syntax', true);
 } catch (error) {
@@ -98,7 +101,7 @@ for (const icon of manifest.icons) {
 }
 
 check('Offline fallback included', fs.existsSync(path.join(root, 'offline.html')) && sw.includes('offline.html'));
-check('Cache version matches app version', /APP_VERSION='2\.2\.5'/.test(index) && /VERSION = '2\.2\.5'/.test(sw));
+check('Cache version matches app version', /APP_VERSION='2\.2\.6'/.test(index) && /VERSION = '2\.2\.6'/.test(sw));
 check('Reading difficulty is exact', /requested=clamp\(Math\.round\(Number\(base\)\|\|7\),1,11\)/.test(index) && /generateReading\(requested,mode\)/.test(index) && /generateReadingForLearner\(base,'standard',assist\)/.test(index));
 check('Indirect-question full-output gate', /hasIndirectQuestion/.test(index) && /generateReadingBeforeFullGrammarGate/.test(index) && /repairSavedReadingGrammarGate/.test(index));
 check('Reading-opening anti-repeat gate', /READING_OPENINGS/.test(index) && /openingSignature/.test(index) && /selectReadingOpening/.test(index) && /openingFirstToken/.test(index));
@@ -108,7 +111,10 @@ check('English-only reading choices', /readingQuestionSetBeforeEnglishChoices/.t
 check('Bayesian unknown-word evidence', /lexicalEvidenceState/.test(index) && /lexicalPosterior/.test(index) && /gloss-unknown/.test(index));
 check('v1.5 engine precached', sw.includes("learning-engine-v15.js"));
 check('v2 files precached', sw.includes("curriculum-v2-data.js") && sw.includes("learning-engine-v2.js"));
-check('v2.2 files precached', sw.includes("learning-engine-v22.js") && sw.includes("japanese-vocabulary-10000.js") && sw.includes("learning-engine-v22.css"));
+check('v2.2 files precached', sw.includes("learning-engine-v22.js") && sw.includes("japanese-vocabulary-10000.js") && sw.includes("japanese-public-domain.js") && sw.includes("learning-engine-v22.css"));
+check('Fixed convenience-tool prompt removed', !index.includes('便利な道具を増やすだけでは') && !japanesePublicDomain.includes('便利な道具を増やすだけでは'));
+check('Public-domain source attribution', /著作権保護期間満了作品/.test(japanesePublicDomain) && /青空文庫/.test(japanesePublicDomain) && /aozora\.gr\.jp/.test(japanesePublicDomain));
+check('Correct-answer anti-repeat gate', /function recentCorrectPenaltyForKey/.test(index) && /reviewKey/.test(index) && /recentCorrectPenaltyForKey/.test(engineV2) && /recentCorrectPenaltyForKey/.test(engineV22));
 check('Chronologia precached', sw.includes("chronologia.html") && /cache\.put\(request, response\.clone\(\)\)/.test(sw));
 check('Chronologia 6.1 identity', /<title>Chronologia 6\.1/.test(chronologia) && /const VERSION = "6\.1\.0"/.test(chronologia));
 check('Chronologia 385 records intact', chronologiaIds.length === 385 && new Set(chronologiaIds).size === 385 && Math.min(...chronologiaIds) === 1 && Math.max(...chronologiaIds) === 385, `${chronologiaIds.length}/${Math.max(...chronologiaIds)}`);
