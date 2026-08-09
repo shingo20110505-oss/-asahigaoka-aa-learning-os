@@ -52,7 +52,7 @@ const fresh = makeRuntime();
 try {
   const aa = fresh.__aa;
   check('初期画面描画', fresh.document.querySelector('h1')?.textContent === '旭丘AA Learning OS');
-  check('v2.2.3・schema 4', aa.version === '2.2.3' && aa.schema === 4, `${aa.version}/${aa.schema}`);
+  check('v2.2.4・schema 4', aa.version === '2.2.4' && aa.schema === 4, `${aa.version}/${aa.schema}`);
   check('iPhone safe-area設計', /viewport-fit=cover/.test(index) && /safe-area-inset-(?:top|bottom)/.test(index));
   check('レスポンシブ設計', /@media\(max-width:700px\)/.test(index) && /grid-template-columns:1fr/.test(index));
 
@@ -61,7 +61,7 @@ try {
   check('図表＋レポート類題導線', fresh.document.querySelectorAll('[data-action="start-graph-reading"]').length === 1);
   check('漢字意味導線', fresh.document.querySelector('main')?.textContent.includes('漢字・意味'));
   check('演習/入試テスト分離UI', fresh.document.querySelector('main')?.textContent.includes('教科別演習') && fresh.document.querySelector('main')?.textContent.includes('入試対策'));
-  check('数学公式暗記導線', fresh.document.querySelector('main')?.textContent.includes('中学数学の公式・法則だけ') && fresh.document.querySelector('main')?.textContent.includes('数学公式暗記'));
+  check('数学公式暗記導線', fresh.document.querySelector('main')?.textContent.includes('中学公式＋高校受験で使える高校公式') && fresh.document.querySelector('main')?.textContent.includes('数学公式暗記') && fresh.document.querySelector('[data-action="start-advanced-math-formulas"]'));
   aa.setRoute('exam');
   check('独立入試ページ', fresh.document.querySelector('main')?.textContent.includes('出題設定') && fresh.document.querySelector('[data-action="start-exam-v22"]'));
   check('入試3段階コース', fresh.document.querySelectorAll('[data-action="exam-level"]').length === 3);
@@ -69,6 +69,7 @@ try {
   const examSubject = fresh.document.querySelector('[data-action="exam-subject"]');
   examSubject.value = 'math';
   examSubject.dispatchEvent(new fresh.Event('change', { bubbles: true }));
+  check('標準レベルでは高校公式を隠す', ![...fresh.document.querySelectorAll('[data-action="exam-unit"]')].some(input => input.value === 'advanced'));
   const mathUnitChecks = [...fresh.document.querySelectorAll('[data-action="exam-unit"]')];
   for (const input of mathUnitChecks) input.checked = input.value === 'probability';
   const probabilityCheck = mathUnitChecks.find(input => input.value === 'probability');
@@ -83,7 +84,7 @@ try {
     persistedUnitRuntime.happyDOM.abort();
   }
   check('選択中単元を設定画面に表示', fresh.document.querySelector('main')?.textContent.includes('現在の出題対象：確率'));
-  check('入試対策も数学公式暗記限定を明示', fresh.document.querySelector('main')?.textContent.includes('計算・文章題・高校内容は出題しません'));
+  check('入試対策も数学公式暗記限定を明示', fresh.document.querySelector('main')?.textContent.includes('数学は公式暗記だけ') && fresh.document.querySelector('main')?.textContent.includes('中学校の正式範囲外'));
   aa.setRoute('timeline');
   check('年表UI維持', !!fresh.document.querySelector('[data-action="timeline-search"]') && !!fresh.document.querySelector('[data-action="toggle-year"]') && !!fresh.document.querySelector('[data-action="toggle-event"]'));
   check('Chronologia想起導線', !!fresh.document.querySelector('[data-action="start-timeline-recall"]'));
@@ -226,7 +227,9 @@ try {
   check('数学テストは3難度すべて公式暗記だけ', courseQueues.flat().every(formulaOnly));
   const mathPractice = aa.v2.practiceQueue('math', 15, 3);
   check('数学通常演習も公式暗記だけ', mathPractice.length === 15 && mathPractice.every(formulaOnly));
-  check('数学の公式対象は中学33項目', aa.v2.subjectRows('math').length === 33 && !aa.v2.units?.math?.some?.(x => x[0] === 'advanced'));
+  const advancedRows = aa.v2.subjectRows('math').filter(row => row.area === 'advanced');
+  check('数学の公式対象は57項目', aa.v2.subjectRows('math').length === 57 && advancedRows.length === 24 && !aa.v2.subjectRows('math').some(row => row.area === 'strategy'));
+  check('通常数学レベル1・2は中学公式だけ', [1, 2].every(level => !aa.v2.testQueue('math', level).some(q => q.source?.area === 'advanced')));
 
   const jaR8 = aa.v22.japaneseExam(3);
   check('国語R8・4大問22点', jaR8.length === 21 && jaR8.reduce((n,q)=>n+q.points,0) === 22 && new Set(jaR8.map(q=>q.bigQuestion)).size === 4);
@@ -238,7 +241,16 @@ try {
     check(`${subject}本番構成22点`, queue.length === count && queue.reduce((n,q)=>n+q.points,0) === 22, `${queue.length}/${queue.reduce((n,q)=>n+q.points,0)}`);
   }
   const structuredMath = aa.v22.structuredQueue('math', 3, aa.v22.normalizeConfig({subject:'math',level:3,scope:'full',units:aa.v22.units.math.map(x=>x[0]),timeMin:45,length:'full'}));
-  check('数学入試対策構成も公式暗記だけ', structuredMath.length === 15 && structuredMath.every(formulaOnly) && !aa.v22.units.math.some(x => x[0] === 'advanced'));
+  check('数学入試対策構成も公式暗記だけ', structuredMath.length === 15 && structuredMath.every(formulaOnly) && aa.v22.units.math.some(x => x[0] === 'advanced'));
+  check('旭丘レベルに高校公式4問', structuredMath.filter(q => q.source?.area === 'advanced').length === 4, structuredMath.map(q => q.source?.area).join(','));
+  const advancedMath = aa.v22.advancedMathQueue(15);
+  check('高校公式専用暗記15問', advancedMath.length === 15 && advancedMath.every(q => formulaOnly(q) && q.source?.area === 'advanced' && q.examUnit === 'advanced'));
+
+  const historyYearRows = aa.v2.banks.social.filter(row => row.id.startsWith('history-year-')).slice(0, 20);
+  const hardSocial = historyYearRows.map(row => aa.v2.makeQuestion(row));
+  check('社会・歴史年号は近接年代の誤答', hardSocial.length === 20 && hardSocial.every(q => q.choices.filter(c => !c.ok).every(c => c.distractorType === 'near_chronology' && /年$/.test(c.text))));
+  const themedSocial = aa.v2.makeQuestion(aa.v2.banks.social.find(row => row.id === 'sg08'));
+  check('社会・同テーマの紛らわしい選択肢', themedSocial.choices.filter(c => !c.ok).some(c => c.distractorType === 'same_theme'), themedSocial.choices.map(c => `${c.text}:${c.distractorType}`).join(' / '));
 
   const unitCases = [
     ['english', 'grammar'], ['japanese', 'kanbun'], ['japanese', 'literary'],
