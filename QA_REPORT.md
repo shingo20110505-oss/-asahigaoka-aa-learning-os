@@ -1,7 +1,7 @@
 # 旭丘AA Learning OS v2.2.1 公開・最終監査
 
 監査日: 2026-08-09  
-公開コミット: 公開後に記録
+公開コミット: `273f753b242dbf01775c53f81a4e4f0cb072dc92`
 公開URL: `https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/`
 
 ## 結論
@@ -182,9 +182,9 @@ LEVEL 1公立標準、LEVEL 2難関公立、LEVEL 3旭丘を分離した。教�
 
 ## 公開URL確認
 
-- index.html: 公開後にHTTP 200、v2.2.1、監査済みファイルとの一致を再確認
+- index.html: HTTP 200、v2.2.1、監査済みファイルと完全一致
 - chronologia.html: HTTP 200、269,333 bytes、Chronologia 6.1完全版と互換追加だけを含む
-- sw.js: 公開後にHTTP 200、v2.2.1、Chronologiaを含むapp shellを再確認
+- sw.js: HTTP 200、v2.2.1、Chronologiaを含むapp shell、監査済みファイルと完全一致
 - learning-engine-v22.js / .css: HTTP 200、監査済みファイルと完全一致
 - japanese-vocabulary-10000.js: HTTP 200、514,674 bytes、10,000件
 - ローカルブラウザ相当ではLEVEL 1〜3、演習と独立入試、試験中の採点非表示、終了後全問解説、忘却予測、途中テスト復元を実操作確認
