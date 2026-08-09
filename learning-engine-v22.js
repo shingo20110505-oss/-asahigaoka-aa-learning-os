@@ -1,4 +1,4 @@
-/* 旭丘AA Learning OS v2.2.0
+/* 旭丘AA Learning OS v2.2.1
    独立「入試対策」ページ・愛知県最新公開問題の大問構成・国語原創問題 */
 (function () {
   'use strict';
@@ -30,6 +30,25 @@
       ['international', '国際'], ['data', '地図・統計・資料統合']
     ]
   };
+  const UNIT_AREAS = {
+    japanese: {
+      modern: ['modern'], literary: ['literary'], discussion: ['discussion'], kanji: ['kanji'],
+      idiom: ['idiom', 'yojijukugo'], classical: ['classical'], kanbun: ['kanbun']
+    },
+    math: {
+      number: ['number'], algebra: ['algebra'], equation: ['equation'], function: ['function'],
+      geometry: ['geometry', 'measure'], probability: ['probability'], statistics: ['statistics'],
+      advanced: ['advanced', 'strategy']
+    },
+    science: {
+      biology: ['biology'], chemistry: ['chemistry'], physics: ['physics'], earth: ['earth'],
+      experiment: ['biology', 'chemistry', 'physics', 'earth']
+    },
+    social: {
+      history: ['history'], geography: ['geography'], civics: ['civics'], economy: ['economy'],
+      international: ['international'], data: ['history', 'geography', 'civics', 'economy', 'international']
+    }
+  };
 
   function aa22DefaultConfig(subject = 'japanese') {
     return {
@@ -39,14 +58,16 @@
   }
   function aa22NormalizeConfig(input) {
     const subject = ['english', 'japanese', 'math', 'science', 'social'].includes(input?.subject) ? input.subject : 'japanese';
-    const valid = new Set(EXAM_UNITS[subject].map(x => x[0]));
+    const level = clamp(Number(input?.level) || 1, 1, 3);
+    const scope = ['full', 'current', 'custom'].includes(input?.scope) ? input.scope : 'full';
+    const validUnits = EXAM_UNITS[subject].map(x => x[0]).filter(x => level === 3 || x !== 'advanced');
+    const valid = new Set(validUnits);
     let units = safeArray(input?.units).filter(x => valid.has(x));
-    if (!units.length) units = [...valid];
-    if (Number(input?.level) < 3) units = units.filter(x => x !== 'advanced');
+    if (scope === 'full' || !units.length) units = validUnits;
     return {
       subject,
-      level: clamp(Number(input?.level) || 1, 1, 3),
-      scope: ['full', 'current', 'custom'].includes(input?.scope) ? input.scope : 'full',
+      level,
+      scope,
       units,
       timeMin: clamp(Number(input?.timeMin) || DEFAULT_TIMES[subject], 5, 90),
       length: ['mini', 'half', 'full'].includes(input?.length) ? input.length : 'full'
@@ -95,10 +116,11 @@
       answerIndex: answers[0], answerIndices: answers.length > 1 ? answers : undefined,
       selectCount: answers.length, points: Number(spec.points || 1), partialPoints: Number(spec.partialPoints || 0),
       explanation: spec.explanation || choices[answers[0]]?.reason || '',
-      skills: spec.skills || [{ id: spec.subject === 'japanese' ? 'ja.aichi.integration' : spec.subject === 'math' ? 'math.aichi.multistep' : spec.subject === 'science' ? 'sci.aichi.integration' : 'soc.aichi.integration', role: 'primary' }],
+      skills: spec.skills || [{ id: spec.subject === 'english' ? 'en.read.inference' : spec.subject === 'japanese' ? 'ja.aichi.integration' : spec.subject === 'math' ? 'math.aichi.multistep' : spec.subject === 'science' ? 'sci.aichi.integration' : 'soc.aichi.integration', role: 'primary' }],
       expectedMs: Number(spec.expectedMs || 65000), context: 'aichi-r8-' + spec.subject,
       format: spec.format || 'aichi-mark', testMode: true, courseLevel: Number(spec.level || 1),
       bigQuestion: spec.bigQuestion, bigTitle: spec.bigTitle, officialSmallLabel: spec.officialSmallLabel,
+      examUnit: spec.unit || spec.source?.area || 'integration',
       aichiPassage: spec.passage || '', source: spec.source || { area: spec.unit || 'integration', difficulty: Number(spec.level || 1) * 3 }
     };
   }
@@ -140,18 +162,20 @@
   function aa22AllowedAreas(subject, config) {
     let units = config.scope === 'full' ? EXAM_UNITS[subject].map(x => x[0]) : config.units;
     if (config.level < 3) units = units.filter(x => x !== 'advanced');
-    if (subject === 'japanese') return units.flatMap(x => x === 'modern' || x === 'literary' || x === 'discussion' ? ['idiom', 'yojijukugo', 'kanji'] : [x]);
-    if (subject === 'math') return units.flatMap(x => x === 'geometry' ? ['geometry', 'measure'] : [x]);
-    if (subject === 'science') return units.filter(x => x !== 'experiment');
-    if (subject === 'social') return units.flatMap(x => x === 'data' ? ['geography', 'history', 'civics'] : [x]);
-    return units;
+    const mapping = UNIT_AREAS[subject];
+    return [...new Set(units.flatMap(unit => mapping?.[unit] || [unit]))];
+  }
+
+  function aa22UnitForArea(subject, area, selectedUnits) {
+    if (selectedUnits.includes(area)) return area;
+    return selectedUnits.find(unit => safeArray(UNIT_AREAS[subject]?.[unit]).includes(area)) || area;
   }
 
   function aa22BankQuestion(subject, level, allowed, index, big, label, points) {
     const bank = API.banks[subject];
     const cap = level === 1 ? 7 : level === 2 ? 9 : 11;
     let candidates = bank.filter(row => allowed.includes(row.area) && row.difficulty <= cap && !(row.area === 'advanced' && level < 3));
-    if (!candidates.length) candidates = bank.filter(row => row.difficulty <= cap && !(row.area === 'advanced' && level < 3));
+    if (!candidates.length) return null;
     candidates.sort((a, b) => Math.abs((a.difficulty || 5) - (LEVELS[level].target || 5)) - Math.abs((b.difficulty || 5) - (LEVELS[level].target || 5)));
     const row = candidates[index % candidates.length];
     const q = API.makeQuestion(row, true);
@@ -166,6 +190,95 @@
           : '';
     q.context = 'aichi-r8-' + subject + '-' + big.name;
     return q;
+  }
+
+  function aa22UnitLabel(subject, unit) {
+    return EXAM_UNITS[subject].find(x => x[0] === unit)?.[1] || unit;
+  }
+
+  function aa22TagUnit(q, subject, unit) {
+    q.examUnit = unit;
+    q.subject = subject;
+    q.testMode = true;
+    q.source = { ...(q.source || {}), area: q.source?.area || unit };
+    return q;
+  }
+
+  const JA_LITERARY_PASSAGE = `【文学的文章・本アプリ作成】\n放課後、真帆は返却されたノートを机に置いたまま、窓の外を見ていた。発表の原稿には直すところがいくつもあった。そこへ悠斗が来て、赤い印のついた一文を指した。\n「ここ、だめって意味じゃなくて、いちばん伝えたいことが見えそうだから印をつけたんだと思う。」\n真帆はもう一度その一文を読んだ。直す場所が増えたと思っていた紙が、急に次へ進むための地図のように見えた。真帆は鉛筆を持ち、最初の一行を消した。`;
+  function aa22JapaneseLiterary(level) {
+    const shared = { subject: 'japanese', level, unit: 'literary', bigQuestion: '単元別', bigTitle: '文学的文章', passage: JA_LITERARY_PASSAGE };
+    return [
+      aa22Question({ ...shared, code: 'LIT-1', officialSmallLabel: '問1', stem: '真帆が初めに窓の外を見ていた理由として最も適切なものを選びなさい。', choices: ['発表が終わって安心していたから', '直す箇所の多さに気持ちが止まっていたから', '悠斗を待ち伏せしていたから', 'ノートをなくしたから'], answer: 1, explanation: '直すところがいくつもある原稿を前に、すぐ作業へ向かえない心情が描かれています。' }),
+      aa22Question({ ...shared, code: 'LIT-2', officialSmallLabel: '問2', stem: '悠斗の発言によって真帆の受け止め方はどのように変わったか。', choices: ['赤い印を失敗の数だと考えた。', '原稿を捨てる理由だと考えた。', '修正を前進の手掛かりだと考えた。', '発表を他人に任せようと考えた。'], answer: 2, explanation: '「次へ進むための地図」という比喩が、修正を手掛かりとして捉え直したことを示します。' }),
+      aa22Question({ ...shared, code: 'LIT-3', officialSmallLabel: '問3', stem: '「地図のように見えた」という表現の効果として最も適切なものを選びなさい。', choices: ['教室の位置を具体的に説明する。', '直す順序と方向が見えた心情を表す。', '紙が本物の地図に変わったことを表す。', '窓の外の景色を強調する。'], answer: 1, explanation: '比喩により、否定的だった赤字が改善の方向を示すものへ変化した心情を表します。' }),
+      aa22Question({ ...shared, code: 'LIT-4', officialSmallLabel: '問4', stem: '結末の「最初の一行を消した」から読み取れる真帆の様子を選びなさい。', choices: ['修正に取りかかった。', '発表をあきらめた。', '悠斗に怒った。', 'ノートを返却した。'], answer: 0, explanation: '見方を変えた真帆が、具体的な修正行動を始めた結末です。' })
+    ];
+  }
+
+  function aa22JapaneseUnitQueue(level, config) {
+    const selected = config.units;
+    const queue = aa22JapaneseExam(level).filter(q => selected.includes(q.source?.area)).map(q => aa22TagUnit(q, 'japanese', q.source.area));
+    if (selected.includes('literary')) queue.push(...aa22JapaneseLiterary(level));
+    for (const unit of selected) {
+      if (['modern', 'literary', 'discussion'].includes(unit)) continue;
+      const existing = queue.filter(q => q.examUnit === unit).length;
+      const allowed = safeArray(UNIT_AREAS.japanese[unit]);
+      const cap = level === 1 ? 7 : level === 2 ? 9 : 11;
+      const available = API.banks.japanese.filter(row => allowed.includes(row.area) && row.difficulty <= cap).length;
+      const addCount = Math.max(0, Math.min(6 - existing, available));
+      const big = { name: '単元別', title: aa22UnitLabel('japanese', unit) };
+      for (let i = 0; i < addCount; i++) {
+        const q = aa22BankQuestion('japanese', level, allowed, i, big, '問' + (existing + i + 1), 1);
+        if (q) queue.push(aa22TagUnit(q, 'japanese', unit));
+      }
+    }
+    return queue;
+  }
+
+  const EN_DIALOGUE = `【会話文】\nMika: The science club will meet at four today. Can you come?\nLeo: I have piano practice until four fifteen.\nMika: We will begin with the report, and the experiment starts at four thirty.\nLeo: Then I can join the experiment. I will send my report before practice.`;
+  const EN_DATA = `【案内と表】\nLibrary workshops\nA: Book Talk / Tue 16:00 / 40 minutes / Room 2\nB: Research Skills / Wed 16:30 / 60 minutes / Room 1\nC: Local History / Fri 15:50 / 50 minutes / Room 3\nStudents must arrive ten minutes before the starting time.`;
+  function aa22EnglishFixedUnit(unit, level) {
+    const shared = { subject: 'english', level, unit, bigQuestion: '単元別', bigTitle: aa22UnitLabel('english', unit), points: 1 };
+    if (unit === 'dialogue') return [
+      aa22Question({ ...shared, code: 'EN-D1', officialSmallLabel: '問1', passage: EN_DIALOGUE, stem: 'Why can Leo not come at four?', choices: ['He has piano practice.', 'He must write a new report.', 'The club room is closed.', 'He has a science test.'], answer: 0, explanation: 'Leo says, “I have piano practice until four fifteen.”' }),
+      aa22Question({ ...shared, code: 'EN-D2', officialSmallLabel: '問2', passage: EN_DIALOGUE, stem: 'What will the club do first?', choices: ['Start the experiment.', 'Practice the piano.', 'Listen to the report.', 'Clean the room.'], answer: 2, explanation: 'Mika says that they will begin with the report.' }),
+      aa22Question({ ...shared, code: 'EN-D3', officialSmallLabel: '問3', passage: EN_DIALOGUE, stem: 'Which activity can Leo join?', choices: ['The report at four.', 'The experiment at four thirty.', 'Piano practice at four thirty.', 'A meeting tomorrow.'], answer: 1, explanation: 'His practice ends at 4:15, so he can join the 4:30 experiment.' }),
+      aa22Question({ ...shared, code: 'EN-D4', officialSmallLabel: '問4', passage: EN_DIALOGUE, stem: 'What will Leo do before piano practice?', choices: ['Send his report.', 'Do the experiment.', 'Meet Mika at four.', 'Cancel the club meeting.'], answer: 0, explanation: 'Leo says, “I will send my report before practice.”' })
+    ];
+    if (unit === 'data') return [
+      aa22Question({ ...shared, code: 'EN-T1', officialSmallLabel: '問1', passage: EN_DATA, stem: 'Which workshop is held on Wednesday?', choices: ['Book Talk', 'Research Skills', 'Local History', 'Science Report'], answer: 1, explanation: 'The table lists Research Skills on Wednesday.' }),
+      aa22Question({ ...shared, code: 'EN-T2', officialSmallLabel: '問2', passage: EN_DATA, stem: 'When should a student arrive for Book Talk?', choices: ['15:40', '15:50', '16:00', '16:10'], answer: 1, explanation: 'Students arrive ten minutes before the 16:00 start.' }),
+      aa22Question({ ...shared, code: 'EN-T3', officialSmallLabel: '問3', passage: EN_DATA, stem: 'Which workshop is the longest?', choices: ['Book Talk', 'Research Skills', 'Local History', 'They are all the same.'], answer: 1, explanation: 'Research Skills lasts 60 minutes, longer than 40 or 50 minutes.' }),
+      aa22Question({ ...shared, code: 'EN-T4', officialSmallLabel: '問4', passage: EN_DATA, stem: 'Where is Local History held?', choices: ['Room 1', 'Room 2', 'Room 3', 'The library entrance'], answer: 2, explanation: 'The Local History row shows Room 3.' })
+    ];
+    if (unit === 'grammar') return [
+      aa22Question({ ...shared, code: 'EN-G1', officialSmallLabel: '問1', stem: 'If I _____ enough time, I will help you.', choices: ['have', 'had', 'will have', 'having'], answer: 0, explanation: 'A future condition uses the present tense in the if-clause.' }),
+      aa22Question({ ...shared, code: 'EN-G2', officialSmallLabel: '問2', stem: 'This book _____ by many students last year.', choices: ['reads', 'read', 'was read', 'is reading'], answer: 2, explanation: 'The passive in the past is “was read.”' }),
+      aa22Question({ ...shared, code: 'EN-G3', officialSmallLabel: '問3', stem: 'I _____ in Nagoya for three years.', choices: ['live', 'lived now', 'have lived', 'am live'], answer: 2, explanation: 'A continuing situation with “for three years” uses the present perfect.' }),
+      aa22Question({ ...shared, code: 'EN-G4', officialSmallLabel: '問4', stem: 'Choose the correct sentence.', choices: ['Do you know where is the station?', 'Do you know where the station is?', 'Do you know is where the station?', 'Do you where know the station is?'], answer: 1, explanation: 'An indirect question uses statement word order: where the station is.' })
+    ];
+    return [];
+  }
+
+  function aa22EnglishUnitQueue(config) {
+    const queue = [];
+    for (const unit of config.units) {
+      if (unit === 'reading') {
+        const read = generateReading(clamp(config.level * 3 + 2, 3, 11), 'standard');
+        for (const [index, original] of read.questions.entries()) {
+          const q = aa22TagUnit({ ...original, id: original.id + ':' + uid('q'), subject: 'english', points: 1, testMode: true,
+            bigQuestion: '単元別', bigTitle: aa22UnitLabel('english', unit), officialSmallLabel: '問' + (index + 1),
+            aichiPassage: read.passage, source: { area: unit, scenarioId: read.scenarioId } }, 'english', unit);
+          queue.push(q);
+        }
+      } else if (unit === 'vocab') {
+        for (const q of planVocabQueue(8)) {
+          q.bigQuestion = '単元別'; q.bigTitle = aa22UnitLabel('english', unit); q.officialSmallLabel = '問' + (queue.length + 1); q.points = 1;
+          queue.push(aa22TagUnit(q, 'english', unit));
+        }
+      } else queue.push(...aa22EnglishFixedUnit(unit, config.level));
+    }
+    return queue;
   }
 
   const BLUEPRINTS = {
@@ -187,17 +300,31 @@
   };
 
   function aa22StructuredQueue(subject, level, config) {
-    if (subject === 'japanese') return aa22JapaneseExam(level);
+    if (subject === 'japanese') return config.scope === 'full' ? aa22JapaneseExam(level) : aa22JapaneseUnitQueue(level, config);
+    if (subject === 'english') return aa22EnglishUnitQueue(config);
     const blueprint = BLUEPRINTS[subject];
     const allowed = aa22AllowedAreas(subject, config);
     const queue = [];
+    if (config.scope !== 'full') {
+      const cap = level === 1 ? 7 : level === 2 ? 9 : 11;
+      const available = API.banks[subject].filter(row => allowed.includes(row.area) && row.difficulty <= cap && !(row.area === 'advanced' && level < 3)).length;
+      const target = Math.min(blueprint.reduce((sum, big) => sum + big.count, 0), available);
+      const title = config.units.map(unit => aa22UnitLabel(subject, unit)).join('・');
+      const big = { name: '単元別', title };
+      for (let i = 0; i < target; i++) {
+        const q = aa22BankQuestion(subject, level, allowed, i, big, '問' + (i + 1), 1);
+        if (q) queue.push(aa22TagUnit(q, subject, aa22UnitForArea(subject, q.source?.area, config.units)));
+      }
+      return queue;
+    }
     let globalIndex = 0;
     for (const big of blueprint) {
       for (let i = 0; i < big.count; i++, globalIndex++) {
         let points = 1;
         if (subject === 'math') points = (globalIndex >= 8 ? 2 : 1);
         if ((subject === 'science' || subject === 'social') && globalIndex >= 18) points = 2;
-        queue.push(aa22BankQuestion(subject, level, allowed, globalIndex, big, '問' + (i + 1), points));
+        const q = aa22BankQuestion(subject, level, allowed, globalIndex, big, '問' + (i + 1), points);
+        if (q) queue.push(aa22TagUnit(q, subject, aa22UnitForArea(subject, q.source?.area, config.units)));
       }
     }
     return queue;
@@ -212,6 +339,10 @@
   }
 
   function aa22StartEnglish(config) {
+    if (config.scope !== 'full') {
+      const queue = aa22ApplyLength(aa22EnglishUnitQueue(config), config.length);
+      return aa22StartQuestionSession(config, queue);
+    }
     aa22PrevHandleAction({ dataset: { action: 'start-reading-simulator' } }, null);
     const s = state.session;
     if (!s) return;
@@ -224,15 +355,14 @@
     save(); render(); startTicker();
   }
 
-  function aa22StartExam(configInput = aa22Config()) {
-    const config = aa22NormalizeConfig(configInput);
-    state.ui.examConfig = config; state.ui.testSubject = config.subject; state.ui.testCourseLevel = config.level;
-    if (config.subject === 'english') return aa22StartEnglish(config);
-    let queue = aa22StructuredQueue(config.subject, config.level, config);
-    queue = aa22ApplyLength(queue, config.length);
+  function aa22StartQuestionSession(config, queue) {
+    if (!queue.length) {
+      alert('選択した単元の問題を作成できませんでした。別の単元を選んでください。');
+      return;
+    }
     state.session = {
       id: uid('aichiR8'), active: true, mode: 'aichi-test', trackType: 'test', kind: 'aichiTestV22',
-      subject: config.subject, courseLevel: config.level, examConfig: { ...config }, queue, index: 0, subIndex: 0,
+      subject: config.subject, courseLevel: config.level, examConfig: { ...config, units: [...config.units] }, queue, index: 0, subIndex: 0,
       answers: {}, feedback: null, testPending: {}, testFinalized: {}, startedAt: now(), accumulatedMs: 0,
       lastActiveAt: now(), itemStartedAt: now(), scrollY: 0, minimumDone: false, clockPaused: false,
       pausedAt: null, limitMs: config.timeMin * 60000, officialModelYear: OFFICIAL_YEAR,
@@ -240,6 +370,15 @@
       blueprintExact: config.length === 'full' && config.scope === 'full'
     };
     state.stats.sessions++; state.route = 'study'; save(); render(); window.scrollTo(0, 0); startTicker();
+  }
+
+  function aa22StartExam(configInput = aa22Config()) {
+    const config = aa22NormalizeConfig(configInput);
+    state.ui.examConfig = config; state.ui.testSubject = config.subject; state.ui.testCourseLevel = config.level;
+    if (config.subject === 'english') return aa22StartEnglish(config);
+    let queue = aa22StructuredQueue(config.subject, config.level, config);
+    queue = aa22ApplyLength(queue, config.length);
+    return aa22StartQuestionSession(config, queue);
   }
 
   const aa22PrevSelectAnswer = selectAnswer;
@@ -368,6 +507,7 @@
   function examHTML() {
     const c = aa22Config(), rows = aa22BlueprintRows(c.subject);
     const units = EXAM_UNITS[c.subject].filter(x => c.level === 3 || x[0] !== 'advanced');
+    const selectedLabels = c.scope === 'full' ? ['全単元'] : c.units.map(unit => aa22UnitLabel(c.subject, unit));
     return layout('<section class="card examHero"><div class="eyebrow">AICHI EXAM LAB</div><h2 class="h2">入試対策</h2><p class="sub">通常演習とは完全に分離。試験中は正誤・解説を出さず、終了後に配点・誤答理由・単元をまとめて確認します。</p></section>' +
       '<div class="sp12"></div><section class="card"><h3 class="h3">1. 難度</h3>' + aa22CourseCards() + '</section>' +
       '<div class="sp12"></div><section class="card"><h3 class="h3">2. 出題設定</h3><div class="examSettings">' +
@@ -375,9 +515,10 @@
       '<div class="field"><label>出題範囲</label><select data-action="exam-scope"><option value="full" ' + (c.scope === 'full' ? 'selected' : '') + '>中1〜中3・全範囲</option><option value="current" ' + (c.scope === 'current' ? 'selected' : '') + '>現在の既習範囲</option><option value="custom" ' + (c.scope === 'custom' ? 'selected' : '') + '>選択単元のみ</option></select></div>' +
       '<div class="field"><label>試験時間</label><select data-action="exam-time">' + [10, 20, 30, 35, 40, 45, 50, 60].map(v => '<option value="' + v + '" ' + (c.timeMin === v ? 'selected' : '') + '>' + v + '分</option>').join('') + '</select></div>' +
       '<div class="field"><label>問題量</label><select data-action="exam-length"><option value="mini" ' + (c.length === 'mini' ? 'selected' : '') + '>ミニ（8問）</option><option value="half" ' + (c.length === 'half' ? 'selected' : '') + '>ハーフ</option><option value="full" ' + (c.length === 'full' ? 'selected' : '') + '>本番構成</option></select></div>' +
-      '<div class="wide"><label class="strong">単元</label><div class="unitGrid">' + units.map(([id, label]) => '<label class="unitCheck"><input type="checkbox" data-action="exam-unit" value="' + id + '" ' + (c.units.includes(id) ? 'checked' : '') + '><span>' + esc(label) + '</span></label>').join('') + '</div></div></div>' +
+      '<div class="wide"><label class="strong">単元</label><div class="unitGrid">' + units.map(([id, label]) => '<label class="unitCheck"><input type="checkbox" data-action="exam-unit" value="' + id + '" ' + (c.units.includes(id) ? 'checked' : '') + '><span>' + esc(label) + '</span></label>').join('') + '</div><div class="tiny">単元を変更すると、出題範囲は自動で「選択単元のみ」になります。</div></div></div>' +
+      '<div class="notice"><b>現在の出題対象：</b>' + selectedLabels.map(esc).join('・') + '</div>' +
       '<div class="sp12"></div><div class="actions"><button class="btn primary" data-action="start-exam-v22">この設定で試験開始</button></div>' +
-      '<div class="tiny">「現在の既習範囲」「選択単元のみ」は、上のチェックを出題範囲として使います。LEVEL 3の高校内容は数学の解法短縮・検算に限定し、高校入試の出題範囲そのものとは区別します。</div></section>' +
+      '<div class="tiny">「現在の既習範囲」「選択単元のみ」は、上のチェックだけを出題範囲として使います。単元別では本番の大問配列より選択単元を優先します。LEVEL 3の高校内容は数学の解法短縮・検算に限定し、高校入試の出題範囲そのものとは区別します。</div></section>' +
       '<div class="sp12"></div><section class="card"><h3 class="h3">令和8年度公開問題を基準にした構成</h3><div class="tableWrap"><table class="blueprintTable"><thead><tr><th>区分</th><th>処理する力</th><th>構成</th></tr></thead><tbody>' + rows.map(r => '<tr><td><b>' + esc(r[0]) + '</b></td><td>' + esc(r[1]) + '</td><td>' + esc(r[2]) + '</td></tr>').join('') + '</tbody></table></div>' +
       '<p class="tiny">問題文・文章・資料はすべて本アプリ作成。公開問題の転載ではなく、最新の大問構成・解答形式・時間条件を学習用にモデル化しています。</p><a class="btn ghost" href="' + OFFICIAL_URL + '" target="_blank" rel="noopener">愛知県公式問題ページ</a></section>' +
       (c.subject === 'japanese' ? aa22VocabIndexHTML() : ''));
@@ -412,7 +553,8 @@
     let html = aa22PrevStudyHTML(), s = state.session, q = currentQ();
     if (!s?.active || s.trackType !== 'test' || !q) return html;
     const selected = q.answerIndices ? safeArray(s.testPending?.[q.id]?.indices) : (s.testPending?.[q.id] ? [s.testPending[q.id].idx] : []);
-    const meta = '<div class="examQuestionMeta"><span class="chip">' + esc(q.bigQuestion || '入試問題') + '</span><span class="chip">' + esc(q.bigTitle || '') + '</span><span class="chip">' + esc(q.officialSmallLabel || '') + '</span><span class="chip">' + Number(q.points || 1) + '点</span></div>' +
+    const unitLabel = q.examUnit ? aa22UnitLabel(s.subject, q.examUnit) : '';
+    const meta = '<div class="examQuestionMeta"><span class="chip">' + esc(q.bigQuestion || '入試問題') + '</span><span class="chip">' + esc(q.bigTitle || '') + '</span>' + (unitLabel ? '<span class="chip">単元：' + esc(unitLabel) + '</span>' : '') + '<span class="chip">' + esc(q.officialSmallLabel || '') + '</span><span class="chip">' + Number(q.points || 1) + '点</span></div>' +
       (q.answerIndices ? '<div class="multiGuide">' + q.selectCount + 'つ選択（選択中 ' + selected.length + '/' + q.selectCount + '）' + (q.partialPoints ? '・部分点あり' : '') + '</div>' : '');
     const passage = q.aichiPassage ? '<details class="examPassage" open><summary>本文・資料</summary><div class="examPassageText">' + esc(q.aichiPassage) + '</div></details>' : '';
     html = html.replace('<section class="card"><div class="qstem">', '<section class="card">' + meta + passage + '<div class="qstem">');
@@ -463,12 +605,20 @@
     const el = event.target.closest('[data-action^="exam-"]'); if (!el) return;
     let c = aa22Config();
     if (el.dataset.action === 'exam-subject') c = aa22DefaultConfig(el.value);
-    if (el.dataset.action === 'exam-scope') c = { ...c, scope: el.value };
+    if (el.dataset.action === 'exam-scope') {
+      c = { ...c, scope: el.value };
+      if (el.value === 'full') c.units = EXAM_UNITS[c.subject].map(x => x[0]).filter(x => c.level === 3 || x !== 'advanced');
+    }
     if (el.dataset.action === 'exam-time') c = { ...c, timeMin: Number(el.value) };
     if (el.dataset.action === 'exam-length') c = { ...c, length: el.value };
     if (el.dataset.action === 'exam-unit') {
       const checked = [...document.querySelectorAll('[data-action="exam-unit"]:checked')].map(x => x.value);
-      c = { ...c, units: checked };
+      if (!checked.length) {
+        el.checked = true;
+        alert('出題する単元を1つ以上選んでください。');
+        return;
+      }
+      c = { ...c, scope: 'custom', units: checked };
     }
     state.ui.examConfig = aa22NormalizeConfig(c); save(); render();
   });
@@ -493,6 +643,11 @@
         const expected = subject === 'math' ? 15 : 20;
         add('R8' + SUBJECTS[subject] + '構成', qs.length === expected && points === 22, qs.length + '解答項目 / ' + points + '点 / ' + new Set(qs.map(q => q.bigQuestion)).size + '大問');
       }
+      for (const [subject, unit] of [['english', 'grammar'], ['japanese', 'kanbun'], ['math', 'geometry'], ['science', 'experiment'], ['social', 'data']]) {
+        const cfg = aa22NormalizeConfig({ subject, level: 3, scope: 'custom', units: [unit], timeMin: 20, length: 'mini' });
+        const qs = aa22StructuredQueue(subject, 3, cfg);
+        add(SUBJECTS[subject] + '単元指定 ' + aa22UnitLabel(subject, unit), qs.length > 0 && qs.every(q => q.examUnit === unit), qs.length + '問 / ' + [...new Set(qs.map(q => q.examUnit))].join(','));
+      }
       const vocab = window.AA_JA_VOCAB_10000;
       add('国語1万語索引', vocab?.count === 10000 && vocab.entries.length === 10000 && new Set(vocab.entries.map(x => x[0] + '|' + x[1])).size === 10000, '教育基本語彙DB由来 ' + (vocab?.entries.length || 0) + '件');
       add('学習履歴キー固定', STORE_KEY === 'asahi_learning_os_v1' && SCHEMA_VERSION === 4, STORE_KEY + ' / schema ' + SCHEMA_VERSION);
@@ -503,7 +658,8 @@
 
   globalThis.AA_V22_TEST_API = {
     units: EXAM_UNITS, japaneseExam: aa22JapaneseExam, structuredQueue: aa22StructuredQueue,
-    normalizeConfig: aa22NormalizeConfig, startExam: aa22StartExam, vocabIndex: window.AA_JA_VOCAB_10000
+    normalizeConfig: aa22NormalizeConfig, startExam: aa22StartExam, allowedAreas: aa22AllowedAreas,
+    vocabIndex: window.AA_JA_VOCAB_10000
   };
 
   save(); render();

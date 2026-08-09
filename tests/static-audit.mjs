@@ -98,7 +98,7 @@ for (const icon of manifest.icons) {
 }
 
 check('Offline fallback included', fs.existsSync(path.join(root, 'offline.html')) && sw.includes('offline.html'));
-check('Cache version matches app version', /APP_VERSION='2\.2\.0'/.test(index) && /VERSION = '2\.2\.0'/.test(sw));
+check('Cache version matches app version', /APP_VERSION='2\.2\.1'/.test(index) && /VERSION = '2\.2\.1'/.test(sw));
 check('Indirect-question full-output gate', /hasIndirectQuestion/.test(index) && /generateReadingBeforeFullGrammarGate/.test(index) && /repairSavedReadingGrammarGate/.test(index));
 check('Reading-opening anti-repeat gate', /READING_OPENINGS/.test(index) && /openingSignature/.test(index) && /selectReadingOpening/.test(index) && /openingFirstToken/.test(index));
 check('Reading gloss verb forms', /verbFormsFor/.test(index) && /過去分詞形/.test(index));
@@ -128,6 +128,7 @@ check('Chronologia retrieval', /start-timeline-recall/.test(engine) && /soc\.his
 check('Practice and exam test separated', /trackType: 'practice'/.test(engineV2) && /trackType: 'test'/.test(engineV2) && /test-next/.test(engineV2));
 check('Three Aichi exam levels', /公立標準/.test(engineV2) && /難関公立/.test(engineV2) && /旭丘レベル/.test(engineV2));
 check('Independent exam route', /state\.route !== 'exam'/.test(engineV22) && /function examHTML/.test(engineV22));
+check('Exam-unit filter enforced', /scope: 'custom', units: checked/.test(engineV22) && /if \(!candidates\.length\) return null/.test(engineV22) && /examUnit/.test(engineV22));
 check('R8 Japanese exact macrostructure', /R8国語4大問・22点/.test(engineV22) && /大問二/.test(engineV22) && /部分点/.test(engineV22));
 check('10,000-word index literal count', /count:10000/.test(vocab10000) && /CC BY 4\.0/.test(vocab10000));
 check('Forgetting model disclosure', /Ebbinghaus-inspired/.test(engineV2) && /exp\(-t\/S\)/.test(engineV2));

@@ -52,7 +52,7 @@ const fresh = makeRuntime();
 try {
   const aa = fresh.__aa;
   check('初期画面描画', fresh.document.querySelector('h1')?.textContent === '旭丘AA Learning OS');
-  check('v2.2.0・schema 4', aa.version === '2.2.0' && aa.schema === 4, `${aa.version}/${aa.schema}`);
+  check('v2.2.1・schema 4', aa.version === '2.2.1' && aa.schema === 4, `${aa.version}/${aa.schema}`);
   check('iPhone safe-area設計', /viewport-fit=cover/.test(index) && /safe-area-inset-(?:top|bottom)/.test(index));
   check('レスポンシブ設計', /@media\(max-width:700px\)/.test(index) && /grid-template-columns:1fr/.test(index));
 
@@ -64,6 +64,23 @@ try {
   check('独立入試ページ', fresh.document.querySelector('main')?.textContent.includes('出題設定') && fresh.document.querySelector('[data-action="start-exam-v22"]'));
   check('入試3段階コース', fresh.document.querySelectorAll('[data-action="exam-level"]').length === 3);
   check('教科・範囲・時間・問題量', ['exam-subject','exam-scope','exam-time','exam-length'].every(x => fresh.document.querySelector(`[data-action="${x}"]`)));
+  const examSubject = fresh.document.querySelector('[data-action="exam-subject"]');
+  examSubject.value = 'math';
+  examSubject.dispatchEvent(new fresh.Event('change', { bubbles: true }));
+  const mathUnitChecks = [...fresh.document.querySelectorAll('[data-action="exam-unit"]')];
+  for (const input of mathUnitChecks) input.checked = input.value === 'probability';
+  const probabilityCheck = mathUnitChecks.find(input => input.value === 'probability');
+  probabilityCheck.dispatchEvent(new fresh.Event('change', { bubbles: true }));
+  check('単元変更で選択範囲へ自動切替', aa.state.ui.examConfig.scope === 'custom' && aa.state.ui.examConfig.units.length === 1 && aa.state.ui.examConfig.units[0] === 'probability', JSON.stringify(aa.state.ui.examConfig));
+  const savedUnitState = fresh.localStorage.getItem(aa.storeKey);
+  check('単元設定を同じ保存キーへ永続化', JSON.parse(savedUnitState).ui.examConfig.units.join(',') === 'probability' && aa.storeKey === 'asahi_learning_os_v1');
+  const persistedUnitRuntime = makeRuntime({ [aa.storeKey]: savedUnitState });
+  try {
+    check('再読込後も単元設定を復元', persistedUnitRuntime.__aa.state.ui.examConfig.scope === 'custom' && persistedUnitRuntime.__aa.state.ui.examConfig.units.join(',') === 'probability');
+  } finally {
+    persistedUnitRuntime.happyDOM.abort();
+  }
+  check('選択中単元を設定画面に表示', fresh.document.querySelector('main')?.textContent.includes('現在の出題対象：確率'));
   aa.setRoute('timeline');
   check('年表UI維持', !!fresh.document.querySelector('[data-action="timeline-search"]') && !!fresh.document.querySelector('[data-action="toggle-year"]') && !!fresh.document.querySelector('[data-action="toggle-event"]'));
   check('Chronologia想起導線', !!fresh.document.querySelector('[data-action="start-timeline-recall"]'));
@@ -186,6 +203,23 @@ try {
     const queue = aa.v22.structuredQueue(subject,3,config);
     check(`${subject}本番構成22点`, queue.length === count && queue.reduce((n,q)=>n+q.points,0) === 22, `${queue.length}/${queue.reduce((n,q)=>n+q.points,0)}`);
   }
+
+  const unitCases = [
+    ['english', 'grammar'], ['japanese', 'kanbun'], ['japanese', 'literary'],
+    ['math', 'geometry'], ['science', 'experiment'], ['social', 'data']
+  ];
+  for (const [subject, unit] of unitCases) {
+    const config = aa.v22.normalizeConfig({ subject, level: 3, scope: 'custom', units: [unit], timeMin: 45, length: 'full' });
+    const queue = aa.v22.structuredQueue(subject, 3, config);
+    check(`${subject}/${unit}単元限定`, queue.length > 0 && queue.every(q => q.examUnit === unit), `${queue.length}問 / ${[...new Set(queue.map(q => q.examUnit))].join(',')}`);
+  }
+
+  const geometryConfig = aa.v22.normalizeConfig({ subject:'math', level:3, scope:'custom', units:['geometry'], timeMin:20, length:'mini' });
+  aa.v22.startExam(geometryConfig);
+  check('開始後セッションへ単元設定を反映', aa.state.session.examConfig.scope === 'custom' && aa.state.session.examConfig.units.join(',') === 'geometry' && aa.state.session.queue.every(q => q.examUnit === 'geometry'));
+  check('試験画面に出題単元を表示', fresh.document.querySelector('main')?.textContent.includes('単元：平面・空間図形'));
+  aa.v22.startExam({ subject:'english', level:3, scope:'custom', units:['grammar'], timeMin:20, length:'mini' });
+  check('英語単元指定も専用セッションで開始', aa.state.session.subject === 'english' && aa.state.session.examConfig.units.join(',') === 'grammar' && aa.state.session.queue.every(q => q.examUnit === 'grammar'));
 
   aa.state = aa.defaultState(); aa.save();
   aa.v22.startExam({subject:'japanese',level:3,scope:'full',units:aa.v22.units.japanese.map(x=>x[0]),timeMin:45,length:'full'});

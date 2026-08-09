@@ -1,13 +1,13 @@
-# 旭丘AA Learning OS v2.2.0 公開・最終監査
+# 旭丘AA Learning OS v2.2.1 公開・最終監査
 
 監査日: 2026-08-09  
-公開コミット: `1fec7ba2bcb1d4435704cc60b626ad44653e5256`  
+公開コミット: 公開後に記録
 公開URL: `https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/`
 
 ## 結論
 
-- 静的PWA・構成監査: 67 / 67 PASS
-- 操作・移行after-check: 74 / 74 PASS
+- 静的PWA・構成監査: 68 / 68 PASS
+- 操作・移行after-check: 87 / 87 PASS
 - アプリ内総合QA: 全件PASS
 - v2問題ストレステスト: 640問、異常0
 - 旧版互換ストレステスト: 720問、異常0
@@ -23,6 +23,8 @@
 - 国語R8型: 4大問・21解答操作・22点、複数選択と部分点 PASS
 - 数学: 3大問・15解答欄・22点、理科・社会: 各6大問・20解答欄・22点 PASS
 - 教科・3難度・範囲・単元・時間・問題量の独立設定 PASS
+- 単元変更時の選択範囲自動切替、同一保存キーへの永続化、再読込復元 PASS
+- 英語・国語・数学・理科・社会の単元限定キューと試験画面の対象単元表示 PASS
 - 教育基本語彙10,000件の件数・語/読み一意性・ライセンス表示 PASS
 - Chronologia 6.1完全版: DATA 385件、6モード、参考書型解説、続き保存、独立保存領域 PASS
 - Chronologia原本からの変更はAA OSへ戻るリンクとsafe-area対応CSSだけ。追加部分を除いたSHA-256が原本と完全一致
@@ -53,6 +55,8 @@
 | 記録 | practice | testとして別集計 |
 
 LEVEL 1公立標準、LEVEL 2難関公立、LEVEL 3旭丘を分離した。教科、全範囲・現在の既習範囲・選択単元、単元、5〜90分、ミニ・ハーフ・本番構成を保存可能。高校数学の先取り5項目はLEVEL 3の検算・短縮手段だけに限定した。
+
+単元チェックの変更は自動で「選択単元のみ」へ切り替える。国語・英語の固定構成にも単元フィルターを通し、数学・理科・社会で選択単元の問題が少ない場合も全分野へフォールバックしない。設定値、生成された問題の `examUnit`、試験画面表示、保存後の再読込を一貫して検査した。
 
 ## 3. 国語
 
@@ -143,7 +147,7 @@ LEVEL 1公立標準、LEVEL 2難関公立、LEVEL 3旭丘を分離した。教�
 - 2,500回答、技能、復習項目、途中問題、4567ms、scrollY 137の移行を確認
 - JSON Export / Import / Merge、状態指紋を確認
 - v2.1.2の導入履歴フィールドは既存履歴から派生・追加し、保存キーとschema versionを維持
-- v2.2.0でも保存キー `asahi_learning_os_v1` とschema 4を変更せず、入試設定を追加
+- v2.2.1でも保存キー `asahi_learning_os_v1` とschema 4を変更せず、入試単元設定を同じ領域へ保存・復元
 
 ## 10. PWA・GitHub Pages
 
@@ -178,9 +182,9 @@ LEVEL 1公立標準、LEVEL 2難関公立、LEVEL 3旭丘を分離した。教�
 
 ## 公開URL確認
 
-- index.html: HTTP 200、v2.2.0、監査済みファイルと完全一致
+- index.html: 公開後にHTTP 200、v2.2.1、監査済みファイルとの一致を再確認
 - chronologia.html: HTTP 200、269,333 bytes、Chronologia 6.1完全版と互換追加だけを含む
-- sw.js: HTTP 200、v2.2.0、Chronologiaを含むapp shell
+- sw.js: 公開後にHTTP 200、v2.2.1、Chronologiaを含むapp shellを再確認
 - learning-engine-v22.js / .css: HTTP 200、監査済みファイルと完全一致
 - japanese-vocabulary-10000.js: HTTP 200、514,674 bytes、10,000件
 - ローカルブラウザ相当ではLEVEL 1〜3、演習と独立入試、試験中の採点非表示、終了後全問解説、忘却予測、途中テスト復元を実操作確認
