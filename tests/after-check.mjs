@@ -24,6 +24,7 @@ window.__aa = {
   backupPayload, importJSON, mergeState, qaRun, planKanjiQueue,
   lexicalCoverageProfile, preteachPlan, overallReadiness, glossLookup, verbFormsFor,
   generateReading, fullReadingTranslation, importantGrammarNotes, hash,
+  registerGlossWord, recordLexicalSignal, lexicalPosterior,
   v2: globalThis.AA_V2_TEST_API,
   readingJa: READING_JA,
   version: APP_VERSION, schema: SCHEMA_VERSION, storeKey: STORE_KEY
@@ -114,6 +115,17 @@ try {
   aa.state.ui.modal = { type: 'gloss', info: aa.glossLookup('changed') }; aa.render();
   const formModal = fresh.document.querySelector('.modal')?.textContent || '';
   check('単語モーダル3形式表示', formModal.includes('原形') && formModal.includes('過去形') && formModal.includes('過去分詞形') && formModal.includes('change'));
+
+  aa.state = aa.defaultState();
+  const evidenceRead = { id: 'read-a', title: 'A', passage: 'The students changed the plan.', glossedWords: [] };
+  const evidenceInfo = aa.glossLookup('changed');
+  aa.registerGlossWord(evidenceRead, evidenceInfo);
+  check('未知語1回目は仮記録', aa.state.profile.lexicalEvidence.change?.lookups === 1 && !aa.state.profile.unknownWords.change);
+  aa.recordLexicalSignal(evidenceInfo, 'lookup', { id: 'read-b', title: 'B', passage: 'The plan changed again.' });
+  check('別文脈の再検索で保存', !!aa.state.profile.unknownWords.change && aa.state.profile.unknownWords.change.contexts.length === 2);
+  const beforeKnown = aa.lexicalPosterior(evidenceInfo).known;
+  aa.recordLexicalSignal(evidenceInfo, 'known', evidenceRead);
+  check('既知確認で誤登録解除', !aa.state.profile.unknownWords.change && aa.state.profile.knownWords.change === true && aa.lexicalPosterior(evidenceInfo).known > beforeKnown);
 
   const lexical = aa.lexicalCoverageProfile('The students compared the result and changed the plan as a result.');
   const taught = aa.preteachPlan(lexical, .94, 14);
