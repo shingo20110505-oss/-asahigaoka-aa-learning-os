@@ -91,7 +91,7 @@
   }
 
   const AA2_MATH_FORMULA_AREAS = new Set([
-    'number', 'algebra', 'equation', 'function', 'geometry', 'measure', 'probability', 'statistics'
+    'number', 'algebra', 'equation', 'function', 'geometry', 'measure', 'probability', 'statistics', 'advanced'
   ]);
   function aa2SubjectRows(subject) {
     return subject === 'math'
@@ -151,12 +151,70 @@
     level = clamp(Number(level) || 1, 1, 3);
     const cap = level === 1 ? 7 : level === 2 ? 9 : 11;
     return aa2SubjectRows(subject)
-      .filter(row => row.difficulty <= cap)
+      .filter(row => row.difficulty <= cap && !(row.area === 'advanced' && level < 3))
       .map(row => ({ row, score: aa2Priority(row, level, futureDays) }))
       .sort((a, b) => b.score - a.score);
   }
 
+  const AA2_SOCIAL_THEMES = [
+    ['terrain', /扇状地|三角州|リアス|海岸|河口|地形/],
+    ['agriculture', /栽培|農業|農産|食料|適地適作|フードマイレージ|自給率/],
+    ['climate-map', /季節風|雨温図|気温|降水|気候|標準時|子午線|ハザード/],
+    ['industry-region', /工業|太平洋ベルト|過疎|人口|立地|都市|地域統合|モノカルチャー/],
+    ['constitution-power', /憲法|三権|国会|衆議院|内閣|裁判所|違憲|立法|行政|司法/],
+    ['local-rights', /地方自治|直接請求|人権|権利|住民|選挙/],
+    ['market-money', /需要|供給|市場|日本銀行|金融|価格/],
+    ['tax-welfare-labor', /税|累進|社会保障|労働|所得|福祉/],
+    ['international', /国際連合|安全保障|持続可能|SDGs|EU|国際目標/]
+  ];
+  function aa2SocialTheme(row) {
+    const text = [row.prompt, row.answer, row.explanation].join(' ');
+    return AA2_SOCIAL_THEMES.find(([, pattern]) => pattern.test(text))?.[0] || row.area;
+  }
+  function aa2HistoryKind(row) {
+    if (!String(row.id).startsWith('history-')) return '';
+    return String(row.id).split('-').slice(0, 2).join('-');
+  }
+  function aa2HistoryYear(row) {
+    const hit = [row.prompt, row.answer, row.explanation].join(' ').match(/(?:紀元前)?(\d{2,4})年/);
+    return hit ? Number(hit[1]) : null;
+  }
+  function aa2Bigrams(value) {
+    const text = String(value).replace(/[\s\p{P}\p{S}]/gu, '');
+    const out = new Set();
+    for (let i = 0; i < text.length - 1; i++) out.add(text.slice(i, i + 2));
+    return out;
+  }
+  function aa2TextSimilarity(a, b) {
+    const left = aa2Bigrams([a.prompt, a.answer, a.explanation].join(''));
+    const right = aa2Bigrams([b.prompt, b.answer, b.explanation].join(''));
+    let overlap = 0;
+    for (const token of left) if (right.has(token)) overlap++;
+    return overlap / Math.max(1, left.size + right.size - overlap);
+  }
+  function aa2SocialDistractors(row) {
+    const rows = aa2SubjectRows('social').filter(x => x.id !== row.id && String(x.answer) !== String(row.answer));
+    const kind = aa2HistoryKind(row), year = aa2HistoryYear(row), theme = aa2SocialTheme(row);
+    const scored = rows.map(candidate => {
+      const candidateKind = aa2HistoryKind(candidate), candidateYear = aa2HistoryYear(candidate);
+      let score = candidate.area === row.area ? 220 : -200;
+      if (kind) score += candidateKind === kind ? 560 : -900;
+      if (kind && year !== null && candidateYear !== null) score += Math.max(0, 260 - Math.abs(year - candidateYear) * 2.2);
+      if (!kind && aa2SocialTheme(candidate) === theme) score += 280;
+      score += aa2TextSimilarity(row, candidate) * 180;
+      score -= Math.abs(Number(row.difficulty || 5) - Number(candidate.difficulty || 5)) * 9;
+      return { candidate, score: score + Math.random() * 5 };
+    }).sort((a, b) => b.score - a.score);
+    return scored.slice(0, 3).map(x => x.candidate);
+  }
+  function aa2SocialDistractorType(row, candidate) {
+    if (aa2HistoryKind(row) && aa2HistoryKind(row) === aa2HistoryKind(candidate)) return 'near_chronology';
+    if (candidate.area === row.area && aa2SocialTheme(candidate) === aa2SocialTheme(row)) return 'same_theme';
+    return 'same_domain';
+  }
+
   function aa2UniqueDistractors(row) {
+    if (row.subject === 'social') return aa2SocialDistractors(row);
     const subjectRows = aa2SubjectRows(row.subject);
     const sameArea = subjectRows.filter(x => x.id !== row.id && x.area === row.area);
     const other = subjectRows.filter(x => x.id !== row.id && x.area !== row.area);
@@ -185,9 +243,11 @@
       { text: String(row.answer), ok: true, reason: explanation, distractorType: null },
       ...aa2UniqueDistractors(row).map(x => ({
         text: String(x.answer), ok: false,
-        reason: 'これは主に「' + x.prompt + '」に対応する説明で、設問の「' + row.prompt + '」とは一致しません。',
-        error: row.subject === 'social' ? 'source_mismatch' : 'concept_confusion',
-        distractorType: row.subject === 'social' ? 'source_mismatch' : 'concept_confusion'
+        reason: row.subject === 'social'
+          ? '同じ時代・地域・テーマで混同しやすい「' + x.prompt + '」に対応する内容です。設問の「' + row.prompt + '」とは、年代・対象・因果のいずれかが一致しません。'
+          : 'これは主に「' + x.prompt + '」に対応する説明で、設問の「' + row.prompt + '」とは一致しません。',
+        error: row.subject === 'social' ? aa2SocialDistractorType(row, x) : 'concept_confusion',
+        distractorType: row.subject === 'social' ? aa2SocialDistractorType(row, x) : 'concept_confusion'
       }))
     ]);
     return {
@@ -646,7 +706,7 @@
   settingsHTML = function () {
     let html = aa2BaseSettingsHTML();
     const source = '<div class="sp12"></div><section class="card"><div class="eyebrow">OFFICIAL BASIS</div><h3 class="h3">愛知県入試への適合</h3>' +
-      '<p class="sub">令和8年度の愛知県公表問題を基準に、国語4大問、理科6資料実験群、社会6資料統合群の処理技能をモデル化しています。数学はユーザー設定により、中学範囲の公式・法則の暗記だけを出題します。</p>' +
+      '<p class="sub">令和8年度の愛知県公表問題を基準に、国語4大問、理科6資料実験群、社会6資料統合群の処理技能をモデル化しています。数学は公式暗記だけを出題し、旭丘レベルでは高校入試の時短・検算に使える高校公式も選べます。</p>' +
       '<a class="btn ghost" href="' + AA2_OFFICIAL_URL + '" target="_blank" rel="noopener">愛知県公式問題ページ</a>' +
       '<div class="tiny">公式問題そのものは転載せず、構成・技能・時間条件を使ったオリジナル問題です。旭丘の公式最低点・合格率は表示しません。</div></section>';
     return html.replace(/<\/main>/, source + '</main>');
@@ -682,7 +742,7 @@
     const report = state.qa.report || [];
     const add = (name, ok, detail) => report.push({ name, ok, detail });
     try {
-      add('v2教科知識幅', AA2_BANKS.japanese.length >= 140 && AA2_BANKS.math.length >= 40 && AA2_BANKS.science.length >= 60 && AA2_BANKS.social.length >= 330,
+      add('v2教科知識幅', AA2_BANKS.japanese.length >= 140 && AA2_BANKS.math.length >= 59 && AA2_BANKS.science.length >= 60 && AA2_BANKS.social.length >= 330,
         '国語' + AA2_BANKS.japanese.length + '・数学' + AA2_BANKS.math.length + '・理科' + AA2_BANKS.science.length + '・社会' + AA2_BANKS.social.length);
       const jaAreas = new Set(AA2_BANKS.japanese.map(x => x.area));
       add('国語 大問二系統', ['classical', 'kanbun', 'idiom', 'yojijukugo', 'kanji'].every(x => jaAreas.has(x)),
@@ -690,8 +750,20 @@
       const scienceAreas = new Set(AA2_BANKS.science.map(x => x.area));
       add('理科4領域', ['biology', 'chemistry', 'physics', 'earth'].every(x => scienceAreas.has(x)), [...scienceAreas].join(' / '));
       const formulaRows = aa2SubjectRows('math');
-      add('数学公式暗記限定', formulaRows.length === 33 && formulaRows.every(x => AA2_MATH_FORMULA_AREAS.has(x.area)),
-        '中学数学の公式・法則33項目のみ');
+      const advancedRows = formulaRows.filter(x => x.area === 'advanced');
+      add('数学公式暗記限定', formulaRows.length === 57 && advancedRows.length === 24 && formulaRows.every(x => AA2_MATH_FORMULA_AREAS.has(x.area)),
+        '中学33項目＋高校入試に使える高校公式24項目');
+      add('高校公式レベル3限定', !aa2Rank('math', 1).some(x => x.row.area === 'advanced') && !aa2Rank('math', 2).some(x => x.row.area === 'advanced') && aa2Rank('math', 3).some(x => x.row.area === 'advanced'),
+        'レベル1・2は中学公式、レベル3は高校公式を含む');
+
+      let socialDistractorBad = 0;
+      const socialSamples = AA2_BANKS.social.filter(x => x.id.startsWith('history-year-')).slice(0, 30);
+      for (const row of socialSamples) {
+        const q = aa2MakeKnowledgeQuestion(row);
+        if (q.choices.some(c => !c.ok && c.distractorType !== 'near_chronology') || q.choices.some(c => !c.ok && !/年$/.test(c.text))) socialDistractorBad++;
+      }
+      add('社会の紛らわしい誤答', socialSamples.length >= 20 && socialDistractorBad === 0,
+        '歴史年号は近接年代・同形式、地理公民は同テーマを優先');
 
       let bad = 0;
       for (const subject of ['japanese', 'math', 'science', 'social']) {
