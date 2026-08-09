@@ -1,4 +1,4 @@
-/* 旭丘AA Learning OS v2.2.3
+/* 旭丘AA Learning OS v2.2.4
    独立「入試対策」ページ・愛知県最新公開問題の大問構成・国語原創問題 */
 (function () {
   'use strict';
@@ -20,7 +20,7 @@
     math: [
       ['number', '数と計算の公式・法則'], ['algebra', '展開・因数分解の公式'], ['equation', '方程式の法則'],
       ['function', '関数の公式'], ['geometry', '図形の定理・面積・体積'], ['probability', '確率の公式'],
-      ['statistics', 'データの公式']
+      ['statistics', 'データの公式'], ['advanced', '高校公式（入試の時短・検算）']
     ],
     science: [
       ['biology', '生命'], ['chemistry', '化学'], ['physics', '物理'], ['earth', '地学'], ['experiment', '実験・資料統合']
@@ -37,7 +37,7 @@
     },
     math: {
       number: ['number'], algebra: ['algebra'], equation: ['equation'], function: ['function'],
-      geometry: ['geometry', 'measure'], probability: ['probability'], statistics: ['statistics']
+      geometry: ['geometry', 'measure'], probability: ['probability'], statistics: ['statistics'], advanced: ['advanced']
     },
     science: {
       biology: ['biology'], chemistry: ['chemistry'], physics: ['physics'], earth: ['earth'],
@@ -300,6 +300,22 @@
     state.stats.sessions++; state.route = 'study'; save(); render(); window.scrollTo(0, 0); startTicker();
   }
 
+  function aa22AdvancedMathQueue(count = 15) {
+    return shuffle(API.banks.math.filter(row => row.area === 'advanced'))
+      .slice(0, Math.max(1, Math.min(Number(count) || 15, 24)))
+      .map(row => {
+        const q = API.makeQuestion(row, false);
+        q.courseLevel = 3;
+        q.context = 'advanced-entrance-formula';
+        q.examUnit = 'advanced';
+        return q;
+      });
+  }
+
+  function aa22StartAdvancedMathFormulas() {
+    return API.startPractice('math', 'deep', 3, aa22AdvancedMathQueue(15));
+  }
+
   function aa22EnglishUnitQueue(config) {
     const queue = [];
     for (const unit of config.units) {
@@ -363,7 +379,22 @@
         let points = 1;
         if (subject === 'math') points = (globalIndex >= 8 ? 2 : 1);
         if ((subject === 'science' || subject === 'social') && globalIndex >= 18) points = 2;
-        const q = aa22BankQuestion(subject, level, allowed, globalIndex, big, '問' + (i + 1), points);
+        let questionAreas = allowed;
+        if (subject === 'math') {
+          const coreGroups = [
+            ['number', 'algebra', 'equation'],
+            ['function', 'probability', 'statistics'],
+            ['geometry', 'measure']
+          ];
+          const advancedSlots = new Set([4, 9, 13, 14]);
+          const useAdvanced = level === 3 && allowed.includes('advanced') && advancedSlots.has(globalIndex);
+          questionAreas = useAdvanced
+            ? ['advanced']
+            : coreGroups[blueprint.indexOf(big)].filter(area => allowed.includes(area));
+          if (!questionAreas.length) questionAreas = allowed.filter(area => area !== 'advanced');
+          if (!questionAreas.length) questionAreas = allowed;
+        }
+        const q = aa22BankQuestion(subject, level, questionAreas, globalIndex, big, '問' + (i + 1), points);
         if (q) queue.push(aa22TagUnit(q, subject, aa22UnitForArea(subject, q.source?.area, config.units)));
       }
     }
@@ -550,7 +581,7 @@
     const selectedLabels = c.scope === 'full' ? ['全単元'] : c.units.map(unit => aa22UnitLabel(c.subject, unit));
     const blueprintHeading = c.subject === 'math' ? '数学・公式暗記の構成' : '令和8年度公開問題を基準にした構成';
     const blueprintNote = c.subject === 'math'
-      ? '数学は中学範囲の公式・法則の暗記専用です。計算問題・文章題・高校内容は出題しません。点数は非公式の22点換算です。'
+      ? '数学は公式・法則の暗記専用で、計算問題・文章題は出題しません。レベル1・2は中学公式のみ、レベル3では高校入試の時短・検算に使える高校公式も選べます。高校公式は中学校の正式な学習範囲外なので、記述や証明では中学知識からの説明もできるようにしてください。点数は非公式の22点換算です。'
       : '問題文・文章・資料はすべて本アプリ作成。公開問題の転載ではなく、最新の大問構成・解答形式・時間条件を学習用にモデル化しています。';
     return layout('<section class="card examHero"><div class="eyebrow">AICHI EXAM LAB</div><h2 class="h2">入試対策</h2><p class="sub">通常演習とは完全に分離。試験中は正誤・解説を出さず、終了後に配点・誤答理由・単元をまとめて確認します。</p></section>' +
       '<div class="sp12"></div><section class="card"><h3 class="h3">1. 難度</h3>' + aa22CourseCards() + '</section>' +
@@ -562,7 +593,7 @@
       '<div class="wide"><label class="strong">単元</label><div class="unitGrid">' + units.map(([id, label]) => '<label class="unitCheck"><input type="checkbox" data-action="exam-unit" value="' + id + '" ' + (c.units.includes(id) ? 'checked' : '') + '><span>' + esc(label) + '</span></label>').join('') + '</div><div class="tiny">単元を変更すると、出題範囲は自動で「選択単元のみ」になります。</div></div></div>' +
       '<div class="notice"><b>現在の出題対象：</b>' + selectedLabels.map(esc).join('・') + '</div>' +
       '<div class="sp12"></div><div class="actions"><button class="btn primary" data-action="start-exam-v22">この設定で試験開始</button></div>' +
-      '<div class="tiny">「現在の既習範囲」「選択単元のみ」は、上のチェックだけを出題範囲として使います。単元別では本番の大問配列より選択単元を優先します。' + (c.subject === 'math' ? '数学はすべての難度で中学範囲の公式・法則の暗記だけを出題し、計算・文章題・高校内容は出題しません。' : '') + '</div></section>' +
+      '<div class="tiny">「現在の既習範囲」「選択単元のみ」は、上のチェックだけを出題範囲として使います。単元別では本番の大問配列より選択単元を優先します。' + (c.subject === 'math' ? '数学は公式暗記だけです。レベル1・2は中学公式、旭丘レベルでは高校公式を追加します。高校公式は入試の時短・検算用で、中学校の正式範囲外です。' : '') + '</div></section>' +
       '<div class="sp12"></div><section class="card"><h3 class="h3">' + blueprintHeading + '</h3><div class="tableWrap"><table class="blueprintTable"><thead><tr><th>区分</th><th>処理する力</th><th>構成</th></tr></thead><tbody>' + rows.map(r => '<tr><td><b>' + esc(r[0]) + '</b></td><td>' + esc(r[1]) + '</td><td>' + esc(r[2]) + '</td></tr>').join('') + '</tbody></table></div>' +
       '<p class="tiny">' + blueprintNote + '</p><a class="btn ghost" href="' + OFFICIAL_URL + '" target="_blank" rel="noopener">愛知県公式問題ページ</a></section>' +
       (c.subject === 'japanese' ? aa22VocabIndexHTML() : ''));
@@ -588,8 +619,8 @@
     html = html.replace(/<div class="sp12"><\/div><section class="card hero"><div class="eyebrow">AICHI EXAM COURSE[\s\S]*?<\/section>(?=<\/main>)/, '');
     html = html.replace('<button class="btn ghost" data-route="timeline">歴史年表</button>', '<a class="btn ghost" href="./chronologia.html">歴史年表</a>');
     html = html.replace('<button class="btn primary" data-action="start-reading-simulator">愛知県英語・筆記40分</button>', '<button class="btn primary" data-action="start-reading-simulator">愛知県英語・筆記40分</button><button class="btn ghost" data-action="start-graph-reading">図表＋レポート類題</button>');
-    html = html.replace('代数・関数・図形・確率', '中学数学の公式・法則だけ');
-    html = html.replace('>数学演習</button>', '>数学公式暗記</button>');
+    html = html.replace('代数・関数・図形・確率', '中学公式＋高校受験で使える高校公式');
+    html = html.replace('>数学演習</button>', '>数学公式暗記</button><button class="btn ghost" data-action="start-advanced-math-formulas">高校公式暗記</button>');
     const launch = '<div class="sp12"></div><section class="card"><div class="chronologiaLaunch"><div><div class="eyebrow">SEPARATE EXAM MODE</div><h3 class="h3">入試対策は独立ページへ</h3><p class="sub">演習の即時解説と、本番型テストの採点記録を混ぜません。</p></div><button class="btn primary" data-route="exam">入試対策を開く</button></div></section>' +
       '<div class="sp12"></div><section class="card"><div class="chronologiaLaunch"><div><div class="eyebrow">CHRONOLOGIA 6.1</div><h3 class="h3">歴史年表・同時代史</h3><p class="sub">385件の統合年表、クイズ、並べ替え、弱点復習、参考書型解説を別画面で使います。</p></div><a class="btn gold" href="./chronologia.html">年表を開く</a></div></section>';
     return html.replace(/<\/main>/, launch + '</main>');
@@ -643,6 +674,7 @@
       state.ui.examConfig = aa22NormalizeConfig({ ...aa22Config(), level: Number(el.dataset.level) }); save(); render(); return;
     }
     if (action === 'start-graph-reading') return aa22StartGraphPractice();
+    if (action === 'start-advanced-math-formulas') return aa22StartAdvancedMathFormulas();
     if (action === 'start-exam-v22' || action === 'start-aichi-test') return aa22StartExam(aa22Config());
     if (action === 'test-next') return aa22FinalizeCurrent(true);
     if (action === 'repeat-aichi-test') return aa22StartExam(state.session?.examConfig || aa22Config());
@@ -695,7 +727,11 @@
       const mathQs = aa22StructuredQueue('math', 3, mathCfg);
       const formulaAreas = new Set(API.mathFormulaAreas);
       add('数学は公式暗記だけ', mathQs.length === 15 && mathQs.every(q => formulaAreas.has(q.source?.area) && q.stem.includes('公式・法則') && q.skills.every(s => s.id === 'math.formula.recall')),
-        '計算・文章題・高校内容なし');
+        '計算・文章題なし／中学公式＋レベル3高校公式');
+      const l1Math = aa22StructuredQueue('math', 1, aa22DefaultConfig('math'));
+      const advancedMath = aa22AdvancedMathQueue(15);
+      add('高校公式の単元反映', EXAM_UNITS.math.some(x => x[0] === 'advanced') && !l1Math.some(q => q.source?.area === 'advanced') && mathQs.some(q => q.source?.area === 'advanced') && advancedMath.every(q => q.source?.area === 'advanced'),
+        'レベル1・2は非表示／旭丘レベル・専用暗記で出題');
       for (const [subject, unit] of [['english', 'grammar'], ['japanese', 'kanbun'], ['math', 'geometry'], ['science', 'experiment'], ['social', 'data']]) {
         const cfg = aa22NormalizeConfig({ subject, level: 3, scope: 'custom', units: [unit], timeMin: 20, length: 'mini' });
         const qs = aa22StructuredQueue(subject, 3, cfg);
@@ -714,7 +750,8 @@
   globalThis.AA_V22_TEST_API = {
     units: EXAM_UNITS, japaneseExam: aa22JapaneseExam, structuredQueue: aa22StructuredQueue,
     normalizeConfig: aa22NormalizeConfig, startExam: aa22StartExam, allowedAreas: aa22AllowedAreas,
-    vocabIndex: window.AA_JA_VOCAB_10000, graphReadingSet: aa22GraphReadingSet
+    vocabIndex: window.AA_JA_VOCAB_10000, graphReadingSet: aa22GraphReadingSet,
+    advancedMathQueue: aa22AdvancedMathQueue
   };
 
   save(); render();
