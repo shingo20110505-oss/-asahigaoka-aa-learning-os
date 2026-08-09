@@ -83,6 +83,7 @@ check('Cache version matches app version', /APP_VERSION='2\.1\.0'/.test(index) &
 check('Reading gloss verb forms', /verbFormsFor/.test(index) && /過去分詞形/.test(index));
 check('Reading full translation and grammar review', /fullReadingTranslation/.test(index) && /importantGrammarNotes/.test(index) && /全文和訳/.test(index));
 check('English-only reading choices', /readingQuestionSetBeforeEnglishChoices/.test(index) && /englishReadingChoice/.test(index));
+check('Bayesian unknown-word evidence', /lexicalEvidenceState/.test(index) && /lexicalPosterior/.test(index) && /gloss-unknown/.test(index));
 check('v1.5 engine precached', sw.includes("learning-engine-v15.js"));
 check('v2 files precached', sw.includes("curriculum-v2-data.js") && sw.includes("learning-engine-v2.js"));
 check('Stable storage key preserved', /STORE_KEY='asahi_learning_os_v1'/.test(index) && /_pre_v15/.test(engine));
