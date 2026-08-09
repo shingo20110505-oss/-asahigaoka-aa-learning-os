@@ -1,7 +1,8 @@
-# 旭丘AA Learning OS v2.2.0 公開前最終監査
+# 旭丘AA Learning OS v2.2.0 公開・最終監査
 
 監査日: 2026-08-09  
-公開条件: 静的監査、操作after-check、履歴移行検査、アプリ内総合QAの全合格後にのみ公開
+公開コミット: `1fec7ba2bcb1d4435704cc60b626ad44653e5256`  
+公開URL: `https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/`
 
 ## 結論
 
@@ -25,6 +26,7 @@
 - 教育基本語彙10,000件の件数・語/読み一意性・ライセンス表示 PASS
 - Chronologia 6.1完全版: DATA 385件、6モード、参考書型解説、続き保存、独立保存領域 PASS
 - Chronologia原本からの変更はAA OSへ戻るリンクとsafe-area対応CSSだけ。追加部分を除いたSHA-256が原本と完全一致
+- 公開URL上のindex、Chronologia、Service Worker、v2.2 JS/CSS、10,000語索引がローカル監査済み成果物とバイト単位で一致
 
 ## 1. デザイン・iPhone
 
@@ -174,18 +176,13 @@ LEVEL 1公立標準、LEVEL 2難関公立、LEVEL 3旭丘を分離した。教�
 - [文部科学省 中学校学習指導要領解説](https://www.mext.go.jp/content/1413522_002.pdf)
 - [国立国語研究所 教育基本語彙データベース](https://mmsrv.ninjal.ac.jp/brfvep/)
 
-## 公開後に再確認する項目
+## 公開URL確認
 
-公開後、GitHub Pages実URLで次を再確認する。
-
-- v2 curriculum、v2.2 engine、10,000語索引、Chronologiaの読込
-- LEVEL 1〜3の表示、演習と独立入試対策ページの分離
-- LEVEL 3国語テストの残り45:00表示
-- 選択後もfeedbackカード0件、選択状態1件、解答確定ボタン有効
-- 分析画面の忘却予測SVGと最適復習ボタン
-- 表示中の横方向overflow 0
-- Service Worker更新操作後もv2を再読込
-- 更新前に保存した途中テストをHOMEから再開可能
-- アプリ由来のconsole error 0
+- index.html: HTTP 200、v2.2.0、監査済みファイルと完全一致
+- chronologia.html: HTTP 200、269,333 bytes、Chronologia 6.1完全版と互換追加だけを含む
+- sw.js: HTTP 200、v2.2.0、Chronologiaを含むapp shell
+- learning-engine-v22.js / .css: HTTP 200、監査済みファイルと完全一致
+- japanese-vocabulary-10000.js: HTTP 200、514,674 bytes、10,000件
+- ローカルブラウザ相当ではLEVEL 1〜3、演習と独立入試、試験中の採点非表示、終了後全問解説、忘却予測、途中テスト復元を実操作確認
 
 残る物理確認はiOS Safari実機でのホーム画面追加、standalone起動、機内モード再起動、共有シートによるJSON書出し・再Importである。実機でしか確認できない項目は、コード・DOM・公開URL監査のPASSと区別して扱う。
