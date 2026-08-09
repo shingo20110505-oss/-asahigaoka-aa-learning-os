@@ -7,6 +7,9 @@ const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const engine = fs.readFileSync(path.join(root, 'learning-engine-v15.js'), 'utf8');
 const curriculum = fs.readFileSync(path.join(root, 'curriculum-v2-data.js'), 'utf8');
 const engineV2 = fs.readFileSync(path.join(root, 'learning-engine-v2.js'), 'utf8');
+const engineV22 = fs.readFileSync(path.join(root, 'learning-engine-v22.js'), 'utf8');
+const vocab10000 = fs.readFileSync(path.join(root, 'japanese-vocabulary-10000.js'), 'utf8');
+const chronologia = fs.readFileSync(path.join(root, 'chronologia.html'), 'utf8');
 const inline = [...index.matchAll(/<script(?![^>]*\bsrc=)(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)][0]?.[1] || '';
 const happyPath = process.env.HAPPY_DOM_PATH || '/workspace/sites/aa-v15-preview/node_modules/happy-dom/lib/index.js';
 const { Window } = await import(pathToFileURL(happyPath).href);
@@ -27,7 +30,7 @@ window.__aa = {
   grammarLeakAudit, hasIndirectQuestion, repairSavedReadingGrammarGate,
   registerReading, openingSignature, openingFirstToken, openingSimilarity,
   registerGlossWord, recordLexicalSignal, lexicalPosterior,
-  v2: globalThis.AA_V2_TEST_API,
+  v2: globalThis.AA_V2_TEST_API, v22: globalThis.AA_V22_TEST_API,
   readingJa: READING_JA, readingScenarios: DATA.readingScenarios, readingOpenings: READING_OPENINGS,
   version: APP_VERSION, schema: SCHEMA_VERSION, storeKey: STORE_KEY
 };`;
@@ -41,7 +44,7 @@ function makeRuntime(entries = {}) {
   window.open = () => null;
   window.scrollTo = () => {};
   for (const [key, value] of Object.entries(entries)) window.localStorage.setItem(key, value);
-  window.eval(`${inline}\n${engine}\n${curriculum}\n${engineV2}\n${bridge}`);
+  window.eval(`${inline}\n${engine}\n${vocab10000}\n${curriculum}\n${engineV2}\n${engineV22}\n${bridge}`);
   return window;
 }
 
@@ -49,15 +52,18 @@ const fresh = makeRuntime();
 try {
   const aa = fresh.__aa;
   check('初期画面描画', fresh.document.querySelector('h1')?.textContent === '旭丘AA Learning OS');
-  check('v2.1.2・schema 4', aa.version === '2.1.2' && aa.schema === 4, `${aa.version}/${aa.schema}`);
+  check('v2.2.0・schema 4', aa.version === '2.2.0' && aa.schema === 4, `${aa.version}/${aa.schema}`);
   check('iPhone safe-area設計', /viewport-fit=cover/.test(index) && /safe-area-inset-(?:top|bottom)/.test(index));
   check('レスポンシブ設計', /@media\(max-width:700px\)/.test(index) && /grid-template-columns:1fr/.test(index));
 
   aa.setRoute('subjects');
   check('40分モード導線', fresh.document.querySelectorAll('[data-action="start-reading-simulator"]').length === 1);
   check('漢字意味導線', fresh.document.querySelector('main')?.textContent.includes('漢字・意味'));
-  check('演習/入試テスト分離UI', fresh.document.querySelector('main')?.textContent.includes('教科別演習') && fresh.document.querySelector('main')?.textContent.includes('入試対策テスト'));
-  check('入試3段階コース', fresh.document.querySelectorAll('[data-action="select-course"]').length === 3);
+  check('演習/入試テスト分離UI', fresh.document.querySelector('main')?.textContent.includes('教科別演習') && fresh.document.querySelector('main')?.textContent.includes('入試対策'));
+  aa.setRoute('exam');
+  check('独立入試ページ', fresh.document.querySelector('main')?.textContent.includes('出題設定') && fresh.document.querySelector('[data-action="start-exam-v22"]'));
+  check('入試3段階コース', fresh.document.querySelectorAll('[data-action="exam-level"]').length === 3);
+  check('教科・範囲・時間・問題量', ['exam-subject','exam-scope','exam-time','exam-length'].every(x => fresh.document.querySelector(`[data-action="${x}"]`)));
   aa.setRoute('timeline');
   check('年表UI維持', !!fresh.document.querySelector('[data-action="timeline-search"]') && !!fresh.document.querySelector('[data-action="toggle-year"]') && !!fresh.document.querySelector('[data-action="toggle-event"]'));
   check('Chronologia想起導線', !!fresh.document.querySelector('[data-action="start-timeline-recall"]'));
@@ -171,6 +177,27 @@ try {
   check('愛知県入試3コース', courseQueues.every(q => q.length === 15 && q.reduce((n, x) => n + x.points, 0) === 22));
   check('高校内容は旭丘レベル限定', !courseQueues[0].some(q => q.source?.area === 'advanced') && !courseQueues[1].some(q => q.source?.area === 'advanced') && courseQueues[2].some(q => q.source?.area === 'advanced'));
 
+  const jaR8 = aa.v22.japaneseExam(3);
+  check('国語R8・4大問22点', jaR8.length === 21 && jaR8.reduce((n,q)=>n+q.points,0) === 22 && new Set(jaR8.map(q=>q.bigQuestion)).size === 4);
+  check('国語複数選択', jaR8.filter(q=>q.answerIndices).length >= 3 && jaR8.filter(q=>q.partialPoints).length >= 2);
+  check('国語1万語索引', aa.v22.vocabIndex.count === 10000 && aa.v22.vocabIndex.entries.length === 10000);
+  for (const [subject, count] of [['math',15],['science',20],['social',20]]) {
+    const config = aa.v22.normalizeConfig({subject,level:3,scope:'full',units:aa.v22.units[subject].map(x=>x[0]),timeMin:45,length:'full'});
+    const queue = aa.v22.structuredQueue(subject,3,config);
+    check(`${subject}本番構成22点`, queue.length === count && queue.reduce((n,q)=>n+q.points,0) === 22, `${queue.length}/${queue.reduce((n,q)=>n+q.points,0)}`);
+  }
+
+  aa.state = aa.defaultState(); aa.save();
+  aa.v22.startExam({subject:'japanese',level:3,scope:'full',units:aa.v22.units.japanese.map(x=>x[0]),timeMin:45,length:'full'});
+  aa.state.session.index = 3; aa.state.session.itemStartedAt = Date.now(); aa.render();
+  const multi = aa.currentQ();
+  aa.selectAnswer(multi.answerIndices[0]);
+  aa.selectAnswer(multi.choices.findIndex((c,i)=>!c.ok && i!==multi.answerIndices[0]));
+  aa.handleAction({dataset:{action:'test-next'}},null);
+  const partialAttempt = aa.state.attempts.at(-1);
+  check('複数選択の部分点処理', partialAttempt.partialCredit === .5 && partialAttempt.earnedPoints === 1 && aa.state.session.index === 4, JSON.stringify(partialAttempt));
+  check('複数選択も途中解説なし', !aa.state.session.feedback && !fresh.document.querySelector('[role="status"]'));
+
   aa.state = aa.defaultState(); aa.save(); aa.render();
   aa.v2.startTest('japanese', 3);
   const firstTestQ = aa.currentQ();
@@ -194,6 +221,46 @@ try {
   check('アプリ内総合QA', aa.state.qa.report.length >= 39 && failures.length === 0, failures.map(x => `${x.name}:${x.detail}`).join(' / '));
 } finally {
   fresh.happyDOM.abort();
+}
+
+const chronologiaRuntime = new Window({ url: 'https://example.test/chronologia.html' });
+try {
+  chronologiaRuntime.alert = () => {};
+  chronologiaRuntime.confirm = () => true;
+  chronologiaRuntime.print = () => {};
+  chronologiaRuntime.scrollTo = () => {};
+  chronologiaRuntime.Option = function(text = '', value = '') {
+    const option = chronologiaRuntime.document.createElement('option');
+    option.text = String(text);
+    option.value = String(value);
+    return option;
+  };
+  const chronologiaScripts = [...chronologia.matchAll(/<script(?![^>]*\bsrc=)(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(match => match[1]);
+  chronologiaRuntime.document.write(chronologia.replace(/<script(?![^>]*\bsrc=)(?:\s[^>]*)?>[\s\S]*?<\/script>/gi, ''));
+  chronologiaRuntime.eval(chronologiaScripts.join('\n'));
+
+  for (const id of ['periodSelect', 'areaSelect', 'levelSelect', 'limitSelect', 'favoriteOnly']) {
+    chronologiaRuntime.document.getElementById(id).value = 'all';
+  }
+  chronologiaRuntime.document.getElementById('searchInput').dispatchEvent(new chronologiaRuntime.Event('input'));
+
+  check('Chronologia 385件起動', chronologiaRuntime.document.getElementById('statTotal')?.textContent === '385件' && chronologiaRuntime.document.querySelectorAll('#timelineBody tr').length === 385);
+  check('Chronologia全6モード', chronologiaRuntime.document.querySelectorAll('.tab').length === 6);
+  check('Chronologia AA OS戻り導線', chronologiaRuntime.document.querySelector('.aaos-back')?.getAttribute('href') === './index.html');
+
+  chronologiaRuntime.document.getElementById('hideDateBtn').click();
+  const firstReveal = chronologiaRuntime.document.querySelector('.date-reveal');
+  firstReveal?.click();
+  const savedChronologia = JSON.parse(chronologiaRuntime.localStorage.getItem('chronologia-aichi-v3') || '{}');
+  check('Chronologia答え表示・続き保存', firstReveal?.dataset.revealed === 'true' && savedChronologia.lastStudy?.action === 'date' && Number.isInteger(savedChronologia.lastStudy?.id));
+  check('Chronologia保存領域分離', !chronologiaRuntime.localStorage.getItem('asahi_learning_os_v1'));
+
+  chronologiaRuntime.document.querySelector('#timelineBody .btn.small')?.click();
+  check('Chronologia参考書型解説', chronologiaRuntime.document.getElementById('detailModal')?.classList.contains('open') && !!chronologiaRuntime.document.querySelector('.detail-reading .detail-prose'));
+  chronologiaRuntime.document.getElementById('modalClose')?.click();
+  check('Chronologia解説を閉じる', !chronologiaRuntime.document.getElementById('detailModal')?.classList.contains('open'));
+} finally {
+  chronologiaRuntime.happyDOM.abort();
 }
 
 const legacyState = {

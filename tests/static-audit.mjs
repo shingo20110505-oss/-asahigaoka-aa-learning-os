@@ -16,7 +16,15 @@ const sw = read('sw.js');
 const engine = read('learning-engine-v15.js');
 const curriculum = read('curriculum-v2-data.js');
 const engineV2 = read('learning-engine-v2.js');
+const engineV22 = read('learning-engine-v22.js');
+const vocab10000 = read('japanese-vocabulary-10000.js');
+const chronologia = read('chronologia.html');
 const scripts = [...index.matchAll(/<script(?![^>]*\bsrc=)(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(match => match[1]);
+const chronologiaScripts = [...chronologia.matchAll(/<script(?![^>]*\bsrc=)(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(match => match[1]);
+const chronologiaDataStart = chronologia.indexOf('const DATA = [');
+const chronologiaDataEnd = chronologia.indexOf('];', chronologiaDataStart);
+const chronologiaDataSource = chronologia.slice(chronologiaDataStart, chronologiaDataEnd + 2);
+const chronologiaIds = [...chronologiaDataSource.matchAll(/"id":(\d+)/g)].map(match => Number(match[1]));
 
 check('index.html exists', index.startsWith('<!DOCTYPE html>'));
 check('Japanese language metadata', /<html[^>]+lang="ja"/.test(index));
@@ -32,6 +40,8 @@ check('No root-relative app-shell URLs', !/(?:src|href)="\/(?!\/)/.test(index));
 check('One inline application script', scripts.length === 1, `found ${scripts.length}`);
 check('v1.5 engine linked', /src="\.\/learning-engine-v15\.js"/.test(index));
 check('v2 curriculum and engine linked', /src="\.\/curriculum-v2-data\.js"/.test(index) && /src="\.\/learning-engine-v2\.js"/.test(index));
+check('v2.2 exam engine and vocabulary linked', /src="\.\/learning-engine-v22\.js"/.test(index) && /src="\.\/japanese-vocabulary-10000\.js"/.test(index));
+check('Chronologia standalone route linked', /href="\.\/chronologia\.html"/.test(engineV22));
 
 try {
   new vm.Script(scripts[0], {filename: 'index-inline.js'});
@@ -50,6 +60,8 @@ try {
 try {
   new vm.Script(curriculum, {filename: 'curriculum-v2-data.js'});
   new vm.Script(engineV2, {filename: 'learning-engine-v2.js'});
+  new vm.Script(vocab10000, {filename: 'japanese-vocabulary-10000.js'});
+  new vm.Script(engineV22, {filename: 'learning-engine-v22.js'});
   check('v2 JavaScript syntax', true);
 } catch (error) {
   check('v2 JavaScript syntax', false, error.message);
@@ -60,6 +72,13 @@ try {
   check('Service worker syntax', true);
 } catch (error) {
   check('Service worker syntax', false, error.message);
+}
+
+try {
+  chronologiaScripts.forEach((script, index) => new vm.Script(script, {filename: `chronologia-inline-${index + 1}.js`}));
+  check('Chronologia JavaScript syntax', chronologiaScripts.length === 2, `scripts ${chronologiaScripts.length}`);
+} catch (error) {
+  check('Chronologia JavaScript syntax', false, error.message);
 }
 
 check('Manifest identity', manifest.id === './' && manifest.start_url === './' && manifest.scope === './');
@@ -79,7 +98,7 @@ for (const icon of manifest.icons) {
 }
 
 check('Offline fallback included', fs.existsSync(path.join(root, 'offline.html')) && sw.includes('offline.html'));
-check('Cache version matches app version', /APP_VERSION='2\.1\.2'/.test(index) && /VERSION = '2\.1\.2'/.test(sw));
+check('Cache version matches app version', /APP_VERSION='2\.2\.0'/.test(index) && /VERSION = '2\.2\.0'/.test(sw));
 check('Indirect-question full-output gate', /hasIndirectQuestion/.test(index) && /generateReadingBeforeFullGrammarGate/.test(index) && /repairSavedReadingGrammarGate/.test(index));
 check('Reading-opening anti-repeat gate', /READING_OPENINGS/.test(index) && /openingSignature/.test(index) && /selectReadingOpening/.test(index) && /openingFirstToken/.test(index));
 check('Reading gloss verb forms', /verbFormsFor/.test(index) && /過去分詞形/.test(index));
@@ -88,6 +107,13 @@ check('English-only reading choices', /readingQuestionSetBeforeEnglishChoices/.t
 check('Bayesian unknown-word evidence', /lexicalEvidenceState/.test(index) && /lexicalPosterior/.test(index) && /gloss-unknown/.test(index));
 check('v1.5 engine precached', sw.includes("learning-engine-v15.js"));
 check('v2 files precached', sw.includes("curriculum-v2-data.js") && sw.includes("learning-engine-v2.js"));
+check('v2.2 files precached', sw.includes("learning-engine-v22.js") && sw.includes("japanese-vocabulary-10000.js") && sw.includes("learning-engine-v22.css"));
+check('Chronologia precached', sw.includes("chronologia.html") && /cache\.put\(request, response\.clone\(\)\)/.test(sw));
+check('Chronologia 6.1 identity', /<title>Chronologia 6\.1/.test(chronologia) && /const VERSION = "6\.1\.0"/.test(chronologia));
+check('Chronologia 385 records intact', chronologiaIds.length === 385 && new Set(chronologiaIds).size === 385 && Math.min(...chronologiaIds) === 1 && Math.max(...chronologiaIds) === 385, `${chronologiaIds.length}/${Math.max(...chronologiaIds)}`);
+check('Chronologia storage key preserved', /const STORE_KEY = "chronologia-aichi-v3"/.test(chronologia) && !/const STORE_KEY = "asahi_learning_os_v1"/.test(chronologia));
+check('Chronologia deep explanations intact', /const DEEP_NOTES_V61 = \{/.test(chronologia) && /Chronologia deep explanation patch 6\.1 loaded/.test(chronologia));
+check('Chronologia compatibility-only bridge', /id="aaos-chronologia-compat"/.test(chronologia) && /class="aaos-back" href="\.\/index\.html"/.test(chronologia));
 check('Stable storage key preserved', /STORE_KEY='asahi_learning_os_v1'/.test(index) && /_pre_v15/.test(engine));
 check('Transactional history protection', /before-import/.test(engine) && /before-reset/.test(engine) && /session-complete/.test(engine));
 check('Adaptive vocabulary diagnosis', /AA15_MIN_DIAG = 18/.test(engine) && /AA15_MAX_DIAG = 32/.test(engine));
@@ -101,6 +127,9 @@ check('Shared learning profile', /aa-learning-profile\/1/.test(engine));
 check('Chronologia retrieval', /start-timeline-recall/.test(engine) && /soc\.history\.network/.test(engine));
 check('Practice and exam test separated', /trackType: 'practice'/.test(engineV2) && /trackType: 'test'/.test(engineV2) && /test-next/.test(engineV2));
 check('Three Aichi exam levels', /公立標準/.test(engineV2) && /難関公立/.test(engineV2) && /旭丘レベル/.test(engineV2));
+check('Independent exam route', /state\.route !== 'exam'/.test(engineV22) && /function examHTML/.test(engineV22));
+check('R8 Japanese exact macrostructure', /R8国語4大問・22点/.test(engineV22) && /大問二/.test(engineV22) && /部分点/.test(engineV22));
+check('10,000-word index literal count', /count:10000/.test(vocab10000) && /CC BY 4\.0/.test(vocab10000));
 check('Forgetting model disclosure', /Ebbinghaus-inspired/.test(engineV2) && /exp\(-t\/S\)/.test(engineV2));
 check('v2 migration original preserved', /_pre_v2/.test(index) && /AA2_PRE_KEY/.test(engineV2));
 check('README included', fs.existsSync(path.join(root, 'README.md')));

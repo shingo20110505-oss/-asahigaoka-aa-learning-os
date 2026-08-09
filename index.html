@@ -15,6 +15,7 @@
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png">
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png">
+<link rel="stylesheet" href="./learning-engine-v22.css">
 <title>旭丘AA Learning OS｜PWA完全版</title>
 <style>
 :root{
@@ -64,7 +65,7 @@ Object.assign(READING_GLOSSARY,{"alone":"単独で・だけで","behind":"背後
 Object.assign(READING_GLOSSARY,{"adults":"大人","affect":"影響する","almost":"ほとんど","already":"すでに","anchors":"基準点・手がかり","anyone":"誰か","arrived":"到着した","arrows":"矢印","benches":"ベンチ","blamed":"〜のせいにした","bright":"明るい","built":"作った","choice":"選択","chronology":"年代順・年代関係","cleanup":"清掃","clearly":"明確に","closely":"注意深く","coach":"コーチ","combined":"組み合わせた","comparing":"比較すること","completed":"完了した","concluded":"結論づけた","cool":"涼しい","coordination":"調整・連携","count":"数える・数","counts":"数・回数","daily":"毎日の","dark":"暗い","darker":"より暗い","default":"標準・初期設定","divided":"分けた","earthquake":"地震","eat":"食べる","encouraged":"促した","facts":"事実","failure":"失敗","followed":"従った","form":"形・形式","free":"自由な","freedom":"自由","hard":"難しい・一生懸命に","hardest":"最も難しい","headings":"見出し","hide":"隠す","highest":"最も高い","improved":"改善した","included":"含んだ","japan":"日本","kilometer":"キロメートル","kind":"種類","labeled":"ラベルを付けた","leader":"リーダー","limited":"限られた","listed":"列挙した","locate":"見つける・位置を特定する","look":"見る","lowest":"最も低い","machine":"機械","middle":"中間","missed":"見落とした","morning":"朝","mornings":"朝","museum":"博物館","offered":"提供した","officials":"担当者・職員","older":"より年上の・高齢の","option":"選択肢","organizers":"主催者","pace":"ペース・速さ","path":"道筋","performance":"成果・成績","period":"期間","plate":"皿","points":"点・要点","range":"範囲","readers":"読者","recovery":"回復","revised":"修正した","run":"走る・運営する","running":"走ること","safety":"安全","sample":"標本・サンプル","saw":"見た","sensing":"感知すること","sent":"送った","session":"学習回・セッション","sessions":"学習回・セッション","setting":"場所・設定","settings":"設定","shifted":"ずらした","speed":"速度","steadier":"より安定した","suggested":"提案した","summary":"要約","take":"取る","team":"チーム","text":"文章","thirty":"30","throw":"投げる","took":"取った・かかった","town":"町","town's":"町の","twice":"2倍","under":"〜の下に","understanding":"理解","unfinished":"未完了の","urgent":"緊急の","users":"利用者","viewing":"見ること","wall":"壁","weekday":"平日","weekends":"週末","weekly":"毎週の","wider":"より広い","wrong":"間違った"});
 Object.assign(READING_GLOSSARY,{"all":"すべての","families":"家族たち","misleading":"誤解を招く","represent":"代表する","teenagers":"10代の若者"});
 const DIAGNOSTIC_WORDS=['available','amount','compare','condition','cause','community','data','difference','environment','evidence','explain','factor','improve','include','likely','measure','necessary','prevent','require','within'];
-const APP_VERSION='2.1.2';
+const APP_VERSION='2.2.0';
 const SCHEMA_VERSION=4;
 const STORE_KEY='asahi_learning_os_v1';
 const PWA={registration:null,waiting:null,installPrompt:null,online:navigator.onLine,reloading:false};
@@ -120,7 +121,7 @@ function migrate(s){
  s.attempts=safeArray(s.attempts).filter(a=>plainObj(a)&&typeof a.itemId==='string'&&Number.isFinite(a.timestamp)).map(a=>({...a,skills:safeArray(a.skills).filter(plainObj),responseMs:Number.isFinite(a.responseMs)?Math.max(0,a.responseMs):0,correct:!!a.correct})).slice(-10000);
  s.historyFingerprints=safeArray(s.historyFingerprints).filter(plainObj).slice(-300);s.recentTexts=safeArray(s.recentTexts).filter(x=>plainObj(x)&&typeof x.id==='string'&&typeof x.text==='string').slice(-50);
  s.stats.days=plainObj(s.stats.days)?s.stats.days:{};s.stats.readingPace=safeArray(s.stats.readingPace).filter(x=>plainObj(x)&&Number.isFinite(x.wpm)&&Number.isFinite(x.at)).slice(-60);s.stats.lexicalSessions=safeArray(s.stats.lexicalSessions).filter(x=>plainObj(x)&&Number.isFinite(x.coverage)&&Number.isFinite(x.at)).slice(-80);s.stats.sessions=Number.isFinite(s.stats.sessions)?Math.max(0,s.stats.sessions):0;s.stats.totalMs=Number.isFinite(s.stats.totalMs)?Math.max(0,s.stats.totalMs):0;
- s.ui.subjectDifficulty=clamp(Number(s.ui.subjectDifficulty)||7,1,11);s.theme=s.theme==='dark'?'dark':'light';let routes=new Set(['home','mission','subjects','timeline','study','result','analytics','settings']);if(!routes.has(s.route))s.route='home';
+ s.ui.subjectDifficulty=clamp(Number(s.ui.subjectDifficulty)||7,1,11);s.theme=s.theme==='dark'?'dark':'light';let routes=new Set(['home','mission','subjects','exam','timeline','study','result','analytics','settings']);if(!routes.has(s.route))s.route='home';
  if(s.session!=null){if(!plainObj(s.session)||!Array.isArray(s.session.queue)||!Number.isFinite(s.session.index)||s.session.index<0||s.session.index>s.session.queue.length){s.session=null}else{s.session={...s.session,answers:plainObj(s.session.answers)?s.session.answers:{},subIndex:Number.isFinite(s.session.subIndex)?Math.max(0,s.session.subIndex):0,accumulatedMs:Number.isFinite(s.session.accumulatedMs)?Math.max(0,s.session.accumulatedMs):0,scrollY:Number.isFinite(s.session.scrollY)?Math.max(0,s.session.scrollY):0}}};
  let compatible=DATA.readingScenarios.some(sc=>(sc.grammar||[]).every(t=>s.profile.grammarGate[t]!==false));if(!compatible)s.profile.grammarGate={...GRAMMAR_DEFAULT};
  s.schemaVersion=SCHEMA_VERSION;s.appVersion=APP_VERSION;return s
@@ -584,7 +585,9 @@ render();
 initPWA();
 </script>
 <script src="./learning-engine-v15.js"></script>
+<script src="./japanese-vocabulary-10000.js"></script>
 <script src="./curriculum-v2-data.js"></script>
 <script src="./learning-engine-v2.js"></script>
+<script src="./learning-engine-v22.js"></script>
 </body>
 </html>

@@ -1,0 +1,26 @@
+/* 旭丘AA Learning OS 2.2 — 入試対策ページと愛知県型設問 */
+.examHero{background:linear-gradient(145deg,color-mix(in srgb,var(--navy) 94%,#3658ba),var(--navy2));color:#fff}
+.examHero .sub,.examHero .tiny{color:#d9e1f1}.examHero .eyebrow{color:#e8c77e}
+.examSettings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.examSettings .field{margin:0}.examSettings .wide{grid-column:1/-1}
+.courseGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:14px 0}
+.courseCard{min-height:132px;padding:14px;border:1px solid var(--line);border-radius:15px;background:var(--card);color:var(--ink);text-align:left}
+.courseCard:hover{border-color:var(--blue)}.courseCard.selected{border:2px solid var(--blue);background:var(--blue2)}
+.courseCard h4{margin:4px 0;font-size:1rem}.courseCard p{margin:0;color:var(--sub);font-size:.78rem;line-height:1.55}
+.courseNo{color:var(--blue);font-size:.7rem;font-weight:900;letter-spacing:.08em}
+.unitGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.unitCheck{display:flex;align-items:center;gap:8px;padding:10px;border:1px solid var(--line);border-radius:11px;background:var(--bg2);font-size:.84rem;font-weight:700}
+.unitCheck input{width:18px;height:18px;accent-color:var(--blue)}
+.blueprintTable{width:100%;border-collapse:collapse;font-size:.82rem}.blueprintTable th,.blueprintTable td{padding:9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.blueprintTable th{color:var(--sub);font-size:.72rem}
+.examPassage{margin-bottom:14px;padding:15px;border:1px solid var(--line);border-radius:14px;background:var(--bg2);line-height:1.9;white-space:pre-wrap}
+.examPassage summary{cursor:pointer;font-weight:850;color:var(--ink)}.examPassageText{padding-top:10px;color:var(--ink)}
+.examQuestionMeta{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:9px}.examQuestionMeta .chip{font-size:.72rem}
+.choice.testSelected{border:2px solid var(--blue)!important;background:var(--blue2)!important;box-shadow:0 0 0 2px color-mix(in srgb,var(--blue) 18%,transparent)}
+.multiGuide{margin:7px 0 12px;color:var(--sub);font-size:.8rem;font-weight:750}
+.vocabIndexResults{max-height:320px;overflow:auto;border:1px solid var(--line);border-radius:13px}
+.vocabIndexRow{display:grid;grid-template-columns:minmax(120px,1.4fr) minmax(90px,1fr) 70px 70px;gap:8px;padding:9px 11px;border-bottom:1px solid var(--line);font-size:.78rem}.vocabIndexRow:last-child{border-bottom:0}.vocabIndexRow strong{font-size:.88rem}
+.testReview .reviewChoices{display:flex;flex-wrap:wrap;gap:6px}.testReview .reviewChoice{padding:4px 8px;border-radius:999px;background:var(--bg2);font-size:.75rem}.testReview .reviewChoice.correct{background:var(--green2);color:var(--green)}.testReview .reviewChoice.wrong{background:var(--red2);color:var(--red)}
+.partialText{color:var(--amber);font-weight:850}
+.chronologiaLaunch{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+@media(max-width:720px){.examSettings,.courseGrid{grid-template-columns:1fr}.unitGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.vocabIndexRow{grid-template-columns:1fr 1fr}.vocabIndexRow span:nth-child(3),.vocabIndexRow span:nth-child(4){font-size:.7rem}.chronologiaLaunch{grid-template-columns:1fr}}
+@media(max-width:420px){.unitGrid{grid-template-columns:1fr}}

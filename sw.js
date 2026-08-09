@@ -1,6 +1,6 @@
 'use strict';
 
-const VERSION = '2.1.2';
+const VERSION = '2.2.0';
 const CACHE_NAME = `asahigaoka-aa-os-${VERSION}`;
 const BASE = self.registration.scope;
 const APP_URL = new URL('./', BASE).href;
@@ -13,6 +13,10 @@ const APP_SHELL = [
   new URL('learning-engine-v15.js', BASE).href,
   new URL('curriculum-v2-data.js', BASE).href,
   new URL('learning-engine-v2.js', BASE).href,
+  new URL('learning-engine-v22.js', BASE).href,
+  new URL('learning-engine-v22.css', BASE).href,
+  new URL('japanese-vocabulary-10000.js', BASE).href,
+  new URL('chronologia.html', BASE).href,
   new URL('icons/favicon-32.png', BASE).href,
   new URL('icons/apple-touch-icon-180.png', BASE).href,
   new URL('icons/icon-192.png', BASE).href,
@@ -55,11 +59,11 @@ self.addEventListener('fetch', event => {
         const response = await fetch(request);
         if (response.ok) {
           const cache = await caches.open(CACHE_NAME);
-          await cache.put(APP_URL, response.clone());
+          await cache.put(request, response.clone());
         }
         return response;
       } catch (_) {
-        return (await caches.match(APP_URL)) || (await caches.match(OFFLINE_URL));
+        return (await caches.match(request)) || (await caches.match(APP_URL)) || (await caches.match(OFFLINE_URL));
       }
     })());
     return;
