@@ -122,7 +122,8 @@ function modeAllows(name){
   const spicy=['wrong_02','wrong_03','wrong_04','wrong_05','wrong_06','wrong_07','careless_','review_01','idle_','timer_','struggle_','success_','return_'];if(spicy.some(p=>name.startsWith(p)))return daily.voiceMode==='spicy'||daily.voiceMode==='hell';return true;
 }
 function playVoice(name,opt={}){
-  if(!opt.force&&!modeAllows(name))return false;if(!runtime.voiceUrls.has(name))return false;const now=Date.now();if(!opt.force){if(now-runtime.voiceLastGlobal<(opt.priority?5000:18000))return false;if(now-(runtime.voiceLastByName[name]||0)<180000)return false}
+  if(!opt.force&&!modeAllows(name))return false;
+  try{document.dispatchEvent(new CustomEvent('chronologia:voice',{detail:{name}}))}catch(e){}if(!runtime.voiceUrls.has(name))return false;const now=Date.now();if(!opt.force){if(now-runtime.voiceLastGlobal<(opt.priority?5000:18000))return false;if(now-(runtime.voiceLastByName[name]||0)<180000)return false}
   try{if(runtime.activeAudio){runtime.activeAudio.pause();runtime.activeAudio=null}const a=new Audio(runtime.voiceUrls.get(name));a.volume=daily.volume;a.preload='auto';runtime.activeAudio=a;runtime.voiceLastGlobal=now;runtime.voiceLastByName[name]=now;a.onended=()=>{if(runtime.activeAudio===a)runtime.activeAudio=null};a.play().catch(()=>{});return true}catch(e){return false}
 }
 function firstStudyVoice(){if(runtime.firstStudyVoiceDone)return;runtime.firstStudyVoiceDone=true;const gap=daysSincePreviousStudy();if(gap!==null&&gap>=5)playVoice('return_01.mp3',{priority:true});else playVoice('start_01.mp3',{priority:true})}
