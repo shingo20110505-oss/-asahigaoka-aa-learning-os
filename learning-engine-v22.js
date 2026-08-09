@@ -1,4 +1,4 @@
-/* 旭丘AA Learning OS v2.2.4
+/* 旭丘AA Learning OS v2.2.5
    独立「入試対策」ページ・愛知県最新公開問題の大問構成・国語原創問題 */
 (function () {
   'use strict';
@@ -79,10 +79,34 @@
     return state.ui.examConfig;
   }
 
+  function aa22DefaultPracticeConfig(subject = 'japanese') {
+    const unitsBySubject = {};
+    for (const [id, units] of Object.entries(EXAM_UNITS)) {
+      unitsBySubject[id] = units.map(x => x[0]).filter(unit => !(id === 'math' && unit === 'advanced'));
+    }
+    return { subject, length: 'standard', unitsBySubject };
+  }
+  function aa22NormalizePracticeConfig(input) {
+    const subject = ['english', 'japanese', 'math', 'science', 'social'].includes(input?.subject) ? input.subject : 'japanese';
+    const defaults = aa22DefaultPracticeConfig(subject), source = plainObj(input?.unitsBySubject) ? input.unitsBySubject : {};
+    const unitsBySubject = {};
+    for (const [id, units] of Object.entries(EXAM_UNITS)) {
+      const valid = new Set(units.map(x => x[0]));
+      const selected = safeArray(source[id]).filter(unit => valid.has(unit));
+      unitsBySubject[id] = selected.length ? selected : defaults.unitsBySubject[id];
+    }
+    return { subject, length: ['micro', 'standard', 'deep'].includes(input?.length) ? input.length : 'standard', unitsBySubject };
+  }
+  function aa22PracticeConfig() {
+    state.ui.practiceConfig = aa22NormalizePracticeConfig(state.ui.practiceConfig || aa22DefaultPracticeConfig());
+    return state.ui.practiceConfig;
+  }
+
   const aa22PrevDefaultState = defaultState;
   defaultState = function () {
     const s = aa22PrevDefaultState();
     s.ui.examConfig = aa22DefaultConfig('japanese');
+    s.ui.practiceConfig = aa22DefaultPracticeConfig('japanese');
     s.ui.vocabIndexQuery = '';
     return s;
   };
@@ -90,10 +114,12 @@
   migrate = function (input) {
     const s = aa22PrevMigrate(input);
     s.ui.examConfig = aa22NormalizeConfig(s.ui.examConfig || aa22DefaultConfig(s.ui.testSubject));
+    s.ui.practiceConfig = aa22NormalizePracticeConfig(s.ui.practiceConfig || aa22DefaultPracticeConfig());
     s.ui.vocabIndexQuery = String(s.ui.vocabIndexQuery || '').slice(0, 80);
     return s;
   };
   state.ui.examConfig = aa22NormalizeConfig(state.ui.examConfig || aa22DefaultConfig(state.ui.testSubject));
+  state.ui.practiceConfig = aa22NormalizePracticeConfig(state.ui.practiceConfig || aa22DefaultPracticeConfig());
   state.ui.vocabIndexQuery = String(state.ui.vocabIndexQuery || '');
 
   function aa22Question(spec) {
@@ -119,25 +145,33 @@
       expectedMs: Number(spec.expectedMs || 65000), context: 'aichi-r8-' + spec.subject,
       format: spec.format || 'aichi-mark', testMode: true, courseLevel: Number(spec.level || 1),
       bigQuestion: spec.bigQuestion, bigTitle: spec.bigTitle, officialSmallLabel: spec.officialSmallLabel,
+      evidence: spec.evidence || '', reasoningTag: spec.reasoningTag || '',
       examUnit: spec.unit || spec.source?.area || 'integration',
       aichiPassage: spec.passage || '', source: spec.source || { area: spec.unit || 'integration', difficulty: Number(spec.level || 1) * 3 }
     };
   }
 
-  const JA_PASSAGE_I = `【文章】\n市立図書館では、貸出冊数を増やすため、入口近くに「今週よく読まれている本」を並べた。すると、その棚の本は以前より多く借りられた。担当者は展示が成功したと考えたが、調査係の生徒は、貸出冊数だけでは利用者が新しい分野の本に出会ったかどうかは分からないと指摘した。\nそこで、生徒たちは展示前後の貸出冊数に加え、借りた人への短い質問も行った。「もともと借りる予定だったか」「展示を見て初めて知ったか」を尋ねると、冊数の増加の一部は、もともと人気のある本が目立つ場所へ移ったためだと分かった。一方、テーマを一週間ごとに変えた棚では、普段読まない分野を選んだ人が増えていた。\nこの結果から、生徒たちは、施策を評価するときには、目標を一つの数字だけで置き換えない方がよいとまとめた。数字は変化を比べるために必要だが、その数字が何を表し、何を表していないかを確かめる別の資料も必要だからである。`;
+  const JA_PASSAGE_I = `【説明的文章・本アプリ作成】
+「分かりやすい案内」と聞くと、必要な情報を一枚にできるだけ多く載せることだと考えがちである。確かに、地図、施設名、所要時間をまとめて見られれば、利用者は別の資料を探さずに済む。しかし、情報を持っていることと、その場で情報を使えることとは同じではない。
+
+ある公共施設で、中学生の調査班が二種類の案内板を比べた。Aは建物全体の地図に全施設名を記し、Bは現在地から次の曲がり角までに必要な情報だけを大きく示した。人の少ない時間帯では、Aを見た利用者の方が行き先を間違える割合はわずかに低かった。ところが混雑時には、Aの前で立ち止まる人が重なり、後ろの人が地図へ近づけないことが増えた。Bでは一度に得られる情報は少ないが、利用者は歩みを止めず、次の表示へ移ることができた。目的地までの平均時間はBの方が短かった。
+
+この結果は、Aが詳しすぎて無価値だったことを意味しない。建物全体の関係を確かめたい人や、めったに使わない施設を探す人には、Aの情報が役立つ。問題は、情報の量だけを案内の質と見なしたことである。移動中の利用者が判断できる時間、表示を見る位置、周囲の混雑まで含めて考えなければ、詳しさがかえって次の行動を遅らせることがある。
+
+案内に必要な「余白」とは、単なる空白ではない。利用者が現在地と次の行動を結び付けるための余裕である。情報を減らせば必ず分かりやすくなるのでも、増やせば必ず正確になるのでもない。何を伝えるかと同時に、いつ、どこで、どのように使われるかを設計して初めて、情報は行動を支える。`;
   const JA_PASSAGE_III = `【対話と資料】\n文化祭実行委員会は、校内案内を改善するため、二つの方法を試した。A週は廊下の矢印表示を増やし、B週は案内係が声をかける場所を増やした。\n\n〔調査結果〕\nA週：目的地まで迷わなかった人 78％／案内を「自分で確かめやすい」と答えた人 84％\nB週：目的地まで迷わなかった人 86％／案内を「自分で確かめやすい」と答えた人 61％\n\n美咲「迷わなかった割合だけなら、B週の方法がよさそうだね。」\n陸「でも、混雑する時間は案内係が足りなくなる。A週の『自分で確かめやすい』という結果も無視できないよ。」\n美咲「では、入口と分岐点には矢印を置き、特に迷いやすい場所だけ案内係を配置したらどうかな。」\n陸「二つの方法を組み合わせた後、同じ質問で再調査すれば、改善したか比べられるね。」`;
   const JA_PASSAGE_IV = `【古文・本アプリ作成】\nある人、朝ごとに庭の梅を見て、「まだ咲かず」と言ひけり。友来たりて、「花のみ待たば、日々は同じに見ゆべし。枝の色、鳥の声にも春は近づく」と言ふ。その人、翌朝より小さき変はりを記しければ、花の咲く前より春を知りぬ。\n\n〔注〕見ゆべし＝見えるだろう。変はり＝変化。`;
 
   function aa22JapaneseExam(level) {
     const shared = { subject: 'japanese', level };
     return [
-      aa22Question({ ...shared, code: 'I-1', bigQuestion: '大問一', bigTitle: '説明的文章', officialSmallLabel: '問1', passage: JA_PASSAGE_I, points: 1, unit: 'modern', stem: '「その数字が何を表し、何を表していないか」とある。ここでいう「その数字」として最も適切なものを選びなさい。', choices: ['展示前後の貸出冊数', '図書館にある本の総数', '質問に答えた生徒の学年', '一週間の日数'], answer: 0, explanation: '直前の「目標を一つの数字だけで置き換えない」「数字は変化を比べるために必要」を受け、貸出冊数を指します。' }),
-      aa22Question({ ...shared, code: 'I-2', bigQuestion: '大問一', bigTitle: '説明的文章', officialSmallLabel: '問2', passage: JA_PASSAGE_I, points: 1, unit: 'modern', stem: '生徒たちが、貸出冊数に加えて利用者への質問を行った目的として最も適切なものを選びなさい。', choices: ['人気のある本を棚から外すため', '貸出冊数が増えた理由を区別するため', '図書館の開館時間を延ばすため', '利用者の名前を記録するため'], answer: 1, explanation: '同じ冊数増加でも、もともとの予定か、展示による新しい出会いかを区別するためです。' }),
-      aa22Question({ ...shared, code: 'I-3', bigQuestion: '大問一', bigTitle: '説明的文章', officialSmallLabel: '問3', passage: JA_PASSAGE_I, points: 1, unit: 'modern', stem: '本文全体の論の進め方として最も適切なものを選びなさい。', choices: ['結論を示し、無関係な例を列挙している', '一つの結果を疑い、別の資料で確かめて評価を修正している', '二人の人物の性格を対比している', '昔の制度を年代順に説明している'], answer: 1, explanation: '貸出冊数の増加をそのまま成功とせず、質問調査を加えて解釈を修正する構成です。' }),
-      aa22Question({ ...shared, code: 'I-4', bigQuestion: '大問一', bigTitle: '説明的文章', officialSmallLabel: '問4（二つ選択）', passage: JA_PASSAGE_I, points: 2, partialPoints: 1, unit: 'modern', stem: '本文の内容と一致するものを二つ選びなさい。', choices: ['入口の人気本は、展示後に貸出冊数が減った。', 'テーマを変える棚では、普段読まない分野を選ぶ人が増えた。', '生徒たちは、数字による比較は一切不要だと結論づけた。', '施策の評価には、数字の意味を確かめる別資料も役立つ。', '利用者への質問は展示より前にだけ行われた。'], answers: [1, 3], explanation: 'テーマ棚の効果と、数字を補う資料の必要性が本文に述べられています。' }),
-      aa22Question({ ...shared, code: 'I-5a', bigQuestion: '大問一', bigTitle: '説明的文章', officialSmallLabel: '問5①', passage: JA_PASSAGE_I, points: 1, unit: 'modern', stem: '本文の要約の空欄に入る語句として最も適切なものを選びなさい。\n「展示の効果を判断するには、貸出冊数という【　】だけでなく、その増加の理由を示す資料が必要である。」', choices: ['印象', '単一の指標', '規則', '予算'], answer: 1, explanation: '本文は「目標を一つの数字だけで置き換えない」と述べています。' }),
-      aa22Question({ ...shared, code: 'I-5b', bigQuestion: '大問一', bigTitle: '説明的文章', officialSmallLabel: '問5②', passage: JA_PASSAGE_I, points: 1, unit: 'modern', stem: '「一方」が示す関係として最も適切なものを選びなさい。', choices: ['原因と結果', '同じ内容の反復', '人気本の移動とテーマ棚の異なる結果の対比', '時間の順序だけ'], answer: 2, explanation: '人気本の移動による増加と、テーマ棚による新分野との出会いを対比しています。' }),
-      aa22Question({ ...shared, code: 'I-5c', bigQuestion: '大問一', bigTitle: '説明的文章', officialSmallLabel: '問5③', passage: JA_PASSAGE_I, points: 1, unit: 'modern', stem: '筆者の考えに最も近いものを選びなさい。', choices: ['測定値は多いほど必ず正しい。', '数字は不要で、感想だけで評価すべきだ。', '数字の利点と限界を理解し、複数の資料で評価すべきだ。', '人気のある本だけを展示すべきだ。'], answer: 2, explanation: '数字を否定せず、その表す範囲を別資料で確かめることが結論です。' }),
+      aa22Question({ ...shared, code: 'I-1', bigQuestion: '大問一', bigTitle: '説明的文章', officialSmallLabel: '問1', passage: JA_PASSAGE_I, points: 1, unit: 'modern', reasoningTag: '指示内容', evidence: '第二段落の「Aの前で立ち止まる人が重なり」「Bでは…歩みを止めず」と、平均時間の比較。', stem: '第二段落の調査結果から直接言えることとして最も適切なものを選びなさい。', choices: [{text:'Aは情報が多いため、どの時間帯でもBより早く目的地へ着けた。',error:'overgeneralization',reason:'人の少ない時間帯でAは誤りがやや少ないものの、混雑時の平均時間はBの方が短いので「どの時間帯でも」は言い過ぎです。'},{text:'Bは全体地図を省いたため、行き先を間違える人が一人もいなかった。',error:'overgeneralization',reason:'Bで誤りがゼロになったとは書かれていません。'},{text:'案内の有効性は、情報量だけでなく利用時の混雑や移動のしやすさでも変わった。',reason:'AとBの結果が時間帯・混雑・立ち止まり方で変化したことをまとめています。'},{text:'混雑時には、利用者が案内板を見ないほど目的地へ早く着いた。',error:'causal_overreach',reason:'Bの表示は見ており、「見ないこと」が速さの原因だとは述べていません。'}], answer: 2, explanation: '情報量だけではなく、使われる状況が案内の働きを変えたという結果です。' }),
+      aa22Question({ ...shared, code: 'I-2', bigQuestion: '大問一', bigTitle: '説明的文章', officialSmallLabel: '問2', passage: JA_PASSAGE_I, points: 1, unit: 'modern', reasoningTag: '因果', evidence: '混雑時、Aの前で立ち止まる人が重なり、後ろの人が地図へ近づけなかった。', stem: '混雑時にAの案内板が「次の行動を遅らせる」場合があったのはなぜか。最も適切なものを選びなさい。', choices: [{text:'情報が不足し、利用者が建物全体の位置関係をまったく確認できなかったから。',error:'opposite',reason:'Aは情報が不足したのではなく、全体地図と全施設名を載せていました。'},{text:'詳しい情報を確かめるために人が滞留し、後ろの利用者が表示を使いにくくなったから。',reason:'本文の「立ち止まる人が重なり」「後ろの人が地図へ近づけない」に対応します。'},{text:'施設名が多かったため、利用者が別の建物へ移動するよう案内されたから。',error:'outside_information',reason:'別の建物へ案内されたとは書かれていません。'},{text:'人の少ない時間帯にも、Aを見た利用者の間違いがBより大幅に増えたから。',error:'opposite',reason:'人の少ない時間帯ではAの方が間違いの割合はわずかに低いとあります。'}], answer: 1, explanation: '詳しさそのものではなく、詳しい表示を読む行動が混雑下で滞留を生んだ点が因果の中心です。' }),
+      aa22Question({ ...shared, code: 'I-3', bigQuestion: '大問一', bigTitle: '説明的文章', officialSmallLabel: '問3', passage: JA_PASSAGE_I, points: 1, unit: 'modern', reasoningTag: '言い換え', evidence: '「利用者が現在地と次の行動を結び付けるための余裕」と定義している。', stem: '第四段落の「余白」の意味として最も適切なものを選びなさい。', choices: [{text:'案内から具体的な情報をすべて取り除き、利用者の判断だけに任せること。',error:'overgeneralization',reason:'必要な情報を取り除くことではありません。'},{text:'表示面に文字のない部分を広く作り、案内板を目立たせること。',error:'literal_only',reason:'本文は「単なる空白ではない」と明確に否定しています。'},{text:'利用者がその場で必要な情報を処理し、現在地から次の行動へ移れる状態。',reason:'本文中の定義を、判断と行動のつながりとして言い換えています。'},{text:'施設全体の情報を一度に記憶し、案内を二度と見なくてよい状態。',error:'overgeneralization',reason:'一度にすべて記憶することを求めていません。'}], answer: 2, explanation: 'ここでの余白は物理的な空きではなく、情報を行動へ結び付ける認知上の余裕です。' }),
+      aa22Question({ ...shared, code: 'I-4', bigQuestion: '大問一', bigTitle: '説明的文章', officialSmallLabel: '問4（二つ選択）', passage: JA_PASSAGE_I, points: 2, partialPoints: 1, unit: 'modern', reasoningTag: '内容一致', evidence: '第三段落でAの用途を認め、第四段落で量の多少だけによる判断をともに否定している。', stem: '本文の内容に一致するものを二つ選びなさい。', choices: [{text:'Aの案内板は混雑時に遅れを生んだため、どの利用者にも不要である。',error:'overgeneralization',reason:'建物全体を確かめたい人などには役立つとあります。'},{text:'Bの案内板は一度の情報量を絞り、次の表示へ移りやすくしていた。',reason:'第二段落の説明と一致します。'},{text:'案内の質は、目的地までの平均時間だけを測れば十分に判断できる。',error:'single_metric',reason:'筆者は利用状況を含めて考える必要を述べています。'},{text:'詳しい情報が有効かどうかは、利用目的や使われる状況によって変わる。',reason:'Aの価値を残しつつ、混雑時との違いを論じた内容に一致します。'},{text:'情報を減らすほど、案内は必ず正確で分かりやすくなる。',error:'overgeneralization',reason:'第四段落で「減らせば必ず分かりやすくなる」のではないと否定しています。'}], answers: [1, 3], explanation: 'Bの段階的表示と、用途・状況によるAの価値の変化が本文に一致します。' }),
+      aa22Question({ ...shared, code: 'I-5a', bigQuestion: '大問一', bigTitle: '説明的文章', officialSmallLabel: '問5①', passage: JA_PASSAGE_I, points: 1, unit: 'modern', reasoningTag: '要約', evidence: '最終段落の「何を伝えるか」と「いつ、どこで、どのように使われるか」。', stem: '本文の要約の空欄に入る語句として最も適切なものを選びなさい。\n「案内は情報の【　】だけで評価せず、利用者が判断し行動する状況に合わせて設計する必要がある。」', choices: [{text:'新しさ',error:'focus_shift',reason:'新旧は論点ではありません。'},{text:'量',reason:'本文全体で「情報量だけ」を質と見なす考えを検討しています。'},{text:'入手費用',error:'outside_information',reason:'費用は扱われていません。'},{text:'作成者',error:'outside_information',reason:'作成者の属性は論点ではありません。'}], answer: 1, explanation: '中心対立は、情報量の多寡だけで見る評価と、使用状況を含む評価です。' }),
+      aa22Question({ ...shared, code: 'I-5b', bigQuestion: '大問一', bigTitle: '説明的文章', officialSmallLabel: '問5②', passage: JA_PASSAGE_I, points: 1, unit: 'modern', reasoningTag: '論の構成', evidence: '一般的な見方→比較調査→調査の限定的解釈→概念の再定義、の順。', stem: '本文全体の論の進め方として最も適切なものを選びなさい。', choices: [{text:'案内に関する一般的な考えを示し、比較調査で問い直した後、両者の用途を整理して考えを深めている。',reason:'各段落の役割を順に捉えています。'},{text:'二種類の案内板の優劣を最初に決め、その結論に合う結果だけを後から示している。',error:'logic_reversal',reason:'最初に優劣を決めず、調査結果を受けて条件を整理しています。'},{text:'混雑の原因を施設の構造だけに求め、案内板の情報量とは無関係だと結論づけている。',error:'focus_shift',reason:'案内板の情報量と使われ方が中心です。'},{text:'Aの欠点を列挙した後、Bへ全面的に置き換える方法だけを提案している。',error:'overgeneralization',reason:'Aが役立つ利用者もいると明示しています。'}], answer: 0, explanation: '単純な二者択一ではなく、調査結果の条件を整理し「余白」を再定義する構成です。' }),
+      aa22Question({ ...shared, code: 'I-5c', bigQuestion: '大問一', bigTitle: '説明的文章', officialSmallLabel: '問5③', passage: JA_PASSAGE_I, points: 1, unit: 'modern', reasoningTag: '主張', evidence: '末文「何を伝えるかと同時に、いつ、どこで、どのように使われるかを設計して初めて、情報は行動を支える」。', stem: '筆者の考えに最も近いものを選びなさい。', choices: [{text:'正確な情報をすべて示せば、利用者の置かれた状況にかかわらず行動は速くなる。',error:'overgeneralization',reason:'状況にかかわらず、とは述べていません。'},{text:'案内では誤りを減らすことより、移動時間を短くすることだけを優先すべきだ。',error:'single_metric',reason:'一つの指標だけで評価する立場ではありません。'},{text:'情報の内容と、その情報が使われる場面の条件を結び付けて設計することが大切だ。',reason:'末文の主張を過不足なく言い換えています。'},{text:'利用者ごとの差をなくすには、すべての案内板を同じ情報量に統一すべきだ。',error:'outside_information',reason:'統一を求めておらず、むしろ用途と状況への適合を重視しています。'}], answer: 2, explanation: '情報の量ではなく、内容と使用状況の適合が行動を支えるという主張です。' }),
 
       aa22Question({ ...shared, code: 'II-1a', bigQuestion: '大問二', bigTitle: '漢字・語句', officialSmallLabel: '問1①', points: .5, unit: 'kanji', stem: '傍線部「補う」の読みとして最も適切なものを選びなさい。', choices: ['おぎなう', 'つぐなう', 'そこなう', 'ともなう'], answer: 0, explanation: '「補う」は「おぎなう」と読み、不足を満たす意味です。' }),
       aa22Question({ ...shared, code: 'II-1b', bigQuestion: '大問二', bigTitle: '漢字・語句', officialSmallLabel: '問1②', points: .5, unit: 'kanji', stem: '傍線部「顕著」の読みとして最も適切なものを選びなさい。', choices: ['けんしょ', 'げんちょ', 'けんちょ', 'げんしょ'], answer: 2, explanation: '「顕著」は「けんちょ」と読み、際立って明らかな様子を表します。' }),
@@ -203,14 +237,21 @@
     return q;
   }
 
-  const JA_LITERARY_PASSAGE = `【文学的文章・本アプリ作成】\n放課後、真帆は返却されたノートを机に置いたまま、窓の外を見ていた。発表の原稿には直すところがいくつもあった。そこへ悠斗が来て、赤い印のついた一文を指した。\n「ここ、だめって意味じゃなくて、いちばん伝えたいことが見えそうだから印をつけたんだと思う。」\n真帆はもう一度その一文を読んだ。直す場所が増えたと思っていた紙が、急に次へ進むための地図のように見えた。真帆は鉛筆を持ち、最初の一行を消した。`;
+  const JA_LITERARY_PASSAGE = `【文学的文章・本アプリ作成】
+理科室の窓際で、紗季は発表用の模造紙を筒のように丸めた。返された紙の右上には、先生の字で「観察したことは多い。でも、あなたが確かめたかった問いはどこだろう」とあった。写真の順番も、測った時刻も間違ってはいない。それだけに、全部を否定されたような気がして、紗季は輪ゴムを二重にかけた。
+
+片付けをしていた透が、「直すところ、多かった？」と尋ねた。紗季が返事をせず紙を机の奥へ押すと、透は先生の言葉を読み、「最初の予想と違ったのは、どの写真？」と言った。直し方を教えようとする口調ではなかった。
+
+紗季はしばらく黙ってから、三枚目の写真を指した。日当たりのよい場所ほど早く花が開くと思っていたのに、その鉢だけは、日が陰ってから開き始めていた。「ここから測る時間を変えたんだ」と言うと、透は「じゃあ、この写真より前と後で、見ていたものが変わったんだね」とだけ言って、流し台へ戻った。
+
+紗季は輪ゴムを外した。時刻順にまっすぐ並べた写真の列が、今度は三枚目で向きを変える矢印に見えた。先生の赤い字も、終点を示す線ではなく、その矢印をどこから描き始めるか尋ねる印のように思えた。紗季は題名の「日光と開花の観察」を消し、「予想が外れたとき、何を測り直すか」と書いた。紙の端は丸まったままだったが、紗季は手のひらでそこを押さえ、最初の写真の下に短い一文を書き始めた。`;
   function aa22JapaneseLiterary(level) {
     const shared = { subject: 'japanese', level, unit: 'literary', bigQuestion: '単元別', bigTitle: '文学的文章', passage: JA_LITERARY_PASSAGE };
     return [
-      aa22Question({ ...shared, code: 'LIT-1', officialSmallLabel: '問1', stem: '真帆が初めに窓の外を見ていた理由として最も適切なものを選びなさい。', choices: ['発表が終わって安心していたから', '直す箇所の多さに気持ちが止まっていたから', '悠斗を待ち伏せしていたから', 'ノートをなくしたから'], answer: 1, explanation: '直すところがいくつもある原稿を前に、すぐ作業へ向かえない心情が描かれています。' }),
-      aa22Question({ ...shared, code: 'LIT-2', officialSmallLabel: '問2', stem: '悠斗の発言によって真帆の受け止め方はどのように変わったか。', choices: ['赤い印を失敗の数だと考えた。', '原稿を捨てる理由だと考えた。', '修正を前進の手掛かりだと考えた。', '発表を他人に任せようと考えた。'], answer: 2, explanation: '「次へ進むための地図」という比喩が、修正を手掛かりとして捉え直したことを示します。' }),
-      aa22Question({ ...shared, code: 'LIT-3', officialSmallLabel: '問3', stem: '「地図のように見えた」という表現の効果として最も適切なものを選びなさい。', choices: ['教室の位置を具体的に説明する。', '直す順序と方向が見えた心情を表す。', '紙が本物の地図に変わったことを表す。', '窓の外の景色を強調する。'], answer: 1, explanation: '比喩により、否定的だった赤字が改善の方向を示すものへ変化した心情を表します。' }),
-      aa22Question({ ...shared, code: 'LIT-4', officialSmallLabel: '問4', stem: '結末の「最初の一行を消した」から読み取れる真帆の様子を選びなさい。', choices: ['修正に取りかかった。', '発表をあきらめた。', '悠斗に怒った。', 'ノートを返却した。'], answer: 0, explanation: '見方を変えた真帆が、具体的な修正行動を始めた結末です。' })
+      aa22Question({ ...shared, code: 'LIT-1', officialSmallLabel: '問1', reasoningTag: '行動と心情', evidence: '紗季は内容が間違いではないのに「全部を否定されたような気」がして、輪ゴムを二重にかけた。', stem: '冒頭で紗季が模造紙に「輪ゴムを二重にかけた」行動から読み取れる心情として最も適切なものを選びなさい。', choices: [{text:'観察記録に誤りがないため、先生へすぐ反論できると自信を深めている。',error:'opposite',reason:'自信ではなく、全部を否定されたように感じています。'},{text:'指摘の意味をまだ整理できず、発表資料と向き合うことをいったん避けようとしている。',reason:'紙を閉じて机の奥へ押す後の行動ともつながります。'},{text:'透に直してもらうつもりで、資料を持ち運びやすい形に整えている。',error:'outside_information',reason:'透へ頼む意図は示されていません。'},{text:'観察を終えた満足感から、資料を傷めないよう丁寧に保管しようとしている。',error:'surface_reading',reason:'二重の輪ゴムは心理的に閉じる動作として描かれています。'}], answer: 1, explanation: '紙を閉じる動作が、指摘を拒絶と受け止めて資料から距離を置く心情を表します。' }),
+      aa22Question({ ...shared, code: 'LIT-2', officialSmallLabel: '問2', reasoningTag: '発言の働き', evidence: '透は「直し方」ではなく「最初の予想と違ったのは、どの写真？」と尋ねた。', stem: '透の問いかけが紗季に与えた働きとして最も適切なものを選びなさい。', choices: [{text:'先生の指摘が誤りだと証明する材料を選ばせ、資料を元の形で提出させた。',error:'outside_information',reason:'先生の指摘を否定せず、資料も元の形には戻していません。'},{text:'修正方法を具体的に指示し、紗季が考えなくても題名を決められるようにした。',error:'overgeneralization',reason:'透は答えを与えず、問いを返しています。'},{text:'予想と観察のずれへ注意を戻し、紗季自身が発表の中心となる問いを見つけるきっかけを作った。',reason:'三枚目を境に「見ていたものが変わった」と気づく流れにつながります。'},{text:'写真の時刻順が間違っていると気づかせ、並べ替えだけで問題を解決させた。',error:'focus_shift',reason:'時刻順は間違っておらず、論点は問いの見え方です。'}], answer: 2, explanation: '透は正解を教えず、紗季が自分の観察の転換点を言葉にする問いを置きました。' }),
+      aa22Question({ ...shared, code: 'LIT-3', officialSmallLabel: '問3', reasoningTag: '比喩と心情変化', evidence: '写真の列が「三枚目で向きを変える矢印」に、赤字が「終点」ではなく描き始めを尋ねる印に見えた。', stem: '「写真の列が、今度は三枚目で向きを変える矢印に見えた」という表現の効果として最も適切なものを選びなさい。', choices: [{text:'同じ写真の並びを、失敗の記録ではなく問いが変化した過程として捉え直したことを表す。',reason:'三枚目を転換点として、観察の意味を再構成した心情を示します。'},{text:'写真を矢印の形に貼り直す必要があると理解し、見た目の修正を優先したことを表す。',error:'literal_only',reason:'物理的な貼り方ではなく、資料の意味の捉え直しです。'},{text:'三枚目以後の観察は誤りなので削除し、最初の予想だけを残そうとしたことを表す。',error:'opposite',reason:'予想と違った三枚目以後を発表の中心にしています。'},{text:'透の考えをそのまま借りれば発表が完成すると安心し、自分で考えるのをやめたことを表す。',error:'outside_information',reason:'最後は紗季自身が題名と一文を書いています。'}], answer: 0, explanation: '比喩は、指摘を「失敗の終点」から「問いを描き直す始点」へ変えたことを示します。' }),
+      aa22Question({ ...shared, code: 'LIT-4', officialSmallLabel: '問4', reasoningTag: '結末', evidence: '紙の端は丸まったままだが、紗季は押さえて新しい題名と最初の一文を書き始めた。', stem: '結末の紗季の様子として最も適切なものを選びなさい。', choices: [{text:'不安が完全に消えたため、先生の助言を使わず最初から別の研究を始めている。',error:'overgeneralization',reason:'紙の端が丸まったままという描写から、不安が完全に消えたとは言えません。'},{text:'資料の欠点を隠すため、見栄えだけを整えて提出しようとしている。',error:'surface_reading',reason:'題名と説明の中心を問い直しています。'},{text:'先生と透に認められることだけを目標に、二人の言葉をそのまま書き写している。',error:'outside_information',reason:'書き写したとはなく、自分の問いに言い換えています。'},{text:'まだためらいを残しながらも、指摘を手掛かりに自分の問いを立て直し、修正へ踏み出している。',reason:'丸まりを押さえつつ書き始める動作が、ためらいと前進の両方を示します。'}], answer: 3, explanation: '心情を単純な克服にせず、残るためらいと主体的な再出発を同時に読むのが適切です。' })
     ];
   }
 
@@ -407,6 +448,58 @@
     const picked = [];
     for (let i = 0; i < target; i++) picked.push(queue[Math.round(i * (queue.length - 1) / Math.max(1, target - 1))]);
     return [...new Map(picked.map(q => [q.id, q])).values()];
+  }
+
+  function aa22PracticeLevel(config) {
+    let difficulty = clamp(Math.round(Number(state.ui.subjectDifficulty) || 7), 1, 11);
+    let level = difficulty <= 4 ? 1 : difficulty <= 8 ? 2 : 3;
+    if (config.subject === 'math' && safeArray(config.unitsBySubject.math).includes('advanced')) level = 3;
+    return level;
+  }
+  function aa22BalancedPracticeSlice(queue, units, count) {
+    const groups = new Map(units.map(unit => [unit, shuffle(queue.filter(q => q.examUnit === unit))]));
+    const picked = [];
+    let changed = true;
+    while (picked.length < count && changed) {
+      changed = false;
+      for (const unit of units) {
+        const group = groups.get(unit) || [], q = group.shift();
+        if (!q) continue;
+        picked.push(q); changed = true;
+        if (picked.length >= count) break;
+      }
+    }
+    return picked;
+  }
+  function aa22PracticeQueue(configInput = aa22PracticeConfig()) {
+    const config = aa22NormalizePracticeConfig(configInput), subject = config.subject;
+    const units = safeArray(config.unitsBySubject[subject]);
+    const level = aa22PracticeLevel(config);
+    const custom = aa22NormalizeConfig({ subject, level, scope: 'custom', units, timeMin: 20, length: 'full' });
+    let queue = aa22StructuredQueue(subject, level, custom)
+      .filter(q => !q.answerIndices)
+      .map(q => ({ ...q, choices: q.choices.map(c => ({ ...c })), testMode: false, points: 1,
+        context: 'unit-practice-' + subject + '-' + q.examUnit }));
+    const count = config.length === 'micro' ? 3 : config.length === 'deep' ? 15 : 8;
+    queue = aa22BalancedPracticeSlice(queue, units, count);
+    if (queue.some(q => !units.includes(q.examUnit))) return [];
+    return queue;
+  }
+  function aa22StartUnitPractice(configInput = aa22PracticeConfig()) {
+    const config = aa22NormalizePracticeConfig(configInput), subject = config.subject;
+    const units = safeArray(config.unitsBySubject[subject]), queue = aa22PracticeQueue(config);
+    if (!queue.length || queue.some(q => !units.includes(q.examUnit))) {
+      alert('選択単元だけの演習問題を作成できませんでした。単元設定を確認してください。');
+      return false;
+    }
+    const level = aa22PracticeLevel(config);
+    state.ui.practiceConfig = config;
+    API.startPractice(subject, config.length, level, queue);
+    state.session.kind = 'unitPractice';
+    state.session.practiceConfig = { subject, length: config.length, units: [...units], level, difficulty: Number(state.ui.subjectDifficulty) || 7 };
+    state.session.practiceUnits = [...units];
+    save(); render();
+    return true;
   }
 
   function aa22StartEnglish(config) {
@@ -613,6 +706,17 @@
     pauseTicker();
   };
 
+  function aa22PracticeSettingsHTML() {
+    const c = aa22PracticeConfig(), units = EXAM_UNITS[c.subject], selected = c.unitsBySubject[c.subject];
+    const labels = selected.map(unit => aa22UnitLabel(c.subject, unit));
+    return '<section class="card practiceUnitCard"><div class="eyebrow">UNIT PRACTICE</div><h3 class="h3">単元を指定して演習</h3><p class="sub">教科内の単元を選び、選択した単元だけで即時解説つき演習を作ります。設定と実際の出題単元は開始時にも照合します。</p>' +
+      '<div class="examSettings"><div class="field"><label>教科</label><select data-action="practice-subject">' + Object.entries(SUBJECTS).map(([id, name]) => '<option value="' + id + '" ' + (c.subject === id ? 'selected' : '') + '>' + name + '</option>').join('') + '</select></div>' +
+      '<div class="field"><label>問題量</label><select data-action="practice-length"><option value="micro" ' + (c.length === 'micro' ? 'selected' : '') + '>短時間（3問）</option><option value="standard" ' + (c.length === 'standard' ? 'selected' : '') + '>標準（8問まで）</option><option value="deep" ' + (c.length === 'deep' ? 'selected' : '') + '>本格（15問まで）</option></select></div>' +
+      '<div class="wide"><label class="strong">単元</label><div class="unitGrid">' + units.map(([id, label]) => '<label class="unitCheck"><input type="checkbox" data-action="practice-unit" value="' + id + '" ' + (selected.includes(id) ? 'checked' : '') + '><span>' + esc(label) + '</span></label>').join('') + '</div></div></div>' +
+      '<div class="notice"><b>現在の演習対象：</b>' + labels.map(esc).join('・') + '</div><div class="sp12"></div><button class="btn primary" data-action="start-unit-practice">この単元で演習開始</button>' +
+      '<div class="tiny">数学の「高校公式」を選ぶと、その単元は旭丘レベルの公式暗記として出題します。数学はここでも公式・法則の暗記だけです。</div></section>';
+  }
+
   const aa22PrevSubjectsHTML = subjectsHTML;
   subjectsHTML = function () {
     let html = aa22PrevSubjectsHTML();
@@ -621,6 +725,7 @@
     html = html.replace('<button class="btn primary" data-action="start-reading-simulator">愛知県英語・筆記40分</button>', '<button class="btn primary" data-action="start-reading-simulator">愛知県英語・筆記40分</button><button class="btn ghost" data-action="start-graph-reading">図表＋レポート類題</button>');
     html = html.replace('代数・関数・図形・確率', '中学公式＋高校受験で使える高校公式');
     html = html.replace('>数学演習</button>', '>数学公式暗記</button><button class="btn ghost" data-action="start-advanced-math-formulas">高校公式暗記</button>');
+    html = html.replace('<div class="sp12"></div><section class="grid g2">', '<div class="sp12"></div>' + aa22PracticeSettingsHTML() + '<div class="sp12"></div><section class="grid g2">');
     const launch = '<div class="sp12"></div><section class="card"><div class="chronologiaLaunch"><div><div class="eyebrow">SEPARATE EXAM MODE</div><h3 class="h3">入試対策は独立ページへ</h3><p class="sub">演習の即時解説と、本番型テストの採点記録を混ぜません。</p></div><button class="btn primary" data-route="exam">入試対策を開く</button></div></section>' +
       '<div class="sp12"></div><section class="card"><div class="chronologiaLaunch"><div><div class="eyebrow">CHRONOLOGIA 6.1</div><h3 class="h3">歴史年表・同時代史</h3><p class="sub">385件の統合年表、クイズ、並べ替え、弱点復習、参考書型解説を別画面で使います。</p></div><a class="btn gold" href="./chronologia.html">年表を開く</a></div></section>';
     return html.replace(/<\/main>/, launch + '</main>');
@@ -629,6 +734,13 @@
   const aa22PrevStudyHTML = studyHTML;
   studyHTML = function () {
     let html = aa22PrevStudyHTML(), s = state.session, q = currentQ();
+    if (s?.active && s.trackType === 'practice' && s.practiceConfig && q) {
+      const unitLabel = q.examUnit ? aa22UnitLabel(s.subject, q.examUnit) : '';
+      const selectedLabels = safeArray(s.practiceUnits).map(unit => aa22UnitLabel(s.subject, unit));
+      const meta = '<div class="examQuestionMeta"><span class="chip">単元演習</span>' + (unitLabel ? '<span class="chip">単元：' + esc(unitLabel) + '</span>' : '') + '<span class="chip">設定：' + selectedLabels.map(esc).join('・') + '</span></div>';
+      const passage = q.aichiPassage ? '<details class="examPassage" open><summary>本文・資料</summary><div class="examPassageText">' + esc(q.aichiPassage) + '</div></details>' : '';
+      return html.replace('<section class="card"><div class="qstem">', '<section class="card">' + meta + passage + '<div class="qstem">');
+    }
     if (!s?.active || s.trackType !== 'test' || !q) return html;
     const selected = q.answerIndices ? safeArray(s.testPending?.[q.id]?.indices) : (s.testPending?.[q.id] ? [s.testPending[q.id].idx] : []);
     const unitLabel = q.examUnit ? aa22UnitLabel(s.subject, q.examUnit) : '';
@@ -675,11 +787,34 @@
     }
     if (action === 'start-graph-reading') return aa22StartGraphPractice();
     if (action === 'start-advanced-math-formulas') return aa22StartAdvancedMathFormulas();
+    if (action === 'start-unit-practice') return aa22StartUnitPractice(aa22PracticeConfig());
+    if (action === 'another-set' && state.session?.practiceConfig) {
+      const previous = state.session.practiceConfig, current = aa22PracticeConfig();
+      return aa22StartUnitPractice({ ...current, subject: previous.subject, length: previous.length,
+        unitsBySubject: { ...current.unitsBySubject, [previous.subject]: [...previous.units] } });
+    }
     if (action === 'start-exam-v22' || action === 'start-aichi-test') return aa22StartExam(aa22Config());
     if (action === 'test-next') return aa22FinalizeCurrent(true);
     if (action === 'repeat-aichi-test') return aa22StartExam(state.session?.examConfig || aa22Config());
     return aa22PrevHandleAction(el, event);
   };
+
+  document.addEventListener('change', event => {
+    const el = event.target.closest('[data-action^="practice-"]'); if (!el) return;
+    let c = aa22PracticeConfig();
+    if (el.dataset.action === 'practice-subject') c = { ...c, subject: el.value };
+    if (el.dataset.action === 'practice-length') c = { ...c, length: el.value };
+    if (el.dataset.action === 'practice-unit') {
+      const checked = [...document.querySelectorAll('[data-action="practice-unit"]:checked')].map(x => x.value);
+      if (!checked.length) {
+        el.checked = true;
+        alert('演習する単元を1つ以上選んでください。');
+        return;
+      }
+      c = { ...c, unitsBySubject: { ...c.unitsBySubject, [c.subject]: checked } };
+    }
+    state.ui.practiceConfig = aa22NormalizePracticeConfig(c); save(); render();
+  });
 
   document.addEventListener('change', event => {
     const el = event.target.closest('[data-action^="exam-"]'); if (!el) return;
@@ -737,6 +872,21 @@
         const qs = aa22StructuredQueue(subject, 3, cfg);
         add(SUBJECTS[subject] + '単元指定 ' + aa22UnitLabel(subject, unit), qs.length > 0 && qs.every(q => q.examUnit === unit), qs.length + '問 / ' + [...new Set(qs.map(q => q.examUnit))].join(','));
       }
+      const practiceBase = aa22DefaultPracticeConfig('social');
+      practiceBase.unitsBySubject.social = ['history'];
+      const socialPractice = aa22PracticeQueue(practiceBase);
+      add('演習の単元設定を出題へ反映', socialPractice.length > 0 && socialPractice.every(q => q.examUnit === 'history' && q.testMode === false), socialPractice.length + '問 / ' + [...new Set(socialPractice.map(q => q.examUnit))].join(','));
+      const previousDifficulty = state.ui.subjectDifficulty;
+      state.ui.subjectDifficulty = 11;
+      const advancedPracticeConfig = aa22DefaultPracticeConfig('math');
+      advancedPracticeConfig.unitsBySubject.math = ['advanced'];
+      const advancedPractice = aa22PracticeQueue(advancedPracticeConfig);
+      state.ui.subjectDifficulty = previousDifficulty;
+      add('演習・高校公式単元', advancedPractice.length > 0 && advancedPractice.every(q => q.examUnit === 'advanced' && q.source?.area === 'advanced'), advancedPractice.length + '問');
+      const modern = aa22JapaneseExam(3).filter(q => q.examUnit === 'modern'), literary = aa22JapaneseLiterary(3);
+      const readingQuality = [...modern, ...literary].every(q => q.evidence && q.reasoningTag && q.choices.filter(c => !c.ok).every(c => c.error));
+      add('国語文章問題の根拠精度', modern.length === 7 && literary.length === 4 && modern[0].aichiPassage.length >= 650 && literary[0].aichiPassage.length >= 500 && readingQuality,
+        '説明文' + modern.length + '問・文学文' + literary.length + '問／全問に根拠・思考タグ・誤答型');
       const vocab = window.AA_JA_VOCAB_10000;
       add('国語1万語索引', vocab?.count === 10000 && vocab.entries.length === 10000 && new Set(vocab.entries.map(x => x[0] + '|' + x[1])).size === 10000, '教育基本語彙DB由来 ' + (vocab?.entries.length || 0) + '件');
       const graph = aa22GraphReadingSet(11, 'exam');
@@ -751,7 +901,9 @@
     units: EXAM_UNITS, japaneseExam: aa22JapaneseExam, structuredQueue: aa22StructuredQueue,
     normalizeConfig: aa22NormalizeConfig, startExam: aa22StartExam, allowedAreas: aa22AllowedAreas,
     vocabIndex: window.AA_JA_VOCAB_10000, graphReadingSet: aa22GraphReadingSet,
-    advancedMathQueue: aa22AdvancedMathQueue
+    advancedMathQueue: aa22AdvancedMathQueue, normalizePracticeConfig: aa22NormalizePracticeConfig,
+    practiceQueue: aa22PracticeQueue, startUnitPractice: aa22StartUnitPractice,
+    japaneseLiterary: aa22JapaneseLiterary
   };
 
   save(); render();
