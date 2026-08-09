@@ -43,7 +43,7 @@
       if (area === 'kanji') return 'ja.kanji.context';
       return 'ja.idiom.context';
     }
-    if (subject === 'math') return area === 'strategy' || area === 'advanced' ? 'math.formula.transfer' : 'math.formula.recall';
+    if (subject === 'math') return 'math.formula.recall';
     if (subject === 'science') return 'sci.' + area + '.recall';
     if (subject === 'social') {
       if (area === 'history') return 'soc.history.explanation';
@@ -88,6 +88,15 @@
       answer: h.note, explanation: h.year + '年の「' + h.event + '」を前後関係と因果で捉える。',
       difficulty: 7, skillId: 'soc.history.explanation', impact: 1.05
     });
+  }
+
+  const AA2_MATH_FORMULA_AREAS = new Set([
+    'number', 'algebra', 'equation', 'function', 'geometry', 'measure', 'probability', 'statistics'
+  ]);
+  function aa2SubjectRows(subject) {
+    return subject === 'math'
+      ? AA2_BANKS.math.filter(row => AA2_MATH_FORMULA_AREAS.has(row.area))
+      : AA2_BANKS[subject];
   }
 
   function aa2Normal() {
@@ -141,15 +150,16 @@
   function aa2Rank(subject, level, futureDays = 0) {
     level = clamp(Number(level) || 1, 1, 3);
     const cap = level === 1 ? 7 : level === 2 ? 9 : 11;
-    return AA2_BANKS[subject]
-      .filter(row => row.difficulty <= cap && !(row.area === 'advanced' && level < 3))
+    return aa2SubjectRows(subject)
+      .filter(row => row.difficulty <= cap)
       .map(row => ({ row, score: aa2Priority(row, level, futureDays) }))
       .sort((a, b) => b.score - a.score);
   }
 
   function aa2UniqueDistractors(row) {
-    const sameArea = AA2_BANKS[row.subject].filter(x => x.id !== row.id && x.area === row.area);
-    const other = AA2_BANKS[row.subject].filter(x => x.id !== row.id && x.area !== row.area);
+    const subjectRows = aa2SubjectRows(row.subject);
+    const sameArea = subjectRows.filter(x => x.id !== row.id && x.area === row.area);
+    const other = subjectRows.filter(x => x.id !== row.id && x.area !== row.area);
     const pool = [...shuffle(sameArea), ...shuffle(other)];
     const seen = new Set([String(row.answer)]);
     const out = [];
@@ -166,7 +176,7 @@
   function aa2MakeKnowledgeQuestion(row, testMode = false) {
     const labels = {
       japanese: '次の語句・句法の意味として最も適切なものを選びなさい。',
-      math: '次の公式・法則・方針として最も適切なものを選びなさい。',
+      math: '次の公式・法則として正しいものを選びなさい。',
       science: '次の用語・現象の説明として最も適切なものを選びなさい。',
       social: '次の年号・出来事・説明の組合せとして最も適切なものを選びなさい。'
     };
@@ -184,7 +194,9 @@
       id: 'v2:' + row.subject + ':' + row.id + ':' + uid('q'), type: row.subject,
       stem: labels[row.subject] + '\n\n【' + row.prompt + '】',
       choices, answerIndex: choices.findIndex(c => c.ok), explanation,
-      skills: [{ id: row.skillId, role: 'primary' }, { id: row.subject === 'math' ? 'math.formula.transfer' : row.subject === 'science' ? 'sci.aichi.integration' : row.subject === 'social' ? 'soc.aichi.integration' : 'ja.aichi.integration', role: 'secondary' }],
+      skills: row.subject === 'math'
+        ? [{ id: 'math.formula.recall', role: 'primary' }]
+        : [{ id: row.skillId, role: 'primary' }, { id: row.subject === 'science' ? 'sci.aichi.integration' : row.subject === 'social' ? 'soc.aichi.integration' : 'ja.aichi.integration', role: 'secondary' }],
       expectedMs: testMode ? 55000 : 35000, context: 'v2-' + row.area,
       srsId: 'v2:' + row.subject + ':' + row.id, format: row.area === 'kanji' ? 'meaning' : 'retrieval-' + row.area,
       source: row.area === 'kanji' ? { ...row, meaning: row.answer, example: row.explanation } : row,
@@ -226,7 +238,6 @@
   };
 
   const aa2BaseMakeJapaneseQ = makeJapaneseQ;
-  const aa2BaseMakeMathQ = makeMathQ;
   const aa2BaseMakeScienceQ = makeScienceQ;
   const aa2BaseMakeSocialQ = makeSocialQ;
 
@@ -241,8 +252,7 @@
     return aa2BaseMakeJapaneseQ(diff);
   };
   makeMathQ = function (diff = 7) {
-    if (Math.random() < .48) return aa2MakeKnowledgeQuestion(aa2PickKnowledge('math', diff >= 9 ? 3 : diff >= 6 ? 2 : 1));
-    return aa2BaseMakeMathQ(diff);
+    return aa2MakeKnowledgeQuestion(aa2PickKnowledge('math', diff >= 9 ? 3 : diff >= 6 ? 2 : 1));
   };
   makeScienceQ = function (diff = 7) {
     if (Math.random() < .60) return aa2MakeKnowledgeQuestion(aa2PickKnowledge('science', diff >= 9 ? 3 : diff >= 6 ? 2 : 1));
@@ -255,7 +265,7 @@
 
   function aa2TransferQuestion(subject, diff) {
     if (subject === 'japanese') return aa2BaseMakeJapaneseQ(diff);
-    if (subject === 'math') return aa2BaseMakeMathQ(diff);
+    if (subject === 'math') return aa2MakeKnowledgeQuestion(aa2PickKnowledge('math', diff >= 9 ? 3 : diff >= 6 ? 2 : 1));
     if (subject === 'science') return aa2BaseMakeScienceQ(diff);
     return aa2BaseMakeSocialQ(diff);
   }
@@ -277,12 +287,13 @@
       selected.push(candidate.row); used.add(candidate.row.id);
     }
     const queue = selected.slice(0, count).map(row => aa2MakeKnowledgeQuestion(row, false));
+    if (subject === 'math') return queue.slice(0, count);
     const transferCount = Math.max(1, Math.round(count * (level === 3 ? .35 : .22)));
     for (let i = 0; i < transferCount; i++) {
       const index = Math.min(queue.length, 2 + i * 3);
       const q = aa2TransferQuestion(subject, Math.round(aa2TargetDifficulty(level)));
       q.context = 'aichi-transfer-' + subject;
-      q.skills = [...safeArray(q.skills), { id: subject === 'math' ? 'math.aichi.multistep' : subject === 'science' ? 'sci.aichi.integration' : subject === 'social' ? 'soc.aichi.integration' : 'ja.aichi.integration', role: 'secondary' }];
+      q.skills = [...safeArray(q.skills), { id: subject === 'science' ? 'sci.aichi.integration' : subject === 'social' ? 'soc.aichi.integration' : 'ja.aichi.integration', role: 'secondary' }];
       queue.splice(index, 0, q);
     }
     return queue.slice(0, count);
@@ -338,7 +349,7 @@
       const q = aa2TransferQuestion(subject, Math.round(aa2TargetDifficulty(level)));
       q.testMode = true;
       q.context = 'aichi-r' + AA2_OFFICIAL_YEAR + '-' + subject;
-      q.skills = [...safeArray(q.skills), { id: subject === 'math' ? 'math.aichi.multistep' : subject === 'science' ? 'sci.aichi.integration' : subject === 'social' ? 'soc.aichi.integration' : 'ja.aichi.integration', role: 'primary' }];
+      if (subject !== 'math') q.skills = [...safeArray(q.skills), { id: subject === 'science' ? 'sci.aichi.integration' : subject === 'social' ? 'soc.aichi.integration' : 'ja.aichi.integration', role: 'primary' }];
       queue.push(q);
     }
     return aa2PointPlan(queue);
@@ -635,7 +646,7 @@
   settingsHTML = function () {
     let html = aa2BaseSettingsHTML();
     const source = '<div class="sp12"></div><section class="card"><div class="eyebrow">OFFICIAL BASIS</div><h3 class="h3">愛知県入試への適合</h3>' +
-      '<p class="sub">令和8年度の愛知県公表問題を基準に、国語4大問、数学の短問＋確率/関数/図形、理科6資料実験群、社会6資料統合群の処理技能をモデル化しています。</p>' +
+      '<p class="sub">令和8年度の愛知県公表問題を基準に、国語4大問、理科6資料実験群、社会6資料統合群の処理技能をモデル化しています。数学はユーザー設定により、中学範囲の公式・法則の暗記だけを出題します。</p>' +
       '<a class="btn ghost" href="' + AA2_OFFICIAL_URL + '" target="_blank" rel="noopener">愛知県公式問題ページ</a>' +
       '<div class="tiny">公式問題そのものは転載せず、構成・技能・時間条件を使ったオリジナル問題です。旭丘の公式最低点・合格率は表示しません。</div></section>';
     return html.replace(/<\/main>/, source + '</main>');
@@ -678,8 +689,9 @@
         '古文語・漢文句法・慣用句・四字熟語・漢字意味');
       const scienceAreas = new Set(AA2_BANKS.science.map(x => x.area));
       add('理科4領域', ['biology', 'chemistry', 'physics', 'earth'].every(x => scienceAreas.has(x)), [...scienceAreas].join(' / '));
-      add('数学高校内容ゲート', AA2_BANKS.math.filter(x => x.area === 'advanced').length >= 5 && AA2_BANKS.math.filter(x => x.area === 'advanced').every(x => x.difficulty >= 8),
-        '高校内容は旭丘LEVEL側の検算・短縮手段として限定');
+      const formulaRows = aa2SubjectRows('math');
+      add('数学公式暗記限定', formulaRows.length === 33 && formulaRows.every(x => AA2_MATH_FORMULA_AREAS.has(x.area)),
+        '中学数学の公式・法則33項目のみ');
 
       let bad = 0;
       for (const subject of ['japanese', 'math', 'science', 'social']) {
@@ -727,6 +739,7 @@
 
   globalThis.AA_V2_TEST_API = {
     banks: AA2_BANKS, levels: AA2_LEVELS, makeQuestion: aa2MakeKnowledgeQuestion,
+    subjectRows: aa2SubjectRows, mathFormulaAreas: [...AA2_MATH_FORMULA_AREAS],
     practiceQueue: aa2PracticeQueue, testQueue: aa2TestQueue, smartReviewQueue: aa2SmartReviewQueue,
     priority: aa2Priority, retention: aa2Retention, startPractice: aa2StartPractice,
     startTest: aa2StartAichiTest, commitTestAnswer: aa2CommitTestAnswer
