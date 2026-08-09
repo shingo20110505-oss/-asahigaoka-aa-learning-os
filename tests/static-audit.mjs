@@ -98,7 +98,7 @@ for (const icon of manifest.icons) {
 }
 
 check('Offline fallback included', fs.existsSync(path.join(root, 'offline.html')) && sw.includes('offline.html'));
-check('Cache version matches app version', /APP_VERSION='2\.2\.4'/.test(index) && /VERSION = '2\.2\.4'/.test(sw));
+check('Cache version matches app version', /APP_VERSION='2\.2\.5'/.test(index) && /VERSION = '2\.2\.5'/.test(sw));
 check('Reading difficulty is exact', /requested=clamp\(Math\.round\(Number\(base\)\|\|7\),1,11\)/.test(index) && /generateReading\(requested,mode\)/.test(index) && /generateReadingForLearner\(base,'standard',assist\)/.test(index));
 check('Indirect-question full-output gate', /hasIndirectQuestion/.test(index) && /generateReadingBeforeFullGrammarGate/.test(index) && /repairSavedReadingGrammarGate/.test(index));
 check('Reading-opening anti-repeat gate', /READING_OPENINGS/.test(index) && /openingSignature/.test(index) && /selectReadingOpening/.test(index) && /openingFirstToken/.test(index));
@@ -122,6 +122,7 @@ check('Lexical uncertainty interval', /standardError/.test(engine) && /assistedL
 check('Evidence IDs', /E-\$\{passageId\}-P/.test(engine));
 check('Scenario-specific distractors', /aa15ScenarioDistractors/.test(engine) && /distractorType/.test(engine));
 check('Collocations included', /take part in/.test(engine) && /en\.vocab\.collocation/.test(engine));
+check('English cloze answer-leak guard', /function clozeSafeText/.test(index) && /function clozeLeaksAnswer/.test(index) && /function aa15CollocationCloze/.test(engine));
 check('Aichi English 40-minute simulator', /AA15_MOCK_LIMIT_MS = 40 \* 60 \* 1000/.test(engine) && /start-reading-simulator/.test(index));
 check('English two-graph report practice', /Food Waste Survey — Two Graphs and a Report/.test(engineV22) && /start-graph-reading/.test(engineV22) && /graphReadingSet: aa22GraphReadingSet/.test(engineV22) && /AA_V22_TEST_API\?\.graphReadingSet/.test(engine));
 check('Knowledge tracing uncertainty', /aa15SkillInterval/.test(engine) && /alpha/.test(engine) && /beta/.test(engine));
@@ -135,7 +136,10 @@ check('Social near-miss distractors', /function aa2SocialDistractors/.test(engin
 check('Three Aichi exam levels', /公立標準/.test(engineV2) && /難関公立/.test(engineV2) && /旭丘レベル/.test(engineV2));
 check('Independent exam route', /state\.route !== 'exam'/.test(engineV22) && /function examHTML/.test(engineV22));
 check('Exam-unit filter enforced', /scope: 'custom', units: checked/.test(engineV22) && /if \(!candidates\.length\) return null/.test(engineV22) && /examUnit/.test(engineV22));
+check('Practice-unit filter enforced', /function aa22PracticeQueue/.test(engineV22) && /start-unit-practice/.test(engineV22) && /queue\.some\(q => !units\.includes\(q\.examUnit\)\)/.test(engineV22));
 check('R8 Japanese exact macrostructure', /R8国語4大問・22点/.test(engineV22) && /大問二/.test(engineV22) && /部分点/.test(engineV22));
+check('Japanese reading evidence and distractor audit', /reasoningTag/.test(engineV22) && /evidence/.test(engineV22) && /overgeneralization/.test(engineV22) && /outside_information/.test(engineV22));
+check('Quiet correct-answer feedback', /function playSuccessCue/.test(index) && /success-feedback/.test(index) && /successCue/.test(index) && /prefers-reduced-motion/.test(read('learning-engine-v22.css')));
 check('10,000-word index literal count', /count:10000/.test(vocab10000) && /CC BY 4\.0/.test(vocab10000));
 check('Forgetting model disclosure', /Ebbinghaus-inspired/.test(engineV2) && /exp\(-t\/S\)/.test(engineV2));
 check('v2 migration original preserved', /_pre_v2/.test(index) && /AA2_PRE_KEY/.test(engineV2));
