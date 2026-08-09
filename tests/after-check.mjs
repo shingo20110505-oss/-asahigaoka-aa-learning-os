@@ -25,9 +25,10 @@ window.__aa = {
   lexicalCoverageProfile, preteachPlan, overallReadiness, glossLookup, verbFormsFor,
   generateReading, fullReadingTranslation, importantGrammarNotes, hash,
   grammarLeakAudit, hasIndirectQuestion, repairSavedReadingGrammarGate,
+  registerReading, openingSignature, openingFirstToken, openingSimilarity,
   registerGlossWord, recordLexicalSignal, lexicalPosterior,
   v2: globalThis.AA_V2_TEST_API,
-  readingJa: READING_JA, readingScenarios: DATA.readingScenarios,
+  readingJa: READING_JA, readingScenarios: DATA.readingScenarios, readingOpenings: READING_OPENINGS,
   version: APP_VERSION, schema: SCHEMA_VERSION, storeKey: STORE_KEY
 };`;
 
@@ -48,7 +49,7 @@ const fresh = makeRuntime();
 try {
   const aa = fresh.__aa;
   check('初期画面描画', fresh.document.querySelector('h1')?.textContent === '旭丘AA Learning OS');
-  check('v2.1.1・schema 4', aa.version === '2.1.1' && aa.schema === 4, `${aa.version}/${aa.schema}`);
+  check('v2.1.2・schema 4', aa.version === '2.1.2' && aa.schema === 4, `${aa.version}/${aa.schema}`);
   check('iPhone safe-area設計', /viewport-fit=cover/.test(index) && /safe-area-inset-(?:top|bottom)/.test(index));
   check('レスポンシブ設計', /@media\(max-width:700px\)/.test(index) && /grid-template-columns:1fr/.test(index));
 
@@ -89,6 +90,22 @@ try {
   const gatedOutput = readingSamples.map(r => [r.passage, ...r.questions.flatMap(q => [q.stem, ...q.choices.map(c => c.text)])].join('\n'));
   check('間接疑問文OFF・生成物全体', gatedOutput.every(text => !aa.hasIndirectQuestion(text)), gatedOutput.filter(aa.hasIndirectQuestion).slice(0, 2).join(' / '));
   check('間接疑問文OFF・20素材原本', aa.readingScenarios.every(sc => !aa.hasIndirectQuestion([...(sc.facts || []), sc.extension, sc.lesson, sc.inference].join(' '))));
+  const openingSignatures = aa.readingOpenings.map(x => aa.openingSignature(x.text));
+  const openingHeads = new Set(aa.readingOpenings.map(x => aa.openingFirstToken(x.text)));
+  check('長文導入24種類', aa.readingOpenings.length === 24 && new Set(openingSignatures).size === 24 && openingHeads.size >= 12, `${aa.readingOpenings.length}/${openingHeads.size}`);
+  const openingUnmapped = [...new Set(aa.readingOpenings.flatMap(x => aa.lexicalCoverageProfile(x.text).unmapped))];
+  check('長文導入語彙辞書', openingUnmapped.length === 0, openingUnmapped.join(','));
+  aa.state = aa.defaultState(); aa.state.profile.vocabDiagnosticDone = true;
+  const delivered = [], openingViolations = [];
+  for (let i = 0; i < 120; i++) {
+    const read = aa.generateReading(9, 'standard'), sig = aa.openingSignature(read.passage), first = aa.openingFirstToken(read.passage);
+    const previous = delivered.at(-1), last12 = delivered.slice(-12), maxNear = Math.max(0, ...last12.map(x => aa.openingSimilarity(read.passage, x.passage)));
+    if (previous?.first === first || last12.some(x => x.sig === sig) || maxNear >= .82) openingViolations.push({i, first, sig, maxNear});
+    delivered.push({passage:read.passage,sig,first}); aa.registerReading(read);
+  }
+  check('長文冒頭120本ストレス', openingViolations.length === 0, JSON.stringify(openingViolations.slice(0, 3)));
+  check('冒頭履歴フィールド保存', aa.state.recentTexts.length === 50 && aa.state.recentTexts.every(x => x.openingSignature && x.openingFirstToken));
+  check('導入文も全文和訳へ反映', aa.readingOpenings.every(x => x.ja) && delivered.length === 120);
 
   aa.state = aa.defaultState();
   aa.state.session = { id:'gate-save', active:true, kind:'reading', subject:'english', queue:[{ id:'saved-read', type:'readingSet', title:'Saved Reading', passage:'Students observed how people moved through the building after school.', wordCount:8, lesson:'The form of information can affect how well people use it.', questions:[{ id:'saved-q', type:'mainIdea', stem:'Choose the best answer.', answerIndex:0, choices:[{ text:'To show, through Saved Reading, why revising an idea with evidence is important.', ok:true, reason:'Correct.' },{ text:'Wrong A.', ok:false, reason:'No.' },{ text:'Wrong B.', ok:false, reason:'No.' },{ text:'Wrong C.', ok:false, reason:'No.' }], evidenceRefs:[] }] }], index:0, subIndex:0, answers:{'saved-q':{idx:0,correct:true,responseMs:5000}}, accumulatedMs:4567, scrollY:137 };
