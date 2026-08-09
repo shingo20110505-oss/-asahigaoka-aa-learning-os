@@ -79,7 +79,10 @@ for (const icon of manifest.icons) {
 }
 
 check('Offline fallback included', fs.existsSync(path.join(root, 'offline.html')) && sw.includes('offline.html'));
-check('Cache version matches app version', /APP_VERSION='2\.0\.0'/.test(index) && /VERSION = '2\.0\.0'/.test(sw));
+check('Cache version matches app version', /APP_VERSION='2\.1\.0'/.test(index) && /VERSION = '2\.1\.0'/.test(sw));
+check('Reading gloss verb forms', /verbFormsFor/.test(index) && /過去分詞形/.test(index));
+check('Reading full translation and grammar review', /fullReadingTranslation/.test(index) && /importantGrammarNotes/.test(index) && /全文和訳/.test(index));
+check('English-only reading choices', /readingQuestionSetBeforeEnglishChoices/.test(index) && /englishReadingChoice/.test(index));
 check('v1.5 engine precached', sw.includes("learning-engine-v15.js"));
 check('v2 files precached', sw.includes("curriculum-v2-data.js") && sw.includes("learning-engine-v2.js"));
 check('Stable storage key preserved', /STORE_KEY='asahi_learning_os_v1'/.test(index) && /_pre_v15/.test(engine));
