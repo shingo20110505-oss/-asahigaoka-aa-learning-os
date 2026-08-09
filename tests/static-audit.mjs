@@ -98,7 +98,7 @@ for (const icon of manifest.icons) {
 }
 
 check('Offline fallback included', fs.existsSync(path.join(root, 'offline.html')) && sw.includes('offline.html'));
-check('Cache version matches app version', /APP_VERSION='2\.2\.3'/.test(index) && /VERSION = '2\.2\.3'/.test(sw));
+check('Cache version matches app version', /APP_VERSION='2\.2\.4'/.test(index) && /VERSION = '2\.2\.4'/.test(sw));
 check('Reading difficulty is exact', /requested=clamp\(Math\.round\(Number\(base\)\|\|7\),1,11\)/.test(index) && /generateReading\(requested,mode\)/.test(index) && /generateReadingForLearner\(base,'standard',assist\)/.test(index));
 check('Indirect-question full-output gate', /hasIndirectQuestion/.test(index) && /generateReadingBeforeFullGrammarGate/.test(index) && /repairSavedReadingGrammarGate/.test(index));
 check('Reading-opening anti-repeat gate', /READING_OPENINGS/.test(index) && /openingSignature/.test(index) && /selectReadingOpening/.test(index) && /openingFirstToken/.test(index));
@@ -129,7 +129,9 @@ check('Shared learning profile', /aa-learning-profile\/1/.test(engine));
 check('Chronologia retrieval', /start-timeline-recall/.test(engine) && /soc\.history\.network/.test(engine));
 check('Practice and exam test separated', /trackType: 'practice'/.test(engineV2) && /trackType: 'test'/.test(engineV2) && /test-next/.test(engineV2));
 check('Math formula-only generation gate', /AA2_MATH_FORMULA_AREAS/.test(engineV2) && /if \(subject === 'math'\) return queue\.slice\(0, count\)/.test(engineV2) && /数学公式暗記限定/.test(engineV2));
-check('Math formula-only UI', /中学数学の公式・法則だけ/.test(engineV22) && /数学公式暗記/.test(engineV22) && /計算・文章題・高校内容は出題しません/.test(engineV22));
+check('Math formula-only UI', /中学公式＋高校受験で使える高校公式/.test(engineV22) && /数学公式暗記/.test(engineV22) && /start-advanced-math-formulas/.test(engineV22) && /計算問題・文章題は出題しません/.test(engineV22));
+check('High-school entrance formula bank', /\['m59','advanced'/.test(curriculum) && /高校公式（入試の時短・検算）/.test(engineV22) && /advancedMathQueue/.test(engineV22));
+check('Social near-miss distractors', /function aa2SocialDistractors/.test(engineV2) && /near_chronology/.test(engineV2) && /same_theme/.test(engineV2));
 check('Three Aichi exam levels', /公立標準/.test(engineV2) && /難関公立/.test(engineV2) && /旭丘レベル/.test(engineV2));
 check('Independent exam route', /state\.route !== 'exam'/.test(engineV22) && /function examHTML/.test(engineV22));
 check('Exam-unit filter enforced', /scope: 'custom', units: checked/.test(engineV22) && /if \(!candidates\.length\) return null/.test(engineV22) && /examUnit/.test(engineV22));
