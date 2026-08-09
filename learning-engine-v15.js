@@ -481,9 +481,17 @@
   function aa15StartSimulator() {
     const base = Math.max(7, Number(state.ui.subjectDifficulty) || 7);
     const queue = [];
-    for (let i = 0; i < 3; i++) {
-      const read = generateReadingForLearner(Math.min(11, base + i), i === 2 ? 'deep' : 'standard', 'exam');
-      read.simulatorPart = i + 1;
+    const graphMaker = globalThis.AA_V22_TEST_API?.graphReadingSet;
+    if (typeof graphMaker === 'function') {
+      const graph = graphMaker(base, 'exam');
+      graph.simulatorPart = 1;
+      queue.push(graph); registerReading(graph);
+    }
+    const genericCount = queue.length ? 2 : 3;
+    for (let i = 0; i < genericCount; i++) {
+      const part = queue.length + 1;
+      const read = generateReadingForLearner(Math.min(11, base + i), part === 3 ? 'deep' : 'standard', 'exam');
+      read.simulatorPart = part;
       queue.push(read); registerReading(read);
     }
     state.session = { id: uid('aichi40'), active: true, mode: 'timed-exam', kind: 'aichiEnglish40', subject: 'english', queue, index: 0, subIndex: 0, answers: {}, feedback: null, startedAt: now(), accumulatedMs: 0, lastActiveAt: now(), itemStartedAt: now(), scrollY: 0, minimumDone: false, clockPaused: false, pausedAt: null, limitMs: AA15_MOCK_LIMIT_MS, officialTimingSource: 'Aichi public high school English written test: 40 minutes', nonOfficial: true };
