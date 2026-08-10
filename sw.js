@@ -1,7 +1,7 @@
 'use strict';
 
 const VERSION = '2.2.9';
-const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-companion74-v23`;
+const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-companion74-v23a`;
 const BASE = self.registration.scope;
 const APP_URL = new URL('./', BASE).href;
 const OFFLINE_URL = new URL('offline.html', BASE).href;
@@ -33,6 +33,7 @@ const APP_SHELL = [
   new URL('v23-english-gloss1.js', BASE).href,
   new URL('v23-english-gloss2.js', BASE).href,
   new URL('v23-english-gloss3.js', BASE).href,
+  new URL('v23-english-gloss-vocab.js', BASE).href,
   new URL('v23-english-main.js', BASE).href,
   new URL('learning-engine-v23.js', BASE).href,
   new URL('icons/favicon-32.png', BASE).href,
