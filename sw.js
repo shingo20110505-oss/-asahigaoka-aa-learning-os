@@ -1,7 +1,7 @@
 'use strict';
 
 const VERSION = '2.2.7';
-const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-c651`;
+const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-c652`;
 const BASE = self.registration.scope;
 const APP_URL = new URL('./', BASE).href;
 const OFFLINE_URL = new URL('offline.html', BASE).href;
@@ -20,6 +20,7 @@ const APP_SHELL = [
   new URL('chronologia.html', BASE).href,
   new URL('chronologia-daily-companion.js', BASE).href,
   new URL('aa-companion-v2.js', BASE).href,
+  new URL('aa-companion-mobile-fix.js', BASE).href,
   new URL('icons/favicon-32.png', BASE).href,
   new URL('icons/apple-touch-icon-180.png', BASE).href,
   new URL('icons/icon-192.png', BASE).href,
