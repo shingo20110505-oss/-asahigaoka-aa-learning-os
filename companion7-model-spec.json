@@ -1,0 +1,51 @@
+{
+  "version": "7.0.0-dev",
+  "name": "AA Avatar Model",
+  "canvas": {"width": 1024, "height": 1024},
+  "parameters": {
+    "headX": [-1, 1], "headY": [-1, 1], "headZ": [-1, 1],
+    "eyeX": [-1, 1], "eyeY": [-1, 1], "eyeLOpen": [0, 1], "eyeROpen": [0, 1],
+    "browL": [-1, 1], "browR": [-1, 1], "mouthOpen": [0, 1], "mouthSmile": [-1, 1],
+    "bodyX": [-1, 1], "bodyY": [-1, 1], "breath": [0, 1]
+  },
+  "parts": [
+    {"id":"back_hair","file":"01_back_hair.png","z":10,"anchor":[0.50,0.58],"physics":"hairHeavy","head":0.45},
+    {"id":"body","file":"02_body.png","z":20,"anchor":[0.50,0.73],"physics":"body","head":0.08},
+    {"id":"neck","file":"03_neck.png","z":25,"anchor":[0.50,0.61],"physics":"body","head":0.20},
+    {"id":"face","file":"04_face.png","z":30,"anchor":[0.50,0.43],"physics":"head","head":1.00,"mesh":[7,7]},
+    {"id":"ear_l","file":"05_ear_l.png","z":31,"anchor":[0.39,0.43],"physics":"head","head":0.92},
+    {"id":"ear_r","file":"06_ear_r.png","z":31,"anchor":[0.61,0.43],"physics":"head","head":0.92},
+    {"id":"eye_white_l","file":"07_eye_white_l.png","z":40,"anchor":[0.44,0.43],"physics":"head","head":1.02},
+    {"id":"eye_white_r","file":"08_eye_white_r.png","z":40,"anchor":[0.56,0.43],"physics":"head","head":1.02},
+    {"id":"iris_l","file":"09_iris_l.png","z":41,"anchor":[0.44,0.43],"physics":"eye","head":1.02},
+    {"id":"iris_r","file":"10_iris_r.png","z":41,"anchor":[0.56,0.43],"physics":"eye","head":1.02},
+    {"id":"eye_highlight_l","file":"11_eye_highlight_l.png","z":42,"anchor":[0.44,0.43],"physics":"eye","head":1.02},
+    {"id":"eye_highlight_r","file":"12_eye_highlight_r.png","z":42,"anchor":[0.56,0.43],"physics":"eye","head":1.02},
+    {"id":"lid_l","file":"13_lid_l.png","z":43,"anchor":[0.44,0.43],"physics":"head","head":1.03},
+    {"id":"lid_r","file":"14_lid_r.png","z":43,"anchor":[0.56,0.43],"physics":"head","head":1.03},
+    {"id":"brow_l","file":"15_brow_l.png","z":44,"anchor":[0.44,0.38],"physics":"head","head":1.02},
+    {"id":"brow_r","file":"16_brow_r.png","z":44,"anchor":[0.56,0.38],"physics":"head","head":1.02},
+    {"id":"nose","file":"17_nose.png","z":45,"anchor":[0.50,0.48],"physics":"head","head":1.04},
+    {"id":"mouth_inside","file":"18_mouth_inside.png","z":46,"anchor":[0.50,0.54],"physics":"mouth","head":1.04},
+    {"id":"teeth","file":"19_teeth.png","z":47,"anchor":[0.50,0.53],"physics":"mouth","head":1.04},
+    {"id":"tongue","file":"20_tongue.png","z":48,"anchor":[0.50,0.56],"physics":"mouth","head":1.04},
+    {"id":"mouth","file":"21_mouth.png","z":49,"anchor":[0.50,0.54],"physics":"mouth","head":1.04,"mesh":[5,4]},
+    {"id":"front_hair","file":"22_front_hair.png","z":60,"anchor":[0.50,0.33],"physics":"hairLight","head":0.88,"mesh":[6,6]},
+    {"id":"side_hair_l","file":"23_side_hair_l.png","z":61,"anchor":[0.34,0.48],"physics":"hairLight","head":0.72,"mesh":[4,7]},
+    {"id":"side_hair_r","file":"24_side_hair_r.png","z":61,"anchor":[0.66,0.48],"physics":"hairLight","head":0.72,"mesh":[4,7]},
+    {"id":"accessory_l","file":"25_accessory_l.png","z":70,"anchor":[0.31,0.31],"physics":"accessory","head":0.76},
+    {"id":"accessory_r","file":"26_accessory_r.png","z":70,"anchor":[0.69,0.31],"physics":"accessory","head":0.76},
+    {"id":"hood_front","file":"27_hood_front.png","z":72,"anchor":[0.50,0.43],"physics":"cloth","head":0.58},
+    {"id":"ribbon","file":"28_ribbon.png","z":73,"anchor":[0.50,0.68],"physics":"accessory","head":0.18}
+  ],
+  "physics": {
+    "head":{"stiffness":26,"damping":8,"mass":1},
+    "body":{"stiffness":12,"damping":7,"mass":1.5},
+    "hairLight":{"stiffness":8,"damping":3.6,"mass":0.8,"lag":0.22},
+    "hairHeavy":{"stiffness":5,"damping":3.2,"mass":1.4,"lag":0.32},
+    "accessory":{"stiffness":6,"damping":2.8,"mass":0.7,"lag":0.38},
+    "cloth":{"stiffness":9,"damping":4.5,"mass":1.1,"lag":0.18},
+    "eye":{"stiffness":35,"damping":10,"mass":0.4},
+    "mouth":{"stiffness":28,"damping":9,"mass":0.5}
+  }
+}
