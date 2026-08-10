@@ -126,7 +126,7 @@ function observeAudio(){
   Wrapped.prototype=NativeAudio.prototype;Object.setPrototypeOf(Wrapped,NativeAudio);Wrapped.__ccWrapped=true;window.Audio=Wrapped;
 }
 function wireAudio(a,src=''){
-  a.addEventListener('play',async()=>{rt.audio=a;await ensureAudioAnalysis(a);let exp='normal';for(const [name,id] of Object.entries(VOICE_EXPRESSION)){if(String(src).includes(name)){exp=id;break}}setExpression(exp,Math.max(1700,((Number.isFinite(a.duration)?a.duration:2.6)*1000)+300));});
+  a.addEventListener('play',async()=>{rt.audio=a;await ensureAudioAnalysis(a);let exp=null;for(const [name,id] of Object.entries(VOICE_EXPRESSION)){if(String(src).includes(name)){exp=id;break}}if(exp)setExpression(exp,Math.max(1700,((Number.isFinite(a.duration)?a.duration:2.6)*1000)+300));});
   const stop=()=>{if(rt.audio===a){rt.audio=null;rt.realAudioLevel=0;rt.mouth=0;rt.analyser=null}};a.addEventListener('ended',stop);a.addEventListener('emptied',stop);
 }
 

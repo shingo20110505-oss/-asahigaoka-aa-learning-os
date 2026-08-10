@@ -116,7 +116,7 @@ check('Fixed convenience-tool prompt removed', !index.includes('便利な道具�
 check('Public-domain source attribution', /著作権保護期間満了作品/.test(japanesePublicDomain) && /青空文庫/.test(japanesePublicDomain) && /aozora\.gr\.jp/.test(japanesePublicDomain));
 check('Correct-answer anti-repeat gate', /function recentCorrectPenaltyForKey/.test(index) && /reviewKey/.test(index) && /recentCorrectPenaltyForKey/.test(engineV2) && /recentCorrectPenaltyForKey/.test(engineV22));
 check('Chronologia precached', sw.includes("chronologia.html") && /cache\.put\(request, response\.clone\(\)\)/.test(sw));
-check('Chronologia 6.1 identity', /<title>Chronologia 6\.1/.test(chronologia) && /const VERSION = "6\.1\.0"/.test(chronologia));
+check('Chronologia 6.3.1 identity', /<title>Chronologia 6\.3/.test(chronologia) && /const VERSION = \"6\.3\.1\"/.test(chronologia));
 check('Chronologia 385 records intact', chronologiaIds.length === 385 && new Set(chronologiaIds).size === 385 && Math.min(...chronologiaIds) === 1 && Math.max(...chronologiaIds) === 385, `${chronologiaIds.length}/${Math.max(...chronologiaIds)}`);
 check('Chronologia storage key preserved', /const STORE_KEY = "chronologia-aichi-v3"/.test(chronologia) && !/const STORE_KEY = "asahi_learning_os_v1"/.test(chronologia));
 check('Chronologia deep explanations intact', /const DEEP_NOTES_V61 = \{/.test(chronologia) && /Chronologia deep explanation patch 6\.1 loaded/.test(chronologia));

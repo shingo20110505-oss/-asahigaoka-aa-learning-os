@@ -39,7 +39,7 @@
 - 教科別演習の教科・単元・3/8/15問設定、保存、全出題への厳密反映、設定単元と現在単元の画面表示 PASS
 - 通常演習の正解時だけ短い2音と視覚表示、不正解・入試中・設定OFFでは無音 PASS
 - 教育基本語彙10,000件の件数・語/読み一意性・ライセンス表示 PASS
-- Chronologia 6.1完全版: DATA 385件、6モード、参考書型解説、続き保存、独立保存領域 PASS
+- Chronologia 6.3完全版: DATA 385件、6モード、参考書型解説、続き保存、独立保存領域 PASS
 - Chronologia原本からの変更はAA OSへ戻るリンクとsafe-area対応CSSだけ。追加部分を除いたSHA-256が原本と完全一致
 - 公開URL上のindex、Chronologia、Service Worker、v2.2 JS/CSS、10,000語索引がローカル監査済み成果物とバイト単位で一致
 
@@ -119,7 +119,7 @@ LEVEL 1公立標準、LEVEL 2難関公立、LEVEL 3旭丘を分離した。教�
 - 歴史年号は近い年代かつ同じ年号形式、地理・公民は同じ小テーマの誤答を優先
 - 年号だけでなく因果、前後関係、同時代、資料統合へ接続
 - 本番構成は6大問・20解答欄・22点を検査
-- Chronologia 6.1完全版を独立HTMLとして接続。統合年表385件、年号クイズ、同時代史、並べ替え、弱点復習、参考書型解説を維持
+- Chronologia 6.3完全版を独立HTMLとして接続。統合年表385件、年号クイズ、同時代史、並べ替え、弱点復習、参考書型解説を維持
 - Chronologia専用保存キー `chronologia-aichi-v3` を維持し、AA OSの `asahi_learning_os_v1` と分離
 
 ## 7. 出題アルゴリズム
@@ -210,7 +210,7 @@ LEVEL 1公立標準、LEVEL 2難関公立、LEVEL 3旭丘を分離した。教�
 ## 公開URL確認
 
 - index.html: 公開後にHTTP 200、v2.2.6、監査済みファイルとの一致を確認
-- chronologia.html: HTTP 200、269,333 bytes、Chronologia 6.1完全版と互換追加だけを含む
+- chronologia.html: HTTP 200、269,333 bytes、Chronologia 6.3完全版と互換追加だけを含む
 - sw.js: 公開後にHTTP 200、v2.2.6、Chronologiaと国語引用バンクを含むapp shellとの一致を確認
 - learning-engine-v22.js / .css: HTTP 200、監査済みファイルと完全一致
 - japanese-vocabulary-10000.js: HTTP 200、514,674 bytes、10,000件
