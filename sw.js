@@ -1,7 +1,7 @@
 'use strict';
 
-const VERSION = '2.2.7';
-const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-c652`;
+const VERSION = '2.2.8';
+const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-companion73`;
 const BASE = self.registration.scope;
 const APP_URL = new URL('./', BASE).href;
 const OFFLINE_URL = new URL('offline.html', BASE).href;
@@ -21,6 +21,8 @@ const APP_SHELL = [
   new URL('chronologia-daily-companion.js', BASE).href,
   new URL('aa-companion-v2.js', BASE).href,
   new URL('aa-companion-mobile-fix.js', BASE).href,
+  new URL('companion7-runtime.js', BASE).href,
+  new URL('companion7-check.js', BASE).href,
   new URL('icons/favicon-32.png', BASE).href,
   new URL('icons/apple-touch-icon-180.png', BASE).href,
   new URL('icons/icon-192.png', BASE).href,
@@ -36,6 +38,7 @@ self.addEventListener('install', event => {
       if (!response.ok) throw new Error(`Precache failed: ${url}`);
       await cache.put(url, response);
     }));
+    await self.skipWaiting();
   })());
 });
 
@@ -60,7 +63,7 @@ self.addEventListener('fetch', event => {
   if (request.mode === 'navigate') {
     event.respondWith((async () => {
       try {
-        const response = await fetch(request);
+        const response = await fetch(request, {cache:'no-cache'});
         if (response.ok) {
           const cache = await caches.open(CACHE_NAME);
           await cache.put(request, response.clone());
@@ -74,7 +77,15 @@ self.addEventListener('fetch', event => {
   }
 
   if (!url.href.startsWith(BASE)) return;
+  const isCompanion=/\/(aa-companion-v2|aa-companion-mobile-fix|companion7-runtime|companion7-check)\.js$/.test(url.pathname);
   event.respondWith((async () => {
+    if(isCompanion){
+      try{
+        const response=await fetch(request,{cache:'no-cache'});
+        if(response.ok){const cache=await caches.open(CACHE_NAME);await cache.put(request,response.clone());}
+        return response;
+      }catch(_){return (await caches.match(request))||new Response('',{status:504,statusText:'Offline'});}
+    }
     const cached = await caches.match(request);
     if (cached) return cached;
     try {
