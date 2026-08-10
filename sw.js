@@ -1,7 +1,7 @@
 'use strict';
 
-const VERSION = '2.2.8';
-const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-companion73`;
+const VERSION = '2.2.7';
+const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-c631`;
 const BASE = self.registration.scope;
 const APP_URL = new URL('./', BASE).href;
 const OFFLINE_URL = new URL('offline.html', BASE).href;
@@ -18,6 +18,7 @@ const APP_SHELL = [
   new URL('japanese-vocabulary-10000.js', BASE).href,
   new URL('japanese-public-domain.js', BASE).href,
   new URL('chronologia.html', BASE).href,
+  new URL('chronologia-live-companion.js', BASE).href,
   new URL('chronologia-daily-companion.js', BASE).href,
   new URL('aa-companion-v2.js', BASE).href,
   new URL('aa-companion-mobile-fix.js', BASE).href,
