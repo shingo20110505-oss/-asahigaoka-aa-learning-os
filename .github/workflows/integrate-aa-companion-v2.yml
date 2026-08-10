@@ -14,13 +14,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Integrate shared companion
+      - name: Fix and integrate shared companion
         shell: python
         run: |
           from pathlib import Path
           import re
 
-          tag = '<script src="./aa-companion-v2.js?v=6.5.0"></script>'
+          # Fix Safari-breaking syntax typo in companion engine.
+          p=Path('aa-companion-v2.js')
+          c=p.read_text(encoding='utf-8')
+          c=c.replace("motion:lowPower?.55:1", "motion:lowPower ? .55 : 1")
+          p.write_text(c,encoding='utf-8')
+
+          tag = '<script src="./aa-companion-v2.js?v=6.5.1"></script>'
           marker = '<!-- AA-COMPANION-V2 -->'
 
           def install_tag(path):
@@ -39,8 +45,8 @@ jobs:
           p=Path('chronologia.html')
           h=p.read_text(encoding='utf-8')
           h=h.replace('<title>Chronologia 6.3｜','<title>Chronologia 6.5｜').replace('<title>Chronologia 6.4｜','<title>Chronologia 6.5｜')
-          h=h.replace('const VERSION = "6.3.1";','const VERSION = "6.5.0";').replace('const VERSION = "6.4.0";','const VERSION = "6.5.0";')
-          h=re.sub(r'<script src="\./chronologia-daily-companion\.js\?v=[^"]+"></script>','<script src="./chronologia-daily-companion.js?v=6.5.0"></script>',h)
+          h=h.replace('const VERSION = "6.3.1";','const VERSION = "6.5.1";').replace('const VERSION = "6.4.0";','const VERSION = "6.5.1";').replace('const VERSION = "6.5.0";','const VERSION = "6.5.1";')
+          h=re.sub(r'<script src="\./chronologia-daily-companion\.js\?v=[^"]+"></script>','<script src="./chronologia-daily-companion.js?v=6.5.1"></script>',h)
           h=re.sub(r'\s*<!-- CHRONOLOGIA-LIVE-COMPANION-LOADER -->','',h)
           h=re.sub(r'\s*<script\s+src="\./chronologia-live-companion\.js\?v=[^"]+"></script>','',h)
           p.write_text(h,encoding='utf-8')
@@ -48,34 +54,37 @@ jobs:
 
           p=Path('sw.js')
           s=p.read_text(encoding='utf-8')
-          s=re.sub(r"const CACHE_NAME = `asahigaoka-aa-os-\$\{VERSION\}-[^`]+`;","const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-c650`;",s)
+          s=re.sub(r"const CACHE_NAME = `asahigaoka-aa-os-\$\{VERSION\}-[^`]+`;","const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-c651`;",s)
           s=s.replace("  new URL('chronologia-live-companion.js', BASE).href,\n",'')
           if "new URL('aa-companion-v2.js', BASE).href" not in s:
               needle="  new URL('chronologia-daily-companion.js', BASE).href,\n"
               s=s.replace(needle,needle+"  new URL('aa-companion-v2.js', BASE).href,\n")
           p.write_text(s,encoding='utf-8')
-      - name: Validate integration
-        shell: python
+      - name: Validate integration and JavaScript syntax
         run: |
+          node --check aa-companion-v2.js
+          python - <<'PY'
           from pathlib import Path
           import re
           i=Path('index.html').read_text(encoding='utf-8')
           h=Path('chronologia.html').read_text(encoding='utf-8')
           s=Path('sw.js').read_text(encoding='utf-8')
-          pat=r'<script\s+src="\./aa-companion-v2\.js\?v=6\.5\.0"></script>'
+          c=Path('aa-companion-v2.js').read_text(encoding='utf-8')
+          pat=r'<script\s+src="\./aa-companion-v2\.js\?v=6\.5\.1"></script>'
           assert len(re.findall(pat,i)) == 1
           assert len(re.findall(pat,h)) == 1
           assert not re.search(r'<script\s+src="\./chronologia-live-companion\.js\?v=',h)
-          assert '<title>Chronologia 6.5' in h
-          assert 'const VERSION = "6.5.0";' in h
+          assert 'motion:lowPower ? .55 : 1' in c
+          assert 'motion:lowPower?.55:1' not in c
           assert "new URL('aa-companion-v2.js', BASE).href" in s
-          assert 'c650' in s
-          print('AA companion 6.5 integration PASS')
+          assert 'c651' in s
+          print('AA companion 6.5.1 integration + JS syntax PASS')
+          PY
       - name: Commit integration
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add index.html chronologia.html sw.js
+          git add index.html chronologia.html sw.js aa-companion-v2.js
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Integrate shared AA companion 6.5 across app"
+          git commit -m "Fix AA companion Safari startup and publish 6.5.1"
           git push
