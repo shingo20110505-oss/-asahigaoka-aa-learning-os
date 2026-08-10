@@ -1,0 +1,34 @@
+name: Report Pages Runtime
+
+on:
+  push:
+    paths:
+      - '.report-pages-runtime-trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Report deploy runs
+        run: |
+          python - <<'PY'
+          import json, urllib.request
+          url='https://api.github.com/repos/shingo20110505-oss/-asahigaoka-aa-learning-os/actions/workflows/deploy-pages.yml/runs?per_page=12'
+          req=urllib.request.Request(url,headers={'Accept':'application/vnd.github+json','User-Agent':'aa-os-status'})
+          with urllib.request.urlopen(req) as r: data=json.load(r)
+          lines=[]
+          for x in data.get('workflow_runs',[]):
+              lines.append(f"id={x['id']} status={x['status']} conclusion={x.get('conclusion')} head={x['head_sha']} event={x['event']} created={x['created_at']} url={x['html_url']}")
+          open('PAGES_RUNTIME_STATUS.txt','w').write('\n'.join(lines)+'\n')
+          PY
+      - name: Commit report
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add PAGES_RUNTIME_STATUS.txt
+          git commit -m "Report Pages runtime status" || exit 0
+          git push
