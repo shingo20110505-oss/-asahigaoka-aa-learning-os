@@ -44,7 +44,7 @@ jobs:
 
           # Keep main PWA semantic version stable but force an all-new cache generation.
           p=Path('sw.js');sw=p.read_text(encoding='utf-8')
-          sw=re.sub(r"const VERSION = '[^']+';","const VERSION = '2.2.6';",sw,count=1)
+          sw=re.sub(r"const VERSION = '[^']+';","const VERSION = '2.2.7';",sw,count=1)
           sw=re.sub(r"const CACHE_NAME = `asahigaoka-aa-os-\$\{VERSION\}[^`]*`;","const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-c631`;",sw,count=1)
           p.write_text(sw,encoding='utf-8')
 

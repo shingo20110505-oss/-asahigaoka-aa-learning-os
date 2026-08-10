@@ -72,7 +72,7 @@ jobs:
 
           # Preserve the AA OS app version while using a new cache generation for Chronologia 6.3.1.
           sw = sw_p.read_text(encoding='utf-8')
-          sw = re.sub(r"const VERSION = '[^']+';", "const VERSION = '2.2.6';", sw, count=1)
+          sw = re.sub(r"const VERSION = '[^']+';", "const VERSION = '2.2.7';", sw, count=1)
           sw = re.sub(r"const CACHE_NAME = `asahigaoka-aa-os-\$\{VERSION\}[^`]*`;", "const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-c631`;", sw, count=1)
           for asset in ['chronologia-daily-companion.js','chronologia-live-companion.js']:
               needle = f"new URL('{asset}', BASE).href,"
@@ -109,7 +109,7 @@ jobs:
             'real audio analyser':"createAnalyser" in l and "getByteTimeDomainData" in l,
             'PWA daily cache':"chronologia-daily-companion.js" in s,
             'PWA live cache':"chronologia-live-companion.js" in s,
-            'AA app version preserved':"const VERSION = '2.2.6';" in s,
+            'AA app version preserved':"const VERSION = '2.2.7';" in s,
             'fresh cache generation':'c631' in s,
           }
           failed=[k for k,v in checks.items() if not v]

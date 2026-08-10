@@ -23,7 +23,7 @@ jobs:
           s=p.read_text(encoding='utf-8')
           if "const chronoDaily = read('chronologia-daily-companion.js');" not in s:
               s=s.replace("const chronologia = read('chronologia.html');", "const chronologia = read('chronologia.html');\nconst chronoDaily = read('chronologia-daily-companion.js');\nconst chronoLive = read('chronologia-live-companion.js');")
-          s=s.replace("check('Cache version matches app version', /APP_VERSION='2\\.2\\.6'/.test(index) && /VERSION = '2\\.2\\.6'/.test(sw));", "check('App version remains v2.2.6', /APP_VERSION='2\\.2\\.6'/.test(index));\ncheck('Chronologia 6.3 cache generation', /VERSION = '2\\.2\\.6-c63'/.test(sw));")
+          s=s.replace("check('Cache version matches app version', /APP_VERSION='2\\.2\\.7'/.test(index) && /VERSION = '2\\.2\\.7'/.test(sw));", "check('App version remains v2.2.7', /APP_VERSION='2\\.2\\.7'/.test(index));\ncheck('Chronologia 6.3 cache generation', /VERSION = '2\\.2\\.7'/.test(sw) && /c631/.test(sw));")
           s=s.replace("check('Chronologia 6.1 identity', /<title>Chronologia 6\\.1/.test(chronologia) && /const VERSION = \"6\\.1\\.0\"/.test(chronologia));", "check('Chronologia 6.3 identity', /<title>Chronologia 6\\.3/.test(chronologia) && /const VERSION = \"6\\.3\\.0\"/.test(chronologia));")
           marker="check('Chronologia precached', sw.includes(\"chronologia.html\") && /cache\\.put\\(request, response\\.clone\\(\\)\\)/.test(sw));"
           addition="""check('Chronologia precached', sw.includes(\"chronologia.html\") && /cache\\.put\\(request, response\\.clone\\(\\)\\)/.test(sw));
