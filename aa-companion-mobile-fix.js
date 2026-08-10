@@ -1,18 +1,16 @@
 (()=>{'use strict';
-function loadPetSettings(){if(document.getElementById('aa-pet-settings-loader'))return;const s=document.createElement('script');s.id='aa-pet-settings-loader';s.src='./v23-pet-settings.js?compat=229-c74d';s.async=false;document.head.appendChild(s)}
-function loadV23(){if(document.getElementById('aa-v23-loader'))return;const v=document.createElement('script');v.id='aa-v23-loader';v.src='./v23-loader.js?compat=229-c74d';v.async=false;document.head.appendChild(v)}
-function killLegacy(){document.getElementById('aaPet')?.remove();document.getElementById('aaPetSheet')?.remove();}
-function wire(){if(!window.Companion7){setTimeout(wire,80);return}killLegacy();
+function loadScript(id,src){if(document.getElementById(id))return;const s=document.createElement('script');s.id=id;s.src=src;s.async=false;document.head.appendChild(s)}
+function loadSettings(){loadScript('aa-pet-settings-loader','./v23-pet-settings.js?compat=229-loginzip1')}
+function loadV23(){loadScript('aa-v23-loader','./v23-loader.js?compat=229-loginzip1')}
+function loadLogin(){loadScript('aa-login-companion-loader','./login-companion-v1.js?v=1.1.0')}
+function killLegacy(){document.getElementById('aaPet')?.remove();document.getElementById('aaPetSheet')?.remove();document.getElementById('companion7')?.remove()}
+function wire(){if(!window.Companion7){setTimeout(wire,80);return}if(window.__AA_COMPANION_VOICE_WIRED__)return;window.__AA_COMPANION_VOICE_WIRED__=true;killLegacy();
  document.addEventListener('aa:answer',e=>Companion7.event(e.detail?.correct?'correct':'wrong'));
  document.addEventListener('aa:streak',()=>Companion7.event('streak'));
  document.addEventListener('aa:hard',()=>Companion7.event('hard'));
  document.addEventListener('aa:missionComplete',()=>Companion7.event('complete'));
- document.querySelectorAll('audio').forEach(a=>a.addEventListener('play',()=>Companion7.bindAudio(a),{once:true}));
- const mo=new MutationObserver(()=>{killLegacy();const h=document.getElementById('companion7');if(h){const r=h.getBoundingClientRect();if(r.width>150&&innerWidth<500){h.style.width='116px';h.style.height='138px'}}});mo.observe(document.body,{childList:true,subtree:true});
- setTimeout(()=>Companion7.reloadTexture?.(),300);
- setTimeout(()=>{const h=document.getElementById('companion7');if(!h)return;const canvas=h.querySelector('canvas');const blank=!Companion7.source||Companion7.source==='none';if(blank)Companion7.reloadTexture?.();if(canvas&&!canvas.width){canvas.width=420;canvas.height=500}},1200);
- const old=document.getElementById('companion7-check-loader');if(!old){const c=document.createElement('script');c.id='companion7-check-loader';c.src='./companion7-check.js?v=7.3.0';document.head.appendChild(c)}
+ const mo=new MutationObserver(killLegacy);mo.observe(document.body,{childList:true,subtree:true});
 }
-loadPetSettings();loadV23();
+loadSettings();loadV23();loadLogin();
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',wire,{once:true});else wire();
 })();
