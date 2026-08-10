@@ -1,0 +1,27 @@
+PUT_HTTP=403
+GET_HTTP=200
+--- PUT RESPONSE ---
+{
+  "message": "Resource not accessible by integration",
+  "documentation_url": "https://docs.github.com/rest/pages/pages#update-information-about-a-apiname-pages-site",
+  "status": "403"
+}
+
+--- GET RESPONSE ---
+{
+  "url": "https://api.github.com/repos/shingo20110505-oss/-asahigaoka-aa-learning-os/pages",
+  "status": null,
+  "cname": null,
+  "custom_404": false,
+  "html_url": "https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/",
+  "build_type": "workflow",
+  "source": {
+    "branch": "main",
+    "path": "/"
+  },
+  "public": true,
+  "protected_domain_state": null,
+  "pending_domain_unverified_at": null,
+  "https_enforced": true
+}
+
