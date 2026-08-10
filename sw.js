@@ -1,7 +1,7 @@
 'use strict';
 
 const VERSION = '2.2.9';
-const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-companion74`;
+const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-companion74-v23`;
 const BASE = self.registration.scope;
 const APP_URL = new URL('./', BASE).href;
 const OFFLINE_URL = new URL('offline.html', BASE).href;
@@ -24,6 +24,17 @@ const APP_SHELL = [
   new URL('aa-companion-mobile-fix.js', BASE).href,
   new URL('companion7-runtime.js', BASE).href,
   new URL('companion7-check.js', BASE).href,
+  new URL('v23-loader.js', BASE).href,
+  new URL('v23-core.js', BASE).href,
+  new URL('v23-japanese.js', BASE).href,
+  new URL('v23-math.js', BASE).href,
+  new URL('v23-science.js', BASE).href,
+  new URL('v23-social.js', BASE).href,
+  new URL('v23-english-gloss1.js', BASE).href,
+  new URL('v23-english-gloss2.js', BASE).href,
+  new URL('v23-english-gloss3.js', BASE).href,
+  new URL('v23-english-main.js', BASE).href,
+  new URL('learning-engine-v23.js', BASE).href,
   new URL('icons/favicon-32.png', BASE).href,
   new URL('icons/apple-touch-icon-180.png', BASE).href,
   new URL('icons/icon-192.png', BASE).href,
