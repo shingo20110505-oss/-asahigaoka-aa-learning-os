@@ -25,3 +25,4 @@ document.addEventListener('input',e=>{if(!e.target.matches?.('[data-voice-volume
 document.addEventListener('companion7:voice-library',refreshStatus);document.addEventListener('companion7:voice-setting',refreshStatus);document.addEventListener('companion7:study-streak',refreshStatus);document.addEventListener('aa:login-images',refreshStatus);
 const mo=new MutationObserver(()=>{removeVisualSettings();inject()});function start(){removeVisualSettings();inject();refreshStatus();if(document.body)mo.observe(document.body,{childList:true,subtree:true});setInterval(()=>{removeVisualSettings();inject();refreshStatus()},1400)}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
+// explosion-odds-settings-release
