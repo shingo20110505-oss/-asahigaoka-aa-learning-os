@@ -1,0 +1,58 @@
+name: Deploy AA Learning OS to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Verify Chronologia 6.3 before publish
+        shell: python
+        run: |
+          from pathlib import Path
+          h=Path('chronologia.html').read_text(encoding='utf-8')
+          d=Path('chronologia-daily-companion.js').read_text(encoding='utf-8')
+          l=Path('chronologia-live-companion.js').read_text(encoding='utf-8')
+          s=Path('sw.js').read_text(encoding='utf-8')
+          assert '<title>Chronologia 6.3' in h
+          assert 'const VERSION = "6.3.0";' in h
+          assert h.count('chronologia-daily-companion.js?v=6.3.0') == 1
+          assert h.count('chronologia-live-companion.js?v=6.3.0') == 1
+          assert "const DAILY_KEY='chronologia-daily-v2'" in d
+          assert "'wrong_01.mp3'" in d and "'finish_02.mp3'" in d
+          assert '01_normal.png' in l and '12_rare.png' in l
+          assert 'chronologia:voice' in d and 'chronologia:voice' in l
+          assert 'chronologia-daily-companion.js' in s
+          assert 'chronologia-live-companion.js' in s
+          print('Chronologia 6.3 publish guard PASS')
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
