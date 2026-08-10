@@ -10,7 +10,21 @@ const PACK_FILES = [
   './chronologia-v7-overrides.js?v=7.0.0'
 ];
 const VIEW_OPTIONS = [
-  ['all','すべての視点'],['culture-all','文化・文学・芸術'],['文学','文学'],['文化・芸術','美術・芸能・建築・工芸'],['宗教・思想','宗教・思想'],['政治・制度','政治・制度'],['外交・戦争','外交・戦争'],['経済・産業','経済・産業'],['社会・民衆','社会・民衆'],['生活・教育','暮らし・教育'],['科学・技術','科学・技術'],['人権・ジェンダー','人権・ジェンダー'],['環境・災害','環境・災害'],['愛知・地域','愛知・地域'],['世界とのつながり','世界とのつながり']
+  ['all','すべての視点'],
+  ['culture-all','文化・文学・芸術'],
+  ['文学','文学'],
+  ['文化・芸術','美術・芸能・建築・工芸'],
+  ['宗教・思想','宗教・思想'],
+  ['政治・制度','政治・制度'],
+  ['外交・戦争','外交・戦争'],
+  ['経済・産業','経済・産業'],
+  ['社会・民衆','社会・民衆'],
+  ['生活・教育','暮らし・教育'],
+  ['科学・技術','科学・技術'],
+  ['人権・ジェンダー','人権・ジェンダー'],
+  ['環境・災害','環境・災害'],
+  ['愛知・地域','愛知・地域'],
+  ['世界とのつながり','世界とのつながり']
 ];
 function loadScript(src){return new Promise((resolve,reject)=>{if(document.querySelector(`script[src^="${src.split('?')[0]}"]`)){resolve();return}const s=document.createElement('script');s.src=src;s.async=false;s.onload=resolve;s.onerror=()=>reject(new Error('Chronologia pack load failed: '+src));document.head.appendChild(s)})}
 function textOf(item){return [item.event,item.detail,item.area,item.period,...(item.tags||[])].join(' ')}
@@ -38,7 +52,24 @@ function injectCSS(){if(document.getElementById('chrono-v7-css'))return;const s=
 function installViewFilter(){
   if(document.getElementById('viewSelect'))return;const controls=document.querySelector('#timelineView .controls')||document.querySelector('.controls');if(!controls)return;
   const wrap=document.createElement('div');wrap.className='control chrono-v7-view';wrap.innerHTML=`<label for="viewSelect">歴史の視点</label><select id="viewSelect" class="input">${VIEW_OPTIONS.map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select>`;controls.appendChild(wrap);const viewSelect=wrap.querySelector('#viewSelect');viewSelect.addEventListener('change',()=>renderTimeline());
-  getTimelineItems=function(){const q=($('searchInput')?.value||'').trim().toLowerCase(),period=$('periodSelect')?.value||'all',area=$('areaSelect')?.value||'all',level=$('levelSelect')?.value||'all',target=$('targetSelect')?.value||'all',view=viewSelect.value||'all';let data=state.order.map(id=>byId.get(id)).filter(Boolean);return data.filter(x=>{const text=[x.date,x.event,x.detail,x.area,x.period,...(x.tags||[]),...viewsOf(x)].join(' ').toLowerCase();return (!q||text.includes(q))&&(period==='all'||x.period===period)&&(area==='all'||groupArea(x.area)===area)&&(level==='all'||x.level===level)&&(target==='all'||(target==='fav'&&state.favorites.has(x.id))||(target==='weak'&&isWeak(x.id)))&&viewMatches(x,view)})};
+  getTimelineItems=function(){
+    const q=($('searchInput')?.value||'').trim().normalize('NFKC').toLowerCase();
+    const period=$('periodSelect')?.value||'all';
+    const area=$('areaSelect')?.value||'all';
+    const level=$('levelSelect')?.value||'all';
+    const target=$('favoriteOnly')?.value||'all';
+    const view=viewSelect.value||'all';
+    let data=state.order.map(id=>byId.get(id)).filter(Boolean);
+    return data.filter(x=>{
+      const text=[x.date,x.event,x.detail,x.area,x.period,...(x.tags||[]),...viewsOf(x)].join(' ').normalize('NFKC').toLowerCase();
+      const okQ=!q||text.includes(q);
+      const okP=period==='all'||x.period===period;
+      const okA=area==='all'||(area==='日本史'&&x.area.includes('日本'))||x.area===area;
+      const okL=level==='all'||x.level===level;
+      const okT=target==='all'||(target==='favorite'&&state.favorites.has(x.id))||(target==='weak'&&isWeak(x.id));
+      return okQ&&okP&&okA&&okL&&okT&&viewMatches(x,view)
+    })
+  };
   if(typeof resetTimelineFiltersSilently==='function'){const oldReset=resetTimelineFiltersSilently;resetTimelineFiltersSilently=function(){oldReset();viewSelect.value='all'}}
   const clear=$('clearFilterBtn');if(clear){const old=clear.onclick;clear.onclick=function(e){viewSelect.value='all';if(old)return old.call(this,e);renderTimeline()}}
   const jp=$('jpSBtn');if(jp){const old=jp.onclick;jp.onclick=function(e){viewSelect.value='all';if(old)return old.call(this,e)}}
