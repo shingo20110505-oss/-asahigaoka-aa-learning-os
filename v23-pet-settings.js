@@ -1,0 +1,10 @@
+(()=>{'use strict';if(window.__AA23_PET_SETTINGS__)return;window.__AA23_PET_SETTINGS__=true;
+const KEY='aa-companion7-state-v3';
+function storedVisible(){try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');return s.visible!==false}catch(_){return true}}
+function setVisible(v){try{window.Companion7?.show?.(v)}catch(_){}try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');s.visible=!!v;localStorage.setItem(KEY,JSON.stringify(s))}catch(_){}const h=document.getElementById('companion7');if(h)h.dataset.hidden=String(!v)}
+function card(){const on=storedVisible();return `<div class="sp12"></div><section class="card" id="petSettingCard"><div class="eyebrow">COMPANION</div><h3 class="h3">相棒（ペット）表示</h3><p class="sub">学習画面に相棒を表示するか選べます。設定はこの端末に保存されます。</p><div class="actions"><button class="btn ${on?'primary':'ghost'}" data-action="pet-display-toggle">相棒表示 ${on?'ON':'OFF'}</button></div><div class="tiny" style="margin-top:8px">OFFにしても学習データや相棒の位置・設定は消えません。</div></section>`}
+function patch(){if(typeof settingsHTML==='function'&&!window.__AA23_PET_SETTINGS_HTML__){window.__AA23_PET_SETTINGS_HTML__=true;const old=settingsHTML;settingsHTML=function(){let html=old();if(html.includes('id="petSettingCard"'))return html;const insert=card();const marker='<div class="sp12"></div><section class="card"><h3 class="h3">バックアップ</h3>';return html.includes(marker)?html.replace(marker,insert+marker):html+insert}}
+ if(typeof handleAction==='function'&&!window.__AA23_PET_SETTINGS_ACTION__){window.__AA23_PET_SETTINGS_ACTION__=true;const old=handleAction;handleAction=function(el,e){if(el?.dataset?.action==='pet-display-toggle'){const next=!storedVisible();setVisible(next);try{save?.()}catch(_){}try{render?.()}catch(_){}return}return old(el,e)}}
+ setVisible(storedVisible());}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(patch,0),{once:true});else setTimeout(patch,0);
+document.addEventListener('aa:v23ready',patch);setTimeout(patch,800);})();
