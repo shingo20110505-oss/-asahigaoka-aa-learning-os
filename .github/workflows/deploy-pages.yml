@@ -28,7 +28,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Prepare AA OS 2.2.9 / Companion 7.5.1 analytics public build
+      - name: Prepare AA OS 2.2.9 / rich examples public build
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -41,7 +41,7 @@ jobs:
           p.write_text(s,encoding='utf-8')
 
           # Explosion probability: the 0.05% base is a true floor.
-          # Daily variation is now an additive 0..+0.003%, never a penalty.
+          # Daily variation is additive 0..+0.003%, never a penalty.
           for name in ('companion7-runtime.js','v23-pet-settings.js'):
               q=Path(name)
               t=q.read_text(encoding='utf-8')
@@ -54,7 +54,7 @@ jobs:
               q.write_text(t,encoding='utf-8')
           PY
 
-      - name: Verify analytics and login companion runtime before publish
+      - name: Verify full runtime before publish
         run: |
           node --check aa-companion-v2.js
           node --check aa-companion-mobile-fix.js
@@ -62,6 +62,7 @@ jobs:
           node --check login-companion-v1.js
           node --check analytics-daily-v1.js
           node --check login-production-test-v1.js
+          node --check explanation-examples-v1.js
           node --check v23-pet-settings.js
           node --check v23-loader.js
           node --check learning-engine-v23.js
@@ -74,6 +75,8 @@ jobs:
           l=Path('login-companion-v1.js').read_text(encoding='utf-8')
           a=Path('analytics-daily-v1.js').read_text(encoding='utf-8')
           t=Path('login-production-test-v1.js').read_text(encoding='utf-8')
+          e=Path('explanation-examples-v1.js').read_text(encoding='utf-8')
+          vl=Path('v23-loader.js').read_text(encoding='utf-8')
           p=Path('v23-pet-settings.js').read_text(encoding='utf-8')
           s=Path('sw.js').read_text(encoding='utf-8')
           assert "const APP_VERSION='2.2.9';" in i
@@ -89,9 +92,13 @@ jobs:
           assert 'ZIPからまとめてインストール' in l and 'importZip' in l and 'DecompressionStream' in l
           assert '日々の学習記録' in a and '直近30日の学習日' in a and 'recordStudyComplete' in a
           assert '今だけ本番演出を1回テスト' in t and "Math.max(.05" in t and 'USED_KEY' in t
+          assert 'explanation-examples-v1.js' in vl and '229-examples1' in vl
+          assert "古文の例文" in e and "漢文の用例" in e and "漢字・語彙の用例" in e and "英単語の例文" in e
+          assert "温故知新" in e and "手を焼く" in e and "未ダ雨降ラズ" in e
+          assert 'patchVocab' in e and 'patchJapaneseBanks' in e and 'patchFeedback' in e
           assert "const VERSION = '2.2.9';" in s
-          assert 'prodtest1' in s and 'login-production-test-v1.js' in s
-          print('AA OS 2.2.9 / analytics + one-time production login test publish guard PASS')
+          assert 'examples1' in s and 'explanation-examples-v1.js' in s and 'prodtest1' in s
+          print('AA OS 2.2.9 / rich explanation examples publish guard PASS')
           PY
 
       - name: Upload Pages artifact
