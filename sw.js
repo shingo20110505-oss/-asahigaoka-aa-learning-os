@@ -1,7 +1,7 @@
 'use strict';
 
-const VERSION = '2.2.7';
-const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-c631`;
+const VERSION = '2.2.8';
+const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-companion73`;
 const BASE = self.registration.scope;
 const APP_URL = new URL('./', BASE).href;
 const OFFLINE_URL = new URL('offline.html', BASE).href;
@@ -78,7 +78,7 @@ self.addEventListener('fetch', event => {
   }
 
   if (!url.href.startsWith(BASE)) return;
-  const isCompanion=/\/(aa-companion-v2|aa-companion-mobile-fix|companion7-runtime|companion7-check)\.js$/.test(url.pathname);
+  const isCompanion=/\/(aa-companion-v2|aa-companion-mobile-fix|companion7-runtime|companion7-check|chronologia-live-companion)\.js$/.test(url.pathname);
   event.respondWith((async () => {
     if(isCompanion){
       try{
