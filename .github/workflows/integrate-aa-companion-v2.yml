@@ -28,7 +28,10 @@ jobs:
               h=p.read_text(encoding='utf-8')
               h=re.sub(r'\s*<!-- AA-COMPANION-V2 -->', '', h)
               h=re.sub(r'\s*<script\s+src="\./aa-companion-v2\.js\?v=[^"]+"></script>', '', h)
-              h=h.replace('</body>', f'\n{marker}\n{tag}\n</body>')
+              repl=f'\n{marker}\n{tag}\n</body>\n</html>'
+              h,n=re.subn(r'</body>\s*</html>\s*$', repl, h, count=1, flags=re.I)
+              if n!=1:
+                  raise RuntimeError(f'final body/html not found in {path}')
               p.write_text(h,encoding='utf-8')
 
           install_tag('index.html')
