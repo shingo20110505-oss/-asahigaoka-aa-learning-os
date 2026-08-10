@@ -1,7 +1,7 @@
 'use strict';
 
 const VERSION = '2.2.9';
-const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-companion74-v23d`;
+const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-companion74-v23e`;
 const BASE = self.registration.scope;
 const APP_URL = new URL('./', BASE).href;
 const OFFLINE_URL = new URL('offline.html', BASE).href;
