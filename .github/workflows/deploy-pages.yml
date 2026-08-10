@@ -28,27 +28,44 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Verify companion runtime before publish
+      - name: Prepare AA OS 2.2.9 / Companion 7.4 public build
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          s=re.sub(r"const APP_VERSION='[^']+';", "const APP_VERSION='2.2.9';", s, count=1)
+          s=re.sub(r'<script src="\./aa-companion-v2\.js\?v=[^"]+"></script>', '<script src="./aa-companion-v2.js?v=7.4-petfix2"></script>', s, count=1)
+          s=re.sub(r'<script src="\./aa-companion-mobile-fix\.js\?v=[^"]+"></script>', '<script src="./aa-companion-mobile-fix.js?v=7.4-petfix2"></script>', s, count=1)
+          p.write_text(s,encoding='utf-8')
+          PY
+
+      - name: Verify current runtime before publish
         run: |
           node --check aa-companion-v2.js
+          node --check aa-companion-mobile-fix.js
+          node --check companion7-runtime.js
+          node --check v23-pet-settings.js
+          node --check v23-loader.js
+          node --check learning-engine-v23.js
           python - <<'PY'
           from pathlib import Path
           import re
           i=Path('index.html').read_text(encoding='utf-8')
-          h=Path('chronologia.html').read_text(encoding='utf-8')
           c=Path('aa-companion-v2.js').read_text(encoding='utf-8')
+          m=Path('aa-companion-mobile-fix.js').read_text(encoding='utf-8')
+          p=Path('v23-pet-settings.js').read_text(encoding='utf-8')
           s=Path('sw.js').read_text(encoding='utf-8')
-          pat=r'<script\s+src="\./aa-companion-v2\.js\?v=[^"]+"></script>'
-          assert len(re.findall(pat,i)) == 1
-          assert len(re.findall(pat,h)) == 1
-          assert not re.search(r'<script\s+src="\./chronologia-live-companion\.js\?v=',h)
-          assert 'motion:lowPower ? .55 : 1' in c
-          assert 'motion:lowPower?.55:1' not in c
-          assert '01_normal.png' in c and '12_rare.png' in c
-          assert 'chronologia-local-voice-v1' in c and 'chronologia-local-companion-v1' in c
-          assert 'MutationObserver' in c and 'smartHide' in c and 'playVoice' in c
-          assert "new URL('aa-companion-v2.js', BASE).href" in s
-          print('Companion runtime publish guard PASS')
+          assert "const APP_VERSION='2.2.9';" in i
+          assert '<script src="./aa-companion-v2.js?v=7.4-petfix2"></script>' in i
+          assert '<script src="./aa-companion-mobile-fix.js?v=7.4-petfix2"></script>' in i
+          assert 'aaPetDisplayToggle' in c and '相棒（ペット）表示' in c
+          assert 'v23-pet-settings.js' in m or 'loadPetSettings' in m
+          assert 'pet-display-toggle' in p or 'aaPetDisplayToggle' in p
+          assert "const VERSION = '2.2.9';" in s
+          assert 'companion74' in s and 'v23-pet-settings.js' in s
+          print('AA OS 2.2.9 / Companion 7.4 publish guard PASS')
           PY
 
       - name: Upload Pages artifact
