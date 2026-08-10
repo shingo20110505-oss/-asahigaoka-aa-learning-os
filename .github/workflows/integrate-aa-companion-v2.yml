@@ -21,31 +21,36 @@ jobs:
           import re
 
           tag = '<script src="./aa-companion-v2.js?v=6.5.0"></script>'
+          marker = '<!-- AA-COMPANION-V2 -->'
 
-          p = Path('index.html')
-          h = p.read_text(encoding='utf-8')
-          h = re.sub(r'\n?<!-- AA-COMPANION-V2 -->\s*<script src="\./aa-companion-v2\.js\?v=[^"]+"></script>', '', h)
-          h = h.replace('</body>', f'<!-- AA-COMPANION-V2 -->\n{tag}\n</body>')
-          p.write_text(h, encoding='utf-8')
+          def install_tag(path):
+              p=Path(path)
+              h=p.read_text(encoding='utf-8')
+              h=re.sub(r'\s*<!-- AA-COMPANION-V2 -->', '', h)
+              h=re.sub(r'\s*<script\s+src="\./aa-companion-v2\.js\?v=[^"]+"></script>', '', h)
+              h=h.replace('</body>', f'\n{marker}\n{tag}\n</body>')
+              p.write_text(h,encoding='utf-8')
 
-          p = Path('chronologia.html')
-          h = p.read_text(encoding='utf-8')
-          h = h.replace('<title>Chronologia 6.3｜', '<title>Chronologia 6.5｜').replace('<title>Chronologia 6.4｜', '<title>Chronologia 6.5｜')
-          h = h.replace('const VERSION = "6.3.1";', 'const VERSION = "6.5.0";').replace('const VERSION = "6.4.0";', 'const VERSION = "6.5.0";')
-          h = re.sub(r'<script src="\./chronologia-daily-companion\.js\?v=[^"]+"></script>', '<script src="./chronologia-daily-companion.js?v=6.5.0"></script>', h)
-          h = re.sub(r'\n?<!-- CHRONOLOGIA-LIVE-COMPANION-LOADER -->\s*<script src="\./chronologia-live-companion\.js\?v=[^"]+"></script>', '', h)
-          h = re.sub(r'\n?<!-- AA-COMPANION-V2 -->\s*<script src="\./aa-companion-v2\.js\?v=[^"]+"></script>', '', h)
-          h = h.replace('</body>', f'<!-- AA-COMPANION-V2 -->\n{tag}\n</body>')
-          p.write_text(h, encoding='utf-8')
+          install_tag('index.html')
 
-          p = Path('sw.js')
-          s = p.read_text(encoding='utf-8')
-          s = re.sub(r"const CACHE_NAME = `asahigaoka-aa-os-\$\{VERSION\}-[^`]+`;", "const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-c650`;", s)
-          s = s.replace("  new URL('chronologia-live-companion.js', BASE).href,\n", '')
+          p=Path('chronologia.html')
+          h=p.read_text(encoding='utf-8')
+          h=h.replace('<title>Chronologia 6.3｜','<title>Chronologia 6.5｜').replace('<title>Chronologia 6.4｜','<title>Chronologia 6.5｜')
+          h=h.replace('const VERSION = "6.3.1";','const VERSION = "6.5.0";').replace('const VERSION = "6.4.0";','const VERSION = "6.5.0";')
+          h=re.sub(r'<script src="\./chronologia-daily-companion\.js\?v=[^"]+"></script>','<script src="./chronologia-daily-companion.js?v=6.5.0"></script>',h)
+          h=re.sub(r'\s*<!-- CHRONOLOGIA-LIVE-COMPANION-LOADER -->','',h)
+          h=re.sub(r'\s*<script\s+src="\./chronologia-live-companion\.js\?v=[^"]+"></script>','',h)
+          p.write_text(h,encoding='utf-8')
+          install_tag('chronologia.html')
+
+          p=Path('sw.js')
+          s=p.read_text(encoding='utf-8')
+          s=re.sub(r"const CACHE_NAME = `asahigaoka-aa-os-\$\{VERSION\}-[^`]+`;","const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-c650`;",s)
+          s=s.replace("  new URL('chronologia-live-companion.js', BASE).href,\n",'')
           if "new URL('aa-companion-v2.js', BASE).href" not in s:
-              needle = "  new URL('chronologia-daily-companion.js', BASE).href,\n"
-              s = s.replace(needle, needle + "  new URL('aa-companion-v2.js', BASE).href,\n")
-          p.write_text(s, encoding='utf-8')
+              needle="  new URL('chronologia-daily-companion.js', BASE).href,\n"
+              s=s.replace(needle,needle+"  new URL('aa-companion-v2.js', BASE).href,\n")
+          p.write_text(s,encoding='utf-8')
       - name: Validate integration
         shell: python
         run: |
