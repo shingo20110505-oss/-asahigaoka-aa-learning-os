@@ -1,5 +1,6 @@
 (()=>{'use strict';
-function loadV23(){if(document.getElementById('aa-v23-loader'))return;const v=document.createElement('script');v.id='aa-v23-loader';v.src='./v23-loader.js?compat=229-c74';v.async=false;document.head.appendChild(v)}
+function loadPetSettings(){if(document.getElementById('aa-pet-settings-loader'))return;const s=document.createElement('script');s.id='aa-pet-settings-loader';s.src='./v23-pet-settings.js?compat=229-c74d';s.async=false;document.head.appendChild(s)}
+function loadV23(){if(document.getElementById('aa-v23-loader'))return;const v=document.createElement('script');v.id='aa-v23-loader';v.src='./v23-loader.js?compat=229-c74d';v.async=false;document.head.appendChild(v)}
 function killLegacy(){document.getElementById('aaPet')?.remove();document.getElementById('aaPetSheet')?.remove();}
 function wire(){if(!window.Companion7){setTimeout(wire,80);return}killLegacy();
  document.addEventListener('aa:answer',e=>Companion7.event(e.detail?.correct?'correct':'wrong'));
@@ -12,6 +13,6 @@ function wire(){if(!window.Companion7){setTimeout(wire,80);return}killLegacy();
  setTimeout(()=>{const h=document.getElementById('companion7');if(!h)return;const canvas=h.querySelector('canvas');const blank=!Companion7.source||Companion7.source==='none';if(blank)Companion7.reloadTexture?.();if(canvas&&!canvas.width){canvas.width=420;canvas.height=500}},1200);
  const old=document.getElementById('companion7-check-loader');if(!old){const c=document.createElement('script');c.id='companion7-check-loader';c.src='./companion7-check.js?v=7.3.0';document.head.appendChild(c)}
 }
-loadV23();
+loadPetSettings();loadV23();
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',wire,{once:true});else wire();
 })();
