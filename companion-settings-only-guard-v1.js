@@ -1,0 +1,10 @@
+(()=>{'use strict';
+if(window.__AA_COMPANION_SETTINGS_ONLY_GUARD_V1__)return;window.__AA_COMPANION_SETTINGS_ONLY_GUARD_V1__=true;
+function visible(el){if(!el||!el.isConnected)return false;const s=getComputedStyle(el);if(s.display==='none'||s.visibility==='hidden'||Number(s.opacity)===0)return false;return el.getClientRects().length>0}
+function isRealSettings(){const main=document.querySelector('main');if(!main)return false;const headings=[...main.querySelectorAll('h1,h2,h3,.eyebrow')].filter(visible);const title=headings.some(el=>/(^|\s)(設定|SETTINGS)(\s|$)|設定・|・設定/i.test((el.textContent||'').trim()));const controls=[...main.querySelectorAll('[data-action="export"],[data-action="copy-backup"],[data-action="theme"],[data-action="pwa-check"]')].filter(visible);return title&&controls.length>0}
+function removeOutsideSettings(){if(isRealSettings())return;for(const id of ['voiceCompanionSettingWrap','voiceCompanionSettingCard','aaProdTestWrap'])document.getElementById(id)?.remove();document.querySelectorAll('[data-voice-selftest]').forEach(el=>el.remove());document.querySelectorAll('[data-voice-diagnose],[data-voice-test-normal],[data-voice-test-explosion],[data-prod-login-test]').forEach(el=>el.remove())}
+let queued=false;function queue(){if(queued)return;queued=true;queueMicrotask(()=>{queued=false;removeOutsideSettings()})}
+const mo=new MutationObserver(queue);function start(){removeOutsideSettings();if(document.body)mo.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class','style','hidden']});addEventListener('hashchange',queue);addEventListener('popstate',queue);document.addEventListener('click',()=>setTimeout(removeOutsideSettings,0),true);setInterval(removeOutsideSettings,700)}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+window.AACompanionSettingsOnlyGuard={version:'1.0.0',isRealSettings,removeOutsideSettings};
+})();
