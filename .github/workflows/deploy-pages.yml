@@ -61,6 +61,7 @@ jobs:
           node --check companion7-runtime.js
           node --check login-companion-v1.js
           node --check analytics-daily-v1.js
+          node --check login-production-test-v1.js
           node --check v23-pet-settings.js
           node --check v23-loader.js
           node --check learning-engine-v23.js
@@ -72,6 +73,7 @@ jobs:
           r=Path('companion7-runtime.js').read_text(encoding='utf-8')
           l=Path('login-companion-v1.js').read_text(encoding='utf-8')
           a=Path('analytics-daily-v1.js').read_text(encoding='utf-8')
+          t=Path('login-production-test-v1.js').read_text(encoding='utf-8')
           p=Path('v23-pet-settings.js').read_text(encoding='utf-8')
           s=Path('sw.js').read_text(encoding='utf-8')
           assert "const APP_VERSION='2.2.9';" in i
@@ -79,15 +81,17 @@ jobs:
           assert 'companion7-runtime.js?v=7.5.0-loginzip1' in c
           assert 'login-companion-v1.js?v=1.1.0' in m
           assert 'analytics-daily-v1.js?v=1.0.0' in m
+          assert 'login-production-test-v1.js?v=1.0.0' in m
           assert "version:'7.5.0-login'" in r and 'setLoginVoices' in r and 'setExplosionVoice' in r
           assert "driftPct=hash01('aa-explosion-'+today)*.003" in r
           assert "driftPct=hash01('aa-explosion-'+today)*.003" in p
           assert '日替わり加算' in p
           assert 'ZIPからまとめてインストール' in l and 'importZip' in l and 'DecompressionStream' in l
           assert '日々の学習記録' in a and '直近30日の学習日' in a and 'recordStudyComplete' in a
+          assert '今だけ本番演出を1回テスト' in t and "Math.max(.05" in t and 'USED_KEY' in t
           assert "const VERSION = '2.2.9';" in s
-          assert 'analytics1' in s and 'analytics-daily-v1.js' in s
-          print('AA OS 2.2.9 / Explosion floor + daily analytics publish guard PASS')
+          assert 'prodtest1' in s and 'login-production-test-v1.js' in s
+          print('AA OS 2.2.9 / analytics + one-time production login test publish guard PASS')
           PY
 
       - name: Upload Pages artifact
