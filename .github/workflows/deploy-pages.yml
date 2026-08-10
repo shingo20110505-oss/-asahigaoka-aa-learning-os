@@ -28,7 +28,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Prepare AA OS 2.2.9 / Companion 7.5 login public build
+      - name: Prepare AA OS 2.2.9 / Companion 7.5.1 analytics public build
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -36,17 +36,31 @@ jobs:
           p=Path('index.html')
           s=p.read_text(encoding='utf-8')
           s=re.sub(r"const APP_VERSION='[^']+';", "const APP_VERSION='2.2.9';", s, count=1)
-          s=re.sub(r'<script src="\./aa-companion-v2\.js\?v=[^"]+"></script>', '<script src="./aa-companion-v2.js?v=7.5.0-loginzip1"></script>', s, count=1)
-          s=re.sub(r'<script src="\./aa-companion-mobile-fix\.js\?v=[^"]+"></script>', '<script src="./aa-companion-mobile-fix.js?v=7.5.0-loginzip1"></script>', s, count=1)
+          s=re.sub(r'<script src="\./aa-companion-v2\.js\?v=[^"]+"></script>', '<script src="./aa-companion-v2.js?v=7.5.1-analytics1"></script>', s, count=1)
+          s=re.sub(r'<script src="\./aa-companion-mobile-fix\.js\?v=[^"]+"></script>', '<script src="./aa-companion-mobile-fix.js?v=7.5.1-analytics1"></script>', s, count=1)
           p.write_text(s,encoding='utf-8')
+
+          # Explosion probability: the 0.05% base is a true floor.
+          # Daily variation is now an additive 0..+0.003%, never a penalty.
+          for name in ('companion7-runtime.js','v23-pet-settings.js'):
+              q=Path(name)
+              t=q.read_text(encoding='utf-8')
+              old="driftPct=(hash01('aa-explosion-'+today)*.006)-.003"
+              new="driftPct=hash01('aa-explosion-'+today)*.003"
+              if old not in t and new not in t:
+                  raise SystemExit(f'Explosion drift expression not found in {name}')
+              t=t.replace(old,new)
+              t=t.replace(' ／ 日替わり ${signedPct(d.driftPct)}',' ／ 日替わり加算 ${signedPct(d.driftPct)}')
+              q.write_text(t,encoding='utf-8')
           PY
 
-      - name: Verify login companion runtime before publish
+      - name: Verify analytics and login companion runtime before publish
         run: |
           node --check aa-companion-v2.js
           node --check aa-companion-mobile-fix.js
           node --check companion7-runtime.js
           node --check login-companion-v1.js
+          node --check analytics-daily-v1.js
           node --check v23-pet-settings.js
           node --check v23-loader.js
           node --check learning-engine-v23.js
@@ -57,18 +71,23 @@ jobs:
           m=Path('aa-companion-mobile-fix.js').read_text(encoding='utf-8')
           r=Path('companion7-runtime.js').read_text(encoding='utf-8')
           l=Path('login-companion-v1.js').read_text(encoding='utf-8')
+          a=Path('analytics-daily-v1.js').read_text(encoding='utf-8')
           p=Path('v23-pet-settings.js').read_text(encoding='utf-8')
           s=Path('sw.js').read_text(encoding='utf-8')
           assert "const APP_VERSION='2.2.9';" in i
-          assert '7.5.0-loginzip1' in i
+          assert '7.5.1-analytics1' in i
           assert 'companion7-runtime.js?v=7.5.0-loginzip1' in c
           assert 'login-companion-v1.js?v=1.1.0' in m
+          assert 'analytics-daily-v1.js?v=1.0.0' in m
           assert "version:'7.5.0-login'" in r and 'setLoginVoices' in r and 'setExplosionVoice' in r
+          assert "driftPct=hash01('aa-explosion-'+today)*.003" in r
+          assert "driftPct=hash01('aa-explosion-'+today)*.003" in p
+          assert '日替わり加算' in p
           assert 'ZIPからまとめてインストール' in l and 'importZip' in l and 'DecompressionStream' in l
-          assert 'ZIPから追加' in p and '通常ボイスをまとめて登録' in p
+          assert '日々の学習記録' in a and '直近30日の学習日' in a and 'recordStudyComplete' in a
           assert "const VERSION = '2.2.9';" in s
-          assert 'companion750-loginzip1' in s and 'login-companion-v1.js' in s
-          print('AA OS 2.2.9 / Companion 7.5 login ZIP publish guard PASS')
+          assert 'analytics1' in s and 'analytics-daily-v1.js' in s
+          print('AA OS 2.2.9 / Explosion floor + daily analytics publish guard PASS')
           PY
 
       - name: Upload Pages artifact
