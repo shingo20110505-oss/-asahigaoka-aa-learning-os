@@ -10,7 +10,7 @@ const VOICES=['wrong_01.mp3','wrong_02.mp3','wrong_03.mp3','wrong_04.mp3','wrong
 const voiceMap={wrong_01:'stare',wrong_02:'pressure',wrong_03:'pressure',wrong_04:'angry',wrong_05:'angry',wrong_06:'pressure',wrong_07:'surprise',hell_01:'angry',hard_01:'thinking',hard_02:'serious',hard_03:'serious',hard_04:'serious',retry_01:'thinking',retry_02:'serious',success_01:'joy',careless_01:'stare',careless_02:'pressure',review_01:'stare',review_02:'serious',idle_01:'sleepy',timer_01:'surprise',struggle_01:'thinking',streak_01:'smile',streak_02:'joy',goal_01:'goal',start_01:'smile',rare_01:'rare',return_01:'surprise',finish_01:'smile',finish_02:'smile'};
 const isOS=location.pathname.endsWith('/index.html')||location.pathname.endsWith('/');
 const lowPower=(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=4)||(navigator.connection&&navigator.connection.saveData)||false;
-const defaults={enabled:true,size:isOS?138:148,opacity:1,x:null,y:null,motion:lowPower?.55:1,voiceMode:'spicy',volume:.82,smartHide:true,snap:true};
+const defaults={enabled:true,size:isOS?138:148,opacity:1,x:null,y:null,motion:lowPower ? .55 : 1,voiceMode:'spicy',volume:.82,smartHide:true,snap:true};
 let prefs={...defaults};try{prefs={...prefs,...JSON.parse(localStorage.getItem(PREF)||'{}')}}catch(e){}
 let brain={xp:0,mood:0,energy:100,correctStreak:0,wrongStreak:0,lastSeen:0,lastReaction:0,lastIdle:0,answers:0,correct:0};try{brain={...brain,...JSON.parse(localStorage.getItem(BRAIN)||'{}')}}catch(e){}
 let urls=new Map(),voiceUrls=new Map(),expr='normal',resetTimer=null,drag=null,audioPulse=0,phase=0,last=performance.now(),scrolling=false,scrollTimer=null,lastActivity=Date.now(),activeAudio=null,lastVoiceAt=0,lastVoiceByName={},seenFeedback=new WeakSet();
