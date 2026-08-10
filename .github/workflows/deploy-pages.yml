@@ -28,7 +28,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Prepare AA OS 2.2.9 / Companion voice-only public build
+      - name: Prepare AA OS 2.2.9 / Companion 7.5 login public build
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -36,16 +36,17 @@ jobs:
           p=Path('index.html')
           s=p.read_text(encoding='utf-8')
           s=re.sub(r"const APP_VERSION='[^']+';", "const APP_VERSION='2.2.9';", s, count=1)
-          s=re.sub(r'<script src="\./aa-companion-v2\.js\?v=[^"]+"></script>', '<script src="./aa-companion-v2.js?v=7.4.2-voice"></script>', s, count=1)
-          s=re.sub(r'<script src="\./aa-companion-mobile-fix\.js\?v=[^"]+"></script>', '<script src="./aa-companion-mobile-fix.js?v=7.4.2-voice"></script>', s, count=1)
+          s=re.sub(r'<script src="\./aa-companion-v2\.js\?v=[^"]+"></script>', '<script src="./aa-companion-v2.js?v=7.5.0-loginzip1"></script>', s, count=1)
+          s=re.sub(r'<script src="\./aa-companion-mobile-fix\.js\?v=[^"]+"></script>', '<script src="./aa-companion-mobile-fix.js?v=7.5.0-loginzip1"></script>', s, count=1)
           p.write_text(s,encoding='utf-8')
           PY
 
-      - name: Verify voice-only runtime before publish
+      - name: Verify login companion runtime before publish
         run: |
           node --check aa-companion-v2.js
           node --check aa-companion-mobile-fix.js
           node --check companion7-runtime.js
+          node --check login-companion-v1.js
           node --check v23-pet-settings.js
           node --check v23-loader.js
           node --check learning-engine-v23.js
@@ -53,17 +54,21 @@ jobs:
           from pathlib import Path
           i=Path('index.html').read_text(encoding='utf-8')
           c=Path('aa-companion-v2.js').read_text(encoding='utf-8')
+          m=Path('aa-companion-mobile-fix.js').read_text(encoding='utf-8')
           r=Path('companion7-runtime.js').read_text(encoding='utf-8')
+          l=Path('login-companion-v1.js').read_text(encoding='utf-8')
           p=Path('v23-pet-settings.js').read_text(encoding='utf-8')
           s=Path('sw.js').read_text(encoding='utf-8')
           assert "const APP_VERSION='2.2.9';" in i
-          assert '7.4.2-voice' in i
-          assert 'killVisuals' in c and 'companion7-runtime.js?v=7.4.2-voice' in c
-          assert "mode:'voice-only'" in r and 'setVoice' in r and 'listVoices' in r and 'playVoice' in r
-          assert '相棒ボイス' in p and 'data-voice-toggle' in p and 'data-voice-volume' in p
+          assert '7.5.0-loginzip1' in i
+          assert 'companion7-runtime.js?v=7.5.0-loginzip1' in c
+          assert 'login-companion-v1.js?v=1.1.0' in m
+          assert "version:'7.5.0-login'" in r and 'setLoginVoices' in r and 'setExplosionVoice' in r
+          assert 'ZIPからまとめてインストール' in l and 'importZip' in l and 'DecompressionStream' in l
+          assert 'ZIPから追加' in p and '通常ボイスをまとめて登録' in p
           assert "const VERSION = '2.2.9';" in s
-          assert 'companion742-voice' in s and 'v23-pet-settings.js' in s
-          print('AA OS 2.2.9 / Companion voice-only publish guard PASS')
+          assert 'companion750-loginzip1' in s and 'login-companion-v1.js' in s
+          print('AA OS 2.2.9 / Companion 7.5 login ZIP publish guard PASS')
           PY
 
       - name: Upload Pages artifact
