@@ -28,29 +28,28 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Verify Chronologia 6.3.1 before publish
+      - name: Verify AA companion 6.5 before publish
         shell: python
         run: |
           from pathlib import Path
+          i=Path('index.html').read_text(encoding='utf-8')
           h=Path('chronologia.html').read_text(encoding='utf-8')
           d=Path('chronologia-daily-companion.js').read_text(encoding='utf-8')
-          l=Path('chronologia-live-companion.js').read_text(encoding='utf-8')
+          c=Path('aa-companion-v2.js').read_text(encoding='utf-8')
           s=Path('sw.js').read_text(encoding='utf-8')
-          assert '<title>Chronologia 6.3' in h
-          assert 'const VERSION = "6.3.1";' in h
-          assert h.count('chronologia-daily-companion.js?v=6.3.1') == 1
-          assert h.count('chronologia-live-companion.js?v=6.3.1') == 1
-          assert h.count('chronologia-daily-companion.js') == 1
-          assert h.count('chronologia-live-companion.js') == 1
+          assert '<title>Chronologia 6.5' in h
+          assert 'const VERSION = "6.5.0";' in h
+          assert i.count('aa-companion-v2.js?v=6.5.0') == 1
+          assert h.count('aa-companion-v2.js?v=6.5.0') == 1
+          assert h.count('chronologia-daily-companion.js?v=6.5.0') == 1
+          assert 'chronologia-live-companion.js?v=' not in h
           assert "const DAILY_KEY='chronologia-daily-v2'" in d
-          assert "'wrong_01.mp3'" in d and "'finish_02.mp3'" in d
-          assert '01_normal.png' in l and '12_rare.png' in l
-          assert 'cc-head' in l and 'cc-eyes' in l and 'cc-mouth-layer' in l
-          assert 'createAnalyser' in l and 'getByteTimeDomainData' in l
-          assert 'chronologia:voice' in d and 'chronologia:voice' in l
-          assert 'chronologia-daily-companion.js' in s
-          assert 'chronologia-live-companion.js' in s
-          print('Chronologia 6.3.1 publish guard PASS')
+          assert "const VERSION='6.5.0'" in c
+          assert '01_normal.png' in c and '12_rare.png' in c
+          assert 'chronologia-local-voice-v1' in c and 'chronologia-local-companion-v1' in c
+          assert 'MutationObserver' in c and 'smartHide' in c and 'playVoice' in c
+          assert 'aa-companion-v2.js' in s and 'c650' in s
+          print('AA companion 6.5 publish guard PASS')
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
