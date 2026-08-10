@@ -1,0 +1,36 @@
+name: Report Pages 6.5
+on:
+  push:
+    paths:
+      - '.report-pages-650-trigger'
+permissions:
+  actions: read
+  contents: write
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Fetch deploy runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          repo=os.environ['REPO']; token=os.environ['GH_TOKEN']
+          url=f'https://api.github.com/repos/{repo}/actions/workflows/deploy-pages.yml/runs?per_page=8'
+          req=urllib.request.Request(url,headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'})
+          data=json.load(urllib.request.urlopen(req))
+          lines=[]
+          for r in data.get('workflow_runs',[]):
+              lines.append(f"id={r['id']} status={r['status']} conclusion={r.get('conclusion')} head={r['head_sha']} url={r['html_url']}")
+          open('PAGES_650_STATUS.txt','w').write('\n'.join(lines)+'\n')
+          PY
+      - name: Commit report
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add PAGES_650_STATUS.txt
+          git commit -m "Report Pages 6.5 deployment status" || exit 0
+          git push
