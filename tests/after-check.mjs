@@ -64,7 +64,7 @@ const fresh = makeRuntime();
 try {
   const aa = fresh.__aa;
   check('初期画面描画', fresh.document.querySelector('h1')?.textContent === '旭丘AA Learning OS');
-  check('v2.2.6・schema 4', aa.version === '2.2.6' && aa.schema === 4, `${aa.version}/${aa.schema}`);
+  check('v2.2.7・schema 4', aa.version === '2.2.7' && aa.schema === 4, `${aa.version}/${aa.schema}`);
   check('iPhone safe-area設計', /viewport-fit=cover/.test(index) && /safe-area-inset-(?:top|bottom)/.test(index));
   check('レスポンシブ設計', /@media\(max-width:700px\)/.test(index) && /grid-template-columns:1fr/.test(index));
 
@@ -178,6 +178,27 @@ try {
   aa.state.attempts = attemptsBeforeAntiRepeat;
 
   aa.state = aa.defaultState(); aa.state.profile.vocabDiagnosticDone = true; aa.save(); aa.render(); aa.setRoute('subjects');
+  const readingTypeSelect = fresh.document.querySelector('[data-action="reading-type"]');
+  check('長文タイプ3選択肢', readingTypeSelect && [...readingTypeSelect.options].map(option => option.value).join(',') === 'mixed,narrative,argument');
+  readingTypeSelect.value = 'narrative';
+  readingTypeSelect.dispatchEvent(new fresh.Event('change', { bubbles: true }));
+  check('物語文設定を保存', aa.state.ui.readingType === 'narrative' && JSON.parse(fresh.localStorage.getItem(aa.storeKey)).ui.readingType === 'narrative');
+  aa.startSession({ kind:'reading', subject:'english', mode:'standard', readingAssist:'scaffold' });
+  const narrativeRead = aa.state.session.queue[0];
+  check('物語文だけを出題', narrativeRead.sourceGenre === 'narrative' && narrativeRead.readingType === 'narrative' && narrativeRead.readingTypeLabel === '物語文', `${narrativeRead.sourceGenre}/${narrativeRead.readingTypeLabel}`);
+  check('物語文専用設問', narrativeRead.questions.some(q => q.stem.includes('物語')) && narrativeRead.questions.some(q => q.stem.includes('登場人物')));
+  check('演習画面に物語文表示', fresh.document.querySelector('main')?.textContent.includes('物語文'));
+  aa.state.session = null; aa.setRoute('subjects');
+  aa.handleAction({ dataset: { action: 'reading-type' }, value: 'argument' }, null);
+  aa.startSession({ kind:'reading', subject:'english', mode:'standard', readingAssist:'scaffold' });
+  const argumentRead = aa.state.session.queue[0];
+  check('筆者の主張だけを出題', argumentRead.sourceGenre === 'expository' && argumentRead.readingType === 'argument' && argumentRead.readingTypeLabel === '筆者の主張', `${argumentRead.sourceGenre}/${argumentRead.readingTypeLabel}`);
+  check('主張・根拠専用設問', argumentRead.questions.some(q => q.stem.includes('筆者の中心的な主張')) && argumentRead.questions.some(q => q.stem.includes('主張を支える')));
+  check('本文に筆者の主張を明示', /writer's (?:main claim|main idea)|writer uses the result to support this claim/i.test(argumentRead.passage));
+  aa.handleAction({ dataset: { action: 'another-set' } }, null);
+  const anotherArgumentRead = aa.state.session.queue[0];
+  check('あと1セットにも長文タイプ反映', anotherArgumentRead.sourceGenre === 'expository' && anotherArgumentRead.requestedReadingType === 'argument');
+  aa.state.session = null; aa.state.ui.readingType = 'mixed'; aa.save(); aa.render(); aa.setRoute('subjects');
   check('長文難度帯を画面表示', fresh.document.querySelector('#diffBand')?.textContent === '標準');
   aa.state.profile.readingLexLevel = 1;
   aa.state.ui.subjectDifficulty = 1;

@@ -101,8 +101,9 @@ for (const icon of manifest.icons) {
 }
 
 check('Offline fallback included', fs.existsSync(path.join(root, 'offline.html')) && sw.includes('offline.html'));
-check('Cache version matches app version', /APP_VERSION='2\.2\.6'/.test(index) && /VERSION = '2\.2\.6'/.test(sw));
+check('Cache version matches app version', /APP_VERSION='2\.2\.7'/.test(index) && /VERSION = '2\.2\.7'/.test(sw));
 check('Reading difficulty is exact', /requested=clamp\(Math\.round\(Number\(base\)\|\|7\),1,11\)/.test(index) && /generateReading\(requested,mode\)/.test(index) && /generateReadingForLearner\(base,'standard',assist\)/.test(index));
+check('Reading type selector and strict filter', /AA22_READING_TYPES/.test(engineV22) && /data-action="reading-type"/.test(engineV22) && /aa22ScenarioMatchesReadingType/.test(engineV22) && /sourceGenre/.test(engineV22));
 check('Indirect-question full-output gate', /hasIndirectQuestion/.test(index) && /generateReadingBeforeFullGrammarGate/.test(index) && /repairSavedReadingGrammarGate/.test(index));
 check('Reading-opening anti-repeat gate', /READING_OPENINGS/.test(index) && /openingSignature/.test(index) && /selectReadingOpening/.test(index) && /openingFirstToken/.test(index));
 check('Reading gloss verb forms', /verbFormsFor/.test(index) && /過去分詞形/.test(index));

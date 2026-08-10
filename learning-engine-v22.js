@@ -734,6 +734,153 @@
       '<div class="tiny">数学の「高校公式」を選ぶと、その単元は旭丘レベルの公式暗記として出題します。数学はここでも公式・法則の暗記だけです。</div></section>';
   }
 
+  const AA22_READING_TYPES = Object.freeze({
+    mixed: '自動（4形式をバランス出題）',
+    narrative: '物語文',
+    argument: '筆者の主張'
+  });
+  function aa22NormalizeReadingType(value) {
+    return Object.prototype.hasOwnProperty.call(AA22_READING_TYPES, value) ? value : 'mixed';
+  }
+  function aa22ReadingTypeLabel(value) {
+    return AA22_READING_TYPES[aa22NormalizeReadingType(value)];
+  }
+  function aa22ScenarioMatchesReadingType(sc, type) {
+    type = aa22NormalizeReadingType(type);
+    if (type === 'narrative') return sc?.genre === 'narrative';
+    if (type === 'argument') return sc?.genre === 'expository';
+    return true;
+  }
+  function aa22ActualReadingType(sc) {
+    if (sc?.genre === 'narrative') return { id: 'narrative', label: '物語文' };
+    if (sc?.genre === 'expository') return { id: 'argument', label: '筆者の主張' };
+    if (sc?.genre === 'experiment') return { id: 'experiment', label: '実験・考察' };
+    return { id: 'report', label: 'レポート・説明文' };
+  }
+
+  const aa22DefaultStateBeforeReadingType = defaultState;
+  defaultState = function () {
+    const next = aa22DefaultStateBeforeReadingType();
+    next.ui.readingType = 'mixed';
+    return next;
+  };
+  const aa22MigrateBeforeReadingType = migrate;
+  migrate = function (saved) {
+    const next = aa22MigrateBeforeReadingType(saved);
+    next.ui.readingType = aa22NormalizeReadingType(next.ui.readingType);
+    return next;
+  };
+  state.ui.readingType = aa22NormalizeReadingType(state.ui.readingType);
+
+  Object.assign(READING_GLOSSARY, {
+    writer: '筆者', "writer's": '筆者の', claim: '主張', claims: '主張する',
+    story: '物語', character: '登場人物', characters: '登場人物たち',
+    clearer: 'より明確な', example: '具体例', understand: '理解する', view: '見方',
+    broader: 'より広い', connection: 'つながり', convenient: '都合のよい',
+    miss: '見落とす', piece: '一つ・一部分', quick: '早計な', therefore: 'そのため'
+  });
+
+  const aa22MakeReadingPassageBeforeType = makeReadingPassage;
+  makeReadingPassage = function (sc, diff = 7, mode = 'standard') {
+    const passage = aa22MakeReadingPassageBeforeType(sc, diff, mode);
+    const paragraphs = passage.split('\n\n');
+    if (sc?.genre === 'narrative') {
+      const endings = [
+        `By the end of the story, the characters understood an important lesson. ${sc.lesson}`,
+        `The final change helped the characters understand the problem more clearly. ${sc.lesson}`,
+        `At the end, the characters had a clearer view of the problem. ${sc.lesson}`
+      ];
+      paragraphs[paragraphs.length - 1] = rnd(endings);
+    } else if (sc?.genre === 'expository') {
+      const endings = [
+        `The writer's main claim is this: ${sc.lesson}`,
+        `The example supports the writer's main idea: ${sc.lesson}`,
+        `The writer uses the result to support this claim: ${sc.lesson}`
+      ];
+      paragraphs[paragraphs.length - 1] = rnd(endings);
+    }
+    return paragraphs.join('\n\n');
+  };
+
+  const aa22ReadingQuestionSetBeforeType = readingQuestionSet;
+  readingQuestionSet = function (sc, passage, diff) {
+    const questions = aa22ReadingQuestionSetBeforeType(sc, passage, diff);
+    const lessonChoices = () => shuffleChoices([
+      { text: sc.lesson, ok: true, reason: '本文全体の出来事・結果と最終段落を過不足なくまとめています。' },
+      { text: 'People should keep their first idea even when later evidence points in another direction.', ok: false, reason: '本文では根拠に応じて考えや行動を修正しています。', error: 'opposite', distractorType: 'opposite' },
+      { text: 'One example proves that the same rule works in every situation.', ok: false, reason: '一つの事例からすべての場面へ一般化しすぎています。', error: 'overgeneralization', distractorType: 'overgeneralization' },
+      { text: 'Collecting the largest amount of information is always the best way to solve a problem.', ok: false, reason: '本文は情報量だけでなく、目的に合う根拠を重視しています。', error: 'scope_shift', distractorType: 'scope_shift' }
+    ]);
+    for (const q of questions) {
+      if (sc?.genre === 'narrative') {
+        if (q.type === 'detail') q.stem = '物語の出来事として最も適切なものを選びなさい。';
+        if (q.type === 'cause') q.stem = '登場人物たちが考えや行動を変えた主なきっかけとして、最も適切なものを選びなさい。';
+        if (q.type === 'inference') q.stem = '登場人物たちの変化から最もよく読み取れることを選びなさい。';
+        if (q.type === 'mainIdea') q.stem = 'この物語が伝える中心的なメッセージとして、最も適切なものを選びなさい。';
+        if (q.type === 'paraphrase') q.stem = '物語の結末が示す教訓を最も適切に言い換えたものを選びなさい。';
+      } else if (sc?.genre === 'expository') {
+        if (q.type === 'detail') q.stem = '筆者が主張の具体例として示した内容を選びなさい。';
+        if (q.type === 'cause') q.stem = '筆者の主張を支える「最初の考え→根拠→修正」の流れとして、最も適切なものを選びなさい。';
+        if (q.type === 'inference') q.stem = '筆者が示した根拠から、無理なく導ける考えを選びなさい。';
+        if (q.type === 'mainIdea') q.stem = '筆者の中心的な主張として、最も適切なものを選びなさい。';
+        if (q.type === 'paraphrase') q.stem = '筆者の結論を最も適切に言い換えたものを選びなさい。';
+      }
+      if ((sc?.genre === 'narrative' || sc?.genre === 'expository') && q.type === 'mainIdea') {
+        q.choices = lessonChoices();
+        q.answerIndex = q.choices.findIndex(choice => choice.ok);
+        q.explanation = q.choices[q.answerIndex].reason;
+        q.distractorTypes = q.choices.filter(choice => !choice.ok).map(choice => choice.distractorType);
+      }
+    }
+    return questions;
+  };
+
+  let aa22ReadingTypeContext = null;
+  const aa22GenerateReadingBeforeType = generateReading;
+  generateReading = function (diff = 7, mode = 'standard', requestedType = null) {
+    const selectedType = aa22NormalizeReadingType(requestedType || aa22ReadingTypeContext || state.ui.readingType);
+    const fullBank = DATA.readingScenarios;
+    const filteredBank = fullBank.filter(sc => aa22ScenarioMatchesReadingType(sc, selectedType));
+    if (!filteredBank.length) throw new Error('選択した長文タイプの素材がありません。');
+    DATA.readingScenarios = filteredBank;
+    try {
+      const read = aa22GenerateReadingBeforeType(diff, mode);
+      const source = fullBank.find(sc => sc.id === read.scenarioId);
+      const actual = aa22ActualReadingType(source);
+      read.readingType = selectedType === 'mixed' ? actual.id : selectedType;
+      read.readingTypeLabel = selectedType === 'mixed' ? actual.label : aa22ReadingTypeLabel(selectedType);
+      read.requestedReadingType = selectedType;
+      read.sourceGenre = source?.genre || null;
+      read.dna = { ...(read.dna || {}), readingType: read.readingType };
+      return read;
+    } finally {
+      DATA.readingScenarios = fullBank;
+    }
+  };
+
+  const aa22GenerateReadingForLearnerBeforeType = generateReadingForLearner;
+  generateReadingForLearner = function (base, mode, assist, requestedType = null) {
+    const previous = aa22ReadingTypeContext;
+    aa22ReadingTypeContext = aa22NormalizeReadingType(requestedType || previous || state.ui.readingType);
+    try { return aa22GenerateReadingForLearnerBeforeType(base, mode, assist); }
+    finally { aa22ReadingTypeContext = previous; }
+  };
+
+  const aa22StartSessionBeforeReadingType = startSession;
+  startSession = function (opts = {}) {
+    const selectedType = aa22NormalizeReadingType(opts.readingType || state.ui.readingType);
+    const previous = aa22ReadingTypeContext;
+    aa22ReadingTypeContext = selectedType;
+    try {
+      const result = aa22StartSessionBeforeReadingType(opts);
+      if (state.session && (opts.kind === 'reading' || state.session.kind === 'reading')) {
+        state.session.readingType = selectedType;
+        save(); render();
+      }
+      return result;
+    } finally { aa22ReadingTypeContext = previous; }
+  };
+
   const aa22PrevSubjectsHTML = subjectsHTML;
   subjectsHTML = function () {
     let html = aa22PrevSubjectsHTML();
@@ -742,6 +889,11 @@
     html = html.replace('<button class="btn primary" data-action="start-reading-simulator">愛知県英語・筆記40分</button>', '<button class="btn primary" data-action="start-reading-simulator">愛知県英語・筆記40分</button><button class="btn ghost" data-action="start-graph-reading">図表＋レポート類題</button>');
     html = html.replace('代数・関数・図形・確率', '中学公式＋高校受験で使える高校公式');
     html = html.replace('>数学演習</button>', '>数学公式暗記</button><button class="btn ghost" data-action="start-advanced-math-formulas">高校公式暗記</button>');
+    const readingType = aa22NormalizeReadingType(state.ui.readingType);
+    const readingTypeUI = '<div class="sp12"></div><div class="field readingTypeField"><label class="strong" for="readingTypeSelect">英語長文の種類</label><select id="readingTypeSelect" data-action="reading-type">' +
+      Object.entries(AA22_READING_TYPES).map(([id, label]) => '<option value="' + id + '" ' + (readingType === id ? 'selected' : '') + '>' + esc(label) + '</option>').join('') +
+      '</select><div class="tiny">物語文は出来事・人物の変化・教訓を、筆者の主張は主張・理由・具体例・結論を中心に出題します。選択は語彙支援・入試実戦・「あと1セット」に反映されます。</div></div>';
+    html = html.replace('<div class="tiny" style="margin-top:10px">語彙支援長文は、', readingTypeUI + '<div class="tiny" style="margin-top:10px">語彙支援長文は、');
     html = html.replace('<div class="sp12"></div><section class="grid g2">', '<div class="sp12"></div>' + aa22PracticeSettingsHTML() + '<div class="sp12"></div><section class="grid g2">');
     const launch = '<div class="sp12"></div><section class="card"><div class="chronologiaLaunch"><div><div class="eyebrow">SEPARATE EXAM MODE</div><h3 class="h3">入試対策は独立ページへ</h3><p class="sub">演習の即時解説と、本番型テストの採点記録を混ぜません。</p></div><button class="btn primary" data-route="exam">入試対策を開く</button></div></section>' +
       '<div class="sp12"></div><section class="card"><div class="chronologiaLaunch"><div><div class="eyebrow">CHRONOLOGIA 6.1</div><h3 class="h3">歴史年表・同時代史</h3><p class="sub">385件の統合年表、クイズ、並べ替え、弱点復習、参考書型解説を別画面で使います。</p></div><a class="btn gold" href="./chronologia.html">年表を開く</a></div></section>';
@@ -751,6 +903,12 @@
   const aa22PrevStudyHTML = studyHTML;
   studyHTML = function () {
     let html = aa22PrevStudyHTML(), s = state.session, q = currentQ();
+    const reading = currentReading();
+    if (reading?.readingTypeLabel) {
+      html = html.replace('<div class="eyebrow">LONG READING</div>', '<div class="eyebrow">LONG READING</div><div class="examQuestionMeta"><span class="chip">' + esc(reading.readingTypeLabel) + '</span></div>');
+      html = html.replace('<div class="eyebrow">FIRST READ</div>', '<div class="eyebrow">FIRST READ</div><div class="examQuestionMeta"><span class="chip">' + esc(reading.readingTypeLabel) + '</span></div>');
+      html = html.replace('<div class="eyebrow">EXAM READING</div>', '<div class="eyebrow">EXAM READING</div><div class="examQuestionMeta"><span class="chip">' + esc(reading.readingTypeLabel) + '</span></div>');
+    }
     if (s?.active && s.trackType === 'practice' && s.practiceConfig && q) {
       const unitLabel = q.examUnit ? aa22UnitLabel(s.subject, q.examUnit) : '';
       const selectedLabels = safeArray(s.practiceUnits).map(unit => aa22UnitLabel(s.subject, unit));
@@ -799,6 +957,9 @@
   const aa22PrevHandleAction = handleAction;
   handleAction = function (el, event) {
     const action = el.dataset.action;
+    if (action === 'reading-type') {
+      state.ui.readingType = aa22NormalizeReadingType(el.value); save(); render(); return;
+    }
     if (action === 'exam-level' || action === 'select-course') {
       state.ui.examConfig = aa22NormalizeConfig({ ...aa22Config(), level: Number(el.dataset.level) }); save(); render(); return;
     }
@@ -815,6 +976,11 @@
     if (action === 'repeat-aichi-test') return aa22StartExam(state.session?.examConfig || aa22Config());
     return aa22PrevHandleAction(el, event);
   };
+
+  document.addEventListener('change', event => {
+    const el = event.target.closest('[data-action="reading-type"]');
+    if (el) handleAction(el, event);
+  });
 
   document.addEventListener('change', event => {
     const el = event.target.closest('[data-action^="practice-"]'); if (!el) return;
@@ -908,6 +1074,11 @@
       add('国語1万語索引', vocab?.count === 10000 && vocab.entries.length === 10000 && new Set(vocab.entries.map(x => x[0] + '|' + x[1])).size === 10000, '教育基本語彙DB由来 ' + (vocab?.entries.length || 0) + '件');
       const graph = aa22GraphReadingSet(11, 'exam');
       add('英語2資料レポート類題', graph.questions.length === 6 && graph.questions.every(q => q.choices?.length === 4 && q.choices.filter(c => c.ok).length === 1) && graph.questions.some(q => q.code === 'EN-T5'), graph.questions.length + '問 / 比率・時期・推論・語順');
+      const previousReadingType = state.ui.readingType;
+      state.ui.readingType = 'narrative'; const narrative = generateReading(7, 'standard');
+      state.ui.readingType = 'argument'; const argument = generateReading(7, 'standard');
+      state.ui.readingType = previousReadingType;
+      add('長文タイプを出題へ反映', narrative.sourceGenre === 'narrative' && narrative.readingTypeLabel === '物語文' && argument.sourceGenre === 'expository' && argument.readingTypeLabel === '筆者の主張' && argument.questions.some(q => q.stem.includes('筆者の中心的な主張')), narrative.readingTypeLabel + ' / ' + argument.readingTypeLabel);
       add('学習履歴キー固定', STORE_KEY === 'asahi_learning_os_v1' && SCHEMA_VERSION === 4, STORE_KEY + ' / schema ' + SCHEMA_VERSION);
       add('独立入試ルート', typeof examHTML === 'function' && aa22Config().timeMin >= 5, '教科・3難度・単元・範囲・時間・問題量');
     } catch (error) { add('v2.2追加検査', false, error.message); }
@@ -920,7 +1091,8 @@
     vocabIndex: window.AA_JA_VOCAB_10000, graphReadingSet: aa22GraphReadingSet,
     advancedMathQueue: aa22AdvancedMathQueue, normalizePracticeConfig: aa22NormalizePracticeConfig,
     practiceQueue: aa22PracticeQueue, startUnitPractice: aa22StartUnitPractice,
-    japaneseLiterary: aa22JapaneseLiterary
+    japaneseLiterary: aa22JapaneseLiterary, normalizeReadingType: aa22NormalizeReadingType,
+    readingTypeLabel: aa22ReadingTypeLabel
   };
 
   save(); render();
