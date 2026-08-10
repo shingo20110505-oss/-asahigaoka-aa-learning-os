@@ -1,0 +1,42 @@
+{
+  "version": "7.0.2-neutral-reference",
+  "role": "primary neutral face reference",
+  "source": {
+    "width": 1024,
+    "height": 1024,
+    "origin": "top-left",
+    "description": "user-supplied frontal neutral reference"
+  },
+  "measurement": {
+    "irisScreenLeftCenter": [420.845, 490.769],
+    "irisScreenRightCenter": [600.706, 490.951],
+    "noseCenter": [512.0, 544.0],
+    "mouthCenter": [511.952, 592.381]
+  },
+  "derived": {
+    "irisCenterDxPx": 179.861,
+    "irisCenterDyPx": 0.182,
+    "irisCenterDistancePx": 179.861,
+    "eyeLineAngleDeg": 0.0580,
+    "neutralRollCorrectionDeg": -0.0580,
+    "scale1024To2048": 2.0
+  },
+  "modelCoordinates2048": {
+    "irisScreenLeftCenter": [841.690, 981.538],
+    "irisScreenRightCenter": [1201.412, 981.902],
+    "noseCenter": [1024.0, 1088.0],
+    "mouthCenter": [1023.904, 1184.762]
+  },
+  "rules": [
+    "Use this 1024px frontal image as the primary neutral placement reference.",
+    "Do not apply the former -7.99 degree correction from the tilted 366px source.",
+    "Do not force mirror symmetry; preserve visible artwork asymmetry.",
+    "Use older angled references only for hidden-part reconstruction and motion-range estimation.",
+    "Re-measure eyelid corners, brows and silhouette locally before final texture extraction."
+  ],
+  "accuracy": {
+    "irisCenters": "high confidence localized pixel segmentation",
+    "mouthCenter": "high confidence dark-line pixel centroid",
+    "noseCenter": "symmetry anchor; pending sub-pixel refinement"
+  }
+}
