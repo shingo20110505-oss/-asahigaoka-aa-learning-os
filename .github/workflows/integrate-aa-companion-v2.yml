@@ -18,12 +18,12 @@ jobs:
         shell: python
         run: |
           from pathlib import Path
+          import re
 
           tag = '<script src="./aa-companion-v2.js?v=6.5.0"></script>'
 
           p = Path('index.html')
           h = p.read_text(encoding='utf-8')
-          import re
           h = re.sub(r'\n?<!-- AA-COMPANION-V2 -->\s*<script src="\./aa-companion-v2\.js\?v=[^"]+"></script>', '', h)
           h = h.replace('</body>', f'<!-- AA-COMPANION-V2 -->\n{tag}\n</body>')
           p.write_text(h, encoding='utf-8')
@@ -50,15 +50,17 @@ jobs:
         shell: python
         run: |
           from pathlib import Path
+          import re
           i=Path('index.html').read_text(encoding='utf-8')
           h=Path('chronologia.html').read_text(encoding='utf-8')
           s=Path('sw.js').read_text(encoding='utf-8')
-          assert i.count('aa-companion-v2.js?v=6.5.0') == 1
-          assert h.count('aa-companion-v2.js?v=6.5.0') == 1
-          assert 'chronologia-live-companion.js?v=' not in h
+          pat=r'<script\s+src="\./aa-companion-v2\.js\?v=6\.5\.0"></script>'
+          assert len(re.findall(pat,i)) == 1
+          assert len(re.findall(pat,h)) == 1
+          assert not re.search(r'<script\s+src="\./chronologia-live-companion\.js\?v=',h)
           assert '<title>Chronologia 6.5' in h
           assert 'const VERSION = "6.5.0";' in h
-          assert 'aa-companion-v2.js' in s
+          assert "new URL('aa-companion-v2.js', BASE).href" in s
           assert 'c650' in s
           print('AA companion 6.5 integration PASS')
       - name: Commit integration
