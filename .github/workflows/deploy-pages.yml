@@ -28,7 +28,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Prepare AA OS 2.2.9 / precise examples + settings-only companion build
+      - name: Prepare AA OS 2.2.9 / natural reading + precise examples build
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -63,6 +63,7 @@ jobs:
           node --check login-companion-v1.js
           node --check analytics-daily-v1.js
           node --check login-production-test-v1.js
+          node --check reading-natural-v2.js
           node --check explanation-examples-v2.js
           node --check question-quality-v1.js
           node --check v23-pet-settings.js
@@ -79,6 +80,7 @@ jobs:
           l=Path('login-companion-v1.js').read_text(encoding='utf-8')
           a=Path('analytics-daily-v1.js').read_text(encoding='utf-8')
           t=Path('login-production-test-v1.js').read_text(encoding='utf-8')
+          rn=Path('reading-natural-v2.js').read_text(encoding='utf-8')
           e=Path('explanation-examples-v2.js').read_text(encoding='utf-8')
           q=Path('question-quality-v1.js').read_text(encoding='utf-8')
           vl=Path('v23-loader.js').read_text(encoding='utf-8')
@@ -101,6 +103,22 @@ jobs:
           assert 'ZIPからまとめてインストール' in l and 'importZip' in l and 'DecompressionStream' in l and 'AALoginCompanion' in l
           assert '日々の学習記録' in a and '直近30日の学習日' in a and 'recordStudyComplete' in a
           assert '今だけ本番演出を1回テスト' in t and "Math.max(.05" in t and 'USED_KEY' in t
+
+          # Reading naturalness release guard.
+          assert 'reading-natural-v2.js' in vl
+          assert vl.index('v23-english-main.js') < vl.index('reading-natural-v2.js') < vl.index('learning-engine-v23.js')
+          assert "const bannedIds=/^v23r\\d+$/" in rn
+          assert "origin:'hand-curated-natural-v2'" in rn
+          assert rn.count("fmt('nat-f") >= 24
+          for genre in ('narrative','email','speech','conversation','notice','newspaper','opinion','experiment','report'):
+              assert f"'{genre}'" in rn
+          assert 'AA_READING_NATURALNESS' in rn and 'removedMechanicalVariants' in rn
+          assert 'The group compared the result with its first expectation.' in rn
+          assert 'The lesson was not simply to work harder or collect more information.' in rn
+          assert 'BAD_PHRASES' in rn
+          assert 'reading-natural-v2.js' in s and 'readingnatural2' in s
+
+          # Precise examples / question quality guards.
           assert 'explanation-examples-v2.js' in vl and 'explanation-examples-v1.js' not in vl and 'question-quality-v1.js' in vl
           assert vl.index('explanation-examples-v2.js') < vl.index('question-quality-v1.js')
           assert "curated-or-source-sentence-only" in e and 'sourceSentence' in e and 'readingSentences' in e
@@ -113,7 +131,7 @@ jobs:
           assert "const VERSION = '2.2.9';" in s
           assert 'examples2' in s and 'settingsguard2' in s and 'explanation-examples-v2.js' in s and 'companion-settings-only-guard-v1.js' in s
           assert 'quality1' in s and 'question-quality-v1.js' in s and 'prodtest1' in s
-          print('AA OS 2.2.9 / precise examples + settings-only companion publish guard PASS')
+          print('AA OS 2.2.9 / natural reading + precise examples + settings-only companion publish guard PASS')
           PY
 
       - name: Upload Pages artifact
