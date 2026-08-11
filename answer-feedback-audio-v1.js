@@ -7,13 +7,13 @@ window.__AA_ANSWER_FEEDBACK_AUDIO_V1__=true;
 window.__AA_EXERCISE_ANSWER_SOUND_V1__=true;
 
 const PREF_KEY='aa-answer-feedback-audio-v3';
-const STATUS=window.AA_ANSWER_FEEDBACK_AUDIO={version:'3.1.0',installed:false,enabled:true,backend:'none',unlocked:false,correctPlays:0,wrongPlays:0,lastError:null,lastCue:null,legacyCoreSuppressed:false};
+const STATUS=window.AA_ANSWER_FEEDBACK_AUDIO={version:'3.0.0',build:'standalone-settings-v31',installed:false,enabled:true,backend:'none',unlocked:false,correctPlays:0,wrongPlays:0,lastError:null,lastCue:null,legacyCoreSuppressed:false};
 window.AA_EXERCISE_ANSWER_SOUND=STATUS;
 let audioCtx=null,currentMedia=null,lastGestureCue=null;
 const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||((navigator.platform==='MacIntel')&&(navigator.maxTouchPoints>1));
 const errText=e=>e&&(`${e.name||'Error'}: ${e.message||String(e)}`);
 function loadPref(){try{const x=JSON.parse(localStorage.getItem(PREF_KEY)||'null');STATUS.enabled=x?.enabled!==false}catch(_){STATUS.enabled=true}}
-function savePref(){try{localStorage.setItem(PREF_KEY,JSON.stringify({enabled:STATUS.enabled,version:31}))}catch(_){}}
+function savePref(){try{localStorage.setItem(PREF_KEY,JSON.stringify({enabled:STATUS.enabled,version:3}))}catch(_){}}
 loadPref();savePref();
 
 function currentQuestionSafe(){try{return typeof currentQ==='function'?currentQ():null}catch(_){return null}}
@@ -48,6 +48,6 @@ function statusText(){const ctx=audioCtx?.state||'未作成',err=STATUS.lastErro
 function ensureSettingsCard(){try{let card=document.getElementById('aaAnswerAudioSettingCard');if(!isSettingsRoute()){card?.remove();return null}const main=document.querySelector('main');if(!main)return null;if(!card){card=document.createElement('section');card.className='card';card.id='aaAnswerAudioSettingCard';card.setAttribute('data-aa-answer-audio-card','');card.innerHTML='<div class="eyebrow">ANSWER SOUND V3.1</div><h3 class="h3">正解・不正解の音演出</h3><p class="sub">旧正解音とは分離した独立システムです。iPhoneではHTML Audioを優先し、失敗時はWeb Audioに切り替えます。</p><div class="actions" style="margin-top:10px"><button class="btn primary" type="button" data-aa-answer-audio-toggle>解答音 ON</button><button class="btn soft" type="button" data-aa-answer-audio-test="correct">正解音を試す</button><button class="btn ghost" type="button" data-aa-answer-audio-test="wrong">不正解音を試す</button></div><div class="tiny" data-aa-answer-audio-status style="margin-top:8px"></div>';const voice=document.getElementById('voiceCompanionSettingWrap');if(voice&&voice.parentElement===main)voice.insertAdjacentElement('beforebegin',card);else main.appendChild(card)}return card}catch(_){return null}}
 function refreshSettingsDOM(){try{const card=ensureSettingsCard();if(!card)return;const b=card.querySelector('[data-aa-answer-audio-toggle]');if(b)b.textContent=`解答音 ${STATUS.enabled?'ON':'OFF'}`;const s=card.querySelector('[data-aa-answer-audio-status]');if(s)s.textContent=statusText()}catch(_){}}
 const mo=new MutationObserver(()=>refreshSettingsDOM());
-function start(){syncLegacySetting();suppressLegacyCore();mediaEl(true);mediaEl(false);refreshSettingsDOM();if(document.body)mo.observe(document.body,{childList:true,subtree:true});setInterval(refreshSettingsDOM,700);STATUS.installed=true;STATUS.playCorrect=()=>playCue(true);STATUS.playWrong=()=>playCue(false);STATUS.unlock=primeOnGesture;STATUS.setEnabled=v=>{STATUS.enabled=!!v;savePref();refreshSettingsDOM();return STATUS.enabled};STATUS.diagnose=()=>({version:STATUS.version,enabled:STATUS.enabled,isIOS,audioContext:audioCtx?.state||'none',backend:STATUS.backend,legacyCoreSuppressed:STATUS.legacyCoreSuppressed,lastError:STATUS.lastError,correctPlays:STATUS.correctPlays,wrongPlays:STATUS.wrongPlays,settingsCard:!!document.getElementById('aaAnswerAudioSettingCard')})}
+function start(){syncLegacySetting();suppressLegacyCore();mediaEl(true);mediaEl(false);refreshSettingsDOM();if(document.body)mo.observe(document.body,{childList:true,subtree:true});setInterval(refreshSettingsDOM,700);STATUS.installed=true;STATUS.playCorrect=()=>playCue(true);STATUS.playWrong=()=>playCue(false);STATUS.unlock=primeOnGesture;STATUS.setEnabled=v=>{STATUS.enabled=!!v;savePref();refreshSettingsDOM();return STATUS.enabled};STATUS.diagnose=()=>({version:STATUS.version,build:STATUS.build,enabled:STATUS.enabled,isIOS,audioContext:audioCtx?.state||'none',backend:STATUS.backend,legacyCoreSuppressed:STATUS.legacyCoreSuppressed,lastError:STATUS.lastError,correctPlays:STATUS.correctPlays,wrongPlays:STATUS.wrongPlays,settingsCard:!!document.getElementById('aaAnswerAudioSettingCard')})}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
