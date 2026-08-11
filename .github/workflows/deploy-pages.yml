@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths-ignore:
       - 'PUBLIC_VERIFY_STATUS.txt'
+      - 'DEPLOY_STATUS.txt'
       - 'PAGES_RUN_STATUS.txt'
       - 'PAGES_SOURCE_STATUS.txt'
   workflow_dispatch:
@@ -26,15 +27,18 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout exact source commit
+        id: checkout
         uses: actions/checkout@v4
         with:
           ref: ${{ github.sha }}
           fetch-depth: 1
 
       - name: Setup Pages
+        id: setup
         uses: actions/configure-pages@v5
 
       - name: Essential preflight
+        id: preflight
         run: |
           set -euo pipefail
           for f in \
@@ -67,6 +71,7 @@ jobs:
           test -f diagnostics.html
 
       - name: Add release marker
+        id: release
         env:
           SOURCE_SHA: ${{ github.sha }}
         run: |
@@ -93,6 +98,7 @@ jobs:
           touch .nojekyll
 
       - name: Upload Pages artifact
+        id: upload
         uses: actions/upload-pages-artifact@v4
         with:
           path: '.'
@@ -102,6 +108,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Verify actual public site
+        id: verify
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
           SOURCE_SHA: ${{ github.sha }}
@@ -149,6 +156,7 @@ jobs:
           grep -q 'ログインボイス' /tmp/diagnostics.html
 
       - name: Record verified public release
+        id: verified_record
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
           SOURCE_SHA: ${{ github.sha }}
@@ -170,5 +178,40 @@ jobs:
           git add PUBLIC_VERIFY_STATUS.txt
           if ! git diff --cached --quiet; then
             git commit -m "Record verified public Pages release"
+            git push origin main
+          fi
+
+      - name: Record deployment outcome
+        if: always() && steps.checkout.outcome == 'success'
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          SETUP_OUTCOME: ${{ steps.setup.outcome }}
+          PREFLIGHT_OUTCOME: ${{ steps.preflight.outcome }}
+          RELEASE_OUTCOME: ${{ steps.release.outcome }}
+          UPLOAD_OUTCOME: ${{ steps.upload.outcome }}
+          DEPLOY_OUTCOME: ${{ steps.deployment.outcome }}
+          VERIFY_OUTCOME: ${{ steps.verify.outcome }}
+          VERIFIED_RECORD_OUTCOME: ${{ steps.verified_record.outcome }}
+        run: |
+          git fetch origin main
+          git checkout -B main origin/main
+          cat > DEPLOY_STATUS.txt <<EOF
+          source_sha=${SOURCE_SHA}
+          page_url=${PAGE_URL}
+          checked_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          setup=${SETUP_OUTCOME}
+          preflight=${PREFLIGHT_OUTCOME}
+          release_marker=${RELEASE_OUTCOME}
+          upload=${UPLOAD_OUTCOME}
+          deploy=${DEPLOY_OUTCOME}
+          public_verify=${VERIFY_OUTCOME}
+          verified_record=${VERIFIED_RECORD_OUTCOME}
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add DEPLOY_STATUS.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Record Pages deployment outcome"
             git push origin main
           fi
