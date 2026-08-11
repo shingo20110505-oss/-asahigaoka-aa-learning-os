@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/reading-1000-audit.js'
       - 'reading-natural-v2.js'
+      - 'reading-natural-v3.js'
       - 'v23-english-main.js'
       - 'index.html'
       - '.github/workflows/reading-1000-audit.yml'
@@ -20,7 +21,13 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Generate and audit 1000 passages
-        run: node scripts/reading-1000-audit.js | tee READING_1000_AUDIT.txt
+        run: |
+          set +e
+          node scripts/reading-1000-audit.js > READING_1000_AUDIT.txt 2>&1
+          code=$?
+          cat READING_1000_AUDIT.txt
+          echo "AUDIT_EXIT_CODE=$code" >> "$GITHUB_ENV"
+          exit 0
       - name: Persist audit report
         run: |
           git config user.name github-actions[bot]
@@ -28,3 +35,7 @@ jobs:
           git add READING_1000_AUDIT.txt
           git diff --cached --quiet || git commit -m "Record 1000-pass reading naturalness audit"
           git push
+      - name: Require naturalness audit pass
+        run: |
+          grep -q 'READING_1000_VERDICT PASS' READING_1000_AUDIT.txt
+          test "$AUDIT_EXIT_CODE" = "0"
