@@ -17,15 +17,17 @@ function finish(result){
   pre.textContent='AA_QUALITY_CI='+JSON.stringify(result);
 }
 function run(){
-  if(typeof qaRun!=='function'||!window.AA_QUALITY_REPAIR||!window.AA_V2_TEST_API){if(++tries<200)return setTimeout(run,100);return finish({pass:false,error:'quality runtime not ready'})}
+  if(typeof qaRun!=='function'||!window.AA_QUALITY_REPAIR||!window.AA_QUALITY_REPAIR_FINAL||!window.AA_V2_TEST_API){if(++tries<240)return setTimeout(run,100);return finish({pass:false,error:'quality runtime not ready',repair:!!window.AA_QUALITY_REPAIR,finalRepair:!!window.AA_QUALITY_REPAIR_FINAL})}
   try{
     qaRun();
     const report=Array.isArray(state?.qa?.report)?state.qa.report:[];
     const selected=TARGETS.map(match=>report.find(x=>match(String(x?.name||'')))||null);
     const missing=selected.map((x,i)=>x?null:i).filter(x=>x!==null);
     const failed=selected.filter(x=>x&&!x.ok).map(x=>({name:x.name,detail:x.detail}));
-    const audit=typeof window.AA_QUALITY_REPAIR.audit==='function'?window.AA_QUALITY_REPAIR.audit():null;
-    finish({pass:missing.length===0&&failed.length===0&&audit?.pass===true,missing,failed,audit,checks:selected.map(x=>x?{name:x.name,ok:!!x.ok,detail:x.detail}:null)});
+    const baseAudit=typeof window.AA_QUALITY_REPAIR.audit==='function'?window.AA_QUALITY_REPAIR.audit():null;
+    const finalAudit=typeof window.AA_QUALITY_REPAIR_FINAL.audit==='function'?window.AA_QUALITY_REPAIR_FINAL.audit():null;
+    const pass=missing.length===0&&failed.length===0&&finalAudit?.pass===true;
+    finish({pass,missing,failed,baseAudit,finalAudit,checks:selected.map(x=>x?{name:x.name,ok:!!x.ok,detail:x.detail}:null)});
   }catch(error){finish({pass:false,error:String(error?.stack||error)})}
 }
 setTimeout(run,0);
