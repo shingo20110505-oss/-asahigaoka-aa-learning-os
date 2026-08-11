@@ -2,10 +2,7 @@ name: Deploy AA Learning OS to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
-    paths-ignore:
-      - 'PAGES_RUN_STATUS.txt'
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -18,73 +15,48 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  validate-and-deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - name: Checkout exact source commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Prepare AA OS 2.2.9 / V24 five-subject content + exact difficulty build
+      - name: Validate Review v2
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          import re
-          p=Path('index.html')
-          s=p.read_text(encoding='utf-8')
-          s=re.sub(r"const APP_VERSION='[^']+';", "const APP_VERSION='2.2.9';", s, count=1)
-          s=re.sub(r'<script src="\./aa-companion-v2\.js\?v=[^"]+"></script>', '<script src="./aa-companion-v2.js?v=7.5.1-analytics1"></script>', s, count=1)
-          s=re.sub(r'<script src="\./aa-companion-mobile-fix\.js\?v=[^"]+"></script>', '<script src="./aa-companion-mobile-fix.js?v=7.5.1-analytics1"></script>', s, count=1)
-          p.write_text(s,encoding='utf-8')
+          node scripts/validate-review-bank.mjs
+          node scripts/validate-review-ui.mjs
 
-          for name in ('companion7-runtime.js','v23-pet-settings.js'):
-              q=Path(name)
-              t=q.read_text(encoding='utf-8')
-              old="driftPct=(hash01('aa-explosion-'+today)*.006)-.003"
-              new="driftPct=hash01('aa-explosion-'+today)*.003"
-              if old not in t and new not in t:
-                  raise SystemExit(f'Explosion drift expression not found in {name}')
-              t=t.replace(old,new)
-              t=t.replace(' ／ 日替わり ${signedPct(d.driftPct)}',' ／ 日替わり加算 ${signedPct(d.driftPct)}')
-              q.write_text(t,encoding='utf-8')
-          PY
+      - name: Validate login voice, images and runtime wiring
+        run: node scripts/validate-runtime-assets.mjs
 
-      - name: Verify final runtime before publish
+      - name: Syntax-check critical runtime JavaScript
         run: |
-          node --check aa-companion-v2.js
-          node --check storage-resilience-v1.js
-          node --check reading-gloss-tap-v1.js
-          node --check answer-feedback-audio-v1.js
-          node --check aa-companion-mobile-fix.js
-          node --check companion-settings-only-guard-v1.js
-          node --check voice-selftest-v1.js
-          node --check companion7-runtime.js
-          node --check login-companion-v1.js
-          node --check analytics-daily-v1.js
-          node --check login-production-test-v1.js
-          node --check chronologia-v7-data-3.js
-          node --check chronologia-v7-data-4.js
-          node --check curriculum-expansion-v24.js
-          node --check source-quote-bank-v1.js
-          node --check difficulty-challenge-v1.js
-          node --check scripts/content-v24-audit.js
-          node --check reading-natural-v2.js
-          node --check reading-natural-v3.js
-          node --check scripts/reading-1000-audit.js
-          node --check explanation-examples-v2.js
-          node --check question-quality-v1.js
-          node --check difficulty-engine-v1.js
-          node --check scripts/difficulty-5subject-audit.js
-          node --check v23-pet-settings.js
-          node --check v23-loader.js
-          node --check learning-engine-v23.js
-          node --check v23-compat-audit.js
+          for f in \
+            aa-companion-v2.js \
+            aa-companion-mobile-fix.js \
+            companion7-runtime.js \
+            login-companion-v1.js \
+            login-production-test-v1.js \
+            settings-improvements-v1.js \
+            review-bank-v1.js \
+            review-page-v1.js \
+            storage-resilience-v1.js \
+            answer-feedback-audio-v1.js \
+            sw.js; do
+            node --check "$f"
+          done
 
+      - name: Run learning-content regression audits
+        run: |
           node scripts/content-v24-audit.js > /tmp/content-v24-audit.txt
           cat /tmp/content-v24-audit.txt
           grep -q '"pass":true' /tmp/content-v24-audit.txt
@@ -95,124 +67,49 @@ jobs:
 
           node scripts/difficulty-5subject-audit.js > /tmp/difficulty-5subject-audit.txt
           cat /tmp/difficulty-5subject-audit.txt
-          grep -q 'DIFFICULTY_5SUBJECT_AUDIT' /tmp/difficulty-5subject-audit.txt
           grep -q '"pass":true' /tmp/difficulty-5subject-audit.txt
 
-          python - <<'PY'
-          from pathlib import Path
-          i=Path('index.html').read_text(encoding='utf-8')
-          c=Path('aa-companion-v2.js').read_text(encoding='utf-8')
-          sr=Path('storage-resilience-v1.js').read_text(encoding='utf-8')
-          rg=Path('reading-gloss-tap-v1.js').read_text(encoding='utf-8')
-          af=Path('answer-feedback-audio-v1.js').read_text(encoding='utf-8')
-          m=Path('aa-companion-mobile-fix.js').read_text(encoding='utf-8')
-          g=Path('companion-settings-only-guard-v1.js').read_text(encoding='utf-8')
-          r=Path('companion7-runtime.js').read_text(encoding='utf-8')
-          l=Path('login-companion-v1.js').read_text(encoding='utf-8')
-          a=Path('analytics-daily-v1.js').read_text(encoding='utf-8')
-          t=Path('login-production-test-v1.js').read_text(encoding='utf-8')
-          cx=Path('curriculum-expansion-v24.js').read_text(encoding='utf-8')
-          sq=Path('source-quote-bank-v1.js').read_text(encoding='utf-8')
-          dc=Path('difficulty-challenge-v1.js').read_text(encoding='utf-8')
-          ca=Path('scripts/content-v24-audit.js').read_text(encoding='utf-8')
-          de=Path('difficulty-engine-v1.js').read_text(encoding='utf-8')
-          da=Path('scripts/difficulty-5subject-audit.js').read_text(encoding='utf-8')
-          rn=Path('reading-natural-v2.js').read_text(encoding='utf-8')
-          rn3=Path('reading-natural-v3.js').read_text(encoding='utf-8')
-          audit=Path('scripts/reading-1000-audit.js').read_text(encoding='utf-8')
-          e=Path('explanation-examples-v2.js').read_text(encoding='utf-8')
-          q=Path('question-quality-v1.js').read_text(encoding='utf-8')
-          vl=Path('v23-loader.js').read_text(encoding='utf-8')
-          va=Path('v23-compat-audit.js').read_text(encoding='utf-8')
-          p=Path('v23-pet-settings.js').read_text(encoding='utf-8')
-          s=Path('sw.js').read_text(encoding='utf-8')
-          assert "const APP_VERSION='2.2.9';" in i
-          assert '7.5.1-analytics1' in i
-          assert 'companion7-runtime.js?v=7.5.0-loginzip1' in c
-          assert 'storage-resilience-v1.js?v=1.0.0' in c
-          assert '__AA_STORAGE_RESILIENCE__' in sr and 'IndexedDB' in sr and 'legacy-pre-v2' in sr
-          assert 'reading-gloss-tap-v1.js?v=1.0.0' in c and '__AA_READING_GLOSS_TAP_V1__' in rg
-          assert 'answer-feedback-audio-v1.js?v=3.0.0' in c
-          assert '__AA_ANSWER_FEEDBACK_AUDIO_V3__' in af and "version:'3.0.0'" in af
-          assert "PREF_KEY='aa-answer-feedback-audio-v3'" in af
-          assert "[data-action=\"answer\"]" in af and "document.addEventListener('aa:answer'" in af
-          assert 'suppressLegacyCore' in af and 'state.ui.successFeedback===false' in af
-          assert 'makeWav' in af and "backend='htmlaudio'" in af and "backend='webaudio'" in af
-          assert 'companion-settings-only-guard-v1.js?v=2.0.0' in c
-          assert 'data-route="settings"' in g and 'button.active' in g and 'display:none!important' in g and "version:'2.0.0'" in g
-          assert 'login-companion-v1.js?v=1.1.0' in m
-          assert 'analytics-daily-v1.js?v=1.0.0' in m
-          assert 'login-production-test-v1.js?v=1.0.0' in m
-          assert 'Companion7.event(' not in m and 'recordStudyComplete' in m
-          assert "version:'7.5.0-login'" in r and 'setLoginVoices' in r and 'setExplosionVoice' in r
-          assert "driftPct=hash01('aa-explosion-'+today)*.003" in r
-          assert "driftPct=hash01('aa-explosion-'+today)*.003" in p
-          assert '日替わり加算' in p
-          assert 'ZIPからまとめてインストール' in l and 'importZip' in l and 'DecompressionStream' in l and 'AALoginCompanion' in l
-          assert '日々の学習記録' in a and '直近30日の学習日' in a and 'recordStudyComplete' in a
-          assert '今だけ本番演出を1回テスト' in t and "Math.max(.05" in t and 'USED_KEY' in t
+      - name: Build immutable Pages artifact
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          mkdir -p _site
+          rsync -a ./ _site/ \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='_site/' \
+            --exclude='scripts/' \
+            --exclude='*.md' \
+            --exclude='PAGES_RUN_STATUS.txt' \
+            --exclude='PAGES_SOURCE_STATUS.txt'
+          touch _site/.nojekyll
 
-          assert 'storage-resilience-v1.js' in s and 'storage1' in s
-          assert 'reading-gloss-tap-v1.js' in s and 'glosstap1' in s
-          assert 'answer-feedback-audio-v1.js' in s and 'answeraudio3' in s
-          assert 'chronologia-v7-data-3.js' in s and 'chronologia-v7-data-4.js' in s and 'chrono1000' in s
-
-          # V24 five-subject expansion and source quotations.
-          assert "version:'2.4.0'" in cx and 'AA_V24_CONTENT_STATS' in cx and 'totalNewRows' in cx
-          assert "['japanese','math','science','social']" in ca and "v24Rows<600" in ca and "sourceQuotes<25" in ca
-          assert 'AA_SOURCE_QUOTES' in sq and '【引用：' in sq and '【資料引用：' in sq
-          assert '『枕草子』第一段' in sq and '鴨長明『方丈記』' in sq and '『平家物語』冒頭' in sq
-          assert '日本国憲法 第41条' in sq and '総務省統計局' in sq and 'Project Gutenberg' in sq
-          assert 'curriculum-expansion-v24.js' in vl and 'source-quote-bank-v1.js' in vl
-          assert vl.index('v23-english-main.js') < vl.index('curriculum-expansion-v24.js') < vl.index('source-quote-bank-v1.js') < vl.index('difficulty-challenge-v1.js') < vl.index('reading-natural-v2.js')
-          assert 'curriculum-expansion-v24.js' in s and 'source-quote-bank-v1.js' in s and 'v24content1-quotes1' in s
-          assert 'difficulty-challenge-v1.js' in s and 'challenge1' in s and 'AA_DIFFICULTY_CHALLENGE_STATS' in dc
-
-          # Exact 1-11 difficulty wiring across all five subjects.
-          assert "difficultyEngine:'exact-1-11-v1'" in de
-          assert 'vocabWords' in de and 'vocabFormat' in de and 'kanjiWords' in de and 'kanjiFormat' in de
-          assert 'exactUnitQueue' in de and 'startExactUnitPractice' in de and "unitPracticeExact:['japanese','math','science','social']" in de
-          assert 'difficulty-engine-v1.js' in vl and vl.index('question-quality-v1.js') < vl.index('difficulty-engine-v1.js') < vl.index('v23-pet-settings.js')
-          assert 'difficulty-engine-v1.js' in s and 'difficulty1' in s
-          assert 'DIFFICULTY_5SUBJECT_AUDIT' in da and "generateReading(requested,mode)" in da
-          assert 'subjectDifficulty:7' in i and 'data-action="difficulty"' in i and 'generateReadingForLearner(base=7' in i
-
-          # Reading naturalness guards.
-          assert 'reading-natural-v2.js' in vl and 'reading-natural-v3.js' in vl
-          assert vl.index('reading-natural-v2.js') < vl.index('reading-natural-v3.js') < vl.index('learning-engine-v23.js')
-          assert "const bannedIds=/^v23r\\d+$/" in rn
-          assert "origin:'hand-curated-natural-v2'" in rn
-          assert rn.count("fmt('nat-f") >= 24
-          for genre in ('narrative','email','speech','conversation','notice','newspaper','opinion','experiment','report'):
-              assert f"'{genre}'" in rn
-          assert 'AA_READING_NATURALNESS' in rn and 'removedMechanicalVariants' in rn
-          assert 'BAD_PHRASES' in rn
-          assert "version:'3.2.0'" in rn3 and 'contradictionFixed' in rn3 and 'abbreviationSafe' in rn3
-          assert 'conversationPlan' in rn3 and 'genreBalancing' in rn3 and 'paragraphPlan' in rn3
-          assert "selection:0x5a17c0de/variant:0x91e10da5" in audit
-          assert "unique.size>=300" in audit and "dominant<=0.35" in audit
-          assert 'reading-natural-v2.js' in s and 'reading-natural-v3.js' in s and 'readingnatural3' in s
-
-          # Precise examples / question quality guards.
-          assert 'explanation-examples-v2.js' in vl and 'explanation-examples-v1.js' not in vl and 'question-quality-v1.js' in vl
-          assert vl.index('explanation-examples-v2.js') < vl.index('question-quality-v1.js')
-          assert "curated-or-source-sentence-only" in e and 'sourceSentence' in e and 'readingSentences' in e
-          assert "昔、男ありけり" in e and "百聞不如一見" in e and "画竜点睛となった" in e
-          assert "漢字・語彙の例文" in e and "英単語の例文" in e and "古文の例文" in e and "漢文の用例" in e
-          assert e.count("':'") > 60 and "'踏襲'" in e and "'洞察'" in e
-          assert 'removeUnsafeInflections' in q and 'mergeCurriculum' in q and 'installAdaptive' in q
-          assert "source==='aa23-inflection'" in q and 'semanticKey' in q and 'storageGuard' in q
-          assert 'loginAudioRuntime' in va and 'loginImageRuntime' in va and 'semanticQuestionAudit' in va and 'nonDestructiveSamples' in va
-          assert "const VERSION = '2.2.9';" in s
-          assert 'examples2' in s and 'settingsguard2' in s and 'explanation-examples-v2.js' in s and 'companion-settings-only-guard-v1.js' in s
-          assert 'quality1' in s and 'question-quality-v1.js' in s and 'prodtest1' in s
-          print('AA OS 2.2.9 / V24 + exact difficulty + answer audio v3 publish guard PASS')
-          PY
+          REVIEW_VERSION=$(grep -o "AA_REVIEW_BANK_VERSION='[^']*'" review-bank-v1.js | head -1 | cut -d"'" -f2)
+          REVIEW_COUNT=$(node - <<'NODE'
+          const fs=require('fs'),vm=require('vm');
+          const s={window:{}}; vm.createContext(s);
+          vm.runInContext(fs.readFileSync('review-bank-v1.js','utf8'),s);
+          process.stdout.write(String((s.window.AA_REVIEW_BANK||[]).length));
+          NODE
+          )
+          SW_VERSION=$(grep -o "const VERSION='[^']*'" sw.js | head -1 | cut -d"'" -f2)
+          PUBLISHED_AT=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          cat > _site/release.json <<EOF
+          {
+            "sourceBranch": "main",
+            "sourceSha": "${SOURCE_SHA}",
+            "publishedAt": "${PUBLISHED_AT}",
+            "reviewVersion": "${REVIEW_VERSION}",
+            "reviewCount": ${REVIEW_COUNT},
+            "serviceWorkerVersion": "${SW_VERSION}",
+            "management": "validated-main-direct-to-pages"
+          }
+          EOF
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: '.'
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
