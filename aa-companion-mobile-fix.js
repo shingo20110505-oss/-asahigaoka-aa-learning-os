@@ -45,11 +45,33 @@ function installEnglishClozeDedup(retry=0){
   window.__AA_ENGLISH_CLOZE_DEDUP__={version:'1.0.1',recentWindowAttempts:60,recentWindowHours:72};
  }catch(_){if(retry<40)setTimeout(()=>installEnglishClozeDedup(retry+1),100)}
 }
+function installEnglishPhraseQuestionFix(retry=0){
+ if(window.__AA_ENGLISH_PHRASE_QFIX__)return;
+ try{
+  if(typeof makeVocabQ!=='function')throw new Error('vocab question engine not ready');
+  const originalMakeVocabQ=makeVocabQ;
+  makeVocabQ=function(v,format){
+   const q=originalMakeVocabQ(v,format);
+   if(v?.pos==='phrase'&&format==='cloze'&&q){
+    const meaning=String(v.meaning||'').trim();
+    q.stem=`「${meaning}」を表す最も適切な英語表現を選びなさい。`;
+    q.explanation=`${v.word} = ${meaning}`;
+    if(Array.isArray(q.choices)){
+     q.choices=q.choices.map(c=>Object.assign({},c,{reason:c.ok?`${v.word} = ${meaning}`:`「${meaning}」の意味には合いません。`}));
+     q.answerIndex=q.choices.findIndex(c=>c.ok);
+    }
+   }
+   return q;
+  };
+  window.__AA_ENGLISH_PHRASE_QFIX__={version:'1.0.0'};
+ }catch(_){if(retry<40)setTimeout(()=>installEnglishPhraseQuestionFix(retry+1),100)}
+}
 function wire(){if(!window.Companion7){setTimeout(wire,80);return}if(window.__AA_COMPANION_LOGIN_WIRED__)return;window.__AA_COMPANION_LOGIN_WIRED__=true;killLegacy();
  document.addEventListener('aa:missionComplete',()=>{try{Companion7.recordStudyComplete?.()}catch(_){}});
  const mo=new MutationObserver(killLegacy);mo.observe(document.body,{childList:true,subtree:true});
 }
 installEnglishClozeDedup();
+installEnglishPhraseQuestionFix();
 loadSettings();loadV23();loadLogin();loadExplosionAnalytics();loadDailyAnalytics();loadProductionLoginTest();loadSettingsImprovements();
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',wire,{once:true});else wire();
 })();
