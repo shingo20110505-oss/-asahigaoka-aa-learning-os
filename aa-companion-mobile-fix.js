@@ -1,5 +1,6 @@
 (()=>{'use strict';
 function loadScript(id,src){if(document.getElementById(id))return;const s=document.createElement('script');s.id=id;s.src=src;s.async=false;document.head.appendChild(s)}
+function loadLayoutGuard(){loadScript('aa-mobile-layout-guard-loader','./mobile-layout-guard-v1.js?v=1.0.0')}
 function loadSettings(){loadScript('aa-pet-settings-loader','./v23-pet-settings.js?compat=229-loginzip1')}
 function loadV23(){loadScript('aa-v23-loader','./v23-loader.js?compat=229-question-quality1')}
 function loadLogin(){loadScript('aa-login-companion-loader','./login-companion-v1.js?v=1.1.0')}
@@ -82,6 +83,7 @@ function wire(){if(!window.Companion7){setTimeout(wire,80);return}if(window.__AA
  document.addEventListener('aa:missionComplete',()=>{try{Companion7.recordStudyComplete?.()}catch(_){}});
  const mo=new MutationObserver(killLegacy);mo.observe(document.body,{childList:true,subtree:true});
 }
+loadLayoutGuard();
 installEnglishClozeDedup();
 installEnglishPhraseQuestionFix();
 loadSettings();loadV23();loadLogin();loadExplosionAnalytics();loadDailyAnalytics();loadProductionLoginTest();loadSettingsImprovements();
