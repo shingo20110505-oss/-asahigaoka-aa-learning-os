@@ -2,10 +2,11 @@
 const fs=require('fs');const vm=require('vm');const crypto=require('crypto');
 function extractData(){const s=fs.readFileSync('index.html','utf8');const m=s.match(/const DATA\s*=\s*(\{[\s\S]*?\});\s*const READING_GLOSSARY/);if(!m)throw new Error('DATA not found');return JSON.parse(m[1]);}
 const DATA=extractData();
-const ctx={console,DATA,READING_GLOSSARY:{},READING_DISTRACTORS:{},window:{},document:{dispatchEvent(){}},CustomEvent:function(){},state:{profile:{grammarGate:{comparison:true,presentPerfect:true,gerund:true,infinitive:true,passive:true,modal:true,basic:true,past:true,future:true}}},shuffleChoices:a=>a,grammarQuestion:()=>({type:'grammarTransfer',choices:[]}),evidenceRefs:()=>[],hash:s=>crypto.createHash('sha1').update(String(s)).digest('hex').slice(0,12),makeReadingPassage:sc=>(sc.facts||[]).filter(Boolean).join('\n\n'),readingQuestionSet:()=>[]};
+const ctx={console,DATA,READING_GLOSSARY:{},READING_DISTRACTORS:{},window:{},document:{dispatchEvent(){}},CustomEvent:function(){},state:{profile:{grammarGate:{comparison:true,presentPerfect:true,gerund:true,infinitive:true,passive:true,modal:true,basic:true,past:true,future:true}},historyFingerprints:[]},shuffleChoices:a=>a,grammarQuestion:()=>({type:'grammarTransfer',choices:[]}),evidenceRefs:()=>[],hash:s=>crypto.createHash('sha1').update(String(s)).digest('hex').slice(0,12),makeReadingPassage:sc=>(sc.facts||[]).filter(Boolean).join('\n\n'),readingQuestionSet:()=>[]};
 ctx.window=ctx;vm.createContext(ctx);
 vm.runInContext(fs.readFileSync('v23-english-main.js','utf8'),ctx,{filename:'v23-english-main.js'});
 vm.runInContext(fs.readFileSync('reading-natural-v2.js','utf8'),ctx,{filename:'reading-natural-v2.js'});
+vm.runInContext(fs.readFileSync('reading-natural-v3.js','utf8'),ctx,{filename:'reading-natural-v3.js'});
 const scenarios=ctx.DATA.readingScenarios.filter(sc=>Array.isArray(sc.grammar)&&sc.grammar.every(t=>ctx.state.profile.grammarGate[t]!==false));
 let seed=0x5a17c0de;function rnd(){seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;return (seed>>>0)/4294967296;}
 const use=new Map();const rows=[];for(let i=0;i<1000;i++){let min=Math.min(...scenarios.map(s=>use.get(s.id)||0));let pool=scenarios.filter(s=>(use.get(s.id)||0)===min);let sc=pool[Math.floor(rnd()*pool.length)];use.set(sc.id,(use.get(sc.id)||0)+1);let passage=ctx.makeReadingPassage(sc,7,'standard');rows.push({i:i+1,id:sc.id,title:sc.title,genre:sc.genre,setting:sc.setting,passage});}
@@ -18,7 +19,9 @@ function issues(r){let p=r.passage,paras=p.split(/\n\n+/).filter(Boolean),out=[]
 const audited=rows.map(r=>({...r,issues:issues(r)}));const unique=new Map();for(const r of audited)if(!unique.has(r.passage))unique.set(r.passage,r);const issueCounts={};for(const r of unique.values())for(const x of r.issues)issueCounts[x]=(issueCounts[x]||0)+1;
 const passageUse={};for(const r of audited)passageUse[r.passage]=(passageUse[r.passage]||0)+1;const topRepeats=[...Object.entries(passageUse)].sort((a,b)=>b[1]-a[1]).slice(0,10).map(([p,n])=>({count:n,title:unique.get(p)?.title,id:unique.get(p)?.id}));
 const genres={};for(const r of audited)genres[r.genre]=(genres[r.genre]||0)+1;const flagged=[...unique.values()].filter(r=>r.issues.length).map(r=>({id:r.id,title:r.title,genre:r.genre,issues:r.issues,passage:r.passage}));
-const summary={generated:1000,scenarioCount:scenarios.length,uniquePassages:unique.size,duplicateRate:+((1000-unique.size)/1000*100).toFixed(1),genres,issueCounts,flaggedUnique:flagged.length,topRepeats};
+const dominant=Math.max(...Object.values(genres))/1000;
+const summary={generated:1000,scenarioCount:scenarios.length,uniquePassages:unique.size,duplicateRate:+((1000-unique.size)/1000*100).toFixed(1),dominantGenreShare:+(dominant*100).toFixed(1),genres,issueCounts,flaggedUnique:flagged.length,topRepeats,v3:ctx.AA_READING_NATURALNESS_V3||null};
 console.log('READING_1000_AUDIT_SUMMARY '+JSON.stringify(summary));console.log('READING_1000_FLAGGED '+JSON.stringify(flagged.slice(0,30)));
 const naturalStructureProblems=(issueCounts['banned-template']||0)+(issueCounts.placeholder||0)+(issueCounts['semantic-contradiction']||0)+(issueCounts['conversation-format']||0)+(issueCounts['email-no-greeting']||0)+(issueCounts['notice-format']||0)+(issueCounts['experiment-format']||0);
-const verdict=naturalStructureProblems===0&&unique.size>=300?'PASS':'FAIL';console.log(`READING_1000_VERDICT ${verdict} naturalStructureProblems=${naturalStructureProblems} unique=${unique.size}/1000`);
+const verdict=naturalStructureProblems===0&&unique.size>=300&&dominant<=0.35&&ctx.AA_READING_NATURALNESS_V3?.pass?'PASS':'FAIL';console.log(`READING_1000_VERDICT ${verdict} naturalStructureProblems=${naturalStructureProblems} unique=${unique.size}/1000 dominantGenre=${(dominant*100).toFixed(1)}%`);
+if(verdict!=='PASS')process.exitCode=1;
