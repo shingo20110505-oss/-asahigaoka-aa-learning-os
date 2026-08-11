@@ -1,6 +1,6 @@
 'use strict';
 
-const VERSION='2.3.1-managed';
+const VERSION='2.3.2-layout';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;
@@ -18,6 +18,7 @@ const CORE=[
   url('review-page-v1.js'),
   url('aa-companion-v2.js'),
   url('aa-companion-mobile-fix.js'),
+  url('mobile-layout-guard-v1.js'),
   url('companion7-runtime.js'),
   url('login-companion-v1.js'),
   url('login-production-test-v1.js'),
