@@ -35,7 +35,7 @@ for(const asset of [
 }
 
 requireText(mobile, "./mobile-layout-guard-v1.js", 'mobile layout loader');
-requireText(mobile, "./login-companion-v1.js", 'login visual loader');
+requireText(mobile, "./login-companion-v1.js?v=1.2.0", 'decode-safe login visual loader');
 requireText(mobile, "./login-production-test-v1.js", 'login production test loader');
 requireText(mobile, "./settings-improvements-v1.js", 'settings loader');
 
@@ -55,7 +55,11 @@ requireText(voice, "document.addEventListener('touchstart',onUserGesture,true)",
 requireText(voice, 'window.Companion7=', 'Companion7 public API');
 
 requireText(visual, "const DB_NAME='aa-login-companion-v1'", 'image IndexedDB');
-requireText(visual, 'URL.createObjectURL(item.blob)', 'image object URL');
+requireText(visual, "version:'1.2.0'", 'decode-safe image runtime version');
+requireText(visual, 'function decodeURL(blob)', 'image decode preflight');
+requireText(visual, 'async function pickDecodableImage', 'broken image fallback');
+requireText(visual, "reason:'decode-failed'", 'decode failure skip marker');
+requireText(visual, "main.addEventListener('error'", 'render-time image fallback');
 requireText(visual, 'object-fit:contain', 'image containment');
 requireText(visual, 'async function importZip', 'ZIP image import');
 requireText(visual, 'MAX_ZIP_IMAGES=300', 'ZIP safety limit');
@@ -79,4 +83,4 @@ for(const file of new Set(referenced)){
   if(!fs.existsSync(file)) throw new Error(`mobile loader points to missing file: ${file}`);
 }
 
-console.log(`runtime assets OK: referenced=${new Set(referenced).size}, layout/login voice/image checks passed, managed SW passed`);
+console.log(`runtime assets OK: referenced=${new Set(referenced).size}, layout/login voice/decode-safe image checks passed, managed SW passed`);
