@@ -17,6 +17,7 @@ const visual = read('login-companion-v1.js');
 const prod = read('login-production-test-v1.js');
 const loader = read('v23-loader.js');
 const quality = read('quality-repair-v1.js');
+const qualityCI = read('quality-ci-runner-v1.js');
 const sw = read('sw.js');
 
 requireText(index, './aa-companion-v2.js', 'index entry');
@@ -32,6 +33,7 @@ for(const asset of [
   'settings-improvements-v1.js',
   'v23-loader.js',
   'quality-repair-v1.js',
+  'quality-ci-runner-v1.js',
   'diagnostics.html',
   'review/index.html'
 ]){
@@ -74,6 +76,7 @@ requireText(prod, "h.addEventListener('pointerdown',retry", 'production iPhone a
 requireText(prod, 'window.AALoginProductionTest=', 'production test API');
 
 requireText(loader, "'quality-repair-v1.js'", 'quality repair load order');
+requireText(loader, "'quality-ci-runner-v1.js'", 'browser quality runner load order');
 requireText(quality, 'window.__AA_QUALITY_REPAIR_V1__', 'quality repair marker');
 requireText(quality, 'function buildCloze', 'cloze answer exposure repair');
 requireText(quality, 'planVocabQueue=function', 'six vocab plus two collocation repair');
@@ -82,8 +85,13 @@ requireText(quality, 'distractorType', 'distractor classification repair');
 requireText(quality, "row.area='extension'", 'math formula route isolation');
 requireText(quality, '筆者の中心的な主張', 'argument reading type repair');
 requireText(quality, 'REPAIR.audit=function', 'quality repair self-audit');
+requireText(qualityCI, "params.get('aa_quality_ci')!=='1'", 'browser quality runner opt-in');
+requireText(qualityCI, '長文生成・文法ゲート 36本', 'runtime long-reading gate');
+requireText(qualityCI, '数学公式暗記限定', 'runtime math formula gate');
+requireText(qualityCI, "dataset.aaQualityCi=result.pass?'PASS':'FAIL'", 'browser quality PASS marker');
 
 if(!/const VERSION='[^']+'/.test(sw)) throw new Error('managed service worker version missing');
+requireText(sw, 'quality-chronologia1000', 'shared PWA generation');
 requireText(sw, 'async function networkFirst', 'network-first runtime');
 requireText(sw, "ext==='js'", 'generic JS freshness');
 requireText(sw, "ext==='css'", 'generic CSS freshness');
@@ -91,6 +99,7 @@ requireText(sw, "ext==='json'", 'generic JSON freshness');
 requireText(sw, "url('review/')", 'offline review shell');
 requireText(sw, "url('mobile-layout-guard-v1.js')", 'offline mobile layout guard');
 requireText(sw, "url('quality-repair-v1.js')", 'offline quality repair');
+requireText(sw, "url('quality-ci-runner-v1.js')", 'offline browser quality runner');
 requireText(sw, "u.pathname.endsWith('review-bank-v1.js')", 'review bank forced freshness');
 
 const referenced=[...mobile.matchAll(/['"]\.\/([^'"?]+\.js)/g)].map(m=>m[1]);
@@ -98,4 +107,4 @@ for(const file of new Set(referenced)){
   if(!fs.existsSync(file)) throw new Error(`mobile loader points to missing file: ${file}`);
 }
 
-console.log(`runtime assets OK: referenced=${new Set(referenced).size}, quality repair/layout/login/PWA checks passed`);
+console.log(`runtime assets OK: referenced=${new Set(referenced).size}, browser quality/Chronologia/layout/login/PWA checks passed`);
