@@ -1,5 +1,6 @@
 (()=>{'use strict';
-if(window.__AA_ANSWER_FEEDBACK_AUDIO_V37__)return;
+if(window.__AA_ANSWER_FEEDBACK_AUDIO_V38__)return;
+window.__AA_ANSWER_FEEDBACK_AUDIO_V38__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V37__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V36__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V35__=true;
@@ -8,14 +9,14 @@ window.__AA_ANSWER_FEEDBACK_AUDIO_V3__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V2__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V1__=true;
 window.__AA_EXERCISE_ANSWER_SOUND_V1__=true;
-// Legacy publish-guard compatibility markers only; runtime uses pointerdown/click + aa:answer fallback HTMLAudio:
+// Legacy publish-guard compatibility markers only; runtime uses tap-release/click + aa:answer fallback HTMLAudio:
 // [data-action="answer"]  state.ui.successFeedback===false  backend='htmlaudio'  backend='webaudio'
 
 const PREF_KEY='aa-answer-feedback-audio-v3';
-const STATUS=window.AA_ANSWER_FEEDBACK_AUDIO={version:'3.0.0',build:'premium-kira-touchstart-v37',installed:false,enabled:true,backend:'htmlaudio',correctPlays:0,wrongPlays:0,lastError:null,lastCue:null,legacyCoreSuppressed:false,layoutSafe:true,soundSet:'premium-kira-original',trigger:'pointerdown'};
+const STATUS=window.AA_ANSWER_FEEDBACK_AUDIO={version:'3.0.0',build:'premium-kira-tapguard-v38',installed:false,enabled:true,backend:'htmlaudio',correctPlays:0,wrongPlays:0,lastError:null,lastCue:null,legacyCoreSuppressed:false,layoutSafe:true,soundSet:'premium-kira-original',trigger:'tap-release'};
 window.AA_EXERCISE_ANSWER_SOUND=STATUS;
 const media={correct:null,wrong:null},wavData={correct:null,wrong:null};
-let current=null,lastEventKey='',lastEventAt=0;
+let current=null,lastEventKey='',lastEventAt=0,tap=null;
 
 function errText(e){return (e?.name||'Error')+': '+(e?.message||String(e))}
 function loadPref(){try{const x=JSON.parse(localStorage.getItem(PREF_KEY)||'null');STATUS.enabled=x?.enabled!==false}catch(_){STATUS.enabled=true}}
@@ -32,8 +33,8 @@ function suppressLegacyCore(){
 
 // Preserve the iPhone playback path that is already confirmed to work.
 // Correct = premium sparkle; wrong = matching gentle descending bell.
-// WAV data is prepared during idle time, but Audio objects are still created only after a user gesture.
-// No Blob URL, no audio/video DOM element, no settings card, no global audio-unlock listeners.
+// WAV data is prepared during idle time. Audio is created only after touching an answer target.
+// No Blob URL, no audio/video DOM element, no settings card, no startup Audio object, no global audio-unlock listeners.
 function bellSample(t,freq,start,len,amp,mode){
  if(t<start||t>=start+len)return 0;
  const x=t-start,p=x/len,attack=Math.min(1,x/.006);
@@ -104,21 +105,44 @@ function answerInfo(el){
   return{correct:idx===Number(q.answerIndex),questionId:q.id||null};
  }catch(_){return null}
 }
-function triggerFromElement(el){
- const info=answerInfo(el);if(!info)return false;
+function triggerInfo(info){
+ if(!info)return false;
  const key=String(info.questionId||'')+':'+String(!!info.correct),t=Date.now();
  if(key===lastEventKey&&t-lastEventAt<2500)return false;
  lastEventKey=key;lastEventAt=t;
  return playCue(!!info.correct);
 }
+function triggerFromElement(el){return triggerInfo(answerInfo(el))}
 function answerElement(e){return e.target?.closest?.('[data-action="answer"],[data-action="diag-dontknow"]')||null}
+function clearTap(){tap=null}
 
-// pointerdown fires at finger contact on iPhone, before click and before save/render/analytics work.
-document.addEventListener('pointerdown',e=>{const el=answerElement(e);if(el)triggerFromElement(el)},true);
-// Keyboard activation and older fallback path.
+// Do not play on pointerdown: that also fires when a scroll/swipe merely begins over an answer.
+// Instead, remember the target and warm only its detached Audio object. Play on pointerup only if movement stayed tap-sized.
+document.addEventListener('pointerdown',e=>{
+ const el=answerElement(e);if(!el)return clearTap();
+ const info=answerInfo(el);if(!info)return clearTap();
+ tap={id:e.pointerId,x:e.clientX,y:e.clientY,el,info,moved:false};
+ audioFor(!!info.correct);
+},true);
+document.addEventListener('pointermove',e=>{
+ if(!tap||tap.id!==e.pointerId)return;
+ const dx=e.clientX-tap.x,dy=e.clientY-tap.y;
+ if(dx*dx+dy*dy>144)tap.moved=true;
+},true);
+document.addEventListener('pointercancel',e=>{if(tap?.id===e.pointerId)clearTap()},true);
+document.addEventListener('pointerup',e=>{
+ if(!tap||tap.id!==e.pointerId)return;
+ const x=tap,dx=e.clientX-x.x,dy=e.clientY-x.y;
+ const endEl=document.elementFromPoint?.(e.clientX,e.clientY)?.closest?.('[data-action="answer"],[data-action="diag-dontknow"]')||null;
+ clearTap();
+ if(x.moved||dx*dx+dy*dy>144||endEl!==x.el)return;
+ triggerInfo(x.info);
+},true);
+
+// Keyboard activation and browsers without Pointer Events.
 document.addEventListener('click',e=>{const el=answerElement(e);if(el)triggerFromElement(el)},true);
 
-// Keep aa:answer as a fallback for programmatic/non-pointer answer paths, while suppressing duplicates.
+// Keep aa:answer as a fallback for programmatic answer paths, while suppressing duplicates.
 document.addEventListener('aa:answer',e=>{
  const d=e.detail||{},key=String(d.questionId||'')+':'+String(!!d.correct),t=Date.now();
  if(key===lastEventKey&&t-lastEventAt<2500)return;
