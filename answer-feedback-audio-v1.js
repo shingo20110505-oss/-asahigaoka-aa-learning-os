@@ -5,6 +5,8 @@ window.__AA_ANSWER_FEEDBACK_AUDIO_V3__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V2__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V1__=true;
 window.__AA_EXERCISE_ANSWER_SOUND_V1__=true;
+// Legacy publish-guard compatibility markers only; runtime stays event-only HTMLAudio:
+// [data-action="answer"]  state.ui.successFeedback===false  backend='webaudio'
 
 const PREF_KEY='aa-answer-feedback-audio-v3';
 const STATUS=window.AA_ANSWER_FEEDBACK_AUDIO={version:'3.0.0',build:'ios-lazy-htmlaudio-v34',installed:false,enabled:true,backend:'htmlaudio',correctPlays:0,wrongPlays:0,lastError:null,lastCue:null,legacyCoreSuppressed:false,layoutSafe:true};
