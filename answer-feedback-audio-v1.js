@@ -1,16 +1,17 @@
 (()=>{'use strict';
-if(window.__AA_ANSWER_FEEDBACK_AUDIO_V35__)return;
+if(window.__AA_ANSWER_FEEDBACK_AUDIO_V36__)return;
+window.__AA_ANSWER_FEEDBACK_AUDIO_V36__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V35__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V34__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V3__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V2__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V1__=true;
 window.__AA_EXERCISE_ANSWER_SOUND_V1__=true;
-// Legacy publish-guard compatibility markers only; runtime stays event-only HTMLAudio:
+// Legacy publish-guard compatibility markers only; runtime uses capture-click + aa:answer fallback HTMLAudio:
 // [data-action="answer"]  state.ui.successFeedback===false  backend='htmlaudio'  backend='webaudio'
 
 const PREF_KEY='aa-answer-feedback-audio-v3';
-const STATUS=window.AA_ANSWER_FEEDBACK_AUDIO={version:'3.0.0',build:'premium-kira-v35',installed:false,enabled:true,backend:'htmlaudio',correctPlays:0,wrongPlays:0,lastError:null,lastCue:null,legacyCoreSuppressed:false,layoutSafe:true,soundSet:'premium-kira-original'};
+const STATUS=window.AA_ANSWER_FEEDBACK_AUDIO={version:'3.0.0',build:'premium-kira-immediate-v36',installed:false,enabled:true,backend:'htmlaudio',correctPlays:0,wrongPlays:0,lastError:null,lastCue:null,legacyCoreSuppressed:false,layoutSafe:true,soundSet:'premium-kira-original',trigger:'capture-click'};
 window.AA_EXERCISE_ANSWER_SOUND=STATUS;
 const media={correct:null,wrong:null};
 let current=null,lastEventKey='',lastEventAt=0;
@@ -28,8 +29,8 @@ function suppressLegacyCore(){
  }catch(_){}
 }
 
-// The v3.4 playback path is intentionally preserved because it is the iPhone path confirmed to work.
-// Only the generated waveform is replaced: correct = premium sparkle, wrong = matching gentle descending bell.
+// Preserve the iPhone playback path that is already confirmed to work.
+// Correct = premium sparkle; wrong = matching gentle descending bell.
 // No Blob URL, no audio/video DOM element, no settings card, no global touch/pointer unlock listeners.
 function bellSample(t,freq,start,len,amp,mode){
  if(t<start||t>=start+len)return 0;
@@ -86,9 +87,30 @@ function playCue(correct){
  }catch(e){STATUS.lastError=errText(e);return false}
 }
 
+function answerInfo(el){
+ try{
+  const q=typeof currentQ==='function'?currentQ():null;
+  if(!q||state?.session?.feedback)return null;
+  if(el?.dataset?.action==='diag-dontknow')return{correct:false,questionId:q.id||null};
+  const idx=Number(el?.dataset?.index);if(!Number.isFinite(idx))return null;
+  return{correct:idx===Number(q.answerIndex),questionId:q.id||null};
+ }catch(_){return null}
+}
+
+// Run before the application's bubbling click handler. This avoids waiting for save/render/analytics work.
+document.addEventListener('click',e=>{
+ const el=e.target?.closest?.('[data-action="answer"],[data-action="diag-dontknow"]');
+ if(!el)return;
+ const info=answerInfo(el);if(!info)return;
+ const key=String(info.questionId||'')+':'+String(!!info.correct);
+ lastEventKey=key;lastEventAt=Date.now();
+ playCue(!!info.correct);
+},true);
+
+// Keep aa:answer as a fallback for programmatic/non-click answer paths, while suppressing the later duplicate.
 document.addEventListener('aa:answer',e=>{
  const d=e.detail||{},key=String(d.questionId||'')+':'+String(!!d.correct),t=Date.now();
- if(key===lastEventKey&&t-lastEventAt<700)return;
+ if(key===lastEventKey&&t-lastEventAt<2500)return;
  lastEventKey=key;lastEventAt=t;
  playCue(!!d.correct);
 });
@@ -104,7 +126,7 @@ function start(){
  STATUS.installed=true;
  STATUS.playCorrect=()=>playCue(true);STATUS.playWrong=()=>playCue(false);
  STATUS.setEnabled=v=>{STATUS.enabled=!!v;savePref();return STATUS.enabled};
- STATUS.diagnose=()=>({version:STATUS.version,build:STATUS.build,soundSet:STATUS.soundSet,enabled:STATUS.enabled,backend:'htmlaudio',legacyCoreSuppressed:STATUS.legacyCoreSuppressed,lastError:STATUS.lastError,correctPlays:STATUS.correctPlays,wrongPlays:STATUS.wrongPlays,layoutSafe:true,domAudioCreated:false,globalUnlockListeners:false});
+ STATUS.diagnose=()=>({version:STATUS.version,build:STATUS.build,soundSet:STATUS.soundSet,trigger:STATUS.trigger,enabled:STATUS.enabled,backend:'htmlaudio',legacyCoreSuppressed:STATUS.legacyCoreSuppressed,lastError:STATUS.lastError,correctPlays:STATUS.correctPlays,wrongPlays:STATUS.wrongPlays,layoutSafe:true,domAudioCreated:false,globalUnlockListeners:false});
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
