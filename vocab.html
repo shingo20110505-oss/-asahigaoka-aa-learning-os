@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#111827">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="英単語のみ">
+<title>英単語のみ｜旭丘AA Learning OS</title>
+<style>
+:root{--bg:#edf1f6;--card:#fff;--ink:#172033;--sub:#667085;--line:#d9e0ea;--navy:#101828;--blue:#2458d3;--blue2:#eaf0ff;--green:#177a4b;--shadow:0 14px 34px rgba(16,24,40,.08);--safe:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg),#f8fafc)}button{font:inherit;touch-action:manipulation}.wrap{max-width:720px;margin:0 auto;padding:20px 16px calc(32px + var(--safe))}.hero,.card{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:18px}.hero{background:linear-gradient(145deg,#fff,var(--blue2))}.eyebrow{font-size:11px;letter-spacing:.12em;font-weight:900;color:var(--blue)}h1{font-size:27px;margin:7px 0 8px}p{color:var(--sub);font-size:13px;line-height:1.7;margin:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.btn{border:0;border-radius:15px;min-height:56px;padding:12px 14px;font-weight:900;cursor:pointer}.primary{background:var(--navy);color:#fff}.soft{background:var(--blue2);color:var(--blue);border:1px solid #cad8ff}.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}.diag{width:100%;margin-top:10px}.back{display:inline-flex;align-items:center;gap:6px;color:var(--blue);font-weight:800;text-decoration:none;font-size:13px;margin-bottom:12px}.note{margin-top:12px;padding:11px 12px;border-radius:13px;background:#f8fafc;border:1px solid var(--line);font-size:12px;color:var(--sub);line-height:1.6}.loading{margin-top:12px;font-size:12px;color:var(--sub)}button:disabled{opacity:.45}.study{display:none;position:fixed;inset:0;background:var(--bg);z-index:10}.study.on{display:block}.studybar{height:calc(52px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 12px 0;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:10px}.studybar strong{font-size:14px}.menuBtn{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.1);color:#fff;border-radius:10px;padding:7px 10px;font-weight:800}.engine{display:block;width:100%;height:calc(100dvh - 52px - env(safe-area-inset-top,0px));border:0;background:var(--bg)}@media(max-width:560px){.grid{grid-template-columns:1fr}.btn{min-height:52px}h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="wrap" id="menu">
+  <a class="back" href="./index.html">← Learning OSへ戻る</a>
+  <section class="hero">
+    <div class="eyebrow">ENGLISH VOCABULARY ONLY</div>
+    <h1>英単語のみ</h1>
+    <p>長文・文法・他教科を混ぜず、英単語・語句だけを連続で解く専用ページです。出題順と復習優先度は、Learning OSの現在の単語エンジンをそのまま使います。</p>
+  </section>
+  <section class="card" style="margin-top:12px">
+    <strong>問題数を選ぶ</strong>
+    <div class="grid">
+      <button class="btn primary start" data-count="10" disabled>10問</button>
+      <button class="btn soft start" data-count="20" disabled>20問</button>
+      <button class="btn ghost start" data-count="30" disabled>30問</button>
+    </div>
+    <button class="btn ghost diag" id="diagnostic" disabled>初回20語診断</button>
+    <div class="note">正解した単語の頻出を抑え、忘れかけ・苦手・未定着の語を優先する既存ロジックを利用します。学習履歴も同じ端末内データに保存されます。</div>
+    <div class="loading" id="status">単語エンジンを読み込み中…</div>
+  </section>
+</div>
+<div class="study" id="study">
+  <div class="studybar"><strong>英単語のみ</strong><button class="menuBtn" id="backMenu">単語メニュー</button></div>
+  <iframe class="engine" id="engine" src="./index.html" title="英単語トレーニング"></iframe>
+</div>
+<script>
+(()=>{'use strict';
+const frame=document.getElementById('engine'),study=document.getElementById('study'),menu=document.getElementById('menu'),status=document.getElementById('status');
+let ready=false,guardObserver=null;
+function guardFrame(){
+  try{
+    const d=frame.contentDocument;if(!d)return;
+    if(!d.getElementById('vocab-only-guard')){
+      const s=d.createElement('style');s.id='vocab-only-guard';s.textContent='.top,.nav,[data-action="pause-home"],[data-action="abandon"],[data-action="result-home"],[data-action="another-set"]{display:none!important}.studyHead{top:0!important}main{padding-top:8px!important}';d.head.appendChild(s);
+    }
+    if(!guardObserver){guardObserver=new MutationObserver(()=>{try{const d=frame.contentDocument;if(!d)return;d.querySelectorAll('[data-action="pause-home"],[data-action="abandon"],[data-action="result-home"],[data-action="another-set"]').forEach(x=>x.style.display='none')}catch(_){}});guardObserver.observe(d.body,{childList:true,subtree:true});}
+  }catch(_){ }
+}
+function waitReady(){
+  let tries=0;const t=setInterval(()=>{
+    tries++;
+    try{const w=frame.contentWindow;if(typeof w.startSession==='function'&&typeof w.startVocabDiagnostic==='function'){
+      clearInterval(t);ready=true;document.querySelectorAll('.start').forEach(b=>b.disabled=false);document.getElementById('diagnostic').disabled=false;status.textContent='準備できました。';guardFrame();return;
+    }}catch(_){ }
+    if(tries>150){clearInterval(t);status.textContent='読み込みに失敗しました。Learning OSを一度開いてから、もう一度このページを開いてください。';}
+  },100);
+}
+function openStudy(){menu.style.display='none';study.classList.add('on');guardFrame();}
+function startWords(count){if(!ready)return;openStudy();frame.contentWindow.startSession({kind:'vocab',subject:'english',mode:'standard',count:Number(count)});setTimeout(guardFrame,50)}
+function startDiagnostic(){if(!ready)return;openStudy();frame.contentWindow.startVocabDiagnostic();setTimeout(guardFrame,50)}
+document.querySelectorAll('.start').forEach(b=>b.addEventListener('click',()=>startWords(b.dataset.count)));
+document.getElementById('diagnostic').addEventListener('click',startDiagnostic);
+document.getElementById('backMenu').addEventListener('click',()=>{try{frame.contentWindow.pauseSessionClock?.();frame.contentWindow.save?.()}catch(_){}study.classList.remove('on');menu.style.display='block';window.scrollTo(0,0)});
+frame.addEventListener('load',waitReady,{once:true});
+if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(()=>{});
+})();
+</script>
+</body>
+</html>
