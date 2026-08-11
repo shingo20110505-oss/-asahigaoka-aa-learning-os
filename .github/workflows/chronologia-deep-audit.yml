@@ -7,6 +7,7 @@ on:
       - 'chronologia-v7-data-*.js'
       - 'chronologia-v7-overrides.js'
       - 'chronologia-deep-explanations-v3.js'
+      - 'chronologia-deep-polish-v1.js'
       - 'scripts/chronologia-deep-audit.js'
       - 'scripts/chronologia-supplement-export.js'
       - '.github/workflows/chronologia-deep-audit.yml'
@@ -25,6 +26,7 @@ jobs:
       - name: Check runtime syntax
         run: |
           node --check chronologia-deep-explanations-v3.js
+          node --check chronologia-deep-polish-v1.js
           node --check scripts/chronologia-deep-audit.js
           node --check scripts/chronologia-supplement-export.js
       - name: Expand compressed 500-item supplement
