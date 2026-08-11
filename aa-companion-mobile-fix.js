@@ -3,12 +3,12 @@ function loadScript(id,src){if(document.getElementById(id))return;const s=docume
 function resetTodayLoginTest(){
  const d=new Date(),today=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
  if(today!=='2026-08-12')return false;
- const once='aa-login-av-test-reset-once-20260812-v2';
+ const once='aa-login-av-test-reset-once-20260812-v3';
  try{
   if(localStorage.getItem(once)==='1')return false;
   for(const key of ['aa-login-visual-seen-v1','aa-login-visual-pick-v1','aa-companion-voice-daily-seen-v1','aa-companion-voice-daily-pending-v1','aa-companion-voice-daily-pick-v2'])localStorage.removeItem(key);
   localStorage.setItem(once,'1');
-  sessionStorage.setItem('aa-login-av-reset-reload-20260812','1');
+  sessionStorage.setItem('aa-login-av-reset-reload-20260812-v3','1');
   setTimeout(()=>location.reload(),40);
   return true;
  }catch(_){return false}
@@ -16,7 +16,7 @@ function resetTodayLoginTest(){
 function loadLayoutGuard(){loadScript('aa-mobile-layout-guard-loader','./mobile-layout-guard-v1.js?v=1.0.0')}
 function loadSettings(){loadScript('aa-pet-settings-loader','./v23-pet-settings.js?compat=229-loginzip1')}
 function loadV23(){loadScript('aa-v23-loader','./v23-loader.js?compat=229-question-quality1')}
-function loadLogin(){loadScript('aa-login-companion-loader','./login-companion-v1.js?v=1.1.0')}
+function loadLogin(){loadScript('aa-login-companion-loader','./login-companion-v1.js?v=1.2.0')}
 function loadExplosionAnalytics(){loadScript('aa-explosion-analytics-loader','./analytics-explosion-v1.js?v=2.0.0')}
 function loadDailyAnalytics(){loadScript('aa-daily-analytics-loader','./analytics-daily-v1.js?v=1.0.0')}
 function loadProductionLoginTest(){loadScript('aa-login-production-test-loader','./login-production-test-v1.js?v=1.0.0')}
