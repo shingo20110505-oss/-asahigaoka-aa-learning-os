@@ -8,6 +8,7 @@ on:
       - 'chronologia-v7-overrides.js'
       - 'chronologia-deep-explanations-v1.js'
       - 'scripts/chronologia-deep-audit.js'
+      - 'scripts/chronologia-supplement-export.js'
       - '.github/workflows/chronologia-deep-audit.yml'
   workflow_dispatch:
 
@@ -25,17 +26,20 @@ jobs:
         run: |
           node --check chronologia-deep-explanations-v1.js
           node --check scripts/chronologia-deep-audit.js
+          node --check scripts/chronologia-supplement-export.js
+      - name: Expand compressed 500-item supplement
+        run: node scripts/chronologia-supplement-export.js
       - name: Audit every timeline explanation
         run: |
           set +e
-          node scripts/chronologia-deep-audit.js | tee CHRONOLOGIA_DEEP_AUDIT.txt
+          node scripts/chronologia-deep-audit.js 2>&1 | tee CHRONOLOGIA_DEEP_AUDIT.txt
           echo "node_exit=${PIPESTATUS[0]}" >> CHRONOLOGIA_DEEP_AUDIT.txt
           exit 0
-      - name: Record audit result
+      - name: Record audit result and supplement list
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add CHRONOLOGIA_DEEP_AUDIT.txt
+          git add CHRONOLOGIA_DEEP_AUDIT.txt CHRONOLOGIA_SUPPLEMENT_ITEMS.tsv
           git commit -m "Record Chronologia detailed explanation audit" || exit 0
           git pull --rebase origin main
           git push
