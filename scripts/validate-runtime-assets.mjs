@@ -25,9 +25,11 @@ for(const asset of [
   'login-companion-v1.js',
   'login-production-test-v1.js',
   'companion7-runtime.js',
-  'settings-improvements-v1.js'
+  'settings-improvements-v1.js',
+  'diagnostics.html',
+  'review/index.html'
 ]){
-  if(!fs.existsSync(asset)) throw new Error(`missing login/runtime asset: ${asset}`);
+  if(!fs.existsSync(asset)) throw new Error(`missing managed runtime asset: ${asset}`);
 }
 
 requireText(mobile, "./login-companion-v1.js", 'login visual loader');
@@ -53,13 +55,18 @@ requireText(prod, 'new Audio(currentAudioURL)', 'production voice playback');
 requireText(prod, "h.addEventListener('pointerdown',retry", 'production iPhone audio fallback');
 requireText(prod, 'window.AALoginProductionTest=', 'production test API');
 
-for(const asset of ['aa-companion-v2','aa-companion-mobile-fix','companion7-runtime','login-companion-v1','login-production-test-v1']){
-  requireText(sw, asset, `service worker freshness for ${asset}`);
-}
+// Managed SW: runtime JS/CSS/HTML are network-first as a class, so new files do not
+// require editing a giant per-file allowlist. This is intentional for maintainability.
+requireText(sw, "const VERSION='2.3.0-managed'", 'managed service worker version');
+requireText(sw, 'async function networkFirst', 'network-first runtime');
+requireText(sw, "url.pathname.endsWith('.js')", 'generic JS freshness');
+requireText(sw, "url.pathname.endsWith('.css')", 'generic CSS freshness');
+requireText(sw, "url.pathname.endsWith('.html')", 'generic HTML freshness');
+requireText(sw, "new URL('review/',BASE).href", 'offline review shell');
 
-const dynamicScripts=[...mobile.matchAll(/src='\.\/([^'?]+\.js)/g)].map(m=>m[1]);
-for(const file of dynamicScripts){
+const referenced=[...mobile.matchAll(/['"]\.\/([^'"?]+\.js)/g)].map(m=>m[1]);
+for(const file of new Set(referenced)){
   if(!fs.existsSync(file)) throw new Error(`mobile loader points to missing file: ${file}`);
 }
 
-console.log(`runtime assets OK: dynamic=${dynamicScripts.length}, login voice/image checks passed`);
+console.log(`runtime assets OK: referenced=${new Set(referenced).size}, login voice/image checks passed, managed SW passed`);
