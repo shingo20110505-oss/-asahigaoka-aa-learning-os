@@ -1,0 +1,104 @@
+name: Validate and publish site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: learning-os-pages
+  cancel-in-progress: true
+
+jobs:
+  validate-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: source
+          fetch-depth: 1
+
+      - name: Validate review data and routing
+        working-directory: source
+        run: |
+          node scripts/validate-review-bank.mjs
+          node scripts/validate-review-ui.mjs
+
+      - name: Validate login voice, images and runtime assets
+        working-directory: source
+        run: node scripts/validate-runtime-assets.mjs
+
+      - name: Syntax-check critical runtime JavaScript
+        working-directory: source
+        run: |
+          for f in \
+            aa-companion-v2.js \
+            aa-companion-mobile-fix.js \
+            companion7-runtime.js \
+            login-companion-v1.js \
+            login-production-test-v1.js \
+            review-bank-v1.js \
+            review-page-v1.js \
+            sw.js; do
+            node --check "$f"
+          done
+
+      - name: Checkout public branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: public
+          fetch-depth: 1
+
+      - name: Mirror main runtime to gh-pages
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          rsync -a --delete \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='scripts/' \
+            --exclude='*.md' \
+            source/ public/
+          touch public/.nojekyll
+
+          REVIEW_VERSION=$(grep -o "AA_REVIEW_BANK_VERSION='[^']*'" source/review-bank-v1.js | head -1 | cut -d"'" -f2)
+          REVIEW_COUNT=$(node - <<'NODE'
+          const fs=require('fs'),vm=require('vm');
+          const s={window:{}};vm.createContext(s);vm.runInContext(fs.readFileSync('source/review-bank-v1.js','utf8'),s);
+          process.stdout.write(String((s.window.AA_REVIEW_BANK||[]).length));
+          NODE
+          )
+          SW_VERSION=$(grep -o "const VERSION='[^']*'" source/sw.js | head -1 | cut -d"'" -f2)
+          PUBLISHED_AT=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          cat > public/release.json <<EOF
+          {
+            "sourceBranch": "main",
+            "sourceSha": "${SOURCE_SHA}",
+            "publishedAt": "${PUBLISHED_AT}",
+            "reviewVersion": "${REVIEW_VERSION}",
+            "reviewCount": ${REVIEW_COUNT},
+            "serviceWorkerVersion": "${SW_VERSION}",
+            "management": "main-is-source-of-truth"
+          }
+          EOF
+
+      - name: Publish gh-pages
+        working-directory: public
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "gh-pages is already synchronized"
+            exit 0
+          fi
+          git commit -m "Publish main ${SOURCE_SHA::7}"
+          git push origin gh-pages
