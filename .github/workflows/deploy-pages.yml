@@ -115,6 +115,9 @@ jobs:
         run: |
           set -euo pipefail
           BASE="${PAGE_URL%/}/"
+          stage(){ printf '%s\n' "$1" > "$RUNNER_TEMP/public-verify-stage"; echo "VERIFY_STAGE=$1"; }
+
+          stage release-json-await
           ok=0
           for n in $(seq 1 24); do
             if curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}release.json?verify=${SOURCE_SHA}-${n}" -o /tmp/release.json && grep -q "${SOURCE_SHA}" /tmp/release.json; then
@@ -125,35 +128,44 @@ jobs:
           done
           test "$ok" = 1
 
+          stage release-json-fields
           grep -q '"reviewVersion": "1.0.4"' /tmp/release.json
           grep -q '"reviewCount": 3' /tmp/release.json
           grep -q '"serviceWorkerVersion": "2.3.1-managed"' /tmp/release.json
 
+          stage review-ui
           curl -fsSL "${BASE}review/?verify=${SOURCE_SHA}" -o /tmp/review.html
           grep -q 'Review v2' /tmp/review.html
           grep -q "fetch('../review-bank-v1.js'" /tmp/review.html
 
+          stage review-bank
           curl -fsSL "${BASE}review-bank-v1.js?verify=${SOURCE_SHA}" -o /tmp/review-bank.js
           grep -q 'en-comparative-than-any-other-singular-20260811' /tmp/review-bank.js
           grep -q '比較級 + than any other + 単数名詞' /tmp/review-bank.js
 
+          stage login-image
           curl -fsSL "${BASE}login-companion-v1.js?verify=${SOURCE_SHA}" -o /tmp/login-image.js
           grep -q 'ZIPからまとめてインストール' /tmp/login-image.js
           grep -q 'showDailyVisual' /tmp/login-image.js
 
+          stage login-voice
           curl -fsSL "${BASE}companion7-runtime.js?verify=${SOURCE_SHA}" -o /tmp/login-voice.js
           grep -q 'setLoginVoices' /tmp/login-voice.js
           grep -q 'setExplosionVoice' /tmp/login-voice.js
           grep -q 'dailyPending' /tmp/login-voice.js
 
+          stage service-worker
           curl -fsSL "${BASE}sw.js?verify=${SOURCE_SHA}" -o /tmp/sw.js
           grep -q "const VERSION='2.3.1-managed'" /tmp/sw.js
           grep -q 'networkFirst' /tmp/sw.js
 
+          stage diagnostics
           curl -fsSL "${BASE}diagnostics.html?verify=${SOURCE_SHA}" -o /tmp/diagnostics.html
           grep -q 'AA Learning OS Diagnostics' /tmp/diagnostics.html
           grep -q 'ログイン画像' /tmp/diagnostics.html
           grep -q 'ログインボイス' /tmp/diagnostics.html
+
+          stage complete
 
       - name: Record verified public release
         id: verified_record
@@ -194,6 +206,7 @@ jobs:
           VERIFY_OUTCOME: ${{ steps.verify.outcome }}
           VERIFIED_RECORD_OUTCOME: ${{ steps.verified_record.outcome }}
         run: |
+          VERIFY_STAGE=$(cat "$RUNNER_TEMP/public-verify-stage" 2>/dev/null || echo not-started)
           git fetch origin main
           git checkout -B main origin/main
           cat > DEPLOY_STATUS.txt <<EOF
@@ -206,6 +219,7 @@ jobs:
           upload=${UPLOAD_OUTCOME}
           deploy=${DEPLOY_OUTCOME}
           public_verify=${VERIFY_OUTCOME}
+          public_verify_stage=${VERIFY_STAGE}
           verified_record=${VERIFIED_RECORD_OUTCOME}
           EOF
           git config user.name "github-actions[bot]"
