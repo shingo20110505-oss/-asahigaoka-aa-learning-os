@@ -56,6 +56,8 @@ jobs:
         run: |
           node --check aa-companion-v2.js
           node --check storage-resilience-v1.js
+          node --check reading-gloss-tap-v1.js
+          node --check answer-feedback-audio-v1.js
           node --check aa-companion-mobile-fix.js
           node --check companion-settings-only-guard-v1.js
           node --check voice-selftest-v1.js
@@ -67,6 +69,7 @@ jobs:
           node --check chronologia-v7-data-4.js
           node --check curriculum-expansion-v24.js
           node --check source-quote-bank-v1.js
+          node --check difficulty-challenge-v1.js
           node --check scripts/content-v24-audit.js
           node --check reading-natural-v2.js
           node --check reading-natural-v3.js
@@ -98,6 +101,8 @@ jobs:
           i=Path('index.html').read_text(encoding='utf-8')
           c=Path('aa-companion-v2.js').read_text(encoding='utf-8')
           sr=Path('storage-resilience-v1.js').read_text(encoding='utf-8')
+          rg=Path('reading-gloss-tap-v1.js').read_text(encoding='utf-8')
+          af=Path('answer-feedback-audio-v1.js').read_text(encoding='utf-8')
           m=Path('aa-companion-mobile-fix.js').read_text(encoding='utf-8')
           g=Path('companion-settings-only-guard-v1.js').read_text(encoding='utf-8')
           r=Path('companion7-runtime.js').read_text(encoding='utf-8')
@@ -106,6 +111,7 @@ jobs:
           t=Path('login-production-test-v1.js').read_text(encoding='utf-8')
           cx=Path('curriculum-expansion-v24.js').read_text(encoding='utf-8')
           sq=Path('source-quote-bank-v1.js').read_text(encoding='utf-8')
+          dc=Path('difficulty-challenge-v1.js').read_text(encoding='utf-8')
           ca=Path('scripts/content-v24-audit.js').read_text(encoding='utf-8')
           de=Path('difficulty-engine-v1.js').read_text(encoding='utf-8')
           da=Path('scripts/difficulty-5subject-audit.js').read_text(encoding='utf-8')
@@ -123,6 +129,13 @@ jobs:
           assert 'companion7-runtime.js?v=7.5.0-loginzip1' in c
           assert 'storage-resilience-v1.js?v=1.0.0' in c
           assert '__AA_STORAGE_RESILIENCE__' in sr and 'IndexedDB' in sr and 'legacy-pre-v2' in sr
+          assert 'reading-gloss-tap-v1.js?v=1.0.0' in c and '__AA_READING_GLOSS_TAP_V1__' in rg
+          assert 'answer-feedback-audio-v1.js?v=3.0.0' in c
+          assert '__AA_ANSWER_FEEDBACK_AUDIO_V3__' in af and "version:'3.0.0'" in af
+          assert "PREF_KEY='aa-answer-feedback-audio-v3'" in af
+          assert "[data-action=\"answer\"]" in af and "document.addEventListener('aa:answer'" in af
+          assert 'suppressLegacyCore' in af and 'state.ui.successFeedback===false' in af
+          assert 'makeWav' in af and "backend='htmlaudio'" in af and "backend='webaudio'" in af
           assert 'companion-settings-only-guard-v1.js?v=2.0.0' in c
           assert 'data-route="settings"' in g and 'button.active' in g and 'display:none!important' in g and "version:'2.0.0'" in g
           assert 'login-companion-v1.js?v=1.1.0' in m
@@ -138,6 +151,8 @@ jobs:
           assert '今だけ本番演出を1回テスト' in t and "Math.max(.05" in t and 'USED_KEY' in t
 
           assert 'storage-resilience-v1.js' in s and 'storage1' in s
+          assert 'reading-gloss-tap-v1.js' in s and 'glosstap1' in s
+          assert 'answer-feedback-audio-v1.js' in s and 'answeraudio3' in s
           assert 'chronologia-v7-data-3.js' in s and 'chronologia-v7-data-4.js' in s and 'chrono1000' in s
 
           # V24 five-subject expansion and source quotations.
@@ -147,8 +162,9 @@ jobs:
           assert '『枕草子』第一段' in sq and '鴨長明『方丈記』' in sq and '『平家物語』冒頭' in sq
           assert '日本国憲法 第41条' in sq and '総務省統計局' in sq and 'Project Gutenberg' in sq
           assert 'curriculum-expansion-v24.js' in vl and 'source-quote-bank-v1.js' in vl
-          assert vl.index('v23-english-main.js') < vl.index('curriculum-expansion-v24.js') < vl.index('source-quote-bank-v1.js') < vl.index('reading-natural-v2.js')
+          assert vl.index('v23-english-main.js') < vl.index('curriculum-expansion-v24.js') < vl.index('source-quote-bank-v1.js') < vl.index('difficulty-challenge-v1.js') < vl.index('reading-natural-v2.js')
           assert 'curriculum-expansion-v24.js' in s and 'source-quote-bank-v1.js' in s and 'v24content1-quotes1' in s
+          assert 'difficulty-challenge-v1.js' in s and 'challenge1' in s and 'AA_DIFFICULTY_CHALLENGE_STATS' in dc
 
           # Exact 1-11 difficulty wiring across all five subjects.
           assert "difficultyEngine:'exact-1-11-v1'" in de
@@ -188,7 +204,7 @@ jobs:
           assert "const VERSION = '2.2.9';" in s
           assert 'examples2' in s and 'settingsguard2' in s and 'explanation-examples-v2.js' in s and 'companion-settings-only-guard-v1.js' in s
           assert 'quality1' in s and 'question-quality-v1.js' in s and 'prodtest1' in s
-          print('AA OS 2.2.9 / V24 content + exact 1-11 five-subject difficulty publish guard PASS')
+          print('AA OS 2.2.9 / V24 + exact difficulty + answer audio v3 publish guard PASS')
           PY
 
       - name: Upload Pages artifact
