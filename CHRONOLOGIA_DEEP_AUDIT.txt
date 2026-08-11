@@ -1,1 +1,22 @@
+Chronologia deep explanations build failed TypeError: B.has is not a function
+    at sharedCount (chronologia-deep-explanations-v1.js:39:96)
+    at relationScore (chronologia-deep-explanations-v1.js:43:9)
+    at chronologia-deep-explanations-v1.js:49:27
+    at Array.map (<anonymous>)
+    at relatedSide (chronologia-deep-explanations-v1.js:49:14)
+    at buildNote (chronologia-deep-explanations-v1.js:72:48)
+    at Object.buildAll [as build] (chronologia-deep-explanations-v1.js:135:61)
+    at evalmachine.<anonymous>:1:29
+    at Script.runInContext (node:vm:149:12)
+    at Object.runInContext (node:vm:301:6)
+CHRONOLOGIA_DEEP_AUDIT_ERROR evalmachine.<anonymous>:1
+ChronologiaDeepExplanations.build() || CHRONOLOGIA_DEEP_NOTES_BY_ID || ({})
+                                       ^
+
+ReferenceError: CHRONOLOGIA_DEEP_NOTES_BY_ID is not defined
+    at evalmachine.<anonymous>:1:40
+    at Script.runInContext (node:vm:149:12)
+    at Object.runInContext (node:vm:301:6)
+    at /home/runner/work/-asahigaoka-aa-learning-os/-asahigaoka-aa-learning-os/scripts/chronologia-deep-audit.js:20:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
 node_exit=1
