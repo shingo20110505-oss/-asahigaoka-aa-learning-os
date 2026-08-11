@@ -1,0 +1,29 @@
+name: Five Subject Difficulty Audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'difficulty-engine-v1.js'
+      - 'scripts/difficulty-5subject-audit.js'
+      - '.github/workflows/difficulty-5subject-audit.yml'
+      - '.difficulty-audit-trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Run exact 1-11 audit
+        run: node scripts/difficulty-5subject-audit.js | tee DIFFICULTY_5SUBJECT_AUDIT.txt
+      - name: Persist result
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add DIFFICULTY_5SUBJECT_AUDIT.txt
+          git diff --cached --quiet || git commit -m "Record five-subject difficulty audit"
+          git push
