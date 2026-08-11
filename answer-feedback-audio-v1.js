@@ -1,5 +1,6 @@
 (()=>{'use strict';
-if(window.__AA_ANSWER_FEEDBACK_AUDIO_V36__)return;
+if(window.__AA_ANSWER_FEEDBACK_AUDIO_V37__)return;
+window.__AA_ANSWER_FEEDBACK_AUDIO_V37__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V36__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V35__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V34__=true;
@@ -7,13 +8,13 @@ window.__AA_ANSWER_FEEDBACK_AUDIO_V3__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V2__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V1__=true;
 window.__AA_EXERCISE_ANSWER_SOUND_V1__=true;
-// Legacy publish-guard compatibility markers only; runtime uses capture-click + aa:answer fallback HTMLAudio:
+// Legacy publish-guard compatibility markers only; runtime uses pointerdown/click + aa:answer fallback HTMLAudio:
 // [data-action="answer"]  state.ui.successFeedback===false  backend='htmlaudio'  backend='webaudio'
 
 const PREF_KEY='aa-answer-feedback-audio-v3';
-const STATUS=window.AA_ANSWER_FEEDBACK_AUDIO={version:'3.0.0',build:'premium-kira-immediate-v36',installed:false,enabled:true,backend:'htmlaudio',correctPlays:0,wrongPlays:0,lastError:null,lastCue:null,legacyCoreSuppressed:false,layoutSafe:true,soundSet:'premium-kira-original',trigger:'capture-click'};
+const STATUS=window.AA_ANSWER_FEEDBACK_AUDIO={version:'3.0.0',build:'premium-kira-touchstart-v37',installed:false,enabled:true,backend:'htmlaudio',correctPlays:0,wrongPlays:0,lastError:null,lastCue:null,legacyCoreSuppressed:false,layoutSafe:true,soundSet:'premium-kira-original',trigger:'pointerdown'};
 window.AA_EXERCISE_ANSWER_SOUND=STATUS;
-const media={correct:null,wrong:null};
+const media={correct:null,wrong:null},wavData={correct:null,wrong:null};
 let current=null,lastEventKey='',lastEventAt=0;
 
 function errText(e){return (e?.name||'Error')+': '+(e?.message||String(e))}
@@ -31,7 +32,8 @@ function suppressLegacyCore(){
 
 // Preserve the iPhone playback path that is already confirmed to work.
 // Correct = premium sparkle; wrong = matching gentle descending bell.
-// No Blob URL, no audio/video DOM element, no settings card, no global touch/pointer unlock listeners.
+// WAV data is prepared during idle time, but Audio objects are still created only after a user gesture.
+// No Blob URL, no audio/video DOM element, no settings card, no global audio-unlock listeners.
 function bellSample(t,freq,start,len,amp,mode){
  if(t<start||t>=start+len)return 0;
  const x=t-start,p=x/len,attack=Math.min(1,x/.006);
@@ -60,11 +62,17 @@ function makeWav(correct){
  for(let i=0;i<bytes.length;i+=step)binary+=String.fromCharCode(...bytes.subarray(i,Math.min(bytes.length,i+step)));
  return 'data:audio/wav;base64,'+btoa(binary);
 }
+function prepareWavData(){
+ try{
+  if(!wavData.correct)wavData.correct=makeWav(true);
+  if(!wavData.wrong)wavData.wrong=makeWav(false);
+ }catch(e){STATUS.lastError=errText(e)}
+}
 function audioFor(correct){
  const key=correct?'correct':'wrong';
  if(media[key])return media[key];
  try{
-  const a=new Audio(makeWav(correct));
+  const a=new Audio(wavData[key]||(wavData[key]=makeWav(correct)));
   a.preload='auto';a.playsInline=true;a.volume=.9;
   media[key]=a;
   return a;
@@ -96,18 +104,21 @@ function answerInfo(el){
   return{correct:idx===Number(q.answerIndex),questionId:q.id||null};
  }catch(_){return null}
 }
+function triggerFromElement(el){
+ const info=answerInfo(el);if(!info)return false;
+ const key=String(info.questionId||'')+':'+String(!!info.correct),t=Date.now();
+ if(key===lastEventKey&&t-lastEventAt<2500)return false;
+ lastEventKey=key;lastEventAt=t;
+ return playCue(!!info.correct);
+}
+function answerElement(e){return e.target?.closest?.('[data-action="answer"],[data-action="diag-dontknow"]')||null}
 
-// Run before the application's bubbling click handler. This avoids waiting for save/render/analytics work.
-document.addEventListener('click',e=>{
- const el=e.target?.closest?.('[data-action="answer"],[data-action="diag-dontknow"]');
- if(!el)return;
- const info=answerInfo(el);if(!info)return;
- const key=String(info.questionId||'')+':'+String(!!info.correct);
- lastEventKey=key;lastEventAt=Date.now();
- playCue(!!info.correct);
-},true);
+// pointerdown fires at finger contact on iPhone, before click and before save/render/analytics work.
+document.addEventListener('pointerdown',e=>{const el=answerElement(e);if(el)triggerFromElement(el)},true);
+// Keyboard activation and older fallback path.
+document.addEventListener('click',e=>{const el=answerElement(e);if(el)triggerFromElement(el)},true);
 
-// Keep aa:answer as a fallback for programmatic/non-click answer paths, while suppressing the later duplicate.
+// Keep aa:answer as a fallback for programmatic/non-pointer answer paths, while suppressing duplicates.
 document.addEventListener('aa:answer',e=>{
  const d=e.detail||{},key=String(d.questionId||'')+':'+String(!!d.correct),t=Date.now();
  if(key===lastEventKey&&t-lastEventAt<2500)return;
@@ -126,7 +137,9 @@ function start(){
  STATUS.installed=true;
  STATUS.playCorrect=()=>playCue(true);STATUS.playWrong=()=>playCue(false);
  STATUS.setEnabled=v=>{STATUS.enabled=!!v;savePref();return STATUS.enabled};
- STATUS.diagnose=()=>({version:STATUS.version,build:STATUS.build,soundSet:STATUS.soundSet,trigger:STATUS.trigger,enabled:STATUS.enabled,backend:'htmlaudio',legacyCoreSuppressed:STATUS.legacyCoreSuppressed,lastError:STATUS.lastError,correctPlays:STATUS.correctPlays,wrongPlays:STATUS.wrongPlays,layoutSafe:true,domAudioCreated:false,globalUnlockListeners:false});
+ STATUS.diagnose=()=>({version:STATUS.version,build:STATUS.build,soundSet:STATUS.soundSet,trigger:STATUS.trigger,enabled:STATUS.enabled,backend:'htmlaudio',legacyCoreSuppressed:STATUS.legacyCoreSuppressed,lastError:STATUS.lastError,correctPlays:STATUS.correctPlays,wrongPlays:STATUS.wrongPlays,layoutSafe:true,domAudioCreated:false,globalUnlockListeners:false,wavPrepared:!!wavData.correct&&!!wavData.wrong});
+ const prep=()=>prepareWavData();
+ if(typeof requestIdleCallback==='function')requestIdleCallback(prep,{timeout:1200});else setTimeout(prep,0);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
