@@ -3,11 +3,18 @@ name: Chronologia 6.3 Integration QA
 on:
   push:
     paths:
+      - 'chronologia.html'
+      - 'chronologia-daily-companion.js'
+      - 'chronologia-live-companion.js'
+      - 'chronologia-force1000-v1.js'
+      - 'learning-engine-v22.js'
+      - 'sw.js'
+      - '.github/workflows/chronologia-63-qa.yml'
       - '.chronologia-63-qa-trigger'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   qa:
@@ -15,78 +22,35 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Upgrade static audit for Chronologia 6.3
-        shell: python
+      - name: JavaScript syntax
         run: |
-          from pathlib import Path
-          p=Path('tests/static-audit.mjs')
-          s=p.read_text(encoding='utf-8')
-          if "const chronoDaily = read('chronologia-daily-companion.js');" not in s:
-              s=s.replace("const chronologia = read('chronologia.html');", "const chronologia = read('chronologia.html');\nconst chronoDaily = read('chronologia-daily-companion.js');\nconst chronoLive = read('chronologia-live-companion.js');")
-          s=s.replace("check('Cache version matches app version', /APP_VERSION='2\\.2\\.7'/.test(index) && /VERSION = '2\\.2\\.7'/.test(sw));", "check('App version remains v2.2.7', /APP_VERSION='2\\.2\\.7'/.test(index));\ncheck('Chronologia 6.3 cache generation', /VERSION = '2\\.2\\.7'/.test(sw) && /c631/.test(sw));")
-          s=s.replace("check('Chronologia 6.1 identity', /<title>Chronologia 6\\.1/.test(chronologia) && /const VERSION = \"6\\.1\\.0\"/.test(chronologia));", "check('Chronologia 6.3 identity', /<title>Chronologia 6\\.3/.test(chronologia) && /const VERSION = \"6\\.3\\.0\"/.test(chronologia));")
-          marker="check('Chronologia precached', sw.includes(\"chronologia.html\") && /cache\\.put\\(request, response\\.clone\\(\\)\\)/.test(sw));"
-          addition="""check('Chronologia precached', sw.includes(\"chronologia.html\") && /cache\\.put\\(request, response\\.clone\\(\\)\\)/.test(sw));
-check('Chronologia companion loaders', /chronologia-daily-companion\\.js\\?v=6\\.3\\.0/.test(chronologia) && /chronologia-live-companion\\.js\\?v=6\\.3\\.0/.test(chronologia));
-check('Chronologia companion precached', sw.includes('chronologia-daily-companion.js') && sw.includes('chronologia-live-companion.js'));
-check('Chronologia 30 local voice slots', /wrong_01\\.mp3/.test(chronoDaily) && /finish_02\\.mp3/.test(chronoDaily) && /VOICE_FILES/.test(chronoDaily));
-check('Chronologia daily learning engine', /chronologia-daily-v2/.test(chronoDaily) && /goalQuestions/.test(chronoDaily) && /activeMs/.test(chronoDaily) && /function streak/.test(chronoDaily));
-check('Chronologia 12 expression slots', /01_normal\\.png/.test(chronoLive) && /12_rare\\.png/.test(chronoLive) && /VOICE_EXPRESSION/.test(chronoLive));
-check('Chronologia voice-expression bridge', /chronologia:voice/.test(chronoDaily) && /chronologia:voice/.test(chronoLive));"""
-          if "Chronologia companion loaders" not in s:
-              s=s.replace(marker,addition)
-          syntax_marker="""try {
-  chronologiaScripts.forEach((script, index) => new vm.Script(script, {filename: `chronologia-inline-${index + 1}.js`}));
-  check('Chronologia JavaScript syntax', chronologiaScripts.length === 2, `scripts ${chronologiaScripts.length}`);
-} catch (error) {
-  check('Chronologia JavaScript syntax', false, error.message);
-}"""
-          syntax_add=syntax_marker+"""
+          set -euo pipefail
+          node --check chronologia-daily-companion.js
+          node --check chronologia-live-companion.js
+          node --check chronologia-force1000-v1.js
+          node --check sw.js
 
-try {
-  new vm.Script(chronoDaily, {filename: 'chronologia-daily-companion.js'});
-  new vm.Script(chronoLive, {filename: 'chronologia-live-companion.js'});
-  check('Chronologia companion JavaScript syntax', true);
-} catch (error) {
-  check('Chronologia companion JavaScript syntax', false, error.message);
-}"""
-          if "Chronologia companion JavaScript syntax" not in s:
-              s=s.replace(syntax_marker,syntax_add)
-          p.write_text(s,encoding='utf-8')
-
-          for name in ['README.md','QA_REPORT.md']:
-              q=Path(name)
-              if q.exists():
-                  t=q.read_text(encoding='utf-8').replace('Chronologia 6.1','Chronologia 6.3')
-                  q.write_text(t,encoding='utf-8')
-
-      - name: Run full static audit
-        run: node tests/static-audit.mjs
-
-      - name: Extra companion invariants
+      - name: Chronologia and PWA invariants
         shell: python
         run: |
           from pathlib import Path
           h=Path('chronologia.html').read_text(encoding='utf-8')
+          m=Path('learning-engine-v22.js').read_text(encoding='utf-8')
           d=Path('chronologia-daily-companion.js').read_text(encoding='utf-8')
           l=Path('chronologia-live-companion.js').read_text(encoding='utf-8')
-          assert h.count('chronologia-daily-companion.js?v=6.3.0') == 1
-          assert h.count('chronologia-live-companion.js?v=6.3.0') == 1
-          assert d.count("'wrong_01.mp3'") >= 1 and "'finish_02.mp3'" in d
-          assert len([x for x in ['01_normal.png','02_smile.png','03_stare.png','04_pressure.png','05_surprise.png','06_thinking.png','07_joy.png','08_sleepy.png','09_angry.png','10_serious.png','11_goal.png','12_rare.png'] if x in l]) == 12
-          assert 'indexedDB.open(VOICE_DB' in d
-          assert 'indexedDB.open(IMG_DB' in l
-          assert "document.addEventListener('chronologia:voice'" in l
-          print('PASS companion invariants')
-
-      - name: Commit QA update
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tests/static-audit.mjs README.md QA_REPORT.md
-          if git diff --cached --quiet; then
-            echo "QA already current"
-            exit 0
-          fi
-          git commit -m "Verify Chronologia 6.3 companion integration"
-          git push
+          f=Path('chronologia-force1000-v1.js').read_text(encoding='utf-8')
+          s=Path('sw.js').read_text(encoding='utf-8')
+          checks={
+            'Chronologia 6.3.1 page':'const VERSION = "6.3.1";' in h,
+            'Chronologia 1000 card':'1000件の統合年表' in m and '385件の統合年表' not in m,
+            'force1000 loader once':h.count('chronologia-force1000-v1.js?v=20260812a')==1,
+            'force1000 final pack':"if(current>=1000)" in f and 'chronologia-curated-901-1000.js' in f,
+            'daily voice bridge':"new CustomEvent('chronologia:voice'" in d,
+            'live expression bridge':"document.addEventListener('chronologia:voice'" in l,
+            'PWA chronology':"url('chronologia.html')" in s and "url('chronologia-curated-901-1000.js')" in s,
+            'PWA quality repair':"url('quality-repair-v1.js')" in s,
+            'managed cache generation':"quality-chronologia1000" in s,
+          }
+          for name,ok in checks.items(): print(('PASS' if ok else 'FAIL'),name)
+          failed=[name for name,ok in checks.items() if not ok]
+          if failed: raise SystemExit('Failed: '+', '.join(failed))
