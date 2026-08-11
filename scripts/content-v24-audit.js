@@ -1,0 +1,20 @@
+'use strict';
+const fs=require('fs'),vm=require('vm');
+const ctx={console,window:{},DATA:{vocab:[],readingScenarios:[]},document:{dispatchEvent(){}},CustomEvent:function(){}};ctx.window=ctx;vm.createContext(ctx);
+for(const f of ['curriculum-v2-data.js','v23-japanese.js','v23-math.js','v23-science.js','v23-social.js','curriculum-expansion-v24.js','source-quote-bank-v1.js'])vm.runInContext(fs.readFileSync(f,'utf8'),ctx,{filename:f});
+const C=ctx.AA_V2_CURRICULUM,subs=['japanese','math','science','social'];
+const result={version:ctx.AA_V24_CONTENT_STATS?.version,subjects:{},v24:ctx.AA_V24_CONTENT_STATS,quotes:ctx.AA_SOURCE_QUOTES};let fail=[];
+for(const s of subs){const rows=C[s]||[],ids=new Set(),dups=[],bad=[];for(const r of rows){if(!Array.isArray(r)||r.length<6||!String(r[0]||'').trim()||!String(r[1]||'').trim()||!String(r[2]||'').trim()||!String(r[3]||'').trim()||!String(r[4]||'').trim()||!Number.isFinite(Number(r[5])))bad.push(r?.[0]||'?');if(ids.has(String(r[0])))dups.push(String(r[0]));ids.add(String(r[0]));}result.subjects[s]={rows:rows.length,uniqueIds:ids.size,duplicateIds:dups.length,badRows:bad.length,v24Rows:rows.filter(r=>String(r[0]).startsWith('v24')).length};if(dups.length||bad.length)fail.push(s+':invalid');}
+const v=ctx.AA_V24_CONTENT_STATS||{};const q=ctx.AA_SOURCE_QUOTES||{};
+if((v.totalNewRows||0)<600)fail.push('v24Rows<600');
+if((v.added?.japanese||0)<100)fail.push('japaneseAdded<100');
+if((v.added?.math||0)<100)fail.push('mathAdded<100');
+if((v.added?.science||0)<150)fail.push('scienceAdded<150');
+if((v.added?.social||0)<150)fail.push('socialAdded<150');
+if((v.added?.englishVocab||0)<80)fail.push('englishVocab<80');
+if((v.added?.englishReading||0)<10)fail.push('englishReading<10');
+if((q.total||0)<25)fail.push('sourceQuotes<25');
+const qrows=[...(C.japanese||[]),...(C.social||[])].filter(r=>String(r[0]).startsWith('v24q'));
+if(qrows.some(r=>!String(r[4]).includes('出典：')))fail.push('quoteAttributionMissing');
+result.english={curatedVocab:ctx.DATA.vocab.length,curatedReading:ctx.DATA.readingScenarios.length};result.pass=fail.length===0;result.failures=fail;
+console.log('CONTENT_V24_AUDIT '+JSON.stringify(result));if(!result.pass)process.exitCode=1;
