@@ -1,6 +1,6 @@
 'use strict';
 
-const VERSION='2.3.4-quality';
+const VERSION='2.3.3-chronologia1000';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;
