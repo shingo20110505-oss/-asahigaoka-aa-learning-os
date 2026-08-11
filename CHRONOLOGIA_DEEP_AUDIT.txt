@@ -1,22 +1,11 @@
-Chronologia deep explanations build failed TypeError: B.has is not a function
-    at sharedCount (chronologia-deep-explanations-v1.js:39:96)
-    at relationScore (chronologia-deep-explanations-v1.js:43:9)
-    at chronologia-deep-explanations-v1.js:49:27
-    at Array.map (<anonymous>)
-    at relatedSide (chronologia-deep-explanations-v1.js:49:14)
-    at buildNote (chronologia-deep-explanations-v1.js:72:48)
-    at Object.buildAll [as build] (chronologia-deep-explanations-v1.js:135:61)
-    at evalmachine.<anonymous>:1:29
-    at Script.runInContext (node:vm:149:12)
-    at Object.runInContext (node:vm:301:6)
-CHRONOLOGIA_DEEP_AUDIT_ERROR evalmachine.<anonymous>:1
-ChronologiaDeepExplanations.build() || CHRONOLOGIA_DEEP_NOTES_BY_ID || ({})
-                                       ^
+CHRONOLOGIA_DEEP_AUDIT_ERROR chronologia-deep-explanations-v2.js:26
+ const asahi=c.asahi||`高得点対策では、①${item.date} ②${item.event} ③${core} ④直前${nb.prev.length?'「'+nb.prev.slice(-1).map(x=>x.event).join('」':''} ⑤直後${nb.next.length?'「'+nb.next.slice(0,1).map(x=>x.event).join('」':''} を30秒でつなげて説明する。${cross.length?`さらに同時代の ${short(cross[0])} を1つ結び付ける。`:''}`;
+                                                                                                                                    ^^^
 
-ReferenceError: CHRONOLOGIA_DEEP_NOTES_BY_ID is not defined
-    at evalmachine.<anonymous>:1:40
-    at Script.runInContext (node:vm:149:12)
-    at Object.runInContext (node:vm:301:6)
-    at /home/runner/work/-asahigaoka-aa-learning-os/-asahigaoka-aa-learning-os/scripts/chronologia-deep-audit.js:20:15
+SyntaxError: missing ) after argument list
+    at new Script (node:vm:117:7)
+    at createScript (node:vm:269:10)
+    at Object.runInContext (node:vm:300:10)
+    at /home/runner/work/-asahigaoka-aa-learning-os/-asahigaoka-aa-learning-os/scripts/chronologia-deep-audit.js:11:39
     at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
 node_exit=1
