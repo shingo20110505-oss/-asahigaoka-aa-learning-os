@@ -4,8 +4,8 @@
 
 - Edit `main` only.
 - Review content lives only in `review-bank-v1.js`.
-- Never edit `gh-pages` by hand.
-- `gh-pages` is a generated/publication target for the whole app.
+- Never edit `gh-pages` by hand after the migration.
+- `gh-pages` is a generated alias of a validated `main` commit.
 
 ## Runtime structure
 
@@ -25,10 +25,10 @@ Every push to `main` runs:
 2. Review-routing validation.
 3. Login voice/image/runtime validation.
 4. Critical JavaScript syntax checks.
-5. Runtime mirror from `main` to `gh-pages`.
-6. Generation of public `release.json` containing the exact published `main` SHA, Review version/count, and Service Worker version.
+5. If every check passes, `gh-pages` is moved to the exact same validated commit SHA as `main`.
+6. The workflow verifies that the two branch SHAs are identical.
 
-This prevents `main` and the public site from silently drifting apart.
+This means there is no second editable copy of the site and no manual copy step that can drift.
 
 ## Adding an item
 
@@ -36,8 +36,8 @@ This prevents `main` and the public site from silently drifting apart.
 2. Give it a unique `id`.
 3. Increment `AA_REVIEW_BANK_VERSION`.
 4. Do not edit Review UI files for ordinary content additions.
-5. Let GitHub Actions validate and publish the entire site.
-6. Confirm public `release.json` and the public Review page after deployment.
+5. Let GitHub Actions validate and publish the exact commit.
+6. Confirm the public Review page after GitHub Pages finishes deploying.
 
 ## Stability rules
 
@@ -47,4 +47,4 @@ This prevents `main` and the public site from silently drifting apart.
 - New Review UI features belong in `review/index.html`; content belongs in `review-bank-v1.js`.
 - Old entry points must forward to `./review/` instead of implementing their own Review screen.
 - Login voice/image changes must continue to pass `scripts/validate-runtime-assets.mjs`.
-- Service Worker logic must remain generic; do not maintain long per-file freshness regexes again.
+- Service Worker logic must remain generic; do not reintroduce long per-file freshness regexes.
