@@ -1,23 +1,13 @@
 <!DOCTYPE html>
-<html lang="ja" data-theme="light">
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#101828">
 <title>復習ノート｜旭丘AA Learning OS</title>
-<style>
-:root{--bg:#edf1f6;--card:#fff;--ink:#172033;--sub:#667085;--line:#d9e0ea;--navy:#101828;--blue:#2458d3;--blue2:#eaf0ff;--green:#177a4b;--green2:#e9f7ef;--amber:#a96800;--amber2:#fff4d8;--shadow:0 14px 34px rgba(16,24,40,.08)}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,var(--bg),#f8fafc);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif}.app{max-width:760px;margin:auto;padding-bottom:40px}.top{position:sticky;top:0;z-index:10;background:var(--navy);color:#fff;padding:calc(12px + env(safe-area-inset-top,0px)) 16px 12px}.toprow{display:flex;align-items:center;justify-content:space-between;gap:12px}.top h1{font-size:17px;margin:0}.top p{font-size:11px;color:#cbd5e1;margin:3px 0 0}.back{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.25);padding:8px 10px;border-radius:10px;font-size:12px}main{padding:16px}.hero,.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:16px}.hero{background:linear-gradient(145deg,#fff,var(--blue2))}.eyebrow{font-size:11px;letter-spacing:.12em;color:var(--blue);font-weight:900}.hero h2{margin:5px 0 7px;font-size:22px}.sub{color:var(--sub);font-size:13px;line-height:1.65}.tools{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}.tools button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 11px;font-weight:800;color:var(--ink)}.tools button.active{background:var(--blue2);color:var(--blue);border-color:var(--blue)}.item{margin-top:12px}.meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}.chip{display:inline-flex;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800;background:var(--blue2);color:var(--blue)}.chip.date{background:var(--amber2);color:var(--amber)}h3{margin:4px 0 10px;font-size:18px}.point{background:var(--green2);border-left:4px solid var(--green);padding:11px;border-radius:10px;font-size:14px;line-height:1.75}.examples{margin:12px 0 0;padding-left:20px;line-height:1.85;font-size:14px}.empty{text-align:center;color:var(--sub);padding:30px 10px}.count{font-size:12px;color:var(--sub);margin-top:10px}
-</style>
+<meta http-equiv="refresh" content="0;url=./index.html?review=1">
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#edf1f6;color:#172033;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif}.box{max-width:520px;margin:20px;padding:24px;background:#fff;border:1px solid #d9e0ea;border-radius:18px;text-align:center;box-shadow:0 14px 34px rgba(16,24,40,.08)}a{display:inline-block;margin-top:12px;padding:11px 15px;border-radius:12px;background:#101828;color:#fff;text-decoration:none;font-weight:800}</style>
+<script>location.replace('./index.html?review=1');</script>
 </head>
-<body><div class="app"><header class="top"><div class="toprow"><div><h1>復習ノート</h1><p>「これ復習したい」をここに蓄積</p></div><a class="back" href="./index.html">Learning OSへ</a></div></header><main><section class="hero"><div class="eyebrow">PERSONAL REVIEW</div><h2>あとで必ず見直すページ</h2><div class="sub">ChatGPTに「これ復習に入れて」と言った内容を、教科別にここへ追加していく設計です。追加順に残し、いつでも見返せます。</div><div class="count" id="count"></div></section><div class="tools" id="filters"></div><div id="list"></div></main></div>
-<script>
-'use strict';
-// ChatGPTから随時追加する復習データ。既存項目を壊さず、この配列へ追記する。
-const REVIEW_ITEMS=[
- {id:'en-day-date-20260811',subject:'英語',date:'2026-08-11',title:'day / date / day of the month の区別',point:'day だけなら「曜日」、date は「日付・何日」、day of the month は「その月の何日」になる。of the month が付くと「曜日」ではなく「日付」を尋ねる。',examples:['What day is it today? → 今日は何曜日ですか？ → It’s Tuesday.','What is the date today? → 今日は何日ですか？ → It’s August 11th.','What day of the month is it today? → 今日は何日ですか？ → What is the date today? と同じ意味。']}
-];
-const subjects=['全部',...new Set(REVIEW_ITEMS.map(x=>x.subject))];let current='全部';
-function render(){const f=document.getElementById('filters');f.innerHTML=subjects.map(s=>`<button class="${s===current?'active':''}" data-subject="${s}">${s}</button>`).join('');const items=current==='全部'?REVIEW_ITEMS:REVIEW_ITEMS.filter(x=>x.subject===current);document.getElementById('count').textContent=`登録 ${REVIEW_ITEMS.length}件`;document.getElementById('list').innerHTML=items.length?items.slice().reverse().map(x=>`<section class="card item"><div class="meta"><span class="chip">${x.subject}</span><span class="chip date">${x.date}</span></div><h3>${x.title}</h3><div class="point"><b>ここを覚える：</b> ${x.point}</div><ul class="examples">${x.examples.map(v=>`<li>${v}</li>`).join('')}</ul></section>`).join(''):'<div class="empty">この教科の復習項目はまだありません。</div>'} }
-document.addEventListener('click',e=>{const b=e.target.closest('[data-subject]');if(!b)return;current=b.dataset.subject;render()});render();
-</script></body></html>
+<body><div class="box"><h1>復習ノートを開きます</h1><p>自動で移動しない場合は下のボタンを押してください。</p><a href="./index.html?review=1">復習ノートへ</a></div></body>
+</html>
