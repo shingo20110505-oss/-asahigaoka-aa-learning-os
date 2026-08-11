@@ -1,8 +1,9 @@
 result=success
-source_sha=054790c9cf549940e7e36f62ac6fe3e99d430be7
+source_sha=21a9ae965026249a609ef0eaef3c1057fcb78aba
 page_url=https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
-verified_at=2026-08-11T16:23:09Z
-review_version=1.0.4
-review_count=3
+verified_at=2026-08-11T16:29:39Z
+review_version=1.0.5
+review_count=4
+review_sha256=165918053e097fdcd224c22c09e7313b84f542ad4c4935fed9cd182f78124ee7
 service_worker_version=2.3.1-managed
-checks=public-release,review-v2,review-bank,than-any-other,login-image,login-voice,service-worker,diagnostics
+checks=public-release,review-v2,review-bank-exact-hash,login-image,login-voice,service-worker,diagnostics
