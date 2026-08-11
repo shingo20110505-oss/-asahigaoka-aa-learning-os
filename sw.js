@@ -1,6 +1,6 @@
 'use strict';
 
-const VERSION='2.3.5-quality-chronologia1000';
+const VERSION='2.3.6-quality2-chronologia1000';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;
@@ -53,6 +53,7 @@ const CORE=[
   url('v23-pet-settings.js'),
   url('v23-loader.js'),
   url('quality-repair-v1.js'),
+  url('quality-repair-final-v1.js'),
   url('quality-ci-runner-v1.js'),
   url('storage-resilience-v1.js'),
   url('reading-gloss-tap-v1.js'),
