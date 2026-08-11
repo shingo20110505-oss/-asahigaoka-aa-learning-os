@@ -8,6 +8,8 @@ on:
       - 'chronologia-v7-overrides.js'
       - 'chronologia-deep-explanations-v3.js'
       - 'chronologia-deep-polish-v1.js'
+      - 'chronologia-curated-*.js'
+      - 'chronologia-live-companion.js'
       - 'scripts/chronologia-deep-audit.js'
       - 'scripts/chronologia-supplement-export.js'
       - '.github/workflows/chronologia-deep-audit.yml'
@@ -25,8 +27,14 @@ jobs:
           fetch-depth: 0
       - name: Check runtime syntax
         run: |
+          node --check chronologia-live-companion.js
           node --check chronologia-deep-explanations-v3.js
           node --check chronologia-deep-polish-v1.js
+          node --check chronologia-curated-501-600.js
+          node --check chronologia-curated-601-700.js
+          node --check chronologia-curated-701-800.js
+          node --check chronologia-curated-801-900.js
+          node --check chronologia-curated-901-1000.js
           node --check scripts/chronologia-deep-audit.js
           node --check scripts/chronologia-supplement-export.js
       - name: Expand compressed 500-item supplement
@@ -46,4 +54,9 @@ jobs:
           git pull --rebase origin main
           git push
       - name: Gate detailed explanations
-        run: grep -q '"pass":true' CHRONOLOGIA_DEEP_AUDIT.txt
+        run: |
+          grep -q '"pass":true' CHRONOLOGIA_DEEP_AUDIT.txt
+          grep -q '"handCuratedSupplementItems":500' CHRONOLOGIA_DEEP_AUDIT.txt
+          grep -q '"curatedDetailUnder70":0' CHRONOLOGIA_DEEP_AUDIT.txt
+          grep -q '"curatedTagsUnder3":0' CHRONOLOGIA_DEEP_AUDIT.txt
+          grep -q '"supplementGenericDetails":0' CHRONOLOGIA_DEEP_AUDIT.txt
