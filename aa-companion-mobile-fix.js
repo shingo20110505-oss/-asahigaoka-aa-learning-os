@@ -36,12 +36,13 @@ function installEnglishClozeDedup(retry=0){
   nextVocabFormat=function(v,preferred=null){
    if(preferred)return preferred;
    let r=recentCloze(v);if(r&&(r.distance<45||r.ageMs<24*3600000)){
-    let it=itemState(v.srsId||('v:'+v.id)),formats=v.syn?['meaning','context','synonym']:['meaning','context'];
-    return formats.find(f=>!(it.recentFormats||[]).includes(f))||originalNextVocabFormat(v,null);
+    let it=itemState(v.srsId||('v:'+v.id)),recent=it.recentFormats||[],formats=v.syn?['meaning','context','synonym']:['meaning','context'];
+    let fresh=formats.find(f=>!recent.includes(f));if(fresh)return fresh;
+    return formats.slice().sort((a,b)=>recent.indexOf(b)-recent.indexOf(a))[0]||'meaning';
    }
    return originalNextVocabFormat(v,null);
   };
-  window.__AA_ENGLISH_CLOZE_DEDUP__={version:'1.0.0',recentWindowAttempts:60,recentWindowHours:72};
+  window.__AA_ENGLISH_CLOZE_DEDUP__={version:'1.0.1',recentWindowAttempts:60,recentWindowHours:72};
  }catch(_){if(retry<40)setTimeout(()=>installEnglishClozeDedup(retry+1),100)}
 }
 function wire(){if(!window.Companion7){setTimeout(wire,80);return}if(window.__AA_COMPANION_LOGIN_WIRED__)return;window.__AA_COMPANION_LOGIN_WIRED__=true;killLegacy();
