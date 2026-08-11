@@ -16,7 +16,9 @@ const FORMAT_GENRES=new Set(['email','conversation','notice']);
 function sentenceList(paragraph){
   const s=String(paragraph||'').trim();
   if(!s)return[];
-  return (s.match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[s]).map(x=>x.trim()).filter(Boolean);
+  const protectedText=s.replace(/\b(Mr|Mrs|Ms|Dr)\./g,'$1<AA_DOT>');
+  return (protectedText.match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[protectedText])
+    .map(x=>x.replace(/<AA_DOT>/g,'.').trim()).filter(Boolean);
 }
 function paragraphPlan(base,variant){
   const paras=String(base||'').split(/\n\n+/).map(x=>x.trim()).filter(Boolean);
@@ -48,21 +50,35 @@ function paragraphPlan(base,variant){
   for(const cut of [...cuts,last]){const chunk=sentences.slice(start,cut).join(' ');if(chunk)out.push(chunk);start=cut}
   return out.join('\n\n');
 }
-function formattedPlan(base,genre,variant){
+function formattedPlan(base,variant){
   const paras=String(base||'').split(/\n\n+/).map(x=>x.trim()).filter(Boolean);
   if(paras.length<3)return base;
   const k=variant%4;
   if(k===0)return base;
   const out=[...paras];
-  // Keep greeting/heading first. Only combine later information blocks; wording and order never change.
   if(k===1&&out.length>=4)out.splice(out.length-2,2,out.slice(-2).join(' '));
   else if(k===2&&out.length>=4)out.splice(1,2,out.slice(1,3).join(' '));
   else if(k===3&&out.length>=5)out.splice(2,2,out.slice(2,4).join(' '));
   return out.join('\n\n');
 }
+function conversationPlan(base,variant){
+  const turns=String(base||'').split(/\n\n+/).map(x=>x.trim()).filter(Boolean);
+  if(turns.length<4)return base;
+  const patterns=[
+    ['\n\n','\n\n','\n\n'],
+    ['\n','\n\n','\n\n'],
+    ['\n\n','\n','\n\n'],
+    ['\n\n','\n\n','\n'],
+    ['\n','\n\n','\n'],
+    ['\n\n','\n','\n']
+  ];
+  const sep=patterns[variant%patterns.length];
+  let out=turns[0];for(let i=1;i<turns.length;i++)out+=(sep[(i-1)%sep.length]||'\n\n')+turns[i];
+  return out;
+}
 function chooseVariant(sc,base){
-  if(sc?.genre==='conversation')return base;
-  if(sc?.genre==='email'||sc?.genre==='notice')return formattedPlan(base,sc.genre,Math.floor(Math.random()*4));
+  if(sc?.genre==='conversation')return conversationPlan(base,Math.floor(Math.random()*6));
+  if(sc?.genre==='email'||sc?.genre==='notice')return formattedPlan(base,Math.floor(Math.random()*4));
   return paragraphPlan(base,Math.floor(Math.random()*12));
 }
 makeReadingPassage=function(sc,diff=7,mode='standard'){
@@ -92,7 +108,8 @@ function auditV3(){
   const seatingText=seating?baseMakeReadingPassage(seating,7,'standard'):'';
   const contradiction=/entrance seats worked well for short group work/i.test(seatingText)&&/quiet work still preferred the seats near the entrance/i.test(seatingText);
   const prose=DATA.readingScenarios.filter(sc=>!FORMAT_GENRES.has(sc.genre));
-  return {version:'3.1.0',scenarioCount:DATA.readingScenarios.length,proseScenarioCount:prose.length,contradictionFixed:!contradiction,paragraphVariation:true,formattedVariation:true,genreBalancing:true,pass:!contradiction&&prose.length>=40};
+  const abbreviationSafe=sentenceList('Mr. Mori worked with Ms. Green.').length===1;
+  return {version:'3.2.0',scenarioCount:DATA.readingScenarios.length,proseScenarioCount:prose.length,contradictionFixed:!contradiction,abbreviationSafe,paragraphVariation:true,formattedVariation:true,conversationVariation:true,genreBalancing:true,pass:!contradiction&&abbreviationSafe&&prose.length>=40};
 }
 window.AA_READING_NATURALNESS_V3=auditV3();
 document.dispatchEvent(new CustomEvent('aa:reading-naturalness-v3',{detail:window.AA_READING_NATURALNESS_V3}));
