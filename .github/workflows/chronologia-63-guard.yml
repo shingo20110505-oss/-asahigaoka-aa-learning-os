@@ -36,8 +36,9 @@ jobs:
           live_p = root / 'chronologia-live-companion.js'
           force_p = root / 'chronologia-force1000-v1.js'
           sw_p = root / 'sw.js'
+          quality_final_p = root / 'quality-repair-final-v1.js'
 
-          required = [html_p, main_p, daily_p, live_p, force_p, sw_p]
+          required = [html_p, main_p, daily_p, live_p, force_p, sw_p, quality_final_p]
           missing = [str(p) for p in required if not p.exists()]
           if missing:
               raise SystemExit('Missing required files: ' + ', '.join(missing))
@@ -75,9 +76,9 @@ jobs:
               html = html[:pos] + force_loader + html[pos:]
           html_p.write_text(html, encoding='utf-8')
 
-          # One shared cache generation for Chronologia + learning-quality repairs.
+          # One shared cache generation for Chronologia + all learning-quality repairs.
           sw = sw_p.read_text(encoding='utf-8')
-          sw = re.sub(r"const VERSION\s*=\s*['\"][^'\"]+['\"];", "const VERSION='2.3.5-quality-chronologia1000';", sw, count=1)
+          sw = re.sub(r"const VERSION\s*=\s*['\"][^'\"]+['\"];", "const VERSION='2.3.6-quality2-chronologia1000';", sw, count=1)
           assets = [
               'chronologia.html','chronologia-force1000-v1.js',
               'chronologia-v7-data-1.js','chronologia-v7-data-2a.js','chronologia-v7-data-2b.js',
@@ -89,7 +90,7 @@ jobs:
               'chronologia-curated-601-700.js','chronologia-curated-701-800.js','chronologia-curated-801-900.js',
               'chronologia-curated-901-1000.js','chronologia-curated-final-fixes.js',
               'chronologia-daily-companion.js','chronologia-live-companion.js',
-              'v23-loader.js','quality-repair-v1.js','quality-ci-runner-v1.js'
+              'v23-loader.js','quality-repair-v1.js','quality-repair-final-v1.js','quality-ci-runner-v1.js'
           ]
           anchor = "  url('manifest.webmanifest'),\n"
           if anchor not in sw:
@@ -107,6 +108,7 @@ jobs:
           h=Path('chronologia.html').read_text(encoding='utf-8')
           m=Path('learning-engine-v22.js').read_text(encoding='utf-8')
           f=Path('chronologia-force1000-v1.js').read_text(encoding='utf-8')
+          q=Path('quality-repair-final-v1.js').read_text(encoding='utf-8')
           s=Path('sw.js').read_text(encoding='utf-8')
           checks={
             'main card version':'CHRONOLOGIA 6.3.1' in m,
@@ -114,12 +116,14 @@ jobs:
             'force1000 loader once':h.count('chronologia-force1000-v1.js?v=20260812a')==1,
             'force1000 target':"if(current>=1000)" in f and 'chronologia-curated-901-1000.js' in f,
             'page version':'const VERSION = "6.3.1";' in h,
-            'shared fresh PWA cache':"const VERSION='2.3.5-quality-chronologia1000';" in s,
+            'shared fresh PWA cache':"const VERSION='2.3.6-quality2-chronologia1000';" in s,
             'PWA chronology page':"url('chronologia.html')" in s,
             'PWA force loader':"url('chronologia-force1000-v1.js')" in s,
             'PWA last pack':"url('chronologia-curated-901-1000.js')" in s,
             'PWA quality repair':"url('quality-repair-v1.js')" in s,
+            'PWA final quality repair':"url('quality-repair-final-v1.js')" in s,
             'PWA quality browser runner':"url('quality-ci-runner-v1.js')" in s,
+            'final math formula repair':"excludedStrategy:['m39','m40']" in q and "includedAdvancedTail:['m58','m59']" in q,
           }
           failed=[k for k,v in checks.items() if not v]
           for k,v in checks.items(): print(('PASS' if v else 'FAIL'), k)
