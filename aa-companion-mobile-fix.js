@@ -66,6 +66,18 @@ function installEnglishPhraseQuestionFix(retry=0){
   window.__AA_ENGLISH_PHRASE_QFIX__={version:'1.0.0'};
  }catch(_){if(retry<40)setTimeout(()=>installEnglishPhraseQuestionFix(retry+1),100)}
 }
+function installVocabOnlyPageLink(){
+ if(window.__AA_VOCAB_ONLY_LINK__)return;
+ window.__AA_VOCAB_ONLY_LINK__=true;
+ const apply=()=>{
+  const btn=document.querySelector('button[data-action="start-custom"][data-kind="vocab"][data-subject="english"]');
+  if(!btn||btn.dataset.vocabOnlyLinked==='1')return;
+  btn.dataset.vocabOnlyLinked='1';btn.textContent='英単語のみ';
+  btn.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();location.href='./vocab.html'},true);
+ };
+ apply();
+ const mo=new MutationObserver(apply);mo.observe(document.body,{childList:true,subtree:true});
+}
 function wire(){if(!window.Companion7){setTimeout(wire,80);return}if(window.__AA_COMPANION_LOGIN_WIRED__)return;window.__AA_COMPANION_LOGIN_WIRED__=true;killLegacy();
  document.addEventListener('aa:missionComplete',()=>{try{Companion7.recordStudyComplete?.()}catch(_){}});
  const mo=new MutationObserver(killLegacy);mo.observe(document.body,{childList:true,subtree:true});
@@ -73,5 +85,5 @@ function wire(){if(!window.Companion7){setTimeout(wire,80);return}if(window.__AA
 installEnglishClozeDedup();
 installEnglishPhraseQuestionFix();
 loadSettings();loadV23();loadLogin();loadExplosionAnalytics();loadDailyAnalytics();loadProductionLoginTest();loadSettingsImprovements();
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',wire,{once:true});else wire();
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{installVocabOnlyPageLink();wire()},{once:true});else{installVocabOnlyPageLink();wire()}
 })();
