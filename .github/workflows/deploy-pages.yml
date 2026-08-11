@@ -161,7 +161,7 @@ jobs:
 
           stage diagnostics
           curl -fsSL "${BASE}diagnostics.html?verify=${SOURCE_SHA}" -o /tmp/diagnostics.html
-          grep -q 'AA Learning OS Diagnostics' /tmp/diagnostics.html
+          grep -q '旭丘AA OS 診断' /tmp/diagnostics.html
           grep -q 'ログイン画像' /tmp/diagnostics.html
           grep -q 'ログインボイス' /tmp/diagnostics.html
 
