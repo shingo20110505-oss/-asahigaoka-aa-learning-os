@@ -55,6 +55,6 @@ const items=[
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.2';
+window.AA_REVIEW_BANK_VERSION='1.0.3';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
