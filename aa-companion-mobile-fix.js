@@ -8,10 +8,47 @@ function loadDailyAnalytics(){loadScript('aa-daily-analytics-loader','./analytic
 function loadProductionLoginTest(){loadScript('aa-login-production-test-loader','./login-production-test-v1.js?v=1.0.0')}
 function loadSettingsImprovements(){loadScript('aa-settings-improvements-loader','./settings-improvements-v1.js?v=1.0.0')}
 function killLegacy(){for(const id of ['aaPet','aaPetSheet','companion7','aaPetSettingCard','petSettingWrap','petSettingCard'])document.getElementById(id)?.remove();document.querySelectorAll('#companion7-css,[data-companion-visual]').forEach(x=>x.remove())}
+function installEnglishClozeDedup(retry=0){
+ if(window.__AA_ENGLISH_CLOZE_DEDUP__)return;
+ try{
+  if(typeof chooseVocabSet!=='function'||typeof nextVocabFormat!=='function'||typeof vocabPool!=='function'||typeof itemState!=='function'||typeof dueScore!=='function'||typeof recentCorrectPenaltyForKey!=='function'||typeof state==='undefined')throw new Error('vocab engine not ready');
+  const originalNextVocabFormat=nextVocabFormat;
+  const recentCloze=(v)=>{
+   const id=String(v?.id||'');if(!id)return null;const prefix='vocab:'+id+':cloze:';let scanned=0;
+   for(let i=state.attempts.length-1;i>=0&&scanned<240;i--,scanned++){
+    const a=state.attempts[i];if(String(a?.itemId||'').startsWith(prefix))return{distance:scanned,ageMs:Math.max(0,Date.now()-Number(a?.timestamp||0))};
+   }
+   return null;
+  };
+  const clozePenalty=(v)=>{
+   const r=recentCloze(v);if(!r)return 0;const hours=r.ageMs/3600000;
+   if(r.distance<12||hours<6)return 10;
+   if(r.distance<30||hours<24)return 7;
+   if(r.distance<60||hours<72)return 3.5;
+   return 0;
+  };
+  chooseVocabSet=function(n=4){
+   let candidates=vocabPool().map(x=>{let sid=x.srsId||('v:'+x.id),it=itemState(sid);return{x,it,due:dueScore(it)+(x.origin==='readingUnknown'?.22:0)-recentCorrectPenaltyForKey(sid)-clozePenalty(x)}});
+   candidates.sort((a,b)=>b.due-a.due);let pool=candidates.slice(0,Math.min(Math.max(n*5,28),candidates.length)),out=[];
+   while(pool.length&&out.length<n){let max=Math.min(pool.length,Math.max(6,n*2)),idx=Math.floor(Math.random()*max);out.push(pool.splice(idx,1)[0].x)}
+   return out;
+  };
+  nextVocabFormat=function(v,preferred=null){
+   if(preferred)return preferred;
+   let r=recentCloze(v);if(r&&(r.distance<45||r.ageMs<24*3600000)){
+    let it=itemState(v.srsId||('v:'+v.id)),formats=v.syn?['meaning','context','synonym']:['meaning','context'];
+    return formats.find(f=>!(it.recentFormats||[]).includes(f))||originalNextVocabFormat(v,null);
+   }
+   return originalNextVocabFormat(v,null);
+  };
+  window.__AA_ENGLISH_CLOZE_DEDUP__={version:'1.0.0',recentWindowAttempts:60,recentWindowHours:72};
+ }catch(_){if(retry<40)setTimeout(()=>installEnglishClozeDedup(retry+1),100)}
+}
 function wire(){if(!window.Companion7){setTimeout(wire,80);return}if(window.__AA_COMPANION_LOGIN_WIRED__)return;window.__AA_COMPANION_LOGIN_WIRED__=true;killLegacy();
  document.addEventListener('aa:missionComplete',()=>{try{Companion7.recordStudyComplete?.()}catch(_){}});
  const mo=new MutationObserver(killLegacy);mo.observe(document.body,{childList:true,subtree:true});
 }
+installEnglishClozeDedup();
 loadSettings();loadV23();loadLogin();loadExplosionAnalytics();loadDailyAnalytics();loadProductionLoginTest();loadSettingsImprovements();
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',wire,{once:true});else wire();
 })();
