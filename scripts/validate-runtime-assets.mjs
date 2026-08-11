@@ -11,6 +11,7 @@ function requireText(source, needle, label){
 const index = read('index.html');
 const entry = read('aa-companion-v2.js');
 const mobile = read('aa-companion-mobile-fix.js');
+const layout = read('mobile-layout-guard-v1.js');
 const voice = read('companion7-runtime.js');
 const visual = read('login-companion-v1.js');
 const prod = read('login-production-test-v1.js');
@@ -22,6 +23,7 @@ requireText(entry, "a.href='./review/'", 'review route');
 requireText(entry, "register('./sw.js'", 'service worker refresh');
 
 for(const asset of [
+  'mobile-layout-guard-v1.js',
   'login-companion-v1.js',
   'login-production-test-v1.js',
   'companion7-runtime.js',
@@ -32,9 +34,17 @@ for(const asset of [
   if(!fs.existsSync(asset)) throw new Error(`missing managed runtime asset: ${asset}`);
 }
 
+requireText(mobile, "./mobile-layout-guard-v1.js", 'mobile layout loader');
 requireText(mobile, "./login-companion-v1.js", 'login visual loader');
 requireText(mobile, "./login-production-test-v1.js", 'login production test loader');
 requireText(mobile, "./settings-improvements-v1.js", 'settings loader');
+
+requireText(layout, "window.__AA_MOBILE_LAYOUT_GUARD_V1__", 'layout guard marker');
+requireText(layout, 'body>.nav', 'body-level fixed nav');
+requireText(layout, 'document.body.appendChild(fresh)', 'nav portal to body');
+requireText(layout, "fresh.style.setProperty('bottom','0','important')", 'forced bottom anchor');
+requireText(layout, "#app{transform:none!important", 'fixed containing-block protection');
+requireText(layout, "backdrop-filter:none!important", 'iPhone backdrop filter protection');
 
 requireText(voice, "const DB_NAME='aa-companion-voice-v1'", 'voice IndexedDB');
 requireText(voice, 'async function setLoginVoices', 'login voice pool');
@@ -55,12 +65,13 @@ requireText(prod, 'new Audio(currentAudioURL)', 'production voice playback');
 requireText(prod, "h.addEventListener('pointerdown',retry", 'production iPhone audio fallback');
 requireText(prod, 'window.AALoginProductionTest=', 'production test API');
 
-requireText(sw, "const VERSION='2.3.1-managed'", 'managed service worker version');
+if(!/const VERSION='[^']+'/.test(sw)) throw new Error('managed service worker version missing');
 requireText(sw, 'async function networkFirst', 'network-first runtime');
 requireText(sw, "ext==='js'", 'generic JS freshness');
 requireText(sw, "ext==='css'", 'generic CSS freshness');
 requireText(sw, "ext==='json'", 'generic JSON freshness');
 requireText(sw, "url('review/')", 'offline review shell');
+requireText(sw, "url('mobile-layout-guard-v1.js')", 'offline mobile layout guard');
 requireText(sw, "u.pathname.endsWith('review-bank-v1.js')", 'review bank forced freshness');
 
 const referenced=[...mobile.matchAll(/['"]\.\/([^'"?]+\.js)/g)].map(m=>m[1]);
@@ -68,4 +79,4 @@ for(const file of new Set(referenced)){
   if(!fs.existsSync(file)) throw new Error(`mobile loader points to missing file: ${file}`);
 }
 
-console.log(`runtime assets OK: referenced=${new Set(referenced).size}, login voice/image checks passed, managed SW passed`);
+console.log(`runtime assets OK: referenced=${new Set(referenced).size}, layout/login voice/image checks passed, managed SW passed`);
