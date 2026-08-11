@@ -1,4 +1,5 @@
 (()=>{'use strict';
+// Managed source of truth: edit this file on main only. GitHub Actions publishes it to gh-pages.
 const items=[
   {
     id:'en-day-date-day-of-month-20260811',
@@ -55,6 +56,6 @@ const items=[
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.3';
+window.AA_REVIEW_BANK_VERSION='1.0.4';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
