@@ -1,12 +1,13 @@
 (()=>{'use strict';
 if(window.__AA_QUALITY_REPAIR_FINAL_V1__)return;
-window.__AA_QUALITY_REPAIR_FINAL_V1__={version:'1.0.0'};
-const FINAL=window.AA_QUALITY_REPAIR_FINAL={version:'1.0.0'};
+window.__AA_QUALITY_REPAIR_FINAL_V1__={version:'1.0.1'};
+const FINAL=window.AA_QUALITY_REPAIR_FINAL={version:'1.0.1'};
 const clean=s=>String(s??'').trim();
+const FORMULA_AREAS=new Set(['number','algebra','equation','function','geometry','measure','probability','statistics','advanced']);
 
 function canonicalMathRows(){
   const raw=Array.isArray(window.AA_V2_CURRICULUM?.math)?window.AA_V2_CURRICULUM.math:[];
-  return raw.filter(r=>{const m=/^m(\d+)$/.exec(String(r?.[0]||''));return m&&Number(m[1])>=1&&Number(m[1])<=57});
+  return raw.filter(r=>/^m\d+$/.test(String(r?.[0]||''))&&FORMULA_AREAS.has(String(r?.[1]||'')));
 }
 function rowFromRaw(r){
   return {id:r[0],subject:'math',area:r[1],prompt:r[2],answer:r[3],explanation:r[4],difficulty:r[5],skillId:'math.formula.recall',impact:r[1]==='advanced'?.72:1};
@@ -15,7 +16,7 @@ function restoreMathFormulaBank(){
   const api=window.AA_V2_TEST_API,bank=api?.banks?.math;
   if(!Array.isArray(bank))return {ok:false,reason:'math bank unavailable'};
   const canonical=canonicalMathRows();
-  if(canonical.length!==57)return {ok:false,reason:`canonical ${canonical.length}`};
+  if(canonical.length!==57)return {ok:false,reason:`canonical ${canonical.length}`,ids:canonical.map(r=>r[0])};
   const canonicalIds=new Set(canonical.map(r=>r[0]));
   const firstById=new Map();
   let duplicateNo=0;
@@ -45,7 +46,7 @@ function restoreMathFormulaBank(){
   FINAL.mathFormulaIds=ids;
   FINAL.mathFormulaCount=formula.length;
   FINAL.mathAdvancedCount=advanced.length;
-  return {ok:formula.length===57&&unique.size===57&&advanced.length===24,count:formula.length,unique:unique.size,advanced:advanced.length,missing:canonical.map(r=>r[0]).filter(id=>!unique.has(id))};
+  return {ok:formula.length===57&&unique.size===57&&advanced.length===24&&formula.every(r=>FORMULA_AREAS.has(r.area)),count:formula.length,unique:unique.size,advanced:advanced.length,missing:canonical.map(r=>r[0]).filter(id=>!unique.has(id)),excludedStrategy:['m39','m40'],includedAdvancedTail:['m58','m59']};
 }
 
 const STOP=new Set('the a an and or but so to of in on at for from with by as is are was were be been being this that these those it its they their them he his she her we our you your i my do does did have has had can could will would should may might not than then into about after before during over under more most some any other each all'.split(' '));
