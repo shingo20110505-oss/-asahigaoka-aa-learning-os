@@ -9,13 +9,8 @@ document.addEventListener('aa:streak',()=>relay('streak'));
 document.addEventListener('aa:hard',()=>relay('hard'));
 document.addEventListener('aa:missionComplete',()=>relay('complete'));
 document.addEventListener('chronologia:voice',e=>{if(window.Companion7&&e.detail?.audio)Companion7.bindAudio(e.detail.audio)});
-function ensureChronologia7(){
-  if(window.__CHRONOLOGIA_V7_RUNTIME__||document.querySelector('script[data-chronologia-v7]'))return;
-  const loadRuntime=()=>{if(window.__CHRONOLOGIA_V7_RUNTIME__||document.querySelector('script[data-chronologia-v7]'))return;const s=document.createElement('script');s.dataset.chronologiaV7='1';s.src='./chronologia-v7-runtime.js?v=7.0.0';s.async=false;document.head.appendChild(s)};
-  const existing=document.querySelector('script[data-chronologia-v7-supplement]');
-  if(existing){if(existing.dataset.loaded==='1')loadRuntime();else{existing.addEventListener('load',loadRuntime,{once:true});existing.addEventListener('error',loadRuntime,{once:true})}return}
-  const p=document.createElement('script');p.dataset.chronologiaV7Supplement='1';p.src='./chronologia-v7-data-3.js?v=7.1.0';p.async=false;p.onload=()=>{p.dataset.loaded='1';loadRuntime()};p.onerror=loadRuntime;document.head.appendChild(p)
-}
+function loadScript(src,key){return new Promise(resolve=>{const found=document.querySelector(`script[data-${key}]`);if(found){if(found.dataset.loaded==='1')resolve();else{found.addEventListener('load',resolve,{once:true});found.addEventListener('error',resolve,{once:true})}return}const s=document.createElement('script');s.dataset[key]='1';s.src=src;s.async=false;s.onload=()=>{s.dataset.loaded='1';resolve()};s.onerror=resolve;document.head.appendChild(s)})}
+async function ensureChronologia7(){if(window.__CHRONOLOGIA_V7_RUNTIME__||document.querySelector('script[data-chronologia-v7]'))return;await loadScript('./chronologia-v7-data-3.js?v=7.1.0','chronologiaV7Supplement');await loadScript('./chronologia-v7-data-4.js?v=7.2.0','chronologiaV7Double');try{if(window.CHRONO_V7_EXTRA_READY)await window.CHRONO_V7_EXTRA_READY}catch(e){console.error('Chronologia 1000-item supplement failed',e)}if(window.__CHRONOLOGIA_V7_RUNTIME__)return;const s=document.createElement('script');s.dataset.chronologiaV7='1';s.src='./chronologia-v7-runtime.js?v=7.2.0';s.async=false;document.head.appendChild(s)}
 function ensure(){killLegacy();if(window.Companion7)return;if(!document.querySelector('script[data-c7-bridge]')){const s=document.createElement('script');s.dataset.c7Bridge='1';s.src='./companion7-runtime.js?v=7.4.0';s.async=false;document.head.appendChild(s)}}
 function boot(){ensureChronologia7();ensure()}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
