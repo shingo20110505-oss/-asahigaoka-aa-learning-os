@@ -1,5 +1,6 @@
 (()=>{'use strict';
-if(window.__AA_ANSWER_FEEDBACK_AUDIO_V34__)return;
+if(window.__AA_ANSWER_FEEDBACK_AUDIO_V35__)return;
+window.__AA_ANSWER_FEEDBACK_AUDIO_V35__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V34__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V3__=true;
 window.__AA_ANSWER_FEEDBACK_AUDIO_V2__=true;
@@ -9,7 +10,7 @@ window.__AA_EXERCISE_ANSWER_SOUND_V1__=true;
 // [data-action="answer"]  state.ui.successFeedback===false  backend='htmlaudio'  backend='webaudio'
 
 const PREF_KEY='aa-answer-feedback-audio-v3';
-const STATUS=window.AA_ANSWER_FEEDBACK_AUDIO={version:'3.0.0',build:'ios-lazy-htmlaudio-v34',installed:false,enabled:true,backend:'htmlaudio',correctPlays:0,wrongPlays:0,lastError:null,lastCue:null,legacyCoreSuppressed:false,layoutSafe:true};
+const STATUS=window.AA_ANSWER_FEEDBACK_AUDIO={version:'3.0.0',build:'premium-kira-v35',installed:false,enabled:true,backend:'htmlaudio',correctPlays:0,wrongPlays:0,lastError:null,lastCue:null,legacyCoreSuppressed:false,layoutSafe:true,soundSet:'premium-kira-original'};
 window.AA_EXERCISE_ANSWER_SOUND=STATUS;
 const media={correct:null,wrong:null};
 let current=null,lastEventKey='',lastEventAt=0;
@@ -27,23 +28,31 @@ function suppressLegacyCore(){
  }catch(_){}
 }
 
-// Small built-in WAV generated in memory as a data URL.
+// The v3.4 playback path is intentionally preserved because it is the iPhone path confirmed to work.
+// Only the generated waveform is replaced: correct = premium sparkle, wrong = matching gentle descending bell.
 // No Blob URL, no audio/video DOM element, no settings card, no global touch/pointer unlock listeners.
+function bellSample(t,freq,start,len,amp,mode){
+ if(t<start||t>=start+len)return 0;
+ const x=t-start,p=x/len,attack=Math.min(1,x/.006);
+ if(mode==='wrong'){
+  const env=Math.exp(-7*p)*attack;
+  return amp*env*(Math.sin(2*Math.PI*freq*x)+.28*Math.sin(2*Math.PI*freq*2.01*x)+.09*Math.sin(2*Math.PI*freq*3.02*x));
+ }
+ const env=Math.exp(-3.9*p)*attack;
+ return amp*env*(Math.sin(2*Math.PI*freq*x)+.52*Math.sin(2*Math.PI*freq*1.5*x)+.29*Math.sin(2*Math.PI*freq*2*x));
+}
 function makeWav(correct){
- const sr=6000,dur=correct?.21:.22,n=Math.floor(sr*dur),buf=new ArrayBuffer(44+n*2),dv=new DataView(buf);
+ const sr=12000,dur=correct?.435:.38,n=Math.floor(sr*dur),buf=new ArrayBuffer(44+n*2),dv=new DataView(buf);
  const write=(o,s)=>{for(let i=0;i<s.length;i++)dv.setUint8(o+i,s.charCodeAt(i))};
  write(0,'RIFF');dv.setUint32(4,36+n*2,true);write(8,'WAVE');write(12,'fmt ');
  dv.setUint32(16,16,true);dv.setUint16(20,1,true);dv.setUint16(22,1,true);dv.setUint32(24,sr,true);dv.setUint32(28,sr*2,true);dv.setUint16(32,2,true);dv.setUint16(34,16,true);
  write(36,'data');dv.setUint32(40,n*2,true);
- const tones=correct?[[660,0,.12],[880,.07,.12]]:[[260,0,.13],[190,.09,.13]];
  for(let i=0;i<n;i++){
-  const t=i/sr;let v=0;
-  for(const [f,start,len] of tones){
-   if(t<start||t>=start+len)continue;
-   const x=(t-start)/len,env=Math.sin(Math.PI*x);
-   v+=Math.sin(2*Math.PI*f*(t-start))*env;
-  }
-  v=Math.max(-1,Math.min(1,v*(correct?.35:.38)));
+  const t=i/sr;
+  let v=correct
+   ?bellSample(t,1046.50,0,.205,.24,'correct')+bellSample(t,1567.98,.215,.22,.205,'correct')
+   :bellSample(t,739.99,0,.20,.19,'wrong')+bellSample(t,554.37,.095,.25,.17,'wrong');
+  v=Math.max(-.96,Math.min(.96,v));
   dv.setInt16(44+i*2,Math.round(v*32767),true);
  }
  const bytes=new Uint8Array(buf);let binary='',step=0x8000;
@@ -62,7 +71,7 @@ function audioFor(correct){
 }
 function record(correct){
  if(correct)STATUS.correctPlays++;else STATUS.wrongPlays++;
- STATUS.lastError=null;STATUS.lastCue={correct,at:Date.now(),backend:'htmlaudio'};
+ STATUS.lastError=null;STATUS.lastCue={correct,at:Date.now(),backend:'htmlaudio',soundSet:'premium-kira-original'};
 }
 function playCue(correct){
  if(!STATUS.enabled)return false;
@@ -95,7 +104,7 @@ function start(){
  STATUS.installed=true;
  STATUS.playCorrect=()=>playCue(true);STATUS.playWrong=()=>playCue(false);
  STATUS.setEnabled=v=>{STATUS.enabled=!!v;savePref();return STATUS.enabled};
- STATUS.diagnose=()=>({version:STATUS.version,build:STATUS.build,enabled:STATUS.enabled,backend:'htmlaudio',legacyCoreSuppressed:STATUS.legacyCoreSuppressed,lastError:STATUS.lastError,correctPlays:STATUS.correctPlays,wrongPlays:STATUS.wrongPlays,layoutSafe:true,domAudioCreated:false,globalUnlockListeners:false});
+ STATUS.diagnose=()=>({version:STATUS.version,build:STATUS.build,soundSet:STATUS.soundSet,enabled:STATUS.enabled,backend:'htmlaudio',legacyCoreSuppressed:STATUS.legacyCoreSuppressed,lastError:STATUS.lastError,correctPlays:STATUS.correctPlays,wrongPlays:STATUS.wrongPlays,layoutSafe:true,domAudioCreated:false,globalUnlockListeners:false});
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
