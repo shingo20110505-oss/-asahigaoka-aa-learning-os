@@ -2,7 +2,7 @@
 // difficulty1 compatibility marker; current release uses difficulty2 + challenge1.
 
 const VERSION = '2.2.9';
-const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-companion750-loginzip1-analytics1-explosionanalytics1-prodtest1-examples2-quality1-readingnatural3-settingsguard2-chrono1000-v24content1-quotes1-storage1-difficulty2-challenge1-glosstap1-answeraudio39-chronodeep3-chronocurated1000-v3-vocabonly1-review1`;
+const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-companion750-loginzip1-analytics1-explosionanalytics1-prodtest1-examples2-quality1-readingnatural3-settingsguard2-chrono1000-v24content1-quotes1-storage1-difficulty2-challenge1-glosstap1-answeraudio39-chronodeep3-chronocurated1000-v3-vocabonly1-review2`;
 const BASE = self.registration.scope;
 const APP_URL = new URL('./', BASE).href;
 const OFFLINE_URL = new URL('offline.html', BASE).href;
