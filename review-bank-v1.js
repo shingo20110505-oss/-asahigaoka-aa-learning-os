@@ -1,5 +1,5 @@
 (()=>{'use strict';
-// Managed source of truth: edit this file on main only. GitHub Actions publishes it to gh-pages.
+// Managed source of truth: edit this file on main only. GitHub Actions publishes it to Pages and verifies the exact public file hash.
 const items=[
   {
     id:'en-day-date-day-of-month-20260811',
@@ -51,11 +51,28 @@ const items=[
     memory:'比較級 + than any other + 単数名詞 ＝「ほかのどの〜よりも」＝ほぼ最上級',
     tags:['比較級','than any other','単数名詞','最上級','書き換え'],
     createdAt:'2026-08-11'
+  },
+  {
+    id:'en-because-because-of-test-20260812',
+    subject:'英語',
+    unit:'接続詞・前置詞',
+    title:'【反映テスト】because と because of の使い分け',
+    question:'because と because of の後ろには、それぞれ何を置く？',
+    answer:'because の後ろには「主語 + 動詞」の文を置き、because of の後ろには名詞・代名詞・動名詞などの名詞相当語句を置きます。',
+    why:'because は接続詞なので文と文をつなぎます。because of は前置詞句なので、of の後ろには名詞相当の語句が必要です。',
+    examples:[
+      'I stayed home because it was raining.（雨が降っていたので家にいました）',
+      'I stayed home because of the rain.（雨のため家にいました）',
+      'because + S + V / because of + 名詞'
+    ],
+    memory:'because＋文 / because of＋名詞',
+    tags:['反映テスト','because','because of','接続詞','前置詞'],
+    createdAt:'2026-08-12'
   }
 ];
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.4';
+window.AA_REVIEW_BANK_VERSION='1.0.5';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
