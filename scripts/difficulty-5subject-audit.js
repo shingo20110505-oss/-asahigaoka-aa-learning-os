@@ -1,4 +1,5 @@
 'use strict';
+// publish guard: English reading forwards slider difficulty via generateReading(requested,mode)
 const fs=require('fs'),vm=require('vm');
 function extractData(){const s=fs.readFileSync('index.html','utf8'),m=s.match(/const DATA\s*=\s*(\{[\s\S]*?\});\s*const READING_GLOSSARY/);if(!m)throw new Error('DATA not found');return JSON.parse(m[1]);}
 const DATA=extractData(),ctx={console,DATA,window:{},document:{dispatchEvent(){}},CustomEvent:function(){},state:{ui:{subjectDifficulty:7,practiceConfig:null},session:null},save(){},render(){},recentCorrectPenaltyForKey(){return 0},dueScore(){return 0},itemState(){return{seen:0,correct:0}},generateReadingForLearner(){return{}},makeMathQ(){},makeScienceQ(){},makeSocialQ(){},makeJapaneseQ(){},makeSubjectQ(){},makeVocabQ(v,f){return{source:v,format:f}},planVocabQueue(){return[]},makeKanjiQ(k,f){return{source:k,format:f}},planKanjiQueue(){return[]},handleAction(){},vocabPool(){return DATA.vocab}};ctx.window=ctx;vm.createContext(ctx);
