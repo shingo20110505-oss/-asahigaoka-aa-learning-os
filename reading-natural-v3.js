@@ -40,8 +40,7 @@ function paragraphPlan(base,variant){
     const j=(k-5)%(cuts.length-1);
     cuts.splice(j+1,1);
   }else if(k>=9){
-    // Add one paragraph break at a safe sentence boundary while keeping every sentence in order.
-    const occupied=new Set(cuts);const options=[];
+    const occupied=new Set(cuts),options=[];
     for(let n=2;n<=last-2;n++)if(!occupied.has(n)&&!occupied.has(n-1)&&!occupied.has(n+1))options.push(n);
     if(options.length)cuts.push(options[(k-9)%options.length]);
   }
@@ -52,7 +51,7 @@ function paragraphPlan(base,variant){
 }
 function chooseVariant(sc,base){
   if(FORMAT_GENRES.has(sc?.genre))return base;
-  // Math.random only changes paragraph boundaries. Words, facts and evidence remain exactly unchanged.
+  // Only paragraph boundaries move. Words, facts and evidence stay unchanged.
   return paragraphPlan(base,Math.floor(Math.random()*12));
 }
 makeReadingPassage=function(sc,diff=7,mode='standard'){
@@ -69,8 +68,9 @@ if(typeof generateReading==='function'){
     const last=recent.at(-1)?.dna?.genre||'';
     let best=null,bestScore=Infinity;
     for(let i=0;i<8;i++){
-      const r=baseGenerateReading(diff,mode);const g=r?.dna?.genre||DATA.readingScenarios.find(x=>x.id===r?.scenarioId)?.genre||'';
-      const score=(counts[g]||0)*3+(g===last?5:0)+(g==='report'?1.5:0)+(g==='experiment'?1:0)+(g==='expository'?.5:0);
+      const r=baseGenerateReading(diff,mode);
+      const g=r?.dna?.genre||DATA.readingScenarios.find(x=>x.id===r?.scenarioId)?.genre||'';
+      const score=(counts[g]||0)*3+(g===last?5:0)+(g==='report'?1.5:0)+(g==='experiment'?1:0)+(g==='expository'?0.5:0);
       if(score<bestScore){best=r;bestScore=score}
       if(score<=1)break;
     }
