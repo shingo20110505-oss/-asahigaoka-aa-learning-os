@@ -15,6 +15,8 @@ const layout = read('mobile-layout-guard-v1.js');
 const voice = read('companion7-runtime.js');
 const visual = read('login-companion-v1.js');
 const prod = read('login-production-test-v1.js');
+const loader = read('v23-loader.js');
+const quality = read('quality-repair-v1.js');
 const sw = read('sw.js');
 
 requireText(index, './aa-companion-v2.js', 'index entry');
@@ -28,6 +30,8 @@ for(const asset of [
   'login-production-test-v1.js',
   'companion7-runtime.js',
   'settings-improvements-v1.js',
+  'v23-loader.js',
+  'quality-repair-v1.js',
   'diagnostics.html',
   'review/index.html'
 ]){
@@ -69,6 +73,16 @@ requireText(prod, 'new Audio(currentAudioURL)', 'production voice playback');
 requireText(prod, "h.addEventListener('pointerdown',retry", 'production iPhone audio fallback');
 requireText(prod, 'window.AALoginProductionTest=', 'production test API');
 
+requireText(loader, "'quality-repair-v1.js'", 'quality repair load order');
+requireText(quality, 'window.__AA_QUALITY_REPAIR_V1__', 'quality repair marker');
+requireText(quality, 'function buildCloze', 'cloze answer exposure repair');
+requireText(quality, 'planVocabQueue=function', 'six vocab plus two collocation repair');
+requireText(quality, 'context-fallback', 'reading glossary fallback');
+requireText(quality, 'distractorType', 'distractor classification repair');
+requireText(quality, "row.area='extension'", 'math formula route isolation');
+requireText(quality, '筆者の中心的な主張', 'argument reading type repair');
+requireText(quality, 'REPAIR.audit=function', 'quality repair self-audit');
+
 if(!/const VERSION='[^']+'/.test(sw)) throw new Error('managed service worker version missing');
 requireText(sw, 'async function networkFirst', 'network-first runtime');
 requireText(sw, "ext==='js'", 'generic JS freshness');
@@ -76,6 +90,7 @@ requireText(sw, "ext==='css'", 'generic CSS freshness');
 requireText(sw, "ext==='json'", 'generic JSON freshness');
 requireText(sw, "url('review/')", 'offline review shell');
 requireText(sw, "url('mobile-layout-guard-v1.js')", 'offline mobile layout guard');
+requireText(sw, "url('quality-repair-v1.js')", 'offline quality repair');
 requireText(sw, "u.pathname.endsWith('review-bank-v1.js')", 'review bank forced freshness');
 
 const referenced=[...mobile.matchAll(/['"]\.\/([^'"?]+\.js)/g)].map(m=>m[1]);
@@ -83,4 +98,4 @@ for(const file of new Set(referenced)){
   if(!fs.existsSync(file)) throw new Error(`mobile loader points to missing file: ${file}`);
 }
 
-console.log(`runtime assets OK: referenced=${new Set(referenced).size}, layout/login voice/decode-safe image checks passed, managed SW passed`);
+console.log(`runtime assets OK: referenced=${new Set(referenced).size}, quality repair/layout/login/PWA checks passed`);
