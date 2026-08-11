@@ -28,7 +28,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Prepare AA OS 2.2.9 / V24 five-subject content build
+      - name: Prepare AA OS 2.2.9 / V24 five-subject content + exact difficulty build
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -73,6 +73,8 @@ jobs:
           node --check scripts/reading-1000-audit.js
           node --check explanation-examples-v2.js
           node --check question-quality-v1.js
+          node --check difficulty-engine-v1.js
+          node --check scripts/difficulty-5subject-audit.js
           node --check v23-pet-settings.js
           node --check v23-loader.js
           node --check learning-engine-v23.js
@@ -85,6 +87,11 @@ jobs:
           node scripts/reading-1000-audit.js > /tmp/reading-1000-audit.txt
           cat /tmp/reading-1000-audit.txt
           grep -q 'READING_1000_VERDICT PASS' /tmp/reading-1000-audit.txt
+
+          node scripts/difficulty-5subject-audit.js > /tmp/difficulty-5subject-audit.txt
+          cat /tmp/difficulty-5subject-audit.txt
+          grep -q 'DIFFICULTY_5SUBJECT_AUDIT' /tmp/difficulty-5subject-audit.txt
+          grep -q '"pass":true' /tmp/difficulty-5subject-audit.txt
 
           python - <<'PY'
           from pathlib import Path
@@ -100,6 +107,8 @@ jobs:
           cx=Path('curriculum-expansion-v24.js').read_text(encoding='utf-8')
           sq=Path('source-quote-bank-v1.js').read_text(encoding='utf-8')
           ca=Path('scripts/content-v24-audit.js').read_text(encoding='utf-8')
+          de=Path('difficulty-engine-v1.js').read_text(encoding='utf-8')
+          da=Path('scripts/difficulty-5subject-audit.js').read_text(encoding='utf-8')
           rn=Path('reading-natural-v2.js').read_text(encoding='utf-8')
           rn3=Path('reading-natural-v3.js').read_text(encoding='utf-8')
           audit=Path('scripts/reading-1000-audit.js').read_text(encoding='utf-8')
@@ -128,11 +137,10 @@ jobs:
           assert '日々の学習記録' in a and '直近30日の学習日' in a and 'recordStudyComplete' in a
           assert '今だけ本番演出を1回テスト' in t and "Math.max(.05" in t and 'USED_KEY' in t
 
-          # Storage resilience + current Chronologia 1000 compatibility guard.
           assert 'storage-resilience-v1.js' in s and 'storage1' in s
           assert 'chronologia-v7-data-3.js' in s and 'chronologia-v7-data-4.js' in s and 'chrono1000' in s
 
-          # V24 five-subject expansion and source-quotation release guard.
+          # V24 five-subject expansion and source quotations.
           assert "version:'2.4.0'" in cx and 'AA_V24_CONTENT_STATS' in cx and 'totalNewRows' in cx
           assert "['japanese','math','science','social']" in ca and "v24Rows<600" in ca and "sourceQuotes<25" in ca
           assert 'AA_SOURCE_QUOTES' in sq and '【引用：' in sq and '【資料引用：' in sq
@@ -141,6 +149,15 @@ jobs:
           assert 'curriculum-expansion-v24.js' in vl and 'source-quote-bank-v1.js' in vl
           assert vl.index('v23-english-main.js') < vl.index('curriculum-expansion-v24.js') < vl.index('source-quote-bank-v1.js') < vl.index('reading-natural-v2.js')
           assert 'curriculum-expansion-v24.js' in s and 'source-quote-bank-v1.js' in s and 'v24content1-quotes1' in s
+
+          # Exact 1-11 difficulty wiring across all five subjects.
+          assert "difficultyEngine:'exact-1-11-v1'" in de
+          assert 'vocabWords' in de and 'vocabFormat' in de and 'kanjiWords' in de and 'kanjiFormat' in de
+          assert 'exactUnitQueue' in de and 'startExactUnitPractice' in de and "unitPracticeExact:['japanese','math','science','social']" in de
+          assert 'difficulty-engine-v1.js' in vl and vl.index('question-quality-v1.js') < vl.index('difficulty-engine-v1.js') < vl.index('v23-pet-settings.js')
+          assert 'difficulty-engine-v1.js' in s and 'difficulty1' in s
+          assert 'DIFFICULTY_5SUBJECT_AUDIT' in da and "generateReading(requested,mode)" in da
+          assert 'subjectDifficulty:7' in i and 'data-action="difficulty"' in i and 'generateReadingForLearner(base=7' in i
 
           # Reading naturalness guards.
           assert 'reading-natural-v2.js' in vl and 'reading-natural-v3.js' in vl
@@ -171,7 +188,7 @@ jobs:
           assert "const VERSION = '2.2.9';" in s
           assert 'examples2' in s and 'settingsguard2' in s and 'explanation-examples-v2.js' in s and 'companion-settings-only-guard-v1.js' in s
           assert 'quality1' in s and 'question-quality-v1.js' in s and 'prodtest1' in s
-          print('AA OS 2.2.9 / storage resilience + Chronologia 1000 + V24 content publish guard PASS')
+          print('AA OS 2.2.9 / V24 content + exact 1-11 five-subject difficulty publish guard PASS')
           PY
 
       - name: Upload Pages artifact
