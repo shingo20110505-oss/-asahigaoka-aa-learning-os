@@ -9,18 +9,21 @@ function extractJSONArray(source,marker){
  }
  throw new Error('DATA array end not found');
 }
-const html=read('chronologia.html'),base=extractJSONArray(html,'const DATA =');
-const ctx={console,window:{},document:{readyState:'loading',addEventListener(){},getElementById(){return null},querySelector(){return null},createElement(){return{style:{},appendChild(){}}}},setInterval(){return 0},clearInterval(){},CustomEvent:function(){}};ctx.window=ctx;vm.createContext(ctx);
-for(const f of ['chronologia-v7-data-1.js','chronologia-v7-data-2a.js','chronologia-v7-data-2b.js','chronologia-v7-data-3.js','chronologia-v7-data-4.js','chronologia-v7-overrides.js'])vm.runInContext(read(f),ctx,{filename:f});
-const data=[...base],seen=new Set(base.map(x=>Number(x.id))),rich={};
-for(const pack of ctx.CHRONO_V7_PACKS||[]){for(const x of pack.items||[]){if(seen.has(Number(x.id)))continue;seen.add(Number(x.id));data.push(x)}Object.assign(rich,pack.notes||{})}
-ctx.DATA=data;ctx.RICH_NOTES=rich;vm.runInContext(read('chronologia-deep-explanations-v1.js'),ctx,{filename:'chronologia-deep-explanations-v1.js'});
-const map=ctx.ChronologiaDeepExplanations?.build?.()||ctx.CHRONOLOGIA_DEEP_NOTES_BY_ID||{};
-const fields=['summary','background','result','exam','asahi','trap'],mins={summary:80,background:120,result:110,exam:110,asahi:100,trap:55},fail=[],stats={};
-for(const f of fields)stats[f]={min:1e9,max:0,total:0,under:0};
-let deepUnder=0,oldGeneric=0;
-for(const item of data){const n=map[Number(item.id)];if(!n){fail.push('missing:'+item.id);continue}for(const f of fields){const len=String(n[f]||'').length,s=stats[f];s.min=Math.min(s.min,len);s.max=Math.max(s.max,len);s.total+=len;if(len<mins[f]){s.under++;fail.push(`${f}-short:${item.id}:${len}`)}}if(!Array.isArray(n.deepFacts)||n.deepFacts.length<4){deepUnder++;fail.push('deepFacts:'+item.id)}const joined=fields.map(f=>n[f]||'').join(' ');if(joined.includes('政治・社会・外交の変化が積み重なっていた')){oldGeneric++;fail.push('old-generic:'+item.id)}}
-for(const f of fields){stats[f].avg=+(stats[f].total/Math.max(1,data.length)).toFixed(1);delete stats[f].total;if(stats[f].min===1e9)stats[f].min=0}
-const samples=data.filter(x=>/大化の改新|承久の乱|応仁の乱|明治維新|日本国憲法/.test(x.event)).slice(0,8).map(x=>({id:x.id,date:x.date,event:x.event,note:map[Number(x.id)]}));
-const result={version:'1.0.0',items:data.length,generated:Object.keys(map).length,curatedPackNotes:Object.keys(rich).length,fieldStats:stats,deepFactsUnder4:deepUnder,oldGenericCount:oldGeneric,failures:fail.slice(0,50),failureCount:fail.length,samples,pass:data.length>=1000&&Object.keys(map).length===data.length&&fail.length===0};
-console.log('CHRONOLOGIA_DEEP_AUDIT '+JSON.stringify(result));if(!result.pass)process.exitCode=1;
+(async()=>{
+ const html=read('chronologia.html'),base=extractJSONArray(html,'const DATA =');
+ const ctx={console,window:{},document:{readyState:'loading',addEventListener(){},getElementById(){return null},querySelector(){return null},createElement(){return{style:{},appendChild(){}}}},setInterval(){return 0},clearInterval(){},CustomEvent:function(){},atob,Blob,DecompressionStream,Response,Uint8Array};ctx.window=ctx;vm.createContext(ctx);
+ for(const f of ['chronologia-v7-data-1.js','chronologia-v7-data-2a.js','chronologia-v7-data-2b.js','chronologia-v7-data-3.js','chronologia-v7-data-4.js','chronologia-v7-overrides.js'])vm.runInContext(read(f),ctx,{filename:f});
+ if(ctx.CHRONO_V7_EXTRA_READY)await ctx.CHRONO_V7_EXTRA_READY;
+ const data=[...base],seen=new Set(base.map(x=>Number(x.id))),rich={};
+ for(const pack of ctx.CHRONO_V7_PACKS||[]){for(const x of pack.items||[]){if(seen.has(Number(x.id)))continue;seen.add(Number(x.id));data.push(x)}Object.assign(rich,pack.notes||{})}
+ ctx.DATA=data;ctx.RICH_NOTES=rich;vm.runInContext(read('chronologia-deep-explanations-v1.js'),ctx,{filename:'chronologia-deep-explanations-v1.js'});
+ const map=vm.runInContext('ChronologiaDeepExplanations.build() || CHRONOLOGIA_DEEP_NOTES_BY_ID || ({})',ctx);
+ const fields=['summary','background','result','exam','asahi','trap'],mins={summary:80,background:120,result:110,exam:110,asahi:100,trap:55},fail=[],stats={};
+ for(const f of fields)stats[f]={min:1e9,max:0,total:0,under:0};
+ let deepUnder=0,oldGeneric=0,supplementGeneric=0;
+ for(const item of data){const n=map[Number(item.id)];if(!n){fail.push('missing:'+item.id);continue}for(const f of fields){const len=String(n[f]||'').length,s=stats[f];s.min=Math.min(s.min,len);s.max=Math.max(s.max,len);s.total+=len;if(len<mins[f]){s.under++;fail.push(`${f}-short:${item.id}:${len}`)}}if(!Array.isArray(n.deepFacts)||n.deepFacts.length<4){deepUnder++;fail.push('deepFacts:'+item.id)}const joined=fields.map(f=>n[f]||'').join(' ');if(joined.includes('政治・社会・外交の変化が積み重なっていた')){oldGeneric++;fail.push('old-generic:'+item.id)}if(Number(item.id)>=501&&String(item.detail||'').includes('Chronologia 7の補充項目として'))supplementGeneric++;}
+ for(const f of fields){stats[f].avg=+(stats[f].total/Math.max(1,data.length)).toFixed(1);delete stats[f].total;if(stats[f].min===1e9)stats[f].min=0}
+ const samples=data.filter(x=>/大化の改新|承久の乱|応仁の乱|明治維新|日本国憲法/.test(x.event)).slice(0,8).map(x=>({id:x.id,date:x.date,event:x.event,note:map[Number(x.id)]}));
+ const result={version:'1.0.1',items:data.length,generated:Object.keys(map).length,curatedPackNotes:Object.keys(rich).length,fieldStats:stats,deepFactsUnder4:deepUnder,oldGenericCount:oldGeneric,supplementGenericDetails:supplementGeneric,failures:fail.slice(0,50),failureCount:fail.length,samples,pass:data.length>=1000&&Object.keys(map).length===data.length&&fail.length===0};
+ console.log('CHRONOLOGIA_DEEP_AUDIT '+JSON.stringify(result));if(!result.pass)process.exitCode=1;
+})().catch(e=>{console.error('CHRONOLOGIA_DEEP_AUDIT_ERROR',e);process.exitCode=1});
