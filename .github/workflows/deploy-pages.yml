@@ -3,10 +3,14 @@ name: Deploy AA Learning OS to GitHub Pages
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'PUBLIC_VERIFY_STATUS.txt'
+      - 'PAGES_RUN_STATUS.txt'
+      - 'PAGES_SOURCE_STATUS.txt'
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -80,6 +84,7 @@ jobs:
             --exclude='_site/' \
             --exclude='scripts/' \
             --exclude='*.md' \
+            --exclude='PUBLIC_VERIFY_STATUS.txt' \
             --exclude='PAGES_RUN_STATUS.txt' \
             --exclude='PAGES_SOURCE_STATUS.txt'
           touch _site/.nojekyll
@@ -114,3 +119,85 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Verify the actual public site
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          BASE="${PAGE_URL%/}/"
+          echo "Verifying public site: $BASE"
+
+          ok=0
+          for n in $(seq 1 24); do
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}release.json?verify=${SOURCE_SHA}-${n}" -o /tmp/release.json; then
+              if grep -q "${SOURCE_SHA}" /tmp/release.json; then
+                ok=1
+                break
+              fi
+            fi
+            echo "Public release has not reached ${SOURCE_SHA} yet (attempt ${n}/24)"
+            sleep 5
+          done
+          test "$ok" = 1
+
+          grep -q '"reviewVersion": "1.0.4"' /tmp/release.json
+          grep -q '"reviewCount": 3' /tmp/release.json
+          grep -q '"serviceWorkerVersion": "2.3.0-managed"' /tmp/release.json
+
+          curl -fsSL "${BASE}review/?verify=${SOURCE_SHA}" -o /tmp/review.html
+          grep -q 'Review v2' /tmp/review.html
+          grep -q "fetch('../review-bank-v1.js'" /tmp/review.html
+
+          curl -fsSL "${BASE}review-bank-v1.js?verify=${SOURCE_SHA}" -o /tmp/review-bank.js
+          grep -q "AA_REVIEW_BANK_VERSION='1.0.4'" /tmp/review-bank.js
+          grep -q 'en-comparative-than-any-other-singular-20260811' /tmp/review-bank.js
+          grep -q '比較級 + than any other + 単数名詞' /tmp/review-bank.js
+
+          curl -fsSL "${BASE}login-companion-v1.js?verify=${SOURCE_SHA}" -o /tmp/login-image.js
+          grep -q 'ZIPからまとめてインストール' /tmp/login-image.js
+          grep -q 'AALoginCompanion' /tmp/login-image.js
+          grep -q 'showDailyVisual' /tmp/login-image.js
+
+          curl -fsSL "${BASE}companion7-runtime.js?verify=${SOURCE_SHA}" -o /tmp/login-voice.js
+          grep -q 'setLoginVoices' /tmp/login-voice.js
+          grep -q 'setExplosionVoice' /tmp/login-voice.js
+          grep -q 'dailyPending' /tmp/login-voice.js
+
+          curl -fsSL "${BASE}sw.js?verify=${SOURCE_SHA}" -o /tmp/sw.js
+          grep -q "const VERSION='2.3.0-managed'" /tmp/sw.js
+          grep -q 'networkFirst' /tmp/sw.js
+
+          curl -fsSL "${BASE}diagnostics.html?verify=${SOURCE_SHA}" -o /tmp/diagnostics.html
+          grep -q 'AA Learning OS Diagnostics' /tmp/diagnostics.html
+          grep -q 'ログイン画像' /tmp/diagnostics.html
+          grep -q 'ログインボイス' /tmp/diagnostics.html
+
+          echo "PUBLIC_SITE_VERIFY_PASS source=${SOURCE_SHA} url=${BASE}"
+
+      - name: Record verified public release
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git fetch origin main
+          git checkout -B main origin/main
+          cat > PUBLIC_VERIFY_STATUS.txt <<EOF
+          result=success
+          source_sha=${SOURCE_SHA}
+          page_url=${PAGE_URL}
+          verified_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          review_version=1.0.4
+          review_count=3
+          service_worker_version=2.3.0-managed
+          checks=public-release,review-v2,review-bank,than-any-other,login-image,login-voice,service-worker,diagnostics
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add PUBLIC_VERIFY_STATUS.txt
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Record verified public Pages release"
+          git push origin main
