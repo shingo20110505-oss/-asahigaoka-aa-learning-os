@@ -55,6 +55,7 @@ jobs:
       - name: Verify final runtime before publish
         run: |
           node --check aa-companion-v2.js
+          node --check storage-resilience-v1.js
           node --check aa-companion-mobile-fix.js
           node --check companion-settings-only-guard-v1.js
           node --check voice-selftest-v1.js
@@ -62,6 +63,8 @@ jobs:
           node --check login-companion-v1.js
           node --check analytics-daily-v1.js
           node --check login-production-test-v1.js
+          node --check chronologia-v7-data-3.js
+          node --check chronologia-v7-data-4.js
           node --check curriculum-expansion-v24.js
           node --check source-quote-bank-v1.js
           node --check scripts/content-v24-audit.js
@@ -87,6 +90,7 @@ jobs:
           from pathlib import Path
           i=Path('index.html').read_text(encoding='utf-8')
           c=Path('aa-companion-v2.js').read_text(encoding='utf-8')
+          sr=Path('storage-resilience-v1.js').read_text(encoding='utf-8')
           m=Path('aa-companion-mobile-fix.js').read_text(encoding='utf-8')
           g=Path('companion-settings-only-guard-v1.js').read_text(encoding='utf-8')
           r=Path('companion7-runtime.js').read_text(encoding='utf-8')
@@ -108,6 +112,8 @@ jobs:
           assert "const APP_VERSION='2.2.9';" in i
           assert '7.5.1-analytics1' in i
           assert 'companion7-runtime.js?v=7.5.0-loginzip1' in c
+          assert 'storage-resilience-v1.js?v=1.0.0' in c
+          assert '__AA_STORAGE_RESILIENCE__' in sr and 'IndexedDB' in sr and 'legacy-pre-v2' in sr
           assert 'companion-settings-only-guard-v1.js?v=2.0.0' in c
           assert 'data-route="settings"' in g and 'button.active' in g and 'display:none!important' in g and "version:'2.0.0'" in g
           assert 'login-companion-v1.js?v=1.1.0' in m
@@ -121,6 +127,10 @@ jobs:
           assert 'ZIPからまとめてインストール' in l and 'importZip' in l and 'DecompressionStream' in l and 'AALoginCompanion' in l
           assert '日々の学習記録' in a and '直近30日の学習日' in a and 'recordStudyComplete' in a
           assert '今だけ本番演出を1回テスト' in t and "Math.max(.05" in t and 'USED_KEY' in t
+
+          # Storage resilience + current Chronologia 1000 compatibility guard.
+          assert 'storage-resilience-v1.js' in s and 'storage1' in s
+          assert 'chronologia-v7-data-3.js' in s and 'chronologia-v7-data-4.js' in s and 'chrono1000' in s
 
           # V24 five-subject expansion and source-quotation release guard.
           assert "version:'2.4.0'" in cx and 'AA_V24_CONTENT_STATS' in cx and 'totalNewRows' in cx
@@ -161,7 +171,7 @@ jobs:
           assert "const VERSION = '2.2.9';" in s
           assert 'examples2' in s and 'settingsguard2' in s and 'explanation-examples-v2.js' in s and 'companion-settings-only-guard-v1.js' in s
           assert 'quality1' in s and 'question-quality-v1.js' in s and 'prodtest1' in s
-          print('AA OS 2.2.9 / V24 five-subject expansion + source quotes + natural reading publish guard PASS')
+          print('AA OS 2.2.9 / storage resilience + Chronologia 1000 + V24 content publish guard PASS')
           PY
 
       - name: Upload Pages artifact
