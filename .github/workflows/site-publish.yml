@@ -16,12 +16,12 @@ jobs:
   validate-and-publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
+      - name: Checkout exact main commit
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.sha }}
           path: source
-          fetch-depth: 1
+          fetch-depth: 0
 
       - name: Validate review data and routing
         working-directory: source
@@ -48,57 +48,15 @@ jobs:
             node --check "$f"
           done
 
-      - name: Checkout public branch
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: public
-          fetch-depth: 1
+      - name: Publish the exact validated commit
+        working-directory: source
+        run: git push origin HEAD:refs/heads/gh-pages --force
 
-      - name: Mirror main runtime to gh-pages
-        env:
-          SOURCE_SHA: ${{ github.sha }}
+      - name: Verify branch identity
+        working-directory: source
         run: |
-          rsync -a --delete \
-            --exclude='.git/' \
-            --exclude='.github/' \
-            --exclude='scripts/' \
-            --exclude='*.md' \
-            source/ public/
-          touch public/.nojekyll
-
-          REVIEW_VERSION=$(grep -o "AA_REVIEW_BANK_VERSION='[^']*'" source/review-bank-v1.js | head -1 | cut -d"'" -f2)
-          REVIEW_COUNT=$(node - <<'NODE'
-          const fs=require('fs'),vm=require('vm');
-          const s={window:{}};vm.createContext(s);vm.runInContext(fs.readFileSync('source/review-bank-v1.js','utf8'),s);
-          process.stdout.write(String((s.window.AA_REVIEW_BANK||[]).length));
-          NODE
-          )
-          SW_VERSION=$(grep -o "const VERSION='[^']*'" source/sw.js | head -1 | cut -d"'" -f2)
-          PUBLISHED_AT=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
-          cat > public/release.json <<EOF
-          {
-            "sourceBranch": "main",
-            "sourceSha": "${SOURCE_SHA}",
-            "publishedAt": "${PUBLISHED_AT}",
-            "reviewVersion": "${REVIEW_VERSION}",
-            "reviewCount": ${REVIEW_COUNT},
-            "serviceWorkerVersion": "${SW_VERSION}",
-            "management": "main-is-source-of-truth"
-          }
-          EOF
-
-      - name: Publish gh-pages
-        working-directory: public
-        env:
-          SOURCE_SHA: ${{ github.sha }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if git diff --cached --quiet; then
-            echo "gh-pages is already synchronized"
-            exit 0
-          fi
-          git commit -m "Publish main ${SOURCE_SHA::7}"
-          git push origin gh-pages
+          LOCAL=$(git rev-parse HEAD)
+          REMOTE=$(git ls-remote origin refs/heads/gh-pages | awk '{print $1}')
+          echo "validated main: $LOCAL"
+          echo "published gh-pages: $REMOTE"
+          test "$LOCAL" = "$REMOTE"
