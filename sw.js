@@ -1,14 +1,15 @@
 'use strict';
 // difficulty1 compatibility marker; current release uses difficulty2 + challenge1.
 
-const VERSION = '2.2.9';
-const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-companion750-loginzip1-analytics1-explosionanalytics1-prodtest1-examples2-quality1-readingnatural3-settingsguard2-chrono1000-v24content1-quotes1-storage1-difficulty2-challenge1-glosstap1-answeraudio37-chronodeep3-chronocurated1000-v3`;
+const VERSION = '2.2.10';
+const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-companion750-loginzip1-analytics1-explosionanalytics1-prodtest1-examples2-quality1-readingnatural3-settingsguard2-chrono1000-v24content1-quotes1-storage1-difficulty2-challenge1-glosstap1-answeraudio37-chronodeep3-chronocurated1000-v3-vocabonly1`;
 const BASE = self.registration.scope;
 const APP_URL = new URL('./', BASE).href;
 const OFFLINE_URL = new URL('offline.html', BASE).href;
 const APP_SHELL = [
   APP_URL,
   new URL('index.html', BASE).href,
+  new URL('vocab.html', BASE).href,
   new URL('offline.html', BASE).href,
   new URL('manifest.webmanifest', BASE).href,
   new URL('learning-engine-v15.js', BASE).href,
