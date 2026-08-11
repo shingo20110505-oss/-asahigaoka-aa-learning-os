@@ -1,27 +1,62 @@
 (()=>{'use strict';
-if(window.__AA_ANSWER_FEEDBACK_AUDIO_V2__)return;window.__AA_ANSWER_FEEDBACK_AUDIO_V2__=true;
-window.__AA_ANSWER_FEEDBACK_AUDIO_V1__=true;window.__AA_EXERCISE_ANSWER_SOUND_V1__=true;
-const STATUS=window.AA_ANSWER_FEEDBACK_AUDIO={version:'2.0.0',installed:false,unlocked:false,correctPlays:0,wrongPlays:0,lastError:null};window.AA_EXERCISE_ANSWER_SOUND=STATUS;
-let audioCtx=null,unlocking=null;
+if(window.__AA_ANSWER_FEEDBACK_AUDIO_V3__)return;
+window.__AA_ANSWER_FEEDBACK_AUDIO_V3__=true;
+window.__AA_ANSWER_FEEDBACK_AUDIO_V2__=true;
+window.__AA_ANSWER_FEEDBACK_AUDIO_V1__=true;
+window.__AA_EXERCISE_ANSWER_SOUND_V1__=true;
+
+const PREF_KEY='aa-answer-feedback-audio-v3';
+const STATUS=window.AA_ANSWER_FEEDBACK_AUDIO={version:'3.0.0',installed:false,enabled:true,backend:'none',unlocked:false,correctPlays:0,wrongPlays:0,lastError:null,lastCue:null};
+window.AA_EXERCISE_ANSWER_SOUND=STATUS;
+let audioCtx=null,currentMedia=null,lastGestureCue=null,legacySuppressed=false;
+const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||((navigator.platform==='MacIntel')&&(navigator.maxTouchPoints>1));
 const errText=e=>e&&(`${e.name||'Error'}: ${e.message||String(e)}`);
+function loadPref(){try{const x=JSON.parse(localStorage.getItem(PREF_KEY)||'null');STATUS.enabled=x?.enabled!==false}catch(_){STATUS.enabled=true}}
+function savePref(){try{localStorage.setItem(PREF_KEY,JSON.stringify({enabled:STATUS.enabled,version:3}))}catch(_){}}
+loadPref();savePref();
+
+function currentQuestionSafe(){try{return typeof currentQ==='function'?currentQ():null}catch(_){return null}}
+function feedbackExists(){try{return !!state?.session?.feedback}catch(_){return false}}
+function syncLegacySetting(){try{if(typeof state!=='undefined'&&state?.ui&&state.ui.successFeedback===false){state.ui.successFeedback=true;typeof save==='function'&&save()}}catch(_){}}
+function suppressLegacyCore(attempt=0){
+ try{if(typeof playSuccessCue==='function'){playSuccessCue=function(){return true};legacySuppressed=true;STATUS.legacyCoreSuppressed=true;return true}}catch(_){}
+ if(attempt<160)setTimeout(()=>suppressLegacyCore(attempt+1),50);return false;
+}
+
 function getContext(){const C=window.AudioContext||window.webkitAudioContext;if(!C){STATUS.lastError='AudioContext unavailable';return null}try{audioCtx=audioCtx||new C();return audioCtx}catch(e){STATUS.lastError=errText(e);return null}}
 function silentPrime(c){try{const b=c.createBuffer(1,1,22050),s=c.createBufferSource(),g=c.createGain();g.gain.value=.000001;s.buffer=b;s.connect(g);g.connect(c.destination);s.start(0)}catch(_){}}
-function unlockAudio(){const c=getContext();if(!c)return Promise.resolve(null);if(c.state==='running'){STATUS.unlocked=true;return Promise.resolve(c)}if(unlocking)return unlocking;try{silentPrime(c);const r=c.resume?.();unlocking=Promise.resolve(r).catch(e=>{STATUS.lastError=errText(e)}).then(()=>{silentPrime(c);STATUS.unlocked=c.state==='running';unlocking=null;return c});return unlocking}catch(e){STATUS.lastError=errText(e);unlocking=null;return Promise.resolve(c)}}
-function arm(){unlockAudio()}
-for(const ev of ['pointerdown','touchstart','mousedown','keydown'])document.addEventListener(ev,arm,{capture:true,passive:true});
-function currentQuestionSafe(){try{return typeof currentQ==='function'?currentQ():null}catch(_){return null}}
-function enabled(){try{return state?.ui?.successFeedback!==false&&!document.hidden}catch(_){return false}}
-function note(ctx,master,frequency,at,duration,type='sine',peak=.75){const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type=type;osc.frequency.setValueAtTime(frequency,at);gain.gain.setValueAtTime(.0001,at);gain.gain.exponentialRampToValueAtTime(peak,at+.010);gain.gain.exponentialRampToValueAtTime(.0001,at+duration);osc.connect(gain);gain.connect(master);osc.start(at);osc.stop(at+duration+.025)}
-function flash(correct){try{let el=document.getElementById('aa-answer-flash');if(!el){el=document.createElement('div');el.id='aa-answer-flash';Object.assign(el.style,{position:'fixed',inset:'0',zIndex:'9998',pointerEvents:'none',opacity:'0',transition:'opacity .16s ease',border:'5px solid transparent',borderRadius:'18px'});document.body.appendChild(el)}el.style.borderColor=correct?'rgba(23,122,75,.50)':'rgba(186,45,45,.48)';el.style.opacity='.82';clearTimeout(window.__aaAnswerFlashTimer);window.__aaAnswerFlashTimer=setTimeout(()=>{el.style.opacity='0'},150)}catch(_){}}
-function scheduleCue(correct,c){if(!c||c.state!=='running')return false;try{const t=c.currentTime+.004,master=c.createGain();master.gain.setValueAtTime(.0001,t);master.gain.exponentialRampToValueAtTime(correct?.075:.065,t+.012);master.gain.exponentialRampToValueAtTime(.0001,t+(correct?.38:.31));master.connect(c.destination);if(correct){note(c,master,659.25,t,.16,'sine',.78);note(c,master,783.99,t+.064,.17,'sine',.73);note(c,master,1046.50,t+.132,.19,'sine',.68);STATUS.correctPlays++;STATUS.correctCount=STATUS.correctPlays}else{note(c,master,277.18,t,.17,'triangle',.70);note(c,master,207.65,t+.092,.20,'triangle',.64);STATUS.wrongPlays++;STATUS.wrongCount=STATUS.wrongPlays}flash(correct);STATUS.unlocked=true;return true}catch(e){STATUS.lastError=errText(e);return false}}
-function playCue(correct){if(!enabled())return false;const c=getContext();if(!c)return false;if(c.state==='running')return scheduleCue(correct,c);unlockAudio().then(x=>{if(x?.state==='running')scheduleCue(correct,x)});return true}
-function correctCue(){return playCue(true)}function wrongCue(){return playCue(false)}
-function patchSettings(){if(typeof settingsHTML!=='function'||settingsHTML.__aaAnswerAudioV2Patched)return;const before=settingsHTML;settingsHTML=function(){let html=before();html=html.replace('正解時のフィードバック','正解・不正解の音演出').replace('通常演習で正解したときだけ、約0.2秒の小さな音と控えめな視覚表示を出します。入試対策テスト中は鳴りません。','問題に答えた瞬間、正解は明るい上昇音、不正解は短い下降音で知らせます。iPhoneのホーム画面版でも、最初のタップで音声を有効化します。').replace('成功音と演出 ','解答音と演出 ');return html};settingsHTML.__aaAnswerAudioV2Patched=true}
-function install(attempt=0){if(typeof selectAnswer!=='function'||typeof playSuccessCue!=='function'||typeof state==='undefined'){if(attempt<140)setTimeout(()=>install(attempt+1),50);return}if(selectAnswer.__aaAnswerAudioV2Patched){STATUS.installed=true;return}
- playSuccessCue=correctCue;
- const before=selectAnswer;selectAnswer=function(idx){const q=currentQuestionSafe(),hadFeedback=!!state?.session?.feedback,correct=!!q&&Number(idx)===Number(q.answerIndex);if(!hadFeedback&&!correct)wrongCue();const out=before(idx);return out};selectAnswer.__aaAnswerAudioV2Patched=true;
- patchSettings();STATUS.installed=true;STATUS.playCorrect=correctCue;STATUS.playWrong=wrongCue;STATUS.unlock=unlockAudio;
- try{if(state?.route==='settings'&&typeof render==='function')render()}catch(_){ }
+function unlockWebAudio(){const c=getContext();if(!c)return Promise.resolve(null);try{silentPrime(c);const p=c.state==='running'?Promise.resolve():Promise.resolve(c.resume?.());return p.catch(e=>{STATUS.lastError=errText(e)}).then(()=>{silentPrime(c);STATUS.unlocked=c.state==='running';return c})}catch(e){STATUS.lastError=errText(e);return Promise.resolve(c)}}
+function webNote(ctx,master,f,at,duration,type='sine',peak=.75){const o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.setValueAtTime(f,at);g.gain.setValueAtTime(.0001,at);g.gain.exponentialRampToValueAtTime(peak,at+.008);g.gain.exponentialRampToValueAtTime(.0001,at+duration);o.connect(g);g.connect(master);o.start(at);o.stop(at+duration+.02)}
+function playWeb(correct){const c=getContext();if(!c)return Promise.resolve(false);const run=()=>{if(c.state!=='running')return false;try{const t=c.currentTime+.003,m=c.createGain();m.gain.setValueAtTime(.0001,t);m.gain.exponentialRampToValueAtTime(correct?.12:.105,t+.01);m.gain.exponentialRampToValueAtTime(.0001,t+(correct?.38:.32));m.connect(c.destination);if(correct){webNote(c,m,659.25,t,.16,'sine',.82);webNote(c,m,783.99,t+.065,.17,'sine',.77);webNote(c,m,1046.5,t+.135,.19,'sine',.70)}else{webNote(c,m,277.18,t,.17,'triangle',.78);webNote(c,m,207.65,t+.09,.21,'triangle',.70)}STATUS.backend='webaudio';STATUS.unlocked=true;return true}catch(e){STATUS.lastError=errText(e);return false}};if(c.state==='running')return Promise.resolve(run());return unlockWebAudio().then(run)}
+
+function makeWav(correct){
+ const sr=16000,dur=correct?.34:.30,n=Math.floor(sr*dur),data=new Int16Array(n),seg=correct?[[0,.11,659.25],[.07,.20,783.99],[.14,.34,1046.5]]:[[0,.17,277.18],[.09,.30,207.65]];
+ for(let i=0;i<n;i++){const t=i/sr;let v=0;for(const [a,b,f] of seg){if(t<a||t>b)continue;const x=(t-a)/(b-a),env=Math.sin(Math.PI*Math.min(1,Math.max(0,x)));v+=Math.sin(2*Math.PI*f*t)*env}v=Math.max(-1,Math.min(1,v*(correct?.34:.38)));data[i]=Math.round(v*32767)}
+ const buf=new ArrayBuffer(44+n*2),dv=new DataView(buf);const str=(o,s)=>{for(let i=0;i<s.length;i++)dv.setUint8(o+i,s.charCodeAt(i))};str(0,'RIFF');dv.setUint32(4,36+n*2,true);str(8,'WAVE');str(12,'fmt ');dv.setUint32(16,16,true);dv.setUint16(20,1,true);dv.setUint16(22,1,true);dv.setUint32(24,sr,true);dv.setUint32(28,sr*2,true);dv.setUint16(32,2,true);dv.setUint16(34,16,true);str(36,'data');dv.setUint32(40,n*2,true);for(let i=0;i<n;i++)dv.setInt16(44+i*2,data[i],true);return new Blob([buf],{type:'audio/wav'})
 }
-install();
+const media={correct:null,wrong:null,urls:[]};
+function mediaEl(correct){const k=correct?'correct':'wrong';if(media[k])return media[k];try{const url=URL.createObjectURL(makeWav(correct)),a=new Audio(url);a.preload='auto';a.playsInline=true;a.volume=1;media.urls.push(url);media[k]=a;return a}catch(e){STATUS.lastError=errText(e);return null}}
+function playMedia(correct){const a=mediaEl(correct);if(!a)return Promise.resolve(false);try{if(currentMedia&&currentMedia!==a){currentMedia.pause();currentMedia.currentTime=0}currentMedia=a;a.pause();a.currentTime=0;a.volume=1;const p=a.play();return Promise.resolve(p).then(()=>{STATUS.backend='htmlaudio';STATUS.unlocked=true;return true}).catch(e=>{STATUS.lastError=errText(e);return false})}catch(e){STATUS.lastError=errText(e);return Promise.resolve(false)}}
+function primeOnGesture(){syncLegacySetting();mediaEl(true);mediaEl(false);unlockWebAudio();}
+for(const ev of ['pointerdown','touchstart','keydown'])document.addEventListener(ev,primeOnGesture,{capture:true,passive:true});
+
+function flash(correct){try{let el=document.getElementById('aa-answer-flash');if(!el){el=document.createElement('div');el.id='aa-answer-flash';Object.assign(el.style,{position:'fixed',inset:'0',zIndex:'9998',pointerEvents:'none',opacity:'0',transition:'opacity .14s ease',border:'6px solid transparent',borderRadius:'18px'});document.body.appendChild(el)}el.style.borderColor=correct?'rgba(23,122,75,.58)':'rgba(186,45,45,.55)';el.style.opacity='.9';clearTimeout(window.__aaAnswerFlashTimer);window.__aaAnswerFlashTimer=setTimeout(()=>{el.style.opacity='0'},145)}catch(_){}}
+function recordCue(correct){if(correct)STATUS.correctPlays++;else STATUS.wrongPlays++;STATUS.correctCount=STATUS.correctPlays;STATUS.wrongCount=STATUS.wrongPlays;STATUS.lastCue={correct,at:Date.now(),backend:STATUS.backend};refreshSettingsDOM()}
+function playCue(correct){if(!STATUS.enabled)return false;flash(correct);const first=isIOS?playMedia(correct):playWeb(correct);Promise.resolve(first).then(ok=>ok?true:(isIOS?playWeb(correct):playMedia(correct))).then(ok=>{if(ok)recordCue(correct);else refreshSettingsDOM()});return true}
+
+function answerFromClick(btn){const q=currentQuestionSafe();if(!q||feedbackExists())return null;const idx=Number(btn.dataset.index);if(!Number.isFinite(idx))return null;return{correct:idx===Number(q.answerIndex),questionId:q.id||null}}
+function onClickCapture(e){
+ const test=e.target.closest?.('[data-aa-answer-audio-test]');if(test){e.preventDefault();e.stopImmediatePropagation();primeOnGesture();playCue(test.dataset.aaAnswerAudioTest==='correct');return}
+ const toggle=e.target.closest?.('[data-action="success-feedback"],[data-aa-answer-audio-toggle]');if(toggle){e.preventDefault();e.stopImmediatePropagation();STATUS.enabled=!STATUS.enabled;savePref();syncLegacySetting();refreshSettingsDOM();return}
+ const btn=e.target.closest?.('[data-action="answer"]');if(btn){const x=answerFromClick(btn);if(x){lastGestureCue={...x,at:performance.now()};playCue(x.correct)}return}
+ const dk=e.target.closest?.('[data-action="diag-dontknow"]');if(dk&&!feedbackExists()){lastGestureCue={correct:false,questionId:currentQuestionSafe()?.id||null,at:performance.now()};playCue(false)}
+}
+document.addEventListener('click',onClickCapture,true);
+document.addEventListener('aa:answer',e=>{const d=e.detail||{},now=performance.now();if(lastGestureCue&&now-lastGestureCue.at<900&&(lastGestureCue.questionId==null||d.questionId==null||lastGestureCue.questionId===d.questionId))return;playCue(!!d.correct)});
+
+function statusText(){const ctx=audioCtx?.state||'未作成',err=STATUS.lastError?` ／ ${STATUS.lastError}`:'';return `状態：${STATUS.enabled?'ON':'OFF'} ／ iPhone互換：${isIOS?'ON':'通常'} ／ AudioContext：${ctx} ／ 最終方式：${STATUS.backend}${err}`}
+function refreshSettingsDOM(){
+ try{const b=document.querySelector('[data-action="success-feedback"]');if(!b)return;const card=b.closest('section.card')||b.parentElement;if(!card)return;const h=card.querySelector('.h3');if(h)h.textContent='正解・不正解の音演出';const p=card.querySelector('p.sub');if(p)p.textContent='旧システムの成功音とは分離し、正解・不正解を独立した音で知らせます。iPhoneではHTML Audioを優先し、Web Audioへ自動フォールバックします。';b.textContent=`解答音 ${STATUS.enabled?'ON':'OFF'}`;let box=card.querySelector('[data-aa-answer-audio-tools]');if(!box){box=document.createElement('div');box.dataset.aaAnswerAudioTools='';box.innerHTML='<div class="actions" style="margin-top:10px"><button class="btn soft" type="button" data-aa-answer-audio-test="correct">正解音を試す</button><button class="btn ghost" type="button" data-aa-answer-audio-test="wrong">不正解音を試す</button></div><div class="tiny" data-aa-answer-audio-status style="margin-top:8px"></div>';card.appendChild(box)}const s=card.querySelector('[data-aa-answer-audio-status]');if(s)s.textContent=statusText()}catch(_){}}
+const mo=new MutationObserver(refreshSettingsDOM);function start(){syncLegacySetting();suppressLegacyCore();refreshSettingsDOM();if(document.body)mo.observe(document.body,{childList:true,subtree:true});STATUS.installed=true;STATUS.playCorrect=()=>playCue(true);STATUS.playWrong=()=>playCue(false);STATUS.unlock=primeOnGesture;STATUS.setEnabled=v=>{STATUS.enabled=!!v;savePref();refreshSettingsDOM();return STATUS.enabled};STATUS.diagnose=()=>({version:STATUS.version,enabled:STATUS.enabled,isIOS,audioContext:audioCtx?.state||'none',backend:STATUS.backend,legacySuppressed,lastError:STATUS.lastError,correctPlays:STATUS.correctPlays,wrongPlays:STATUS.wrongPlays})}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
