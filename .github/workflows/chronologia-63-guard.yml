@@ -1,4 +1,4 @@
-name: Chronologia 6.3 Companion Guard
+name: Chronologia 1000 Guard
 
 on:
   push:
@@ -6,6 +6,8 @@ on:
       - 'chronologia.html'
       - 'chronologia-daily-companion.js'
       - 'chronologia-live-companion.js'
+      - 'chronologia-force1000-v1.js'
+      - 'learning-engine-v22.js'
       - 'sw.js'
       - '.chronologia-63-trigger'
   workflow_dispatch:
@@ -21,28 +23,26 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Restore and wire Chronologia 6.3.1
+      - name: Wire Chronologia 1000 into AA Learning OS
         shell: python
         run: |
           from pathlib import Path
-          import re, subprocess
+          import re
 
           root = Path('.')
           html_p = root / 'chronologia.html'
+          main_p = root / 'learning-engine-v22.js'
           daily_p = root / 'chronologia-daily-companion.js'
           live_p = root / 'chronologia-live-companion.js'
+          force_p = root / 'chronologia-force1000-v1.js'
           sw_p = root / 'sw.js'
 
-          if not daily_p.exists():
-              daily_p.write_bytes(subprocess.check_output([
-                  'git','show','7899cf406a52bb4182b5c2b886daae563980af6d:chronologia-daily-companion.js'
-              ]))
+          required = [html_p, main_p, daily_p, live_p, force_p, sw_p]
+          missing = [str(p) for p in required if not p.exists()]
+          if missing:
+              raise SystemExit('Missing required files: ' + ', '.join(missing))
 
-          if not live_p.exists():
-              live_p.write_bytes(subprocess.check_output([
-                  'git','show','83b8456a8758e54b7c7b801b666c064969fe3e0c:chronologia-live-companion.js'
-              ]))
-
+          # Keep the voice-expression bridge intact.
           daily = daily_p.read_text(encoding='utf-8')
           if "new CustomEvent('chronologia:voice'" not in daily:
               daily = daily.replace(
@@ -54,63 +54,72 @@ jobs:
           live = live_p.read_text(encoding='utf-8')
           if "document.addEventListener('chronologia:voice'" not in live:
               raise SystemExit('live companion lost voice-expression bridge')
-          live_p.write_text(live, encoding='utf-8')
 
+          # Main practice page: show the real current chronology, not the legacy 385-item label.
+          main = main_p.read_text(encoding='utf-8')
+          main = main.replace('CHRONOLOGIA 6.1', 'CHRONOLOGIA 6.3.1')
+          main = main.replace('385件の統合年表', '1000件の統合年表')
+          main_p.write_text(main, encoding='utf-8')
+
+          # Standalone chronology: always load the 1000-item recovery/merge layer once.
           html = html_p.read_text(encoding='utf-8')
-          html = re.sub(r'<title>Chronologia\s+6\.\d+(?:\.\d+)?', '<title>Chronologia 6.3', html, count=1)
+          html = re.sub(r'<title>Chronologia\s+6\.\d+(?:\.\d+)?', '<title>Chronologia 6.3.1', html, count=1)
           html = re.sub(r'const VERSION\s*=\s*[\"\']6\.\d+(?:\.\d+)?[\"\'];', 'const VERSION = "6.3.1";', html, count=1)
-          html = re.sub(r'\s*<!-- CHRONOLOGIA-DAILY-COMPANION-LOADER -->\s*', '\n', html)
-          html = re.sub(r'\s*<!-- CHRONOLOGIA-LIVE-COMPANION-LOADER -->\s*', '\n', html)
-          html = re.sub(r'\s*<script\s+src=[\"\']\./chronologia-daily-companion\.js(?:\?[^\"\']*)?[\"\']></script>\s*', '\n', html)
-          html = re.sub(r'\s*<script\s+src=[\"\']\./chronologia-live-companion\.js(?:\?[^\"\']*)?[\"\']></script>\s*', '\n', html)
-          loader = '''\n<!-- CHRONOLOGIA-DAILY-COMPANION-LOADER -->\n<script src="./chronologia-daily-companion.js?v=6.3.1"></script>\n<!-- CHRONOLOGIA-LIVE-COMPANION-LOADER -->\n<script src="./chronologia-live-companion.js?v=6.3.1"></script>\n'''
-          pos = html.rfind('</body>')
-          if pos < 0:
-              raise SystemExit('chronologia.html has no </body>')
-          html = html[:pos] + loader + html[pos:]
+          html = re.sub(r'\s*<!-- CHRONOLOGIA-FORCE1000-LOADER -->\s*', '\n', html)
+          html = re.sub(r'\s*<script\s+src=[\"\']\./chronologia-force1000-v1\.js(?:\?[^\"\']*)?[\"\']></script>\s*', '\n', html)
+          force_loader = '\n<!-- CHRONOLOGIA-FORCE1000-LOADER -->\n<script src="./chronologia-force1000-v1.js?v=20260812a"></script>\n'
+          marker = '<!-- CHRONOLOGIA-DAILY-COMPANION-LOADER -->'
+          if marker in html:
+              html = html.replace(marker, force_loader + marker, 1)
+          else:
+              pos = html.rfind('</body>')
+              if pos < 0:
+                  raise SystemExit('chronologia.html has no </body>')
+              html = html[:pos] + force_loader + html[pos:]
           html_p.write_text(html, encoding='utf-8')
 
-          # Preserve the AA OS app version while using a new cache generation for Chronologia 6.3.1.
+          # Force installed PWAs to take a fresh cache generation and keep Chronologia 1000 offline-ready.
           sw = sw_p.read_text(encoding='utf-8')
-          sw = re.sub(r"const VERSION = '[^']+';", "const VERSION = '2.2.7';", sw, count=1)
-          sw = re.sub(r"const CACHE_NAME = `asahigaoka-aa-os-\$\{VERSION\}[^`]*`;", "const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-c631`;", sw, count=1)
-          for asset in ['chronologia-daily-companion.js','chronologia-live-companion.js']:
-              needle = f"new URL('{asset}', BASE).href,"
-              if needle not in sw:
-                  anchor = "new URL('chronologia.html', BASE).href,"
-                  sw = sw.replace(anchor, anchor + '\n  ' + needle, 1)
+          sw = re.sub(r"const VERSION\s*=\s*['\"][^'\"]+['\"];", "const VERSION='2.3.3-chronologia1000';", sw, count=1)
+          assets = [
+              'chronologia.html','chronologia-force1000-v1.js',
+              'chronologia-v7-data-1.js','chronologia-v7-data-2a.js','chronologia-v7-data-2b.js',
+              'chronologia-v7-data-3.js','chronologia-v7-data-4.js','chronologia-v7-overrides.js',
+              'chronologia-curated-001-050.js','chronologia-curated-051-100.js','chronologia-curated-101-149.js',
+              'chronologia-curated-150.js','chronologia-curated-151-200.js','chronologia-curated-201-250.js',
+              'chronologia-curated-251-300.js','chronologia-curated-301-350.js','chronologia-curated-351-400.js',
+              'chronologia-curated-401-450.js','chronologia-curated-451-500.js','chronologia-curated-501-600.js',
+              'chronologia-curated-601-700.js','chronologia-curated-701-800.js','chronologia-curated-801-900.js',
+              'chronologia-curated-901-1000.js','chronologia-curated-final-fixes.js',
+              'chronologia-daily-companion.js','chronologia-live-companion.js'
+          ]
+          anchor = "  url('manifest.webmanifest'),\n"
+          if anchor not in sw:
+              raise SystemExit('service worker CORE anchor not found')
+          missing_assets = [a for a in assets if f"url('{a}')" not in sw]
+          if missing_assets:
+              block = ''.join(f"  url('{a}'),\n" for a in missing_assets)
+              sw = sw.replace(anchor, anchor + block, 1)
           sw_p.write_text(sw, encoding='utf-8')
 
-          readme = root / 'README.md'
-          if readme.exists():
-              s = readme.read_text(encoding='utf-8')
-              s = s.replace('Chronologia 6.1完全版', 'Chronologia 6.3完全版')
-              s = s.replace('Chronologia 6.1歴史年表', 'Chronologia 6.3歴史年表')
-              readme.write_text(s, encoding='utf-8')
-
-      - name: Verify integrated build
+      - name: Verify Chronologia 1000 integration
         shell: python
         run: |
           from pathlib import Path
           h=Path('chronologia.html').read_text(encoding='utf-8')
-          d=Path('chronologia-daily-companion.js').read_text(encoding='utf-8')
-          l=Path('chronologia-live-companion.js').read_text(encoding='utf-8')
+          m=Path('learning-engine-v22.js').read_text(encoding='utf-8')
+          f=Path('chronologia-force1000-v1.js').read_text(encoding='utf-8')
           s=Path('sw.js').read_text(encoding='utf-8')
           checks={
-            'title 6.3':'<title>Chronologia 6.3' in h,
-            'version 6.3.1':'const VERSION = "6.3.1";' in h,
-            'daily loader once':h.count('chronologia-daily-companion.js?v=6.3.1')==1 and h.count('chronologia-daily-companion.js')==1,
-            'live loader once':h.count('chronologia-live-companion.js?v=6.3.1')==1 and h.count('chronologia-live-companion.js')==1,
-            'daily engine':"const DAILY_KEY='chronologia-daily-v2'" in d,
-            '30 voices':"finish_02.mp3" in d and "wrong_01.mp3" in d,
-            'voice bridge':"chronologia:voice" in d and "chronologia:voice" in l,
-            '12 expressions':"12_rare.png" in l and "01_normal.png" in l,
-            'layer engine':"cc-head" in l and "cc-eyes" in l and "cc-mouth-layer" in l,
-            'real audio analyser':"createAnalyser" in l and "getByteTimeDomainData" in l,
-            'PWA daily cache':"chronologia-daily-companion.js" in s,
-            'PWA live cache':"chronologia-live-companion.js" in s,
-            'AA app version preserved':"const VERSION = '2.2.7';" in s,
-            'fresh cache generation':'c631' in s,
+            'main card version':'CHRONOLOGIA 6.3.1' in m,
+            'main card count':'1000件の統合年表' in m and '385件の統合年表' not in m,
+            'force1000 loader once':h.count('chronologia-force1000-v1.js?v=20260812a')==1,
+            'force1000 target':"if(current>=1000)" in f and 'chronologia-curated-901-1000.js' in f,
+            'page version':'const VERSION = "6.3.1";' in h,
+            'fresh PWA cache':"const VERSION='2.3.3-chronologia1000';" in s,
+            'PWA chronology page':"url('chronologia.html')" in s,
+            'PWA force loader':"url('chronologia-force1000-v1.js')" in s,
+            'PWA last pack':"url('chronologia-curated-901-1000.js')" in s,
           }
           failed=[k for k,v in checks.items() if not v]
           for k,v in checks.items(): print(('PASS' if v else 'FAIL'), k)
@@ -120,10 +129,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add chronologia.html chronologia-daily-companion.js chronologia-live-companion.js sw.js README.md
+          git add chronologia.html learning-engine-v22.js chronologia-daily-companion.js sw.js
           if git diff --cached --quiet; then
-            echo "Chronologia 6.3.1 already complete"
+            echo "Chronologia 1000 integration already current"
             exit 0
           fi
-          git commit -m "Complete Chronologia 6.3.1 layered companion integration"
+          git commit -m "Wire Chronologia 1000 into practice page and PWA"
           git push
