@@ -53,6 +53,8 @@ jobs:
             review-page-v1.js \
             storage-resilience-v1.js \
             answer-feedback-audio-v1.js \
+            v23-loader.js \
+            quality-repair-v1.js \
             sw.js; do
             node --check "$f"
           done
@@ -69,8 +71,12 @@ jobs:
           grep -q 'ZIPからまとめてインストール' login-companion-v1.js
           grep -q 'setLoginVoices' companion7-runtime.js
           grep -q 'setExplosionVoice' companion7-runtime.js
+          grep -q 'quality-repair-v1.js' v23-loader.js
+          grep -q 'window.__AA_QUALITY_REPAIR_V1__' quality-repair-v1.js
+          grep -q '筆者の中心的な主張' quality-repair-v1.js
           grep -q "const VERSION='" sw.js
           grep -q "url('mobile-layout-guard-v1.js')" sw.js
+          grep -q "url('quality-repair-v1.js')" sw.js
           test -f review/index.html
           test -f diagnostics.html
 
@@ -90,6 +96,7 @@ jobs:
           REVIEW_SHA256=$(sha256sum review-bank-v1.js | awk '{print $1}')
           SW_VERSION=$(grep -o "const VERSION='[^']*'" sw.js | head -1 | cut -d"'" -f2)
           LAYOUT_SHA256=$(sha256sum mobile-layout-guard-v1.js | awk '{print $1}')
+          QUALITY_REPAIR_SHA256=$(sha256sum quality-repair-v1.js | awk '{print $1}')
           cat > release.json <<EOF
           {
             "sourceBranch": "main",
@@ -100,6 +107,7 @@ jobs:
             "reviewSha256": "${REVIEW_SHA256}",
             "serviceWorkerVersion": "${SW_VERSION}",
             "mobileLayoutGuardSha256": "${LAYOUT_SHA256}",
+            "qualityRepairSha256": "${QUALITY_REPAIR_SHA256}",
             "management": "validated-main-direct-to-pages"
           }
           EOF
@@ -135,6 +143,7 @@ jobs:
           EXPECTED_REVIEW_SHA256=$(sha256sum review-bank-v1.js | awk '{print $1}')
           EXPECTED_SW_VERSION=$(grep -o "const VERSION='[^']*'" sw.js | head -1 | cut -d"'" -f2)
           EXPECTED_LAYOUT_SHA256=$(sha256sum mobile-layout-guard-v1.js | awk '{print $1}')
+          EXPECTED_QUALITY_REPAIR_SHA256=$(sha256sum quality-repair-v1.js | awk '{print $1}')
 
           stage release-json-await
           ok=0
@@ -153,6 +162,7 @@ jobs:
           grep -q "\"reviewSha256\": \"${EXPECTED_REVIEW_SHA256}\"" /tmp/release.json
           grep -q "\"serviceWorkerVersion\": \"${EXPECTED_SW_VERSION}\"" /tmp/release.json
           grep -q "\"mobileLayoutGuardSha256\": \"${EXPECTED_LAYOUT_SHA256}\"" /tmp/release.json
+          grep -q "\"qualityRepairSha256\": \"${EXPECTED_QUALITY_REPAIR_SHA256}\"" /tmp/release.json
 
           stage review-ui
           curl -fsSL "${BASE}review/?verify=${SOURCE_SHA}" -o /tmp/review.html
@@ -173,6 +183,16 @@ jobs:
           grep -q 'body>.nav' /tmp/layout-guard.js
           grep -q 'document.body.appendChild(fresh)' /tmp/layout-guard.js
 
+          stage quality-repair
+          curl -fsSL "${BASE}quality-repair-v1.js?verify=${SOURCE_SHA}" -o /tmp/quality-repair.js
+          ACTUAL_QUALITY_REPAIR_SHA256=$(sha256sum /tmp/quality-repair.js | awk '{print $1}')
+          test "$ACTUAL_QUALITY_REPAIR_SHA256" = "$EXPECTED_QUALITY_REPAIR_SHA256"
+          grep -q 'window.__AA_QUALITY_REPAIR_V1__' /tmp/quality-repair.js
+          grep -q 'function buildCloze' /tmp/quality-repair.js
+          grep -q '筆者の中心的な主張' /tmp/quality-repair.js
+          curl -fsSL "${BASE}v23-loader.js?verify=${SOURCE_SHA}" -o /tmp/v23-loader.js
+          grep -q 'quality-repair-v1.js' /tmp/v23-loader.js
+
           stage login-image
           curl -fsSL "${BASE}login-companion-v1.js?verify=${SOURCE_SHA}" -o /tmp/login-image.js
           grep -q 'ZIPからまとめてインストール' /tmp/login-image.js
@@ -188,6 +208,7 @@ jobs:
           curl -fsSL "${BASE}sw.js?verify=${SOURCE_SHA}" -o /tmp/sw.js
           grep -q "const VERSION='${EXPECTED_SW_VERSION}'" /tmp/sw.js
           grep -q "url('mobile-layout-guard-v1.js')" /tmp/sw.js
+          grep -q "url('quality-repair-v1.js')" /tmp/sw.js
           grep -q 'networkFirst' /tmp/sw.js
 
           stage diagnostics
@@ -215,6 +236,7 @@ jobs:
           REVIEW_SHA256=$(sha256sum review-bank-v1.js | awk '{print $1}')
           SW_VERSION=$(grep -o "const VERSION='[^']*'" sw.js | head -1 | cut -d"'" -f2)
           LAYOUT_SHA256=$(sha256sum mobile-layout-guard-v1.js | awk '{print $1}')
+          QUALITY_REPAIR_SHA256=$(sha256sum quality-repair-v1.js | awk '{print $1}')
           git fetch origin main
           git checkout -B main origin/main
           cat > PUBLIC_VERIFY_STATUS.txt <<EOF
@@ -227,7 +249,8 @@ jobs:
           review_sha256=${REVIEW_SHA256}
           service_worker_version=${SW_VERSION}
           mobile_layout_guard_sha256=${LAYOUT_SHA256}
-          checks=public-release,review-v2,review-bank-exact-hash,mobile-layout-exact-hash,login-image,login-voice,service-worker,diagnostics
+          quality_repair_sha256=${QUALITY_REPAIR_SHA256}
+          checks=public-release,review-v2,review-bank-exact-hash,mobile-layout-exact-hash,quality-repair-exact-hash,login-image,login-voice,service-worker,diagnostics
           EOF
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
