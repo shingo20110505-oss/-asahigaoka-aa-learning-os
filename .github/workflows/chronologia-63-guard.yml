@@ -42,7 +42,6 @@ jobs:
           if missing:
               raise SystemExit('Missing required files: ' + ', '.join(missing))
 
-          # Keep the voice-expression bridge intact.
           daily = daily_p.read_text(encoding='utf-8')
           if "new CustomEvent('chronologia:voice'" not in daily:
               daily = daily.replace(
@@ -55,13 +54,11 @@ jobs:
           if "document.addEventListener('chronologia:voice'" not in live:
               raise SystemExit('live companion lost voice-expression bridge')
 
-          # Main practice page: show the real current chronology, not the legacy 385-item label.
           main = main_p.read_text(encoding='utf-8')
           main = main.replace('CHRONOLOGIA 6.1', 'CHRONOLOGIA 6.3.1')
           main = main.replace('385件の統合年表', '1000件の統合年表')
           main_p.write_text(main, encoding='utf-8')
 
-          # Standalone chronology: always load the 1000-item recovery/merge layer once.
           html = html_p.read_text(encoding='utf-8')
           html = re.sub(r'<title>Chronologia\s+6\.\d+(?:\.\d+)?', '<title>Chronologia 6.3.1', html, count=1)
           html = re.sub(r'const VERSION\s*=\s*[\"\']6\.\d+(?:\.\d+)?[\"\'];', 'const VERSION = "6.3.1";', html, count=1)
@@ -78,9 +75,9 @@ jobs:
               html = html[:pos] + force_loader + html[pos:]
           html_p.write_text(html, encoding='utf-8')
 
-          # Force installed PWAs to take a fresh cache generation and keep Chronologia 1000 offline-ready.
+          # One shared cache generation for Chronologia + learning-quality repairs.
           sw = sw_p.read_text(encoding='utf-8')
-          sw = re.sub(r"const VERSION\s*=\s*['\"][^'\"]+['\"];", "const VERSION='2.3.3-chronologia1000';", sw, count=1)
+          sw = re.sub(r"const VERSION\s*=\s*['\"][^'\"]+['\"];", "const VERSION='2.3.5-quality-chronologia1000';", sw, count=1)
           assets = [
               'chronologia.html','chronologia-force1000-v1.js',
               'chronologia-v7-data-1.js','chronologia-v7-data-2a.js','chronologia-v7-data-2b.js',
@@ -91,7 +88,8 @@ jobs:
               'chronologia-curated-401-450.js','chronologia-curated-451-500.js','chronologia-curated-501-600.js',
               'chronologia-curated-601-700.js','chronologia-curated-701-800.js','chronologia-curated-801-900.js',
               'chronologia-curated-901-1000.js','chronologia-curated-final-fixes.js',
-              'chronologia-daily-companion.js','chronologia-live-companion.js'
+              'chronologia-daily-companion.js','chronologia-live-companion.js',
+              'v23-loader.js','quality-repair-v1.js','quality-ci-runner-v1.js'
           ]
           anchor = "  url('manifest.webmanifest'),\n"
           if anchor not in sw:
@@ -116,10 +114,12 @@ jobs:
             'force1000 loader once':h.count('chronologia-force1000-v1.js?v=20260812a')==1,
             'force1000 target':"if(current>=1000)" in f and 'chronologia-curated-901-1000.js' in f,
             'page version':'const VERSION = "6.3.1";' in h,
-            'fresh PWA cache':"const VERSION='2.3.3-chronologia1000';" in s,
+            'shared fresh PWA cache':"const VERSION='2.3.5-quality-chronologia1000';" in s,
             'PWA chronology page':"url('chronologia.html')" in s,
             'PWA force loader':"url('chronologia-force1000-v1.js')" in s,
             'PWA last pack':"url('chronologia-curated-901-1000.js')" in s,
+            'PWA quality repair':"url('quality-repair-v1.js')" in s,
+            'PWA quality browser runner':"url('quality-ci-runner-v1.js')" in s,
           }
           failed=[k for k,v in checks.items() if not v]
           for k,v in checks.items(): print(('PASS' if v else 'FAIL'), k)
@@ -131,10 +131,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add chronologia.html learning-engine-v22.js chronologia-daily-companion.js sw.js
           if git diff --cached --quiet; then
-            echo "Chronologia 1000 integration already current"
+            echo "Chronologia + quality PWA integration already current"
             exit 0
           fi
-          git commit -m "Wire Chronologia 1000 into practice page and PWA"
+          git commit -m "Wire Chronologia 1000 and quality repairs into PWA"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git rebase origin/main
