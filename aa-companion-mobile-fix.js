@@ -66,16 +66,6 @@ function installEnglishPhraseQuestionFix(retry=0){
   window.__AA_ENGLISH_PHRASE_QFIX__={version:'1.0.0'};
  }catch(_){if(retry<40)setTimeout(()=>installEnglishPhraseQuestionFix(retry+1),100)}
 }
-function installGrammarComparisonReview(retry=0){
- if(window.__AA_GRAMMAR_REVIEW_ANY_OTHER__)return;
- try{
-  if(typeof GRAMMAR_REVIEW==='undefined'||!Array.isArray(GRAMMAR_REVIEW.comparison))throw new Error('grammar review not ready');
-  const rule='比較級 + than any other + 単数名詞で「ほかのどの〜よりも…」となり、最上級とほぼ同じ意味を表します。any other の後ろは単数名詞にします。例：Mt. Fuji is higher than any other mountain in Japan. ＝ Mt. Fuji is the highest mountain in Japan.';
-  const current=String(GRAMMAR_REVIEW.comparison[1]||'');
-  if(!current.includes('than any other'))GRAMMAR_REVIEW.comparison[1]=`${current} ${rule}`.trim();
-  window.__AA_GRAMMAR_REVIEW_ANY_OTHER__={version:'1.0.0',rule:'comparative + than any other + singular noun'};
- }catch(_){if(retry<40)setTimeout(()=>installGrammarComparisonReview(retry+1),100)}
-}
 function installVocabOnlyPageLink(){
  if(window.__AA_VOCAB_ONLY_LINK__)return;
  window.__AA_VOCAB_ONLY_LINK__=true;
@@ -94,7 +84,6 @@ function wire(){if(!window.Companion7){setTimeout(wire,80);return}if(window.__AA
 }
 installEnglishClozeDedup();
 installEnglishPhraseQuestionFix();
-installGrammarComparisonReview();
 loadSettings();loadV23();loadLogin();loadExplosionAnalytics();loadDailyAnalytics();loadProductionLoginTest();loadSettingsImprovements();
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{installVocabOnlyPageLink();wire()},{once:true});else{installVocabOnlyPageLink();wire()}
 })();
