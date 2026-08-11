@@ -2,13 +2,16 @@
 function loadScript(id,src){if(document.getElementById(id))return;const s=document.createElement('script');s.id=id;s.src=src;s.async=false;document.head.appendChild(s)}
 function resetTodayLoginTest(){
  const d=new Date(),today=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
- if(today!=='2026-08-12')return;
- const once='aa-login-test-reset-once-20260812';
+ if(today!=='2026-08-12')return false;
+ const once='aa-login-av-test-reset-once-20260812-v2';
  try{
-  if(localStorage.getItem(once)==='1')return;
+  if(localStorage.getItem(once)==='1')return false;
   for(const key of ['aa-login-visual-seen-v1','aa-login-visual-pick-v1','aa-companion-voice-daily-seen-v1','aa-companion-voice-daily-pending-v1','aa-companion-voice-daily-pick-v2'])localStorage.removeItem(key);
   localStorage.setItem(once,'1');
- }catch(_){}
+  sessionStorage.setItem('aa-login-av-reset-reload-20260812','1');
+  setTimeout(()=>location.reload(),40);
+  return true;
+ }catch(_){return false}
 }
 function loadLayoutGuard(){loadScript('aa-mobile-layout-guard-loader','./mobile-layout-guard-v1.js?v=1.0.0')}
 function loadSettings(){loadScript('aa-pet-settings-loader','./v23-pet-settings.js?compat=229-loginzip1')}
@@ -93,7 +96,7 @@ function wire(){if(!window.Companion7){setTimeout(wire,80);return}if(window.__AA
  document.addEventListener('aa:missionComplete',()=>{try{Companion7.recordStudyComplete?.()}catch(_){}});
  const mo=new MutationObserver(killLegacy);mo.observe(document.body,{childList:true,subtree:true});
 }
-resetTodayLoginTest();
+if(resetTodayLoginTest())return;
 loadLayoutGuard();
 installEnglishClozeDedup();
 installEnglishPhraseQuestionFix();
