@@ -1,6 +1,6 @@
 'use strict';
 
-const VERSION='2.3.2-layout';
+const VERSION='2.3.3-chronologia1000';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;
@@ -10,6 +10,33 @@ const CORE=[
   url('index.html'),
   url('offline.html'),
   url('manifest.webmanifest'),
+  url('chronologia.html'),
+  url('chronologia-force1000-v1.js'),
+  url('chronologia-v7-data-1.js'),
+  url('chronologia-v7-data-2a.js'),
+  url('chronologia-v7-data-2b.js'),
+  url('chronologia-v7-data-3.js'),
+  url('chronologia-v7-data-4.js'),
+  url('chronologia-v7-overrides.js'),
+  url('chronologia-curated-001-050.js'),
+  url('chronologia-curated-051-100.js'),
+  url('chronologia-curated-101-149.js'),
+  url('chronologia-curated-150.js'),
+  url('chronologia-curated-151-200.js'),
+  url('chronologia-curated-201-250.js'),
+  url('chronologia-curated-251-300.js'),
+  url('chronologia-curated-301-350.js'),
+  url('chronologia-curated-351-400.js'),
+  url('chronologia-curated-401-450.js'),
+  url('chronologia-curated-451-500.js'),
+  url('chronologia-curated-501-600.js'),
+  url('chronologia-curated-601-700.js'),
+  url('chronologia-curated-701-800.js'),
+  url('chronologia-curated-801-900.js'),
+  url('chronologia-curated-901-1000.js'),
+  url('chronologia-curated-final-fixes.js'),
+  url('chronologia-daily-companion.js'),
+  url('chronologia-live-companion.js'),
   url('learning-engine-v22.css'),
   url('review/'),
   url('review/index.html'),

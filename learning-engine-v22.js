@@ -896,7 +896,7 @@
     html = html.replace('<div class="tiny" style="margin-top:10px">語彙支援長文は、', readingTypeUI + '<div class="tiny" style="margin-top:10px">語彙支援長文は、');
     html = html.replace('<div class="sp12"></div><section class="grid g2">', '<div class="sp12"></div>' + aa22PracticeSettingsHTML() + '<div class="sp12"></div><section class="grid g2">');
     const launch = '<div class="sp12"></div><section class="card"><div class="chronologiaLaunch"><div><div class="eyebrow">SEPARATE EXAM MODE</div><h3 class="h3">入試対策は独立ページへ</h3><p class="sub">演習の即時解説と、本番型テストの採点記録を混ぜません。</p></div><button class="btn primary" data-route="exam">入試対策を開く</button></div></section>' +
-      '<div class="sp12"></div><section class="card"><div class="chronologiaLaunch"><div><div class="eyebrow">CHRONOLOGIA 6.1</div><h3 class="h3">歴史年表・同時代史</h3><p class="sub">385件の統合年表、クイズ、並べ替え、弱点復習、参考書型解説を別画面で使います。</p></div><a class="btn gold" href="./chronologia.html">年表を開く</a></div></section>';
+      '<div class="sp12"></div><section class="card"><div class="chronologiaLaunch"><div><div class="eyebrow">CHRONOLOGIA 6.3.1</div><h3 class="h3">歴史年表・同時代史</h3><p class="sub">1000件の統合年表、クイズ、並べ替え、弱点復習、参考書型解説を別画面で使います。</p></div><a class="btn gold" href="./chronologia.html">年表を開く</a></div></section>';
     return html.replace(/<\/main>/, launch + '</main>');
   };
 
