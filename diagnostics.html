@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101828">
+<title>診断｜旭丘AA Learning OS</title>
+<style>
+:root{--bg:#eef2f7;--card:#fff;--ink:#172033;--sub:#667085;--line:#d9e0ea;--navy:#101828;--green:#177a4b;--green2:#e9f7ef;--red:#b42318;--red2:#fee4e2;--amber:#a96800;--amber2:#fff4d8}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif}.wrap{max-width:820px;margin:auto;padding:16px 16px 48px}.top{background:var(--navy);color:#fff;padding:calc(14px + env(safe-area-inset-top)) 16px 14px}.topin{max-width:820px;margin:auto;display:flex;justify-content:space-between;align-items:center}.top h1{font-size:17px;margin:0}.top a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:8px 10px;font-size:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;margin-top:12px}.row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line)}.row:first-child{border-top:0}.name{font-weight:800;font-size:13px}.detail{font-size:11px;color:var(--sub);margin-top:3px;word-break:break-all}.badge{white-space:nowrap;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:900}.ok{background:var(--green2);color:var(--green)}.ng{background:var(--red2);color:var(--red)}.wait{background:var(--amber2);color:var(--amber)}button{width:100%;min-height:46px;margin-top:8px;border:0;border-radius:12px;background:var(--navy);color:#fff;font-weight:800}.sub{color:var(--sub);font-size:12px;line-height:1.6}.preview{max-width:100%;max-height:55vh;display:block;margin:12px auto 0;border-radius:14px}
+</style>
+</head>
+<body>
+<header class="top"><div class="topin"><h1>旭丘AA OS 診断</h1><a href="./index.html">戻る</a></div></header>
+<div class="wrap">
+<section class="card"><b>自動診断</b><p class="sub">公開ファイル、復習データ、PWA、端末内ログイン画像・ボイスを読み取り専用で確認します。</p><div id="results"></div><button id="rerun">再診断</button></section>
+<section class="card"><b>端末メディアテスト</b><p class="sub">下の操作は端末に保存済みの画像・ボイスだけを使います。データは送信しません。</p><button id="imageTest">ログイン画像を1枚表示テスト</button><button id="voiceTest">ログインボイスを1回再生テスト</button><div id="mediaStatus" class="sub"></div><div id="preview"></div></section>
+</div>
+<script>
+(()=>{'use strict';
+const results=document.getElementById('results'),mediaStatus=document.getElementById('mediaStatus');
+const ASSETS=['review/index.html','review-bank-v1.js','aa-companion-v2.js','aa-companion-mobile-fix.js','companion7-runtime.js','login-companion-v1.js','login-production-test-v1.js','sw.js'];
+function esc(s){return String(s??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]))}
+function row(name,ok,detail=''){return `<div class="row"><div><div class="name">${esc(name)}</div><div class="detail">${esc(detail)}</div></div><span class="badge ${ok===true?'ok':ok===false?'ng':'wait'}">${ok===true?'OK':ok===false?'NG':'確認中'}</span></div>`}
+function openDB(name,store){return new Promise((resolve,reject)=>{const r=indexedDB.open(name);r.onsuccess=()=>{const db=r.result;if(!db.objectStoreNames.contains(store)){db.close();resolve(null);return}resolve(db)};r.onerror=()=>reject(r.error);r.onupgradeneeded=()=>{r.transaction.abort();resolve(null)}})}
+async function imageRecords(){try{const db=await openDB('aa-login-companion-v1','images');if(!db)return[];const out=await new Promise((resolve,reject)=>{const tx=db.transaction('images','readonly'),q=tx.objectStore('images').getAll();q.onsuccess=()=>resolve(q.result||[]);q.onerror=()=>reject(q.error)});db.close();return out}catch(_){return[]}}
+async function voiceRecords(){try{const db=await openDB('aa-companion-voice-v1','voices');if(!db)return{};const out=await new Promise((resolve,reject)=>{const tx=db.transaction('voices','readonly'),s=tx.objectStore('voices'),k=s.getAllKeys(),v=s.getAll();let keys,vals;const done=()=>{if(keys&&vals)resolve(Object.fromEntries(keys.map((x,i)=>[String(x),vals[i]])))};k.onsuccess=()=>{keys=k.result||[];done()};v.onsuccess=()=>{vals=v.result||[];done()};k.onerror=()=>reject(k.error);v.onerror=()=>reject(v.error)});db.close();return out}catch(_){return{}}}
+async function diagnose(){results.innerHTML=row('診断開始',null,'最新版を取得しています');const rows=[];for(const asset of ASSETS){try{const r=await fetch('./'+asset+'?health='+Date.now(),{cache:'no-store'}),t=await r.text();rows.push(row(asset,r.ok,`${r.status} / ${t.length.toLocaleString()} bytes`))}catch(e){rows.push(row(asset,false,e.message||e))}}
+try{const r=await fetch('./review-bank-v1.js?health='+Date.now(),{cache:'no-store'}),code=await r.text(),box={};Function('window',code)(box);const bank=box.AA_REVIEW_BANK||[];rows.push(row('復習データ',Array.isArray(bank)&&bank.length>0,`version ${box.AA_REVIEW_BANK_VERSION||'?'} / ${bank.length}件`))}catch(e){rows.push(row('復習データ',false,e.message||e))}
+try{const reg=await navigator.serviceWorker?.getRegistration('./');rows.push(row('Service Worker',!!reg,reg?`${reg.active?.scriptURL||reg.installing?.scriptURL||'登録済み'}`:'未登録'))}catch(e){rows.push(row('Service Worker',false,e.message||e))}
+const imgs=await imageRecords(),voices=await voiceRecords(),voiceKeys=Object.keys(voices),daily=voiceKeys.filter(k=>k.startsWith('daily-')).length+(voiceKeys.includes('daily')?1:0);rows.push(row('端末ログイン画像',imgs.length>0,`${imgs.length}枚`));rows.push(row('端末ログインボイス',daily>0,`通常 ${daily} / Explosion ${voiceKeys.includes('explosion')?'あり':'なし'}`));
+if(imgs[0]?.blob){try{const u=URL.createObjectURL(imgs[0].blob);await new Promise((res,rej)=>{const im=new Image();im.onload=res;im.onerror=rej;im.src=u});URL.revokeObjectURL(u);rows.push(row('画像デコード',true,'先頭画像を正常にデコード'))}catch(e){rows.push(row('画像デコード',false,e.message||'画像デコード失敗'))}}
+const firstVoice=voiceKeys.find(k=>k.startsWith('daily-'))||(voiceKeys.includes('daily')?'daily':voiceKeys[0]);if(firstVoice&&voices[firstVoice] instanceof Blob){rows.push(row('音声Blob',voices[firstVoice].size>0,`${firstVoice} / ${voices[firstVoice].type||'type不明'} / ${voices[firstVoice].size.toLocaleString()} bytes`))}
+results.innerHTML=rows.join('')}
+document.getElementById('rerun').addEventListener('click',diagnose);
+document.getElementById('imageTest').addEventListener('click',async()=>{const p=document.getElementById('preview');p.innerHTML='';const imgs=await imageRecords();if(!imgs.length){mediaStatus.textContent='登録済みログイン画像がありません。';return}const u=URL.createObjectURL(imgs[0].blob),im=new Image();im.className='preview';im.alt='ログイン画像テスト';im.onload=()=>{mediaStatus.textContent='画像表示テストOK';setTimeout(()=>URL.revokeObjectURL(u),1000)};im.onerror=()=>{mediaStatus.textContent='画像表示テストNG';URL.revokeObjectURL(u)};im.src=u;p.appendChild(im)});
+document.getElementById('voiceTest').addEventListener('click',async()=>{const v=await voiceRecords(),keys=Object.keys(v),key=keys.find(k=>k.startsWith('daily-'))||(keys.includes('daily')?'daily':keys.includes('explosion')?'explosion':'');if(!key||!(v[key] instanceof Blob)){mediaStatus.textContent='登録済みログインボイスがありません。';return}const u=URL.createObjectURL(v[key]),a=new Audio(u);a.playsInline=true;a.preload='auto';a.volume=.8;try{await a.play();mediaStatus.textContent=`音声再生テストOK：${key}`;a.addEventListener('ended',()=>URL.revokeObjectURL(u),{once:true})}catch(e){URL.revokeObjectURL(u);mediaStatus.textContent='音声再生テストNG：'+(e.message||e)}});
+diagnose();
+})();
+</script>
+</body>
+</html>
