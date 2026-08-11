@@ -35,6 +35,7 @@ jobs:
           node --check chronologia-curated-701-800.js
           node --check chronologia-curated-801-900.js
           node --check chronologia-curated-901-1000.js
+          node --check chronologia-curated-final-fixes.js
           node --check scripts/chronologia-deep-audit.js
           node --check scripts/chronologia-supplement-export.js
       - name: Expand compressed 500-item supplement
