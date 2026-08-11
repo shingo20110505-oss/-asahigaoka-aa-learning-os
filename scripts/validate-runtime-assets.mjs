@@ -55,14 +55,13 @@ requireText(prod, 'new Audio(currentAudioURL)', 'production voice playback');
 requireText(prod, "h.addEventListener('pointerdown',retry", 'production iPhone audio fallback');
 requireText(prod, 'window.AALoginProductionTest=', 'production test API');
 
-// Managed SW: runtime JS/CSS/HTML are network-first as a class, so new files do not
-// require editing a giant per-file allowlist. This is intentional for maintainability.
-requireText(sw, "const VERSION='2.3.0-managed'", 'managed service worker version');
+requireText(sw, "const VERSION='2.3.1-managed'", 'managed service worker version');
 requireText(sw, 'async function networkFirst', 'network-first runtime');
-requireText(sw, "url.pathname.endsWith('.js')", 'generic JS freshness');
-requireText(sw, "url.pathname.endsWith('.css')", 'generic CSS freshness');
-requireText(sw, "url.pathname.endsWith('.html')", 'generic HTML freshness');
-requireText(sw, "new URL('review/',BASE).href", 'offline review shell');
+requireText(sw, "ext==='js'", 'generic JS freshness');
+requireText(sw, "ext==='css'", 'generic CSS freshness');
+requireText(sw, "ext==='json'", 'generic JSON freshness');
+requireText(sw, "url('review/')", 'offline review shell');
+requireText(sw, "u.pathname.endsWith('review-bank-v1.js')", 'review bank forced freshness');
 
 const referenced=[...mobile.matchAll(/['"]\.\/([^'"?]+\.js)/g)].map(m=>m[1]);
 for(const file of new Set(referenced)){
