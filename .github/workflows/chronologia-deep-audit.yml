@@ -27,8 +27,10 @@ jobs:
           node --check scripts/chronologia-deep-audit.js
       - name: Audit every timeline explanation
         run: |
+          set +e
           node scripts/chronologia-deep-audit.js | tee CHRONOLOGIA_DEEP_AUDIT.txt
-          grep -q '"pass":true' CHRONOLOGIA_DEEP_AUDIT.txt
+          echo "node_exit=${PIPESTATUS[0]}" >> CHRONOLOGIA_DEEP_AUDIT.txt
+          exit 0
       - name: Record audit result
         run: |
           git config user.name "github-actions[bot]"
@@ -37,3 +39,5 @@ jobs:
           git commit -m "Record Chronologia detailed explanation audit" || exit 0
           git pull --rebase origin main
           git push
+      - name: Gate detailed explanations
+        run: grep -q '"pass":true' CHRONOLOGIA_DEEP_AUDIT.txt
