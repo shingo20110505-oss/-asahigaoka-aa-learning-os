@@ -55,6 +55,7 @@ jobs:
             answer-feedback-audio-v1.js \
             v23-loader.js \
             quality-repair-v1.js \
+            quality-ci-runner-v1.js \
             sw.js; do
             node --check "$f"
           done
@@ -72,11 +73,14 @@ jobs:
           grep -q 'setLoginVoices' companion7-runtime.js
           grep -q 'setExplosionVoice' companion7-runtime.js
           grep -q 'quality-repair-v1.js' v23-loader.js
+          grep -q 'quality-ci-runner-v1.js' v23-loader.js
           grep -q 'window.__AA_QUALITY_REPAIR_V1__' quality-repair-v1.js
           grep -q '筆者の中心的な主張' quality-repair-v1.js
+          grep -q 'aa_quality_ci' quality-ci-runner-v1.js
           grep -q "const VERSION='" sw.js
           grep -q "url('mobile-layout-guard-v1.js')" sw.js
           grep -q "url('quality-repair-v1.js')" sw.js
+          grep -q "url('quality-ci-runner-v1.js')" sw.js
           test -f review/index.html
           test -f diagnostics.html
 
@@ -97,6 +101,7 @@ jobs:
           SW_VERSION=$(grep -o "const VERSION='[^']*'" sw.js | head -1 | cut -d"'" -f2)
           LAYOUT_SHA256=$(sha256sum mobile-layout-guard-v1.js | awk '{print $1}')
           QUALITY_REPAIR_SHA256=$(sha256sum quality-repair-v1.js | awk '{print $1}')
+          QUALITY_CI_SHA256=$(sha256sum quality-ci-runner-v1.js | awk '{print $1}')
           cat > release.json <<EOF
           {
             "sourceBranch": "main",
@@ -108,6 +113,7 @@ jobs:
             "serviceWorkerVersion": "${SW_VERSION}",
             "mobileLayoutGuardSha256": "${LAYOUT_SHA256}",
             "qualityRepairSha256": "${QUALITY_REPAIR_SHA256}",
+            "qualityCiSha256": "${QUALITY_CI_SHA256}",
             "management": "validated-main-direct-to-pages"
           }
           EOF
@@ -144,6 +150,7 @@ jobs:
           EXPECTED_SW_VERSION=$(grep -o "const VERSION='[^']*'" sw.js | head -1 | cut -d"'" -f2)
           EXPECTED_LAYOUT_SHA256=$(sha256sum mobile-layout-guard-v1.js | awk '{print $1}')
           EXPECTED_QUALITY_REPAIR_SHA256=$(sha256sum quality-repair-v1.js | awk '{print $1}')
+          EXPECTED_QUALITY_CI_SHA256=$(sha256sum quality-ci-runner-v1.js | awk '{print $1}')
 
           stage release-json-await
           ok=0
@@ -163,6 +170,7 @@ jobs:
           grep -q "\"serviceWorkerVersion\": \"${EXPECTED_SW_VERSION}\"" /tmp/release.json
           grep -q "\"mobileLayoutGuardSha256\": \"${EXPECTED_LAYOUT_SHA256}\"" /tmp/release.json
           grep -q "\"qualityRepairSha256\": \"${EXPECTED_QUALITY_REPAIR_SHA256}\"" /tmp/release.json
+          grep -q "\"qualityCiSha256\": \"${EXPECTED_QUALITY_CI_SHA256}\"" /tmp/release.json
 
           stage review-ui
           curl -fsSL "${BASE}review/?verify=${SOURCE_SHA}" -o /tmp/review.html
@@ -190,8 +198,12 @@ jobs:
           grep -q 'window.__AA_QUALITY_REPAIR_V1__' /tmp/quality-repair.js
           grep -q 'function buildCloze' /tmp/quality-repair.js
           grep -q '筆者の中心的な主張' /tmp/quality-repair.js
+          curl -fsSL "${BASE}quality-ci-runner-v1.js?verify=${SOURCE_SHA}" -o /tmp/quality-ci.js
+          ACTUAL_QUALITY_CI_SHA256=$(sha256sum /tmp/quality-ci.js | awk '{print $1}')
+          test "$ACTUAL_QUALITY_CI_SHA256" = "$EXPECTED_QUALITY_CI_SHA256"
           curl -fsSL "${BASE}v23-loader.js?verify=${SOURCE_SHA}" -o /tmp/v23-loader.js
           grep -q 'quality-repair-v1.js' /tmp/v23-loader.js
+          grep -q 'quality-ci-runner-v1.js' /tmp/v23-loader.js
 
           stage login-image
           curl -fsSL "${BASE}login-companion-v1.js?verify=${SOURCE_SHA}" -o /tmp/login-image.js
@@ -209,7 +221,30 @@ jobs:
           grep -q "const VERSION='${EXPECTED_SW_VERSION}'" /tmp/sw.js
           grep -q "url('mobile-layout-guard-v1.js')" /tmp/sw.js
           grep -q "url('quality-repair-v1.js')" /tmp/sw.js
+          grep -q "url('quality-ci-runner-v1.js')" /tmp/sw.js
           grep -q 'networkFirst' /tmp/sw.js
+
+          stage quality-runtime
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
+          test -n "$CHROME"
+          rm -rf "/tmp/aa-quality-chrome-${SOURCE_SHA}"
+          timeout 120s "$CHROME" \
+            --headless=new \
+            --no-sandbox \
+            --disable-gpu \
+            --disable-dev-shm-usage \
+            --user-data-dir="/tmp/aa-quality-chrome-${SOURCE_SHA}" \
+            --virtual-time-budget=60000 \
+            --dump-dom "${BASE}?aa_quality_ci=1&verify=${SOURCE_SHA}" > /tmp/quality-runtime.html
+          grep -o 'AA_QUALITY_CI=[^<]*' /tmp/quality-runtime.html || true
+          grep -q 'data-aa-quality-ci="PASS"' /tmp/quality-runtime.html
+          grep -q '英単語穴埋め・答え露出防止' /tmp/quality-runtime.html
+          grep -q '段階学習プラン' /tmp/quality-runtime.html
+          grep -q '長文生成・文法ゲート 36本' /tmp/quality-runtime.html
+          grep -q '専用誤答タイプ' /tmp/quality-runtime.html
+          grep -q '数学公式暗記限定' /tmp/quality-runtime.html
+          grep -q '長文タイプを出題へ反映' /tmp/quality-runtime.html
+          echo 'quality_runtime=success' >> "$GITHUB_OUTPUT"
 
           stage diagnostics
           curl -fsSL "${BASE}diagnostics.html?verify=${SOURCE_SHA}" -o /tmp/diagnostics.html
@@ -224,6 +259,7 @@ jobs:
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
           SOURCE_SHA: ${{ github.sha }}
+          QUALITY_RUNTIME: ${{ steps.verify.outputs.quality_runtime }}
         run: |
           REVIEW_VERSION=$(grep -o "AA_REVIEW_BANK_VERSION='[^']*'" review-bank-v1.js | head -1 | cut -d"'" -f2)
           REVIEW_COUNT=$(node - <<'NODE'
@@ -237,6 +273,7 @@ jobs:
           SW_VERSION=$(grep -o "const VERSION='[^']*'" sw.js | head -1 | cut -d"'" -f2)
           LAYOUT_SHA256=$(sha256sum mobile-layout-guard-v1.js | awk '{print $1}')
           QUALITY_REPAIR_SHA256=$(sha256sum quality-repair-v1.js | awk '{print $1}')
+          QUALITY_CI_SHA256=$(sha256sum quality-ci-runner-v1.js | awk '{print $1}')
           git fetch origin main
           git checkout -B main origin/main
           cat > PUBLIC_VERIFY_STATUS.txt <<EOF
@@ -250,7 +287,9 @@ jobs:
           service_worker_version=${SW_VERSION}
           mobile_layout_guard_sha256=${LAYOUT_SHA256}
           quality_repair_sha256=${QUALITY_REPAIR_SHA256}
-          checks=public-release,review-v2,review-bank-exact-hash,mobile-layout-exact-hash,quality-repair-exact-hash,login-image,login-voice,service-worker,diagnostics
+          quality_ci_sha256=${QUALITY_CI_SHA256}
+          quality_runtime=${QUALITY_RUNTIME}
+          checks=public-release,review-v2,review-bank-exact-hash,mobile-layout-exact-hash,quality-repair-exact-hash,quality-browser-runtime,login-image,login-voice,service-worker,diagnostics
           EOF
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
