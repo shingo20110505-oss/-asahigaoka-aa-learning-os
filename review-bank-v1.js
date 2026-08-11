@@ -16,11 +16,28 @@ const items=[
     memory:'day だけ → 曜日 / date → 日付 / day of the month → 今月の何日',
     tags:['day','date','曜日','日付','書き換え'],
     createdAt:'2026-08-11'
+  },
+  {
+    id:'en-made-of-made-from-20260811',
+    subject:'英語',
+    unit:'前置詞・受け身',
+    title:'made of と made from の違い',
+    question:'be made of と be made from はどう使い分ける？',
+    answer:'be made of は、完成品を見ても元の材料が分かるときに使います。be made from は、加工されて元の材料の形が分かりにくくなっているときに使います。',
+    why:'of は「材料そのものが残っている」感覚、from は「元の材料から変化してできた」感覚です。実際の英語では文脈による揺れもありますが、中学英語ではこの区別で覚えると使いやすいです。',
+    examples:[
+      'This desk is made of wood.（この机は木でできています）',
+      'Cheese is made from milk.（チーズは牛乳から作られます）',
+      'Wine is made from grapes.（ワインはぶどうから作られます）'
+    ],
+    memory:'made of＝材料の形が残る / made from＝加工されて元の形が分かりにくい',
+    tags:['made of','made from','材料','前置詞','受け身'],
+    createdAt:'2026-08-11'
   }
 ];
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.0';
+window.AA_REVIEW_BANK_VERSION='1.0.1';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
