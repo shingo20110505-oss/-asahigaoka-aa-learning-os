@@ -44,6 +44,7 @@ jobs:
           for f in \
             aa-companion-v2.js \
             aa-companion-mobile-fix.js \
+            mobile-layout-guard-v1.js \
             companion7-runtime.js \
             login-companion-v1.js \
             login-production-test-v1.js \
@@ -62,10 +63,14 @@ jobs:
 
           grep -q 'AA_REVIEW_BANK_VERSION=' review-bank-v1.js
           grep -q "a.href='./review/'" aa-companion-v2.js
+          grep -q 'mobile-layout-guard-v1.js' aa-companion-mobile-fix.js
+          grep -q 'body>.nav' mobile-layout-guard-v1.js
+          grep -q "document.body.appendChild(fresh)" mobile-layout-guard-v1.js
           grep -q 'ZIPからまとめてインストール' login-companion-v1.js
           grep -q 'setLoginVoices' companion7-runtime.js
           grep -q 'setExplosionVoice' companion7-runtime.js
-          grep -q "const VERSION='2.3.1-managed'" sw.js
+          grep -q "const VERSION='" sw.js
+          grep -q "url('mobile-layout-guard-v1.js')" sw.js
           test -f review/index.html
           test -f diagnostics.html
 
@@ -84,6 +89,7 @@ jobs:
           )
           REVIEW_SHA256=$(sha256sum review-bank-v1.js | awk '{print $1}')
           SW_VERSION=$(grep -o "const VERSION='[^']*'" sw.js | head -1 | cut -d"'" -f2)
+          LAYOUT_SHA256=$(sha256sum mobile-layout-guard-v1.js | awk '{print $1}')
           cat > release.json <<EOF
           {
             "sourceBranch": "main",
@@ -93,6 +99,7 @@ jobs:
             "reviewCount": ${REVIEW_COUNT},
             "reviewSha256": "${REVIEW_SHA256}",
             "serviceWorkerVersion": "${SW_VERSION}",
+            "mobileLayoutGuardSha256": "${LAYOUT_SHA256}",
             "management": "validated-main-direct-to-pages"
           }
           EOF
@@ -127,6 +134,7 @@ jobs:
           )
           EXPECTED_REVIEW_SHA256=$(sha256sum review-bank-v1.js | awk '{print $1}')
           EXPECTED_SW_VERSION=$(grep -o "const VERSION='[^']*'" sw.js | head -1 | cut -d"'" -f2)
+          EXPECTED_LAYOUT_SHA256=$(sha256sum mobile-layout-guard-v1.js | awk '{print $1}')
 
           stage release-json-await
           ok=0
@@ -144,6 +152,7 @@ jobs:
           grep -q "\"reviewCount\": ${EXPECTED_REVIEW_COUNT}" /tmp/release.json
           grep -q "\"reviewSha256\": \"${EXPECTED_REVIEW_SHA256}\"" /tmp/release.json
           grep -q "\"serviceWorkerVersion\": \"${EXPECTED_SW_VERSION}\"" /tmp/release.json
+          grep -q "\"mobileLayoutGuardSha256\": \"${EXPECTED_LAYOUT_SHA256}\"" /tmp/release.json
 
           stage review-ui
           curl -fsSL "${BASE}review/?verify=${SOURCE_SHA}" -o /tmp/review.html
@@ -154,6 +163,15 @@ jobs:
           curl -fsSL "${BASE}review-bank-v1.js?verify=${SOURCE_SHA}" -o /tmp/review-bank.js
           ACTUAL_REVIEW_SHA256=$(sha256sum /tmp/review-bank.js | awk '{print $1}')
           test "$ACTUAL_REVIEW_SHA256" = "$EXPECTED_REVIEW_SHA256"
+
+          stage mobile-layout
+          curl -fsSL "${BASE}aa-companion-mobile-fix.js?verify=${SOURCE_SHA}" -o /tmp/mobile-fix.js
+          grep -q 'mobile-layout-guard-v1.js' /tmp/mobile-fix.js
+          curl -fsSL "${BASE}mobile-layout-guard-v1.js?verify=${SOURCE_SHA}" -o /tmp/layout-guard.js
+          ACTUAL_LAYOUT_SHA256=$(sha256sum /tmp/layout-guard.js | awk '{print $1}')
+          test "$ACTUAL_LAYOUT_SHA256" = "$EXPECTED_LAYOUT_SHA256"
+          grep -q 'body>.nav' /tmp/layout-guard.js
+          grep -q 'document.body.appendChild(fresh)' /tmp/layout-guard.js
 
           stage login-image
           curl -fsSL "${BASE}login-companion-v1.js?verify=${SOURCE_SHA}" -o /tmp/login-image.js
@@ -169,6 +187,7 @@ jobs:
           stage service-worker
           curl -fsSL "${BASE}sw.js?verify=${SOURCE_SHA}" -o /tmp/sw.js
           grep -q "const VERSION='${EXPECTED_SW_VERSION}'" /tmp/sw.js
+          grep -q "url('mobile-layout-guard-v1.js')" /tmp/sw.js
           grep -q 'networkFirst' /tmp/sw.js
 
           stage diagnostics
@@ -195,6 +214,7 @@ jobs:
           )
           REVIEW_SHA256=$(sha256sum review-bank-v1.js | awk '{print $1}')
           SW_VERSION=$(grep -o "const VERSION='[^']*'" sw.js | head -1 | cut -d"'" -f2)
+          LAYOUT_SHA256=$(sha256sum mobile-layout-guard-v1.js | awk '{print $1}')
           git fetch origin main
           git checkout -B main origin/main
           cat > PUBLIC_VERIFY_STATUS.txt <<EOF
@@ -206,7 +226,8 @@ jobs:
           review_count=${REVIEW_COUNT}
           review_sha256=${REVIEW_SHA256}
           service_worker_version=${SW_VERSION}
-          checks=public-release,review-v2,review-bank-exact-hash,login-image,login-voice,service-worker,diagnostics
+          mobile_layout_guard_sha256=${LAYOUT_SHA256}
+          checks=public-release,review-v2,review-bank-exact-hash,mobile-layout-exact-hash,login-image,login-voice,service-worker,diagnostics
           EOF
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
