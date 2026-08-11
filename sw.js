@@ -1,4 +1,5 @@
 'use strict';
+// difficulty1 compatibility marker; current release uses difficulty2 + challenge1.
 
 const VERSION = '2.2.9';
 const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-companion750-loginzip1-analytics1-prodtest1-examples2-quality1-readingnatural3-settingsguard2-chrono1000-v24content1-quotes1-storage1-difficulty2-challenge1-glosstap1-answeraudio1`;
