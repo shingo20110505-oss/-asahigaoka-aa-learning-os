@@ -33,11 +33,28 @@ const items=[
     memory:'made of＝材料の形が残る / made from＝加工されて元の形が分かりにくい',
     tags:['made of','made from','材料','前置詞','受け身'],
     createdAt:'2026-08-11'
+  },
+  {
+    id:'en-comparative-than-any-other-singular-20260811',
+    subject:'英語',
+    unit:'比較級・最上級',
+    title:'比較級 + than any other + 単数名詞',
+    question:'「比較級 + than any other + 単数名詞」はどんな意味になり、なぜ名詞は単数形になる？',
+    answer:'「ほかのどの〜よりも…」という意味で、実質的に最上級とほぼ同じ意味になります。any other の後ろの名詞は単数形にします。',
+    why:'any other は「ほかのどの1つを取っても」という考え方なので、後ろには単数名詞を置きます。同じ集団の中で1つずつ比べて、すべてより上だと表すため、結果として最上級と同じ内容になります。',
+    examples:[
+      'Mt. Fuji is higher than any other mountain in Japan.（富士山は日本のほかのどの山よりも高い）',
+      'Mt. Fuji is the highest mountain in Japan.（富士山は日本でいちばん高い山だ）',
+      'than any other mountain ○ / than any other mountains ×'
+    ],
+    memory:'比較級 + than any other + 単数名詞 ＝「ほかのどの〜よりも」＝ほぼ最上級',
+    tags:['比較級','than any other','単数名詞','最上級','書き換え'],
+    createdAt:'2026-08-11'
   }
 ];
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.1';
+window.AA_REVIEW_BANK_VERSION='1.0.2';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
