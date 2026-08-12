@@ -1,5 +1,5 @@
 from pathlib import Path
-import json, re
+import json
 
 root = Path('kokugo-chronologia')
 data_path = root / 'data.jsonl'
@@ -9,47 +9,54 @@ source_dir.mkdir(parents=True, exist_ok=True)
 patch_dir.mkdir(parents=True, exist_ok=True)
 
 rows = [json.loads(x) for x in data_path.read_text(encoding='utf-8').splitlines() if x.strip()]
-chunk_size = 100
+chunk_size = 50
+
+# Rebuild compact source chunks so each batch is small enough for direct assistant review.
+for old in source_dir.glob('chunk-*.json'):
+    old.unlink()
 for start in range(0, len(rows), chunk_size):
     chunk = rows[start:start+chunk_size]
     n = start // chunk_size + 1
-    out = []
-    for r in chunk:
-        out.append({
-            'id': r.get('id'),
-            'term': r.get('term',''),
-            'reading': r.get('reading',''),
-            'meaning': r.get('meaning',''),
-            'type': r.get('type',''),
-            'rank': 'B' if r.get('type') in ('yoji','idiom') else 'C',
-        })
-    (source_dir / f'chunk-{n:04d}.json').write_text(json.dumps(out, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    out = [{
+        'id': r.get('id'),
+        'term': r.get('term',''),
+        'meaning': r.get('meaning',''),
+    } for r in chunk]
+    (source_dir / f'chunk-{n:04d}.json').write_text(json.dumps(out, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
 
-(root / 'meaning-ja-overrides.json').write_text('{}\n', encoding='utf-8')
-(root / 'meaning-ja-overrides.js').write_text('window.KOKUGO_DIRECT_MEANINGS={};\n', encoding='utf-8')
+# Preserve any direct translations already completed; create files only when missing.
+override_json = root / 'meaning-ja-overrides.json'
+override_js = root / 'meaning-ja-overrides.js'
+if not override_json.exists():
+    override_json.write_text('{}\n', encoding='utf-8')
+if not override_js.exists():
+    override_js.write_text('window.KOKUGO_DIRECT_MEANINGS={};\n', encoding='utf-8')
+
+try:
+    existing = json.loads(override_json.read_text(encoding='utf-8') or '{}')
+    translated_entries = len(existing) if isinstance(existing, dict) else 0
+except Exception:
+    translated_entries = 0
+
 (root / 'meaning-ja-status.json').write_text(json.dumps({
     'mode':'assistant_direct_japanese',
-    'translated_entries':0,
+    'translated_entries':translated_entries,
     'total_entries':len(rows),
-    'completed_chunks':0,
+    'completed_chunks':translated_entries // chunk_size,
     'total_chunks':(len(rows)+chunk_size-1)//chunk_size,
     'chunk_size':chunk_size,
 }, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
 p = root / 'index.html'
 s = p.read_text(encoding='utf-8')
-
 if 'meaning-ja-overrides.js' not in s:
     s = s.replace('<script src="../idiom/idiom-bank.js"></script>', '<script src="../idiom/idiom-bank.js"></script><script src="./meaning-ja-overrides.js"></script>', 1)
-
 s = s.replace("fetch('./data.jsonl',{cache:'force-cache'})", "fetch('./data.jsonl?v=direct-ja',{cache:'no-cache'})")
 s = s.replace("meaning:x.meaning||'辞書語義なし'", "meaning:(window.KOKUGO_DIRECT_MEANINGS||{})[String(x.id)]||x.meaning||'辞書語義なし'")
 s = s.replace("meaning:x.meaning||''", "meaning:(window.KOKUGO_DIRECT_MEANINGS||{})[String(x.id)]||x.meaning||''")
 s = s.replace('辞書拡張分の意味はJMdict由来の英語gloss、手作業確認済み語は日本語意味を優先します。', '意味欄は日本語化を順次反映しています。手作業確認済み語は確認済みの日本語意味を優先し、辞書拡張分は直接わかりやすい日本語へ直していきます。')
-
 if 'KOKUGO_DIRECT_MEANING_OVERRIDE_V1' not in s:
     s = s.replace('</script></body></html>', '</script><!-- KOKUGO_DIRECT_MEANING_OVERRIDE_V1 --></body></html>', 1)
-
 p.write_text(s, encoding='utf-8')
 
 assert 'meaning-ja-overrides.js' in s
