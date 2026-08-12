@@ -88,8 +88,17 @@ function installVocabOnlyPageLink(){
  const apply=()=>{
   const btn=document.querySelector('button[data-action="start-custom"][data-kind="vocab"][data-subject="english"]');
   if(!btn||btn.dataset.vocabOnlyLinked==='1')return;
-  btn.dataset.vocabOnlyLinked='1';btn.textContent='英単語のみ';
+  btn.dataset.vocabOnlyLinked='1';btn.textContent='英単語 Chronologia';
   btn.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();location.href='./vocab.html'},true);
+ };
+ apply();
+ const mo=new MutationObserver(apply);mo.observe(document.body,{childList:true,subtree:true});
+}
+function installVocabularyHubLink(){
+ const apply=()=>{
+  const a=document.getElementById('kokugoChronologiaQuickLink');if(!a)return;
+  if(a.dataset.vocabularyHubLinked==='1')return;
+  a.dataset.vocabularyHubLinked='1';a.href='./vocabulary.html';a.textContent='語彙';a.setAttribute('aria-label','語彙ページを開く');
  };
  apply();
  const mo=new MutationObserver(apply);mo.observe(document.body,{childList:true,subtree:true});
@@ -106,5 +115,5 @@ installEnglishClozeDedup();
 installEnglishPhraseQuestionFix();
 loadSettings();loadV23();loadLogin();loadExplosionAnalytics();loadDailyAnalytics();loadProductionLoginTest();loadSettingsImprovements();
 setTimeout(()=>{if(window.AA_V23_STATS)loadReadingJapaneseFix()},1800);
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{installVocabOnlyPageLink();wire()},{once:true});else{installVocabOnlyPageLink();wire()}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{installVocabOnlyPageLink();installVocabularyHubLink();wire()},{once:true});else{installVocabOnlyPageLink();installVocabularyHubLink();wire()}
 })();
