@@ -103,6 +103,42 @@ function installVocabularyHubLink(){
  apply();
  const mo=new MutationObserver(apply);mo.observe(document.body,{childList:true,subtree:true});
 }
+function installVocabMobileLayout(){
+ try{
+  if(window.parent===window)return;
+  const p=window.parent,d=p.document;
+  if(!/\/vocab\.html$/.test(p.location.pathname)||d.getElementById('aa-vocab-mobile-no-horizontal'))return;
+  const s=d.createElement('style');s.id='aa-vocab-mobile-no-horizontal';s.textContent=`
+  @media(max-width:700px){
+   html,body{max-width:100%!important;overflow-x:hidden!important}
+   .app{width:100%!important;max-width:100%!important;padding-left:10px!important;padding-right:10px!important}
+   .tabs{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important;overflow:visible!important}
+   .tabs .btn{width:100%!important;min-width:0!important;white-space:normal!important;text-align:center!important;padding:10px 6px!important;line-height:1.25!important}
+   .tabs .btn:last-child{grid-column:1/-1!important}
+   .tableWrap{overflow:visible!important;width:100%!important}
+   .vtable{display:block!important;width:100%!important;min-width:0!important;border-collapse:separate!important;border-spacing:0!important}
+   .vtable thead{display:none!important}
+   .vtable tbody{display:block!important;width:100%!important}
+   .vtable tr{display:block!important;position:relative!important;width:100%!important;margin:0 0 9px!important;padding:12px 46px 12px 12px!important;background:#fff!important;border:1px solid var(--line)!important;border-radius:14px!important;box-shadow:0 3px 12px rgba(16,24,40,.045)!important}
+   .vtable td{display:block!important;width:auto!important;background:transparent!important;border:0!important;padding:2px 0!important;font-size:12px!important;min-width:0!important;overflow-wrap:anywhere!important}
+   .vtable td:first-child{position:absolute!important;right:12px!important;top:10px!important;color:#98a2b3!important;font-size:10px!important;padding:0!important}
+   .vtable td:nth-child(2){padding-right:20px!important}
+   .vtable td:nth-child(2) .word{font-size:20px!important;line-height:1.25!important}
+   .vtable td:nth-child(3){font-size:11px!important;margin-top:3px!important}
+   .vtable td:nth-child(4){font-size:15px!important;line-height:1.5!important;margin-top:5px!important;color:var(--ink)!important}
+   .vtable td:nth-child(5),.vtable td:nth-child(6){display:inline-block!important;width:auto!important;margin:8px 5px 0 0!important;vertical-align:middle!important}
+   .vtable td:nth-child(7){position:absolute!important;right:8px!important;bottom:8px!important;width:36px!important;text-align:center!important;padding:0!important}
+   .vtable td:nth-child(7) .speak{font-size:20px!important;padding:5px!important}
+  }
+  @media(max-width:480px){
+   .panel{padding:10px!important}
+   .tabs{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+   .tabs .btn{font-size:13px!important;min-height:46px!important}
+  }`;
+  d.head.appendChild(s);
+  d.body?.setAttribute('data-aa-vocab-mobile-layout','vertical-v1');
+ }catch(_){ }
+}
 function wire(){if(!window.Companion7){setTimeout(wire,80);return}if(window.__AA_COMPANION_LOGIN_WIRED__)return;window.__AA_COMPANION_LOGIN_WIRED__=true;killLegacy();
  document.addEventListener('aa:missionComplete',()=>{try{Companion7.recordStudyComplete?.()}catch(_){}});
  const mo=new MutationObserver(killLegacy);mo.observe(document.body,{childList:true,subtree:true});
@@ -113,7 +149,8 @@ loadReadingGloss();
 document.addEventListener('aa:v23ready',loadReadingJapaneseFix,{once:true});
 installEnglishClozeDedup();
 installEnglishPhraseQuestionFix();
+installVocabMobileLayout();
 loadSettings();loadV23();loadLogin();loadExplosionAnalytics();loadDailyAnalytics();loadProductionLoginTest();loadSettingsImprovements();
 setTimeout(()=>{if(window.AA_V23_STATS)loadReadingJapaneseFix()},1800);
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{installVocabOnlyPageLink();installVocabularyHubLink();wire()},{once:true});else{installVocabOnlyPageLink();installVocabularyHubLink();wire()}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{installVocabOnlyPageLink();installVocabularyHubLink();installVocabMobileLayout();wire()},{once:true});else{installVocabOnlyPageLink();installVocabularyHubLink();installVocabMobileLayout();wire()}
 })();
