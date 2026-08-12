@@ -1,0 +1,68 @@
+name: Verify Kokugo Direct Japanese Public Data
+on:
+  push:
+    paths:
+      - '.kokugo-direct-ja-deploy-trigger'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-kokugo-public:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - name: Verify exact Kokugo public files
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          BASE: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+        run: |
+          set -euo pipefail
+          src_json='kokugo-chronologia/meaning-ja-overrides.json'
+          src_js='kokugo-chronologia/meaning-ja-overrides.js'
+          src_status='kokugo-chronologia/meaning-ja-status.json'
+          test -s "$src_json"
+          test -s "$src_js"
+          test -s "$src_status"
+          expected_json=$(sha256sum "$src_json" | awk '{print $1}')
+          expected_js=$(sha256sum "$src_js" | awk '{print $1}')
+          expected_status=$(sha256sum "$src_status" | awk '{print $1}')
+          translated=$(python3 - <<'PY'
+          import json
+          print(json.load(open('kokugo-chronologia/meaning-ja-status.json',encoding='utf-8'))['translated_entries'])
+          PY
+          )
+          ok=0
+          for n in $(seq 1 36); do
+            release=$(mktemp)
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}release.json?kokugo=${SOURCE_SHA}-${n}" -o "$release" && grep -q "$SOURCE_SHA" "$release"; then
+              curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}${src_json}?kokugo=${SOURCE_SHA}-${n}" -o /tmp/meaning-ja-overrides.json
+              curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}${src_js}?kokugo=${SOURCE_SHA}-${n}" -o /tmp/meaning-ja-overrides.js
+              curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}${src_status}?kokugo=${SOURCE_SHA}-${n}" -o /tmp/meaning-ja-status.json
+              actual_json=$(sha256sum /tmp/meaning-ja-overrides.json | awk '{print $1}')
+              actual_js=$(sha256sum /tmp/meaning-ja-overrides.js | awk '{print $1}')
+              actual_status=$(sha256sum /tmp/meaning-ja-status.json | awk '{print $1}')
+              if [ "$actual_json" = "$expected_json" ] && [ "$actual_js" = "$expected_js" ] && [ "$actual_status" = "$expected_status" ]; then
+                python3 - <<PY
+          import json
+          s=json.load(open('/tmp/meaning-ja-status.json',encoding='utf-8'))
+          assert s['translated_entries']==int('$translated'), s
+          assert s['total_entries']==15000, s
+          print('KOKUGO_PUBLIC_VERIFY=success translated_entries='+str(s['translated_entries']))
+          PY
+                ok=1
+                break
+              fi
+            fi
+            sleep 5
+          done
+          test "$ok" = 1
+          echo "source_sha=$SOURCE_SHA"
+          echo "translated_entries=$translated"
+          echo "meaning_json_sha256=$expected_json"
+          echo "meaning_js_sha256=$expected_js"
+          echo "meaning_status_sha256=$expected_status"
+          echo "result=success"
