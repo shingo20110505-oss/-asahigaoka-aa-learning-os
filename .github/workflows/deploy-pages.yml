@@ -54,6 +54,7 @@ jobs:
             storage-resilience-v1.js \
             answer-feedback-audio-v1.js \
             v23-loader.js \
+            vocab-mobile-card-fix-v1.js \
             quality-repair-v1.js \
             quality-ci-runner-v1.js \
             sw.js; do
@@ -74,6 +75,8 @@ jobs:
           grep -q 'setExplosionVoice' companion7-runtime.js
           grep -q 'quality-repair-v1.js' v23-loader.js
           grep -q 'quality-ci-runner-v1.js' v23-loader.js
+          grep -q 'vocab-mobile-card-fix-v1.js' v23-loader.js
+          grep -q 'data-aa-vocab-mobile-card-fix' vocab-mobile-card-fix-v1.js
           grep -q 'window.__AA_QUALITY_REPAIR_V1__' quality-repair-v1.js
           grep -q '筆者の中心的な主張' quality-repair-v1.js
           grep -q 'aa_quality_ci' quality-ci-runner-v1.js
@@ -204,6 +207,7 @@ jobs:
           curl -fsSL "${BASE}v23-loader.js?verify=${SOURCE_SHA}" -o /tmp/v23-loader.js
           grep -q 'quality-repair-v1.js' /tmp/v23-loader.js
           grep -q 'quality-ci-runner-v1.js' /tmp/v23-loader.js
+          grep -q 'vocab-mobile-card-fix-v1.js' /tmp/v23-loader.js
 
           stage login-image
           curl -fsSL "${BASE}login-companion-v1.js?verify=${SOURCE_SHA}" -o /tmp/login-image.js
@@ -246,6 +250,22 @@ jobs:
           grep -q '長文タイプを出題へ反映' /tmp/quality-runtime.html
           echo 'quality_runtime=success' >> "$GITHUB_OUTPUT"
 
+          stage vocab-mobile-runtime
+          rm -rf "/tmp/aa-vocab-mobile-${SOURCE_SHA}"
+          timeout 120s "$CHROME" \
+            --headless=new \
+            --no-sandbox \
+            --disable-gpu \
+            --disable-dev-shm-usage \
+            --window-size=390,844 \
+            --user-data-dir="/tmp/aa-vocab-mobile-${SOURCE_SHA}" \
+            --virtual-time-budget=60000 \
+            --dump-dom "${BASE}vocab.html?verify=${SOURCE_SHA}" > /tmp/vocab-mobile-runtime.html
+          grep -q 'data-aa-vocab-mobile-card-fix="v1.1"' /tmp/vocab-mobile-runtime.html
+          grep -q 'data-aa-vocab-mobile-layout="PASS"' /tmp/vocab-mobile-runtime.html
+          grep -q 'data-aa-vocab-rendered-rows="40"' /tmp/vocab-mobile-runtime.html
+          echo 'vocab_mobile_runtime=success' >> "$GITHUB_OUTPUT"
+
           stage diagnostics
           curl -fsSL "${BASE}diagnostics.html?verify=${SOURCE_SHA}" -o /tmp/diagnostics.html
           grep -q '旭丘AA OS 診断' /tmp/diagnostics.html
@@ -260,6 +280,7 @@ jobs:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
           SOURCE_SHA: ${{ github.sha }}
           QUALITY_RUNTIME: ${{ steps.verify.outputs.quality_runtime }}
+          VOCAB_MOBILE_RUNTIME: ${{ steps.verify.outputs.vocab_mobile_runtime }}
         run: |
           REVIEW_VERSION=$(grep -o "AA_REVIEW_BANK_VERSION='[^']*'" review-bank-v1.js | head -1 | cut -d"'" -f2)
           REVIEW_COUNT=$(node - <<'NODE'
@@ -289,7 +310,8 @@ jobs:
           quality_repair_sha256=${QUALITY_REPAIR_SHA256}
           quality_ci_sha256=${QUALITY_CI_SHA256}
           quality_runtime=${QUALITY_RUNTIME}
-          checks=public-release,review-v2,review-bank-exact-hash,mobile-layout-exact-hash,quality-repair-exact-hash,quality-browser-runtime,login-image,login-voice,service-worker,diagnostics
+          vocab_mobile_runtime=${VOCAB_MOBILE_RUNTIME}
+          checks=public-release,review-v2,review-bank-exact-hash,mobile-layout-exact-hash,quality-repair-exact-hash,quality-browser-runtime,vocab-mobile-runtime,login-image,login-voice,service-worker,diagnostics
           EOF
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
