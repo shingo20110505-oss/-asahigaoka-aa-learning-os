@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 6750,
-  "english_only_remaining": 8250,
+  "already_direct_japanese": 6800,
+  "english_only_remaining": 8200,
   "english_only_rank_counts": {
-    "(blank)": 8250
+    "(blank)": 8200
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 6750,
-      "id": "2850144",
-      "term": "権利能力",
-      "reading": "けんりのうりょく",
-      "meaning": "legal capacity to hold rights"
-    },
-    {
-      "source_index": 6751,
-      "id": "2837511",
-      "term": "権利変動",
-      "reading": "けんりへんどう",
-      "meaning": "change of rights"
-    },
-    {
-      "source_index": 6752,
-      "id": "2200870",
-      "term": "権利放棄",
-      "reading": "けんりほうき",
-      "meaning": "waiver"
-    },
-    {
-      "source_index": 6753,
-      "id": "2831383",
-      "term": "賢良方正",
-      "reading": "けんりょうほうせい",
-      "meaning": "wise and virtuous / good and able men"
-    },
-    {
-      "source_index": 6754,
-      "id": "2184010",
-      "term": "権力意志",
-      "reading": "けんりょくいし",
-      "meaning": "the will to power (philosophical concept of Nietzsche)"
-    },
-    {
-      "source_index": 6755,
-      "id": "2871312",
-      "term": "権力抗争",
-      "reading": "けんりょくこうそう",
-      "meaning": "power struggle"
-    },
-    {
-      "source_index": 6756,
-      "id": "1782380",
-      "term": "権力主義",
-      "reading": "けんりょくしゅぎ",
-      "meaning": "authoritarianism"
-    },
-    {
-      "source_index": 6757,
-      "id": "1782410",
-      "term": "権力政治",
-      "reading": "けんりょくせいじ",
-      "meaning": "power politics"
-    },
-    {
-      "source_index": 6758,
-      "id": "2611630",
-      "term": "権力中枢",
-      "reading": "けんりょくちゅうすう",
-      "meaning": "centre of (political) power"
-    },
-    {
-      "source_index": 6759,
-      "id": "1258230",
-      "term": "権力闘争",
-      "reading": "けんりょくとうそう",
-      "meaning": "power struggle"
-    },
-    {
-      "source_index": 6760,
-      "id": "2804170",
-      "term": "権利濫用",
-      "reading": "けんりらんよう",
-      "meaning": "abuse of rights / improper use of a privilege"
-    },
-    {
-      "source_index": 6761,
-      "id": "2870635",
-      "term": "剣林弾雨",
-      "reading": "けんりんだんう",
-      "meaning": "fierce battle / intense combat"
-    },
-    {
-      "source_index": 6762,
-      "id": "2044780",
-      "term": "堅牢堅固",
-      "reading": "けんろうけんご",
-      "meaning": "firm and solid / stout and durable"
-    },
-    {
-      "source_index": 6763,
-      "id": "2813410",
-      "term": "懸腕直筆",
-      "reading": "けんわんちょくひつ",
-      "meaning": "calligraphy technique of holding the brush perpendicularly, lower arm raised, and elbow held away from the body"
-    },
-    {
-      "source_index": 6764,
-      "id": "2834566",
-      "term": "剣を落として舟を刻む",
-      "reading": "けんをおとしてふねをきざむ",
-      "meaning": "to not be getting with the times / to be unaware that things are changing / to drop one's sword (in the river) and carve (a mark) on the boat (to mark the spot where the sword was dropped)"
-    },
-    {
-      "source_index": 6765,
-      "id": "1616880",
-      "term": "鯨飲馬食",
-      "reading": "げいいんばしょく",
-      "meaning": "drinking like a fish and eating like a horse / eating mountains of food and drinking oceans of liquor"
-    },
-    {
-      "source_index": 6766,
-      "id": "2870449",
-      "term": "迎車料金",
-      "reading": "げいしゃりょうきん",
-      "meaning": "taxi dispatch fee / call-out fee / pickup charge"
-    },
-    {
-      "source_index": 6767,
-      "id": "2455460",
-      "term": "芸術映画",
-      "reading": "げいじゅつえいが",
-      "meaning": "art film"
-    },
-    {
-      "source_index": 6768,
-      "id": "1934000",
-      "term": "芸術活動",
-      "reading": "げいじゅつかつどう",
-      "meaning": "artistic activities"
-    },
-    {
-      "source_index": 6769,
-      "id": "2044440",
-      "term": "芸術家肌",
-      "reading": "げいじゅつかはだ",
-      "meaning": "being something of an artist / having something of the artist in one"
-    },
-    {
-      "source_index": 6770,
-      "id": "2641110",
-      "term": "芸術家村",
-      "reading": "げいじゅつかむら",
-      "meaning": "artists' colony / colony of artists"
-    },
-    {
-      "source_index": 6771,
-      "id": "2861500",
-      "term": "芸術学部",
-      "reading": "げいじゅつがくぶ",
-      "meaning": "faculty of arts / school of arts"
-    },
-    {
-      "source_index": 6772,
-      "id": "1253080",
-      "term": "芸術作品",
-      "reading": "げいじゅつさくひん",
-      "meaning": "work of art / artwork / objet d'art"
-    },
-    {
-      "source_index": 6773,
-      "id": "2219340",
-      "term": "芸術大学",
-      "reading": "げいじゅつだいがく",
-      "meaning": "university of arts / arts college"
-    },
-    {
-      "source_index": 6774,
-      "id": "2840894",
-      "term": "芸能記者",
-      "reading": "げいのうきしゃ",
-      "meaning": "entertainment journalist / entertainment reporter / gossip columnist"
-    },
-    {
-      "source_index": 6775,
-      "id": "2039440",
-      "term": "外科手術",
-      "reading": "げかしゅじゅつ",
-      "meaning": "surgery / surgical procedure"
-    },
-    {
-      "source_index": 6776,
-      "id": "2855151",
-      "term": "外科治療",
-      "reading": "げかちりょう",
-      "meaning": "surgical treatment / surgical therapy / surgery"
-    },
-    {
-      "source_index": 6777,
-      "id": "1819750",
-      "term": "劇症肝炎",
-      "reading": "げきしょうかんえん",
-      "meaning": "acute hepatitis"
-    },
-    {
-      "source_index": 6778,
-      "id": "2829113",
-      "term": "激甚災害",
-      "reading": "げきじんさいがい",
-      "meaning": "major disaster (that necessitates economic support to its victims) / serious disaster / catastrophe"
-    },
-    {
-      "source_index": 6779,
-      "id": "5244415",
-      "term": "劇団四季",
-      "reading": "げきだんしき",
-      "meaning": "Shiki Theatrical Company"
-    },
-    {
-      "source_index": 6780,
-      "id": "1227280",
-      "term": "逆鱗",
-      "reading": "げきりん",
-      "meaning": "one's superior's anger"
-    },
-    {
-      "source_index": 6781,
-      "id": "2089050",
-      "term": "逆鱗に触れる",
-      "reading": "げきりんにふれる",
-      "meaning": "to infuriate one's superior / to incur the anger of one's boss / to bring (a superior's) wrath down upon one"
-    },
-    {
-      "source_index": 6782,
-      "id": "2518360",
-      "term": "激励演説",
-      "reading": "げきれいえんぜつ",
-      "meaning": "speech of encouragement / pep talk"
-    },
-    {
-      "source_index": 6783,
-      "id": "2044510",
-      "term": "戯作三昧",
-      "reading": "げさくざんまい",
-      "meaning": "being absorbed in writing popular novels (cheap fiction) / being absorbed in writing something to amuse oneself"
-    },
-    {
-      "source_index": 6784,
-      "id": "2836538",
-      "term": "下座音楽",
-      "reading": "げざおんがく",
-      "meaning": "musical accompaniment and sound effects (esp. in kabuki)"
-    },
-    {
-      "source_index": 6785,
-      "id": "2828323",
-      "term": "蚰蜒羊歯",
-      "reading": "げじげじしだ",
-      "meaning": "Japanese beech fern (Thelypteris decursive-pinnata)"
-    },
-    {
-      "source_index": 6786,
-      "id": "1185390",
-      "term": "下女下男",
-      "reading": "げじょげなん",
-      "meaning": "servants"
-    },
-    {
-      "source_index": 6787,
-      "id": "1930930",
-      "term": "下水工事",
-      "reading": "げすいこうじ",
-      "meaning": "drainage (sewerage) works"
-    },
-    {
-      "source_index": 6788,
-      "id": "2870346",
-      "term": "下水処分",
-      "reading": "げすいしょぶん",
-      "meaning": "sewage disposal"
-    },
-    {
-      "source_index": 6789,
-      "id": "1718870",
-      "term": "下水処理",
-      "reading": "げすいしょり",
-      "meaning": "water treatment"
-    },
-    {
-      "source_index": 6790,
-      "id": "1185260",
-      "term": "下種根性",
-      "reading": "げすこんじょう",
-      "meaning": "mean feelings"
-    },
-    {
-      "source_index": 6791,
-      "id": "2703170",
-      "term": "下駄と焼き味噌",
-      "reading": "げたとやきみそ",
-      "meaning": "things that look similar but are completely different / geta and grilled miso"
-    },
-    {
-      "source_index": 6792,
-      "id": "2834538",
-      "term": "下駄の雪",
-      "reading": "げたのゆき",
-      "meaning": "hanger-on / lackey / sycophant"
-    },
-    {
-      "source_index": 6793,
-      "id": "1185790",
-      "term": "下駄を預ける",
-      "reading": "げたをあずける",
-      "meaning": "to leave everything to (someone)"
-    },
-    {
-      "source_index": 6794,
-      "id": "2836884",
-      "term": "下駄を履かせる",
-      "reading": "げたをはかせる",
-      "meaning": "to inflate (figures) / to jack up (e.g. a score) / to pad"
-    },
-    {
-      "source_index": 6795,
-      "id": "2044520",
-      "term": "外題学問",
-      "reading": "げだいがくもん",
-      "meaning": "putting on a knowing air when one only knows the title of the book (play, etc.) / pretending to understand the nature of something when one only knows its name"
-    },
-    {
-      "source_index": 6796,
-      "id": "2044540",
-      "term": "月下推敲",
-      "reading": "げっかすいこう",
-      "meaning": "polish / elaboration / repeatedly working over one's writing"
-    },
-    {
-      "source_index": 6797,
-      "id": "1255510",
-      "term": "月下氷人",
-      "reading": "げっかひょうじん",
-      "meaning": "go-between / matchmaker / Cupid"
-    },
-    {
-      "source_index": 6798,
-      "id": "1806120",
-      "term": "月下美人",
-      "reading": "げっかびじん",
-      "meaning": "Dutchman's pipe cactus (Epiphyllum oxypetalum) / night-blooming cereus / queen of the night"
-    },
-    {
-      "source_index": 6799,
-      "id": "2113090",
-      "term": "月下老人",
-      "reading": "げっかろうじん",
-      "meaning": "go-between / matchmaker"
-    },
     {
       "source_index": 6800,
       "id": "1806150",
@@ -7010,6 +6660,356 @@
       "term": "肛門性格",
       "reading": "こうもんせいかく",
       "meaning": "anal character (in psychoanalysis)"
+    },
+    {
+      "source_index": 7750,
+      "id": "2440980",
+      "term": "肛門性交",
+      "reading": "こうもんせいこう",
+      "meaning": "anal sex / anal intercourse"
+    },
+    {
+      "source_index": 7751,
+      "id": "2686270",
+      "term": "肛門直腸",
+      "reading": "こうもんちょくちょう",
+      "meaning": "anorectal"
+    },
+    {
+      "source_index": 7752,
+      "id": "2417290",
+      "term": "後門の虎、前門の狼",
+      "reading": "こうもんのとら、ぜんもんのおおかみ",
+      "meaning": "between the devil and the deep sea / out of the frying pan into the fire / a tiger at the back gate, a wolf at the front gate"
+    },
+    {
+      "source_index": 7753,
+      "id": "1284000",
+      "term": "高野豆腐",
+      "reading": "こうやどうふ",
+      "meaning": "freeze-dried tofu"
+    },
+    {
+      "source_index": 7754,
+      "id": "2093280",
+      "term": "紺屋の白袴",
+      "reading": "こうやのしろばかま",
+      "meaning": "the shoemaker's children go barefoot / specialists often fail to apply their skills to themselves / the dyer's white hakama"
+    },
+    {
+      "source_index": 7755,
+      "id": "1272560",
+      "term": "交友関係",
+      "reading": "こうゆうかんけい",
+      "meaning": "one's relationships / people one knows / circle of friends"
+    },
+    {
+      "source_index": 7756,
+      "id": "1677030",
+      "term": "公有財産",
+      "reading": "こうゆうざいさん",
+      "meaning": "public property"
+    },
+    {
+      "source_index": 7757,
+      "id": "1677020",
+      "term": "公有水面",
+      "reading": "こうゆうすいめん",
+      "meaning": "public waters"
+    },
+    {
+      "source_index": 7758,
+      "id": "2162910",
+      "term": "効用関数",
+      "reading": "こうようかんすう",
+      "meaning": "utility function"
+    },
+    {
+      "source_index": 7759,
+      "id": "2408190",
+      "term": "公用言語",
+      "reading": "こうようげんご",
+      "meaning": "official language"
+    },
+    {
+      "source_index": 7760,
+      "id": "2854441",
+      "term": "公用収用",
+      "reading": "こうようしゅうよう",
+      "meaning": "eminent domain / official expropriation"
+    },
+    {
+      "source_index": 7761,
+      "id": "2818400",
+      "term": "広葉樹林",
+      "reading": "こうようじゅりん",
+      "meaning": "broad-leaved forest / broadleaf forest"
+    },
+    {
+      "source_index": 7762,
+      "id": "2696400",
+      "term": "硬葉樹林",
+      "reading": "こうようじゅりん",
+      "meaning": "sclerophyll forest / sclerophyllous forest / hardwood forest"
+    },
+    {
+      "source_index": 7763,
+      "id": "2835162",
+      "term": "紅葉前線",
+      "reading": "こうようぜんせん",
+      "meaning": "autumn foliage front / fall foliage front"
+    },
+    {
+      "source_index": 7764,
+      "id": "2635840",
+      "term": "高麗親睨",
+      "reading": "こうらいおやにらみ",
+      "meaning": "Coreoperca herzi (species of temperate perch)"
+    },
+    {
+      "source_index": 7765,
+      "id": "5292223",
+      "term": "高麗航空",
+      "reading": "こうらいこうくう",
+      "meaning": "Air Koryo"
+    },
+    {
+      "source_index": 7766,
+      "id": "2667320",
+      "term": "高麗茶碗",
+      "reading": "こうらいぢゃわん",
+      "meaning": "Koryo dynasty tea bowl"
+    },
+    {
+      "source_index": 7767,
+      "id": "2171140",
+      "term": "高麗人参",
+      "reading": "こうらいにんじん",
+      "meaning": "Asian ginseng (Panax ginseng)"
+    },
+    {
+      "source_index": 7768,
+      "id": "2030880",
+      "term": "行楽日和",
+      "reading": "こうらくびより",
+      "meaning": "ideal weather for an outing"
+    },
+    {
+      "source_index": 7769,
+      "id": "1995270",
+      "term": "小売価格",
+      "reading": "こうりかかく",
+      "meaning": "retail price"
+    },
+    {
+      "source_index": 7770,
+      "id": "1640160",
+      "term": "功利主義",
+      "reading": "こうりしゅぎ",
+      "meaning": "utilitarianism"
+    },
+    {
+      "source_index": 7771,
+      "id": "1275010",
+      "term": "公立学校",
+      "reading": "こうりつがっこう",
+      "meaning": "public school"
+    },
+    {
+      "source_index": 7772,
+      "id": "2143850",
+      "term": "公立高校",
+      "reading": "こうりつこうこう",
+      "meaning": "public high school"
+    },
+    {
+      "source_index": 7773,
+      "id": "1275230",
+      "term": "効率向上",
+      "reading": "こうりつこうじょう",
+      "meaning": "improvement in efficiency"
+    },
+    {
+      "source_index": 7774,
+      "id": "2549750",
+      "term": "公立大学",
+      "reading": "こうりつだいがく",
+      "meaning": "public university"
+    },
+    {
+      "source_index": 7775,
+      "id": "2840329",
+      "term": "公立病院",
+      "reading": "こうりつびょういん",
+      "meaning": "public hospital / government hospital / municipal hospital"
+    },
+    {
+      "source_index": 7776,
+      "id": "1743830",
+      "term": "小売値段",
+      "reading": "こうりねだん",
+      "meaning": "retail price"
+    },
+    {
+      "source_index": 7777,
+      "id": "2424220",
+      "term": "交流会議",
+      "reading": "こうりゅうかいぎ",
+      "meaning": "exchange conference (e.g. cultural, educational, etc.) / exchange meeting"
+    },
+    {
+      "source_index": 7778,
+      "id": "2863969",
+      "term": "交流回路",
+      "reading": "こうりゅうかいろ",
+      "meaning": "alternating current circuit / AC circuit"
+    },
+    {
+      "source_index": 7779,
+      "id": "2747080",
+      "term": "交流試合",
+      "reading": "こうりゅうじあい",
+      "meaning": "interleague game / interleague match"
+    },
+    {
+      "source_index": 7780,
+      "id": "2536050",
+      "term": "交流人口",
+      "reading": "こうりゅうじんこう",
+      "meaning": "nonresident population"
+    },
+    {
+      "source_index": 7781,
+      "id": "1272590",
+      "term": "交流人事",
+      "reading": "こうりゅうじんじ",
+      "meaning": "personnel shuffle"
+    },
+    {
+      "source_index": 7782,
+      "id": "2405180",
+      "term": "交流電源",
+      "reading": "こうりゅうでんげん",
+      "meaning": "alternator / AC generator"
+    },
+    {
+      "source_index": 7783,
+      "id": "2863436",
+      "term": "交流分析",
+      "reading": "こうりゅうぶんせき",
+      "meaning": "transactional analysis"
+    },
+    {
+      "source_index": 7784,
+      "id": "2822380",
+      "term": "黄粱一炊",
+      "reading": "こうりょういっすい",
+      "meaning": "fleeting nature of riches and honour (honor)"
+    },
+    {
+      "source_index": 7785,
+      "id": "2834413",
+      "term": "香料貿易",
+      "reading": "こうりょうぼうえき",
+      "meaning": "spice trade"
+    },
+    {
+      "source_index": 7786,
+      "id": "2857597",
+      "term": "亢龍有悔",
+      "reading": "こうりょうゆうかい",
+      "meaning": "the arrogant dragon will have cause to repent / he who reaches the top is bound to fail if he is not prudent"
+    },
+    {
+      "source_index": 7787,
+      "id": "2045070",
+      "term": "荒涼落莫",
+      "reading": "こうりょうらくばく",
+      "meaning": "scene looking desolate and forlorn"
+    },
+    {
+      "source_index": 7788,
+      "id": "2852481",
+      "term": "恒例行事",
+      "reading": "こうれいぎょうじ",
+      "meaning": "regular event / annual event"
+    },
+    {
+      "source_index": 7789,
+      "id": "2872204",
+      "term": "高齢社会",
+      "reading": "こうれいしゃかい",
+      "meaning": "aging society / ageing society / graying society"
+    },
+    {
+      "source_index": 7790,
+      "id": "2855063",
+      "term": "高齢出産",
+      "reading": "こうれいしゅっさん",
+      "meaning": "delayed child-bearing (esp. after the age of 35) / late child-bearing"
+    },
+    {
+      "source_index": 7791,
+      "id": "1685730",
+      "term": "航路標識",
+      "reading": "こうろひょうしき",
+      "meaning": "sea mark / seamark / beacon"
+    },
+    {
+      "source_index": 7792,
+      "id": "1686090",
+      "term": "行路病者",
+      "reading": "こうろびょうしゃ",
+      "meaning": "person fallen sick by the wayside"
+    },
+    {
+      "source_index": 7793,
+      "id": "1280320",
+      "term": "甲論乙駁",
+      "reading": "こうろんおつばく",
+      "meaning": "arguments pro and con"
+    },
+    {
+      "source_index": 7794,
+      "id": "2030900",
+      "term": "高論卓説",
+      "reading": "こうろんたくせつ",
+      "meaning": "an excellent opinion / an insightful view"
+    },
+    {
+      "source_index": 7795,
+      "id": "1935300",
+      "term": "講和会議",
+      "reading": "こうわかいぎ",
+      "meaning": "peace conference"
+    },
+    {
+      "source_index": 7796,
+      "id": "2533030",
+      "term": "講和条件",
+      "reading": "こうわじょうけん",
+      "meaning": "peace terms / conditions of peace"
+    },
+    {
+      "source_index": 7797,
+      "id": "1834170",
+      "term": "講和条約",
+      "reading": "こうわじょうやく",
+      "meaning": "peace treaty"
+    },
+    {
+      "source_index": 7798,
+      "id": "2868847",
+      "term": "講和談判",
+      "reading": "こうわだんぱん",
+      "meaning": "peace negotiations"
+    },
+    {
+      "source_index": 7799,
+      "id": "2838106",
+      "term": "港湾管理",
+      "reading": "こうわんかんり",
+      "meaning": "port authority / port administration"
     }
   ]
 }
