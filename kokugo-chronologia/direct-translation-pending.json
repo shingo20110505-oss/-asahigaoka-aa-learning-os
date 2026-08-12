@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 5350,
-  "english_only_remaining": 9650,
+  "already_direct_japanese": 5400,
+  "english_only_remaining": 9600,
   "english_only_rank_counts": {
-    "(blank)": 9650
+    "(blank)": 9600
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 5350,
-      "id": "1933540",
-      "term": "緊急逮捕",
-      "reading": "きんきゅうたいほ",
-      "meaning": "arrest without warrant"
-    },
-    {
-      "source_index": 5351,
-      "id": "1241860",
-      "term": "緊急着陸",
-      "reading": "きんきゅうちゃくりく",
-      "meaning": "emergency landing"
-    },
-    {
-      "source_index": 5352,
-      "id": "1990790",
-      "term": "緊急通報",
-      "reading": "きんきゅうつうほう",
-      "meaning": "emergency call"
-    },
-    {
-      "source_index": 5353,
-      "id": "2618020",
-      "term": "緊急停止",
-      "reading": "きんきゅうていし",
-      "meaning": "emergency stop / emergency shutdown / scram (nuclear reactor)"
-    },
-    {
-      "source_index": 5354,
-      "id": "2851329",
-      "term": "緊急停車",
-      "reading": "きんきゅうていしゃ",
-      "meaning": "emergency stop (of a train, car, etc.)"
-    },
-    {
-      "source_index": 5355,
-      "id": "2115780",
-      "term": "緊急電話",
-      "reading": "きんきゅうでんわ",
-      "meaning": "urgent phone call / emergency phone call"
-    },
-    {
-      "source_index": 5356,
-      "id": "1727160",
-      "term": "緊急動議",
-      "reading": "きんきゅうどうぎ",
-      "meaning": "urgent motion"
-    },
-    {
-      "source_index": 5357,
-      "id": "2640760",
-      "term": "緊急配備",
-      "reading": "きんきゅうはいび",
-      "meaning": "emergency deployment (police, etc.) / emergency posting"
-    },
-    {
-      "source_index": 5358,
-      "id": "1933550",
-      "term": "緊急発進",
-      "reading": "きんきゅうはっしん",
-      "meaning": "scrambling / scramble"
-    },
-    {
-      "source_index": 5359,
-      "id": "1727170",
-      "term": "緊急避難",
-      "reading": "きんきゅうひなん",
-      "meaning": "emergency evacuation"
-    },
-    {
-      "source_index": 5360,
-      "id": "2660990",
-      "term": "緊急避妊",
-      "reading": "きんきゅうひにん",
-      "meaning": "emergency contraception"
-    },
-    {
-      "source_index": 5361,
-      "id": "1990800",
-      "term": "緊急浮上",
-      "reading": "きんきゅうふじょう",
-      "meaning": "emergency ascent (submarine) / emergency surfacing"
-    },
-    {
-      "source_index": 5362,
-      "id": "1990820",
-      "term": "緊急部隊",
-      "reading": "きんきゅうぶたい",
-      "meaning": "rapid force"
-    },
-    {
-      "source_index": 5363,
-      "id": "2868854",
-      "term": "緊急物資",
-      "reading": "きんきゅうぶっし",
-      "meaning": "emergency supplies / essential items"
-    },
-    {
-      "source_index": 5364,
-      "id": "2222650",
-      "term": "緊急用事",
-      "reading": "きんきゅうようじ",
-      "meaning": "emergency tasks / urgent tasks"
-    },
-    {
-      "source_index": 5365,
-      "id": "2857760",
-      "term": "近況報告",
-      "reading": "きんきょうほうこく",
-      "meaning": "exchange of one's recent news / catch-up"
-    },
-    {
-      "source_index": 5366,
-      "id": "2808760",
-      "term": "筋緊張症",
-      "reading": "きんきんちょうしょう",
-      "meaning": "myotonia"
-    },
-    {
-      "source_index": 5367,
-      "id": "2839230",
-      "term": "金魚のうんこ",
-      "reading": "きんぎょのうんこ",
-      "meaning": "person who just tags along / hanger-on / person who follows someone around like a shadow"
-    },
-    {
-      "source_index": 5368,
-      "id": "2129400",
-      "term": "金魚のフン",
-      "reading": "きんぎょのふん",
-      "meaning": "person who just tags along / hanger-on / person who follows someone around like a shadow"
-    },
-    {
-      "source_index": 5369,
-      "id": "2587770",
-      "term": "金銀泥絵",
-      "reading": "きんぎんでいえ",
-      "meaning": "painting made with gold or silver paint (usu. on a dark background)"
-    },
-    {
-      "source_index": 5370,
-      "id": "2422150",
-      "term": "金黒羽白",
-      "reading": "きんくろはじろ",
-      "meaning": "tufted duck (Aythya fuligula)"
-    },
-    {
-      "source_index": 5371,
-      "id": "1242830",
-      "term": "金権政治",
-      "reading": "きんけんせいじ",
-      "meaning": "money politics / plutocracy"
-    },
-    {
-      "source_index": 5372,
-      "id": "2044200",
-      "term": "勤倹貯蓄",
-      "reading": "きんけんちょちく",
-      "meaning": "thrift and saving"
-    },
-    {
-      "source_index": 5373,
-      "id": "2030600",
-      "term": "勤倹力行",
-      "reading": "きんけんりっこう",
-      "meaning": "work hard and practice frugality"
-    },
-    {
-      "source_index": 5374,
-      "id": "1779870",
-      "term": "謹厳実直",
-      "reading": "きんげんじっちょく",
-      "meaning": "sober and honest"
-    },
-    {
-      "source_index": 5375,
-      "id": "2808870",
-      "term": "筋原線維",
-      "reading": "きんげんせんい",
-      "meaning": "myofibril"
-    },
-    {
-      "source_index": 5376,
-      "id": "2745290",
-      "term": "近現代史",
-      "reading": "きんげんだいし",
-      "meaning": "modern history / modern and current history / recent history"
-    },
-    {
-      "source_index": 5377,
-      "id": "2044210",
-      "term": "金言名句",
-      "reading": "きんげんめいく",
-      "meaning": "golden (wise) saying / aphorism / maxim"
-    },
-    {
-      "source_index": 5378,
-      "id": "1669770",
-      "term": "均衡価格",
-      "reading": "きんこうかかく",
-      "meaning": "equilibrium price"
-    },
-    {
-      "source_index": 5379,
-      "id": "1669780",
-      "term": "均衡経済",
-      "reading": "きんこうけいざい",
-      "meaning": "balanced economy"
-    },
-    {
-      "source_index": 5380,
-      "id": "2689230",
-      "term": "近交係数",
-      "reading": "きんこうけいすう",
-      "meaning": "inbreeding coefficient / coefficient of consanguinity"
-    },
-    {
-      "source_index": 5381,
-      "id": "2689000",
-      "term": "近交弱勢",
-      "reading": "きんこうじゃくせい",
-      "meaning": "inbreeding depression"
-    },
-    {
-      "source_index": 5382,
-      "id": "2688990",
-      "term": "近交退化",
-      "reading": "きんこうたいか",
-      "meaning": "inbreeding depression"
-    },
-    {
-      "source_index": 5383,
-      "id": "1933570",
-      "term": "近郊都市",
-      "reading": "きんこうとし",
-      "meaning": "neighboring towns / neighbouring towns"
-    },
-    {
-      "source_index": 5384,
-      "id": "1780530",
-      "term": "近郊農業",
-      "reading": "きんこうのうぎょう",
-      "meaning": "agriculture in urban areas"
-    },
-    {
-      "source_index": 5385,
-      "id": "2040330",
-      "term": "金口木舌",
-      "reading": "きんこうぼくぜつ",
-      "meaning": "(public) opinion leader"
-    },
-    {
-      "source_index": 5386,
-      "id": "1669760",
-      "term": "均衡予算",
-      "reading": "きんこうよさん",
-      "meaning": "balanced budget"
-    },
-    {
-      "source_index": 5387,
-      "id": "1241950",
-      "term": "緊褌一番",
-      "reading": "きんこんいちばん",
-      "meaning": "gird oneself up"
-    },
-    {
-      "source_index": 5388,
-      "id": "2044220",
-      "term": "近郷近在",
-      "reading": "きんごうきんざい",
-      "meaning": "surrounding country / neighboring villages"
-    },
-    {
-      "source_index": 5389,
-      "id": "1990760",
-      "term": "筋弛緩剤",
-      "reading": "きんしかんざい",
-      "meaning": "muscle-relaxant drug"
-    },
-    {
-      "source_index": 5390,
-      "id": "2848650",
-      "term": "筋弛緩薬",
-      "reading": "きんしかんやく",
-      "meaning": "muscle relaxant"
-    },
-    {
-      "source_index": 5391,
-      "id": "2119480",
-      "term": "近視眼的",
-      "reading": "きんしがんてき",
-      "meaning": "myopic / short-sighted"
-    },
-    {
-      "source_index": 5392,
-      "id": "2113080",
-      "term": "金枝玉葉",
-      "reading": "きんしぎょくよう",
-      "meaning": "member of the Imperial family / royalty"
-    },
-    {
-      "source_index": 5393,
-      "id": "2027160",
-      "term": "金鵄勲章",
-      "reading": "きんしくんしょう",
-      "meaning": "The Order of the Golden Kite (Japanese military award)"
-    },
-    {
-      "source_index": 5394,
-      "id": "2829857",
-      "term": "禁止事項",
-      "reading": "きんしじこう",
-      "meaning": "prohibited item / banned item"
-    },
-    {
-      "source_index": 5395,
-      "id": "1241560",
-      "term": "禁止条約",
-      "reading": "きんしじょうやく",
-      "meaning": "ban (treaty)"
-    },
-    {
-      "source_index": 5396,
-      "id": "1681910",
-      "term": "琴瑟相和す",
-      "reading": "きんしつあいわす",
-      "meaning": "to be happily married / to go together like two zithers"
-    },
-    {
-      "source_index": 5397,
-      "id": "2030610",
-      "term": "琴瑟相和",
-      "reading": "きんしつそうわ",
-      "meaning": "pair of persons (especially a married couple) being intimate and harmonious / being happily married"
-    },
-    {
-      "source_index": 5398,
-      "id": "2810290",
-      "term": "禁止命令",
-      "reading": "きんしめいれい",
-      "meaning": "interdict / prohibition order / writ of prohibition"
-    },
-    {
-      "source_index": 5399,
-      "id": "2786140",
-      "term": "金紗縮緬",
-      "reading": "きんしゃちりめん",
-      "meaning": "silk crepe"
-    },
     {
       "source_index": 5400,
       "id": "1990740",
@@ -7010,6 +6660,356 @@
       "term": "形態形成",
       "reading": "けいたいけいせい",
       "meaning": "morphogenesis"
+    },
+    {
+      "source_index": 6350,
+      "id": "2253140",
+      "term": "携帯小説",
+      "reading": "けいたいしょうせつ",
+      "meaning": "cell phone novel / literary work originally written on a cellular phone"
+    },
+    {
+      "source_index": 6351,
+      "id": "2450630",
+      "term": "形態素語",
+      "reading": "けいたいそご",
+      "meaning": "morphemic word"
+    },
+    {
+      "source_index": 6352,
+      "id": "2352240",
+      "term": "携帯端末",
+      "reading": "けいたいたんまつ",
+      "meaning": "portable terminal / mobile device / handset"
+    },
+    {
+      "source_index": 6353,
+      "id": "2536890",
+      "term": "携帯電郵",
+      "reading": "けいたいでんゆう",
+      "meaning": "email from a cell phone or mobile phone"
+    },
+    {
+      "source_index": 6354,
+      "id": "1250690",
+      "term": "携帯電話",
+      "reading": "けいたいでんわ",
+      "meaning": "mobile phone / cell phone"
+    },
+    {
+      "source_index": 6355,
+      "id": "2153810",
+      "term": "携帯番号",
+      "reading": "けいたいばんごう",
+      "meaning": "mobile phone number / cell phone number"
+    },
+    {
+      "source_index": 6356,
+      "id": "2674300",
+      "term": "形態模写",
+      "reading": "けいたいもしゃ",
+      "meaning": "mimicry / impersonation"
+    },
+    {
+      "source_index": 6357,
+      "id": "2833141",
+      "term": "携帯糧秣",
+      "reading": "けいたいりょうまつ",
+      "meaning": "military provisions"
+    },
+    {
+      "source_index": 6358,
+      "id": "1636770",
+      "term": "兄たり難く弟たり難し",
+      "reading": "けいたりがたくていたりがたし",
+      "meaning": "both people are superb in skill (and thus it is hard to rank them)"
+    },
+    {
+      "source_index": 6359,
+      "id": "2741590",
+      "term": "経膣分娩",
+      "reading": "けいちつぶんべん",
+      "meaning": "vaginal delivery"
+    },
+    {
+      "source_index": 6360,
+      "id": "2861825",
+      "term": "経腸栄養",
+      "reading": "けいちょうえいよう",
+      "meaning": "enteral nutrition / enteral feeding"
+    },
+    {
+      "source_index": 6361,
+      "id": "2856288",
+      "term": "慶弔休暇",
+      "reading": "けいちょうきゅうか",
+      "meaning": "special leave for births, marriages or deaths in the family"
+    },
+    {
+      "source_index": 6362,
+      "id": "2753480",
+      "term": "軽佻浮華",
+      "reading": "けいちょうふか",
+      "meaning": "frivolity / superficiality / fickleness"
+    },
+    {
+      "source_index": 6363,
+      "id": "1252940",
+      "term": "軽佻浮薄",
+      "reading": "けいちょうふはく",
+      "meaning": "frivolity / levity / shallowness"
+    },
+    {
+      "source_index": 6364,
+      "id": "2396980",
+      "term": "頸椎脱臼",
+      "reading": "けいついだっきゅう",
+      "meaning": "cervical dislocation"
+    },
+    {
+      "source_index": 6365,
+      "id": "2870884",
+      "term": "頸椎捻挫",
+      "reading": "けいついねんざ",
+      "meaning": "cervical sprain / whiplash"
+    },
+    {
+      "source_index": 6366,
+      "id": "2044480",
+      "term": "敬天愛人",
+      "reading": "けいてんあいじん",
+      "meaning": "revere heaven, love people"
+    },
+    {
+      "source_index": 6367,
+      "id": "1251050",
+      "term": "系統神学",
+      "reading": "けいとうしんがく",
+      "meaning": "systematic theology"
+    },
+    {
+      "source_index": 6368,
+      "id": "2237090",
+      "term": "系統発生",
+      "reading": "けいとうはっせい",
+      "meaning": "phylogeny / phylogenesis"
+    },
+    {
+      "source_index": 6369,
+      "id": "2808000",
+      "term": "系統分類",
+      "reading": "けいとうぶんるい",
+      "meaning": "phylogenetic classification / phylogenetic taxonomy"
+    },
+    {
+      "source_index": 6370,
+      "id": "2553440",
+      "term": "系統連系",
+      "reading": "けいとうれんけい",
+      "meaning": "grid connection"
+    },
+    {
+      "source_index": 6371,
+      "id": "2605950",
+      "term": "傾動地塊",
+      "reading": "けいどうちかい",
+      "meaning": "tilt block / tilted fault block"
+    },
+    {
+      "source_index": 6372,
+      "id": "2669170",
+      "term": "軽度懸念",
+      "reading": "けいどけねん",
+      "meaning": "least concern (IUCN Red List category)"
+    },
+    {
+      "source_index": 6373,
+      "id": "2871723",
+      "term": "経尿道的",
+      "reading": "けいにょうどうてき",
+      "meaning": "transurethral"
+    },
+    {
+      "source_index": 6374,
+      "id": "2272290",
+      "term": "経年変化",
+      "reading": "けいねんへんか",
+      "meaning": "change over the years / aging / ageing"
+    },
+    {
+      "source_index": 6375,
+      "id": "2272300",
+      "term": "経年劣化",
+      "reading": "けいねんれっか",
+      "meaning": "degradation over time / time-related deterioration"
+    },
+    {
+      "source_index": 6376,
+      "id": "2044490",
+      "term": "軽薄才子",
+      "reading": "けいはくさいし",
+      "meaning": "shallow, glib and obsequious person"
+    },
+    {
+      "source_index": 6377,
+      "id": "1831800",
+      "term": "軽薄短小",
+      "reading": "けいはくたんしょう",
+      "meaning": "small, light and thin (of consumer products, esp. electronics)"
+    },
+    {
+      "source_index": 6378,
+      "id": "1933970",
+      "term": "軽犯罪法",
+      "reading": "けいはんざいほう",
+      "meaning": "Minor Offenses Act"
+    },
+    {
+      "source_index": 6379,
+      "id": "1831820",
+      "term": "軽爆撃機",
+      "reading": "けいばくげきき",
+      "meaning": "light bomber"
+    },
+    {
+      "source_index": 6380,
+      "id": "1933220",
+      "term": "競馬新聞",
+      "reading": "けいばしんぶん",
+      "meaning": "racing form / racing (news)paper"
+    },
+    {
+      "source_index": 6381,
+      "id": "1821410",
+      "term": "閨閥政治",
+      "reading": "けいばつせいじ",
+      "meaning": "government by relatives of ruler's wife"
+    },
+    {
+      "source_index": 6382,
+      "id": "2671130",
+      "term": "競馬予想",
+      "reading": "けいばよそう",
+      "meaning": "racing tip / racing prediction"
+    },
+    {
+      "source_index": 6383,
+      "id": "2770180",
+      "term": "経皮感染",
+      "reading": "けいひかんせん",
+      "meaning": "percutaneous infection"
+    },
+    {
+      "source_index": 6384,
+      "id": "2830654",
+      "term": "軽飛行機",
+      "reading": "けいひこうき",
+      "meaning": "light aircraft"
+    },
+    {
+      "source_index": 6385,
+      "id": "1251650",
+      "term": "経費削減",
+      "reading": "けいひさくげん",
+      "meaning": "reduction of expenditure / reduction of expenses / cost reduction"
+    },
+    {
+      "source_index": 6386,
+      "id": "1933930",
+      "term": "経費節約",
+      "reading": "けいひせつやく",
+      "meaning": "curtailment of expenditure / financial retrenchment"
+    },
+    {
+      "source_index": 6387,
+      "id": "2770170",
+      "term": "経皮毒性",
+      "reading": "けいひどくせい",
+      "meaning": "dermal toxicity / percutaneous toxicity"
+    },
+    {
+      "source_index": 6388,
+      "id": "5220256",
+      "term": "京浜急行",
+      "reading": "けいひんきゅうこう",
+      "meaning": "Keikyu"
+    },
+    {
+      "source_index": 6389,
+      "id": "2860461",
+      "term": "経鼻胃管",
+      "reading": "けいびいかん",
+      "meaning": "nasogastric tube / NG tube"
+    },
+    {
+      "source_index": 6390,
+      "id": "1991830",
+      "term": "警備会社",
+      "reading": "けいびがいしゃ",
+      "meaning": "security firm / security company"
+    },
+    {
+      "source_index": 6391,
+      "id": "1252500",
+      "term": "警備強化",
+      "reading": "けいびきょうか",
+      "meaning": "increased or beefed up security"
+    },
+    {
+      "source_index": 6392,
+      "id": "2723200",
+      "term": "警備警察",
+      "reading": "けいびけいさつ",
+      "meaning": "security police / peace preservation police"
+    },
+    {
+      "source_index": 6393,
+      "id": "2872285",
+      "term": "警備体制",
+      "reading": "けいびたいせい",
+      "meaning": "security arrangements / security system / security setup"
+    },
+    {
+      "source_index": 6394,
+      "id": "2132690",
+      "term": "警備態勢",
+      "reading": "けいびたいせい",
+      "meaning": "security posture / security readiness / security preparedness"
+    },
+    {
+      "source_index": 6395,
+      "id": "2862475",
+      "term": "警備保障",
+      "reading": "けいびほしょう",
+      "meaning": "security contracting (against fire, theft, etc.) / private security arrangement"
+    },
+    {
+      "source_index": 6396,
+      "id": "1831720",
+      "term": "軽便鉄道",
+      "reading": "けいべんてつどう",
+      "meaning": "narrow-gauge railway / light railway"
+    },
+    {
+      "source_index": 6397,
+      "id": "1831690",
+      "term": "軽妙洒脱",
+      "reading": "けいみょうしゃだつ",
+      "meaning": "witty / smart and polished"
+    },
+    {
+      "source_index": 6398,
+      "id": "1249810",
+      "term": "刑務作業",
+      "reading": "けいむさぎょう",
+      "meaning": "penal labour / work assigned to prisoners"
+    },
+    {
+      "source_index": 6399,
+      "id": "1249830",
+      "term": "刑務所長",
+      "reading": "けいむしょちょう",
+      "meaning": "prison warden"
     }
   ]
 }
