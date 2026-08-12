@@ -1,4 +1,4 @@
-name: Extract Kokugo A Rank Pending
+name: Extract Kokugo Direct Translation Batch
 on:
   push:
     paths:
@@ -16,7 +16,7 @@ jobs:
         run: |
           git fetch origin main
           git reset --hard origin/main
-      - name: Extract first A-rank English meanings
+      - name: Extract direct-translation batch
         shell: python
         run: |
           import json,re
@@ -29,28 +29,34 @@ jobs:
               jp=len(re.findall(r'[ぁ-んァ-ヶ一-龠々〆ヵヶ]',s))
               latin=len(re.findall(r'[A-Za-z]',s))
               return bool(s) and latin>=3 and jp==0
-          pending=[r for r in rows if needs_ja(r.get('meaning'))]
-          rank_counts=Counter(str(r.get('rank','')).strip() or '(blank)' for r in pending)
-          a=[r for r in pending if str(r.get('rank','')).strip().upper()=='A']
+          pending=[(i,r) for i,r in enumerate(rows) if needs_ja(r.get('meaning'))]
+          rank_counts=Counter(str(r.get('rank','')).strip() or '(blank)' for _,r in pending)
+          a=[(i,r) for i,r in pending if str(r.get('rank','')).strip().upper()=='A']
+          selected=a[:60] if a else pending[:60]
           keys=('id','term','reading','meaning','rank','type')
-          targets=[{k:r.get(k) for k in keys} for r in a[:60]]
+          targets=[]
+          for i,r in selected:
+              x={'source_index':i}
+              x.update({k:r.get(k) for k in keys})
+              targets.append(x)
           out={
             'total_rows':len(rows),
             'english_only_total':len(pending),
             'english_only_rank_counts':dict(rank_counts),
             'a_rank_total':len(a),
+            'selection':'A-rank' if a else 'first-visible-order (source rank is blank)',
             'batch_size':len(targets),
             'targets':targets,
           }
-          Path('kokugo-chronologia/a-rank-english-pending.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          Path('kokugo-chronologia/direct-translation-pending.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           print(json.dumps({k:v for k,v in out.items() if k!='targets'},ensure_ascii=False))
       - name: Commit extraction
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add kokugo-chronologia/a-rank-english-pending.json
+          git add kokugo-chronologia/direct-translation-pending.json
           if git diff --cached --quiet; then echo 'No changes'; exit 0; fi
-          git commit -m 'Extract A-rank English meanings for direct Japanese translation'
+          git commit -m 'Extract direct Kokugo translation batch'
           for i in 1 2 3 4 5; do
             if git push origin HEAD:main; then exit 0; fi
             git fetch origin main
