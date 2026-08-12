@@ -1,466 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 2000,
-  "english_only_remaining": 13000,
+  "already_direct_japanese": 2050,
+  "english_only_remaining": 12950,
   "english_only_rank_counts": {
-    "(blank)": 13000
+    "(blank)": 12950
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 2000,
-      "id": "1973850",
-      "term": "応用力学",
-      "reading": "おうようりきがく",
-      "meaning": "applied mechanics",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2001,
-      "id": "2836858",
-      "term": "往来手形",
-      "reading": "おうらいてがた",
-      "meaning": "Edo-period travel permit",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2002,
-      "id": "5741451",
-      "term": "王立協会",
-      "reading": "おうりつきょうかい",
-      "meaning": "Royal Society",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2003,
-      "id": "2852224",
-      "term": "応力緩和",
-      "reading": "おうりょくかんわ",
-      "meaning": "stress relaxation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2004,
-      "id": "1918400",
-      "term": "応力経路",
-      "reading": "おうりょくけいろ",
-      "meaning": "stress path",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2005,
-      "id": "2811440",
-      "term": "応力腐食",
-      "reading": "おうりょくふしょく",
-      "meaning": "stress corrosion",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2006,
-      "id": "1861900",
-      "term": "大字片山",
-      "reading": "おおあざかたやま",
-      "meaning": "name of a town section",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2007,
-      "id": "2704220",
-      "term": "大足尖鼠",
-      "reading": "おおあしとがりねずみ",
-      "meaning": "long-clawed shrew (Sorex unguiculatus)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2008,
-      "id": "2790430",
-      "term": "大泡立草",
-      "reading": "おおあわだちそう",
-      "meaning": "giant goldenrod (Solidago gigantea var. leiophylla) / late goldenrod",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2009,
-      "id": "5743580",
-      "term": "大分県警",
-      "reading": "おおいたけんけい",
-      "meaning": "Ōita Prefectural Police (abbr)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2010,
-      "id": "5497706",
-      "term": "大分大学",
-      "reading": "おおいただいがく",
-      "meaning": "Oita University",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2011,
-      "id": "2022260",
-      "term": "大銀杏髷",
-      "reading": "おおいちょうまげ",
-      "meaning": "ginkgo-leaf top-knot worn by makuuchi and juryo division wrestlers",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2012,
-      "id": "2605150",
-      "term": "大糸掛貝",
-      "reading": "おおいとかけがい",
-      "meaning": "precious wentletrap (Epitonium scalare)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2013,
-      "id": "2660010",
-      "term": "大犬陰嚢",
-      "reading": "おおいぬふぐり",
-      "meaning": "Persian speedwell (Veronica persica) / large field speedwell / bird's-eye speedwell",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2014,
-      "id": "5741892",
-      "term": "大江戸線",
-      "reading": "おおえどせん",
-      "meaning": "Ōedo Line",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2015,
-      "id": "5488583",
-      "term": "大岡越前",
-      "reading": "おおおかえちぜん",
-      "meaning": "Ōoka Echizen (televised period drama; 1970-1999)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2016,
-      "id": "2558970",
-      "term": "大型機械",
-      "reading": "おおがたきかい",
-      "meaning": "heavy machinery / large machinery / plant",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2017,
-      "id": "2456770",
-      "term": "大型植物",
-      "reading": "おおがたしょくぶつ",
-      "meaning": "macroflora / large plant",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2018,
-      "id": "2849218",
-      "term": "大型新人",
-      "reading": "おおがたしんじん",
-      "meaning": "newcomer showing great promise / bright new talent",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2019,
-      "id": "2743490",
-      "term": "大型動物",
-      "reading": "おおがたどうぶつ",
-      "meaning": "megafauna / large animal",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2020,
-      "id": "2168130",
-      "term": "大型連休",
-      "reading": "おおがたれんきゅう",
-      "meaning": "long holiday (consisting of one or two weekends and multiple public holidays; esp. Golden Week)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2021,
-      "id": "5498467",
-      "term": "大木建設",
-      "reading": "おおきけんせつ",
-      "meaning": "Ohki Corporation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2022,
-      "id": "2028430",
-      "term": "大きな顔をする",
-      "reading": "おおきなかおをする",
-      "meaning": "to look as if one is important / to swagger around",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2023,
-      "id": "2790240",
-      "term": "大金鶏菊",
-      "reading": "おおきんけいぎく",
-      "meaning": "tickseed (Coreopsis lanceolata) / tickweed / sand coreopsis",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2024,
-      "id": "2826930",
-      "term": "大口顧客",
-      "reading": "おおくちこきゃく",
-      "meaning": "major customer / large customer",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2025,
-      "id": "2580470",
-      "term": "大国主神",
-      "reading": "おおくにぬしのかみ",
-      "meaning": "Okuninushi / deity of magic and medicine later viewed as equivalent to Daikokuten and celebrated at Izumo Grand Shrine",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2026,
-      "id": "2580460",
-      "term": "大国主命",
-      "reading": "おおくにぬしのみこと",
-      "meaning": "Okuninushi / deity of magic and medicine later viewed as equivalent to Daikokuten and celebrated at Izumo Grand Shrine",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2027,
-      "id": "1414440",
-      "term": "大蔵大臣",
-      "reading": "おおくらだいじん",
-      "meaning": "Minister of Finance",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2028,
-      "id": "2447910",
-      "term": "大黒慈姑",
-      "reading": "おおくろぐわい",
-      "meaning": "Chinese water chestnut (Eleocharis dulcis var. tuberosa)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2029,
-      "id": "2627820",
-      "term": "大軍艦鳥",
-      "reading": "おおぐんかんどり",
-      "meaning": "great frigatebird (Fregata minor)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2030,
-      "id": "2580270",
-      "term": "大阪会議",
-      "reading": "おおさかかいぎ",
-      "meaning": "Osaka Conference / meeting held by the leaders of the Meiji Restoration in Osaka to discuss the formation of a representative assembly (January-February, 1875)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2031,
-      "id": "5491526",
-      "term": "大阪機工",
-      "reading": "おおさかきこう",
-      "meaning": "OKK Corporation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2032,
-      "id": "5491542",
-      "term": "大阪芸大",
-      "reading": "おおさかげいだい",
-      "meaning": "Osaka University of Arts",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2033,
-      "id": "2099500",
-      "term": "大阪高裁",
-      "reading": "おおさかこうさい",
-      "meaning": "Osaka High Court",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2034,
-      "id": "2580260",
-      "term": "大阪事件",
-      "reading": "おおさかじけん",
-      "meaning": "Osaka Incident (plot by Oi Kentaro and the Liberal Party to support a Korean uprising; 1885)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2035,
-      "id": "5491612",
-      "term": "大阪大学",
-      "reading": "おおさかだいがく",
-      "meaning": "Osaka University",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2036,
-      "id": "5744987",
-      "term": "大阪桐蔭",
-      "reading": "おおさかとういん",
-      "meaning": "Osaka Tōin Junior and Senior High School (abbr)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2037,
-      "id": "2022480",
-      "term": "大阪場所",
-      "reading": "おおさかばしょ",
-      "meaning": "Osaka (March) tournament",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2038,
-      "id": "5491624",
-      "term": "大阪府警",
-      "reading": "おおさかふけい",
-      "meaning": "Osaka Prefectural Police (abbr)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2039,
-      "id": "2453750",
-      "term": "大寒小寒",
-      "reading": "おおさむこさむ",
-      "meaning": "first verse of a nursery rhyme sung by children on cold days (similar to \"It's Raining, It's Pouring\")",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2040,
-      "id": "1785280",
-      "term": "大山椒魚",
-      "reading": "おおさんしょううお",
-      "meaning": "Japanese giant salamander (Andrias japonicus)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2041,
-      "id": "2197040",
-      "term": "大白檜曽",
-      "reading": "おおしらびそ",
-      "meaning": "Maries' fir (Abies mariesii)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2042,
-      "id": "2856559",
-      "term": "大透翅蛾",
-      "reading": "おおすかしば",
-      "meaning": "coffee bee hawkmoth (Cephonodes hylas) / pellucid hawk moth / coffee clearwing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2043,
-      "id": "2042420",
-      "term": "大関陥落",
-      "reading": "おおぜきかんらく",
-      "meaning": "demotion from ōzeki ranking",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2044,
-      "id": "5495027",
-      "term": "大谷大学",
-      "reading": "おおたにだいがく",
-      "meaning": "Otani University",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2045,
-      "id": "5742597",
-      "term": "大塚家具",
-      "reading": "おおつかかぐ",
-      "meaning": "Ōtsuka Kagu, Ltd",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2046,
-      "id": "5495728",
-      "term": "大塚製薬",
-      "reading": "おおつかせいやく",
-      "meaning": "Otsuka Pharmaceutical",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2047,
-      "id": "2835108",
-      "term": "大土蜘蛛",
-      "reading": "おおつちぐも",
-      "meaning": "tarantula (any spider of family Theraphosidae)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2048,
-      "id": "2810870",
-      "term": "大手企業",
-      "reading": "おおてきぎょう",
-      "meaning": "big corporation / major firm / leading company",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2049,
-      "id": "2618080",
-      "term": "大手銀行",
-      "reading": "おおてぎんこう",
-      "meaning": "major bank / big bank",
-      "rank": null,
-      "type": "four"
-    },
     {
       "source_index": 2050,
       "id": "1413630",
@@ -9010,6 +8560,456 @@
       "meaning": "Kashiwazaki Kariwa",
       "rank": null,
       "type": "four"
+    },
+    {
+      "source_index": 3000,
+      "id": "2122090",
+      "term": "河岸を変える",
+      "reading": "かしをかえる",
+      "meaning": "to try a different venue (for drinking, socializing, etc.) / to go somewhere else",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3001,
+      "id": "2867553",
+      "term": "下唇動脈",
+      "reading": "かしんどうみゃく",
+      "meaning": "inferior labial artery",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3002,
+      "id": "2822230",
+      "term": "嘉辰令月",
+      "reading": "かしんれいげつ",
+      "meaning": "auspicious date",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3003,
+      "id": "1714090",
+      "term": "加持祈祷",
+      "reading": "かじきとう",
+      "meaning": "incantation and prayer",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3004,
+      "id": "2863265",
+      "term": "家事審判",
+      "reading": "かじしんぱん",
+      "meaning": "family court adjudication",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3005,
+      "id": "2842672",
+      "term": "火事旋風",
+      "reading": "かじせんぷう",
+      "meaning": "firestorm",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3006,
+      "id": "2858552",
+      "term": "家事代行",
+      "reading": "かじだいこう",
+      "meaning": "housekeeping (service) / domestic help / homemaking",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3007,
+      "id": "2863267",
+      "term": "家事調停",
+      "reading": "かじちょうてい",
+      "meaning": "mediation or conciliation by a family court",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3008,
+      "id": "2398290",
+      "term": "家事都合",
+      "reading": "かじつごう",
+      "meaning": "family reasons / personal reasons",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3009,
+      "id": "2871100",
+      "term": "火事場の馬鹿力",
+      "reading": "かじばのばかぢから",
+      "meaning": "extraordinary strength displayed in an emergency / surge of power beyond one's normal capacity / great strength exerted at risk",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3010,
+      "id": "5338094",
+      "term": "鹿島建設",
+      "reading": "かじまけんせつ",
+      "meaning": "Kajima Corporation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3011,
+      "id": "2040200",
+      "term": "家事見習",
+      "reading": "かじみならい",
+      "meaning": "apprenticeship in the running of a household / prospective bride who undertakes an apprenticeship to learn housekeeping",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3012,
+      "id": "2557110",
+      "term": "荷重減衰",
+      "reading": "かじゅうげんすい",
+      "meaning": "weight decay",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3013,
+      "id": "1714080",
+      "term": "加重平均",
+      "reading": "かじゅうへいきん",
+      "meaning": "weighted average",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3014,
+      "id": "2844787",
+      "term": "過重労働",
+      "reading": "かじゅうろうどう",
+      "meaning": "overwork / working too hard",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3015,
+      "id": "1974950",
+      "term": "果樹園芸",
+      "reading": "かじゅえんげい",
+      "meaning": "fruit growing",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3016,
+      "id": "1651310",
+      "term": "果樹栽培",
+      "reading": "かじゅさいばい",
+      "meaning": "fruit growing / pomiculture",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3017,
+      "id": "2867498",
+      "term": "過剰観光",
+      "reading": "かじょうかんこう",
+      "meaning": "overtourism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3018,
+      "id": "2344610",
+      "term": "過剰規制",
+      "reading": "かじょうきせい",
+      "meaning": "overregulation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3019,
+      "id": "2850745",
+      "term": "過剰矯正",
+      "reading": "かじょうきょうせい",
+      "meaning": "hypercorrection",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3020,
+      "id": "2513460",
+      "term": "渦状銀河",
+      "reading": "かじょうぎんが",
+      "meaning": "spiral galaxy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3021,
+      "id": "2671860",
+      "term": "過剰行動",
+      "reading": "かじょうこうどう",
+      "meaning": "hyperactivity / excess activity",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3022,
+      "id": "2042890",
+      "term": "家常茶飯",
+      "reading": "かじょうさはん",
+      "meaning": "everyday occurrence / commonplace of life / nothing out of the ordinary",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3023,
+      "id": "2858259",
+      "term": "過剰在庫",
+      "reading": "かじょうざいこ",
+      "meaning": "excess inventory / excess stock / overstock",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3024,
+      "id": "2850748",
+      "term": "過剰修正",
+      "reading": "かじょうしゅうせい",
+      "meaning": "hypercorrection",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3025,
+      "id": "1989340",
+      "term": "過剰消費",
+      "reading": "かじょうしょうひ",
+      "meaning": "over-consumption",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3026,
+      "id": "1931390",
+      "term": "過剰人口",
+      "reading": "かじょうじんこう",
+      "meaning": "surplus population",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3027,
+      "id": "1989350",
+      "term": "過剰生産",
+      "reading": "かじょうせいさん",
+      "meaning": "overproduction",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3028,
+      "id": "2236290",
+      "term": "過剰摂取",
+      "reading": "かじょうせっしゅ",
+      "meaning": "overdose / excessive consumption",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3029,
+      "id": "2830071",
+      "term": "過剰適応",
+      "reading": "かじょうてきおう",
+      "meaning": "overfitting",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3030,
+      "id": "2868185",
+      "term": "過剰適合",
+      "reading": "かじょうてきごう",
+      "meaning": "overfitting",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3031,
+      "id": "1931400",
+      "term": "過剰投資",
+      "reading": "かじょうとうし",
+      "meaning": "overinvestment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3032,
+      "id": "1931410",
+      "term": "過剰投与",
+      "reading": "かじょうとうよ",
+      "meaning": "overdosage",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3033,
+      "id": "2858361",
+      "term": "過剰排卵",
+      "reading": "かじょうはいらん",
+      "meaning": "superovulation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3034,
+      "id": "2636080",
+      "term": "過剰反応",
+      "reading": "かじょうはんのう",
+      "meaning": "overreaction",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3035,
+      "id": "2867882",
+      "term": "過剰包装",
+      "reading": "かじょうほうそう",
+      "meaning": "excessive packaging / overpackaging",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3036,
+      "id": "1747490",
+      "term": "過剰防衛",
+      "reading": "かじょうぼうえい",
+      "meaning": "excessive or unjustifiable self-defense (defence)",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3037,
+      "id": "2654800",
+      "term": "過剰融資",
+      "reading": "かじょうゆうし",
+      "meaning": "excessive lending / excessive loan / over-financing",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3038,
+      "id": "1196180",
+      "term": "過剰利益",
+      "reading": "かじょうりえき",
+      "meaning": "excess profit",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3039,
+      "id": "1974740",
+      "term": "家事労働",
+      "reading": "かじろうどう",
+      "meaning": "housework",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3040,
+      "id": "2532410",
+      "term": "舵を切る",
+      "reading": "かじをきる",
+      "meaning": "to change direction (of policy, etc.) / to turn the rudder (of a ship)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3041,
+      "id": "2102840",
+      "term": "舵を取る",
+      "reading": "かじをとる",
+      "meaning": "to steer a ship",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3042,
+      "id": "1189820",
+      "term": "佳人薄命",
+      "reading": "かじんはくめい",
+      "meaning": "beauties die young / beauty and luck seldom go together",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3043,
+      "id": "2838756",
+      "term": "下垂体炎",
+      "reading": "かすいたいえん",
+      "meaning": "hypophysitis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3044,
+      "id": "2870207",
+      "term": "火水未済",
+      "reading": "かすいびせい",
+      "meaning": "wei ji (hexagram 64 of the I Ching: before completion)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3045,
+      "id": "1190330",
+      "term": "加水分解",
+      "reading": "かすいぶんかい",
+      "meaning": "hydrolysis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3046,
+      "id": "2831304",
+      "term": "火水木金",
+      "reading": "かすいもくきん",
+      "meaning": "Tuesday, Wednesday, Thursday and Friday",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3047,
+      "id": "2097600",
+      "term": "春日明神",
+      "reading": "かすがみょうじん",
+      "meaning": "Kasuga Myōjin (the deity of Kasuga Shrine)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3048,
+      "id": "2765590",
+      "term": "霞山椒魚",
+      "reading": "かすみさんしょううお",
+      "meaning": "clouded salamander (Hynobius nebulosus)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3049,
+      "id": "1865300",
+      "term": "霞を食う",
+      "reading": "かすみをくう",
+      "meaning": "to live on air / to live on nothing / to live without a means of income",
+      "rank": null,
+      "type": "idiom"
     }
   ]
 }
