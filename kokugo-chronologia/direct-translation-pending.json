@@ -1,550 +1,912 @@
 {
+  "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "english_only_total": 15000,
+  "already_direct_japanese": 200,
+  "english_only_remaining": 14800,
   "english_only_rank_counts": {
-    "(blank)": 15000
+    "(blank)": 14800
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
-  "batch_size": 60,
+  "batch_size": 100,
   "targets": [
     {
-      "source_index": 0,
-      "id": "2538870",
-      "term": "嗚呼嗚呼",
-      "reading": "ああああ",
-      "meaning": "aaah! / oooh! / oh no!",
+      "source_index": 200,
+      "id": "2870397",
+      "term": "網代駕籠",
+      "reading": "あじろかご",
+      "meaning": "palanquin made of wickerwork",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 1,
-      "id": "1982130",
-      "term": "ああ言えばこう言う",
-      "reading": "ああいえばこういう",
-      "meaning": "to have a comeback for every remark / to be always ready with excuses / to contradict everything",
+      "source_index": 201,
+      "id": "2102010",
+      "term": "味を占める",
+      "reading": "あじをしめる",
+      "meaning": "to be encouraged by initial success / to get a taste for / to yearn for more",
       "rank": null,
       "type": "idiom"
     },
     {
-      "source_index": 2,
-      "id": "2683820",
-      "term": "相合駕籠",
-      "reading": "あいあいかご",
-      "meaning": "two people riding in a palanquin together (esp. a man and a woman)",
+      "source_index": 202,
+      "id": "1485550",
+      "term": "飛鳥時代",
+      "reading": "あすかじだい",
+      "meaning": "Asuka period (550-710 CE)",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 3,
-      "id": "2684770",
-      "term": "藍色細菌",
-      "reading": "あいいろさいきん",
-      "meaning": "blue-green bacterium / cyanobacteria / cyanobacterium",
+      "source_index": 203,
+      "id": "2166840",
+      "term": "小豆象虫",
+      "reading": "あずきぞうむし",
+      "meaning": "adzuki bean weevil (Callosobruchus chinensis)",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 4,
-      "id": "1683820",
-      "term": "合縁奇縁",
-      "reading": "あいえんきえん",
-      "meaning": "a couple strangely but happily united / uncanny relationship formed by a quirk of fate",
+      "source_index": 204,
+      "id": "2559620",
+      "term": "吾妻下駄",
+      "reading": "あずまげた",
+      "meaning": "Azuma geta / type of geta for women with a tatami mat insole",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 205,
+      "id": "2400660",
+      "term": "東石楠花",
+      "reading": "あずましゃくなげ",
+      "meaning": "Azuma rhododendron (Rhododendron metternichii var.)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 206,
+      "id": "2400610",
+      "term": "吾妻山薊",
+      "reading": "あずまやまあざみ",
+      "meaning": "Azumayama thistle / Cirsiummicrospicatum",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 207,
+      "id": "2704160",
+      "term": "安曇尖鼠",
+      "reading": "あずみとがりねずみ",
+      "meaning": "Azumi shrew (Sorex hosonoi)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 208,
+      "id": "1149770",
+      "term": "亜成層圏",
+      "reading": "あせいそうけん",
+      "meaning": "substratosphere",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 209,
+      "id": "2374140",
+      "term": "値参照名",
+      "reading": "あたいさんしょうめい",
+      "meaning": "value reference name",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 210,
+      "id": "1450760",
+      "term": "頭隠して尻隠さず",
+      "reading": "あたまかくしてしりかくさず",
+      "meaning": "burying one's head in the sand (while leaving other parts of one's body exposed) / exposing one's weak point while attempting to protect oneself / hiding one's head without hiding one's bottom",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 211,
+      "id": "2182550",
+      "term": "頭が上がらない",
+      "reading": "あたまがあがらない",
+      "meaning": "to be no match for (e.g. outclassed in authority, strength or in debt to) / to be unable to act on an equal basis with",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 212,
+      "id": "1621770",
+      "term": "頭が痛い",
+      "reading": "あたまがいたい",
+      "meaning": "having a headache",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 213,
+      "id": "2846871",
+      "term": "頭がいっぱい",
+      "reading": "あたまがいっぱい",
+      "meaning": "being preoccupied with / being obsessed / only thinking of",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 214,
+      "id": "2411170",
+      "term": "頭が切れる",
+      "reading": "あたまがきれる",
+      "meaning": "to be sharp / to be keen / to be on the ball",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 215,
+      "id": "2237310",
+      "term": "頭が下がる",
+      "reading": "あたまがさがる",
+      "meaning": "to admire greatly / to salute (in admiration) / to take one's hat off to",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 216,
+      "id": "2796320",
+      "term": "頭が低い",
+      "reading": "あたまがひくい",
+      "meaning": "humble / modest / unassuming",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 217,
+      "id": "2141050",
+      "term": "頭の上の蠅も追えない",
+      "reading": "あたまのうえのはえもおえない",
+      "meaning": "completely helpless / unable even to drive away the flies on one's own head",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 218,
+      "id": "2871146",
+      "term": "頭ひとつ抜ける",
+      "reading": "あたまひとつぬける",
+      "meaning": "to be clearly ahead of the competition / to stand out noticeably above one's rivals / to stand out from the crowd",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 219,
+      "id": "2275540",
+      "term": "頭をかかえる",
+      "reading": "あたまをかかえる",
+      "meaning": "to be at wits' end / to be greatly perplexed / to be troubled",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 220,
+      "id": "2418120",
+      "term": "新しい酒は古い革袋に入れる",
+      "reading": "あたらしいさけはふるいかわぶくろにいれる",
+      "meaning": "to put new wine into old wineskins / to put new wine into old bottles",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 221,
+      "id": "2839339",
+      "term": "新しいページを加える",
+      "reading": "あたらしいページをくわえる",
+      "meaning": "to add a new page (e.g. to the annals of history)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 222,
+      "id": "2839341",
+      "term": "新しいページを開く",
+      "reading": "あたらしいページをひらく",
+      "meaning": "to begin a new chapter (in)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 223,
+      "id": "2839340",
+      "term": "新しいページをめくる",
+      "reading": "あたらしいページをめくる",
+      "meaning": "to turn the page / to turn over a new leaf",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 224,
+      "id": "2030190",
+      "term": "可惜身命",
+      "reading": "あたらしんみょう",
+      "meaning": "valuing one's body and life / holding one's life dear",
       "rank": null,
       "type": "yoji"
     },
     {
-      "source_index": 5,
-      "id": "1791530",
-      "term": "愛玩動物",
-      "reading": "あいがんどうぶつ",
-      "meaning": "pet (animal)",
+      "source_index": 225,
+      "id": "1856650",
+      "term": "亜炭化物",
+      "reading": "あたんかぶつ",
+      "meaning": "subcarbide",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 6,
-      "id": "2834411",
-      "term": "哀毀骨立",
-      "reading": "あいきこつりつ",
-      "meaning": "losing weight and becoming bony because of grief",
+      "source_index": 226,
+      "id": "2834221",
+      "term": "仇を恩で報いる",
+      "reading": "あだをおんでむくいる",
+      "meaning": "to repay meanness with kindness",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 227,
+      "id": "1612620",
+      "term": "彼方此方",
+      "reading": "あちこち",
+      "meaning": "here and there / various places / all around",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 228,
+      "id": "1784420",
+      "term": "悪漢小説",
+      "reading": "あっかんしょうせつ",
+      "meaning": "picaresque novel",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 229,
+      "id": "2041050",
+      "term": "悪鬼羅刹",
+      "reading": "あっきらせつ",
+      "meaning": "man-eating fiend",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 230,
+      "id": "1151740",
+      "term": "悪口雑言",
+      "reading": "あっこうぞうごん",
+      "meaning": "all kinds of malicious gossip / heaping verbal abuse (on) / cursing and swearing (words)",
       "rank": null,
       "type": "yoji"
     },
     {
-      "source_index": 7,
-      "id": "1284690",
-      "term": "合気道家",
-      "reading": "あいきどうか",
-      "meaning": "aikido practitioner",
+      "source_index": 231,
+      "id": "1153050",
+      "term": "圧搾空気",
+      "reading": "あっさくくうき",
+      "meaning": "compressed air",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 8,
-      "id": "2860738",
-      "term": "愛及屋烏",
-      "reading": "あいきゅうおくう",
-      "meaning": "infatuation / doting",
+      "source_index": 232,
+      "id": "2340290",
+      "term": "圧縮技術",
+      "reading": "あっしゅくぎじゅつ",
+      "meaning": "compression technology",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 233,
+      "id": "1153100",
+      "term": "圧縮空気",
+      "reading": "あっしゅくくうき",
+      "meaning": "compressed air",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 234,
+      "id": "2340300",
+      "term": "圧縮効果",
+      "reading": "あっしゅくこうか",
+      "meaning": "compression efficiency",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 235,
+      "id": "1929280",
+      "term": "圧縮効率",
+      "reading": "あっしゅくこうりつ",
+      "meaning": "compression efficiency",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 236,
+      "id": "1929290",
+      "term": "圧縮酸素",
+      "reading": "あっしゅくさんそ",
+      "meaning": "compressed oxygen",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 237,
+      "id": "1970630",
+      "term": "圧縮試験",
+      "reading": "あっしゅくしけん",
+      "meaning": "compression test",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 238,
+      "id": "2828391",
+      "term": "圧縮成形",
+      "reading": "あっしゅくせいけい",
+      "meaning": "compression molding",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 239,
+      "id": "1970640",
+      "term": "圧縮木材",
+      "reading": "あっしゅくもくざい",
+      "meaning": "compressed wood",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 240,
+      "id": "1666930",
+      "term": "斡旋業者",
+      "reading": "あっせんぎょうしゃ",
+      "meaning": "mediator",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 241,
+      "id": "2553980",
+      "term": "斡旋販売",
+      "reading": "あっせんはんばい",
+      "meaning": "mediated marketing / mediated sales",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 242,
+      "id": "1153220",
+      "term": "圧着端子",
+      "reading": "あっちゃくたんし",
+      "meaning": "crimp contact / crimped terminal",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 243,
+      "id": "1929300",
+      "term": "圧迫包帯",
+      "reading": "あっぱくほうたい",
+      "meaning": "pressure bandage",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 244,
+      "id": "2584890",
+      "term": "圧迫面接",
+      "reading": "あっぱくめんせつ",
+      "meaning": "stress interview",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 245,
+      "id": "1970660",
+      "term": "圧粉磁心",
+      "reading": "あっぷんじしん",
+      "meaning": "dust core",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 246,
+      "id": "2838148",
+      "term": "厚い壁",
+      "reading": "あついかべ",
+      "meaning": "hard-to-overcome obstacle / high hurdle / thick wall",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 247,
+      "id": "1152960",
+      "term": "圧延工場",
+      "reading": "あつえんこうじょう",
+      "meaning": "rolling mill",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 248,
+      "id": "1153250",
+      "term": "圧電効果",
+      "reading": "あつでんこうか",
+      "meaning": "piezoelectric effect",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 249,
+      "id": "2839380",
+      "term": "圧電素子",
+      "reading": "あつでんそし",
+      "meaning": "piezoelectric element / piezoelectric transducer / piezoelectric device",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 250,
+      "id": "1153360",
+      "term": "圧力団体",
+      "reading": "あつりょくだんたい",
+      "meaning": "pressure group / lobby",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 251,
+      "id": "1929320",
+      "term": "圧力容器",
+      "reading": "あつりょくようき",
+      "meaning": "pressure vessel",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 252,
+      "id": "2616320",
+      "term": "圧力抑制",
+      "reading": "あつりょくよくせい",
+      "meaning": "pressure suppression (e.g. pool, container in a nuclear power plant)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 253,
+      "id": "2205360",
+      "term": "安土時代",
+      "reading": "あづちじだい",
+      "meaning": "Azuchi period (first half of the Azuchi-Momoyama period, 1568-1582)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 254,
+      "id": "2825800",
+      "term": "安土桃山",
+      "reading": "あづちももやま",
+      "meaning": "Azuchi-Momoyama period (approx. 1558-1600)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 255,
+      "id": "2102040",
+      "term": "後足で砂をかける",
+      "reading": "あとあしですなをかける",
+      "meaning": "to do something spiteful as one leaves / to take a parting shot at / to kick sand (at someone) with one's hind legs",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 256,
+      "id": "2087450",
+      "term": "後入先出",
+      "reading": "あといれさきだし",
+      "meaning": "last in, first out / LIFO",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 257,
+      "id": "2860410",
+      "term": "後がつかえる",
+      "reading": "あとがつかえる",
+      "meaning": "to make (someone) wait / to take more time (than anticipated)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 258,
+      "id": "2417260",
+      "term": "後が無い",
+      "reading": "あとがない",
+      "meaning": "having one's back to the wall / having nowhere to go / having no way out",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 259,
+      "id": "1928820",
+      "term": "後釜に座る",
+      "reading": "あとがまにすわる",
+      "meaning": "to succeed to someone's post / to take someone's place / to take over someone's position",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 260,
+      "id": "1678830",
+      "term": "後の祭り",
+      "reading": "あとのまつり",
+      "meaning": "a day after the fair / (at a) stage when it's too late",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 261,
+      "id": "1697360",
+      "term": "跡目相続",
+      "reading": "あとめそうぞく",
+      "meaning": "successorship",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 262,
+      "id": "1856870",
+      "term": "跡をつける",
+      "reading": "あとをつける",
+      "meaning": "to tag along / to follow / to tail",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 263,
+      "id": "2847250",
+      "term": "天名地鎮",
+      "reading": "あないち",
+      "meaning": "Ana'ichi (script)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 264,
+      "id": "2847017",
+      "term": "穴が開くほど",
+      "reading": "あながあくほど",
+      "meaning": "(staring) piercingly / (looking) hard",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 265,
+      "id": "2588310",
+      "term": "穴の開くほど",
+      "reading": "あなのあくほど",
+      "meaning": "(staring) piercingly / (looking) hard",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 266,
+      "id": "2840332",
+      "term": "穴を穿つ",
+      "reading": "あなをうがつ",
+      "meaning": "to find someone's weak spot / to drill a hole",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 267,
+      "id": "1725700",
+      "term": "姉様人形",
+      "reading": "あねさまにんぎょう",
+      "meaning": "paper doll modeled after a kimono-clad woman",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 268,
+      "id": "1929020",
+      "term": "亜熱帯林",
+      "reading": "あねったいりん",
+      "meaning": "subtropical forest",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 269,
+      "id": "1970490",
+      "term": "亜砒酸塩",
+      "reading": "あひさんえん",
+      "meaning": "arsenite",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 270,
+      "id": "1150050",
+      "term": "阿鼻叫喚",
+      "reading": "あびきょうかん",
+      "meaning": "agonizing cries / pandemonium / two of Buddhism's hells",
       "rank": null,
       "type": "yoji"
     },
     {
-      "source_index": 9,
-      "id": "2688310",
-      "term": "愛嬌商売",
-      "reading": "あいきょうしょうばい",
-      "meaning": "occupation where charm is necessary to succeed",
+      "source_index": 271,
+      "id": "2041060",
+      "term": "阿鼻地獄",
+      "reading": "あびじごく",
+      "meaning": "Avici hell (the eighth and most painful of the eight hells)",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 10,
-      "id": "2151600",
-      "term": "愛嬌を振りまく",
-      "reading": "あいきょうをふりまく",
-      "meaning": "to make oneself pleasant to everybody / to smile at everybody / to try to please everybody",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 11,
-      "id": "1929140",
-      "term": "愛国運動",
-      "reading": "あいこくうんどう",
-      "meaning": "patriotic movement",
+      "source_index": 272,
+      "id": "2672420",
+      "term": "阿毘達磨",
+      "reading": "あびだつま",
+      "meaning": "abhidharma / texts that contain detailed reworkings of the Buddhist sutras",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 12,
-      "id": "1150730",
-      "term": "愛国主義",
-      "reading": "あいこくしゅぎ",
-      "meaning": "nationalism / patriotism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 13,
-      "id": "1929150",
-      "term": "愛国団体",
-      "reading": "あいこくだんたい",
-      "meaning": "patriotic group or organization (organisation)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 14,
-      "id": "2040910",
-      "term": "相碁井目",
-      "reading": "あいごせいもく",
-      "meaning": "in every game or play, differences in skill between individuals can be substantial",
+      "source_index": 273,
+      "id": "2041070",
+      "term": "阿付迎合",
+      "reading": "あふげいごう",
+      "meaning": "ingratiation / sycophancy",
       "rank": null,
       "type": "yoji"
     },
     {
-      "source_index": 15,
-      "id": "1791510",
-      "term": "愛妻弁当",
-      "reading": "あいさいべんとう",
-      "meaning": "lunchbox made with loving care by one's wife",
+      "source_index": 274,
+      "id": "2838550",
+      "term": "阿武隈石",
+      "reading": "あぶくませき",
+      "meaning": "abukumalite / britholite-(Y)",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 16,
-      "id": "2688540",
-      "term": "相沢事件",
-      "reading": "あいざわじけん",
-      "meaning": "Aizawa incident (assassination of Major General Tetsuzan Nagata by Lieutenant Colonel Saburo Aizawa; August 12, 1935)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 17,
-      "id": "1791490",
-      "term": "愛社精神",
-      "reading": "あいしゃせいしん",
-      "meaning": "spirit of dedication to one's company",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 18,
-      "id": "2371110",
-      "term": "相性問題",
-      "reading": "あいしょうもんだい",
-      "meaning": "compatibility issue",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 19,
-      "id": "2445830",
-      "term": "愛情表現",
-      "reading": "あいじょうひょうげん",
-      "meaning": "expression of love / showing love",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 20,
-      "id": "2040920",
-      "term": "愛人関係",
-      "reading": "あいじんかんけい",
-      "meaning": "being lovers",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 21,
-      "id": "1791550",
-      "term": "愛染明王",
-      "reading": "あいぜんみょうおう",
-      "meaning": "Ragaraja (esoteric school deity of love)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 22,
-      "id": "2040930",
-      "term": "哀訴嘆願",
-      "reading": "あいそたんがん",
-      "meaning": "plea / entreaty / supplication",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 23,
-      "id": "2568060",
-      "term": "愛想を振りまく",
-      "reading": "あいそをふりまく",
-      "meaning": "to make oneself pleasant to everybody / to smile at everybody / to try to please everybody",
+      "source_index": 275,
+      "id": "2102060",
+      "term": "危ない橋を渡る",
+      "reading": "あぶないはしをわたる",
+      "meaning": "to tread on thin ice / to go out on a limb / to walk a tightrope",
       "rank": null,
       "type": "idiom"
     },
     {
-      "source_index": 24,
-      "id": "2841171",
-      "term": "愛憎関係",
-      "reading": "あいぞうかんけい",
-      "meaning": "love-hate relationship",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 25,
-      "id": "1150910",
-      "term": "愛憎併存",
-      "reading": "あいぞうへいそん",
-      "meaning": "ambivalence",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 26,
-      "id": "2437150",
-      "term": "相対勘定",
-      "reading": "あいたいかんじょう",
-      "meaning": "contra account",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 27,
-      "id": "1401190",
-      "term": "相対売買",
-      "reading": "あいたいばいばい",
-      "meaning": "negotiated transaction",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 28,
-      "id": "2183520",
-      "term": "開いた口がふさがらない",
-      "reading": "あいたくちがふさがらない",
-      "meaning": "dumbfounded / speechless / flabbergasted",
+      "source_index": 276,
+      "id": "1671190",
+      "term": "虻蜂取らず",
+      "reading": "あぶはちとらず",
+      "meaning": "attempting two tasks at the same time, accomplishing neither / falling between two stools / catching neither the horsefly nor the bee",
       "rank": null,
       "type": "idiom"
     },
     {
-      "source_index": 29,
-      "id": "1150950",
-      "term": "愛他主義",
-      "reading": "あいたしゅぎ",
-      "meaning": "altruism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 30,
-      "id": "2691410",
-      "term": "間に立つ",
-      "reading": "あいだにたつ",
-      "meaning": "to mediate / to intervene",
+      "source_index": 277,
+      "id": "2854901",
+      "term": "油が切れる",
+      "reading": "あぶらがきれる",
+      "meaning": "to run out of oil / to need lubrication",
       "rank": null,
       "type": "idiom"
     },
     {
-      "source_index": 31,
-      "id": "5743561",
-      "term": "愛知県警",
-      "reading": "あいちけんけい",
-      "meaning": "Aichi Prefectural Police (abbr)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 32,
-      "id": "5104088",
-      "term": "愛知大学",
-      "reading": "あいちだいがく",
-      "meaning": "Aichi University",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 33,
-      "id": "2796620",
-      "term": "愛着障害",
-      "reading": "あいちゃくしょうがい",
-      "meaning": "attachment disorder",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 34,
-      "id": "2669090",
-      "term": "愛着理論",
-      "reading": "あいちゃくりろん",
-      "meaning": "attachment theory",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 35,
-      "id": "1791580",
-      "term": "愛鳥週間",
-      "reading": "あいちょうしゅうかん",
-      "meaning": "Bird Week (starting on May 10 of each year)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 36,
-      "id": "2853037",
-      "term": "会津戦争",
-      "reading": "あいづせんそう",
-      "meaning": "Battle of Aizu (1868)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 37,
-      "id": "5742259",
-      "term": "会津大学",
-      "reading": "あいづだいがく",
-      "meaning": "University of Aizu",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 38,
-      "id": "1748890",
-      "term": "相手次第",
-      "reading": "あいてしだい",
-      "meaning": "changing one's attitude or response according to who one is talking to or dealing with",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 39,
-      "id": "2029810",
-      "term": "哀悼痛惜",
-      "reading": "あいとうつうせき",
-      "meaning": "condolence / mourning / sorrow",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 40,
-      "id": "5742261",
-      "term": "藍野大学",
-      "reading": "あいのだいがく",
-      "meaning": "Aino University",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 41,
-      "id": "2833897",
-      "term": "愛のムチ",
-      "reading": "あいのむち",
-      "meaning": "(lesson in) tough love",
+      "source_index": 278,
+      "id": "2834222",
+      "term": "油に水",
+      "reading": "あぶらにみず",
+      "meaning": "incompatible / (going together) like oil and water",
       "rank": null,
       "type": "idiom"
     },
     {
-      "source_index": 42,
-      "id": "1791470",
-      "term": "愛別離苦",
-      "reading": "あいべつりく",
-      "meaning": "the pain of separation from loved ones",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 43,
-      "id": "2121980",
-      "term": "合間合間",
-      "reading": "あいまあいま",
-      "meaning": "between times / when there's a spare moment",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 44,
-      "id": "2691990",
-      "term": "曖昧茶屋",
-      "reading": "あいまいぢゃや",
-      "meaning": "brothel fronting as a tea house, inn, restaurant, etc.",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 45,
-      "id": "1567940",
-      "term": "曖昧模糊",
-      "reading": "あいまいもこ",
-      "meaning": "obscure / vague / ambiguous",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 46,
-      "id": "2670680",
-      "term": "合間を縫う",
-      "reading": "あいまをぬう",
-      "meaning": "to make good use of one's spare moments",
+      "source_index": 279,
+      "id": "1538610",
+      "term": "油を売る",
+      "reading": "あぶらをうる",
+      "meaning": "to loaf around (on the job) / to idle one's time away / to dawdle",
       "rank": null,
       "type": "idiom"
     },
     {
-      "source_index": 47,
-      "id": "2692010",
-      "term": "藍海松茶",
-      "reading": "あいみるちゃ",
-      "meaning": "brown tinged with olive green and indigo",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 48,
-      "id": "1000200",
-      "term": "阿吽の呼吸",
-      "reading": "あうんのこきゅう",
-      "meaning": "the harmonizing, mentally and physically, of two parties engaged in an activity / singing from the same hymn-sheet / dancing to the same beat",
+      "source_index": 280,
+      "id": "1538600",
+      "term": "油を絞る",
+      "reading": "あぶらをしぼる",
+      "meaning": "to chew out / to reprimand severely / to rake over the coals",
       "rank": null,
       "type": "idiom"
     },
     {
-      "source_index": 49,
-      "id": "1970360",
-      "term": "亜鉛合金",
-      "reading": "あえんごうきん",
-      "meaning": "zinc alloy",
+      "source_index": 281,
+      "id": "2611140",
+      "term": "油を注ぐ",
+      "reading": "あぶらをそそぐ",
+      "meaning": "to pour oil on (something) / to anoint with oil",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 282,
+      "id": "1154210",
+      "term": "安倍川餅",
+      "reading": "あべかわもち",
+      "meaning": "abekawa mochi / rice cake with kinako",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 50,
-      "id": "2865473",
-      "term": "亜塩素酸",
-      "reading": "あえんそさん",
-      "meaning": "chlorous acid",
+      "source_index": 283,
+      "id": "2635180",
+      "term": "阿部沙魚",
+      "reading": "あべはぜ",
+      "meaning": "Samoan mullet goby (Mugilogobius abei)",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 51,
-      "id": "1928900",
-      "term": "亜鉛中毒",
-      "reading": "あえんちゅうどく",
-      "meaning": "zinc poisoning",
+      "source_index": 284,
+      "id": "2710670",
+      "term": "阿呆の足下使い",
+      "reading": "あほうのあしもとづかい",
+      "meaning": "fools use people to pick up things lying at their own feet / stupidity of using people for small things",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 285,
+      "id": "2710680",
+      "term": "阿呆の三杯汁",
+      "reading": "あほうのさんばいじる",
+      "meaning": "only a fool with no manners asks for another helping more than once / only fools are gluttons",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 286,
+      "id": "2710700",
+      "term": "阿呆の話食い",
+      "reading": "あほうのはなしぐい",
+      "meaning": "an idiot will swallow anything / an idiot will believe anything they hear / fools act without thinking",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 287,
+      "id": "1000480",
+      "term": "阿呆陀羅",
+      "reading": "あほんだら",
+      "meaning": "fool / oaf / airhead",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 52,
-      "id": "1928910",
-      "term": "亜鉛鉄板",
-      "reading": "あえんてっぱん",
-      "meaning": "galvanized sheet iron / galvanised sheet iron / galvanized sheet metal",
+      "source_index": 288,
+      "id": "1857040",
+      "term": "甘い汁を吸う",
+      "reading": "あまいしるをすう",
+      "meaning": "to be onto a good thing / to make money without working / to line one's pockets",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 289,
+      "id": "2604330",
+      "term": "蜑小舟貝",
+      "reading": "あまおぶねがい",
+      "meaning": "ox-palate nerite (Nerita albicilla) / blotched nerite",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 53,
-      "id": "1149620",
-      "term": "亜鉛凸版",
-      "reading": "あえんとっぱん",
-      "meaning": "photoengraving",
+      "source_index": 290,
+      "id": "1149880",
+      "term": "亜麻織物",
+      "reading": "あまおりもの",
+      "meaning": "flax fabrics / linen",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 54,
-      "id": "1750240",
-      "term": "青息吐息",
-      "reading": "あおいきといき",
-      "meaning": "deep distress",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 55,
-      "id": "1750090",
-      "term": "青色申告",
-      "reading": "あおいろしんこく",
-      "meaning": "blue return / blue-paper income-tax return / type of income tax return filing which allows for special income deductions",
+      "source_index": 291,
+      "id": "2041090",
+      "term": "甘辛両党",
+      "reading": "あまからりょうとう",
+      "meaning": "taste for both wines and sweets / having a liking for both alcoholic beverages and sweet things",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 56,
-      "id": "2811750",
-      "term": "青色吐息",
-      "reading": "あおいろといき",
-      "meaning": "deep distress",
+      "source_index": 292,
+      "id": "2848732",
+      "term": "雨傘革命",
+      "reading": "あまがさかくめい",
+      "meaning": "Umbrella Revolution (protests in Hong Kong in 2014)",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 57,
-      "id": "2198890",
-      "term": "青河原鶸",
-      "reading": "あおかわらひわ",
-      "meaning": "European greenfinch (Carduelis chloris)",
+      "source_index": 293,
+      "id": "2041080",
+      "term": "雨傘番組",
+      "reading": "あまがさばんぐみ",
+      "meaning": "substitute for a scheduled live broadcast of a sporting event that was rained out",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 58,
-      "id": "5451472",
-      "term": "青木建設",
-      "reading": "あおきけんせつ",
-      "meaning": "Aoki Corporation",
+      "source_index": 294,
+      "id": "2830959",
+      "term": "天草水母",
+      "reading": "あまくさくらげ",
+      "meaning": "Amakusa jellyfish (Sanderia malayensis)",
       "rank": null,
       "type": "four"
     },
     {
-      "source_index": 59,
-      "id": "1555360",
-      "term": "緑啄木鳥",
-      "reading": "あおげら",
-      "meaning": "Japanese green woodpecker (Picus awokera) / Japanese woodpecker / wavy-bellied woodpecker",
+      "source_index": 295,
+      "id": "1439980",
+      "term": "天津乙女",
+      "reading": "あまつおとめ",
+      "meaning": "celestial maiden",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 296,
+      "id": "1440000",
+      "term": "天津御祖",
+      "reading": "あまつみおや",
+      "meaning": "imperial ancestor",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 297,
+      "id": "1439990",
+      "term": "天津御姉",
+      "reading": "あまつみこ",
+      "meaning": "emperor",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 298,
+      "id": "1582040",
+      "term": "天照大神",
+      "reading": "あまてらすおおみかみ",
+      "meaning": "Amaterasu Ōmikami (sun goddess)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 299,
+      "id": "2840848",
+      "term": "甘唐辛子",
+      "reading": "あまとうがらし",
+      "meaning": "sweet pepper (any non-spicy variety of Capsicum annuum)",
       "rank": null,
       "type": "four"
     }
