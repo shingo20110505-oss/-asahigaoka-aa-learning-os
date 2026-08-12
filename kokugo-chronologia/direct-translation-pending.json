@@ -1,4066 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 2500,
-  "english_only_remaining": 12500,
+  "already_direct_japanese": 2950,
+  "english_only_remaining": 12050,
   "english_only_rank_counts": {
-    "(blank)": 12500
+    "(blank)": 12050
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 2500,
-      "id": "2828605",
-      "term": "貝塚伊吹",
-      "reading": "かいづかいぶき",
-      "meaning": "Hollywood juniper (Juniperus chinensis var. kaizuka) / Chinese pyramid juniper",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2501,
-      "id": "1772750",
-      "term": "海底火山",
-      "reading": "かいていかざん",
-      "meaning": "submarine volcano",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2502,
-      "id": "1772760",
-      "term": "海底地震",
-      "reading": "かいていじしん",
-      "meaning": "submarine earthquake",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2503,
-      "id": "1795250",
-      "term": "改訂増補",
-      "reading": "かいていぞうほ",
-      "meaning": "revised and enlarged (edition)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2504,
-      "id": "2652400",
-      "term": "海底探査",
-      "reading": "かいていたんさ",
-      "meaning": "seabed probe / probe of the ocean floor / submarine prospecting",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2505,
-      "id": "1976850",
-      "term": "海底炭田",
-      "reading": "かいていたんでん",
-      "meaning": "submarine coal field",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2506,
-      "id": "1976860",
-      "term": "海底地形",
-      "reading": "かいていちけい",
-      "meaning": "submarine topography",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2507,
-      "id": "1772780",
-      "term": "海底電信",
-      "reading": "かいていでんしん",
-      "meaning": "submarine telegraphy",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2508,
-      "id": "2525690",
-      "term": "海底電線",
-      "reading": "かいていでんせん",
-      "meaning": "undersea cable (communications, power) / submarine cable",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2509,
-      "id": "1772770",
-      "term": "海底油田",
-      "reading": "かいていゆでん",
-      "meaning": "offshore oil field",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2510,
-      "id": "2345390",
-      "term": "改訂履歴",
-      "reading": "かいていりれき",
-      "meaning": "revision history",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2511,
-      "id": "2042640",
-      "term": "海底撈月",
-      "reading": "かいていろうげつ",
-      "meaning": "totally useless (fruitless) effort / wasting time on an impossible task (like trying to scoop up a reflected moon from the bottom of the sea)",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2512,
-      "id": "2781780",
-      "term": "灰鉄輝石",
-      "reading": "かいてつきせき",
-      "meaning": "hedenbergite",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2513,
-      "id": "1668590",
-      "term": "回転椅子",
-      "reading": "かいてんいす",
-      "meaning": "swivel chair",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2514,
-      "id": "1199650",
-      "term": "回転運動",
-      "reading": "かいてんうんどう",
-      "meaning": "gyration",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2515,
-      "id": "1668580",
-      "term": "回転勘定",
-      "reading": "かいてんかんじょう",
-      "meaning": "revolving account",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2516,
-      "id": "1728440",
-      "term": "開店休業",
-      "reading": "かいてんきゅうぎょう",
-      "meaning": "being open but having virtually no business",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2517,
-      "id": "1637850",
-      "term": "回転競技",
-      "reading": "かいてんきょうぎ",
-      "meaning": "slalom",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2518,
-      "id": "2814610",
-      "term": "回転行列",
-      "reading": "かいてんぎょうれつ",
-      "meaning": "rotation matrix",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2519,
-      "id": "1668600",
-      "term": "回転資金",
-      "reading": "かいてんしきん",
-      "meaning": "revolving fund",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2520,
-      "id": "2143070",
-      "term": "開店時間",
-      "reading": "かいてんじかん",
-      "meaning": "opening hours (of a store, restaurant, etc.)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2521,
-      "id": "1976310",
-      "term": "回転磁場",
-      "reading": "かいてんじば",
-      "meaning": "rotating field",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2522,
-      "id": "2841408",
-      "term": "回転準位",
-      "reading": "かいてんじゅんい",
-      "meaning": "rotational level / rotational state",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2523,
-      "id": "2185650",
-      "term": "回転寿司",
-      "reading": "かいてんずし",
-      "meaning": "conveyor belt sushi / sushi-go-round / sushi train",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2524,
-      "id": "1976350",
-      "term": "回転対称",
-      "reading": "かいてんたいしょう",
-      "meaning": "rotation symmetry",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2525,
-      "id": "2582940",
-      "term": "回転弾倉",
-      "reading": "かいてんだんそう",
-      "meaning": "cylinder (of a revolver)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2526,
-      "id": "1976360",
-      "term": "回転半径",
-      "reading": "かいてんはんけい",
-      "meaning": "radius of gyration",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2527,
-      "id": "2860194",
-      "term": "回転売買",
-      "reading": "かいてんばいばい",
-      "meaning": "churning",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2528,
-      "id": "1976380",
-      "term": "回転偏光",
-      "reading": "かいてんへんこう",
-      "meaning": "rotatory polarization / rotatory polarisation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2529,
-      "id": "1668570",
-      "term": "回転木馬",
-      "reading": "かいてんもくば",
-      "meaning": "merry-go-round / carousel",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2530,
-      "id": "2830656",
-      "term": "回転翼機",
-      "reading": "かいてんよくき",
-      "meaning": "rotorcraft / rotary-wing aircraft",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2531,
-      "id": "2862400",
-      "term": "開頭手術",
-      "reading": "かいとうしゅじゅつ",
-      "meaning": "craniotomy",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2532,
-      "id": "1931500",
-      "term": "解答用紙",
-      "reading": "かいとうようし",
-      "meaning": "answer sheet",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2533,
-      "id": "1200150",
-      "term": "快刀乱麻",
-      "reading": "かいとうらんま",
-      "meaning": "solving a problem swiftly and skillfully",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2534,
-      "id": "1931680",
-      "term": "海難救助",
-      "reading": "かいなんきゅうじょ",
-      "meaning": "sea rescue / air-sea rescue / ASR",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2535,
-      "id": "2840027",
-      "term": "海南鶏飯",
-      "reading": "かいなんけいはん",
-      "meaning": "Hainanese chicken rice",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2536,
-      "id": "1773170",
-      "term": "海難審判",
-      "reading": "かいなんしんぱん",
-      "meaning": "marine accident inquiry / marine accident enquiry",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2537,
-      "id": "2621860",
-      "term": "海難事故",
-      "reading": "かいなんじこ",
-      "meaning": "accident at sea / maritime accident",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2538,
-      "id": "5176694",
-      "term": "海南大学",
-      "reading": "かいなんだいがく",
-      "meaning": "Hainan University",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2539,
-      "id": "2862951",
-      "term": "貝になる",
-      "reading": "かいになる",
-      "meaning": "to keep one's mouth shut / to clam up / to be silent",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2540,
-      "id": "2855468",
-      "term": "介入研究",
-      "reading": "かいにゅうけんきゅう",
-      "meaning": "intervention study (epidemiology)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2541,
-      "id": "2699090",
-      "term": "下位脳幹",
-      "reading": "かいのうかん",
-      "meaning": "lower brainstem",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2542,
-      "id": "2866574",
-      "term": "灰白髄炎",
-      "reading": "かいはくずいえん",
-      "meaning": "poliomyelitis / polio",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2543,
-      "id": "2345600",
-      "term": "開発環境",
-      "reading": "かいはつかんきょう",
-      "meaning": "development environment",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2544,
-      "id": "2851750",
-      "term": "開発許可",
-      "reading": "かいはつきょか",
-      "meaning": "development permit",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2545,
-      "id": "2622940",
-      "term": "開発拠点",
-      "reading": "かいはつきょてん",
-      "meaning": "development block / development base",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2546,
-      "id": "2235280",
-      "term": "開発経緯",
-      "reading": "かいはつけいい",
-      "meaning": "features (e.g. of a product)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2547,
-      "id": "1931810",
-      "term": "開発計画",
-      "reading": "かいはつけいかく",
-      "meaning": "development project (program, programme, plan)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2548,
-      "id": "2345620",
-      "term": "開発言語",
-      "reading": "かいはつげんご",
-      "meaning": "development language",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2549,
-      "id": "2867645",
-      "term": "開発主義",
-      "reading": "かいはつしゅぎ",
-      "meaning": "developmentalism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2550,
-      "id": "2613850",
-      "term": "開発事業",
-      "reading": "かいはつじぎょう",
-      "meaning": "development (work)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2551,
-      "id": "2848830",
-      "term": "開発独裁",
-      "reading": "かいはつどくさい",
-      "meaning": "developmental dictatorship (authoritarian form of government that pursues rapid economic development at the expense of democratic freedoms)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2552,
-      "id": "2132470",
-      "term": "開発能力",
-      "reading": "かいはつのうりょく",
-      "meaning": "development capability",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2553,
-      "id": "2345650",
-      "term": "開発費用",
-      "reading": "かいはつひよう",
-      "meaning": "development cost",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2554,
-      "id": "1977410",
-      "term": "開発輸入",
-      "reading": "かいはつゆにゅう",
-      "meaning": "develop-and-import formula",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2555,
-      "id": "2660730",
-      "term": "開発領主",
-      "reading": "かいはつりょうしゅ",
-      "meaning": "local warriors, or provincial or district officials, who developed paddy field lands",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2556,
-      "id": "2345400",
-      "term": "改版管理",
-      "reading": "かいはんかんり",
-      "meaning": "revision management",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2557,
-      "id": "2345410",
-      "term": "改版理由",
-      "reading": "かいはんりゆう",
-      "meaning": "reason for revision / reason for modification",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2558,
-      "id": "2867548",
-      "term": "海馬傍回",
-      "reading": "かいばぼうかい",
-      "meaning": "parahippocampal gyrus",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2559,
-      "id": "2345220",
-      "term": "回避番号",
-      "reading": "かいひばんごう",
-      "meaning": "shunned number",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2560,
-      "id": "2760340",
-      "term": "回避不能",
-      "reading": "かいひふのう",
-      "meaning": "inevitable / inescapable / unavoidable",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2561,
-      "id": "2345230",
-      "term": "回避文字",
-      "reading": "かいひもじ",
-      "meaning": "shunned character",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2562,
-      "id": "1931820",
-      "term": "開票結果",
-      "reading": "かいひょうけっか",
-      "meaning": "results of the vote count",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2563,
-      "id": "1931830",
-      "term": "開票速報",
-      "reading": "かいひょうそくほう",
-      "meaning": "quick (flash) report of votes counted",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2564,
-      "id": "2146760",
-      "term": "海浜公園",
-      "reading": "かいひんこうえん",
-      "meaning": "beachfront park / park by the sea",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2565,
-      "id": "1976900",
-      "term": "海浜植物",
-      "reading": "かいひんしょくぶつ",
-      "meaning": "coastal flora / seaside plant",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2566,
-      "id": "2042660",
-      "term": "開闢以来",
-      "reading": "かいびゃくいらい",
-      "meaning": "since the beginning of the world / since the dawn of history",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2567,
-      "id": "1199730",
-      "term": "回復可能",
-      "reading": "かいふくかのう",
-      "meaning": "recoverable",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2568,
-      "id": "2345260",
-      "term": "回復機能",
-      "reading": "かいふくきのう",
-      "meaning": "recovery function",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2569,
-      "id": "1728570",
-      "term": "開腹手術",
-      "reading": "かいふくしゅじゅつ",
-      "meaning": "laparotomy (abdominal surgery)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2570,
-      "id": "2345270",
-      "term": "回復時間",
-      "reading": "かいふくじかん",
-      "meaning": "recovery time",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2571,
-      "id": "2848712",
-      "term": "回復体位",
-      "reading": "かいふくたいい",
-      "meaning": "recovery position",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2572,
-      "id": "2840216",
-      "term": "回復特性",
-      "reading": "かいふくとくせい",
-      "meaning": "recovery characteristics (e.g. of electrical sensor)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2573,
-      "id": "2788820",
-      "term": "回復不能",
-      "reading": "かいふくふのう",
-      "meaning": "unrecoverable / irreversible / irreparable",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2574,
-      "id": "2848168",
-      "term": "下位文化",
-      "reading": "かいぶんか",
-      "meaning": "subculture",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2575,
-      "id": "2597160",
-      "term": "下位分類",
-      "reading": "かいぶんるい",
-      "meaning": "subclass / subdivision",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2576,
-      "id": "1727350",
-      "term": "皆兵制度",
-      "reading": "かいへいせいど",
-      "meaning": "system of universal conscription",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2577,
-      "id": "2834774",
-      "term": "壊変毎秒",
-      "reading": "かいへんまいびょう",
-      "meaning": "decays per second / disintegrations per second / dps",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2578,
-      "id": "2618240",
-      "term": "壊変毎分",
-      "reading": "かいへんまいふん",
-      "meaning": "disintegration per minute / dpm",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2579,
-      "id": "2532830",
-      "term": "解放運動",
-      "reading": "かいほううんどう",
-      "meaning": "liberation movement / emancipation movement",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2580,
-      "id": "5175226",
-      "term": "解放軍報",
-      "reading": "かいほうぐんぽう",
-      "meaning": "People's Liberation Army Daily (PRC) / PLA daily",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2581,
-      "id": "1728460",
-      "term": "開放経済",
-      "reading": "かいほうけいざい",
-      "meaning": "open economy",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2582,
-      "id": "2706250",
-      "term": "下位方言",
-      "reading": "かいほうげん",
-      "meaning": "subdialect",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2583,
-      "id": "2632720",
-      "term": "開放骨折",
-      "reading": "かいほうこっせつ",
-      "meaning": "open fracture",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2584,
-      "id": "2871037",
-      "term": "解放戦線",
-      "reading": "かいほうせんせん",
-      "meaning": "liberation front",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2585,
-      "id": "2853047",
-      "term": "解放戦争",
-      "reading": "かいほうせんそう",
-      "meaning": "war of liberation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2586,
-      "id": "2344920",
-      "term": "解放要求",
-      "reading": "かいほうようきゅう",
-      "meaning": "release request",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2587,
-      "id": "2260650",
-      "term": "解剖学者",
-      "reading": "かいぼうがくしゃ",
-      "meaning": "anatomist",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2588,
-      "id": "2866589",
-      "term": "解剖劇場",
-      "reading": "かいぼうげきじょう",
-      "meaning": "anatomy-teaching lecture theatre",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2589,
-      "id": "2851330",
-      "term": "開幕投手",
-      "reading": "かいまくとうしゅ",
-      "meaning": "opening-game pitcher",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2590,
-      "id": "2530880",
-      "term": "階名唱法",
-      "reading": "かいめいしょうほう",
-      "meaning": "solmization",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2591,
-      "id": "1977200",
-      "term": "界面化学",
-      "reading": "かいめんかがく",
-      "meaning": "surface chemistry",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2592,
-      "id": "1977210",
-      "term": "界面活性",
-      "reading": "かいめんかっせい",
-      "meaning": "surface active",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2593,
-      "id": "1977220",
-      "term": "界面現象",
-      "reading": "かいめんげんしょう",
-      "meaning": "interfacial phenomenon / surface phenomenon",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2594,
-      "id": "1976970",
-      "term": "海面更正",
-      "reading": "かいめんこうせい",
-      "meaning": "reduction (of pressure) to mean sea level",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2595,
-      "id": "2636090",
-      "term": "海面上昇",
-      "reading": "かいめんじょうしょう",
-      "meaning": "sea level rise / rise in sea level",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2596,
-      "id": "2530760",
-      "term": "界面張力",
-      "reading": "かいめんちょうりょく",
-      "meaning": "interfacial tension",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2597,
-      "id": "1773110",
-      "term": "海綿動物",
-      "reading": "かいめんどうぶつ",
-      "meaning": "(sea) sponges",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2598,
-      "id": "2850163",
-      "term": "海面変化",
-      "reading": "かいめんへんか",
-      "meaning": "sea level change / eustatic change",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2599,
-      "id": "1976980",
-      "term": "海面変動",
-      "reading": "かいめんへんどう",
-      "meaning": "sea level change",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2600,
-      "id": "2817350",
-      "term": "解約防止",
-      "reading": "かいやくぼうし",
-      "meaning": "churn prevention / churn management",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2601,
-      "id": "2805160",
-      "term": "海洋汚染",
-      "reading": "かいようおせん",
-      "meaning": "marine pollution / oceanic pollution / sea pollution",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2602,
-      "id": "1772890",
-      "term": "海洋開発",
-      "reading": "かいようかいはつ",
-      "meaning": "ocean development",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2603,
-      "id": "2831956",
-      "term": "海洋化学",
-      "reading": "かいようかがく",
-      "meaning": "chemical oceanography / marine chemistry",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2604,
-      "id": "1201800",
-      "term": "海洋科学",
-      "reading": "かいようかがく",
-      "meaning": "marine science",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2605,
-      "id": "1977030",
-      "term": "海洋観測",
-      "reading": "かいようかんそく",
-      "meaning": "oceanographic observation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2606,
-      "id": "2137190",
-      "term": "海洋学者",
-      "reading": "かいようがくしゃ",
-      "meaning": "oceanographer",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2607,
-      "id": "1977040",
-      "term": "海洋気象",
-      "reading": "かいようきしょう",
-      "meaning": "oceanic climate",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2608,
-      "id": "1989490",
-      "term": "海洋警察",
-      "reading": "かいようけいさつ",
-      "meaning": "maritime police",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2609,
-      "id": "2831958",
-      "term": "海洋工学",
-      "reading": "かいようこうがく",
-      "meaning": "ocean engineering",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2610,
-      "id": "2827844",
-      "term": "海洋国家",
-      "reading": "かいようこっか",
-      "meaning": "maritime nation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2611,
-      "id": "1977060",
-      "term": "海洋自由",
-      "reading": "かいようじゆう",
-      "meaning": "freedom of the sea",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2612,
-      "id": "2720750",
-      "term": "海洋生物",
-      "reading": "かいようせいぶつ",
-      "meaning": "marine life / marine organism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2613,
-      "id": "2830364",
-      "term": "海洋秩序",
-      "reading": "かいようちつじょ",
-      "meaning": "international order of the seas / public order at sea",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2614,
-      "id": "1772850",
-      "term": "海洋投棄",
-      "reading": "かいようとうき",
-      "meaning": "dumping at sea",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2615,
-      "id": "1977120",
-      "term": "海洋牧場",
-      "reading": "かいようぼくじょう",
-      "meaning": "marine ranch / marifarm",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2616,
-      "id": "2830178",
-      "term": "海洋療法",
-      "reading": "かいようりょうほう",
-      "meaning": "thalassotherapy",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2617,
-      "id": "2851004",
-      "term": "傀儡国家",
-      "reading": "かいらいこっか",
-      "meaning": "puppet state",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2618,
-      "id": "2042670",
-      "term": "傀儡政権",
-      "reading": "かいらいせいけん",
-      "meaning": "puppet government / puppet regime",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2619,
-      "id": "1563870",
-      "term": "傀儡政府",
-      "reading": "かいらいせいふ",
-      "meaning": "puppet government",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2620,
-      "id": "1976460",
-      "term": "快楽原則",
-      "reading": "かいらくげんそく",
-      "meaning": "pleasure principle",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2621,
-      "id": "2847436",
-      "term": "快楽殺人",
-      "reading": "かいらくさつじん",
-      "meaning": "murder for pleasure / lust murder",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2622,
-      "id": "1199990",
-      "term": "快楽主義",
-      "reading": "かいらくしゅぎ",
-      "meaning": "hedonism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2623,
-      "id": "2871111",
-      "term": "快楽中枢",
-      "reading": "かいらくちゅうすう",
-      "meaning": "pleasure center / reward center",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2624,
-      "id": "2042680",
-      "term": "怪力無双",
-      "reading": "かいりきむそう",
-      "meaning": "(a person of) unrivaled physical strength",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2625,
-      "id": "2530280",
-      "term": "解離定数",
-      "reading": "かいりていすう",
-      "meaning": "dissociation constant",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2626,
-      "id": "2856205",
-      "term": "海流発電",
-      "reading": "かいりゅうはつでん",
-      "meaning": "marine current power generation / ocean current power generation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2627,
-      "id": "2851044",
-      "term": "改良工事",
-      "reading": "かいりょうこうじ",
-      "meaning": "improvement work (construction) / betterment",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2628,
-      "id": "1795220",
-      "term": "改良主義",
-      "reading": "かいりょうしゅぎ",
-      "meaning": "reformism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2629,
-      "id": "2536950",
-      "term": "改良半紙",
-      "reading": "かいりょうばんし",
-      "meaning": "type of Japanese calligraphy paper",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2630,
-      "id": "1200370",
-      "term": "怪力乱神",
-      "reading": "かいりょくらんしん",
-      "meaning": "supernatural things / unnatural phenomena / spirits and demons",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2631,
-      "id": "2239350",
-      "term": "開廊時間",
-      "reading": "かいろうじかん",
-      "meaning": "opening hours of a gallery",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2632,
-      "id": "2833639",
-      "term": "回廊地帯",
-      "reading": "かいろうちたい",
-      "meaning": "corridor (belt of land)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2633,
-      "id": "1563780",
-      "term": "偕老同穴",
-      "reading": "かいろうどうけつ",
-      "meaning": "happy life partnership / living faithfully together till death",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2634,
-      "id": "2345300",
-      "term": "回路機構",
-      "reading": "かいろきこう",
-      "meaning": "circuitry",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2635,
-      "id": "1199840",
-      "term": "回路基板",
-      "reading": "かいろきばん",
-      "meaning": "circuit board",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2636,
-      "id": "1976430",
-      "term": "回路素子",
-      "reading": "かいろそし",
-      "meaning": "circuit element",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2637,
-      "id": "2345330",
-      "term": "回路容量",
-      "reading": "かいろようりょう",
-      "meaning": "circuit capacity",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2638,
-      "id": "2866632",
-      "term": "会話表現",
-      "reading": "かいわひょうげん",
-      "meaning": "conversational expression",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2639,
-      "id": "1184530",
-      "term": "下院議員",
-      "reading": "かいんぎいん",
-      "meaning": "member of the lower house / congressman / congresswoman",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2640,
-      "id": "1184540",
-      "term": "下院議長",
-      "reading": "かいんぎちょう",
-      "meaning": "Speaker of the House (US, etc.)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2641,
-      "id": "2853974",
-      "term": "下咽頭癌",
-      "reading": "かいんとうがん",
-      "meaning": "hypopharyngeal cancer / cancer of the hypopharynx",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2642,
-      "id": "5165354",
-      "term": "嘉悦大学",
-      "reading": "かえつだいがく",
-      "meaning": "Kaetsu University",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2643,
-      "id": "2845203",
-      "term": "返り血を浴びる",
-      "reading": "かえりちをあびる",
-      "meaning": "to be spattered by blood from one's victim",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2644,
-      "id": "2858544",
-      "term": "蛙化現象",
-      "reading": "かえるかげんしょう",
-      "meaning": "frogification phenomenon / developing an aversion to someone one had feelings for once that person reciprocates those feelings",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2645,
-      "id": "2261450",
-      "term": "蛙の面に小便",
-      "reading": "かえるのつらにしょうべん",
-      "meaning": "like water off a duck's back / urine on a frog's face",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2646,
-      "id": "1978010",
-      "term": "蛙の面に水",
-      "reading": "かえるのつらにみず",
-      "meaning": "like water off a duck's back / water on a frog's face",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2647,
-      "id": "2818840",
-      "term": "火炎温度",
-      "reading": "かえんおんど",
-      "meaning": "flame temperature",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2648,
-      "id": "2638150",
-      "term": "過塩化物",
-      "reading": "かえんかぶつ",
-      "meaning": "perchloride",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2649,
-      "id": "2638140",
-      "term": "過塩素酸",
-      "reading": "かえんそさん",
-      "meaning": "perchloric acid",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2650,
-      "id": "2842696",
-      "term": "火焔太鼓",
-      "reading": "かえんだいこ",
-      "meaning": "dadaiko drum (decorated with flames)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2651,
-      "id": "1217740",
-      "term": "顔から火が出る",
-      "reading": "かおからひがでる",
-      "meaning": "to be extremely embarrassed / to burn with shame",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2652,
-      "id": "2839877",
-      "term": "顔が売れる",
-      "reading": "かおがうれる",
-      "meaning": "to be widely recognized / to be famous",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2653,
-      "id": "2028440",
-      "term": "顔が利く",
-      "reading": "かおがきく",
-      "meaning": "to have a lot of influence (in) / to have clout (with) / to be influential",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2654,
-      "id": "2139970",
-      "term": "顔が広い",
-      "reading": "かおがひろい",
-      "meaning": "well connected / well known / having a large, diverse circle of acquaintances",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2655,
-      "id": "1718440",
-      "term": "家屋台帳",
-      "reading": "かおくだいちょう",
-      "meaning": "house or housing registry",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2656,
-      "id": "1864210",
-      "term": "顔に泥を塗る",
-      "reading": "かおにどろをぬる",
-      "meaning": "to bring disgrace (dishonor, dishonour) on / to fling mud at / to put to shame",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2657,
-      "id": "2595960",
-      "term": "顔を揃える",
-      "reading": "かおをそろえる",
-      "meaning": "to all be in attendance (at a meeting, etc.) / to all gather together",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2658,
-      "id": "5745447",
-      "term": "華夏銀行",
-      "reading": "かかぎんこう",
-      "meaning": "Huaxia Bank",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2659,
-      "id": "1189510",
-      "term": "価格圧力",
-      "reading": "かかくあつりょく",
-      "meaning": "price pressure",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2660,
-      "id": "1719000",
-      "term": "価格安定",
-      "reading": "かかくあんてい",
-      "meaning": "price stabilization / price stabilisation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2661,
-      "id": "2665480",
-      "term": "価格改定",
-      "reading": "かかくかいてい",
-      "meaning": "price revision / new pricing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2662,
-      "id": "1974420",
-      "term": "価格革命",
-      "reading": "かかくかくめい",
-      "meaning": "price revolution",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2663,
-      "id": "2668470",
-      "term": "価格監視",
-      "reading": "かかくかんし",
-      "meaning": "price monitoring / price observation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2664,
-      "id": "1974430",
-      "term": "価格機構",
-      "reading": "かかくきこう",
-      "meaning": "price mechanism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2665,
-      "id": "1189520",
-      "term": "価格規制",
-      "reading": "かかくきせい",
-      "meaning": "price control / price regulation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2666,
-      "id": "1189530",
-      "term": "価格競争",
-      "reading": "かかくきょうそう",
-      "meaning": "price competition",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2667,
-      "id": "1719010",
-      "term": "価格協定",
-      "reading": "かかくきょうてい",
-      "meaning": "price agreement / price-maintenance agreement",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2668,
-      "id": "1974440",
-      "term": "価格効果",
-      "reading": "かかくこうか",
-      "meaning": "price effect",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2669,
-      "id": "2116950",
-      "term": "価格交渉",
-      "reading": "かかくこうしょう",
-      "meaning": "price negotiation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2670,
-      "id": "1974450",
-      "term": "価格差別",
-      "reading": "かかくさべつ",
-      "meaning": "price discrimination",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2671,
-      "id": "2798710",
-      "term": "価格志向",
-      "reading": "かかくしこう",
-      "meaning": "price consciousness",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2672,
-      "id": "1189550",
-      "term": "価格性能",
-      "reading": "かかくせいのう",
-      "meaning": "cost effectiveness",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2673,
-      "id": "2540530",
-      "term": "価格設定",
-      "reading": "かかくせってい",
-      "meaning": "price decision / price setting / pricing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2674,
-      "id": "1189560",
-      "term": "価格戦争",
-      "reading": "かかくせんそう",
-      "meaning": "price war",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2675,
-      "id": "1719040",
-      "term": "価格操作",
-      "reading": "かかくそうさ",
-      "meaning": "price manipulation / price fixing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2676,
-      "id": "1719030",
-      "term": "価格統制",
-      "reading": "かかくとうせい",
-      "meaning": "price controls",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2677,
-      "id": "2139600",
-      "term": "価格破壊",
-      "reading": "かかくはかい",
-      "meaning": "sudden, wide-spread drop in prices",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2678,
-      "id": "1719020",
-      "term": "価格変動",
-      "reading": "かかくへんどう",
-      "meaning": "price fluctuations",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2679,
-      "id": "1989300",
-      "term": "価格崩壊",
-      "reading": "かかくほうかい",
-      "meaning": "price destruction",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2680,
-      "id": "5745448",
-      "term": "華夏時報",
-      "reading": "かかじほう",
-      "meaning": "The Huaxia Times",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2681,
-      "id": "2033210",
-      "term": "呵々大笑",
-      "reading": "かかたいしょう",
-      "meaning": "laughing a ringing laugh / having a hearty laugh / roaring with laughter",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2682,
-      "id": "2112980",
-      "term": "可換環論",
-      "reading": "かかんかんろん",
-      "meaning": "commutative algebra",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2683,
-      "id": "2725820",
-      "term": "可干渉的",
-      "reading": "かかんしょうてき",
-      "meaning": "coherent",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2684,
-      "id": "2837079",
-      "term": "可観測量",
-      "reading": "かかんそくりょう",
-      "meaning": "observable (quantity)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2685,
-      "id": "1975620",
-      "term": "課外活動",
-      "reading": "かがいかつどう",
-      "meaning": "extracurricular activities",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2686,
-      "id": "1931330",
-      "term": "課外授業",
-      "reading": "かがいじゅぎょう",
-      "meaning": "extracurricular lesson",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2687,
-      "id": "2870438",
-      "term": "加害妄想",
-      "reading": "かがいもうそう",
-      "meaning": "persecutor complex / delusion that one is harming others",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2688,
-      "id": "1974850",
-      "term": "科学映画",
-      "reading": "かがくえいが",
-      "meaning": "science film",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2689,
-      "id": "1989250",
-      "term": "化学汚染",
-      "reading": "かがくおせん",
-      "meaning": "chemical pollution",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2690,
-      "id": "1974860",
-      "term": "科学革命",
-      "reading": "かがくかくめい",
-      "meaning": "scientific revolution",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2691,
-      "id": "2512580",
-      "term": "化学化石",
-      "reading": "かがくかせき",
-      "meaning": "chemical fossil",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2692,
-      "id": "5160923",
-      "term": "化学学校",
-      "reading": "かがくがっこう",
-      "meaning": "Chemical School",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2693,
-      "id": "1974170",
-      "term": "化学機械",
-      "reading": "かがくきかい",
-      "meaning": "chemical machinery",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2694,
-      "id": "2861924",
-      "term": "科学機器",
-      "reading": "かがくきき",
-      "meaning": "scientific instrument",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2695,
-      "id": "1186770",
-      "term": "化学記号",
-      "reading": "かがくきごう",
-      "meaning": "chemical symbols (for the elements)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2696,
-      "id": "1186780",
-      "term": "化学吸着",
-      "reading": "かがくきゅうちゃく",
-      "meaning": "chemisorb",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2697,
-      "id": "1192720",
-      "term": "科学技術",
-      "reading": "かがくぎじゅつ",
-      "meaning": "science and technology / technology / scientific techniques",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2698,
-      "id": "1803050",
-      "term": "化学結合",
-      "reading": "かがくけつごう",
-      "meaning": "chemical bond",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2699,
-      "id": "2060040",
-      "term": "科学研究",
-      "reading": "かがくけんきゅう",
-      "meaning": "scientific research",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2700,
-      "id": "1974180",
-      "term": "化学研磨",
-      "reading": "かがくけんま",
-      "meaning": "chemical polishing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2701,
-      "id": "2523250",
-      "term": "化学元素",
-      "reading": "かがくげんそ",
-      "meaning": "chemical element",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2702,
-      "id": "1186790",
-      "term": "化学工学",
-      "reading": "かがくこうがく",
-      "meaning": "chemical engineering",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2703,
-      "id": "1186800",
-      "term": "化学工業",
-      "reading": "かがくこうぎょう",
-      "meaning": "chemical industry",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2704,
-      "id": "1989270",
-      "term": "化学攻撃",
-      "reading": "かがくこうげき",
-      "meaning": "chemical attack",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2705,
-      "id": "2660920",
-      "term": "化学工場",
-      "reading": "かがくこうじょう",
-      "meaning": "chemical plant / chemical factory / chemical works",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2706,
-      "id": "1930960",
-      "term": "化学構造",
-      "reading": "かがくこうぞう",
-      "meaning": "chemical structure / chemical constitution",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2707,
-      "id": "1930970",
-      "term": "化学合成",
-      "reading": "かがくごうせい",
-      "meaning": "chemosynthesis",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2708,
-      "id": "1803040",
-      "term": "化学作用",
-      "reading": "かがくさよう",
-      "meaning": "chemical action",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2709,
-      "id": "1931190",
-      "term": "科学雑誌",
-      "reading": "かがくざっし",
-      "meaning": "science magazine",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2710,
-      "id": "2646870",
-      "term": "科学史家",
-      "reading": "かがくしか",
-      "meaning": "historian of science / science historian",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2711,
-      "id": "1186820",
-      "term": "化学試験",
-      "reading": "かがくしけん",
-      "meaning": "chemical test",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2712,
-      "id": "1931200",
-      "term": "科学思想",
-      "reading": "かがくしそう",
-      "meaning": "scientific thought",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2713,
-      "id": "2163210",
-      "term": "科学主義",
-      "reading": "かがくしゅぎ",
-      "meaning": "scientism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2714,
-      "id": "1974200",
-      "term": "化学進化",
-      "reading": "かがくしんか",
-      "meaning": "chemical evolution",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2715,
-      "id": "2802830",
-      "term": "化学浸透",
-      "reading": "かがくしんとう",
-      "meaning": "chemiosmosis",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2716,
-      "id": "2653040",
-      "term": "化学実験",
-      "reading": "かがくじっけん",
-      "meaning": "chemical experiment / chemistry experiment",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2717,
-      "id": "2629670",
-      "term": "科学実験",
-      "reading": "かがくじっけん",
-      "meaning": "scientific experiment",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2718,
-      "id": "2113020",
-      "term": "下学上達",
-      "reading": "かがくじょうたつ",
-      "meaning": "beginning one's studies with something familiar and gradually increasing the depth of learning",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2719,
-      "id": "1186860",
-      "term": "化学製品",
-      "reading": "かがくせいひん",
-      "meaning": "chemical product",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2720,
-      "id": "2763670",
-      "term": "化学成分",
-      "reading": "かがくせいぶん",
-      "meaning": "chemical composition / chemical component",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2721,
-      "id": "1186890",
-      "term": "化学繊維",
-      "reading": "かがくせんい",
-      "meaning": "synthetic fiber / synthetic fibre / chemical fiber",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2722,
-      "id": "1974890",
-      "term": "科学捜査",
-      "reading": "かがくそうさ",
-      "meaning": "scientific crime detection / forensic investigation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2723,
-      "id": "1931210",
-      "term": "科学知識",
-      "reading": "かがくちしき",
-      "meaning": "scientific knowledge",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2724,
-      "id": "1974920",
-      "term": "科学哲学",
-      "reading": "かがくてつがく",
-      "meaning": "philosophy of science",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2725,
-      "id": "1974230",
-      "term": "化学天秤",
-      "reading": "かがくてんびん",
-      "meaning": "chemical balance",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2726,
-      "id": "1974240",
-      "term": "化学当量",
-      "reading": "かがくとうりょう",
-      "meaning": "chemical equivalent",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2727,
-      "id": "1974260",
-      "term": "化学発光",
-      "reading": "かがくはっこう",
-      "meaning": "chemoluminescence",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2728,
-      "id": "1186910",
-      "term": "化学反応",
-      "reading": "かがくはんのう",
-      "meaning": "chemical reaction",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2729,
-      "id": "2523000",
-      "term": "科学万能",
-      "reading": "かがくばんのう",
-      "meaning": "belief that everything can be explained by science / scientism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2730,
-      "id": "1186920",
-      "term": "化学肥料",
-      "reading": "かがくひりょう",
-      "meaning": "chemical fertilizer / chemical fertiliser",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2731,
-      "id": "1930980",
-      "term": "化学物質",
-      "reading": "かがくぶっしつ",
-      "meaning": "chemical substance / chemical",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2732,
-      "id": "1803020",
-      "term": "化学分析",
-      "reading": "かがくぶんせき",
-      "meaning": "chemical analysis",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2733,
-      "id": "1186940",
-      "term": "化学兵器",
-      "reading": "かがくへいき",
-      "meaning": "chemical weapon",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2734,
-      "id": "2864099",
-      "term": "科学兵器",
-      "reading": "かがくへいき",
-      "meaning": "scientific weapon",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2735,
-      "id": "1974290",
-      "term": "化学平衡",
-      "reading": "かがくへいこう",
-      "meaning": "chemical equilibrium",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2736,
-      "id": "1186960",
-      "term": "化学変化",
-      "reading": "かがくへんか",
-      "meaning": "chemical change",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2737,
-      "id": "1974300",
-      "term": "化学薬品",
-      "reading": "かがくやくひん",
-      "meaning": "chemical / chemical agent / chemicals",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2738,
-      "id": "1186970",
-      "term": "化学療法",
-      "reading": "かがくりょうほう",
-      "meaning": "chemotherapy",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2739,
-      "id": "2527210",
-      "term": "化学量論",
-      "reading": "かがくりょうろん",
-      "meaning": "stoichiometry",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2740,
-      "id": "2861668",
-      "term": "科学理論",
-      "reading": "かがくりろん",
-      "meaning": "scientific theory",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2741,
-      "id": "2861498",
-      "term": "科学論文",
-      "reading": "かがくろんぶん",
-      "meaning": "scientific article / scientific paper",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2742,
-      "id": "1975260",
-      "term": "花芽形成",
-      "reading": "かがけいせい",
-      "meaning": "flower bud formation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2743,
-      "id": "5743573",
-      "term": "香川県警",
-      "reading": "かがわけんけい",
-      "meaning": "Kagawa Prefectural Police (abbr)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2744,
-      "id": "5286812",
-      "term": "香川大学",
-      "reading": "かがわだいがく",
-      "meaning": "Kagawa University",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2745,
-      "id": "1778430",
-      "term": "河岸段丘",
-      "reading": "かがんだんきゅう",
-      "meaning": "river terrace",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2746,
-      "id": "1803150",
-      "term": "花卉園芸",
-      "reading": "かきえんげい",
-      "meaning": "floriculture / flower gardening",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2747,
-      "id": "2837883",
-      "term": "火器管制",
-      "reading": "かきかんせい",
-      "meaning": "fire control",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2748,
-      "id": "1191370",
-      "term": "夏期学校",
-      "reading": "かきがっこう",
-      "meaning": "summer school",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2749,
-      "id": "1191400",
-      "term": "夏季休暇",
-      "reading": "かききゅうか",
-      "meaning": "summer vacation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2750,
-      "id": "1931060",
-      "term": "夏期休暇",
-      "reading": "かききゅうか",
-      "meaning": "summer vacation / summer holidays",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2751,
-      "id": "1724330",
-      "term": "火気厳禁",
-      "reading": "かきげんきん",
-      "meaning": "total fire ban / no source of ignition permitted / no open flame",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2752,
-      "id": "2837757",
-      "term": "夏季五輪",
-      "reading": "かきごりん",
-      "meaning": "Summer Olympics",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2753,
-      "id": "2860583",
-      "term": "花卉栽培",
-      "reading": "かきさいばい",
-      "meaning": "floriculture / flower gardening",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2754,
-      "id": "1191390",
-      "term": "夏期大学",
-      "reading": "かきだいがく",
-      "meaning": "university summer school / college summer school",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2755,
-      "id": "2147930",
-      "term": "書留小包",
-      "reading": "かきとめこづつみ",
-      "meaning": "registered parcel",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2756,
-      "id": "1344190",
-      "term": "書留郵便",
-      "reading": "かきとめゆうびん",
-      "meaning": "registered mail / registered post",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2757,
-      "id": "2855050",
-      "term": "過期妊娠",
-      "reading": "かきにんしん",
-      "meaning": "post-term pregnancy",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2758,
-      "id": "2842783",
-      "term": "下級国民",
-      "reading": "かきゅうこくみん",
-      "meaning": "low class citizen",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2759,
-      "id": "2855052",
-      "term": "過強陣痛",
-      "reading": "かきょうじんつう",
-      "meaning": "excessively strong labor pain",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2760,
-      "id": "5172099",
-      "term": "華僑大学",
-      "reading": "かきょうだいがく",
-      "meaning": "Huaqiao University",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2761,
-      "id": "2840100",
-      "term": "過橋米線",
-      "reading": "かきょうべいせん",
-      "meaning": "rice noodle soup (Yunnan cuisine) / crossing-the-bridge noodles",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2762,
-      "id": "2406300",
-      "term": "夏季料金",
-      "reading": "かきりょうきん",
-      "meaning": "summer rate",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2763,
-      "id": "2833982",
-      "term": "垣を作る",
-      "reading": "かきをつくる",
-      "meaning": "to put up an (emotional) wall (between two people) / to become distant",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2764,
-      "id": "2344550",
-      "term": "課金機能",
-      "reading": "かきんきのう",
-      "meaning": "billing function",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2765,
-      "id": "2344560",
-      "term": "課金情報",
-      "reading": "かきんじょうほう",
-      "meaning": "billing information / accounting information",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2766,
-      "id": "2840340",
-      "term": "鍵の穴から天を覗く",
-      "reading": "かぎのあなからてんをのぞく",
-      "meaning": "to have a narrow view of things / to peep at the sky through a keyhole",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2767,
-      "id": "2830962",
-      "term": "鉤手海月",
-      "reading": "かぎのてくらげ",
-      "meaning": "clinging jellyfish (Gonionemus vertens)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2768,
-      "id": "2344330",
-      "term": "可逆圧縮",
-      "reading": "かぎゃくあっしゅく",
-      "meaning": "lossless compression",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2769,
-      "id": "1974560",
-      "term": "可逆機関",
-      "reading": "かぎゃくきかん",
-      "meaning": "reversible engine",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2770,
-      "id": "2869867",
-      "term": "加虐趣味",
-      "reading": "かぎゃくしゅみ",
-      "meaning": "sadism / sadistic nature",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2771,
-      "id": "2104820",
-      "term": "加虐性愛",
-      "reading": "かぎゃくせいあい",
-      "meaning": "sadism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2772,
-      "id": "2537590",
-      "term": "加虐性欲",
-      "reading": "かぎゃくせいよく",
-      "meaning": "sadism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2773,
-      "id": "1974570",
-      "term": "可逆電池",
-      "reading": "かぎゃくでんち",
-      "meaning": "reversible cell",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2774,
-      "id": "1190790",
-      "term": "可逆反応",
-      "reading": "かぎゃくはんのう",
-      "meaning": "reversible reaction",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2775,
-      "id": "1974580",
-      "term": "可逆変化",
-      "reading": "かぎゃくへんか",
-      "meaning": "reversible change",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2776,
-      "id": "2033330",
-      "term": "蝸牛角上",
-      "reading": "かぎゅうかくじょう",
-      "meaning": "trifling (fight) / (a conflict) between small countries",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2777,
-      "id": "2744070",
-      "term": "蝸牛角上の争い",
-      "reading": "かぎゅうかくじょうのあらそい",
-      "meaning": "fighting over nothing / making a mountain out of a molehill",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2778,
-      "id": "2152440",
-      "term": "蝸牛神経",
-      "reading": "かぎゅうしんけい",
-      "meaning": "cochlear nerve",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2779,
-      "id": "2570610",
-      "term": "鍵を握る",
-      "reading": "かぎをにぎる",
-      "meaning": "to hold the key (to)",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2780,
-      "id": "2861666",
-      "term": "核異性体",
-      "reading": "かくいせいたい",
-      "meaning": "nuclear isomer",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2781,
-      "id": "2042700",
-      "term": "画一思考",
-      "reading": "かくいつしこう",
-      "meaning": "uniformity of thought / uniform thinking",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2782,
-      "id": "1197090",
-      "term": "画一主義",
-      "reading": "かくいつしゅぎ",
-      "meaning": "standardization / standardisation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2783,
-      "id": "2666790",
-      "term": "客員教員",
-      "reading": "かくいんきょういん",
-      "meaning": "guest lecturer / guest teacher / visiting lecturer",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2784,
-      "id": "2854308",
-      "term": "架空索道",
-      "reading": "かくうさくどう",
-      "meaning": "aerial ropeway",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2785,
-      "id": "2823800",
-      "term": "架空資産",
-      "reading": "かくうしさん",
-      "meaning": "fictitious assets",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2786,
-      "id": "2719280",
-      "term": "架空請求",
-      "reading": "かくうせいきゅう",
-      "meaning": "false invoice / false billing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2787,
-      "id": "2829825",
-      "term": "架空鉄道",
-      "reading": "かくうてつどう",
-      "meaning": "elevated railway / overhead railway",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2788,
-      "id": "2845983",
-      "term": "架空取引",
-      "reading": "かくうとりひき",
-      "meaning": "fictitious transaction / bogus transaction",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2789,
-      "id": "1206130",
-      "term": "角運動量",
-      "reading": "かくうんどうりょう",
-      "meaning": "angular momentum",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2790,
-      "id": "1204900",
-      "term": "各駅停車",
-      "reading": "かくえきていしゃ",
-      "meaning": "train that stops at every station / local train",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2791,
-      "id": "2152050",
-      "term": "核科学者",
-      "reading": "かくかがくしゃ",
-      "meaning": "nuclear scientist",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2792,
-      "id": "1978370",
-      "term": "角加速度",
-      "reading": "かくかそくど",
-      "meaning": "angular acceleration",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2793,
-      "id": "2832622",
-      "term": "閣外協力",
-      "reading": "かくがいきょうりょく",
-      "meaning": "cooperation with the government from outside the cabinet",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2794,
-      "id": "1989610",
-      "term": "閣議決定",
-      "reading": "かくぎけってい",
-      "meaning": "cabinet decision",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2795,
-      "id": "2865978",
-      "term": "角結膜炎",
-      "reading": "かくけつまくえん",
-      "meaning": "keratoconjunctivitis",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2796,
-      "id": "2121180",
-      "term": "格差社会",
-      "reading": "かくさしゃかい",
-      "meaning": "disparate society / stratified society",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2797,
-      "id": "2848006",
-      "term": "拡散希望",
-      "reading": "かくさんきぼう",
-      "meaning": "please share (this) / please help spread / retweets welcome",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2798,
-      "id": "2346400",
-      "term": "拡散反射",
-      "reading": "かくさんはんしゃ",
-      "meaning": "diffuse reflection",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2799,
-      "id": "2597170",
-      "term": "核子構造",
-      "reading": "かくしこうぞう",
-      "meaning": "nucleon structure",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2800,
-      "id": "2125650",
-      "term": "角質肥厚",
-      "reading": "かくしつひこう",
-      "meaning": "skin thickening",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2801,
-      "id": "1978410",
-      "term": "角周波数",
-      "reading": "かくしゅうはすう",
-      "meaning": "angular frequency",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2802,
-      "id": "2042750",
-      "term": "各種各様",
-      "reading": "かくしゅかくよう",
-      "meaning": "individual (different) ways of doing things / being different (varied) for each item (type)",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2803,
-      "id": "1613970",
-      "term": "各種学校",
-      "reading": "かくしゅがっこう",
-      "meaning": "miscellaneous school / legal category of schools including certain vocational schools, driving schools, cram schools, etc.",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2804,
-      "id": "1760410",
-      "term": "革新主義",
-      "reading": "かくしんしゅぎ",
-      "meaning": "progressivism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2805,
-      "id": "1760430",
-      "term": "革新政党",
-      "reading": "かくしんせいとう",
-      "meaning": "reformist party / progressive party",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2806,
-      "id": "2851070",
-      "term": "角振動数",
-      "reading": "かくしんどうすう",
-      "meaning": "angular frequency",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2807,
-      "id": "1204850",
-      "term": "画時代的",
-      "reading": "かくじだいてき",
-      "meaning": "epoch-making",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2808,
-      "id": "2152060",
-      "term": "核実験室",
-      "reading": "かくじっけんしつ",
-      "meaning": "nuclear laboratory",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2809,
-      "id": "2042730",
-      "term": "各自負担",
-      "reading": "かくじふたん",
-      "meaning": "joint and several liability / each individual being responsible for the payment of his share of the purchase price, expense, etc.",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2810,
-      "id": "2042760",
-      "term": "各人各説",
-      "reading": "かくじんかくせつ",
-      "meaning": "everyone has his (her) own view / different people, different opinions",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2811,
-      "id": "1636220",
-      "term": "各人各様",
-      "reading": "かくじんかくよう",
-      "meaning": "different strokes for different folks / people doing something in their own way",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2812,
-      "id": "1801420",
-      "term": "隔世遺伝",
-      "reading": "かくせいいでん",
-      "meaning": "atavism / throwback / reappearance of an earlier characteristic",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2813,
-      "id": "2859345",
-      "term": "覚醒亢進",
-      "reading": "かくせいこうしん",
-      "meaning": "hyperarousal (symptom of PTSD)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2814,
-      "id": "2679220",
-      "term": "覚醒作用",
-      "reading": "かくせいさよう",
-      "meaning": "stimulant effect (e.g. caffeine)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2815,
-      "id": "2863198",
-      "term": "覚醒周期",
-      "reading": "かくせいしゅうき",
-      "meaning": "sleep-wake cycle",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2816,
-      "id": "2658560",
-      "term": "覚醒状態",
-      "reading": "かくせいじょうたい",
-      "meaning": "wakefulness",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2817,
-      "id": "2679210",
-      "term": "覚醒水準",
-      "reading": "かくせいすいじゅん",
-      "meaning": "level of awakeness / level of arousal",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2818,
-      "id": "2534290",
-      "term": "拡声設備",
-      "reading": "かくせいせつび",
-      "meaning": "loudspeaker system / PA system",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2819,
-      "id": "1607680",
-      "term": "拡声装置",
-      "reading": "かくせいそうち",
-      "meaning": "public-address system / PA system",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2820,
-      "id": "2867433",
-      "term": "角閃片岩",
-      "reading": "かくせんへんがん",
-      "meaning": "hornblende schist",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2821,
-      "id": "1978210",
-      "term": "核相交代",
-      "reading": "かくそうこうたい",
-      "meaning": "alternation of nuclear phases",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2822,
-      "id": "1949020",
-      "term": "喀痰検査",
-      "reading": "かくたんけんさ",
-      "meaning": "examination of someone's sputum",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2823,
-      "id": "1978220",
-      "term": "核蛋白質",
-      "reading": "かくたんぱくしつ",
-      "meaning": "nucleoprotein",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2824,
-      "id": "1931880",
-      "term": "拡大解釈",
-      "reading": "かくだいかいしゃく",
-      "meaning": "broad interpretation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2825,
-      "id": "2833136",
-      "term": "拡大家族",
-      "reading": "かくだいかぞく",
-      "meaning": "extended family",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2826,
-      "id": "1719600",
-      "term": "拡大均衡",
-      "reading": "かくだいきんこう",
-      "meaning": "an expanded or expanding equilibrium",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2827,
-      "id": "2346430",
-      "term": "拡大行列",
-      "reading": "かくだいぎょうれつ",
-      "meaning": "augmented matrix",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2828,
-      "id": "2346440",
-      "term": "拡大縮小",
-      "reading": "かくだいしゅくしょう",
-      "meaning": "scaling / zooming",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2829,
-      "id": "2838228",
-      "term": "拡大実数",
-      "reading": "かくだいじっすう",
-      "meaning": "extended real number",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2830,
-      "id": "2764280",
-      "term": "拡大推計",
-      "reading": "かくだいすいけい",
-      "meaning": "extrapolation / projection",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2831,
-      "id": "2016060",
-      "term": "拡大販売",
-      "reading": "かくだいはんばい",
-      "meaning": "sales expansion / increase in sales",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2832,
-      "id": "2346450",
-      "term": "拡大保証",
-      "reading": "かくだいほしょう",
-      "meaning": "extended warranty",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2833,
-      "id": "2042780",
-      "term": "拡大路線",
-      "reading": "かくだいろせん",
-      "meaning": "expansion policy / road to expansion",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2834,
-      "id": "2833144",
-      "term": "拡張家族",
-      "reading": "かくちょうかぞく",
-      "meaning": "extended family",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2835,
-      "id": "1205240",
-      "term": "拡張可能",
-      "reading": "かくちょうかのう",
-      "meaning": "extensible",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2836,
-      "id": "2346570",
-      "term": "拡張記号",
-      "reading": "かくちょうきごう",
-      "meaning": "extension sign",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2837,
-      "id": "2346550",
-      "term": "拡張機能",
-      "reading": "かくちょうきのう",
-      "meaning": "expanded functionality / extended functionality / expansion (software)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2838,
-      "id": "2512130",
-      "term": "拡張現実",
-      "reading": "かくちょうげんじつ",
-      "meaning": "augmented reality / AR",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2839,
-      "id": "2042790",
-      "term": "格調高雅",
-      "reading": "かくちょうこうが",
-      "meaning": "refined / dignified / elegant",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2840,
-      "id": "2622160",
-      "term": "拡張条虫",
-      "reading": "かくちょうじょうちゅう",
-      "meaning": "sheep tapeworm (Moniezia expansa)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2841,
-      "id": "2346650",
-      "term": "拡張部分",
-      "reading": "かくちょうぶぶん",
-      "meaning": "extension",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2842,
-      "id": "2854375",
-      "term": "格付機関",
-      "reading": "かくづけきかん",
-      "meaning": "rating agency (e.g. credit)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2843,
-      "id": "2753640",
-      "term": "確定裁判",
-      "reading": "かくていさいばん",
-      "meaning": "final decision",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2844,
-      "id": "1819560",
-      "term": "確定申告",
-      "reading": "かくていしんこく",
-      "meaning": "final income tax return / final declaration / final report",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2845,
-      "id": "2193350",
-      "term": "確定事項",
-      "reading": "かくていじこう",
-      "meaning": "fixed content / settled matter / done deal",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2846,
-      "id": "2866463",
-      "term": "確定条件",
-      "reading": "かくていじょうけん",
-      "meaning": "fixed condition / preexisting condition",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2847,
-      "id": "1819570",
-      "term": "確定判決",
-      "reading": "かくていはんけつ",
-      "meaning": "final sentence",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2848,
-      "id": "2869558",
-      "term": "確定反撃",
-      "reading": "かくていはんげき",
-      "meaning": "punish / guaranteed counter-attack",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2849,
-      "id": "1978320",
-      "term": "確定日付",
-      "reading": "かくていひづけ",
-      "meaning": "fixed date",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2850,
-      "id": "2642320",
-      "term": "格闘技会",
-      "reading": "かくとうぎかい",
-      "meaning": "martial arts competition / combat sports competition",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2851,
-      "id": "2078150",
-      "term": "獲得形質",
-      "reading": "かくとくけいしつ",
-      "meaning": "acquired characteristics (as opposed to inherited)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2852,
-      "id": "2212730",
-      "term": "獲得免疫",
-      "reading": "かくとくめんえき",
-      "meaning": "acquired immunity",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2853,
-      "id": "2867551",
-      "term": "下区動脈",
-      "reading": "かくどうみゃく",
-      "meaning": "inferior segmental artery",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2854,
-      "id": "2346820",
-      "term": "確認試験",
-      "reading": "かくにんしけん",
-      "meaning": "validation test",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2855,
-      "id": "2532000",
-      "term": "確認写真",
-      "reading": "かくにんしゃしん",
-      "meaning": "portal film (e.g. in radiotherapy)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2856,
-      "id": "2100480",
-      "term": "核燃料化",
-      "reading": "かくねんりょうか",
-      "meaning": "(nuclear fuel) enrichment",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2857,
-      "id": "2615710",
-      "term": "核燃料棒",
-      "reading": "かくねんりょうぼう",
-      "meaning": "nuclear fuel rod / nuclear rod",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2858,
-      "id": "2346760",
-      "term": "格納密度",
-      "reading": "かくのうみつど",
-      "meaning": "loading density",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2859,
-      "id": "2615720",
-      "term": "格納容器",
-      "reading": "かくのうようき",
-      "meaning": "containment vessel (nuclear reactor, etc.) / CV",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2860,
-      "id": "2346770",
-      "term": "格納領域",
-      "reading": "かくのうりょういき",
-      "meaning": "storage area",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2861,
-      "id": "1931890",
-      "term": "核廃棄物",
-      "reading": "かくはいきぶつ",
-      "meaning": "nuclear waste",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2862,
-      "id": "1205670",
-      "term": "核反応炉",
-      "reading": "かくはんのうろ",
-      "meaning": "nuclear reactor",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2863,
-      "id": "2062390",
-      "term": "核不拡散",
-      "reading": "かくふかくさん",
-      "meaning": "nuclear nonproliferation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2864,
-      "id": "1864780",
-      "term": "格物致知",
-      "reading": "かくぶつちち",
-      "meaning": "gaining a perfect knowledge of natural laws",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2865,
-      "id": "1760190",
-      "term": "核物理学",
-      "reading": "かくぶつりがく",
-      "meaning": "nuclear physics",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2866,
-      "id": "2749770",
-      "term": "核分裂性",
-      "reading": "かくぶんれつせい",
-      "meaning": "fissility",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2867,
-      "id": "2123010",
-      "term": "核兵器国",
-      "reading": "かくへいきこく",
-      "meaning": "nuclear-weapon state",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2868,
-      "id": "2056940",
-      "term": "核保有国",
-      "reading": "かくほゆうこく",
-      "meaning": "nuclear power / nuclear state",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2869,
-      "id": "1989590",
-      "term": "核保有量",
-      "reading": "かくほゆうりょう",
-      "meaning": "nuclear stockpile",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2870,
-      "id": "1864810",
-      "term": "核防衛力",
-      "reading": "かくぼうえいりょく",
-      "meaning": "nuclear defenses / nuclear defences",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2871,
-      "id": "1836860",
-      "term": "角膜移植",
-      "reading": "かくまくいしょく",
-      "meaning": "corneal transplant",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2872,
-      "id": "1978460",
-      "term": "角膜銀行",
-      "reading": "かくまくぎんこう",
-      "meaning": "eye bank",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2873,
-      "id": "2865098",
-      "term": "角膜上皮",
-      "reading": "かくまくじょうひ",
-      "meaning": "corneal epithelium",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2874,
-      "id": "2657420",
-      "term": "角膜切開",
-      "reading": "かくまくせっかい",
-      "meaning": "keratotomy / corneal incision",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2875,
-      "id": "1978470",
-      "term": "角膜反射",
-      "reading": "かくまくはんしゃ",
-      "meaning": "corneal reflex",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2876,
-      "id": "1206510",
-      "term": "革命運動",
-      "reading": "かくめいうんどう",
-      "meaning": "revolutionary movement",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2877,
-      "id": "2121820",
-      "term": "革命政府",
-      "reading": "かくめいせいふ",
-      "meaning": "revolutionary government",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2878,
-      "id": "1206260",
-      "term": "較優位論",
-      "reading": "かくゆういろん",
-      "meaning": "theory of comparative advantage",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2879,
-      "id": "2544850",
-      "term": "核融合炉",
-      "reading": "かくゆうごうろ",
-      "meaning": "nuclear fusion reactor",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2880,
-      "id": "1205730",
-      "term": "核抑止力",
-      "reading": "かくよくしりょく",
-      "meaning": "nuclear deterrent force",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2881,
-      "id": "1978270",
-      "term": "核抑止論",
-      "reading": "かくよくしろん",
-      "meaning": "nuclear deterrent theory",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2882,
-      "id": "2042810",
-      "term": "撹乱戦術",
-      "reading": "かくらんせんじゅつ",
-      "meaning": "disturbance tactics",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2883,
-      "id": "1205970",
-      "term": "確率過程",
-      "reading": "かくりつかてい",
-      "meaning": "stochastic process",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2884,
-      "id": "1205980",
-      "term": "確率誤差",
-      "reading": "かくりつごさ",
-      "meaning": "random error",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2885,
-      "id": "2856537",
-      "term": "確率振幅",
-      "reading": "かくりつしんぷく",
-      "meaning": "probability amplitude (quantum mechanics)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2886,
-      "id": "2829384",
-      "term": "確率積分",
-      "reading": "かくりつせきぶん",
-      "meaning": "stochastic integral",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2887,
-      "id": "1205990",
-      "term": "確率標本",
-      "reading": "かくりつひょうほん",
-      "meaning": "random sample",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2888,
-      "id": "1978340",
-      "term": "確率分布",
-      "reading": "かくりつぶんぷ",
-      "meaning": "probability distribution",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2889,
-      "id": "1206000",
-      "term": "確率変数",
-      "reading": "かくりつへんすう",
-      "meaning": "random variable / stochastic variable",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2890,
-      "id": "2859839",
-      "term": "確率変動",
-      "reading": "かくりつへんどう",
-      "meaning": "system by which hitting a certain jackpot increases the probability of hitting the next jackpot (on prepaid card pachinko machines)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2891,
-      "id": "2346830",
-      "term": "確率密度",
-      "reading": "かくりつみつど",
-      "meaning": "probability density",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2892,
-      "id": "2346840",
-      "term": "確率理論",
-      "reading": "かくりつりろん",
-      "meaning": "probability theory",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2893,
-      "id": "2860281",
-      "term": "隔離病室",
-      "reading": "かくりびょうしつ",
-      "meaning": "isolation ward",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2894,
-      "id": "1978530",
-      "term": "隔離病舎",
-      "reading": "かくりびょうしゃ",
-      "meaning": "isolation ward",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2895,
-      "id": "1801440",
-      "term": "隔離病棟",
-      "reading": "かくりびょうとう",
-      "meaning": "isolation ward",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2896,
-      "id": "2699590",
-      "term": "隔離分布",
-      "reading": "かくりぶんぷ",
-      "meaning": "disjunct distribution",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2897,
-      "id": "1989620",
-      "term": "隔離命令",
-      "reading": "かくりめいれい",
-      "meaning": "isolation order",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2898,
-      "id": "2132780",
-      "term": "閣僚会議",
-      "reading": "かくりょうかいぎ",
-      "meaning": "cabinet meeting / meeting of ministers",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2899,
-      "id": "2165630",
-      "term": "隠熊之実",
-      "reading": "かくれくまのみ",
-      "meaning": "Ocellaris clownfish (Amphiprion ocellaris)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2900,
-      "id": "2006170",
-      "term": "家具調度",
-      "reading": "かぐちょうど",
-      "meaning": "household furnishings",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2901,
-      "id": "2580400",
-      "term": "軻遇突智",
-      "reading": "かぐつち",
-      "meaning": "Kagutsuchi / fire deity who burned to death his mother Izanami during childbirth (and was therefore beheaded by his father Izanagi)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2902,
-      "id": "2580380",
-      "term": "迦具土神",
-      "reading": "かぐつちのかみ",
-      "meaning": "Kagutsuchi / fire deity who burned to death his mother Izanami during childbirth (and was therefore beheaded by his father Izanagi)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2903,
-      "id": "2800670",
-      "term": "神楽蝙蝠",
-      "reading": "かぐらこうもり",
-      "meaning": "lesser great leaf-nosed bat (Hipposideros turpis) / lesser roundleaf bat / lesser leaf-nosed bat",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2904,
-      "id": "2400430",
-      "term": "神楽獅子",
-      "reading": "かぐらじし",
-      "meaning": "kagurajishi camellia (Camellia japonica var.)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2905,
-      "id": "2756820",
-      "term": "家計貯蓄",
-      "reading": "かけいちょちく",
-      "meaning": "household savings",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2906,
-      "id": "2042850",
-      "term": "家系伝説",
-      "reading": "かけいでんせつ",
-      "meaning": "family legend",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2907,
-      "id": "2849107",
-      "term": "家鶏野鶩",
-      "reading": "かけいやぼく",
-      "meaning": "bored by the familiar, intrigued by novelty / domestic chicken and wild duck",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2908,
-      "id": "2530160",
-      "term": "過激思想",
-      "reading": "かげきしそう",
-      "meaning": "extremism / radical belief",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2909,
-      "id": "2641500",
-      "term": "過激主義",
-      "reading": "かげきしゅぎ",
-      "meaning": "extremism / radicalism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2910,
-      "id": "2527230",
-      "term": "仮現運動",
-      "reading": "かげんうんどう",
-      "meaning": "apparent movement",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2911,
-      "id": "2818790",
-      "term": "下限価格",
-      "reading": "かげんかかく",
-      "meaning": "price floor",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2912,
-      "id": "2344190",
-      "term": "加減算器",
-      "reading": "かげんさんき",
-      "meaning": "adder-subtracter",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2913,
-      "id": "1190090",
-      "term": "加減乗除",
-      "reading": "かげんじょうじょ",
-      "meaning": "the four arithmetical operations (addition, subtraction, multiplication, division)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2914,
-      "id": "1865060",
-      "term": "嘉言善行",
-      "reading": "かげんぜんこう",
-      "meaning": "good words and good deeds",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2915,
-      "id": "2213800",
-      "term": "仮言命法",
-      "reading": "かげんめいほう",
-      "meaning": "hypothetical imperative",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2916,
-      "id": "1974110",
-      "term": "下降気流",
-      "reading": "かこうきりゅう",
-      "meaning": "downward air current",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2917,
-      "id": "2640040",
-      "term": "架工義歯",
-      "reading": "かこうぎし",
-      "meaning": "bridge / bridgework",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2918,
-      "id": "2642930",
-      "term": "加工技術",
-      "reading": "かこうぎじゅつ",
-      "meaning": "processing technology / processing technique",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2919,
-      "id": "2608210",
-      "term": "下行結腸",
-      "reading": "かこうけっちょう",
-      "meaning": "descending colon",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2920,
-      "id": "1724260",
-      "term": "火口原湖",
-      "reading": "かこうげんこ",
-      "meaning": "crater lake",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2921,
-      "id": "2532790",
-      "term": "加工交易",
-      "reading": "かこうこうえき",
-      "meaning": "processing trade (importing all or part of raw and auxiliary materials, parts, components, accessories, and packaging materials in bond from a foreign company, and re-exporting the finished products after processing or assembly for distribution and sale by that foreign company)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2922,
-      "id": "2857353",
-      "term": "花崗砂岩",
-      "reading": "かこうさがん",
-      "meaning": "arkose",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2923,
-      "id": "1190140",
-      "term": "加工産業",
-      "reading": "かこうさんぎょう",
-      "meaning": "manufacturing industry",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2924,
-      "id": "2737330",
-      "term": "加工食品",
-      "reading": "かこうしょくひん",
-      "meaning": "processed food",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2925,
-      "id": "2854899",
-      "term": "加工助剤",
-      "reading": "かこうじょざい",
-      "meaning": "processing material / processing aid",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2926,
-      "id": "2660930",
-      "term": "加工設備",
-      "reading": "かこうせつび",
-      "meaning": "processing plant / processing facility / processing equipment",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2927,
-      "id": "2684140",
-      "term": "加工澱粉",
-      "reading": "かこうでんぷん",
-      "meaning": "processed starch / modified starch",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2928,
-      "id": "1190210",
-      "term": "加工貿易",
-      "reading": "かこうぼうえき",
-      "meaning": "processing trade",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2929,
-      "id": "2835823",
-      "term": "加工油脂",
-      "reading": "かこうゆし",
-      "meaning": "modified fat",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2930,
-      "id": "2042860",
-      "term": "花紅柳緑",
-      "reading": "かこうりゅうりょく",
-      "meaning": "red blossoms and green willows / beautiful scenery of spring / natural beauty",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2931,
-      "id": "1747440",
-      "term": "過去完了",
-      "reading": "かこかんりょう",
-      "meaning": "past perfect tense",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2932,
-      "id": "2615740",
-      "term": "過酷事故",
-      "reading": "かこくじこ",
-      "meaning": "severe accident (esp. relating to a nuclear reactor)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2933,
-      "id": "2522120",
-      "term": "過去最悪",
-      "reading": "かこさいあく",
-      "meaning": "record low / worst ever",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2934,
-      "id": "2227500",
-      "term": "過去最高",
-      "reading": "かこさいこう",
-      "meaning": "highest ever / record-high / highest on record",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2935,
-      "id": "2847302",
-      "term": "過去最少",
-      "reading": "かこさいしょう",
-      "meaning": "fewest ever / fewest on record / record-low",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2936,
-      "id": "2584880",
-      "term": "過去最多",
-      "reading": "かこさいた",
-      "meaning": "highest ever (number of) / record-high / most on record",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2937,
-      "id": "2610720",
-      "term": "過去最大",
-      "reading": "かこさいだい",
-      "meaning": "largest ever / biggest / record",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2938,
-      "id": "2654730",
-      "term": "過去最低",
-      "reading": "かこさいてい",
-      "meaning": "lowest ever / record-low / lowest on record",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2939,
-      "id": "2135810",
-      "term": "過去七仏",
-      "reading": "かこしちぶつ",
-      "meaning": "the seven previous incarnations of Buddha",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2940,
-      "id": "2584870",
-      "term": "過去時制",
-      "reading": "かこじせい",
-      "meaning": "past tense / preterit tense",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2941,
-      "id": "1931380",
-      "term": "過去分詞",
-      "reading": "かこぶんし",
-      "meaning": "past participle",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2942,
-      "id": "1319040",
-      "term": "鹿児島県",
-      "reading": "かごしまけん",
-      "meaning": "Kagoshima Prefecture (Kyūshū)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2943,
-      "id": "2179330",
-      "term": "籠で水を汲む",
-      "reading": "かごでみずをくむ",
-      "meaning": "to bail out the ocean with a teaspoon / to scoop water with a basket",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2944,
-      "id": "2179320",
-      "term": "籠の鳥",
-      "reading": "かごのとり",
-      "meaning": "caged bird",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2945,
-      "id": "2640270",
-      "term": "籠目籠目",
-      "reading": "かごめかごめ",
-      "meaning": "\"bird-in-the-cage\" children's game",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2946,
-      "id": "1724370",
-      "term": "火災警報",
-      "reading": "かさいけいほう",
-      "meaning": "fire warning / fire alert",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2947,
-      "id": "2842670",
-      "term": "火災積雲",
-      "reading": "かさいせきうん",
-      "meaning": "flammagenitus / pyrocumulus cloud / fire cloud",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2948,
-      "id": "2842671",
-      "term": "火災旋風",
-      "reading": "かさいせんぷう",
-      "meaning": "firestorm",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2949,
-      "id": "2672010",
-      "term": "火災発生",
-      "reading": "かさいはっせい",
-      "meaning": "outbreak of a fire",
-      "rank": null,
-      "type": "four"
-    },
     {
       "source_index": 2950,
       "id": "1193890",
@@ -9008,6 +4958,4056 @@
       "term": "感覚麻痺",
       "reading": "かんかくまひ",
       "meaning": "sensory paralysis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3500,
+      "id": "2347950",
+      "term": "間隔文字",
+      "reading": "かんかくもじ",
+      "meaning": "space character",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3501,
+      "id": "1667050",
+      "term": "鰥寡孤独",
+      "reading": "かんかこどく",
+      "meaning": "with no one upon whom to depend / utter loneliness / the lonely and the helpless",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3502,
+      "id": "1214100",
+      "term": "管轄官庁",
+      "reading": "かんかつかんちょう",
+      "meaning": "controlling office / competent (governmental) authorities",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3503,
+      "id": "2844609",
+      "term": "轗軻不遇",
+      "reading": "かんかふぐう",
+      "meaning": "being neglected by the world / being denied one's deserved recognition and status",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3504,
+      "id": "1210230",
+      "term": "侃々諤々",
+      "reading": "かんかんがくがく",
+      "meaning": "outspoken / arguing (heatedly) what one believes in / insisting on something without restraint",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3505,
+      "id": "2530230",
+      "term": "官官接待",
+      "reading": "かんかんせったい",
+      "meaning": "bureaucrats entertaining bureaucrats using public funds",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3506,
+      "id": "2854241",
+      "term": "関関同立",
+      "reading": "かんかんどうりつ",
+      "meaning": "Kansai University, Kwansei Gakuin University, Doshisha University and Ritsumeikan University (four leading private universities in the Kansai region)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3507,
+      "id": "2830017",
+      "term": "灌漑農業",
+      "reading": "かんがいのうぎょう",
+      "meaning": "irrigation farming",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3508,
+      "id": "2030310",
+      "term": "感慨一入",
+      "reading": "かんがいひとしお",
+      "meaning": "one's heart is filled with even deeper emotion / feeling the emotion all the more deeply",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3509,
+      "id": "1212320",
+      "term": "感慨無量",
+      "reading": "かんがいむりょう",
+      "meaning": "deep emotion / being filled with emotion",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3510,
+      "id": "1666970",
+      "term": "灌漑用水",
+      "reading": "かんがいようすい",
+      "meaning": "irrigation water",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3511,
+      "id": "2859860",
+      "term": "歓喜雀躍",
+      "reading": "かんきじゃくやく",
+      "meaning": "jumping with joy",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3512,
+      "id": "1747520",
+      "term": "換気装置",
+      "reading": "かんきそうち",
+      "meaning": "ventilator / ventilating device",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3513,
+      "id": "2841496",
+      "term": "換気低下",
+      "reading": "かんきていか",
+      "meaning": "hypoventilation / respiratory depression",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3514,
+      "id": "2043190",
+      "term": "官紀紊乱",
+      "reading": "かんきびんらん",
+      "meaning": "laxity in official discipline / civil service corruption",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3515,
+      "id": "2579870",
+      "term": "緩急記号",
+      "reading": "かんきゅうきごう",
+      "meaning": "tempo indication / tempo marking / (a) tempo",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3516,
+      "id": "2030340",
+      "term": "緩急自在",
+      "reading": "かんきゅうじざい",
+      "meaning": "varying the tempo or speed (of something) at will",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3517,
+      "id": "5742350",
+      "term": "環球時報",
+      "reading": "かんきゅうじほう",
+      "meaning": "Global Times (Chinese newspaper)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3518,
+      "id": "1989870",
+      "term": "環境悪化",
+      "reading": "かんきょうあっか",
+      "meaning": "environmental degradation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3519,
+      "id": "2852486",
+      "term": "環境意識",
+      "reading": "かんきょういしき",
+      "meaning": "environmental consciousness",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3520,
+      "id": "2839009",
+      "term": "環境依存",
+      "reading": "かんきょういぞん",
+      "meaning": "environmentally dependent / environment-dependent",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3521,
+      "id": "2665270",
+      "term": "環境運動",
+      "reading": "かんきょううんどう",
+      "meaning": "environmental movement",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3522,
+      "id": "1979710",
+      "term": "環境衛生",
+      "reading": "かんきょうえいせい",
+      "meaning": "environmental hygiene",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3523,
+      "id": "1666030",
+      "term": "環境汚染",
+      "reading": "かんきょうおせん",
+      "meaning": "environmental pollution",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3524,
+      "id": "2866537",
+      "term": "環境改善",
+      "reading": "かんきょうかいぜん",
+      "meaning": "environmental improvement / environment reform / habitat improvement",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3525,
+      "id": "2833001",
+      "term": "環境化学",
+      "reading": "かんきょうかがく",
+      "meaning": "environmental chemistry",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3526,
+      "id": "2424630",
+      "term": "環境科学",
+      "reading": "かんきょうかがく",
+      "meaning": "environmental science",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3527,
+      "id": "2399030",
+      "term": "環境活動",
+      "reading": "かんきょうかつどう",
+      "meaning": "environmental practice / environmental practices",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3528,
+      "id": "2347520",
+      "term": "環境記述",
+      "reading": "かんきょうきじゅつ",
+      "meaning": "environment description",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3529,
+      "id": "1932320",
+      "term": "環境基準",
+      "reading": "かんきょうきじゅん",
+      "meaning": "environmental standard",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3530,
+      "id": "1989890",
+      "term": "環境規制",
+      "reading": "かんきょうきせい",
+      "meaning": "environmental regulation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3531,
+      "id": "2664410",
+      "term": "環境教育",
+      "reading": "かんきょうきょういく",
+      "meaning": "environmental education",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3532,
+      "id": "2654780",
+      "term": "環境共生",
+      "reading": "かんきょうきょうせい",
+      "meaning": "environmentally friendly / eco-",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3533,
+      "id": "2833000",
+      "term": "環境技術",
+      "reading": "かんきょうぎじゅつ",
+      "meaning": "environmental technology / envirotech / green technology",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3534,
+      "id": "2854870",
+      "term": "環境月間",
+      "reading": "かんきょうげっかん",
+      "meaning": "Environment Month (June)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3535,
+      "id": "2832999",
+      "term": "環境工学",
+      "reading": "かんきょうこうがく",
+      "meaning": "environmental engineering",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3536,
+      "id": "2347550",
+      "term": "環境光源",
+      "reading": "かんきょうこうげん",
+      "meaning": "ambient light source",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3537,
+      "id": "2831647",
+      "term": "環境構築",
+      "reading": "かんきょうこうちく",
+      "meaning": "setting up an environment / creation of an environment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3538,
+      "id": "1989900",
+      "term": "環境災害",
+      "reading": "かんきょうさいがい",
+      "meaning": "environmental disaster",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3539,
+      "id": "2650820",
+      "term": "環境試験",
+      "reading": "かんきょうしけん",
+      "meaning": "environmental testing",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3540,
+      "id": "1213300",
+      "term": "環境事業",
+      "reading": "かんきょうじぎょう",
+      "meaning": "environmental business / environment business / environmental program",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3541,
+      "id": "2347570",
+      "term": "環境条件",
+      "reading": "かんきょうじょうけん",
+      "meaning": "environmental condition",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3542,
+      "id": "1989910",
+      "term": "環境政策",
+      "reading": "かんきょうせいさく",
+      "meaning": "environmental policy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3543,
+      "id": "2084060",
+      "term": "環境整備",
+      "reading": "かんきょうせいび",
+      "meaning": "environmental maintenance / environmental improvement",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3544,
+      "id": "2456920",
+      "term": "環境責任",
+      "reading": "かんきょうせきにん",
+      "meaning": "environmental responsibility",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3545,
+      "id": "2018810",
+      "term": "環境設定",
+      "reading": "かんきょうせってい",
+      "meaning": "configuration (e.g. of a computer or file) / user preferences / system environment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3546,
+      "id": "2622960",
+      "term": "環境対策",
+      "reading": "かんきょうたいさく",
+      "meaning": "environmental measure",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3547,
+      "id": "1989920",
+      "term": "環境大臣",
+      "reading": "かんきょうだいじん",
+      "meaning": "Minister of the Environment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3548,
+      "id": "2871264",
+      "term": "環境団体",
+      "reading": "かんきょうだんたい",
+      "meaning": "environmental organization / environmental group",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3549,
+      "id": "1989930",
+      "term": "環境調査",
+      "reading": "かんきょうちょうさ",
+      "meaning": "environmental research",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3550,
+      "id": "1989940",
+      "term": "環境難民",
+      "reading": "かんきょうなんみん",
+      "meaning": "environmental refugee",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3551,
+      "id": "1666070",
+      "term": "環境破壊",
+      "reading": "かんきょうはかい",
+      "meaning": "environmental destruction",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3552,
+      "id": "2857128",
+      "term": "環境犯罪",
+      "reading": "かんきょうはんざい",
+      "meaning": "environmental crime",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3553,
+      "id": "2708650",
+      "term": "環境負荷",
+      "reading": "かんきょうふか",
+      "meaning": "environmental burden / environmental load",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3554,
+      "id": "2831933",
+      "term": "環境変異",
+      "reading": "かんきょうへんい",
+      "meaning": "environmental variation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3555,
+      "id": "1213340",
+      "term": "環境変化",
+      "reading": "かんきょうへんか",
+      "meaning": "environmental change",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3556,
+      "id": "2347580",
+      "term": "環境変数",
+      "reading": "かんきょうへんすう",
+      "meaning": "environment variable",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3557,
+      "id": "1989970",
+      "term": "環境法規",
+      "reading": "かんきょうほうき",
+      "meaning": "environmental laws",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3558,
+      "id": "1666040",
+      "term": "環境保護",
+      "reading": "かんきょうほご",
+      "meaning": "environmental protection",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3559,
+      "id": "1979730",
+      "term": "環境保全",
+      "reading": "かんきょうほぜん",
+      "meaning": "environmental conservation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3560,
+      "id": "5190005",
+      "term": "環境防衛",
+      "reading": "かんきょうぼうえい",
+      "meaning": "Environmental Defense",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3561,
+      "id": "1932330",
+      "term": "環境問題",
+      "reading": "かんきょうもんだい",
+      "meaning": "environmental problem / environmental issue",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3562,
+      "id": "2572230",
+      "term": "環境容量",
+      "reading": "かんきょうようりょう",
+      "meaning": "(environmental) carrying capacity",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3563,
+      "id": "1989990",
+      "term": "環境理論",
+      "reading": "かんきょうりろん",
+      "meaning": "ecological theory",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3564,
+      "id": "1990000",
+      "term": "環境劣化",
+      "reading": "かんきょうれっか",
+      "meaning": "environmental degradation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3565,
+      "id": "2858895",
+      "term": "換金作物",
+      "reading": "かんきんさくもつ",
+      "meaning": "cash crop",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3566,
+      "id": "2030320",
+      "term": "汗牛充棟",
+      "reading": "かんぎゅうじゅうとう",
+      "meaning": "(having, there being) a great number of books",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3567,
+      "id": "2775220",
+      "term": "寒苦鳥",
+      "reading": "かんくちょう",
+      "meaning": "cold-suffering bird / kankuchō / imaginary bird said to live in the Himalayas who forgets the cold of night as soon as morning comes",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3568,
+      "id": "2117010",
+      "term": "関係改善",
+      "reading": "かんけいかいぜん",
+      "meaning": "improvement of relations / rapprochement",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3569,
+      "id": "2142410",
+      "term": "関係各位",
+      "reading": "かんけいかくい",
+      "meaning": "to whom it may concern",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3570,
+      "id": "1932500",
+      "term": "関係官庁",
+      "reading": "かんけいかんちょう",
+      "meaning": "government agencies concerned with ...",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3571,
+      "id": "2348050",
+      "term": "関係管理",
+      "reading": "かんけいかんり",
+      "meaning": "relational management",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3572,
+      "id": "1215830",
+      "term": "関係会社",
+      "reading": "かんけいがいしゃ",
+      "meaning": "affiliated company",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3573,
+      "id": "1215840",
+      "term": "関係強化",
+      "reading": "かんけいきょうか",
+      "meaning": "strengthening of relations",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3574,
+      "id": "2867137",
+      "term": "関係車両",
+      "reading": "かんけいしゃりょう",
+      "meaning": "authorized vehicle",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3575,
+      "id": "2043200",
+      "term": "関係省庁",
+      "reading": "かんけいしょうちょう",
+      "meaning": "the concerned government agencies / the ministries and agencies that are relevant to the matter at hand / the relevant authorities",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3576,
+      "id": "1932520",
+      "term": "関係書類",
+      "reading": "かんけいしょるい",
+      "meaning": "relevant documents / (all) the documents related (to the matter)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3577,
+      "id": "2831598",
+      "term": "関係代数",
+      "reading": "かんけいだいすう",
+      "meaning": "relation algebra",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3578,
+      "id": "2582360",
+      "term": "関係団体",
+      "reading": "かんけいだんたい",
+      "meaning": "affiliate (company, organization)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3579,
+      "id": "2043210",
+      "term": "関係当局",
+      "reading": "かんけいとうきょく",
+      "meaning": "relevant authorities / competent authorities / authorities concerned",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3580,
+      "id": "1955990",
+      "term": "環形動物",
+      "reading": "かんけいどうぶつ",
+      "meaning": "annelid",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3581,
+      "id": "1811790",
+      "term": "関係副詞",
+      "reading": "かんけいふくし",
+      "meaning": "relative adverb",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3582,
+      "id": "1932530",
+      "term": "関係法規",
+      "reading": "かんけいほうき",
+      "meaning": "related laws and regulations",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3583,
+      "id": "2842208",
+      "term": "間欠河川",
+      "reading": "かんけつかせん",
+      "meaning": "intermittent river / intermittent stream",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3584,
+      "id": "2043220",
+      "term": "簡潔明瞭",
+      "reading": "かんけつめいりょう",
+      "meaning": "clear and concise",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3585,
+      "id": "1214140",
+      "term": "管弦楽団",
+      "reading": "かんげんがくだん",
+      "meaning": "orchestra",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3586,
+      "id": "1932380",
+      "term": "管弦楽法",
+      "reading": "かんげんがくほう",
+      "meaning": "orchestration",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3587,
+      "id": "2534560",
+      "term": "管弦楽器",
+      "reading": "かんげんがっき",
+      "meaning": "wind and string instruments",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3588,
+      "id": "2442780",
+      "term": "還元酵素",
+      "reading": "かんげんこうそ",
+      "meaning": "reductase",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3589,
+      "id": "2872235",
+      "term": "還元主義",
+      "reading": "かんげんしゅぎ",
+      "meaning": "reductionism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3590,
+      "id": "2172450",
+      "term": "還元分裂",
+      "reading": "かんげんぶんれつ",
+      "meaning": "meiosis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3591,
+      "id": "2552200",
+      "term": "還元水飴",
+      "reading": "かんげんみずあめ",
+      "meaning": "reduced sugar syrup",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3592,
+      "id": "2832520",
+      "term": "甘言蜜語",
+      "reading": "かんげんみつご",
+      "meaning": "honeyed words / flattery",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3593,
+      "id": "2736170",
+      "term": "観光案内",
+      "reading": "かんこうあんない",
+      "meaning": "tourist information (brochure, map, center)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3594,
+      "id": "5746384",
+      "term": "漢光演習",
+      "reading": "かんこうえんしゅう",
+      "meaning": "Han Kuang Exercise (annual military exercise by Taiwan forces)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3595,
+      "id": "2867497",
+      "term": "観光過剰",
+      "reading": "かんこうかじょう",
+      "meaning": "overtourism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3596,
+      "id": "2646140",
+      "term": "観光協会",
+      "reading": "かんこうきょうかい",
+      "meaning": "tourism association / tourist association / tourism bureau",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3597,
+      "id": "2839330",
+      "term": "観光公害",
+      "reading": "かんこうこうがい",
+      "meaning": "overtourism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3598,
+      "id": "1782570",
+      "term": "観光産業",
+      "reading": "かんこうさんぎょう",
+      "meaning": "tourism industry / tourist industry",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3599,
+      "id": "1979550",
+      "term": "感光材料",
+      "reading": "かんこうざいりょう",
+      "meaning": "sensitive material",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3600,
+      "id": "1782580",
+      "term": "観光資源",
+      "reading": "かんこうしげん",
+      "meaning": "tourist attractions",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3601,
+      "id": "1782590",
+      "term": "観光施設",
+      "reading": "かんこうしせつ",
+      "meaning": "tourist facilities",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3602,
+      "id": "2347370",
+      "term": "感光装置",
+      "reading": "かんこうそうち",
+      "meaning": "photosensor",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3603,
+      "id": "2347360",
+      "term": "感光素子",
+      "reading": "かんこうそし",
+      "meaning": "photosensor",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3604,
+      "id": "2817660",
+      "term": "観光地図",
+      "reading": "かんこうちず",
+      "meaning": "tourist map",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3605,
+      "id": "1782600",
+      "term": "観光都市",
+      "reading": "かんこうとし",
+      "meaning": "tourist city",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3606,
+      "id": "2799370",
+      "term": "感光乳剤",
+      "reading": "かんこうにゅうざい",
+      "meaning": "photosensitive emulsion",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3607,
+      "id": "2850940",
+      "term": "観光農園",
+      "reading": "かんこうのうえん",
+      "meaning": "tourist farm / pick-your-own fruit or vegetables farm",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3608,
+      "id": "2267590",
+      "term": "観光名所",
+      "reading": "かんこうめいしょ",
+      "meaning": "sightseeing spot / tourist attraction",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3609,
+      "id": "2536640",
+      "term": "観光立県",
+      "reading": "かんこうりっけん",
+      "meaning": "making a prefecture a travel destination / tourism-promoting prefecture",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3610,
+      "id": "2536650",
+      "term": "観光立国",
+      "reading": "かんこうりっこく",
+      "meaning": "making a country a world destination / making a country a top international tourist destination",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3611,
+      "id": "2837460",
+      "term": "観光旅館",
+      "reading": "かんこうりょかん",
+      "meaning": "traditional inn in a popular tourist area",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3612,
+      "id": "1932440",
+      "term": "観光旅行",
+      "reading": "かんこうりょこう",
+      "meaning": "(sightseeing) tour",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3613,
+      "id": "5192690",
+      "term": "韓国銀行",
+      "reading": "かんこくぎんこう",
+      "meaning": "Bank of Korea",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3614,
+      "id": "2848553",
+      "term": "韓国海苔",
+      "reading": "かんこくのり",
+      "meaning": "gim / kim / Korean nori",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3615,
+      "id": "2261690",
+      "term": "韓国併合",
+      "reading": "かんこくへいごう",
+      "meaning": "annexation of Korea (by Japan; 1910-1945)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3616,
+      "id": "2835856",
+      "term": "韓国料理",
+      "reading": "かんこくりょうり",
+      "meaning": "(South) Korean cooking / (South) Korean food",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3617,
+      "id": "2668840",
+      "term": "寛骨臼蓋",
+      "reading": "かんこつきゅうがい",
+      "meaning": "acetabular roof",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3618,
+      "id": "1747550",
+      "term": "換骨奪胎",
+      "reading": "かんこつだったい",
+      "meaning": "adaptation (of a poem, novel, etc.) / recasting / rewriting",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3619,
+      "id": "2068870",
+      "term": "閑古鳥が鳴く",
+      "reading": "かんこどりがなく",
+      "meaning": "to be quiet (due to lack of activity) / to be in a slump (of a business)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3620,
+      "id": "1210260",
+      "term": "冠婚葬祭",
+      "reading": "かんこんそうさい",
+      "meaning": "important ceremonial occasions in family relationships",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3621,
+      "id": "2837493",
+      "term": "環濠集落",
+      "reading": "かんごうしゅうらく",
+      "meaning": "moated settlement (Yayoi period)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3622,
+      "id": "1210700",
+      "term": "勘合貿易",
+      "reading": "かんごうぼうえき",
+      "meaning": "licensed trade between Japan and Ming dynasty China during the Muromachi period",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3623,
+      "id": "2854153",
+      "term": "看護学院",
+      "reading": "かんごがくいん",
+      "meaning": "nursing institute / nursing academy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3624,
+      "id": "1932350",
+      "term": "看護学校",
+      "reading": "かんごがっこう",
+      "meaning": "nursing school / nursing college",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3625,
+      "id": "2851511",
+      "term": "看護休暇",
+      "reading": "かんごきゅうか",
+      "meaning": "childcare leave / nursing leave",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3626,
+      "id": "2582860",
+      "term": "監護義務",
+      "reading": "かんごぎむ",
+      "meaning": "custodial duties",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3627,
+      "id": "2526810",
+      "term": "看護師長",
+      "reading": "かんごしちょう",
+      "meaning": "head nurse",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3628,
+      "id": "2621450",
+      "term": "観護措置",
+      "reading": "かんごそち",
+      "meaning": "placing a minor under protective detention / imposing a care and custody order",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3629,
+      "id": "2858744",
+      "term": "看護短大",
+      "reading": "かんごたんだい",
+      "meaning": "nursing college",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3630,
+      "id": "2856923",
+      "term": "看護大学",
+      "reading": "かんごだいがく",
+      "meaning": "nursing college",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3631,
+      "id": "1213890",
+      "term": "看護婦長",
+      "reading": "かんごふちょう",
+      "meaning": "head nurse",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3632,
+      "id": "5192327",
+      "term": "関西医大",
+      "reading": "かんさいいだい",
+      "meaning": "Kansai Medical University (abbr)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3633,
+      "id": "1815380",
+      "term": "監査委員",
+      "reading": "かんさいいん",
+      "meaning": "supervisory auditor / member of inspection committee",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3634,
+      "id": "5192333",
+      "term": "関西棋院",
+      "reading": "かんさいきいん",
+      "meaning": "Kansai Go Institution",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3635,
+      "id": "5192334",
+      "term": "関西汽船",
+      "reading": "かんさいきせん",
+      "meaning": "Kansai Kisen",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3636,
+      "id": "5192353",
+      "term": "関西大学",
+      "reading": "かんさいだいがく",
+      "meaning": "Kansai University",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3637,
+      "id": "2521770",
+      "term": "関西地方",
+      "reading": "かんさいちほう",
+      "meaning": "Kansai region (center-west area of Japan comprising Osaka, Kobe, Kyoto and surrounding prefectures)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3638,
+      "id": "5192357",
+      "term": "関西電力",
+      "reading": "かんさいでんりょく",
+      "meaning": "Kansai Electric Power / KEPCO",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3639,
+      "id": "2686220",
+      "term": "肝細胞癌",
+      "reading": "かんさいぼうがん",
+      "meaning": "hepatoma",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3640,
+      "id": "1979780",
+      "term": "監査基準",
+      "reading": "かんさきじゅん",
+      "meaning": "audit standard",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3641,
+      "id": "1213630",
+      "term": "監査記録",
+      "reading": "かんさきろく",
+      "meaning": "audit trail",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3642,
+      "id": "1213640",
+      "term": "監査証跡",
+      "reading": "かんさしょうせき",
+      "meaning": "audit trail",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3643,
+      "id": "2562050",
+      "term": "監察御史",
+      "reading": "かんさつぎょし",
+      "meaning": "imperial censor (in ancient China)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3644,
+      "id": "2855466",
+      "term": "観察研究",
+      "reading": "かんさつけんきゅう",
+      "meaning": "observational study",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3645,
+      "id": "2116470",
+      "term": "観察日記",
+      "reading": "かんさつにっき",
+      "meaning": "(nature, etc.) observation diary",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3646,
+      "id": "1815390",
+      "term": "監査報告",
+      "reading": "かんさほうこく",
+      "meaning": "audit report",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3647,
+      "id": "1990010",
+      "term": "監査法人",
+      "reading": "かんさほうじん",
+      "meaning": "audit corporation / auditing firm",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3648,
+      "id": "2852066",
+      "term": "監査役会",
+      "reading": "かんさやくかい",
+      "meaning": "board of company auditors",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3649,
+      "id": "2858096",
+      "term": "換算係数",
+      "reading": "かんさんけいすう",
+      "meaning": "conversion factor / scale factor",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3650,
+      "id": "1979140",
+      "term": "乾式工法",
+      "reading": "かんしきこうほう",
+      "meaning": "dry construction",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3651,
+      "id": "1979150",
+      "term": "乾式製錬",
+      "reading": "かんしきせいれん",
+      "meaning": "fire refining",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3652,
+      "id": "2762150",
+      "term": "監視社会",
+      "reading": "かんししゃかい",
+      "meaning": "surveillance society",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3653,
+      "id": "2628030",
+      "term": "監視体制",
+      "reading": "かんしたいせい",
+      "meaning": "surveillance system / monitoring system",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3654,
+      "id": "2160800",
+      "term": "換質換位",
+      "reading": "かんしつかんい",
+      "meaning": "contraposition",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3655,
+      "id": "2807730",
+      "term": "間質細胞",
+      "reading": "かんしつさいぼう",
+      "meaning": "interstitial cell / stromal cell",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3656,
+      "id": "2855056",
+      "term": "鉗子分娩",
+      "reading": "かんしぶんべん",
+      "meaning": "forceps delivery",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3657,
+      "id": "2810690",
+      "term": "感謝感激",
+      "reading": "かんしゃかんげき",
+      "meaning": "being terribly grateful",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3658,
+      "id": "2833757",
+      "term": "間主観性",
+      "reading": "かんしゅかんせい",
+      "meaning": "intersubjectivity",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3659,
+      "id": "2833758",
+      "term": "間主観的",
+      "reading": "かんしゅかんてき",
+      "meaning": "intersubjective",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3660,
+      "id": "2347890",
+      "term": "緩衝記憶",
+      "reading": "かんしょうきおく",
+      "meaning": "buffer storage / buffer / buffer memory",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3661,
+      "id": "2863860",
+      "term": "緩衝在庫",
+      "reading": "かんしょうざいこ",
+      "meaning": "buffer stock",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3662,
+      "id": "1683190",
+      "term": "感傷主義",
+      "reading": "かんしょうしゅぎ",
+      "meaning": "sentimentalism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3663,
+      "id": "1782820",
+      "term": "観賞植物",
+      "reading": "かんしょうしょくぶつ",
+      "meaning": "ornamental plants",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3664,
+      "id": "2347320",
+      "term": "干渉信号",
+      "reading": "かんしょうしんごう",
+      "meaning": "interference signal",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3665,
+      "id": "2766590",
+      "term": "緩衝装置",
+      "reading": "かんしょうそうち",
+      "meaning": "buffer / shock absorber / damper unit",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3666,
+      "id": "2720930",
+      "term": "勧奨退職",
+      "reading": "かんしょうたいしょく",
+      "meaning": "retirement at the suggestion of one's employer",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3667,
+      "id": "1214510",
+      "term": "緩衝地帯",
+      "reading": "かんしょうちたい",
+      "meaning": "buffer zone",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3668,
+      "id": "2347330",
+      "term": "干渉電力",
+      "reading": "かんしょうでんりょく",
+      "meaning": "interference power",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3669,
+      "id": "2862209",
+      "term": "緩衝領域",
+      "reading": "かんしょうりょういき",
+      "meaning": "buffer zone / buffer area",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3670,
+      "id": "2852460",
+      "term": "緩衝緑地",
+      "reading": "かんしょうりょくち",
+      "meaning": "green buffer zone / green belt",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3671,
+      "id": "2348070",
+      "term": "関心領域",
+      "reading": "かんしんりょういき",
+      "meaning": "region of interest / ROI",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3672,
+      "id": "2083900",
+      "term": "漢字検定",
+      "reading": "かんじけんてい",
+      "meaning": "kanji aptitude test (esp. the Kanji Kentei) / The Japan Kanji Aptitude Test",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3673,
+      "id": "2070250",
+      "term": "漢字試験",
+      "reading": "かんじしけん",
+      "meaning": "kanji test / test of kanji skills",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3674,
+      "id": "2845984",
+      "term": "漢字辞典",
+      "reading": "かんじじてん",
+      "meaning": "kanji dictionary / Chinese character dictionary",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3675,
+      "id": "1715040",
+      "term": "漢字制限",
+      "reading": "かんじせいげん",
+      "meaning": "restrictions on the number of kanji recognized for usage (recognised)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3676,
+      "id": "2347480",
+      "term": "漢字対応",
+      "reading": "かんじたいおう",
+      "meaning": "kanji support",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3677,
+      "id": "2347490",
+      "term": "漢字統合",
+      "reading": "かんじとうごう",
+      "meaning": "Han unification",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3678,
+      "id": "2854849",
+      "term": "漢字表記",
+      "reading": "かんじひょうき",
+      "meaning": "kanji representation / representation in Chinese characters / way of writing (a word) in kanji",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3679,
+      "id": "1213200",
+      "term": "漢字変換",
+      "reading": "かんじへんかん",
+      "meaning": "kanji conversion",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3680,
+      "id": "2088740",
+      "term": "患者家族",
+      "reading": "かんじゃかぞく",
+      "meaning": "patient and relatives",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3681,
+      "id": "2127850",
+      "term": "閑寂枯淡",
+      "reading": "かんじゃくこたん",
+      "meaning": "aesthetic sense in Japanese art emphasising quiet simplicity and subdued refinement",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3682,
+      "id": "2628910",
+      "term": "患者負担",
+      "reading": "かんじゃふたん",
+      "meaning": "medical expenses borne by the patient / patient contribution / patient share",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3683,
+      "id": "2829148",
+      "term": "完熟堆肥",
+      "reading": "かんじゅくたいひ",
+      "meaning": "fully matured compost",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3684,
+      "id": "2846596",
+      "term": "慣熟飛行",
+      "reading": "かんじゅくひこう",
+      "meaning": "orientation flight / training flight / practice flight",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3685,
+      "id": "1212420",
+      "term": "感情移入",
+      "reading": "かんじょういにゅう",
+      "meaning": "empathy",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3686,
+      "id": "2399000",
+      "term": "桿状核球",
+      "reading": "かんじょうかくきゅう",
+      "meaning": "band cell / stab cell",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3687,
+      "id": "2795640",
+      "term": "勘定科目",
+      "reading": "かんじょうかもく",
+      "meaning": "account name / account title",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3688,
+      "id": "1989820",
+      "term": "感情障害",
+      "reading": "かんじょうしょうがい",
+      "meaning": "affective disorder / emotional disorder",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3689,
+      "id": "2860298",
+      "term": "勘定照合",
+      "reading": "かんじょうしょうごう",
+      "meaning": "reconciliation (in accounting)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3690,
+      "id": "1665410",
+      "term": "冠状静脈",
+      "reading": "かんじょうじょうみゃく",
+      "meaning": "coronary vein",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3691,
+      "id": "1979750",
+      "term": "環状星雲",
+      "reading": "かんじょうせいうん",
+      "meaning": "Ring Nebula",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3692,
+      "id": "2568720",
+      "term": "環状石籬",
+      "reading": "かんじょうせきり",
+      "meaning": "stone circle",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3693,
+      "id": "2834537",
+      "term": "環状鉄心",
+      "reading": "かんじょうてっしん",
+      "meaning": "toroidal core / endless core",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3694,
+      "id": "1665390",
+      "term": "冠状動脈",
+      "reading": "かんじょうどうみゃく",
+      "meaning": "coronary artery",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3695,
+      "id": "2151570",
+      "term": "環状軟骨",
+      "reading": "かんじょうなんこつ",
+      "meaning": "cricoid cartilage",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3696,
+      "id": "2557390",
+      "term": "感情に走る",
+      "reading": "かんじょうにはしる",
+      "meaning": "to act on one's emotions / to be carried away by one's feelings / to get emotional",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3697,
+      "id": "1212430",
+      "term": "感情表現",
+      "reading": "かんじょうひょうげん",
+      "meaning": "expressing emotion / drawing facial expressions",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3698,
+      "id": "2805210",
+      "term": "勘定奉行",
+      "reading": "かんじょうぶぎょう",
+      "meaning": "chief financial official (Edo period) / commissioner of finance / chief treasurer",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3699,
+      "id": "2868451",
+      "term": "冠静脈洞",
+      "reading": "かんじょうみゃくどう",
+      "meaning": "coronary sinus",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3700,
+      "id": "2568730",
+      "term": "環状列石",
+      "reading": "かんじょうれっせき",
+      "meaning": "stone circle",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3701,
+      "id": "2423050",
+      "term": "感情労働",
+      "reading": "かんじょうろうどう",
+      "meaning": "emotional labour",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3702,
+      "id": "2023680",
+      "term": "勧進相撲",
+      "reading": "かんじんずもう",
+      "meaning": "fund-raising tournaments (during the Edo period)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3703,
+      "id": "2030290",
+      "term": "寛仁大度",
+      "reading": "かんじんたいど",
+      "meaning": "being generous, benevolent and magnanimous in disposition",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3704,
+      "id": "1811850",
+      "term": "関数解析",
+      "reading": "かんすうかいせき",
+      "meaning": "functional analysis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3705,
+      "id": "1811840",
+      "term": "関数空間",
+      "reading": "かんすうくうかん",
+      "meaning": "functional space",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3706,
+      "id": "2348130",
+      "term": "関数結果",
+      "reading": "かんすうけっか",
+      "meaning": "function result",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3707,
+      "id": "1215890",
+      "term": "関数原型",
+      "reading": "かんすうげんけい",
+      "meaning": "function prototype",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3708,
+      "id": "2815010",
+      "term": "関数電卓",
+      "reading": "かんすうでんたく",
+      "meaning": "scientific calculator / scientific electronic calculator",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3709,
+      "id": "1979630",
+      "term": "慣性航法",
+      "reading": "かんせいこうほう",
+      "meaning": "inertial navigation system",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3710,
+      "id": "1209900",
+      "term": "乾生植物",
+      "reading": "かんせいしょくぶつ",
+      "meaning": "xerophyte",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3711,
+      "id": "2118400",
+      "term": "官製談合",
+      "reading": "かんせいだんごう",
+      "meaning": "collusive bidding at the initiative of government agencies",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3712,
+      "id": "2837980",
+      "term": "感精伝説",
+      "reading": "かんせいでんせつ",
+      "meaning": "myths of asexual conception from natural objects",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3713,
+      "id": "1932260",
+      "term": "官製葉書",
+      "reading": "かんせいはがき",
+      "meaning": "official (government) postcard / postal card",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3714,
+      "id": "1979640",
+      "term": "慣性誘導",
+      "reading": "かんせいゆうどう",
+      "meaning": "inertial guidance",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3715,
+      "id": "2530570",
+      "term": "間接受身",
+      "reading": "かんせつうけみ",
+      "meaning": "indirect passive",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3716,
+      "id": "2089040",
+      "term": "間接喫煙",
+      "reading": "かんせつきつえん",
+      "meaning": "passive smoking / secondhand smoke",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3717,
+      "id": "2850181",
+      "term": "間接金融",
+      "reading": "かんせつきんゆう",
+      "meaning": "indirect financing",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3718,
+      "id": "2863348",
+      "term": "関節拘縮",
+      "reading": "かんせつこうしゅく",
+      "meaning": "joint contracture / articular contracture",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3719,
+      "id": "1715320",
+      "term": "間接撮影",
+      "reading": "かんせつさつえい",
+      "meaning": "fluoroscopy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3720,
+      "id": "2347990",
+      "term": "間接参照",
+      "reading": "かんせつさんしょう",
+      "meaning": "indirect referencing",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3721,
+      "id": "2714650",
+      "term": "間接証拠",
+      "reading": "かんせつしょうこ",
+      "meaning": "indirect evidence / circumstantial evidence",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3722,
+      "id": "1715290",
+      "term": "間接照明",
+      "reading": "かんせつしょうめい",
+      "meaning": "indirect lighting",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3723,
+      "id": "2837656",
+      "term": "間接自慢",
+      "reading": "かんせつじまん",
+      "meaning": "indirect bragging (esp. on social media; by casually showing off something bragworthy as if it were unintended)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3724,
+      "id": "2729310",
+      "term": "間接正犯",
+      "reading": "かんせつせいはん",
+      "meaning": "indirect principal offender / indirect perpetrator / principal offender in the second degree",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3725,
+      "id": "1715330",
+      "term": "間接選挙",
+      "reading": "かんせつせんきょ",
+      "meaning": "indirect election",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3726,
+      "id": "2868174",
+      "term": "関節穿刺",
+      "reading": "かんせつせんし",
+      "meaning": "arthrocentesis / joint aspiration / joint puncture",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3727,
+      "id": "2504600",
+      "term": "環節動物",
+      "reading": "かんせつどうぶつ",
+      "meaning": "annulosan",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3728,
+      "id": "2348010",
+      "term": "間接発信",
+      "reading": "かんせつはっしん",
+      "meaning": "indirect submission",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3729,
+      "id": "2632650",
+      "term": "関節半月",
+      "reading": "かんせつはんげつ",
+      "meaning": "semilunar cartilage",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3730,
+      "id": "2676390",
+      "term": "間接部門",
+      "reading": "かんせつぶもん",
+      "meaning": "internal division / back-office section / indirect department",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3731,
+      "id": "1715300",
+      "term": "間接話法",
+      "reading": "かんせつわほう",
+      "meaning": "indirect speech / indirect narration",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3732,
+      "id": "2844168",
+      "term": "感染拡大",
+      "reading": "かんせんかくだい",
+      "meaning": "spread of infection",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3733,
+      "id": "1932280",
+      "term": "感染経路",
+      "reading": "かんせんけいろ",
+      "meaning": "infection route / source of infection",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3734,
+      "id": "2861735",
+      "term": "感染症学",
+      "reading": "かんせんしょうがく",
+      "meaning": "study of infectious diseases",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3735,
+      "id": "2850138",
+      "term": "感染症法",
+      "reading": "かんせんしょうほう",
+      "meaning": "Infectious Disease Act",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3736,
+      "id": "2627710",
+      "term": "感染呪術",
+      "reading": "かんせんじゅじゅつ",
+      "meaning": "contagious magic",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3737,
+      "id": "2851224",
+      "term": "感染対策",
+      "reading": "かんせんたいさく",
+      "meaning": "infection control / infection prevention measures",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3738,
+      "id": "1212150",
+      "term": "幹線道路",
+      "reading": "かんせんどうろ",
+      "meaning": "main road / main thoroughfare / arterial road",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3739,
+      "id": "2843852",
+      "term": "感染爆発",
+      "reading": "かんせんばくはつ",
+      "meaning": "explosive growth of infections / explosion of cases of an infection",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3740,
+      "id": "2862286",
+      "term": "感染防止",
+      "reading": "かんせんぼうし",
+      "meaning": "infection prevention / infection control",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3741,
+      "id": "2123570",
+      "term": "感染予防",
+      "reading": "かんせんよぼう",
+      "meaning": "infection prevention / disease control",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3742,
+      "id": "1215940",
+      "term": "関税回避",
+      "reading": "かんぜいかいひ",
+      "meaning": "tariff avoidance",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3743,
+      "id": "1811830",
+      "term": "関税障壁",
+      "reading": "かんぜいしょうへき",
+      "meaning": "tariff barrier",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3744,
+      "id": "1980480",
+      "term": "関税譲許",
+      "reading": "かんぜいじょうきょ",
+      "meaning": "tariff binding",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3745,
+      "id": "2163720",
+      "term": "関税同盟",
+      "reading": "かんぜいどうめい",
+      "meaning": "customs union",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3746,
+      "id": "2805000",
+      "term": "完全寛解",
+      "reading": "かんぜんかんかい",
+      "meaning": "complete remission",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3747,
+      "id": "2825400",
+      "term": "完全完売",
+      "reading": "かんぜんかんばい",
+      "meaning": "everything must go (e.g. in a sale)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3748,
+      "id": "2602480",
+      "term": "完全気体",
+      "reading": "かんぜんきたい",
+      "meaning": "perfect gas / ideal gas",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3749,
+      "id": "2162090",
+      "term": "完全競争",
+      "reading": "かんぜんきょうそう",
+      "meaning": "perfect competition",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3750,
+      "id": "2870904",
+      "term": "完全骨折",
+      "reading": "かんぜんこっせつ",
+      "meaning": "complete fracture",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3751,
+      "id": "1665280",
+      "term": "完全雇用",
+      "reading": "かんぜんこよう",
+      "meaning": "full employment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3752,
+      "id": "2847766",
+      "term": "完全互換",
+      "reading": "かんぜんごかん",
+      "meaning": "fully compatible",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3753,
+      "id": "2840831",
+      "term": "完全五度",
+      "reading": "かんぜんごど",
+      "meaning": "perfect fifth",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3754,
+      "id": "2838600",
+      "term": "完全菜食",
+      "reading": "かんぜんさいしょく",
+      "meaning": "vegan diet / plant-based diet",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3755,
+      "id": "1665270",
+      "term": "完全主義",
+      "reading": "かんぜんしゅぎ",
+      "meaning": "perfectionism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3756,
+      "id": "2709660",
+      "term": "完全真空",
+      "reading": "かんぜんしんくう",
+      "meaning": "perfect vacuum",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3757,
+      "id": "1614130",
+      "term": "完全試合",
+      "reading": "かんぜんじあい",
+      "meaning": "perfect game",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3758,
+      "id": "2347200",
+      "term": "完全実装",
+      "reading": "かんぜんじっそう",
+      "meaning": "fully populated",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3759,
+      "id": "2347220",
+      "term": "完全冗長",
+      "reading": "かんぜんじょうちょう",
+      "meaning": "fully redundant",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3760,
+      "id": "2347270",
+      "term": "完全対応",
+      "reading": "かんぜんたいおう",
+      "meaning": "complete support / full support",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3761,
+      "id": "2602490",
+      "term": "完全弾性",
+      "reading": "かんぜんだんせい",
+      "meaning": "perfect elasticity",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3762,
+      "id": "1211090",
+      "term": "勧善懲悪",
+      "reading": "かんぜんちょうあく",
+      "meaning": "rewarding good and punishing evil / poetic justice",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3763,
+      "id": "2602500",
+      "term": "完全導体",
+      "reading": "かんぜんどうたい",
+      "meaning": "perfect conductor",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3764,
+      "id": "1932240",
+      "term": "完全燃焼",
+      "reading": "かんぜんねんしょう",
+      "meaning": "complete combustion / perfect combustion",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3765,
+      "id": "1932250",
+      "term": "完全犯罪",
+      "reading": "かんぜんはんざい",
+      "meaning": "perfect crime",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3766,
+      "id": "2347290",
+      "term": "完全表記",
+      "reading": "かんぜんひょうき",
+      "meaning": "complete representation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3767,
+      "id": "2844055",
+      "term": "完全微分",
+      "reading": "かんぜんびぶん",
+      "meaning": "exact differential",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3768,
+      "id": "2851274",
+      "term": "完全復活",
+      "reading": "かんぜんふっかつ",
+      "meaning": "(making a) full comeback / coming back after a full recovery",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3769,
+      "id": "2831713",
+      "term": "完全武装",
+      "reading": "かんぜんぶそう",
+      "meaning": "fully armed / armed to the teeth",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3770,
+      "id": "2602510",
+      "term": "完全平方",
+      "reading": "かんぜんへいほう",
+      "meaning": "perfect square",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3771,
+      "id": "2230870",
+      "term": "完全変態",
+      "reading": "かんぜんへんたい",
+      "meaning": "complete metamorphosis / holometabolism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3772,
+      "id": "2799040",
+      "term": "完全母乳",
+      "reading": "かんぜんぼにゅう",
+      "meaning": "exclusive breastfeeding / feeding a baby only breast milk",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3773,
+      "id": "1651155",
+      "term": "完全無欠",
+      "reading": "かんぜんむけつ",
+      "meaning": "flawless / absolute perfection",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3774,
+      "id": "2866173",
+      "term": "完全黙秘",
+      "reading": "かんぜんもくひ",
+      "meaning": "complete silence (regarding a crime) / remaining silent",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3775,
+      "id": "2861346",
+      "term": "完全養殖",
+      "reading": "かんぜんようしょく",
+      "meaning": "recirculating aquaculture / closed cycle rearing of fish, etc.",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3776,
+      "id": "2840832",
+      "term": "完全四度",
+      "reading": "かんぜんよんど",
+      "meaning": "perfect fourth",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3777,
+      "id": "1979160",
+      "term": "乾燥気候",
+      "reading": "かんそうきこう",
+      "meaning": "arid climate",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3778,
+      "id": "1209960",
+      "term": "乾燥牛乳",
+      "reading": "かんそうぎゅうにゅう",
+      "meaning": "powdered milk",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3779,
+      "id": "1979170",
+      "term": "乾燥血漿",
+      "reading": "かんそうけっしょう",
+      "meaning": "dried plasma",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3780,
+      "id": "1213030",
+      "term": "歓送迎会",
+      "reading": "かんそうげいかい",
+      "meaning": "party to welcome (e.g. new employees) and send off (e.g. retiring employees)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3781,
+      "id": "2867055",
+      "term": "乾燥酵母",
+      "reading": "かんそうこうぼ",
+      "meaning": "dry yeast",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3782,
+      "id": "2864294",
+      "term": "乾燥質量",
+      "reading": "かんそうしつりょう",
+      "meaning": "dry mass",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3783,
+      "id": "2852262",
+      "term": "乾燥時間",
+      "reading": "かんそうじかん",
+      "meaning": "drying time",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3784,
+      "id": "2844572",
+      "term": "乾燥重量",
+      "reading": "かんそうじゅうりょう",
+      "meaning": "dry weight (of a vehicle, food, etc.)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3785,
+      "id": "1210000",
+      "term": "乾燥洗濯",
+      "reading": "かんそうせんたく",
+      "meaning": "dry cleaning",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3786,
+      "id": "2835822",
+      "term": "乾燥全卵",
+      "reading": "かんそうぜんらん",
+      "meaning": "powdered egg / dried whole egg",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3787,
+      "id": "2837368",
+      "term": "乾燥大麻",
+      "reading": "かんそうたいま",
+      "meaning": "dried cannabis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3788,
+      "id": "1979190",
+      "term": "乾燥地形",
+      "reading": "かんそうちけい",
+      "meaning": "arid landforms",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3789,
+      "id": "1932200",
+      "term": "乾燥地帯",
+      "reading": "かんそうちたい",
+      "meaning": "arid region",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3790,
+      "id": "1210030",
+      "term": "乾燥腐朽",
+      "reading": "かんそうふきゅう",
+      "meaning": "dry rot",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3791,
+      "id": "2703190",
+      "term": "乾燥味噌",
+      "reading": "かんそうみそ",
+      "meaning": "freeze-dried powdered miso (usu. salty) / instant miso",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3792,
+      "id": "1210040",
+      "term": "乾燥無味",
+      "reading": "かんそうむみ",
+      "meaning": "dryness / dullness",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3793,
+      "id": "1210050",
+      "term": "乾燥野菜",
+      "reading": "かんそうやさい",
+      "meaning": "dehydrated vegetables",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3794,
+      "id": "2828087",
+      "term": "観測機器",
+      "reading": "かんそくきき",
+      "meaning": "observation equipment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3795,
+      "id": "2658490",
+      "term": "観測気球",
+      "reading": "かんそくききゅう",
+      "meaning": "weather balloon / sounding balloon",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3796,
+      "id": "2658480",
+      "term": "観測結果",
+      "reading": "かんそくけっか",
+      "meaning": "observation results",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3797,
+      "id": "2802870",
+      "term": "観測装置",
+      "reading": "かんそくそうち",
+      "meaning": "monitoring equipment / observational instrument",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3798,
+      "id": "1932470",
+      "term": "観測地点",
+      "reading": "かんそくちてん",
+      "meaning": "observation point (site)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3799,
+      "id": "1665710",
+      "term": "官尊民卑",
+      "reading": "かんそんみんぴ",
+      "meaning": "putting the officials and bureaucrats above the people / treating the governors as more important than the governed / statism",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3800,
+      "id": "1979900",
+      "term": "肝臓移植",
+      "reading": "かんぞういしょく",
+      "meaning": "liver transplantation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3801,
+      "id": "1979270",
+      "term": "寒帯気団",
+      "reading": "かんたいきだん",
+      "meaning": "polar air mass",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3802,
+      "id": "2439920",
+      "term": "桿体細胞",
+      "reading": "かんたいさいぼう",
+      "meaning": "rod cell / rod",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3803,
+      "id": "1979280",
+      "term": "寒帯前線",
+      "reading": "かんたいぜんせん",
+      "meaning": "polar front",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3804,
+      "id": "1665960",
+      "term": "環太平洋",
+      "reading": "かんたいへいよう",
+      "meaning": "Pacific Rim",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3805,
+      "id": "2030330",
+      "term": "簡単明瞭",
+      "reading": "かんたんめいりょう",
+      "meaning": "simple and clear",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3806,
+      "id": "2829109",
+      "term": "換地計画",
+      "reading": "かんちけいかく",
+      "meaning": "land replotting plan / replotting plan",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3807,
+      "id": "2818120",
+      "term": "寒地荒原",
+      "reading": "かんちこうげん",
+      "meaning": "cold desert / arctic desert / fell-field",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3808,
+      "id": "2818110",
+      "term": "寒地植物",
+      "reading": "かんちしょくぶつ",
+      "meaning": "psychrophyte",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3809,
+      "id": "2829111",
+      "term": "換地処分",
+      "reading": "かんちしょぶん",
+      "meaning": "allocation of replotted land / government acquisition of land by substitution or compensation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3810,
+      "id": "1932290",
+      "term": "感知装置",
+      "reading": "かんちそうち",
+      "meaning": "smoke or heat sensor or detector",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3811,
+      "id": "1210080",
+      "term": "乾地農法",
+      "reading": "かんちのうほう",
+      "meaning": "dry farming",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3812,
+      "id": "1714610",
+      "term": "寒中水泳",
+      "reading": "かんちゅうすいえい",
+      "meaning": "swimming in the middle of winter or the cold season",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3813,
+      "id": "2040230",
+      "term": "寒中見舞",
+      "reading": "かんちゅうみまい",
+      "meaning": "winter greeting card / inquiring after someone's health in the cold season",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3814,
+      "id": "2615530",
+      "term": "感潮河川",
+      "reading": "かんちょうかせん",
+      "meaning": "tidal river",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3815,
+      "id": "1811410",
+      "term": "貫通銃創",
+      "reading": "かんつうじゅうそう",
+      "meaning": "piercing bullet wound",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3816,
+      "id": "2652000",
+      "term": "缶詰業者",
+      "reading": "かんづめぎょうしゃ",
+      "meaning": "canner",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3817,
+      "id": "2652010",
+      "term": "缶詰工場",
+      "reading": "かんづめこうじょう",
+      "meaning": "cannery / canning factory / canning plant",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3818,
+      "id": "2831646",
+      "term": "鑑定価格",
+      "reading": "かんていかかく",
+      "meaning": "appraised value / appraisal / valuation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3819,
+      "id": "2857189",
+      "term": "鑑定留置",
+      "reading": "かんていりゅうち",
+      "meaning": "confinement for psychiatric tests / detention pending expert evaluation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3820,
+      "id": "2113050",
+      "term": "歓天喜地",
+      "reading": "かんてんきち",
+      "meaning": "great joy / jubilation / exultation",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3821,
+      "id": "2030300",
+      "term": "干天慈雨",
+      "reading": "かんてんじう",
+      "meaning": "welcome (beneficial) rain in a drought / realization of something eagerly looked for / a welcome relief",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3822,
+      "id": "2033250",
+      "term": "旱天慈雨",
+      "reading": "かんてんじう",
+      "meaning": "welcome (beneficial) rain in a drought / realization of something eagerly looked for / a welcome relief",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3823,
+      "id": "1979300",
+      "term": "寒天培地",
+      "reading": "かんてんばいち",
+      "meaning": "nutrient agar",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3824,
+      "id": "2347920",
+      "term": "観点表示",
+      "reading": "かんてんひょうじ",
+      "meaning": "node label",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3825,
+      "id": "2835835",
+      "term": "観天望気",
+      "reading": "かんてんぼうき",
+      "meaning": "predicting the weather from the wind direction, shape of clouds, etc.",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3826,
+      "id": "2122430",
+      "term": "噛んで含める",
+      "reading": "かんでふくめる",
+      "meaning": "to explain carefully and slowly / to explain politely in simple terms / to spoon-feed",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3827,
+      "id": "1867760",
+      "term": "関東一円",
+      "reading": "かんとういちえん",
+      "meaning": "whole district of Kanto",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3828,
+      "id": "5192487",
+      "term": "関東銀行",
+      "reading": "かんとうぎんこう",
+      "meaning": "Kanto Bank, Limited",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3829,
+      "id": "2083470",
+      "term": "間投助詞",
+      "reading": "かんとうじょし",
+      "meaning": "interjectory particle (e.g. \"yo\", \"ne\", \"sa\")",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3830,
+      "id": "2150680",
+      "term": "関東地方",
+      "reading": "かんとうちほう",
+      "meaning": "Kanto region (incl. Tokyo, Kanagawa, Saitama, Gunma, Tochigi, Ibaraki and Chiba prefectures)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3831,
+      "id": "2854155",
+      "term": "環頭大刀",
+      "reading": "かんとうのたち",
+      "meaning": "sword with a round pommel",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3832,
+      "id": "2244070",
+      "term": "関東八州",
+      "reading": "かんとうはっしゅう",
+      "meaning": "the eight Edo-period provinces of Kanto (Sagami, Musashi, Awa, Kazusa, Shimousa, Hitachi, Kouzuke and Shimotsuke)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3833,
+      "id": "2661970",
+      "term": "監督会議",
+      "reading": "かんとくかいぎ",
+      "meaning": "managers' conference / meeting of managers",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3834,
+      "id": "2847692",
+      "term": "監督官庁",
+      "reading": "かんとくかんちょう",
+      "meaning": "competent authorities / supervisory authority",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3835,
+      "id": "2806280",
+      "term": "監督機関",
+      "reading": "かんとくきかん",
+      "meaning": "supervising body / supervisory authorities",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3836,
+      "id": "2347650",
+      "term": "監督機能",
+      "reading": "かんとくきのう",
+      "meaning": "supervisory function",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3837,
+      "id": "2507230",
+      "term": "監督教会",
+      "reading": "かんとくきょうかい",
+      "meaning": "Episcopal Church",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3838,
+      "id": "2145700",
+      "term": "感度分析",
+      "reading": "かんどぶんせき",
+      "meaning": "sensitivity analysis (e.g. in simulations)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3839,
+      "id": "1212560",
+      "term": "感度良好",
+      "reading": "かんどりょうこう",
+      "meaning": "(coming through) loud and clear",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3840,
+      "id": "2855834",
+      "term": "棺内分娩",
+      "reading": "かんないぶんべん",
+      "meaning": "coffin birth / postmortem fetal extrusion",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3841,
+      "id": "2766440",
+      "term": "館内放送",
+      "reading": "かんないほうそう",
+      "meaning": "public announcement (in a department store, etc.) / announcement over an (indoor) public address system",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3842,
+      "id": "2043250",
+      "term": "艱難苦労",
+      "reading": "かんなんくろう",
+      "meaning": "trials and tribulations / adversities / suffering hardships and troubles",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3843,
+      "id": "1571410",
+      "term": "艱難辛苦",
+      "reading": "かんなんしんく",
+      "meaning": "trial and tribulation / hardships / privations",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3844,
+      "id": "2844118",
+      "term": "患難時代",
+      "reading": "かんなんじだい",
+      "meaning": "Great Tribulation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3845,
+      "id": "1211360",
+      "term": "堪忍袋の緒が切れる",
+      "reading": "かんにんぶくろのおがきれる",
+      "meaning": "to be out of patience / to be unable to put up with something anymore",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3846,
+      "id": "2040240",
+      "term": "奸佞邪知",
+      "reading": "かんねいじゃち",
+      "meaning": "wiles and cunning / craftiness and treachery",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3847,
+      "id": "2679110",
+      "term": "寒熱往来",
+      "reading": "かんねつおうらい",
+      "meaning": "alternating chills and fever",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3848,
+      "id": "2687460",
+      "term": "乾熱滅菌",
+      "reading": "かんねつめっきん",
+      "meaning": "dry-heat sterilization / hot-air sterilization",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3849,
+      "id": "2658500",
+      "term": "観念形態",
+      "reading": "かんねんけいたい",
+      "meaning": "ideology",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3850,
+      "id": "1215020",
+      "term": "観念主義",
+      "reading": "かんねんしゅぎ",
+      "meaning": "German idealism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3851,
+      "id": "2648070",
+      "term": "観念念仏",
+      "reading": "かんねんねんぶつ",
+      "meaning": "contemplation (on Amida Buddha, the Pure Land, etc.)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3852,
+      "id": "2092900",
+      "term": "観念連合",
+      "reading": "かんねんれんごう",
+      "meaning": "association (e.g. of two concepts)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3853,
+      "id": "2599360",
+      "term": "感応遺伝",
+      "reading": "かんのういでん",
+      "meaning": "telegony / influence of a previous sire on the offspring of a female with a later sire (discredited theory of heredity)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3854,
+      "id": "1979450",
+      "term": "官能検査",
+      "reading": "かんのうけんさ",
+      "meaning": "sensory evaluation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3855,
+      "id": "1867850",
+      "term": "感応作用",
+      "reading": "かんのうさよう",
+      "meaning": "induction",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3856,
+      "id": "1665670",
+      "term": "官能主義",
+      "reading": "かんのうしゅぎ",
+      "meaning": "sensualism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3857,
+      "id": "2043260",
+      "term": "官能小説",
+      "reading": "かんのうしょうせつ",
+      "meaning": "erotic novel / amorous novel / pornographic novel",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3858,
+      "id": "2583420",
+      "term": "観音菩薩",
+      "reading": "かんのんぼさつ",
+      "meaning": "Kannon (Bodhisattva) / Kwannon / Goddess of Mercy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3859,
+      "id": "2023660",
+      "term": "看板大関",
+      "reading": "かんばんおおぜき",
+      "meaning": "physically exceptional wrestler promoted straight to champion rank during Edo period",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3860,
+      "id": "2833436",
+      "term": "看板商品",
+      "reading": "かんばんしょうひん",
+      "meaning": "flagship product / leading product / hallmark product",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3861,
+      "id": "1990040",
+      "term": "看板方式",
+      "reading": "かんばんほうしき",
+      "meaning": "just-in-time inventory management / JIT",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3862,
+      "id": "2103060",
+      "term": "看板を下ろす",
+      "reading": "かんばんをおろす",
+      "meaning": "to close one's business",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3863,
+      "id": "1665760",
+      "term": "官費留学",
+      "reading": "かんぴりゅうがく",
+      "meaning": "studying abroad at government expense",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3864,
+      "id": "2270210",
+      "term": "観普賢経",
+      "reading": "かんふげんぎょう",
+      "meaning": "Samantabhadra Contemplation Sutra",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3865,
+      "id": "5189525",
+      "term": "幹部学校",
+      "reading": "かんぶがっこう",
+      "meaning": "Ground Staff College",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3866,
+      "id": "1213230",
+      "term": "漢文訓読",
+      "reading": "かんぶんくんどく",
+      "meaning": "reading a classical Chinese text in Japanese",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3867,
+      "id": "2837099",
+      "term": "寒風摩擦",
+      "reading": "かんぷうまさつ",
+      "meaning": "rubdown with a dry towel",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3868,
+      "id": "2109900",
+      "term": "姦夫姦婦",
+      "reading": "かんぷかんぷ",
+      "meaning": "adulterer and adulteress / adulterous couple",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3869,
+      "id": "1714440",
+      "term": "乾布摩擦",
+      "reading": "かんぷまさつ",
+      "meaning": "rubdown with a dry towel",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3870,
+      "id": "2633020",
+      "term": "鑑別診断",
+      "reading": "かんべつしんだん",
+      "meaning": "differential diagnosis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3871,
+      "id": "2852751",
+      "term": "官幣小社",
+      "reading": "かんぺいしょうしゃ",
+      "meaning": "national shrine of minor grade",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3872,
+      "id": "2853515",
+      "term": "官幣大社",
+      "reading": "かんぺいたいしゃ",
+      "meaning": "national shrine of major grade",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3873,
+      "id": "2853514",
+      "term": "官幣中社",
+      "reading": "かんぺいちゅうしゃ",
+      "meaning": "national shrine of middle grade",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3874,
+      "id": "2529790",
+      "term": "完璧主義",
+      "reading": "かんぺきしゅぎ",
+      "meaning": "perfectionism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3875,
+      "id": "1211820",
+      "term": "官房長官",
+      "reading": "かんぼうちょうかん",
+      "meaning": "Chief Cabinet Secretary (Japan)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3876,
+      "id": "2864166",
+      "term": "陥没呼吸",
+      "reading": "かんぼつこきゅう",
+      "meaning": "retractive breathing",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3877,
+      "id": "2632500",
+      "term": "陥没骨折",
+      "reading": "かんぼつこっせつ",
+      "meaning": "depressed fracture",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3878,
+      "id": "2845596",
+      "term": "陥没乳首",
+      "reading": "かんぼつちくび",
+      "meaning": "inverted nipple / retracted nipple",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3879,
+      "id": "2845595",
+      "term": "陥没乳頭",
+      "reading": "かんぼつにゅうとう",
+      "meaning": "inverted nipple / retracted nipple",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3880,
+      "id": "1815530",
+      "term": "艦砲射撃",
+      "reading": "かんぽうしゃげき",
+      "meaning": "naval bombardment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3881,
+      "id": "2869302",
+      "term": "管鮑之交",
+      "reading": "かんぽうのまじわり",
+      "meaning": "inseparable friendship",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3882,
+      "id": "2242180",
+      "term": "緩歩動物",
+      "reading": "かんぽどうぶつ",
+      "meaning": "tardigrade (any animal of phylum Tardigrada) / water bear",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3883,
+      "id": "2842905",
+      "term": "官民一体",
+      "reading": "かんみんいったい",
+      "meaning": "unified effort of government and private sector",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3884,
+      "id": "2043280",
+      "term": "官民格差",
+      "reading": "かんみんかくさ",
+      "meaning": "disparity (of income, pensions, etc.) between public and private employees",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3885,
+      "id": "2841867",
+      "term": "冠水母類",
+      "reading": "かんむりくらげるい",
+      "meaning": "crown jellyfish (Coronatae spp.) / coronated jellyfish",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3886,
+      "id": "1210240",
+      "term": "冠を曲げる",
+      "reading": "かんむりをまげる",
+      "meaning": "to become displeased / to get stubborn",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3887,
+      "id": "1214370",
+      "term": "簡明強固",
+      "reading": "かんめいきょうこ",
+      "meaning": "plain and sturdy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3888,
+      "id": "2043290",
+      "term": "簡明率直",
+      "reading": "かんめいそっちょく",
+      "meaning": "simple, plain, and artless / clear, concise, and unaffected",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3889,
+      "id": "2043300",
+      "term": "簡明直截",
+      "reading": "かんめいちょくせつ",
+      "meaning": "simple and plain / frank, direct and unambivalent / straightforward",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3890,
+      "id": "2006650",
+      "term": "関門海峡",
+      "reading": "かんもんかいきょう",
+      "meaning": "Kanmon Straits (between Honshu and Kyushu)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3891,
+      "id": "1212740",
+      "term": "慣用語句",
+      "reading": "かんようごく",
+      "meaning": "idiom / idiomatic phrase",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3892,
+      "id": "2405940",
+      "term": "慣用語法",
+      "reading": "かんようごほう",
+      "meaning": "idiomatic usage",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3893,
+      "id": "1215030",
+      "term": "観葉植物",
+      "reading": "かんようしょくぶつ",
+      "meaning": "ornamental (foliage) plant / houseplant",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3894,
+      "id": "2043330",
+      "term": "慣用表現",
+      "reading": "かんようひょうげん",
+      "meaning": "idiomatic expression / idiom / fixed expression",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3895,
+      "id": "2835117",
+      "term": "管理医療",
+      "reading": "かんりいりょう",
+      "meaning": "managed care (health)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3896,
+      "id": "2855227",
+      "term": "管理運営",
+      "reading": "かんりうんえい",
+      "meaning": "management and administration",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3897,
+      "id": "1979850",
+      "term": "管理会計",
+      "reading": "かんりかいけい",
+      "meaning": "managerial accounting",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3898,
+      "id": "2163750",
+      "term": "管理価格",
+      "reading": "かんりかかく",
+      "meaning": "administered price",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3899,
+      "id": "2347710",
+      "term": "管理環境",
+      "reading": "かんりかんきょう",
+      "meaning": "management environment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3900,
+      "id": "2595880",
+      "term": "管理会社",
+      "reading": "かんりがいしゃ",
+      "meaning": "maintenance company / management company",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3901,
+      "id": "2347720",
+      "term": "管理機関",
+      "reading": "かんりきかん",
+      "meaning": "administrative authority",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3902,
+      "id": "1214210",
+      "term": "管理機能",
+      "reading": "かんりきのう",
+      "meaning": "management function",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3903,
+      "id": "2347730",
+      "term": "管理業務",
+      "reading": "かんりぎょうむ",
+      "meaning": "management task / administrative task",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3904,
+      "id": "2264430",
+      "term": "管理区域",
+      "reading": "かんりくいき",
+      "meaning": "controlled access location",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3905,
+      "id": "2868980",
+      "term": "管理組合",
+      "reading": "かんりくみあい",
+      "meaning": "management association (e.g. of a condominium) / homeowners association / (condominium) body corporate",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3906,
+      "id": "2833460",
+      "term": "管理工学",
+      "reading": "かんりこうがく",
+      "meaning": "management engineering",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3907,
+      "id": "2828726",
+      "term": "管理項目",
+      "reading": "かんりこうもく",
+      "meaning": "control point / control item",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3908,
+      "id": "2347740",
+      "term": "管理作業",
+      "reading": "かんりさぎょう",
+      "meaning": "management task / management function",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3909,
+      "id": "1932390",
+      "term": "管理社会",
+      "reading": "かんりしゃかい",
+      "meaning": "controlled society / regulated society",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3910,
+      "id": "1214240",
+      "term": "管理情報",
+      "reading": "かんりじょうほう",
+      "meaning": "management information",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3911,
+      "id": "2581610",
+      "term": "管理責任",
+      "reading": "かんりせきにん",
+      "meaning": "managerial liability / executive responsibility / accountability",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3912,
+      "id": "1979860",
+      "term": "管理組織",
+      "reading": "かんりそしき",
+      "meaning": "management organization / management organisation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3913,
+      "id": "2347770",
+      "term": "管理対象",
+      "reading": "かんりたいしょう",
+      "meaning": "managed object",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3914,
+      "id": "2347760",
+      "term": "管理体制",
+      "reading": "かんりたいせい",
+      "meaning": "management system",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3915,
+      "id": "2858858",
+      "term": "官立大学",
+      "reading": "かんりつだいがく",
+      "meaning": "government-established university / national university",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3916,
+      "id": "2857166",
+      "term": "冠履転倒",
+      "reading": "かんりてんとう",
+      "meaning": "disorder / chaos / inversion",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3917,
+      "id": "2869528",
+      "term": "管理人室",
+      "reading": "かんりにんしつ",
+      "meaning": "manager's office (e.g. of an apartment building) / caretaker's room",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3918,
+      "id": "2721440",
+      "term": "管理能力",
+      "reading": "かんりのうりょく",
+      "meaning": "administrative ability / managerial ability / ability to manage",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3919,
+      "id": "2862438",
+      "term": "管理売春",
+      "reading": "かんりばいしゅん",
+      "meaning": "pimping / pandering",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3920,
+      "id": "2664330",
+      "term": "管理費用",
+      "reading": "かんりひよう",
+      "meaning": "administrative expenses / management expenses",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3921,
+      "id": "2761270",
+      "term": "管理補佐",
+      "reading": "かんりほさ",
+      "meaning": "administrative assistant",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3922,
+      "id": "1979880",
+      "term": "管理貿易",
+      "reading": "かんりぼうえき",
+      "meaning": "controlled trade / government-managed trade",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3923,
+      "id": "2680740",
+      "term": "監理銘柄",
+      "reading": "かんりめいがら",
+      "meaning": "supervised trading of a stock, e.g. during delisting",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3924,
+      "id": "2132820",
+      "term": "官僚機構",
+      "reading": "かんりょうきこう",
+      "meaning": "bureaucratic organization / bureaucracy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3925,
+      "id": "1211880",
+      "term": "官僚主義",
+      "reading": "かんりょうしゅぎ",
+      "meaning": "bureaucracy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3926,
+      "id": "2043340",
+      "term": "官僚主導",
+      "reading": "かんりょうしゅどう",
+      "meaning": "initiative taken by bureaucrats in the drafting of government policies and bills (rather than by politicians)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3927,
+      "id": "1665250",
+      "term": "完了時制",
+      "reading": "かんりょうじせい",
+      "meaning": "perfect tense",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3928,
+      "id": "1665800",
+      "term": "官僚政治",
+      "reading": "かんりょうせいじ",
+      "meaning": "bureaucratic government",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3929,
+      "id": "2347790",
+      "term": "管理領域",
+      "reading": "かんりりょういき",
+      "meaning": "Management Domain / MD",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3930,
+      "id": "2705440",
+      "term": "冠輪動物",
+      "reading": "かんりんどうぶつ",
+      "meaning": "lophotrochozoan / any species in the superphylum Lophotrochozoa",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3931,
+      "id": "1714680",
+      "term": "寒冷前線",
+      "reading": "かんれいぜんせん",
+      "meaning": "cold front",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3932,
+      "id": "2842516",
+      "term": "関連解析",
+      "reading": "かんれんかいせき",
+      "meaning": "association analysis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3933,
+      "id": "1216070",
+      "term": "関連会社",
+      "reading": "かんれんがいしゃ",
+      "meaning": "associated company",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3934,
+      "id": "2348190",
+      "term": "関連機器",
+      "reading": "かんれんきき",
+      "meaning": "related equipment / related device",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3935,
+      "id": "2664850",
+      "term": "関連企業",
+      "reading": "かんれんきぎょう",
+      "meaning": "affiliated company / affiliated business",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3936,
+      "id": "2692650",
+      "term": "関連記事",
+      "reading": "かんれんきじ",
+      "meaning": "related article / related story",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3937,
+      "id": "2348200",
+      "term": "関連技術",
+      "reading": "かんれんぎじゅつ",
+      "meaning": "related technology",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3938,
+      "id": "2067750",
+      "term": "関連業者",
+      "reading": "かんれんぎょうしゃ",
+      "meaning": "related tradespeople",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3939,
+      "id": "1216080",
+      "term": "関連項目",
+      "reading": "かんれんこうもく",
+      "meaning": "related item / related topic",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3940,
+      "id": "2692660",
+      "term": "関連産業",
+      "reading": "かんれんさんぎょう",
+      "meaning": "related industries / associated industries",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3941,
+      "id": "1932570",
+      "term": "関連質問",
+      "reading": "かんれんしつもん",
+      "meaning": "follow-up question / related question / interpellation on related matters",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3942,
+      "id": "1216090",
+      "term": "関連商品",
+      "reading": "かんれんしょうひん",
+      "meaning": "related product",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3943,
+      "id": "1932560",
+      "term": "関連事項",
+      "reading": "かんれんじこう",
+      "meaning": "related (relevant) matters / matters relevant to the subject",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3944,
+      "id": "2348210",
+      "term": "関連情報",
+      "reading": "かんれんじょうほう",
+      "meaning": "related information / relevant information",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3945,
+      "id": "2348240",
+      "term": "関連製品",
+      "reading": "かんれんせいひん",
+      "meaning": "related product / related products",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3946,
+      "id": "2348250",
+      "term": "関連単語",
+      "reading": "かんれんたんご",
+      "meaning": "related word",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3947,
+      "id": "2726690",
+      "term": "関連法案",
+      "reading": "かんれんほうあん",
+      "meaning": "related bill",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3948,
+      "id": "2043350",
+      "term": "貫禄十分",
+      "reading": "かんろくじゅうぶん",
+      "meaning": "having great (impressive, commanding) presence / having an air of importance / having enough gravity for (a position)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3949,
+      "id": "2043360",
+      "term": "貫禄不足",
+      "reading": "かんろくぶそく",
+      "meaning": "lacking enough gravity for (a position, task) / being an insignificant figure for (a position)",
       "rank": null,
       "type": "four"
     }
