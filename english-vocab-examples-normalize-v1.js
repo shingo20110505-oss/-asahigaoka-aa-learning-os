@@ -1,0 +1,1 @@
+(()=>{'use strict';const B=window.AA_ENGLISH_EXAMPLE_BANK||(window.AA_ENGLISH_EXAMPLE_BANK={});for(const k of Object.keys(B)){const n=String(k).trim().toLowerCase();if(n&&!B[n])B[n]=B[k]}})();
