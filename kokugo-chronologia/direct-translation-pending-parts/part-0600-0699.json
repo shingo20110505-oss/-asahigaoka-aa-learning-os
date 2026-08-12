@@ -1,0 +1,717 @@
+{
+  "mode": "assistant_direct_only",
+  "total_rows": 15000,
+  "already_direct_japanese": 5350,
+  "english_only_remaining": 9650,
+  "english_only_rank_counts": {
+    "(blank)": 9650
+  },
+  "a_rank_total": 0,
+  "selection": "first-visible-order (source rank is blank)",
+  "max_batch_size": 1000,
+  "batch_size": 1000,
+  "part_start": 600,
+  "part_end": 699,
+  "targets": [
+    {
+      "source_index": 5950,
+      "id": "5295943",
+      "term": "黒崎窯業",
+      "reading": "くろさきようぎょう",
+      "meaning": "Krosaki Corporation"
+    },
+    {
+      "source_index": 5951,
+      "id": "2765600",
+      "term": "黒山椒魚",
+      "reading": "くろさんしょううお",
+      "meaning": "Japanese black salamander (Hynobius nigrescens)"
+    },
+    {
+      "source_index": 5952,
+      "id": "2630940",
+      "term": "黒字転換",
+      "reading": "くろじてんかん",
+      "meaning": "returning to profit / turnaround"
+    },
+    {
+      "source_index": 5953,
+      "id": "1773240",
+      "term": "黒字倒産",
+      "reading": "くろじとうさん",
+      "meaning": "business insolvency due to liquidity problems"
+    },
+    {
+      "source_index": 5954,
+      "id": "2828012",
+      "term": "黒太刀魳",
+      "reading": "くろたちかます",
+      "meaning": "snake mackerel (Gempylus serpens)"
+    },
+    {
+      "source_index": 5955,
+      "id": "2044350",
+      "term": "黒田売買",
+      "reading": "くろたばいばい",
+      "meaning": "dealing in rice speculating on the year's harvest before seedlings are set out"
+    },
+    {
+      "source_index": 5956,
+      "id": "2861343",
+      "term": "黒電気石",
+      "reading": "くろでんきせき",
+      "meaning": "schorl / black tourmaline"
+    },
+    {
+      "source_index": 5957,
+      "id": "2190290",
+      "term": "黒盗賊鴎",
+      "reading": "くろとうぞくかもめ",
+      "meaning": "parasitic jaeger / Arctic skua (Stercorarius parasiticus)"
+    },
+    {
+      "source_index": 5958,
+      "id": "2828728",
+      "term": "黒花狼牙",
+      "reading": "くろばなろうげ",
+      "meaning": "purple marshlocks (Comarum palustre) / swamp cinquefoil / marsh cinquefoil"
+    },
+    {
+      "source_index": 5959,
+      "id": "5747242",
+      "term": "黒船来航",
+      "reading": "くろふねらいこう",
+      "meaning": "Perry Expedition (1853) / arrival of the Black Ships"
+    },
+    {
+      "source_index": 5960,
+      "id": "2614240",
+      "term": "黒縁目白",
+      "reading": "くろへりめじろ",
+      "meaning": "copper shark (Carcharhinus brachyurus, only member of Carcharhinus found mostly at temperate latitudes) / bronze whaler / narrowtooth shark"
+    },
+    {
+      "source_index": 5961,
+      "id": "2231010",
+      "term": "黒丸花蜂",
+      "reading": "くろまるはなばち",
+      "meaning": "Bombus ignitus (species of bumblebee)"
+    },
+    {
+      "source_index": 5962,
+      "id": "2044360",
+      "term": "黒物家電",
+      "reading": "くろものかでん",
+      "meaning": "black goods / consumer electronics products"
+    },
+    {
+      "source_index": 5963,
+      "id": "1247090",
+      "term": "桑原桑原",
+      "reading": "くわばらくわばら",
+      "meaning": "knock on wood / touch wood / heaven forbid"
+    },
+    {
+      "source_index": 5964,
+      "id": "1247280",
+      "term": "君子豹変",
+      "reading": "くんしひょうへん",
+      "meaning": "the wise readily adapt themselves to changed circumstances / the wise are quick to acknowledge their mistakes and correct them"
+    },
+    {
+      "source_index": 5965,
+      "id": "2839678",
+      "term": "君主主義",
+      "reading": "くんしゅしゅぎ",
+      "meaning": "monarchism / royalism"
+    },
+    {
+      "source_index": 5966,
+      "id": "1667740",
+      "term": "君主政体",
+      "reading": "くんしゅせいたい",
+      "meaning": "monarchy"
+    },
+    {
+      "source_index": 5967,
+      "id": "2184020",
+      "term": "君主道徳",
+      "reading": "くんしゅどうとく",
+      "meaning": "Herrenmoral (master morality, as a philosophical concept of Nietzsche)"
+    },
+    {
+      "source_index": 5968,
+      "id": "2655840",
+      "term": "訓示規定",
+      "reading": "くんじきてい",
+      "meaning": "advisory provision / discretionary provision"
+    },
+    {
+      "source_index": 5969,
+      "id": "1247340",
+      "term": "薫蒸消毒",
+      "reading": "くんじょうしょうどく",
+      "meaning": "fumigation"
+    },
+    {
+      "source_index": 5970,
+      "id": "2044390",
+      "term": "訓民正音",
+      "reading": "くんみんせいおん",
+      "meaning": "Hunmin-jongum / the Hankul (Hangul) alphabet (of Korea) / the Onmun (Enmun)"
+    },
+    {
+      "source_index": 5971,
+      "id": "1712740",
+      "term": "寓意小説",
+      "reading": "ぐういしょうせつ",
+      "meaning": "allegory / allegorical tale"
+    },
+    {
+      "source_index": 5972,
+      "id": "1246330",
+      "term": "偶像崇拝",
+      "reading": "ぐうぞうすうはい",
+      "meaning": "idolatry / idol worship"
+    },
+    {
+      "source_index": 5973,
+      "id": "1246340",
+      "term": "偶像破壊",
+      "reading": "ぐうぞうはかい",
+      "meaning": "iconoclasm / image breaking"
+    },
+    {
+      "source_index": 5974,
+      "id": "1246350",
+      "term": "偶像礼拝",
+      "reading": "ぐうぞうれいはい",
+      "meaning": "idolatry"
+    },
+    {
+      "source_index": 5975,
+      "id": "2871709",
+      "term": "偶発債務",
+      "reading": "ぐうはつさいむ",
+      "meaning": "contingent liability"
+    },
+    {
+      "source_index": 5976,
+      "id": "2869100",
+      "term": "偶発腫瘍",
+      "reading": "ぐうはつしゅよう",
+      "meaning": "incidentaloma"
+    },
+    {
+      "source_index": 5977,
+      "id": "2044310",
+      "term": "愚兄賢弟",
+      "reading": "ぐけいけんてい",
+      "meaning": "a foolish older brother and a smart younger"
+    },
+    {
+      "source_index": 5978,
+      "id": "2044320",
+      "term": "愚者一得",
+      "reading": "ぐしゃいっとく",
+      "meaning": "even a fool may sometimes give good counsel"
+    },
+    {
+      "source_index": 5979,
+      "id": "2351780",
+      "term": "具象構文",
+      "reading": "ぐしょうこうぶん",
+      "meaning": "concrete syntax (of SGML)"
+    },
+    {
+      "source_index": 5980,
+      "id": "1245000",
+      "term": "具象美術",
+      "reading": "ぐしょうびじゅつ",
+      "meaning": "representational art"
+    },
+    {
+      "source_index": 5981,
+      "id": "2150990",
+      "term": "具象名詞",
+      "reading": "ぐしょうめいし",
+      "meaning": "concrete noun"
+    },
+    {
+      "source_index": 5982,
+      "id": "1004040",
+      "term": "愚図愚図",
+      "reading": "ぐずぐず",
+      "meaning": "slowly / tardily / dawdling"
+    },
+    {
+      "source_index": 5983,
+      "id": "2412620",
+      "term": "愚痴愚痴",
+      "reading": "ぐちぐち",
+      "meaning": "mumbling / muttering"
+    },
+    {
+      "source_index": 5984,
+      "id": "2122900",
+      "term": "愚の骨頂",
+      "reading": "ぐのこっちょう",
+      "meaning": "the height of folly / sheer stupidity"
+    },
+    {
+      "source_index": 5985,
+      "id": "2621360",
+      "term": "虞犯少年",
+      "reading": "ぐはんしょうねん",
+      "meaning": "juvenile deemed likely to commit a crime / pre-delinquent juvenile / status offender"
+    },
+    {
+      "source_index": 5986,
+      "id": "1245270",
+      "term": "虞美人草",
+      "reading": "ぐびじんそう",
+      "meaning": "common poppy (Papaver rhoeas) / corn poppy / field poppy"
+    },
+    {
+      "source_index": 5987,
+      "id": "2268810",
+      "term": "求不得苦",
+      "reading": "ぐふとくく",
+      "meaning": "the pain of not getting what one seeks"
+    },
+    {
+      "source_index": 5988,
+      "id": "1828630",
+      "term": "愚民政策",
+      "reading": "ぐみんせいさく",
+      "meaning": "obscurantist policy / keep-the-people-ignorant policy"
+    },
+    {
+      "source_index": 5989,
+      "id": "2030660",
+      "term": "愚問愚答",
+      "reading": "ぐもんぐとう",
+      "meaning": "silly questions and silly answers / silly dialogue"
+    },
+    {
+      "source_index": 5990,
+      "id": "1247690",
+      "term": "軍医学校",
+      "reading": "ぐんいがっこう",
+      "meaning": "military medical college"
+    },
+    {
+      "source_index": 5991,
+      "id": "1247710",
+      "term": "軍医総監",
+      "reading": "ぐんいそうかん",
+      "meaning": "surgeon general"
+    },
+    {
+      "source_index": 5992,
+      "id": "1247750",
+      "term": "軍拡競争",
+      "reading": "ぐんかくきょうそう",
+      "meaning": "arms race / armaments race"
+    },
+    {
+      "source_index": 5993,
+      "id": "2044370",
+      "term": "軍紀弛緩",
+      "reading": "ぐんきちかん",
+      "meaning": "lack of (slackness in) military discipline / demoralization"
+    },
+    {
+      "source_index": 5994,
+      "id": "1247900",
+      "term": "軍記物語",
+      "reading": "ぐんきものがたり",
+      "meaning": "war chronicle"
+    },
+    {
+      "source_index": 5995,
+      "id": "2044380",
+      "term": "軍機漏洩",
+      "reading": "ぐんきろうえい",
+      "meaning": "disclosure (leakage, betrayal) of military secrets"
+    },
+    {
+      "source_index": 5996,
+      "id": "1667810",
+      "term": "郡県制度",
+      "reading": "ぐんけんせいど",
+      "meaning": "county and prefecture system"
+    },
+    {
+      "source_index": 5997,
+      "id": "1247990",
+      "term": "軍国主義",
+      "reading": "ぐんこくしゅぎ",
+      "meaning": "militarism"
+    },
+    {
+      "source_index": 5998,
+      "id": "1667930",
+      "term": "群集行動",
+      "reading": "ぐんしゅうこうどう",
+      "meaning": "crowd behavior / crowd behaviour"
+    },
+    {
+      "source_index": 5999,
+      "id": "1667920",
+      "term": "群集心理",
+      "reading": "ぐんしゅうしんり",
+      "meaning": "mass psychology / mob psychology / crowd psychology"
+    },
+    {
+      "source_index": 6000,
+      "id": "2859123",
+      "term": "群衆雪崩",
+      "reading": "ぐんしゅうなだれ",
+      "meaning": "crowd collapse"
+    },
+    {
+      "source_index": 6001,
+      "id": "2634740",
+      "term": "軍縮会談",
+      "reading": "ぐんしゅくかいだん",
+      "meaning": "disarmament conference / disarmament talks / arms reduction talks"
+    },
+    {
+      "source_index": 6002,
+      "id": "1248480",
+      "term": "軍縮協定",
+      "reading": "ぐんしゅくきょうてい",
+      "meaning": "disarmament agreement"
+    },
+    {
+      "source_index": 6003,
+      "id": "5237877",
+      "term": "群書類従",
+      "reading": "ぐんしょるいじゅう",
+      "meaning": "Gunsho Ruiju (collection of Japanese classics sorted by type; orig. ed. 1819; comp. ed. 1911)"
+    },
+    {
+      "source_index": 6004,
+      "id": "1248020",
+      "term": "軍司令官",
+      "reading": "ぐんしれいかん",
+      "meaning": "army commander"
+    },
+    {
+      "source_index": 6005,
+      "id": "1248030",
+      "term": "軍司令部",
+      "reading": "ぐんしれいぶ",
+      "meaning": "military headquarters"
+    },
+    {
+      "source_index": 6006,
+      "id": "1667130",
+      "term": "軍事衛星",
+      "reading": "ぐんじえいせい",
+      "meaning": "military satellite"
+    },
+    {
+      "source_index": 6007,
+      "id": "1248090",
+      "term": "軍事演習",
+      "reading": "ぐんじえんしゅう",
+      "meaning": "military exercise"
+    },
+    {
+      "source_index": 6008,
+      "id": "1667110",
+      "term": "軍事援助",
+      "reading": "ぐんじえんじょ",
+      "meaning": "military assistance"
+    },
+    {
+      "source_index": 6009,
+      "id": "1248100",
+      "term": "軍事会議",
+      "reading": "ぐんじかいぎ",
+      "meaning": "council of war"
+    },
+    {
+      "source_index": 6010,
+      "id": "1933780",
+      "term": "軍事介入",
+      "reading": "ぐんじかいにゅう",
+      "meaning": "military intervention / armed intervention"
+    },
+    {
+      "source_index": 6011,
+      "id": "1991140",
+      "term": "軍事拡大",
+      "reading": "ぐんじかくだい",
+      "meaning": "military expansion"
+    },
+    {
+      "source_index": 6012,
+      "id": "2835953",
+      "term": "軍事学者",
+      "reading": "ぐんじがくしゃ",
+      "meaning": "military scholar / military writer"
+    },
+    {
+      "source_index": 6013,
+      "id": "1991150",
+      "term": "軍事学校",
+      "reading": "ぐんじがっこう",
+      "meaning": "military school"
+    },
+    {
+      "source_index": 6014,
+      "id": "1248110",
+      "term": "軍事基地",
+      "reading": "ぐんじきち",
+      "meaning": "military base"
+    },
+    {
+      "source_index": 6015,
+      "id": "1991160",
+      "term": "軍事機密",
+      "reading": "ぐんじきみつ",
+      "meaning": "military secret"
+    },
+    {
+      "source_index": 6016,
+      "id": "1248120",
+      "term": "軍事協定",
+      "reading": "ぐんじきょうてい",
+      "meaning": "military pact"
+    },
+    {
+      "source_index": 6017,
+      "id": "1248130",
+      "term": "軍事協力",
+      "reading": "ぐんじきょうりょく",
+      "meaning": "military cooperation"
+    },
+    {
+      "source_index": 6018,
+      "id": "1248140",
+      "term": "軍事教練",
+      "reading": "ぐんじきょうれん",
+      "meaning": "military training"
+    },
+    {
+      "source_index": 6019,
+      "id": "1991170",
+      "term": "軍事技術",
+      "reading": "ぐんじぎじゅつ",
+      "meaning": "military technology"
+    },
+    {
+      "source_index": 6020,
+      "id": "1248150",
+      "term": "軍事訓練",
+      "reading": "ぐんじくんれん",
+      "meaning": "military exercise / drill"
+    },
+    {
+      "source_index": 6021,
+      "id": "1248160",
+      "term": "軍事警察",
+      "reading": "ぐんじけいさつ",
+      "meaning": "military police"
+    },
+    {
+      "source_index": 6022,
+      "id": "1991190",
+      "term": "軍事攻撃",
+      "reading": "ぐんじこうげき",
+      "meaning": "military attack / military strike"
+    },
+    {
+      "source_index": 6023,
+      "id": "1248180",
+      "term": "軍事公債",
+      "reading": "ぐんじこうさい",
+      "meaning": "war bond / war loan"
+    },
+    {
+      "source_index": 6024,
+      "id": "1248190",
+      "term": "軍事工場",
+      "reading": "ぐんじこうじょう",
+      "meaning": "war plant"
+    },
+    {
+      "source_index": 6025,
+      "id": "1991200",
+      "term": "軍事攻勢",
+      "reading": "ぐんじこうせい",
+      "meaning": "military offensive"
+    },
+    {
+      "source_index": 6026,
+      "id": "1248200",
+      "term": "軍事行動",
+      "reading": "ぐんじこうどう",
+      "meaning": "military movements / military actions / military operations"
+    },
+    {
+      "source_index": 6027,
+      "id": "1991180",
+      "term": "軍事交流",
+      "reading": "ぐんじこうりゅう",
+      "meaning": "military exchange"
+    },
+    {
+      "source_index": 6028,
+      "id": "1248170",
+      "term": "軍事顧問",
+      "reading": "ぐんじこもん",
+      "meaning": "military adviser / military advisor"
+    },
+    {
+      "source_index": 6029,
+      "id": "1248210",
+      "term": "軍事裁判",
+      "reading": "ぐんじさいばん",
+      "meaning": "court-martial"
+    },
+    {
+      "source_index": 6030,
+      "id": "2848174",
+      "term": "軍事作戦",
+      "reading": "ぐんじさくせん",
+      "meaning": "military operation"
+    },
+    {
+      "source_index": 6031,
+      "id": "1248230",
+      "term": "軍事産業",
+      "reading": "ぐんじさんぎょう",
+      "meaning": "defense contractor / defence contractor / defense industry"
+    },
+    {
+      "source_index": 6032,
+      "id": "2610710",
+      "term": "軍事支出",
+      "reading": "ぐんじししゅつ",
+      "meaning": "military spending / military expenditure"
+    },
+    {
+      "source_index": 6033,
+      "id": "1248240",
+      "term": "軍事施設",
+      "reading": "ぐんじしせつ",
+      "meaning": "military installations"
+    },
+    {
+      "source_index": 6034,
+      "id": "1991210",
+      "term": "軍事支配",
+      "reading": "ぐんじしはい",
+      "meaning": "military rule"
+    },
+    {
+      "source_index": 6035,
+      "id": "2831932",
+      "term": "軍事衝突",
+      "reading": "ぐんじしょうとつ",
+      "meaning": "military clash / military conflict / military confrontation"
+    },
+    {
+      "source_index": 6036,
+      "id": "1991220",
+      "term": "軍事侵略",
+      "reading": "ぐんじしんりゃく",
+      "meaning": "military aggression / military invasion"
+    },
+    {
+      "source_index": 6037,
+      "id": "1667090",
+      "term": "軍事政権",
+      "reading": "ぐんじせいけん",
+      "meaning": "military regime"
+    },
+    {
+      "source_index": 6038,
+      "id": "1991230",
+      "term": "軍事制裁",
+      "reading": "ぐんじせいさい",
+      "meaning": "military sanction"
+    },
+    {
+      "source_index": 6039,
+      "id": "1248260",
+      "term": "軍事戦略",
+      "reading": "ぐんじせんりゃく",
+      "meaning": "military strategy"
+    },
+    {
+      "source_index": 6040,
+      "id": "1991240",
+      "term": "軍事占領",
+      "reading": "ぐんじせんりょう",
+      "meaning": "military occupation"
+    },
+    {
+      "source_index": 6041,
+      "id": "1991250",
+      "term": "軍事増強",
+      "reading": "ぐんじぞうきょう",
+      "meaning": "military build-up"
+    },
+    {
+      "source_index": 6042,
+      "id": "1991260",
+      "term": "軍事対決",
+      "reading": "ぐんじたいけつ",
+      "meaning": "military confrontation"
+    },
+    {
+      "source_index": 6043,
+      "id": "2834171",
+      "term": "軍事転用",
+      "reading": "ぐんじてんよう",
+      "meaning": "diversion to military use"
+    },
+    {
+      "source_index": 6044,
+      "id": "1991290",
+      "term": "軍事動員",
+      "reading": "ぐんじどういん",
+      "meaning": "military mobilization / military mobilisation"
+    },
+    {
+      "source_index": 6045,
+      "id": "1248320",
+      "term": "軍事同盟",
+      "reading": "ぐんじどうめい",
+      "meaning": "military alliance"
+    },
+    {
+      "source_index": 6046,
+      "id": "2857721",
+      "term": "軍事独裁",
+      "reading": "ぐんじどくさい",
+      "meaning": "military dictatorship"
+    },
+    {
+      "source_index": 6047,
+      "id": "1991310",
+      "term": "軍事任務",
+      "reading": "ぐんじにんむ",
+      "meaning": "military mission"
+    },
+    {
+      "source_index": 6048,
+      "id": "1991320",
+      "term": "軍事能力",
+      "reading": "ぐんじのうりょく",
+      "meaning": "military capability"
+    },
+    {
+      "source_index": 6049,
+      "id": "1991330",
+      "term": "軍事配備",
+      "reading": "ぐんじはいび",
+      "meaning": "military deployment"
+    }
+  ]
+}

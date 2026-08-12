@@ -1,0 +1,717 @@
+{
+  "mode": "assistant_direct_only",
+  "total_rows": 15000,
+  "already_direct_japanese": 5350,
+  "english_only_remaining": 9650,
+  "english_only_rank_counts": {
+    "(blank)": 9650
+  },
+  "a_rank_total": 0,
+  "selection": "first-visible-order (source rank is blank)",
+  "max_batch_size": 1000,
+  "batch_size": 1000,
+  "part_start": 900,
+  "part_end": 999,
+  "targets": [
+    {
+      "source_index": 6250,
+      "id": "1991710",
+      "term": "経済対策",
+      "reading": "けいざいたいさく",
+      "meaning": "economic measure"
+    },
+    {
+      "source_index": 6251,
+      "id": "1831370",
+      "term": "経済体制",
+      "reading": "けいざいたいせい",
+      "meaning": "economic system"
+    },
+    {
+      "source_index": 6252,
+      "id": "2665750",
+      "term": "経済単位",
+      "reading": "けいざいたんい",
+      "meaning": "economic unit (entity involved in economic activity, e.g. households, businesses, nations)"
+    },
+    {
+      "source_index": 6253,
+      "id": "5243541",
+      "term": "経済大学",
+      "reading": "けいざいだいがく",
+      "meaning": "Keizai University"
+    },
+    {
+      "source_index": 6254,
+      "id": "1991740",
+      "term": "経済統計",
+      "reading": "けいざいとうけい",
+      "meaning": "economic statistics"
+    },
+    {
+      "source_index": 6255,
+      "id": "2649830",
+      "term": "経済統合",
+      "reading": "けいざいとうごう",
+      "meaning": "economic integration"
+    },
+    {
+      "source_index": 6256,
+      "id": "1831430",
+      "term": "経済闘争",
+      "reading": "けいざいとうそう",
+      "meaning": "economic struggles"
+    },
+    {
+      "source_index": 6257,
+      "id": "1630530",
+      "term": "経済特区",
+      "reading": "けいざいとっく",
+      "meaning": "special economic zone"
+    },
+    {
+      "source_index": 6258,
+      "id": "2844421",
+      "term": "経済動物",
+      "reading": "けいざいどうぶつ",
+      "meaning": "livestock / farm animals"
+    },
+    {
+      "source_index": 6259,
+      "id": "2842641",
+      "term": "経済難民",
+      "reading": "けいざいなんみん",
+      "meaning": "economic refugee"
+    },
+    {
+      "source_index": 6260,
+      "id": "1831340",
+      "term": "経済白書",
+      "reading": "けいざいはくしょ",
+      "meaning": "economic white paper"
+    },
+    {
+      "source_index": 6261,
+      "id": "2639210",
+      "term": "経済破綻",
+      "reading": "けいざいはたん",
+      "meaning": "economic collapse / financial failure / bankruptcy"
+    },
+    {
+      "source_index": 6262,
+      "id": "1251540",
+      "term": "経済発展",
+      "reading": "けいざいはってん",
+      "meaning": "economic development"
+    },
+    {
+      "source_index": 6263,
+      "id": "1630540",
+      "term": "経済封鎖",
+      "reading": "けいざいふうさ",
+      "meaning": "economic blockade / embargo"
+    },
+    {
+      "source_index": 6264,
+      "id": "2851538",
+      "term": "経済不況",
+      "reading": "けいざいふきょう",
+      "meaning": "economic recession"
+    },
+    {
+      "source_index": 6265,
+      "id": "1251550",
+      "term": "経済復興",
+      "reading": "けいざいふっこう",
+      "meaning": "economic revitalization / economic revitalisation / rebuilding of an economy"
+    },
+    {
+      "source_index": 6266,
+      "id": "1991750",
+      "term": "経済分析",
+      "reading": "けいざいぶんせき",
+      "meaning": "economic assessment"
+    },
+    {
+      "source_index": 6267,
+      "id": "1991760",
+      "term": "経済崩壊",
+      "reading": "けいざいほうかい",
+      "meaning": "economic collapse / economic meltdown"
+    },
+    {
+      "source_index": 6268,
+      "id": "1933920",
+      "term": "経済問題",
+      "reading": "けいざいもんだい",
+      "meaning": "economic problem"
+    },
+    {
+      "source_index": 6269,
+      "id": "1991770",
+      "term": "経済予測",
+      "reading": "けいざいよそく",
+      "meaning": "economic forecast"
+    },
+    {
+      "source_index": 6270,
+      "id": "2868095",
+      "term": "形式科学",
+      "reading": "けいしきかがく",
+      "meaning": "formal science"
+    },
+    {
+      "source_index": 6271,
+      "id": "2352150",
+      "term": "形式関係",
+      "reading": "けいしきかんけい",
+      "meaning": "formal relation"
+    },
+    {
+      "source_index": 6272,
+      "id": "2445610",
+      "term": "形式言語",
+      "reading": "けいしきげんご",
+      "meaning": "formal language"
+    },
+    {
+      "source_index": 6273,
+      "id": "1820850",
+      "term": "形式主義",
+      "reading": "けいしきしゅぎ",
+      "meaning": "formalism"
+    },
+    {
+      "source_index": 6274,
+      "id": "2246470",
+      "term": "形式主語",
+      "reading": "けいしきしゅご",
+      "meaning": "formal subject"
+    },
+    {
+      "source_index": 6275,
+      "id": "2399630",
+      "term": "形式段落",
+      "reading": "けいしきだんらく",
+      "meaning": "formal paragraph (in opposition to a logical paragraph) / paragraph as defined by its formal elements (e.g. line break and initial indentation)"
+    },
+    {
+      "source_index": 6276,
+      "id": "2844161",
+      "term": "形式文法",
+      "reading": "けいしきぶんぽう",
+      "meaning": "formal grammar"
+    },
+    {
+      "source_index": 6277,
+      "id": "2352170",
+      "term": "形式変換",
+      "reading": "けいしきへんかん",
+      "meaning": "format conversion"
+    },
+    {
+      "source_index": 6278,
+      "id": "2151000",
+      "term": "形式名詞",
+      "reading": "けいしきめいし",
+      "meaning": "formal noun / dummy noun / expletive noun"
+    },
+    {
+      "source_index": 6279,
+      "id": "1933840",
+      "term": "形式論理",
+      "reading": "けいしきろんり",
+      "meaning": "formal logic"
+    },
+    {
+      "source_index": 6280,
+      "id": "2865807",
+      "term": "形式聴牌",
+      "reading": "けいしきテンパイ",
+      "meaning": "yaku-less tenpai / hand that is one tile from completion but cannot satisfy a standard win condition"
+    },
+    {
+      "source_index": 6281,
+      "id": "1830970",
+      "term": "警視総監",
+      "reading": "けいしそうかん",
+      "meaning": "Superintendent General of the Metropolitan Police"
+    },
+    {
+      "source_index": 6282,
+      "id": "2207680",
+      "term": "珪質海綿",
+      "reading": "けいしつかいめん",
+      "meaning": "siliceous sponge (any sponge other than those of class Calcarea)"
+    },
+    {
+      "source_index": 6283,
+      "id": "2212520",
+      "term": "形質細胞",
+      "reading": "けいしつさいぼう",
+      "meaning": "plasma cell"
+    },
+    {
+      "source_index": 6284,
+      "id": "2697800",
+      "term": "珪質砂岩",
+      "reading": "けいしつさがん",
+      "meaning": "siliceous sandstone"
+    },
+    {
+      "source_index": 6285,
+      "id": "1820990",
+      "term": "形質転換",
+      "reading": "けいしつてんかん",
+      "meaning": "transformation"
+    },
+    {
+      "source_index": 6286,
+      "id": "1821000",
+      "term": "形質導入",
+      "reading": "けいしつどうにゅう",
+      "meaning": "transduction"
+    },
+    {
+      "source_index": 6287,
+      "id": "2864258",
+      "term": "形質発現",
+      "reading": "けいしつはつげん",
+      "meaning": "phenotypic expression"
+    },
+    {
+      "source_index": 6288,
+      "id": "1821470",
+      "term": "傾斜生産",
+      "reading": "けいしゃせいさん",
+      "meaning": "priority production"
+    },
+    {
+      "source_index": 6289,
+      "id": "2862083",
+      "term": "傾斜配分",
+      "reading": "けいしゃはいぶん",
+      "meaning": "weighted allocation (budget, dividends, etc.)"
+    },
+    {
+      "source_index": 6290,
+      "id": "1821490",
+      "term": "傾斜家賃",
+      "reading": "けいしゃやちん",
+      "meaning": "progressive increase in rent"
+    },
+    {
+      "source_index": 6291,
+      "id": "1657170",
+      "term": "閨秀画家",
+      "reading": "けいしゅうがか",
+      "meaning": "talented woman painter / accomplished woman painter"
+    },
+    {
+      "source_index": 6292,
+      "id": "1821390",
+      "term": "閨秀作家",
+      "reading": "けいしゅうさっか",
+      "meaning": "woman writer"
+    },
+    {
+      "source_index": 6293,
+      "id": "2853045",
+      "term": "継承戦争",
+      "reading": "けいしょうせんそう",
+      "meaning": "war of succession / succession war"
+    },
+    {
+      "source_index": 6294,
+      "id": "2714480",
+      "term": "形象文字",
+      "reading": "けいしょうもじ",
+      "meaning": "hieroglyph"
+    },
+    {
+      "source_index": 6295,
+      "id": "2836044",
+      "term": "警鐘を鳴らす",
+      "reading": "けいしょうをならす",
+      "meaning": "to ring an alarm bell"
+    },
+    {
+      "source_index": 6296,
+      "id": "2629830",
+      "term": "頚神経叢",
+      "reading": "けいしんけいそう",
+      "meaning": "cervical plexus"
+    },
+    {
+      "source_index": 6297,
+      "id": "1820820",
+      "term": "形而下学",
+      "reading": "けいじかがく",
+      "meaning": "physical sciences"
+    },
+    {
+      "source_index": 6298,
+      "id": "2352590",
+      "term": "計時機構",
+      "reading": "けいじきこう",
+      "meaning": "timer / clock register"
+    },
+    {
+      "source_index": 6299,
+      "id": "2871893",
+      "term": "刑事警察",
+      "reading": "けいじけいさつ",
+      "meaning": "criminal police / detective force"
+    },
+    {
+      "source_index": 6300,
+      "id": "2427280",
+      "term": "刑事告訴",
+      "reading": "けいじこくそ",
+      "meaning": "criminal complaint / lodging a criminal complaint (against someone)"
+    },
+    {
+      "source_index": 6301,
+      "id": "1249670",
+      "term": "刑事裁判",
+      "reading": "けいじさいばん",
+      "meaning": "criminal trial"
+    },
+    {
+      "source_index": 6302,
+      "id": "2852712",
+      "term": "刑事施設",
+      "reading": "けいじしせつ",
+      "meaning": "penal detention facility"
+    },
+    {
+      "source_index": 6303,
+      "id": "2665280",
+      "term": "刑事司法",
+      "reading": "けいじしほう",
+      "meaning": "criminal justice"
+    },
+    {
+      "source_index": 6304,
+      "id": "2510710",
+      "term": "啓示宗教",
+      "reading": "けいじしゅうきょう",
+      "meaning": "revealed religion"
+    },
+    {
+      "source_index": 6305,
+      "id": "1249690",
+      "term": "刑事処分",
+      "reading": "けいじしょぶん",
+      "meaning": "criminal punishment / criminal procedure"
+    },
+    {
+      "source_index": 6306,
+      "id": "1249680",
+      "term": "刑事事件",
+      "reading": "けいじじけん",
+      "meaning": "criminal case"
+    },
+    {
+      "source_index": 6307,
+      "id": "1250300",
+      "term": "形而上学",
+      "reading": "けいじじょうがく",
+      "meaning": "metaphysics"
+    },
+    {
+      "source_index": 6308,
+      "id": "1630490",
+      "term": "刑事責任",
+      "reading": "けいじせきにん",
+      "meaning": "criminal liability"
+    },
+    {
+      "source_index": 6309,
+      "id": "1991360",
+      "term": "刑事捜査",
+      "reading": "けいじそうさ",
+      "meaning": "criminal investigation"
+    },
+    {
+      "source_index": 6310,
+      "id": "1249710",
+      "term": "刑事訴訟",
+      "reading": "けいじそしょう",
+      "meaning": "criminal action"
+    },
+    {
+      "source_index": 6311,
+      "id": "2861645",
+      "term": "刑事訴追",
+      "reading": "けいじそつい",
+      "meaning": "criminal prosecution / criminal indictment"
+    },
+    {
+      "source_index": 6312,
+      "id": "1630580",
+      "term": "軽自動車",
+      "reading": "けいじどうしゃ",
+      "meaning": "light motor vehicle (up to 660cc and 64bhp) / k-car / kei car"
+    },
+    {
+      "source_index": 6313,
+      "id": "1249730",
+      "term": "刑事被告",
+      "reading": "けいじひこく",
+      "meaning": "the accused"
+    },
+    {
+      "source_index": 6314,
+      "id": "1981010",
+      "term": "刑事法院",
+      "reading": "けいじほういん",
+      "meaning": "criminal court / Crown Court (UK)"
+    },
+    {
+      "source_index": 6315,
+      "id": "1820750",
+      "term": "刑事補償",
+      "reading": "けいじほしょう",
+      "meaning": "criminal indemnity"
+    },
+    {
+      "source_index": 6316,
+      "id": "2803290",
+      "term": "軽巡洋艦",
+      "reading": "けいじゅんようかん",
+      "meaning": "light cruiser"
+    },
+    {
+      "source_index": 6317,
+      "id": "2352290",
+      "term": "経時優先",
+      "reading": "けいじゆうせん",
+      "meaning": "elapsed aging"
+    },
+    {
+      "source_index": 6318,
+      "id": "2770200",
+      "term": "経常勘定",
+      "reading": "けいじょうかんじょう",
+      "meaning": "current account"
+    },
+    {
+      "source_index": 6319,
+      "id": "2855233",
+      "term": "形状記憶",
+      "reading": "けいじょうきおく",
+      "meaning": "shape-memory (alloy, polymer, etc.)"
+    },
+    {
+      "source_index": 6320,
+      "id": "1991780",
+      "term": "経常黒字",
+      "reading": "けいじょうくろじ",
+      "meaning": "current account surplus"
+    },
+    {
+      "source_index": 6321,
+      "id": "2020630",
+      "term": "経常収益",
+      "reading": "けいじょうしゅうえき",
+      "meaning": "ordinary revenue / recurring income / income before tax"
+    },
+    {
+      "source_index": 6322,
+      "id": "1251570",
+      "term": "経常収支",
+      "reading": "けいじょうしゅうし",
+      "meaning": "current account balance"
+    },
+    {
+      "source_index": 6323,
+      "id": "2352200",
+      "term": "形状適合",
+      "reading": "けいじょうてきごう",
+      "meaning": "conformable"
+    },
+    {
+      "source_index": 6324,
+      "id": "2427060",
+      "term": "軽乗用車",
+      "reading": "けいじょうようしゃ",
+      "meaning": "light passenger car / minicar / subcompact"
+    },
+    {
+      "source_index": 6325,
+      "id": "1630560",
+      "term": "経常利益",
+      "reading": "けいじょうりえき",
+      "meaning": "current profits / ordinary profit / income before income taxes"
+    },
+    {
+      "source_index": 6326,
+      "id": "2656560",
+      "term": "計数回路",
+      "reading": "けいすうかいろ",
+      "meaning": "counting circuit / scaling circuit"
+    },
+    {
+      "source_index": 6327,
+      "id": "2352050",
+      "term": "係数行列",
+      "reading": "けいすうぎょうれつ",
+      "meaning": "coefficient matrix"
+    },
+    {
+      "source_index": 6328,
+      "id": "2830363",
+      "term": "形成過程",
+      "reading": "けいせいかてい",
+      "meaning": "formation process / morphosis"
+    },
+    {
+      "source_index": 6329,
+      "id": "2044450",
+      "term": "形勢逆転",
+      "reading": "けいせいぎゃくてん",
+      "meaning": "the situation reverses itself / the table is turned / the shoe is on the other foot"
+    },
+    {
+      "source_index": 6330,
+      "id": "2030680",
+      "term": "傾城傾国",
+      "reading": "けいせいけいこく",
+      "meaning": "woman so glamorous as to bring ruin to a country (castle) as its king (lord) is captivated by her beauty / femme fatale"
+    },
+    {
+      "source_index": 6331,
+      "id": "1820830",
+      "term": "形成外科",
+      "reading": "けいせいげか",
+      "meaning": "plastic surgery / reconstructive surgery / cosmetic surgery"
+    },
+    {
+      "source_index": 6332,
+      "id": "2030690",
+      "term": "経世済民",
+      "reading": "けいせいさいみん",
+      "meaning": "governing a nation and providing relief to people"
+    },
+    {
+      "source_index": 6333,
+      "id": "2866123",
+      "term": "痙性斜頸",
+      "reading": "けいせいしゃけい",
+      "meaning": "cervical dystonia / spasmodic torticollis"
+    },
+    {
+      "source_index": 6334,
+      "id": "2583910",
+      "term": "形成手術",
+      "reading": "けいせいしゅじゅつ",
+      "meaning": "plastic surgery / plastic operation"
+    },
+    {
+      "source_index": 6335,
+      "id": "5219946",
+      "term": "京成電鉄",
+      "reading": "けいせいでんてつ",
+      "meaning": "Keisei Electric Railway / K'SEI"
+    },
+    {
+      "source_index": 6336,
+      "id": "2044460",
+      "term": "形勢不利",
+      "reading": "けいせいふり",
+      "meaning": "situation (turn of events) being unfavorable (disadvantageous)"
+    },
+    {
+      "source_index": 6337,
+      "id": "2663300",
+      "term": "痙性麻痺",
+      "reading": "けいせいまひ",
+      "meaning": "spastic paralysis"
+    },
+    {
+      "source_index": 6338,
+      "id": "1980810",
+      "term": "形声文字",
+      "reading": "けいせいもじ",
+      "meaning": "semasio-phonetic character (combining semantic and phonetic components)"
+    },
+    {
+      "source_index": 6339,
+      "id": "2044470",
+      "term": "形勢有利",
+      "reading": "けいせいゆうり",
+      "meaning": "situation (turn of events) being favorable (advantageous)"
+    },
+    {
+      "source_index": 6340,
+      "id": "2650340",
+      "term": "継続協議",
+      "reading": "けいぞくきょうぎ",
+      "meaning": "continued consultation / continuous conference"
+    },
+    {
+      "source_index": 6341,
+      "id": "2133630",
+      "term": "継続審査",
+      "reading": "けいぞくしんさ",
+      "meaning": "carrying over a bill from one Diet session to the next, being deliberated by a committee in the interim"
+    },
+    {
+      "source_index": 6342,
+      "id": "2849157",
+      "term": "継続時間",
+      "reading": "けいぞくじかん",
+      "meaning": "duration"
+    },
+    {
+      "source_index": 6343,
+      "id": "2827936",
+      "term": "継続戦争",
+      "reading": "けいぞくせんそう",
+      "meaning": "Continuation War (between Finland and the Soviet Union; 1941-1944)"
+    },
+    {
+      "source_index": 6344,
+      "id": "2352350",
+      "term": "継続発注",
+      "reading": "けいぞくはっちゅう",
+      "meaning": "standing order"
+    },
+    {
+      "source_index": 6345,
+      "id": "2865932",
+      "term": "継続飛行",
+      "reading": "けいぞくひこう",
+      "meaning": "endurance flight / nonstop flight"
+    },
+    {
+      "source_index": 6346,
+      "id": "2825991",
+      "term": "形態安定",
+      "reading": "けいたいあんてい",
+      "meaning": "crease resistance / wrinkle resistance / shape retention"
+    },
+    {
+      "source_index": 6347,
+      "id": "2848352",
+      "term": "形態音素",
+      "reading": "けいたいおんそ",
+      "meaning": "morphophoneme"
+    },
+    {
+      "source_index": 6348,
+      "id": "2352230",
+      "term": "携帯可能",
+      "reading": "けいたいかのう",
+      "meaning": "portable"
+    },
+    {
+      "source_index": 6349,
+      "id": "2690060",
+      "term": "形態形成",
+      "reading": "けいたいけいせい",
+      "meaning": "morphogenesis"
+    }
+  ]
+}

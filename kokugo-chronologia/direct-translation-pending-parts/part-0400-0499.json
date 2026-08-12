@@ -1,0 +1,717 @@
+{
+  "mode": "assistant_direct_only",
+  "total_rows": 15000,
+  "already_direct_japanese": 5350,
+  "english_only_remaining": 9650,
+  "english_only_rank_counts": {
+    "(blank)": 9650
+  },
+  "a_rank_total": 0,
+  "selection": "first-visible-order (source rank is blank)",
+  "max_batch_size": 1000,
+  "batch_size": 1000,
+  "part_start": 400,
+  "part_end": 499,
+  "targets": [
+    {
+      "source_index": 5750,
+      "id": "2703930",
+      "term": "空間認識",
+      "reading": "くうかんにんしき",
+      "meaning": "space perception / spatial perception / spatial awareness"
+    },
+    {
+      "source_index": 5751,
+      "id": "1245470",
+      "term": "空気",
+      "reading": "くうき",
+      "meaning": "air / atmosphere"
+    },
+    {
+      "source_index": 5752,
+      "id": "2849057",
+      "term": "空気椅子",
+      "reading": "くうきいす",
+      "meaning": "mimicking sitting in a chair / air chair / wall sit"
+    },
+    {
+      "source_index": 5753,
+      "id": "1675540",
+      "term": "空気汚染",
+      "reading": "くうきおせん",
+      "meaning": "air pollution"
+    },
+    {
+      "source_index": 5754,
+      "id": "1675610",
+      "term": "空気感染",
+      "reading": "くうきかんせん",
+      "meaning": "airborne infection"
+    },
+    {
+      "source_index": 5755,
+      "id": "1675630",
+      "term": "空気機械",
+      "reading": "くうききかい",
+      "meaning": "pneumatic machinery"
+    },
+    {
+      "source_index": 5756,
+      "id": "2563940",
+      "term": "空気酸化",
+      "reading": "くうきさんか",
+      "meaning": "atmospheric oxidation / oxidation upon exposure to the air / air oxidation"
+    },
+    {
+      "source_index": 5757,
+      "id": "1245490",
+      "term": "空気調整",
+      "reading": "くうきちょうせい",
+      "meaning": "air conditioning"
+    },
+    {
+      "source_index": 5758,
+      "id": "2809680",
+      "term": "空気調節",
+      "reading": "くうきちょうせつ",
+      "meaning": "air conditioning"
+    },
+    {
+      "source_index": 5759,
+      "id": "2655470",
+      "term": "空気調和",
+      "reading": "くうきちょうわ",
+      "meaning": "air conditioning"
+    },
+    {
+      "source_index": 5760,
+      "id": "1675570",
+      "term": "空気抵抗",
+      "reading": "くうきていこう",
+      "meaning": "air resistance"
+    },
+    {
+      "source_index": 5761,
+      "id": "1675530",
+      "term": "空気伝染",
+      "reading": "くうきでんせん",
+      "meaning": "air-borne infection"
+    },
+    {
+      "source_index": 5762,
+      "id": "2850072",
+      "term": "空気電池",
+      "reading": "くうきでんち",
+      "meaning": "air cell / air battery"
+    },
+    {
+      "source_index": 5763,
+      "id": "1675500",
+      "term": "空気力学",
+      "reading": "くうきりきがく",
+      "meaning": "aerodynamics"
+    },
+    {
+      "source_index": 5764,
+      "id": "2571870",
+      "term": "空気冷却",
+      "reading": "くうきれいきゃく",
+      "meaning": "air cooling"
+    },
+    {
+      "source_index": 5765,
+      "id": "2040350",
+      "term": "空々寂々",
+      "reading": "くうくうじゃくじゃく",
+      "meaning": "deserted and lonesome / quiet and alone / innocent and nonattached"
+    },
+    {
+      "source_index": 5766,
+      "id": "1675770",
+      "term": "空々漠々",
+      "reading": "くうくうばくばく",
+      "meaning": "vast / boundless / wide and empty"
+    },
+    {
+      "source_index": 5767,
+      "id": "1245530",
+      "term": "空軍基地",
+      "reading": "くうぐんきち",
+      "meaning": "air (force) base"
+    },
+    {
+      "source_index": 5768,
+      "id": "5233859",
+      "term": "空軍協会",
+      "reading": "くうぐんきょうかい",
+      "meaning": "Air Force Association / AFA"
+    },
+    {
+      "source_index": 5769,
+      "id": "1871750",
+      "term": "空軍大尉",
+      "reading": "くうぐんたいい",
+      "meaning": "air force captain"
+    },
+    {
+      "source_index": 5770,
+      "id": "2859841",
+      "term": "空格子点",
+      "reading": "くうこうしてん",
+      "meaning": "lattice vacancy"
+    },
+    {
+      "source_index": 5771,
+      "id": "1676290",
+      "term": "空襲警報",
+      "reading": "くうしゅうけいほう",
+      "meaning": "air-raid alarm"
+    },
+    {
+      "source_index": 5772,
+      "id": "1245710",
+      "term": "空前絶後",
+      "reading": "くうぜんぜつご",
+      "meaning": "(so marvelous or horrible that it may be) the first and probably the last"
+    },
+    {
+      "source_index": 5773,
+      "id": "2854710",
+      "term": "空走距離",
+      "reading": "くうそうきょり",
+      "meaning": "brake reaction distance / brake lag distance"
+    },
+    {
+      "source_index": 5774,
+      "id": "2854720",
+      "term": "空走時間",
+      "reading": "くうそうじかん",
+      "meaning": "brake lag"
+    },
+    {
+      "source_index": 5775,
+      "id": "1675710",
+      "term": "空即是色",
+      "reading": "くうそくぜしき",
+      "meaning": "emptiness is form / illusion of the reality of matter"
+    },
+    {
+      "source_index": 5776,
+      "id": "2351890",
+      "term": "空対応表",
+      "reading": "くうたいおうひょう",
+      "meaning": "empty map"
+    },
+    {
+      "source_index": 5777,
+      "id": "1675390",
+      "term": "空中滑走",
+      "reading": "くうちゅうかっそう",
+      "meaning": "gliding"
+    },
+    {
+      "source_index": 5778,
+      "id": "1245800",
+      "term": "空中機動",
+      "reading": "くうちゅうきどう",
+      "meaning": "air mobile"
+    },
+    {
+      "source_index": 5779,
+      "id": "1675380",
+      "term": "空中給油",
+      "reading": "くうちゅうきゅうゆ",
+      "meaning": "aerial refueling / in-flight refueling"
+    },
+    {
+      "source_index": 5780,
+      "id": "2809970",
+      "term": "空中魚雷",
+      "reading": "くうちゅうぎょらい",
+      "meaning": "aerial torpedo"
+    },
+    {
+      "source_index": 5781,
+      "id": "1675370",
+      "term": "空中細菌",
+      "reading": "くうちゅうさいきん",
+      "meaning": "air-borne bacteria"
+    },
+    {
+      "source_index": 5782,
+      "id": "1675360",
+      "term": "空中査察",
+      "reading": "くうちゅうささつ",
+      "meaning": "aerial inspection"
+    },
+    {
+      "source_index": 5783,
+      "id": "2845424",
+      "term": "空中散歩",
+      "reading": "くうちゅうさんぽ",
+      "meaning": "stroll in the air (e.g. leisurely helicopter, airplane ride)"
+    },
+    {
+      "source_index": 5784,
+      "id": "1675350",
+      "term": "空中写真",
+      "reading": "くうちゅうしゃしん",
+      "meaning": "aerial photograph"
+    },
+    {
+      "source_index": 5785,
+      "id": "1675400",
+      "term": "空中衝突",
+      "reading": "くうちゅうしょうとつ",
+      "meaning": "midair collision"
+    },
+    {
+      "source_index": 5786,
+      "id": "2749420",
+      "term": "空中庭園",
+      "reading": "くうちゅうていえん",
+      "meaning": "hanging garden / hanging gardens"
+    },
+    {
+      "source_index": 5787,
+      "id": "2855826",
+      "term": "空中店舗",
+      "reading": "くうちゅうてんぽ",
+      "meaning": "shop on the second floor or higher / non-ground-floor shop"
+    },
+    {
+      "source_index": 5788,
+      "id": "2809980",
+      "term": "空中電気",
+      "reading": "くうちゅうでんき",
+      "meaning": "atmospheric electricity"
+    },
+    {
+      "source_index": 5789,
+      "id": "1245820",
+      "term": "空中投下",
+      "reading": "くうちゅうとうか",
+      "meaning": "airdrop / air drop"
+    },
+    {
+      "source_index": 5790,
+      "id": "1675430",
+      "term": "空中爆撃",
+      "reading": "くうちゅうばくげき",
+      "meaning": "air-raid"
+    },
+    {
+      "source_index": 5791,
+      "id": "1245830",
+      "term": "空中浮遊",
+      "reading": "くうちゅうふゆう",
+      "meaning": "levitation / floating on air"
+    },
+    {
+      "source_index": 5792,
+      "id": "1245840",
+      "term": "空中浮揚",
+      "reading": "くうちゅうふよう",
+      "meaning": "levitation"
+    },
+    {
+      "source_index": 5793,
+      "id": "1675340",
+      "term": "空中分解",
+      "reading": "くうちゅうぶんかい",
+      "meaning": "mid-air breakage / mid-air disintegration"
+    },
+    {
+      "source_index": 5794,
+      "id": "2809990",
+      "term": "空中輸送",
+      "reading": "くうちゅうゆそう",
+      "meaning": "air transportation / air transport / transport by air"
+    },
+    {
+      "source_index": 5795,
+      "id": "1918350",
+      "term": "空中落下",
+      "reading": "くうちゅうらっか",
+      "meaning": "air pluviation / pluviate"
+    },
+    {
+      "source_index": 5796,
+      "id": "1245850",
+      "term": "空中楼閣",
+      "reading": "くうちゅうろうかく",
+      "meaning": "castle in the air"
+    },
+    {
+      "source_index": 5797,
+      "id": "1933720",
+      "term": "空調設備",
+      "reading": "くうちょうせつび",
+      "meaning": "air conditioner"
+    },
+    {
+      "source_index": 5798,
+      "id": "1675820",
+      "term": "空挺作戦",
+      "reading": "くうていさくせん",
+      "meaning": "airborne operation"
+    },
+    {
+      "source_index": 5799,
+      "id": "1991090",
+      "term": "空挺師団",
+      "reading": "くうていしだん",
+      "meaning": "airborne division"
+    },
+    {
+      "source_index": 5800,
+      "id": "1245900",
+      "term": "空挺隊員",
+      "reading": "くうていたいいん",
+      "meaning": "paratroopers"
+    },
+    {
+      "source_index": 5801,
+      "id": "1245910",
+      "term": "空挺部隊",
+      "reading": "くうていぶたい",
+      "meaning": "airborne troops / paratroops"
+    },
+    {
+      "source_index": 5802,
+      "id": "1991100",
+      "term": "空挺旅団",
+      "reading": "くうていりょだん",
+      "meaning": "airborne brigade / parachute brigate"
+    },
+    {
+      "source_index": 5803,
+      "id": "2044300",
+      "term": "空転国会",
+      "reading": "くうてんこっかい",
+      "meaning": "stalled session of the Diet (Japanese Parliament)"
+    },
+    {
+      "source_index": 5804,
+      "id": "2828775",
+      "term": "空塔速度",
+      "reading": "くうとうそくど",
+      "meaning": "superficial velocity / superficial flow velocity"
+    },
+    {
+      "source_index": 5805,
+      "id": "2640610",
+      "term": "空白期間",
+      "reading": "くうはくきかん",
+      "meaning": "blank period / window period / interregnum"
+    },
+    {
+      "source_index": 5806,
+      "id": "2640640",
+      "term": "空白時間",
+      "reading": "くうはくじかん",
+      "meaning": "idle time / down time / window period"
+    },
+    {
+      "source_index": 5807,
+      "id": "2020460",
+      "term": "空白文字",
+      "reading": "くうはくもじ",
+      "meaning": "space character / whitespace character / blank character"
+    },
+    {
+      "source_index": 5808,
+      "id": "2841738",
+      "term": "空無辺処",
+      "reading": "くうむへんしょ",
+      "meaning": "Kumuhensho / lowest heaven of Mushikikai / realm of non-form"
+    },
+    {
+      "source_index": 5809,
+      "id": "2860838",
+      "term": "空文字列",
+      "reading": "くうもじれつ",
+      "meaning": "empty string / null string"
+    },
+    {
+      "source_index": 5810,
+      "id": "1676270",
+      "term": "空輸貨物",
+      "reading": "くうゆかもつ",
+      "meaning": "air freight / airborne cargo"
+    },
+    {
+      "source_index": 5811,
+      "id": "5234150",
+      "term": "空輸軍団",
+      "reading": "くうゆぐんだん",
+      "meaning": "Military Airlift Command"
+    },
+    {
+      "source_index": 5812,
+      "id": "2476620",
+      "term": "空力性能",
+      "reading": "くうりきせいのう",
+      "meaning": "aerodynamic performance"
+    },
+    {
+      "source_index": 5813,
+      "id": "1675980",
+      "term": "空理空論",
+      "reading": "くうりくうろん",
+      "meaning": "impractical theory / academic discussion / doctrinairism"
+    },
+    {
+      "source_index": 5814,
+      "id": "1244110",
+      "term": "区会議員",
+      "reading": "くかいぎいん",
+      "meaning": "ward assemblyman"
+    },
+    {
+      "source_index": 5815,
+      "id": "5741637",
+      "term": "苦海浄土",
+      "reading": "くかいじょうど",
+      "meaning": "Paradise in the Sea of Sorrow: Our Minamata Disease (1960 semi-fictional novel by Michiko Ishimure)"
+    },
+    {
+      "source_index": 5816,
+      "id": "2864481",
+      "term": "区画漁業",
+      "reading": "くかくぎょぎょう",
+      "meaning": "demarcated fishing / fishing in specifically sectioned areas of water"
+    },
+    {
+      "source_index": 5817,
+      "id": "1592120",
+      "term": "区画整理",
+      "reading": "くかくせいり",
+      "meaning": "land readjustment / town planning"
+    },
+    {
+      "source_index": 5818,
+      "id": "2734810",
+      "term": "区間快速",
+      "reading": "くかんかいそく",
+      "meaning": "Regional Rapid Service (JR West) / Section Rapid Service / train service which is local for one section and express for another"
+    },
+    {
+      "source_index": 5819,
+      "id": "2845495",
+      "term": "区間急行",
+      "reading": "くかんきゅうこう",
+      "meaning": "semi-express (train service) / express service for part of a route"
+    },
+    {
+      "source_index": 5820,
+      "id": "2845462",
+      "term": "区間特急",
+      "reading": "くかんとっきゅう",
+      "meaning": "regional express"
+    },
+    {
+      "source_index": 5821,
+      "id": "1244130",
+      "term": "区間列車",
+      "reading": "くかんれっしゃ",
+      "meaning": "local train"
+    },
+    {
+      "source_index": 5822,
+      "id": "2030650",
+      "term": "苦学力行",
+      "reading": "くがくりっこう",
+      "meaning": "strenuous pursuit of learning under difficulties"
+    },
+    {
+      "source_index": 5823,
+      "id": "2844131",
+      "term": "苦境に立つ",
+      "reading": "くきょうにたつ",
+      "meaning": "to be in difficulties / to be in trouble / to be in a difficult situation"
+    },
+    {
+      "source_index": 5824,
+      "id": "1776900",
+      "term": "釘付け",
+      "reading": "くぎづけ",
+      "meaning": "nailing on / nailing down / nailing shut"
+    },
+    {
+      "source_index": 5825,
+      "id": "1871830",
+      "term": "釘を刺す",
+      "reading": "くぎをさす",
+      "meaning": "to give a warning / to remind (a person) of / to drive in a nail"
+    },
+    {
+      "source_index": 5826,
+      "id": "1712350",
+      "term": "区検察庁",
+      "reading": "くけんさつちょう",
+      "meaning": "local public prosecutor's office / subdistrict public prosecutor's office"
+    },
+    {
+      "source_index": 5827,
+      "id": "1244160",
+      "term": "区裁判所",
+      "reading": "くさいばんしょ",
+      "meaning": "local court"
+    },
+    {
+      "source_index": 5828,
+      "id": "2720040",
+      "term": "臭い飯を食う",
+      "reading": "くさいめしをくう",
+      "meaning": "to go to prison / to serve a prison term / to eat foul-smelling food"
+    },
+    {
+      "source_index": 5829,
+      "id": "1333160",
+      "term": "臭いものに蓋",
+      "reading": "くさいものにふた",
+      "meaning": "looking the other way / hushing up a problem"
+    },
+    {
+      "source_index": 5830,
+      "id": "2833934",
+      "term": "臭い物に蓋をする",
+      "reading": "くさいものにふたをする",
+      "meaning": "to look the other way / to hush up a problem"
+    },
+    {
+      "source_index": 5831,
+      "id": "2833104",
+      "term": "草木もなびく",
+      "reading": "くさきもなびく",
+      "meaning": "to bow (in great numbers) to a greater authority / to be drawn (en masse) to something attractive / even the plants yield"
+    },
+    {
+      "source_index": 5832,
+      "id": "2077280",
+      "term": "草木も眠る丑三つ時",
+      "reading": "くさきもねむるうしみつどき",
+      "meaning": "dead of night (when even the trees and plants sleep)"
+    },
+    {
+      "source_index": 5833,
+      "id": "1401920",
+      "term": "草の根",
+      "reading": "くさのね",
+      "meaning": "roots of grass"
+    },
+    {
+      "source_index": 5834,
+      "id": "2841226",
+      "term": "草の根を分けて探す",
+      "reading": "くさのねをわけてさがす",
+      "meaning": "to search every square inch / to search high and low"
+    },
+    {
+      "source_index": 5835,
+      "id": "1568310",
+      "term": "楔形文字",
+      "reading": "くさびがたもじ",
+      "meaning": "cuneiform (writing)"
+    },
+    {
+      "source_index": 5836,
+      "id": "2834065",
+      "term": "楔を刺す",
+      "reading": "くさびをさす",
+      "meaning": "to make sure (of) / to drive in a wedge"
+    },
+    {
+      "source_index": 5837,
+      "id": "2835608",
+      "term": "草不可避",
+      "reading": "くさふかひ",
+      "meaning": "I can't help but laugh / I have to laugh at this"
+    },
+    {
+      "source_index": 5838,
+      "id": "2831772",
+      "term": "鎖付図書",
+      "reading": "くさりつきとしょ",
+      "meaning": "chained library / library where the books are attached to their bookcase with a chain"
+    },
+    {
+      "source_index": 5839,
+      "id": "2839817",
+      "term": "区市町村",
+      "reading": "くしちょうそん",
+      "meaning": "local governments / wards, cities, towns and villages / municipalities"
+    },
+    {
+      "source_index": 5840,
+      "id": "2212170",
+      "term": "狗子仏性",
+      "reading": "くしぶっしょう",
+      "meaning": "the Mu koan (\"does a dog have Buddha nature?\")"
+    },
+    {
+      "source_index": 5841,
+      "id": "2044330",
+      "term": "九尺二間",
+      "reading": "くしゃくにけん",
+      "meaning": "(tiny) house about nine feet wide and 12 feet deep"
+    },
+    {
+      "source_index": 5842,
+      "id": "1003710",
+      "term": "嚏",
+      "reading": "くしゃみ",
+      "meaning": "sneeze / sneezing"
+    },
+    {
+      "source_index": 5843,
+      "id": "2647980",
+      "term": "口称念仏",
+      "reading": "くしょうねんぶつ",
+      "meaning": "chanting an invocation (to Amida Buddha) / reciting a prayer"
+    },
+    {
+      "source_index": 5844,
+      "id": "1684970",
+      "term": "苦心惨憺",
+      "reading": "くしんさんたん",
+      "meaning": "taking great pains"
+    },
+    {
+      "source_index": 5845,
+      "id": "2845347",
+      "term": "九時五時",
+      "reading": "くじごじ",
+      "meaning": "nine-to-five (working hours) / nine to five"
+    },
+    {
+      "source_index": 5846,
+      "id": "2460630",
+      "term": "孔雀羊歯",
+      "reading": "くじゃくしだ",
+      "meaning": "northern maidenhair (Adiantum pedatum)"
+    },
+    {
+      "source_index": 5847,
+      "id": "2266000",
+      "term": "孔雀明王",
+      "reading": "くじゃくみょうおう",
+      "meaning": "Mahamayuri (deity usu. depicted riding a peacock)"
+    },
+    {
+      "source_index": 5848,
+      "id": "2135830",
+      "term": "苦集滅道",
+      "reading": "くじゅうめつどう",
+      "meaning": "Suffering, Source of Suffering Desire, The Cessation of Suffering, The Way Leading to the Cessation of Suffering (The Four Noble Truths of Buddhism)"
+    },
+    {
+      "source_index": 5849,
+      "id": "2578560",
+      "term": "苦汁をなめる",
+      "reading": "くじゅうをなめる",
+      "meaning": "to have a bitter experience"
+    }
+  ]
+}

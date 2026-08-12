@@ -1,0 +1,717 @@
+{
+  "mode": "assistant_direct_only",
+  "total_rows": 15000,
+  "already_direct_japanese": 5350,
+  "english_only_remaining": 9650,
+  "english_only_rank_counts": {
+    "(blank)": 9650
+  },
+  "a_rank_total": 0,
+  "selection": "first-visible-order (source rank is blank)",
+  "max_batch_size": 1000,
+  "batch_size": 1000,
+  "part_start": 800,
+  "part_end": 899,
+  "targets": [
+    {
+      "source_index": 6150,
+      "id": "1991430",
+      "term": "景気回復",
+      "reading": "けいきかいふく",
+      "meaning": "economic comeback (rebound, recovery, turnaround)"
+    },
+    {
+      "source_index": 6151,
+      "id": "1991450",
+      "term": "景気拡大",
+      "reading": "けいきかくだい",
+      "meaning": "economic expansion / boom"
+    },
+    {
+      "source_index": 6152,
+      "id": "1252620",
+      "term": "軽機関銃",
+      "reading": "けいきかんじゅう",
+      "meaning": "light machine gun"
+    },
+    {
+      "source_index": 6153,
+      "id": "1991470",
+      "term": "景気減速",
+      "reading": "けいきげんそく",
+      "meaning": "economic slowdown"
+    },
+    {
+      "source_index": 6154,
+      "id": "1991480",
+      "term": "景気後退",
+      "reading": "けいきこうたい",
+      "meaning": "recession"
+    },
+    {
+      "source_index": 6155,
+      "id": "2632100",
+      "term": "景気指数",
+      "reading": "けいきしすう",
+      "meaning": "business index / business barometer"
+    },
+    {
+      "source_index": 6156,
+      "id": "1991490",
+      "term": "景気縮小",
+      "reading": "けいきしゅくしょう",
+      "meaning": "economic contraction"
+    },
+    {
+      "source_index": 6157,
+      "id": "1799530",
+      "term": "景気循環",
+      "reading": "けいきじゅんかん",
+      "meaning": "business cycle"
+    },
+    {
+      "source_index": 6158,
+      "id": "1991500",
+      "term": "景気対策",
+      "reading": "けいきたいさく",
+      "meaning": "economic measure"
+    },
+    {
+      "source_index": 6159,
+      "id": "1991510",
+      "term": "景気停滞",
+      "reading": "けいきていたい",
+      "meaning": "economic slump"
+    },
+    {
+      "source_index": 6160,
+      "id": "2667990",
+      "term": "景気低迷",
+      "reading": "けいきていめい",
+      "meaning": "economic slump / economic stagnation / lackluster economy"
+    },
+    {
+      "source_index": 6161,
+      "id": "1991530",
+      "term": "景気判断",
+      "reading": "けいきはんだん",
+      "meaning": "economic assessment"
+    },
+    {
+      "source_index": 6162,
+      "id": "1769620",
+      "term": "計器飛行",
+      "reading": "けいきひこう",
+      "meaning": "instrument flying / IFR flight"
+    },
+    {
+      "source_index": 6163,
+      "id": "1991540",
+      "term": "景気不安",
+      "reading": "けいきふあん",
+      "meaning": "economic malaise"
+    },
+    {
+      "source_index": 6164,
+      "id": "2786220",
+      "term": "景気浮揚",
+      "reading": "けいきふよう",
+      "meaning": "reflation / stimulating the economy by increasing the money supply or by reducing taxes"
+    },
+    {
+      "source_index": 6165,
+      "id": "1799520",
+      "term": "景気変動",
+      "reading": "けいきへんどう",
+      "meaning": "business fluctuations"
+    },
+    {
+      "source_index": 6166,
+      "id": "5743065",
+      "term": "京急本線",
+      "reading": "けいきゅうほんせん",
+      "meaning": "Keikyū Main Line"
+    },
+    {
+      "source_index": 6167,
+      "id": "1578250",
+      "term": "荊棘",
+      "reading": "けいきょく",
+      "meaning": "wild rose / bramble"
+    },
+    {
+      "source_index": 6168,
+      "id": "1252650",
+      "term": "軽挙妄動",
+      "reading": "けいきょもうどう",
+      "meaning": "rash and blind act"
+    },
+    {
+      "source_index": 6169,
+      "id": "2661180",
+      "term": "景気予測",
+      "reading": "けいきよそく",
+      "meaning": "business forecast / business forecasting / business prediction"
+    },
+    {
+      "source_index": 6170,
+      "id": "2781980",
+      "term": "珪孔雀石",
+      "reading": "けいくじゃくせき",
+      "meaning": "chrysocolla"
+    },
+    {
+      "source_index": 6171,
+      "id": "2832666",
+      "term": "鶏群の一鶴",
+      "reading": "けいぐんのいっかく",
+      "meaning": "a swan among ducklings / a diamond among stones / a great figure among the common run of men"
+    },
+    {
+      "source_index": 6172,
+      "id": "1831600",
+      "term": "経験科学",
+      "reading": "けいけんかがく",
+      "meaning": "empirical science"
+    },
+    {
+      "source_index": 6173,
+      "id": "2142320",
+      "term": "経験価値",
+      "reading": "けいけんかち",
+      "meaning": "experience value (of a product, etc.)"
+    },
+    {
+      "source_index": 6174,
+      "id": "2199970",
+      "term": "敬虔主義",
+      "reading": "けいけんしゅぎ",
+      "meaning": "Pietism"
+    },
+    {
+      "source_index": 6175,
+      "id": "1831580",
+      "term": "経験主義",
+      "reading": "けいけんしゅぎ",
+      "meaning": "empiricism"
+    },
+    {
+      "source_index": 6176,
+      "id": "2827208",
+      "term": "経験不足",
+      "reading": "けいけんぶそく",
+      "meaning": "lack of experience"
+    },
+    {
+      "source_index": 6177,
+      "id": "2133500",
+      "term": "経験豊富",
+      "reading": "けいけんほうふ",
+      "meaning": "experienced / well-versed"
+    },
+    {
+      "source_index": 6178,
+      "id": "2824460",
+      "term": "軽減税率",
+      "reading": "けいげんぜいりつ",
+      "meaning": "reduced tax rate"
+    },
+    {
+      "source_index": 6179,
+      "id": "2631440",
+      "term": "軽減措置",
+      "reading": "けいげんそち",
+      "meaning": "relief measure / mitigation measure"
+    },
+    {
+      "source_index": 6180,
+      "id": "2124230",
+      "term": "経口感染",
+      "reading": "けいこうかんせん",
+      "meaning": "oral infection / orally transmitted infection"
+    },
+    {
+      "source_index": 6181,
+      "id": "2030700",
+      "term": "鶏口牛後",
+      "reading": "けいこうぎゅうご",
+      "meaning": "better to be the beak of a rooster than the rump of a bull / better to be the leader of a small group than a subordinate in a large organization / better to be a big fish in a little pond than a little fish in a big pond"
+    },
+    {
+      "source_index": 6182,
+      "id": "2674160",
+      "term": "蛍光色素",
+      "reading": "けいこうしきそ",
+      "meaning": "fluorescent dye / fluorescent pigment / fluorochrome"
+    },
+    {
+      "source_index": 6183,
+      "id": "2674170",
+      "term": "蛍光染料",
+      "reading": "けいこうせんりょう",
+      "meaning": "fluorescent dye"
+    },
+    {
+      "source_index": 6184,
+      "id": "1933890",
+      "term": "経口投与",
+      "reading": "けいこうとうよ",
+      "meaning": "oral administration (of medicine)"
+    },
+    {
+      "source_index": 6185,
+      "id": "1252010",
+      "term": "蛍光塗料",
+      "reading": "けいこうとりょう",
+      "meaning": "fluorescent paint"
+    },
+    {
+      "source_index": 6186,
+      "id": "1252020",
+      "term": "蛍光物質",
+      "reading": "けいこうぶっしつ",
+      "meaning": "fluorescent substance / phosphor"
+    },
+    {
+      "source_index": 6187,
+      "id": "2834346",
+      "term": "傾向文学",
+      "reading": "けいこうぶんがく",
+      "meaning": "ideological literature (esp. left-wing)"
+    },
+    {
+      "source_index": 6188,
+      "id": "2212770",
+      "term": "経口免疫",
+      "reading": "けいこうめんえき",
+      "meaning": "oral immunization"
+    },
+    {
+      "source_index": 6189,
+      "id": "2030670",
+      "term": "傾国傾城",
+      "reading": "けいこくけいせい",
+      "meaning": "woman so glamorous as to bring ruin to a country (castle) as its king (lord) is captivated by her beauty / femme fatale"
+    },
+    {
+      "source_index": 6190,
+      "id": "2044420",
+      "term": "経国済民",
+      "reading": "けいこくさいみん",
+      "meaning": "governing a nation and providing relief to people"
+    },
+    {
+      "source_index": 6191,
+      "id": "1991810",
+      "term": "警告射撃",
+      "reading": "けいこくしゃげき",
+      "meaning": "warning shot"
+    },
+    {
+      "source_index": 6192,
+      "id": "2835475",
+      "term": "警告試合",
+      "reading": "けいこくじあい",
+      "meaning": "match where the umpire disqualifies the coach and one player after the player has done something dangerous (such as hit by pitch; to prevent retaliation by the opposing team)"
+    },
+    {
+      "source_index": 6193,
+      "id": "2867538",
+      "term": "脛骨動脈",
+      "reading": "けいこつどうみゃく",
+      "meaning": "tibial artery"
+    },
+    {
+      "source_index": 6194,
+      "id": "2867509",
+      "term": "頚鼓動脈",
+      "reading": "けいこどうみゃく",
+      "meaning": "caroticotympanic arteries"
+    },
+    {
+      "source_index": 6195,
+      "id": "1831010",
+      "term": "警察学校",
+      "reading": "けいさつがっこう",
+      "meaning": "police academy"
+    },
+    {
+      "source_index": 6196,
+      "id": "1831020",
+      "term": "警察国家",
+      "reading": "けいさつこっか",
+      "meaning": "police state"
+    },
+    {
+      "source_index": 6197,
+      "id": "2044430",
+      "term": "警察沙汰",
+      "reading": "けいさつざた",
+      "meaning": "matter for the police / brush with the law"
+    },
+    {
+      "source_index": 6198,
+      "id": "2855194",
+      "term": "警察小説",
+      "reading": "けいさつしょうせつ",
+      "meaning": "detective story / police novel"
+    },
+    {
+      "source_index": 6199,
+      "id": "2639430",
+      "term": "警察署長",
+      "reading": "けいさつしょちょう",
+      "meaning": "head of a police station / chief of a police station / superintendent"
+    },
+    {
+      "source_index": 6200,
+      "id": "1991820",
+      "term": "警察捜査",
+      "reading": "けいさつそうさ",
+      "meaning": "police investigation"
+    },
+    {
+      "source_index": 6201,
+      "id": "5244107",
+      "term": "警察大学",
+      "reading": "けいさつだいがく",
+      "meaning": "National Police Academy"
+    },
+    {
+      "source_index": 6202,
+      "id": "1830990",
+      "term": "警察手帳",
+      "reading": "けいさつてちょう",
+      "meaning": "police identification card"
+    },
+    {
+      "source_index": 6203,
+      "id": "1252430",
+      "term": "警察当局",
+      "reading": "けいさつとうきょく",
+      "meaning": "(the relevant) police authorities"
+    },
+    {
+      "source_index": 6204,
+      "id": "2837554",
+      "term": "警察無線",
+      "reading": "けいさつむせん",
+      "meaning": "police radio"
+    },
+    {
+      "source_index": 6205,
+      "id": "2214860",
+      "term": "警察吏員",
+      "reading": "けいさつりいん",
+      "meaning": "police officer"
+    },
+    {
+      "source_index": 6206,
+      "id": "1984460",
+      "term": "計算化学",
+      "reading": "けいさんかがく",
+      "meaning": "computational chemistry"
+    },
+    {
+      "source_index": 6207,
+      "id": "2868825",
+      "term": "計算科学",
+      "reading": "けいさんかがく",
+      "meaning": "computational science / scientific computing"
+    },
+    {
+      "source_index": 6208,
+      "id": "1252150",
+      "term": "計算機間",
+      "reading": "けいさんきま",
+      "meaning": "inside the computer"
+    },
+    {
+      "source_index": 6209,
+      "id": "2352560",
+      "term": "計算機名",
+      "reading": "けいさんきめい",
+      "meaning": "computer-name"
+    },
+    {
+      "source_index": 6210,
+      "id": "2352570",
+      "term": "計算構造",
+      "reading": "けいさんこうぞう",
+      "meaning": "computation structure"
+    },
+    {
+      "source_index": 6211,
+      "id": "2352580",
+      "term": "計算順序",
+      "reading": "けいさんじゅんじょ",
+      "meaning": "computation sequence"
+    },
+    {
+      "source_index": 6212,
+      "id": "2867104",
+      "term": "計算図表",
+      "reading": "けいさんずひょう",
+      "meaning": "nomogram / nomograph"
+    },
+    {
+      "source_index": 6213,
+      "id": "1933940",
+      "term": "計算問題",
+      "reading": "けいさんもんだい",
+      "meaning": "numerical calculation"
+    },
+    {
+      "source_index": 6214,
+      "id": "2837900",
+      "term": "計算用紙",
+      "reading": "けいさんようし",
+      "meaning": "calculation form / tally sheet"
+    },
+    {
+      "source_index": 6215,
+      "id": "1991620",
+      "term": "経済運営",
+      "reading": "けいざいうんえい",
+      "meaning": "economic management"
+    },
+    {
+      "source_index": 6216,
+      "id": "1251330",
+      "term": "経済援助",
+      "reading": "けいざいえんじょ",
+      "meaning": "economic assistance"
+    },
+    {
+      "source_index": 6217,
+      "id": "1251350",
+      "term": "経済改革",
+      "reading": "けいざいかいかく",
+      "meaning": "economic reform"
+    },
+    {
+      "source_index": 6218,
+      "id": "1251340",
+      "term": "経済回復",
+      "reading": "けいざいかいふく",
+      "meaning": "economic recovery"
+    },
+    {
+      "source_index": 6219,
+      "id": "1251370",
+      "term": "経済格差",
+      "reading": "けいざいかくさ",
+      "meaning": "economic disparity"
+    },
+    {
+      "source_index": 6220,
+      "id": "1251390",
+      "term": "経済活動",
+      "reading": "けいざいかつどう",
+      "meaning": "economic activity"
+    },
+    {
+      "source_index": 6221,
+      "id": "1991630",
+      "term": "経済環境",
+      "reading": "けいざいかんきょう",
+      "meaning": "economic environment"
+    },
+    {
+      "source_index": 6222,
+      "id": "1831420",
+      "term": "経済観念",
+      "reading": "けいざいかんねん",
+      "meaning": "sense of economy"
+    },
+    {
+      "source_index": 6223,
+      "id": "1831350",
+      "term": "経済外交",
+      "reading": "けいざいがいこう",
+      "meaning": "economic diplomacy"
+    },
+    {
+      "source_index": 6224,
+      "id": "2037850",
+      "term": "経済学者",
+      "reading": "けいざいがくしゃ",
+      "meaning": "economist"
+    },
+    {
+      "source_index": 6225,
+      "id": "2660090",
+      "term": "経済学部",
+      "reading": "けいざいがくぶ",
+      "meaning": "department of economics / faculty of economics"
+    },
+    {
+      "source_index": 6226,
+      "id": "1991640",
+      "term": "経済危機",
+      "reading": "けいざいきき",
+      "meaning": "economic crisis"
+    },
+    {
+      "source_index": 6227,
+      "id": "2850808",
+      "term": "経済恐慌",
+      "reading": "けいざいきょうこう",
+      "meaning": "financial panic / economic crisis / economic crash"
+    },
+    {
+      "source_index": 6228,
+      "id": "1251420",
+      "term": "経済協力",
+      "reading": "けいざいきょうりょく",
+      "meaning": "economic cooperation"
+    },
+    {
+      "source_index": 6229,
+      "id": "1933900",
+      "term": "経済原論",
+      "reading": "けいざいげんろん",
+      "meaning": "principles of economics"
+    },
+    {
+      "source_index": 6230,
+      "id": "2638540",
+      "term": "経済行為",
+      "reading": "けいざいこうい",
+      "meaning": "economic behavior / economic activities / economic act"
+    },
+    {
+      "source_index": 6231,
+      "id": "1251440",
+      "term": "経済効果",
+      "reading": "けいざいこうか",
+      "meaning": "(positive) economic effect"
+    },
+    {
+      "source_index": 6232,
+      "id": "2852037",
+      "term": "経済再生",
+      "reading": "けいざいさいせい",
+      "meaning": "economic recovery"
+    },
+    {
+      "source_index": 6233,
+      "id": "1991660",
+      "term": "経済指数",
+      "reading": "けいざいしすう",
+      "meaning": "economic index"
+    },
+    {
+      "source_index": 6234,
+      "id": "2720830",
+      "term": "経済思想",
+      "reading": "けいざいしそう",
+      "meaning": "economic ideology / (school of) economic thought"
+    },
+    {
+      "source_index": 6235,
+      "id": "1991670",
+      "term": "経済指標",
+      "reading": "けいざいしひょう",
+      "meaning": "economic indicator"
+    },
+    {
+      "source_index": 6236,
+      "id": "1251450",
+      "term": "経済社会",
+      "reading": "けいざいしゃかい",
+      "meaning": "economy and society / economic aspects of society"
+    },
+    {
+      "source_index": 6237,
+      "id": "2833263",
+      "term": "経済主体",
+      "reading": "けいざいしゅたい",
+      "meaning": "economic unit / economic agent / economic entity"
+    },
+    {
+      "source_index": 6238,
+      "id": "2842340",
+      "term": "経済進出",
+      "reading": "けいざいしんしゅつ",
+      "meaning": "economic invasion / economic operations (in another country)"
+    },
+    {
+      "source_index": 6239,
+      "id": "2790040",
+      "term": "経済事情",
+      "reading": "けいざいじじょう",
+      "meaning": "economic condition / economic circumstances / financial situation"
+    },
+    {
+      "source_index": 6240,
+      "id": "1251470",
+      "term": "経済状況",
+      "reading": "けいざいじょうきょう",
+      "meaning": "economic conditions"
+    },
+    {
+      "source_index": 6241,
+      "id": "1991680",
+      "term": "経済情勢",
+      "reading": "けいざいじょうせい",
+      "meaning": "economic climate"
+    },
+    {
+      "source_index": 6242,
+      "id": "1251480",
+      "term": "経済状態",
+      "reading": "けいざいじょうたい",
+      "meaning": "economic conditions / economic situation / financial situation"
+    },
+    {
+      "source_index": 6243,
+      "id": "1831330",
+      "term": "経済水域",
+      "reading": "けいざいすいいき",
+      "meaning": "economic waters or zone"
+    },
+    {
+      "source_index": 6244,
+      "id": "1251490",
+      "term": "経済制裁",
+      "reading": "けいざいせいさい",
+      "meaning": "economic sanctions"
+    },
+    {
+      "source_index": 6245,
+      "id": "1831400",
+      "term": "経済政策",
+      "reading": "けいざいせいさく",
+      "meaning": "economic policy"
+    },
+    {
+      "source_index": 6246,
+      "id": "1251520",
+      "term": "経済成長",
+      "reading": "けいざいせいちょう",
+      "meaning": "economic growth"
+    },
+    {
+      "source_index": 6247,
+      "id": "2849401",
+      "term": "経済戦争",
+      "reading": "けいざいせんそう",
+      "meaning": "economic warfare / economic war"
+    },
+    {
+      "source_index": 6248,
+      "id": "2664030",
+      "term": "経済戦略",
+      "reading": "けいざいせんりゃく",
+      "meaning": "economic strategy / business strategy"
+    },
+    {
+      "source_index": 6249,
+      "id": "1831320",
+      "term": "経済大国",
+      "reading": "けいざいたいこく",
+      "meaning": "economic superpower / economic powerhouse"
+    }
+  ]
+}

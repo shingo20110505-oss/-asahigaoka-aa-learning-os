@@ -1,0 +1,717 @@
+{
+  "mode": "assistant_direct_only",
+  "total_rows": 15000,
+  "already_direct_japanese": 5350,
+  "english_only_remaining": 9650,
+  "english_only_rank_counts": {
+    "(blank)": 9650
+  },
+  "a_rank_total": 0,
+  "selection": "first-visible-order (source rank is blank)",
+  "max_batch_size": 1000,
+  "batch_size": 1000,
+  "part_start": 100,
+  "part_end": 199,
+  "targets": [
+    {
+      "source_index": 5450,
+      "id": "2855833",
+      "term": "勤続疲労",
+      "reading": "きんぞくひろう",
+      "meaning": "worsened performance because of long service / malfunctioning resulting from continuous long-term operation"
+    },
+    {
+      "source_index": 5451,
+      "id": "1933630",
+      "term": "金属疲労",
+      "reading": "きんぞくひろう",
+      "meaning": "metal fatigue"
+    },
+    {
+      "source_index": 5452,
+      "id": "2847972",
+      "term": "禁帯出本",
+      "reading": "きんたいしゅつぼん",
+      "meaning": "book that cannot be taken out (of a library, etc.) / restricted book / reference-only book"
+    },
+    {
+      "source_index": 5453,
+      "id": "1242770",
+      "term": "金玉が上がったり下がったり",
+      "reading": "きんたまがあがったりさがったり",
+      "meaning": "being held in suspense / being on edge / scared stiff"
+    },
+    {
+      "source_index": 5454,
+      "id": "2685790",
+      "term": "金太郎飴",
+      "reading": "きんたろうあめ",
+      "meaning": "Kintarō candy / Kintarō-ame / hard stick-shaped candy made so that the face of folk hero Kintarō appears when it is sliced"
+    },
+    {
+      "source_index": 5455,
+      "id": "1607880",
+      "term": "近代音楽",
+      "reading": "きんだいおんがく",
+      "meaning": "modern music / contemporary music"
+    },
+    {
+      "source_index": 5456,
+      "id": "1242440",
+      "term": "近代科学",
+      "reading": "きんだいかがく",
+      "meaning": "modern science"
+    },
+    {
+      "source_index": 5457,
+      "id": "2836769",
+      "term": "近代家族",
+      "reading": "きんだいかぞく",
+      "meaning": "modern family"
+    },
+    {
+      "source_index": 5458,
+      "id": "2836770",
+      "term": "近代建築",
+      "reading": "きんだいけんちく",
+      "meaning": "modern architecture / modernist architecture"
+    },
+    {
+      "source_index": 5459,
+      "id": "2836775",
+      "term": "近代芸術",
+      "reading": "きんだいげいじゅつ",
+      "meaning": "modern art"
+    },
+    {
+      "source_index": 5460,
+      "id": "1780390",
+      "term": "近代国家",
+      "reading": "きんだいこっか",
+      "meaning": "modern state / modern nation"
+    },
+    {
+      "source_index": 5461,
+      "id": "2836774",
+      "term": "近代産業",
+      "reading": "きんだいさんぎょう",
+      "meaning": "modern industry"
+    },
+    {
+      "source_index": 5462,
+      "id": "2836771",
+      "term": "近代社会",
+      "reading": "きんだいしゃかい",
+      "meaning": "modern society"
+    },
+    {
+      "source_index": 5463,
+      "id": "1780380",
+      "term": "近代主義",
+      "reading": "きんだいしゅぎ",
+      "meaning": "modernism"
+    },
+    {
+      "source_index": 5464,
+      "id": "2836772",
+      "term": "近代都市",
+      "reading": "きんだいとし",
+      "meaning": "modern city / modern town"
+    },
+    {
+      "source_index": 5465,
+      "id": "2760940",
+      "term": "近代美術",
+      "reading": "きんだいびじゅつ",
+      "meaning": "modern art"
+    },
+    {
+      "source_index": 5466,
+      "id": "1780360",
+      "term": "近代文学",
+      "reading": "きんだいぶんがく",
+      "meaning": "modern literature"
+    },
+    {
+      "source_index": 5467,
+      "id": "2834619",
+      "term": "近代文明",
+      "reading": "きんだいぶんめい",
+      "meaning": "modern civilization / modern world"
+    },
+    {
+      "source_index": 5468,
+      "id": "1241640",
+      "term": "禁断症状",
+      "reading": "きんだんしょうじょう",
+      "meaning": "withdrawal symptoms / abstinence syndrome"
+    },
+    {
+      "source_index": 5469,
+      "id": "1684530",
+      "term": "禁治産者",
+      "reading": "きんちさんしゃ",
+      "meaning": "(legally) incompetent individual"
+    },
+    {
+      "source_index": 5470,
+      "id": "2666020",
+      "term": "緊張関係",
+      "reading": "きんちょうかんけい",
+      "meaning": "tense relationship / tense relations / strained relations"
+    },
+    {
+      "source_index": 5471,
+      "id": "1727180",
+      "term": "緊張緩和",
+      "reading": "きんちょうかんわ",
+      "meaning": "easing of tensions / detente / thaw"
+    },
+    {
+      "source_index": 5472,
+      "id": "2689620",
+      "term": "緊張激化",
+      "reading": "きんちょうげきか",
+      "meaning": "heightened tension / intensification of tension"
+    },
+    {
+      "source_index": 5473,
+      "id": "2767190",
+      "term": "緊張状態",
+      "reading": "きんちょうじょうたい",
+      "meaning": "state of tension"
+    },
+    {
+      "source_index": 5474,
+      "id": "1871170",
+      "term": "欽定憲法",
+      "reading": "きんていけんぽう",
+      "meaning": "constitution granted by the Emperor"
+    },
+    {
+      "source_index": 5475,
+      "id": "5228622",
+      "term": "近鉄電車",
+      "reading": "きんてつでんしゃ",
+      "meaning": "Kintetsu Railways"
+    },
+    {
+      "source_index": 5476,
+      "id": "2838143",
+      "term": "近点引数",
+      "reading": "きんてんひきすう",
+      "meaning": "argument of periapsis"
+    },
+    {
+      "source_index": 5477,
+      "id": "2224900",
+      "term": "近点離角",
+      "reading": "きんてんりかく",
+      "meaning": "anomaly"
+    },
+    {
+      "source_index": 5478,
+      "id": "2867059",
+      "term": "筋電義手",
+      "reading": "きんでんぎしゅ",
+      "meaning": "myoelectric prosthesis (arm, hand)"
+    },
+    {
+      "source_index": 5479,
+      "id": "1682420",
+      "term": "金殿玉楼",
+      "reading": "きんでんぎょくろう",
+      "meaning": "magnificent palace"
+    },
+    {
+      "source_index": 5480,
+      "id": "2853962",
+      "term": "金時人参",
+      "reading": "きんときにんじん",
+      "meaning": "kintoki carrot (red variety originating in the Kyoto region)"
+    },
+    {
+      "source_index": 5481,
+      "id": "2850933",
+      "term": "金時の火事見舞い",
+      "reading": "きんときのかじみまい",
+      "meaning": "going bright red (esp. after drinking)"
+    },
+    {
+      "source_index": 5482,
+      "id": "2808720",
+      "term": "筋肉感覚",
+      "reading": "きんにくかんかく",
+      "meaning": "muscular sense"
+    },
+    {
+      "source_index": 5483,
+      "id": "2171240",
+      "term": "筋肉細胞",
+      "reading": "きんにくさいぼう",
+      "meaning": "muscle cell / muscle cells"
+    },
+    {
+      "source_index": 5484,
+      "id": "2862454",
+      "term": "筋肉繊維",
+      "reading": "きんにくせんい",
+      "meaning": "muscle fiber"
+    },
+    {
+      "source_index": 5485,
+      "id": "2171270",
+      "term": "筋肉組織",
+      "reading": "きんにくそしき",
+      "meaning": "muscle tissue"
+    },
+    {
+      "source_index": 5486,
+      "id": "1728630",
+      "term": "筋肉注射",
+      "reading": "きんにくちゅうしゃ",
+      "meaning": "intramuscular injection"
+    },
+    {
+      "source_index": 5487,
+      "id": "1728620",
+      "term": "筋肉労働",
+      "reading": "きんにくろうどう",
+      "meaning": "physical or manual labor / physical or manual labour"
+    },
+    {
+      "source_index": 5488,
+      "id": "1240950",
+      "term": "勤王攘夷",
+      "reading": "きんのうじょうい",
+      "meaning": "loyalty to the emperor and expulsion of the foreigners"
+    },
+    {
+      "source_index": 5489,
+      "id": "2841698",
+      "term": "金の卵",
+      "reading": "きんのたまご",
+      "meaning": "golden child / promising young talent / gold egg"
+    },
+    {
+      "source_index": 5490,
+      "id": "2401070",
+      "term": "金葉手毬",
+      "reading": "きんばでまり",
+      "meaning": "Viburnum plicatum var. plicatum"
+    },
+    {
+      "source_index": 5491,
+      "id": "2044270",
+      "term": "金波銀波",
+      "reading": "きんぱぎんぱ",
+      "meaning": "sparkling waves / waves sparkling in the moonlight or with the light of the rising (setting) sun"
+    },
+    {
+      "source_index": 5492,
+      "id": "2832737",
+      "term": "金箔が剥げる",
+      "reading": "きんぱくがはげる",
+      "meaning": "to reveal one's true colors"
+    },
+    {
+      "source_index": 5493,
+      "id": "2858277",
+      "term": "金髪碧眼",
+      "reading": "きんぱつへきがん",
+      "meaning": "blonde hair and blue eyes"
+    },
+    {
+      "source_index": 5494,
+      "id": "2441600",
+      "term": "金美人参",
+      "reading": "きんびにんじん",
+      "meaning": "type of yellow carrot grown in Okinawa"
+    },
+    {
+      "source_index": 5495,
+      "id": "2267920",
+      "term": "金平牛蒡",
+      "reading": "きんぴらごぼう",
+      "meaning": "kinpira gobō / braised burdock root / chopped burdock root (and sometimes carrot) cooked in sugar and soy sauce"
+    },
+    {
+      "source_index": 5496,
+      "id": "2833106",
+      "term": "金縁証券",
+      "reading": "きんぶちしょうけん",
+      "meaning": "gilt-edged securities / gilt-edged bond"
+    },
+    {
+      "source_index": 5497,
+      "id": "1681990",
+      "term": "金本位制",
+      "reading": "きんほんいせい",
+      "meaning": "gold standard system"
+    },
+    {
+      "source_index": 5498,
+      "id": "1241090",
+      "term": "勤務交代",
+      "reading": "きんむこうたい",
+      "meaning": "change of shifts"
+    },
+    {
+      "source_index": 5499,
+      "id": "1933470",
+      "term": "勤務時間",
+      "reading": "きんむじかん",
+      "meaning": "office hours / business hours / working hours"
+    },
+    {
+      "source_index": 5500,
+      "id": "1241100",
+      "term": "勤務実績",
+      "reading": "きんむじっせき",
+      "meaning": "service record"
+    },
+    {
+      "source_index": 5501,
+      "id": "2222550",
+      "term": "勤務成績",
+      "reading": "きんむせいせき",
+      "meaning": "(one's) work performance / performance record / service record"
+    },
+    {
+      "source_index": 5502,
+      "id": "1241140",
+      "term": "勤務年限",
+      "reading": "きんむねんげん",
+      "meaning": "term of service"
+    },
+    {
+      "source_index": 5503,
+      "id": "2114440",
+      "term": "勤務場所",
+      "reading": "きんむばしょ",
+      "meaning": "workplace / place of work"
+    },
+    {
+      "source_index": 5504,
+      "id": "1241150",
+      "term": "勤務評定",
+      "reading": "きんむひょうてい",
+      "meaning": "(work) performance evaluation / performance review / efficiency rating"
+    },
+    {
+      "source_index": 5505,
+      "id": "1728680",
+      "term": "筋無力症",
+      "reading": "きんむりょくしょう",
+      "meaning": "myasthenia"
+    },
+    {
+      "source_index": 5506,
+      "id": "2839716",
+      "term": "金目銀目",
+      "reading": "きんめぎんめ",
+      "meaning": "cat with one eye golden, other eye steel-blue (considered a sign of luck)"
+    },
+    {
+      "source_index": 5507,
+      "id": "1990900",
+      "term": "金融改革",
+      "reading": "きんゆうかいかく",
+      "meaning": "financial reform"
+    },
+    {
+      "source_index": 5508,
+      "id": "2114890",
+      "term": "金融関係",
+      "reading": "きんゆうかんけい",
+      "meaning": "finance-related / financial"
+    },
+    {
+      "source_index": 5509,
+      "id": "1990930",
+      "term": "金融緩和",
+      "reading": "きんゆうかんわ",
+      "meaning": "monetary easing"
+    },
+    {
+      "source_index": 5510,
+      "id": "2839512",
+      "term": "金融会社",
+      "reading": "きんゆうがいしゃ",
+      "meaning": "financing company / credit firm"
+    },
+    {
+      "source_index": 5511,
+      "id": "1243300",
+      "term": "金融機関",
+      "reading": "きんゆうきかん",
+      "meaning": "financial institutions / banking facilities"
+    },
+    {
+      "source_index": 5512,
+      "id": "1990940",
+      "term": "金融危機",
+      "reading": "きんゆうきき",
+      "meaning": "financial crisis"
+    },
+    {
+      "source_index": 5513,
+      "id": "1682600",
+      "term": "金融恐慌",
+      "reading": "きんゆうきょうこう",
+      "meaning": "financial panic / financial crisis"
+    },
+    {
+      "source_index": 5514,
+      "id": "2659460",
+      "term": "金融業者",
+      "reading": "きんゆうぎょうしゃ",
+      "meaning": "money lender / financier"
+    },
+    {
+      "source_index": 5515,
+      "id": "2184620",
+      "term": "金融工学",
+      "reading": "きんゆうこうがく",
+      "meaning": "financial engineering"
+    },
+    {
+      "source_index": 5516,
+      "id": "1630370",
+      "term": "金融公庫",
+      "reading": "きんゆうこうこ",
+      "meaning": "finance corporation"
+    },
+    {
+      "source_index": 5517,
+      "id": "1990950",
+      "term": "金融詐欺",
+      "reading": "きんゆうさぎ",
+      "meaning": "financial fraud"
+    },
+    {
+      "source_index": 5518,
+      "id": "2660030",
+      "term": "金融支援",
+      "reading": "きんゆうしえん",
+      "meaning": "financial assistance / financial support"
+    },
+    {
+      "source_index": 5519,
+      "id": "1990960",
+      "term": "金融資産",
+      "reading": "きんゆうしさん",
+      "meaning": "financial asset"
+    },
+    {
+      "source_index": 5520,
+      "id": "1630390",
+      "term": "金融市場",
+      "reading": "きんゆうしじょう",
+      "meaning": "financial market / money market"
+    },
+    {
+      "source_index": 5521,
+      "id": "1682620",
+      "term": "金融資本",
+      "reading": "きんゆうしほん",
+      "meaning": "financial capital"
+    },
+    {
+      "source_index": 5522,
+      "id": "1990970",
+      "term": "金融商品",
+      "reading": "きんゆうしょうひん",
+      "meaning": "financial products / financial instruments"
+    },
+    {
+      "source_index": 5523,
+      "id": "2146890",
+      "term": "金融政策",
+      "reading": "きんゆうせいさく",
+      "meaning": "monetary policy"
+    },
+    {
+      "source_index": 5524,
+      "id": "2736150",
+      "term": "金融操作",
+      "reading": "きんゆうそうさ",
+      "meaning": "market manipulation / monetary operation"
+    },
+    {
+      "source_index": 5525,
+      "id": "1990980",
+      "term": "金融当局",
+      "reading": "きんゆうとうきょく",
+      "meaning": "financial authorities"
+    },
+    {
+      "source_index": 5526,
+      "id": "1990990",
+      "term": "金融犯罪",
+      "reading": "きんゆうはんざい",
+      "meaning": "financial crime"
+    },
+    {
+      "source_index": 5527,
+      "id": "2633430",
+      "term": "金融逼迫",
+      "reading": "きんゆうひっぱく",
+      "meaning": "monetary stringency / tight-money situation"
+    },
+    {
+      "source_index": 5528,
+      "id": "1991000",
+      "term": "金融不安",
+      "reading": "きんゆうふあん",
+      "meaning": "financial instability / financial uncertainty / financial turmoil"
+    },
+    {
+      "source_index": 5529,
+      "id": "1991010",
+      "term": "金融崩壊",
+      "reading": "きんゆうほうかい",
+      "meaning": "financial collapse"
+    },
+    {
+      "source_index": 5530,
+      "id": "2850629",
+      "term": "金融包摂",
+      "reading": "きんゆうほうせつ",
+      "meaning": "financial inclusion / availability and equality of opportunities to access financial services"
+    },
+    {
+      "source_index": 5531,
+      "id": "1241930",
+      "term": "緊要地形",
+      "reading": "きんようちけい",
+      "meaning": "key terrain"
+    },
+    {
+      "source_index": 5532,
+      "id": "1684570",
+      "term": "禁欲主義",
+      "reading": "きんよくしゅぎ",
+      "meaning": "asceticism / stoicism"
+    },
+    {
+      "source_index": 5533,
+      "id": "2044280",
+      "term": "禁欲生活",
+      "reading": "きんよくせいかつ",
+      "meaning": "an ascetic existence / (leading) a continent life / abstinence"
+    },
+    {
+      "source_index": 5534,
+      "id": "2030630",
+      "term": "金襴緞子",
+      "reading": "きんらんどんす",
+      "meaning": "gold-brocaded satin damask"
+    },
+    {
+      "source_index": 5535,
+      "id": "1682130",
+      "term": "金利政策",
+      "reading": "きんりせいさく",
+      "meaning": "interest rate policy"
+    },
+    {
+      "source_index": 5536,
+      "id": "2649960",
+      "term": "金利負担",
+      "reading": "きんりふたん",
+      "meaning": "burden of interest / interest burden / interest cost"
+    },
+    {
+      "source_index": 5537,
+      "id": "2044290",
+      "term": "近隣公害",
+      "reading": "きんりんこうがい",
+      "meaning": "(noise, smell, air, water) pollution in the neighborhood"
+    },
+    {
+      "source_index": 5538,
+      "id": "1242580",
+      "term": "近隣諸国",
+      "reading": "きんりんしょこく",
+      "meaning": "neighboring countries / neighbouring countries / surrounding countries"
+    },
+    {
+      "source_index": 5539,
+      "id": "2850649",
+      "term": "近隣住民",
+      "reading": "きんりんじゅうみん",
+      "meaning": "local residents / neighbours / neighbors"
+    },
+    {
+      "source_index": 5540,
+      "id": "1670430",
+      "term": "菌類学者",
+      "reading": "きんるいがくしゃ",
+      "meaning": "mycologist"
+    },
+    {
+      "source_index": 5541,
+      "id": "1933480",
+      "term": "勤労意欲",
+      "reading": "きんろういよく",
+      "meaning": "will to work"
+    },
+    {
+      "source_index": 5542,
+      "id": "1241170",
+      "term": "勤労階級",
+      "reading": "きんろうかいきゅう",
+      "meaning": "salaried class / working class"
+    },
+    {
+      "source_index": 5543,
+      "id": "2859340",
+      "term": "勤労学生",
+      "reading": "きんろうがくせい",
+      "meaning": "working student"
+    },
+    {
+      "source_index": 5544,
+      "id": "1241200",
+      "term": "勤労所得",
+      "reading": "きんろうしょとく",
+      "meaning": "earned income"
+    },
+    {
+      "source_index": 5545,
+      "id": "1241210",
+      "term": "勤労大衆",
+      "reading": "きんろうたいしゅう",
+      "meaning": "working people"
+    },
+    {
+      "source_index": 5546,
+      "id": "2658280",
+      "term": "勤労動員",
+      "reading": "きんろうどういん",
+      "meaning": "mobilization of labor services (e.g. in wartime)"
+    },
+    {
+      "source_index": 5547,
+      "id": "1241220",
+      "term": "勤労奉仕",
+      "reading": "きんろうほうし",
+      "meaning": "labor service / labour service"
+    },
+    {
+      "source_index": 5548,
+      "id": "2043370",
+      "term": "偽悪趣味",
+      "reading": "ぎあくしゅみ",
+      "meaning": "propensity to put oneself in as bad a light as possible / being prone to act bad"
+    },
+    {
+      "source_index": 5549,
+      "id": "2202910",
+      "term": "偽遺伝子",
+      "reading": "ぎいでんし",
+      "meaning": "pseudogene"
+    }
+  ]
+}

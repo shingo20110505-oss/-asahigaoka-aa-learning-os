@@ -1,0 +1,717 @@
+{
+  "mode": "assistant_direct_only",
+  "total_rows": 15000,
+  "already_direct_japanese": 5350,
+  "english_only_remaining": 9650,
+  "english_only_rank_counts": {
+    "(blank)": 9650
+  },
+  "a_rank_total": 0,
+  "selection": "first-visible-order (source rank is blank)",
+  "max_batch_size": 1000,
+  "batch_size": 1000,
+  "part_start": 200,
+  "part_end": 299,
+  "targets": [
+    {
+      "source_index": 5550,
+      "id": "2851313",
+      "term": "議員会館",
+      "reading": "ぎいんかいかん",
+      "meaning": "Diet members' office building"
+    },
+    {
+      "source_index": 5551,
+      "id": "1990400",
+      "term": "議員特権",
+      "reading": "ぎいんとっけん",
+      "meaning": "parliamentary privilege"
+    },
+    {
+      "source_index": 5552,
+      "id": "2133620",
+      "term": "議員年金",
+      "reading": "ぎいんねんきん",
+      "meaning": "legislators' pension (and retirement benefits)"
+    },
+    {
+      "source_index": 5553,
+      "id": "2871234",
+      "term": "議員秘書",
+      "reading": "ぎいんひしょ",
+      "meaning": "secretary to a Diet member / secretary to a member of parliament"
+    },
+    {
+      "source_index": 5554,
+      "id": "1756150",
+      "term": "議員立法",
+      "reading": "ぎいんりっぽう",
+      "meaning": "private member's bill / legislation introduced by a Diet member"
+    },
+    {
+      "source_index": 5555,
+      "id": "2581470",
+      "term": "議員連盟",
+      "reading": "ぎいんれんめい",
+      "meaning": "Diet members caucus / caucus of the Diet"
+    },
+    {
+      "source_index": 5556,
+      "id": "2412930",
+      "term": "議会下院",
+      "reading": "ぎかいかいん",
+      "meaning": "lower house (parliament, congress, diet)"
+    },
+    {
+      "source_index": 5557,
+      "id": "1932940",
+      "term": "議会主義",
+      "reading": "ぎかいしゅぎ",
+      "meaning": "parliamentarism"
+    },
+    {
+      "source_index": 5558,
+      "id": "2533820",
+      "term": "議会上院",
+      "reading": "ぎかいじょういん",
+      "meaning": "upper house / senate"
+    },
+    {
+      "source_index": 5559,
+      "id": "1614670",
+      "term": "議会政治",
+      "reading": "ぎかいせいじ",
+      "meaning": "parliamentarism / parliamentary government"
+    },
+    {
+      "source_index": 5560,
+      "id": "2276740",
+      "term": "議会選挙",
+      "reading": "ぎかいせんきょ",
+      "meaning": "parliamentary election"
+    },
+    {
+      "source_index": 5561,
+      "id": "2860108",
+      "term": "偽仮種皮",
+      "reading": "ぎかしゅひ",
+      "meaning": "arillode"
+    },
+    {
+      "source_index": 5562,
+      "id": "1932950",
+      "term": "議決機関",
+      "reading": "ぎけつきかん",
+      "meaning": "legislative organ"
+    },
+    {
+      "source_index": 5563,
+      "id": "2015530",
+      "term": "偽小切手",
+      "reading": "ぎこぎって",
+      "meaning": "counterfeit check (cheque) / bad paper"
+    },
+    {
+      "source_index": 5564,
+      "id": "1759880",
+      "term": "擬古主義",
+      "reading": "ぎこしゅぎ",
+      "meaning": "archaism / pseudoclassicism"
+    },
+    {
+      "source_index": 5565,
+      "id": "1615330",
+      "term": "擬古典的",
+      "reading": "ぎこてんてき",
+      "meaning": "pseudoclassic"
+    },
+    {
+      "source_index": 5566,
+      "id": "2043480",
+      "term": "疑獄事件",
+      "reading": "ぎごくじけん",
+      "meaning": "bribery scandal"
+    },
+    {
+      "source_index": 5567,
+      "id": "1224710",
+      "term": "儀式主義",
+      "reading": "ぎしきしゅぎ",
+      "meaning": "ritualism / ceremonialism"
+    },
+    {
+      "source_index": 5568,
+      "id": "1225600",
+      "term": "疑心暗鬼",
+      "reading": "ぎしんあんき",
+      "meaning": "suspicion will raise bogies / once you suspect something, everything else will look suspicious / jumping at shadows"
+    },
+    {
+      "source_index": 5569,
+      "id": "2136280",
+      "term": "疑似科学",
+      "reading": "ぎじかがく",
+      "meaning": "pseudoscience"
+    },
+    {
+      "source_index": 5570,
+      "id": "2853430",
+      "term": "疑似家族",
+      "reading": "ぎじかぞく",
+      "meaning": "pseudo-family"
+    },
+    {
+      "source_index": 5571,
+      "id": "2860508",
+      "term": "疑似相関",
+      "reading": "ぎじそうかん",
+      "meaning": "spurious relationship / spurious correlation"
+    },
+    {
+      "source_index": 5572,
+      "id": "2131910",
+      "term": "疑似体験",
+      "reading": "ぎじたいけん",
+      "meaning": "simulated experience / simulation"
+    },
+    {
+      "source_index": 5573,
+      "id": "2640000",
+      "term": "議事日程",
+      "reading": "ぎじにってい",
+      "meaning": "agenda / calendar of proceedings / order of the day"
+    },
+    {
+      "source_index": 5574,
+      "id": "1756130",
+      "term": "議事妨害",
+      "reading": "ぎじぼうがい",
+      "meaning": "obstruction of proceedings / filibuster"
+    },
+    {
+      "source_index": 5575,
+      "id": "2350170",
+      "term": "疑似命令",
+      "reading": "ぎじめいれい",
+      "meaning": "pseudo instruction"
+    },
+    {
+      "source_index": 5576,
+      "id": "1225140",
+      "term": "技術移転",
+      "reading": "ぎじゅついてん",
+      "meaning": "technology transfer"
+    },
+    {
+      "source_index": 5577,
+      "id": "1225150",
+      "term": "技術援助",
+      "reading": "ぎじゅつえんじょ",
+      "meaning": "technical assistance (provided to underdeveloped countries)"
+    },
+    {
+      "source_index": 5578,
+      "id": "2451130",
+      "term": "技術開発",
+      "reading": "ぎじゅつかいはつ",
+      "meaning": "technological development"
+    },
+    {
+      "source_index": 5579,
+      "id": "2654500",
+      "term": "技術格差",
+      "reading": "ぎじゅつかくさ",
+      "meaning": "disparity in technology / technological gap / technology gap"
+    },
+    {
+      "source_index": 5580,
+      "id": "1225160",
+      "term": "技術革新",
+      "reading": "ぎじゅつかくしん",
+      "meaning": "technological innovation"
+    },
+    {
+      "source_index": 5581,
+      "id": "2349960",
+      "term": "技術革命",
+      "reading": "ぎじゅつかくめい",
+      "meaning": "technology revolution"
+    },
+    {
+      "source_index": 5582,
+      "id": "2429280",
+      "term": "技術基準",
+      "reading": "ぎじゅつきじゅん",
+      "meaning": "technical standards"
+    },
+    {
+      "source_index": 5583,
+      "id": "2593430",
+      "term": "技術協会",
+      "reading": "ぎじゅつきょうかい",
+      "meaning": "technology association / technology institute"
+    },
+    {
+      "source_index": 5584,
+      "id": "1801160",
+      "term": "技術協力",
+      "reading": "ぎじゅつきょうりょく",
+      "meaning": "technical cooperation"
+    },
+    {
+      "source_index": 5585,
+      "id": "2349970",
+      "term": "技術検討",
+      "reading": "ぎじゅつけんとう",
+      "meaning": "technical investigation"
+    },
+    {
+      "source_index": 5586,
+      "id": "2349980",
+      "term": "技術原稿",
+      "reading": "ぎじゅつげんこう",
+      "meaning": "technical paper / technical manuscript"
+    },
+    {
+      "source_index": 5587,
+      "id": "2349990",
+      "term": "技術交換",
+      "reading": "ぎじゅつこうかん",
+      "meaning": "technology exchange"
+    },
+    {
+      "source_index": 5588,
+      "id": "2350000",
+      "term": "技術講習",
+      "reading": "ぎじゅつこうしゅう",
+      "meaning": "technical course / technical training"
+    },
+    {
+      "source_index": 5589,
+      "id": "2661920",
+      "term": "技術顧問",
+      "reading": "ぎじゅつこもん",
+      "meaning": "technical advisor / expert advisor"
+    },
+    {
+      "source_index": 5590,
+      "id": "2350020",
+      "term": "技術支援",
+      "reading": "ぎじゅつしえん",
+      "meaning": "technical support"
+    },
+    {
+      "source_index": 5591,
+      "id": "2424970",
+      "term": "技術審査",
+      "reading": "ぎじゅつしんさ",
+      "meaning": "technical review"
+    },
+    {
+      "source_index": 5592,
+      "id": "2851670",
+      "term": "技術情報",
+      "reading": "ぎじゅつじょうほう",
+      "meaning": "technical information / technical knowledge / know-how"
+    },
+    {
+      "source_index": 5593,
+      "id": "1225180",
+      "term": "技術水準",
+      "reading": "ぎじゅつすいじゅん",
+      "meaning": "state-of-the-art"
+    },
+    {
+      "source_index": 5594,
+      "id": "2350030",
+      "term": "技術調査",
+      "reading": "ぎじゅつちょうさ",
+      "meaning": "technical investigation"
+    },
+    {
+      "source_index": 5595,
+      "id": "1225190",
+      "term": "技術提携",
+      "reading": "ぎじゅつていけい",
+      "meaning": "technical cooperation"
+    },
+    {
+      "source_index": 5596,
+      "id": "1225210",
+      "term": "技術同士",
+      "reading": "ぎじゅつどうし",
+      "meaning": "technical works"
+    },
+    {
+      "source_index": 5597,
+      "id": "2623000",
+      "term": "技術導入",
+      "reading": "ぎじゅつどうにゅう",
+      "meaning": "technology import / introduction of foreign technology"
+    },
+    {
+      "source_index": 5598,
+      "id": "2350070",
+      "term": "技術標準",
+      "reading": "ぎじゅつひょうじゅん",
+      "meaning": "technology standardization"
+    },
+    {
+      "source_index": 5599,
+      "id": "2350090",
+      "term": "技術要件",
+      "reading": "ぎじゅつようけん",
+      "meaning": "technical requirement"
+    },
+    {
+      "source_index": 5600,
+      "id": "2217470",
+      "term": "技術用語",
+      "reading": "ぎじゅつようご",
+      "meaning": "technical term / technical terminology"
+    },
+    {
+      "source_index": 5601,
+      "id": "2210440",
+      "term": "擬似乱数",
+      "reading": "ぎじらんすう",
+      "meaning": "pseudorandom number"
+    },
+    {
+      "source_index": 5602,
+      "id": "2043500",
+      "term": "疑似恋愛",
+      "reading": "ぎじれんあい",
+      "meaning": "pseudo-romance / pseudo (mock) love affair"
+    },
+    {
+      "source_index": 5603,
+      "id": "2143620",
+      "term": "偽善売教",
+      "reading": "ぎぜんばいきょう",
+      "meaning": "priestcraft (Book of Mormon)"
+    },
+    {
+      "source_index": 5604,
+      "id": "2801190",
+      "term": "偽装請負",
+      "reading": "ぎそううけおい",
+      "meaning": "disguised contracting / fake subcontract / hiring a temporary employee and paying for the completion of the work rather than the work itself, thereby avoiding have to pay benefits"
+    },
+    {
+      "source_index": 5605,
+      "id": "2834372",
+      "term": "偽装結婚",
+      "reading": "ぎそうけっこん",
+      "meaning": "sham marriage / fake marriage"
+    },
+    {
+      "source_index": 5606,
+      "id": "2043520",
+      "term": "偽装工作",
+      "reading": "ぎそうこうさく",
+      "meaning": "diversionary tactics (maneuvering) / disguise / hide by camouflage"
+    },
+    {
+      "source_index": 5607,
+      "id": "2043530",
+      "term": "偽装難民",
+      "reading": "ぎそうなんみん",
+      "meaning": "fake refugee / phony refugee / illegal migrant disguised as a refugee"
+    },
+    {
+      "source_index": 5608,
+      "id": "1224750",
+      "term": "儀装馬車",
+      "reading": "ぎそうばしゃ",
+      "meaning": "state carriage"
+    },
+    {
+      "source_index": 5609,
+      "id": "2842722",
+      "term": "偽装表示",
+      "reading": "ぎそうひょうじ",
+      "meaning": "false labeling / false advertising"
+    },
+    {
+      "source_index": 5610,
+      "id": "1990360",
+      "term": "偽造紙幣",
+      "reading": "ぎぞうしへい",
+      "meaning": "fake bill"
+    },
+    {
+      "source_index": 5611,
+      "id": "1607890",
+      "term": "義太夫節",
+      "reading": "ぎだゆうぶし",
+      "meaning": "gidayū ballad drama (narrative accompanied by a shamisen used in the bunraku puppet theater)"
+    },
+    {
+      "source_index": 5612,
+      "id": "1756140",
+      "term": "議長職権",
+      "reading": "ぎちょうしょっけん",
+      "meaning": "authority of the chair / power of the office of Speaker / power of the office of the President (of the House of Councillors)"
+    },
+    {
+      "source_index": 5613,
+      "id": "2104870",
+      "term": "技能検定",
+      "reading": "ぎのうけんてい",
+      "meaning": "technical skills test / trade skill test"
+    },
+    {
+      "source_index": 5614,
+      "id": "2855620",
+      "term": "技能実習",
+      "reading": "ぎのうじっしゅう",
+      "meaning": "technical intern training"
+    },
+    {
+      "source_index": 5615,
+      "id": "5743560",
+      "term": "岐阜県警",
+      "reading": "ぎふけんけい",
+      "meaning": "Gifu Prefectural Police (abbr)"
+    },
+    {
+      "source_index": 5616,
+      "id": "5199126",
+      "term": "岐阜大学",
+      "reading": "ぎふだいがく",
+      "meaning": "Gifu University"
+    },
+    {
+      "source_index": 5617,
+      "id": "2863477",
+      "term": "岐阜提灯",
+      "reading": "ぎふぢょうちん",
+      "meaning": "gifu lantern / elegant egg-shaped paper lantern, usu. with a tassel at the bottom, made in Gifu"
+    },
+    {
+      "source_index": 5618,
+      "id": "2265530",
+      "term": "擬宝珠虫",
+      "reading": "ぎぼしむし",
+      "meaning": "acorn worm (any hemichordate of class Enteropneusta)"
+    },
+    {
+      "source_index": 5619,
+      "id": "1225910",
+      "term": "義務教育",
+      "reading": "ぎむきょういく",
+      "meaning": "compulsory education"
+    },
+    {
+      "source_index": 5620,
+      "id": "2043640",
+      "term": "疑問氷解",
+      "reading": "ぎもんひょうかい",
+      "meaning": "one's doubts being cleared away (dispelled, resolved)"
+    },
+    {
+      "source_index": 5621,
+      "id": "2852439",
+      "term": "疑問副詞",
+      "reading": "ぎもんふくし",
+      "meaning": "interrogative adverb"
+    },
+    {
+      "source_index": 5622,
+      "id": "2431410",
+      "term": "逆遺伝学",
+      "reading": "ぎゃくいでんがく",
+      "meaning": "reverse genetics"
+    },
+    {
+      "source_index": 5623,
+      "id": "1577890",
+      "term": "逆三角形",
+      "reading": "ぎゃくさんかくけい",
+      "meaning": "inverted triangle"
+    },
+    {
+      "source_index": 5624,
+      "id": "2866099",
+      "term": "逆浸透法",
+      "reading": "ぎゃくしんとうほう",
+      "meaning": "reverse osmosis"
+    },
+    {
+      "source_index": 5625,
+      "id": "2643590",
+      "term": "逆浸透膜",
+      "reading": "ぎゃくしんとうまく",
+      "meaning": "reverse osmosis membrane / reverse osmotic membrane"
+    },
+    {
+      "source_index": 5626,
+      "id": "1693480",
+      "term": "逆性石鹸",
+      "reading": "ぎゃくせいせっけん",
+      "meaning": "cationic soap / invert soap / positive soap"
+    },
+    {
+      "source_index": 5627,
+      "id": "2350300",
+      "term": "逆多重化",
+      "reading": "ぎゃくたじゅうか",
+      "meaning": "demultiplexing"
+    },
+    {
+      "source_index": 5628,
+      "id": "5742669",
+      "term": "逆転裁判",
+      "reading": "ぎゃくてんさいばん",
+      "meaning": "Ace Attorney (video game series)"
+    },
+    {
+      "source_index": 5629,
+      "id": "2862063",
+      "term": "逆転勝利",
+      "reading": "ぎゃくてんしょうり",
+      "meaning": "come-from-behind victory / comeback win"
+    },
+    {
+      "source_index": 5630,
+      "id": "2870109",
+      "term": "逆転無罪",
+      "reading": "ぎゃくてんむざい",
+      "meaning": "reversal of a guilty verdict / acquittal on appeal"
+    },
+    {
+      "source_index": 5631,
+      "id": "2043650",
+      "term": "逆転優勝",
+      "reading": "ぎゃくてんゆうしょう",
+      "meaning": "come-from-behind victory"
+    },
+    {
+      "source_index": 5632,
+      "id": "2350320",
+      "term": "逆符号化",
+      "reading": "ぎゃくふごうか",
+      "meaning": "decode"
+    },
+    {
+      "source_index": 5633,
+      "id": "2202990",
+      "term": "逆輸入車",
+      "reading": "ぎゃくゆにゅうしゃ",
+      "meaning": "reverse-imported vehicle (esp. high-displacement motorcycles meant for sale outside Japan)"
+    },
+    {
+      "source_index": 5634,
+      "id": "2852335",
+      "term": "逆行運動",
+      "reading": "ぎゃっこううんどう",
+      "meaning": "retrograde motion"
+    },
+    {
+      "source_index": 5635,
+      "id": "2583990",
+      "term": "逆向抑制",
+      "reading": "ぎゃっこうよくせい",
+      "meaning": "retroactive inhibition"
+    },
+    {
+      "source_index": 5636,
+      "id": "2830822",
+      "term": "偽薬効果",
+      "reading": "ぎやくこうか",
+      "meaning": "placebo effect"
+    },
+    {
+      "source_index": 5637,
+      "id": "1616940",
+      "term": "牛飲馬食",
+      "reading": "ぎゅういんばしょく",
+      "meaning": "heavy eating and drinking / gorging and swilling / drinking like a cow and eating like a horse"
+    },
+    {
+      "source_index": 5638,
+      "id": "2043670",
+      "term": "牛鬼蛇神",
+      "reading": "ぎゅうきだしん",
+      "meaning": "wicked and perverse / weird and incoherent"
+    },
+    {
+      "source_index": 5639,
+      "id": "2872068",
+      "term": "牛乳配達",
+      "reading": "ぎゅうにゅうはいたつ",
+      "meaning": "milk delivery"
+    },
+    {
+      "source_index": 5640,
+      "id": "2868347",
+      "term": "牛白血病",
+      "reading": "ぎゅうはっけつびょう",
+      "meaning": "bovine leukemia (former name for enzootic bovine leukosis)"
+    },
+    {
+      "source_index": 5641,
+      "id": "1231630",
+      "term": "牛歩戦術",
+      "reading": "ぎゅうほせんじゅつ",
+      "meaning": "snail's pace tactics / walking extremely slowly when voting in the Diet to delay proceedings / ox walk tactic"
+    },
+    {
+      "source_index": 5642,
+      "id": "2351200",
+      "term": "業界規範",
+      "reading": "ぎょうかいきはん",
+      "meaning": "industry standard / industry norm"
+    },
+    {
+      "source_index": 5643,
+      "id": "1239420",
+      "term": "業界団体",
+      "reading": "ぎょうかいだんたい",
+      "meaning": "industry group"
+    },
+    {
+      "source_index": 5644,
+      "id": "1239430",
+      "term": "業界動向",
+      "reading": "ぎょうかいどうこう",
+      "meaning": "industry trend"
+    },
+    {
+      "source_index": 5645,
+      "id": "1990630",
+      "term": "業界標準",
+      "reading": "ぎょうかいひょうじゅん",
+      "meaning": "industry-wide standard"
+    },
+    {
+      "source_index": 5646,
+      "id": "2794140",
+      "term": "業界用語",
+      "reading": "ぎょうかいようご",
+      "meaning": "industry terminology / professional jargon / buzzword"
+    },
+    {
+      "source_index": 5647,
+      "id": "1686110",
+      "term": "行儀作法",
+      "reading": "ぎょうぎさほう",
+      "meaning": "etiquette / good manners"
+    },
+    {
+      "source_index": 5648,
+      "id": "2872411",
+      "term": "凝固因子",
+      "reading": "ぎょうこいんし",
+      "meaning": "coagulation factor / clotting factor"
+    },
+    {
+      "source_index": 5649,
+      "id": "2861626",
+      "term": "凝固障害",
+      "reading": "ぎょうこしょうがい",
+      "meaning": "coagulopathy"
+    }
+  ]
+}
