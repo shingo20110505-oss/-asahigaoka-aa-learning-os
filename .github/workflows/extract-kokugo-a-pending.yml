@@ -44,7 +44,7 @@ jobs:
               x={'source_index':i}
               x.update({k:r.get(k) for k in keys})
               targets.append(x)
-          out={
+          meta={
             'mode':'assistant_direct_only',
             'total_rows':len(rows),
             'already_direct_japanese':len(done_ids),
@@ -54,18 +54,31 @@ jobs:
             'selection':'A-rank' if a else 'first-visible-order (source rank is blank)',
             'max_batch_size':max_batch,
             'batch_size':len(targets),
-            'targets':targets,
           }
+          out=dict(meta)
+          out['targets']=targets
           assert len(targets) <= max_batch
           assert len({str(x.get('id')) for x in targets}) == len(targets)
           assert all(str(x.get('id')) not in done_ids for x in targets)
           Path('kokugo-chronologia/direct-translation-pending.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-          print(json.dumps({k:v for k,v in out.items() if k!='targets'},ensure_ascii=False))
+          part_dir=Path('kokugo-chronologia/direct-translation-pending-parts')
+          part_dir.mkdir(parents=True,exist_ok=True)
+          for old in part_dir.glob('part-*.json'):
+              old.unlink()
+          part_size=100
+          for start in range(0,len(targets),part_size):
+              chunk=targets[start:start+part_size]
+              p=dict(meta)
+              p['part_start']=start
+              p['part_end']=start+len(chunk)-1
+              p['targets']=chunk
+              part_dir.joinpath(f'part-{start:04d}-{start+len(chunk)-1:04d}.json').write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(meta,ensure_ascii=False))
       - name: Commit extraction
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add kokugo-chronologia/direct-translation-pending.json
+          git add kokugo-chronologia/direct-translation-pending.json kokugo-chronologia/direct-translation-pending-parts/
           if git diff --cached --quiet; then echo 'No changes'; exit 0; fi
           git commit -m 'Extract next assistant-only Kokugo translation batch'
           for i in 1 2 3 4 5; do
