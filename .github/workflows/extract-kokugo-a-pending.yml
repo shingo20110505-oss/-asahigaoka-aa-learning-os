@@ -38,7 +38,7 @@ jobs:
           a=[(i,r) for i,r in pending if str(r.get('rank','')).strip().upper()=='A']
           max_batch=50
           selected=a[:max_batch] if a else pending[:max_batch]
-          keys=('id','term','reading','meaning','rank','type')
+          keys=('id','term','reading','meaning')
           targets=[]
           for i,r in selected:
               x={'source_index':i}
