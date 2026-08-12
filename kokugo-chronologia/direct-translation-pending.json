@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 6250,
-  "english_only_remaining": 8750,
+  "already_direct_japanese": 6300,
+  "english_only_remaining": 8700,
   "english_only_rank_counts": {
-    "(blank)": 8750
+    "(blank)": 8700
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 6250,
-      "id": "1991710",
-      "term": "経済対策",
-      "reading": "けいざいたいさく",
-      "meaning": "economic measure"
-    },
-    {
-      "source_index": 6251,
-      "id": "1831370",
-      "term": "経済体制",
-      "reading": "けいざいたいせい",
-      "meaning": "economic system"
-    },
-    {
-      "source_index": 6252,
-      "id": "2665750",
-      "term": "経済単位",
-      "reading": "けいざいたんい",
-      "meaning": "economic unit (entity involved in economic activity, e.g. households, businesses, nations)"
-    },
-    {
-      "source_index": 6253,
-      "id": "5243541",
-      "term": "経済大学",
-      "reading": "けいざいだいがく",
-      "meaning": "Keizai University"
-    },
-    {
-      "source_index": 6254,
-      "id": "1991740",
-      "term": "経済統計",
-      "reading": "けいざいとうけい",
-      "meaning": "economic statistics"
-    },
-    {
-      "source_index": 6255,
-      "id": "2649830",
-      "term": "経済統合",
-      "reading": "けいざいとうごう",
-      "meaning": "economic integration"
-    },
-    {
-      "source_index": 6256,
-      "id": "1831430",
-      "term": "経済闘争",
-      "reading": "けいざいとうそう",
-      "meaning": "economic struggles"
-    },
-    {
-      "source_index": 6257,
-      "id": "1630530",
-      "term": "経済特区",
-      "reading": "けいざいとっく",
-      "meaning": "special economic zone"
-    },
-    {
-      "source_index": 6258,
-      "id": "2844421",
-      "term": "経済動物",
-      "reading": "けいざいどうぶつ",
-      "meaning": "livestock / farm animals"
-    },
-    {
-      "source_index": 6259,
-      "id": "2842641",
-      "term": "経済難民",
-      "reading": "けいざいなんみん",
-      "meaning": "economic refugee"
-    },
-    {
-      "source_index": 6260,
-      "id": "1831340",
-      "term": "経済白書",
-      "reading": "けいざいはくしょ",
-      "meaning": "economic white paper"
-    },
-    {
-      "source_index": 6261,
-      "id": "2639210",
-      "term": "経済破綻",
-      "reading": "けいざいはたん",
-      "meaning": "economic collapse / financial failure / bankruptcy"
-    },
-    {
-      "source_index": 6262,
-      "id": "1251540",
-      "term": "経済発展",
-      "reading": "けいざいはってん",
-      "meaning": "economic development"
-    },
-    {
-      "source_index": 6263,
-      "id": "1630540",
-      "term": "経済封鎖",
-      "reading": "けいざいふうさ",
-      "meaning": "economic blockade / embargo"
-    },
-    {
-      "source_index": 6264,
-      "id": "2851538",
-      "term": "経済不況",
-      "reading": "けいざいふきょう",
-      "meaning": "economic recession"
-    },
-    {
-      "source_index": 6265,
-      "id": "1251550",
-      "term": "経済復興",
-      "reading": "けいざいふっこう",
-      "meaning": "economic revitalization / economic revitalisation / rebuilding of an economy"
-    },
-    {
-      "source_index": 6266,
-      "id": "1991750",
-      "term": "経済分析",
-      "reading": "けいざいぶんせき",
-      "meaning": "economic assessment"
-    },
-    {
-      "source_index": 6267,
-      "id": "1991760",
-      "term": "経済崩壊",
-      "reading": "けいざいほうかい",
-      "meaning": "economic collapse / economic meltdown"
-    },
-    {
-      "source_index": 6268,
-      "id": "1933920",
-      "term": "経済問題",
-      "reading": "けいざいもんだい",
-      "meaning": "economic problem"
-    },
-    {
-      "source_index": 6269,
-      "id": "1991770",
-      "term": "経済予測",
-      "reading": "けいざいよそく",
-      "meaning": "economic forecast"
-    },
-    {
-      "source_index": 6270,
-      "id": "2868095",
-      "term": "形式科学",
-      "reading": "けいしきかがく",
-      "meaning": "formal science"
-    },
-    {
-      "source_index": 6271,
-      "id": "2352150",
-      "term": "形式関係",
-      "reading": "けいしきかんけい",
-      "meaning": "formal relation"
-    },
-    {
-      "source_index": 6272,
-      "id": "2445610",
-      "term": "形式言語",
-      "reading": "けいしきげんご",
-      "meaning": "formal language"
-    },
-    {
-      "source_index": 6273,
-      "id": "1820850",
-      "term": "形式主義",
-      "reading": "けいしきしゅぎ",
-      "meaning": "formalism"
-    },
-    {
-      "source_index": 6274,
-      "id": "2246470",
-      "term": "形式主語",
-      "reading": "けいしきしゅご",
-      "meaning": "formal subject"
-    },
-    {
-      "source_index": 6275,
-      "id": "2399630",
-      "term": "形式段落",
-      "reading": "けいしきだんらく",
-      "meaning": "formal paragraph (in opposition to a logical paragraph) / paragraph as defined by its formal elements (e.g. line break and initial indentation)"
-    },
-    {
-      "source_index": 6276,
-      "id": "2844161",
-      "term": "形式文法",
-      "reading": "けいしきぶんぽう",
-      "meaning": "formal grammar"
-    },
-    {
-      "source_index": 6277,
-      "id": "2352170",
-      "term": "形式変換",
-      "reading": "けいしきへんかん",
-      "meaning": "format conversion"
-    },
-    {
-      "source_index": 6278,
-      "id": "2151000",
-      "term": "形式名詞",
-      "reading": "けいしきめいし",
-      "meaning": "formal noun / dummy noun / expletive noun"
-    },
-    {
-      "source_index": 6279,
-      "id": "1933840",
-      "term": "形式論理",
-      "reading": "けいしきろんり",
-      "meaning": "formal logic"
-    },
-    {
-      "source_index": 6280,
-      "id": "2865807",
-      "term": "形式聴牌",
-      "reading": "けいしきテンパイ",
-      "meaning": "yaku-less tenpai / hand that is one tile from completion but cannot satisfy a standard win condition"
-    },
-    {
-      "source_index": 6281,
-      "id": "1830970",
-      "term": "警視総監",
-      "reading": "けいしそうかん",
-      "meaning": "Superintendent General of the Metropolitan Police"
-    },
-    {
-      "source_index": 6282,
-      "id": "2207680",
-      "term": "珪質海綿",
-      "reading": "けいしつかいめん",
-      "meaning": "siliceous sponge (any sponge other than those of class Calcarea)"
-    },
-    {
-      "source_index": 6283,
-      "id": "2212520",
-      "term": "形質細胞",
-      "reading": "けいしつさいぼう",
-      "meaning": "plasma cell"
-    },
-    {
-      "source_index": 6284,
-      "id": "2697800",
-      "term": "珪質砂岩",
-      "reading": "けいしつさがん",
-      "meaning": "siliceous sandstone"
-    },
-    {
-      "source_index": 6285,
-      "id": "1820990",
-      "term": "形質転換",
-      "reading": "けいしつてんかん",
-      "meaning": "transformation"
-    },
-    {
-      "source_index": 6286,
-      "id": "1821000",
-      "term": "形質導入",
-      "reading": "けいしつどうにゅう",
-      "meaning": "transduction"
-    },
-    {
-      "source_index": 6287,
-      "id": "2864258",
-      "term": "形質発現",
-      "reading": "けいしつはつげん",
-      "meaning": "phenotypic expression"
-    },
-    {
-      "source_index": 6288,
-      "id": "1821470",
-      "term": "傾斜生産",
-      "reading": "けいしゃせいさん",
-      "meaning": "priority production"
-    },
-    {
-      "source_index": 6289,
-      "id": "2862083",
-      "term": "傾斜配分",
-      "reading": "けいしゃはいぶん",
-      "meaning": "weighted allocation (budget, dividends, etc.)"
-    },
-    {
-      "source_index": 6290,
-      "id": "1821490",
-      "term": "傾斜家賃",
-      "reading": "けいしゃやちん",
-      "meaning": "progressive increase in rent"
-    },
-    {
-      "source_index": 6291,
-      "id": "1657170",
-      "term": "閨秀画家",
-      "reading": "けいしゅうがか",
-      "meaning": "talented woman painter / accomplished woman painter"
-    },
-    {
-      "source_index": 6292,
-      "id": "1821390",
-      "term": "閨秀作家",
-      "reading": "けいしゅうさっか",
-      "meaning": "woman writer"
-    },
-    {
-      "source_index": 6293,
-      "id": "2853045",
-      "term": "継承戦争",
-      "reading": "けいしょうせんそう",
-      "meaning": "war of succession / succession war"
-    },
-    {
-      "source_index": 6294,
-      "id": "2714480",
-      "term": "形象文字",
-      "reading": "けいしょうもじ",
-      "meaning": "hieroglyph"
-    },
-    {
-      "source_index": 6295,
-      "id": "2836044",
-      "term": "警鐘を鳴らす",
-      "reading": "けいしょうをならす",
-      "meaning": "to ring an alarm bell"
-    },
-    {
-      "source_index": 6296,
-      "id": "2629830",
-      "term": "頚神経叢",
-      "reading": "けいしんけいそう",
-      "meaning": "cervical plexus"
-    },
-    {
-      "source_index": 6297,
-      "id": "1820820",
-      "term": "形而下学",
-      "reading": "けいじかがく",
-      "meaning": "physical sciences"
-    },
-    {
-      "source_index": 6298,
-      "id": "2352590",
-      "term": "計時機構",
-      "reading": "けいじきこう",
-      "meaning": "timer / clock register"
-    },
-    {
-      "source_index": 6299,
-      "id": "2871893",
-      "term": "刑事警察",
-      "reading": "けいじけいさつ",
-      "meaning": "criminal police / detective force"
-    },
     {
       "source_index": 6300,
       "id": "2427280",
@@ -7010,6 +6660,356 @@
       "term": "航空医学",
       "reading": "こうくういがく",
       "meaning": "aviation medicine"
+    },
+    {
+      "source_index": 7250,
+      "id": "2828856",
+      "term": "航空宇宙",
+      "reading": "こうくううちゅう",
+      "meaning": "aerospace"
+    },
+    {
+      "source_index": 7251,
+      "id": "1983490",
+      "term": "航空運賃",
+      "reading": "こうくううんちん",
+      "meaning": "airfare"
+    },
+    {
+      "source_index": 7252,
+      "id": "2815760",
+      "term": "口腔衛生",
+      "reading": "こうくうえいせい",
+      "meaning": "dental health / oral hygiene"
+    },
+    {
+      "source_index": 7253,
+      "id": "2598060",
+      "term": "航空貨物",
+      "reading": "こうくうかもつ",
+      "meaning": "air cargo / air freight"
+    },
+    {
+      "source_index": 7254,
+      "id": "2832046",
+      "term": "航空管制",
+      "reading": "こうくうかんせい",
+      "meaning": "air traffic control / ATC"
+    },
+    {
+      "source_index": 7255,
+      "id": "1281310",
+      "term": "航空管理",
+      "reading": "こうくうかんり",
+      "meaning": "air traffic control"
+    },
+    {
+      "source_index": 7256,
+      "id": "1281300",
+      "term": "航空会社",
+      "reading": "こうくうがいしゃ",
+      "meaning": "airline company"
+    },
+    {
+      "source_index": 7257,
+      "id": "1685670",
+      "term": "航空基地",
+      "reading": "こうくうきち",
+      "meaning": "air base"
+    },
+    {
+      "source_index": 7258,
+      "id": "1276120",
+      "term": "口腔外科",
+      "reading": "こうくうげか",
+      "meaning": "dental surgery / oral surgery"
+    },
+    {
+      "source_index": 7259,
+      "id": "2600040",
+      "term": "航空工学",
+      "reading": "こうくうこうがく",
+      "meaning": "aeronautical engineering"
+    },
+    {
+      "source_index": 7260,
+      "id": "1281340",
+      "term": "航空攻撃",
+      "reading": "こうくうこうげき",
+      "meaning": "air strike"
+    },
+    {
+      "source_index": 7261,
+      "id": "1685610",
+      "term": "航空写真",
+      "reading": "こうくうしゃしん",
+      "meaning": "aerial photograph"
+    },
+    {
+      "source_index": 7262,
+      "id": "1281350",
+      "term": "航空書簡",
+      "reading": "こうくうしょかん",
+      "meaning": "aerogramme / air letter"
+    },
+    {
+      "source_index": 7263,
+      "id": "2851903",
+      "term": "航空事業",
+      "reading": "こうくうじぎょう",
+      "meaning": "aviation business / air transport service"
+    },
+    {
+      "source_index": 7264,
+      "id": "2840933",
+      "term": "口腔性交",
+      "reading": "こうくうせいこう",
+      "meaning": "oral sex"
+    },
+    {
+      "source_index": 7265,
+      "id": "2837085",
+      "term": "航空戦隊",
+      "reading": "こうくうせんたい",
+      "meaning": "air flotilla / air fleet / combat aviation unit of the Imperial Japanese Navy"
+    },
+    {
+      "source_index": 7266,
+      "id": "2424900",
+      "term": "航空灯台",
+      "reading": "こうくうとうだい",
+      "meaning": "aeronautical beacon"
+    },
+    {
+      "source_index": 7267,
+      "id": "2861506",
+      "term": "航空日誌",
+      "reading": "こうくうにっし",
+      "meaning": "pilot logbook / aircraft technical logbook"
+    },
+    {
+      "source_index": 7268,
+      "id": "1992720",
+      "term": "航空燃料",
+      "reading": "こうくうねんりょう",
+      "meaning": "aviation fuel"
+    },
+    {
+      "source_index": 7269,
+      "id": "2618360",
+      "term": "航空保険",
+      "reading": "こうくうほけん",
+      "meaning": "aviation insurance / aerial insurance"
+    },
+    {
+      "source_index": 7270,
+      "id": "1281370",
+      "term": "航空母艦",
+      "reading": "こうくうぼかん",
+      "meaning": "aircraft carrier"
+    },
+    {
+      "source_index": 7271,
+      "id": "2826352",
+      "term": "航空無線",
+      "reading": "こうくうむせん",
+      "meaning": "aeronautical radio / aircraft radio"
+    },
+    {
+      "source_index": 7272,
+      "id": "1281380",
+      "term": "航空優勢",
+      "reading": "こうくうゆうせい",
+      "meaning": "air superiority"
+    },
+    {
+      "source_index": 7273,
+      "id": "1638770",
+      "term": "航空郵便",
+      "reading": "こうくうゆうびん",
+      "meaning": "airmail / air mail"
+    },
+    {
+      "source_index": 7274,
+      "id": "2668160",
+      "term": "航空輸送",
+      "reading": "こうくうゆそう",
+      "meaning": "air transportation / air transport / transport by air"
+    },
+    {
+      "source_index": 7275,
+      "id": "2819010",
+      "term": "航空力学",
+      "reading": "こうくうりきがく",
+      "meaning": "flight dynamics / aerodynamics / aeromechanics"
+    },
+    {
+      "source_index": 7276,
+      "id": "1639850",
+      "term": "皇宮警察",
+      "reading": "こうぐうけいさつ",
+      "meaning": "the Imperial Guards"
+    },
+    {
+      "source_index": 7277,
+      "id": "2854699",
+      "term": "行軍将棋",
+      "reading": "こうぐんしょうぎ",
+      "meaning": "gunjin shogi (board game)"
+    },
+    {
+      "source_index": 7278,
+      "id": "2870326",
+      "term": "後脛骨筋",
+      "reading": "こうけいこつきん",
+      "meaning": "tibialis posterior muscle"
+    },
+    {
+      "source_index": 7279,
+      "id": "2830394",
+      "term": "抗結核薬",
+      "reading": "こうけっかくやく",
+      "meaning": "antituberculous drug / antitubercular agent"
+    },
+    {
+      "source_index": 7280,
+      "id": "2859018",
+      "term": "高血糖症",
+      "reading": "こうけっとうしょう",
+      "meaning": "hyperglycemia"
+    },
+    {
+      "source_index": 7281,
+      "id": "1283460",
+      "term": "高血圧症",
+      "reading": "こうけつあつしょう",
+      "meaning": "high blood pressure (as an illness) / hypertension"
+    },
+    {
+      "source_index": 7282,
+      "id": "2797670",
+      "term": "貢献利益",
+      "reading": "こうけんりえき",
+      "meaning": "contribution margin / marginal income"
+    },
+    {
+      "source_index": 7283,
+      "id": "1674840",
+      "term": "工芸美術",
+      "reading": "こうげいびじゅつ",
+      "meaning": "applied fine arts"
+    },
+    {
+      "source_index": 7284,
+      "id": "2870455",
+      "term": "攻撃衝動",
+      "reading": "こうげきしょうどう",
+      "meaning": "aggressive impulse / aggressive drive / aggressive instinct"
+    },
+    {
+      "source_index": 7285,
+      "id": "1675310",
+      "term": "攻撃精神",
+      "reading": "こうげきせいしん",
+      "meaning": "aggressiveness"
+    },
+    {
+      "source_index": 7286,
+      "id": "1675290",
+      "term": "攻撃隊形",
+      "reading": "こうげきたいけい",
+      "meaning": "attacking formation"
+    },
+    {
+      "source_index": 7287,
+      "id": "2861138",
+      "term": "攻撃対象",
+      "reading": "こうげきたいしょう",
+      "meaning": "target of attack"
+    },
+    {
+      "source_index": 7288,
+      "id": "1675300",
+      "term": "攻撃態勢",
+      "reading": "こうげきたいせい",
+      "meaning": "attack preparedness"
+    },
+    {
+      "source_index": 7289,
+      "id": "1279200",
+      "term": "攻撃部隊",
+      "reading": "こうげきぶたい",
+      "meaning": "attacking forces"
+    },
+    {
+      "source_index": 7290,
+      "id": "1279210",
+      "term": "攻撃方向",
+      "reading": "こうげきほうこう",
+      "meaning": "attacking direction"
+    },
+    {
+      "source_index": 7291,
+      "id": "2851481",
+      "term": "抗原検査",
+      "reading": "こうげんけんさ",
+      "meaning": "antigen test"
+    },
+    {
+      "source_index": 7292,
+      "id": "2355190",
+      "term": "光源状態",
+      "reading": "こうげんじょうたい",
+      "meaning": "light source state"
+    },
+    {
+      "source_index": 7293,
+      "id": "2678180",
+      "term": "膠原線維",
+      "reading": "こうげんせんい",
+      "meaning": "collagen fiber / collagen fibre"
+    },
+    {
+      "source_index": 7294,
+      "id": "1278310",
+      "term": "巧言令色",
+      "reading": "こうげんれいしょく",
+      "meaning": "flattery / honeyed words"
+    },
+    {
+      "source_index": 7295,
+      "id": "2858499",
+      "term": "航行衛星",
+      "reading": "こうこうえいせい",
+      "meaning": "navigation satellite"
+    },
+    {
+      "source_index": 7296,
+      "id": "2709300",
+      "term": "硬口蓋音",
+      "reading": "こうこうがいおん",
+      "meaning": "palatal"
+    },
+    {
+      "source_index": 7297,
+      "id": "2643510",
+      "term": "高校球児",
+      "reading": "こうこうきゅうじ",
+      "meaning": "high-school baseball player"
+    },
+    {
+      "source_index": 7298,
+      "id": "2829989",
+      "term": "交項級数",
+      "reading": "こうこうきゅうすう",
+      "meaning": "alternating series"
+    },
+    {
+      "source_index": 7299,
+      "id": "2827775",
+      "term": "航行区域",
+      "reading": "こうこうくいき",
+      "meaning": "regulated navigation area / navigation area / navigation zone"
     }
   ]
 }
