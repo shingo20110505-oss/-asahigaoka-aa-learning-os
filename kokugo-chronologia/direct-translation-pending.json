@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 6400,
-  "english_only_remaining": 8600,
+  "already_direct_japanese": 6450,
+  "english_only_remaining": 8550,
   "english_only_rank_counts": {
-    "(blank)": 8600
+    "(blank)": 8550
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 6400,
-      "id": "2030710",
-      "term": "鶏鳴狗盗",
-      "reading": "けいめいくとう",
-      "meaning": "person who resorts to petty tricks / person of small caliber who is only capable of petty tricks"
-    },
-    {
-      "source_index": 6401,
-      "id": "1727690",
-      "term": "啓蒙運動",
-      "reading": "けいもううんどう",
-      "meaning": "enlightenment movement / the Enlightenment"
-    },
-    {
-      "source_index": 6402,
-      "id": "2079110",
-      "term": "啓蒙活動",
-      "reading": "けいもうかつどう",
-      "meaning": "information campaign / awareness program"
-    },
-    {
-      "source_index": 6403,
-      "id": "1727670",
-      "term": "啓蒙思想",
-      "reading": "けいもうしそう",
-      "meaning": "the philosophy of the European Enlightenment"
-    },
-    {
-      "source_index": 6404,
-      "id": "1727680",
-      "term": "啓蒙思潮",
-      "reading": "けいもうしちょう",
-      "meaning": "enlightenment movement / the Enlightenment"
-    },
-    {
-      "source_index": 6405,
-      "id": "2145490",
-      "term": "啓蒙主義",
-      "reading": "けいもうしゅぎ",
-      "meaning": "illuminism / enlightenment"
-    },
-    {
-      "source_index": 6406,
-      "id": "2828640",
-      "term": "契約違反",
-      "reading": "けいやくいはん",
-      "meaning": "breach of contract"
-    },
-    {
-      "source_index": 6407,
-      "id": "1250200",
-      "term": "契約期間",
-      "reading": "けいやくきかん",
-      "meaning": "contract period"
-    },
-    {
-      "source_index": 6408,
-      "id": "2517620",
-      "term": "契約結婚",
-      "reading": "けいやくけっこん",
-      "meaning": "contract marriage / marriage by contract"
-    },
-    {
-      "source_index": 6409,
-      "id": "1991380",
-      "term": "契約更改",
-      "reading": "けいやくこうかい",
-      "meaning": "contract renewal"
-    },
-    {
-      "source_index": 6410,
-      "id": "2201130",
-      "term": "契約交渉",
-      "reading": "けいやくこうしょう",
-      "meaning": "contract negotiation / contract discussion"
-    },
-    {
-      "source_index": 6411,
-      "id": "1991370",
-      "term": "契約雇用",
-      "reading": "けいやくこよう",
-      "meaning": "contract employment"
-    },
-    {
-      "source_index": 6412,
-      "id": "1991390",
-      "term": "契約社員",
-      "reading": "けいやくしゃいん",
-      "meaning": "contract employee"
-    },
-    {
-      "source_index": 6413,
-      "id": "2748510",
-      "term": "契約自由",
-      "reading": "けいやくじゆう",
-      "meaning": "freedom of contract"
-    },
-    {
-      "source_index": 6414,
-      "id": "2832830",
-      "term": "契約条件",
-      "reading": "けいやくじょうけん",
-      "meaning": "conditions of a contract / terms of a contract"
-    },
-    {
-      "source_index": 6415,
-      "id": "2682930",
-      "term": "契約締結",
-      "reading": "けいやくていけつ",
-      "meaning": "conclusion of a contract / consummation of a contract"
-    },
-    {
-      "source_index": 6416,
-      "id": "2854399",
-      "term": "契約変更",
-      "reading": "けいやくへんこう",
-      "meaning": "alteration of contract / contract modification / contractual change"
-    },
-    {
-      "source_index": 6417,
-      "id": "2839002",
-      "term": "契約満了",
-      "reading": "けいやくまんりょう",
-      "meaning": "contract expiry / contract expiration"
-    },
-    {
-      "source_index": 6418,
-      "id": "1991410",
-      "term": "契約問題",
-      "reading": "けいやくもんだい",
-      "meaning": "contract dispute"
-    },
-    {
-      "source_index": 6419,
-      "id": "2863353",
-      "term": "経由銀行",
-      "reading": "けいゆぎんこう",
-      "meaning": "intermediary bank / correspondent bank"
-    },
-    {
-      "source_index": 6420,
-      "id": "1250440",
-      "term": "形容詞幹",
-      "reading": "けいようしかん",
-      "meaning": "stem (word)"
-    },
-    {
-      "source_index": 6421,
-      "id": "2028470",
-      "term": "形容詞句",
-      "reading": "けいようしく",
-      "meaning": "adjective phrase / adjectival phrase"
-    },
-    {
-      "source_index": 6422,
-      "id": "2852407",
-      "term": "形容詞的",
-      "reading": "けいようしてき",
-      "meaning": "adjectival"
-    },
-    {
-      "source_index": 6423,
-      "id": "2512960",
-      "term": "茎葉植物",
-      "reading": "けいようしょくぶつ",
-      "meaning": "cormophyte"
-    },
-    {
-      "source_index": 6424,
-      "id": "1250450",
-      "term": "形容動詞",
-      "reading": "けいようどうし",
-      "meaning": "adjectival noun (in Japanese) / quasi-adjective / nominal adjective"
-    },
-    {
-      "source_index": 6425,
-      "id": "2160820",
-      "term": "形容矛盾",
-      "reading": "けいようむじゅん",
-      "meaning": "contradictio in adjecto / contradiction between an adjective and the noun it modifies (wooden iron, hot ice, etc.)"
-    },
-    {
-      "source_index": 6426,
-      "id": "2704830",
-      "term": "鶏卵素麺",
-      "reading": "けいらんそうめん",
-      "meaning": "sweet of egg yolks drawn into strands and boiled in sugar syrup (orig. from Portugal) / angel hair / fios de ovos"
-    },
-    {
-      "source_index": 6427,
-      "id": "2014520",
-      "term": "軽竜騏兵",
-      "reading": "けいりゅうきへい",
-      "meaning": "(Royal) light cavalry"
-    },
-    {
-      "source_index": 6428,
-      "id": "2830872",
-      "term": "係留施設",
-      "reading": "けいりゅうしせつ",
-      "meaning": "mooring facilities / moorage / berthing facility"
-    },
-    {
-      "source_index": 6429,
-      "id": "2793890",
-      "term": "稽留流産",
-      "reading": "けいりゅうりゅうざん",
-      "meaning": "delayed miscarriage / silent miscarriage / missed abortion"
-    },
-    {
-      "source_index": 6430,
-      "id": "2829629",
-      "term": "計量化学",
-      "reading": "けいりょうかがく",
-      "meaning": "chemometrics"
-    },
-    {
-      "source_index": 6431,
-      "id": "2838581",
-      "term": "軽量形鋼",
-      "reading": "けいりょうかたこう",
-      "meaning": "light gauge steel"
-    },
-    {
-      "source_index": 6432,
-      "id": "2861595",
-      "term": "計量単位",
-      "reading": "けいりょうたんい",
-      "meaning": "unit of measurement"
-    },
-    {
-      "source_index": 6433,
-      "id": "2352700",
-      "term": "軽量端末",
-      "reading": "けいりょうたんまつ",
-      "meaning": "thin client"
-    },
-    {
-      "source_index": 6434,
-      "id": "2838580",
-      "term": "軽量鉄骨",
-      "reading": "けいりょうてっこつ",
-      "meaning": "light gauge steel"
-    },
-    {
-      "source_index": 6435,
-      "id": "1933230",
-      "term": "競輪選手",
-      "reading": "けいりんせんしゅ",
-      "meaning": "(professional) keirin cyclist"
-    },
-    {
-      "source_index": 6436,
-      "id": "2044500",
-      "term": "経歴詐称",
-      "reading": "けいれきさしょう",
-      "meaning": "misrepresentation (falsification) of one's past record (personal history)"
-    },
-    {
-      "source_index": 6437,
-      "id": "2506980",
-      "term": "系列関係",
-      "reading": "けいれつかんけい",
-      "meaning": "paradigmatic relation"
-    },
-    {
-      "source_index": 6438,
-      "id": "1769340",
-      "term": "系列会社",
-      "reading": "けいれつがいしゃ",
-      "meaning": "affiliate company"
-    },
-    {
-      "source_index": 6439,
-      "id": "2702840",
-      "term": "系列取引",
-      "reading": "けいれつとりひき",
-      "meaning": "keiretsu transaction / financial transaction between affiliated enterprises / intragroup business deal"
-    },
-    {
-      "source_index": 6440,
-      "id": "2850559",
-      "term": "敬老手帳",
-      "reading": "けいろうてちょう",
-      "meaning": "discount pass for the elderly"
-    },
-    {
-      "source_index": 6441,
-      "id": "2243160",
-      "term": "経路係数",
-      "reading": "けいろけいすう",
-      "meaning": "path coefficient"
-    },
-    {
-      "source_index": 6442,
-      "id": "2352300",
-      "term": "経路制御",
-      "reading": "けいろせいぎょ",
-      "meaning": "routing control"
-    },
-    {
-      "source_index": 6443,
-      "id": "1251710",
-      "term": "経路積分",
-      "reading": "けいろせきぶん",
-      "meaning": "path integral"
-    },
-    {
-      "source_index": 6444,
-      "id": "2352310",
-      "term": "経路選択",
-      "reading": "けいろせんたく",
-      "meaning": "routing"
-    },
-    {
-      "source_index": 6445,
-      "id": "1976500",
-      "term": "怪我の功名",
-      "reading": "けがのこうみょう",
-      "meaning": "fortunate error / lucky break / fluke"
-    },
-    {
-      "source_index": 6446,
-      "id": "2857378",
-      "term": "毛皮商人",
-      "reading": "けがわしょうにん",
-      "meaning": "fur trader"
-    },
-    {
-      "source_index": 6447,
-      "id": "2521960",
-      "term": "毛皮貿易",
-      "reading": "けがわぼうえき",
-      "meaning": "fur trade"
-    },
-    {
-      "source_index": 6448,
-      "id": "2818860",
-      "term": "化粧下地",
-      "reading": "けしょうしたじ",
-      "meaning": "makeup base / liquid foundation / primer"
-    },
-    {
-      "source_index": 6449,
-      "id": "1187030",
-      "term": "化粧石鹸",
-      "reading": "けしょうせっけん",
-      "meaning": "toilet soap"
-    },
     {
       "source_index": 6450,
       "id": "2850819",
@@ -7010,6 +6660,356 @@
       "term": "口承文学",
       "reading": "こうしょうぶんがく",
       "meaning": "oral literature / folk literature"
+    },
+    {
+      "source_index": 7400,
+      "id": "2409590",
+      "term": "口承文芸",
+      "reading": "こうしょうぶんげい",
+      "meaning": "oral literature / folklore"
+    },
+    {
+      "source_index": 7401,
+      "id": "1274070",
+      "term": "公証役場",
+      "reading": "こうしょうやくば",
+      "meaning": "notary public's office"
+    },
+    {
+      "source_index": 7402,
+      "id": "2509830",
+      "term": "紅色植物",
+      "reading": "こうしょくしょくぶつ",
+      "meaning": "red algae / Rhodophyta"
+    },
+    {
+      "source_index": 7403,
+      "id": "1274090",
+      "term": "公職追放",
+      "reading": "こうしょくついほう",
+      "meaning": "expulsion of a public official and subsequent ban on participating in politics (by the SCAP during the allied occupation) / purge"
+    },
+    {
+      "source_index": 7404,
+      "id": "1835770",
+      "term": "好色文学",
+      "reading": "こうしょくぶんがく",
+      "meaning": "erotic or pornographic literature (Edo period)"
+    },
+    {
+      "source_index": 7405,
+      "id": "2409140",
+      "term": "高所得者",
+      "reading": "こうしょとくしゃ",
+      "meaning": "high-income earner"
+    },
+    {
+      "source_index": 7406,
+      "id": "2864800",
+      "term": "抗真菌剤",
+      "reading": "こうしんきんざい",
+      "meaning": "antifungal medication / antifungal drug / antifungal agent"
+    },
+    {
+      "source_index": 7407,
+      "id": "2700410",
+      "term": "抗真菌薬",
+      "reading": "こうしんきんやく",
+      "meaning": "antifungal drug / antifungal medication / antifungal agent"
+    },
+    {
+      "source_index": 7408,
+      "id": "2513380",
+      "term": "甲申事変",
+      "reading": "こうしんじへん",
+      "meaning": "Gapsin Coup (of Korea; 1884)"
+    },
+    {
+      "source_index": 7409,
+      "id": "2608540",
+      "term": "口唇性格",
+      "reading": "こうしんせいかく",
+      "meaning": "oral character (in psychoanalysis)"
+    },
+    {
+      "source_index": 7410,
+      "id": "2851854",
+      "term": "甲申政変",
+      "reading": "こうしんせいへん",
+      "meaning": "Gapsin Coup (failed reformist coup d'état in Korea; 1884) / Kapsin Coup"
+    },
+    {
+      "source_index": 7411,
+      "id": "2851837",
+      "term": "甲信地方",
+      "reading": "こうしんちほう",
+      "meaning": "Kōshin region"
+    },
+    {
+      "source_index": 7412,
+      "id": "2867543",
+      "term": "口唇動脈",
+      "reading": "こうしんどうみゃく",
+      "meaning": "labial artery"
+    },
+    {
+      "source_index": 7413,
+      "id": "2678370",
+      "term": "庚申薔薇",
+      "reading": "こうしんばら",
+      "meaning": "China rose (Rosa chinensis) / monthly rosebush"
+    },
+    {
+      "source_index": 7414,
+      "id": "1283630",
+      "term": "高信頼性",
+      "reading": "こうしんらいせい",
+      "meaning": "high reliability"
+    },
+    {
+      "source_index": 7415,
+      "id": "2400000",
+      "term": "更新履歴",
+      "reading": "こうしんりれき",
+      "meaning": "change log / record of updates / update history"
+    },
+    {
+      "source_index": 7416,
+      "id": "1676940",
+      "term": "公示価格",
+      "reading": "こうじかかく",
+      "meaning": "declared value"
+    },
+    {
+      "source_index": 7417,
+      "id": "2409380",
+      "term": "柑子栗毛",
+      "reading": "こうじくりげ",
+      "meaning": "sorrel (horse coat color)"
+    },
+    {
+      "source_index": 7418,
+      "id": "2665450",
+      "term": "高次言語",
+      "reading": "こうじげんご",
+      "meaning": "metalanguage"
+    },
+    {
+      "source_index": 7419,
+      "id": "1278140",
+      "term": "工事現場",
+      "reading": "こうじげんば",
+      "meaning": "construction site"
+    },
+    {
+      "source_index": 7420,
+      "id": "2665460",
+      "term": "高次効果",
+      "reading": "こうじこうか",
+      "meaning": "higher-order effect"
+    },
+    {
+      "source_index": 7421,
+      "id": "2811370",
+      "term": "工事車両",
+      "reading": "こうじしゃりょう",
+      "meaning": "construction vehicle (bulldozer, backhoe, loader, etc.)"
+    },
+    {
+      "source_index": 7422,
+      "id": "2044950",
+      "term": "好事多魔",
+      "reading": "こうじたま",
+      "meaning": "happy events are often accompanied by difficulties / unsullied joy is rare"
+    },
+    {
+      "source_index": 7423,
+      "id": "1676930",
+      "term": "公示地価",
+      "reading": "こうじちか",
+      "meaning": "official land price / assessed value of land"
+    },
+    {
+      "source_index": 7424,
+      "id": "2696780",
+      "term": "後獣下綱",
+      "reading": "こうじゅうかこう",
+      "meaning": "Metatheria (mammalian infraclass)"
+    },
+    {
+      "source_index": 7425,
+      "id": "1276320",
+      "term": "口述試験",
+      "reading": "こうじゅつしけん",
+      "meaning": "oral examination"
+    },
+    {
+      "source_index": 7426,
+      "id": "1678110",
+      "term": "口述筆記",
+      "reading": "こうじゅつひっき",
+      "meaning": "taking dictation / note-taking"
+    },
+    {
+      "source_index": 7427,
+      "id": "2235430",
+      "term": "紅綬褒章",
+      "reading": "こうじゅほうしょう",
+      "meaning": "Medal with Red Ribbon"
+    },
+    {
+      "source_index": 7428,
+      "id": "2842210",
+      "term": "恒常河川",
+      "reading": "こうじょうかせん",
+      "meaning": "perennial river / perennial stream / permanent river"
+    },
+    {
+      "source_index": 7429,
+      "id": "2843522",
+      "term": "工場飼育",
+      "reading": "こうじょうしいく",
+      "meaning": "factory farming / confinement farming / intensive farming"
+    },
+    {
+      "source_index": 7430,
+      "id": "2833788",
+      "term": "恒常所得",
+      "reading": "こうじょうしょとく",
+      "meaning": "permanent income"
+    },
+    {
+      "source_index": 7431,
+      "id": "2066620",
+      "term": "向上進化",
+      "reading": "こうじょうしんか",
+      "meaning": "anagenesis"
+    },
+    {
+      "source_index": 7432,
+      "id": "1278170",
+      "term": "工場実習",
+      "reading": "こうじょうじっしゅう",
+      "meaning": "coop / internship"
+    },
+    {
+      "source_index": 7433,
+      "id": "1790220",
+      "term": "甲状腺炎",
+      "reading": "こうじょうせんえん",
+      "meaning": "thyroiditis"
+    },
+    {
+      "source_index": 7434,
+      "id": "2446760",
+      "term": "甲状腺腫",
+      "reading": "こうじょうせんしゅ",
+      "meaning": "goiter / goitre"
+    },
+    {
+      "source_index": 7435,
+      "id": "2814870",
+      "term": "工場団地",
+      "reading": "こうじょうだんち",
+      "meaning": "industrial complex / industrial park"
+    },
+    {
+      "source_index": 7436,
+      "id": "1935030",
+      "term": "工場地帯",
+      "reading": "こうじょうちたい",
+      "meaning": "factory or industrial district or area"
+    },
+    {
+      "source_index": 7437,
+      "id": "2146580",
+      "term": "工場直売",
+      "reading": "こうじょうちょくばい",
+      "meaning": "factory-direct sales"
+    },
+    {
+      "source_index": 7438,
+      "id": "2151560",
+      "term": "甲状軟骨",
+      "reading": "こうじょうなんこつ",
+      "meaning": "thyroid cartilage"
+    },
+    {
+      "source_index": 7439,
+      "id": "2842650",
+      "term": "工場排水",
+      "reading": "こうじょうはいすい",
+      "meaning": "industrial wastewater / liquid waste from a factory"
+    },
+    {
+      "source_index": 7440,
+      "id": "2583920",
+      "term": "工場閉鎖",
+      "reading": "こうじょうへいさ",
+      "meaning": "factory closure / factory shutdown"
+    },
+    {
+      "source_index": 7441,
+      "id": "2519360",
+      "term": "工場簿記",
+      "reading": "こうじょうぼき",
+      "meaning": "factory accounting / factory bookkeeping / manufacturer's account"
+    },
+    {
+      "source_index": 7442,
+      "id": "1677050",
+      "term": "公序良俗",
+      "reading": "こうじょりょうぞく",
+      "meaning": "public order and morals / social standards / public policy"
+    },
+    {
+      "source_index": 7443,
+      "id": "2030160",
+      "term": "黄塵万丈",
+      "reading": "こうじんばんじょう",
+      "meaning": "rising cloud of (yellowish) dust"
+    },
+    {
+      "source_index": 7444,
+      "id": "2172850",
+      "term": "荒神目抜",
+      "reading": "こうじんめぬけ",
+      "meaning": "Sebastes iracundus (species of rockfish)"
+    },
+    {
+      "source_index": 7445,
+      "id": "2802270",
+      "term": "後塵を拝する",
+      "reading": "こうじんをはいする",
+      "meaning": "to be left in the dust (of) / to be outdone (by)"
+    },
+    {
+      "source_index": 7446,
+      "id": "2235800",
+      "term": "降水確率",
+      "reading": "こうすいかくりつ",
+      "meaning": "chance of precipitation / chance of rain"
+    },
+    {
+      "source_index": 7447,
+      "id": "2438590",
+      "term": "工数管理",
+      "reading": "こうすうかんり",
+      "meaning": "man-hour management / manpower management"
+    },
+    {
+      "source_index": 7448,
+      "id": "2604700",
+      "term": "洪水神話",
+      "reading": "こうずいしんわ",
+      "meaning": "flood myth"
+    },
+    {
+      "source_index": 7449,
+      "id": "2044970",
+      "term": "後生可畏",
+      "reading": "こうせいかい",
+      "meaning": "the young should be regarded with respect"
     }
   ]
 }
