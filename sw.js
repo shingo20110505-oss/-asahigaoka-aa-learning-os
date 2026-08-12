@@ -1,5 +1,5 @@
 'use strict';
-const VERSION='2.5.53-quality2-chronologia1000-kokugo-direct-ja';
+const VERSION='2.5.54-quality2-chronologia1000-kokugo-direct-ja';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;
