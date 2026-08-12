@@ -1,6 +1,6 @@
 (()=>{'use strict';
 if(window.__AA_MOBILE_LAYOUT_GUARD_V1__)return;
-window.__AA_MOBILE_LAYOUT_GUARD_V1__={version:'1.0.0'};
+window.__AA_MOBILE_LAYOUT_GUARD_V1__={version:'1.0.1'};
 
 const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 if(isIOS)document.documentElement.classList.add('aa-ios');
@@ -15,6 +15,8 @@ function ensureCSS(){
  #app{transform:none!important;filter:none!important;perspective:none!important;contain:none!important;will-change:auto!important}
  body>.nav{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;width:100%!important;max-width:none!important;margin:0!important;transform:none!important;z-index:4000!important}
  .aa-ios body>.nav{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:var(--card)!important}
+ .modal{z-index:5000!important}
+ .modalBox{padding-bottom:calc(18px + env(safe-area-inset-bottom,0px))}
  `;
  document.head.appendChild(s);
 }
