@@ -17,6 +17,7 @@ const voice = read('companion7-runtime.js');
 const visual = read('login-companion-v1.js');
 const prod = read('login-production-test-v1.js');
 const loader = read('v23-loader.js');
+const vocabMobile = read('vocab-mobile-card-fix-v1.js');
 const quality = read('quality-repair-v1.js');
 const qualityFinal = read('quality-repair-final-v1.js');
 const qualityCI = read('quality-ci-runner-v1.js');
@@ -43,6 +44,7 @@ for(const asset of [
   'english-vocab-examples-phrases-v1.js',
   'english-vocab-examples-apply-v1.js',
   'english-vocab-example-ui-v1.js',
+  'vocab-mobile-card-fix-v1.js',
   'vocab-row-toggle-v1.js',
   'vocab-sort-v1.js',
   'diagnostics.html',
@@ -91,6 +93,11 @@ requireText(loader, "'quality-repair-final-v1.js'", 'final quality repair load o
 requireText(loader, "'quality-ci-runner-v1.js'", 'browser quality runner load order');
 requireText(loader, "'english-vocab-examples-apply-v1.js'", 'vocab example audit load order');
 requireText(loader, "'english-vocab-example-ui-v1.js'", 'vocab example UI load order');
+requireText(loader, "'vocab-mobile-card-fix-v1.js'", 'compact vocab mobile card load order');
+requireText(vocabMobile, 'window.__AA_VOCAB_MOBILE_CARD_FIX_V1__', 'compact vocab mobile card marker');
+requireText(vocabMobile, 'display:flex!important', 'compact vocab flex card layout');
+requireText(vocabMobile, 'flex-wrap:wrap!important', 'compact vocab card wrapping');
+requireText(vocabMobile, 'data-aa-vocab-mobile-card-fix', 'compact vocab runtime marker');
 requireText(quality, 'window.__AA_QUALITY_REPAIR_V1__', 'quality repair marker');
 requireText(quality, 'function buildCloze', 'cloze answer exposure repair');
 requireText(quality, 'planVocabQueue=function', 'six vocab plus two collocation repair');
@@ -128,4 +135,4 @@ for(const file of new Set(referenced)){
   if(!fs.existsSync(file)) throw new Error(`mobile loader points to missing file: ${file}`);
 }
 
-console.log(`runtime assets OK: referenced=${new Set(referenced).size}, final quality/Chronologia/layout/login/PWA/vocab-example checks passed`);
+console.log(`runtime assets OK: referenced=${new Set(referenced).size}, final quality/Chronologia/layout/login/PWA/vocab-example/mobile-card checks passed`);
