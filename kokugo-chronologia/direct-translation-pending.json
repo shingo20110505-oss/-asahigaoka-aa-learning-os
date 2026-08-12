@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 7000,
-  "english_only_remaining": 8000,
+  "already_direct_japanese": 7050,
+  "english_only_remaining": 7950,
   "english_only_rank_counts": {
-    "(blank)": 8000
+    "(blank)": 7950
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 7000,
-      "id": "2843359",
-      "term": "現代主義",
-      "reading": "げんだいしゅぎ",
-      "meaning": "modernism"
-    },
-    {
-      "source_index": 7001,
-      "id": "2424830",
-      "term": "現代小説",
-      "reading": "げんだいしょうせつ",
-      "meaning": "contemporary novel / modern novel"
-    },
-    {
-      "source_index": 7002,
-      "id": "5255175",
-      "term": "現代新書",
-      "reading": "げんだいしんしょ",
-      "meaning": "New Library of Knowledge (series of paperbacks published since 1964 by Kodansha)"
-    },
-    {
-      "source_index": 7003,
-      "id": "2671530",
-      "term": "現代生活",
-      "reading": "げんだいせいかつ",
-      "meaning": "contemporary life / present-day life"
-    },
-    {
-      "source_index": 7004,
-      "id": "2665100",
-      "term": "現代美術",
-      "reading": "げんだいびじゅつ",
-      "meaning": "contemporary art"
-    },
-    {
-      "source_index": 7005,
-      "id": "2110410",
-      "term": "現代舞踊",
-      "reading": "げんだいぶよう",
-      "meaning": "contemporary dance / modern dance"
-    },
-    {
-      "source_index": 7006,
-      "id": "2638570",
-      "term": "現代文学",
-      "reading": "げんだいぶんがく",
-      "meaning": "contemporary literature / modern literature"
-    },
-    {
-      "source_index": 7007,
-      "id": "1263850",
-      "term": "現代文明",
-      "reading": "げんだいぶんめい",
-      "meaning": "modern civilization / modern civilisation"
-    },
-    {
-      "source_index": 7008,
-      "id": "2401350",
-      "term": "現代用語",
-      "reading": "げんだいようご",
-      "meaning": "modern term / neologism"
-    },
-    {
-      "source_index": 7009,
-      "id": "2855287",
-      "term": "現地解散",
-      "reading": "げんちかいさん",
-      "meaning": "dispersing after the event (i.e. making one's own way home)"
-    },
-    {
-      "source_index": 7010,
-      "id": "2747590",
-      "term": "現地採用",
-      "reading": "げんちさいよう",
-      "meaning": "hiring locally / locally-hire / local employee"
-    },
-    {
-      "source_index": 7011,
-      "id": "2855286",
-      "term": "現地集合",
-      "reading": "げんちしゅうごう",
-      "meaning": "meeting at the destination (as opposed to travelling there as a group)"
-    },
-    {
-      "source_index": 7012,
-      "id": "1934550",
-      "term": "現地時間",
-      "reading": "げんちじかん",
-      "meaning": "local time"
-    },
-    {
-      "source_index": 7013,
-      "id": "1934570",
-      "term": "現地生産",
-      "reading": "げんちせいさん",
-      "meaning": "local production"
-    },
-    {
-      "source_index": 7014,
-      "id": "1934580",
-      "term": "現地調査",
-      "reading": "げんちちょうさ",
-      "meaning": "field survey / field work (research) / on-the-spot investigation"
-    },
-    {
-      "source_index": 7015,
-      "id": "2013810",
-      "term": "現地調達",
-      "reading": "げんちちょうたつ",
-      "meaning": "local procurement / local content / sourcing locally"
-    },
-    {
-      "source_index": 7016,
-      "id": "2152190",
-      "term": "現地通貨",
-      "reading": "げんちつうか",
-      "meaning": "local currency"
-    },
-    {
-      "source_index": 7017,
-      "id": "2118940",
-      "term": "現地到着",
-      "reading": "げんちとうちゃく",
-      "meaning": "arrival on location"
-    },
-    {
-      "source_index": 7018,
-      "id": "1716000",
-      "term": "現地報告",
-      "reading": "げんちほうこく",
-      "meaning": "on-the-spot report"
-    },
-    {
-      "source_index": 7019,
-      "id": "1934590",
-      "term": "現地法人",
-      "reading": "げんちほうじん",
-      "meaning": "local subsidiary"
-    },
-    {
-      "source_index": 7020,
-      "id": "5252452",
-      "term": "元朝秘史",
-      "reading": "げんちょうひし",
-      "meaning": "The Secret History of the Mongols (the oldest surviving Mongolian-language literary work)"
-    },
-    {
-      "source_index": 7021,
-      "id": "2839019",
-      "term": "原著作物",
-      "reading": "げんちょさくぶつ",
-      "meaning": "underlying work / original work"
-    },
-    {
-      "source_index": 7022,
-      "id": "2504640",
-      "term": "原付一種",
-      "reading": "げんつきいっしゅ",
-      "meaning": "motorcycle, less than or equal to 50cc"
-    },
-    {
-      "source_index": 7023,
-      "id": "2502260",
-      "term": "原付二種",
-      "reading": "げんつきにしゅ",
-      "meaning": "motorcycle less than or equal to 125cc"
-    },
-    {
-      "source_index": 7024,
-      "id": "2632540",
-      "term": "限定出版",
-      "reading": "げんていしゅっぱん",
-      "meaning": "limited publication"
-    },
-    {
-      "source_index": 7025,
-      "id": "2869167",
-      "term": "限定承認",
-      "reading": "げんていしょうにん",
-      "meaning": "qualified acceptance"
-    },
-    {
-      "source_index": 7026,
-      "id": "1803650",
-      "term": "限定戦争",
-      "reading": "げんていせんそう",
-      "meaning": "limited war"
-    },
-    {
-      "source_index": 7027,
-      "id": "2829099",
-      "term": "限定販売",
-      "reading": "げんていはんばい",
-      "meaning": "limited edition sale / limited sale"
-    },
-    {
-      "source_index": 7028,
-      "id": "2353850",
-      "term": "限定保証",
-      "reading": "げんていほしょう",
-      "meaning": "limited warranties"
-    },
-    {
-      "source_index": 7029,
-      "id": "2258730",
-      "term": "限定用法",
-      "reading": "げんていようほう",
-      "meaning": "restrictive (use)"
-    },
-    {
-      "source_index": 7030,
-      "id": "2851788",
-      "term": "原点回帰",
-      "reading": "げんてんかいき",
-      "meaning": "returning to the starting point"
-    },
-    {
-      "source_index": 7031,
-      "id": "2044720",
-      "term": "減点主義",
-      "reading": "げんてんしゅぎ",
-      "meaning": "demerit system / points-off system"
-    },
-    {
-      "source_index": 7032,
-      "id": "2353860",
-      "term": "限度検査",
-      "reading": "げんどけんさ",
-      "meaning": "limit check"
-    },
-    {
-      "source_index": 7033,
-      "id": "2836194",
-      "term": "限度見本",
-      "reading": "げんどみほん",
-      "meaning": "boundary sample / limit sample / minimum acceptance sample"
-    },
-    {
-      "source_index": 7034,
-      "id": "2857924",
-      "term": "元和偃武",
-      "reading": "げんなえんぶ",
-      "meaning": "Genna armistice (period following the fall of Osaka Castle in 1615)"
-    },
-    {
-      "source_index": 7035,
-      "id": "2848968",
-      "term": "減農薬米",
-      "reading": "げんのうやくまい",
-      "meaning": "rice grown with reduced agricultural chemicals"
-    },
-    {
-      "source_index": 7036,
-      "id": "1934490",
-      "term": "現場監督",
-      "reading": "げんばかんとく",
-      "meaning": "field overseer / site foreman"
-    },
-    {
-      "source_index": 7037,
-      "id": "2868651",
-      "term": "原爆投下",
-      "reading": "げんばくとうか",
-      "meaning": "atomic bombing"
-    },
-    {
-      "source_index": 7038,
-      "id": "1716240",
-      "term": "現場検証",
-      "reading": "げんばけんしょう",
-      "meaning": "on-the-site inspection"
-    },
-    {
-      "source_index": 7039,
-      "id": "1982900",
-      "term": "現場主義",
-      "reading": "げんばしゅぎ",
-      "meaning": "bottom-up approach to management / on-the-spot decision-making / hands-on approach (policy, etc.)"
-    },
-    {
-      "source_index": 7040,
-      "id": "1716230",
-      "term": "現場中継",
-      "reading": "げんばちゅうけい",
-      "meaning": "on-the-spot broadcast"
-    },
-    {
-      "source_index": 7041,
-      "id": "2837775",
-      "term": "厳罰主義",
-      "reading": "げんばつしゅぎ",
-      "meaning": "severe punishment policy / zero-tolerance policy / draconianism"
-    },
-    {
-      "source_index": 7042,
-      "id": "2119390",
-      "term": "現場到着",
-      "reading": "げんばとうちゃく",
-      "meaning": "arrival on scene / arrival on location"
-    },
-    {
-      "source_index": 7043,
-      "id": "2867160",
-      "term": "現場百遍",
-      "reading": "げんばひゃっぺん",
-      "meaning": "a crime scene is best visited 100 times"
-    },
-    {
-      "source_index": 7044,
-      "id": "2654850",
-      "term": "原発危機",
-      "reading": "げんぱつきき",
-      "meaning": "nuclear crisis / nuclear power-plant crisis"
-    },
-    {
-      "source_index": 7045,
-      "id": "2158400",
-      "term": "原発銀座",
-      "reading": "げんぱつぎんざ",
-      "meaning": "area where a string of nuclear power plants are located"
-    },
-    {
-      "source_index": 7046,
-      "id": "2626350",
-      "term": "原発震災",
-      "reading": "げんぱつしんさい",
-      "meaning": "combined earthquake and nuclear power plant disaster"
-    },
-    {
-      "source_index": 7047,
-      "id": "2615770",
-      "term": "原発事故",
-      "reading": "げんぱつじこ",
-      "meaning": "nuclear power plant accident / nuclear accident"
-    },
-    {
-      "source_index": 7048,
-      "id": "2852675",
-      "term": "現波符号",
-      "reading": "げんぱふごう",
-      "meaning": "cable code / Morse cable code"
-    },
-    {
-      "source_index": 7049,
-      "id": "2812050",
-      "term": "玄武岩質",
-      "reading": "げんぶがんしつ",
-      "meaning": "basaltic"
-    },
     {
       "source_index": 7050,
       "id": "2162570",
@@ -7010,6 +6660,356 @@
       "term": "国民審査",
       "reading": "こくみんしんさ",
       "meaning": "national review / national referendum on the appointment or re-appointment of Supreme Court judges, held at the same time as general elections to the House of Representatives"
+    },
+    {
+      "source_index": 8000,
+      "id": "2100210",
+      "term": "国民新党",
+      "reading": "こくみんしんとう",
+      "meaning": "Kokumin Shinto / People's New Party (Japanese political party)"
+    },
+    {
+      "source_index": 8001,
+      "id": "1657520",
+      "term": "国民生活",
+      "reading": "こくみんせいかつ",
+      "meaning": "life of the people / people's lives / citizens' livelihoods"
+    },
+    {
+      "source_index": 8002,
+      "id": "2414400",
+      "term": "国民政府",
+      "reading": "こくみんせいふ",
+      "meaning": "Nationalist Government (of the Republic of China; 1924-1948)"
+    },
+    {
+      "source_index": 8003,
+      "id": "2864045",
+      "term": "国民戦線",
+      "reading": "こくみんせんせん",
+      "meaning": "National Front (political party)"
+    },
+    {
+      "source_index": 8004,
+      "id": "2650670",
+      "term": "国民全体",
+      "reading": "こくみんぜんたい",
+      "meaning": "whole nation / entire nation / all the people"
+    },
+    {
+      "source_index": 8005,
+      "id": "1287110",
+      "term": "国民投票",
+      "reading": "こくみんとうひょう",
+      "meaning": "national referendum"
+    },
+    {
+      "source_index": 8006,
+      "id": "2476680",
+      "term": "国民道徳",
+      "reading": "こくみんどうとく",
+      "meaning": "national morality"
+    },
+    {
+      "source_index": 8007,
+      "id": "1657530",
+      "term": "国民年金",
+      "reading": "こくみんねんきん",
+      "meaning": "national pension / government pension system"
+    },
+    {
+      "source_index": 8008,
+      "id": "2652360",
+      "term": "国民不在",
+      "reading": "こくみんふざい",
+      "meaning": "out of touch with the voters / indifferent to the concerns of the people"
+    },
+    {
+      "source_index": 8009,
+      "id": "1287140",
+      "term": "国務大臣",
+      "reading": "こくむだいじん",
+      "meaning": "minister of state / cabinet minister (in Japan)"
+    },
+    {
+      "source_index": 8010,
+      "id": "1287150",
+      "term": "国務長官",
+      "reading": "こくむちょうかん",
+      "meaning": "Secretary of State"
+    },
+    {
+      "source_index": 8011,
+      "id": "2850339",
+      "term": "穀物肥育",
+      "reading": "こくもつひいく",
+      "meaning": "grain feeding (livestock)"
+    },
+    {
+      "source_index": 8012,
+      "id": "1993230",
+      "term": "国有企業",
+      "reading": "こくゆうきぎょう",
+      "meaning": "state-owned enterprise / SOE"
+    },
+    {
+      "source_index": 8013,
+      "id": "1746380",
+      "term": "国有財産",
+      "reading": "こくゆうざいさん",
+      "meaning": "national property"
+    },
+    {
+      "source_index": 8014,
+      "id": "1746390",
+      "term": "国有鉄道",
+      "reading": "こくゆうてつどう",
+      "meaning": "national railway"
+    },
+    {
+      "source_index": 8015,
+      "id": "2713830",
+      "term": "国有林野",
+      "reading": "こくゆうりんや",
+      "meaning": "state-owned forests and fields"
+    },
+    {
+      "source_index": 8016,
+      "id": "1746300",
+      "term": "国立銀行",
+      "reading": "こくりつぎんこう",
+      "meaning": "national bank"
+    },
+    {
+      "source_index": 8017,
+      "id": "1657540",
+      "term": "国立劇場",
+      "reading": "こくりつげきじょう",
+      "meaning": "national theater"
+    },
+    {
+      "source_index": 8018,
+      "id": "1746290",
+      "term": "国立公園",
+      "reading": "こくりつこうえん",
+      "meaning": "national park"
+    },
+    {
+      "source_index": 8019,
+      "id": "1287200",
+      "term": "国立大学",
+      "reading": "こくりつだいがく",
+      "meaning": "national university"
+    },
+    {
+      "source_index": 8020,
+      "id": "2856922",
+      "term": "国立病院",
+      "reading": "こくりつびょういん",
+      "meaning": "national hospital / hospital run by a central government"
+    },
+    {
+      "source_index": 8021,
+      "id": "1746410",
+      "term": "国利民福",
+      "reading": "こくりみんぷく",
+      "meaning": "national interests and the people's welfare"
+    },
+    {
+      "source_index": 8022,
+      "id": "2837704",
+      "term": "黒竜江省",
+      "reading": "こくりゅうこうしょう",
+      "meaning": "Heilongjiang Province (China)"
+    },
+    {
+      "source_index": 8023,
+      "id": "2854313",
+      "term": "国連英検",
+      "reading": "こくれんえいけん",
+      "meaning": "United Nations Associations Test of English / UNATE"
+    },
+    {
+      "source_index": 8024,
+      "id": "2851286",
+      "term": "国連機関",
+      "reading": "こくれんきかん",
+      "meaning": "United Nations organ / UN organ"
+    },
+    {
+      "source_index": 8025,
+      "id": "5295480",
+      "term": "国連協会",
+      "reading": "こくれんきょうかい",
+      "meaning": "UN Association of the United States of America / UNA-USA"
+    },
+    {
+      "source_index": 8026,
+      "id": "2569990",
+      "term": "国連決議",
+      "reading": "こくれんけつぎ",
+      "meaning": "United Nations resolution / UN resolution"
+    },
+    {
+      "source_index": 8027,
+      "id": "1746670",
+      "term": "国連憲章",
+      "reading": "こくれんけんしょう",
+      "meaning": "UN Charter / Charter of the United Nations"
+    },
+    {
+      "source_index": 8028,
+      "id": "1287240",
+      "term": "国連総会",
+      "reading": "こくれんそうかい",
+      "meaning": "United Nations General Assembly / General Assembly of the United Nations"
+    },
+    {
+      "source_index": 8029,
+      "id": "2854002",
+      "term": "国連総長",
+      "reading": "こくれんそうちょう",
+      "meaning": "Secretary-General of the United Nations"
+    },
+    {
+      "source_index": 8030,
+      "id": "1287250",
+      "term": "国連大使",
+      "reading": "こくれんたいし",
+      "meaning": "UN ambassador"
+    },
+    {
+      "source_index": 8031,
+      "id": "5742522",
+      "term": "国連大学",
+      "reading": "こくれんだいがく",
+      "meaning": "United Nations University (abbr.) / UN University / UNU"
+    },
+    {
+      "source_index": 8032,
+      "id": "2133480",
+      "term": "国連本部",
+      "reading": "こくれんほんぶ",
+      "meaning": "United Nations (UN) Headquarters"
+    },
+    {
+      "source_index": 8033,
+      "id": "2869379",
+      "term": "刻露清秀",
+      "reading": "こくろせいしゅう",
+      "meaning": "clean and refreshing scenery of autumn"
+    },
+    {
+      "source_index": 8034,
+      "id": "1348070",
+      "term": "小口現金",
+      "reading": "こぐちげんきん",
+      "meaning": "petty cash"
+    },
+    {
+      "source_index": 8035,
+      "id": "2868666",
+      "term": "木口木版",
+      "reading": "こぐちもくはん",
+      "meaning": "wood engraving / endgrain woodcut"
+    },
+    {
+      "source_index": 8036,
+      "id": "1843290",
+      "term": "孤軍奮闘",
+      "reading": "こぐんふんとう",
+      "meaning": "fighting alone"
+    },
+    {
+      "source_index": 8037,
+      "id": "2863009",
+      "term": "固形石鹸",
+      "reading": "こけいせっけん",
+      "meaning": "bar soap / solid soap"
+    },
+    {
+      "source_index": 8038,
+      "id": "1685140",
+      "term": "固形燃料",
+      "reading": "こけいねんりょう",
+      "meaning": "solid fuel"
+    },
+    {
+      "source_index": 8039,
+      "id": "2259420",
+      "term": "小啄木鳥",
+      "reading": "こげら",
+      "meaning": "pygmy woodpecker (Dendrocopos kizuki)"
+    },
+    {
+      "source_index": 8040,
+      "id": "1267680",
+      "term": "虎口",
+      "reading": "ここう",
+      "meaning": "tiger's den / jaws of death / dangerous place"
+    },
+    {
+      "source_index": 8041,
+      "id": "2359070",
+      "term": "子構造体",
+      "reading": "ここうぞうたい",
+      "meaning": "child structure"
+    },
+    {
+      "source_index": 8042,
+      "id": "2588650",
+      "term": "戸口調査",
+      "reading": "ここうちょうさ",
+      "meaning": "national census / door-to-door census"
+    },
+    {
+      "source_index": 8043,
+      "id": "2055720",
+      "term": "此処彼処",
+      "reading": "ここかしこ",
+      "meaning": "here and there / around and about"
+    },
+    {
+      "source_index": 8044,
+      "id": "2865871",
+      "term": "古古古米",
+      "reading": "こここまい",
+      "meaning": "rice remaining from the harvest three years ago"
+    },
+    {
+      "source_index": 8045,
+      "id": "2542300",
+      "term": "ここに来て",
+      "reading": "ここにきて",
+      "meaning": "came here / coming here"
+    },
+    {
+      "source_index": 8046,
+      "id": "1593210",
+      "term": "個々別々",
+      "reading": "ここべつべつ",
+      "meaning": "each one separately"
+    },
+    {
+      "source_index": 8047,
+      "id": "2564820",
+      "term": "心が躍る",
+      "reading": "こころがおどる",
+      "meaning": "to be thrilled / to be excited"
+    },
+    {
+      "source_index": 8048,
+      "id": "1639980",
+      "term": "心が通う",
+      "reading": "こころがかよう",
+      "meaning": "to understand each other well / to relate to / to strike a sympathetic chord"
+    },
+    {
+      "source_index": 8049,
+      "id": "2572000",
+      "term": "心が通じる",
+      "reading": "こころがつうじる",
+      "meaning": "to relate to / to have one's feelings understood"
     }
   ]
 }
