@@ -1,466 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 2450,
-  "english_only_remaining": 12550,
+  "already_direct_japanese": 2500,
+  "english_only_remaining": 12500,
   "english_only_rank_counts": {
-    "(blank)": 12550
+    "(blank)": 12500
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 2450,
-      "id": "2073640",
-      "term": "解析力学",
-      "reading": "かいせきりきがく",
-      "meaning": "analytical mechanics / analytical dynamics",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2451,
-      "id": "1198710",
-      "term": "会席料理",
-      "reading": "かいせきりょうり",
-      "meaning": "set of dishes served on an individual tray for entertaining guests / banquet",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2452,
-      "id": "1200570",
-      "term": "懐石料理",
-      "reading": "かいせきりょうり",
-      "meaning": "traditional Japanese meal brought in courses",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2453,
-      "id": "2066300",
-      "term": "回折限界",
-      "reading": "かいせつげんかい",
-      "meaning": "diffraction limit",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2454,
-      "id": "1199550",
-      "term": "回折格子",
-      "reading": "かいせつこうし",
-      "meaning": "diffraction grating",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2455,
-      "id": "1919040",
-      "term": "回折領域",
-      "reading": "かいせつりょういき",
-      "meaning": "diffraction region",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2456,
-      "id": "2345000",
-      "term": "回線業者",
-      "reading": "かいせんぎょうしゃ",
-      "meaning": "telecommunications carrier / PTT",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2457,
-      "id": "2170960",
-      "term": "回旋腱板",
-      "reading": "かいせんけんばん",
-      "meaning": "rotator cuff",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2458,
-      "id": "1668700",
-      "term": "回線交換",
-      "reading": "かいせんこうかん",
-      "meaning": "circuit switching",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2459,
-      "id": "2345030",
-      "term": "回線終端",
-      "reading": "かいせんしゅうたん",
-      "meaning": "line termination",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2460,
-      "id": "2345020",
-      "term": "回線種別",
-      "reading": "かいせんしゅべつ",
-      "meaning": "line type / line classification",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2461,
-      "id": "2345060",
-      "term": "回線切断",
-      "reading": "かいせんせつだん",
-      "meaning": "hang-up / HUP (signal)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2462,
-      "id": "2345070",
-      "term": "回線争奪",
-      "reading": "かいせんそうだつ",
-      "meaning": "contention",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2463,
-      "id": "2345080",
-      "term": "回線速度",
-      "reading": "かいせんそくど",
-      "meaning": "line speed",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2464,
-      "id": "2345090",
-      "term": "回線帯域",
-      "reading": "かいせんたいいき",
-      "meaning": "line bandwidth",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2465,
-      "id": "2345100",
-      "term": "回線追跡",
-      "reading": "かいせんついせき",
-      "meaning": "line trace",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2466,
-      "id": "2867537",
-      "term": "回旋動脈",
-      "reading": "かいせんどうみゃく",
-      "meaning": "circumflex artery",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2467,
-      "id": "2856691",
-      "term": "廻船問屋",
-      "reading": "かいせんどんや",
-      "meaning": "maritime merchant (Edo and Meiji periods) / shipping agency",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2468,
-      "id": "2345110",
-      "term": "回線費用",
-      "reading": "かいせんひよう",
-      "meaning": "line cost",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2469,
-      "id": "1668710",
-      "term": "回線負荷",
-      "reading": "かいせんふか",
-      "meaning": "circuit load",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2470,
-      "id": "2345130",
-      "term": "回線容量",
-      "reading": "かいせんようりょう",
-      "meaning": "line capacity / circuit capacity",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2471,
-      "id": "1976780",
-      "term": "海鮮料理",
-      "reading": "かいせんりょうり",
-      "meaning": "cuisine with fresh seafoods",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2472,
-      "id": "2851818",
-      "term": "改善命令",
-      "reading": "かいぜんめいれい",
-      "meaning": "orders for improvement (from an authority to a business operator in its jurisdiction)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2473,
-      "id": "2345790",
-      "term": "階層関係",
-      "reading": "かいそうかんけい",
-      "meaning": "hierarchical relation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2474,
-      "id": "2345860",
-      "term": "階層構造",
-      "reading": "かいそうこうぞう",
-      "meaning": "layered structure / layered system / stratification",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2475,
-      "id": "2866831",
-      "term": "灰曹長石",
-      "reading": "かいそうちょうせき",
-      "meaning": "oligoclase",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2476,
-      "id": "2840702",
-      "term": "回送電車",
-      "reading": "かいそうでんしゃ",
-      "meaning": "out-of-service car / out-of-service train / out-of-service bus",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2477,
-      "id": "2345890",
-      "term": "階層表示",
-      "reading": "かいそうひょうじ",
-      "meaning": "hierarchical display",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2478,
-      "id": "2345170",
-      "term": "回送要求",
-      "reading": "かいそうようきゅう",
-      "meaning": "forwarding-request",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2479,
-      "id": "2845461",
-      "term": "快速急行",
-      "reading": "かいそくきゅうこう",
-      "meaning": "rapid express train",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2480,
-      "id": "1200090",
-      "term": "快速電車",
-      "reading": "かいそくでんしゃ",
-      "meaning": "rapid-service train / rapid train",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2481,
-      "id": "2853406",
-      "term": "快速特急",
-      "reading": "かいそくとっきゅう",
-      "meaning": "rapid express (train service) / rapid limited express",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2482,
-      "id": "1805690",
-      "term": "快速列車",
-      "reading": "かいそくれっしゃ",
-      "meaning": "rapid-transit train",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2483,
-      "id": "2857315",
-      "term": "改造内閣",
-      "reading": "かいぞうないかく",
-      "meaning": "reshuffled cabinet / reformed cabinet",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2484,
-      "id": "2708580",
-      "term": "改造人間",
-      "reading": "かいぞうにんげん",
-      "meaning": "cyborg",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2485,
-      "id": "2853182",
-      "term": "海賊行為",
-      "reading": "かいぞくこうい",
-      "meaning": "piracy",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2486,
-      "id": "2806590",
-      "term": "海賊放送",
-      "reading": "かいぞくほうそう",
-      "meaning": "pirate radio",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2487,
-      "id": "2851360",
-      "term": "解体工事",
-      "reading": "かいたいこうじ",
-      "meaning": "demolition work / dismantling work",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2488,
-      "id": "2133830",
-      "term": "解体工場",
-      "reading": "かいたいこうじょう",
-      "meaning": "disassembly plant / wrecking yard / chop shop",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2489,
-      "id": "2432530",
-      "term": "解体工法",
-      "reading": "かいたいこうほう",
-      "meaning": "method of demolition / demolition method",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2490,
-      "id": "2460590",
-      "term": "開拓精神",
-      "reading": "かいたくせいしん",
-      "meaning": "frontier spirit",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2491,
-      "id": "2030230",
-      "term": "海内無双",
-      "reading": "かいだいむそう",
-      "meaning": "unparalleled in the whole country",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2492,
-      "id": "2856750",
-      "term": "下位打線",
-      "reading": "かいだせん",
-      "meaning": "bottom of the (batting) order",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2493,
-      "id": "1977490",
-      "term": "階段教室",
-      "reading": "かいだんきょうしつ",
-      "meaning": "classroom in tiers",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2494,
-      "id": "1977500",
-      "term": "階段耕作",
-      "reading": "かいだんこうさく",
-      "meaning": "terrace culture",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2495,
-      "id": "2845224",
-      "term": "階段箪笥",
-      "reading": "かいだんたんす",
-      "meaning": "chest of drawers that also function as stairs",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2496,
-      "id": "2604510",
-      "term": "海中火山",
-      "reading": "かいちゅうかざん",
-      "meaning": "submarine volcano",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2497,
-      "id": "1772570",
-      "term": "海中公園",
-      "reading": "かいちゅうこうえん",
-      "meaning": "underwater park",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2498,
-      "id": "1200600",
-      "term": "懐中電灯",
-      "reading": "かいちゅうでんとう",
-      "meaning": "(electric) torch / flashlight",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2499,
-      "id": "2846023",
-      "term": "懐中時計",
-      "reading": "かいちゅうどけい",
-      "meaning": "pocket watch",
-      "rank": null,
-      "type": "four"
-    },
     {
       "source_index": 2500,
       "id": "2828605",
@@ -9008,6 +8558,456 @@
       "term": "川施餓鬼",
       "reading": "かわせがき",
       "meaning": "Buddhist services in memory of those drowned in a river / offering to suffering spirits at the river",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3450,
+      "id": "1157360",
+      "term": "為替銀行",
+      "reading": "かわせぎんこう",
+      "meaning": "exchange bank",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3451,
+      "id": "1803580",
+      "term": "為替裁定",
+      "reading": "かわせさいてい",
+      "meaning": "exchange arbitration",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3452,
+      "id": "1803570",
+      "term": "為替差益",
+      "reading": "かわせさえき",
+      "meaning": "profit on currency exchange",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3453,
+      "id": "1971100",
+      "term": "為替市場",
+      "reading": "かわせしじょう",
+      "meaning": "exchange market",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3454,
+      "id": "2828627",
+      "term": "為替操作",
+      "reading": "かわせそうさ",
+      "meaning": "currency intervention / foreign exchange market intervention / currency manipulation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3455,
+      "id": "1157390",
+      "term": "為替相場",
+      "reading": "かわせそうば",
+      "meaning": "exchange rate / rate of exchange",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3456,
+      "id": "1157370",
+      "term": "為替手形",
+      "reading": "かわせてがた",
+      "meaning": "bill of exchange / draft / draught",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3457,
+      "id": "1803560",
+      "term": "為替投機",
+      "reading": "かわせとうき",
+      "meaning": "currency speculation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3458,
+      "id": "2613910",
+      "term": "為替取引",
+      "reading": "かわせとりひき",
+      "meaning": "currency trading (usu. foreign) / exchange dealing / exchange transaction",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3459,
+      "id": "1971110",
+      "term": "為替平価",
+      "reading": "かわせへいか",
+      "meaning": "par value / exchange parity",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3460,
+      "id": "1971120",
+      "term": "為替予約",
+      "reading": "かわせよやく",
+      "meaning": "exchange contract",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3461,
+      "id": "2664870",
+      "term": "河内音頭",
+      "reading": "かわちおんど",
+      "meaning": "narrative style of Bon dance song from eastern Osaka (often with improvised lyrics)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3462,
+      "id": "2739020",
+      "term": "河内晩柑",
+      "reading": "かわちばんかん",
+      "meaning": "kawachi-bankan pomelo",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3463,
+      "id": "5465017",
+      "term": "川鉄商事",
+      "reading": "かわてつしょうじ",
+      "meaning": "Kawasho Corporation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3464,
+      "id": "2828091",
+      "term": "川野夏橙",
+      "reading": "かわのなつだいだい",
+      "meaning": "amanatsu (Citrus natsudaidai) / Japanese summer orange / less sour variety of the natsumikan",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3465,
+      "id": "2635590",
+      "term": "川端諸子",
+      "reading": "かわばたもろこ",
+      "meaning": "golden venus chub (Hemigrammocypris rasborella)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3466,
+      "id": "2673860",
+      "term": "川雲雀貝",
+      "reading": "かわひばりがい",
+      "meaning": "golden mussel (Limnoperna fortunei)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3467,
+      "id": "1778450",
+      "term": "河原乞食",
+      "reading": "かわらこじき",
+      "meaning": "actors / players / riverbank beggars",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3468,
+      "id": "2265240",
+      "term": "河原撫子",
+      "reading": "かわらなでしこ",
+      "meaning": "large pink (Dianthus superbus var. longicalycinus)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3469,
+      "id": "2216700",
+      "term": "河原人参",
+      "reading": "かわらにんじん",
+      "meaning": "Artemisia apiacea (species of artemisia)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3470,
+      "id": "2449050",
+      "term": "川原松葉",
+      "reading": "かわらまつば",
+      "meaning": "our lady's bedstraw (Galium verum) / yellow bedstraw",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3471,
+      "id": "2667650",
+      "term": "皮を被る",
+      "reading": "かわをかぶる",
+      "meaning": "to conceal one's true nature or feelings / to feign friendliness / to play the hypocrite",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3472,
+      "id": "1867240",
+      "term": "華を去り実に就く",
+      "reading": "かをさりじつにつく",
+      "meaning": "to seek results, not show / to discard the flower for the fruit",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3473,
+      "id": "2838596",
+      "term": "簡易書留",
+      "reading": "かんいかきとめ",
+      "meaning": "simplified registered mail / recorded delivery",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3474,
+      "id": "2852196",
+      "term": "簡易帰化",
+      "reading": "かんいきか",
+      "meaning": "simplified naturalization (for spouses of Japanese nationals, non-nationals born in Japan, etc.)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3475,
+      "id": "2043170",
+      "term": "簡易軽便",
+      "reading": "かんいけいべん",
+      "meaning": "simple, easy, and convenient",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3476,
+      "id": "2347820",
+      "term": "簡易言語",
+      "reading": "かんいげんご",
+      "meaning": "simplified language",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3477,
+      "id": "2835220",
+      "term": "簡易宿所",
+      "reading": "かんいしゅくしょ",
+      "meaning": "public lodging house / simple lodging (including pensions, private lodging and capsule hotels)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3478,
+      "id": "1715420",
+      "term": "簡易食堂",
+      "reading": "かんいしょくどう",
+      "meaning": "cafeteria / snack bar / lunch counter",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3479,
+      "id": "2396140",
+      "term": "簡易住宅",
+      "reading": "かんいじゅうたく",
+      "meaning": "prefab / prefabricated house",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3480,
+      "id": "2347830",
+      "term": "簡易端末",
+      "reading": "かんいたんまつ",
+      "meaning": "dumb terminal",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3481,
+      "id": "2347840",
+      "term": "簡易認証",
+      "reading": "かんいにんしょう",
+      "meaning": "simple authentication",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3482,
+      "id": "2871865",
+      "term": "簡易爆弾",
+      "reading": "かんいばくだん",
+      "meaning": "improvised explosive device / IED",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3483,
+      "id": "1614260",
+      "term": "簡易保険",
+      "reading": "かんいほけん",
+      "meaning": "postal life insurance",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3484,
+      "id": "2043180",
+      "term": "閑雲野鶴",
+      "reading": "かんうんやかく",
+      "meaning": "life in natural setting, free from worldly cares",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3485,
+      "id": "1979390",
+      "term": "官営企業",
+      "reading": "かんえいきぎょう",
+      "meaning": "government enterprise",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3486,
+      "id": "1213120",
+      "term": "漢英字典",
+      "reading": "かんえいじてん",
+      "meaning": "kanji dictionary with English definitions",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3487,
+      "id": "2580540",
+      "term": "寛永通宝",
+      "reading": "かんえいつうほう",
+      "meaning": "copper coin (Edo period)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3488,
+      "id": "2865105",
+      "term": "感音難聴",
+      "reading": "かんおんなんちょう",
+      "meaning": "sensorineural hearing loss / sensorineural deafness / SNHL",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3489,
+      "id": "2832763",
+      "term": "管海官庁",
+      "reading": "かんかいかんちょう",
+      "meaning": "maritime authority / marine office",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3490,
+      "id": "2862451",
+      "term": "感覚器官",
+      "reading": "かんかくきかん",
+      "meaning": "sense organ / sensory organ",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3491,
+      "id": "1979540",
+      "term": "感覚細胞",
+      "reading": "かんかくさいぼう",
+      "meaning": "sensory cell",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3492,
+      "id": "2130200",
+      "term": "感覚遮断",
+      "reading": "かんかくしゃだん",
+      "meaning": "sensory deprivation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3493,
+      "id": "1683160",
+      "term": "感覚神経",
+      "reading": "かんかくしんけい",
+      "meaning": "sensory nerve",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3494,
+      "id": "2706350",
+      "term": "感覚上皮",
+      "reading": "かんかくじょうひ",
+      "meaning": "sensory epithelium / neuroepithelium",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3495,
+      "id": "2871739",
+      "term": "感覚鈍麻",
+      "reading": "かんかくどんま",
+      "meaning": "hypoesthesia / hypesthesia / numbness",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3496,
+      "id": "2863174",
+      "term": "感覚入力",
+      "reading": "かんかくにゅうりょく",
+      "meaning": "sensory input",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3497,
+      "id": "2870673",
+      "term": "間隔反復",
+      "reading": "かんかくはんぷく",
+      "meaning": "spaced repetition (learning method)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3498,
+      "id": "2347940",
+      "term": "間隔比率",
+      "reading": "かんかくひりつ",
+      "meaning": "spacing ratio",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3499,
+      "id": "2871738",
+      "term": "感覚麻痺",
+      "reading": "かんかくまひ",
+      "meaning": "sensory paralysis",
       "rank": null,
       "type": "four"
     }
