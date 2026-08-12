@@ -1,466 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 2300,
-  "english_only_remaining": 12700,
+  "already_direct_japanese": 2350,
+  "english_only_remaining": 12650,
   "english_only_rank_counts": {
-    "(blank)": 12700
+    "(blank)": 12650
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 2300,
-      "id": "1918220",
-      "term": "過圧密比",
-      "reading": "かあつみつひ",
-      "meaning": "overconsolidation ratio",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2301,
-      "id": "2102700",
-      "term": "飼い犬に手をかまれる",
-      "reading": "かいいぬにてをかまれる",
-      "meaning": "to be betrayed by a trusted follower",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2302,
-      "id": "2854685",
-      "term": "会員価格",
-      "reading": "かいいんかかく",
-      "meaning": "member price",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2303,
-      "id": "5175803",
-      "term": "海員学校",
-      "reading": "かいいんがっこう",
-      "meaning": "Schools for Seamen's Training",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2304,
-      "id": "1198240",
-      "term": "会員規約",
-      "reading": "かいいんきやく",
-      "meaning": "membership agreement (e.g. for a credit card)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2305,
-      "id": "1772940",
-      "term": "海員組合",
-      "reading": "かいいんくみあい",
-      "meaning": "seamen's union",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2306,
-      "id": "2670480",
-      "term": "会員登録",
-      "reading": "かいいんとうろく",
-      "meaning": "membership registration / member registration / enrolling as a member",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2307,
-      "id": "1198280",
-      "term": "会員名簿",
-      "reading": "かいいんめいぼ",
-      "meaning": "membership list",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2308,
-      "id": "5175817",
-      "term": "海運支局",
-      "reading": "かいうんしきょく",
-      "meaning": "Maritime Transport Office",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2309,
-      "id": "2860143",
-      "term": "開運招福",
-      "reading": "かいうんしょうふく",
-      "meaning": "bringing luck and good fortune",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2310,
-      "id": "2536500",
-      "term": "開運商法",
-      "reading": "かいうんしょうほう",
-      "meaning": "fraudulent business of selling goods by claiming they will bring supernatural benefits",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2311,
-      "id": "1772970",
-      "term": "海運同盟",
-      "reading": "かいうんどうめい",
-      "meaning": "shipping conference",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2312,
-      "id": "2847254",
-      "term": "改革開放",
-      "reading": "かいかくかいほう",
-      "meaning": "Reform and Opening-up (Chinese economic policy)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2313,
-      "id": "1200800",
-      "term": "改革過程",
-      "reading": "かいかくかてい",
-      "meaning": "reform process",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2314,
-      "id": "2237290",
-      "term": "改過自新",
-      "reading": "かいかじしん",
-      "meaning": "changing one's attitude or conduct and making a new start / turning over a new leaf",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2315,
-      "id": "2835160",
-      "term": "開花前線",
-      "reading": "かいかぜんせん",
-      "meaning": "(cherry) blossom front / flower front",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2316,
-      "id": "2712160",
-      "term": "快感消失",
-      "reading": "かいかんしょうしつ",
-      "meaning": "anhedonia",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2317,
-      "id": "1977370",
-      "term": "開管分析",
-      "reading": "かいかんぶんせき",
-      "meaning": "open tube test",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2318,
-      "id": "2042550",
-      "term": "開巻劈頭",
-      "reading": "かいかんへきとう",
-      "meaning": "very beginning of a book",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2319,
-      "id": "2724600",
-      "term": "海外移転",
-      "reading": "かいがいいてん",
-      "meaning": "offshoring / overseas transfer (esp. of production)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2320,
-      "id": "2621090",
-      "term": "海外遠征",
-      "reading": "かいがいえんせい",
-      "meaning": "overseas trip",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2321,
-      "id": "2132960",
-      "term": "海外活動",
-      "reading": "かいがいかつどう",
-      "meaning": "overseas activities",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2322,
-      "id": "2650730",
-      "term": "海外企業",
-      "reading": "かいがいきぎょう",
-      "meaning": "foreign company / overseas enterprise / overseas firm",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2323,
-      "id": "2725650",
-      "term": "海外強化",
-      "reading": "かいがいきょうか",
-      "meaning": "expanding abroad / tapping overseas markets",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2324,
-      "id": "2863042",
-      "term": "海外在住",
-      "reading": "かいがいざいじゅう",
-      "meaning": "residing abroad",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2325,
-      "id": "2644310",
-      "term": "海外視察",
-      "reading": "かいがいしさつ",
-      "meaning": "overseas inspection / tour of inspection abroad",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2326,
-      "id": "2848323",
-      "term": "海外子女",
-      "reading": "かいがいしじょ",
-      "meaning": "(Japanese) children living overseas",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2327,
-      "id": "1931610",
-      "term": "海外市場",
-      "reading": "かいがいしじょう",
-      "meaning": "overseas (a foreign) market",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2328,
-      "id": "2739000",
-      "term": "海外取材",
-      "reading": "かいがいしゅざい",
-      "meaning": "overseas reporting / covering a story abroad",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2329,
-      "id": "2144810",
-      "term": "海外出張",
-      "reading": "かいがいしゅっちょう",
-      "meaning": "overseas business trip",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2330,
-      "id": "1931620",
-      "term": "海外進出",
-      "reading": "かいがいしんしゅつ",
-      "meaning": "advance (e.g. of Japanese exports) into overseas markets",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2331,
-      "id": "2852049",
-      "term": "海外生活",
-      "reading": "かいがいせいかつ",
-      "meaning": "living abroad / life overseas",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2332,
-      "id": "2834169",
-      "term": "海外送金",
-      "reading": "かいがいそうきん",
-      "meaning": "overseas remittance",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2333,
-      "id": "2757030",
-      "term": "海外展開",
-      "reading": "かいがいてんかい",
-      "meaning": "overseas deployment (e.g. military forces) / overseas expansion (e.g. business operations)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2334,
-      "id": "2852048",
-      "term": "海外転勤",
-      "reading": "かいがいてんきん",
-      "meaning": "overseas job transfer / international job relocation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2335,
-      "id": "1201270",
-      "term": "海外投資",
-      "reading": "かいがいとうし",
-      "meaning": "overseas investment",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2336,
-      "id": "2746310",
-      "term": "海外渡航",
-      "reading": "かいがいとこう",
-      "meaning": "foreign voyage / travelling overseas / travelling abroad",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2337,
-      "id": "2853064",
-      "term": "海外派遣",
-      "reading": "かいがいはけん",
-      "meaning": "overseas dispatch (e.g. of the Japan Self-Defense Forces)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2338,
-      "id": "1772630",
-      "term": "海外派兵",
-      "reading": "かいがいはへい",
-      "meaning": "troops overseas",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2339,
-      "id": "2837551",
-      "term": "海外赴任",
-      "reading": "かいがいふにん",
-      "meaning": "overseas assignment / overseas posting",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2340,
-      "id": "2537220",
-      "term": "海外貿易",
-      "reading": "かいがいぼうえき",
-      "meaning": "international trade / foreign trade / overseas trade",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2341,
-      "id": "2839436",
-      "term": "海外留学",
-      "reading": "かいがいりゅうがく",
-      "meaning": "studying abroad / studying overseas",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2342,
-      "id": "2408060",
-      "term": "海外領土",
-      "reading": "かいがいりょうど",
-      "meaning": "overseas territory / overseas possession",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2343,
-      "id": "1772620",
-      "term": "海外旅行",
-      "reading": "かいがいりょこう",
-      "meaning": "trip abroad / overseas travel",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2344,
-      "id": "1680650",
-      "term": "貝殻追放",
-      "reading": "かいがらついほう",
-      "meaning": "ostracism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2345,
-      "id": "1976620",
-      "term": "海岸気候",
-      "reading": "かいがんきこう",
-      "meaning": "coastal climate / littoral climate",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2346,
-      "id": "1976630",
-      "term": "海岸植物",
-      "reading": "かいがんしょくぶつ",
-      "meaning": "beach plant",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2347,
-      "id": "1976640",
-      "term": "海岸侵食",
-      "reading": "かいがんしんしょく",
-      "meaning": "coastal erosion",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2348,
-      "id": "1976650",
-      "term": "海岸段丘",
-      "reading": "かいがんだんきゅう",
-      "meaning": "coastal terrace",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2349,
-      "id": "1976660",
-      "term": "海岸地形",
-      "reading": "かいがんちけい",
-      "meaning": "coastal land form",
-      "rank": null,
-      "type": "four"
-    },
     {
       "source_index": 2350,
       "id": "1976670",
@@ -9008,6 +8558,456 @@
       "term": "加熱処理",
       "reading": "かねつしょり",
       "meaning": "heat treatment / heating",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3300,
+      "id": "1975820",
+      "term": "過熱蒸気",
+      "reading": "かねつじょうき",
+      "meaning": "superheated vapor / superheated vapour",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3301,
+      "id": "2655380",
+      "term": "加熱調理",
+      "reading": "かねつちょうり",
+      "meaning": "cooking with heat",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3302,
+      "id": "2417020",
+      "term": "金の世の中",
+      "reading": "かねのよのなか",
+      "meaning": "money rules the world / rich man's world",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3303,
+      "id": "2838304",
+      "term": "加納輝石",
+      "reading": "かのうきせき",
+      "meaning": "kanoite",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3304,
+      "id": "2687440",
+      "term": "化膿球菌",
+      "reading": "かのうきゅうきん",
+      "meaning": "pyococcus / coccoid bacterium that forms pus",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3305,
+      "id": "1191100",
+      "term": "可能選択",
+      "reading": "かのうせんたく",
+      "meaning": "available choice",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3306,
+      "id": "1191110",
+      "term": "可能動詞",
+      "reading": "かのうどうし",
+      "meaning": "potential verb / -eru verb derived from -u verbs expressing potentiality",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3307,
+      "id": "2413570",
+      "term": "彼女自身",
+      "reading": "かのじょじしん",
+      "meaning": "herself / she herself",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3308,
+      "id": "2706470",
+      "term": "桜皮細工",
+      "reading": "かばざいく",
+      "meaning": "cherry bark work / cherry bark art",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3309,
+      "id": "2821850",
+      "term": "可否検討",
+      "reading": "かひけんとう",
+      "meaning": "considering the pros and cons of / examining arguments for and against",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3310,
+      "id": "1186210",
+      "term": "下表参照",
+      "reading": "かひょうさんしょう",
+      "meaning": "(see the) following table or tables",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3311,
+      "id": "2632920",
+      "term": "可謬主義",
+      "reading": "かびゅうしゅぎ",
+      "meaning": "fallibilism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3312,
+      "id": "2714030",
+      "term": "禍福得喪",
+      "reading": "かふくとくそう",
+      "meaning": "calamity, good fortune, success and failure",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3313,
+      "id": "2855051",
+      "term": "下腹部痛",
+      "reading": "かふくぶつう",
+      "meaning": "lower abdominal pain / hypogastric pain",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3314,
+      "id": "2828358",
+      "term": "家父長権",
+      "reading": "かふちょうけん",
+      "meaning": "rights of the head of a family",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3315,
+      "id": "1192440",
+      "term": "家父長制",
+      "reading": "かふちょうせい",
+      "meaning": "patriarchy / system of patriarchy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3316,
+      "id": "2818830",
+      "term": "花粉化石",
+      "reading": "かふんかせき",
+      "meaning": "palynomorph / pollen fossil",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3317,
+      "id": "1975370",
+      "term": "花粉管核",
+      "reading": "かふんかんかく",
+      "meaning": "pollen tube nucleus",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3318,
+      "id": "2604790",
+      "term": "花粉情報",
+      "reading": "かふんじょうほう",
+      "meaning": "pollen report",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3319,
+      "id": "1975380",
+      "term": "花粉分析",
+      "reading": "かふんぶんせき",
+      "meaning": "pollen analysis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3320,
+      "id": "2043100",
+      "term": "歌舞音曲",
+      "reading": "かぶおんぎょく",
+      "meaning": "singing, dancing and music / (public) entertainment / performing arts",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3321,
+      "id": "1978910",
+      "term": "株価指数",
+      "reading": "かぶかしすう",
+      "meaning": "stock index / stock market index / stock price index",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3322,
+      "id": "2121920",
+      "term": "株価上昇",
+      "reading": "かぶかじょうしょう",
+      "meaning": "stock price rise",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3323,
+      "id": "1989680",
+      "term": "株価操作",
+      "reading": "かぶかそうさ",
+      "meaning": "share price manipulation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3324,
+      "id": "1208940",
+      "term": "株が上がる",
+      "reading": "かぶがあがる",
+      "meaning": "to rise in esteem / to become popular",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3325,
+      "id": "2860136",
+      "term": "歌舞伎絵",
+      "reading": "かぶきえ",
+      "meaning": "kabuki-e / shibai-e / kabuki ukiyo-e print",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3326,
+      "id": "1186280",
+      "term": "下部機関",
+      "reading": "かぶきかん",
+      "meaning": "subordinate offices or institutions",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3327,
+      "id": "2662410",
+      "term": "歌舞伎劇",
+      "reading": "かぶきげき",
+      "meaning": "kabuki play / kabuki drama",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3328,
+      "id": "2089350",
+      "term": "歌舞伎座",
+      "reading": "かぶきざ",
+      "meaning": "kabuki troupe / kabuki theater (theatre)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3329,
+      "id": "1718940",
+      "term": "下部構造",
+      "reading": "かぶこうぞう",
+      "meaning": "substructure",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3330,
+      "id": "2145100",
+      "term": "株式移転",
+      "reading": "かぶしきいてん",
+      "meaning": "stock transfer / share transfer",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3331,
+      "id": "1208980",
+      "term": "株式会社",
+      "reading": "かぶしきがいしゃ",
+      "meaning": "stock company / corporation / kabushiki kaisha",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3332,
+      "id": "1978930",
+      "term": "株式金融",
+      "reading": "かぶしききんゆう",
+      "meaning": "fund procurement by stock issue / stock collateral loan",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3333,
+      "id": "1208990",
+      "term": "株式公開",
+      "reading": "かぶしきこうかい",
+      "meaning": "stock offering (to the public)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3334,
+      "id": "1989710",
+      "term": "株式交換",
+      "reading": "かぶしきこうかん",
+      "meaning": "stock swap / share exchange",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3335,
+      "id": "1692100",
+      "term": "株式市場",
+      "reading": "かぶしきしじょう",
+      "meaning": "stock market",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3336,
+      "id": "1978950",
+      "term": "株式指標",
+      "reading": "かぶしきしひょう",
+      "meaning": "stock price index",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3337,
+      "id": "1978970",
+      "term": "株式譲渡",
+      "reading": "かぶしきじょうと",
+      "meaning": "transfer of stocks",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3338,
+      "id": "1692110",
+      "term": "株式相場",
+      "reading": "かぶしきそうば",
+      "meaning": "stock market quotation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3339,
+      "id": "2643220",
+      "term": "株式投機",
+      "reading": "かぶしきとうき",
+      "meaning": "stock speculation / speculation in stocks / playing the stock market",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3340,
+      "id": "1989730",
+      "term": "株式投資",
+      "reading": "かぶしきとうし",
+      "meaning": "investment in stocks / stock investment / equity investment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3341,
+      "id": "2581650",
+      "term": "株式取引",
+      "reading": "かぶしきとりひき",
+      "meaning": "stock trading / stock transactions / share trading",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3342,
+      "id": "1692130",
+      "term": "株式配当",
+      "reading": "かぶしきはいとう",
+      "meaning": "stock dividend",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3343,
+      "id": "1989740",
+      "term": "株式発行",
+      "reading": "かぶしきはっこう",
+      "meaning": "share issuance",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3344,
+      "id": "1979020",
+      "term": "株式分割",
+      "reading": "かぶしきぶんかつ",
+      "meaning": "stock split",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3345,
+      "id": "1989750",
+      "term": "株式併合",
+      "reading": "かぶしきへいごう",
+      "meaning": "reverse stock split",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3346,
+      "id": "1930950",
+      "term": "下部組織",
+      "reading": "かぶそしき",
+      "meaning": "lower branch (of an organization) / subordinate organization / substructure",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3347,
+      "id": "2868684",
+      "term": "兜の緒を締める",
+      "reading": "かぶとのおをしめる",
+      "meaning": "to brace oneself (e.g. for battle) / to pull oneself together / to focus one's mind",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3348,
+      "id": "2689300",
+      "term": "株主資本",
+      "reading": "かぶぬししほん",
+      "meaning": "shareholder's equity / capital stock",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3349,
+      "id": "2653750",
+      "term": "株主責任",
+      "reading": "かぶぬしせきにん",
+      "meaning": "shareholder responsibility / stockholder liability",
       "rank": null,
       "type": "four"
     }
