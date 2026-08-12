@@ -1,466 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 2100,
-  "english_only_remaining": 12900,
+  "already_direct_japanese": 2150,
+  "english_only_remaining": 12850,
   "english_only_rank_counts": {
-    "(blank)": 12900
+    "(blank)": 12850
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 2100,
-      "id": "2565250",
-      "term": "沖縄山芋",
-      "reading": "おきなわやまいも",
-      "meaning": "water yam (Dioscorea alata) / winged yam / purple yam",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2101,
-      "id": "2730090",
-      "term": "沖縄料理",
-      "reading": "おきなわりょうり",
-      "meaning": "Okinawan food / Okinawan cuisine",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2102,
-      "id": "2723190",
-      "term": "お灸をすえる",
-      "reading": "おきゅうをすえる",
-      "meaning": "to rake over the coals / to scold / to chastise",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2103,
-      "id": "2675800",
-      "term": "荻野学説",
-      "reading": "おぎのがくせつ",
-      "meaning": "Ogino theory (basis of the rhythm method)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2104,
-      "id": "2832749",
-      "term": "屋烏の愛",
-      "reading": "おくうのあい",
-      "meaning": "true love / deep love / love for someone so deep that it can reach a crow perched on that person's roof",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2105,
-      "id": "1815800",
-      "term": "屋外広告",
-      "reading": "おくがいこうこく",
-      "meaning": "outdoor advertisements",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2106,
-      "id": "2848475",
-      "term": "屋外撮影",
-      "reading": "おくがいさつえい",
-      "meaning": "outdoor photography / outdoor filming",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2107,
-      "id": "1862250",
-      "term": "屋上屋を架す",
-      "reading": "おくじょうおくをかす",
-      "meaning": "to do something useless / to gild the lily / to gild refined gold",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2108,
-      "id": "2030170",
-      "term": "屋上架屋",
-      "reading": "おくじょうかおく",
-      "meaning": "gilding the lily / adding redundant things",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2109,
-      "id": "1815780",
-      "term": "屋上庭園",
-      "reading": "おくじょうていえん",
-      "meaning": "rooftop garden",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2110,
-      "id": "2858171",
-      "term": "屋上緑化",
-      "reading": "おくじょうりょくか",
-      "meaning": "rooftop gardening / rooftop planting / roof greening",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2111,
-      "id": "1815790",
-      "term": "屋内競技",
-      "reading": "おくないきょうぎ",
-      "meaning": "indoor games",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2112,
-      "id": "2616360",
-      "term": "屋内退避",
-      "reading": "おくないたいひ",
-      "meaning": "sheltering indoors / taking refuge inside",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2113,
-      "id": "2343290",
-      "term": "屋内配線",
-      "reading": "おくないはいせん",
-      "meaning": "interior wiring",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2114,
-      "id": "1694280",
-      "term": "御国自慢",
-      "reading": "おくにじまん",
-      "meaning": "boasting of one's hometown",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2115,
-      "id": "1179370",
-      "term": "奥の手",
-      "reading": "おくのて",
-      "meaning": "ace up one's sleeve / trump card / last resort",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2116,
-      "id": "2839733",
-      "term": "奥の手を使う",
-      "reading": "おくのてをつかう",
-      "meaning": "to play one's trump card",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2117,
-      "id": "2394320",
-      "term": "奥歯に物が挟まる",
-      "reading": "おくばにものがはさまる",
-      "meaning": "to beat around the bush / to not speak frankly / to talk in a roundabout way",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2118,
-      "id": "1182670",
-      "term": "億万長者",
-      "reading": "おくまんちょうじゃ",
-      "meaning": "billionaire / multimillionaire / very rich person",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2119,
-      "id": "2042430",
-      "term": "奥山放獣",
-      "reading": "おくやまほうじゅう",
-      "meaning": "relocation of wild animals to a remote location",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2120,
-      "id": "2789120",
-      "term": "お蔵入り",
-      "reading": "おくらいり",
-      "meaning": "being shelved (of a movie, project, etc.) / being postponed / being put on hold",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2121,
-      "id": "2596660",
-      "term": "小草生月",
-      "reading": "おぐさおいづき",
-      "meaning": "second lunar month",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2122,
-      "id": "2866503",
-      "term": "桶胴太鼓",
-      "reading": "おけどうだいこ",
-      "meaning": "barrel drum / drum with an uncurved body",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2123,
-      "id": "2102520",
-      "term": "お先棒を担ぐ",
-      "reading": "おさきぼうをかつぐ",
-      "meaning": "to be a willing cats-paw / to willingly act as someone's tool",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2124,
-      "id": "2781530",
-      "term": "尾去沢石",
-      "reading": "おさりざわせき",
-      "meaning": "osarizawaite",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2125,
-      "id": "2538040",
-      "term": "押出業者",
-      "reading": "おしだしぎょうしゃ",
-      "meaning": "extruder",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2126,
-      "id": "2132950",
-      "term": "汚職疑惑",
-      "reading": "おしょくぎわく",
-      "meaning": "suspicion of corruption",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2127,
-      "id": "2599180",
-      "term": "汚職警官",
-      "reading": "おしょくけいかん",
-      "meaning": "corrupt policeman / dirty cop",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2128,
-      "id": "2810710",
-      "term": "汚職撲滅",
-      "reading": "おしょくぼくめつ",
-      "meaning": "eradication of corruption",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2129,
-      "id": "2633980",
-      "term": "白粉中毒",
-      "reading": "おしろいちゅうどく",
-      "meaning": "lead poisoning (from old-fashioned white makeup powder)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2130,
-      "id": "2838629",
-      "term": "伯父者人",
-      "reading": "おじじゃひと",
-      "meaning": "uncle",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2131,
-      "id": "2865359",
-      "term": "汚水処理",
-      "reading": "おすいしょり",
-      "meaning": "sewage disposal / sewage treatment",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2132,
-      "id": "1179070",
-      "term": "汚染除去",
-      "reading": "おせんじょきょ",
-      "meaning": "decontamination",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2133,
-      "id": "1930800",
-      "term": "汚染物質",
-      "reading": "おせんぶっしつ",
-      "meaning": "pollutant / contaminant",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2134,
-      "id": "1694890",
-      "term": "お膳立て",
-      "reading": "おぜんだて",
-      "meaning": "setting the table / laying the table",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2135,
-      "id": "2184490",
-      "term": "御田植祭",
-      "reading": "おたうえまつり",
-      "meaning": "shrine ritual held within the first two months of the year to forecast or pray for a successful harvest",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2136,
-      "id": "2171130",
-      "term": "御種人参",
-      "reading": "おたねにんじん",
-      "meaning": "Asian ginseng (Panax ginseng)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2137,
-      "id": "1778580",
-      "term": "阿多福豆",
-      "reading": "おたふくまめ",
-      "meaning": "large broad bean",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2138,
-      "id": "2857442",
-      "term": "御様御用",
-      "reading": "おためしごよう",
-      "meaning": "sword tester (Edo period) / executioner",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2139,
-      "id": "5741486",
-      "term": "落窪物語",
-      "reading": "おちくぼものがたり",
-      "meaning": "Ochikubo Monogatari / The Tale of Ochikubo (Heian period Cinderella story)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2140,
-      "id": "2102530",
-      "term": "お茶を濁す",
-      "reading": "おちゃをにごす",
-      "meaning": "to evade (questions) / to reply evasively / to beat around the bush",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2141,
-      "id": "2860159",
-      "term": "お茶を挽く",
-      "reading": "おちゃをひく",
-      "meaning": "to have no customers (of a geisha, prostitute, etc.) / to have no engagements",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2142,
-      "id": "2042450",
-      "term": "落人伝説",
-      "reading": "おちゅうどでんせつ",
-      "meaning": "legend concerning a fugitive clan",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2143,
-      "id": "2833945",
-      "term": "お猪口になる",
-      "reading": "おちょこになる",
-      "meaning": "to be blown inside out (of an umbrella) / to become (the shape of) a sake cup",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2144,
-      "id": "2843846",
-      "term": "お釣りがくる",
-      "reading": "おつりがくる",
-      "meaning": "to get change back",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2145,
-      "id": "2575230",
-      "term": "御出木偶",
-      "reading": "おででこ",
-      "meaning": "doll used as part of a street performance (Edo period)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2146,
-      "id": "2851005",
-      "term": "音嫌悪症",
-      "reading": "おとけんおしょう",
-      "meaning": "misophonia",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2147,
-      "id": "2793160",
-      "term": "男がすたる",
-      "reading": "おとこがすたる",
-      "meaning": "to stain one's honour (of a man) / to hurt one's reputation / to bring shame upon oneself",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2148,
-      "id": "2871953",
-      "term": "男が立つ",
-      "reading": "おとこがたつ",
-      "meaning": "to maintain one's honor as a man / to save face (as a man) / to have one's honor upheld",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2149,
-      "id": "1862700",
-      "term": "音に聞く",
-      "reading": "おとにきく",
-      "meaning": "to be widely known / to be famous",
-      "rank": null,
-      "type": "idiom"
-    },
     {
       "source_index": 2150,
       "id": "2259250",
@@ -9008,6 +8558,456 @@
       "term": "下層方言",
       "reading": "かそうほうげん",
       "meaning": "basilect",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3100,
+      "id": "1190380",
+      "term": "加速運動",
+      "reading": "かそくうんどう",
+      "meaning": "accelerated motion",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3101,
+      "id": "2344240",
+      "term": "加速時間",
+      "reading": "かそくじかん",
+      "meaning": "acceleration time",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3102,
+      "id": "2870629",
+      "term": "加速装置",
+      "reading": "かそくそうち",
+      "meaning": "accelerator / acceleration device",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3103,
+      "id": "1714100",
+      "term": "加速度計",
+      "reading": "かそくどけい",
+      "meaning": "accelerometer",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3104,
+      "id": "2725840",
+      "term": "加速度的",
+      "reading": "かそくどてき",
+      "meaning": "accelerated / accelerating / gathering speed",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3105,
+      "id": "1974510",
+      "term": "加速度病",
+      "reading": "かそくどびょう",
+      "meaning": "motion sickness",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3106,
+      "id": "2571880",
+      "term": "過疎地域",
+      "reading": "かそちいき",
+      "meaning": "underpopulated area / lightly-populated area",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3107,
+      "id": "1190910",
+      "term": "可塑物質",
+      "reading": "かそぶっしつ",
+      "meaning": "plastics",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3108,
+      "id": "1931090",
+      "term": "家族意識",
+      "reading": "かぞくいしき",
+      "meaning": "sense of family",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3109,
+      "id": "2671030",
+      "term": "家族一同",
+      "reading": "かぞくいちどう",
+      "meaning": "whole family / all one's family",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3110,
+      "id": "1931100",
+      "term": "家族会議",
+      "reading": "かぞくかいぎ",
+      "meaning": "family council",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3111,
+      "id": "2851783",
+      "term": "家族関係",
+      "reading": "かぞくかんけい",
+      "meaning": "family relationships / one's relationship with one's family",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3112,
+      "id": "1192160",
+      "term": "家族計画",
+      "reading": "かぞくけいかく",
+      "meaning": "family planning",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3113,
+      "id": "1931110",
+      "term": "家族構成",
+      "reading": "かぞくこうせい",
+      "meaning": "family structure / family composition / family makeup",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3114,
+      "id": "2849166",
+      "term": "家族写真",
+      "reading": "かぞくしゃしん",
+      "meaning": "family photo",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3115,
+      "id": "2042900",
+      "term": "家族主義",
+      "reading": "かぞくしゅぎ",
+      "meaning": "familism / the treatment of society (an organization) as a family",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3116,
+      "id": "1718510",
+      "term": "家族制度",
+      "reading": "かぞくせいど",
+      "meaning": "family system / the family (as an institution)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3117,
+      "id": "2863770",
+      "term": "華族制度",
+      "reading": "かぞくせいど",
+      "meaning": "aristocratic class system / system of peerage ranks",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3118,
+      "id": "2229570",
+      "term": "家族滞在",
+      "reading": "かぞくたいざい",
+      "meaning": "dependent (e.g. in a family)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3119,
+      "id": "2042920",
+      "term": "家族団らん",
+      "reading": "かぞくだんらん",
+      "meaning": "happy family circle / sitting in a family circle and enjoying conversation / harmony in a family",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3120,
+      "id": "1718500",
+      "term": "家族手当",
+      "reading": "かぞくてあて",
+      "meaning": "family allowance",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3121,
+      "id": "2116380",
+      "term": "家族同然",
+      "reading": "かぞくどうぜん",
+      "meaning": "like a part of the family",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3122,
+      "id": "2837456",
+      "term": "家族風呂",
+      "reading": "かぞくぶろ",
+      "meaning": "family bath (in a ryokan, etc.)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3123,
+      "id": "1974750",
+      "term": "家族療法",
+      "reading": "かぞくりょうほう",
+      "meaning": "family therapy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3124,
+      "id": "2143860",
+      "term": "家族旅行",
+      "reading": "かぞくりょこう",
+      "meaning": "family vacation / family trip",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3125,
+      "id": "1636550",
+      "term": "肩が凝る",
+      "reading": "かたがこる",
+      "meaning": "to have stiff shoulders",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3126,
+      "id": "2518430",
+      "term": "肩が張る",
+      "reading": "かたがはる",
+      "meaning": "to have stiff shoulders",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3127,
+      "id": "1681160",
+      "term": "片側通行",
+      "reading": "かたがわつうこう",
+      "meaning": "one way (traffic)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3128,
+      "id": "1192220",
+      "term": "家宅捜査",
+      "reading": "かたくそうさ",
+      "meaning": "house search (e.g. by the police)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3129,
+      "id": "1192230",
+      "term": "家宅捜索",
+      "reading": "かたくそうさく",
+      "meaning": "house search (e.g. by the police)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3130,
+      "id": "2042930",
+      "term": "火宅無常",
+      "reading": "かたくむじょう",
+      "meaning": "impermanent (like a burning house) / mutable / uncertain",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3131,
+      "id": "2830932",
+      "term": "過多月経",
+      "reading": "かたげっけい",
+      "meaning": "hypermenorrhea / menorrhagia",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3132,
+      "id": "2821830",
+      "term": "片言英語",
+      "reading": "かたことえいご",
+      "meaning": "halting English / broken English",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3133,
+      "id": "2352100",
+      "term": "型参照名",
+      "reading": "かたさんしょうめい",
+      "meaning": "type reference name",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3134,
+      "id": "1820770",
+      "term": "型式証明",
+      "reading": "かたしきしょうめい",
+      "meaning": "(vehicle's) type certification",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3135,
+      "id": "2856832",
+      "term": "型式番号",
+      "reading": "かたしきばんごう",
+      "meaning": "model number / model designation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3136,
+      "id": "2748040",
+      "term": "肩透かしを食う",
+      "reading": "かたすかしをくう",
+      "meaning": "to suffer a disappointment / to feel let down",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3137,
+      "id": "2844053",
+      "term": "肩透かしを食らう",
+      "reading": "かたすかしをくらう",
+      "meaning": "to suffer a disappointment / to feel let down",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3138,
+      "id": "2102880",
+      "term": "肩透かしを食わせる",
+      "reading": "かたすかしをくわせる",
+      "meaning": "to dodge (an attack, question, etc.) / to sidestep / to evade",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3139,
+      "id": "1266630",
+      "term": "固唾を呑む",
+      "reading": "かたずをのむ",
+      "meaning": "to hold one's breath (in fear, anxiety, etc.)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3140,
+      "id": "2352110",
+      "term": "型宣言文",
+      "reading": "かたせんげんぶん",
+      "meaning": "type declaration statement",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3141,
+      "id": "2567110",
+      "term": "下達上通",
+      "reading": "かたつじょうつう",
+      "meaning": "conveying the views of the subordinates to the rulers / rulers apprehending the views of those they govern",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3142,
+      "id": "2512050",
+      "term": "片手湯桶",
+      "reading": "かたてゆとう",
+      "meaning": "wooden scoop (used for bathing)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3143,
+      "id": "2102890",
+      "term": "肩で風を切る",
+      "reading": "かたでかぜをきる",
+      "meaning": "to swagger / to strut / to be confident",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3144,
+      "id": "2419140",
+      "term": "刀折れ矢尽きる",
+      "reading": "かたなおれやつきる",
+      "meaning": "to exhaust all one's options",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3145,
+      "id": "2603950",
+      "term": "型にはまる",
+      "reading": "かたにはまる",
+      "meaning": "to fit the mold / to fit the mould / to be standard",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3146,
+      "id": "1636580",
+      "term": "型にはめる",
+      "reading": "かたにはめる",
+      "meaning": "to stereotype / to squeeze into a pattern / to regiment",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3147,
+      "id": "2119420",
+      "term": "肩の荷が下りる",
+      "reading": "かたのにがおりる",
+      "meaning": "to feel relieved of one's burden / to have a weight removed from one's mind",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3148,
+      "id": "1651960",
+      "term": "片肺飛行",
+      "reading": "かたはいひこう",
+      "meaning": "flying on one engine",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3149,
+      "id": "1681170",
+      "term": "片道切符",
+      "reading": "かたみちきっぷ",
+      "meaning": "one-way ticket",
       "rank": null,
       "type": "four"
     }
