@@ -36,7 +36,7 @@ jobs:
           pending=[(i,r) for i,r in enumerate(rows) if needs_ja(r.get('meaning')) and str(r.get('id')) not in done_ids]
           rank_counts=Counter(str(r.get('rank','')).strip() or '(blank)' for _,r in pending)
           a=[(i,r) for i,r in pending if str(r.get('rank','')).strip().upper()=='A']
-          max_batch=50
+          max_batch=1000
           selected=a[:max_batch] if a else pending[:max_batch]
           keys=('id','term','reading','meaning')
           targets=[]
