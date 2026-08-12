@@ -20,12 +20,12 @@ const style=document.createElement('style');style.id='aa-vocab-row-toggle-style'
  .vtable td[data-aa-tap-toggle]:active{opacity:.72}
 `;
 document.head.appendChild(style);
-document.addEventListener('click',e=>{const el=e.target.closest?.('.vtable td[data-aa-tap-toggle]');if(!el||e.target.closest('button,a,input,select,textarea'))return;toggle(el)},true);
-document.addEventListener('keydown',e=>{if(e.key!=='Enter'&&e.key!==' ')return;const el=e.target.closest?.('.vtable td[data-aa-tap-toggle]');if(!el)return;e.preventDefault();toggle(el)},true);
+document.addEventListener('click',e=>{const el=e.target.closest?.('.vtable td[data-aa-tap-toggle]');if(!el||e.target.closest('button,a,input,select,textarea,details,summary,.aa-example-details'))return;toggle(el)},true);
+document.addEventListener('keydown',e=>{if(e.key!=='Enter'&&e.key!==' ')return;const el=e.target.closest?.('.vtable td[data-aa-tap-toggle]');if(!el||e.target.closest('details,summary,.aa-example-details'))return;e.preventDefault();toggle(el)},true);
 document.addEventListener('click',e=>{const b=e.target.closest?.('#aa-vocab-recall-controls button[data-target]');if(!b)return;const part=b.dataset.target;if(part!=='word'&&part!=='meaning')return;for(const id of Object.keys(state)){delete state[id][part];if(!state[id].word&&!state[id].meaning)delete state[id]}save();setTimeout(applyAll,0)},true);
 const mo=new MutationObserver(()=>applyAll());mo.observe(document.body,{childList:true,subtree:true});
-function loadSort(){if(document.getElementById('aa-vocab-sort-loader'))return;const s=document.createElement('script');s.id='aa-vocab-sort-loader';s.src='./vocab-sort-v1.js?v=1.0.0';s.async=false;document.head.appendChild(s)}
+function loadSort(){if(document.getElementById('aa-vocab-sort-loader'))return;const s=document.createElement('script');s.id='aa-vocab-sort-loader';s.src='./vocab-sort-v1.js?v=1.0.1';s.async=false;document.head.appendChild(s)}
 applyAll();
 loadSort();
-document.body?.setAttribute('data-aa-vocab-row-toggle','v1');
+document.body?.setAttribute('data-aa-vocab-row-toggle','v1.1');
 })();
