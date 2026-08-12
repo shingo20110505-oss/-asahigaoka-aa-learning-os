@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 3650,
-  "english_only_remaining": 11350,
+  "already_direct_japanese": 3700,
+  "english_only_remaining": 11300,
   "english_only_rank_counts": {
-    "(blank)": 11350
+    "(blank)": 11300
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -12,354 +12,354 @@
   "batch_size": 50,
   "targets": [
     {
-      "source_index": 3650,
-      "id": "1979140",
-      "term": "乾式工法",
-      "reading": "かんしきこうほう",
-      "meaning": "dry construction"
-    },
-    {
-      "source_index": 3651,
-      "id": "1979150",
-      "term": "乾式製錬",
-      "reading": "かんしきせいれん",
-      "meaning": "fire refining"
-    },
-    {
-      "source_index": 3652,
-      "id": "2762150",
-      "term": "監視社会",
-      "reading": "かんししゃかい",
-      "meaning": "surveillance society"
-    },
-    {
-      "source_index": 3653,
-      "id": "2628030",
-      "term": "監視体制",
-      "reading": "かんしたいせい",
-      "meaning": "surveillance system / monitoring system"
-    },
-    {
-      "source_index": 3654,
-      "id": "2160800",
-      "term": "換質換位",
-      "reading": "かんしつかんい",
-      "meaning": "contraposition"
-    },
-    {
-      "source_index": 3655,
-      "id": "2807730",
-      "term": "間質細胞",
-      "reading": "かんしつさいぼう",
-      "meaning": "interstitial cell / stromal cell"
-    },
-    {
-      "source_index": 3656,
-      "id": "2855056",
-      "term": "鉗子分娩",
-      "reading": "かんしぶんべん",
-      "meaning": "forceps delivery"
-    },
-    {
-      "source_index": 3657,
-      "id": "2810690",
-      "term": "感謝感激",
-      "reading": "かんしゃかんげき",
-      "meaning": "being terribly grateful"
-    },
-    {
-      "source_index": 3658,
-      "id": "2833757",
-      "term": "間主観性",
-      "reading": "かんしゅかんせい",
-      "meaning": "intersubjectivity"
-    },
-    {
-      "source_index": 3659,
-      "id": "2833758",
-      "term": "間主観的",
-      "reading": "かんしゅかんてき",
-      "meaning": "intersubjective"
-    },
-    {
-      "source_index": 3660,
-      "id": "2347890",
-      "term": "緩衝記憶",
-      "reading": "かんしょうきおく",
-      "meaning": "buffer storage / buffer / buffer memory"
-    },
-    {
-      "source_index": 3661,
-      "id": "2863860",
-      "term": "緩衝在庫",
-      "reading": "かんしょうざいこ",
-      "meaning": "buffer stock"
-    },
-    {
-      "source_index": 3662,
-      "id": "1683190",
-      "term": "感傷主義",
-      "reading": "かんしょうしゅぎ",
-      "meaning": "sentimentalism"
-    },
-    {
-      "source_index": 3663,
-      "id": "1782820",
-      "term": "観賞植物",
-      "reading": "かんしょうしょくぶつ",
-      "meaning": "ornamental plants"
-    },
-    {
-      "source_index": 3664,
-      "id": "2347320",
-      "term": "干渉信号",
-      "reading": "かんしょうしんごう",
-      "meaning": "interference signal"
-    },
-    {
-      "source_index": 3665,
-      "id": "2766590",
-      "term": "緩衝装置",
-      "reading": "かんしょうそうち",
-      "meaning": "buffer / shock absorber / damper unit"
-    },
-    {
-      "source_index": 3666,
-      "id": "2720930",
-      "term": "勧奨退職",
-      "reading": "かんしょうたいしょく",
-      "meaning": "retirement at the suggestion of one's employer"
-    },
-    {
-      "source_index": 3667,
-      "id": "1214510",
-      "term": "緩衝地帯",
-      "reading": "かんしょうちたい",
-      "meaning": "buffer zone"
-    },
-    {
-      "source_index": 3668,
-      "id": "2347330",
-      "term": "干渉電力",
-      "reading": "かんしょうでんりょく",
-      "meaning": "interference power"
-    },
-    {
-      "source_index": 3669,
-      "id": "2862209",
-      "term": "緩衝領域",
-      "reading": "かんしょうりょういき",
-      "meaning": "buffer zone / buffer area"
-    },
-    {
-      "source_index": 3670,
-      "id": "2852460",
-      "term": "緩衝緑地",
-      "reading": "かんしょうりょくち",
-      "meaning": "green buffer zone / green belt"
-    },
-    {
-      "source_index": 3671,
-      "id": "2348070",
-      "term": "関心領域",
-      "reading": "かんしんりょういき",
-      "meaning": "region of interest / ROI"
-    },
-    {
-      "source_index": 3672,
-      "id": "2083900",
-      "term": "漢字検定",
-      "reading": "かんじけんてい",
-      "meaning": "kanji aptitude test (esp. the Kanji Kentei) / The Japan Kanji Aptitude Test"
-    },
-    {
-      "source_index": 3673,
-      "id": "2070250",
-      "term": "漢字試験",
-      "reading": "かんじしけん",
-      "meaning": "kanji test / test of kanji skills"
-    },
-    {
-      "source_index": 3674,
-      "id": "2845984",
-      "term": "漢字辞典",
-      "reading": "かんじじてん",
-      "meaning": "kanji dictionary / Chinese character dictionary"
-    },
-    {
-      "source_index": 3675,
-      "id": "1715040",
-      "term": "漢字制限",
-      "reading": "かんじせいげん",
-      "meaning": "restrictions on the number of kanji recognized for usage (recognised)"
-    },
-    {
-      "source_index": 3676,
-      "id": "2347480",
-      "term": "漢字対応",
-      "reading": "かんじたいおう",
-      "meaning": "kanji support"
-    },
-    {
-      "source_index": 3677,
-      "id": "2347490",
-      "term": "漢字統合",
-      "reading": "かんじとうごう",
-      "meaning": "Han unification"
-    },
-    {
-      "source_index": 3678,
-      "id": "2854849",
-      "term": "漢字表記",
-      "reading": "かんじひょうき",
-      "meaning": "kanji representation / representation in Chinese characters / way of writing (a word) in kanji"
-    },
-    {
-      "source_index": 3679,
-      "id": "1213200",
-      "term": "漢字変換",
-      "reading": "かんじへんかん",
-      "meaning": "kanji conversion"
-    },
-    {
-      "source_index": 3680,
-      "id": "2088740",
-      "term": "患者家族",
-      "reading": "かんじゃかぞく",
-      "meaning": "patient and relatives"
-    },
-    {
-      "source_index": 3681,
-      "id": "2127850",
-      "term": "閑寂枯淡",
-      "reading": "かんじゃくこたん",
-      "meaning": "aesthetic sense in Japanese art emphasising quiet simplicity and subdued refinement"
-    },
-    {
-      "source_index": 3682,
-      "id": "2628910",
-      "term": "患者負担",
-      "reading": "かんじゃふたん",
-      "meaning": "medical expenses borne by the patient / patient contribution / patient share"
-    },
-    {
-      "source_index": 3683,
-      "id": "2829148",
-      "term": "完熟堆肥",
-      "reading": "かんじゅくたいひ",
-      "meaning": "fully matured compost"
-    },
-    {
-      "source_index": 3684,
-      "id": "2846596",
-      "term": "慣熟飛行",
-      "reading": "かんじゅくひこう",
-      "meaning": "orientation flight / training flight / practice flight"
-    },
-    {
-      "source_index": 3685,
-      "id": "1212420",
-      "term": "感情移入",
-      "reading": "かんじょういにゅう",
-      "meaning": "empathy"
-    },
-    {
-      "source_index": 3686,
-      "id": "2399000",
-      "term": "桿状核球",
-      "reading": "かんじょうかくきゅう",
-      "meaning": "band cell / stab cell"
-    },
-    {
-      "source_index": 3687,
-      "id": "2795640",
-      "term": "勘定科目",
-      "reading": "かんじょうかもく",
-      "meaning": "account name / account title"
-    },
-    {
-      "source_index": 3688,
-      "id": "1989820",
-      "term": "感情障害",
-      "reading": "かんじょうしょうがい",
-      "meaning": "affective disorder / emotional disorder"
-    },
-    {
-      "source_index": 3689,
-      "id": "2860298",
-      "term": "勘定照合",
-      "reading": "かんじょうしょうごう",
-      "meaning": "reconciliation (in accounting)"
-    },
-    {
-      "source_index": 3690,
-      "id": "1665410",
-      "term": "冠状静脈",
-      "reading": "かんじょうじょうみゃく",
-      "meaning": "coronary vein"
-    },
-    {
-      "source_index": 3691,
-      "id": "1979750",
-      "term": "環状星雲",
-      "reading": "かんじょうせいうん",
-      "meaning": "Ring Nebula"
-    },
-    {
-      "source_index": 3692,
-      "id": "2568720",
-      "term": "環状石籬",
-      "reading": "かんじょうせきり",
+      "source_index": 3700,
+      "id": "2568730",
+      "term": "環状列石",
+      "reading": "かんじょうれっせき",
       "meaning": "stone circle"
     },
     {
-      "source_index": 3693,
-      "id": "2834537",
-      "term": "環状鉄心",
-      "reading": "かんじょうてっしん",
-      "meaning": "toroidal core / endless core"
+      "source_index": 3701,
+      "id": "2423050",
+      "term": "感情労働",
+      "reading": "かんじょうろうどう",
+      "meaning": "emotional labour"
     },
     {
-      "source_index": 3694,
-      "id": "1665390",
-      "term": "冠状動脈",
-      "reading": "かんじょうどうみゃく",
-      "meaning": "coronary artery"
+      "source_index": 3702,
+      "id": "2023680",
+      "term": "勧進相撲",
+      "reading": "かんじんずもう",
+      "meaning": "fund-raising tournaments (during the Edo period)"
     },
     {
-      "source_index": 3695,
-      "id": "2151570",
-      "term": "環状軟骨",
-      "reading": "かんじょうなんこつ",
-      "meaning": "cricoid cartilage"
+      "source_index": 3703,
+      "id": "2030290",
+      "term": "寛仁大度",
+      "reading": "かんじんたいど",
+      "meaning": "being generous, benevolent and magnanimous in disposition"
     },
     {
-      "source_index": 3696,
-      "id": "2557390",
-      "term": "感情に走る",
-      "reading": "かんじょうにはしる",
-      "meaning": "to act on one's emotions / to be carried away by one's feelings / to get emotional"
+      "source_index": 3704,
+      "id": "1811850",
+      "term": "関数解析",
+      "reading": "かんすうかいせき",
+      "meaning": "functional analysis"
     },
     {
-      "source_index": 3697,
-      "id": "1212430",
-      "term": "感情表現",
-      "reading": "かんじょうひょうげん",
-      "meaning": "expressing emotion / drawing facial expressions"
+      "source_index": 3705,
+      "id": "1811840",
+      "term": "関数空間",
+      "reading": "かんすうくうかん",
+      "meaning": "functional space"
     },
     {
-      "source_index": 3698,
-      "id": "2805210",
-      "term": "勘定奉行",
-      "reading": "かんじょうぶぎょう",
-      "meaning": "chief financial official (Edo period) / commissioner of finance / chief treasurer"
+      "source_index": 3706,
+      "id": "2348130",
+      "term": "関数結果",
+      "reading": "かんすうけっか",
+      "meaning": "function result"
     },
     {
-      "source_index": 3699,
-      "id": "2868451",
-      "term": "冠静脈洞",
-      "reading": "かんじょうみゃくどう",
-      "meaning": "coronary sinus"
+      "source_index": 3707,
+      "id": "1215890",
+      "term": "関数原型",
+      "reading": "かんすうげんけい",
+      "meaning": "function prototype"
+    },
+    {
+      "source_index": 3708,
+      "id": "2815010",
+      "term": "関数電卓",
+      "reading": "かんすうでんたく",
+      "meaning": "scientific calculator / scientific electronic calculator"
+    },
+    {
+      "source_index": 3709,
+      "id": "1979630",
+      "term": "慣性航法",
+      "reading": "かんせいこうほう",
+      "meaning": "inertial navigation system"
+    },
+    {
+      "source_index": 3710,
+      "id": "1209900",
+      "term": "乾生植物",
+      "reading": "かんせいしょくぶつ",
+      "meaning": "xerophyte"
+    },
+    {
+      "source_index": 3711,
+      "id": "2118400",
+      "term": "官製談合",
+      "reading": "かんせいだんごう",
+      "meaning": "collusive bidding at the initiative of government agencies"
+    },
+    {
+      "source_index": 3712,
+      "id": "2837980",
+      "term": "感精伝説",
+      "reading": "かんせいでんせつ",
+      "meaning": "myths of asexual conception from natural objects"
+    },
+    {
+      "source_index": 3713,
+      "id": "1932260",
+      "term": "官製葉書",
+      "reading": "かんせいはがき",
+      "meaning": "official (government) postcard / postal card"
+    },
+    {
+      "source_index": 3714,
+      "id": "1979640",
+      "term": "慣性誘導",
+      "reading": "かんせいゆうどう",
+      "meaning": "inertial guidance"
+    },
+    {
+      "source_index": 3715,
+      "id": "2530570",
+      "term": "間接受身",
+      "reading": "かんせつうけみ",
+      "meaning": "indirect passive"
+    },
+    {
+      "source_index": 3716,
+      "id": "2089040",
+      "term": "間接喫煙",
+      "reading": "かんせつきつえん",
+      "meaning": "passive smoking / secondhand smoke"
+    },
+    {
+      "source_index": 3717,
+      "id": "2850181",
+      "term": "間接金融",
+      "reading": "かんせつきんゆう",
+      "meaning": "indirect financing"
+    },
+    {
+      "source_index": 3718,
+      "id": "2863348",
+      "term": "関節拘縮",
+      "reading": "かんせつこうしゅく",
+      "meaning": "joint contracture / articular contracture"
+    },
+    {
+      "source_index": 3719,
+      "id": "1715320",
+      "term": "間接撮影",
+      "reading": "かんせつさつえい",
+      "meaning": "fluoroscopy"
+    },
+    {
+      "source_index": 3720,
+      "id": "2347990",
+      "term": "間接参照",
+      "reading": "かんせつさんしょう",
+      "meaning": "indirect referencing"
+    },
+    {
+      "source_index": 3721,
+      "id": "2714650",
+      "term": "間接証拠",
+      "reading": "かんせつしょうこ",
+      "meaning": "indirect evidence / circumstantial evidence"
+    },
+    {
+      "source_index": 3722,
+      "id": "1715290",
+      "term": "間接照明",
+      "reading": "かんせつしょうめい",
+      "meaning": "indirect lighting"
+    },
+    {
+      "source_index": 3723,
+      "id": "2837656",
+      "term": "間接自慢",
+      "reading": "かんせつじまん",
+      "meaning": "indirect bragging (esp. on social media; by casually showing off something bragworthy as if it were unintended)"
+    },
+    {
+      "source_index": 3724,
+      "id": "2729310",
+      "term": "間接正犯",
+      "reading": "かんせつせいはん",
+      "meaning": "indirect principal offender / indirect perpetrator / principal offender in the second degree"
+    },
+    {
+      "source_index": 3725,
+      "id": "1715330",
+      "term": "間接選挙",
+      "reading": "かんせつせんきょ",
+      "meaning": "indirect election"
+    },
+    {
+      "source_index": 3726,
+      "id": "2868174",
+      "term": "関節穿刺",
+      "reading": "かんせつせんし",
+      "meaning": "arthrocentesis / joint aspiration / joint puncture"
+    },
+    {
+      "source_index": 3727,
+      "id": "2504600",
+      "term": "環節動物",
+      "reading": "かんせつどうぶつ",
+      "meaning": "annulosan"
+    },
+    {
+      "source_index": 3728,
+      "id": "2348010",
+      "term": "間接発信",
+      "reading": "かんせつはっしん",
+      "meaning": "indirect submission"
+    },
+    {
+      "source_index": 3729,
+      "id": "2632650",
+      "term": "関節半月",
+      "reading": "かんせつはんげつ",
+      "meaning": "semilunar cartilage"
+    },
+    {
+      "source_index": 3730,
+      "id": "2676390",
+      "term": "間接部門",
+      "reading": "かんせつぶもん",
+      "meaning": "internal division / back-office section / indirect department"
+    },
+    {
+      "source_index": 3731,
+      "id": "1715300",
+      "term": "間接話法",
+      "reading": "かんせつわほう",
+      "meaning": "indirect speech / indirect narration"
+    },
+    {
+      "source_index": 3732,
+      "id": "2844168",
+      "term": "感染拡大",
+      "reading": "かんせんかくだい",
+      "meaning": "spread of infection"
+    },
+    {
+      "source_index": 3733,
+      "id": "1932280",
+      "term": "感染経路",
+      "reading": "かんせんけいろ",
+      "meaning": "infection route / source of infection"
+    },
+    {
+      "source_index": 3734,
+      "id": "2861735",
+      "term": "感染症学",
+      "reading": "かんせんしょうがく",
+      "meaning": "study of infectious diseases"
+    },
+    {
+      "source_index": 3735,
+      "id": "2850138",
+      "term": "感染症法",
+      "reading": "かんせんしょうほう",
+      "meaning": "Infectious Disease Act"
+    },
+    {
+      "source_index": 3736,
+      "id": "2627710",
+      "term": "感染呪術",
+      "reading": "かんせんじゅじゅつ",
+      "meaning": "contagious magic"
+    },
+    {
+      "source_index": 3737,
+      "id": "2851224",
+      "term": "感染対策",
+      "reading": "かんせんたいさく",
+      "meaning": "infection control / infection prevention measures"
+    },
+    {
+      "source_index": 3738,
+      "id": "1212150",
+      "term": "幹線道路",
+      "reading": "かんせんどうろ",
+      "meaning": "main road / main thoroughfare / arterial road"
+    },
+    {
+      "source_index": 3739,
+      "id": "2843852",
+      "term": "感染爆発",
+      "reading": "かんせんばくはつ",
+      "meaning": "explosive growth of infections / explosion of cases of an infection"
+    },
+    {
+      "source_index": 3740,
+      "id": "2862286",
+      "term": "感染防止",
+      "reading": "かんせんぼうし",
+      "meaning": "infection prevention / infection control"
+    },
+    {
+      "source_index": 3741,
+      "id": "2123570",
+      "term": "感染予防",
+      "reading": "かんせんよぼう",
+      "meaning": "infection prevention / disease control"
+    },
+    {
+      "source_index": 3742,
+      "id": "1215940",
+      "term": "関税回避",
+      "reading": "かんぜいかいひ",
+      "meaning": "tariff avoidance"
+    },
+    {
+      "source_index": 3743,
+      "id": "1811830",
+      "term": "関税障壁",
+      "reading": "かんぜいしょうへき",
+      "meaning": "tariff barrier"
+    },
+    {
+      "source_index": 3744,
+      "id": "1980480",
+      "term": "関税譲許",
+      "reading": "かんぜいじょうきょ",
+      "meaning": "tariff binding"
+    },
+    {
+      "source_index": 3745,
+      "id": "2163720",
+      "term": "関税同盟",
+      "reading": "かんぜいどうめい",
+      "meaning": "customs union"
+    },
+    {
+      "source_index": 3746,
+      "id": "2805000",
+      "term": "完全寛解",
+      "reading": "かんぜんかんかい",
+      "meaning": "complete remission"
+    },
+    {
+      "source_index": 3747,
+      "id": "2825400",
+      "term": "完全完売",
+      "reading": "かんぜんかんばい",
+      "meaning": "everything must go (e.g. in a sale)"
+    },
+    {
+      "source_index": 3748,
+      "id": "2602480",
+      "term": "完全気体",
+      "reading": "かんぜんきたい",
+      "meaning": "perfect gas / ideal gas"
+    },
+    {
+      "source_index": 3749,
+      "id": "2162090",
+      "term": "完全競争",
+      "reading": "かんぜんきょうそう",
+      "meaning": "perfect competition"
     }
   ]
 }
