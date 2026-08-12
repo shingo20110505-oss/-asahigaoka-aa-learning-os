@@ -1,13 +1,40 @@
 {
-  "state": "running",
+  "state": "needs_review",
   "total_rows": 15000,
   "started_at": "2026-08-12T10:54:37.320157Z",
   "model": "Helsinki-NLP/opus-mt-en-jap",
   "direct_override_count": 45,
   "initial_pending": 14955,
-  "translated_this_run": 14332,
-  "remaining_english_only": 623,
+  "translated_this_run": 14951,
+  "remaining_english_only": 4,
   "checkpoint_every": 1000,
-  "last_progress_at": "2026-08-12T11:55:46.524535Z",
-  "last_checkpoint_translated": 14332
+  "last_progress_at": "2026-08-12T11:58:50.175221Z",
+  "last_checkpoint_translated": 14332,
+  "unresolved_sample": [
+    {
+      "id": "2867091",
+      "term": "塩分濃度",
+      "meaning_en": "salinity",
+      "model_output": "way"
+    },
+    {
+      "id": "1669380",
+      "term": "昆虫学者",
+      "meaning_en": "entomologist",
+      "model_output": "("
+    },
+    {
+      "id": "1330920",
+      "term": "収容設備",
+      "meaning_en": "accommodations",
+      "model_output": "("
+    },
+    {
+      "id": "1359570",
+      "term": "信販会社",
+      "meaning_en": "credit company",
+      "model_output": ""
+    }
+  ],
+  "failed_at": "2026-08-12T11:58:50.186406Z"
 }
