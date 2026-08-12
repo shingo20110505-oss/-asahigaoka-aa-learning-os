@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 6350,
-  "english_only_remaining": 8650,
+  "already_direct_japanese": 6400,
+  "english_only_remaining": 8600,
   "english_only_rank_counts": {
-    "(blank)": 8650
+    "(blank)": 8600
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 6350,
-      "id": "2253140",
-      "term": "携帯小説",
-      "reading": "けいたいしょうせつ",
-      "meaning": "cell phone novel / literary work originally written on a cellular phone"
-    },
-    {
-      "source_index": 6351,
-      "id": "2450630",
-      "term": "形態素語",
-      "reading": "けいたいそご",
-      "meaning": "morphemic word"
-    },
-    {
-      "source_index": 6352,
-      "id": "2352240",
-      "term": "携帯端末",
-      "reading": "けいたいたんまつ",
-      "meaning": "portable terminal / mobile device / handset"
-    },
-    {
-      "source_index": 6353,
-      "id": "2536890",
-      "term": "携帯電郵",
-      "reading": "けいたいでんゆう",
-      "meaning": "email from a cell phone or mobile phone"
-    },
-    {
-      "source_index": 6354,
-      "id": "1250690",
-      "term": "携帯電話",
-      "reading": "けいたいでんわ",
-      "meaning": "mobile phone / cell phone"
-    },
-    {
-      "source_index": 6355,
-      "id": "2153810",
-      "term": "携帯番号",
-      "reading": "けいたいばんごう",
-      "meaning": "mobile phone number / cell phone number"
-    },
-    {
-      "source_index": 6356,
-      "id": "2674300",
-      "term": "形態模写",
-      "reading": "けいたいもしゃ",
-      "meaning": "mimicry / impersonation"
-    },
-    {
-      "source_index": 6357,
-      "id": "2833141",
-      "term": "携帯糧秣",
-      "reading": "けいたいりょうまつ",
-      "meaning": "military provisions"
-    },
-    {
-      "source_index": 6358,
-      "id": "1636770",
-      "term": "兄たり難く弟たり難し",
-      "reading": "けいたりがたくていたりがたし",
-      "meaning": "both people are superb in skill (and thus it is hard to rank them)"
-    },
-    {
-      "source_index": 6359,
-      "id": "2741590",
-      "term": "経膣分娩",
-      "reading": "けいちつぶんべん",
-      "meaning": "vaginal delivery"
-    },
-    {
-      "source_index": 6360,
-      "id": "2861825",
-      "term": "経腸栄養",
-      "reading": "けいちょうえいよう",
-      "meaning": "enteral nutrition / enteral feeding"
-    },
-    {
-      "source_index": 6361,
-      "id": "2856288",
-      "term": "慶弔休暇",
-      "reading": "けいちょうきゅうか",
-      "meaning": "special leave for births, marriages or deaths in the family"
-    },
-    {
-      "source_index": 6362,
-      "id": "2753480",
-      "term": "軽佻浮華",
-      "reading": "けいちょうふか",
-      "meaning": "frivolity / superficiality / fickleness"
-    },
-    {
-      "source_index": 6363,
-      "id": "1252940",
-      "term": "軽佻浮薄",
-      "reading": "けいちょうふはく",
-      "meaning": "frivolity / levity / shallowness"
-    },
-    {
-      "source_index": 6364,
-      "id": "2396980",
-      "term": "頸椎脱臼",
-      "reading": "けいついだっきゅう",
-      "meaning": "cervical dislocation"
-    },
-    {
-      "source_index": 6365,
-      "id": "2870884",
-      "term": "頸椎捻挫",
-      "reading": "けいついねんざ",
-      "meaning": "cervical sprain / whiplash"
-    },
-    {
-      "source_index": 6366,
-      "id": "2044480",
-      "term": "敬天愛人",
-      "reading": "けいてんあいじん",
-      "meaning": "revere heaven, love people"
-    },
-    {
-      "source_index": 6367,
-      "id": "1251050",
-      "term": "系統神学",
-      "reading": "けいとうしんがく",
-      "meaning": "systematic theology"
-    },
-    {
-      "source_index": 6368,
-      "id": "2237090",
-      "term": "系統発生",
-      "reading": "けいとうはっせい",
-      "meaning": "phylogeny / phylogenesis"
-    },
-    {
-      "source_index": 6369,
-      "id": "2808000",
-      "term": "系統分類",
-      "reading": "けいとうぶんるい",
-      "meaning": "phylogenetic classification / phylogenetic taxonomy"
-    },
-    {
-      "source_index": 6370,
-      "id": "2553440",
-      "term": "系統連系",
-      "reading": "けいとうれんけい",
-      "meaning": "grid connection"
-    },
-    {
-      "source_index": 6371,
-      "id": "2605950",
-      "term": "傾動地塊",
-      "reading": "けいどうちかい",
-      "meaning": "tilt block / tilted fault block"
-    },
-    {
-      "source_index": 6372,
-      "id": "2669170",
-      "term": "軽度懸念",
-      "reading": "けいどけねん",
-      "meaning": "least concern (IUCN Red List category)"
-    },
-    {
-      "source_index": 6373,
-      "id": "2871723",
-      "term": "経尿道的",
-      "reading": "けいにょうどうてき",
-      "meaning": "transurethral"
-    },
-    {
-      "source_index": 6374,
-      "id": "2272290",
-      "term": "経年変化",
-      "reading": "けいねんへんか",
-      "meaning": "change over the years / aging / ageing"
-    },
-    {
-      "source_index": 6375,
-      "id": "2272300",
-      "term": "経年劣化",
-      "reading": "けいねんれっか",
-      "meaning": "degradation over time / time-related deterioration"
-    },
-    {
-      "source_index": 6376,
-      "id": "2044490",
-      "term": "軽薄才子",
-      "reading": "けいはくさいし",
-      "meaning": "shallow, glib and obsequious person"
-    },
-    {
-      "source_index": 6377,
-      "id": "1831800",
-      "term": "軽薄短小",
-      "reading": "けいはくたんしょう",
-      "meaning": "small, light and thin (of consumer products, esp. electronics)"
-    },
-    {
-      "source_index": 6378,
-      "id": "1933970",
-      "term": "軽犯罪法",
-      "reading": "けいはんざいほう",
-      "meaning": "Minor Offenses Act"
-    },
-    {
-      "source_index": 6379,
-      "id": "1831820",
-      "term": "軽爆撃機",
-      "reading": "けいばくげきき",
-      "meaning": "light bomber"
-    },
-    {
-      "source_index": 6380,
-      "id": "1933220",
-      "term": "競馬新聞",
-      "reading": "けいばしんぶん",
-      "meaning": "racing form / racing (news)paper"
-    },
-    {
-      "source_index": 6381,
-      "id": "1821410",
-      "term": "閨閥政治",
-      "reading": "けいばつせいじ",
-      "meaning": "government by relatives of ruler's wife"
-    },
-    {
-      "source_index": 6382,
-      "id": "2671130",
-      "term": "競馬予想",
-      "reading": "けいばよそう",
-      "meaning": "racing tip / racing prediction"
-    },
-    {
-      "source_index": 6383,
-      "id": "2770180",
-      "term": "経皮感染",
-      "reading": "けいひかんせん",
-      "meaning": "percutaneous infection"
-    },
-    {
-      "source_index": 6384,
-      "id": "2830654",
-      "term": "軽飛行機",
-      "reading": "けいひこうき",
-      "meaning": "light aircraft"
-    },
-    {
-      "source_index": 6385,
-      "id": "1251650",
-      "term": "経費削減",
-      "reading": "けいひさくげん",
-      "meaning": "reduction of expenditure / reduction of expenses / cost reduction"
-    },
-    {
-      "source_index": 6386,
-      "id": "1933930",
-      "term": "経費節約",
-      "reading": "けいひせつやく",
-      "meaning": "curtailment of expenditure / financial retrenchment"
-    },
-    {
-      "source_index": 6387,
-      "id": "2770170",
-      "term": "経皮毒性",
-      "reading": "けいひどくせい",
-      "meaning": "dermal toxicity / percutaneous toxicity"
-    },
-    {
-      "source_index": 6388,
-      "id": "5220256",
-      "term": "京浜急行",
-      "reading": "けいひんきゅうこう",
-      "meaning": "Keikyu"
-    },
-    {
-      "source_index": 6389,
-      "id": "2860461",
-      "term": "経鼻胃管",
-      "reading": "けいびいかん",
-      "meaning": "nasogastric tube / NG tube"
-    },
-    {
-      "source_index": 6390,
-      "id": "1991830",
-      "term": "警備会社",
-      "reading": "けいびがいしゃ",
-      "meaning": "security firm / security company"
-    },
-    {
-      "source_index": 6391,
-      "id": "1252500",
-      "term": "警備強化",
-      "reading": "けいびきょうか",
-      "meaning": "increased or beefed up security"
-    },
-    {
-      "source_index": 6392,
-      "id": "2723200",
-      "term": "警備警察",
-      "reading": "けいびけいさつ",
-      "meaning": "security police / peace preservation police"
-    },
-    {
-      "source_index": 6393,
-      "id": "2872285",
-      "term": "警備体制",
-      "reading": "けいびたいせい",
-      "meaning": "security arrangements / security system / security setup"
-    },
-    {
-      "source_index": 6394,
-      "id": "2132690",
-      "term": "警備態勢",
-      "reading": "けいびたいせい",
-      "meaning": "security posture / security readiness / security preparedness"
-    },
-    {
-      "source_index": 6395,
-      "id": "2862475",
-      "term": "警備保障",
-      "reading": "けいびほしょう",
-      "meaning": "security contracting (against fire, theft, etc.) / private security arrangement"
-    },
-    {
-      "source_index": 6396,
-      "id": "1831720",
-      "term": "軽便鉄道",
-      "reading": "けいべんてつどう",
-      "meaning": "narrow-gauge railway / light railway"
-    },
-    {
-      "source_index": 6397,
-      "id": "1831690",
-      "term": "軽妙洒脱",
-      "reading": "けいみょうしゃだつ",
-      "meaning": "witty / smart and polished"
-    },
-    {
-      "source_index": 6398,
-      "id": "1249810",
-      "term": "刑務作業",
-      "reading": "けいむさぎょう",
-      "meaning": "penal labour / work assigned to prisoners"
-    },
-    {
-      "source_index": 6399,
-      "id": "1249830",
-      "term": "刑務所長",
-      "reading": "けいむしょちょう",
-      "meaning": "prison warden"
-    },
     {
       "source_index": 6400,
       "id": "2030710",
@@ -7010,6 +6660,356 @@
       "term": "高山植物",
       "reading": "こうざんしょくぶつ",
       "meaning": "alpine plants"
+    },
+    {
+      "source_index": 7350,
+      "id": "2044930",
+      "term": "高山流水",
+      "reading": "こうざんりゅうすい",
+      "meaning": "high mountains and running water / the beauty of nature"
+    },
+    {
+      "source_index": 7351,
+      "id": "2044940",
+      "term": "更始一新",
+      "reading": "こうしいっしん",
+      "meaning": "undergo a complete change / turn over a new leaf"
+    },
+    {
+      "source_index": 7352,
+      "id": "2659240",
+      "term": "行使価格",
+      "reading": "こうしかかく",
+      "meaning": "exercise price / strike price / practice price"
+    },
+    {
+      "source_index": 7353,
+      "id": "1677070",
+      "term": "公使館員",
+      "reading": "こうしかんいん",
+      "meaning": "legation / attache"
+    },
+    {
+      "source_index": 7354,
+      "id": "5743080",
+      "term": "孔子学院",
+      "reading": "こうしがくいん",
+      "meaning": "Confucius Institute"
+    },
+    {
+      "source_index": 7355,
+      "id": "2665580",
+      "term": "公式行事",
+      "reading": "こうしきぎょうじ",
+      "meaning": "official function / state function"
+    },
+    {
+      "source_index": 7356,
+      "id": "2135250",
+      "term": "公式参拝",
+      "reading": "こうしきさんぱい",
+      "meaning": "official visit to a shrine (or temple)"
+    },
+    {
+      "source_index": 7357,
+      "id": "1578640",
+      "term": "公式試合",
+      "reading": "こうしきしあい",
+      "meaning": "championship match"
+    },
+    {
+      "source_index": 7358,
+      "id": "1273830",
+      "term": "公式主義",
+      "reading": "こうしきしゅぎ",
+      "meaning": "formalism"
+    },
+    {
+      "source_index": 7359,
+      "id": "1273840",
+      "term": "公式発表",
+      "reading": "こうしきはっぴょう",
+      "meaning": "official announcement"
+    },
+    {
+      "source_index": 7360,
+      "id": "1273850",
+      "term": "公式訪問",
+      "reading": "こうしきほうもん",
+      "meaning": "official visit"
+    },
+    {
+      "source_index": 7361,
+      "id": "2835458",
+      "term": "硬式野球",
+      "reading": "こうしきやきゅう",
+      "meaning": "regulation baseball (as opposed to the variety played with a rubber ball)"
+    },
+    {
+      "source_index": 7362,
+      "id": "2227540",
+      "term": "光子魚雷",
+      "reading": "こうしぎょらい",
+      "meaning": "photon torpedo"
+    },
+    {
+      "source_index": 7363,
+      "id": "5746689",
+      "term": "孔子家語",
+      "reading": "こうしけご",
+      "meaning": "The School Sayings of Confucius / Family Sayings of Confucius / Kongzi Jiayu"
+    },
+    {
+      "source_index": 7364,
+      "id": "1978030",
+      "term": "格子欠陥",
+      "reading": "こうしけっかん",
+      "meaning": "lattice defect"
+    },
+    {
+      "source_index": 7365,
+      "id": "1982510",
+      "term": "高脂血症",
+      "reading": "こうしけつしょう",
+      "meaning": "hyperlipidemia / hyperlipidaemia / hyperlipemia"
+    },
+    {
+      "source_index": 7366,
+      "id": "2028220",
+      "term": "公私混同",
+      "reading": "こうしこんどう",
+      "meaning": "mixing of public and private affairs / mixing business with personal affairs / mixing work and private matters"
+    },
+    {
+      "source_index": 7367,
+      "id": "2855823",
+      "term": "格子振動",
+      "reading": "こうししんどう",
+      "meaning": "lattice vibration"
+    },
+    {
+      "source_index": 7368,
+      "id": "2591320",
+      "term": "格子女郎",
+      "reading": "こうしじょろう",
+      "meaning": "prostitute of the second rank (below the tayū; Edo period)"
+    },
+    {
+      "source_index": 7369,
+      "id": "1992790",
+      "term": "高視聴率",
+      "reading": "こうしちょうりつ",
+      "meaning": "high television ratings"
+    },
+    {
+      "source_index": 7370,
+      "id": "5282202",
+      "term": "皇室会議",
+      "reading": "こうしつかいぎ",
+      "meaning": "Imperial Household Council"
+    },
+    {
+      "source_index": 7371,
+      "id": "2408070",
+      "term": "高失業率",
+      "reading": "こうしつぎょうりつ",
+      "meaning": "high unemployment rate"
+    },
+    {
+      "source_index": 7372,
+      "id": "2857200",
+      "term": "硬質小麦",
+      "reading": "こうしつこむぎ",
+      "meaning": "hard wheat"
+    },
+    {
+      "source_index": 7373,
+      "id": "2245860",
+      "term": "皇室神道",
+      "reading": "こうしつしんとう",
+      "meaning": "Imperial Household Shinto"
+    },
+    {
+      "source_index": 7374,
+      "id": "1719320",
+      "term": "皇室典範",
+      "reading": "こうしつてんぱん",
+      "meaning": "Imperial House Act"
+    },
+    {
+      "source_index": 7375,
+      "id": "1810710",
+      "term": "硬質陶器",
+      "reading": "こうしつとうき",
+      "meaning": "ironstone china"
+    },
+    {
+      "source_index": 7376,
+      "id": "1978050",
+      "term": "格子定数",
+      "reading": "こうしていすう",
+      "meaning": "lattice constant"
+    },
+    {
+      "source_index": 7377,
+      "id": "2774050",
+      "term": "格子点間",
+      "reading": "こうしてんかん",
+      "meaning": "interstice"
+    },
+    {
+      "source_index": 7378,
+      "id": "1272660",
+      "term": "侯爵夫人",
+      "reading": "こうしゃくふじん",
+      "meaning": "marchioness"
+    },
+    {
+      "source_index": 7379,
+      "id": "1273890",
+      "term": "公爵夫人",
+      "reading": "こうしゃくふじん",
+      "meaning": "princess / duchess"
+    },
+    {
+      "source_index": 7380,
+      "id": "1283560",
+      "term": "高射特科",
+      "reading": "こうしゃとっか",
+      "meaning": "anti-aircraft artillery"
+    },
+    {
+      "source_index": 7381,
+      "id": "1273920",
+      "term": "公衆衛生",
+      "reading": "こうしゅうえいせい",
+      "meaning": "public health / public hygiene / sanitation"
+    },
+    {
+      "source_index": 7382,
+      "id": "1282300",
+      "term": "講習会場",
+      "reading": "こうしゅうかいじょう",
+      "meaning": "training center / training centre"
+    },
+    {
+      "source_index": 7383,
+      "id": "2355420",
+      "term": "公衆回線",
+      "reading": "こうしゅうかいせん",
+      "meaning": "public line (as opposed to a private or leased line)"
+    },
+    {
+      "source_index": 7384,
+      "id": "1273940",
+      "term": "公衆電話",
+      "reading": "こうしゅうでんわ",
+      "meaning": "public telephone / pay phone"
+    },
+    {
+      "source_index": 7385,
+      "id": "1273950",
+      "term": "公衆道徳",
+      "reading": "こうしゅうどうとく",
+      "meaning": "public morals"
+    },
+    {
+      "source_index": 7386,
+      "id": "2863168",
+      "term": "高周波数",
+      "reading": "こうしゅうはすう",
+      "meaning": "high frequency / HF"
+    },
+    {
+      "source_index": 7387,
+      "id": "2865704",
+      "term": "甲州葡萄",
+      "reading": "こうしゅうぶどう",
+      "meaning": "Kōshū (grape variety)"
+    },
+    {
+      "source_index": 7388,
+      "id": "1273960",
+      "term": "公衆便所",
+      "reading": "こうしゅうべんじょ",
+      "meaning": "public lavatory / public toilet / public restroom"
+    },
+    {
+      "source_index": 7389,
+      "id": "2869494",
+      "term": "甲州味噌",
+      "reading": "こうしゅうみそ",
+      "meaning": "Kōshū miso / traditional miso of Yamanashi Prefecture fermented using both rice and barley kōji"
+    },
+    {
+      "source_index": 7390,
+      "id": "1273980",
+      "term": "公衆浴場",
+      "reading": "こうしゅうよくじょう",
+      "meaning": "public bathhouse"
+    },
+    {
+      "source_index": 7391,
+      "id": "2729490",
+      "term": "甲種合格",
+      "reading": "こうしゅごうかく",
+      "meaning": "passing the physical examination as a Grade One conscript (in the former Japanese military)"
+    },
+    {
+      "source_index": 7392,
+      "id": "1675170",
+      "term": "攻守同盟",
+      "reading": "こうしゅどうめい",
+      "meaning": "offensive and defensive alliance"
+    },
+    {
+      "source_index": 7393,
+      "id": "1272120",
+      "term": "交渉委員",
+      "reading": "こうしょういいん",
+      "meaning": "negotiating committeemen"
+    },
+    {
+      "source_index": 7394,
+      "id": "2599280",
+      "term": "交渉決裂",
+      "reading": "こうしょうけつれつ",
+      "meaning": "breakdown of negotiations"
+    },
+    {
+      "source_index": 7395,
+      "id": "2659410",
+      "term": "交渉姿勢",
+      "reading": "こうしょうしせい",
+      "meaning": "negotiating posture / attitude to negotiations / negotiating behaviour"
+    },
+    {
+      "source_index": 7396,
+      "id": "1274040",
+      "term": "公称資本",
+      "reading": "こうしょうしほん",
+      "meaning": "authorized capital / authorised capital"
+    },
+    {
+      "source_index": 7397,
+      "id": "2022130",
+      "term": "公傷制度",
+      "reading": "こうしょうせいど",
+      "meaning": "official injury exemption system / system for exempting players injured in an official match from pay reduction or demotion"
+    },
+    {
+      "source_index": 7398,
+      "id": "1677240",
+      "term": "公称馬力",
+      "reading": "こうしょうばりき",
+      "meaning": "nominal horsepower"
+    },
+    {
+      "source_index": 7399,
+      "id": "2519680",
+      "term": "口承文学",
+      "reading": "こうしょうぶんがく",
+      "meaning": "oral literature / folk literature"
     }
   ]
 }
