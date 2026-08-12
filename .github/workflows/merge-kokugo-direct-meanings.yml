@@ -1,0 +1,28 @@
+name: Merge Kokugo Direct Japanese Meanings
+on:
+  push:
+    paths:
+      - 'kokugo-chronologia/meaning-ja-patches/**'
+permissions:
+  contents: write
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Sync latest main
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+      - name: Merge direct Japanese meanings
+        run: python3 .github/scripts/merge_kokugo_direct_meanings.py
+      - name: Commit merged meanings
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add kokugo-chronologia/meaning-ja-overrides.json kokugo-chronologia/meaning-ja-status.json sw.js
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Merge direct Japanese Kokugo meanings'
+          git push origin HEAD:main
