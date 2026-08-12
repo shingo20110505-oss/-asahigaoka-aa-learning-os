@@ -1,3 +1,4 @@
+import './validate-vocab-examples.mjs';
 import fs from 'node:fs';
 
 function read(path){
@@ -36,6 +37,14 @@ for(const asset of [
   'quality-repair-v1.js',
   'quality-repair-final-v1.js',
   'quality-ci-runner-v1.js',
+  'english-vocab-examples-basic1-v1.js',
+  'english-vocab-examples-basic2-v1.js',
+  'english-vocab-examples-basic3-v1.js',
+  'english-vocab-examples-phrases-v1.js',
+  'english-vocab-examples-apply-v1.js',
+  'english-vocab-example-ui-v1.js',
+  'vocab-row-toggle-v1.js',
+  'vocab-sort-v1.js',
   'diagnostics.html',
   'review/index.html'
 ]){
@@ -80,6 +89,8 @@ requireText(prod, 'window.AALoginProductionTest=', 'production test API');
 requireText(loader, "'quality-repair-v1.js'", 'quality repair load order');
 requireText(loader, "'quality-repair-final-v1.js'", 'final quality repair load order');
 requireText(loader, "'quality-ci-runner-v1.js'", 'browser quality runner load order');
+requireText(loader, "'english-vocab-examples-apply-v1.js'", 'vocab example audit load order');
+requireText(loader, "'english-vocab-example-ui-v1.js'", 'vocab example UI load order');
 requireText(quality, 'window.__AA_QUALITY_REPAIR_V1__', 'quality repair marker');
 requireText(quality, 'function buildCloze', 'cloze answer exposure repair');
 requireText(quality, 'planVocabQueue=function', 'six vocab plus two collocation repair');
@@ -117,4 +128,4 @@ for(const file of new Set(referenced)){
   if(!fs.existsSync(file)) throw new Error(`mobile loader points to missing file: ${file}`);
 }
 
-console.log(`runtime assets OK: referenced=${new Set(referenced).size}, final quality/Chronologia/layout/login/PWA checks passed`);
+console.log(`runtime assets OK: referenced=${new Set(referenced).size}, final quality/Chronologia/layout/login/PWA/vocab-example checks passed`);
