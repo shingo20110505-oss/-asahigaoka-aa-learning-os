@@ -139,6 +139,38 @@ function installVocabMobileLayout(){
   d.body?.setAttribute('data-aa-vocab-mobile-layout','vertical-v1');
  }catch(_){ }
 }
+function installVocabRecallToggles(retry=0){
+ try{
+  if(window.parent===window)return;
+  const p=window.parent,d=p.document;
+  if(!/\/vocab\.html$/.test(p.location.pathname))return;
+  const filters=d.querySelector('#listView .filters');
+  if(!filters){if(retry<80)setTimeout(()=>installVocabRecallToggles(retry+1),100);return}
+  if(d.getElementById('aa-vocab-recall-controls'))return;
+  const style=d.createElement('style');style.id='aa-vocab-recall-style';style.textContent=`
+   #aa-vocab-recall-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:9px 0 2px}
+   #aa-vocab-recall-controls button{min-height:44px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);font-weight:900;font-size:13px;padding:8px 10px;cursor:pointer}
+   #aa-vocab-recall-controls button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+   body.aa-vocab-hide-word .vtable td:nth-child(2) .word{color:transparent!important;background:#e8edf4!important;border-radius:7px!important;box-shadow:inset 0 0 0 1px #d7dee8!important;user-select:none!important;text-shadow:none!important;min-width:7.5em!important;display:inline-block!important}
+   body.aa-vocab-hide-meaning .vtable td:nth-child(4){color:transparent!important;user-select:none!important;text-shadow:none!important}
+   body.aa-vocab-hide-meaning .vtable td:nth-child(4)::after{content:'訳を隠しています';display:inline-block!important;color:#98a2b3!important;background:#f2f4f7!important;border-radius:7px!important;padding:3px 8px!important;font-size:11px!important;font-weight:800!important}
+   @media(max-width:480px){#aa-vocab-recall-controls{grid-template-columns:1fr 1fr}#aa-vocab-recall-controls button{font-size:12px;min-height:42px;padding:7px 5px}}
+  `;d.head.appendChild(style);
+  const wrap=d.createElement('div');wrap.id='aa-vocab-recall-controls';wrap.setAttribute('aria-label','暗記表示切替');
+  const wordBtn=d.createElement('button'),meaningBtn=d.createElement('button');wordBtn.type=meaningBtn.type='button';
+  wordBtn.dataset.target='word';meaningBtn.dataset.target='meaning';wrap.append(wordBtn,meaningBtn);filters.insertAdjacentElement('afterend',wrap);
+  const KEY='aa-vocab-recall-visibility-v1';let state={word:false,meaning:false};
+  try{state=Object.assign(state,JSON.parse(p.localStorage.getItem(KEY)||'{}'))}catch(_){ }
+  const apply=()=>{
+   d.body.classList.toggle('aa-vocab-hide-word',!!state.word);d.body.classList.toggle('aa-vocab-hide-meaning',!!state.meaning);
+   wordBtn.textContent=state.word?'英単語を戻す':'英単語を隠す';meaningBtn.textContent=state.meaning?'日本語訳を戻す':'日本語訳を隠す';
+   wordBtn.setAttribute('aria-pressed',String(!!state.word));meaningBtn.setAttribute('aria-pressed',String(!!state.meaning));
+   try{p.localStorage.setItem(KEY,JSON.stringify(state))}catch(_){ }
+  };
+  wordBtn.addEventListener('click',()=>{state.word=!state.word;apply()});meaningBtn.addEventListener('click',()=>{state.meaning=!state.meaning;apply()});apply();
+  d.body?.setAttribute('data-aa-vocab-recall-toggle','v1');
+ }catch(_){if(retry<80)setTimeout(()=>installVocabRecallToggles(retry+1),100)}
+}
 function wire(){if(!window.Companion7){setTimeout(wire,80);return}if(window.__AA_COMPANION_LOGIN_WIRED__)return;window.__AA_COMPANION_LOGIN_WIRED__=true;killLegacy();
  document.addEventListener('aa:missionComplete',()=>{try{Companion7.recordStudyComplete?.()}catch(_){}});
  const mo=new MutationObserver(killLegacy);mo.observe(document.body,{childList:true,subtree:true});
@@ -150,7 +182,8 @@ document.addEventListener('aa:v23ready',loadReadingJapaneseFix,{once:true});
 installEnglishClozeDedup();
 installEnglishPhraseQuestionFix();
 installVocabMobileLayout();
+installVocabRecallToggles();
 loadSettings();loadV23();loadLogin();loadExplosionAnalytics();loadDailyAnalytics();loadProductionLoginTest();loadSettingsImprovements();
 setTimeout(()=>{if(window.AA_V23_STATS)loadReadingJapaneseFix()},1800);
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{installVocabOnlyPageLink();installVocabularyHubLink();installVocabMobileLayout();wire()},{once:true});else{installVocabOnlyPageLink();installVocabularyHubLink();installVocabMobileLayout();wire()}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{installVocabOnlyPageLink();installVocabularyHubLink();installVocabMobileLayout();installVocabRecallToggles();wire()},{once:true});else{installVocabOnlyPageLink();installVocabularyHubLink();installVocabMobileLayout();installVocabRecallToggles();wire()}
 })();
