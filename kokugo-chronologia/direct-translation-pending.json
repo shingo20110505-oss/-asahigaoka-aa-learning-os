@@ -1,0 +1,552 @@
+{
+  "total_rows": 15000,
+  "english_only_total": 15000,
+  "english_only_rank_counts": {
+    "(blank)": 15000
+  },
+  "a_rank_total": 0,
+  "selection": "first-visible-order (source rank is blank)",
+  "batch_size": 60,
+  "targets": [
+    {
+      "source_index": 0,
+      "id": "2538870",
+      "term": "嗚呼嗚呼",
+      "reading": "ああああ",
+      "meaning": "aaah! / oooh! / oh no!",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1,
+      "id": "1982130",
+      "term": "ああ言えばこう言う",
+      "reading": "ああいえばこういう",
+      "meaning": "to have a comeback for every remark / to be always ready with excuses / to contradict everything",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 2,
+      "id": "2683820",
+      "term": "相合駕籠",
+      "reading": "あいあいかご",
+      "meaning": "two people riding in a palanquin together (esp. a man and a woman)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3,
+      "id": "2684770",
+      "term": "藍色細菌",
+      "reading": "あいいろさいきん",
+      "meaning": "blue-green bacterium / cyanobacteria / cyanobacterium",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 4,
+      "id": "1683820",
+      "term": "合縁奇縁",
+      "reading": "あいえんきえん",
+      "meaning": "a couple strangely but happily united / uncanny relationship formed by a quirk of fate",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 5,
+      "id": "1791530",
+      "term": "愛玩動物",
+      "reading": "あいがんどうぶつ",
+      "meaning": "pet (animal)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 6,
+      "id": "2834411",
+      "term": "哀毀骨立",
+      "reading": "あいきこつりつ",
+      "meaning": "losing weight and becoming bony because of grief",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 7,
+      "id": "1284690",
+      "term": "合気道家",
+      "reading": "あいきどうか",
+      "meaning": "aikido practitioner",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 8,
+      "id": "2860738",
+      "term": "愛及屋烏",
+      "reading": "あいきゅうおくう",
+      "meaning": "infatuation / doting",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 9,
+      "id": "2688310",
+      "term": "愛嬌商売",
+      "reading": "あいきょうしょうばい",
+      "meaning": "occupation where charm is necessary to succeed",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 10,
+      "id": "2151600",
+      "term": "愛嬌を振りまく",
+      "reading": "あいきょうをふりまく",
+      "meaning": "to make oneself pleasant to everybody / to smile at everybody / to try to please everybody",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 11,
+      "id": "1929140",
+      "term": "愛国運動",
+      "reading": "あいこくうんどう",
+      "meaning": "patriotic movement",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 12,
+      "id": "1150730",
+      "term": "愛国主義",
+      "reading": "あいこくしゅぎ",
+      "meaning": "nationalism / patriotism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 13,
+      "id": "1929150",
+      "term": "愛国団体",
+      "reading": "あいこくだんたい",
+      "meaning": "patriotic group or organization (organisation)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 14,
+      "id": "2040910",
+      "term": "相碁井目",
+      "reading": "あいごせいもく",
+      "meaning": "in every game or play, differences in skill between individuals can be substantial",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 15,
+      "id": "1791510",
+      "term": "愛妻弁当",
+      "reading": "あいさいべんとう",
+      "meaning": "lunchbox made with loving care by one's wife",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 16,
+      "id": "2688540",
+      "term": "相沢事件",
+      "reading": "あいざわじけん",
+      "meaning": "Aizawa incident (assassination of Major General Tetsuzan Nagata by Lieutenant Colonel Saburo Aizawa; August 12, 1935)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 17,
+      "id": "1791490",
+      "term": "愛社精神",
+      "reading": "あいしゃせいしん",
+      "meaning": "spirit of dedication to one's company",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 18,
+      "id": "2371110",
+      "term": "相性問題",
+      "reading": "あいしょうもんだい",
+      "meaning": "compatibility issue",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 19,
+      "id": "2445830",
+      "term": "愛情表現",
+      "reading": "あいじょうひょうげん",
+      "meaning": "expression of love / showing love",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 20,
+      "id": "2040920",
+      "term": "愛人関係",
+      "reading": "あいじんかんけい",
+      "meaning": "being lovers",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 21,
+      "id": "1791550",
+      "term": "愛染明王",
+      "reading": "あいぜんみょうおう",
+      "meaning": "Ragaraja (esoteric school deity of love)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 22,
+      "id": "2040930",
+      "term": "哀訴嘆願",
+      "reading": "あいそたんがん",
+      "meaning": "plea / entreaty / supplication",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 23,
+      "id": "2568060",
+      "term": "愛想を振りまく",
+      "reading": "あいそをふりまく",
+      "meaning": "to make oneself pleasant to everybody / to smile at everybody / to try to please everybody",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 24,
+      "id": "2841171",
+      "term": "愛憎関係",
+      "reading": "あいぞうかんけい",
+      "meaning": "love-hate relationship",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 25,
+      "id": "1150910",
+      "term": "愛憎併存",
+      "reading": "あいぞうへいそん",
+      "meaning": "ambivalence",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 26,
+      "id": "2437150",
+      "term": "相対勘定",
+      "reading": "あいたいかんじょう",
+      "meaning": "contra account",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 27,
+      "id": "1401190",
+      "term": "相対売買",
+      "reading": "あいたいばいばい",
+      "meaning": "negotiated transaction",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 28,
+      "id": "2183520",
+      "term": "開いた口がふさがらない",
+      "reading": "あいたくちがふさがらない",
+      "meaning": "dumbfounded / speechless / flabbergasted",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 29,
+      "id": "1150950",
+      "term": "愛他主義",
+      "reading": "あいたしゅぎ",
+      "meaning": "altruism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 30,
+      "id": "2691410",
+      "term": "間に立つ",
+      "reading": "あいだにたつ",
+      "meaning": "to mediate / to intervene",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 31,
+      "id": "5743561",
+      "term": "愛知県警",
+      "reading": "あいちけんけい",
+      "meaning": "Aichi Prefectural Police (abbr)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 32,
+      "id": "5104088",
+      "term": "愛知大学",
+      "reading": "あいちだいがく",
+      "meaning": "Aichi University",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 33,
+      "id": "2796620",
+      "term": "愛着障害",
+      "reading": "あいちゃくしょうがい",
+      "meaning": "attachment disorder",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 34,
+      "id": "2669090",
+      "term": "愛着理論",
+      "reading": "あいちゃくりろん",
+      "meaning": "attachment theory",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 35,
+      "id": "1791580",
+      "term": "愛鳥週間",
+      "reading": "あいちょうしゅうかん",
+      "meaning": "Bird Week (starting on May 10 of each year)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 36,
+      "id": "2853037",
+      "term": "会津戦争",
+      "reading": "あいづせんそう",
+      "meaning": "Battle of Aizu (1868)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 37,
+      "id": "5742259",
+      "term": "会津大学",
+      "reading": "あいづだいがく",
+      "meaning": "University of Aizu",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 38,
+      "id": "1748890",
+      "term": "相手次第",
+      "reading": "あいてしだい",
+      "meaning": "changing one's attitude or response according to who one is talking to or dealing with",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 39,
+      "id": "2029810",
+      "term": "哀悼痛惜",
+      "reading": "あいとうつうせき",
+      "meaning": "condolence / mourning / sorrow",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 40,
+      "id": "5742261",
+      "term": "藍野大学",
+      "reading": "あいのだいがく",
+      "meaning": "Aino University",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 41,
+      "id": "2833897",
+      "term": "愛のムチ",
+      "reading": "あいのむち",
+      "meaning": "(lesson in) tough love",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 42,
+      "id": "1791470",
+      "term": "愛別離苦",
+      "reading": "あいべつりく",
+      "meaning": "the pain of separation from loved ones",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 43,
+      "id": "2121980",
+      "term": "合間合間",
+      "reading": "あいまあいま",
+      "meaning": "between times / when there's a spare moment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 44,
+      "id": "2691990",
+      "term": "曖昧茶屋",
+      "reading": "あいまいぢゃや",
+      "meaning": "brothel fronting as a tea house, inn, restaurant, etc.",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 45,
+      "id": "1567940",
+      "term": "曖昧模糊",
+      "reading": "あいまいもこ",
+      "meaning": "obscure / vague / ambiguous",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 46,
+      "id": "2670680",
+      "term": "合間を縫う",
+      "reading": "あいまをぬう",
+      "meaning": "to make good use of one's spare moments",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 47,
+      "id": "2692010",
+      "term": "藍海松茶",
+      "reading": "あいみるちゃ",
+      "meaning": "brown tinged with olive green and indigo",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 48,
+      "id": "1000200",
+      "term": "阿吽の呼吸",
+      "reading": "あうんのこきゅう",
+      "meaning": "the harmonizing, mentally and physically, of two parties engaged in an activity / singing from the same hymn-sheet / dancing to the same beat",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 49,
+      "id": "1970360",
+      "term": "亜鉛合金",
+      "reading": "あえんごうきん",
+      "meaning": "zinc alloy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 50,
+      "id": "2865473",
+      "term": "亜塩素酸",
+      "reading": "あえんそさん",
+      "meaning": "chlorous acid",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 51,
+      "id": "1928900",
+      "term": "亜鉛中毒",
+      "reading": "あえんちゅうどく",
+      "meaning": "zinc poisoning",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 52,
+      "id": "1928910",
+      "term": "亜鉛鉄板",
+      "reading": "あえんてっぱん",
+      "meaning": "galvanized sheet iron / galvanised sheet iron / galvanized sheet metal",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 53,
+      "id": "1149620",
+      "term": "亜鉛凸版",
+      "reading": "あえんとっぱん",
+      "meaning": "photoengraving",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 54,
+      "id": "1750240",
+      "term": "青息吐息",
+      "reading": "あおいきといき",
+      "meaning": "deep distress",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 55,
+      "id": "1750090",
+      "term": "青色申告",
+      "reading": "あおいろしんこく",
+      "meaning": "blue return / blue-paper income-tax return / type of income tax return filing which allows for special income deductions",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 56,
+      "id": "2811750",
+      "term": "青色吐息",
+      "reading": "あおいろといき",
+      "meaning": "deep distress",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 57,
+      "id": "2198890",
+      "term": "青河原鶸",
+      "reading": "あおかわらひわ",
+      "meaning": "European greenfinch (Carduelis chloris)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 58,
+      "id": "5451472",
+      "term": "青木建設",
+      "reading": "あおきけんせつ",
+      "meaning": "Aoki Corporation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 59,
+      "id": "1555360",
+      "term": "緑啄木鳥",
+      "reading": "あおげら",
+      "meaning": "Japanese green woodpecker (Picus awokera) / Japanese woodpecker / wavy-bellied woodpecker",
+      "rank": null,
+      "type": "four"
+    }
+  ]
+}
