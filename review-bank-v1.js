@@ -140,11 +140,43 @@ const items=[
     memory:'コケ＝スギゴケ・ゼニゴケ／シダ＝イヌワラビ・スギナ／裸子＝イチョウ・スギ／双子葉＝ツツジ・サクラ／単子葉＝ツユクサ・トウモロコシ',
     tags:['ゼニゴケ','雌株','植物の分類','コケ植物','シダ植物','裸子植物','双子葉類','単子葉類','問25','問26'],
     createdAt:'2026-08-12'
+  },
+  {
+    id:'ja-kanji-biwako-20260812',
+    subject:'国語',
+    unit:'漢字・地名',
+    title:'琵琶湖（びわこ）の漢字',
+    question:'「びわこ」を漢字で書きなさい。',
+    answer:'琵琶湖',
+    why:'滋賀県にある日本最大の湖は「琵琶湖」と書きます。「びわ」の2字が難しいので、地名としてひとかたまりで書けるようにします。',
+    examples:[
+      'びわこ → 琵琶湖',
+      '琵琶湖は滋賀県にある。'
+    ],
+    memory:'びわこ＝琵琶湖。「琵」「琶」の2字をセットで覚える',
+    tags:['漢字','琵琶湖','びわこ','地名','滋賀県'],
+    createdAt:'2026-08-12'
+  },
+  {
+    id:'sci-organophosphate-ache-20260812',
+    subject:'理科',
+    unit:'化学物質・有機リン',
+    title:'有機リン系農薬とアセチルコリンエステラーゼ',
+    question:'有機リン系農薬は、神経伝達に関わるどの酵素の働きを阻害する？',
+    answer:'アセチルコリンエステラーゼ。',
+    why:'有機リン系農薬の代表的な作用は、アセチルコリンを分解する酵素アセチルコリンエステラーゼの働きを阻害することです。その結果、アセチルコリンが過剰にたまり、神経系に影響が出ます。',
+    examples:[
+      '有機リン系農薬 → アセチルコリンエステラーゼを阻害',
+      'アセチルコリンエステラーゼ → アセチルコリンを分解する酵素'
+    ],
+    memory:'有機リン → AChE（アセチルコリンエステラーゼ）阻害',
+    tags:['有機リン','有機リン系農薬','アセチルコリンエステラーゼ','神経伝達'],
+    createdAt:'2026-08-12'
   }
 ];
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.7';
+window.AA_REVIEW_BANK_VERSION='1.0.8';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
