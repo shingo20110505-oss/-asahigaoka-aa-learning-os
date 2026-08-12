@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 6700,
-  "english_only_remaining": 8300,
+  "already_direct_japanese": 6750,
+  "english_only_remaining": 8250,
   "english_only_rank_counts": {
-    "(blank)": 8300
+    "(blank)": 8250
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 6700,
-      "id": "2581600",
-      "term": "建築確認",
-      "reading": "けんちくかくにん",
-      "meaning": "building certification / building confirmation"
-    },
-    {
-      "source_index": 6701,
-      "id": "2859175",
-      "term": "建築会社",
-      "reading": "けんちくがいしゃ",
-      "meaning": "building company / construction company / architectural firm"
-    },
-    {
-      "source_index": 6702,
-      "id": "1714370",
-      "term": "建築業者",
-      "reading": "けんちくぎょうしゃ",
-      "meaning": "builder / constructor"
-    },
-    {
-      "source_index": 6703,
-      "id": "1934180",
-      "term": "建築現場",
-      "reading": "けんちくげんば",
-      "meaning": "building (construction) site"
-    },
-    {
-      "source_index": 6704,
-      "id": "2860836",
-      "term": "建築工学",
-      "reading": "けんちくこうがく",
-      "meaning": "architectural engineering"
-    },
-    {
-      "source_index": 6705,
-      "id": "2841425",
-      "term": "建築構造",
-      "reading": "けんちくこうぞう",
-      "meaning": "building construction"
-    },
-    {
-      "source_index": 6706,
-      "id": "2851935",
-      "term": "建築資材",
-      "reading": "けんちくしざい",
-      "meaning": "building material / construction material"
-    },
-    {
-      "source_index": 6707,
-      "id": "2851753",
-      "term": "建築主事",
-      "reading": "けんちくしゅじ",
-      "meaning": "building officer (responsible for issuing building certifications, etc.)"
-    },
-    {
-      "source_index": 6708,
-      "id": "2851942",
-      "term": "建築条件",
-      "reading": "けんちくじょうけん",
-      "meaning": "obligation to use a specific building firm to build a house on a bought plot of land"
-    },
-    {
-      "source_index": 6709,
-      "id": "1714340",
-      "term": "建築面積",
-      "reading": "けんちくめんせき",
-      "meaning": "building area"
-    },
-    {
-      "source_index": 6710,
-      "id": "2409620",
-      "term": "建築様式",
-      "reading": "けんちくようしき",
-      "meaning": "architectural style"
-    },
-    {
-      "source_index": 6711,
-      "id": "2811280",
-      "term": "嫌中憎韓",
-      "reading": "けんちゅうぞうかん",
-      "meaning": "Dislike China, Hate Korea / publishing genre of anti-Chinese and Korean books and magazines"
-    },
-    {
-      "source_index": 6712,
-      "id": "1814600",
-      "term": "検定試験",
-      "reading": "けんていしけん",
-      "meaning": "certification examination / licensing examination / licensure examination"
-    },
-    {
-      "source_index": 6713,
-      "id": "2353190",
-      "term": "検討結果",
-      "reading": "けんとうけっか",
-      "meaning": "results of an investigation"
-    },
-    {
-      "source_index": 6714,
-      "id": "2660190",
-      "term": "検討作業",
-      "reading": "けんとうさぎょう",
-      "meaning": "review work / study / investigation"
-    },
-    {
-      "source_index": 6715,
-      "id": "2857968",
-      "term": "拳闘選手",
-      "reading": "けんとうせんしゅ",
-      "meaning": "boxer / fighter"
-    },
-    {
-      "source_index": 6716,
-      "id": "2353200",
-      "term": "検討対象",
-      "reading": "けんとうたいしょう",
-      "meaning": "subject of an investigation / object being examined"
-    },
-    {
-      "source_index": 6717,
-      "id": "2040390",
-      "term": "捲土重来",
-      "reading": "けんどちょうらい",
-      "meaning": "recouping one's strength for a renewed attack / making another attempt with redoubled efforts"
-    },
-    {
-      "source_index": 6718,
-      "id": "2044730",
-      "term": "堅忍持久",
-      "reading": "けんにんじきゅう",
-      "meaning": "dogged perseverance / untiring patience"
-    },
-    {
-      "source_index": 6719,
-      "id": "1257200",
-      "term": "堅忍不抜",
-      "reading": "けんにんふばつ",
-      "meaning": "indomitable perseverance / invincible fortitude"
-    },
-    {
-      "source_index": 6720,
-      "id": "1934410",
-      "term": "鍵盤楽器",
-      "reading": "けんばんがっき",
-      "meaning": "keyboard instrument / clavier"
-    },
-    {
-      "source_index": 6721,
-      "id": "2576430",
-      "term": "検番芸者",
-      "reading": "けんばんげいしゃ",
-      "meaning": "geisha belonging to a call-office (usually a skilled geisha)"
-    },
-    {
-      "source_index": 6722,
-      "id": "2833700",
-      "term": "腱板疎部",
-      "reading": "けんばんそぶ",
-      "meaning": "rotator interval / rotator cuff interval"
-    },
-    {
-      "source_index": 6723,
-      "id": "2170780",
-      "term": "腱板損傷",
-      "reading": "けんばんそんしょう",
-      "meaning": "rotator cuff tear"
-    },
-    {
-      "source_index": 6724,
-      "id": "2044740",
-      "term": "堅白同異",
-      "reading": "けんぱくどうい",
-      "meaning": "sophism / sophistry / quibbling"
-    },
-    {
-      "source_index": 6725,
-      "id": "2395190",
-      "term": "顕微授精",
-      "reading": "けんびじゅせい",
-      "meaning": "microinsemination / microfertilization / intra-cytoplasmic sperm injection"
-    },
-    {
-      "source_index": 6726,
-      "id": "2231930",
-      "term": "見仏聞法",
-      "reading": "けんぶつもんぽう",
-      "meaning": "seeing Buddha and hearing his teachings"
-    },
-    {
-      "source_index": 6727,
-      "id": "2030730",
-      "term": "権謀術策",
-      "reading": "けんぼうじゅっさく",
-      "meaning": "trickery / wiles / intriguing strategy cleverly designed to fool others"
-    },
-    {
-      "source_index": 6728,
-      "id": "1258190",
-      "term": "権謀術数",
-      "reading": "けんぼうじゅっすう",
-      "meaning": "trickery / wiles / finesse"
-    },
-    {
-      "source_index": 6729,
-      "id": "1757630",
-      "term": "憲法違反",
-      "reading": "けんぽういはん",
-      "meaning": "violation of the constitution"
-    },
-    {
-      "source_index": 6730,
-      "id": "1257610",
-      "term": "憲法解釈",
-      "reading": "けんぽうかいしゃく",
-      "meaning": "constitutional interpretation"
-    },
-    {
-      "source_index": 6731,
-      "id": "1257620",
-      "term": "憲法改正",
-      "reading": "けんぽうかいせい",
-      "meaning": "constitutional reform / constitutional amendment"
-    },
-    {
-      "source_index": 6732,
-      "id": "1934200",
-      "term": "憲法学者",
-      "reading": "けんぽうがくしゃ",
-      "meaning": "constitutional scholar (lawyer) / expert in constitutional law"
-    },
-    {
-      "source_index": 6733,
-      "id": "2526490",
-      "term": "憲法規範",
-      "reading": "けんぽうきはん",
-      "meaning": "constitutional norm"
-    },
-    {
-      "source_index": 6734,
-      "id": "2851300",
-      "term": "憲法論議",
-      "reading": "けんぽうろんぎ",
-      "meaning": "constitutional debate"
-    },
-    {
-      "source_index": 6735,
-      "id": "2461700",
-      "term": "剣微塵子",
-      "reading": "けんみじんこ",
-      "meaning": "cyclops (any minute crustacean of genus Cyclops)"
-    },
-    {
-      "source_index": 6736,
-      "id": "1258930",
-      "term": "県民会館",
-      "reading": "けんみんかいかん",
-      "meaning": "prefectural meeting hall / civic center / community hall"
-    },
-    {
-      "source_index": 6737,
-      "id": "2774210",
-      "term": "検面調書",
-      "reading": "けんめんちょうしょ",
-      "meaning": "public prosecutor's record of a statement given before a prosecutor"
-    },
-    {
-      "source_index": 6738,
-      "id": "2044750",
-      "term": "見聞覚知",
-      "reading": "けんもんかくち",
-      "meaning": "perception through the six senses (of sight, hearing, smell, taste, touch, and consciousness)"
-    },
-    {
-      "source_index": 6739,
-      "id": "1782470",
-      "term": "権門勢家",
-      "reading": "けんもんせいか",
-      "meaning": "great and powerful person"
-    },
-    {
-      "source_index": 6740,
-      "id": "2044770",
-      "term": "絢爛華麗",
-      "reading": "けんらんかれい",
-      "meaning": "luxurious and gorgeous / splendid / dazzling"
-    },
-    {
-      "source_index": 6741,
-      "id": "2029830",
-      "term": "絢爛豪華",
-      "reading": "けんらんごうか",
-      "meaning": "luxurious and gorgeous / splendid / dazzling"
-    },
-    {
-      "source_index": 6742,
-      "id": "1258210",
-      "term": "権利行使",
-      "reading": "けんりこうし",
-      "meaning": "exercise of a right"
-    },
-    {
-      "source_index": 6743,
-      "id": "2011390",
-      "term": "権利章典",
-      "reading": "けんりしょうてん",
-      "meaning": "Bill of Rights"
-    },
-    {
-      "source_index": 6744,
-      "id": "2831240",
-      "term": "権利侵害",
-      "reading": "けんりしんがい",
-      "meaning": "violation of rights / rights infringement / civil wrong"
-    },
-    {
-      "source_index": 6745,
-      "id": "2276400",
-      "term": "権利譲渡",
-      "reading": "けんりじょうと",
-      "meaning": "transfer of rights / demise / quitclaim deed"
-    },
-    {
-      "source_index": 6746,
-      "id": "2184910",
-      "term": "県立医大",
-      "reading": "けんりついだい",
-      "meaning": "prefectural medical school"
-    },
-    {
-      "source_index": 6747,
-      "id": "2761060",
-      "term": "県立高校",
-      "reading": "けんりつこうこう",
-      "meaning": "prefectural high school / public high school"
-    },
-    {
-      "source_index": 6748,
-      "id": "2184930",
-      "term": "県立大学",
-      "reading": "けんりつだいがく",
-      "meaning": "prefectural university"
-    },
-    {
-      "source_index": 6749,
-      "id": "1874170",
-      "term": "県立病院",
-      "reading": "けんりつびょういん",
-      "meaning": "prefectural hospital"
-    },
     {
       "source_index": 6750,
       "id": "2850144",
@@ -7010,6 +6660,356 @@
       "term": "広鼻猿類",
       "reading": "こうびえんるい",
       "meaning": "platyrrhine (primate of infraorder Platyrrhini, which have nostrils that are far apart)"
+    },
+    {
+      "source_index": 7700,
+      "id": "2609000",
+      "term": "抗不安薬",
+      "reading": "こうふあんやく",
+      "meaning": "anti-anxiety agent / anti-anxiety drug"
+    },
+    {
+      "source_index": 7701,
+      "id": "2822260",
+      "term": "光風霽月",
+      "reading": "こうふうせいげつ",
+      "meaning": "serenity"
+    },
+    {
+      "source_index": 7702,
+      "id": "2832988",
+      "term": "降伏強度",
+      "reading": "こうふくきょうど",
+      "meaning": "yield strength / yield stress"
+    },
+    {
+      "source_index": 7703,
+      "id": "2515590",
+      "term": "幸福主義",
+      "reading": "こうふくしゅぎ",
+      "meaning": "eudaemonism / eudemonism"
+    },
+    {
+      "source_index": 7704,
+      "id": "2045020",
+      "term": "興奮気味",
+      "reading": "こうふんぎみ",
+      "meaning": "being somewhat excited (agitated)"
+    },
+    {
+      "source_index": 7705,
+      "id": "2517430",
+      "term": "興奮状態",
+      "reading": "こうふんじょうたい",
+      "meaning": "excited condition / excited state"
+    },
+    {
+      "source_index": 7706,
+      "id": "1274590",
+      "term": "公武合体",
+      "reading": "こうぶがったい",
+      "meaning": "shogunate marital union with the Imperial family"
+    },
+    {
+      "source_index": 7707,
+      "id": "1934790",
+      "term": "後部座席",
+      "reading": "こうぶざせき",
+      "meaning": "back seat (of a car) / rear seat"
+    },
+    {
+      "source_index": 7708,
+      "id": "1719800",
+      "term": "鉱物資源",
+      "reading": "こうぶつしげん",
+      "meaning": "mineral resources"
+    },
+    {
+      "source_index": 7709,
+      "id": "2355960",
+      "term": "構文解析",
+      "reading": "こうぶんかいせき",
+      "meaning": "parsing / syntactic analysis"
+    },
+    {
+      "source_index": 7710,
+      "id": "2355980",
+      "term": "構文規則",
+      "reading": "こうぶんきそく",
+      "meaning": "syntax"
+    },
+    {
+      "source_index": 7711,
+      "id": "2664470",
+      "term": "公文書館",
+      "reading": "こうぶんしょかん",
+      "meaning": "public records office / archives"
+    },
+    {
+      "source_index": 7712,
+      "id": "1274650",
+      "term": "公平政策",
+      "reading": "こうへいせいさく",
+      "meaning": "fair deal"
+    },
+    {
+      "source_index": 7713,
+      "id": "1274660",
+      "term": "公平無私",
+      "reading": "こうへいむし",
+      "meaning": "impartiality / fair play"
+    },
+    {
+      "source_index": 7714,
+      "id": "2440060",
+      "term": "厚壁細胞",
+      "reading": "こうへきさいぼう",
+      "meaning": "sclerenchyma cell"
+    },
+    {
+      "source_index": 7715,
+      "id": "5416848",
+      "term": "神戸大学",
+      "reading": "こうべだいがく",
+      "meaning": "Kobe University"
+    },
+    {
+      "source_index": 7716,
+      "id": "2707300",
+      "term": "神戸土竜",
+      "reading": "こうべもぐら",
+      "meaning": "Japanese mole (Mogera wogura) / Temminck's mole"
+    },
+    {
+      "source_index": 7717,
+      "id": "2354550",
+      "term": "後方一致",
+      "reading": "こうほういっち",
+      "meaning": "right-hand match / ends-with match / backward match"
+    },
+    {
+      "source_index": 7718,
+      "id": "1935080",
+      "term": "広報活動",
+      "reading": "こうほうかつどう",
+      "meaning": "publicity (information) activities / public relations"
+    },
+    {
+      "source_index": 7719,
+      "id": "2116340",
+      "term": "広報外交",
+      "reading": "こうほうがいこう",
+      "meaning": "public diplomacy"
+    },
+    {
+      "source_index": 7720,
+      "id": "2870624",
+      "term": "後方勤務",
+      "reading": "こうほうきんむ",
+      "meaning": "rear-service duty / duty away from the front lines / logistics and support duty (behind the combat zone)"
+    },
+    {
+      "source_index": 7721,
+      "id": "2458130",
+      "term": "広報広聴",
+      "reading": "こうほうこうちょう",
+      "meaning": "information dispersal (e.g. PR) / information gathering (e.g. consultation)"
+    },
+    {
+      "source_index": 7722,
+      "id": "2838529",
+      "term": "後方互換",
+      "reading": "こうほうごかん",
+      "meaning": "backward compatible / downward compatible"
+    },
+    {
+      "source_index": 7723,
+      "id": "1992400",
+      "term": "後方支援",
+      "reading": "こうほうしえん",
+      "meaning": "logistical support / combat service support"
+    },
+    {
+      "source_index": 7724,
+      "id": "2540350",
+      "term": "後方視的",
+      "reading": "こうほうしてき",
+      "meaning": "retrospective"
+    },
+    {
+      "source_index": 7725,
+      "id": "1278690",
+      "term": "広報情報",
+      "reading": "こうほうじょうほう",
+      "meaning": "public relations information"
+    },
+    {
+      "source_index": 7726,
+      "id": "2354570",
+      "term": "後方推論",
+      "reading": "こうほうすいろん",
+      "meaning": "backward reasoning (AI)"
+    },
+    {
+      "source_index": 7727,
+      "id": "2850401",
+      "term": "広報大使",
+      "reading": "こうほうたいし",
+      "meaning": "public-relations ambassador / brand ambassador / person appointed to promote an organization, event, etc."
+    },
+    {
+      "source_index": 7728,
+      "id": "1270110",
+      "term": "後方地域",
+      "reading": "こうほうちいき",
+      "meaning": "rear area"
+    },
+    {
+      "source_index": 7729,
+      "id": "2235550",
+      "term": "酵母亜鉛",
+      "reading": "こうぼあえん",
+      "meaning": "zinc yeast / zinc-enriched yeast"
+    },
+    {
+      "source_index": 7730,
+      "id": "2870352",
+      "term": "攻防一体",
+      "reading": "こうぼういったい",
+      "meaning": "unity of offense and defense / integration of attack and defense"
+    },
+    {
+      "source_index": 7731,
+      "id": "2045030",
+      "term": "興亡盛衰",
+      "reading": "こうぼうせいすい",
+      "meaning": "rise and fall / prosperity and decline / vicissitudes"
+    },
+    {
+      "source_index": 7732,
+      "id": "2440050",
+      "term": "厚膜細胞",
+      "reading": "こうまくさいぼう",
+      "meaning": "sclerenchyma cell"
+    },
+    {
+      "source_index": 7733,
+      "id": "2527670",
+      "term": "厚膜胞子",
+      "reading": "こうまくほうし",
+      "meaning": "chlamydospore (thick-walled spore that can survive harsh conditions)"
+    },
+    {
+      "source_index": 7734,
+      "id": "2747460",
+      "term": "高密度星",
+      "reading": "こうみつどせい",
+      "meaning": "compact star / compact object"
+    },
+    {
+      "source_index": 7735,
+      "id": "2270510",
+      "term": "香味野菜",
+      "reading": "こうみやさい",
+      "meaning": "potherb / pot herb"
+    },
+    {
+      "source_index": 7736,
+      "id": "2248630",
+      "term": "光明真言",
+      "reading": "こうみょうしんごん",
+      "meaning": "Mantra of Light"
+    },
+    {
+      "source_index": 7737,
+      "id": "1676870",
+      "term": "公民教育",
+      "reading": "こうみんきょういく",
+      "meaning": "civic education / citizenship education"
+    },
+    {
+      "source_index": 7738,
+      "id": "1676880",
+      "term": "公民権法",
+      "reading": "こうみんけんほう",
+      "meaning": "Civil Rights Act (US)"
+    },
+    {
+      "source_index": 7739,
+      "id": "1274800",
+      "term": "公民生活",
+      "reading": "こうみんせいかつ",
+      "meaning": "national life / civic life"
+    },
+    {
+      "source_index": 7740,
+      "id": "1274830",
+      "term": "公務災害",
+      "reading": "こうむさいがい",
+      "meaning": "accidents in line of duty"
+    },
+    {
+      "source_index": 7741,
+      "id": "1274840",
+      "term": "公務疾病",
+      "reading": "こうむしっぺい",
+      "meaning": "sickness incurred in line of duty"
+    },
+    {
+      "source_index": 7742,
+      "id": "1274860",
+      "term": "公明正大",
+      "reading": "こうめいせいだい",
+      "meaning": "fair / just and upright / open and honest"
+    },
+    {
+      "source_index": 7743,
+      "id": "2030870",
+      "term": "紅毛碧眼",
+      "reading": "こうもうへきがん",
+      "meaning": "red-haired and blue-eyed (person) / a Westerner"
+    },
+    {
+      "source_index": 7744,
+      "id": "2356310",
+      "term": "項目選択",
+      "reading": "こうもくせんたく",
+      "meaning": "item selection"
+    },
+    {
+      "source_index": 7745,
+      "id": "2869800",
+      "term": "肛門挙筋",
+      "reading": "こうもんきょきん",
+      "meaning": "levator anus muscles / levator ani"
+    },
+    {
+      "source_index": 7746,
+      "id": "2870235",
+      "term": "肛門外科",
+      "reading": "こうもんげか",
+      "meaning": "proctology / colorectal surgery"
+    },
+    {
+      "source_index": 7747,
+      "id": "2165910",
+      "term": "肛門出血",
+      "reading": "こうもんしゅっけつ",
+      "meaning": "anal bleeding / bleeding of the anus"
+    },
+    {
+      "source_index": 7748,
+      "id": "2165920",
+      "term": "肛門上皮",
+      "reading": "こうもんじょうひ",
+      "meaning": "anal epithelium"
+    },
+    {
+      "source_index": 7749,
+      "id": "2608550",
+      "term": "肛門性格",
+      "reading": "こうもんせいかく",
+      "meaning": "anal character (in psychoanalysis)"
     }
   ]
 }
