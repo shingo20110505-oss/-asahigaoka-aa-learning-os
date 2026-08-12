@@ -21,5 +21,13 @@ function install(attempt=0){
  STATUS.installed=true;
  try{if(state?.route==='study'&&state?.session?.active&&typeof render==='function')render()}catch(_){ }
 }
+function loadVocabRowToggle(){
+ try{
+  if(window.parent===window||!/\/vocab\.html$/.test(window.parent.location.pathname))return;
+  const d=window.parent.document;if(d.getElementById('aa-vocab-row-toggle-loader'))return;
+  const s=d.createElement('script');s.id='aa-vocab-row-toggle-loader';s.src='./vocab-row-toggle-v1.js?v=1.0.0';s.async=false;d.head.appendChild(s);
+ }catch(_){ }
+}
 install();
+loadVocabRowToggle();
 })();
