@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 5450,
-  "english_only_remaining": 9550,
+  "already_direct_japanese": 5500,
+  "english_only_remaining": 9500,
   "english_only_rank_counts": {
-    "(blank)": 9550
+    "(blank)": 9500
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 5450,
-      "id": "2855833",
-      "term": "勤続疲労",
-      "reading": "きんぞくひろう",
-      "meaning": "worsened performance because of long service / malfunctioning resulting from continuous long-term operation"
-    },
-    {
-      "source_index": 5451,
-      "id": "1933630",
-      "term": "金属疲労",
-      "reading": "きんぞくひろう",
-      "meaning": "metal fatigue"
-    },
-    {
-      "source_index": 5452,
-      "id": "2847972",
-      "term": "禁帯出本",
-      "reading": "きんたいしゅつぼん",
-      "meaning": "book that cannot be taken out (of a library, etc.) / restricted book / reference-only book"
-    },
-    {
-      "source_index": 5453,
-      "id": "1242770",
-      "term": "金玉が上がったり下がったり",
-      "reading": "きんたまがあがったりさがったり",
-      "meaning": "being held in suspense / being on edge / scared stiff"
-    },
-    {
-      "source_index": 5454,
-      "id": "2685790",
-      "term": "金太郎飴",
-      "reading": "きんたろうあめ",
-      "meaning": "Kintarō candy / Kintarō-ame / hard stick-shaped candy made so that the face of folk hero Kintarō appears when it is sliced"
-    },
-    {
-      "source_index": 5455,
-      "id": "1607880",
-      "term": "近代音楽",
-      "reading": "きんだいおんがく",
-      "meaning": "modern music / contemporary music"
-    },
-    {
-      "source_index": 5456,
-      "id": "1242440",
-      "term": "近代科学",
-      "reading": "きんだいかがく",
-      "meaning": "modern science"
-    },
-    {
-      "source_index": 5457,
-      "id": "2836769",
-      "term": "近代家族",
-      "reading": "きんだいかぞく",
-      "meaning": "modern family"
-    },
-    {
-      "source_index": 5458,
-      "id": "2836770",
-      "term": "近代建築",
-      "reading": "きんだいけんちく",
-      "meaning": "modern architecture / modernist architecture"
-    },
-    {
-      "source_index": 5459,
-      "id": "2836775",
-      "term": "近代芸術",
-      "reading": "きんだいげいじゅつ",
-      "meaning": "modern art"
-    },
-    {
-      "source_index": 5460,
-      "id": "1780390",
-      "term": "近代国家",
-      "reading": "きんだいこっか",
-      "meaning": "modern state / modern nation"
-    },
-    {
-      "source_index": 5461,
-      "id": "2836774",
-      "term": "近代産業",
-      "reading": "きんだいさんぎょう",
-      "meaning": "modern industry"
-    },
-    {
-      "source_index": 5462,
-      "id": "2836771",
-      "term": "近代社会",
-      "reading": "きんだいしゃかい",
-      "meaning": "modern society"
-    },
-    {
-      "source_index": 5463,
-      "id": "1780380",
-      "term": "近代主義",
-      "reading": "きんだいしゅぎ",
-      "meaning": "modernism"
-    },
-    {
-      "source_index": 5464,
-      "id": "2836772",
-      "term": "近代都市",
-      "reading": "きんだいとし",
-      "meaning": "modern city / modern town"
-    },
-    {
-      "source_index": 5465,
-      "id": "2760940",
-      "term": "近代美術",
-      "reading": "きんだいびじゅつ",
-      "meaning": "modern art"
-    },
-    {
-      "source_index": 5466,
-      "id": "1780360",
-      "term": "近代文学",
-      "reading": "きんだいぶんがく",
-      "meaning": "modern literature"
-    },
-    {
-      "source_index": 5467,
-      "id": "2834619",
-      "term": "近代文明",
-      "reading": "きんだいぶんめい",
-      "meaning": "modern civilization / modern world"
-    },
-    {
-      "source_index": 5468,
-      "id": "1241640",
-      "term": "禁断症状",
-      "reading": "きんだんしょうじょう",
-      "meaning": "withdrawal symptoms / abstinence syndrome"
-    },
-    {
-      "source_index": 5469,
-      "id": "1684530",
-      "term": "禁治産者",
-      "reading": "きんちさんしゃ",
-      "meaning": "(legally) incompetent individual"
-    },
-    {
-      "source_index": 5470,
-      "id": "2666020",
-      "term": "緊張関係",
-      "reading": "きんちょうかんけい",
-      "meaning": "tense relationship / tense relations / strained relations"
-    },
-    {
-      "source_index": 5471,
-      "id": "1727180",
-      "term": "緊張緩和",
-      "reading": "きんちょうかんわ",
-      "meaning": "easing of tensions / detente / thaw"
-    },
-    {
-      "source_index": 5472,
-      "id": "2689620",
-      "term": "緊張激化",
-      "reading": "きんちょうげきか",
-      "meaning": "heightened tension / intensification of tension"
-    },
-    {
-      "source_index": 5473,
-      "id": "2767190",
-      "term": "緊張状態",
-      "reading": "きんちょうじょうたい",
-      "meaning": "state of tension"
-    },
-    {
-      "source_index": 5474,
-      "id": "1871170",
-      "term": "欽定憲法",
-      "reading": "きんていけんぽう",
-      "meaning": "constitution granted by the Emperor"
-    },
-    {
-      "source_index": 5475,
-      "id": "5228622",
-      "term": "近鉄電車",
-      "reading": "きんてつでんしゃ",
-      "meaning": "Kintetsu Railways"
-    },
-    {
-      "source_index": 5476,
-      "id": "2838143",
-      "term": "近点引数",
-      "reading": "きんてんひきすう",
-      "meaning": "argument of periapsis"
-    },
-    {
-      "source_index": 5477,
-      "id": "2224900",
-      "term": "近点離角",
-      "reading": "きんてんりかく",
-      "meaning": "anomaly"
-    },
-    {
-      "source_index": 5478,
-      "id": "2867059",
-      "term": "筋電義手",
-      "reading": "きんでんぎしゅ",
-      "meaning": "myoelectric prosthesis (arm, hand)"
-    },
-    {
-      "source_index": 5479,
-      "id": "1682420",
-      "term": "金殿玉楼",
-      "reading": "きんでんぎょくろう",
-      "meaning": "magnificent palace"
-    },
-    {
-      "source_index": 5480,
-      "id": "2853962",
-      "term": "金時人参",
-      "reading": "きんときにんじん",
-      "meaning": "kintoki carrot (red variety originating in the Kyoto region)"
-    },
-    {
-      "source_index": 5481,
-      "id": "2850933",
-      "term": "金時の火事見舞い",
-      "reading": "きんときのかじみまい",
-      "meaning": "going bright red (esp. after drinking)"
-    },
-    {
-      "source_index": 5482,
-      "id": "2808720",
-      "term": "筋肉感覚",
-      "reading": "きんにくかんかく",
-      "meaning": "muscular sense"
-    },
-    {
-      "source_index": 5483,
-      "id": "2171240",
-      "term": "筋肉細胞",
-      "reading": "きんにくさいぼう",
-      "meaning": "muscle cell / muscle cells"
-    },
-    {
-      "source_index": 5484,
-      "id": "2862454",
-      "term": "筋肉繊維",
-      "reading": "きんにくせんい",
-      "meaning": "muscle fiber"
-    },
-    {
-      "source_index": 5485,
-      "id": "2171270",
-      "term": "筋肉組織",
-      "reading": "きんにくそしき",
-      "meaning": "muscle tissue"
-    },
-    {
-      "source_index": 5486,
-      "id": "1728630",
-      "term": "筋肉注射",
-      "reading": "きんにくちゅうしゃ",
-      "meaning": "intramuscular injection"
-    },
-    {
-      "source_index": 5487,
-      "id": "1728620",
-      "term": "筋肉労働",
-      "reading": "きんにくろうどう",
-      "meaning": "physical or manual labor / physical or manual labour"
-    },
-    {
-      "source_index": 5488,
-      "id": "1240950",
-      "term": "勤王攘夷",
-      "reading": "きんのうじょうい",
-      "meaning": "loyalty to the emperor and expulsion of the foreigners"
-    },
-    {
-      "source_index": 5489,
-      "id": "2841698",
-      "term": "金の卵",
-      "reading": "きんのたまご",
-      "meaning": "golden child / promising young talent / gold egg"
-    },
-    {
-      "source_index": 5490,
-      "id": "2401070",
-      "term": "金葉手毬",
-      "reading": "きんばでまり",
-      "meaning": "Viburnum plicatum var. plicatum"
-    },
-    {
-      "source_index": 5491,
-      "id": "2044270",
-      "term": "金波銀波",
-      "reading": "きんぱぎんぱ",
-      "meaning": "sparkling waves / waves sparkling in the moonlight or with the light of the rising (setting) sun"
-    },
-    {
-      "source_index": 5492,
-      "id": "2832737",
-      "term": "金箔が剥げる",
-      "reading": "きんぱくがはげる",
-      "meaning": "to reveal one's true colors"
-    },
-    {
-      "source_index": 5493,
-      "id": "2858277",
-      "term": "金髪碧眼",
-      "reading": "きんぱつへきがん",
-      "meaning": "blonde hair and blue eyes"
-    },
-    {
-      "source_index": 5494,
-      "id": "2441600",
-      "term": "金美人参",
-      "reading": "きんびにんじん",
-      "meaning": "type of yellow carrot grown in Okinawa"
-    },
-    {
-      "source_index": 5495,
-      "id": "2267920",
-      "term": "金平牛蒡",
-      "reading": "きんぴらごぼう",
-      "meaning": "kinpira gobō / braised burdock root / chopped burdock root (and sometimes carrot) cooked in sugar and soy sauce"
-    },
-    {
-      "source_index": 5496,
-      "id": "2833106",
-      "term": "金縁証券",
-      "reading": "きんぶちしょうけん",
-      "meaning": "gilt-edged securities / gilt-edged bond"
-    },
-    {
-      "source_index": 5497,
-      "id": "1681990",
-      "term": "金本位制",
-      "reading": "きんほんいせい",
-      "meaning": "gold standard system"
-    },
-    {
-      "source_index": 5498,
-      "id": "1241090",
-      "term": "勤務交代",
-      "reading": "きんむこうたい",
-      "meaning": "change of shifts"
-    },
-    {
-      "source_index": 5499,
-      "id": "1933470",
-      "term": "勤務時間",
-      "reading": "きんむじかん",
-      "meaning": "office hours / business hours / working hours"
-    },
     {
       "source_index": 5500,
       "id": "1241100",
@@ -7010,6 +6660,356 @@
       "term": "化粧石鹸",
       "reading": "けしょうせっけん",
       "meaning": "toilet soap"
+    },
+    {
+      "source_index": 6450,
+      "id": "2850819",
+      "term": "化粧断裁",
+      "reading": "けしょうだんさい",
+      "meaning": "trimming (of paper)"
+    },
+    {
+      "source_index": 6451,
+      "id": "1187090",
+      "term": "化粧道具",
+      "reading": "けしょうどうぐ",
+      "meaning": "toilet articles / makeup kit"
+    },
+    {
+      "source_index": 6452,
+      "id": "2661700",
+      "term": "化粧品店",
+      "reading": "けしょうひんてん",
+      "meaning": "cosmetics store"
+    },
+    {
+      "source_index": 6453,
+      "id": "2635860",
+      "term": "化粧河豚",
+      "reading": "けしょうふぐ",
+      "meaning": "map puffer (Arothron mappa)"
+    },
+    {
+      "source_index": 6454,
+      "id": "1187120",
+      "term": "化粧部屋",
+      "reading": "けしょうべや",
+      "meaning": "lavatory / dressing room"
+    },
+    {
+      "source_index": 6455,
+      "id": "1187140",
+      "term": "化粧煉瓦",
+      "reading": "けしょうれんが",
+      "meaning": "ornamental tile / facing bricks"
+    },
+    {
+      "source_index": 6456,
+      "id": "2833581",
+      "term": "桁が違う",
+      "reading": "けたがちがう",
+      "meaning": "to be on a (completely) different level / to be on a different scale / to be in a different league"
+    },
+    {
+      "source_index": 6457,
+      "id": "2852093",
+      "term": "欠格条項",
+      "reading": "けっかくじょうこう",
+      "meaning": "disqualification clause"
+    },
+    {
+      "source_index": 6458,
+      "id": "2147210",
+      "term": "結果責任",
+      "reading": "けっかせきにん",
+      "meaning": "responsibility for the consequences / absolute liability / moral responsibility"
+    },
+    {
+      "source_index": 6459,
+      "id": "2108850",
+      "term": "結果発表",
+      "reading": "けっかはっぴょう",
+      "meaning": "publication of results / announcement of results"
+    },
+    {
+      "source_index": 6460,
+      "id": "2030720",
+      "term": "結跏趺坐",
+      "reading": "けっかふざ",
+      "meaning": "lotus position (meditation and yoga posture) / padmasana / sitting with legs crossed and feet placed on opposing thighs"
+    },
+    {
+      "source_index": 6461,
+      "id": "2672720",
+      "term": "血管拡張",
+      "reading": "けっかんかくちょう",
+      "meaning": "vasodilation / vasodilatation"
+    },
+    {
+      "source_index": 6462,
+      "id": "2672680",
+      "term": "血管狭窄",
+      "reading": "けっかんきょうさく",
+      "meaning": "angiostenosis"
+    },
+    {
+      "source_index": 6463,
+      "id": "1991930",
+      "term": "血管形成",
+      "reading": "けっかんけいせい",
+      "meaning": "angiogenesis"
+    },
+    {
+      "source_index": 6464,
+      "id": "2838768",
+      "term": "血管疾患",
+      "reading": "けっかんしっかん",
+      "meaning": "vascular disease / valvular disease"
+    },
+    {
+      "source_index": 6465,
+      "id": "1833950",
+      "term": "欠陥商品",
+      "reading": "けっかんしょうひん",
+      "meaning": "defective merchandise"
+    },
+    {
+      "source_index": 6466,
+      "id": "2868435",
+      "term": "血管新生",
+      "reading": "けっかんしんせい",
+      "meaning": "angiogenesis"
+    },
+    {
+      "source_index": 6467,
+      "id": "2851270",
+      "term": "欠陥住宅",
+      "reading": "けっかんじゅうたく",
+      "meaning": "defective housing"
+    },
+    {
+      "source_index": 6468,
+      "id": "2672640",
+      "term": "血管造影",
+      "reading": "けっかんぞうえい",
+      "meaning": "angiography"
+    },
+    {
+      "source_index": 6469,
+      "id": "2782230",
+      "term": "血管内皮",
+      "reading": "けっかんないひ",
+      "meaning": "vascular endothelium / angioendothelium / endothelium"
+    },
+    {
+      "source_index": 6470,
+      "id": "2672670",
+      "term": "血管肉腫",
+      "reading": "けっかんにくしゅ",
+      "meaning": "angiosarcoma"
+    },
+    {
+      "source_index": 6471,
+      "id": "2852583",
+      "term": "血管浮腫",
+      "reading": "けっかんふしゅ",
+      "meaning": "angioedema"
+    },
+    {
+      "source_index": 6472,
+      "id": "2832963",
+      "term": "血管弁膜",
+      "reading": "けっかんべんまく",
+      "meaning": "valve of the veins"
+    },
+    {
+      "source_index": 6473,
+      "id": "2747920",
+      "term": "決起集会",
+      "reading": "けっきしゅうかい",
+      "meaning": "kickoff party / rally / pep party"
+    },
+    {
+      "source_index": 6474,
+      "id": "2868527",
+      "term": "決起大会",
+      "reading": "けっきたいかい",
+      "meaning": "pep rally"
+    },
+    {
+      "source_index": 6475,
+      "id": "2872290",
+      "term": "血気にはやる",
+      "reading": "けっきにはやる",
+      "meaning": "to be impetuous / to carried away by youthful ardor / to be overly eager for action"
+    },
+    {
+      "source_index": 6476,
+      "id": "1255240",
+      "term": "血行障害",
+      "reading": "けっこうしょうがい",
+      "meaning": "disturbance (blockage) of blood flow"
+    },
+    {
+      "source_index": 6477,
+      "id": "2027090",
+      "term": "結構大変",
+      "reading": "けっこうたいへん",
+      "meaning": "quite a chore / not that easy / fairly difficult"
+    },
+    {
+      "source_index": 6478,
+      "id": "2855146",
+      "term": "血行動態",
+      "reading": "けっこうどうたい",
+      "meaning": "hemodynamics"
+    },
+    {
+      "source_index": 6479,
+      "id": "2568230",
+      "term": "血行不良",
+      "reading": "けっこうふりょう",
+      "meaning": "blood circulation failure"
+    },
+    {
+      "source_index": 6480,
+      "id": "2124010",
+      "term": "血行不足",
+      "reading": "けっこうぶそく",
+      "meaning": "lack of blood flow / poor circulation"
+    },
+    {
+      "source_index": 6481,
+      "id": "2144080",
+      "term": "結婚相手",
+      "reading": "けっこんあいて",
+      "meaning": "marriage partner / spouse"
+    },
+    {
+      "source_index": 6482,
+      "id": "2509730",
+      "term": "結婚活動",
+      "reading": "けっこんかつどう",
+      "meaning": "searching for a marriage partner / marriage hunting / activities leading to marriage (e.g. dating, courtship)"
+    },
+    {
+      "source_index": 6483,
+      "id": "2636140",
+      "term": "結婚願望",
+      "reading": "けっこんがんぼう",
+      "meaning": "desire for marriage / marriage aspiration / yearning for marriage"
+    },
+    {
+      "source_index": 6484,
+      "id": "2795460",
+      "term": "結婚詐欺",
+      "reading": "けっこんさぎ",
+      "meaning": "marriage fraud / fake marriage"
+    },
+    {
+      "source_index": 6485,
+      "id": "2583350",
+      "term": "結婚式場",
+      "reading": "けっこんしきじょう",
+      "meaning": "wedding hall / marriage hall / wedding place"
+    },
+    {
+      "source_index": 6486,
+      "id": "2133260",
+      "term": "結婚生活",
+      "reading": "けっこんせいかつ",
+      "meaning": "wedded life / married life"
+    },
+    {
+      "source_index": 6487,
+      "id": "2669770",
+      "term": "結婚相談",
+      "reading": "けっこんそうだん",
+      "meaning": "marriage counseling / marital counseling"
+    },
+    {
+      "source_index": 6488,
+      "id": "2840459",
+      "term": "結婚退社",
+      "reading": "けっこんたいしゃ",
+      "meaning": "resigning because of marriage"
+    },
+    {
+      "source_index": 6489,
+      "id": "2861648",
+      "term": "結婚退職",
+      "reading": "けっこんたいしょく",
+      "meaning": "resigning from one's job when one gets married / retirement due to marriage / leaving a job because of marriage"
+    },
+    {
+      "source_index": 6490,
+      "id": "2029280",
+      "term": "結婚手当",
+      "reading": "けっこんてあて",
+      "meaning": "marriage allowance"
+    },
+    {
+      "source_index": 6491,
+      "id": "2636180",
+      "term": "結婚年齢",
+      "reading": "けっこんねんれい",
+      "meaning": "age at marriage / age at which one marries"
+    },
+    {
+      "source_index": 6492,
+      "id": "1934080",
+      "term": "結婚費用",
+      "reading": "けっこんひよう",
+      "meaning": "wedding expenses"
+    },
+    {
+      "source_index": 6493,
+      "id": "1254800",
+      "term": "結婚指輪",
+      "reading": "けっこんゆびわ",
+      "meaning": "wedding ring / wedding band"
+    },
+    {
+      "source_index": 6494,
+      "id": "1254270",
+      "term": "決済手段",
+      "reading": "けっさいしゅだん",
+      "meaning": "method of payment"
+    },
+    {
+      "source_index": 6495,
+      "id": "2852534",
+      "term": "決済方法",
+      "reading": "けっさいほうほう",
+      "meaning": "payment method"
+    },
+    {
+      "source_index": 6496,
+      "id": "2858827",
+      "term": "決算賞与",
+      "reading": "けっさんしょうよ",
+      "meaning": "year-end bonus"
+    },
+    {
+      "source_index": 6497,
+      "id": "2804220",
+      "term": "決算短信",
+      "reading": "けっさんたんしん",
+      "meaning": "summary of accounts"
+    },
+    {
+      "source_index": 6498,
+      "id": "1805880",
+      "term": "決算報告",
+      "reading": "けっさんほうこく",
+      "meaning": "financial statement"
+    },
+    {
+      "source_index": 6499,
+      "id": "2811710",
+      "term": "血色素計",
+      "reading": "けっしきそけい",
+      "meaning": "hemoglobinometer / haemoglobinometer"
     }
   ]
 }
