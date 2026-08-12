@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 6450,
-  "english_only_remaining": 8550,
+  "already_direct_japanese": 6500,
+  "english_only_remaining": 8500,
   "english_only_rank_counts": {
-    "(blank)": 8550
+    "(blank)": 8500
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 6450,
-      "id": "2850819",
-      "term": "化粧断裁",
-      "reading": "けしょうだんさい",
-      "meaning": "trimming (of paper)"
-    },
-    {
-      "source_index": 6451,
-      "id": "1187090",
-      "term": "化粧道具",
-      "reading": "けしょうどうぐ",
-      "meaning": "toilet articles / makeup kit"
-    },
-    {
-      "source_index": 6452,
-      "id": "2661700",
-      "term": "化粧品店",
-      "reading": "けしょうひんてん",
-      "meaning": "cosmetics store"
-    },
-    {
-      "source_index": 6453,
-      "id": "2635860",
-      "term": "化粧河豚",
-      "reading": "けしょうふぐ",
-      "meaning": "map puffer (Arothron mappa)"
-    },
-    {
-      "source_index": 6454,
-      "id": "1187120",
-      "term": "化粧部屋",
-      "reading": "けしょうべや",
-      "meaning": "lavatory / dressing room"
-    },
-    {
-      "source_index": 6455,
-      "id": "1187140",
-      "term": "化粧煉瓦",
-      "reading": "けしょうれんが",
-      "meaning": "ornamental tile / facing bricks"
-    },
-    {
-      "source_index": 6456,
-      "id": "2833581",
-      "term": "桁が違う",
-      "reading": "けたがちがう",
-      "meaning": "to be on a (completely) different level / to be on a different scale / to be in a different league"
-    },
-    {
-      "source_index": 6457,
-      "id": "2852093",
-      "term": "欠格条項",
-      "reading": "けっかくじょうこう",
-      "meaning": "disqualification clause"
-    },
-    {
-      "source_index": 6458,
-      "id": "2147210",
-      "term": "結果責任",
-      "reading": "けっかせきにん",
-      "meaning": "responsibility for the consequences / absolute liability / moral responsibility"
-    },
-    {
-      "source_index": 6459,
-      "id": "2108850",
-      "term": "結果発表",
-      "reading": "けっかはっぴょう",
-      "meaning": "publication of results / announcement of results"
-    },
-    {
-      "source_index": 6460,
-      "id": "2030720",
-      "term": "結跏趺坐",
-      "reading": "けっかふざ",
-      "meaning": "lotus position (meditation and yoga posture) / padmasana / sitting with legs crossed and feet placed on opposing thighs"
-    },
-    {
-      "source_index": 6461,
-      "id": "2672720",
-      "term": "血管拡張",
-      "reading": "けっかんかくちょう",
-      "meaning": "vasodilation / vasodilatation"
-    },
-    {
-      "source_index": 6462,
-      "id": "2672680",
-      "term": "血管狭窄",
-      "reading": "けっかんきょうさく",
-      "meaning": "angiostenosis"
-    },
-    {
-      "source_index": 6463,
-      "id": "1991930",
-      "term": "血管形成",
-      "reading": "けっかんけいせい",
-      "meaning": "angiogenesis"
-    },
-    {
-      "source_index": 6464,
-      "id": "2838768",
-      "term": "血管疾患",
-      "reading": "けっかんしっかん",
-      "meaning": "vascular disease / valvular disease"
-    },
-    {
-      "source_index": 6465,
-      "id": "1833950",
-      "term": "欠陥商品",
-      "reading": "けっかんしょうひん",
-      "meaning": "defective merchandise"
-    },
-    {
-      "source_index": 6466,
-      "id": "2868435",
-      "term": "血管新生",
-      "reading": "けっかんしんせい",
-      "meaning": "angiogenesis"
-    },
-    {
-      "source_index": 6467,
-      "id": "2851270",
-      "term": "欠陥住宅",
-      "reading": "けっかんじゅうたく",
-      "meaning": "defective housing"
-    },
-    {
-      "source_index": 6468,
-      "id": "2672640",
-      "term": "血管造影",
-      "reading": "けっかんぞうえい",
-      "meaning": "angiography"
-    },
-    {
-      "source_index": 6469,
-      "id": "2782230",
-      "term": "血管内皮",
-      "reading": "けっかんないひ",
-      "meaning": "vascular endothelium / angioendothelium / endothelium"
-    },
-    {
-      "source_index": 6470,
-      "id": "2672670",
-      "term": "血管肉腫",
-      "reading": "けっかんにくしゅ",
-      "meaning": "angiosarcoma"
-    },
-    {
-      "source_index": 6471,
-      "id": "2852583",
-      "term": "血管浮腫",
-      "reading": "けっかんふしゅ",
-      "meaning": "angioedema"
-    },
-    {
-      "source_index": 6472,
-      "id": "2832963",
-      "term": "血管弁膜",
-      "reading": "けっかんべんまく",
-      "meaning": "valve of the veins"
-    },
-    {
-      "source_index": 6473,
-      "id": "2747920",
-      "term": "決起集会",
-      "reading": "けっきしゅうかい",
-      "meaning": "kickoff party / rally / pep party"
-    },
-    {
-      "source_index": 6474,
-      "id": "2868527",
-      "term": "決起大会",
-      "reading": "けっきたいかい",
-      "meaning": "pep rally"
-    },
-    {
-      "source_index": 6475,
-      "id": "2872290",
-      "term": "血気にはやる",
-      "reading": "けっきにはやる",
-      "meaning": "to be impetuous / to carried away by youthful ardor / to be overly eager for action"
-    },
-    {
-      "source_index": 6476,
-      "id": "1255240",
-      "term": "血行障害",
-      "reading": "けっこうしょうがい",
-      "meaning": "disturbance (blockage) of blood flow"
-    },
-    {
-      "source_index": 6477,
-      "id": "2027090",
-      "term": "結構大変",
-      "reading": "けっこうたいへん",
-      "meaning": "quite a chore / not that easy / fairly difficult"
-    },
-    {
-      "source_index": 6478,
-      "id": "2855146",
-      "term": "血行動態",
-      "reading": "けっこうどうたい",
-      "meaning": "hemodynamics"
-    },
-    {
-      "source_index": 6479,
-      "id": "2568230",
-      "term": "血行不良",
-      "reading": "けっこうふりょう",
-      "meaning": "blood circulation failure"
-    },
-    {
-      "source_index": 6480,
-      "id": "2124010",
-      "term": "血行不足",
-      "reading": "けっこうぶそく",
-      "meaning": "lack of blood flow / poor circulation"
-    },
-    {
-      "source_index": 6481,
-      "id": "2144080",
-      "term": "結婚相手",
-      "reading": "けっこんあいて",
-      "meaning": "marriage partner / spouse"
-    },
-    {
-      "source_index": 6482,
-      "id": "2509730",
-      "term": "結婚活動",
-      "reading": "けっこんかつどう",
-      "meaning": "searching for a marriage partner / marriage hunting / activities leading to marriage (e.g. dating, courtship)"
-    },
-    {
-      "source_index": 6483,
-      "id": "2636140",
-      "term": "結婚願望",
-      "reading": "けっこんがんぼう",
-      "meaning": "desire for marriage / marriage aspiration / yearning for marriage"
-    },
-    {
-      "source_index": 6484,
-      "id": "2795460",
-      "term": "結婚詐欺",
-      "reading": "けっこんさぎ",
-      "meaning": "marriage fraud / fake marriage"
-    },
-    {
-      "source_index": 6485,
-      "id": "2583350",
-      "term": "結婚式場",
-      "reading": "けっこんしきじょう",
-      "meaning": "wedding hall / marriage hall / wedding place"
-    },
-    {
-      "source_index": 6486,
-      "id": "2133260",
-      "term": "結婚生活",
-      "reading": "けっこんせいかつ",
-      "meaning": "wedded life / married life"
-    },
-    {
-      "source_index": 6487,
-      "id": "2669770",
-      "term": "結婚相談",
-      "reading": "けっこんそうだん",
-      "meaning": "marriage counseling / marital counseling"
-    },
-    {
-      "source_index": 6488,
-      "id": "2840459",
-      "term": "結婚退社",
-      "reading": "けっこんたいしゃ",
-      "meaning": "resigning because of marriage"
-    },
-    {
-      "source_index": 6489,
-      "id": "2861648",
-      "term": "結婚退職",
-      "reading": "けっこんたいしょく",
-      "meaning": "resigning from one's job when one gets married / retirement due to marriage / leaving a job because of marriage"
-    },
-    {
-      "source_index": 6490,
-      "id": "2029280",
-      "term": "結婚手当",
-      "reading": "けっこんてあて",
-      "meaning": "marriage allowance"
-    },
-    {
-      "source_index": 6491,
-      "id": "2636180",
-      "term": "結婚年齢",
-      "reading": "けっこんねんれい",
-      "meaning": "age at marriage / age at which one marries"
-    },
-    {
-      "source_index": 6492,
-      "id": "1934080",
-      "term": "結婚費用",
-      "reading": "けっこんひよう",
-      "meaning": "wedding expenses"
-    },
-    {
-      "source_index": 6493,
-      "id": "1254800",
-      "term": "結婚指輪",
-      "reading": "けっこんゆびわ",
-      "meaning": "wedding ring / wedding band"
-    },
-    {
-      "source_index": 6494,
-      "id": "1254270",
-      "term": "決済手段",
-      "reading": "けっさいしゅだん",
-      "meaning": "method of payment"
-    },
-    {
-      "source_index": 6495,
-      "id": "2852534",
-      "term": "決済方法",
-      "reading": "けっさいほうほう",
-      "meaning": "payment method"
-    },
-    {
-      "source_index": 6496,
-      "id": "2858827",
-      "term": "決算賞与",
-      "reading": "けっさんしょうよ",
-      "meaning": "year-end bonus"
-    },
-    {
-      "source_index": 6497,
-      "id": "2804220",
-      "term": "決算短信",
-      "reading": "けっさんたんしん",
-      "meaning": "summary of accounts"
-    },
-    {
-      "source_index": 6498,
-      "id": "1805880",
-      "term": "決算報告",
-      "reading": "けっさんほうこく",
-      "meaning": "financial statement"
-    },
-    {
-      "source_index": 6499,
-      "id": "2811710",
-      "term": "血色素計",
-      "reading": "けっしきそけい",
-      "meaning": "hemoglobinometer / haemoglobinometer"
-    },
     {
       "source_index": 6500,
       "id": "2672580",
@@ -7010,6 +6660,356 @@
       "term": "後生可畏",
       "reading": "こうせいかい",
       "meaning": "the young should be regarded with respect"
+    },
+    {
+      "source_index": 7450,
+      "id": "1279740",
+      "term": "構成可能",
+      "reading": "こうせいかのう",
+      "meaning": "configurable"
+    },
+    {
+      "source_index": 7451,
+      "id": "2355610",
+      "term": "構成管理",
+      "reading": "こうせいかんり",
+      "meaning": "configuration management"
+    },
+    {
+      "source_index": 7452,
+      "id": "1810610",
+      "term": "更生会社",
+      "reading": "こうせいがいしゃ",
+      "meaning": "company needing reorganization (reorganisation)"
+    },
+    {
+      "source_index": 7453,
+      "id": "2355620",
+      "term": "構成機器",
+      "reading": "こうせいきき",
+      "meaning": "components"
+    },
+    {
+      "source_index": 7454,
+      "id": "2407540",
+      "term": "硬性憲法",
+      "reading": "こうせいけんぽう",
+      "meaning": "rigid constitution"
+    },
+    {
+      "source_index": 7455,
+      "id": "2690350",
+      "term": "高精細度",
+      "reading": "こうせいさいど",
+      "meaning": "high definition"
+    },
+    {
+      "source_index": 7456,
+      "id": "1837170",
+      "term": "厚生施設",
+      "reading": "こうせいしせつ",
+      "meaning": "welfare facilities"
+    },
+    {
+      "source_index": 7457,
+      "id": "1992680",
+      "term": "更正施設",
+      "reading": "こうせいしせつ",
+      "meaning": "correctional facility"
+    },
+    {
+      "source_index": 7458,
+      "id": "1810630",
+      "term": "更生施設",
+      "reading": "こうせいしせつ",
+      "meaning": "rehabilitation facilities / halfway house"
+    },
+    {
+      "source_index": 7459,
+      "id": "1935120",
+      "term": "構成主義",
+      "reading": "こうせいしゅぎ",
+      "meaning": "constructivism"
+    },
+    {
+      "source_index": 7460,
+      "id": "1274130",
+      "term": "公正証書",
+      "reading": "こうせいしょうしょ",
+      "meaning": "notarized document / notarised document"
+    },
+    {
+      "source_index": 7461,
+      "id": "1820680",
+      "term": "向精神薬",
+      "reading": "こうせいしんやく",
+      "meaning": "psychotropic drug"
+    },
+    {
+      "source_index": 7462,
+      "id": "2110940",
+      "term": "構成情報",
+      "reading": "こうせいじょうほう",
+      "meaning": "configuration information"
+    },
+    {
+      "source_index": 7463,
+      "id": "2355630",
+      "term": "構成制御",
+      "reading": "こうせいせいぎょ",
+      "meaning": "configuration control"
+    },
+    {
+      "source_index": 7464,
+      "id": "2129080",
+      "term": "構成成分",
+      "reading": "こうせいせいぶん",
+      "meaning": "structural component"
+    },
+    {
+      "source_index": 7465,
+      "id": "1279760",
+      "term": "構成単位",
+      "reading": "こうせいたんい",
+      "meaning": "element"
+    },
+    {
+      "source_index": 7466,
+      "id": "5275330",
+      "term": "広西大学",
+      "reading": "こうせいだいがく",
+      "meaning": "Guangxi University / GXU"
+    },
+    {
+      "source_index": 7467,
+      "id": "1275510",
+      "term": "厚生大臣",
+      "reading": "こうせいだいじん",
+      "meaning": "Minister of Health and Welfare"
+    },
+    {
+      "source_index": 7468,
+      "id": "2550530",
+      "term": "公正取引",
+      "reading": "こうせいとりひき",
+      "meaning": "fair trade"
+    },
+    {
+      "source_index": 7469,
+      "id": "2207730",
+      "term": "後生動物",
+      "reading": "こうせいどうぶつ",
+      "meaning": "metazoan (any member of the animal kingdom, excluding protozoans and sponges)"
+    },
+    {
+      "source_index": 7470,
+      "id": "1275520",
+      "term": "厚生年金",
+      "reading": "こうせいねんきん",
+      "meaning": "welfare pension"
+    },
+    {
+      "source_index": 7471,
+      "id": "1278940",
+      "term": "抗生物質",
+      "reading": "こうせいぶっしつ",
+      "meaning": "antibiotic"
+    },
+    {
+      "source_index": 7472,
+      "id": "2355670",
+      "term": "構成部品",
+      "reading": "こうせいぶひん",
+      "meaning": "component"
+    },
+    {
+      "source_index": 7473,
+      "id": "1834060",
+      "term": "構成分子",
+      "reading": "こうせいぶんし",
+      "meaning": "components"
+    },
+    {
+      "source_index": 7474,
+      "id": "2355680",
+      "term": "構成変更",
+      "reading": "こうせいへんこう",
+      "meaning": "configuration change"
+    },
+    {
+      "source_index": 7475,
+      "id": "2436650",
+      "term": "更生保護",
+      "reading": "こうせいほご",
+      "meaning": "rehabilitation / social readjustment / aftercare"
+    },
+    {
+      "source_index": 7476,
+      "id": "2044980",
+      "term": "攻勢防御",
+      "reading": "こうせいぼうぎょ",
+      "meaning": "attack as a form of defense / attacking (active) defense"
+    },
+    {
+      "source_index": 7477,
+      "id": "2044990",
+      "term": "公正無私",
+      "reading": "こうせいむし",
+      "meaning": "fair and impartial / just and unselfish"
+    },
+    {
+      "source_index": 7478,
+      "id": "2849691",
+      "term": "構成銘柄",
+      "reading": "こうせいめいがら",
+      "meaning": "composite (e.g. index) / constituent"
+    },
+    {
+      "source_index": 7479,
+      "id": "2176040",
+      "term": "構成要件",
+      "reading": "こうせいようけん",
+      "meaning": "structural elements (of an offence) / constituent external element of a crime / actus reus"
+    },
+    {
+      "source_index": 7480,
+      "id": "1279770",
+      "term": "構成要素",
+      "reading": "こうせいようそ",
+      "meaning": "component / element / part"
+    },
+    {
+      "source_index": 7481,
+      "id": "1274170",
+      "term": "公設市場",
+      "reading": "こうせついちば",
+      "meaning": "public market"
+    },
+    {
+      "source_index": 7482,
+      "id": "1992510",
+      "term": "公設秘書",
+      "reading": "こうせつひしょ",
+      "meaning": "government-paid secretary"
+    },
+    {
+      "source_index": 7483,
+      "id": "2777980",
+      "term": "交戦団体",
+      "reading": "こうせんだんたい",
+      "meaning": "belligerent communities / armed resistance group"
+    },
+    {
+      "source_index": 7484,
+      "id": "1992410",
+      "term": "交戦地帯",
+      "reading": "こうせんちたい",
+      "meaning": "battle zone"
+    },
+    {
+      "source_index": 7485,
+      "id": "1720060",
+      "term": "光線療法",
+      "reading": "こうせんりょうほう",
+      "meaning": "phototherapy"
+    },
+    {
+      "source_index": 7486,
+      "id": "1578890",
+      "term": "高層建築",
+      "reading": "こうそうけんちく",
+      "meaning": "tall building / high-rise building"
+    },
+    {
+      "source_index": 7487,
+      "id": "2866703",
+      "term": "高層湿原",
+      "reading": "こうそうしつげん",
+      "meaning": "high moor"
+    },
+    {
+      "source_index": 7488,
+      "id": "2571650",
+      "term": "高層大気",
+      "reading": "こうそうたいき",
+      "meaning": "upper air / upper atmosphere"
+    },
+    {
+      "source_index": 7489,
+      "id": "2866849",
+      "term": "後送病院",
+      "reading": "こうそうびょういん",
+      "meaning": "evacuation hospital / clearing hospital"
+    },
+    {
+      "source_index": 7490,
+      "id": "1676380",
+      "term": "控訴期間",
+      "reading": "こうそきかん",
+      "meaning": "term in which an appeal may be filed"
+    },
+    {
+      "source_index": 7491,
+      "id": "1676370",
+      "term": "控訴棄却",
+      "reading": "こうそききゃく",
+      "meaning": "dismissal of an intermediate appeal"
+    },
+    {
+      "source_index": 7492,
+      "id": "2871869",
+      "term": "校則違反",
+      "reading": "こうそくいはん",
+      "meaning": "violation of school rules / breaking school regulations"
+    },
+    {
+      "source_index": 7493,
+      "id": "2356570",
+      "term": "高速回線",
+      "reading": "こうそくかいせん",
+      "meaning": "high speed line"
+    },
+    {
+      "source_index": 7494,
+      "id": "2626980",
+      "term": "高速車線",
+      "reading": "こうそくしゃせん",
+      "meaning": "high-speed lane / fast lane"
+    },
+    {
+      "source_index": 7495,
+      "id": "2356580",
+      "term": "高速処理",
+      "reading": "こうそくしょり",
+      "meaning": "high speed processing"
+    },
+    {
+      "source_index": 7496,
+      "id": "1712470",
+      "term": "拘束時間",
+      "reading": "こうそくじかん",
+      "meaning": "total hours spent working"
+    },
+    {
+      "source_index": 7497,
+      "id": "2356590",
+      "term": "高速接続",
+      "reading": "こうそくせつぞく",
+      "meaning": "high speed connection"
+    },
+    {
+      "source_index": 7498,
+      "id": "2356620",
+      "term": "高速通信",
+      "reading": "こうそくつうしん",
+      "meaning": "high speed communication"
+    },
+    {
+      "source_index": 7499,
+      "id": "2193140",
+      "term": "高速鉄道",
+      "reading": "こうそくてつどう",
+      "meaning": "high-speed rail / rapid (rail) transit"
     }
   ]
 }

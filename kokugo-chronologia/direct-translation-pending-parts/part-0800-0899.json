@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 6450,
-  "english_only_remaining": 8550,
+  "already_direct_japanese": 6500,
+  "english_only_remaining": 8500,
   "english_only_rank_counts": {
-    "(blank)": 8550
+    "(blank)": 8500
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,356 +13,6 @@
   "part_start": 800,
   "part_end": 899,
   "targets": [
-    {
-      "source_index": 7250,
-      "id": "2828856",
-      "term": "航空宇宙",
-      "reading": "こうくううちゅう",
-      "meaning": "aerospace"
-    },
-    {
-      "source_index": 7251,
-      "id": "1983490",
-      "term": "航空運賃",
-      "reading": "こうくううんちん",
-      "meaning": "airfare"
-    },
-    {
-      "source_index": 7252,
-      "id": "2815760",
-      "term": "口腔衛生",
-      "reading": "こうくうえいせい",
-      "meaning": "dental health / oral hygiene"
-    },
-    {
-      "source_index": 7253,
-      "id": "2598060",
-      "term": "航空貨物",
-      "reading": "こうくうかもつ",
-      "meaning": "air cargo / air freight"
-    },
-    {
-      "source_index": 7254,
-      "id": "2832046",
-      "term": "航空管制",
-      "reading": "こうくうかんせい",
-      "meaning": "air traffic control / ATC"
-    },
-    {
-      "source_index": 7255,
-      "id": "1281310",
-      "term": "航空管理",
-      "reading": "こうくうかんり",
-      "meaning": "air traffic control"
-    },
-    {
-      "source_index": 7256,
-      "id": "1281300",
-      "term": "航空会社",
-      "reading": "こうくうがいしゃ",
-      "meaning": "airline company"
-    },
-    {
-      "source_index": 7257,
-      "id": "1685670",
-      "term": "航空基地",
-      "reading": "こうくうきち",
-      "meaning": "air base"
-    },
-    {
-      "source_index": 7258,
-      "id": "1276120",
-      "term": "口腔外科",
-      "reading": "こうくうげか",
-      "meaning": "dental surgery / oral surgery"
-    },
-    {
-      "source_index": 7259,
-      "id": "2600040",
-      "term": "航空工学",
-      "reading": "こうくうこうがく",
-      "meaning": "aeronautical engineering"
-    },
-    {
-      "source_index": 7260,
-      "id": "1281340",
-      "term": "航空攻撃",
-      "reading": "こうくうこうげき",
-      "meaning": "air strike"
-    },
-    {
-      "source_index": 7261,
-      "id": "1685610",
-      "term": "航空写真",
-      "reading": "こうくうしゃしん",
-      "meaning": "aerial photograph"
-    },
-    {
-      "source_index": 7262,
-      "id": "1281350",
-      "term": "航空書簡",
-      "reading": "こうくうしょかん",
-      "meaning": "aerogramme / air letter"
-    },
-    {
-      "source_index": 7263,
-      "id": "2851903",
-      "term": "航空事業",
-      "reading": "こうくうじぎょう",
-      "meaning": "aviation business / air transport service"
-    },
-    {
-      "source_index": 7264,
-      "id": "2840933",
-      "term": "口腔性交",
-      "reading": "こうくうせいこう",
-      "meaning": "oral sex"
-    },
-    {
-      "source_index": 7265,
-      "id": "2837085",
-      "term": "航空戦隊",
-      "reading": "こうくうせんたい",
-      "meaning": "air flotilla / air fleet / combat aviation unit of the Imperial Japanese Navy"
-    },
-    {
-      "source_index": 7266,
-      "id": "2424900",
-      "term": "航空灯台",
-      "reading": "こうくうとうだい",
-      "meaning": "aeronautical beacon"
-    },
-    {
-      "source_index": 7267,
-      "id": "2861506",
-      "term": "航空日誌",
-      "reading": "こうくうにっし",
-      "meaning": "pilot logbook / aircraft technical logbook"
-    },
-    {
-      "source_index": 7268,
-      "id": "1992720",
-      "term": "航空燃料",
-      "reading": "こうくうねんりょう",
-      "meaning": "aviation fuel"
-    },
-    {
-      "source_index": 7269,
-      "id": "2618360",
-      "term": "航空保険",
-      "reading": "こうくうほけん",
-      "meaning": "aviation insurance / aerial insurance"
-    },
-    {
-      "source_index": 7270,
-      "id": "1281370",
-      "term": "航空母艦",
-      "reading": "こうくうぼかん",
-      "meaning": "aircraft carrier"
-    },
-    {
-      "source_index": 7271,
-      "id": "2826352",
-      "term": "航空無線",
-      "reading": "こうくうむせん",
-      "meaning": "aeronautical radio / aircraft radio"
-    },
-    {
-      "source_index": 7272,
-      "id": "1281380",
-      "term": "航空優勢",
-      "reading": "こうくうゆうせい",
-      "meaning": "air superiority"
-    },
-    {
-      "source_index": 7273,
-      "id": "1638770",
-      "term": "航空郵便",
-      "reading": "こうくうゆうびん",
-      "meaning": "airmail / air mail"
-    },
-    {
-      "source_index": 7274,
-      "id": "2668160",
-      "term": "航空輸送",
-      "reading": "こうくうゆそう",
-      "meaning": "air transportation / air transport / transport by air"
-    },
-    {
-      "source_index": 7275,
-      "id": "2819010",
-      "term": "航空力学",
-      "reading": "こうくうりきがく",
-      "meaning": "flight dynamics / aerodynamics / aeromechanics"
-    },
-    {
-      "source_index": 7276,
-      "id": "1639850",
-      "term": "皇宮警察",
-      "reading": "こうぐうけいさつ",
-      "meaning": "the Imperial Guards"
-    },
-    {
-      "source_index": 7277,
-      "id": "2854699",
-      "term": "行軍将棋",
-      "reading": "こうぐんしょうぎ",
-      "meaning": "gunjin shogi (board game)"
-    },
-    {
-      "source_index": 7278,
-      "id": "2870326",
-      "term": "後脛骨筋",
-      "reading": "こうけいこつきん",
-      "meaning": "tibialis posterior muscle"
-    },
-    {
-      "source_index": 7279,
-      "id": "2830394",
-      "term": "抗結核薬",
-      "reading": "こうけっかくやく",
-      "meaning": "antituberculous drug / antitubercular agent"
-    },
-    {
-      "source_index": 7280,
-      "id": "2859018",
-      "term": "高血糖症",
-      "reading": "こうけっとうしょう",
-      "meaning": "hyperglycemia"
-    },
-    {
-      "source_index": 7281,
-      "id": "1283460",
-      "term": "高血圧症",
-      "reading": "こうけつあつしょう",
-      "meaning": "high blood pressure (as an illness) / hypertension"
-    },
-    {
-      "source_index": 7282,
-      "id": "2797670",
-      "term": "貢献利益",
-      "reading": "こうけんりえき",
-      "meaning": "contribution margin / marginal income"
-    },
-    {
-      "source_index": 7283,
-      "id": "1674840",
-      "term": "工芸美術",
-      "reading": "こうげいびじゅつ",
-      "meaning": "applied fine arts"
-    },
-    {
-      "source_index": 7284,
-      "id": "2870455",
-      "term": "攻撃衝動",
-      "reading": "こうげきしょうどう",
-      "meaning": "aggressive impulse / aggressive drive / aggressive instinct"
-    },
-    {
-      "source_index": 7285,
-      "id": "1675310",
-      "term": "攻撃精神",
-      "reading": "こうげきせいしん",
-      "meaning": "aggressiveness"
-    },
-    {
-      "source_index": 7286,
-      "id": "1675290",
-      "term": "攻撃隊形",
-      "reading": "こうげきたいけい",
-      "meaning": "attacking formation"
-    },
-    {
-      "source_index": 7287,
-      "id": "2861138",
-      "term": "攻撃対象",
-      "reading": "こうげきたいしょう",
-      "meaning": "target of attack"
-    },
-    {
-      "source_index": 7288,
-      "id": "1675300",
-      "term": "攻撃態勢",
-      "reading": "こうげきたいせい",
-      "meaning": "attack preparedness"
-    },
-    {
-      "source_index": 7289,
-      "id": "1279200",
-      "term": "攻撃部隊",
-      "reading": "こうげきぶたい",
-      "meaning": "attacking forces"
-    },
-    {
-      "source_index": 7290,
-      "id": "1279210",
-      "term": "攻撃方向",
-      "reading": "こうげきほうこう",
-      "meaning": "attacking direction"
-    },
-    {
-      "source_index": 7291,
-      "id": "2851481",
-      "term": "抗原検査",
-      "reading": "こうげんけんさ",
-      "meaning": "antigen test"
-    },
-    {
-      "source_index": 7292,
-      "id": "2355190",
-      "term": "光源状態",
-      "reading": "こうげんじょうたい",
-      "meaning": "light source state"
-    },
-    {
-      "source_index": 7293,
-      "id": "2678180",
-      "term": "膠原線維",
-      "reading": "こうげんせんい",
-      "meaning": "collagen fiber / collagen fibre"
-    },
-    {
-      "source_index": 7294,
-      "id": "1278310",
-      "term": "巧言令色",
-      "reading": "こうげんれいしょく",
-      "meaning": "flattery / honeyed words"
-    },
-    {
-      "source_index": 7295,
-      "id": "2858499",
-      "term": "航行衛星",
-      "reading": "こうこうえいせい",
-      "meaning": "navigation satellite"
-    },
-    {
-      "source_index": 7296,
-      "id": "2709300",
-      "term": "硬口蓋音",
-      "reading": "こうこうがいおん",
-      "meaning": "palatal"
-    },
-    {
-      "source_index": 7297,
-      "id": "2643510",
-      "term": "高校球児",
-      "reading": "こうこうきゅうじ",
-      "meaning": "high-school baseball player"
-    },
-    {
-      "source_index": 7298,
-      "id": "2829989",
-      "term": "交項級数",
-      "reading": "こうこうきゅうすう",
-      "meaning": "alternating series"
-    },
-    {
-      "source_index": 7299,
-      "id": "2827775",
-      "term": "航行区域",
-      "reading": "こうこうくいき",
-      "meaning": "regulated navigation area / navigation area / navigation zone"
-    },
     {
       "source_index": 7300,
       "id": "2143100",
@@ -712,6 +362,356 @@
       "term": "高山植物",
       "reading": "こうざんしょくぶつ",
       "meaning": "alpine plants"
+    },
+    {
+      "source_index": 7350,
+      "id": "2044930",
+      "term": "高山流水",
+      "reading": "こうざんりゅうすい",
+      "meaning": "high mountains and running water / the beauty of nature"
+    },
+    {
+      "source_index": 7351,
+      "id": "2044940",
+      "term": "更始一新",
+      "reading": "こうしいっしん",
+      "meaning": "undergo a complete change / turn over a new leaf"
+    },
+    {
+      "source_index": 7352,
+      "id": "2659240",
+      "term": "行使価格",
+      "reading": "こうしかかく",
+      "meaning": "exercise price / strike price / practice price"
+    },
+    {
+      "source_index": 7353,
+      "id": "1677070",
+      "term": "公使館員",
+      "reading": "こうしかんいん",
+      "meaning": "legation / attache"
+    },
+    {
+      "source_index": 7354,
+      "id": "5743080",
+      "term": "孔子学院",
+      "reading": "こうしがくいん",
+      "meaning": "Confucius Institute"
+    },
+    {
+      "source_index": 7355,
+      "id": "2665580",
+      "term": "公式行事",
+      "reading": "こうしきぎょうじ",
+      "meaning": "official function / state function"
+    },
+    {
+      "source_index": 7356,
+      "id": "2135250",
+      "term": "公式参拝",
+      "reading": "こうしきさんぱい",
+      "meaning": "official visit to a shrine (or temple)"
+    },
+    {
+      "source_index": 7357,
+      "id": "1578640",
+      "term": "公式試合",
+      "reading": "こうしきしあい",
+      "meaning": "championship match"
+    },
+    {
+      "source_index": 7358,
+      "id": "1273830",
+      "term": "公式主義",
+      "reading": "こうしきしゅぎ",
+      "meaning": "formalism"
+    },
+    {
+      "source_index": 7359,
+      "id": "1273840",
+      "term": "公式発表",
+      "reading": "こうしきはっぴょう",
+      "meaning": "official announcement"
+    },
+    {
+      "source_index": 7360,
+      "id": "1273850",
+      "term": "公式訪問",
+      "reading": "こうしきほうもん",
+      "meaning": "official visit"
+    },
+    {
+      "source_index": 7361,
+      "id": "2835458",
+      "term": "硬式野球",
+      "reading": "こうしきやきゅう",
+      "meaning": "regulation baseball (as opposed to the variety played with a rubber ball)"
+    },
+    {
+      "source_index": 7362,
+      "id": "2227540",
+      "term": "光子魚雷",
+      "reading": "こうしぎょらい",
+      "meaning": "photon torpedo"
+    },
+    {
+      "source_index": 7363,
+      "id": "5746689",
+      "term": "孔子家語",
+      "reading": "こうしけご",
+      "meaning": "The School Sayings of Confucius / Family Sayings of Confucius / Kongzi Jiayu"
+    },
+    {
+      "source_index": 7364,
+      "id": "1978030",
+      "term": "格子欠陥",
+      "reading": "こうしけっかん",
+      "meaning": "lattice defect"
+    },
+    {
+      "source_index": 7365,
+      "id": "1982510",
+      "term": "高脂血症",
+      "reading": "こうしけつしょう",
+      "meaning": "hyperlipidemia / hyperlipidaemia / hyperlipemia"
+    },
+    {
+      "source_index": 7366,
+      "id": "2028220",
+      "term": "公私混同",
+      "reading": "こうしこんどう",
+      "meaning": "mixing of public and private affairs / mixing business with personal affairs / mixing work and private matters"
+    },
+    {
+      "source_index": 7367,
+      "id": "2855823",
+      "term": "格子振動",
+      "reading": "こうししんどう",
+      "meaning": "lattice vibration"
+    },
+    {
+      "source_index": 7368,
+      "id": "2591320",
+      "term": "格子女郎",
+      "reading": "こうしじょろう",
+      "meaning": "prostitute of the second rank (below the tayū; Edo period)"
+    },
+    {
+      "source_index": 7369,
+      "id": "1992790",
+      "term": "高視聴率",
+      "reading": "こうしちょうりつ",
+      "meaning": "high television ratings"
+    },
+    {
+      "source_index": 7370,
+      "id": "5282202",
+      "term": "皇室会議",
+      "reading": "こうしつかいぎ",
+      "meaning": "Imperial Household Council"
+    },
+    {
+      "source_index": 7371,
+      "id": "2408070",
+      "term": "高失業率",
+      "reading": "こうしつぎょうりつ",
+      "meaning": "high unemployment rate"
+    },
+    {
+      "source_index": 7372,
+      "id": "2857200",
+      "term": "硬質小麦",
+      "reading": "こうしつこむぎ",
+      "meaning": "hard wheat"
+    },
+    {
+      "source_index": 7373,
+      "id": "2245860",
+      "term": "皇室神道",
+      "reading": "こうしつしんとう",
+      "meaning": "Imperial Household Shinto"
+    },
+    {
+      "source_index": 7374,
+      "id": "1719320",
+      "term": "皇室典範",
+      "reading": "こうしつてんぱん",
+      "meaning": "Imperial House Act"
+    },
+    {
+      "source_index": 7375,
+      "id": "1810710",
+      "term": "硬質陶器",
+      "reading": "こうしつとうき",
+      "meaning": "ironstone china"
+    },
+    {
+      "source_index": 7376,
+      "id": "1978050",
+      "term": "格子定数",
+      "reading": "こうしていすう",
+      "meaning": "lattice constant"
+    },
+    {
+      "source_index": 7377,
+      "id": "2774050",
+      "term": "格子点間",
+      "reading": "こうしてんかん",
+      "meaning": "interstice"
+    },
+    {
+      "source_index": 7378,
+      "id": "1272660",
+      "term": "侯爵夫人",
+      "reading": "こうしゃくふじん",
+      "meaning": "marchioness"
+    },
+    {
+      "source_index": 7379,
+      "id": "1273890",
+      "term": "公爵夫人",
+      "reading": "こうしゃくふじん",
+      "meaning": "princess / duchess"
+    },
+    {
+      "source_index": 7380,
+      "id": "1283560",
+      "term": "高射特科",
+      "reading": "こうしゃとっか",
+      "meaning": "anti-aircraft artillery"
+    },
+    {
+      "source_index": 7381,
+      "id": "1273920",
+      "term": "公衆衛生",
+      "reading": "こうしゅうえいせい",
+      "meaning": "public health / public hygiene / sanitation"
+    },
+    {
+      "source_index": 7382,
+      "id": "1282300",
+      "term": "講習会場",
+      "reading": "こうしゅうかいじょう",
+      "meaning": "training center / training centre"
+    },
+    {
+      "source_index": 7383,
+      "id": "2355420",
+      "term": "公衆回線",
+      "reading": "こうしゅうかいせん",
+      "meaning": "public line (as opposed to a private or leased line)"
+    },
+    {
+      "source_index": 7384,
+      "id": "1273940",
+      "term": "公衆電話",
+      "reading": "こうしゅうでんわ",
+      "meaning": "public telephone / pay phone"
+    },
+    {
+      "source_index": 7385,
+      "id": "1273950",
+      "term": "公衆道徳",
+      "reading": "こうしゅうどうとく",
+      "meaning": "public morals"
+    },
+    {
+      "source_index": 7386,
+      "id": "2863168",
+      "term": "高周波数",
+      "reading": "こうしゅうはすう",
+      "meaning": "high frequency / HF"
+    },
+    {
+      "source_index": 7387,
+      "id": "2865704",
+      "term": "甲州葡萄",
+      "reading": "こうしゅうぶどう",
+      "meaning": "Kōshū (grape variety)"
+    },
+    {
+      "source_index": 7388,
+      "id": "1273960",
+      "term": "公衆便所",
+      "reading": "こうしゅうべんじょ",
+      "meaning": "public lavatory / public toilet / public restroom"
+    },
+    {
+      "source_index": 7389,
+      "id": "2869494",
+      "term": "甲州味噌",
+      "reading": "こうしゅうみそ",
+      "meaning": "Kōshū miso / traditional miso of Yamanashi Prefecture fermented using both rice and barley kōji"
+    },
+    {
+      "source_index": 7390,
+      "id": "1273980",
+      "term": "公衆浴場",
+      "reading": "こうしゅうよくじょう",
+      "meaning": "public bathhouse"
+    },
+    {
+      "source_index": 7391,
+      "id": "2729490",
+      "term": "甲種合格",
+      "reading": "こうしゅごうかく",
+      "meaning": "passing the physical examination as a Grade One conscript (in the former Japanese military)"
+    },
+    {
+      "source_index": 7392,
+      "id": "1675170",
+      "term": "攻守同盟",
+      "reading": "こうしゅどうめい",
+      "meaning": "offensive and defensive alliance"
+    },
+    {
+      "source_index": 7393,
+      "id": "1272120",
+      "term": "交渉委員",
+      "reading": "こうしょういいん",
+      "meaning": "negotiating committeemen"
+    },
+    {
+      "source_index": 7394,
+      "id": "2599280",
+      "term": "交渉決裂",
+      "reading": "こうしょうけつれつ",
+      "meaning": "breakdown of negotiations"
+    },
+    {
+      "source_index": 7395,
+      "id": "2659410",
+      "term": "交渉姿勢",
+      "reading": "こうしょうしせい",
+      "meaning": "negotiating posture / attitude to negotiations / negotiating behaviour"
+    },
+    {
+      "source_index": 7396,
+      "id": "1274040",
+      "term": "公称資本",
+      "reading": "こうしょうしほん",
+      "meaning": "authorized capital / authorised capital"
+    },
+    {
+      "source_index": 7397,
+      "id": "2022130",
+      "term": "公傷制度",
+      "reading": "こうしょうせいど",
+      "meaning": "official injury exemption system / system for exempting players injured in an official match from pay reduction or demotion"
+    },
+    {
+      "source_index": 7398,
+      "id": "1677240",
+      "term": "公称馬力",
+      "reading": "こうしょうばりき",
+      "meaning": "nominal horsepower"
+    },
+    {
+      "source_index": 7399,
+      "id": "2519680",
+      "term": "口承文学",
+      "reading": "こうしょうぶんがく",
+      "meaning": "oral literature / folk literature"
     }
   ]
 }
