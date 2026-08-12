@@ -1,466 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 2150,
-  "english_only_remaining": 12850,
+  "already_direct_japanese": 2200,
+  "english_only_remaining": 12800,
   "english_only_rank_counts": {
-    "(blank)": 12850
+    "(blank)": 12800
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 2150,
-      "id": "2259250",
-      "term": "乙姫海老",
-      "reading": "おとひめえび",
-      "meaning": "banded coral shrimp (Stenopus hispidus) / coral banded shrimp / banded boxer shrimp",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2151,
-      "id": "2828692",
-      "term": "乙女畦菜",
-      "reading": "おとめあぜな",
-      "meaning": "waterhyssop (Bacopa monnieri) / brahmi / thyme-leafed gratiola",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2152,
-      "id": "2828319",
-      "term": "乙女孔雀",
-      "reading": "おとめくじゃく",
-      "meaning": "Adiantum edgeworthii (species of maidenhair fern)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2153,
-      "id": "2630270",
-      "term": "乙女男子",
-      "reading": "おとめだんし",
-      "meaning": "effeminate man",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2154,
-      "id": "2831404",
-      "term": "乙女百合",
-      "reading": "おとめゆり",
-      "meaning": "maiden lily (Lilium rubellum)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2155,
-      "id": "2852121",
-      "term": "同じ穴の狐",
-      "reading": "おなじあなのきつね",
-      "meaning": "(villains) of the same stripe / birds of a feather / foxes of the same hole",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2156,
-      "id": "2852120",
-      "term": "同じ穴の狸",
-      "reading": "おなじあなのたぬき",
-      "meaning": "(villains) of the same stripe / birds of a feather / raccoon dogs of the same hole",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2157,
-      "id": "2077170",
-      "term": "同じ穴のムジナ",
-      "reading": "おなじあなのむじな",
-      "meaning": "(villains) of the same stripe / birds of a feather / badgers of the same hole",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2158,
-      "id": "2102550",
-      "term": "同じ釜の飯を食う",
-      "reading": "おなじかまのめしをくう",
-      "meaning": "to live together / to be close friends / to eat out of the same pot",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2159,
-      "id": "2801720",
-      "term": "鬼が笑う",
-      "reading": "おにがわらう",
-      "meaning": "to be laughable / to be unrealistic",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2160,
-      "id": "2459330",
-      "term": "鬼田平子",
-      "reading": "おにたびらこ",
-      "meaning": "Oriental false hawksbeard (Youngia japonica)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2161,
-      "id": "2635480",
-      "term": "鬼達磨鰧",
-      "reading": "おにだるまおこぜ",
-      "meaning": "reef stonefish (Synanceia verrucosa) / stonefish / devilfish",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2162,
-      "id": "2141470",
-      "term": "鬼に金棒",
-      "reading": "おににかなぼう",
-      "meaning": "making something strong even stronger / solidifying something's chances / (giving) a metal rod to an ogre",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2163,
-      "id": "2857810",
-      "term": "鬼になる",
-      "reading": "おにになる",
-      "meaning": "to harden one's heart / to steel oneself / to be ruthless",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2164,
-      "id": "2168410",
-      "term": "鬼のいぬまに洗濯",
-      "reading": "おにのいぬまにせんたく",
-      "meaning": "playing while the cat is away / taking a break while the boss is out / doing what one wants when one is (finally) alone",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2165,
-      "id": "2789720",
-      "term": "鬼野芥子",
-      "reading": "おにのげし",
-      "meaning": "prickly sow-thistle (Sonchus asper) / sharp-fringed sow thistle / spiny sow thistle",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2166,
-      "id": "2628860",
-      "term": "鬼坊主鱚",
-      "reading": "おにぼうずぎす",
-      "meaning": "black swallower (Chiasmodon niger)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2167,
-      "id": "2121530",
-      "term": "お鉢が回ってくる",
-      "reading": "おはちがまわってくる",
-      "meaning": "it's my turn / the ball is in my court / it's up to me",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2168,
-      "id": "2417310",
-      "term": "お鉢が回る",
-      "reading": "おはちがまわる",
-      "meaning": "one's turn comes around",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2169,
-      "id": "2733220",
-      "term": "伯母者人",
-      "reading": "おばじゃひと",
-      "meaning": "aunt",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2170,
-      "id": "2841009",
-      "term": "お髭の塵を取る",
-      "reading": "おひげのちりをとる",
-      "meaning": "to flatter a higher-up / to brush the dirt from a beard",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2171,
-      "id": "2841008",
-      "term": "御髭の塵を払う",
-      "reading": "おひげのちりをはらう",
-      "meaning": "to flatter a higher-up / to suck up to / to curry favour",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2172,
-      "id": "2833899",
-      "term": "尾ひれがつく",
-      "reading": "おひれがつく",
-      "meaning": "to become exaggerated (of rumours, etc.) / to become embellished",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2173,
-      "id": "2102580",
-      "term": "尾ひれをつける",
-      "reading": "おひれをつける",
-      "meaning": "to exaggerate / to embellish (a story, rumor, etc.)",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2174,
-      "id": "2087430",
-      "term": "帯に短し襷に長し",
-      "reading": "おびにみじかしたすきにながし",
-      "meaning": "neither one thing nor the other / too short for a belt, too long for a sleeve tie",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2175,
-      "id": "2826473",
-      "term": "お弁当つけて",
-      "reading": "おべんとうつけて",
-      "meaning": "with rice stuck on one's face",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2176,
-      "id": "2542470",
-      "term": "覚えてろ",
-      "reading": "おぼえてろ",
-      "meaning": "you'll regret this! / I'll get you for this! / just you wait!",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2177,
-      "id": "2018820",
-      "term": "御御御付",
-      "reading": "おみおつけ",
-      "meaning": "miso soup",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2178,
-      "id": "2596730",
-      "term": "女郎花月",
-      "reading": "おみなえしづき",
-      "meaning": "seventh lunar month",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2179,
-      "id": "2427920",
-      "term": "御土産話",
-      "reading": "おみやげばなし",
-      "meaning": "trip story / vacation story",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2180,
-      "id": "2042470",
-      "term": "汚名返上",
-      "reading": "おめいへんじょう",
-      "meaning": "clearing one's name / redeeming oneself / restoring one's honor",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2181,
-      "id": "2267190",
-      "term": "御召縮緬",
-      "reading": "おめしちりめん",
-      "meaning": "(high-quality) silk crepe (fabric)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2182,
-      "id": "2077340",
-      "term": "御目出糖",
-      "reading": "おめでとう",
-      "meaning": "Japanese sweets made with glutinous rice and azuki bean paste",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2183,
-      "id": "2087910",
-      "term": "御目文字",
-      "reading": "おめもじ",
-      "meaning": "personal meeting (esp. used by females)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2184,
-      "id": "2826185",
-      "term": "重い腰を上げる",
-      "reading": "おもいこしをあげる",
-      "meaning": "to get off one's backside / to bestir oneself",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2185,
-      "id": "2006850",
-      "term": "思う壺にはまる",
-      "reading": "おもうつぼにはまる",
-      "meaning": "to turn out just as one wished / to come up to one's expectations / to play into the hands (of)",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2186,
-      "id": "2839772",
-      "term": "重きを置く",
-      "reading": "おもきをおく",
-      "meaning": "to emphasize / to attach importance to",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2187,
-      "id": "1812080",
-      "term": "面白半分",
-      "reading": "おもしろはんぶん",
-      "meaning": "for fun / half in jest",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2188,
-      "id": "2850655",
-      "term": "親方思いの主倒し",
-      "reading": "おやかたおもいのしゅたおし",
-      "meaning": "trying to help one's master but instead ending up hurting him",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2189,
-      "id": "2367010",
-      "term": "親構造体",
-      "reading": "おやこうぞうたい",
-      "meaning": "parent structure",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2190,
-      "id": "1939280",
-      "term": "親子関係",
-      "reading": "おやこかんけい",
-      "meaning": "parent-child relationship",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2191,
-      "id": "2367020",
-      "term": "親子結合",
-      "reading": "おやこけつごう",
-      "meaning": "host association",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2192,
-      "id": "2842652",
-      "term": "親子喧嘩",
-      "reading": "おやこげんか",
-      "meaning": "family quarrel / quarrel between parent and child",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2193,
-      "id": "1720640",
-      "term": "親子電話",
-      "reading": "おやこでんわ",
-      "meaning": "extension phone (and its main line)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2194,
-      "id": "2760600",
-      "term": "親のすねかじり",
-      "reading": "おやのすねかじり",
-      "meaning": "sponging off one's parents",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2195,
-      "id": "2092850",
-      "term": "親のすねをかじる",
-      "reading": "おやのすねをかじる",
-      "meaning": "to depend on one's parents' (financial) support / to gnaw at one's parents' shins",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2196,
-      "id": "1365080",
-      "term": "親の七光り",
-      "reading": "おやのななひかり",
-      "meaning": "benefiting from the fame or influence of a parent / riding a parent's coat-tails",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2197,
-      "id": "2829864",
-      "term": "親分子分",
-      "reading": "おやぶんこぶん",
-      "meaning": "boss and his henchmen / boss and underlings",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2198,
-      "id": "2848097",
-      "term": "親指世代",
-      "reading": "おやゆびせだい",
-      "meaning": "thumb tribe / thumb generation / people who are constantly typing on their phones with their thumbs",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2199,
-      "id": "2854136",
-      "term": "和蘭芥子",
-      "reading": "おらんだがらし",
-      "meaning": "watercress (Nasturtium officinale)",
-      "rank": null,
-      "type": "four"
-    },
     {
       "source_index": 2200,
       "id": "2704260",
@@ -9008,6 +8558,456 @@
       "term": "片道切符",
       "reading": "かたみちきっぷ",
       "meaning": "one-way ticket",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3150,
+      "id": "1681180",
+      "term": "片道料金",
+      "reading": "かたみちりょうきん",
+      "meaning": "one-way fare",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3151,
+      "id": "2544870",
+      "term": "片輪走行",
+      "reading": "かたりんそうこう",
+      "meaning": "driving on two wheels / ski (driving stunt) / skiing",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3152,
+      "id": "1633160",
+      "term": "肩をいからせる",
+      "reading": "かたをいからせる",
+      "meaning": "to square one's shoulders (in order to intimidate)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3153,
+      "id": "2843741",
+      "term": "肩を入れる",
+      "reading": "かたをいれる",
+      "meaning": "to support / to back up / to side with",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3154,
+      "id": "2862771",
+      "term": "肩をそびやかす",
+      "reading": "かたをそびやかす",
+      "meaning": "to square one's shoulders (in order to intimidate)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3155,
+      "id": "1974610",
+      "term": "可鍛鋳鉄",
+      "reading": "かたんちゅうてつ",
+      "meaning": "malleable cast iron",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3156,
+      "id": "2206080",
+      "term": "下大静脈",
+      "reading": "かだいじょうみゃく",
+      "meaning": "inferior vena cava",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3157,
+      "id": "1196260",
+      "term": "過大評価",
+      "reading": "かだいひょうか",
+      "meaning": "overestimation / overrating / overvaluing",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3158,
+      "id": "2843725",
+      "term": "勝ち馬に乗る",
+      "reading": "かちうまにのる",
+      "meaning": "to side with the winner / to ride (someone's) coattails / to get on the bandwagon",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3159,
+      "id": "1931020",
+      "term": "価値基準",
+      "reading": "かちきじゅん",
+      "meaning": "standard of value",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3160,
+      "id": "1974760",
+      "term": "家畜登録",
+      "reading": "かちくとうろく",
+      "meaning": "registration of livestock",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3161,
+      "id": "2735130",
+      "term": "家畜病院",
+      "reading": "かちくびょういん",
+      "meaning": "veterinary hospital",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3162,
+      "id": "2840613",
+      "term": "価値工学",
+      "reading": "かちこうがく",
+      "meaning": "value engineering",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3163,
+      "id": "1931030",
+      "term": "価値体系",
+      "reading": "かちたいけい",
+      "meaning": "value system / set of values",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3164,
+      "id": "2449780",
+      "term": "価値哲学",
+      "reading": "かちてつがく",
+      "meaning": "philosophy of value",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3165,
+      "id": "1718990",
+      "term": "価値判断",
+      "reading": "かちはんだん",
+      "meaning": "value judgement / value judgment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3166,
+      "id": "1974460",
+      "term": "価値分析",
+      "reading": "かちぶんせき",
+      "meaning": "value analysis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3167,
+      "id": "1974470",
+      "term": "価値法則",
+      "reading": "かちほうそく",
+      "meaning": "law of value",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3168,
+      "id": "2871107",
+      "term": "夏虫疑氷",
+      "reading": "かちゅうぎひょう",
+      "meaning": "being narrow-minded due to limited experience / refusing to believe in things outside of one's own limited experience / a summer insect doubts the existence of ice",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3169,
+      "id": "2102920",
+      "term": "火中の栗を拾う",
+      "reading": "かちゅうのくりをひろう",
+      "meaning": "to take a risk for someone / to endanger oneself for someone / to gather chestnuts from the fire",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3170,
+      "id": "1190950",
+      "term": "可聴距離",
+      "reading": "かちょうきょり",
+      "meaning": "audible distance",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3171,
+      "id": "2851277",
+      "term": "可聴周波",
+      "reading": "かちょうしゅうは",
+      "meaning": "audio frequency / audible frequency / AF",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3172,
+      "id": "1931120",
+      "term": "家長制度",
+      "reading": "かちょうせいど",
+      "meaning": "patriarchal system",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3173,
+      "id": "2799230",
+      "term": "課長代理",
+      "reading": "かちょうだいり",
+      "meaning": "deputy manager / acting manager / acting section chief",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3174,
+      "id": "2042950",
+      "term": "花鳥諷詠",
+      "reading": "かちょうふうえい",
+      "meaning": "the beauties of nature and the harmony that exists between it and man (as the key poetic theme of a haiku)",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3175,
+      "id": "1194810",
+      "term": "花鳥風月",
+      "reading": "かちょうふうげつ",
+      "meaning": "beauties of nature / the traditional themes of natural beauty in Japanese aesthetics",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3176,
+      "id": "2866496",
+      "term": "課長補佐",
+      "reading": "かちょうほさ",
+      "meaning": "assistant section manager / assistant section chief",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3177,
+      "id": "2132110",
+      "term": "各界各層",
+      "reading": "かっかいかくそう",
+      "meaning": "in every area and on every level",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3178,
+      "id": "1206370",
+      "term": "隔靴掻痒",
+      "reading": "かっかそうよう",
+      "meaning": "being frustrated because something is not quite as hoped (just as one cannot scratch an itch from outside a shoe) / having an itch that one cannot scratch",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3179,
+      "id": "2042960",
+      "term": "活気横溢",
+      "reading": "かっきおういつ",
+      "meaning": "being full of vitality (energy) / in exuberant spirits / effervescent",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3180,
+      "id": "2861053",
+      "term": "滑空爆弾",
+      "reading": "かっくうばくだん",
+      "meaning": "glide bomb",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3181,
+      "id": "2042970",
+      "term": "割鶏牛刀",
+      "reading": "かっけいぎゅうとう",
+      "meaning": "using a meat ax when a knife would suffice / taking a sledgehammer to crack a nut / using a grand-scale measure (a massive instrument) to deal with an insignificant problem",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3182,
+      "id": "1668290",
+      "term": "滑降競技",
+      "reading": "かっこうきょうぎ",
+      "meaning": "downhill / downhill race",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3183,
+      "id": "2622950",
+      "term": "各国政府",
+      "reading": "かっこくせいふ",
+      "meaning": "governments of various countries",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3184,
+      "id": "2870594",
+      "term": "各個撃破",
+      "reading": "かっこげきは",
+      "meaning": "defeating one's opponents one by one / piecemeal defeat / dealing with tasks or opponents individually",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3185,
+      "id": "1819580",
+      "term": "確固不動",
+      "reading": "かっこふどう",
+      "meaning": "unshakeable (e.g. belief) / invincible / steadfastness",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3186,
+      "id": "2030270",
+      "term": "確固不抜",
+      "reading": "かっこふばつ",
+      "meaning": "determined / steadfast / unswerving",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3187,
+      "id": "1747240",
+      "term": "活殺自在",
+      "reading": "かっさつじざい",
+      "meaning": "the power of life or death",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3188,
+      "id": "2673990",
+      "term": "喝食行者",
+      "reading": "かっしきあんじゃ",
+      "meaning": "meal announcer (at a Zen monastery)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3189,
+      "id": "1978830",
+      "term": "滑車神経",
+      "reading": "かっしゃしんけい",
+      "meaning": "trochlear nerve",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3190,
+      "id": "2680990",
+      "term": "褐色人種",
+      "reading": "かっしょくじんしゅ",
+      "meaning": "brown race / brown-skinned race",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3191,
+      "id": "2167410",
+      "term": "褐色矮星",
+      "reading": "かっしょくわいせい",
+      "meaning": "brown dwarf",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3192,
+      "id": "1747200",
+      "term": "活性汚泥",
+      "reading": "かっせいおでい",
+      "meaning": "activated sludge",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3193,
+      "id": "2829049",
+      "term": "活性酵素",
+      "reading": "かっせいこうそ",
+      "meaning": "active enzyme",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3194,
+      "id": "2712280",
+      "term": "活性酢酸",
+      "reading": "かっせいさくさん",
+      "meaning": "active acetate",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3195,
+      "id": "2169880",
+      "term": "活性酸素",
+      "reading": "かっせいさんそ",
+      "meaning": "reactive oxygen (i.e. free radicals, which can be destructive at high concentrations)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3196,
+      "id": "2666470",
+      "term": "活性水素",
+      "reading": "かっせいすいそ",
+      "meaning": "active hydrogen",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3197,
+      "id": "2443130",
+      "term": "活性中心",
+      "reading": "かっせいちゅうしん",
+      "meaning": "active center",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3198,
+      "id": "2443120",
+      "term": "活性部位",
+      "reading": "かっせいぶい",
+      "meaning": "active site",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3199,
+      "id": "2853029",
+      "term": "合戦絵巻",
+      "reading": "かっせんえまき",
+      "meaning": "picture scroll depicting a famous battle",
       "rank": null,
       "type": "four"
     }
