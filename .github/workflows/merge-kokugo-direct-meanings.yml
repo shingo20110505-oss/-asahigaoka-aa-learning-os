@@ -39,13 +39,12 @@ jobs:
           done
           test "$pushed" = 1
           echo 'changed=true' >> "$GITHUB_OUTPUT"
-      - name: Dispatch exact Kokugo public verification
+      - name: Dispatch Pages and exact Kokugo public verification
         if: steps.commit.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # The merge commit itself already triggers deploy-pages.yml via its push.
-          # Dispatching Pages here as well created two runs in the same `pages`
-          # concurrency group, so one could cancel the other. Keep one Pages run
-          # and explicitly start only the exact Kokugo public-data verifier.
+          # Commits pushed with GITHUB_TOKEN do not recursively trigger the normal
+          # push workflow, so the merged source must explicitly start Pages here.
+          gh workflow run deploy-pages.yml --ref main
           gh workflow run verify-kokugo-direct-public.yml --ref main
