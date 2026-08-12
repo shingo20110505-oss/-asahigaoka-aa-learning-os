@@ -68,11 +68,62 @@ const items=[
     memory:'because＋文 / because of＋名詞',
     tags:['反映テスト','because','because of','接続詞','前置詞'],
     createdAt:'2026-08-12'
+  },
+  {
+    id:'en-an-adjective-noun-20260812',
+    subject:'英語',
+    unit:'語順・冠詞',
+    title:'a / an + 形容詞 + 名詞の語順',
+    question:'「an important step」のように、a / an・形容詞・名詞はどの順番に並べる？',
+    answer:'a / an + 形容詞 + 名詞 の順番にします。たとえば「重要な一歩」は an important step です。',
+    why:'a / an は単数の数えられる名詞につく冠詞で、形容詞があるときはその形容詞の前に置きます。important は母音の音で始まるため a ではなく an を使います。',
+    examples:[
+      'Recycling is an important step to save our natural resources.（リサイクルは私たちの天然資源を守るための重要な一歩です）',
+      'an important step ○ / important an step ×',
+      'a useful idea（役に立つ考え）'
+    ],
+    memory:'a / an → 形容詞 → 名詞。an important step の順番を固定する',
+    tags:['冠詞','a','an','形容詞','語順'],
+    createdAt:'2026-08-12'
+  },
+  {
+    id:'en-how-can-i-get-to-20260812',
+    subject:'英語',
+    unit:'会話表現・道案内',
+    title:'How can I get to ～? の使い方',
+    question:'「～へはどうやって行けばいいですか？」と道をたずねる英語表現は？',
+    answer:'How can I get to ～? を使います。たとえば「駅へはどうやって行けばいいですか？」は How can I get to the station? です。',
+    why:'How は方法をたずね、can I get to ～ で「私は～へ行くことができますか」という形になります。合わせて「～へはどうやって行けばいいですか」という定番の道案内表現です。',
+    examples:[
+      'How can I get to the station?（駅へはどうやって行けばいいですか）',
+      'How can I get to the library?（図書館へはどうやって行けばいいですか）',
+      'Excuse me. How can I get to the station?（すみません。駅へはどうやって行けばいいですか）'
+    ],
+    memory:'道を聞く → How can I get to + 場所?',
+    tags:['How can I get to','道案内','疑問文','会話表現'],
+    createdAt:'2026-08-12'
+  },
+  {
+    id:'en-may-i-speak-to-phone-20260812',
+    subject:'英語',
+    unit:'会話表現・電話',
+    title:'May I speak to ～? と Speaking.',
+    question:'電話で「～さんをお願いします」と言うときと、「はい、私です」と答えるときの表現は？',
+    answer:'「～さんをお願いします」は May I speak to ～?、「はい、私です」は Speaking. と言います。',
+    why:'電話では speak to + 人 で「その人と話す」という意味になります。相手を呼び出すときは May I speak to Tom? のように、話したい人の名前を入れます。本人が電話に出ている場合の Speaking. は「話しているのは私です」という定番表現です。',
+    examples:[
+      'May I speak to Tom?（トムさんをお願いします）',
+      'Speaking.（はい、私です）',
+      'Hello? This is Jiro. May I speak to Tom?（もしもし、ジローです。トムさんをお願いします）'
+    ],
+    memory:'電話で「～さんを」→ May I speak to + 人? / 本人なら Speaking.',
+    tags:['May I speak to','Speaking','電話','会話表現'],
+    createdAt:'2026-08-12'
   }
 ];
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.5';
+window.AA_REVIEW_BANK_VERSION='1.0.6';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
