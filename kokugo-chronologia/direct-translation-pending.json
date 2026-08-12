@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 6500,
-  "english_only_remaining": 8500,
+  "already_direct_japanese": 6550,
+  "english_only_remaining": 8450,
   "english_only_rank_counts": {
-    "(blank)": 8500
+    "(blank)": 8450
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 6500,
-      "id": "2672580",
-      "term": "血色素症",
-      "reading": "けっしきそしょう",
-      "meaning": "hemochromatosis / haemochromatosis"
-    },
-    {
-      "source_index": 6501,
-      "id": "2422090",
-      "term": "血色素尿",
-      "reading": "けっしきそにょう",
-      "meaning": "hemoglobinuria / haemoglobinuria"
-    },
-    {
-      "source_index": 6502,
-      "id": "2584630",
-      "term": "結晶化学",
-      "reading": "けっしょうかがく",
-      "meaning": "crystal chemistry"
-    },
-    {
-      "source_index": 6503,
-      "id": "2584620",
-      "term": "結晶光学",
-      "reading": "けっしょうこうがく",
-      "meaning": "crystal optics"
-    },
-    {
-      "source_index": 6504,
-      "id": "2584530",
-      "term": "結晶格子",
-      "reading": "けっしょうこうし",
-      "meaning": "crystal lattice"
-    },
-    {
-      "source_index": 6505,
-      "id": "2584520",
-      "term": "結晶構造",
-      "reading": "けっしょうこうぞう",
-      "meaning": "crystal structure / crystalline structure"
-    },
-    {
-      "source_index": 6506,
-      "id": "2672810",
-      "term": "血漿瀉血",
-      "reading": "けっしょうしゃけつ",
-      "meaning": "plasmapheresis"
-    },
-    {
-      "source_index": 6507,
-      "id": "2862927",
-      "term": "結晶成長",
-      "reading": "けっしょうせいちょう",
-      "meaning": "crystal growth"
-    },
-    {
-      "source_index": 6508,
-      "id": "2584540",
-      "term": "結晶片岩",
-      "reading": "けっしょうへんがん",
-      "meaning": "crystalline schist"
-    },
-    {
-      "source_index": 6509,
-      "id": "1833890",
-      "term": "欠食児童",
-      "reading": "けっしょくじどう",
-      "meaning": "schoolchild without lunch"
-    },
-    {
-      "source_index": 6510,
-      "id": "2188860",
-      "term": "欠神発作",
-      "reading": "けっしんほっさ",
-      "meaning": "absence seizure"
-    },
-    {
-      "source_index": 6511,
-      "id": "1670010",
-      "term": "血清肝炎",
-      "reading": "けっせいかんえん",
-      "meaning": "serum hepatitis"
-    },
-    {
-      "source_index": 6512,
-      "id": "2212640",
-      "term": "血清診断",
-      "reading": "けっせいしんだん",
-      "meaning": "serodiagnosis"
-    },
-    {
-      "source_index": 6513,
-      "id": "1670020",
-      "term": "血清注射",
-      "reading": "けっせいちゅうしゃ",
-      "meaning": "serum injection"
-    },
-    {
-      "source_index": 6514,
-      "id": "2839894",
-      "term": "血清濃度",
-      "reading": "けっせいのうど",
-      "meaning": "serum concentration"
-    },
-    {
-      "source_index": 6515,
-      "id": "1670030",
-      "term": "血清療法",
-      "reading": "けっせいりょうほう",
-      "meaning": "serotherapy"
-    },
-    {
-      "source_index": 6516,
-      "id": "1833910",
-      "term": "欠席裁判",
-      "reading": "けっせきさいばん",
-      "meaning": "trial in absentia / judgment by default (judgement)"
-    },
-    {
-      "source_index": 6517,
-      "id": "1630660",
-      "term": "決選投票",
-      "reading": "けっせんとうひょう",
-      "meaning": "final vote / run-off ballot"
-    },
-    {
-      "source_index": 6518,
-      "id": "2672870",
-      "term": "血栓溶解",
-      "reading": "けっせんようかい",
-      "meaning": "thrombolysis"
-    },
-    {
-      "source_index": 6519,
-      "id": "2839892",
-      "term": "血中濃度",
-      "reading": "けっちゅうのうど",
-      "meaning": "blood concentration / blood level"
-    },
-    {
-      "source_index": 6520,
-      "id": "2436160",
-      "term": "結腸吸収",
-      "reading": "けっちょうきゅうしゅう",
-      "meaning": "colon absorption"
-    },
-    {
-      "source_index": 6521,
-      "id": "2846416",
-      "term": "決定科学",
-      "reading": "けっていかがく",
-      "meaning": "decision science"
-    },
-    {
-      "source_index": 6522,
-      "id": "2813870",
-      "term": "決定係数",
-      "reading": "けっていけいすう",
-      "meaning": "coefficient of determination"
-    },
-    {
-      "source_index": 6523,
-      "id": "1873570",
-      "term": "結締組織",
-      "reading": "けっていそしき",
-      "meaning": "connective tissue"
-    },
-    {
-      "source_index": 6524,
-      "id": "1991890",
-      "term": "決定投票",
-      "reading": "けっていとうひょう",
-      "meaning": "casting vote"
-    },
-    {
-      "source_index": 6525,
-      "id": "2352780",
-      "term": "決定理論",
-      "reading": "けっていりろん",
-      "meaning": "decision theory"
-    },
-    {
-      "source_index": 6526,
-      "id": "2352790",
-      "term": "決定論的",
-      "reading": "けっていろんてき",
-      "meaning": "deterministic"
-    },
-    {
-      "source_index": 6527,
-      "id": "2871201",
-      "term": "血糖指数",
-      "reading": "けっとうしすう",
-      "meaning": "glycemic index"
-    },
-    {
-      "source_index": 6528,
-      "id": "2836975",
-      "term": "血統主義",
-      "reading": "けっとうしゅぎ",
-      "meaning": "jus sanguinis / principle that citizenship is determined by that of one's parents"
-    },
-    {
-      "source_index": 6529,
-      "id": "2858114",
-      "term": "血液化学",
-      "reading": "けつえきかがく",
-      "meaning": "blood chemistry"
-    },
-    {
-      "source_index": 6530,
-      "id": "5245608",
-      "term": "血液学会",
-      "reading": "けつえきがっかい",
-      "meaning": "American Society of Hematology / ASH"
-    },
-    {
-      "source_index": 6531,
-      "id": "1255140",
-      "term": "血液凝固",
-      "reading": "けつえきぎょうこ",
-      "meaning": "blood clotting / blood coagulation / coagulation"
-    },
-    {
-      "source_index": 6532,
-      "id": "1670060",
-      "term": "血液銀行",
-      "reading": "けつえきぎんこう",
-      "meaning": "blood bank"
-    },
-    {
-      "source_index": 6533,
-      "id": "1670050",
-      "term": "血液検査",
-      "reading": "けつえきけんさ",
-      "meaning": "blood test / hemanalysis"
-    },
-    {
-      "source_index": 6534,
-      "id": "1255160",
-      "term": "血液循環",
-      "reading": "けつえきじゅんかん",
-      "meaning": "blood circulation"
-    },
-    {
-      "source_index": 6535,
-      "id": "2853635",
-      "term": "血液浄化",
-      "reading": "けつえきじょうか",
-      "meaning": "blood purification"
-    },
-    {
-      "source_index": 6536,
-      "id": "1991920",
-      "term": "血液製剤",
-      "reading": "けつえきせいざい",
-      "meaning": "blood products"
-    },
-    {
-      "source_index": 6537,
-      "id": "2672830",
-      "term": "血液透析",
-      "reading": "けつえきとうせき",
-      "meaning": "hemodialysis / haemodialysis"
-    },
-    {
-      "source_index": 6538,
-      "id": "2037290",
-      "term": "血液内科",
-      "reading": "けつえきないか",
-      "meaning": "haematology / hematology"
-    },
-    {
-      "source_index": 6539,
-      "id": "2044530",
-      "term": "血縁関係",
-      "reading": "けつえんかんけい",
-      "meaning": "blood relationship / blood relations / being genetically related"
-    },
-    {
-      "source_index": 6540,
-      "id": "2672600",
-      "term": "血縁集団",
-      "reading": "けつえんしゅうだん",
-      "meaning": "consanguineous group / kin group"
-    },
-    {
-      "source_index": 6541,
-      "id": "2196320",
-      "term": "血縁淘汰",
-      "reading": "けつえんとうた",
-      "meaning": "kin selection"
-    },
-    {
-      "source_index": 6542,
-      "id": "1805960",
-      "term": "決議機関",
-      "reading": "けつぎきかん",
-      "meaning": "voting body / caucus"
-    },
-    {
-      "source_index": 6543,
-      "id": "1805930",
-      "term": "決議事項",
-      "reading": "けつぎじこう",
-      "meaning": "resolutions"
-    },
-    {
-      "source_index": 6544,
-      "id": "2273590",
-      "term": "結合確率",
-      "reading": "けつごうかくりつ",
-      "meaning": "joint probability"
-    },
-    {
-      "source_index": 6545,
-      "id": "2836504",
-      "term": "決号作戦",
-      "reading": "けつごうさくせん",
-      "meaning": "Operation Ketsugō (Japanese military plan for responding to the Allied invasion of the homeland)"
-    },
-    {
-      "source_index": 6546,
-      "id": "2352870",
-      "term": "結合試験",
-      "reading": "けつごうしけん",
-      "meaning": "integration test"
-    },
-    {
-      "source_index": 6547,
-      "id": "1727490",
-      "term": "結合組織",
-      "reading": "けつごうそしき",
-      "meaning": "connective tissue"
-    },
-    {
-      "source_index": 6548,
-      "id": "2421800",
-      "term": "結合半径",
-      "reading": "けつごうはんけい",
-      "meaning": "bond radius"
-    },
-    {
-      "source_index": 6549,
-      "id": "2827539",
-      "term": "結合分布",
-      "reading": "けつごうぶんぷ",
-      "meaning": "joint distribution"
-    },
     {
       "source_index": 6550,
       "id": "2352900",
@@ -7010,6 +6660,356 @@
       "term": "高速鉄道",
       "reading": "こうそくてつどう",
       "meaning": "high-speed rail / rapid (rail) transit"
+    },
+    {
+      "source_index": 7500,
+      "id": "2356640",
+      "term": "高速伝送",
+      "reading": "こうそくでんそう",
+      "meaning": "high speed transmission"
+    },
+    {
+      "source_index": 7501,
+      "id": "1283720",
+      "term": "高速道路",
+      "reading": "こうそくどうろ",
+      "meaning": "highway / freeway / expressway"
+    },
+    {
+      "source_index": 7502,
+      "id": "1809180",
+      "term": "高速度鋼",
+      "reading": "こうそくどこう",
+      "meaning": "high-speed steel"
+    },
+    {
+      "source_index": 7503,
+      "id": "2845262",
+      "term": "酵素玄米",
+      "reading": "こうそげんまい",
+      "meaning": "koso genmai / fermented brown rice"
+    },
+    {
+      "source_index": 7504,
+      "id": "1677230",
+      "term": "公租公課",
+      "reading": "こうそこうか",
+      "meaning": "taxes and public dues"
+    },
+    {
+      "source_index": 7505,
+      "id": "2654050",
+      "term": "皇祖皇宗",
+      "reading": "こうそこうそう",
+      "meaning": "ancestors of the Imperial Family"
+    },
+    {
+      "source_index": 7506,
+      "id": "2528500",
+      "term": "公訴時効",
+      "reading": "こうそじこう",
+      "meaning": "limitation / prescription of the right to prosecute an accused / statute of limitation"
+    },
+    {
+      "source_index": 7507,
+      "id": "2857794",
+      "term": "公訴事実",
+      "reading": "こうそじじつ",
+      "meaning": "facts constituting the offense charged / facts charged"
+    },
+    {
+      "source_index": 7508,
+      "id": "2859020",
+      "term": "酵素風呂",
+      "reading": "こうそぶろ",
+      "meaning": "enzyme bath / bath taken in a tub filled with heated fermented rice bran or cedar wood dust"
+    },
+    {
+      "source_index": 7509,
+      "id": "1676360",
+      "term": "控訴理由",
+      "reading": "こうそりゆう",
+      "meaning": "grounds for an appeal"
+    },
+    {
+      "source_index": 7510,
+      "id": "2827585",
+      "term": "構造運動",
+      "reading": "こうぞううんどう",
+      "meaning": "tectonic movement"
+    },
+    {
+      "source_index": 7511,
+      "id": "1834100",
+      "term": "構造汚職",
+      "reading": "こうぞうおしょく",
+      "meaning": "structural corruption"
+    },
+    {
+      "source_index": 7512,
+      "id": "1992700",
+      "term": "構造改革",
+      "reading": "こうぞうかいかく",
+      "meaning": "structural reform / restructuring"
+    },
+    {
+      "source_index": 7513,
+      "id": "1920830",
+      "term": "構造記述",
+      "reading": "こうぞうきじゅつ",
+      "meaning": "structural description"
+    },
+    {
+      "source_index": 7514,
+      "id": "2841613",
+      "term": "構造計算",
+      "reading": "こうぞうけいさん",
+      "meaning": "structural calculation / structural analysis / seismic analysis"
+    },
+    {
+      "source_index": 7515,
+      "id": "2355770",
+      "term": "構造構文",
+      "reading": "こうぞうこうぶん",
+      "meaning": "construct"
+    },
+    {
+      "source_index": 7516,
+      "id": "1834090",
+      "term": "構造主義",
+      "reading": "こうぞうしゅぎ",
+      "meaning": "structuralism"
+    },
+    {
+      "source_index": 7517,
+      "id": "2604530",
+      "term": "構造地震",
+      "reading": "こうぞうじしん",
+      "meaning": "tectonic earthquake"
+    },
+    {
+      "source_index": 7518,
+      "id": "1834080",
+      "term": "構造不況",
+      "reading": "こうぞうふきょう",
+      "meaning": "structural recession"
+    },
+    {
+      "source_index": 7519,
+      "id": "1920840",
+      "term": "構造変化",
+      "reading": "こうぞうへんか",
+      "meaning": "structural change"
+    },
+    {
+      "source_index": 7520,
+      "id": "1920850",
+      "term": "構造保持",
+      "reading": "こうぞうほじ",
+      "meaning": "structure preserving"
+    },
+    {
+      "source_index": 7521,
+      "id": "2355900",
+      "term": "構造要素",
+      "reading": "こうぞうようそ",
+      "meaning": "structural element"
+    },
+    {
+      "source_index": 7522,
+      "id": "2841612",
+      "term": "構造力学",
+      "reading": "こうぞうりきがく",
+      "meaning": "structural mechanics / theory of structures"
+    },
+    {
+      "source_index": 7523,
+      "id": "1685720",
+      "term": "航続距離",
+      "reading": "こうぞくきょり",
+      "meaning": "cruising range / flying range"
+    },
+    {
+      "source_index": 7524,
+      "id": "1935190",
+      "term": "航続時間",
+      "reading": "こうぞくじかん",
+      "meaning": "duration of a cruise (flight) / endurance"
+    },
+    {
+      "source_index": 7525,
+      "id": "2860187",
+      "term": "高体温症",
+      "reading": "こうたいおんしょう",
+      "meaning": "hyperthermia"
+    },
+    {
+      "source_index": 7526,
+      "id": "2354510",
+      "term": "後退回復",
+      "reading": "こうたいかいふく",
+      "meaning": "backward (file) recovery"
+    },
+    {
+      "source_index": 7527,
+      "id": "2829992",
+      "term": "交代級数",
+      "reading": "こうたいきゅうすう",
+      "meaning": "alternating series"
+    },
+    {
+      "source_index": 7528,
+      "id": "2438950",
+      "term": "交代勤務",
+      "reading": "こうたいきんむ",
+      "meaning": "shift work"
+    },
+    {
+      "source_index": 7529,
+      "id": "2833736",
+      "term": "交代行列",
+      "reading": "こうたいぎょうれつ",
+      "meaning": "skew-symmetric matrix"
+    },
+    {
+      "source_index": 7530,
+      "id": "2852623",
+      "term": "抗体検査",
+      "reading": "こうたいけんさ",
+      "meaning": "antibody test"
+    },
+    {
+      "source_index": 7531,
+      "id": "2839528",
+      "term": "交代交代",
+      "reading": "こうたいごうたい",
+      "meaning": "taking turns"
+    },
+    {
+      "source_index": 7532,
+      "id": "1272240",
+      "term": "交代作業",
+      "reading": "こうたいさぎょう",
+      "meaning": "working in shifts"
+    },
+    {
+      "source_index": 7533,
+      "id": "2168470",
+      "term": "抗体産生",
+      "reading": "こうたいさんせい",
+      "meaning": "antibody production"
+    },
+    {
+      "source_index": 7534,
+      "id": "1280480",
+      "term": "皇太子妃",
+      "reading": "こうたいしひ",
+      "meaning": "crown princess"
+    },
+    {
+      "source_index": 7535,
+      "id": "2518810",
+      "term": "交替神教",
+      "reading": "こうたいしんきょう",
+      "meaning": "kathenotheism"
+    },
+    {
+      "source_index": 7536,
+      "id": "2245580",
+      "term": "皇大神宮",
+      "reading": "こうたいじんぐう",
+      "meaning": "Kōtai Shrine (main shrine of the Inner Ise Shrine)"
+    },
+    {
+      "source_index": 7537,
+      "id": "2771870",
+      "term": "交代選手",
+      "reading": "こうたいせんしゅ",
+      "meaning": "substitute player / substitution"
+    },
+    {
+      "source_index": 7538,
+      "id": "1272260",
+      "term": "交代操業",
+      "reading": "こうたいそうぎょう",
+      "meaning": "working in shifts"
+    },
+    {
+      "source_index": 7539,
+      "id": "2354920",
+      "term": "交替装置",
+      "reading": "こうたいそうち",
+      "meaning": "alternate device"
+    },
+    {
+      "source_index": 7540,
+      "id": "1272270",
+      "term": "交代投手",
+      "reading": "こうたいとうしゅ",
+      "meaning": "relief pitcher"
+    },
+    {
+      "source_index": 7541,
+      "id": "1269890",
+      "term": "後退文字",
+      "reading": "こうたいもじ",
+      "meaning": "backspace character / BS"
+    },
+    {
+      "source_index": 7542,
+      "id": "2867737",
+      "term": "高炭酸症",
+      "reading": "こうたんさんしょう",
+      "meaning": "hypercapnia / hypercarbia / hypercapnemia"
+    },
+    {
+      "source_index": 7543,
+      "id": "1875380",
+      "term": "高炭素鋼",
+      "reading": "こうたんそこう",
+      "meaning": "high-carbon steel"
+    },
+    {
+      "source_index": 7544,
+      "id": "2829690",
+      "term": "後代検定",
+      "reading": "こうだいけんてい",
+      "meaning": "progeny test"
+    },
+    {
+      "source_index": 7545,
+      "id": "1615760",
+      "term": "広大無辺",
+      "reading": "こうだいむへん",
+      "meaning": "boundless / infinite / vast"
+    },
+    {
+      "source_index": 7546,
+      "id": "1677010",
+      "term": "公団住宅",
+      "reading": "こうだんじゅうたく",
+      "meaning": "public housing"
+    },
+    {
+      "source_index": 7547,
+      "id": "2354520",
+      "term": "後置記法",
+      "reading": "こうちきほう",
+      "meaning": "postfix notation / reverse Polish notation"
+    },
+    {
+      "source_index": 7548,
+      "id": "2819830",
+      "term": "構築環境",
+      "reading": "こうちくかんきょう",
+      "meaning": "built environment"
+    },
+    {
+      "source_index": 7549,
+      "id": "2860753",
+      "term": "構築主義",
+      "reading": "こうちくしゅぎ",
+      "meaning": "social constructionism"
     }
   ]
 }
