@@ -17,7 +17,7 @@ function finish(result){
   pre.textContent='AA_QUALITY_CI='+JSON.stringify(result);
 }
 function run(){
-  if(typeof qaRun!=='function'||!window.AA_QUALITY_REPAIR||!window.AA_QUALITY_REPAIR_FINAL||!window.AA_V2_TEST_API){if(++tries<240)return setTimeout(run,100);return finish({pass:false,error:'quality runtime not ready',repair:!!window.AA_QUALITY_REPAIR,finalRepair:!!window.AA_QUALITY_REPAIR_FINAL})}
+  if(typeof qaRun!=='function'||!window.AA_QUALITY_REPAIR||!window.AA_QUALITY_REPAIR_FINAL||!window.AA_V2_TEST_API||!window.AA_ENGLISH_EXAMPLE_AUDIT){if(++tries<240)return setTimeout(run,100);return finish({pass:false,error:'quality runtime not ready',repair:!!window.AA_QUALITY_REPAIR,finalRepair:!!window.AA_QUALITY_REPAIR_FINAL,vocabExamples:!!window.AA_ENGLISH_EXAMPLE_AUDIT})}
   try{
     qaRun();
     const report=Array.isArray(state?.qa?.report)?state.qa.report:[];
@@ -26,8 +26,15 @@ function run(){
     const failed=selected.filter(x=>x&&!x.ok).map(x=>({name:x.name,detail:x.detail}));
     const baseAudit=typeof window.AA_QUALITY_REPAIR.audit==='function'?window.AA_QUALITY_REPAIR.audit():null;
     const finalAudit=typeof window.AA_QUALITY_REPAIR_FINAL.audit==='function'?window.AA_QUALITY_REPAIR_FINAL.audit():null;
-    const pass=missing.length===0&&failed.length===0&&finalAudit?.pass===true;
-    finish({pass,missing,failed,baseAudit,finalAudit,checks:selected.map(x=>x?{name:x.name,ok:!!x.ok,detail:x.detail}:null)});
+    const vocabAudit=window.AA_ENGLISH_EXAMPLE_AUDIT||{};
+    const vocab=Array.isArray(DATA?.vocab)?DATA.vocab:[];
+    const advise=vocab.find(v=>String(v?.word||'').toLowerCase()==='advise');
+    const lookAfter=vocab.find(v=>String(v?.word||'').toLowerCase()==='look after');
+    const vocabExamplesPass=Number(vocabAudit.placeholdersAfter)===0&&Number(vocabAudit.uncoveredCount)===0&&/advis/i.test(String(advise?.example||''))&&/look.+after/i.test(String(lookAfter?.example||''));
+    const vocabExampleCheck={name:'英単語例文・全件品質ゲート',ok:vocabExamplesPass,detail:`total=${vocabAudit.total||0}, placeholders=${vocabAudit.placeholdersAfter||0}, uncovered=${vocabAudit.uncoveredCount||0}, advise=${advise?.example||'missing'}, lookAfter=${lookAfter?.example||'missing'}`};
+    if(!vocabExamplesPass)failed.push({name:vocabExampleCheck.name,detail:vocabExampleCheck.detail});
+    const pass=missing.length===0&&failed.length===0&&finalAudit?.pass===true&&vocabExamplesPass;
+    finish({pass,missing,failed,baseAudit,finalAudit,vocabAudit,vocabExampleCheck,checks:[...selected.map(x=>x?{name:x.name,ok:!!x.ok,detail:x.detail}:null),vocabExampleCheck]});
   }catch(error){finish({pass:false,error:String(error?.stack||error)})}
 }
 setTimeout(run,0);
