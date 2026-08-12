@@ -1,3616 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 400,
-  "english_only_remaining": 14600,
+  "already_direct_japanese": 800,
+  "english_only_remaining": 14200,
   "english_only_rank_counts": {
-    "(blank)": 14600
+    "(blank)": 14200
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 400,
-      "id": "2516640",
-      "term": "案内広告",
-      "reading": "あんないこうこく",
-      "meaning": "classified advertisement / classified ad",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 401,
-      "id": "1857510",
-      "term": "案内書呈",
-      "reading": "あんないしょてい",
-      "meaning": "presentation of a guidebook",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 402,
-      "id": "2101710",
-      "term": "杏仁豆腐",
-      "reading": "あんにんどうふ",
-      "meaning": "(Chinese-style) almond jelly / dessert of powdered and jellied apricot kernels with fruit",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 403,
-      "id": "1154200",
-      "term": "安寧秩序",
-      "reading": "あんねいちつじょ",
-      "meaning": "peace and order / law and order",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 404,
-      "id": "2041140",
-      "term": "安穏無事",
-      "reading": "あんのんぶじ",
-      "meaning": "peace and quiet / safe and peaceful / tranquil and uneventful",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 405,
-      "id": "2622580",
-      "term": "安否確認",
-      "reading": "あんぴかくにん",
-      "meaning": "confirmation of someone's safety / ascertainment of someone's safety",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 406,
-      "id": "2041150",
-      "term": "安否不明",
-      "reading": "あんぴふめい",
-      "meaning": "fate (safety) of a person (persons) being unknown",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 407,
-      "id": "1757290",
-      "term": "安保条約",
-      "reading": "あんぽじょうやく",
-      "meaning": "security treaty (esp. US-Japan Security Treaty)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 408,
-      "id": "2831592",
-      "term": "安保闘争",
-      "reading": "あんぽとうそう",
-      "meaning": "campaign against the Japan-US Security Treaty (1959-60, 1970)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 409,
-      "id": "2821670",
-      "term": "安眠妨害",
-      "reading": "あんみんぼうがい",
-      "meaning": "disturbance of sleep / nuisance in the middle of the night",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 410,
-      "id": "2340600",
-      "term": "暗黙変換",
-      "reading": "あんもくへんかん",
-      "meaning": "implicit conversion",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 411,
-      "id": "2340610",
-      "term": "暗黙連結",
-      "reading": "あんもくれんけつ",
-      "meaning": "implicit link (process definition)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 412,
-      "id": "5741606",
-      "term": "暗夜行路",
-      "reading": "あんやこうろ",
-      "meaning": "A Dark Night's Passing (novel by Shiga Naoya)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 413,
-      "id": "1757320",
-      "term": "安楽椅子",
-      "reading": "あんらくいす",
-      "meaning": "easy chair / armchair",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 414,
-      "id": "2117200",
-      "term": "安牌",
-      "reading": "あんパイ",
-      "meaning": "safe tile / tile that may be discarded without risking benefiting an opponent",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 415,
-      "id": "1566560",
-      "term": "帷幄上奏",
-      "reading": "いあくじょうそう",
-      "meaning": "direct appeal to the throne by the military",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 416,
-      "id": "1930150",
-      "term": "慰安旅行",
-      "reading": "いあんりょこう",
-      "meaning": "pleasure trip / company (office) trip",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 417,
-      "id": "2856379",
-      "term": "異域の鬼",
-      "reading": "いいきのき",
-      "meaning": "person who died outside of their homeland / ghost in a foreign land",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 418,
-      "id": "2842885",
-      "term": "以夷攻夷",
-      "reading": "いいこうい",
-      "meaning": "controlling foreigners by foreigners / playing one barbarian state against another",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 419,
-      "id": "2753940",
-      "term": "飯島虫喰",
-      "reading": "いいじまむしくい",
-      "meaning": "Ijima's leaf warbler (Phylloscopus ijimae) / Izu leaf warbler, Ijima's willow warbler / Ijima's warbler",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 420,
-      "id": "2842884",
-      "term": "以夷制夷",
-      "reading": "いいせいい",
-      "meaning": "controlling foreigners by foreigners / playing one barbarian state against another",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 421,
-      "id": "1587010",
-      "term": "唯々諾々",
-      "reading": "いいだくだく",
-      "meaning": "obedient / submissive / tame",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 422,
-      "id": "5601904",
-      "term": "飯田産業",
-      "reading": "いいださんぎょう",
-      "meaning": "Iida Home Max Co., Ltd",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 423,
-      "id": "1666310",
-      "term": "委員付託",
-      "reading": "いいんふたく",
-      "meaning": "referral to a committee",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 424,
-      "id": "2147320",
-      "term": "家柄差別",
-      "reading": "いえがらさべつ",
-      "meaning": "discrimination by birth or rank",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 425,
-      "id": "1931080",
-      "term": "家出少女",
-      "reading": "いえでしょうじょ",
-      "meaning": "runaway girl",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 426,
-      "id": "2840956",
-      "term": "家出少年",
-      "reading": "いえでしょうねん",
-      "meaning": "runaway child / youngster who has run away from home",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 427,
-      "id": "2845843",
-      "term": "家を外にする",
-      "reading": "いえをそとにする",
-      "meaning": "to be out of the house often / to spend little time at home / to go out a lot",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 428,
-      "id": "2434810",
-      "term": "硫黄細菌",
-      "reading": "いおうさいきん",
-      "meaning": "sulfur-reducing bacteria",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 429,
-      "id": "1155420",
-      "term": "位階勲等",
-      "reading": "いかいくんとう",
-      "meaning": "court rank and honors / court rank and honours",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 430,
-      "id": "2832034",
-      "term": "威嚇行動",
-      "reading": "いかくこうどう",
-      "meaning": "threat behavior / show of force / deimatic behavior",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 431,
-      "id": "1156230",
-      "term": "威嚇射撃",
-      "reading": "いかくしゃげき",
-      "meaning": "warning shot",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 432,
-      "id": "2433260",
-      "term": "異化効果",
-      "reading": "いかこうか",
-      "meaning": "alienation effect / Verfremdungseffekt",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 433,
-      "id": "1613300",
-      "term": "医科歯科",
-      "reading": "いかしか",
-      "meaning": "medical and dental college",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 434,
-      "id": "1159780",
-      "term": "医科大学",
-      "reading": "いかだいがく",
-      "meaning": "medical university / medical college / medical school",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 435,
-      "id": "2858426",
-      "term": "以下同文",
-      "reading": "いかどうぶん",
-      "meaning": "same as above / same as in the previous certificate (document, etc.)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 436,
-      "id": "2751920",
-      "term": "桑鳲千鳥",
-      "reading": "いかるちどり",
-      "meaning": "long-billed plover (Charadrius placidus)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 437,
-      "id": "1157030",
-      "term": "易感染性",
-      "reading": "いかんせんせい",
-      "meaning": "compromised",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 438,
-      "id": "2029910",
-      "term": "遺憾千万",
-      "reading": "いかんせんばん",
-      "meaning": "extremely regrettable / deeply unfortunate / most disappointing",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 439,
-      "id": "2029900",
-      "term": "衣冠束帯",
-      "reading": "いかんそくたい",
-      "meaning": "full Japanese court dress of traditional fashion",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 440,
-      "id": "2843307",
-      "term": "医学観察",
-      "reading": "いがくかんさつ",
-      "meaning": "medical observation (esp. of emerging diseases by the Chinese authorities)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 441,
-      "id": "1930240",
-      "term": "医学雑誌",
-      "reading": "いがくざっし",
-      "meaning": "medical journal",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 442,
-      "id": "1575910",
-      "term": "医学博士",
-      "reading": "いがくはかせ",
-      "meaning": "doctor of medicine / MD",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 443,
-      "id": "1159890",
-      "term": "医学用語",
-      "reading": "いがくようご",
-      "meaning": "medical term",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 444,
-      "id": "1857850",
-      "term": "依願退職",
-      "reading": "いがんたいしょく",
-      "meaning": "retirement at one's own request",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 445,
-      "id": "1155630",
-      "term": "依願免官",
-      "reading": "いがんめんかん",
-      "meaning": "retirement at one's own request",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 446,
-      "id": "2807540",
-      "term": "依願免職",
-      "reading": "いがんめんしょく",
-      "meaning": "dismissal at one's request",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 447,
-      "id": "2102070",
-      "term": "生き馬の目を抜く",
-      "reading": "いきうまのめをぬく",
-      "meaning": "to be shrewd / to be sharp / to keep your wits about you",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 448,
-      "id": "1669340",
-      "term": "遺棄貨物",
-      "reading": "いきかもつ",
-      "meaning": "abandoned goods",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 449,
-      "id": "2405970",
-      "term": "息が合う",
-      "reading": "いきがあう",
-      "meaning": "to perform in tune with each other / to get along well / to be in perfect harmony",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 450,
-      "id": "2631470",
-      "term": "域外適用",
-      "reading": "いきがいてきよう",
-      "meaning": "extraterritorial application (e.g. of a law) / extraterritoriality",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 451,
-      "id": "2119940",
-      "term": "息がかかる",
-      "reading": "いきがかかる",
-      "meaning": "to have the personal support of (an influential person) / to be under the patronage of",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 452,
-      "id": "2788890",
-      "term": "行き掛けの駄賃",
-      "reading": "いきがけのだちん",
-      "meaning": "taking the opportunity to do something / doing something incidentally / doing something while (you) are at it",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 453,
-      "id": "1156440",
-      "term": "意気軒昂",
-      "reading": "いきけんこう",
-      "meaning": "in high spirits / elated",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 454,
-      "id": "1156460",
-      "term": "意気消沈",
-      "reading": "いきしょうちん",
-      "meaning": "low spirits / depression / dejection",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 455,
-      "id": "1759920",
-      "term": "意気衝天",
-      "reading": "いきしょうてん",
-      "meaning": "in high spirits",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 456,
-      "id": "1156470",
-      "term": "意気阻喪",
-      "reading": "いきそそう",
-      "meaning": "depressed in spirits / rejection / disheartened",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 457,
-      "id": "1155460",
-      "term": "位記追贈",
-      "reading": "いきついぞう",
-      "meaning": "conferment of posthumous rank",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 458,
-      "id": "1156510",
-      "term": "意気投合",
-      "reading": "いきとうごう",
-      "meaning": "hit it off with (a person) / find a kindred spirit in (a person) / sympathy",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 459,
-      "id": "1746040",
-      "term": "域内貿易",
-      "reading": "いきないぼうえき",
-      "meaning": "regional trade / intra-trade",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 460,
-      "id": "2859775",
-      "term": "息のかかる",
-      "reading": "いきのかかる",
-      "meaning": "to have the personal support of (an influential person) / to be under the patronage of",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 461,
-      "id": "1817820",
-      "term": "息の根",
-      "reading": "いきのね",
-      "meaning": "life",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 462,
-      "id": "2821680",
-      "term": "異曲同工",
-      "reading": "いきょくどうこう",
-      "meaning": "different in appearance but essentially the same in content / equal in skills or workmanship but different in style or artistic flavor / the same for all practical purposes",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 463,
-      "id": "1587120",
-      "term": "意気揚々",
-      "reading": "いきようよう",
-      "meaning": "triumphant / exultant / in high and proud spirits",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 464,
-      "id": "2098620",
-      "term": "息を引き取る",
-      "reading": "いきをひきとる",
-      "meaning": "to die / to draw one's last breath / to breathe one's last",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 465,
-      "id": "2683070",
-      "term": "育英資金",
-      "reading": "いくえいしきん",
-      "meaning": "scholarship / student award / student grant",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 466,
-      "id": "5742904",
-      "term": "育英大学",
-      "reading": "いくえいだいがく",
-      "meaning": "Ikuei University",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 467,
-      "id": "2059820",
-      "term": "育児休暇",
-      "reading": "いくじきゅうか",
-      "meaning": "childcare leave / maternity leave / paternity leave",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 468,
-      "id": "2059840",
-      "term": "育児休業",
-      "reading": "いくじきゅうぎょう",
-      "meaning": "childcare leave (taken after the compulsory maternity leave)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 469,
-      "id": "2059830",
-      "term": "育児施設",
-      "reading": "いくじしせつ",
-      "meaning": "child care facilities",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 470,
-      "id": "1160660",
-      "term": "育児時間",
-      "reading": "いくじじかん",
-      "meaning": "nursing time",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 471,
-      "id": "2835282",
-      "term": "育児不安",
-      "reading": "いくじふあん",
-      "meaning": "anxiety about child-rearing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 472,
-      "id": "2860030",
-      "term": "育児放棄",
-      "reading": "いくじほうき",
-      "meaning": "child neglect",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 473,
-      "id": "1160740",
-      "term": "育成栽培",
-      "reading": "いくせいさいばい",
-      "meaning": "vegetable and fruit growing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 474,
-      "id": "1157650",
-      "term": "異口同音",
-      "reading": "いくどうおん",
-      "meaning": "(saying) with one voice / unanimously / in chorus",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 475,
-      "id": "1971160",
-      "term": "異系交配",
-      "reading": "いけいこうはい",
-      "meaning": "exogamy / outbreeding",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 476,
-      "id": "2561010",
-      "term": "異型接合",
-      "reading": "いけいせつごう",
-      "meaning": "heterozygosis",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 477,
-      "id": "1971140",
-      "term": "異型分裂",
-      "reading": "いけいぶんれつ",
-      "meaning": "heterotypic division",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 478,
-      "id": "2806120",
-      "term": "異形丸鋼",
-      "reading": "いけいまるこう",
-      "meaning": "deformed bar / deformed round bar",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 479,
-      "id": "5511319",
-      "term": "池田銀行",
-      "reading": "いけだぎんこう",
-      "meaning": "Ikeda Bank",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 480,
-      "id": "2041160",
-      "term": "意見具申",
-      "reading": "いけんぐしん",
-      "meaning": "offering one's opinion (to someone on something)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 481,
-      "id": "1156540",
-      "term": "意見交換",
-      "reading": "いけんこうかん",
-      "meaning": "exchange of ideas / exchange of opinions / brainstorming",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 482,
-      "id": "1930100",
-      "term": "意見広告",
-      "reading": "いけんこうこく",
-      "meaning": "protest advertising (on an issue by a pressure group)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 483,
-      "id": "2871626",
-      "term": "意見陳述",
-      "reading": "いけんちんじゅつ",
-      "meaning": "statement of opinion (e.g. victim impact statement) / expression of views",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 484,
-      "id": "2871244",
-      "term": "違憲判決",
-      "reading": "いけんはんけつ",
-      "meaning": "ruling of unconstitutionality / judgment of unconstitutionality",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 485,
-      "id": "2871245",
-      "term": "違憲判断",
-      "reading": "いけんはんだん",
-      "meaning": "finding of unconstitutionality / ruling of unconstitutionality",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 486,
-      "id": "1930190",
-      "term": "移行期間",
-      "reading": "いこうきかん",
-      "meaning": "period of transition (e.g. from old to new system)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 487,
-      "id": "1158250",
-      "term": "移行計画",
-      "reading": "いこうけいかく",
-      "meaning": "transition plan",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 488,
-      "id": "2821690",
-      "term": "意向尊重",
-      "reading": "いこうそんちょう",
-      "meaning": "respecting the intentions or wishes of someone",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 489,
-      "id": "2821700",
-      "term": "意向打診",
-      "reading": "いこうだしん",
-      "meaning": "sounding out the intentions or wishes of someone",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 490,
-      "id": "2640920",
-      "term": "意向調査",
-      "reading": "いこうちょうさ",
-      "meaning": "survey / poll",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 491,
-      "id": "2041170",
-      "term": "異国趣味",
-      "reading": "いこくしゅみ",
-      "meaning": "taste for the exotic / infatuation with a foreign way of life / exoticism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 492,
-      "id": "1834540",
-      "term": "異国情緒",
-      "reading": "いこくじょうちょ",
-      "meaning": "exotic mood / exotic atmosphere / exoticism",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 493,
-      "id": "1971170",
-      "term": "異国情調",
-      "reading": "いこくじょうちょう",
-      "meaning": "exoticism",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 494,
-      "id": "2753190",
-      "term": "遺骨収集",
-      "reading": "いこつしゅうしゅう",
-      "meaning": "recovering the remains of soldiers (e.g. Japanese soldiers who died abroad during WWII)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 495,
-      "id": "2833960",
-      "term": "已己巳己",
-      "reading": "いこみき",
-      "meaning": "all the same",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 496,
-      "id": "2821720",
-      "term": "遺恨試合",
-      "reading": "いこんしあい",
-      "meaning": "grudge match",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 497,
-      "id": "2110840",
-      "term": "遺恨十年",
-      "reading": "いこんじゅうねん",
-      "meaning": "grudge of ten years' standing / harbouring a grudge for many years",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 498,
-      "id": "2826947",
-      "term": "医昆虫学",
-      "reading": "いこんちゅうがく",
-      "meaning": "medical entomology",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 499,
-      "id": "1971590",
-      "term": "遺言証書",
-      "reading": "いごんしょうしょ",
-      "meaning": "testamentary document",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 500,
-      "id": "2721430",
-      "term": "遺言能力",
-      "reading": "いごんのうりょく",
-      "meaning": "testamentary capacity",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 501,
-      "id": "2821730",
-      "term": "委細承知",
-      "reading": "いさいしょうち",
-      "meaning": "total situation fully understood / understood / agreed",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 502,
-      "id": "1156150",
-      "term": "委細面談",
-      "reading": "いさいめんだん",
-      "meaning": "details when I see you",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 503,
-      "id": "1669310",
-      "term": "遺産管理",
-      "reading": "いさんかんり",
-      "meaning": "administration of an estate",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 504,
-      "id": "2848877",
-      "term": "胃酸逆流",
-      "reading": "いさんぎゃくりゅう",
-      "meaning": "acid reflux",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 505,
-      "id": "1159270",
-      "term": "遺産相続",
-      "reading": "いさんそうぞく",
-      "meaning": "inheritance / succession to property",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 506,
-      "id": "2799980",
-      "term": "遺産分割",
-      "reading": "いさんぶんかつ",
-      "meaning": "partition of an estate (inheritance)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 507,
-      "id": "2850871",
-      "term": "伊邪那岐",
-      "reading": "いざなぎ",
-      "meaning": "Izanagi / male deity who fathered Japan and the sun, moon, and storm gods",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 508,
-      "id": "2673340",
-      "term": "異歯亜綱",
-      "reading": "いしあこう",
-      "meaning": "Heterodonta (subclass of bivalve molluscs, including the clams and cockles)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 509,
-      "id": "1382750",
-      "term": "石頭",
-      "reading": "いしあたま",
-      "meaning": "obstinate person / stubbornness / pigheadedness",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 510,
-      "id": "2696910",
-      "term": "異歯亜目",
-      "reading": "いしあもく",
-      "meaning": "Anomodontia (suborder of therapsids)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 511,
-      "id": "2854777",
-      "term": "意思確認",
-      "reading": "いしかくにん",
-      "meaning": "confirmation of consent / confirming someone's wishes",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 512,
-      "id": "5743558",
-      "term": "石川県警",
-      "reading": "いしかわけんけい",
-      "meaning": "Ishikawa Prefectural Police (abbr)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 513,
-      "id": "1971030",
-      "term": "意識一般",
-      "reading": "いしきいっぱん",
-      "meaning": "transcendental appreciation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 514,
-      "id": "2728680",
-      "term": "意識改革",
-      "reading": "いしきかいかく",
-      "meaning": "mind-set change / changing one's way of thinking / attitude reform",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 515,
-      "id": "2041180",
-      "term": "意識過剰",
-      "reading": "いしきかじょう",
-      "meaning": "hyperconsciousness / too great a sense (of) / something being only one's imagination",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 516,
-      "id": "1971040",
-      "term": "意識障害",
-      "reading": "いしきしょうがい",
-      "meaning": "disturbance of consciousness",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 517,
-      "id": "1971050",
-      "term": "意識喪失",
-      "reading": "いしきそうしつ",
-      "meaning": "loss of consciousness",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 518,
-      "id": "2144260",
-      "term": "意識調査",
-      "reading": "いしきちょうさ",
-      "meaning": "attitude survey / opinion poll",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 519,
-      "id": "2041190",
-      "term": "意識転換",
-      "reading": "いしきてんかん",
-      "meaning": "change in mentality / changing one's way of thinking / adjusting psychologically to shifting circumstances",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 520,
-      "id": "1156660",
-      "term": "意識不明",
-      "reading": "いしきふめい",
-      "meaning": "(state of) unconsciousness",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 521,
-      "id": "2041200",
-      "term": "意識変革",
-      "reading": "いしきへんかく",
-      "meaning": "radical change in mentality / radically changing one's way of thinking / radical change in consciousness",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 522,
-      "id": "2859732",
-      "term": "意識変容",
-      "reading": "いしきへんよう",
-      "meaning": "altered consciousness",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 523,
-      "id": "2041210",
-      "term": "意識朦朧",
-      "reading": "いしきもうろう",
-      "meaning": "being in a hazy state / being only half conscious / feeling dopey",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 524,
-      "id": "1156620",
-      "term": "意思決定",
-      "reading": "いしけってい",
-      "meaning": "decision-making",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 525,
-      "id": "2041220",
-      "term": "意志堅固",
-      "reading": "いしけんご",
-      "meaning": "strong determination / strong-willed / having strong will power",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 526,
-      "id": "2869945",
-      "term": "易刺激性",
-      "reading": "いしげきせい",
-      "meaning": "irritability",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 527,
-      "id": "2029860",
-      "term": "意思疎通",
-      "reading": "いしそつう",
-      "meaning": "(reciprocal) communication / (coming to a) mutual understanding",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 528,
-      "id": "2732190",
-      "term": "石畳宿借",
-      "reading": "いしだたみやどかり",
-      "meaning": "Dardanus crassimanus (species of left-handed hermit crab)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 529,
-      "id": "2859574",
-      "term": "意志動詞",
-      "reading": "いしどうし",
-      "meaning": "volitional verb",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 530,
-      "id": "2258590",
-      "term": "石にかじりついてでも",
-      "reading": "いしにかじりついてでも",
-      "meaning": "come hell or high water",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 531,
-      "id": "2137710",
-      "term": "石にかじりついても",
-      "reading": "いしにかじりついても",
-      "meaning": "come hell or high water",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 532,
-      "id": "2141270",
-      "term": "石に漱ぎ流れに枕す",
-      "reading": "いしにくちすすぎながれにまくらす",
-      "meaning": "to refuse stubbornly to admit one is wrong / to rinse one's mouth with a rock and rest one's head in a river",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 533,
-      "id": "2826391",
-      "term": "石にしがみついても",
-      "reading": "いしにしがみついても",
-      "meaning": "come hell or high water",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 534,
-      "id": "2860272",
-      "term": "石に枕し流れに漱ぐ",
-      "reading": "いしにまくらしながれにくちすすぐ",
-      "meaning": "to live freely in the wilderness / to sleep on a pillow of stone and rinse one's mouth with river water",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 535,
-      "id": "1971000",
-      "term": "意思能力",
-      "reading": "いしのうりょく",
-      "meaning": "mental capacity",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 536,
-      "id": "1156600",
-      "term": "意志薄弱",
-      "reading": "いしはくじゃく",
-      "meaning": "weak-willed / lacking a purpose / lacking will power to be patient, purposeful, or resolute",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 537,
-      "id": "2141290",
-      "term": "石橋を叩いて渡る",
-      "reading": "いしばしをたたいてわたる",
-      "meaning": "being excessively cautious / knocking on a strong stone bridge before crossing it",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 538,
-      "id": "1156630",
-      "term": "意思表示",
-      "reading": "いしひょうじ",
-      "meaning": "expressing one's feelings / communicating one's intention",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 539,
-      "id": "1382790",
-      "term": "石部金吉",
-      "reading": "いしべきんきち",
-      "meaning": "man of incorruptible character",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 540,
-      "id": "2775000",
-      "term": "石馬刀貝",
-      "reading": "いしまてがい",
-      "meaning": "date shell (Lithophaga curta) / date mussel",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 541,
-      "id": "2253190",
-      "term": "意志未来",
-      "reading": "いしみらい",
-      "meaning": "volitional future",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 542,
-      "id": "2547800",
-      "term": "医師免許",
-      "reading": "いしめんきょ",
-      "meaning": "physician's license (licence) / doctor's license / medical license",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 543,
-      "id": "2141300",
-      "term": "医者の不養生",
-      "reading": "いしゃのふようじょう",
-      "meaning": "failing to practice what one preaches",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 544,
-      "id": "2408130",
-      "term": "医歯薬学",
-      "reading": "いしやくがく",
-      "meaning": "(study of) medicine, dentistry and pharmacology",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 545,
-      "id": "2853050",
-      "term": "石山合戦",
-      "reading": "いしやまがっせん",
-      "meaning": "Ishiyama Honganji War (1570-1580) / Ishiyama War",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 546,
-      "id": "2853051",
-      "term": "石山戦争",
-      "reading": "いしやませんそう",
-      "meaning": "Ishiyama Honganji War (1570-1580) / Ishiyama War",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 547,
-      "id": "2041240",
-      "term": "意趣遺恨",
-      "reading": "いしゅいこん",
-      "meaning": "grudge / spite / malice",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 548,
-      "id": "1988790",
-      "term": "異種移植",
-      "reading": "いしゅいしょく",
-      "meaning": "xenotransplant / heterograft / heteroplastic transplantation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 549,
-      "id": "2708560",
-      "term": "異周波数",
-      "reading": "いしゅうはすう",
-      "meaning": "different frequency / inter-frequency",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 550,
-      "id": "2848949",
-      "term": "萎縮効果",
-      "reading": "いしゅくこうか",
-      "meaning": "chilling effect",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 551,
-      "id": "1834580",
-      "term": "異種交配",
-      "reading": "いしゅこうはい",
-      "meaning": "crossbreeding",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 552,
-      "id": "2859798",
-      "term": "異種同形",
-      "reading": "いしゅどうけい",
-      "meaning": "isomorphism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 553,
-      "id": "5118442",
-      "term": "意匠学会",
-      "reading": "いしょうがっかい",
-      "meaning": "Japan Society of Design",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 554,
-      "id": "2029870",
-      "term": "意匠惨憺",
-      "reading": "いしょうさんたん",
-      "meaning": "taxing one's ingenuity in devising something / agonizing over designing or creating something / making strenuous efforts to devise good ways and means to do something",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 555,
-      "id": "1971520",
-      "term": "衣装箪笥",
-      "reading": "いしょうだんす",
-      "meaning": "wardrobe",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 556,
-      "id": "1930130",
-      "term": "意匠登録",
-      "reading": "いしょうとうろく",
-      "meaning": "registration of a design",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 557,
-      "id": "2863951",
-      "term": "衣装戸棚",
-      "reading": "いしょうとだな",
-      "meaning": "wardrobe / closet",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 558,
-      "id": "2041250",
-      "term": "衣装道楽",
-      "reading": "いしょうどうらく",
-      "meaning": "love of fine clothing / weakness for fine clothes / being extravagant in clothing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 559,
-      "id": "2831894",
-      "term": "衣装部屋",
-      "reading": "いしょうべや",
-      "meaning": "walk-in closet / wardrobe room / dressing room",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 560,
-      "id": "2632990",
-      "term": "移植手術",
-      "reading": "いしょくしゅじゅつ",
-      "meaning": "transplant surgery / transplant operation / (organ) transplantation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 561,
-      "id": "1988810",
-      "term": "移植臓器",
-      "reading": "いしょくぞうき",
-      "meaning": "replacement organ",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 562,
-      "id": "2029920",
-      "term": "医食同源",
-      "reading": "いしょくどうげん",
-      "meaning": "a balanced diet leads to a healthy body / healthy food both prevents and cures sickness",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 563,
-      "id": "1971280",
-      "term": "移植免疫",
-      "reading": "いしょくめんえき",
-      "meaning": "transplantation immunity",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 564,
-      "id": "2692250",
-      "term": "異所形成",
-      "reading": "いしょけいせい",
-      "meaning": "heterotopia / heterotopy",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 565,
-      "id": "1155130",
-      "term": "以心伝心",
-      "reading": "いしんでんしん",
-      "meaning": "telepathy / tacit understanding / thought transference",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 566,
-      "id": "1971680",
-      "term": "医事訴訟",
-      "reading": "いじそしょう",
-      "meaning": "medical suit",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 567,
-      "id": "1159970",
-      "term": "医事伝道",
-      "reading": "いじでんどう",
-      "meaning": "medical missionary work",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 568,
-      "id": "2041230",
-      "term": "異字同訓",
-      "reading": "いじどうくん",
-      "meaning": "(words with) different kanji but the same Japanese reading (and usu. a similar meaning)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 569,
-      "id": "2696740",
-      "term": "異獣亜綱",
-      "reading": "いじゅうあこう",
-      "meaning": "Allotheria (subclass of Mesozoic mammals)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 570,
-      "id": "1930170",
-      "term": "異常気象",
-      "reading": "いじょうきしょう",
-      "meaning": "abnormal weather",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 571,
-      "id": "2837027",
-      "term": "異常現象",
-      "reading": "いじょうげんしょう",
-      "meaning": "abnormal phenomenon / anomaly",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 572,
-      "id": "1157770",
-      "term": "異常高温",
-      "reading": "いじょうこうおん",
-      "meaning": "abnormally high temperatures",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 573,
-      "id": "2517820",
-      "term": "異常光線",
-      "reading": "いじょうこうせん",
-      "meaning": "extraordinary ray",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 574,
-      "id": "2123840",
-      "term": "異常行動",
-      "reading": "いじょうこうどう",
-      "meaning": "abnormal behavior (behaviour)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 575,
-      "id": "2867238",
-      "term": "異常肢位",
-      "reading": "いじょうしい",
-      "meaning": "abnormal posture / abnormal posturing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 576,
-      "id": "2867239",
-      "term": "異常姿勢",
-      "reading": "いじょうしせい",
-      "meaning": "abnormal posture / abnormal posturing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 577,
-      "id": "2870108",
-      "term": "異状死体",
-      "reading": "いじょうしたい",
-      "meaning": "body of a person who died an abnormal death / unnatural death corpse / body dead from unnatural causes",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 578,
-      "id": "1157780",
-      "term": "異常終了",
-      "reading": "いじょうしゅうりょう",
-      "meaning": "abnormal termination (e.g. of a program) / ABnormal END / ABEND",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 579,
-      "id": "1971200",
-      "term": "異常震域",
-      "reading": "いじょうしんいき",
-      "meaning": "region of anomalous seismic intensity",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 580,
-      "id": "2340910",
-      "term": "異常状態",
-      "reading": "いじょうじょうたい",
-      "meaning": "anomalous condition",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 581,
-      "id": "1834560",
-      "term": "異常性欲",
-      "reading": "いじょうせいよく",
-      "meaning": "sexual abnormality",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 582,
-      "id": "2340920",
-      "term": "異常切断",
-      "reading": "いじょうせつだん",
-      "meaning": "abnormal termination (of a call, e.g.)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 583,
-      "id": "1971210",
-      "term": "異常妊娠",
-      "reading": "いじょうにんしん",
-      "meaning": "abnormal pregnancy",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 584,
-      "id": "1157790",
-      "term": "異常発生",
-      "reading": "いじょうはっせい",
-      "meaning": "plague",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 585,
-      "id": "1971220",
-      "term": "異常分娩",
-      "reading": "いじょうぶんべん",
-      "meaning": "abnormal delivery",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 586,
-      "id": "2688960",
-      "term": "異人種間",
-      "reading": "いじんしゅかん",
-      "meaning": "interethnic / interracial / multiracial",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 587,
-      "id": "1971430",
-      "term": "胃水管系",
-      "reading": "いすいかんけい",
-      "meaning": "gastrovascular system",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 588,
-      "id": "2575160",
-      "term": "いすかの嘴",
-      "reading": "いすかのはし",
-      "meaning": "(something) not coming together (as one had hoped or expected) / unfortunate turn of events / unexpected turn",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 589,
-      "id": "5115734",
-      "term": "伊豆急行",
-      "reading": "いずきゅうこう",
-      "meaning": "Izukyu Corporation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 590,
-      "id": "2845019",
-      "term": "伊豆千両",
-      "reading": "いずせんりょう",
-      "meaning": "Maesa japonica (species of flowering plant)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 591,
-      "id": "5717261",
-      "term": "和泉電気",
-      "reading": "いずみでんき",
-      "meaning": "IDEC Izumi Corporation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 592,
-      "id": "2108400",
-      "term": "いずれ菖蒲か杜若",
-      "reading": "いずれあやめかかきつばた",
-      "meaning": "(of a choice) one being as excellent as the other / both so beautiful it is hard to choose between",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 593,
-      "id": "2240460",
-      "term": "異性愛者",
-      "reading": "いせいあいしゃ",
-      "meaning": "heterosexual (person)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 594,
-      "id": "2079990",
-      "term": "異性化糖",
-      "reading": "いせいかとう",
-      "meaning": "isomerized sugar / high-fructose corn syrup / HFCS",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 595,
-      "id": "1930180",
-      "term": "異性関係",
-      "reading": "いせいかんけい",
-      "meaning": "relationships with the opposite sex",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 596,
-      "id": "2855222",
-      "term": "異性結婚",
-      "reading": "いせいけっこん",
-      "meaning": "heterosexual marriage / opposite-sex marriage",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 597,
-      "id": "1587250",
-      "term": "伊勢海老",
-      "reading": "いせえび",
-      "meaning": "spiny lobster (esp. Japanese spiny lobster, Panulirus japonicus)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 598,
-      "id": "2851281",
-      "term": "移籍市場",
-      "reading": "いせきしじょう",
-      "meaning": "transfer market",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 599,
-      "id": "2095450",
-      "term": "伊勢乞食",
-      "reading": "いせこじき",
-      "meaning": "beggars at the Ise Grand Shrine",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 600,
-      "id": "2836859",
-      "term": "伊勢参宮",
-      "reading": "いせさんぐう",
-      "meaning": "Ise pilgrimage / pilgrimage to the Ise Grand Shrine",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 601,
-      "id": "2246240",
-      "term": "伊勢神道",
-      "reading": "いせしんとう",
-      "meaning": "Ise Shinto (school of Shinto established the Watarai family priests of Ise Jingu's Outer Shrine)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 602,
-      "id": "2836876",
-      "term": "伊勢神宮",
-      "reading": "いせじんぐう",
-      "meaning": "Ise Grand Shrine",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 603,
-      "id": "1155280",
-      "term": "伊勢大廟",
-      "reading": "いせたいびょう",
-      "meaning": "the Grand Shrines of Ise",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 604,
-      "id": "2399350",
-      "term": "異世代間",
-      "reading": "いせだいかん",
-      "meaning": "intergenerational",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 605,
-      "id": "2696990",
-      "term": "異節上目",
-      "reading": "いせつじょうもく",
-      "meaning": "Xenarthra (superorder comprising anteaters, tree sloths, and armadillos)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 606,
-      "id": "2681900",
-      "term": "胃切除術",
-      "reading": "いせつじょじゅつ",
-      "meaning": "gastrectomy",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 607,
-      "id": "2178630",
-      "term": "伊勢防風",
-      "reading": "いせぼうふう",
-      "meaning": "Glehnia littoralis (species of umbellifer used in Chinese medicine)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 608,
-      "id": "5114737",
-      "term": "伊勢物語",
-      "reading": "いせものがたり",
-      "meaning": "Tales of Ise (Heian period collection of poems)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 609,
-      "id": "2111210",
-      "term": "胃洗浄器",
-      "reading": "いせんじょうき",
-      "meaning": "stomach pump",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 610,
-      "id": "1155530",
-      "term": "位相空間",
-      "reading": "いそうくうかん",
-      "meaning": "phase space",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 611,
-      "id": "2340680",
-      "term": "位相誤差",
-      "reading": "いそうごさ",
-      "meaning": "phase error",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 612,
-      "id": "1970880",
-      "term": "位相写像",
-      "reading": "いそうしゃぞう",
-      "meaning": "topological mapping",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 613,
-      "id": "2689680",
-      "term": "位相次元",
-      "reading": "いそうじげん",
-      "meaning": "topological dimension",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 614,
-      "id": "1922610",
-      "term": "位相速度",
-      "reading": "いそうそくど",
-      "meaning": "phase velocity",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 615,
-      "id": "2533780",
-      "term": "位相等化",
-      "reading": "いそうとうか",
-      "meaning": "phase equalization",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 616,
-      "id": "2690840",
-      "term": "位相同型",
-      "reading": "いそうどうけい",
-      "meaning": "homeomorphism / topological equivalence",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 617,
-      "id": "1970900",
-      "term": "位相変調",
-      "reading": "いそうへんちょう",
-      "meaning": "PM / phase modulation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 618,
-      "id": "2241960",
-      "term": "居候蜘蛛",
-      "reading": "いそうろうぐも",
-      "meaning": "dewdrop spider (any spider of genus Argyrodes)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 619,
-      "id": "2041260",
-      "term": "居候生活",
-      "reading": "いそうろうせいかつ",
-      "meaning": "living in another person's house without paying for food and lodging / sponging on other people for accommodation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 620,
-      "id": "1970940",
-      "term": "依存効果",
-      "reading": "いそんこうか",
-      "meaning": "dependence effect",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 621,
-      "id": "1669270",
-      "term": "遺族給付",
-      "reading": "いぞくきゅうふ",
-      "meaning": "survivor's benefit",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 622,
-      "id": "1669250",
-      "term": "遺族年金",
-      "reading": "いぞくねんきん",
-      "meaning": "survivor's pension or annuity",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 623,
-      "id": "1669260",
-      "term": "遺族扶助",
-      "reading": "いぞくふじょ",
-      "meaning": "survivor's benefit",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 624,
-      "id": "1971600",
-      "term": "遺族補償",
-      "reading": "いぞくほしょう",
-      "meaning": "compensation to the bereaved family",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 625,
-      "id": "2160770",
-      "term": "依存関係",
-      "reading": "いぞんかんけい",
-      "meaning": "dependence (relationship) / dependency (relationship)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 626,
-      "id": "2833742",
-      "term": "依存症者",
-      "reading": "いぞんしょうしゃ",
-      "meaning": "addict / dependent (person)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 627,
-      "id": "2132590",
-      "term": "依存状態",
-      "reading": "いぞんじょうたい",
-      "meaning": "state of dependence",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 628,
-      "id": "2836058",
-      "term": "痛いところを突く",
-      "reading": "いたいところをつく",
-      "meaning": "to hit a nerve / to go for the throat / to touch a sore spot",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 629,
-      "id": "1834520",
-      "term": "異体同心",
-      "reading": "いたいどうしん",
-      "meaning": "being of one mind / acting in one accord / behaving in perfect harmony",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 630,
-      "id": "2535530",
-      "term": "異体文字",
-      "reading": "いたいもじ",
-      "meaning": "variant characters (usu. kanji or kana)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 631,
-      "id": "1930080",
-      "term": "委託研究",
-      "reading": "いたくけんきゅう",
-      "meaning": "contract research",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 632,
-      "id": "1155700",
-      "term": "依託射撃",
-      "reading": "いたくしゃげき",
-      "meaning": "firing from elbow rests",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 633,
-      "id": "2649810",
-      "term": "委託生産",
-      "reading": "いたくせいさん",
-      "meaning": "consignment production",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 634,
-      "id": "1930090",
-      "term": "委託販売",
-      "reading": "いたくはんばい",
-      "meaning": "consignment sale",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 635,
-      "id": "1970960",
-      "term": "委託売買",
-      "reading": "いたくばいばい",
-      "meaning": "consignment sales and purchase",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 636,
-      "id": "2110790",
-      "term": "痛くも痒くもない",
-      "reading": "いたくもかゆくもない",
-      "meaning": "of no concern at all / I couldn't care less / no skin off my nose",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 637,
-      "id": "2788480",
-      "term": "委託料金",
-      "reading": "いたくりょうきん",
-      "meaning": "commission / commission payment",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 638,
-      "id": "1151640",
-      "term": "悪戯坊主",
-      "reading": "いたずらぼうず",
-      "meaning": "mischievous boy / troublemaker / pesky kids",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 639,
-      "id": "2844990",
-      "term": "戴くものは夏も小袖",
-      "reading": "いただくものはなつもこそで",
-      "meaning": "taking whatever one can get one's hands on / being greedy / accepting a padded silk sleeve even in summer",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 640,
-      "id": "1575470",
-      "term": "鼬ごっこ",
-      "reading": "いたちごっこ",
-      "meaning": "going round in circles / game of cat and mouse / pointless and repetitive back-and-forth",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 641,
-      "id": "2141310",
-      "term": "イタチの最後っ屁",
-      "reading": "いたちのさいごっぺ",
-      "meaning": "final emergency measure / final defence when one is cornered",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 642,
-      "id": "1858410",
-      "term": "板につく",
-      "reading": "いたにつく",
-      "meaning": "to get used to / to become accustomed to",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 643,
-      "id": "2575960",
-      "term": "異端審問",
-      "reading": "いたんしんもん",
-      "meaning": "the Inquisition",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 644,
-      "id": "2029890",
-      "term": "異端邪説",
-      "reading": "いたんじゃせつ",
-      "meaning": "heretical doctrine (thought, faith)",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 645,
-      "id": "2431900",
-      "term": "一挨一拶",
-      "reading": "いちあいいっさつ",
-      "meaning": "dialoging (with another Zen practitioner to ascertain their level of enlightenment)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 646,
-      "id": "1161050",
-      "term": "一意専心",
-      "reading": "いちいせんしん",
-      "meaning": "single-mindedly / wholeheartedly / with all one's heart",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 647,
-      "id": "1161060",
-      "term": "一衣帯水",
-      "reading": "いちいたいすい",
-      "meaning": "(being separated only by a) narrow strip of water / narrow strait (channel, river)",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 648,
-      "id": "2851821",
-      "term": "一栄一落",
-      "reading": "いちえいいちらく",
-      "meaning": "rise and fall",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 649,
-      "id": "1971800",
-      "term": "一塩基酸",
-      "reading": "いちえんきさん",
-      "meaning": "monobasic acid",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 650,
-      "id": "2856582",
-      "term": "一億一心",
-      "reading": "いちおくいっしん",
-      "meaning": "national unity (esp. during wartime)",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 651,
-      "id": "1627700",
-      "term": "一から十まで",
-      "reading": "いちからじゅうまで",
-      "meaning": "from A to Z / in every particular / all without exception",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 652,
-      "id": "2842233",
-      "term": "位置感覚",
-      "reading": "いちかんかく",
-      "meaning": "proprioception / kinaesthesia / position sense",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 653,
-      "id": "2848359",
-      "term": "一行三昧",
-      "reading": "いちぎょうざんまい",
-      "meaning": "complete concentration on one subject (usu. prayer) / one-practice absorption",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 654,
-      "id": "2041270",
-      "term": "一行知識",
-      "reading": "いちぎょうちしき",
-      "meaning": "one-line fact / one-line information / information (explanation) provided in a few scanty words",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 655,
-      "id": "2041280",
-      "term": "一芸一能",
-      "reading": "いちげいいちのう",
-      "meaning": "(excelling in) one area or skill / (being skilled or gifted in) one certain area",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 656,
-      "id": "2063400",
-      "term": "一芸入試",
-      "reading": "いちげいにゅうし",
-      "meaning": "(system of) admitting students on the basis on their non-academic abilities (e.g. sports, art; as opposed to exam results)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 657,
-      "id": "1162260",
-      "term": "一言一行",
-      "reading": "いちげんいっこう",
-      "meaning": "every word and act / just a word or an act",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 658,
-      "id": "2085680",
-      "term": "一元管理",
-      "reading": "いちげんかんり",
-      "meaning": "centralized management / integrated management / central control",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 659,
-      "id": "1162270",
-      "term": "一言居士",
-      "reading": "いちげんこじ",
-      "meaning": "person who is ready to comment on every subject / ready critic",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 660,
-      "id": "1576000",
-      "term": "一言半句",
-      "reading": "いちげんはんく",
-      "meaning": "a single word / (not even) a word / (not even) a syllable",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 661,
-      "id": "2858356",
-      "term": "一元描写",
-      "reading": "いちげんびょうしゃ",
-      "meaning": "description from one perspective",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 662,
-      "id": "1161700",
-      "term": "一期一会",
-      "reading": "いちごいちえ",
-      "meaning": "once-in-a-lifetime encounter / uniquely precious experience / one lifetime, one meeting",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 663,
-      "id": "1162360",
-      "term": "一語一語",
-      "reading": "いちごいちご",
-      "meaning": "word for word / one word",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 664,
-      "id": "2041290",
-      "term": "一伍一什",
-      "reading": "いちごいちじゅう",
-      "meaning": "full particulars / the whole story / from beginning to end",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 665,
-      "id": "2041300",
-      "term": "一語一句",
-      "reading": "いちごいっく",
-      "meaning": "every single word and phrase / each and every word",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 666,
-      "id": "2110000",
-      "term": "一期末代",
-      "reading": "いちごまつだい",
-      "meaning": "this world (life) and the next / eternity",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 667,
-      "id": "1727900",
-      "term": "一言一句",
-      "reading": "いちごんいっく",
-      "meaning": "every single word and phrase / word by word",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 668,
-      "id": "2041310",
-      "term": "一言隻句",
-      "reading": "いちごんせきく",
-      "meaning": "every single word and phrase / each and every word",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 669,
-      "id": "2856285",
-      "term": "位置座標",
-      "reading": "いちざひょう",
-      "meaning": "position coordinates",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 670,
-      "id": "1663230",
-      "term": "一時預所",
-      "reading": "いちじあずかりしょ",
-      "meaning": "cloakroom / checkroom",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 671,
-      "id": "2041320",
-      "term": "一字一字",
-      "reading": "いちじいちじ",
-      "meaning": "letter by letter / character by character",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 672,
-      "id": "1727860",
-      "term": "一字一句",
-      "reading": "いちじいっく",
-      "meaning": "word for word / verbatim / literally",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 673,
-      "id": "1728090",
-      "term": "一時解雇",
-      "reading": "いちじかいこ",
-      "meaning": "(temporary) layoff",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 674,
-      "id": "2438490",
-      "term": "一次回路",
-      "reading": "いちじかいろ",
-      "meaning": "primary circuit",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 675,
-      "id": "1727850",
-      "term": "一次関数",
-      "reading": "いちじかんすう",
-      "meaning": "linear function",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 676,
-      "id": "1163040",
-      "term": "一次記憶",
-      "reading": "いちじきおく",
-      "meaning": "first memory",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 677,
-      "id": "1728080",
-      "term": "一時帰休",
-      "reading": "いちじききゅう",
-      "meaning": "temporary layoff",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 678,
-      "id": "2697450",
-      "term": "一時休業",
-      "reading": "いちじきゅうぎょう",
-      "meaning": "temporary suspension (of business) / brief shutdown",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 679,
-      "id": "2697460",
-      "term": "一時休止",
-      "reading": "いちじきゅうし",
-      "meaning": "adjournment / pause / moratorium",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 680,
-      "id": "2840506",
-      "term": "一時休戦",
-      "reading": "いちじきゅうせん",
-      "meaning": "temporary truce / ceasefire",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 681,
-      "id": "2108750",
-      "term": "無花果果",
-      "reading": "いちじくか",
-      "meaning": "fig / syconium",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 682,
-      "id": "2838399",
-      "term": "一次形式",
-      "reading": "いちじけいしき",
-      "meaning": "linear form / one-form",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 683,
-      "id": "2690250",
-      "term": "一次構造",
-      "reading": "いちじこうぞう",
-      "meaning": "primary structure (e.g. of a protein)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 684,
-      "id": "2851694",
-      "term": "一時雇用",
-      "reading": "いちじこよう",
-      "meaning": "temporary employment / temp work",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 685,
-      "id": "1727840",
-      "term": "一次産業",
-      "reading": "いちじさんぎょう",
-      "meaning": "primary industry",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 686,
-      "id": "1727830",
-      "term": "一次産品",
-      "reading": "いちじさんぴん",
-      "meaning": "primary products",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 687,
-      "id": "1162970",
-      "term": "一時賜金",
-      "reading": "いちじしきん",
-      "meaning": "lump-sum grant",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 688,
-      "id": "2128510",
-      "term": "一次試験",
-      "reading": "いちじしけん",
-      "meaning": "first stage examination",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 689,
-      "id": "1728070",
-      "term": "一時所得",
-      "reading": "いちじしょとく",
-      "meaning": "occasional income",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 690,
-      "id": "2341220",
-      "term": "一次資料",
-      "reading": "いちじしりょう",
-      "meaning": "primary source",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 691,
-      "id": "2713620",
-      "term": "一時磁石",
-      "reading": "いちじじしゃく",
-      "meaning": "temporary magnet",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 692,
-      "id": "2830034",
-      "term": "一次従属",
-      "reading": "いちじじゅうぞく",
-      "meaning": "linearly dependent",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 693,
-      "id": "2869670",
-      "term": "一次情報",
-      "reading": "いちじじょうほう",
-      "meaning": "firsthand information",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 694,
-      "id": "1971950",
-      "term": "一次遷移",
-      "reading": "いちじせんい",
-      "meaning": "primary succession",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 695,
-      "id": "1162910",
-      "term": "一字千金",
-      "reading": "いちじせんきん",
-      "meaning": "word of great value",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 696,
-      "id": "2869671",
-      "term": "一次選考",
-      "reading": "いちじせんこう",
-      "meaning": "initial screening (of applicants) / preliminary screening",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 697,
-      "id": "1163060",
-      "term": "一次線輪",
-      "reading": "いちじせんりん",
-      "meaning": "primary coil",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 698,
-      "id": "2030000",
-      "term": "一日三秋",
-      "reading": "いちじつさんしゅう",
-      "meaning": "(waiting) impatiently / (spending) many a weary day / each moment seeming like an eternity",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 699,
-      "id": "2246300",
-      "term": "一実神道",
-      "reading": "いちじつしんとう",
-      "meaning": "Ichijitsu Shinto (alt. name for Hie Shinto; form of Shinto heavily influenced by Tendai)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 700,
-      "id": "1576270",
-      "term": "一日千秋",
-      "reading": "いちじつせんしゅう",
-      "meaning": "(waiting) impatiently / (spending) many a weary day / each moment seeming like an eternity",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 701,
-      "id": "1651100",
-      "term": "一時停止",
-      "reading": "いちじていし",
-      "meaning": "suspension / pause / temporary halt",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 702,
-      "id": "1971960",
-      "term": "一次電池",
-      "reading": "いちじでんち",
-      "meaning": "primary cell / primary battery",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 703,
-      "id": "1163070",
-      "term": "一次電流",
-      "reading": "いちじでんりゅう",
-      "meaning": "primary current",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 704,
-      "id": "2830032",
-      "term": "一次独立",
-      "reading": "いちじどくりつ",
-      "meaning": "linearly independent",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 705,
-      "id": "2041330",
-      "term": "一字半句",
-      "reading": "いちじはんく",
-      "meaning": "a single word / (not even) a word / (not even) a syllable",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 706,
-      "id": "2341230",
-      "term": "一次文献",
-      "reading": "いちじぶんけん",
-      "meaning": "primary document",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 707,
-      "id": "2864779",
-      "term": "一時閉鎖",
-      "reading": "いちじへいさ",
-      "meaning": "temporary closure",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 708,
-      "id": "2225610",
-      "term": "一次変換",
-      "reading": "いちじへんかん",
-      "meaning": "linear transformation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 709,
-      "id": "2847875",
-      "term": "一時保育",
-      "reading": "いちじほいく",
-      "meaning": "temporary child care / short-term child care",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 710,
-      "id": "2838862",
-      "term": "一時保護",
-      "reading": "いちじほご",
-      "meaning": "temporary protective custody / temporary protective care",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 711,
-      "id": "2869672",
-      "term": "一次面接",
-      "reading": "いちじめんせつ",
-      "meaning": "first-round interview / first-stage interview",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 712,
-      "id": "2859378",
-      "term": "一次妄想",
-      "reading": "いちじもうそう",
-      "meaning": "primary delusion",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 713,
-      "id": "1163280",
-      "term": "一汁一菜",
-      "reading": "いちじゅういっさい",
-      "meaning": "one-plate meal / simple meal / austerity diet",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 714,
-      "id": "2840417",
-      "term": "一汁三菜",
-      "reading": "いちじゅうさんさい",
-      "meaning": "meal consisting of soup, rice and three dishes (esp. namasu, nimono and yakimono)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 715,
-      "id": "2041340",
-      "term": "一上一下",
-      "reading": "いちじょういちげ",
-      "meaning": "going up and down",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 716,
-      "id": "2852234",
-      "term": "一条の光",
-      "reading": "いちじょうのひかり",
-      "meaning": "ray of light",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 717,
-      "id": "2512110",
-      "term": "位置情報",
-      "reading": "いちじょうほう",
-      "meaning": "location information (as used by location-based services, e.g. GPS position)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 718,
-      "id": "2852494",
-      "term": "一次旅券",
-      "reading": "いちじりょけん",
-      "meaning": "one-time use passport",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 719,
-      "id": "1164310",
-      "term": "一膳飯屋",
-      "reading": "いちぜんめしや",
-      "meaning": "simple and inexpensive restaurant / diner",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 720,
-      "id": "2610920",
-      "term": "一増一減",
-      "reading": "いちぞういちげん",
-      "meaning": "16,800,000-year period over which a human lifespan increases from ten years to 84,000 years (by one year per century) and then decreases back to ten (by one year per century)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 721,
-      "id": "2029980",
-      "term": "一族郎党",
-      "reading": "いちぞくろうとう",
-      "meaning": "one's family and followers / one's whole clan",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 722,
-      "id": "2821740",
-      "term": "一代一度",
-      "reading": "いちだいいちど",
-      "meaning": "once in an emperor's reign / event that takes place only once in a sovereign's reign",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 723,
-      "id": "2041350",
-      "term": "一大決心",
-      "reading": "いちだいけっしん",
-      "meaning": "momentous (crucial) decision",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 724,
-      "id": "2089240",
-      "term": "一代雑種",
-      "reading": "いちだいざっしゅ",
-      "meaning": "F1 hybrid / first filial hybrid / first cross",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 725,
-      "id": "2041360",
-      "term": "一大旋風",
-      "reading": "いちだいせんぷう",
-      "meaning": "great sensation / taking something by storm / making a splash",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 726,
-      "id": "2041370",
-      "term": "一大鉄槌",
-      "reading": "いちだいてっつい",
-      "meaning": "dealing a hard (heavy, crushing) blow (to)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 727,
-      "id": "2041380",
-      "term": "一大転機",
-      "reading": "いちだいてんき",
-      "meaning": "significant turning point",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 728,
-      "id": "2023010",
-      "term": "一代年寄",
-      "reading": "いちだいとしより",
-      "meaning": "special coaching stock awarded to retired grand champion",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 729,
-      "id": "2063440",
-      "term": "一代分限",
-      "reading": "いちだいぶんげん",
-      "meaning": "new money / nouveau riche / person who has amassed substantial wealth in his lifetime",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 730,
-      "id": "1727790",
-      "term": "一打逆転",
-      "reading": "いちだぎゃくてん",
-      "meaning": "a complete turnabout via a single blow",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 731,
-      "id": "2029990",
-      "term": "一諾千金",
-      "reading": "いちだくせんきん",
-      "meaning": "one's word is worth 1,000 pieces of gold / a promise should be kept at all cost",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 732,
-      "id": "2146080",
-      "term": "一段活用",
-      "reading": "いちだんかつよう",
-      "meaning": "ichidan verb conjugation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 733,
-      "id": "1164700",
-      "term": "一段動詞",
-      "reading": "いちだんどうし",
-      "meaning": "ichidan verb / type 2 verb / vowel-stem verb",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 734,
-      "id": "2340810",
-      "term": "位置調整",
-      "reading": "いちちょうせい",
-      "meaning": "justification",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 735,
-      "id": "2041390",
-      "term": "一読三嘆",
-      "reading": "いちどくさんたん",
-      "meaning": "a reading leaves one with ceaseless sighs of admiration",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 736,
-      "id": "2041400",
-      "term": "一読呆然",
-      "reading": "いちどくぼうぜん",
-      "meaning": "a (single) reading (a perusal) leaves one dumbfounded",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 737,
-      "id": "2403500",
-      "term": "一難去ってまた一難",
-      "reading": "いちなんさってまたいちなん",
-      "meaning": "one thing after another / out of the frying pan and into the fire",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 738,
-      "id": "2041410",
-      "term": "一日一善",
-      "reading": "いちにちいちぜん",
-      "meaning": "doing a good deed each day / doing one good turn a day",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 739,
-      "id": "1165460",
-      "term": "一日一日",
-      "reading": "いちにちいちにち",
-      "meaning": "gradually / day by day",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 740,
-      "id": "1165470",
-      "term": "一日一夜",
-      "reading": "いちにちいちや",
-      "meaning": "all day and night",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 741,
-      "id": "2841809",
-      "term": "一日一歩",
-      "reading": "いちにちいっぽ",
-      "meaning": "one step each day",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 742,
-      "id": "2856583",
-      "term": "一日署長",
-      "reading": "いちにちしょちょう",
-      "meaning": "chief for the day (PR event in which a celebrity heads a police, fire, etc. department for a day)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 743,
-      "id": "2109920",
-      "term": "一日二日",
-      "reading": "いちにちふつか",
-      "meaning": "a day or two",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 744,
-      "id": "1165510",
-      "term": "一日片時",
-      "reading": "いちにちへんじ",
-      "meaning": "short time",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 745,
-      "id": "2834759",
-      "term": "市に虎を放つ",
-      "reading": "いちにとらをはなつ",
-      "meaning": "to let a fox into the henhouse / to do something dangerous / to let loose a tiger in the marketplace",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 746,
-      "id": "1972000",
-      "term": "一人会社",
-      "reading": "いちにんかいしゃ",
-      "meaning": "one-man company",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 747,
-      "id": "2512120",
-      "term": "位置認識",
-      "reading": "いちにんしき",
-      "meaning": "position recognition (in a device or system) / location awareness",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 748,
-      "id": "2041420",
-      "term": "一人当千",
-      "reading": "いちにんとうせん",
-      "meaning": "being a match for a thousand",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 749,
-      "id": "1165630",
-      "term": "一念発起",
-      "reading": "いちねんほっき",
-      "meaning": "being resolved to (do something) / having a wholehearted intention",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 750,
-      "id": "5741566",
-      "term": "一年有半",
-      "reading": "いちねんゆうはん",
-      "meaning": "Ichinen Yūhan (book by Nakae Chōmin)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 751,
-      "id": "2108980",
-      "term": "一暴十寒",
-      "reading": "いちばくじっかん",
-      "meaning": "bursts of exertion will fail to bear fruit if interrupted by long periods of idleness",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 752,
-      "id": "2030010",
-      "term": "一罰百戒",
-      "reading": "いちばつひゃっかい",
-      "meaning": "punishing a crime to make an example for others",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 753,
-      "id": "2023760",
-      "term": "一番出世",
-      "reading": "いちばんしゅっせ",
-      "meaning": "newly recruited wrestlers in the first round of presentation after mae-zumo",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 754,
-      "id": "2041440",
-      "term": "一番勝負",
-      "reading": "いちばんしょうぶ",
-      "meaning": "contest decided by a single round (bout) / contest decided by a single roll of dice / one-shot game (contest)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 755,
-      "id": "2041450",
-      "term": "一番太鼓",
-      "reading": "いちばんだいこ",
-      "meaning": "beating of a drum as a signal to announce the opening (beginning) of an event (theatrical performance, festival, etc.)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 756,
-      "id": "2041460",
-      "term": "一番弟子",
-      "reading": "いちばんでし",
-      "meaning": "the (one's) best pupil / the (one's) top disciple",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 757,
-      "id": "2041470",
-      "term": "一番風呂",
-      "reading": "いちばんぶろ",
-      "meaning": "freshly drawn bath / (taking) a bath before anyone else",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 758,
-      "id": "1728100",
-      "term": "一病息災",
-      "reading": "いちびょうそくさい",
-      "meaning": "one who experiences a chronic ailment takes better care of his health and lives longer",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 759,
-      "id": "1166300",
-      "term": "一分一厘",
-      "reading": "いちぶいちりん",
-      "meaning": "(not even) a bit of / (not even) a hint of / (not) an iota of",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 760,
-      "id": "2658680",
-      "term": "一部緩和",
-      "reading": "いちぶかんわ",
-      "meaning": "partial relaxation / partial easing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 761,
-      "id": "1166190",
-      "term": "一部始終",
-      "reading": "いちぶしじゅう",
-      "meaning": "full particulars / all the details / the whole story",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 762,
-      "id": "2599850",
-      "term": "一分の隙もない",
-      "reading": "いちぶのすきもない",
-      "meaning": "without any weak spot / watertight (e.g. reasoning) / impeccable",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 763,
-      "id": "2580530",
-      "term": "一分判金",
-      "reading": "いちぶばんきん",
-      "meaning": "ichibubankin / Edo-period rectangular gold coin worth one quarter ryō",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 764,
-      "id": "1972100",
-      "term": "一部保険",
-      "reading": "いちぶほけん",
-      "meaning": "under-insurance",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 765,
-      "id": "2030020",
-      "term": "一別以来",
-      "reading": "いちべついらい",
-      "meaning": "since our last meeting / since we parted",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 766,
-      "id": "1166590",
-      "term": "一望千里",
-      "reading": "いちぼうせんり",
-      "meaning": "sweeping view of the eye / boundless expanse",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 767,
-      "id": "2041480",
-      "term": "一木一草",
-      "reading": "いちぼくいっそう",
-      "meaning": "a single tree or blade of grass / every stick and stone (of a place)",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 768,
-      "id": "2110550",
-      "term": "一枚上手",
-      "reading": "いちまいうわて",
-      "meaning": "one step higher / one better / cut above",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 769,
-      "id": "2188670",
-      "term": "一枚噛む",
-      "reading": "いちまいかむ",
-      "meaning": "to participate in (as a member) / to get involved in",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 770,
-      "id": "1166740",
-      "term": "一枚看板",
-      "reading": "いちまいかんばん",
-      "meaning": "leading player / prima donna / box-office star",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 771,
-      "id": "2078480",
-      "term": "市松人形",
-      "reading": "いちまつにんぎょう",
-      "meaning": "ichimatsu doll / traditional Japanese doll with a torso made of hardened sawdust",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 772,
-      "id": "1951980",
-      "term": "市松模様",
-      "reading": "いちまつもよう",
-      "meaning": "checked pattern / chequered pattern / checks",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 773,
-      "id": "2839963",
-      "term": "一万円札",
-      "reading": "いちまんえんさつ",
-      "meaning": "10,000 yen bill",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 774,
-      "id": "2030030",
-      "term": "一味徒党",
-      "reading": "いちみととう",
-      "meaning": "whole party to a plot / whole gang / fellow conspirators",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 775,
-      "id": "2041490",
-      "term": "一味同心",
-      "reading": "いちみどうしん",
-      "meaning": "(people) working together with one mind",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 776,
-      "id": "1166920",
-      "term": "一網打尽",
-      "reading": "いちもうだじん",
-      "meaning": "round-up (e.g. of criminals) / wholesale arrest / catching the whole herd with one throw",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 777,
-      "id": "1627710",
-      "term": "一目置く",
-      "reading": "いちもくおく",
-      "meaning": "to take off one's hat to a person / to acknowledge another's superiority",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 778,
-      "id": "2112870",
-      "term": "一目十行",
-      "reading": "いちもくじゅうぎょう",
-      "meaning": "outstanding reading ability / one glance, ten lines",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 779,
-      "id": "2862546",
-      "term": "一目も二目も置く",
-      "reading": "いちもくもにもくもおく",
-      "meaning": "to take off one's hat to a person / to acknowledge another's superiority",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 780,
-      "id": "1167000",
-      "term": "一目瞭然",
-      "reading": "いちもくりょうぜん",
-      "meaning": "obvious / (as) clear as day / plain to see",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 781,
-      "id": "1167010",
-      "term": "一問一答",
-      "reading": "いちもんいっとう",
-      "meaning": "answering question by question",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 782,
-      "id": "2821750",
-      "term": "一文半銭",
-      "reading": "いちもんきなか",
-      "meaning": "meagre sum of money",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 783,
-      "id": "2814210",
-      "term": "一文字笠",
-      "reading": "いちもんじがさ",
-      "meaning": "flat sedge hat / bamboo hat",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 784,
-      "id": "2112880",
-      "term": "一文不知",
-      "reading": "いちもんふち",
-      "meaning": "total illiteracy",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 785,
-      "id": "2112890",
-      "term": "一文不通",
-      "reading": "いちもんふつう",
-      "meaning": "total illiteracy",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 786,
-      "id": "1167030",
-      "term": "一夜乞食",
-      "reading": "いちやこじき",
-      "meaning": "riches to rags / person turned into a beggar overnight",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 787,
-      "id": "2041500",
-      "term": "一夜大尽",
-      "reading": "いちやだいじん",
-      "meaning": "rags to riches / overnight millionaire",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 788,
-      "id": "2848878",
-      "term": "胃腸風邪",
-      "reading": "いちょうかぜ",
-      "meaning": "gastroenteritis / stomach flu",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 789,
-      "id": "2129060",
-      "term": "胃腸炭疽",
-      "reading": "いちょうたんそ",
-      "meaning": "gastrointestinal anthrax",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 790,
-      "id": "2788570",
-      "term": "銀杏歯鯨",
-      "reading": "いちょうはくじら",
-      "meaning": "ginkgo-toothed beaked whale (Mesoplodon ginkgodens)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 791,
-      "id": "1858680",
-      "term": "胃腸病学",
-      "reading": "いちょうびょうがく",
-      "meaning": "gastroenterology",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 792,
-      "id": "2341530",
-      "term": "一様参照",
-      "reading": "いちようさんしょう",
-      "meaning": "uniform referencing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 793,
-      "id": "2827528",
-      "term": "一様分布",
-      "reading": "いちようぶんぷ",
-      "meaning": "uniform distribution",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 794,
-      "id": "1728230",
-      "term": "一陽来復",
-      "reading": "いちようらいふく",
-      "meaning": "return of spring / long-awaited, favorable turn of fortune (favourable)",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 795,
-      "id": "2341540",
-      "term": "一様乱数",
-      "reading": "いちようらんすう",
-      "meaning": "uniform random number / uniformly distributed random number",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 796,
-      "id": "2690870",
-      "term": "一様連続",
-      "reading": "いちようれんぞく",
-      "meaning": "uniform continuity",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 797,
-      "id": "1167210",
-      "term": "一利一害",
-      "reading": "いちりいちがい",
-      "meaning": "advantages and disadvantages / gain some, lose some",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 798,
-      "id": "2826126",
-      "term": "一律課税",
-      "reading": "いちりつかぜい",
-      "meaning": "flat tax / uniform taxation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 799,
-      "id": "1167260",
-      "term": "一律減反",
-      "reading": "いちりつげんたん",
-      "meaning": "reduction in area of rice under cultivation",
-      "rank": null,
-      "type": "four"
-    },
     {
       "source_index": 800,
       "id": "2654160",
@@ -9010,6 +5410,3606 @@
       "meaning": "to give one's first cry (of a newborn baby)",
       "rank": null,
       "type": "idiom"
+    },
+    {
+      "source_index": 1400,
+      "id": "2431260",
+      "term": "雨宝童子",
+      "reading": "うほうどうじ",
+      "meaning": "Uho Doji (divine rain-making boy)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1401,
+      "id": "2102300",
+      "term": "うまい汁を吸う",
+      "reading": "うまいしるをすう",
+      "meaning": "to be onto a good thing / to make money without working / to line one's pockets",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1402,
+      "id": "1854840",
+      "term": "ウマが合う",
+      "reading": "うまがあう",
+      "meaning": "to get on well (with someone) / to be a good match with one's horse",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1403,
+      "id": "2800650",
+      "term": "馬面蝙蝠",
+      "reading": "うまづらこうもり",
+      "meaning": "epauletted fruit bat (Epomophorus spp.)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1404,
+      "id": "2871856",
+      "term": "馬に蹴られる",
+      "reading": "うまにけられる",
+      "meaning": "to suffer the consequences for interfering in a couple's relationship / to be kicked by a horse",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1405,
+      "id": "2856488",
+      "term": "馬の背を分ける",
+      "reading": "うまのせをわける",
+      "meaning": "to rain on one side only (and leave the other side dry)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1406,
+      "id": "2834646",
+      "term": "馬の耳に風",
+      "reading": "うまのみみにかぜ",
+      "meaning": "preaching to the deaf / wind (blowing) into a horse's ear",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1407,
+      "id": "1471580",
+      "term": "馬の耳に念仏",
+      "reading": "うまのみみにねんぶつ",
+      "meaning": "preaching to the deaf / chanting the nembutsu into a horse's ear",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1408,
+      "id": "1999740",
+      "term": "馬番連勝",
+      "reading": "うまばんれんしょう",
+      "meaning": "quinella / quiniela",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1409,
+      "id": "2834647",
+      "term": "生まれぬ先の襁褓さだめ",
+      "reading": "うまれぬさきのむつきさだめ",
+      "meaning": "putting the cart before the horse / putting the diapers on before (the baby) is born",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1410,
+      "id": "1201560",
+      "term": "海千山千",
+      "reading": "うみせんやません",
+      "meaning": "cunning and experienced in the ways of the world / crafty and worldly-wise / sly old (fox)",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1411,
+      "id": "2004180",
+      "term": "海の藻屑",
+      "reading": "うみのもくず",
+      "meaning": "watery grave",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1412,
+      "id": "2834648",
+      "term": "海のものとも山のものともつかない",
+      "reading": "うみのものともやまのものともつかない",
+      "meaning": "neither fish nor fowl / hard to predict / up in the air",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1413,
+      "id": "1976580",
+      "term": "海の物とも山の物とも判らない",
+      "reading": "うみのものともやまのものともわからない",
+      "meaning": "neither fish nor fowl / hard-to-predict",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1414,
+      "id": "2859790",
+      "term": "膿を出す",
+      "reading": "うみをだす",
+      "meaning": "to force out corruption / to drive away misconduct / to clean up",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1415,
+      "id": "2835335",
+      "term": "梅に鶯",
+      "reading": "うめにうぐいす",
+      "meaning": "match made in heaven / perfect match / great coupling",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1416,
+      "id": "2271280",
+      "term": "羽毛恐竜",
+      "reading": "うもうきょうりゅう",
+      "meaning": "feathered dinosaurs",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1417,
+      "id": "1930470",
+      "term": "羽毛布団",
+      "reading": "うもうぶとん",
+      "meaning": "down quilt / feather quilt / feather duvet",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1418,
+      "id": "1612660",
+      "term": "有耶無耶",
+      "reading": "うやむや",
+      "meaning": "indefinite / hazy / vague",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1419,
+      "id": "1171630",
+      "term": "烏有先生",
+      "reading": "うゆうせんせい",
+      "meaning": "fictitious person",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1420,
+      "id": "1570410",
+      "term": "紆余曲折",
+      "reading": "うよきょくせつ",
+      "meaning": "turns and twists / ups and downs / meandering",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1421,
+      "id": "2818720",
+      "term": "右翼運動",
+      "reading": "うよくうんどう",
+      "meaning": "right-wing movement",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1422,
+      "id": "1171280",
+      "term": "右翼団体",
+      "reading": "うよくだんたい",
+      "meaning": "right-wing organization / right-wing group",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1423,
+      "id": "2635400",
+      "term": "浦内笛鯛",
+      "reading": "うらうちふえだい",
+      "meaning": "Papuan black snapper (Lutjanus goldiei)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1424,
+      "id": "2420040",
+      "term": "裏がある",
+      "reading": "うらがある",
+      "meaning": "to have a catch / to have an ulterior motive / to be more (to something)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1425,
+      "id": "1550330",
+      "term": "裏書譲渡",
+      "reading": "うらがきじょうと",
+      "meaning": "endorsing over to",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1426,
+      "id": "2872108",
+      "term": "浦賀奉行",
+      "reading": "うらがぶぎょう",
+      "meaning": "Uraga magistrate (oversaw inspection of ships and cargo entering Edo Bay via Uraga; Edo period)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1427,
+      "id": "2748290",
+      "term": "裏側矯正",
+      "reading": "うらがわきょうせい",
+      "meaning": "lingual braces (dentistry)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1428,
+      "id": "1550280",
+      "term": "裏口営業",
+      "reading": "うらぐちえいぎょう",
+      "meaning": "illegal business",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1429,
+      "id": "2620090",
+      "term": "裏口入学",
+      "reading": "うらぐちにゅうがく",
+      "meaning": "backdoor admission to a school / backdoor entry to a school / buying one's way into school",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1430,
+      "id": "2841331",
+      "term": "浦島太郎",
+      "reading": "うらしまたろう",
+      "meaning": "Urashima Tarō / fairy-tale fisherman who, after visiting the underwater Palace of the Dragon King, returns centuries later",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1431,
+      "id": "2828973",
+      "term": "浦島花子",
+      "reading": "うらしまはなこ",
+      "meaning": "Rip van Winkle effect (for a woman) / feeling that everything has changed once one comes back to Japan (for a woman)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1432,
+      "id": "2828754",
+      "term": "裏白七竃",
+      "reading": "うらじろななかまど",
+      "meaning": "Sorbus matsumurana (species of rowan)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1433,
+      "id": "2857888",
+      "term": "裏白箱柳",
+      "reading": "うらじろはこやなぎ",
+      "meaning": "white poplar (Populus alba) / abele",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1434,
+      "id": "1588490",
+      "term": "盂蘭盆会",
+      "reading": "うらぼんえ",
+      "meaning": "Bon festival (Buddhist ceremony held around July 15) / Feast of Lanterns",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1435,
+      "id": "2855107",
+      "term": "盂蘭盆経",
+      "reading": "うらぼんきょう",
+      "meaning": "Ullambana Sutra / Yulanpen Sutra",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1436,
+      "id": "1904290",
+      "term": "恨みを買う",
+      "reading": "うらみをかう",
+      "meaning": "to incur someone's enmity",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1437,
+      "id": "2834059",
+      "term": "裏山死刑",
+      "reading": "うらやましけい",
+      "meaning": "being jealous of someone over something but also thinking they should be sentenced to death over it (esp. of male teachers having sexual relations with their students)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1438,
+      "id": "5742894",
+      "term": "浦和大学",
+      "reading": "うらわだいがく",
+      "meaning": "Urawa University",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1439,
+      "id": "1860660",
+      "term": "裏をかく",
+      "reading": "うらをかく",
+      "meaning": "to outwit / to outsmart / to counterplot",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1440,
+      "id": "2661230",
+      "term": "売上原価",
+      "reading": "うりあげげんか",
+      "meaning": "cost of goods sold / cost of sales / sales cost",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1441,
+      "id": "2151230",
+      "term": "売上高税",
+      "reading": "うりあげだかぜい",
+      "meaning": "turnover tax",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1442,
+      "id": "1753220",
+      "term": "売掛勘定",
+      "reading": "うりかけかんじょう",
+      "meaning": "credit account / charge account",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1443,
+      "id": "2749230",
+      "term": "売掛債権",
+      "reading": "うりかけさいけん",
+      "meaning": "accounts receivable",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1444,
+      "id": "2624010",
+      "term": "瓜実条虫",
+      "reading": "うりざねじょうちゅう",
+      "meaning": "dog tapeworm (Dipylidium caninum) / cucumber tapeworm / double-pore tapeworm",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1445,
+      "id": "2151260",
+      "term": "売手独占",
+      "reading": "うりてどくせん",
+      "meaning": "seller's monopoly",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1446,
+      "id": "2243130",
+      "term": "売主買主",
+      "reading": "うりぬしかいぬし",
+      "meaning": "seller and buyer / vendor and purchaser",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1447,
+      "id": "1172580",
+      "term": "瓜二つ",
+      "reading": "うりふたつ",
+      "meaning": "exactly alike (in appearance) / like two peas in a pod / (practically) identical",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1448,
+      "id": "1972620",
+      "term": "雨緑樹林",
+      "reading": "うりょくじゅりん",
+      "meaning": "rain green forest",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1449,
+      "id": "2240910",
+      "term": "売渡証書",
+      "reading": "うりわたししょうしょ",
+      "meaning": "sale deed / bill of sale",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1450,
+      "id": "2180620",
+      "term": "浮気相手",
+      "reading": "うわきあいて",
+      "meaning": "adulterous partner (in a relationship) / adulterous lover",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1451,
+      "id": "2859779",
+      "term": "上手を行く",
+      "reading": "うわてをいく",
+      "meaning": "to have the upper hand / to surpass (someone)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1452,
+      "id": "2041990",
+      "term": "雲雨巫山",
+      "reading": "うんうふざん",
+      "meaning": "sexual liaison",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1453,
+      "id": "2709850",
+      "term": "運営会社",
+      "reading": "うんえいがいしゃ",
+      "meaning": "operating company",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1454,
+      "id": "1667530",
+      "term": "運営経費",
+      "reading": "うんえいけいひ",
+      "meaning": "operating expenses / budget",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1455,
+      "id": "1667550",
+      "term": "運営資金",
+      "reading": "うんえいしきん",
+      "meaning": "operating funds",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1456,
+      "id": "2042000",
+      "term": "雲煙過眼",
+      "reading": "うんえんかがん",
+      "meaning": "not being obsessed with something very long (just as clouds and haze pass swiftly before one's eyes)",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1457,
+      "id": "2030070",
+      "term": "雲煙万里",
+      "reading": "うんえんばんり",
+      "meaning": "limitless expanse of clouds and smoke",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1458,
+      "id": "2113010",
+      "term": "雲煙飛動",
+      "reading": "うんえんひどう",
+      "meaning": "flying clouds and drifting haze",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1459,
+      "id": "2866868",
+      "term": "雲外蒼天",
+      "reading": "うんがいそうてん",
+      "meaning": "light at the end of the tunnel / relief after overcoming hardship / open sky beyond the clouds",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1460,
+      "id": "2042010",
+      "term": "運気好転",
+      "reading": "うんきこうてん",
+      "meaning": "turn (stroke) of good fortune / one's fortune turning for the better",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1461,
+      "id": "2847479",
+      "term": "運行情報",
+      "reading": "うんこうじょうほう",
+      "meaning": "service status (of a public transport line)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1462,
+      "id": "1173190",
+      "term": "雲散霧消",
+      "reading": "うんさんむしょう",
+      "meaning": "vanishing like mist",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1463,
+      "id": "2042020",
+      "term": "雲集霧散",
+      "reading": "うんしゅうむさん",
+      "meaning": "(many things) gathering like clouds and vanishing like mist / swarming and scattering",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1464,
+      "id": "2859369",
+      "term": "雲消霧散",
+      "reading": "うんしょうむさん",
+      "meaning": "vanishing like mist",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1465,
+      "id": "2042030",
+      "term": "雲水行脚",
+      "reading": "うんすいあんぎゃ",
+      "meaning": "itinerant monk being on pilgrimages to many lands",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1466,
+      "id": "2414970",
+      "term": "運勢判断",
+      "reading": "うんせいはんだん",
+      "meaning": "fortune-telling",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1467,
+      "id": "1172810",
+      "term": "運送会社",
+      "reading": "うんそうがいしゃ",
+      "meaning": "shipping company / freight company / transport company",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1468,
+      "id": "1667430",
+      "term": "運送業者",
+      "reading": "うんそうぎょうしゃ",
+      "meaning": "forwarding agent / carrier",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1469,
+      "id": "1667380",
+      "term": "運送契約",
+      "reading": "うんそうけいやく",
+      "meaning": "freight or carriage contract",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1470,
+      "id": "1667370",
+      "term": "運送保険",
+      "reading": "うんそうほけん",
+      "meaning": "transit or transport(ation) insurance",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1471,
+      "id": "1972690",
+      "term": "運賃保険",
+      "reading": "うんちんほけん",
+      "meaning": "insurance on freight",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1472,
+      "id": "2842128",
+      "term": "運転間隔",
+      "reading": "うんてんかんかく",
+      "meaning": "interval between (trains, buses) / terminal dwell time",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1473,
+      "id": "1930500",
+      "term": "運転技術",
+      "reading": "うんてんぎじゅつ",
+      "meaning": "driving skill / one's skill as a driver",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1474,
+      "id": "1930510",
+      "term": "運転系統",
+      "reading": "うんてんけいとう",
+      "meaning": "(bus) route",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1475,
+      "id": "2800100",
+      "term": "運転再開",
+      "reading": "うんてんさいかい",
+      "meaning": "resumption of service (train, bus, etc.)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1476,
+      "id": "1172850",
+      "term": "運転資金",
+      "reading": "うんてんしきん",
+      "meaning": "working capital",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1477,
+      "id": "1972700",
+      "term": "運転資本",
+      "reading": "うんてんしほん",
+      "meaning": "working capital",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1478,
+      "id": "2842129",
+      "term": "運転時隔",
+      "reading": "うんてんじかく",
+      "meaning": "headway (between trains, etc.) / frequency",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1479,
+      "id": "2342180",
+      "term": "運転時間",
+      "reading": "うんてんじかん",
+      "meaning": "attended time",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1480,
+      "id": "1172890",
+      "term": "運転停止",
+      "reading": "うんてんていし",
+      "meaning": "suspension of operations",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1481,
+      "id": "1172900",
+      "term": "運転免許",
+      "reading": "うんてんめんきょ",
+      "meaning": "driver's license / driver's licence / driving licence",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1482,
+      "id": "1173240",
+      "term": "雲泥の差",
+      "reading": "うんでいのさ",
+      "meaning": "wide difference / a world of difference",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1483,
+      "id": "2030080",
+      "term": "雲泥万里",
+      "reading": "うんでいばんり",
+      "meaning": "being poles apart / (there being) all the difference in the world",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1484,
+      "id": "2604100",
+      "term": "雲伝神道",
+      "reading": "うんでんしんとう",
+      "meaning": "Unden Shinto (branch of Shinto based on Shingon Buddhist teachings)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1485,
+      "id": "2042040",
+      "term": "運動音痴",
+      "reading": "うんどうおんち",
+      "meaning": "having slow reflexes / being nonathletic / person who is not athletic",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1486,
+      "id": "2521670",
+      "term": "運動感覚",
+      "reading": "うんどうかんかく",
+      "meaning": "kinesthesia / kinaesthesia",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1487,
+      "id": "2856311",
+      "term": "運動機能",
+      "reading": "うんどうきのう",
+      "meaning": "motor function",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1488,
+      "id": "2638710",
+      "term": "運動競技",
+      "reading": "うんどうきょうぎ",
+      "meaning": "athletic sports",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1489,
+      "id": "2136120",
+      "term": "運動公園",
+      "reading": "うんどうこうえん",
+      "meaning": "sports park / athletic park / stadium",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1490,
+      "id": "2854453",
+      "term": "運動残効",
+      "reading": "うんどうざんこう",
+      "meaning": "motion aftereffect",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1491,
+      "id": "2847631",
+      "term": "運動施設",
+      "reading": "うんどうしせつ",
+      "meaning": "sports facility",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1492,
+      "id": "2824240",
+      "term": "運動失調",
+      "reading": "うんどうしっちょう",
+      "meaning": "ataxia / loss of coordination of the muscles / failure of muscular coordination",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1493,
+      "id": "1972750",
+      "term": "運動障害",
+      "reading": "うんどうしょうがい",
+      "meaning": "dyskinesia / motor impairment / motor disturbance",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1494,
+      "id": "1172960",
+      "term": "運動神経",
+      "reading": "うんどうしんけい",
+      "meaning": "motor nerve",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1495,
+      "id": "1972760",
+      "term": "運動星団",
+      "reading": "うんどうせいだん",
+      "meaning": "moving cluster",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1496,
+      "id": "1667480",
+      "term": "運動選手",
+      "reading": "うんどうせんしゅ",
+      "meaning": "athlete",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1497,
+      "id": "2871154",
+      "term": "運動前野",
+      "reading": "うんどうぜんや",
+      "meaning": "premotor area / premotor cortex",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1498,
+      "id": "2870307",
+      "term": "運動能力",
+      "reading": "うんどうのうりょく",
+      "meaning": "motor ability / motility / locomotion",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1499,
+      "id": "2084360",
+      "term": "運動皮質",
+      "reading": "うんどうひしつ",
+      "meaning": "motor cortex (area of the brain just anterior to the central sulcus responsible for controlling voluntary muscle activity)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1500,
+      "id": "1172980",
+      "term": "運動不足",
+      "reading": "うんどうぶそく",
+      "meaning": "lack of physical exercise / insufficient exercise / inactivity",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1501,
+      "id": "1972770",
+      "term": "運動摩擦",
+      "reading": "うんどうまさつ",
+      "meaning": "kinetic friction",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1502,
+      "id": "2871750",
+      "term": "運動麻痺",
+      "reading": "うんどうまひ",
+      "meaning": "motor paralysis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1503,
+      "id": "1972780",
+      "term": "運動療法",
+      "reading": "うんどうりょうほう",
+      "meaning": "therapeutic exercise",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1504,
+      "id": "5135797",
+      "term": "雲南大学",
+      "reading": "うんなんだいがく",
+      "meaning": "Yunnan University",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1505,
+      "id": "2546150",
+      "term": "雲伯方言",
+      "reading": "うんぱくほうげん",
+      "meaning": "dialects of Japanese spoken in Western Tottori prefecture and Eastern Shimane prefecture",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1506,
+      "id": "1667580",
+      "term": "運搬管理",
+      "reading": "うんぱんかんり",
+      "meaning": "materials management or handling",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1507,
+      "id": "1972800",
+      "term": "運搬作用",
+      "reading": "うんぱんさよう",
+      "meaning": "transportation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1508,
+      "id": "1173290",
+      "term": "雲鬢花顔",
+      "reading": "うんびんかがん",
+      "meaning": "beautiful woman (metaphorical)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1509,
+      "id": "1667310",
+      "term": "運否天賦",
+      "reading": "うんぷてんぷ",
+      "meaning": "trusting to chance / trusting to Providence",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1510,
+      "id": "1667330",
+      "term": "運命論者",
+      "reading": "うんめいろんじゃ",
+      "meaning": "fatalist",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1511,
+      "id": "2867415",
+      "term": "雲母鉄鉱",
+      "reading": "うんもてっこう",
+      "meaning": "micaceous hematite",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1512,
+      "id": "2867439",
+      "term": "雲母銅鉱",
+      "reading": "うんもどうこう",
+      "meaning": "chalcophyllite",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1513,
+      "id": "2867422",
+      "term": "雲母片岩",
+      "reading": "うんもへんがん",
+      "meaning": "micaceous schist",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1514,
+      "id": "1667610",
+      "term": "運輸業者",
+      "reading": "うんゆぎょうしゃ",
+      "meaning": "carrier",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1515,
+      "id": "2664370",
+      "term": "運輸行政",
+      "reading": "うんゆぎょうせい",
+      "meaning": "transport administration / transportation administration",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1516,
+      "id": "1173080",
+      "term": "運輸大臣",
+      "reading": "うんゆだいじん",
+      "meaning": "Minister of Transport",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1517,
+      "id": "2659470",
+      "term": "運用委託",
+      "reading": "うんよういたく",
+      "meaning": "mandate (e.g. to use resources) / lease (e.g. to use facilities)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1518,
+      "id": "2342200",
+      "term": "運用管理",
+      "reading": "うんようかんり",
+      "meaning": "application management",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1519,
+      "id": "2342220",
+      "term": "運用形態",
+      "reading": "うんようけいたい",
+      "meaning": "practical configuration / practical form",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1520,
+      "id": "2144480",
+      "term": "運用方法",
+      "reading": "うんようほうほう",
+      "meaning": "applications / uses / how to operate",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1521,
+      "id": "1860950",
+      "term": "運を天に任せる",
+      "reading": "うんをてんにまかせる",
+      "meaning": "to leave to chance / to resign oneself to one's fate / to leave the rest to heaven",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1522,
+      "id": "1983880",
+      "term": "英英辞書",
+      "reading": "えいえいじしょ",
+      "meaning": "English-English dictionary",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1523,
+      "id": "1983890",
+      "term": "英英辞典",
+      "reading": "えいえいじてん",
+      "meaning": "English-English dictionary",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1524,
+      "id": "2515250",
+      "term": "永遠回帰",
+      "reading": "えいえんかいき",
+      "meaning": "eternal return / eternal recurrence",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1525,
+      "id": "2342390",
+      "term": "英大文字",
+      "reading": "えいおおもじ",
+      "meaning": "upper-case letters (of the English alphabet)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1526,
+      "id": "1607510",
+      "term": "映画音楽",
+      "reading": "えいがおんがく",
+      "meaning": "film music",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1527,
+      "id": "1173740",
+      "term": "映画監督",
+      "reading": "えいがかんとく",
+      "meaning": "movie director / film director",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1528,
+      "id": "1930570",
+      "term": "映画会社",
+      "reading": "えいががいしゃ",
+      "meaning": "movie company",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1529,
+      "id": "2643210",
+      "term": "映画学校",
+      "reading": "えいががっこう",
+      "meaning": "film school",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1530,
+      "id": "2658220",
+      "term": "映画研究",
+      "reading": "えいがけんきゅう",
+      "meaning": "film studies / cinema studies",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1531,
+      "id": "2015430",
+      "term": "映画作家",
+      "reading": "えいがさっか",
+      "meaning": "script-writer / auteur",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1532,
+      "id": "1930590",
+      "term": "映画俳優",
+      "reading": "えいがはいゆう",
+      "meaning": "movie (film, screen) actor or actress",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1533,
+      "id": "5136734",
+      "term": "栄花物語",
+      "reading": "えいがものがたり",
+      "meaning": "Eiga Monogatari (11-12C epic) / A Tale of Flowering Fortunes",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1534,
+      "id": "2833484",
+      "term": "永久運動",
+      "reading": "えいきゅううんどう",
+      "meaning": "perpetual motion",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1535,
+      "id": "1972860",
+      "term": "永久機関",
+      "reading": "えいきゅうきかん",
+      "meaning": "perpetual motion machine / perpetual motion engine / perpetuum mobile",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1536,
+      "id": "2042050",
+      "term": "永久欠番",
+      "reading": "えいきゅうけつばん",
+      "meaning": "retired (uniform) number",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1537,
+      "id": "1972870",
+      "term": "永久公債",
+      "reading": "えいきゅうこうさい",
+      "meaning": "perpetual bond",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1538,
+      "id": "1972880",
+      "term": "永久硬水",
+      "reading": "えいきゅうこうすい",
+      "meaning": "permanent hard water",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1539,
+      "id": "1989070",
+      "term": "永久雇用",
+      "reading": "えいきゅうこよう",
+      "meaning": "permanent employment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1540,
+      "id": "2840603",
+      "term": "永久失格",
+      "reading": "えいきゅうしっかく",
+      "meaning": "permanent disqualification / lifetime disqualification",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1541,
+      "id": "2835767",
+      "term": "永久就職",
+      "reading": "えいきゅうしゅうしょく",
+      "meaning": "marrying to become a housewife / permanent employment (once one becomes a housewife)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1542,
+      "id": "1719830",
+      "term": "永久磁石",
+      "reading": "えいきゅうじしゃく",
+      "meaning": "permanent magnet",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1543,
+      "id": "1972890",
+      "term": "永久磁場",
+      "reading": "えいきゅうじば",
+      "meaning": "permanent magnetic field",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1544,
+      "id": "1972910",
+      "term": "永久組織",
+      "reading": "えいきゅうそしき",
+      "meaning": "permanent tissue",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1545,
+      "id": "1174100",
+      "term": "永久脱毛",
+      "reading": "えいきゅうだつもう",
+      "meaning": "removing hair permanently",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1546,
+      "id": "1972920",
+      "term": "永久電流",
+      "reading": "えいきゅうでんりゅう",
+      "meaning": "permanent current",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1547,
+      "id": "2868721",
+      "term": "永久凍結",
+      "reading": "えいきゅうとうけつ",
+      "meaning": "permanent suspension / permanent ban",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1548,
+      "id": "1972930",
+      "term": "永久凍土",
+      "reading": "えいきゅうとうど",
+      "meaning": "permafrost",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1549,
+      "id": "2042060",
+      "term": "永久不変",
+      "reading": "えいきゅうふへん",
+      "meaning": "permanence / forever unchanging",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1550,
+      "id": "2823110",
+      "term": "永久保管",
+      "reading": "えいきゅうほかん",
+      "meaning": "permanent storage (radioactives, data, etc.)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1551,
+      "id": "2711400",
+      "term": "永久保存",
+      "reading": "えいきゅうほぞん",
+      "meaning": "permanent preservation / permanent repository / keeping something permanently",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1552,
+      "id": "2668210",
+      "term": "影響緩和",
+      "reading": "えいきょうかんわ",
+      "meaning": "impact mitigation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1553,
+      "id": "2829086",
+      "term": "影響範囲",
+      "reading": "えいきょうはんい",
+      "meaning": "area of influence / zone of influence / extent of impact",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1554,
+      "id": "2774150",
+      "term": "影響半径",
+      "reading": "えいきょうはんけい",
+      "meaning": "radius of influence",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1555,
+      "id": "1930530",
+      "term": "営業案内",
+      "reading": "えいぎょうあんない",
+      "meaning": "business guide / catalogue / document describing one's business",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1556,
+      "id": "1930540",
+      "term": "営業活動",
+      "reading": "えいぎょうかつどう",
+      "meaning": "business activities",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1557,
+      "id": "2665200",
+      "term": "営業区域",
+      "reading": "えいぎょうくいき",
+      "meaning": "business zone (e.g. for taxis, buses, etc.) / business domain / sales route",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1558,
+      "id": "1989020",
+      "term": "営業経費",
+      "reading": "えいぎょうけいひ",
+      "meaning": "operation cost",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1559,
+      "id": "1173460",
+      "term": "営業収支",
+      "reading": "えいぎょうしゅうし",
+      "meaning": "operating balance",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1560,
+      "id": "1989030",
+      "term": "営業手法",
+      "reading": "えいぎょうしゅほう",
+      "meaning": "business model",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1561,
+      "id": "2666200",
+      "term": "営業種目",
+      "reading": "えいぎょうしゅもく",
+      "meaning": "business items / description of business / line of business",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1562,
+      "id": "1173450",
+      "term": "営業時間",
+      "reading": "えいぎょうじかん",
+      "meaning": "business hours / opening hours / office hours",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1563,
+      "id": "2145090",
+      "term": "営業譲渡",
+      "reading": "えいぎょうじょうと",
+      "meaning": "transfer of business / business transfer",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1564,
+      "id": "2828700",
+      "term": "営業成績",
+      "reading": "えいぎょうせいせき",
+      "meaning": "business results / business performance",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1565,
+      "id": "1989040",
+      "term": "営業損失",
+      "reading": "えいぎょうそんしつ",
+      "meaning": "operating loss",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1566,
+      "id": "2424990",
+      "term": "営業停止",
+      "reading": "えいぎょうていし",
+      "meaning": "suspension of business",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1567,
+      "id": "2521720",
+      "term": "営業年度",
+      "reading": "えいぎょうねんど",
+      "meaning": "fiscal year / financial year",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1568,
+      "id": "1989050",
+      "term": "営業秘密",
+      "reading": "えいぎょうひみつ",
+      "meaning": "trade secret",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1569,
+      "id": "2666210",
+      "term": "営業品目",
+      "reading": "えいぎょうひんもく",
+      "meaning": "business items / items of business / available services",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1570,
+      "id": "2176810",
+      "term": "営業分野",
+      "reading": "えいぎょうぶんや",
+      "meaning": "business field",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1571,
+      "id": "1794920",
+      "term": "営業報告",
+      "reading": "えいぎょうほうこく",
+      "meaning": "business report",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1572,
+      "id": "2618310",
+      "term": "営業保険",
+      "reading": "えいぎょうほけん",
+      "meaning": "commercial insurance",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1573,
+      "id": "2837635",
+      "term": "営業妨害",
+      "reading": "えいぎょうぼうがい",
+      "meaning": "obstruction of business / interference with business",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1574,
+      "id": "1989060",
+      "term": "営業利益",
+      "reading": "えいぎょうりえき",
+      "meaning": "operating profit",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1575,
+      "id": "2042070",
+      "term": "営業路線",
+      "reading": "えいぎょうろせん",
+      "meaning": "railroad (bus) lines (routes) in operation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1576,
+      "id": "5741250",
+      "term": "栄研化学",
+      "reading": "えいけんかがく",
+      "meaning": "Eiken Chemical Co, Ltd.",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1577,
+      "id": "2818750",
+      "term": "英国王室",
+      "reading": "えいこくおうしつ",
+      "meaning": "British royal family",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1578,
+      "id": "2595150",
+      "term": "英国議会",
+      "reading": "えいこくぎかい",
+      "meaning": "British parliament",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1579,
+      "id": "5747602",
+      "term": "英国航空",
+      "reading": "えいこくこうくう",
+      "meaning": "British Airways",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1580,
+      "id": "1174480",
+      "term": "英国石油",
+      "reading": "えいこくせきゆ",
+      "meaning": "British Petroleum / BP",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1581,
+      "id": "1920360",
+      "term": "英国発音",
+      "reading": "えいこくはつおん",
+      "meaning": "British pronunciation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1582,
+      "id": "1174140",
+      "term": "永子作権",
+      "reading": "えいこさくけん",
+      "meaning": "perpetual land lease",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1583,
+      "id": "1719840",
+      "term": "永小作権",
+      "reading": "えいこさくけん",
+      "meaning": "right to tenant farm in perpetuity",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1584,
+      "id": "1173910",
+      "term": "栄枯盛衰",
+      "reading": "えいこせいすい",
+      "meaning": "ups and downs of life / vicissitudes of fortune",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1585,
+      "id": "1174570",
+      "term": "英小文字",
+      "reading": "えいこもじ",
+      "meaning": "lower-case letters (of the English alphabet)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1586,
+      "id": "2042080",
+      "term": "永劫回帰",
+      "reading": "えいごうかいき",
+      "meaning": "eternal recurrence / eternal return",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1587,
+      "id": "2150080",
+      "term": "英語学習",
+      "reading": "えいごがくしゅう",
+      "meaning": "learning English",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1588,
+      "id": "2550330",
+      "term": "英語学科",
+      "reading": "えいごがっか",
+      "meaning": "English department (e.g. in a university)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1589,
+      "id": "1930620",
+      "term": "英語教育",
+      "reading": "えいごきょういく",
+      "meaning": "teaching of English / English teaching",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1590,
+      "id": "2658890",
+      "term": "英語教師",
+      "reading": "えいごきょうし",
+      "meaning": "English teacher",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1591,
+      "id": "2827220",
+      "term": "英語検定",
+      "reading": "えいごけんてい",
+      "meaning": "English proficiency test (esp. the STEP test)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1592,
+      "id": "2240780",
+      "term": "英語話者",
+      "reading": "えいごわしゃ",
+      "meaning": "English speaker",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1593,
+      "id": "1784440",
+      "term": "英才教育",
+      "reading": "えいさいきょういく",
+      "meaning": "gifted education / special education for gifted children",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1594,
+      "id": "2030090",
+      "term": "英姿颯爽",
+      "reading": "えいしさっそう",
+      "meaning": "cutting a fine (dashing, gallant, noble) figure",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1595,
+      "id": "1174550",
+      "term": "英字集合",
+      "reading": "えいじしゅうごう",
+      "meaning": "alphabetic character set",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1596,
+      "id": "1784460",
+      "term": "英字新聞",
+      "reading": "えいじしんぶん",
+      "meaning": "English-language newspaper",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1597,
+      "id": "2042090",
+      "term": "永字八法",
+      "reading": "えいじはっぽう",
+      "meaning": "Eight Principles of Yong / principles for writing the eight basic brush strokes in Chinese characters",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1598,
+      "id": "2871290",
+      "term": "永住許可",
+      "reading": "えいじゅうきょか",
+      "meaning": "permanent residence / permission for permanent residence",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1599,
+      "id": "2830780",
+      "term": "永垂不朽",
+      "reading": "えいすいふきゅう",
+      "meaning": "one's fame or achievements being passed down eternally",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1600,
+      "id": "2342380",
+      "term": "英数文字",
+      "reading": "えいすうもじ",
+      "meaning": "alphanumeric character",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1601,
+      "id": "2672470",
+      "term": "衛生化学",
+      "reading": "えいせいかがく",
+      "meaning": "hygienic chemistry",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1602,
+      "id": "1666860",
+      "term": "衛生管理",
+      "reading": "えいせいかんり",
+      "meaning": "hygiene management / hygiene control / sanitation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1603,
+      "id": "2848516",
+      "term": "衛生害虫",
+      "reading": "えいせいがいちゅう",
+      "meaning": "disease-carrying insect",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1604,
+      "id": "1174800",
+      "term": "衛生基準",
+      "reading": "えいせいきじゅん",
+      "meaning": "health standards / hygiene standards",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1605,
+      "id": "1666810",
+      "term": "衛生工学",
+      "reading": "えいせいこうがく",
+      "meaning": "sanitary engineering",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1606,
+      "id": "1972950",
+      "term": "衛星航法",
+      "reading": "えいせいこうほう",
+      "meaning": "global positioning",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1607,
+      "id": "1989110",
+      "term": "衛星写真",
+      "reading": "えいせいしゃしん",
+      "meaning": "satellite photograph",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1608,
+      "id": "1930690",
+      "term": "衛生状態",
+      "reading": "えいせいじょうたい",
+      "meaning": "sanitary conditions",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1609,
+      "id": "2831245",
+      "term": "衛星政党",
+      "reading": "えいせいせいとう",
+      "meaning": "bloc party / satellite party",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1610,
+      "id": "1666850",
+      "term": "衛生設備",
+      "reading": "えいせいせつび",
+      "meaning": "sanitary facilities",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1611,
+      "id": "1666870",
+      "term": "衛星中継",
+      "reading": "えいせいちゅうけい",
+      "meaning": "satellite transmission",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1612,
+      "id": "1174200",
+      "term": "永世中立",
+      "reading": "えいせいちゅうりつ",
+      "meaning": "permanent neutrality",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1613,
+      "id": "1666890",
+      "term": "衛星通信",
+      "reading": "えいせいつうしん",
+      "meaning": "satellite communication",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1614,
+      "id": "1989120",
+      "term": "衛星電話",
+      "reading": "えいせいでんわ",
+      "meaning": "satellite phone",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1615,
+      "id": "1666900",
+      "term": "衛星都市",
+      "reading": "えいせいとし",
+      "meaning": "satellite city / satellite town",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1616,
+      "id": "1174780",
+      "term": "衛星放送",
+      "reading": "えいせいほうそう",
+      "meaning": "satellite broadcasting",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1617,
+      "id": "2342250",
+      "term": "映像圧縮",
+      "reading": "えいぞうあっしゅく",
+      "meaning": "image compression",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1618,
+      "id": "2841565",
+      "term": "映像記憶",
+      "reading": "えいぞうきおく",
+      "meaning": "eidetic memory / photographic memory",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1619,
+      "id": "2100420",
+      "term": "映像作家",
+      "reading": "えいぞうさっか",
+      "meaning": "filmmaker",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1620,
+      "id": "1919300",
+      "term": "映像信号",
+      "reading": "えいぞうしんごう",
+      "meaning": "video signal",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1621,
+      "id": "2844187",
+      "term": "映像媒体",
+      "reading": "えいぞうばいたい",
+      "meaning": "video recording / video media",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1622,
+      "id": "2342260",
+      "term": "映像品質",
+      "reading": "えいぞうひんしつ",
+      "meaning": "image quality / picture quality",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1623,
+      "id": "2042100",
+      "term": "映像文化",
+      "reading": "えいぞうぶんか",
+      "meaning": "visual culture / culture of visual images / (screen) image culture",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1624,
+      "id": "2042110",
+      "term": "永代供養",
+      "reading": "えいたいくよう",
+      "meaning": "services performed in perpetuity by a Buddhist temple for the repose of a departed soul",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1625,
+      "id": "1174270",
+      "term": "永代借地",
+      "reading": "えいたいしゃくち",
+      "meaning": "perpetual lease",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1626,
+      "id": "1784450",
+      "term": "英仏海峡",
+      "reading": "えいふつかいきょう",
+      "meaning": "English Channel",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1627,
+      "id": "1930660",
+      "term": "英文解釈",
+      "reading": "えいぶんかいしゃく",
+      "meaning": "interpreting an English text",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1628,
+      "id": "2145000",
+      "term": "英文和訳",
+      "reading": "えいぶんわやく",
+      "meaning": "English-Japanese translation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1629,
+      "id": "2836301",
+      "term": "英米文学",
+      "reading": "えいべいぶんがく",
+      "meaning": "British and American literature",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1630,
+      "id": "2214210",
+      "term": "英緬戦争",
+      "reading": "えいめんせんそう",
+      "meaning": "Anglo-Burmese Wars (1823-1826, 1852-1853, 1885-1887)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1631,
+      "id": "2042130",
+      "term": "英雄好色",
+      "reading": "えいゆうこうしょく",
+      "meaning": "all great men like women / great men enjoy sensual pleasure",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1632,
+      "id": "2042120",
+      "term": "英雄豪傑",
+      "reading": "えいゆうごうけつ",
+      "meaning": "hero / warrior of matchless valor / heroic character",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1633,
+      "id": "1784510",
+      "term": "英雄主義",
+      "reading": "えいゆうしゅぎ",
+      "meaning": "heroism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1634,
+      "id": "1784520",
+      "term": "英雄崇拝",
+      "reading": "えいゆうすうはい",
+      "meaning": "hero worship",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1635,
+      "id": "1972940",
+      "term": "英雄伝説",
+      "reading": "えいゆうでんせつ",
+      "meaning": "heroic legend / legend of heroes",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1636,
+      "id": "1794740",
+      "term": "栄耀栄華",
+      "reading": "えいようえいが",
+      "meaning": "wealth, prosperity, and arrogant splendor (splendour) / (living sumptuously) intoxicated by wealth and power / luxury",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1637,
+      "id": "1972820",
+      "term": "栄養塩類",
+      "reading": "えいようえんるい",
+      "meaning": "nutritive salts",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1638,
+      "id": "2120240",
+      "term": "栄養過多",
+      "reading": "えいようかた",
+      "meaning": "overnutrition / excessive nutritional intake",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1639,
+      "id": "1174010",
+      "term": "栄養学者",
+      "reading": "えいようがくしゃ",
+      "meaning": "dietitian",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1640,
+      "id": "1972830",
+      "term": "栄養器官",
+      "reading": "えいようきかん",
+      "meaning": "vegetative organ",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1641,
+      "id": "2844204",
+      "term": "栄養酵母",
+      "reading": "えいようこうぼ",
+      "meaning": "nutritional yeast",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1642,
+      "id": "1174030",
+      "term": "栄養失調",
+      "reading": "えいようしっちょう",
+      "meaning": "malnutrition",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1643,
+      "id": "2866728",
+      "term": "栄養神経",
+      "reading": "えいようしんけい",
+      "meaning": "trophic nerve",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1644,
+      "id": "1972840",
+      "term": "栄養生殖",
+      "reading": "えいようせいしょく",
+      "meaning": "vegetative reproduction",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1645,
+      "id": "2692350",
+      "term": "栄養成分",
+      "reading": "えいようせいぶん",
+      "meaning": "nutrient composition / nutritional composition / nutritional information",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1646,
+      "id": "2826055",
+      "term": "栄養段階",
+      "reading": "えいようだんかい",
+      "meaning": "trophic level",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1647,
+      "id": "2843296",
+      "term": "栄養繁殖",
+      "reading": "えいようはんしょく",
+      "meaning": "vegetative propagation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1648,
+      "id": "2838900",
+      "term": "栄養表示",
+      "reading": "えいようひょうじ",
+      "meaning": "nutrition facts label",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1649,
+      "id": "2521740",
+      "term": "栄養不良",
+      "reading": "えいようふりょう",
+      "meaning": "malnutrition / malnourishment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1650,
+      "id": "1174050",
+      "term": "栄養不足",
+      "reading": "えいようぶそく",
+      "meaning": "malnutrition",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1651,
+      "id": "2863347",
+      "term": "栄養補給",
+      "reading": "えいようほきゅう",
+      "meaning": "dietary supplement / nutritional supplementation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1652,
+      "id": "2042140",
+      "term": "栄養満点",
+      "reading": "えいようまんてん",
+      "meaning": "highly nourishing (nutritious) / earning top marks nutrition-wise",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1653,
+      "id": "5743978",
+      "term": "永楽大典",
+      "reading": "えいらくたいてん",
+      "meaning": "Yongle Encyclopedia (Ming dynasty)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1654,
+      "id": "2214280",
+      "term": "英蘭戦争",
+      "reading": "えいらんせんそう",
+      "meaning": "Anglo-Dutch Wars (1652-1654, 1665-1667, 1672-1674)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1655,
+      "id": "1794810",
+      "term": "営利会社",
+      "reading": "えいりがいしゃ",
+      "meaning": "profit-making company",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1656,
+      "id": "2713370",
+      "term": "営利行為",
+      "reading": "えいりこうい",
+      "meaning": "profit-making activity / commercial endeavor",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1657,
+      "id": "1930560",
+      "term": "営利主義",
+      "reading": "えいりしゅぎ",
+      "meaning": "commercialism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1658,
+      "id": "1794830",
+      "term": "営利事業",
+      "reading": "えいりじぎょう",
+      "meaning": "profit-making enterprise",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1659,
+      "id": "2425150",
+      "term": "絵入根本",
+      "reading": "えいりねほん",
+      "meaning": "illustrated kabuki script",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1660,
+      "id": "1794840",
+      "term": "営利法人",
+      "reading": "えいりほうじん",
+      "meaning": "for-profit corporation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1661,
+      "id": "2618300",
+      "term": "営利保険",
+      "reading": "えいりほけん",
+      "meaning": "commercial insurance",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1662,
+      "id": "2835232",
+      "term": "営利目的",
+      "reading": "えいりもくてき",
+      "meaning": "profit motive / (with) the intention to profit / profit-making intention",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1663,
+      "id": "2872067",
+      "term": "営利誘拐",
+      "reading": "えいりゆうかい",
+      "meaning": "kidnapping for profit / abduction for financial gain",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1664,
+      "id": "2723220",
+      "term": "泳力認定",
+      "reading": "えいりょくにんてい",
+      "meaning": "swimming ability certification",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1665,
+      "id": "5136053",
+      "term": "営林支局",
+      "reading": "えいりんしきょく",
+      "meaning": "Branch Forest Office",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1666,
+      "id": "1174730",
+      "term": "英和辞典",
+      "reading": "えいわじてん",
+      "meaning": "English-Japanese dictionary",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1667,
+      "id": "2741540",
+      "term": "会陰切開",
+      "reading": "えいんせっかい",
+      "meaning": "episiotomy / perineotomy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1668,
+      "id": "2867522",
+      "term": "会陰動脈",
+      "reading": "えいんどうみゃく",
+      "meaning": "perineal artery",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1669,
+      "id": "1198320",
+      "term": "会厭軟骨",
+      "reading": "ええんなんこつ",
+      "meaning": "epiglottis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1670,
+      "id": "2042150",
+      "term": "笑顔千両",
+      "reading": "えがおせんりょう",
+      "meaning": "beautiful smile / there being a great charm about one's smile",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1671,
+      "id": "2644020",
+      "term": "腋窩動脈",
+      "reading": "えきかどうみゃく",
+      "meaning": "axillary artery / arteria axillaris",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1672,
+      "id": "2847973",
+      "term": "疫学調査",
+      "reading": "えきがくちょうさ",
+      "meaning": "epidemiological investigation / epidemiological survey",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1673,
+      "id": "2042160",
+      "term": "益者三友",
+      "reading": "えきしゃさんゆう",
+      "meaning": "three kinds of beneficial friends: straightforward, sincere, and well-informed ones",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1674,
+      "id": "2685470",
+      "term": "液晶画面",
+      "reading": "えきしょうがめん",
+      "meaning": "liquid crystal display / LCD / liquid crystal screen",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1675,
+      "id": "2829946",
+      "term": "役身折酬",
+      "reading": "えきしんせっしゅう",
+      "meaning": "debt bondage (ritsuryō system) / forced labor on failure to pay a debt",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1676,
+      "id": "2029880",
+      "term": "易姓革命",
+      "reading": "えきせいかくめい",
+      "meaning": "revolution (change of dynasty) decreed by Heaven when the incumbent emperor is found lacking in moral virtue (old Chinese political thought)",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1677,
+      "id": "1918290",
+      "term": "液性限界",
+      "reading": "えきせいげんかい",
+      "meaning": "liquid limit",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1678,
+      "id": "2807640",
+      "term": "液性免疫",
+      "reading": "えきせいめんえき",
+      "meaning": "humoral immunity",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1679,
+      "id": "2540240",
+      "term": "液相成長",
+      "reading": "えきそうせいちょう",
+      "meaning": "liquid (phase) deposition / liquid (phase) epitaxy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1680,
+      "id": "2855395",
+      "term": "液相反応",
+      "reading": "えきそうはんのう",
+      "meaning": "liquid-phase reaction",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1681,
+      "id": "1973070",
+      "term": "液体金属",
+      "reading": "えきたいきんぞく",
+      "meaning": "liquid metal",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1682,
+      "id": "1739830",
+      "term": "液体空気",
+      "reading": "えきたいくうき",
+      "meaning": "liquid air",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1683,
+      "id": "1739850",
+      "term": "液体酸素",
+      "reading": "えきたいさんそ",
+      "meaning": "liquid oxygen",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1684,
+      "id": "2856203",
+      "term": "液体水素",
+      "reading": "えきたいすいそ",
+      "meaning": "liquid hydrogen",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1685,
+      "id": "2836915",
+      "term": "液体石鹸",
+      "reading": "えきたいせっけん",
+      "meaning": "liquid soap",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1686,
+      "id": "1739840",
+      "term": "液体窒素",
+      "reading": "えきたいちっそ",
+      "meaning": "liquid nitrogen",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1687,
+      "id": "1739860",
+      "term": "液体燃料",
+      "reading": "えきたいねんりょう",
+      "meaning": "liquid fuel",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1688,
+      "id": "1175210",
+      "term": "駅伝競走",
+      "reading": "えきでんきょうそう",
+      "meaning": "long-distance relay race",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1689,
+      "id": "2821780",
+      "term": "駅弁大学",
+      "reading": "えきべんだいがく",
+      "meaning": "minor local college / small-time university",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1690,
+      "id": "1930700",
+      "term": "駅前広場",
+      "reading": "えきまえひろば",
+      "meaning": "station square / station plaza",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1691,
+      "id": "2188260",
+      "term": "駅前留学",
+      "reading": "えきまえりゅうがく",
+      "meaning": "studying at a language school near a station (instead of going abroad)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1692,
+      "id": "1735780",
+      "term": "役務賠償",
+      "reading": "えきむばいしょう",
+      "meaning": "reparation in the form of service",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1693,
+      "id": "1155760",
+      "term": "依怙贔屓",
+      "reading": "えこひいき",
+      "meaning": "favoritism / favouritism / partiality",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1694,
+      "id": "2030210",
+      "term": "会者定離",
+      "reading": "えしゃじょうり",
+      "meaning": "those who meet must part (suggesting the transient nature of this life) / we meet only to part",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1695,
+      "id": "2836601",
+      "term": "似非科学",
+      "reading": "えせかがく",
+      "meaning": "pseudoscience",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1696,
+      "id": "2118480",
+      "term": "似非学者",
+      "reading": "えせがくしゃ",
+      "meaning": "pseudo-scholar / fake scholar / would-be expert",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1697,
+      "id": "1314760",
+      "term": "似非理屈",
+      "reading": "えせりくつ",
+      "meaning": "sophistry",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1698,
+      "id": "2828696",
+      "term": "蝦夷五加",
+      "reading": "えぞうこぎ",
+      "meaning": "Siberian ginseng (Eleutherococcus senticosus) / eleuthero / ciwujia",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1699,
+      "id": "2580670",
+      "term": "絵草紙屋",
+      "reading": "えぞうしや",
+      "meaning": "ezōshi shop / Edo-period shop selling picture books, wood prints, etc.",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1700,
+      "id": "2694110",
+      "term": "蝦夷黄菅",
+      "reading": "えぞきすげ",
+      "meaning": "lemon day-lily (Hemerocallis lilioasphodelus, formerly Hemerocallis flava) / lemon lily / yellow day-lily",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1701,
+      "id": "2212240",
+      "term": "蝦夷黒貂",
+      "reading": "えぞくろてん",
+      "meaning": "Japanese sable (subspecies of sable native to Hokkaido, Martes zibellina brachyura)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1702,
+      "id": "2843487",
+      "term": "蝦夷小桜",
+      "reading": "えぞこざくら",
+      "meaning": "wedgeleaf primrose (Primula cuneifolia) / pixie-eye primrose",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1703,
+      "id": "2694390",
+      "term": "蝦夷白蝶",
+      "reading": "えぞしろちょう",
+      "meaning": "black-veined white (species of butterfly, Aporia crataegi)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1704,
+      "id": "2828480",
+      "term": "蝦夷鈴蘭",
+      "reading": "えぞすずらん",
+      "meaning": "Epipactis papillosa (species of orchid)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1705,
+      "id": "2705570",
+      "term": "蝦夷鳴兎",
+      "reading": "えぞなきうさぎ",
+      "meaning": "Ochotona hyperborea yesoensis (subspecies of northern pika)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1706,
+      "id": "2605070",
+      "term": "蝦夷法螺",
+      "reading": "えぞぼら",
+      "meaning": "Ezo neptune (species of whelk, Neptunea polycostata)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1707,
+      "id": "2209830",
+      "term": "蝦夷鼯鼠",
+      "reading": "えぞももんが",
+      "meaning": "Pteromys volans orii (subspecies of the Siberian flying squirrel, endemic to Hokkaido)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1708,
+      "id": "2066800",
+      "term": "蝦夷山桜",
+      "reading": "えぞやまざくら",
+      "meaning": "sargent cherry (Prunus sargentii)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1709,
+      "id": "2193370",
+      "term": "蝦夷雷鳥",
+      "reading": "えぞらいちょう",
+      "meaning": "hazel grouse (Bonasa bonasia)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1710,
+      "id": "2527570",
+      "term": "蝦夷栗鼠",
+      "reading": "えぞりす",
+      "meaning": "Hokkaido squirrel (subspecies of red squirrel, Sciurus vulgaris orientis)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1711,
+      "id": "2737110",
+      "term": "枝角羚羊",
+      "reading": "えだつのれいよう",
+      "meaning": "pronghorn (Antilocapra americana) / prong buck / pronghorn antelope",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1712,
+      "id": "2849154",
+      "term": "枝豆豆腐",
+      "reading": "えだまめとうふ",
+      "meaning": "tofu-like dish made with edamame",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1713,
+      "id": "2042170",
+      "term": "越後獅子",
+      "reading": "えちごじし",
+      "meaning": "street performance by itinerant entertainers featuring a tumbling act in which a child performer wears a carved lion's head",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1714,
+      "id": "2165560",
+      "term": "越前水母",
+      "reading": "えちぜんくらげ",
+      "meaning": "Nomura's jellyfish (Nemopilema nomurai)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1715,
+      "id": "2859387",
+      "term": "越境学習",
+      "reading": "えっきょうがくしゅう",
+      "meaning": "cross-boundary learning",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1716,
+      "id": "1637490",
+      "term": "越境入学",
+      "reading": "えっきょうにゅうがく",
+      "meaning": "gaining admission into a school in a school district other than one's own",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1717,
+      "id": "1806100",
+      "term": "越権行為",
+      "reading": "えっけんこうい",
+      "meaning": "exceeding one's authority / abusing one's legal authority / ultra vires activities",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1718,
+      "id": "2854557",
+      "term": "越権代理",
+      "reading": "えっけんだいり",
+      "meaning": "unauthorized proxy / unauthorized representation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1719,
+      "id": "1806080",
+      "term": "越冬資金",
+      "reading": "えっとうしきん",
+      "meaning": "winter bonus",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1720,
+      "id": "2830212",
+      "term": "閲覧注意",
+      "reading": "えつらんちゅうい",
+      "meaning": "viewer discretion advised / not safe for work / NSFW",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1721,
+      "id": "1454560",
+      "term": "得手勝手",
+      "reading": "えてかって",
+      "meaning": "self-willed / (doing or saying things) to suit one's own convenience",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1722,
+      "id": "2419230",
+      "term": "得手に帆を揚げる",
+      "reading": "えてにほをあげる",
+      "meaning": "to hoist one's sail when the wind is fair / to get one's time to shine",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1723,
+      "id": "2555170",
+      "term": "江戸油鮫",
+      "reading": "えどあぶらざめ",
+      "meaning": "sharpnose sevengill shark (Heptranchias perlo)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1724,
+      "id": "2639300",
+      "term": "江戸絵図",
+      "reading": "えどえず",
+      "meaning": "map of Edo",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1725,
+      "id": "2667130",
+      "term": "江戸狂言",
+      "reading": "えどきょうげん",
+      "meaning": "Edo-style kabuki",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1726,
+      "id": "2839912",
+      "term": "江戸芸者",
+      "reading": "えどげいしゃ",
+      "meaning": "Edo geisha / geisha living and working inside Edo (not one of the red-light districts on its outskirts)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1727,
+      "id": "2421410",
+      "term": "江戸言葉",
+      "reading": "えどことば",
+      "meaning": "Edo dialect",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1728,
+      "id": "1279890",
+      "term": "江戸時代",
+      "reading": "えどじだい",
+      "meaning": "Edo period (1603-1868)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1729,
+      "id": "2869551",
+      "term": "江戸情緒",
+      "reading": "えどじょうちょ",
+      "meaning": "Edo-period atmosphere / old Edo charm / nostalgic ambiance of old Tokyo",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1730,
+      "id": "2102380",
+      "term": "江戸の敵を長崎で討つ",
+      "reading": "えどのかたきをながさきでうつ",
+      "meaning": "to hit someone where they least expect it / to take revenge on someone in an unlikely place / to get revenge on someone in a different contest",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1731,
+      "id": "2206440",
+      "term": "江戸幕府",
+      "reading": "えどばくふ",
+      "meaning": "Edo shogunate (1603-1867) / Tokugawa shogunate",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1732,
+      "id": "2228680",
+      "term": "江戸彼岸",
+      "reading": "えどひがん",
+      "meaning": "double weeping rosebud cherry (Prunus pendula)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1733,
+      "id": "2703100",
+      "term": "江戸味噌",
+      "reading": "えどみそ",
+      "meaning": "Edo miso / type of miso produced in the Tokyo area since the Edo period; usu. low-salt and made with rice koji",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1734,
+      "id": "2868232",
+      "term": "会に合わぬ花",
+      "reading": "えにあわぬはな",
+      "meaning": "something that comes too late to be of any use / arriving after the ship has sailed / flowers that don't arrive in time for a Buddhist service",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1735,
+      "id": "1202280",
+      "term": "絵に描いた餅",
+      "reading": "えにかいたもち",
+      "meaning": "pie in the sky / castles in the air / drawing of a rice cake",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1736,
+      "id": "2225110",
+      "term": "絵になる",
+      "reading": "えになる",
+      "meaning": "to make a lovely picture / to be perfect for a picture",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1737,
+      "id": "1782270",
+      "term": "絵羽羽織",
+      "reading": "えばばおり",
+      "meaning": "figured haori (coat)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1738,
+      "id": "2601400",
+      "term": "絵羽模様",
+      "reading": "えばもよう",
+      "meaning": "single pattern on the entirety of a garment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1739,
+      "id": "5743574",
+      "term": "愛媛県警",
+      "reading": "えひめけんけい",
+      "meaning": "Ehime Prefectural Police (abbr)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1740,
+      "id": "5104432",
+      "term": "愛媛大学",
+      "reading": "えひめだいがく",
+      "meaning": "Ehime University",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1741,
+      "id": "2216130",
+      "term": "海老殻苺",
+      "reading": "えびがらいちご",
+      "meaning": "Japanese wineberry (Rubus phoenicolasius) / wine raspberry / wineberry",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1742,
+      "id": "2614230",
+      "term": "恵比須鮫",
+      "reading": "えびすざめ",
+      "meaning": "broadnose sevengill shark (Notorynchus cepedianus, species of circumglobal cow shark with 7 gill slits)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1743,
+      "id": "1977140",
+      "term": "海老で鯛を釣る",
+      "reading": "えびでたいをつる",
+      "meaning": "to throw in a shrimp and pull out a whale / to use a sprat to catch a mackerel / to get big returns on a small investment",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1744,
+      "id": "5177992",
+      "term": "絵本学会",
+      "reading": "えほんがっかい",
+      "meaning": "Association for Studies of Picture Books",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1745,
+      "id": "1845460",
+      "term": "烏帽子貝",
+      "reading": "えぼしがい",
+      "meaning": "goose barnacle",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1746,
+      "id": "2635380",
+      "term": "烏帽子鯛",
+      "reading": "えぼしだい",
+      "meaning": "man-of-war fish (Nomeus gronovii)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1747,
+      "id": "2464940",
+      "term": "烏帽子鳥",
+      "reading": "えぼしどり",
+      "meaning": "turaco (any bird of family Musophagidae, esp. the Knysna turaco, Tauraco corythaix) / touraco / loerie",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1748,
+      "id": "1845450",
+      "term": "烏帽子名",
+      "reading": "えぼしな",
+      "meaning": "adult name",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1749,
+      "id": "2166220",
+      "term": "永良部鰻",
+      "reading": "えらぶうなぎ",
+      "meaning": "Erabu black-banded sea krait (Laticauda semifasciata)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1750,
+      "id": "2418710",
+      "term": "選ぶところがない",
+      "reading": "えらぶところがない",
+      "meaning": "being the same thing (as) / being indistinguishable (from)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1751,
+      "id": "2700960",
+      "term": "襟鞭毛虫",
+      "reading": "えりべんもうちゅう",
+      "meaning": "choanoflagellate",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1752,
+      "id": "1242000",
+      "term": "襟巻蜥蜴",
+      "reading": "えりまきとかげ",
+      "meaning": "frilled lizard (Chlamydosaurus kingii) / frill-necked lizard",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1753,
+      "id": "1861510",
+      "term": "襟を正す",
+      "reading": "えりをただす",
+      "meaning": "to straighten oneself / to straighten one's clothes and one's posture / to adopt a more serious attitude",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1754,
+      "id": "2033320",
+      "term": "蜿蜿長蛇",
+      "reading": "えんえんちょうだ",
+      "meaning": "long and serpentine (line, queue, etc.)",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1755,
+      "id": "2832681",
+      "term": "鴛鴦の契り",
+      "reading": "えんおうのちぎり",
+      "meaning": "having a happy and harmonious relationship (of a husband and wife)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 1756,
+      "id": "1973580",
+      "term": "塩化亜鉛",
+      "reading": "えんかあえん",
+      "meaning": "zinc chloride",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1757,
+      "id": "1973640",
+      "term": "塩化硫黄",
+      "reading": "えんかいおう",
+      "meaning": "sulphur chloride / sulfur chloride",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1758,
+      "id": "2042180",
+      "term": "宴会政治",
+      "reading": "えんかいせいじ",
+      "meaning": "politicking by wining and dining",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1759,
+      "id": "2838224",
+      "term": "塩化鉛鉱",
+      "reading": "えんかえんこう",
+      "meaning": "cotunnite",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1760,
+      "id": "2136570",
+      "term": "演歌歌手",
+      "reading": "えんかかしゅ",
+      "meaning": "enka singer / singer of Japanese traditional ballads",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1761,
+      "id": "2712260",
+      "term": "塩化金酸",
+      "reading": "えんかきんさん",
+      "meaning": "chloroauric acid",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1762,
+      "id": "2342710",
+      "term": "遠隔医療",
+      "reading": "えんかくいりょう",
+      "meaning": "telemedicine / remote medicine",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1763,
+      "id": "2342740",
+      "term": "遠隔監視",
+      "reading": "えんかくかんし",
+      "meaning": "remote supervision",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1764,
+      "id": "1177960",
+      "term": "遠隔教育",
+      "reading": "えんかくきょういく",
+      "meaning": "distance learning / distance education / remote learning",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1765,
+      "id": "1177970",
+      "term": "遠隔講義",
+      "reading": "えんかくこうぎ",
+      "meaning": "remote lecture",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1766,
+      "id": "2342760",
+      "term": "遠隔資源",
+      "reading": "えんかくしげん",
+      "meaning": "remote resource",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1767,
+      "id": "2342770",
+      "term": "遠隔処理",
+      "reading": "えんかくしょり",
+      "meaning": "teleprocessing",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1768,
+      "id": "2832246",
+      "term": "遠隔診断",
+      "reading": "えんかくしんだん",
+      "meaning": "telediagnosis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1769,
+      "id": "2832241",
+      "term": "遠隔診療",
+      "reading": "えんかくしんりょう",
+      "meaning": "remote diagnosis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1770,
+      "id": "1178000",
+      "term": "遠隔操作",
+      "reading": "えんかくそうさ",
+      "meaning": "remote control / remote operation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1771,
+      "id": "2342800",
+      "term": "遠隔測定",
+      "reading": "えんかくそくてい",
+      "meaning": "telemetry / remote measurement",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1772,
+      "id": "2342820",
+      "term": "遠隔通信",
+      "reading": "えんかくつうしん",
+      "meaning": "telecommunications",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1773,
+      "id": "2863416",
+      "term": "遠隔透視",
+      "reading": "えんかくとうし",
+      "meaning": "remote viewing (paranormal ability) / telesthesia",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1774,
+      "id": "2342830",
+      "term": "遠隔保守",
+      "reading": "えんかくほしゅ",
+      "meaning": "remote maintenance",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1775,
+      "id": "1973610",
+      "term": "塩化水銀",
+      "reading": "えんかすいぎん",
+      "meaning": "mercury chloride",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1776,
+      "id": "1178650",
+      "term": "塩化水素",
+      "reading": "えんかすいそ",
+      "meaning": "hydrogen chloride",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1777,
+      "id": "2030100",
+      "term": "円滑洒脱",
+      "reading": "えんかつしゃだつ",
+      "meaning": "being smooth, free and easy / refined and unconventional",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1778,
+      "id": "2843872",
+      "term": "嚥下不能",
+      "reading": "えんかふのう",
+      "meaning": "aphagia / aglutition / acataposis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1779,
+      "id": "1735970",
+      "term": "沿岸漁業",
+      "reading": "えんがんぎょぎょう",
+      "meaning": "coastal fishing",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1780,
+      "id": "1973660",
+      "term": "塩基性塩",
+      "reading": "えんきせいえん",
+      "meaning": "basic salt",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1781,
+      "id": "2855497",
+      "term": "塩基性化",
+      "reading": "えんきせいか",
+      "meaning": "basification",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1782,
+      "id": "1973670",
+      "term": "塩基性岩",
+      "reading": "えんきせいがん",
+      "meaning": "basic rock",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1783,
+      "id": "2690170",
+      "term": "塩基置換",
+      "reading": "えんきちかん",
+      "meaning": "base substitution",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1784,
+      "id": "2151840",
+      "term": "塩基配列",
+      "reading": "えんきはいれつ",
+      "meaning": "base sequence / nucleotide sequence / nucleic acid sequence",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1785,
+      "id": "2839851",
+      "term": "塩基編集",
+      "reading": "えんきへんしゅう",
+      "meaning": "(genome) base editing / editing DNA bases",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1786,
+      "id": "2033220",
+      "term": "婉曲迂遠",
+      "reading": "えんきょくうえん",
+      "meaning": "being euphemistic and circumlocutory",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1787,
+      "id": "2855667",
+      "term": "婉曲語法",
+      "reading": "えんきょくごほう",
+      "meaning": "euphemism",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1788,
+      "id": "2202090",
+      "term": "婉曲表現",
+      "reading": "えんきょくひょうげん",
+      "meaning": "euphemism / euphemistic expression",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1789,
+      "id": "2840660",
+      "term": "演技過剰",
+      "reading": "えんぎかじょう",
+      "meaning": "overacting / hamming",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1790,
+      "id": "2830778",
+      "term": "延頸挙踵",
+      "reading": "えんけいきょしょう",
+      "meaning": "longing for someone or something / waiting for someone of great talent to arrive / stretching one's neck and standing on tiptoes",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 1791,
+      "id": "1666290",
+      "term": "円形劇場",
+      "reading": "えんけいげきじょう",
+      "meaning": "amphitheater / amphitheatre",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1792,
+      "id": "2084780",
+      "term": "煙警報器",
+      "reading": "えんけいほうき",
+      "meaning": "smoke alarm",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1793,
+      "id": "5143395",
+      "term": "園芸学会",
+      "reading": "えんげいがっかい",
+      "meaning": "Japanese Society for Horticultural Science",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1794,
+      "id": "1973170",
+      "term": "園芸植物",
+      "reading": "えんげいしょくぶつ",
+      "meaning": "gardening plant",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1795,
+      "id": "2868736",
+      "term": "園芸農家",
+      "reading": "えんげいのうか",
+      "meaning": "horticulturist",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1796,
+      "id": "1973180",
+      "term": "園芸農業",
+      "reading": "えんげいのうぎょう",
+      "meaning": "horticultural agriculture",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1797,
+      "id": "2408940",
+      "term": "園芸品種",
+      "reading": "えんげいひんしゅ",
+      "meaning": "cultivar / cultivated variety of a plant",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1798,
+      "id": "1665910",
+      "term": "園芸用具",
+      "reading": "えんげいようぐ",
+      "meaning": "gardening tools",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 1799,
+      "id": "2671430",
+      "term": "演劇活動",
+      "reading": "えんげきかつどう",
+      "meaning": "theatrical activities / theatre work",
+      "rank": null,
+      "type": "four"
     }
   ]
 }
