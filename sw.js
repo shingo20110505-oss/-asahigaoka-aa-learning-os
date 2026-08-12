@@ -1,5 +1,5 @@
 'use strict';
-const VERSION='2.3.7-kokugo-idioms';
+const VERSION='2.3.7-quality2-chronologia1000-kokugo';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;
