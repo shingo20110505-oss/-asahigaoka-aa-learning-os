@@ -4,6 +4,7 @@ import json, re
 root = Path('kokugo-chronologia')
 patch_dir = root / 'meaning-ja-patches'
 override_path = root / 'meaning-ja-overrides.json'
+override_js_path = root / 'meaning-ja-overrides.js'
 status_path = root / 'meaning-ja-status.json'
 
 merged = {}
@@ -24,20 +25,17 @@ for p in sorted(patch_dir.glob('chunk-*.json')):
         meaning = str(r['meaning']).strip()
         if not meaning:
             raise SystemExit(f'empty meaning in {p}: {key}')
-        # Direct Japanese rewrite must contain Japanese characters.
         if not re.search(r'[ぁ-んァ-ヶ一-龠々〆ヵヶ]', meaning):
             raise SystemExit(f'non-Japanese meaning in {p}: {key} {meaning!r}')
         merged[key] = meaning
 
-override_path.write_text(json.dumps(merged, ensure_ascii=False, sort_keys=True, separators=(',', ':')) + '\n', encoding='utf-8')
+payload = json.dumps(merged, ensure_ascii=False, sort_keys=True, separators=(',', ':'))
+override_path.write_text(payload + '\n', encoding='utf-8')
+override_js_path.write_text('window.KOKUGO_DIRECT_MEANINGS=' + payload + ';\n', encoding='utf-8')
 
 source_dir = root / 'translation-source'
 chunks = sorted(source_dir.glob('chunk-*.json'))
-completed = 0
-for c in chunks:
-    patch = patch_dir / c.name
-    if patch.exists():
-        completed += 1
+completed = sum(1 for c in chunks if (patch_dir / c.name).exists())
 
 status = {
     'mode': 'assistant_direct_japanese',
@@ -49,7 +47,6 @@ status = {
 }
 status_path.write_text(json.dumps(status, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
-# Bump cache version while keeping deploy preflight marker.
 sw = Path('sw.js')
 t = sw.read_text(encoding='utf-8')
 t = re.sub(r"const VERSION='[^']+';", f"const VERSION='2.5.{completed}-quality2-chronologia1000-kokugo-direct-ja';", t, count=1)
