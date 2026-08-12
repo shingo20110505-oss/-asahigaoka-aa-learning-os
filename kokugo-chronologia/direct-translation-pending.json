@@ -1,466 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 2400,
-  "english_only_remaining": 12600,
+  "already_direct_japanese": 2450,
+  "english_only_remaining": 12550,
   "english_only_rank_counts": {
-    "(blank)": 12600
+    "(blank)": 12550
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 2400,
-      "id": "2411910",
-      "term": "介護施設",
-      "reading": "かいごしせつ",
-      "meaning": "nursing home / rest home",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2401,
-      "id": "2856552",
-      "term": "介護脱毛",
-      "reading": "かいごだつもう",
-      "meaning": "removal of pubic hair prior to entering nursing care",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2402,
-      "id": "2124020",
-      "term": "介護認定",
-      "reading": "かいごにんてい",
-      "meaning": "nursing care authorization",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2403,
-      "id": "1989360",
-      "term": "介護保険",
-      "reading": "かいごほけん",
-      "meaning": "nursing insurance",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2404,
-      "id": "2551690",
-      "term": "介護予防",
-      "reading": "かいごよぼう",
-      "meaning": "preventive care, esp. for senior citizens",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2405,
-      "id": "2838062",
-      "term": "介護離職",
-      "reading": "かいごりしょく",
-      "meaning": "quitting one's job to care for one's family (e.g. one's elderly or sick parents)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2406,
-      "id": "2850385",
-      "term": "階差数列",
-      "reading": "かいさすうれつ",
-      "meaning": "sequence of differences",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2407,
-      "id": "2343560",
-      "term": "下位参照",
-      "reading": "かいさんしょう",
-      "meaning": "subordinate reference",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2408,
-      "id": "2867206",
-      "term": "海産肥料",
-      "reading": "かいさんひりょう",
-      "meaning": "marine fertilizer",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2409,
-      "id": "2526310",
-      "term": "介在配列",
-      "reading": "かいざいはいれつ",
-      "meaning": "intron",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2410,
-      "id": "2802530",
-      "term": "開始価格",
-      "reading": "かいしかかく",
-      "meaning": "starting price / ask price / ask",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2411,
-      "id": "2128920",
-      "term": "開始時刻",
-      "reading": "かいしじこく",
-      "meaning": "starting time",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2412,
-      "id": "2870955",
-      "term": "開始反応",
-      "reading": "かいしはんのう",
-      "meaning": "initiation reaction",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2413,
-      "id": "2345530",
-      "term": "開始変数",
-      "reading": "かいしへんすう",
-      "meaning": "starting variable / SV",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2414,
-      "id": "2853175",
-      "term": "会社案内",
-      "reading": "かいしゃあんない",
-      "meaning": "company information / corporate profile / company brochure",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2415,
-      "id": "1198570",
-      "term": "会社営業",
-      "reading": "かいしゃえいぎょう",
-      "meaning": "business administration",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2416,
-      "id": "1198580",
-      "term": "会社概要",
-      "reading": "かいしゃがいよう",
-      "meaning": "company overview",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2417,
-      "id": "1976150",
-      "term": "会社企業",
-      "reading": "かいしゃきぎょう",
-      "meaning": "corporation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2418,
-      "id": "2178960",
-      "term": "解釈改憲",
-      "reading": "かいしゃくかいけん",
-      "meaning": "effecting de facto constitutional changes through creative interpretation of the existing constitution / reinterpretation of the constitution",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2419,
-      "id": "2344880",
-      "term": "解釈実行",
-      "reading": "かいしゃくじっこう",
-      "meaning": "interpretation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2420,
-      "id": "2861823",
-      "term": "会社組合",
-      "reading": "かいしゃくみあい",
-      "meaning": "company union",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2421,
-      "id": "2650560",
-      "term": "会社経営",
-      "reading": "かいしゃけいえい",
-      "meaning": "company management / managing a company",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2422,
-      "id": "1989400",
-      "term": "会社情報",
-      "reading": "かいしゃじょうほう",
-      "meaning": "corporate information",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2423,
-      "id": "2042580",
-      "term": "会社人間",
-      "reading": "かいしゃにんげん",
-      "meaning": "company person / company man / company woman",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2424,
-      "id": "2843389",
-      "term": "会社訪問",
-      "reading": "かいしゃほうもん",
-      "meaning": "company visit / visit to a prospective employer",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2425,
-      "id": "1931580",
-      "term": "改修工事",
-      "reading": "かいしゅうこうじ",
-      "meaning": "repair work",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2426,
-      "id": "2042590",
-      "term": "快食快便",
-      "reading": "かいしょくかいべん",
-      "meaning": "good appetite and good bowel movements / enjoying one's food and having regular stools",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2427,
-      "id": "2042600",
-      "term": "快食快眠",
-      "reading": "かいしょくかいみん",
-      "meaning": "good appetite and pleasant sleep / enjoying one's food and sleeping well",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2428,
-      "id": "2705420",
-      "term": "灰色藻綱",
-      "reading": "かいしょくそうこう",
-      "meaning": "Glaucophyceae (class of glaucophytes)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2429,
-      "id": "1772730",
-      "term": "海事衛星",
-      "reading": "かいじえいせい",
-      "meaning": "a maritime satellite",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2430,
-      "id": "2530750",
-      "term": "界磁巻線",
-      "reading": "かいじまきせん",
-      "meaning": "field winding",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2431,
-      "id": "1670410",
-      "term": "怪獣映画",
-      "reading": "かいじゅうえいが",
-      "meaning": "monster film",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2432,
-      "id": "2821810",
-      "term": "懐柔作戦",
-      "reading": "かいじゅうさくせん",
-      "meaning": "operation to win over someone by using a tactic of gentle persuasion",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2433,
-      "id": "1976710",
-      "term": "海上空港",
-      "reading": "かいじょうくうこう",
-      "meaning": "seadrome",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2434,
-      "id": "2827619",
-      "term": "海上交通",
-      "reading": "かいじょうこうつう",
-      "meaning": "marine traffic / sea traffic",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2435,
-      "id": "1718950",
-      "term": "下意上達",
-      "reading": "かいじょうたつ",
-      "meaning": "conveyance of the views of those below to those at the top",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2436,
-      "id": "2444950",
-      "term": "海上都市",
-      "reading": "かいじょうとし",
-      "meaning": "artificial island city / floating city",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2437,
-      "id": "1772520",
-      "term": "海上封鎖",
-      "reading": "かいじょうふうさ",
-      "meaning": "sea blockade",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2438,
-      "id": "2852014",
-      "term": "海上保安",
-      "reading": "かいじょうほあん",
-      "meaning": "maritime safety",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2439,
-      "id": "2855577",
-      "term": "海上捕獲",
-      "reading": "かいじょうほかく",
-      "meaning": "seizure at sea (of an enemy ship or cargo)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2440,
-      "id": "1772500",
-      "term": "海上保険",
-      "reading": "かいじょうほけん",
-      "meaning": "maritime insurance",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2441,
-      "id": "2849087",
-      "term": "海上民兵",
-      "reading": "かいじょうみんぺい",
-      "meaning": "naval militia / maritime militia",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2442,
-      "id": "2653690",
-      "term": "海上輸送",
-      "reading": "かいじょうゆそう",
-      "meaning": "marine transport / carriage by sea",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2443,
-      "id": "2847264",
-      "term": "塊状溶岩",
-      "reading": "かいじょうようがん",
-      "meaning": "block lava",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2444,
-      "id": "2530270",
-      "term": "解除反応",
-      "reading": "かいじょはんのう",
-      "meaning": "abreaction",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2445,
-      "id": "1201530",
-      "term": "海水浴場",
-      "reading": "かいすいよくじょう",
-      "meaning": "swimming area (in the ocean) / swimming beach / seawater baths",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2446,
-      "id": "1201550",
-      "term": "海生動物",
-      "reading": "かいせいどうぶつ",
-      "meaning": "sea animal / marine animal",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2447,
-      "id": "2833748",
-      "term": "解析関数",
-      "reading": "かいせきかんすう",
-      "meaning": "analytic function",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2448,
-      "id": "2850320",
-      "term": "解析接続",
-      "reading": "かいせきせつぞく",
-      "meaning": "analytic continuation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2449,
-      "id": "1863830",
-      "term": "開析台地",
-      "reading": "かいせきだいち",
-      "meaning": "dissected plateau",
-      "rank": null,
-      "type": "four"
-    },
     {
       "source_index": 2450,
       "id": "2073640",
@@ -9008,6 +8558,456 @@
       "term": "賀茂茄子",
       "reading": "かもなす",
       "meaning": "Kamo eggplant (Solanum melongena; round variety originally grown in Kyoto)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3400,
+      "id": "2248300",
+      "term": "蚊帳吊草",
+      "reading": "かやつりぐさ",
+      "meaning": "galingale (any plant of genus Cyperus, esp. species Cyperus microiria)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3401,
+      "id": "2068310",
+      "term": "蚊帳の外",
+      "reading": "かやのそと",
+      "meaning": "being excluded / being ignored / being kept in the dark (about)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3402,
+      "id": "2837955",
+      "term": "蚊帳の外に置く",
+      "reading": "かやのそとにおく",
+      "meaning": "to leave in the dark / to leave out in the cold / to keep out of the loop",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3403,
+      "id": "2140180",
+      "term": "かゆいところに手が届く",
+      "reading": "かゆいところにてがとどく",
+      "meaning": "to be extremely thorough, focusing on even the finest of details",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3404,
+      "id": "1974660",
+      "term": "可融合金",
+      "reading": "かゆうごうきん",
+      "meaning": "fusible alloy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3405,
+      "id": "2344470",
+      "term": "可用時間",
+      "reading": "かようじかん",
+      "meaning": "available time",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3406,
+      "id": "2870166",
+      "term": "火雷噬嗑",
+      "reading": "からいぜいごう",
+      "meaning": "shi he (hexagram 21 of the I Ching: biting through)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3407,
+      "id": "2657190",
+      "term": "唐紙障子",
+      "reading": "からかみしょうじ",
+      "meaning": "sliding door covered with thick patterned paper",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3408,
+      "id": "1446700",
+      "term": "唐草模様",
+      "reading": "からくさもよう",
+      "meaning": "arabesque / scrollwork",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3409,
+      "id": "2591650",
+      "term": "辛子味噌",
+      "reading": "からしみそ",
+      "meaning": "miso mixed with mustard",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3410,
+      "id": "2844821",
+      "term": "烏の足跡",
+      "reading": "からすのあしあと",
+      "meaning": "crow's feet (wrinkles)",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3411,
+      "id": "1171460",
+      "term": "カラスの行水",
+      "reading": "からすのぎょうずい",
+      "meaning": "quick bath / hurried bath",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3412,
+      "id": "2840708",
+      "term": "体が空く",
+      "reading": "からだがあく",
+      "meaning": "to become free / to get time off",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3413,
+      "id": "2866028",
+      "term": "体がいくつあっても足りない",
+      "reading": "からだがいくつあってもたりない",
+      "meaning": "being stretched too thin / being pulled in all directions / even with several bodies it wouldn't be enough",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3414,
+      "id": "1995850",
+      "term": "身体傷害",
+      "reading": "からだしょうがい",
+      "meaning": "bodily injury / personal injury / actual bodily harm",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3415,
+      "id": "1409170",
+      "term": "体を惜しむ",
+      "reading": "からだをおしむ",
+      "meaning": "to be lazy",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3416,
+      "id": "1409180",
+      "term": "体を粉にする",
+      "reading": "からだをこにする",
+      "meaning": "to work assiduously / to give one's all / to make the utmost effort",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3417,
+      "id": "2864768",
+      "term": "殻に閉じこもる",
+      "reading": "からにとじこもる",
+      "meaning": "to withdraw into oneself / to shut oneself away / to seclude oneself",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3418,
+      "id": "2193380",
+      "term": "樺太雷鳥",
+      "reading": "からふとらいちょう",
+      "meaning": "willow ptarmigan (Lagopus lagopus) / red grouse",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3419,
+      "id": "2836214",
+      "term": "空振り三振",
+      "reading": "からぶりさんしん",
+      "meaning": "strikeout",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3420,
+      "id": "2741970",
+      "term": "殻を破る",
+      "reading": "からをやぶる",
+      "meaning": "to break up and start anew / to break out of one's shell / to make a fresh start",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3421,
+      "id": "1187540",
+      "term": "仮受取証",
+      "reading": "かりうけとりしょう",
+      "meaning": "temporary receipt",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3422,
+      "id": "2837223",
+      "term": "仮釈放者",
+      "reading": "かりしゃくほうしゃ",
+      "meaning": "parolee / person on parole",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3423,
+      "id": "2837228",
+      "term": "仮出所者",
+      "reading": "かりしゅっしょしゃ",
+      "meaning": "parolee / person on parole (from prison)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3424,
+      "id": "2201510",
+      "term": "借りてきた猫",
+      "reading": "かりてきたねこ",
+      "meaning": "someone who is suddenly quiet and meek / borrowed cat",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3425,
+      "id": "2669920",
+      "term": "顆粒細胞",
+      "reading": "かりゅうさいぼう",
+      "meaning": "granule cell",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3426,
+      "id": "1186570",
+      "term": "下流社会",
+      "reading": "かりゅうしゃかい",
+      "meaning": "lower classes",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3427,
+      "id": "2843778",
+      "term": "下流老人",
+      "reading": "かりゅうろうじん",
+      "meaning": "impoverished elderly / poor senior citizens",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3428,
+      "id": "2826636",
+      "term": "迦陵頻伽",
+      "reading": "かりょうびんが",
+      "meaning": "kalavinka / imaginary bird in paradise that sings sweet notes",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3429,
+      "id": "2711720",
+      "term": "過量服用",
+      "reading": "かりょうふくよう",
+      "meaning": "drug overdose",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3430,
+      "id": "1194310",
+      "term": "火力支援",
+      "reading": "かりょくしえん",
+      "meaning": "fire support",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3431,
+      "id": "1974710",
+      "term": "夏緑樹林",
+      "reading": "かりょくじゅりん",
+      "meaning": "summer green forest",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3432,
+      "id": "1724230",
+      "term": "火力発電",
+      "reading": "かりょくはつでん",
+      "meaning": "thermal power generation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3433,
+      "id": "2841584",
+      "term": "借りを返す",
+      "reading": "かりをかえす",
+      "meaning": "to pay back a debt",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3434,
+      "id": "2860638",
+      "term": "過燐酸塩",
+      "reading": "かりんさんえん",
+      "meaning": "superphosphate",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3435,
+      "id": "2030200",
+      "term": "苛斂誅求",
+      "reading": "かれんちゅうきゅう",
+      "meaning": "exaction of heavy taxes / imposing oppressive taxes",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3436,
+      "id": "2831010",
+      "term": "過労自殺",
+      "reading": "かろうじさつ",
+      "meaning": "suicide brought on by excessive overwork",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3437,
+      "id": "2831009",
+      "term": "過労自死",
+      "reading": "かろうじし",
+      "meaning": "suicide brought on by excessive overwork",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3438,
+      "id": "1191670",
+      "term": "夏炉冬扇",
+      "reading": "かろとうせん",
+      "meaning": "summer fires and winter fans / useless things",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3439,
+      "id": "1577200",
+      "term": "可愛い",
+      "reading": "かわいい",
+      "meaning": "cute / adorable / charming",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3440,
+      "id": "1811550",
+      "term": "川魚料理",
+      "reading": "かわうおりょうり",
+      "meaning": "freshwater fish cuisine",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3441,
+      "id": "2112620",
+      "term": "川崎七分",
+      "reading": "かわさきしちぶ",
+      "meaning": "type of baggy tobi trousers with the baggy part taking up seven-tenths of the full length of the trouser leg",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3442,
+      "id": "5464345",
+      "term": "川崎製鉄",
+      "reading": "かわさきせいてつ",
+      "meaning": "Kawasaki Steel Corporation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3443,
+      "id": "5464365",
+      "term": "川崎電気",
+      "reading": "かわさきでんき",
+      "meaning": "Kawaden Corporation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3444,
+      "id": "2561320",
+      "term": "革細工師",
+      "reading": "かわざいくし",
+      "meaning": "leatherworker / leathercrafter",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3445,
+      "id": "2604360",
+      "term": "川真珠貝",
+      "reading": "かわしんじゅがい",
+      "meaning": "Margaritifera laevis (species of freshwater pearl mussel)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3446,
+      "id": "2849079",
+      "term": "蛙狩神事",
+      "reading": "かわずがりしんじ",
+      "meaning": "frog hunting ritual",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3447,
+      "id": "2856366",
+      "term": "為替介入",
+      "reading": "かわせかいにゅう",
+      "meaning": "currency market intervention / foreign exchange intervention",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3448,
+      "id": "1157350",
+      "term": "為替管理",
+      "reading": "かわせかんり",
+      "meaning": "exchange control",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3449,
+      "id": "2043160",
+      "term": "川施餓鬼",
+      "reading": "かわせがき",
+      "meaning": "Buddhist services in memory of those drowned in a river / offering to suffering spirits at the river",
       "rank": null,
       "type": "four"
     }
