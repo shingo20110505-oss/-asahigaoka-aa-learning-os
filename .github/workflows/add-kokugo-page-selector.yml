@@ -29,68 +29,9 @@ jobs:
           p=Path('kokugo-chronologia/meaning-ja-overrides.js')
           s=p.read_text(encoding='utf-8')
           marker='KOKUGO_PAGE_SELECTOR_V1'
+          addon="\n/* KOKUGO_PAGE_SELECTOR_V1 */\n(()=>{'use strict';const install=()=>{const pager=document.getElementById('pager');if(!pager)return;if(!document.getElementById('kokugo-page-selector-style')){const style=document.createElement('style');style.id='kokugo-page-selector-style';style.textContent='#pager .pageJump{display:inline-flex;align-items:center;gap:5px}#pager .pageSelect{appearance:auto;-webkit-appearance:menulist;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:9px;padding:8px 26px 8px 10px;font-size:14px;font-weight:800;min-width:64px;text-align:center}#pager .pageRest{font-size:11px;color:var(--sub);white-space:nowrap}@media(max-width:420px){#pager{gap:5px;margin-left:4px;margin-right:4px}#pager button{padding:8px 10px}#pager .pageSelect{min-width:58px;padding:8px 22px 8px 8px}}';document.head.appendChild(style)}const enhance=()=>{if(pager.querySelector('.pageSelect'))return;const span=Array.from(pager.children).find(el=>el.tagName==='SPAN');if(!span)return;const m=span.textContent.match(/^\\s*(\\d+)\\s*\\/\\s*(\\d+)\\s*(.*)$/);if(!m)return;const current=Number(m[1]),max=Number(m[2]),tail=m[3]||'';const label=document.createElement('label');label.className='pageJump';label.setAttribute('aria-label','ページ番号を選択');const select=document.createElement('select');select.className='pageSelect';select.setAttribute('aria-label','ページ番号');for(let i=1;i<=max;i++){const option=document.createElement('option');option.value=String(i);option.textContent=String(i);if(i===current)option.selected=true;select.appendChild(option)}const rest=document.createElement('span');rest.className='pageRest';rest.textContent='/ '+max+(tail?'　'+tail:'');label.append(select,rest);span.replaceWith(label);select.addEventListener('change',()=>{const target=Number(select.value);if(!Number.isFinite(target)||target===current)return;const button=pager.querySelector(target>current?'#next':'#prev');if(!button||typeof button.onclick!=='function')return;const steps=Math.abs(target-current);for(let i=0;i<steps;i++)button.onclick()})};const observer=new MutationObserver(enhance);observer.observe(pager,{childList:true});enhance()};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install()})();\n"
           if marker not in s:
-              addon=r'''
-/* KOKUGO_PAGE_SELECTOR_V1 */
-(()=>{
-  'use strict';
-  const install=()=>{
-    const pager=document.getElementById('pager');
-    if(!pager)return;
-    if(!document.getElementById('kokugo-page-selector-style')){
-      const style=document.createElement('style');
-      style.id='kokugo-page-selector-style';
-      style.textContent=`
-        #pager .pageJump{display:inline-flex;align-items:center;gap:5px}
-        #pager .pageSelect{appearance:auto;-webkit-appearance:menulist;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:9px;padding:8px 26px 8px 10px;font-size:14px;font-weight:800;min-width:64px;text-align:center}
-        #pager .pageRest{font-size:11px;color:var(--sub);white-space:nowrap}
-        @media(max-width:420px){#pager{gap:5px;margin-left:4px;margin-right:4px}#pager button{padding:8px 10px}#pager .pageSelect{min-width:58px;padding:8px 22px 8px 8px}}
-      `;
-      document.head.appendChild(style);
-    }
-    const enhance=()=>{
-      if(pager.querySelector('.pageSelect'))return;
-      const span=Array.from(pager.children).find(el=>el.tagName==='SPAN');
-      if(!span)return;
-      const m=span.textContent.match(/^\s*(\d+)\s*\/\s*(\d+)\s*(.*)$/);
-      if(!m)return;
-      const current=Number(m[1]), max=Number(m[2]), tail=m[3]||'';
-      const label=document.createElement('label');
-      label.className='pageJump';
-      label.setAttribute('aria-label','ページ番号を選択');
-      const select=document.createElement('select');
-      select.className='pageSelect';
-      select.setAttribute('aria-label','ページ番号');
-      for(let i=1;i<=max;i++){
-        const option=document.createElement('option');
-        option.value=String(i);
-        option.textContent=String(i);
-        if(i===current)option.selected=true;
-        select.appendChild(option);
-      }
-      const rest=document.createElement('span');
-      rest.className='pageRest';
-      rest.textContent=`/ ${max}${tail?'　'+tail:''}`;
-      label.append(select,rest);
-      span.replaceWith(label);
-      select.addEventListener('change',()=>{
-        const target=Number(select.value);
-        if(!Number.isFinite(target)||target===current)return;
-        const button=pager.querySelector(target>current?'#next':'#prev');
-        if(!button||typeof button.onclick!=='function')return;
-        const steps=Math.abs(target-current);
-        for(let i=0;i<steps;i++)button.onclick();
-      });
-    };
-    const observer=new MutationObserver(enhance);
-    observer.observe(pager,{childList:true});
-    enhance();
-  };
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});
-  else install();
-})();
-'''
-              p.write_text(s.rstrip()+"\n"+addon,encoding='utf-8')
+              p.write_text(s.rstrip()+addon,encoding='utf-8')
           assert marker in p.read_text(encoding='utf-8')
           print('Page selector installed')
       - name: Commit and push
