@@ -1,5 +1,5 @@
 'use strict';
-const VERSION='2.5.5-quality2-chronologia1000-kokugo-direct-ja';
+const VERSION='2.5.6-quality2-chronologia1000-bootguard';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;
@@ -7,7 +7,22 @@ const CORE=[url('study-list-nav-v1.js'),url('./'),url('index.html'),url('vocabul
 async function putIfGood(cache,request,response){if(response&&response.ok)await cache.put(request,response.clone());return response}
 async function networkFirst(request,{reload=false}={}){const cache=await caches.open(CACHE_NAME);try{const response=await fetch(request,{cache:reload?'no-store':'no-cache'});return await putIfGood(cache,request,response)}catch(_){return(await cache.match(request))||(await caches.match(request))||null}}
 async function cacheFirstRefresh(request,event){const cache=await caches.open(CACHE_NAME);const cached=await cache.match(request)||await caches.match(request);const refresh=fetch(request).then(r=>putIfGood(cache,request,r)).catch(()=>null);if(cached){event?.waitUntil(refresh);return cached}return(await refresh)||new Response('',{status:504,statusText:'Offline'})}
+async function withChronologiaBootGuard(request,response){
+ if(!response||!response.ok)return response;
+ const u=new URL(request.url);
+ if(!u.pathname.endsWith('/chronologia.html'))return response;
+ const type=response.headers.get('content-type')||'';
+ if(!type.includes('text/html'))return response;
+ try{
+  const html=await response.text();
+  if(html.includes('id="chronologia-boot-guard"'))return new Response(html,{status:response.status,statusText:response.statusText,headers:response.headers});
+  const guard=`<style id="chronologia-boot-guard">html.chronologia-booting .app{opacity:0!important;pointer-events:none!important}html.chronologia-booting body:before{content:"年表を準備中…";position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;background:#eef1f6;color:#152039;font:700 16px -apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Yu Gothic",sans-serif}</style><script id="chronologia-boot-guard-script">(()=>{const h=document.documentElement;h.classList.add('chronologia-booting');let done=false;const reveal=()=>{if(done)return;done=true;h.classList.remove('chronologia-booting')};document.addEventListener('chronologia:content-updated',e=>{if(Number(e.detail?.items)>=1000)requestAnimationFrame(reveal)});const started=Date.now();const timer=setInterval(()=>{const n=Number(h.dataset.chronologiaItems||0);if(n>=1000||h.dataset.chronologiaReady==='1'||Date.now()-started>5000){clearInterval(timer);requestAnimationFrame(reveal)}},40);addEventListener('pageshow',()=>{if(Number(h.dataset.chronologiaItems||0)>=1000)reveal()})})();<\/script>`;
+  const transformed=html.includes('</head>')?html.replace('</head>',guard+'</head>'):guard+html;
+  const headers=new Headers(response.headers);headers.delete('content-length');headers.delete('content-encoding');headers.delete('etag');
+  return new Response(transformed,{status:response.status,statusText:response.statusText,headers});
+ }catch(_){return response}
+}
 self.addEventListener('install',event=>{event.waitUntil((async()=>{const cache=await caches.open(CACHE_NAME);await Promise.all(CORE.map(async href=>{try{const r=await fetch(href,{cache:'reload'});if(r.ok)await cache.put(href,r)}catch(_){}}));await self.skipWaiting()})())});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('asahigaoka-aa-os-')&&k!==CACHE_NAME).map(k=>caches.delete(k)));await self.clients.claim()})())});
 self.addEventListener('message',event=>{if(event.data?.type==='SKIP_WAITING')self.skipWaiting();if(event.data?.type==='CLEAR_RUNTIME_CACHE')event.waitUntil(caches.delete(CACHE_NAME))});
-self.addEventListener('fetch',event=>{const request=event.request;if(request.method!=='GET')return;const u=new URL(request.url);if(u.origin!==self.location.origin||!u.href.startsWith(BASE))return;if(request.mode==='navigate'){event.respondWith((async()=>{const fresh=await networkFirst(request);if(fresh)return fresh;return(await caches.match(request))||(await caches.match(url('index.html')))||(await caches.match(url('offline.html')))||new Response('Offline',{status:503})})());return}const ext=(u.pathname.split('.').pop()||'').toLowerCase();if(ext==='js'||ext==='css'||ext==='json'||ext==='webmanifest'){event.respondWith((async()=>{const fresh=await networkFirst(request,{reload:ext==='js'||u.pathname.endsWith('review-bank-v1.js')});return fresh||new Response('',{status:504,statusText:'Offline'})})());return}event.respondWith(cacheFirstRefresh(request,event))});
+self.addEventListener('fetch',event=>{const request=event.request;if(request.method!=='GET')return;const u=new URL(request.url);if(u.origin!==self.location.origin||!u.href.startsWith(BASE))return;if(request.mode==='navigate'){event.respondWith((async()=>{const fresh=await networkFirst(request);if(fresh)return withChronologiaBootGuard(request,fresh);const fallback=(await caches.match(request))||(await caches.match(url('index.html')))||(await caches.match(url('offline.html')))||new Response('Offline',{status:503});return withChronologiaBootGuard(request,fallback)})());return}const ext=(u.pathname.split('.').pop()||'').toLowerCase();if(ext==='js'||ext==='css'||ext==='json'||ext==='webmanifest'){event.respondWith((async()=>{const fresh=await networkFirst(request,{reload:ext==='js'||u.pathname.endsWith('review-bank-v1.js')});return fresh||new Response('',{status:504,statusText:'Offline'})})());return}event.respondWith(cacheFirstRefresh(request,event))});
