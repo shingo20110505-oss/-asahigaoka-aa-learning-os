@@ -126,8 +126,8 @@ const items=[
     unit:'植物の分類',
     title:'問25・26 ゼニゴケの雌株と植物の分類',
     question:'写真の問(25)(26)を解く。問(25)はゼニゴケの雌株がA・Bのどちらか。問(26)はア〜コの植物を、コケ植物・シダ植物・裸子植物・双子葉類・単子葉類に分類する。',
-    image:'assets/20260812-science-q25-q26.svg',
-    imageAlt:'問25・26の問題写真。ゼニゴケの雌株判定と、スギゴケ・イヌワラビ・ツユクサ・イチョウ・ツツジ・スギナ・スギ・サクラ・ゼニゴケ・トウモロコシの分類問題。',
+    image:'assets/20260812-science-q25-q26-v2.svg',
+    imageAlt:'問25・26を再作成したベクター問題図。ゼニゴケの雌株判定と、スギゴケ・イヌワラビ・ツユクサ・イチョウ・ツツジ・スギナ・スギ・サクラ・ゼニゴケ・トウモロコシの分類問題。',
     answer:'(25) B。 (26) コケ植物：ア・ケ／シダ植物：イ・カ／裸子植物：エ・キ／双子葉類：オ・ク／単子葉類：ウ・コ。',
     why:'ゼニゴケの雌株には、柄の先が傘の骨のように放射状に分かれた雌器托ができます。植物の分類は、コケ植物（スギゴケ・ゼニゴケ）、シダ植物（イヌワラビ・スギナ）、裸子植物（イチョウ・スギ）、被子植物の双子葉類（ツツジ・サクラ）、単子葉類（ツユクサ・トウモロコシ）で整理します。',
     examples:[
@@ -177,6 +177,6 @@ const items=[
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.8';
+window.AA_REVIEW_BANK_VERSION='1.0.9';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
