@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 6850,
-  "english_only_remaining": 8150,
+  "already_direct_japanese": 6900,
+  "english_only_remaining": 8100,
   "english_only_rank_counts": {
-    "(blank)": 8150
+    "(blank)": 8100
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 6850,
-      "id": "2044590",
-      "term": "衒学趣味",
-      "reading": "げんがくしゅみ",
-      "meaning": "pedantry / display of one's learning / being of a pedantic disposition"
-    },
-    {
-      "source_index": 6851,
-      "id": "2044620",
-      "term": "元気旺盛",
-      "reading": "げんきおうせい",
-      "meaning": "brimming with vitality / full of vigor / full of life"
-    },
-    {
-      "source_index": 6852,
-      "id": "2669810",
-      "term": "元気回復",
-      "reading": "げんきかいふく",
-      "meaning": "recovering one's spirits / rejuvenation / refection"
-    },
-    {
-      "source_index": 6853,
-      "id": "2044630",
-      "term": "元気はつらつ",
-      "reading": "げんきはつらつ",
-      "meaning": "full of energy / full of liveliness / full of pep"
-    },
-    {
-      "source_index": 6854,
-      "id": "2758870",
-      "term": "元気百倍",
-      "reading": "げんきひゃくばい",
-      "meaning": "extremely healthy / lively / in good spirits"
-    },
-    {
-      "source_index": 6855,
-      "id": "2842853",
-      "term": "原級留置",
-      "reading": "げんきゅうりゅうち",
-      "meaning": "repeating a school grade / grade retention / grade repetition"
-    },
-    {
-      "source_index": 6856,
-      "id": "2837508",
-      "term": "現況有姿",
-      "reading": "げんきょうゆうし",
-      "meaning": "as is / in (its) present state / in (its) present condition"
-    },
-    {
-      "source_index": 6857,
-      "id": "1716120",
-      "term": "現金書留",
-      "reading": "げんきんかきとめ",
-      "meaning": "registered mail for the purpose of sending money"
-    },
-    {
-      "source_index": 6858,
-      "id": "2843985",
-      "term": "現金給付",
-      "reading": "げんきんきゅうふ",
-      "meaning": "cash disbursement (e.g. for care of elderly) / cash benefit"
-    },
-    {
-      "source_index": 6859,
-      "id": "2833109",
-      "term": "現金資産",
-      "reading": "げんきんしさん",
-      "meaning": "cash assets"
-    },
-    {
-      "source_index": 6860,
-      "id": "1934470",
-      "term": "現金収入",
-      "reading": "げんきんしゅうにゅう",
-      "meaning": "(having) a cash income"
-    },
-    {
-      "source_index": 6861,
-      "id": "1263610",
-      "term": "現金正価",
-      "reading": "げんきんせいか",
-      "meaning": "cash price"
-    },
-    {
-      "source_index": 6862,
-      "id": "1992150",
-      "term": "現金注入",
-      "reading": "げんきんちゅうにゅう",
-      "meaning": "cash infusion"
-    },
-    {
-      "source_index": 6863,
-      "id": "2432310",
-      "term": "現金通貨",
-      "reading": "げんきんつうか",
-      "meaning": "cash currency in circulation / physical currency"
-    },
-    {
-      "source_index": 6864,
-      "id": "1992160",
-      "term": "現金投資",
-      "reading": "げんきんとうし",
-      "meaning": "cash investment"
-    },
-    {
-      "source_index": 6865,
-      "id": "2831596",
-      "term": "現金取引",
-      "reading": "げんきんとりひき",
-      "meaning": "cash transaction"
-    },
-    {
-      "source_index": 6866,
-      "id": "1949800",
-      "term": "現金問屋",
-      "reading": "げんきんどんや",
-      "meaning": "cash-basis wholesaler"
-    },
-    {
-      "source_index": 6867,
-      "id": "2631530",
-      "term": "現金不足",
-      "reading": "げんきんぶそく",
-      "meaning": "cash shortage / illiquidity"
-    },
-    {
-      "source_index": 6868,
-      "id": "2713870",
-      "term": "現業官庁",
-      "reading": "げんぎょうかんちょう",
-      "meaning": "government agency providing public services / government agency involved in public enterprise"
-    },
-    {
-      "source_index": 6869,
-      "id": "1264480",
-      "term": "言行一致",
-      "reading": "げんこういっち",
-      "meaning": "acting up to one's words / consistency between speech and action"
-    },
-    {
-      "source_index": 6870,
-      "id": "2044650",
-      "term": "言行齟齬",
-      "reading": "げんこうそご",
-      "meaning": "inconsistency of speech and action / failing to act up to one's words / not practicing what one preaches"
-    },
-    {
-      "source_index": 6871,
-      "id": "2787760",
-      "term": "現行犯人",
-      "reading": "げんこうはんにん",
-      "meaning": "flagrant offender"
-    },
-    {
-      "source_index": 6872,
-      "id": "1934480",
-      "term": "現行法規",
-      "reading": "げんこうほうき",
-      "meaning": "existing laws / regulations now (at present) in force"
-    },
-    {
-      "source_index": 6873,
-      "id": "1261370",
-      "term": "原稿用紙",
-      "reading": "げんこうようし",
-      "meaning": "Japanese writing paper (lined with a square grid, one square per character) / manuscript paper"
-    },
-    {
-      "source_index": 6874,
-      "id": "2145080",
-      "term": "原告適格",
-      "reading": "げんこくてきかく",
-      "meaning": "standing (of a legal case, e.g. whether there are grounds to prosecute)"
-    },
-    {
-      "source_index": 6875,
-      "id": "1920690",
-      "term": "言語運用",
-      "reading": "げんごうんよう",
-      "meaning": "(linguistic) performance"
-    },
-    {
-      "source_index": 6876,
-      "id": "2397500",
-      "term": "言語獲得",
-      "reading": "げんごかくとく",
-      "meaning": "language acquisition"
-    },
-    {
-      "source_index": 6877,
-      "id": "2657320",
-      "term": "言語活動",
-      "reading": "げんごかつどう",
-      "meaning": "linguistic activity"
-    },
-    {
-      "source_index": 6878,
-      "id": "1264440",
-      "term": "言語学者",
-      "reading": "げんごがくしゃ",
-      "meaning": "linguist"
-    },
-    {
-      "source_index": 6879,
-      "id": "2861659",
-      "term": "言語学的",
-      "reading": "げんごがくてき",
-      "meaning": "linguistic"
-    },
-    {
-      "source_index": 6880,
-      "id": "1920720",
-      "term": "言語機能",
-      "reading": "げんごきのう",
-      "meaning": "language faculty"
-    },
-    {
-      "source_index": 6881,
-      "id": "1934600",
-      "term": "言語教育",
-      "reading": "げんごきょういく",
-      "meaning": "language education"
-    },
-    {
-      "source_index": 6882,
-      "id": "2353750",
-      "term": "言語結合",
-      "reading": "げんごけつごう",
-      "meaning": "language binding"
-    },
-    {
-      "source_index": 6883,
-      "id": "2610590",
-      "term": "言語行為",
-      "reading": "げんごこうい",
-      "meaning": "speech act"
-    },
-    {
-      "source_index": 6884,
-      "id": "2422800",
-      "term": "言語交換",
-      "reading": "げんごこうかん",
-      "meaning": "language exchange"
-    },
-    {
-      "source_index": 6885,
-      "id": "2657310",
-      "term": "言語行動",
-      "reading": "げんごこうどう",
-      "meaning": "verbal behaviour / language behaviour"
-    },
-    {
-      "source_index": 6886,
-      "id": "1756560",
-      "term": "言語障害",
-      "reading": "げんごしょうがい",
-      "meaning": "language disorder / speech disorder / speech impediment"
-    },
-    {
-      "source_index": 6887,
-      "id": "2532820",
-      "term": "言語資料",
-      "reading": "げんごしりょう",
-      "meaning": "corpus / linguistic data / text corpus"
-    },
-    {
-      "source_index": 6888,
-      "id": "2828796",
-      "term": "言語新作",
-      "reading": "げんごしんさく",
-      "meaning": "neologism (invention of words that have meaning only to the person who uses them)"
-    },
-    {
-      "source_index": 6889,
-      "id": "2855078",
-      "term": "言語純化",
-      "reading": "げんごじゅんか",
-      "meaning": "linguistic purism / linguistic protectionism"
-    },
-    {
-      "source_index": 6890,
-      "id": "2744950",
-      "term": "言語生活",
-      "reading": "げんごせいかつ",
-      "meaning": "linguistic aspects of life / linguistic behaviour"
-    },
-    {
-      "source_index": 6891,
-      "id": "2832807",
-      "term": "言語政策",
-      "reading": "げんごせいさく",
-      "meaning": "language policy"
-    },
-    {
-      "source_index": 6892,
-      "id": "2757600",
-      "term": "言語接触",
-      "reading": "げんごせっしょく",
-      "meaning": "language contact"
-    },
-    {
-      "source_index": 6893,
-      "id": "2856523",
-      "term": "言語喪失",
-      "reading": "げんごそうしつ",
-      "meaning": "language attrition (process of losing a native or first language) / linguistic attrition"
-    },
-    {
-      "source_index": 6894,
-      "id": "2353780",
-      "term": "言語対象",
-      "reading": "げんごたいしょう",
-      "meaning": "language object"
-    },
-    {
-      "source_index": 6895,
-      "id": "1920730",
-      "term": "言語知識",
-      "reading": "げんごちしき",
-      "meaning": "knowledge of language"
-    },
-    {
-      "source_index": 6896,
-      "id": "2432500",
-      "term": "言語地図",
-      "reading": "げんごちず",
-      "meaning": "linguistic map / linguistic atlas"
-    },
-    {
-      "source_index": 6897,
-      "id": "1756530",
-      "term": "言語中枢",
-      "reading": "げんごちゅうすう",
-      "meaning": "language center (brain) / language centre"
-    },
-    {
-      "source_index": 6898,
-      "id": "1756550",
-      "term": "言語地理",
-      "reading": "げんごちり",
-      "meaning": "linguistic geography"
-    },
-    {
-      "source_index": 6899,
-      "id": "2871761",
-      "term": "言語治療",
-      "reading": "げんごちりょう",
-      "meaning": "speech therapy"
-    },
     {
       "source_index": 6900,
       "id": "2837067",
@@ -7010,6 +6660,356 @@
       "term": "国語学会",
       "reading": "こくごがっかい",
       "meaning": "Society for the Study of Japanese Language"
+    },
+    {
+      "source_index": 7850,
+      "id": "2863230",
+      "term": "国語教育",
+      "reading": "こくごきょういく",
+      "meaning": "Japanese language education (for Japanese people) / teaching of Japanese"
+    },
+    {
+      "source_index": 7851,
+      "id": "2839093",
+      "term": "国語辞書",
+      "reading": "こくごじしょ",
+      "meaning": "Japanese-language dictionary"
+    },
+    {
+      "source_index": 7852,
+      "id": "1657340",
+      "term": "国語辞典",
+      "reading": "こくごじてん",
+      "meaning": "Japanese-language dictionary"
+    },
+    {
+      "source_index": 7853,
+      "id": "2863662",
+      "term": "国際運河",
+      "reading": "こくさいうんが",
+      "meaning": "international canal"
+    },
+    {
+      "source_index": 7854,
+      "id": "2770880",
+      "term": "国際映像",
+      "reading": "こくさいえいぞう",
+      "meaning": "international video feed"
+    },
+    {
+      "source_index": 7855,
+      "id": "2851030",
+      "term": "国際海峡",
+      "reading": "こくさいかいきょう",
+      "meaning": "international strait"
+    },
+    {
+      "source_index": 7856,
+      "id": "1746810",
+      "term": "国際会議",
+      "reading": "こくさいかいぎ",
+      "meaning": "international conference"
+    },
+    {
+      "source_index": 7857,
+      "id": "2666860",
+      "term": "国際貨物",
+      "reading": "こくさいかもつ",
+      "meaning": "international cargo"
+    },
+    {
+      "source_index": 7858,
+      "id": "2045090",
+      "term": "国際感覚",
+      "reading": "こくさいかんかく",
+      "meaning": "cosmopolitan (international) way of thinking / feeling for the wider world"
+    },
+    {
+      "source_index": 7859,
+      "id": "1286430",
+      "term": "国際関係",
+      "reading": "こくさいかんけい",
+      "meaning": "international relations"
+    },
+    {
+      "source_index": 7860,
+      "id": "2855176",
+      "term": "国際学校",
+      "reading": "こくさいがっこう",
+      "meaning": "international school"
+    },
+    {
+      "source_index": 7861,
+      "id": "1286450",
+      "term": "国際規格",
+      "reading": "こくさいきかく",
+      "meaning": "international standard"
+    },
+    {
+      "source_index": 7862,
+      "id": "1286440",
+      "term": "国際機関",
+      "reading": "こくさいきかん",
+      "meaning": "international organization / international organisation"
+    },
+    {
+      "source_index": 7863,
+      "id": "2132750",
+      "term": "国際機構",
+      "reading": "こくさいきこう",
+      "meaning": "international organization"
+    },
+    {
+      "source_index": 7864,
+      "id": "1286460",
+      "term": "国際規模",
+      "reading": "こくさいきぼ",
+      "meaning": "international scale"
+    },
+    {
+      "source_index": 7865,
+      "id": "1993050",
+      "term": "国際競争",
+      "reading": "こくさいきょうそう",
+      "meaning": "global competition"
+    },
+    {
+      "source_index": 7866,
+      "id": "2424540",
+      "term": "国際協調",
+      "reading": "こくさいきょうちょう",
+      "meaning": "international cooperation / international harmony"
+    },
+    {
+      "source_index": 7867,
+      "id": "1935550",
+      "term": "国際協定",
+      "reading": "こくさいきょうてい",
+      "meaning": "international agreement / accord"
+    },
+    {
+      "source_index": 7868,
+      "id": "2407040",
+      "term": "国際協力",
+      "reading": "こくさいきょうりょく",
+      "meaning": "international cooperation"
+    },
+    {
+      "source_index": 7869,
+      "id": "2185310",
+      "term": "国際緊張",
+      "reading": "こくさいきんちょう",
+      "meaning": "international tension / international tensions"
+    },
+    {
+      "source_index": 7870,
+      "id": "2407050",
+      "term": "国際金融",
+      "reading": "こくさいきんゆう",
+      "meaning": "international finance"
+    },
+    {
+      "source_index": 7871,
+      "id": "2546300",
+      "term": "国際業務",
+      "reading": "こくさいぎょうむ",
+      "meaning": "international service / international affairs"
+    },
+    {
+      "source_index": 7872,
+      "id": "1286470",
+      "term": "国際空港",
+      "reading": "こくさいくうこう",
+      "meaning": "international airport"
+    },
+    {
+      "source_index": 7873,
+      "id": "2174260",
+      "term": "国際警察",
+      "reading": "こくさいけいさつ",
+      "meaning": "international police"
+    },
+    {
+      "source_index": 7874,
+      "id": "2657990",
+      "term": "国際経済",
+      "reading": "こくさいけいざい",
+      "meaning": "international economy"
+    },
+    {
+      "source_index": 7875,
+      "id": "2407060",
+      "term": "国際契約",
+      "reading": "こくさいけいやく",
+      "meaning": "international contract (agreement)"
+    },
+    {
+      "source_index": 7876,
+      "id": "1746870",
+      "term": "国際結婚",
+      "reading": "こくさいけっこん",
+      "meaning": "international marriage"
+    },
+    {
+      "source_index": 7877,
+      "id": "2859621",
+      "term": "国際貢献",
+      "reading": "こくさいこうけん",
+      "meaning": "international contribution / contributing to the wider world"
+    },
+    {
+      "source_index": 7878,
+      "id": "2407000",
+      "term": "国際公法",
+      "reading": "こくさいこうほう",
+      "meaning": "public international law"
+    },
+    {
+      "source_index": 7879,
+      "id": "1286480",
+      "term": "国際交流",
+      "reading": "こくさいこうりゅう",
+      "meaning": "international exchange"
+    },
+    {
+      "source_index": 7880,
+      "id": "2847567",
+      "term": "国際小包",
+      "reading": "こくさいこづつみ",
+      "meaning": "international parcel post (Japan Post international mail service for packages weighing less than 30 kg)"
+    },
+    {
+      "source_index": 7881,
+      "id": "1993000",
+      "term": "国債先物",
+      "reading": "こくさいさきもの",
+      "meaning": "government bond futures"
+    },
+    {
+      "source_index": 7882,
+      "id": "1286490",
+      "term": "国際市場",
+      "reading": "こくさいしじょう",
+      "meaning": "international market"
+    },
+    {
+      "source_index": 7883,
+      "id": "2585980",
+      "term": "国際指標",
+      "reading": "こくさいしひょう",
+      "meaning": "international index"
+    },
+    {
+      "source_index": 7884,
+      "id": "2407070",
+      "term": "国際私法",
+      "reading": "こくさいしほう",
+      "meaning": "private international law / conflict of laws"
+    },
+    {
+      "source_index": 7885,
+      "id": "1286500",
+      "term": "国際社会",
+      "reading": "こくさいしゃかい",
+      "meaning": "international community / international society"
+    },
+    {
+      "source_index": 7886,
+      "id": "5294493",
+      "term": "国際試薬",
+      "reading": "こくさいしやく",
+      "meaning": "International Reagents Corporation"
+    },
+    {
+      "source_index": 7887,
+      "id": "1746800",
+      "term": "国際収支",
+      "reading": "こくさいしゅうし",
+      "meaning": "international balance of payments"
+    },
+    {
+      "source_index": 7888,
+      "id": "1746790",
+      "term": "国際主義",
+      "reading": "こくさいしゅぎ",
+      "meaning": "internationalism"
+    },
+    {
+      "source_index": 7889,
+      "id": "2840710",
+      "term": "国際手話",
+      "reading": "こくさいしゅわ",
+      "meaning": "International Sign (pidgin sign language) / IS"
+    },
+    {
+      "source_index": 7890,
+      "id": "2356890",
+      "term": "国際書誌",
+      "reading": "こくさいしょし",
+      "meaning": "international bibliography"
+    },
+    {
+      "source_index": 7891,
+      "id": "1935580",
+      "term": "国際親善",
+      "reading": "こくさいしんぜん",
+      "meaning": "international goodwill"
+    },
+    {
+      "source_index": 7892,
+      "id": "2862239",
+      "term": "国際試合",
+      "reading": "こくさいじあい",
+      "meaning": "international game / international match"
+    },
+    {
+      "source_index": 7893,
+      "id": "1935560",
+      "term": "国際情勢",
+      "reading": "こくさいじょうせい",
+      "meaning": "international situation"
+    },
+    {
+      "source_index": 7894,
+      "id": "1935570",
+      "term": "国際条約",
+      "reading": "こくさいじょうやく",
+      "meaning": "international treaty"
+    },
+    {
+      "source_index": 7895,
+      "id": "2045100",
+      "term": "国際場裡",
+      "reading": "こくさいじょうり",
+      "meaning": "the international arena"
+    },
+    {
+      "source_index": 7896,
+      "id": "2835875",
+      "term": "国際水域",
+      "reading": "こくさいすいいき",
+      "meaning": "international waters / high seas"
+    },
+    {
+      "source_index": 7897,
+      "id": "1935590",
+      "term": "国際政治",
+      "reading": "こくさいせいじ",
+      "meaning": "international politics / world politics"
+    },
+    {
+      "source_index": 7898,
+      "id": "2834168",
+      "term": "国際送金",
+      "reading": "こくさいそうきん",
+      "meaning": "international money transfer / overseas remittance"
+    },
+    {
+      "source_index": 7899,
+      "id": "1993130",
+      "term": "国際組織",
+      "reading": "こくさいそしき",
+      "meaning": "international organization / international organisation"
     }
   ]
 }
