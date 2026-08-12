@@ -1,5 +1,5 @@
 'use strict';
-const VERSION='2.3.9-kokugo-tablefix';
+const VERSION='2.3.9-quality2-chronologia1000-kokugo-tablefix';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;
