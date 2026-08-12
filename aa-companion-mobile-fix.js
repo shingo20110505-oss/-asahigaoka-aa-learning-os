@@ -13,7 +13,9 @@ function resetTodayLoginTest(){
   return true;
  }catch(_){return false}
 }
-function loadLayoutGuard(){loadScript('aa-mobile-layout-guard-loader','./mobile-layout-guard-v1.js?v=1.0.0')}
+function loadLayoutGuard(){loadScript('aa-mobile-layout-guard-loader','./mobile-layout-guard-v1.js?v=1.0.1')}
+function loadReadingGloss(){loadScript('aa-reading-gloss-tap-loader','./reading-gloss-tap-v1.js?v=1.0.0')}
+function loadReadingJapaneseFix(){loadScript('aa-reading-v23-ja-fix-loader','./reading-v23-ja-fix-v1.js?v=1.0.0')}
 function loadSettings(){loadScript('aa-pet-settings-loader','./v23-pet-settings.js?compat=229-loginzip1')}
 function loadV23(){loadScript('aa-v23-loader','./v23-loader.js?compat=229-question-quality1')}
 function loadLogin(){loadScript('aa-login-companion-loader','./login-companion-v1.js?v=1.2.0')}
@@ -98,8 +100,11 @@ function wire(){if(!window.Companion7){setTimeout(wire,80);return}if(window.__AA
 }
 if(resetTodayLoginTest())return;
 loadLayoutGuard();
+loadReadingGloss();
+document.addEventListener('aa:v23ready',loadReadingJapaneseFix,{once:true});
 installEnglishClozeDedup();
 installEnglishPhraseQuestionFix();
 loadSettings();loadV23();loadLogin();loadExplosionAnalytics();loadDailyAnalytics();loadProductionLoginTest();loadSettingsImprovements();
+setTimeout(()=>{if(window.AA_V23_STATS)loadReadingJapaneseFix()},1800);
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{installVocabOnlyPageLink();wire()},{once:true});else{installVocabOnlyPageLink();wire()}
 })();
