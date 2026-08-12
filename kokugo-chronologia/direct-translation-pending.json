@@ -1,466 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 2350,
-  "english_only_remaining": 12650,
+  "already_direct_japanese": 2400,
+  "english_only_remaining": 12600,
   "english_only_rank_counts": {
-    "(blank)": 12650
+    "(blank)": 12600
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 2350,
-      "id": "1976670",
-      "term": "海岸平野",
-      "reading": "かいがんへいや",
-      "meaning": "coastal plain",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2351,
-      "id": "1670350",
-      "term": "怪奇映画",
-      "reading": "かいきえいが",
-      "meaning": "horror film",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2352,
-      "id": "2814580",
-      "term": "回帰係数",
-      "reading": "かいきけいすう",
-      "meaning": "regression coefficient",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2353,
-      "id": "1931720",
-      "term": "皆既月食",
-      "reading": "かいきげっしょく",
-      "meaning": "total eclipse of the Moon",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2354,
-      "id": "2830051",
-      "term": "怪奇現象",
-      "reading": "かいきげんしょう",
-      "meaning": "unnatural phenomenon / strange happenings / haunting",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2355,
-      "id": "1670340",
-      "term": "怪奇小説",
-      "reading": "かいきしょうせつ",
-      "meaning": "Gothic novel / supernatural horror novel",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2356,
-      "id": "1202200",
-      "term": "皆既日食",
-      "reading": "かいきにっしょく",
-      "meaning": "total solar eclipse",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2357,
-      "id": "1976250",
-      "term": "回帰分析",
-      "reading": "かいきぶんせき",
-      "meaning": "regression analysis",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2358,
-      "id": "1727420",
-      "term": "階級意識",
-      "reading": "かいきゅういしき",
-      "meaning": "class consciousness",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2359,
-      "id": "2147280",
-      "term": "階級差別",
-      "reading": "かいきゅうさべつ",
-      "meaning": "classism / class discrimination",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2360,
-      "id": "1727410",
-      "term": "階級社会",
-      "reading": "かいきゅうしゃかい",
-      "meaning": "class society / class-based society / hierarchical society",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2361,
-      "id": "1977470",
-      "term": "階級政党",
-      "reading": "かいきゅうせいとう",
-      "meaning": "class party",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2362,
-      "id": "2612680",
-      "term": "階級制度",
-      "reading": "かいきゅうせいど",
-      "meaning": "class system / caste system / hierarchical system",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2363,
-      "id": "1203060",
-      "term": "階級闘争",
-      "reading": "かいきゅうとうそう",
-      "meaning": "class struggle / class warfare / class conflict",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2364,
-      "id": "1668530",
-      "term": "回教寺院",
-      "reading": "かいきょうじいん",
-      "meaning": "mosque",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2365,
-      "id": "1670550",
-      "term": "懐疑主義",
-      "reading": "かいぎしゅぎ",
-      "meaning": "skepticism / scepticism",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2366,
-      "id": "2344800",
-      "term": "会議資料",
-      "reading": "かいぎしりょう",
-      "meaning": "records / transactions",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2367,
-      "id": "1198370",
-      "term": "会議事項",
-      "reading": "かいぎじこう",
-      "meaning": "agenda",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2368,
-      "id": "1198410",
-      "term": "会議日程",
-      "reading": "かいぎにってい",
-      "meaning": "conference program / conference programme",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2369,
-      "id": "1976680",
-      "term": "海技免状",
-      "reading": "かいぎめんじょう",
-      "meaning": "seamen's competency certificate",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2370,
-      "id": "2345380",
-      "term": "改行文字",
-      "reading": "かいぎょうもじ",
-      "meaning": "newline character",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2371,
-      "id": "1931640",
-      "term": "海軍基地",
-      "reading": "かいぐんきち",
-      "meaning": "naval base",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2372,
-      "id": "2530330",
-      "term": "海軍工廠",
-      "reading": "かいぐんこうしょう",
-      "meaning": "naval arsenal / naval shipyard",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2373,
-      "id": "2446930",
-      "term": "海軍将官",
-      "reading": "かいぐんしょうかん",
-      "meaning": "admiral / flag officer",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2374,
-      "id": "1772810",
-      "term": "海軍大臣",
-      "reading": "かいぐんだいじん",
-      "meaning": "Minister of the Navy",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2375,
-      "id": "2735770",
-      "term": "海軍中将",
-      "reading": "かいぐんちゅうじょう",
-      "meaning": "vice-admiral",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2376,
-      "id": "1198460",
-      "term": "会計監査",
-      "reading": "かいけいかんさ",
-      "meaning": "audit / auditing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2377,
-      "id": "1989380",
-      "term": "会計疑惑",
-      "reading": "かいけいぎわく",
-      "meaning": "accounting scandal",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2378,
-      "id": "1976120",
-      "term": "会計検査",
-      "reading": "かいけいけんさ",
-      "meaning": "audit",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2379,
-      "id": "2852065",
-      "term": "会計参与",
-      "reading": "かいけいさんよ",
-      "meaning": "accounting advisor",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2380,
-      "id": "2344810",
-      "term": "会計処理",
-      "reading": "かいけいしょり",
-      "meaning": "accounting / (the) accounting process / account processing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2381,
-      "id": "1989390",
-      "term": "会計実務",
-      "reading": "かいけいじつむ",
-      "meaning": "accounting practice",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2382,
-      "id": "2852090",
-      "term": "会計帳簿",
-      "reading": "かいけいちょうぼ",
-      "meaning": "account book / book of account / ledger",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2383,
-      "id": "1198490",
-      "term": "会計年度",
-      "reading": "かいけいねんど",
-      "meaning": "fiscal year",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2384,
-      "id": "2832646",
-      "term": "会稽の恥",
-      "reading": "かいけいのはじ",
-      "meaning": "humiliation of defeat in battle / past humiliation by others / shame of an unendurable disgrace",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2385,
-      "id": "2832647",
-      "term": "会稽の恥を雪ぐ",
-      "reading": "かいけいのはじをすすぐ",
-      "meaning": "to avenge a defeat / to regain one's honor",
-      "rank": null,
-      "type": "idiom"
-    },
-    {
-      "source_index": 2386,
-      "id": "1931460",
-      "term": "会計報告",
-      "reading": "かいけいほうこく",
-      "meaning": "treasurer's report / financial report",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2387,
-      "id": "2847819",
-      "term": "解決不能",
-      "reading": "かいけつふのう",
-      "meaning": "unsolvable",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2388,
-      "id": "2137990",
-      "term": "解決方法",
-      "reading": "かいけつほうほう",
-      "meaning": "way of solving (a problem) / solution",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2389,
-      "id": "2851178",
-      "term": "改憲論者",
-      "reading": "かいけんろんしゃ",
-      "meaning": "proponent of constitutional reform / constitutional revisionist",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2390,
-      "id": "2042560",
-      "term": "開眼供養",
-      "reading": "かいげんくよう",
-      "meaning": "ceremony to consecrate a newly made Buddhist statue or image by inserting the eyes (thereby investing it with soul)",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2391,
-      "id": "1202650",
-      "term": "開口一番",
-      "reading": "かいこういちばん",
-      "meaning": "at the very beginning of one's speech / immediately upon opening one's mouth (to speak) / before anything else",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2392,
-      "id": "2714360",
-      "term": "蟹行文字",
-      "reading": "かいこうもんじ",
-      "meaning": "cross-wise writing / alphabet usually written horizontally",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2393,
-      "id": "2821790",
-      "term": "戒告処分",
-      "reading": "かいこくしょぶん",
-      "meaning": "punishment by formal warning / punishing someone by a reprimand",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2394,
-      "id": "2030220",
-      "term": "懐古趣味",
-      "reading": "かいこしゅみ",
-      "meaning": "nostalgia for the good old days / taste for the past / retro tastes",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2395,
-      "id": "2019250",
-      "term": "解雇通知",
-      "reading": "かいこつうち",
-      "meaning": "dismissal notice / pink slip (US)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2396,
-      "id": "2560070",
-      "term": "皆婚社会",
-      "reading": "かいこんしゃかい",
-      "meaning": "marriage-oriented society (in which most people are married, usu. at a young age)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2397,
-      "id": "1976140",
-      "term": "会合周期",
-      "reading": "かいごうしゅうき",
-      "meaning": "synodic period",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2398,
-      "id": "2838742",
-      "term": "下位互換",
-      "reading": "かいごかん",
-      "meaning": "upward compatible / forward compatible / compatible with input or components intended for higher tier or later systems, versions, etc.",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2399,
-      "id": "2842883",
-      "term": "介護殺人",
-      "reading": "かいごさつじん",
-      "meaning": "killing by caregivers / caretaker homicide / nursing care killing",
-      "rank": null,
-      "type": "four"
-    },
     {
       "source_index": 2400,
       "id": "2411910",
@@ -9008,6 +8558,456 @@
       "term": "株主責任",
       "reading": "かぶぬしせきにん",
       "meaning": "shareholder responsibility / stockholder liability",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3350,
+      "id": "1209020",
+      "term": "株主総会",
+      "reading": "かぶぬしそうかい",
+      "meaning": "general meeting of stockholders",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3351,
+      "id": "1989780",
+      "term": "株主投票",
+      "reading": "かぶぬしとうひょう",
+      "meaning": "shareholder vote",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3352,
+      "id": "2868623",
+      "term": "株主優待",
+      "reading": "かぶぬしゆうたい",
+      "meaning": "shareholder benefit",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3353,
+      "id": "1195940",
+      "term": "貨幣価値",
+      "reading": "かへいかち",
+      "meaning": "currency value",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3354,
+      "id": "1803540",
+      "term": "貨幣経済",
+      "reading": "かへいけいざい",
+      "meaning": "monetary economy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3355,
+      "id": "2162650",
+      "term": "貨幣錯覚",
+      "reading": "かへいさっかく",
+      "meaning": "money illusion",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3356,
+      "id": "2827957",
+      "term": "嘉平次平",
+      "reading": "かへいじひら",
+      "meaning": "hakama fabric made from meisen silk",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3357,
+      "id": "1803530",
+      "term": "貨幣制度",
+      "reading": "かへいせいど",
+      "meaning": "monetary system / currency system",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3358,
+      "id": "2831012",
+      "term": "貨幣創出",
+      "reading": "かへいそうしゅつ",
+      "meaning": "money creation",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3359,
+      "id": "1975680",
+      "term": "貨幣同盟",
+      "reading": "かへいどうめい",
+      "meaning": "monetary union",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3360,
+      "id": "1777810",
+      "term": "可変資本",
+      "reading": "かへんしほん",
+      "meaning": "variable capital",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3361,
+      "id": "2872376",
+      "term": "可変焦点",
+      "reading": "かへんしょうてん",
+      "meaning": "varifocal / variable focus",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3362,
+      "id": "2161490",
+      "term": "可変費用",
+      "reading": "かへんひよう",
+      "meaning": "variable cost",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3363,
+      "id": "2856762",
+      "term": "可変容量",
+      "reading": "かへんようりょう",
+      "meaning": "variable capacity / variable capacitance",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3364,
+      "id": "2810570",
+      "term": "下放運動",
+      "reading": "かほううんどう",
+      "meaning": "Rustication Movement / movement in China in 1957 to get people to move to the countryside",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3365,
+      "id": "1974550",
+      "term": "加法混色",
+      "reading": "かほうこんしょく",
+      "meaning": "additive mixture of colors / additive mixture of colours",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3366,
+      "id": "2043120",
+      "term": "下方修正",
+      "reading": "かほうしゅうせい",
+      "meaning": "downward adjustment / downward revision",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3367,
+      "id": "2829975",
+      "term": "加法定理",
+      "reading": "かほうていり",
+      "meaning": "trigonometric addition formulas",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3368,
+      "id": "5169606",
+      "term": "河北大学",
+      "reading": "かほくだいがく",
+      "meaning": "Hebei University",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3369,
+      "id": "2411510",
+      "term": "可膨張式",
+      "reading": "かぼうちょうしき",
+      "meaning": "inflatable (in the sense of \"can be inflated\")",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3370,
+      "id": "2209760",
+      "term": "鎌倉五山",
+      "reading": "かまくらござん",
+      "meaning": "the five great Rinzai temples of Kamakura (Kenchō-ji, Engaku-ji, Jufuku-ji, Jōchi-ji, Jōmyō-ji)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3371,
+      "id": "1209120",
+      "term": "鎌倉時代",
+      "reading": "かまくらじだい",
+      "meaning": "Kamakura period (1185-1333)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3372,
+      "id": "2206460",
+      "term": "鎌倉幕府",
+      "reading": "かまくらばくふ",
+      "meaning": "Kamakura shogunate (1185-1333)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3373,
+      "id": "2859248",
+      "term": "竈を起こす",
+      "reading": "かまどをおこす",
+      "meaning": "to make a fortune / to build family wealth",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3374,
+      "id": "2840810",
+      "term": "神がかる",
+      "reading": "かみがかる",
+      "meaning": "to be possessed by a god",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3375,
+      "id": "2667140",
+      "term": "上方狂言",
+      "reading": "かみがたきょうげん",
+      "meaning": "kabuki in the Kyoto-Osaka style",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3376,
+      "id": "2095470",
+      "term": "上方才六",
+      "reading": "かみがたざいろく",
+      "meaning": "people from Kansai",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3377,
+      "id": "1354370",
+      "term": "上方贅六",
+      "reading": "かみがたぜいろく",
+      "meaning": "people from Kansai",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3378,
+      "id": "1353130",
+      "term": "上御一人",
+      "reading": "かみごいちにん",
+      "meaning": "the emperor",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3379,
+      "id": "2767620",
+      "term": "神様仏様",
+      "reading": "かみさまほとけさま",
+      "meaning": "God and Buddha / Gods and Buddhas / one's guardian angel",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3380,
+      "id": "2127700",
+      "term": "過密都市",
+      "reading": "かみつとし",
+      "meaning": "overcrowded city",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3381,
+      "id": "2776830",
+      "term": "雷が落ちる",
+      "reading": "かみなりがおちる",
+      "meaning": "to be struck by lightning",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3382,
+      "id": "2858406",
+      "term": "神に召される",
+      "reading": "かみにめされる",
+      "meaning": "to die",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3383,
+      "id": "2612890",
+      "term": "神の子",
+      "reading": "かみのこ",
+      "meaning": "Son of God / Jesus Christ",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3384,
+      "id": "2171110",
+      "term": "紙飛行機",
+      "reading": "かみひこうき",
+      "meaning": "paper plane / paper airplane / paper aeroplane",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3385,
+      "id": "5417501",
+      "term": "神村学園",
+      "reading": "かみむらがくえん",
+      "meaning": "Kamimura Gakuen",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3386,
+      "id": "2260240",
+      "term": "神も仏もない",
+      "reading": "かみもほとけもない",
+      "meaning": "there is no God! / it's a cruel world / there is no god or Buddha",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3387,
+      "id": "2245560",
+      "term": "神代七代",
+      "reading": "かみよななよ",
+      "meaning": "seven generations of (celestial) gods",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3388,
+      "id": "2665120",
+      "term": "加盟各国",
+      "reading": "かめいかっこく",
+      "meaning": "member countries (e.g. treaty, UN, etc.) / member states",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3389,
+      "id": "5206112",
+      "term": "亀田製菓",
+      "reading": "かめだせいか",
+      "meaning": "Kameda Seika Company",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3390,
+      "id": "2835599",
+      "term": "下面発酵",
+      "reading": "かめんはっこう",
+      "meaning": "bottom fermentation (brewing)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3391,
+      "id": "2043130",
+      "term": "仮面夫婦",
+      "reading": "かめんふうふ",
+      "meaning": "couple who only go through the motions of being husband and wife",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3392,
+      "id": "2043140",
+      "term": "仮面浪人",
+      "reading": "かめんろうにん",
+      "meaning": "student who is trying to get into their preferred college while already enrolled at another college",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3393,
+      "id": "2102980",
+      "term": "仮面をかぶる",
+      "reading": "かめんをかぶる",
+      "meaning": "to wear a mask",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3394,
+      "id": "2102990",
+      "term": "鴨が葱を背負って来る",
+      "reading": "かもがねぎをしょってくる",
+      "meaning": "along comes a sucker just begging to be parted from his money / a duck comes carrying a Welsh onion on its back",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3395,
+      "id": "2605550",
+      "term": "貨物運送",
+      "reading": "かもつうんそう",
+      "meaning": "freight transport",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3396,
+      "id": "1975660",
+      "term": "貨物保険",
+      "reading": "かもつほけん",
+      "meaning": "cargo insurance",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3397,
+      "id": "1931370",
+      "term": "貨物輸送",
+      "reading": "かもつゆそう",
+      "meaning": "freight traffic (transportation) / freightage / shipment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3398,
+      "id": "1803510",
+      "term": "貨物列車",
+      "reading": "かもつれっしゃ",
+      "meaning": "freight train",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3399,
+      "id": "2840701",
+      "term": "賀茂茄子",
+      "reading": "かもなす",
+      "meaning": "Kamo eggplant (Solanum melongena; round variety originally grown in Kyoto)",
       "rank": null,
       "type": "four"
     }
