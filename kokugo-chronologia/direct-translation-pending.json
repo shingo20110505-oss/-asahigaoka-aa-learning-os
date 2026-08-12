@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 6650,
-  "english_only_remaining": 8350,
+  "already_direct_japanese": 6700,
+  "english_only_remaining": 8300,
   "english_only_rank_counts": {
-    "(blank)": 8350
+    "(blank)": 8300
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 6650,
-      "id": "2842857",
-      "term": "検査器械",
-      "reading": "けんさきかい",
-      "meaning": "medical diagnostic instruments"
-    },
-    {
-      "source_index": 6651,
-      "id": "2353080",
-      "term": "検索機能",
-      "reading": "けんさくきのう",
-      "meaning": "lookup function / search function"
-    },
-    {
-      "source_index": 6652,
-      "id": "2353090",
-      "term": "検索結果",
-      "reading": "けんさくけっか",
-      "meaning": "search results"
-    },
-    {
-      "source_index": 6653,
-      "id": "2083980",
-      "term": "検索候補",
-      "reading": "けんさくこうほ",
-      "meaning": "search results"
-    },
-    {
-      "source_index": 6654,
-      "id": "2353100",
-      "term": "検索項目",
-      "reading": "けんさくこうもく",
-      "meaning": "search item"
-    },
-    {
-      "source_index": 6655,
-      "id": "2209940",
-      "term": "検索条件",
-      "reading": "けんさくじょうけん",
-      "meaning": "search criteria"
-    },
-    {
-      "source_index": 6656,
-      "id": "2353130",
-      "term": "検索速度",
-      "reading": "けんさくそくど",
-      "meaning": "search speed"
-    },
-    {
-      "source_index": 6657,
-      "id": "2851252",
-      "term": "検索目印",
-      "reading": "けんさくめじるし",
-      "meaning": "hashtag (e.g. on Twitter)"
-    },
-    {
-      "source_index": 6658,
-      "id": "2842347",
-      "term": "検索履歴",
-      "reading": "けんさくりれき",
-      "meaning": "search history"
-    },
-    {
-      "source_index": 6659,
-      "id": "2352950",
-      "term": "検査合計",
-      "reading": "けんさごうけい",
-      "meaning": "checksum"
-    },
-    {
-      "source_index": 6660,
-      "id": "2352960",
-      "term": "検査数字",
-      "reading": "けんさすうじ",
-      "meaning": "check digit"
-    },
-    {
-      "source_index": 6661,
-      "id": "2865573",
-      "term": "検査入院",
-      "reading": "けんさにゅういん",
-      "meaning": "(short-term) hospitalization for medical testing"
-    },
-    {
-      "source_index": 6662,
-      "id": "2352970",
-      "term": "検査文字",
-      "reading": "けんさもじ",
-      "meaning": "check character"
-    },
-    {
-      "source_index": 6663,
-      "id": "2352980",
-      "term": "検査問題",
-      "reading": "けんさもんだい",
-      "meaning": "check problem"
-    },
-    {
-      "source_index": 6664,
-      "id": "2838415",
-      "term": "絹糸光沢",
-      "reading": "けんしこうたく",
-      "meaning": "silky luster / silky lustre"
-    },
-    {
-      "source_index": 6665,
-      "id": "1666750",
-      "term": "絹糸紡績",
-      "reading": "けんしぼうせき",
-      "meaning": "silk spinning"
-    },
-    {
-      "source_index": 6666,
-      "id": "2076680",
-      "term": "研修期間",
-      "reading": "けんしゅうきかん",
-      "meaning": "training period / residency (esp. medical) / internship"
-    },
-    {
-      "source_index": 6667,
-      "id": "2853236",
-      "term": "研修制度",
-      "reading": "けんしゅうせいど",
-      "meaning": "training program / training system"
-    },
-    {
-      "source_index": 6668,
-      "id": "2147460",
-      "term": "研修旅行",
-      "reading": "けんしゅうりょこう",
-      "meaning": "study tour"
-    },
-    {
-      "source_index": 6669,
-      "id": "2630430",
-      "term": "検出装置",
-      "reading": "けんしゅつそうち",
-      "meaning": "detector / detecting device / detecting unit"
-    },
-    {
-      "source_index": 6670,
-      "id": "2852936",
-      "term": "検証可能",
-      "reading": "けんしょうかのう",
-      "meaning": "verifiable"
-    },
-    {
-      "source_index": 6671,
-      "id": "2858097",
-      "term": "検証環境",
-      "reading": "けんしょうかんきょう",
-      "meaning": "testing environment / verification environment"
-    },
-    {
-      "source_index": 6672,
-      "id": "2353180",
-      "term": "検証試験",
-      "reading": "けんしょうしけん",
-      "meaning": "verification test"
-    },
-    {
-      "source_index": 6673,
-      "id": "1934210",
-      "term": "懸賞問題",
-      "reading": "けんしょうもんだい",
-      "meaning": "problem for a prize contest"
-    },
-    {
-      "source_index": 6674,
-      "id": "1769410",
-      "term": "懸賞論文",
-      "reading": "けんしょうろんぶん",
-      "meaning": "essay contest"
-    },
-    {
-      "source_index": 6675,
-      "id": "1814550",
-      "term": "検事控訴",
-      "reading": "けんじこうそ",
-      "meaning": "public prosecutor's appeal"
-    },
-    {
-      "source_index": 6676,
-      "id": "2162900",
-      "term": "顕示選好",
-      "reading": "けんじせんこう",
-      "meaning": "revealed preference"
-    },
-    {
-      "source_index": 6677,
-      "id": "1814560",
-      "term": "検事総長",
-      "reading": "けんじそうちょう",
-      "meaning": "prosecutor general / attorney general"
-    },
-    {
-      "source_index": 6678,
-      "id": "1258370",
-      "term": "犬儒学派",
-      "reading": "けんじゅがくは",
-      "meaning": "Cynic school / Cynics"
-    },
-    {
-      "source_index": 6679,
-      "id": "2858599",
-      "term": "献上菓子",
-      "reading": "けんじょうがし",
-      "meaning": "high-quality confectionary made using white sugar (Muromachi period)"
-    },
-    {
-      "source_index": 6680,
-      "id": "2021020",
-      "term": "剣状突起",
-      "reading": "けんじょうとっき",
-      "meaning": "xiphoid process / ensiform cartilage"
-    },
-    {
-      "source_index": 6681,
-      "id": "2190720",
-      "term": "剣状軟骨",
-      "reading": "けんじょうなんこつ",
-      "meaning": "xiphoid process / chondroxiphoid"
-    },
-    {
-      "source_index": 6682,
-      "id": "2830709",
-      "term": "懸垂下降",
-      "reading": "けんすいかこう",
-      "meaning": "rappel / abseil"
-    },
-    {
-      "source_index": 6683,
-      "id": "2852446",
-      "term": "懸垂分詞",
-      "reading": "けんすいぶんし",
-      "meaning": "dangling participle / hanging participle"
-    },
-    {
-      "source_index": 6684,
-      "id": "2848586",
-      "term": "顕性感染",
-      "reading": "けんせいかんせん",
-      "meaning": "apparent infection"
-    },
-    {
-      "source_index": 6685,
-      "id": "2044710",
-      "term": "牽制作戦",
-      "reading": "けんせいさくせん",
-      "meaning": "diversionary operations"
-    },
-    {
-      "source_index": 6686,
-      "id": "1257430",
-      "term": "建設会社",
-      "reading": "けんせつがいしゃ",
-      "meaning": "construction company"
-    },
-    {
-      "source_index": 6687,
-      "id": "1934140",
-      "term": "建設機械",
-      "reading": "けんせつきかい",
-      "meaning": "construction machinery"
-    },
-    {
-      "source_index": 6688,
-      "id": "2144740",
-      "term": "建設業界",
-      "reading": "けんせつぎょうかい",
-      "meaning": "(world of the) construction industry"
-    },
-    {
-      "source_index": 6689,
-      "id": "2095750",
-      "term": "建設業者",
-      "reading": "けんせつぎょうしゃ",
-      "meaning": "general (civil engineering and construction) contractor"
-    },
-    {
-      "source_index": 6690,
-      "id": "2671620",
-      "term": "建設現場",
-      "reading": "けんせつげんば",
-      "meaning": "construction site"
-    },
-    {
-      "source_index": 6691,
-      "id": "1934150",
-      "term": "建設工事",
-      "reading": "けんせつこうじ",
-      "meaning": "construction work"
-    },
-    {
-      "source_index": 6692,
-      "id": "1991990",
-      "term": "建設国債",
-      "reading": "けんせつこくさい",
-      "meaning": "construction debt"
-    },
-    {
-      "source_index": 6693,
-      "id": "2826239",
-      "term": "建設残土",
-      "reading": "けんせつざんど",
-      "meaning": "construction waste soil / surplus excavation soil"
-    },
-    {
-      "source_index": 6694,
-      "id": "2839089",
-      "term": "建設資材",
-      "reading": "けんせつしざい",
-      "meaning": "construction materials"
-    },
-    {
-      "source_index": 6695,
-      "id": "5248004",
-      "term": "建設大学",
-      "reading": "けんせつだいがく",
-      "meaning": "Construction College"
-    },
-    {
-      "source_index": 6696,
-      "id": "1257450",
-      "term": "建設大臣",
-      "reading": "けんせつだいじん",
-      "meaning": "Minister of Construction"
-    },
-    {
-      "source_index": 6697,
-      "id": "5248006",
-      "term": "建設連合",
-      "reading": "けんせつれんごう",
-      "meaning": "Japan Construction Trade Union Confederation"
-    },
-    {
-      "source_index": 6698,
-      "id": "2869986",
-      "term": "健全育成",
-      "reading": "けんぜんいくせい",
-      "meaning": "sound upbringing (of youth) / healthy development"
-    },
-    {
-      "source_index": 6699,
-      "id": "2540770",
-      "term": "検知閾値",
-      "reading": "けんちいきち",
-      "meaning": "detection threshold"
-    },
     {
       "source_index": 6700,
       "id": "2581600",
@@ -7010,6 +6660,356 @@
       "term": "行動方針",
       "reading": "こうどうほうしん",
       "meaning": "course of action"
+    },
+    {
+      "source_index": 7650,
+      "id": "1282170",
+      "term": "行動命令",
+      "reading": "こうどうめいれい",
+      "meaning": "operation order"
+    },
+    {
+      "source_index": 7651,
+      "id": "2103540",
+      "term": "行動様式",
+      "reading": "こうどうようしき",
+      "meaning": "behavioral pattern"
+    },
+    {
+      "source_index": 7652,
+      "id": "1992740",
+      "term": "行動療法",
+      "reading": "こうどうりょうほう",
+      "meaning": "behavioural therapy (behavioral)"
+    },
+    {
+      "source_index": 7653,
+      "id": "2858545",
+      "term": "光度曲線",
+      "reading": "こうどきょくせん",
+      "meaning": "light curve"
+    },
+    {
+      "source_index": 7654,
+      "id": "2356680",
+      "term": "高度技術",
+      "reading": "こうどぎじゅつ",
+      "meaning": "high-tech / high-technology"
+    },
+    {
+      "source_index": 7655,
+      "id": "2831476",
+      "term": "高度人材",
+      "reading": "こうどじんざい",
+      "meaning": "highly skilled professionals (esp. as category of immigrants) / highly talented personnel"
+    },
+    {
+      "source_index": 7656,
+      "id": "1283840",
+      "term": "高度成長",
+      "reading": "こうどせいちょう",
+      "meaning": "rapid economic growth (esp. that of Japan in the post-WWII period)"
+    },
+    {
+      "source_index": 7657,
+      "id": "1277410",
+      "term": "坑内事故",
+      "reading": "こうないじこ",
+      "meaning": "mine accident"
+    },
+    {
+      "source_index": 7658,
+      "id": "1276750",
+      "term": "口内性交",
+      "reading": "こうないせいこう",
+      "meaning": "oral sex / fellatio"
+    },
+    {
+      "source_index": 7659,
+      "id": "2835319",
+      "term": "構内放送",
+      "reading": "こうないほうそう",
+      "meaning": "announcement (e.g. in a train station)"
+    },
+    {
+      "source_index": 7660,
+      "id": "2144630",
+      "term": "校内暴力",
+      "reading": "こうないぼうりょく",
+      "meaning": "school violence"
+    },
+    {
+      "source_index": 7661,
+      "id": "5281923",
+      "term": "甲南大学",
+      "reading": "こうなんだいがく",
+      "meaning": "Konan University"
+    },
+    {
+      "source_index": 7662,
+      "id": "1875530",
+      "term": "硬軟両派",
+      "reading": "こうなんりょうは",
+      "meaning": "stalwart and insurgent factions"
+    },
+    {
+      "source_index": 7663,
+      "id": "2669630",
+      "term": "抗日運動",
+      "reading": "こうにちうんどう",
+      "meaning": "anti-Japanese resistance movement (in pre-WWII China) / anti-Japanese campaign"
+    },
+    {
+      "source_index": 7664,
+      "id": "2853038",
+      "term": "抗日戦争",
+      "reading": "こうにちせんそう",
+      "meaning": "War of Resistance against Japanese Aggression (Chinese name for the Second Sino-Japanese War; 1937-1945)"
+    },
+    {
+      "source_index": 7665,
+      "id": "2641430",
+      "term": "購入価格",
+      "reading": "こうにゅうかかく",
+      "meaning": "purchase price"
+    },
+    {
+      "source_index": 7666,
+      "id": "1282460",
+      "term": "購入注文",
+      "reading": "こうにゅうちゅうもん",
+      "meaning": "purchase order"
+    },
+    {
+      "source_index": 7667,
+      "id": "1677440",
+      "term": "公認記録",
+      "reading": "こうにんきろく",
+      "meaning": "official record"
+    },
+    {
+      "source_index": 7668,
+      "id": "2150130",
+      "term": "公認欠席",
+      "reading": "こうにんけっせき",
+      "meaning": "authorized absence / permission of absence from class(es)"
+    },
+    {
+      "source_index": 7669,
+      "id": "1274470",
+      "term": "公認候補",
+      "reading": "こうにんこうほ",
+      "meaning": "official candidate"
+    },
+    {
+      "source_index": 7670,
+      "id": "2751750",
+      "term": "後任人事",
+      "reading": "こうにんじんじ",
+      "meaning": "appointment of successor"
+    },
+    {
+      "source_index": 7671,
+      "id": "2866662",
+      "term": "公認読手",
+      "reading": "こうにんどくしゅ",
+      "meaning": "certified reader (comp. karuta) / certified reciter"
+    },
+    {
+      "source_index": 7672,
+      "id": "2062370",
+      "term": "光熱水費",
+      "reading": "こうねつすいひ",
+      "meaning": "light, heating and water utility costs"
+    },
+    {
+      "source_index": 7673,
+      "id": "2837800",
+      "term": "抗粘結剤",
+      "reading": "こうねんけつざい",
+      "meaning": "anti-caking agent"
+    },
+    {
+      "source_index": 7674,
+      "id": "2601440",
+      "term": "高燃費車",
+      "reading": "こうねんぴしゃ",
+      "meaning": "gas-guzzler / gas-guzzling car / vehicle with high fuel consumption"
+    },
+    {
+      "source_index": 7675,
+      "id": "2854655",
+      "term": "高年齢化",
+      "reading": "こうねんれいか",
+      "meaning": "ageing (of a population) / aging"
+    },
+    {
+      "source_index": 7676,
+      "id": "2833035",
+      "term": "光背効果",
+      "reading": "こうはいこうか",
+      "meaning": "halo effect"
+    },
+    {
+      "source_index": 7677,
+      "id": "2856698",
+      "term": "後背湿地",
+      "reading": "こうはいしっち",
+      "meaning": "back swamp / back slough / back marsh"
+    },
+    {
+      "source_index": 7678,
+      "id": "1837010",
+      "term": "紅白試合",
+      "reading": "こうはくじあい",
+      "meaning": "contest between two groups"
+    },
+    {
+      "source_index": 7679,
+      "id": "2837801",
+      "term": "抗発泡剤",
+      "reading": "こうはっぽうざい",
+      "meaning": "anti-foaming agent"
+    },
+    {
+      "source_index": 7680,
+      "id": "2706710",
+      "term": "好発年齢",
+      "reading": "こうはつねんれい",
+      "meaning": "susceptible age (for a disease, condition, etc.) / common age"
+    },
+    {
+      "source_index": 7681,
+      "id": "2837619",
+      "term": "好発部位",
+      "reading": "こうはつぶい",
+      "meaning": "frequent site (for a disease, tumour, etc.)"
+    },
+    {
+      "source_index": 7682,
+      "id": "2070190",
+      "term": "孔版印刷",
+      "reading": "こうはんいんさつ",
+      "meaning": "stencil printing / mimeographic printing"
+    },
+    {
+      "source_index": 7683,
+      "id": "2869827",
+      "term": "公判期日",
+      "reading": "こうはんきじつ",
+      "meaning": "trial day / trial date"
+    },
+    {
+      "source_index": 7684,
+      "id": "2869825",
+      "term": "公判記録",
+      "reading": "こうはんきろく",
+      "meaning": "complete trial record / case file"
+    },
+    {
+      "source_index": 7685,
+      "id": "2827157",
+      "term": "後半国会",
+      "reading": "こうはんこっかい",
+      "meaning": "remainder of the Diet session after the creation of the budget"
+    },
+    {
+      "source_index": 7686,
+      "id": "2869826",
+      "term": "公判準備",
+      "reading": "こうはんじゅんび",
+      "meaning": "pretrial preparation / trial preparation"
+    },
+    {
+      "source_index": 7687,
+      "id": "2030850",
+      "term": "広範多岐",
+      "reading": "こうはんたき",
+      "meaning": "extensive and wide-ranging"
+    },
+    {
+      "source_index": 7688,
+      "id": "2869824",
+      "term": "公判調書",
+      "reading": "こうはんちょうしょ",
+      "meaning": "trial record / protocol of a trial"
+    },
+    {
+      "source_index": 7689,
+      "id": "2834469",
+      "term": "公判闘争",
+      "reading": "こうはんとうそう",
+      "meaning": "court battle"
+    },
+    {
+      "source_index": 7690,
+      "id": "2869829",
+      "term": "公判日程",
+      "reading": "こうはんにってい",
+      "meaning": "trial schedule"
+    },
+    {
+      "source_index": 7691,
+      "id": "1834290",
+      "term": "購買組合",
+      "reading": "こうばいくみあい",
+      "meaning": "cooperative society"
+    },
+    {
+      "source_index": 7692,
+      "id": "1992750",
+      "term": "購買習慣",
+      "reading": "こうばいしゅうかん",
+      "meaning": "buying habit"
+    },
+    {
+      "source_index": 7693,
+      "id": "2851895",
+      "term": "勾配天井",
+      "reading": "こうばいてんじょう",
+      "meaning": "sloping ceiling"
+    },
+    {
+      "source_index": 7694,
+      "id": "2221530",
+      "term": "交番応力",
+      "reading": "こうばんおうりょく",
+      "meaning": "alternating stress"
+    },
+    {
+      "source_index": 7695,
+      "id": "2221520",
+      "term": "交番電流",
+      "reading": "こうばんでんりゅう",
+      "meaning": "alternating current / AC"
+    },
+    {
+      "source_index": 7696,
+      "id": "2249750",
+      "term": "香盤時計",
+      "reading": "こうばんどけい",
+      "meaning": "incense clock"
+    },
+    {
+      "source_index": 7697,
+      "id": "2857001",
+      "term": "抗肥満薬",
+      "reading": "こうひまんやく",
+      "meaning": "anti-obesity drug"
+    },
+    {
+      "source_index": 7698,
+      "id": "2040400",
+      "term": "好評嘖々",
+      "reading": "こうひょうさくさく",
+      "meaning": "enjoying great popularity / receiving widespread high praise / being a great success with the public"
+    },
+    {
+      "source_index": 7699,
+      "id": "2200290",
+      "term": "広鼻猿類",
+      "reading": "こうびえんるい",
+      "meaning": "platyrrhine (primate of infraorder Platyrrhini, which have nostrils that are far apart)"
     }
   ]
 }
