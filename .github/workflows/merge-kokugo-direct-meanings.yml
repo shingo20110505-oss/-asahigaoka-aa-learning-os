@@ -5,6 +5,7 @@ on:
       - 'kokugo-chronologia/meaning-ja-patches/**'
 permissions:
   contents: write
+  actions: write
 jobs:
   merge:
     runs-on: ubuntu-latest
@@ -38,3 +39,10 @@ jobs:
           done
           test "$pushed" = 1
           echo 'changed=true' >> "$GITHUB_OUTPUT"
+      - name: Dispatch Pages and exact Kokugo public verification
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run deploy-pages.yml --ref main
+          gh workflow run verify-kokugo-direct-public.yml --ref main
