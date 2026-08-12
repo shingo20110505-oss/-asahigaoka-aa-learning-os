@@ -1,0 +1,58 @@
+name: Fix Kokugo Chronologia Table Overlap
+on:
+  push:
+    paths:
+      - '.fix-kokugo-table-overlap-trigger'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fix sticky header and mobile table spacing
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('kokugo-chronologia/index.html')
+          s = p.read_text(encoding='utf-8')
+          old = ".th{position:sticky;top:64px;z-index:15;background:#edf1f6;font-size:11px;font-weight:900}"
+          new = ".th{position:sticky;top:0;z-index:15;background:#edf1f6;font-size:11px;font-weight:900;box-shadow:0 1px 0 #d9e1ec}"
+          if old not in s:
+              raise SystemExit('target .th rule not found')
+          s = s.replace(old, new, 1)
+          old2 = ".tableWrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:#fff}"
+          new2 = ".tableWrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:#fff;position:relative;-webkit-overflow-scrolling:touch}"
+          if old2 not in s:
+              raise SystemExit('target .tableWrap rule not found')
+          s = s.replace(old2, new2, 1)
+          # Add a small mobile top margin so the table card does not visually collide with controls.
+          old3 = "@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}"
+          new3 = "@media(max-width:760px){.tableWrap{margin-top:4px}.stats{grid-template-columns:repeat(2,1fr)}"
+          if old3 not in s:
+              raise SystemExit('target mobile media rule not found')
+          s = s.replace(old3, new3, 1)
+          p.write_text(s, encoding='utf-8')
+
+          sw = Path('sw.js')
+          t = sw.read_text(encoding='utf-8')
+          import re
+          t2, n = re.subn(r"const VERSION='[^']+';", "const VERSION='2.3.9-kokugo-tablefix';", t, count=1)
+          if n != 1:
+              raise SystemExit('service worker version not found')
+          sw.write_text(t2, encoding='utf-8')
+      - name: Static assertions
+        run: |
+          grep -Fq '.th{position:sticky;top:0;' kokugo-chronologia/index.html
+          grep -Fq 'position:relative;-webkit-overflow-scrolling:touch' kokugo-chronologia/index.html
+          ! grep -Fq '.th{position:sticky;top:64px;' kokugo-chronologia/index.html
+          grep -Fq "const VERSION='2.3.9-kokugo-tablefix';" sw.js
+      - name: Commit
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add kokugo-chronologia/index.html sw.js
+          git commit -m 'Fix Kokugo Chronologia sticky table header overlap'
+          git push
