@@ -47,7 +47,7 @@ jobs:
               if g:return ' / '.join(g[:3])
             return ''
           for url in urls:
-            req=urllib.request.Request(url,headers={'User-Agent':'AA-Learning-OS-Kokugo-Generator/1.1'})
+            req=urllib.request.Request(url,headers={'User-Agent':'AA-Learning-OS-Kokugo-Generator/1.2'})
             with urllib.request.urlopen(req,timeout=120) as r:
               for raw in r:
                 line=raw.decode('utf-8').strip()
@@ -78,6 +78,16 @@ jobs:
           if old.exists():old.unlink()
           stats={'generated_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source':'jpndium/jmdict (JMdict/EDRDG derived)','eligible_total':len(vals),'selected_total':len(selected),'selected_strict_yojijukugo':sum(x['strict'] for x in selected),'selected_idiomatic_expression':sum(x['idiom'] for x in selected),'selected_four_han':sum(x['four'] for x in selected),'minimum_required':10000,'result':'success'}
           (out/'KOKUGO_CHRONOLOGIA_STATUS.json').write_text(json.dumps(stats,ensure_ascii=False,indent=2),encoding='utf-8')
+          page=out/'index.html'
+          s=page.read_text(encoding='utf-8')
+          oldconst="const TARGET=10000,KEEP=14000,SOURCES=['https://raw.githubusercontent.com/jpndium/jmdict/main/data/001.jsonl','https://raw.githubusercontent.com/jpndium/jmdict/main/data/002.jsonl','https://raw.githubusercontent.com/jpndium/jmdict/main/data/003.jsonl'];"
+          newconst="const TARGET=10000,KEEP=15000,SOURCES=['./data.jsonl'];"
+          if oldconst in s:
+            s=s.replace(oldconst,newconst)
+          elif newconst not in s:
+            raise SystemExit('index source declaration did not match expected text')
+          s=s.replace('監査済み候補25,314件から最大${KEEP.toLocaleString()}件を軽量表示用に読み込みます。','ローカル収録データ${KEEP.toLocaleString()}件を読み込みました。')
+          page.write_text(s,encoding='utf-8')
           print(json.dumps(stats,ensure_ascii=False))
           PY
 
@@ -85,8 +95,8 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A kokugo-chronologia/data.json kokugo-chronologia/data.jsonl kokugo-chronologia/KOKUGO_CHRONOLOGIA_STATUS.json
+          git add -A kokugo-chronologia
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'Generate Kokugo Chronologia 15000-entry local JSONL'
+          git commit -m 'Use local 15000-entry Kokugo Chronologia dataset'
           git pull --rebase origin main
           git push origin HEAD:main
