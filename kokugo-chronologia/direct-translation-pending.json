@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 6200,
-  "english_only_remaining": 8800,
+  "already_direct_japanese": 6250,
+  "english_only_remaining": 8750,
   "english_only_rank_counts": {
-    "(blank)": 8800
+    "(blank)": 8750
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 6200,
-      "id": "1991820",
-      "term": "警察捜査",
-      "reading": "けいさつそうさ",
-      "meaning": "police investigation"
-    },
-    {
-      "source_index": 6201,
-      "id": "5244107",
-      "term": "警察大学",
-      "reading": "けいさつだいがく",
-      "meaning": "National Police Academy"
-    },
-    {
-      "source_index": 6202,
-      "id": "1830990",
-      "term": "警察手帳",
-      "reading": "けいさつてちょう",
-      "meaning": "police identification card"
-    },
-    {
-      "source_index": 6203,
-      "id": "1252430",
-      "term": "警察当局",
-      "reading": "けいさつとうきょく",
-      "meaning": "(the relevant) police authorities"
-    },
-    {
-      "source_index": 6204,
-      "id": "2837554",
-      "term": "警察無線",
-      "reading": "けいさつむせん",
-      "meaning": "police radio"
-    },
-    {
-      "source_index": 6205,
-      "id": "2214860",
-      "term": "警察吏員",
-      "reading": "けいさつりいん",
-      "meaning": "police officer"
-    },
-    {
-      "source_index": 6206,
-      "id": "1984460",
-      "term": "計算化学",
-      "reading": "けいさんかがく",
-      "meaning": "computational chemistry"
-    },
-    {
-      "source_index": 6207,
-      "id": "2868825",
-      "term": "計算科学",
-      "reading": "けいさんかがく",
-      "meaning": "computational science / scientific computing"
-    },
-    {
-      "source_index": 6208,
-      "id": "1252150",
-      "term": "計算機間",
-      "reading": "けいさんきま",
-      "meaning": "inside the computer"
-    },
-    {
-      "source_index": 6209,
-      "id": "2352560",
-      "term": "計算機名",
-      "reading": "けいさんきめい",
-      "meaning": "computer-name"
-    },
-    {
-      "source_index": 6210,
-      "id": "2352570",
-      "term": "計算構造",
-      "reading": "けいさんこうぞう",
-      "meaning": "computation structure"
-    },
-    {
-      "source_index": 6211,
-      "id": "2352580",
-      "term": "計算順序",
-      "reading": "けいさんじゅんじょ",
-      "meaning": "computation sequence"
-    },
-    {
-      "source_index": 6212,
-      "id": "2867104",
-      "term": "計算図表",
-      "reading": "けいさんずひょう",
-      "meaning": "nomogram / nomograph"
-    },
-    {
-      "source_index": 6213,
-      "id": "1933940",
-      "term": "計算問題",
-      "reading": "けいさんもんだい",
-      "meaning": "numerical calculation"
-    },
-    {
-      "source_index": 6214,
-      "id": "2837900",
-      "term": "計算用紙",
-      "reading": "けいさんようし",
-      "meaning": "calculation form / tally sheet"
-    },
-    {
-      "source_index": 6215,
-      "id": "1991620",
-      "term": "経済運営",
-      "reading": "けいざいうんえい",
-      "meaning": "economic management"
-    },
-    {
-      "source_index": 6216,
-      "id": "1251330",
-      "term": "経済援助",
-      "reading": "けいざいえんじょ",
-      "meaning": "economic assistance"
-    },
-    {
-      "source_index": 6217,
-      "id": "1251350",
-      "term": "経済改革",
-      "reading": "けいざいかいかく",
-      "meaning": "economic reform"
-    },
-    {
-      "source_index": 6218,
-      "id": "1251340",
-      "term": "経済回復",
-      "reading": "けいざいかいふく",
-      "meaning": "economic recovery"
-    },
-    {
-      "source_index": 6219,
-      "id": "1251370",
-      "term": "経済格差",
-      "reading": "けいざいかくさ",
-      "meaning": "economic disparity"
-    },
-    {
-      "source_index": 6220,
-      "id": "1251390",
-      "term": "経済活動",
-      "reading": "けいざいかつどう",
-      "meaning": "economic activity"
-    },
-    {
-      "source_index": 6221,
-      "id": "1991630",
-      "term": "経済環境",
-      "reading": "けいざいかんきょう",
-      "meaning": "economic environment"
-    },
-    {
-      "source_index": 6222,
-      "id": "1831420",
-      "term": "経済観念",
-      "reading": "けいざいかんねん",
-      "meaning": "sense of economy"
-    },
-    {
-      "source_index": 6223,
-      "id": "1831350",
-      "term": "経済外交",
-      "reading": "けいざいがいこう",
-      "meaning": "economic diplomacy"
-    },
-    {
-      "source_index": 6224,
-      "id": "2037850",
-      "term": "経済学者",
-      "reading": "けいざいがくしゃ",
-      "meaning": "economist"
-    },
-    {
-      "source_index": 6225,
-      "id": "2660090",
-      "term": "経済学部",
-      "reading": "けいざいがくぶ",
-      "meaning": "department of economics / faculty of economics"
-    },
-    {
-      "source_index": 6226,
-      "id": "1991640",
-      "term": "経済危機",
-      "reading": "けいざいきき",
-      "meaning": "economic crisis"
-    },
-    {
-      "source_index": 6227,
-      "id": "2850808",
-      "term": "経済恐慌",
-      "reading": "けいざいきょうこう",
-      "meaning": "financial panic / economic crisis / economic crash"
-    },
-    {
-      "source_index": 6228,
-      "id": "1251420",
-      "term": "経済協力",
-      "reading": "けいざいきょうりょく",
-      "meaning": "economic cooperation"
-    },
-    {
-      "source_index": 6229,
-      "id": "1933900",
-      "term": "経済原論",
-      "reading": "けいざいげんろん",
-      "meaning": "principles of economics"
-    },
-    {
-      "source_index": 6230,
-      "id": "2638540",
-      "term": "経済行為",
-      "reading": "けいざいこうい",
-      "meaning": "economic behavior / economic activities / economic act"
-    },
-    {
-      "source_index": 6231,
-      "id": "1251440",
-      "term": "経済効果",
-      "reading": "けいざいこうか",
-      "meaning": "(positive) economic effect"
-    },
-    {
-      "source_index": 6232,
-      "id": "2852037",
-      "term": "経済再生",
-      "reading": "けいざいさいせい",
-      "meaning": "economic recovery"
-    },
-    {
-      "source_index": 6233,
-      "id": "1991660",
-      "term": "経済指数",
-      "reading": "けいざいしすう",
-      "meaning": "economic index"
-    },
-    {
-      "source_index": 6234,
-      "id": "2720830",
-      "term": "経済思想",
-      "reading": "けいざいしそう",
-      "meaning": "economic ideology / (school of) economic thought"
-    },
-    {
-      "source_index": 6235,
-      "id": "1991670",
-      "term": "経済指標",
-      "reading": "けいざいしひょう",
-      "meaning": "economic indicator"
-    },
-    {
-      "source_index": 6236,
-      "id": "1251450",
-      "term": "経済社会",
-      "reading": "けいざいしゃかい",
-      "meaning": "economy and society / economic aspects of society"
-    },
-    {
-      "source_index": 6237,
-      "id": "2833263",
-      "term": "経済主体",
-      "reading": "けいざいしゅたい",
-      "meaning": "economic unit / economic agent / economic entity"
-    },
-    {
-      "source_index": 6238,
-      "id": "2842340",
-      "term": "経済進出",
-      "reading": "けいざいしんしゅつ",
-      "meaning": "economic invasion / economic operations (in another country)"
-    },
-    {
-      "source_index": 6239,
-      "id": "2790040",
-      "term": "経済事情",
-      "reading": "けいざいじじょう",
-      "meaning": "economic condition / economic circumstances / financial situation"
-    },
-    {
-      "source_index": 6240,
-      "id": "1251470",
-      "term": "経済状況",
-      "reading": "けいざいじょうきょう",
-      "meaning": "economic conditions"
-    },
-    {
-      "source_index": 6241,
-      "id": "1991680",
-      "term": "経済情勢",
-      "reading": "けいざいじょうせい",
-      "meaning": "economic climate"
-    },
-    {
-      "source_index": 6242,
-      "id": "1251480",
-      "term": "経済状態",
-      "reading": "けいざいじょうたい",
-      "meaning": "economic conditions / economic situation / financial situation"
-    },
-    {
-      "source_index": 6243,
-      "id": "1831330",
-      "term": "経済水域",
-      "reading": "けいざいすいいき",
-      "meaning": "economic waters or zone"
-    },
-    {
-      "source_index": 6244,
-      "id": "1251490",
-      "term": "経済制裁",
-      "reading": "けいざいせいさい",
-      "meaning": "economic sanctions"
-    },
-    {
-      "source_index": 6245,
-      "id": "1831400",
-      "term": "経済政策",
-      "reading": "けいざいせいさく",
-      "meaning": "economic policy"
-    },
-    {
-      "source_index": 6246,
-      "id": "1251520",
-      "term": "経済成長",
-      "reading": "けいざいせいちょう",
-      "meaning": "economic growth"
-    },
-    {
-      "source_index": 6247,
-      "id": "2849401",
-      "term": "経済戦争",
-      "reading": "けいざいせんそう",
-      "meaning": "economic warfare / economic war"
-    },
-    {
-      "source_index": 6248,
-      "id": "2664030",
-      "term": "経済戦略",
-      "reading": "けいざいせんりゃく",
-      "meaning": "economic strategy / business strategy"
-    },
-    {
-      "source_index": 6249,
-      "id": "1831320",
-      "term": "経済大国",
-      "reading": "けいざいたいこく",
-      "meaning": "economic superpower / economic powerhouse"
-    },
     {
       "source_index": 6250,
       "id": "1991710",
@@ -7010,6 +6660,356 @@
       "term": "高級言語",
       "reading": "こうきゅうげんご",
       "meaning": "high-level language"
+    },
+    {
+      "source_index": 7200,
+      "id": "2432280",
+      "term": "恒久施設",
+      "reading": "こうきゅうしせつ",
+      "meaning": "permanent establishment (in tax law)"
+    },
+    {
+      "source_index": 7201,
+      "id": "2859616",
+      "term": "高級将校",
+      "reading": "こうきゅうしょうこう",
+      "meaning": "high-ranking officer / the brass"
+    },
+    {
+      "source_index": 7202,
+      "id": "2855300",
+      "term": "高級娼婦",
+      "reading": "こうきゅうしょうふ",
+      "meaning": "high-class prostitute"
+    },
+    {
+      "source_index": 7203,
+      "id": "2627060",
+      "term": "高級船員",
+      "reading": "こうきゅうせんいん",
+      "meaning": "officer (of a ship)"
+    },
+    {
+      "source_index": 7204,
+      "id": "2858458",
+      "term": "恒久対策",
+      "reading": "こうきゅうたいさく",
+      "meaning": "permanent measure"
+    },
+    {
+      "source_index": 7205,
+      "id": "2044860",
+      "term": "恒久不変",
+      "reading": "こうきゅうふへん",
+      "meaning": "permanent and immutable"
+    },
+    {
+      "source_index": 7206,
+      "id": "1271920",
+      "term": "交響楽団",
+      "reading": "こうきょうがくだん",
+      "meaning": "symphony orchestra"
+    },
+    {
+      "source_index": 7207,
+      "id": "2646420",
+      "term": "公共機関",
+      "reading": "こうきょうきかん",
+      "meaning": "public agency / public institution"
+    },
+    {
+      "source_index": 7208,
+      "id": "1676990",
+      "term": "公共組合",
+      "reading": "こうきょうくみあい",
+      "meaning": "public partnership / public corporation"
+    },
+    {
+      "source_index": 7209,
+      "id": "2406060",
+      "term": "公共工事",
+      "reading": "こうきょうこうじ",
+      "meaning": "public works"
+    },
+    {
+      "source_index": 7210,
+      "id": "2840255",
+      "term": "公共交通",
+      "reading": "こうきょうこうつう",
+      "meaning": "public transportation / public transport"
+    },
+    {
+      "source_index": 7211,
+      "id": "2650980",
+      "term": "公共支出",
+      "reading": "こうきょうししゅつ",
+      "meaning": "public expenditure / public outlay / public spending"
+    },
+    {
+      "source_index": 7212,
+      "id": "1676970",
+      "term": "公共施設",
+      "reading": "こうきょうしせつ",
+      "meaning": "public facilities / utilities"
+    },
+    {
+      "source_index": 7213,
+      "id": "2066290",
+      "term": "光共振器",
+      "reading": "こうきょうしんき",
+      "meaning": "optical resonator / optical cavity"
+    },
+    {
+      "source_index": 7214,
+      "id": "1273530",
+      "term": "公共事業",
+      "reading": "こうきょうじぎょう",
+      "meaning": "public works / public-works projects / public utilities"
+    },
+    {
+      "source_index": 7215,
+      "id": "1273570",
+      "term": "公共団体",
+      "reading": "こうきょうだんたい",
+      "meaning": "public organization / public organisation"
+    },
+    {
+      "source_index": 7216,
+      "id": "2449820",
+      "term": "公共哲学",
+      "reading": "こうきょうてつがく",
+      "meaning": "public philosophy"
+    },
+    {
+      "source_index": 7217,
+      "id": "1676960",
+      "term": "公共投資",
+      "reading": "こうきょうとうし",
+      "meaning": "public investment"
+    },
+    {
+      "source_index": 7218,
+      "id": "2162800",
+      "term": "公共部門",
+      "reading": "こうきょうぶもん",
+      "meaning": "public sector"
+    },
+    {
+      "source_index": 7219,
+      "id": "1631150",
+      "term": "公共放送",
+      "reading": "こうきょうほうそう",
+      "meaning": "public broadcasting (e.g. NHK, BBC)"
+    },
+    {
+      "source_index": 7220,
+      "id": "1273620",
+      "term": "公教要理",
+      "reading": "こうきょうようり",
+      "meaning": "Catholic catechism"
+    },
+    {
+      "source_index": 7221,
+      "id": "1273590",
+      "term": "公共料金",
+      "reading": "こうきょうりょうきん",
+      "meaning": "public utilities charge"
+    },
+    {
+      "source_index": 7222,
+      "id": "2839265",
+      "term": "抗拒不能",
+      "reading": "こうきょふのう",
+      "meaning": "inability to resist"
+    },
+    {
+      "source_index": 7223,
+      "id": "1677160",
+      "term": "公金横領",
+      "reading": "こうきんおうりょう",
+      "meaning": "misappropriation of public funds"
+    },
+    {
+      "source_index": 7224,
+      "id": "2132770",
+      "term": "抗議運動",
+      "reading": "こうぎうんどう",
+      "meaning": "protest campaign / demonstration"
+    },
+    {
+      "source_index": 7225,
+      "id": "1278870",
+      "term": "抗議活動",
+      "reading": "こうぎかつどう",
+      "meaning": "protest action / protest movement"
+    },
+    {
+      "source_index": 7226,
+      "id": "2555580",
+      "term": "講義資料",
+      "reading": "こうぎしりょう",
+      "meaning": "lecture materials"
+    },
+    {
+      "source_index": 7227,
+      "id": "2830004",
+      "term": "広義積分",
+      "reading": "こうぎせきぶん",
+      "meaning": "improper integral"
+    },
+    {
+      "source_index": 7228,
+      "id": "2423730",
+      "term": "講義摘要",
+      "reading": "こうぎてきよう",
+      "meaning": "syllabus"
+    },
+    {
+      "source_index": 7229,
+      "id": "1675010",
+      "term": "工業意匠",
+      "reading": "こうぎょういしょう",
+      "meaning": "industrial design"
+    },
+    {
+      "source_index": 7230,
+      "id": "1674930",
+      "term": "工業化学",
+      "reading": "こうぎょうかがく",
+      "meaning": "industrial chemistry"
+    },
+    {
+      "source_index": 7231,
+      "id": "1278050",
+      "term": "工業規格",
+      "reading": "こうぎょうきかく",
+      "meaning": "industrial standard / engineering standard"
+    },
+    {
+      "source_index": 7232,
+      "id": "5285870",
+      "term": "鉱業協会",
+      "reading": "こうぎょうきょうかい",
+      "meaning": "National Mining Association / NMA"
+    },
+    {
+      "source_index": 7233,
+      "id": "1934980",
+      "term": "工業技術",
+      "reading": "こうぎょうぎじゅつ",
+      "meaning": "industrial technology"
+    },
+    {
+      "source_index": 7234,
+      "id": "1238250",
+      "term": "興業銀行",
+      "reading": "こうぎょうぎんこう",
+      "meaning": "industrial bank"
+    },
+    {
+      "source_index": 7235,
+      "id": "2840271",
+      "term": "工業高校",
+      "reading": "こうぎょうこうこう",
+      "meaning": "technical high school / industrial high school"
+    },
+    {
+      "source_index": 7236,
+      "id": "2701800",
+      "term": "抗凝固剤",
+      "reading": "こうぎょうこざい",
+      "meaning": "anticoagulant agent / anticoagulant drug / anticoagulant"
+    },
+    {
+      "source_index": 7237,
+      "id": "2404340",
+      "term": "興行収入",
+      "reading": "こうぎょうしゅうにゅう",
+      "meaning": "box-office takings / box-office revenue"
+    },
+    {
+      "source_index": 7238,
+      "id": "2621250",
+      "term": "工業生産",
+      "reading": "こうぎょうせいさん",
+      "meaning": "industrial production"
+    },
+    {
+      "source_index": 7239,
+      "id": "1933420",
+      "term": "興行成績",
+      "reading": "こうぎょうせいせき",
+      "meaning": "box-office record"
+    },
+    {
+      "source_index": 7240,
+      "id": "1935000",
+      "term": "工業製品",
+      "reading": "こうぎょうせいひん",
+      "meaning": "industrial goods"
+    },
+    {
+      "source_index": 7241,
+      "id": "1674910",
+      "term": "工業大学",
+      "reading": "こうぎょうだいがく",
+      "meaning": "institute of technology / technological university / technical university"
+    },
+    {
+      "source_index": 7242,
+      "id": "1674960",
+      "term": "工業団地",
+      "reading": "こうぎょうだんち",
+      "meaning": "industrial park"
+    },
+    {
+      "source_index": 7243,
+      "id": "2584800",
+      "term": "工業地域",
+      "reading": "こうぎょうちいき",
+      "meaning": "industrial area / industrial district / industrial zone"
+    },
+    {
+      "source_index": 7244,
+      "id": "1278060",
+      "term": "工業地区",
+      "reading": "こうぎょうちく",
+      "meaning": "industrial zone"
+    },
+    {
+      "source_index": 7245,
+      "id": "1674950",
+      "term": "工業地帯",
+      "reading": "こうぎょうちたい",
+      "meaning": "industrial area / industrial zone"
+    },
+    {
+      "source_index": 7246,
+      "id": "1935010",
+      "term": "工業都市",
+      "reading": "こうぎょうとし",
+      "meaning": "industrial (manufacturing, factory) town or city"
+    },
+    {
+      "source_index": 7247,
+      "id": "2867860",
+      "term": "工業薬品",
+      "reading": "こうぎょうやくひん",
+      "meaning": "industrial chemicals / heavy chemicals"
+    },
+    {
+      "source_index": 7248,
+      "id": "1992570",
+      "term": "工業用水",
+      "reading": "こうぎょうようすい",
+      "meaning": "industrial water"
+    },
+    {
+      "source_index": 7249,
+      "id": "2450520",
+      "term": "航空医学",
+      "reading": "こうくういがく",
+      "meaning": "aviation medicine"
     }
   ]
 }
