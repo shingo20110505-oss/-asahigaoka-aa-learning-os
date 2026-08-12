@@ -1,0 +1,91 @@
+name: Keep Kokugo Term and Meaning Visible
+on:
+  workflow_run:
+    workflows:
+      - Convert Kokugo Meanings to Japanese Fast
+      - Convert Kokugo Meanings to Japanese
+    types: [completed]
+permissions:
+  contents: write
+jobs:
+  apply-mobile-layout:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Sync latest main
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+      - name: Apply mobile dual-column layout
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          page = Path('kokugo-chronologia/index.html')
+          s = page.read_text(encoding='utf-8')
+          marker = 'KOKUGO_MOBILE_DUAL_COLUMN_V1'
+          css = r'''/* KOKUGO_MOBILE_DUAL_COLUMN_V1 */
+@media(max-width:760px){
+  .tableWrap{overflow:visible;border:0;background:transparent;border-radius:0}
+  .table{min-width:0;width:100%}
+  .tr{grid-template-columns:minmax(118px,36%) minmax(0,64%);grid-template-rows:auto auto auto;background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden}
+  .tr>div{min-height:0;border:0;padding:8px 9px}
+  .tr>div:nth-child(1),.tr>div:nth-child(5),.tr>div:nth-child(6){display:none}
+  .tr>div:nth-child(2){grid-column:1;grid-row:1;border-right:1px solid #e5e9ef;padding-bottom:3px}
+  .tr>div:nth-child(3){grid-column:1;grid-row:2;border-right:1px solid #e5e9ef;padding-top:2px}
+  .tr>div:nth-child(4){grid-column:2;grid-row:1 / span 2;align-self:stretch}
+  .tr>div:nth-child(7){grid-column:1 / -1;grid-row:3;border-top:1px solid #eef1f5;padding:6px 8px}
+  .th{position:sticky;top:0;z-index:15;display:grid;grid-template-columns:minmax(118px,36%) minmax(0,64%);grid-template-rows:auto;background:#edf1f6;border:1px solid var(--line);border-radius:10px;margin-bottom:7px;overflow:hidden;box-shadow:0 1px 0 #d9e1ec}
+  .th>div{display:none!important}
+  .th>div:nth-child(2),.th>div:nth-child(4){display:block!important;padding:8px 9px;border:0}
+  .th>div:nth-child(2){grid-column:1;border-right:1px solid #d9e1ec}
+  .th>div:nth-child(4){grid-column:2}
+  .word{font-size:14px;line-height:1.35}
+  .reading{font-size:10px;line-height:1.35}
+  .meaning{font-size:12px;line-height:1.5;word-break:break-word}
+  .states{justify-content:flex-end;gap:6px}
+  .mini{padding:6px 9px}
+}
+@media(max-width:420px){
+  .tr,.th{grid-template-columns:minmax(112px,38%) minmax(0,62%)}
+}'''
+          if marker not in s:
+              s = s.replace('</style>', css + '</style>', 1)
+              page.write_text(s, encoding='utf-8')
+
+          sw = Path('sw.js')
+          t = sw.read_text(encoding='utf-8')
+          t = re.sub(r"const VERSION='[^']+';", "const VERSION='2.4.1-quality2-chronologia1000-kokugo-mobile-dual';", t, count=1)
+          sw.write_text(t, encoding='utf-8')
+      - name: Validate mobile layout
+        shell: python
+        run: |
+          from pathlib import Path
+          s=Path('kokugo-chronologia/index.html').read_text(encoding='utf-8')
+          assert 'KOKUGO_MOBILE_DUAL_COLUMN_V1' in s
+          assert 'grid-template-columns:minmax(118px,36%) minmax(0,64%)' in s
+          assert '.tr>div:nth-child(4){grid-column:2;grid-row:1 / span 2' in s
+          t=Path('sw.js').read_text(encoding='utf-8')
+          assert "2.4.1-quality2-chronologia1000-kokugo-mobile-dual" in t
+          print('mobile dual-column layout OK')
+      - name: Commit and push safely
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add kokugo-chronologia/index.html sw.js
+          if git diff --cached --quiet; then
+            echo 'No changes needed'
+            exit 0
+          fi
+          git commit -m 'Show Kokugo term and meaning together on mobile'
+          for i in 1 2 3 4 5; do
+            if git push origin HEAD:main; then exit 0; fi
+            git fetch origin main
+            git rebase origin/main
+            sleep 2
+          done
+          exit 1
