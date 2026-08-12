@@ -1,14 +1,7 @@
 {
-  "state": "complete",
+  "state": "quality_reset",
   "total_rows": 15000,
-  "started_at": "2026-08-12T12:01:27.927972Z",
-  "model": "Helsinki-NLP/opus-mt-en-jap",
-  "direct_override_count": 49,
-  "initial_pending": 0,
-  "translated_this_run": 0,
-  "remaining_english_only": 0,
-  "checkpoint_every": 1000,
-  "completed_at": "2026-08-12T12:01:27.928018Z",
-  "data_sha256": "907d1334842081bc00cfdb7a1a983409fab04e0b8025da1c01fac40a8ee27650",
-  "final_rows": 15000
+  "machine_translation_accepted": false,
+  "reason": "Automated English-to-Japanese output failed semantic quality checks; restored the pre-machine dataset. Directly reviewed Japanese overrides remain separate.",
+  "next_step": "Rebuild Japanese meanings from verified definitions in reviewed batches."
 }
