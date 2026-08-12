@@ -1,0 +1,1 @@
+window.KOKUGO_DIRECT_MEANINGS={};
