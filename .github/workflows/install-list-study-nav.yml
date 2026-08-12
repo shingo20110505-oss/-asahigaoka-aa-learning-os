@@ -1,0 +1,49 @@
+name: Install List Study Navigation
+
+on:
+  push:
+    paths:
+      - '.list-study-nav-trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install navigation and refresh PWA
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          tag='<script src="./study-list-nav-v1.js"></script>'
+          if tag not in s:
+              if '</body>' not in s: raise SystemExit('index.html has no </body>')
+              s=s.replace('</body>',tag+'\n</body>')
+              p.write_text(s,encoding='utf-8')
+          sw=Path('sw.js')
+          t=sw.read_text(encoding='utf-8')
+          import re
+          t=re.sub(r"const VERSION='[^']+';","const VERSION='2.3.8-list-study-nav';",t,count=1)
+          asset="url('study-list-nav-v1.js')"
+          if asset not in t:
+              t=t.replace("const CORE=[",f"const CORE=[{asset},",1)
+          sw.write_text(t,encoding='utf-8')
+          assert tag in p.read_text(encoding='utf-8')
+          assert "study-list-nav-v1.js" in sw.read_text(encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html sw.js study-list-nav-v1.js
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Show social and Kokugo list-study navigation in practice'
+          git pull --rebase origin main
+          git push origin HEAD:main
