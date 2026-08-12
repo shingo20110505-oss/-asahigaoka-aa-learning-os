@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" role="img" aria-labelledby="title desc">
+  <title id="title">理科 問25・26 植物の分類</title>
+  <desc id="desc">問25はゼニゴケの雌株をAとBから選ぶ問題。問26は10種類の植物をコケ植物、シダ植物、裸子植物、双子葉類、単子葉類に分類する問題。</desc>
+  <rect width="960" height="760" fill="#ffffff"/>
+  <rect x="24" y="24" width="912" height="712" rx="22" fill="#ffffff" stroke="#cbd5e1" stroke-width="3"/>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic',Meiryo,sans-serif" fill="#172033">
+    <text x="56" y="74" font-size="30" font-weight="700">問25　ゼニゴケの雌株は A・B のどちらか。</text>
+    <text x="56" y="108" font-size="20" fill="#667085">形を見て答えなさい。</text>
+
+    <rect x="74" y="140" width="360" height="245" rx="18" fill="#f8fafc" stroke="#d9e0ea" stroke-width="2"/>
+    <rect x="526" y="140" width="360" height="245" rx="18" fill="#f8fafc" stroke="#d9e0ea" stroke-width="2"/>
+    <text x="98" y="180" font-size="30" font-weight="700">A</text>
+    <text x="550" y="180" font-size="30" font-weight="700">B</text>
+
+    <!-- A: flat male receptacle-like head -->
+    <path d="M175 333 C190 300,210 282,247 274 C285 267,316 278,338 299 C356 316,364 338,356 355 C331 367,294 372,253 369 C216 367,189 357,175 333Z" fill="#d7ead9" stroke="#4d7d58" stroke-width="4"/>
+    <path d="M260 332 L260 232" stroke="#4d7d58" stroke-width="8" stroke-linecap="round"/>
+    <ellipse cx="260" cy="224" rx="67" ry="25" fill="#eef6ef" stroke="#4d7d58" stroke-width="4"/>
+    <circle cx="260" cy="224" r="7" fill="#4d7d58"/>
+    <path d="M205 224 H315 M220 212 L300 236 M220 236 L300 212" stroke="#8fb598" stroke-width="3"/>
+
+    <!-- B: star/umbrella female archegoniophore-like head -->
+    <path d="M627 333 C642 300,662 282,699 274 C737 267,768 278,790 299 C808 316,816 338,808 355 C783 367,746 372,705 369 C668 367,641 357,627 333Z" fill="#d7ead9" stroke="#4d7d58" stroke-width="4"/>
+    <path d="M712 333 L712 232" stroke="#4d7d58" stroke-width="8" stroke-linecap="round"/>
+    <path d="M712 222 L728 179 L739 210 L772 184 L756 220 L798 219 L760 237 L790 260 L748 249 L754 290 L728 255 L712 294 L696 255 L670 290 L676 249 L634 260 L664 237 L626 219 L668 220 L652 184 L685 210 L696 179 Z" fill="#eef6ef" stroke="#4d7d58" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="712" cy="229" r="10" fill="#4d7d58"/>
+
+    <line x1="56" y1="414" x2="904" y2="414" stroke="#d9e0ea" stroke-width="2"/>
+    <text x="56" y="466" font-size="30" font-weight="700">問26　次の植物を5つのグループに分類しなさい。</text>
+    <text x="56" y="504" font-size="19" fill="#667085">コケ植物・シダ植物・裸子植物・双子葉類・単子葉類</text>
+
+    <g font-size="25">
+      <text x="82" y="557">ア　スギゴケ</text>
+      <text x="338" y="557">イ　イヌワラビ</text>
+      <text x="638" y="557">ウ　ツユクサ</text>
+
+      <text x="82" y="607">エ　イチョウ</text>
+      <text x="338" y="607">オ　ツツジ</text>
+      <text x="638" y="607">カ　スギナ</text>
+
+      <text x="82" y="657">キ　スギ</text>
+      <text x="338" y="657">ク　サクラ</text>
+      <text x="638" y="657">ケ　ゼニゴケ</text>
+
+      <text x="82" y="707">コ　トウモロコシ</text>
+    </g>
+  </g>
+</svg>
