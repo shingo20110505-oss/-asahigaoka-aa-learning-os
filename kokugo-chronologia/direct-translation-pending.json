@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 5400,
-  "english_only_remaining": 9600,
+  "already_direct_japanese": 5450,
+  "english_only_remaining": 9550,
   "english_only_rank_counts": {
-    "(blank)": 9600
+    "(blank)": 9550
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 5400,
-      "id": "1990740",
-      "term": "禁止薬物",
-      "reading": "きんしやくぶつ",
-      "meaning": "banned drug"
-    },
-    {
-      "source_index": 5401,
-      "id": "1727190",
-      "term": "緊縮財政",
-      "reading": "きんしゅくざいせい",
-      "meaning": "reduced budget / budgetary austerities"
-    },
-    {
-      "source_index": 5402,
-      "id": "1990840",
-      "term": "緊縮政策",
-      "reading": "きんしゅくせいさく",
-      "meaning": "austerity plan / austerity program / austerity programme"
-    },
-    {
-      "source_index": 5403,
-      "id": "5230158",
-      "term": "金商又一",
-      "reading": "きんしょうまたいち",
-      "meaning": "Kinsho-Mataichi Corporation"
-    },
-    {
-      "source_index": 5404,
-      "id": "1780720",
-      "term": "近親結婚",
-      "reading": "きんしんけっこん",
-      "meaning": "consanguineous marriage"
-    },
-    {
-      "source_index": 5405,
-      "id": "2644550",
-      "term": "近親交配",
-      "reading": "きんしんこうはい",
-      "meaning": "inbreeding"
-    },
-    {
-      "source_index": 5406,
-      "id": "2841593",
-      "term": "謹慎処分",
-      "reading": "きんしんしょぶん",
-      "meaning": "suspension (from work or school)"
-    },
-    {
-      "source_index": 5407,
-      "id": "1242380",
-      "term": "近親相姦",
-      "reading": "きんしんそうかん",
-      "meaning": "incest"
-    },
-    {
-      "source_index": 5408,
-      "id": "2871368",
-      "term": "近親憎悪",
-      "reading": "きんしんぞうお",
-      "meaning": "hostility towards people close to oneself (family, associates, etc.) / bearing hatred for one's peers"
-    },
-    {
-      "source_index": 5409,
-      "id": "2163000",
-      "term": "近似貨幣",
-      "reading": "きんじかへい",
-      "meaning": "near money"
-    },
-    {
-      "source_index": 5410,
-      "id": "1780490",
-      "term": "近似計算",
-      "reading": "きんじけいさん",
-      "meaning": "rough or approximate calculation"
-    },
-    {
-      "source_index": 5411,
-      "id": "2351540",
-      "term": "近似雑音",
-      "reading": "きんじざつおん",
-      "meaning": "pseudonoise / PN"
-    },
-    {
-      "source_index": 5412,
-      "id": "2834727",
-      "term": "金獅子賞",
-      "reading": "きんじししょう",
-      "meaning": "Golden Lion (highest prize at the Venice Film Festival)"
-    },
-    {
-      "source_index": 5413,
-      "id": "2853891",
-      "term": "近日公開",
-      "reading": "きんじつこうかい",
-      "meaning": "coming soon (e.g. of a movie) / soon to be released / soon to be made public"
-    },
-    {
-      "source_index": 5414,
-      "id": "2154410",
-      "term": "近日発売",
-      "reading": "きんじつはつばい",
-      "meaning": "on sale soon / coming soon"
-    },
-    {
-      "source_index": 5415,
-      "id": "5742830",
-      "term": "金城大学",
-      "reading": "きんじょうだいがく",
-      "meaning": "Kinjo University"
-    },
-    {
-      "source_index": 5416,
-      "id": "1682200",
-      "term": "金城鉄壁",
-      "reading": "きんじょうてっぺき",
-      "meaning": "impregnable castle (walls)"
-    },
-    {
-      "source_index": 5417,
-      "id": "2044230",
-      "term": "錦上添花",
-      "reading": "きんじょうてんか",
-      "meaning": "adding a crowning touch of beauty (to) / giving added luster (to) / crowning beauty (honor, grace) with even greater glory"
-    },
-    {
-      "source_index": 5418,
-      "id": "1629280",
-      "term": "今上天皇",
-      "reading": "きんじょうてんのう",
-      "meaning": "His Majesty the Emperor / the present emperor / the reigning emperor"
-    },
-    {
-      "source_index": 5419,
-      "id": "2030620",
-      "term": "金城湯池",
-      "reading": "きんじょうとうち",
-      "meaning": "an impregnable fortress / an unassailable territory"
-    },
-    {
-      "source_index": 5420,
-      "id": "2103680",
-      "term": "錦上花を添える",
-      "reading": "きんじょうはなをそえる",
-      "meaning": "to crown beauty with even greater glory"
-    },
-    {
-      "source_index": 5421,
-      "id": "1289300",
-      "term": "今上陛下",
-      "reading": "きんじょうへいか",
-      "meaning": "His Majesty the Emperor / the present emperor / the reigning emperor"
-    },
-    {
-      "source_index": 5422,
-      "id": "1780550",
-      "term": "近所合壁",
-      "reading": "きんじょがっぺき",
-      "meaning": "immediate neighborhood / immediate neighbourhood"
-    },
-    {
-      "source_index": 5423,
-      "id": "1780560",
-      "term": "近所迷惑",
-      "reading": "きんじょめいわく",
-      "meaning": "neighborhood nuisance / neighbourhood nuisance"
-    },
-    {
-      "source_index": 5424,
-      "id": "2226200",
-      "term": "禁制原理",
-      "reading": "きんせいげんり",
-      "meaning": "Pauli exclusion principle"
-    },
-    {
-      "source_index": 5425,
-      "id": "2657850",
-      "term": "筋性歯痛",
-      "reading": "きんせいしつう",
-      "meaning": "muscular toothache"
-    },
-    {
-      "source_index": 5426,
-      "id": "2625550",
-      "term": "近世文学",
-      "reading": "きんせいぶんがく",
-      "meaning": "early-modern literature / Edo-period literature (1600-1867)"
-    },
-    {
-      "source_index": 5427,
-      "id": "2726890",
-      "term": "近赤外線",
-      "reading": "きんせきがいせん",
-      "meaning": "near infrared ray / near infrared radiation"
-    },
-    {
-      "source_index": 5428,
-      "id": "2830249",
-      "term": "近接格闘",
-      "reading": "きんせつかくとう",
-      "meaning": "close quarters combat / CQC"
-    },
-    {
-      "source_index": 5429,
-      "id": "2872363",
-      "term": "近接撮影",
-      "reading": "きんせつさつえい",
-      "meaning": "macro photography / close-up photography"
-    },
-    {
-      "source_index": 5430,
-      "id": "2866278",
-      "term": "近接信管",
-      "reading": "きんせつしんかん",
-      "meaning": "proximity fuze (fuse) / influence fuze / variable-time fuze"
-    },
-    {
-      "source_index": 5431,
-      "id": "2860388",
-      "term": "近接戦闘",
-      "reading": "きんせつせんとう",
-      "meaning": "close-quarters combat / close-quarters battle / CQC"
-    },
-    {
-      "source_index": 5432,
-      "id": "2852441",
-      "term": "近接未来",
-      "reading": "きんせつみらい",
-      "meaning": "immediate future / near future"
-    },
-    {
-      "source_index": 5433,
-      "id": "2044240",
-      "term": "金銭感覚",
-      "reading": "きんせんかんかく",
-      "meaning": "sense for (how to use) money / money sense"
-    },
-    {
-      "source_index": 5434,
-      "id": "2415090",
-      "term": "金銭債権",
-      "reading": "きんせんさいけん",
-      "meaning": "monetary claim"
-    },
-    {
-      "source_index": 5435,
-      "id": "2633420",
-      "term": "金銭債務",
-      "reading": "きんせんさいむ",
-      "meaning": "monetary liabilities / pecuniary obligation"
-    },
-    {
-      "source_index": 5436,
-      "id": "1682500",
-      "term": "金銭信託",
-      "reading": "きんせんしんたく",
-      "meaning": "cash or money trust"
-    },
-    {
-      "source_index": 5437,
-      "id": "2044250",
-      "term": "金銭哲学",
-      "reading": "きんせんてつがく",
-      "meaning": "one's philosophy of making, saving, and spending money"
-    },
-    {
-      "source_index": 5438,
-      "id": "2836614",
-      "term": "琴線に触れる",
-      "reading": "きんせんにふれる",
-      "meaning": "to strike a chord / to tug at one's heartstrings / to resonate"
-    },
-    {
-      "source_index": 5439,
-      "id": "2044260",
-      "term": "金銭問題",
-      "reading": "きんせんもんだい",
-      "meaning": "money matter / question of money / money trouble"
-    },
-    {
-      "source_index": 5440,
-      "id": "2351500",
-      "term": "禁則処理",
-      "reading": "きんそくしょり",
-      "meaning": "word processor function for handling line breaking rules in Japanese / line break control"
-    },
-    {
-      "source_index": 5441,
-      "id": "1933620",
-      "term": "金属加工",
-      "reading": "きんぞくかこう",
-      "meaning": "metalworking"
-    },
-    {
-      "source_index": 5442,
-      "id": "2421780",
-      "term": "金属結合",
-      "reading": "きんぞくけつごう",
-      "meaning": "metallic bond / metallic bonding"
-    },
-    {
-      "source_index": 5443,
-      "id": "1682380",
-      "term": "金属元素",
-      "reading": "きんぞくげんそ",
-      "meaning": "metallic element"
-    },
-    {
-      "source_index": 5444,
-      "id": "1682370",
-      "term": "金属工業",
-      "reading": "きんぞくこうぎょう",
-      "meaning": "metalworking industry"
-    },
-    {
-      "source_index": 5445,
-      "id": "2694970",
-      "term": "金属光沢",
-      "reading": "きんぞくこうたく",
-      "meaning": "metallic lustre / metallic luster"
-    },
-    {
-      "source_index": 5446,
-      "id": "2564850",
-      "term": "金属鉱物",
-      "reading": "きんぞくこうぶつ",
-      "meaning": "metal ore / metallic mineral"
-    },
-    {
-      "source_index": 5447,
-      "id": "2865781",
-      "term": "金属石鹸",
-      "reading": "きんぞくせっけん",
-      "meaning": "metallic soap / soap scum"
-    },
-    {
-      "source_index": 5448,
-      "id": "2580340",
-      "term": "金属端子",
-      "reading": "きんぞくたんし",
-      "meaning": "metal terminal"
-    },
-    {
-      "source_index": 5449,
-      "id": "2683290",
-      "term": "金属探知",
-      "reading": "きんぞくたんち",
-      "meaning": "metal detection"
-    },
     {
       "source_index": 5450,
       "id": "2855833",
@@ -7010,6 +6660,356 @@
       "term": "刑務所長",
       "reading": "けいむしょちょう",
       "meaning": "prison warden"
+    },
+    {
+      "source_index": 6400,
+      "id": "2030710",
+      "term": "鶏鳴狗盗",
+      "reading": "けいめいくとう",
+      "meaning": "person who resorts to petty tricks / person of small caliber who is only capable of petty tricks"
+    },
+    {
+      "source_index": 6401,
+      "id": "1727690",
+      "term": "啓蒙運動",
+      "reading": "けいもううんどう",
+      "meaning": "enlightenment movement / the Enlightenment"
+    },
+    {
+      "source_index": 6402,
+      "id": "2079110",
+      "term": "啓蒙活動",
+      "reading": "けいもうかつどう",
+      "meaning": "information campaign / awareness program"
+    },
+    {
+      "source_index": 6403,
+      "id": "1727670",
+      "term": "啓蒙思想",
+      "reading": "けいもうしそう",
+      "meaning": "the philosophy of the European Enlightenment"
+    },
+    {
+      "source_index": 6404,
+      "id": "1727680",
+      "term": "啓蒙思潮",
+      "reading": "けいもうしちょう",
+      "meaning": "enlightenment movement / the Enlightenment"
+    },
+    {
+      "source_index": 6405,
+      "id": "2145490",
+      "term": "啓蒙主義",
+      "reading": "けいもうしゅぎ",
+      "meaning": "illuminism / enlightenment"
+    },
+    {
+      "source_index": 6406,
+      "id": "2828640",
+      "term": "契約違反",
+      "reading": "けいやくいはん",
+      "meaning": "breach of contract"
+    },
+    {
+      "source_index": 6407,
+      "id": "1250200",
+      "term": "契約期間",
+      "reading": "けいやくきかん",
+      "meaning": "contract period"
+    },
+    {
+      "source_index": 6408,
+      "id": "2517620",
+      "term": "契約結婚",
+      "reading": "けいやくけっこん",
+      "meaning": "contract marriage / marriage by contract"
+    },
+    {
+      "source_index": 6409,
+      "id": "1991380",
+      "term": "契約更改",
+      "reading": "けいやくこうかい",
+      "meaning": "contract renewal"
+    },
+    {
+      "source_index": 6410,
+      "id": "2201130",
+      "term": "契約交渉",
+      "reading": "けいやくこうしょう",
+      "meaning": "contract negotiation / contract discussion"
+    },
+    {
+      "source_index": 6411,
+      "id": "1991370",
+      "term": "契約雇用",
+      "reading": "けいやくこよう",
+      "meaning": "contract employment"
+    },
+    {
+      "source_index": 6412,
+      "id": "1991390",
+      "term": "契約社員",
+      "reading": "けいやくしゃいん",
+      "meaning": "contract employee"
+    },
+    {
+      "source_index": 6413,
+      "id": "2748510",
+      "term": "契約自由",
+      "reading": "けいやくじゆう",
+      "meaning": "freedom of contract"
+    },
+    {
+      "source_index": 6414,
+      "id": "2832830",
+      "term": "契約条件",
+      "reading": "けいやくじょうけん",
+      "meaning": "conditions of a contract / terms of a contract"
+    },
+    {
+      "source_index": 6415,
+      "id": "2682930",
+      "term": "契約締結",
+      "reading": "けいやくていけつ",
+      "meaning": "conclusion of a contract / consummation of a contract"
+    },
+    {
+      "source_index": 6416,
+      "id": "2854399",
+      "term": "契約変更",
+      "reading": "けいやくへんこう",
+      "meaning": "alteration of contract / contract modification / contractual change"
+    },
+    {
+      "source_index": 6417,
+      "id": "2839002",
+      "term": "契約満了",
+      "reading": "けいやくまんりょう",
+      "meaning": "contract expiry / contract expiration"
+    },
+    {
+      "source_index": 6418,
+      "id": "1991410",
+      "term": "契約問題",
+      "reading": "けいやくもんだい",
+      "meaning": "contract dispute"
+    },
+    {
+      "source_index": 6419,
+      "id": "2863353",
+      "term": "経由銀行",
+      "reading": "けいゆぎんこう",
+      "meaning": "intermediary bank / correspondent bank"
+    },
+    {
+      "source_index": 6420,
+      "id": "1250440",
+      "term": "形容詞幹",
+      "reading": "けいようしかん",
+      "meaning": "stem (word)"
+    },
+    {
+      "source_index": 6421,
+      "id": "2028470",
+      "term": "形容詞句",
+      "reading": "けいようしく",
+      "meaning": "adjective phrase / adjectival phrase"
+    },
+    {
+      "source_index": 6422,
+      "id": "2852407",
+      "term": "形容詞的",
+      "reading": "けいようしてき",
+      "meaning": "adjectival"
+    },
+    {
+      "source_index": 6423,
+      "id": "2512960",
+      "term": "茎葉植物",
+      "reading": "けいようしょくぶつ",
+      "meaning": "cormophyte"
+    },
+    {
+      "source_index": 6424,
+      "id": "1250450",
+      "term": "形容動詞",
+      "reading": "けいようどうし",
+      "meaning": "adjectival noun (in Japanese) / quasi-adjective / nominal adjective"
+    },
+    {
+      "source_index": 6425,
+      "id": "2160820",
+      "term": "形容矛盾",
+      "reading": "けいようむじゅん",
+      "meaning": "contradictio in adjecto / contradiction between an adjective and the noun it modifies (wooden iron, hot ice, etc.)"
+    },
+    {
+      "source_index": 6426,
+      "id": "2704830",
+      "term": "鶏卵素麺",
+      "reading": "けいらんそうめん",
+      "meaning": "sweet of egg yolks drawn into strands and boiled in sugar syrup (orig. from Portugal) / angel hair / fios de ovos"
+    },
+    {
+      "source_index": 6427,
+      "id": "2014520",
+      "term": "軽竜騏兵",
+      "reading": "けいりゅうきへい",
+      "meaning": "(Royal) light cavalry"
+    },
+    {
+      "source_index": 6428,
+      "id": "2830872",
+      "term": "係留施設",
+      "reading": "けいりゅうしせつ",
+      "meaning": "mooring facilities / moorage / berthing facility"
+    },
+    {
+      "source_index": 6429,
+      "id": "2793890",
+      "term": "稽留流産",
+      "reading": "けいりゅうりゅうざん",
+      "meaning": "delayed miscarriage / silent miscarriage / missed abortion"
+    },
+    {
+      "source_index": 6430,
+      "id": "2829629",
+      "term": "計量化学",
+      "reading": "けいりょうかがく",
+      "meaning": "chemometrics"
+    },
+    {
+      "source_index": 6431,
+      "id": "2838581",
+      "term": "軽量形鋼",
+      "reading": "けいりょうかたこう",
+      "meaning": "light gauge steel"
+    },
+    {
+      "source_index": 6432,
+      "id": "2861595",
+      "term": "計量単位",
+      "reading": "けいりょうたんい",
+      "meaning": "unit of measurement"
+    },
+    {
+      "source_index": 6433,
+      "id": "2352700",
+      "term": "軽量端末",
+      "reading": "けいりょうたんまつ",
+      "meaning": "thin client"
+    },
+    {
+      "source_index": 6434,
+      "id": "2838580",
+      "term": "軽量鉄骨",
+      "reading": "けいりょうてっこつ",
+      "meaning": "light gauge steel"
+    },
+    {
+      "source_index": 6435,
+      "id": "1933230",
+      "term": "競輪選手",
+      "reading": "けいりんせんしゅ",
+      "meaning": "(professional) keirin cyclist"
+    },
+    {
+      "source_index": 6436,
+      "id": "2044500",
+      "term": "経歴詐称",
+      "reading": "けいれきさしょう",
+      "meaning": "misrepresentation (falsification) of one's past record (personal history)"
+    },
+    {
+      "source_index": 6437,
+      "id": "2506980",
+      "term": "系列関係",
+      "reading": "けいれつかんけい",
+      "meaning": "paradigmatic relation"
+    },
+    {
+      "source_index": 6438,
+      "id": "1769340",
+      "term": "系列会社",
+      "reading": "けいれつがいしゃ",
+      "meaning": "affiliate company"
+    },
+    {
+      "source_index": 6439,
+      "id": "2702840",
+      "term": "系列取引",
+      "reading": "けいれつとりひき",
+      "meaning": "keiretsu transaction / financial transaction between affiliated enterprises / intragroup business deal"
+    },
+    {
+      "source_index": 6440,
+      "id": "2850559",
+      "term": "敬老手帳",
+      "reading": "けいろうてちょう",
+      "meaning": "discount pass for the elderly"
+    },
+    {
+      "source_index": 6441,
+      "id": "2243160",
+      "term": "経路係数",
+      "reading": "けいろけいすう",
+      "meaning": "path coefficient"
+    },
+    {
+      "source_index": 6442,
+      "id": "2352300",
+      "term": "経路制御",
+      "reading": "けいろせいぎょ",
+      "meaning": "routing control"
+    },
+    {
+      "source_index": 6443,
+      "id": "1251710",
+      "term": "経路積分",
+      "reading": "けいろせきぶん",
+      "meaning": "path integral"
+    },
+    {
+      "source_index": 6444,
+      "id": "2352310",
+      "term": "経路選択",
+      "reading": "けいろせんたく",
+      "meaning": "routing"
+    },
+    {
+      "source_index": 6445,
+      "id": "1976500",
+      "term": "怪我の功名",
+      "reading": "けがのこうみょう",
+      "meaning": "fortunate error / lucky break / fluke"
+    },
+    {
+      "source_index": 6446,
+      "id": "2857378",
+      "term": "毛皮商人",
+      "reading": "けがわしょうにん",
+      "meaning": "fur trader"
+    },
+    {
+      "source_index": 6447,
+      "id": "2521960",
+      "term": "毛皮貿易",
+      "reading": "けがわぼうえき",
+      "meaning": "fur trade"
+    },
+    {
+      "source_index": 6448,
+      "id": "2818860",
+      "term": "化粧下地",
+      "reading": "けしょうしたじ",
+      "meaning": "makeup base / liquid foundation / primer"
+    },
+    {
+      "source_index": 6449,
+      "id": "1187030",
+      "term": "化粧石鹸",
+      "reading": "けしょうせっけん",
+      "meaning": "toilet soap"
     }
   ]
 }

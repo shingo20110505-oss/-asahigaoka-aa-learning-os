@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 5400,
-  "english_only_remaining": 9600,
+  "already_direct_japanese": 5450,
+  "english_only_remaining": 9550,
   "english_only_rank_counts": {
-    "(blank)": 9600
+    "(blank)": 9550
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,356 +13,6 @@
   "part_start": 700,
   "part_end": 799,
   "targets": [
-    {
-      "source_index": 6100,
-      "id": "1831510",
-      "term": "経営参加",
-      "reading": "けいえいさんか",
-      "meaning": "labor participation in management (labour)"
-    },
-    {
-      "source_index": 6101,
-      "id": "1251190",
-      "term": "経営資源",
-      "reading": "けいえいしげん",
-      "meaning": "management resource / management resources"
-    },
-    {
-      "source_index": 6102,
-      "id": "2856183",
-      "term": "経営手腕",
-      "reading": "けいえいしゅわん",
-      "meaning": "management capability / administrative skill"
-    },
-    {
-      "source_index": 6103,
-      "id": "2648390",
-      "term": "経営状況",
-      "reading": "けいえいじょうきょう",
-      "meaning": "business conditions / trade conditions / financial situation"
-    },
-    {
-      "source_index": 6104,
-      "id": "2569880",
-      "term": "経営責任",
-      "reading": "けいえいせきにん",
-      "meaning": "management responsibility / administrative responsibility"
-    },
-    {
-      "source_index": 6105,
-      "id": "1251220",
-      "term": "経営戦略",
-      "reading": "けいえいせんりゃく",
-      "meaning": "management strategy"
-    },
-    {
-      "source_index": 6106,
-      "id": "1251230",
-      "term": "経営転換",
-      "reading": "けいえいてんかん",
-      "meaning": "management reorganization / management reorganisation"
-    },
-    {
-      "source_index": 6107,
-      "id": "2411280",
-      "term": "経営統合",
-      "reading": "けいえいとうごう",
-      "meaning": "business integration / business merger / integration of management"
-    },
-    {
-      "source_index": 6108,
-      "id": "2829826",
-      "term": "経営努力",
-      "reading": "けいえいどりょく",
-      "meaning": "management effort / managerial effort / operation action"
-    },
-    {
-      "source_index": 6109,
-      "id": "1251240",
-      "term": "経営破綻",
-      "reading": "けいえいはたん",
-      "meaning": "business failure"
-    },
-    {
-      "source_index": 6110,
-      "id": "2105860",
-      "term": "経営不振",
-      "reading": "けいえいふしん",
-      "meaning": "business slump / slowdown in business activity"
-    },
-    {
-      "source_index": 6111,
-      "id": "1991560",
-      "term": "経営方針",
-      "reading": "けいえいほうしん",
-      "meaning": "management policies"
-    },
-    {
-      "source_index": 6112,
-      "id": "2828798",
-      "term": "経営理念",
-      "reading": "けいえいりねん",
-      "meaning": "management philosophy / management principles / managerial creed"
-    },
-    {
-      "source_index": 6113,
-      "id": "2450150",
-      "term": "経営倫理",
-      "reading": "けいえいりんり",
-      "meaning": "management ethics"
-    },
-    {
-      "source_index": 6114,
-      "id": "2205470",
-      "term": "桂園時代",
-      "reading": "けいえんじだい",
-      "meaning": "Keien period (between the end of the Russo-Japanese War and the Taisho Political Crisis, approx. 1905-1912)"
-    },
-    {
-      "source_index": 6115,
-      "id": "5241293",
-      "term": "慶應義塾",
-      "reading": "けいおうぎじゅく",
-      "meaning": "Keio (Private University)"
-    },
-    {
-      "source_index": 6116,
-      "id": "5241297",
-      "term": "慶應大学",
-      "reading": "けいおうだいがく",
-      "meaning": "Keio University"
-    },
-    {
-      "source_index": 6117,
-      "id": "2654410",
-      "term": "警戒区域",
-      "reading": "けいかいくいき",
-      "meaning": "hazard area (flood, tsunami, etc.) / danger zone / no man's land"
-    },
-    {
-      "source_index": 6118,
-      "id": "1830920",
-      "term": "警戒警報",
-      "reading": "けいかいけいほう",
-      "meaning": "preliminary alert (flood, typhoon, air-raid, etc.) / precautionary warning"
-    },
-    {
-      "source_index": 6119,
-      "id": "2522740",
-      "term": "警戒信号",
-      "reading": "けいかいしんごう",
-      "meaning": "warning signal / restricted speed signal"
-    },
-    {
-      "source_index": 6120,
-      "id": "2856320",
-      "term": "警戒水準",
-      "reading": "けいかいすいじゅん",
-      "meaning": "alert level / warning level"
-    },
-    {
-      "source_index": 6121,
-      "id": "2604810",
-      "term": "警戒宣言",
-      "reading": "けいかいせんげん",
-      "meaning": "official warning (esp. of an impending earthquake)"
-    },
-    {
-      "source_index": 6122,
-      "id": "2831397",
-      "term": "警戒態勢",
-      "reading": "けいかいたいせい",
-      "meaning": "alert status / emergency alert"
-    },
-    {
-      "source_index": 6123,
-      "id": "2773610",
-      "term": "経過観察",
-      "reading": "けいかかんさつ",
-      "meaning": "(medical) follow-up / observation"
-    },
-    {
-      "source_index": 6124,
-      "id": "2836863",
-      "term": "計画運休",
-      "reading": "けいかくうんきゅう",
-      "meaning": "planned mass transit service suspension (as a precaution ahead of typhoons, etc.)"
-    },
-    {
-      "source_index": 6125,
-      "id": "2677930",
-      "term": "計画行列",
-      "reading": "けいかくぎょうれつ",
-      "meaning": "design matrix"
-    },
-    {
-      "source_index": 6126,
-      "id": "1769550",
-      "term": "計画経済",
-      "reading": "けいかくけいざい",
-      "meaning": "planned economy"
-    },
-    {
-      "source_index": 6127,
-      "id": "2571110",
-      "term": "計画決定",
-      "reading": "けいかくけってい",
-      "meaning": "planning decision"
-    },
-    {
-      "source_index": 6128,
-      "id": "2267640",
-      "term": "警覚策励",
-      "reading": "けいかくさくれい",
-      "meaning": "Zen stick (used by a Zen priest to strike an inattentive zazen sitter)"
-    },
-    {
-      "source_index": 6129,
-      "id": "2842484",
-      "term": "計画出産",
-      "reading": "けいかくしゅっさん",
-      "meaning": "planned delivery / induced labour / induced labor"
-    },
-    {
-      "source_index": 6130,
-      "id": "1252120",
-      "term": "計画段階",
-      "reading": "けいかくだんかい",
-      "meaning": "planning stage / planning stages"
-    },
-    {
-      "source_index": 6131,
-      "id": "2352380",
-      "term": "計画停止",
-      "reading": "けいかくていし",
-      "meaning": "planned shutdown / planned outage"
-    },
-    {
-      "source_index": 6132,
-      "id": "2616010",
-      "term": "計画停電",
-      "reading": "けいかくていでん",
-      "meaning": "planned power outage"
-    },
-    {
-      "source_index": 6133,
-      "id": "1769540",
-      "term": "計画倒産",
-      "reading": "けいかくとうさん",
-      "meaning": "planned bankruptcy"
-    },
-    {
-      "source_index": 6134,
-      "id": "2832234",
-      "term": "計画都市",
-      "reading": "けいかくとし",
-      "meaning": "planned city"
-    },
-    {
-      "source_index": 6135,
-      "id": "1991800",
-      "term": "計画犯罪",
-      "reading": "けいかくはんざい",
-      "meaning": "planned crime"
-    },
-    {
-      "source_index": 6136,
-      "id": "2352390",
-      "term": "計画評価",
-      "reading": "けいかくひょうか",
-      "meaning": "forecasting"
-    },
-    {
-      "source_index": 6137,
-      "id": "2854647",
-      "term": "計画分娩",
-      "reading": "けいかくぶんべん",
-      "meaning": "elective delivery / scheduled delivery"
-    },
-    {
-      "source_index": 6138,
-      "id": "2838841",
-      "term": "計画変更",
-      "reading": "けいかくへんこう",
-      "meaning": "change of plan"
-    },
-    {
-      "source_index": 6139,
-      "id": "2352280",
-      "term": "経過時間",
-      "reading": "けいかじかん",
-      "meaning": "elapsed time"
-    },
-    {
-      "source_index": 6140,
-      "id": "2450950",
-      "term": "経過措置",
-      "reading": "けいかそち",
-      "meaning": "transitional measures"
-    },
-    {
-      "source_index": 6141,
-      "id": "2853837",
-      "term": "桂花陳酒",
-      "reading": "けいかちんしゅ",
-      "meaning": "Cassia wine / osmanthus wine"
-    },
-    {
-      "source_index": 6142,
-      "id": "2865313",
-      "term": "経過利子",
-      "reading": "けいかりし",
-      "meaning": "accrued interest"
-    },
-    {
-      "source_index": 6143,
-      "id": "2708120",
-      "term": "経管栄養",
-      "reading": "けいかんえいよう",
-      "meaning": "tube feeding / tubal feeding / intubation feeding"
-    },
-    {
-      "source_index": 6144,
-      "id": "1250920",
-      "term": "桂冠詩人",
-      "reading": "けいかんしじん",
-      "meaning": "poet laureate"
-    },
-    {
-      "source_index": 6145,
-      "id": "2862778",
-      "term": "景観条例",
-      "reading": "けいかんじょうれい",
-      "meaning": "landscape ordinance / scenery regulations"
-    },
-    {
-      "source_index": 6146,
-      "id": "2860004",
-      "term": "景観地区",
-      "reading": "けいかんちく",
-      "meaning": "landscape district (subject to planning restrictions)"
-    },
-    {
-      "source_index": 6147,
-      "id": "2756800",
-      "term": "系外惑星",
-      "reading": "けいがいわくせい",
-      "meaning": "exoplanet / extrasolar planet"
-    },
-    {
-      "source_index": 6148,
-      "id": "2765860",
-      "term": "繋駕競走",
-      "reading": "けいがきょうそう",
-      "meaning": "harness racing"
-    },
-    {
-      "source_index": 6149,
-      "id": "2653790",
-      "term": "景気悪化",
-      "reading": "けいきあっか",
-      "meaning": "economic downturn"
-    },
     {
       "source_index": 6150,
       "id": "1991430",
@@ -712,6 +362,356 @@
       "term": "警察署長",
       "reading": "けいさつしょちょう",
       "meaning": "head of a police station / chief of a police station / superintendent"
+    },
+    {
+      "source_index": 6200,
+      "id": "1991820",
+      "term": "警察捜査",
+      "reading": "けいさつそうさ",
+      "meaning": "police investigation"
+    },
+    {
+      "source_index": 6201,
+      "id": "5244107",
+      "term": "警察大学",
+      "reading": "けいさつだいがく",
+      "meaning": "National Police Academy"
+    },
+    {
+      "source_index": 6202,
+      "id": "1830990",
+      "term": "警察手帳",
+      "reading": "けいさつてちょう",
+      "meaning": "police identification card"
+    },
+    {
+      "source_index": 6203,
+      "id": "1252430",
+      "term": "警察当局",
+      "reading": "けいさつとうきょく",
+      "meaning": "(the relevant) police authorities"
+    },
+    {
+      "source_index": 6204,
+      "id": "2837554",
+      "term": "警察無線",
+      "reading": "けいさつむせん",
+      "meaning": "police radio"
+    },
+    {
+      "source_index": 6205,
+      "id": "2214860",
+      "term": "警察吏員",
+      "reading": "けいさつりいん",
+      "meaning": "police officer"
+    },
+    {
+      "source_index": 6206,
+      "id": "1984460",
+      "term": "計算化学",
+      "reading": "けいさんかがく",
+      "meaning": "computational chemistry"
+    },
+    {
+      "source_index": 6207,
+      "id": "2868825",
+      "term": "計算科学",
+      "reading": "けいさんかがく",
+      "meaning": "computational science / scientific computing"
+    },
+    {
+      "source_index": 6208,
+      "id": "1252150",
+      "term": "計算機間",
+      "reading": "けいさんきま",
+      "meaning": "inside the computer"
+    },
+    {
+      "source_index": 6209,
+      "id": "2352560",
+      "term": "計算機名",
+      "reading": "けいさんきめい",
+      "meaning": "computer-name"
+    },
+    {
+      "source_index": 6210,
+      "id": "2352570",
+      "term": "計算構造",
+      "reading": "けいさんこうぞう",
+      "meaning": "computation structure"
+    },
+    {
+      "source_index": 6211,
+      "id": "2352580",
+      "term": "計算順序",
+      "reading": "けいさんじゅんじょ",
+      "meaning": "computation sequence"
+    },
+    {
+      "source_index": 6212,
+      "id": "2867104",
+      "term": "計算図表",
+      "reading": "けいさんずひょう",
+      "meaning": "nomogram / nomograph"
+    },
+    {
+      "source_index": 6213,
+      "id": "1933940",
+      "term": "計算問題",
+      "reading": "けいさんもんだい",
+      "meaning": "numerical calculation"
+    },
+    {
+      "source_index": 6214,
+      "id": "2837900",
+      "term": "計算用紙",
+      "reading": "けいさんようし",
+      "meaning": "calculation form / tally sheet"
+    },
+    {
+      "source_index": 6215,
+      "id": "1991620",
+      "term": "経済運営",
+      "reading": "けいざいうんえい",
+      "meaning": "economic management"
+    },
+    {
+      "source_index": 6216,
+      "id": "1251330",
+      "term": "経済援助",
+      "reading": "けいざいえんじょ",
+      "meaning": "economic assistance"
+    },
+    {
+      "source_index": 6217,
+      "id": "1251350",
+      "term": "経済改革",
+      "reading": "けいざいかいかく",
+      "meaning": "economic reform"
+    },
+    {
+      "source_index": 6218,
+      "id": "1251340",
+      "term": "経済回復",
+      "reading": "けいざいかいふく",
+      "meaning": "economic recovery"
+    },
+    {
+      "source_index": 6219,
+      "id": "1251370",
+      "term": "経済格差",
+      "reading": "けいざいかくさ",
+      "meaning": "economic disparity"
+    },
+    {
+      "source_index": 6220,
+      "id": "1251390",
+      "term": "経済活動",
+      "reading": "けいざいかつどう",
+      "meaning": "economic activity"
+    },
+    {
+      "source_index": 6221,
+      "id": "1991630",
+      "term": "経済環境",
+      "reading": "けいざいかんきょう",
+      "meaning": "economic environment"
+    },
+    {
+      "source_index": 6222,
+      "id": "1831420",
+      "term": "経済観念",
+      "reading": "けいざいかんねん",
+      "meaning": "sense of economy"
+    },
+    {
+      "source_index": 6223,
+      "id": "1831350",
+      "term": "経済外交",
+      "reading": "けいざいがいこう",
+      "meaning": "economic diplomacy"
+    },
+    {
+      "source_index": 6224,
+      "id": "2037850",
+      "term": "経済学者",
+      "reading": "けいざいがくしゃ",
+      "meaning": "economist"
+    },
+    {
+      "source_index": 6225,
+      "id": "2660090",
+      "term": "経済学部",
+      "reading": "けいざいがくぶ",
+      "meaning": "department of economics / faculty of economics"
+    },
+    {
+      "source_index": 6226,
+      "id": "1991640",
+      "term": "経済危機",
+      "reading": "けいざいきき",
+      "meaning": "economic crisis"
+    },
+    {
+      "source_index": 6227,
+      "id": "2850808",
+      "term": "経済恐慌",
+      "reading": "けいざいきょうこう",
+      "meaning": "financial panic / economic crisis / economic crash"
+    },
+    {
+      "source_index": 6228,
+      "id": "1251420",
+      "term": "経済協力",
+      "reading": "けいざいきょうりょく",
+      "meaning": "economic cooperation"
+    },
+    {
+      "source_index": 6229,
+      "id": "1933900",
+      "term": "経済原論",
+      "reading": "けいざいげんろん",
+      "meaning": "principles of economics"
+    },
+    {
+      "source_index": 6230,
+      "id": "2638540",
+      "term": "経済行為",
+      "reading": "けいざいこうい",
+      "meaning": "economic behavior / economic activities / economic act"
+    },
+    {
+      "source_index": 6231,
+      "id": "1251440",
+      "term": "経済効果",
+      "reading": "けいざいこうか",
+      "meaning": "(positive) economic effect"
+    },
+    {
+      "source_index": 6232,
+      "id": "2852037",
+      "term": "経済再生",
+      "reading": "けいざいさいせい",
+      "meaning": "economic recovery"
+    },
+    {
+      "source_index": 6233,
+      "id": "1991660",
+      "term": "経済指数",
+      "reading": "けいざいしすう",
+      "meaning": "economic index"
+    },
+    {
+      "source_index": 6234,
+      "id": "2720830",
+      "term": "経済思想",
+      "reading": "けいざいしそう",
+      "meaning": "economic ideology / (school of) economic thought"
+    },
+    {
+      "source_index": 6235,
+      "id": "1991670",
+      "term": "経済指標",
+      "reading": "けいざいしひょう",
+      "meaning": "economic indicator"
+    },
+    {
+      "source_index": 6236,
+      "id": "1251450",
+      "term": "経済社会",
+      "reading": "けいざいしゃかい",
+      "meaning": "economy and society / economic aspects of society"
+    },
+    {
+      "source_index": 6237,
+      "id": "2833263",
+      "term": "経済主体",
+      "reading": "けいざいしゅたい",
+      "meaning": "economic unit / economic agent / economic entity"
+    },
+    {
+      "source_index": 6238,
+      "id": "2842340",
+      "term": "経済進出",
+      "reading": "けいざいしんしゅつ",
+      "meaning": "economic invasion / economic operations (in another country)"
+    },
+    {
+      "source_index": 6239,
+      "id": "2790040",
+      "term": "経済事情",
+      "reading": "けいざいじじょう",
+      "meaning": "economic condition / economic circumstances / financial situation"
+    },
+    {
+      "source_index": 6240,
+      "id": "1251470",
+      "term": "経済状況",
+      "reading": "けいざいじょうきょう",
+      "meaning": "economic conditions"
+    },
+    {
+      "source_index": 6241,
+      "id": "1991680",
+      "term": "経済情勢",
+      "reading": "けいざいじょうせい",
+      "meaning": "economic climate"
+    },
+    {
+      "source_index": 6242,
+      "id": "1251480",
+      "term": "経済状態",
+      "reading": "けいざいじょうたい",
+      "meaning": "economic conditions / economic situation / financial situation"
+    },
+    {
+      "source_index": 6243,
+      "id": "1831330",
+      "term": "経済水域",
+      "reading": "けいざいすいいき",
+      "meaning": "economic waters or zone"
+    },
+    {
+      "source_index": 6244,
+      "id": "1251490",
+      "term": "経済制裁",
+      "reading": "けいざいせいさい",
+      "meaning": "economic sanctions"
+    },
+    {
+      "source_index": 6245,
+      "id": "1831400",
+      "term": "経済政策",
+      "reading": "けいざいせいさく",
+      "meaning": "economic policy"
+    },
+    {
+      "source_index": 6246,
+      "id": "1251520",
+      "term": "経済成長",
+      "reading": "けいざいせいちょう",
+      "meaning": "economic growth"
+    },
+    {
+      "source_index": 6247,
+      "id": "2849401",
+      "term": "経済戦争",
+      "reading": "けいざいせんそう",
+      "meaning": "economic warfare / economic war"
+    },
+    {
+      "source_index": 6248,
+      "id": "2664030",
+      "term": "経済戦略",
+      "reading": "けいざいせんりゃく",
+      "meaning": "economic strategy / business strategy"
+    },
+    {
+      "source_index": 6249,
+      "id": "1831320",
+      "term": "経済大国",
+      "reading": "けいざいたいこく",
+      "meaning": "economic superpower / economic powerhouse"
     }
   ]
 }
