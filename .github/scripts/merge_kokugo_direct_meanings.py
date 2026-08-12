@@ -36,6 +36,7 @@ override_js_path.write_text('window.KOKUGO_DIRECT_MEANINGS=' + payload + ';\n', 
 source_dir = root / 'translation-source'
 chunks = sorted(source_dir.glob('chunk-*.json'))
 completed = sum(1 for c in chunks if (patch_dir / c.name).exists())
+chunk_size = 50
 
 status = {
     'mode': 'assistant_direct_japanese',
@@ -43,7 +44,7 @@ status = {
     'total_entries': 15000,
     'completed_chunks': completed,
     'total_chunks': len(chunks),
-    'chunk_size': 100,
+    'chunk_size': chunk_size,
 }
 status_path.write_text(json.dumps(status, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
