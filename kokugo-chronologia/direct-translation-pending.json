@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 6550,
-  "english_only_remaining": 8450,
+  "already_direct_japanese": 6600,
+  "english_only_remaining": 8400,
   "english_only_rank_counts": {
-    "(blank)": 8450
+    "(blank)": 8400
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 6550,
-      "id": "2352900",
-      "term": "結合法則",
-      "reading": "けつごうほうそく",
-      "meaning": "associative law"
-    },
-    {
-      "source_index": 6551,
-      "id": "2852343",
-      "term": "楔状文字",
-      "reading": "けつじょうもじ",
-      "meaning": "cuneiform (writing)"
-    },
-    {
-      "source_index": 6552,
-      "id": "2450780",
-      "term": "結縄文字",
-      "reading": "けつじょうもじ",
-      "meaning": "knotted cords used to record figures, facts, etc. / quipu"
-    },
-    {
-      "source_index": 6553,
-      "id": "2851833",
-      "term": "欠如動詞",
-      "reading": "けつじょどうし",
-      "meaning": "defective verb"
-    },
-    {
-      "source_index": 6554,
-      "id": "2868934",
-      "term": "血精液症",
-      "reading": "けつせいえきしょう",
-      "meaning": "hemospermia / hematospermia"
-    },
-    {
-      "source_index": 6555,
-      "id": "1255330",
-      "term": "血族関係",
-      "reading": "けつぞくかんけい",
-      "meaning": "consanguinity"
-    },
-    {
-      "source_index": 6556,
-      "id": "1670070",
-      "term": "血族結婚",
-      "reading": "けつぞくけっこん",
-      "meaning": "consanguineous marriage"
-    },
-    {
-      "source_index": 6557,
-      "id": "2251830",
-      "term": "血肉の争い",
-      "reading": "けつにくのあらそい",
-      "meaning": "family quarrel"
-    },
-    {
-      "source_index": 6558,
-      "id": "2581200",
-      "term": "ケツの穴が小さい",
-      "reading": "けつのあながちいさい",
-      "meaning": "small-minded / petty / cowardly"
-    },
-    {
-      "source_index": 6559,
-      "id": "2425510",
-      "term": "尻の毛まで抜かれる",
-      "reading": "けつのけまでぬかれる",
-      "meaning": "to get ripped off for every last penny"
-    },
-    {
-      "source_index": 6560,
-      "id": "2352740",
-      "term": "欠落検査",
-      "reading": "けつらくけんさ",
-      "meaning": "completeness check"
-    },
-    {
-      "source_index": 6561,
-      "id": "2130340",
-      "term": "血流障害",
-      "reading": "けつりゅうしょうがい",
-      "meaning": "impeded blood flow"
-    },
-    {
-      "source_index": 6562,
-      "id": "2788240",
-      "term": "毛蔓小豆",
-      "reading": "けつるあずき",
-      "meaning": "black gram (Vigna mungo) / black lentil"
-    },
-    {
-      "source_index": 6563,
-      "id": "2862455",
-      "term": "尻を持つ",
-      "reading": "けつをもつ",
-      "meaning": "to take responsibility for / to take the blame for"
-    },
-    {
-      "source_index": 6564,
-      "id": "2836289",
-      "term": "蹴爪陸亀",
-      "reading": "けづめりくがめ",
-      "meaning": "African spurred tortoise (Centrochelys sulcata) / sulcata tortoise"
-    },
-    {
-      "source_index": 6565,
-      "id": "2849968",
-      "term": "毛長粉蜱",
-      "reading": "けながこなだに",
-      "meaning": "mould mite (Tyrophagus putrescentiae) / cheese mite"
-    },
-    {
-      "source_index": 6566,
-      "id": "2044560",
-      "term": "懸念材料",
-      "reading": "けねんざいりょう",
-      "meaning": "cause (grounds) for concern (anxiety) / reason for uneasiness"
-    },
-    {
-      "source_index": 6567,
-      "id": "2730840",
-      "term": "毛の生えた",
-      "reading": "けのはえた",
-      "meaning": "a bit better than / not much more than / not much different from"
-    },
-    {
-      "source_index": 6568,
-      "id": "1928130",
-      "term": "検非違使",
-      "reading": "けびいし",
-      "meaning": "police and judicial chief (Heian and Kamakura periods)"
-    },
-    {
-      "source_index": 6569,
-      "id": "2566430",
-      "term": "毛深雀蜂",
-      "reading": "けぶかすずめばち",
-      "meaning": "Japanese hornet (Vespa simillima, esp. subspecies Vespa simillima simillima) / yellow hornet"
-    },
-    {
-      "source_index": 6570,
-      "id": "2140200",
-      "term": "煙に巻く",
-      "reading": "けむにまく",
-      "meaning": "to confuse (someone) / to befuddle / to bewilder"
-    },
-    {
-      "source_index": 6571,
-      "id": "1973250",
-      "term": "煙感知器",
-      "reading": "けむりかんちき",
-      "meaning": "smoke detector"
-    },
-    {
-      "source_index": 6572,
-      "id": "2862917",
-      "term": "煙を立てる",
-      "reading": "けむりをたてる",
-      "meaning": "to make a living / to earn a livelihood"
-    },
-    {
-      "source_index": 6573,
-      "id": "1847390",
-      "term": "蹴破る",
-      "reading": "けやぶる",
-      "meaning": "to break (by kicking) / to kick down (e.g. a door) / to kick open"
-    },
-    {
-      "source_index": 6574,
-      "id": "2183740",
-      "term": "慶良間鹿",
-      "reading": "けらまじか",
-      "meaning": "Kerama deer / Ryukyu sika (Cervus nippon keramae)"
-    },
-    {
-      "source_index": 6575,
-      "id": "2842725",
-      "term": "毛を吹いて疵を求む",
-      "reading": "けをふいてきずをもとむ",
-      "meaning": "to be nitpicky / to be fault-finding"
-    },
-    {
-      "source_index": 6576,
-      "id": "1782480",
-      "term": "権威主義",
-      "reading": "けんいしゅぎ",
-      "meaning": "authoritarianism"
-    },
-    {
-      "source_index": 6577,
-      "id": "1728710",
-      "term": "牽引療法",
-      "reading": "けんいんりょうほう",
-      "meaning": "traction therapy"
-    },
-    {
-      "source_index": 6578,
-      "id": "2854630",
-      "term": "県営住宅",
-      "reading": "けんえいじゅうたく",
-      "meaning": "public housing provided by a prefecture / prefectural housing"
-    },
-    {
-      "source_index": 6579,
-      "id": "1873730",
-      "term": "犬猿",
-      "reading": "けんえん",
-      "meaning": "cats and dogs (as an example of a bad relationship) / dogs and monkeys"
-    },
-    {
-      "source_index": 6580,
-      "id": "1934130",
-      "term": "嫌煙運動",
-      "reading": "けんえんうんどう",
-      "meaning": "anti-smoking campaign"
-    },
-    {
-      "source_index": 6581,
-      "id": "1258340",
-      "term": "犬猿の仲",
-      "reading": "けんえんのなか",
-      "meaning": "like cats and dogs / (on) very bad terms / relationship of dogs and monkeys"
-    },
-    {
-      "source_index": 6582,
-      "id": "2842145",
-      "term": "県会議員",
-      "reading": "けんかいぎいん",
-      "meaning": "prefectural assembly member"
-    },
-    {
-      "source_index": 6583,
-      "id": "2044580",
-      "term": "狷介孤高",
-      "reading": "けんかいここう",
-      "meaning": "stubborn and aloof"
-    },
-    {
-      "source_index": 6584,
-      "id": "2033280",
-      "term": "狷介固陋",
-      "reading": "けんかいころう",
-      "meaning": "stubbornly sticking to old ways / narrow-mindedly rejecting other people's views"
-    },
-    {
-      "source_index": 6585,
-      "id": "2033290",
-      "term": "狷介不羈",
-      "reading": "けんかいふき",
-      "meaning": "stubbornly sticking to one's own convictions / being stubbornly independent"
-    },
-    {
-      "source_index": 6586,
-      "id": "2044600",
-      "term": "喧嘩沙汰",
-      "reading": "けんかざた",
-      "meaning": "beginning (developing into) a quarrel (a fight, an altercation)"
-    },
-    {
-      "source_index": 6587,
-      "id": "1260600",
-      "term": "顕花植物",
-      "reading": "けんかしょくぶつ",
-      "meaning": "phanerogam / phanerogamous plant / phanerogamic plant"
-    },
-    {
-      "source_index": 6588,
-      "id": "2850846",
-      "term": "見学自由",
-      "reading": "けんがくじゆう",
-      "meaning": "free to visit / admission-free"
-    },
-    {
-      "source_index": 6589,
-      "id": "1715620",
-      "term": "見学旅行",
-      "reading": "けんがくりょこう",
-      "meaning": "field trip / observation tour"
-    },
-    {
-      "source_index": 6590,
-      "id": "2687520",
-      "term": "嫌気性菌",
-      "reading": "けんきせいきん",
-      "meaning": "anaerobic bacteria / anaerobe"
-    },
-    {
-      "source_index": 6591,
-      "id": "1833770",
-      "term": "嫌気生物",
-      "reading": "けんきせいぶつ",
-      "meaning": "anaerobe"
-    },
-    {
-      "source_index": 6592,
-      "id": "1258560",
-      "term": "研究開発",
-      "reading": "けんきゅうかいはつ",
-      "meaning": "research and development / R&amp;D"
-    },
-    {
-      "source_index": 6593,
-      "id": "1934290",
-      "term": "研究課題",
-      "reading": "けんきゅうかだい",
-      "meaning": "research task"
-    },
-    {
-      "source_index": 6594,
-      "id": "1934300",
-      "term": "研究活動",
-      "reading": "けんきゅうかつどう",
-      "meaning": "research activities"
-    },
-    {
-      "source_index": 6595,
-      "id": "2158040",
-      "term": "研究機関",
-      "reading": "けんきゅうきかん",
-      "meaning": "research institution"
-    },
-    {
-      "source_index": 6596,
-      "id": "2603880",
-      "term": "研究休暇",
-      "reading": "けんきゅうきゅうか",
-      "meaning": "sabbatical / sabbatical leave"
-    },
-    {
-      "source_index": 6597,
-      "id": "2791200",
-      "term": "研究業績",
-      "reading": "けんきゅうぎょうせき",
-      "meaning": "research results / research record / research achievement"
-    },
-    {
-      "source_index": 6598,
-      "id": "2131600",
-      "term": "研究結果",
-      "reading": "けんきゅうけっか",
-      "meaning": "results of a scientific investigation / findings"
-    },
-    {
-      "source_index": 6599,
-      "id": "2641230",
-      "term": "研究材料",
-      "reading": "けんきゅうざいりょう",
-      "meaning": "research material / experimental material"
-    },
     {
       "source_index": 6600,
       "id": "2853336",
@@ -7010,6 +6660,356 @@
       "term": "構築主義",
       "reading": "こうちくしゅぎ",
       "meaning": "social constructionism"
+    },
+    {
+      "source_index": 7550,
+      "id": "5743575",
+      "term": "高知県警",
+      "reading": "こうちけんけい",
+      "meaning": "Kōchi Prefectural Police (abbr)"
+    },
+    {
+      "source_index": 7551,
+      "id": "2268420",
+      "term": "公地公民",
+      "reading": "こうちこうみん",
+      "meaning": "complete state ownership of land and citizens (proclaimed by the Taika reforms; ritsuryō period)"
+    },
+    {
+      "source_index": 7552,
+      "id": "2857044",
+      "term": "拘置支所",
+      "reading": "こうちししょ",
+      "meaning": "branch detention house"
+    },
+    {
+      "source_index": 7553,
+      "id": "1821030",
+      "term": "耕地整理",
+      "reading": "こうちせいり",
+      "meaning": "redeployment of arable land"
+    },
+    {
+      "source_index": 7554,
+      "id": "2030840",
+      "term": "巧遅拙速",
+      "reading": "こうちせっそく",
+      "meaning": "better being rough and ready than slow and elaborate / better being brisk and sharp than slow and prudent"
+    },
+    {
+      "source_index": 7555,
+      "id": "5290461",
+      "term": "高知大学",
+      "reading": "こうちだいがく",
+      "meaning": "Kochi University"
+    },
+    {
+      "source_index": 7556,
+      "id": "2600120",
+      "term": "降着円盤",
+      "reading": "こうちゃくえんばん",
+      "meaning": "accretion disc / accretion disk"
+    },
+    {
+      "source_index": 7557,
+      "id": "1571120",
+      "term": "膠着状態",
+      "reading": "こうちゃくじょうたい",
+      "meaning": "deadlock / standstill / stalemate"
+    },
+    {
+      "source_index": 7558,
+      "id": "2600140",
+      "term": "降着装置",
+      "reading": "こうちゃくそうち",
+      "meaning": "landing gear"
+    },
+    {
+      "source_index": 7559,
+      "id": "2830204",
+      "term": "高忠実度",
+      "reading": "こうちゅうじつど",
+      "meaning": "high fidelity / hi-fi"
+    },
+    {
+      "source_index": 7560,
+      "id": "2106280",
+      "term": "校長先生",
+      "reading": "こうちょうせんせい",
+      "meaning": "school principal / school headmaster / school headmistress"
+    },
+    {
+      "source_index": 7561,
+      "id": "1951530",
+      "term": "腔腸動物",
+      "reading": "こうちょうどうぶつ",
+      "meaning": "coelenterate"
+    },
+    {
+      "source_index": 7562,
+      "id": "1272290",
+      "term": "交通安全",
+      "reading": "こうつうあんぜん",
+      "meaning": "traffic safety / driving safety / road safety"
+    },
+    {
+      "source_index": 7563,
+      "id": "1760800",
+      "term": "交通遺児",
+      "reading": "こうつういじ",
+      "meaning": "child orphaned from a traffic accident"
+    },
+    {
+      "source_index": 7564,
+      "id": "1272300",
+      "term": "交通違反",
+      "reading": "こうつういはん",
+      "meaning": "traffic violation"
+    },
+    {
+      "source_index": 7565,
+      "id": "1272320",
+      "term": "交通機関",
+      "reading": "こうつうきかん",
+      "meaning": "(means of) transportation / transport / transportation facilities"
+    },
+    {
+      "source_index": 7566,
+      "id": "2832461",
+      "term": "交通規制",
+      "reading": "こうつうきせい",
+      "meaning": "traffic restrictions / traffic control"
+    },
+    {
+      "source_index": 7567,
+      "id": "1272330",
+      "term": "交通規則",
+      "reading": "こうつうきそく",
+      "meaning": "traffic rules"
+    },
+    {
+      "source_index": 7568,
+      "id": "2865602",
+      "term": "交通計画",
+      "reading": "こうつうけいかく",
+      "meaning": "transportation planning"
+    },
+    {
+      "source_index": 7569,
+      "id": "2848896",
+      "term": "交通警察",
+      "reading": "こうつうけいさつ",
+      "meaning": "traffic police"
+    },
+    {
+      "source_index": 7570,
+      "id": "2856809",
+      "term": "交通工学",
+      "reading": "こうつうこうがく",
+      "meaning": "transportation engineering / transport engineering / traffic engineering"
+    },
+    {
+      "source_index": 7571,
+      "id": "1272340",
+      "term": "交通公社",
+      "reading": "こうつうこうしゃ",
+      "meaning": "(Japan) Travel Bureau"
+    },
+    {
+      "source_index": 7572,
+      "id": "1272360",
+      "term": "交通遮断",
+      "reading": "こうつうしゃだん",
+      "meaning": "blockage / quarantine"
+    },
+    {
+      "source_index": 7573,
+      "id": "2698140",
+      "term": "交通手段",
+      "reading": "こうつうしゅだん",
+      "meaning": "means of transportation / transportation system / way of getting around"
+    },
+    {
+      "source_index": 7574,
+      "id": "1272380",
+      "term": "交通信号",
+      "reading": "こうつうしんごう",
+      "meaning": "traffic light / traffic signal"
+    },
+    {
+      "source_index": 7575,
+      "id": "1272350",
+      "term": "交通事故",
+      "reading": "こうつうじこ",
+      "meaning": "traffic accident"
+    },
+    {
+      "source_index": 7576,
+      "id": "1760780",
+      "term": "交通地獄",
+      "reading": "こうつうじごく",
+      "meaning": "traffic hell / traffic congestion"
+    },
+    {
+      "source_index": 7577,
+      "id": "2725120",
+      "term": "交通事情",
+      "reading": "こうつうじじょう",
+      "meaning": "traffic conditions (e.g. heavy traffic) / transportation situation (e.g. bad roads)"
+    },
+    {
+      "source_index": 7578,
+      "id": "2006260",
+      "term": "交通弱者",
+      "reading": "こうつうじゃくしゃ",
+      "meaning": "vulnerable road users (such as the elderly, mobility-impaired people and young children)"
+    },
+    {
+      "source_index": 7579,
+      "id": "1760790",
+      "term": "交通渋滞",
+      "reading": "こうつうじゅうたい",
+      "meaning": "traffic congestion / traffic jam / (traffic) deadlock"
+    },
+    {
+      "source_index": 7580,
+      "id": "1272370",
+      "term": "交通巡査",
+      "reading": "こうつうじゅんさ",
+      "meaning": "traffic officer"
+    },
+    {
+      "source_index": 7581,
+      "id": "2120110",
+      "term": "交通情報",
+      "reading": "こうつうじょうほう",
+      "meaning": "traffic report / information on traffic flow / transportation information"
+    },
+    {
+      "source_index": 7582,
+      "id": "1272390",
+      "term": "交通整理",
+      "reading": "こうつうせいり",
+      "meaning": "traffic control"
+    },
+    {
+      "source_index": 7583,
+      "id": "2095040",
+      "term": "交通戦争",
+      "reading": "こうつうせんそう",
+      "meaning": "chaos on the roads / traffic war"
+    },
+    {
+      "source_index": 7584,
+      "id": "1272400",
+      "term": "交通道徳",
+      "reading": "こうつうどうとく",
+      "meaning": "traffic ethics"
+    },
+    {
+      "source_index": 7585,
+      "id": "2093260",
+      "term": "交通標識",
+      "reading": "こうつうひょうしき",
+      "meaning": "traffic sign"
+    },
+    {
+      "source_index": 7586,
+      "id": "1272420",
+      "term": "交通妨害",
+      "reading": "こうつうぼうがい",
+      "meaning": "traffic obstruction"
+    },
+    {
+      "source_index": 7587,
+      "id": "1934850",
+      "term": "交通問題",
+      "reading": "こうつうもんだい",
+      "meaning": "traffic problem"
+    },
+    {
+      "source_index": 7588,
+      "id": "2838439",
+      "term": "神津閃石",
+      "reading": "こうづせんせき",
+      "meaning": "mangano-ferri-eckermannite / kozulite"
+    },
+    {
+      "source_index": 7589,
+      "id": "1281190",
+      "term": "肯定応答",
+      "reading": "こうていおうとう",
+      "meaning": "acknowledge / ACK"
+    },
+    {
+      "source_index": 7590,
+      "id": "1274320",
+      "term": "公定価格",
+      "reading": "こうていかかく",
+      "meaning": "official price / government-imposed price limit"
+    },
+    {
+      "source_index": 7591,
+      "id": "1274330",
+      "term": "公定相場",
+      "reading": "こうていそうば",
+      "meaning": "ceiling price / official quotation"
+    },
+    {
+      "source_index": 7592,
+      "id": "1677080",
+      "term": "公定地価",
+      "reading": "こうていちか",
+      "meaning": "assessed value of land"
+    },
+    {
+      "source_index": 7593,
+      "id": "1631200",
+      "term": "公定歩合",
+      "reading": "こうていぶあい",
+      "meaning": "official discount (bank) rate"
+    },
+    {
+      "source_index": 7594,
+      "id": "2870744",
+      "term": "皇帝陛下",
+      "reading": "こうていへいか",
+      "meaning": "His Imperial Majesty / Your Imperial Majesty"
+    },
+    {
+      "source_index": 7595,
+      "id": "2683080",
+      "term": "肯定命題",
+      "reading": "こうていめいだい",
+      "meaning": "affirmative proposition"
+    },
+    {
+      "source_index": 7596,
+      "id": "1274370",
+      "term": "公敵一号",
+      "reading": "こうてきいちごう",
+      "meaning": "public enemy No. 1"
+    },
+    {
+      "source_index": 7597,
+      "id": "2412640",
+      "term": "公的機関",
+      "reading": "こうてききかん",
+      "meaning": "public institution / public organization / official body"
+    },
+    {
+      "source_index": 7598,
+      "id": "1992520",
+      "term": "公的債務",
+      "reading": "こうてきさいむ",
+      "meaning": "sovereign debt"
+    },
+    {
+      "source_index": 7599,
+      "id": "2661210",
+      "term": "公的支援",
+      "reading": "こうてきしえん",
+      "meaning": "public support / official support / public aid"
     }
   ]
 }
