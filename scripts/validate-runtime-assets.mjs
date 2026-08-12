@@ -74,7 +74,7 @@ requireText(voice, "document.addEventListener('touchstart',onUserGesture,true)",
 requireText(voice, 'window.Companion7=', 'Companion7 public API');
 
 requireText(visual, "const DB_NAME='aa-login-companion-v1'", 'image IndexedDB');
-requireText(visual, "version:'1.2.0'", 'decode-safe image runtime version');
+requireText(visual, "version:'1.3.0'", 'decode-safe image runtime version');
 requireText(visual, 'function decodeURL(blob)', 'image decode preflight');
 requireText(visual, 'async function pickDecodableImage', 'broken image fallback');
 requireText(visual, "reason:'decode-failed'", 'decode failure skip marker');
