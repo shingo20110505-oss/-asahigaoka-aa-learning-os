@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 5500,
-  "english_only_remaining": 9500,
+  "already_direct_japanese": 5550,
+  "english_only_remaining": 9450,
   "english_only_rank_counts": {
-    "(blank)": 9500
+    "(blank)": 9450
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,356 +13,6 @@
   "part_start": 0,
   "part_end": 99,
   "targets": [
-    {
-      "source_index": 5500,
-      "id": "1241100",
-      "term": "勤務実績",
-      "reading": "きんむじっせき",
-      "meaning": "service record"
-    },
-    {
-      "source_index": 5501,
-      "id": "2222550",
-      "term": "勤務成績",
-      "reading": "きんむせいせき",
-      "meaning": "(one's) work performance / performance record / service record"
-    },
-    {
-      "source_index": 5502,
-      "id": "1241140",
-      "term": "勤務年限",
-      "reading": "きんむねんげん",
-      "meaning": "term of service"
-    },
-    {
-      "source_index": 5503,
-      "id": "2114440",
-      "term": "勤務場所",
-      "reading": "きんむばしょ",
-      "meaning": "workplace / place of work"
-    },
-    {
-      "source_index": 5504,
-      "id": "1241150",
-      "term": "勤務評定",
-      "reading": "きんむひょうてい",
-      "meaning": "(work) performance evaluation / performance review / efficiency rating"
-    },
-    {
-      "source_index": 5505,
-      "id": "1728680",
-      "term": "筋無力症",
-      "reading": "きんむりょくしょう",
-      "meaning": "myasthenia"
-    },
-    {
-      "source_index": 5506,
-      "id": "2839716",
-      "term": "金目銀目",
-      "reading": "きんめぎんめ",
-      "meaning": "cat with one eye golden, other eye steel-blue (considered a sign of luck)"
-    },
-    {
-      "source_index": 5507,
-      "id": "1990900",
-      "term": "金融改革",
-      "reading": "きんゆうかいかく",
-      "meaning": "financial reform"
-    },
-    {
-      "source_index": 5508,
-      "id": "2114890",
-      "term": "金融関係",
-      "reading": "きんゆうかんけい",
-      "meaning": "finance-related / financial"
-    },
-    {
-      "source_index": 5509,
-      "id": "1990930",
-      "term": "金融緩和",
-      "reading": "きんゆうかんわ",
-      "meaning": "monetary easing"
-    },
-    {
-      "source_index": 5510,
-      "id": "2839512",
-      "term": "金融会社",
-      "reading": "きんゆうがいしゃ",
-      "meaning": "financing company / credit firm"
-    },
-    {
-      "source_index": 5511,
-      "id": "1243300",
-      "term": "金融機関",
-      "reading": "きんゆうきかん",
-      "meaning": "financial institutions / banking facilities"
-    },
-    {
-      "source_index": 5512,
-      "id": "1990940",
-      "term": "金融危機",
-      "reading": "きんゆうきき",
-      "meaning": "financial crisis"
-    },
-    {
-      "source_index": 5513,
-      "id": "1682600",
-      "term": "金融恐慌",
-      "reading": "きんゆうきょうこう",
-      "meaning": "financial panic / financial crisis"
-    },
-    {
-      "source_index": 5514,
-      "id": "2659460",
-      "term": "金融業者",
-      "reading": "きんゆうぎょうしゃ",
-      "meaning": "money lender / financier"
-    },
-    {
-      "source_index": 5515,
-      "id": "2184620",
-      "term": "金融工学",
-      "reading": "きんゆうこうがく",
-      "meaning": "financial engineering"
-    },
-    {
-      "source_index": 5516,
-      "id": "1630370",
-      "term": "金融公庫",
-      "reading": "きんゆうこうこ",
-      "meaning": "finance corporation"
-    },
-    {
-      "source_index": 5517,
-      "id": "1990950",
-      "term": "金融詐欺",
-      "reading": "きんゆうさぎ",
-      "meaning": "financial fraud"
-    },
-    {
-      "source_index": 5518,
-      "id": "2660030",
-      "term": "金融支援",
-      "reading": "きんゆうしえん",
-      "meaning": "financial assistance / financial support"
-    },
-    {
-      "source_index": 5519,
-      "id": "1990960",
-      "term": "金融資産",
-      "reading": "きんゆうしさん",
-      "meaning": "financial asset"
-    },
-    {
-      "source_index": 5520,
-      "id": "1630390",
-      "term": "金融市場",
-      "reading": "きんゆうしじょう",
-      "meaning": "financial market / money market"
-    },
-    {
-      "source_index": 5521,
-      "id": "1682620",
-      "term": "金融資本",
-      "reading": "きんゆうしほん",
-      "meaning": "financial capital"
-    },
-    {
-      "source_index": 5522,
-      "id": "1990970",
-      "term": "金融商品",
-      "reading": "きんゆうしょうひん",
-      "meaning": "financial products / financial instruments"
-    },
-    {
-      "source_index": 5523,
-      "id": "2146890",
-      "term": "金融政策",
-      "reading": "きんゆうせいさく",
-      "meaning": "monetary policy"
-    },
-    {
-      "source_index": 5524,
-      "id": "2736150",
-      "term": "金融操作",
-      "reading": "きんゆうそうさ",
-      "meaning": "market manipulation / monetary operation"
-    },
-    {
-      "source_index": 5525,
-      "id": "1990980",
-      "term": "金融当局",
-      "reading": "きんゆうとうきょく",
-      "meaning": "financial authorities"
-    },
-    {
-      "source_index": 5526,
-      "id": "1990990",
-      "term": "金融犯罪",
-      "reading": "きんゆうはんざい",
-      "meaning": "financial crime"
-    },
-    {
-      "source_index": 5527,
-      "id": "2633430",
-      "term": "金融逼迫",
-      "reading": "きんゆうひっぱく",
-      "meaning": "monetary stringency / tight-money situation"
-    },
-    {
-      "source_index": 5528,
-      "id": "1991000",
-      "term": "金融不安",
-      "reading": "きんゆうふあん",
-      "meaning": "financial instability / financial uncertainty / financial turmoil"
-    },
-    {
-      "source_index": 5529,
-      "id": "1991010",
-      "term": "金融崩壊",
-      "reading": "きんゆうほうかい",
-      "meaning": "financial collapse"
-    },
-    {
-      "source_index": 5530,
-      "id": "2850629",
-      "term": "金融包摂",
-      "reading": "きんゆうほうせつ",
-      "meaning": "financial inclusion / availability and equality of opportunities to access financial services"
-    },
-    {
-      "source_index": 5531,
-      "id": "1241930",
-      "term": "緊要地形",
-      "reading": "きんようちけい",
-      "meaning": "key terrain"
-    },
-    {
-      "source_index": 5532,
-      "id": "1684570",
-      "term": "禁欲主義",
-      "reading": "きんよくしゅぎ",
-      "meaning": "asceticism / stoicism"
-    },
-    {
-      "source_index": 5533,
-      "id": "2044280",
-      "term": "禁欲生活",
-      "reading": "きんよくせいかつ",
-      "meaning": "an ascetic existence / (leading) a continent life / abstinence"
-    },
-    {
-      "source_index": 5534,
-      "id": "2030630",
-      "term": "金襴緞子",
-      "reading": "きんらんどんす",
-      "meaning": "gold-brocaded satin damask"
-    },
-    {
-      "source_index": 5535,
-      "id": "1682130",
-      "term": "金利政策",
-      "reading": "きんりせいさく",
-      "meaning": "interest rate policy"
-    },
-    {
-      "source_index": 5536,
-      "id": "2649960",
-      "term": "金利負担",
-      "reading": "きんりふたん",
-      "meaning": "burden of interest / interest burden / interest cost"
-    },
-    {
-      "source_index": 5537,
-      "id": "2044290",
-      "term": "近隣公害",
-      "reading": "きんりんこうがい",
-      "meaning": "(noise, smell, air, water) pollution in the neighborhood"
-    },
-    {
-      "source_index": 5538,
-      "id": "1242580",
-      "term": "近隣諸国",
-      "reading": "きんりんしょこく",
-      "meaning": "neighboring countries / neighbouring countries / surrounding countries"
-    },
-    {
-      "source_index": 5539,
-      "id": "2850649",
-      "term": "近隣住民",
-      "reading": "きんりんじゅうみん",
-      "meaning": "local residents / neighbours / neighbors"
-    },
-    {
-      "source_index": 5540,
-      "id": "1670430",
-      "term": "菌類学者",
-      "reading": "きんるいがくしゃ",
-      "meaning": "mycologist"
-    },
-    {
-      "source_index": 5541,
-      "id": "1933480",
-      "term": "勤労意欲",
-      "reading": "きんろういよく",
-      "meaning": "will to work"
-    },
-    {
-      "source_index": 5542,
-      "id": "1241170",
-      "term": "勤労階級",
-      "reading": "きんろうかいきゅう",
-      "meaning": "salaried class / working class"
-    },
-    {
-      "source_index": 5543,
-      "id": "2859340",
-      "term": "勤労学生",
-      "reading": "きんろうがくせい",
-      "meaning": "working student"
-    },
-    {
-      "source_index": 5544,
-      "id": "1241200",
-      "term": "勤労所得",
-      "reading": "きんろうしょとく",
-      "meaning": "earned income"
-    },
-    {
-      "source_index": 5545,
-      "id": "1241210",
-      "term": "勤労大衆",
-      "reading": "きんろうたいしゅう",
-      "meaning": "working people"
-    },
-    {
-      "source_index": 5546,
-      "id": "2658280",
-      "term": "勤労動員",
-      "reading": "きんろうどういん",
-      "meaning": "mobilization of labor services (e.g. in wartime)"
-    },
-    {
-      "source_index": 5547,
-      "id": "1241220",
-      "term": "勤労奉仕",
-      "reading": "きんろうほうし",
-      "meaning": "labor service / labour service"
-    },
-    {
-      "source_index": 5548,
-      "id": "2043370",
-      "term": "偽悪趣味",
-      "reading": "ぎあくしゅみ",
-      "meaning": "propensity to put oneself in as bad a light as possible / being prone to act bad"
-    },
-    {
-      "source_index": 5549,
-      "id": "2202910",
-      "term": "偽遺伝子",
-      "reading": "ぎいでんし",
-      "meaning": "pseudogene"
-    },
     {
       "source_index": 5550,
       "id": "2851313",
@@ -712,6 +362,356 @@
       "term": "技術要件",
       "reading": "ぎじゅつようけん",
       "meaning": "technical requirement"
+    },
+    {
+      "source_index": 5600,
+      "id": "2217470",
+      "term": "技術用語",
+      "reading": "ぎじゅつようご",
+      "meaning": "technical term / technical terminology"
+    },
+    {
+      "source_index": 5601,
+      "id": "2210440",
+      "term": "擬似乱数",
+      "reading": "ぎじらんすう",
+      "meaning": "pseudorandom number"
+    },
+    {
+      "source_index": 5602,
+      "id": "2043500",
+      "term": "疑似恋愛",
+      "reading": "ぎじれんあい",
+      "meaning": "pseudo-romance / pseudo (mock) love affair"
+    },
+    {
+      "source_index": 5603,
+      "id": "2143620",
+      "term": "偽善売教",
+      "reading": "ぎぜんばいきょう",
+      "meaning": "priestcraft (Book of Mormon)"
+    },
+    {
+      "source_index": 5604,
+      "id": "2801190",
+      "term": "偽装請負",
+      "reading": "ぎそううけおい",
+      "meaning": "disguised contracting / fake subcontract / hiring a temporary employee and paying for the completion of the work rather than the work itself, thereby avoiding have to pay benefits"
+    },
+    {
+      "source_index": 5605,
+      "id": "2834372",
+      "term": "偽装結婚",
+      "reading": "ぎそうけっこん",
+      "meaning": "sham marriage / fake marriage"
+    },
+    {
+      "source_index": 5606,
+      "id": "2043520",
+      "term": "偽装工作",
+      "reading": "ぎそうこうさく",
+      "meaning": "diversionary tactics (maneuvering) / disguise / hide by camouflage"
+    },
+    {
+      "source_index": 5607,
+      "id": "2043530",
+      "term": "偽装難民",
+      "reading": "ぎそうなんみん",
+      "meaning": "fake refugee / phony refugee / illegal migrant disguised as a refugee"
+    },
+    {
+      "source_index": 5608,
+      "id": "1224750",
+      "term": "儀装馬車",
+      "reading": "ぎそうばしゃ",
+      "meaning": "state carriage"
+    },
+    {
+      "source_index": 5609,
+      "id": "2842722",
+      "term": "偽装表示",
+      "reading": "ぎそうひょうじ",
+      "meaning": "false labeling / false advertising"
+    },
+    {
+      "source_index": 5610,
+      "id": "1990360",
+      "term": "偽造紙幣",
+      "reading": "ぎぞうしへい",
+      "meaning": "fake bill"
+    },
+    {
+      "source_index": 5611,
+      "id": "1607890",
+      "term": "義太夫節",
+      "reading": "ぎだゆうぶし",
+      "meaning": "gidayū ballad drama (narrative accompanied by a shamisen used in the bunraku puppet theater)"
+    },
+    {
+      "source_index": 5612,
+      "id": "1756140",
+      "term": "議長職権",
+      "reading": "ぎちょうしょっけん",
+      "meaning": "authority of the chair / power of the office of Speaker / power of the office of the President (of the House of Councillors)"
+    },
+    {
+      "source_index": 5613,
+      "id": "2104870",
+      "term": "技能検定",
+      "reading": "ぎのうけんてい",
+      "meaning": "technical skills test / trade skill test"
+    },
+    {
+      "source_index": 5614,
+      "id": "2855620",
+      "term": "技能実習",
+      "reading": "ぎのうじっしゅう",
+      "meaning": "technical intern training"
+    },
+    {
+      "source_index": 5615,
+      "id": "5743560",
+      "term": "岐阜県警",
+      "reading": "ぎふけんけい",
+      "meaning": "Gifu Prefectural Police (abbr)"
+    },
+    {
+      "source_index": 5616,
+      "id": "5199126",
+      "term": "岐阜大学",
+      "reading": "ぎふだいがく",
+      "meaning": "Gifu University"
+    },
+    {
+      "source_index": 5617,
+      "id": "2863477",
+      "term": "岐阜提灯",
+      "reading": "ぎふぢょうちん",
+      "meaning": "gifu lantern / elegant egg-shaped paper lantern, usu. with a tassel at the bottom, made in Gifu"
+    },
+    {
+      "source_index": 5618,
+      "id": "2265530",
+      "term": "擬宝珠虫",
+      "reading": "ぎぼしむし",
+      "meaning": "acorn worm (any hemichordate of class Enteropneusta)"
+    },
+    {
+      "source_index": 5619,
+      "id": "1225910",
+      "term": "義務教育",
+      "reading": "ぎむきょういく",
+      "meaning": "compulsory education"
+    },
+    {
+      "source_index": 5620,
+      "id": "2043640",
+      "term": "疑問氷解",
+      "reading": "ぎもんひょうかい",
+      "meaning": "one's doubts being cleared away (dispelled, resolved)"
+    },
+    {
+      "source_index": 5621,
+      "id": "2852439",
+      "term": "疑問副詞",
+      "reading": "ぎもんふくし",
+      "meaning": "interrogative adverb"
+    },
+    {
+      "source_index": 5622,
+      "id": "2431410",
+      "term": "逆遺伝学",
+      "reading": "ぎゃくいでんがく",
+      "meaning": "reverse genetics"
+    },
+    {
+      "source_index": 5623,
+      "id": "1577890",
+      "term": "逆三角形",
+      "reading": "ぎゃくさんかくけい",
+      "meaning": "inverted triangle"
+    },
+    {
+      "source_index": 5624,
+      "id": "2866099",
+      "term": "逆浸透法",
+      "reading": "ぎゃくしんとうほう",
+      "meaning": "reverse osmosis"
+    },
+    {
+      "source_index": 5625,
+      "id": "2643590",
+      "term": "逆浸透膜",
+      "reading": "ぎゃくしんとうまく",
+      "meaning": "reverse osmosis membrane / reverse osmotic membrane"
+    },
+    {
+      "source_index": 5626,
+      "id": "1693480",
+      "term": "逆性石鹸",
+      "reading": "ぎゃくせいせっけん",
+      "meaning": "cationic soap / invert soap / positive soap"
+    },
+    {
+      "source_index": 5627,
+      "id": "2350300",
+      "term": "逆多重化",
+      "reading": "ぎゃくたじゅうか",
+      "meaning": "demultiplexing"
+    },
+    {
+      "source_index": 5628,
+      "id": "5742669",
+      "term": "逆転裁判",
+      "reading": "ぎゃくてんさいばん",
+      "meaning": "Ace Attorney (video game series)"
+    },
+    {
+      "source_index": 5629,
+      "id": "2862063",
+      "term": "逆転勝利",
+      "reading": "ぎゃくてんしょうり",
+      "meaning": "come-from-behind victory / comeback win"
+    },
+    {
+      "source_index": 5630,
+      "id": "2870109",
+      "term": "逆転無罪",
+      "reading": "ぎゃくてんむざい",
+      "meaning": "reversal of a guilty verdict / acquittal on appeal"
+    },
+    {
+      "source_index": 5631,
+      "id": "2043650",
+      "term": "逆転優勝",
+      "reading": "ぎゃくてんゆうしょう",
+      "meaning": "come-from-behind victory"
+    },
+    {
+      "source_index": 5632,
+      "id": "2350320",
+      "term": "逆符号化",
+      "reading": "ぎゃくふごうか",
+      "meaning": "decode"
+    },
+    {
+      "source_index": 5633,
+      "id": "2202990",
+      "term": "逆輸入車",
+      "reading": "ぎゃくゆにゅうしゃ",
+      "meaning": "reverse-imported vehicle (esp. high-displacement motorcycles meant for sale outside Japan)"
+    },
+    {
+      "source_index": 5634,
+      "id": "2852335",
+      "term": "逆行運動",
+      "reading": "ぎゃっこううんどう",
+      "meaning": "retrograde motion"
+    },
+    {
+      "source_index": 5635,
+      "id": "2583990",
+      "term": "逆向抑制",
+      "reading": "ぎゃっこうよくせい",
+      "meaning": "retroactive inhibition"
+    },
+    {
+      "source_index": 5636,
+      "id": "2830822",
+      "term": "偽薬効果",
+      "reading": "ぎやくこうか",
+      "meaning": "placebo effect"
+    },
+    {
+      "source_index": 5637,
+      "id": "1616940",
+      "term": "牛飲馬食",
+      "reading": "ぎゅういんばしょく",
+      "meaning": "heavy eating and drinking / gorging and swilling / drinking like a cow and eating like a horse"
+    },
+    {
+      "source_index": 5638,
+      "id": "2043670",
+      "term": "牛鬼蛇神",
+      "reading": "ぎゅうきだしん",
+      "meaning": "wicked and perverse / weird and incoherent"
+    },
+    {
+      "source_index": 5639,
+      "id": "2872068",
+      "term": "牛乳配達",
+      "reading": "ぎゅうにゅうはいたつ",
+      "meaning": "milk delivery"
+    },
+    {
+      "source_index": 5640,
+      "id": "2868347",
+      "term": "牛白血病",
+      "reading": "ぎゅうはっけつびょう",
+      "meaning": "bovine leukemia (former name for enzootic bovine leukosis)"
+    },
+    {
+      "source_index": 5641,
+      "id": "1231630",
+      "term": "牛歩戦術",
+      "reading": "ぎゅうほせんじゅつ",
+      "meaning": "snail's pace tactics / walking extremely slowly when voting in the Diet to delay proceedings / ox walk tactic"
+    },
+    {
+      "source_index": 5642,
+      "id": "2351200",
+      "term": "業界規範",
+      "reading": "ぎょうかいきはん",
+      "meaning": "industry standard / industry norm"
+    },
+    {
+      "source_index": 5643,
+      "id": "1239420",
+      "term": "業界団体",
+      "reading": "ぎょうかいだんたい",
+      "meaning": "industry group"
+    },
+    {
+      "source_index": 5644,
+      "id": "1239430",
+      "term": "業界動向",
+      "reading": "ぎょうかいどうこう",
+      "meaning": "industry trend"
+    },
+    {
+      "source_index": 5645,
+      "id": "1990630",
+      "term": "業界標準",
+      "reading": "ぎょうかいひょうじゅん",
+      "meaning": "industry-wide standard"
+    },
+    {
+      "source_index": 5646,
+      "id": "2794140",
+      "term": "業界用語",
+      "reading": "ぎょうかいようご",
+      "meaning": "industry terminology / professional jargon / buzzword"
+    },
+    {
+      "source_index": 5647,
+      "id": "1686110",
+      "term": "行儀作法",
+      "reading": "ぎょうぎさほう",
+      "meaning": "etiquette / good manners"
+    },
+    {
+      "source_index": 5648,
+      "id": "2872411",
+      "term": "凝固因子",
+      "reading": "ぎょうこいんし",
+      "meaning": "coagulation factor / clotting factor"
+    },
+    {
+      "source_index": 5649,
+      "id": "2861626",
+      "term": "凝固障害",
+      "reading": "ぎょうこしょうがい",
+      "meaning": "coagulopathy"
     }
   ]
 }

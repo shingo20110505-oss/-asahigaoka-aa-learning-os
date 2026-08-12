@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 5500,
-  "english_only_remaining": 9500,
+  "already_direct_japanese": 5550,
+  "english_only_remaining": 9450,
   "english_only_rank_counts": {
-    "(blank)": 9500
+    "(blank)": 9450
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 5500,
-      "id": "1241100",
-      "term": "勤務実績",
-      "reading": "きんむじっせき",
-      "meaning": "service record"
-    },
-    {
-      "source_index": 5501,
-      "id": "2222550",
-      "term": "勤務成績",
-      "reading": "きんむせいせき",
-      "meaning": "(one's) work performance / performance record / service record"
-    },
-    {
-      "source_index": 5502,
-      "id": "1241140",
-      "term": "勤務年限",
-      "reading": "きんむねんげん",
-      "meaning": "term of service"
-    },
-    {
-      "source_index": 5503,
-      "id": "2114440",
-      "term": "勤務場所",
-      "reading": "きんむばしょ",
-      "meaning": "workplace / place of work"
-    },
-    {
-      "source_index": 5504,
-      "id": "1241150",
-      "term": "勤務評定",
-      "reading": "きんむひょうてい",
-      "meaning": "(work) performance evaluation / performance review / efficiency rating"
-    },
-    {
-      "source_index": 5505,
-      "id": "1728680",
-      "term": "筋無力症",
-      "reading": "きんむりょくしょう",
-      "meaning": "myasthenia"
-    },
-    {
-      "source_index": 5506,
-      "id": "2839716",
-      "term": "金目銀目",
-      "reading": "きんめぎんめ",
-      "meaning": "cat with one eye golden, other eye steel-blue (considered a sign of luck)"
-    },
-    {
-      "source_index": 5507,
-      "id": "1990900",
-      "term": "金融改革",
-      "reading": "きんゆうかいかく",
-      "meaning": "financial reform"
-    },
-    {
-      "source_index": 5508,
-      "id": "2114890",
-      "term": "金融関係",
-      "reading": "きんゆうかんけい",
-      "meaning": "finance-related / financial"
-    },
-    {
-      "source_index": 5509,
-      "id": "1990930",
-      "term": "金融緩和",
-      "reading": "きんゆうかんわ",
-      "meaning": "monetary easing"
-    },
-    {
-      "source_index": 5510,
-      "id": "2839512",
-      "term": "金融会社",
-      "reading": "きんゆうがいしゃ",
-      "meaning": "financing company / credit firm"
-    },
-    {
-      "source_index": 5511,
-      "id": "1243300",
-      "term": "金融機関",
-      "reading": "きんゆうきかん",
-      "meaning": "financial institutions / banking facilities"
-    },
-    {
-      "source_index": 5512,
-      "id": "1990940",
-      "term": "金融危機",
-      "reading": "きんゆうきき",
-      "meaning": "financial crisis"
-    },
-    {
-      "source_index": 5513,
-      "id": "1682600",
-      "term": "金融恐慌",
-      "reading": "きんゆうきょうこう",
-      "meaning": "financial panic / financial crisis"
-    },
-    {
-      "source_index": 5514,
-      "id": "2659460",
-      "term": "金融業者",
-      "reading": "きんゆうぎょうしゃ",
-      "meaning": "money lender / financier"
-    },
-    {
-      "source_index": 5515,
-      "id": "2184620",
-      "term": "金融工学",
-      "reading": "きんゆうこうがく",
-      "meaning": "financial engineering"
-    },
-    {
-      "source_index": 5516,
-      "id": "1630370",
-      "term": "金融公庫",
-      "reading": "きんゆうこうこ",
-      "meaning": "finance corporation"
-    },
-    {
-      "source_index": 5517,
-      "id": "1990950",
-      "term": "金融詐欺",
-      "reading": "きんゆうさぎ",
-      "meaning": "financial fraud"
-    },
-    {
-      "source_index": 5518,
-      "id": "2660030",
-      "term": "金融支援",
-      "reading": "きんゆうしえん",
-      "meaning": "financial assistance / financial support"
-    },
-    {
-      "source_index": 5519,
-      "id": "1990960",
-      "term": "金融資産",
-      "reading": "きんゆうしさん",
-      "meaning": "financial asset"
-    },
-    {
-      "source_index": 5520,
-      "id": "1630390",
-      "term": "金融市場",
-      "reading": "きんゆうしじょう",
-      "meaning": "financial market / money market"
-    },
-    {
-      "source_index": 5521,
-      "id": "1682620",
-      "term": "金融資本",
-      "reading": "きんゆうしほん",
-      "meaning": "financial capital"
-    },
-    {
-      "source_index": 5522,
-      "id": "1990970",
-      "term": "金融商品",
-      "reading": "きんゆうしょうひん",
-      "meaning": "financial products / financial instruments"
-    },
-    {
-      "source_index": 5523,
-      "id": "2146890",
-      "term": "金融政策",
-      "reading": "きんゆうせいさく",
-      "meaning": "monetary policy"
-    },
-    {
-      "source_index": 5524,
-      "id": "2736150",
-      "term": "金融操作",
-      "reading": "きんゆうそうさ",
-      "meaning": "market manipulation / monetary operation"
-    },
-    {
-      "source_index": 5525,
-      "id": "1990980",
-      "term": "金融当局",
-      "reading": "きんゆうとうきょく",
-      "meaning": "financial authorities"
-    },
-    {
-      "source_index": 5526,
-      "id": "1990990",
-      "term": "金融犯罪",
-      "reading": "きんゆうはんざい",
-      "meaning": "financial crime"
-    },
-    {
-      "source_index": 5527,
-      "id": "2633430",
-      "term": "金融逼迫",
-      "reading": "きんゆうひっぱく",
-      "meaning": "monetary stringency / tight-money situation"
-    },
-    {
-      "source_index": 5528,
-      "id": "1991000",
-      "term": "金融不安",
-      "reading": "きんゆうふあん",
-      "meaning": "financial instability / financial uncertainty / financial turmoil"
-    },
-    {
-      "source_index": 5529,
-      "id": "1991010",
-      "term": "金融崩壊",
-      "reading": "きんゆうほうかい",
-      "meaning": "financial collapse"
-    },
-    {
-      "source_index": 5530,
-      "id": "2850629",
-      "term": "金融包摂",
-      "reading": "きんゆうほうせつ",
-      "meaning": "financial inclusion / availability and equality of opportunities to access financial services"
-    },
-    {
-      "source_index": 5531,
-      "id": "1241930",
-      "term": "緊要地形",
-      "reading": "きんようちけい",
-      "meaning": "key terrain"
-    },
-    {
-      "source_index": 5532,
-      "id": "1684570",
-      "term": "禁欲主義",
-      "reading": "きんよくしゅぎ",
-      "meaning": "asceticism / stoicism"
-    },
-    {
-      "source_index": 5533,
-      "id": "2044280",
-      "term": "禁欲生活",
-      "reading": "きんよくせいかつ",
-      "meaning": "an ascetic existence / (leading) a continent life / abstinence"
-    },
-    {
-      "source_index": 5534,
-      "id": "2030630",
-      "term": "金襴緞子",
-      "reading": "きんらんどんす",
-      "meaning": "gold-brocaded satin damask"
-    },
-    {
-      "source_index": 5535,
-      "id": "1682130",
-      "term": "金利政策",
-      "reading": "きんりせいさく",
-      "meaning": "interest rate policy"
-    },
-    {
-      "source_index": 5536,
-      "id": "2649960",
-      "term": "金利負担",
-      "reading": "きんりふたん",
-      "meaning": "burden of interest / interest burden / interest cost"
-    },
-    {
-      "source_index": 5537,
-      "id": "2044290",
-      "term": "近隣公害",
-      "reading": "きんりんこうがい",
-      "meaning": "(noise, smell, air, water) pollution in the neighborhood"
-    },
-    {
-      "source_index": 5538,
-      "id": "1242580",
-      "term": "近隣諸国",
-      "reading": "きんりんしょこく",
-      "meaning": "neighboring countries / neighbouring countries / surrounding countries"
-    },
-    {
-      "source_index": 5539,
-      "id": "2850649",
-      "term": "近隣住民",
-      "reading": "きんりんじゅうみん",
-      "meaning": "local residents / neighbours / neighbors"
-    },
-    {
-      "source_index": 5540,
-      "id": "1670430",
-      "term": "菌類学者",
-      "reading": "きんるいがくしゃ",
-      "meaning": "mycologist"
-    },
-    {
-      "source_index": 5541,
-      "id": "1933480",
-      "term": "勤労意欲",
-      "reading": "きんろういよく",
-      "meaning": "will to work"
-    },
-    {
-      "source_index": 5542,
-      "id": "1241170",
-      "term": "勤労階級",
-      "reading": "きんろうかいきゅう",
-      "meaning": "salaried class / working class"
-    },
-    {
-      "source_index": 5543,
-      "id": "2859340",
-      "term": "勤労学生",
-      "reading": "きんろうがくせい",
-      "meaning": "working student"
-    },
-    {
-      "source_index": 5544,
-      "id": "1241200",
-      "term": "勤労所得",
-      "reading": "きんろうしょとく",
-      "meaning": "earned income"
-    },
-    {
-      "source_index": 5545,
-      "id": "1241210",
-      "term": "勤労大衆",
-      "reading": "きんろうたいしゅう",
-      "meaning": "working people"
-    },
-    {
-      "source_index": 5546,
-      "id": "2658280",
-      "term": "勤労動員",
-      "reading": "きんろうどういん",
-      "meaning": "mobilization of labor services (e.g. in wartime)"
-    },
-    {
-      "source_index": 5547,
-      "id": "1241220",
-      "term": "勤労奉仕",
-      "reading": "きんろうほうし",
-      "meaning": "labor service / labour service"
-    },
-    {
-      "source_index": 5548,
-      "id": "2043370",
-      "term": "偽悪趣味",
-      "reading": "ぎあくしゅみ",
-      "meaning": "propensity to put oneself in as bad a light as possible / being prone to act bad"
-    },
-    {
-      "source_index": 5549,
-      "id": "2202910",
-      "term": "偽遺伝子",
-      "reading": "ぎいでんし",
-      "meaning": "pseudogene"
-    },
     {
       "source_index": 5550,
       "id": "2851313",
@@ -7010,6 +6660,356 @@
       "term": "血色素計",
       "reading": "けっしきそけい",
       "meaning": "hemoglobinometer / haemoglobinometer"
+    },
+    {
+      "source_index": 6500,
+      "id": "2672580",
+      "term": "血色素症",
+      "reading": "けっしきそしょう",
+      "meaning": "hemochromatosis / haemochromatosis"
+    },
+    {
+      "source_index": 6501,
+      "id": "2422090",
+      "term": "血色素尿",
+      "reading": "けっしきそにょう",
+      "meaning": "hemoglobinuria / haemoglobinuria"
+    },
+    {
+      "source_index": 6502,
+      "id": "2584630",
+      "term": "結晶化学",
+      "reading": "けっしょうかがく",
+      "meaning": "crystal chemistry"
+    },
+    {
+      "source_index": 6503,
+      "id": "2584620",
+      "term": "結晶光学",
+      "reading": "けっしょうこうがく",
+      "meaning": "crystal optics"
+    },
+    {
+      "source_index": 6504,
+      "id": "2584530",
+      "term": "結晶格子",
+      "reading": "けっしょうこうし",
+      "meaning": "crystal lattice"
+    },
+    {
+      "source_index": 6505,
+      "id": "2584520",
+      "term": "結晶構造",
+      "reading": "けっしょうこうぞう",
+      "meaning": "crystal structure / crystalline structure"
+    },
+    {
+      "source_index": 6506,
+      "id": "2672810",
+      "term": "血漿瀉血",
+      "reading": "けっしょうしゃけつ",
+      "meaning": "plasmapheresis"
+    },
+    {
+      "source_index": 6507,
+      "id": "2862927",
+      "term": "結晶成長",
+      "reading": "けっしょうせいちょう",
+      "meaning": "crystal growth"
+    },
+    {
+      "source_index": 6508,
+      "id": "2584540",
+      "term": "結晶片岩",
+      "reading": "けっしょうへんがん",
+      "meaning": "crystalline schist"
+    },
+    {
+      "source_index": 6509,
+      "id": "1833890",
+      "term": "欠食児童",
+      "reading": "けっしょくじどう",
+      "meaning": "schoolchild without lunch"
+    },
+    {
+      "source_index": 6510,
+      "id": "2188860",
+      "term": "欠神発作",
+      "reading": "けっしんほっさ",
+      "meaning": "absence seizure"
+    },
+    {
+      "source_index": 6511,
+      "id": "1670010",
+      "term": "血清肝炎",
+      "reading": "けっせいかんえん",
+      "meaning": "serum hepatitis"
+    },
+    {
+      "source_index": 6512,
+      "id": "2212640",
+      "term": "血清診断",
+      "reading": "けっせいしんだん",
+      "meaning": "serodiagnosis"
+    },
+    {
+      "source_index": 6513,
+      "id": "1670020",
+      "term": "血清注射",
+      "reading": "けっせいちゅうしゃ",
+      "meaning": "serum injection"
+    },
+    {
+      "source_index": 6514,
+      "id": "2839894",
+      "term": "血清濃度",
+      "reading": "けっせいのうど",
+      "meaning": "serum concentration"
+    },
+    {
+      "source_index": 6515,
+      "id": "1670030",
+      "term": "血清療法",
+      "reading": "けっせいりょうほう",
+      "meaning": "serotherapy"
+    },
+    {
+      "source_index": 6516,
+      "id": "1833910",
+      "term": "欠席裁判",
+      "reading": "けっせきさいばん",
+      "meaning": "trial in absentia / judgment by default (judgement)"
+    },
+    {
+      "source_index": 6517,
+      "id": "1630660",
+      "term": "決選投票",
+      "reading": "けっせんとうひょう",
+      "meaning": "final vote / run-off ballot"
+    },
+    {
+      "source_index": 6518,
+      "id": "2672870",
+      "term": "血栓溶解",
+      "reading": "けっせんようかい",
+      "meaning": "thrombolysis"
+    },
+    {
+      "source_index": 6519,
+      "id": "2839892",
+      "term": "血中濃度",
+      "reading": "けっちゅうのうど",
+      "meaning": "blood concentration / blood level"
+    },
+    {
+      "source_index": 6520,
+      "id": "2436160",
+      "term": "結腸吸収",
+      "reading": "けっちょうきゅうしゅう",
+      "meaning": "colon absorption"
+    },
+    {
+      "source_index": 6521,
+      "id": "2846416",
+      "term": "決定科学",
+      "reading": "けっていかがく",
+      "meaning": "decision science"
+    },
+    {
+      "source_index": 6522,
+      "id": "2813870",
+      "term": "決定係数",
+      "reading": "けっていけいすう",
+      "meaning": "coefficient of determination"
+    },
+    {
+      "source_index": 6523,
+      "id": "1873570",
+      "term": "結締組織",
+      "reading": "けっていそしき",
+      "meaning": "connective tissue"
+    },
+    {
+      "source_index": 6524,
+      "id": "1991890",
+      "term": "決定投票",
+      "reading": "けっていとうひょう",
+      "meaning": "casting vote"
+    },
+    {
+      "source_index": 6525,
+      "id": "2352780",
+      "term": "決定理論",
+      "reading": "けっていりろん",
+      "meaning": "decision theory"
+    },
+    {
+      "source_index": 6526,
+      "id": "2352790",
+      "term": "決定論的",
+      "reading": "けっていろんてき",
+      "meaning": "deterministic"
+    },
+    {
+      "source_index": 6527,
+      "id": "2871201",
+      "term": "血糖指数",
+      "reading": "けっとうしすう",
+      "meaning": "glycemic index"
+    },
+    {
+      "source_index": 6528,
+      "id": "2836975",
+      "term": "血統主義",
+      "reading": "けっとうしゅぎ",
+      "meaning": "jus sanguinis / principle that citizenship is determined by that of one's parents"
+    },
+    {
+      "source_index": 6529,
+      "id": "2858114",
+      "term": "血液化学",
+      "reading": "けつえきかがく",
+      "meaning": "blood chemistry"
+    },
+    {
+      "source_index": 6530,
+      "id": "5245608",
+      "term": "血液学会",
+      "reading": "けつえきがっかい",
+      "meaning": "American Society of Hematology / ASH"
+    },
+    {
+      "source_index": 6531,
+      "id": "1255140",
+      "term": "血液凝固",
+      "reading": "けつえきぎょうこ",
+      "meaning": "blood clotting / blood coagulation / coagulation"
+    },
+    {
+      "source_index": 6532,
+      "id": "1670060",
+      "term": "血液銀行",
+      "reading": "けつえきぎんこう",
+      "meaning": "blood bank"
+    },
+    {
+      "source_index": 6533,
+      "id": "1670050",
+      "term": "血液検査",
+      "reading": "けつえきけんさ",
+      "meaning": "blood test / hemanalysis"
+    },
+    {
+      "source_index": 6534,
+      "id": "1255160",
+      "term": "血液循環",
+      "reading": "けつえきじゅんかん",
+      "meaning": "blood circulation"
+    },
+    {
+      "source_index": 6535,
+      "id": "2853635",
+      "term": "血液浄化",
+      "reading": "けつえきじょうか",
+      "meaning": "blood purification"
+    },
+    {
+      "source_index": 6536,
+      "id": "1991920",
+      "term": "血液製剤",
+      "reading": "けつえきせいざい",
+      "meaning": "blood products"
+    },
+    {
+      "source_index": 6537,
+      "id": "2672830",
+      "term": "血液透析",
+      "reading": "けつえきとうせき",
+      "meaning": "hemodialysis / haemodialysis"
+    },
+    {
+      "source_index": 6538,
+      "id": "2037290",
+      "term": "血液内科",
+      "reading": "けつえきないか",
+      "meaning": "haematology / hematology"
+    },
+    {
+      "source_index": 6539,
+      "id": "2044530",
+      "term": "血縁関係",
+      "reading": "けつえんかんけい",
+      "meaning": "blood relationship / blood relations / being genetically related"
+    },
+    {
+      "source_index": 6540,
+      "id": "2672600",
+      "term": "血縁集団",
+      "reading": "けつえんしゅうだん",
+      "meaning": "consanguineous group / kin group"
+    },
+    {
+      "source_index": 6541,
+      "id": "2196320",
+      "term": "血縁淘汰",
+      "reading": "けつえんとうた",
+      "meaning": "kin selection"
+    },
+    {
+      "source_index": 6542,
+      "id": "1805960",
+      "term": "決議機関",
+      "reading": "けつぎきかん",
+      "meaning": "voting body / caucus"
+    },
+    {
+      "source_index": 6543,
+      "id": "1805930",
+      "term": "決議事項",
+      "reading": "けつぎじこう",
+      "meaning": "resolutions"
+    },
+    {
+      "source_index": 6544,
+      "id": "2273590",
+      "term": "結合確率",
+      "reading": "けつごうかくりつ",
+      "meaning": "joint probability"
+    },
+    {
+      "source_index": 6545,
+      "id": "2836504",
+      "term": "決号作戦",
+      "reading": "けつごうさくせん",
+      "meaning": "Operation Ketsugō (Japanese military plan for responding to the Allied invasion of the homeland)"
+    },
+    {
+      "source_index": 6546,
+      "id": "2352870",
+      "term": "結合試験",
+      "reading": "けつごうしけん",
+      "meaning": "integration test"
+    },
+    {
+      "source_index": 6547,
+      "id": "1727490",
+      "term": "結合組織",
+      "reading": "けつごうそしき",
+      "meaning": "connective tissue"
+    },
+    {
+      "source_index": 6548,
+      "id": "2421800",
+      "term": "結合半径",
+      "reading": "けつごうはんけい",
+      "meaning": "bond radius"
+    },
+    {
+      "source_index": 6549,
+      "id": "2827539",
+      "term": "結合分布",
+      "reading": "けつごうぶんぷ",
+      "meaning": "joint distribution"
     }
   ]
 }
