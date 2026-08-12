@@ -36,7 +36,8 @@ jobs:
           pending=[(i,r) for i,r in enumerate(rows) if needs_ja(r.get('meaning')) and str(r.get('id')) not in done_ids]
           rank_counts=Counter(str(r.get('rank','')).strip() or '(blank)' for _,r in pending)
           a=[(i,r) for i,r in pending if str(r.get('rank','')).strip().upper()=='A']
-          selected=a[:100] if a else pending[:100]
+          max_batch=1000
+          selected=a[:max_batch] if a else pending[:max_batch]
           keys=('id','term','reading','meaning','rank','type')
           targets=[]
           for i,r in selected:
@@ -51,9 +52,13 @@ jobs:
             'english_only_rank_counts':dict(rank_counts),
             'a_rank_total':len(a),
             'selection':'A-rank' if a else 'first-visible-order (source rank is blank)',
+            'max_batch_size':max_batch,
             'batch_size':len(targets),
             'targets':targets,
           }
+          assert len(targets) <= max_batch
+          assert len({str(x.get('id')) for x in targets}) == len(targets)
+          assert all(str(x.get('id')) not in done_ids for x in targets)
           Path('kokugo-chronologia/direct-translation-pending.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           print(json.dumps({k:v for k,v in out.items() if k!='targets'},ensure_ascii=False))
       - name: Commit extraction
