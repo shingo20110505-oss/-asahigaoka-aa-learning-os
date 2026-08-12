@@ -1,466 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 2200,
-  "english_only_remaining": 12800,
+  "already_direct_japanese": 2250,
+  "english_only_remaining": 12750,
   "english_only_rank_counts": {
-    "(blank)": 12800
+    "(blank)": 12750
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 2200,
-      "id": "2704260",
-      "term": "折居地鼠",
-      "reading": "おりいじねずみ",
-      "meaning": "Ryukyu shrew (Crocidura orii) / Orii's shrew",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2201,
-      "id": "2251540",
-      "term": "折曲厳禁",
-      "reading": "おりまげげんきん",
-      "meaning": "do not fold / do not bend",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2202,
-      "id": "2833662",
-      "term": "織物組織",
-      "reading": "おりものそしき",
-      "meaning": "textile weave",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2203,
-      "id": "1973970",
-      "term": "卸売価格",
-      "reading": "おろしうりかかく",
-      "meaning": "wholesale price",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2204,
-      "id": "2208260",
-      "term": "卸売会社",
-      "reading": "おろしうりがいしゃ",
-      "meaning": "wholesale company / wholesaler",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2205,
-      "id": "2208250",
-      "term": "卸売業者",
-      "reading": "おろしうりぎょうしゃ",
-      "meaning": "wholesaler",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2206,
-      "id": "1613700",
-      "term": "卸売市場",
-      "reading": "おろしうりしじょう",
-      "meaning": "wholesale market",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2207,
-      "id": "1589550",
-      "term": "卸売物価",
-      "reading": "おろしうりぶっか",
-      "meaning": "wholesale price",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2208,
-      "id": "2860696",
-      "term": "音韻学者",
-      "reading": "おんいんがくしゃ",
-      "meaning": "phonologist",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2209,
-      "id": "2843347",
-      "term": "音韻交替",
-      "reading": "おんいんこうたい",
-      "meaning": "phonological alternation / sound alternation / phonetic alternation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2210,
-      "id": "1862790",
-      "term": "音韻組織",
-      "reading": "おんいんそしき",
-      "meaning": "sound system (of a language) / phonological system",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2211,
-      "id": "2243340",
-      "term": "音韻体系",
-      "reading": "おんいんたいけい",
-      "meaning": "phonological system / phoneme system",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2212,
-      "id": "1920380",
-      "term": "音韻部門",
-      "reading": "おんいんぶもん",
-      "meaning": "phonological component",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2213,
-      "id": "1684070",
-      "term": "音感教育",
-      "reading": "おんかんきょういく",
-      "meaning": "acoustic training / auditory training",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2214,
-      "id": "1930870",
-      "term": "音楽映画",
-      "reading": "おんがくえいが",
-      "meaning": "musical (film)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2215,
-      "id": "2671390",
-      "term": "音楽活動",
-      "reading": "おんがくかつどう",
-      "meaning": "musical activities",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2216,
-      "id": "1930880",
-      "term": "音楽監督",
-      "reading": "おんがくかんとく",
-      "meaning": "music director / musical director",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2217,
-      "id": "2523190",
-      "term": "音楽学校",
-      "reading": "おんがくがっこう",
-      "meaning": "music school / music academy / conservatory",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2218,
-      "id": "1607560",
-      "term": "音楽教育",
-      "reading": "おんがくきょういく",
-      "meaning": "music education",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2219,
-      "id": "2849944",
-      "term": "音楽教室",
-      "reading": "おんがくきょうしつ",
-      "meaning": "place where music lessons are given / music class / music school",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2220,
-      "id": "1989210",
-      "term": "音楽共有",
-      "reading": "おんがくきょうゆう",
-      "meaning": "music sharing",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2221,
-      "id": "2836322",
-      "term": "音楽業界",
-      "reading": "おんがくぎょうかい",
-      "meaning": "music industry / music business",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2222,
-      "id": "1607570",
-      "term": "音楽形式",
-      "reading": "おんがくけいしき",
-      "meaning": "musical form",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2223,
-      "id": "1183760",
-      "term": "音楽大学",
-      "reading": "おんがくだいがく",
-      "meaning": "college of music / school of music / music college",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2224,
-      "id": "2269500",
-      "term": "音楽配信",
-      "reading": "おんがくはいしん",
-      "meaning": "online music distribution",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2225,
-      "id": "1607600",
-      "term": "音楽美学",
-      "reading": "おんがくびがく",
-      "meaning": "musical aesthetics",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2226,
-      "id": "1607610",
-      "term": "音楽療法",
-      "reading": "おんがくりょうほう",
-      "meaning": "music therapy",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2227,
-      "id": "1930920",
-      "term": "音楽理論",
-      "reading": "おんがくりろん",
-      "meaning": "music theory / musical theory",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2228,
-      "id": "2836099",
-      "term": "音響外傷",
-      "reading": "おんきょうがいしょう",
-      "meaning": "acoustic trauma",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2229,
-      "id": "2650440",
-      "term": "音響機器",
-      "reading": "おんきょうきき",
-      "meaning": "audio system / audio equipment",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2230,
-      "id": "1974050",
-      "term": "音響漁法",
-      "reading": "おんきょうぎょほう",
-      "meaning": "acoustic fishing method",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2231,
-      "id": "1684080",
-      "term": "音響効果",
-      "reading": "おんきょうこうか",
-      "meaning": "sound effects",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2232,
-      "id": "2850468",
-      "term": "音響工学",
-      "reading": "おんきょうこうがく",
-      "meaning": "acoustic engineering / acoustical engineering",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2233,
-      "id": "2832765",
-      "term": "音響信号",
-      "reading": "おんきょうしんごう",
-      "meaning": "acoustic signal / audible signal / audio signal",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2234,
-      "id": "2847414",
-      "term": "音響整合",
-      "reading": "おんきょうせいごう",
-      "meaning": "acoustic matching",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2235,
-      "id": "1607630",
-      "term": "音響設計",
-      "reading": "おんきょうせっけい",
-      "meaning": "acoustical design",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2236,
-      "id": "2533800",
-      "term": "音響設備",
-      "reading": "おんきょうせつび",
-      "meaning": "audio equipment",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2237,
-      "id": "1974060",
-      "term": "音響測深",
-      "reading": "おんきょうそくしん",
-      "meaning": "echo sounding",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2238,
-      "id": "2610210",
-      "term": "音響定位",
-      "reading": "おんきょうていい",
-      "meaning": "echolocation",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2239,
-      "id": "2857055",
-      "term": "音響爆弾",
-      "reading": "おんきょうばくだん",
-      "meaning": "screamer bomb / sound bomb",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2240,
-      "id": "2857061",
-      "term": "音響兵器",
-      "reading": "おんきょうへいき",
-      "meaning": "acoustic weapon / sonic weapon",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2241,
-      "id": "1684060",
-      "term": "音訓索引",
-      "reading": "おんくんさくいん",
-      "meaning": "index listing kanji by their Chinese and Japanese pronunciations",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2242,
-      "id": "2751510",
-      "term": "恩恵期間",
-      "reading": "おんけいきかん",
-      "meaning": "period of grace (e.g. in which merchant vessels are allowed to leave a belligerent nation's port after an outbreak of war)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2243,
-      "id": "1781060",
-      "term": "温血動物",
-      "reading": "おんけつどうぶつ",
-      "meaning": "warm-blooded animal",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2244,
-      "id": "2042500",
-      "term": "穏健路線",
-      "reading": "おんけんろせん",
-      "meaning": "moderate line / middle-of-the-road line (in politics)",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2245,
-      "id": "2042510",
-      "term": "温厚寡黙",
-      "reading": "おんこうかもく",
-      "meaning": "gentle and reticent",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2246,
-      "id": "2030180",
-      "term": "温厚篤実",
-      "reading": "おんこうとくじつ",
-      "meaning": "having a gentle and sincere personality",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2247,
-      "id": "1781130",
-      "term": "温故知新",
-      "reading": "おんこちしん",
-      "meaning": "developing new ideas based on study of the past / learning from the past",
-      "rank": null,
-      "type": "yoji"
-    },
-    {
-      "source_index": 2248,
-      "id": "1781100",
-      "term": "温室効果",
-      "reading": "おんしつこうか",
-      "meaning": "greenhouse effect",
-      "rank": null,
-      "type": "four"
-    },
-    {
-      "source_index": 2249,
-      "id": "1781120",
-      "term": "温室栽培",
-      "reading": "おんしつさいばい",
-      "meaning": "greenhouse horticulture",
-      "rank": null,
-      "type": "four"
-    },
     {
       "source_index": 2250,
       "id": "1781110",
@@ -9008,6 +8558,456 @@
       "term": "合戦絵巻",
       "reading": "かっせんえまき",
       "meaning": "picture scroll depicting a famous battle",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3200,
+      "id": "2844724",
+      "term": "癩の瘡うらみ",
+      "reading": "かったいのかさうらみ",
+      "meaning": "excessive envy (of someone in much the same position as oneself) / envy of a leper's pockmarks",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3201,
+      "id": "2033370",
+      "term": "闊達自在",
+      "reading": "かったつじざい",
+      "meaning": "broad-minded and free in disposition / large-hearted and not scrupulous about trifles",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3202,
+      "id": "2854748",
+      "term": "勝手仕事",
+      "reading": "かってしごと",
+      "meaning": "kitchen work / work in the kitchen / kitchen chores",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3203,
+      "id": "1706610",
+      "term": "勝手次第",
+      "reading": "かってしだい",
+      "meaning": "acting according to one's inclinations",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3204,
+      "id": "2866089",
+      "term": "勝手踏切",
+      "reading": "かってふみきり",
+      "meaning": "railroad crossing without a crossing gate",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3205,
+      "id": "2043020",
+      "term": "勝手放題",
+      "reading": "かってほうだい",
+      "meaning": "at one's sweet will / doing whatever one pleases / however one pleases",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3206,
+      "id": "2040210",
+      "term": "活溌溌地",
+      "reading": "かっぱつはっち",
+      "meaning": "being full of vitality (energy) / vigorous and in high spirits",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3207,
+      "id": "2832667",
+      "term": "河童の寒稽古",
+      "reading": "かっぱのかんげいこ",
+      "meaning": "something that looks difficult but actually isn't / swimming in a cold lake during mid-winter seems difficult, but it's nothing to a kappa",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3208,
+      "id": "1778500",
+      "term": "河童の屁",
+      "reading": "かっぱのへ",
+      "meaning": "something easy to do / cinch / a kappa's fart",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3209,
+      "id": "1747160",
+      "term": "活版印刷",
+      "reading": "かっぱんいんさつ",
+      "meaning": "letterpress printing / movable-type printing",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3210,
+      "id": "1716590",
+      "term": "割賦購買",
+      "reading": "かっぷこうばい",
+      "meaning": "buying in installments / buying in instalments",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3211,
+      "id": "1716580",
+      "term": "割賦販売",
+      "reading": "かっぷはんばい",
+      "meaning": "selling in installments / selling in instalments",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3212,
+      "id": "1716570",
+      "term": "割賦方式",
+      "reading": "かっぷほうしき",
+      "meaning": "installment plan / instalment plan",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3213,
+      "id": "2718200",
+      "term": "褐変反応",
+      "reading": "かっぺんはんのう",
+      "meaning": "browning reaction",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3214,
+      "id": "1932170",
+      "term": "割烹料理",
+      "reading": "かっぽうりょうり",
+      "meaning": "Japanese cooking",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3215,
+      "id": "2221260",
+      "term": "割烹旅館",
+      "reading": "かっぽうりょかん",
+      "meaning": "traditional inn priding itself on its cuisine / Japanese-style restaurant with an attached inn",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3216,
+      "id": "2476570",
+      "term": "滑液包炎",
+      "reading": "かつえきほうえん",
+      "meaning": "bursitis",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3217,
+      "id": "2643240",
+      "term": "活字印刷",
+      "reading": "かつじいんさつ",
+      "meaning": "type printing / letterpress printing / typography",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3218,
+      "id": "2638910",
+      "term": "活字書体",
+      "reading": "かつじしょたい",
+      "meaning": "typeface",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3219,
+      "id": "2865075",
+      "term": "活字信仰",
+      "reading": "かつじしんこう",
+      "meaning": "belief that something in print is reliable and correct",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3220,
+      "id": "2042990",
+      "term": "活字中毒",
+      "reading": "かつじちゅうどく",
+      "meaning": "addiction to the printed word / addiction to reading / reading addict",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3221,
+      "id": "2433310",
+      "term": "活字媒体",
+      "reading": "かつじばいたい",
+      "meaning": "print media",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3222,
+      "id": "2821840",
+      "term": "活字文化",
+      "reading": "かつじぶんか",
+      "meaning": "culture of the printed word / book culture",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3223,
+      "id": "2033340",
+      "term": "豁然大悟",
+      "reading": "かつぜんたいご",
+      "meaning": "suddenly seeing the light / achieving full enlightenment all of a sudden",
+      "rank": null,
+      "type": "yoji"
+    },
+    {
+      "source_index": 3224,
+      "id": "2672210",
+      "term": "活動過剰",
+      "reading": "かつどうかじょう",
+      "meaning": "hyperactivity / overactivity",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3225,
+      "id": "2672200",
+      "term": "活動過多",
+      "reading": "かつどうかた",
+      "meaning": "hyperactivity",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3226,
+      "id": "2860093",
+      "term": "活動休止",
+      "reading": "かつどうきゅうし",
+      "meaning": "hiatus (from work; esp. in a creative field)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3227,
+      "id": "2513440",
+      "term": "活動銀河",
+      "reading": "かつどうぎんが",
+      "meaning": "active galaxy",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3228,
+      "id": "1747260",
+      "term": "活動写真",
+      "reading": "かつどうしゃしん",
+      "meaning": "moving picture",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3229,
+      "id": "1208400",
+      "term": "活動成果",
+      "reading": "かつどうせいか",
+      "meaning": "results (of an activity)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3230,
+      "id": "2539970",
+      "term": "活動範囲",
+      "reading": "かつどうはんい",
+      "meaning": "sphere of action / scope of activity / range of work",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3231,
+      "id": "2848196",
+      "term": "活動量計",
+      "reading": "かつどうりょうけい",
+      "meaning": "activity tracker / fitness tracker",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3232,
+      "id": "2842914",
+      "term": "渇に臨みて井を掘る",
+      "reading": "かつにのぞみていをほる",
+      "meaning": "to fail to make timely preparations / to not dig a well until one is thirsty",
+      "rank": null,
+      "type": "idiom"
+    },
+    {
+      "source_index": 3233,
+      "id": "1978770",
+      "term": "活物寄生",
+      "reading": "かつぶつきせい",
+      "meaning": "parasite",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3234,
+      "id": "2837614",
+      "term": "滑膜肉腫",
+      "reading": "かつまくにくしゅ",
+      "meaning": "synovial sarcoma",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3235,
+      "id": "2221220",
+      "term": "活用語尾",
+      "reading": "かつようごび",
+      "meaning": "inflectional ending (in Japanese)",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3236,
+      "id": "1208500",
+      "term": "活路開拓",
+      "reading": "かつろかいたく",
+      "meaning": "developing a way or means",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3237,
+      "id": "2043030",
+      "term": "家庭円満",
+      "reading": "かていえんまん",
+      "meaning": "family happiness / household harmony",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3238,
+      "id": "2653180",
+      "term": "家庭科室",
+      "reading": "かていかしつ",
+      "meaning": "home economics room",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3239,
+      "id": "1931130",
+      "term": "家庭環境",
+      "reading": "かていかんきょう",
+      "meaning": "home environment / family environment",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3240,
+      "id": "1974790",
+      "term": "家庭看護",
+      "reading": "かていかんご",
+      "meaning": "home nursing",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3241,
+      "id": "1192310",
+      "term": "家庭教育",
+      "reading": "かていきょういく",
+      "meaning": "home education",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3242,
+      "id": "1192320",
+      "term": "家庭教師",
+      "reading": "かていきょうし",
+      "meaning": "(home) tutor / private tutor / private teacher",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3243,
+      "id": "1931140",
+      "term": "家庭菜園",
+      "reading": "かていさいえん",
+      "meaning": "kitchen garden",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3244,
+      "id": "2096270",
+      "term": "仮定条件",
+      "reading": "かていじょうけん",
+      "meaning": "hypothetical condition / unrealized condition",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3245,
+      "id": "1931150",
+      "term": "家庭生活",
+      "reading": "かていせいかつ",
+      "meaning": "family life / home life",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3246,
+      "id": "1974800",
+      "term": "家庭争議",
+      "reading": "かていそうぎ",
+      "meaning": "domestic dispute / family trouble",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3247,
+      "id": "2081950",
+      "term": "課程博士",
+      "reading": "かていはかせ",
+      "meaning": "doctoral degree (e.g. PhD) after completing a course of study",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3248,
+      "id": "2860376",
+      "term": "家庭婦人",
+      "reading": "かていふじん",
+      "meaning": "housewife",
+      "rank": null,
+      "type": "four"
+    },
+    {
+      "source_index": 3249,
+      "id": "2840121",
+      "term": "家庭崩壊",
+      "reading": "かていほうかい",
+      "meaning": "family breakdown / family disintegration / collapse of one's family",
       "rank": null,
       "type": "four"
     }
