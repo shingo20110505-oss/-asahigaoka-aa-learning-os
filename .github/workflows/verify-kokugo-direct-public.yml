@@ -3,6 +3,9 @@ on:
   push:
     paths:
       - '.kokugo-direct-ja-deploy-trigger'
+      - 'kokugo-chronologia/meaning-ja-overrides.json'
+      - 'kokugo-chronologia/meaning-ja-overrides.js'
+      - 'kokugo-chronologia/meaning-ja-status.json'
   workflow_dispatch:
 permissions:
   contents: read
