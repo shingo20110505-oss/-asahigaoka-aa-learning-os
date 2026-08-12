@@ -2,7 +2,7 @@ name: Prepare Kokugo Direct Translation
 on:
   push:
     paths:
-      - '.prepare-kokugo-direct-translation-trigger'
+      - '.prepare-kokugo-direct-translation-trigger-2'
 permissions:
   contents: write
 jobs:
