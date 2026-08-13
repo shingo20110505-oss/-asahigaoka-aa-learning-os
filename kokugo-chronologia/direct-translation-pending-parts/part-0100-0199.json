@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11431,
-  "english_only_remaining": 3569,
+  "already_direct_japanese": 11432,
+  "english_only_remaining": 3568,
   "english_only_rank_counts": {
-    "(blank)": 3569
+    "(blank)": 3568
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 100,
   "part_end": 199,
   "targets": [
-    {
-      "source_index": 11531,
-      "id": "1359700",
-      "term": "信用組合",
-      "reading": "しんようくみあい",
-      "meaning": "credit union / credit association"
-    },
     {
       "source_index": 11532,
       "id": "2037980",
@@ -712,6 +705,13 @@
       "term": "地下足袋",
       "reading": "じかたび",
       "meaning": "work tabi / split-toed heavy cloth shoes with rubber soles"
+    },
+    {
+      "source_index": 11631,
+      "id": "1726310",
+      "term": "自家中毒",
+      "reading": "じかちゅうどく",
+      "meaning": "autointoxication / autotoxemia"
     }
   ]
 }

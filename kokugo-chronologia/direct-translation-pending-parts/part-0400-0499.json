@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11431,
-  "english_only_remaining": 3569,
+  "already_direct_japanese": 11432,
+  "english_only_remaining": 3568,
   "english_only_rank_counts": {
-    "(blank)": 3569
+    "(blank)": 3568
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 400,
   "part_end": 499,
   "targets": [
-    {
-      "source_index": 11831,
-      "id": "2593030",
-      "term": "自己憐憫",
-      "reading": "じこれんびん",
-      "meaning": "self-pity"
-    },
     {
       "source_index": 11832,
       "id": "2201410",
@@ -712,6 +705,13 @@
       "term": "事前確率",
       "reading": "じぜんかくりつ",
       "meaning": "prior probability"
+    },
+    {
+      "source_index": 11931,
+      "id": "2612820",
+      "term": "慈善活動",
+      "reading": "じぜんかつどう",
+      "meaning": "philanthropic activity / charity work"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11431,
-  "english_only_remaining": 3569,
+  "already_direct_japanese": 11432,
+  "english_only_remaining": 3568,
   "english_only_rank_counts": {
-    "(blank)": 3569
+    "(blank)": 3568
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 800,
   "part_end": 899,
   "targets": [
-    {
-      "source_index": 12231,
-      "id": "2643990",
-      "term": "重軽傷者",
-      "reading": "じゅうけいしょうしゃ",
-      "meaning": "(seriously and slightly) injured persons / people with serious and minor injures"
-    },
     {
       "source_index": 12232,
       "id": "2787050",
@@ -712,6 +705,13 @@
       "term": "重要人物",
       "reading": "じゅうようじんぶつ",
       "meaning": "important person / strategic person / key figure"
+    },
+    {
+      "source_index": 12331,
+      "id": "2726740",
+      "term": "重要法案",
+      "reading": "じゅうようほうあん",
+      "meaning": "important bill / key bill"
     }
   ]
 }

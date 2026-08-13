@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11431,
-  "english_only_remaining": 3569,
+  "already_direct_japanese": 11432,
+  "english_only_remaining": 3568,
   "english_only_rank_counts": {
-    "(blank)": 3569
+    "(blank)": 3568
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 200,
   "part_end": 299,
   "targets": [
-    {
-      "source_index": 11631,
-      "id": "1726310",
-      "term": "自家中毒",
-      "reading": "じかちゅうどく",
-      "meaning": "autointoxication / autotoxemia"
-    },
     {
       "source_index": 11632,
       "id": "1317440",
@@ -712,6 +705,13 @@
       "term": "事項索引",
       "reading": "じこうさくいん",
       "meaning": "subject index"
+    },
+    {
+      "source_index": 11731,
+      "id": "2528440",
+      "term": "時効取得",
+      "reading": "じこうしゅとく",
+      "meaning": "usucaption / acquisitive prescription / positive prescription"
     }
   ]
 }

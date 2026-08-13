@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11431,
-  "english_only_remaining": 3569,
+  "already_direct_japanese": 11432,
+  "english_only_remaining": 3568,
   "english_only_rank_counts": {
-    "(blank)": 3569
+    "(blank)": 3568
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 700,
   "part_end": 799,
   "targets": [
-    {
-      "source_index": 12131,
-      "id": "2837028",
-      "term": "自動送信",
-      "reading": "じどうそうしん",
-      "meaning": "automatic transmission (sending)"
-    },
     {
       "source_index": 12132,
       "id": "2760570",
@@ -712,6 +705,13 @@
       "term": "従軍牧師",
       "reading": "じゅうぐんぼくし",
       "meaning": "military chaplain"
+    },
+    {
+      "source_index": 12231,
+      "id": "2643990",
+      "term": "重軽傷者",
+      "reading": "じゅうけいしょうしゃ",
+      "meaning": "(seriously and slightly) injured persons / people with serious and minor injures"
     }
   ]
 }

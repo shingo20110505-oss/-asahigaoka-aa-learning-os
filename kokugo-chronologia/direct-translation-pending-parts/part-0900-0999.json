@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11431,
-  "english_only_remaining": 3569,
+  "already_direct_japanese": 11432,
+  "english_only_remaining": 3568,
   "english_only_rank_counts": {
-    "(blank)": 3569
+    "(blank)": 3568
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 900,
   "part_end": 999,
   "targets": [
-    {
-      "source_index": 12331,
-      "id": "2726740",
-      "term": "重要法案",
-      "reading": "じゅうようほうあん",
-      "meaning": "important bill / key bill"
-    },
     {
       "source_index": 12332,
       "id": "2274900",
@@ -712,6 +705,13 @@
       "term": "循環取引",
       "reading": "じゅんかんとりひき",
       "meaning": "round-trip transaction / round-tripping"
+    },
+    {
+      "source_index": 12431,
+      "id": "2624460",
+      "term": "循環風呂",
+      "reading": "じゅんかんぶろ",
+      "meaning": "hot springs bath with simulated natural water supply and drainage / closed-loop hot springs bath"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11431,
-  "english_only_remaining": 3569,
+  "already_direct_japanese": 11432,
+  "english_only_remaining": 3568,
   "english_only_rank_counts": {
-    "(blank)": 3569
+    "(blank)": 3568
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 600,
   "part_end": 699,
   "targets": [
-    {
-      "source_index": 12031,
-      "id": "2599840",
-      "term": "実施状況",
-      "reading": "じっしじょうきょう",
-      "meaning": "status of implementation / state of achievement"
-    },
     {
       "source_index": 12032,
       "id": "2397970",
@@ -712,6 +705,13 @@
       "term": "自動選択",
       "reading": "じどうせんたく",
       "meaning": "automatic selection"
+    },
+    {
+      "source_index": 12131,
+      "id": "2837028",
+      "term": "自動送信",
+      "reading": "じどうそうしん",
+      "meaning": "automatic transmission (sending)"
     }
   ]
 }
