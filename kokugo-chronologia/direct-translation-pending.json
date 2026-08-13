@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11987,
-  "english_only_remaining": 3013,
+  "already_direct_japanese": 12037,
+  "english_only_remaining": 2963,
   "english_only_rank_counts": {
-    "(blank)": 3013
+    "(blank)": 2963
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11987,
-      "id": "2787600",
-      "term": "自治機関",
-      "reading": "じちきかん",
-      "meaning": "self-governing body / self-governing organ"
-    },
-    {
-      "source_index": 11988,
-      "id": "2422440",
-      "term": "自治行政",
-      "reading": "じちぎょうせい",
-      "meaning": "self-government"
-    },
-    {
-      "source_index": 11989,
-      "id": "2571470",
-      "term": "自治政府",
-      "reading": "じちせいふ",
-      "meaning": "self-government / autonomous government / devolved government (e.g. in the UK)"
-    },
-    {
-      "source_index": 11990,
-      "id": "5337007",
-      "term": "自治大学",
-      "reading": "じちだいがく",
-      "meaning": "Jichi University"
-    },
-    {
-      "source_index": 11991,
-      "id": "1317840",
-      "term": "自治大臣",
-      "reading": "じちだいじん",
-      "meaning": "Minister of Home Affairs"
-    },
-    {
-      "source_index": 11992,
-      "id": "2249420",
-      "term": "自治都市",
-      "reading": "じちとし",
-      "meaning": "commune (of medieval Europe) / autonomous city"
-    },
-    {
-      "source_index": 11993,
-      "id": "2046230",
-      "term": "自重自愛",
-      "reading": "じちょうじあい",
-      "meaning": "taking care of oneself / looking after oneself"
-    },
-    {
-      "source_index": 11994,
-      "id": "2046240",
-      "term": "自重自戒",
-      "reading": "じちょうじかい",
-      "meaning": "being prudent and cautious / caution oneself against"
-    },
-    {
-      "source_index": 11995,
-      "id": "2108870",
-      "term": "実況見分",
-      "reading": "じっきょうけんぶん",
-      "meaning": "on-the-spot investigation"
-    },
-    {
-      "source_index": 11996,
-      "id": "2652350",
-      "term": "実況中継",
-      "reading": "じっきょうちゅうけい",
-      "meaning": "live coverage / on-the-spot telecast"
-    },
-    {
-      "source_index": 11997,
-      "id": "2839025",
-      "term": "実況配信",
-      "reading": "じっきょうはいしん",
-      "meaning": "live streaming / live broadcasting (over the Internet)"
-    },
-    {
-      "source_index": 11998,
-      "id": "1706220",
-      "term": "実況放送",
-      "reading": "じっきょうほうそう",
-      "meaning": "on-the-spot or live broadcast / running commentary / blow-by-blow report"
-    },
-    {
-      "source_index": 11999,
-      "id": "2861617",
-      "term": "実況録音",
-      "reading": "じっきょうろくおん",
-      "meaning": "live (audio) recording"
-    },
-    {
-      "source_index": 12000,
-      "id": "2753740",
-      "term": "実刑判決",
-      "reading": "じっけいはんけつ",
-      "meaning": "unsuspended prison sentence / prison sentence with no stay of execution"
-    },
-    {
-      "source_index": 12001,
-      "id": "1706490",
-      "term": "実験科学",
-      "reading": "じっけんかがく",
-      "meaning": "empirical science"
-    },
-    {
-      "source_index": 12002,
-      "id": "2361420",
-      "term": "実験期間",
-      "reading": "じっけんきかん",
-      "meaning": "test period / experimental period"
-    },
-    {
-      "source_index": 12003,
-      "id": "1980620",
-      "term": "実験結果",
-      "reading": "じっけんけっか",
-      "meaning": "experimental results"
-    },
-    {
-      "source_index": 12004,
-      "id": "2858237",
-      "term": "実験劇場",
-      "reading": "じっけんげきじょう",
-      "meaning": "experimental theater"
-    },
-    {
-      "source_index": 12005,
-      "id": "1937180",
-      "term": "実験材料",
-      "reading": "じっけんざいりょう",
-      "meaning": "material for experiments / experimental material"
-    },
-    {
-      "source_index": 12006,
-      "id": "2844539",
-      "term": "実験主義",
-      "reading": "じっけんしゅぎ",
-      "meaning": "experimentalism / experientialism"
-    },
-    {
-      "source_index": 12007,
-      "id": "1706460",
-      "term": "実験小説",
-      "reading": "じっけんしょうせつ",
-      "meaning": "experimental novel"
-    },
-    {
-      "source_index": 12008,
-      "id": "1937210",
-      "term": "実験装置",
-      "reading": "じっけんそうち",
-      "meaning": "experimental device / experimental equipment"
-    },
-    {
-      "source_index": 12009,
-      "id": "1937220",
-      "term": "実験段階",
-      "reading": "じっけんだんかい",
-      "meaning": "experimental stage / experimental phase"
-    },
-    {
-      "source_index": 12010,
-      "id": "1937230",
-      "term": "実験動物",
-      "reading": "じっけんどうぶつ",
-      "meaning": "laboratory animal / experimental animal"
-    },
-    {
-      "source_index": 12011,
-      "id": "1321050",
-      "term": "実行委員",
-      "reading": "じっこういいん",
-      "meaning": "action committee / executive committee"
-    },
-    {
-      "source_index": 12012,
-      "id": "1321060",
-      "term": "実行可能",
-      "reading": "じっこうかのう",
-      "meaning": "executable (e.g. executable file) / capable of putting into practice"
-    },
-    {
-      "source_index": 12013,
-      "id": "2361670",
-      "term": "実行環境",
-      "reading": "じっこうかんきょう",
-      "meaning": "execution environment"
-    },
-    {
-      "source_index": 12014,
-      "id": "2836423",
-      "term": "実効感度",
-      "reading": "じっこうかんど",
-      "meaning": "functional sensitivity (esp. in photography) / effective sensitivity"
-    },
-    {
-      "source_index": 12015,
-      "id": "2027350",
-      "term": "実行機能",
-      "reading": "じっこうきのう",
-      "meaning": "executive functioning / function execution"
-    },
-    {
-      "source_index": 12016,
-      "id": "2361680",
-      "term": "実行許可",
-      "reading": "じっこうきょか",
-      "meaning": "execute permission"
-    },
-    {
-      "source_index": 12017,
-      "id": "2361690",
-      "term": "実行形式",
-      "reading": "じっこうけいしき",
-      "meaning": "executable form"
-    },
-    {
-      "source_index": 12018,
-      "id": "2361710",
-      "term": "実行構文",
-      "reading": "じっこうこうぶん",
-      "meaning": "executable construct"
-    },
-    {
-      "source_index": 12019,
-      "id": "2745280",
-      "term": "実効支配",
-      "reading": "じっこうしはい",
-      "meaning": "effective control (over territory) / working control"
-    },
-    {
-      "source_index": 12020,
-      "id": "2361730",
-      "term": "実行時間",
-      "reading": "じっこうじかん",
-      "meaning": "execution time / run time"
-    },
-    {
-      "source_index": 12021,
-      "id": "2361740",
-      "term": "実行順序",
-      "reading": "じっこうじゅんじょ",
-      "meaning": "execution order / execution sequence"
-    },
-    {
-      "source_index": 12022,
-      "id": "2861820",
-      "term": "実効線量",
-      "reading": "じっこうせんりょう",
-      "meaning": "effective dose (radiation)"
-    },
-    {
-      "source_index": 12023,
-      "id": "2147140",
-      "term": "実効税率",
-      "reading": "じっこうぜいりつ",
-      "meaning": "effective tax rate"
-    },
-    {
-      "source_index": 12024,
-      "id": "2361780",
-      "term": "実行速度",
-      "reading": "じっこうそくど",
-      "meaning": "execution speed"
-    },
-    {
-      "source_index": 12025,
-      "id": "2361790",
-      "term": "実行単位",
-      "reading": "じっこうたんい",
-      "meaning": "run unit"
-    },
-    {
-      "source_index": 12026,
-      "id": "2361560",
-      "term": "実効命令",
-      "reading": "じっこうめいれい",
-      "meaning": "actual instruction"
-    },
-    {
-      "source_index": 12027,
-      "id": "1937260",
-      "term": "実際問題",
-      "reading": "じっさいもんだい",
-      "meaning": "practical question / practical problem / practical matter"
-    },
-    {
-      "source_index": 12028,
-      "id": "2113130",
-      "term": "十死一生",
-      "reading": "じっしいっしょう",
-      "meaning": "narrow escape from the jaws of death / cheating death"
-    },
-    {
-      "source_index": 12029,
-      "id": "2437650",
-      "term": "実施形態",
-      "reading": "じっしけいたい",
-      "meaning": "embodiment"
-    },
-    {
-      "source_index": 12030,
-      "id": "2361890",
-      "term": "実施項目",
-      "reading": "じっしこうもく",
-      "meaning": "working item"
-    },
-    {
-      "source_index": 12031,
-      "id": "2599840",
-      "term": "実施状況",
-      "reading": "じっしじょうきょう",
-      "meaning": "status of implementation / state of achievement"
-    },
-    {
-      "source_index": 12032,
-      "id": "2397970",
-      "term": "実施設計",
-      "reading": "じっしせっけい",
-      "meaning": "detail design / detailed design / final design"
-    },
-    {
-      "source_index": 12033,
-      "id": "2163530",
-      "term": "実質所得",
-      "reading": "じっしつしょとく",
-      "meaning": "real income"
-    },
-    {
-      "source_index": 12034,
-      "id": "1937280",
-      "term": "実質賃金",
-      "reading": "じっしつちんぎん",
-      "meaning": "real wages"
-    },
-    {
-      "source_index": 12035,
-      "id": "2221590",
-      "term": "実視等級",
-      "reading": "じっしとうきゅう",
-      "meaning": "apparent magnitude"
-    },
-    {
-      "source_index": 12036,
-      "id": "1648980",
-      "term": "実写映画",
-      "reading": "じっしゃえいが",
-      "meaning": "live-action film"
-    },
     {
       "source_index": 12037,
       "id": "1334770",
@@ -7010,6 +6660,356 @@
       "term": "人造皮革",
       "reading": "じんぞうひかく",
       "meaning": "artificial leather / synthetic leather / faux leather"
+    },
+    {
+      "source_index": 12987,
+      "id": "1730870",
+      "term": "人造肥料",
+      "reading": "じんぞうひりょう",
+      "meaning": "chemical fertilizer / chemical fertiliser"
+    },
+    {
+      "source_index": 12988,
+      "id": "2861393",
+      "term": "腎臓病学",
+      "reading": "じんぞうびょうがく",
+      "meaning": "nephrology"
+    },
+    {
+      "source_index": 12989,
+      "id": "1368640",
+      "term": "人造宝石",
+      "reading": "じんぞうほうせき",
+      "meaning": "artificial jewels"
+    },
+    {
+      "source_index": 12990,
+      "id": "1368700",
+      "term": "人体実験",
+      "reading": "じんたいじっけん",
+      "meaning": "human experiment / human experimentation / experiment on a living person"
+    },
+    {
+      "source_index": 12991,
+      "id": "1368710",
+      "term": "人体模型",
+      "reading": "じんたいもけい",
+      "meaning": "anatomical model of the human body"
+    },
+    {
+      "source_index": 12992,
+      "id": "1368730",
+      "term": "人代名詞",
+      "reading": "じんだいめいし",
+      "meaning": "personal pronoun"
+    },
+    {
+      "source_index": 12993,
+      "id": "1764950",
+      "term": "神代文字",
+      "reading": "じんだいもじ",
+      "meaning": "jindai moji / forged syllabic characters purported to have been used in ancient Japan"
+    },
+    {
+      "source_index": 12994,
+      "id": "1615480",
+      "term": "人畜無害",
+      "reading": "じんちくむがい",
+      "meaning": "harmless to humans and animals"
+    },
+    {
+      "source_index": 12995,
+      "id": "1886400",
+      "term": "尽忠報国",
+      "reading": "じんちゅうほうこく",
+      "meaning": "loyalty and patriotism"
+    },
+    {
+      "source_index": 12996,
+      "id": "1730800",
+      "term": "人定質問",
+      "reading": "じんていしつもん",
+      "meaning": "establishing the identity of a defendant"
+    },
+    {
+      "source_index": 12997,
+      "id": "1730790",
+      "term": "人定尋問",
+      "reading": "じんていじんもん",
+      "meaning": "establishing the identity of a witness"
+    },
+    {
+      "source_index": 12998,
+      "id": "1368850",
+      "term": "人的資源",
+      "reading": "じんてきしげん",
+      "meaning": "human resources / man-power resources"
+    },
+    {
+      "source_index": 12999,
+      "id": "2162430",
+      "term": "人的資本",
+      "reading": "じんてきしほん",
+      "meaning": "human capital"
+    },
+    {
+      "source_index": 13000,
+      "id": "1730810",
+      "term": "人的証拠",
+      "reading": "じんてきしょうこ",
+      "meaning": "testimony of a witness"
+    },
+    {
+      "source_index": 13001,
+      "id": "2858730",
+      "term": "人的損失",
+      "reading": "じんてきそんしつ",
+      "meaning": "loss of life / human losses / death"
+    },
+    {
+      "source_index": 13002,
+      "id": "2836119",
+      "term": "人的被害",
+      "reading": "じんてきひがい",
+      "meaning": "casualties / killed and wounded / human damage"
+    },
+    {
+      "source_index": 13003,
+      "id": "1370250",
+      "term": "陣頭指揮",
+      "reading": "じんとうしき",
+      "meaning": "taking command of a corps in a battle / command exercised by the leader of a group"
+    },
+    {
+      "source_index": 13004,
+      "id": "2843775",
+      "term": "人道援助",
+      "reading": "じんどうえんじょ",
+      "meaning": "humanitarian aid / humanitarian assistance / humanitarian relief"
+    },
+    {
+      "source_index": 13005,
+      "id": "2853913",
+      "term": "人道回廊",
+      "reading": "じんどうかいろう",
+      "meaning": "humanitarian corridor"
+    },
+    {
+      "source_index": 13006,
+      "id": "1995910",
+      "term": "人道作戦",
+      "reading": "じんどうさくせん",
+      "meaning": "humanitarian operation"
+    },
+    {
+      "source_index": 13007,
+      "id": "1368910",
+      "term": "人道支援",
+      "reading": "じんどうしえん",
+      "meaning": "humanitarian aid"
+    },
+    {
+      "source_index": 13008,
+      "id": "1368920",
+      "term": "人道主義",
+      "reading": "じんどうしゅぎ",
+      "meaning": "humanism / humanitarianism"
+    },
+    {
+      "source_index": 13009,
+      "id": "2047640",
+      "term": "人道蹂躙",
+      "reading": "じんどうじゅうりん",
+      "meaning": "outrage against humanity"
+    },
+    {
+      "source_index": 13010,
+      "id": "1995920",
+      "term": "人道犯罪",
+      "reading": "じんどうはんざい",
+      "meaning": "crime against humanity"
+    },
+    {
+      "source_index": 13011,
+      "id": "2047650",
+      "term": "人馬一体",
+      "reading": "じんばいったい",
+      "meaning": "unity of rider and horse"
+    },
+    {
+      "source_index": 13012,
+      "id": "2058120",
+      "term": "人馬往来",
+      "reading": "じんばおうらい",
+      "meaning": "the passage of people and horses / coming and going of people and horses"
+    },
+    {
+      "source_index": 13013,
+      "id": "2031470",
+      "term": "人品骨柄",
+      "reading": "じんぴんこつがら",
+      "meaning": "personal appearance and physique / person's appearance and physique giving a feeling of respectable character"
+    },
+    {
+      "source_index": 13014,
+      "id": "1369090",
+      "term": "人物経済",
+      "reading": "じんぶつけいざい",
+      "meaning": "human engineering"
+    },
+    {
+      "source_index": 13015,
+      "id": "2047690",
+      "term": "人物月旦",
+      "reading": "じんぶつげったん",
+      "meaning": "character sketch / comments on personalities"
+    },
+    {
+      "source_index": 13016,
+      "id": "2758540",
+      "term": "人物考査",
+      "reading": "じんぶつこうさ",
+      "meaning": "personality test / personality assessment / personality inventory"
+    },
+    {
+      "source_index": 13017,
+      "id": "2223710",
+      "term": "人物写真",
+      "reading": "じんぶつじゃしん",
+      "meaning": "portrait photograph"
+    },
+    {
+      "source_index": 13018,
+      "id": "1369100",
+      "term": "人物寸描",
+      "reading": "じんぶつすんびょう",
+      "meaning": "thumb-nail sketch"
+    },
+    {
+      "source_index": 13019,
+      "id": "2664960",
+      "term": "人物評価",
+      "reading": "じんぶつひょうか",
+      "meaning": "character evaluation / profile"
+    },
+    {
+      "source_index": 13020,
+      "id": "2047710",
+      "term": "人物本位",
+      "reading": "じんぶつほんい",
+      "meaning": "chiefly on the basis of someone's personal character"
+    },
+    {
+      "source_index": 13021,
+      "id": "1369140",
+      "term": "人文科学",
+      "reading": "じんぶんかがく",
+      "meaning": "humanities / arts"
+    },
+    {
+      "source_index": 13022,
+      "id": "1369150",
+      "term": "人文学派",
+      "reading": "じんぶんがくは",
+      "meaning": "humanists"
+    },
+    {
+      "source_index": 13023,
+      "id": "2549710",
+      "term": "人文学部",
+      "reading": "じんぶんがくぶ",
+      "meaning": "faculty of humanities / school of humanities"
+    },
+    {
+      "source_index": 13024,
+      "id": "1369170",
+      "term": "人文主義",
+      "reading": "じんぶんしゅぎ",
+      "meaning": "humanism"
+    },
+    {
+      "source_index": 13025,
+      "id": "2440290",
+      "term": "人文知識",
+      "reading": "じんぶんちしき",
+      "meaning": "Specialist in Humanities (Japanese visa category)"
+    },
+    {
+      "source_index": 13026,
+      "id": "1369180",
+      "term": "人文地理",
+      "reading": "じんぶんちり",
+      "meaning": "human geography"
+    },
+    {
+      "source_index": 13027,
+      "id": "2129510",
+      "term": "甚兵衛鮫",
+      "reading": "じんべえざめ",
+      "meaning": "whale shark (Rhincodon typus)"
+    },
+    {
+      "source_index": 13028,
+      "id": "1369260",
+      "term": "人本主義",
+      "reading": "じんぽんしゅぎ",
+      "meaning": "humanism / humanitarianism"
+    },
+    {
+      "source_index": 13029,
+      "id": "2040510",
+      "term": "尽未来際",
+      "reading": "じんみらいさい",
+      "meaning": "to the end of time / to the crack of doom / for ever and ever"
+    },
+    {
+      "source_index": 13030,
+      "id": "1730710",
+      "term": "人民委員",
+      "reading": "じんみんいいん",
+      "meaning": "People's Commissar (in the early Soviet Union)"
+    },
+    {
+      "source_index": 13031,
+      "id": "2846451",
+      "term": "人民憲章",
+      "reading": "じんみんけんしょう",
+      "meaning": "People's Charter (UK)"
+    },
+    {
+      "source_index": 13032,
+      "id": "1730690",
+      "term": "人民公社",
+      "reading": "じんみんこうしゃ",
+      "meaning": "people's commune"
+    },
+    {
+      "source_index": 13033,
+      "id": "1939480",
+      "term": "人民裁判",
+      "reading": "じんみんさいばん",
+      "meaning": "people's trial (court)"
+    },
+    {
+      "source_index": 13034,
+      "id": "1730700",
+      "term": "人民主義",
+      "reading": "じんみんしゅぎ",
+      "meaning": "populism"
+    },
+    {
+      "source_index": 13035,
+      "id": "2846455",
+      "term": "人民主権",
+      "reading": "じんみんしゅけん",
+      "meaning": "sovereignty of the people"
+    },
+    {
+      "source_index": 13036,
+      "id": "1369310",
+      "term": "人民所有",
+      "reading": "じんみんしょゆう",
+      "meaning": "people's ownership / publicly owned"
     }
   ]
 }
