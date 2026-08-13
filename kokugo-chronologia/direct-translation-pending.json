@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 8400,
-  "english_only_remaining": 6600,
+  "already_direct_japanese": 8450,
+  "english_only_remaining": 6550,
   "english_only_rank_counts": {
-    "(blank)": 6600
+    "(blank)": 6550
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 8400,
-      "id": "2838380",
-      "term": "根本分裂",
-      "reading": "こんぽんぶんれつ",
-      "meaning": "fundamental schism (between the early Sthaviravāda and Mahāsāṃghika Buddhist schools)"
-    },
-    {
-      "source_index": 8401,
-      "id": "2045460",
-      "term": "昏迷状態",
-      "reading": "こんめいじょうたい",
-      "meaning": "befuddled (bewildered, confused) state / stupor"
-    },
-    {
-      "source_index": 8402,
-      "id": "2045470",
-      "term": "混迷状態",
-      "reading": "こんめいじょうたい",
-      "meaning": "chaotic state / turmoil / disarray"
-    },
-    {
-      "source_index": 8403,
-      "id": "2184600",
-      "term": "婚約破棄",
-      "reading": "こんやくはき",
-      "meaning": "breaking off an engagement"
-    },
-    {
-      "source_index": 8404,
-      "id": "1289720",
-      "term": "婚約指輪",
-      "reading": "こんやくゆびわ",
-      "meaning": "engagement ring"
-    },
-    {
-      "source_index": 8405,
-      "id": "1935740",
-      "term": "混乱状態",
-      "reading": "こんらんじょうたい",
-      "meaning": "state of confusion"
-    },
-    {
-      "source_index": 8406,
-      "id": "2045480",
-      "term": "金輪奈落",
-      "reading": "こんりんならく",
-      "meaning": "utmost limits / to the finish / to the (bitter) end"
-    },
-    {
-      "source_index": 8407,
-      "id": "1724080",
-      "term": "婚礼衣装",
-      "reading": "こんれいいしょう",
-      "meaning": "wedding clothes"
-    },
-    {
-      "source_index": 8408,
-      "id": "1982720",
-      "term": "五明後日",
-      "reading": "ごあさって",
-      "meaning": "four days from now (five days in some places)"
-    },
-    {
-      "source_index": 8409,
-      "id": "1920770",
-      "term": "語彙規則",
-      "reading": "ごいきそく",
-      "meaning": "lexical rule"
-    },
-    {
-      "source_index": 8410,
-      "id": "2868105",
-      "term": "語彙項目",
-      "reading": "ごいこうもく",
-      "meaning": "lexical item / lexical unit"
-    },
-    {
-      "source_index": 8411,
-      "id": "2116480",
-      "term": "合意覚書",
-      "reading": "ごういおぼえがき",
-      "meaning": "memorandum of agreement / memorandum of understanding / letter of intent"
-    },
-    {
-      "source_index": 8412,
-      "id": "2804410",
-      "term": "合意形成",
-      "reading": "ごういけいせい",
-      "meaning": "consensus building"
-    },
-    {
-      "source_index": 8413,
-      "id": "1284570",
-      "term": "合意心中",
-      "reading": "ごういしんじゅう",
-      "meaning": "double suicide"
-    },
-    {
-      "source_index": 8414,
-      "id": "1284560",
-      "term": "合意情死",
-      "reading": "ごういじょうし",
-      "meaning": "double suicide"
-    },
-    {
-      "source_index": 8415,
-      "id": "2411810",
-      "term": "合意年齢",
-      "reading": "ごういねんれい",
-      "meaning": "age of consent"
-    },
-    {
-      "source_index": 8416,
-      "id": "2044810",
-      "term": "豪快奔放",
-      "reading": "ごうかいほんぽう",
-      "meaning": "big-hearted and free-spirited / daring and uninhibited"
-    },
-    {
-      "source_index": 8417,
-      "id": "2835688",
-      "term": "豪華客船",
-      "reading": "ごうかきゃくせん",
-      "meaning": "luxury cruise ship / luxury liner"
-    },
-    {
-      "source_index": 8418,
-      "id": "1284610",
-      "term": "合格祈願",
-      "reading": "ごうかくきがん",
-      "meaning": "prayer for success in an entrance exam"
-    },
-    {
-      "source_index": 8419,
-      "id": "2852103",
-      "term": "合格証書",
-      "reading": "ごうかくしょうしょ",
-      "meaning": "(test) pass certificate / passing certificate"
-    },
-    {
-      "source_index": 8420,
-      "id": "1809750",
-      "term": "豪華絢爛",
-      "reading": "ごうかけんらん",
-      "meaning": "luxurious and gorgeous / magnificent"
-    },
-    {
-      "source_index": 8421,
-      "id": "2869755",
-      "term": "強姦殺人",
-      "reading": "ごうかんさつじん",
-      "meaning": "rape and murder / murder following rape"
-    },
-    {
-      "source_index": 8422,
-      "id": "2869756",
-      "term": "強姦致傷",
-      "reading": "ごうかんちしょう",
-      "meaning": "rape resulting in injury / rape causing bodily harm"
-    },
-    {
-      "source_index": 8423,
-      "id": "2869754",
-      "term": "強姦未遂",
-      "reading": "ごうかんみすい",
-      "meaning": "attempted rape"
-    },
-    {
-      "source_index": 8424,
-      "id": "1742070",
-      "term": "傲岸不遜",
-      "reading": "ごうがんふそん",
-      "meaning": "haughty arrogance"
-    },
-    {
-      "source_index": 8425,
-      "id": "1742080",
-      "term": "傲岸無礼",
-      "reading": "ごうがんぶれい",
-      "meaning": "arrogance"
-    },
-    {
-      "source_index": 8426,
-      "id": "2044840",
-      "term": "剛毅果断",
-      "reading": "ごうきかだん",
-      "meaning": "dauntless and decisive / with fortitude and resolution"
-    },
-    {
-      "source_index": 8427,
-      "id": "2870068",
-      "term": "合議審判",
-      "reading": "ごうぎしんぱん",
-      "meaning": "panel hearing (esp. in family or juvenile court) / adjudication by a panel / trial by a collegial body (e.g. in patent law)"
-    },
-    {
-      "source_index": 8428,
-      "id": "1284720",
-      "term": "合議制度",
-      "reading": "ごうぎせいど",
-      "meaning": "parliamentary system"
-    },
-    {
-      "source_index": 8429,
-      "id": "2356750",
-      "term": "合計機能",
-      "reading": "ごうけいきのう",
-      "meaning": "total function"
-    },
-    {
-      "source_index": 8430,
-      "id": "2837080",
-      "term": "合計金額",
-      "reading": "ごうけいきんがく",
-      "meaning": "total amount (of money) / total sum / final sum"
-    },
-    {
-      "source_index": 8431,
-      "id": "2356760",
-      "term": "合計検査",
-      "reading": "ごうけいけんさ",
-      "meaning": "summation check / sum check"
-    },
-    {
-      "source_index": 8432,
-      "id": "2356780",
-      "term": "合計容量",
-      "reading": "ごうけいようりょう",
-      "meaning": "total capacity"
-    },
-    {
-      "source_index": 8433,
-      "id": "1284820",
-      "term": "合資会社",
-      "reading": "ごうしがいしゃ",
-      "meaning": "limited partnership"
-    },
-    {
-      "source_index": 8434,
-      "id": "2044960",
-      "term": "強情我慢",
-      "reading": "ごうじょうがまん",
-      "meaning": "obstinate and self-assertive"
-    },
-    {
-      "source_index": 8435,
-      "id": "2030500",
-      "term": "強情頑固",
-      "reading": "ごうじょうがんこ",
-      "meaning": "headstrong / obstinate / bullheaded"
-    },
-    {
-      "source_index": 8436,
-      "id": "2869470",
-      "term": "合成映像",
-      "reading": "ごうせいえいぞう",
-      "meaning": "composite video"
-    },
-    {
-      "source_index": 8437,
-      "id": "2834524",
-      "term": "合成音声",
-      "reading": "ごうせいおんせい",
-      "meaning": "synthesized voice / synthesized speech"
-    },
-    {
-      "source_index": 8438,
-      "id": "1284950",
-      "term": "合成化学",
-      "reading": "ごうせいかがく",
-      "meaning": "synthetic chemistry"
-    },
-    {
-      "source_index": 8439,
-      "id": "2829969",
-      "term": "合成関数",
-      "reading": "ごうせいかんすう",
-      "meaning": "composite function"
-    },
-    {
-      "source_index": 8440,
-      "id": "2869469",
-      "term": "合成画像",
-      "reading": "ごうせいがぞう",
-      "meaning": "composite image"
-    },
-    {
-      "source_index": 8441,
-      "id": "2442530",
-      "term": "合成酵素",
-      "reading": "ごうせいこうそ",
-      "meaning": "ligase / synthase / synthetase"
-    },
-    {
-      "source_index": 8442,
-      "id": "1683760",
-      "term": "合成写真",
-      "reading": "ごうせいしゃしん",
-      "meaning": "composite photograph / photomontage"
-    },
-    {
-      "source_index": 8443,
-      "id": "2859699",
-      "term": "合成食品",
-      "reading": "ごうせいしょくひん",
-      "meaning": "synthetic food / artificial food"
-    },
-    {
-      "source_index": 8444,
-      "id": "1284990",
-      "term": "合成樹脂",
-      "reading": "ごうせいじゅし",
-      "meaning": "plastics / synthetic resins"
-    },
-    {
-      "source_index": 8445,
-      "id": "2668890",
-      "term": "合成石油",
-      "reading": "ごうせいせきゆ",
-      "meaning": "synthetic petroleum"
-    },
-    {
-      "source_index": 8446,
-      "id": "1285000",
-      "term": "合成繊維",
-      "reading": "ごうせいせんい",
-      "meaning": "synthetic fibre / synthetic fiber"
-    },
-    {
-      "source_index": 8447,
-      "id": "1657260",
-      "term": "合成洗剤",
-      "reading": "ごうせいせんざい",
-      "meaning": "synthetic detergent"
-    },
-    {
-      "source_index": 8448,
-      "id": "2692400",
-      "term": "合成戦略",
-      "reading": "ごうせいせんりゃく",
-      "meaning": "synthesis strategy"
-    },
-    {
-      "source_index": 8449,
-      "id": "2871487",
-      "term": "合成染料",
-      "reading": "ごうせいせんりょう",
-      "meaning": "synthetic dye"
-    },
     {
       "source_index": 8450,
       "id": "2848162",
@@ -7010,6 +6660,356 @@
       "term": "四海同胞",
       "reading": "しかいどうほう",
       "meaning": "universal brotherhood"
+    },
+    {
+      "source_index": 9400,
+      "id": "2417590",
+      "term": "四海波静か",
+      "reading": "しかいなみしずか",
+      "meaning": "The world is at peace"
+    },
+    {
+      "source_index": 9401,
+      "id": "2861864",
+      "term": "視界不良",
+      "reading": "しかいふりょう",
+      "meaning": "poor visibility"
+    },
+    {
+      "source_index": 9402,
+      "id": "2168160",
+      "term": "死海文書",
+      "reading": "しかいもんじょ",
+      "meaning": "Dead Sea scrolls"
+    },
+    {
+      "source_index": 9403,
+      "id": "2870666",
+      "term": "四角関係",
+      "reading": "しかくかんけい",
+      "meaning": "love quadrangle / four-way relationship"
+    },
+    {
+      "source_index": 9404,
+      "id": "2861670",
+      "term": "視覚教材",
+      "reading": "しかくきょうざい",
+      "meaning": "visual aids"
+    },
+    {
+      "source_index": 9405,
+      "id": "2827843",
+      "term": "視覚芸術",
+      "reading": "しかくげいじゅつ",
+      "meaning": "visual arts"
+    },
+    {
+      "source_index": 9406,
+      "id": "1759830",
+      "term": "視覚言語",
+      "reading": "しかくげんご",
+      "meaning": "visual language"
+    },
+    {
+      "source_index": 9407,
+      "id": "2250530",
+      "term": "視覚効果",
+      "reading": "しかくこうか",
+      "meaning": "visual effect"
+    },
+    {
+      "source_index": 9408,
+      "id": "2151930",
+      "term": "刺客候補",
+      "reading": "しかくこうほ",
+      "meaning": "candidate fielded by a political party to oust an incumbent of the same party"
+    },
+    {
+      "source_index": 9409,
+      "id": "1767130",
+      "term": "四角号碼",
+      "reading": "しかくごうま",
+      "meaning": "four-corner kanji character stroke classification system"
+    },
+    {
+      "source_index": 9410,
+      "id": "2870484",
+      "term": "視覚失認",
+      "reading": "しかくしつにん",
+      "meaning": "visual agnosia"
+    },
+    {
+      "source_index": 9411,
+      "id": "1633250",
+      "term": "四角四面",
+      "reading": "しかくしめん",
+      "meaning": "square / formal / prim"
+    },
+    {
+      "source_index": 9412,
+      "id": "2641560",
+      "term": "資格取得",
+      "reading": "しかくしゅとく",
+      "meaning": "acquisition of a qualification"
+    },
+    {
+      "source_index": 9413,
+      "id": "2852132",
+      "term": "視覚障害",
+      "reading": "しかくしょうがい",
+      "meaning": "visual impairment / vision impairment / vision loss"
+    },
+    {
+      "source_index": 9414,
+      "id": "2151940",
+      "term": "刺客戦術",
+      "reading": "しかくせんじゅつ",
+      "meaning": "(strategy of) fielding political candidates to unseat rivals in one's own party"
+    },
+    {
+      "source_index": 9415,
+      "id": "2526160",
+      "term": "歯科検診",
+      "reading": "しかけんしん",
+      "meaning": "dental exam / dental checkup"
+    },
+    {
+      "source_index": 9416,
+      "id": "2097980",
+      "term": "歯科大学",
+      "reading": "しかだいがく",
+      "meaning": "dental college / dental university"
+    },
+    {
+      "source_index": 9417,
+      "id": "1936500",
+      "term": "死活問題",
+      "reading": "しかつもんだい",
+      "meaning": "matter of life or death / life-and-death problem"
+    },
+    {
+      "source_index": 9418,
+      "id": "1313170",
+      "term": "歯科病院",
+      "reading": "しかびょういん",
+      "meaning": "dental hospital"
+    },
+    {
+      "source_index": 9419,
+      "id": "2835678",
+      "term": "敷かれたレール",
+      "reading": "しかれたレール",
+      "meaning": "path staked out for one (by someone else)"
+    },
+    {
+      "source_index": 9420,
+      "id": "1307440",
+      "term": "士官学校",
+      "reading": "しかんがっこう",
+      "meaning": "military academy"
+    },
+    {
+      "source_index": 9421,
+      "id": "2063380",
+      "term": "弛緩出血",
+      "reading": "しかんしゅっけつ",
+      "meaning": "atonic hemorrhage / atonic haemorrhage"
+    },
+    {
+      "source_index": 9422,
+      "id": "2701620",
+      "term": "子癇前症",
+      "reading": "しかんぜんしょう",
+      "meaning": "preeclampsia"
+    },
+    {
+      "source_index": 9423,
+      "id": "2135780",
+      "term": "只管打坐",
+      "reading": "しかんたざ",
+      "meaning": "shikantaza / meditation practice where one stays intensely focused without focusing on any particular object"
+    },
+    {
+      "source_index": 9424,
+      "id": "2227480",
+      "term": "市外局番",
+      "reading": "しがいきょくばん",
+      "meaning": "(telephone) area code (non-local)"
+    },
+    {
+      "source_index": 9425,
+      "id": "1770260",
+      "term": "市外通話",
+      "reading": "しがいつうわ",
+      "meaning": "toll call"
+    },
+    {
+      "source_index": 9426,
+      "id": "2862970",
+      "term": "市街電車",
+      "reading": "しがいでんしゃ",
+      "meaning": "streetcar / tram"
+    },
+    {
+      "source_index": 9427,
+      "id": "1308180",
+      "term": "市外電話",
+      "reading": "しがいでんわ",
+      "meaning": "long-distance call"
+    },
+    {
+      "source_index": 9428,
+      "id": "1767940",
+      "term": "私学助成",
+      "reading": "しがくじょせい",
+      "meaning": "subsidization of private schools (subsidisation)"
+    },
+    {
+      "source_index": 9429,
+      "id": "5743563",
+      "term": "滋賀県警",
+      "reading": "しがけんけい",
+      "meaning": "Shiga Prefectural Police (abbr)"
+    },
+    {
+      "source_index": 9430,
+      "id": "1313220",
+      "term": "歯牙疾患",
+      "reading": "しがしっかん",
+      "meaning": "dental disease"
+    },
+    {
+      "source_index": 9431,
+      "id": "5336161",
+      "term": "滋賀大学",
+      "reading": "しがだいがく",
+      "meaning": "Shiga University"
+    },
+    {
+      "source_index": 9432,
+      "id": "1767020",
+      "term": "四月馬鹿",
+      "reading": "しがつばか",
+      "meaning": "April fool"
+    },
+    {
+      "source_index": 9433,
+      "id": "2125430",
+      "term": "歯牙にもかけない",
+      "reading": "しがにもかけない",
+      "meaning": "taking no notice of / paying no attention to"
+    },
+    {
+      "source_index": 9434,
+      "id": "2068130",
+      "term": "敷居が高い",
+      "reading": "しきいがたかい",
+      "meaning": "having a high threshold (for entry) / difficult to approach / feeling awkward to go to (of someone's home)"
+    },
+    {
+      "source_index": 9435,
+      "id": "2045730",
+      "term": "士気旺盛",
+      "reading": "しきおうせい",
+      "meaning": "morale being very high / heightened fighting spirit"
+    },
+    {
+      "source_index": 9436,
+      "id": "2676450",
+      "term": "色覚異常",
+      "reading": "しきかくいじょう",
+      "meaning": "color vision deficiency / colour vision deficiency / CVD"
+    },
+    {
+      "source_index": 9437,
+      "id": "1995620",
+      "term": "色覚障害",
+      "reading": "しきかくしょうがい",
+      "meaning": "color-blindness / colour-blindness"
+    },
+    {
+      "source_index": 9438,
+      "id": "2644050",
+      "term": "指揮系統",
+      "reading": "しきけいとう",
+      "meaning": "chain of command"
+    },
+    {
+      "source_index": 9439,
+      "id": "2045740",
+      "term": "士気高揚",
+      "reading": "しきこうよう",
+      "meaning": "raising morale / lifting of morale"
+    },
+    {
+      "source_index": 9440,
+      "id": "1818030",
+      "term": "色彩感覚",
+      "reading": "しきさいかんかく",
+      "meaning": "sense of color / sense of colour"
+    },
+    {
+      "source_index": 9441,
+      "id": "2676510",
+      "term": "色彩設計",
+      "reading": "しきさいせっけい",
+      "meaning": "color scheme / colour scheme / color design"
+    },
+    {
+      "source_index": 9442,
+      "id": "1818040",
+      "term": "色彩調節",
+      "reading": "しきさいちょうせつ",
+      "meaning": "color control / colour control"
+    },
+    {
+      "source_index": 9443,
+      "id": "2038620",
+      "term": "識者評論",
+      "reading": "しきしゃひょうろん",
+      "meaning": "a word from the wise"
+    },
+    {
+      "source_index": 9444,
+      "id": "2233580",
+      "term": "式叉摩那",
+      "reading": "しきしゃまな",
+      "meaning": "probationary nun (undergoing a two-year probationary period before receiving ordainment)"
+    },
+    {
+      "source_index": 9445,
+      "id": "2666890",
+      "term": "識字教育",
+      "reading": "しきじきょういく",
+      "meaning": "literacy education"
+    },
+    {
+      "source_index": 9446,
+      "id": "2839764",
+      "term": "色情倒錯",
+      "reading": "しきじょうとうさく",
+      "meaning": "paraphilia / sexual deviancy"
+    },
+    {
+      "source_index": 9447,
+      "id": "1357840",
+      "term": "色即是空",
+      "reading": "しきそくぜくう",
+      "meaning": "form is emptiness / matter is void / all is vanity"
+    },
+    {
+      "source_index": 9448,
+      "id": "1818020",
+      "term": "色素細胞",
+      "reading": "しきそさいぼう",
+      "meaning": "pigment cell"
+    },
+    {
+      "source_index": 9449,
+      "id": "2063580",
+      "term": "士気阻喪",
+      "reading": "しきそそう",
+      "meaning": "demoralization / collapse of morale / one's morale being shaken"
     }
   ]
 }

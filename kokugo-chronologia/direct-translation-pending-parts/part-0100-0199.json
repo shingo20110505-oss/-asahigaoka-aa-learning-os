@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 8400,
-  "english_only_remaining": 6600,
+  "already_direct_japanese": 8450,
+  "english_only_remaining": 6550,
   "english_only_rank_counts": {
-    "(blank)": 6600
+    "(blank)": 6550
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,356 +13,6 @@
   "part_start": 100,
   "part_end": 199,
   "targets": [
-    {
-      "source_index": 8500,
-      "id": "2468310",
-      "term": "五月革命",
-      "reading": "ごがつかくめい",
-      "meaning": "May 68 (period of civil unrest in France; May-June 1968)"
-    },
-    {
-      "source_index": 8501,
-      "id": "1268210",
-      "term": "五月人形",
-      "reading": "ごがつにんぎょう",
-      "meaning": "Boys' May Festival dolls"
-    },
-    {
-      "source_index": 8502,
-      "id": "1829550",
-      "term": "護岸工事",
-      "reading": "ごがんこうじ",
-      "meaning": "levee protection works"
-    },
-    {
-      "source_index": 8503,
-      "id": "2786390",
-      "term": "五畿七道",
-      "reading": "ごきしちどう",
-      "meaning": "the five home provinces and seven districts of ancient Japan"
-    },
-    {
-      "source_index": 8504,
-      "id": "2834562",
-      "term": "呉牛月に喘ぐ",
-      "reading": "ごぎゅうつきにあえぐ",
-      "meaning": "to be overanxious / to worry needlessly"
-    },
-    {
-      "source_index": 8505,
-      "id": "2870849",
-      "term": "五行思想",
-      "reading": "ごぎょうしそう",
-      "meaning": "theory of the five elements (in Chinese philosophy: wood, fire, earth, metal and water) / five phases theory / wuxing theory"
-    },
-    {
-      "source_index": 8506,
-      "id": "2830476",
-      "term": "五行六信",
-      "reading": "ごぎょうろくしん",
-      "meaning": "the five pillars of Islam and six articles of faith"
-    },
-    {
-      "source_index": 8507,
-      "id": "2030580",
-      "term": "極悪非道",
-      "reading": "ごくあくひどう",
-      "meaning": "inhuman / heinous / atrocious"
-    },
-    {
-      "source_index": 8508,
-      "id": "2833987",
-      "term": "極重悪人",
-      "reading": "ごくじゅうあくにん",
-      "meaning": "utter villain / atrocious fiend / devil"
-    },
-    {
-      "source_index": 8509,
-      "id": "1828410",
-      "term": "獄中日記",
-      "reading": "ごくちゅうにっき",
-      "meaning": "prison diary"
-    },
-    {
-      "source_index": 8510,
-      "id": "2549200",
-      "term": "極超音速",
-      "reading": "ごくちょうおんそく",
-      "meaning": "hypersonic speed"
-    },
-    {
-      "source_index": 8511,
-      "id": "1625290",
-      "term": "極超短波",
-      "reading": "ごくちょうたんぱ",
-      "meaning": "ultrahigh frequency / UHF / ultrashort waves"
-    },
-    {
-      "source_index": 8512,
-      "id": "2640840",
-      "term": "極秘事項",
-      "reading": "ごくひじこう",
-      "meaning": "closely-guarded secret / top secret"
-    },
-    {
-      "source_index": 8513,
-      "id": "1933460",
-      "term": "極秘情報",
-      "reading": "ごくひじょうほう",
-      "meaning": "classified information / top secret"
-    },
-    {
-      "source_index": 8514,
-      "id": "2532600",
-      "term": "極秘任務",
-      "reading": "ごくひにんむ",
-      "meaning": "top secret mission"
-    },
-    {
-      "source_index": 8515,
-      "id": "1760700",
-      "term": "極楽往生",
-      "reading": "ごくらくおうじょう",
-      "meaning": "rebirth in paradise / peaceful death"
-    },
-    {
-      "source_index": 8516,
-      "id": "2045130",
-      "term": "極楽極楽",
-      "reading": "ごくらくごくらく",
-      "meaning": "absolute heaven / sheer bliss"
-    },
-    {
-      "source_index": 8517,
-      "id": "1760710",
-      "term": "極楽浄土",
-      "reading": "ごくらくじょうど",
-      "meaning": "Amitabha's Pure Land / Sukhavati"
-    },
-    {
-      "source_index": 8518,
-      "id": "2868742",
-      "term": "極楽世界",
-      "reading": "ごくらくせかい",
-      "meaning": "Sukhavati / Amitabha's Pure Land / land of Perfect Bliss"
-    },
-    {
-      "source_index": 8519,
-      "id": "1629590",
-      "term": "極楽鳥花",
-      "reading": "ごくらくちょうか",
-      "meaning": "bird of paradise flower / Strelitzia reginae"
-    },
-    {
-      "source_index": 8520,
-      "id": "2030590",
-      "term": "極楽とんぼ",
-      "reading": "ごくらくとんぼ",
-      "meaning": "happy-go-lucky fellow / easygoing and indifferent person / pococurante"
-    },
-    {
-      "source_index": 8521,
-      "id": "2825930",
-      "term": "互恵関係",
-      "reading": "ごけいかんけい",
-      "meaning": "reciprocal relationship / mutually beneficial relations / relationship with benefits to both parties"
-    },
-    {
-      "source_index": 8522,
-      "id": "1694970",
-      "term": "互恵関税",
-      "reading": "ごけいかんぜい",
-      "meaning": "reciprocal tariff"
-    },
-    {
-      "source_index": 8523,
-      "id": "2866972",
-      "term": "互恵主義",
-      "reading": "ごけいしゅぎ",
-      "meaning": "reciprocity / reciprocity principle"
-    },
-    {
-      "source_index": 8524,
-      "id": "1694950",
-      "term": "互恵条約",
-      "reading": "ごけいじょうやく",
-      "meaning": "reciprocal treaty / treaty of reciprocity"
-    },
-    {
-      "source_index": 8525,
-      "id": "1271080",
-      "term": "語形変化",
-      "reading": "ごけいへんか",
-      "meaning": "inflection of words (e.g. declension of nouns and conjugation of verbs)"
-    },
-    {
-      "source_index": 8526,
-      "id": "1694960",
-      "term": "互恵貿易",
-      "reading": "ごけいぼうえき",
-      "meaning": "reciprocal trade"
-    },
-    {
-      "source_index": 8527,
-      "id": "2165650",
-      "term": "後家蜘蛛",
-      "reading": "ごけぐも",
-      "meaning": "widow spider (of genus Latrodectus)"
-    },
-    {
-      "source_index": 8528,
-      "id": "1829610",
-      "term": "護憲運動",
-      "reading": "ごけんうんどう",
-      "meaning": "movement to defend the Constitution"
-    },
-    {
-      "source_index": 8529,
-      "id": "2864915",
-      "term": "語源俗解",
-      "reading": "ごげんぞっかい",
-      "meaning": "folk etymology / popular (but unfounded) etymology"
-    },
-    {
-      "source_index": 8530,
-      "id": "2833034",
-      "term": "後光効果",
-      "reading": "ごこうこうか",
-      "meaning": "halo effect"
-    },
-    {
-      "source_index": 8531,
-      "id": "2148760",
-      "term": "五公五民",
-      "reading": "ごこうごみん",
-      "meaning": "land-tax system during the Edo period under which the government took half of the year's crop and the farmers kept the other half"
-    },
-    {
-      "source_index": 8532,
-      "id": "1829560",
-      "term": "護国神社",
-      "reading": "ごこくじんじゃ",
-      "meaning": "shrine honoring war dead / shrine honouring war dead"
-    },
-    {
-      "source_index": 8533,
-      "id": "2045150",
-      "term": "五穀豊穣",
-      "reading": "ごこくほうじょう",
-      "meaning": "huge harvest (of the five grains) / bumper crop / abundant crop"
-    },
-    {
-      "source_index": 8534,
-      "id": "2838730",
-      "term": "午後零時",
-      "reading": "ごごれいじ",
-      "meaning": "noon / 12pm"
-    },
-    {
-      "source_index": 8535,
-      "id": "2045160",
-      "term": "五言絶句",
-      "reading": "ごごんぜっく",
-      "meaning": "poem of four lines, each of five (Chinese) characters"
-    },
-    {
-      "source_index": 8536,
-      "id": "2045170",
-      "term": "五言律詩",
-      "reading": "ごごんりっし",
-      "meaning": "poem of eight lines, each of five (Chinese) characters"
-    },
-    {
-      "source_index": 8537,
-      "id": "2849642",
-      "term": "誤差拡散",
-      "reading": "ごさかくさん",
-      "meaning": "error diffusion / random dither"
-    },
-    {
-      "source_index": 8538,
-      "id": "2354740",
-      "term": "誤差範囲",
-      "reading": "ごさはんい",
-      "meaning": "error range"
-    },
-    {
-      "source_index": 8539,
-      "id": "2827529",
-      "term": "誤差分布",
-      "reading": "ごさぶんぷ",
-      "meaning": "error distribution"
-    },
-    {
-      "source_index": 8540,
-      "id": "2830644",
-      "term": "五四運動",
-      "reading": "ごしうんどう",
-      "meaning": "May Fourth Movement (anti-imperialist student demonstration in Beijing on May 4, 1919)"
-    },
-    {
-      "source_index": 8541,
-      "id": "2839352",
-      "term": "五指に入る",
-      "reading": "ごしにはいる",
-      "meaning": "to be among the top five / to be one of the five best"
-    },
-    {
-      "source_index": 8542,
-      "id": "1694110",
-      "term": "御朱印船",
-      "reading": "ごしゅいんせん",
-      "meaning": "shogun-authorized trading vessel (authorised)"
-    },
-    {
-      "source_index": 8543,
-      "id": "2868466",
-      "term": "御朱印帳",
-      "reading": "ごしゅいんちょう",
-      "meaning": "goshuin booklet / book for receiving seal stamps at shrines and temples"
-    },
-    {
-      "source_index": 8544,
-      "id": "1268290",
-      "term": "五種競技",
-      "reading": "ごしゅきょうぎ",
-      "meaning": "pentathlon"
-    },
-    {
-      "source_index": 8545,
-      "id": "2045200",
-      "term": "後生一生",
-      "reading": "ごしょういっしょう",
-      "meaning": "extremely important or once in a lifetime (request) / only once in one's lifetime"
-    },
-    {
-      "source_index": 8546,
-      "id": "1269840",
-      "term": "後生大事",
-      "reading": "ごしょうだいじ",
-      "meaning": "with religious zeal / with utmost devotion / take great care of"
-    },
-    {
-      "source_index": 8547,
-      "id": "2857867",
-      "term": "誤字脱字",
-      "reading": "ごじだつじ",
-      "meaning": "mistaken or missing characters / omissions or errors"
-    },
-    {
-      "source_index": 8548,
-      "id": "1268340",
-      "term": "五十歩百歩",
-      "reading": "ごじっぽひゃっぽ",
-      "meaning": "six of one, half a dozen of the other / scant difference"
-    },
-    {
-      "source_index": 8549,
-      "id": "2555550",
-      "term": "後日物語",
-      "reading": "ごじつものがたり",
-      "meaning": "sequel"
-    },
     {
       "source_index": 8550,
       "id": "2573380",
@@ -712,6 +362,356 @@
       "term": "御用学者",
       "reading": "ごようがくしゃ",
       "meaning": "scholar beholden to the government / self-serving academic / scholar who toadies up to government authorities"
+    },
+    {
+      "source_index": 8600,
+      "id": "1694020",
+      "term": "御用組合",
+      "reading": "ごようくみあい",
+      "meaning": "a company union"
+    },
+    {
+      "source_index": 8601,
+      "id": "1694000",
+      "term": "御用商人",
+      "reading": "ごようしょうにん",
+      "meaning": "purveyor (to the government or Imperial Household)"
+    },
+    {
+      "source_index": 8602,
+      "id": "1694030",
+      "term": "御用新聞",
+      "reading": "ごようしんぶん",
+      "meaning": "pro-government newspaper / newspaper that curries favour with the government"
+    },
+    {
+      "source_index": 8603,
+      "id": "2063510",
+      "term": "御用繁多",
+      "reading": "ごようはんた",
+      "meaning": "being busy with many things / extreme busyness due to pressure of business"
+    },
+    {
+      "source_index": 8604,
+      "id": "2574530",
+      "term": "御用部屋",
+      "reading": "ごようべや",
+      "meaning": "room in Edo castle where the shogun's council of elders attended to governmental affairs"
+    },
+    {
+      "source_index": 8605,
+      "id": "2842687",
+      "term": "娯楽映画",
+      "reading": "ごらくえいが",
+      "meaning": "entertaining movie / entertaining film"
+    },
+    {
+      "source_index": 8606,
+      "id": "2565490",
+      "term": "娯楽雑誌",
+      "reading": "ごらくざっし",
+      "meaning": "magazine for amusement / entertainment magazine"
+    },
+    {
+      "source_index": 8607,
+      "id": "1934770",
+      "term": "娯楽施設",
+      "reading": "ごらくしせつ",
+      "meaning": "amusement facilities / recreational facilities"
+    },
+    {
+      "source_index": 8608,
+      "id": "1269310",
+      "term": "娯楽番組",
+      "reading": "ごらくばんぐみ",
+      "meaning": "amusement program / amusement programme"
+    },
+    {
+      "source_index": 8609,
+      "id": "1268670",
+      "term": "五里霧中",
+      "reading": "ごりむちゅう",
+      "meaning": "totally at a loss / lose one's bearings / in a maze"
+    },
+    {
+      "source_index": 8610,
+      "id": "2604110",
+      "term": "御流神道",
+      "reading": "ごりゅうしんとう",
+      "meaning": "Goryū Shinto (sect of amalgamated Shinto)"
+    },
+    {
+      "source_index": 8611,
+      "id": "2853736",
+      "term": "五輪休戦",
+      "reading": "ごりんきゅうせん",
+      "meaning": "Olympic truce"
+    },
+    {
+      "source_index": 8612,
+      "id": "1268740",
+      "term": "五輪聖火",
+      "reading": "ごりんせいか",
+      "meaning": "Olympic torch"
+    },
+    {
+      "source_index": 8613,
+      "id": "1268750",
+      "term": "五輪大会",
+      "reading": "ごりんたいかい",
+      "meaning": "Olympic Games"
+    },
+    {
+      "source_index": 8614,
+      "id": "1878190",
+      "term": "欣求浄土",
+      "reading": "ごんぐじょうど",
+      "meaning": "seeking rebirth in the Pure Land"
+    },
+    {
+      "source_index": 8615,
+      "id": "1264450",
+      "term": "言語道断",
+      "reading": "ごんごどうだん",
+      "meaning": "outrageous / preposterous / scandalous"
+    },
+    {
+      "source_index": 8616,
+      "id": "2714130",
+      "term": "権兵衛が種蒔きゃ烏がほじくる",
+      "reading": "ごんべえがたねまきゃからすがほじくる",
+      "meaning": "spoiling someone's work / useless effort / labouring in vain"
+    },
+    {
+      "source_index": 8617,
+      "id": "1295410",
+      "term": "斎戒沐浴",
+      "reading": "さいかいもくよく",
+      "meaning": "purification / washing"
+    },
+    {
+      "source_index": 8618,
+      "id": "1296260",
+      "term": "載貨屯数",
+      "reading": "さいかとんすう",
+      "meaning": "deadweight tonnage"
+    },
+    {
+      "source_index": 8619,
+      "id": "2835273",
+      "term": "歳寒三友",
+      "reading": "さいかんさんゆう",
+      "meaning": "the three friends of winter (pine, bamboo and plum)"
+    },
+    {
+      "source_index": 8620,
+      "id": "2832871",
+      "term": "災害医療",
+      "reading": "さいがいいりょう",
+      "meaning": "disaster medicine"
+    },
+    {
+      "source_index": 8621,
+      "id": "1741470",
+      "term": "災害救助",
+      "reading": "さいがいきゅうじょ",
+      "meaning": "disaster relief"
+    },
+    {
+      "source_index": 8622,
+      "id": "2110330",
+      "term": "災害外科",
+      "reading": "さいがいげか",
+      "meaning": "traumatology / accident surgery"
+    },
+    {
+      "source_index": 8623,
+      "id": "1741450",
+      "term": "災害対策",
+      "reading": "さいがいたいさく",
+      "meaning": "disaster response / measures to deal with natural disasters / disaster control"
+    },
+    {
+      "source_index": 8624,
+      "id": "2108370",
+      "term": "災害派遣",
+      "reading": "さいがいはけん",
+      "meaning": "disaster relief operation / disaster relief mission"
+    },
+    {
+      "source_index": 8625,
+      "id": "2864471",
+      "term": "災害発生",
+      "reading": "さいがいはっせい",
+      "meaning": "occurrence of a disaster"
+    },
+    {
+      "source_index": 8626,
+      "id": "1741460",
+      "term": "災害保険",
+      "reading": "さいがいほけん",
+      "meaning": "disaster insurance"
+    },
+    {
+      "source_index": 8627,
+      "id": "2421280",
+      "term": "災害補償",
+      "reading": "さいがいほしょう",
+      "meaning": "accident compensation"
+    },
+    {
+      "source_index": 8628,
+      "id": "2807780",
+      "term": "細気管支",
+      "reading": "さいきかんし",
+      "meaning": "bronchiole"
+    },
+    {
+      "source_index": 8629,
+      "id": "2357340",
+      "term": "再帰関数",
+      "reading": "さいきかんすう",
+      "meaning": "recursive function"
+    },
+    {
+      "source_index": 8630,
+      "id": "1294490",
+      "term": "才気煥発",
+      "reading": "さいきかんぱつ",
+      "meaning": "quick-witted / a flash of brilliance / great wisdom"
+    },
+    {
+      "source_index": 8631,
+      "id": "2694190",
+      "term": "催奇形性",
+      "reading": "さいきけいせい",
+      "meaning": "teratogenicity"
+    },
+    {
+      "source_index": 8632,
+      "id": "1294480",
+      "term": "才気縦横",
+      "reading": "さいきじゅうおう",
+      "meaning": "great wisdom"
+    },
+    {
+      "source_index": 8633,
+      "id": "2150930",
+      "term": "再帰動詞",
+      "reading": "さいきどうし",
+      "meaning": "reflexive verb"
+    },
+    {
+      "source_index": 8634,
+      "id": "2045490",
+      "term": "才気溌剌",
+      "reading": "さいきはつらつ",
+      "meaning": "resourceful and quick-witted / showing a flash of brilliance / having a keen (sparkling) intellect"
+    },
+    {
+      "source_index": 8635,
+      "id": "2840875",
+      "term": "再帰反射",
+      "reading": "さいきはんしゃ",
+      "meaning": "retroreflection"
+    },
+    {
+      "source_index": 8636,
+      "id": "2045500",
+      "term": "再起不能",
+      "reading": "さいきふのう",
+      "meaning": "being beyond recovery / having no hope of recovery"
+    },
+    {
+      "source_index": 8637,
+      "id": "2744310",
+      "term": "西京味噌",
+      "reading": "さいきょうみそ",
+      "meaning": "Saikyo miso / Kyoto-style sweet white miso esp. used for pickling fish"
+    },
+    {
+      "source_index": 8638,
+      "id": "2852449",
+      "term": "再帰用法",
+      "reading": "さいきようほう",
+      "meaning": "(the) reflexive / reflexive usage"
+    },
+    {
+      "source_index": 8639,
+      "id": "2357700",
+      "term": "最近稼働",
+      "reading": "さいきんかどう",
+      "meaning": "recent activity"
+    },
+    {
+      "source_index": 8640,
+      "id": "2855742",
+      "term": "細菌学者",
+      "reading": "さいきんがくしゃ",
+      "meaning": "bacteriologist"
+    },
+    {
+      "source_index": 8641,
+      "id": "2198600",
+      "term": "細菌毒素",
+      "reading": "さいきんどくそ",
+      "meaning": "bacterial toxin"
+    },
+    {
+      "source_index": 8642,
+      "id": "1768430",
+      "term": "細菌兵器",
+      "reading": "さいきんへいき",
+      "meaning": "bacteriological weapon"
+    },
+    {
+      "source_index": 8643,
+      "id": "2788760",
+      "term": "債権勘定",
+      "reading": "さいけんかんじょう",
+      "meaning": "accounts receivable"
+    },
+    {
+      "source_index": 8644,
+      "id": "1993520",
+      "term": "再建計画",
+      "reading": "さいけんけいかく",
+      "meaning": "reorganization plan / reorganisation plan / restructuring plan"
+    },
+    {
+      "source_index": 8645,
+      "id": "2844756",
+      "term": "再建外科",
+      "reading": "さいけんげか",
+      "meaning": "reconstructive surgery"
+    },
+    {
+      "source_index": 8646,
+      "id": "2728480",
+      "term": "債券市場",
+      "reading": "さいけんしじょう",
+      "meaning": "bond market"
+    },
+    {
+      "source_index": 8647,
+      "id": "2844755",
+      "term": "再建手術",
+      "reading": "さいけんしゅじゅつ",
+      "meaning": "reconstructive operation / reconstructive surgery"
+    },
+    {
+      "source_index": 8648,
+      "id": "2828647",
+      "term": "債権譲渡",
+      "reading": "さいけんじょうと",
+      "meaning": "cession of an obligation / assignment of an obligation / transfer of an obligation"
+    },
+    {
+      "source_index": 8649,
+      "id": "1993410",
+      "term": "債券発行",
+      "reading": "さいけんはっこう",
+      "meaning": "debt issuance / bond issuance"
     }
   ]
 }
