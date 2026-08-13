@@ -42,3 +42,4 @@ function repairOriginalQuizBlank(){const q=$('#q'),total=$('#total'),view=$('#qu
 function connect(){buildUI();observeOriginalQuiz();repairOriginalQuizBlank();const frame=$('#engine');let tries=0;const tick=()=>{try{const candidate=frame?.contentWindow?.AA_VOCAB_CATALOG_API;if(candidate?.list&&candidate?.record){api=candidate;refreshWords();renderOverview();return}}catch(_){}if(++tries<300)setTimeout(tick,100)};tick();frame?.addEventListener('load',()=>{tries=0;tick()})}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',connect,{once:true});else connect();
 })();
+(()=>{if(document.getElementById('aaWrongHistoryLoader'))return;const s=document.createElement('script');s.id='aaWrongHistoryLoader';s.src=new URL('./wrong-answer-history-v1.js?v=20260813-1',document.currentScript?.src||location.href).href;s.async=false;document.head.appendChild(s)})();
