@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11434,
-  "english_only_remaining": 3566,
+  "already_direct_japanese": 11435,
+  "english_only_remaining": 3565,
   "english_only_rank_counts": {
-    "(blank)": 3566
+    "(blank)": 3565
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 700,
   "part_end": 799,
   "targets": [
-    {
-      "source_index": 12134,
-      "id": "1318460",
-      "term": "自動着信",
-      "reading": "じどうちゃくしん",
-      "meaning": "auto answer (e.g. modem)"
-    },
     {
       "source_index": 12135,
       "id": "1983380",
@@ -712,6 +705,13 @@
       "term": "重慶大学",
       "reading": "じゅうけいだいがく",
       "meaning": "Chongqing University / CQU"
+    },
+    {
+      "source_index": 12234,
+      "id": "2242580",
+      "term": "住血吸虫",
+      "reading": "じゅうけつきゅうちゅう",
+      "meaning": "blood fluke (any fluke of family Schistosomatidae) / schistosome"
     }
   ]
 }

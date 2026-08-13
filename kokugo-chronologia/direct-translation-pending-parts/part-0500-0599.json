@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11434,
-  "english_only_remaining": 3566,
+  "already_direct_japanese": 11435,
+  "english_only_remaining": 3565,
   "english_only_rank_counts": {
-    "(blank)": 3566
+    "(blank)": 3565
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 500,
   "part_end": 599,
   "targets": [
-    {
-      "source_index": 11934,
-      "id": "1314090",
-      "term": "事前検閲",
-      "reading": "じぜんけんえつ",
-      "meaning": "prepublication censorship"
-    },
     {
       "source_index": 11935,
       "id": "1314100",
@@ -712,6 +705,13 @@
       "term": "実質所得",
       "reading": "じっしつしょとく",
       "meaning": "real income"
+    },
+    {
+      "source_index": 12034,
+      "id": "1937280",
+      "term": "実質賃金",
+      "reading": "じっしつちんぎん",
+      "meaning": "real wages"
     }
   ]
 }

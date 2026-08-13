@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11434,
-  "english_only_remaining": 3566,
+  "already_direct_japanese": 11435,
+  "english_only_remaining": 3565,
   "english_only_rank_counts": {
-    "(blank)": 3566
+    "(blank)": 3565
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 0,
   "part_end": 99,
   "targets": [
-    {
-      "source_index": 11434,
-      "id": "2834795",
-      "term": "死んだ魚の目",
-      "reading": "しんださかなのめ",
-      "meaning": "empty eyes / thousand-yard stare / blank glaze"
-    },
     {
       "source_index": 11435,
       "id": "2870022",
@@ -712,6 +705,13 @@
       "term": "信用詐欺",
       "reading": "しんようさぎ",
       "meaning": "confidence game"
+    },
+    {
+      "source_index": 11534,
+      "id": "2849263",
+      "term": "信用収縮",
+      "reading": "しんようしゅうしゅく",
+      "meaning": "credit contraction / credit crunch"
     }
   ]
 }
