@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9906,
-  "english_only_remaining": 5094,
+  "already_direct_japanese": 9907,
+  "english_only_remaining": 5093,
   "english_only_rank_counts": {
-    "(blank)": 5094
+    "(blank)": 5093
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 800,
   "part_end": 899,
   "targets": [
-    {
-      "source_index": 10706,
-      "id": "2046960",
-      "term": "小身微禄",
-      "reading": "しょうしんびろく",
-      "meaning": "(in) a humble position with a small stipend"
-    },
     {
       "source_index": 10707,
       "id": "1348330",
@@ -712,6 +705,13 @@
       "term": "消費社会",
       "reading": "しょうひしゃかい",
       "meaning": "consumer society"
+    },
+    {
+      "source_index": 10806,
+      "id": "1882970",
+      "term": "消費者側",
+      "reading": "しょうひしゃがわ",
+      "meaning": "consumers side"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9906,
-  "english_only_remaining": 5094,
+  "already_direct_japanese": 9907,
+  "english_only_remaining": 5093,
   "english_only_rank_counts": {
-    "(blank)": 5094
+    "(blank)": 5093
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 300,
   "part_end": 399,
   "targets": [
-    {
-      "source_index": 10206,
-      "id": "1331580",
-      "term": "就学年齢",
-      "reading": "しゅうがくねんれい",
-      "meaning": "school age"
-    },
     {
       "source_index": 10207,
       "id": "1331960",
@@ -712,6 +705,13 @@
       "term": "集団検診",
       "reading": "しゅうだんけんしん",
       "meaning": "group medical examination"
+    },
+    {
+      "source_index": 10306,
+      "id": "1937850",
+      "term": "集団行動",
+      "reading": "しゅうだんこうどう",
+      "meaning": "group action / collective behavior / collective behaviour"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9906,
-  "english_only_remaining": 5094,
+  "already_direct_japanese": 9907,
+  "english_only_remaining": 5093,
   "english_only_rank_counts": {
-    "(blank)": 5094
+    "(blank)": 5093
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 400,
   "part_end": 499,
   "targets": [
-    {
-      "source_index": 10306,
-      "id": "1937850",
-      "term": "集団行動",
-      "reading": "しゅうだんこうどう",
-      "meaning": "group action / collective behavior / collective behaviour"
-    },
     {
       "source_index": 10307,
       "id": "2363360",
@@ -712,6 +705,13 @@
       "term": "種間雑種",
       "reading": "しゅかんざっしゅ",
       "meaning": "interspecific hybrid"
+    },
+    {
+      "source_index": 10406,
+      "id": "1325190",
+      "term": "主観主義",
+      "reading": "しゅかんしゅぎ",
+      "meaning": "subjectivism"
     }
   ]
 }

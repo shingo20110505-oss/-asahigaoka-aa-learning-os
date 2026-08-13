@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9906,
-  "english_only_remaining": 5094,
+  "already_direct_japanese": 9907,
+  "english_only_remaining": 5093,
   "english_only_rank_counts": {
-    "(blank)": 5094
+    "(blank)": 5093
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 900,
   "part_end": 999,
   "targets": [
-    {
-      "source_index": 10806,
-      "id": "1882970",
-      "term": "消費者側",
-      "reading": "しょうひしゃがわ",
-      "meaning": "consumers side"
-    },
     {
       "source_index": 10807,
       "id": "2831272",
@@ -712,6 +705,13 @@
       "term": "書記体系",
       "reading": "しょきたいけい",
       "meaning": "writing system"
+    },
+    {
+      "source_index": 10906,
+      "id": "1342670",
+      "term": "初期段階",
+      "reading": "しょきだんかい",
+      "meaning": "initial stage"
     }
   ]
 }

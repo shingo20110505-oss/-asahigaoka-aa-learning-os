@@ -1,23 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9906,
-  "english_only_remaining": 5094,
+  "already_direct_japanese": 9907,
+  "english_only_remaining": 5093,
   "english_only_rank_counts": {
-    "(blank)": 5094
+    "(blank)": 5093
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 9906,
-      "id": "2400350",
-      "term": "支那連翹",
-      "reading": "しなれんぎょう",
-      "meaning": "Chinese golden bells (Forsythia viridissima) / greenstem forsythia"
-    },
     {
       "source_index": 9907,
       "id": "1759510",
@@ -7010,6 +7003,13 @@
       "term": "書記体系",
       "reading": "しょきたいけい",
       "meaning": "writing system"
+    },
+    {
+      "source_index": 10906,
+      "id": "1342670",
+      "term": "初期段階",
+      "reading": "しょきだんかい",
+      "meaning": "initial stage"
     }
   ]
 }

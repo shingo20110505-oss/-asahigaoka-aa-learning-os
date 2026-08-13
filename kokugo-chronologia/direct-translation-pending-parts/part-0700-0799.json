@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9906,
-  "english_only_remaining": 5094,
+  "already_direct_japanese": 9907,
+  "english_only_remaining": 5093,
   "english_only_rank_counts": {
-    "(blank)": 5094
+    "(blank)": 5093
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 700,
   "part_end": 799,
   "targets": [
-    {
-      "source_index": 10606,
-      "id": "2275570",
-      "term": "障害迂回",
-      "reading": "しょうがいうかい",
-      "meaning": "fail-over / fault bypass"
-    },
     {
       "source_index": 10607,
       "id": "2365420",
@@ -712,6 +705,13 @@
       "term": "昇進人事",
       "reading": "しょうしんじんじ",
       "meaning": "promotion / appointment to a more senior position"
+    },
+    {
+      "source_index": 10706,
+      "id": "2046960",
+      "term": "小身微禄",
+      "reading": "しょうしんびろく",
+      "meaning": "(in) a humble position with a small stipend"
     }
   ]
 }

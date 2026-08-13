@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9906,
-  "english_only_remaining": 5094,
+  "already_direct_japanese": 9907,
+  "english_only_remaining": 5093,
   "english_only_rank_counts": {
-    "(blank)": 5094
+    "(blank)": 5093
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 600,
   "part_end": 699,
   "targets": [
-    {
-      "source_index": 10506,
-      "id": "2868967",
-      "term": "出離生死",
-      "reading": "しゅつりしょうじ",
-      "meaning": "entering nirvana / attaining enlightenment / leaving samsara"
-    },
     {
       "source_index": 10507,
       "id": "2363910",
@@ -712,6 +705,13 @@
       "term": "召喚令状",
       "reading": "しょうかんれいじょう",
       "meaning": "summons for directions (legal UK)"
+    },
+    {
+      "source_index": 10606,
+      "id": "2275570",
+      "term": "障害迂回",
+      "reading": "しょうがいうかい",
+      "meaning": "fail-over / fault bypass"
     }
   ]
 }
