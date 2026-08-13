@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9050,
-  "english_only_remaining": 5950,
+  "already_direct_japanese": 9100,
+  "english_only_remaining": 5900,
   "english_only_rank_counts": {
-    "(blank)": 5950
+    "(blank)": 5900
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 9050,
-      "id": "1879330",
-      "term": "三岐代表",
-      "reading": "さんぎだいひょう",
-      "meaning": "representative of Gifu and Mie prefectures"
-    },
-    {
-      "source_index": 9051,
-      "id": "2864239",
-      "term": "産業医学",
-      "reading": "さんぎょういがく",
-      "meaning": "occupational medicine"
-    },
-    {
-      "source_index": 9052,
-      "id": "1754960",
-      "term": "産業革命",
-      "reading": "さんぎょうかくめい",
-      "meaning": "Industrial Revolution"
-    },
-    {
-      "source_index": 9053,
-      "id": "1303780",
-      "term": "産業機械",
-      "reading": "さんぎょうきかい",
-      "meaning": "industrial machinery"
-    },
-    {
-      "source_index": 9054,
-      "id": "2863196",
-      "term": "産業基盤",
-      "reading": "さんぎょうきばん",
-      "meaning": "industrial base / industrial infrastructure"
-    },
-    {
-      "source_index": 9055,
-      "id": "2664910",
-      "term": "産業技術",
-      "reading": "さんぎょうぎじゅつ",
-      "meaning": "industrial science and technology / industrial techniques"
-    },
-    {
-      "source_index": 9056,
-      "id": "1754970",
-      "term": "産業組合",
-      "reading": "さんぎょうくみあい",
-      "meaning": "industrial association / industrial guild"
-    },
-    {
-      "source_index": 9057,
-      "id": "1300360",
-      "term": "三行広告",
-      "reading": "さんぎょうこうこく",
-      "meaning": "three-line classified advertisement"
-    },
-    {
-      "source_index": 9058,
-      "id": "1936190",
-      "term": "産業構造",
-      "reading": "さんぎょうこうぞう",
-      "meaning": "industrial structure"
-    },
-    {
-      "source_index": 9059,
-      "id": "1919650",
-      "term": "産業再生",
-      "reading": "さんぎょうさいせい",
-      "meaning": "industrial revival or recovery"
-    },
-    {
-      "source_index": 9060,
-      "id": "1754980",
-      "term": "産業資本",
-      "reading": "さんぎょうしほん",
-      "meaning": "industrial capital"
-    },
-    {
-      "source_index": 9061,
-      "id": "1936200",
-      "term": "産業社会",
-      "reading": "さんぎょうしゃかい",
-      "meaning": "industrial society"
-    },
-    {
-      "source_index": 9062,
-      "id": "2163060",
-      "term": "産業政策",
-      "reading": "さんぎょうせいさく",
-      "meaning": "industrial policy"
-    },
-    {
-      "source_index": 9063,
-      "id": "2163070",
-      "term": "産業組織",
-      "reading": "さんぎょうそしき",
-      "meaning": "industrial organization"
-    },
-    {
-      "source_index": 9064,
-      "id": "2844420",
-      "term": "産業動物",
-      "reading": "さんぎょうどうぶつ",
-      "meaning": "livestock / farm animals"
-    },
-    {
-      "source_index": 9065,
-      "id": "2174780",
-      "term": "散形花序",
-      "reading": "さんけいかじょ",
-      "meaning": "umbellate inflorescence / umbel (i.e. flower with a large number of flowers growing radially from a common center)"
-    },
-    {
-      "source_index": 9066,
-      "id": "5747152",
-      "term": "産経新聞",
-      "reading": "さんけいしんぶん",
-      "meaning": "Sankei Shimbun (newspaper)"
-    },
-    {
-      "source_index": 9067,
-      "id": "2634050",
-      "term": "酸欠空気",
-      "reading": "さんけつくうき",
-      "meaning": "oxygen-deficient air"
-    },
-    {
-      "source_index": 9068,
-      "id": "2870832",
-      "term": "酸欠状態",
-      "reading": "さんけつじょうたい",
-      "meaning": "hypoxic state / oxygen-deficient state"
-    },
-    {
-      "source_index": 9069,
-      "id": "1300290",
-      "term": "三権分立",
-      "reading": "さんけんぶんりつ",
-      "meaning": "separation of powers (legislative, executive and judicial)"
-    },
-    {
-      "source_index": 9070,
-      "id": "2852393",
-      "term": "参考価格",
-      "reading": "さんこうかかく",
-      "meaning": "reference price"
-    },
-    {
-      "source_index": 9071,
-      "id": "2863256",
-      "term": "参考記録",
-      "reading": "さんこうきろく",
-      "meaning": "unofficial result / unrecognized result (esp. in sports)"
-    },
-    {
-      "source_index": 9072,
-      "id": "2253340",
-      "term": "三皇五帝",
-      "reading": "さんこうごてい",
-      "meaning": "Three Sovereigns and Five Emperors (mythological rulers of ancient China)"
-    },
-    {
-      "source_index": 9073,
-      "id": "2093820",
-      "term": "三光作戦",
-      "reading": "さんこうさくせん",
-      "meaning": "Three Alls Strategy (Japanese scorched earth policy during the second Sino-Japanese War)"
-    },
-    {
-      "source_index": 9074,
-      "id": "1300350",
-      "term": "三校終了",
-      "reading": "さんこうしゅうりょう",
-      "meaning": "third and final proof"
-    },
-    {
-      "source_index": 9075,
-      "id": "1302310",
-      "term": "参考書目",
-      "reading": "さんこうしょもく",
-      "meaning": "bibliography"
-    },
-    {
-      "source_index": 9076,
-      "id": "1302290",
-      "term": "参考資料",
-      "reading": "さんこうしりょう",
-      "meaning": "reference data / reference material"
-    },
-    {
-      "source_index": 9077,
-      "id": "1754640",
-      "term": "散光星雲",
-      "reading": "さんこうせいうん",
-      "meaning": "diffuse nebula"
-    },
-    {
-      "source_index": 9078,
-      "id": "1936160",
-      "term": "参考図書",
-      "reading": "さんこうとしょ",
-      "meaning": "reference book (work)"
-    },
-    {
-      "source_index": 9079,
-      "id": "1302350",
-      "term": "参考文献",
-      "reading": "さんこうぶんけん",
-      "meaning": "works cited / references"
-    },
-    {
-      "source_index": 9080,
-      "id": "2005650",
-      "term": "散骨希望",
-      "reading": "さんこつきぼう",
-      "meaning": "the wish to have one's ashes scattered"
-    },
-    {
-      "source_index": 9081,
-      "id": "1300320",
-      "term": "三顧の礼",
-      "reading": "さんこのれい",
-      "meaning": "showing (someone) special courtesy (to persuade them to take a post)"
-    },
-    {
-      "source_index": 9082,
-      "id": "1300400",
-      "term": "三号雑誌",
-      "reading": "さんごうざっし",
-      "meaning": "short-lived magazine"
-    },
-    {
-      "source_index": 9083,
-      "id": "2214520",
-      "term": "三国干渉",
-      "reading": "さんごくかんしょう",
-      "meaning": "Triple Intervention (diplomatic intervention by Russia, Germany and France over the terms of the Treaty of Shimonoseki)"
-    },
-    {
-      "source_index": 9084,
-      "id": "2830774",
-      "term": "三国協商",
-      "reading": "さんごくきょうしょう",
-      "meaning": "Triple Entente (Great Britain, France, and Russia)"
-    },
-    {
-      "source_index": 9085,
-      "id": "5745901",
-      "term": "三国史記",
-      "reading": "さんごくしき",
-      "meaning": "Samguk Sagi (historical record of the Three Kingdoms of Korea) / History of the Three Kingdoms"
-    },
-    {
-      "source_index": 9086,
-      "id": "2205510",
-      "term": "三国時代",
-      "reading": "さんごくじだい",
-      "meaning": "Three Kingdoms period (of Chinese history, 220 CE-280 CE)"
-    },
-    {
-      "source_index": 9087,
-      "id": "1300430",
-      "term": "三国同盟",
-      "reading": "さんごくどうめい",
-      "meaning": "triple alliance"
-    },
-    {
-      "source_index": 9088,
-      "id": "2843870",
-      "term": "三国無双",
-      "reading": "さんごくぶそう",
-      "meaning": "unparalleled in Japan, China and India"
-    },
-    {
-      "source_index": 9089,
-      "id": "2861856",
-      "term": "珊瑚婚式",
-      "reading": "さんごこんしき",
-      "meaning": "coral wedding (anniversary) / 35th wedding anniversary"
-    },
-    {
-      "source_index": 9090,
-      "id": "2401020",
-      "term": "珊瑚水木",
-      "reading": "さんごみずき",
-      "meaning": "Cornus alba"
-    },
-    {
-      "source_index": 9091,
-      "id": "1813990",
-      "term": "三叉神経",
-      "reading": "さんさしんけい",
-      "meaning": "trigeminal nerve"
-    },
-    {
-      "source_index": 9092,
-      "id": "1593970",
-      "term": "三三五五",
-      "reading": "さんさんごご",
-      "meaning": "in groups of twos and threes / in small groups / (in groups of) threes and fives"
-    },
-    {
-      "source_index": 9093,
-      "id": "2829691",
-      "term": "産子検定",
-      "reading": "さんしけんてい",
-      "meaning": "progeny test (for beef cattle)"
-    },
-    {
-      "source_index": 9094,
-      "id": "1302890",
-      "term": "山紫水明",
-      "reading": "さんしすいめい",
-      "meaning": "scenic beauty"
-    },
-    {
-      "source_index": 9095,
-      "id": "2171160",
-      "term": "三七人参",
-      "reading": "さんしちにんじん",
-      "meaning": "notoginseng (Panax pseudoginseng)"
-    },
-    {
-      "source_index": 9096,
-      "id": "1300540",
-      "term": "三者会談",
-      "reading": "さんしゃかいだん",
-      "meaning": "three-cornered conversation"
-    },
-    {
-      "source_index": 9097,
-      "id": "2862135",
-      "term": "三者三振",
-      "reading": "さんしゃさんしん",
-      "meaning": "striking out three consecutive batters"
-    },
-    {
-      "source_index": 9098,
-      "id": "2063540",
-      "term": "三者三様",
-      "reading": "さんしゃさんよう",
-      "meaning": "everybody is different / to each their own / three different people, three different styles"
-    },
-    {
-      "source_index": 9099,
-      "id": "2838355",
-      "term": "三斜晶系",
-      "reading": "さんしゃしょうけい",
-      "meaning": "triclinic crystal system"
-    },
     {
       "source_index": 9100,
       "id": "1300550",
@@ -7010,6 +6660,356 @@
       "term": "社会規範",
       "reading": "しゃかいきはん",
       "meaning": "social norm"
+    },
+    {
+      "source_index": 10050,
+      "id": "2831937",
+      "term": "社会基盤",
+      "reading": "しゃかいきばん",
+      "meaning": "social infrastructure"
+    },
+    {
+      "source_index": 10051,
+      "id": "1658790",
+      "term": "社会教育",
+      "reading": "しゃかいきょういく",
+      "meaning": "social education"
+    },
+    {
+      "source_index": 10052,
+      "id": "2843738",
+      "term": "社会距離",
+      "reading": "しゃかいきょり",
+      "meaning": "social distance"
+    },
+    {
+      "source_index": 10053,
+      "id": "2441500",
+      "term": "社会技能",
+      "reading": "しゃかいぎのう",
+      "meaning": "social skills"
+    },
+    {
+      "source_index": 10054,
+      "id": "1928000",
+      "term": "社会経済",
+      "reading": "しゃかいけいざい",
+      "meaning": "socio-economics / social economy"
+    },
+    {
+      "source_index": 10055,
+      "id": "2605420",
+      "term": "社会形態",
+      "reading": "しゃかいけいたい",
+      "meaning": "social form"
+    },
+    {
+      "source_index": 10056,
+      "id": "2406410",
+      "term": "社会契約",
+      "reading": "しゃかいけいやく",
+      "meaning": "social contract / social compact / FIS xref"
+    },
+    {
+      "source_index": 10057,
+      "id": "2863789",
+      "term": "社会見学",
+      "reading": "しゃかいけんがく",
+      "meaning": "(school) field trip / educational visit (e.g. by a class)"
+    },
+    {
+      "source_index": 10058,
+      "id": "1937350",
+      "term": "社会現象",
+      "reading": "しゃかいげんしょう",
+      "meaning": "social phenomenon"
+    },
+    {
+      "source_index": 10059,
+      "id": "2868121",
+      "term": "社会工学",
+      "reading": "しゃかいこうがく",
+      "meaning": "social engineering"
+    },
+    {
+      "source_index": 10060,
+      "id": "1994750",
+      "term": "社会貢献",
+      "reading": "しゃかいこうけん",
+      "meaning": "contribution to society"
+    },
+    {
+      "source_index": 10061,
+      "id": "2728640",
+      "term": "社会構造",
+      "reading": "しゃかいこうぞう",
+      "meaning": "social structure"
+    },
+    {
+      "source_index": 10062,
+      "id": "1658800",
+      "term": "社会資本",
+      "reading": "しゃかいしほん",
+      "meaning": "social capital / SOC"
+    },
+    {
+      "source_index": 10063,
+      "id": "2822820",
+      "term": "社会集団",
+      "reading": "しゃかいしゅうだん",
+      "meaning": "social group"
+    },
+    {
+      "source_index": 10064,
+      "id": "1322740",
+      "term": "社会主義",
+      "reading": "しゃかいしゅぎ",
+      "meaning": "socialism"
+    },
+    {
+      "source_index": 10065,
+      "id": "2198140",
+      "term": "社会進化",
+      "reading": "しゃかいしんか",
+      "meaning": "social evolution"
+    },
+    {
+      "source_index": 10066,
+      "id": "2144270",
+      "term": "社会進出",
+      "reading": "しゃかいしんしゅつ",
+      "meaning": "social progress / getting ahead in society / moving up in the world"
+    },
+    {
+      "source_index": 10067,
+      "id": "2856573",
+      "term": "社会信用",
+      "reading": "しゃかいしんよう",
+      "meaning": "social credit system (China)"
+    },
+    {
+      "source_index": 10068,
+      "id": "1658810",
+      "term": "社会事業",
+      "reading": "しゃかいじぎょう",
+      "meaning": "social work / social project / social enterprise"
+    },
+    {
+      "source_index": 10069,
+      "id": "2837777",
+      "term": "社会事情",
+      "reading": "しゃかいじじょう",
+      "meaning": "social conditions / social circumstances"
+    },
+    {
+      "source_index": 10070,
+      "id": "2851386",
+      "term": "社会実験",
+      "reading": "しゃかいじっけん",
+      "meaning": "field test / pilot study"
+    },
+    {
+      "source_index": 10071,
+      "id": "2858434",
+      "term": "社会実装",
+      "reading": "しゃかいじっそう",
+      "meaning": "social implementation / using the results of research and development to solve social problems"
+    },
+    {
+      "source_index": 10072,
+      "id": "2638360",
+      "term": "社会情勢",
+      "reading": "しゃかいじょうせい",
+      "meaning": "social conditions / social situation / state of society"
+    },
+    {
+      "source_index": 10073,
+      "id": "1322780",
+      "term": "社会人枠",
+      "reading": "しゃかいじんわく",
+      "meaning": "special consideration for non-traditional (older) students"
+    },
+    {
+      "source_index": 10074,
+      "id": "1937370",
+      "term": "社会生活",
+      "reading": "しゃかいせいかつ",
+      "meaning": "social life"
+    },
+    {
+      "source_index": 10075,
+      "id": "2643850",
+      "term": "社会正義",
+      "reading": "しゃかいせいぎ",
+      "meaning": "social justice"
+    },
+    {
+      "source_index": 10076,
+      "id": "1702620",
+      "term": "社会政策",
+      "reading": "しゃかいせいさく",
+      "meaning": "social policy"
+    },
+    {
+      "source_index": 10077,
+      "id": "1702600",
+      "term": "社会制度",
+      "reading": "しゃかいせいど",
+      "meaning": "social system"
+    },
+    {
+      "source_index": 10078,
+      "id": "2822850",
+      "term": "社会組織",
+      "reading": "しゃかいそしき",
+      "meaning": "social structure / social organization / fabric of society"
+    },
+    {
+      "source_index": 10079,
+      "id": "2652730",
+      "term": "社会体験",
+      "reading": "しゃかいたいけん",
+      "meaning": "work experience / practical study in the real world"
+    },
+    {
+      "source_index": 10080,
+      "id": "2822880",
+      "term": "社会体制",
+      "reading": "しゃかいたいせい",
+      "meaning": "social system"
+    },
+    {
+      "source_index": 10081,
+      "id": "1937380",
+      "term": "社会秩序",
+      "reading": "しゃかいちつじょ",
+      "meaning": "social order / public order"
+    },
+    {
+      "source_index": 10082,
+      "id": "2858039",
+      "term": "社会調査",
+      "reading": "しゃかいちょうさ",
+      "meaning": "social survey / social research"
+    },
+    {
+      "source_index": 10083,
+      "id": "1937390",
+      "term": "社会通念",
+      "reading": "しゃかいつうねん",
+      "meaning": "idea commonly accepted by society / socially accepted idea"
+    },
+    {
+      "source_index": 10084,
+      "id": "2517530",
+      "term": "社会適応",
+      "reading": "しゃかいてきおう",
+      "meaning": "social adjustment"
+    },
+    {
+      "source_index": 10085,
+      "id": "2837571",
+      "term": "社会哲学",
+      "reading": "しゃかいてつがく",
+      "meaning": "social philosophy"
+    },
+    {
+      "source_index": 10086,
+      "id": "2578420",
+      "term": "社会統合",
+      "reading": "しゃかいとうごう",
+      "meaning": "social integration"
+    },
+    {
+      "source_index": 10087,
+      "id": "2822840",
+      "term": "社会統制",
+      "reading": "しゃかいとうせい",
+      "meaning": "social control"
+    },
+    {
+      "source_index": 10088,
+      "id": "2196340",
+      "term": "社会淘汰",
+      "reading": "しゃかいとうた",
+      "meaning": "social selection"
+    },
+    {
+      "source_index": 10089,
+      "id": "2869936",
+      "term": "社会病質",
+      "reading": "しゃかいびょうしつ",
+      "meaning": "sociopathy"
+    },
+    {
+      "source_index": 10090,
+      "id": "2711630",
+      "term": "社会不安",
+      "reading": "しゃかいふあん",
+      "meaning": "social unrest / public anxiety"
+    },
+    {
+      "source_index": 10091,
+      "id": "1322810",
+      "term": "社会福祉",
+      "reading": "しゃかいふくし",
+      "meaning": "social welfare"
+    },
+    {
+      "source_index": 10092,
+      "id": "2822860",
+      "term": "社会扶助",
+      "reading": "しゃかいふじょ",
+      "meaning": "social assistance"
+    },
+    {
+      "source_index": 10093,
+      "id": "1658830",
+      "term": "社会復帰",
+      "reading": "しゃかいふっき",
+      "meaning": "rehabilitation (in society)"
+    },
+    {
+      "source_index": 10094,
+      "id": "2198150",
+      "term": "社会分化",
+      "reading": "しゃかいぶんか",
+      "meaning": "social differentiation"
+    },
+    {
+      "source_index": 10095,
+      "id": "2666100",
+      "term": "社会変動",
+      "reading": "しゃかいへんどう",
+      "meaning": "social change"
+    },
+    {
+      "source_index": 10096,
+      "id": "2838137",
+      "term": "社会勉強",
+      "reading": "しゃかいべんきょう",
+      "meaning": "learning about the world / preparation for life in the community / work experience"
+    },
+    {
+      "source_index": 10097,
+      "id": "2706120",
+      "term": "社会方言",
+      "reading": "しゃかいほうげん",
+      "meaning": "sociolect / social dialect"
+    },
+    {
+      "source_index": 10098,
+      "id": "1937400",
+      "term": "社会奉仕",
+      "reading": "しゃかいほうし",
+      "meaning": "voluntary social service"
+    },
+    {
+      "source_index": 10099,
+      "id": "1658840",
+      "term": "社会保険",
+      "reading": "しゃかいほけん",
+      "meaning": "social insurance"
     }
   ]
 }
