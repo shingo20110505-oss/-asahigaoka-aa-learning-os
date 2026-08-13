@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11368,
-  "english_only_remaining": 3632,
+  "already_direct_japanese": 11370,
+  "english_only_remaining": 3630,
   "english_only_rank_counts": {
-    "(blank)": 3632
+    "(blank)": 3630
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,20 +13,6 @@
   "part_start": 700,
   "part_end": 799,
   "targets": [
-    {
-      "source_index": 12068,
-      "id": "2852831",
-      "term": "実技試験",
-      "reading": "じつぎしけん",
-      "meaning": "practical exam / practical test / practical"
-    },
-    {
-      "source_index": 12069,
-      "id": "1706400",
-      "term": "実業学校",
-      "reading": "じつぎょうがっこう",
-      "meaning": "vocational school"
-    },
     {
       "source_index": 12070,
       "id": "2416000",
@@ -712,6 +698,20 @@
       "term": "耳鼻咽喉",
       "reading": "じびいんこう",
       "meaning": "ear, nose, and throat"
+    },
+    {
+      "source_index": 12168,
+      "id": "2430250",
+      "term": "耳鼻科学",
+      "reading": "じびかがく",
+      "meaning": "otolaryngology / otorhinology"
+    },
+    {
+      "source_index": 12169,
+      "id": "2574610",
+      "term": "地引網漁",
+      "reading": "じびきあみりょう",
+      "meaning": "seine fishing (usu. from the beach) / dragnet fishing"
     }
   ]
 }

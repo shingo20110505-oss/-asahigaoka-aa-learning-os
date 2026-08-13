@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11368,
-  "english_only_remaining": 3632,
+  "already_direct_japanese": 11370,
+  "english_only_remaining": 3630,
   "english_only_rank_counts": {
-    "(blank)": 3632
+    "(blank)": 3630
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,20 +13,6 @@
   "part_start": 200,
   "part_end": 299,
   "targets": [
-    {
-      "source_index": 11568,
-      "id": "2835113",
-      "term": "診療時間",
-      "reading": "しんりょうじかん",
-      "meaning": "consultation hours / surgery hours"
-    },
-    {
-      "source_index": 11569,
-      "id": "2841183",
-      "term": "新涼灯火",
-      "reading": "しんりょうとうか",
-      "meaning": "the coolness of early autumn is suitable for reading"
-    },
     {
       "source_index": 11570,
       "id": "2541240",
@@ -712,6 +698,20 @@
       "term": "磁気共鳴",
       "reading": "じききょうめい",
       "meaning": "magnetic resonance"
+    },
+    {
+      "source_index": 11668,
+      "id": "2826323",
+      "term": "磁気機雷",
+      "reading": "じききらい",
+      "meaning": "magnetic mine"
+    },
+    {
+      "source_index": 11669,
+      "id": "2360410",
+      "term": "磁気記録",
+      "reading": "じききろく",
+      "meaning": "magnetic recording"
     }
   ]
 }

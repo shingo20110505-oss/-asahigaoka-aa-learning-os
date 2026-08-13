@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11368,
-  "english_only_remaining": 3632,
+  "already_direct_japanese": 11370,
+  "english_only_remaining": 3630,
   "english_only_rank_counts": {
-    "(blank)": 3632
+    "(blank)": 3630
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,20 +13,6 @@
   "part_start": 0,
   "part_end": 99,
   "targets": [
-    {
-      "source_index": 11368,
-      "id": "2047560",
-      "term": "親戚故旧",
-      "reading": "しんせきこきゅう",
-      "meaning": "relatives and old friends"
-    },
-    {
-      "source_index": 11369,
-      "id": "1365240",
-      "term": "親戚知己",
-      "reading": "しんせきちき",
-      "meaning": "relatives and acquaintances"
-    },
     {
       "source_index": 11370,
       "id": "2852075",
@@ -712,6 +698,20 @@
       "term": "進入禁止",
       "reading": "しんにゅうきんし",
       "meaning": "Do Not Enter / No Entry / Wrong Way"
+    },
+    {
+      "source_index": 11468,
+      "id": "1362250",
+      "term": "新入社員",
+      "reading": "しんにゅうしゃいん",
+      "meaning": "new employee / freshman employee / new hire"
+    },
+    {
+      "source_index": 11469,
+      "id": "2862754",
+      "term": "侵入生物",
+      "reading": "しんにゅうせいぶつ",
+      "meaning": "invasive species"
     }
   ]
 }

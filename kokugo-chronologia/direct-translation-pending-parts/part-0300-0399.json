@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11368,
-  "english_only_remaining": 3632,
+  "already_direct_japanese": 11370,
+  "english_only_remaining": 3630,
   "english_only_rank_counts": {
-    "(blank)": 3632
+    "(blank)": 3630
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,20 +13,6 @@
   "part_start": 300,
   "part_end": 399,
   "targets": [
-    {
-      "source_index": 11668,
-      "id": "2826323",
-      "term": "磁気機雷",
-      "reading": "じききらい",
-      "meaning": "magnetic mine"
-    },
-    {
-      "source_index": 11669,
-      "id": "2360410",
-      "term": "磁気記録",
-      "reading": "じききろく",
-      "meaning": "magnetic recording"
-    },
     {
       "source_index": 11670,
       "id": "2861847",
@@ -712,6 +698,20 @@
       "term": "自己参照",
       "reading": "じこさんしょう",
       "meaning": "self-reference"
+    },
+    {
+      "source_index": 11768,
+      "id": "2758240",
+      "term": "自己資金",
+      "reading": "じこしきん",
+      "meaning": "personal funds / one's own money / self-funding"
+    },
+    {
+      "source_index": 11769,
+      "id": "2360520",
+      "term": "自己資源",
+      "reading": "じこしげん",
+      "meaning": "local resource"
     }
   ]
 }

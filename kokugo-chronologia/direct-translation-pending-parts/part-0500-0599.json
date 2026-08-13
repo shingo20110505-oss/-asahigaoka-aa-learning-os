@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11368,
-  "english_only_remaining": 3632,
+  "already_direct_japanese": 11370,
+  "english_only_remaining": 3630,
   "english_only_rank_counts": {
-    "(blank)": 3632
+    "(blank)": 3630
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,20 +13,6 @@
   "part_start": 500,
   "part_end": 599,
   "targets": [
-    {
-      "source_index": 11868,
-      "id": "1726060",
-      "term": "自主規制",
-      "reading": "じしゅきせい",
-      "meaning": "voluntary restraints / self-limitation"
-    },
-    {
-      "source_index": 11869,
-      "id": "2864257",
-      "term": "自主休講",
-      "reading": "じしゅきゅうこう",
-      "meaning": "cutting class (esp. of university students)"
-    },
     {
       "source_index": 11870,
       "id": "2844624",
@@ -712,6 +698,20 @@
       "term": "自宅待機",
       "reading": "じたくたいき",
       "meaning": "staying at home (to prevent the spread of illness, etc.) / self-quarantine / self-isolation"
+    },
+    {
+      "source_index": 11968,
+      "id": "1994600",
+      "term": "自宅軟禁",
+      "reading": "じたくなんきん",
+      "meaning": "house arrest"
+    },
+    {
+      "source_index": 11969,
+      "id": "2852858",
+      "term": "自宅療養",
+      "reading": "じたくりょうよう",
+      "meaning": "recuperation at home"
     }
   ]
 }

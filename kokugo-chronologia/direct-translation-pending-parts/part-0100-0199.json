@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11368,
-  "english_only_remaining": 3632,
+  "already_direct_japanese": 11370,
+  "english_only_remaining": 3630,
   "english_only_rank_counts": {
-    "(blank)": 3632
+    "(blank)": 3630
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,20 +13,6 @@
   "part_start": 100,
   "part_end": 199,
   "targets": [
-    {
-      "source_index": 11468,
-      "id": "1362250",
-      "term": "新入社員",
-      "reading": "しんにゅうしゃいん",
-      "meaning": "new employee / freshman employee / new hire"
-    },
-    {
-      "source_index": 11469,
-      "id": "2862754",
-      "term": "侵入生物",
-      "reading": "しんにゅうせいぶつ",
-      "meaning": "invasive species"
-    },
     {
       "source_index": 11470,
       "id": "2435370",
@@ -712,6 +698,20 @@
       "term": "診療支援",
       "reading": "しんりょうしえん",
       "meaning": "diagnostic aid"
+    },
+    {
+      "source_index": 11568,
+      "id": "2835113",
+      "term": "診療時間",
+      "reading": "しんりょうじかん",
+      "meaning": "consultation hours / surgery hours"
+    },
+    {
+      "source_index": 11569,
+      "id": "2841183",
+      "term": "新涼灯火",
+      "reading": "しんりょうとうか",
+      "meaning": "the coolness of early autumn is suitable for reading"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11368,
-  "english_only_remaining": 3632,
+  "already_direct_japanese": 11370,
+  "english_only_remaining": 3630,
   "english_only_rank_counts": {
-    "(blank)": 3632
+    "(blank)": 3630
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,20 +13,6 @@
   "part_start": 800,
   "part_end": 899,
   "targets": [
-    {
-      "source_index": 12168,
-      "id": "2430250",
-      "term": "耳鼻科学",
-      "reading": "じびかがく",
-      "meaning": "otolaryngology / otorhinology"
-    },
-    {
-      "source_index": 12169,
-      "id": "2574610",
-      "term": "地引網漁",
-      "reading": "じびきあみりょう",
-      "meaning": "seine fishing (usu. from the beach) / dragnet fishing"
-    },
     {
       "source_index": 12170,
       "id": "2113140",
@@ -712,6 +698,20 @@
       "term": "住宅政策",
       "reading": "じゅうたくせいさく",
       "meaning": "housing policy"
+    },
+    {
+      "source_index": 12268,
+      "id": "2855120",
+      "term": "住宅設備",
+      "reading": "じゅうたくせつび",
+      "meaning": "household furnishings / home appliances"
+    },
+    {
+      "source_index": 12269,
+      "id": "2851597",
+      "term": "住宅団地",
+      "reading": "じゅうたくだんち",
+      "meaning": "housing development"
     }
   ]
 }

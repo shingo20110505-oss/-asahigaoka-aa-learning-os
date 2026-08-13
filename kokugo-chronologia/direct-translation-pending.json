@@ -1,30 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11368,
-  "english_only_remaining": 3632,
+  "already_direct_japanese": 11370,
+  "english_only_remaining": 3630,
   "english_only_rank_counts": {
-    "(blank)": 3632
+    "(blank)": 3630
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11368,
-      "id": "2047560",
-      "term": "親戚故旧",
-      "reading": "しんせきこきゅう",
-      "meaning": "relatives and old friends"
-    },
-    {
-      "source_index": 11369,
-      "id": "1365240",
-      "term": "親戚知己",
-      "reading": "しんせきちき",
-      "meaning": "relatives and acquaintances"
-    },
     {
       "source_index": 11370,
       "id": "2852075",
@@ -7010,6 +6996,20 @@
       "term": "受験資格",
       "reading": "じゅけんしかく",
       "meaning": "qualifications of candidacy for an examination"
+    },
+    {
+      "source_index": 12368,
+      "id": "2860150",
+      "term": "授権資本",
+      "reading": "じゅけんしほん",
+      "meaning": "authorized capital"
+    },
+    {
+      "source_index": 12369,
+      "id": "1329750",
+      "term": "受験地獄",
+      "reading": "じゅけんじごく",
+      "meaning": "examination hell / ordeal of entrance examinations"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11368,
-  "english_only_remaining": 3632,
+  "already_direct_japanese": 11370,
+  "english_only_remaining": 3630,
   "english_only_rank_counts": {
-    "(blank)": 3632
+    "(blank)": 3630
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,20 +13,6 @@
   "part_start": 900,
   "part_end": 999,
   "targets": [
-    {
-      "source_index": 12268,
-      "id": "2855120",
-      "term": "住宅設備",
-      "reading": "じゅうたくせつび",
-      "meaning": "household furnishings / home appliances"
-    },
-    {
-      "source_index": 12269,
-      "id": "2851597",
-      "term": "住宅団地",
-      "reading": "じゅうたくだんち",
-      "meaning": "housing development"
-    },
     {
       "source_index": 12270,
       "id": "1334180",
@@ -712,6 +698,20 @@
       "term": "受験資格",
       "reading": "じゅけんしかく",
       "meaning": "qualifications of candidacy for an examination"
+    },
+    {
+      "source_index": 12368,
+      "id": "2860150",
+      "term": "授権資本",
+      "reading": "じゅけんしほん",
+      "meaning": "authorized capital"
+    },
+    {
+      "source_index": 12369,
+      "id": "1329750",
+      "term": "受験地獄",
+      "reading": "じゅけんじごく",
+      "meaning": "examination hell / ordeal of entrance examinations"
     }
   ]
 }

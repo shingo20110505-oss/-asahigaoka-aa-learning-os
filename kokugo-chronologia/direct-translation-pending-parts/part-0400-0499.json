@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11368,
-  "english_only_remaining": 3632,
+  "already_direct_japanese": 11370,
+  "english_only_remaining": 3630,
   "english_only_rank_counts": {
-    "(blank)": 3632
+    "(blank)": 3630
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,20 +13,6 @@
   "part_start": 400,
   "part_end": 499,
   "targets": [
-    {
-      "source_index": 11768,
-      "id": "2758240",
-      "term": "自己資金",
-      "reading": "じこしきん",
-      "meaning": "personal funds / one's own money / self-funding"
-    },
-    {
-      "source_index": 11769,
-      "id": "2360520",
-      "term": "自己資源",
-      "reading": "じこしげん",
-      "meaning": "local resource"
-    },
     {
       "source_index": 11770,
       "id": "1658550",
@@ -712,6 +698,20 @@
       "term": "自主管理",
       "reading": "じしゅかんり",
       "meaning": "self-management / self-imposed control"
+    },
+    {
+      "source_index": 11868,
+      "id": "1726060",
+      "term": "自主規制",
+      "reading": "じしゅきせい",
+      "meaning": "voluntary restraints / self-limitation"
+    },
+    {
+      "source_index": 11869,
+      "id": "2864257",
+      "term": "自主休講",
+      "reading": "じしゅきゅうこう",
+      "meaning": "cutting class (esp. of university students)"
     }
   ]
 }
