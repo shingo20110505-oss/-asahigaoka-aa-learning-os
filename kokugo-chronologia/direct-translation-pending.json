@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 7550,
-  "english_only_remaining": 7450,
+  "already_direct_japanese": 7600,
+  "english_only_remaining": 7400,
   "english_only_rank_counts": {
-    "(blank)": 7450
+    "(blank)": 7400
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 7550,
-      "id": "5743575",
-      "term": "高知県警",
-      "reading": "こうちけんけい",
-      "meaning": "Kōchi Prefectural Police (abbr)"
-    },
-    {
-      "source_index": 7551,
-      "id": "2268420",
-      "term": "公地公民",
-      "reading": "こうちこうみん",
-      "meaning": "complete state ownership of land and citizens (proclaimed by the Taika reforms; ritsuryō period)"
-    },
-    {
-      "source_index": 7552,
-      "id": "2857044",
-      "term": "拘置支所",
-      "reading": "こうちししょ",
-      "meaning": "branch detention house"
-    },
-    {
-      "source_index": 7553,
-      "id": "1821030",
-      "term": "耕地整理",
-      "reading": "こうちせいり",
-      "meaning": "redeployment of arable land"
-    },
-    {
-      "source_index": 7554,
-      "id": "2030840",
-      "term": "巧遅拙速",
-      "reading": "こうちせっそく",
-      "meaning": "better being rough and ready than slow and elaborate / better being brisk and sharp than slow and prudent"
-    },
-    {
-      "source_index": 7555,
-      "id": "5290461",
-      "term": "高知大学",
-      "reading": "こうちだいがく",
-      "meaning": "Kochi University"
-    },
-    {
-      "source_index": 7556,
-      "id": "2600120",
-      "term": "降着円盤",
-      "reading": "こうちゃくえんばん",
-      "meaning": "accretion disc / accretion disk"
-    },
-    {
-      "source_index": 7557,
-      "id": "1571120",
-      "term": "膠着状態",
-      "reading": "こうちゃくじょうたい",
-      "meaning": "deadlock / standstill / stalemate"
-    },
-    {
-      "source_index": 7558,
-      "id": "2600140",
-      "term": "降着装置",
-      "reading": "こうちゃくそうち",
-      "meaning": "landing gear"
-    },
-    {
-      "source_index": 7559,
-      "id": "2830204",
-      "term": "高忠実度",
-      "reading": "こうちゅうじつど",
-      "meaning": "high fidelity / hi-fi"
-    },
-    {
-      "source_index": 7560,
-      "id": "2106280",
-      "term": "校長先生",
-      "reading": "こうちょうせんせい",
-      "meaning": "school principal / school headmaster / school headmistress"
-    },
-    {
-      "source_index": 7561,
-      "id": "1951530",
-      "term": "腔腸動物",
-      "reading": "こうちょうどうぶつ",
-      "meaning": "coelenterate"
-    },
-    {
-      "source_index": 7562,
-      "id": "1272290",
-      "term": "交通安全",
-      "reading": "こうつうあんぜん",
-      "meaning": "traffic safety / driving safety / road safety"
-    },
-    {
-      "source_index": 7563,
-      "id": "1760800",
-      "term": "交通遺児",
-      "reading": "こうつういじ",
-      "meaning": "child orphaned from a traffic accident"
-    },
-    {
-      "source_index": 7564,
-      "id": "1272300",
-      "term": "交通違反",
-      "reading": "こうつういはん",
-      "meaning": "traffic violation"
-    },
-    {
-      "source_index": 7565,
-      "id": "1272320",
-      "term": "交通機関",
-      "reading": "こうつうきかん",
-      "meaning": "(means of) transportation / transport / transportation facilities"
-    },
-    {
-      "source_index": 7566,
-      "id": "2832461",
-      "term": "交通規制",
-      "reading": "こうつうきせい",
-      "meaning": "traffic restrictions / traffic control"
-    },
-    {
-      "source_index": 7567,
-      "id": "1272330",
-      "term": "交通規則",
-      "reading": "こうつうきそく",
-      "meaning": "traffic rules"
-    },
-    {
-      "source_index": 7568,
-      "id": "2865602",
-      "term": "交通計画",
-      "reading": "こうつうけいかく",
-      "meaning": "transportation planning"
-    },
-    {
-      "source_index": 7569,
-      "id": "2848896",
-      "term": "交通警察",
-      "reading": "こうつうけいさつ",
-      "meaning": "traffic police"
-    },
-    {
-      "source_index": 7570,
-      "id": "2856809",
-      "term": "交通工学",
-      "reading": "こうつうこうがく",
-      "meaning": "transportation engineering / transport engineering / traffic engineering"
-    },
-    {
-      "source_index": 7571,
-      "id": "1272340",
-      "term": "交通公社",
-      "reading": "こうつうこうしゃ",
-      "meaning": "(Japan) Travel Bureau"
-    },
-    {
-      "source_index": 7572,
-      "id": "1272360",
-      "term": "交通遮断",
-      "reading": "こうつうしゃだん",
-      "meaning": "blockage / quarantine"
-    },
-    {
-      "source_index": 7573,
-      "id": "2698140",
-      "term": "交通手段",
-      "reading": "こうつうしゅだん",
-      "meaning": "means of transportation / transportation system / way of getting around"
-    },
-    {
-      "source_index": 7574,
-      "id": "1272380",
-      "term": "交通信号",
-      "reading": "こうつうしんごう",
-      "meaning": "traffic light / traffic signal"
-    },
-    {
-      "source_index": 7575,
-      "id": "1272350",
-      "term": "交通事故",
-      "reading": "こうつうじこ",
-      "meaning": "traffic accident"
-    },
-    {
-      "source_index": 7576,
-      "id": "1760780",
-      "term": "交通地獄",
-      "reading": "こうつうじごく",
-      "meaning": "traffic hell / traffic congestion"
-    },
-    {
-      "source_index": 7577,
-      "id": "2725120",
-      "term": "交通事情",
-      "reading": "こうつうじじょう",
-      "meaning": "traffic conditions (e.g. heavy traffic) / transportation situation (e.g. bad roads)"
-    },
-    {
-      "source_index": 7578,
-      "id": "2006260",
-      "term": "交通弱者",
-      "reading": "こうつうじゃくしゃ",
-      "meaning": "vulnerable road users (such as the elderly, mobility-impaired people and young children)"
-    },
-    {
-      "source_index": 7579,
-      "id": "1760790",
-      "term": "交通渋滞",
-      "reading": "こうつうじゅうたい",
-      "meaning": "traffic congestion / traffic jam / (traffic) deadlock"
-    },
-    {
-      "source_index": 7580,
-      "id": "1272370",
-      "term": "交通巡査",
-      "reading": "こうつうじゅんさ",
-      "meaning": "traffic officer"
-    },
-    {
-      "source_index": 7581,
-      "id": "2120110",
-      "term": "交通情報",
-      "reading": "こうつうじょうほう",
-      "meaning": "traffic report / information on traffic flow / transportation information"
-    },
-    {
-      "source_index": 7582,
-      "id": "1272390",
-      "term": "交通整理",
-      "reading": "こうつうせいり",
-      "meaning": "traffic control"
-    },
-    {
-      "source_index": 7583,
-      "id": "2095040",
-      "term": "交通戦争",
-      "reading": "こうつうせんそう",
-      "meaning": "chaos on the roads / traffic war"
-    },
-    {
-      "source_index": 7584,
-      "id": "1272400",
-      "term": "交通道徳",
-      "reading": "こうつうどうとく",
-      "meaning": "traffic ethics"
-    },
-    {
-      "source_index": 7585,
-      "id": "2093260",
-      "term": "交通標識",
-      "reading": "こうつうひょうしき",
-      "meaning": "traffic sign"
-    },
-    {
-      "source_index": 7586,
-      "id": "1272420",
-      "term": "交通妨害",
-      "reading": "こうつうぼうがい",
-      "meaning": "traffic obstruction"
-    },
-    {
-      "source_index": 7587,
-      "id": "1934850",
-      "term": "交通問題",
-      "reading": "こうつうもんだい",
-      "meaning": "traffic problem"
-    },
-    {
-      "source_index": 7588,
-      "id": "2838439",
-      "term": "神津閃石",
-      "reading": "こうづせんせき",
-      "meaning": "mangano-ferri-eckermannite / kozulite"
-    },
-    {
-      "source_index": 7589,
-      "id": "1281190",
-      "term": "肯定応答",
-      "reading": "こうていおうとう",
-      "meaning": "acknowledge / ACK"
-    },
-    {
-      "source_index": 7590,
-      "id": "1274320",
-      "term": "公定価格",
-      "reading": "こうていかかく",
-      "meaning": "official price / government-imposed price limit"
-    },
-    {
-      "source_index": 7591,
-      "id": "1274330",
-      "term": "公定相場",
-      "reading": "こうていそうば",
-      "meaning": "ceiling price / official quotation"
-    },
-    {
-      "source_index": 7592,
-      "id": "1677080",
-      "term": "公定地価",
-      "reading": "こうていちか",
-      "meaning": "assessed value of land"
-    },
-    {
-      "source_index": 7593,
-      "id": "1631200",
-      "term": "公定歩合",
-      "reading": "こうていぶあい",
-      "meaning": "official discount (bank) rate"
-    },
-    {
-      "source_index": 7594,
-      "id": "2870744",
-      "term": "皇帝陛下",
-      "reading": "こうていへいか",
-      "meaning": "His Imperial Majesty / Your Imperial Majesty"
-    },
-    {
-      "source_index": 7595,
-      "id": "2683080",
-      "term": "肯定命題",
-      "reading": "こうていめいだい",
-      "meaning": "affirmative proposition"
-    },
-    {
-      "source_index": 7596,
-      "id": "1274370",
-      "term": "公敵一号",
-      "reading": "こうてきいちごう",
-      "meaning": "public enemy No. 1"
-    },
-    {
-      "source_index": 7597,
-      "id": "2412640",
-      "term": "公的機関",
-      "reading": "こうてききかん",
-      "meaning": "public institution / public organization / official body"
-    },
-    {
-      "source_index": 7598,
-      "id": "1992520",
-      "term": "公的債務",
-      "reading": "こうてきさいむ",
-      "meaning": "sovereign debt"
-    },
-    {
-      "source_index": 7599,
-      "id": "2661210",
-      "term": "公的支援",
-      "reading": "こうてきしえん",
-      "meaning": "public support / official support / public aid"
-    },
     {
       "source_index": 7600,
       "id": "1992530",
@@ -7010,6 +6660,356 @@
       "term": "後日物語",
       "reading": "ごじつものがたり",
       "meaning": "sequel"
+    },
+    {
+      "source_index": 8550,
+      "id": "2573380",
+      "term": "五時八教",
+      "reading": "ごじはっきょう",
+      "meaning": "division of the Buddha's 50-year teachings into five time periods and eight categories (theory of the Tendai sect)"
+    },
+    {
+      "source_index": 8551,
+      "id": "1268310",
+      "term": "五十音順",
+      "reading": "ごじゅうおんじゅん",
+      "meaning": "standard gojūon syllabary order (beginning with aiueo)"
+    },
+    {
+      "source_index": 8552,
+      "id": "1639010",
+      "term": "五十音図",
+      "reading": "ごじゅうおんず",
+      "meaning": "the Japanese syllabary table"
+    },
+    {
+      "source_index": 8553,
+      "id": "1268320",
+      "term": "五十三次",
+      "reading": "ごじゅうさんつぎ",
+      "meaning": "fifty-three stations on the Tōkaidō (Edo-Kyoto highway in Edo-period Japan)"
+    },
+    {
+      "source_index": 8554,
+      "id": "2045190",
+      "term": "五十知命",
+      "reading": "ごじゅうちめい",
+      "meaning": "at age fifty, one comes to know the will of Heaven"
+    },
+    {
+      "source_index": 8555,
+      "id": "1268330",
+      "term": "五十年祭",
+      "reading": "ごじゅうねんさい",
+      "meaning": "jubilee / semicentennial"
+    },
+    {
+      "source_index": 8556,
+      "id": "2247320",
+      "term": "牛頭天王",
+      "reading": "ごずてんのう",
+      "meaning": "Gozu Tenno (deity said to be the Indian god Gavagriva)"
+    },
+    {
+      "source_index": 8557,
+      "id": "2045220",
+      "term": "牛頭馬頭",
+      "reading": "ごずめず",
+      "meaning": "horse-headed and ox-headed demons in the Buddhist hell"
+    },
+    {
+      "source_index": 8558,
+      "id": "2845504",
+      "term": "五星紅旗",
+      "reading": "ごせいこうき",
+      "meaning": "five-starred Red Flag / flag of China"
+    },
+    {
+      "source_index": 8559,
+      "id": "1694350",
+      "term": "御前会議",
+      "reading": "ごぜんかいぎ",
+      "meaning": "Imperial Council"
+    },
+    {
+      "source_index": 8560,
+      "id": "2045230",
+      "term": "御前試合",
+      "reading": "ごぜんじあい",
+      "meaning": "contest held in the presence of a daimyo, shogun or the Emperor"
+    },
+    {
+      "source_index": 8561,
+      "id": "2847517",
+      "term": "御膳汁粉",
+      "reading": "ごぜんじるこ",
+      "meaning": "shiruko made with strained red bean paste"
+    },
+    {
+      "source_index": 8562,
+      "id": "2517730",
+      "term": "午前零時",
+      "reading": "ごぜんれいじ",
+      "meaning": "midnight / 12am"
+    },
+    {
+      "source_index": 8563,
+      "id": "1934830",
+      "term": "護送船団",
+      "reading": "ごそうせんだん",
+      "meaning": "convoy (of ships)"
+    },
+    {
+      "source_index": 8564,
+      "id": "1268490",
+      "term": "五臓六腑",
+      "reading": "ごぞうろっぷ",
+      "meaning": "the five viscera and the six internal organs"
+    },
+    {
+      "source_index": 8565,
+      "id": "2706210",
+      "term": "五族協和",
+      "reading": "ごぞくきょうわ",
+      "meaning": "five races under one union (Han, Manchurians, Mongolians, Hui, Tibetans; founding principle of the Republic of China)"
+    },
+    {
+      "source_index": 8566,
+      "id": "2717320",
+      "term": "五体投地",
+      "reading": "ごたいとうち",
+      "meaning": "prostration / placing knees, hands and forehead on the ground to show utmost respect"
+    },
+    {
+      "source_index": 8567,
+      "id": "2045240",
+      "term": "五体満足",
+      "reading": "ごたいまんぞく",
+      "meaning": "with no physical defects / in perfectly good health / sound in wind and limb"
+    },
+    {
+      "source_index": 8568,
+      "id": "2253430",
+      "term": "五代十国",
+      "reading": "ごだいじっこく",
+      "meaning": "Five Dynasties and Ten Kingdoms period (of China; 907-979)"
+    },
+    {
+      "source_index": 8569,
+      "id": "2166710",
+      "term": "五大明王",
+      "reading": "ごだいみょうおう",
+      "meaning": "five great wisdom kings (Acala, Kundali, Trilokavijaya, Vajrayaksa, Yamantaka)"
+    },
+    {
+      "source_index": 8570,
+      "id": "2146110",
+      "term": "五段活用",
+      "reading": "ごだんかつよう",
+      "meaning": "godan verb conjugation"
+    },
+    {
+      "source_index": 8571,
+      "id": "1268540",
+      "term": "五段動詞",
+      "reading": "ごだんどうし",
+      "meaning": "godan verb / type 1 verb / consonant-stem verb"
+    },
+    {
+      "source_index": 8572,
+      "id": "2265800",
+      "term": "五智如来",
+      "reading": "ごちにょらい",
+      "meaning": "five dhyani buddhas / five wisdom buddhas"
+    },
+    {
+      "source_index": 8573,
+      "id": "2702230",
+      "term": "午蹄中目",
+      "reading": "ごていちゅうもく",
+      "meaning": "Meridiungulata / extinct clade of South American ungulates"
+    },
+    {
+      "source_index": 8574,
+      "id": "2045340",
+      "term": "後手後手",
+      "reading": "ごてごて",
+      "meaning": "behind with everything / too late / reactive"
+    },
+    {
+      "source_index": 8575,
+      "id": "2045350",
+      "term": "後手必敗",
+      "reading": "ごてひっぱい",
+      "meaning": "Defeat is inevitable for one who goes second / Being slow to take action inevitably leads to defeat"
+    },
+    {
+      "source_index": 8576,
+      "id": "1694740",
+      "term": "御殿女中",
+      "reading": "ごてんじょちゅう",
+      "meaning": "maid-in-waiting in the domestic quarters of a shogun or daimyo (Edo period)"
+    },
+    {
+      "source_index": 8577,
+      "id": "1878040",
+      "term": "後鳥羽院",
+      "reading": "ごとばいん",
+      "meaning": "ex-Emperor Gotoba"
+    },
+    {
+      "source_index": 8578,
+      "id": "2427340",
+      "term": "五斗米道",
+      "reading": "ごとべいどう",
+      "meaning": "Way of the Five Pecks of Rice (ancient Chinese Daoist movement later known as The Way of the Celestial Masters)"
+    },
+    {
+      "source_index": 8579,
+      "id": "2651960",
+      "term": "五斗味噌",
+      "reading": "ごとみそ",
+      "meaning": "goto miso (miso from the Kamakura era)"
+    },
+    {
+      "source_index": 8580,
+      "id": "2751160",
+      "term": "誤認逮捕",
+      "reading": "ごにんたいほ",
+      "meaning": "mistaken arrest / arrest based on misidentification"
+    },
+    {
+      "source_index": 8581,
+      "id": "1268410",
+      "term": "五人囃子",
+      "reading": "ごにんばやし",
+      "meaning": "five court-musician dolls at the Girl's Festival (in March)"
+    },
+    {
+      "source_index": 8582,
+      "id": "1270900",
+      "term": "碁盤の目",
+      "reading": "ごばんのめ",
+      "meaning": "intersection on a go board"
+    },
+    {
+      "source_index": 8583,
+      "id": "2682350",
+      "term": "碁盤目状",
+      "reading": "ごばんめじょう",
+      "meaning": "tessellated / grid-shaped / grid-like"
+    },
+    {
+      "source_index": 8584,
+      "id": "2778880",
+      "term": "五番目物",
+      "reading": "ごばんめもの",
+      "meaning": "last of the traditional set of five noh plays"
+    },
+    {
+      "source_index": 8585,
+      "id": "1693110",
+      "term": "語尾変化",
+      "reading": "ごびへんか",
+      "meaning": "inflection / conjugation / declension"
+    },
+    {
+      "source_index": 8586,
+      "id": "2442110",
+      "term": "誤謬推理",
+      "reading": "ごびゅうすいり",
+      "meaning": "fallacy (sometimes esp. a paralogism)"
+    },
+    {
+      "source_index": 8587,
+      "id": "2030810",
+      "term": "五風十雨",
+      "reading": "ごふうじゅうう",
+      "meaning": "seasonable rains and winds / halcyon weather / halcyon times of peace"
+    },
+    {
+      "source_index": 8588,
+      "id": "1268610",
+      "term": "五分五分",
+      "reading": "ごぶごぶ",
+      "meaning": "as likely as not / fifty-fifty / even match"
+    },
+    {
+      "source_index": 8589,
+      "id": "2865586",
+      "term": "互変異性",
+      "reading": "ごへんいせい",
+      "meaning": "tautomerism"
+    },
+    {
+      "source_index": 8590,
+      "id": "2667020",
+      "term": "護法善神",
+      "reading": "ごほうぜんじん",
+      "meaning": "benevolent deities who protect the dharma"
+    },
+    {
+      "source_index": 8591,
+      "id": "2833935",
+      "term": "五本の指に入る",
+      "reading": "ごほんのゆびにはいる",
+      "meaning": "to be among the top five / to be one of the five best"
+    },
+    {
+      "source_index": 8592,
+      "id": "2870261",
+      "term": "胡麻焼酎",
+      "reading": "ごましょうちゅう",
+      "meaning": "sesame shōchū"
+    },
+    {
+      "source_index": 8593,
+      "id": "2635790",
+      "term": "胡麻笛鯛",
+      "reading": "ごまふえだい",
+      "meaning": "mangrove jack (Lutjanus argentimaculatus) / mangrove red snapper"
+    },
+    {
+      "source_index": 8594,
+      "id": "2834656",
+      "term": "ごまめの歯軋り",
+      "reading": "ごまめのはぎしり",
+      "meaning": "feeble anger (that one cannot act on because one is powerless) / the clenching teeth of a dried sardine"
+    },
+    {
+      "source_index": 8595,
+      "id": "2635780",
+      "term": "胡麻紋殻",
+      "reading": "ごまもんがら",
+      "meaning": "titan triggerfish (Balistoides viridescens) / giant triggerfish / moustache triggerfish"
+    },
+    {
+      "source_index": 8596,
+      "id": "2093290",
+      "term": "胡麻を擂る",
+      "reading": "ごまをする",
+      "meaning": "to flatter / to toady (to) / to curry favor (with)"
+    },
+    {
+      "source_index": 8597,
+      "id": "2848059",
+      "term": "五無間業",
+      "reading": "ごむけんごう",
+      "meaning": "five cardinal sins (killing one's father, killing one's mother, killing an arhat, shedding the blood of a Buddha, causing a schism within the sangha)"
+    },
+    {
+      "source_index": 8598,
+      "id": "1268660",
+      "term": "五目寿司",
+      "reading": "ごもくずし",
+      "meaning": "sushi rice mixed with various ingredients (vegetables, fish, etc.)"
+    },
+    {
+      "source_index": 8599,
+      "id": "1693990",
+      "term": "御用学者",
+      "reading": "ごようがくしゃ",
+      "meaning": "scholar beholden to the government / self-serving academic / scholar who toadies up to government authorities"
     }
   ]
 }
