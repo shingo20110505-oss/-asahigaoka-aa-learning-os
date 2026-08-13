@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 12087,
-  "english_only_remaining": 2913,
+  "already_direct_japanese": 12137,
+  "english_only_remaining": 2863,
   "english_only_rank_counts": {
-    "(blank)": 2913
+    "(blank)": 2863
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 12087,
-      "id": "1706080",
-      "term": "実用主義",
-      "reading": "じつようしゅぎ",
-      "meaning": "pragmatism"
-    },
-    {
-      "source_index": 12088,
-      "id": "1321500",
-      "term": "実用新案",
-      "reading": "じつようしんあん",
-      "meaning": "practical model / utility model / new design for practical use"
-    },
-    {
-      "source_index": 12089,
-      "id": "2046380",
-      "term": "実用本位",
-      "reading": "じつようほんい",
-      "meaning": "pragmatism / functionalism / practicality"
-    },
-    {
-      "source_index": 12090,
-      "id": "1706200",
-      "term": "実利主義",
-      "reading": "じつりしゅぎ",
-      "meaning": "utilitarianism"
-    },
-    {
-      "source_index": 12091,
-      "id": "2831256",
-      "term": "実力以上",
-      "reading": "じつりょくいじょう",
-      "meaning": "beyond oneself / beyond one's ability / exceeding one's power"
-    },
-    {
-      "source_index": 12092,
-      "id": "1706050",
-      "term": "実力行為",
-      "reading": "じつりょくこうい",
-      "meaning": "using force"
-    },
-    {
-      "source_index": 12093,
-      "id": "1321540",
-      "term": "実力行使",
-      "reading": "じつりょくこうし",
-      "meaning": "use of force"
-    },
-    {
-      "source_index": 12094,
-      "id": "2620800",
-      "term": "実力試験",
-      "reading": "じつりょくしけん",
-      "meaning": "proficiency test"
-    },
-    {
-      "source_index": 12095,
-      "id": "2046390",
-      "term": "実力次第",
-      "reading": "じつりょくしだい",
-      "meaning": "according to (depending on) one's ability / if one is good (competent, talented) enough"
-    },
-    {
-      "source_index": 12096,
-      "id": "2828806",
-      "term": "実力主義",
-      "reading": "じつりょくしゅぎ",
-      "meaning": "merit system (as opposed to seniority) / meritocracy / ability-ism"
-    },
-    {
-      "source_index": 12097,
-      "id": "2046350",
-      "term": "実力伯仲",
-      "reading": "じつりょくはくちゅう",
-      "meaning": "(the two persons' sides) being evenly matched in ability"
-    },
-    {
-      "source_index": 12098,
-      "id": "2046400",
-      "term": "実力本位",
-      "reading": "じつりょくほんい",
-      "meaning": "the precedence of merit / performance orientation / ability-based (promotion, pay scale, etc.)"
-    },
-    {
-      "source_index": 12099,
-      "id": "2840264",
-      "term": "自転車道",
-      "reading": "じてんしゃどう",
-      "meaning": "bicycle path / bicycle lane / bikeway"
-    },
-    {
-      "source_index": 12100,
-      "id": "1318310",
-      "term": "自転車屋",
-      "reading": "じてんしゃや",
-      "meaning": "bicycle shop / bicycle dealer"
-    },
-    {
-      "source_index": 12101,
-      "id": "1937010",
-      "term": "自転周期",
-      "reading": "じてんしゅうき",
-      "meaning": "rotation period"
-    },
-    {
-      "source_index": 12102,
-      "id": "2832061",
-      "term": "自伝文学",
-      "reading": "じでんぶんがく",
-      "meaning": "autobiography / autobiographical literature"
-    },
-    {
-      "source_index": 12103,
-      "id": "2589820",
-      "term": "自動運転",
-      "reading": "じどううんてん",
-      "meaning": "automatic operation (machine) / automatic driving (vehicle)"
-    },
-    {
-      "source_index": 12104,
-      "id": "2360660",
-      "term": "自動応答",
-      "reading": "じどうおうとう",
-      "meaning": "auto-answer / automatic answering"
-    },
-    {
-      "source_index": 12105,
-      "id": "2854000",
-      "term": "自動音声",
-      "reading": "じどうおんせい",
-      "meaning": "automated voice"
-    },
-    {
-      "source_index": 12106,
-      "id": "2525080",
-      "term": "自動改札",
-      "reading": "じどうかいさつ",
-      "meaning": "automatic turnstile (ticket gate)"
-    },
-    {
-      "source_index": 12107,
-      "id": "2360670",
-      "term": "自動回送",
-      "reading": "じどうかいそう",
-      "meaning": "auto-forward"
-    },
-    {
-      "source_index": 12108,
-      "id": "1983370",
-      "term": "自動解凍",
-      "reading": "じどうかいとう",
-      "meaning": "self-extracting (file)"
-    },
-    {
-      "source_index": 12109,
-      "id": "2832318",
-      "term": "自動火器",
-      "reading": "じどうかき",
-      "meaning": "automatic firearm"
-    },
-    {
-      "source_index": 12110,
-      "id": "2520300",
-      "term": "自動楽器",
-      "reading": "じどうがっき",
-      "meaning": "self-playing musical instrument (e.g. music box, player piano)"
-    },
-    {
-      "source_index": 12111,
-      "id": "2360700",
-      "term": "自動機能",
-      "reading": "じどうきのう",
-      "meaning": "automatic function"
-    },
-    {
-      "source_index": 12112,
-      "id": "1994440",
-      "term": "児童虐待",
-      "reading": "じどうぎゃくたい",
-      "meaning": "child abuse"
-    },
-    {
-      "source_index": 12113,
-      "id": "2360730",
-      "term": "自動警報",
-      "reading": "じどうけいほう",
-      "meaning": "auto-alert"
-    },
-    {
-      "source_index": 12114,
-      "id": "2677670",
-      "term": "自動拳銃",
-      "reading": "じどうけんじゅう",
-      "meaning": "automatic pistol"
-    },
-    {
-      "source_index": 12115,
-      "id": "2830283",
-      "term": "児童公園",
-      "reading": "じどうこうえん",
-      "meaning": "children's park / children's playground"
-    },
-    {
-      "source_index": 12116,
-      "id": "2829549",
-      "term": "自動更新",
-      "reading": "じどうこうしん",
-      "meaning": "automatic update / automatic renewal"
-    },
-    {
-      "source_index": 12117,
-      "id": "2360830",
-      "term": "自動削除",
-      "reading": "じどうさくじょ",
-      "meaning": "automatic deletion"
-    },
-    {
-      "source_index": 12118,
-      "id": "2701680",
-      "term": "自動酸化",
-      "reading": "じどうさんか",
-      "meaning": "autoxidation"
-    },
-    {
-      "source_index": 12119,
-      "id": "2799630",
-      "term": "自動車駅",
-      "reading": "じどうしゃえき",
-      "meaning": "bus station / bus terminal"
-    },
-    {
-      "source_index": 12120,
-      "id": "1318410",
-      "term": "自動車化",
-      "reading": "じどうしゃか",
-      "meaning": "motorization"
-    },
-    {
-      "source_index": 12121,
-      "id": "1726470",
-      "term": "自動車税",
-      "reading": "じどうしゃぜい",
-      "meaning": "automobile tax / vehicle tax"
-    },
-    {
-      "source_index": 12122,
-      "id": "2251610",
-      "term": "自動車道",
-      "reading": "じどうしゃどう",
-      "meaning": "expressway / motorway"
-    },
-    {
-      "source_index": 12123,
-      "id": "1318450",
-      "term": "自動小銃",
-      "reading": "じどうしょうじゅう",
-      "meaning": "automatic rifle"
-    },
-    {
-      "source_index": 12124,
-      "id": "2428580",
-      "term": "自動織機",
-      "reading": "じどうしょっき",
-      "meaning": "automatic loom"
-    },
-    {
-      "source_index": 12125,
-      "id": "1983360",
-      "term": "自動実行",
-      "reading": "じどうじっこう",
-      "meaning": "self-executing (computer file)"
-    },
-    {
-      "source_index": 12126,
-      "id": "2852136",
-      "term": "自動水栓",
-      "reading": "じどうすいせん",
-      "meaning": "automatic faucet / hands-free tap"
-    },
-    {
-      "source_index": 12127,
-      "id": "1726490",
-      "term": "自動制御",
-      "reading": "じどうせいぎょ",
-      "meaning": "automatic control"
-    },
-    {
-      "source_index": 12128,
-      "id": "2360910",
-      "term": "自動生成",
-      "reading": "じどうせいせい",
-      "meaning": "automatic creation"
-    },
-    {
-      "source_index": 12129,
-      "id": "2855189",
-      "term": "児童生徒",
-      "reading": "じどうせいと",
-      "meaning": "elementary, junior high, and high school students"
-    },
-    {
-      "source_index": 12130,
-      "id": "2360940",
-      "term": "自動選択",
-      "reading": "じどうせんたく",
-      "meaning": "automatic selection"
-    },
-    {
-      "source_index": 12131,
-      "id": "2837028",
-      "term": "自動送信",
-      "reading": "じどうそうしん",
-      "meaning": "automatic transmission (sending)"
-    },
-    {
-      "source_index": 12132,
-      "id": "2760570",
-      "term": "自動操縦",
-      "reading": "じどうそうじゅう",
-      "meaning": "automatic pilot / autopilot / automatic control"
-    },
-    {
-      "source_index": 12133,
-      "id": "2842549",
-      "term": "自動操舵",
-      "reading": "じどうそうだ",
-      "meaning": "self-steering (boat) / automatic steering"
-    },
-    {
-      "source_index": 12134,
-      "id": "1318460",
-      "term": "自動着信",
-      "reading": "じどうちゃくしん",
-      "meaning": "auto answer (e.g. modem)"
-    },
-    {
-      "source_index": 12135,
-      "id": "1983380",
-      "term": "自動抽出",
-      "reading": "じどうちゅうしゅつ",
-      "meaning": "self-extracting (computer file)"
-    },
-    {
-      "source_index": 12136,
-      "id": "1994450",
-      "term": "児童手当",
-      "reading": "じどうてあて",
-      "meaning": "child-rearing assistance / support for young parents / child-care allowance"
-    },
     {
       "source_index": 12137,
       "id": "2590210",
@@ -7010,6 +6660,356 @@
       "term": "水質汚濁",
       "reading": "すいしつおだく",
       "meaning": "water pollution"
+    },
+    {
+      "source_index": 13087,
+      "id": "1995960",
+      "term": "水質検査",
+      "reading": "すいしつけんさ",
+      "meaning": "water-quality test"
+    },
+    {
+      "source_index": 13088,
+      "id": "1939530",
+      "term": "水車小屋",
+      "reading": "すいしゃごや",
+      "meaning": "water mill"
+    },
+    {
+      "source_index": 13089,
+      "id": "2406800",
+      "term": "推奨環境",
+      "reading": "すいしょうかんきょう",
+      "meaning": "system requirements (i.e. recommended hardware and software to run a package)"
+    },
+    {
+      "source_index": 13090,
+      "id": "2421180",
+      "term": "水晶婚式",
+      "reading": "すいしょうこんしき",
+      "meaning": "crystal wedding (anniversary) / 15th wedding anniversary"
+    },
+    {
+      "source_index": 13091,
+      "id": "2868292",
+      "term": "推奨事項",
+      "reading": "すいしょうじこう",
+      "meaning": "recommendations"
+    },
+    {
+      "source_index": 13092,
+      "id": "1737560",
+      "term": "水晶時計",
+      "reading": "すいしょうどけい",
+      "meaning": "crystal or quartz timepiece"
+    },
+    {
+      "source_index": 13093,
+      "id": "2047760",
+      "term": "推進母体",
+      "reading": "すいしんぼたい",
+      "meaning": "nucleus (of a project proposal, of a social movement, etc.)"
+    },
+    {
+      "source_index": 13094,
+      "id": "2832382",
+      "term": "水準原点",
+      "reading": "すいじゅんげんてん",
+      "meaning": "primary benchmark (surveying) / fundamental benchmark"
+    },
+    {
+      "source_index": 13095,
+      "id": "1737630",
+      "term": "水準測量",
+      "reading": "すいじゅんそくりょう",
+      "meaning": "leveling / levelling"
+    },
+    {
+      "source_index": 13096,
+      "id": "1669700",
+      "term": "穂状花序",
+      "reading": "すいじょうかじょ",
+      "meaning": "spike (inflorescence)"
+    },
+    {
+      "source_index": 13097,
+      "id": "1736730",
+      "term": "水上競技",
+      "reading": "すいじょうきょうぎ",
+      "meaning": "water sports / aquatic sports"
+    },
+    {
+      "source_index": 13098,
+      "id": "1371650",
+      "term": "水上警察",
+      "reading": "すいじょうけいさつ",
+      "meaning": "Coast Guard"
+    },
+    {
+      "source_index": 13099,
+      "id": "2833424",
+      "term": "水上輸送",
+      "reading": "すいじょうゆそう",
+      "meaning": "water carriage / water transportation"
+    },
+    {
+      "source_index": 13100,
+      "id": "2236690",
+      "term": "水生昆虫",
+      "reading": "すいせいこんちゅう",
+      "meaning": "aquatic insect"
+    },
+    {
+      "source_index": 13101,
+      "id": "1736840",
+      "term": "水生植物",
+      "reading": "すいせいしょくぶつ",
+      "meaning": "aquatic plant"
+    },
+    {
+      "source_index": 13102,
+      "id": "1939540",
+      "term": "水生生物",
+      "reading": "すいせいせいぶつ",
+      "meaning": "aquatic life / water creatures"
+    },
+    {
+      "source_index": 13103,
+      "id": "1737150",
+      "term": "水性塗料",
+      "reading": "すいせいとりょう",
+      "meaning": "water-based paint / emulsion"
+    },
+    {
+      "source_index": 13104,
+      "id": "1736830",
+      "term": "水生動物",
+      "reading": "すいせいどうぶつ",
+      "meaning": "aquatic animal / aquatic fauna"
+    },
+    {
+      "source_index": 13105,
+      "id": "1372680",
+      "term": "酔生夢死",
+      "reading": "すいせいむし",
+      "meaning": "idling one's life away / living to no purpose"
+    },
+    {
+      "source_index": 13106,
+      "id": "2867421",
+      "term": "水赤鉄鉱",
+      "reading": "すいせきてっこう",
+      "meaning": "turgite"
+    },
+    {
+      "source_index": 13107,
+      "id": "2246050",
+      "term": "推薦図書",
+      "reading": "すいせんとしょ",
+      "meaning": "recommended books / recommended reading"
+    },
+    {
+      "source_index": 13108,
+      "id": "2847343",
+      "term": "推薦入学",
+      "reading": "すいせんにゅうがく",
+      "meaning": "admission based on recommendation / enrolment by recommendation (enrollment)"
+    },
+    {
+      "source_index": 13109,
+      "id": "2847344",
+      "term": "推薦入試",
+      "reading": "すいせんにゅうし",
+      "meaning": "entrance examination for selected candidates (who have been recommended to the university)"
+    },
+    {
+      "source_index": 13110,
+      "id": "1371770",
+      "term": "水洗便所",
+      "reading": "すいせんべんじょ",
+      "meaning": "flush toilet"
+    },
+    {
+      "source_index": 13111,
+      "id": "2047770",
+      "term": "垂涎三尺",
+      "reading": "すいぜんさんじゃく",
+      "meaning": "avid desire / drooling over (something) / watering at the mouth"
+    },
+    {
+      "source_index": 13112,
+      "id": "1370810",
+      "term": "吹奏楽団",
+      "reading": "すいそうがくだん",
+      "meaning": "wind instrument orchestra / wind band / brass band"
+    },
+    {
+      "source_index": 13113,
+      "id": "2832947",
+      "term": "吹奏楽部",
+      "reading": "すいそうがくぶ",
+      "meaning": "concert band (as a school activity) / wind ensemble"
+    },
+    {
+      "source_index": 13114,
+      "id": "1713540",
+      "term": "吹奏楽器",
+      "reading": "すいそうがっき",
+      "meaning": "wind instrument"
+    },
+    {
+      "source_index": 13115,
+      "id": "1371790",
+      "term": "水素化物",
+      "reading": "すいそかぶつ",
+      "meaning": "hydride"
+    },
+    {
+      "source_index": 13116,
+      "id": "2854378",
+      "term": "推測航法",
+      "reading": "すいそくこうほう",
+      "meaning": "dead reckoning"
+    },
+    {
+      "source_index": 13117,
+      "id": "2169590",
+      "term": "水素結合",
+      "reading": "すいそけつごう",
+      "meaning": "hydrogen bond"
+    },
+    {
+      "source_index": 13118,
+      "id": "2687610",
+      "term": "水素細菌",
+      "reading": "すいそさいきん",
+      "meaning": "hydrogen bacteria"
+    },
+    {
+      "source_index": 13119,
+      "id": "2829754",
+      "term": "水素社会",
+      "reading": "すいそしゃかい",
+      "meaning": "hydrogen economy / hydrogen energy based society"
+    },
+    {
+      "source_index": 13120,
+      "id": "2616280",
+      "term": "水素脆化",
+      "reading": "すいそぜいか",
+      "meaning": "hydrogen embrittlement"
+    },
+    {
+      "source_index": 13121,
+      "id": "2169600",
+      "term": "水素添加",
+      "reading": "すいそてんか",
+      "meaning": "hydrogenation"
+    },
+    {
+      "source_index": 13122,
+      "id": "2169610",
+      "term": "水素電極",
+      "reading": "すいそでんきょく",
+      "meaning": "hydrogen electrode"
+    },
+    {
+      "source_index": 13123,
+      "id": "1737350",
+      "term": "水素爆弾",
+      "reading": "すいそばくだん",
+      "meaning": "hydrogen bomb"
+    },
+    {
+      "source_index": 13124,
+      "id": "2616760",
+      "term": "水素爆発",
+      "reading": "すいそばくはつ",
+      "meaning": "hydrogen explosion"
+    },
+    {
+      "source_index": 13125,
+      "id": "2678090",
+      "term": "膵臓壊死",
+      "reading": "すいぞうえし",
+      "meaning": "pancreatic necrosis"
+    },
+    {
+      "source_index": 13126,
+      "id": "2821990",
+      "term": "衰退一途",
+      "reading": "すいたいいっと",
+      "meaning": "(falling into a) continuous decline / being on the wane"
+    },
+    {
+      "source_index": 13127,
+      "id": "2439910",
+      "term": "錐体細胞",
+      "reading": "すいたいさいぼう",
+      "meaning": "cone cell / cone"
+    },
+    {
+      "source_index": 13128,
+      "id": "2208550",
+      "term": "水中写真",
+      "reading": "すいちゅうしゃしん",
+      "meaning": "underwater photography"
+    },
+    {
+      "source_index": 13129,
+      "id": "1736770",
+      "term": "水中翼船",
+      "reading": "すいちゅうよくせん",
+      "meaning": "hydrofoil / hydrofoil-equipped watercraft"
+    },
+    {
+      "source_index": 13130,
+      "id": "2868339",
+      "term": "垂直応力",
+      "reading": "すいちょくおうりょく",
+      "meaning": "normal stress"
+    },
+    {
+      "source_index": 13131,
+      "id": "2853998",
+      "term": "垂直感染",
+      "reading": "すいちょくかんせん",
+      "meaning": "vertical transmission / vertical infection"
+    },
+    {
+      "source_index": 13132,
+      "id": "2831137",
+      "term": "垂直抗力",
+      "reading": "すいちょくこうりょく",
+      "meaning": "normal force"
+    },
+    {
+      "source_index": 13133,
+      "id": "2047780",
+      "term": "垂直思考",
+      "reading": "すいちょくしこう",
+      "meaning": "rigid (stereotypical) thinking that adheres to preconceived notions / vertical thinking / linear thinking"
+    },
+    {
+      "source_index": 13134,
+      "id": "2064470",
+      "term": "垂直統合",
+      "reading": "すいちょくとうごう",
+      "meaning": "vertical integration / vertical merger"
+    },
+    {
+      "source_index": 13135,
+      "id": "2869000",
+      "term": "垂直同期",
+      "reading": "すいちょくどうき",
+      "meaning": "VSync / vertical synchronization"
+    },
+    {
+      "source_index": 13136,
+      "id": "2849965",
+      "term": "垂直農法",
+      "reading": "すいちょくのうほう",
+      "meaning": "vertical farming"
     }
   ]
 }
