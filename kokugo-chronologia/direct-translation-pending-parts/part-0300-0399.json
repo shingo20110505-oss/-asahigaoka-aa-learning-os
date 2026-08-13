@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11430,
-  "english_only_remaining": 3570,
+  "already_direct_japanese": 11431,
+  "english_only_remaining": 3569,
   "english_only_rank_counts": {
-    "(blank)": 3570
+    "(blank)": 3569
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 300,
   "part_end": 399,
   "targets": [
-    {
-      "source_index": 11730,
-      "id": "1313920",
-      "term": "事項索引",
-      "reading": "じこうさくいん",
-      "meaning": "subject index"
-    },
     {
       "source_index": 11731,
       "id": "2528440",
@@ -712,6 +705,13 @@
       "term": "自己誘導",
       "reading": "じこゆうどう",
       "meaning": "self-induction"
+    },
+    {
+      "source_index": 11830,
+      "id": "2045890",
+      "term": "自己抑制",
+      "reading": "じこよくせい",
+      "meaning": "self-restraint / self-control / abstinence"
     }
   ]
 }

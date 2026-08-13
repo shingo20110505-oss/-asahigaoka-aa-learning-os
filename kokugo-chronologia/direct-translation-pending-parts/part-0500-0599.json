@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11430,
-  "english_only_remaining": 3570,
+  "already_direct_japanese": 11431,
+  "english_only_remaining": 3569,
   "english_only_rank_counts": {
-    "(blank)": 3570
+    "(blank)": 3569
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 500,
   "part_end": 599,
   "targets": [
-    {
-      "source_index": 11930,
-      "id": "2716140",
-      "term": "事前確率",
-      "reading": "じぜんかくりつ",
-      "meaning": "prior probability"
-    },
     {
       "source_index": 11931,
       "id": "2612820",
@@ -712,6 +705,13 @@
       "term": "実施形態",
       "reading": "じっしけいたい",
       "meaning": "embodiment"
+    },
+    {
+      "source_index": 12030,
+      "id": "2361890",
+      "term": "実施項目",
+      "reading": "じっしこうもく",
+      "meaning": "working item"
     }
   ]
 }

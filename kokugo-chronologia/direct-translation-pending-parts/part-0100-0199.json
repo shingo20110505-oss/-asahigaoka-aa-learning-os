@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11430,
-  "english_only_remaining": 3570,
+  "already_direct_japanese": 11431,
+  "english_only_remaining": 3569,
   "english_only_rank_counts": {
-    "(blank)": 3570
+    "(blank)": 3569
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 100,
   "part_end": 199,
   "targets": [
-    {
-      "source_index": 11530,
-      "id": "1813160",
-      "term": "信用金庫",
-      "reading": "しんようきんこ",
-      "meaning": "credit union"
-    },
     {
       "source_index": 11531,
       "id": "1359700",
@@ -712,6 +705,13 @@
       "term": "時価総額",
       "reading": "じかそうがく",
       "meaning": "market capitalization / market capitalisation / market cap"
+    },
+    {
+      "source_index": 11630,
+      "id": "1431380",
+      "term": "地下足袋",
+      "reading": "じかたび",
+      "meaning": "work tabi / split-toed heavy cloth shoes with rubber soles"
     }
   ]
 }

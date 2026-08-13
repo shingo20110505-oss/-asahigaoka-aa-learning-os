@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11430,
-  "english_only_remaining": 3570,
+  "already_direct_japanese": 11431,
+  "english_only_remaining": 3569,
   "english_only_rank_counts": {
-    "(blank)": 3570
+    "(blank)": 3569
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 0,
   "part_end": 99,
   "targets": [
-    {
-      "source_index": 11430,
-      "id": "2145130",
-      "term": "信託報酬",
-      "reading": "しんたくほうしゅう",
-      "meaning": "trust fee / custodian fee"
-    },
     {
       "source_index": 11431,
       "id": "2255780",
@@ -712,6 +705,13 @@
       "term": "信用危機",
       "reading": "しんようきき",
       "meaning": "credit crunch"
+    },
+    {
+      "source_index": 11530,
+      "id": "1813160",
+      "term": "信用金庫",
+      "reading": "しんようきんこ",
+      "meaning": "credit union"
     }
   ]
 }

@@ -1,23 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11430,
-  "english_only_remaining": 3570,
+  "already_direct_japanese": 11431,
+  "english_only_remaining": 3569,
   "english_only_rank_counts": {
-    "(blank)": 3570
+    "(blank)": 3569
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11430,
-      "id": "2145130",
-      "term": "信託報酬",
-      "reading": "しんたくほうしゅう",
-      "meaning": "trust fee / custodian fee"
-    },
     {
       "source_index": 11431,
       "id": "2255780",
@@ -7010,6 +7003,13 @@
       "term": "循環定義",
       "reading": "じゅんかんていぎ",
       "meaning": "circular definition"
+    },
+    {
+      "source_index": 12430,
+      "id": "2165350",
+      "term": "循環取引",
+      "reading": "じゅんかんとりひき",
+      "meaning": "round-trip transaction / round-tripping"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11430,
-  "english_only_remaining": 3570,
+  "already_direct_japanese": 11431,
+  "english_only_remaining": 3569,
   "english_only_rank_counts": {
-    "(blank)": 3570
+    "(blank)": 3569
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 800,
   "part_end": 899,
   "targets": [
-    {
-      "source_index": 12230,
-      "id": "2830264",
-      "term": "従軍牧師",
-      "reading": "じゅうぐんぼくし",
-      "meaning": "military chaplain"
-    },
     {
       "source_index": 12231,
       "id": "2643990",
@@ -712,6 +705,13 @@
       "term": "重要事実",
       "reading": "じゅうようじじつ",
       "meaning": "material fact / material information"
+    },
+    {
+      "source_index": 12330,
+      "id": "1938030",
+      "term": "重要人物",
+      "reading": "じゅうようじんぶつ",
+      "meaning": "important person / strategic person / key figure"
     }
   ]
 }
