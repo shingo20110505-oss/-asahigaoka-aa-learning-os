@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 7800,
-  "english_only_remaining": 7200,
+  "already_direct_japanese": 7850,
+  "english_only_remaining": 7150,
   "english_only_rank_counts": {
-    "(blank)": 7200
+    "(blank)": 7150
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 7800,
-      "id": "1678020",
-      "term": "港湾当局",
-      "reading": "こうわんとうきょく",
-      "meaning": "port authorities"
-    },
-    {
-      "source_index": 7801,
-      "id": "2836439",
-      "term": "港湾都市",
-      "reading": "こうわんとし",
-      "meaning": "port city / harbour city / harbor city"
-    },
-    {
-      "source_index": 7802,
-      "id": "1843320",
-      "term": "孤影悄然",
-      "reading": "こえいしょうぜん",
-      "meaning": "alone and dejected / lonely and downhearted / lonely and crestfallen"
-    },
-    {
-      "source_index": 7803,
-      "id": "2835742",
-      "term": "声なき声",
-      "reading": "こえなきこえ",
-      "meaning": "unvoiced opinion / (opinion of the) silent majority / views which are not expressed"
-    },
-    {
-      "source_index": 7804,
-      "id": "2118090",
-      "term": "声を呑む",
-      "reading": "こえをのむ",
-      "meaning": "to choke up / to be speechless"
-    },
-    {
-      "source_index": 7805,
-      "id": "1265150",
-      "term": "古往今来",
-      "reading": "こおうこんらい",
-      "meaning": "in all ages / since antiquity"
-    },
-    {
-      "source_index": 7806,
-      "id": "2262730",
-      "term": "高麗胡椒",
-      "reading": "こおれえぐす",
-      "meaning": "capsicum / chili pepper (chile, chilli) / cayenne"
-    },
-    {
-      "source_index": 7807,
-      "id": "1266990",
-      "term": "戸外撮影",
-      "reading": "こがいさつえい",
-      "meaning": "outdoor photography"
-    },
-    {
-      "source_index": 7808,
-      "id": "2829684",
-      "term": "戸外制作",
-      "reading": "こがいせいさく",
-      "meaning": "en plein air / plein air painting"
-    },
-    {
-      "source_index": 7809,
-      "id": "1348000",
-      "term": "小型新聞",
-      "reading": "こがたしんぶん",
-      "meaning": "tabloid"
-    },
-    {
-      "source_index": 7810,
-      "id": "2566440",
-      "term": "小形雀蜂",
-      "reading": "こがたすずめばち",
-      "meaning": "yellow-vented hornet (Vespa analis)"
-    },
-    {
-      "source_index": 7811,
-      "id": "1743420",
-      "term": "小刀細工",
-      "reading": "こがたなざいく",
-      "meaning": "carving with a knife / handiwork done with a knife"
-    },
-    {
-      "source_index": 7812,
-      "id": "2476660",
-      "term": "小型二輪",
-      "reading": "こがたにりん",
-      "meaning": "motorcycle, greater than or equal to 250cc"
-    },
-    {
-      "source_index": 7813,
-      "id": "2122990",
-      "term": "小型武器",
-      "reading": "こがたぶき",
-      "meaning": "small arms / light weapons"
-    },
-    {
-      "source_index": 7814,
-      "id": "2684790",
-      "term": "黄金千貫",
-      "reading": "こがねせんがん",
-      "meaning": "sweet potato variety (often used in shōchū brewing)"
-    },
-    {
-      "source_index": 7815,
-      "id": "2832930",
-      "term": "呼気検査",
-      "reading": "こきけんさ",
-      "meaning": "breath test / breathalyzer test"
-    },
-    {
-      "source_index": 7816,
-      "id": "2830129",
-      "term": "古気候学",
-      "reading": "こきこうがく",
-      "meaning": "paleoclimatology"
-    },
-    {
-      "source_index": 7817,
-      "id": "2195910",
-      "term": "顧客志向",
-      "reading": "こきゃくしこう",
-      "meaning": "customer-orientation"
-    },
-    {
-      "source_index": 7818,
-      "id": "2868071",
-      "term": "顧客情報",
-      "reading": "こきゃくじょうほう",
-      "meaning": "customer information"
-    },
-    {
-      "source_index": 7819,
-      "id": "2195930",
-      "term": "顧客満足",
-      "reading": "こきゃくまんぞく",
-      "meaning": "customer satisfaction"
-    },
-    {
-      "source_index": 7820,
-      "id": "1844980",
-      "term": "呼吸運動",
-      "reading": "こきゅううんどう",
-      "meaning": "respiratory movement"
-    },
-    {
-      "source_index": 7821,
-      "id": "2739580",
-      "term": "呼吸が合う",
-      "reading": "こきゅうがあう",
-      "meaning": "to get along / to hit it off / to be on the same page"
-    },
-    {
-      "source_index": 7822,
-      "id": "2849051",
-      "term": "呼吸器官",
-      "reading": "こきゅうきかん",
-      "meaning": "respiratory organs"
-    },
-    {
-      "source_index": 7823,
-      "id": "2834946",
-      "term": "呼吸器学",
-      "reading": "こきゅうきがく",
-      "meaning": "pulmonology / pneumology / respirology"
-    },
-    {
-      "source_index": 7824,
-      "id": "1266490",
-      "term": "呼吸器系",
-      "reading": "こきゅうきけい",
-      "meaning": "respiratory system"
-    },
-    {
-      "source_index": 7825,
-      "id": "2134280",
-      "term": "呼吸機能",
-      "reading": "こきゅうきのう",
-      "meaning": "respiratory function"
-    },
-    {
-      "source_index": 7826,
-      "id": "2442770",
-      "term": "呼吸酵素",
-      "reading": "こきゅうこうそ",
-      "meaning": "respiratory enzyme"
-    },
-    {
-      "source_index": 7827,
-      "id": "1844970",
-      "term": "呼吸困難",
-      "reading": "こきゅうこんなん",
-      "meaning": "labored breathing / laboured breathing / dyspnea"
-    },
-    {
-      "source_index": 7828,
-      "id": "1844960",
-      "term": "呼吸中枢",
-      "reading": "こきゅうちゅうすう",
-      "meaning": "respiratory center / respiratory centre"
-    },
-    {
-      "source_index": 7829,
-      "id": "2836168",
-      "term": "呼吸停止",
-      "reading": "こきゅうていし",
-      "meaning": "cessation of breathing / respiratory arrest"
-    },
-    {
-      "source_index": 7830,
-      "id": "1992310",
-      "term": "呼吸不全",
-      "reading": "こきゅうふぜん",
-      "meaning": "respiratory failure"
-    },
-    {
-      "source_index": 7831,
-      "id": "2402730",
-      "term": "故郷へ錦を飾る",
-      "reading": "こきょうへにしきをかざる",
-      "meaning": "to come home in triumph / to return to one's hometown in glory"
-    },
-    {
-      "source_index": 7832,
-      "id": "2667180",
-      "term": "小金目梟",
-      "reading": "こきんめふくろう",
-      "meaning": "little owl (Athene noctua)"
-    },
-    {
-      "source_index": 7833,
-      "id": "1267370",
-      "term": "狐疑逡巡",
-      "reading": "こぎしゅんじゅん",
-      "meaning": "being in doubt and unable to decide / hesitation and indecision"
-    },
-    {
-      "source_index": 7834,
-      "id": "2866149",
-      "term": "小切手帳",
-      "reading": "こぎってちょう",
-      "meaning": "checkbook / chequebook"
-    },
-    {
-      "source_index": 7835,
-      "id": "2045080",
-      "term": "国威発揚",
-      "reading": "こくいはつよう",
-      "meaning": "enhancing national prestige / expanding national influence"
-    },
-    {
-      "source_index": 7836,
-      "id": "1286130",
-      "term": "国営企業",
-      "reading": "こくえいきぎょう",
-      "meaning": "state-run business / state enterprise / national enterprise"
-    },
-    {
-      "source_index": 7837,
-      "id": "2852458",
-      "term": "国営公園",
-      "reading": "こくえいこうえん",
-      "meaning": "government-managed park / national government park"
-    },
-    {
-      "source_index": 7838,
-      "id": "1286140",
-      "term": "国営通信",
-      "reading": "こくえいつうしん",
-      "meaning": "government news / state-run news"
-    },
-    {
-      "source_index": 7839,
-      "id": "1746740",
-      "term": "国営農場",
-      "reading": "こくえいのうじょう",
-      "meaning": "state-run farm"
-    },
-    {
-      "source_index": 7840,
-      "id": "2813350",
-      "term": "国営部門",
-      "reading": "こくえいぶもん",
-      "meaning": "public sector (as opposed to private sector)"
-    },
-    {
-      "source_index": 7841,
-      "id": "2840552",
-      "term": "国王殺害",
-      "reading": "こくおうさつがい",
-      "meaning": "regicide"
-    },
-    {
-      "source_index": 7842,
-      "id": "1628050",
-      "term": "国王陛下",
-      "reading": "こくおうへいか",
-      "meaning": "His Majesty the King"
-    },
-    {
-      "source_index": 7843,
-      "id": "2848950",
-      "term": "国外退去",
-      "reading": "こくがいたいきょ",
-      "meaning": "deportation"
-    },
-    {
-      "source_index": 7844,
-      "id": "1286280",
-      "term": "国外脱出",
-      "reading": "こくがいだっしゅつ",
-      "meaning": "fleeing abroad"
-    },
-    {
-      "source_index": 7845,
-      "id": "2795920",
-      "term": "国外駐在",
-      "reading": "こくがいちゅうざい",
-      "meaning": "overseas posting / expatriate (employee) / expat"
-    },
-    {
-      "source_index": 7846,
-      "id": "1992980",
-      "term": "国外追放",
-      "reading": "こくがいついほう",
-      "meaning": "deportation / expulsion from the country"
-    },
-    {
-      "source_index": 7847,
-      "id": "2848317",
-      "term": "国外逃亡",
-      "reading": "こくがいとうぼう",
-      "meaning": "fleeing the country"
-    },
-    {
-      "source_index": 7848,
-      "id": "2256410",
-      "term": "国郡里制",
-      "reading": "こくぐんりせい",
-      "meaning": "province-district-neighbourhood administrative divisions (ritsuryō system)"
-    },
-    {
-      "source_index": 7849,
-      "id": "5294338",
-      "term": "国語学会",
-      "reading": "こくごがっかい",
-      "meaning": "Society for the Study of Japanese Language"
-    },
     {
       "source_index": 7850,
       "id": "2863230",
@@ -7010,6 +6660,356 @@
       "term": "細胞外液",
       "reading": "さいぼうがいえき",
       "meaning": "extracellular fluid"
+    },
+    {
+      "source_index": 8800,
+      "id": "2807660",
+      "term": "細胞器官",
+      "reading": "さいぼうきかん",
+      "meaning": "organelle"
+    },
+    {
+      "source_index": 8801,
+      "id": "2439780",
+      "term": "細胞検査",
+      "reading": "さいぼうけんさ",
+      "meaning": "cytodiagnosis"
+    },
+    {
+      "source_index": 8802,
+      "id": "2439790",
+      "term": "細胞工学",
+      "reading": "さいぼうこうがく",
+      "meaning": "cellular engineering"
+    },
+    {
+      "source_index": 8803,
+      "id": "2439730",
+      "term": "細胞骨格",
+      "reading": "さいぼうこっかく",
+      "meaning": "cytoskeleton"
+    },
+    {
+      "source_index": 8804,
+      "id": "2439710",
+      "term": "細胞周期",
+      "reading": "さいぼうしゅうき",
+      "meaning": "cell cycle"
+    },
+    {
+      "source_index": 8805,
+      "id": "2743620",
+      "term": "細胞接着",
+      "reading": "さいぼうせっちゃく",
+      "meaning": "cell adhesion / cellular adhesion / dyshesion"
+    },
+    {
+      "source_index": 8806,
+      "id": "2867095",
+      "term": "細胞組織",
+      "reading": "さいぼうそしき",
+      "meaning": "cellular tissue"
+    },
+    {
+      "source_index": 8807,
+      "id": "2807680",
+      "term": "細胞内液",
+      "reading": "さいぼうないえき",
+      "meaning": "intracellular fluid"
+    },
+    {
+      "source_index": 8808,
+      "id": "2807620",
+      "term": "細胞発生",
+      "reading": "さいぼうはっせい",
+      "meaning": "cytogenesis"
+    },
+    {
+      "source_index": 8809,
+      "id": "1768360",
+      "term": "細胞培養",
+      "reading": "さいぼうばいよう",
+      "meaning": "cell culture"
+    },
+    {
+      "source_index": 8810,
+      "id": "1768350",
+      "term": "細胞分裂",
+      "reading": "さいぼうぶんれつ",
+      "meaning": "cell division"
+    },
+    {
+      "source_index": 8811,
+      "id": "2109340",
+      "term": "細胞崩壊",
+      "reading": "さいぼうほうかい",
+      "meaning": "cytolysis / breakdown of cells by the destruction of their outer membrane"
+    },
+    {
+      "source_index": 8812,
+      "id": "1768390",
+      "term": "細胞融合",
+      "reading": "さいぼうゆうごう",
+      "meaning": "cell fusion"
+    },
+    {
+      "source_index": 8813,
+      "id": "2837371",
+      "term": "歳末商戦",
+      "reading": "さいまつしょうせん",
+      "meaning": "battle for sales at year-end / year-end shopping season"
+    },
+    {
+      "source_index": 8814,
+      "id": "2860345",
+      "term": "催眠暗示",
+      "reading": "さいみんあんじ",
+      "meaning": "hypnotic suggestion"
+    },
+    {
+      "source_index": 8815,
+      "id": "2758150",
+      "term": "催眠術師",
+      "reading": "さいみんじゅつし",
+      "meaning": "hypnotist / mesmerist"
+    },
+    {
+      "source_index": 8816,
+      "id": "1700730",
+      "term": "催眠療法",
+      "reading": "さいみんりょうほう",
+      "meaning": "hypnotherapy"
+    },
+    {
+      "source_index": 8817,
+      "id": "1993450",
+      "term": "債務救済",
+      "reading": "さいむきゅうさい",
+      "meaning": "debt relief"
+    },
+    {
+      "source_index": 8818,
+      "id": "1993460",
+      "term": "債務交換",
+      "reading": "さいむこうかん",
+      "meaning": "debt swap"
+    },
+    {
+      "source_index": 8819,
+      "id": "1993470",
+      "term": "債務削減",
+      "reading": "さいむさくげん",
+      "meaning": "debt reduction"
+    },
+    {
+      "source_index": 8820,
+      "id": "2805310",
+      "term": "債務償還",
+      "reading": "さいむしょうかん",
+      "meaning": "debt redemption"
+    },
+    {
+      "source_index": 8821,
+      "id": "2534270",
+      "term": "債務整理",
+      "reading": "さいむせいり",
+      "meaning": "adjustment of debts / debt-workout / consolidation of debts"
+    },
+    {
+      "source_index": 8822,
+      "id": "1993490",
+      "term": "債務超過",
+      "reading": "さいむちょうか",
+      "meaning": "insolvency"
+    },
+    {
+      "source_index": 8823,
+      "id": "1993500",
+      "term": "債務負担",
+      "reading": "さいむふたん",
+      "meaning": "debt load"
+    },
+    {
+      "source_index": 8824,
+      "id": "1993510",
+      "term": "債務保証",
+      "reading": "さいむほしょう",
+      "meaning": "loan guarantee"
+    },
+    {
+      "source_index": 8825,
+      "id": "2853597",
+      "term": "債務名義",
+      "reading": "さいむめいぎ",
+      "meaning": "title of debt / title of obligation / document establishing a legal claim"
+    },
+    {
+      "source_index": 8826,
+      "id": "2871041",
+      "term": "債務免除",
+      "reading": "さいむめんじょ",
+      "meaning": "debt relief / debt forgiveness / debt cancellation"
+    },
+    {
+      "source_index": 8827,
+      "id": "2668280",
+      "term": "債務問題",
+      "reading": "さいむもんだい",
+      "meaning": "debt problem"
+    },
+    {
+      "source_index": 8828,
+      "id": "2871161",
+      "term": "最優秀賞",
+      "reading": "さいゆうしゅうしょう",
+      "meaning": "top award / grand prize / prize for best performance"
+    },
+    {
+      "source_index": 8829,
+      "id": "1741300",
+      "term": "採用試験",
+      "reading": "さいようしけん",
+      "meaning": "employment examination"
+    },
+    {
+      "source_index": 8830,
+      "id": "2852255",
+      "term": "採用情報",
+      "reading": "さいようじょうほう",
+      "meaning": "recruitment information / job vacancy information"
+    },
+    {
+      "source_index": 8831,
+      "id": "2157810",
+      "term": "採用選考",
+      "reading": "さいようせんこう",
+      "meaning": "employment screening / employment selection (for job applicants)"
+    },
+    {
+      "source_index": 8832,
+      "id": "2570650",
+      "term": "採用通知",
+      "reading": "さいようつうち",
+      "meaning": "job offer / letter of appointment / appointment letter"
+    },
+    {
+      "source_index": 8833,
+      "id": "2829786",
+      "term": "最良指値",
+      "reading": "さいりょうさしね",
+      "meaning": "market-to-limit order"
+    },
+    {
+      "source_index": 8834,
+      "id": "1993620",
+      "term": "裁量所得",
+      "reading": "さいりょうしょとく",
+      "meaning": "discretionary income"
+    },
+    {
+      "source_index": 8835,
+      "id": "2018620",
+      "term": "裁量労働",
+      "reading": "さいりょうろうどう",
+      "meaning": "discretionary work (labour, labor)"
+    },
+    {
+      "source_index": 8836,
+      "id": "2357660",
+      "term": "再利用率",
+      "reading": "さいりようりつ",
+      "meaning": "reuse factor"
+    },
+    {
+      "source_index": 8837,
+      "id": "2675670",
+      "term": "棹物菓子",
+      "reading": "さおものがし",
+      "meaning": "Japanese sweets in the form of long blocks (e.g. yokan, uiro)"
+    },
+    {
+      "source_index": 8838,
+      "id": "2115850",
+      "term": "逆子体操",
+      "reading": "さかごたいそう",
+      "meaning": "exercise regime to convert breech presentation / trying to correct an unborn child's improper position so that the head comes out first"
+    },
+    {
+      "source_index": 8839,
+      "id": "2764310",
+      "term": "肴にする",
+      "reading": "さかなにする",
+      "meaning": "to have as a side order (with drinks)"
+    },
+    {
+      "source_index": 8840,
+      "id": "5743577",
+      "term": "佐賀県警",
+      "reading": "さがけんけい",
+      "meaning": "Saga Prefectural Police (abbr)"
+    },
+    {
+      "source_index": 8841,
+      "id": "5299846",
+      "term": "佐賀大学",
+      "reading": "さがだいがく",
+      "meaning": "Saga University"
+    },
+    {
+      "source_index": 8842,
+      "id": "5302733",
+      "term": "嵯峨野線",
+      "reading": "さがのせん",
+      "meaning": "Sagano Line (Kyoto)"
+    },
+    {
+      "source_index": 8843,
+      "id": "5740819",
+      "term": "佐川急便",
+      "reading": "さがわきゅうびん",
+      "meaning": "Sagawa Express (parcel delivery company)"
+    },
+    {
+      "source_index": 8844,
+      "id": "2407560",
+      "term": "左記補足",
+      "reading": "さきほそく",
+      "meaning": "following supplements / supplementary information below"
+    },
+    {
+      "source_index": 8845,
+      "id": "2585970",
+      "term": "先物価格",
+      "reading": "さきものかかく",
+      "meaning": "forward price / futures price / futures quotation"
+    },
+    {
+      "source_index": 8846,
+      "id": "1997210",
+      "term": "先物市場",
+      "reading": "さきものしじょう",
+      "meaning": "futures market / forward market"
+    },
+    {
+      "source_index": 8847,
+      "id": "2163330",
+      "term": "先物相場",
+      "reading": "さきものそうば",
+      "meaning": "futures price / forward price / forward rate (of exchange)"
+    },
+    {
+      "source_index": 8848,
+      "id": "1766410",
+      "term": "先物取引",
+      "reading": "さきものとりひき",
+      "meaning": "futures trading"
+    },
+    {
+      "source_index": 8849,
+      "id": "1388560",
+      "term": "先物売買",
+      "reading": "さきものばいばい",
+      "meaning": "dealing in futures"
     }
   ]
 }
