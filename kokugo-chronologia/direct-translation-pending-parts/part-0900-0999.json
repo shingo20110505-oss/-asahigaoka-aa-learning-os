@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9907,
-  "english_only_remaining": 5093,
+  "already_direct_japanese": 9908,
+  "english_only_remaining": 5092,
   "english_only_rank_counts": {
-    "(blank)": 5093
+    "(blank)": 5092
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 900,
   "part_end": 999,
   "targets": [
-    {
-      "source_index": 10807,
-      "id": "2831272",
-      "term": "消費者庁",
-      "reading": "しょうひしゃちょう",
-      "meaning": "Consumer Affairs Agency / CAA"
-    },
     {
       "source_index": 10808,
       "id": "2439440",
@@ -712,6 +705,13 @@
       "term": "初期段階",
       "reading": "しょきだんかい",
       "meaning": "initial stage"
+    },
+    {
+      "source_index": 10907,
+      "id": "1342690",
+      "term": "初期投資",
+      "reading": "しょきとうし",
+      "meaning": "initial investment"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9907,
-  "english_only_remaining": 5093,
+  "already_direct_japanese": 9908,
+  "english_only_remaining": 5092,
   "english_only_rank_counts": {
-    "(blank)": 5093
+    "(blank)": 5092
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 500,
   "part_end": 599,
   "targets": [
-    {
-      "source_index": 10407,
-      "id": "2872005",
-      "term": "主管事項",
-      "reading": "しゅかんじこう",
-      "meaning": "(one's) areas of responsibility / matters under one's charge / responsibilities"
-    },
     {
       "source_index": 10408,
       "id": "2810150",
@@ -712,6 +705,13 @@
       "term": "出離生死",
       "reading": "しゅつりしょうじ",
       "meaning": "entering nirvana / attaining enlightenment / leaving samsara"
+    },
+    {
+      "source_index": 10507,
+      "id": "2363910",
+      "term": "出力機構",
+      "reading": "しゅつりょくきこう",
+      "meaning": "output unit / output device"
     }
   ]
 }

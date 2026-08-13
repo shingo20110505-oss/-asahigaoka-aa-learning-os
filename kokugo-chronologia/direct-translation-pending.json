@@ -1,23 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9907,
-  "english_only_remaining": 5093,
+  "already_direct_japanese": 9908,
+  "english_only_remaining": 5092,
   "english_only_rank_counts": {
-    "(blank)": 5093
+    "(blank)": 5092
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 9907,
-      "id": "1759510",
-      "term": "屎尿処理",
-      "reading": "しにょうしょり",
-      "meaning": "sewage disposal"
-    },
     {
       "source_index": 9908,
       "id": "2701030",
@@ -7010,6 +7003,13 @@
       "term": "初期段階",
       "reading": "しょきだんかい",
       "meaning": "initial stage"
+    },
+    {
+      "source_index": 10907,
+      "id": "1342690",
+      "term": "初期投資",
+      "reading": "しょきとうし",
+      "meaning": "initial investment"
     }
   ]
 }

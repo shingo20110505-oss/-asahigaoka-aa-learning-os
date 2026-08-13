@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9907,
-  "english_only_remaining": 5093,
+  "already_direct_japanese": 9908,
+  "english_only_remaining": 5092,
   "english_only_rank_counts": {
-    "(blank)": 5093
+    "(blank)": 5092
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 400,
   "part_end": 499,
   "targets": [
-    {
-      "source_index": 10307,
-      "id": "2363360",
-      "term": "集団項目",
-      "reading": "しゅうだんこうもく",
-      "meaning": "group item"
-    },
     {
       "source_index": 10308,
       "id": "2693060",
@@ -712,6 +705,13 @@
       "term": "主観主義",
       "reading": "しゅかんしゅぎ",
       "meaning": "subjectivism"
+    },
+    {
+      "source_index": 10407,
+      "id": "2872005",
+      "term": "主管事項",
+      "reading": "しゅかんじこう",
+      "meaning": "(one's) areas of responsibility / matters under one's charge / responsibilities"
     }
   ]
 }

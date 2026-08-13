@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9907,
-  "english_only_remaining": 5093,
+  "already_direct_japanese": 9908,
+  "english_only_remaining": 5092,
   "english_only_rank_counts": {
-    "(blank)": 5093
+    "(blank)": 5092
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 800,
   "part_end": 899,
   "targets": [
-    {
-      "source_index": 10707,
-      "id": "1348330",
-      "term": "小心翼々",
-      "reading": "しょうしんよくよく",
-      "meaning": "very timid / very nervous / faint-hearted"
-    },
     {
       "source_index": 10708,
       "id": "2738810",
@@ -712,6 +705,13 @@
       "term": "消費者側",
       "reading": "しょうひしゃがわ",
       "meaning": "consumers side"
+    },
+    {
+      "source_index": 10807,
+      "id": "2831272",
+      "term": "消費者庁",
+      "reading": "しょうひしゃちょう",
+      "meaning": "Consumer Affairs Agency / CAA"
     }
   ]
 }

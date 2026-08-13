@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9907,
-  "english_only_remaining": 5093,
+  "already_direct_japanese": 9908,
+  "english_only_remaining": 5092,
   "english_only_rank_counts": {
-    "(blank)": 5093
+    "(blank)": 5092
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 300,
   "part_end": 399,
   "targets": [
-    {
-      "source_index": 10207,
-      "id": "1331960",
-      "term": "修学旅行",
-      "reading": "しゅうがくりょこう",
-      "meaning": "excursion / field trip / school trip"
-    },
     {
       "source_index": 10208,
       "id": "2850466",
@@ -712,6 +705,13 @@
       "term": "集団行動",
       "reading": "しゅうだんこうどう",
       "meaning": "group action / collective behavior / collective behaviour"
+    },
+    {
+      "source_index": 10307,
+      "id": "2363360",
+      "term": "集団項目",
+      "reading": "しゅうだんこうもく",
+      "meaning": "group item"
     }
   ]
 }
