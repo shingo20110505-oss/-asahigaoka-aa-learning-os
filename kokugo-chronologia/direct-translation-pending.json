@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11537,
-  "english_only_remaining": 3463,
+  "already_direct_japanese": 11587,
+  "english_only_remaining": 3413,
   "english_only_rank_counts": {
-    "(blank)": 3463
+    "(blank)": 3413
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11537,
-      "id": "2746090",
-      "term": "信用情報",
-      "reading": "しんようじょうほう",
-      "meaning": "credit status / credit standing / credit record"
-    },
-    {
-      "source_index": 11538,
-      "id": "1813180",
-      "term": "信用調査",
-      "reading": "しんようちょうさ",
-      "meaning": "credit check"
-    },
-    {
-      "source_index": 11539,
-      "id": "1359660",
-      "term": "信用取引",
-      "reading": "しんようとりひき",
-      "meaning": "credit transaction / dealings on credit / margin transaction"
-    },
-    {
-      "source_index": 11540,
-      "id": "1359720",
-      "term": "信用販売",
-      "reading": "しんようはんばい",
-      "meaning": "sales on credit"
-    },
-    {
-      "source_index": 11541,
-      "id": "2719500",
-      "term": "信用不安",
-      "reading": "しんようふあん",
-      "meaning": "credit uncertainty"
-    },
-    {
-      "source_index": 11542,
-      "id": "2618430",
-      "term": "信用保険",
-      "reading": "しんようほけん",
-      "meaning": "credit insurance"
-    },
-    {
-      "source_index": 11543,
-      "id": "2849265",
-      "term": "信用膨張",
-      "reading": "しんようぼうちょう",
-      "meaning": "expansion of credit / inflation of credit"
-    },
-    {
-      "source_index": 11544,
-      "id": "1813170",
-      "term": "信用銘柄",
-      "reading": "しんようめいがら",
-      "meaning": "marginable stocks"
-    },
-    {
-      "source_index": 11545,
-      "id": "1359740",
-      "term": "信頼回復",
-      "reading": "しんらいかいふく",
-      "meaning": "recovering of trust / winning back of trust"
-    },
-    {
-      "source_index": 11546,
-      "id": "1938860",
-      "term": "信頼関係",
-      "reading": "しんらいかんけい",
-      "meaning": "relationship of mutual trust / fiduciary relation"
-    },
-    {
-      "source_index": 11547,
-      "id": "2540140",
-      "term": "信頼区間",
-      "reading": "しんらいくかん",
-      "meaning": "confidence interval"
-    },
-    {
-      "source_index": 11548,
-      "id": "2366770",
-      "term": "信頼係数",
-      "reading": "しんらいけいすう",
-      "meaning": "confidence coefficient"
-    },
-    {
-      "source_index": 11549,
-      "id": "2366780",
-      "term": "信頼限界",
-      "reading": "しんらいげんかい",
-      "meaning": "confidence limit"
-    },
-    {
-      "source_index": 11550,
-      "id": "1359760",
-      "term": "信頼醸成",
-      "reading": "しんらいじょうせい",
-      "meaning": "trust building / confidence building"
-    },
-    {
-      "source_index": 11551,
-      "id": "1362520",
-      "term": "森羅万象",
-      "reading": "しんらばんしょう",
-      "meaning": "all things in nature / the whole creation"
-    },
-    {
-      "source_index": 11552,
-      "id": "2395170",
-      "term": "心理音響",
-      "reading": "しんりおんきょう",
-      "meaning": "psychoacoustic"
-    },
-    {
-      "source_index": 11553,
-      "id": "1939210",
-      "term": "真理関数",
-      "reading": "しんりかんすう",
-      "meaning": "truth-function"
-    },
-    {
-      "source_index": 11554,
-      "id": "1361020",
-      "term": "心理学者",
-      "reading": "しんりがくしゃ",
-      "meaning": "psychologist"
-    },
-    {
-      "source_index": 11555,
-      "id": "1361030",
-      "term": "心理学的",
-      "reading": "しんりがくてき",
-      "meaning": "psychological"
-    },
-    {
-      "source_index": 11556,
-      "id": "2151670",
-      "term": "心理検査",
-      "reading": "しんりけんさ",
-      "meaning": "psychological test / psychological examination"
-    },
-    {
-      "source_index": 11557,
-      "id": "1938920",
-      "term": "心理作戦",
-      "reading": "しんりさくせん",
-      "meaning": "psychological tactics"
-    },
-    {
-      "source_index": 11558,
-      "id": "1921170",
-      "term": "心理主義",
-      "reading": "しんりしゅぎ",
-      "meaning": "psychologism"
-    },
-    {
-      "source_index": 11559,
-      "id": "1793620",
-      "term": "心理小説",
-      "reading": "しんりしょうせつ",
-      "meaning": "psychological novel"
-    },
-    {
-      "source_index": 11560,
-      "id": "2754100",
-      "term": "心理実験",
-      "reading": "しんりじっけん",
-      "meaning": "psychological experiment"
-    },
-    {
-      "source_index": 11561,
-      "id": "1938930",
-      "term": "心理状態",
-      "reading": "しんりじょうたい",
-      "meaning": "state of mind / (one's) mental state"
-    },
-    {
-      "source_index": 11562,
-      "id": "1793640",
-      "term": "心理戦争",
-      "reading": "しんりせんそう",
-      "meaning": "psychological warfare"
-    },
-    {
-      "source_index": 11563,
-      "id": "2366940",
-      "term": "真理値表",
-      "reading": "しんりちひょう",
-      "meaning": "truth table"
-    },
-    {
-      "source_index": 11564,
-      "id": "1361050",
-      "term": "心理描写",
-      "reading": "しんりびょうしゃ",
-      "meaning": "psychological description"
-    },
-    {
-      "source_index": 11565,
-      "id": "1938870",
-      "term": "侵略行為",
-      "reading": "しんりゃくこうい",
-      "meaning": "act of aggression"
-    },
-    {
-      "source_index": 11566,
-      "id": "1359920",
-      "term": "侵略戦争",
-      "reading": "しんりゃくせんそう",
-      "meaning": "war of aggression / war of conquest"
-    },
-    {
-      "source_index": 11567,
-      "id": "1365510",
-      "term": "診療支援",
-      "reading": "しんりょうしえん",
-      "meaning": "diagnostic aid"
-    },
-    {
-      "source_index": 11568,
-      "id": "2835113",
-      "term": "診療時間",
-      "reading": "しんりょうじかん",
-      "meaning": "consultation hours / surgery hours"
-    },
-    {
-      "source_index": 11569,
-      "id": "2841183",
-      "term": "新涼灯火",
-      "reading": "しんりょうとうか",
-      "meaning": "the coolness of early autumn is suitable for reading"
-    },
-    {
-      "source_index": 11570,
-      "id": "2541240",
-      "term": "心療内科",
-      "reading": "しんりょうないか",
-      "meaning": "(department of) psychosomatic medicine"
-    },
-    {
-      "source_index": 11571,
-      "id": "2085510",
-      "term": "診療報酬",
-      "reading": "しんりょうほうしゅう",
-      "meaning": "payment (system) for medical services"
-    },
-    {
-      "source_index": 11572,
-      "id": "2031410",
-      "term": "深慮遠謀",
-      "reading": "しんりょえんぼう",
-      "meaning": "deep design and forethought / a farsighted and deeply laid plan"
-    },
-    {
-      "source_index": 11573,
-      "id": "2832713",
-      "term": "心裡留保",
-      "reading": "しんりりゅうほ",
-      "meaning": "mental reservation / making a false declaration of intent"
-    },
-    {
-      "source_index": 11574,
-      "id": "1938940",
-      "term": "心理療法",
-      "reading": "しんりりょうほう",
-      "meaning": "psychotherapy"
-    },
-    {
-      "source_index": 11575,
-      "id": "1983010",
-      "term": "森林火災",
-      "reading": "しんりんかさい",
-      "meaning": "forest fire"
-    },
-    {
-      "source_index": 11576,
-      "id": "2835876",
-      "term": "森林限界",
-      "reading": "しんりんげんかい",
-      "meaning": "tree line / forest line / timberline"
-    },
-    {
-      "source_index": 11577,
-      "id": "1814350",
-      "term": "森林公園",
-      "reading": "しんりんこうえん",
-      "meaning": "forest park"
-    },
-    {
-      "source_index": 11578,
-      "id": "2850165",
-      "term": "森林更新",
-      "reading": "しんりんこうしん",
-      "meaning": "logging and regenerating forests (often with more commercial species)"
-    },
-    {
-      "source_index": 11579,
-      "id": "1995790",
-      "term": "森林再生",
-      "reading": "しんりんさいせい",
-      "meaning": "reforestation"
-    },
-    {
-      "source_index": 11580,
-      "id": "1939110",
-      "term": "森林地帯",
-      "reading": "しんりんちたい",
-      "meaning": "wooded country / wooded (timber) region / woodland"
-    },
-    {
-      "source_index": 11581,
-      "id": "1814400",
-      "term": "森林鉄道",
-      "reading": "しんりんてつどう",
-      "meaning": "forest railroad"
-    },
-    {
-      "source_index": 11582,
-      "id": "1995800",
-      "term": "森林破壊",
-      "reading": "しんりんはかい",
-      "meaning": "deforestation"
-    },
-    {
-      "source_index": 11583,
-      "id": "2857257",
-      "term": "森林伐採",
-      "reading": "しんりんばっさい",
-      "meaning": "deforestation"
-    },
-    {
-      "source_index": 11584,
-      "id": "1995810",
-      "term": "森林保護",
-      "reading": "しんりんほご",
-      "meaning": "forest protection"
-    },
-    {
-      "source_index": 11585,
-      "id": "2636120",
-      "term": "森林保全",
-      "reading": "しんりんほぜん",
-      "meaning": "forest preservation / forestry preservation"
-    },
-    {
-      "source_index": 11586,
-      "id": "1939330",
-      "term": "親類縁者",
-      "reading": "しんるいえんじゃ",
-      "meaning": "one's relatives by blood and marriage (in blood and law) / one's kith and kin"
-    },
     {
       "source_index": 11587,
       "id": "2868960",
@@ -7010,6 +6660,356 @@
       "term": "自由連想",
       "reading": "じゆうれんそう",
       "meaning": "free association"
+    },
+    {
+      "source_index": 12537,
+      "id": "2046870",
+      "term": "叙位叙勲",
+      "reading": "じょいじょくん",
+      "meaning": "conferment of Court ranks and decorations"
+    },
+    {
+      "source_index": 12538,
+      "id": "1617330",
+      "term": "上意下達",
+      "reading": "じょういかたつ",
+      "meaning": "conveying the will of the governing to the governed / top-down (system)"
+    },
+    {
+      "source_index": 12539,
+      "id": "1938590",
+      "term": "上位概念",
+      "reading": "じょういがいねん",
+      "meaning": "high level concept / superordinate concept / broader term"
+    },
+    {
+      "source_index": 12540,
+      "id": "2365500",
+      "term": "上位機種",
+      "reading": "じょういきしゅ",
+      "meaning": "high-end equipment"
+    },
+    {
+      "source_index": 12541,
+      "id": "1352610",
+      "term": "上位構造",
+      "reading": "じょういこうぞう",
+      "meaning": "higher structure"
+    },
+    {
+      "source_index": 12542,
+      "id": "2365510",
+      "term": "上位互換",
+      "reading": "じょういごかん",
+      "meaning": "downward compatible / backward compatible / compatible with input or components intended for lower tier or older systems, versions, etc."
+    },
+    {
+      "source_index": 12543,
+      "id": "2022470",
+      "term": "上位五番",
+      "reading": "じょういごばん",
+      "meaning": "last five matches of makushita division wrestlers"
+    },
+    {
+      "source_index": 12544,
+      "id": "2365530",
+      "term": "上位参照",
+      "reading": "じょういさんしょう",
+      "meaning": "superior reference"
+    },
+    {
+      "source_index": 12545,
+      "id": "2414140",
+      "term": "上位四校",
+      "reading": "じょういしこう",
+      "meaning": "schools of the upper quartile / highly ranked schools"
+    },
+    {
+      "source_index": 12546,
+      "id": "2856751",
+      "term": "上位打線",
+      "reading": "じょういだせん",
+      "meaning": "top of the (batting) order"
+    },
+    {
+      "source_index": 12547,
+      "id": "1750540",
+      "term": "情意投合",
+      "reading": "じょういとうごう",
+      "meaning": "(coincidence of) mutual sentiment / sharing the same sentiment with someone / finding oneself on the same wavelength as someone"
+    },
+    {
+      "source_index": 12548,
+      "id": "2408770",
+      "term": "上位文化",
+      "reading": "じょういぶんか",
+      "meaning": "high culture"
+    },
+    {
+      "source_index": 12549,
+      "id": "1352630",
+      "term": "上院議員",
+      "reading": "じょういんぎいん",
+      "meaning": "member of the upper house / senator"
+    },
+    {
+      "source_index": 12550,
+      "id": "1995450",
+      "term": "上院議会",
+      "reading": "じょういんぎかい",
+      "meaning": "Senate"
+    },
+    {
+      "source_index": 12551,
+      "id": "2853976",
+      "term": "上咽頭癌",
+      "reading": "じょういんとうがん",
+      "meaning": "epipharyngeal cancer / epiglottal carcinoma"
+    },
+    {
+      "source_index": 12552,
+      "id": "1938600",
+      "term": "上映時間",
+      "reading": "じょうえいじかん",
+      "meaning": "running time (of a movie)"
+    },
+    {
+      "source_index": 12553,
+      "id": "5741076",
+      "term": "上越本線",
+      "reading": "じょうえつほんせん",
+      "meaning": "Jōetsu Main Line"
+    },
+    {
+      "source_index": 12554,
+      "id": "2839057",
+      "term": "常温保存",
+      "reading": "じょうおんほぞん",
+      "meaning": "storage at room temperature"
+    },
+    {
+      "source_index": 12555,
+      "id": "2406950",
+      "term": "城郭都市",
+      "reading": "じょうかくとし",
+      "meaning": "fortified city / walled city"
+    },
+    {
+      "source_index": 12556,
+      "id": "1938740",
+      "term": "浄化装置",
+      "reading": "じょうかそうち",
+      "meaning": "purifier"
+    },
+    {
+      "source_index": 12557,
+      "id": "2852307",
+      "term": "浄化槽法",
+      "reading": "じょうかそうほう",
+      "meaning": "Purification Tank Act"
+    },
+    {
+      "source_index": 12558,
+      "id": "2844231",
+      "term": "城下の盟",
+      "reading": "じょうかのちかい",
+      "meaning": "capitulation / surrender / treaty signed under coercion"
+    },
+    {
+      "source_index": 12559,
+      "id": "2051860",
+      "term": "場外市場",
+      "reading": "じょうがいしじょう",
+      "meaning": "over-the-counter market / OTC market"
+    },
+    {
+      "source_index": 12560,
+      "id": "1773980",
+      "term": "場外取引",
+      "reading": "じょうがいとりひき",
+      "meaning": "over-the-counter trading / OTC trading / off-floor trading"
+    },
+    {
+      "source_index": 12561,
+      "id": "1774000",
+      "term": "場外馬券",
+      "reading": "じょうがいばけん",
+      "meaning": "off-track betting"
+    },
+    {
+      "source_index": 12562,
+      "id": "2798870",
+      "term": "場外乱闘",
+      "reading": "じょうがいらんとう",
+      "meaning": "brawl outside the stadium / fighting outside ring (wrestling) / ring-side battle"
+    },
+    {
+      "source_index": 12563,
+      "id": "2619560",
+      "term": "貞観地震",
+      "reading": "じょうがんじしん",
+      "meaning": "Sanriku earthquake of 869 CE"
+    },
+    {
+      "source_index": 12564,
+      "id": "2205530",
+      "term": "貞観時代",
+      "reading": "じょうがんじだい",
+      "meaning": "Jōgan period (of art history; 859-877 CE)"
+    },
+    {
+      "source_index": 12565,
+      "id": "1707220",
+      "term": "蒸気機関",
+      "reading": "じょうききかん",
+      "meaning": "steam engine"
+    },
+    {
+      "source_index": 12566,
+      "id": "2654910",
+      "term": "蒸気暖房",
+      "reading": "じょうきだんぼう",
+      "meaning": "steam heating"
+    },
+    {
+      "source_index": 12567,
+      "id": "2852580",
+      "term": "上気道炎",
+      "reading": "じょうきどうえん",
+      "meaning": "upper respiratory tract infection / URTI"
+    },
+    {
+      "source_index": 12568,
+      "id": "2830568",
+      "term": "乗客名簿",
+      "reading": "じょうきゃくめいぼ",
+      "meaning": "list of passengers / passenger manifest / passenger register"
+    },
+    {
+      "source_index": 12569,
+      "id": "2803710",
+      "term": "上級幹部",
+      "reading": "じょうきゅうかんぶ",
+      "meaning": "senior executive staff / upper management"
+    },
+    {
+      "source_index": 12570,
+      "id": "2829948",
+      "term": "上級国民",
+      "reading": "じょうきゅうこくみん",
+      "meaning": "the elite (class)"
+    },
+    {
+      "source_index": 12571,
+      "id": "2436640",
+      "term": "上級准尉",
+      "reading": "じょうきゅうじゅんい",
+      "meaning": "chief warrant officer"
+    },
+    {
+      "source_index": 12572,
+      "id": "1352960",
+      "term": "上級曹長",
+      "reading": "じょうきゅうそうちょう",
+      "meaning": "sergeant major"
+    },
+    {
+      "source_index": 12573,
+      "id": "1750440",
+      "term": "状況証拠",
+      "reading": "じょうきょうしょうこ",
+      "meaning": "circumstantial evidence"
+    },
+    {
+      "source_index": 12574,
+      "id": "2871243",
+      "term": "状況説明",
+      "reading": "じょうきょうせつめい",
+      "meaning": "briefing / status report / explanation of the situation"
+    },
+    {
+      "source_index": 12575,
+      "id": "2046880",
+      "term": "状況把握",
+      "reading": "じょうきょうはあく",
+      "meaning": "(one's) grasp of the situation / knowing how matters stand"
+    },
+    {
+      "source_index": 12576,
+      "id": "1938750",
+      "term": "状況判断",
+      "reading": "じょうきょうはんだん",
+      "meaning": "assessment of the situation / judging according to the situation"
+    },
+    {
+      "source_index": 12577,
+      "id": "2220550",
+      "term": "状況報告",
+      "reading": "じょうきょうほうこく",
+      "meaning": "situation report / status report / progress report"
+    },
+    {
+      "source_index": 12578,
+      "id": "2450120",
+      "term": "状況倫理",
+      "reading": "じょうきょうりんり",
+      "meaning": "situation ethics / situational ethics"
+    },
+    {
+      "source_index": 12579,
+      "id": "2402640",
+      "term": "常勤講師",
+      "reading": "じょうきんこうし",
+      "meaning": "(full-time) lecturer"
+    },
+    {
+      "source_index": 12580,
+      "id": "2871248",
+      "term": "情景描写",
+      "reading": "じょうけいびょうしゃ",
+      "meaning": "scenic description / delineation of nature"
+    },
+    {
+      "source_index": 12581,
+      "id": "2366110",
+      "term": "条件検索",
+      "reading": "じょうけんけんさく",
+      "meaning": "conditional search / filtering"
+    },
+    {
+      "source_index": 12582,
+      "id": "2366130",
+      "term": "条件指定",
+      "reading": "じょうけんしてい",
+      "meaning": "condition entry / conditional phrase"
+    },
+    {
+      "source_index": 12583,
+      "id": "2829985",
+      "term": "条件収束",
+      "reading": "じょうけんしゅうそく",
+      "meaning": "conditional convergence"
+    },
+    {
+      "source_index": 12584,
+      "id": "1771110",
+      "term": "条件闘争",
+      "reading": "じょうけんとうそう",
+      "meaning": "negotiation of conditions"
+    },
+    {
+      "source_index": 12585,
+      "id": "1771100",
+      "term": "条件反射",
+      "reading": "じょうけんはんしゃ",
+      "meaning": "conditioned reflex"
+    },
+    {
+      "source_index": 12586,
+      "id": "2366260",
+      "term": "条件分岐",
+      "reading": "じょうけんぶんき",
+      "meaning": "conditional branch"
     }
   ]
 }
