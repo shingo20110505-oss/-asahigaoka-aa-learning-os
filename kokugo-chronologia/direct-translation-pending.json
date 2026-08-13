@@ -1,716 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 13237,
-  "english_only_remaining": 1763,
+  "already_direct_japanese": 13337,
+  "english_only_remaining": 1663,
   "english_only_rank_counts": {
-    "(blank)": 1763
+    "(blank)": 1663
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 13237,
-      "id": "5356790",
-      "term": "住友生命",
-      "reading": "すみともせいめい",
-      "meaning": "Sumitomo Life"
-    },
-    {
-      "source_index": 13238,
-      "id": "2816230",
-      "term": "炭火焼肉",
-      "reading": "すみびやきにく",
-      "meaning": "charcoal-grilled yakiniku"
-    },
-    {
-      "source_index": 13239,
-      "id": "2839957",
-      "term": "天皇弥栄",
-      "reading": "すめらぎいやさか",
-      "meaning": "prosperity to the emperor"
-    },
-    {
-      "source_index": 13240,
-      "id": "2023060",
-      "term": "相撲甚句",
-      "reading": "すもうじんく",
-      "meaning": "sumo-themed song / song sung at sumo events"
-    },
-    {
-      "source_index": 13241,
-      "id": "2865996",
-      "term": "相撲茶屋",
-      "reading": "すもうぢゃや",
-      "meaning": "vendor at a sumo tournament"
-    },
-    {
-      "source_index": 13242,
-      "id": "2838888",
-      "term": "相撲に勝って勝負に負ける",
-      "reading": "すもうにかってしょうぶにまける",
-      "meaning": "to ultimately fail despite being in a favourable position / to fail at the last moment / to win the battle but lose the war"
-    },
-    {
-      "source_index": 13243,
-      "id": "1941400",
-      "term": "相撲部屋",
-      "reading": "すもうべや",
-      "meaning": "stable"
-    },
-    {
-      "source_index": 13244,
-      "id": "2023080",
-      "term": "相撲文字",
-      "reading": "すもうもじ",
-      "meaning": "writing style used to write the rankings"
-    },
-    {
-      "source_index": 13245,
-      "id": "2846095",
-      "term": "寸門多羅",
-      "reading": "すもたら",
-      "meaning": "incense variety used in kōdō (orig. from Sumatra)"
-    },
-    {
-      "source_index": 13246,
-      "id": "1700340",
-      "term": "寸借詐欺",
-      "reading": "すんしゃくさぎ",
-      "meaning": "petty swindling / petty swindler"
-    },
-    {
-      "source_index": 13247,
-      "id": "2031500",
-      "term": "寸進尺退",
-      "reading": "すんしんしゃくたい",
-      "meaning": "one step forward, many steps backward / little to gain and much to lose"
-    },
-    {
-      "source_index": 13248,
-      "id": "2031510",
-      "term": "寸善尺魔",
-      "reading": "すんぜんしゃくま",
-      "meaning": "in evil, there is odds / there is more evil than good in this world / one good thing tends to cause many bad things to happen"
-    },
-    {
-      "source_index": 13249,
-      "id": "2583090",
-      "term": "寸鉄人を殺す",
-      "reading": "すんてつひとをころす",
-      "meaning": "to make a cutting remark / to kill someone with a short blade"
-    },
-    {
-      "source_index": 13250,
-      "id": "2582750",
-      "term": "寸鉄人を刺す",
-      "reading": "すんてつひとをさす",
-      "meaning": "to make a cutting remark / to stab someone with a short blade"
-    },
-    {
-      "source_index": 13251,
-      "id": "2367790",
-      "term": "寸法記入",
-      "reading": "すんぽうきにゅう",
-      "meaning": "dimensioning"
-    },
-    {
-      "source_index": 13252,
-      "id": "2198860",
-      "term": "頭青花鶏",
-      "reading": "ずあおあとり",
-      "meaning": "chaffinch (Fringilla coelebs)"
-    },
-    {
-      "source_index": 13253,
-      "id": "2224450",
-      "term": "随意契約",
-      "reading": "ずいいけいやく",
-      "meaning": "private contract / negotiated contract / limited tender contract"
-    },
-    {
-      "source_index": 13254,
-      "id": "2047750",
-      "term": "随喜渇仰",
-      "reading": "ずいきかつごう",
-      "meaning": "worship with adoration / ardent admiration"
-    },
-    {
-      "source_index": 13255,
-      "id": "2858224",
-      "term": "随伴関手",
-      "reading": "ずいはんかんしゅ",
-      "meaning": "adjoint functors"
-    },
-    {
-      "source_index": 13256,
-      "id": "2838375",
-      "term": "随伴行列",
-      "reading": "ずいはんぎょうれつ",
-      "meaning": "adjoint matrix / Hermitian conjugate"
-    },
-    {
-      "source_index": 13257,
-      "id": "2047790",
-      "term": "随伴現象",
-      "reading": "ずいはんげんしょう",
-      "meaning": "epiphenomenon"
-    },
-    {
-      "source_index": 13258,
-      "id": "2669970",
-      "term": "随伴植物",
-      "reading": "ずいはんしょくぶつ",
-      "meaning": "companion plants"
-    },
-    {
-      "source_index": 13259,
-      "id": "2838168",
-      "term": "髄膜炎菌",
-      "reading": "ずいまくえんきん",
-      "meaning": "meningococcus (Neisseria meningitidis)"
-    },
-    {
-      "source_index": 13260,
-      "id": "1692390",
-      "term": "頭寒足熱",
-      "reading": "ずかんそくねつ",
-      "meaning": "keeping the head cool and feet warm"
-    },
-    {
-      "source_index": 13261,
-      "id": "2530600",
-      "term": "頭蓋穿孔",
-      "reading": "ずがいせんこう",
-      "meaning": "trepanation"
-    },
-    {
-      "source_index": 13262,
-      "id": "2103730",
-      "term": "図画工作",
-      "reading": "ずがこうさく",
-      "meaning": "drawing and manual arts (school subject) / arts and crafts"
-    },
-    {
-      "source_index": 13263,
-      "id": "2440410",
-      "term": "頭巾海豹",
-      "reading": "ずきんあざらし",
-      "meaning": "hooded seal (Cystophora cristata)"
-    },
-    {
-      "source_index": 13264,
-      "id": "2367190",
-      "term": "図形記号",
-      "reading": "ずけいきごう",
-      "meaning": "graphic symbol"
-    },
-    {
-      "source_index": 13265,
-      "id": "2367210",
-      "term": "図形処理",
-      "reading": "ずけいしょり",
-      "meaning": "computer graphics"
-    },
-    {
-      "source_index": 13266,
-      "id": "2367230",
-      "term": "図形文字",
-      "reading": "ずけいもじ",
-      "meaning": "graphic character"
-    },
-    {
-      "source_index": 13267,
-      "id": "2367250",
-      "term": "図形要素",
-      "reading": "ずけいようそ",
-      "meaning": "graphic element"
-    },
-    {
-      "source_index": 13268,
-      "id": "2047820",
-      "term": "杜撰脱漏",
-      "reading": "ずさんだつろう",
-      "meaning": "careless (slipshod) and with many omissions"
-    },
-    {
-      "source_index": 13269,
-      "id": "2846702",
-      "term": "図上演習",
-      "reading": "ずじょうえんしゅう",
-      "meaning": "war game"
-    },
-    {
-      "source_index": 13270,
-      "id": "2863455",
-      "term": "頭上注意",
-      "reading": "ずじょうちゅうい",
-      "meaning": "Watch Your Head"
-    },
-    {
-      "source_index": 13271,
-      "id": "5563401",
-      "term": "頭痛学会",
-      "reading": "ずつうがっかい",
-      "meaning": "American Headache Society / AHS"
-    },
-    {
-      "source_index": 13272,
-      "id": "5563402",
-      "term": "頭痛財団",
-      "reading": "ずつうざいだん",
-      "meaning": "National Headache Foundation"
-    },
-    {
-      "source_index": 13273,
-      "id": "2185540",
-      "term": "頭痛の種",
-      "reading": "ずつうのたね",
-      "meaning": "cause for headaches / pain in the neck / source of worry"
-    },
-    {
-      "source_index": 13274,
-      "id": "1855390",
-      "term": "図に乗る",
-      "reading": "ずにのる",
-      "meaning": "to get carried away / to become over-excited / to push one's luck"
-    },
-    {
-      "source_index": 13275,
-      "id": "2629860",
-      "term": "頭脳集団",
-      "reading": "ずのうしゅうだん",
-      "meaning": "think tank"
-    },
-    {
-      "source_index": 13276,
-      "id": "2047830",
-      "term": "頭脳明晰",
-      "reading": "ずのうめいせき",
-      "meaning": "clearheadedness / sharpness of mind"
-    },
-    {
-      "source_index": 13277,
-      "id": "1692370",
-      "term": "頭脳流出",
-      "reading": "ずのうりゅうしゅつ",
-      "meaning": "brain drain / outflow of talent"
-    },
-    {
-      "source_index": 13278,
-      "id": "2827299",
-      "term": "頭脳労働",
-      "reading": "ずのうろうどう",
-      "meaning": "brain work / mental work / nonmanual labor"
-    },
-    {
-      "source_index": 13279,
-      "id": "2367280",
-      "term": "図表一覧",
-      "reading": "ずひょういちらん",
-      "meaning": "list of illustrations"
-    },
-    {
-      "source_index": 13280,
-      "id": "2830893",
-      "term": "性愛文学",
-      "reading": "せいあいぶんがく",
-      "meaning": "erotic literature"
-    },
-    {
-      "source_index": 13281,
-      "id": "2872250",
-      "term": "制圧射撃",
-      "reading": "せいあつしゃげき",
-      "meaning": "suppressive fire / neutralization fire"
-    },
-    {
-      "source_index": 13282,
-      "id": "2222030",
-      "term": "西安事件",
-      "reading": "せいあんじけん",
-      "meaning": "Xi'an Incident (involving the arrest and confinement of Chiang Kai-shek; December 1936)"
-    },
-    {
-      "source_index": 13283,
-      "id": "2869304",
-      "term": "性依存症",
-      "reading": "せいいぞんしょう",
-      "meaning": "sexual addiction"
-    },
-    {
-      "source_index": 13284,
-      "id": "2847885",
-      "term": "精鋭部隊",
-      "reading": "せいえいぶたい",
-      "meaning": "elite unit / elite troop"
-    },
-    {
-      "source_index": 13285,
-      "id": "2845007",
-      "term": "精液検査",
-      "reading": "せいえきけんさ",
-      "meaning": "sperm test / semen analysis / seminogram"
-    },
-    {
-      "source_index": 13286,
-      "id": "1940600",
-      "term": "西欧諸国",
-      "reading": "せいおうしょこく",
-      "meaning": "West European countries"
-    },
-    {
-      "source_index": 13287,
-      "id": "1940610",
-      "term": "西欧文明",
-      "reading": "せいおうぶんめい",
-      "meaning": "Western civilization / Western civilisation"
-    },
-    {
-      "source_index": 13288,
-      "id": "2714590",
-      "term": "声音文字",
-      "reading": "せいおんもじ",
-      "meaning": "phonetic symbol / phonogram"
-    },
-    {
-      "source_index": 13289,
-      "id": "2047840",
-      "term": "政界工作",
-      "reading": "せいかいこうさく",
-      "meaning": "currying of political favor / buying political influence"
-    },
-    {
-      "source_index": 13290,
-      "id": "2047850",
-      "term": "政界再編",
-      "reading": "せいかいさいへん",
-      "meaning": "political realignment / a realignment of political parties"
-    },
-    {
-      "source_index": 13291,
-      "id": "1750140",
-      "term": "青果市場",
-      "reading": "せいかいちば",
-      "meaning": "fruit and vegetable market"
-    },
-    {
-      "source_index": 13292,
-      "id": "2047860",
-      "term": "政界余聞",
-      "reading": "せいかいよぶん",
-      "meaning": "tidbits of political gossip"
-    },
-    {
-      "source_index": 13293,
-      "id": "2863709",
-      "term": "性科学者",
-      "reading": "せいかがくしゃ",
-      "meaning": "sexologist"
-    },
-    {
-      "source_index": 13294,
-      "id": "1785030",
-      "term": "製菓業者",
-      "reading": "せいかぎょうしゃ",
-      "meaning": "confectioner"
-    },
-    {
-      "source_index": 13295,
-      "id": "2869928",
-      "term": "性格異常",
-      "reading": "せいかくいじょう",
-      "meaning": "character disorder / personality disorder"
-    },
-    {
-      "source_index": 13296,
-      "id": "2146020",
-      "term": "正格活用",
-      "reading": "せいかくかつよう",
-      "meaning": "regular conjugation (declension, inflection)"
-    },
-    {
-      "source_index": 13297,
-      "id": "2130330",
-      "term": "性格検査",
-      "reading": "せいかくけんさ",
-      "meaning": "personality test"
-    },
-    {
-      "source_index": 13298,
-      "id": "2869929",
-      "term": "性格障害",
-      "reading": "せいかくしょうがい",
-      "meaning": "character disorder / personality disorder"
-    },
-    {
-      "source_index": 13299,
-      "id": "1647650",
-      "term": "性格診断",
-      "reading": "せいかくしんだん",
-      "meaning": "personality assessment / personality analysis"
-    },
-    {
-      "source_index": 13300,
-      "id": "2847588",
-      "term": "性格俳優",
-      "reading": "せいかくはいゆう",
-      "meaning": "character actor / character actress"
-    },
-    {
-      "source_index": 13301,
-      "id": "2805600",
-      "term": "性格判断",
-      "reading": "せいかくはんだん",
-      "meaning": "character assessment / personality analysis"
-    },
-    {
-      "source_index": 13302,
-      "id": "2805590",
-      "term": "性格判別",
-      "reading": "せいかくはんべつ",
-      "meaning": "personality assessment"
-    },
-    {
-      "source_index": 13303,
-      "id": "1376790",
-      "term": "正確爆撃",
-      "reading": "せいかくばくげき",
-      "meaning": "pinpoint bombing"
-    },
-    {
-      "source_index": 13304,
-      "id": "2047870",
-      "term": "性格美人",
-      "reading": "せいかくびじん",
-      "meaning": "woman with a wonderful personality"
-    },
-    {
-      "source_index": 13305,
-      "id": "2047880",
-      "term": "性格描写",
-      "reading": "せいかくびょうしゃ",
-      "meaning": "character portrayal / characterization"
-    },
-    {
-      "source_index": 13306,
-      "id": "2805580",
-      "term": "性格分析",
-      "reading": "せいかくぶんせき",
-      "meaning": "character analysis / personality assessment"
-    },
-    {
-      "source_index": 13307,
-      "id": "2047890",
-      "term": "正確無比",
-      "reading": "せいかくむひ",
-      "meaning": "unmatched (unparalleled) accuracy"
-    },
-    {
-      "source_index": 13308,
-      "id": "2131490",
-      "term": "性格類型",
-      "reading": "せいかくるいけい",
-      "meaning": "character type / personality type"
-    },
-    {
-      "source_index": 13309,
-      "id": "5443750",
-      "term": "西華産業",
-      "reading": "せいかさんぎょう",
-      "meaning": "Seika Corporation"
-    },
-    {
-      "source_index": 13310,
-      "id": "2065390",
-      "term": "成果主義",
-      "reading": "せいかしゅぎ",
-      "meaning": "results-oriented approach / resultism / belief in results"
-    },
-    {
-      "source_index": 13311,
-      "id": "1571210",
-      "term": "臍下丹田",
-      "reading": "せいかたんでん",
-      "meaning": "pit of the stomach"
-    },
-    {
-      "source_index": 13312,
-      "id": "5437612",
-      "term": "清華大学",
-      "reading": "せいかだいがく",
-      "meaning": "Tsinghua University"
-    },
-    {
-      "source_index": 13313,
-      "id": "1940230",
-      "term": "生活環境",
-      "reading": "せいかつかんきょう",
-      "meaning": "one's (living) environment"
-    },
-    {
-      "source_index": 13314,
-      "id": "2866586",
-      "term": "生活機能",
-      "reading": "せいかつきのう",
-      "meaning": "vital function"
-    },
-    {
-      "source_index": 13315,
-      "id": "2859728",
-      "term": "生活基盤",
-      "reading": "せいかつきばん",
-      "meaning": "foundations of livelihood"
-    },
-    {
-      "source_index": 13316,
-      "id": "1940250",
-      "term": "生活空間",
-      "reading": "せいかつくうかん",
-      "meaning": "living space"
-    },
-    {
-      "source_index": 13317,
-      "id": "5743521",
-      "term": "生活彩家",
-      "reading": "せいかつさいか",
-      "meaning": "Seikatsu Saika (convenience store belonging to Poplar Co. Ltd.)"
-    },
-    {
-      "source_index": 13318,
-      "id": "2838339",
-      "term": "生活雑貨",
-      "reading": "せいかつざっか",
-      "meaning": "daily necessities / goods for everyday life"
-    },
-    {
-      "source_index": 13319,
-      "id": "2047900",
-      "term": "生活残業",
-      "reading": "せいかつざんぎょう",
-      "meaning": "(working) overtime to make ends meet (to support one's lifestyle)"
-    },
-    {
-      "source_index": 13320,
-      "id": "2760720",
-      "term": "生活支援",
-      "reading": "せいかつしえん",
-      "meaning": "livelihood support / maintenance"
-    },
-    {
-      "source_index": 13321,
-      "id": "1940260",
-      "term": "生活指導",
-      "reading": "せいかつしどう",
-      "meaning": "civic guidance / non-curricular educational guidance / medical guidance"
-    },
-    {
-      "source_index": 13322,
-      "id": "2834926",
-      "term": "生活習慣",
-      "reading": "せいかつしゅうかん",
-      "meaning": "lifestyle / way of living"
-    },
-    {
-      "source_index": 13323,
-      "id": "2063660",
-      "term": "生活信条",
-      "reading": "せいかつしんじょう",
-      "meaning": "one's philosophy of life"
-    },
-    {
-      "source_index": 13324,
-      "id": "1830090",
-      "term": "生活水準",
-      "reading": "せいかつすいじゅん",
-      "meaning": "standard of living"
-    },
-    {
-      "source_index": 13325,
-      "id": "1940270",
-      "term": "生活設計",
-      "reading": "せいかつせっけい",
-      "meaning": "plan for one's life / life planning"
-    },
-    {
-      "source_index": 13326,
-      "id": "2756290",
-      "term": "生活騒音",
-      "reading": "せいかつそうおん",
-      "meaning": "daily life noise / (excessive) noise that arises at home from everyday occurrences"
-    },
-    {
-      "source_index": 13327,
-      "id": "2836996",
-      "term": "生活態度",
-      "reading": "せいかつたいど",
-      "meaning": "way of living / manner of living / lifestyle"
-    },
-    {
-      "source_index": 13328,
-      "id": "2847696",
-      "term": "生活道路",
-      "reading": "せいかつどうろ",
-      "meaning": "residential road / residential street / neighborhood road"
-    },
-    {
-      "source_index": 13329,
-      "id": "2627520",
-      "term": "生活年齢",
-      "reading": "せいかつねんれい",
-      "meaning": "chronological age"
-    },
-    {
-      "source_index": 13330,
-      "id": "2832771",
-      "term": "生活排水",
-      "reading": "せいかつはいすい",
-      "meaning": "domestic wastewater / household effluent"
-    },
-    {
-      "source_index": 13331,
-      "id": "1830080",
-      "term": "生活反応",
-      "reading": "せいかつはんのう",
-      "meaning": "vital reaction"
-    },
-    {
-      "source_index": 13332,
-      "id": "2047910",
-      "term": "生活不安",
-      "reading": "せいかつふあん",
-      "meaning": "worry (uncertainty, uneasiness, insecurity) about one's life (future)"
-    },
-    {
-      "source_index": 13333,
-      "id": "1940290",
-      "term": "生活扶助",
-      "reading": "せいかつふじょ",
-      "meaning": "livelihood assistance"
-    },
-    {
-      "source_index": 13334,
-      "id": "2698780",
-      "term": "生活物資",
-      "reading": "せいかつぶっし",
-      "meaning": "living necessities / everyday commodities / daily commodities"
-    },
-    {
-      "source_index": 13335,
-      "id": "2800450",
-      "term": "生活文化",
-      "reading": "せいかつぶんか",
-      "meaning": "culture of everyday life"
-    },
-    {
-      "source_index": 13336,
-      "id": "1830110",
-      "term": "生活保護",
-      "reading": "せいかつほご",
-      "meaning": "livelihood protection / public assistance / welfare"
-    },
     {
       "source_index": 13337,
       "id": "1830140",
@@ -7010,6 +6310,706 @@
       "term": "歯を食いしばる",
       "reading": "はをくいしばる",
       "meaning": "to bear up in tragedy / to stand pain well / to hold one's temper"
+    },
+    {
+      "source_index": 14237,
+      "id": "2032290",
+      "term": "反間苦肉",
+      "reading": "はんかんくにく",
+      "meaning": "stratagem for causing a rift in the enemy camp by using a seditious plot"
+    },
+    {
+      "source_index": 14238,
+      "id": "1479080",
+      "term": "半官半民",
+      "reading": "はんかんはんみん",
+      "meaning": "semi-governmental / semi-official"
+    },
+    {
+      "source_index": 14239,
+      "id": "2836088",
+      "term": "反感を買う",
+      "reading": "はんかんをかう",
+      "meaning": "to antagonize / to provoke antipathy"
+    },
+    {
+      "source_index": 14240,
+      "id": "2838671",
+      "term": "反響を呼ぶ",
+      "reading": "はんきょうをよぶ",
+      "meaning": "to make a splash / to evoke a response / to meet with a reaction"
+    },
+    {
+      "source_index": 14241,
+      "id": "1479350",
+      "term": "半死半生",
+      "reading": "はんしはんしょう",
+      "meaning": "all but dead / half killed"
+    },
+    {
+      "source_index": 14242,
+      "id": "1479460",
+      "term": "半信半疑",
+      "reading": "はんしんはんぎ",
+      "meaning": "half in doubt / half-convinced / dubious"
+    },
+    {
+      "source_index": 14243,
+      "id": "1479500",
+      "term": "半身不随",
+      "reading": "はんしんふずい",
+      "meaning": "hemiplegia (paralysis on one side of the body)"
+    },
+    {
+      "source_index": 14244,
+      "id": "2052260",
+      "term": "半睡半醒",
+      "reading": "はんすいはんせい",
+      "meaning": "half asleep and half awake"
+    },
+    {
+      "source_index": 14245,
+      "id": "2052280",
+      "term": "半醒半睡",
+      "reading": "はんせいはんすい",
+      "meaning": "half awake and half asleep"
+    },
+    {
+      "source_index": 14246,
+      "id": "2032300",
+      "term": "版籍奉還",
+      "reading": "はんせきほうかん",
+      "meaning": "return of the land and people from the feudal lords to the Emperor"
+    },
+    {
+      "source_index": 14247,
+      "id": "2032280",
+      "term": "半知半解",
+      "reading": "はんちはんかい",
+      "meaning": "superficial knowledge / half knowledge"
+    },
+    {
+      "source_index": 14248,
+      "id": "1481730",
+      "term": "繁文縟礼",
+      "reading": "はんぶんじょくれい",
+      "meaning": "red-tapism"
+    },
+    {
+      "source_index": 14249,
+      "id": "1481020",
+      "term": "反面教師",
+      "reading": "はんめんきょうし",
+      "meaning": "bad example from which one can learn / good example of what not to do (esp. how not to behave) / negative example"
+    },
+    {
+      "source_index": 14250,
+      "id": "2052330",
+      "term": "反目嫉視",
+      "reading": "はんもくしっし",
+      "meaning": "jealousy and enmity / being jealous of and at odds with (each other)"
+    },
+    {
+      "source_index": 14251,
+      "id": "2052340",
+      "term": "煩悶懊悩",
+      "reading": "はんもんおうのう",
+      "meaning": "anguish / agony"
+    },
+    {
+      "source_index": 14252,
+      "id": "2032230",
+      "term": "馬鹿慇懃",
+      "reading": "ばかいんぎん",
+      "meaning": "overdone politeness / polite to a fault / feigned politeness"
+    },
+    {
+      "source_index": 14253,
+      "id": "2416950",
+      "term": "ばかりが能ではない",
+      "reading": "ばかりがのうではない",
+      "meaning": "it is not everything to ..."
+    },
+    {
+      "source_index": 14254,
+      "id": "1928870",
+      "term": "馬脚を現す",
+      "reading": "ばきゃくをあらわす",
+      "meaning": "to reveal one's true nature / to show one's true colours / to give oneself away"
+    },
+    {
+      "source_index": 14255,
+      "id": "2863695",
+      "term": "化けの皮が剥がれる",
+      "reading": "ばけのかわがはがれる",
+      "meaning": "to betray oneself / to reveal one's true colors / to show the cloven hoof"
+    },
+    {
+      "source_index": 14256,
+      "id": "1903230",
+      "term": "化けの皮を現す",
+      "reading": "ばけのかわをあらわす",
+      "meaning": "to show one's true colors / to expose one's true character"
+    },
+    {
+      "source_index": 14257,
+      "id": "1186700",
+      "term": "化けの皮を剥ぐ",
+      "reading": "ばけのかわをはぐ",
+      "meaning": "to unmask (someone's true nature)"
+    },
+    {
+      "source_index": 14258,
+      "id": "1471620",
+      "term": "馬耳東風",
+      "reading": "ばじとうふう",
+      "meaning": "utter indifference / talking to the wall / praying to deaf ears"
+    },
+    {
+      "source_index": 14259,
+      "id": "2552940",
+      "term": "抜苦与楽",
+      "reading": "ばっくよらく",
+      "meaning": "a Buddha or Bodhisattva taking away suffering and conferring peace"
+    },
+    {
+      "source_index": 14260,
+      "id": "2052080",
+      "term": "跋扈跳梁",
+      "reading": "ばっこちょうりょう",
+      "meaning": "evildoers being rampant and roaming at will"
+    },
+    {
+      "source_index": 14261,
+      "id": "2052120",
+      "term": "抜本塞源",
+      "reading": "ばっぽんそくげん",
+      "meaning": "eradication of (sources of) evil / laying the ax to the root of evil"
+    },
+    {
+      "source_index": 14262,
+      "id": "2052090",
+      "term": "抜山蓋世",
+      "reading": "ばつざんがいせい",
+      "meaning": "great strength and energy (of a mighty hero) / Herculean strength and vitality"
+    },
+    {
+      "source_index": 14263,
+      "id": "2845280",
+      "term": "ババを引く",
+      "reading": "ばばをひく",
+      "meaning": "to get the short end of the stick / to get the bad side of a bargain / to draw the joker (when playing Old Maid)"
+    },
+    {
+      "source_index": 14264,
+      "id": "2032220",
+      "term": "罵詈讒謗",
+      "reading": "ばりざんぼう",
+      "meaning": "reviling / vilification / abusive language"
+    },
+    {
+      "source_index": 14265,
+      "id": "1674390",
+      "term": "罵詈雑言",
+      "reading": "ばりぞうごん",
+      "meaning": "all manner of (verbal) abuse / all kinds of names / abusive language"
+    },
+    {
+      "source_index": 14266,
+      "id": "2032630",
+      "term": "万古不易",
+      "reading": "ばんこふえき",
+      "meaning": "eternally unchanging"
+    },
+    {
+      "source_index": 14267,
+      "id": "1732880",
+      "term": "盤根錯節",
+      "reading": "ばんこんさくせつ",
+      "meaning": "hard-to-penetrate event / hard-to-penetrate situation"
+    },
+    {
+      "source_index": 14268,
+      "id": "2032640",
+      "term": "万死一生",
+      "reading": "ばんしいっしょう",
+      "meaning": "advancing in the face of death / having a narrow escape from the jaw of death"
+    },
+    {
+      "source_index": 14269,
+      "id": "2851537",
+      "term": "万死に値する",
+      "reading": "ばんしにあたいする",
+      "meaning": "to be the worst of the worst / to deserve to die ten thousand deaths"
+    },
+    {
+      "source_index": 14270,
+      "id": "2032270",
+      "term": "伴食宰相",
+      "reading": "ばんしょくさいしょう",
+      "meaning": "incompetent cabinet minister / figurehead minister"
+    },
+    {
+      "source_index": 14271,
+      "id": "1651840",
+      "term": "伴食大臣",
+      "reading": "ばんしょくだいじん",
+      "meaning": "nominal (figurehead) minister / titular minister"
+    },
+    {
+      "source_index": 14272,
+      "id": "2032650",
+      "term": "万事万端",
+      "reading": "ばんじばんたん",
+      "meaning": "everything / all things / all affairs"
+    },
+    {
+      "source_index": 14273,
+      "id": "1526200",
+      "term": "万世一系",
+      "reading": "ばんせいいっけい",
+      "meaning": "unbroken imperial line"
+    },
+    {
+      "source_index": 14274,
+      "id": "1526210",
+      "term": "万世不易",
+      "reading": "ばんせいふえき",
+      "meaning": "eternity / perpetuity"
+    },
+    {
+      "source_index": 14275,
+      "id": "1526250",
+      "term": "万代不易",
+      "reading": "ばんだいふえき",
+      "meaning": "eternity / perpetuity"
+    },
+    {
+      "source_index": 14276,
+      "id": "2032660",
+      "term": "万物流転",
+      "reading": "ばんぶつるてん",
+      "meaning": "all things are in a state of flux / everything is constantly changing"
+    },
+    {
+      "source_index": 14277,
+      "id": "2052320",
+      "term": "万夫不当",
+      "reading": "ばんぷふとう",
+      "meaning": "being a match for thousands / being a mighty warrior (combatant)"
+    },
+    {
+      "source_index": 14278,
+      "id": "2032670",
+      "term": "万緑一紅",
+      "reading": "ばんりょくいっこう",
+      "meaning": "one red flower standing out in a sea of green vegetation / one item of quality standing out among many / one woman among many men"
+    },
+    {
+      "source_index": 14279,
+      "id": "1194270",
+      "term": "火遊び",
+      "reading": "ひあそび",
+      "meaning": "playing with fire"
+    },
+    {
+      "source_index": 14280,
+      "id": "1483230",
+      "term": "悲歌慷慨",
+      "reading": "ひかこうがい",
+      "meaning": "indignant lamentation over the evils of the times"
+    },
+    {
+      "source_index": 14281,
+      "id": "2052360",
+      "term": "飛花落葉",
+      "reading": "ひからくよう",
+      "meaning": "scattering of the blossoms and falling of the leaves / the impermanence of worldly things"
+    },
+    {
+      "source_index": 14282,
+      "id": "2839430",
+      "term": "光と影",
+      "reading": "ひかりとかげ",
+      "meaning": "rise and fall / ups and downs / shame and glory"
+    },
+    {
+      "source_index": 14283,
+      "id": "2837236",
+      "term": "引かれ者の小唄",
+      "reading": "ひかれもののこうた",
+      "meaning": "putting on a brave front / pretending one doesn't care / song of a convict on their way to prison"
+    },
+    {
+      "source_index": 14284,
+      "id": "1626690",
+      "term": "火がつく",
+      "reading": "ひがつく",
+      "meaning": "to catch fire / to be ignited / to ignite"
+    },
+    {
+      "source_index": 14285,
+      "id": "2862105",
+      "term": "引きが強い",
+      "reading": "ひきがつよい",
+      "meaning": "having good luck (e.g. in drawing a card or tile in a game)"
+    },
+    {
+      "source_index": 14286,
+      "id": "1483270",
+      "term": "悲喜こもごも",
+      "reading": "ひきこもごも",
+      "meaning": "bittersweet / having mingled feelings of joy and sorrow / joy and sorrow alternating in one's heart"
+    },
+    {
+      "source_index": 14287,
+      "id": "2052380",
+      "term": "卑怯千万",
+      "reading": "ひきょうせんばん",
+      "meaning": "very mean (sneaky) / extremely unsportsmanlike"
+    },
+    {
+      "source_index": 14288,
+      "id": "2847213",
+      "term": "引けを取らない",
+      "reading": "ひけをとらない",
+      "meaning": "not losing out (to) / holding one's own (against) / comparing favorably (with)"
+    },
+    {
+      "source_index": 14289,
+      "id": "2117170",
+      "term": "引けを取る",
+      "reading": "ひけをとる",
+      "meaning": "to be outdone (by) / to be in inferior (to) / to compare unfavorably (with)"
+    },
+    {
+      "source_index": 14290,
+      "id": "2419460",
+      "term": "卑下自慢",
+      "reading": "ひげじまん",
+      "meaning": "boasting of one's humility"
+    },
+    {
+      "source_index": 14291,
+      "id": "1484880",
+      "term": "非行に走る",
+      "reading": "ひこうにはしる",
+      "meaning": "to turn to delinquency / to turn to crime (of a child)"
+    },
+    {
+      "source_index": 14292,
+      "id": "2419470",
+      "term": "庇を貸して母屋を取られる",
+      "reading": "ひさしをかしておもやをとられる",
+      "meaning": "to have one's kindness taken advantage of / give him an inch and he'll take a mile / to lend out the eaves but have one's whole house taken"
+    },
+    {
+      "source_index": 14293,
+      "id": "2419510",
+      "term": "膝が笑う",
+      "reading": "ひざがわらう",
+      "meaning": "to have one's knees be about to give way"
+    },
+    {
+      "source_index": 14294,
+      "id": "2869762",
+      "term": "膝を折る",
+      "reading": "ひざをおる",
+      "meaning": "to surrender / to give in / to yield"
+    },
+    {
+      "source_index": 14295,
+      "id": "2869763",
+      "term": "膝を屈する",
+      "reading": "ひざをくっする",
+      "meaning": "to surrender / to give in / to yield"
+    },
+    {
+      "source_index": 14296,
+      "id": "2032320",
+      "term": "飛耳長目",
+      "reading": "ひじちょうもく",
+      "meaning": "sharp eyes and ears used for collecting information far and wide / having the acumen and shrewd discernment gained by widely-collected information / being well-versed on a subject"
+    },
+    {
+      "source_index": 14297,
+      "id": "2830770",
+      "term": "匪石之心",
+      "reading": "ひせきのこころ",
+      "meaning": "steadfastness / firmness in one's conviction / having a heart that does not change as easily as a stone rolls about"
+    },
+    {
+      "source_index": 14298,
+      "id": "2052400",
+      "term": "皮相浅薄",
+      "reading": "ひそうせんぱく",
+      "meaning": "shallow and unwise / superficial and thoughtless"
+    },
+    {
+      "source_index": 14299,
+      "id": "2841643",
+      "term": "額に汗する",
+      "reading": "ひたいにあせする",
+      "meaning": "to work diligently"
+    },
+    {
+      "source_index": 14300,
+      "id": "1789400",
+      "term": "左団扇",
+      "reading": "ひだりうちわ",
+      "meaning": "(living with) ease and comfort / easy street / life without financial worries"
+    },
+    {
+      "source_index": 14301,
+      "id": "1487280",
+      "term": "匹夫匹婦",
+      "reading": "ひっぷひっぷ",
+      "meaning": "coarse men and women"
+    },
+    {
+      "source_index": 14302,
+      "id": "1166580",
+      "term": "一泡吹かせる",
+      "reading": "ひとあわふかせる",
+      "meaning": "to give someone a surprise / to catch off guard and fluster / to frustrate (e.g. someone's plans)"
+    },
+    {
+      "source_index": 14303,
+      "id": "2418220",
+      "term": "人の口に戸は立てられず",
+      "reading": "ひとのくちにとはたてられず",
+      "meaning": "people will talk"
+    },
+    {
+      "source_index": 14304,
+      "id": "2788200",
+      "term": "人のふんどしで相撲を取る",
+      "reading": "ひとのふんどしですもうをとる",
+      "meaning": "to profit at someone else's expense / to rob Peter to pay Paul / to take risks with other people's money"
+    },
+    {
+      "source_index": 14305,
+      "id": "2856007",
+      "term": "人を食う",
+      "reading": "ひとをくう",
+      "meaning": "to be insolent / to be arrogant / to be impudent"
+    },
+    {
+      "source_index": 14306,
+      "id": "2845574",
+      "term": "日向に氷",
+      "reading": "ひなたにこおり",
+      "meaning": "something disappearing bit by bit / ice in the sun"
+    },
+    {
+      "source_index": 14307,
+      "id": "2032310",
+      "term": "非難轟々",
+      "reading": "ひなんごうごう",
+      "meaning": "loud criticism / torrent of criticism / fierce denouncement (from many people)"
+    },
+    {
+      "source_index": 14308,
+      "id": "2835733",
+      "term": "火に油",
+      "reading": "ひにあぶら",
+      "meaning": "(adding) fuel to the fire"
+    },
+    {
+      "source_index": 14309,
+      "id": "2145230",
+      "term": "火に油を注ぐ",
+      "reading": "ひにあぶらをそそぐ",
+      "meaning": "to add fuel to the fire / to make things worse / to stir things up"
+    },
+    {
+      "source_index": 14310,
+      "id": "2862474",
+      "term": "火にかける",
+      "reading": "ひにかける",
+      "meaning": "to heat on a fire (e.g. a frying pan)"
+    },
+    {
+      "source_index": 14311,
+      "id": "2833496",
+      "term": "火の海",
+      "reading": "ひのうみ",
+      "meaning": "sea of fire / sea of flames / blazing inferno"
+    },
+    {
+      "source_index": 14312,
+      "id": "1193670",
+      "term": "火の車",
+      "reading": "ひのくるま",
+      "meaning": "fiery chariot (that carries the souls of sinners into hell)"
+    },
+    {
+      "source_index": 14313,
+      "id": "1193680",
+      "term": "火の手",
+      "reading": "ひのて",
+      "meaning": "flame / blaze / fire"
+    },
+    {
+      "source_index": 14314,
+      "id": "2416810",
+      "term": "火の用心",
+      "reading": "ひのようじん",
+      "meaning": "be careful about fire / watch out for fire"
+    },
+    {
+      "source_index": 14315,
+      "id": "2792180",
+      "term": "火花を散らす",
+      "reading": "ひばなをちらす",
+      "meaning": "to give off sparks / to spark"
+    },
+    {
+      "source_index": 14316,
+      "id": "2803230",
+      "term": "日々に新たなり",
+      "reading": "ひびにあらたなり",
+      "meaning": "keep improving every day"
+    },
+    {
+      "source_index": 14317,
+      "id": "1483330",
+      "term": "悲憤慷慨",
+      "reading": "ひふんこうがい",
+      "meaning": "indignant lamentation over the evils of the times"
+    },
+    {
+      "source_index": 14318,
+      "id": "2870281",
+      "term": "火蓋が切られる",
+      "reading": "ひぶたがきられる",
+      "meaning": "to be started / to begin (of a battle, contest, campaign, etc.)"
+    },
+    {
+      "source_index": 14319,
+      "id": "2252980",
+      "term": "火蓋を切る",
+      "reading": "ひぶたをきる",
+      "meaning": "to start (an argument, a battle, etc.)"
+    },
+    {
+      "source_index": 14320,
+      "id": "2111120",
+      "term": "百害あって一利なし",
+      "reading": "ひゃくがいあっていちりなし",
+      "meaning": "all pain, no gain / doing no good and a lot of harm / having no redeeming features"
+    },
+    {
+      "source_index": 14321,
+      "id": "2040720",
+      "term": "百尺竿頭",
+      "reading": "ひゃくせきかんとう",
+      "meaning": "the highest state of one's enlightenment / the highest level one can attain"
+    },
+    {
+      "source_index": 14322,
+      "id": "2052520",
+      "term": "百折不撓",
+      "reading": "ひゃくせつふとう",
+      "meaning": "indefatigability / indomitableness"
+    },
+    {
+      "source_index": 14323,
+      "id": "1488300",
+      "term": "百戦百勝",
+      "reading": "ひゃくせんひゃくしょう",
+      "meaning": "ever-victorious / many successful campaigns / invincibility"
+    },
+    {
+      "source_index": 14324,
+      "id": "1602170",
+      "term": "百戦錬磨",
+      "reading": "ひゃくせんれんま",
+      "meaning": "veteran / battle-worn / schooled by adversity in many battles"
+    },
+    {
+      "source_index": 14325,
+      "id": "2766300",
+      "term": "百日の説法屁一つ",
+      "reading": "ひゃくにちのせっぽうへひとつ",
+      "meaning": "single mistake which ruins all one's hard work / one blunder rendering a long period of effort useless / one fart in a hundred days of sermons"
+    },
+    {
+      "source_index": 14326,
+      "id": "2032350",
+      "term": "百人百様",
+      "reading": "ひゃくにんひゃくよう",
+      "meaning": "so many men, so many ways / to each one's own / it takes all sorts to make a world"
+    },
+    {
+      "source_index": 14327,
+      "id": "1711030",
+      "term": "百人力",
+      "reading": "ひゃくにんりき",
+      "meaning": "tremendous strength / strength of a hundred people"
+    },
+    {
+      "source_index": 14328,
+      "id": "2052550",
+      "term": "百年河清",
+      "reading": "ひゃくねんかせい",
+      "meaning": "waiting for one hundred years for the waters of the Yellow River to clear / waiting in vain for an unlikely event / waiting for pigs to fly"
+    },
+    {
+      "source_index": 14329,
+      "id": "2769170",
+      "term": "百八煩悩",
+      "reading": "ひゃくはちぼんのう",
+      "meaning": "the 108 kleshas / the 108 afflictions"
+    },
+    {
+      "source_index": 14330,
+      "id": "1488570",
+      "term": "百薬の長",
+      "reading": "ひゃくやくのちょう",
+      "meaning": "the best medicine (i.e. sake)"
+    },
+    {
+      "source_index": 14331,
+      "id": "1488060",
+      "term": "百花斉放",
+      "reading": "ひゃっかせいほう",
+      "meaning": "let a hundred flowers blossom / Hundred Flowers campaign"
+    },
+    {
+      "source_index": 14332,
+      "id": "1488020",
+      "term": "百家争鳴",
+      "reading": "ひゃっかそうめい",
+      "meaning": "let a hundred schools of thought contend"
+    },
+    {
+      "source_index": 14333,
+      "id": "1488070",
+      "term": "百花繚乱",
+      "reading": "ひゃっかりょうらん",
+      "meaning": "a gathering of many beautiful women (talented people) / simultaneous emergence of many talents and achievements / hundred flowers blooming in profusion"
+    },
+    {
+      "source_index": 14334,
+      "id": "1583380",
+      "term": "百鬼夜行",
+      "reading": "ひゃっきやぎょう",
+      "meaning": "nightly procession of monsters, spirits, etc."
+    },
+    {
+      "source_index": 14335,
+      "id": "1488420",
+      "term": "百発百中",
+      "reading": "ひゃっぱつひゃくちゅう",
+      "meaning": "always hitting the bull's-eye / infallible"
+    },
+    {
+      "source_index": 14336,
+      "id": "2118990",
+      "term": "冷や飯を食う",
+      "reading": "ひやめしをくう",
+      "meaning": "to depend on someone for food and lodging"
     }
   ]
 }
