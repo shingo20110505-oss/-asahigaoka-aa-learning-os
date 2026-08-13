@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9850,
-  "english_only_remaining": 5150,
+  "already_direct_japanese": 9900,
+  "english_only_remaining": 5100,
   "english_only_rank_counts": {
-    "(blank)": 5150
+    "(blank)": 5100
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,356 +13,6 @@
   "part_start": 200,
   "part_end": 299,
   "targets": [
-    {
-      "source_index": 10050,
-      "id": "2831937",
-      "term": "社会基盤",
-      "reading": "しゃかいきばん",
-      "meaning": "social infrastructure"
-    },
-    {
-      "source_index": 10051,
-      "id": "1658790",
-      "term": "社会教育",
-      "reading": "しゃかいきょういく",
-      "meaning": "social education"
-    },
-    {
-      "source_index": 10052,
-      "id": "2843738",
-      "term": "社会距離",
-      "reading": "しゃかいきょり",
-      "meaning": "social distance"
-    },
-    {
-      "source_index": 10053,
-      "id": "2441500",
-      "term": "社会技能",
-      "reading": "しゃかいぎのう",
-      "meaning": "social skills"
-    },
-    {
-      "source_index": 10054,
-      "id": "1928000",
-      "term": "社会経済",
-      "reading": "しゃかいけいざい",
-      "meaning": "socio-economics / social economy"
-    },
-    {
-      "source_index": 10055,
-      "id": "2605420",
-      "term": "社会形態",
-      "reading": "しゃかいけいたい",
-      "meaning": "social form"
-    },
-    {
-      "source_index": 10056,
-      "id": "2406410",
-      "term": "社会契約",
-      "reading": "しゃかいけいやく",
-      "meaning": "social contract / social compact / FIS xref"
-    },
-    {
-      "source_index": 10057,
-      "id": "2863789",
-      "term": "社会見学",
-      "reading": "しゃかいけんがく",
-      "meaning": "(school) field trip / educational visit (e.g. by a class)"
-    },
-    {
-      "source_index": 10058,
-      "id": "1937350",
-      "term": "社会現象",
-      "reading": "しゃかいげんしょう",
-      "meaning": "social phenomenon"
-    },
-    {
-      "source_index": 10059,
-      "id": "2868121",
-      "term": "社会工学",
-      "reading": "しゃかいこうがく",
-      "meaning": "social engineering"
-    },
-    {
-      "source_index": 10060,
-      "id": "1994750",
-      "term": "社会貢献",
-      "reading": "しゃかいこうけん",
-      "meaning": "contribution to society"
-    },
-    {
-      "source_index": 10061,
-      "id": "2728640",
-      "term": "社会構造",
-      "reading": "しゃかいこうぞう",
-      "meaning": "social structure"
-    },
-    {
-      "source_index": 10062,
-      "id": "1658800",
-      "term": "社会資本",
-      "reading": "しゃかいしほん",
-      "meaning": "social capital / SOC"
-    },
-    {
-      "source_index": 10063,
-      "id": "2822820",
-      "term": "社会集団",
-      "reading": "しゃかいしゅうだん",
-      "meaning": "social group"
-    },
-    {
-      "source_index": 10064,
-      "id": "1322740",
-      "term": "社会主義",
-      "reading": "しゃかいしゅぎ",
-      "meaning": "socialism"
-    },
-    {
-      "source_index": 10065,
-      "id": "2198140",
-      "term": "社会進化",
-      "reading": "しゃかいしんか",
-      "meaning": "social evolution"
-    },
-    {
-      "source_index": 10066,
-      "id": "2144270",
-      "term": "社会進出",
-      "reading": "しゃかいしんしゅつ",
-      "meaning": "social progress / getting ahead in society / moving up in the world"
-    },
-    {
-      "source_index": 10067,
-      "id": "2856573",
-      "term": "社会信用",
-      "reading": "しゃかいしんよう",
-      "meaning": "social credit system (China)"
-    },
-    {
-      "source_index": 10068,
-      "id": "1658810",
-      "term": "社会事業",
-      "reading": "しゃかいじぎょう",
-      "meaning": "social work / social project / social enterprise"
-    },
-    {
-      "source_index": 10069,
-      "id": "2837777",
-      "term": "社会事情",
-      "reading": "しゃかいじじょう",
-      "meaning": "social conditions / social circumstances"
-    },
-    {
-      "source_index": 10070,
-      "id": "2851386",
-      "term": "社会実験",
-      "reading": "しゃかいじっけん",
-      "meaning": "field test / pilot study"
-    },
-    {
-      "source_index": 10071,
-      "id": "2858434",
-      "term": "社会実装",
-      "reading": "しゃかいじっそう",
-      "meaning": "social implementation / using the results of research and development to solve social problems"
-    },
-    {
-      "source_index": 10072,
-      "id": "2638360",
-      "term": "社会情勢",
-      "reading": "しゃかいじょうせい",
-      "meaning": "social conditions / social situation / state of society"
-    },
-    {
-      "source_index": 10073,
-      "id": "1322780",
-      "term": "社会人枠",
-      "reading": "しゃかいじんわく",
-      "meaning": "special consideration for non-traditional (older) students"
-    },
-    {
-      "source_index": 10074,
-      "id": "1937370",
-      "term": "社会生活",
-      "reading": "しゃかいせいかつ",
-      "meaning": "social life"
-    },
-    {
-      "source_index": 10075,
-      "id": "2643850",
-      "term": "社会正義",
-      "reading": "しゃかいせいぎ",
-      "meaning": "social justice"
-    },
-    {
-      "source_index": 10076,
-      "id": "1702620",
-      "term": "社会政策",
-      "reading": "しゃかいせいさく",
-      "meaning": "social policy"
-    },
-    {
-      "source_index": 10077,
-      "id": "1702600",
-      "term": "社会制度",
-      "reading": "しゃかいせいど",
-      "meaning": "social system"
-    },
-    {
-      "source_index": 10078,
-      "id": "2822850",
-      "term": "社会組織",
-      "reading": "しゃかいそしき",
-      "meaning": "social structure / social organization / fabric of society"
-    },
-    {
-      "source_index": 10079,
-      "id": "2652730",
-      "term": "社会体験",
-      "reading": "しゃかいたいけん",
-      "meaning": "work experience / practical study in the real world"
-    },
-    {
-      "source_index": 10080,
-      "id": "2822880",
-      "term": "社会体制",
-      "reading": "しゃかいたいせい",
-      "meaning": "social system"
-    },
-    {
-      "source_index": 10081,
-      "id": "1937380",
-      "term": "社会秩序",
-      "reading": "しゃかいちつじょ",
-      "meaning": "social order / public order"
-    },
-    {
-      "source_index": 10082,
-      "id": "2858039",
-      "term": "社会調査",
-      "reading": "しゃかいちょうさ",
-      "meaning": "social survey / social research"
-    },
-    {
-      "source_index": 10083,
-      "id": "1937390",
-      "term": "社会通念",
-      "reading": "しゃかいつうねん",
-      "meaning": "idea commonly accepted by society / socially accepted idea"
-    },
-    {
-      "source_index": 10084,
-      "id": "2517530",
-      "term": "社会適応",
-      "reading": "しゃかいてきおう",
-      "meaning": "social adjustment"
-    },
-    {
-      "source_index": 10085,
-      "id": "2837571",
-      "term": "社会哲学",
-      "reading": "しゃかいてつがく",
-      "meaning": "social philosophy"
-    },
-    {
-      "source_index": 10086,
-      "id": "2578420",
-      "term": "社会統合",
-      "reading": "しゃかいとうごう",
-      "meaning": "social integration"
-    },
-    {
-      "source_index": 10087,
-      "id": "2822840",
-      "term": "社会統制",
-      "reading": "しゃかいとうせい",
-      "meaning": "social control"
-    },
-    {
-      "source_index": 10088,
-      "id": "2196340",
-      "term": "社会淘汰",
-      "reading": "しゃかいとうた",
-      "meaning": "social selection"
-    },
-    {
-      "source_index": 10089,
-      "id": "2869936",
-      "term": "社会病質",
-      "reading": "しゃかいびょうしつ",
-      "meaning": "sociopathy"
-    },
-    {
-      "source_index": 10090,
-      "id": "2711630",
-      "term": "社会不安",
-      "reading": "しゃかいふあん",
-      "meaning": "social unrest / public anxiety"
-    },
-    {
-      "source_index": 10091,
-      "id": "1322810",
-      "term": "社会福祉",
-      "reading": "しゃかいふくし",
-      "meaning": "social welfare"
-    },
-    {
-      "source_index": 10092,
-      "id": "2822860",
-      "term": "社会扶助",
-      "reading": "しゃかいふじょ",
-      "meaning": "social assistance"
-    },
-    {
-      "source_index": 10093,
-      "id": "1658830",
-      "term": "社会復帰",
-      "reading": "しゃかいふっき",
-      "meaning": "rehabilitation (in society)"
-    },
-    {
-      "source_index": 10094,
-      "id": "2198150",
-      "term": "社会分化",
-      "reading": "しゃかいぶんか",
-      "meaning": "social differentiation"
-    },
-    {
-      "source_index": 10095,
-      "id": "2666100",
-      "term": "社会変動",
-      "reading": "しゃかいへんどう",
-      "meaning": "social change"
-    },
-    {
-      "source_index": 10096,
-      "id": "2838137",
-      "term": "社会勉強",
-      "reading": "しゃかいべんきょう",
-      "meaning": "learning about the world / preparation for life in the community / work experience"
-    },
-    {
-      "source_index": 10097,
-      "id": "2706120",
-      "term": "社会方言",
-      "reading": "しゃかいほうげん",
-      "meaning": "sociolect / social dialect"
-    },
-    {
-      "source_index": 10098,
-      "id": "1937400",
-      "term": "社会奉仕",
-      "reading": "しゃかいほうし",
-      "meaning": "voluntary social service"
-    },
-    {
-      "source_index": 10099,
-      "id": "1658840",
-      "term": "社会保険",
-      "reading": "しゃかいほけん",
-      "meaning": "social insurance"
-    },
     {
       "source_index": 10100,
       "id": "1658860",
@@ -712,6 +362,356 @@
       "term": "写真廃液",
       "reading": "しゃしんはいえき",
       "meaning": "photographic processing waste water / photographic effluent / photo-processing waste"
+    },
+    {
+      "source_index": 10150,
+      "id": "2827891",
+      "term": "写真花嫁",
+      "reading": "しゃしんはなよめ",
+      "meaning": "picture bride"
+    },
+    {
+      "source_index": 10151,
+      "id": "1322070",
+      "term": "写真判定",
+      "reading": "しゃしんはんてい",
+      "meaning": "deciding the winner from a photo"
+    },
+    {
+      "source_index": 10152,
+      "id": "2837052",
+      "term": "写真用紙",
+      "reading": "しゃしんようし",
+      "meaning": "photographic paper / photo paper"
+    },
+    {
+      "source_index": 10153,
+      "id": "2645260",
+      "term": "車軸藻類",
+      "reading": "しゃじくもるい",
+      "meaning": "stoneworts / charophytes"
+    },
+    {
+      "source_index": 10154,
+      "id": "2417790",
+      "term": "車軸を流す",
+      "reading": "しゃじくをながす",
+      "meaning": "to rain heavily / to be raining cats and dogs"
+    },
+    {
+      "source_index": 10155,
+      "id": "1321850",
+      "term": "写実主義",
+      "reading": "しゃじつしゅぎ",
+      "meaning": "realism / literalism"
+    },
+    {
+      "source_index": 10156,
+      "id": "2831557",
+      "term": "車線変更",
+      "reading": "しゃせんへんこう",
+      "meaning": "lane change / changing lanes"
+    },
+    {
+      "source_index": 10157,
+      "id": "1322910",
+      "term": "社団法人",
+      "reading": "しゃだんほうじん",
+      "meaning": "corporate juridical person / incorporated body / corporation"
+    },
+    {
+      "source_index": 10158,
+      "id": "1994780",
+      "term": "社長命令",
+      "reading": "しゃちょうめいれい",
+      "meaning": "order from the company president"
+    },
+    {
+      "source_index": 10159,
+      "id": "2861912",
+      "term": "社長令嬢",
+      "reading": "しゃちょうれいじょう",
+      "meaning": "company president's daughter"
+    },
+    {
+      "source_index": 10160,
+      "id": "2839948",
+      "term": "借花献仏",
+      "reading": "しゃっかけんぶつ",
+      "meaning": "winning favor or influence using someone else's property / plagiarism / presenting the Buddha with borrowed flowers"
+    },
+    {
+      "source_index": 10161,
+      "id": "1323920",
+      "term": "借家争議",
+      "reading": "しゃっかそうぎ",
+      "meaning": "tenancy troubles"
+    },
+    {
+      "source_index": 10162,
+      "id": "2830523",
+      "term": "借金地獄",
+      "reading": "しゃっきんじごく",
+      "meaning": "debt trap / debt hell / being in debt up to one's ears"
+    },
+    {
+      "source_index": 10163,
+      "id": "2830522",
+      "term": "借金返済",
+      "reading": "しゃっきんへんさい",
+      "meaning": "payment of debts / repayment"
+    },
+    {
+      "source_index": 10164,
+      "id": "1937440",
+      "term": "車内改札",
+      "reading": "しゃないかいさつ",
+      "meaning": "inspection of tickets in the car (carriage)"
+    },
+    {
+      "source_index": 10165,
+      "id": "2140560",
+      "term": "社内結婚",
+      "reading": "しゃないけっこん",
+      "meaning": "marriage between coworkers"
+    },
+    {
+      "source_index": 10166,
+      "id": "1322940",
+      "term": "社内情報",
+      "reading": "しゃないじょうほう",
+      "meaning": "company-internal information"
+    },
+    {
+      "source_index": 10167,
+      "id": "2840754",
+      "term": "社内政治",
+      "reading": "しゃないせいじ",
+      "meaning": "office politics"
+    },
+    {
+      "source_index": 10168,
+      "id": "2658060",
+      "term": "社内体制",
+      "reading": "しゃないたいせい",
+      "meaning": "corporate structure / company structure"
+    },
+    {
+      "source_index": 10169,
+      "id": "2046510",
+      "term": "社内不倫",
+      "reading": "しゃないふりん",
+      "meaning": "adulterous love affair with someone at work"
+    },
+    {
+      "source_index": 10170,
+      "id": "2666750",
+      "term": "車内放送",
+      "reading": "しゃないほうそう",
+      "meaning": "in-car announcement (on a train) / PA system on a train"
+    },
+    {
+      "source_index": 10171,
+      "id": "2674140",
+      "term": "社内恋愛",
+      "reading": "しゃないれんあい",
+      "meaning": "office romance / office love affair"
+    },
+    {
+      "source_index": 10172,
+      "id": "1323330",
+      "term": "遮二無二",
+      "reading": "しゃにむに",
+      "meaning": "desperately / recklessly / (rushing) headlong"
+    },
+    {
+      "source_index": 10173,
+      "id": "2821950",
+      "term": "捨万求一",
+      "reading": "しゃばんきゅういつ",
+      "meaning": "pursuing one overriding objective while forsaking all the others"
+    },
+    {
+      "source_index": 10174,
+      "id": "1828880",
+      "term": "煮沸消毒",
+      "reading": "しゃふつしょうどく",
+      "meaning": "sterilization by boiling / sterilisation by boiling"
+    },
+    {
+      "source_index": 10175,
+      "id": "2831512",
+      "term": "斜方晶系",
+      "reading": "しゃほうしょうけい",
+      "meaning": "orthorhombic crystal system"
+    },
+    {
+      "source_index": 10176,
+      "id": "2866829",
+      "term": "斜方沸石",
+      "reading": "しゃほうふっせき",
+      "meaning": "chabazite / chabasite"
+    },
+    {
+      "source_index": 10177,
+      "id": "2619900",
+      "term": "沙弥十戒",
+      "reading": "しゃみじっかい",
+      "meaning": "the ten precepts"
+    },
+    {
+      "source_index": 10178,
+      "id": "2265400",
+      "term": "三味線貝",
+      "reading": "しゃみせんがい",
+      "meaning": "lingulate brachiopod (esp. species Lingula anatina)"
+    },
+    {
+      "source_index": 10179,
+      "id": "2144520",
+      "term": "斜陽産業",
+      "reading": "しゃようさんぎょう",
+      "meaning": "sunset industry / declining industry"
+    },
+    {
+      "source_index": 10180,
+      "id": "2538520",
+      "term": "車両基地",
+      "reading": "しゃりょうきち",
+      "meaning": "rail yard / railway yard"
+    },
+    {
+      "source_index": 10181,
+      "id": "1323270",
+      "term": "車両縦隊",
+      "reading": "しゃりょうじゅうたい",
+      "meaning": "military convoy"
+    },
+    {
+      "source_index": 10182,
+      "id": "2844573",
+      "term": "車両重量",
+      "reading": "しゃりょうじゅうりょう",
+      "meaning": "curb weight / kerb weight"
+    },
+    {
+      "source_index": 10183,
+      "id": "2829142",
+      "term": "車輪の再発明",
+      "reading": "しゃりんのさいはつめい",
+      "meaning": "reinventing the wheel"
+    },
+    {
+      "source_index": 10184,
+      "id": "5391595",
+      "term": "上海大学",
+      "reading": "しゃんはいだいがく",
+      "meaning": "Shanghai University"
+    },
+    {
+      "source_index": 10185,
+      "id": "2359460",
+      "term": "視野移動",
+      "reading": "しやいどう",
+      "meaning": "scrolling"
+    },
+    {
+      "source_index": 10186,
+      "id": "2046470",
+      "term": "視野狭窄",
+      "reading": "しやきょうさく",
+      "meaning": "narrowing of visual field / narrow-mindedness / lack of vision"
+    },
+    {
+      "source_index": 10187,
+      "id": "1691820",
+      "term": "主意主義",
+      "reading": "しゅいしゅぎ",
+      "meaning": "voluntarism"
+    },
+    {
+      "source_index": 10188,
+      "id": "1696710",
+      "term": "首位打者",
+      "reading": "しゅいだしゃ",
+      "meaning": "the leading hitter"
+    },
+    {
+      "source_index": 10189,
+      "id": "2038320",
+      "term": "周囲温度",
+      "reading": "しゅういおんど",
+      "meaning": "ambient temperature"
+    },
+    {
+      "source_index": 10190,
+      "id": "2726730",
+      "term": "衆院解散",
+      "reading": "しゅういんかいさん",
+      "meaning": "dissolution of the lower house of parliament"
+    },
+    {
+      "source_index": 10191,
+      "id": "2582410",
+      "term": "衆院議員",
+      "reading": "しゅういんぎいん",
+      "meaning": "member of the lower house / member of the House of Representatives"
+    },
+    {
+      "source_index": 10192,
+      "id": "2817320",
+      "term": "収益管理",
+      "reading": "しゅうえきかんり",
+      "meaning": "increase in profit / increase in profitability / augmentation of earnings"
+    },
+    {
+      "source_index": 10193,
+      "id": "1994910",
+      "term": "収益基盤",
+      "reading": "しゅうえききばん",
+      "meaning": "revenue base"
+    },
+    {
+      "source_index": 10194,
+      "id": "2851884",
+      "term": "収益物件",
+      "reading": "しゅうえきぶっけん",
+      "meaning": "income-yielding property / investment property"
+    },
+    {
+      "source_index": 10195,
+      "id": "1994940",
+      "term": "収益報告",
+      "reading": "しゅうえきほうこく",
+      "meaning": "earnings report"
+    },
+    {
+      "source_index": 10196,
+      "id": "2863946",
+      "term": "周回軌道",
+      "reading": "しゅうかいきどう",
+      "meaning": "orbit"
+    },
+    {
+      "source_index": 10197,
+      "id": "2691260",
+      "term": "集会参加",
+      "reading": "しゅうかいさんか",
+      "meaning": "attending a meeting / participating in a meeting"
+    },
+    {
+      "source_index": 10198,
+      "id": "2856584",
+      "term": "収穫逓減",
+      "reading": "しゅうかくていげん",
+      "meaning": "diminishing returns"
+    },
+    {
+      "source_index": 10199,
+      "id": "1330570",
+      "term": "収穫予想",
+      "reading": "しゅうかくよそう",
+      "meaning": "crop estimate"
     }
   ]
 }

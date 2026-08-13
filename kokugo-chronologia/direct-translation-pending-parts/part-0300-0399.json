@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9850,
-  "english_only_remaining": 5150,
+  "already_direct_japanese": 9900,
+  "english_only_remaining": 5100,
   "english_only_rank_counts": {
-    "(blank)": 5150
+    "(blank)": 5100
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,356 +13,6 @@
   "part_start": 300,
   "part_end": 399,
   "targets": [
-    {
-      "source_index": 10150,
-      "id": "2827891",
-      "term": "写真花嫁",
-      "reading": "しゃしんはなよめ",
-      "meaning": "picture bride"
-    },
-    {
-      "source_index": 10151,
-      "id": "1322070",
-      "term": "写真判定",
-      "reading": "しゃしんはんてい",
-      "meaning": "deciding the winner from a photo"
-    },
-    {
-      "source_index": 10152,
-      "id": "2837052",
-      "term": "写真用紙",
-      "reading": "しゃしんようし",
-      "meaning": "photographic paper / photo paper"
-    },
-    {
-      "source_index": 10153,
-      "id": "2645260",
-      "term": "車軸藻類",
-      "reading": "しゃじくもるい",
-      "meaning": "stoneworts / charophytes"
-    },
-    {
-      "source_index": 10154,
-      "id": "2417790",
-      "term": "車軸を流す",
-      "reading": "しゃじくをながす",
-      "meaning": "to rain heavily / to be raining cats and dogs"
-    },
-    {
-      "source_index": 10155,
-      "id": "1321850",
-      "term": "写実主義",
-      "reading": "しゃじつしゅぎ",
-      "meaning": "realism / literalism"
-    },
-    {
-      "source_index": 10156,
-      "id": "2831557",
-      "term": "車線変更",
-      "reading": "しゃせんへんこう",
-      "meaning": "lane change / changing lanes"
-    },
-    {
-      "source_index": 10157,
-      "id": "1322910",
-      "term": "社団法人",
-      "reading": "しゃだんほうじん",
-      "meaning": "corporate juridical person / incorporated body / corporation"
-    },
-    {
-      "source_index": 10158,
-      "id": "1994780",
-      "term": "社長命令",
-      "reading": "しゃちょうめいれい",
-      "meaning": "order from the company president"
-    },
-    {
-      "source_index": 10159,
-      "id": "2861912",
-      "term": "社長令嬢",
-      "reading": "しゃちょうれいじょう",
-      "meaning": "company president's daughter"
-    },
-    {
-      "source_index": 10160,
-      "id": "2839948",
-      "term": "借花献仏",
-      "reading": "しゃっかけんぶつ",
-      "meaning": "winning favor or influence using someone else's property / plagiarism / presenting the Buddha with borrowed flowers"
-    },
-    {
-      "source_index": 10161,
-      "id": "1323920",
-      "term": "借家争議",
-      "reading": "しゃっかそうぎ",
-      "meaning": "tenancy troubles"
-    },
-    {
-      "source_index": 10162,
-      "id": "2830523",
-      "term": "借金地獄",
-      "reading": "しゃっきんじごく",
-      "meaning": "debt trap / debt hell / being in debt up to one's ears"
-    },
-    {
-      "source_index": 10163,
-      "id": "2830522",
-      "term": "借金返済",
-      "reading": "しゃっきんへんさい",
-      "meaning": "payment of debts / repayment"
-    },
-    {
-      "source_index": 10164,
-      "id": "1937440",
-      "term": "車内改札",
-      "reading": "しゃないかいさつ",
-      "meaning": "inspection of tickets in the car (carriage)"
-    },
-    {
-      "source_index": 10165,
-      "id": "2140560",
-      "term": "社内結婚",
-      "reading": "しゃないけっこん",
-      "meaning": "marriage between coworkers"
-    },
-    {
-      "source_index": 10166,
-      "id": "1322940",
-      "term": "社内情報",
-      "reading": "しゃないじょうほう",
-      "meaning": "company-internal information"
-    },
-    {
-      "source_index": 10167,
-      "id": "2840754",
-      "term": "社内政治",
-      "reading": "しゃないせいじ",
-      "meaning": "office politics"
-    },
-    {
-      "source_index": 10168,
-      "id": "2658060",
-      "term": "社内体制",
-      "reading": "しゃないたいせい",
-      "meaning": "corporate structure / company structure"
-    },
-    {
-      "source_index": 10169,
-      "id": "2046510",
-      "term": "社内不倫",
-      "reading": "しゃないふりん",
-      "meaning": "adulterous love affair with someone at work"
-    },
-    {
-      "source_index": 10170,
-      "id": "2666750",
-      "term": "車内放送",
-      "reading": "しゃないほうそう",
-      "meaning": "in-car announcement (on a train) / PA system on a train"
-    },
-    {
-      "source_index": 10171,
-      "id": "2674140",
-      "term": "社内恋愛",
-      "reading": "しゃないれんあい",
-      "meaning": "office romance / office love affair"
-    },
-    {
-      "source_index": 10172,
-      "id": "1323330",
-      "term": "遮二無二",
-      "reading": "しゃにむに",
-      "meaning": "desperately / recklessly / (rushing) headlong"
-    },
-    {
-      "source_index": 10173,
-      "id": "2821950",
-      "term": "捨万求一",
-      "reading": "しゃばんきゅういつ",
-      "meaning": "pursuing one overriding objective while forsaking all the others"
-    },
-    {
-      "source_index": 10174,
-      "id": "1828880",
-      "term": "煮沸消毒",
-      "reading": "しゃふつしょうどく",
-      "meaning": "sterilization by boiling / sterilisation by boiling"
-    },
-    {
-      "source_index": 10175,
-      "id": "2831512",
-      "term": "斜方晶系",
-      "reading": "しゃほうしょうけい",
-      "meaning": "orthorhombic crystal system"
-    },
-    {
-      "source_index": 10176,
-      "id": "2866829",
-      "term": "斜方沸石",
-      "reading": "しゃほうふっせき",
-      "meaning": "chabazite / chabasite"
-    },
-    {
-      "source_index": 10177,
-      "id": "2619900",
-      "term": "沙弥十戒",
-      "reading": "しゃみじっかい",
-      "meaning": "the ten precepts"
-    },
-    {
-      "source_index": 10178,
-      "id": "2265400",
-      "term": "三味線貝",
-      "reading": "しゃみせんがい",
-      "meaning": "lingulate brachiopod (esp. species Lingula anatina)"
-    },
-    {
-      "source_index": 10179,
-      "id": "2144520",
-      "term": "斜陽産業",
-      "reading": "しゃようさんぎょう",
-      "meaning": "sunset industry / declining industry"
-    },
-    {
-      "source_index": 10180,
-      "id": "2538520",
-      "term": "車両基地",
-      "reading": "しゃりょうきち",
-      "meaning": "rail yard / railway yard"
-    },
-    {
-      "source_index": 10181,
-      "id": "1323270",
-      "term": "車両縦隊",
-      "reading": "しゃりょうじゅうたい",
-      "meaning": "military convoy"
-    },
-    {
-      "source_index": 10182,
-      "id": "2844573",
-      "term": "車両重量",
-      "reading": "しゃりょうじゅうりょう",
-      "meaning": "curb weight / kerb weight"
-    },
-    {
-      "source_index": 10183,
-      "id": "2829142",
-      "term": "車輪の再発明",
-      "reading": "しゃりんのさいはつめい",
-      "meaning": "reinventing the wheel"
-    },
-    {
-      "source_index": 10184,
-      "id": "5391595",
-      "term": "上海大学",
-      "reading": "しゃんはいだいがく",
-      "meaning": "Shanghai University"
-    },
-    {
-      "source_index": 10185,
-      "id": "2359460",
-      "term": "視野移動",
-      "reading": "しやいどう",
-      "meaning": "scrolling"
-    },
-    {
-      "source_index": 10186,
-      "id": "2046470",
-      "term": "視野狭窄",
-      "reading": "しやきょうさく",
-      "meaning": "narrowing of visual field / narrow-mindedness / lack of vision"
-    },
-    {
-      "source_index": 10187,
-      "id": "1691820",
-      "term": "主意主義",
-      "reading": "しゅいしゅぎ",
-      "meaning": "voluntarism"
-    },
-    {
-      "source_index": 10188,
-      "id": "1696710",
-      "term": "首位打者",
-      "reading": "しゅいだしゃ",
-      "meaning": "the leading hitter"
-    },
-    {
-      "source_index": 10189,
-      "id": "2038320",
-      "term": "周囲温度",
-      "reading": "しゅういおんど",
-      "meaning": "ambient temperature"
-    },
-    {
-      "source_index": 10190,
-      "id": "2726730",
-      "term": "衆院解散",
-      "reading": "しゅういんかいさん",
-      "meaning": "dissolution of the lower house of parliament"
-    },
-    {
-      "source_index": 10191,
-      "id": "2582410",
-      "term": "衆院議員",
-      "reading": "しゅういんぎいん",
-      "meaning": "member of the lower house / member of the House of Representatives"
-    },
-    {
-      "source_index": 10192,
-      "id": "2817320",
-      "term": "収益管理",
-      "reading": "しゅうえきかんり",
-      "meaning": "increase in profit / increase in profitability / augmentation of earnings"
-    },
-    {
-      "source_index": 10193,
-      "id": "1994910",
-      "term": "収益基盤",
-      "reading": "しゅうえききばん",
-      "meaning": "revenue base"
-    },
-    {
-      "source_index": 10194,
-      "id": "2851884",
-      "term": "収益物件",
-      "reading": "しゅうえきぶっけん",
-      "meaning": "income-yielding property / investment property"
-    },
-    {
-      "source_index": 10195,
-      "id": "1994940",
-      "term": "収益報告",
-      "reading": "しゅうえきほうこく",
-      "meaning": "earnings report"
-    },
-    {
-      "source_index": 10196,
-      "id": "2863946",
-      "term": "周回軌道",
-      "reading": "しゅうかいきどう",
-      "meaning": "orbit"
-    },
-    {
-      "source_index": 10197,
-      "id": "2691260",
-      "term": "集会参加",
-      "reading": "しゅうかいさんか",
-      "meaning": "attending a meeting / participating in a meeting"
-    },
-    {
-      "source_index": 10198,
-      "id": "2856584",
-      "term": "収穫逓減",
-      "reading": "しゅうかくていげん",
-      "meaning": "diminishing returns"
-    },
-    {
-      "source_index": 10199,
-      "id": "1330570",
-      "term": "収穫予想",
-      "reading": "しゅうかくよそう",
-      "meaning": "crop estimate"
-    },
     {
       "source_index": 10200,
       "id": "2169690",
@@ -712,6 +362,356 @@
       "term": "州裁判所",
       "reading": "しゅうさいばんしょ",
       "meaning": "state court (in the US, etc.) / state courthouse"
+    },
+    {
+      "source_index": 10250,
+      "id": "2062820",
+      "term": "衆参各院",
+      "reading": "しゅうさんかくいん",
+      "meaning": "(in) each of the houses of the Japanese parliament"
+    },
+    {
+      "source_index": 10251,
+      "id": "2225190",
+      "term": "集散花序",
+      "reading": "しゅうさんかじょ",
+      "meaning": "cymose inflorescence (any determinate simple inflorescence) / cyme"
+    },
+    {
+      "source_index": 10252,
+      "id": "2165240",
+      "term": "周産期学",
+      "reading": "しゅうさんきがく",
+      "meaning": "perinatology"
+    },
+    {
+      "source_index": 10253,
+      "id": "1813630",
+      "term": "集産主義",
+      "reading": "しゅうさんしゅぎ",
+      "meaning": "collectivism"
+    },
+    {
+      "source_index": 10254,
+      "id": "1333270",
+      "term": "衆参両院",
+      "reading": "しゅうさんりょういん",
+      "meaning": "both houses of the Diet"
+    },
+    {
+      "source_index": 10255,
+      "id": "1698250",
+      "term": "終始一貫",
+      "reading": "しゅうしいっかん",
+      "meaning": "consistently / unchangingly / throughout"
+    },
+    {
+      "source_index": 10256,
+      "id": "1659170",
+      "term": "修士課程",
+      "reading": "しゅうしかてい",
+      "meaning": "master's course"
+    },
+    {
+      "source_index": 10257,
+      "id": "2661600",
+      "term": "収支計画",
+      "reading": "しゅうしけいかく",
+      "meaning": "income and expenditure plan"
+    },
+    {
+      "source_index": 10258,
+      "id": "2146720",
+      "term": "収支決算",
+      "reading": "しゅうしけっさん",
+      "meaning": "settling a balance"
+    },
+    {
+      "source_index": 10259,
+      "id": "2868037",
+      "term": "終止電圧",
+      "reading": "しゅうしでんあつ",
+      "meaning": "cutoff voltage"
+    },
+    {
+      "source_index": 10260,
+      "id": "2146910",
+      "term": "終止符を打つ",
+      "reading": "しゅうしふをうつ",
+      "meaning": "to put an end (to) / to bring to an end / to close the books (on)"
+    },
+    {
+      "source_index": 10261,
+      "id": "1994950",
+      "term": "収支報告",
+      "reading": "しゅうしほうこく",
+      "meaning": "results announcement / earnings call"
+    },
+    {
+      "source_index": 10262,
+      "id": "1619340",
+      "term": "袖手傍観",
+      "reading": "しゅうしゅぼうかん",
+      "meaning": "looking on with folded arms (with one's hands in one's sleeves) / remaining a passive onlooker"
+    },
+    {
+      "source_index": 10263,
+      "id": "1331140",
+      "term": "周章狼狽",
+      "reading": "しゅうしょうろうばい",
+      "meaning": "consternation / falling into a panic / fluster"
+    },
+    {
+      "source_index": 10264,
+      "id": "1331680",
+      "term": "就職斡旋",
+      "reading": "しゅうしょくあっせん",
+      "meaning": "job placement / employment assistance"
+    },
+    {
+      "source_index": 10265,
+      "id": "1331690",
+      "term": "就職運動",
+      "reading": "しゅうしょくうんどう",
+      "meaning": "job hunting / job searching"
+    },
+    {
+      "source_index": 10266,
+      "id": "1937720",
+      "term": "就職活動",
+      "reading": "しゅうしょくかつどう",
+      "meaning": "job hunting / job searching"
+    },
+    {
+      "source_index": 10267,
+      "id": "2257410",
+      "term": "就職広告",
+      "reading": "しゅうしょくこうこく",
+      "meaning": "employment advertisement"
+    },
+    {
+      "source_index": 10268,
+      "id": "2248590",
+      "term": "修飾語句",
+      "reading": "しゅうしょくごく",
+      "meaning": "modifier / qualifier"
+    },
+    {
+      "source_index": 10269,
+      "id": "2141730",
+      "term": "就職指導",
+      "reading": "しゅうしょくしどう",
+      "meaning": "career counseling (counselling)"
+    },
+    {
+      "source_index": 10270,
+      "id": "1648070",
+      "term": "就職浪人",
+      "reading": "しゅうしょくろうにん",
+      "meaning": "jobless university graduate"
+    },
+    {
+      "source_index": 10271,
+      "id": "1937750",
+      "term": "修士論文",
+      "reading": "しゅうしろんぶん",
+      "meaning": "master's thesis"
+    },
+    {
+      "source_index": 10272,
+      "id": "1937790",
+      "term": "終身会員",
+      "reading": "しゅうしんかいいん",
+      "meaning": "life member"
+    },
+    {
+      "source_index": 10273,
+      "id": "1994980",
+      "term": "終身雇用",
+      "reading": "しゅうしんこよう",
+      "meaning": "lifetime employment / permanent employment"
+    },
+    {
+      "source_index": 10274,
+      "id": "2762220",
+      "term": "就寝時間",
+      "reading": "しゅうしんじかん",
+      "meaning": "bedtime"
+    },
+    {
+      "source_index": 10275,
+      "id": "2363300",
+      "term": "集信装置",
+      "reading": "しゅうしんそうち",
+      "meaning": "concentrator"
+    },
+    {
+      "source_index": 10276,
+      "id": "1698180",
+      "term": "終身年金",
+      "reading": "しゅうしんねんきん",
+      "meaning": "life pension / annuity"
+    },
+    {
+      "source_index": 10277,
+      "id": "1698200",
+      "term": "終身保険",
+      "reading": "しゅうしんほけん",
+      "meaning": "whole life insurance"
+    },
+    {
+      "source_index": 10278,
+      "id": "2542560",
+      "term": "修辞技法",
+      "reading": "しゅうじぎほう",
+      "meaning": "rhetorical device / stylistic device"
+    },
+    {
+      "source_index": 10279,
+      "id": "1734750",
+      "term": "修辞疑問",
+      "reading": "しゅうじぎもん",
+      "meaning": "rhetorical question"
+    },
+    {
+      "source_index": 10280,
+      "id": "2646590",
+      "term": "終日禁煙",
+      "reading": "しゅうじつきんえん",
+      "meaning": "no smoking at any time"
+    },
+    {
+      "source_index": 10281,
+      "id": "5742781",
+      "term": "就実大学",
+      "reading": "しゅうじつだいがく",
+      "meaning": "Shujitsu University"
+    },
+    {
+      "source_index": 10282,
+      "id": "1333280",
+      "term": "衆人環視",
+      "reading": "しゅうじんかんし",
+      "meaning": "all eyes (of the public) / (in) full view of the public / (with) everyone looking on"
+    },
+    {
+      "source_index": 10283,
+      "id": "1330480",
+      "term": "囚人労働",
+      "reading": "しゅうじんろうどう",
+      "meaning": "prison labor / prison labour / forced labor"
+    },
+    {
+      "source_index": 10284,
+      "id": "1734720",
+      "term": "修正主義",
+      "reading": "しゅうせいしゅぎ",
+      "meaning": "revisionism"
+    },
+    {
+      "source_index": 10285,
+      "id": "1937770",
+      "term": "修正申告",
+      "reading": "しゅうせいしんこく",
+      "meaning": "(filing) revised (income tax) return"
+    },
+    {
+      "source_index": 10286,
+      "id": "2363110",
+      "term": "修正時間",
+      "reading": "しゅうせいじかん",
+      "meaning": "modification time (of a file, e.g.)"
+    },
+    {
+      "source_index": 10287,
+      "id": "2363310",
+      "term": "集成体型",
+      "reading": "しゅうせいたいけい",
+      "meaning": "aggregate"
+    },
+    {
+      "source_index": 10288,
+      "id": "1734710",
+      "term": "修正予算",
+      "reading": "しゅうせいよさん",
+      "meaning": "revised budget"
+    },
+    {
+      "source_index": 10289,
+      "id": "1333720",
+      "term": "集積回路",
+      "reading": "しゅうせきかいろ",
+      "meaning": "integrated circuit / IC"
+    },
+    {
+      "source_index": 10290,
+      "id": "1331180",
+      "term": "周旋業者",
+      "reading": "しゅうせんぎょうしゃ",
+      "meaning": "broker / middleman / employment agency"
+    },
+    {
+      "source_index": 10291,
+      "id": "2851456",
+      "term": "終戦宣言",
+      "reading": "しゅうせんせんげん",
+      "meaning": "end-of-war declaration"
+    },
+    {
+      "source_index": 10292,
+      "id": "2363350",
+      "term": "集線装置",
+      "reading": "しゅうせんそうち",
+      "meaning": "line concentrator / line multiplexer"
+    },
+    {
+      "source_index": 10293,
+      "id": "2545940",
+      "term": "終戦直後",
+      "reading": "しゅうせんちょくご",
+      "meaning": "early post war period / immediately after the war"
+    },
+    {
+      "source_index": 10294,
+      "id": "1332190",
+      "term": "修繕工場",
+      "reading": "しゅうぜんこうじょう",
+      "meaning": "repair shop"
+    },
+    {
+      "source_index": 10295,
+      "id": "1734150",
+      "term": "秋霜烈日",
+      "reading": "しゅうそうれつじつ",
+      "meaning": "harshness / severity"
+    },
+    {
+      "source_index": 10296,
+      "id": "2588290",
+      "term": "収束級数",
+      "reading": "しゅうそくきゅうすう",
+      "meaning": "convergent series"
+    },
+    {
+      "source_index": 10297,
+      "id": "2859628",
+      "term": "収束進化",
+      "reading": "しゅうそくしんか",
+      "meaning": "convergent evolution"
+    },
+    {
+      "source_index": 10298,
+      "id": "2868180",
+      "term": "集束爆弾",
+      "reading": "しゅうそくばくだん",
+      "meaning": "cluster bomb"
+    },
+    {
+      "source_index": 10299,
+      "id": "2651370",
+      "term": "終端速度",
+      "reading": "しゅうたんそくど",
+      "meaning": "terminal velocity"
     }
   ]
 }

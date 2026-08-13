@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9850,
-  "english_only_remaining": 5150,
+  "already_direct_japanese": 9900,
+  "english_only_remaining": 5100,
   "english_only_rank_counts": {
-    "(blank)": 5150
+    "(blank)": 5100
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 9850,
-      "id": "2046330",
-      "term": "失望落胆",
-      "reading": "しつぼうらくたん",
-      "meaning": "being disappointed and disheartened"
-    },
-    {
-      "source_index": 9851,
-      "id": "2046340",
-      "term": "執務心得",
-      "reading": "しつむこころえ",
-      "meaning": "guide to office routine / guide to the performance of official duties"
-    },
-    {
-      "source_index": 9852,
-      "id": "2569860",
-      "term": "質問時間",
-      "reading": "しつもんじかん",
-      "meaning": "question time (e.g. in parliament, diet, etc.) / question period / time allowed for questions"
-    },
-    {
-      "source_index": 9853,
-      "id": "1320780",
-      "term": "質問用紙",
-      "reading": "しつもんようし",
-      "meaning": "questionnaire"
-    },
-    {
-      "source_index": 9854,
-      "id": "2233220",
-      "term": "質量欠損",
-      "reading": "しつりょうけっそん",
-      "meaning": "mass defect"
-    },
-    {
-      "source_index": 9855,
-      "id": "2233200",
-      "term": "質量中心",
-      "reading": "しつりょうちゅうしん",
-      "meaning": "center of mass (centre)"
-    },
-    {
-      "source_index": 9856,
-      "id": "2821940",
-      "term": "失礼至極",
-      "reading": "しつれいしごく",
-      "meaning": "extremely rude / impertinent / impolite"
-    },
-    {
-      "source_index": 9857,
-      "id": "2046370",
-      "term": "失礼千万",
-      "reading": "しつれいせんばん",
-      "meaning": "extremely rude (impertinent, impolite)"
-    },
-    {
-      "source_index": 9858,
-      "id": "2426130",
-      "term": "指定解除",
-      "reading": "していかいじょ",
-      "meaning": "delisting / removal of a designation"
-    },
-    {
-      "source_index": 9859,
-      "id": "2847341",
-      "term": "指定学校",
-      "reading": "していがっこう",
-      "meaning": "designated school / priority admission school (for a university)"
-    },
-    {
-      "source_index": 9860,
-      "id": "2850617",
-      "term": "指定都市",
-      "reading": "していとし",
-      "meaning": "ordinance-designated city"
-    },
-    {
-      "source_index": 9861,
-      "id": "2852870",
-      "term": "指定難病",
-      "reading": "していなんびょう",
-      "meaning": "designated intractable disease (covered by a specific medical expenses subsidy)"
-    },
-    {
-      "source_index": 9862,
-      "id": "1759670",
-      "term": "指定銘柄",
-      "reading": "していめいがら",
-      "meaning": "specified stock"
-    },
-    {
-      "source_index": 9863,
-      "id": "2859305",
-      "term": "指定薬物",
-      "reading": "していやくぶつ",
-      "meaning": "designated drug (under the Pharmaceutical Affairs Law)"
-    },
-    {
-      "source_index": 9864,
-      "id": "2722140",
-      "term": "私的価値",
-      "reading": "してきかち",
-      "meaning": "private value"
-    },
-    {
-      "source_index": 9865,
-      "id": "2408800",
-      "term": "詩的許容",
-      "reading": "してききょよう",
-      "meaning": "poetic license (licence) / artistic license"
-    },
-    {
-      "source_index": 9866,
-      "id": "1306930",
-      "term": "史的現在",
-      "reading": "してきげんざい",
-      "meaning": "historical present"
-    },
-    {
-      "source_index": 9867,
-      "id": "2849786",
-      "term": "私的所有",
-      "reading": "してきしょゆう",
-      "meaning": "private ownership / private property"
-    },
-    {
-      "source_index": 9868,
-      "id": "2046420",
-      "term": "詩的正義",
-      "reading": "してきせいぎ",
-      "meaning": "poetic justice / retributive justice"
-    },
-    {
-      "source_index": 9869,
-      "id": "2836467",
-      "term": "私的制裁",
-      "reading": "してきせいさい",
-      "meaning": "punishment without a legal trial / vigilantism"
-    },
-    {
-      "source_index": 9870,
-      "id": "2792830",
-      "term": "私的整理",
-      "reading": "してきせいり",
-      "meaning": "voluntary liquidation / winding-up"
-    },
-    {
-      "source_index": 9871,
-      "id": "2840061",
-      "term": "私的独占",
-      "reading": "してきどくせん",
-      "meaning": "private monopolization / private monopoly"
-    },
-    {
-      "source_index": 9872,
-      "id": "2262580",
-      "term": "私的年金",
-      "reading": "してきねんきん",
-      "meaning": "private pension"
-    },
-    {
-      "source_index": 9873,
-      "id": "2046430",
-      "term": "詩的破格",
-      "reading": "してきはかく",
-      "meaning": "poetic license"
-    },
-    {
-      "source_index": 9874,
-      "id": "2046410",
-      "term": "仕手相場",
-      "reading": "してそうば",
-      "meaning": "speculators' (speculative) market"
-    },
-    {
-      "source_index": 9875,
-      "id": "5740868",
-      "term": "私鉄総連",
-      "reading": "してつそうれん",
-      "meaning": "General Federation of Private Railway Workers Unions of Japan (abbr)"
-    },
-    {
-      "source_index": 9876,
-      "id": "2851701",
-      "term": "支店番号",
-      "reading": "してんばんごう",
-      "meaning": "branch code"
-    },
-    {
-      "source_index": 9877,
-      "id": "2189780",
-      "term": "死出田長",
-      "reading": "しでたおさ",
-      "meaning": "lesser cuckoo (Cuculus poliocephalus)"
-    },
-    {
-      "source_index": 9878,
-      "id": "2046440",
-      "term": "紫電一閃",
-      "reading": "しでんいっせん",
-      "meaning": "flash of lightning / flash of a sword / brandishing a sword"
-    },
-    {
-      "source_index": 9879,
-      "id": "1306080",
-      "term": "使徒行伝",
-      "reading": "しとぎょうでん",
-      "meaning": "Acts of the Apostles (book of the Bible)"
-    },
-    {
-      "source_index": 9880,
-      "id": "1306070",
-      "term": "使徒継承",
-      "reading": "しとけいしょう",
-      "meaning": "apostolic succession"
-    },
-    {
-      "source_index": 9881,
-      "id": "1306110",
-      "term": "使徒承伝",
-      "reading": "しとしょうでん",
-      "meaning": "apostolic succession"
-    },
-    {
-      "source_index": 9882,
-      "id": "1306100",
-      "term": "使徒書簡",
-      "reading": "しとしょかん",
-      "meaning": "the Epistles (of the New Testament)"
-    },
-    {
-      "source_index": 9883,
-      "id": "1306120",
-      "term": "使徒信経",
-      "reading": "しとしんきょう",
-      "meaning": "Apostle's Creed"
-    },
-    {
-      "source_index": 9884,
-      "id": "1306130",
-      "term": "使徒信条",
-      "reading": "しとしんじょう",
-      "meaning": "Apostles' Creed"
-    },
-    {
-      "source_index": 9885,
-      "id": "2613930",
-      "term": "指導監督",
-      "reading": "しどうかんとく",
-      "meaning": "guidance and supervision"
-    },
-    {
-      "source_index": 9886,
-      "id": "2828088",
-      "term": "指導教官",
-      "reading": "しどうきょうかん",
-      "meaning": "academic advisor (e.g. at a university research lab)"
-    },
-    {
-      "source_index": 9887,
-      "id": "1759790",
-      "term": "指導原理",
-      "reading": "しどうげんり",
-      "meaning": "guiding principle"
-    },
-    {
-      "source_index": 9888,
-      "id": "1759780",
-      "term": "指導主事",
-      "reading": "しどうしゅじ",
-      "meaning": "(governmental) supervisor of teachers"
-    },
-    {
-      "source_index": 9889,
-      "id": "2630580",
-      "term": "示導動機",
-      "reading": "しどうどうき",
-      "meaning": "leitmotif / leitmotiv / leading motive"
-    },
-    {
-      "source_index": 9890,
-      "id": "2856093",
-      "term": "私道負担",
-      "reading": "しどうふたん",
-      "meaning": "portion of a plot of land that is a private road"
-    },
-    {
-      "source_index": 9891,
-      "id": "2792600",
-      "term": "指導方針",
-      "reading": "しどうほうしん",
-      "meaning": "guidelines / guiding principle / dictates"
-    },
-    {
-      "source_index": 9892,
-      "id": "1658210",
-      "term": "指導要領",
-      "reading": "しどうようりょう",
-      "meaning": "government-approved curriculums / (educational) guidelines"
-    },
-    {
-      "source_index": 9893,
-      "id": "2720520",
-      "term": "指導要録",
-      "reading": "しどうようろく",
-      "meaning": "cumulative guidance record"
-    },
-    {
-      "source_index": 9894,
-      "id": "1936340",
-      "term": "市内観光",
-      "reading": "しないかんこう",
-      "meaning": "city sightseeing"
-    },
-    {
-      "source_index": 9895,
-      "id": "2359110",
-      "term": "市内局番",
-      "reading": "しないきょくばん",
-      "meaning": "local telephone exchange number / local exchange prefix"
-    },
-    {
-      "source_index": 9896,
-      "id": "1936350",
-      "term": "市内通話",
-      "reading": "しないつうわ",
-      "meaning": "intra-city telephone call / local call"
-    },
-    {
-      "source_index": 9897,
-      "id": "2832392",
-      "term": "市内電話",
-      "reading": "しないでんわ",
-      "meaning": "local call (telephone)"
-    },
-    {
-      "source_index": 9898,
-      "id": "1313460",
-      "term": "歯内療法",
-      "reading": "しないりょうほう",
-      "meaning": "endodontic treatment / endodontic therapy"
-    },
-    {
-      "source_index": 9899,
-      "id": "2094950",
-      "term": "支那事変",
-      "reading": "しなじへん",
-      "meaning": "Second Sino-Japanese War (1937-1945)"
-    },
     {
       "source_index": 9900,
       "id": "2563550",
@@ -7010,6 +6660,356 @@
       "term": "正味値段",
       "reading": "しょうみねだん",
       "meaning": "net price"
+    },
+    {
+      "source_index": 10850,
+      "id": "2365330",
+      "term": "証明機関",
+      "reading": "しょうめいきかん",
+      "meaning": "certification authority"
+    },
+    {
+      "source_index": 10851,
+      "id": "1742230",
+      "term": "照明器具",
+      "reading": "しょうめいきぐ",
+      "meaning": "lighting equipment"
+    },
+    {
+      "source_index": 10852,
+      "id": "2845071",
+      "term": "照明効果",
+      "reading": "しょうめいこうか",
+      "meaning": "lighting effects"
+    },
+    {
+      "source_index": 10853,
+      "id": "2445560",
+      "term": "証明写真",
+      "reading": "しょうめいしゃしん",
+      "meaning": "ID photo / passport photo"
+    },
+    {
+      "source_index": 10854,
+      "id": "2871698",
+      "term": "証明終了",
+      "reading": "しょうめいしゅうりょう",
+      "meaning": "end of proof / QED"
+    },
+    {
+      "source_index": 10855,
+      "id": "2809420",
+      "term": "証明責任",
+      "reading": "しょうめいせきにん",
+      "meaning": "burden of proof"
+    },
+    {
+      "source_index": 10856,
+      "id": "2218750",
+      "term": "証明謄本",
+      "reading": "しょうめいとうほん",
+      "meaning": "attested copy"
+    },
+    {
+      "source_index": 10857,
+      "id": "2847787",
+      "term": "消滅会社",
+      "reading": "しょうめつがいしゃ",
+      "meaning": "absorbed company / merged corporation"
+    },
+    {
+      "source_index": 10858,
+      "id": "2528490",
+      "term": "消滅時効",
+      "reading": "しょうめつじこう",
+      "meaning": "extinctive prescription / negative prescription / statute of limitations"
+    },
+    {
+      "source_index": 10859,
+      "id": "2573270",
+      "term": "生滅滅已",
+      "reading": "しょうめつめつい",
+      "meaning": "going beyond life and death and entering Nirvana"
+    },
+    {
+      "source_index": 10860,
+      "id": "2212140",
+      "term": "正面玄関",
+      "reading": "しょうめんげんかん",
+      "meaning": "front entrance / front door"
+    },
+    {
+      "source_index": 10861,
+      "id": "1378060",
+      "term": "正面攻撃",
+      "reading": "しょうめんこうげき",
+      "meaning": "frontal attack"
+    },
+    {
+      "source_index": 10862,
+      "id": "2428120",
+      "term": "青面金剛",
+      "reading": "しょうめんこんごう",
+      "meaning": "Shōmen Kongō / Blue-Faced Vajra / blue-skinned deity depicted with two, four or six arms; originally associated with esoteric Buddhism, thought to bring sickness; revered as part of kōshin-machi beliefs during the Edo period"
+    },
+    {
+      "source_index": 10863,
+      "id": "1378070",
+      "term": "正面衝突",
+      "reading": "しょうめんしょうとつ",
+      "meaning": "head-on collision"
+    },
+    {
+      "source_index": 10864,
+      "id": "2365000",
+      "term": "小面除去",
+      "reading": "しょうめんじょきょ",
+      "meaning": "facet culling"
+    },
+    {
+      "source_index": 10865,
+      "id": "2847803",
+      "term": "正面突破",
+      "reading": "しょうめんとっぱ",
+      "meaning": "breaking the front line / frontal breakthrough"
+    },
+    {
+      "source_index": 10866,
+      "id": "2365010",
+      "term": "小面法線",
+      "reading": "しょうめんほうせん",
+      "meaning": "facet normal"
+    },
+    {
+      "source_index": 10867,
+      "id": "1350410",
+      "term": "消耗品費",
+      "reading": "しょうもうひんひ",
+      "meaning": "expenses for consumable goods / supplies expenses"
+    },
+    {
+      "source_index": 10868,
+      "id": "2418020",
+      "term": "証文の出し後れ",
+      "reading": "しょうもんのだしおくれ",
+      "meaning": "something done too late"
+    },
+    {
+      "source_index": 10869,
+      "id": "2826693",
+      "term": "笑門福来",
+      "reading": "しょうもんふくらい",
+      "meaning": "good fortune and happiness will come to the home of those who smile"
+    },
+    {
+      "source_index": 10870,
+      "id": "2826642",
+      "term": "笑門来福",
+      "reading": "しょうもんらいふく",
+      "meaning": "good fortune and happiness will come to the home of those who smile"
+    },
+    {
+      "source_index": 10871,
+      "id": "1883050",
+      "term": "逍遥学派",
+      "reading": "しょうようがくは",
+      "meaning": "Peripatetic school"
+    },
+    {
+      "source_index": 10872,
+      "id": "2047120",
+      "term": "従容自若",
+      "reading": "しょうようじじゃく",
+      "meaning": "having presence of mind / imperturbable / calm and self-possessed"
+    },
+    {
+      "source_index": 10873,
+      "id": "1952650",
+      "term": "照葉樹林",
+      "reading": "しょうようじゅりん",
+      "meaning": "evergreen (glossy-leaved) forest"
+    },
+    {
+      "source_index": 10874,
+      "id": "1995230",
+      "term": "商用利用",
+      "reading": "しょうようりよう",
+      "meaning": "commercial use"
+    },
+    {
+      "source_index": 10875,
+      "id": "1347740",
+      "term": "将来展望",
+      "reading": "しょうらいてんぼう",
+      "meaning": "future outlook / outlook for the future"
+    },
+    {
+      "source_index": 10876,
+      "id": "2514870",
+      "term": "将来有望",
+      "reading": "しょうらいゆうぼう",
+      "meaning": "of great promise / with a promising future"
+    },
+    {
+      "source_index": 10877,
+      "id": "1706660",
+      "term": "勝利投手",
+      "reading": "しょうりとうしゅ",
+      "meaning": "winning pitcher"
+    },
+    {
+      "source_index": 10878,
+      "id": "1351130",
+      "term": "省略記号",
+      "reading": "しょうりゃくきごう",
+      "meaning": "ellipsis"
+    },
+    {
+      "source_index": 10879,
+      "id": "2365290",
+      "term": "省略時値",
+      "reading": "しょうりゃくじち",
+      "meaning": "default value"
+    },
+    {
+      "source_index": 10880,
+      "id": "2624910",
+      "term": "省略符号",
+      "reading": "しょうりゃくふごう",
+      "meaning": "ellipsis points (e.g. ...) / suspension points / apostrophe"
+    },
+    {
+      "source_index": 10881,
+      "id": "2446270",
+      "term": "小菱形骨",
+      "reading": "しょうりょうけいこつ",
+      "meaning": "trapezoid bone"
+    },
+    {
+      "source_index": 10882,
+      "id": "2537230",
+      "term": "少林寺流",
+      "reading": "しょうりんじりゅう",
+      "meaning": "Shorin-ryu / Okinawa school of karate"
+    },
+    {
+      "source_index": 10883,
+      "id": "2138770",
+      "term": "青蓮院流",
+      "reading": "しょうれんいんりゅう",
+      "meaning": "Shorenin school of calligraphy / Sonen school / Oie school"
+    },
+    {
+      "source_index": 10884,
+      "id": "2031610",
+      "term": "生老病死",
+      "reading": "しょうろうびょうし",
+      "meaning": "the four inevitables in human life (birth, aging, sickness, and death)"
+    },
+    {
+      "source_index": 10885,
+      "id": "2784930",
+      "term": "昭和維新",
+      "reading": "しょうわいしん",
+      "meaning": "Shōwa restoration (call for Imperial restoration by militarists in the 1930s)"
+    },
+    {
+      "source_index": 10886,
+      "id": "2833497",
+      "term": "昭和基地",
+      "reading": "しょうわきち",
+      "meaning": "Shōwa Station (Antarctica) / Showa Station / Syowa Station"
+    },
+    {
+      "source_index": 10887,
+      "id": "2261640",
+      "term": "昭和恐慌",
+      "reading": "しょうわきょうこう",
+      "meaning": "Shōwa Depression (Japanese part of the Great Depression)"
+    },
+    {
+      "source_index": 10888,
+      "id": "2255440",
+      "term": "小惑星帯",
+      "reading": "しょうわくせいたい",
+      "meaning": "asteroid belt"
+    },
+    {
+      "source_index": 10889,
+      "id": "2113250",
+      "term": "昭和元禄",
+      "reading": "しょうわげんろく",
+      "meaning": "the flourishing mid-Shōwa period (1960s and early 1970s) of peace, rapid economic growth, and life of ease"
+    },
+    {
+      "source_index": 10890,
+      "id": "1349830",
+      "term": "昭和時代",
+      "reading": "しょうわじだい",
+      "meaning": "Shōwa period (1926-1989) / Showa period"
+    },
+    {
+      "source_index": 10891,
+      "id": "5383372",
+      "term": "昭和大学",
+      "reading": "しょうわだいがく",
+      "meaning": "Showa University"
+    },
+    {
+      "source_index": 10892,
+      "id": "2833502",
+      "term": "昭和天皇",
+      "reading": "しょうわてんのう",
+      "meaning": "Emperor Shōwa (1901-1989, reigned 1926-1989) / Emperor Showa / Emperor Hirohito"
+    },
+    {
+      "source_index": 10893,
+      "id": "2047140",
+      "term": "昭和一桁",
+      "reading": "しょうわひとけた",
+      "meaning": "(generation born in) the first nine years of the Shōwa period (1926-1934)"
+    },
+    {
+      "source_index": 10894,
+      "id": "2572380",
+      "term": "漿を乞いて酒を得る",
+      "reading": "しょうをこいてさけをうる",
+      "meaning": "to get more than one requests / to beg for water and receive wine"
+    },
+    {
+      "source_index": 10895,
+      "id": "1701740",
+      "term": "書画骨董",
+      "reading": "しょがこっとう",
+      "meaning": "curios and objets d'art"
+    },
+    {
+      "source_index": 10896,
+      "id": "2364490",
+      "term": "初期化子",
+      "reading": "しょきかし",
+      "meaning": "initializer"
+    },
+    {
+      "source_index": 10897,
+      "id": "2364500",
+      "term": "初期化部",
+      "reading": "しょきかぶ",
+      "meaning": "initialization section"
+    },
+    {
+      "source_index": 10898,
+      "id": "2364520",
+      "term": "初期刊本",
+      "reading": "しょきかんぼん",
+      "meaning": "incunabulum"
+    },
+    {
+      "source_index": 10899,
+      "id": "2364510",
+      "term": "初期画面",
+      "reading": "しょきがめん",
+      "meaning": "opening screen"
     }
   ]
 }
