@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 7250,
-  "english_only_remaining": 7750,
+  "already_direct_japanese": 7300,
+  "english_only_remaining": 7700,
   "english_only_rank_counts": {
-    "(blank)": 7750
+    "(blank)": 7700
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 7250,
-      "id": "2828856",
-      "term": "航空宇宙",
-      "reading": "こうくううちゅう",
-      "meaning": "aerospace"
-    },
-    {
-      "source_index": 7251,
-      "id": "1983490",
-      "term": "航空運賃",
-      "reading": "こうくううんちん",
-      "meaning": "airfare"
-    },
-    {
-      "source_index": 7252,
-      "id": "2815760",
-      "term": "口腔衛生",
-      "reading": "こうくうえいせい",
-      "meaning": "dental health / oral hygiene"
-    },
-    {
-      "source_index": 7253,
-      "id": "2598060",
-      "term": "航空貨物",
-      "reading": "こうくうかもつ",
-      "meaning": "air cargo / air freight"
-    },
-    {
-      "source_index": 7254,
-      "id": "2832046",
-      "term": "航空管制",
-      "reading": "こうくうかんせい",
-      "meaning": "air traffic control / ATC"
-    },
-    {
-      "source_index": 7255,
-      "id": "1281310",
-      "term": "航空管理",
-      "reading": "こうくうかんり",
-      "meaning": "air traffic control"
-    },
-    {
-      "source_index": 7256,
-      "id": "1281300",
-      "term": "航空会社",
-      "reading": "こうくうがいしゃ",
-      "meaning": "airline company"
-    },
-    {
-      "source_index": 7257,
-      "id": "1685670",
-      "term": "航空基地",
-      "reading": "こうくうきち",
-      "meaning": "air base"
-    },
-    {
-      "source_index": 7258,
-      "id": "1276120",
-      "term": "口腔外科",
-      "reading": "こうくうげか",
-      "meaning": "dental surgery / oral surgery"
-    },
-    {
-      "source_index": 7259,
-      "id": "2600040",
-      "term": "航空工学",
-      "reading": "こうくうこうがく",
-      "meaning": "aeronautical engineering"
-    },
-    {
-      "source_index": 7260,
-      "id": "1281340",
-      "term": "航空攻撃",
-      "reading": "こうくうこうげき",
-      "meaning": "air strike"
-    },
-    {
-      "source_index": 7261,
-      "id": "1685610",
-      "term": "航空写真",
-      "reading": "こうくうしゃしん",
-      "meaning": "aerial photograph"
-    },
-    {
-      "source_index": 7262,
-      "id": "1281350",
-      "term": "航空書簡",
-      "reading": "こうくうしょかん",
-      "meaning": "aerogramme / air letter"
-    },
-    {
-      "source_index": 7263,
-      "id": "2851903",
-      "term": "航空事業",
-      "reading": "こうくうじぎょう",
-      "meaning": "aviation business / air transport service"
-    },
-    {
-      "source_index": 7264,
-      "id": "2840933",
-      "term": "口腔性交",
-      "reading": "こうくうせいこう",
-      "meaning": "oral sex"
-    },
-    {
-      "source_index": 7265,
-      "id": "2837085",
-      "term": "航空戦隊",
-      "reading": "こうくうせんたい",
-      "meaning": "air flotilla / air fleet / combat aviation unit of the Imperial Japanese Navy"
-    },
-    {
-      "source_index": 7266,
-      "id": "2424900",
-      "term": "航空灯台",
-      "reading": "こうくうとうだい",
-      "meaning": "aeronautical beacon"
-    },
-    {
-      "source_index": 7267,
-      "id": "2861506",
-      "term": "航空日誌",
-      "reading": "こうくうにっし",
-      "meaning": "pilot logbook / aircraft technical logbook"
-    },
-    {
-      "source_index": 7268,
-      "id": "1992720",
-      "term": "航空燃料",
-      "reading": "こうくうねんりょう",
-      "meaning": "aviation fuel"
-    },
-    {
-      "source_index": 7269,
-      "id": "2618360",
-      "term": "航空保険",
-      "reading": "こうくうほけん",
-      "meaning": "aviation insurance / aerial insurance"
-    },
-    {
-      "source_index": 7270,
-      "id": "1281370",
-      "term": "航空母艦",
-      "reading": "こうくうぼかん",
-      "meaning": "aircraft carrier"
-    },
-    {
-      "source_index": 7271,
-      "id": "2826352",
-      "term": "航空無線",
-      "reading": "こうくうむせん",
-      "meaning": "aeronautical radio / aircraft radio"
-    },
-    {
-      "source_index": 7272,
-      "id": "1281380",
-      "term": "航空優勢",
-      "reading": "こうくうゆうせい",
-      "meaning": "air superiority"
-    },
-    {
-      "source_index": 7273,
-      "id": "1638770",
-      "term": "航空郵便",
-      "reading": "こうくうゆうびん",
-      "meaning": "airmail / air mail"
-    },
-    {
-      "source_index": 7274,
-      "id": "2668160",
-      "term": "航空輸送",
-      "reading": "こうくうゆそう",
-      "meaning": "air transportation / air transport / transport by air"
-    },
-    {
-      "source_index": 7275,
-      "id": "2819010",
-      "term": "航空力学",
-      "reading": "こうくうりきがく",
-      "meaning": "flight dynamics / aerodynamics / aeromechanics"
-    },
-    {
-      "source_index": 7276,
-      "id": "1639850",
-      "term": "皇宮警察",
-      "reading": "こうぐうけいさつ",
-      "meaning": "the Imperial Guards"
-    },
-    {
-      "source_index": 7277,
-      "id": "2854699",
-      "term": "行軍将棋",
-      "reading": "こうぐんしょうぎ",
-      "meaning": "gunjin shogi (board game)"
-    },
-    {
-      "source_index": 7278,
-      "id": "2870326",
-      "term": "後脛骨筋",
-      "reading": "こうけいこつきん",
-      "meaning": "tibialis posterior muscle"
-    },
-    {
-      "source_index": 7279,
-      "id": "2830394",
-      "term": "抗結核薬",
-      "reading": "こうけっかくやく",
-      "meaning": "antituberculous drug / antitubercular agent"
-    },
-    {
-      "source_index": 7280,
-      "id": "2859018",
-      "term": "高血糖症",
-      "reading": "こうけっとうしょう",
-      "meaning": "hyperglycemia"
-    },
-    {
-      "source_index": 7281,
-      "id": "1283460",
-      "term": "高血圧症",
-      "reading": "こうけつあつしょう",
-      "meaning": "high blood pressure (as an illness) / hypertension"
-    },
-    {
-      "source_index": 7282,
-      "id": "2797670",
-      "term": "貢献利益",
-      "reading": "こうけんりえき",
-      "meaning": "contribution margin / marginal income"
-    },
-    {
-      "source_index": 7283,
-      "id": "1674840",
-      "term": "工芸美術",
-      "reading": "こうげいびじゅつ",
-      "meaning": "applied fine arts"
-    },
-    {
-      "source_index": 7284,
-      "id": "2870455",
-      "term": "攻撃衝動",
-      "reading": "こうげきしょうどう",
-      "meaning": "aggressive impulse / aggressive drive / aggressive instinct"
-    },
-    {
-      "source_index": 7285,
-      "id": "1675310",
-      "term": "攻撃精神",
-      "reading": "こうげきせいしん",
-      "meaning": "aggressiveness"
-    },
-    {
-      "source_index": 7286,
-      "id": "1675290",
-      "term": "攻撃隊形",
-      "reading": "こうげきたいけい",
-      "meaning": "attacking formation"
-    },
-    {
-      "source_index": 7287,
-      "id": "2861138",
-      "term": "攻撃対象",
-      "reading": "こうげきたいしょう",
-      "meaning": "target of attack"
-    },
-    {
-      "source_index": 7288,
-      "id": "1675300",
-      "term": "攻撃態勢",
-      "reading": "こうげきたいせい",
-      "meaning": "attack preparedness"
-    },
-    {
-      "source_index": 7289,
-      "id": "1279200",
-      "term": "攻撃部隊",
-      "reading": "こうげきぶたい",
-      "meaning": "attacking forces"
-    },
-    {
-      "source_index": 7290,
-      "id": "1279210",
-      "term": "攻撃方向",
-      "reading": "こうげきほうこう",
-      "meaning": "attacking direction"
-    },
-    {
-      "source_index": 7291,
-      "id": "2851481",
-      "term": "抗原検査",
-      "reading": "こうげんけんさ",
-      "meaning": "antigen test"
-    },
-    {
-      "source_index": 7292,
-      "id": "2355190",
-      "term": "光源状態",
-      "reading": "こうげんじょうたい",
-      "meaning": "light source state"
-    },
-    {
-      "source_index": 7293,
-      "id": "2678180",
-      "term": "膠原線維",
-      "reading": "こうげんせんい",
-      "meaning": "collagen fiber / collagen fibre"
-    },
-    {
-      "source_index": 7294,
-      "id": "1278310",
-      "term": "巧言令色",
-      "reading": "こうげんれいしょく",
-      "meaning": "flattery / honeyed words"
-    },
-    {
-      "source_index": 7295,
-      "id": "2858499",
-      "term": "航行衛星",
-      "reading": "こうこうえいせい",
-      "meaning": "navigation satellite"
-    },
-    {
-      "source_index": 7296,
-      "id": "2709300",
-      "term": "硬口蓋音",
-      "reading": "こうこうがいおん",
-      "meaning": "palatal"
-    },
-    {
-      "source_index": 7297,
-      "id": "2643510",
-      "term": "高校球児",
-      "reading": "こうこうきゅうじ",
-      "meaning": "high-school baseball player"
-    },
-    {
-      "source_index": 7298,
-      "id": "2829989",
-      "term": "交項級数",
-      "reading": "こうこうきゅうすう",
-      "meaning": "alternating series"
-    },
-    {
-      "source_index": 7299,
-      "id": "2827775",
-      "term": "航行区域",
-      "reading": "こうこうくいき",
-      "meaning": "regulated navigation area / navigation area / navigation zone"
-    },
     {
       "source_index": 7300,
       "id": "2143100",
@@ -7010,6 +6660,356 @@
       "term": "小道具方",
       "reading": "こどうぐかた",
       "meaning": "prop master / property master"
+    },
+    {
+      "source_index": 8250,
+      "id": "2864087",
+      "term": "古動物学",
+      "reading": "こどうぶつがく",
+      "meaning": "paleozoology"
+    },
+    {
+      "source_index": 8251,
+      "id": "2830285",
+      "term": "子供椅子",
+      "reading": "こどもいす",
+      "meaning": "children's chair / kids' chair"
+    },
+    {
+      "source_index": 8252,
+      "id": "2761990",
+      "term": "子供時代",
+      "reading": "こどもじだい",
+      "meaning": "childhood"
+    },
+    {
+      "source_index": 8253,
+      "id": "2023510",
+      "term": "子供相撲",
+      "reading": "こどもずもう",
+      "meaning": "children's sumo"
+    },
+    {
+      "source_index": 8254,
+      "id": "2620780",
+      "term": "子供の使い",
+      "reading": "こどものつかい",
+      "meaning": "useless messenger / doing only as one is told / fool's errand"
+    },
+    {
+      "source_index": 8255,
+      "id": "2846670",
+      "term": "子供番組",
+      "reading": "こどもばんぐみ",
+      "meaning": "children's (TV) show / children's program"
+    },
+    {
+      "source_index": 8256,
+      "id": "2618370",
+      "term": "子供保険",
+      "reading": "こどもほけん",
+      "meaning": "juvenile insurance"
+    },
+    {
+      "source_index": 8257,
+      "id": "2836037",
+      "term": "粉々にする",
+      "reading": "こなごなにする",
+      "meaning": "to pulverize / to break into pieces"
+    },
+    {
+      "source_index": 8258,
+      "id": "1743520",
+      "term": "小生意気",
+      "reading": "こなまいき",
+      "meaning": "impudence / cheekiness / impertinence"
+    },
+    {
+      "source_index": 8259,
+      "id": "5259238",
+      "term": "湖南大学",
+      "reading": "こなみだいがく",
+      "meaning": "Hunan University / HNU"
+    },
+    {
+      "source_index": 8260,
+      "id": "2716740",
+      "term": "粉屋の泥棒",
+      "reading": "こなやのどろぼう",
+      "meaning": "heavily made-up woman / flour-shop burglar"
+    },
+    {
+      "source_index": 8261,
+      "id": "2740770",
+      "term": "粉をかける",
+      "reading": "こなをかける",
+      "meaning": "to make a pass at / to hit on / to call out to (in an attempt to seduce)"
+    },
+    {
+      "source_index": 8262,
+      "id": "1780700",
+      "term": "近衛師団",
+      "reading": "このえしだん",
+      "meaning": "Imperial Guard Division (pre-1945)"
+    },
+    {
+      "source_index": 8263,
+      "id": "2831521",
+      "term": "この時とばかり",
+      "reading": "このときとばかり",
+      "meaning": "taking an unexpected opportunity"
+    },
+    {
+      "source_index": 8264,
+      "id": "2789430",
+      "term": "小針海豚",
+      "reading": "こはりいるか",
+      "meaning": "Burmeister's porpoise (Phocoena spinipinnis)"
+    },
+    {
+      "source_index": 8265,
+      "id": "1348280",
+      "term": "小春日和",
+      "reading": "こはるびより",
+      "meaning": "Indian summer (around November) / mild late autumn weather / mild late fall weather"
+    },
+    {
+      "source_index": 8266,
+      "id": "2751980",
+      "term": "小嘴千鳥",
+      "reading": "こばしちどり",
+      "meaning": "Eurasian dotterel (Charadrius morinellus) / dotterel"
+    },
+    {
+      "source_index": 8267,
+      "id": "2834247",
+      "term": "小鼻をうごめかす",
+      "reading": "こばなをうごめかす",
+      "meaning": "to put on a triumphant air"
+    },
+    {
+      "source_index": 8268,
+      "id": "2834248",
+      "term": "小鼻を膨らます",
+      "reading": "こばなをふくらます",
+      "meaning": "to look displeased / to flare one's nostrils"
+    },
+    {
+      "source_index": 8269,
+      "id": "2855398",
+      "term": "小判切手",
+      "reading": "こばんきって",
+      "meaning": "Meiji-period postal stamp featuring a large oval in its design"
+    },
+    {
+      "source_index": 8270,
+      "id": "2868859",
+      "term": "木挽小屋",
+      "reading": "こびきごや",
+      "meaning": "sawyer's shed"
+    },
+    {
+      "source_index": 8271,
+      "id": "2643030",
+      "term": "古美術商",
+      "reading": "こびじゅつしょう",
+      "meaning": "antique art dealer / antique dealer / antiquary"
+    },
+    {
+      "source_index": 8272,
+      "id": "2695180",
+      "term": "古美術店",
+      "reading": "こびじゅつてん",
+      "meaning": "antique store / antique shop"
+    },
+    {
+      "source_index": 8273,
+      "id": "2853534",
+      "term": "古美術品",
+      "reading": "こびじゅつひん",
+      "meaning": "antique / antique artwork"
+    },
+    {
+      "source_index": 8274,
+      "id": "2789610",
+      "term": "小人海豚",
+      "reading": "こびといるか",
+      "meaning": "tucuxi (Sotalia fluviatilis)"
+    },
+    {
+      "source_index": 8275,
+      "id": "2872152",
+      "term": "小人目付",
+      "reading": "こびとめつけ",
+      "meaning": "assistant inspector (Edo period) / junior metsuke"
+    },
+    {
+      "source_index": 8276,
+      "id": "2847939",
+      "term": "古病理学",
+      "reading": "こびょうりがく",
+      "meaning": "paleopathology"
+    },
+    {
+      "source_index": 8277,
+      "id": "2166540",
+      "term": "小鰭巨頭",
+      "reading": "こびれごんどう",
+      "meaning": "short-finned pilot whale (Globicephala macrorhyncus)"
+    },
+    {
+      "source_index": 8278,
+      "id": "2045360",
+      "term": "鼓腹撃壌",
+      "reading": "こふくげきじょう",
+      "meaning": "(people) sing the praises (enjoy the blessings) of peace"
+    },
+    {
+      "source_index": 8279,
+      "id": "2244730",
+      "term": "古風土記",
+      "reading": "こふどき",
+      "meaning": "ancient fudoki compiled by imperial order in 713 CE"
+    },
+    {
+      "source_index": 8280,
+      "id": "1934690",
+      "term": "古墳時代",
+      "reading": "こふんじだい",
+      "meaning": "Kofun period (of Japanese history, 250-538 CE) / Tumulus period"
+    },
+    {
+      "source_index": 8281,
+      "id": "1268030",
+      "term": "鼓舞激励",
+      "reading": "こぶげきれい",
+      "meaning": "encouragement"
+    },
+    {
+      "source_index": 8282,
+      "id": "1684920",
+      "term": "古物商人",
+      "reading": "こぶつしょうにん",
+      "meaning": "antiques dealer"
+    },
+    {
+      "source_index": 8283,
+      "id": "2353930",
+      "term": "個別記号",
+      "reading": "こべつきごう",
+      "meaning": "specific symbol"
+    },
+    {
+      "source_index": 8284,
+      "id": "2829250",
+      "term": "個別指導",
+      "reading": "こべつしどう",
+      "meaning": "individual lesson / tutorial / one-on-one instruction"
+    },
+    {
+      "source_index": 8285,
+      "id": "1265030",
+      "term": "個別販売",
+      "reading": "こべつはんばい",
+      "meaning": "door-to-door selling"
+    },
+    {
+      "source_index": 8286,
+      "id": "2353940",
+      "term": "個別部品",
+      "reading": "こべつぶひん",
+      "meaning": "discrete component"
+    },
+    {
+      "source_index": 8287,
+      "id": "1631050",
+      "term": "戸別訪問",
+      "reading": "こべつほうもん",
+      "meaning": "door-to-door visit / door-to-door canvassing (canvasing)"
+    },
+    {
+      "source_index": 8288,
+      "id": "2859102",
+      "term": "個別面接",
+      "reading": "こべつめんせつ",
+      "meaning": "individual interview / personal interview"
+    },
+    {
+      "source_index": 8289,
+      "id": "5259286",
+      "term": "湖北大学",
+      "reading": "こほくだいがく",
+      "meaning": "Hubei University"
+    },
+    {
+      "source_index": 8290,
+      "id": "2575850",
+      "term": "枯木寒巌",
+      "reading": "こぼくかんがん",
+      "meaning": "withered trees and frozen rocks / a person that is hard to approach"
+    },
+    {
+      "source_index": 8291,
+      "id": "2575860",
+      "term": "枯木死灰",
+      "reading": "こぼくしかい",
+      "meaning": "withered trees and cold ash / someone who is detached and free of desires / someone who has no vitality"
+    },
+    {
+      "source_index": 8292,
+      "id": "2626580",
+      "term": "鼓膜張筋",
+      "reading": "こまくちょうきん",
+      "meaning": "tensor tympani muscle"
+    },
+    {
+      "source_index": 8293,
+      "id": "5233398",
+      "term": "駒澤大学",
+      "reading": "こまざわだいがく",
+      "meaning": "Komazawa University"
+    },
+    {
+      "source_index": 8294,
+      "id": "2871114",
+      "term": "困ったときの神頼み",
+      "reading": "こまったときのかみだのみ",
+      "meaning": "turning to God only in one's trouble"
+    },
+    {
+      "source_index": 8295,
+      "id": "1744410",
+      "term": "小間物屋",
+      "reading": "こまものや",
+      "meaning": "haberdashery / sundries store"
+    },
+    {
+      "source_index": 8296,
+      "id": "2833054",
+      "term": "小蜜柑草",
+      "reading": "こみかんそう",
+      "meaning": "chamberbitter (Phyllanthus urinaria) / gripeweed / shatterstone"
+    },
+    {
+      "source_index": 8297,
+      "id": "1348240",
+      "term": "小耳に挟む",
+      "reading": "こみみにはさむ",
+      "meaning": "to happen to hear / to overhear"
+    },
+    {
+      "source_index": 8298,
+      "id": "2835816",
+      "term": "小麦外皮",
+      "reading": "こむぎがいひ",
+      "meaning": "wheat bran"
+    },
+    {
+      "source_index": 8299,
+      "id": "2747420",
+      "term": "小麦胚芽",
+      "reading": "こむぎはいが",
+      "meaning": "wheat germ"
     }
   ]
 }
