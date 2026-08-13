@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9905,
-  "english_only_remaining": 5095,
+  "already_direct_japanese": 9906,
+  "english_only_remaining": 5094,
   "english_only_rank_counts": {
-    "(blank)": 5095
+    "(blank)": 5094
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 200,
   "part_end": 299,
   "targets": [
-    {
-      "source_index": 10105,
-      "id": "2678590",
-      "term": "釈迦占地",
-      "reading": "しゃかしめじ",
-      "meaning": "Lyophyllum fumosum (species of mushroom)"
-    },
     {
       "source_index": 10106,
       "id": "2093310",
@@ -712,6 +705,13 @@
       "term": "就学義務",
       "reading": "しゅうがくぎむ",
       "meaning": "compulsory school attendance"
+    },
+    {
+      "source_index": 10205,
+      "id": "1331570",
+      "term": "就学児童",
+      "reading": "しゅうがくじどう",
+      "meaning": "school child"
     }
   ]
 }

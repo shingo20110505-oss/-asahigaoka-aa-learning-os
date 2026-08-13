@@ -1,23 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9905,
-  "english_only_remaining": 5095,
+  "already_direct_japanese": 9906,
+  "english_only_remaining": 5094,
   "english_only_rank_counts": {
-    "(blank)": 5095
+    "(blank)": 5094
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 9905,
-      "id": "2094850",
-      "term": "支那料理",
-      "reading": "しなりょうり",
-      "meaning": "Chinese food"
-    },
     {
       "source_index": 9906,
       "id": "2400350",
@@ -7010,6 +7003,13 @@
       "term": "初期設定",
       "reading": "しょきせってい",
       "meaning": "default settings / initial settings / initial configuration"
+    },
+    {
+      "source_index": 10905,
+      "id": "2250590",
+      "term": "書記体系",
+      "reading": "しょきたいけい",
+      "meaning": "writing system"
     }
   ]
 }

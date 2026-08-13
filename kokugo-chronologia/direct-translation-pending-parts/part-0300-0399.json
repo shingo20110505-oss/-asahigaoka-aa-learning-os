@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9905,
-  "english_only_remaining": 5095,
+  "already_direct_japanese": 9906,
+  "english_only_remaining": 5094,
   "english_only_rank_counts": {
-    "(blank)": 5095
+    "(blank)": 5094
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 300,
   "part_end": 399,
   "targets": [
-    {
-      "source_index": 10205,
-      "id": "1331570",
-      "term": "就学児童",
-      "reading": "しゅうがくじどう",
-      "meaning": "school child"
-    },
     {
       "source_index": 10206,
       "id": "1331580",
@@ -712,6 +705,13 @@
       "term": "集団結婚",
       "reading": "しゅうだんけっこん",
       "meaning": "group wedding"
+    },
+    {
+      "source_index": 10305,
+      "id": "1813550",
+      "term": "集団検診",
+      "reading": "しゅうだんけんしん",
+      "meaning": "group medical examination"
     }
   ]
 }

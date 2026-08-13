@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9905,
-  "english_only_remaining": 5095,
+  "already_direct_japanese": 9906,
+  "english_only_remaining": 5094,
   "english_only_rank_counts": {
-    "(blank)": 5095
+    "(blank)": 5094
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 600,
   "part_end": 699,
   "targets": [
-    {
-      "source_index": 10505,
-      "id": "2046780",
-      "term": "出没自在",
-      "reading": "しゅつぼつじざい",
-      "meaning": "appearing and disappearing at will / elusive / phantom-like"
-    },
     {
       "source_index": 10506,
       "id": "2868967",
@@ -712,6 +705,13 @@
       "term": "聖観世音",
       "reading": "しょうかんぜのん",
       "meaning": "Aryavalokitesvara (manifestation of Avalokitesvara)"
+    },
+    {
+      "source_index": 10605,
+      "id": "1346480",
+      "term": "召喚令状",
+      "reading": "しょうかんれいじょう",
+      "meaning": "summons for directions (legal UK)"
     }
   ]
 }

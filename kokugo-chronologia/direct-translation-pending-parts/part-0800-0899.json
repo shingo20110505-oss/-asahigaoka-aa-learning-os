@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9905,
-  "english_only_remaining": 5095,
+  "already_direct_japanese": 9906,
+  "english_only_remaining": 5094,
   "english_only_rank_counts": {
-    "(blank)": 5095
+    "(blank)": 5094
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 800,
   "part_end": 899,
   "targets": [
-    {
-      "source_index": 10705,
-      "id": "2819670",
-      "term": "昇進人事",
-      "reading": "しょうしんじんじ",
-      "meaning": "promotion / appointment to a more senior position"
-    },
     {
       "source_index": 10706,
       "id": "2046960",
@@ -712,6 +705,13 @@
       "term": "消費支出",
       "reading": "しょうひししゅつ",
       "meaning": "consumer spending / consumption expenditure"
+    },
+    {
+      "source_index": 10805,
+      "id": "2124950",
+      "term": "消費社会",
+      "reading": "しょうひしゃかい",
+      "meaning": "consumer society"
     }
   ]
 }

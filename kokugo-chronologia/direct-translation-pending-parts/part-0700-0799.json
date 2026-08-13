@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9905,
-  "english_only_remaining": 5095,
+  "already_direct_japanese": 9906,
+  "english_only_remaining": 5094,
   "english_only_rank_counts": {
-    "(blank)": 5095
+    "(blank)": 5094
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 700,
   "part_end": 799,
   "targets": [
-    {
-      "source_index": 10605,
-      "id": "1346480",
-      "term": "召喚令状",
-      "reading": "しょうかんれいじょう",
-      "meaning": "summons for directions (legal UK)"
-    },
     {
       "source_index": 10606,
       "id": "2275570",
@@ -712,6 +705,13 @@
       "term": "焼身自殺",
       "reading": "しょうしんじさつ",
       "meaning": "self-immolation / burning oneself to death / suicide by fire"
+    },
+    {
+      "source_index": 10705,
+      "id": "2819670",
+      "term": "昇進人事",
+      "reading": "しょうしんじんじ",
+      "meaning": "promotion / appointment to a more senior position"
     }
   ]
 }

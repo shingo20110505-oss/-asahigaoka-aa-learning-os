@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9905,
-  "english_only_remaining": 5095,
+  "already_direct_japanese": 9906,
+  "english_only_remaining": 5094,
   "english_only_rank_counts": {
-    "(blank)": 5095
+    "(blank)": 5094
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 400,
   "part_end": 499,
   "targets": [
-    {
-      "source_index": 10305,
-      "id": "1813550",
-      "term": "集団検診",
-      "reading": "しゅうだんけんしん",
-      "meaning": "group medical examination"
-    },
     {
       "source_index": 10306,
       "id": "1937850",
@@ -712,6 +705,13 @@
       "term": "主管機関",
       "reading": "しゅかんきかん",
       "meaning": "administration"
+    },
+    {
+      "source_index": 10405,
+      "id": "2690490",
+      "term": "種間雑種",
+      "reading": "しゅかんざっしゅ",
+      "meaning": "interspecific hybrid"
     }
   ]
 }

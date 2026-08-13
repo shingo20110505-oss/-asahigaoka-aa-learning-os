@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9905,
-  "english_only_remaining": 5095,
+  "already_direct_japanese": 9906,
+  "english_only_remaining": 5094,
   "english_only_rank_counts": {
-    "(blank)": 5095
+    "(blank)": 5094
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 0,
   "part_end": 99,
   "targets": [
-    {
-      "source_index": 9905,
-      "id": "2094850",
-      "term": "支那料理",
-      "reading": "しなりょうり",
-      "meaning": "Chinese food"
-    },
     {
       "source_index": 9906,
       "id": "2400350",
@@ -712,6 +705,13 @@
       "term": "市民革命",
       "reading": "しみんかくめい",
       "meaning": "people's revolution / popular revolution"
+    },
+    {
+      "source_index": 10005,
+      "id": "2619300",
+      "term": "市民活動",
+      "reading": "しみんかつどう",
+      "meaning": "civic activity / activities initiated by the citizens themselves"
     }
   ]
 }

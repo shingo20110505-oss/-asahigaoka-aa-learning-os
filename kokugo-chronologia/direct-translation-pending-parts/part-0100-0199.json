@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9905,
-  "english_only_remaining": 5095,
+  "already_direct_japanese": 9906,
+  "english_only_remaining": 5094,
   "english_only_rank_counts": {
-    "(blank)": 5095
+    "(blank)": 5094
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 100,
   "part_end": 199,
   "targets": [
-    {
-      "source_index": 10005,
-      "id": "2619300",
-      "term": "市民活動",
-      "reading": "しみんかつどう",
-      "meaning": "civic activity / activities initiated by the citizens themselves"
-    },
     {
       "source_index": 10006,
       "id": "2831241",
@@ -712,6 +705,13 @@
       "term": "釈迦三尊",
       "reading": "しゃかさんぞん",
       "meaning": "Shakyamuni triad / Gautama triad / image of Shakyamuni (Gautama) Buddha flanked by two attendants"
+    },
+    {
+      "source_index": 10105,
+      "id": "2678590",
+      "term": "釈迦占地",
+      "reading": "しゃかしめじ",
+      "meaning": "Lyophyllum fumosum (species of mushroom)"
     }
   ]
 }
