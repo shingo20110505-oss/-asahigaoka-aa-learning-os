@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11887,
-  "english_only_remaining": 3113,
+  "already_direct_japanese": 11937,
+  "english_only_remaining": 3063,
   "english_only_rank_counts": {
-    "(blank)": 3113
+    "(blank)": 3063
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11887,
-      "id": "2361160",
-      "term": "辞書攻撃",
-      "reading": "じしょこうげき",
-      "meaning": "dictionary attack"
-    },
-    {
-      "source_index": 11888,
-      "id": "1920970",
-      "term": "辞書部門",
-      "reading": "じしょぶもん",
-      "meaning": "lexicon"
-    },
-    {
-      "source_index": 11889,
-      "id": "2057490",
-      "term": "辞書編集",
-      "reading": "じしょへんしゅう",
-      "meaning": "lexicography"
-    },
-    {
-      "source_index": 11890,
-      "id": "1317990",
-      "term": "自信過剰",
-      "reading": "じしんかじょう",
-      "meaning": "overconfident / presumptuous"
-    },
-    {
-      "source_index": 11891,
-      "id": "2264010",
-      "term": "地震観測",
-      "reading": "じしんかんそく",
-      "meaning": "seismic observation"
-    },
-    {
-      "source_index": 11892,
-      "id": "1421230",
-      "term": "地震学者",
-      "reading": "じしんがくしゃ",
-      "meaning": "seismologist"
-    },
-    {
-      "source_index": 11893,
-      "id": "2604590",
-      "term": "地震記象",
-      "reading": "じしんきしょう",
-      "meaning": "seismogram"
-    },
-    {
-      "source_index": 11894,
-      "id": "2604610",
-      "term": "地震工学",
-      "reading": "じしんこうがく",
-      "meaning": "earthquake engineering"
-    },
-    {
-      "source_index": 11895,
-      "id": "2615550",
-      "term": "地震情報",
-      "reading": "じしんじょうほう",
-      "meaning": "earthquake information"
-    },
-    {
-      "source_index": 11896,
-      "id": "2046070",
-      "term": "自信喪失",
-      "reading": "じしんそうしつ",
-      "meaning": "loss of (self-)confidence / inferiority complex"
-    },
-    {
-      "source_index": 11897,
-      "id": "2828966",
-      "term": "地震対策",
-      "reading": "じしんたいさく",
-      "meaning": "precautions against earthquake / anti-earthquake measures / antiearthquake procedures"
-    },
-    {
-      "source_index": 11898,
-      "id": "1421270",
-      "term": "地震探鉱",
-      "reading": "じしんたんこう",
-      "meaning": "seismic mineral exploration"
-    },
-    {
-      "source_index": 11899,
-      "id": "2604630",
-      "term": "地震断層",
-      "reading": "じしんだんそう",
-      "meaning": "earthquake fault"
-    },
-    {
-      "source_index": 11900,
-      "id": "1942330",
-      "term": "地震地帯",
-      "reading": "じしんちたい",
-      "meaning": "seismic part (zone, belt)"
-    },
-    {
-      "source_index": 11901,
-      "id": "2604640",
-      "term": "地震津波",
-      "reading": "じしんつなみ",
-      "meaning": "tsunami (caused by an earthquake)"
-    },
-    {
-      "source_index": 11902,
-      "id": "2604670",
-      "term": "地震保険",
-      "reading": "じしんほけん",
-      "meaning": "earthquake insurance"
-    },
-    {
-      "source_index": 11903,
-      "id": "1764010",
-      "term": "地震予知",
-      "reading": "じしんよち",
-      "meaning": "earthquake prediction"
-    },
-    {
-      "source_index": 11904,
-      "id": "2430440",
-      "term": "時事解説",
-      "reading": "じじかいせつ",
-      "meaning": "news commentary / comments on the news"
-    },
-    {
-      "source_index": 11905,
-      "id": "1315850",
-      "term": "時々刻々",
-      "reading": "じじこっこく",
-      "meaning": "hourly / from one minute to the next / from hour to hour"
-    },
-    {
-      "source_index": 11906,
-      "id": "5745103",
-      "term": "時事通信",
-      "reading": "じじつうしん",
-      "meaning": "Jiji Press"
-    },
-    {
-      "source_index": 11907,
-      "id": "2853073",
-      "term": "事実確認",
-      "reading": "じじつかくにん",
-      "meaning": "fact-checking"
-    },
-    {
-      "source_index": 11908,
-      "id": "1994420",
-      "term": "事実関係",
-      "reading": "じじつかんけい",
-      "meaning": "all facts (of a case, incident, etc.)"
-    },
-    {
-      "source_index": 11909,
-      "id": "1936780",
-      "term": "事実誤認",
-      "reading": "じじつごにん",
-      "meaning": "mistake of fact"
-    },
-    {
-      "source_index": 11910,
-      "id": "1313980",
-      "term": "事実調査",
-      "reading": "じじつちょうさ",
-      "meaning": "fact-finding"
-    },
-    {
-      "source_index": 11911,
-      "id": "2870081",
-      "term": "事実認定",
-      "reading": "じじつにんてい",
-      "meaning": "fact-finding / determination of facts"
-    },
-    {
-      "source_index": 11912,
-      "id": "1313990",
-      "term": "事実無根",
-      "reading": "じじつむこん",
-      "meaning": "groundless / entirely contrary to fact"
-    },
-    {
-      "source_index": 11913,
-      "id": "2797180",
-      "term": "祖父祖母",
-      "reading": "じじばば",
-      "meaning": "old people"
-    },
-    {
-      "source_index": 11914,
-      "id": "1595220",
-      "term": "事々物々",
-      "reading": "じじぶつぶつ",
-      "meaning": "everything / every affair (matter) / all things"
-    },
-    {
-      "source_index": 11915,
-      "id": "1936810",
-      "term": "時事問題",
-      "reading": "じじもんだい",
-      "meaning": "current issues / current topics"
-    },
-    {
-      "source_index": 11916,
-      "id": "1314930",
-      "term": "侍従武官",
-      "reading": "じじゅうぶかん",
-      "meaning": "emperor's aide-de-camp"
-    },
-    {
-      "source_index": 11917,
-      "id": "1726280",
-      "term": "自浄作用",
-      "reading": "じじょうさよう",
-      "meaning": "autopurificatory activity (in the natural world)"
-    },
-    {
-      "source_index": 11918,
-      "id": "1318490",
-      "term": "自縄自縛",
-      "reading": "じじょうじばく",
-      "meaning": "being caught in one's own trap / being hoisted by one's own petard"
-    },
-    {
-      "source_index": 11919,
-      "id": "2046010",
-      "term": "事情聴取",
-      "reading": "じじょうちょうしゅ",
-      "meaning": "inquiry / enquiry / investigation"
-    },
-    {
-      "source_index": 11920,
-      "id": "2046020",
-      "term": "自浄能力",
-      "reading": "じじょうのうりょく",
-      "meaning": "self-cleansing power / being capable of purifying oneself"
-    },
-    {
-      "source_index": 11921,
-      "id": "2046060",
-      "term": "自助努力",
-      "reading": "じじょどりょく",
-      "meaning": "self-help efforts / independent efforts / self-supporting endeavor"
-    },
-    {
-      "source_index": 11922,
-      "id": "2857923",
-      "term": "時事用語",
-      "reading": "じじようご",
-      "meaning": "contemporary words / current terminology / words commonly heard in current affairs topics"
-    },
-    {
-      "source_index": 11923,
-      "id": "2145760",
-      "term": "次数解析",
-      "reading": "じすうかいせき",
-      "meaning": "order analysis"
-    },
-    {
-      "source_index": 11924,
-      "id": "2046115",
-      "term": "時世感覚",
-      "reading": "じせいかんかく",
-      "meaning": "sense of the times / sensitivity to the times"
-    },
-    {
-      "source_index": 11925,
-      "id": "2046110",
-      "term": "時勢感覚",
-      "reading": "じせいかんかく",
-      "meaning": "sense of the trend of the times / sensitivity to the changing times"
-    },
-    {
-      "source_index": 11926,
-      "id": "2870825",
-      "term": "自生植物",
-      "reading": "じせいしょくぶつ",
-      "meaning": "wild plant / native plant"
-    },
-    {
-      "source_index": 11927,
-      "id": "2805250",
-      "term": "磁性流体",
-      "reading": "じせいりゅうたい",
-      "meaning": "ferrofluid / magnetic fluid / magnetorheological fluid"
-    },
-    {
-      "source_index": 11928,
-      "id": "2046130",
-      "term": "時節到来",
-      "reading": "じせつとうらい",
-      "meaning": "the time has come (for, to, when ...) / the time being ripe (for)"
-    },
-    {
-      "source_index": 11929,
-      "id": "1817660",
-      "term": "事前運動",
-      "reading": "じぜんうんどう",
-      "meaning": "pre-election campaigning"
-    },
-    {
-      "source_index": 11930,
-      "id": "2716140",
-      "term": "事前確率",
-      "reading": "じぜんかくりつ",
-      "meaning": "prior probability"
-    },
-    {
-      "source_index": 11931,
-      "id": "2612820",
-      "term": "慈善活動",
-      "reading": "じぜんかつどう",
-      "meaning": "philanthropic activity / charity work"
-    },
-    {
-      "source_index": 11932,
-      "id": "1817650",
-      "term": "事前協議",
-      "reading": "じぜんきょうぎ",
-      "meaning": "prior consultation"
-    },
-    {
-      "source_index": 11933,
-      "id": "2828050",
-      "term": "事前警告",
-      "reading": "じぜんけいこく",
-      "meaning": "advance warning / trigger warning"
-    },
-    {
-      "source_index": 11934,
-      "id": "1314090",
-      "term": "事前検閲",
-      "reading": "じぜんけんえつ",
-      "meaning": "prepublication censorship"
-    },
-    {
-      "source_index": 11935,
-      "id": "1314100",
-      "term": "事前研修",
-      "reading": "じぜんけんしゅう",
-      "meaning": "advance training / prior training"
-    },
-    {
-      "source_index": 11936,
-      "id": "2834863",
-      "term": "慈善興行",
-      "reading": "じぜんこうぎょう",
-      "meaning": "charity show / benefit performance"
-    },
     {
       "source_index": 11937,
       "id": "2046140",
@@ -7010,6 +6660,356 @@
       "term": "人工心肺",
       "reading": "じんこうしんぱい",
       "meaning": "cardiopulmonary bypass / heart-lung machine / CPB pump"
+    },
+    {
+      "source_index": 12887,
+      "id": "1367570",
+      "term": "人工地震",
+      "reading": "じんこうじしん",
+      "meaning": "artificial earthquake"
+    },
+    {
+      "source_index": 12888,
+      "id": "1367500",
+      "term": "人工授精",
+      "reading": "じんこうじゅせい",
+      "meaning": "artificial insemination / intrauterine insemination / IUI"
+    },
+    {
+      "source_index": 12889,
+      "id": "1367510",
+      "term": "人工受胎",
+      "reading": "じんこうじゅたい",
+      "meaning": "artificial insemination"
+    },
+    {
+      "source_index": 12890,
+      "id": "1367520",
+      "term": "人工授粉",
+      "reading": "じんこうじゅふん",
+      "meaning": "artificial pollination / hand pollination / mechanical pollination"
+    },
+    {
+      "source_index": 12891,
+      "id": "1367600",
+      "term": "人工頭脳",
+      "reading": "じんこうずのう",
+      "meaning": "mechanical brain / computer"
+    },
+    {
+      "source_index": 12892,
+      "id": "1730650",
+      "term": "人口静態",
+      "reading": "じんこうせいたい",
+      "meaning": "static population"
+    },
+    {
+      "source_index": 12893,
+      "id": "1367540",
+      "term": "人工生命",
+      "reading": "じんこうせいめい",
+      "meaning": "artificial life"
+    },
+    {
+      "source_index": 12894,
+      "id": "1939410",
+      "term": "人口増加",
+      "reading": "じんこうぞうか",
+      "meaning": "increase in population / population growth"
+    },
+    {
+      "source_index": 12895,
+      "id": "1939450",
+      "term": "人工臓器",
+      "reading": "じんこうぞうき",
+      "meaning": "artificial internal organ"
+    },
+    {
+      "source_index": 12896,
+      "id": "1367560",
+      "term": "人工知能",
+      "reading": "じんこうちのう",
+      "meaning": "artificial intelligence / AI"
+    },
+    {
+      "source_index": 12897,
+      "id": "2147020",
+      "term": "人工中絶",
+      "reading": "じんこうちゅうぜつ",
+      "meaning": "induced abortion"
+    },
+    {
+      "source_index": 12898,
+      "id": "1367330",
+      "term": "人口調査",
+      "reading": "じんこうちょうさ",
+      "meaning": "census"
+    },
+    {
+      "source_index": 12899,
+      "id": "2837216",
+      "term": "人口転換",
+      "reading": "じんこうてんかん",
+      "meaning": "demographic transition"
+    },
+    {
+      "source_index": 12900,
+      "id": "1730660",
+      "term": "人口統計",
+      "reading": "じんこうとうけい",
+      "meaning": "population statistics / demographics"
+    },
+    {
+      "source_index": 12901,
+      "id": "1730610",
+      "term": "人工透析",
+      "reading": "じんこうとうせき",
+      "meaning": "(artificial) dialysis"
+    },
+    {
+      "source_index": 12902,
+      "id": "2833043",
+      "term": "人工冬眠",
+      "reading": "じんこうとうみん",
+      "meaning": "artificial hibernation / induced hibernation"
+    },
+    {
+      "source_index": 12903,
+      "id": "1730630",
+      "term": "人口動態",
+      "reading": "じんこうどうたい",
+      "meaning": "changes in demographics / movements in population characteristics"
+    },
+    {
+      "source_index": 12904,
+      "id": "2401690",
+      "term": "人工内耳",
+      "reading": "じんこうないじ",
+      "meaning": "cochlea implant"
+    },
+    {
+      "source_index": 12905,
+      "id": "2843204",
+      "term": "人工妊娠",
+      "reading": "じんこうにんしん",
+      "meaning": "pregnancy resulting from artificial insemination, in-vitro fertilization, etc. (esp. of animals)"
+    },
+    {
+      "source_index": 12906,
+      "id": "2795010",
+      "term": "人工排熱",
+      "reading": "じんこうはいねつ",
+      "meaning": "artificial exhaust heat"
+    },
+    {
+      "source_index": 12907,
+      "id": "1939420",
+      "term": "人口爆発",
+      "reading": "じんこうばくはつ",
+      "meaning": "population explosion"
+    },
+    {
+      "source_index": 12908,
+      "id": "2801550",
+      "term": "人工皮革",
+      "reading": "じんこうひかく",
+      "meaning": "artificial leather"
+    },
+    {
+      "source_index": 12909,
+      "id": "2653760",
+      "term": "人工孵化",
+      "reading": "じんこうふか",
+      "meaning": "artificial incubation / artificial hatching"
+    },
+    {
+      "source_index": 12910,
+      "id": "2535980",
+      "term": "人口分布",
+      "reading": "じんこうぶんぷ",
+      "meaning": "population distribution"
+    },
+    {
+      "source_index": 12911,
+      "id": "2843747",
+      "term": "人工膀胱",
+      "reading": "じんこうぼうこう",
+      "meaning": "artificial bladder / artificial urinary bladder"
+    },
+    {
+      "source_index": 12912,
+      "id": "1367360",
+      "term": "人口密度",
+      "reading": "じんこうみつど",
+      "meaning": "population density"
+    },
+    {
+      "source_index": 12913,
+      "id": "2445760",
+      "term": "人工無脳",
+      "reading": "じんこうむのう",
+      "meaning": "chatterbot / chatbot"
+    },
+    {
+      "source_index": 12914,
+      "id": "2856427",
+      "term": "人工木材",
+      "reading": "じんこうもくざい",
+      "meaning": "artificial wood / faux wood"
+    },
+    {
+      "source_index": 12915,
+      "id": "2419050",
+      "term": "沈香も焚かず屁も放らず",
+      "reading": "じんこうもたかずへもひらず",
+      "meaning": "having few faults as well as few virtues / not burning agarwood (incense); not passing wind"
+    },
+    {
+      "source_index": 12916,
+      "id": "1730640",
+      "term": "人口問題",
+      "reading": "じんこうもんだい",
+      "meaning": "population problem"
+    },
+    {
+      "source_index": 12917,
+      "id": "1939430",
+      "term": "人口抑制",
+      "reading": "じんこうよくせい",
+      "meaning": "population control"
+    },
+    {
+      "source_index": 12918,
+      "id": "1367630",
+      "term": "人工流産",
+      "reading": "じんこうりゅうざん",
+      "meaning": "abortion"
+    },
+    {
+      "source_index": 12919,
+      "id": "2850438",
+      "term": "人工惑星",
+      "reading": "じんこうわくせい",
+      "meaning": "artificial planet / man-made planet"
+    },
+    {
+      "source_index": 12920,
+      "id": "2850802",
+      "term": "壬午軍乱",
+      "reading": "じんごぐんらん",
+      "meaning": "Imo Incident (riot in Seoul, Korea; July 23, 1882)"
+    },
+    {
+      "source_index": 12921,
+      "id": "2090010",
+      "term": "神護景雲",
+      "reading": "じんごけいうん",
+      "meaning": "Jingo-keiun era (767.8.16-770.10.1)"
+    },
+    {
+      "source_index": 12922,
+      "id": "2207380",
+      "term": "腎細胞癌",
+      "reading": "じんさいぼうがん",
+      "meaning": "renal cell carcinoma / cancerous kidney tumor"
+    },
+    {
+      "source_index": 12923,
+      "id": "2825867",
+      "term": "人材育成",
+      "reading": "じんざいいくせい",
+      "meaning": "human resources training / development of human resources / personnel training"
+    },
+    {
+      "source_index": 12924,
+      "id": "1367770",
+      "term": "人材開発",
+      "reading": "じんざいかいはつ",
+      "meaning": "human resources development / personnel development / career development"
+    },
+    {
+      "source_index": 12925,
+      "id": "2825866",
+      "term": "人材活用",
+      "reading": "じんざいかつよう",
+      "meaning": "appropriate use of human resources / personnel utilization"
+    },
+    {
+      "source_index": 12926,
+      "id": "1730760",
+      "term": "人材銀行",
+      "reading": "じんざいぎんこう",
+      "meaning": "job bank / talent pool"
+    },
+    {
+      "source_index": 12927,
+      "id": "2678840",
+      "term": "人材交流",
+      "reading": "じんざいこうりゅう",
+      "meaning": "personnel exchange / people-to-people exchange"
+    },
+    {
+      "source_index": 12928,
+      "id": "1367740",
+      "term": "人材登用",
+      "reading": "じんざいとうよう",
+      "meaning": "selection for high office / selecting of fit (talented) persons for higher positions"
+    },
+    {
+      "source_index": 12929,
+      "id": "2559390",
+      "term": "人材派遣",
+      "reading": "じんざいはけん",
+      "meaning": "temporary employee placement"
+    },
+    {
+      "source_index": 12930,
+      "id": "2649920",
+      "term": "人材不足",
+      "reading": "じんざいぶそく",
+      "meaning": "shortage of talented people / shortfall in human resources"
+    },
+    {
+      "source_index": 12931,
+      "id": "2656930",
+      "term": "人車軌道",
+      "reading": "じんしゃきどう",
+      "meaning": "handcar railroad / handcar railway"
+    },
+    {
+      "source_index": 12932,
+      "id": "1368030",
+      "term": "人種改良",
+      "reading": "じんしゅかいりょう",
+      "meaning": "racial eugenics"
+    },
+    {
+      "source_index": 12933,
+      "id": "2011630",
+      "term": "人種隔離",
+      "reading": "じんしゅかくり",
+      "meaning": "racial segregation / apartheid"
+    },
+    {
+      "source_index": 12934,
+      "id": "1368050",
+      "term": "人種差別",
+      "reading": "じんしゅさべつ",
+      "meaning": "racial discrimination / racism"
+    },
+    {
+      "source_index": 12935,
+      "id": "2132630",
+      "term": "人種主義",
+      "reading": "じんしゅしゅぎ",
+      "meaning": "racism"
+    },
+    {
+      "source_index": 12936,
+      "id": "2826118",
+      "term": "人種暴動",
+      "reading": "じんしゅぼうどう",
+      "meaning": "race riot / ethnic riot"
     }
   ]
 }
