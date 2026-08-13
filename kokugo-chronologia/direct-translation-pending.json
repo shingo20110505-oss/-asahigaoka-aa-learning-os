@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 7850,
-  "english_only_remaining": 7150,
+  "already_direct_japanese": 7900,
+  "english_only_remaining": 7100,
   "english_only_rank_counts": {
-    "(blank)": 7150
+    "(blank)": 7100
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 7850,
-      "id": "2863230",
-      "term": "国語教育",
-      "reading": "こくごきょういく",
-      "meaning": "Japanese language education (for Japanese people) / teaching of Japanese"
-    },
-    {
-      "source_index": 7851,
-      "id": "2839093",
-      "term": "国語辞書",
-      "reading": "こくごじしょ",
-      "meaning": "Japanese-language dictionary"
-    },
-    {
-      "source_index": 7852,
-      "id": "1657340",
-      "term": "国語辞典",
-      "reading": "こくごじてん",
-      "meaning": "Japanese-language dictionary"
-    },
-    {
-      "source_index": 7853,
-      "id": "2863662",
-      "term": "国際運河",
-      "reading": "こくさいうんが",
-      "meaning": "international canal"
-    },
-    {
-      "source_index": 7854,
-      "id": "2770880",
-      "term": "国際映像",
-      "reading": "こくさいえいぞう",
-      "meaning": "international video feed"
-    },
-    {
-      "source_index": 7855,
-      "id": "2851030",
-      "term": "国際海峡",
-      "reading": "こくさいかいきょう",
-      "meaning": "international strait"
-    },
-    {
-      "source_index": 7856,
-      "id": "1746810",
-      "term": "国際会議",
-      "reading": "こくさいかいぎ",
-      "meaning": "international conference"
-    },
-    {
-      "source_index": 7857,
-      "id": "2666860",
-      "term": "国際貨物",
-      "reading": "こくさいかもつ",
-      "meaning": "international cargo"
-    },
-    {
-      "source_index": 7858,
-      "id": "2045090",
-      "term": "国際感覚",
-      "reading": "こくさいかんかく",
-      "meaning": "cosmopolitan (international) way of thinking / feeling for the wider world"
-    },
-    {
-      "source_index": 7859,
-      "id": "1286430",
-      "term": "国際関係",
-      "reading": "こくさいかんけい",
-      "meaning": "international relations"
-    },
-    {
-      "source_index": 7860,
-      "id": "2855176",
-      "term": "国際学校",
-      "reading": "こくさいがっこう",
-      "meaning": "international school"
-    },
-    {
-      "source_index": 7861,
-      "id": "1286450",
-      "term": "国際規格",
-      "reading": "こくさいきかく",
-      "meaning": "international standard"
-    },
-    {
-      "source_index": 7862,
-      "id": "1286440",
-      "term": "国際機関",
-      "reading": "こくさいきかん",
-      "meaning": "international organization / international organisation"
-    },
-    {
-      "source_index": 7863,
-      "id": "2132750",
-      "term": "国際機構",
-      "reading": "こくさいきこう",
-      "meaning": "international organization"
-    },
-    {
-      "source_index": 7864,
-      "id": "1286460",
-      "term": "国際規模",
-      "reading": "こくさいきぼ",
-      "meaning": "international scale"
-    },
-    {
-      "source_index": 7865,
-      "id": "1993050",
-      "term": "国際競争",
-      "reading": "こくさいきょうそう",
-      "meaning": "global competition"
-    },
-    {
-      "source_index": 7866,
-      "id": "2424540",
-      "term": "国際協調",
-      "reading": "こくさいきょうちょう",
-      "meaning": "international cooperation / international harmony"
-    },
-    {
-      "source_index": 7867,
-      "id": "1935550",
-      "term": "国際協定",
-      "reading": "こくさいきょうてい",
-      "meaning": "international agreement / accord"
-    },
-    {
-      "source_index": 7868,
-      "id": "2407040",
-      "term": "国際協力",
-      "reading": "こくさいきょうりょく",
-      "meaning": "international cooperation"
-    },
-    {
-      "source_index": 7869,
-      "id": "2185310",
-      "term": "国際緊張",
-      "reading": "こくさいきんちょう",
-      "meaning": "international tension / international tensions"
-    },
-    {
-      "source_index": 7870,
-      "id": "2407050",
-      "term": "国際金融",
-      "reading": "こくさいきんゆう",
-      "meaning": "international finance"
-    },
-    {
-      "source_index": 7871,
-      "id": "2546300",
-      "term": "国際業務",
-      "reading": "こくさいぎょうむ",
-      "meaning": "international service / international affairs"
-    },
-    {
-      "source_index": 7872,
-      "id": "1286470",
-      "term": "国際空港",
-      "reading": "こくさいくうこう",
-      "meaning": "international airport"
-    },
-    {
-      "source_index": 7873,
-      "id": "2174260",
-      "term": "国際警察",
-      "reading": "こくさいけいさつ",
-      "meaning": "international police"
-    },
-    {
-      "source_index": 7874,
-      "id": "2657990",
-      "term": "国際経済",
-      "reading": "こくさいけいざい",
-      "meaning": "international economy"
-    },
-    {
-      "source_index": 7875,
-      "id": "2407060",
-      "term": "国際契約",
-      "reading": "こくさいけいやく",
-      "meaning": "international contract (agreement)"
-    },
-    {
-      "source_index": 7876,
-      "id": "1746870",
-      "term": "国際結婚",
-      "reading": "こくさいけっこん",
-      "meaning": "international marriage"
-    },
-    {
-      "source_index": 7877,
-      "id": "2859621",
-      "term": "国際貢献",
-      "reading": "こくさいこうけん",
-      "meaning": "international contribution / contributing to the wider world"
-    },
-    {
-      "source_index": 7878,
-      "id": "2407000",
-      "term": "国際公法",
-      "reading": "こくさいこうほう",
-      "meaning": "public international law"
-    },
-    {
-      "source_index": 7879,
-      "id": "1286480",
-      "term": "国際交流",
-      "reading": "こくさいこうりゅう",
-      "meaning": "international exchange"
-    },
-    {
-      "source_index": 7880,
-      "id": "2847567",
-      "term": "国際小包",
-      "reading": "こくさいこづつみ",
-      "meaning": "international parcel post (Japan Post international mail service for packages weighing less than 30 kg)"
-    },
-    {
-      "source_index": 7881,
-      "id": "1993000",
-      "term": "国債先物",
-      "reading": "こくさいさきもの",
-      "meaning": "government bond futures"
-    },
-    {
-      "source_index": 7882,
-      "id": "1286490",
-      "term": "国際市場",
-      "reading": "こくさいしじょう",
-      "meaning": "international market"
-    },
-    {
-      "source_index": 7883,
-      "id": "2585980",
-      "term": "国際指標",
-      "reading": "こくさいしひょう",
-      "meaning": "international index"
-    },
-    {
-      "source_index": 7884,
-      "id": "2407070",
-      "term": "国際私法",
-      "reading": "こくさいしほう",
-      "meaning": "private international law / conflict of laws"
-    },
-    {
-      "source_index": 7885,
-      "id": "1286500",
-      "term": "国際社会",
-      "reading": "こくさいしゃかい",
-      "meaning": "international community / international society"
-    },
-    {
-      "source_index": 7886,
-      "id": "5294493",
-      "term": "国際試薬",
-      "reading": "こくさいしやく",
-      "meaning": "International Reagents Corporation"
-    },
-    {
-      "source_index": 7887,
-      "id": "1746800",
-      "term": "国際収支",
-      "reading": "こくさいしゅうし",
-      "meaning": "international balance of payments"
-    },
-    {
-      "source_index": 7888,
-      "id": "1746790",
-      "term": "国際主義",
-      "reading": "こくさいしゅぎ",
-      "meaning": "internationalism"
-    },
-    {
-      "source_index": 7889,
-      "id": "2840710",
-      "term": "国際手話",
-      "reading": "こくさいしゅわ",
-      "meaning": "International Sign (pidgin sign language) / IS"
-    },
-    {
-      "source_index": 7890,
-      "id": "2356890",
-      "term": "国際書誌",
-      "reading": "こくさいしょし",
-      "meaning": "international bibliography"
-    },
-    {
-      "source_index": 7891,
-      "id": "1935580",
-      "term": "国際親善",
-      "reading": "こくさいしんぜん",
-      "meaning": "international goodwill"
-    },
-    {
-      "source_index": 7892,
-      "id": "2862239",
-      "term": "国際試合",
-      "reading": "こくさいじあい",
-      "meaning": "international game / international match"
-    },
-    {
-      "source_index": 7893,
-      "id": "1935560",
-      "term": "国際情勢",
-      "reading": "こくさいじょうせい",
-      "meaning": "international situation"
-    },
-    {
-      "source_index": 7894,
-      "id": "1935570",
-      "term": "国際条約",
-      "reading": "こくさいじょうやく",
-      "meaning": "international treaty"
-    },
-    {
-      "source_index": 7895,
-      "id": "2045100",
-      "term": "国際場裡",
-      "reading": "こくさいじょうり",
-      "meaning": "the international arena"
-    },
-    {
-      "source_index": 7896,
-      "id": "2835875",
-      "term": "国際水域",
-      "reading": "こくさいすいいき",
-      "meaning": "international waters / high seas"
-    },
-    {
-      "source_index": 7897,
-      "id": "1935590",
-      "term": "国際政治",
-      "reading": "こくさいせいじ",
-      "meaning": "international politics / world politics"
-    },
-    {
-      "source_index": 7898,
-      "id": "2834168",
-      "term": "国際送金",
-      "reading": "こくさいそうきん",
-      "meaning": "international money transfer / overseas remittance"
-    },
-    {
-      "source_index": 7899,
-      "id": "1993130",
-      "term": "国際組織",
-      "reading": "こくさいそしき",
-      "meaning": "international organization / international organisation"
-    },
     {
       "source_index": 7900,
       "id": "2853979",
@@ -7010,6 +6660,356 @@
       "term": "先物売買",
       "reading": "さきものばいばい",
       "meaning": "dealing in futures"
+    },
+    {
+      "source_index": 8850,
+      "id": "2833530",
+      "term": "差金決済",
+      "reading": "さきんけっさい",
+      "meaning": "net settlement / making up differences"
+    },
+    {
+      "source_index": 8851,
+      "id": "1936040",
+      "term": "作業仮説",
+      "reading": "さぎょうかせつ",
+      "meaning": "working hypothesis"
+    },
+    {
+      "source_index": 8852,
+      "id": "2345340",
+      "term": "作業環境",
+      "reading": "さぎょうかんきょう",
+      "meaning": "work environment"
+    },
+    {
+      "source_index": 8853,
+      "id": "2130150",
+      "term": "作業記憶",
+      "reading": "さぎょうきおく",
+      "meaning": "working memory"
+    },
+    {
+      "source_index": 8854,
+      "id": "2761730",
+      "term": "作業現場",
+      "reading": "さぎょうげんば",
+      "meaning": "job site / workplace"
+    },
+    {
+      "source_index": 8855,
+      "id": "1936050",
+      "term": "作業時間",
+      "reading": "さぎょうじかん",
+      "meaning": "working hours"
+    },
+    {
+      "source_index": 8856,
+      "id": "2823670",
+      "term": "作業手順",
+      "reading": "さぎょうてじゅん",
+      "meaning": "work procedure / operational procedure"
+    },
+    {
+      "source_index": 8857,
+      "id": "2358160",
+      "term": "作業負荷",
+      "reading": "さぎょうふか",
+      "meaning": "workload"
+    },
+    {
+      "source_index": 8858,
+      "id": "1297590",
+      "term": "作業部会",
+      "reading": "さぎょうぶかい",
+      "meaning": "working group / task force"
+    },
+    {
+      "source_index": 8859,
+      "id": "1993750",
+      "term": "作業要員",
+      "reading": "さぎょうよういん",
+      "meaning": "work force"
+    },
+    {
+      "source_index": 8860,
+      "id": "1297640",
+      "term": "作業領域",
+      "reading": "さぎょうりょういき",
+      "meaning": "workspace / working area"
+    },
+    {
+      "source_index": 8861,
+      "id": "1297630",
+      "term": "作業療法",
+      "reading": "さぎょうりょうほう",
+      "meaning": "occupational therapy"
+    },
+    {
+      "source_index": 8862,
+      "id": "2870611",
+      "term": "作為義務",
+      "reading": "さくいぎむ",
+      "meaning": "duty of commission / duty to act / obligation to act"
+    },
+    {
+      "source_index": 8863,
+      "id": "2852450",
+      "term": "作為動詞",
+      "reading": "さくいどうし",
+      "meaning": "factitive verb"
+    },
+    {
+      "source_index": 8864,
+      "id": "2358300",
+      "term": "索引言語",
+      "reading": "さくいんげんご",
+      "meaning": "indexing language"
+    },
+    {
+      "source_index": 8865,
+      "id": "2358320",
+      "term": "索引作業",
+      "reading": "さくいんさぎょう",
+      "meaning": "indexing"
+    },
+    {
+      "source_index": 8866,
+      "id": "2358380",
+      "term": "索引精度",
+      "reading": "さくいんせいど",
+      "meaning": "depth of indexing"
+    },
+    {
+      "source_index": 8867,
+      "id": "2358390",
+      "term": "索引編成",
+      "reading": "さくいんへんせい",
+      "meaning": "indexed organization"
+    },
+    {
+      "source_index": 8868,
+      "id": "2526940",
+      "term": "錯化合物",
+      "reading": "さくかごうぶつ",
+      "meaning": "complex compound / chelate compound"
+    },
+    {
+      "source_index": 8869,
+      "id": "2754820",
+      "term": "作画監督",
+      "reading": "さくがかんとく",
+      "meaning": "animation director"
+    },
+    {
+      "source_index": 8870,
+      "id": "2523050",
+      "term": "作画崩壊",
+      "reading": "さくがほうかい",
+      "meaning": "inconsistently, horribly drawn animated film or cartoon / animated cartoon episode of lower picture quality than other episodes in the same series"
+    },
+    {
+      "source_index": 8871,
+      "id": "2641820",
+      "term": "作詞作曲",
+      "reading": "さくしさっきょく",
+      "meaning": "songwriting (words and music)"
+    },
+    {
+      "source_index": 8872,
+      "id": "2861389",
+      "term": "作者不明",
+      "reading": "さくしゃふめい",
+      "meaning": "of unknown authorship / anonymous (work)"
+    },
+    {
+      "source_index": 8873,
+      "id": "1297730",
+      "term": "作者未詳",
+      "reading": "さくしゃみしょう",
+      "meaning": "anonymous / of unknown authorship"
+    },
+    {
+      "source_index": 8874,
+      "id": "2641570",
+      "term": "搾取階級",
+      "reading": "さくしゅかいきゅう",
+      "meaning": "exploiting class / exploiting classes"
+    },
+    {
+      "source_index": 8875,
+      "id": "1993760",
+      "term": "搾取工場",
+      "reading": "さくしゅこうじょう",
+      "meaning": "sweatshop"
+    },
+    {
+      "source_index": 8876,
+      "id": "2207700",
+      "term": "柵状組織",
+      "reading": "さくじょうそしき",
+      "meaning": "palisade layer"
+    },
+    {
+      "source_index": 8877,
+      "id": "1298350",
+      "term": "索条鉄道",
+      "reading": "さくじょうてつどう",
+      "meaning": "cable railway"
+    },
+    {
+      "source_index": 8878,
+      "id": "2358170",
+      "term": "作図装置",
+      "reading": "さくずそうち",
+      "meaning": "plotter"
+    },
+    {
+      "source_index": 8879,
+      "id": "1297770",
+      "term": "作成技術",
+      "reading": "さくせいぎじゅつ",
+      "meaning": "implementation technique"
+    },
+    {
+      "source_index": 8880,
+      "id": "2358200",
+      "term": "作成者語",
+      "reading": "さくせいしゃご",
+      "meaning": "implementor-name"
+    },
+    {
+      "source_index": 8881,
+      "id": "2358220",
+      "term": "作成日時",
+      "reading": "さくせいにちじ",
+      "meaning": "creation-time"
+    },
+    {
+      "source_index": 8882,
+      "id": "2642490",
+      "term": "作戦会議",
+      "reading": "さくせんかいぎ",
+      "meaning": "strategy meeting / council of war"
+    },
+    {
+      "source_index": 8883,
+      "id": "1297820",
+      "term": "作戦計画",
+      "reading": "さくせんけいかく",
+      "meaning": "operation plan / scheme of operations / plan of campaign"
+    },
+    {
+      "source_index": 8884,
+      "id": "2836589",
+      "term": "作戦実行",
+      "reading": "さくせんじっこう",
+      "meaning": "putting a plan into operation"
+    },
+    {
+      "source_index": 8885,
+      "id": "1297840",
+      "term": "作戦地域",
+      "reading": "さくせんちいき",
+      "meaning": "area of operation"
+    },
+    {
+      "source_index": 8886,
+      "id": "1297850",
+      "term": "作戦命令",
+      "reading": "さくせんめいれい",
+      "meaning": "operation order"
+    },
+    {
+      "source_index": 8887,
+      "id": "5742800",
+      "term": "佐久大学",
+      "reading": "さくだいがく",
+      "meaning": "Saku University"
+    },
+    {
+      "source_index": 8888,
+      "id": "1951760",
+      "term": "作中人物",
+      "reading": "さくちゅうじんぶつ",
+      "meaning": "character (in a novel, film, etc.)"
+    },
+    {
+      "source_index": 8889,
+      "id": "1657860",
+      "term": "作付面積",
+      "reading": "さくづけめんせき",
+      "meaning": "planted area"
+    },
+    {
+      "source_index": 8890,
+      "id": "2857679",
+      "term": "索道鉄道",
+      "reading": "さくどうてつどう",
+      "meaning": "cable railway"
+    },
+    {
+      "source_index": 8891,
+      "id": "2846619",
+      "term": "削剥作用",
+      "reading": "さくはくさよう",
+      "meaning": "denudation / degradation"
+    },
+    {
+      "source_index": 8892,
+      "id": "1697250",
+      "term": "昨非今是",
+      "reading": "さくひこんぜ",
+      "meaning": "complete reversal of values or ways of thinking"
+    },
+    {
+      "source_index": 8893,
+      "id": "2868936",
+      "term": "作品番号",
+      "reading": "さくひんばんごう",
+      "meaning": "opus number"
+    },
+    {
+      "source_index": 8894,
+      "id": "2844418",
+      "term": "冊封体制",
+      "reading": "さくほうたいせい",
+      "meaning": "tributary system (of Imperial China)"
+    },
+    {
+      "source_index": 8895,
+      "id": "2525060",
+      "term": "桜咲く",
+      "reading": "さくらさく",
+      "meaning": "to pass an exam"
+    },
+    {
+      "source_index": 8896,
+      "id": "2209810",
+      "term": "桜島大根",
+      "reading": "さくらじまだいこん",
+      "meaning": "Sakurajima daikon (the largest variety of radish in the world)"
+    },
+    {
+      "source_index": 8897,
+      "id": "2525070",
+      "term": "桜散る",
+      "reading": "さくらちる",
+      "meaning": "to fail an exam"
+    },
+    {
+      "source_index": 8898,
+      "id": "2045570",
+      "term": "錯乱状態",
+      "reading": "さくらんじょうたい",
+      "meaning": "state of (mental) confusion (agitation)"
+    },
+    {
+      "source_index": 8899,
+      "id": "2862782",
+      "term": "酒に飲まれる",
+      "reading": "さけにのまれる",
+      "meaning": "to drink too much and lose self-control"
     }
   ]
 }
