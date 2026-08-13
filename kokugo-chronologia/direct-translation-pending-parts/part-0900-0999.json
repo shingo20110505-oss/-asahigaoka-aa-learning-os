@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 12037,
-  "english_only_remaining": 2963,
+  "already_direct_japanese": 12087,
+  "english_only_remaining": 2913,
   "english_only_rank_counts": {
-    "(blank)": 2963
+    "(blank)": 2913
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,356 +13,6 @@
   "part_start": 900,
   "part_end": 999,
   "targets": [
-    {
-      "source_index": 12937,
-      "id": "1730950",
-      "term": "人種問題",
-      "reading": "じんしゅもんだい",
-      "meaning": "race issue / problem of race"
-    },
-    {
-      "source_index": 12938,
-      "id": "2047500",
-      "term": "人心安定",
-      "reading": "じんしんあんてい",
-      "meaning": "stabilizing the feelings of the people / inspiring confidence among the people"
-    },
-    {
-      "source_index": 12939,
-      "id": "2031440",
-      "term": "人心一新",
-      "reading": "じんしんいっしん",
-      "meaning": "complete change in public sentiment / leading the thought of the people to an entirely different channel"
-    },
-    {
-      "source_index": 12940,
-      "id": "2040500",
-      "term": "人心恟々",
-      "reading": "じんしんきょうきょう",
-      "meaning": "panic-stricken (people) / frightened (masses) / alarmed"
-    },
-    {
-      "source_index": 12941,
-      "id": "1368300",
-      "term": "人身攻撃",
-      "reading": "じんしんこうげき",
-      "meaning": "personal attack / ad hominem attack"
-    },
-    {
-      "source_index": 12942,
-      "id": "2047510",
-      "term": "人心刷新",
-      "reading": "じんしんさっしん",
-      "meaning": "radically change public sentiment / leading the thought of the people to an entirely different channel"
-    },
-    {
-      "source_index": 12943,
-      "id": "2031450",
-      "term": "人心収攬",
-      "reading": "じんしんしゅうらん",
-      "meaning": "winning the hearts of the people / capturing public sentiment"
-    },
-    {
-      "source_index": 12944,
-      "id": "1368310",
-      "term": "人身事故",
-      "reading": "じんしんじこ",
-      "meaning": "accident resulting in personal injury or death (esp. traffic, rail, etc.)"
-    },
-    {
-      "source_index": 12945,
-      "id": "2427270",
-      "term": "人身取引",
-      "reading": "じんしんとりひき",
-      "meaning": "human trafficking"
-    },
-    {
-      "source_index": 12946,
-      "id": "1368320",
-      "term": "人身売買",
-      "reading": "じんしんばいばい",
-      "meaning": "human trafficking / slave trade"
-    },
-    {
-      "source_index": 12947,
-      "id": "1368330",
-      "term": "人身保護",
-      "reading": "じんしんほご",
-      "meaning": "habeas corpus"
-    },
-    {
-      "source_index": 12948,
-      "id": "2847509",
-      "term": "壬辰倭乱",
-      "reading": "じんしんわらん",
-      "meaning": "Japanese invasions of Korea (1592-1598) / Imjin war"
-    },
-    {
-      "source_index": 12949,
-      "id": "1367890",
-      "term": "人事異動",
-      "reading": "じんじいどう",
-      "meaning": "personnel change / personnel shift / reshuffle"
-    },
-    {
-      "source_index": 12950,
-      "id": "2088220",
-      "term": "人事課長",
-      "reading": "じんじかちょう",
-      "meaning": "head of personnel department"
-    },
-    {
-      "source_index": 12951,
-      "id": "2621440",
-      "term": "人事管理",
-      "reading": "じんじかんり",
-      "meaning": "personnel management / personnel administration"
-    },
-    {
-      "source_index": 12952,
-      "id": "2088250",
-      "term": "人事記録",
-      "reading": "じんじきろく",
-      "meaning": "personnel record"
-    },
-    {
-      "source_index": 12953,
-      "id": "1367920",
-      "term": "人事行政",
-      "reading": "じんじぎょうせい",
-      "meaning": "personnel administration"
-    },
-    {
-      "source_index": 12954,
-      "id": "2047480",
-      "term": "人事考課",
-      "reading": "じんじこうか",
-      "meaning": "merit (ability, efficiency) rating / employee performance evaluation"
-    },
-    {
-      "source_index": 12955,
-      "id": "2829175",
-      "term": "人事制度",
-      "reading": "じんじせいど",
-      "meaning": "personnel system"
-    },
-    {
-      "source_index": 12956,
-      "id": "1983060",
-      "term": "人事訴訟",
-      "reading": "じんじそしょう",
-      "meaning": "litigation related to personal status (e.g. divorce actions)"
-    },
-    {
-      "source_index": 12957,
-      "id": "2847594",
-      "term": "人事評価",
-      "reading": "じんじひょうか",
-      "meaning": "performance appraisal / performance review"
-    },
-    {
-      "source_index": 12958,
-      "id": "1367930",
-      "term": "人事不省",
-      "reading": "じんじふせい",
-      "meaning": "unconsciousness"
-    },
-    {
-      "source_index": 12959,
-      "id": "2135230",
-      "term": "神社神道",
-      "reading": "じんじゃしんとう",
-      "meaning": "Shrine Shintō / form of Shintō that focuses on worship in shrines, in contrast to folk and sectarian practices"
-    },
-    {
-      "source_index": 12960,
-      "id": "1939260",
-      "term": "神社仏閣",
-      "reading": "じんじゃぶっかく",
-      "meaning": "(Shinto) shrines and (Buddhist) temples"
-    },
-    {
-      "source_index": 12961,
-      "id": "5417215",
-      "term": "神社本庁",
-      "reading": "じんじゃほんちょう",
-      "meaning": "Jinja Honcho (Association of Shinto Shrines)"
-    },
-    {
-      "source_index": 12962,
-      "id": "1369970",
-      "term": "尋常一様",
-      "reading": "じんじょういちよう",
-      "meaning": "ordinary / common / mediocre"
-    },
-    {
-      "source_index": 12963,
-      "id": "2113260",
-      "term": "尋常茶飯",
-      "reading": "じんじょうさはん",
-      "meaning": "everyday occurrence / commonplace of life / nothing out of the ordinary"
-    },
-    {
-      "source_index": 12964,
-      "id": "1368410",
-      "term": "人生記録",
-      "reading": "じんせいきろく",
-      "meaning": "human document"
-    },
-    {
-      "source_index": 12965,
-      "id": "2862923",
-      "term": "人生経験",
-      "reading": "じんせいけいけん",
-      "meaning": "life experience"
-    },
-    {
-      "source_index": 12966,
-      "id": "1730720",
-      "term": "人生航路",
-      "reading": "じんせいこうろ",
-      "meaning": "the path of one's life"
-    },
-    {
-      "source_index": 12967,
-      "id": "2031460",
-      "term": "人生行路",
-      "reading": "じんせいこうろ",
-      "meaning": "journey of life"
-    },
-    {
-      "source_index": 12968,
-      "id": "1368420",
-      "term": "人生最悪",
-      "reading": "じんせいさいあく",
-      "meaning": "worst ... of one's life"
-    },
-    {
-      "source_index": 12969,
-      "id": "2628150",
-      "term": "人生最良",
-      "reading": "じんせいさいりょう",
-      "meaning": "best ... of one's life"
-    },
-    {
-      "source_index": 12970,
-      "id": "2644260",
-      "term": "人生設計",
-      "reading": "じんせいせっけい",
-      "meaning": "life plan / plan for one's life / planning one's life"
-    },
-    {
-      "source_index": 12971,
-      "id": "2237690",
-      "term": "人生相談",
-      "reading": "じんせいそうだん",
-      "meaning": "counselling service (counseling) / life matters advice service"
-    },
-    {
-      "source_index": 12972,
-      "id": "2047530",
-      "term": "人生朝露",
-      "reading": "じんせいちょうろ",
-      "meaning": "man's life vanishes like a dew / a person's life is as fleeting as a morning dew"
-    },
-    {
-      "source_index": 12973,
-      "id": "1368430",
-      "term": "人生哲学",
-      "reading": "じんせいてつがく",
-      "meaning": "philosophy of life"
-    },
-    {
-      "source_index": 12974,
-      "id": "2868935",
-      "term": "腎性糖尿",
-      "reading": "じんせいとうにょう",
-      "meaning": "renal glycosuria"
-    },
-    {
-      "source_index": 12975,
-      "id": "2047540",
-      "term": "人生模様",
-      "reading": "じんせいもよう",
-      "meaning": "facets (aspects) of (human) life / the pattern of (one's) life"
-    },
-    {
-      "source_index": 12976,
-      "id": "1595490",
-      "term": "人跡未到",
-      "reading": "じんせきみとう",
-      "meaning": "unexplored"
-    },
-    {
-      "source_index": 12977,
-      "id": "2047590",
-      "term": "迅速果敢",
-      "reading": "じんそくかかん",
-      "meaning": "quick and decisive / fast and daring / swift and resolute"
-    },
-    {
-      "source_index": 12978,
-      "id": "2031480",
-      "term": "迅速果断",
-      "reading": "じんそくかだん",
-      "meaning": "quick and decisive / fast and daring"
-    },
-    {
-      "source_index": 12979,
-      "id": "1727140",
-      "term": "腎臓結石",
-      "reading": "じんぞうけっせき",
-      "meaning": "kidney stone / renal calculus / nephrolithiasis"
-    },
-    {
-      "source_index": 12980,
-      "id": "1730880",
-      "term": "人造絹糸",
-      "reading": "じんぞうけんし",
-      "meaning": "rayon"
-    },
-    {
-      "source_index": 12981,
-      "id": "1368600",
-      "term": "人造真珠",
-      "reading": "じんぞうしんじゅ",
-      "meaning": "artificial pearls"
-    },
-    {
-      "source_index": 12982,
-      "id": "1368620",
-      "term": "人造石油",
-      "reading": "じんぞうせきゆ",
-      "meaning": "synthetic oil"
-    },
-    {
-      "source_index": 12983,
-      "id": "1730890",
-      "term": "人造繊維",
-      "reading": "じんぞうせんい",
-      "meaning": "synthetic fiber / synthetic fibre"
-    },
-    {
-      "source_index": 12984,
-      "id": "2037300",
-      "term": "腎臓内科",
-      "reading": "じんぞうないか",
-      "meaning": "nephrology"
-    },
-    {
-      "source_index": 12985,
-      "id": "1368610",
-      "term": "人造人間",
-      "reading": "じんぞうにんげん",
-      "meaning": "android / artificial human / robot"
-    },
-    {
-      "source_index": 12986,
-      "id": "2828185",
-      "term": "人造皮革",
-      "reading": "じんぞうひかく",
-      "meaning": "artificial leather / synthetic leather / faux leather"
-    },
     {
       "source_index": 12987,
       "id": "1730870",
@@ -712,6 +362,356 @@
       "term": "人民所有",
       "reading": "じんみんしょゆう",
       "meaning": "people's ownership / publicly owned"
+    },
+    {
+      "source_index": 13037,
+      "id": "1369320",
+      "term": "人民戦線",
+      "reading": "じんみんせんせん",
+      "meaning": "popular front"
+    },
+    {
+      "source_index": 13038,
+      "id": "5420073",
+      "term": "人民大学",
+      "reading": "じんみんだいがく",
+      "meaning": "People's University"
+    },
+    {
+      "source_index": 13039,
+      "id": "1369330",
+      "term": "人民投票",
+      "reading": "じんみんとうひょう",
+      "meaning": "plebiscite / referendum"
+    },
+    {
+      "source_index": 13040,
+      "id": "5420074",
+      "term": "人民日報",
+      "reading": "じんみんにっぽう",
+      "meaning": "People's Daily (Chinese newspaper)"
+    },
+    {
+      "source_index": 13041,
+      "id": "5420076",
+      "term": "人民連合",
+      "reading": "じんみんれんごう",
+      "meaning": "People's Alliance"
+    },
+    {
+      "source_index": 13042,
+      "id": "2113000",
+      "term": "神武景気",
+      "reading": "じんむけいき",
+      "meaning": "Jimmu Boom (economic boom of the mid-1950s)"
+    },
+    {
+      "source_index": 13043,
+      "id": "2040520",
+      "term": "神武以来",
+      "reading": "じんむこのかた",
+      "meaning": "since the era of the Emperor Jimmu / (first ever) since the dawn of Japan's history / unprecedented"
+    },
+    {
+      "source_index": 13044,
+      "id": "2850915",
+      "term": "神武東征",
+      "reading": "じんむとうせい",
+      "meaning": "Emperor Jimmu's eastern expedition (starting in Hyuga in 607 BCE, ending with the unification of Yamato)"
+    },
+    {
+      "source_index": 13045,
+      "id": "1369410",
+      "term": "人命救助",
+      "reading": "じんめいきゅうじょ",
+      "meaning": "lifesaving"
+    },
+    {
+      "source_index": 13046,
+      "id": "2657970",
+      "term": "人名索引",
+      "reading": "じんめいさくいん",
+      "meaning": "name index / index of persons"
+    },
+    {
+      "source_index": 13047,
+      "id": "1369350",
+      "term": "人名辞書",
+      "reading": "じんめいじしょ",
+      "meaning": "biographical dictionary"
+    },
+    {
+      "source_index": 13048,
+      "id": "1369360",
+      "term": "人名辞典",
+      "reading": "じんめいじてん",
+      "meaning": "biographical dictionary"
+    },
+    {
+      "source_index": 13049,
+      "id": "2840119",
+      "term": "人名反応",
+      "reading": "じんめいはんのう",
+      "meaning": "name reaction"
+    },
+    {
+      "source_index": 13050,
+      "id": "1580750",
+      "term": "人面獣心",
+      "reading": "じんめんじゅうしん",
+      "meaning": "beast in human form"
+    },
+    {
+      "source_index": 13051,
+      "id": "1769200",
+      "term": "尋問調書",
+      "reading": "じんもんちょうしょ",
+      "meaning": "record of an interrogation (of a suspect, witness, etc.) / examination record"
+    },
+    {
+      "source_index": 13052,
+      "id": "2849907",
+      "term": "迅雷風烈",
+      "reading": "じんらいふうれつ",
+      "meaning": "violent thunder and fierce wind / rapidly changing situation / swift action"
+    },
+    {
+      "source_index": 13053,
+      "id": "2586390",
+      "term": "人力車夫",
+      "reading": "じんりきしゃふ",
+      "meaning": "rickshaw man"
+    },
+    {
+      "source_index": 13054,
+      "id": "2040530",
+      "term": "人倫退廃",
+      "reading": "じんりんたいはい",
+      "meaning": "decline (decay, corruption) of ethical standards"
+    },
+    {
+      "source_index": 13055,
+      "id": "2047740",
+      "term": "人倫道徳",
+      "reading": "じんりんどうとく",
+      "meaning": "ethics and morality"
+    },
+    {
+      "source_index": 13056,
+      "id": "1369570",
+      "term": "人類学者",
+      "reading": "じんるいがくしゃ",
+      "meaning": "anthropologist / ethnologist"
+    },
+    {
+      "source_index": 13057,
+      "id": "2858829",
+      "term": "人類紀元",
+      "reading": "じんるいきげん",
+      "meaning": "Holocene Era (calendar year numbering system) / Human Era"
+    },
+    {
+      "source_index": 13058,
+      "id": "2666090",
+      "term": "人類共通",
+      "reading": "じんるいきょうつう",
+      "meaning": "common humanity / shared humanity / shared by humanity"
+    },
+    {
+      "source_index": 13059,
+      "id": "2533730",
+      "term": "人類最古",
+      "reading": "じんるいさいこ",
+      "meaning": "oldest mankind (e.g. evidence of)"
+    },
+    {
+      "source_index": 13060,
+      "id": "2093250",
+      "term": "水泳競技",
+      "reading": "すいえいきょうぎ",
+      "meaning": "water sports (esp. swimming and diving) / swimming competition"
+    },
+    {
+      "source_index": 13061,
+      "id": "1737050",
+      "term": "水泳大会",
+      "reading": "すいえいたいかい",
+      "meaning": "swim meet / swimming gala"
+    },
+    {
+      "source_index": 13062,
+      "id": "2838237",
+      "term": "水鉛鉛鉱",
+      "reading": "すいえんえんこう",
+      "meaning": "wulfenite"
+    },
+    {
+      "source_index": 13063,
+      "id": "2870206",
+      "term": "水火既済",
+      "reading": "すいかきせい",
+      "meaning": "ji ji (hexagram 63 of the I Ching: after completion) / chi chi"
+    },
+    {
+      "source_index": 13064,
+      "id": "2246260",
+      "term": "垂加神道",
+      "reading": "すいかしんとう",
+      "meaning": "Suika Shinto (fusion of Shinto with Chinese elements, esp. neo-Confucianism) / Shidemasu Shinto"
+    },
+    {
+      "source_index": 13065,
+      "id": "2830777",
+      "term": "水火氷炭",
+      "reading": "すいかひょうたん",
+      "meaning": "not getting along well with each other / being like water and oil"
+    },
+    {
+      "source_index": 13066,
+      "id": "1737290",
+      "term": "水害対策",
+      "reading": "すいがいたいさく",
+      "meaning": "flood control measures"
+    },
+    {
+      "source_index": 13067,
+      "id": "2145220",
+      "term": "水害地域",
+      "reading": "すいがいちいき",
+      "meaning": "flood-stricken region / flood-stricken area"
+    },
+    {
+      "source_index": 13068,
+      "id": "2031490",
+      "term": "酔眼朦朧",
+      "reading": "すいがんもうろう",
+      "meaning": "(with) one's eyes blurred from drinking / with drunken eyes / dazed by wine"
+    },
+    {
+      "source_index": 13069,
+      "id": "2870405",
+      "term": "水球選手",
+      "reading": "すいきゅうせんしゅ",
+      "meaning": "water polo player"
+    },
+    {
+      "source_index": 13070,
+      "id": "2208280",
+      "term": "水魚の交わり",
+      "reading": "すいぎょのまじわり",
+      "meaning": "close friendship / inseparable relationship"
+    },
+    {
+      "source_index": 13071,
+      "id": "2751530",
+      "term": "水銀圧入",
+      "reading": "すいぎんあつにゅう",
+      "meaning": "mercury intrusion / mercury penetration / mercury porosimetry"
+    },
+    {
+      "source_index": 13072,
+      "id": "1737790",
+      "term": "水銀中毒",
+      "reading": "すいぎんちゅうどく",
+      "meaning": "mercury poisoning"
+    },
+    {
+      "source_index": 13073,
+      "id": "1737830",
+      "term": "水銀電池",
+      "reading": "すいぎんでんち",
+      "meaning": "mercury cell"
+    },
+    {
+      "source_index": 13074,
+      "id": "2242480",
+      "term": "水圏科学",
+      "reading": "すいけんかがく",
+      "meaning": "hydrospheric sciences"
+    },
+    {
+      "source_index": 13075,
+      "id": "2829835",
+      "term": "水源涵養",
+      "reading": "すいげんかんよう",
+      "meaning": "headwater conservation / water source protection / water source cultivation"
+    },
+    {
+      "source_index": 13076,
+      "id": "2648090",
+      "term": "水耕栽培",
+      "reading": "すいこうさいばい",
+      "meaning": "hydroponics / aquaculture / water culture"
+    },
+    {
+      "source_index": 13077,
+      "id": "2804690",
+      "term": "水耕農園",
+      "reading": "すいこうのうえん",
+      "meaning": "hydroponic plantation"
+    },
+    {
+      "source_index": 13078,
+      "id": "2205550",
+      "term": "推古時代",
+      "reading": "すいこじだい",
+      "meaning": "Suiko period (i.e. the Asuka period, esp. under the reign of Empress Suiko, approx. 592-628 CE)"
+    },
+    {
+      "source_index": 13079,
+      "id": "1737380",
+      "term": "水彩画家",
+      "reading": "すいさいがか",
+      "meaning": "watercolorist / watercolourist / watercolor painter"
+    },
+    {
+      "source_index": 13080,
+      "id": "2729380",
+      "term": "水酸化鉄",
+      "reading": "すいさんかてつ",
+      "meaning": "iron hydroxide / ferrous hydroxide / ferric hydroxide"
+    },
+    {
+      "source_index": 13081,
+      "id": "1371550",
+      "term": "水酸化物",
+      "reading": "すいさんかぶつ",
+      "meaning": "hydroxide"
+    },
+    {
+      "source_index": 13082,
+      "id": "2861165",
+      "term": "水産学部",
+      "reading": "すいさんがくぶ",
+      "meaning": "faculty of fisheries / faculty of fishery science"
+    },
+    {
+      "source_index": 13083,
+      "id": "1737440",
+      "term": "水産大学",
+      "reading": "すいさんだいがく",
+      "meaning": "fisheries college"
+    },
+    {
+      "source_index": 13084,
+      "id": "2089800",
+      "term": "水産養殖",
+      "reading": "すいさんようしょく",
+      "meaning": "aquaculture"
+    },
+    {
+      "source_index": 13085,
+      "id": "1995950",
+      "term": "水質汚染",
+      "reading": "すいしつおせん",
+      "meaning": "water pollution"
+    },
+    {
+      "source_index": 13086,
+      "id": "1660900",
+      "term": "水質汚濁",
+      "reading": "すいしつおだく",
+      "meaning": "water pollution"
     }
   ]
 }
