@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11432,
-  "english_only_remaining": 3568,
+  "already_direct_japanese": 11433,
+  "english_only_remaining": 3567,
   "english_only_rank_counts": {
-    "(blank)": 3568
+    "(blank)": 3567
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 900,
   "part_end": 999,
   "targets": [
-    {
-      "source_index": 12332,
-      "id": "2274900",
-      "term": "従来技術",
-      "reading": "じゅうらいぎじゅつ",
-      "meaning": "existing technology / conventional technology / prior art"
-    },
     {
       "source_index": 12333,
       "id": "2578620",
@@ -712,6 +705,13 @@
       "term": "循環風呂",
       "reading": "じゅんかんぶろ",
       "meaning": "hot springs bath with simulated natural water supply and drainage / closed-loop hot springs bath"
+    },
+    {
+      "source_index": 12432,
+      "id": "1735940",
+      "term": "循環論法",
+      "reading": "じゅんかんろんぽう",
+      "meaning": "circular reasoning"
     }
   ]
 }

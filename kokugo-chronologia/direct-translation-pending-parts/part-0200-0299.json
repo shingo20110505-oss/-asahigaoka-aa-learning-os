@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11432,
-  "english_only_remaining": 3568,
+  "already_direct_japanese": 11433,
+  "english_only_remaining": 3567,
   "english_only_rank_counts": {
-    "(blank)": 3568
+    "(blank)": 3567
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 200,
   "part_end": 299,
   "targets": [
-    {
-      "source_index": 11632,
-      "id": "1317440",
-      "term": "自家撞着",
-      "reading": "じかどうちゃく",
-      "meaning": "self-contradiction"
-    },
     {
       "source_index": 11633,
       "id": "1816470",
@@ -712,6 +705,13 @@
       "term": "時効取得",
       "reading": "じこうしゅとく",
       "meaning": "usucaption / acquisitive prescription / positive prescription"
+    },
+    {
+      "source_index": 11732,
+      "id": "2848456",
+      "term": "自校方式",
+      "reading": "じこうほうしき",
+      "meaning": "system of preparing school meals on-site"
     }
   ]
 }

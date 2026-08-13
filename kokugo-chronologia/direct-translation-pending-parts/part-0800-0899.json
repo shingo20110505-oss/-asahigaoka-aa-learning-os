@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11432,
-  "english_only_remaining": 3568,
+  "already_direct_japanese": 11433,
+  "english_only_remaining": 3567,
   "english_only_rank_counts": {
-    "(blank)": 3568
+    "(blank)": 3567
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 800,
   "part_end": 899,
   "targets": [
-    {
-      "source_index": 12232,
-      "id": "2787050",
-      "term": "重慶政府",
-      "reading": "じゅうけいせいふ",
-      "meaning": "Chongqing government (Kuomintang government based in Chongqing during the Second Sino-Japanese War)"
-    },
     {
       "source_index": 12233,
       "id": "5359134",
@@ -712,6 +705,13 @@
       "term": "重要法案",
       "reading": "じゅうようほうあん",
       "meaning": "important bill / key bill"
+    },
+    {
+      "source_index": 12332,
+      "id": "2274900",
+      "term": "従来技術",
+      "reading": "じゅうらいぎじゅつ",
+      "meaning": "existing technology / conventional technology / prior art"
     }
   ]
 }

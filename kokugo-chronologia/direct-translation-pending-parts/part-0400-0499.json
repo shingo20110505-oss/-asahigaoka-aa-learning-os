@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11432,
-  "english_only_remaining": 3568,
+  "already_direct_japanese": 11433,
+  "english_only_remaining": 3567,
   "english_only_rank_counts": {
-    "(blank)": 3568
+    "(blank)": 3567
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 400,
   "part_end": 499,
   "targets": [
-    {
-      "source_index": 11832,
-      "id": "2201410",
-      "term": "自今以後",
-      "reading": "じこんいご",
-      "meaning": "henceforth / henceforward / hereafter"
-    },
     {
       "source_index": 11833,
       "id": "2651070",
@@ -712,6 +705,13 @@
       "term": "慈善活動",
       "reading": "じぜんかつどう",
       "meaning": "philanthropic activity / charity work"
+    },
+    {
+      "source_index": 11932,
+      "id": "1817650",
+      "term": "事前協議",
+      "reading": "じぜんきょうぎ",
+      "meaning": "prior consultation"
     }
   ]
 }

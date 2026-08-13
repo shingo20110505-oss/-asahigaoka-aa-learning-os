@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11432,
-  "english_only_remaining": 3568,
+  "already_direct_japanese": 11433,
+  "english_only_remaining": 3567,
   "english_only_rank_counts": {
-    "(blank)": 3568
+    "(blank)": 3567
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 300,
   "part_end": 399,
   "targets": [
-    {
-      "source_index": 11732,
-      "id": "2848456",
-      "term": "自校方式",
-      "reading": "じこうほうしき",
-      "meaning": "system of preparing school meals on-site"
-    },
     {
       "source_index": 11733,
       "id": "2716650",
@@ -712,6 +705,13 @@
       "term": "自己憐憫",
       "reading": "じこれんびん",
       "meaning": "self-pity"
+    },
+    {
+      "source_index": 11832,
+      "id": "2201410",
+      "term": "自今以後",
+      "reading": "じこんいご",
+      "meaning": "henceforth / henceforward / hereafter"
     }
   ]
 }

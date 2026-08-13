@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11432,
-  "english_only_remaining": 3568,
+  "already_direct_japanese": 11433,
+  "english_only_remaining": 3567,
   "english_only_rank_counts": {
-    "(blank)": 3568
+    "(blank)": 3567
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 600,
   "part_end": 699,
   "targets": [
-    {
-      "source_index": 12032,
-      "id": "2397970",
-      "term": "実施設計",
-      "reading": "じっしせっけい",
-      "meaning": "detail design / detailed design / final design"
-    },
     {
       "source_index": 12033,
       "id": "2163530",
@@ -712,6 +705,13 @@
       "term": "自動送信",
       "reading": "じどうそうしん",
       "meaning": "automatic transmission (sending)"
+    },
+    {
+      "source_index": 12132,
+      "id": "2760570",
+      "term": "自動操縦",
+      "reading": "じどうそうじゅう",
+      "meaning": "automatic pilot / autopilot / automatic control"
     }
   ]
 }

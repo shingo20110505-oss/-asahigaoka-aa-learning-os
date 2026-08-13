@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11432,
-  "english_only_remaining": 3568,
+  "already_direct_japanese": 11433,
+  "english_only_remaining": 3567,
   "english_only_rank_counts": {
-    "(blank)": 3568
+    "(blank)": 3567
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 0,
   "part_end": 99,
   "targets": [
-    {
-      "source_index": 11432,
-      "id": "1938880",
-      "term": "寝台料金",
-      "reading": "しんだいりょうきん",
-      "meaning": "berth charge"
-    },
     {
       "source_index": 11433,
       "id": "1938890",
@@ -712,6 +705,13 @@
       "term": "信用組合",
       "reading": "しんようくみあい",
       "meaning": "credit union / credit association"
+    },
+    {
+      "source_index": 11532,
+      "id": "2037980",
+      "term": "信用経済",
+      "reading": "しんようけいざい",
+      "meaning": "credit economy"
     }
   ]
 }

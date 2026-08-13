@@ -1,23 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11432,
-  "english_only_remaining": 3568,
+  "already_direct_japanese": 11433,
+  "english_only_remaining": 3567,
   "english_only_rank_counts": {
-    "(blank)": 3568
+    "(blank)": 3567
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11432,
-      "id": "1938880",
-      "term": "寝台料金",
-      "reading": "しんだいりょうきん",
-      "meaning": "berth charge"
-    },
     {
       "source_index": 11433,
       "id": "1938890",
@@ -7010,6 +7003,13 @@
       "term": "循環風呂",
       "reading": "じゅんかんぶろ",
       "meaning": "hot springs bath with simulated natural water supply and drainage / closed-loop hot springs bath"
+    },
+    {
+      "source_index": 12432,
+      "id": "1735940",
+      "term": "循環論法",
+      "reading": "じゅんかんろんぽう",
+      "meaning": "circular reasoning"
     }
   ]
 }
