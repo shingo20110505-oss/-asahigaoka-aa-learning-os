@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 13337,
-  "english_only_remaining": 1663,
+  "already_direct_japanese": 13348,
+  "english_only_remaining": 1652,
   "english_only_rank_counts": {
-    "(blank)": 1663
+    "(blank)": 1652
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,83 +13,6 @@
   "part_start": 0,
   "part_end": 99,
   "targets": [
-    {
-      "source_index": 13337,
-      "id": "1830140",
-      "term": "生活様式",
-      "reading": "せいかつようしき",
-      "meaning": "one's lifestyle"
-    },
-    {
-      "source_index": 13338,
-      "id": "2653270",
-      "term": "生活用品",
-      "reading": "せいかつようひん",
-      "meaning": "daily supplies / daily necessities / household items"
-    },
-    {
-      "source_index": 13339,
-      "id": "2714600",
-      "term": "西夏文字",
-      "reading": "せいかもじ",
-      "meaning": "Tangut script"
-    },
-    {
-      "source_index": 13340,
-      "id": "2424950",
-      "term": "星間吸収",
-      "reading": "せいかんきゅうしゅう",
-      "meaning": "interstellar absorption"
-    },
-    {
-      "source_index": 13341,
-      "id": "2831927",
-      "term": "星間空間",
-      "reading": "せいかんくうかん",
-      "meaning": "interstellar space"
-    },
-    {
-      "source_index": 13342,
-      "id": "1380600",
-      "term": "製缶工場",
-      "reading": "せいかんこうじょう",
-      "meaning": "(tin) can factory"
-    },
-    {
-      "source_index": 13343,
-      "id": "2859294",
-      "term": "正看護師",
-      "reading": "せいかんごし",
-      "meaning": "registered nurse / registered general nurse / graduate nurse"
-    },
-    {
-      "source_index": 13344,
-      "id": "2621600",
-      "term": "性感染症",
-      "reading": "せいかんせんしょう",
-      "meaning": "sexually transmitted infection / STI / sexually transmitted disease"
-    },
-    {
-      "source_index": 13345,
-      "id": "1638170",
-      "term": "星間物質",
-      "reading": "せいかんぶっしつ",
-      "meaning": "interstellar matter"
-    },
-    {
-      "source_index": 13346,
-      "id": "2861727",
-      "term": "西岸地区",
-      "reading": "せいがんちく",
-      "meaning": "West Bank"
-    },
-    {
-      "source_index": 13347,
-      "id": "1376860",
-      "term": "正規曲線",
-      "reading": "せいききょくせん",
-      "meaning": "probability curve"
-    },
     {
       "source_index": 13348,
       "id": "2830031",
@@ -712,6 +635,83 @@
       "term": "生産現場",
       "reading": "せいさんげんば",
       "meaning": "point of production / production site / shop floor"
+    },
+    {
+      "source_index": 13437,
+      "id": "2827759",
+      "term": "生産工学",
+      "reading": "せいさんこうがく",
+      "meaning": "production engineering / industrial engineering"
+    },
+    {
+      "source_index": 13438,
+      "id": "2248540",
+      "term": "生産工程",
+      "reading": "せいさんこうてい",
+      "meaning": "production process / industrial operation"
+    },
+    {
+      "source_index": 13439,
+      "id": "2625480",
+      "term": "生産手段",
+      "reading": "せいさんしゅだん",
+      "meaning": "means of production"
+    },
+    {
+      "source_index": 13440,
+      "id": "2202870",
+      "term": "生産奨励",
+      "reading": "せいさんしょうれい",
+      "meaning": "manufacturing promotion / promotion of production"
+    },
+    {
+      "source_index": 13441,
+      "id": "1996780",
+      "term": "生産設備",
+      "reading": "せいさんせつび",
+      "meaning": "plant and equipment / production facilities / manufacturing equipment"
+    },
+    {
+      "source_index": 13442,
+      "id": "2794810",
+      "term": "生産中止",
+      "reading": "せいさんちゅうし",
+      "meaning": "production stoppage / discontinuance"
+    },
+    {
+      "source_index": 13443,
+      "id": "1750330",
+      "term": "青酸中毒",
+      "reading": "せいさんちゅうどく",
+      "meaning": "cyanide poisoning"
+    },
+    {
+      "source_index": 13444,
+      "id": "2655290",
+      "term": "生産調整",
+      "reading": "せいさんちょうせい",
+      "meaning": "adjustment of production / production adjustment"
+    },
+    {
+      "source_index": 13445,
+      "id": "1750730",
+      "term": "清算取引",
+      "reading": "せいさんとりひき",
+      "meaning": "open account transaction"
+    },
+    {
+      "source_index": 13446,
+      "id": "2031620",
+      "term": "精神一到",
+      "reading": "せいしんいっとう",
+      "meaning": "concentration of mind / mental concentration (on some task)"
+    },
+    {
+      "source_index": 13447,
+      "id": "1381190",
+      "term": "誠心誠意",
+      "reading": "せいしんせいい",
+      "meaning": "in all sincerity / with one's whole heart / whole-hearted devotion"
     }
   ]
 }
