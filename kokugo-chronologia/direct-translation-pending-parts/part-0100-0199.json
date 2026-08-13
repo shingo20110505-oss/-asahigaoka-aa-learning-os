@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11436,
-  "english_only_remaining": 3564,
+  "already_direct_japanese": 11437,
+  "english_only_remaining": 3563,
   "english_only_rank_counts": {
-    "(blank)": 3564
+    "(blank)": 3563
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 100,
   "part_end": 199,
   "targets": [
-    {
-      "source_index": 11536,
-      "id": "1359690",
-      "term": "信用状態",
-      "reading": "しんようじょうたい",
-      "meaning": "credit standing"
-    },
     {
       "source_index": 11537,
       "id": "2746090",
@@ -712,6 +705,13 @@
       "term": "自家焙煎",
       "reading": "じかばいせん",
       "meaning": "in-house roasting (of coffee beans) / shop roasting / home roasting"
+    },
+    {
+      "source_index": 11636,
+      "id": "2002580",
+      "term": "時価評価",
+      "reading": "じかひょうか",
+      "meaning": "mark-to-market valuation / fair market valuation / fair valuation"
     }
   ]
 }

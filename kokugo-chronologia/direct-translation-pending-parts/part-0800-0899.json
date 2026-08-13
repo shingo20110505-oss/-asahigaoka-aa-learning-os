@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11436,
-  "english_only_remaining": 3564,
+  "already_direct_japanese": 11437,
+  "english_only_remaining": 3563,
   "english_only_rank_counts": {
-    "(blank)": 3564
+    "(blank)": 3563
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 800,
   "part_end": 899,
   "targets": [
-    {
-      "source_index": 12236,
-      "id": "2857123",
-      "term": "重国籍者",
-      "reading": "じゅうこくせきしゃ",
-      "meaning": "holder of multiple (e.g. dual) citizenships / dual national / dual citizen"
-    },
     {
       "source_index": 12237,
       "id": "2865264",
@@ -712,6 +705,13 @@
       "term": "重量制限",
       "reading": "じゅうりょうせいげん",
       "meaning": "weight restriction / weight limit"
+    },
+    {
+      "source_index": 12336,
+      "id": "1336950",
+      "term": "重量選手",
+      "reading": "じゅうりょうせんしゅ",
+      "meaning": "heavyweight player"
     }
   ]
 }

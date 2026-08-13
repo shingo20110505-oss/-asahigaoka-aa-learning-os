@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11436,
-  "english_only_remaining": 3564,
+  "already_direct_japanese": 11437,
+  "english_only_remaining": 3563,
   "english_only_rank_counts": {
-    "(blank)": 3564
+    "(blank)": 3563
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 300,
   "part_end": 399,
   "targets": [
-    {
-      "source_index": 11736,
-      "id": "2360470",
-      "term": "自己解凍",
-      "reading": "じこかいとう",
-      "meaning": "self-extracting (file)"
-    },
     {
       "source_index": 11737,
       "id": "2839870",
@@ -712,6 +705,13 @@
       "term": "事後確率",
       "reading": "じごかくりつ",
       "meaning": "posterior probability"
+    },
+    {
+      "source_index": 11836,
+      "id": "2045790",
+      "term": "地獄絵図",
+      "reading": "じごくえず",
+      "meaning": "painting of a scene in Hell / a picture of Hell"
     }
   ]
 }

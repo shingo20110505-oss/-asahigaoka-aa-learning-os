@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11436,
-  "english_only_remaining": 3564,
+  "already_direct_japanese": 11437,
+  "english_only_remaining": 3563,
   "english_only_rank_counts": {
-    "(blank)": 3564
+    "(blank)": 3563
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 900,
   "part_end": 999,
   "targets": [
-    {
-      "source_index": 12336,
-      "id": "1336950",
-      "term": "重量選手",
-      "reading": "じゅうりょうせんしゅ",
-      "meaning": "heavyweight player"
-    },
     {
       "source_index": 12337,
       "id": "1336970",
@@ -712,6 +705,13 @@
       "term": "純潔教育",
       "reading": "じゅんけつきょういく",
       "meaning": "education in sexual morality"
+    },
+    {
+      "source_index": 12436,
+      "id": "2852336",
+      "term": "順行運動",
+      "reading": "じゅんこううんどう",
+      "meaning": "direct motion / prograde motion"
     }
   ]
 }

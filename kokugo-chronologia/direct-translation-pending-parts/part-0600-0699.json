@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11436,
-  "english_only_remaining": 3564,
+  "already_direct_japanese": 11437,
+  "english_only_remaining": 3563,
   "english_only_rank_counts": {
-    "(blank)": 3564
+    "(blank)": 3563
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 600,
   "part_end": 699,
   "targets": [
-    {
-      "source_index": 12036,
-      "id": "1648980",
-      "term": "実写映画",
-      "reading": "じっしゃえいが",
-      "meaning": "live-action film"
-    },
     {
       "source_index": 12037,
       "id": "1334770",
@@ -712,6 +705,13 @@
       "term": "自動抽出",
       "reading": "じどうちゅうしゅつ",
       "meaning": "self-extracting (computer file)"
+    },
+    {
+      "source_index": 12136,
+      "id": "1994450",
+      "term": "児童手当",
+      "reading": "じどうてあて",
+      "meaning": "child-rearing assistance / support for young parents / child-care allowance"
     }
   ]
 }

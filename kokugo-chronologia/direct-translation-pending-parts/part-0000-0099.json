@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11436,
-  "english_only_remaining": 3564,
+  "already_direct_japanese": 11437,
+  "english_only_remaining": 3563,
   "english_only_rank_counts": {
-    "(blank)": 3564
+    "(blank)": 3563
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 0,
   "part_end": 99,
   "targets": [
-    {
-      "source_index": 11436,
-      "id": "2367120",
-      "term": "診断機能",
-      "reading": "しんだんきのう",
-      "meaning": "diagnostic function"
-    },
     {
       "source_index": 11437,
       "id": "2174240",
@@ -712,6 +705,13 @@
       "term": "針葉樹林",
       "reading": "しんようじゅりん",
       "meaning": "conifer forest / coniferous forest / needle-leaved forest"
+    },
+    {
+      "source_index": 11536,
+      "id": "1359690",
+      "term": "信用状態",
+      "reading": "しんようじょうたい",
+      "meaning": "credit standing"
     }
   ]
 }

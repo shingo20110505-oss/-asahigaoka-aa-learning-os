@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11436,
-  "english_only_remaining": 3564,
+  "already_direct_japanese": 11437,
+  "english_only_remaining": 3563,
   "english_only_rank_counts": {
-    "(blank)": 3564
+    "(blank)": 3563
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 400,
   "part_end": 499,
   "targets": [
-    {
-      "source_index": 11836,
-      "id": "2045790",
-      "term": "地獄絵図",
-      "reading": "じごくえず",
-      "meaning": "painting of a scene in Hell / a picture of Hell"
-    },
     {
       "source_index": 11837,
       "id": "2833936",
@@ -712,6 +705,13 @@
       "term": "事前研修",
       "reading": "じぜんけんしゅう",
       "meaning": "advance training / prior training"
+    },
+    {
+      "source_index": 11936,
+      "id": "2834863",
+      "term": "慈善興行",
+      "reading": "じぜんこうぎょう",
+      "meaning": "charity show / benefit performance"
     }
   ]
 }
