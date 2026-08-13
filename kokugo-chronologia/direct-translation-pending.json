@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 7200,
-  "english_only_remaining": 7800,
+  "already_direct_japanese": 7250,
+  "english_only_remaining": 7750,
   "english_only_rank_counts": {
-    "(blank)": 7800
+    "(blank)": 7750
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 7200,
-      "id": "2432280",
-      "term": "恒久施設",
-      "reading": "こうきゅうしせつ",
-      "meaning": "permanent establishment (in tax law)"
-    },
-    {
-      "source_index": 7201,
-      "id": "2859616",
-      "term": "高級将校",
-      "reading": "こうきゅうしょうこう",
-      "meaning": "high-ranking officer / the brass"
-    },
-    {
-      "source_index": 7202,
-      "id": "2855300",
-      "term": "高級娼婦",
-      "reading": "こうきゅうしょうふ",
-      "meaning": "high-class prostitute"
-    },
-    {
-      "source_index": 7203,
-      "id": "2627060",
-      "term": "高級船員",
-      "reading": "こうきゅうせんいん",
-      "meaning": "officer (of a ship)"
-    },
-    {
-      "source_index": 7204,
-      "id": "2858458",
-      "term": "恒久対策",
-      "reading": "こうきゅうたいさく",
-      "meaning": "permanent measure"
-    },
-    {
-      "source_index": 7205,
-      "id": "2044860",
-      "term": "恒久不変",
-      "reading": "こうきゅうふへん",
-      "meaning": "permanent and immutable"
-    },
-    {
-      "source_index": 7206,
-      "id": "1271920",
-      "term": "交響楽団",
-      "reading": "こうきょうがくだん",
-      "meaning": "symphony orchestra"
-    },
-    {
-      "source_index": 7207,
-      "id": "2646420",
-      "term": "公共機関",
-      "reading": "こうきょうきかん",
-      "meaning": "public agency / public institution"
-    },
-    {
-      "source_index": 7208,
-      "id": "1676990",
-      "term": "公共組合",
-      "reading": "こうきょうくみあい",
-      "meaning": "public partnership / public corporation"
-    },
-    {
-      "source_index": 7209,
-      "id": "2406060",
-      "term": "公共工事",
-      "reading": "こうきょうこうじ",
-      "meaning": "public works"
-    },
-    {
-      "source_index": 7210,
-      "id": "2840255",
-      "term": "公共交通",
-      "reading": "こうきょうこうつう",
-      "meaning": "public transportation / public transport"
-    },
-    {
-      "source_index": 7211,
-      "id": "2650980",
-      "term": "公共支出",
-      "reading": "こうきょうししゅつ",
-      "meaning": "public expenditure / public outlay / public spending"
-    },
-    {
-      "source_index": 7212,
-      "id": "1676970",
-      "term": "公共施設",
-      "reading": "こうきょうしせつ",
-      "meaning": "public facilities / utilities"
-    },
-    {
-      "source_index": 7213,
-      "id": "2066290",
-      "term": "光共振器",
-      "reading": "こうきょうしんき",
-      "meaning": "optical resonator / optical cavity"
-    },
-    {
-      "source_index": 7214,
-      "id": "1273530",
-      "term": "公共事業",
-      "reading": "こうきょうじぎょう",
-      "meaning": "public works / public-works projects / public utilities"
-    },
-    {
-      "source_index": 7215,
-      "id": "1273570",
-      "term": "公共団体",
-      "reading": "こうきょうだんたい",
-      "meaning": "public organization / public organisation"
-    },
-    {
-      "source_index": 7216,
-      "id": "2449820",
-      "term": "公共哲学",
-      "reading": "こうきょうてつがく",
-      "meaning": "public philosophy"
-    },
-    {
-      "source_index": 7217,
-      "id": "1676960",
-      "term": "公共投資",
-      "reading": "こうきょうとうし",
-      "meaning": "public investment"
-    },
-    {
-      "source_index": 7218,
-      "id": "2162800",
-      "term": "公共部門",
-      "reading": "こうきょうぶもん",
-      "meaning": "public sector"
-    },
-    {
-      "source_index": 7219,
-      "id": "1631150",
-      "term": "公共放送",
-      "reading": "こうきょうほうそう",
-      "meaning": "public broadcasting (e.g. NHK, BBC)"
-    },
-    {
-      "source_index": 7220,
-      "id": "1273620",
-      "term": "公教要理",
-      "reading": "こうきょうようり",
-      "meaning": "Catholic catechism"
-    },
-    {
-      "source_index": 7221,
-      "id": "1273590",
-      "term": "公共料金",
-      "reading": "こうきょうりょうきん",
-      "meaning": "public utilities charge"
-    },
-    {
-      "source_index": 7222,
-      "id": "2839265",
-      "term": "抗拒不能",
-      "reading": "こうきょふのう",
-      "meaning": "inability to resist"
-    },
-    {
-      "source_index": 7223,
-      "id": "1677160",
-      "term": "公金横領",
-      "reading": "こうきんおうりょう",
-      "meaning": "misappropriation of public funds"
-    },
-    {
-      "source_index": 7224,
-      "id": "2132770",
-      "term": "抗議運動",
-      "reading": "こうぎうんどう",
-      "meaning": "protest campaign / demonstration"
-    },
-    {
-      "source_index": 7225,
-      "id": "1278870",
-      "term": "抗議活動",
-      "reading": "こうぎかつどう",
-      "meaning": "protest action / protest movement"
-    },
-    {
-      "source_index": 7226,
-      "id": "2555580",
-      "term": "講義資料",
-      "reading": "こうぎしりょう",
-      "meaning": "lecture materials"
-    },
-    {
-      "source_index": 7227,
-      "id": "2830004",
-      "term": "広義積分",
-      "reading": "こうぎせきぶん",
-      "meaning": "improper integral"
-    },
-    {
-      "source_index": 7228,
-      "id": "2423730",
-      "term": "講義摘要",
-      "reading": "こうぎてきよう",
-      "meaning": "syllabus"
-    },
-    {
-      "source_index": 7229,
-      "id": "1675010",
-      "term": "工業意匠",
-      "reading": "こうぎょういしょう",
-      "meaning": "industrial design"
-    },
-    {
-      "source_index": 7230,
-      "id": "1674930",
-      "term": "工業化学",
-      "reading": "こうぎょうかがく",
-      "meaning": "industrial chemistry"
-    },
-    {
-      "source_index": 7231,
-      "id": "1278050",
-      "term": "工業規格",
-      "reading": "こうぎょうきかく",
-      "meaning": "industrial standard / engineering standard"
-    },
-    {
-      "source_index": 7232,
-      "id": "5285870",
-      "term": "鉱業協会",
-      "reading": "こうぎょうきょうかい",
-      "meaning": "National Mining Association / NMA"
-    },
-    {
-      "source_index": 7233,
-      "id": "1934980",
-      "term": "工業技術",
-      "reading": "こうぎょうぎじゅつ",
-      "meaning": "industrial technology"
-    },
-    {
-      "source_index": 7234,
-      "id": "1238250",
-      "term": "興業銀行",
-      "reading": "こうぎょうぎんこう",
-      "meaning": "industrial bank"
-    },
-    {
-      "source_index": 7235,
-      "id": "2840271",
-      "term": "工業高校",
-      "reading": "こうぎょうこうこう",
-      "meaning": "technical high school / industrial high school"
-    },
-    {
-      "source_index": 7236,
-      "id": "2701800",
-      "term": "抗凝固剤",
-      "reading": "こうぎょうこざい",
-      "meaning": "anticoagulant agent / anticoagulant drug / anticoagulant"
-    },
-    {
-      "source_index": 7237,
-      "id": "2404340",
-      "term": "興行収入",
-      "reading": "こうぎょうしゅうにゅう",
-      "meaning": "box-office takings / box-office revenue"
-    },
-    {
-      "source_index": 7238,
-      "id": "2621250",
-      "term": "工業生産",
-      "reading": "こうぎょうせいさん",
-      "meaning": "industrial production"
-    },
-    {
-      "source_index": 7239,
-      "id": "1933420",
-      "term": "興行成績",
-      "reading": "こうぎょうせいせき",
-      "meaning": "box-office record"
-    },
-    {
-      "source_index": 7240,
-      "id": "1935000",
-      "term": "工業製品",
-      "reading": "こうぎょうせいひん",
-      "meaning": "industrial goods"
-    },
-    {
-      "source_index": 7241,
-      "id": "1674910",
-      "term": "工業大学",
-      "reading": "こうぎょうだいがく",
-      "meaning": "institute of technology / technological university / technical university"
-    },
-    {
-      "source_index": 7242,
-      "id": "1674960",
-      "term": "工業団地",
-      "reading": "こうぎょうだんち",
-      "meaning": "industrial park"
-    },
-    {
-      "source_index": 7243,
-      "id": "2584800",
-      "term": "工業地域",
-      "reading": "こうぎょうちいき",
-      "meaning": "industrial area / industrial district / industrial zone"
-    },
-    {
-      "source_index": 7244,
-      "id": "1278060",
-      "term": "工業地区",
-      "reading": "こうぎょうちく",
-      "meaning": "industrial zone"
-    },
-    {
-      "source_index": 7245,
-      "id": "1674950",
-      "term": "工業地帯",
-      "reading": "こうぎょうちたい",
-      "meaning": "industrial area / industrial zone"
-    },
-    {
-      "source_index": 7246,
-      "id": "1935010",
-      "term": "工業都市",
-      "reading": "こうぎょうとし",
-      "meaning": "industrial (manufacturing, factory) town or city"
-    },
-    {
-      "source_index": 7247,
-      "id": "2867860",
-      "term": "工業薬品",
-      "reading": "こうぎょうやくひん",
-      "meaning": "industrial chemicals / heavy chemicals"
-    },
-    {
-      "source_index": 7248,
-      "id": "1992570",
-      "term": "工業用水",
-      "reading": "こうぎょうようすい",
-      "meaning": "industrial water"
-    },
-    {
-      "source_index": 7249,
-      "id": "2450520",
-      "term": "航空医学",
-      "reading": "こうくういがく",
-      "meaning": "aviation medicine"
-    },
     {
       "source_index": 7250,
       "id": "2828856",
@@ -7010,6 +6660,356 @@
       "term": "骨関節症",
       "reading": "こつかんせつしょう",
       "meaning": "osteoarthritis"
+    },
+    {
+      "source_index": 8200,
+      "id": "2440040",
+      "term": "骨芽細胞",
+      "reading": "こつがさいぼう",
+      "meaning": "osteoblast"
+    },
+    {
+      "source_index": 8201,
+      "id": "1935690",
+      "term": "骨髄移植",
+      "reading": "こつずいいしょく",
+      "meaning": "bone marrow transplant"
+    },
+    {
+      "source_index": 8202,
+      "id": "2627370",
+      "term": "骨髄芽球",
+      "reading": "こつずいがきゅう",
+      "meaning": "myeloblast"
+    },
+    {
+      "source_index": 8203,
+      "id": "2146830",
+      "term": "骨髄抑制",
+      "reading": "こつずいよくせい",
+      "meaning": "bone marrow suppression"
+    },
+    {
+      "source_index": 8204,
+      "id": "1288660",
+      "term": "骨粗鬆症",
+      "reading": "こつそしょうしょう",
+      "meaning": "osteoporosis"
+    },
+    {
+      "source_index": 8205,
+      "id": "2700650",
+      "term": "骨増殖体",
+      "reading": "こつぞうしょくたい",
+      "meaning": "bone spur / osteophyte"
+    },
+    {
+      "source_index": 8206,
+      "id": "1668130",
+      "term": "骨軟化症",
+      "reading": "こつなんかしょう",
+      "meaning": "osteomalacia"
+    },
+    {
+      "source_index": 8207,
+      "id": "2627400",
+      "term": "骨軟骨腫",
+      "reading": "こつなんこつしゅ",
+      "meaning": "osteochondroma"
+    },
+    {
+      "source_index": 8208,
+      "id": "2030920",
+      "term": "骨肉相食",
+      "reading": "こつにくそうしょく",
+      "meaning": "blood feud / domestic discord"
+    },
+    {
+      "source_index": 8209,
+      "id": "2251840",
+      "term": "骨肉の争い",
+      "reading": "こつにくのあらそい",
+      "meaning": "family quarrel"
+    },
+    {
+      "source_index": 8210,
+      "id": "2869811",
+      "term": "骨盤隔膜",
+      "reading": "こつばんかくまく",
+      "meaning": "pelvic diaphragm"
+    },
+    {
+      "source_index": 8211,
+      "id": "2034680",
+      "term": "骨盤底筋",
+      "reading": "こつばんていきん",
+      "meaning": "pelvic floor muscle / pubococcygeal muscle / Kegel muscle"
+    },
+    {
+      "source_index": 8212,
+      "id": "2561190",
+      "term": "小爪川獺",
+      "reading": "こつめかわうそ",
+      "meaning": "Asian small-clawed otter (Aonyx cinerea)"
+    },
+    {
+      "source_index": 8213,
+      "id": "5377549",
+      "term": "小包業務",
+      "reading": "こづつみぎょうむ",
+      "meaning": "Parcel Force"
+    },
+    {
+      "source_index": 8214,
+      "id": "2830300",
+      "term": "小包爆弾",
+      "reading": "こづつみばくだん",
+      "meaning": "parcel bomb / mail bomb / letter bomb"
+    },
+    {
+      "source_index": 8215,
+      "id": "2849410",
+      "term": "固定価格",
+      "reading": "こていかかく",
+      "meaning": "fixed price"
+    },
+    {
+      "source_index": 8216,
+      "id": "1266660",
+      "term": "固定観念",
+      "reading": "こていかんねん",
+      "meaning": "fixed idea / idée fixe / stereotype"
+    },
+    {
+      "source_index": 8217,
+      "id": "1685150",
+      "term": "固定金利",
+      "reading": "こていきんり",
+      "meaning": "fixed interest rate"
+    },
+    {
+      "source_index": 8218,
+      "id": "2813780",
+      "term": "固定効果",
+      "reading": "こていこうか",
+      "meaning": "fixed effect"
+    },
+    {
+      "source_index": 8219,
+      "id": "2864531",
+      "term": "固定残業",
+      "reading": "こていざんぎょう",
+      "meaning": "expected overtime (stipulated as a specific number of hours)"
+    },
+    {
+      "source_index": 8220,
+      "id": "1266690",
+      "term": "固定資産",
+      "reading": "こていしさん",
+      "meaning": "fixed assets"
+    },
+    {
+      "source_index": 8221,
+      "id": "2354250",
+      "term": "固定接続",
+      "reading": "こていせつぞく",
+      "meaning": "permanent connection / fixed connection"
+    },
+    {
+      "source_index": 8222,
+      "id": "2720870",
+      "term": "固定相場",
+      "reading": "こていそうば",
+      "meaning": "fixed exchange rates / pegged rate of exchange / fixed rate"
+    },
+    {
+      "source_index": 8223,
+      "id": "2354260",
+      "term": "固定属性",
+      "reading": "こていぞくせい",
+      "meaning": "fixed attribute"
+    },
+    {
+      "source_index": 8224,
+      "id": "2125930",
+      "term": "固定電話",
+      "reading": "こていでんわ",
+      "meaning": "landline telephone / fixed-line telephone"
+    },
+    {
+      "source_index": 8225,
+      "id": "2354300",
+      "term": "固定媒体",
+      "reading": "こていばいたい",
+      "meaning": "fixed media"
+    },
+    {
+      "source_index": 8226,
+      "id": "2161510",
+      "term": "固定費用",
+      "reading": "こていひよう",
+      "meaning": "fixed cost"
+    },
+    {
+      "source_index": 8227,
+      "id": "1266720",
+      "term": "固定負債",
+      "reading": "こていふさい",
+      "meaning": "fixed liabilities"
+    },
+    {
+      "source_index": 8228,
+      "id": "2830655",
+      "term": "固定翼機",
+      "reading": "こていよくき",
+      "meaning": "fixed-wing aircraft"
+    },
+    {
+      "source_index": 8229,
+      "id": "1684900",
+      "term": "古典音楽",
+      "reading": "こてんおんがく",
+      "meaning": "classical music"
+    },
+    {
+      "source_index": 8230,
+      "id": "1684890",
+      "term": "古典学者",
+      "reading": "こてんがくしゃ",
+      "meaning": "classicist / classical scholar"
+    },
+    {
+      "source_index": 8231,
+      "id": "2445600",
+      "term": "古典楽器",
+      "reading": "こてんがっき",
+      "meaning": "Japanese classical musical instruments"
+    },
+    {
+      "source_index": 8232,
+      "id": "2835804",
+      "term": "小天狗",
+      "reading": "こてんぐ",
+      "meaning": "small tengu"
+    },
+    {
+      "source_index": 8233,
+      "id": "1638850",
+      "term": "古典芸能",
+      "reading": "こてんげいのう",
+      "meaning": "classical theatre / classical theater"
+    },
+    {
+      "source_index": 8234,
+      "id": "2831898",
+      "term": "古典古代",
+      "reading": "こてんこだい",
+      "meaning": "classical antiquity / Greek and Roman eras"
+    },
+    {
+      "source_index": 8235,
+      "id": "1265890",
+      "term": "古典主義",
+      "reading": "こてんしゅぎ",
+      "meaning": "classicism"
+    },
+    {
+      "source_index": 8236,
+      "id": "1684910",
+      "term": "古典時代",
+      "reading": "こてんじだい",
+      "meaning": "the classical period"
+    },
+    {
+      "source_index": 8237,
+      "id": "1265920",
+      "term": "古典文学",
+      "reading": "こてんぶんがく",
+      "meaning": "classical literature"
+    },
+    {
+      "source_index": 8238,
+      "id": "2828741",
+      "term": "古天文学",
+      "reading": "こてんもんがく",
+      "meaning": "archaeoastronomy / archeoastronomy"
+    },
+    {
+      "source_index": 8239,
+      "id": "2232620",
+      "term": "古典力学",
+      "reading": "こてんりきがく",
+      "meaning": "classical mechanics"
+    },
+    {
+      "source_index": 8240,
+      "id": "2845594",
+      "term": "言霊思想",
+      "reading": "ことだましそう",
+      "meaning": "faith in the power of language / belief that reality is affected by the spoken word / speaking of a lucky (or unlucky) event will bring it about"
+    },
+    {
+      "source_index": 8241,
+      "id": "2845590",
+      "term": "言霊信仰",
+      "reading": "ことだましんこう",
+      "meaning": "faith in the power of language / belief that reality is affected by the spoken word / speaking of a lucky (or unlucky) event will bring it about"
+    },
+    {
+      "source_index": 8242,
+      "id": "2782350",
+      "term": "言葉に鞘がある",
+      "reading": "ことばにさやがある",
+      "meaning": "to be evasive / to be not entirely truthful / to not be frank"
+    },
+    {
+      "source_index": 8243,
+      "id": "2835869",
+      "term": "言葉の海",
+      "reading": "ことばのうみ",
+      "meaning": "large number of words / sea of words"
+    },
+    {
+      "source_index": 8244,
+      "id": "2834014",
+      "term": "言葉を失う",
+      "reading": "ことばをうしなう",
+      "meaning": "to become speechless / to be at a loss for words"
+    },
+    {
+      "source_index": 8245,
+      "id": "1877050",
+      "term": "言葉を濁す",
+      "reading": "ことばをにごす",
+      "meaning": "to be vague / to speak ambiguously / to be evasive"
+    },
+    {
+      "source_index": 8246,
+      "id": "2835649",
+      "term": "言葉を呑む",
+      "reading": "ことばをのむ",
+      "meaning": "to choke up / to be speechless"
+    },
+    {
+      "source_index": 8247,
+      "id": "2835652",
+      "term": "言葉を挟む",
+      "reading": "ことばをはさむ",
+      "meaning": "to cut in / to butt in"
+    },
+    {
+      "source_index": 8248,
+      "id": "1348060",
+      "term": "小虎",
+      "reading": "ことら",
+      "meaning": "small tiger"
+    },
+    {
+      "source_index": 8249,
+      "id": "2833735",
+      "term": "小道具方",
+      "reading": "こどうぐかた",
+      "meaning": "prop master / property master"
     }
   ]
 }
