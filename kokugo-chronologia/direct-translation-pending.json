@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9700,
-  "english_only_remaining": 5300,
+  "already_direct_japanese": 9750,
+  "english_only_remaining": 5250,
   "english_only_rank_counts": {
-    "(blank)": 5300
+    "(blank)": 5250
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 9700,
-      "id": "1726700",
-      "term": "自然食品",
-      "reading": "しぜんしょくひん",
-      "meaning": "natural foods / organic food"
-    },
-    {
-      "source_index": 9701,
-      "id": "2523310",
-      "term": "自然神学",
-      "reading": "しぜんしんがく",
-      "meaning": "natural theology"
-    },
-    {
-      "source_index": 9702,
-      "id": "2518820",
-      "term": "自然神教",
-      "reading": "しぜんしんきょう",
-      "meaning": "deism"
-    },
-    {
-      "source_index": 9703,
-      "id": "2690690",
-      "term": "自然条件",
-      "reading": "しぜんじょうけん",
-      "meaning": "natural condition"
-    },
-    {
-      "source_index": 9704,
-      "id": "2677270",
-      "term": "自然状態",
-      "reading": "しぜんじょうたい",
-      "meaning": "natural state / natural condition"
-    },
-    {
-      "source_index": 9705,
-      "id": "2170200",
-      "term": "自然水銀",
-      "reading": "しぜんすいぎん",
-      "meaning": "native mercury (natural mercury found associated with cinnabar)"
-    },
-    {
-      "source_index": 9706,
-      "id": "1726710",
-      "term": "自然崇拝",
-      "reading": "しぜんすうはい",
-      "meaning": "nature worship"
-    },
-    {
-      "source_index": 9707,
-      "id": "1726740",
-      "term": "自然選択",
-      "reading": "しぜんせんたく",
-      "meaning": "natural selection"
-    },
-    {
-      "source_index": 9708,
-      "id": "2675270",
-      "term": "死前喘鳴",
-      "reading": "しぜんぜんめい",
-      "meaning": "death rattle"
-    },
-    {
-      "source_index": 9709,
-      "id": "2759030",
-      "term": "自然素材",
-      "reading": "しぜんそざい",
-      "meaning": "natural material / natural ingredient"
-    },
-    {
-      "source_index": 9710,
-      "id": "2854589",
-      "term": "自然損耗",
-      "reading": "しぜんそんもう",
-      "meaning": "normal wear and tear / natural wear"
-    },
-    {
-      "source_index": 9711,
-      "id": "2677290",
-      "term": "自然増加",
-      "reading": "しぜんぞうか",
-      "meaning": "natural increase"
-    },
-    {
-      "source_index": 9712,
-      "id": "1726730",
-      "term": "自然増収",
-      "reading": "しぜんぞうしゅう",
-      "meaning": "natural or automatic increase in revenue"
-    },
-    {
-      "source_index": 9713,
-      "id": "1318160",
-      "term": "自然対数",
-      "reading": "しぜんたいすう",
-      "meaning": "natural logarithm"
-    },
-    {
-      "source_index": 9714,
-      "id": "1936970",
-      "term": "自然治癒",
-      "reading": "しぜんちゆ",
-      "meaning": "self-healing / spontaneous recovery"
-    },
-    {
-      "source_index": 9715,
-      "id": "2785480",
-      "term": "自然地理",
-      "reading": "しぜんちり",
-      "meaning": "physical geography / physiography"
-    },
-    {
-      "source_index": 9716,
-      "id": "2751100",
-      "term": "自然治療",
-      "reading": "しぜんちりょう",
-      "meaning": "autotherapy / self-healing"
-    },
-    {
-      "source_index": 9717,
-      "id": "1936980",
-      "term": "自然哲学",
-      "reading": "しぜんてつがく",
-      "meaning": "natural philosophy"
-    },
-    {
-      "source_index": 9718,
-      "id": "1318170",
-      "term": "自然淘汰",
-      "reading": "しぜんとうた",
-      "meaning": "natural selection"
-    },
-    {
-      "source_index": 9719,
-      "id": "2163110",
-      "term": "自然独占",
-      "reading": "しぜんどくせん",
-      "meaning": "natural monopoly"
-    },
-    {
-      "source_index": 9720,
-      "id": "2847761",
-      "term": "自然妊娠",
-      "reading": "しぜんにんしん",
-      "meaning": "natural conception / natural pregnancy"
-    },
-    {
-      "source_index": 9721,
-      "id": "2578600",
-      "term": "自然農法",
-      "reading": "しぜんのうほう",
-      "meaning": "natural farming (farming method invented by Masanobu Fukuoka) / the Fukuoka method"
-    },
-    {
-      "source_index": 9722,
-      "id": "1936990",
-      "term": "自然破壊",
-      "reading": "しぜんはかい",
-      "meaning": "destruction of nature"
-    },
-    {
-      "source_index": 9723,
-      "id": "1726680",
-      "term": "自然発火",
-      "reading": "しぜんはっか",
-      "meaning": "spontaneous combustion"
-    },
-    {
-      "source_index": 9724,
-      "id": "2781190",
-      "term": "自然白金",
-      "reading": "しぜんはっきん",
-      "meaning": "native platinum"
-    },
-    {
-      "source_index": 9725,
-      "id": "1726690",
-      "term": "自然発生",
-      "reading": "しぜんはっせい",
-      "meaning": "spontaneous generation / abiogenesis"
-    },
-    {
-      "source_index": 9726,
-      "id": "1318180",
-      "term": "自然描写",
-      "reading": "しぜんびょうしゃ",
-      "meaning": "description of nature"
-    },
-    {
-      "source_index": 9727,
-      "id": "1994590",
-      "term": "自然分娩",
-      "reading": "しぜんぶんべん",
-      "meaning": "natural childbirth"
-    },
-    {
-      "source_index": 9728,
-      "id": "2218800",
-      "term": "自然分離",
-      "reading": "しぜんぶんり",
-      "meaning": "avulsion (e.g. removal of land by the action of water)"
-    },
-    {
-      "source_index": 9729,
-      "id": "2270690",
-      "term": "自然分類",
-      "reading": "しぜんぶんるい",
-      "meaning": "natural classification"
-    },
-    {
-      "source_index": 9730,
-      "id": "2700850",
-      "term": "自然変異",
-      "reading": "しぜんへんい",
-      "meaning": "spontaneous mutation"
-    },
-    {
-      "source_index": 9731,
-      "id": "2857779",
-      "term": "自然放出",
-      "reading": "しぜんほうしゅつ",
-      "meaning": "spontaneous emission"
-    },
-    {
-      "source_index": 9732,
-      "id": "2416290",
-      "term": "自然法則",
-      "reading": "しぜんほうそく",
-      "meaning": "law of nature / natural law"
-    },
-    {
-      "source_index": 9733,
-      "id": "2577960",
-      "term": "自然放電",
-      "reading": "しぜんほうでん",
-      "meaning": "self-discharge (of a battery)"
-    },
-    {
-      "source_index": 9734,
-      "id": "1726660",
-      "term": "自然保護",
-      "reading": "しぜんほご",
-      "meaning": "nature conservation"
-    },
-    {
-      "source_index": 9735,
-      "id": "2212950",
-      "term": "自然免疫",
-      "reading": "しぜんめんえき",
-      "meaning": "natural immunity"
-    },
-    {
-      "source_index": 9736,
-      "id": "2677280",
-      "term": "自然流産",
-      "reading": "しぜんりゅうざん",
-      "meaning": "natural abortion / spontaneous abortion / miscarriage"
-    },
-    {
-      "source_index": 9737,
-      "id": "2751090",
-      "term": "自然療法",
-      "reading": "しぜんりょうほう",
-      "meaning": "naturopathy"
-    },
-    {
-      "source_index": 9738,
-      "id": "2512590",
-      "term": "示相化石",
-      "reading": "しそうかせき",
-      "meaning": "facies fossil"
-    },
-    {
-      "source_index": 9739,
-      "id": "1825850",
-      "term": "思想警察",
-      "reading": "しそうけいさつ",
-      "meaning": "thought police"
-    },
-    {
-      "source_index": 9740,
-      "id": "2031060",
-      "term": "志操堅固",
-      "reading": "しそうけんご",
-      "meaning": "being faithful to one's principles / being of firm purpose and deep commitment / constancy"
-    },
-    {
-      "source_index": 9741,
-      "id": "2046150",
-      "term": "思想信条",
-      "reading": "しそうしんじょう",
-      "meaning": "one's thought and beliefs"
-    },
-    {
-      "source_index": 9742,
-      "id": "2522680",
-      "term": "思想統制",
-      "reading": "しそうとうせい",
-      "meaning": "thought control / thought censorship"
-    },
-    {
-      "source_index": 9743,
-      "id": "1313440",
-      "term": "歯槽膿漏",
-      "reading": "しそうのうろう",
-      "meaning": "periodontitis / pyorrhea / pyorrhoea"
-    },
-    {
-      "source_index": 9744,
-      "id": "2062250",
-      "term": "四則演算",
-      "reading": "しそくえんざん",
-      "meaning": "four arithmetic operations / basic arithmetic operations"
-    },
-    {
-      "source_index": 9745,
-      "id": "2441470",
-      "term": "四足動物",
-      "reading": "しそくどうぶつ",
-      "meaning": "tetrapod"
-    },
-    {
-      "source_index": 9746,
-      "id": "2831722",
-      "term": "四足歩行",
-      "reading": "しそくほこう",
-      "meaning": "quadruped walking / walking on four legs"
-    },
-    {
-      "source_index": 9747,
-      "id": "2750240",
-      "term": "子孫繁栄",
-      "reading": "しそんはんえい",
-      "meaning": "perpetuation of one's descendants"
-    },
-    {
-      "source_index": 9748,
-      "id": "1762910",
-      "term": "氏族制度",
-      "reading": "しぞくせいど",
-      "meaning": "family or clan system"
-    },
-    {
-      "source_index": 9749,
-      "id": "2856267",
-      "term": "士族反乱",
-      "reading": "しぞくはんらん",
-      "meaning": "rebellions by former samurai (Meiji period)"
-    },
     {
       "source_index": 9750,
       "id": "2802240",
@@ -7010,6 +6660,356 @@
       "term": "照射方向",
       "reading": "しょうしゃほうこう",
       "meaning": "light source direction"
+    },
+    {
+      "source_index": 10700,
+      "id": "1638530",
+      "term": "召集令状",
+      "reading": "しょうしゅうれいじょう",
+      "meaning": "draft papers / callup notice"
+    },
+    {
+      "source_index": 10701,
+      "id": "2031330",
+      "term": "焦心苦慮",
+      "reading": "しょうしんくりょ",
+      "meaning": "worrying oneself (about) / being anxious (about) / fidgeting (about)"
+    },
+    {
+      "source_index": 10702,
+      "id": "2046950",
+      "term": "小心姑息",
+      "reading": "しょうしんこそく",
+      "meaning": "timid and evasive (person) / timid and makeshift (approach, measure, etc.)"
+    },
+    {
+      "source_index": 10703,
+      "id": "1377430",
+      "term": "正真正銘",
+      "reading": "しょうしんしょうめい",
+      "meaning": "genuine / authentic / true"
+    },
+    {
+      "source_index": 10704,
+      "id": "1882620",
+      "term": "焼身自殺",
+      "reading": "しょうしんじさつ",
+      "meaning": "self-immolation / burning oneself to death / suicide by fire"
+    },
+    {
+      "source_index": 10705,
+      "id": "2819670",
+      "term": "昇進人事",
+      "reading": "しょうしんじんじ",
+      "meaning": "promotion / appointment to a more senior position"
+    },
+    {
+      "source_index": 10706,
+      "id": "2046960",
+      "term": "小身微禄",
+      "reading": "しょうしんびろく",
+      "meaning": "(in) a humble position with a small stipend"
+    },
+    {
+      "source_index": 10707,
+      "id": "1348330",
+      "term": "小心翼々",
+      "reading": "しょうしんよくよく",
+      "meaning": "very timid / very nervous / faint-hearted"
+    },
+    {
+      "source_index": 10708,
+      "id": "2738810",
+      "term": "傷心旅行",
+      "reading": "しょうしんりょこう",
+      "meaning": "travel to relieve heartbreak / sentimental journey"
+    },
+    {
+      "source_index": 10709,
+      "id": "1347070",
+      "term": "商事会社",
+      "reading": "しょうじがいしゃ",
+      "meaning": "commercial company"
+    },
+    {
+      "source_index": 10710,
+      "id": "2110780",
+      "term": "正直一途",
+      "reading": "しょうじきいちず",
+      "meaning": "(of) straightforward honesty / steadfastly honest"
+    },
+    {
+      "source_index": 10711,
+      "id": "2046910",
+      "term": "正直一徹",
+      "reading": "しょうじきいってつ",
+      "meaning": "stubbornly honest"
+    },
+    {
+      "source_index": 10712,
+      "id": "2046920",
+      "term": "正直一遍",
+      "reading": "しょうじきいっぺん",
+      "meaning": "honest to a fault / one's only strength being his (her) honesty / having no redeeming feature except for being honest"
+    },
+    {
+      "source_index": 10713,
+      "id": "2418520",
+      "term": "正直の頭に神宿る",
+      "reading": "しょうじきのこうべにかみやどる",
+      "meaning": "honesty is the best policy / honesty pays / God dwells in an honest heart"
+    },
+    {
+      "source_index": 10714,
+      "id": "2365150",
+      "term": "消磁装置",
+      "reading": "しょうじそうち",
+      "meaning": "degausser / demagnetizer"
+    },
+    {
+      "source_index": 10715,
+      "id": "1379100",
+      "term": "生者必滅",
+      "reading": "しょうじゃひつめつ",
+      "meaning": "all living things must die"
+    },
+    {
+      "source_index": 10716,
+      "id": "2365240",
+      "term": "照準記号",
+      "reading": "しょうじゅんきごう",
+      "meaning": "aiming symbol / aiming circle / aiming field"
+    },
+    {
+      "source_index": 10717,
+      "id": "2365090",
+      "term": "昇順整列",
+      "reading": "しょうじゅんせいれつ",
+      "meaning": "sort (in ascending order)"
+    },
+    {
+      "source_index": 10718,
+      "id": "2604470",
+      "term": "鐘状火山",
+      "reading": "しょうじょうかざん",
+      "meaning": "lava dome"
+    },
+    {
+      "source_index": 10719,
+      "id": "2031560",
+      "term": "生々世々",
+      "reading": "しょうじょうせぜ",
+      "meaning": "eternity / forever / through all eternity"
+    },
+    {
+      "source_index": 10720,
+      "id": "2606020",
+      "term": "衝上断層",
+      "reading": "しょうじょうだんそう",
+      "meaning": "thrust fault"
+    },
+    {
+      "source_index": 10721,
+      "id": "2832224",
+      "term": "猩猩朱鷺",
+      "reading": "しょうじょうとき",
+      "meaning": "scarlet ibis (Eudocimus ruber)"
+    },
+    {
+      "source_index": 10722,
+      "id": "2866373",
+      "term": "掌状複葉",
+      "reading": "しょうじょうふくよう",
+      "meaning": "palmate compound leaf"
+    },
+    {
+      "source_index": 10723,
+      "id": "1744040",
+      "term": "小乗仏教",
+      "reading": "しょうじょうぶっきょう",
+      "meaning": "Hinayana Buddhism"
+    },
+    {
+      "source_index": 10724,
+      "id": "2837140",
+      "term": "少女趣味",
+      "reading": "しょうじょしゅみ",
+      "meaning": "(school) girlish taste (for things that are sweet, cute, romantic, etc.)"
+    },
+    {
+      "source_index": 10725,
+      "id": "1938410",
+      "term": "少女小説",
+      "reading": "しょうじょしょうせつ",
+      "meaning": "novel for young girls"
+    },
+    {
+      "source_index": 10726,
+      "id": "2031600",
+      "term": "生死輪廻",
+      "reading": "しょうじりんね",
+      "meaning": "all things being in flux through the endless circle of birth, death, and rebirth / the circle of transmigration"
+    },
+    {
+      "source_index": 10727,
+      "id": "2031590",
+      "term": "生死流転",
+      "reading": "しょうじるてん",
+      "meaning": "all things being in flux through the endless circle of birth, death, and rebirth / the circle of transmigration"
+    },
+    {
+      "source_index": 10728,
+      "id": "2031320",
+      "term": "小人閑居",
+      "reading": "しょうじんかんきょ",
+      "meaning": "a small-minded person being idle (tends to do evil)"
+    },
+    {
+      "source_index": 10729,
+      "id": "2031640",
+      "term": "精進潔斎",
+      "reading": "しょうじんけっさい",
+      "meaning": "purifying oneself (religiously) by abstaining from eating meat"
+    },
+    {
+      "source_index": 10730,
+      "id": "2867473",
+      "term": "精進袱紗",
+      "reading": "しょうじんぶくさ",
+      "meaning": "cloth used as a gift for ceremonies"
+    },
+    {
+      "source_index": 10731,
+      "id": "1751330",
+      "term": "精進料理",
+      "reading": "しょうじんりょうり",
+      "meaning": "vegetarian cuisine originally derived from the dietary restrictions of Buddhist monks"
+    },
+    {
+      "source_index": 10732,
+      "id": "1938420",
+      "term": "少数意見",
+      "reading": "しょうすういけん",
+      "meaning": "minority opinion"
+    },
+    {
+      "source_index": 10733,
+      "id": "2856402",
+      "term": "少数言語",
+      "reading": "しょうすうげんご",
+      "meaning": "minority language"
+    },
+    {
+      "source_index": 10734,
+      "id": "1938430",
+      "term": "少数精鋭",
+      "reading": "しょうすうせいえい",
+      "meaning": "elect (select) few"
+    },
+    {
+      "source_index": 10735,
+      "id": "1349100",
+      "term": "少数民族",
+      "reading": "しょうすうみんぞく",
+      "meaning": "minority ethnic group / ethnic minority / minority race"
+    },
+    {
+      "source_index": 10736,
+      "id": "2851920",
+      "term": "少数与党",
+      "reading": "しょうすうよとう",
+      "meaning": "minority party in power / minority government"
+    },
+    {
+      "source_index": 10737,
+      "id": "1882730",
+      "term": "焦性硫酸",
+      "reading": "しょうせいりゅうさん",
+      "meaning": "pyrosulphuric acid / pyrosulfuric acid"
+    },
+    {
+      "source_index": 10738,
+      "id": "1347120",
+      "term": "商船学校",
+      "reading": "しょうせんがっこう",
+      "meaning": "merchant-marine school"
+    },
+    {
+      "source_index": 10739,
+      "id": "1952580",
+      "term": "小選挙区",
+      "reading": "しょうせんきょく",
+      "meaning": "small electoral district / single-member constituency"
+    },
+    {
+      "source_index": 10740,
+      "id": "1347150",
+      "term": "商船大学",
+      "reading": "しょうせんだいがく",
+      "meaning": "mercantile marine college"
+    },
+    {
+      "source_index": 10741,
+      "id": "5369234",
+      "term": "商船三井",
+      "reading": "しょうせんみつい",
+      "meaning": "Mitsui O.S.K. Lines"
+    },
+    {
+      "source_index": 10742,
+      "id": "1349120",
+      "term": "少壮気鋭",
+      "reading": "しょうそうきえい",
+      "meaning": "young and energetic / up-and-coming"
+    },
+    {
+      "source_index": 10743,
+      "id": "2046970",
+      "term": "少壮血気",
+      "reading": "しょうそうけっき",
+      "meaning": "young and hot-blooded (impetuous)"
+    },
+    {
+      "source_index": 10744,
+      "id": "1349130",
+      "term": "少壮士官",
+      "reading": "しょうそうしかん",
+      "meaning": "youth officer"
+    },
+    {
+      "source_index": 10745,
+      "id": "1349140",
+      "term": "少壮有為",
+      "reading": "しょうそうゆうい",
+      "meaning": "energetic"
+    },
+    {
+      "source_index": 10746,
+      "id": "2046980",
+      "term": "消息不明",
+      "reading": "しょうそくふめい",
+      "meaning": "untraceable / long lost / one's whereabouts being unknown"
+    },
+    {
+      "source_index": 10747,
+      "id": "2686330",
+      "term": "肖像画家",
+      "reading": "しょうぞうがか",
+      "meaning": "portrait painter"
+    },
+    {
+      "source_index": 10748,
+      "id": "2412940",
+      "term": "招待講演",
+      "reading": "しょうたいこうえん",
+      "meaning": "invited lecture"
+    },
+    {
+      "source_index": 10749,
+      "id": "2047000",
+      "term": "正体不明",
+      "reading": "しょうたいふめい",
+      "meaning": "unidentifiable / unidentified"
     }
   ]
 }
