@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11837,
-  "english_only_remaining": 3163,
+  "already_direct_japanese": 11887,
+  "english_only_remaining": 3113,
   "english_only_rank_counts": {
-    "(blank)": 3163
+    "(blank)": 3113
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,356 +13,6 @@
   "part_start": 900,
   "part_end": 999,
   "targets": [
-    {
-      "source_index": 12737,
-      "id": "1356160",
-      "term": "常用対数",
-      "reading": "じょうようたいすう",
-      "meaning": "common logarithm / base-10 logarithm"
-    },
-    {
-      "source_index": 12738,
-      "id": "2826880",
-      "term": "常用薄明",
-      "reading": "じょうようはくめい",
-      "meaning": "civil twilight"
-    },
-    {
-      "source_index": 12739,
-      "id": "1706930",
-      "term": "剰余価値",
-      "reading": "じょうよかち",
-      "meaning": "surplus value (in Marxian economics)"
-    },
-    {
-      "source_index": 12740,
-      "id": "2365720",
-      "term": "剰余検査",
-      "reading": "じょうよけんさ",
-      "meaning": "modulo N check / residue check"
-    },
-    {
-      "source_index": 12741,
-      "id": "2848251",
-      "term": "剰余労働",
-      "reading": "じょうよろうどう",
-      "meaning": "surplus labor"
-    },
-    {
-      "source_index": 12742,
-      "id": "2047130",
-      "term": "上覧相撲",
-      "reading": "じょうらんずもう",
-      "meaning": "match held in front of the Emperor"
-    },
-    {
-      "source_index": 12743,
-      "id": "2681770",
-      "term": "上陸休暇",
-      "reading": "じょうりくきゅうか",
-      "meaning": "shore leave"
-    },
-    {
-      "source_index": 12744,
-      "id": "2204730",
-      "term": "上陸許可",
-      "reading": "じょうりくきょか",
-      "meaning": "entry permission (to a country) / landing permission / shore leave"
-    },
-    {
-      "source_index": 12745,
-      "id": "1938630",
-      "term": "上陸作戦",
-      "reading": "じょうりくさくせん",
-      "meaning": "landing operations"
-    },
-    {
-      "source_index": 12746,
-      "id": "2146640",
-      "term": "上流階級",
-      "reading": "じょうりゅうかいきゅう",
-      "meaning": "upper class / upper echelons of society / the rich and powerful"
-    },
-    {
-      "source_index": 12747,
-      "id": "2830219",
-      "term": "上流家庭",
-      "reading": "じょうりゅうかてい",
-      "meaning": "good family / better-class home"
-    },
-    {
-      "source_index": 12748,
-      "id": "2856574",
-      "term": "上流工程",
-      "reading": "じょうりゅうこうてい",
-      "meaning": "upstream process / upper process"
-    },
-    {
-      "source_index": 12749,
-      "id": "1354520",
-      "term": "上流社会",
-      "reading": "じょうりゅうしゃかい",
-      "meaning": "upper classes"
-    },
-    {
-      "source_index": 12750,
-      "id": "2613630",
-      "term": "常緑高木",
-      "reading": "じょうりょくこうぼく",
-      "meaning": "tall, evergreen tree"
-    },
-    {
-      "source_index": 12751,
-      "id": "2847884",
-      "term": "常緑植物",
-      "reading": "じょうりょくしょくぶつ",
-      "meaning": "evergreen plant"
-    },
-    {
-      "source_index": 12752,
-      "id": "2644030",
-      "term": "上腕動脈",
-      "reading": "じょうわんどうみゃく",
-      "meaning": "brachial artery / arteria brachialis"
-    },
-    {
-      "source_index": 12753,
-      "id": "1345040",
-      "term": "女王陛下",
-      "reading": "じょおうへいか",
-      "meaning": "Her Majesty the Queen"
-    },
-    {
-      "source_index": 12754,
-      "id": "2871324",
-      "term": "女系家族",
-      "reading": "じょけいかぞく",
-      "meaning": "matrilineal family"
-    },
-    {
-      "source_index": 12755,
-      "id": "2133320",
-      "term": "女系天皇",
-      "reading": "じょけいてんのう",
-      "meaning": "matrilineal emperor of Japan / emperor descended from the imperial line through the maternal side"
-    },
-    {
-      "source_index": 12756,
-      "id": "1345080",
-      "term": "女権運動",
-      "reading": "じょけんうんどう",
-      "meaning": "women's rights movement"
-    },
-    {
-      "source_index": 12757,
-      "id": "1345090",
-      "term": "女権拡張",
-      "reading": "じょけんかくちょう",
-      "meaning": "extension of women's rights"
-    },
-    {
-      "source_index": 12758,
-      "id": "2744190",
-      "term": "女権主義",
-      "reading": "じょけんしゅぎ",
-      "meaning": "feminism"
-    },
-    {
-      "source_index": 12759,
-      "id": "1762220",
-      "term": "女権論者",
-      "reading": "じょけんろんしゃ",
-      "meaning": "feminist"
-    },
-    {
-      "source_index": 12760,
-      "id": "5367424",
-      "term": "女工哀史",
-      "reading": "じょこうあいし",
-      "meaning": "The Tragic History of Female Factory Workers (reportage by Wakizo Hosoi, 1925) / The Pathetic Life of Mill Girls"
-    },
-    {
-      "source_index": 12761,
-      "id": "2847606",
-      "term": "徐行運転",
-      "reading": "じょこううんてん",
-      "meaning": "driving at reduced speed / running at reduced speed (e.g. train)"
-    },
-    {
-      "source_index": 12762,
-      "id": "1995190",
-      "term": "除細動器",
-      "reading": "じょさいどうき",
-      "meaning": "defibrillator"
-    },
-    {
-      "source_index": 12763,
-      "id": "2161700",
-      "term": "女子割礼",
-      "reading": "じょしかつれい",
-      "meaning": "female genital cutting / female genital mutilation / female circumcision"
-    },
-    {
-      "source_index": 12764,
-      "id": "1761910",
-      "term": "女子学生",
-      "reading": "じょしがくせい",
-      "meaning": "female student"
-    },
-    {
-      "source_index": 12765,
-      "id": "2542930",
-      "term": "女子高校",
-      "reading": "じょしこうこう",
-      "meaning": "girls' high school"
-    },
-    {
-      "source_index": 12766,
-      "id": "2847833",
-      "term": "女子校生",
-      "reading": "じょしこうせい",
-      "meaning": "student of a girls' school"
-    },
-    {
-      "source_index": 12767,
-      "id": "1345160",
-      "term": "女子高生",
-      "reading": "じょしこうせい",
-      "meaning": "female high school student"
-    },
-    {
-      "source_index": 12768,
-      "id": "2730370",
-      "term": "女子生徒",
-      "reading": "じょしせいと",
-      "meaning": "schoolgirl / female student"
-    },
-    {
-      "source_index": 12769,
-      "id": "2037950",
-      "term": "女子専用",
-      "reading": "じょしせんよう",
-      "meaning": "for the use of women only"
-    },
-    {
-      "source_index": 12770,
-      "id": "2184990",
-      "term": "女子短大",
-      "reading": "じょしたんだい",
-      "meaning": "women's junior college"
-    },
-    {
-      "source_index": 12771,
-      "id": "1938310",
-      "term": "女子大学",
-      "reading": "じょしだいがく",
-      "meaning": "women's college / women's university"
-    },
-    {
-      "source_index": 12772,
-      "id": "1761890",
-      "term": "女子大生",
-      "reading": "じょしだいせい",
-      "meaning": "student of a women's college"
-    },
-    {
-      "source_index": 12773,
-      "id": "2714450",
-      "term": "女真文字",
-      "reading": "じょしんもじ",
-      "meaning": "Jurchen script"
-    },
-    {
-      "source_index": 12774,
-      "id": "2250790",
-      "term": "叙述名詞",
-      "reading": "じょじゅつめいし",
-      "meaning": "predicate noun"
-    },
-    {
-      "source_index": 12775,
-      "id": "2258740",
-      "term": "叙述用法",
-      "reading": "じょじゅつようほう",
-      "meaning": "predicative (use) / descriptive (use)"
-    },
-    {
-      "source_index": 12776,
-      "id": "1345260",
-      "term": "女性一般",
-      "reading": "じょせいいっぱん",
-      "meaning": "women in general"
-    },
-    {
-      "source_index": 12777,
-      "id": "2517560",
-      "term": "女性運動",
-      "reading": "じょせいうんどう",
-      "meaning": "women's movement"
-    },
-    {
-      "source_index": 12778,
-      "id": "2704530",
-      "term": "女性解放",
-      "reading": "じょせいかいほう",
-      "meaning": "women's liberation / emancipation of women"
-    },
-    {
-      "source_index": 12779,
-      "id": "2772540",
-      "term": "女性活用",
-      "reading": "じょせいかつよう",
-      "meaning": "empowering women / promoting women's contribution / removing obstacles to women's full participation in society and the workplace"
-    },
-    {
-      "source_index": 12780,
-      "id": "2695330",
-      "term": "女性関係",
-      "reading": "じょせいかんけい",
-      "meaning": "relations with women"
-    },
-    {
-      "source_index": 12781,
-      "id": "1938330",
-      "term": "女声合唱",
-      "reading": "じょせいがっしょう",
-      "meaning": "female chorus"
-    },
-    {
-      "source_index": 12782,
-      "id": "2830306",
-      "term": "女性経験",
-      "reading": "じょせいけいけん",
-      "meaning": "sexual experience (with women)"
-    },
-    {
-      "source_index": 12783,
-      "id": "2217010",
-      "term": "女性嫌悪",
-      "reading": "じょせいけんお",
-      "meaning": "misogyny"
-    },
-    {
-      "source_index": 12784,
-      "id": "1995180",
-      "term": "女性候補",
-      "reading": "じょせいこうほ",
-      "meaning": "female candidate"
-    },
-    {
-      "source_index": 12785,
-      "id": "2611850",
-      "term": "女性祭司",
-      "reading": "じょせいさいし",
-      "meaning": "priestess"
-    },
-    {
-      "source_index": 12786,
-      "id": "1345280",
-      "term": "女性差別",
-      "reading": "じょせいさべつ",
-      "meaning": "discrimination against women / sexism"
-    },
     {
       "source_index": 12787,
       "id": "5367511",
@@ -712,6 +362,356 @@
       "term": "腎盂腎炎",
       "reading": "じんうじんえん",
       "meaning": "pyelonephritis"
+    },
+    {
+      "source_index": 12837,
+      "id": "1366690",
+      "term": "人海戦術",
+      "reading": "じんかいせんじゅつ",
+      "meaning": "human wave attack / human wave tactics"
+    },
+    {
+      "source_index": 12838,
+      "id": "1939360",
+      "term": "人格形成",
+      "reading": "じんかくけいせい",
+      "meaning": "character building / formation of character / personality development"
+    },
+    {
+      "source_index": 12839,
+      "id": "2836595",
+      "term": "人格攻撃",
+      "reading": "じんかくこうげき",
+      "meaning": "personal attack / ad hominem"
+    },
+    {
+      "source_index": 12840,
+      "id": "1730840",
+      "term": "人格主義",
+      "reading": "じんかくしゅぎ",
+      "meaning": "personalism"
+    },
+    {
+      "source_index": 12841,
+      "id": "2504340",
+      "term": "人格障害",
+      "reading": "じんかくしょうがい",
+      "meaning": "personality disorder"
+    },
+    {
+      "source_index": 12842,
+      "id": "2177500",
+      "term": "人格神論",
+      "reading": "じんかくしんろん",
+      "meaning": "theism (as refers to the existence of a personal Christian god)"
+    },
+    {
+      "source_index": 12843,
+      "id": "2821970",
+      "term": "人外魔境",
+      "reading": "じんがいまきょう",
+      "meaning": "ominous place outside the human world / mysterious place where no human being lives / uninhabited area"
+    },
+    {
+      "source_index": 12844,
+      "id": "2821980",
+      "term": "陣笠議員",
+      "reading": "じんがさぎいん",
+      "meaning": "backbench member (Parliament, Congress, Diet) / backbencher / minor politician"
+    },
+    {
+      "source_index": 12845,
+      "id": "2047400",
+      "term": "仁義忠孝",
+      "reading": "じんぎちゅうこう",
+      "meaning": "humanity, justice, loyalty, and filial piety"
+    },
+    {
+      "source_index": 12846,
+      "id": "2047410",
+      "term": "仁義道徳",
+      "reading": "じんぎどうとく",
+      "meaning": "humanity and justice / benevolence and righteousness"
+    },
+    {
+      "source_index": 12847,
+      "id": "1886360",
+      "term": "神宮外苑",
+      "reading": "じんぐうがいえん",
+      "meaning": "outer gardens of Meiji Shrine"
+    },
+    {
+      "source_index": 12848,
+      "id": "5416581",
+      "term": "神宮球場",
+      "reading": "じんぐうきゅうじょう",
+      "meaning": "Jingū Baseball Stadium"
+    },
+    {
+      "source_index": 12849,
+      "id": "2830615",
+      "term": "人権外交",
+      "reading": "じんけんがいこう",
+      "meaning": "human rights diplomacy"
+    },
+    {
+      "source_index": 12850,
+      "id": "5419964",
+      "term": "人権協会",
+      "reading": "じんけんきょうかい",
+      "meaning": "Civil Rights Association"
+    },
+    {
+      "source_index": 12851,
+      "id": "1367210",
+      "term": "人権侵害",
+      "reading": "じんけんしんがい",
+      "meaning": "human rights violation"
+    },
+    {
+      "source_index": 12852,
+      "id": "1367240",
+      "term": "人権蹂躙",
+      "reading": "じんけんじゅうりん",
+      "meaning": "human rights violation / trampling on human rights"
+    },
+    {
+      "source_index": 12853,
+      "id": "2582550",
+      "term": "人権状況",
+      "reading": "じんけんじょうきょう",
+      "meaning": "human rights situation / human rights condition"
+    },
+    {
+      "source_index": 12854,
+      "id": "1730960",
+      "term": "人権宣言",
+      "reading": "じんけんせんげん",
+      "meaning": "Declaration of the Rights of Man (during the French Revolution; 1789)"
+    },
+    {
+      "source_index": 12855,
+      "id": "1367220",
+      "term": "人権団体",
+      "reading": "じんけんだんたい",
+      "meaning": "human rights organization / human rights organisation"
+    },
+    {
+      "source_index": 12856,
+      "id": "2695260",
+      "term": "人権無視",
+      "reading": "じんけんむし",
+      "meaning": "disregard for human rights"
+    },
+    {
+      "source_index": 12857,
+      "id": "1367230",
+      "term": "人権問題",
+      "reading": "じんけんもんだい",
+      "meaning": "human rights issue"
+    },
+    {
+      "source_index": 12858,
+      "id": "1730970",
+      "term": "人権擁護",
+      "reading": "じんけんようご",
+      "meaning": "protection of human rights"
+    },
+    {
+      "source_index": 12859,
+      "id": "2132500",
+      "term": "人権抑圧",
+      "reading": "じんけんよくあつ",
+      "meaning": "suppression of human rights"
+    },
+    {
+      "source_index": 12860,
+      "id": "1367430",
+      "term": "人工衛星",
+      "reading": "じんこうえいせい",
+      "meaning": "artificial satellite / man-made satellite"
+    },
+    {
+      "source_index": 12861,
+      "id": "1367410",
+      "term": "人工栄養",
+      "reading": "じんこうえいよう",
+      "meaning": "bottle feeding"
+    },
+    {
+      "source_index": 12862,
+      "id": "2853131",
+      "term": "人工温泉",
+      "reading": "じんこうおんせん",
+      "meaning": "artificial hot spring / man-made hot spring"
+    },
+    {
+      "source_index": 12863,
+      "id": "2854509",
+      "term": "人工海岸",
+      "reading": "じんこうかいがん",
+      "meaning": "man-made beach / artificial beach"
+    },
+    {
+      "source_index": 12864,
+      "id": "2837192",
+      "term": "人口革命",
+      "reading": "じんこうかくめい",
+      "meaning": "demographic revolution"
+    },
+    {
+      "source_index": 12865,
+      "id": "2855220",
+      "term": "人口過剰",
+      "reading": "じんこうかじょう",
+      "meaning": "overpopulation"
+    },
+    {
+      "source_index": 12866,
+      "id": "2855048",
+      "term": "人口過多",
+      "reading": "じんこうかた",
+      "meaning": "overpopulation"
+    },
+    {
+      "source_index": 12867,
+      "id": "2367150",
+      "term": "人工環境",
+      "reading": "じんこうかんきょう",
+      "meaning": "artificial environment / man-made environment"
+    },
+    {
+      "source_index": 12868,
+      "id": "2854799",
+      "term": "人工関節",
+      "reading": "じんこうかんせつ",
+      "meaning": "artificial joint"
+    },
+    {
+      "source_index": 12869,
+      "id": "2504450",
+      "term": "人工機械",
+      "reading": "じんこうきかい",
+      "meaning": "artificial machine"
+    },
+    {
+      "source_index": 12870,
+      "id": "2872176",
+      "term": "人工気胸",
+      "reading": "じんこうききょう",
+      "meaning": "artificial pneumothorax"
+    },
+    {
+      "source_index": 12871,
+      "id": "2835202",
+      "term": "人工筋肉",
+      "reading": "じんこうきんにく",
+      "meaning": "artificial muscle / synthetic muscle"
+    },
+    {
+      "source_index": 12872,
+      "id": "2835179",
+      "term": "人工魚礁",
+      "reading": "じんこうぎょしょう",
+      "meaning": "artificial fish reef"
+    },
+    {
+      "source_index": 12873,
+      "id": "1939440",
+      "term": "人工血液",
+      "reading": "じんこうけつえき",
+      "meaning": "artificial blood"
+    },
+    {
+      "source_index": 12874,
+      "id": "2367170",
+      "term": "人工言語",
+      "reading": "じんこうげんご",
+      "meaning": "artificial language (e.g. Esperanto) / constructed language / conlang"
+    },
+    {
+      "source_index": 12875,
+      "id": "2588660",
+      "term": "人口減少",
+      "reading": "じんこうげんしょう",
+      "meaning": "depopulation / falling population / decrease in population"
+    },
+    {
+      "source_index": 12876,
+      "id": "2170060",
+      "term": "人工元素",
+      "reading": "じんこうげんそ",
+      "meaning": "synthetic element"
+    },
+    {
+      "source_index": 12877,
+      "id": "1367480",
+      "term": "人工降雨",
+      "reading": "じんこうこうう",
+      "meaning": "artificial rain / rainmaking / cloud seeding"
+    },
+    {
+      "source_index": 12878,
+      "id": "2855055",
+      "term": "人口構成",
+      "reading": "じんこうこうせい",
+      "meaning": "population composition / population make-up"
+    },
+    {
+      "source_index": 12879,
+      "id": "2842520",
+      "term": "人口構造",
+      "reading": "じんこうこうぞう",
+      "meaning": "population structure / demographic structure / age-sex structure"
+    },
+    {
+      "source_index": 12880,
+      "id": "2835753",
+      "term": "人工肛門",
+      "reading": "じんこうこうもん",
+      "meaning": "artificial anus"
+    },
+    {
+      "source_index": 12881,
+      "id": "2553700",
+      "term": "人工香料",
+      "reading": "じんこうこうりょう",
+      "meaning": "artificial flavoring"
+    },
+    {
+      "source_index": 12882,
+      "id": "1367450",
+      "term": "人工呼吸",
+      "reading": "じんこうこきゅう",
+      "meaning": "artificial respiration"
+    },
+    {
+      "source_index": 12883,
+      "id": "2867909",
+      "term": "人工歯根",
+      "reading": "じんこうしこん",
+      "meaning": "artificial tooth root / dental implant"
+    },
+    {
+      "source_index": 12884,
+      "id": "1367530",
+      "term": "人工真珠",
+      "reading": "じんこうしんじゅ",
+      "meaning": "artificial pearls"
+    },
+    {
+      "source_index": 12885,
+      "id": "1730590",
+      "term": "人工心臓",
+      "reading": "じんこうしんぞう",
+      "meaning": "artificial heart"
+    },
+    {
+      "source_index": 12886,
+      "id": "1730580",
+      "term": "人工心肺",
+      "reading": "じんこうしんぱい",
+      "meaning": "cardiopulmonary bypass / heart-lung machine / CPB pump"
     }
   ]
 }

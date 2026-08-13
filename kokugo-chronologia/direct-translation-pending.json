@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11837,
-  "english_only_remaining": 3163,
+  "already_direct_japanese": 11887,
+  "english_only_remaining": 3113,
   "english_only_rank_counts": {
-    "(blank)": 3163
+    "(blank)": 3113
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11837,
-      "id": "2833936",
-      "term": "地獄で仏に会ったよう",
-      "reading": "じごくでほとけにあったよう",
-      "meaning": "with great relief / as if meeting a friend in need / as if having met a Buddha in hell"
-    },
-    {
-      "source_index": 11838,
-      "id": "2860657",
-      "term": "地獄に仏",
-      "reading": "じごくにほとけ",
-      "meaning": "manna from heaven / an oasis in the desert / godsend"
-    },
-    {
-      "source_index": 11839,
-      "id": "2587610",
-      "term": "地獄変相",
-      "reading": "じごくへんそう",
-      "meaning": "picture of Hell / painting representing Hell"
-    },
-    {
-      "source_index": 11840,
-      "id": "1313890",
-      "term": "事後承諾",
-      "reading": "じごしょうだく",
-      "meaning": "ex-post-facto approval"
-    },
-    {
-      "source_index": 11841,
-      "id": "2870727",
-      "term": "事後処理",
-      "reading": "じごしょり",
-      "meaning": "dealing with the aftermath / cleaning up (after an incident)"
-    },
-    {
-      "source_index": 11842,
-      "id": "2218715",
-      "term": "事後従犯",
-      "reading": "じごじゅうはん",
-      "meaning": "accessory after the fact"
-    },
-    {
-      "source_index": 11843,
-      "id": "2359800",
-      "term": "事後条件",
-      "reading": "じごじょうけん",
-      "meaning": "postcondition"
-    },
-    {
-      "source_index": 11844,
-      "id": "2163130",
-      "term": "事後分析",
-      "reading": "じごぶんせき",
-      "meaning": "ex-post analysis"
-    },
-    {
-      "source_index": 11845,
-      "id": "2776020",
-      "term": "事後報告",
-      "reading": "じごほうこく",
-      "meaning": "ex post facto report / report after the event"
-    },
-    {
-      "source_index": 11846,
-      "id": "2359820",
-      "term": "事後保守",
-      "reading": "じごほしゅ",
-      "meaning": "corrective maintenance"
-    },
-    {
-      "source_index": 11847,
-      "id": "2359830",
-      "term": "事後保全",
-      "reading": "じごほぜん",
-      "meaning": "corrective maintenance"
-    },
-    {
-      "source_index": 11848,
-      "id": "5335176",
-      "term": "慈済大学",
-      "reading": "じさいだいがく",
-      "meaning": "Tzu Chi University in Hualien, Taiwan"
-    },
-    {
-      "source_index": 11849,
-      "id": "2045900",
-      "term": "自作自演",
-      "reading": "じさくじえん",
-      "meaning": "performing a part in one's own play / playing a musical piece that one has written"
-    },
-    {
-      "source_index": 11850,
-      "id": "1816550",
-      "term": "時差出勤",
-      "reading": "じさしゅっきん",
-      "meaning": "staggered work hours"
-    },
-    {
-      "source_index": 11851,
-      "id": "2839087",
-      "term": "時差信号",
-      "reading": "じさしんごう",
-      "meaning": "fixed-time traffic lights"
-    },
-    {
-      "source_index": 11852,
-      "id": "2848438",
-      "term": "自殺願望",
-      "reading": "じさつがんぼう",
-      "meaning": "suicidal tendency / suicidal wish"
-    },
-    {
-      "source_index": 11853,
-      "id": "2870439",
-      "term": "自殺教唆",
-      "reading": "じさつきょうさ",
-      "meaning": "(crime of) instigation to suicide"
-    },
-    {
-      "source_index": 11854,
-      "id": "2400090",
-      "term": "自殺行為",
-      "reading": "じさつこうい",
-      "meaning": "suicidal act / self-destroying action / suicidal action"
-    },
-    {
-      "source_index": 11855,
-      "id": "1726370",
-      "term": "自殺幇助",
-      "reading": "じさつほうじょ",
-      "meaning": "(the crime of) aiding and abetting a suicide"
-    },
-    {
-      "source_index": 11856,
-      "id": "1317790",
-      "term": "自殺未遂",
-      "reading": "じさつみすい",
-      "meaning": "attempted suicide"
-    },
-    {
-      "source_index": 11857,
-      "id": "2840919",
-      "term": "自殺予防",
-      "reading": "じさつよぼう",
-      "meaning": "suicide prevention"
-    },
-    {
-      "source_index": 11858,
-      "id": "2677540",
-      "term": "自在継手",
-      "reading": "じざいつぎて",
-      "meaning": "universal joint"
-    },
-    {
-      "source_index": 11859,
-      "id": "2835327",
-      "term": "自死遺児",
-      "reading": "じしいじ",
-      "meaning": "child who has survived the suicide of a parent / child of a person who committed suicide"
-    },
-    {
-      "source_index": 11860,
-      "id": "2835326",
-      "term": "自死遺族",
-      "reading": "じしいぞく",
-      "meaning": "suicide survivor (i.e. family member of someone who has committed suicide) / survivor of suicide"
-    },
-    {
-      "source_index": 11861,
-      "id": "1925840",
-      "term": "自社製品",
-      "reading": "じしゃせいひん",
-      "meaning": "in-house manufactured goods"
-    },
-    {
-      "source_index": 11862,
-      "id": "2097860",
-      "term": "寺社奉行",
-      "reading": "じしゃぶぎょう",
-      "meaning": "governmental position of the shogunate, responsible for the management of temples and shrines"
-    },
-    {
-      "source_index": 11863,
-      "id": "2851534",
-      "term": "寺社仏閣",
-      "reading": "じしゃぶっかく",
-      "meaning": "(Shinto) shrines and (Buddhist) temples"
-    },
-    {
-      "source_index": 11864,
-      "id": "1726550",
-      "term": "自習時間",
-      "reading": "じしゅうじかん",
-      "meaning": "study time"
-    },
-    {
-      "source_index": 11865,
-      "id": "2790110",
-      "term": "自主回収",
-      "reading": "じしゅかいしゅう",
-      "meaning": "voluntary recall (e.g. of faulty goods)"
-    },
-    {
-      "source_index": 11866,
-      "id": "2841355",
-      "term": "自主開発",
-      "reading": "じしゅかいはつ",
-      "meaning": "independent development"
-    },
-    {
-      "source_index": 11867,
-      "id": "2842566",
-      "term": "自主管理",
-      "reading": "じしゅかんり",
-      "meaning": "self-management / self-imposed control"
-    },
-    {
-      "source_index": 11868,
-      "id": "1726060",
-      "term": "自主規制",
-      "reading": "じしゅきせい",
-      "meaning": "voluntary restraints / self-limitation"
-    },
-    {
-      "source_index": 11869,
-      "id": "2864257",
-      "term": "自主休講",
-      "reading": "じしゅきゅうこう",
-      "meaning": "cutting class (esp. of university students)"
-    },
-    {
-      "source_index": 11870,
-      "id": "2844624",
-      "term": "自粛警察",
-      "reading": "じしゅくけいさつ",
-      "meaning": "self-appointed enforcer of business closure and stay-at-home requests during the COVID-19 pandemic / pandemic police / virus vigilante"
-    },
-    {
-      "source_index": 11871,
-      "id": "1317870",
-      "term": "自主指針",
-      "reading": "じしゅししん",
-      "meaning": "independent guideline"
-    },
-    {
-      "source_index": 11872,
-      "id": "2826186",
-      "term": "自主制作",
-      "reading": "じしゅせいさく",
-      "meaning": "independent production (e.g. of a film)"
-    },
-    {
-      "source_index": 11873,
-      "id": "2870659",
-      "term": "自主退学",
-      "reading": "じしゅたいがく",
-      "meaning": "voluntary withdrawal from school / dropping out of school of one's own accord"
-    },
-    {
-      "source_index": 11874,
-      "id": "1994560",
-      "term": "自主退職",
-      "reading": "じしゅたいしょく",
-      "meaning": "voluntary retirement"
-    },
-    {
-      "source_index": 11875,
-      "id": "2113110",
-      "term": "自主独往",
-      "reading": "じしゅどくおう",
-      "meaning": "independent way of life"
-    },
-    {
-      "source_index": 11876,
-      "id": "2848994",
-      "term": "自主廃業",
-      "reading": "じしゅはいぎょう",
-      "meaning": "voluntary liquidation / voluntary closure (of business)"
-    },
-    {
-      "source_index": 11877,
-      "id": "2862204",
-      "term": "自主避難",
-      "reading": "じしゅひなん",
-      "meaning": "voluntary evacuation"
-    },
-    {
-      "source_index": 11878,
-      "id": "2847911",
-      "term": "自主防衛",
-      "reading": "じしゅぼうえい",
-      "meaning": "autonomous (national) defence / self-reliant defence"
-    },
-    {
-      "source_index": 11879,
-      "id": "2853339",
-      "term": "自主療養",
-      "reading": "じしゅりょうよう",
-      "meaning": "caring for oneself (at home; e.g. after testing positive for COVID-19)"
-    },
-    {
-      "source_index": 11880,
-      "id": "2186500",
-      "term": "自主練習",
-      "reading": "じしゅれんしゅう",
-      "meaning": "voluntary training / voluntary practice / free practice"
-    },
-    {
-      "source_index": 11881,
-      "id": "2628690",
-      "term": "自傷行為",
-      "reading": "じしょうこうい",
-      "meaning": "act of self-harm / self-injurious behavior / self-injurious behaviour"
-    },
-    {
-      "source_index": 11882,
-      "id": "2359880",
-      "term": "事象投影",
-      "reading": "じしょうとうえい",
-      "meaning": "event projection"
-    },
-    {
-      "source_index": 11883,
-      "id": "2359890",
-      "term": "事象報告",
-      "reading": "じしょうほうこく",
-      "meaning": "event report"
-    },
-    {
-      "source_index": 11884,
-      "id": "2046050",
-      "term": "地所観念",
-      "reading": "じしょかんねん",
-      "meaning": "the orientation of time and place / awareness of the existing situation"
-    },
-    {
-      "source_index": 11885,
-      "id": "2843906",
-      "term": "自食作用",
-      "reading": "じしょくさよう",
-      "meaning": "autophagy"
-    },
-    {
-      "source_index": 11886,
-      "id": "2689040",
-      "term": "自殖弱勢",
-      "reading": "じしょくじゃくせい",
-      "meaning": "inbreeding depression"
-    },
     {
       "source_index": 11887,
       "id": "2361160",
@@ -7010,6 +6660,356 @@
       "term": "腎盂腎炎",
       "reading": "じんうじんえん",
       "meaning": "pyelonephritis"
+    },
+    {
+      "source_index": 12837,
+      "id": "1366690",
+      "term": "人海戦術",
+      "reading": "じんかいせんじゅつ",
+      "meaning": "human wave attack / human wave tactics"
+    },
+    {
+      "source_index": 12838,
+      "id": "1939360",
+      "term": "人格形成",
+      "reading": "じんかくけいせい",
+      "meaning": "character building / formation of character / personality development"
+    },
+    {
+      "source_index": 12839,
+      "id": "2836595",
+      "term": "人格攻撃",
+      "reading": "じんかくこうげき",
+      "meaning": "personal attack / ad hominem"
+    },
+    {
+      "source_index": 12840,
+      "id": "1730840",
+      "term": "人格主義",
+      "reading": "じんかくしゅぎ",
+      "meaning": "personalism"
+    },
+    {
+      "source_index": 12841,
+      "id": "2504340",
+      "term": "人格障害",
+      "reading": "じんかくしょうがい",
+      "meaning": "personality disorder"
+    },
+    {
+      "source_index": 12842,
+      "id": "2177500",
+      "term": "人格神論",
+      "reading": "じんかくしんろん",
+      "meaning": "theism (as refers to the existence of a personal Christian god)"
+    },
+    {
+      "source_index": 12843,
+      "id": "2821970",
+      "term": "人外魔境",
+      "reading": "じんがいまきょう",
+      "meaning": "ominous place outside the human world / mysterious place where no human being lives / uninhabited area"
+    },
+    {
+      "source_index": 12844,
+      "id": "2821980",
+      "term": "陣笠議員",
+      "reading": "じんがさぎいん",
+      "meaning": "backbench member (Parliament, Congress, Diet) / backbencher / minor politician"
+    },
+    {
+      "source_index": 12845,
+      "id": "2047400",
+      "term": "仁義忠孝",
+      "reading": "じんぎちゅうこう",
+      "meaning": "humanity, justice, loyalty, and filial piety"
+    },
+    {
+      "source_index": 12846,
+      "id": "2047410",
+      "term": "仁義道徳",
+      "reading": "じんぎどうとく",
+      "meaning": "humanity and justice / benevolence and righteousness"
+    },
+    {
+      "source_index": 12847,
+      "id": "1886360",
+      "term": "神宮外苑",
+      "reading": "じんぐうがいえん",
+      "meaning": "outer gardens of Meiji Shrine"
+    },
+    {
+      "source_index": 12848,
+      "id": "5416581",
+      "term": "神宮球場",
+      "reading": "じんぐうきゅうじょう",
+      "meaning": "Jingū Baseball Stadium"
+    },
+    {
+      "source_index": 12849,
+      "id": "2830615",
+      "term": "人権外交",
+      "reading": "じんけんがいこう",
+      "meaning": "human rights diplomacy"
+    },
+    {
+      "source_index": 12850,
+      "id": "5419964",
+      "term": "人権協会",
+      "reading": "じんけんきょうかい",
+      "meaning": "Civil Rights Association"
+    },
+    {
+      "source_index": 12851,
+      "id": "1367210",
+      "term": "人権侵害",
+      "reading": "じんけんしんがい",
+      "meaning": "human rights violation"
+    },
+    {
+      "source_index": 12852,
+      "id": "1367240",
+      "term": "人権蹂躙",
+      "reading": "じんけんじゅうりん",
+      "meaning": "human rights violation / trampling on human rights"
+    },
+    {
+      "source_index": 12853,
+      "id": "2582550",
+      "term": "人権状況",
+      "reading": "じんけんじょうきょう",
+      "meaning": "human rights situation / human rights condition"
+    },
+    {
+      "source_index": 12854,
+      "id": "1730960",
+      "term": "人権宣言",
+      "reading": "じんけんせんげん",
+      "meaning": "Declaration of the Rights of Man (during the French Revolution; 1789)"
+    },
+    {
+      "source_index": 12855,
+      "id": "1367220",
+      "term": "人権団体",
+      "reading": "じんけんだんたい",
+      "meaning": "human rights organization / human rights organisation"
+    },
+    {
+      "source_index": 12856,
+      "id": "2695260",
+      "term": "人権無視",
+      "reading": "じんけんむし",
+      "meaning": "disregard for human rights"
+    },
+    {
+      "source_index": 12857,
+      "id": "1367230",
+      "term": "人権問題",
+      "reading": "じんけんもんだい",
+      "meaning": "human rights issue"
+    },
+    {
+      "source_index": 12858,
+      "id": "1730970",
+      "term": "人権擁護",
+      "reading": "じんけんようご",
+      "meaning": "protection of human rights"
+    },
+    {
+      "source_index": 12859,
+      "id": "2132500",
+      "term": "人権抑圧",
+      "reading": "じんけんよくあつ",
+      "meaning": "suppression of human rights"
+    },
+    {
+      "source_index": 12860,
+      "id": "1367430",
+      "term": "人工衛星",
+      "reading": "じんこうえいせい",
+      "meaning": "artificial satellite / man-made satellite"
+    },
+    {
+      "source_index": 12861,
+      "id": "1367410",
+      "term": "人工栄養",
+      "reading": "じんこうえいよう",
+      "meaning": "bottle feeding"
+    },
+    {
+      "source_index": 12862,
+      "id": "2853131",
+      "term": "人工温泉",
+      "reading": "じんこうおんせん",
+      "meaning": "artificial hot spring / man-made hot spring"
+    },
+    {
+      "source_index": 12863,
+      "id": "2854509",
+      "term": "人工海岸",
+      "reading": "じんこうかいがん",
+      "meaning": "man-made beach / artificial beach"
+    },
+    {
+      "source_index": 12864,
+      "id": "2837192",
+      "term": "人口革命",
+      "reading": "じんこうかくめい",
+      "meaning": "demographic revolution"
+    },
+    {
+      "source_index": 12865,
+      "id": "2855220",
+      "term": "人口過剰",
+      "reading": "じんこうかじょう",
+      "meaning": "overpopulation"
+    },
+    {
+      "source_index": 12866,
+      "id": "2855048",
+      "term": "人口過多",
+      "reading": "じんこうかた",
+      "meaning": "overpopulation"
+    },
+    {
+      "source_index": 12867,
+      "id": "2367150",
+      "term": "人工環境",
+      "reading": "じんこうかんきょう",
+      "meaning": "artificial environment / man-made environment"
+    },
+    {
+      "source_index": 12868,
+      "id": "2854799",
+      "term": "人工関節",
+      "reading": "じんこうかんせつ",
+      "meaning": "artificial joint"
+    },
+    {
+      "source_index": 12869,
+      "id": "2504450",
+      "term": "人工機械",
+      "reading": "じんこうきかい",
+      "meaning": "artificial machine"
+    },
+    {
+      "source_index": 12870,
+      "id": "2872176",
+      "term": "人工気胸",
+      "reading": "じんこうききょう",
+      "meaning": "artificial pneumothorax"
+    },
+    {
+      "source_index": 12871,
+      "id": "2835202",
+      "term": "人工筋肉",
+      "reading": "じんこうきんにく",
+      "meaning": "artificial muscle / synthetic muscle"
+    },
+    {
+      "source_index": 12872,
+      "id": "2835179",
+      "term": "人工魚礁",
+      "reading": "じんこうぎょしょう",
+      "meaning": "artificial fish reef"
+    },
+    {
+      "source_index": 12873,
+      "id": "1939440",
+      "term": "人工血液",
+      "reading": "じんこうけつえき",
+      "meaning": "artificial blood"
+    },
+    {
+      "source_index": 12874,
+      "id": "2367170",
+      "term": "人工言語",
+      "reading": "じんこうげんご",
+      "meaning": "artificial language (e.g. Esperanto) / constructed language / conlang"
+    },
+    {
+      "source_index": 12875,
+      "id": "2588660",
+      "term": "人口減少",
+      "reading": "じんこうげんしょう",
+      "meaning": "depopulation / falling population / decrease in population"
+    },
+    {
+      "source_index": 12876,
+      "id": "2170060",
+      "term": "人工元素",
+      "reading": "じんこうげんそ",
+      "meaning": "synthetic element"
+    },
+    {
+      "source_index": 12877,
+      "id": "1367480",
+      "term": "人工降雨",
+      "reading": "じんこうこうう",
+      "meaning": "artificial rain / rainmaking / cloud seeding"
+    },
+    {
+      "source_index": 12878,
+      "id": "2855055",
+      "term": "人口構成",
+      "reading": "じんこうこうせい",
+      "meaning": "population composition / population make-up"
+    },
+    {
+      "source_index": 12879,
+      "id": "2842520",
+      "term": "人口構造",
+      "reading": "じんこうこうぞう",
+      "meaning": "population structure / demographic structure / age-sex structure"
+    },
+    {
+      "source_index": 12880,
+      "id": "2835753",
+      "term": "人工肛門",
+      "reading": "じんこうこうもん",
+      "meaning": "artificial anus"
+    },
+    {
+      "source_index": 12881,
+      "id": "2553700",
+      "term": "人工香料",
+      "reading": "じんこうこうりょう",
+      "meaning": "artificial flavoring"
+    },
+    {
+      "source_index": 12882,
+      "id": "1367450",
+      "term": "人工呼吸",
+      "reading": "じんこうこきゅう",
+      "meaning": "artificial respiration"
+    },
+    {
+      "source_index": 12883,
+      "id": "2867909",
+      "term": "人工歯根",
+      "reading": "じんこうしこん",
+      "meaning": "artificial tooth root / dental implant"
+    },
+    {
+      "source_index": 12884,
+      "id": "1367530",
+      "term": "人工真珠",
+      "reading": "じんこうしんじゅ",
+      "meaning": "artificial pearls"
+    },
+    {
+      "source_index": 12885,
+      "id": "1730590",
+      "term": "人工心臓",
+      "reading": "じんこうしんぞう",
+      "meaning": "artificial heart"
+    },
+    {
+      "source_index": 12886,
+      "id": "1730580",
+      "term": "人工心肺",
+      "reading": "じんこうしんぱい",
+      "meaning": "cardiopulmonary bypass / heart-lung machine / CPB pump"
     }
   ]
 }
