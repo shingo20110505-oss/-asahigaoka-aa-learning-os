@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9903,
-  "english_only_remaining": 5097,
+  "already_direct_japanese": 9904,
+  "english_only_remaining": 5096,
   "english_only_rank_counts": {
-    "(blank)": 5097
+    "(blank)": 5096
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 800,
   "part_end": 899,
   "targets": [
-    {
-      "source_index": 10703,
-      "id": "1377430",
-      "term": "正真正銘",
-      "reading": "しょうしんしょうめい",
-      "meaning": "genuine / authentic / true"
-    },
     {
       "source_index": 10704,
       "id": "1882620",
@@ -712,6 +705,13 @@
       "term": "消費期限",
       "reading": "しょうひきげん",
       "meaning": "expiry date (esp. on food) / expiration date / use-by date"
+    },
+    {
+      "source_index": 10803,
+      "id": "2860946",
+      "term": "消費行動",
+      "reading": "しょうひこうどう",
+      "meaning": "consumer behavior / consumption patterns"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9903,
-  "english_only_remaining": 5097,
+  "already_direct_japanese": 9904,
+  "english_only_remaining": 5096,
   "english_only_rank_counts": {
-    "(blank)": 5097
+    "(blank)": 5096
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 700,
   "part_end": 799,
   "targets": [
-    {
-      "source_index": 10603,
-      "id": "1346680",
-      "term": "商慣習法",
-      "reading": "しょうかんしゅうほう",
-      "meaning": "commercial customary law / commercial custom law"
-    },
     {
       "source_index": 10604,
       "id": "2265950",
@@ -712,6 +705,13 @@
       "term": "小心姑息",
       "reading": "しょうしんこそく",
       "meaning": "timid and evasive (person) / timid and makeshift (approach, measure, etc.)"
+    },
+    {
+      "source_index": 10703,
+      "id": "1377430",
+      "term": "正真正銘",
+      "reading": "しょうしんしょうめい",
+      "meaning": "genuine / authentic / true"
     }
   ]
 }

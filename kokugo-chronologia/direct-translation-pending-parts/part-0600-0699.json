@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9903,
-  "english_only_remaining": 5097,
+  "already_direct_japanese": 9904,
+  "english_only_remaining": 5096,
   "english_only_rank_counts": {
-    "(blank)": 5097
+    "(blank)": 5096
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 600,
   "part_end": 699,
   "targets": [
-    {
-      "source_index": 10503,
-      "id": "2838003",
-      "term": "出題範囲",
-      "reading": "しゅつだいはんい",
-      "meaning": "coverage of an exam / what an exam covers"
-    },
     {
       "source_index": 10504,
       "id": "1339890",
@@ -712,6 +705,13 @@
       "term": "償還期間",
       "reading": "しょうかんきかん",
       "meaning": "redemption period / repayment term"
+    },
+    {
+      "source_index": 10603,
+      "id": "1346680",
+      "term": "商慣習法",
+      "reading": "しょうかんしゅうほう",
+      "meaning": "commercial customary law / commercial custom law"
     }
   ]
 }
