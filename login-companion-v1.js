@@ -2,10 +2,12 @@
 if(window.__AA_LOGIN_COMPANION_V1__)return;window.__AA_LOGIN_COMPANION_V1__=true;
 const DB_NAME='aa-login-companion-v1',IMG_STORE='images';
 const SETUP_KEY='aa-login-visual-setup-v1',SEEN_KEY='aa-login-visual-seen-v1',PICK_KEY='aa-login-visual-pick-v1';
+const TODAY_RESET_KEY='aa-login-visual-today-reset-2026-08-13-v1';
 const IMAGE_EXT=/\.(png|jpe?g|webp|gif|avif|heic|heif)$/i;
 const MAX_ZIP_IMAGES=300,MAX_ZIP_TOTAL=300*1024*1024,DECODE_TIMEOUT=3500;
 let currentURL=null,lastDraw=null,showSeq=0;
 function localDay(d=new Date()){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${day}`}
+function resetTodayOnce(){if(localDay()!=='2026-08-13')return false;try{if(localStorage.getItem(TODAY_RESET_KEY)==='1')return false;localStorage.removeItem(SEEN_KEY);localStorage.removeItem(PICK_KEY);localStorage.setItem(TODAY_RESET_KEY,'1');return true}catch(_){return false}}
 function openDB(){return new Promise((res,rej)=>{const r=indexedDB.open(DB_NAME,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains(IMG_STORE))r.result.createObjectStore(IMG_STORE,{keyPath:'id',autoIncrement:true})};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
 async function listImages(){try{const db=await openDB();const out=await new Promise((res,rej)=>{const tx=db.transaction(IMG_STORE,'readonly'),q=tx.objectStore(IMG_STORE).getAll();q.onsuccess=()=>res(q.result||[]);q.onerror=()=>rej(q.error)});db.close();return out}catch(_){return[]}}
 async function imageCount(){return (await listImages()).length}
@@ -33,7 +35,7 @@ async function showDailyVisual(force=false){if(!setupDone()){await showSetup();r
 function chooseImages(){return new Promise(resolve=>{const i=document.createElement('input');i.type='file';i.accept='image/*';i.multiple=true;i.style.display='none';document.body.appendChild(i);i.addEventListener('change',async()=>{const n=await addImages(i.files);i.remove();resolve(n)},{once:true});i.addEventListener('cancel',()=>{i.remove();resolve(0)},{once:true});i.click()})}
 function chooseZip(){return new Promise(resolve=>{const i=document.createElement('input');i.type='file';i.accept='.zip,application/zip,application/x-zip-compressed';i.style.display='none';document.body.appendChild(i);i.addEventListener('change',async()=>{try{const n=await importZip(i.files?.[0]);i.remove();resolve(n)}catch(e){i.remove();throw e}},{once:true});i.addEventListener('cancel',()=>{i.remove();resolve(0)},{once:true});i.click()})}
 document.addEventListener('companion7:daily-draw',e=>{lastDraw=e.detail||null;const h=document.getElementById('aaLoginVisual');if(h&&lastDraw?.explosion)h.classList.add('is-explosion')});
-async function start(){ensureCSS();if(!setupDone())await showSetup();else await showDailyVisual(false)}
-window.AALoginCompanion={version:'1.3.0',showSetup,showDailyVisual,chooseImages,chooseZip,addImages,importZip,clearImages,listImages,imageCount,get setupDone(){return setupDone()}};
+async function start(){ensureCSS();resetTodayOnce();if(!setupDone())await showSetup();else await showDailyVisual(false)}
+window.AALoginCompanion={version:'1.3.0',showSetup,showDailyVisual,chooseImages,chooseZip,addImages,importZip,clearImages,listImages,imageCount,resetTodayOnce,get setupDone(){return setupDone()}};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
