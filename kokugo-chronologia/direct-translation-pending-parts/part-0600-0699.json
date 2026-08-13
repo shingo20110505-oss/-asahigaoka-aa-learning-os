@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11435,
-  "english_only_remaining": 3565,
+  "already_direct_japanese": 11436,
+  "english_only_remaining": 3564,
   "english_only_rank_counts": {
-    "(blank)": 3565
+    "(blank)": 3564
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 600,
   "part_end": 699,
   "targets": [
-    {
-      "source_index": 12035,
-      "id": "2221590",
-      "term": "実視等級",
-      "reading": "じっしとうきゅう",
-      "meaning": "apparent magnitude"
-    },
     {
       "source_index": 12036,
       "id": "1648980",
@@ -712,6 +705,13 @@
       "term": "自動着信",
       "reading": "じどうちゃくしん",
       "meaning": "auto answer (e.g. modem)"
+    },
+    {
+      "source_index": 12135,
+      "id": "1983380",
+      "term": "自動抽出",
+      "reading": "じどうちゅうしゅつ",
+      "meaning": "self-extracting (computer file)"
     }
   ]
 }

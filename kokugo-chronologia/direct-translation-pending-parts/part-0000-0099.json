@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11435,
-  "english_only_remaining": 3565,
+  "already_direct_japanese": 11436,
+  "english_only_remaining": 3564,
   "english_only_rank_counts": {
-    "(blank)": 3565
+    "(blank)": 3564
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 0,
   "part_end": 99,
   "targets": [
-    {
-      "source_index": 11435,
-      "id": "2870022",
-      "term": "診断基準",
-      "reading": "しんだんきじゅん",
-      "meaning": "diagnostic criteria / diagnostic standard"
-    },
     {
       "source_index": 11436,
       "id": "2367120",
@@ -712,6 +705,13 @@
       "term": "信用収縮",
       "reading": "しんようしゅうしゅく",
       "meaning": "credit contraction / credit crunch"
+    },
+    {
+      "source_index": 11535,
+      "id": "2239320",
+      "term": "針葉樹林",
+      "reading": "しんようじゅりん",
+      "meaning": "conifer forest / coniferous forest / needle-leaved forest"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11435,
-  "english_only_remaining": 3565,
+  "already_direct_japanese": 11436,
+  "english_only_remaining": 3564,
   "english_only_rank_counts": {
-    "(blank)": 3565
+    "(blank)": 3564
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 400,
   "part_end": 499,
   "targets": [
-    {
-      "source_index": 11835,
-      "id": "2716130",
-      "term": "事後確率",
-      "reading": "じごかくりつ",
-      "meaning": "posterior probability"
-    },
     {
       "source_index": 11836,
       "id": "2045790",
@@ -712,6 +705,13 @@
       "term": "事前検閲",
       "reading": "じぜんけんえつ",
       "meaning": "prepublication censorship"
+    },
+    {
+      "source_index": 11935,
+      "id": "1314100",
+      "term": "事前研修",
+      "reading": "じぜんけんしゅう",
+      "meaning": "advance training / prior training"
     }
   ]
 }

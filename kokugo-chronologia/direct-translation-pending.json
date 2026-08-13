@@ -1,23 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11435,
-  "english_only_remaining": 3565,
+  "already_direct_japanese": 11436,
+  "english_only_remaining": 3564,
   "english_only_rank_counts": {
-    "(blank)": 3565
+    "(blank)": 3564
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11435,
-      "id": "2870022",
-      "term": "診断基準",
-      "reading": "しんだんきじゅん",
-      "meaning": "diagnostic criteria / diagnostic standard"
-    },
     {
       "source_index": 11436,
       "id": "2367120",
@@ -7010,6 +7003,13 @@
       "term": "準決勝戦",
       "reading": "じゅんけっしょうせん",
       "meaning": "semifinal game of a tournament"
+    },
+    {
+      "source_index": 12435,
+      "id": "1713230",
+      "term": "純潔教育",
+      "reading": "じゅんけつきょういく",
+      "meaning": "education in sexual morality"
     }
   ]
 }

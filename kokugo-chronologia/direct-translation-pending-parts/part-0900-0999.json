@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11435,
-  "english_only_remaining": 3565,
+  "already_direct_japanese": 11436,
+  "english_only_remaining": 3564,
   "english_only_rank_counts": {
-    "(blank)": 3565
+    "(blank)": 3564
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 900,
   "part_end": 999,
   "targets": [
-    {
-      "source_index": 12335,
-      "id": "2144230",
-      "term": "重量制限",
-      "reading": "じゅうりょうせいげん",
-      "meaning": "weight restriction / weight limit"
-    },
     {
       "source_index": 12336,
       "id": "1336950",
@@ -712,6 +705,13 @@
       "term": "準決勝戦",
       "reading": "じゅんけっしょうせん",
       "meaning": "semifinal game of a tournament"
+    },
+    {
+      "source_index": 12435,
+      "id": "1713230",
+      "term": "純潔教育",
+      "reading": "じゅんけつきょういく",
+      "meaning": "education in sexual morality"
     }
   ]
 }

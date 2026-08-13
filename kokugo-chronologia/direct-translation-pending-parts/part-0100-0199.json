@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11435,
-  "english_only_remaining": 3565,
+  "already_direct_japanese": 11436,
+  "english_only_remaining": 3564,
   "english_only_rank_counts": {
-    "(blank)": 3565
+    "(blank)": 3564
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 100,
   "part_end": 199,
   "targets": [
-    {
-      "source_index": 11535,
-      "id": "2239320",
-      "term": "針葉樹林",
-      "reading": "しんようじゅりん",
-      "meaning": "conifer forest / coniferous forest / needle-leaved forest"
-    },
     {
       "source_index": 11536,
       "id": "1359690",
@@ -712,6 +705,13 @@
       "term": "自家発電",
       "reading": "じかはつでん",
       "meaning": "private power generation"
+    },
+    {
+      "source_index": 11635,
+      "id": "2863036",
+      "term": "自家焙煎",
+      "reading": "じかばいせん",
+      "meaning": "in-house roasting (of coffee beans) / shop roasting / home roasting"
     }
   ]
 }

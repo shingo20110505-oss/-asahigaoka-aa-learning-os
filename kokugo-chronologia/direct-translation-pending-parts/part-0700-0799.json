@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11435,
-  "english_only_remaining": 3565,
+  "already_direct_japanese": 11436,
+  "english_only_remaining": 3564,
   "english_only_rank_counts": {
-    "(blank)": 3565
+    "(blank)": 3564
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 700,
   "part_end": 799,
   "targets": [
-    {
-      "source_index": 12135,
-      "id": "1983380",
-      "term": "自動抽出",
-      "reading": "じどうちゅうしゅつ",
-      "meaning": "self-extracting (computer file)"
-    },
     {
       "source_index": 12136,
       "id": "1994450",
@@ -712,6 +705,13 @@
       "term": "住血吸虫",
       "reading": "じゅうけつきゅうちゅう",
       "meaning": "blood fluke (any fluke of family Schistosomatidae) / schistosome"
+    },
+    {
+      "source_index": 12235,
+      "id": "2046550",
+      "term": "重厚長大",
+      "reading": "じゅうこうちょうだい",
+      "meaning": "heavy, thick, long, and big (products, esp. industrial) / massive and heavy / heavy (industry)"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11435,
-  "english_only_remaining": 3565,
+  "already_direct_japanese": 11436,
+  "english_only_remaining": 3564,
   "english_only_rank_counts": {
-    "(blank)": 3565
+    "(blank)": 3564
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 200,
   "part_end": 299,
   "targets": [
-    {
-      "source_index": 11635,
-      "id": "2863036",
-      "term": "自家焙煎",
-      "reading": "じかばいせん",
-      "meaning": "in-house roasting (of coffee beans) / shop roasting / home roasting"
-    },
     {
       "source_index": 11636,
       "id": "2002580",
@@ -712,6 +705,13 @@
       "term": "自己演出",
       "reading": "じこえんしゅつ",
       "meaning": "author directing or producing his or her own play (film)"
+    },
+    {
+      "source_index": 11735,
+      "id": "2859063",
+      "term": "自己開示",
+      "reading": "じこかいじ",
+      "meaning": "self-disclosure"
     }
   ]
 }

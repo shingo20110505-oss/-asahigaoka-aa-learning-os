@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11435,
-  "english_only_remaining": 3565,
+  "already_direct_japanese": 11436,
+  "english_only_remaining": 3564,
   "english_only_rank_counts": {
-    "(blank)": 3565
+    "(blank)": 3564
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 300,
   "part_end": 399,
   "targets": [
-    {
-      "source_index": 11735,
-      "id": "2859063",
-      "term": "自己開示",
-      "reading": "じこかいじ",
-      "meaning": "self-disclosure"
-    },
     {
       "source_index": 11736,
       "id": "2360470",
@@ -712,6 +705,13 @@
       "term": "自業自得",
       "reading": "じごうじとく",
       "meaning": "paying for one's mistakes / getting one's just deserts / suffering the consequences (of one's own actions)"
+    },
+    {
+      "source_index": 11835,
+      "id": "2716130",
+      "term": "事後確率",
+      "reading": "じごかくりつ",
+      "meaning": "posterior probability"
     }
   ]
 }
