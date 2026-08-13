@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 7900,
-  "english_only_remaining": 7100,
+  "already_direct_japanese": 7950,
+  "english_only_remaining": 7050,
   "english_only_rank_counts": {
-    "(blank)": 7100
+    "(blank)": 7050
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 7900,
-      "id": "2853979",
-      "term": "国際単位",
-      "reading": "こくさいたんい",
-      "meaning": "international unit / SI unit / IU"
-    },
-    {
-      "source_index": 7901,
-      "id": "5294561",
-      "term": "国際大学",
-      "reading": "こくさいだいがく",
-      "meaning": "Kokusai University"
-    },
-    {
-      "source_index": 7902,
-      "id": "2116210",
-      "term": "国際秩序",
-      "reading": "こくさいちつじょ",
-      "meaning": "international order"
-    },
-    {
-      "source_index": 7903,
-      "id": "1746850",
-      "term": "国際通貨",
-      "reading": "こくさいつうか",
-      "meaning": "international currency"
-    },
-    {
-      "source_index": 7904,
-      "id": "2356930",
-      "term": "国際通話",
-      "reading": "こくさいつうわ",
-      "meaning": "international call"
-    },
-    {
-      "source_index": 7905,
-      "id": "2837628",
-      "term": "国際手配",
-      "reading": "こくさいてはい",
-      "meaning": "Interpol notice (circulation)"
-    },
-    {
-      "source_index": 7906,
-      "id": "1286550",
-      "term": "国際展開",
-      "reading": "こくさいてんかい",
-      "meaning": "international expansion"
-    },
-    {
-      "source_index": 7907,
-      "id": "1746880",
-      "term": "国際電話",
-      "reading": "こくさいでんわ",
-      "meaning": "international phone call"
-    },
-    {
-      "source_index": 7908,
-      "id": "1935610",
-      "term": "国際都市",
-      "reading": "こくさいとし",
-      "meaning": "cosmopolitan city"
-    },
-    {
-      "source_index": 7909,
-      "id": "1993010",
-      "term": "国債発行",
-      "reading": "こくさいはっこう",
-      "meaning": "government bond issuance"
-    },
-    {
-      "source_index": 7910,
-      "id": "1993160",
-      "term": "国際犯罪",
-      "reading": "こくさいはんざい",
-      "meaning": "international crime"
-    },
-    {
-      "source_index": 7911,
-      "id": "2847657",
-      "term": "国際比較",
-      "reading": "こくさいひかく",
-      "meaning": "international comparison / country-by-country comparison"
-    },
-    {
-      "source_index": 7912,
-      "id": "1935620",
-      "term": "国際紛争",
-      "reading": "こくさいふんそう",
-      "meaning": "international dispute"
-    },
-    {
-      "source_index": 7913,
-      "id": "2720860",
-      "term": "国際分業",
-      "reading": "こくさいぶんぎょう",
-      "meaning": "international division of labor / international division of labour / international specialization"
-    },
-    {
-      "source_index": 7914,
-      "id": "1746840",
-      "term": "国際放送",
-      "reading": "こくさいほうそう",
-      "meaning": "international broadcast(ing)"
-    },
-    {
-      "source_index": 7915,
-      "id": "2405460",
-      "term": "国際貿易",
-      "reading": "こくさいぼうえき",
-      "meaning": "international trade / international trading"
-    },
-    {
-      "source_index": 7916,
-      "id": "2765490",
-      "term": "国際免許",
-      "reading": "こくさいめんきょ",
-      "meaning": "international driving permit / international drivers' license"
-    },
-    {
-      "source_index": 7917,
-      "id": "1746860",
-      "term": "国際問題",
-      "reading": "こくさいもんだい",
-      "meaning": "international problem"
-    },
-    {
-      "source_index": 7918,
-      "id": "2638420",
-      "term": "国際郵便",
-      "reading": "こくさいゆうびん",
-      "meaning": "international mail / overseas mail"
-    },
-    {
-      "source_index": 7919,
-      "id": "2045110",
-      "term": "国際力学",
-      "reading": "こくさいりきがく",
-      "meaning": "dynamics of international (foreign) relations"
-    },
-    {
-      "source_index": 7920,
-      "id": "2827684",
-      "term": "国際列車",
-      "reading": "こくさいれっしゃ",
-      "meaning": "international train"
-    },
-    {
-      "source_index": 7921,
-      "id": "2843603",
-      "term": "国際恋愛",
-      "reading": "こくさいれんあい",
-      "meaning": "international romantic relationship"
-    },
-    {
-      "source_index": 7922,
-      "id": "1657390",
-      "term": "国際連合",
-      "reading": "こくさいれんごう",
-      "meaning": "United Nations / UN"
-    },
-    {
-      "source_index": 7923,
-      "id": "2006730",
-      "term": "国際連盟",
-      "reading": "こくさいれんめい",
-      "meaning": "League of Nations"
-    },
-    {
-      "source_index": 7924,
-      "id": "2848432",
-      "term": "国策会社",
-      "reading": "こくさくかいしゃ",
-      "meaning": "government-controlled corporation"
-    },
-    {
-      "source_index": 7925,
-      "id": "5294682",
-      "term": "国史大系",
-      "reading": "こくしたいけい",
-      "meaning": "Kokushi Taikei (history text; orig. ed. by Taguchi Ukichi, pub. 1897-1904; rev. ed. by Kuroita Katsumi, pub. 1929-1964)"
-    },
-    {
-      "source_index": 7926,
-      "id": "1935630",
-      "term": "国士無双",
-      "reading": "こくしむそう",
-      "meaning": "distinguished person"
-    },
-    {
-      "source_index": 7927,
-      "id": "2834568",
-      "term": "刻舟",
-      "reading": "こくしゅう",
-      "meaning": "not getting with the times / being unaware of how things are changing"
-    },
-    {
-      "source_index": 7928,
-      "id": "2857478",
-      "term": "国主大名",
-      "reading": "こくしゅだいみょう",
-      "meaning": "daimyo with a domain of one or more provinces (Edo period)"
-    },
-    {
-      "source_index": 7929,
-      "id": "1773250",
-      "term": "黒色火薬",
-      "reading": "こくしょくかやく",
-      "meaning": "black powder / gunpowder"
-    },
-    {
-      "source_index": 7930,
-      "id": "1287820",
-      "term": "黒色人種",
-      "reading": "こくしょくじんしゅ",
-      "meaning": "black race"
-    },
-    {
-      "source_index": 7931,
-      "id": "2650600",
-      "term": "黒色炭素",
-      "reading": "こくしょくたんそ",
-      "meaning": "black carbon"
-    },
-    {
-      "source_index": 7932,
-      "id": "2045120",
-      "term": "国色無双",
-      "reading": "こくしょくむそう",
-      "meaning": "(a woman of) unparalleled beauty / (a woman's beauty being) matchless throughout the land"
-    },
-    {
-      "source_index": 7933,
-      "id": "2167420",
-      "term": "黒色矮星",
-      "reading": "こくしょくわいせい",
-      "meaning": "black dwarf"
-    },
-    {
-      "source_index": 7934,
-      "id": "2864901",
-      "term": "国字改良",
-      "reading": "こくじかいりょう",
-      "meaning": "reform of the Japanese script"
-    },
-    {
-      "source_index": 7935,
-      "id": "2356860",
-      "term": "刻時機構",
-      "reading": "こくじきこう",
-      "meaning": "clock"
-    },
-    {
-      "source_index": 7936,
-      "id": "2270550",
-      "term": "国事行為",
-      "reading": "こくじこうい",
-      "meaning": "constitutional functions (of the emperor)"
-    },
-    {
-      "source_index": 7937,
-      "id": "2356870",
-      "term": "刻時信号",
-      "reading": "こくじしんごう",
-      "meaning": "clock signal / clock pulse"
-    },
-    {
-      "source_index": 7938,
-      "id": "1746320",
-      "term": "国字問題",
-      "reading": "こくじもんだい",
-      "meaning": "issues pertaining to a nation's script (e.g. standardization of kanji in Japanese)"
-    },
-    {
-      "source_index": 7939,
-      "id": "2603480",
-      "term": "黒人英語",
-      "reading": "こくじんえいご",
-      "meaning": "African American Vernacular English / AAVE / Black English"
-    },
-    {
-      "source_index": 7940,
-      "id": "2846243",
-      "term": "黒人大学",
-      "reading": "こくじんだいがく",
-      "meaning": "black university (e.g. in the US) / black college"
-    },
-    {
-      "source_index": 7941,
-      "id": "1287840",
-      "term": "黒人霊歌",
-      "reading": "こくじんれいか",
-      "meaning": "African American spiritual / Negro spiritual / black spiritual"
-    },
-    {
-      "source_index": 7942,
-      "id": "1286710",
-      "term": "国粋主義",
-      "reading": "こくすいしゅぎ",
-      "meaning": "nationalism / extreme patriotism"
-    },
-    {
-      "source_index": 7943,
-      "id": "2843222",
-      "term": "国政選挙",
-      "reading": "こくせいせんきょ",
-      "meaning": "national election"
-    },
-    {
-      "source_index": 7944,
-      "id": "1657420",
-      "term": "国勢調査",
-      "reading": "こくせいちょうさ",
-      "meaning": "(national) census"
-    },
-    {
-      "source_index": 7945,
-      "id": "1286790",
-      "term": "国籍言語",
-      "reading": "こくせきげんご",
-      "meaning": "national language"
-    },
-    {
-      "source_index": 7946,
-      "id": "2852780",
-      "term": "国籍取得",
-      "reading": "こくせきしゅとく",
-      "meaning": "acquisition of nationality / naturalization"
-    },
-    {
-      "source_index": 7947,
-      "id": "1286800",
-      "term": "国籍条項",
-      "reading": "こくせきじょうこう",
-      "meaning": "nationality clause / legislated ban on foreigners taking up public posts"
-    },
-    {
-      "source_index": 7948,
-      "id": "2751500",
-      "term": "国籍選択",
-      "reading": "こくせきせんたく",
-      "meaning": "choice of nationality / choice of citizenship"
-    },
-    {
-      "source_index": 7949,
-      "id": "2740950",
-      "term": "国籍喪失",
-      "reading": "こくせきそうしつ",
-      "meaning": "loss of citizenship / denaturalization / expatriation"
-    },
     {
       "source_index": 7950,
       "id": "2842384",
@@ -7010,6 +6660,356 @@
       "term": "酒に飲まれる",
       "reading": "さけにのまれる",
       "meaning": "to drink too much and lose self-control"
+    },
+    {
+      "source_index": 8900,
+      "id": "1789440",
+      "term": "左顧右眄",
+      "reading": "さこうべん",
+      "meaning": "looking right and left or all about / vacillation"
+    },
+    {
+      "source_index": 8901,
+      "id": "1935820",
+      "term": "鎖国主義",
+      "reading": "さこくしゅぎ",
+      "meaning": "(national) isolationism / isolation policy"
+    },
+    {
+      "source_index": 8902,
+      "id": "1935810",
+      "term": "鎖国政策",
+      "reading": "さこくせいさく",
+      "meaning": "(national) isolationism / isolation policy"
+    },
+    {
+      "source_index": 8903,
+      "id": "2870328",
+      "term": "鎖骨下筋",
+      "reading": "さこつかきん",
+      "meaning": "subclavius muscle"
+    },
+    {
+      "source_index": 8904,
+      "id": "5223063",
+      "term": "狭衣物語",
+      "reading": "さごろもものがたり",
+      "meaning": "The Tale of Sagoromo (ca 1060 CE)"
+    },
+    {
+      "source_index": 8905,
+      "id": "2828491",
+      "term": "笹葉銀蘭",
+      "reading": "ささばぎんらん",
+      "meaning": "Cephalanthera longibracteata (species of orchid)"
+    },
+    {
+      "source_index": 8906,
+      "id": "2761410",
+      "term": "挿絵画家",
+      "reading": "さしえがか",
+      "meaning": "illustrator"
+    },
+    {
+      "source_index": 8907,
+      "id": "2796360",
+      "term": "差押命令",
+      "reading": "さしおさえめいれい",
+      "meaning": "order of attachment / attachment order / seizure order"
+    },
+    {
+      "source_index": 8908,
+      "id": "2208070",
+      "term": "指値注文",
+      "reading": "さしねちゅうもん",
+      "meaning": "limit order"
+    },
+    {
+      "source_index": 8909,
+      "id": "1789530",
+      "term": "差引勘定",
+      "reading": "さしひきかんじょう",
+      "meaning": "balance (of an account) / striking a balance"
+    },
+    {
+      "source_index": 8910,
+      "id": "1306590",
+      "term": "刺身包丁",
+      "reading": "さしみぼうちょう",
+      "meaning": "sashimi knife"
+    },
+    {
+      "source_index": 8911,
+      "id": "1734760",
+      "term": "さじ加減",
+      "reading": "さじかげん",
+      "meaning": "measured amount (esp. of medicine) / dosing / quantity"
+    },
+    {
+      "source_index": 8912,
+      "id": "2600240",
+      "term": "砂上の楼閣",
+      "reading": "さじょうのろうかく",
+      "meaning": "house built on sand / house of cards"
+    },
+    {
+      "source_index": 8913,
+      "id": "2870954",
+      "term": "叉状分岐",
+      "reading": "さじょうぶんき",
+      "meaning": "dichotomous branching"
+    },
+    {
+      "source_index": 8914,
+      "id": "2017050",
+      "term": "さじを投げる",
+      "reading": "さじをなげる",
+      "meaning": "to give up (something as hopeless) / to throw in the towel"
+    },
+    {
+      "source_index": 8915,
+      "id": "2762290",
+      "term": "左折禁止",
+      "reading": "させつきんし",
+      "meaning": "No Left Turn"
+    },
+    {
+      "source_index": 8916,
+      "id": "1657850",
+      "term": "作況指数",
+      "reading": "さっきょうしすう",
+      "meaning": "rice-crop index"
+    },
+    {
+      "source_index": 8917,
+      "id": "2650710",
+      "term": "殺菌作用",
+      "reading": "さっきんさよう",
+      "meaning": "bactericidal action / germicidal action"
+    },
+    {
+      "source_index": 8918,
+      "id": "2650270",
+      "term": "殺菌消毒",
+      "reading": "さっきんしょうどく",
+      "meaning": "sterilizing"
+    },
+    {
+      "source_index": 8919,
+      "id": "2869750",
+      "term": "殺傷事件",
+      "reading": "さっしょうじけん",
+      "meaning": "incident involving killing and wounding / attack resulting in casualties"
+    },
+    {
+      "source_index": 8920,
+      "id": "2855472",
+      "term": "殺傷能力",
+      "reading": "さっしょうのうりょく",
+      "meaning": "lethality (of a weapon, etc.)"
+    },
+    {
+      "source_index": 8921,
+      "id": "2837755",
+      "term": "薩長同盟",
+      "reading": "さっちょうどうめい",
+      "meaning": "Satchō Alliance / 1866 alliance between the feudal domains of Satsuma and Chōshū"
+    },
+    {
+      "source_index": 8922,
+      "id": "5744330",
+      "term": "札幌市電",
+      "reading": "さっぽろしでん",
+      "meaning": "Sapporo Streetcar"
+    },
+    {
+      "source_index": 8923,
+      "id": "5314194",
+      "term": "札幌大学",
+      "reading": "さっぽろだいがく",
+      "meaning": "Sapporo University"
+    },
+    {
+      "source_index": 8924,
+      "id": "2869416",
+      "term": "撮影可能",
+      "reading": "さつえいかのう",
+      "meaning": "photographable / allowed to be photographed"
+    },
+    {
+      "source_index": 8925,
+      "id": "2842788",
+      "term": "撮影監督",
+      "reading": "さつえいかんとく",
+      "meaning": "director of photography / cinematographer"
+    },
+    {
+      "source_index": 8926,
+      "id": "2863001",
+      "term": "撮影許可",
+      "reading": "さつえいきょか",
+      "meaning": "filming permit / shooting permit"
+    },
+    {
+      "source_index": 8927,
+      "id": "2850263",
+      "term": "撮影禁止",
+      "reading": "さつえいきんし",
+      "meaning": "no photographs / no photography"
+    },
+    {
+      "source_index": 8928,
+      "id": "2653720",
+      "term": "撮影現場",
+      "reading": "さつえいげんば",
+      "meaning": "movie set / filming location"
+    },
+    {
+      "source_index": 8929,
+      "id": "2214320",
+      "term": "薩英戦争",
+      "reading": "さつえいせんそう",
+      "meaning": "Anglo-Satsuma War (1863) / Bombardment of Kagoshima"
+    },
+    {
+      "source_index": 8930,
+      "id": "2642860",
+      "term": "撮影台本",
+      "reading": "さつえいだいほん",
+      "meaning": "shooting script (film, television) / continuity"
+    },
+    {
+      "source_index": 8931,
+      "id": "2872398",
+      "term": "撮影倍率",
+      "reading": "さつえいばいりつ",
+      "meaning": "magnification ratio / reproduction ratio"
+    },
+    {
+      "source_index": 8932,
+      "id": "2869461",
+      "term": "殺害現場",
+      "reading": "さつがいげんば",
+      "meaning": "scene of a murder / murder scene"
+    },
+    {
+      "source_index": 8933,
+      "id": "1936090",
+      "term": "殺害事件",
+      "reading": "さつがいじけん",
+      "meaning": "murder case"
+    },
+    {
+      "source_index": 8934,
+      "id": "2851159",
+      "term": "殺害予告",
+      "reading": "さつがいよこく",
+      "meaning": "(credible) death threat"
+    },
+    {
+      "source_index": 8935,
+      "id": "2433670",
+      "term": "五月躑躅",
+      "reading": "さつきつつじ",
+      "meaning": "satsuki azalea (Rhododendron indicum)"
+    },
+    {
+      "source_index": 8936,
+      "id": "2826995",
+      "term": "擦弦楽器",
+      "reading": "さつげんがっき",
+      "meaning": "bowed stringed instrument"
+    },
+    {
+      "source_index": 8937,
+      "id": "1299090",
+      "term": "殺真菌薬",
+      "reading": "さつしんきんやく",
+      "meaning": "fungicide"
+    },
+    {
+      "source_index": 8938,
+      "id": "2871089",
+      "term": "殺人教唆",
+      "reading": "さつじんきょうさ",
+      "meaning": "instigating murder / incitement to murder"
+    },
+    {
+      "source_index": 8939,
+      "id": "1993770",
+      "term": "殺人現場",
+      "reading": "さつじんげんば",
+      "meaning": "murder scene"
+    },
+    {
+      "source_index": 8940,
+      "id": "2415930",
+      "term": "殺人光線",
+      "reading": "さつじんこうせん",
+      "meaning": "death ray"
+    },
+    {
+      "source_index": 8941,
+      "id": "1936100",
+      "term": "殺人事件",
+      "reading": "さつじんじけん",
+      "meaning": "murder case"
+    },
+    {
+      "source_index": 8942,
+      "id": "2849698",
+      "term": "殺人兵器",
+      "reading": "さつじんへいき",
+      "meaning": "lethal weapon / deadly device"
+    },
+    {
+      "source_index": 8943,
+      "id": "2871090",
+      "term": "殺人幇助",
+      "reading": "さつじんほうじょ",
+      "meaning": "aiding and abetting murder / being an accessory to murder"
+    },
+    {
+      "source_index": 8944,
+      "id": "1299140",
+      "term": "殺人未遂",
+      "reading": "さつじんみすい",
+      "meaning": "attempted murder"
+    },
+    {
+      "source_index": 8945,
+      "id": "2826034",
+      "term": "殺精子剤",
+      "reading": "さつせいしざい",
+      "meaning": "spermicide / spermatocide"
+    },
+    {
+      "source_index": 8946,
+      "id": "2826068",
+      "term": "殺精子薬",
+      "reading": "さつせいしやく",
+      "meaning": "spermicide / spermatocide"
+    },
+    {
+      "source_index": 8947,
+      "id": "2770000",
+      "term": "撮像素子",
+      "reading": "さつぞうそし",
+      "meaning": "image sensor"
+    },
+    {
+      "source_index": 8948,
+      "id": "2424020",
+      "term": "薩摩琵琶",
+      "reading": "さつまびわ",
+      "meaning": "Satsuma biwa / Satsuma lute"
+    },
+    {
+      "source_index": 8949,
+      "id": "2853284",
+      "term": "擦文文化",
+      "reading": "さつもんぶんか",
+      "meaning": "Satsumon culture"
     }
   ]
 }
