@@ -1,2116 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 8100,
-  "english_only_remaining": 6900,
+  "already_direct_japanese": 8400,
+  "english_only_remaining": 6600,
   "english_only_rank_counts": {
-    "(blank)": 6900
+    "(blank)": 6600
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 8100,
-      "id": "1264850",
-      "term": "個人主義",
-      "reading": "こじんしゅぎ",
-      "meaning": "individualism"
-    },
-    {
-      "source_index": 8101,
-      "id": "2835478",
-      "term": "個人商店",
-      "reading": "こじんしょうてん",
-      "meaning": "privately run store / one-man business / mom-and-pop store"
-    },
-    {
-      "source_index": 8102,
-      "id": "1264860",
-      "term": "個人消費",
-      "reading": "こじんしょうひ",
-      "meaning": "consumer spending"
-    },
-    {
-      "source_index": 8103,
-      "id": "2631430",
-      "term": "個人所得",
-      "reading": "こじんしょとく",
-      "meaning": "personal income"
-    },
-    {
-      "source_index": 8104,
-      "id": "2753750",
-      "term": "個人使用",
-      "reading": "こじんしよう",
-      "meaning": "personal use / private use"
-    },
-    {
-      "source_index": 8105,
-      "id": "2708850",
-      "term": "個人事業",
-      "reading": "こじんじぎょう",
-      "meaning": "personal business / sole proprietorship"
-    },
-    {
-      "source_index": 8106,
-      "id": "2849738",
-      "term": "個人授業",
-      "reading": "こじんじゅぎょう",
-      "meaning": "private lesson"
-    },
-    {
-      "source_index": 8107,
-      "id": "1264870",
-      "term": "個人情報",
-      "reading": "こじんじょうほう",
-      "meaning": "personal information"
-    },
-    {
-      "source_index": 8108,
-      "id": "2680550",
-      "term": "個人崇拝",
-      "reading": "こじんすうはい",
-      "meaning": "personality cult / cult of personality"
-    },
-    {
-      "source_index": 8109,
-      "id": "2868564",
-      "term": "個人成績",
-      "reading": "こじんせいせき",
-      "meaning": "personal results / individual's score"
-    },
-    {
-      "source_index": 8110,
-      "id": "2835454",
-      "term": "個人総合",
-      "reading": "こじんそうごう",
-      "meaning": "individual combined (gymnastics)"
-    },
-    {
-      "source_index": 8111,
-      "id": "1264930",
-      "term": "個人投資",
-      "reading": "こじんとうし",
-      "meaning": "private investment / individual investment"
-    },
-    {
-      "source_index": 8112,
-      "id": "2837684",
-      "term": "個人特定",
-      "reading": "こじんとくてい",
-      "meaning": "identifying an individual / pinpointing an individual"
-    },
-    {
-      "source_index": 8113,
-      "id": "2262570",
-      "term": "個人年金",
-      "reading": "こじんねんきん",
-      "meaning": "personal pension"
-    },
-    {
-      "source_index": 8114,
-      "id": "2849680",
-      "term": "個人番号",
-      "reading": "こじんばんごう",
-      "meaning": "identity number / national identification number / national identity number"
-    },
-    {
-      "source_index": 8115,
-      "id": "2820430",
-      "term": "個人病院",
-      "reading": "こじんびょういん",
-      "meaning": "private hospital / clinic"
-    },
-    {
-      "source_index": 8116,
-      "id": "2846298",
-      "term": "個人輸入",
-      "reading": "こじんゆにゅう",
-      "meaning": "importing goods privately / private importing"
-    },
-    {
-      "source_index": 8117,
-      "id": "2450140",
-      "term": "個人倫理",
-      "reading": "こじんりんり",
-      "meaning": "individual ethics"
-    },
-    {
-      "source_index": 8118,
-      "id": "2833704",
-      "term": "古人類学",
-      "reading": "こじんるいがく",
-      "meaning": "paleoanthropology"
-    },
-    {
-      "source_index": 8119,
-      "id": "2868040",
-      "term": "湖水爆発",
-      "reading": "こすいばくはつ",
-      "meaning": "limnic eruption"
-    },
-    {
-      "source_index": 8120,
-      "id": "2422670",
-      "term": "個生態学",
-      "reading": "こせいたいがく",
-      "meaning": "autecology / autoecology"
-    },
-    {
-      "source_index": 8121,
-      "id": "2835699",
-      "term": "古生態学",
-      "reading": "こせいたいがく",
-      "meaning": "paleoecology"
-    },
-    {
-      "source_index": 8122,
-      "id": "1265630",
-      "term": "古生物学",
-      "reading": "こせいぶつがく",
-      "meaning": "paleontology"
-    },
-    {
-      "source_index": 8123,
-      "id": "1651120",
-      "term": "戸籍抄本",
-      "reading": "こせきしょうほん",
-      "meaning": "official copy of part of family register"
-    },
-    {
-      "source_index": 8124,
-      "id": "1651110",
-      "term": "戸籍謄本",
-      "reading": "こせきとうほん",
-      "meaning": "official copy of the family register"
-    },
-    {
-      "source_index": 8125,
-      "id": "2789470",
-      "term": "小背美鯨",
-      "reading": "こせみくじら",
-      "meaning": "pygmy right whale (Caperea marginata)"
-    },
-    {
-      "source_index": 8126,
-      "id": "1684960",
-      "term": "古銭学者",
-      "reading": "こせんがくしゃ",
-      "meaning": "numismatist"
-    },
-    {
-      "source_index": 8127,
-      "id": "2835951",
-      "term": "固体化学",
-      "reading": "こたいかがく",
-      "meaning": "solid-state chemistry"
-    },
-    {
-      "source_index": 8128,
-      "id": "1685120",
-      "term": "固体燃料",
-      "reading": "こたいねんりょう",
-      "meaning": "solid fuel"
-    },
-    {
-      "source_index": 8129,
-      "id": "1934660",
-      "term": "個体発生",
-      "reading": "こたいはっせい",
-      "meaning": "ontogeny / ontogenesis"
-    },
-    {
-      "source_index": 8130,
-      "id": "2831942",
-      "term": "個体変異",
-      "reading": "こたいへんい",
-      "meaning": "individual variation"
-    },
-    {
-      "source_index": 8131,
-      "id": "2830805",
-      "term": "固体惑星",
-      "reading": "こたいわくせい",
-      "meaning": "terrestrial planet / rocky planet"
-    },
-    {
-      "source_index": 8132,
-      "id": "1934730",
-      "term": "誇大広告",
-      "reading": "こだいこうこく",
-      "meaning": "deceptive advertising / misleading advertisement (presenting one's product as being better or cheaper than it really is)"
-    },
-    {
-      "source_index": 8133,
-      "id": "2656130",
-      "term": "誇大宣伝",
-      "reading": "こだいせんでん",
-      "meaning": "exaggerated advertisement / overblown advertising / hype"
-    },
-    {
-      "source_index": 8134,
-      "id": "2528830",
-      "term": "古代中国",
-      "reading": "こだいちゅうごく",
-      "meaning": "ancient China"
-    },
-    {
-      "source_index": 8135,
-      "id": "1265810",
-      "term": "古代文明",
-      "reading": "こだいぶんめい",
-      "meaning": "ancient civilization / ancient civilisation"
-    },
-    {
-      "source_index": 8136,
-      "id": "1267800",
-      "term": "誇大妄想",
-      "reading": "こだいもうそう",
-      "meaning": "megalomania / delusions of grandeur"
-    },
-    {
-      "source_index": 8137,
-      "id": "2844841",
-      "term": "古代文字",
-      "reading": "こだいもじ",
-      "meaning": "ancient script / ancient character / ancient alphabet"
-    },
-    {
-      "source_index": 8138,
-      "id": "2531870",
-      "term": "小平次元",
-      "reading": "こだいらじげん",
-      "meaning": "Kodaira dimension"
-    },
-    {
-      "source_index": 8139,
-      "id": "2083330",
-      "term": "此方人等",
-      "reading": "こちとら",
-      "meaning": "I / we"
-    },
-    {
-      "source_index": 8140,
-      "id": "2045250",
-      "term": "固着観念",
-      "reading": "こちゃくかんねん",
-      "meaning": "fixed idea / idée fixe / obsession"
-    },
-    {
-      "source_index": 8141,
-      "id": "2222510",
-      "term": "小長元坊",
-      "reading": "こちょうげんぼう",
-      "meaning": "merlin (Falco columbarius) / pigeon hawk"
-    },
-    {
-      "source_index": 8142,
-      "id": "2869101",
-      "term": "胡蝶の夢",
-      "reading": "こちょうのゆめ",
-      "meaning": "being half awake and half asleep / butterfly's dream"
-    },
-    {
-      "source_index": 8143,
-      "id": "2456270",
-      "term": "古地理学",
-      "reading": "こちりがく",
-      "meaning": "paleogeography / palaeogeography"
-    },
-    {
-      "source_index": 8144,
-      "id": "2650970",
-      "term": "国会運営",
-      "reading": "こっかいうんえい",
-      "meaning": "business in the Diet / managing Diet affairs"
-    },
-    {
-      "source_index": 8145,
-      "id": "1286250",
-      "term": "国会議員",
-      "reading": "こっかいぎいん",
-      "meaning": "member of the Diet / Diet member / member of parliament"
-    },
-    {
-      "source_index": 8146,
-      "id": "2850055",
-      "term": "国会招致",
-      "reading": "こっかいしょうち",
-      "meaning": "summons to appear before the Diet"
-    },
-    {
-      "source_index": 8147,
-      "id": "2852095",
-      "term": "国会職員",
-      "reading": "こっかいしょくいん",
-      "meaning": "Diet officer / Diet official / Diet staff member"
-    },
-    {
-      "source_index": 8148,
-      "id": "2531880",
-      "term": "国家威信",
-      "reading": "こっかいしん",
-      "meaning": "national pride / national prestige"
-    },
-    {
-      "source_index": 8149,
-      "id": "2246650",
-      "term": "骨灰磁器",
-      "reading": "こっかいじき",
-      "meaning": "bone porcelain / bone china"
-    },
-    {
-      "source_index": 8150,
-      "id": "2149050",
-      "term": "国会答弁",
-      "reading": "こっかいとうべん",
-      "meaning": "answers in the Diet"
-    },
-    {
-      "source_index": 8151,
-      "id": "2827739",
-      "term": "国家機関",
-      "reading": "こっかきかん",
-      "meaning": "organs of the state / machinery of the state"
-    },
-    {
-      "source_index": 8152,
-      "id": "2823780",
-      "term": "国家機密",
-      "reading": "こっかきみつ",
-      "meaning": "state secrets / secrets of the state"
-    },
-    {
-      "source_index": 8153,
-      "id": "2212850",
-      "term": "骨格模型",
-      "reading": "こっかくもけい",
-      "meaning": "(human) skeletal model"
-    },
-    {
-      "source_index": 8154,
-      "id": "1746570",
-      "term": "国家経済",
-      "reading": "こっかけいざい",
-      "meaning": "the national economy"
-    },
-    {
-      "source_index": 8155,
-      "id": "1746590",
-      "term": "国家権力",
-      "reading": "こっかけんりょく",
-      "meaning": "power of the state / government authority"
-    },
-    {
-      "source_index": 8156,
-      "id": "2096410",
-      "term": "国家元首",
-      "reading": "こっかげんしゅ",
-      "meaning": "head of a state"
-    },
-    {
-      "source_index": 8157,
-      "id": "2840744",
-      "term": "国家公安",
-      "reading": "こっかこうあん",
-      "meaning": "National Public Safety Commission"
-    },
-    {
-      "source_index": 8158,
-      "id": "2858994",
-      "term": "国家作用",
-      "reading": "こっかさよう",
-      "meaning": "state action / national action"
-    },
-    {
-      "source_index": 8159,
-      "id": "2605600",
-      "term": "国家財政",
-      "reading": "こっかざいせい",
-      "meaning": "national finance / central government finance"
-    },
-    {
-      "source_index": 8160,
-      "id": "2832264",
-      "term": "国家資格",
-      "reading": "こっかしかく",
-      "meaning": "national certification / national qualification / government certification"
-    },
-    {
-      "source_index": 8161,
-      "id": "1657300",
-      "term": "国家試験",
-      "reading": "こっかしけん",
-      "meaning": "state examination / national examination"
-    },
-    {
-      "source_index": 8162,
-      "id": "1746540",
-      "term": "国家主義",
-      "reading": "こっかしゅぎ",
-      "meaning": "nationalism / statism"
-    },
-    {
-      "source_index": 8163,
-      "id": "2409000",
-      "term": "国家主権",
-      "reading": "こっかしゅけん",
-      "meaning": "state sovereignty / national sovereignty"
-    },
-    {
-      "source_index": 8164,
-      "id": "1286200",
-      "term": "国家主席",
-      "reading": "こっかしゅせき",
-      "meaning": "head of state"
-    },
-    {
-      "source_index": 8165,
-      "id": "2749960",
-      "term": "国家承認",
-      "reading": "こっかしょうにん",
-      "meaning": "diplomatic recognition (of a country)"
-    },
-    {
-      "source_index": 8166,
-      "id": "2135240",
-      "term": "国家神道",
-      "reading": "こっかしんとう",
-      "meaning": "State Shintō / nationalistic and ideological form of Shinto, abolished in 1945"
-    },
-    {
-      "source_index": 8167,
-      "id": "2045260",
-      "term": "国家存亡",
-      "reading": "こっかそんぼう",
-      "meaning": "the fate of a nation / life-or-death (situation) for a nation / national crisis"
-    },
-    {
-      "source_index": 8168,
-      "id": "1992960",
-      "term": "国家体制",
-      "reading": "こっかたいせい",
-      "meaning": "national polity"
-    },
-    {
-      "source_index": 8169,
-      "id": "2045270",
-      "term": "国家多事",
-      "reading": "こっかたじ",
-      "meaning": "eventful times for the nation / the nation being in turmoil / the storm clouds gathering in the land"
-    },
-    {
-      "source_index": 8170,
-      "id": "2611730",
-      "term": "国家転覆",
-      "reading": "こっかてんぷく",
-      "meaning": "subversion (of the state)"
-    },
-    {
-      "source_index": 8171,
-      "id": "1286210",
-      "term": "国家独占",
-      "reading": "こっかどくせん",
-      "meaning": "state monopoly"
-    },
-    {
-      "source_index": 8172,
-      "id": "1746600",
-      "term": "国家賠償",
-      "reading": "こっかばいしょう",
-      "meaning": "state indemnity / state compensation"
-    },
-    {
-      "source_index": 8173,
-      "id": "1746580",
-      "term": "国家補償",
-      "reading": "こっかほしょう",
-      "meaning": "state compensation / state reparations"
-    },
-    {
-      "source_index": 8174,
-      "id": "1992970",
-      "term": "国家予算",
-      "reading": "こっかよさん",
-      "meaning": "national budget"
-    },
-    {
-      "source_index": 8175,
-      "id": "2599820",
-      "term": "国家連合",
-      "reading": "こっかれんごう",
-      "meaning": "federation of states / confederation of nations"
-    },
-    {
-      "source_index": 8176,
-      "id": "2045280",
-      "term": "酷寒猛暑",
-      "reading": "こっかんもうしょ",
-      "meaning": "bitter cold and fierce heat"
-    },
-    {
-      "source_index": 8177,
-      "id": "2045300",
-      "term": "克己復礼",
-      "reading": "こっきふくれい",
-      "meaning": "exercising self-restraint and conforming to the rules of etiquette and formality"
-    },
-    {
-      "source_index": 8178,
-      "id": "2642010",
-      "term": "国境警察",
-      "reading": "こっきょうけいさつ",
-      "meaning": "border police"
-    },
-    {
-      "source_index": 8179,
-      "id": "2404170",
-      "term": "国境警備",
-      "reading": "こっきょうけいび",
-      "meaning": "border security"
-    },
-    {
-      "source_index": 8180,
-      "id": "1992990",
-      "term": "国境地帯",
-      "reading": "こっきょうちたい",
-      "meaning": "border area / border zone / borderland"
-    },
-    {
-      "source_index": 8181,
-      "id": "2826496",
-      "term": "国共内戦",
-      "reading": "こっきょうないせん",
-      "meaning": "Chinese Civil War (1927-1937, 1946-1949)"
-    },
-    {
-      "source_index": 8182,
-      "id": "2146960",
-      "term": "国境紛争",
-      "reading": "こっきょうふんそう",
-      "meaning": "international border dispute"
-    },
-    {
-      "source_index": 8183,
-      "id": "2045310",
-      "term": "刻苦精進",
-      "reading": "こっくしょうじん",
-      "meaning": "being arduous / working diligently enduring hardships / making a strenuous effort"
-    },
-    {
-      "source_index": 8184,
-      "id": "2045320",
-      "term": "刻苦精励",
-      "reading": "こっくせいれい",
-      "meaning": "being arduous / working diligently enduring hardships / making a strenuous effort"
-    },
-    {
-      "source_index": 8185,
-      "id": "1285940",
-      "term": "刻苦勉励",
-      "reading": "こっくべんれい",
-      "meaning": "being arduous / working diligently enduring hardships"
-    },
-    {
-      "source_index": 8186,
-      "id": "2045330",
-      "term": "滑稽諧謔",
-      "reading": "こっけいかいぎゃく",
-      "meaning": "smooth-talking and humorous / with jocose and comical airs"
-    },
-    {
-      "source_index": 8187,
-      "id": "2030280",
-      "term": "滑稽洒脱",
-      "reading": "こっけいしゃだつ",
-      "meaning": "smooth-talking and polished / witty / free, easy, and urbane"
-    },
-    {
-      "source_index": 8188,
-      "id": "2845812",
-      "term": "国公私立",
-      "reading": "こっこうしりつ",
-      "meaning": "national, public, and private"
-    },
-    {
-      "source_index": 8189,
-      "id": "2857349",
-      "term": "国交樹立",
-      "reading": "こっこうじゅりつ",
-      "meaning": "establishment of diplomatic relations"
-    },
-    {
-      "source_index": 8190,
-      "id": "2737810",
-      "term": "国交断絶",
-      "reading": "こっこうだんぜつ",
-      "meaning": "breakup of diplomatic relations / diplomatic break"
-    },
-    {
-      "source_index": 8191,
-      "id": "1746610",
-      "term": "国庫債権",
-      "reading": "こっこさいけん",
-      "meaning": "treasury bond"
-    },
-    {
-      "source_index": 8192,
-      "id": "2019270",
-      "term": "国庫補助",
-      "reading": "こっこほじょ",
-      "meaning": "government subsidy / state aid / state assistance"
-    },
-    {
-      "source_index": 8193,
-      "id": "1668080",
-      "term": "骨相学者",
-      "reading": "こっそうがくしゃ",
-      "meaning": "phrenologist"
-    },
-    {
-      "source_index": 8194,
-      "id": "1668150",
-      "term": "骨董趣味",
-      "reading": "こっとうしゅみ",
-      "meaning": "antiquarianism"
-    },
-    {
-      "source_index": 8195,
-      "id": "1651000",
-      "term": "骨董品店",
-      "reading": "こっとうひんてん",
-      "meaning": "antique store / curio store"
-    },
-    {
-      "source_index": 8196,
-      "id": "2082220",
-      "term": "骨董品屋",
-      "reading": "こっとうひんや",
-      "meaning": "antique shop"
-    },
-    {
-      "source_index": 8197,
-      "id": "1534760",
-      "term": "木端微塵",
-      "reading": "こっぱみじん",
-      "meaning": "broken into small fragments / smashed to atoms / fragments and splinters"
-    },
-    {
-      "source_index": 8198,
-      "id": "2854624",
-      "term": "骨関節炎",
-      "reading": "こつかんせつえん",
-      "meaning": "osteoarthritis"
-    },
-    {
-      "source_index": 8199,
-      "id": "1993330",
-      "term": "骨関節症",
-      "reading": "こつかんせつしょう",
-      "meaning": "osteoarthritis"
-    },
-    {
-      "source_index": 8200,
-      "id": "2440040",
-      "term": "骨芽細胞",
-      "reading": "こつがさいぼう",
-      "meaning": "osteoblast"
-    },
-    {
-      "source_index": 8201,
-      "id": "1935690",
-      "term": "骨髄移植",
-      "reading": "こつずいいしょく",
-      "meaning": "bone marrow transplant"
-    },
-    {
-      "source_index": 8202,
-      "id": "2627370",
-      "term": "骨髄芽球",
-      "reading": "こつずいがきゅう",
-      "meaning": "myeloblast"
-    },
-    {
-      "source_index": 8203,
-      "id": "2146830",
-      "term": "骨髄抑制",
-      "reading": "こつずいよくせい",
-      "meaning": "bone marrow suppression"
-    },
-    {
-      "source_index": 8204,
-      "id": "1288660",
-      "term": "骨粗鬆症",
-      "reading": "こつそしょうしょう",
-      "meaning": "osteoporosis"
-    },
-    {
-      "source_index": 8205,
-      "id": "2700650",
-      "term": "骨増殖体",
-      "reading": "こつぞうしょくたい",
-      "meaning": "bone spur / osteophyte"
-    },
-    {
-      "source_index": 8206,
-      "id": "1668130",
-      "term": "骨軟化症",
-      "reading": "こつなんかしょう",
-      "meaning": "osteomalacia"
-    },
-    {
-      "source_index": 8207,
-      "id": "2627400",
-      "term": "骨軟骨腫",
-      "reading": "こつなんこつしゅ",
-      "meaning": "osteochondroma"
-    },
-    {
-      "source_index": 8208,
-      "id": "2030920",
-      "term": "骨肉相食",
-      "reading": "こつにくそうしょく",
-      "meaning": "blood feud / domestic discord"
-    },
-    {
-      "source_index": 8209,
-      "id": "2251840",
-      "term": "骨肉の争い",
-      "reading": "こつにくのあらそい",
-      "meaning": "family quarrel"
-    },
-    {
-      "source_index": 8210,
-      "id": "2869811",
-      "term": "骨盤隔膜",
-      "reading": "こつばんかくまく",
-      "meaning": "pelvic diaphragm"
-    },
-    {
-      "source_index": 8211,
-      "id": "2034680",
-      "term": "骨盤底筋",
-      "reading": "こつばんていきん",
-      "meaning": "pelvic floor muscle / pubococcygeal muscle / Kegel muscle"
-    },
-    {
-      "source_index": 8212,
-      "id": "2561190",
-      "term": "小爪川獺",
-      "reading": "こつめかわうそ",
-      "meaning": "Asian small-clawed otter (Aonyx cinerea)"
-    },
-    {
-      "source_index": 8213,
-      "id": "5377549",
-      "term": "小包業務",
-      "reading": "こづつみぎょうむ",
-      "meaning": "Parcel Force"
-    },
-    {
-      "source_index": 8214,
-      "id": "2830300",
-      "term": "小包爆弾",
-      "reading": "こづつみばくだん",
-      "meaning": "parcel bomb / mail bomb / letter bomb"
-    },
-    {
-      "source_index": 8215,
-      "id": "2849410",
-      "term": "固定価格",
-      "reading": "こていかかく",
-      "meaning": "fixed price"
-    },
-    {
-      "source_index": 8216,
-      "id": "1266660",
-      "term": "固定観念",
-      "reading": "こていかんねん",
-      "meaning": "fixed idea / idée fixe / stereotype"
-    },
-    {
-      "source_index": 8217,
-      "id": "1685150",
-      "term": "固定金利",
-      "reading": "こていきんり",
-      "meaning": "fixed interest rate"
-    },
-    {
-      "source_index": 8218,
-      "id": "2813780",
-      "term": "固定効果",
-      "reading": "こていこうか",
-      "meaning": "fixed effect"
-    },
-    {
-      "source_index": 8219,
-      "id": "2864531",
-      "term": "固定残業",
-      "reading": "こていざんぎょう",
-      "meaning": "expected overtime (stipulated as a specific number of hours)"
-    },
-    {
-      "source_index": 8220,
-      "id": "1266690",
-      "term": "固定資産",
-      "reading": "こていしさん",
-      "meaning": "fixed assets"
-    },
-    {
-      "source_index": 8221,
-      "id": "2354250",
-      "term": "固定接続",
-      "reading": "こていせつぞく",
-      "meaning": "permanent connection / fixed connection"
-    },
-    {
-      "source_index": 8222,
-      "id": "2720870",
-      "term": "固定相場",
-      "reading": "こていそうば",
-      "meaning": "fixed exchange rates / pegged rate of exchange / fixed rate"
-    },
-    {
-      "source_index": 8223,
-      "id": "2354260",
-      "term": "固定属性",
-      "reading": "こていぞくせい",
-      "meaning": "fixed attribute"
-    },
-    {
-      "source_index": 8224,
-      "id": "2125930",
-      "term": "固定電話",
-      "reading": "こていでんわ",
-      "meaning": "landline telephone / fixed-line telephone"
-    },
-    {
-      "source_index": 8225,
-      "id": "2354300",
-      "term": "固定媒体",
-      "reading": "こていばいたい",
-      "meaning": "fixed media"
-    },
-    {
-      "source_index": 8226,
-      "id": "2161510",
-      "term": "固定費用",
-      "reading": "こていひよう",
-      "meaning": "fixed cost"
-    },
-    {
-      "source_index": 8227,
-      "id": "1266720",
-      "term": "固定負債",
-      "reading": "こていふさい",
-      "meaning": "fixed liabilities"
-    },
-    {
-      "source_index": 8228,
-      "id": "2830655",
-      "term": "固定翼機",
-      "reading": "こていよくき",
-      "meaning": "fixed-wing aircraft"
-    },
-    {
-      "source_index": 8229,
-      "id": "1684900",
-      "term": "古典音楽",
-      "reading": "こてんおんがく",
-      "meaning": "classical music"
-    },
-    {
-      "source_index": 8230,
-      "id": "1684890",
-      "term": "古典学者",
-      "reading": "こてんがくしゃ",
-      "meaning": "classicist / classical scholar"
-    },
-    {
-      "source_index": 8231,
-      "id": "2445600",
-      "term": "古典楽器",
-      "reading": "こてんがっき",
-      "meaning": "Japanese classical musical instruments"
-    },
-    {
-      "source_index": 8232,
-      "id": "2835804",
-      "term": "小天狗",
-      "reading": "こてんぐ",
-      "meaning": "small tengu"
-    },
-    {
-      "source_index": 8233,
-      "id": "1638850",
-      "term": "古典芸能",
-      "reading": "こてんげいのう",
-      "meaning": "classical theatre / classical theater"
-    },
-    {
-      "source_index": 8234,
-      "id": "2831898",
-      "term": "古典古代",
-      "reading": "こてんこだい",
-      "meaning": "classical antiquity / Greek and Roman eras"
-    },
-    {
-      "source_index": 8235,
-      "id": "1265890",
-      "term": "古典主義",
-      "reading": "こてんしゅぎ",
-      "meaning": "classicism"
-    },
-    {
-      "source_index": 8236,
-      "id": "1684910",
-      "term": "古典時代",
-      "reading": "こてんじだい",
-      "meaning": "the classical period"
-    },
-    {
-      "source_index": 8237,
-      "id": "1265920",
-      "term": "古典文学",
-      "reading": "こてんぶんがく",
-      "meaning": "classical literature"
-    },
-    {
-      "source_index": 8238,
-      "id": "2828741",
-      "term": "古天文学",
-      "reading": "こてんもんがく",
-      "meaning": "archaeoastronomy / archeoastronomy"
-    },
-    {
-      "source_index": 8239,
-      "id": "2232620",
-      "term": "古典力学",
-      "reading": "こてんりきがく",
-      "meaning": "classical mechanics"
-    },
-    {
-      "source_index": 8240,
-      "id": "2845594",
-      "term": "言霊思想",
-      "reading": "ことだましそう",
-      "meaning": "faith in the power of language / belief that reality is affected by the spoken word / speaking of a lucky (or unlucky) event will bring it about"
-    },
-    {
-      "source_index": 8241,
-      "id": "2845590",
-      "term": "言霊信仰",
-      "reading": "ことだましんこう",
-      "meaning": "faith in the power of language / belief that reality is affected by the spoken word / speaking of a lucky (or unlucky) event will bring it about"
-    },
-    {
-      "source_index": 8242,
-      "id": "2782350",
-      "term": "言葉に鞘がある",
-      "reading": "ことばにさやがある",
-      "meaning": "to be evasive / to be not entirely truthful / to not be frank"
-    },
-    {
-      "source_index": 8243,
-      "id": "2835869",
-      "term": "言葉の海",
-      "reading": "ことばのうみ",
-      "meaning": "large number of words / sea of words"
-    },
-    {
-      "source_index": 8244,
-      "id": "2834014",
-      "term": "言葉を失う",
-      "reading": "ことばをうしなう",
-      "meaning": "to become speechless / to be at a loss for words"
-    },
-    {
-      "source_index": 8245,
-      "id": "1877050",
-      "term": "言葉を濁す",
-      "reading": "ことばをにごす",
-      "meaning": "to be vague / to speak ambiguously / to be evasive"
-    },
-    {
-      "source_index": 8246,
-      "id": "2835649",
-      "term": "言葉を呑む",
-      "reading": "ことばをのむ",
-      "meaning": "to choke up / to be speechless"
-    },
-    {
-      "source_index": 8247,
-      "id": "2835652",
-      "term": "言葉を挟む",
-      "reading": "ことばをはさむ",
-      "meaning": "to cut in / to butt in"
-    },
-    {
-      "source_index": 8248,
-      "id": "1348060",
-      "term": "小虎",
-      "reading": "ことら",
-      "meaning": "small tiger"
-    },
-    {
-      "source_index": 8249,
-      "id": "2833735",
-      "term": "小道具方",
-      "reading": "こどうぐかた",
-      "meaning": "prop master / property master"
-    },
-    {
-      "source_index": 8250,
-      "id": "2864087",
-      "term": "古動物学",
-      "reading": "こどうぶつがく",
-      "meaning": "paleozoology"
-    },
-    {
-      "source_index": 8251,
-      "id": "2830285",
-      "term": "子供椅子",
-      "reading": "こどもいす",
-      "meaning": "children's chair / kids' chair"
-    },
-    {
-      "source_index": 8252,
-      "id": "2761990",
-      "term": "子供時代",
-      "reading": "こどもじだい",
-      "meaning": "childhood"
-    },
-    {
-      "source_index": 8253,
-      "id": "2023510",
-      "term": "子供相撲",
-      "reading": "こどもずもう",
-      "meaning": "children's sumo"
-    },
-    {
-      "source_index": 8254,
-      "id": "2620780",
-      "term": "子供の使い",
-      "reading": "こどものつかい",
-      "meaning": "useless messenger / doing only as one is told / fool's errand"
-    },
-    {
-      "source_index": 8255,
-      "id": "2846670",
-      "term": "子供番組",
-      "reading": "こどもばんぐみ",
-      "meaning": "children's (TV) show / children's program"
-    },
-    {
-      "source_index": 8256,
-      "id": "2618370",
-      "term": "子供保険",
-      "reading": "こどもほけん",
-      "meaning": "juvenile insurance"
-    },
-    {
-      "source_index": 8257,
-      "id": "2836037",
-      "term": "粉々にする",
-      "reading": "こなごなにする",
-      "meaning": "to pulverize / to break into pieces"
-    },
-    {
-      "source_index": 8258,
-      "id": "1743520",
-      "term": "小生意気",
-      "reading": "こなまいき",
-      "meaning": "impudence / cheekiness / impertinence"
-    },
-    {
-      "source_index": 8259,
-      "id": "5259238",
-      "term": "湖南大学",
-      "reading": "こなみだいがく",
-      "meaning": "Hunan University / HNU"
-    },
-    {
-      "source_index": 8260,
-      "id": "2716740",
-      "term": "粉屋の泥棒",
-      "reading": "こなやのどろぼう",
-      "meaning": "heavily made-up woman / flour-shop burglar"
-    },
-    {
-      "source_index": 8261,
-      "id": "2740770",
-      "term": "粉をかける",
-      "reading": "こなをかける",
-      "meaning": "to make a pass at / to hit on / to call out to (in an attempt to seduce)"
-    },
-    {
-      "source_index": 8262,
-      "id": "1780700",
-      "term": "近衛師団",
-      "reading": "このえしだん",
-      "meaning": "Imperial Guard Division (pre-1945)"
-    },
-    {
-      "source_index": 8263,
-      "id": "2831521",
-      "term": "この時とばかり",
-      "reading": "このときとばかり",
-      "meaning": "taking an unexpected opportunity"
-    },
-    {
-      "source_index": 8264,
-      "id": "2789430",
-      "term": "小針海豚",
-      "reading": "こはりいるか",
-      "meaning": "Burmeister's porpoise (Phocoena spinipinnis)"
-    },
-    {
-      "source_index": 8265,
-      "id": "1348280",
-      "term": "小春日和",
-      "reading": "こはるびより",
-      "meaning": "Indian summer (around November) / mild late autumn weather / mild late fall weather"
-    },
-    {
-      "source_index": 8266,
-      "id": "2751980",
-      "term": "小嘴千鳥",
-      "reading": "こばしちどり",
-      "meaning": "Eurasian dotterel (Charadrius morinellus) / dotterel"
-    },
-    {
-      "source_index": 8267,
-      "id": "2834247",
-      "term": "小鼻をうごめかす",
-      "reading": "こばなをうごめかす",
-      "meaning": "to put on a triumphant air"
-    },
-    {
-      "source_index": 8268,
-      "id": "2834248",
-      "term": "小鼻を膨らます",
-      "reading": "こばなをふくらます",
-      "meaning": "to look displeased / to flare one's nostrils"
-    },
-    {
-      "source_index": 8269,
-      "id": "2855398",
-      "term": "小判切手",
-      "reading": "こばんきって",
-      "meaning": "Meiji-period postal stamp featuring a large oval in its design"
-    },
-    {
-      "source_index": 8270,
-      "id": "2868859",
-      "term": "木挽小屋",
-      "reading": "こびきごや",
-      "meaning": "sawyer's shed"
-    },
-    {
-      "source_index": 8271,
-      "id": "2643030",
-      "term": "古美術商",
-      "reading": "こびじゅつしょう",
-      "meaning": "antique art dealer / antique dealer / antiquary"
-    },
-    {
-      "source_index": 8272,
-      "id": "2695180",
-      "term": "古美術店",
-      "reading": "こびじゅつてん",
-      "meaning": "antique store / antique shop"
-    },
-    {
-      "source_index": 8273,
-      "id": "2853534",
-      "term": "古美術品",
-      "reading": "こびじゅつひん",
-      "meaning": "antique / antique artwork"
-    },
-    {
-      "source_index": 8274,
-      "id": "2789610",
-      "term": "小人海豚",
-      "reading": "こびといるか",
-      "meaning": "tucuxi (Sotalia fluviatilis)"
-    },
-    {
-      "source_index": 8275,
-      "id": "2872152",
-      "term": "小人目付",
-      "reading": "こびとめつけ",
-      "meaning": "assistant inspector (Edo period) / junior metsuke"
-    },
-    {
-      "source_index": 8276,
-      "id": "2847939",
-      "term": "古病理学",
-      "reading": "こびょうりがく",
-      "meaning": "paleopathology"
-    },
-    {
-      "source_index": 8277,
-      "id": "2166540",
-      "term": "小鰭巨頭",
-      "reading": "こびれごんどう",
-      "meaning": "short-finned pilot whale (Globicephala macrorhyncus)"
-    },
-    {
-      "source_index": 8278,
-      "id": "2045360",
-      "term": "鼓腹撃壌",
-      "reading": "こふくげきじょう",
-      "meaning": "(people) sing the praises (enjoy the blessings) of peace"
-    },
-    {
-      "source_index": 8279,
-      "id": "2244730",
-      "term": "古風土記",
-      "reading": "こふどき",
-      "meaning": "ancient fudoki compiled by imperial order in 713 CE"
-    },
-    {
-      "source_index": 8280,
-      "id": "1934690",
-      "term": "古墳時代",
-      "reading": "こふんじだい",
-      "meaning": "Kofun period (of Japanese history, 250-538 CE) / Tumulus period"
-    },
-    {
-      "source_index": 8281,
-      "id": "1268030",
-      "term": "鼓舞激励",
-      "reading": "こぶげきれい",
-      "meaning": "encouragement"
-    },
-    {
-      "source_index": 8282,
-      "id": "1684920",
-      "term": "古物商人",
-      "reading": "こぶつしょうにん",
-      "meaning": "antiques dealer"
-    },
-    {
-      "source_index": 8283,
-      "id": "2353930",
-      "term": "個別記号",
-      "reading": "こべつきごう",
-      "meaning": "specific symbol"
-    },
-    {
-      "source_index": 8284,
-      "id": "2829250",
-      "term": "個別指導",
-      "reading": "こべつしどう",
-      "meaning": "individual lesson / tutorial / one-on-one instruction"
-    },
-    {
-      "source_index": 8285,
-      "id": "1265030",
-      "term": "個別販売",
-      "reading": "こべつはんばい",
-      "meaning": "door-to-door selling"
-    },
-    {
-      "source_index": 8286,
-      "id": "2353940",
-      "term": "個別部品",
-      "reading": "こべつぶひん",
-      "meaning": "discrete component"
-    },
-    {
-      "source_index": 8287,
-      "id": "1631050",
-      "term": "戸別訪問",
-      "reading": "こべつほうもん",
-      "meaning": "door-to-door visit / door-to-door canvassing (canvasing)"
-    },
-    {
-      "source_index": 8288,
-      "id": "2859102",
-      "term": "個別面接",
-      "reading": "こべつめんせつ",
-      "meaning": "individual interview / personal interview"
-    },
-    {
-      "source_index": 8289,
-      "id": "5259286",
-      "term": "湖北大学",
-      "reading": "こほくだいがく",
-      "meaning": "Hubei University"
-    },
-    {
-      "source_index": 8290,
-      "id": "2575850",
-      "term": "枯木寒巌",
-      "reading": "こぼくかんがん",
-      "meaning": "withered trees and frozen rocks / a person that is hard to approach"
-    },
-    {
-      "source_index": 8291,
-      "id": "2575860",
-      "term": "枯木死灰",
-      "reading": "こぼくしかい",
-      "meaning": "withered trees and cold ash / someone who is detached and free of desires / someone who has no vitality"
-    },
-    {
-      "source_index": 8292,
-      "id": "2626580",
-      "term": "鼓膜張筋",
-      "reading": "こまくちょうきん",
-      "meaning": "tensor tympani muscle"
-    },
-    {
-      "source_index": 8293,
-      "id": "5233398",
-      "term": "駒澤大学",
-      "reading": "こまざわだいがく",
-      "meaning": "Komazawa University"
-    },
-    {
-      "source_index": 8294,
-      "id": "2871114",
-      "term": "困ったときの神頼み",
-      "reading": "こまったときのかみだのみ",
-      "meaning": "turning to God only in one's trouble"
-    },
-    {
-      "source_index": 8295,
-      "id": "1744410",
-      "term": "小間物屋",
-      "reading": "こまものや",
-      "meaning": "haberdashery / sundries store"
-    },
-    {
-      "source_index": 8296,
-      "id": "2833054",
-      "term": "小蜜柑草",
-      "reading": "こみかんそう",
-      "meaning": "chamberbitter (Phyllanthus urinaria) / gripeweed / shatterstone"
-    },
-    {
-      "source_index": 8297,
-      "id": "1348240",
-      "term": "小耳に挟む",
-      "reading": "こみみにはさむ",
-      "meaning": "to happen to hear / to overhear"
-    },
-    {
-      "source_index": 8298,
-      "id": "2835816",
-      "term": "小麦外皮",
-      "reading": "こむぎがいひ",
-      "meaning": "wheat bran"
-    },
-    {
-      "source_index": 8299,
-      "id": "2747420",
-      "term": "小麦胚芽",
-      "reading": "こむぎはいが",
-      "meaning": "wheat germ"
-    },
-    {
-      "source_index": 8300,
-      "id": "2788220",
-      "term": "米粒詰草",
-      "reading": "こめつぶつめくさ",
-      "meaning": "lesser hop trefoil (Trifolium dubium) / suckling clover"
-    },
-    {
-      "source_index": 8301,
-      "id": "2829151",
-      "term": "米百俵",
-      "reading": "こめひゃっぴょう",
-      "meaning": "kome hyappyō / (ideal of) enduring pain today for the sake of a better tomorrow / hundred sacks of rice"
-    },
-    {
-      "source_index": 8302,
-      "id": "1637080",
-      "term": "子持昆布",
-      "reading": "こもちこんぶ",
-      "meaning": "kelp with herring roe (sushi type)"
-    },
-    {
-      "source_index": 8303,
-      "id": "2241380",
-      "term": "子守蜘蛛",
-      "reading": "こもりぐも",
-      "meaning": "wolf spider (any spider of family Lycosidae)"
-    },
-    {
-      "source_index": 8304,
-      "id": "2827053",
-      "term": "顧問契約",
-      "reading": "こもんけいやく",
-      "meaning": "consulting agreement / advisory contract"
-    },
-    {
-      "source_index": 8305,
-      "id": "2746300",
-      "term": "古文書学",
-      "reading": "こもんじょがく",
-      "meaning": "study of historical documents / diplomatics / diplomatic"
-    },
-    {
-      "source_index": 8306,
-      "id": "2830883",
-      "term": "小紋河豚",
-      "reading": "こもんふぐ",
-      "meaning": "finepatterned puffer (Takifugu poecilonotus)"
-    },
-    {
-      "source_index": 8307,
-      "id": "2393980",
-      "term": "子安観音",
-      "reading": "こやすかんのん",
-      "meaning": "guardian Avalokitesvara of children and childbirth (bodhisattva)"
-    },
-    {
-      "source_index": 8308,
-      "id": "2393970",
-      "term": "子安地蔵",
-      "reading": "こやすじぞう",
-      "meaning": "guardian Ksitigarbha of childbirth (bodhisattva)"
-    },
-    {
-      "source_index": 8309,
-      "id": "2800720",
-      "term": "小山蝙蝠",
-      "reading": "こやまこうもり",
-      "meaning": "Japanese noctule (Nyctalus furvus)"
-    },
-    {
-      "source_index": 8310,
-      "id": "2778800",
-      "term": "固有運動",
-      "reading": "こゆううんどう",
-      "meaning": "proper motion"
-    },
-    {
-      "source_index": 8311,
-      "id": "2354330",
-      "term": "固有関数",
-      "reading": "こゆうかんすう",
-      "meaning": "eigenfunction"
-    },
-    {
-      "source_index": 8312,
-      "id": "2239060",
-      "term": "固有職員",
-      "reading": "こゆうしょくいん",
-      "meaning": "regular staff"
-    },
-    {
-      "source_index": 8313,
-      "id": "2834255",
-      "term": "固有振動",
-      "reading": "こゆうしんどう",
-      "meaning": "characteristic vibration / normal mode"
-    },
-    {
-      "source_index": 8314,
-      "id": "2869338",
-      "term": "固有受容",
-      "reading": "こゆうじゅよう",
-      "meaning": "proprioception"
-    },
-    {
-      "source_index": 8315,
-      "id": "2862198",
-      "term": "固有表現",
-      "reading": "こゆうひょうげん",
-      "meaning": "named entity / NE"
-    },
-    {
-      "source_index": 8316,
-      "id": "1266750",
-      "term": "固有名詞",
-      "reading": "こゆうめいし",
-      "meaning": "proper noun"
-    },
-    {
-      "source_index": 8317,
-      "id": "2851393",
-      "term": "雇用環境",
-      "reading": "こようかんきょう",
-      "meaning": "job employment environment"
-    },
-    {
-      "source_index": 8318,
-      "id": "2852139",
-      "term": "雇用機会",
-      "reading": "こようきかい",
-      "meaning": "employment opportunity"
-    },
-    {
-      "source_index": 8319,
-      "id": "2403840",
-      "term": "雇用期間",
-      "reading": "こようきかん",
-      "meaning": "period of employment"
-    },
-    {
-      "source_index": 8320,
-      "id": "2833910",
-      "term": "雇用形態",
-      "reading": "こようけいたい",
-      "meaning": "employment system / employment pattern"
-    },
-    {
-      "source_index": 8321,
-      "id": "1934740",
-      "term": "雇用契約",
-      "reading": "こようけいやく",
-      "meaning": "contract of employment"
-    },
-    {
-      "source_index": 8322,
-      "id": "2628830",
-      "term": "雇用状況",
-      "reading": "こようじょうきょう",
-      "meaning": "employment scene / employment situation / job market"
-    },
-    {
-      "source_index": 8323,
-      "id": "1992320",
-      "term": "雇用情勢",
-      "reading": "こようじょうせい",
-      "meaning": "employment situation"
-    },
-    {
-      "source_index": 8324,
-      "id": "2144140",
-      "term": "雇用制度",
-      "reading": "こようせいど",
-      "meaning": "employment system"
-    },
-    {
-      "source_index": 8325,
-      "id": "5260059",
-      "term": "雇用総局",
-      "reading": "こようそうきょく",
-      "meaning": "Manpower Administration"
-    },
-    {
-      "source_index": 8326,
-      "id": "1992330",
-      "term": "雇用創出",
-      "reading": "こようそうしゅつ",
-      "meaning": "job creation"
-    },
-    {
-      "source_index": 8327,
-      "id": "2649840",
-      "term": "雇用対策",
-      "reading": "こようたいさく",
-      "meaning": "measures to stimulate employment / employment measures"
-    },
-    {
-      "source_index": 8328,
-      "id": "1992340",
-      "term": "雇用調整",
-      "reading": "こようちょうせい",
-      "meaning": "employment adjustment / adjusting employment arrangements (staff numbers, overtime, etc.) to reflect changing business conditions"
-    },
-    {
-      "source_index": 8329,
-      "id": "2653900",
-      "term": "雇用統計",
-      "reading": "こようとうけい",
-      "meaning": "employment data / employment statistics / jobs data"
-    },
-    {
-      "source_index": 8330,
-      "id": "1992350",
-      "term": "雇用凍結",
-      "reading": "こようとうけつ",
-      "meaning": "hiring freeze"
-    },
-    {
-      "source_index": 8331,
-      "id": "1685800",
-      "term": "雇用保険",
-      "reading": "こようほけん",
-      "meaning": "unemployment insurance / employment insurance"
-    },
-    {
-      "source_index": 8332,
-      "id": "2724980",
-      "term": "個利個略",
-      "reading": "こりこりゃく",
-      "meaning": "putting one's own interest ahead of one's party (for a politician)"
-    },
-    {
-      "source_index": 8333,
-      "id": "2354380",
-      "term": "孤立概念",
-      "reading": "こりつがいねん",
-      "meaning": "isolate"
-    },
-    {
-      "source_index": 8334,
-      "id": "1266880",
-      "term": "孤立主義",
-      "reading": "こりつしゅぎ",
-      "meaning": "isolationism"
-    },
-    {
-      "source_index": 8335,
-      "id": "2030770",
-      "term": "孤立無援",
-      "reading": "こりつむえん",
-      "meaning": "isolated and helpless / alone and unassisted"
-    },
-    {
-      "source_index": 8336,
-      "id": "1952600",
-      "term": "小料理屋",
-      "reading": "こりょうりや",
-      "meaning": "small restaurant / eating house"
-    },
-    {
-      "source_index": 8337,
-      "id": "2030790",
-      "term": "狐狸妖怪",
-      "reading": "こりようかい",
-      "meaning": "tricksters / deceivers / fey creatures"
-    },
-    {
-      "source_index": 8338,
-      "id": "2153690",
-      "term": "虎列剌茸",
-      "reading": "これらたけ",
-      "meaning": "Galerina fasciculata (poisonous mushroom)"
-    },
-    {
-      "source_index": 8339,
-      "id": "1845730",
-      "term": "虎狼",
-      "reading": "ころう",
-      "meaning": "tigers and wolves"
-    },
-    {
-      "source_index": 8340,
-      "id": "2045390",
-      "term": "固陋頑迷",
-      "reading": "ころうがんめい",
-      "meaning": "obstinate / stubborn / hard-headed"
-    },
-    {
-      "source_index": 8341,
-      "id": "2149040",
-      "term": "強面談判",
-      "reading": "こわもてだんぱん",
-      "meaning": "aggressive negotiations / hard-line bargaining"
-    },
-    {
-      "source_index": 8342,
-      "id": "2835702",
-      "term": "婚姻関係",
-      "reading": "こんいんかんけい",
-      "meaning": "marital relationship / marital relations"
-    },
-    {
-      "source_index": 8343,
-      "id": "2636190",
-      "term": "婚姻適齢",
-      "reading": "こんいんてきれい",
-      "meaning": "legal age of marriage"
-    },
-    {
-      "source_index": 8344,
-      "id": "2158700",
-      "term": "婚姻手続",
-      "reading": "こんいんてつづき",
-      "meaning": "marriage procedures / procedure of marriage"
-    },
-    {
-      "source_index": 8345,
-      "id": "2158680",
-      "term": "婚姻届書",
-      "reading": "こんいんとどけしょ",
-      "meaning": "marriage registration"
-    },
-    {
-      "source_index": 8346,
-      "id": "2207430",
-      "term": "根管治療",
-      "reading": "こんかんちりょう",
-      "meaning": "root canal treatment / root canal therapy / endodontic treatment"
-    },
-    {
-      "source_index": 8347,
-      "id": "1935700",
-      "term": "婚外交渉",
-      "reading": "こんがいこうしょう",
-      "meaning": "extramarital sex"
-    },
-    {
-      "source_index": 8348,
-      "id": "1289680",
-      "term": "婚外性交",
-      "reading": "こんがいせいこう",
-      "meaning": "adultery / extra-marital intercourse"
-    },
-    {
-      "source_index": 8349,
-      "id": "1803800",
-      "term": "根気仕事",
-      "reading": "こんきしごと",
-      "meaning": "laborious task"
-    },
-    {
-      "source_index": 8350,
-      "id": "2862328",
-      "term": "根拠薄弱",
-      "reading": "こんきょはくじゃく",
-      "meaning": "unsubstantiated / flimsy"
-    },
-    {
-      "source_index": 8351,
-      "id": "2045400",
-      "term": "困苦窮乏",
-      "reading": "こんくきゅうぼう",
-      "meaning": "hardships and privations"
-    },
-    {
-      "source_index": 8352,
-      "id": "2030930",
-      "term": "困苦欠乏",
-      "reading": "こんくけつぼう",
-      "meaning": "hardships and privations"
-    },
-    {
-      "source_index": 8353,
-      "id": "2594340",
-      "term": "金光明経",
-      "reading": "こんこうみょうきょう",
-      "meaning": "Golden Light Sutra"
-    },
-    {
-      "source_index": 8354,
-      "id": "2788520",
-      "term": "金剛穴子",
-      "reading": "こんごうあなご",
-      "meaning": "snubnosed eel (Simenchelys parasitica)"
-    },
-    {
-      "source_index": 8355,
-      "id": "2837097",
-      "term": "混合医療",
-      "reading": "こんごういりょう",
-      "meaning": "mixed medical care / use of both insured and uninsured medical treatments"
-    },
-    {
-      "source_index": 8356,
-      "id": "2165450",
-      "term": "金剛鸚哥",
-      "reading": "こんごういんこ",
-      "meaning": "macaw"
-    },
-    {
-      "source_index": 8357,
-      "id": "2826058",
-      "term": "混合栄養",
-      "reading": "こんごうえいよう",
-      "meaning": "mixotrophism"
-    },
-    {
-      "source_index": 8358,
-      "id": "1669420",
-      "term": "混合火薬",
-      "reading": "こんごうかやく",
-      "meaning": "explosive mixture"
-    },
-    {
-      "source_index": 8359,
-      "id": "2861619",
-      "term": "混合感染",
-      "reading": "こんごうかんせん",
-      "meaning": "mixed infection"
-    },
-    {
-      "source_index": 8360,
-      "id": "1669460",
-      "term": "混合経済",
-      "reading": "こんごうけいざい",
-      "meaning": "mixed economy"
-    },
-    {
-      "source_index": 8361,
-      "id": "2045410",
-      "term": "金剛堅固",
-      "reading": "こんごうけんご",
-      "meaning": "firm and solid / sturdy and indestructible / unshakable"
-    },
-    {
-      "source_index": 8362,
-      "id": "2814230",
-      "term": "混合効果",
-      "reading": "こんごうこうか",
-      "meaning": "mixed effects"
-    },
-    {
-      "source_index": 8363,
-      "id": "2838410",
-      "term": "金剛光沢",
-      "reading": "こんごうこうたく",
-      "meaning": "adamantine lustre (luster)"
-    },
-    {
-      "source_index": 8364,
-      "id": "1242890",
-      "term": "金剛薩埵",
-      "reading": "こんごうさった",
-      "meaning": "Vajrasattva (bodhisattva in Mahayana and Vajrayana Buddhism)"
-    },
-    {
-      "source_index": 8365,
-      "id": "2837093",
-      "term": "混合診療",
-      "reading": "こんごうしんりょう",
-      "meaning": "mixed medical care / use of both insured and uninsured medical treatments"
-    },
-    {
-      "source_index": 8366,
-      "id": "2271580",
-      "term": "金剛頂経",
-      "reading": "こんごうちょうぎょう",
-      "meaning": "Vajrasekhara Sutra"
-    },
-    {
-      "source_index": 8367,
-      "id": "1993370",
-      "term": "混合燃料",
-      "reading": "こんごうねんりょう",
-      "meaning": "blended fuel"
-    },
-    {
-      "source_index": 8368,
-      "id": "1669470",
-      "term": "混合農業",
-      "reading": "こんごうのうぎょう",
-      "meaning": "mixed farming"
-    },
-    {
-      "source_index": 8369,
-      "id": "2867205",
-      "term": "混合肥料",
-      "reading": "こんごうひりょう",
-      "meaning": "mixed fertilizer / compound manure / compost"
-    },
-    {
-      "source_index": 8370,
-      "id": "2045420",
-      "term": "金剛不壊",
-      "reading": "こんごうふえ",
-      "meaning": "firm and solid / sturdy and indestructible / unshakable"
-    },
-    {
-      "source_index": 8371,
-      "id": "2774380",
-      "term": "金剛河豚",
-      "reading": "こんごうふぐ",
-      "meaning": "longhorn cowfish (Lactoria cornuta)"
-    },
-    {
-      "source_index": 8372,
-      "id": "2618380",
-      "term": "混合保険",
-      "reading": "こんごうほけん",
-      "meaning": "mixed insurance"
-    },
-    {
-      "source_index": 8373,
-      "id": "2166800",
-      "term": "金剛夜叉",
-      "reading": "こんごうやしゃ",
-      "meaning": "Vajrayaksa"
-    },
-    {
-      "source_index": 8374,
-      "id": "2045430",
-      "term": "金剛力士",
-      "reading": "こんごうりきし",
-      "meaning": "Deva king (guardian god at a temple gate, holding a vajra) / Vajrapani"
-    },
-    {
-      "source_index": 8375,
-      "id": "1669640",
-      "term": "混載貨物",
-      "reading": "こんさいかもつ",
-      "meaning": "consolidated shipment / mixed cargo"
-    },
-    {
-      "source_index": 8376,
-      "id": "2432300",
-      "term": "混載業者",
-      "reading": "こんさいぎょうしゃ",
-      "meaning": "consolidator (shipping, freight, etc.)"
-    },
-    {
-      "source_index": 8377,
-      "id": "2045440",
-      "term": "混雑具合",
-      "reading": "こんざつぐあい",
-      "meaning": "the state (degree) of congestion / how bad traffic jams are"
-    },
-    {
-      "source_index": 8378,
-      "id": "2862060",
-      "term": "金色世界",
-      "reading": "こんじきせかい",
-      "meaning": "golden-hued realm / golden world"
-    },
-    {
-      "source_index": 8379,
-      "id": "5230276",
-      "term": "金色夜叉",
-      "reading": "こんじきやしゃ",
-      "meaning": "The Golden Demon (1897 novel by Ozaki Kōyō) / Konjiki Yasha"
-    },
-    {
-      "source_index": 8380,
-      "id": "5297761",
-      "term": "今昔物語",
-      "reading": "こんじゃくものがたり",
-      "meaning": "Konjaku Monogatarishū (abbr) (31-volume collection of stories written during the late Heian period) / The Tale of Konjaku"
-    },
-    {
-      "source_index": 8381,
-      "id": "2235440",
-      "term": "紺綬褒章",
-      "reading": "こんじゅほうしょう",
-      "meaning": "Medal with Dark Blue Ribbon"
-    },
-    {
-      "source_index": 8382,
-      "id": "1289960",
-      "term": "昏睡状態",
-      "reading": "こんすいじょうたい",
-      "meaning": "comatose state"
-    },
-    {
-      "source_index": 8383,
-      "id": "1290450",
-      "term": "混声合唱",
-      "reading": "こんせいがっしょう",
-      "meaning": "mixed chorus"
-    },
-    {
-      "source_index": 8384,
-      "id": "1669560",
-      "term": "混成競技",
-      "reading": "こんせいきょうぎ",
-      "meaning": "combined competitions"
-    },
-    {
-      "source_index": 8385,
-      "id": "1935750",
-      "term": "痕跡器官",
-      "reading": "こんせききかん",
-      "meaning": "vestigial (rudimentary) organ"
-    },
-    {
-      "source_index": 8386,
-      "id": "2030940",
-      "term": "懇切丁寧",
-      "reading": "こんせつていねい",
-      "meaning": "kind, careful, and thorough (of an explanation, advice, etc.) / thoughtful and scrupulous"
-    },
-    {
-      "source_index": 8387,
-      "id": "2045450",
-      "term": "今是昨非",
-      "reading": "こんぜさくひ",
-      "meaning": "complete reversal of values or ways of thinking (over time) / What appeared wrong in the past now appears right / realizing and regretting the past errors of one's ways"
-    },
-    {
-      "source_index": 8388,
-      "id": "1667250",
-      "term": "渾然一体",
-      "reading": "こんぜんいったい",
-      "meaning": "in complete harmony"
-    },
-    {
-      "source_index": 8389,
-      "id": "2395320",
-      "term": "婚前契約",
-      "reading": "こんぜんけいやく",
-      "meaning": "prenuptial agreement / prenup"
-    },
-    {
-      "source_index": 8390,
-      "id": "1935710",
-      "term": "婚前交渉",
-      "reading": "こんぜんこうしょう",
-      "meaning": "premarital sexual relations"
-    },
-    {
-      "source_index": 8391,
-      "id": "2450310",
-      "term": "金胎両部",
-      "reading": "こんたいりょうぶ",
-      "meaning": "Diamond Realm and Womb Realm"
-    },
-    {
-      "source_index": 8392,
-      "id": "1669380",
-      "term": "昆虫学者",
-      "reading": "こんちゅうがくしゃ",
-      "meaning": "entomologist"
-    },
-    {
-      "source_index": 8393,
-      "id": "1290000",
-      "term": "昆虫採集",
-      "reading": "こんちゅうさいしゅう",
-      "meaning": "insect collecting"
-    },
-    {
-      "source_index": 8394,
-      "id": "2863607",
-      "term": "根頭癌腫",
-      "reading": "こんとうがんしゅ",
-      "meaning": "crown gall"
-    },
-    {
-      "source_index": 8395,
-      "id": "2033310",
-      "term": "こんにゃく問答",
-      "reading": "こんにゃくもんどう",
-      "meaning": "irrelevant and incoherent dialogue / meaningless parlor debate / dialogue at cross purposes"
-    },
-    {
-      "source_index": 8396,
-      "id": "2853076",
-      "term": "梱包資材",
-      "reading": "こんぽうしざい",
-      "meaning": "packaging material"
-    },
-    {
-      "source_index": 8397,
-      "id": "2835477",
-      "term": "梱包爆薬",
-      "reading": "こんぽうばくやく",
-      "meaning": "satchel charge"
-    },
-    {
-      "source_index": 8398,
-      "id": "1935730",
-      "term": "根本原理",
-      "reading": "こんぽんげんり",
-      "meaning": "fundamental (basic) principles / fundamentals / ground rules"
-    },
-    {
-      "source_index": 8399,
-      "id": "1803770",
-      "term": "根本主義",
-      "reading": "こんぽんしゅぎ",
-      "meaning": "fundamentalism"
-    },
     {
       "source_index": 8400,
       "id": "2838380",
@@ -7010,6 +4910,2106 @@
       "term": "三斜晶系",
       "reading": "さんしゃしょうけい",
       "meaning": "triclinic crystal system"
+    },
+    {
+      "source_index": 9100,
+      "id": "1300550",
+      "term": "三者対立",
+      "reading": "さんしゃたいりつ",
+      "meaning": "three-cornered competition"
+    },
+    {
+      "source_index": 9101,
+      "id": "2045610",
+      "term": "三者鼎立",
+      "reading": "さんしゃていりつ",
+      "meaning": "three parties (forces) opposing one another / three-cornered contest"
+    },
+    {
+      "source_index": 9102,
+      "id": "1300560",
+      "term": "三者凡退",
+      "reading": "さんしゃぼんたい",
+      "meaning": "out in 1-2-3 order"
+    },
+    {
+      "source_index": 9103,
+      "id": "2114330",
+      "term": "三者面談",
+      "reading": "さんしゃめんだん",
+      "meaning": "parent and child meeting (with teacher for course, career guidance, etc.)"
+    },
+    {
+      "source_index": 9104,
+      "id": "1879380",
+      "term": "三舎を避ける",
+      "reading": "さんしゃをさける",
+      "meaning": "to keep one's distance from someone (due to fear or because that person is superior)"
+    },
+    {
+      "source_index": 9105,
+      "id": "2160720",
+      "term": "三種混合",
+      "reading": "さんしゅこんごう",
+      "meaning": "combined vaccination for diphtheria, pertussis (whooping cough) and tetanus"
+    },
+    {
+      "source_index": 9106,
+      "id": "2866374",
+      "term": "三出複葉",
+      "reading": "さんしゅつふくよう",
+      "meaning": "ternate compound leaf"
+    },
+    {
+      "source_index": 9107,
+      "id": "1300610",
+      "term": "三種の神器",
+      "reading": "さんしゅのじんぎ",
+      "meaning": "the Three Sacred Treasures (Mirror, Sword and Jewels) / three sacred emblems of sovereign rule / the three divine symbols of the Japanese imperial throne"
+    },
+    {
+      "source_index": 9108,
+      "id": "2856191",
+      "term": "参照関係",
+      "reading": "さんしょうかんけい",
+      "meaning": "reference relationship / lookup relationship"
+    },
+    {
+      "source_index": 9109,
+      "id": "2358510",
+      "term": "参照許可",
+      "reading": "さんしょうきょか",
+      "meaning": "access permission"
+    },
+    {
+      "source_index": 9110,
+      "id": "2358520",
+      "term": "参照形式",
+      "reading": "さんしょうけいしき",
+      "meaning": "reference format"
+    },
+    {
+      "source_index": 9111,
+      "id": "2358530",
+      "term": "参照経路",
+      "reading": "さんしょうけいろ",
+      "meaning": "reference path"
+    },
+    {
+      "source_index": 9112,
+      "id": "2358540",
+      "term": "参照結合",
+      "reading": "さんしょうけつごう",
+      "meaning": "use association"
+    },
+    {
+      "source_index": 9113,
+      "id": "2358550",
+      "term": "参照検索",
+      "reading": "さんしょうけんさく",
+      "meaning": "reference retrieval"
+    },
+    {
+      "source_index": 9114,
+      "id": "1302430",
+      "term": "参照文献",
+      "reading": "さんしょうぶんけん",
+      "meaning": "reference document"
+    },
+    {
+      "source_index": 9115,
+      "id": "2846031",
+      "term": "三色団子",
+      "reading": "さんしょくだんご",
+      "meaning": "tricolor dango eaten during cherry blossom viewing (esp. pink, white, and green)"
+    },
+    {
+      "source_index": 9116,
+      "id": "2749670",
+      "term": "三色同刻",
+      "reading": "さんしょくどうこく",
+      "meaning": "triple pung / winning hand containing the same pung in each of the three suits"
+    },
+    {
+      "source_index": 9117,
+      "id": "2749660",
+      "term": "三色同順",
+      "reading": "さんしょくどうじゅん",
+      "meaning": "triple run / winning hand containing the same chow in each of the three suits"
+    },
+    {
+      "source_index": 9118,
+      "id": "2640880",
+      "term": "三審制度",
+      "reading": "さんしんせいど",
+      "meaning": "three-tiered court system / principle of a three-instance trial process"
+    },
+    {
+      "source_index": 9119,
+      "id": "2854957",
+      "term": "参事会員",
+      "reading": "さんじかいいん",
+      "meaning": "councilor / councillor"
+    },
+    {
+      "source_index": 9120,
+      "id": "1917860",
+      "term": "三軸試験",
+      "reading": "さんじくしけん",
+      "meaning": "triaxial test"
+    },
+    {
+      "source_index": 9121,
+      "id": "1303800",
+      "term": "産児制限",
+      "reading": "さんじせいげん",
+      "meaning": "birth control"
+    },
+    {
+      "source_index": 9122,
+      "id": "2800400",
+      "term": "三従兄弟",
+      "reading": "さんじゅうけいてい",
+      "meaning": "second cousin"
+    },
+    {
+      "source_index": 9123,
+      "id": "2421590",
+      "term": "三重結合",
+      "reading": "さんじゅうけつごう",
+      "meaning": "triple bond"
+    },
+    {
+      "source_index": 9124,
+      "id": "1300650",
+      "term": "三十三所",
+      "reading": "さんじゅうさんしょ",
+      "meaning": "thirty-three temples sacred to Kannon (Avalokitesvara)"
+    },
+    {
+      "source_index": 9125,
+      "id": "1300790",
+      "term": "三重焦点",
+      "reading": "さんじゅうしょうてん",
+      "meaning": "trifocal"
+    },
+    {
+      "source_index": 9126,
+      "id": "2169670",
+      "term": "三重水素",
+      "reading": "さんじゅうすいそ",
+      "meaning": "tritium"
+    },
+    {
+      "source_index": 9127,
+      "id": "2432890",
+      "term": "三十番神",
+      "reading": "さんじゅうばんじん",
+      "meaning": "the thirty guardian deities (one for each day of the lunar month)"
+    },
+    {
+      "source_index": 9128,
+      "id": "1300820",
+      "term": "三重宝冠",
+      "reading": "さんじゅうほうかん",
+      "meaning": "(papal) triple tiara"
+    },
+    {
+      "source_index": 9129,
+      "id": "2246540",
+      "term": "三重母音",
+      "reading": "さんじゅうぼいん",
+      "meaning": "triphthong"
+    },
+    {
+      "source_index": 9130,
+      "id": "2870934",
+      "term": "三重陽子",
+      "reading": "さんじゅうようし",
+      "meaning": "triton (nucleus of tritium)"
+    },
+    {
+      "source_index": 9131,
+      "id": "1300710",
+      "term": "三十六計",
+      "reading": "さんじゅうろっけい",
+      "meaning": "the 36 (ancient Chinese military) strategies (of which the last resort was said to be beating a retreat)"
+    },
+    {
+      "source_index": 9132,
+      "id": "2358670",
+      "term": "算術演算",
+      "reading": "さんじゅつえんざん",
+      "meaning": "arithmetic operation"
+    },
+    {
+      "source_index": 9133,
+      "id": "2358720",
+      "term": "算術加算",
+      "reading": "さんじゅつかさん",
+      "meaning": "arithmetic addition"
+    },
+    {
+      "source_index": 9134,
+      "id": "1824670",
+      "term": "算術級数",
+      "reading": "さんじゅつきゅうすう",
+      "meaning": "arithmetical progression"
+    },
+    {
+      "source_index": 9135,
+      "id": "1936230",
+      "term": "算術計算",
+      "reading": "さんじゅつけいさん",
+      "meaning": "arithmetical computation / (performing) an arithmetical operation"
+    },
+    {
+      "source_index": 9136,
+      "id": "2358750",
+      "term": "算術乗算",
+      "reading": "さんじゅつじょうざん",
+      "meaning": "arithmetic multiplication"
+    },
+    {
+      "source_index": 9137,
+      "id": "1824660",
+      "term": "算術平均",
+      "reading": "さんじゅつへいきん",
+      "meaning": "arithmetic mean"
+    },
+    {
+      "source_index": 9138,
+      "id": "2358770",
+      "term": "算術命令",
+      "reading": "さんじゅつめいれい",
+      "meaning": "arithmetic instruction / arithmetic statement"
+    },
+    {
+      "source_index": 9139,
+      "id": "1789950",
+      "term": "賛助会員",
+      "reading": "さんじょかいいん",
+      "meaning": "supporting member"
+    },
+    {
+      "source_index": 9140,
+      "id": "2848087",
+      "term": "産褥麻痺",
+      "reading": "さんじょくまひ",
+      "meaning": "milk fever / parturient paresis / postparturient hypocalcemia"
+    },
+    {
+      "source_index": 9141,
+      "id": "2696750",
+      "term": "三錐歯目",
+      "reading": "さんすいしもく",
+      "meaning": "Triconodonta / Eutriconodonta / order of early mammals"
+    },
+    {
+      "source_index": 9142,
+      "id": "2829079",
+      "term": "散水養生",
+      "reading": "さんすいようじょう",
+      "meaning": "spray curing / curing of newly-poured and slightly hardened concrete"
+    },
+    {
+      "source_index": 9143,
+      "id": "2857203",
+      "term": "算数障害",
+      "reading": "さんすうしょうがい",
+      "meaning": "dyscalculia / mathematics disorder"
+    },
+    {
+      "source_index": 9144,
+      "id": "2143880",
+      "term": "賛成意見",
+      "reading": "さんせいいけん",
+      "meaning": "consenting opinion"
+    },
+    {
+      "source_index": 9145,
+      "id": "2634060",
+      "term": "酸性血症",
+      "reading": "さんせいけつしょう",
+      "meaning": "acidosis"
+    },
+    {
+      "source_index": 9146,
+      "id": "1700220",
+      "term": "酸性食品",
+      "reading": "さんせいしょくひん",
+      "meaning": "acid(ic) foods"
+    },
+    {
+      "source_index": 9147,
+      "id": "2634070",
+      "term": "酸性染料",
+      "reading": "さんせいせんりょう",
+      "meaning": "acid dye"
+    },
+    {
+      "source_index": 9148,
+      "id": "2151740",
+      "term": "賛成多数",
+      "reading": "さんせいたすう",
+      "meaning": "majority (vote)"
+    },
+    {
+      "source_index": 9149,
+      "id": "5322730",
+      "term": "山西大学",
+      "reading": "さんせいだいがく",
+      "meaning": "Shanxi University"
+    },
+    {
+      "source_index": 9150,
+      "id": "1700170",
+      "term": "酸性土壌",
+      "reading": "さんせいどじょう",
+      "meaning": "acid soil"
+    },
+    {
+      "source_index": 9151,
+      "id": "1700190",
+      "term": "酸性白土",
+      "reading": "さんせいはくど",
+      "meaning": "(Japanese) acid clay"
+    },
+    {
+      "source_index": 9152,
+      "id": "1700180",
+      "term": "酸性反応",
+      "reading": "さんせいはんのう",
+      "meaning": "acid reaction"
+    },
+    {
+      "source_index": 9153,
+      "id": "1700210",
+      "term": "酸性肥料",
+      "reading": "さんせいひりょう",
+      "meaning": "acid fertilizer / acid fertiliser"
+    },
+    {
+      "source_index": 9154,
+      "id": "2030980",
+      "term": "山川草木",
+      "reading": "さんせんそうもく",
+      "meaning": "nature / natural scenery"
+    },
+    {
+      "source_index": 9155,
+      "id": "2030990",
+      "term": "山川万里",
+      "reading": "さんせんばんり",
+      "meaning": "being far away across mountains and rivers"
+    },
+    {
+      "source_index": 9156,
+      "id": "2045620",
+      "term": "三世因果",
+      "reading": "さんぜいんが",
+      "meaning": "retribution spanning the three temporal worlds (present, past, future)"
+    },
+    {
+      "source_index": 9157,
+      "id": "2270310",
+      "term": "三世諸仏",
+      "reading": "さんぜしょぶつ",
+      "meaning": "all Buddhas of past, present and future"
+    },
+    {
+      "source_index": 9158,
+      "id": "2646400",
+      "term": "三世十方",
+      "reading": "さんぜじっぽう",
+      "meaning": "limitless time and space"
+    },
+    {
+      "source_index": 9159,
+      "id": "2157250",
+      "term": "産前産後",
+      "reading": "さんぜんさんご",
+      "meaning": "before and after childbirth"
+    },
+    {
+      "source_index": 9160,
+      "id": "1301120",
+      "term": "三千世界",
+      "reading": "さんぜんせかい",
+      "meaning": "the whole universe (of a billion worlds) that Buddha enlightened"
+    },
+    {
+      "source_index": 9161,
+      "id": "1301160",
+      "term": "三相交流",
+      "reading": "さんそうこうりゅう",
+      "meaning": "three-phase alternating current"
+    },
+    {
+      "source_index": 9162,
+      "id": "1700250",
+      "term": "酸素吸入",
+      "reading": "さんそきゅうにゅう",
+      "meaning": "oxygen inhalation"
+    },
+    {
+      "source_index": 9163,
+      "id": "1304360",
+      "term": "酸素供給",
+      "reading": "さんそきょうきゅう",
+      "meaning": "oxygen supply"
+    },
+    {
+      "source_index": 9164,
+      "id": "2216290",
+      "term": "酸素欠乏",
+      "reading": "さんそけつぼう",
+      "meaning": "oxygen deficiency / anoxia / hypoxia"
+    },
+    {
+      "source_index": 9165,
+      "id": "2440310",
+      "term": "酸素呼吸",
+      "reading": "さんそこきゅう",
+      "meaning": "aerobic respiration"
+    },
+    {
+      "source_index": 9166,
+      "id": "2801390",
+      "term": "酸素処理",
+      "reading": "さんそしょり",
+      "meaning": "(induced) oxygenation / treatment with oxygen"
+    },
+    {
+      "source_index": 9167,
+      "id": "2852653",
+      "term": "酸素濃度",
+      "reading": "さんそのうど",
+      "meaning": "oxygen content (of air)"
+    },
+    {
+      "source_index": 9168,
+      "id": "2634030",
+      "term": "酸素負債",
+      "reading": "さんそふさい",
+      "meaning": "oxygen debt"
+    },
+    {
+      "source_index": 9169,
+      "id": "2697480",
+      "term": "三尊天井",
+      "reading": "さんぞんてんじょう",
+      "meaning": "head and shoulders (chartist pattern)"
+    },
+    {
+      "source_index": 9170,
+      "id": "2837847",
+      "term": "山体崩壊",
+      "reading": "さんたいほうかい",
+      "meaning": "debris avalanche (of a volcano) / collapse of volcanic edifice / sector collapse"
+    },
+    {
+      "source_index": 9171,
+      "id": "2803880",
+      "term": "三体問題",
+      "reading": "さんたいもんだい",
+      "meaning": "three-body problem"
+    },
+    {
+      "source_index": 9172,
+      "id": "2843159",
+      "term": "三大義務",
+      "reading": "さんだいぎむ",
+      "meaning": "The Three Major Duties (education, work and payment of taxes)"
+    },
+    {
+      "source_index": 9173,
+      "id": "2160990",
+      "term": "三大疾病",
+      "reading": "さんだいしっぺい",
+      "meaning": "three major diseases (cancer, cerebral stroke, acute myocardial infarction)"
+    },
+    {
+      "source_index": 9174,
+      "id": "2248840",
+      "term": "三代実録",
+      "reading": "さんだいじつろく",
+      "meaning": "Sandai Jitsuroku (sixth of the six classical Japanese history texts)"
+    },
+    {
+      "source_index": 9175,
+      "id": "1301200",
+      "term": "三大都市",
+      "reading": "さんだいとし",
+      "meaning": "the three most important cities (esp. in ref. to Tokyo, Osaka, Nagoya)"
+    },
+    {
+      "source_index": 9176,
+      "id": "2863717",
+      "term": "三大欲求",
+      "reading": "さんだいよっきゅう",
+      "meaning": "the three great desires (sleep, food and sex)"
+    },
+    {
+      "source_index": 9177,
+      "id": "2866519",
+      "term": "三段活用",
+      "reading": "さんだんかつよう",
+      "meaning": "trigrade conjugation (of the classical verbs \"su\" and \"ku\") / conjugation in which the stem vowel alternates between \"i\", \"u\" and \"o\""
+    },
+    {
+      "source_index": 9178,
+      "id": "2022340",
+      "term": "三段目格",
+      "reading": "さんだんめかく",
+      "meaning": "referee officiating the third lowest sumo division"
+    },
+    {
+      "source_index": 9179,
+      "id": "1301220",
+      "term": "三段論法",
+      "reading": "さんだんろんぽう",
+      "meaning": "syllogism"
+    },
+    {
+      "source_index": 9180,
+      "id": "2842723",
+      "term": "産地偽装",
+      "reading": "さんちぎそう",
+      "meaning": "fraudulent claim of product origin"
+    },
+    {
+      "source_index": 9181,
+      "id": "2823590",
+      "term": "産地直送",
+      "reading": "さんちちょくそう",
+      "meaning": "direct from the farm / farm-fresh"
+    },
+    {
+      "source_index": 9182,
+      "id": "2591310",
+      "term": "散茶女郎",
+      "reading": "さんちゃじょろう",
+      "meaning": "prostitute from the Yoshiwara district of a fairly high rank (Edo period)"
+    },
+    {
+      "source_index": 9183,
+      "id": "5747947",
+      "term": "三帝協商",
+      "reading": "さんていきょうしょう",
+      "meaning": "Three Emperors' Alliance (1881; between Russia, Austria-Hungary, and Germany)"
+    },
+    {
+      "source_index": 9184,
+      "id": "2863043",
+      "term": "三帝同盟",
+      "reading": "さんていどうめい",
+      "meaning": "League of the Three Emperors (1873-1887)"
+    },
+    {
+      "source_index": 9185,
+      "id": "2870171",
+      "term": "山天大畜",
+      "reading": "さんてんだいちく",
+      "meaning": "da xu (hexagram 26 of the I Ching: the taming power of the great)"
+    },
+    {
+      "source_index": 9186,
+      "id": "2836097",
+      "term": "三店方式",
+      "reading": "さんてんほうしき",
+      "meaning": "three shop system / system employed by pachinko parlours of using separate shops to exchange prizes for cash as a way of circumventing gambling laws"
+    },
+    {
+      "source_index": 9187,
+      "id": "2844507",
+      "term": "三等海佐",
+      "reading": "さんとうかいさ",
+      "meaning": "lieutenant-commander (JMSDF)"
+    },
+    {
+      "source_index": 9188,
+      "id": "2844512",
+      "term": "三等空曹",
+      "reading": "さんとうくうそう",
+      "meaning": "staff sergeant (JASDF)"
+    },
+    {
+      "source_index": 9189,
+      "id": "1301290",
+      "term": "三等軍曹",
+      "reading": "さんとうぐんそう",
+      "meaning": "sergeant"
+    },
+    {
+      "source_index": 9190,
+      "id": "2831447",
+      "term": "三等重役",
+      "reading": "さんとうじゅうやく",
+      "meaning": "third-rate company director / executive in name only"
+    },
+    {
+      "source_index": 9191,
+      "id": "1301310",
+      "term": "三頭政治",
+      "reading": "さんとうせいじ",
+      "meaning": "triumvirate"
+    },
+    {
+      "source_index": 9192,
+      "id": "5323609",
+      "term": "山東大学",
+      "reading": "さんとうだいがく",
+      "meaning": "Shandong University / SDU"
+    },
+    {
+      "source_index": 9193,
+      "id": "2835081",
+      "term": "三等兵曹",
+      "reading": "さんとうへいそう",
+      "meaning": "petty officer third class (USN)"
+    },
+    {
+      "source_index": 9194,
+      "id": "2844569",
+      "term": "三等陸尉",
+      "reading": "さんとうりくい",
+      "meaning": "second lieutenant (JGSDF)"
+    },
+    {
+      "source_index": 9195,
+      "id": "2844568",
+      "term": "三等陸佐",
+      "reading": "さんとうりくさ",
+      "meaning": "major (JGSDF)"
+    },
+    {
+      "source_index": 9196,
+      "id": "2844570",
+      "term": "三等陸曹",
+      "reading": "さんとうりくそう",
+      "meaning": "sergeant (JGSDF) / sergeant second class"
+    },
+    {
+      "source_index": 9197,
+      "id": "2070640",
+      "term": "三徳包丁",
+      "reading": "さんとくほうちょう",
+      "meaning": "all-purpose kitchen knife / santoku knife"
+    },
+    {
+      "source_index": 9198,
+      "id": "2863423",
+      "term": "産道感染",
+      "reading": "さんどうかんせん",
+      "meaning": "intrapartum infection / infection acquired during birth"
+    },
+    {
+      "source_index": 9199,
+      "id": "2668630",
+      "term": "三度三度",
+      "reading": "さんどさんど",
+      "meaning": "three times a day (of meals)"
+    },
+    {
+      "source_index": 9200,
+      "id": "2163320",
+      "term": "参入障壁",
+      "reading": "さんにゅうしょうへき",
+      "meaning": "barriers to entry"
+    },
+    {
+      "source_index": 9201,
+      "id": "2760840",
+      "term": "三人三様",
+      "reading": "さんにんさんよう",
+      "meaning": "each of the three being different from the other two / each of the three having his (her) own way"
+    },
+    {
+      "source_index": 9202,
+      "id": "2866112",
+      "term": "三人麻雀",
+      "reading": "さんにんマージャン",
+      "meaning": "three-player mahjong / sanma"
+    },
+    {
+      "source_index": 9203,
+      "id": "2432870",
+      "term": "山王権現",
+      "reading": "さんのうごんげん",
+      "meaning": "deity enshrined at Hie Shrine (in Shiga and Tokyo)"
+    },
+    {
+      "source_index": 9204,
+      "id": "2604080",
+      "term": "山王神道",
+      "reading": "さんのうしんとう",
+      "meaning": "Sanno Shinto (branch of Shinto formed in the Tendai school of Buddhism)"
+    },
+    {
+      "source_index": 9205,
+      "id": "5325007",
+      "term": "産能大学",
+      "reading": "さんのうだいがく",
+      "meaning": "Sanno University"
+    },
+    {
+      "source_index": 9206,
+      "id": "1301440",
+      "term": "三半規管",
+      "reading": "さんはんきかん",
+      "meaning": "semicircular canals (of the inner ear)"
+    },
+    {
+      "source_index": 9207,
+      "id": "2023440",
+      "term": "三番稽古",
+      "reading": "さんばんげいこ",
+      "meaning": "a row of training matches with the same opponent"
+    },
+    {
+      "source_index": 9208,
+      "id": "2023780",
+      "term": "三番出世",
+      "reading": "さんばんしゅっせ",
+      "meaning": "newly recruited wrestlers in the third round of presentation after mae-zumo"
+    },
+    {
+      "source_index": 9209,
+      "id": "2045660",
+      "term": "三番勝負",
+      "reading": "さんばんしょうぶ",
+      "meaning": "three-game match / three-bout contest / a rubber (in a card game)"
+    },
+    {
+      "source_index": 9210,
+      "id": "1301410",
+      "term": "三拝九拝",
+      "reading": "さんぱいきゅうはい",
+      "meaning": "kowtowing / bowing repeatedly / three kneelings and nine prostrations"
+    },
+    {
+      "source_index": 9211,
+      "id": "2844431",
+      "term": "三反主義",
+      "reading": "さんぱんしゅぎ",
+      "meaning": "anti-communism, anti-capitalism, anti-fascism (policy of the Socialist Masses Party)"
+    },
+    {
+      "source_index": 9212,
+      "id": "1301500",
+      "term": "三百諸侯",
+      "reading": "さんびゃくしょこう",
+      "meaning": "all daimyo"
+    },
+    {
+      "source_index": 9213,
+      "id": "1301510",
+      "term": "三百代言",
+      "reading": "さんびゃくだいげん",
+      "meaning": "pettifogging lawyer / unscrupulous or unethical lawyer / shyster"
+    },
+    {
+      "source_index": 9214,
+      "id": "1879550",
+      "term": "賛否同票",
+      "reading": "さんぴどうひょう",
+      "meaning": "tie vote / equal number of votes for and against"
+    },
+    {
+      "source_index": 9215,
+      "id": "1304230",
+      "term": "賛否両論",
+      "reading": "さんぴりょうろん",
+      "meaning": "arguments for and against / pros and cons / mixed reception"
+    },
+    {
+      "source_index": 9216,
+      "id": "1303850",
+      "term": "産婦人科",
+      "reading": "さんふじんか",
+      "meaning": "maternity and gynaecology department (gynecology) / department of obstetrics and gynaecology (gynecology)"
+    },
+    {
+      "source_index": 9217,
+      "id": "2849764",
+      "term": "三不政策",
+      "reading": "さんふせいさく",
+      "meaning": "Three Noes (former Taiwan policy of no contact, no negotiation and no compromise with China)"
+    },
+    {
+      "source_index": 9218,
+      "id": "1301530",
+      "term": "三部合唱",
+      "reading": "さんぶがっしょう",
+      "meaning": "3 part chorus / vocal trio"
+    },
+    {
+      "source_index": 9219,
+      "id": "1301540",
+      "term": "三部合奏",
+      "reading": "さんぶがっそう",
+      "meaning": "instrumental trio"
+    },
+    {
+      "source_index": 9220,
+      "id": "2721860",
+      "term": "三幅一対",
+      "reading": "さんぷくいっつい",
+      "meaning": "set of three"
+    },
+    {
+      "source_index": 9221,
+      "id": "1658070",
+      "term": "産別会議",
+      "reading": "さんべつかいぎ",
+      "meaning": "Congress of Industrial Organizations (Organisation) / CIO"
+    },
+    {
+      "source_index": 9222,
+      "id": "2819140",
+      "term": "三辺合計",
+      "reading": "さんぺんごうけい",
+      "meaning": "sum of the length, width and height (of a package, etc.)"
+    },
+    {
+      "source_index": 9223,
+      "id": "2819160",
+      "term": "三辺測量",
+      "reading": "さんぺんそくりょう",
+      "meaning": "trilateration"
+    },
+    {
+      "source_index": 9224,
+      "id": "2225310",
+      "term": "散房花序",
+      "reading": "さんぼうかじょ",
+      "meaning": "corymbose inflorescence / corymb"
+    },
+    {
+      "source_index": 9225,
+      "id": "2245500",
+      "term": "三宝荒神",
+      "reading": "さんぼうこうじん",
+      "meaning": "guardian deity of the three jewels (Buddha, Dharma and Sangha)"
+    },
+    {
+      "source_index": 9226,
+      "id": "2847961",
+      "term": "参謀総長",
+      "reading": "さんぼうそうちょう",
+      "meaning": "chief of the general staff / chief of staff (esp. US)"
+    },
+    {
+      "source_index": 9227,
+      "id": "1302600",
+      "term": "参謀本部",
+      "reading": "さんぼうほんぶ",
+      "meaning": "General Staff Headquarters"
+    },
+    {
+      "source_index": 9228,
+      "id": "2045670",
+      "term": "三本勝負",
+      "reading": "さんぼんしょうぶ",
+      "meaning": "a set of three bouts / three-game match / three-bout contest"
+    },
+    {
+      "source_index": 9229,
+      "id": "2358810",
+      "term": "算法言語",
+      "reading": "さんぽうげんご",
+      "meaning": "algorithmic language"
+    },
+    {
+      "source_index": 9230,
+      "id": "2839968",
+      "term": "三歩下がって",
+      "reading": "さんぽさがって",
+      "meaning": "with humility (esp. of women in relation to their partner) / humbly / three steps behind"
+    },
+    {
+      "source_index": 9231,
+      "id": "2109960",
+      "term": "散歩日和",
+      "reading": "さんぽびより",
+      "meaning": "ideal weather for a walk"
+    },
+    {
+      "source_index": 9232,
+      "id": "2830896",
+      "term": "三幕構成",
+      "reading": "さんまくこうせい",
+      "meaning": "three-act structure (in screenwriting: setup, confrontation, resolution)"
+    },
+    {
+      "source_index": 9233,
+      "id": "2584040",
+      "term": "三昧耶戒",
+      "reading": "さんまやかい",
+      "meaning": "precepts given to an adherent prior to being consecrated as an Acharya (in esoteric Buddhism)"
+    },
+    {
+      "source_index": 9234,
+      "id": "2583640",
+      "term": "三昧耶形",
+      "reading": "さんまやぎょう",
+      "meaning": "object or shape that symbolizes the vow of a buddha or bodhisattva to save all life"
+    },
+    {
+      "source_index": 9235,
+      "id": "1299860",
+      "term": "三位一体",
+      "reading": "さんみいったい",
+      "meaning": "the Trinity"
+    },
+    {
+      "source_index": 9236,
+      "id": "1814060",
+      "term": "三民主義",
+      "reading": "さんみんしゅぎ",
+      "meaning": "(Sun Yat-sen's) Three Principles of the People"
+    },
+    {
+      "source_index": 9237,
+      "id": "2063550",
+      "term": "三無主義",
+      "reading": "さんむしゅぎ",
+      "meaning": "the \"three noes principle\" of no drive, no interest, and no sense of responsibility / principle of indolence, indifference, and irresponsibility"
+    },
+    {
+      "source_index": 9238,
+      "id": "1301740",
+      "term": "三面記事",
+      "reading": "さんめんきじ",
+      "meaning": "human-interest article / city news / local news"
+    },
+    {
+      "source_index": 9239,
+      "id": "1301760",
+      "term": "三面六臂",
+      "reading": "さんめんろっぴ",
+      "meaning": "rush of business / versatility / man who can do the work of many"
+    },
+    {
+      "source_index": 9240,
+      "id": "2870280",
+      "term": "三文芝居",
+      "reading": "さんもんしばい",
+      "meaning": "cheap and low-quality play / performance not worth paying to see"
+    },
+    {
+      "source_index": 9241,
+      "id": "1301600",
+      "term": "三文小説",
+      "reading": "さんもんしょうせつ",
+      "meaning": "dime novel"
+    },
+    {
+      "source_index": 9242,
+      "id": "2211280",
+      "term": "三門徒派",
+      "reading": "さんもんとは",
+      "meaning": "Sanmonto sect (of Shin Buddhism)"
+    },
+    {
+      "source_index": 9243,
+      "id": "1301620",
+      "term": "三文文士",
+      "reading": "さんもんぶんし",
+      "meaning": "hack writer / pulp-writer / penny-a-liner"
+    },
+    {
+      "source_index": 9244,
+      "id": "2045690",
+      "term": "三文役者",
+      "reading": "さんもんやくしゃ",
+      "meaning": "third-rate actor"
+    },
+    {
+      "source_index": 9245,
+      "id": "5320250",
+      "term": "三洋信販",
+      "reading": "さんようしんぱん",
+      "meaning": "Sanyo Shinpan (consumer loan firm)"
+    },
+    {
+      "source_index": 9246,
+      "id": "2045700",
+      "term": "山容水態",
+      "reading": "さんようすいたい",
+      "meaning": "scenic beauty of mountains and streams / fresh and clear beauty of nature's splendor"
+    },
+    {
+      "source_index": 9247,
+      "id": "1824650",
+      "term": "算用数字",
+      "reading": "さんようすうじ",
+      "meaning": "Arabic numeral"
+    },
+    {
+      "source_index": 9248,
+      "id": "2150650",
+      "term": "山陽地方",
+      "reading": "さんようちほう",
+      "meaning": "San'yō region / region of western Honshu incl. Okayama, Hiroshima, southern Yamaguchi and sometimes western Hyogo prefectures"
+    },
+    {
+      "source_index": 9249,
+      "id": "2241190",
+      "term": "産卵回遊",
+      "reading": "さんらんかいゆう",
+      "meaning": "spawning migration"
+    },
+    {
+      "source_index": 9250,
+      "id": "2099830",
+      "term": "散乱反射",
+      "reading": "さんらんはんしゃ",
+      "meaning": "scatter reflections"
+    },
+    {
+      "source_index": 9251,
+      "id": "1936220",
+      "term": "産卵場所",
+      "reading": "さんらんばしょ",
+      "meaning": "spawning grounds / egg-laying site"
+    },
+    {
+      "source_index": 9252,
+      "id": "2832393",
+      "term": "三連音符",
+      "reading": "さんれんおんぷ",
+      "meaning": "triplet"
+    },
+    {
+      "source_index": 9253,
+      "id": "5320514",
+      "term": "三和銀行",
+      "reading": "さんわぎんこう",
+      "meaning": "Sanwa Bank, Limited"
+    },
+    {
+      "source_index": 9254,
+      "id": "2063530",
+      "term": "三割自治",
+      "reading": "さんわりじち",
+      "meaning": "the \"thirty-percent autonomy\" of local governments"
+    },
+    {
+      "source_index": 9255,
+      "id": "2872474",
+      "term": "算を乱す",
+      "reading": "さんをみだす",
+      "meaning": "to break and run (e.g. of a defeated army or panicking crowd) / to flee in disorder / to scatter in all directions"
+    },
+    {
+      "source_index": 9256,
+      "id": "2410750",
+      "term": "在院日数",
+      "reading": "ざいいんにっすう",
+      "meaning": "number of days spent in hospital"
+    },
+    {
+      "source_index": 9257,
+      "id": "1296450",
+      "term": "在韓米軍",
+      "reading": "ざいかんべいぐん",
+      "meaning": "US troops stationed in South Korea"
+    },
+    {
+      "source_index": 9258,
+      "id": "1657800",
+      "term": "在外公館",
+      "reading": "ざいがいこうかん",
+      "meaning": "diplomatic mission / overseas diplomatic establishment"
+    },
+    {
+      "source_index": 9259,
+      "id": "1741070",
+      "term": "在外資産",
+      "reading": "ざいがいしさん",
+      "meaning": "foreign assets"
+    },
+    {
+      "source_index": 9260,
+      "id": "1993630",
+      "term": "在外投票",
+      "reading": "ざいがいとうひょう",
+      "meaning": "overseas ballot"
+    },
+    {
+      "source_index": 9261,
+      "id": "1741060",
+      "term": "在外邦人",
+      "reading": "ざいがいほうじん",
+      "meaning": "Japanese nationals resident abroad / overseas Japanese"
+    },
+    {
+      "source_index": 9262,
+      "id": "1637750",
+      "term": "財形貯蓄",
+      "reading": "ざいけいちょちく",
+      "meaning": "property accumulation savings"
+    },
+    {
+      "source_index": 9263,
+      "id": "2199670",
+      "term": "財源確保",
+      "reading": "ざいげんかくほ",
+      "meaning": "securing financial resources"
+    },
+    {
+      "source_index": 9264,
+      "id": "1741210",
+      "term": "在庫管理",
+      "reading": "ざいこかんり",
+      "meaning": "inventory control"
+    },
+    {
+      "source_index": 9265,
+      "id": "1993650",
+      "term": "在庫資金",
+      "reading": "ざいこしきん",
+      "meaning": "stock fund"
+    },
+    {
+      "source_index": 9266,
+      "id": "2163310",
+      "term": "在庫循環",
+      "reading": "ざいこじゅんかん",
+      "meaning": "inventory cycle"
+    },
+    {
+      "source_index": 9267,
+      "id": "2737540",
+      "term": "在庫状況",
+      "reading": "ざいこじょうきょう",
+      "meaning": "inventory status / stock status / inventory level"
+    },
+    {
+      "source_index": 9268,
+      "id": "1936010",
+      "term": "在庫調整",
+      "reading": "ざいこちょうせい",
+      "meaning": "inventory (stock) adjustment"
+    },
+    {
+      "source_index": 9269,
+      "id": "2162590",
+      "term": "在庫投資",
+      "reading": "ざいことうし",
+      "meaning": "inventory investment"
+    },
+    {
+      "source_index": 9270,
+      "id": "2863225",
+      "term": "在庫引当",
+      "reading": "ざいこひきあて",
+      "meaning": "inventory reservation / stock allocation / order allocation"
+    },
+    {
+      "source_index": 9271,
+      "id": "1741240",
+      "term": "在郷軍人",
+      "reading": "ざいごうぐんじん",
+      "meaning": "reservist"
+    },
+    {
+      "source_index": 9272,
+      "id": "1740990",
+      "term": "財産相続",
+      "reading": "ざいさんそうぞく",
+      "meaning": "succession to or inheritance of property"
+    },
+    {
+      "source_index": 9273,
+      "id": "2266750",
+      "term": "財産番号",
+      "reading": "ざいさんばんごう",
+      "meaning": "asset register number"
+    },
+    {
+      "source_index": 9274,
+      "id": "1740970",
+      "term": "財産分与",
+      "reading": "ざいさんぶんよ",
+      "meaning": "distribution of property"
+    },
+    {
+      "source_index": 9275,
+      "id": "1740980",
+      "term": "財産目録",
+      "reading": "ざいさんもくろく",
+      "meaning": "inventory of property"
+    },
+    {
+      "source_index": 9276,
+      "id": "1700720",
+      "term": "罪障消滅",
+      "reading": "ざいしょうしょうめつ",
+      "meaning": "expiation of sins"
+    },
+    {
+      "source_index": 9277,
+      "id": "2045530",
+      "term": "罪状糾明",
+      "reading": "ざいじょうきゅうめい",
+      "meaning": "closely examining (questioning) the concrete circumstances of a crime"
+    },
+    {
+      "source_index": 9278,
+      "id": "2826901",
+      "term": "罪状認否",
+      "reading": "ざいじょうにんぴ",
+      "meaning": "arraignment / plea (of guilty or not guilty)"
+    },
+    {
+      "source_index": 9279,
+      "id": "2045540",
+      "term": "罪状明白",
+      "reading": "ざいじょうめいはく",
+      "meaning": "being proven guilty of a crime / having one's guilt for a crime made clear / (the) nature of offense being (becoming) clear"
+    },
+    {
+      "source_index": 9280,
+      "id": "1993710",
+      "term": "財政赤字",
+      "reading": "ざいせいあかじ",
+      "meaning": "budget deficit"
+    },
+    {
+      "source_index": 9281,
+      "id": "1296840",
+      "term": "財政安定",
+      "reading": "ざいせいあんてい",
+      "meaning": "economic stability / fiscal stability"
+    },
+    {
+      "source_index": 9282,
+      "id": "2647360",
+      "term": "財政援助",
+      "reading": "ざいせいえんじょ",
+      "meaning": "financial aid / financial assistance / financial help"
+    },
+    {
+      "source_index": 9283,
+      "id": "1296850",
+      "term": "財政改革",
+      "reading": "ざいせいかいかく",
+      "meaning": "economic reform / fiscal reform"
+    },
+    {
+      "source_index": 9284,
+      "id": "2161800",
+      "term": "財政関税",
+      "reading": "ざいせいかんぜい",
+      "meaning": "revenue tariff"
+    },
+    {
+      "source_index": 9285,
+      "id": "2215450",
+      "term": "財政機関",
+      "reading": "ざいせいきかん",
+      "meaning": "financial institution"
+    },
+    {
+      "source_index": 9286,
+      "id": "1296860",
+      "term": "財政危機",
+      "reading": "ざいせいきき",
+      "meaning": "economic crisis / financial crisis"
+    },
+    {
+      "source_index": 9287,
+      "id": "2864718",
+      "term": "財政規律",
+      "reading": "ざいせいきりつ",
+      "meaning": "fiscal discipline / budgetary discipline"
+    },
+    {
+      "source_index": 9288,
+      "id": "1993670",
+      "term": "財政黒字",
+      "reading": "ざいせいくろじ",
+      "meaning": "budget surplus"
+    },
+    {
+      "source_index": 9289,
+      "id": "1993660",
+      "term": "財政構造",
+      "reading": "ざいせいこうぞう",
+      "meaning": "fiscal structure"
+    },
+    {
+      "source_index": 9290,
+      "id": "2640580",
+      "term": "財政困難",
+      "reading": "ざいせいこんなん",
+      "meaning": "financial difficulties / pecuniary embarrassment"
+    },
+    {
+      "source_index": 9291,
+      "id": "1993680",
+      "term": "財政再建",
+      "reading": "ざいせいさいけん",
+      "meaning": "finance reform / fiscal reconstruction"
+    },
+    {
+      "source_index": 9292,
+      "id": "1296880",
+      "term": "財政支援",
+      "reading": "ざいせいしえん",
+      "meaning": "economic support / financial support"
+    },
+    {
+      "source_index": 9293,
+      "id": "1993690",
+      "term": "財政支出",
+      "reading": "ざいせいししゅつ",
+      "meaning": "government spending"
+    },
+    {
+      "source_index": 9294,
+      "id": "1296890",
+      "term": "財政収支",
+      "reading": "ざいせいしゅうし",
+      "meaning": "fiscal balance"
+    },
+    {
+      "source_index": 9295,
+      "id": "2829296",
+      "term": "財政出動",
+      "reading": "ざいせいしゅつどう",
+      "meaning": "fiscal stimulus / increasing public spending"
+    },
+    {
+      "source_index": 9296,
+      "id": "1993700",
+      "term": "財政状態",
+      "reading": "ざいせいじょうたい",
+      "meaning": "financial condition"
+    },
+    {
+      "source_index": 9297,
+      "id": "1740920",
+      "term": "財政政策",
+      "reading": "ざいせいせいさく",
+      "meaning": "fiscal policy"
+    },
+    {
+      "source_index": 9298,
+      "id": "2647370",
+      "term": "財政年度",
+      "reading": "ざいせいねんど",
+      "meaning": "fiscal year / financial year"
+    },
+    {
+      "source_index": 9299,
+      "id": "1296910",
+      "term": "財政破綻",
+      "reading": "ざいせいはたん",
+      "meaning": "economic collapse"
+    },
+    {
+      "source_index": 9300,
+      "id": "1296920",
+      "term": "財政問題",
+      "reading": "ざいせいもんだい",
+      "meaning": "economic problem / financial problem"
+    },
+    {
+      "source_index": 9301,
+      "id": "2837569",
+      "term": "在籍専従",
+      "reading": "ざいせきせんじゅう",
+      "meaning": "company employee working full-time as a union official"
+    },
+    {
+      "source_index": 9302,
+      "id": "2865725",
+      "term": "在胎週数",
+      "reading": "ざいたいしゅうすう",
+      "meaning": "gestational age (in weeks)"
+    },
+    {
+      "source_index": 9303,
+      "id": "2127350",
+      "term": "在宅医療",
+      "reading": "ざいたくいりょう",
+      "meaning": "home healthcare / medical treatment received at home"
+    },
+    {
+      "source_index": 9304,
+      "id": "2653810",
+      "term": "在宅起訴",
+      "reading": "ざいたくきそ",
+      "meaning": "indictment without arrest / house arrest / prosecution without physical restraint"
+    },
+    {
+      "source_index": 9305,
+      "id": "2797800",
+      "term": "在宅教育",
+      "reading": "ざいたくきょういく",
+      "meaning": "homeschooling"
+    },
+    {
+      "source_index": 9306,
+      "id": "1296550",
+      "term": "在宅勤務",
+      "reading": "ざいたくきんむ",
+      "meaning": "working at home / telecommuting / telework"
+    },
+    {
+      "source_index": 9307,
+      "id": "2835769",
+      "term": "在宅健診",
+      "reading": "ざいたくけんしん",
+      "meaning": "do-it-yourself health check / home health check"
+    },
+    {
+      "source_index": 9308,
+      "id": "2839189",
+      "term": "在宅福祉",
+      "reading": "ざいたくふくし",
+      "meaning": "in-home welfare service / home-based care"
+    },
+    {
+      "source_index": 9309,
+      "id": "1296950",
+      "term": "財団法人",
+      "reading": "ざいだんほうじん",
+      "meaning": "incorporated foundation / juridical foundation"
+    },
+    {
+      "source_index": 9310,
+      "id": "2852039",
+      "term": "在沖米軍",
+      "reading": "ざいちゅうべいぐん",
+      "meaning": "US troops stationed in Okinawa"
+    },
+    {
+      "source_index": 9311,
+      "id": "1296570",
+      "term": "在日米軍",
+      "reading": "ざいにちべいぐん",
+      "meaning": "US Forces, Japan / USFJ"
+    },
+    {
+      "source_index": 9312,
+      "id": "2589640",
+      "term": "在任期間",
+      "reading": "ざいにんきかん",
+      "meaning": "term of office / tenure / incumbency"
+    },
+    {
+      "source_index": 9313,
+      "id": "2439370",
+      "term": "財閥解体",
+      "reading": "ざいばつかいたい",
+      "meaning": "dissolution of the zaibatsu (during the US occupation of Japan)"
+    },
+    {
+      "source_index": 9314,
+      "id": "2855069",
+      "term": "座位分娩",
+      "reading": "ざいぶんべん",
+      "meaning": "delivery in a sitting position / giving birth sitting"
+    },
+    {
+      "source_index": 9315,
+      "id": "1296600",
+      "term": "在米邦人",
+      "reading": "ざいべいほうじん",
+      "meaning": "Japanese people residing in the United States"
+    },
+    {
+      "source_index": 9316,
+      "id": "2852099",
+      "term": "財務会計",
+      "reading": "ざいむかいけい",
+      "meaning": "financial accounting"
+    },
+    {
+      "source_index": 9317,
+      "id": "1740950",
+      "term": "財務管理",
+      "reading": "ざいむかんり",
+      "meaning": "financial management"
+    },
+    {
+      "source_index": 9318,
+      "id": "1740960",
+      "term": "財務諸表",
+      "reading": "ざいむしょひょう",
+      "meaning": "financial statements"
+    },
+    {
+      "source_index": 9319,
+      "id": "2852091",
+      "term": "財務書類",
+      "reading": "ざいむしょるい",
+      "meaning": "financial documents"
+    },
+    {
+      "source_index": 9320,
+      "id": "2631460",
+      "term": "財務戦略",
+      "reading": "ざいむせんりゃく",
+      "meaning": "financial strategy"
+    },
+    {
+      "source_index": 9321,
+      "id": "1297020",
+      "term": "財務体質",
+      "reading": "ざいむたいしつ",
+      "meaning": "financial structure / financial constitution"
+    },
+    {
+      "source_index": 9322,
+      "id": "2098850",
+      "term": "財務大臣",
+      "reading": "ざいむだいじん",
+      "meaning": "Minister of Finance"
+    },
+    {
+      "source_index": 9323,
+      "id": "2869715",
+      "term": "財務長官",
+      "reading": "ざいむちょうかん",
+      "meaning": "Secretary of the Treasury (USA) / Treasury Secretary"
+    },
+    {
+      "source_index": 9324,
+      "id": "2665190",
+      "term": "財務理事",
+      "reading": "ざいむりじ",
+      "meaning": "director of finance / finance director"
+    },
+    {
+      "source_index": 9325,
+      "id": "2821920",
+      "term": "在野精神",
+      "reading": "ざいやせいしん",
+      "meaning": "spirit of defiance of the opposition party / anti-establishment mindset"
+    },
+    {
+      "source_index": 9326,
+      "id": "2845979",
+      "term": "在留期間",
+      "reading": "ざいりゅうきかん",
+      "meaning": "(permitted) period of stay (in a country) / authorized length of stay / duration of stay"
+    },
+    {
+      "source_index": 9327,
+      "id": "2202890",
+      "term": "在留資格",
+      "reading": "ざいりゅうしかく",
+      "meaning": "status of residence / residence status / visa status"
+    },
+    {
+      "source_index": 9328,
+      "id": "1296640",
+      "term": "在留邦人",
+      "reading": "ざいりゅうほうじん",
+      "meaning": "Japanese residents in another country / Japanese expatriates"
+    },
+    {
+      "source_index": 9329,
+      "id": "2836824",
+      "term": "材料科学",
+      "reading": "ざいりょうかがく",
+      "meaning": "materials science"
+    },
+    {
+      "source_index": 9330,
+      "id": "2836825",
+      "term": "材料工学",
+      "reading": "ざいりょうこうがく",
+      "meaning": "materials science and engineering"
+    },
+    {
+      "source_index": 9331,
+      "id": "5309451",
+      "term": "材料部会",
+      "reading": "ざいりょうぶかい",
+      "meaning": "Division of Materials Science and Technology"
+    },
+    {
+      "source_index": 9332,
+      "id": "2650310",
+      "term": "材料不足",
+      "reading": "ざいりょうぶそく",
+      "meaning": "materials shortage"
+    },
+    {
+      "source_index": 9333,
+      "id": "2415570",
+      "term": "材料力学",
+      "reading": "ざいりょうりきがく",
+      "meaning": "mechanics of materials / material mechanics"
+    },
+    {
+      "source_index": 9334,
+      "id": "1842790",
+      "term": "坐骨神経",
+      "reading": "ざこつしんけい",
+      "meaning": "sciatic nerve"
+    },
+    {
+      "source_index": 9335,
+      "id": "2823100",
+      "term": "坐作進退",
+      "reading": "ざさしんたい",
+      "meaning": "deportment / behavior / carriage"
+    },
+    {
+      "source_index": 9336,
+      "id": "2851427",
+      "term": "座席指定",
+      "reading": "ざせきしてい",
+      "meaning": "seat reservation / seat selection"
+    },
+    {
+      "source_index": 9337,
+      "id": "1291890",
+      "term": "座席番号",
+      "reading": "ざせきばんごう",
+      "meaning": "seat number"
+    },
+    {
+      "source_index": 9338,
+      "id": "2143790",
+      "term": "雑誌記者",
+      "reading": "ざっしきしゃ",
+      "meaning": "magazine journalist"
+    },
+    {
+      "source_index": 9339,
+      "id": "2143780",
+      "term": "雑誌記事",
+      "reading": "ざっしきじ",
+      "meaning": "magazine article"
+    },
+    {
+      "source_index": 9340,
+      "id": "2631970",
+      "term": "雑種強勢",
+      "reading": "ざっしゅきょうせい",
+      "meaning": "heterosis / hybrid vigor / hybrid vigour"
+    },
+    {
+      "source_index": 9341,
+      "id": "2440020",
+      "term": "雑種細胞",
+      "reading": "ざっしゅさいぼう",
+      "meaning": "hybrid cell"
+    },
+    {
+      "source_index": 9342,
+      "id": "2254650",
+      "term": "雑食動物",
+      "reading": "ざっしょくどうぶつ",
+      "meaning": "omnivore / omnivorous animal"
+    },
+    {
+      "source_index": 9343,
+      "id": "2858977",
+      "term": "雑踏事故",
+      "reading": "ざっとうじこ",
+      "meaning": "crowd incident (e.g. crowd crush, stampede)"
+    },
+    {
+      "source_index": 9344,
+      "id": "2358420",
+      "term": "雑音除去",
+      "reading": "ざつおんじょきょ",
+      "meaning": "normal mode rejection"
+    },
+    {
+      "source_index": 9345,
+      "id": "2357250",
+      "term": "座標格子",
+      "reading": "ざひょうこうし",
+      "meaning": "coordinate grid"
+    },
+    {
+      "source_index": 9346,
+      "id": "1291970",
+      "term": "座標変換",
+      "reading": "ざひょうへんかん",
+      "meaning": "coordinate transformation"
+    },
+    {
+      "source_index": 9347,
+      "id": "2420000",
+      "term": "ざまあ見ろ",
+      "reading": "ざまあみろ",
+      "meaning": "serves you right! / see what happens!"
+    },
+    {
+      "source_index": 9348,
+      "id": "2031000",
+      "term": "残虐非道",
+      "reading": "ざんぎゃくひどう",
+      "meaning": "inhumanity / atrocity"
+    },
+    {
+      "source_index": 9349,
+      "id": "2031010",
+      "term": "残虐無道",
+      "reading": "ざんぎゃくむどう",
+      "meaning": "inhumanity / atrocity"
+    },
+    {
+      "source_index": 9350,
+      "id": "1754270",
+      "term": "残業手当",
+      "reading": "ざんぎょうてあて",
+      "meaning": "overtime pay"
+    },
+    {
+      "source_index": 9351,
+      "id": "2045600",
+      "term": "残酷非道",
+      "reading": "ざんこくひどう",
+      "meaning": "inhumanity / atrocity / abominable cruelty"
+    },
+    {
+      "source_index": 9352,
+      "id": "2872139",
+      "term": "惨殺死体",
+      "reading": "ざんさつしたい",
+      "meaning": "mutilated corpse / mangled body"
+    },
+    {
+      "source_index": 9353,
+      "id": "1814980",
+      "term": "斬新奇抜",
+      "reading": "ざんしんきばつ",
+      "meaning": "novel / unconventional / cutting-edge"
+    },
+    {
+      "source_index": 9354,
+      "id": "2846647",
+      "term": "残高照会",
+      "reading": "ざんだかしょうかい",
+      "meaning": "balance inquiry (of a bank account)"
+    },
+    {
+      "source_index": 9355,
+      "id": "1304460",
+      "term": "暫定協定",
+      "reading": "ざんていきょうてい",
+      "meaning": "provisional agreement / modus vivendi"
+    },
+    {
+      "source_index": 9356,
+      "id": "2850405",
+      "term": "暫定政権",
+      "reading": "ざんていせいけん",
+      "meaning": "interim government / provisional government / caretaker government"
+    },
+    {
+      "source_index": 9357,
+      "id": "1304470",
+      "term": "暫定政府",
+      "reading": "ざんていせいふ",
+      "meaning": "interim government / provisional government / caretaker government"
+    },
+    {
+      "source_index": 9358,
+      "id": "1936240",
+      "term": "暫定措置",
+      "reading": "ざんていそち",
+      "meaning": "temporary step / stopgap measure"
+    },
+    {
+      "source_index": 9359,
+      "id": "1993820",
+      "term": "暫定内閣",
+      "reading": "ざんていないかく",
+      "meaning": "caretaker government"
+    },
+    {
+      "source_index": 9360,
+      "id": "1815030",
+      "term": "暫定予算",
+      "reading": "ざんていよさん",
+      "meaning": "provisional budget"
+    },
+    {
+      "source_index": 9361,
+      "id": "2031020",
+      "term": "残忍酷薄",
+      "reading": "ざんにんこくはく",
+      "meaning": "cruel / heartless / brutal"
+    },
+    {
+      "source_index": 9362,
+      "id": "2045630",
+      "term": "残忍非情",
+      "reading": "ざんにんひじょう",
+      "meaning": "utterly callous / atrociously brutal / cruel and inhuman"
+    },
+    {
+      "source_index": 9363,
+      "id": "2045640",
+      "term": "残忍非道",
+      "reading": "ざんにんひどう",
+      "meaning": "cruel and inhuman / brutal / merciless"
+    },
+    {
+      "source_index": 9364,
+      "id": "2045650",
+      "term": "残忍冷酷",
+      "reading": "ざんにんれいこく",
+      "meaning": "atrocious and cold-blooded / cruel / brutal"
+    },
+    {
+      "source_index": 9365,
+      "id": "2045680",
+      "term": "残念至極",
+      "reading": "ざんねんしごく",
+      "meaning": "deep regret / bitter disappointment / chagrin"
+    },
+    {
+      "source_index": 9366,
+      "id": "2031030",
+      "term": "残念無念",
+      "reading": "ざんねんむねん",
+      "meaning": "deep regret / bitter disappointment / chagrin"
+    },
+    {
+      "source_index": 9367,
+      "id": "1754210",
+      "term": "残品整理",
+      "reading": "ざんぴんせいり",
+      "meaning": "clearance sale"
+    },
+    {
+      "source_index": 9368,
+      "id": "1304730",
+      "term": "残務整理",
+      "reading": "ざんむせいり",
+      "meaning": "liquidation (of a company) / finishing remaining business"
+    },
+    {
+      "source_index": 9369,
+      "id": "2263970",
+      "term": "残留応力",
+      "reading": "ざんりゅうおうりょく",
+      "meaning": "residual stress"
+    },
+    {
+      "source_index": 9370,
+      "id": "2862538",
+      "term": "残留孤児",
+      "reading": "ざんりゅうこじ",
+      "meaning": "displaced orphans / displaced children"
+    },
+    {
+      "source_index": 9371,
+      "id": "2829240",
+      "term": "残留農薬",
+      "reading": "ざんりゅうのうやく",
+      "meaning": "pesticide residue / agrochemical residues"
+    },
+    {
+      "source_index": 9372,
+      "id": "2865397",
+      "term": "残留婦人",
+      "reading": "ざんりゅうふじん",
+      "meaning": "Japanese woman not repatriated from China after WWII"
+    },
+    {
+      "source_index": 9373,
+      "id": "2775430",
+      "term": "試合開始",
+      "reading": "しあいかいし",
+      "meaning": "start of a match / beginning of a game / kickoff"
+    },
+    {
+      "source_index": 9374,
+      "id": "2651290",
+      "term": "試合巧者",
+      "reading": "しあいこうしゃ",
+      "meaning": "experienced player / tricky player"
+    },
+    {
+      "source_index": 9375,
+      "id": "2394470",
+      "term": "試合終了",
+      "reading": "しあいしゅうりょう",
+      "meaning": "end of a match / end of a game"
+    },
+    {
+      "source_index": 9376,
+      "id": "2855723",
+      "term": "試合放棄",
+      "reading": "しあいほうき",
+      "meaning": "forfeiture of a match / throwing a game"
+    },
+    {
+      "source_index": 9377,
+      "id": "1759590",
+      "term": "指圧療法",
+      "reading": "しあつりょうほう",
+      "meaning": "acupressure therapy"
+    },
+    {
+      "source_index": 9378,
+      "id": "1309510",
+      "term": "思案投首",
+      "reading": "しあんなげくび",
+      "meaning": "being at one's wit's end / being (quite) at a loss (what to do)"
+    },
+    {
+      "source_index": 9379,
+      "id": "2031110",
+      "term": "詩歌管弦",
+      "reading": "しいかかんげん",
+      "meaning": "Chinese and Japanese poetry and instrumental music / poetry and music / literature and music"
+    },
+    {
+      "source_index": 9380,
+      "id": "1879890",
+      "term": "尸位素餐",
+      "reading": "しいそさん",
+      "meaning": "neglecting the duties of an office while taking pay"
+    },
+    {
+      "source_index": 9381,
+      "id": "2831941",
+      "term": "仕入単価",
+      "reading": "しいれたんか",
+      "meaning": "purchase price / unit purchase price"
+    },
+    {
+      "source_index": 9382,
+      "id": "2518380",
+      "term": "子音動詞",
+      "reading": "しいんどうし",
+      "meaning": "consonant stem verb / godan verb"
+    },
+    {
+      "source_index": 9383,
+      "id": "2834904",
+      "term": "市営交通",
+      "reading": "しえいこうつう",
+      "meaning": "municipal transportation / city transport"
+    },
+    {
+      "source_index": 9384,
+      "id": "1308130",
+      "term": "市営住宅",
+      "reading": "しえいじゅうたく",
+      "meaning": "municipal housing"
+    },
+    {
+      "source_index": 9385,
+      "id": "1306190",
+      "term": "使役動詞",
+      "reading": "しえきどうし",
+      "meaning": "causative verb"
+    },
+    {
+      "source_index": 9386,
+      "id": "2844422",
+      "term": "使役動物",
+      "reading": "しえきどうぶつ",
+      "meaning": "working animal / draught animal / draft animal"
+    },
+    {
+      "source_index": 9387,
+      "id": "2870767",
+      "term": "支援学校",
+      "reading": "しえんがっこう",
+      "meaning": "special needs school"
+    },
+    {
+      "source_index": 9388,
+      "id": "2045710",
+      "term": "私怨私欲",
+      "reading": "しえんしよく",
+      "meaning": "personal grudges and selfish desires"
+    },
+    {
+      "source_index": 9389,
+      "id": "2853381",
+      "term": "支援体制",
+      "reading": "しえんたいせい",
+      "meaning": "support system"
+    },
+    {
+      "source_index": 9390,
+      "id": "1310120",
+      "term": "支援団体",
+      "reading": "しえんだんたい",
+      "meaning": "support group"
+    },
+    {
+      "source_index": 9391,
+      "id": "1790480",
+      "term": "塩辛蜻蛉",
+      "reading": "しおからとんぼ",
+      "meaning": "Orthetrum albistylum speciosum (subspecies of white-tailed skimmer)"
+    },
+    {
+      "source_index": 9392,
+      "id": "1313130",
+      "term": "歯科医院",
+      "reading": "しかいいん",
+      "meaning": "dental clinic / dental surgery"
+    },
+    {
+      "source_index": 9393,
+      "id": "2868109",
+      "term": "歯科医学",
+      "reading": "しかいがく",
+      "meaning": "dental medicine / dentistry"
+    },
+    {
+      "source_index": 9394,
+      "id": "1308160",
+      "term": "市会議員",
+      "reading": "しかいぎいん",
+      "meaning": "city councillor / city councilor / city assemblyman"
+    },
+    {
+      "source_index": 9395,
+      "id": "2031040",
+      "term": "四海兄弟",
+      "reading": "しかいけいてい",
+      "meaning": "people in the whole world being all brothers / universal brotherhood"
+    },
+    {
+      "source_index": 9396,
+      "id": "1313140",
+      "term": "歯科医師",
+      "reading": "しかいし",
+      "meaning": "dentist"
+    },
+    {
+      "source_index": 9397,
+      "id": "2168170",
+      "term": "死海写本",
+      "reading": "しかいしゃほん",
+      "meaning": "Dead Sea scrolls"
+    },
+    {
+      "source_index": 9398,
+      "id": "1313150",
+      "term": "歯科医術",
+      "reading": "しかいじゅつ",
+      "meaning": "dentistry"
+    },
+    {
+      "source_index": 9399,
+      "id": "1767220",
+      "term": "四海同胞",
+      "reading": "しかいどうほう",
+      "meaning": "universal brotherhood"
     }
   ]
 }
