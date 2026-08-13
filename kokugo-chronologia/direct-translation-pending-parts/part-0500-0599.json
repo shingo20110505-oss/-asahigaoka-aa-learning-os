@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11420,
-  "english_only_remaining": 3580,
+  "already_direct_japanese": 11430,
+  "english_only_remaining": 3570,
   "english_only_rank_counts": {
-    "(blank)": 3580
+    "(blank)": 3570
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,76 +13,6 @@
   "part_start": 500,
   "part_end": 599,
   "targets": [
-    {
-      "source_index": 11920,
-      "id": "2046020",
-      "term": "自浄能力",
-      "reading": "じじょうのうりょく",
-      "meaning": "self-cleansing power / being capable of purifying oneself"
-    },
-    {
-      "source_index": 11921,
-      "id": "2046060",
-      "term": "自助努力",
-      "reading": "じじょどりょく",
-      "meaning": "self-help efforts / independent efforts / self-supporting endeavor"
-    },
-    {
-      "source_index": 11922,
-      "id": "2857923",
-      "term": "時事用語",
-      "reading": "じじようご",
-      "meaning": "contemporary words / current terminology / words commonly heard in current affairs topics"
-    },
-    {
-      "source_index": 11923,
-      "id": "2145760",
-      "term": "次数解析",
-      "reading": "じすうかいせき",
-      "meaning": "order analysis"
-    },
-    {
-      "source_index": 11924,
-      "id": "2046115",
-      "term": "時世感覚",
-      "reading": "じせいかんかく",
-      "meaning": "sense of the times / sensitivity to the times"
-    },
-    {
-      "source_index": 11925,
-      "id": "2046110",
-      "term": "時勢感覚",
-      "reading": "じせいかんかく",
-      "meaning": "sense of the trend of the times / sensitivity to the changing times"
-    },
-    {
-      "source_index": 11926,
-      "id": "2870825",
-      "term": "自生植物",
-      "reading": "じせいしょくぶつ",
-      "meaning": "wild plant / native plant"
-    },
-    {
-      "source_index": 11927,
-      "id": "2805250",
-      "term": "磁性流体",
-      "reading": "じせいりゅうたい",
-      "meaning": "ferrofluid / magnetic fluid / magnetorheological fluid"
-    },
-    {
-      "source_index": 11928,
-      "id": "2046130",
-      "term": "時節到来",
-      "reading": "じせつとうらい",
-      "meaning": "the time has come (for, to, when ...) / the time being ripe (for)"
-    },
-    {
-      "source_index": 11929,
-      "id": "1817660",
-      "term": "事前運動",
-      "reading": "じぜんうんどう",
-      "meaning": "pre-election campaigning"
-    },
     {
       "source_index": 11930,
       "id": "2716140",
@@ -712,6 +642,76 @@
       "term": "実効支配",
       "reading": "じっこうしはい",
       "meaning": "effective control (over territory) / working control"
+    },
+    {
+      "source_index": 12020,
+      "id": "2361730",
+      "term": "実行時間",
+      "reading": "じっこうじかん",
+      "meaning": "execution time / run time"
+    },
+    {
+      "source_index": 12021,
+      "id": "2361740",
+      "term": "実行順序",
+      "reading": "じっこうじゅんじょ",
+      "meaning": "execution order / execution sequence"
+    },
+    {
+      "source_index": 12022,
+      "id": "2861820",
+      "term": "実効線量",
+      "reading": "じっこうせんりょう",
+      "meaning": "effective dose (radiation)"
+    },
+    {
+      "source_index": 12023,
+      "id": "2147140",
+      "term": "実効税率",
+      "reading": "じっこうぜいりつ",
+      "meaning": "effective tax rate"
+    },
+    {
+      "source_index": 12024,
+      "id": "2361780",
+      "term": "実行速度",
+      "reading": "じっこうそくど",
+      "meaning": "execution speed"
+    },
+    {
+      "source_index": 12025,
+      "id": "2361790",
+      "term": "実行単位",
+      "reading": "じっこうたんい",
+      "meaning": "run unit"
+    },
+    {
+      "source_index": 12026,
+      "id": "2361560",
+      "term": "実効命令",
+      "reading": "じっこうめいれい",
+      "meaning": "actual instruction"
+    },
+    {
+      "source_index": 12027,
+      "id": "1937260",
+      "term": "実際問題",
+      "reading": "じっさいもんだい",
+      "meaning": "practical question / practical problem / practical matter"
+    },
+    {
+      "source_index": 12028,
+      "id": "2113130",
+      "term": "十死一生",
+      "reading": "じっしいっしょう",
+      "meaning": "narrow escape from the jaws of death / cheating death"
+    },
+    {
+      "source_index": 12029,
+      "id": "2437650",
+      "term": "実施形態",
+      "reading": "じっしけいたい",
+      "meaning": "embodiment"
     }
   ]
 }

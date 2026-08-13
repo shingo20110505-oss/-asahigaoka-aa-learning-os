@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11420,
-  "english_only_remaining": 3580,
+  "already_direct_japanese": 11430,
+  "english_only_remaining": 3570,
   "english_only_rank_counts": {
-    "(blank)": 3580
+    "(blank)": 3570
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,76 +13,6 @@
   "part_start": 600,
   "part_end": 699,
   "targets": [
-    {
-      "source_index": 12020,
-      "id": "2361730",
-      "term": "実行時間",
-      "reading": "じっこうじかん",
-      "meaning": "execution time / run time"
-    },
-    {
-      "source_index": 12021,
-      "id": "2361740",
-      "term": "実行順序",
-      "reading": "じっこうじゅんじょ",
-      "meaning": "execution order / execution sequence"
-    },
-    {
-      "source_index": 12022,
-      "id": "2861820",
-      "term": "実効線量",
-      "reading": "じっこうせんりょう",
-      "meaning": "effective dose (radiation)"
-    },
-    {
-      "source_index": 12023,
-      "id": "2147140",
-      "term": "実効税率",
-      "reading": "じっこうぜいりつ",
-      "meaning": "effective tax rate"
-    },
-    {
-      "source_index": 12024,
-      "id": "2361780",
-      "term": "実行速度",
-      "reading": "じっこうそくど",
-      "meaning": "execution speed"
-    },
-    {
-      "source_index": 12025,
-      "id": "2361790",
-      "term": "実行単位",
-      "reading": "じっこうたんい",
-      "meaning": "run unit"
-    },
-    {
-      "source_index": 12026,
-      "id": "2361560",
-      "term": "実効命令",
-      "reading": "じっこうめいれい",
-      "meaning": "actual instruction"
-    },
-    {
-      "source_index": 12027,
-      "id": "1937260",
-      "term": "実際問題",
-      "reading": "じっさいもんだい",
-      "meaning": "practical question / practical problem / practical matter"
-    },
-    {
-      "source_index": 12028,
-      "id": "2113130",
-      "term": "十死一生",
-      "reading": "じっしいっしょう",
-      "meaning": "narrow escape from the jaws of death / cheating death"
-    },
-    {
-      "source_index": 12029,
-      "id": "2437650",
-      "term": "実施形態",
-      "reading": "じっしけいたい",
-      "meaning": "embodiment"
-    },
     {
       "source_index": 12030,
       "id": "2361890",
@@ -712,6 +642,76 @@
       "term": "自動車駅",
       "reading": "じどうしゃえき",
       "meaning": "bus station / bus terminal"
+    },
+    {
+      "source_index": 12120,
+      "id": "1318410",
+      "term": "自動車化",
+      "reading": "じどうしゃか",
+      "meaning": "motorization"
+    },
+    {
+      "source_index": 12121,
+      "id": "1726470",
+      "term": "自動車税",
+      "reading": "じどうしゃぜい",
+      "meaning": "automobile tax / vehicle tax"
+    },
+    {
+      "source_index": 12122,
+      "id": "2251610",
+      "term": "自動車道",
+      "reading": "じどうしゃどう",
+      "meaning": "expressway / motorway"
+    },
+    {
+      "source_index": 12123,
+      "id": "1318450",
+      "term": "自動小銃",
+      "reading": "じどうしょうじゅう",
+      "meaning": "automatic rifle"
+    },
+    {
+      "source_index": 12124,
+      "id": "2428580",
+      "term": "自動織機",
+      "reading": "じどうしょっき",
+      "meaning": "automatic loom"
+    },
+    {
+      "source_index": 12125,
+      "id": "1983360",
+      "term": "自動実行",
+      "reading": "じどうじっこう",
+      "meaning": "self-executing (computer file)"
+    },
+    {
+      "source_index": 12126,
+      "id": "2852136",
+      "term": "自動水栓",
+      "reading": "じどうすいせん",
+      "meaning": "automatic faucet / hands-free tap"
+    },
+    {
+      "source_index": 12127,
+      "id": "1726490",
+      "term": "自動制御",
+      "reading": "じどうせいぎょ",
+      "meaning": "automatic control"
+    },
+    {
+      "source_index": 12128,
+      "id": "2360910",
+      "term": "自動生成",
+      "reading": "じどうせいせい",
+      "meaning": "automatic creation"
+    },
+    {
+      "source_index": 12129,
+      "id": "2855189",
+      "term": "児童生徒",
+      "reading": "じどうせいと",
+      "meaning": "elementary, junior high, and high school students"
     }
   ]
 }

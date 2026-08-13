@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11420,
-  "english_only_remaining": 3580,
+  "already_direct_japanese": 11430,
+  "english_only_remaining": 3570,
   "english_only_rank_counts": {
-    "(blank)": 3580
+    "(blank)": 3570
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,76 +13,6 @@
   "part_start": 0,
   "part_end": 99,
   "targets": [
-    {
-      "source_index": 11420,
-      "id": "1359420",
-      "term": "信託会社",
-      "reading": "しんたくがいしゃ",
-      "meaning": "trust company"
-    },
-    {
-      "source_index": 11421,
-      "id": "1995650",
-      "term": "信託基金",
-      "reading": "しんたくききん",
-      "meaning": "trust fund"
-    },
-    {
-      "source_index": 11422,
-      "id": "2658610",
-      "term": "信託業務",
-      "reading": "しんたくぎょうむ",
-      "meaning": "trust business / trust operations / fiduciary work"
-    },
-    {
-      "source_index": 11423,
-      "id": "1813200",
-      "term": "信託銀行",
-      "reading": "しんたくぎんこう",
-      "meaning": "trust bank"
-    },
-    {
-      "source_index": 11424,
-      "id": "1359440",
-      "term": "信託契約",
-      "reading": "しんたくけいやく",
-      "meaning": "trust agreement"
-    },
-    {
-      "source_index": 11425,
-      "id": "2852569",
-      "term": "信託財産",
-      "reading": "しんたくざいさん",
-      "meaning": "property in trust / trust property"
-    },
-    {
-      "source_index": 11426,
-      "id": "1359450",
-      "term": "信託資金",
-      "reading": "しんたくしきん",
-      "meaning": "trust fund"
-    },
-    {
-      "source_index": 11427,
-      "id": "2845372",
-      "term": "信託証書",
-      "reading": "しんたくしょうしょ",
-      "meaning": "deed of trust / trust deed / trust instrument"
-    },
-    {
-      "source_index": 11428,
-      "id": "1359460",
-      "term": "信託投資",
-      "reading": "しんたくとうし",
-      "meaning": "trust investment"
-    },
-    {
-      "source_index": 11429,
-      "id": "1813190",
-      "term": "信託統治",
-      "reading": "しんたくとうち",
-      "meaning": "trusteeship"
-    },
     {
       "source_index": 11430,
       "id": "2145130",
@@ -712,6 +642,76 @@
       "term": "深夜営業",
       "reading": "しんやえいぎょう",
       "meaning": "late night opening (businesses, etc.) / operating late into the night"
+    },
+    {
+      "source_index": 11520,
+      "id": "2718370",
+      "term": "深夜喫茶",
+      "reading": "しんやきっさ",
+      "meaning": "late-night coffee shop"
+    },
+    {
+      "source_index": 11521,
+      "id": "2845465",
+      "term": "深夜急行",
+      "reading": "しんやきゅうこう",
+      "meaning": "midnight express (train, bus)"
+    },
+    {
+      "source_index": 11522,
+      "id": "1362440",
+      "term": "新約聖書",
+      "reading": "しんやくせいしょ",
+      "meaning": "New Testament"
+    },
+    {
+      "source_index": 11523,
+      "id": "2510790",
+      "term": "新約全書",
+      "reading": "しんやくぜんしょ",
+      "meaning": "New Testament"
+    },
+    {
+      "source_index": 11524,
+      "id": "2202810",
+      "term": "深夜残業",
+      "reading": "しんやざんぎょう",
+      "meaning": "late-night overtime"
+    },
+    {
+      "source_index": 11525,
+      "id": "2828299",
+      "term": "深夜徘徊",
+      "reading": "しんやはいかい",
+      "meaning": "loitering at night / late-night prowling"
+    },
+    {
+      "source_index": 11526,
+      "id": "2745780",
+      "term": "深夜番組",
+      "reading": "しんやばんぐみ",
+      "meaning": "late-night show / midnight broadcast"
+    },
+    {
+      "source_index": 11527,
+      "id": "1939150",
+      "term": "深夜放送",
+      "reading": "しんやほうそう",
+      "meaning": "late-night broadcasting"
+    },
+    {
+      "source_index": 11528,
+      "id": "2849264",
+      "term": "信用拡大",
+      "reading": "しんようかくだい",
+      "meaning": "credit expansion"
+    },
+    {
+      "source_index": 11529,
+      "id": "1995670",
+      "term": "信用危機",
+      "reading": "しんようきき",
+      "meaning": "credit crunch"
     }
   ]
 }

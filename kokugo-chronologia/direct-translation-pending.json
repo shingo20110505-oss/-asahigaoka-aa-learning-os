@@ -1,86 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11420,
-  "english_only_remaining": 3580,
+  "already_direct_japanese": 11430,
+  "english_only_remaining": 3570,
   "english_only_rank_counts": {
-    "(blank)": 3580
+    "(blank)": 3570
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11420,
-      "id": "1359420",
-      "term": "信託会社",
-      "reading": "しんたくがいしゃ",
-      "meaning": "trust company"
-    },
-    {
-      "source_index": 11421,
-      "id": "1995650",
-      "term": "信託基金",
-      "reading": "しんたくききん",
-      "meaning": "trust fund"
-    },
-    {
-      "source_index": 11422,
-      "id": "2658610",
-      "term": "信託業務",
-      "reading": "しんたくぎょうむ",
-      "meaning": "trust business / trust operations / fiduciary work"
-    },
-    {
-      "source_index": 11423,
-      "id": "1813200",
-      "term": "信託銀行",
-      "reading": "しんたくぎんこう",
-      "meaning": "trust bank"
-    },
-    {
-      "source_index": 11424,
-      "id": "1359440",
-      "term": "信託契約",
-      "reading": "しんたくけいやく",
-      "meaning": "trust agreement"
-    },
-    {
-      "source_index": 11425,
-      "id": "2852569",
-      "term": "信託財産",
-      "reading": "しんたくざいさん",
-      "meaning": "property in trust / trust property"
-    },
-    {
-      "source_index": 11426,
-      "id": "1359450",
-      "term": "信託資金",
-      "reading": "しんたくしきん",
-      "meaning": "trust fund"
-    },
-    {
-      "source_index": 11427,
-      "id": "2845372",
-      "term": "信託証書",
-      "reading": "しんたくしょうしょ",
-      "meaning": "deed of trust / trust deed / trust instrument"
-    },
-    {
-      "source_index": 11428,
-      "id": "1359460",
-      "term": "信託投資",
-      "reading": "しんたくとうし",
-      "meaning": "trust investment"
-    },
-    {
-      "source_index": 11429,
-      "id": "1813190",
-      "term": "信託統治",
-      "reading": "しんたくとうち",
-      "meaning": "trusteeship"
-    },
     {
       "source_index": 11430,
       "id": "2145130",
@@ -7010,6 +6940,76 @@
       "term": "純一無雑",
       "reading": "じゅんいつむざつ",
       "meaning": "pure and unadulterated / pure in heart / simplehearted"
+    },
+    {
+      "source_index": 12420,
+      "id": "2851135",
+      "term": "巡回連絡",
+      "reading": "じゅんかいれんらく",
+      "meaning": "door-to-door community police visits"
+    },
+    {
+      "source_index": 12421,
+      "id": "2034770",
+      "term": "循環器科",
+      "reading": "じゅんかんきか",
+      "meaning": "cardiac ward / cardiology ward / cardiovascular clinic"
+    },
+    {
+      "source_index": 12422,
+      "id": "2834777",
+      "term": "循環器系",
+      "reading": "じゅんかんきけい",
+      "meaning": "circulatory system"
+    },
+    {
+      "source_index": 12423,
+      "id": "2700490",
+      "term": "循環器病",
+      "reading": "じゅんかんきびょう",
+      "meaning": "cardiovascular disease / circulatory disease"
+    },
+    {
+      "source_index": 12424,
+      "id": "1938170",
+      "term": "循環系統",
+      "reading": "じゅんかんけいとう",
+      "meaning": "circulatory system (blood, lymph, etc.)"
+    },
+    {
+      "source_index": 12425,
+      "id": "2853609",
+      "term": "循環呼吸",
+      "reading": "じゅんかんこきゅう",
+      "meaning": "circular breathing (technique to enable continuous playing of a wind instrument)"
+    },
+    {
+      "source_index": 12426,
+      "id": "2847783",
+      "term": "准看護師",
+      "reading": "じゅんかんごし",
+      "meaning": "assistant nurse / practical nurse"
+    },
+    {
+      "source_index": 12427,
+      "id": "1885670",
+      "term": "准看護婦",
+      "reading": "じゅんかんごふ",
+      "meaning": "(female) assistant nurse / practical nurse"
+    },
+    {
+      "source_index": 12428,
+      "id": "1735910",
+      "term": "循環小数",
+      "reading": "じゅんかんしょうすう",
+      "meaning": "recurring decimal"
+    },
+    {
+      "source_index": 12429,
+      "id": "2519840",
+      "term": "循環定義",
+      "reading": "じゅんかんていぎ",
+      "meaning": "circular definition"
     }
   ]
 }
