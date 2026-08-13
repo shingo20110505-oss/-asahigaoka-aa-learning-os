@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 7500,
-  "english_only_remaining": 7500,
+  "already_direct_japanese": 7550,
+  "english_only_remaining": 7450,
   "english_only_rank_counts": {
-    "(blank)": 7500
+    "(blank)": 7450
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 7500,
-      "id": "2356640",
-      "term": "高速伝送",
-      "reading": "こうそくでんそう",
-      "meaning": "high speed transmission"
-    },
-    {
-      "source_index": 7501,
-      "id": "1283720",
-      "term": "高速道路",
-      "reading": "こうそくどうろ",
-      "meaning": "highway / freeway / expressway"
-    },
-    {
-      "source_index": 7502,
-      "id": "1809180",
-      "term": "高速度鋼",
-      "reading": "こうそくどこう",
-      "meaning": "high-speed steel"
-    },
-    {
-      "source_index": 7503,
-      "id": "2845262",
-      "term": "酵素玄米",
-      "reading": "こうそげんまい",
-      "meaning": "koso genmai / fermented brown rice"
-    },
-    {
-      "source_index": 7504,
-      "id": "1677230",
-      "term": "公租公課",
-      "reading": "こうそこうか",
-      "meaning": "taxes and public dues"
-    },
-    {
-      "source_index": 7505,
-      "id": "2654050",
-      "term": "皇祖皇宗",
-      "reading": "こうそこうそう",
-      "meaning": "ancestors of the Imperial Family"
-    },
-    {
-      "source_index": 7506,
-      "id": "2528500",
-      "term": "公訴時効",
-      "reading": "こうそじこう",
-      "meaning": "limitation / prescription of the right to prosecute an accused / statute of limitation"
-    },
-    {
-      "source_index": 7507,
-      "id": "2857794",
-      "term": "公訴事実",
-      "reading": "こうそじじつ",
-      "meaning": "facts constituting the offense charged / facts charged"
-    },
-    {
-      "source_index": 7508,
-      "id": "2859020",
-      "term": "酵素風呂",
-      "reading": "こうそぶろ",
-      "meaning": "enzyme bath / bath taken in a tub filled with heated fermented rice bran or cedar wood dust"
-    },
-    {
-      "source_index": 7509,
-      "id": "1676360",
-      "term": "控訴理由",
-      "reading": "こうそりゆう",
-      "meaning": "grounds for an appeal"
-    },
-    {
-      "source_index": 7510,
-      "id": "2827585",
-      "term": "構造運動",
-      "reading": "こうぞううんどう",
-      "meaning": "tectonic movement"
-    },
-    {
-      "source_index": 7511,
-      "id": "1834100",
-      "term": "構造汚職",
-      "reading": "こうぞうおしょく",
-      "meaning": "structural corruption"
-    },
-    {
-      "source_index": 7512,
-      "id": "1992700",
-      "term": "構造改革",
-      "reading": "こうぞうかいかく",
-      "meaning": "structural reform / restructuring"
-    },
-    {
-      "source_index": 7513,
-      "id": "1920830",
-      "term": "構造記述",
-      "reading": "こうぞうきじゅつ",
-      "meaning": "structural description"
-    },
-    {
-      "source_index": 7514,
-      "id": "2841613",
-      "term": "構造計算",
-      "reading": "こうぞうけいさん",
-      "meaning": "structural calculation / structural analysis / seismic analysis"
-    },
-    {
-      "source_index": 7515,
-      "id": "2355770",
-      "term": "構造構文",
-      "reading": "こうぞうこうぶん",
-      "meaning": "construct"
-    },
-    {
-      "source_index": 7516,
-      "id": "1834090",
-      "term": "構造主義",
-      "reading": "こうぞうしゅぎ",
-      "meaning": "structuralism"
-    },
-    {
-      "source_index": 7517,
-      "id": "2604530",
-      "term": "構造地震",
-      "reading": "こうぞうじしん",
-      "meaning": "tectonic earthquake"
-    },
-    {
-      "source_index": 7518,
-      "id": "1834080",
-      "term": "構造不況",
-      "reading": "こうぞうふきょう",
-      "meaning": "structural recession"
-    },
-    {
-      "source_index": 7519,
-      "id": "1920840",
-      "term": "構造変化",
-      "reading": "こうぞうへんか",
-      "meaning": "structural change"
-    },
-    {
-      "source_index": 7520,
-      "id": "1920850",
-      "term": "構造保持",
-      "reading": "こうぞうほじ",
-      "meaning": "structure preserving"
-    },
-    {
-      "source_index": 7521,
-      "id": "2355900",
-      "term": "構造要素",
-      "reading": "こうぞうようそ",
-      "meaning": "structural element"
-    },
-    {
-      "source_index": 7522,
-      "id": "2841612",
-      "term": "構造力学",
-      "reading": "こうぞうりきがく",
-      "meaning": "structural mechanics / theory of structures"
-    },
-    {
-      "source_index": 7523,
-      "id": "1685720",
-      "term": "航続距離",
-      "reading": "こうぞくきょり",
-      "meaning": "cruising range / flying range"
-    },
-    {
-      "source_index": 7524,
-      "id": "1935190",
-      "term": "航続時間",
-      "reading": "こうぞくじかん",
-      "meaning": "duration of a cruise (flight) / endurance"
-    },
-    {
-      "source_index": 7525,
-      "id": "2860187",
-      "term": "高体温症",
-      "reading": "こうたいおんしょう",
-      "meaning": "hyperthermia"
-    },
-    {
-      "source_index": 7526,
-      "id": "2354510",
-      "term": "後退回復",
-      "reading": "こうたいかいふく",
-      "meaning": "backward (file) recovery"
-    },
-    {
-      "source_index": 7527,
-      "id": "2829992",
-      "term": "交代級数",
-      "reading": "こうたいきゅうすう",
-      "meaning": "alternating series"
-    },
-    {
-      "source_index": 7528,
-      "id": "2438950",
-      "term": "交代勤務",
-      "reading": "こうたいきんむ",
-      "meaning": "shift work"
-    },
-    {
-      "source_index": 7529,
-      "id": "2833736",
-      "term": "交代行列",
-      "reading": "こうたいぎょうれつ",
-      "meaning": "skew-symmetric matrix"
-    },
-    {
-      "source_index": 7530,
-      "id": "2852623",
-      "term": "抗体検査",
-      "reading": "こうたいけんさ",
-      "meaning": "antibody test"
-    },
-    {
-      "source_index": 7531,
-      "id": "2839528",
-      "term": "交代交代",
-      "reading": "こうたいごうたい",
-      "meaning": "taking turns"
-    },
-    {
-      "source_index": 7532,
-      "id": "1272240",
-      "term": "交代作業",
-      "reading": "こうたいさぎょう",
-      "meaning": "working in shifts"
-    },
-    {
-      "source_index": 7533,
-      "id": "2168470",
-      "term": "抗体産生",
-      "reading": "こうたいさんせい",
-      "meaning": "antibody production"
-    },
-    {
-      "source_index": 7534,
-      "id": "1280480",
-      "term": "皇太子妃",
-      "reading": "こうたいしひ",
-      "meaning": "crown princess"
-    },
-    {
-      "source_index": 7535,
-      "id": "2518810",
-      "term": "交替神教",
-      "reading": "こうたいしんきょう",
-      "meaning": "kathenotheism"
-    },
-    {
-      "source_index": 7536,
-      "id": "2245580",
-      "term": "皇大神宮",
-      "reading": "こうたいじんぐう",
-      "meaning": "Kōtai Shrine (main shrine of the Inner Ise Shrine)"
-    },
-    {
-      "source_index": 7537,
-      "id": "2771870",
-      "term": "交代選手",
-      "reading": "こうたいせんしゅ",
-      "meaning": "substitute player / substitution"
-    },
-    {
-      "source_index": 7538,
-      "id": "1272260",
-      "term": "交代操業",
-      "reading": "こうたいそうぎょう",
-      "meaning": "working in shifts"
-    },
-    {
-      "source_index": 7539,
-      "id": "2354920",
-      "term": "交替装置",
-      "reading": "こうたいそうち",
-      "meaning": "alternate device"
-    },
-    {
-      "source_index": 7540,
-      "id": "1272270",
-      "term": "交代投手",
-      "reading": "こうたいとうしゅ",
-      "meaning": "relief pitcher"
-    },
-    {
-      "source_index": 7541,
-      "id": "1269890",
-      "term": "後退文字",
-      "reading": "こうたいもじ",
-      "meaning": "backspace character / BS"
-    },
-    {
-      "source_index": 7542,
-      "id": "2867737",
-      "term": "高炭酸症",
-      "reading": "こうたんさんしょう",
-      "meaning": "hypercapnia / hypercarbia / hypercapnemia"
-    },
-    {
-      "source_index": 7543,
-      "id": "1875380",
-      "term": "高炭素鋼",
-      "reading": "こうたんそこう",
-      "meaning": "high-carbon steel"
-    },
-    {
-      "source_index": 7544,
-      "id": "2829690",
-      "term": "後代検定",
-      "reading": "こうだいけんてい",
-      "meaning": "progeny test"
-    },
-    {
-      "source_index": 7545,
-      "id": "1615760",
-      "term": "広大無辺",
-      "reading": "こうだいむへん",
-      "meaning": "boundless / infinite / vast"
-    },
-    {
-      "source_index": 7546,
-      "id": "1677010",
-      "term": "公団住宅",
-      "reading": "こうだんじゅうたく",
-      "meaning": "public housing"
-    },
-    {
-      "source_index": 7547,
-      "id": "2354520",
-      "term": "後置記法",
-      "reading": "こうちきほう",
-      "meaning": "postfix notation / reverse Polish notation"
-    },
-    {
-      "source_index": 7548,
-      "id": "2819830",
-      "term": "構築環境",
-      "reading": "こうちくかんきょう",
-      "meaning": "built environment"
-    },
-    {
-      "source_index": 7549,
-      "id": "2860753",
-      "term": "構築主義",
-      "reading": "こうちくしゅぎ",
-      "meaning": "social constructionism"
-    },
     {
       "source_index": 7550,
       "id": "5743575",
@@ -7010,6 +6660,356 @@
       "term": "語学留学",
       "reading": "ごがくりゅうがく",
       "meaning": "studying a language abroad"
+    },
+    {
+      "source_index": 8500,
+      "id": "2468310",
+      "term": "五月革命",
+      "reading": "ごがつかくめい",
+      "meaning": "May 68 (period of civil unrest in France; May-June 1968)"
+    },
+    {
+      "source_index": 8501,
+      "id": "1268210",
+      "term": "五月人形",
+      "reading": "ごがつにんぎょう",
+      "meaning": "Boys' May Festival dolls"
+    },
+    {
+      "source_index": 8502,
+      "id": "1829550",
+      "term": "護岸工事",
+      "reading": "ごがんこうじ",
+      "meaning": "levee protection works"
+    },
+    {
+      "source_index": 8503,
+      "id": "2786390",
+      "term": "五畿七道",
+      "reading": "ごきしちどう",
+      "meaning": "the five home provinces and seven districts of ancient Japan"
+    },
+    {
+      "source_index": 8504,
+      "id": "2834562",
+      "term": "呉牛月に喘ぐ",
+      "reading": "ごぎゅうつきにあえぐ",
+      "meaning": "to be overanxious / to worry needlessly"
+    },
+    {
+      "source_index": 8505,
+      "id": "2870849",
+      "term": "五行思想",
+      "reading": "ごぎょうしそう",
+      "meaning": "theory of the five elements (in Chinese philosophy: wood, fire, earth, metal and water) / five phases theory / wuxing theory"
+    },
+    {
+      "source_index": 8506,
+      "id": "2830476",
+      "term": "五行六信",
+      "reading": "ごぎょうろくしん",
+      "meaning": "the five pillars of Islam and six articles of faith"
+    },
+    {
+      "source_index": 8507,
+      "id": "2030580",
+      "term": "極悪非道",
+      "reading": "ごくあくひどう",
+      "meaning": "inhuman / heinous / atrocious"
+    },
+    {
+      "source_index": 8508,
+      "id": "2833987",
+      "term": "極重悪人",
+      "reading": "ごくじゅうあくにん",
+      "meaning": "utter villain / atrocious fiend / devil"
+    },
+    {
+      "source_index": 8509,
+      "id": "1828410",
+      "term": "獄中日記",
+      "reading": "ごくちゅうにっき",
+      "meaning": "prison diary"
+    },
+    {
+      "source_index": 8510,
+      "id": "2549200",
+      "term": "極超音速",
+      "reading": "ごくちょうおんそく",
+      "meaning": "hypersonic speed"
+    },
+    {
+      "source_index": 8511,
+      "id": "1625290",
+      "term": "極超短波",
+      "reading": "ごくちょうたんぱ",
+      "meaning": "ultrahigh frequency / UHF / ultrashort waves"
+    },
+    {
+      "source_index": 8512,
+      "id": "2640840",
+      "term": "極秘事項",
+      "reading": "ごくひじこう",
+      "meaning": "closely-guarded secret / top secret"
+    },
+    {
+      "source_index": 8513,
+      "id": "1933460",
+      "term": "極秘情報",
+      "reading": "ごくひじょうほう",
+      "meaning": "classified information / top secret"
+    },
+    {
+      "source_index": 8514,
+      "id": "2532600",
+      "term": "極秘任務",
+      "reading": "ごくひにんむ",
+      "meaning": "top secret mission"
+    },
+    {
+      "source_index": 8515,
+      "id": "1760700",
+      "term": "極楽往生",
+      "reading": "ごくらくおうじょう",
+      "meaning": "rebirth in paradise / peaceful death"
+    },
+    {
+      "source_index": 8516,
+      "id": "2045130",
+      "term": "極楽極楽",
+      "reading": "ごくらくごくらく",
+      "meaning": "absolute heaven / sheer bliss"
+    },
+    {
+      "source_index": 8517,
+      "id": "1760710",
+      "term": "極楽浄土",
+      "reading": "ごくらくじょうど",
+      "meaning": "Amitabha's Pure Land / Sukhavati"
+    },
+    {
+      "source_index": 8518,
+      "id": "2868742",
+      "term": "極楽世界",
+      "reading": "ごくらくせかい",
+      "meaning": "Sukhavati / Amitabha's Pure Land / land of Perfect Bliss"
+    },
+    {
+      "source_index": 8519,
+      "id": "1629590",
+      "term": "極楽鳥花",
+      "reading": "ごくらくちょうか",
+      "meaning": "bird of paradise flower / Strelitzia reginae"
+    },
+    {
+      "source_index": 8520,
+      "id": "2030590",
+      "term": "極楽とんぼ",
+      "reading": "ごくらくとんぼ",
+      "meaning": "happy-go-lucky fellow / easygoing and indifferent person / pococurante"
+    },
+    {
+      "source_index": 8521,
+      "id": "2825930",
+      "term": "互恵関係",
+      "reading": "ごけいかんけい",
+      "meaning": "reciprocal relationship / mutually beneficial relations / relationship with benefits to both parties"
+    },
+    {
+      "source_index": 8522,
+      "id": "1694970",
+      "term": "互恵関税",
+      "reading": "ごけいかんぜい",
+      "meaning": "reciprocal tariff"
+    },
+    {
+      "source_index": 8523,
+      "id": "2866972",
+      "term": "互恵主義",
+      "reading": "ごけいしゅぎ",
+      "meaning": "reciprocity / reciprocity principle"
+    },
+    {
+      "source_index": 8524,
+      "id": "1694950",
+      "term": "互恵条約",
+      "reading": "ごけいじょうやく",
+      "meaning": "reciprocal treaty / treaty of reciprocity"
+    },
+    {
+      "source_index": 8525,
+      "id": "1271080",
+      "term": "語形変化",
+      "reading": "ごけいへんか",
+      "meaning": "inflection of words (e.g. declension of nouns and conjugation of verbs)"
+    },
+    {
+      "source_index": 8526,
+      "id": "1694960",
+      "term": "互恵貿易",
+      "reading": "ごけいぼうえき",
+      "meaning": "reciprocal trade"
+    },
+    {
+      "source_index": 8527,
+      "id": "2165650",
+      "term": "後家蜘蛛",
+      "reading": "ごけぐも",
+      "meaning": "widow spider (of genus Latrodectus)"
+    },
+    {
+      "source_index": 8528,
+      "id": "1829610",
+      "term": "護憲運動",
+      "reading": "ごけんうんどう",
+      "meaning": "movement to defend the Constitution"
+    },
+    {
+      "source_index": 8529,
+      "id": "2864915",
+      "term": "語源俗解",
+      "reading": "ごげんぞっかい",
+      "meaning": "folk etymology / popular (but unfounded) etymology"
+    },
+    {
+      "source_index": 8530,
+      "id": "2833034",
+      "term": "後光効果",
+      "reading": "ごこうこうか",
+      "meaning": "halo effect"
+    },
+    {
+      "source_index": 8531,
+      "id": "2148760",
+      "term": "五公五民",
+      "reading": "ごこうごみん",
+      "meaning": "land-tax system during the Edo period under which the government took half of the year's crop and the farmers kept the other half"
+    },
+    {
+      "source_index": 8532,
+      "id": "1829560",
+      "term": "護国神社",
+      "reading": "ごこくじんじゃ",
+      "meaning": "shrine honoring war dead / shrine honouring war dead"
+    },
+    {
+      "source_index": 8533,
+      "id": "2045150",
+      "term": "五穀豊穣",
+      "reading": "ごこくほうじょう",
+      "meaning": "huge harvest (of the five grains) / bumper crop / abundant crop"
+    },
+    {
+      "source_index": 8534,
+      "id": "2838730",
+      "term": "午後零時",
+      "reading": "ごごれいじ",
+      "meaning": "noon / 12pm"
+    },
+    {
+      "source_index": 8535,
+      "id": "2045160",
+      "term": "五言絶句",
+      "reading": "ごごんぜっく",
+      "meaning": "poem of four lines, each of five (Chinese) characters"
+    },
+    {
+      "source_index": 8536,
+      "id": "2045170",
+      "term": "五言律詩",
+      "reading": "ごごんりっし",
+      "meaning": "poem of eight lines, each of five (Chinese) characters"
+    },
+    {
+      "source_index": 8537,
+      "id": "2849642",
+      "term": "誤差拡散",
+      "reading": "ごさかくさん",
+      "meaning": "error diffusion / random dither"
+    },
+    {
+      "source_index": 8538,
+      "id": "2354740",
+      "term": "誤差範囲",
+      "reading": "ごさはんい",
+      "meaning": "error range"
+    },
+    {
+      "source_index": 8539,
+      "id": "2827529",
+      "term": "誤差分布",
+      "reading": "ごさぶんぷ",
+      "meaning": "error distribution"
+    },
+    {
+      "source_index": 8540,
+      "id": "2830644",
+      "term": "五四運動",
+      "reading": "ごしうんどう",
+      "meaning": "May Fourth Movement (anti-imperialist student demonstration in Beijing on May 4, 1919)"
+    },
+    {
+      "source_index": 8541,
+      "id": "2839352",
+      "term": "五指に入る",
+      "reading": "ごしにはいる",
+      "meaning": "to be among the top five / to be one of the five best"
+    },
+    {
+      "source_index": 8542,
+      "id": "1694110",
+      "term": "御朱印船",
+      "reading": "ごしゅいんせん",
+      "meaning": "shogun-authorized trading vessel (authorised)"
+    },
+    {
+      "source_index": 8543,
+      "id": "2868466",
+      "term": "御朱印帳",
+      "reading": "ごしゅいんちょう",
+      "meaning": "goshuin booklet / book for receiving seal stamps at shrines and temples"
+    },
+    {
+      "source_index": 8544,
+      "id": "1268290",
+      "term": "五種競技",
+      "reading": "ごしゅきょうぎ",
+      "meaning": "pentathlon"
+    },
+    {
+      "source_index": 8545,
+      "id": "2045200",
+      "term": "後生一生",
+      "reading": "ごしょういっしょう",
+      "meaning": "extremely important or once in a lifetime (request) / only once in one's lifetime"
+    },
+    {
+      "source_index": 8546,
+      "id": "1269840",
+      "term": "後生大事",
+      "reading": "ごしょうだいじ",
+      "meaning": "with religious zeal / with utmost devotion / take great care of"
+    },
+    {
+      "source_index": 8547,
+      "id": "2857867",
+      "term": "誤字脱字",
+      "reading": "ごじだつじ",
+      "meaning": "mistaken or missing characters / omissions or errors"
+    },
+    {
+      "source_index": 8548,
+      "id": "1268340",
+      "term": "五十歩百歩",
+      "reading": "ごじっぽひゃっぽ",
+      "meaning": "six of one, half a dozen of the other / scant difference"
+    },
+    {
+      "source_index": 8549,
+      "id": "2555550",
+      "term": "後日物語",
+      "reading": "ごじつものがたり",
+      "meaning": "sequel"
     }
   ]
 }
