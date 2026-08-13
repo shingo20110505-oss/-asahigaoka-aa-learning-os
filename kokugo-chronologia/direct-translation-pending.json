@@ -1,86 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11358,
-  "english_only_remaining": 3642,
+  "already_direct_japanese": 11368,
+  "english_only_remaining": 3632,
   "english_only_rank_counts": {
-    "(blank)": 3642
+    "(blank)": 3632
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11358,
-      "id": "2518600",
-      "term": "神聖戦争",
-      "reading": "しんせいせんそう",
-      "meaning": "Sacred Wars (of Ancient Greece)"
-    },
-    {
-      "source_index": 11359,
-      "id": "1720310",
-      "term": "新制大学",
-      "reading": "しんせいだいがく",
-      "meaning": "university (operated under post-war guidelines)"
-    },
-    {
-      "source_index": 11360,
-      "id": "1720330",
-      "term": "新制中学",
-      "reading": "しんせいちゅうがく",
-      "meaning": "junior high school (operated under post-war guidelines)"
-    },
-    {
-      "source_index": 11361,
-      "id": "2833838",
-      "term": "神聖同盟",
-      "reading": "しんせいどうめい",
-      "meaning": "Holy Alliance (of Russia, Austria and Prussia in 1815)"
-    },
-    {
-      "source_index": 11362,
-      "id": "2837948",
-      "term": "神聖文字",
-      "reading": "しんせいもじ",
-      "meaning": "hieroglyph / hieroglyphics"
-    },
-    {
-      "source_index": 11363,
-      "id": "2200310",
-      "term": "新世界猿",
-      "reading": "しんせかいざる",
-      "meaning": "New World monkey (any monkey of infraorder Platyrrhini)"
-    },
-    {
-      "source_index": 11364,
-      "id": "2006870",
-      "term": "親戚関係",
-      "reading": "しんせきかんけい",
-      "meaning": "relations / members of extended family"
-    },
-    {
-      "source_index": 11365,
-      "id": "2047550",
-      "term": "親戚眷属",
-      "reading": "しんせきけんぞく",
-      "meaning": "one's family and relatives / one's kith and kin"
-    },
-    {
-      "source_index": 11366,
-      "id": "2831883",
-      "term": "親石元素",
-      "reading": "しんせきげんそ",
-      "meaning": "lithophile element"
-    },
-    {
-      "source_index": 11367,
-      "id": "1727030",
-      "term": "臣籍降下",
-      "reading": "しんせきこうか",
-      "meaning": "(of members of the Imperial family) becoming subjects of the state"
-    },
     {
       "source_index": 11368,
       "id": "2047560",
@@ -7010,6 +6940,76 @@
       "term": "授業時間",
       "reading": "じゅぎょうじかん",
       "meaning": "school hours / hours of teaching (instruction)"
+    },
+    {
+      "source_index": 12358,
+      "id": "1717110",
+      "term": "熟柿主義",
+      "reading": "じゅくししゅぎ",
+      "meaning": "laying low, awaiting one's chance"
+    },
+    {
+      "source_index": 12359,
+      "id": "2031260",
+      "term": "熟思黙想",
+      "reading": "じゅくしもくそう",
+      "meaning": "considering (a matter) carefully and silently / being lost in silent contemplation"
+    },
+    {
+      "source_index": 12360,
+      "id": "2724780",
+      "term": "粥状硬化",
+      "reading": "じゅくじょうこうか",
+      "meaning": "atherosclerosis / atherosclerotic"
+    },
+    {
+      "source_index": 12361,
+      "id": "2031270",
+      "term": "熟読玩味",
+      "reading": "じゅくどくがんみ",
+      "meaning": "reading carefully with appreciation"
+    },
+    {
+      "source_index": 12362,
+      "id": "2159910",
+      "term": "熟年夫婦",
+      "reading": "じゅくねんふうふ",
+      "meaning": "middle-aged couple / middle-aged husband and wife"
+    },
+    {
+      "source_index": 12363,
+      "id": "2144170",
+      "term": "熟年離婚",
+      "reading": "じゅくねんりこん",
+      "meaning": "divorce of a couple who have been married for a long time (often brought on by retirement of the husband)"
+    },
+    {
+      "source_index": 12364,
+      "id": "1337920",
+      "term": "熟慮断行",
+      "reading": "じゅくりょだんこう",
+      "meaning": "being deliberate in council, and decisive in action"
+    },
+    {
+      "source_index": 12365,
+      "id": "2867802",
+      "term": "受験英語",
+      "reading": "じゅけんえいご",
+      "meaning": "exam-oriented English / English studied just for examinations (esp. university entrance)"
+    },
+    {
+      "source_index": 12366,
+      "id": "1937540",
+      "term": "受験科目",
+      "reading": "じゅけんかもく",
+      "meaning": "subjects of the examination"
+    },
+    {
+      "source_index": 12367,
+      "id": "1937560",
+      "term": "受験資格",
+      "reading": "じゅけんしかく",
+      "meaning": "qualifications of candidacy for an examination"
     }
   ]
 }
