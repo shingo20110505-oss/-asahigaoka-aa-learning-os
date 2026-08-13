@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9800,
-  "english_only_remaining": 5200,
+  "already_direct_japanese": 9850,
+  "english_only_remaining": 5150,
   "english_only_rank_counts": {
-    "(blank)": 5200
+    "(blank)": 5150
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 9800,
-      "id": "2868576",
-      "term": "悉皆調査",
-      "reading": "しっかいちょうさ",
-      "meaning": "full-count survey / complete enumeration / census"
-    },
-    {
-      "source_index": 9801,
-      "id": "2831371",
-      "term": "湿球温度",
-      "reading": "しっきゅうおんど",
-      "meaning": "wet-bulb temperature"
-    },
-    {
-      "source_index": 9802,
-      "id": "2046250",
-      "term": "失敬千万",
-      "reading": "しっけいせんばん",
-      "meaning": "extremely rude (impertinent, impolite)"
-    },
-    {
-      "source_index": 9803,
-      "id": "1658680",
-      "term": "執行委員",
-      "reading": "しっこういいん",
-      "meaning": "executive committee"
-    },
-    {
-      "source_index": 9804,
-      "id": "1744890",
-      "term": "執行機関",
-      "reading": "しっこうきかん",
-      "meaning": "executive committee / executive organ"
-    },
-    {
-      "source_index": 9805,
-      "id": "1994670",
-      "term": "執行役員",
-      "reading": "しっこうやくいん",
-      "meaning": "operating officer / company executive"
-    },
-    {
-      "source_index": 9806,
-      "id": "1319640",
-      "term": "執行猶予",
-      "reading": "しっこうゆうよ",
-      "meaning": "stay of execution / suspended sentence"
-    },
-    {
-      "source_index": 9807,
-      "id": "2046260",
-      "term": "嫉視反目",
-      "reading": "しっしはんもく",
-      "meaning": "jealousy and enmity / being jealous of and at odds with (each other)"
-    },
-    {
-      "source_index": 9808,
-      "id": "1769210",
-      "term": "湿生植物",
-      "reading": "しっせいしょくぶつ",
-      "meaning": "hydrophyte"
-    },
-    {
-      "source_index": 9809,
-      "id": "2872161",
-      "term": "失踪事件",
-      "reading": "しっそうじけん",
-      "meaning": "disappearance case / missing person case"
-    },
-    {
-      "source_index": 9810,
-      "id": "1766150",
-      "term": "失踪宣告",
-      "reading": "しっそうせんこく",
-      "meaning": "court decision declaring a missing person legally dead"
-    },
-    {
-      "source_index": 9811,
-      "id": "2847886",
-      "term": "失速速度",
-      "reading": "しっそくそくど",
-      "meaning": "stalling speed"
-    },
-    {
-      "source_index": 9812,
-      "id": "2046290",
-      "term": "質素倹約",
-      "reading": "しっそけんやく",
-      "meaning": "(practice of) simplicity and frugality / scrimping and saving"
-    },
-    {
-      "source_index": 9813,
-      "id": "2031220",
-      "term": "叱咤激励",
-      "reading": "しったげきれい",
-      "meaning": "giving a loud pep talk / encouraging (someone) strongly in a loud voice"
-    },
-    {
-      "source_index": 9814,
-      "id": "2844320",
-      "term": "悉曇文字",
-      "reading": "しったんもじ",
-      "meaning": "Siddham script"
-    },
-    {
-      "source_index": 9815,
-      "id": "2046300",
-      "term": "失地回復",
-      "reading": "しっちかいふく",
-      "meaning": "the recovery of lost territory / recovering (regaining) lost ground (one's former position) / fence-mending"
-    },
-    {
-      "source_index": 9816,
-      "id": "2063610",
-      "term": "七珍万宝",
-      "reading": "しっちんまんぽう",
-      "meaning": "the seven treasures and many other precious things / all the treasures in the world"
-    },
-    {
-      "source_index": 9817,
-      "id": "2848347",
-      "term": "疾痛惨憺",
-      "reading": "しっつうさんたん",
-      "meaning": "terrible worry / extreme anxiety"
-    },
-    {
-      "source_index": 9818,
-      "id": "2830971",
-      "term": "失敗国家",
-      "reading": "しっぱいこっか",
-      "meaning": "failed state"
-    },
-    {
-      "source_index": 9819,
-      "id": "2361240",
-      "term": "失敗判定",
-      "reading": "しっぱいはんてい",
-      "meaning": "fail verdict"
-    },
-    {
-      "source_index": 9820,
-      "id": "2754930",
-      "term": "執筆時点",
-      "reading": "しっぴつじてん",
-      "meaning": "at the time of writing"
-    },
-    {
-      "source_index": 9821,
-      "id": "2642400",
-      "term": "執筆生活",
-      "reading": "しっぴつせいかつ",
-      "meaning": "writing life / period of life spent writing"
-    },
-    {
-      "source_index": 9822,
-      "id": "1320620",
-      "term": "疾風迅雷",
-      "reading": "しっぷうじんらい",
-      "meaning": "with lightning speed"
-    },
-    {
-      "source_index": 9823,
-      "id": "1320630",
-      "term": "疾風怒濤",
-      "reading": "しっぷうどとう",
-      "meaning": "storm and stress / Sturm und Drang"
-    },
-    {
-      "source_index": 9824,
-      "id": "2046310",
-      "term": "櫛風沐雨",
-      "reading": "しっぷうもくう",
-      "meaning": "struggling through wind and rain / undergoing hardships"
-    },
-    {
-      "source_index": 9825,
-      "id": "2046320",
-      "term": "櫛風浴雨",
-      "reading": "しっぷうよくう",
-      "meaning": "struggling through wind and rain / undergoing hardships"
-    },
-    {
-      "source_index": 9826,
-      "id": "2831369",
-      "term": "疾病構造",
-      "reading": "しっぺいこうぞう",
-      "meaning": "disease pattern"
-    },
-    {
-      "source_index": 9827,
-      "id": "2262600",
-      "term": "疾病保険",
-      "reading": "しっぺいほけん",
-      "meaning": "sickness insurance"
-    },
-    {
-      "source_index": 9828,
-      "id": "2679810",
-      "term": "卓袱料理",
-      "reading": "しっぽくりょうり",
-      "meaning": "Japanese-Chinese cuisine, served family-style (large dishes, diners help themselves), specialty of Nagasaki / Chinese table cuisine"
-    },
-    {
-      "source_index": 9829,
-      "id": "2779510",
-      "term": "尻尾を掴む",
-      "reading": "しっぽをつかむ",
-      "meaning": "to have something on someone / to catch someone out / to trip someone up"
-    },
-    {
-      "source_index": 9830,
-      "id": "2827617",
-      "term": "尻尾を振る",
-      "reading": "しっぽをふる",
-      "meaning": "to wag one's tail"
-    },
-    {
-      "source_index": 9831,
-      "id": "2118330",
-      "term": "尻尾を巻く",
-      "reading": "しっぽをまく",
-      "meaning": "to tuck one's tail between one's legs / to admit defeat / to turn tail (and run)"
-    },
-    {
-      "source_index": 9832,
-      "id": "2148770",
-      "term": "失意泰然",
-      "reading": "しついたいぜん",
-      "meaning": "keeping calm and collected at times of disappointment / maintaining a serene state of mind in adversity"
-    },
-    {
-      "source_index": 9833,
-      "id": "1307300",
-      "term": "四通八達",
-      "reading": "しつうはったつ",
-      "meaning": "traffic network extending in all directions"
-    },
-    {
-      "source_index": 9834,
-      "id": "2678200",
-      "term": "膝窩静脈",
-      "reading": "しつかじょうみゃく",
-      "meaning": "popliteal vein"
-    },
-    {
-      "source_index": 9835,
-      "id": "2678210",
-      "term": "膝窩動脈",
-      "reading": "しつかどうみゃく",
-      "meaning": "popliteal artery"
-    },
-    {
-      "source_index": 9836,
-      "id": "2858635",
-      "term": "失感情症",
-      "reading": "しつかんじょうしょう",
-      "meaning": "alexithymia"
-    },
-    {
-      "source_index": 9837,
-      "id": "2678190",
-      "term": "膝蓋反射",
-      "reading": "しつがいはんしゃ",
-      "meaning": "patellar reflex"
-    },
-    {
-      "source_index": 9838,
-      "id": "1320690",
-      "term": "質疑応答",
-      "reading": "しつぎおうとう",
-      "meaning": "question and answer session"
-    },
-    {
-      "source_index": 9839,
-      "id": "2150730",
-      "term": "失業給付",
-      "reading": "しつぎょうきゅうふ",
-      "meaning": "unemployment benefit"
-    },
-    {
-      "source_index": 9840,
-      "id": "1766140",
-      "term": "失業対策",
-      "reading": "しつぎょうたいさく",
-      "meaning": "countermeasures against unemployment / relief measures for the unemployed"
-    },
-    {
-      "source_index": 9841,
-      "id": "1319880",
-      "term": "失業手当",
-      "reading": "しつぎょうてあて",
-      "meaning": "unemployment allowance / unemployment benefits"
-    },
-    {
-      "source_index": 9842,
-      "id": "1319890",
-      "term": "失業保険",
-      "reading": "しつぎょうほけん",
-      "meaning": "unemployment insurance"
-    },
-    {
-      "source_index": 9843,
-      "id": "1320700",
-      "term": "質実剛健",
-      "reading": "しつじつごうけん",
-      "meaning": "unaffected and sincere, with fortitude and vigor (vigour)"
-    },
-    {
-      "source_index": 9844,
-      "id": "2857416",
-      "term": "湿潤気候",
-      "reading": "しつじゅんきこう",
-      "meaning": "humid climate"
-    },
-    {
-      "source_index": 9845,
-      "id": "2838482",
-      "term": "湿潤療法",
-      "reading": "しつじゅんりょうほう",
-      "meaning": "moist wound healing / hydrocolloid dressing"
-    },
-    {
-      "source_index": 9846,
-      "id": "2361250",
-      "term": "室内実験",
-      "reading": "しつないじっけん",
-      "meaning": "lab test / in-house test"
-    },
-    {
-      "source_index": 9847,
-      "id": "1705380",
-      "term": "室内装飾",
-      "reading": "しつないそうしょく",
-      "meaning": "interior decorating"
-    },
-    {
-      "source_index": 9848,
-      "id": "2659790",
-      "term": "室内暖房",
-      "reading": "しつないだんぼう",
-      "meaning": "indoor heating"
-    },
-    {
-      "source_index": 9849,
-      "id": "1705370",
-      "term": "室内遊戯",
-      "reading": "しつないゆうぎ",
-      "meaning": "indoor game / indoor pastime"
-    },
     {
       "source_index": 9850,
       "id": "2046330",
@@ -7010,6 +6660,356 @@
       "term": "床板珊瑚",
       "reading": "しょうばんさんご",
       "meaning": "tabulate coral (extinct coral of the order Tabulata)"
+    },
+    {
+      "source_index": 10800,
+      "id": "1743280",
+      "term": "消費革命",
+      "reading": "しょうひかくめい",
+      "meaning": "consumer revolution / consumption revolution"
+    },
+    {
+      "source_index": 10801,
+      "id": "2161890",
+      "term": "消費関数",
+      "reading": "しょうひかんすう",
+      "meaning": "consumption function"
+    },
+    {
+      "source_index": 10802,
+      "id": "2233960",
+      "term": "消費期限",
+      "reading": "しょうひきげん",
+      "meaning": "expiry date (esp. on food) / expiration date / use-by date"
+    },
+    {
+      "source_index": 10803,
+      "id": "2860946",
+      "term": "消費行動",
+      "reading": "しょうひこうどう",
+      "meaning": "consumer behavior / consumption patterns"
+    },
+    {
+      "source_index": 10804,
+      "id": "2690800",
+      "term": "消費支出",
+      "reading": "しょうひししゅつ",
+      "meaning": "consumer spending / consumption expenditure"
+    },
+    {
+      "source_index": 10805,
+      "id": "2124950",
+      "term": "消費社会",
+      "reading": "しょうひしゃかい",
+      "meaning": "consumer society"
+    },
+    {
+      "source_index": 10806,
+      "id": "1882970",
+      "term": "消費者側",
+      "reading": "しょうひしゃがわ",
+      "meaning": "consumers side"
+    },
+    {
+      "source_index": 10807,
+      "id": "2831272",
+      "term": "消費者庁",
+      "reading": "しょうひしゃちょう",
+      "meaning": "Consumer Affairs Agency / CAA"
+    },
+    {
+      "source_index": 10808,
+      "id": "2439440",
+      "term": "消費主義",
+      "reading": "しょうひしゅぎ",
+      "meaning": "consumerism"
+    },
+    {
+      "source_index": 10809,
+      "id": "1938480",
+      "term": "消費生活",
+      "reading": "しょうひせいかつ",
+      "meaning": "one's life as a consumer"
+    },
+    {
+      "source_index": 10810,
+      "id": "1743240",
+      "term": "消費性向",
+      "reading": "しょうひせいこう",
+      "meaning": "consumption propensity"
+    },
+    {
+      "source_index": 10811,
+      "id": "2852165",
+      "term": "消費税法",
+      "reading": "しょうひぜいほう",
+      "meaning": "Consumption Tax Act"
+    },
+    {
+      "source_index": 10812,
+      "id": "2629640",
+      "term": "消費税率",
+      "reading": "しょうひぜいりつ",
+      "meaning": "consumption tax rate / sales tax rate / VAT rate"
+    },
+    {
+      "source_index": 10813,
+      "id": "2829344",
+      "term": "消費貸借",
+      "reading": "しょうひたいしゃく",
+      "meaning": "loan for consumption"
+    },
+    {
+      "source_index": 10814,
+      "id": "2187540",
+      "term": "消費電力",
+      "reading": "しょうひでんりょく",
+      "meaning": "electricity consumption"
+    },
+    {
+      "source_index": 10815,
+      "id": "1743300",
+      "term": "消費都市",
+      "reading": "しょうひとし",
+      "meaning": "consumer city"
+    },
+    {
+      "source_index": 10816,
+      "id": "2439460",
+      "term": "消費文化",
+      "reading": "しょうひぶんか",
+      "meaning": "consumer culture"
+    },
+    {
+      "source_index": 10817,
+      "id": "5369236",
+      "term": "商標協会",
+      "reading": "しょうひょうきょうかい",
+      "meaning": "US Trademark Association"
+    },
+    {
+      "source_index": 10818,
+      "id": "2852403",
+      "term": "商標権者",
+      "reading": "しょうひょうけんしゃ",
+      "meaning": "trademark holder"
+    },
+    {
+      "source_index": 10819,
+      "id": "2724220",
+      "term": "商標登録",
+      "reading": "しょうひょうとうろく",
+      "meaning": "trademark registration"
+    },
+    {
+      "source_index": 10820,
+      "id": "1995210",
+      "term": "商標保護",
+      "reading": "しょうひょうほご",
+      "meaning": "trademark protection"
+    },
+    {
+      "source_index": 10821,
+      "id": "2851419",
+      "term": "商品開発",
+      "reading": "しょうひんかいはつ",
+      "meaning": "product development"
+    },
+    {
+      "source_index": 10822,
+      "id": "2718740",
+      "term": "商品化権",
+      "reading": "しょうひんかけん",
+      "meaning": "merchandising right"
+    },
+    {
+      "source_index": 10823,
+      "id": "2829192",
+      "term": "商品価値",
+      "reading": "しょうひんかち",
+      "meaning": "commercial value / commodity value / marketability"
+    },
+    {
+      "source_index": 10824,
+      "id": "2834822",
+      "term": "商品貨幣",
+      "reading": "しょうひんかへい",
+      "meaning": "commodity money"
+    },
+    {
+      "source_index": 10825,
+      "id": "2257450",
+      "term": "商品切手",
+      "reading": "しょうひんきって",
+      "meaning": "merchandise certificate"
+    },
+    {
+      "source_index": 10826,
+      "id": "2858896",
+      "term": "商品作物",
+      "reading": "しょうひんさくもつ",
+      "meaning": "cash crop"
+    },
+    {
+      "source_index": 10827,
+      "id": "1347340",
+      "term": "商品在高",
+      "reading": "しょうひんざいだか",
+      "meaning": "amount of inventory"
+    },
+    {
+      "source_index": 10828,
+      "id": "2661940",
+      "term": "商品設計",
+      "reading": "しょうひんせっけい",
+      "meaning": "product design / product planning"
+    },
+    {
+      "source_index": 10829,
+      "id": "2208620",
+      "term": "商品番号",
+      "reading": "しょうひんばんごう",
+      "meaning": "item number / product ID number / reference number"
+    },
+    {
+      "source_index": 10830,
+      "id": "2838952",
+      "term": "商品見本",
+      "reading": "しょうひんみほん",
+      "meaning": "trade sample / product sample"
+    },
+    {
+      "source_index": 10831,
+      "id": "1347350",
+      "term": "商品目録",
+      "reading": "しょうひんもくろく",
+      "meaning": "inventory / catalog / catalogue"
+    },
+    {
+      "source_index": 10832,
+      "id": "2414050",
+      "term": "傷病手当",
+      "reading": "しょうびょうてあて",
+      "meaning": "accident and sickness benefits / disability allowance"
+    },
+    {
+      "source_index": 10833,
+      "id": "2865902",
+      "term": "傷病年金",
+      "reading": "しょうびょうねんきん",
+      "meaning": "pension for the sick and wounded / annuity for invalids"
+    },
+    {
+      "source_index": 10834,
+      "id": "1377190",
+      "term": "正札値段",
+      "reading": "しょうふだねだん",
+      "meaning": "fixed price"
+    },
+    {
+      "source_index": 10835,
+      "id": "2114120",
+      "term": "勝負下着",
+      "reading": "しょうぶしたぎ",
+      "meaning": "\"lucky\" underwear (esp. panties), set aside for special dates"
+    },
+    {
+      "source_index": 10836,
+      "id": "2022410",
+      "term": "勝負審判",
+      "reading": "しょうぶしんぱん",
+      "meaning": "ringside judge"
+    },
+    {
+      "source_index": 10837,
+      "id": "1952610",
+      "term": "掌篇小説",
+      "reading": "しょうへんしょうせつ",
+      "meaning": "short short story"
+    },
+    {
+      "source_index": 10838,
+      "id": "1348800",
+      "term": "小便小僧",
+      "reading": "しょうべんこぞう",
+      "meaning": "Manneken Pis (cupid-like statue urinating into a fountain) / Petit Julien"
+    },
+    {
+      "source_index": 10839,
+      "id": "2224360",
+      "term": "小胞子嚢",
+      "reading": "しょうほうしのう",
+      "meaning": "microsporangium"
+    },
+    {
+      "source_index": 10840,
+      "id": "2619020",
+      "term": "消防車両",
+      "reading": "しょうぼうしゃりょう",
+      "meaning": "firefighting vehicle / fire engine"
+    },
+    {
+      "source_index": 10841,
+      "id": "2657520",
+      "term": "消防署員",
+      "reading": "しょうぼうしょいん",
+      "meaning": "fire station worker / member of a fire station"
+    },
+    {
+      "source_index": 10842,
+      "id": "2087960",
+      "term": "消防署長",
+      "reading": "しょうぼうしょちょう",
+      "meaning": "fire captain / fire marshal"
+    },
+    {
+      "source_index": 10843,
+      "id": "2853417",
+      "term": "消防本部",
+      "reading": "しょうぼうほんぶ",
+      "meaning": "fire department / fire defense headquarters"
+    },
+    {
+      "source_index": 10844,
+      "id": "2840046",
+      "term": "消防吏員",
+      "reading": "しょうぼうりいん",
+      "meaning": "fire officer"
+    },
+    {
+      "source_index": 10845,
+      "id": "2621480",
+      "term": "賞味期間",
+      "reading": "しょうみきかん",
+      "meaning": "best-before period (e.g. foodstuffs)"
+    },
+    {
+      "source_index": 10846,
+      "id": "1351980",
+      "term": "賞味期限",
+      "reading": "しょうみきげん",
+      "meaning": "best-before date (on food) / use-by date / expiry date"
+    },
+    {
+      "source_index": 10847,
+      "id": "2854513",
+      "term": "正味財産",
+      "reading": "しょうみざいさん",
+      "meaning": "net assets"
+    },
+    {
+      "source_index": 10848,
+      "id": "1377990",
+      "term": "正味重量",
+      "reading": "しょうみじゅうりょう",
+      "meaning": "net weight"
+    },
+    {
+      "source_index": 10849,
+      "id": "1378000",
+      "term": "正味値段",
+      "reading": "しょうみねだん",
+      "meaning": "net price"
     }
   ]
 }

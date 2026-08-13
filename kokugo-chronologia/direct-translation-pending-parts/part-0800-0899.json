@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9800,
-  "english_only_remaining": 5200,
+  "already_direct_japanese": 9850,
+  "english_only_remaining": 5150,
   "english_only_rank_counts": {
-    "(blank)": 5200
+    "(blank)": 5150
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,356 +13,6 @@
   "part_start": 800,
   "part_end": 899,
   "targets": [
-    {
-      "source_index": 10600,
-      "id": "2854675",
-      "term": "昇華転写",
-      "reading": "しょうかてんしゃ",
-      "meaning": "sublimation printing / sublimation transfer"
-    },
-    {
-      "source_index": 10601,
-      "id": "1743040",
-      "term": "消化不良",
-      "reading": "しょうかふりょう",
-      "meaning": "indigestion / dyspepsia"
-    },
-    {
-      "source_index": 10602,
-      "id": "2653490",
-      "term": "償還期間",
-      "reading": "しょうかんきかん",
-      "meaning": "redemption period / repayment term"
-    },
-    {
-      "source_index": 10603,
-      "id": "1346680",
-      "term": "商慣習法",
-      "reading": "しょうかんしゅうほう",
-      "meaning": "commercial customary law / commercial custom law"
-    },
-    {
-      "source_index": 10604,
-      "id": "2265950",
-      "term": "聖観世音",
-      "reading": "しょうかんぜのん",
-      "meaning": "Aryavalokitesvara (manifestation of Avalokitesvara)"
-    },
-    {
-      "source_index": 10605,
-      "id": "1346480",
-      "term": "召喚令状",
-      "reading": "しょうかんれいじょう",
-      "meaning": "summons for directions (legal UK)"
-    },
-    {
-      "source_index": 10606,
-      "id": "2275570",
-      "term": "障害迂回",
-      "reading": "しょうがいうかい",
-      "meaning": "fail-over / fault bypass"
-    },
-    {
-      "source_index": 10607,
-      "id": "2365420",
-      "term": "障害回復",
-      "reading": "しょうがいかいふく",
-      "meaning": "fault recovery"
-    },
-    {
-      "source_index": 10608,
-      "id": "2860440",
-      "term": "生涯価値",
-      "reading": "しょうがいかち",
-      "meaning": "(customer) lifetime value / LTV"
-    },
-    {
-      "source_index": 10609,
-      "id": "1940220",
-      "term": "生涯学習",
-      "reading": "しょうがいがくしゅう",
-      "meaning": "lifelong learning"
-    },
-    {
-      "source_index": 10610,
-      "id": "1378850",
-      "term": "生涯教育",
-      "reading": "しょうがいきょういく",
-      "meaning": "lifelong education / continuing education / further education"
-    },
-    {
-      "source_index": 10611,
-      "id": "2831934",
-      "term": "障害競走",
-      "reading": "しょうがいきょうそう",
-      "meaning": "steeplechase"
-    },
-    {
-      "source_index": 10612,
-      "id": "2844042",
-      "term": "生涯最高",
-      "reading": "しょうがいさいこう",
-      "meaning": "(the) best of one's life / lifetime ..."
-    },
-    {
-      "source_index": 10613,
-      "id": "2834130",
-      "term": "渉外私法",
-      "reading": "しょうがいしほう",
-      "meaning": "private international law / conflict of laws"
-    },
-    {
-      "source_index": 10614,
-      "id": "2146730",
-      "term": "傷害事件",
-      "reading": "しょうがいじけん",
-      "meaning": "incident resulting in injury"
-    },
-    {
-      "source_index": 10615,
-      "id": "2262640",
-      "term": "傷害致死",
-      "reading": "しょうがいちし",
-      "meaning": "manslaughter / bodily injury resulting in death"
-    },
-    {
-      "source_index": 10616,
-      "id": "2365430",
-      "term": "障害地点",
-      "reading": "しょうがいちてん",
-      "meaning": "blocking point / point of blockage"
-    },
-    {
-      "source_index": 10617,
-      "id": "2851369",
-      "term": "生涯賃金",
-      "reading": "しょうがいちんぎん",
-      "meaning": "lifetime earnings"
-    },
-    {
-      "source_index": 10618,
-      "id": "2365440",
-      "term": "障害追跡",
-      "reading": "しょうがいついせき",
-      "meaning": "fault trace"
-    },
-    {
-      "source_index": 10619,
-      "id": "2862436",
-      "term": "傷害特約",
-      "reading": "しょうがいとくやく",
-      "meaning": "rider on a life insurance policy (covering accidents, diseases, etc.)"
-    },
-    {
-      "source_index": 10620,
-      "id": "2065340",
-      "term": "障害年金",
-      "reading": "しょうがいねんきん",
-      "meaning": "disability pension / invalid pension"
-    },
-    {
-      "source_index": 10621,
-      "id": "2850145",
-      "term": "障害馬術",
-      "reading": "しょうがいばじゅつ",
-      "meaning": "show jumping (equestrian event)"
-    },
-    {
-      "source_index": 10622,
-      "id": "2850146",
-      "term": "障害飛越",
-      "reading": "しょうがいひえつ",
-      "meaning": "show jumping (equestrian event)"
-    },
-    {
-      "source_index": 10623,
-      "id": "2365450",
-      "term": "障害復旧",
-      "reading": "しょうがいふっきゅう",
-      "meaning": "disaster recovery / fault clearing / fault restoration"
-    },
-    {
-      "source_index": 10624,
-      "id": "1345850",
-      "term": "傷害保険",
-      "reading": "しょうがいほけん",
-      "meaning": "accident insurance"
-    },
-    {
-      "source_index": 10625,
-      "id": "1799070",
-      "term": "奨学資金",
-      "reading": "しょうがくしきん",
-      "meaning": "scholarship fund"
-    },
-    {
-      "source_index": 10626,
-      "id": "2835393",
-      "term": "少額訴訟",
-      "reading": "しょうがくそしょう",
-      "meaning": "small claims lawsuit"
-    },
-    {
-      "source_index": 10627,
-      "id": "1346660",
-      "term": "商学博士",
-      "reading": "しょうがくはくし",
-      "meaning": "Doctor of Commercial Science"
-    },
-    {
-      "source_index": 10628,
-      "id": "2855430",
-      "term": "生姜醤油",
-      "reading": "しょうがしょうゆ",
-      "meaning": "soy sauce mixed with grated ginger"
-    },
-    {
-      "source_index": 10629,
-      "id": "2839182",
-      "term": "小学校区",
-      "reading": "しょうがっこうく",
-      "meaning": "primary school district / elementary school district"
-    },
-    {
-      "source_index": 10630,
-      "id": "2835058",
-      "term": "正月映画",
-      "reading": "しょうがつえいが",
-      "meaning": "film shown over the New Year period"
-    },
-    {
-      "source_index": 10631,
-      "id": "2663050",
-      "term": "鍾馗水仙",
-      "reading": "しょうきずいせん",
-      "meaning": "Lycoris traubii (species of spider lily)"
-    },
-    {
-      "source_index": 10632,
-      "id": "2856553",
-      "term": "笑気麻酔",
-      "reading": "しょうきますい",
-      "meaning": "nitrous oxide anesthesia / laughing gas anesthesia"
-    },
-    {
-      "source_index": 10633,
-      "id": "2867622",
-      "term": "償却資産",
-      "reading": "しょうきゃくしさん",
-      "meaning": "depreciable assets / depreciation assets"
-    },
-    {
-      "source_index": 10634,
-      "id": "2790370",
-      "term": "傷弓の鳥",
-      "reading": "しょうきゅうのとり",
-      "meaning": "(person who is) once bitten twice shy / someone who has become overly cautious due to a bad experience"
-    },
-    {
-      "source_index": 10635,
-      "id": "2869805",
-      "term": "小頬骨筋",
-      "reading": "しょうきょうこつきん",
-      "meaning": "zygomaticus minor muscle"
-    },
-    {
-      "source_index": 10636,
-      "id": "2856607",
-      "term": "小協奏曲",
-      "reading": "しょうきょうそうきょく",
-      "meaning": "concertino"
-    },
-    {
-      "source_index": 10637,
-      "id": "1376990",
-      "term": "正金銀行",
-      "reading": "しょうきんぎんこう",
-      "meaning": "specie bank"
-    },
-    {
-      "source_index": 10638,
-      "id": "1735300",
-      "term": "正金取引",
-      "reading": "しょうきんとりひき",
-      "meaning": "cash transaction"
-    },
-    {
-      "source_index": 10639,
-      "id": "1346790",
-      "term": "商業学校",
-      "reading": "しょうぎょうがっこう",
-      "meaning": "commercial school"
-    },
-    {
-      "source_index": 10640,
-      "id": "1775120",
-      "term": "商業銀行",
-      "reading": "しょうぎょうぎんこう",
-      "meaning": "commercial bank"
-    },
-    {
-      "source_index": 10641,
-      "id": "1346850",
-      "term": "商業組合",
-      "reading": "しょうぎょうくみあい",
-      "meaning": "guild / trade association"
-    },
-    {
-      "source_index": 10642,
-      "id": "1346810",
-      "term": "商業算術",
-      "reading": "しょうぎょうさんじゅつ",
-      "meaning": "commercial arithmetic"
-    },
-    {
-      "source_index": 10643,
-      "id": "2856141",
-      "term": "商業施設",
-      "reading": "しょうぎょうしせつ",
-      "meaning": "retail facilities / commercial facilities"
-    },
-    {
-      "source_index": 10644,
-      "id": "1775110",
-      "term": "商業資本",
-      "reading": "しょうぎょうしほん",
-      "meaning": "trading capital"
-    },
-    {
-      "source_index": 10645,
-      "id": "1346830",
-      "term": "商業主義",
-      "reading": "しょうぎょうしゅぎ",
-      "meaning": "commercialism"
-    },
-    {
-      "source_index": 10646,
-      "id": "2849301",
-      "term": "商業出版",
-      "reading": "しょうぎょうしゅっぱん",
-      "meaning": "commercial publishing"
-    },
-    {
-      "source_index": 10647,
-      "id": "1346840",
-      "term": "商業数学",
-      "reading": "しょうぎょうすうがく",
-      "meaning": "commercial mathematics"
-    },
-    {
-      "source_index": 10648,
-      "id": "1995200",
-      "term": "商業生産",
-      "reading": "しょうぎょうせいさん",
-      "meaning": "commercial production"
-    },
-    {
-      "source_index": 10649,
-      "id": "2848575",
-      "term": "商業地域",
-      "reading": "しょうぎょうちいき",
-      "meaning": "commercial area / business district"
-    },
     {
       "source_index": 10650,
       "id": "1346870",
@@ -712,6 +362,356 @@
       "term": "照射方向",
       "reading": "しょうしゃほうこう",
       "meaning": "light source direction"
+    },
+    {
+      "source_index": 10700,
+      "id": "1638530",
+      "term": "召集令状",
+      "reading": "しょうしゅうれいじょう",
+      "meaning": "draft papers / callup notice"
+    },
+    {
+      "source_index": 10701,
+      "id": "2031330",
+      "term": "焦心苦慮",
+      "reading": "しょうしんくりょ",
+      "meaning": "worrying oneself (about) / being anxious (about) / fidgeting (about)"
+    },
+    {
+      "source_index": 10702,
+      "id": "2046950",
+      "term": "小心姑息",
+      "reading": "しょうしんこそく",
+      "meaning": "timid and evasive (person) / timid and makeshift (approach, measure, etc.)"
+    },
+    {
+      "source_index": 10703,
+      "id": "1377430",
+      "term": "正真正銘",
+      "reading": "しょうしんしょうめい",
+      "meaning": "genuine / authentic / true"
+    },
+    {
+      "source_index": 10704,
+      "id": "1882620",
+      "term": "焼身自殺",
+      "reading": "しょうしんじさつ",
+      "meaning": "self-immolation / burning oneself to death / suicide by fire"
+    },
+    {
+      "source_index": 10705,
+      "id": "2819670",
+      "term": "昇進人事",
+      "reading": "しょうしんじんじ",
+      "meaning": "promotion / appointment to a more senior position"
+    },
+    {
+      "source_index": 10706,
+      "id": "2046960",
+      "term": "小身微禄",
+      "reading": "しょうしんびろく",
+      "meaning": "(in) a humble position with a small stipend"
+    },
+    {
+      "source_index": 10707,
+      "id": "1348330",
+      "term": "小心翼々",
+      "reading": "しょうしんよくよく",
+      "meaning": "very timid / very nervous / faint-hearted"
+    },
+    {
+      "source_index": 10708,
+      "id": "2738810",
+      "term": "傷心旅行",
+      "reading": "しょうしんりょこう",
+      "meaning": "travel to relieve heartbreak / sentimental journey"
+    },
+    {
+      "source_index": 10709,
+      "id": "1347070",
+      "term": "商事会社",
+      "reading": "しょうじがいしゃ",
+      "meaning": "commercial company"
+    },
+    {
+      "source_index": 10710,
+      "id": "2110780",
+      "term": "正直一途",
+      "reading": "しょうじきいちず",
+      "meaning": "(of) straightforward honesty / steadfastly honest"
+    },
+    {
+      "source_index": 10711,
+      "id": "2046910",
+      "term": "正直一徹",
+      "reading": "しょうじきいってつ",
+      "meaning": "stubbornly honest"
+    },
+    {
+      "source_index": 10712,
+      "id": "2046920",
+      "term": "正直一遍",
+      "reading": "しょうじきいっぺん",
+      "meaning": "honest to a fault / one's only strength being his (her) honesty / having no redeeming feature except for being honest"
+    },
+    {
+      "source_index": 10713,
+      "id": "2418520",
+      "term": "正直の頭に神宿る",
+      "reading": "しょうじきのこうべにかみやどる",
+      "meaning": "honesty is the best policy / honesty pays / God dwells in an honest heart"
+    },
+    {
+      "source_index": 10714,
+      "id": "2365150",
+      "term": "消磁装置",
+      "reading": "しょうじそうち",
+      "meaning": "degausser / demagnetizer"
+    },
+    {
+      "source_index": 10715,
+      "id": "1379100",
+      "term": "生者必滅",
+      "reading": "しょうじゃひつめつ",
+      "meaning": "all living things must die"
+    },
+    {
+      "source_index": 10716,
+      "id": "2365240",
+      "term": "照準記号",
+      "reading": "しょうじゅんきごう",
+      "meaning": "aiming symbol / aiming circle / aiming field"
+    },
+    {
+      "source_index": 10717,
+      "id": "2365090",
+      "term": "昇順整列",
+      "reading": "しょうじゅんせいれつ",
+      "meaning": "sort (in ascending order)"
+    },
+    {
+      "source_index": 10718,
+      "id": "2604470",
+      "term": "鐘状火山",
+      "reading": "しょうじょうかざん",
+      "meaning": "lava dome"
+    },
+    {
+      "source_index": 10719,
+      "id": "2031560",
+      "term": "生々世々",
+      "reading": "しょうじょうせぜ",
+      "meaning": "eternity / forever / through all eternity"
+    },
+    {
+      "source_index": 10720,
+      "id": "2606020",
+      "term": "衝上断層",
+      "reading": "しょうじょうだんそう",
+      "meaning": "thrust fault"
+    },
+    {
+      "source_index": 10721,
+      "id": "2832224",
+      "term": "猩猩朱鷺",
+      "reading": "しょうじょうとき",
+      "meaning": "scarlet ibis (Eudocimus ruber)"
+    },
+    {
+      "source_index": 10722,
+      "id": "2866373",
+      "term": "掌状複葉",
+      "reading": "しょうじょうふくよう",
+      "meaning": "palmate compound leaf"
+    },
+    {
+      "source_index": 10723,
+      "id": "1744040",
+      "term": "小乗仏教",
+      "reading": "しょうじょうぶっきょう",
+      "meaning": "Hinayana Buddhism"
+    },
+    {
+      "source_index": 10724,
+      "id": "2837140",
+      "term": "少女趣味",
+      "reading": "しょうじょしゅみ",
+      "meaning": "(school) girlish taste (for things that are sweet, cute, romantic, etc.)"
+    },
+    {
+      "source_index": 10725,
+      "id": "1938410",
+      "term": "少女小説",
+      "reading": "しょうじょしょうせつ",
+      "meaning": "novel for young girls"
+    },
+    {
+      "source_index": 10726,
+      "id": "2031600",
+      "term": "生死輪廻",
+      "reading": "しょうじりんね",
+      "meaning": "all things being in flux through the endless circle of birth, death, and rebirth / the circle of transmigration"
+    },
+    {
+      "source_index": 10727,
+      "id": "2031590",
+      "term": "生死流転",
+      "reading": "しょうじるてん",
+      "meaning": "all things being in flux through the endless circle of birth, death, and rebirth / the circle of transmigration"
+    },
+    {
+      "source_index": 10728,
+      "id": "2031320",
+      "term": "小人閑居",
+      "reading": "しょうじんかんきょ",
+      "meaning": "a small-minded person being idle (tends to do evil)"
+    },
+    {
+      "source_index": 10729,
+      "id": "2031640",
+      "term": "精進潔斎",
+      "reading": "しょうじんけっさい",
+      "meaning": "purifying oneself (religiously) by abstaining from eating meat"
+    },
+    {
+      "source_index": 10730,
+      "id": "2867473",
+      "term": "精進袱紗",
+      "reading": "しょうじんぶくさ",
+      "meaning": "cloth used as a gift for ceremonies"
+    },
+    {
+      "source_index": 10731,
+      "id": "1751330",
+      "term": "精進料理",
+      "reading": "しょうじんりょうり",
+      "meaning": "vegetarian cuisine originally derived from the dietary restrictions of Buddhist monks"
+    },
+    {
+      "source_index": 10732,
+      "id": "1938420",
+      "term": "少数意見",
+      "reading": "しょうすういけん",
+      "meaning": "minority opinion"
+    },
+    {
+      "source_index": 10733,
+      "id": "2856402",
+      "term": "少数言語",
+      "reading": "しょうすうげんご",
+      "meaning": "minority language"
+    },
+    {
+      "source_index": 10734,
+      "id": "1938430",
+      "term": "少数精鋭",
+      "reading": "しょうすうせいえい",
+      "meaning": "elect (select) few"
+    },
+    {
+      "source_index": 10735,
+      "id": "1349100",
+      "term": "少数民族",
+      "reading": "しょうすうみんぞく",
+      "meaning": "minority ethnic group / ethnic minority / minority race"
+    },
+    {
+      "source_index": 10736,
+      "id": "2851920",
+      "term": "少数与党",
+      "reading": "しょうすうよとう",
+      "meaning": "minority party in power / minority government"
+    },
+    {
+      "source_index": 10737,
+      "id": "1882730",
+      "term": "焦性硫酸",
+      "reading": "しょうせいりゅうさん",
+      "meaning": "pyrosulphuric acid / pyrosulfuric acid"
+    },
+    {
+      "source_index": 10738,
+      "id": "1347120",
+      "term": "商船学校",
+      "reading": "しょうせんがっこう",
+      "meaning": "merchant-marine school"
+    },
+    {
+      "source_index": 10739,
+      "id": "1952580",
+      "term": "小選挙区",
+      "reading": "しょうせんきょく",
+      "meaning": "small electoral district / single-member constituency"
+    },
+    {
+      "source_index": 10740,
+      "id": "1347150",
+      "term": "商船大学",
+      "reading": "しょうせんだいがく",
+      "meaning": "mercantile marine college"
+    },
+    {
+      "source_index": 10741,
+      "id": "5369234",
+      "term": "商船三井",
+      "reading": "しょうせんみつい",
+      "meaning": "Mitsui O.S.K. Lines"
+    },
+    {
+      "source_index": 10742,
+      "id": "1349120",
+      "term": "少壮気鋭",
+      "reading": "しょうそうきえい",
+      "meaning": "young and energetic / up-and-coming"
+    },
+    {
+      "source_index": 10743,
+      "id": "2046970",
+      "term": "少壮血気",
+      "reading": "しょうそうけっき",
+      "meaning": "young and hot-blooded (impetuous)"
+    },
+    {
+      "source_index": 10744,
+      "id": "1349130",
+      "term": "少壮士官",
+      "reading": "しょうそうしかん",
+      "meaning": "youth officer"
+    },
+    {
+      "source_index": 10745,
+      "id": "1349140",
+      "term": "少壮有為",
+      "reading": "しょうそうゆうい",
+      "meaning": "energetic"
+    },
+    {
+      "source_index": 10746,
+      "id": "2046980",
+      "term": "消息不明",
+      "reading": "しょうそくふめい",
+      "meaning": "untraceable / long lost / one's whereabouts being unknown"
+    },
+    {
+      "source_index": 10747,
+      "id": "2686330",
+      "term": "肖像画家",
+      "reading": "しょうぞうがか",
+      "meaning": "portrait painter"
+    },
+    {
+      "source_index": 10748,
+      "id": "2412940",
+      "term": "招待講演",
+      "reading": "しょうたいこうえん",
+      "meaning": "invited lecture"
+    },
+    {
+      "source_index": 10749,
+      "id": "2047000",
+      "term": "正体不明",
+      "reading": "しょうたいふめい",
+      "meaning": "unidentifiable / unidentified"
     }
   ]
 }
