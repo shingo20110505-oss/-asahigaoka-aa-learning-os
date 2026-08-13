@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 12187,
-  "english_only_remaining": 2813,
+  "already_direct_japanese": 12237,
+  "english_only_remaining": 2763,
   "english_only_rank_counts": {
-    "(blank)": 2813
+    "(blank)": 2763
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 12187,
-      "id": "2103510",
-      "term": "事務作業",
-      "reading": "じむさぎょう",
-      "meaning": "clerical work"
-    },
-    {
-      "source_index": 12188,
-      "id": "2650590",
-      "term": "事務職員",
-      "reading": "じむしょくいん",
-      "meaning": "administrative staff / business clerk / clerical force"
-    },
-    {
-      "source_index": 12189,
-      "id": "2017640",
-      "term": "事務処理",
-      "reading": "じむしょり",
-      "meaning": "paperwork"
-    },
-    {
-      "source_index": 12190,
-      "id": "1314370",
-      "term": "事務次官",
-      "reading": "じむじかん",
-      "meaning": "permanent vice-president / undersecretary / vice-minister"
-    },
-    {
-      "source_index": 12191,
-      "id": "1314410",
-      "term": "事務総局",
-      "reading": "じむそうきょく",
-      "meaning": "secretariat-general"
-    },
-    {
-      "source_index": 12192,
-      "id": "1314420",
-      "term": "事務総長",
-      "reading": "じむそうちょう",
-      "meaning": "secretary-general / director"
-    },
-    {
-      "source_index": 12193,
-      "id": "1314440",
-      "term": "事務長官",
-      "reading": "じむちょうかん",
-      "meaning": "chief secretary"
-    },
-    {
-      "source_index": 12194,
-      "id": "1314460",
-      "term": "事務当局",
-      "reading": "じむとうきょく",
-      "meaning": "officials in charge"
-    },
-    {
-      "source_index": 12195,
-      "id": "1314390",
-      "term": "事務取扱",
-      "reading": "じむとりあつかい",
-      "meaning": "acting director"
-    },
-    {
-      "source_index": 12196,
-      "id": "1936790",
-      "term": "事務用品",
-      "reading": "じむようひん",
-      "meaning": "office supplies / stationery"
-    },
-    {
-      "source_index": 12197,
-      "id": "2852237",
-      "term": "地面効果",
-      "reading": "じめんこうか",
-      "meaning": "ground effect"
-    },
-    {
-      "source_index": 12198,
-      "id": "1421070",
-      "term": "地元警察",
-      "reading": "じもとけいさつ",
-      "meaning": "local police"
-    },
-    {
-      "source_index": 12199,
-      "id": "2200010",
-      "term": "地元住民",
-      "reading": "じもとじゅうみん",
-      "meaning": "local residents"
-    },
-    {
-      "source_index": 12200,
-      "id": "2265700",
-      "term": "地元政府",
-      "reading": "じもとせいふ",
-      "meaning": "local government"
-    },
-    {
-      "source_index": 12201,
-      "id": "1726580",
-      "term": "自問自答",
-      "reading": "じもんじとう",
-      "meaning": "answering one's own question / wondering to oneself / soliloquizing"
-    },
-    {
-      "source_index": 12202,
-      "id": "1324880",
-      "term": "弱肉強食",
-      "reading": "じゃくにくきょうしょく",
-      "meaning": "the law of the jungle / the strong prey on the weak / the weak become the victim of the strong"
-    },
-    {
-      "source_index": 12203,
-      "id": "2046480",
-      "term": "寂滅為楽",
-      "reading": "じゃくめついらく",
-      "meaning": "freedom from one's desires (entry into Nirvana) is true bliss"
-    },
-    {
-      "source_index": 12204,
-      "id": "2834060",
-      "term": "弱冷房車",
-      "reading": "じゃくれいぼうしゃ",
-      "meaning": "mildly air-conditioned railway carriage"
-    },
-    {
-      "source_index": 12205,
-      "id": "2586190",
-      "term": "麝香揚羽",
-      "reading": "じゃこうあげは",
-      "meaning": "Chinese windmill (species of red-bodied swallowtail butterfly, Atrophaneura alcinous)"
-    },
-    {
-      "source_index": 12206,
-      "id": "2046500",
-      "term": "邪正一如",
-      "reading": "じゃしょういちにょ",
-      "meaning": "Wrong and right are but two faces of the same coin"
-    },
-    {
-      "source_index": 12207,
-      "id": "2113190",
-      "term": "蛇心仏口",
-      "reading": "じゃしんぶっこう",
-      "meaning": "being cunning and spiteful, yet honey-tongued with feigned kindness"
-    },
-    {
-      "source_index": 12208,
-      "id": "1005940",
-      "term": "じゃじゃ馬",
-      "reading": "じゃじゃうま",
-      "meaning": "restive horse"
-    },
-    {
-      "source_index": 12209,
-      "id": "1733840",
-      "term": "寂光浄土",
-      "reading": "じゃっこうじょうど",
-      "meaning": "paradise"
-    },
-    {
-      "source_index": 12210,
-      "id": "2860319",
-      "term": "邪魔を入れる",
-      "reading": "じゃまをいれる",
-      "meaning": "to interfere / to hinder / to obstruct"
-    },
-    {
-      "source_index": 12211,
-      "id": "2860087",
-      "term": "獣医学部",
-      "reading": "じゅういがくぶ",
-      "meaning": "department of veterinary medicine / school of veterinary medicine"
-    },
-    {
-      "source_index": 12212,
-      "id": "1334490",
-      "term": "什一献金",
-      "reading": "じゅういちけんきん",
-      "meaning": "tithes"
-    },
-    {
-      "source_index": 12213,
-      "id": "2633780",
-      "term": "重嬰記号",
-      "reading": "じゅうえいきごう",
-      "meaning": "double sharp (symbol)"
-    },
-    {
-      "source_index": 12214,
-      "id": "1885330",
-      "term": "重液分離",
-      "reading": "じゅうえきぶんり",
-      "meaning": "heavy media (liquid) separation"
-    },
-    {
-      "source_index": 12215,
-      "id": "2046520",
-      "term": "縦横自在",
-      "reading": "じゅうおうじざい",
-      "meaning": "freely / right and left / active without any restraint"
-    },
-    {
-      "source_index": 12216,
-      "id": "2046530",
-      "term": "縦横無礙",
-      "reading": "じゅうおうむげ",
-      "meaning": "being as free as the air / active without any restraint"
-    },
-    {
-      "source_index": 12217,
-      "id": "1335650",
-      "term": "縦横無尽",
-      "reading": "じゅうおうむじん",
-      "meaning": "freely / right and left / as one pleases"
-    },
-    {
-      "source_index": 12218,
-      "id": "2866633",
-      "term": "重音脱落",
-      "reading": "じゅうおんだつらく",
-      "meaning": "haplology"
-    },
-    {
-      "source_index": 12219,
-      "id": "1659310",
-      "term": "重加算税",
-      "reading": "じゅうかさんぜい",
-      "meaning": "heavy additional tax(ation)"
-    },
-    {
-      "source_index": 12220,
-      "id": "1334580",
-      "term": "十月革命",
-      "reading": "じゅうがつかくめい",
-      "meaning": "October Revolution"
-    },
-    {
-      "source_index": 12221,
-      "id": "1336080",
-      "term": "重機関銃",
-      "reading": "じゅうきかんじゅう",
-      "meaning": "heavy machine gun"
-    },
-    {
-      "source_index": 12222,
-      "id": "2393720",
-      "term": "銃規制法",
-      "reading": "じゅうきせいほう",
-      "meaning": "gun control law"
-    },
-    {
-      "source_index": 12223,
-      "id": "2869257",
-      "term": "住居地域",
-      "reading": "じゅうきょちいき",
-      "meaning": "residential area / residential district / residential zone"
-    },
-    {
-      "source_index": 12224,
-      "id": "1334060",
-      "term": "住居手当",
-      "reading": "じゅうきょてあて",
-      "meaning": "rent allowance"
-    },
-    {
-      "source_index": 12225,
-      "id": "2363470",
-      "term": "住居表示",
-      "reading": "じゅうきょひょうじ",
-      "meaning": "Japanese addressing system (district-block-lot)"
-    },
-    {
-      "source_index": 12226,
-      "id": "2633650",
-      "term": "重金主義",
-      "reading": "じゅうきんしゅぎ",
-      "meaning": "bullionism"
-    },
-    {
-      "source_index": 12227,
-      "id": "2853596",
-      "term": "従業員数",
-      "reading": "じゅうぎょういんすう",
-      "meaning": "number of employees"
-    },
-    {
-      "source_index": 12228,
-      "id": "1335270",
-      "term": "従軍記者",
-      "reading": "じゅうぐんきしゃ",
-      "meaning": "war correspondent"
-    },
-    {
-      "source_index": 12229,
-      "id": "2837481",
-      "term": "従軍記章",
-      "reading": "じゅうぐんきしょう",
-      "meaning": "service medal / war medal"
-    },
-    {
-      "source_index": 12230,
-      "id": "2830264",
-      "term": "従軍牧師",
-      "reading": "じゅうぐんぼくし",
-      "meaning": "military chaplain"
-    },
-    {
-      "source_index": 12231,
-      "id": "2643990",
-      "term": "重軽傷者",
-      "reading": "じゅうけいしょうしゃ",
-      "meaning": "(seriously and slightly) injured persons / people with serious and minor injures"
-    },
-    {
-      "source_index": 12232,
-      "id": "2787050",
-      "term": "重慶政府",
-      "reading": "じゅうけいせいふ",
-      "meaning": "Chongqing government (Kuomintang government based in Chongqing during the Second Sino-Japanese War)"
-    },
-    {
-      "source_index": 12233,
-      "id": "5359134",
-      "term": "重慶大学",
-      "reading": "じゅうけいだいがく",
-      "meaning": "Chongqing University / CQU"
-    },
-    {
-      "source_index": 12234,
-      "id": "2242580",
-      "term": "住血吸虫",
-      "reading": "じゅうけつきゅうちゅう",
-      "meaning": "blood fluke (any fluke of family Schistosomatidae) / schistosome"
-    },
-    {
-      "source_index": 12235,
-      "id": "2046550",
-      "term": "重厚長大",
-      "reading": "じゅうこうちょうだい",
-      "meaning": "heavy, thick, long, and big (products, esp. industrial) / massive and heavy / heavy (industry)"
-    },
-    {
-      "source_index": 12236,
-      "id": "2857123",
-      "term": "重国籍者",
-      "reading": "じゅうこくせきしゃ",
-      "meaning": "holder of multiple (e.g. dual) citizenships / dual national / dual citizen"
-    },
     {
       "source_index": 12237,
       "id": "2865264",
@@ -7010,6 +6660,356 @@
       "term": "数学教育",
       "reading": "すうがくきょういく",
       "meaning": "mathematics education"
+    },
+    {
+      "source_index": 13187,
+      "id": "2735090",
+      "term": "数学検定",
+      "reading": "すうがくけんてい",
+      "meaning": "Global Mathematics Certification / Practical Mathematics Proficiency Test"
+    },
+    {
+      "source_index": 13188,
+      "id": "2367540",
+      "term": "数字位置",
+      "reading": "すうじいち",
+      "meaning": "digit place / digit position"
+    },
+    {
+      "source_index": 13189,
+      "id": "2367560",
+      "term": "数字項目",
+      "reading": "すうじこうもく",
+      "meaning": "numeric item"
+    },
+    {
+      "source_index": 13190,
+      "id": "2367570",
+      "term": "数字集合",
+      "reading": "すうじしゅうごう",
+      "meaning": "numeric character set"
+    },
+    {
+      "source_index": 13191,
+      "id": "2367580",
+      "term": "数字定数",
+      "reading": "すうじていすう",
+      "meaning": "numeric literal"
+    },
+    {
+      "source_index": 13192,
+      "id": "2863166",
+      "term": "数字表記",
+      "reading": "すうじひょうき",
+      "meaning": "number notation / numeric notation / number designation"
+    },
+    {
+      "source_index": 13193,
+      "id": "1709260",
+      "term": "数次旅券",
+      "reading": "すうじりょけん",
+      "meaning": "passport valid for multiple journeys"
+    },
+    {
+      "source_index": 13194,
+      "id": "1939650",
+      "term": "数値解析",
+      "reading": "すうちかいせき",
+      "meaning": "numerical analysis"
+    },
+    {
+      "source_index": 13195,
+      "id": "2774060",
+      "term": "数値拡散",
+      "reading": "すうちかくさん",
+      "meaning": "false diffusion / numerical diffusion"
+    },
+    {
+      "source_index": 13196,
+      "id": "1373170",
+      "term": "数値計算",
+      "reading": "すうちけいさん",
+      "meaning": "numeric operation / numeric calculation"
+    },
+    {
+      "source_index": 13197,
+      "id": "2367700",
+      "term": "数値形式",
+      "reading": "すうちけいしき",
+      "meaning": "numeric format"
+    },
+    {
+      "source_index": 13198,
+      "id": "1373180",
+      "term": "数値制御",
+      "reading": "すうちせいぎょ",
+      "meaning": "numerical control / NC"
+    },
+    {
+      "source_index": 13199,
+      "id": "2864434",
+      "term": "数値地図",
+      "reading": "すうちちず",
+      "meaning": "digital map / electronic map"
+    },
+    {
+      "source_index": 13200,
+      "id": "2367740",
+      "term": "数値表現",
+      "reading": "すうちひょうげん",
+      "meaning": "numeric representation"
+    },
+    {
+      "source_index": 13201,
+      "id": "2367750",
+      "term": "数値変数",
+      "reading": "すうちへんすう",
+      "meaning": "numeric variable"
+    },
+    {
+      "source_index": 13202,
+      "id": "1373190",
+      "term": "数値目標",
+      "reading": "すうちもくひょう",
+      "meaning": "target value / target amount"
+    },
+    {
+      "source_index": 13203,
+      "id": "2047810",
+      "term": "数的優勢",
+      "reading": "すうてきゆうせい",
+      "meaning": "superiority in number / numerical superiority"
+    },
+    {
+      "source_index": 13204,
+      "id": "2810120",
+      "term": "数分以内",
+      "reading": "すうふんいない",
+      "meaning": "within minutes"
+    },
+    {
+      "source_index": 13205,
+      "id": "2078350",
+      "term": "数物科学",
+      "reading": "すうぶつかがく",
+      "meaning": "mathematical and physical sciences"
+    },
+    {
+      "source_index": 13206,
+      "id": "2833461",
+      "term": "数理科学",
+      "reading": "すうりかがく",
+      "meaning": "mathematical science"
+    },
+    {
+      "source_index": 13207,
+      "id": "2862215",
+      "term": "数理工学",
+      "reading": "すうりこうがく",
+      "meaning": "mathematical engineering"
+    },
+    {
+      "source_index": 13208,
+      "id": "1939660",
+      "term": "数理哲学",
+      "reading": "すうりてつがく",
+      "meaning": "philosophy of mathematics / mathematical philosophy"
+    },
+    {
+      "source_index": 13209,
+      "id": "2848489",
+      "term": "数量限定",
+      "reading": "すうりょうげんてい",
+      "meaning": "limited quantity"
+    },
+    {
+      "source_index": 13210,
+      "id": "2829078",
+      "term": "数量調整",
+      "reading": "すうりょうちょうせい",
+      "meaning": "quantity adjustment"
+    },
+    {
+      "source_index": 13211,
+      "id": "1717970",
+      "term": "据置期間",
+      "reading": "すえおききかん",
+      "meaning": "period of deferment / grace period / interest-only period"
+    },
+    {
+      "source_index": 13212,
+      "id": "5654644",
+      "term": "末野興産",
+      "reading": "すえのこうさん",
+      "meaning": "Sueno Kosan (Japanese real estate company)"
+    },
+    {
+      "source_index": 13213,
+      "id": "1307720",
+      "term": "姿を消す",
+      "reading": "すがたをけす",
+      "meaning": "to disappear / to vanish"
+    },
+    {
+      "source_index": 13214,
+      "id": "2778550",
+      "term": "蜾蠃少女",
+      "reading": "すがるおとめ",
+      "meaning": "wasp-waisted girl"
+    },
+    {
+      "source_index": 13215,
+      "id": "2861357",
+      "term": "隙間産業",
+      "reading": "すきまさんぎょう",
+      "meaning": "niche industry"
+    },
+    {
+      "source_index": 13216,
+      "id": "2395640",
+      "term": "隙間市場",
+      "reading": "すきましじょう",
+      "meaning": "niche market"
+    },
+    {
+      "source_index": 13217,
+      "id": "2861358",
+      "term": "隙間商品",
+      "reading": "すきましょうひん",
+      "meaning": "niche product"
+    },
+    {
+      "source_index": 13218,
+      "id": "2863616",
+      "term": "隙間時間",
+      "reading": "すきまじかん",
+      "meaning": "spare moment / free time / interval"
+    },
+    {
+      "source_index": 13219,
+      "id": "1814430",
+      "term": "杉花粉症",
+      "reading": "すぎかふんしょう",
+      "meaning": "cedar pollen allergy"
+    },
+    {
+      "source_index": 13220,
+      "id": "2838067",
+      "term": "救いの手",
+      "reading": "すくいのて",
+      "meaning": "helping hand / help / support"
+    },
+    {
+      "source_index": 13221,
+      "id": "2774950",
+      "term": "竦林檎貝",
+      "reading": "すくみりんごがい",
+      "meaning": "channeled apple snail (Pomacea canaliculata) / golden apple snail"
+    },
+    {
+      "source_index": 13222,
+      "id": "2830744",
+      "term": "頭黒禿鸛",
+      "reading": "すぐろはげこう",
+      "meaning": "jabiru (Jabiru mycteria)"
+    },
+    {
+      "source_index": 13223,
+      "id": "2521370",
+      "term": "須佐之男",
+      "reading": "すさのお",
+      "meaning": "Susanoo (deity, younger brother to Amaterasu) / Susanoo-no-Mikoto"
+    },
+    {
+      "source_index": 13224,
+      "id": "1595660",
+      "term": "すし詰め",
+      "reading": "すしづめ",
+      "meaning": "jam-packed / packed in like sardines"
+    },
+    {
+      "source_index": 13225,
+      "id": "2230800",
+      "term": "条黒白蝶",
+      "reading": "すじぐろしろちょう",
+      "meaning": "Pieris melete (species of cabbage white butterfly)"
+    },
+    {
+      "source_index": 13226,
+      "id": "2753160",
+      "term": "煤色面梟",
+      "reading": "すすいろめんふくろう",
+      "meaning": "sooty owl (Tyto tenebricosa) / greater sooty owl"
+    },
+    {
+      "source_index": 13227,
+      "id": "5742765",
+      "term": "鈴鹿大学",
+      "reading": "すずかだいがく",
+      "meaning": "Suzuka University"
+    },
+    {
+      "source_index": 13228,
+      "id": "1373570",
+      "term": "雀の涙",
+      "reading": "すずめのなみだ",
+      "meaning": "drop in the bucket / pittance / chicken feed"
+    },
+    {
+      "source_index": 13229,
+      "id": "1373620",
+      "term": "裾野産業",
+      "reading": "すそのさんぎょう",
+      "meaning": "supporting industries / component and parts-supply industries"
+    },
+    {
+      "source_index": 13230,
+      "id": "1400480",
+      "term": "巣立つ",
+      "reading": "すだつ",
+      "meaning": "to leave the nest"
+    },
+    {
+      "source_index": 13231,
+      "id": "2768370",
+      "term": "素敵滅法",
+      "reading": "すてきめっぽう",
+      "meaning": "very lovely / extremely nice / absolutely wonderful"
+    },
+    {
+      "source_index": 13232,
+      "id": "2760590",
+      "term": "脛を齧る",
+      "reading": "すねをかじる",
+      "meaning": "to depend on someone else's (financial) support (usu. one's parents') / to gnaw on (someone's) shin"
+    },
+    {
+      "source_index": 13233,
+      "id": "5356560",
+      "term": "住金物産",
+      "reading": "すみきんぶっさん",
+      "meaning": "Sumikin Bussan Corporation"
+    },
+    {
+      "source_index": 13234,
+      "id": "5740817",
+      "term": "住友銀行",
+      "reading": "すみともぎんこう",
+      "meaning": "Sumitomo Bank"
+    },
+    {
+      "source_index": 13235,
+      "id": "5740850",
+      "term": "住友財閥",
+      "reading": "すみともざいばつ",
+      "meaning": "Sumitomo Zaibatsu"
+    },
+    {
+      "source_index": 13236,
+      "id": "5356786",
+      "term": "住友商事",
+      "reading": "すみともしょうじ",
+      "meaning": "Sumitomo Corporation"
     }
   ]
 }
