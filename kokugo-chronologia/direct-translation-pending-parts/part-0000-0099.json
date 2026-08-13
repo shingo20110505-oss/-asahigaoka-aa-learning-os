@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 10358,
-  "english_only_remaining": 4642,
+  "already_direct_japanese": 10408,
+  "english_only_remaining": 4592,
   "english_only_rank_counts": {
-    "(blank)": 4642
+    "(blank)": 4592
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,356 +13,6 @@
   "part_start": 0,
   "part_end": 99,
   "targets": [
-    {
-      "source_index": 10358,
-      "id": "5745038",
-      "term": "周髀算経",
-      "reading": "しゅうひさんけい",
-      "meaning": "Zhoubi Suanjing (ancient Chinese text on mathematics)"
-    },
-    {
-      "source_index": 10359,
-      "id": "2046640",
-      "term": "秋風落莫",
-      "reading": "しゅうふうらくばく",
-      "meaning": "forlorn and helpless / lonely and desolate"
-    },
-    {
-      "source_index": 10360,
-      "id": "2836532",
-      "term": "修復作業",
-      "reading": "しゅうふくさぎょう",
-      "meaning": "repair work / renovation work / restoration work"
-    },
-    {
-      "source_index": 10361,
-      "id": "5742780",
-      "term": "修文大学",
-      "reading": "しゅうぶんだいがく",
-      "meaning": "Shubun University"
-    },
-    {
-      "source_index": 10362,
-      "id": "2828671",
-      "term": "周辺科学",
-      "reading": "しゅうへんかがく",
-      "meaning": "fringe science"
-    },
-    {
-      "source_index": 10363,
-      "id": "2273580",
-      "term": "周辺確率",
-      "reading": "しゅうへんかくりつ",
-      "meaning": "marginal probability"
-    },
-    {
-      "source_index": 10364,
-      "id": "2668200",
-      "term": "周辺環境",
-      "reading": "しゅうへんかんきょう",
-      "meaning": "surrounding environment / ambient surrounding / one's surroundings"
-    },
-    {
-      "source_index": 10365,
-      "id": "1331310",
-      "term": "周辺機器",
-      "reading": "しゅうへんきき",
-      "meaning": "peripheral / peripheral device / accessory"
-    },
-    {
-      "source_index": 10366,
-      "id": "2673070",
-      "term": "周辺視覚",
-      "reading": "しゅうへんしかく",
-      "meaning": "peripheral vision"
-    },
-    {
-      "source_index": 10367,
-      "id": "2868291",
-      "term": "周辺視野",
-      "reading": "しゅうへんしや",
-      "meaning": "peripheral vision / peripheral visual field"
-    },
-    {
-      "source_index": 10368,
-      "id": "1331330",
-      "term": "周辺諸国",
-      "reading": "しゅうへんしょこく",
-      "meaning": "surrounding countries / neighboring countries / neighbouring countries"
-    },
-    {
-      "source_index": 10369,
-      "id": "2363060",
-      "term": "周辺節点",
-      "reading": "しゅうへんせってん",
-      "meaning": "endpoint node / peripheral node"
-    },
-    {
-      "source_index": 10370,
-      "id": "2363070",
-      "term": "周辺装置",
-      "reading": "しゅうへんそうち",
-      "meaning": "peripheral equipment / peripheral device"
-    },
-    {
-      "source_index": 10371,
-      "id": "2273110",
-      "term": "終末医療",
-      "reading": "しゅうまついりょう",
-      "meaning": "terminal care"
-    },
-    {
-      "source_index": 10372,
-      "id": "2715970",
-      "term": "週末起業",
-      "reading": "しゅうまつきぎょう",
-      "meaning": "running a start-up company after work or on weekends"
-    },
-    {
-      "source_index": 10373,
-      "id": "2859740",
-      "term": "終末思想",
-      "reading": "しゅうまつしそう",
-      "meaning": "eschatology / apocalypticism"
-    },
-    {
-      "source_index": 10374,
-      "id": "2834423",
-      "term": "終末時計",
-      "reading": "しゅうまつどけい",
-      "meaning": "doomsday clock"
-    },
-    {
-      "source_index": 10375,
-      "id": "5742779",
-      "term": "秀明大学",
-      "reading": "しゅうめいだいがく",
-      "meaning": "Shumei University"
-    },
-    {
-      "source_index": 10376,
-      "id": "2031240",
-      "term": "襲名披露",
-      "reading": "しゅうめいひろう",
-      "meaning": "announcing the succession to another's stage name"
-    },
-    {
-      "source_index": 10377,
-      "id": "2610530",
-      "term": "周面摩擦",
-      "reading": "しゅうめんまさつ",
-      "meaning": "skin friction"
-    },
-    {
-      "source_index": 10378,
-      "id": "2046660",
-      "term": "衆目一致",
-      "reading": "しゅうもくいっち",
-      "meaning": "universal agreement / broad consensus"
-    },
-    {
-      "source_index": 10379,
-      "id": "2834824",
-      "term": "宗門改役",
-      "reading": "しゅうもんあらためやく",
-      "meaning": "magistrate in charge of finding out and converting hidden Christians (during the Edo period)"
-    },
-    {
-      "source_index": 10380,
-      "id": "1937800",
-      "term": "終夜運転",
-      "reading": "しゅうやうんてん",
-      "meaning": "all-night service"
-    },
-    {
-      "source_index": 10381,
-      "id": "1698240",
-      "term": "終夜営業",
-      "reading": "しゅうやえいぎょう",
-      "meaning": "(a business) open all night"
-    },
-    {
-      "source_index": 10382,
-      "id": "2846693",
-      "term": "集約畜産",
-      "reading": "しゅうやくちくさん",
-      "meaning": "intensive animal farming"
-    },
-    {
-      "source_index": 10383,
-      "id": "2765250",
-      "term": "集約投資",
-      "reading": "しゅうやくとうし",
-      "meaning": "intensive investment"
-    },
-    {
-      "source_index": 10384,
-      "id": "1813600",
-      "term": "集約農業",
-      "reading": "しゅうやくのうぎょう",
-      "meaning": "intensive farming"
-    },
-    {
-      "source_index": 10385,
-      "id": "2652630",
-      "term": "周遊切符",
-      "reading": "しゅうゆうきっぷ",
-      "meaning": "excursion ticket"
-    },
-    {
-      "source_index": 10386,
-      "id": "1330890",
-      "term": "収容患者",
-      "reading": "しゅうようかんじゃ",
-      "meaning": "in-patients"
-    },
-    {
-      "source_index": 10387,
-      "id": "2651110",
-      "term": "収容作業",
-      "reading": "しゅうようさぎょう",
-      "meaning": "collecting bodies (of casualties, etc.) / recovering bodies"
-    },
-    {
-      "source_index": 10388,
-      "id": "2532190",
-      "term": "収容施設",
-      "reading": "しゅうようしせつ",
-      "meaning": "reception center (e.g. for refugees) / reception centre"
-    },
-    {
-      "source_index": 10389,
-      "id": "1330920",
-      "term": "収容設備",
-      "reading": "しゅうようせつび",
-      "meaning": "accommodations"
-    },
-    {
-      "source_index": 10390,
-      "id": "2851133",
-      "term": "収容定員",
-      "reading": "しゅうようていいん",
-      "meaning": "admission capacity"
-    },
-    {
-      "source_index": 10391,
-      "id": "1330930",
-      "term": "収容能力",
-      "reading": "しゅうようのうりょく",
-      "meaning": "capacity / accommodation"
-    },
-    {
-      "source_index": 10392,
-      "id": "1937780",
-      "term": "修理工場",
-      "reading": "しゅうりこうじょう",
-      "meaning": "repair shop"
-    },
-    {
-      "source_index": 10393,
-      "id": "1653480",
-      "term": "州立大学",
-      "reading": "しゅうりつだいがく",
-      "meaning": "state university"
-    },
-    {
-      "source_index": 10394,
-      "id": "2363250",
-      "term": "終了記号",
-      "reading": "しゅうりょうきごう",
-      "meaning": "message indicator"
-    },
-    {
-      "source_index": 10395,
-      "id": "1332460",
-      "term": "修了証書",
-      "reading": "しゅうりょうしょうしょ",
-      "meaning": "diploma"
-    },
-    {
-      "source_index": 10396,
-      "id": "2363260",
-      "term": "終了条件",
-      "reading": "しゅうりょうじょうけん",
-      "meaning": "at end condition"
-    },
-    {
-      "source_index": 10397,
-      "id": "2211900",
-      "term": "秋霖前線",
-      "reading": "しゅうりんぜんせん",
-      "meaning": "autumn rain front / fall rain front"
-    },
-    {
-      "source_index": 10398,
-      "id": "2441700",
-      "term": "収斂進化",
-      "reading": "しゅうれんしんか",
-      "meaning": "convergent evolution"
-    },
-    {
-      "source_index": 10399,
-      "id": "2845437",
-      "term": "就労時間",
-      "reading": "しゅうろうじかん",
-      "meaning": "working hours"
-    },
-    {
-      "source_index": 10400,
-      "id": "2643940",
-      "term": "収賄事件",
-      "reading": "しゅうわいじけん",
-      "meaning": "bribery case / bribery scandal / graft case"
-    },
-    {
-      "source_index": 10401,
-      "id": "2409690",
-      "term": "主演作品",
-      "reading": "しゅえんさくひん",
-      "meaning": "movie in which ... has the starring role"
-    },
-    {
-      "source_index": 10402,
-      "id": "1594810",
-      "term": "主客転倒",
-      "reading": "しゅかくてんとう",
-      "meaning": "reversing the order of (relative) importance (of) / putting the cart before the horse / the tables being turned"
-    },
-    {
-      "source_index": 10403,
-      "id": "1325130",
-      "term": "主格補語",
-      "reading": "しゅかくほご",
-      "meaning": "subject complement"
-    },
-    {
-      "source_index": 10404,
-      "id": "1325170",
-      "term": "主管機関",
-      "reading": "しゅかんきかん",
-      "meaning": "administration"
-    },
-    {
-      "source_index": 10405,
-      "id": "2690490",
-      "term": "種間雑種",
-      "reading": "しゅかんざっしゅ",
-      "meaning": "interspecific hybrid"
-    },
-    {
-      "source_index": 10406,
-      "id": "1325190",
-      "term": "主観主義",
-      "reading": "しゅかんしゅぎ",
-      "meaning": "subjectivism"
-    },
-    {
-      "source_index": 10407,
-      "id": "2872005",
-      "term": "主管事項",
-      "reading": "しゅかんじこう",
-      "meaning": "(one's) areas of responsibility / matters under one's charge / responsibilities"
-    },
     {
       "source_index": 10408,
       "id": "2810150",
@@ -712,6 +362,356 @@
       "term": "主戦投手",
       "reading": "しゅせんとうしゅ",
       "meaning": "top pitcher"
+    },
+    {
+      "source_index": 10458,
+      "id": "2046740",
+      "term": "首鼠両端",
+      "reading": "しゅそりょうたん",
+      "meaning": "being unable to make up one's mind / sitting on the fence"
+    },
+    {
+      "source_index": 10459,
+      "id": "5349360",
+      "term": "酒造協会",
+      "reading": "しゅぞうきょうかい",
+      "meaning": "Wine Institute"
+    },
+    {
+      "source_index": 10460,
+      "id": "2814460",
+      "term": "主対角線",
+      "reading": "しゅたいかくせん",
+      "meaning": "principal diagonal / main diagonal"
+    },
+    {
+      "source_index": 10461,
+      "id": "2362310",
+      "term": "主題表示",
+      "reading": "しゅだいひょうじ",
+      "meaning": "subject indication"
+    },
+    {
+      "source_index": 10462,
+      "id": "1325890",
+      "term": "主知主義",
+      "reading": "しゅちしゅぎ",
+      "meaning": "intellectualism"
+    },
+    {
+      "source_index": 10463,
+      "id": "1329160",
+      "term": "酒池肉林",
+      "reading": "しゅちにくりん",
+      "meaning": "sumptuous feast / debauch"
+    },
+    {
+      "source_index": 10464,
+      "id": "2851263",
+      "term": "出荷停止",
+      "reading": "しゅっかていし",
+      "meaning": "suspension of shipments"
+    },
+    {
+      "source_index": 10465,
+      "id": "1338610",
+      "term": "出勤時間",
+      "reading": "しゅっきんじかん",
+      "meaning": "time for reporting to work"
+    },
+    {
+      "source_index": 10466,
+      "id": "1338760",
+      "term": "出血過多",
+      "reading": "しゅっけつかた",
+      "meaning": "excessive bleeding"
+    },
+    {
+      "source_index": 10467,
+      "id": "2641310",
+      "term": "出血多量",
+      "reading": "しゅっけつたりょう",
+      "meaning": "excessive bleeding / massive bleeding"
+    },
+    {
+      "source_index": 10468,
+      "id": "1338320",
+      "term": "出家遁世",
+      "reading": "しゅっけとんせい",
+      "meaning": "monastic seclusion"
+    },
+    {
+      "source_index": 10469,
+      "id": "1338910",
+      "term": "出港停止",
+      "reading": "しゅっこうていし",
+      "meaning": "embargo (on a ship)"
+    },
+    {
+      "source_index": 10470,
+      "id": "2789310",
+      "term": "出国管理",
+      "reading": "しゅっこくかんり",
+      "meaning": "departure control"
+    },
+    {
+      "source_index": 10471,
+      "id": "2233040",
+      "term": "出国査証",
+      "reading": "しゅっこくさしょう",
+      "meaning": "departure permit / exit visa"
+    },
+    {
+      "source_index": 10472,
+      "id": "2836502",
+      "term": "出国審査",
+      "reading": "しゅっこくしんさ",
+      "meaning": "departure inspection (when leaving a country)"
+    },
+    {
+      "source_index": 10473,
+      "id": "2077440",
+      "term": "出産休暇",
+      "reading": "しゅっさんきゅうか",
+      "meaning": "post-birth maternity leave / eight weeks of compulsory leave following childbirth, plus an optional further six weeks"
+    },
+    {
+      "source_index": 10474,
+      "id": "2029290",
+      "term": "出産手当",
+      "reading": "しゅっさんてあて",
+      "meaning": "maternity allowance / childbirth allowance"
+    },
+    {
+      "source_index": 10475,
+      "id": "2241410",
+      "term": "出糸突起",
+      "reading": "しゅっしとっき",
+      "meaning": "spinneret (of a spider)"
+    },
+    {
+      "source_index": 10476,
+      "id": "1580060",
+      "term": "出生過剰",
+      "reading": "しゅっしょうかじょう",
+      "meaning": "excessive birth (rate)"
+    },
+    {
+      "source_index": 10477,
+      "id": "1594860",
+      "term": "出処進退",
+      "reading": "しゅっしょしんたい",
+      "meaning": "staying in one's position or resigning / course of action / move"
+    },
+    {
+      "source_index": 10478,
+      "id": "1339400",
+      "term": "出征家族",
+      "reading": "しゅっせいかぞく",
+      "meaning": "family of a soldier at the front"
+    },
+    {
+      "source_index": 10479,
+      "id": "1339420",
+      "term": "出征軍人",
+      "reading": "しゅっせいぐんじん",
+      "meaning": "soldier at the front"
+    },
+    {
+      "source_index": 10480,
+      "id": "2046750",
+      "term": "出世街道",
+      "reading": "しゅっせかいどう",
+      "meaning": "highway to success"
+    },
+    {
+      "source_index": 10481,
+      "id": "1938110",
+      "term": "出席日数",
+      "reading": "しゅっせきにっすう",
+      "meaning": "number of days (times) one has attended"
+    },
+    {
+      "source_index": 10482,
+      "id": "2842021",
+      "term": "出席番号",
+      "reading": "しゅっせきばんごう",
+      "meaning": "student number (for seating, etc. in class)"
+    },
+    {
+      "source_index": 10483,
+      "id": "2034350",
+      "term": "出席部長",
+      "reading": "しゅっせきぶちょう",
+      "meaning": "assistant section or department manager"
+    },
+    {
+      "source_index": 10484,
+      "id": "1339360",
+      "term": "出世間的",
+      "reading": "しゅっせけんてき",
+      "meaning": "unworldly / religious"
+    },
+    {
+      "source_index": 10485,
+      "id": "2156880",
+      "term": "出世物語",
+      "reading": "しゅっせものがたり",
+      "meaning": "success story"
+    },
+    {
+      "source_index": 10486,
+      "id": "2413130",
+      "term": "出張授業",
+      "reading": "しゅっちょうじゅぎょう",
+      "meaning": "school visit"
+    },
+    {
+      "source_index": 10487,
+      "id": "2869468",
+      "term": "出張販売",
+      "reading": "しゅっちょうはんばい",
+      "meaning": "direct selling / sales direct to customers"
+    },
+    {
+      "source_index": 10488,
+      "id": "1938120",
+      "term": "出張旅費",
+      "reading": "しゅっちょうりょひ",
+      "meaning": "travel expenses / travel(ing) allowance"
+    },
+    {
+      "source_index": 10489,
+      "id": "2396430",
+      "term": "出展作品",
+      "reading": "しゅってんさくひん",
+      "meaning": "works (of art, etc.) on display"
+    },
+    {
+      "source_index": 10490,
+      "id": "1938130",
+      "term": "出頭命令",
+      "reading": "しゅっとうめいれい",
+      "meaning": "summons / subpoena"
+    },
+    {
+      "source_index": 10491,
+      "id": "1938140",
+      "term": "出発時間",
+      "reading": "しゅっぱつじかん",
+      "meaning": "departure time / starting time"
+    },
+    {
+      "source_index": 10492,
+      "id": "2252500",
+      "term": "出発時刻",
+      "reading": "しゅっぱつじこく",
+      "meaning": "departure time"
+    },
+    {
+      "source_index": 10493,
+      "id": "1340070",
+      "term": "出版許可",
+      "reading": "しゅっぱんきょか",
+      "meaning": "permission to publish"
+    },
+    {
+      "source_index": 10494,
+      "id": "1340090",
+      "term": "出版業者",
+      "reading": "しゅっぱんぎょうしゃ",
+      "meaning": "publisher"
+    },
+    {
+      "source_index": 10495,
+      "id": "2855116",
+      "term": "出版不況",
+      "reading": "しゅっぱんふきょう",
+      "meaning": "slump in publishing / publishing recession"
+    },
+    {
+      "source_index": 10496,
+      "id": "1340130",
+      "term": "出版部数",
+      "reading": "しゅっぱんぶすう",
+      "meaning": "circulation / number printed"
+    },
+    {
+      "source_index": 10497,
+      "id": "1340160",
+      "term": "出版目録",
+      "reading": "しゅっぱんもくろく",
+      "meaning": "catalog of publications / catalogue of publications"
+    },
+    {
+      "source_index": 10498,
+      "id": "2689910",
+      "term": "出芽酵母",
+      "reading": "しゅつがこうぼ",
+      "meaning": "budding yeast (esp. Saccharomyces cerevisiae)"
+    },
+    {
+      "source_index": 10499,
+      "id": "1338520",
+      "term": "出願書類",
+      "reading": "しゅつがんしょるい",
+      "meaning": "application form / application papers / file wrapper (patents)"
+    },
+    {
+      "source_index": 10500,
+      "id": "1338560",
+      "term": "出漁区域",
+      "reading": "しゅつぎょくいき",
+      "meaning": "fishing area"
+    },
+    {
+      "source_index": 10501,
+      "id": "2363760",
+      "term": "出現回数",
+      "reading": "しゅつげんかいすう",
+      "meaning": "number of occurrences"
+    },
+    {
+      "source_index": 10502,
+      "id": "2363770",
+      "term": "出現頻度",
+      "reading": "しゅつげんひんど",
+      "meaning": "frequency (of appearance)"
+    },
+    {
+      "source_index": 10503,
+      "id": "2838003",
+      "term": "出題範囲",
+      "reading": "しゅつだいはんい",
+      "meaning": "coverage of an exam / what an exam covers"
+    },
+    {
+      "source_index": 10504,
+      "id": "1339890",
+      "term": "出動命令",
+      "reading": "しゅつどうめいれい",
+      "meaning": "marching orders / sailing orders"
+    },
+    {
+      "source_index": 10505,
+      "id": "2046780",
+      "term": "出没自在",
+      "reading": "しゅつぼつじざい",
+      "meaning": "appearing and disappearing at will / elusive / phantom-like"
+    },
+    {
+      "source_index": 10506,
+      "id": "2868967",
+      "term": "出離生死",
+      "reading": "しゅつりしょうじ",
+      "meaning": "entering nirvana / attaining enlightenment / leaving samsara"
+    },
+    {
+      "source_index": 10507,
+      "id": "2363910",
+      "term": "出力機構",
+      "reading": "しゅつりょくきこう",
+      "meaning": "output unit / output device"
     }
   ]
 }

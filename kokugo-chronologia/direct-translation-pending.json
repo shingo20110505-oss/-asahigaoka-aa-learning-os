@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 10358,
-  "english_only_remaining": 4642,
+  "already_direct_japanese": 10408,
+  "english_only_remaining": 4592,
   "english_only_rank_counts": {
-    "(blank)": 4642
+    "(blank)": 4592
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 10358,
-      "id": "5745038",
-      "term": "周髀算経",
-      "reading": "しゅうひさんけい",
-      "meaning": "Zhoubi Suanjing (ancient Chinese text on mathematics)"
-    },
-    {
-      "source_index": 10359,
-      "id": "2046640",
-      "term": "秋風落莫",
-      "reading": "しゅうふうらくばく",
-      "meaning": "forlorn and helpless / lonely and desolate"
-    },
-    {
-      "source_index": 10360,
-      "id": "2836532",
-      "term": "修復作業",
-      "reading": "しゅうふくさぎょう",
-      "meaning": "repair work / renovation work / restoration work"
-    },
-    {
-      "source_index": 10361,
-      "id": "5742780",
-      "term": "修文大学",
-      "reading": "しゅうぶんだいがく",
-      "meaning": "Shubun University"
-    },
-    {
-      "source_index": 10362,
-      "id": "2828671",
-      "term": "周辺科学",
-      "reading": "しゅうへんかがく",
-      "meaning": "fringe science"
-    },
-    {
-      "source_index": 10363,
-      "id": "2273580",
-      "term": "周辺確率",
-      "reading": "しゅうへんかくりつ",
-      "meaning": "marginal probability"
-    },
-    {
-      "source_index": 10364,
-      "id": "2668200",
-      "term": "周辺環境",
-      "reading": "しゅうへんかんきょう",
-      "meaning": "surrounding environment / ambient surrounding / one's surroundings"
-    },
-    {
-      "source_index": 10365,
-      "id": "1331310",
-      "term": "周辺機器",
-      "reading": "しゅうへんきき",
-      "meaning": "peripheral / peripheral device / accessory"
-    },
-    {
-      "source_index": 10366,
-      "id": "2673070",
-      "term": "周辺視覚",
-      "reading": "しゅうへんしかく",
-      "meaning": "peripheral vision"
-    },
-    {
-      "source_index": 10367,
-      "id": "2868291",
-      "term": "周辺視野",
-      "reading": "しゅうへんしや",
-      "meaning": "peripheral vision / peripheral visual field"
-    },
-    {
-      "source_index": 10368,
-      "id": "1331330",
-      "term": "周辺諸国",
-      "reading": "しゅうへんしょこく",
-      "meaning": "surrounding countries / neighboring countries / neighbouring countries"
-    },
-    {
-      "source_index": 10369,
-      "id": "2363060",
-      "term": "周辺節点",
-      "reading": "しゅうへんせってん",
-      "meaning": "endpoint node / peripheral node"
-    },
-    {
-      "source_index": 10370,
-      "id": "2363070",
-      "term": "周辺装置",
-      "reading": "しゅうへんそうち",
-      "meaning": "peripheral equipment / peripheral device"
-    },
-    {
-      "source_index": 10371,
-      "id": "2273110",
-      "term": "終末医療",
-      "reading": "しゅうまついりょう",
-      "meaning": "terminal care"
-    },
-    {
-      "source_index": 10372,
-      "id": "2715970",
-      "term": "週末起業",
-      "reading": "しゅうまつきぎょう",
-      "meaning": "running a start-up company after work or on weekends"
-    },
-    {
-      "source_index": 10373,
-      "id": "2859740",
-      "term": "終末思想",
-      "reading": "しゅうまつしそう",
-      "meaning": "eschatology / apocalypticism"
-    },
-    {
-      "source_index": 10374,
-      "id": "2834423",
-      "term": "終末時計",
-      "reading": "しゅうまつどけい",
-      "meaning": "doomsday clock"
-    },
-    {
-      "source_index": 10375,
-      "id": "5742779",
-      "term": "秀明大学",
-      "reading": "しゅうめいだいがく",
-      "meaning": "Shumei University"
-    },
-    {
-      "source_index": 10376,
-      "id": "2031240",
-      "term": "襲名披露",
-      "reading": "しゅうめいひろう",
-      "meaning": "announcing the succession to another's stage name"
-    },
-    {
-      "source_index": 10377,
-      "id": "2610530",
-      "term": "周面摩擦",
-      "reading": "しゅうめんまさつ",
-      "meaning": "skin friction"
-    },
-    {
-      "source_index": 10378,
-      "id": "2046660",
-      "term": "衆目一致",
-      "reading": "しゅうもくいっち",
-      "meaning": "universal agreement / broad consensus"
-    },
-    {
-      "source_index": 10379,
-      "id": "2834824",
-      "term": "宗門改役",
-      "reading": "しゅうもんあらためやく",
-      "meaning": "magistrate in charge of finding out and converting hidden Christians (during the Edo period)"
-    },
-    {
-      "source_index": 10380,
-      "id": "1937800",
-      "term": "終夜運転",
-      "reading": "しゅうやうんてん",
-      "meaning": "all-night service"
-    },
-    {
-      "source_index": 10381,
-      "id": "1698240",
-      "term": "終夜営業",
-      "reading": "しゅうやえいぎょう",
-      "meaning": "(a business) open all night"
-    },
-    {
-      "source_index": 10382,
-      "id": "2846693",
-      "term": "集約畜産",
-      "reading": "しゅうやくちくさん",
-      "meaning": "intensive animal farming"
-    },
-    {
-      "source_index": 10383,
-      "id": "2765250",
-      "term": "集約投資",
-      "reading": "しゅうやくとうし",
-      "meaning": "intensive investment"
-    },
-    {
-      "source_index": 10384,
-      "id": "1813600",
-      "term": "集約農業",
-      "reading": "しゅうやくのうぎょう",
-      "meaning": "intensive farming"
-    },
-    {
-      "source_index": 10385,
-      "id": "2652630",
-      "term": "周遊切符",
-      "reading": "しゅうゆうきっぷ",
-      "meaning": "excursion ticket"
-    },
-    {
-      "source_index": 10386,
-      "id": "1330890",
-      "term": "収容患者",
-      "reading": "しゅうようかんじゃ",
-      "meaning": "in-patients"
-    },
-    {
-      "source_index": 10387,
-      "id": "2651110",
-      "term": "収容作業",
-      "reading": "しゅうようさぎょう",
-      "meaning": "collecting bodies (of casualties, etc.) / recovering bodies"
-    },
-    {
-      "source_index": 10388,
-      "id": "2532190",
-      "term": "収容施設",
-      "reading": "しゅうようしせつ",
-      "meaning": "reception center (e.g. for refugees) / reception centre"
-    },
-    {
-      "source_index": 10389,
-      "id": "1330920",
-      "term": "収容設備",
-      "reading": "しゅうようせつび",
-      "meaning": "accommodations"
-    },
-    {
-      "source_index": 10390,
-      "id": "2851133",
-      "term": "収容定員",
-      "reading": "しゅうようていいん",
-      "meaning": "admission capacity"
-    },
-    {
-      "source_index": 10391,
-      "id": "1330930",
-      "term": "収容能力",
-      "reading": "しゅうようのうりょく",
-      "meaning": "capacity / accommodation"
-    },
-    {
-      "source_index": 10392,
-      "id": "1937780",
-      "term": "修理工場",
-      "reading": "しゅうりこうじょう",
-      "meaning": "repair shop"
-    },
-    {
-      "source_index": 10393,
-      "id": "1653480",
-      "term": "州立大学",
-      "reading": "しゅうりつだいがく",
-      "meaning": "state university"
-    },
-    {
-      "source_index": 10394,
-      "id": "2363250",
-      "term": "終了記号",
-      "reading": "しゅうりょうきごう",
-      "meaning": "message indicator"
-    },
-    {
-      "source_index": 10395,
-      "id": "1332460",
-      "term": "修了証書",
-      "reading": "しゅうりょうしょうしょ",
-      "meaning": "diploma"
-    },
-    {
-      "source_index": 10396,
-      "id": "2363260",
-      "term": "終了条件",
-      "reading": "しゅうりょうじょうけん",
-      "meaning": "at end condition"
-    },
-    {
-      "source_index": 10397,
-      "id": "2211900",
-      "term": "秋霖前線",
-      "reading": "しゅうりんぜんせん",
-      "meaning": "autumn rain front / fall rain front"
-    },
-    {
-      "source_index": 10398,
-      "id": "2441700",
-      "term": "収斂進化",
-      "reading": "しゅうれんしんか",
-      "meaning": "convergent evolution"
-    },
-    {
-      "source_index": 10399,
-      "id": "2845437",
-      "term": "就労時間",
-      "reading": "しゅうろうじかん",
-      "meaning": "working hours"
-    },
-    {
-      "source_index": 10400,
-      "id": "2643940",
-      "term": "収賄事件",
-      "reading": "しゅうわいじけん",
-      "meaning": "bribery case / bribery scandal / graft case"
-    },
-    {
-      "source_index": 10401,
-      "id": "2409690",
-      "term": "主演作品",
-      "reading": "しゅえんさくひん",
-      "meaning": "movie in which ... has the starring role"
-    },
-    {
-      "source_index": 10402,
-      "id": "1594810",
-      "term": "主客転倒",
-      "reading": "しゅかくてんとう",
-      "meaning": "reversing the order of (relative) importance (of) / putting the cart before the horse / the tables being turned"
-    },
-    {
-      "source_index": 10403,
-      "id": "1325130",
-      "term": "主格補語",
-      "reading": "しゅかくほご",
-      "meaning": "subject complement"
-    },
-    {
-      "source_index": 10404,
-      "id": "1325170",
-      "term": "主管機関",
-      "reading": "しゅかんきかん",
-      "meaning": "administration"
-    },
-    {
-      "source_index": 10405,
-      "id": "2690490",
-      "term": "種間雑種",
-      "reading": "しゅかんざっしゅ",
-      "meaning": "interspecific hybrid"
-    },
-    {
-      "source_index": 10406,
-      "id": "1325190",
-      "term": "主観主義",
-      "reading": "しゅかんしゅぎ",
-      "meaning": "subjectivism"
-    },
-    {
-      "source_index": 10407,
-      "id": "2872005",
-      "term": "主管事項",
-      "reading": "しゅかんじこう",
-      "meaning": "(one's) areas of responsibility / matters under one's charge / responsibilities"
-    },
     {
       "source_index": 10408,
       "id": "2810150",
@@ -7010,6 +6660,356 @@
       "term": "新生児室",
       "reading": "しんせいじしつ",
       "meaning": "newborn nursery"
+    },
+    {
+      "source_index": 11358,
+      "id": "2518600",
+      "term": "神聖戦争",
+      "reading": "しんせいせんそう",
+      "meaning": "Sacred Wars (of Ancient Greece)"
+    },
+    {
+      "source_index": 11359,
+      "id": "1720310",
+      "term": "新制大学",
+      "reading": "しんせいだいがく",
+      "meaning": "university (operated under post-war guidelines)"
+    },
+    {
+      "source_index": 11360,
+      "id": "1720330",
+      "term": "新制中学",
+      "reading": "しんせいちゅうがく",
+      "meaning": "junior high school (operated under post-war guidelines)"
+    },
+    {
+      "source_index": 11361,
+      "id": "2833838",
+      "term": "神聖同盟",
+      "reading": "しんせいどうめい",
+      "meaning": "Holy Alliance (of Russia, Austria and Prussia in 1815)"
+    },
+    {
+      "source_index": 11362,
+      "id": "2837948",
+      "term": "神聖文字",
+      "reading": "しんせいもじ",
+      "meaning": "hieroglyph / hieroglyphics"
+    },
+    {
+      "source_index": 11363,
+      "id": "2200310",
+      "term": "新世界猿",
+      "reading": "しんせかいざる",
+      "meaning": "New World monkey (any monkey of infraorder Platyrrhini)"
+    },
+    {
+      "source_index": 11364,
+      "id": "2006870",
+      "term": "親戚関係",
+      "reading": "しんせきかんけい",
+      "meaning": "relations / members of extended family"
+    },
+    {
+      "source_index": 11365,
+      "id": "2047550",
+      "term": "親戚眷属",
+      "reading": "しんせきけんぞく",
+      "meaning": "one's family and relatives / one's kith and kin"
+    },
+    {
+      "source_index": 11366,
+      "id": "2831883",
+      "term": "親石元素",
+      "reading": "しんせきげんそ",
+      "meaning": "lithophile element"
+    },
+    {
+      "source_index": 11367,
+      "id": "1727030",
+      "term": "臣籍降下",
+      "reading": "しんせきこうか",
+      "meaning": "(of members of the Imperial family) becoming subjects of the state"
+    },
+    {
+      "source_index": 11368,
+      "id": "2047560",
+      "term": "親戚故旧",
+      "reading": "しんせきこきゅう",
+      "meaning": "relatives and old friends"
+    },
+    {
+      "source_index": 11369,
+      "id": "1365240",
+      "term": "親戚知己",
+      "reading": "しんせきちき",
+      "meaning": "relatives and acquaintances"
+    },
+    {
+      "source_index": 11370,
+      "id": "2852075",
+      "term": "新設合併",
+      "reading": "しんせつがっぺい",
+      "meaning": "consolidation / consolidation-type merger"
+    },
+    {
+      "source_index": 11371,
+      "id": "2852077",
+      "term": "新設分割",
+      "reading": "しんせつぶんかつ",
+      "meaning": "incorporation-type company split"
+    },
+    {
+      "source_index": 11372,
+      "id": "2427330",
+      "term": "神仙思想",
+      "reading": "しんせんしそう",
+      "meaning": "Shenxian thought (ancient Chinese folk belief in the existence of mountain wizards)"
+    },
+    {
+      "source_index": 11373,
+      "id": "2617090",
+      "term": "深浅測量",
+      "reading": "しんせんそくりょう",
+      "meaning": "bathymetry / sounding"
+    },
+    {
+      "source_index": 11374,
+      "id": "5742248",
+      "term": "深圳大学",
+      "reading": "しんせんだいがく",
+      "meaning": "Shenzhen University"
+    },
+    {
+      "source_index": 11375,
+      "id": "2866135",
+      "term": "心尖拍動",
+      "reading": "しんせんはくどう",
+      "meaning": "apex beat / apex pulse / point of maximum impulse"
+    },
+    {
+      "source_index": 11376,
+      "id": "2861173",
+      "term": "振顫麻痺",
+      "reading": "しんせんまひ",
+      "meaning": "shaking palsy / Parkinson's disease"
+    },
+    {
+      "source_index": 11377,
+      "id": "1765150",
+      "term": "神前結婚",
+      "reading": "しんぜんけっこん",
+      "meaning": "Shinto wedding"
+    },
+    {
+      "source_index": 11378,
+      "id": "2842358",
+      "term": "親善使節",
+      "reading": "しんぜんしせつ",
+      "meaning": "ambassador of goodwill / goodwill envoy / goodwill mission"
+    },
+    {
+      "source_index": 11379,
+      "id": "1939300",
+      "term": "親善試合",
+      "reading": "しんぜんじあい",
+      "meaning": "friendly match / friendly / exhibition game"
+    },
+    {
+      "source_index": 11380,
+      "id": "2425710",
+      "term": "親善大使",
+      "reading": "しんぜんたいし",
+      "meaning": "goodwill ambassador / friendship ambassador"
+    },
+    {
+      "source_index": 11381,
+      "id": "2838485",
+      "term": "新装開店",
+      "reading": "しんそうかいてん",
+      "meaning": "reopening a shop after renovation / post-refurbishment reopening"
+    },
+    {
+      "source_index": 11382,
+      "id": "2828275",
+      "term": "深層学習",
+      "reading": "しんそうがくしゅう",
+      "meaning": "deep learning"
+    },
+    {
+      "source_index": 11383,
+      "id": "2047570",
+      "term": "真相究明",
+      "reading": "しんそうきゅうめい",
+      "meaning": "probe into the truth (of the matter) / dig into the real facts of the case / get at the root of a matter"
+    },
+    {
+      "source_index": 11384,
+      "id": "2868384",
+      "term": "深層構造",
+      "reading": "しんそうこうぞう",
+      "meaning": "deep structure"
+    },
+    {
+      "source_index": 11385,
+      "id": "2047580",
+      "term": "深層心理",
+      "reading": "しんそうしんり",
+      "meaning": "deep psyche / unconscious mind / depth psychology"
+    },
+    {
+      "source_index": 11386,
+      "id": "1364120",
+      "term": "真相調査",
+      "reading": "しんそうちょうさ",
+      "meaning": "fact-finding"
+    },
+    {
+      "source_index": 11387,
+      "id": "2441520",
+      "term": "深草兎歩",
+      "reading": "しんそうとほ",
+      "meaning": "crouched walk treading on hands for stealth used by ninja"
+    },
+    {
+      "source_index": 11388,
+      "id": "2850170",
+      "term": "深層崩壊",
+      "reading": "しんそうほうかい",
+      "meaning": "deep-seated landslide"
+    },
+    {
+      "source_index": 11389,
+      "id": "2657120",
+      "term": "新卒採用",
+      "reading": "しんそつさいよう",
+      "meaning": "graduate recruitment / employment of new graduates"
+    },
+    {
+      "source_index": 11390,
+      "id": "1793900",
+      "term": "心臓移植",
+      "reading": "しんぞういしょく",
+      "meaning": "heart transplant"
+    },
+    {
+      "source_index": 11391,
+      "id": "2788910",
+      "term": "心臓が止まる",
+      "reading": "しんぞうがとまる",
+      "meaning": "to have one's heart stop beating"
+    },
+    {
+      "source_index": 11392,
+      "id": "1793850",
+      "term": "心臓外科",
+      "reading": "しんぞうげか",
+      "meaning": "heart surgery"
+    },
+    {
+      "source_index": 11393,
+      "id": "2852709",
+      "term": "心臓手術",
+      "reading": "しんぞうしゅじゅつ",
+      "meaning": "heart surgery"
+    },
+    {
+      "source_index": 11394,
+      "id": "2868283",
+      "term": "心臓震盪",
+      "reading": "しんぞうしんとう",
+      "meaning": "commotio cordis / cardiac concussion / concussion of the heart"
+    },
+    {
+      "source_index": 11395,
+      "id": "2680680",
+      "term": "心臓穿刺",
+      "reading": "しんぞうせんし",
+      "meaning": "cardiocentesis"
+    },
+    {
+      "source_index": 11396,
+      "id": "2836167",
+      "term": "心臓停止",
+      "reading": "しんぞうていし",
+      "meaning": "cardiac arrest"
+    },
+    {
+      "source_index": 11397,
+      "id": "2655420",
+      "term": "心臓に毛が生えた",
+      "reading": "しんぞうにけがはえた",
+      "meaning": "brazen-faced / completely impudent"
+    },
+    {
+      "source_index": 11398,
+      "id": "2655400",
+      "term": "心臓に毛が生えている",
+      "reading": "しんぞうにけがはえている",
+      "meaning": "to be shameless / to have a lot of nerve / to have nerves of steel"
+    },
+    {
+      "source_index": 11399,
+      "id": "2681090",
+      "term": "心臓破裂",
+      "reading": "しんぞうはれつ",
+      "meaning": "myocardial rupture / cardiac rupture / heart rupture"
+    },
+    {
+      "source_index": 11400,
+      "id": "1793870",
+      "term": "心臓肥大",
+      "reading": "しんぞうひだい",
+      "meaning": "enlargement of the heart"
+    },
+    {
+      "source_index": 11401,
+      "id": "2400010",
+      "term": "心臓病学",
+      "reading": "しんぞうびょうがく",
+      "meaning": "cardiology"
+    },
+    {
+      "source_index": 11402,
+      "id": "2832961",
+      "term": "心臓弁膜",
+      "reading": "しんぞうべんまく",
+      "meaning": "heart valve"
+    },
+    {
+      "source_index": 11403,
+      "id": "1938900",
+      "term": "心臓発作",
+      "reading": "しんぞうほっさ",
+      "meaning": "heart attack"
+    },
+    {
+      "source_index": 11404,
+      "id": "1793890",
+      "term": "心臓麻痺",
+      "reading": "しんぞうまひ",
+      "meaning": "heart failure"
+    },
+    {
+      "source_index": 11405,
+      "id": "1939310",
+      "term": "親族関係",
+      "reading": "しんぞくかんけい",
+      "meaning": "kinship"
+    },
+    {
+      "source_index": 11406,
+      "id": "2706560",
+      "term": "親族結婚",
+      "reading": "しんぞくけっこん",
+      "meaning": "marriage between relatives / consanguineous marriage"
+    },
+    {
+      "source_index": 11407,
+      "id": "2114310",
+      "term": "身体改造",
+      "reading": "しんたいかいぞう",
+      "meaning": "body modification"
     }
   ]
 }
