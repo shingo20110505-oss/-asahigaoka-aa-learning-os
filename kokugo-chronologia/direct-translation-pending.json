@@ -1,716 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 7600,
-  "english_only_remaining": 7400,
+  "already_direct_japanese": 7700,
+  "english_only_remaining": 7300,
   "english_only_rank_counts": {
-    "(blank)": 7400
+    "(blank)": 7300
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 7600,
-      "id": "1992530",
-      "term": "公的資金",
-      "reading": "こうてきしきん",
-      "meaning": "public funds / public money"
-    },
-    {
-      "source_index": 7601,
-      "id": "1677110",
-      "term": "公的年金",
-      "reading": "こうてきねんきん",
-      "meaning": "public pension"
-    },
-    {
-      "source_index": 7602,
-      "id": "1677130",
-      "term": "公的扶助",
-      "reading": "こうてきふじょ",
-      "meaning": "public assistance"
-    },
-    {
-      "source_index": 7603,
-      "id": "2828069",
-      "term": "公転運動",
-      "reading": "こうてんうんどう",
-      "meaning": "orbital motion"
-    },
-    {
-      "source_index": 7604,
-      "id": "1677280",
-      "term": "公転周期",
-      "reading": "こうてんしゅうき",
-      "meaning": "period of revolution / orbital period"
-    },
-    {
-      "source_index": 7605,
-      "id": "1934910",
-      "term": "公転速度",
-      "reading": "こうてんそくど",
-      "meaning": "orbital speed"
-    },
-    {
-      "source_index": 7606,
-      "id": "2695120",
-      "term": "好転反応",
-      "reading": "こうてんはんのう",
-      "meaning": "healing crisis / cleansing reaction / reaction during the elimination of toxins after antibiotic, etc. treatment"
-    },
-    {
-      "source_index": 7607,
-      "id": "2838219",
-      "term": "鉱泥療法",
-      "reading": "こうでいりょうほう",
-      "meaning": "fango therapy / fango treatment"
-    },
-    {
-      "source_index": 7608,
-      "id": "2866827",
-      "term": "紅電気石",
-      "reading": "こうでんきせき",
-      "meaning": "rubellite"
-    },
-    {
-      "source_index": 7609,
-      "id": "2838373",
-      "term": "恒等関係",
-      "reading": "こうとうかんけい",
-      "meaning": "identity relation"
-    },
-    {
-      "source_index": 7610,
-      "id": "2838489",
-      "term": "恒等関数",
-      "reading": "こうとうかんすう",
-      "meaning": "identity function / identity operator"
-    },
-    {
-      "source_index": 7611,
-      "id": "1283860",
-      "term": "高等学校",
-      "reading": "こうとうがっこう",
-      "meaning": "senior high school / high school"
-    },
-    {
-      "source_index": 7612,
-      "id": "1809340",
-      "term": "高等教育",
-      "reading": "こうとうきょういく",
-      "meaning": "higher education / tertiary education"
-    },
-    {
-      "source_index": 7613,
-      "id": "1664720",
-      "term": "口頭試問",
-      "reading": "こうとうしもん",
-      "meaning": "oral examination / interview"
-    },
-    {
-      "source_index": 7614,
-      "id": "2838370",
-      "term": "恒等写像",
-      "reading": "こうとうしゃぞう",
-      "meaning": "identity mapping / identity function"
-    },
-    {
-      "source_index": 7615,
-      "id": "2838667",
-      "term": "高踏主義",
-      "reading": "こうとうしゅぎ",
-      "meaning": "transcendentalism (literary style) / Parnassianism"
-    },
-    {
-      "source_index": 7616,
-      "id": "2828494",
-      "term": "紅頭紫蘭",
-      "reading": "こうとうしらん",
-      "meaning": "Philippine ground orchid (Spathoglottis plicata) / Philippine orchid / large purple orchid"
-    },
-    {
-      "source_index": 7617,
-      "id": "1276720",
-      "term": "口頭審理",
-      "reading": "こうとうしんり",
-      "meaning": "oral proceedings"
-    },
-    {
-      "source_index": 7618,
-      "id": "1935410",
-      "term": "高等生物",
-      "reading": "こうとうせいぶつ",
-      "meaning": "higher forms of life / higher organisms"
-    },
-    {
-      "source_index": 7619,
-      "id": "2633320",
-      "term": "鉤頭虫類",
-      "reading": "こうとうちゅうるい",
-      "meaning": "acanthocephalans / thorny-headed worms"
-    },
-    {
-      "source_index": 7620,
-      "id": "2866287",
-      "term": "口頭伝承",
-      "reading": "こうとうでんしょう",
-      "meaning": "(passing down of) oral tradition / oral transmission"
-    },
-    {
-      "source_index": 7621,
-      "id": "2705200",
-      "term": "鉤頭動物",
-      "reading": "こうとうどうぶつ",
-      "meaning": "acanthocephales / thorny-headed worms / spiny-headed worms"
-    },
-    {
-      "source_index": 7622,
-      "id": "1809350",
-      "term": "高等動物",
-      "reading": "こうとうどうぶつ",
-      "meaning": "higher animal"
-    },
-    {
-      "source_index": 7623,
-      "id": "2867515",
-      "term": "後頭動脈",
-      "reading": "こうとうどうみゃく",
-      "meaning": "occipital artery"
-    },
-    {
-      "source_index": 7624,
-      "id": "2838372",
-      "term": "恒等変換",
-      "reading": "こうとうへんかん",
-      "meaning": "identity transformation"
-    },
-    {
-      "source_index": 7625,
-      "id": "1631210",
-      "term": "口頭弁論",
-      "reading": "こうとうべんろん",
-      "meaning": "oral proceedings / oral pleadings"
-    },
-    {
-      "source_index": 7626,
-      "id": "2608680",
-      "term": "高等法院",
-      "reading": "こうとうほういん",
-      "meaning": "High Court of Justice (UK) / Parlement (France, during the ancien régime)"
-    },
-    {
-      "source_index": 7627,
-      "id": "1281600",
-      "term": "荒唐無稽",
-      "reading": "こうとうむけい",
-      "meaning": "absurd / nonsensical / preposterous"
-    },
-    {
-      "source_index": 7628,
-      "id": "2869298",
-      "term": "高等遊民",
-      "reading": "こうとうゆうみん",
-      "meaning": "educated loafer (living off family wealth) / leisured intellectual / idle rich"
-    },
-    {
-      "source_index": 7629,
-      "id": "2517720",
-      "term": "喉頭隆起",
-      "reading": "こうとうりゅうき",
-      "meaning": "laryngeal prominence / Adam's Apple"
-    },
-    {
-      "source_index": 7630,
-      "id": "2030860",
-      "term": "紅灯緑酒",
-      "reading": "こうとうりょくしゅ",
-      "meaning": "(nights of) fun, food, and drink / bright-light district / nightlife district"
-    },
-    {
-      "source_index": 7631,
-      "id": "2045010",
-      "term": "狡兎三窟",
-      "reading": "こうとさんくつ",
-      "meaning": "very shrewd in preparing a means of escape / being very good at escaping danger"
-    },
-    {
-      "source_index": 7632,
-      "id": "2431130",
-      "term": "狡兎良狗",
-      "reading": "こうとりょうく",
-      "meaning": "When the enemy is defeated, the victorious soldiers can be killed off"
-    },
-    {
-      "source_index": 7633,
-      "id": "1935280",
-      "term": "行動科学",
-      "reading": "こうどうかがく",
-      "meaning": "behavioral science / behavioural science"
-    },
-    {
-      "source_index": 7634,
-      "id": "2793470",
-      "term": "行動規範",
-      "reading": "こうどうきはん",
-      "meaning": "standard of conduct / code of behavior / moral code"
-    },
-    {
-      "source_index": 7635,
-      "id": "1282110",
-      "term": "行動計画",
-      "reading": "こうどうけいかく",
-      "meaning": "plan of action"
-    },
-    {
-      "source_index": 7636,
-      "id": "2045000",
-      "term": "行動原理",
-      "reading": "こうどうげんり",
-      "meaning": "behavioral principle / principle (value) governing one's conduct"
-    },
-    {
-      "source_index": 7637,
-      "id": "2777320",
-      "term": "行動綱領",
-      "reading": "こうどうこうりょう",
-      "meaning": "code of conduct / code of practice"
-    },
-    {
-      "source_index": 7638,
-      "id": "1973920",
-      "term": "黄道座標",
-      "reading": "こうどうざひょう",
-      "meaning": "ecliptic coordinates"
-    },
-    {
-      "source_index": 7639,
-      "id": "2672520",
-      "term": "行動指針",
-      "reading": "こうどうししん",
-      "meaning": "guidelines for action / personal principles"
-    },
-    {
-      "source_index": 7640,
-      "id": "1282120",
-      "term": "行動主義",
-      "reading": "こうどうしゅぎ",
-      "meaning": "behaviorism / behaviourism"
-    },
-    {
-      "source_index": 7641,
-      "id": "1992730",
-      "term": "行動障害",
-      "reading": "こうどうしょうがい",
-      "meaning": "behavioral disorder / behavioural disorder"
-    },
-    {
-      "source_index": 7642,
-      "id": "2669880",
-      "term": "公同書簡",
-      "reading": "こうどうしょかん",
-      "meaning": "General Epistles (James, Peter, Jude, John) / Catholic Epistles / General Letters"
-    },
-    {
-      "source_index": 7643,
-      "id": "2844012",
-      "term": "行動制限",
-      "reading": "こうどうせいげん",
-      "meaning": "movement restrictions / behavior restrictions"
-    },
-    {
-      "source_index": 7644,
-      "id": "1282140",
-      "term": "行動地帯",
-      "reading": "こうどうちたい",
-      "meaning": "zone of action"
-    },
-    {
-      "source_index": 7645,
-      "id": "2829214",
-      "term": "行動特性",
-      "reading": "こうどうとくせい",
-      "meaning": "behavioral characteristic / behavioral trait"
-    },
-    {
-      "source_index": 7646,
-      "id": "2144750",
-      "term": "行動範囲",
-      "reading": "こうどうはんい",
-      "meaning": "field of activities / area of activity / range of behavior (behaviour)"
-    },
-    {
-      "source_index": 7647,
-      "id": "1686050",
-      "term": "行動半径",
-      "reading": "こうどうはんけい",
-      "meaning": "radius of action / combat radius"
-    },
-    {
-      "source_index": 7648,
-      "id": "2028520",
-      "term": "行動変容",
-      "reading": "こうどうへんよう",
-      "meaning": "behavior modification"
-    },
-    {
-      "source_index": 7649,
-      "id": "1282160",
-      "term": "行動方針",
-      "reading": "こうどうほうしん",
-      "meaning": "course of action"
-    },
-    {
-      "source_index": 7650,
-      "id": "1282170",
-      "term": "行動命令",
-      "reading": "こうどうめいれい",
-      "meaning": "operation order"
-    },
-    {
-      "source_index": 7651,
-      "id": "2103540",
-      "term": "行動様式",
-      "reading": "こうどうようしき",
-      "meaning": "behavioral pattern"
-    },
-    {
-      "source_index": 7652,
-      "id": "1992740",
-      "term": "行動療法",
-      "reading": "こうどうりょうほう",
-      "meaning": "behavioural therapy (behavioral)"
-    },
-    {
-      "source_index": 7653,
-      "id": "2858545",
-      "term": "光度曲線",
-      "reading": "こうどきょくせん",
-      "meaning": "light curve"
-    },
-    {
-      "source_index": 7654,
-      "id": "2356680",
-      "term": "高度技術",
-      "reading": "こうどぎじゅつ",
-      "meaning": "high-tech / high-technology"
-    },
-    {
-      "source_index": 7655,
-      "id": "2831476",
-      "term": "高度人材",
-      "reading": "こうどじんざい",
-      "meaning": "highly skilled professionals (esp. as category of immigrants) / highly talented personnel"
-    },
-    {
-      "source_index": 7656,
-      "id": "1283840",
-      "term": "高度成長",
-      "reading": "こうどせいちょう",
-      "meaning": "rapid economic growth (esp. that of Japan in the post-WWII period)"
-    },
-    {
-      "source_index": 7657,
-      "id": "1277410",
-      "term": "坑内事故",
-      "reading": "こうないじこ",
-      "meaning": "mine accident"
-    },
-    {
-      "source_index": 7658,
-      "id": "1276750",
-      "term": "口内性交",
-      "reading": "こうないせいこう",
-      "meaning": "oral sex / fellatio"
-    },
-    {
-      "source_index": 7659,
-      "id": "2835319",
-      "term": "構内放送",
-      "reading": "こうないほうそう",
-      "meaning": "announcement (e.g. in a train station)"
-    },
-    {
-      "source_index": 7660,
-      "id": "2144630",
-      "term": "校内暴力",
-      "reading": "こうないぼうりょく",
-      "meaning": "school violence"
-    },
-    {
-      "source_index": 7661,
-      "id": "5281923",
-      "term": "甲南大学",
-      "reading": "こうなんだいがく",
-      "meaning": "Konan University"
-    },
-    {
-      "source_index": 7662,
-      "id": "1875530",
-      "term": "硬軟両派",
-      "reading": "こうなんりょうは",
-      "meaning": "stalwart and insurgent factions"
-    },
-    {
-      "source_index": 7663,
-      "id": "2669630",
-      "term": "抗日運動",
-      "reading": "こうにちうんどう",
-      "meaning": "anti-Japanese resistance movement (in pre-WWII China) / anti-Japanese campaign"
-    },
-    {
-      "source_index": 7664,
-      "id": "2853038",
-      "term": "抗日戦争",
-      "reading": "こうにちせんそう",
-      "meaning": "War of Resistance against Japanese Aggression (Chinese name for the Second Sino-Japanese War; 1937-1945)"
-    },
-    {
-      "source_index": 7665,
-      "id": "2641430",
-      "term": "購入価格",
-      "reading": "こうにゅうかかく",
-      "meaning": "purchase price"
-    },
-    {
-      "source_index": 7666,
-      "id": "1282460",
-      "term": "購入注文",
-      "reading": "こうにゅうちゅうもん",
-      "meaning": "purchase order"
-    },
-    {
-      "source_index": 7667,
-      "id": "1677440",
-      "term": "公認記録",
-      "reading": "こうにんきろく",
-      "meaning": "official record"
-    },
-    {
-      "source_index": 7668,
-      "id": "2150130",
-      "term": "公認欠席",
-      "reading": "こうにんけっせき",
-      "meaning": "authorized absence / permission of absence from class(es)"
-    },
-    {
-      "source_index": 7669,
-      "id": "1274470",
-      "term": "公認候補",
-      "reading": "こうにんこうほ",
-      "meaning": "official candidate"
-    },
-    {
-      "source_index": 7670,
-      "id": "2751750",
-      "term": "後任人事",
-      "reading": "こうにんじんじ",
-      "meaning": "appointment of successor"
-    },
-    {
-      "source_index": 7671,
-      "id": "2866662",
-      "term": "公認読手",
-      "reading": "こうにんどくしゅ",
-      "meaning": "certified reader (comp. karuta) / certified reciter"
-    },
-    {
-      "source_index": 7672,
-      "id": "2062370",
-      "term": "光熱水費",
-      "reading": "こうねつすいひ",
-      "meaning": "light, heating and water utility costs"
-    },
-    {
-      "source_index": 7673,
-      "id": "2837800",
-      "term": "抗粘結剤",
-      "reading": "こうねんけつざい",
-      "meaning": "anti-caking agent"
-    },
-    {
-      "source_index": 7674,
-      "id": "2601440",
-      "term": "高燃費車",
-      "reading": "こうねんぴしゃ",
-      "meaning": "gas-guzzler / gas-guzzling car / vehicle with high fuel consumption"
-    },
-    {
-      "source_index": 7675,
-      "id": "2854655",
-      "term": "高年齢化",
-      "reading": "こうねんれいか",
-      "meaning": "ageing (of a population) / aging"
-    },
-    {
-      "source_index": 7676,
-      "id": "2833035",
-      "term": "光背効果",
-      "reading": "こうはいこうか",
-      "meaning": "halo effect"
-    },
-    {
-      "source_index": 7677,
-      "id": "2856698",
-      "term": "後背湿地",
-      "reading": "こうはいしっち",
-      "meaning": "back swamp / back slough / back marsh"
-    },
-    {
-      "source_index": 7678,
-      "id": "1837010",
-      "term": "紅白試合",
-      "reading": "こうはくじあい",
-      "meaning": "contest between two groups"
-    },
-    {
-      "source_index": 7679,
-      "id": "2837801",
-      "term": "抗発泡剤",
-      "reading": "こうはっぽうざい",
-      "meaning": "anti-foaming agent"
-    },
-    {
-      "source_index": 7680,
-      "id": "2706710",
-      "term": "好発年齢",
-      "reading": "こうはつねんれい",
-      "meaning": "susceptible age (for a disease, condition, etc.) / common age"
-    },
-    {
-      "source_index": 7681,
-      "id": "2837619",
-      "term": "好発部位",
-      "reading": "こうはつぶい",
-      "meaning": "frequent site (for a disease, tumour, etc.)"
-    },
-    {
-      "source_index": 7682,
-      "id": "2070190",
-      "term": "孔版印刷",
-      "reading": "こうはんいんさつ",
-      "meaning": "stencil printing / mimeographic printing"
-    },
-    {
-      "source_index": 7683,
-      "id": "2869827",
-      "term": "公判期日",
-      "reading": "こうはんきじつ",
-      "meaning": "trial day / trial date"
-    },
-    {
-      "source_index": 7684,
-      "id": "2869825",
-      "term": "公判記録",
-      "reading": "こうはんきろく",
-      "meaning": "complete trial record / case file"
-    },
-    {
-      "source_index": 7685,
-      "id": "2827157",
-      "term": "後半国会",
-      "reading": "こうはんこっかい",
-      "meaning": "remainder of the Diet session after the creation of the budget"
-    },
-    {
-      "source_index": 7686,
-      "id": "2869826",
-      "term": "公判準備",
-      "reading": "こうはんじゅんび",
-      "meaning": "pretrial preparation / trial preparation"
-    },
-    {
-      "source_index": 7687,
-      "id": "2030850",
-      "term": "広範多岐",
-      "reading": "こうはんたき",
-      "meaning": "extensive and wide-ranging"
-    },
-    {
-      "source_index": 7688,
-      "id": "2869824",
-      "term": "公判調書",
-      "reading": "こうはんちょうしょ",
-      "meaning": "trial record / protocol of a trial"
-    },
-    {
-      "source_index": 7689,
-      "id": "2834469",
-      "term": "公判闘争",
-      "reading": "こうはんとうそう",
-      "meaning": "court battle"
-    },
-    {
-      "source_index": 7690,
-      "id": "2869829",
-      "term": "公判日程",
-      "reading": "こうはんにってい",
-      "meaning": "trial schedule"
-    },
-    {
-      "source_index": 7691,
-      "id": "1834290",
-      "term": "購買組合",
-      "reading": "こうばいくみあい",
-      "meaning": "cooperative society"
-    },
-    {
-      "source_index": 7692,
-      "id": "1992750",
-      "term": "購買習慣",
-      "reading": "こうばいしゅうかん",
-      "meaning": "buying habit"
-    },
-    {
-      "source_index": 7693,
-      "id": "2851895",
-      "term": "勾配天井",
-      "reading": "こうばいてんじょう",
-      "meaning": "sloping ceiling"
-    },
-    {
-      "source_index": 7694,
-      "id": "2221530",
-      "term": "交番応力",
-      "reading": "こうばんおうりょく",
-      "meaning": "alternating stress"
-    },
-    {
-      "source_index": 7695,
-      "id": "2221520",
-      "term": "交番電流",
-      "reading": "こうばんでんりゅう",
-      "meaning": "alternating current / AC"
-    },
-    {
-      "source_index": 7696,
-      "id": "2249750",
-      "term": "香盤時計",
-      "reading": "こうばんどけい",
-      "meaning": "incense clock"
-    },
-    {
-      "source_index": 7697,
-      "id": "2857001",
-      "term": "抗肥満薬",
-      "reading": "こうひまんやく",
-      "meaning": "anti-obesity drug"
-    },
-    {
-      "source_index": 7698,
-      "id": "2040400",
-      "term": "好評嘖々",
-      "reading": "こうひょうさくさく",
-      "meaning": "enjoying great popularity / receiving widespread high praise / being a great success with the public"
-    },
-    {
-      "source_index": 7699,
-      "id": "2200290",
-      "term": "広鼻猿類",
-      "reading": "こうびえんるい",
-      "meaning": "platyrrhine (primate of infraorder Platyrrhini, which have nostrils that are far apart)"
-    },
     {
       "source_index": 7700,
       "id": "2609000",
@@ -7010,6 +6310,706 @@
       "term": "御用学者",
       "reading": "ごようがくしゃ",
       "meaning": "scholar beholden to the government / self-serving academic / scholar who toadies up to government authorities"
+    },
+    {
+      "source_index": 8600,
+      "id": "1694020",
+      "term": "御用組合",
+      "reading": "ごようくみあい",
+      "meaning": "a company union"
+    },
+    {
+      "source_index": 8601,
+      "id": "1694000",
+      "term": "御用商人",
+      "reading": "ごようしょうにん",
+      "meaning": "purveyor (to the government or Imperial Household)"
+    },
+    {
+      "source_index": 8602,
+      "id": "1694030",
+      "term": "御用新聞",
+      "reading": "ごようしんぶん",
+      "meaning": "pro-government newspaper / newspaper that curries favour with the government"
+    },
+    {
+      "source_index": 8603,
+      "id": "2063510",
+      "term": "御用繁多",
+      "reading": "ごようはんた",
+      "meaning": "being busy with many things / extreme busyness due to pressure of business"
+    },
+    {
+      "source_index": 8604,
+      "id": "2574530",
+      "term": "御用部屋",
+      "reading": "ごようべや",
+      "meaning": "room in Edo castle where the shogun's council of elders attended to governmental affairs"
+    },
+    {
+      "source_index": 8605,
+      "id": "2842687",
+      "term": "娯楽映画",
+      "reading": "ごらくえいが",
+      "meaning": "entertaining movie / entertaining film"
+    },
+    {
+      "source_index": 8606,
+      "id": "2565490",
+      "term": "娯楽雑誌",
+      "reading": "ごらくざっし",
+      "meaning": "magazine for amusement / entertainment magazine"
+    },
+    {
+      "source_index": 8607,
+      "id": "1934770",
+      "term": "娯楽施設",
+      "reading": "ごらくしせつ",
+      "meaning": "amusement facilities / recreational facilities"
+    },
+    {
+      "source_index": 8608,
+      "id": "1269310",
+      "term": "娯楽番組",
+      "reading": "ごらくばんぐみ",
+      "meaning": "amusement program / amusement programme"
+    },
+    {
+      "source_index": 8609,
+      "id": "1268670",
+      "term": "五里霧中",
+      "reading": "ごりむちゅう",
+      "meaning": "totally at a loss / lose one's bearings / in a maze"
+    },
+    {
+      "source_index": 8610,
+      "id": "2604110",
+      "term": "御流神道",
+      "reading": "ごりゅうしんとう",
+      "meaning": "Goryū Shinto (sect of amalgamated Shinto)"
+    },
+    {
+      "source_index": 8611,
+      "id": "2853736",
+      "term": "五輪休戦",
+      "reading": "ごりんきゅうせん",
+      "meaning": "Olympic truce"
+    },
+    {
+      "source_index": 8612,
+      "id": "1268740",
+      "term": "五輪聖火",
+      "reading": "ごりんせいか",
+      "meaning": "Olympic torch"
+    },
+    {
+      "source_index": 8613,
+      "id": "1268750",
+      "term": "五輪大会",
+      "reading": "ごりんたいかい",
+      "meaning": "Olympic Games"
+    },
+    {
+      "source_index": 8614,
+      "id": "1878190",
+      "term": "欣求浄土",
+      "reading": "ごんぐじょうど",
+      "meaning": "seeking rebirth in the Pure Land"
+    },
+    {
+      "source_index": 8615,
+      "id": "1264450",
+      "term": "言語道断",
+      "reading": "ごんごどうだん",
+      "meaning": "outrageous / preposterous / scandalous"
+    },
+    {
+      "source_index": 8616,
+      "id": "2714130",
+      "term": "権兵衛が種蒔きゃ烏がほじくる",
+      "reading": "ごんべえがたねまきゃからすがほじくる",
+      "meaning": "spoiling someone's work / useless effort / labouring in vain"
+    },
+    {
+      "source_index": 8617,
+      "id": "1295410",
+      "term": "斎戒沐浴",
+      "reading": "さいかいもくよく",
+      "meaning": "purification / washing"
+    },
+    {
+      "source_index": 8618,
+      "id": "1296260",
+      "term": "載貨屯数",
+      "reading": "さいかとんすう",
+      "meaning": "deadweight tonnage"
+    },
+    {
+      "source_index": 8619,
+      "id": "2835273",
+      "term": "歳寒三友",
+      "reading": "さいかんさんゆう",
+      "meaning": "the three friends of winter (pine, bamboo and plum)"
+    },
+    {
+      "source_index": 8620,
+      "id": "2832871",
+      "term": "災害医療",
+      "reading": "さいがいいりょう",
+      "meaning": "disaster medicine"
+    },
+    {
+      "source_index": 8621,
+      "id": "1741470",
+      "term": "災害救助",
+      "reading": "さいがいきゅうじょ",
+      "meaning": "disaster relief"
+    },
+    {
+      "source_index": 8622,
+      "id": "2110330",
+      "term": "災害外科",
+      "reading": "さいがいげか",
+      "meaning": "traumatology / accident surgery"
+    },
+    {
+      "source_index": 8623,
+      "id": "1741450",
+      "term": "災害対策",
+      "reading": "さいがいたいさく",
+      "meaning": "disaster response / measures to deal with natural disasters / disaster control"
+    },
+    {
+      "source_index": 8624,
+      "id": "2108370",
+      "term": "災害派遣",
+      "reading": "さいがいはけん",
+      "meaning": "disaster relief operation / disaster relief mission"
+    },
+    {
+      "source_index": 8625,
+      "id": "2864471",
+      "term": "災害発生",
+      "reading": "さいがいはっせい",
+      "meaning": "occurrence of a disaster"
+    },
+    {
+      "source_index": 8626,
+      "id": "1741460",
+      "term": "災害保険",
+      "reading": "さいがいほけん",
+      "meaning": "disaster insurance"
+    },
+    {
+      "source_index": 8627,
+      "id": "2421280",
+      "term": "災害補償",
+      "reading": "さいがいほしょう",
+      "meaning": "accident compensation"
+    },
+    {
+      "source_index": 8628,
+      "id": "2807780",
+      "term": "細気管支",
+      "reading": "さいきかんし",
+      "meaning": "bronchiole"
+    },
+    {
+      "source_index": 8629,
+      "id": "2357340",
+      "term": "再帰関数",
+      "reading": "さいきかんすう",
+      "meaning": "recursive function"
+    },
+    {
+      "source_index": 8630,
+      "id": "1294490",
+      "term": "才気煥発",
+      "reading": "さいきかんぱつ",
+      "meaning": "quick-witted / a flash of brilliance / great wisdom"
+    },
+    {
+      "source_index": 8631,
+      "id": "2694190",
+      "term": "催奇形性",
+      "reading": "さいきけいせい",
+      "meaning": "teratogenicity"
+    },
+    {
+      "source_index": 8632,
+      "id": "1294480",
+      "term": "才気縦横",
+      "reading": "さいきじゅうおう",
+      "meaning": "great wisdom"
+    },
+    {
+      "source_index": 8633,
+      "id": "2150930",
+      "term": "再帰動詞",
+      "reading": "さいきどうし",
+      "meaning": "reflexive verb"
+    },
+    {
+      "source_index": 8634,
+      "id": "2045490",
+      "term": "才気溌剌",
+      "reading": "さいきはつらつ",
+      "meaning": "resourceful and quick-witted / showing a flash of brilliance / having a keen (sparkling) intellect"
+    },
+    {
+      "source_index": 8635,
+      "id": "2840875",
+      "term": "再帰反射",
+      "reading": "さいきはんしゃ",
+      "meaning": "retroreflection"
+    },
+    {
+      "source_index": 8636,
+      "id": "2045500",
+      "term": "再起不能",
+      "reading": "さいきふのう",
+      "meaning": "being beyond recovery / having no hope of recovery"
+    },
+    {
+      "source_index": 8637,
+      "id": "2744310",
+      "term": "西京味噌",
+      "reading": "さいきょうみそ",
+      "meaning": "Saikyo miso / Kyoto-style sweet white miso esp. used for pickling fish"
+    },
+    {
+      "source_index": 8638,
+      "id": "2852449",
+      "term": "再帰用法",
+      "reading": "さいきようほう",
+      "meaning": "(the) reflexive / reflexive usage"
+    },
+    {
+      "source_index": 8639,
+      "id": "2357700",
+      "term": "最近稼働",
+      "reading": "さいきんかどう",
+      "meaning": "recent activity"
+    },
+    {
+      "source_index": 8640,
+      "id": "2855742",
+      "term": "細菌学者",
+      "reading": "さいきんがくしゃ",
+      "meaning": "bacteriologist"
+    },
+    {
+      "source_index": 8641,
+      "id": "2198600",
+      "term": "細菌毒素",
+      "reading": "さいきんどくそ",
+      "meaning": "bacterial toxin"
+    },
+    {
+      "source_index": 8642,
+      "id": "1768430",
+      "term": "細菌兵器",
+      "reading": "さいきんへいき",
+      "meaning": "bacteriological weapon"
+    },
+    {
+      "source_index": 8643,
+      "id": "2788760",
+      "term": "債権勘定",
+      "reading": "さいけんかんじょう",
+      "meaning": "accounts receivable"
+    },
+    {
+      "source_index": 8644,
+      "id": "1993520",
+      "term": "再建計画",
+      "reading": "さいけんけいかく",
+      "meaning": "reorganization plan / reorganisation plan / restructuring plan"
+    },
+    {
+      "source_index": 8645,
+      "id": "2844756",
+      "term": "再建外科",
+      "reading": "さいけんげか",
+      "meaning": "reconstructive surgery"
+    },
+    {
+      "source_index": 8646,
+      "id": "2728480",
+      "term": "債券市場",
+      "reading": "さいけんしじょう",
+      "meaning": "bond market"
+    },
+    {
+      "source_index": 8647,
+      "id": "2844755",
+      "term": "再建手術",
+      "reading": "さいけんしゅじゅつ",
+      "meaning": "reconstructive operation / reconstructive surgery"
+    },
+    {
+      "source_index": 8648,
+      "id": "2828647",
+      "term": "債権譲渡",
+      "reading": "さいけんじょうと",
+      "meaning": "cession of an obligation / assignment of an obligation / transfer of an obligation"
+    },
+    {
+      "source_index": 8649,
+      "id": "1993410",
+      "term": "債券発行",
+      "reading": "さいけんはっこう",
+      "meaning": "debt issuance / bond issuance"
+    },
+    {
+      "source_index": 8650,
+      "id": "1993430",
+      "term": "債権放棄",
+      "reading": "さいけんほうき",
+      "meaning": "debt forgiveness / debt waiver"
+    },
+    {
+      "source_index": 8651,
+      "id": "2557670",
+      "term": "債権保全",
+      "reading": "さいけんほぜん",
+      "meaning": "credit protection (by seizing assets in anticipation of a default) / preventive attachment / claim securing"
+    },
+    {
+      "source_index": 8652,
+      "id": "2623530",
+      "term": "最高会議",
+      "reading": "さいこうかいぎ",
+      "meaning": "supreme council / high council"
+    },
+    {
+      "source_index": 8653,
+      "id": "1935860",
+      "term": "最高価格",
+      "reading": "さいこうかかく",
+      "meaning": "highest price / price ceiling"
+    },
+    {
+      "source_index": 8654,
+      "id": "2837119",
+      "term": "最高幹部",
+      "reading": "さいこうかんぶ",
+      "meaning": "senior leadership / senior leader / upper echelon (of power)"
+    },
+    {
+      "source_index": 8655,
+      "id": "1721290",
+      "term": "最高学府",
+      "reading": "さいこうがくふ",
+      "meaning": "highest institute of education"
+    },
+    {
+      "source_index": 8656,
+      "id": "2848153",
+      "term": "最高気温",
+      "reading": "さいこうきおん",
+      "meaning": "maximum temperature / highest temperature / (today's) high"
+    },
+    {
+      "source_index": 8657,
+      "id": "1293860",
+      "term": "最高機密",
+      "reading": "さいこうきみつ",
+      "meaning": "top secret"
+    },
+    {
+      "source_index": 8658,
+      "id": "1935880",
+      "term": "最高級品",
+      "reading": "さいこうきゅうひん",
+      "meaning": "top quality products"
+    },
+    {
+      "source_index": 8659,
+      "id": "1935870",
+      "term": "最高記録",
+      "reading": "さいこうきろく",
+      "meaning": "best (highest) record / new record"
+    },
+    {
+      "source_index": 8660,
+      "id": "2829363",
+      "term": "最高敬語",
+      "reading": "さいこうけいご",
+      "meaning": "highest honorifics / honorific language mainly reserved for speaking of or to a member of the Imperial family"
+    },
+    {
+      "source_index": 8661,
+      "id": "2829836",
+      "term": "最高傑作",
+      "reading": "さいこうけっさく",
+      "meaning": "masterpiece / masterwork / crowning work"
+    },
+    {
+      "source_index": 8662,
+      "id": "2057370",
+      "term": "最高血圧",
+      "reading": "さいこうけつあつ",
+      "meaning": "systolic blood pressure"
+    },
+    {
+      "source_index": 8663,
+      "id": "2396060",
+      "term": "最高限度",
+      "reading": "さいこうげんど",
+      "meaning": "upper limit / ceiling"
+    },
+    {
+      "source_index": 8664,
+      "id": "2851175",
+      "term": "最高顧問",
+      "reading": "さいこうこもん",
+      "meaning": "senior advisor / chief advisor"
+    },
+    {
+      "source_index": 8665,
+      "id": "2816110",
+      "term": "最高水準",
+      "reading": "さいこうすいじゅん",
+      "meaning": "highest level / high-water mark"
+    },
+    {
+      "source_index": 8666,
+      "id": "2848266",
+      "term": "再構成肉",
+      "reading": "さいこうせいにく",
+      "meaning": "reconstituted meat / meat slurry"
+    },
+    {
+      "source_index": 8667,
+      "id": "2854898",
+      "term": "最高速度",
+      "reading": "さいこうそくど",
+      "meaning": "top speed / maximum speed"
+    },
+    {
+      "source_index": 8668,
+      "id": "2608620",
+      "term": "最高法院",
+      "reading": "さいこうほういん",
+      "meaning": "Supreme Court of Judicature (Scotland) / High Court (England) / Parlement (France)"
+    },
+    {
+      "source_index": 8669,
+      "id": "2405620",
+      "term": "最高法規",
+      "reading": "さいこうほうき",
+      "meaning": "supreme law (of the land)"
+    },
+    {
+      "source_index": 8670,
+      "id": "1993530",
+      "term": "再国営化",
+      "reading": "さいこくえいか",
+      "meaning": "re-nationalisation"
+    },
+    {
+      "source_index": 8671,
+      "id": "1993540",
+      "term": "再国有化",
+      "reading": "さいこくゆうか",
+      "meaning": "re-nationalisation"
+    },
+    {
+      "source_index": 8672,
+      "id": "2853334",
+      "term": "再婚家庭",
+      "reading": "さいこんかてい",
+      "meaning": "stepfamily"
+    },
+    {
+      "source_index": 8673,
+      "id": "2192590",
+      "term": "西国巡礼",
+      "reading": "さいごくじゅんれい",
+      "meaning": "pilgrimage of the Saigoku-Sanjūsansho (33 temples in the Kinki region)"
+    },
+    {
+      "source_index": 8674,
+      "id": "2575770",
+      "term": "最後っ屁",
+      "reading": "さいごっぺ",
+      "meaning": "stink bomb / foul odour emitted from the anal sacs of a frightened weasel"
+    },
+    {
+      "source_index": 8675,
+      "id": "2610700",
+      "term": "最後通告",
+      "reading": "さいごつうこく",
+      "meaning": "final warning / ultimatum / last notice"
+    },
+    {
+      "source_index": 8676,
+      "id": "1657700",
+      "term": "最後通牒",
+      "reading": "さいごつうちょう",
+      "meaning": "ultimatum"
+    },
+    {
+      "source_index": 8677,
+      "id": "2575780",
+      "term": "最後屁",
+      "reading": "さいごべ",
+      "meaning": "stink bomb / foul odour emitted from the anal sacs of a frightened weasel"
+    },
+    {
+      "source_index": 8678,
+      "id": "1293840",
+      "term": "最後列車",
+      "reading": "さいごれっしゃ",
+      "meaning": "last train"
+    },
+    {
+      "source_index": 8679,
+      "id": "2040420",
+      "term": "歳々年々",
+      "reading": "さいさいねんねん",
+      "meaning": "annually / every year / year in and year out"
+    },
+    {
+      "source_index": 8680,
+      "id": "2230530",
+      "term": "歳差運動",
+      "reading": "さいさうんどう",
+      "meaning": "(motion of) precession of the equinoxes"
+    },
+    {
+      "source_index": 8681,
+      "id": "1292770",
+      "term": "再三再四",
+      "reading": "さいさんさいし",
+      "meaning": "repeatedly"
+    },
+    {
+      "source_index": 8682,
+      "id": "2030950",
+      "term": "才子佳人",
+      "reading": "さいしかじん",
+      "meaning": "talented man and a beautiful woman / well-matched pair / wit and beauty"
+    },
+    {
+      "source_index": 8683,
+      "id": "2045510",
+      "term": "妻子眷属",
+      "reading": "さいしけんぞく",
+      "meaning": "one's wife, children, and other relations / one's whole family"
+    },
+    {
+      "source_index": 8684,
+      "id": "2790070",
+      "term": "再資源化",
+      "reading": "さいしげんか",
+      "meaning": "recycling / resource recovery"
+    },
+    {
+      "source_index": 8685,
+      "id": "2045520",
+      "term": "才子多病",
+      "reading": "さいしたびょう",
+      "meaning": "talented people tend to be of delicate constitution / men of genius tend to be of delicate health / whom the gods love die young"
+    },
+    {
+      "source_index": 8686,
+      "id": "2205230",
+      "term": "最終学年",
+      "reading": "さいしゅうがくねん",
+      "meaning": "last year of school"
+    },
+    {
+      "source_index": 8687,
+      "id": "1935900",
+      "term": "最終結果",
+      "reading": "さいしゅうけっか",
+      "meaning": "end result"
+    },
+    {
+      "source_index": 8688,
+      "id": "2660180",
+      "term": "最終決定",
+      "reading": "さいしゅうけってい",
+      "meaning": "final decision / ultimate decision / official decision"
+    },
+    {
+      "source_index": 8689,
+      "id": "2830321",
+      "term": "最終結論",
+      "reading": "さいしゅうけつろん",
+      "meaning": "final conclusion / end product"
+    },
+    {
+      "source_index": 8690,
+      "id": "2611670",
+      "term": "最終権限",
+      "reading": "さいしゅうけんげん",
+      "meaning": "final authority"
+    },
+    {
+      "source_index": 8691,
+      "id": "2653920",
+      "term": "最終公演",
+      "reading": "さいしゅうこうえん",
+      "meaning": "final performance / last performance"
+    },
+    {
+      "source_index": 8692,
+      "id": "2028580",
+      "term": "最終更新",
+      "reading": "さいしゅうこうしん",
+      "meaning": "last update / last updated"
+    },
+    {
+      "source_index": 8693,
+      "id": "2741330",
+      "term": "最終校正",
+      "reading": "さいしゅうこうせい",
+      "meaning": "final proofreading / page-proofing"
+    },
+    {
+      "source_index": 8694,
+      "id": "2838499",
+      "term": "最終手段",
+      "reading": "さいしゅうしゅだん",
+      "meaning": "last resort"
+    },
+    {
+      "source_index": 8695,
+      "id": "2163050",
+      "term": "最終需要",
+      "reading": "さいしゅうじゅよう",
+      "meaning": "final demand"
+    },
+    {
+      "source_index": 8696,
+      "id": "2664270",
+      "term": "最終製品",
+      "reading": "さいしゅうせいひん",
+      "meaning": "end product"
+    },
+    {
+      "source_index": 8697,
+      "id": "2838661",
+      "term": "最終責任",
+      "reading": "さいしゅうせきにん",
+      "meaning": "final responsibility / ultimate responsibility"
+    },
+    {
+      "source_index": 8698,
+      "id": "2815950",
+      "term": "最終選考",
+      "reading": "さいしゅうせんこう",
+      "meaning": "final selection (e.g. of applicants) / final screening / shortlisting"
+    },
+    {
+      "source_index": 8699,
+      "id": "5307279",
+      "term": "済州大学",
+      "reading": "さいしゅうだいがく",
+      "meaning": "Cheju National University"
     }
   ]
 }
