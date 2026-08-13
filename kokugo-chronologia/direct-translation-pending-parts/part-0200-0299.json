@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9904,
-  "english_only_remaining": 5096,
+  "already_direct_japanese": 9905,
+  "english_only_remaining": 5095,
   "english_only_rank_counts": {
-    "(blank)": 5096
+    "(blank)": 5095
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 200,
   "part_end": 299,
   "targets": [
-    {
-      "source_index": 10104,
-      "id": "2094250",
-      "term": "釈迦三尊",
-      "reading": "しゃかさんぞん",
-      "meaning": "Shakyamuni triad / Gautama triad / image of Shakyamuni (Gautama) Buddha flanked by two attendants"
-    },
     {
       "source_index": 10105,
       "id": "2678590",
@@ -712,6 +705,13 @@
       "term": "週刊文春",
       "reading": "しゅうかんぶんしゅん",
       "meaning": "Shūkanbunshun (weekly magazine)"
+    },
+    {
+      "source_index": 10204,
+      "id": "1331560",
+      "term": "就学義務",
+      "reading": "しゅうがくぎむ",
+      "meaning": "compulsory school attendance"
     }
   ]
 }

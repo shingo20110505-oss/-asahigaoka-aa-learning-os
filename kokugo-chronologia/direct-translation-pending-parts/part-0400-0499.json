@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9904,
-  "english_only_remaining": 5096,
+  "already_direct_japanese": 9905,
+  "english_only_remaining": 5095,
   "english_only_rank_counts": {
-    "(blank)": 5096
+    "(blank)": 5095
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 400,
   "part_end": 499,
   "targets": [
-    {
-      "source_index": 10304,
-      "id": "1813560",
-      "term": "集団結婚",
-      "reading": "しゅうだんけっこん",
-      "meaning": "group wedding"
-    },
     {
       "source_index": 10305,
       "id": "1813550",
@@ -712,6 +705,13 @@
       "term": "主格補語",
       "reading": "しゅかくほご",
       "meaning": "subject complement"
+    },
+    {
+      "source_index": 10404,
+      "id": "1325170",
+      "term": "主管機関",
+      "reading": "しゅかんきかん",
+      "meaning": "administration"
     }
   ]
 }

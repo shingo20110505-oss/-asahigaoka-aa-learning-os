@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9904,
-  "english_only_remaining": 5096,
+  "already_direct_japanese": 9905,
+  "english_only_remaining": 5095,
   "english_only_rank_counts": {
-    "(blank)": 5096
+    "(blank)": 5095
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 900,
   "part_end": 999,
   "targets": [
-    {
-      "source_index": 10804,
-      "id": "2690800",
-      "term": "消費支出",
-      "reading": "しょうひししゅつ",
-      "meaning": "consumer spending / consumption expenditure"
-    },
     {
       "source_index": 10805,
       "id": "2124950",
@@ -712,6 +705,13 @@
       "term": "初期状態",
       "reading": "しょきじょうたい",
       "meaning": "initial state / initial condition"
+    },
+    {
+      "source_index": 10904,
+      "id": "1342650",
+      "term": "初期設定",
+      "reading": "しょきせってい",
+      "meaning": "default settings / initial settings / initial configuration"
     }
   ]
 }
