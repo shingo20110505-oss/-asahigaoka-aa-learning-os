@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11308,
-  "english_only_remaining": 3692,
+  "already_direct_japanese": 11358,
+  "english_only_remaining": 3642,
   "english_only_rank_counts": {
-    "(blank)": 3692
+    "(blank)": 3642
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11308,
-      "id": "2831382",
-      "term": "紳士淑女",
-      "reading": "しんししゅくじょ",
-      "meaning": "ladies and gentlemen"
-    },
-    {
-      "source_index": 11309,
-      "id": "2123900",
-      "term": "心室細動",
-      "reading": "しんしつさいどう",
-      "meaning": "ventricular fibrillation"
-    },
-    {
-      "source_index": 11310,
-      "id": "2855148",
-      "term": "心室中隔",
-      "reading": "しんしつちゅうかく",
-      "meaning": "interventricular septum"
-    },
-    {
-      "source_index": 11311,
-      "id": "1883900",
-      "term": "唇歯輔車",
-      "reading": "しんしほしゃ",
-      "meaning": "mutual dependence"
-    },
-    {
-      "source_index": 11312,
-      "id": "2662360",
-      "term": "新社会人",
-      "reading": "しんしゃかいじん",
-      "meaning": "person who has recently entered the workforce (after completing education) / new working adult"
-    },
-    {
-      "source_index": 11313,
-      "id": "2236820",
-      "term": "真社会性",
-      "reading": "しんしゃかいせい",
-      "meaning": "eusociality"
-    },
-    {
-      "source_index": 11314,
-      "id": "2863554",
-      "term": "新社会党",
-      "reading": "しんしゃかいとう",
-      "meaning": "New Socialist Party of Japan"
-    },
-    {
-      "source_index": 11315,
-      "id": "2867600",
-      "term": "心射図法",
-      "reading": "しんしゃずほう",
-      "meaning": "gnomonic projection (in cartography) / central projection"
-    },
-    {
-      "source_index": 11316,
-      "id": "5404068",
-      "term": "信州大学",
-      "reading": "しんしゅうだいがく",
-      "meaning": "Shinshu University"
-    },
-    {
-      "source_index": 11317,
-      "id": "2031430",
-      "term": "進取果敢",
-      "reading": "しんしゅかかん",
-      "meaning": "enterprising and daring / boldly forward-looking"
-    },
-    {
-      "source_index": 11318,
-      "id": "1358970",
-      "term": "伸縮自在",
-      "reading": "しんしゅくじざい",
-      "meaning": "elastic / flexible / telescoping"
-    },
-    {
-      "source_index": 11319,
-      "id": "1358990",
-      "term": "伸縮税率",
-      "reading": "しんしゅくぜいりつ",
-      "meaning": "flexible tariff"
-    },
-    {
-      "source_index": 11320,
-      "id": "2826306",
-      "term": "伸縮包帯",
-      "reading": "しんしゅくほうたい",
-      "meaning": "elastic bandage"
-    },
-    {
-      "source_index": 11321,
-      "id": "1364700",
-      "term": "神出鬼没",
-      "reading": "しんしゅつきぼつ",
-      "meaning": "appearing in unexpected places and at unexpected moments / elusive / phantom"
-    },
-    {
-      "source_index": 11322,
-      "id": "1813220",
-      "term": "信賞必罰",
-      "reading": "しんしょうひつばつ",
-      "meaning": "rewards and punishments / rewarding good conduct and punishing evildoing"
-    },
-    {
-      "source_index": 11323,
-      "id": "2047490",
-      "term": "心象風景",
-      "reading": "しんしょうふうけい",
-      "meaning": "imagined landscape / scenery in one's mind's eye"
-    },
-    {
-      "source_index": 11324,
-      "id": "1366260",
-      "term": "針小棒大",
-      "reading": "しんしょうぼうだい",
-      "meaning": "exaggeration / making a mountain out of a molehill"
-    },
-    {
-      "source_index": 11325,
-      "id": "1765010",
-      "term": "神色自若",
-      "reading": "しんしょくじじゃく",
-      "meaning": "perfect composure / calm and collected"
-    },
-    {
-      "source_index": 11326,
-      "id": "2829098",
-      "term": "新食糧法",
-      "reading": "しんしょくりょうほう",
-      "meaning": "Law for Stabilization of Supply, Demand and Prices of Staple Food"
-    },
-    {
-      "source_index": 11327,
-      "id": "2828435",
-      "term": "浸食輪廻",
-      "reading": "しんしょくりんね",
-      "meaning": "erosion cycle"
-    },
-    {
-      "source_index": 11328,
-      "id": "2450500",
-      "term": "心身医学",
-      "reading": "しんしんいがく",
-      "meaning": "psychosomatic medicine"
-    },
-    {
-      "source_index": 11329,
-      "id": "2040490",
-      "term": "心身一如",
-      "reading": "しんしんいちにょ",
-      "meaning": "body and mind as one / mind-body unity"
-    },
-    {
-      "source_index": 11330,
-      "id": "2093470",
-      "term": "心身一体",
-      "reading": "しんしんいったい",
-      "meaning": "(medical) holism"
-    },
-    {
-      "source_index": 11331,
-      "id": "1361950",
-      "term": "新進気鋭",
-      "reading": "しんしんきえい",
-      "meaning": "young and energetic / up-and-coming"
-    },
-    {
-      "source_index": 11332,
-      "id": "1360730",
-      "term": "心神耗弱",
-      "reading": "しんしんこうじゃく",
-      "meaning": "diminished capacity / diminished responsibility"
-    },
-    {
-      "source_index": 11333,
-      "id": "1939020",
-      "term": "新進作家",
-      "reading": "しんしんさっか",
-      "meaning": "rising novelist"
-    },
-    {
-      "source_index": 11334,
-      "id": "1793330",
-      "term": "心身障害",
-      "reading": "しんしんしょうがい",
-      "meaning": "mental or physical disorder / mental or physical disability"
-    },
-    {
-      "source_index": 11335,
-      "id": "2114730",
-      "term": "心身創痍",
-      "reading": "しんしんそうい",
-      "meaning": "being wounded in mind and body"
-    },
-    {
-      "source_index": 11336,
-      "id": "2047520",
-      "term": "心身爽快",
-      "reading": "しんしんそうかい",
-      "meaning": "feeling refreshed in mind and body"
-    },
-    {
-      "source_index": 11337,
-      "id": "1793490",
-      "term": "心神喪失",
-      "reading": "しんしんそうしつ",
-      "meaning": "insanity / lack of mental capacity / (state of) non compos mentis"
-    },
-    {
-      "source_index": 11338,
-      "id": "2023720",
-      "term": "神事相撲",
-      "reading": "しんじずもう",
-      "meaning": "sumo performed as part of Shinto harvest festivities"
-    },
-    {
-      "source_index": 11339,
-      "id": "1363790",
-      "term": "真実一路",
-      "reading": "しんじついちろ",
-      "meaning": "path of sincerity"
-    },
-    {
-      "source_index": 11340,
-      "id": "2696790",
-      "term": "真獣下綱",
-      "reading": "しんじゅうかこう",
-      "meaning": "Eutheria (mammalian infraclass)"
-    },
-    {
-      "source_index": 11341,
-      "id": "2838414",
-      "term": "真珠光沢",
-      "reading": "しんじゅこうたく",
-      "meaning": "pearly lustre / pearly luster / iridescence"
-    },
-    {
-      "source_index": 11342,
-      "id": "2421190",
-      "term": "真珠婚式",
-      "reading": "しんじゅこんしき",
-      "meaning": "pearl wedding (anniversary) / 30th wedding anniversary"
-    },
-    {
-      "source_index": 11343,
-      "id": "1363830",
-      "term": "真珠細工",
-      "reading": "しんじゅざいく",
-      "meaning": "pearl work"
-    },
-    {
-      "source_index": 11344,
-      "id": "1363890",
-      "term": "真珠養殖",
-      "reading": "しんじゅようしょく",
-      "meaning": "pearl culture"
-    },
-    {
-      "source_index": 11345,
-      "id": "2063640",
-      "term": "身上調査",
-      "reading": "しんじょうちょうさ",
-      "meaning": "examine (investigate into) a person's history"
-    },
-    {
-      "source_index": 11346,
-      "id": "2063650",
-      "term": "身上調書",
-      "reading": "しんじょうちょうしょ",
-      "meaning": "personal information form / dossier on an individual"
-    },
-    {
-      "source_index": 11347,
-      "id": "2120230",
-      "term": "心情吐露",
-      "reading": "しんじょうとろ",
-      "meaning": "expression of one's feelings / pouring out one's heart"
-    },
-    {
-      "source_index": 11348,
-      "id": "2450100",
-      "term": "心情倫理",
-      "reading": "しんじょうりんり",
-      "meaning": "ethics of conviction"
-    },
-    {
-      "source_index": 11349,
-      "id": "1939030",
-      "term": "新人歌手",
-      "reading": "しんじんかしゅ",
-      "meaning": "new singer"
-    },
-    {
-      "source_index": 11350,
-      "id": "2853656",
-      "term": "新人教育",
-      "reading": "しんじんきょういく",
-      "meaning": "new employee training"
-    },
-    {
-      "source_index": 11351,
-      "id": "5407571",
-      "term": "新人民軍",
-      "reading": "しんじんみんぐん",
-      "meaning": "New People's Army (NPA) (Filipino paramilitary group)"
-    },
-    {
-      "source_index": 11352,
-      "id": "2034200",
-      "term": "親水空間",
-      "reading": "しんすいくうかん",
-      "meaning": "space or area for water-lovers"
-    },
-    {
-      "source_index": 11353,
-      "id": "2856102",
-      "term": "親水公園",
-      "reading": "しんすいこうえん",
-      "meaning": "urban park built around a river, lake, etc."
-    },
-    {
-      "source_index": 11354,
-      "id": "5407676",
-      "term": "新生銀行",
-      "reading": "しんせいぎんこう",
-      "meaning": "Shinsei Bank"
-    },
-    {
-      "source_index": 11355,
-      "id": "1720320",
-      "term": "新制高校",
-      "reading": "しんせいこうこう",
-      "meaning": "high school (operated under post-war guidelines)"
-    },
-    {
-      "source_index": 11356,
-      "id": "2112120",
-      "term": "真正細菌",
-      "reading": "しんせいさいきん",
-      "meaning": "bacteria / eubacteria"
-    },
-    {
-      "source_index": 11357,
-      "id": "2863504",
-      "term": "新生児室",
-      "reading": "しんせいじしつ",
-      "meaning": "newborn nursery"
-    },
     {
       "source_index": 11358,
       "id": "2518600",
@@ -7010,6 +6660,356 @@
       "term": "重爆撃機",
       "reading": "じゅうばくげきき",
       "meaning": "a heavy bomber"
+    },
+    {
+      "source_index": 12308,
+      "id": "2859275",
+      "term": "重箱の隅",
+      "reading": "じゅうばこのすみ",
+      "meaning": "unimportant things / insignificant things / trifles"
+    },
+    {
+      "source_index": 12309,
+      "id": "2398920",
+      "term": "重箱の隅をつつく",
+      "reading": "じゅうばこのすみをつつく",
+      "meaning": "to nitpick / to complain about trifles"
+    },
+    {
+      "source_index": 12310,
+      "id": "2207610",
+      "term": "重箱の隅をほじくる",
+      "reading": "じゅうばこのすみをほじくる",
+      "meaning": "to nitpick / to complain about trifles"
+    },
+    {
+      "source_index": 12311,
+      "id": "2524640",
+      "term": "重箱の隅をようじでほじくる",
+      "reading": "じゅうばこのすみをようじでほじくる",
+      "meaning": "to nitpick / to complain about trifles"
+    },
+    {
+      "source_index": 12312,
+      "id": "1745090",
+      "term": "十分条件",
+      "reading": "じゅうぶんじょうけん",
+      "meaning": "sufficient condition"
+    },
+    {
+      "source_index": 12313,
+      "id": "2633940",
+      "term": "重変記号",
+      "reading": "じゅうへんきごう",
+      "meaning": "double flat (symbol)"
+    },
+    {
+      "source_index": 12314,
+      "id": "1335150",
+      "term": "十万億土",
+      "reading": "じゅうまんおくど",
+      "meaning": "eternity / paradise"
+    },
+    {
+      "source_index": 12315,
+      "id": "1691860",
+      "term": "住民運動",
+      "reading": "じゅうみんうんどう",
+      "meaning": "neighborhood (protest) movement / neighbourhood (protest) movement"
+    },
+    {
+      "source_index": 12316,
+      "id": "2872209",
+      "term": "住民参加",
+      "reading": "じゅうみんさんか",
+      "meaning": "resident participation / citizen participation / public involvement (in local governance)"
+    },
+    {
+      "source_index": 12317,
+      "id": "1937960",
+      "term": "住民投票",
+      "reading": "じゅうみんとうひょう",
+      "meaning": "local referendum / poll of residents / plebiscite"
+    },
+    {
+      "source_index": 12318,
+      "id": "2758320",
+      "term": "住民謄本",
+      "reading": "じゅうみんとうほん",
+      "meaning": "certified copy of certificate of residence"
+    },
+    {
+      "source_index": 12319,
+      "id": "1334230",
+      "term": "住民登録",
+      "reading": "じゅうみんとうろく",
+      "meaning": "resident registration"
+    },
+    {
+      "source_index": 12320,
+      "id": "2868028",
+      "term": "絨毛検査",
+      "reading": "じゅうもうけんさ",
+      "meaning": "chorionic villus sampling / CVS"
+    },
+    {
+      "source_index": 12321,
+      "id": "2868030",
+      "term": "絨毛診断",
+      "reading": "じゅうもうしんだん",
+      "meaning": "chorionic villus sampling / CVS"
+    },
+    {
+      "source_index": 12322,
+      "id": "2868031",
+      "term": "絨毛穿刺",
+      "reading": "じゅうもうせんし",
+      "meaning": "chorionic villus sampling / CVS"
+    },
+    {
+      "source_index": 12323,
+      "id": "2082300",
+      "term": "重役会議",
+      "reading": "じゅうやくかいぎ",
+      "meaning": "executive meeting / meeting of the board of directors"
+    },
+    {
+      "source_index": 12324,
+      "id": "2046670",
+      "term": "重役出勤",
+      "reading": "じゅうやくしゅっきん",
+      "meaning": "arriving at work late as if one were an executive / management attendance at work"
+    },
+    {
+      "source_index": 12325,
+      "id": "2046680",
+      "term": "重要案件",
+      "reading": "じゅうようあんけん",
+      "meaning": "important matter (for discussion)"
+    },
+    {
+      "source_index": 12326,
+      "id": "1336830",
+      "term": "重要産業",
+      "reading": "じゅうようさんぎょう",
+      "meaning": "key industry"
+    },
+    {
+      "source_index": 12327,
+      "id": "2127630",
+      "term": "重要書類",
+      "reading": "じゅうようしょるい",
+      "meaning": "important documents / important papers"
+    },
+    {
+      "source_index": 12328,
+      "id": "1938020",
+      "term": "重要事項",
+      "reading": "じゅうようじこう",
+      "meaning": "important matter / matters of weight"
+    },
+    {
+      "source_index": 12329,
+      "id": "2858290",
+      "term": "重要事実",
+      "reading": "じゅうようじじつ",
+      "meaning": "material fact / material information"
+    },
+    {
+      "source_index": 12330,
+      "id": "1938030",
+      "term": "重要人物",
+      "reading": "じゅうようじんぶつ",
+      "meaning": "important person / strategic person / key figure"
+    },
+    {
+      "source_index": 12331,
+      "id": "2726740",
+      "term": "重要法案",
+      "reading": "じゅうようほうあん",
+      "meaning": "important bill / key bill"
+    },
+    {
+      "source_index": 12332,
+      "id": "2274900",
+      "term": "従来技術",
+      "reading": "じゅうらいぎじゅつ",
+      "meaning": "existing technology / conventional technology / prior art"
+    },
+    {
+      "source_index": 12333,
+      "id": "2578620",
+      "term": "従来農法",
+      "reading": "じゅうらいのうほう",
+      "meaning": "traditional farming"
+    },
+    {
+      "source_index": 12334,
+      "id": "1336920",
+      "term": "重量感覚",
+      "reading": "じゅうりょうかんかく",
+      "meaning": "sense of weight"
+    },
+    {
+      "source_index": 12335,
+      "id": "2144230",
+      "term": "重量制限",
+      "reading": "じゅうりょうせいげん",
+      "meaning": "weight restriction / weight limit"
+    },
+    {
+      "source_index": 12336,
+      "id": "1336950",
+      "term": "重量選手",
+      "reading": "じゅうりょうせんしゅ",
+      "meaning": "heavyweight player"
+    },
+    {
+      "source_index": 12337,
+      "id": "1336970",
+      "term": "重量噸数",
+      "reading": "じゅうりょうとんすう",
+      "meaning": "dead-weight tonnage"
+    },
+    {
+      "source_index": 12338,
+      "id": "2022120",
+      "term": "十両筆頭",
+      "reading": "じゅうりょうひっとう",
+      "meaning": "two highest ranked wrestlers in juryo division"
+    },
+    {
+      "source_index": 12339,
+      "id": "2858796",
+      "term": "重量不足",
+      "reading": "じゅうりょうぶそく",
+      "meaning": "short weight"
+    },
+    {
+      "source_index": 12340,
+      "id": "2513100",
+      "term": "重量分析",
+      "reading": "じゅうりょうぶんせき",
+      "meaning": "gravimetric analysis"
+    },
+    {
+      "source_index": 12341,
+      "id": "2845294",
+      "term": "従量料金",
+      "reading": "じゅうりょうりょうきん",
+      "meaning": "meter rate / usage charge"
+    },
+    {
+      "source_index": 12342,
+      "id": "2828083",
+      "term": "重力井戸",
+      "reading": "じゅうりょくいど",
+      "meaning": "gravity well (e.g. of a planet)"
+    },
+    {
+      "source_index": 12343,
+      "id": "2233190",
+      "term": "重力質量",
+      "reading": "じゅうりょくしつりょう",
+      "meaning": "gravitational mass"
+    },
+    {
+      "source_index": 12344,
+      "id": "2829993",
+      "term": "重力定数",
+      "reading": "じゅうりょくていすう",
+      "meaning": "gravitational constant"
+    },
+    {
+      "source_index": 12345,
+      "id": "2224320",
+      "term": "重力崩壊",
+      "reading": "じゅうりょくほうかい",
+      "meaning": "gravitational collapse"
+    },
+    {
+      "source_index": 12346,
+      "id": "2860288",
+      "term": "十六日祭",
+      "reading": "じゅうるくにちい",
+      "meaning": "Jūrukunichī / New Year's Day of the Dead / Okinawan festival celebrated on the 16th day of the first month in the lunar calendar"
+    },
+    {
+      "source_index": 12347,
+      "id": "2062220",
+      "term": "縦列駐車",
+      "reading": "じゅうれつちゅうしゃ",
+      "meaning": "parallel parking / roadside parking"
+    },
+    {
+      "source_index": 12348,
+      "id": "2501930",
+      "term": "十六進法",
+      "reading": "じゅうろくしんほう",
+      "meaning": "hexadecimal / hexadecimal notation / hex"
+    },
+    {
+      "source_index": 12349,
+      "id": "2265790",
+      "term": "十六羅漢",
+      "reading": "じゅうろくらかん",
+      "meaning": "the sixteen arhats"
+    },
+    {
+      "source_index": 12350,
+      "id": "1697750",
+      "term": "受益証券",
+      "reading": "じゅえきしょうけん",
+      "meaning": "beneficiary certificate"
+    },
+    {
+      "source_index": 12351,
+      "id": "2604060",
+      "term": "儒家神道",
+      "reading": "じゅかしんとう",
+      "meaning": "Confucian Shinto"
+    },
+    {
+      "source_index": 12352,
+      "id": "2853114",
+      "term": "需給関係",
+      "reading": "じゅきゅうかんけい",
+      "meaning": "relation between supply and demand"
+    },
+    {
+      "source_index": 12353,
+      "id": "2856199",
+      "term": "需給逼迫",
+      "reading": "じゅきゅうひっぱく",
+      "meaning": "supply and demand tightness / supply-demand crunch"
+    },
+    {
+      "source_index": 12354,
+      "id": "1329520",
+      "term": "儒教主義",
+      "reading": "じゅきょうしゅぎ",
+      "meaning": "Confucianism"
+    },
+    {
+      "source_index": 12355,
+      "id": "2070900",
+      "term": "授業計画",
+      "reading": "じゅぎょうけいかく",
+      "meaning": "syllabus"
+    },
+    {
+      "source_index": 12356,
+      "id": "2222720",
+      "term": "授業参観",
+      "reading": "じゅぎょうさんかん",
+      "meaning": "parents' day (day when parents observe their children in school)"
+    },
+    {
+      "source_index": 12357,
+      "id": "1937640",
+      "term": "授業時間",
+      "reading": "じゅぎょうじかん",
+      "meaning": "school hours / hours of teaching (instruction)"
     }
   ]
 }
