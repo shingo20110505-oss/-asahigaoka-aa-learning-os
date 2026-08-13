@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9650,
-  "english_only_remaining": 5350,
+  "already_direct_japanese": 9700,
+  "english_only_remaining": 5300,
   "english_only_rank_counts": {
-    "(blank)": 5350
+    "(blank)": 5300
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 9650,
-      "id": "2826423",
-      "term": "矢状縫合",
-      "reading": "しじょうほうごう",
-      "meaning": "sagittal suture"
-    },
-    {
-      "source_index": 9651,
-      "id": "2872434",
-      "term": "至上命題",
-      "reading": "しじょうめいだい",
-      "meaning": "absolute priority / supreme imperative / highest priority task"
-    },
-    {
-      "source_index": 9652,
-      "id": "1705210",
-      "term": "至上命令",
-      "reading": "しじょうめいれい",
-      "meaning": "unconditional command / must-obey order"
-    },
-    {
-      "source_index": 9653,
-      "id": "2046030",
-      "term": "史上唯一",
-      "reading": "しじょうゆいいつ",
-      "meaning": "the first in history / only once in history"
-    },
-    {
-      "source_index": 9654,
-      "id": "2046040",
-      "term": "至上要求",
-      "reading": "しじょうようきゅう",
-      "meaning": "overriding necessity / absolute requirement / an absolute must"
-    },
-    {
-      "source_index": 9655,
-      "id": "2087500",
-      "term": "支持療法",
-      "reading": "しじりょうほう",
-      "meaning": "supportive care / supportive therapy"
-    },
-    {
-      "source_index": 9656,
-      "id": "2063560",
-      "term": "四神相応",
-      "reading": "しじんそうおう",
-      "meaning": "an ideal topography for the four Taoist gods, with a river in the east, a broad avenue in the west, a basin in the south, and a hill in the north"
-    },
-    {
-      "source_index": 9657,
-      "id": "2787710",
-      "term": "私人逮捕",
-      "reading": "しじんたいほ",
-      "meaning": "citizen's arrest"
-    },
-    {
-      "source_index": 9658,
-      "id": "2040460",
-      "term": "詩人墨客",
-      "reading": "しじんぼっかく",
-      "meaning": "poets and artists / persons who take delight in such refined pursuits as poetry, literature, painting, and calligraphy"
-    },
-    {
-      "source_index": 9659,
-      "id": "1309870",
-      "term": "指数関数",
-      "reading": "しすうかんすう",
-      "meaning": "exponential function"
-    },
-    {
-      "source_index": 9660,
-      "id": "2359200",
-      "term": "指数分布",
-      "reading": "しすうぶんぷ",
-      "meaning": "exponential distribution"
-    },
-    {
-      "source_index": 9661,
-      "id": "5743556",
-      "term": "静岡県警",
-      "reading": "しずおかけんけい",
-      "meaning": "Shizuoka Prefectural Police (abbr)"
-    },
-    {
-      "source_index": 9662,
-      "id": "5451945",
-      "term": "静岡大学",
-      "reading": "しずおかだいがく",
-      "meaning": "Shizuoka University"
-    },
-    {
-      "source_index": 9663,
-      "id": "2046090",
-      "term": "資性英明",
-      "reading": "しせいえいめい",
-      "meaning": "wise and clear-sighted / intelligent and astute by nature / blessed with talents"
-    },
-    {
-      "source_index": 9664,
-      "id": "2046100",
-      "term": "資性穏和",
-      "reading": "しせいおんわ",
-      "meaning": "being of a gentle disposition / being of a mild character"
-    },
-    {
-      "source_index": 9665,
-      "id": "2828843",
-      "term": "姿勢制御",
-      "reading": "しせいせいぎょ",
-      "meaning": "attitude control"
-    },
-    {
-      "source_index": 9666,
-      "id": "1880590",
-      "term": "氏姓制度",
-      "reading": "しせいせいど",
-      "meaning": "uji-kabane system / system of clans and hereditary titles (of the Yamato court)"
-    },
-    {
-      "source_index": 9667,
-      "id": "2046120",
-      "term": "資性端正",
-      "reading": "しせいたんせい",
-      "meaning": "being of an upright character / being of a noble nature"
-    },
-    {
-      "source_index": 9668,
-      "id": "1308530",
-      "term": "市勢調査",
-      "reading": "しせいちょうさ",
-      "meaning": "municipal census"
-    },
-    {
-      "source_index": 9669,
-      "id": "2632230",
-      "term": "雌性発生",
-      "reading": "しせいはっせい",
-      "meaning": "gynogenesis"
-    },
-    {
-      "source_index": 9670,
-      "id": "2125920",
-      "term": "姿勢反射",
-      "reading": "しせいはんしゃ",
-      "meaning": "postural reflex"
-    },
-    {
-      "source_index": 9671,
-      "id": "2063590",
-      "term": "市井無頼",
-      "reading": "しせいぶらい",
-      "meaning": "urban villain / street hoodlum"
-    },
-    {
-      "source_index": 9672,
-      "id": "1753420",
-      "term": "施政方針",
-      "reading": "しせいほうしん",
-      "meaning": "administrative policy"
-    },
-    {
-      "source_index": 9673,
-      "id": "2359340",
-      "term": "私設回線",
-      "reading": "しせつかいせん",
-      "meaning": "leased line / private circuit / private line"
-    },
-    {
-      "source_index": 9674,
-      "id": "2826931",
-      "term": "施設栽培",
-      "reading": "しせつさいばい",
-      "meaning": "intensive cultivation / greenhouse farming"
-    },
-    {
-      "source_index": 9675,
-      "id": "1994120",
-      "term": "私設秘書",
-      "reading": "しせつひしょ",
-      "meaning": "private secretary"
-    },
-    {
-      "source_index": 9676,
-      "id": "2829120",
-      "term": "施設野菜",
-      "reading": "しせつやさい",
-      "meaning": "vegetables grown in a greenhouse"
-    },
-    {
-      "source_index": 9677,
-      "id": "2659900",
-      "term": "視線速度",
-      "reading": "しせんそくど",
-      "meaning": "radial velocity / line-of-sight velocity"
-    },
-    {
-      "source_index": 9678,
-      "id": "2266420",
-      "term": "四川料理",
-      "reading": "しせんりょうり",
-      "meaning": "Szechuan cuisine / Sichuan cuisine"
-    },
-    {
-      "source_index": 9679,
-      "id": "2749550",
-      "term": "自然遺産",
-      "reading": "しぜんいさん",
-      "meaning": "natural heritage / natural heritage site"
-    },
-    {
-      "source_index": 9680,
-      "id": "2826054",
-      "term": "自然栄養",
-      "reading": "しぜんえいよう",
-      "meaning": "natural alimentation"
-    },
-    {
-      "source_index": 9681,
-      "id": "1318110",
-      "term": "自然科学",
-      "reading": "しぜんかがく",
-      "meaning": "natural science"
-    },
-    {
-      "source_index": 9682,
-      "id": "1936960",
-      "term": "自然環境",
-      "reading": "しぜんかんきょう",
-      "meaning": "natural environment / (the) environment"
-    },
-    {
-      "source_index": 9683,
-      "id": "2693420",
-      "term": "自然観察",
-      "reading": "しぜんかんさつ",
-      "meaning": "nature observation"
-    },
-    {
-      "source_index": 9684,
-      "id": "2863635",
-      "term": "自然気胸",
-      "reading": "しぜんききょう",
-      "meaning": "spontaneous pneumothorax / collapsed lung"
-    },
-    {
-      "source_index": 9685,
-      "id": "1726620",
-      "term": "自然休会",
-      "reading": "しぜんきゅうかい",
-      "meaning": "spontaneous recess (in the Diet)"
-    },
-    {
-      "source_index": 9686,
-      "id": "2840477",
-      "term": "自然景観",
-      "reading": "しぜんけいかん",
-      "meaning": "natural landscape / natural scenery"
-    },
-    {
-      "source_index": 9687,
-      "id": "1318120",
-      "term": "自然言語",
-      "reading": "しぜんげんご",
-      "meaning": "natural language"
-    },
-    {
-      "source_index": 9688,
-      "id": "1726720",
-      "term": "自然現象",
-      "reading": "しぜんげんしょう",
-      "meaning": "natural phenomenon (phenomena)"
-    },
-    {
-      "source_index": 9689,
-      "id": "2219320",
-      "term": "自然公園",
-      "reading": "しぜんこうえん",
-      "meaning": "nature park / natural park"
-    },
-    {
-      "source_index": 9690,
-      "id": "1318130",
-      "term": "自然災害",
-      "reading": "しぜんさいがい",
-      "meaning": "natural disaster"
-    },
-    {
-      "source_index": 9691,
-      "id": "2855377",
-      "term": "自然栽培",
-      "reading": "しぜんさいばい",
-      "meaning": "natural cultivation (without artificial fertilizers or pesticides)"
-    },
-    {
-      "source_index": 9692,
-      "id": "2828649",
-      "term": "自然債務",
-      "reading": "しぜんさいむ",
-      "meaning": "natural obligation"
-    },
-    {
-      "source_index": 9693,
-      "id": "2101280",
-      "term": "自然資源",
-      "reading": "しぜんしげん",
-      "meaning": "natural resources"
-    },
-    {
-      "source_index": 9694,
-      "id": "2831019",
-      "term": "自然資本",
-      "reading": "しぜんしほん",
-      "meaning": "natural capital"
-    },
-    {
-      "source_index": 9695,
-      "id": "2510720",
-      "term": "自然宗教",
-      "reading": "しぜんしゅうきょう",
-      "meaning": "primitive religion"
-    },
-    {
-      "source_index": 9696,
-      "id": "1318140",
-      "term": "自然主義",
-      "reading": "しぜんしゅぎ",
-      "meaning": "naturalism"
-    },
-    {
-      "source_index": 9697,
-      "id": "2848229",
-      "term": "自然宿主",
-      "reading": "しぜんしゅくしゅ",
-      "meaning": "natural host"
-    },
-    {
-      "source_index": 9698,
-      "id": "1994580",
-      "term": "自然出産",
-      "reading": "しぜんしゅっさん",
-      "meaning": "natural childbirth"
-    },
-    {
-      "source_index": 9699,
-      "id": "2773890",
-      "term": "自然消滅",
-      "reading": "しぜんしょうめつ",
-      "meaning": "natural extinction / dying a natural death / coming to a natural end"
-    },
     {
       "source_index": 9700,
       "id": "1726700",
@@ -7010,6 +6660,356 @@
       "term": "商業地域",
       "reading": "しょうぎょうちいき",
       "meaning": "commercial area / business district"
+    },
+    {
+      "source_index": 10650,
+      "id": "1346870",
+      "term": "商業地区",
+      "reading": "しょうぎょうちく",
+      "meaning": "commercial district"
+    },
+    {
+      "source_index": 10651,
+      "id": "1775070",
+      "term": "商業手形",
+      "reading": "しょうぎょうてがた",
+      "meaning": "commercial bill / commercial paper / CP"
+    },
+    {
+      "source_index": 10652,
+      "id": "1775100",
+      "term": "商業登記",
+      "reading": "しょうぎょうとうき",
+      "meaning": "commercial registration"
+    },
+    {
+      "source_index": 10653,
+      "id": "1346880",
+      "term": "商業都市",
+      "reading": "しょうぎょうとし",
+      "meaning": "commercial city"
+    },
+    {
+      "source_index": 10654,
+      "id": "1346890",
+      "term": "商業道徳",
+      "reading": "しょうぎょうどうとく",
+      "meaning": "business morality"
+    },
+    {
+      "source_index": 10655,
+      "id": "1346900",
+      "term": "商業美術",
+      "reading": "しょうぎょうびじゅつ",
+      "meaning": "commercial art"
+    },
+    {
+      "source_index": 10656,
+      "id": "2838954",
+      "term": "商業物品",
+      "reading": "しょうぎょうぶっぴん",
+      "meaning": "commercial item"
+    },
+    {
+      "source_index": 10657,
+      "id": "1346920",
+      "term": "商業放送",
+      "reading": "しょうぎょうほうそう",
+      "meaning": "commercial broadcast"
+    },
+    {
+      "source_index": 10658,
+      "id": "2861183",
+      "term": "商業捕鯨",
+      "reading": "しょうぎょうほげい",
+      "meaning": "commercial whaling"
+    },
+    {
+      "source_index": 10659,
+      "id": "1346930",
+      "term": "商業目的",
+      "reading": "しょうぎょうもくてき",
+      "meaning": "(for) commercial purpose / business goal"
+    },
+    {
+      "source_index": 10660,
+      "id": "2718490",
+      "term": "小行列式",
+      "reading": "しょうぎょうれつしき",
+      "meaning": "minor (determinant)"
+    },
+    {
+      "source_index": 10661,
+      "id": "2364940",
+      "term": "小計機能",
+      "reading": "しょうけいきのう",
+      "meaning": "subtotal function"
+    },
+    {
+      "source_index": 10662,
+      "id": "5742776",
+      "term": "尚絅大学",
+      "reading": "しょうけいだいがく",
+      "meaning": "Shokei University"
+    },
+    {
+      "source_index": 10663,
+      "id": "1351890",
+      "term": "象形文字",
+      "reading": "しょうけいもじ",
+      "meaning": "hieroglyph / hieroglyphic character"
+    },
+    {
+      "source_index": 10664,
+      "id": "1707070",
+      "term": "証券会社",
+      "reading": "しょうけんがいしゃ",
+      "meaning": "brokerage / brokerage firm / broking house"
+    },
+    {
+      "source_index": 10665,
+      "id": "2143810",
+      "term": "証券業界",
+      "reading": "しょうけんぎょうかい",
+      "meaning": "securities industry"
+    },
+    {
+      "source_index": 10666,
+      "id": "1995430",
+      "term": "証券詐欺",
+      "reading": "しょうけんさぎ",
+      "meaning": "securities fraud"
+    },
+    {
+      "source_index": 10667,
+      "id": "1707060",
+      "term": "証券市場",
+      "reading": "しょうけんしじょう",
+      "meaning": "securities market"
+    },
+    {
+      "source_index": 10668,
+      "id": "2658820",
+      "term": "証券取引",
+      "reading": "しょうけんとりひき",
+      "meaning": "securities trading"
+    },
+    {
+      "source_index": 10669,
+      "id": "2452420",
+      "term": "証券発行",
+      "reading": "しょうけんはっこう",
+      "meaning": "securities issue"
+    },
+    {
+      "source_index": 10670,
+      "id": "2861946",
+      "term": "証券番号",
+      "reading": "しょうけんばんごう",
+      "meaning": "policy number"
+    },
+    {
+      "source_index": 10671,
+      "id": "1918900",
+      "term": "衝撃関数",
+      "reading": "しょうげきかんすう",
+      "meaning": "impulse function"
+    },
+    {
+      "source_index": 10672,
+      "id": "2227690",
+      "term": "衝撃療法",
+      "reading": "しょうげきりょうほう",
+      "meaning": "shock therapy / shock treatment"
+    },
+    {
+      "source_index": 10673,
+      "id": "2637880",
+      "term": "証言録取",
+      "reading": "しょうげんろくしゅ",
+      "meaning": "deposition / record of testimony"
+    },
+    {
+      "source_index": 10674,
+      "id": "1648140",
+      "term": "証拠隠滅",
+      "reading": "しょうこいんめつ",
+      "meaning": "destruction of evidence"
+    },
+    {
+      "source_index": 10675,
+      "id": "1346990",
+      "term": "商工業者",
+      "reading": "しょうこうぎょうしゃ",
+      "meaning": "commercial and industrial men"
+    },
+    {
+      "source_index": 10676,
+      "id": "2132790",
+      "term": "小康状態",
+      "reading": "しょうこうじょうたい",
+      "meaning": "state of reduced activity / lull / state of abeyance"
+    },
+    {
+      "source_index": 10677,
+      "id": "2868979",
+      "term": "商工大臣",
+      "reading": "しょうこうだいじん",
+      "meaning": "Minister of Commerce and Industry"
+    },
+    {
+      "source_index": 10678,
+      "id": "5369218",
+      "term": "商工中金",
+      "reading": "しょうこうちゅうきん",
+      "meaning": "Shoko Chukin Bank (abbr) / Central Bank for Commercial and Industrial Associations"
+    },
+    {
+      "source_index": 10679,
+      "id": "2031310",
+      "term": "小国寡民",
+      "reading": "しょうこくかみん",
+      "meaning": "small country with a small population (The Chinese philosopher Lao-tze's ideal of a state)"
+    },
+    {
+      "source_index": 10680,
+      "id": "2828378",
+      "term": "尚古主義",
+      "reading": "しょうこしゅぎ",
+      "meaning": "classicism / primitivism"
+    },
+    {
+      "source_index": 10681,
+      "id": "2656440",
+      "term": "証拠書類",
+      "reading": "しょうこしょるい",
+      "meaning": "documentary evidence / documentation"
+    },
+    {
+      "source_index": 10682,
+      "id": "2869089",
+      "term": "証拠能力",
+      "reading": "しょうこのうりょく",
+      "meaning": "admissibility of evidence / competence of evidence"
+    },
+    {
+      "source_index": 10683,
+      "id": "1707080",
+      "term": "証拠物件",
+      "reading": "しょうこぶっけん",
+      "meaning": "evidence / an exhibit"
+    },
+    {
+      "source_index": 10684,
+      "id": "2532010",
+      "term": "照合写真",
+      "reading": "しょうごうしゃしん",
+      "meaning": "portal film (e.g. in radiotherapy)"
+    },
+    {
+      "source_index": 10685,
+      "id": "2365200",
+      "term": "照合順序",
+      "reading": "しょうごうじゅんじょ",
+      "meaning": "collating sequence"
+    },
+    {
+      "source_index": 10686,
+      "id": "2365210",
+      "term": "照合順番",
+      "reading": "しょうごうじゅんばん",
+      "meaning": "collating sequence"
+    },
+    {
+      "source_index": 10687,
+      "id": "2365220",
+      "term": "照合操作",
+      "reading": "しょうごうそうさ",
+      "meaning": "collation operation"
+    },
+    {
+      "source_index": 10688,
+      "id": "1351770",
+      "term": "詳細情報",
+      "reading": "しょうさいじょうほう",
+      "meaning": "detailed information"
+    },
+    {
+      "source_index": 10689,
+      "id": "2365380",
+      "term": "詳細設計",
+      "reading": "しょうさいせっけい",
+      "meaning": "detailed design"
+    },
+    {
+      "source_index": 10690,
+      "id": "2796970",
+      "term": "詳細設定",
+      "reading": "しょうさいせってい",
+      "meaning": "advanced settings"
+    },
+    {
+      "source_index": 10691,
+      "id": "2365390",
+      "term": "詳細説明",
+      "reading": "しょうさいせつめい",
+      "meaning": "detailed explanation"
+    },
+    {
+      "source_index": 10692,
+      "id": "2839246",
+      "term": "詳細地図",
+      "reading": "しょうさいちず",
+      "meaning": "large-scale map / detailed map"
+    },
+    {
+      "source_index": 10693,
+      "id": "2254640",
+      "term": "潮前河豚",
+      "reading": "しょうさいふぐ",
+      "meaning": "Takifugu snyderi (species of pufferfish)"
+    },
+    {
+      "source_index": 10694,
+      "id": "2862898",
+      "term": "少産少死",
+      "reading": "しょうさんしょうし",
+      "meaning": "low birth rate and low mortality rate"
+    },
+    {
+      "source_index": 10695,
+      "id": "1351420",
+      "term": "笑止千万",
+      "reading": "しょうしせんばん",
+      "meaning": "highly ridiculous / quite absurd"
+    },
+    {
+      "source_index": 10696,
+      "id": "2826385",
+      "term": "硝子軟骨",
+      "reading": "しょうしなんこつ",
+      "meaning": "hyaline cartilage"
+    },
+    {
+      "source_index": 10697,
+      "id": "1350940",
+      "term": "照射処理",
+      "reading": "しょうしゃしょり",
+      "meaning": "lighting"
+    },
+    {
+      "source_index": 10698,
+      "id": "2616410",
+      "term": "照射線量",
+      "reading": "しょうしゃせんりょう",
+      "meaning": "exposure dose"
+    },
+    {
+      "source_index": 10699,
+      "id": "2365230",
+      "term": "照射方向",
+      "reading": "しょうしゃほうこう",
+      "meaning": "light source direction"
     }
   ]
 }
