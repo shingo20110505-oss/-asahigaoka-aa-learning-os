@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 13348,
-  "english_only_remaining": 1652,
+  "already_direct_japanese": 13353,
+  "english_only_remaining": 1647,
   "english_only_rank_counts": {
-    "(blank)": 1652
+    "(blank)": 1647
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,41 +13,6 @@
   "part_start": 0,
   "part_end": 99,
   "targets": [
-    {
-      "source_index": 13348,
-      "id": "2830031",
-      "term": "正規行列",
-      "reading": "せいきぎょうれつ",
-      "meaning": "normal matrix"
-    },
-    {
-      "source_index": 13349,
-      "id": "2445630",
-      "term": "正規言語",
-      "reading": "せいきげんご",
-      "meaning": "regular language"
-    },
-    {
-      "source_index": 13350,
-      "id": "2627330",
-      "term": "正規雇用",
-      "reading": "せいきこよう",
-      "meaning": "regular employment / typical employment"
-    },
-    {
-      "source_index": 13351,
-      "id": "2368490",
-      "term": "正規電圧",
-      "reading": "せいきでんあつ",
-      "meaning": "normal mode voltage"
-    },
-    {
-      "source_index": 13352,
-      "id": "2031580",
-      "term": "生気溌剌",
-      "reading": "せいきはつらつ",
-      "meaning": "being full of vitality / being vivacious"
-    },
     {
       "source_index": 13353,
       "id": "1376880",
@@ -712,6 +677,41 @@
       "term": "誠心誠意",
       "reading": "せいしんせいい",
       "meaning": "in all sincerity / with one's whole heart / whole-hearted devotion"
+    },
+    {
+      "source_index": 13448,
+      "id": "2031630",
+      "term": "精神統一",
+      "reading": "せいしんとういつ",
+      "meaning": "concentration of mind / mental concentration (on some task)"
+    },
+    {
+      "source_index": 13449,
+      "id": "2048070",
+      "term": "正邪曲直",
+      "reading": "せいじゃきょくちょく",
+      "meaning": "right and wrong / right or wrong"
+    },
+    {
+      "source_index": 13450,
+      "id": "2048110",
+      "term": "清浄潔白",
+      "reading": "せいじょうけっぱく",
+      "meaning": "upright and clean-handed / pure in heart and with a clean conscience"
+    },
+    {
+      "source_index": 13451,
+      "id": "1750630",
+      "term": "清浄無垢",
+      "reading": "せいじょうむく",
+      "meaning": "purity / spotlessness"
+    },
+    {
+      "source_index": 13452,
+      "id": "2048140",
+      "term": "聖人君子",
+      "reading": "せいじんくんし",
+      "meaning": "person of lofty virtue / man of noble character / perfect person"
     }
   ]
 }

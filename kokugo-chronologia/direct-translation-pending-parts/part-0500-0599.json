@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 13348,
-  "english_only_remaining": 1652,
+  "already_direct_japanese": 13353,
+  "english_only_remaining": 1647,
   "english_only_rank_counts": {
-    "(blank)": 1652
+    "(blank)": 1647
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,41 +13,6 @@
   "part_start": 500,
   "part_end": 599,
   "targets": [
-    {
-      "source_index": 13848,
-      "id": "2845308",
-      "term": "寺から里へ",
-      "reading": "てらからさとへ",
-      "meaning": "putting the cart before the horse"
-    },
-    {
-      "source_index": 13849,
-      "id": "1328430",
-      "term": "手練手管",
-      "reading": "てれんてくだ",
-      "meaning": "wiles / art of coaxing"
-    },
-    {
-      "source_index": 13850,
-      "id": "2210610",
-      "term": "手を挙げる",
-      "reading": "てをあげる",
-      "meaning": "to raise one's hand"
-    },
-    {
-      "source_index": 13851,
-      "id": "2835353",
-      "term": "手を合わせる",
-      "reading": "てをあわせる",
-      "meaning": "to put one's palms together (e.g. when praying or asking for something) / to place one's hands together"
-    },
-    {
-      "source_index": 13852,
-      "id": "2200440",
-      "term": "手を打つ",
-      "reading": "てをうつ",
-      "meaning": "to take (preventive) measures"
-    },
     {
       "source_index": 13853,
       "id": "1895950",
@@ -712,6 +677,41 @@
       "term": "唐突千万",
       "reading": "とうとつせんばん",
       "meaning": "very sudden / very abrupt"
+    },
+    {
+      "source_index": 13948,
+      "id": "2843235",
+      "term": "党同伐異",
+      "reading": "とうどうばつい",
+      "meaning": "narrow partisanship"
+    },
+    {
+      "source_index": 13949,
+      "id": "2727600",
+      "term": "豆腐に鎹",
+      "reading": "とうふにかすがい",
+      "meaning": "having no effect / waste of effort"
+    },
+    {
+      "source_index": 13950,
+      "id": "1448200",
+      "term": "東奔西走",
+      "reading": "とうほんせいそう",
+      "meaning": "busying oneself about (something) / being on the move / bestirring oneself"
+    },
+    {
+      "source_index": 13951,
+      "id": "1446060",
+      "term": "党利党略",
+      "reading": "とうりとうりゃく",
+      "meaning": "party political interests / partisan politics"
+    },
+    {
+      "source_index": 13952,
+      "id": "2828451",
+      "term": "桃李満門",
+      "reading": "とうりまんもん",
+      "meaning": "gathering of excellent and capable people"
     }
   ]
 }

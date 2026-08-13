@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 13348,
-  "english_only_remaining": 1652,
+  "already_direct_japanese": 13353,
+  "english_only_remaining": 1647,
   "english_only_rank_counts": {
-    "(blank)": 1652
+    "(blank)": 1647
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,41 +13,6 @@
   "part_start": 200,
   "part_end": 299,
   "targets": [
-    {
-      "source_index": 13548,
-      "id": "1596290",
-      "term": "前人未到",
-      "reading": "ぜんじんみとう",
-      "meaning": "untrodden (region, field of study, etc.) / unprecedented (discovery, achievement, etc.)"
-    },
-    {
-      "source_index": 13549,
-      "id": "1393580",
-      "term": "前代未聞",
-      "reading": "ぜんだいみもん",
-      "meaning": "unheard-of / unprecedented / unparalleled in history (unparallelled)"
-    },
-    {
-      "source_index": 13550,
-      "id": "2678120",
-      "term": "膳立て",
-      "reading": "ぜんだて",
-      "meaning": "setting the table / laying the table"
-    },
-    {
-      "source_index": 13551,
-      "id": "1395750",
-      "term": "全知全能",
-      "reading": "ぜんちぜんのう",
-      "meaning": "omniscience and omnipotence"
-    },
-    {
-      "source_index": 13552,
-      "id": "2048920",
-      "term": "前程万里",
-      "reading": "ぜんていばんり",
-      "meaning": "a bright (rosy) future awaiting one / having the world before one"
-    },
     {
       "source_index": 13553,
       "id": "2131150",
@@ -712,6 +677,41 @@
       "term": "竹を割ったよう",
       "reading": "たけをわったよう",
       "meaning": "clear-cut and straightforward"
+    },
+    {
+      "source_index": 13648,
+      "id": "2049950",
+      "term": "他言無用",
+      "reading": "たごんむよう",
+      "meaning": "not a word to anyone / keep it secret / mum's the word"
+    },
+    {
+      "source_index": 13649,
+      "id": "2862897",
+      "term": "多産多死",
+      "reading": "たさんたし",
+      "meaning": "high birth rate and high mortality rate"
+    },
+    {
+      "source_index": 13650,
+      "id": "1407110",
+      "term": "他山の石",
+      "reading": "たざんのいし",
+      "meaning": "lesson learned from someone's else mistake / object lesson / food for thought"
+    },
+    {
+      "source_index": 13651,
+      "id": "1581420",
+      "term": "多士済々",
+      "reading": "たしせいせい",
+      "meaning": "galaxy of able persons / collection of intellectuals"
+    },
+    {
+      "source_index": 13652,
+      "id": "1407760",
+      "term": "多種多様",
+      "reading": "たしゅたよう",
+      "meaning": "a great variety of / diversity"
     }
   ]
 }

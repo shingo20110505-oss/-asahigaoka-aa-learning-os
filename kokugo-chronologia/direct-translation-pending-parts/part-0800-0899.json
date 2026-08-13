@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 13348,
-  "english_only_remaining": 1652,
+  "already_direct_japanese": 13353,
+  "english_only_remaining": 1647,
   "english_only_rank_counts": {
-    "(blank)": 1652
+    "(blank)": 1647
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,41 +13,6 @@
   "part_start": 800,
   "part_end": 899,
   "targets": [
-    {
-      "source_index": 14148,
-      "id": "2051920",
-      "term": "波及効果",
-      "reading": "はきゅうこうか",
-      "meaning": "ripple effect / spillover effect / propagation effect"
-    },
-    {
-      "source_index": 14149,
-      "id": "1474550",
-      "term": "博愛主義",
-      "reading": "はくあいしゅぎ",
-      "meaning": "philanthropism"
-    },
-    {
-      "source_index": 14150,
-      "id": "2515910",
-      "term": "白衣の天使",
-      "reading": "はくいのてんし",
-      "meaning": "nurse / angel in white"
-    },
-    {
-      "source_index": 14151,
-      "id": "1474560",
-      "term": "博引旁証",
-      "reading": "はくいんぼうしょう",
-      "meaning": "citing copious references"
-    },
-    {
-      "source_index": 14152,
-      "id": "1474600",
-      "term": "博学多才",
-      "reading": "はくがくたさい",
-      "meaning": "wide knowledge and versatile talents"
-    },
     {
       "source_index": 14153,
       "id": "2051930",
@@ -712,6 +677,41 @@
       "term": "半知半解",
       "reading": "はんちはんかい",
       "meaning": "superficial knowledge / half knowledge"
+    },
+    {
+      "source_index": 14248,
+      "id": "1481730",
+      "term": "繁文縟礼",
+      "reading": "はんぶんじょくれい",
+      "meaning": "red-tapism"
+    },
+    {
+      "source_index": 14249,
+      "id": "1481020",
+      "term": "反面教師",
+      "reading": "はんめんきょうし",
+      "meaning": "bad example from which one can learn / good example of what not to do (esp. how not to behave) / negative example"
+    },
+    {
+      "source_index": 14250,
+      "id": "2052330",
+      "term": "反目嫉視",
+      "reading": "はんもくしっし",
+      "meaning": "jealousy and enmity / being jealous of and at odds with (each other)"
+    },
+    {
+      "source_index": 14251,
+      "id": "2052340",
+      "term": "煩悶懊悩",
+      "reading": "はんもんおうのう",
+      "meaning": "anguish / agony"
+    },
+    {
+      "source_index": 14252,
+      "id": "2032230",
+      "term": "馬鹿慇懃",
+      "reading": "ばかいんぎん",
+      "meaning": "overdone politeness / polite to a fault / feigned politeness"
     }
   ]
 }
