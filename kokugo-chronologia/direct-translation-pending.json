@@ -1,23 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9900,
-  "english_only_remaining": 5100,
+  "already_direct_japanese": 9901,
+  "english_only_remaining": 5099,
   "english_only_rank_counts": {
-    "(blank)": 5100
+    "(blank)": 5099
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 9900,
-      "id": "2563550",
-      "term": "信濃金梅",
-      "reading": "しなのきんばい",
-      "meaning": "Trollius riederianus var. japonicus (Japanese variety of the Kamchatka globeflower, Trollius riederianus)"
-    },
     {
       "source_index": 9901,
       "id": "2828617",
@@ -7010,6 +7003,13 @@
       "term": "初期画面",
       "reading": "しょきがめん",
       "meaning": "opening screen"
+    },
+    {
+      "source_index": 10900,
+      "id": "2208380",
+      "term": "書記言語",
+      "reading": "しょきげんご",
+      "meaning": "written language / literary language"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9900,
-  "english_only_remaining": 5100,
+  "already_direct_japanese": 9901,
+  "english_only_remaining": 5099,
   "english_only_rank_counts": {
-    "(blank)": 5100
+    "(blank)": 5099
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 900,
   "part_end": 999,
   "targets": [
-    {
-      "source_index": 10800,
-      "id": "1743280",
-      "term": "消費革命",
-      "reading": "しょうひかくめい",
-      "meaning": "consumer revolution / consumption revolution"
-    },
     {
       "source_index": 10801,
       "id": "2161890",
@@ -712,6 +705,13 @@
       "term": "初期画面",
       "reading": "しょきがめん",
       "meaning": "opening screen"
+    },
+    {
+      "source_index": 10900,
+      "id": "2208380",
+      "term": "書記言語",
+      "reading": "しょきげんご",
+      "meaning": "written language / literary language"
     }
   ]
 }

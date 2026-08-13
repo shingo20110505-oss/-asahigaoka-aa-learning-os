@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9900,
-  "english_only_remaining": 5100,
+  "already_direct_japanese": 9901,
+  "english_only_remaining": 5099,
   "english_only_rank_counts": {
-    "(blank)": 5100
+    "(blank)": 5099
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 700,
   "part_end": 799,
   "targets": [
-    {
-      "source_index": 10600,
-      "id": "2854675",
-      "term": "昇華転写",
-      "reading": "しょうかてんしゃ",
-      "meaning": "sublimation printing / sublimation transfer"
-    },
     {
       "source_index": 10601,
       "id": "1743040",
@@ -712,6 +705,13 @@
       "term": "照射方向",
       "reading": "しょうしゃほうこう",
       "meaning": "light source direction"
+    },
+    {
+      "source_index": 10700,
+      "id": "1638530",
+      "term": "召集令状",
+      "reading": "しょうしゅうれいじょう",
+      "meaning": "draft papers / callup notice"
     }
   ]
 }

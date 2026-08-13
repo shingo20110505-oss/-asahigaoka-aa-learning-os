@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9900,
-  "english_only_remaining": 5100,
+  "already_direct_japanese": 9901,
+  "english_only_remaining": 5099,
   "english_only_rank_counts": {
-    "(blank)": 5100
+    "(blank)": 5099
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 600,
   "part_end": 699,
   "targets": [
-    {
-      "source_index": 10500,
-      "id": "1338560",
-      "term": "出漁区域",
-      "reading": "しゅつぎょくいき",
-      "meaning": "fishing area"
-    },
     {
       "source_index": 10501,
       "id": "2363760",
@@ -712,6 +705,13 @@
       "term": "商科大学",
       "reading": "しょうかだいがく",
       "meaning": "commercial college / college of commerce"
+    },
+    {
+      "source_index": 10600,
+      "id": "2854675",
+      "term": "昇華転写",
+      "reading": "しょうかてんしゃ",
+      "meaning": "sublimation printing / sublimation transfer"
     }
   ]
 }

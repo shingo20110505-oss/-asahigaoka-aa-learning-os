@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9900,
-  "english_only_remaining": 5100,
+  "already_direct_japanese": 9901,
+  "english_only_remaining": 5099,
   "english_only_rank_counts": {
-    "(blank)": 5100
+    "(blank)": 5099
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 500,
   "part_end": 599,
   "targets": [
-    {
-      "source_index": 10400,
-      "id": "2643940",
-      "term": "収賄事件",
-      "reading": "しゅうわいじけん",
-      "meaning": "bribery case / bribery scandal / graft case"
-    },
     {
       "source_index": 10401,
       "id": "2409690",
@@ -712,6 +705,13 @@
       "term": "出願書類",
       "reading": "しゅつがんしょるい",
       "meaning": "application form / application papers / file wrapper (patents)"
+    },
+    {
+      "source_index": 10500,
+      "id": "1338560",
+      "term": "出漁区域",
+      "reading": "しゅつぎょくいき",
+      "meaning": "fishing area"
     }
   ]
 }
