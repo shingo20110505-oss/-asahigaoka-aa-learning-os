@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11437,
-  "english_only_remaining": 3563,
+  "already_direct_japanese": 11487,
+  "english_only_remaining": 3513,
   "english_only_rank_counts": {
-    "(blank)": 3563
+    "(blank)": 3513
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11437,
-      "id": "2174240",
-      "term": "診断検査",
-      "reading": "しんだんけんさ",
-      "meaning": "diagnostic examination / diagnostic assay"
-    },
-    {
-      "source_index": 11438,
-      "id": "2367130",
-      "term": "診断出力",
-      "reading": "しんだんしゅつりょく",
-      "meaning": "diagnostic output"
-    },
-    {
-      "source_index": 11439,
-      "id": "2862092",
-      "term": "新致命者",
-      "reading": "しんちめいしゃ",
-      "meaning": "new martyr / neomartyr"
-    },
-    {
-      "source_index": 11440,
-      "id": "2656350",
-      "term": "新着情報",
-      "reading": "しんちゃくじょうほう",
-      "meaning": "What's New (esp. on webpages, programs or newsletters)"
-    },
-    {
-      "source_index": 11441,
-      "id": "2047630",
-      "term": "慎重吟味",
-      "reading": "しんちょうぎんみ",
-      "meaning": "scrutiny / careful (close) examination (investigation) / careful inquiry"
-    },
-    {
-      "source_index": 11442,
-      "id": "2031390",
-      "term": "慎重居士",
-      "reading": "しんちょうこじ",
-      "meaning": "very cautious person / very prudent person / very discreet person"
-    },
-    {
-      "source_index": 11443,
-      "id": "2026560",
-      "term": "進捗状況",
-      "reading": "しんちょくじょうきょう",
-      "meaning": "state of progress"
-    },
-    {
-      "source_index": 11444,
-      "id": "2858870",
-      "term": "進捗報告",
-      "reading": "しんちょくほうこく",
-      "meaning": "progress report / status report"
-    },
-    {
-      "source_index": 11445,
-      "id": "1362210",
-      "term": "新陳代謝",
-      "reading": "しんちんたいしゃ",
-      "meaning": "renewal / replacement / regeneration"
-    },
-    {
-      "source_index": 11446,
-      "id": "2216780",
-      "term": "心的外傷",
-      "reading": "しんてきがいしょう",
-      "meaning": "psychic trauma / psychological trauma"
-    },
-    {
-      "source_index": 11447,
-      "id": "1793410",
-      "term": "心的状態",
-      "reading": "しんてきじょうたい",
-      "meaning": "one's mental state"
-    },
-    {
-      "source_index": 11448,
-      "id": "1921160",
-      "term": "心的表示",
-      "reading": "しんてきひょうじ",
-      "meaning": "mental representation"
-    },
-    {
-      "source_index": 11449,
-      "id": "2831881",
-      "term": "親鉄元素",
-      "reading": "しんてつげんそ",
-      "meaning": "siderophile element"
-    },
-    {
-      "source_index": 11450,
-      "id": "1834430",
-      "term": "震天動地",
-      "reading": "しんてんどうち",
-      "meaning": "earth-shaking"
-    },
-    {
-      "source_index": 11451,
-      "id": "2683310",
-      "term": "死んでも死に切れない",
-      "reading": "しんでもしにきれない",
-      "meaning": "I can't die and leave things this way"
-    },
-    {
-      "source_index": 11452,
-      "id": "2417670",
-      "term": "死んでも死に切れぬ",
-      "reading": "しんでもしにきれぬ",
-      "meaning": "I can't die and leave things this way"
-    },
-    {
-      "source_index": 11453,
-      "id": "1364800",
-      "term": "神道信者",
-      "reading": "しんとうしんじゃ",
-      "meaning": "Shintoist / follower of Shintoism"
-    },
-    {
-      "source_index": 11454,
-      "id": "2246180",
-      "term": "神道大教",
-      "reading": "しんとうたいきょう",
-      "meaning": "Shinto Taikyo (sect of Shinto)"
-    },
-    {
-      "source_index": 11455,
-      "id": "2137570",
-      "term": "新党大地",
-      "reading": "しんとうだいち",
-      "meaning": "New Party Daichi / New Party Big Earth (Japanese political party)"
-    },
-    {
-      "source_index": 11456,
-      "id": "2704190",
-      "term": "神道尖鼠",
-      "reading": "しんとうとがりねずみ",
-      "meaning": "Shinto shrew (Sorex shinto)"
-    },
-    {
-      "source_index": 11457,
-      "id": "2098750",
-      "term": "新党日本",
-      "reading": "しんとうにっぽん",
-      "meaning": "New Party Nippon (Japanese political party)"
-    },
-    {
-      "source_index": 11458,
-      "id": "1360900",
-      "term": "心頭滅却",
-      "reading": "しんとうめっきゃく",
-      "meaning": "clearing one's mind of all worldly thoughts"
-    },
-    {
-      "source_index": 11459,
-      "id": "1359480",
-      "term": "信徒伝動",
-      "reading": "しんとでんどう",
-      "meaning": "lay evangelism"
-    },
-    {
-      "source_index": 11460,
-      "id": "2831882",
-      "term": "親銅元素",
-      "reading": "しんどうげんそ",
-      "meaning": "chalcophile element"
-    },
-    {
-      "source_index": 11461,
-      "id": "2802560",
-      "term": "振動工学",
-      "reading": "しんどうこうがく",
-      "meaning": "vibration engineering"
-    },
-    {
-      "source_index": 11462,
-      "id": "5741948",
-      "term": "臣道連盟",
-      "reading": "しんどうれんめい",
-      "meaning": "Shindo Renmei (Japanese terrorist group active in Brazil in the 1940s)"
-    },
-    {
-      "source_index": 11463,
-      "id": "2579860",
-      "term": "震度階級",
-      "reading": "しんどかいきゅう",
-      "meaning": "seismic intensity scale"
-    },
-    {
-      "source_index": 11464,
-      "id": "2780370",
-      "term": "身土不二",
-      "reading": "しんどふじ",
-      "meaning": "you are what you eat / slogan encouraging consumption of local seasonal foods for one's health / indivisibility of the body and the land (because the body is made from food and food is made from the land)"
-    },
-    {
-      "source_index": 11465,
-      "id": "2780800",
-      "term": "身土不二",
-      "reading": "しんどふに",
-      "meaning": "inseparability of body/mind and geographical circumstances"
-    },
-    {
-      "source_index": 11466,
-      "id": "2124730",
-      "term": "心内膜炎",
-      "reading": "しんないまくえん",
-      "meaning": "endocarditis"
-    },
-    {
-      "source_index": 11467,
-      "id": "2827182",
-      "term": "進入禁止",
-      "reading": "しんにゅうきんし",
-      "meaning": "Do Not Enter / No Entry / Wrong Way"
-    },
-    {
-      "source_index": 11468,
-      "id": "1362250",
-      "term": "新入社員",
-      "reading": "しんにゅうしゃいん",
-      "meaning": "new employee / freshman employee / new hire"
-    },
-    {
-      "source_index": 11469,
-      "id": "2862754",
-      "term": "侵入生物",
-      "reading": "しんにゅうせいぶつ",
-      "meaning": "invasive species"
-    },
-    {
-      "source_index": 11470,
-      "id": "2435370",
-      "term": "之繞を掛ける",
-      "reading": "しんにゅうをかける",
-      "meaning": "to exaggerate"
-    },
-    {
-      "source_index": 11471,
-      "id": "1359520",
-      "term": "信任投票",
-      "reading": "しんにんとうひょう",
-      "meaning": "vote of confidence"
-    },
-    {
-      "source_index": 11472,
-      "id": "1853510",
-      "term": "新熱帯区",
-      "reading": "しんねったいく",
-      "meaning": "Neotropical (region) / Neotropics"
-    },
-    {
-      "source_index": 11473,
-      "id": "2267810",
-      "term": "新年宴会",
-      "reading": "しんねんえんかい",
-      "meaning": "New Year's party"
-    },
-    {
-      "source_index": 11474,
-      "id": "2648470",
-      "term": "心念口称",
-      "reading": "しんねんくしょう",
-      "meaning": "contemplating Buddha while chanting his name"
-    },
-    {
-      "source_index": 11475,
-      "id": "2832300",
-      "term": "心拍出量",
-      "reading": "しんはくしゅつりょう",
-      "meaning": "cardiac output"
-    },
-    {
-      "source_index": 11476,
-      "id": "1793470",
-      "term": "心肺機能",
-      "reading": "しんぱいきのう",
-      "meaning": "cardio-pulmonary function"
-    },
-    {
-      "source_index": 11477,
-      "id": "2394940",
-      "term": "心肺停止",
-      "reading": "しんぱいていし",
-      "meaning": "cardiopulmonary arrest"
-    },
-    {
-      "source_index": 11478,
-      "id": "2047660",
-      "term": "心配無用",
-      "reading": "しんぱいむよう",
-      "meaning": "don't worry about it / there is nothing to fear / there is no need for anxiety"
-    },
-    {
-      "source_index": 11479,
-      "id": "2854973",
-      "term": "心拍記録",
-      "reading": "しんぱくきろく",
-      "meaning": "cardiography"
-    },
-    {
-      "source_index": 11480,
-      "id": "2604540",
-      "term": "深発地震",
-      "reading": "しんぱつじしん",
-      "meaning": "deep earthquake / deep-focus earthquake"
-    },
-    {
-      "source_index": 11481,
-      "id": "2022250",
-      "term": "審判委員",
-      "reading": "しんぱんいいん",
-      "meaning": "five ringside judges"
-    },
-    {
-      "source_index": 11482,
-      "id": "1359570",
-      "term": "信販会社",
-      "reading": "しんぱんがいしゃ",
-      "meaning": "credit company"
-    },
-    {
-      "source_index": 11483,
-      "id": "2047670",
-      "term": "親藩大名",
-      "reading": "しんぱんだいみょう",
-      "meaning": "daimyo of a feudal domain owned by a Tokugawa family branch"
-    },
-    {
-      "source_index": 11484,
-      "id": "2022240",
-      "term": "審判部長",
-      "reading": "しんぱんぶちょう",
-      "meaning": "head judge"
-    },
-    {
-      "source_index": 11485,
-      "id": "2210870",
-      "term": "審判離婚",
-      "reading": "しんぱんりこん",
-      "meaning": "divorce by (Family Court) arbitration"
-    },
-    {
-      "source_index": 11486,
-      "id": "2730690",
-      "term": "審美歯科",
-      "reading": "しんびしか",
-      "meaning": "cosmetic dentistry / aesthetic dentistry / esthetic dentistry"
-    },
     {
       "source_index": 11487,
       "id": "1360450",
@@ -7010,6 +6660,356 @@
       "term": "順行運動",
       "reading": "じゅんこううんどう",
       "meaning": "direct motion / prograde motion"
+    },
+    {
+      "source_index": 12437,
+      "id": "2526240",
+      "term": "巡航客船",
+      "reading": "じゅんこうきゃくせん",
+      "meaning": "cruise ship"
+    },
+    {
+      "source_index": 12438,
+      "id": "2850079",
+      "term": "準公共財",
+      "reading": "じゅんこうきょうざい",
+      "meaning": "quasi-public goods"
+    },
+    {
+      "source_index": 12439,
+      "id": "2180040",
+      "term": "準構成員",
+      "reading": "じゅんこうせいいん",
+      "meaning": "associate member (esp. of a crime syndicate)"
+    },
+    {
+      "source_index": 12440,
+      "id": "1736500",
+      "term": "巡航速度",
+      "reading": "じゅんこうそくど",
+      "meaning": "cruising speed"
+    },
+    {
+      "source_index": 12441,
+      "id": "2583980",
+      "term": "順向抑制",
+      "reading": "じゅんこうよくせい",
+      "meaning": "proactive inhibition"
+    },
+    {
+      "source_index": 12442,
+      "id": "2693050",
+      "term": "準強姦罪",
+      "reading": "じゅんごうかんざい",
+      "meaning": "(crime of) incapacitated rape / crime of sexual assault against someone who is intoxicated, asleep or otherwise unable to consent or resist"
+    },
+    {
+      "source_index": 12443,
+      "id": "1736490",
+      "term": "巡査部長",
+      "reading": "じゅんさぶちょう",
+      "meaning": "police sergeant"
+    },
+    {
+      "source_index": 12444,
+      "id": "2046830",
+      "term": "純真一途",
+      "reading": "じゅんしんいちず",
+      "meaning": "pure and innocent through and through"
+    },
+    {
+      "source_index": 12445,
+      "id": "2046840",
+      "term": "純真可憐",
+      "reading": "じゅんしんかれん",
+      "meaning": "pure of heart and beautiful / innocent and beautiful"
+    },
+    {
+      "source_index": 12446,
+      "id": "1713150",
+      "term": "純真無垢",
+      "reading": "じゅんしんむく",
+      "meaning": "pure / purity"
+    },
+    {
+      "source_index": 12447,
+      "id": "2364100",
+      "term": "順次走査",
+      "reading": "じゅんじそうさ",
+      "meaning": "sequential scanning"
+    },
+    {
+      "source_index": 12448,
+      "id": "1341620",
+      "term": "準準決勝",
+      "reading": "じゅんじゅんけっしょう",
+      "meaning": "quarterfinal"
+    },
+    {
+      "source_index": 12449,
+      "id": "1713170",
+      "term": "純情可憐",
+      "reading": "じゅんじょうかれん",
+      "meaning": "pure of heart and pretty"
+    },
+    {
+      "source_index": 12450,
+      "id": "2364110",
+      "term": "順序回路",
+      "reading": "じゅんじょかいろ",
+      "meaning": "sequential circuit"
+    },
+    {
+      "source_index": 12451,
+      "id": "2364120",
+      "term": "順序制御",
+      "reading": "じゅんじょせいぎょ",
+      "meaning": "sequencing"
+    },
+    {
+      "source_index": 12452,
+      "id": "2364140",
+      "term": "順序探索",
+      "reading": "じゅんじょたんさく",
+      "meaning": "linear search"
+    },
+    {
+      "source_index": 12453,
+      "id": "2364150",
+      "term": "順序番号",
+      "reading": "じゅんじょばんごう",
+      "meaning": "sequence-number"
+    },
+    {
+      "source_index": 12454,
+      "id": "1342360",
+      "term": "順序不同",
+      "reading": "じゅんじょふどう",
+      "meaning": "(listed in) no particular order / arbitrary order / random order"
+    },
+    {
+      "source_index": 12455,
+      "id": "2364180",
+      "term": "順序列型",
+      "reading": "じゅんじょれつがた",
+      "meaning": "sequence type"
+    },
+    {
+      "source_index": 12456,
+      "id": "2857264",
+      "term": "純粋関数",
+      "reading": "じゅんすいかんすう",
+      "meaning": "pure function"
+    },
+    {
+      "source_index": 12457,
+      "id": "2830307",
+      "term": "純粋経験",
+      "reading": "じゅんすいけいけん",
+      "meaning": "pure experience"
+    },
+    {
+      "source_index": 12458,
+      "id": "2849716",
+      "term": "純粋数学",
+      "reading": "じゅんすいすうがく",
+      "meaning": "pure mathematics"
+    },
+    {
+      "source_index": 12459,
+      "id": "2608910",
+      "term": "純粋想起",
+      "reading": "じゅんすいそうき",
+      "meaning": "unaided recall"
+    },
+    {
+      "source_index": 12460,
+      "id": "1341940",
+      "term": "純粋培養",
+      "reading": "じゅんすいばいよう",
+      "meaning": "clean (pure) culture"
+    },
+    {
+      "source_index": 12461,
+      "id": "2046850",
+      "term": "純粋無垢",
+      "reading": "じゅんすいむく",
+      "meaning": "pure and innocent / immaculate"
+    },
+    {
+      "source_index": 12462,
+      "id": "2228470",
+      "term": "純粋理性",
+      "reading": "じゅんすいりせい",
+      "meaning": "(Kantian) pure reason"
+    },
+    {
+      "source_index": 12463,
+      "id": "1713110",
+      "term": "純正科学",
+      "reading": "じゅんせいかがく",
+      "meaning": "pure science"
+    },
+    {
+      "source_index": 12464,
+      "id": "1995120",
+      "term": "純生産量",
+      "reading": "じゅんせいさんりょう",
+      "meaning": "net product / net production"
+    },
+    {
+      "source_index": 12465,
+      "id": "1341960",
+      "term": "純正数学",
+      "reading": "じゅんせいすうがく",
+      "meaning": "pure mathematics"
+    },
+    {
+      "source_index": 12466,
+      "id": "2087750",
+      "term": "準体助詞",
+      "reading": "じゅんたいじょし",
+      "meaning": "particle that attaches to a phrase and acts on the whole phrase"
+    },
+    {
+      "source_index": 12467,
+      "id": "2265980",
+      "term": "准胝観音",
+      "reading": "じゅんでいかんのん",
+      "meaning": "Cundi (manifestation of Avalokitesvara)"
+    },
+    {
+      "source_index": 12468,
+      "id": "1885730",
+      "term": "純日本式",
+      "reading": "じゅんにほんしき",
+      "meaning": "purely Japanese style"
+    },
+    {
+      "source_index": 12469,
+      "id": "2725590",
+      "term": "純日本人",
+      "reading": "じゅんにほんじん",
+      "meaning": "(racially) pure Japanese"
+    },
+    {
+      "source_index": 12470,
+      "id": "1341990",
+      "term": "純日本風",
+      "reading": "じゅんにほんふう",
+      "meaning": "classical Japanese style"
+    },
+    {
+      "source_index": 12471,
+      "id": "2364200",
+      "term": "順番検査",
+      "reading": "じゅんばんけんさ",
+      "meaning": "sequence check"
+    },
+    {
+      "source_index": 12472,
+      "id": "1938210",
+      "term": "準備運動",
+      "reading": "じゅんびうんどう",
+      "meaning": "warming (limbering) up / warming-up exercises"
+    },
+    {
+      "source_index": 12473,
+      "id": "1341690",
+      "term": "準備管制",
+      "reading": "じゅんびかんせい",
+      "meaning": "preliminary control of lights"
+    },
+    {
+      "source_index": 12474,
+      "id": "1341700",
+      "term": "準備期間",
+      "reading": "じゅんびきかん",
+      "meaning": "preparatory phase / preparatory period"
+    },
+    {
+      "source_index": 12475,
+      "id": "1341720",
+      "term": "準備銀行",
+      "reading": "じゅんびぎんこう",
+      "meaning": "reserve bank"
+    },
+    {
+      "source_index": 12476,
+      "id": "1341730",
+      "term": "準備資金",
+      "reading": "じゅんびしきん",
+      "meaning": "reserve funds"
+    },
+    {
+      "source_index": 12477,
+      "id": "2038360",
+      "term": "準備書面",
+      "reading": "じゅんびしょめん",
+      "meaning": "preparatory document / legal brief"
+    },
+    {
+      "source_index": 12478,
+      "id": "1341740",
+      "term": "準備状況",
+      "reading": "じゅんびじょうきょう",
+      "meaning": "preliminary conditions / initial conditions / state of preparations for (before) an event"
+    },
+    {
+      "source_index": 12479,
+      "id": "1712820",
+      "term": "準備体操",
+      "reading": "じゅんびたいそう",
+      "meaning": "warm-up exercises"
+    },
+    {
+      "source_index": 12480,
+      "id": "2833566",
+      "term": "準備通貨",
+      "reading": "じゅんびつうか",
+      "meaning": "reserve currency"
+    },
+    {
+      "source_index": 12481,
+      "id": "2046860",
+      "term": "準備万端",
+      "reading": "じゅんびばんたん",
+      "meaning": "fully prepared / all ready"
+    },
+    {
+      "source_index": 12482,
+      "id": "2584840",
+      "term": "準備不足",
+      "reading": "じゅんびぶそく",
+      "meaning": "ill-preparedness / insufficient preparation / lack of preparation"
+    },
+    {
+      "source_index": 12483,
+      "id": "1341760",
+      "term": "準備命令",
+      "reading": "じゅんびめいれい",
+      "meaning": "warning order"
+    },
+    {
+      "source_index": 12484,
+      "id": "1342210",
+      "term": "醇風美俗",
+      "reading": "じゅんぷうびぞく",
+      "meaning": "good morals and manners / genial manners and laudable customs / pristine way of life"
+    },
+    {
+      "source_index": 12485,
+      "id": "1342400",
+      "term": "順風満帆",
+      "reading": "じゅんぷうまんぱん",
+      "meaning": "smooth sailing"
+    },
+    {
+      "source_index": 12486,
+      "id": "2364240",
+      "term": "順編成法",
+      "reading": "じゅんへんせいほう",
+      "meaning": "BSAM / Basic Sequential Access Method"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11437,
-  "english_only_remaining": 3563,
+  "already_direct_japanese": 11487,
+  "english_only_remaining": 3513,
   "english_only_rank_counts": {
-    "(blank)": 3563
+    "(blank)": 3513
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,356 +13,6 @@
   "part_start": 600,
   "part_end": 699,
   "targets": [
-    {
-      "source_index": 12037,
-      "id": "1334770",
-      "term": "十種競技",
-      "reading": "じっしゅきょうぎ",
-      "meaning": "decathlon"
-    },
-    {
-      "source_index": 12038,
-      "id": "2132580",
-      "term": "実証研究",
-      "reading": "じっしょうけんきゅう",
-      "meaning": "empirical research"
-    },
-    {
-      "source_index": 12039,
-      "id": "1706350",
-      "term": "実証主義",
-      "reading": "じっしょうしゅぎ",
-      "meaning": "positivism"
-    },
-    {
-      "source_index": 12040,
-      "id": "2827094",
-      "term": "実証実験",
-      "reading": "じっしょうじっけん",
-      "meaning": "proof-of-concept / demonstration experiment / verification test"
-    },
-    {
-      "source_index": 12041,
-      "id": "1706370",
-      "term": "実証哲学",
-      "reading": "じっしょうてつがく",
-      "meaning": "positivism"
-    },
-    {
-      "source_index": 12042,
-      "id": "2363520",
-      "term": "十進表記",
-      "reading": "じっしんひょうき",
-      "meaning": "decimal notation"
-    },
-    {
-      "source_index": 12043,
-      "id": "1937290",
-      "term": "実勢価格",
-      "reading": "じっせいかかく",
-      "meaning": "market price"
-    },
-    {
-      "source_index": 12044,
-      "id": "2856265",
-      "term": "実績解除",
-      "reading": "じっせきかいじょ",
-      "meaning": "unlocking an achievement"
-    },
-    {
-      "source_index": 12045,
-      "id": "1321290",
-      "term": "実践躬行",
-      "reading": "じっせんきゅうこう",
-      "meaning": "acting up to one's principles"
-    },
-    {
-      "source_index": 12046,
-      "id": "2449850",
-      "term": "実践哲学",
-      "reading": "じっせんてつがく",
-      "meaning": "practical philosophy"
-    },
-    {
-      "source_index": 12047,
-      "id": "2046270",
-      "term": "実践道徳",
-      "reading": "じっせんどうとく",
-      "meaning": "practical ethics (morality)"
-    },
-    {
-      "source_index": 12048,
-      "id": "2837000",
-      "term": "実戦配備",
-      "reading": "じっせんはいび",
-      "meaning": "deployment of troops, equipment, etc. (in preparation for battle)"
-    },
-    {
-      "source_index": 12049,
-      "id": "1706410",
-      "term": "実践理性",
-      "reading": "じっせんりせい",
-      "meaning": "practical reason or ethics"
-    },
-    {
-      "source_index": 12050,
-      "id": "2046280",
-      "term": "実践倫理",
-      "reading": "じっせんりんり",
-      "meaning": "practical ethics (morality)"
-    },
-    {
-      "source_index": 12051,
-      "id": "2361980",
-      "term": "実装標準",
-      "reading": "じっそうひょうじゅん",
-      "meaning": "implementation standard"
-    },
-    {
-      "source_index": 12052,
-      "id": "2361990",
-      "term": "実装密度",
-      "reading": "じっそうみつど",
-      "meaning": "population (density)"
-    },
-    {
-      "source_index": 12053,
-      "id": "2424660",
-      "term": "実体経済",
-      "reading": "じったいけいざい",
-      "meaning": "actual business / actual economy / real economy"
-    },
-    {
-      "source_index": 12054,
-      "id": "2362020",
-      "term": "実体構造",
-      "reading": "じったいこうぞう",
-      "meaning": "entity structure"
-    },
-    {
-      "source_index": 12055,
-      "id": "2362030",
-      "term": "実体参照",
-      "reading": "じったいさんしょう",
-      "meaning": "entity reference"
-    },
-    {
-      "source_index": 12056,
-      "id": "2362050",
-      "term": "実体集合",
-      "reading": "じったいしゅうごう",
-      "meaning": "entity set"
-    },
-    {
-      "source_index": 12057,
-      "id": "2362060",
-      "term": "実体宣言",
-      "reading": "じったいせんげん",
-      "meaning": "entity declaration"
-    },
-    {
-      "source_index": 12058,
-      "id": "1658750",
-      "term": "実態調査",
-      "reading": "じったいちょうさ",
-      "meaning": "fact-finding investigation / investigation into actual conditions / fact-finding survey"
-    },
-    {
-      "source_index": 12059,
-      "id": "2840517",
-      "term": "実地訓練",
-      "reading": "じっちくんれん",
-      "meaning": "on-the-job training / hands-on training"
-    },
-    {
-      "source_index": 12060,
-      "id": "2840297",
-      "term": "実地研修",
-      "reading": "じっちけんしゅう",
-      "meaning": "fieldwork / on-the-job training / hands-on training"
-    },
-    {
-      "source_index": 12061,
-      "id": "1706110",
-      "term": "実地検証",
-      "reading": "じっちけんしょう",
-      "meaning": "on-the-spot investigation"
-    },
-    {
-      "source_index": 12062,
-      "id": "1706120",
-      "term": "実地試験",
-      "reading": "じっちしけん",
-      "meaning": "practical test"
-    },
-    {
-      "source_index": 12063,
-      "id": "2837026",
-      "term": "実地指導",
-      "reading": "じっちしどう",
-      "meaning": "hands-on guidance / on-the-job instruction / practical tuition"
-    },
-    {
-      "source_index": 12064,
-      "id": "2399970",
-      "term": "実地調査",
-      "reading": "じっちちょうさ",
-      "meaning": "site survey / field study"
-    },
-    {
-      "source_index": 12065,
-      "id": "1334880",
-      "term": "十中八九",
-      "reading": "じっちゅうはっく",
-      "meaning": "in 8 or 9 cases out of ten / in all probability"
-    },
-    {
-      "source_index": 12066,
-      "id": "2199200",
-      "term": "十方世界",
-      "reading": "じっぽうせかい",
-      "meaning": "worlds of the ten directions"
-    },
-    {
-      "source_index": 12067,
-      "id": "2839797",
-      "term": "実演販売",
-      "reading": "じつえんはんばい",
-      "meaning": "product demonstration / sales demonstration"
-    },
-    {
-      "source_index": 12068,
-      "id": "2852831",
-      "term": "実技試験",
-      "reading": "じつぎしけん",
-      "meaning": "practical exam / practical test / practical"
-    },
-    {
-      "source_index": 12069,
-      "id": "1706400",
-      "term": "実業学校",
-      "reading": "じつぎょうがっこう",
-      "meaning": "vocational school"
-    },
-    {
-      "source_index": 12070,
-      "id": "2416000",
-      "term": "実業団体",
-      "reading": "じつぎょうだんたい",
-      "meaning": "business organization / business corporation / businessmen's body"
-    },
-    {
-      "source_index": 12071,
-      "id": "2040470",
-      "term": "日月星辰",
-      "reading": "じつげつせいしん",
-      "meaning": "the Sun, the Moon and the stars / the heavenly bodies"
-    },
-    {
-      "source_index": 12072,
-      "id": "2864130",
-      "term": "実現可能",
-      "reading": "じつげんかのう",
-      "meaning": "feasible / viable / realistic"
-    },
-    {
-      "source_index": 12073,
-      "id": "2361490",
-      "term": "実現方法",
-      "reading": "じつげんほうほう",
-      "meaning": "implementation method"
-    },
-    {
-      "source_index": 12074,
-      "id": "2692460",
-      "term": "実在気体",
-      "reading": "じつざいきたい",
-      "meaning": "real gas"
-    },
-    {
-      "source_index": 12075,
-      "id": "2361930",
-      "term": "実小数点",
-      "reading": "じつしょうすうてん",
-      "meaning": "actual decimal point"
-    },
-    {
-      "source_index": 12076,
-      "id": "2823130",
-      "term": "実事求是",
-      "reading": "じつじきゅうぜ",
-      "meaning": "practical search for the truth"
-    },
-    {
-      "source_index": 12077,
-      "id": "2361920",
-      "term": "実受信者",
-      "reading": "じつじゅしんしゃ",
-      "meaning": "actual recipient"
-    },
-    {
-      "source_index": 12078,
-      "id": "1321340",
-      "term": "実存主義",
-      "reading": "じつぞんしゅぎ",
-      "meaning": "existentialism"
-    },
-    {
-      "source_index": 12079,
-      "id": "2449860",
-      "term": "実存哲学",
-      "reading": "じつぞんてつがく",
-      "meaning": "existential philosophy"
-    },
-    {
-      "source_index": 12080,
-      "id": "2830391",
-      "term": "実弾演習",
-      "reading": "じつだんえんしゅう",
-      "meaning": "live-ammunition exercise"
-    },
-    {
-      "source_index": 12081,
-      "id": "2598080",
-      "term": "実弾射撃",
-      "reading": "じつだんしゃげき",
-      "meaning": "firing practice with live ammunition"
-    },
-    {
-      "source_index": 12082,
-      "id": "1321400",
-      "term": "実働時間",
-      "reading": "じつどうじかん",
-      "meaning": "actual work hours"
-    },
-    {
-      "source_index": 12083,
-      "id": "1321440",
-      "term": "実物取引",
-      "reading": "じつぶつとりひき",
-      "meaning": "spot transaction"
-    },
-    {
-      "source_index": 12084,
-      "id": "1884940",
-      "term": "実物描写",
-      "reading": "じつぶつびょうしゃ",
-      "meaning": "model drawing"
-    },
-    {
-      "source_index": 12085,
-      "id": "2854518",
-      "term": "実務経験",
-      "reading": "じつむけいけん",
-      "meaning": "work experience / professional experience / business experience"
-    },
-    {
-      "source_index": 12086,
-      "id": "2831582",
-      "term": "実務実習",
-      "reading": "じつむじっしゅう",
-      "meaning": "clinical teaching / clinical training"
-    },
     {
       "source_index": 12087,
       "id": "1706080",
@@ -712,6 +362,356 @@
       "term": "児童手当",
       "reading": "じどうてあて",
       "meaning": "child-rearing assistance / support for young parents / child-care allowance"
+    },
+    {
+      "source_index": 12137,
+      "id": "2590210",
+      "term": "自動電話",
+      "reading": "じどうでんわ",
+      "meaning": "public telephone / payphone / pay phone"
+    },
+    {
+      "source_index": 12138,
+      "id": "2360970",
+      "term": "自動動作",
+      "reading": "じどうどうさ",
+      "meaning": "auto-action"
+    },
+    {
+      "source_index": 12139,
+      "id": "2838108",
+      "term": "自動入力",
+      "reading": "じどうにゅうりょく",
+      "meaning": "automatic input"
+    },
+    {
+      "source_index": 12140,
+      "id": "2864936",
+      "term": "自動二輪",
+      "reading": "じどうにりん",
+      "meaning": "motorcycle (with a displacement of 50cc or more) / motorbike"
+    },
+    {
+      "source_index": 12141,
+      "id": "1937050",
+      "term": "自動人形",
+      "reading": "じどうにんぎょう",
+      "meaning": "automaton / automata"
+    },
+    {
+      "source_index": 12142,
+      "id": "2855340",
+      "term": "自動配信",
+      "reading": "じどうはいしん",
+      "meaning": "automatic sending (of email, etc.) / automatic delivery"
+    },
+    {
+      "source_index": 12143,
+      "id": "1983350",
+      "term": "自動発効",
+      "reading": "じどうはっこう",
+      "meaning": "self-executing (computer file)"
+    },
+    {
+      "source_index": 12144,
+      "id": "1994470",
+      "term": "児童売春",
+      "reading": "じどうばいしゅん",
+      "meaning": "child prostitution"
+    },
+    {
+      "source_index": 12145,
+      "id": "2785330",
+      "term": "児童買春",
+      "reading": "じどうばいしゅん",
+      "meaning": "child prostitution"
+    },
+    {
+      "source_index": 12146,
+      "id": "1315100",
+      "term": "児童福祉",
+      "reading": "じどうふくし",
+      "meaning": "child welfare"
+    },
+    {
+      "source_index": 12147,
+      "id": "1315110",
+      "term": "児童文学",
+      "reading": "じどうぶんがく",
+      "meaning": "children's literature / juvenile literature"
+    },
+    {
+      "source_index": 12148,
+      "id": "2361000",
+      "term": "自動変更",
+      "reading": "じどうへんこう",
+      "meaning": "automatic conversion"
+    },
+    {
+      "source_index": 12149,
+      "id": "2840978",
+      "term": "自動返信",
+      "reading": "じどうへんしん",
+      "meaning": "automated response / autoresponse / autoreply"
+    },
+    {
+      "source_index": 12150,
+      "id": "2858308",
+      "term": "児童保護",
+      "reading": "じどうほご",
+      "meaning": "childcare / protection of children"
+    },
+    {
+      "source_index": 12151,
+      "id": "2361010",
+      "term": "自動保存",
+      "reading": "じどうほぞん",
+      "meaning": "automatic saving"
+    },
+    {
+      "source_index": 12152,
+      "id": "2361020",
+      "term": "自動翻訳",
+      "reading": "じどうほんやく",
+      "meaning": "machine translation / automatic translation / MT"
+    },
+    {
+      "source_index": 12153,
+      "id": "2830284",
+      "term": "児童遊園",
+      "reading": "じどうゆうえん",
+      "meaning": "playground / children's park"
+    },
+    {
+      "source_index": 12154,
+      "id": "2851192",
+      "term": "児童労働",
+      "reading": "じどうろうどう",
+      "meaning": "child labor / child labour"
+    },
+    {
+      "source_index": 12155,
+      "id": "2857496",
+      "term": "自動露出",
+      "reading": "じどうろしゅつ",
+      "meaning": "automatic exposure / AE"
+    },
+    {
+      "source_index": 12156,
+      "id": "2855882",
+      "term": "自爆営業",
+      "reading": "じばくえいぎょう",
+      "meaning": "forcing employees to buy products they are selling to reach their quota"
+    },
+    {
+      "source_index": 12157,
+      "id": "1994620",
+      "term": "自爆攻撃",
+      "reading": "じばくこうげき",
+      "meaning": "suicide bomb attack"
+    },
+    {
+      "source_index": 12158,
+      "id": "2801790",
+      "term": "自爆装置",
+      "reading": "じばくそうち",
+      "meaning": "self-destruct system / automatic detonator / self-detonating device"
+    },
+    {
+      "source_index": 12159,
+      "id": "1942320",
+      "term": "地場産業",
+      "reading": "じばさんぎょう",
+      "meaning": "local industry / traditional local industry"
+    },
+    {
+      "source_index": 12160,
+      "id": "2233720",
+      "term": "自腹を切る",
+      "reading": "じばらをきる",
+      "meaning": "to pay with one's own money / to pay out of one's own pocket"
+    },
+    {
+      "source_index": 12161,
+      "id": "2829252",
+      "term": "地盤改良",
+      "reading": "じばんかいりょう",
+      "meaning": "ground reinforcement / soil stabilization / foundation improvement"
+    },
+    {
+      "source_index": 12162,
+      "id": "2838796",
+      "term": "地盤調査",
+      "reading": "じばんちょうさ",
+      "meaning": "subsurface exploration (geotechnical investigation)"
+    },
+    {
+      "source_index": 12163,
+      "id": "1763960",
+      "term": "地盤沈下",
+      "reading": "じばんちんか",
+      "meaning": "land subsidence"
+    },
+    {
+      "source_index": 12164,
+      "id": "1726800",
+      "term": "自費出版",
+      "reading": "じひしゅっぱん",
+      "meaning": "self-publishing / publishing at one's own expense"
+    },
+    {
+      "source_index": 12165,
+      "id": "2682040",
+      "term": "慈悲心鳥",
+      "reading": "じひしんちょう",
+      "meaning": "rufous hawk-cuckoo (Hierococcyx hyperythrus) / northern hawk-cuckoo"
+    },
+    {
+      "source_index": 12166,
+      "id": "2861316",
+      "term": "自費診療",
+      "reading": "じひしんりょう",
+      "meaning": "medical treatment at one's own expense / treatment not covered by health insurance"
+    },
+    {
+      "source_index": 12167,
+      "id": "1885050",
+      "term": "耳鼻咽喉",
+      "reading": "じびいんこう",
+      "meaning": "ear, nose, and throat"
+    },
+    {
+      "source_index": 12168,
+      "id": "2430250",
+      "term": "耳鼻科学",
+      "reading": "じびかがく",
+      "meaning": "otolaryngology / otorhinology"
+    },
+    {
+      "source_index": 12169,
+      "id": "2574610",
+      "term": "地引網漁",
+      "reading": "じびきあみりょう",
+      "meaning": "seine fishing (usu. from the beach) / dragnet fishing"
+    },
+    {
+      "source_index": 12170,
+      "id": "2113140",
+      "term": "字引学問",
+      "reading": "じびきがくもん",
+      "meaning": "superficial learning / book learning / merely knowing the meanings of a large number of individual words"
+    },
+    {
+      "source_index": 12171,
+      "id": "1318630",
+      "term": "自分勝手",
+      "reading": "じぶんかって",
+      "meaning": "selfishness / egotism / egoism"
+    },
+    {
+      "source_index": 12172,
+      "id": "2852050",
+      "term": "自分時間",
+      "reading": "じぶんじかん",
+      "meaning": "me-time / time one has to oneself"
+    },
+    {
+      "source_index": 12173,
+      "id": "1318620",
+      "term": "自分自身",
+      "reading": "じぶんじしん",
+      "meaning": "oneself / myself"
+    },
+    {
+      "source_index": 12174,
+      "id": "2266850",
+      "term": "自分中心",
+      "reading": "じぶんちゅうしん",
+      "meaning": "self-centered / stuck on oneself"
+    },
+    {
+      "source_index": 12175,
+      "id": "2570120",
+      "term": "自分の首を絞める",
+      "reading": "じぶんのくびをしめる",
+      "meaning": "to cut one's own throat / to dig one's own grave / to cause oneself harm"
+    },
+    {
+      "source_index": 12176,
+      "id": "2858678",
+      "term": "自分のことは棚に上げる",
+      "reading": "じぶんのことはたなにあげる",
+      "meaning": "to ignore one's own shortcomings / to shut one's eyes to one's own faults / to act hypocritically"
+    },
+    {
+      "source_index": 12177,
+      "id": "2858729",
+      "term": "自分のことを棚に上げる",
+      "reading": "じぶんのことをたなにあげる",
+      "meaning": "to ignore one's own shortcomings / to shut one's eyes to one's own faults / to act hypocritically"
+    },
+    {
+      "source_index": 12178,
+      "id": "2848700",
+      "term": "自分一人",
+      "reading": "じぶんひとり",
+      "meaning": "(on) one's own / (by) oneself"
+    },
+    {
+      "source_index": 12179,
+      "id": "2046450",
+      "term": "自分本位",
+      "reading": "じぶんほんい",
+      "meaning": "self-centeredness / selfishness / egotism"
+    },
+    {
+      "source_index": 12180,
+      "id": "2863418",
+      "term": "自分優先",
+      "reading": "じぶんゆうせん",
+      "meaning": "putting oneself first / prioritizing oneself"
+    },
+    {
+      "source_index": 12181,
+      "id": "2094440",
+      "term": "自閉症児",
+      "reading": "じへいしょうじ",
+      "meaning": "autistic child"
+    },
+    {
+      "source_index": 12182,
+      "id": "1318670",
+      "term": "自暴自棄",
+      "reading": "じぼうじき",
+      "meaning": "desperation / despair / self-abandonment"
+    },
+    {
+      "source_index": 12183,
+      "id": "2141750",
+      "term": "自前主義",
+      "reading": "じまえしゅぎ",
+      "meaning": "(principle of) self-sufficiency"
+    },
+    {
+      "source_index": 12184,
+      "id": "2094360",
+      "term": "持明院統",
+      "reading": "じみょういんとう",
+      "meaning": "imperial lineage from Emperor Gofukakusa to Emperor Gokomatsu"
+    },
+    {
+      "source_index": 12185,
+      "id": "1637340",
+      "term": "事務機器",
+      "reading": "じむきき",
+      "meaning": "business machine(ry)"
+    },
+    {
+      "source_index": 12186,
+      "id": "1314360",
+      "term": "事務局長",
+      "reading": "じむきょくちょう",
+      "meaning": "secretary-general / director-general / executive director"
     }
   ]
 }
