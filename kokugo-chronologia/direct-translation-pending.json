@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 8650,
-  "english_only_remaining": 6350,
+  "already_direct_japanese": 8700,
+  "english_only_remaining": 6300,
   "english_only_rank_counts": {
-    "(blank)": 6350
+    "(blank)": 6300
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 8650,
-      "id": "1993430",
-      "term": "債権放棄",
-      "reading": "さいけんほうき",
-      "meaning": "debt forgiveness / debt waiver"
-    },
-    {
-      "source_index": 8651,
-      "id": "2557670",
-      "term": "債権保全",
-      "reading": "さいけんほぜん",
-      "meaning": "credit protection (by seizing assets in anticipation of a default) / preventive attachment / claim securing"
-    },
-    {
-      "source_index": 8652,
-      "id": "2623530",
-      "term": "最高会議",
-      "reading": "さいこうかいぎ",
-      "meaning": "supreme council / high council"
-    },
-    {
-      "source_index": 8653,
-      "id": "1935860",
-      "term": "最高価格",
-      "reading": "さいこうかかく",
-      "meaning": "highest price / price ceiling"
-    },
-    {
-      "source_index": 8654,
-      "id": "2837119",
-      "term": "最高幹部",
-      "reading": "さいこうかんぶ",
-      "meaning": "senior leadership / senior leader / upper echelon (of power)"
-    },
-    {
-      "source_index": 8655,
-      "id": "1721290",
-      "term": "最高学府",
-      "reading": "さいこうがくふ",
-      "meaning": "highest institute of education"
-    },
-    {
-      "source_index": 8656,
-      "id": "2848153",
-      "term": "最高気温",
-      "reading": "さいこうきおん",
-      "meaning": "maximum temperature / highest temperature / (today's) high"
-    },
-    {
-      "source_index": 8657,
-      "id": "1293860",
-      "term": "最高機密",
-      "reading": "さいこうきみつ",
-      "meaning": "top secret"
-    },
-    {
-      "source_index": 8658,
-      "id": "1935880",
-      "term": "最高級品",
-      "reading": "さいこうきゅうひん",
-      "meaning": "top quality products"
-    },
-    {
-      "source_index": 8659,
-      "id": "1935870",
-      "term": "最高記録",
-      "reading": "さいこうきろく",
-      "meaning": "best (highest) record / new record"
-    },
-    {
-      "source_index": 8660,
-      "id": "2829363",
-      "term": "最高敬語",
-      "reading": "さいこうけいご",
-      "meaning": "highest honorifics / honorific language mainly reserved for speaking of or to a member of the Imperial family"
-    },
-    {
-      "source_index": 8661,
-      "id": "2829836",
-      "term": "最高傑作",
-      "reading": "さいこうけっさく",
-      "meaning": "masterpiece / masterwork / crowning work"
-    },
-    {
-      "source_index": 8662,
-      "id": "2057370",
-      "term": "最高血圧",
-      "reading": "さいこうけつあつ",
-      "meaning": "systolic blood pressure"
-    },
-    {
-      "source_index": 8663,
-      "id": "2396060",
-      "term": "最高限度",
-      "reading": "さいこうげんど",
-      "meaning": "upper limit / ceiling"
-    },
-    {
-      "source_index": 8664,
-      "id": "2851175",
-      "term": "最高顧問",
-      "reading": "さいこうこもん",
-      "meaning": "senior advisor / chief advisor"
-    },
-    {
-      "source_index": 8665,
-      "id": "2816110",
-      "term": "最高水準",
-      "reading": "さいこうすいじゅん",
-      "meaning": "highest level / high-water mark"
-    },
-    {
-      "source_index": 8666,
-      "id": "2848266",
-      "term": "再構成肉",
-      "reading": "さいこうせいにく",
-      "meaning": "reconstituted meat / meat slurry"
-    },
-    {
-      "source_index": 8667,
-      "id": "2854898",
-      "term": "最高速度",
-      "reading": "さいこうそくど",
-      "meaning": "top speed / maximum speed"
-    },
-    {
-      "source_index": 8668,
-      "id": "2608620",
-      "term": "最高法院",
-      "reading": "さいこうほういん",
-      "meaning": "Supreme Court of Judicature (Scotland) / High Court (England) / Parlement (France)"
-    },
-    {
-      "source_index": 8669,
-      "id": "2405620",
-      "term": "最高法規",
-      "reading": "さいこうほうき",
-      "meaning": "supreme law (of the land)"
-    },
-    {
-      "source_index": 8670,
-      "id": "1993530",
-      "term": "再国営化",
-      "reading": "さいこくえいか",
-      "meaning": "re-nationalisation"
-    },
-    {
-      "source_index": 8671,
-      "id": "1993540",
-      "term": "再国有化",
-      "reading": "さいこくゆうか",
-      "meaning": "re-nationalisation"
-    },
-    {
-      "source_index": 8672,
-      "id": "2853334",
-      "term": "再婚家庭",
-      "reading": "さいこんかてい",
-      "meaning": "stepfamily"
-    },
-    {
-      "source_index": 8673,
-      "id": "2192590",
-      "term": "西国巡礼",
-      "reading": "さいごくじゅんれい",
-      "meaning": "pilgrimage of the Saigoku-Sanjūsansho (33 temples in the Kinki region)"
-    },
-    {
-      "source_index": 8674,
-      "id": "2575770",
-      "term": "最後っ屁",
-      "reading": "さいごっぺ",
-      "meaning": "stink bomb / foul odour emitted from the anal sacs of a frightened weasel"
-    },
-    {
-      "source_index": 8675,
-      "id": "2610700",
-      "term": "最後通告",
-      "reading": "さいごつうこく",
-      "meaning": "final warning / ultimatum / last notice"
-    },
-    {
-      "source_index": 8676,
-      "id": "1657700",
-      "term": "最後通牒",
-      "reading": "さいごつうちょう",
-      "meaning": "ultimatum"
-    },
-    {
-      "source_index": 8677,
-      "id": "2575780",
-      "term": "最後屁",
-      "reading": "さいごべ",
-      "meaning": "stink bomb / foul odour emitted from the anal sacs of a frightened weasel"
-    },
-    {
-      "source_index": 8678,
-      "id": "1293840",
-      "term": "最後列車",
-      "reading": "さいごれっしゃ",
-      "meaning": "last train"
-    },
-    {
-      "source_index": 8679,
-      "id": "2040420",
-      "term": "歳々年々",
-      "reading": "さいさいねんねん",
-      "meaning": "annually / every year / year in and year out"
-    },
-    {
-      "source_index": 8680,
-      "id": "2230530",
-      "term": "歳差運動",
-      "reading": "さいさうんどう",
-      "meaning": "(motion of) precession of the equinoxes"
-    },
-    {
-      "source_index": 8681,
-      "id": "1292770",
-      "term": "再三再四",
-      "reading": "さいさんさいし",
-      "meaning": "repeatedly"
-    },
-    {
-      "source_index": 8682,
-      "id": "2030950",
-      "term": "才子佳人",
-      "reading": "さいしかじん",
-      "meaning": "talented man and a beautiful woman / well-matched pair / wit and beauty"
-    },
-    {
-      "source_index": 8683,
-      "id": "2045510",
-      "term": "妻子眷属",
-      "reading": "さいしけんぞく",
-      "meaning": "one's wife, children, and other relations / one's whole family"
-    },
-    {
-      "source_index": 8684,
-      "id": "2790070",
-      "term": "再資源化",
-      "reading": "さいしげんか",
-      "meaning": "recycling / resource recovery"
-    },
-    {
-      "source_index": 8685,
-      "id": "2045520",
-      "term": "才子多病",
-      "reading": "さいしたびょう",
-      "meaning": "talented people tend to be of delicate constitution / men of genius tend to be of delicate health / whom the gods love die young"
-    },
-    {
-      "source_index": 8686,
-      "id": "2205230",
-      "term": "最終学年",
-      "reading": "さいしゅうがくねん",
-      "meaning": "last year of school"
-    },
-    {
-      "source_index": 8687,
-      "id": "1935900",
-      "term": "最終結果",
-      "reading": "さいしゅうけっか",
-      "meaning": "end result"
-    },
-    {
-      "source_index": 8688,
-      "id": "2660180",
-      "term": "最終決定",
-      "reading": "さいしゅうけってい",
-      "meaning": "final decision / ultimate decision / official decision"
-    },
-    {
-      "source_index": 8689,
-      "id": "2830321",
-      "term": "最終結論",
-      "reading": "さいしゅうけつろん",
-      "meaning": "final conclusion / end product"
-    },
-    {
-      "source_index": 8690,
-      "id": "2611670",
-      "term": "最終権限",
-      "reading": "さいしゅうけんげん",
-      "meaning": "final authority"
-    },
-    {
-      "source_index": 8691,
-      "id": "2653920",
-      "term": "最終公演",
-      "reading": "さいしゅうこうえん",
-      "meaning": "final performance / last performance"
-    },
-    {
-      "source_index": 8692,
-      "id": "2028580",
-      "term": "最終更新",
-      "reading": "さいしゅうこうしん",
-      "meaning": "last update / last updated"
-    },
-    {
-      "source_index": 8693,
-      "id": "2741330",
-      "term": "最終校正",
-      "reading": "さいしゅうこうせい",
-      "meaning": "final proofreading / page-proofing"
-    },
-    {
-      "source_index": 8694,
-      "id": "2838499",
-      "term": "最終手段",
-      "reading": "さいしゅうしゅだん",
-      "meaning": "last resort"
-    },
-    {
-      "source_index": 8695,
-      "id": "2163050",
-      "term": "最終需要",
-      "reading": "さいしゅうじゅよう",
-      "meaning": "final demand"
-    },
-    {
-      "source_index": 8696,
-      "id": "2664270",
-      "term": "最終製品",
-      "reading": "さいしゅうせいひん",
-      "meaning": "end product"
-    },
-    {
-      "source_index": 8697,
-      "id": "2838661",
-      "term": "最終責任",
-      "reading": "さいしゅうせきにん",
-      "meaning": "final responsibility / ultimate responsibility"
-    },
-    {
-      "source_index": 8698,
-      "id": "2815950",
-      "term": "最終選考",
-      "reading": "さいしゅうせんこう",
-      "meaning": "final selection (e.g. of applicants) / final screening / shortlisting"
-    },
-    {
-      "source_index": 8699,
-      "id": "5307279",
-      "term": "済州大学",
-      "reading": "さいしゅうだいがく",
-      "meaning": "Cheju National University"
-    },
     {
       "source_index": 8700,
       "id": "1293960",
@@ -7010,6 +6660,356 @@
       "term": "市場分析",
       "reading": "しじょうぶんせき",
       "meaning": "market analysis"
+    },
+    {
+      "source_index": 9650,
+      "id": "2826423",
+      "term": "矢状縫合",
+      "reading": "しじょうほうごう",
+      "meaning": "sagittal suture"
+    },
+    {
+      "source_index": 9651,
+      "id": "2872434",
+      "term": "至上命題",
+      "reading": "しじょうめいだい",
+      "meaning": "absolute priority / supreme imperative / highest priority task"
+    },
+    {
+      "source_index": 9652,
+      "id": "1705210",
+      "term": "至上命令",
+      "reading": "しじょうめいれい",
+      "meaning": "unconditional command / must-obey order"
+    },
+    {
+      "source_index": 9653,
+      "id": "2046030",
+      "term": "史上唯一",
+      "reading": "しじょうゆいいつ",
+      "meaning": "the first in history / only once in history"
+    },
+    {
+      "source_index": 9654,
+      "id": "2046040",
+      "term": "至上要求",
+      "reading": "しじょうようきゅう",
+      "meaning": "overriding necessity / absolute requirement / an absolute must"
+    },
+    {
+      "source_index": 9655,
+      "id": "2087500",
+      "term": "支持療法",
+      "reading": "しじりょうほう",
+      "meaning": "supportive care / supportive therapy"
+    },
+    {
+      "source_index": 9656,
+      "id": "2063560",
+      "term": "四神相応",
+      "reading": "しじんそうおう",
+      "meaning": "an ideal topography for the four Taoist gods, with a river in the east, a broad avenue in the west, a basin in the south, and a hill in the north"
+    },
+    {
+      "source_index": 9657,
+      "id": "2787710",
+      "term": "私人逮捕",
+      "reading": "しじんたいほ",
+      "meaning": "citizen's arrest"
+    },
+    {
+      "source_index": 9658,
+      "id": "2040460",
+      "term": "詩人墨客",
+      "reading": "しじんぼっかく",
+      "meaning": "poets and artists / persons who take delight in such refined pursuits as poetry, literature, painting, and calligraphy"
+    },
+    {
+      "source_index": 9659,
+      "id": "1309870",
+      "term": "指数関数",
+      "reading": "しすうかんすう",
+      "meaning": "exponential function"
+    },
+    {
+      "source_index": 9660,
+      "id": "2359200",
+      "term": "指数分布",
+      "reading": "しすうぶんぷ",
+      "meaning": "exponential distribution"
+    },
+    {
+      "source_index": 9661,
+      "id": "5743556",
+      "term": "静岡県警",
+      "reading": "しずおかけんけい",
+      "meaning": "Shizuoka Prefectural Police (abbr)"
+    },
+    {
+      "source_index": 9662,
+      "id": "5451945",
+      "term": "静岡大学",
+      "reading": "しずおかだいがく",
+      "meaning": "Shizuoka University"
+    },
+    {
+      "source_index": 9663,
+      "id": "2046090",
+      "term": "資性英明",
+      "reading": "しせいえいめい",
+      "meaning": "wise and clear-sighted / intelligent and astute by nature / blessed with talents"
+    },
+    {
+      "source_index": 9664,
+      "id": "2046100",
+      "term": "資性穏和",
+      "reading": "しせいおんわ",
+      "meaning": "being of a gentle disposition / being of a mild character"
+    },
+    {
+      "source_index": 9665,
+      "id": "2828843",
+      "term": "姿勢制御",
+      "reading": "しせいせいぎょ",
+      "meaning": "attitude control"
+    },
+    {
+      "source_index": 9666,
+      "id": "1880590",
+      "term": "氏姓制度",
+      "reading": "しせいせいど",
+      "meaning": "uji-kabane system / system of clans and hereditary titles (of the Yamato court)"
+    },
+    {
+      "source_index": 9667,
+      "id": "2046120",
+      "term": "資性端正",
+      "reading": "しせいたんせい",
+      "meaning": "being of an upright character / being of a noble nature"
+    },
+    {
+      "source_index": 9668,
+      "id": "1308530",
+      "term": "市勢調査",
+      "reading": "しせいちょうさ",
+      "meaning": "municipal census"
+    },
+    {
+      "source_index": 9669,
+      "id": "2632230",
+      "term": "雌性発生",
+      "reading": "しせいはっせい",
+      "meaning": "gynogenesis"
+    },
+    {
+      "source_index": 9670,
+      "id": "2125920",
+      "term": "姿勢反射",
+      "reading": "しせいはんしゃ",
+      "meaning": "postural reflex"
+    },
+    {
+      "source_index": 9671,
+      "id": "2063590",
+      "term": "市井無頼",
+      "reading": "しせいぶらい",
+      "meaning": "urban villain / street hoodlum"
+    },
+    {
+      "source_index": 9672,
+      "id": "1753420",
+      "term": "施政方針",
+      "reading": "しせいほうしん",
+      "meaning": "administrative policy"
+    },
+    {
+      "source_index": 9673,
+      "id": "2359340",
+      "term": "私設回線",
+      "reading": "しせつかいせん",
+      "meaning": "leased line / private circuit / private line"
+    },
+    {
+      "source_index": 9674,
+      "id": "2826931",
+      "term": "施設栽培",
+      "reading": "しせつさいばい",
+      "meaning": "intensive cultivation / greenhouse farming"
+    },
+    {
+      "source_index": 9675,
+      "id": "1994120",
+      "term": "私設秘書",
+      "reading": "しせつひしょ",
+      "meaning": "private secretary"
+    },
+    {
+      "source_index": 9676,
+      "id": "2829120",
+      "term": "施設野菜",
+      "reading": "しせつやさい",
+      "meaning": "vegetables grown in a greenhouse"
+    },
+    {
+      "source_index": 9677,
+      "id": "2659900",
+      "term": "視線速度",
+      "reading": "しせんそくど",
+      "meaning": "radial velocity / line-of-sight velocity"
+    },
+    {
+      "source_index": 9678,
+      "id": "2266420",
+      "term": "四川料理",
+      "reading": "しせんりょうり",
+      "meaning": "Szechuan cuisine / Sichuan cuisine"
+    },
+    {
+      "source_index": 9679,
+      "id": "2749550",
+      "term": "自然遺産",
+      "reading": "しぜんいさん",
+      "meaning": "natural heritage / natural heritage site"
+    },
+    {
+      "source_index": 9680,
+      "id": "2826054",
+      "term": "自然栄養",
+      "reading": "しぜんえいよう",
+      "meaning": "natural alimentation"
+    },
+    {
+      "source_index": 9681,
+      "id": "1318110",
+      "term": "自然科学",
+      "reading": "しぜんかがく",
+      "meaning": "natural science"
+    },
+    {
+      "source_index": 9682,
+      "id": "1936960",
+      "term": "自然環境",
+      "reading": "しぜんかんきょう",
+      "meaning": "natural environment / (the) environment"
+    },
+    {
+      "source_index": 9683,
+      "id": "2693420",
+      "term": "自然観察",
+      "reading": "しぜんかんさつ",
+      "meaning": "nature observation"
+    },
+    {
+      "source_index": 9684,
+      "id": "2863635",
+      "term": "自然気胸",
+      "reading": "しぜんききょう",
+      "meaning": "spontaneous pneumothorax / collapsed lung"
+    },
+    {
+      "source_index": 9685,
+      "id": "1726620",
+      "term": "自然休会",
+      "reading": "しぜんきゅうかい",
+      "meaning": "spontaneous recess (in the Diet)"
+    },
+    {
+      "source_index": 9686,
+      "id": "2840477",
+      "term": "自然景観",
+      "reading": "しぜんけいかん",
+      "meaning": "natural landscape / natural scenery"
+    },
+    {
+      "source_index": 9687,
+      "id": "1318120",
+      "term": "自然言語",
+      "reading": "しぜんげんご",
+      "meaning": "natural language"
+    },
+    {
+      "source_index": 9688,
+      "id": "1726720",
+      "term": "自然現象",
+      "reading": "しぜんげんしょう",
+      "meaning": "natural phenomenon (phenomena)"
+    },
+    {
+      "source_index": 9689,
+      "id": "2219320",
+      "term": "自然公園",
+      "reading": "しぜんこうえん",
+      "meaning": "nature park / natural park"
+    },
+    {
+      "source_index": 9690,
+      "id": "1318130",
+      "term": "自然災害",
+      "reading": "しぜんさいがい",
+      "meaning": "natural disaster"
+    },
+    {
+      "source_index": 9691,
+      "id": "2855377",
+      "term": "自然栽培",
+      "reading": "しぜんさいばい",
+      "meaning": "natural cultivation (without artificial fertilizers or pesticides)"
+    },
+    {
+      "source_index": 9692,
+      "id": "2828649",
+      "term": "自然債務",
+      "reading": "しぜんさいむ",
+      "meaning": "natural obligation"
+    },
+    {
+      "source_index": 9693,
+      "id": "2101280",
+      "term": "自然資源",
+      "reading": "しぜんしげん",
+      "meaning": "natural resources"
+    },
+    {
+      "source_index": 9694,
+      "id": "2831019",
+      "term": "自然資本",
+      "reading": "しぜんしほん",
+      "meaning": "natural capital"
+    },
+    {
+      "source_index": 9695,
+      "id": "2510720",
+      "term": "自然宗教",
+      "reading": "しぜんしゅうきょう",
+      "meaning": "primitive religion"
+    },
+    {
+      "source_index": 9696,
+      "id": "1318140",
+      "term": "自然主義",
+      "reading": "しぜんしゅぎ",
+      "meaning": "naturalism"
+    },
+    {
+      "source_index": 9697,
+      "id": "2848229",
+      "term": "自然宿主",
+      "reading": "しぜんしゅくしゅ",
+      "meaning": "natural host"
+    },
+    {
+      "source_index": 9698,
+      "id": "1994580",
+      "term": "自然出産",
+      "reading": "しぜんしゅっさん",
+      "meaning": "natural childbirth"
+    },
+    {
+      "source_index": 9699,
+      "id": "2773890",
+      "term": "自然消滅",
+      "reading": "しぜんしょうめつ",
+      "meaning": "natural extinction / dying a natural death / coming to a natural end"
     }
   ]
 }
