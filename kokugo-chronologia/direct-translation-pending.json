@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 8050,
-  "english_only_remaining": 6950,
+  "already_direct_japanese": 8100,
+  "english_only_remaining": 6900,
   "english_only_rank_counts": {
-    "(blank)": 6950
+    "(blank)": 6900
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 8050,
-      "id": "2847113",
-      "term": "心が溶ける",
-      "reading": "こころがとける",
-      "meaning": "one's heart melts"
-    },
-    {
-      "source_index": 8051,
-      "id": "1876400",
-      "term": "心にかかる",
-      "reading": "こころにかかる",
-      "meaning": "to weigh on one's mind / to trouble one"
-    },
-    {
-      "source_index": 8052,
-      "id": "2839767",
-      "term": "心に刺さる",
-      "reading": "こころにささる",
-      "meaning": "to be hurtful"
-    },
-    {
-      "source_index": 8053,
-      "id": "2839770",
-      "term": "心に突き刺さる",
-      "reading": "こころにつきささる",
-      "meaning": "to resonate emotionally (with one) / to strike a chord / to be gut-wrenching"
-    },
-    {
-      "source_index": 8054,
-      "id": "2839771",
-      "term": "心に響く",
-      "reading": "こころにひびく",
-      "meaning": "to resonate emotionally (with one) / to strike a chord in one's heart"
-    },
-    {
-      "source_index": 8055,
-      "id": "2847464",
-      "term": "心の壁",
-      "reading": "こころのかべ",
-      "meaning": "emotional wall / internal barrier"
-    },
-    {
-      "source_index": 8056,
-      "id": "2832732",
-      "term": "心の欲する所に従えども矩を踰えず",
-      "reading": "こころのほっするところにしたがえどものりをこえず",
-      "meaning": "following the desires of one's own heart without transgressing what is right"
-    },
-    {
-      "source_index": 8057,
-      "id": "1876490",
-      "term": "心を痛める",
-      "reading": "こころをいためる",
-      "meaning": "to worry (about) / to be worried (about) / to be troubled (by)"
-    },
-    {
-      "source_index": 8058,
-      "id": "2849093",
-      "term": "心を躍らせる",
-      "reading": "こころをおどらせる",
-      "meaning": "to get excited"
-    },
-    {
-      "source_index": 8059,
-      "id": "2124890",
-      "term": "心を鬼にする",
-      "reading": "こころをおににする",
-      "meaning": "to harden one's heart / to steel oneself"
-    },
-    {
-      "source_index": 8060,
-      "id": "2037790",
-      "term": "心を砕く",
-      "reading": "こころをくだく",
-      "meaning": "to take great pains / to make every effort / to rack one's brains"
-    },
-    {
-      "source_index": 8061,
-      "id": "2845217",
-      "term": "心を開く",
-      "reading": "こころをひらく",
-      "meaning": "to open up to someone else / to divulge one's true feelings / to be openhearted"
-    },
-    {
-      "source_index": 8062,
-      "id": "2838250",
-      "term": "心を病む",
-      "reading": "こころをやむ",
-      "meaning": "to suffer mentally / to be in emotional pain"
-    },
-    {
-      "source_index": 8063,
-      "id": "2835842",
-      "term": "心を読む",
-      "reading": "こころをよむ",
-      "meaning": "to read (someone's) thoughts / to guess what (someone) is thinking"
-    },
-    {
-      "source_index": 8064,
-      "id": "1265390",
-      "term": "古今東西",
-      "reading": "ここんとうざい",
-      "meaning": "all times and places / all ages and countries"
-    },
-    {
-      "source_index": 8065,
-      "id": "2030740",
-      "term": "古今独歩",
-      "reading": "ここんどっぽ",
-      "meaning": "unmatched in history / unequaled in history"
-    },
-    {
-      "source_index": 8066,
-      "id": "2030750",
-      "term": "古今無双",
-      "reading": "ここんむそう",
-      "meaning": "unparalleled in history"
-    },
-    {
-      "source_index": 8067,
-      "id": "1265400",
-      "term": "古今無類",
-      "reading": "ここんむるい",
-      "meaning": "best ever"
-    },
-    {
-      "source_index": 8068,
-      "id": "5256045",
-      "term": "古語拾遺",
-      "reading": "こごしゅうい",
-      "meaning": "Gleanings from Ancient Stories (Inbe no Hironari, 807 CE) / historical record from the Inbe clan"
-    },
-    {
-      "source_index": 8069,
-      "id": "2427390",
-      "term": "古語辞典",
-      "reading": "こごじてん",
-      "meaning": "dictionary of archaisms"
-    },
-    {
-      "source_index": 8070,
-      "id": "1593230",
-      "term": "虎視眈々",
-      "reading": "こしたんたん",
-      "meaning": "vigilantly (watching for an opportunity) / eagerly / with an eagle eye"
-    },
-    {
-      "source_index": 8071,
-      "id": "1836460",
-      "term": "腰高障子",
-      "reading": "こしだかしょうじ",
-      "meaning": "tall-paneled sliding door"
-    },
-    {
-      "source_index": 8072,
-      "id": "2772820",
-      "term": "腰だめ",
-      "reading": "こしだめ",
-      "meaning": "shooting from the hip"
-    },
-    {
-      "source_index": 8073,
-      "id": "2789500",
-      "term": "小鯱海豚",
-      "reading": "こしゃちいるか",
-      "meaning": "Haviside's dolphin (Cephalorhynchus heavisidii)"
-    },
-    {
-      "source_index": 8074,
-      "id": "2834746",
-      "term": "虎鬚を編む",
-      "reading": "こしゅをあむ",
-      "meaning": "to do something foolhardy / to braid a tiger's whiskers"
-    },
-    {
-      "source_index": 8075,
-      "id": "1265580",
-      "term": "古色蒼然",
-      "reading": "こしょくそうぜん",
-      "meaning": "antique-looking / looking hoary with patina"
-    },
-    {
-      "source_index": 8076,
-      "id": "2842119",
-      "term": "古植物学",
-      "reading": "こしょくぶつがく",
-      "meaning": "paleobotany / paleophytology"
-    },
-    {
-      "source_index": 8077,
-      "id": "2847350",
-      "term": "古書体学",
-      "reading": "こしょたいがく",
-      "meaning": "palaeography / paleography"
-    },
-    {
-      "source_index": 8078,
-      "id": "2239080",
-      "term": "腰を上げる",
-      "reading": "こしをあげる",
-      "meaning": "to get up (from sitting) / to stand up"
-    },
-    {
-      "source_index": 8079,
-      "id": "1791460",
-      "term": "乞食根性",
-      "reading": "こじきこんじょう",
-      "meaning": "mercenary spirit / greed / avarice"
-    },
-    {
-      "source_index": 8080,
-      "id": "5743401",
-      "term": "古事記伝",
-      "reading": "こじきでん",
-      "meaning": "Commentary on the Kojiki (by Motoori Norinaga, 1798) / Commentary on Records of Ancient Matters"
-    },
-    {
-      "source_index": 8081,
-      "id": "2040410",
-      "term": "乞食坊主",
-      "reading": "こじきぼうず",
-      "meaning": "Buddhist monk"
-    },
-    {
-      "source_index": 8082,
-      "id": "2832826",
-      "term": "孤児作品",
-      "reading": "こじさくひん",
-      "meaning": "orphan works"
-    },
-    {
-      "source_index": 8083,
-      "id": "2045180",
-      "term": "故事成語",
-      "reading": "こじせいご",
-      "meaning": "idiom derived from historical events or classical literature of China"
-    },
-    {
-      "source_index": 8084,
-      "id": "2045210",
-      "term": "孤城落月",
-      "reading": "こじょうらくげつ",
-      "meaning": "feeling apprehensive / feeling (looking) lone and helpless / being down-and-out (ruined)"
-    },
-    {
-      "source_index": 8085,
-      "id": "2030760",
-      "term": "孤城落日",
-      "reading": "こじょうらくじつ",
-      "meaning": "feeling (looking) lone and helpless / helplessness of those in reduced circumstances"
-    },
-    {
-      "source_index": 8086,
-      "id": "2833706",
-      "term": "弧状列島",
-      "reading": "こじょうれっとう",
-      "meaning": "island arc / crescent-shaped archipelago"
-    },
-    {
-      "source_index": 8087,
-      "id": "1593240",
-      "term": "故事来歴",
-      "reading": "こじらいれき",
-      "meaning": "origin and history / particulars"
-    },
-    {
-      "source_index": 8088,
-      "id": "2842599",
-      "term": "個人営業",
-      "reading": "こじんえいぎょう",
-      "meaning": "private practice / one-person business"
-    },
-    {
-      "source_index": 8089,
-      "id": "2856245",
-      "term": "個人会員",
-      "reading": "こじんかいいん",
-      "meaning": "individual member / non-corporate member"
-    },
-    {
-      "source_index": 8090,
-      "id": "2407730",
-      "term": "個人企業",
-      "reading": "こじんきぎょう",
-      "meaning": "one-man business / sole proprietorship / owner-managed enterprise"
-    },
-    {
-      "source_index": 8091,
-      "id": "1264790",
-      "term": "個人教授",
-      "reading": "こじんきょうじゅ",
-      "meaning": "private instruction"
-    },
-    {
-      "source_index": 8092,
-      "id": "1264800",
-      "term": "個人経営",
-      "reading": "こじんけいえい",
-      "meaning": "private management"
-    },
-    {
-      "source_index": 8093,
-      "id": "1934630",
-      "term": "個人攻撃",
-      "reading": "こじんこうげき",
-      "meaning": "personal attack / personal denunciation"
-    },
-    {
-      "source_index": 8094,
-      "id": "1992220",
-      "term": "個人広告",
-      "reading": "こじんこうこく",
-      "meaning": "personals / personal advertisements"
-    },
-    {
-      "source_index": 8095,
-      "id": "1264810",
-      "term": "個人個人",
-      "reading": "こじんこじん",
-      "meaning": "individual / one by one"
-    },
-    {
-      "source_index": 8096,
-      "id": "1264820",
-      "term": "個人誤差",
-      "reading": "こじんごさ",
-      "meaning": "personal equation"
-    },
-    {
-      "source_index": 8097,
-      "id": "2841039",
-      "term": "個人撮影",
-      "reading": "こじんさつえい",
-      "meaning": "amateur video / amateur photography / private video"
-    },
-    {
-      "source_index": 8098,
-      "id": "1992230",
-      "term": "個人資産",
-      "reading": "こじんしさん",
-      "meaning": "personal asset"
-    },
-    {
-      "source_index": 8099,
-      "id": "1264840",
-      "term": "個人指導",
-      "reading": "こじんしどう",
-      "meaning": "personal guidance / tutoring"
-    },
     {
       "source_index": 8100,
       "id": "1264850",
@@ -7010,6 +6660,356 @@
       "term": "産近甲龍",
       "reading": "さんきんこうりゅう",
       "meaning": "Kyoto Sangyo University, Kindai University, Konan University and Ryukoku University (group of similarly ranked private universities in the Kansai region)"
+    },
+    {
+      "source_index": 9050,
+      "id": "1879330",
+      "term": "三岐代表",
+      "reading": "さんぎだいひょう",
+      "meaning": "representative of Gifu and Mie prefectures"
+    },
+    {
+      "source_index": 9051,
+      "id": "2864239",
+      "term": "産業医学",
+      "reading": "さんぎょういがく",
+      "meaning": "occupational medicine"
+    },
+    {
+      "source_index": 9052,
+      "id": "1754960",
+      "term": "産業革命",
+      "reading": "さんぎょうかくめい",
+      "meaning": "Industrial Revolution"
+    },
+    {
+      "source_index": 9053,
+      "id": "1303780",
+      "term": "産業機械",
+      "reading": "さんぎょうきかい",
+      "meaning": "industrial machinery"
+    },
+    {
+      "source_index": 9054,
+      "id": "2863196",
+      "term": "産業基盤",
+      "reading": "さんぎょうきばん",
+      "meaning": "industrial base / industrial infrastructure"
+    },
+    {
+      "source_index": 9055,
+      "id": "2664910",
+      "term": "産業技術",
+      "reading": "さんぎょうぎじゅつ",
+      "meaning": "industrial science and technology / industrial techniques"
+    },
+    {
+      "source_index": 9056,
+      "id": "1754970",
+      "term": "産業組合",
+      "reading": "さんぎょうくみあい",
+      "meaning": "industrial association / industrial guild"
+    },
+    {
+      "source_index": 9057,
+      "id": "1300360",
+      "term": "三行広告",
+      "reading": "さんぎょうこうこく",
+      "meaning": "three-line classified advertisement"
+    },
+    {
+      "source_index": 9058,
+      "id": "1936190",
+      "term": "産業構造",
+      "reading": "さんぎょうこうぞう",
+      "meaning": "industrial structure"
+    },
+    {
+      "source_index": 9059,
+      "id": "1919650",
+      "term": "産業再生",
+      "reading": "さんぎょうさいせい",
+      "meaning": "industrial revival or recovery"
+    },
+    {
+      "source_index": 9060,
+      "id": "1754980",
+      "term": "産業資本",
+      "reading": "さんぎょうしほん",
+      "meaning": "industrial capital"
+    },
+    {
+      "source_index": 9061,
+      "id": "1936200",
+      "term": "産業社会",
+      "reading": "さんぎょうしゃかい",
+      "meaning": "industrial society"
+    },
+    {
+      "source_index": 9062,
+      "id": "2163060",
+      "term": "産業政策",
+      "reading": "さんぎょうせいさく",
+      "meaning": "industrial policy"
+    },
+    {
+      "source_index": 9063,
+      "id": "2163070",
+      "term": "産業組織",
+      "reading": "さんぎょうそしき",
+      "meaning": "industrial organization"
+    },
+    {
+      "source_index": 9064,
+      "id": "2844420",
+      "term": "産業動物",
+      "reading": "さんぎょうどうぶつ",
+      "meaning": "livestock / farm animals"
+    },
+    {
+      "source_index": 9065,
+      "id": "2174780",
+      "term": "散形花序",
+      "reading": "さんけいかじょ",
+      "meaning": "umbellate inflorescence / umbel (i.e. flower with a large number of flowers growing radially from a common center)"
+    },
+    {
+      "source_index": 9066,
+      "id": "5747152",
+      "term": "産経新聞",
+      "reading": "さんけいしんぶん",
+      "meaning": "Sankei Shimbun (newspaper)"
+    },
+    {
+      "source_index": 9067,
+      "id": "2634050",
+      "term": "酸欠空気",
+      "reading": "さんけつくうき",
+      "meaning": "oxygen-deficient air"
+    },
+    {
+      "source_index": 9068,
+      "id": "2870832",
+      "term": "酸欠状態",
+      "reading": "さんけつじょうたい",
+      "meaning": "hypoxic state / oxygen-deficient state"
+    },
+    {
+      "source_index": 9069,
+      "id": "1300290",
+      "term": "三権分立",
+      "reading": "さんけんぶんりつ",
+      "meaning": "separation of powers (legislative, executive and judicial)"
+    },
+    {
+      "source_index": 9070,
+      "id": "2852393",
+      "term": "参考価格",
+      "reading": "さんこうかかく",
+      "meaning": "reference price"
+    },
+    {
+      "source_index": 9071,
+      "id": "2863256",
+      "term": "参考記録",
+      "reading": "さんこうきろく",
+      "meaning": "unofficial result / unrecognized result (esp. in sports)"
+    },
+    {
+      "source_index": 9072,
+      "id": "2253340",
+      "term": "三皇五帝",
+      "reading": "さんこうごてい",
+      "meaning": "Three Sovereigns and Five Emperors (mythological rulers of ancient China)"
+    },
+    {
+      "source_index": 9073,
+      "id": "2093820",
+      "term": "三光作戦",
+      "reading": "さんこうさくせん",
+      "meaning": "Three Alls Strategy (Japanese scorched earth policy during the second Sino-Japanese War)"
+    },
+    {
+      "source_index": 9074,
+      "id": "1300350",
+      "term": "三校終了",
+      "reading": "さんこうしゅうりょう",
+      "meaning": "third and final proof"
+    },
+    {
+      "source_index": 9075,
+      "id": "1302310",
+      "term": "参考書目",
+      "reading": "さんこうしょもく",
+      "meaning": "bibliography"
+    },
+    {
+      "source_index": 9076,
+      "id": "1302290",
+      "term": "参考資料",
+      "reading": "さんこうしりょう",
+      "meaning": "reference data / reference material"
+    },
+    {
+      "source_index": 9077,
+      "id": "1754640",
+      "term": "散光星雲",
+      "reading": "さんこうせいうん",
+      "meaning": "diffuse nebula"
+    },
+    {
+      "source_index": 9078,
+      "id": "1936160",
+      "term": "参考図書",
+      "reading": "さんこうとしょ",
+      "meaning": "reference book (work)"
+    },
+    {
+      "source_index": 9079,
+      "id": "1302350",
+      "term": "参考文献",
+      "reading": "さんこうぶんけん",
+      "meaning": "works cited / references"
+    },
+    {
+      "source_index": 9080,
+      "id": "2005650",
+      "term": "散骨希望",
+      "reading": "さんこつきぼう",
+      "meaning": "the wish to have one's ashes scattered"
+    },
+    {
+      "source_index": 9081,
+      "id": "1300320",
+      "term": "三顧の礼",
+      "reading": "さんこのれい",
+      "meaning": "showing (someone) special courtesy (to persuade them to take a post)"
+    },
+    {
+      "source_index": 9082,
+      "id": "1300400",
+      "term": "三号雑誌",
+      "reading": "さんごうざっし",
+      "meaning": "short-lived magazine"
+    },
+    {
+      "source_index": 9083,
+      "id": "2214520",
+      "term": "三国干渉",
+      "reading": "さんごくかんしょう",
+      "meaning": "Triple Intervention (diplomatic intervention by Russia, Germany and France over the terms of the Treaty of Shimonoseki)"
+    },
+    {
+      "source_index": 9084,
+      "id": "2830774",
+      "term": "三国協商",
+      "reading": "さんごくきょうしょう",
+      "meaning": "Triple Entente (Great Britain, France, and Russia)"
+    },
+    {
+      "source_index": 9085,
+      "id": "5745901",
+      "term": "三国史記",
+      "reading": "さんごくしき",
+      "meaning": "Samguk Sagi (historical record of the Three Kingdoms of Korea) / History of the Three Kingdoms"
+    },
+    {
+      "source_index": 9086,
+      "id": "2205510",
+      "term": "三国時代",
+      "reading": "さんごくじだい",
+      "meaning": "Three Kingdoms period (of Chinese history, 220 CE-280 CE)"
+    },
+    {
+      "source_index": 9087,
+      "id": "1300430",
+      "term": "三国同盟",
+      "reading": "さんごくどうめい",
+      "meaning": "triple alliance"
+    },
+    {
+      "source_index": 9088,
+      "id": "2843870",
+      "term": "三国無双",
+      "reading": "さんごくぶそう",
+      "meaning": "unparalleled in Japan, China and India"
+    },
+    {
+      "source_index": 9089,
+      "id": "2861856",
+      "term": "珊瑚婚式",
+      "reading": "さんごこんしき",
+      "meaning": "coral wedding (anniversary) / 35th wedding anniversary"
+    },
+    {
+      "source_index": 9090,
+      "id": "2401020",
+      "term": "珊瑚水木",
+      "reading": "さんごみずき",
+      "meaning": "Cornus alba"
+    },
+    {
+      "source_index": 9091,
+      "id": "1813990",
+      "term": "三叉神経",
+      "reading": "さんさしんけい",
+      "meaning": "trigeminal nerve"
+    },
+    {
+      "source_index": 9092,
+      "id": "1593970",
+      "term": "三三五五",
+      "reading": "さんさんごご",
+      "meaning": "in groups of twos and threes / in small groups / (in groups of) threes and fives"
+    },
+    {
+      "source_index": 9093,
+      "id": "2829691",
+      "term": "産子検定",
+      "reading": "さんしけんてい",
+      "meaning": "progeny test (for beef cattle)"
+    },
+    {
+      "source_index": 9094,
+      "id": "1302890",
+      "term": "山紫水明",
+      "reading": "さんしすいめい",
+      "meaning": "scenic beauty"
+    },
+    {
+      "source_index": 9095,
+      "id": "2171160",
+      "term": "三七人参",
+      "reading": "さんしちにんじん",
+      "meaning": "notoginseng (Panax pseudoginseng)"
+    },
+    {
+      "source_index": 9096,
+      "id": "1300540",
+      "term": "三者会談",
+      "reading": "さんしゃかいだん",
+      "meaning": "three-cornered conversation"
+    },
+    {
+      "source_index": 9097,
+      "id": "2862135",
+      "term": "三者三振",
+      "reading": "さんしゃさんしん",
+      "meaning": "striking out three consecutive batters"
+    },
+    {
+      "source_index": 9098,
+      "id": "2063540",
+      "term": "三者三様",
+      "reading": "さんしゃさんよう",
+      "meaning": "everybody is different / to each their own / three different people, three different styles"
+    },
+    {
+      "source_index": 9099,
+      "id": "2838355",
+      "term": "三斜晶系",
+      "reading": "さんしゃしょうけい",
+      "meaning": "triclinic crystal system"
     }
   ]
 }
