@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 7400,
-  "english_only_remaining": 7600,
+  "already_direct_japanese": 7450,
+  "english_only_remaining": 7550,
   "english_only_rank_counts": {
-    "(blank)": 7600
+    "(blank)": 7550
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 7400,
-      "id": "2409590",
-      "term": "口承文芸",
-      "reading": "こうしょうぶんげい",
-      "meaning": "oral literature / folklore"
-    },
-    {
-      "source_index": 7401,
-      "id": "1274070",
-      "term": "公証役場",
-      "reading": "こうしょうやくば",
-      "meaning": "notary public's office"
-    },
-    {
-      "source_index": 7402,
-      "id": "2509830",
-      "term": "紅色植物",
-      "reading": "こうしょくしょくぶつ",
-      "meaning": "red algae / Rhodophyta"
-    },
-    {
-      "source_index": 7403,
-      "id": "1274090",
-      "term": "公職追放",
-      "reading": "こうしょくついほう",
-      "meaning": "expulsion of a public official and subsequent ban on participating in politics (by the SCAP during the allied occupation) / purge"
-    },
-    {
-      "source_index": 7404,
-      "id": "1835770",
-      "term": "好色文学",
-      "reading": "こうしょくぶんがく",
-      "meaning": "erotic or pornographic literature (Edo period)"
-    },
-    {
-      "source_index": 7405,
-      "id": "2409140",
-      "term": "高所得者",
-      "reading": "こうしょとくしゃ",
-      "meaning": "high-income earner"
-    },
-    {
-      "source_index": 7406,
-      "id": "2864800",
-      "term": "抗真菌剤",
-      "reading": "こうしんきんざい",
-      "meaning": "antifungal medication / antifungal drug / antifungal agent"
-    },
-    {
-      "source_index": 7407,
-      "id": "2700410",
-      "term": "抗真菌薬",
-      "reading": "こうしんきんやく",
-      "meaning": "antifungal drug / antifungal medication / antifungal agent"
-    },
-    {
-      "source_index": 7408,
-      "id": "2513380",
-      "term": "甲申事変",
-      "reading": "こうしんじへん",
-      "meaning": "Gapsin Coup (of Korea; 1884)"
-    },
-    {
-      "source_index": 7409,
-      "id": "2608540",
-      "term": "口唇性格",
-      "reading": "こうしんせいかく",
-      "meaning": "oral character (in psychoanalysis)"
-    },
-    {
-      "source_index": 7410,
-      "id": "2851854",
-      "term": "甲申政変",
-      "reading": "こうしんせいへん",
-      "meaning": "Gapsin Coup (failed reformist coup d'état in Korea; 1884) / Kapsin Coup"
-    },
-    {
-      "source_index": 7411,
-      "id": "2851837",
-      "term": "甲信地方",
-      "reading": "こうしんちほう",
-      "meaning": "Kōshin region"
-    },
-    {
-      "source_index": 7412,
-      "id": "2867543",
-      "term": "口唇動脈",
-      "reading": "こうしんどうみゃく",
-      "meaning": "labial artery"
-    },
-    {
-      "source_index": 7413,
-      "id": "2678370",
-      "term": "庚申薔薇",
-      "reading": "こうしんばら",
-      "meaning": "China rose (Rosa chinensis) / monthly rosebush"
-    },
-    {
-      "source_index": 7414,
-      "id": "1283630",
-      "term": "高信頼性",
-      "reading": "こうしんらいせい",
-      "meaning": "high reliability"
-    },
-    {
-      "source_index": 7415,
-      "id": "2400000",
-      "term": "更新履歴",
-      "reading": "こうしんりれき",
-      "meaning": "change log / record of updates / update history"
-    },
-    {
-      "source_index": 7416,
-      "id": "1676940",
-      "term": "公示価格",
-      "reading": "こうじかかく",
-      "meaning": "declared value"
-    },
-    {
-      "source_index": 7417,
-      "id": "2409380",
-      "term": "柑子栗毛",
-      "reading": "こうじくりげ",
-      "meaning": "sorrel (horse coat color)"
-    },
-    {
-      "source_index": 7418,
-      "id": "2665450",
-      "term": "高次言語",
-      "reading": "こうじげんご",
-      "meaning": "metalanguage"
-    },
-    {
-      "source_index": 7419,
-      "id": "1278140",
-      "term": "工事現場",
-      "reading": "こうじげんば",
-      "meaning": "construction site"
-    },
-    {
-      "source_index": 7420,
-      "id": "2665460",
-      "term": "高次効果",
-      "reading": "こうじこうか",
-      "meaning": "higher-order effect"
-    },
-    {
-      "source_index": 7421,
-      "id": "2811370",
-      "term": "工事車両",
-      "reading": "こうじしゃりょう",
-      "meaning": "construction vehicle (bulldozer, backhoe, loader, etc.)"
-    },
-    {
-      "source_index": 7422,
-      "id": "2044950",
-      "term": "好事多魔",
-      "reading": "こうじたま",
-      "meaning": "happy events are often accompanied by difficulties / unsullied joy is rare"
-    },
-    {
-      "source_index": 7423,
-      "id": "1676930",
-      "term": "公示地価",
-      "reading": "こうじちか",
-      "meaning": "official land price / assessed value of land"
-    },
-    {
-      "source_index": 7424,
-      "id": "2696780",
-      "term": "後獣下綱",
-      "reading": "こうじゅうかこう",
-      "meaning": "Metatheria (mammalian infraclass)"
-    },
-    {
-      "source_index": 7425,
-      "id": "1276320",
-      "term": "口述試験",
-      "reading": "こうじゅつしけん",
-      "meaning": "oral examination"
-    },
-    {
-      "source_index": 7426,
-      "id": "1678110",
-      "term": "口述筆記",
-      "reading": "こうじゅつひっき",
-      "meaning": "taking dictation / note-taking"
-    },
-    {
-      "source_index": 7427,
-      "id": "2235430",
-      "term": "紅綬褒章",
-      "reading": "こうじゅほうしょう",
-      "meaning": "Medal with Red Ribbon"
-    },
-    {
-      "source_index": 7428,
-      "id": "2842210",
-      "term": "恒常河川",
-      "reading": "こうじょうかせん",
-      "meaning": "perennial river / perennial stream / permanent river"
-    },
-    {
-      "source_index": 7429,
-      "id": "2843522",
-      "term": "工場飼育",
-      "reading": "こうじょうしいく",
-      "meaning": "factory farming / confinement farming / intensive farming"
-    },
-    {
-      "source_index": 7430,
-      "id": "2833788",
-      "term": "恒常所得",
-      "reading": "こうじょうしょとく",
-      "meaning": "permanent income"
-    },
-    {
-      "source_index": 7431,
-      "id": "2066620",
-      "term": "向上進化",
-      "reading": "こうじょうしんか",
-      "meaning": "anagenesis"
-    },
-    {
-      "source_index": 7432,
-      "id": "1278170",
-      "term": "工場実習",
-      "reading": "こうじょうじっしゅう",
-      "meaning": "coop / internship"
-    },
-    {
-      "source_index": 7433,
-      "id": "1790220",
-      "term": "甲状腺炎",
-      "reading": "こうじょうせんえん",
-      "meaning": "thyroiditis"
-    },
-    {
-      "source_index": 7434,
-      "id": "2446760",
-      "term": "甲状腺腫",
-      "reading": "こうじょうせんしゅ",
-      "meaning": "goiter / goitre"
-    },
-    {
-      "source_index": 7435,
-      "id": "2814870",
-      "term": "工場団地",
-      "reading": "こうじょうだんち",
-      "meaning": "industrial complex / industrial park"
-    },
-    {
-      "source_index": 7436,
-      "id": "1935030",
-      "term": "工場地帯",
-      "reading": "こうじょうちたい",
-      "meaning": "factory or industrial district or area"
-    },
-    {
-      "source_index": 7437,
-      "id": "2146580",
-      "term": "工場直売",
-      "reading": "こうじょうちょくばい",
-      "meaning": "factory-direct sales"
-    },
-    {
-      "source_index": 7438,
-      "id": "2151560",
-      "term": "甲状軟骨",
-      "reading": "こうじょうなんこつ",
-      "meaning": "thyroid cartilage"
-    },
-    {
-      "source_index": 7439,
-      "id": "2842650",
-      "term": "工場排水",
-      "reading": "こうじょうはいすい",
-      "meaning": "industrial wastewater / liquid waste from a factory"
-    },
-    {
-      "source_index": 7440,
-      "id": "2583920",
-      "term": "工場閉鎖",
-      "reading": "こうじょうへいさ",
-      "meaning": "factory closure / factory shutdown"
-    },
-    {
-      "source_index": 7441,
-      "id": "2519360",
-      "term": "工場簿記",
-      "reading": "こうじょうぼき",
-      "meaning": "factory accounting / factory bookkeeping / manufacturer's account"
-    },
-    {
-      "source_index": 7442,
-      "id": "1677050",
-      "term": "公序良俗",
-      "reading": "こうじょりょうぞく",
-      "meaning": "public order and morals / social standards / public policy"
-    },
-    {
-      "source_index": 7443,
-      "id": "2030160",
-      "term": "黄塵万丈",
-      "reading": "こうじんばんじょう",
-      "meaning": "rising cloud of (yellowish) dust"
-    },
-    {
-      "source_index": 7444,
-      "id": "2172850",
-      "term": "荒神目抜",
-      "reading": "こうじんめぬけ",
-      "meaning": "Sebastes iracundus (species of rockfish)"
-    },
-    {
-      "source_index": 7445,
-      "id": "2802270",
-      "term": "後塵を拝する",
-      "reading": "こうじんをはいする",
-      "meaning": "to be left in the dust (of) / to be outdone (by)"
-    },
-    {
-      "source_index": 7446,
-      "id": "2235800",
-      "term": "降水確率",
-      "reading": "こうすいかくりつ",
-      "meaning": "chance of precipitation / chance of rain"
-    },
-    {
-      "source_index": 7447,
-      "id": "2438590",
-      "term": "工数管理",
-      "reading": "こうすうかんり",
-      "meaning": "man-hour management / manpower management"
-    },
-    {
-      "source_index": 7448,
-      "id": "2604700",
-      "term": "洪水神話",
-      "reading": "こうずいしんわ",
-      "meaning": "flood myth"
-    },
-    {
-      "source_index": 7449,
-      "id": "2044970",
-      "term": "後生可畏",
-      "reading": "こうせいかい",
-      "meaning": "the young should be regarded with respect"
-    },
     {
       "source_index": 7450,
       "id": "1279740",
@@ -7010,6 +6660,356 @@
       "term": "根本主義",
       "reading": "こんぽんしゅぎ",
       "meaning": "fundamentalism"
+    },
+    {
+      "source_index": 8400,
+      "id": "2838380",
+      "term": "根本分裂",
+      "reading": "こんぽんぶんれつ",
+      "meaning": "fundamental schism (between the early Sthaviravāda and Mahāsāṃghika Buddhist schools)"
+    },
+    {
+      "source_index": 8401,
+      "id": "2045460",
+      "term": "昏迷状態",
+      "reading": "こんめいじょうたい",
+      "meaning": "befuddled (bewildered, confused) state / stupor"
+    },
+    {
+      "source_index": 8402,
+      "id": "2045470",
+      "term": "混迷状態",
+      "reading": "こんめいじょうたい",
+      "meaning": "chaotic state / turmoil / disarray"
+    },
+    {
+      "source_index": 8403,
+      "id": "2184600",
+      "term": "婚約破棄",
+      "reading": "こんやくはき",
+      "meaning": "breaking off an engagement"
+    },
+    {
+      "source_index": 8404,
+      "id": "1289720",
+      "term": "婚約指輪",
+      "reading": "こんやくゆびわ",
+      "meaning": "engagement ring"
+    },
+    {
+      "source_index": 8405,
+      "id": "1935740",
+      "term": "混乱状態",
+      "reading": "こんらんじょうたい",
+      "meaning": "state of confusion"
+    },
+    {
+      "source_index": 8406,
+      "id": "2045480",
+      "term": "金輪奈落",
+      "reading": "こんりんならく",
+      "meaning": "utmost limits / to the finish / to the (bitter) end"
+    },
+    {
+      "source_index": 8407,
+      "id": "1724080",
+      "term": "婚礼衣装",
+      "reading": "こんれいいしょう",
+      "meaning": "wedding clothes"
+    },
+    {
+      "source_index": 8408,
+      "id": "1982720",
+      "term": "五明後日",
+      "reading": "ごあさって",
+      "meaning": "four days from now (five days in some places)"
+    },
+    {
+      "source_index": 8409,
+      "id": "1920770",
+      "term": "語彙規則",
+      "reading": "ごいきそく",
+      "meaning": "lexical rule"
+    },
+    {
+      "source_index": 8410,
+      "id": "2868105",
+      "term": "語彙項目",
+      "reading": "ごいこうもく",
+      "meaning": "lexical item / lexical unit"
+    },
+    {
+      "source_index": 8411,
+      "id": "2116480",
+      "term": "合意覚書",
+      "reading": "ごういおぼえがき",
+      "meaning": "memorandum of agreement / memorandum of understanding / letter of intent"
+    },
+    {
+      "source_index": 8412,
+      "id": "2804410",
+      "term": "合意形成",
+      "reading": "ごういけいせい",
+      "meaning": "consensus building"
+    },
+    {
+      "source_index": 8413,
+      "id": "1284570",
+      "term": "合意心中",
+      "reading": "ごういしんじゅう",
+      "meaning": "double suicide"
+    },
+    {
+      "source_index": 8414,
+      "id": "1284560",
+      "term": "合意情死",
+      "reading": "ごういじょうし",
+      "meaning": "double suicide"
+    },
+    {
+      "source_index": 8415,
+      "id": "2411810",
+      "term": "合意年齢",
+      "reading": "ごういねんれい",
+      "meaning": "age of consent"
+    },
+    {
+      "source_index": 8416,
+      "id": "2044810",
+      "term": "豪快奔放",
+      "reading": "ごうかいほんぽう",
+      "meaning": "big-hearted and free-spirited / daring and uninhibited"
+    },
+    {
+      "source_index": 8417,
+      "id": "2835688",
+      "term": "豪華客船",
+      "reading": "ごうかきゃくせん",
+      "meaning": "luxury cruise ship / luxury liner"
+    },
+    {
+      "source_index": 8418,
+      "id": "1284610",
+      "term": "合格祈願",
+      "reading": "ごうかくきがん",
+      "meaning": "prayer for success in an entrance exam"
+    },
+    {
+      "source_index": 8419,
+      "id": "2852103",
+      "term": "合格証書",
+      "reading": "ごうかくしょうしょ",
+      "meaning": "(test) pass certificate / passing certificate"
+    },
+    {
+      "source_index": 8420,
+      "id": "1809750",
+      "term": "豪華絢爛",
+      "reading": "ごうかけんらん",
+      "meaning": "luxurious and gorgeous / magnificent"
+    },
+    {
+      "source_index": 8421,
+      "id": "2869755",
+      "term": "強姦殺人",
+      "reading": "ごうかんさつじん",
+      "meaning": "rape and murder / murder following rape"
+    },
+    {
+      "source_index": 8422,
+      "id": "2869756",
+      "term": "強姦致傷",
+      "reading": "ごうかんちしょう",
+      "meaning": "rape resulting in injury / rape causing bodily harm"
+    },
+    {
+      "source_index": 8423,
+      "id": "2869754",
+      "term": "強姦未遂",
+      "reading": "ごうかんみすい",
+      "meaning": "attempted rape"
+    },
+    {
+      "source_index": 8424,
+      "id": "1742070",
+      "term": "傲岸不遜",
+      "reading": "ごうがんふそん",
+      "meaning": "haughty arrogance"
+    },
+    {
+      "source_index": 8425,
+      "id": "1742080",
+      "term": "傲岸無礼",
+      "reading": "ごうがんぶれい",
+      "meaning": "arrogance"
+    },
+    {
+      "source_index": 8426,
+      "id": "2044840",
+      "term": "剛毅果断",
+      "reading": "ごうきかだん",
+      "meaning": "dauntless and decisive / with fortitude and resolution"
+    },
+    {
+      "source_index": 8427,
+      "id": "2870068",
+      "term": "合議審判",
+      "reading": "ごうぎしんぱん",
+      "meaning": "panel hearing (esp. in family or juvenile court) / adjudication by a panel / trial by a collegial body (e.g. in patent law)"
+    },
+    {
+      "source_index": 8428,
+      "id": "1284720",
+      "term": "合議制度",
+      "reading": "ごうぎせいど",
+      "meaning": "parliamentary system"
+    },
+    {
+      "source_index": 8429,
+      "id": "2356750",
+      "term": "合計機能",
+      "reading": "ごうけいきのう",
+      "meaning": "total function"
+    },
+    {
+      "source_index": 8430,
+      "id": "2837080",
+      "term": "合計金額",
+      "reading": "ごうけいきんがく",
+      "meaning": "total amount (of money) / total sum / final sum"
+    },
+    {
+      "source_index": 8431,
+      "id": "2356760",
+      "term": "合計検査",
+      "reading": "ごうけいけんさ",
+      "meaning": "summation check / sum check"
+    },
+    {
+      "source_index": 8432,
+      "id": "2356780",
+      "term": "合計容量",
+      "reading": "ごうけいようりょう",
+      "meaning": "total capacity"
+    },
+    {
+      "source_index": 8433,
+      "id": "1284820",
+      "term": "合資会社",
+      "reading": "ごうしがいしゃ",
+      "meaning": "limited partnership"
+    },
+    {
+      "source_index": 8434,
+      "id": "2044960",
+      "term": "強情我慢",
+      "reading": "ごうじょうがまん",
+      "meaning": "obstinate and self-assertive"
+    },
+    {
+      "source_index": 8435,
+      "id": "2030500",
+      "term": "強情頑固",
+      "reading": "ごうじょうがんこ",
+      "meaning": "headstrong / obstinate / bullheaded"
+    },
+    {
+      "source_index": 8436,
+      "id": "2869470",
+      "term": "合成映像",
+      "reading": "ごうせいえいぞう",
+      "meaning": "composite video"
+    },
+    {
+      "source_index": 8437,
+      "id": "2834524",
+      "term": "合成音声",
+      "reading": "ごうせいおんせい",
+      "meaning": "synthesized voice / synthesized speech"
+    },
+    {
+      "source_index": 8438,
+      "id": "1284950",
+      "term": "合成化学",
+      "reading": "ごうせいかがく",
+      "meaning": "synthetic chemistry"
+    },
+    {
+      "source_index": 8439,
+      "id": "2829969",
+      "term": "合成関数",
+      "reading": "ごうせいかんすう",
+      "meaning": "composite function"
+    },
+    {
+      "source_index": 8440,
+      "id": "2869469",
+      "term": "合成画像",
+      "reading": "ごうせいがぞう",
+      "meaning": "composite image"
+    },
+    {
+      "source_index": 8441,
+      "id": "2442530",
+      "term": "合成酵素",
+      "reading": "ごうせいこうそ",
+      "meaning": "ligase / synthase / synthetase"
+    },
+    {
+      "source_index": 8442,
+      "id": "1683760",
+      "term": "合成写真",
+      "reading": "ごうせいしゃしん",
+      "meaning": "composite photograph / photomontage"
+    },
+    {
+      "source_index": 8443,
+      "id": "2859699",
+      "term": "合成食品",
+      "reading": "ごうせいしょくひん",
+      "meaning": "synthetic food / artificial food"
+    },
+    {
+      "source_index": 8444,
+      "id": "1284990",
+      "term": "合成樹脂",
+      "reading": "ごうせいじゅし",
+      "meaning": "plastics / synthetic resins"
+    },
+    {
+      "source_index": 8445,
+      "id": "2668890",
+      "term": "合成石油",
+      "reading": "ごうせいせきゆ",
+      "meaning": "synthetic petroleum"
+    },
+    {
+      "source_index": 8446,
+      "id": "1285000",
+      "term": "合成繊維",
+      "reading": "ごうせいせんい",
+      "meaning": "synthetic fibre / synthetic fiber"
+    },
+    {
+      "source_index": 8447,
+      "id": "1657260",
+      "term": "合成洗剤",
+      "reading": "ごうせいせんざい",
+      "meaning": "synthetic detergent"
+    },
+    {
+      "source_index": 8448,
+      "id": "2692400",
+      "term": "合成戦略",
+      "reading": "ごうせいせんりゃく",
+      "meaning": "synthesis strategy"
+    },
+    {
+      "source_index": 8449,
+      "id": "2871487",
+      "term": "合成染料",
+      "reading": "ごうせいせんりょう",
+      "meaning": "synthetic dye"
     }
   ]
 }
