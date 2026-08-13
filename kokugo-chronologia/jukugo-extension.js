@@ -37,3 +37,4 @@ function init(){
 }
 loadBank(()=>{if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else setTimeout(init,0)});
 })();
+(()=>{if(document.getElementById('aaWrongHistoryLoaderKokugo'))return;const s=document.createElement('script');s.id='aaWrongHistoryLoaderKokugo';s.src=new URL('../wrong-answer-history-v1.js?v=20260813-1',document.currentScript?.src||location.href).href;s.async=false;document.head.appendChild(s)})();
