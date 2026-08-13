@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 12137,
-  "english_only_remaining": 2863,
+  "already_direct_japanese": 12187,
+  "english_only_remaining": 2813,
   "english_only_rank_counts": {
-    "(blank)": 2863
+    "(blank)": 2813
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 12137,
-      "id": "2590210",
-      "term": "自動電話",
-      "reading": "じどうでんわ",
-      "meaning": "public telephone / payphone / pay phone"
-    },
-    {
-      "source_index": 12138,
-      "id": "2360970",
-      "term": "自動動作",
-      "reading": "じどうどうさ",
-      "meaning": "auto-action"
-    },
-    {
-      "source_index": 12139,
-      "id": "2838108",
-      "term": "自動入力",
-      "reading": "じどうにゅうりょく",
-      "meaning": "automatic input"
-    },
-    {
-      "source_index": 12140,
-      "id": "2864936",
-      "term": "自動二輪",
-      "reading": "じどうにりん",
-      "meaning": "motorcycle (with a displacement of 50cc or more) / motorbike"
-    },
-    {
-      "source_index": 12141,
-      "id": "1937050",
-      "term": "自動人形",
-      "reading": "じどうにんぎょう",
-      "meaning": "automaton / automata"
-    },
-    {
-      "source_index": 12142,
-      "id": "2855340",
-      "term": "自動配信",
-      "reading": "じどうはいしん",
-      "meaning": "automatic sending (of email, etc.) / automatic delivery"
-    },
-    {
-      "source_index": 12143,
-      "id": "1983350",
-      "term": "自動発効",
-      "reading": "じどうはっこう",
-      "meaning": "self-executing (computer file)"
-    },
-    {
-      "source_index": 12144,
-      "id": "1994470",
-      "term": "児童売春",
-      "reading": "じどうばいしゅん",
-      "meaning": "child prostitution"
-    },
-    {
-      "source_index": 12145,
-      "id": "2785330",
-      "term": "児童買春",
-      "reading": "じどうばいしゅん",
-      "meaning": "child prostitution"
-    },
-    {
-      "source_index": 12146,
-      "id": "1315100",
-      "term": "児童福祉",
-      "reading": "じどうふくし",
-      "meaning": "child welfare"
-    },
-    {
-      "source_index": 12147,
-      "id": "1315110",
-      "term": "児童文学",
-      "reading": "じどうぶんがく",
-      "meaning": "children's literature / juvenile literature"
-    },
-    {
-      "source_index": 12148,
-      "id": "2361000",
-      "term": "自動変更",
-      "reading": "じどうへんこう",
-      "meaning": "automatic conversion"
-    },
-    {
-      "source_index": 12149,
-      "id": "2840978",
-      "term": "自動返信",
-      "reading": "じどうへんしん",
-      "meaning": "automated response / autoresponse / autoreply"
-    },
-    {
-      "source_index": 12150,
-      "id": "2858308",
-      "term": "児童保護",
-      "reading": "じどうほご",
-      "meaning": "childcare / protection of children"
-    },
-    {
-      "source_index": 12151,
-      "id": "2361010",
-      "term": "自動保存",
-      "reading": "じどうほぞん",
-      "meaning": "automatic saving"
-    },
-    {
-      "source_index": 12152,
-      "id": "2361020",
-      "term": "自動翻訳",
-      "reading": "じどうほんやく",
-      "meaning": "machine translation / automatic translation / MT"
-    },
-    {
-      "source_index": 12153,
-      "id": "2830284",
-      "term": "児童遊園",
-      "reading": "じどうゆうえん",
-      "meaning": "playground / children's park"
-    },
-    {
-      "source_index": 12154,
-      "id": "2851192",
-      "term": "児童労働",
-      "reading": "じどうろうどう",
-      "meaning": "child labor / child labour"
-    },
-    {
-      "source_index": 12155,
-      "id": "2857496",
-      "term": "自動露出",
-      "reading": "じどうろしゅつ",
-      "meaning": "automatic exposure / AE"
-    },
-    {
-      "source_index": 12156,
-      "id": "2855882",
-      "term": "自爆営業",
-      "reading": "じばくえいぎょう",
-      "meaning": "forcing employees to buy products they are selling to reach their quota"
-    },
-    {
-      "source_index": 12157,
-      "id": "1994620",
-      "term": "自爆攻撃",
-      "reading": "じばくこうげき",
-      "meaning": "suicide bomb attack"
-    },
-    {
-      "source_index": 12158,
-      "id": "2801790",
-      "term": "自爆装置",
-      "reading": "じばくそうち",
-      "meaning": "self-destruct system / automatic detonator / self-detonating device"
-    },
-    {
-      "source_index": 12159,
-      "id": "1942320",
-      "term": "地場産業",
-      "reading": "じばさんぎょう",
-      "meaning": "local industry / traditional local industry"
-    },
-    {
-      "source_index": 12160,
-      "id": "2233720",
-      "term": "自腹を切る",
-      "reading": "じばらをきる",
-      "meaning": "to pay with one's own money / to pay out of one's own pocket"
-    },
-    {
-      "source_index": 12161,
-      "id": "2829252",
-      "term": "地盤改良",
-      "reading": "じばんかいりょう",
-      "meaning": "ground reinforcement / soil stabilization / foundation improvement"
-    },
-    {
-      "source_index": 12162,
-      "id": "2838796",
-      "term": "地盤調査",
-      "reading": "じばんちょうさ",
-      "meaning": "subsurface exploration (geotechnical investigation)"
-    },
-    {
-      "source_index": 12163,
-      "id": "1763960",
-      "term": "地盤沈下",
-      "reading": "じばんちんか",
-      "meaning": "land subsidence"
-    },
-    {
-      "source_index": 12164,
-      "id": "1726800",
-      "term": "自費出版",
-      "reading": "じひしゅっぱん",
-      "meaning": "self-publishing / publishing at one's own expense"
-    },
-    {
-      "source_index": 12165,
-      "id": "2682040",
-      "term": "慈悲心鳥",
-      "reading": "じひしんちょう",
-      "meaning": "rufous hawk-cuckoo (Hierococcyx hyperythrus) / northern hawk-cuckoo"
-    },
-    {
-      "source_index": 12166,
-      "id": "2861316",
-      "term": "自費診療",
-      "reading": "じひしんりょう",
-      "meaning": "medical treatment at one's own expense / treatment not covered by health insurance"
-    },
-    {
-      "source_index": 12167,
-      "id": "1885050",
-      "term": "耳鼻咽喉",
-      "reading": "じびいんこう",
-      "meaning": "ear, nose, and throat"
-    },
-    {
-      "source_index": 12168,
-      "id": "2430250",
-      "term": "耳鼻科学",
-      "reading": "じびかがく",
-      "meaning": "otolaryngology / otorhinology"
-    },
-    {
-      "source_index": 12169,
-      "id": "2574610",
-      "term": "地引網漁",
-      "reading": "じびきあみりょう",
-      "meaning": "seine fishing (usu. from the beach) / dragnet fishing"
-    },
-    {
-      "source_index": 12170,
-      "id": "2113140",
-      "term": "字引学問",
-      "reading": "じびきがくもん",
-      "meaning": "superficial learning / book learning / merely knowing the meanings of a large number of individual words"
-    },
-    {
-      "source_index": 12171,
-      "id": "1318630",
-      "term": "自分勝手",
-      "reading": "じぶんかって",
-      "meaning": "selfishness / egotism / egoism"
-    },
-    {
-      "source_index": 12172,
-      "id": "2852050",
-      "term": "自分時間",
-      "reading": "じぶんじかん",
-      "meaning": "me-time / time one has to oneself"
-    },
-    {
-      "source_index": 12173,
-      "id": "1318620",
-      "term": "自分自身",
-      "reading": "じぶんじしん",
-      "meaning": "oneself / myself"
-    },
-    {
-      "source_index": 12174,
-      "id": "2266850",
-      "term": "自分中心",
-      "reading": "じぶんちゅうしん",
-      "meaning": "self-centered / stuck on oneself"
-    },
-    {
-      "source_index": 12175,
-      "id": "2570120",
-      "term": "自分の首を絞める",
-      "reading": "じぶんのくびをしめる",
-      "meaning": "to cut one's own throat / to dig one's own grave / to cause oneself harm"
-    },
-    {
-      "source_index": 12176,
-      "id": "2858678",
-      "term": "自分のことは棚に上げる",
-      "reading": "じぶんのことはたなにあげる",
-      "meaning": "to ignore one's own shortcomings / to shut one's eyes to one's own faults / to act hypocritically"
-    },
-    {
-      "source_index": 12177,
-      "id": "2858729",
-      "term": "自分のことを棚に上げる",
-      "reading": "じぶんのことをたなにあげる",
-      "meaning": "to ignore one's own shortcomings / to shut one's eyes to one's own faults / to act hypocritically"
-    },
-    {
-      "source_index": 12178,
-      "id": "2848700",
-      "term": "自分一人",
-      "reading": "じぶんひとり",
-      "meaning": "(on) one's own / (by) oneself"
-    },
-    {
-      "source_index": 12179,
-      "id": "2046450",
-      "term": "自分本位",
-      "reading": "じぶんほんい",
-      "meaning": "self-centeredness / selfishness / egotism"
-    },
-    {
-      "source_index": 12180,
-      "id": "2863418",
-      "term": "自分優先",
-      "reading": "じぶんゆうせん",
-      "meaning": "putting oneself first / prioritizing oneself"
-    },
-    {
-      "source_index": 12181,
-      "id": "2094440",
-      "term": "自閉症児",
-      "reading": "じへいしょうじ",
-      "meaning": "autistic child"
-    },
-    {
-      "source_index": 12182,
-      "id": "1318670",
-      "term": "自暴自棄",
-      "reading": "じぼうじき",
-      "meaning": "desperation / despair / self-abandonment"
-    },
-    {
-      "source_index": 12183,
-      "id": "2141750",
-      "term": "自前主義",
-      "reading": "じまえしゅぎ",
-      "meaning": "(principle of) self-sufficiency"
-    },
-    {
-      "source_index": 12184,
-      "id": "2094360",
-      "term": "持明院統",
-      "reading": "じみょういんとう",
-      "meaning": "imperial lineage from Emperor Gofukakusa to Emperor Gokomatsu"
-    },
-    {
-      "source_index": 12185,
-      "id": "1637340",
-      "term": "事務機器",
-      "reading": "じむきき",
-      "meaning": "business machine(ry)"
-    },
-    {
-      "source_index": 12186,
-      "id": "1314360",
-      "term": "事務局長",
-      "reading": "じむきょくちょう",
-      "meaning": "secretary-general / director-general / executive director"
-    },
     {
       "source_index": 12187,
       "id": "2103510",
@@ -7010,6 +6660,356 @@
       "term": "垂直農法",
       "reading": "すいちょくのうほう",
       "meaning": "vertical farming"
+    },
+    {
+      "source_index": 13137,
+      "id": "2829685",
+      "term": "垂直避難",
+      "reading": "すいちょくひなん",
+      "meaning": "vertical evacuation (e.g. in a building during a tsunami)"
+    },
+    {
+      "source_index": 13138,
+      "id": "2827296",
+      "term": "垂直尾翼",
+      "reading": "すいちょくびよく",
+      "meaning": "tail fin / vertical tail / vertical tailplane"
+    },
+    {
+      "source_index": 13139,
+      "id": "1704490",
+      "term": "垂直分業",
+      "reading": "すいちょくぶんぎょう",
+      "meaning": "vertical international specialization (specialisation)"
+    },
+    {
+      "source_index": 13140,
+      "id": "2579830",
+      "term": "垂直分布",
+      "reading": "すいちょくぶんぷ",
+      "meaning": "perpendicular distribution / vertical distribution"
+    },
+    {
+      "source_index": 13141,
+      "id": "1995940",
+      "term": "水治療法",
+      "reading": "すいちりょうほう",
+      "meaning": "hydrotherapy"
+    },
+    {
+      "source_index": 13142,
+      "id": "1939520",
+      "term": "推定年齢",
+      "reading": "すいていねんれい",
+      "meaning": "estimated (probable) age (e.g. of victim)"
+    },
+    {
+      "source_index": 13143,
+      "id": "2641960",
+      "term": "推定無罪",
+      "reading": "すいていむざい",
+      "meaning": "presumption of innocence"
+    },
+    {
+      "source_index": 13144,
+      "id": "2792430",
+      "term": "水天循環",
+      "reading": "すいてんじゅんかん",
+      "meaning": "hydrologic cycle / water cycle"
+    },
+    {
+      "source_index": 13145,
+      "id": "1736750",
+      "term": "水天彷彿",
+      "reading": "すいてんほうふつ",
+      "meaning": "the sky and water merging into one / seamless merging of the sea and the sky"
+    },
+    {
+      "source_index": 13146,
+      "id": "1939550",
+      "term": "水道工事",
+      "reading": "すいどうこうじ",
+      "meaning": "waterworks"
+    },
+    {
+      "source_index": 13147,
+      "id": "1939560",
+      "term": "水道料金",
+      "reading": "すいどうりょうきん",
+      "meaning": "water rates / water charges"
+    },
+    {
+      "source_index": 13148,
+      "id": "2860209",
+      "term": "膵内分泌",
+      "reading": "すいないぶんぴつ",
+      "meaning": "pancreatic endocrine"
+    },
+    {
+      "source_index": 13149,
+      "id": "2838236",
+      "term": "水白鉛鉱",
+      "reading": "すいはくえんこう",
+      "meaning": "hydrocerussite"
+    },
+    {
+      "source_index": 13150,
+      "id": "2858360",
+      "term": "水礬土鉱",
+      "reading": "すいばんどこう",
+      "meaning": "bauxite"
+    },
+    {
+      "source_index": 13151,
+      "id": "2811420",
+      "term": "水分活性",
+      "reading": "すいぶんかっせい",
+      "meaning": "water activity"
+    },
+    {
+      "source_index": 13152,
+      "id": "2399610",
+      "term": "水分補給",
+      "reading": "すいぶんほきゅう",
+      "meaning": "hydration / rehydration"
+    },
+    {
+      "source_index": 13153,
+      "id": "1918170",
+      "term": "水平応力",
+      "reading": "すいへいおうりょく",
+      "meaning": "lateral stress"
+    },
+    {
+      "source_index": 13154,
+      "id": "1736880",
+      "term": "水平距離",
+      "reading": "すいへいきょり",
+      "meaning": "horizontal distance"
+    },
+    {
+      "source_index": 13155,
+      "id": "1736860",
+      "term": "水平思考",
+      "reading": "すいへいしこう",
+      "meaning": "lateral thinking"
+    },
+    {
+      "source_index": 13156,
+      "id": "1985260",
+      "term": "水平展開",
+      "reading": "すいへいてんかい",
+      "meaning": "involvement of peer groups"
+    },
+    {
+      "source_index": 13157,
+      "id": "1939580",
+      "term": "水平飛行",
+      "reading": "すいへいひこう",
+      "meaning": "level flight"
+    },
+    {
+      "source_index": 13158,
+      "id": "1939590",
+      "term": "水平尾翼",
+      "reading": "すいへいびよく",
+      "meaning": "tailplane / horizontal stabilizer / horizontal stabiliser"
+    },
+    {
+      "source_index": 13159,
+      "id": "2863099",
+      "term": "水平分業",
+      "reading": "すいへいぶんぎょう",
+      "meaning": "horizontal specialization"
+    },
+    {
+      "source_index": 13160,
+      "id": "2579840",
+      "term": "水平分布",
+      "reading": "すいへいぶんぷ",
+      "meaning": "horizontal distribution"
+    },
+    {
+      "source_index": 13161,
+      "id": "2367440",
+      "term": "水平方向",
+      "reading": "すいへいほうこう",
+      "meaning": "horizontal direction"
+    },
+    {
+      "source_index": 13162,
+      "id": "2852906",
+      "term": "水泡に帰す",
+      "reading": "すいほうにきす",
+      "meaning": "to come to naught"
+    },
+    {
+      "source_index": 13163,
+      "id": "2259970",
+      "term": "水泡に帰する",
+      "reading": "すいほうにきする",
+      "meaning": "to come to nothing / to go down the drain / to go up in smoke"
+    },
+    {
+      "source_index": 13164,
+      "id": "2047800",
+      "term": "酔歩蹣跚",
+      "reading": "すいほまんさん",
+      "meaning": "tipsy lurch / reeling gait / staggering gait"
+    },
+    {
+      "source_index": 13165,
+      "id": "2154180",
+      "term": "水墨山水",
+      "reading": "すいぼくさんすい",
+      "meaning": "landscape painting in black India ink"
+    },
+    {
+      "source_index": 13166,
+      "id": "2836937",
+      "term": "睡魔に襲われる",
+      "reading": "すいまにおそわれる",
+      "meaning": "to be extremely sleepy / to be at the brink of falling asleep"
+    },
+    {
+      "source_index": 13167,
+      "id": "2830850",
+      "term": "睡眠学習",
+      "reading": "すいみんがくしゅう",
+      "meaning": "hypnopaedia / hypnopedia / sleep-learning"
+    },
+    {
+      "source_index": 13168,
+      "id": "2859051",
+      "term": "睡眠遮断",
+      "reading": "すいみんしゃだん",
+      "meaning": "sleep deprivation"
+    },
+    {
+      "source_index": 13169,
+      "id": "1996010",
+      "term": "睡眠周期",
+      "reading": "すいみんしゅうき",
+      "meaning": "sleep cycle"
+    },
+    {
+      "source_index": 13170,
+      "id": "2598340",
+      "term": "睡眠障害",
+      "reading": "すいみんしょうがい",
+      "meaning": "sleep disorder"
+    },
+    {
+      "source_index": 13171,
+      "id": "1939610",
+      "term": "睡眠時間",
+      "reading": "すいみんじかん",
+      "meaning": "(one's) sleeping hours / hours of sleep"
+    },
+    {
+      "source_index": 13172,
+      "id": "2833812",
+      "term": "睡眠負債",
+      "reading": "すいみんふさい",
+      "meaning": "sleep debt / sleep deficit"
+    },
+    {
+      "source_index": 13173,
+      "id": "1372390",
+      "term": "睡眠不足",
+      "reading": "すいみんぶそく",
+      "meaning": "lack of sleep / sleep deprivation"
+    },
+    {
+      "source_index": 13174,
+      "id": "1996020",
+      "term": "睡眠発作",
+      "reading": "すいみんほっさ",
+      "meaning": "narcolepsy"
+    },
+    {
+      "source_index": 13175,
+      "id": "2868755",
+      "term": "睡眠麻痺",
+      "reading": "すいみんまひ",
+      "meaning": "sleep paralysis"
+    },
+    {
+      "source_index": 13176,
+      "id": "2084220",
+      "term": "睡眠預金",
+      "reading": "すいみんよきん",
+      "meaning": "inactive bank account (no withdrawals or deposits made, and to which the owner's rights have been terminated)"
+    },
+    {
+      "source_index": 13177,
+      "id": "2834927",
+      "term": "水利組合",
+      "reading": "すいりくみあい",
+      "meaning": "irrigation association / water utilization association"
+    },
+    {
+      "source_index": 13178,
+      "id": "1372230",
+      "term": "水陸両用",
+      "reading": "すいりくりょうよう",
+      "meaning": "amphibious"
+    },
+    {
+      "source_index": 13179,
+      "id": "2823170",
+      "term": "推理作家",
+      "reading": "すいりさっか",
+      "meaning": "mystery writer / detective fiction writer / crime author"
+    },
+    {
+      "source_index": 13180,
+      "id": "1713000",
+      "term": "推理小説",
+      "reading": "すいりしょうせつ",
+      "meaning": "mystery novel / detective novel / whodunit"
+    },
+    {
+      "source_index": 13181,
+      "id": "2584120",
+      "term": "推力軸受",
+      "reading": "すいりょくじくうけ",
+      "meaning": "thrust bearing / thrust block"
+    },
+    {
+      "source_index": 13182,
+      "id": "2019700",
+      "term": "水力電気",
+      "reading": "すいりょくでんき",
+      "meaning": "hydroelectricity"
+    },
+    {
+      "source_index": 13183,
+      "id": "2828284",
+      "term": "水力破砕",
+      "reading": "すいりょくはさい",
+      "meaning": "hydrofracturing / hydraulic fracturing / fracking"
+    },
+    {
+      "source_index": 13184,
+      "id": "1939600",
+      "term": "水力発電",
+      "reading": "すいりょくはつでん",
+      "meaning": "hydroelectric power generation / water-power generation"
+    },
+    {
+      "source_index": 13185,
+      "id": "2367470",
+      "term": "数学関数",
+      "reading": "すうがくかんすう",
+      "meaning": "mathematical function"
+    },
+    {
+      "source_index": 13186,
+      "id": "2626400",
+      "term": "数学教育",
+      "reading": "すうがくきょういく",
+      "meaning": "mathematics education"
     }
   ]
 }
