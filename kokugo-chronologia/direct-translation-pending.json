@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9450,
-  "english_only_remaining": 5550,
+  "already_direct_japanese": 9500,
+  "english_only_remaining": 5500,
   "english_only_rank_counts": {
-    "(blank)": 5550
+    "(blank)": 5500
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 9450,
-      "id": "2850755",
-      "term": "色素増感",
-      "reading": "しきそぞうかん",
-      "meaning": "dye sensitizing"
-    },
-    {
-      "source_index": 9451,
-      "id": "2676470",
-      "term": "色素脱失",
-      "reading": "しきそだっしつ",
-      "meaning": "depigmentation"
-    },
-    {
-      "source_index": 9452,
-      "id": "2676480",
-      "term": "色素沈着",
-      "reading": "しきそちんちゃく",
-      "meaning": "pigmentation"
-    },
-    {
-      "source_index": 9453,
-      "id": "2867362",
-      "term": "指揮隊車",
-      "reading": "しきたいしゃ",
-      "meaning": "fire command vehicle / fire chief car"
-    },
-    {
-      "source_index": 9454,
-      "id": "2623160",
-      "term": "敷地面積",
-      "reading": "しきちめんせき",
-      "meaning": "lot area / site area / plottage"
-    },
-    {
-      "source_index": 9455,
-      "id": "2366530",
-      "term": "色度信号",
-      "reading": "しきどしんごう",
-      "meaning": "chrominance signal"
-    },
-    {
-      "source_index": 9456,
-      "id": "2858436",
-      "term": "色度測定",
-      "reading": "しきどそくてい",
-      "meaning": "colorimetry"
-    },
-    {
-      "source_index": 9457,
-      "id": "2135140",
-      "term": "式年遷宮",
-      "reading": "しきねんせんぐう",
-      "meaning": "construction of a new shrine and transfer of the enshrined object from the old to the new, occurring at a regular, preordained time"
-    },
-    {
-      "source_index": 9458,
-      "id": "2857668",
-      "term": "職別工事",
-      "reading": "しきべつこうじ",
-      "meaning": "specialist subcontract work (in construction)"
-    },
-    {
-      "source_index": 9459,
-      "id": "2361200",
-      "term": "識別子値",
-      "reading": "しきべつしち",
-      "meaning": "identifier value"
-    },
-    {
-      "source_index": 9460,
-      "id": "2832761",
-      "term": "識別信号",
-      "reading": "しきべつしんごう",
-      "meaning": "identifying signal / recognition signal / (radio) call sign"
-    },
-    {
-      "source_index": 9461,
-      "id": "2361220",
-      "term": "識別番号",
-      "reading": "しきべつばんごう",
-      "meaning": "identification number"
-    },
-    {
-      "source_index": 9462,
-      "id": "2854621",
-      "term": "識別不能",
-      "reading": "しきべつふのう",
-      "meaning": "unidentifiable / indiscernible / unrecognizable"
-    },
-    {
-      "source_index": 9463,
-      "id": "2855070",
-      "term": "子宮奇形",
-      "reading": "しきゅうきけい",
-      "meaning": "uterine malformation"
-    },
-    {
-      "source_index": 9464,
-      "id": "1825340",
-      "term": "子宮筋腫",
-      "reading": "しきゅうきんしゅ",
-      "meaning": "fibroid / uterine myoma"
-    },
-    {
-      "source_index": 9465,
-      "id": "2602320",
-      "term": "子宮頸管",
-      "reading": "しきゅうけいかん",
-      "meaning": "cervical canal"
-    },
-    {
-      "source_index": 9466,
-      "id": "2602340",
-      "term": "子宮頸部",
-      "reading": "しきゅうけいぶ",
-      "meaning": "cervix / uterine cervix / cervix uteri"
-    },
-    {
-      "source_index": 9467,
-      "id": "1825330",
-      "term": "子宮後屈",
-      "reading": "しきゅうこうくつ",
-      "meaning": "retroversion of the uterus / tipped uterus"
-    },
-    {
-      "source_index": 9468,
-      "id": "2602360",
-      "term": "子宮体癌",
-      "reading": "しきゅうたいがん",
-      "meaning": "cancer of the uterine body"
-    },
-    {
-      "source_index": 9469,
-      "id": "2236070",
-      "term": "糸球体嚢",
-      "reading": "しきゅうたいのう",
-      "meaning": "glomerular capsule"
-    },
-    {
-      "source_index": 9470,
-      "id": "2602330",
-      "term": "子宮体部",
-      "reading": "しきゅうたいぶ",
-      "meaning": "corpus uteri / uterine body / body of the uterus"
-    },
-    {
-      "source_index": 9471,
-      "id": "1993900",
-      "term": "子宮摘出",
-      "reading": "しきゅうてきしゅつ",
-      "meaning": "hysterectomy"
-    },
-    {
-      "source_index": 9472,
-      "id": "2835551",
-      "term": "至急電報",
-      "reading": "しきゅうでんぽう",
-      "meaning": "urgent telegram"
-    },
-    {
-      "source_index": 9473,
-      "id": "2165200",
-      "term": "子宮内膜",
-      "reading": "しきゅうないまく",
-      "meaning": "endometrium"
-    },
-    {
-      "source_index": 9474,
-      "id": "2753620",
-      "term": "子宮破裂",
-      "reading": "しきゅうはれつ",
-      "meaning": "uterine rupture / hysterorrhexis / metrorrhexis"
-    },
-    {
-      "source_index": 9475,
-      "id": "1880130",
-      "term": "司教権座",
-      "reading": "しきょうけんざ",
-      "meaning": "the episcopal seat"
-    },
-    {
-      "source_index": 9476,
-      "id": "2871564",
-      "term": "死恐怖症",
-      "reading": "しきょうふしょう",
-      "meaning": "fear of death / thanatophobia"
-    },
-    {
-      "source_index": 9477,
-      "id": "2595230",
-      "term": "四強雄蕊",
-      "reading": "しきょうゆうずい",
-      "meaning": "tetradynamous stamen"
-    },
-    {
-      "source_index": 9478,
-      "id": "2424230",
-      "term": "資金運用",
-      "reading": "しきんうんよう",
-      "meaning": "fund management / fund operation"
-    },
-    {
-      "source_index": 9479,
-      "id": "2855185",
-      "term": "資金援助",
-      "reading": "しきんえんじょ",
-      "meaning": "financial assistance / financial support"
-    },
-    {
-      "source_index": 9480,
-      "id": "2550170",
-      "term": "資金供給",
-      "reading": "しきんきょうきゅう",
-      "meaning": "financing / funds provision / funds supply"
-    },
-    {
-      "source_index": 9481,
-      "id": "1705290",
-      "term": "至近距離",
-      "reading": "しきんきょり",
-      "meaning": "point-blank range"
-    },
-    {
-      "source_index": 9482,
-      "id": "2249300",
-      "term": "資金計画",
-      "reading": "しきんけいかく",
-      "meaning": "financing plan / funding plan / cash planning"
-    },
-    {
-      "source_index": 9483,
-      "id": "2652560",
-      "term": "資金需要",
-      "reading": "しきんじゅよう",
-      "meaning": "capital requirements / demand for funds / credit needs"
-    },
-    {
-      "source_index": 9484,
-      "id": "2550180",
-      "term": "資金循環",
-      "reading": "しきんじゅんかん",
-      "meaning": "funds flow / transfer of funds"
-    },
-    {
-      "source_index": 9485,
-      "id": "1994190",
-      "term": "資金洗浄",
-      "reading": "しきんせんじょう",
-      "meaning": "money laundering"
-    },
-    {
-      "source_index": 9486,
-      "id": "1994200",
-      "term": "資金注入",
-      "reading": "しきんちゅうにゅう",
-      "meaning": "cash injection"
-    },
-    {
-      "source_index": 9487,
-      "id": "2229020",
-      "term": "資金調達",
-      "reading": "しきんちょうたつ",
-      "meaning": "fundraising"
-    },
-    {
-      "source_index": 9488,
-      "id": "2404700",
-      "term": "資金手当",
-      "reading": "しきんてあて",
-      "meaning": "funding (something) / financing (something) / making money available"
-    },
-    {
-      "source_index": 9489,
-      "id": "2135210",
-      "term": "資金不足",
-      "reading": "しきんぶそく",
-      "meaning": "lack of funds"
-    },
-    {
-      "source_index": 9490,
-      "id": "2618390",
-      "term": "資金保険",
-      "reading": "しきんほけん",
-      "meaning": "capital insurance"
-    },
-    {
-      "source_index": 9491,
-      "id": "2517450",
-      "term": "至近要因",
-      "reading": "しきんよういん",
-      "meaning": "proximate cause (in contrast to an ultimate cause)"
-    },
-    {
-      "source_index": 9492,
-      "id": "2427190",
-      "term": "始業時間",
-      "reading": "しぎょうじかん",
-      "meaning": "opening time / starting time of work"
-    },
-    {
-      "source_index": 9493,
-      "id": "2559330",
-      "term": "市区改正",
-      "reading": "しくかいせい",
-      "meaning": "shiku-kaisei city planning / city renewal that occurred in the Taisho and Meiji eras"
-    },
-    {
-      "source_index": 9494,
-      "id": "2835074",
-      "term": "市区町村",
-      "reading": "しくちょうそん",
-      "meaning": "local governments / cities, wards, towns and villages / municipalities"
-    },
-    {
-      "source_index": 9495,
-      "id": "1307150",
-      "term": "四苦八苦",
-      "reading": "しくはっく",
-      "meaning": "being in dire distress / being hard put to it / being hard pressed (for money)"
-    },
-    {
-      "source_index": 9496,
-      "id": "2045760",
-      "term": "時雨模様",
-      "reading": "しぐれもよう",
-      "meaning": "showery sky / (it is) looking showery"
-    },
-    {
-      "source_index": 9497,
-      "id": "1767440",
-      "term": "死刑執行",
-      "reading": "しけいしっこう",
-      "meaning": "execution"
-    },
-    {
-      "source_index": 9498,
-      "id": "1994080",
-      "term": "死刑制度",
-      "reading": "しけいせいど",
-      "meaning": "capital punishment"
-    },
-    {
-      "source_index": 9499,
-      "id": "2393740",
-      "term": "死刑宣告",
-      "reading": "しけいせんこく",
-      "meaning": "death sentence"
-    },
     {
       "source_index": 9500,
       "id": "2144710",
@@ -7010,6 +6660,356 @@
       "term": "種々雑多",
       "reading": "しゅじゅざった",
       "meaning": "all sorts of / various / miscellaneous"
+    },
+    {
+      "source_index": 10450,
+      "id": "1994850",
+      "term": "手術器具",
+      "reading": "しゅじゅつきぐ",
+      "meaning": "surgical instrument"
+    },
+    {
+      "source_index": 10451,
+      "id": "2031230",
+      "term": "衆生済度",
+      "reading": "しゅじょうさいど",
+      "meaning": "enlightenment of the masses / leading the masses on the path of enlightenment (Buddhism)"
+    },
+    {
+      "source_index": 10452,
+      "id": "1691800",
+      "term": "主情主義",
+      "reading": "しゅじょうしゅぎ",
+      "meaning": "emotionalism"
+    },
+    {
+      "source_index": 10453,
+      "id": "2634670",
+      "term": "酒石酸塩",
+      "reading": "しゅせきさんえん",
+      "meaning": "tartrate"
+    },
+    {
+      "source_index": 10454,
+      "id": "1325770",
+      "term": "主席全権",
+      "reading": "しゅせきぜんけん",
+      "meaning": "chief delegate"
+    },
+    {
+      "source_index": 10455,
+      "id": "1325780",
+      "term": "主席判事",
+      "reading": "しゅせきはんじ",
+      "meaning": "chief judge"
+    },
+    {
+      "source_index": 10456,
+      "id": "2201240",
+      "term": "主席法官",
+      "reading": "しゅせきほうかん",
+      "meaning": "chief justice of the Court of Final Appeal of Hong Kong"
+    },
+    {
+      "source_index": 10457,
+      "id": "1325800",
+      "term": "主戦投手",
+      "reading": "しゅせんとうしゅ",
+      "meaning": "top pitcher"
+    },
+    {
+      "source_index": 10458,
+      "id": "2046740",
+      "term": "首鼠両端",
+      "reading": "しゅそりょうたん",
+      "meaning": "being unable to make up one's mind / sitting on the fence"
+    },
+    {
+      "source_index": 10459,
+      "id": "5349360",
+      "term": "酒造協会",
+      "reading": "しゅぞうきょうかい",
+      "meaning": "Wine Institute"
+    },
+    {
+      "source_index": 10460,
+      "id": "2814460",
+      "term": "主対角線",
+      "reading": "しゅたいかくせん",
+      "meaning": "principal diagonal / main diagonal"
+    },
+    {
+      "source_index": 10461,
+      "id": "2362310",
+      "term": "主題表示",
+      "reading": "しゅだいひょうじ",
+      "meaning": "subject indication"
+    },
+    {
+      "source_index": 10462,
+      "id": "1325890",
+      "term": "主知主義",
+      "reading": "しゅちしゅぎ",
+      "meaning": "intellectualism"
+    },
+    {
+      "source_index": 10463,
+      "id": "1329160",
+      "term": "酒池肉林",
+      "reading": "しゅちにくりん",
+      "meaning": "sumptuous feast / debauch"
+    },
+    {
+      "source_index": 10464,
+      "id": "2851263",
+      "term": "出荷停止",
+      "reading": "しゅっかていし",
+      "meaning": "suspension of shipments"
+    },
+    {
+      "source_index": 10465,
+      "id": "1338610",
+      "term": "出勤時間",
+      "reading": "しゅっきんじかん",
+      "meaning": "time for reporting to work"
+    },
+    {
+      "source_index": 10466,
+      "id": "1338760",
+      "term": "出血過多",
+      "reading": "しゅっけつかた",
+      "meaning": "excessive bleeding"
+    },
+    {
+      "source_index": 10467,
+      "id": "2641310",
+      "term": "出血多量",
+      "reading": "しゅっけつたりょう",
+      "meaning": "excessive bleeding / massive bleeding"
+    },
+    {
+      "source_index": 10468,
+      "id": "1338320",
+      "term": "出家遁世",
+      "reading": "しゅっけとんせい",
+      "meaning": "monastic seclusion"
+    },
+    {
+      "source_index": 10469,
+      "id": "1338910",
+      "term": "出港停止",
+      "reading": "しゅっこうていし",
+      "meaning": "embargo (on a ship)"
+    },
+    {
+      "source_index": 10470,
+      "id": "2789310",
+      "term": "出国管理",
+      "reading": "しゅっこくかんり",
+      "meaning": "departure control"
+    },
+    {
+      "source_index": 10471,
+      "id": "2233040",
+      "term": "出国査証",
+      "reading": "しゅっこくさしょう",
+      "meaning": "departure permit / exit visa"
+    },
+    {
+      "source_index": 10472,
+      "id": "2836502",
+      "term": "出国審査",
+      "reading": "しゅっこくしんさ",
+      "meaning": "departure inspection (when leaving a country)"
+    },
+    {
+      "source_index": 10473,
+      "id": "2077440",
+      "term": "出産休暇",
+      "reading": "しゅっさんきゅうか",
+      "meaning": "post-birth maternity leave / eight weeks of compulsory leave following childbirth, plus an optional further six weeks"
+    },
+    {
+      "source_index": 10474,
+      "id": "2029290",
+      "term": "出産手当",
+      "reading": "しゅっさんてあて",
+      "meaning": "maternity allowance / childbirth allowance"
+    },
+    {
+      "source_index": 10475,
+      "id": "2241410",
+      "term": "出糸突起",
+      "reading": "しゅっしとっき",
+      "meaning": "spinneret (of a spider)"
+    },
+    {
+      "source_index": 10476,
+      "id": "1580060",
+      "term": "出生過剰",
+      "reading": "しゅっしょうかじょう",
+      "meaning": "excessive birth (rate)"
+    },
+    {
+      "source_index": 10477,
+      "id": "1594860",
+      "term": "出処進退",
+      "reading": "しゅっしょしんたい",
+      "meaning": "staying in one's position or resigning / course of action / move"
+    },
+    {
+      "source_index": 10478,
+      "id": "1339400",
+      "term": "出征家族",
+      "reading": "しゅっせいかぞく",
+      "meaning": "family of a soldier at the front"
+    },
+    {
+      "source_index": 10479,
+      "id": "1339420",
+      "term": "出征軍人",
+      "reading": "しゅっせいぐんじん",
+      "meaning": "soldier at the front"
+    },
+    {
+      "source_index": 10480,
+      "id": "2046750",
+      "term": "出世街道",
+      "reading": "しゅっせかいどう",
+      "meaning": "highway to success"
+    },
+    {
+      "source_index": 10481,
+      "id": "1938110",
+      "term": "出席日数",
+      "reading": "しゅっせきにっすう",
+      "meaning": "number of days (times) one has attended"
+    },
+    {
+      "source_index": 10482,
+      "id": "2842021",
+      "term": "出席番号",
+      "reading": "しゅっせきばんごう",
+      "meaning": "student number (for seating, etc. in class)"
+    },
+    {
+      "source_index": 10483,
+      "id": "2034350",
+      "term": "出席部長",
+      "reading": "しゅっせきぶちょう",
+      "meaning": "assistant section or department manager"
+    },
+    {
+      "source_index": 10484,
+      "id": "1339360",
+      "term": "出世間的",
+      "reading": "しゅっせけんてき",
+      "meaning": "unworldly / religious"
+    },
+    {
+      "source_index": 10485,
+      "id": "2156880",
+      "term": "出世物語",
+      "reading": "しゅっせものがたり",
+      "meaning": "success story"
+    },
+    {
+      "source_index": 10486,
+      "id": "2413130",
+      "term": "出張授業",
+      "reading": "しゅっちょうじゅぎょう",
+      "meaning": "school visit"
+    },
+    {
+      "source_index": 10487,
+      "id": "2869468",
+      "term": "出張販売",
+      "reading": "しゅっちょうはんばい",
+      "meaning": "direct selling / sales direct to customers"
+    },
+    {
+      "source_index": 10488,
+      "id": "1938120",
+      "term": "出張旅費",
+      "reading": "しゅっちょうりょひ",
+      "meaning": "travel expenses / travel(ing) allowance"
+    },
+    {
+      "source_index": 10489,
+      "id": "2396430",
+      "term": "出展作品",
+      "reading": "しゅってんさくひん",
+      "meaning": "works (of art, etc.) on display"
+    },
+    {
+      "source_index": 10490,
+      "id": "1938130",
+      "term": "出頭命令",
+      "reading": "しゅっとうめいれい",
+      "meaning": "summons / subpoena"
+    },
+    {
+      "source_index": 10491,
+      "id": "1938140",
+      "term": "出発時間",
+      "reading": "しゅっぱつじかん",
+      "meaning": "departure time / starting time"
+    },
+    {
+      "source_index": 10492,
+      "id": "2252500",
+      "term": "出発時刻",
+      "reading": "しゅっぱつじこく",
+      "meaning": "departure time"
+    },
+    {
+      "source_index": 10493,
+      "id": "1340070",
+      "term": "出版許可",
+      "reading": "しゅっぱんきょか",
+      "meaning": "permission to publish"
+    },
+    {
+      "source_index": 10494,
+      "id": "1340090",
+      "term": "出版業者",
+      "reading": "しゅっぱんぎょうしゃ",
+      "meaning": "publisher"
+    },
+    {
+      "source_index": 10495,
+      "id": "2855116",
+      "term": "出版不況",
+      "reading": "しゅっぱんふきょう",
+      "meaning": "slump in publishing / publishing recession"
+    },
+    {
+      "source_index": 10496,
+      "id": "1340130",
+      "term": "出版部数",
+      "reading": "しゅっぱんぶすう",
+      "meaning": "circulation / number printed"
+    },
+    {
+      "source_index": 10497,
+      "id": "1340160",
+      "term": "出版目録",
+      "reading": "しゅっぱんもくろく",
+      "meaning": "catalog of publications / catalogue of publications"
+    },
+    {
+      "source_index": 10498,
+      "id": "2689910",
+      "term": "出芽酵母",
+      "reading": "しゅつがこうぼ",
+      "meaning": "budding yeast (esp. Saccharomyces cerevisiae)"
+    },
+    {
+      "source_index": 10499,
+      "id": "1338520",
+      "term": "出願書類",
+      "reading": "しゅつがんしょるい",
+      "meaning": "application form / application papers / file wrapper (patents)"
     }
   ]
 }
