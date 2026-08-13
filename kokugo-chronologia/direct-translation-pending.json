@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11587,
-  "english_only_remaining": 3413,
+  "already_direct_japanese": 11637,
+  "english_only_remaining": 3363,
   "english_only_rank_counts": {
-    "(blank)": 3413
+    "(blank)": 3363
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11587,
-      "id": "2868960",
-      "term": "浸礼教会",
-      "reading": "しんれいきょうかい",
-      "meaning": "Baptist church"
-    },
-    {
-      "source_index": 11588,
-      "id": "1793790",
-      "term": "心霊現象",
-      "reading": "しんれいげんしょう",
-      "meaning": "psychic phenomenon"
-    },
-    {
-      "source_index": 11589,
-      "id": "2141920",
-      "term": "心霊写真",
-      "reading": "しんれいしゃしん",
-      "meaning": "spirit photography / ghost photography"
-    },
-    {
-      "source_index": 11590,
-      "id": "2830085",
-      "term": "心霊主義",
-      "reading": "しんれいしゅぎ",
-      "meaning": "spiritism / spiritualism"
-    },
-    {
-      "source_index": 11591,
-      "id": "1361070",
-      "term": "心霊手術",
-      "reading": "しんれいしゅじゅつ",
-      "meaning": "psychic surgery"
-    },
-    {
-      "source_index": 11592,
-      "id": "2841696",
-      "term": "深冷処理",
-      "reading": "しんれいしょり",
-      "meaning": "subzero treatment / deep cooling / sub-zero cooling"
-    },
-    {
-      "source_index": 11593,
-      "id": "2859701",
-      "term": "心霊治療",
-      "reading": "しんれいちりょう",
-      "meaning": "spiritual healing / faith healing / psychic healing"
-    },
-    {
-      "source_index": 11594,
-      "id": "2829719",
-      "term": "心霊論者",
-      "reading": "しんれいろんしゃ",
-      "meaning": "spiritualist"
-    },
-    {
-      "source_index": 11595,
-      "id": "1362480",
-      "term": "新郎新婦",
-      "reading": "しんろうしんぷ",
-      "meaning": "bride and groom"
-    },
-    {
-      "source_index": 11596,
-      "id": "1813430",
-      "term": "進路指導",
-      "reading": "しんろしどう",
-      "meaning": "guidance counseling"
-    },
-    {
-      "source_index": 11597,
-      "id": "2196460",
-      "term": "進路相談",
-      "reading": "しんろそうだん",
-      "meaning": "consultation on career, university, etc. choices"
-    },
-    {
-      "source_index": 11598,
-      "id": "2820870",
-      "term": "進路変更",
-      "reading": "しんろへんこう",
-      "meaning": "changing lanes / lane change"
-    },
-    {
-      "source_index": 11599,
-      "id": "2856549",
-      "term": "芯を食う",
-      "reading": "しんをくう",
-      "meaning": "to get to the heart of the matter / to get to the core"
-    },
-    {
-      "source_index": 11600,
-      "id": "1884360",
-      "term": "次亜硫酸",
-      "reading": "じありゅうさん",
-      "meaning": "hyposulphurous acid / hyposulfurous acid"
-    },
-    {
-      "source_index": 11601,
-      "id": "2864842",
-      "term": "次亜燐酸",
-      "reading": "じありんさん",
-      "meaning": "hypophosphorous acid"
-    },
-    {
-      "source_index": 11602,
-      "id": "1756990",
-      "term": "示威運動",
-      "reading": "じいうんどう",
-      "meaning": "demonstration / parade / show of strength"
-    },
-    {
-      "source_index": 11603,
-      "id": "2831045",
-      "term": "示威行為",
-      "reading": "じいこうい",
-      "meaning": "demonstration / manifestation / protest"
-    },
-    {
-      "source_index": 11604,
-      "id": "2147670",
-      "term": "自慰行為",
-      "reading": "じいこうい",
-      "meaning": "(act of) masturbation / pleasuring oneself"
-    },
-    {
-      "source_index": 11605,
-      "id": "2831046",
-      "term": "示威行進",
-      "reading": "じいこうしん",
-      "meaning": "demonstration parade"
-    },
-    {
-      "source_index": 11606,
-      "id": "2843803",
-      "term": "自慰史観",
-      "reading": "じいしかん",
-      "meaning": "self-congratulatory historical view / uncritical view of (Japanese) history"
-    },
-    {
-      "source_index": 11607,
-      "id": "2649250",
-      "term": "地謡座前",
-      "reading": "じうたいざまえ",
-      "meaning": "stage left (on a noh stage), in front of the chorus"
-    },
-    {
-      "source_index": 11608,
-      "id": "5336929",
-      "term": "自衛艦隊",
-      "reading": "じえいかんたい",
-      "meaning": "Self-Defense Fleet"
-    },
-    {
-      "source_index": 11609,
-      "id": "2200560",
-      "term": "自営業者",
-      "reading": "じえいぎょうしゃ",
-      "meaning": "self-employed person"
-    },
-    {
-      "source_index": 11610,
-      "id": "1936860",
-      "term": "自衛手段",
-      "reading": "じえいしゅだん",
-      "meaning": "measures to defend oneself (for self-defense) (defence)"
-    },
-    {
-      "source_index": 11611,
-      "id": "2115310",
-      "term": "自衛隊員",
-      "reading": "じえいたいいん",
-      "meaning": "member of the Japan Self-Defense Forces"
-    },
-    {
-      "source_index": 11612,
-      "id": "2163500",
-      "term": "自衛隊法",
-      "reading": "じえいたいほう",
-      "meaning": "Self-Defense Forces Act"
-    },
-    {
-      "source_index": 11613,
-      "id": "2826319",
-      "term": "磁界強度",
-      "reading": "じかいきょうど",
-      "meaning": "magnetic field intensity / magnetic field strength"
-    },
-    {
-      "source_index": 11614,
-      "id": "1726870",
-      "term": "自壊作用",
-      "reading": "じかいさよう",
-      "meaning": "(the act of) disintegration"
-    },
-    {
-      "source_index": 11615,
-      "id": "2140850",
-      "term": "自家移植",
-      "reading": "じかいしょく",
-      "meaning": "autograft"
-    },
-    {
-      "source_index": 11616,
-      "id": "2867546",
-      "term": "耳介軟骨",
-      "reading": "じかいなんこつ",
-      "meaning": "auricular cartilage"
-    },
-    {
-      "source_index": 11617,
-      "id": "2157800",
-      "term": "次回予告",
-      "reading": "じかいよこく",
-      "meaning": "preview of next installment (TV shows, podcasts, etc.)"
-    },
-    {
-      "source_index": 11618,
-      "id": "2602680",
-      "term": "時価会計",
-      "reading": "じかかいけい",
-      "meaning": "current-value accounting / market-value accounting / mark-to-market accounting"
-    },
-    {
-      "source_index": 11619,
-      "id": "1317500",
-      "term": "自覚症状",
-      "reading": "じかくしょうじょう",
-      "meaning": "subjective symptoms / patient's complaints"
-    },
-    {
-      "source_index": 11620,
-      "id": "2872537",
-      "term": "自家蛍光",
-      "reading": "じかけいこう",
-      "meaning": "autofluorescence"
-    },
-    {
-      "source_index": 11621,
-      "id": "2232930",
-      "term": "自家血清",
-      "reading": "じかけっせい",
-      "meaning": "autologous serum"
-    },
-    {
-      "source_index": 11622,
-      "id": "2827784",
-      "term": "自家栽培",
-      "reading": "じかさいばい",
-      "meaning": "home gardening (esp. food) / home growing"
-    },
-    {
-      "source_index": 11623,
-      "id": "2602710",
-      "term": "時価主義",
-      "reading": "じかしゅぎ",
-      "meaning": "market price basis / market price principle"
-    },
-    {
-      "source_index": 11624,
-      "id": "1726330",
-      "term": "自家受精",
-      "reading": "じかじゅせい",
-      "meaning": "self-fertilization / autogamy"
-    },
-    {
-      "source_index": 11625,
-      "id": "1726320",
-      "term": "自家受粉",
-      "reading": "じかじゅふん",
-      "meaning": "self-pollination"
-    },
-    {
-      "source_index": 11626,
-      "id": "2682670",
-      "term": "自家醸造",
-      "reading": "じかじょうぞう",
-      "meaning": "home-brewed"
-    },
-    {
-      "source_index": 11627,
-      "id": "2858392",
-      "term": "自家生殖",
-      "reading": "じかせいしょく",
-      "meaning": "autogamy"
-    },
-    {
-      "source_index": 11628,
-      "id": "1816930",
-      "term": "耳下腺炎",
-      "reading": "じかせんえん",
-      "meaning": "mumps / parotitis"
-    },
-    {
-      "source_index": 11629,
-      "id": "1994490",
-      "term": "時価総額",
-      "reading": "じかそうがく",
-      "meaning": "market capitalization / market capitalisation / market cap"
-    },
-    {
-      "source_index": 11630,
-      "id": "1431380",
-      "term": "地下足袋",
-      "reading": "じかたび",
-      "meaning": "work tabi / split-toed heavy cloth shoes with rubber soles"
-    },
-    {
-      "source_index": 11631,
-      "id": "1726310",
-      "term": "自家中毒",
-      "reading": "じかちゅうどく",
-      "meaning": "autointoxication / autotoxemia"
-    },
-    {
-      "source_index": 11632,
-      "id": "1317440",
-      "term": "自家撞着",
-      "reading": "じかどうちゃく",
-      "meaning": "self-contradiction"
-    },
-    {
-      "source_index": 11633,
-      "id": "1816470",
-      "term": "時価発行",
-      "reading": "じかはっこう",
-      "meaning": "public offering of new shares at market price"
-    },
-    {
-      "source_index": 11634,
-      "id": "1317450",
-      "term": "自家発電",
-      "reading": "じかはつでん",
-      "meaning": "private power generation"
-    },
-    {
-      "source_index": 11635,
-      "id": "2863036",
-      "term": "自家焙煎",
-      "reading": "じかばいせん",
-      "meaning": "in-house roasting (of coffee beans) / shop roasting / home roasting"
-    },
-    {
-      "source_index": 11636,
-      "id": "2002580",
-      "term": "時価評価",
-      "reading": "じかひょうか",
-      "meaning": "mark-to-market valuation / fair market valuation / fair valuation"
-    },
     {
       "source_index": 11637,
       "id": "2841620",
@@ -7010,6 +6660,356 @@
       "term": "条件分岐",
       "reading": "じょうけんぶんき",
       "meaning": "conditional branch"
+    },
+    {
+      "source_index": 12587,
+      "id": "2039390",
+      "term": "条件変数",
+      "reading": "じょうけんへんすう",
+      "meaning": "conditional variable"
+    },
+    {
+      "source_index": 12588,
+      "id": "2366300",
+      "term": "条件命令",
+      "reading": "じょうけんめいれい",
+      "meaning": "conditional statement"
+    },
+    {
+      "source_index": 12589,
+      "id": "1921120",
+      "term": "上下関係",
+      "reading": "じょうげかんけい",
+      "meaning": "pecking order / hierarchical relationship / vertical relationship"
+    },
+    {
+      "source_index": 12590,
+      "id": "2046890",
+      "term": "上下左右",
+      "reading": "じょうげさゆう",
+      "meaning": "up and down, left and right / top and bottom, left and right"
+    },
+    {
+      "source_index": 12591,
+      "id": "1352720",
+      "term": "上下水道",
+      "reading": "じょうげすいどう",
+      "meaning": "water and sewer services"
+    },
+    {
+      "source_index": 12592,
+      "id": "2856769",
+      "term": "上下両院",
+      "reading": "じょうげりょういん",
+      "meaning": "upper and lower houses of parliament"
+    },
+    {
+      "source_index": 12593,
+      "id": "2818800",
+      "term": "上限価格",
+      "reading": "じょうげんかかく",
+      "meaning": "price ceiling / maximum price"
+    },
+    {
+      "source_index": 12594,
+      "id": "2870323",
+      "term": "上後鋸筋",
+      "reading": "じょうこうきょきん",
+      "meaning": "serratus posterior superior muscle"
+    },
+    {
+      "source_index": 12595,
+      "id": "2608190",
+      "term": "上行結腸",
+      "reading": "じょうこうけっちょう",
+      "meaning": "ascending colon"
+    },
+    {
+      "source_index": 12596,
+      "id": "2839446",
+      "term": "上皇陛下",
+      "reading": "じょうこうへいか",
+      "meaning": "retired emperor / ex-emperor / former emperor"
+    },
+    {
+      "source_index": 12597,
+      "id": "2753660",
+      "term": "上告理由",
+      "reading": "じょうこくりゆう",
+      "meaning": "ground for appeal"
+    },
+    {
+      "source_index": 12598,
+      "id": "5400061",
+      "term": "城西大学",
+      "reading": "じょうさいだいがく",
+      "meaning": "Josai University"
+    },
+    {
+      "source_index": 12599,
+      "id": "2674680",
+      "term": "蒸散作用",
+      "reading": "じょうさんさよう",
+      "meaning": "transpiration"
+    },
+    {
+      "source_index": 12600,
+      "id": "2647930",
+      "term": "定散二善",
+      "reading": "じょうさんにぜん",
+      "meaning": "wholesomeness while meditating and in one's daily affairs"
+    },
+    {
+      "source_index": 12601,
+      "id": "2790470",
+      "term": "常在戦場",
+      "reading": "じょうざいせんじょう",
+      "meaning": "always conducting oneself as though one were on a battlefield / being combat ready at all times (of a person)"
+    },
+    {
+      "source_index": 12602,
+      "id": "2609600",
+      "term": "常識学派",
+      "reading": "じょうしきがくは",
+      "meaning": "(Scottish) School of Common Sense"
+    },
+    {
+      "source_index": 12603,
+      "id": "2449870",
+      "term": "常識哲学",
+      "reading": "じょうしきてつがく",
+      "meaning": "philosophy of common sense"
+    },
+    {
+      "source_index": 12604,
+      "id": "2821960",
+      "term": "常識判断",
+      "reading": "じょうしきはんだん",
+      "meaning": "commonsense judgement"
+    },
+    {
+      "source_index": 12605,
+      "id": "2793730",
+      "term": "乗車位置",
+      "reading": "じょうしゃいち",
+      "meaning": "boarding position (e.g. on train platform)"
+    },
+    {
+      "source_index": 12606,
+      "id": "1706890",
+      "term": "乗車拒否",
+      "reading": "じょうしゃきょひ",
+      "meaning": "refusing to allow a passenger on board a train or into a bus or taxi"
+    },
+    {
+      "source_index": 12607,
+      "id": "2836374",
+      "term": "乗車時間",
+      "reading": "じょうしゃじかん",
+      "meaning": "riding time / time spent aboard a bus, train etc."
+    },
+    {
+      "source_index": 12608,
+      "id": "2835970",
+      "term": "乗車定員",
+      "reading": "じょうしゃていいん",
+      "meaning": "riding capacity / seating capacity"
+    },
+    {
+      "source_index": 12609,
+      "id": "1580900",
+      "term": "盛者必衰",
+      "reading": "じょうしゃひっすい",
+      "meaning": "even the prosperous inevitably decay / sic transit gloria mundi / all that's fair must fade"
+    },
+    {
+      "source_index": 12610,
+      "id": "1353460",
+      "term": "上昇気流",
+      "reading": "じょうしょうきりゅう",
+      "meaning": "ascending air current / updraft"
+    },
+    {
+      "source_index": 12611,
+      "id": "1938620",
+      "term": "上昇傾向",
+      "reading": "じょうしょうけいこう",
+      "meaning": "upward tendency / rising trend"
+    },
+    {
+      "source_index": 12612,
+      "id": "1353470",
+      "term": "上昇限度",
+      "reading": "じょうしょうげんど",
+      "meaning": "ceiling (in aviation)"
+    },
+    {
+      "source_index": 12613,
+      "id": "2428410",
+      "term": "上昇志向",
+      "reading": "じょうしょうしこう",
+      "meaning": "desire for improvement (in social standing, etc.) / ambition to rise in the world"
+    },
+    {
+      "source_index": 12614,
+      "id": "2211270",
+      "term": "誠照寺派",
+      "reading": "じょうしょうじは",
+      "meaning": "Jōshōji sect (of Shin Buddhism)"
+    },
+    {
+      "source_index": 12615,
+      "id": "1580520",
+      "term": "情緒纏綿",
+      "reading": "じょうしょてんめん",
+      "meaning": "tender sentiments / being overcome with emotions / having a tender feeling (for a person)"
+    },
+    {
+      "source_index": 12616,
+      "id": "2836692",
+      "term": "常時雇用",
+      "reading": "じょうじこよう",
+      "meaning": "full-time employment"
+    },
+    {
+      "source_index": 12617,
+      "id": "2226150",
+      "term": "常磁性体",
+      "reading": "じょうじせいたい",
+      "meaning": "paramagnetic substance / paramagnet"
+    },
+    {
+      "source_index": 12618,
+      "id": "1995470",
+      "term": "常時接続",
+      "reading": "じょうじせつぞく",
+      "meaning": "always-on connection (esp. to the Internet)"
+    },
+    {
+      "source_index": 12619,
+      "id": "2063630",
+      "term": "情実人事",
+      "reading": "じょうじつじんじ",
+      "meaning": "personnel changes through favoritism"
+    },
+    {
+      "source_index": 12620,
+      "id": "2597690",
+      "term": "常寂光土",
+      "reading": "じょうじゃっこうど",
+      "meaning": "land of eternally tranquil light (highest realm in Tendai Buddhism)"
+    },
+    {
+      "source_index": 12621,
+      "id": "2031350",
+      "term": "常住坐臥",
+      "reading": "じょうじゅうざが",
+      "meaning": "at all times / day in, day out / constantly"
+    },
+    {
+      "source_index": 12622,
+      "id": "2113230",
+      "term": "常住不断",
+      "reading": "じょうじゅうふだん",
+      "meaning": "ceaseless / constant / uninterrupted"
+    },
+    {
+      "source_index": 12623,
+      "id": "2113240",
+      "term": "常住不滅",
+      "reading": "じょうじゅうふめつ",
+      "meaning": "everlasting / forever unchanging / undying"
+    },
+    {
+      "source_index": 12624,
+      "id": "2502530",
+      "term": "上場会社",
+      "reading": "じょうじょうがいしゃ",
+      "meaning": "listed company (on a stock exchange) / publicly traded company"
+    },
+    {
+      "source_index": 12625,
+      "id": "2476770",
+      "term": "上場企業",
+      "reading": "じょうじょうきぎょう",
+      "meaning": "listed company (on a stock exchange)"
+    },
+    {
+      "source_index": 12626,
+      "id": "1356310",
+      "term": "情状酌量",
+      "reading": "じょうじょうしゃくりょう",
+      "meaning": "taking the extenuating circumstances into consideration"
+    },
+    {
+      "source_index": 12627,
+      "id": "2828651",
+      "term": "上場投信",
+      "reading": "じょうじょうとうしん",
+      "meaning": "exchange traded fund / ETF"
+    },
+    {
+      "source_index": 12628,
+      "id": "1995460",
+      "term": "上場廃止",
+      "reading": "じょうじょうはいし",
+      "meaning": "delisting"
+    },
+    {
+      "source_index": 12629,
+      "id": "2251350",
+      "term": "上場銘柄",
+      "reading": "じょうじょうめいがら",
+      "meaning": "listed issue / listed brand"
+    },
+    {
+      "source_index": 12630,
+      "id": "2787730",
+      "term": "常人逮捕",
+      "reading": "じょうじんたいほ",
+      "meaning": "citizen's arrest"
+    },
+    {
+      "source_index": 12631,
+      "id": "1355340",
+      "term": "乗数効果",
+      "reading": "じょうすうこうか",
+      "meaning": "multiplier effect"
+    },
+    {
+      "source_index": 12632,
+      "id": "2871642",
+      "term": "情性欠如",
+      "reading": "じょうせいけつじょ",
+      "meaning": "callousness (disregard for the suffering of others)"
+    },
+    {
+      "source_index": 12633,
+      "id": "2851229",
+      "term": "情勢調査",
+      "reading": "じょうせいちょうさ",
+      "meaning": "(election) survey"
+    },
+    {
+      "source_index": 12634,
+      "id": "2234130",
+      "term": "常染色体",
+      "reading": "じょうせんしょくたい",
+      "meaning": "autosome (non-sex chromosome)"
+    },
+    {
+      "source_index": 12635,
+      "id": "2699140",
+      "term": "上前頭回",
+      "reading": "じょうぜんとうかい",
+      "meaning": "superior frontal gyrus"
+    },
+    {
+      "source_index": 12636,
+      "id": "1353740",
+      "term": "上層階級",
+      "reading": "じょうそうかいきゅう",
+      "meaning": "upper classes / high society"
     }
   ]
 }
