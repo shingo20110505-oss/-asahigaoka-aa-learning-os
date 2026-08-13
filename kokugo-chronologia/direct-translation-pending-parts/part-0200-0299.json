@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11433,
-  "english_only_remaining": 3567,
+  "already_direct_japanese": 11434,
+  "english_only_remaining": 3566,
   "english_only_rank_counts": {
-    "(blank)": 3567
+    "(blank)": 3566
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 200,
   "part_end": 299,
   "targets": [
-    {
-      "source_index": 11633,
-      "id": "1816470",
-      "term": "時価発行",
-      "reading": "じかはっこう",
-      "meaning": "public offering of new shares at market price"
-    },
     {
       "source_index": 11634,
       "id": "1317450",
@@ -712,6 +705,13 @@
       "term": "自校方式",
       "reading": "じこうほうしき",
       "meaning": "system of preparing school meals on-site"
+    },
+    {
+      "source_index": 11733,
+      "id": "2716650",
+      "term": "自己運動",
+      "reading": "じこうんどう",
+      "meaning": "self-motion (esp. in the Hegelian dialectic, dialectical materialism, etc.) / self-movement"
     }
   ]
 }

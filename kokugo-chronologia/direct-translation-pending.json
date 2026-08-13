@@ -1,23 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11433,
-  "english_only_remaining": 3567,
+  "already_direct_japanese": 11434,
+  "english_only_remaining": 3566,
   "english_only_rank_counts": {
-    "(blank)": 3567
+    "(blank)": 3566
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11433,
-      "id": "1938890",
-      "term": "寝台列車",
-      "reading": "しんだいれっしゃ",
-      "meaning": "sleeper train"
-    },
     {
       "source_index": 11434,
       "id": "2834795",
@@ -7010,6 +7003,13 @@
       "term": "循環論法",
       "reading": "じゅんかんろんぽう",
       "meaning": "circular reasoning"
+    },
+    {
+      "source_index": 12433,
+      "id": "1341570",
+      "term": "準禁治産",
+      "reading": "じゅんきんちさん",
+      "meaning": "quasi-incompetence"
     }
   ]
 }

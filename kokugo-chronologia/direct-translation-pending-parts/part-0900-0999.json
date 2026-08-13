@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11433,
-  "english_only_remaining": 3567,
+  "already_direct_japanese": 11434,
+  "english_only_remaining": 3566,
   "english_only_rank_counts": {
-    "(blank)": 3567
+    "(blank)": 3566
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 900,
   "part_end": 999,
   "targets": [
-    {
-      "source_index": 12333,
-      "id": "2578620",
-      "term": "従来農法",
-      "reading": "じゅうらいのうほう",
-      "meaning": "traditional farming"
-    },
     {
       "source_index": 12334,
       "id": "1336920",
@@ -712,6 +705,13 @@
       "term": "循環論法",
       "reading": "じゅんかんろんぽう",
       "meaning": "circular reasoning"
+    },
+    {
+      "source_index": 12433,
+      "id": "1341570",
+      "term": "準禁治産",
+      "reading": "じゅんきんちさん",
+      "meaning": "quasi-incompetence"
     }
   ]
 }

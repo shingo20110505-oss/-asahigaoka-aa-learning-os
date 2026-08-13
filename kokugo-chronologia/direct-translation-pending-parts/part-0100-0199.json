@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11433,
-  "english_only_remaining": 3567,
+  "already_direct_japanese": 11434,
+  "english_only_remaining": 3566,
   "english_only_rank_counts": {
-    "(blank)": 3567
+    "(blank)": 3566
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 100,
   "part_end": 199,
   "targets": [
-    {
-      "source_index": 11533,
-      "id": "1359640",
-      "term": "信用詐欺",
-      "reading": "しんようさぎ",
-      "meaning": "confidence game"
-    },
     {
       "source_index": 11534,
       "id": "2849263",
@@ -712,6 +705,13 @@
       "term": "自家撞着",
       "reading": "じかどうちゃく",
       "meaning": "self-contradiction"
+    },
+    {
+      "source_index": 11633,
+      "id": "1816470",
+      "term": "時価発行",
+      "reading": "じかはっこう",
+      "meaning": "public offering of new shares at market price"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11433,
-  "english_only_remaining": 3567,
+  "already_direct_japanese": 11434,
+  "english_only_remaining": 3566,
   "english_only_rank_counts": {
-    "(blank)": 3567
+    "(blank)": 3566
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 800,
   "part_end": 899,
   "targets": [
-    {
-      "source_index": 12233,
-      "id": "5359134",
-      "term": "重慶大学",
-      "reading": "じゅうけいだいがく",
-      "meaning": "Chongqing University / CQU"
-    },
     {
       "source_index": 12234,
       "id": "2242580",
@@ -712,6 +705,13 @@
       "term": "従来技術",
       "reading": "じゅうらいぎじゅつ",
       "meaning": "existing technology / conventional technology / prior art"
+    },
+    {
+      "source_index": 12333,
+      "id": "2578620",
+      "term": "従来農法",
+      "reading": "じゅうらいのうほう",
+      "meaning": "traditional farming"
     }
   ]
 }

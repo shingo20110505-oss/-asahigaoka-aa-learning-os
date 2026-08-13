@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11433,
-  "english_only_remaining": 3567,
+  "already_direct_japanese": 11434,
+  "english_only_remaining": 3566,
   "english_only_rank_counts": {
-    "(blank)": 3567
+    "(blank)": 3566
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 400,
   "part_end": 499,
   "targets": [
-    {
-      "source_index": 11833,
-      "id": "2651070",
-      "term": "而今而後",
-      "reading": "じこんじご",
-      "meaning": "in the future / from now on / henceforth"
-    },
     {
       "source_index": 11834,
       "id": "1317570",
@@ -712,6 +705,13 @@
       "term": "事前協議",
       "reading": "じぜんきょうぎ",
       "meaning": "prior consultation"
+    },
+    {
+      "source_index": 11933,
+      "id": "2828050",
+      "term": "事前警告",
+      "reading": "じぜんけいこく",
+      "meaning": "advance warning / trigger warning"
     }
   ]
 }

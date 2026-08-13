@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11433,
-  "english_only_remaining": 3567,
+  "already_direct_japanese": 11434,
+  "english_only_remaining": 3566,
   "english_only_rank_counts": {
-    "(blank)": 3567
+    "(blank)": 3566
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 300,
   "part_end": 399,
   "targets": [
-    {
-      "source_index": 11733,
-      "id": "2716650",
-      "term": "自己運動",
-      "reading": "じこうんどう",
-      "meaning": "self-motion (esp. in the Hegelian dialectic, dialectical materialism, etc.) / self-movement"
-    },
     {
       "source_index": 11734,
       "id": "2045780",
@@ -712,6 +705,13 @@
       "term": "自今以後",
       "reading": "じこんいご",
       "meaning": "henceforth / henceforward / hereafter"
+    },
+    {
+      "source_index": 11833,
+      "id": "2651070",
+      "term": "而今而後",
+      "reading": "じこんじご",
+      "meaning": "in the future / from now on / henceforth"
     }
   ]
 }
