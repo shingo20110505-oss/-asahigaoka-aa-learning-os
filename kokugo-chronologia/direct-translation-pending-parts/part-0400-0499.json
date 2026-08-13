@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9901,
-  "english_only_remaining": 5099,
+  "already_direct_japanese": 9902,
+  "english_only_remaining": 5098,
   "english_only_rank_counts": {
-    "(blank)": 5099
+    "(blank)": 5098
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 400,
   "part_end": 499,
   "targets": [
-    {
-      "source_index": 10301,
-      "id": "2363190",
-      "term": "終端文字",
-      "reading": "しゅうたんもじ",
-      "meaning": "final character"
-    },
     {
       "source_index": 10302,
       "id": "2140280",
@@ -712,6 +705,13 @@
       "term": "収賄事件",
       "reading": "しゅうわいじけん",
       "meaning": "bribery case / bribery scandal / graft case"
+    },
+    {
+      "source_index": 10401,
+      "id": "2409690",
+      "term": "主演作品",
+      "reading": "しゅえんさくひん",
+      "meaning": "movie in which ... has the starring role"
     }
   ]
 }

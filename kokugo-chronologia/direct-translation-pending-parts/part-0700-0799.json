@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9901,
-  "english_only_remaining": 5099,
+  "already_direct_japanese": 9902,
+  "english_only_remaining": 5098,
   "english_only_rank_counts": {
-    "(blank)": 5099
+    "(blank)": 5098
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 700,
   "part_end": 799,
   "targets": [
-    {
-      "source_index": 10601,
-      "id": "1743040",
-      "term": "消化不良",
-      "reading": "しょうかふりょう",
-      "meaning": "indigestion / dyspepsia"
-    },
     {
       "source_index": 10602,
       "id": "2653490",
@@ -712,6 +705,13 @@
       "term": "召集令状",
       "reading": "しょうしゅうれいじょう",
       "meaning": "draft papers / callup notice"
+    },
+    {
+      "source_index": 10701,
+      "id": "2031330",
+      "term": "焦心苦慮",
+      "reading": "しょうしんくりょ",
+      "meaning": "worrying oneself (about) / being anxious (about) / fidgeting (about)"
     }
   ]
 }

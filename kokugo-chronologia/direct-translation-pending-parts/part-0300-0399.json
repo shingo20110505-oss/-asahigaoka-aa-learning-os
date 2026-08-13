@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9901,
-  "english_only_remaining": 5099,
+  "already_direct_japanese": 9902,
+  "english_only_remaining": 5098,
   "english_only_rank_counts": {
-    "(blank)": 5099
+    "(blank)": 5098
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 300,
   "part_end": 399,
   "targets": [
-    {
-      "source_index": 10201,
-      "id": "2827236",
-      "term": "羞花閉月",
-      "reading": "しゅうかへいげつ",
-      "meaning": "the charms of a uniquely beautiful woman / (so beautiful that) flowers are abashed and the moon hides"
-    },
     {
       "source_index": 10202,
       "id": "5356287",
@@ -712,6 +705,13 @@
       "term": "終端抵抗",
       "reading": "しゅうたんていこう",
       "meaning": "terminator"
+    },
+    {
+      "source_index": 10301,
+      "id": "2363190",
+      "term": "終端文字",
+      "reading": "しゅうたんもじ",
+      "meaning": "final character"
     }
   ]
 }

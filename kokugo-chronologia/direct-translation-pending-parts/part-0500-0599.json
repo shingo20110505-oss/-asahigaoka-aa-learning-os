@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9901,
-  "english_only_remaining": 5099,
+  "already_direct_japanese": 9902,
+  "english_only_remaining": 5098,
   "english_only_rank_counts": {
-    "(blank)": 5099
+    "(blank)": 5098
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 500,
   "part_end": 599,
   "targets": [
-    {
-      "source_index": 10401,
-      "id": "2409690",
-      "term": "主演作品",
-      "reading": "しゅえんさくひん",
-      "meaning": "movie in which ... has the starring role"
-    },
     {
       "source_index": 10402,
       "id": "1594810",
@@ -712,6 +705,13 @@
       "term": "出漁区域",
       "reading": "しゅつぎょくいき",
       "meaning": "fishing area"
+    },
+    {
+      "source_index": 10501,
+      "id": "2363760",
+      "term": "出現回数",
+      "reading": "しゅつげんかいすう",
+      "meaning": "number of occurrences"
     }
   ]
 }

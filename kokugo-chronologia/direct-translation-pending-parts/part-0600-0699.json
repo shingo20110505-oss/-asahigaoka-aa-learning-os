@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9901,
-  "english_only_remaining": 5099,
+  "already_direct_japanese": 9902,
+  "english_only_remaining": 5098,
   "english_only_rank_counts": {
-    "(blank)": 5099
+    "(blank)": 5098
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 600,
   "part_end": 699,
   "targets": [
-    {
-      "source_index": 10501,
-      "id": "2363760",
-      "term": "出現回数",
-      "reading": "しゅつげんかいすう",
-      "meaning": "number of occurrences"
-    },
     {
       "source_index": 10502,
       "id": "2363770",
@@ -712,6 +705,13 @@
       "term": "昇華転写",
       "reading": "しょうかてんしゃ",
       "meaning": "sublimation printing / sublimation transfer"
+    },
+    {
+      "source_index": 10601,
+      "id": "1743040",
+      "term": "消化不良",
+      "reading": "しょうかふりょう",
+      "meaning": "indigestion / dyspepsia"
     }
   ]
 }

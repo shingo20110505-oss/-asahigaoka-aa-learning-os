@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9901,
-  "english_only_remaining": 5099,
+  "already_direct_japanese": 9902,
+  "english_only_remaining": 5098,
   "english_only_rank_counts": {
-    "(blank)": 5099
+    "(blank)": 5098
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 200,
   "part_end": 299,
   "targets": [
-    {
-      "source_index": 10101,
-      "id": "1658870",
-      "term": "社会問題",
-      "reading": "しゃかいもんだい",
-      "meaning": "social problem"
-    },
     {
       "source_index": 10102,
       "id": "2450130",
@@ -712,6 +705,13 @@
       "term": "臭化水素",
       "reading": "しゅうかすいそ",
       "meaning": "hydrogen bromide (HBr)"
+    },
+    {
+      "source_index": 10201,
+      "id": "2827236",
+      "term": "羞花閉月",
+      "reading": "しゅうかへいげつ",
+      "meaning": "the charms of a uniquely beautiful woman / (so beautiful that) flowers are abashed and the moon hides"
     }
   ]
 }

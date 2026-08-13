@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9901,
-  "english_only_remaining": 5099,
+  "already_direct_japanese": 9902,
+  "english_only_remaining": 5098,
   "english_only_rank_counts": {
-    "(blank)": 5099
+    "(blank)": 5098
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 0,
   "part_end": 99,
   "targets": [
-    {
-      "source_index": 9901,
-      "id": "2828617",
-      "term": "信濃胡桃",
-      "reading": "しなのぐるみ",
-      "meaning": "common walnut (Juglans regia) / Persian walnut / English walnut"
-    },
     {
       "source_index": 9902,
       "id": "2417650",
@@ -712,6 +705,13 @@
       "term": "清水建設",
       "reading": "しみずけんせつ",
       "meaning": "Shimizu Corporation"
+    },
+    {
+      "source_index": 10001,
+      "id": "1308700",
+      "term": "市民運動",
+      "reading": "しみんうんどう",
+      "meaning": "citizens' campaign / citizens' group"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9901,
-  "english_only_remaining": 5099,
+  "already_direct_japanese": 9902,
+  "english_only_remaining": 5098,
   "english_only_rank_counts": {
-    "(blank)": 5099
+    "(blank)": 5098
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 100,
   "part_end": 199,
   "targets": [
-    {
-      "source_index": 10001,
-      "id": "1308700",
-      "term": "市民運動",
-      "reading": "しみんうんどう",
-      "meaning": "citizens' campaign / citizens' group"
-    },
     {
       "source_index": 10002,
       "id": "1308710",
@@ -712,6 +705,13 @@
       "term": "社会保障",
       "reading": "しゃかいほしょう",
       "meaning": "social security"
+    },
+    {
+      "source_index": 10101,
+      "id": "1658870",
+      "term": "社会問題",
+      "reading": "しゃかいもんだい",
+      "meaning": "social problem"
     }
   ]
 }
