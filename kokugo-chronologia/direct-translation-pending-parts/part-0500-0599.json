@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9902,
-  "english_only_remaining": 5098,
+  "already_direct_japanese": 9903,
+  "english_only_remaining": 5097,
   "english_only_rank_counts": {
-    "(blank)": 5098
+    "(blank)": 5097
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 500,
   "part_end": 599,
   "targets": [
-    {
-      "source_index": 10402,
-      "id": "1594810",
-      "term": "主客転倒",
-      "reading": "しゅかくてんとう",
-      "meaning": "reversing the order of (relative) importance (of) / putting the cart before the horse / the tables being turned"
-    },
     {
       "source_index": 10403,
       "id": "1325130",
@@ -712,6 +705,13 @@
       "term": "出現回数",
       "reading": "しゅつげんかいすう",
       "meaning": "number of occurrences"
+    },
+    {
+      "source_index": 10502,
+      "id": "2363770",
+      "term": "出現頻度",
+      "reading": "しゅつげんひんど",
+      "meaning": "frequency (of appearance)"
     }
   ]
 }

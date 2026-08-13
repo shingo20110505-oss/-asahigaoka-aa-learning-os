@@ -1,23 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9902,
-  "english_only_remaining": 5098,
+  "already_direct_japanese": 9903,
+  "english_only_remaining": 5097,
   "english_only_rank_counts": {
-    "(blank)": 5098
+    "(blank)": 5097
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 9902,
-      "id": "2417650",
-      "term": "死なばもろとも",
-      "reading": "しなばもろとも",
-      "meaning": "die all together / go to the grave together"
-    },
     {
       "source_index": 9903,
       "id": "2400560",
@@ -7010,6 +7003,13 @@
       "term": "初期故障",
       "reading": "しょきこしょう",
       "meaning": "initial failure"
+    },
+    {
+      "source_index": 10902,
+      "id": "2125480",
+      "term": "初期症状",
+      "reading": "しょきしょうじょう",
+      "meaning": "early symptom"
     }
   ]
 }

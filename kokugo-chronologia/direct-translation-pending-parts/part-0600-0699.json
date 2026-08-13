@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9902,
-  "english_only_remaining": 5098,
+  "already_direct_japanese": 9903,
+  "english_only_remaining": 5097,
   "english_only_rank_counts": {
-    "(blank)": 5098
+    "(blank)": 5097
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 600,
   "part_end": 699,
   "targets": [
-    {
-      "source_index": 10502,
-      "id": "2363770",
-      "term": "出現頻度",
-      "reading": "しゅつげんひんど",
-      "meaning": "frequency (of appearance)"
-    },
     {
       "source_index": 10503,
       "id": "2838003",
@@ -712,6 +705,13 @@
       "term": "消化不良",
       "reading": "しょうかふりょう",
       "meaning": "indigestion / dyspepsia"
+    },
+    {
+      "source_index": 10602,
+      "id": "2653490",
+      "term": "償還期間",
+      "reading": "しょうかんきかん",
+      "meaning": "redemption period / repayment term"
     }
   ]
 }

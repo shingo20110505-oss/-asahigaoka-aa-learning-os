@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9902,
-  "english_only_remaining": 5098,
+  "already_direct_japanese": 9903,
+  "english_only_remaining": 5097,
   "english_only_rank_counts": {
-    "(blank)": 5098
+    "(blank)": 5097
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 100,
   "part_end": 199,
   "targets": [
-    {
-      "source_index": 10002,
-      "id": "1308710",
-      "term": "市民会館",
-      "reading": "しみんかいかん",
-      "meaning": "city meeting hall / civic hall / community center"
-    },
     {
       "source_index": 10003,
       "id": "1770250",
@@ -712,6 +705,13 @@
       "term": "社会問題",
       "reading": "しゃかいもんだい",
       "meaning": "social problem"
+    },
+    {
+      "source_index": 10102,
+      "id": "2450130",
+      "term": "社会倫理",
+      "reading": "しゃかいりんり",
+      "meaning": "social ethics"
     }
   ]
 }

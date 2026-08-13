@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9902,
-  "english_only_remaining": 5098,
+  "already_direct_japanese": 9903,
+  "english_only_remaining": 5097,
   "english_only_rank_counts": {
-    "(blank)": 5098
+    "(blank)": 5097
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 0,
   "part_end": 99,
   "targets": [
-    {
-      "source_index": 9902,
-      "id": "2417650",
-      "term": "死なばもろとも",
-      "reading": "しなばもろとも",
-      "meaning": "die all together / go to the grave together"
-    },
     {
       "source_index": 9903,
       "id": "2400560",
@@ -712,6 +705,13 @@
       "term": "市民運動",
       "reading": "しみんうんどう",
       "meaning": "citizens' campaign / citizens' group"
+    },
+    {
+      "source_index": 10002,
+      "id": "1308710",
+      "term": "市民会館",
+      "reading": "しみんかいかん",
+      "meaning": "city meeting hall / civic hall / community center"
     }
   ]
 }

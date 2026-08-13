@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9902,
-  "english_only_remaining": 5098,
+  "already_direct_japanese": 9903,
+  "english_only_remaining": 5097,
   "english_only_rank_counts": {
-    "(blank)": 5098
+    "(blank)": 5097
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 400,
   "part_end": 499,
   "targets": [
-    {
-      "source_index": 10302,
-      "id": "2140280",
-      "term": "集団意識",
-      "reading": "しゅうだんいしき",
-      "meaning": "group consciousness"
-    },
     {
       "source_index": 10303,
       "id": "2123580",
@@ -712,6 +705,13 @@
       "term": "主演作品",
       "reading": "しゅえんさくひん",
       "meaning": "movie in which ... has the starring role"
+    },
+    {
+      "source_index": 10402,
+      "id": "1594810",
+      "term": "主客転倒",
+      "reading": "しゅかくてんとう",
+      "meaning": "reversing the order of (relative) importance (of) / putting the cart before the horse / the tables being turned"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9902,
-  "english_only_remaining": 5098,
+  "already_direct_japanese": 9903,
+  "english_only_remaining": 5097,
   "english_only_rank_counts": {
-    "(blank)": 5098
+    "(blank)": 5097
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 300,
   "part_end": 399,
   "targets": [
-    {
-      "source_index": 10202,
-      "id": "5356287",
-      "term": "週刊現代",
-      "reading": "しゅうかんげんだい",
-      "meaning": "Weekly Gendai (magazine)"
-    },
     {
       "source_index": 10203,
       "id": "5356288",
@@ -712,6 +705,13 @@
       "term": "終端文字",
       "reading": "しゅうたんもじ",
       "meaning": "final character"
+    },
+    {
+      "source_index": 10302,
+      "id": "2140280",
+      "term": "集団意識",
+      "reading": "しゅうだんいしき",
+      "meaning": "group consciousness"
     }
   ]
 }

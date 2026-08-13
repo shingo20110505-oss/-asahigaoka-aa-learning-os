@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9902,
-  "english_only_remaining": 5098,
+  "already_direct_japanese": 9903,
+  "english_only_remaining": 5097,
   "english_only_rank_counts": {
-    "(blank)": 5098
+    "(blank)": 5097
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 200,
   "part_end": 299,
   "targets": [
-    {
-      "source_index": 10102,
-      "id": "2450130",
-      "term": "社会倫理",
-      "reading": "しゃかいりんり",
-      "meaning": "social ethics"
-    },
     {
       "source_index": 10103,
       "id": "2852146",
@@ -712,6 +705,13 @@
       "term": "羞花閉月",
       "reading": "しゅうかへいげつ",
       "meaning": "the charms of a uniquely beautiful woman / (so beautiful that) flowers are abashed and the moon hides"
+    },
+    {
+      "source_index": 10202,
+      "id": "5356287",
+      "term": "週刊現代",
+      "reading": "しゅうかんげんだい",
+      "meaning": "Weekly Gendai (magazine)"
     }
   ]
 }

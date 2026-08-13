@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9902,
-  "english_only_remaining": 5098,
+  "already_direct_japanese": 9903,
+  "english_only_remaining": 5097,
   "english_only_rank_counts": {
-    "(blank)": 5098
+    "(blank)": 5097
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 900,
   "part_end": 999,
   "targets": [
-    {
-      "source_index": 10802,
-      "id": "2233960",
-      "term": "消費期限",
-      "reading": "しょうひきげん",
-      "meaning": "expiry date (esp. on food) / expiration date / use-by date"
-    },
     {
       "source_index": 10803,
       "id": "2860946",
@@ -712,6 +705,13 @@
       "term": "初期故障",
       "reading": "しょきこしょう",
       "meaning": "initial failure"
+    },
+    {
+      "source_index": 10902,
+      "id": "2125480",
+      "term": "初期症状",
+      "reading": "しょきしょうじょう",
+      "meaning": "early symptom"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 9902,
-  "english_only_remaining": 5098,
+  "already_direct_japanese": 9903,
+  "english_only_remaining": 5097,
   "english_only_rank_counts": {
-    "(blank)": 5098
+    "(blank)": 5097
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,13 +13,6 @@
   "part_start": 800,
   "part_end": 899,
   "targets": [
-    {
-      "source_index": 10702,
-      "id": "2046950",
-      "term": "小心姑息",
-      "reading": "しょうしんこそく",
-      "meaning": "timid and evasive (person) / timid and makeshift (approach, measure, etc.)"
-    },
     {
       "source_index": 10703,
       "id": "1377430",
@@ -712,6 +705,13 @@
       "term": "消費関数",
       "reading": "しょうひかんすう",
       "meaning": "consumption function"
+    },
+    {
+      "source_index": 10802,
+      "id": "2233960",
+      "term": "消費期限",
+      "reading": "しょうひきげん",
+      "meaning": "expiry date (esp. on food) / expiration date / use-by date"
     }
   ]
 }
