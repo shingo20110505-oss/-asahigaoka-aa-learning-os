@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11487,
-  "english_only_remaining": 3513,
+  "already_direct_japanese": 11537,
+  "english_only_remaining": 3463,
   "english_only_rank_counts": {
-    "(blank)": 3513
+    "(blank)": 3463
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11487,
-      "id": "1360450",
-      "term": "審美主義",
-      "reading": "しんびしゅぎ",
-      "meaning": "aestheticism"
-    },
-    {
-      "source_index": 11488,
-      "id": "1765240",
-      "term": "神秘主義",
-      "reading": "しんぴしゅぎ",
-      "meaning": "mysticism"
-    },
-    {
-      "source_index": 11489,
-      "id": "2859342",
-      "term": "神秘体験",
-      "reading": "しんぴたいけん",
-      "meaning": "mystical experience"
-    },
-    {
-      "source_index": 11490,
-      "id": "1720380",
-      "term": "新品同様",
-      "reading": "しんぴんどうよう",
-      "meaning": "as good as new"
-    },
-    {
-      "source_index": 11491,
-      "id": "2214380",
-      "term": "清仏戦争",
-      "reading": "しんふつせんそう",
-      "meaning": "Sino-French War (1884-1885)"
-    },
-    {
-      "source_index": 11492,
-      "id": "2429540",
-      "term": "深部感覚",
-      "reading": "しんぶかんかく",
-      "meaning": "bathyesthesia / deep sensibility"
-    },
-    {
-      "source_index": 11493,
-      "id": "2624290",
-      "term": "神仏隔離",
-      "reading": "しんぶつかくり",
-      "meaning": "separation of Buddhism and Shintoism"
-    },
-    {
-      "source_index": 11494,
-      "id": "2047680",
-      "term": "神仏混淆",
-      "reading": "しんぶつこんこう",
-      "meaning": "synthesis of Shintoism and Buddhism"
-    },
-    {
-      "source_index": 11495,
-      "id": "2244790",
-      "term": "神仏習合",
-      "reading": "しんぶつしゅうごう",
-      "meaning": "Shinto-Buddhist syncretism"
-    },
-    {
-      "source_index": 11496,
-      "id": "2849770",
-      "term": "神仏判然",
-      "reading": "しんぶつはんぜん",
-      "meaning": "separation of Buddhism and Shintoism (government policy during the beginning of the Meiji period)"
-    },
-    {
-      "source_index": 11497,
-      "id": "2047700",
-      "term": "神仏分離",
-      "reading": "しんぶつぶんり",
-      "meaning": "separation of Buddhism and Shintoism (government policy during the beginning of the Meiji period)"
-    },
-    {
-      "source_index": 11498,
-      "id": "2047720",
-      "term": "新聞学問",
-      "reading": "しんぶんがくもん",
-      "meaning": "knowledge gained (information acquired) from newspapers"
-    },
-    {
-      "source_index": 11499,
-      "id": "1362370",
-      "term": "新聞記者",
-      "reading": "しんぶんきしゃ",
-      "meaning": "newspaper reporter / print journalist"
-    },
-    {
-      "source_index": 11500,
-      "id": "1939070",
-      "term": "新聞記事",
-      "reading": "しんぶんきじ",
-      "meaning": "newspaper story (article, account)"
-    },
-    {
-      "source_index": 11501,
-      "id": "1362380",
-      "term": "新聞広告",
-      "reading": "しんぶんこうこく",
-      "meaning": "newspaper advertisement"
-    },
-    {
-      "source_index": 11502,
-      "id": "2658840",
-      "term": "新聞紙上",
-      "reading": "しんぶんしじょう",
-      "meaning": "the press / (in the) newspapers"
-    },
-    {
-      "source_index": 11503,
-      "id": "2869996",
-      "term": "新聞小説",
-      "reading": "しんぶんしょうせつ",
-      "meaning": "novel serialized in a newspaper"
-    },
-    {
-      "source_index": 11504,
-      "id": "2047730",
-      "term": "新聞辞令",
-      "reading": "しんぶんじれい",
-      "meaning": "appointment or dismissal conjecturally reported in the media (esp. when the conjecture turned out to be wrong) / announcement of an appointment that turns out to be mere press speculation"
-    },
-    {
-      "source_index": 11505,
-      "id": "1939080",
-      "term": "新聞配達",
-      "reading": "しんぶんはいたつ",
-      "meaning": "(newspaper) carrier / newspaper (delivery) boy (girl) / new"
-    },
-    {
-      "source_index": 11506,
-      "id": "1939090",
-      "term": "新聞発表",
-      "reading": "しんぶんはっぴょう",
-      "meaning": "(issuing) a press release"
-    },
-    {
-      "source_index": 11507,
-      "id": "2792990",
-      "term": "新聞売店",
-      "reading": "しんぶんばいてん",
-      "meaning": "newsstand / newspaper kiosk / newspaper stand"
-    },
-    {
-      "source_index": 11508,
-      "id": "2695270",
-      "term": "新聞報道",
-      "reading": "しんぶんほうどう",
-      "meaning": "newspaper report / press reporting"
-    },
-    {
-      "source_index": 11509,
-      "id": "1361450",
-      "term": "振幅変調",
-      "reading": "しんぷくへんちょう",
-      "meaning": "amplitude modulation / AM"
-    },
-    {
-      "source_index": 11510,
-      "id": "2831085",
-      "term": "身辺警護",
-      "reading": "しんぺんけいご",
-      "meaning": "personal security / personal protection / provision of a bodyguard"
-    },
-    {
-      "source_index": 11511,
-      "id": "2868958",
-      "term": "身辺小説",
-      "reading": "しんぺんしょうせつ",
-      "meaning": "novel depicting the author's personal life / I-novel"
-    },
-    {
-      "source_index": 11512,
-      "id": "2777880",
-      "term": "身辺整理",
-      "reading": "しんぺんせいり",
-      "meaning": "putting one's affairs in order / ordering one's affairs / tidying up"
-    },
-    {
-      "source_index": 11513,
-      "id": "2207290",
-      "term": "身辺調査",
-      "reading": "しんぺんちょうさ",
-      "meaning": "(personal) background check"
-    },
-    {
-      "source_index": 11514,
-      "id": "1362800",
-      "term": "深謀遠慮",
-      "reading": "しんぼうえんりょ",
-      "meaning": "far sight and deep design"
-    },
-    {
-      "source_index": 11515,
-      "id": "2631730",
-      "term": "心房細動",
-      "reading": "しんぼうさいどう",
-      "meaning": "atrial fibrillation"
-    },
-    {
-      "source_index": 11516,
-      "id": "1813330",
-      "term": "進歩主義",
-      "reading": "しんぽしゅぎ",
-      "meaning": "progressivism"
-    },
-    {
-      "source_index": 11517,
-      "id": "2221920",
-      "term": "神明裁判",
-      "reading": "しんめいさいばん",
-      "meaning": "trial by ordeal"
-    },
-    {
-      "source_index": 11518,
-      "id": "2850930",
-      "term": "神明鳥居",
-      "reading": "しんめいとりい",
-      "meaning": "shinmei torii / type of torii topped by a single straight lintel"
-    },
-    {
-      "source_index": 11519,
-      "id": "2865973",
-      "term": "深夜営業",
-      "reading": "しんやえいぎょう",
-      "meaning": "late night opening (businesses, etc.) / operating late into the night"
-    },
-    {
-      "source_index": 11520,
-      "id": "2718370",
-      "term": "深夜喫茶",
-      "reading": "しんやきっさ",
-      "meaning": "late-night coffee shop"
-    },
-    {
-      "source_index": 11521,
-      "id": "2845465",
-      "term": "深夜急行",
-      "reading": "しんやきゅうこう",
-      "meaning": "midnight express (train, bus)"
-    },
-    {
-      "source_index": 11522,
-      "id": "1362440",
-      "term": "新約聖書",
-      "reading": "しんやくせいしょ",
-      "meaning": "New Testament"
-    },
-    {
-      "source_index": 11523,
-      "id": "2510790",
-      "term": "新約全書",
-      "reading": "しんやくぜんしょ",
-      "meaning": "New Testament"
-    },
-    {
-      "source_index": 11524,
-      "id": "2202810",
-      "term": "深夜残業",
-      "reading": "しんやざんぎょう",
-      "meaning": "late-night overtime"
-    },
-    {
-      "source_index": 11525,
-      "id": "2828299",
-      "term": "深夜徘徊",
-      "reading": "しんやはいかい",
-      "meaning": "loitering at night / late-night prowling"
-    },
-    {
-      "source_index": 11526,
-      "id": "2745780",
-      "term": "深夜番組",
-      "reading": "しんやばんぐみ",
-      "meaning": "late-night show / midnight broadcast"
-    },
-    {
-      "source_index": 11527,
-      "id": "1939150",
-      "term": "深夜放送",
-      "reading": "しんやほうそう",
-      "meaning": "late-night broadcasting"
-    },
-    {
-      "source_index": 11528,
-      "id": "2849264",
-      "term": "信用拡大",
-      "reading": "しんようかくだい",
-      "meaning": "credit expansion"
-    },
-    {
-      "source_index": 11529,
-      "id": "1995670",
-      "term": "信用危機",
-      "reading": "しんようきき",
-      "meaning": "credit crunch"
-    },
-    {
-      "source_index": 11530,
-      "id": "1813160",
-      "term": "信用金庫",
-      "reading": "しんようきんこ",
-      "meaning": "credit union"
-    },
-    {
-      "source_index": 11531,
-      "id": "1359700",
-      "term": "信用組合",
-      "reading": "しんようくみあい",
-      "meaning": "credit union / credit association"
-    },
-    {
-      "source_index": 11532,
-      "id": "2037980",
-      "term": "信用経済",
-      "reading": "しんようけいざい",
-      "meaning": "credit economy"
-    },
-    {
-      "source_index": 11533,
-      "id": "1359640",
-      "term": "信用詐欺",
-      "reading": "しんようさぎ",
-      "meaning": "confidence game"
-    },
-    {
-      "source_index": 11534,
-      "id": "2849263",
-      "term": "信用収縮",
-      "reading": "しんようしゅうしゅく",
-      "meaning": "credit contraction / credit crunch"
-    },
-    {
-      "source_index": 11535,
-      "id": "2239320",
-      "term": "針葉樹林",
-      "reading": "しんようじゅりん",
-      "meaning": "conifer forest / coniferous forest / needle-leaved forest"
-    },
-    {
-      "source_index": 11536,
-      "id": "1359690",
-      "term": "信用状態",
-      "reading": "しんようじょうたい",
-      "meaning": "credit standing"
-    },
     {
       "source_index": 11537,
       "id": "2746090",
@@ -7010,6 +6660,356 @@
       "term": "順編成法",
       "reading": "じゅんへんせいほう",
       "meaning": "BSAM / Basic Sequential Access Method"
+    },
+    {
+      "source_index": 12487,
+      "id": "2856605",
+      "term": "準暴力団",
+      "reading": "じゅんぼうりょくだん",
+      "meaning": "loosely organized criminal gang / non-yakuza organized crime group"
+    },
+    {
+      "source_index": 12488,
+      "id": "2858724",
+      "term": "遵法精神",
+      "reading": "じゅんぽうせいしん",
+      "meaning": "law-abiding spirit / feeling of respect for the law"
+    },
+    {
+      "source_index": 12489,
+      "id": "1736600",
+      "term": "順法闘争",
+      "reading": "じゅんぽうとうそう",
+      "meaning": "labor slowdown / labour slowdown"
+    },
+    {
+      "source_index": 12490,
+      "id": "2830866",
+      "term": "巡洋戦艦",
+      "reading": "じゅんようせんかん",
+      "meaning": "battle cruiser / battlecruiser"
+    },
+    {
+      "source_index": 12491,
+      "id": "2252210",
+      "term": "準連接的",
+      "reading": "じゅんれんせつてき",
+      "meaning": "quasi-coherent"
+    },
+    {
+      "source_index": 12492,
+      "id": "1725990",
+      "term": "自由意志",
+      "reading": "じゆういし",
+      "meaning": "free will"
+    },
+    {
+      "source_index": 12493,
+      "id": "1725970",
+      "term": "自由営業",
+      "reading": "じゆうえいぎょう",
+      "meaning": "unrestricted operations"
+    },
+    {
+      "source_index": 12494,
+      "id": "2797500",
+      "term": "自由価格",
+      "reading": "じゆうかかく",
+      "meaning": "free price (price determined by market forces)"
+    },
+    {
+      "source_index": 12495,
+      "id": "2829404",
+      "term": "自由加群",
+      "reading": "じゆうかぐん",
+      "meaning": "free module"
+    },
+    {
+      "source_index": 12496,
+      "id": "2840520",
+      "term": "自由課題",
+      "reading": "じゆうかだい",
+      "meaning": "freeform assignment (esp. one to be completed over the summer break)"
+    },
+    {
+      "source_index": 12497,
+      "id": "2854405",
+      "term": "自由滑走",
+      "reading": "じゆうかっそう",
+      "meaning": "free skating"
+    },
+    {
+      "source_index": 12498,
+      "id": "2031190",
+      "term": "自由闊達",
+      "reading": "じゆうかったつ",
+      "meaning": "free and easy / open and natural / not fastidious"
+    },
+    {
+      "source_index": 12499,
+      "id": "2046560",
+      "term": "自由勝手",
+      "reading": "じゆうかって",
+      "meaning": "free / unfettered / according to one's own whims"
+    },
+    {
+      "source_index": 12500,
+      "id": "2797810",
+      "term": "自由教育",
+      "reading": "じゆうきょういく",
+      "meaning": "liberal education"
+    },
+    {
+      "source_index": 12501,
+      "id": "1726020",
+      "term": "自由競争",
+      "reading": "じゆうきょうそう",
+      "meaning": "free competition"
+    },
+    {
+      "source_index": 12502,
+      "id": "2361090",
+      "term": "自由曲線",
+      "reading": "じゆうきょくせん",
+      "meaning": "freeform curve"
+    },
+    {
+      "source_index": 12503,
+      "id": "1658630",
+      "term": "自由経済",
+      "reading": "じゆうけいざい",
+      "meaning": "free economy"
+    },
+    {
+      "source_index": 12504,
+      "id": "2361100",
+      "term": "自由形式",
+      "reading": "じゆうけいしき",
+      "meaning": "free format"
+    },
+    {
+      "source_index": 12505,
+      "id": "2654830",
+      "term": "自由契約",
+      "reading": "じゆうけいやく",
+      "meaning": "free agency / free contract / free booking"
+    },
+    {
+      "source_index": 12506,
+      "id": "1725980",
+      "term": "自由結婚",
+      "reading": "じゆうけっこん",
+      "meaning": "freedom to choose one's marriage partner, parental wishes notwithstanding"
+    },
+    {
+      "source_index": 12507,
+      "id": "2259330",
+      "term": "自由研究",
+      "reading": "じゆうけんきゅう",
+      "meaning": "research project (e.g. at school) / independent research"
+    },
+    {
+      "source_index": 12508,
+      "id": "2640170",
+      "term": "自由行動",
+      "reading": "じゆうこうどう",
+      "meaning": "free action / free activity / acting at one's own discretion"
+    },
+    {
+      "source_index": 12509,
+      "id": "2046580",
+      "term": "自由裁量",
+      "reading": "じゆうさいりょう",
+      "meaning": "latitude / (at one's) discretion / discretionary powers"
+    },
+    {
+      "source_index": 12510,
+      "id": "2838894",
+      "term": "自由参加",
+      "reading": "じゆうさんか",
+      "meaning": "free-for-all / open-to-all"
+    },
+    {
+      "source_index": 12511,
+      "id": "2046590",
+      "term": "自由三昧",
+      "reading": "じゆうざんまい",
+      "meaning": "free / unfettered / according to one's own whims"
+    },
+    {
+      "source_index": 12512,
+      "id": "1937080",
+      "term": "自由市場",
+      "reading": "じゆうしじょう",
+      "meaning": "free market"
+    },
+    {
+      "source_index": 12513,
+      "id": "2677220",
+      "term": "自由思想",
+      "reading": "じゆうしそう",
+      "meaning": "free thought"
+    },
+    {
+      "source_index": 12514,
+      "id": "1658640",
+      "term": "自由主義",
+      "reading": "じゆうしゅぎ",
+      "meaning": "liberalism"
+    },
+    {
+      "source_index": 12515,
+      "id": "2649760",
+      "term": "自由診療",
+      "reading": "じゆうしんりょう",
+      "meaning": "medical treatment at one's own expense / treatment not covered by health insurance"
+    },
+    {
+      "source_index": 12516,
+      "id": "1937090",
+      "term": "自由時間",
+      "reading": "じゆうじかん",
+      "meaning": "free time / time at leisure"
+    },
+    {
+      "source_index": 12517,
+      "id": "1318770",
+      "term": "自由自在",
+      "reading": "じゆうじざい",
+      "meaning": "free / unrestricted / (with) complete mastery"
+    },
+    {
+      "source_index": 12518,
+      "id": "5743233",
+      "term": "自由時報",
+      "reading": "じゆうじほう",
+      "meaning": "Liberty Times (Taiwanese newspaper)"
+    },
+    {
+      "source_index": 12519,
+      "id": "2039290",
+      "term": "自由世界",
+      "reading": "じゆうせかい",
+      "meaning": "the free world (historically as opposed to the Communist bloc)"
+    },
+    {
+      "source_index": 12520,
+      "id": "2650370",
+      "term": "自由選挙",
+      "reading": "じゆうせんきょ",
+      "meaning": "free election / free elections"
+    },
+    {
+      "source_index": 12521,
+      "id": "1994650",
+      "term": "自由戦士",
+      "reading": "じゆうせんし",
+      "meaning": "freedom fighter"
+    },
+    {
+      "source_index": 12522,
+      "id": "2860955",
+      "term": "自由大気",
+      "reading": "じゆうたいき",
+      "meaning": "free atmosphere (part of the atmosphere above the frictional influence of the earth's surface) / free air"
+    },
+    {
+      "source_index": 12523,
+      "id": "2421810",
+      "term": "自由電子",
+      "reading": "じゆうでんし",
+      "meaning": "free electron"
+    },
+    {
+      "source_index": 12524,
+      "id": "2835950",
+      "term": "自由討議",
+      "reading": "じゆうとうぎ",
+      "meaning": "free discussion"
+    },
+    {
+      "source_index": 12525,
+      "id": "2249410",
+      "term": "自由都市",
+      "reading": "じゆうとし",
+      "meaning": "free city (of Germany)"
+    },
+    {
+      "source_index": 12526,
+      "id": "2860948",
+      "term": "自由表面",
+      "reading": "じゆうひょうめん",
+      "meaning": "free surface"
+    },
+    {
+      "source_index": 12527,
+      "id": "1725930",
+      "term": "自由放任",
+      "reading": "じゆうほうにん",
+      "meaning": "laissez-faire / non-intervention"
+    },
+    {
+      "source_index": 12528,
+      "id": "2031180",
+      "term": "自由奔放",
+      "reading": "じゆうほんぽう",
+      "meaning": "free and uncontrolled / behaving with abandon / freewheeling"
+    },
+    {
+      "source_index": 12529,
+      "id": "1318820",
+      "term": "自由貿易",
+      "reading": "じゆうぼうえき",
+      "meaning": "free trade"
+    },
+    {
+      "source_index": 12530,
+      "id": "2866487",
+      "term": "自由膨張",
+      "reading": "じゆうぼうちょう",
+      "meaning": "free expansion"
+    },
+    {
+      "source_index": 12531,
+      "id": "2677180",
+      "term": "自由落下",
+      "reading": "じゆうらっか",
+      "meaning": "free fall"
+    },
+    {
+      "source_index": 12532,
+      "id": "2860954",
+      "term": "自由粒子",
+      "reading": "じゆうりゅうし",
+      "meaning": "free particle"
+    },
+    {
+      "source_index": 12533,
+      "id": "2861337",
+      "term": "自由旅程",
+      "reading": "じゆうりょてい",
+      "meaning": "multi-city flight"
+    },
+    {
+      "source_index": 12534,
+      "id": "2677200",
+      "term": "自由恋愛",
+      "reading": "じゆうれんあい",
+      "meaning": "free love"
+    },
+    {
+      "source_index": 12535,
+      "id": "2098760",
+      "term": "自由連合",
+      "reading": "じゆうれんごう",
+      "meaning": "Liberal League (Japanese political party, 1994-2005)"
+    },
+    {
+      "source_index": 12536,
+      "id": "2516040",
+      "term": "自由連想",
+      "reading": "じゆうれんそう",
+      "meaning": "free association"
     }
   ]
 }
