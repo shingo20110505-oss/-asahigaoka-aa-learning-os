@@ -81,3 +81,12 @@ function boot(){
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
+
+(()=>{
+  if(document.getElementById('aa-english-question-quality-v2-loader'))return;
+  const s=document.createElement('script');
+  s.id='aa-english-question-quality-v2-loader';
+  s.src='./english-question-quality-v2.js?v=2.0.0-20260813';
+  s.async=false;
+  document.head.appendChild(s);
+})();
