@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 7150,
-  "english_only_remaining": 7850,
+  "already_direct_japanese": 7200,
+  "english_only_remaining": 7800,
   "english_only_rank_counts": {
-    "(blank)": 7850
+    "(blank)": 7800
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 7150,
-      "id": "2110040",
-      "term": "効果抜群",
-      "reading": "こうかばつぐん",
-      "meaning": "exceptionally effective / overwhelming effectiveness"
-    },
-    {
-      "source_index": 7151,
-      "id": "2834966",
-      "term": "降下部隊",
-      "reading": "こうかぶたい",
-      "meaning": "paratroop corps"
-    },
-    {
-      "source_index": 7152,
-      "id": "1809480",
-      "term": "高歌放吟",
-      "reading": "こうかほうぎん",
-      "meaning": "singing at the top of one's voice"
-    },
-    {
-      "source_index": 7153,
-      "id": "2450530",
-      "term": "皇漢医学",
-      "reading": "こうかんいがく",
-      "meaning": "traditional Chinese medicine"
-    },
-    {
-      "source_index": 7154,
-      "id": "2354790",
-      "term": "交換回線",
-      "reading": "こうかんかいせん",
-      "meaning": "switched line"
-    },
-    {
-      "source_index": 7155,
-      "id": "2625030",
-      "term": "交換価値",
-      "reading": "こうかんかち",
-      "meaning": "exchange value"
-    },
-    {
-      "source_index": 7156,
-      "id": "2584270",
-      "term": "交換可能",
-      "reading": "こうかんかのう",
-      "meaning": "exchangeable / convertible / transferable"
-    },
-    {
-      "source_index": 7157,
-      "id": "1271770",
-      "term": "交換学生",
-      "reading": "こうかんがくせい",
-      "meaning": "exchange student"
-    },
-    {
-      "source_index": 7158,
-      "id": "1271790",
-      "term": "交換機能",
-      "reading": "こうかんきのう",
-      "meaning": "exchange function / swapping capability"
-    },
-    {
-      "source_index": 7159,
-      "id": "2851457",
-      "term": "高官協議",
-      "reading": "こうかんきょうぎ",
-      "meaning": "high-level talks"
-    },
-    {
-      "source_index": 7160,
-      "id": "1271800",
-      "term": "交換教授",
-      "reading": "こうかんきょうじゅ",
-      "meaning": "exchange professor"
-    },
-    {
-      "source_index": 7161,
-      "id": "2846769",
-      "term": "交換殺人",
-      "reading": "こうかんさつじん",
-      "meaning": "murder swap / murder exchange / murder of each other's targets by co-conspirators"
-    },
-    {
-      "source_index": 7162,
-      "id": "1271740",
-      "term": "交感神経",
-      "reading": "こうかんしんけい",
-      "meaning": "sympathetic nerve"
-    },
-    {
-      "source_index": 7163,
-      "id": "2540580",
-      "term": "交換需要",
-      "reading": "こうかんじゅよう",
-      "meaning": "demand for replacement / request for replacement / need for replacement"
-    },
-    {
-      "source_index": 7164,
-      "id": "1760820",
-      "term": "交換条件",
-      "reading": "こうかんじょうけん",
-      "meaning": "bargaining point / terms of exchange / conditions for meeting a demand"
-    },
-    {
-      "source_index": 7165,
-      "id": "2354850",
-      "term": "交換接続",
-      "reading": "こうかんせつぞく",
-      "meaning": "switched connection"
-    },
-    {
-      "source_index": 7166,
-      "id": "1283350",
-      "term": "高関税化",
-      "reading": "こうかんぜいか",
-      "meaning": "(high) tariff protection / tariff jumping"
-    },
-    {
-      "source_index": 7167,
-      "id": "2199800",
-      "term": "交換日記",
-      "reading": "こうかんにっき",
-      "meaning": "diary shared between friends (who take turns writing entries) / exchange diary"
-    },
-    {
-      "source_index": 7168,
-      "id": "2827174",
-      "term": "交換分合",
-      "reading": "こうかんぶんごう",
-      "meaning": "exchange and consolidation (of lands)"
-    },
-    {
-      "source_index": 7169,
-      "id": "1760810",
-      "term": "交換法則",
-      "reading": "こうかんほうそく",
-      "meaning": "commutative law"
-    },
-    {
-      "source_index": 7170,
-      "id": "2354870",
-      "term": "交換様式",
-      "reading": "こうかんようしき",
-      "meaning": "interchange format"
-    },
-    {
-      "source_index": 7171,
-      "id": "2070840",
-      "term": "交換留学",
-      "reading": "こうかんりゅうがく",
-      "meaning": "(student) exchange / study abroad"
-    },
-    {
-      "source_index": 7172,
-      "id": "2834381",
-      "term": "校外学習",
-      "reading": "こうがいがくしゅう",
-      "meaning": "field trip / excursion / off-campus learning activity"
-    },
-    {
-      "source_index": 7173,
-      "id": "2709310",
-      "term": "口蓋垂音",
-      "reading": "こうがいすいおん",
-      "meaning": "uvular / uvular consonant"
-    },
-    {
-      "source_index": 7174,
-      "id": "2643300",
-      "term": "郊外生活",
-      "reading": "こうがいせいかつ",
-      "meaning": "suburban life / life in the suburbs"
-    },
-    {
-      "source_index": 7175,
-      "id": "1934890",
-      "term": "公害対策",
-      "reading": "こうがいたいさく",
-      "meaning": "anti-pollution measures"
-    },
-    {
-      "source_index": 7176,
-      "id": "1935310",
-      "term": "郊外電車",
-      "reading": "こうがいでんしゃ",
-      "meaning": "suburban train"
-    },
-    {
-      "source_index": 7177,
-      "id": "2649790",
-      "term": "公害物質",
-      "reading": "こうがいぶっしつ",
-      "meaning": "pollutant"
-    },
-    {
-      "source_index": 7178,
-      "id": "2790060",
-      "term": "公害防止",
-      "reading": "こうがいぼうし",
-      "meaning": "pollution control / pollution prevention"
-    },
-    {
-      "source_index": 7179,
-      "id": "1677210",
-      "term": "公害問題",
-      "reading": "こうがいもんだい",
-      "meaning": "pollution problem or issue"
-    },
-    {
-      "source_index": 7180,
-      "id": "2508810",
-      "term": "光学異性",
-      "reading": "こうがくいせい",
-      "meaning": "optical isomerism"
-    },
-    {
-      "source_index": 7181,
-      "id": "1719930",
-      "term": "光学機械",
-      "reading": "こうがくきかい",
-      "meaning": "optical instrument"
-    },
-    {
-      "source_index": 7182,
-      "id": "1934950",
-      "term": "工学修士",
-      "reading": "こうがくしゅうし",
-      "meaning": "Master of Engineering"
-    },
-    {
-      "source_index": 7183,
-      "id": "1272910",
-      "term": "光学繊維",
-      "reading": "こうがくせんい",
-      "meaning": "optical fiber"
-    },
-    {
-      "source_index": 7184,
-      "id": "2839859",
-      "term": "光学素子",
-      "reading": "こうがくそし",
-      "meaning": "optical device / optical element"
-    },
-    {
-      "source_index": 7185,
-      "id": "1934960",
-      "term": "工学博士",
-      "reading": "こうがくはかせ",
-      "meaning": "Doctor of Engineering"
-    },
-    {
-      "source_index": 7186,
-      "id": "2856046",
-      "term": "光学迷彩",
-      "reading": "こうがくめいさい",
-      "meaning": "optical camouflage"
-    },
-    {
-      "source_index": 7187,
-      "id": "1272920",
-      "term": "光学文字",
-      "reading": "こうがくもじ",
-      "meaning": "optical character"
-    },
-    {
-      "source_index": 7188,
-      "id": "2613110",
-      "term": "高学歴化",
-      "reading": "こうがくれきか",
-      "meaning": "increase in the level of academic achievement / popularisation of higher education"
-    },
-    {
-      "source_index": 7189,
-      "id": "2408390",
-      "term": "高学歴者",
-      "reading": "こうがくれきしゃ",
-      "meaning": "highly educated person / academic / scholar"
-    },
-    {
-      "source_index": 7190,
-      "id": "2642950",
-      "term": "黄河文明",
-      "reading": "こうがぶんめい",
-      "meaning": "Yellow River civilization / Huang civilization / cradle of Chinese civilization"
-    },
-    {
-      "source_index": 7191,
-      "id": "2044830",
-      "term": "紅顔可憐",
-      "reading": "こうがんかれん",
-      "meaning": "youthful and endearing / rosy-cheeked and sweet"
-    },
-    {
-      "source_index": 7192,
-      "id": "1275420",
-      "term": "厚顔無恥",
-      "reading": "こうがんむち",
-      "meaning": "shameless / brazen and unscrupulous"
-    },
-    {
-      "source_index": 7193,
-      "id": "1280910",
-      "term": "綱紀粛正",
-      "reading": "こうきしゅくせい",
-      "meaning": "enforcement of official discipline / tightening of discipline / eliminating corruption among government officials"
-    },
-    {
-      "source_index": 7194,
-      "id": "1278710",
-      "term": "康煕字典",
-      "reading": "こうきじてん",
-      "meaning": "Kangxi dictionary / Chinese dictionary of 1716, which popularized the system of 214 radicals"
-    },
-    {
-      "source_index": 7195,
-      "id": "2030830",
-      "term": "好機到来",
-      "reading": "こうきとうらい",
-      "meaning": "advent of a golden opportunity"
-    },
-    {
-      "source_index": 7196,
-      "id": "2860053",
-      "term": "高機動車",
-      "reading": "こうきどうしゃ",
-      "meaning": "highly maneuverable vehicle / high mobility vehicle / HMV"
-    },
-    {
-      "source_index": 7197,
-      "id": "2044850",
-      "term": "綱紀紊乱",
-      "reading": "こうきびんらん",
-      "meaning": "laxity in official discipline / public order being in disarray"
-    },
-    {
-      "source_index": 7198,
-      "id": "2833154",
-      "term": "高級官僚",
-      "reading": "こうきゅうかんりょう",
-      "meaning": "elite bureaucrat / high government official / high-ranking bureaucrat"
-    },
-    {
-      "source_index": 7199,
-      "id": "2356390",
-      "term": "高級言語",
-      "reading": "こうきゅうげんご",
-      "meaning": "high-level language"
-    },
     {
       "source_index": 7200,
       "id": "2432280",
@@ -7010,6 +6660,356 @@
       "term": "骨灰磁器",
       "reading": "こっかいじき",
       "meaning": "bone porcelain / bone china"
+    },
+    {
+      "source_index": 8150,
+      "id": "2149050",
+      "term": "国会答弁",
+      "reading": "こっかいとうべん",
+      "meaning": "answers in the Diet"
+    },
+    {
+      "source_index": 8151,
+      "id": "2827739",
+      "term": "国家機関",
+      "reading": "こっかきかん",
+      "meaning": "organs of the state / machinery of the state"
+    },
+    {
+      "source_index": 8152,
+      "id": "2823780",
+      "term": "国家機密",
+      "reading": "こっかきみつ",
+      "meaning": "state secrets / secrets of the state"
+    },
+    {
+      "source_index": 8153,
+      "id": "2212850",
+      "term": "骨格模型",
+      "reading": "こっかくもけい",
+      "meaning": "(human) skeletal model"
+    },
+    {
+      "source_index": 8154,
+      "id": "1746570",
+      "term": "国家経済",
+      "reading": "こっかけいざい",
+      "meaning": "the national economy"
+    },
+    {
+      "source_index": 8155,
+      "id": "1746590",
+      "term": "国家権力",
+      "reading": "こっかけんりょく",
+      "meaning": "power of the state / government authority"
+    },
+    {
+      "source_index": 8156,
+      "id": "2096410",
+      "term": "国家元首",
+      "reading": "こっかげんしゅ",
+      "meaning": "head of a state"
+    },
+    {
+      "source_index": 8157,
+      "id": "2840744",
+      "term": "国家公安",
+      "reading": "こっかこうあん",
+      "meaning": "National Public Safety Commission"
+    },
+    {
+      "source_index": 8158,
+      "id": "2858994",
+      "term": "国家作用",
+      "reading": "こっかさよう",
+      "meaning": "state action / national action"
+    },
+    {
+      "source_index": 8159,
+      "id": "2605600",
+      "term": "国家財政",
+      "reading": "こっかざいせい",
+      "meaning": "national finance / central government finance"
+    },
+    {
+      "source_index": 8160,
+      "id": "2832264",
+      "term": "国家資格",
+      "reading": "こっかしかく",
+      "meaning": "national certification / national qualification / government certification"
+    },
+    {
+      "source_index": 8161,
+      "id": "1657300",
+      "term": "国家試験",
+      "reading": "こっかしけん",
+      "meaning": "state examination / national examination"
+    },
+    {
+      "source_index": 8162,
+      "id": "1746540",
+      "term": "国家主義",
+      "reading": "こっかしゅぎ",
+      "meaning": "nationalism / statism"
+    },
+    {
+      "source_index": 8163,
+      "id": "2409000",
+      "term": "国家主権",
+      "reading": "こっかしゅけん",
+      "meaning": "state sovereignty / national sovereignty"
+    },
+    {
+      "source_index": 8164,
+      "id": "1286200",
+      "term": "国家主席",
+      "reading": "こっかしゅせき",
+      "meaning": "head of state"
+    },
+    {
+      "source_index": 8165,
+      "id": "2749960",
+      "term": "国家承認",
+      "reading": "こっかしょうにん",
+      "meaning": "diplomatic recognition (of a country)"
+    },
+    {
+      "source_index": 8166,
+      "id": "2135240",
+      "term": "国家神道",
+      "reading": "こっかしんとう",
+      "meaning": "State Shintō / nationalistic and ideological form of Shinto, abolished in 1945"
+    },
+    {
+      "source_index": 8167,
+      "id": "2045260",
+      "term": "国家存亡",
+      "reading": "こっかそんぼう",
+      "meaning": "the fate of a nation / life-or-death (situation) for a nation / national crisis"
+    },
+    {
+      "source_index": 8168,
+      "id": "1992960",
+      "term": "国家体制",
+      "reading": "こっかたいせい",
+      "meaning": "national polity"
+    },
+    {
+      "source_index": 8169,
+      "id": "2045270",
+      "term": "国家多事",
+      "reading": "こっかたじ",
+      "meaning": "eventful times for the nation / the nation being in turmoil / the storm clouds gathering in the land"
+    },
+    {
+      "source_index": 8170,
+      "id": "2611730",
+      "term": "国家転覆",
+      "reading": "こっかてんぷく",
+      "meaning": "subversion (of the state)"
+    },
+    {
+      "source_index": 8171,
+      "id": "1286210",
+      "term": "国家独占",
+      "reading": "こっかどくせん",
+      "meaning": "state monopoly"
+    },
+    {
+      "source_index": 8172,
+      "id": "1746600",
+      "term": "国家賠償",
+      "reading": "こっかばいしょう",
+      "meaning": "state indemnity / state compensation"
+    },
+    {
+      "source_index": 8173,
+      "id": "1746580",
+      "term": "国家補償",
+      "reading": "こっかほしょう",
+      "meaning": "state compensation / state reparations"
+    },
+    {
+      "source_index": 8174,
+      "id": "1992970",
+      "term": "国家予算",
+      "reading": "こっかよさん",
+      "meaning": "national budget"
+    },
+    {
+      "source_index": 8175,
+      "id": "2599820",
+      "term": "国家連合",
+      "reading": "こっかれんごう",
+      "meaning": "federation of states / confederation of nations"
+    },
+    {
+      "source_index": 8176,
+      "id": "2045280",
+      "term": "酷寒猛暑",
+      "reading": "こっかんもうしょ",
+      "meaning": "bitter cold and fierce heat"
+    },
+    {
+      "source_index": 8177,
+      "id": "2045300",
+      "term": "克己復礼",
+      "reading": "こっきふくれい",
+      "meaning": "exercising self-restraint and conforming to the rules of etiquette and formality"
+    },
+    {
+      "source_index": 8178,
+      "id": "2642010",
+      "term": "国境警察",
+      "reading": "こっきょうけいさつ",
+      "meaning": "border police"
+    },
+    {
+      "source_index": 8179,
+      "id": "2404170",
+      "term": "国境警備",
+      "reading": "こっきょうけいび",
+      "meaning": "border security"
+    },
+    {
+      "source_index": 8180,
+      "id": "1992990",
+      "term": "国境地帯",
+      "reading": "こっきょうちたい",
+      "meaning": "border area / border zone / borderland"
+    },
+    {
+      "source_index": 8181,
+      "id": "2826496",
+      "term": "国共内戦",
+      "reading": "こっきょうないせん",
+      "meaning": "Chinese Civil War (1927-1937, 1946-1949)"
+    },
+    {
+      "source_index": 8182,
+      "id": "2146960",
+      "term": "国境紛争",
+      "reading": "こっきょうふんそう",
+      "meaning": "international border dispute"
+    },
+    {
+      "source_index": 8183,
+      "id": "2045310",
+      "term": "刻苦精進",
+      "reading": "こっくしょうじん",
+      "meaning": "being arduous / working diligently enduring hardships / making a strenuous effort"
+    },
+    {
+      "source_index": 8184,
+      "id": "2045320",
+      "term": "刻苦精励",
+      "reading": "こっくせいれい",
+      "meaning": "being arduous / working diligently enduring hardships / making a strenuous effort"
+    },
+    {
+      "source_index": 8185,
+      "id": "1285940",
+      "term": "刻苦勉励",
+      "reading": "こっくべんれい",
+      "meaning": "being arduous / working diligently enduring hardships"
+    },
+    {
+      "source_index": 8186,
+      "id": "2045330",
+      "term": "滑稽諧謔",
+      "reading": "こっけいかいぎゃく",
+      "meaning": "smooth-talking and humorous / with jocose and comical airs"
+    },
+    {
+      "source_index": 8187,
+      "id": "2030280",
+      "term": "滑稽洒脱",
+      "reading": "こっけいしゃだつ",
+      "meaning": "smooth-talking and polished / witty / free, easy, and urbane"
+    },
+    {
+      "source_index": 8188,
+      "id": "2845812",
+      "term": "国公私立",
+      "reading": "こっこうしりつ",
+      "meaning": "national, public, and private"
+    },
+    {
+      "source_index": 8189,
+      "id": "2857349",
+      "term": "国交樹立",
+      "reading": "こっこうじゅりつ",
+      "meaning": "establishment of diplomatic relations"
+    },
+    {
+      "source_index": 8190,
+      "id": "2737810",
+      "term": "国交断絶",
+      "reading": "こっこうだんぜつ",
+      "meaning": "breakup of diplomatic relations / diplomatic break"
+    },
+    {
+      "source_index": 8191,
+      "id": "1746610",
+      "term": "国庫債権",
+      "reading": "こっこさいけん",
+      "meaning": "treasury bond"
+    },
+    {
+      "source_index": 8192,
+      "id": "2019270",
+      "term": "国庫補助",
+      "reading": "こっこほじょ",
+      "meaning": "government subsidy / state aid / state assistance"
+    },
+    {
+      "source_index": 8193,
+      "id": "1668080",
+      "term": "骨相学者",
+      "reading": "こっそうがくしゃ",
+      "meaning": "phrenologist"
+    },
+    {
+      "source_index": 8194,
+      "id": "1668150",
+      "term": "骨董趣味",
+      "reading": "こっとうしゅみ",
+      "meaning": "antiquarianism"
+    },
+    {
+      "source_index": 8195,
+      "id": "1651000",
+      "term": "骨董品店",
+      "reading": "こっとうひんてん",
+      "meaning": "antique store / curio store"
+    },
+    {
+      "source_index": 8196,
+      "id": "2082220",
+      "term": "骨董品屋",
+      "reading": "こっとうひんや",
+      "meaning": "antique shop"
+    },
+    {
+      "source_index": 8197,
+      "id": "1534760",
+      "term": "木端微塵",
+      "reading": "こっぱみじん",
+      "meaning": "broken into small fragments / smashed to atoms / fragments and splinters"
+    },
+    {
+      "source_index": 8198,
+      "id": "2854624",
+      "term": "骨関節炎",
+      "reading": "こつかんせつえん",
+      "meaning": "osteoarthritis"
+    },
+    {
+      "source_index": 8199,
+      "id": "1993330",
+      "term": "骨関節症",
+      "reading": "こつかんせつしょう",
+      "meaning": "osteoarthritis"
     }
   ]
 }
