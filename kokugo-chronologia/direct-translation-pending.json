@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 11258,
-  "english_only_remaining": 3742,
+  "already_direct_japanese": 11308,
+  "english_only_remaining": 3692,
   "english_only_rank_counts": {
-    "(blank)": 3742
+    "(blank)": 3692
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 11258,
-      "id": "1765490",
-      "term": "神権政治",
-      "reading": "しんけんせいじ",
-      "meaning": "theocracy"
-    },
-    {
-      "source_index": 11259,
-      "id": "2653300",
-      "term": "進撃命令",
-      "reading": "しんげきめいれい",
-      "meaning": "marching order / go-ahead"
-    },
-    {
-      "source_index": 11260,
-      "id": "2604400",
-      "term": "震源距離",
-      "reading": "しんげんきょり",
-      "meaning": "hypocentral distance"
-    },
-    {
-      "source_index": 11261,
-      "id": "2604370",
-      "term": "震源断層",
-      "reading": "しんげんだんそう",
-      "meaning": "earthquake source fault"
-    },
-    {
-      "source_index": 11262,
-      "id": "1359160",
-      "term": "信仰箇条",
-      "reading": "しんこうかじょう",
-      "meaning": "articles of faith"
-    },
-    {
-      "source_index": 11263,
-      "id": "1995770",
-      "term": "新興企業",
-      "reading": "しんこうきぎょう",
-      "meaning": "start-up company"
-    },
-    {
-      "source_index": 11264,
-      "id": "1359170",
-      "term": "信仰告白",
-      "reading": "しんこうこくはく",
-      "meaning": "profession of faith"
-    },
-    {
-      "source_index": 11265,
-      "id": "2227400",
-      "term": "新興財閥",
-      "reading": "しんこうざいばつ",
-      "meaning": "new zaibatsu (formed after the Meiji period)"
-    },
-    {
-      "source_index": 11266,
-      "id": "1720610",
-      "term": "新興宗教",
-      "reading": "しんこうしゅうきょう",
-      "meaning": "new religion"
-    },
-    {
-      "source_index": 11267,
-      "id": "5406716",
-      "term": "新光証券",
-      "reading": "しんこうしょうけん",
-      "meaning": "Shinko Securities"
-    },
-    {
-      "source_index": 11268,
-      "id": "5416912",
-      "term": "神鋼商事",
-      "reading": "しんこうしょうじ",
-      "meaning": "Shinsho Corporation"
-    },
-    {
-      "source_index": 11269,
-      "id": "1366070",
-      "term": "進行状況",
-      "reading": "しんこうじょうきょう",
-      "meaning": "state of progress"
-    },
-    {
-      "source_index": 11270,
-      "id": "1359200",
-      "term": "信仰生活",
-      "reading": "しんこうせいかつ",
-      "meaning": "life of faith / religious life"
-    },
-    {
-      "source_index": 11271,
-      "id": "2641190",
-      "term": "新興都市",
-      "reading": "しんこうとし",
-      "meaning": "boom town / emerging city / new town"
-    },
-    {
-      "source_index": 11272,
-      "id": "2442940",
-      "term": "新口動物",
-      "reading": "しんこうどうぶつ",
-      "meaning": "deuterostome"
-    },
-    {
-      "source_index": 11273,
-      "id": "2835128",
-      "term": "進行波炉",
-      "reading": "しんこうはろ",
-      "meaning": "traveling-wave reactor"
-    },
-    {
-      "source_index": 11274,
-      "id": "2152690",
-      "term": "進行方向",
-      "reading": "しんこうほうこう",
-      "meaning": "direction of travel / direction of movement"
-    },
-    {
-      "source_index": 11275,
-      "id": "2626840",
-      "term": "進行麻痺",
-      "reading": "しんこうまひ",
-      "meaning": "progressive paralysis (due to neurosyphilis) / general paresis"
-    },
-    {
-      "source_index": 11276,
-      "id": "2861171",
-      "term": "申告敬遠",
-      "reading": "しんこくけいえん",
-      "meaning": "intentional base on balls (through declaration)"
-    },
-    {
-      "source_index": 11277,
-      "id": "1764840",
-      "term": "申告納税",
-      "reading": "しんこくのうぜい",
-      "meaning": "self-assessed tax payment"
-    },
-    {
-      "source_index": 11278,
-      "id": "1939180",
-      "term": "申告用紙",
-      "reading": "しんこくようし",
-      "meaning": "(filling in) return form"
-    },
-    {
-      "source_index": 11279,
-      "id": "2854915",
-      "term": "新古書店",
-      "reading": "しんこしょてん",
-      "meaning": "secondhand bookstore dealing in relatively new books"
-    },
-    {
-      "source_index": 11280,
-      "id": "2834572",
-      "term": "心骨に刻する",
-      "reading": "しんこつにこくする",
-      "meaning": "to engrave in one's heart"
-    },
-    {
-      "source_index": 11281,
-      "id": "1361800",
-      "term": "新古典派",
-      "reading": "しんこてんは",
-      "meaning": "neoclassicism"
-    },
-    {
-      "source_index": 11282,
-      "id": "2614870",
-      "term": "新婚初夜",
-      "reading": "しんこんしょや",
-      "meaning": "wedding night"
-    },
-    {
-      "source_index": 11283,
-      "id": "1939010",
-      "term": "新婚生活",
-      "reading": "しんこんせいかつ",
-      "meaning": "newly-married life"
-    },
-    {
-      "source_index": 11284,
-      "id": "2858557",
-      "term": "神婚説話",
-      "reading": "しんこんせつわ",
-      "meaning": "tale of a marriage between a human and a god"
-    },
-    {
-      "source_index": 11285,
-      "id": "2851643",
-      "term": "新婚夫婦",
-      "reading": "しんこんふうふ",
-      "meaning": "newly married couple / newlywed couple / newlyweds"
-    },
-    {
-      "source_index": 11286,
-      "id": "1361830",
-      "term": "新婚旅行",
-      "reading": "しんこんりょこう",
-      "meaning": "honeymoon"
-    },
-    {
-      "source_index": 11287,
-      "id": "2843649",
-      "term": "信号炎管",
-      "reading": "しんごうえんかん",
-      "meaning": "signal flare / fusee"
-    },
-    {
-      "source_index": 11288,
-      "id": "2569160",
-      "term": "信号強度",
-      "reading": "しんごうきょうど",
-      "meaning": "signal strength / signal intensity / SS"
-    },
-    {
-      "source_index": 11289,
-      "id": "2366640",
-      "term": "信号検出",
-      "reading": "しんごうけんしゅつ",
-      "meaning": "signal detection"
-    },
-    {
-      "source_index": 11290,
-      "id": "2857619",
-      "term": "信号拳銃",
-      "reading": "しんごうけんじゅう",
-      "meaning": "flare gun / Very pistol / signal pistol"
-    },
-    {
-      "source_index": 11291,
-      "id": "2366650",
-      "term": "信号再生",
-      "reading": "しんごうさいせい",
-      "meaning": "signal regeneration"
-    },
-    {
-      "source_index": 11292,
-      "id": "2366680",
-      "term": "信号処理",
-      "reading": "しんごうしょり",
-      "meaning": "signal processing"
-    },
-    {
-      "source_index": 11293,
-      "id": "2366690",
-      "term": "信号成形",
-      "reading": "しんごうせいけい",
-      "meaning": "signal transformation / signal shaping"
-    },
-    {
-      "source_index": 11294,
-      "id": "2366670",
-      "term": "信号手順",
-      "reading": "しんごうてじゅん",
-      "meaning": "signalling protocol"
-    },
-    {
-      "source_index": 11295,
-      "id": "1359290",
-      "term": "信号電波",
-      "reading": "しんごうでんぱ",
-      "meaning": "beam (signal)"
-    },
-    {
-      "source_index": 11296,
-      "id": "2832762",
-      "term": "信号符字",
-      "reading": "しんごうふじ",
-      "meaning": "call sign (esp. maritime) / distinctive letters"
-    },
-    {
-      "source_index": 11297,
-      "id": "2366720",
-      "term": "信号変換",
-      "reading": "しんごうへんかん",
-      "meaning": "signal transformation / signal shaping"
-    },
-    {
-      "source_index": 11298,
-      "id": "1359320",
-      "term": "信号無視",
-      "reading": "しんごうむし",
-      "meaning": "ignoring a traffic light / red-light violation / running a red light"
-    },
-    {
-      "source_index": 11299,
-      "id": "2366740",
-      "term": "信号劣化",
-      "reading": "しんごうれっか",
-      "meaning": "signal degradation"
-    },
-    {
-      "source_index": 11300,
-      "id": "2604130",
-      "term": "真言神道",
-      "reading": "しんごんしんとう",
-      "meaning": "Shingon Shinto / any branch of Shinto based on Shingon Buddhist teachings"
-    },
-    {
-      "source_index": 11301,
-      "id": "2813100",
-      "term": "審査請求",
-      "reading": "しんさせいきゅう",
-      "meaning": "formal objection (to an administrative disposition) / request for examination (of a patent) / request for administrative review"
-    },
-    {
-      "source_index": 11302,
-      "id": "2866625",
-      "term": "診察時間",
-      "reading": "しんさつじかん",
-      "meaning": "consultation hours / doctor's office hours / surgery hours"
-    },
-    {
-      "source_index": 11303,
-      "id": "2047460",
-      "term": "辛酸甘苦",
-      "reading": "しんさんかんく",
-      "meaning": "hardships and joys / tasting the sweets and bitters of life / being well-versed in the ways of the world (having seen much of life)"
-    },
-    {
-      "source_index": 11304,
-      "id": "2047470",
-      "term": "神算鬼謀",
-      "reading": "しんさんきぼう",
-      "meaning": "inscrutable stratagem / ingenious scheme"
-    },
-    {
-      "source_index": 11305,
-      "id": "2858915",
-      "term": "辛酸をなめる",
-      "reading": "しんさんをなめる",
-      "meaning": "to undergo many hardships / to taste the bitters of life"
-    },
-    {
-      "source_index": 11306,
-      "id": "1768970",
-      "term": "深山幽谷",
-      "reading": "しんざんゆうこく",
-      "meaning": "deep mountain valleys"
-    },
-    {
-      "source_index": 11307,
-      "id": "1364960",
-      "term": "紳士協定",
-      "reading": "しんしきょうてい",
-      "meaning": "gentlemen's agreement"
-    },
     {
       "source_index": 11308,
       "id": "2831382",
@@ -7010,6 +6660,356 @@
       "term": "従属栄養",
       "reading": "じゅうぞくえいよう",
       "meaning": "heterotrophy"
+    },
+    {
+      "source_index": 12258,
+      "id": "2870967",
+      "term": "従属関係",
+      "reading": "じゅうぞくかんけい",
+      "meaning": "superior-subordinate relation / subordination / dependency"
+    },
+    {
+      "source_index": 12259,
+      "id": "2005460",
+      "term": "縦続接続",
+      "reading": "じゅうぞくせつぞく",
+      "meaning": "cascade connection"
+    },
+    {
+      "source_index": 12260,
+      "id": "1335350",
+      "term": "従属変数",
+      "reading": "じゅうぞくへんすう",
+      "meaning": "dependent variable"
+    },
+    {
+      "source_index": 12261,
+      "id": "2795050",
+      "term": "渋滞緩和",
+      "reading": "じゅうたいかんわ",
+      "meaning": "alleviation of congestion (esp. traffic)"
+    },
+    {
+      "source_index": 12262,
+      "id": "2650650",
+      "term": "住宅金融",
+      "reading": "じゅうたくきんゆう",
+      "meaning": "housing finance"
+    },
+    {
+      "source_index": 12263,
+      "id": "2653140",
+      "term": "住宅行政",
+      "reading": "じゅうたくぎょうせい",
+      "meaning": "housing administration"
+    },
+    {
+      "source_index": 12264,
+      "id": "2661960",
+      "term": "住宅再建",
+      "reading": "じゅうたくさいけん",
+      "meaning": "rebuilding homes / house reconstruction"
+    },
+    {
+      "source_index": 12265,
+      "id": "1691870",
+      "term": "住宅産業",
+      "reading": "じゅうたくさんぎょう",
+      "meaning": "the housing industry"
+    },
+    {
+      "source_index": 12266,
+      "id": "2851772",
+      "term": "住宅市場",
+      "reading": "じゅうたくしじょう",
+      "meaning": "housing market"
+    },
+    {
+      "source_index": 12267,
+      "id": "2653150",
+      "term": "住宅政策",
+      "reading": "じゅうたくせいさく",
+      "meaning": "housing policy"
+    },
+    {
+      "source_index": 12268,
+      "id": "2855120",
+      "term": "住宅設備",
+      "reading": "じゅうたくせつび",
+      "meaning": "household furnishings / home appliances"
+    },
+    {
+      "source_index": 12269,
+      "id": "2851597",
+      "term": "住宅団地",
+      "reading": "じゅうたくだんち",
+      "meaning": "housing development"
+    },
+    {
+      "source_index": 12270,
+      "id": "1334180",
+      "term": "住宅地区",
+      "reading": "じゅうたくちく",
+      "meaning": "residential district"
+    },
+    {
+      "source_index": 12271,
+      "id": "1334190",
+      "term": "住宅地帯",
+      "reading": "じゅうたくちたい",
+      "meaning": "housing belt development"
+    },
+    {
+      "source_index": 12272,
+      "id": "1937930",
+      "term": "住宅手当",
+      "reading": "じゅうたくてあて",
+      "meaning": "housing allowance"
+    },
+    {
+      "source_index": 12273,
+      "id": "2106650",
+      "term": "住宅扶助",
+      "reading": "じゅうたくふじょ",
+      "meaning": "housing assistance"
+    },
+    {
+      "source_index": 12274,
+      "id": "1937950",
+      "term": "住宅問題",
+      "reading": "じゅうたくもんだい",
+      "meaning": "housing problem"
+    },
+    {
+      "source_index": 12275,
+      "id": "2633750",
+      "term": "重炭酸塩",
+      "reading": "じゅうたんさんえん",
+      "meaning": "bicarbonate"
+    },
+    {
+      "source_index": 12276,
+      "id": "1570450",
+      "term": "絨毯爆撃",
+      "reading": "じゅうたんばくげき",
+      "meaning": "carpet bombing"
+    },
+    {
+      "source_index": 12277,
+      "id": "2265810",
+      "term": "十大弟子",
+      "reading": "じゅうだいでし",
+      "meaning": "the ten great disciples (of Buddha)"
+    },
+    {
+      "source_index": 12278,
+      "id": "1995040",
+      "term": "重大犯罪",
+      "reading": "じゅうだいはんざい",
+      "meaning": "serious crime / felony"
+    },
+    {
+      "source_index": 12279,
+      "id": "1938010",
+      "term": "重大問題",
+      "reading": "じゅうだいもんだい",
+      "meaning": "serious (vital) question / a grave issue / a matter of grave concern"
+    },
+    {
+      "source_index": 12280,
+      "id": "1336580",
+      "term": "重点主義",
+      "reading": "じゅうてんしゅぎ",
+      "meaning": "priority system"
+    },
+    {
+      "source_index": 12281,
+      "id": "2853150",
+      "term": "重点措置",
+      "reading": "じゅうてんそち",
+      "meaning": "semi-state of emergency COVID-19 measures / COVID-19 pre-emergency status"
+    },
+    {
+      "source_index": 12282,
+      "id": "2849227",
+      "term": "充填豆腐",
+      "reading": "じゅうてんとうふ",
+      "meaning": "jūten tofu / (silken) tofu formed directly in its own packaging"
+    },
+    {
+      "source_index": 12283,
+      "id": "2363510",
+      "term": "充填文字",
+      "reading": "じゅうてんもじ",
+      "meaning": "fill character"
+    },
+    {
+      "source_index": 12284,
+      "id": "1937970",
+      "term": "充電期間",
+      "reading": "じゅうでんきかん",
+      "meaning": "charging period / time required to charge a battery"
+    },
+    {
+      "source_index": 12285,
+      "id": "2123300",
+      "term": "重電機器",
+      "reading": "じゅうでんきき",
+      "meaning": "heavy electrical machinery"
+    },
+    {
+      "source_index": 12286,
+      "id": "2866488",
+      "term": "充電電流",
+      "reading": "じゅうでんでんりゅう",
+      "meaning": "charging current"
+    },
+    {
+      "source_index": 12287,
+      "id": "2443520",
+      "term": "柔道整復",
+      "reading": "じゅうどうせいふく",
+      "meaning": "judo therapy / traditional non-surgical osteopathic tissue and bone manipulation therapy"
+    },
+    {
+      "source_index": 12288,
+      "id": "2853385",
+      "term": "重度障害",
+      "reading": "じゅうどしょうがい",
+      "meaning": "severe disability"
+    },
+    {
+      "source_index": 12289,
+      "id": "2046610",
+      "term": "柔軟思考",
+      "reading": "じゅうなんしこう",
+      "meaning": "a flexible way of thinking"
+    },
+    {
+      "source_index": 12290,
+      "id": "1827310",
+      "term": "柔軟体操",
+      "reading": "じゅうなんたいそう",
+      "meaning": "calisthenics"
+    },
+    {
+      "source_index": 12291,
+      "id": "2046620",
+      "term": "柔軟路線",
+      "reading": "じゅうなんろせん",
+      "meaning": "(taking) a flexible approach (to)"
+    },
+    {
+      "source_index": 12292,
+      "id": "2211200",
+      "term": "十二因縁",
+      "reading": "じゅうにいんねん",
+      "meaning": "the twelve nidanas (continuum of twelve phases that lead to suffering)"
+    },
+    {
+      "source_index": 12293,
+      "id": "2860606",
+      "term": "十二角形",
+      "reading": "じゅうにかくけい",
+      "meaning": "dodecagon"
+    },
+    {
+      "source_index": 12294,
+      "id": "1334930",
+      "term": "十二指腸",
+      "reading": "じゅうにしちょう",
+      "meaning": "duodenum"
+    },
+    {
+      "source_index": 12295,
+      "id": "1334920",
+      "term": "十二使徒",
+      "reading": "じゅうにしと",
+      "meaning": "Twelve Apostles"
+    },
+    {
+      "source_index": 12296,
+      "id": "2849749",
+      "term": "十二進法",
+      "reading": "じゅうにしんほう",
+      "meaning": "duodecimal system / base twelve system"
+    },
+    {
+      "source_index": 12297,
+      "id": "2265820",
+      "term": "十二神将",
+      "reading": "じゅうにじんしょう",
+      "meaning": "the twelve divine generals (of Bhaisajyaguru)"
+    },
+    {
+      "source_index": 12298,
+      "id": "2829745",
+      "term": "十二面体",
+      "reading": "じゅうにめんたい",
+      "meaning": "dodecahedron"
+    },
+    {
+      "source_index": 12299,
+      "id": "1334840",
+      "term": "十人十色",
+      "reading": "じゅうにんといろ",
+      "meaning": "several men, several minds / everyone has his own (ideas, tastes, interests, etc.) / different strokes for different folks"
+    },
+    {
+      "source_index": 12300,
+      "id": "1335020",
+      "term": "十年一日",
+      "reading": "じゅうねんいちじつ",
+      "meaning": "without intermission for ten (long) years / with constancy of purpose for ten (long) years / in the same old rut for years on end"
+    },
+    {
+      "source_index": 12301,
+      "id": "2843238",
+      "term": "十年選手",
+      "reading": "じゅうねんせんしゅ",
+      "meaning": "veteran player / experienced player"
+    },
+    {
+      "source_index": 12302,
+      "id": "1745100",
+      "term": "十年一昔",
+      "reading": "じゅうねんひとむかし",
+      "meaning": "the pace of change makes ten years back seem like ancient history"
+    },
+    {
+      "source_index": 12303,
+      "id": "1336640",
+      "term": "重農主義",
+      "reading": "じゅうのうしゅぎ",
+      "meaning": "physiocracy"
+    },
+    {
+      "source_index": 12304,
+      "id": "5358219",
+      "term": "十八銀行",
+      "reading": "じゅうはちぎんこう",
+      "meaning": "Eighteenth Bank, Limited"
+    },
+    {
+      "source_index": 12305,
+      "id": "2579730",
+      "term": "十八檀林",
+      "reading": "じゅうはちだんりん",
+      "meaning": "eighteen centers of Buddhist learning (of the Pure Land sect in the Kanto region)"
+    },
+    {
+      "source_index": 12306,
+      "id": "2265780",
+      "term": "十八羅漢",
+      "reading": "じゅうはちらかん",
+      "meaning": "the eighteen arhats"
+    },
+    {
+      "source_index": 12307,
+      "id": "1686330",
+      "term": "重爆撃機",
+      "reading": "じゅうばくげきき",
+      "meaning": "a heavy bomber"
     }
   ]
 }
