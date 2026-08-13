@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 8500,
-  "english_only_remaining": 6500,
+  "already_direct_japanese": 8550,
+  "english_only_remaining": 6450,
   "english_only_rank_counts": {
-    "(blank)": 6500
+    "(blank)": 6450
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,356 +13,6 @@
   "part_start": 800,
   "part_end": 899,
   "targets": [
-    {
-      "source_index": 9300,
-      "id": "1296920",
-      "term": "財政問題",
-      "reading": "ざいせいもんだい",
-      "meaning": "economic problem / financial problem"
-    },
-    {
-      "source_index": 9301,
-      "id": "2837569",
-      "term": "在籍専従",
-      "reading": "ざいせきせんじゅう",
-      "meaning": "company employee working full-time as a union official"
-    },
-    {
-      "source_index": 9302,
-      "id": "2865725",
-      "term": "在胎週数",
-      "reading": "ざいたいしゅうすう",
-      "meaning": "gestational age (in weeks)"
-    },
-    {
-      "source_index": 9303,
-      "id": "2127350",
-      "term": "在宅医療",
-      "reading": "ざいたくいりょう",
-      "meaning": "home healthcare / medical treatment received at home"
-    },
-    {
-      "source_index": 9304,
-      "id": "2653810",
-      "term": "在宅起訴",
-      "reading": "ざいたくきそ",
-      "meaning": "indictment without arrest / house arrest / prosecution without physical restraint"
-    },
-    {
-      "source_index": 9305,
-      "id": "2797800",
-      "term": "在宅教育",
-      "reading": "ざいたくきょういく",
-      "meaning": "homeschooling"
-    },
-    {
-      "source_index": 9306,
-      "id": "1296550",
-      "term": "在宅勤務",
-      "reading": "ざいたくきんむ",
-      "meaning": "working at home / telecommuting / telework"
-    },
-    {
-      "source_index": 9307,
-      "id": "2835769",
-      "term": "在宅健診",
-      "reading": "ざいたくけんしん",
-      "meaning": "do-it-yourself health check / home health check"
-    },
-    {
-      "source_index": 9308,
-      "id": "2839189",
-      "term": "在宅福祉",
-      "reading": "ざいたくふくし",
-      "meaning": "in-home welfare service / home-based care"
-    },
-    {
-      "source_index": 9309,
-      "id": "1296950",
-      "term": "財団法人",
-      "reading": "ざいだんほうじん",
-      "meaning": "incorporated foundation / juridical foundation"
-    },
-    {
-      "source_index": 9310,
-      "id": "2852039",
-      "term": "在沖米軍",
-      "reading": "ざいちゅうべいぐん",
-      "meaning": "US troops stationed in Okinawa"
-    },
-    {
-      "source_index": 9311,
-      "id": "1296570",
-      "term": "在日米軍",
-      "reading": "ざいにちべいぐん",
-      "meaning": "US Forces, Japan / USFJ"
-    },
-    {
-      "source_index": 9312,
-      "id": "2589640",
-      "term": "在任期間",
-      "reading": "ざいにんきかん",
-      "meaning": "term of office / tenure / incumbency"
-    },
-    {
-      "source_index": 9313,
-      "id": "2439370",
-      "term": "財閥解体",
-      "reading": "ざいばつかいたい",
-      "meaning": "dissolution of the zaibatsu (during the US occupation of Japan)"
-    },
-    {
-      "source_index": 9314,
-      "id": "2855069",
-      "term": "座位分娩",
-      "reading": "ざいぶんべん",
-      "meaning": "delivery in a sitting position / giving birth sitting"
-    },
-    {
-      "source_index": 9315,
-      "id": "1296600",
-      "term": "在米邦人",
-      "reading": "ざいべいほうじん",
-      "meaning": "Japanese people residing in the United States"
-    },
-    {
-      "source_index": 9316,
-      "id": "2852099",
-      "term": "財務会計",
-      "reading": "ざいむかいけい",
-      "meaning": "financial accounting"
-    },
-    {
-      "source_index": 9317,
-      "id": "1740950",
-      "term": "財務管理",
-      "reading": "ざいむかんり",
-      "meaning": "financial management"
-    },
-    {
-      "source_index": 9318,
-      "id": "1740960",
-      "term": "財務諸表",
-      "reading": "ざいむしょひょう",
-      "meaning": "financial statements"
-    },
-    {
-      "source_index": 9319,
-      "id": "2852091",
-      "term": "財務書類",
-      "reading": "ざいむしょるい",
-      "meaning": "financial documents"
-    },
-    {
-      "source_index": 9320,
-      "id": "2631460",
-      "term": "財務戦略",
-      "reading": "ざいむせんりゃく",
-      "meaning": "financial strategy"
-    },
-    {
-      "source_index": 9321,
-      "id": "1297020",
-      "term": "財務体質",
-      "reading": "ざいむたいしつ",
-      "meaning": "financial structure / financial constitution"
-    },
-    {
-      "source_index": 9322,
-      "id": "2098850",
-      "term": "財務大臣",
-      "reading": "ざいむだいじん",
-      "meaning": "Minister of Finance"
-    },
-    {
-      "source_index": 9323,
-      "id": "2869715",
-      "term": "財務長官",
-      "reading": "ざいむちょうかん",
-      "meaning": "Secretary of the Treasury (USA) / Treasury Secretary"
-    },
-    {
-      "source_index": 9324,
-      "id": "2665190",
-      "term": "財務理事",
-      "reading": "ざいむりじ",
-      "meaning": "director of finance / finance director"
-    },
-    {
-      "source_index": 9325,
-      "id": "2821920",
-      "term": "在野精神",
-      "reading": "ざいやせいしん",
-      "meaning": "spirit of defiance of the opposition party / anti-establishment mindset"
-    },
-    {
-      "source_index": 9326,
-      "id": "2845979",
-      "term": "在留期間",
-      "reading": "ざいりゅうきかん",
-      "meaning": "(permitted) period of stay (in a country) / authorized length of stay / duration of stay"
-    },
-    {
-      "source_index": 9327,
-      "id": "2202890",
-      "term": "在留資格",
-      "reading": "ざいりゅうしかく",
-      "meaning": "status of residence / residence status / visa status"
-    },
-    {
-      "source_index": 9328,
-      "id": "1296640",
-      "term": "在留邦人",
-      "reading": "ざいりゅうほうじん",
-      "meaning": "Japanese residents in another country / Japanese expatriates"
-    },
-    {
-      "source_index": 9329,
-      "id": "2836824",
-      "term": "材料科学",
-      "reading": "ざいりょうかがく",
-      "meaning": "materials science"
-    },
-    {
-      "source_index": 9330,
-      "id": "2836825",
-      "term": "材料工学",
-      "reading": "ざいりょうこうがく",
-      "meaning": "materials science and engineering"
-    },
-    {
-      "source_index": 9331,
-      "id": "5309451",
-      "term": "材料部会",
-      "reading": "ざいりょうぶかい",
-      "meaning": "Division of Materials Science and Technology"
-    },
-    {
-      "source_index": 9332,
-      "id": "2650310",
-      "term": "材料不足",
-      "reading": "ざいりょうぶそく",
-      "meaning": "materials shortage"
-    },
-    {
-      "source_index": 9333,
-      "id": "2415570",
-      "term": "材料力学",
-      "reading": "ざいりょうりきがく",
-      "meaning": "mechanics of materials / material mechanics"
-    },
-    {
-      "source_index": 9334,
-      "id": "1842790",
-      "term": "坐骨神経",
-      "reading": "ざこつしんけい",
-      "meaning": "sciatic nerve"
-    },
-    {
-      "source_index": 9335,
-      "id": "2823100",
-      "term": "坐作進退",
-      "reading": "ざさしんたい",
-      "meaning": "deportment / behavior / carriage"
-    },
-    {
-      "source_index": 9336,
-      "id": "2851427",
-      "term": "座席指定",
-      "reading": "ざせきしてい",
-      "meaning": "seat reservation / seat selection"
-    },
-    {
-      "source_index": 9337,
-      "id": "1291890",
-      "term": "座席番号",
-      "reading": "ざせきばんごう",
-      "meaning": "seat number"
-    },
-    {
-      "source_index": 9338,
-      "id": "2143790",
-      "term": "雑誌記者",
-      "reading": "ざっしきしゃ",
-      "meaning": "magazine journalist"
-    },
-    {
-      "source_index": 9339,
-      "id": "2143780",
-      "term": "雑誌記事",
-      "reading": "ざっしきじ",
-      "meaning": "magazine article"
-    },
-    {
-      "source_index": 9340,
-      "id": "2631970",
-      "term": "雑種強勢",
-      "reading": "ざっしゅきょうせい",
-      "meaning": "heterosis / hybrid vigor / hybrid vigour"
-    },
-    {
-      "source_index": 9341,
-      "id": "2440020",
-      "term": "雑種細胞",
-      "reading": "ざっしゅさいぼう",
-      "meaning": "hybrid cell"
-    },
-    {
-      "source_index": 9342,
-      "id": "2254650",
-      "term": "雑食動物",
-      "reading": "ざっしょくどうぶつ",
-      "meaning": "omnivore / omnivorous animal"
-    },
-    {
-      "source_index": 9343,
-      "id": "2858977",
-      "term": "雑踏事故",
-      "reading": "ざっとうじこ",
-      "meaning": "crowd incident (e.g. crowd crush, stampede)"
-    },
-    {
-      "source_index": 9344,
-      "id": "2358420",
-      "term": "雑音除去",
-      "reading": "ざつおんじょきょ",
-      "meaning": "normal mode rejection"
-    },
-    {
-      "source_index": 9345,
-      "id": "2357250",
-      "term": "座標格子",
-      "reading": "ざひょうこうし",
-      "meaning": "coordinate grid"
-    },
-    {
-      "source_index": 9346,
-      "id": "1291970",
-      "term": "座標変換",
-      "reading": "ざひょうへんかん",
-      "meaning": "coordinate transformation"
-    },
-    {
-      "source_index": 9347,
-      "id": "2420000",
-      "term": "ざまあ見ろ",
-      "reading": "ざまあみろ",
-      "meaning": "serves you right! / see what happens!"
-    },
-    {
-      "source_index": 9348,
-      "id": "2031000",
-      "term": "残虐非道",
-      "reading": "ざんぎゃくひどう",
-      "meaning": "inhumanity / atrocity"
-    },
-    {
-      "source_index": 9349,
-      "id": "2031010",
-      "term": "残虐無道",
-      "reading": "ざんぎゃくむどう",
-      "meaning": "inhumanity / atrocity"
-    },
     {
       "source_index": 9350,
       "id": "1754270",
@@ -712,6 +362,356 @@
       "term": "四海同胞",
       "reading": "しかいどうほう",
       "meaning": "universal brotherhood"
+    },
+    {
+      "source_index": 9400,
+      "id": "2417590",
+      "term": "四海波静か",
+      "reading": "しかいなみしずか",
+      "meaning": "The world is at peace"
+    },
+    {
+      "source_index": 9401,
+      "id": "2861864",
+      "term": "視界不良",
+      "reading": "しかいふりょう",
+      "meaning": "poor visibility"
+    },
+    {
+      "source_index": 9402,
+      "id": "2168160",
+      "term": "死海文書",
+      "reading": "しかいもんじょ",
+      "meaning": "Dead Sea scrolls"
+    },
+    {
+      "source_index": 9403,
+      "id": "2870666",
+      "term": "四角関係",
+      "reading": "しかくかんけい",
+      "meaning": "love quadrangle / four-way relationship"
+    },
+    {
+      "source_index": 9404,
+      "id": "2861670",
+      "term": "視覚教材",
+      "reading": "しかくきょうざい",
+      "meaning": "visual aids"
+    },
+    {
+      "source_index": 9405,
+      "id": "2827843",
+      "term": "視覚芸術",
+      "reading": "しかくげいじゅつ",
+      "meaning": "visual arts"
+    },
+    {
+      "source_index": 9406,
+      "id": "1759830",
+      "term": "視覚言語",
+      "reading": "しかくげんご",
+      "meaning": "visual language"
+    },
+    {
+      "source_index": 9407,
+      "id": "2250530",
+      "term": "視覚効果",
+      "reading": "しかくこうか",
+      "meaning": "visual effect"
+    },
+    {
+      "source_index": 9408,
+      "id": "2151930",
+      "term": "刺客候補",
+      "reading": "しかくこうほ",
+      "meaning": "candidate fielded by a political party to oust an incumbent of the same party"
+    },
+    {
+      "source_index": 9409,
+      "id": "1767130",
+      "term": "四角号碼",
+      "reading": "しかくごうま",
+      "meaning": "four-corner kanji character stroke classification system"
+    },
+    {
+      "source_index": 9410,
+      "id": "2870484",
+      "term": "視覚失認",
+      "reading": "しかくしつにん",
+      "meaning": "visual agnosia"
+    },
+    {
+      "source_index": 9411,
+      "id": "1633250",
+      "term": "四角四面",
+      "reading": "しかくしめん",
+      "meaning": "square / formal / prim"
+    },
+    {
+      "source_index": 9412,
+      "id": "2641560",
+      "term": "資格取得",
+      "reading": "しかくしゅとく",
+      "meaning": "acquisition of a qualification"
+    },
+    {
+      "source_index": 9413,
+      "id": "2852132",
+      "term": "視覚障害",
+      "reading": "しかくしょうがい",
+      "meaning": "visual impairment / vision impairment / vision loss"
+    },
+    {
+      "source_index": 9414,
+      "id": "2151940",
+      "term": "刺客戦術",
+      "reading": "しかくせんじゅつ",
+      "meaning": "(strategy of) fielding political candidates to unseat rivals in one's own party"
+    },
+    {
+      "source_index": 9415,
+      "id": "2526160",
+      "term": "歯科検診",
+      "reading": "しかけんしん",
+      "meaning": "dental exam / dental checkup"
+    },
+    {
+      "source_index": 9416,
+      "id": "2097980",
+      "term": "歯科大学",
+      "reading": "しかだいがく",
+      "meaning": "dental college / dental university"
+    },
+    {
+      "source_index": 9417,
+      "id": "1936500",
+      "term": "死活問題",
+      "reading": "しかつもんだい",
+      "meaning": "matter of life or death / life-and-death problem"
+    },
+    {
+      "source_index": 9418,
+      "id": "1313170",
+      "term": "歯科病院",
+      "reading": "しかびょういん",
+      "meaning": "dental hospital"
+    },
+    {
+      "source_index": 9419,
+      "id": "2835678",
+      "term": "敷かれたレール",
+      "reading": "しかれたレール",
+      "meaning": "path staked out for one (by someone else)"
+    },
+    {
+      "source_index": 9420,
+      "id": "1307440",
+      "term": "士官学校",
+      "reading": "しかんがっこう",
+      "meaning": "military academy"
+    },
+    {
+      "source_index": 9421,
+      "id": "2063380",
+      "term": "弛緩出血",
+      "reading": "しかんしゅっけつ",
+      "meaning": "atonic hemorrhage / atonic haemorrhage"
+    },
+    {
+      "source_index": 9422,
+      "id": "2701620",
+      "term": "子癇前症",
+      "reading": "しかんぜんしょう",
+      "meaning": "preeclampsia"
+    },
+    {
+      "source_index": 9423,
+      "id": "2135780",
+      "term": "只管打坐",
+      "reading": "しかんたざ",
+      "meaning": "shikantaza / meditation practice where one stays intensely focused without focusing on any particular object"
+    },
+    {
+      "source_index": 9424,
+      "id": "2227480",
+      "term": "市外局番",
+      "reading": "しがいきょくばん",
+      "meaning": "(telephone) area code (non-local)"
+    },
+    {
+      "source_index": 9425,
+      "id": "1770260",
+      "term": "市外通話",
+      "reading": "しがいつうわ",
+      "meaning": "toll call"
+    },
+    {
+      "source_index": 9426,
+      "id": "2862970",
+      "term": "市街電車",
+      "reading": "しがいでんしゃ",
+      "meaning": "streetcar / tram"
+    },
+    {
+      "source_index": 9427,
+      "id": "1308180",
+      "term": "市外電話",
+      "reading": "しがいでんわ",
+      "meaning": "long-distance call"
+    },
+    {
+      "source_index": 9428,
+      "id": "1767940",
+      "term": "私学助成",
+      "reading": "しがくじょせい",
+      "meaning": "subsidization of private schools (subsidisation)"
+    },
+    {
+      "source_index": 9429,
+      "id": "5743563",
+      "term": "滋賀県警",
+      "reading": "しがけんけい",
+      "meaning": "Shiga Prefectural Police (abbr)"
+    },
+    {
+      "source_index": 9430,
+      "id": "1313220",
+      "term": "歯牙疾患",
+      "reading": "しがしっかん",
+      "meaning": "dental disease"
+    },
+    {
+      "source_index": 9431,
+      "id": "5336161",
+      "term": "滋賀大学",
+      "reading": "しがだいがく",
+      "meaning": "Shiga University"
+    },
+    {
+      "source_index": 9432,
+      "id": "1767020",
+      "term": "四月馬鹿",
+      "reading": "しがつばか",
+      "meaning": "April fool"
+    },
+    {
+      "source_index": 9433,
+      "id": "2125430",
+      "term": "歯牙にもかけない",
+      "reading": "しがにもかけない",
+      "meaning": "taking no notice of / paying no attention to"
+    },
+    {
+      "source_index": 9434,
+      "id": "2068130",
+      "term": "敷居が高い",
+      "reading": "しきいがたかい",
+      "meaning": "having a high threshold (for entry) / difficult to approach / feeling awkward to go to (of someone's home)"
+    },
+    {
+      "source_index": 9435,
+      "id": "2045730",
+      "term": "士気旺盛",
+      "reading": "しきおうせい",
+      "meaning": "morale being very high / heightened fighting spirit"
+    },
+    {
+      "source_index": 9436,
+      "id": "2676450",
+      "term": "色覚異常",
+      "reading": "しきかくいじょう",
+      "meaning": "color vision deficiency / colour vision deficiency / CVD"
+    },
+    {
+      "source_index": 9437,
+      "id": "1995620",
+      "term": "色覚障害",
+      "reading": "しきかくしょうがい",
+      "meaning": "color-blindness / colour-blindness"
+    },
+    {
+      "source_index": 9438,
+      "id": "2644050",
+      "term": "指揮系統",
+      "reading": "しきけいとう",
+      "meaning": "chain of command"
+    },
+    {
+      "source_index": 9439,
+      "id": "2045740",
+      "term": "士気高揚",
+      "reading": "しきこうよう",
+      "meaning": "raising morale / lifting of morale"
+    },
+    {
+      "source_index": 9440,
+      "id": "1818030",
+      "term": "色彩感覚",
+      "reading": "しきさいかんかく",
+      "meaning": "sense of color / sense of colour"
+    },
+    {
+      "source_index": 9441,
+      "id": "2676510",
+      "term": "色彩設計",
+      "reading": "しきさいせっけい",
+      "meaning": "color scheme / colour scheme / color design"
+    },
+    {
+      "source_index": 9442,
+      "id": "1818040",
+      "term": "色彩調節",
+      "reading": "しきさいちょうせつ",
+      "meaning": "color control / colour control"
+    },
+    {
+      "source_index": 9443,
+      "id": "2038620",
+      "term": "識者評論",
+      "reading": "しきしゃひょうろん",
+      "meaning": "a word from the wise"
+    },
+    {
+      "source_index": 9444,
+      "id": "2233580",
+      "term": "式叉摩那",
+      "reading": "しきしゃまな",
+      "meaning": "probationary nun (undergoing a two-year probationary period before receiving ordainment)"
+    },
+    {
+      "source_index": 9445,
+      "id": "2666890",
+      "term": "識字教育",
+      "reading": "しきじきょういく",
+      "meaning": "literacy education"
+    },
+    {
+      "source_index": 9446,
+      "id": "2839764",
+      "term": "色情倒錯",
+      "reading": "しきじょうとうさく",
+      "meaning": "paraphilia / sexual deviancy"
+    },
+    {
+      "source_index": 9447,
+      "id": "1357840",
+      "term": "色即是空",
+      "reading": "しきそくぜくう",
+      "meaning": "form is emptiness / matter is void / all is vanity"
+    },
+    {
+      "source_index": 9448,
+      "id": "1818020",
+      "term": "色素細胞",
+      "reading": "しきそさいぼう",
+      "meaning": "pigment cell"
+    },
+    {
+      "source_index": 9449,
+      "id": "2063580",
+      "term": "士気阻喪",
+      "reading": "しきそそう",
+      "meaning": "demoralization / collapse of morale / one's morale being shaken"
     }
   ]
 }

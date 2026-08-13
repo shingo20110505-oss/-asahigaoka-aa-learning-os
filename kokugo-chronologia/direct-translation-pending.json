@@ -1,366 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 8500,
-  "english_only_remaining": 6500,
+  "already_direct_japanese": 8550,
+  "english_only_remaining": 6450,
   "english_only_rank_counts": {
-    "(blank)": 6500
+    "(blank)": 6450
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 8500,
-      "id": "2468310",
-      "term": "五月革命",
-      "reading": "ごがつかくめい",
-      "meaning": "May 68 (period of civil unrest in France; May-June 1968)"
-    },
-    {
-      "source_index": 8501,
-      "id": "1268210",
-      "term": "五月人形",
-      "reading": "ごがつにんぎょう",
-      "meaning": "Boys' May Festival dolls"
-    },
-    {
-      "source_index": 8502,
-      "id": "1829550",
-      "term": "護岸工事",
-      "reading": "ごがんこうじ",
-      "meaning": "levee protection works"
-    },
-    {
-      "source_index": 8503,
-      "id": "2786390",
-      "term": "五畿七道",
-      "reading": "ごきしちどう",
-      "meaning": "the five home provinces and seven districts of ancient Japan"
-    },
-    {
-      "source_index": 8504,
-      "id": "2834562",
-      "term": "呉牛月に喘ぐ",
-      "reading": "ごぎゅうつきにあえぐ",
-      "meaning": "to be overanxious / to worry needlessly"
-    },
-    {
-      "source_index": 8505,
-      "id": "2870849",
-      "term": "五行思想",
-      "reading": "ごぎょうしそう",
-      "meaning": "theory of the five elements (in Chinese philosophy: wood, fire, earth, metal and water) / five phases theory / wuxing theory"
-    },
-    {
-      "source_index": 8506,
-      "id": "2830476",
-      "term": "五行六信",
-      "reading": "ごぎょうろくしん",
-      "meaning": "the five pillars of Islam and six articles of faith"
-    },
-    {
-      "source_index": 8507,
-      "id": "2030580",
-      "term": "極悪非道",
-      "reading": "ごくあくひどう",
-      "meaning": "inhuman / heinous / atrocious"
-    },
-    {
-      "source_index": 8508,
-      "id": "2833987",
-      "term": "極重悪人",
-      "reading": "ごくじゅうあくにん",
-      "meaning": "utter villain / atrocious fiend / devil"
-    },
-    {
-      "source_index": 8509,
-      "id": "1828410",
-      "term": "獄中日記",
-      "reading": "ごくちゅうにっき",
-      "meaning": "prison diary"
-    },
-    {
-      "source_index": 8510,
-      "id": "2549200",
-      "term": "極超音速",
-      "reading": "ごくちょうおんそく",
-      "meaning": "hypersonic speed"
-    },
-    {
-      "source_index": 8511,
-      "id": "1625290",
-      "term": "極超短波",
-      "reading": "ごくちょうたんぱ",
-      "meaning": "ultrahigh frequency / UHF / ultrashort waves"
-    },
-    {
-      "source_index": 8512,
-      "id": "2640840",
-      "term": "極秘事項",
-      "reading": "ごくひじこう",
-      "meaning": "closely-guarded secret / top secret"
-    },
-    {
-      "source_index": 8513,
-      "id": "1933460",
-      "term": "極秘情報",
-      "reading": "ごくひじょうほう",
-      "meaning": "classified information / top secret"
-    },
-    {
-      "source_index": 8514,
-      "id": "2532600",
-      "term": "極秘任務",
-      "reading": "ごくひにんむ",
-      "meaning": "top secret mission"
-    },
-    {
-      "source_index": 8515,
-      "id": "1760700",
-      "term": "極楽往生",
-      "reading": "ごくらくおうじょう",
-      "meaning": "rebirth in paradise / peaceful death"
-    },
-    {
-      "source_index": 8516,
-      "id": "2045130",
-      "term": "極楽極楽",
-      "reading": "ごくらくごくらく",
-      "meaning": "absolute heaven / sheer bliss"
-    },
-    {
-      "source_index": 8517,
-      "id": "1760710",
-      "term": "極楽浄土",
-      "reading": "ごくらくじょうど",
-      "meaning": "Amitabha's Pure Land / Sukhavati"
-    },
-    {
-      "source_index": 8518,
-      "id": "2868742",
-      "term": "極楽世界",
-      "reading": "ごくらくせかい",
-      "meaning": "Sukhavati / Amitabha's Pure Land / land of Perfect Bliss"
-    },
-    {
-      "source_index": 8519,
-      "id": "1629590",
-      "term": "極楽鳥花",
-      "reading": "ごくらくちょうか",
-      "meaning": "bird of paradise flower / Strelitzia reginae"
-    },
-    {
-      "source_index": 8520,
-      "id": "2030590",
-      "term": "極楽とんぼ",
-      "reading": "ごくらくとんぼ",
-      "meaning": "happy-go-lucky fellow / easygoing and indifferent person / pococurante"
-    },
-    {
-      "source_index": 8521,
-      "id": "2825930",
-      "term": "互恵関係",
-      "reading": "ごけいかんけい",
-      "meaning": "reciprocal relationship / mutually beneficial relations / relationship with benefits to both parties"
-    },
-    {
-      "source_index": 8522,
-      "id": "1694970",
-      "term": "互恵関税",
-      "reading": "ごけいかんぜい",
-      "meaning": "reciprocal tariff"
-    },
-    {
-      "source_index": 8523,
-      "id": "2866972",
-      "term": "互恵主義",
-      "reading": "ごけいしゅぎ",
-      "meaning": "reciprocity / reciprocity principle"
-    },
-    {
-      "source_index": 8524,
-      "id": "1694950",
-      "term": "互恵条約",
-      "reading": "ごけいじょうやく",
-      "meaning": "reciprocal treaty / treaty of reciprocity"
-    },
-    {
-      "source_index": 8525,
-      "id": "1271080",
-      "term": "語形変化",
-      "reading": "ごけいへんか",
-      "meaning": "inflection of words (e.g. declension of nouns and conjugation of verbs)"
-    },
-    {
-      "source_index": 8526,
-      "id": "1694960",
-      "term": "互恵貿易",
-      "reading": "ごけいぼうえき",
-      "meaning": "reciprocal trade"
-    },
-    {
-      "source_index": 8527,
-      "id": "2165650",
-      "term": "後家蜘蛛",
-      "reading": "ごけぐも",
-      "meaning": "widow spider (of genus Latrodectus)"
-    },
-    {
-      "source_index": 8528,
-      "id": "1829610",
-      "term": "護憲運動",
-      "reading": "ごけんうんどう",
-      "meaning": "movement to defend the Constitution"
-    },
-    {
-      "source_index": 8529,
-      "id": "2864915",
-      "term": "語源俗解",
-      "reading": "ごげんぞっかい",
-      "meaning": "folk etymology / popular (but unfounded) etymology"
-    },
-    {
-      "source_index": 8530,
-      "id": "2833034",
-      "term": "後光効果",
-      "reading": "ごこうこうか",
-      "meaning": "halo effect"
-    },
-    {
-      "source_index": 8531,
-      "id": "2148760",
-      "term": "五公五民",
-      "reading": "ごこうごみん",
-      "meaning": "land-tax system during the Edo period under which the government took half of the year's crop and the farmers kept the other half"
-    },
-    {
-      "source_index": 8532,
-      "id": "1829560",
-      "term": "護国神社",
-      "reading": "ごこくじんじゃ",
-      "meaning": "shrine honoring war dead / shrine honouring war dead"
-    },
-    {
-      "source_index": 8533,
-      "id": "2045150",
-      "term": "五穀豊穣",
-      "reading": "ごこくほうじょう",
-      "meaning": "huge harvest (of the five grains) / bumper crop / abundant crop"
-    },
-    {
-      "source_index": 8534,
-      "id": "2838730",
-      "term": "午後零時",
-      "reading": "ごごれいじ",
-      "meaning": "noon / 12pm"
-    },
-    {
-      "source_index": 8535,
-      "id": "2045160",
-      "term": "五言絶句",
-      "reading": "ごごんぜっく",
-      "meaning": "poem of four lines, each of five (Chinese) characters"
-    },
-    {
-      "source_index": 8536,
-      "id": "2045170",
-      "term": "五言律詩",
-      "reading": "ごごんりっし",
-      "meaning": "poem of eight lines, each of five (Chinese) characters"
-    },
-    {
-      "source_index": 8537,
-      "id": "2849642",
-      "term": "誤差拡散",
-      "reading": "ごさかくさん",
-      "meaning": "error diffusion / random dither"
-    },
-    {
-      "source_index": 8538,
-      "id": "2354740",
-      "term": "誤差範囲",
-      "reading": "ごさはんい",
-      "meaning": "error range"
-    },
-    {
-      "source_index": 8539,
-      "id": "2827529",
-      "term": "誤差分布",
-      "reading": "ごさぶんぷ",
-      "meaning": "error distribution"
-    },
-    {
-      "source_index": 8540,
-      "id": "2830644",
-      "term": "五四運動",
-      "reading": "ごしうんどう",
-      "meaning": "May Fourth Movement (anti-imperialist student demonstration in Beijing on May 4, 1919)"
-    },
-    {
-      "source_index": 8541,
-      "id": "2839352",
-      "term": "五指に入る",
-      "reading": "ごしにはいる",
-      "meaning": "to be among the top five / to be one of the five best"
-    },
-    {
-      "source_index": 8542,
-      "id": "1694110",
-      "term": "御朱印船",
-      "reading": "ごしゅいんせん",
-      "meaning": "shogun-authorized trading vessel (authorised)"
-    },
-    {
-      "source_index": 8543,
-      "id": "2868466",
-      "term": "御朱印帳",
-      "reading": "ごしゅいんちょう",
-      "meaning": "goshuin booklet / book for receiving seal stamps at shrines and temples"
-    },
-    {
-      "source_index": 8544,
-      "id": "1268290",
-      "term": "五種競技",
-      "reading": "ごしゅきょうぎ",
-      "meaning": "pentathlon"
-    },
-    {
-      "source_index": 8545,
-      "id": "2045200",
-      "term": "後生一生",
-      "reading": "ごしょういっしょう",
-      "meaning": "extremely important or once in a lifetime (request) / only once in one's lifetime"
-    },
-    {
-      "source_index": 8546,
-      "id": "1269840",
-      "term": "後生大事",
-      "reading": "ごしょうだいじ",
-      "meaning": "with religious zeal / with utmost devotion / take great care of"
-    },
-    {
-      "source_index": 8547,
-      "id": "2857867",
-      "term": "誤字脱字",
-      "reading": "ごじだつじ",
-      "meaning": "mistaken or missing characters / omissions or errors"
-    },
-    {
-      "source_index": 8548,
-      "id": "1268340",
-      "term": "五十歩百歩",
-      "reading": "ごじっぽひゃっぽ",
-      "meaning": "six of one, half a dozen of the other / scant difference"
-    },
-    {
-      "source_index": 8549,
-      "id": "2555550",
-      "term": "後日物語",
-      "reading": "ごじつものがたり",
-      "meaning": "sequel"
-    },
     {
       "source_index": 8550,
       "id": "2573380",
@@ -7010,6 +6660,356 @@
       "term": "死刑宣告",
       "reading": "しけいせんこく",
       "meaning": "death sentence"
+    },
+    {
+      "source_index": 9500,
+      "id": "2144710",
+      "term": "死刑廃止",
+      "reading": "しけいはいし",
+      "meaning": "abolition of the death penalty / abolition of capital punishment"
+    },
+    {
+      "source_index": 9501,
+      "id": "1994090",
+      "term": "死刑判決",
+      "reading": "しけいはんけつ",
+      "meaning": "death sentence"
+    },
+    {
+      "source_index": 9502,
+      "id": "2529560",
+      "term": "止血鉗子",
+      "reading": "しけつかんし",
+      "meaning": "artery forceps / hemostatic forceps"
+    },
+    {
+      "source_index": 9503,
+      "id": "2852999",
+      "term": "試験会場",
+      "reading": "しけんかいじょう",
+      "meaning": "examination venue / examination hall"
+    },
+    {
+      "source_index": 9504,
+      "id": "1936630",
+      "term": "試験科目",
+      "reading": "しけんかもく",
+      "meaning": "subjects for (of) examination / exam subject"
+    },
+    {
+      "source_index": 9505,
+      "id": "1936640",
+      "term": "試験監督",
+      "reading": "しけんかんとく",
+      "meaning": "proctoring of an exam / invigilation / proctor"
+    },
+    {
+      "source_index": 9506,
+      "id": "1936650",
+      "term": "試験期間",
+      "reading": "しけんきかん",
+      "meaning": "test (testing) period"
+    },
+    {
+      "source_index": 9507,
+      "id": "2359500",
+      "term": "試験機関",
+      "reading": "しけんきかん",
+      "meaning": "test laboratory"
+    },
+    {
+      "source_index": 9508,
+      "id": "2359550",
+      "term": "試験結果",
+      "reading": "しけんけっか",
+      "meaning": "examination results / test result / test outcome"
+    },
+    {
+      "source_index": 9509,
+      "id": "2864509",
+      "term": "試験工場",
+      "reading": "しけんこうじょう",
+      "meaning": "pilot plant"
+    },
+    {
+      "source_index": 9510,
+      "id": "2359560",
+      "term": "試験工程",
+      "reading": "しけんこうてい",
+      "meaning": "test process / test stage / test period"
+    },
+    {
+      "source_index": 9511,
+      "id": "2359570",
+      "term": "試験項目",
+      "reading": "しけんこうもく",
+      "meaning": "test case"
+    },
+    {
+      "source_index": 9512,
+      "id": "2668260",
+      "term": "試験施設",
+      "reading": "しけんしせつ",
+      "meaning": "test facility / test installation"
+    },
+    {
+      "source_index": 9513,
+      "id": "2722320",
+      "term": "試験紙法",
+      "reading": "しけんしほう",
+      "meaning": "urine dipstick test"
+    },
+    {
+      "source_index": 9514,
+      "id": "1733450",
+      "term": "試験地獄",
+      "reading": "しけんじごく",
+      "meaning": "(entrance) examination hell"
+    },
+    {
+      "source_index": 9515,
+      "id": "2359600",
+      "term": "試験事象",
+      "reading": "しけんじしょう",
+      "meaning": "test event"
+    },
+    {
+      "source_index": 9516,
+      "id": "2397800",
+      "term": "試験実行",
+      "reading": "しけんじっこう",
+      "meaning": "test run / trial run"
+    },
+    {
+      "source_index": 9517,
+      "id": "2359630",
+      "term": "試験条件",
+      "reading": "しけんじょうけん",
+      "meaning": "test conditions / test environment"
+    },
+    {
+      "source_index": 9518,
+      "id": "2359650",
+      "term": "試験対象",
+      "reading": "しけんたいしょう",
+      "meaning": "implementation under test / IUT"
+    },
+    {
+      "source_index": 9519,
+      "id": "2359670",
+      "term": "試験端末",
+      "reading": "しけんたんまつ",
+      "meaning": "test terminal"
+    },
+    {
+      "source_index": 9520,
+      "id": "1936660",
+      "term": "試験段階",
+      "reading": "しけんだんかい",
+      "meaning": "testing stage / test step"
+    },
+    {
+      "source_index": 9521,
+      "id": "1936670",
+      "term": "試験飛行",
+      "reading": "しけんひこう",
+      "meaning": "test (trial) flight"
+    },
+    {
+      "source_index": 9522,
+      "id": "1312380",
+      "term": "試験勉強",
+      "reading": "しけんべんきょう",
+      "meaning": "studying for a test"
+    },
+    {
+      "source_index": 9523,
+      "id": "2264000",
+      "term": "試験方法",
+      "reading": "しけんほうほう",
+      "meaning": "test procedure / testing methodology"
+    },
+    {
+      "source_index": 9524,
+      "id": "2359680",
+      "term": "試験目的",
+      "reading": "しけんもくてき",
+      "meaning": "test purpose"
+    },
+    {
+      "source_index": 9525,
+      "id": "1936680",
+      "term": "試験問題",
+      "reading": "しけんもんだい",
+      "meaning": "examination (exam) questions / questions for an examination"
+    },
+    {
+      "source_index": 9526,
+      "id": "2861273",
+      "term": "刺激反応",
+      "reading": "しげきはんのう",
+      "meaning": "stimulus response"
+    },
+    {
+      "source_index": 9527,
+      "id": "2686460",
+      "term": "資源開発",
+      "reading": "しげんかいはつ",
+      "meaning": "resource development / resource exploitation (usu. natural resources)"
+    },
+    {
+      "source_index": 9528,
+      "id": "2117040",
+      "term": "資源確保",
+      "reading": "しげんかくほ",
+      "meaning": "securement of resources"
+    },
+    {
+      "source_index": 9529,
+      "id": "2359730",
+      "term": "資源管理",
+      "reading": "しげんかんり",
+      "meaning": "resource management"
+    },
+    {
+      "source_index": 9530,
+      "id": "2038670",
+      "term": "資源外交",
+      "reading": "しげんがいこう",
+      "meaning": "resources diplomacy"
+    },
+    {
+      "source_index": 9531,
+      "id": "2359740",
+      "term": "資源共有",
+      "reading": "しげんきょうゆう",
+      "meaning": "resource sharing"
+    },
+    {
+      "source_index": 9532,
+      "id": "2440010",
+      "term": "始原細胞",
+      "reading": "しげんさいぼう",
+      "meaning": "initial cell"
+    },
+    {
+      "source_index": 9533,
+      "id": "1312730",
+      "term": "資源節約",
+      "reading": "しげんせつやく",
+      "meaning": "conservation of resources"
+    },
+    {
+      "source_index": 9534,
+      "id": "1307190",
+      "term": "四元速度",
+      "reading": "しげんそくど",
+      "meaning": "four velocity"
+    },
+    {
+      "source_index": 9535,
+      "id": "2162120",
+      "term": "資源配分",
+      "reading": "しげんはいぶん",
+      "meaning": "resource allocation"
+    },
+    {
+      "source_index": 9536,
+      "id": "2359760",
+      "term": "資源文書",
+      "reading": "しげんぶんしょ",
+      "meaning": "resource document"
+    },
+    {
+      "source_index": 9537,
+      "id": "2359750",
+      "term": "資源分配",
+      "reading": "しげんぶんぱい",
+      "meaning": "resource sharing"
+    },
+    {
+      "source_index": 9538,
+      "id": "1936740",
+      "term": "資源問題",
+      "reading": "しげんもんだい",
+      "meaning": "resources problem"
+    },
+    {
+      "source_index": 9539,
+      "id": "2184820",
+      "term": "思考回路",
+      "reading": "しこうかいろ",
+      "meaning": "patterns of thinking / train of thought"
+    },
+    {
+      "source_index": 9540,
+      "id": "1936480",
+      "term": "施行規則",
+      "reading": "しこうきそく",
+      "meaning": "enforcement regulations / regulations relative to the application of a law"
+    },
+    {
+      "source_index": 9541,
+      "id": "1312410",
+      "term": "試行錯誤",
+      "reading": "しこうさくご",
+      "meaning": "trial and error"
+    },
+    {
+      "source_index": 9542,
+      "id": "1705230",
+      "term": "至公至平",
+      "reading": "しこうしへい",
+      "meaning": "completely fair or just"
+    },
+    {
+      "source_index": 9543,
+      "id": "2831617",
+      "term": "思考実験",
+      "reading": "しこうじっけん",
+      "meaning": "thought experiment / gedankenexperiment"
+    },
+    {
+      "source_index": 9544,
+      "id": "2705650",
+      "term": "思考停止",
+      "reading": "しこうていし",
+      "meaning": "ceasing to think / refusing to think critically / giving up thinking (for oneself)"
+    },
+    {
+      "source_index": 9545,
+      "id": "2411370",
+      "term": "思考様式",
+      "reading": "しこうようしき",
+      "meaning": "way of thinking / thought pattern / thinking pattern"
+    },
+    {
+      "source_index": 9546,
+      "id": "2148750",
+      "term": "四公六民",
+      "reading": "しこうろくみん",
+      "meaning": "land-tax system during the Edo period under which the government took 40% of the year's crop and the farmers kept 60%"
+    },
+    {
+      "source_index": 9547,
+      "id": "2269980",
+      "term": "四国巡礼",
+      "reading": "しこくじゅんれい",
+      "meaning": "Shikoku pilgrimage (to the 88 temples) / Shikoku pilgrim"
+    },
+    {
+      "source_index": 9548,
+      "id": "5326604",
+      "term": "四国大学",
+      "reading": "しこくだいがく",
+      "meaning": "Shikoku University"
+    },
+    {
+      "source_index": 9549,
+      "id": "2150660",
+      "term": "四国地方",
+      "reading": "しこくちほう",
+      "meaning": "Shikoku region (incl. Tokushima, Kagawa, Ehime and Kochi prefectures)"
     }
   ]
 }

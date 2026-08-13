@@ -1,10 +1,10 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 8500,
-  "english_only_remaining": 6500,
+  "already_direct_japanese": 8550,
+  "english_only_remaining": 6450,
   "english_only_rank_counts": {
-    "(blank)": 6500
+    "(blank)": 6450
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
@@ -13,356 +13,6 @@
   "part_start": 300,
   "part_end": 399,
   "targets": [
-    {
-      "source_index": 8800,
-      "id": "2807660",
-      "term": "細胞器官",
-      "reading": "さいぼうきかん",
-      "meaning": "organelle"
-    },
-    {
-      "source_index": 8801,
-      "id": "2439780",
-      "term": "細胞検査",
-      "reading": "さいぼうけんさ",
-      "meaning": "cytodiagnosis"
-    },
-    {
-      "source_index": 8802,
-      "id": "2439790",
-      "term": "細胞工学",
-      "reading": "さいぼうこうがく",
-      "meaning": "cellular engineering"
-    },
-    {
-      "source_index": 8803,
-      "id": "2439730",
-      "term": "細胞骨格",
-      "reading": "さいぼうこっかく",
-      "meaning": "cytoskeleton"
-    },
-    {
-      "source_index": 8804,
-      "id": "2439710",
-      "term": "細胞周期",
-      "reading": "さいぼうしゅうき",
-      "meaning": "cell cycle"
-    },
-    {
-      "source_index": 8805,
-      "id": "2743620",
-      "term": "細胞接着",
-      "reading": "さいぼうせっちゃく",
-      "meaning": "cell adhesion / cellular adhesion / dyshesion"
-    },
-    {
-      "source_index": 8806,
-      "id": "2867095",
-      "term": "細胞組織",
-      "reading": "さいぼうそしき",
-      "meaning": "cellular tissue"
-    },
-    {
-      "source_index": 8807,
-      "id": "2807680",
-      "term": "細胞内液",
-      "reading": "さいぼうないえき",
-      "meaning": "intracellular fluid"
-    },
-    {
-      "source_index": 8808,
-      "id": "2807620",
-      "term": "細胞発生",
-      "reading": "さいぼうはっせい",
-      "meaning": "cytogenesis"
-    },
-    {
-      "source_index": 8809,
-      "id": "1768360",
-      "term": "細胞培養",
-      "reading": "さいぼうばいよう",
-      "meaning": "cell culture"
-    },
-    {
-      "source_index": 8810,
-      "id": "1768350",
-      "term": "細胞分裂",
-      "reading": "さいぼうぶんれつ",
-      "meaning": "cell division"
-    },
-    {
-      "source_index": 8811,
-      "id": "2109340",
-      "term": "細胞崩壊",
-      "reading": "さいぼうほうかい",
-      "meaning": "cytolysis / breakdown of cells by the destruction of their outer membrane"
-    },
-    {
-      "source_index": 8812,
-      "id": "1768390",
-      "term": "細胞融合",
-      "reading": "さいぼうゆうごう",
-      "meaning": "cell fusion"
-    },
-    {
-      "source_index": 8813,
-      "id": "2837371",
-      "term": "歳末商戦",
-      "reading": "さいまつしょうせん",
-      "meaning": "battle for sales at year-end / year-end shopping season"
-    },
-    {
-      "source_index": 8814,
-      "id": "2860345",
-      "term": "催眠暗示",
-      "reading": "さいみんあんじ",
-      "meaning": "hypnotic suggestion"
-    },
-    {
-      "source_index": 8815,
-      "id": "2758150",
-      "term": "催眠術師",
-      "reading": "さいみんじゅつし",
-      "meaning": "hypnotist / mesmerist"
-    },
-    {
-      "source_index": 8816,
-      "id": "1700730",
-      "term": "催眠療法",
-      "reading": "さいみんりょうほう",
-      "meaning": "hypnotherapy"
-    },
-    {
-      "source_index": 8817,
-      "id": "1993450",
-      "term": "債務救済",
-      "reading": "さいむきゅうさい",
-      "meaning": "debt relief"
-    },
-    {
-      "source_index": 8818,
-      "id": "1993460",
-      "term": "債務交換",
-      "reading": "さいむこうかん",
-      "meaning": "debt swap"
-    },
-    {
-      "source_index": 8819,
-      "id": "1993470",
-      "term": "債務削減",
-      "reading": "さいむさくげん",
-      "meaning": "debt reduction"
-    },
-    {
-      "source_index": 8820,
-      "id": "2805310",
-      "term": "債務償還",
-      "reading": "さいむしょうかん",
-      "meaning": "debt redemption"
-    },
-    {
-      "source_index": 8821,
-      "id": "2534270",
-      "term": "債務整理",
-      "reading": "さいむせいり",
-      "meaning": "adjustment of debts / debt-workout / consolidation of debts"
-    },
-    {
-      "source_index": 8822,
-      "id": "1993490",
-      "term": "債務超過",
-      "reading": "さいむちょうか",
-      "meaning": "insolvency"
-    },
-    {
-      "source_index": 8823,
-      "id": "1993500",
-      "term": "債務負担",
-      "reading": "さいむふたん",
-      "meaning": "debt load"
-    },
-    {
-      "source_index": 8824,
-      "id": "1993510",
-      "term": "債務保証",
-      "reading": "さいむほしょう",
-      "meaning": "loan guarantee"
-    },
-    {
-      "source_index": 8825,
-      "id": "2853597",
-      "term": "債務名義",
-      "reading": "さいむめいぎ",
-      "meaning": "title of debt / title of obligation / document establishing a legal claim"
-    },
-    {
-      "source_index": 8826,
-      "id": "2871041",
-      "term": "債務免除",
-      "reading": "さいむめんじょ",
-      "meaning": "debt relief / debt forgiveness / debt cancellation"
-    },
-    {
-      "source_index": 8827,
-      "id": "2668280",
-      "term": "債務問題",
-      "reading": "さいむもんだい",
-      "meaning": "debt problem"
-    },
-    {
-      "source_index": 8828,
-      "id": "2871161",
-      "term": "最優秀賞",
-      "reading": "さいゆうしゅうしょう",
-      "meaning": "top award / grand prize / prize for best performance"
-    },
-    {
-      "source_index": 8829,
-      "id": "1741300",
-      "term": "採用試験",
-      "reading": "さいようしけん",
-      "meaning": "employment examination"
-    },
-    {
-      "source_index": 8830,
-      "id": "2852255",
-      "term": "採用情報",
-      "reading": "さいようじょうほう",
-      "meaning": "recruitment information / job vacancy information"
-    },
-    {
-      "source_index": 8831,
-      "id": "2157810",
-      "term": "採用選考",
-      "reading": "さいようせんこう",
-      "meaning": "employment screening / employment selection (for job applicants)"
-    },
-    {
-      "source_index": 8832,
-      "id": "2570650",
-      "term": "採用通知",
-      "reading": "さいようつうち",
-      "meaning": "job offer / letter of appointment / appointment letter"
-    },
-    {
-      "source_index": 8833,
-      "id": "2829786",
-      "term": "最良指値",
-      "reading": "さいりょうさしね",
-      "meaning": "market-to-limit order"
-    },
-    {
-      "source_index": 8834,
-      "id": "1993620",
-      "term": "裁量所得",
-      "reading": "さいりょうしょとく",
-      "meaning": "discretionary income"
-    },
-    {
-      "source_index": 8835,
-      "id": "2018620",
-      "term": "裁量労働",
-      "reading": "さいりょうろうどう",
-      "meaning": "discretionary work (labour, labor)"
-    },
-    {
-      "source_index": 8836,
-      "id": "2357660",
-      "term": "再利用率",
-      "reading": "さいりようりつ",
-      "meaning": "reuse factor"
-    },
-    {
-      "source_index": 8837,
-      "id": "2675670",
-      "term": "棹物菓子",
-      "reading": "さおものがし",
-      "meaning": "Japanese sweets in the form of long blocks (e.g. yokan, uiro)"
-    },
-    {
-      "source_index": 8838,
-      "id": "2115850",
-      "term": "逆子体操",
-      "reading": "さかごたいそう",
-      "meaning": "exercise regime to convert breech presentation / trying to correct an unborn child's improper position so that the head comes out first"
-    },
-    {
-      "source_index": 8839,
-      "id": "2764310",
-      "term": "肴にする",
-      "reading": "さかなにする",
-      "meaning": "to have as a side order (with drinks)"
-    },
-    {
-      "source_index": 8840,
-      "id": "5743577",
-      "term": "佐賀県警",
-      "reading": "さがけんけい",
-      "meaning": "Saga Prefectural Police (abbr)"
-    },
-    {
-      "source_index": 8841,
-      "id": "5299846",
-      "term": "佐賀大学",
-      "reading": "さがだいがく",
-      "meaning": "Saga University"
-    },
-    {
-      "source_index": 8842,
-      "id": "5302733",
-      "term": "嵯峨野線",
-      "reading": "さがのせん",
-      "meaning": "Sagano Line (Kyoto)"
-    },
-    {
-      "source_index": 8843,
-      "id": "5740819",
-      "term": "佐川急便",
-      "reading": "さがわきゅうびん",
-      "meaning": "Sagawa Express (parcel delivery company)"
-    },
-    {
-      "source_index": 8844,
-      "id": "2407560",
-      "term": "左記補足",
-      "reading": "さきほそく",
-      "meaning": "following supplements / supplementary information below"
-    },
-    {
-      "source_index": 8845,
-      "id": "2585970",
-      "term": "先物価格",
-      "reading": "さきものかかく",
-      "meaning": "forward price / futures price / futures quotation"
-    },
-    {
-      "source_index": 8846,
-      "id": "1997210",
-      "term": "先物市場",
-      "reading": "さきものしじょう",
-      "meaning": "futures market / forward market"
-    },
-    {
-      "source_index": 8847,
-      "id": "2163330",
-      "term": "先物相場",
-      "reading": "さきものそうば",
-      "meaning": "futures price / forward price / forward rate (of exchange)"
-    },
-    {
-      "source_index": 8848,
-      "id": "1766410",
-      "term": "先物取引",
-      "reading": "さきものとりひき",
-      "meaning": "futures trading"
-    },
-    {
-      "source_index": 8849,
-      "id": "1388560",
-      "term": "先物売買",
-      "reading": "さきものばいばい",
-      "meaning": "dealing in futures"
-    },
     {
       "source_index": 8850,
       "id": "2833530",
@@ -712,6 +362,356 @@
       "term": "酒に飲まれる",
       "reading": "さけにのまれる",
       "meaning": "to drink too much and lose self-control"
+    },
+    {
+      "source_index": 8900,
+      "id": "1789440",
+      "term": "左顧右眄",
+      "reading": "さこうべん",
+      "meaning": "looking right and left or all about / vacillation"
+    },
+    {
+      "source_index": 8901,
+      "id": "1935820",
+      "term": "鎖国主義",
+      "reading": "さこくしゅぎ",
+      "meaning": "(national) isolationism / isolation policy"
+    },
+    {
+      "source_index": 8902,
+      "id": "1935810",
+      "term": "鎖国政策",
+      "reading": "さこくせいさく",
+      "meaning": "(national) isolationism / isolation policy"
+    },
+    {
+      "source_index": 8903,
+      "id": "2870328",
+      "term": "鎖骨下筋",
+      "reading": "さこつかきん",
+      "meaning": "subclavius muscle"
+    },
+    {
+      "source_index": 8904,
+      "id": "5223063",
+      "term": "狭衣物語",
+      "reading": "さごろもものがたり",
+      "meaning": "The Tale of Sagoromo (ca 1060 CE)"
+    },
+    {
+      "source_index": 8905,
+      "id": "2828491",
+      "term": "笹葉銀蘭",
+      "reading": "ささばぎんらん",
+      "meaning": "Cephalanthera longibracteata (species of orchid)"
+    },
+    {
+      "source_index": 8906,
+      "id": "2761410",
+      "term": "挿絵画家",
+      "reading": "さしえがか",
+      "meaning": "illustrator"
+    },
+    {
+      "source_index": 8907,
+      "id": "2796360",
+      "term": "差押命令",
+      "reading": "さしおさえめいれい",
+      "meaning": "order of attachment / attachment order / seizure order"
+    },
+    {
+      "source_index": 8908,
+      "id": "2208070",
+      "term": "指値注文",
+      "reading": "さしねちゅうもん",
+      "meaning": "limit order"
+    },
+    {
+      "source_index": 8909,
+      "id": "1789530",
+      "term": "差引勘定",
+      "reading": "さしひきかんじょう",
+      "meaning": "balance (of an account) / striking a balance"
+    },
+    {
+      "source_index": 8910,
+      "id": "1306590",
+      "term": "刺身包丁",
+      "reading": "さしみぼうちょう",
+      "meaning": "sashimi knife"
+    },
+    {
+      "source_index": 8911,
+      "id": "1734760",
+      "term": "さじ加減",
+      "reading": "さじかげん",
+      "meaning": "measured amount (esp. of medicine) / dosing / quantity"
+    },
+    {
+      "source_index": 8912,
+      "id": "2600240",
+      "term": "砂上の楼閣",
+      "reading": "さじょうのろうかく",
+      "meaning": "house built on sand / house of cards"
+    },
+    {
+      "source_index": 8913,
+      "id": "2870954",
+      "term": "叉状分岐",
+      "reading": "さじょうぶんき",
+      "meaning": "dichotomous branching"
+    },
+    {
+      "source_index": 8914,
+      "id": "2017050",
+      "term": "さじを投げる",
+      "reading": "さじをなげる",
+      "meaning": "to give up (something as hopeless) / to throw in the towel"
+    },
+    {
+      "source_index": 8915,
+      "id": "2762290",
+      "term": "左折禁止",
+      "reading": "させつきんし",
+      "meaning": "No Left Turn"
+    },
+    {
+      "source_index": 8916,
+      "id": "1657850",
+      "term": "作況指数",
+      "reading": "さっきょうしすう",
+      "meaning": "rice-crop index"
+    },
+    {
+      "source_index": 8917,
+      "id": "2650710",
+      "term": "殺菌作用",
+      "reading": "さっきんさよう",
+      "meaning": "bactericidal action / germicidal action"
+    },
+    {
+      "source_index": 8918,
+      "id": "2650270",
+      "term": "殺菌消毒",
+      "reading": "さっきんしょうどく",
+      "meaning": "sterilizing"
+    },
+    {
+      "source_index": 8919,
+      "id": "2869750",
+      "term": "殺傷事件",
+      "reading": "さっしょうじけん",
+      "meaning": "incident involving killing and wounding / attack resulting in casualties"
+    },
+    {
+      "source_index": 8920,
+      "id": "2855472",
+      "term": "殺傷能力",
+      "reading": "さっしょうのうりょく",
+      "meaning": "lethality (of a weapon, etc.)"
+    },
+    {
+      "source_index": 8921,
+      "id": "2837755",
+      "term": "薩長同盟",
+      "reading": "さっちょうどうめい",
+      "meaning": "Satchō Alliance / 1866 alliance between the feudal domains of Satsuma and Chōshū"
+    },
+    {
+      "source_index": 8922,
+      "id": "5744330",
+      "term": "札幌市電",
+      "reading": "さっぽろしでん",
+      "meaning": "Sapporo Streetcar"
+    },
+    {
+      "source_index": 8923,
+      "id": "5314194",
+      "term": "札幌大学",
+      "reading": "さっぽろだいがく",
+      "meaning": "Sapporo University"
+    },
+    {
+      "source_index": 8924,
+      "id": "2869416",
+      "term": "撮影可能",
+      "reading": "さつえいかのう",
+      "meaning": "photographable / allowed to be photographed"
+    },
+    {
+      "source_index": 8925,
+      "id": "2842788",
+      "term": "撮影監督",
+      "reading": "さつえいかんとく",
+      "meaning": "director of photography / cinematographer"
+    },
+    {
+      "source_index": 8926,
+      "id": "2863001",
+      "term": "撮影許可",
+      "reading": "さつえいきょか",
+      "meaning": "filming permit / shooting permit"
+    },
+    {
+      "source_index": 8927,
+      "id": "2850263",
+      "term": "撮影禁止",
+      "reading": "さつえいきんし",
+      "meaning": "no photographs / no photography"
+    },
+    {
+      "source_index": 8928,
+      "id": "2653720",
+      "term": "撮影現場",
+      "reading": "さつえいげんば",
+      "meaning": "movie set / filming location"
+    },
+    {
+      "source_index": 8929,
+      "id": "2214320",
+      "term": "薩英戦争",
+      "reading": "さつえいせんそう",
+      "meaning": "Anglo-Satsuma War (1863) / Bombardment of Kagoshima"
+    },
+    {
+      "source_index": 8930,
+      "id": "2642860",
+      "term": "撮影台本",
+      "reading": "さつえいだいほん",
+      "meaning": "shooting script (film, television) / continuity"
+    },
+    {
+      "source_index": 8931,
+      "id": "2872398",
+      "term": "撮影倍率",
+      "reading": "さつえいばいりつ",
+      "meaning": "magnification ratio / reproduction ratio"
+    },
+    {
+      "source_index": 8932,
+      "id": "2869461",
+      "term": "殺害現場",
+      "reading": "さつがいげんば",
+      "meaning": "scene of a murder / murder scene"
+    },
+    {
+      "source_index": 8933,
+      "id": "1936090",
+      "term": "殺害事件",
+      "reading": "さつがいじけん",
+      "meaning": "murder case"
+    },
+    {
+      "source_index": 8934,
+      "id": "2851159",
+      "term": "殺害予告",
+      "reading": "さつがいよこく",
+      "meaning": "(credible) death threat"
+    },
+    {
+      "source_index": 8935,
+      "id": "2433670",
+      "term": "五月躑躅",
+      "reading": "さつきつつじ",
+      "meaning": "satsuki azalea (Rhododendron indicum)"
+    },
+    {
+      "source_index": 8936,
+      "id": "2826995",
+      "term": "擦弦楽器",
+      "reading": "さつげんがっき",
+      "meaning": "bowed stringed instrument"
+    },
+    {
+      "source_index": 8937,
+      "id": "1299090",
+      "term": "殺真菌薬",
+      "reading": "さつしんきんやく",
+      "meaning": "fungicide"
+    },
+    {
+      "source_index": 8938,
+      "id": "2871089",
+      "term": "殺人教唆",
+      "reading": "さつじんきょうさ",
+      "meaning": "instigating murder / incitement to murder"
+    },
+    {
+      "source_index": 8939,
+      "id": "1993770",
+      "term": "殺人現場",
+      "reading": "さつじんげんば",
+      "meaning": "murder scene"
+    },
+    {
+      "source_index": 8940,
+      "id": "2415930",
+      "term": "殺人光線",
+      "reading": "さつじんこうせん",
+      "meaning": "death ray"
+    },
+    {
+      "source_index": 8941,
+      "id": "1936100",
+      "term": "殺人事件",
+      "reading": "さつじんじけん",
+      "meaning": "murder case"
+    },
+    {
+      "source_index": 8942,
+      "id": "2849698",
+      "term": "殺人兵器",
+      "reading": "さつじんへいき",
+      "meaning": "lethal weapon / deadly device"
+    },
+    {
+      "source_index": 8943,
+      "id": "2871090",
+      "term": "殺人幇助",
+      "reading": "さつじんほうじょ",
+      "meaning": "aiding and abetting murder / being an accessory to murder"
+    },
+    {
+      "source_index": 8944,
+      "id": "1299140",
+      "term": "殺人未遂",
+      "reading": "さつじんみすい",
+      "meaning": "attempted murder"
+    },
+    {
+      "source_index": 8945,
+      "id": "2826034",
+      "term": "殺精子剤",
+      "reading": "さつせいしざい",
+      "meaning": "spermicide / spermatocide"
+    },
+    {
+      "source_index": 8946,
+      "id": "2826068",
+      "term": "殺精子薬",
+      "reading": "さつせいしやく",
+      "meaning": "spermicide / spermatocide"
+    },
+    {
+      "source_index": 8947,
+      "id": "2770000",
+      "term": "撮像素子",
+      "reading": "さつぞうそし",
+      "meaning": "image sensor"
+    },
+    {
+      "source_index": 8948,
+      "id": "2424020",
+      "term": "薩摩琵琶",
+      "reading": "さつまびわ",
+      "meaning": "Satsuma biwa / Satsuma lute"
+    },
+    {
+      "source_index": 8949,
+      "id": "2853284",
+      "term": "擦文文化",
+      "reading": "さつもんぶんか",
+      "meaning": "Satsumon culture"
     }
   ]
 }
