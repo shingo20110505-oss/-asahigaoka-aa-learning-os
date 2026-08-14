@@ -48,11 +48,41 @@ const items=[
   },
   {
     id:'en-would-you-mind-window-20260814',subject:'英語',unit:'助動詞・会話表現',title:'Would you mind if I opened the window? の意味と would / mind',question:'Would you mind if I opened the window? はどういう意味？ また、mind と would はここでどんな働きをしている？',answer:'「窓を開けてもよろしいですか？」という丁寧な許可のたずね方です。mind は「気にする・嫌がる」。would は助動詞で、形としては will の過去形と説明されますが、ここでは過去の意味ではなく、言い方を丁寧で控えめにする働きです。',why:'直訳に近づけると「もし私が窓を開けたら、あなたは気にしますか？」です。相手が気にするかを遠回しにたずねることで、丁寧に許可を求めます。学校英語では Would you mind if I opened ...? のように if 節を過去形にする形を基本として覚えると安全です。',examples:['Would you mind if I opened the window?（窓を開けてもよろしいですか）','May I open the window?（窓を開けてもよろしいですか）','Can I open the window?（窓を開けていい？）','mind＝気にする・嫌がる / would＝ここでは丁寧さ'],memory:'mind＝気にする／嫌がる。would＝形は will の過去形、ここでは過去ではなく丁寧さ。許可なら Would you mind if I opened ...?',tags:['would','will','mind','Would you mind','許可','助動詞','会話表現','丁寧表現'],createdAt:'2026-08-14'
+  },
+  {
+    id:'en-go-straight-20260814',subject:'英語',unit:'会話表現・道案内',title:'go straight の意味',question:'go straight はどういう意味？',answer:'「まっすぐ行く」「直進する」という意味です。',why:'go は「行く」、straight はここでは「まっすぐに」という意味で、道案内の定番表現です。',examples:['Go straight.（まっすぐ行ってください）','Go straight for two blocks.（2区画まっすぐ進んでください）'],memory:'go straight＝まっすぐ行く・直進する',tags:['go straight','straight','道案内','会話表現'],createdAt:'2026-08-14'
+  },
+  {
+    id:'en-way-method-road-direction-20260814',subject:'英語',unit:'語彙',title:'way の意味',question:'way にはどんな意味がある？ 特に「方法」という意味を答えられる？',answer:'way は「道」「方向」のほか、「方法・やり方」という意味でもよく使います。',why:'物理的な「道」から、何かを行うための「道筋・やり方」という意味に広がります。',examples:['This way.（こちらです）','the way to the station（駅への道）','a good way to study（よい勉強方法）'],memory:'way＝道・方向・方法',tags:['way','方法','道','方向','語彙'],createdAt:'2026-08-14'
+  },
+  {
+    id:'en-wall-meanings-20260814',subject:'英語',unit:'語彙',title:'wall の意味',question:'wall は「壁」以外にどんな意味で使われる？',answer:'基本は「壁」。ほかに「塀」「障壁・隔たり」「体などの内壁」という意味でも使われます。',why:'人や物を隔てるものを広く wall と表せます。中学英語ではまず「壁・塀」を確実に覚えれば大丈夫です。',examples:['a wall（壁）','a garden wall（庭の塀）','a wall between them（彼らの間の隔たり）','the wall of the stomach（胃の壁）'],memory:'wall＝壁・塀。比喩では障壁・隔たり',tags:['wall','壁','塀','障壁','語彙'],createdAt:'2026-08-14'
+  },
+  {
+    id:'en-true-meaning-20260814',subject:'英語',unit:'語彙',title:'true の意味',question:'true はどういう意味？',answer:'「本当の」「正しい」という意味です。',why:'事実に合っていることや、うそ・誤りではないことを表します。',examples:['That is true.（それは本当です）','a true story（実話）','true or false（正しいか間違いか）'],memory:'true＝本当の・正しい',tags:['true','本当','正しい','語彙'],createdAt:'2026-08-14'
+  },
+  {
+    id:'en-turn-right-turn-meanings-20260814',subject:'英語',unit:'語彙・道案内',title:'turn / turn right の意味',question:'turn right はどういう意味？ また turn にはほかにどんな意味がある？',answer:'turn right は「右に曲がる」。turn には「曲がる・向きを変える」のほか、名詞で「順番」という意味があります。',why:'turn の中心イメージは「向きや状態が変わる」です。そこから道案内の「曲がる」や、交代して「番が回ってくる」という意味につながります。',examples:['Turn right.（右に曲がってください）','Turn around.（振り向いて／引き返して）','It’s your turn.（あなたの番です）'],memory:'turn＝曲がる・向きを変える・順番 / turn right＝右に曲がる',tags:['turn','turn right','道案内','順番','語彙'],createdAt:'2026-08-14'
+  },
+  {
+    id:'en-why-dont-you-come-with-me-20260814',subject:'英語',unit:'会話表現・提案',title:'Why don’t you ～? は「～したらどう？」',question:'Why don’t you come with me? はどういう意味？ Shall you come with me? と言い換えられる？',answer:'「私と一緒に来たらどう？」という、相手への提案です。Shall you come with me? とは普通は言い換えません。',why:'Why don’t you + 動詞の原形? は、相手に「～したらどう？」と提案する定番表現です。現代の普通の英会話では Shall you ～? をこの意味では使いません。',examples:['Why don’t you come with me?（私と一緒に来たらどう？）','Why don’t you ask your teacher?（先生に聞いてみたらどう？）'],memory:'Why don’t you ～?＝相手に「～したらどう？」 / Shall you ～? にはしない',tags:['Why don’t you','提案','Shall you','会話表現','書き換え'],createdAt:'2026-08-14'
+  },
+  {
+    id:'en-why-dont-we-shall-we-20260814',subject:'英語',unit:'会話表現・提案',title:'Why don’t we ～? と Shall we ～?',question:'Why don’t we play tennis? を Shall を使ってほぼ同じ意味にすると？',answer:'Shall we play tennis? です。どちらも「一緒にテニスをしない？／しましょうか？」という誘い・提案になります。',why:'Why don’t we ～? は「私たち～しない？」、Shall we ～? は「～しましょうか？」で、どちらも話し手と相手が一緒にすることを提案します。',examples:['Why don’t we play tennis? ≒ Shall we play tennis?','Why don’t we go now? ≒ Shall we go now?'],memory:'Why don’t we ～? ≒ Shall we ～?',tags:['Why don’t we','Shall we','提案','誘い','書き換え'],createdAt:'2026-08-14'
+  },
+  {
+    id:'en-how-about-ing-you-we-20260814',subject:'英語',unit:'会話表現・提案',title:'How about ～ing? は you / we のどちらにも使える',question:'How about ～ing? は Why don’t you ～? と Why don’t we ～? のどちらに言い換えられる？',answer:'文脈によって、どちらにも言い換えられます。How about ～ing? は主語を直接言わないためです。',why:'相手だけに勧める文脈なら Why don’t you ～? に近く、一緒にする提案なら Why don’t we ～? に近くなります。',examples:['How about coming with me? ≒ Why don’t you come with me?（私と一緒に来たらどう？）','How about playing tennis? ≒ Why don’t we play tennis?（一緒にテニスしない？）'],memory:'How about ～ing?＝「～するのはどう？」。文脈で you にも we にもなる',tags:['How about','動名詞','Why don’t you','Why don’t we','提案','書き換え'],createdAt:'2026-08-14'
+  },
+  {
+    id:'en-lets-let-us-difference-20260814',subject:'英語',unit:'会話表現・let',title:'Let’s ～ と Let us ～ の違い',question:'Let’s play tennis. はどういう意味？ また、省略しない Let us ～ はどんな意味になることがある？',answer:'Let’s play tennis. は「テニスをしよう」。一方、省略しない Let us ～ は文脈によって「私たちに～させてください」という意味になることがあります。',why:'Let’s は誘いの定番表現です。Let us を省略せず強く区別して使う場合、let の「人に～させる」という意味が前面に出て、「私たちに～することを許してください」という意味になります。',examples:["Let’s play tennis.（テニスをしよう）",'Let us go.（私たちを行かせてください）',"Let’s go. ≒ Shall we go? ≒ Why don’t we go?"],memory:'Let’s ～＝～しよう / Let us ～＝「私たちに～させてください」の意味になることもある',tags:['Let’s','Let us','let','提案','使役'],createdAt:'2026-08-14'
+  },
+  {
+    id:'en-let-me-study-abroad-20260814',subject:'英語',unit:'let・使役',title:'Please let me study abroad.',question:'「私を留学させてください」を英語にすると？ 空所を埋めなさい：Please let (　) (　) abroad.',answer:'Please let me study abroad. です。空所は me / study。',why:'let + 人 + 動詞の原形 で「人に～させる・人が～することを許す」という形になります。let me study で「私に勉強させる／勉強することを許す」、study abroad で「留学する」です。',examples:['Please let me study abroad.（私を留学させてください）','Let me try.（私にやらせてください）','let + 人 + 動詞の原形'],memory:'let + 人 + 動詞の原形＝人に～させる。留学する＝study abroad',tags:['let','let me','study abroad','使役','動詞の原形'],createdAt:'2026-08-14'
   }
 ];
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.13';
+window.AA_REVIEW_BANK_VERSION='1.0.14';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
