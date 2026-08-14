@@ -6,6 +6,7 @@ on:
     paths:
       - 'curriculum-expansion-v24.js'
       - 'source-quote-bank-v1.js'
+      - 'science-content-fix-v1.js'
       - 'scripts/content-v24-audit.js'
       - 'v23-loader.js'
       - '.github/workflows/content-v24-audit.yml'
@@ -23,14 +24,22 @@ jobs:
         run: |
           node --check curriculum-expansion-v24.js
           node --check source-quote-bank-v1.js
+          node --check science-content-fix-v1.js
           node --check scripts/content-v24-audit.js
       - name: Audit five-subject expansion
-        run: node scripts/content-v24-audit.js | tee CONTENT_V24_AUDIT.txt
+        shell: bash
+        run: |
+          set -o pipefail
+          node scripts/content-v24-audit.js | tee CONTENT_V24_AUDIT.txt
       - name: Persist audit report
         if: always()
+        shell: bash
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add CONTENT_V24_AUDIT.txt || true
-          git diff --cached --quiet || git commit -m "Record V24 five-subject content audit"
-          git push || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Record V24 five-subject content audit"
+            git pull --rebase origin main
+            git push origin main
+          fi
