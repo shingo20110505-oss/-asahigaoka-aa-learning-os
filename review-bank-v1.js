@@ -45,11 +45,14 @@ const items=[
   },
   {
     id:'en-to-me-for-me-20260814',subject:'英語',unit:'前置詞・形容詞',title:'to me と for me の簡単な見分け方',question:'to me と for me は、どう見分ける？ 「interesting (　) me」と「difficult (　) me」には何を入れる？',answer:'「私にはそう感じる」という感じなら to、「私にとって〜するのが難しい・簡単」という感じなら for を使います。interesting to me / difficult for me です。',why:'まずは「感じる → to」「できる・難しい → for」と覚えると簡単です。interesting・strange などは「私にはそう感じる」ので to、easy・difficult などは「私にとってするのが〜」なので for が基本です。',examples:['Talking with Mr. Brown is interesting to me.（ブラウン先生と話すのは私には面白い）','This movie is interesting to me.（この映画は私には面白く感じる）','English is difficult for me.（英語は私にとって難しい）','It is easy for me to understand this question.（この問題を理解するのは私には簡単です）'],memory:'感じる → to / できる・難しい → for',tags:['to me','for me','前置詞','interesting','difficult','easy'],createdAt:'2026-08-14'
+  },
+  {
+    id:'en-would-you-mind-window-20260814',subject:'英語',unit:'助動詞・会話表現',title:'Would you mind if I opened the window? の意味と would / mind',question:'Would you mind if I opened the window? はどういう意味？ また、mind と would はここでどんな働きをしている？',answer:'「窓を開けてもよろしいですか？」という丁寧な許可のたずね方です。mind は「気にする・嫌がる」。would は助動詞で、形としては will の過去形と説明されますが、ここでは過去の意味ではなく、言い方を丁寧で控えめにする働きです。',why:'直訳に近づけると「もし私が窓を開けたら、あなたは気にしますか？」です。相手が気にするかを遠回しにたずねることで、丁寧に許可を求めます。学校英語では Would you mind if I opened ...? のように if 節を過去形にする形を基本として覚えると安全です。',examples:['Would you mind if I opened the window?（窓を開けてもよろしいですか）','May I open the window?（窓を開けてもよろしいですか）','Can I open the window?（窓を開けていい？）','mind＝気にする・嫌がる / would＝ここでは丁寧さ'],memory:'mind＝気にする／嫌がる。would＝形は will の過去形、ここでは過去ではなく丁寧さ。許可なら Would you mind if I opened ...?',tags:['would','will','mind','Would you mind','許可','助動詞','会話表現','丁寧表現'],createdAt:'2026-08-14'
   }
 ];
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.12';
+window.AA_REVIEW_BANK_VERSION='1.0.13';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
