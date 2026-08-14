@@ -39,11 +39,14 @@ const items=[
   },
   {
     id:'soc-enlightenment-locke-montesquieu-rousseau-20260814',subject:'社会',unit:'近代ヨーロッパ・啓蒙思想',title:'ロック・モンテスキュー・ルソーの違い',question:'ロック・モンテスキュー・ルソーについて、著書と重要な考え方をそれぞれ答えなさい。',answer:'ロック：『統治二論（市民政府二論）』―自然権・社会契約説・抵抗権。モンテスキュー：『法の精神』―三権分立。ルソー：『社会契約論』―人民主権。',why:'ロックは、人が生まれながらに持つ自然権を守るために政府をつくり、政府が権利を侵害すれば人民には抵抗する権利があると考えました。モンテスキューは権力の集中を防ぐため、立法・行政・司法を分ける三権分立を唱えました。ルソーは、人々の合意で社会・国家が成り立つという社会契約の考えから、政治の最終的な主権は人民にあるという人民主権を唱えました。',examples:['ロック → 統治二論 → 自然権・社会契約説・抵抗権','モンテスキュー → 法の精神 → 三権分立','ルソー → 社会契約論 → 人民主権','自然権の思想は近代的人権思想の重要な源流になった'],memory:'ロック＝権利を守れ／モンテスキュー＝権力を分けろ／ルソー＝政治の主人公は人民',tags:['ロック','モンテスキュー','ルソー','啓蒙思想','自然権','抵抗権','三権分立','人民主権','社会契約説'],createdAt:'2026-08-14'
+  },
+  {
+    id:'en-time-clause-future-present-past-past-20260814',subject:'英語',unit:'時制・時間を表す節',title:'未来は現在形、過去は過去形のまま',question:'when / before / after などの時間を表す節では、未来のことは現在形を使う。では、過去のことを表すときはどうする？',answer:'過去のことは過去形のままにします。未来の時間を表す節では will を使わず現在形にしますが、過去の出来事まで現在形に変えるわけではありません。',why:'「未来なのに現在形」という特別なルールが働くのは、未来の時を表す副詞節です。すでに起きた過去の出来事を when / before / after などで表すときは、普通に過去形を使います。',examples:['I will call you when I get home.（家に着いたら電話します）→ 未来だが when 節は現在形','I called you when I got home.（家に着いたとき電話しました）→ 過去なので when 節も過去形','Before I went to bed, I studied English.（寝る前に英語を勉強しました）→ 過去は過去形のまま'],memory:'未来の時間節 → 現在形 / 過去の時間節 → 過去形のまま',tags:['時制','時間を表す節','when','before','after','未来','現在形','過去形'],createdAt:'2026-08-14'
   }
 ];
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.10';
+window.AA_REVIEW_BANK_VERSION='1.0.11';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
