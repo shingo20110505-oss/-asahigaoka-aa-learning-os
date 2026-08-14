@@ -7,7 +7,26 @@ function isChronologiaPage(){return /(?:^|\/)chronologia\.html$/.test(location.p
 function routeTimelineToChronologia(){if(isChronologiaPage())return;document.querySelectorAll('[data-route="timeline"]').forEach(el=>{el.removeAttribute('data-route');el.dataset.aaChronologia='1';if(el.tagName==='BUTTON')el.type='button'})}
 function redirectLegacyTimelineView(){if(isChronologiaPage())return;const legacy=[...document.querySelectorAll('.eyebrow')].some(el=>(el.textContent||'').trim()==='CHRONOLOGIA CORE');if(legacy)location.replace('./chronologia.html')}
 function loadChronologiaRecovery(){if(!isChronologiaPage()||document.getElementById('aa-chronologia-force1000-loader'))return;const t=document.createElement('script');t.id='aa-chronologia-force1000-loader';t.src='./chronologia-force1000-v1.js?v=20260811a';t.async=false;t.onerror=()=>console.error('Chronologia 1000-item recovery failed to load');document.head.appendChild(t)}
-function rearmTodayLoginVisual(){const d=new Date(),today=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;if(today!=='2026-08-13')return false;const once='aa-login-visual-rearm-after-sw-reload-fix-20260813-v1';try{if(localStorage.getItem(once)==='1')return false;localStorage.removeItem('aa-login-visual-seen-v1');localStorage.removeItem('aa-login-visual-pick-v1');localStorage.setItem(once,'1');return true}catch(_){return false}}
+const LOGIN_VISUAL_SEEN_KEY='aa-login-visual-seen-v1',LOGIN_VISUAL_PICK_KEY='aa-login-visual-pick-v1';
+let loginVisualResumeTimer=0,loginVisualApiRetries=0;
+function localDay(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function queueDailyLoginVisualCheck(delay=120){clearTimeout(loginVisualResumeTimer);loginVisualResumeTimer=setTimeout(checkDailyLoginVisual,delay)}
+function checkDailyLoginVisual(){
+ if(document.visibilityState&&document.visibilityState!=='visible')return false;
+ const today=localDay();let seen='';try{seen=localStorage.getItem(LOGIN_VISUAL_SEEN_KEY)||''}catch(_){}
+ if(seen===today||document.getElementById('aaLoginVisual')){loginVisualApiRetries=0;return false}
+ const api=window.AALoginCompanion;
+ if(!api?.showDailyVisual){if(loginVisualApiRetries<20){loginVisualApiRetries++;queueDailyLoginVisualCheck(250)}return false}
+ loginVisualApiRetries=0;Promise.resolve(api.showDailyVisual(false)).catch(()=>{});return true
+}
+function bindDailyLoginVisualResume(){
+ if(window.__AA_LOGIN_DAILY_RESUME_V1__)return;window.__AA_LOGIN_DAILY_RESUME_V1__=true;
+ const resume=()=>queueDailyLoginVisualCheck(120);
+ addEventListener('pageshow',resume);addEventListener('focus',resume);
+ document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')resume()});
+ document.addEventListener('aa:login-image-error',e=>{if(e?.detail?.date!==localDay())return;try{localStorage.removeItem(LOGIN_VISUAL_SEEN_KEY);localStorage.removeItem(LOGIN_VISUAL_PICK_KEY)}catch(_){}});
+ document.documentElement.dataset.aaLoginDailyResume='v1';queueDailyLoginVisualCheck(1200)
+}
 let queued=false;function patch(){queued=false;patchVersion();killVisuals();injectReviewLink();routeTimelineToChronologia();redirectLegacyTimelineView();loadChronologiaRecovery()}function queuePatch(){if(queued)return;queued=true;requestAnimationFrame(patch)}
 new MutationObserver(queuePatch).observe(document.documentElement,{childList:true,subtree:true});addEventListener('hashchange',queuePatch);addEventListener('popstate',queuePatch);document.addEventListener('click',e=>{const el=e.target.closest?.('[data-aa-chronologia]');if(el&&!isChronologiaPage()){e.preventDefault();e.stopImmediatePropagation();location.assign('./chronologia.html');return}setTimeout(queuePatch,0)},true);setTimeout(queuePatch,0);setTimeout(queuePatch,700);
 async function forceCurrentSW(){if(!('serviceWorker' in navigator)||location.protocol!=='https:')return;try{const reg=await navigator.serviceWorker.register('./sw.js',{scope:'./',updateViaCache:'none'});await reg.update();if(reg.waiting)reg.waiting.postMessage({type:'SKIP_WAITING'});navigator.serviceWorker.addEventListener('controllerchange',()=>{if(sessionStorage.getItem('aa-site-management-230-controller-updated'))return;sessionStorage.setItem('aa-site-management-230-controller-updated','1');document.dispatchEvent(new CustomEvent('aa:sw-controller-updated',{detail:{reloadDeferred:true}}))},{once:true})}catch(e){console.warn('AA service worker refresh failed',e)}}
@@ -18,6 +37,6 @@ function loadAnswerFeedbackAudio(){if(document.getElementById('aa-answer-feedbac
 function loadSelfTest(){if(document.getElementById('aa-voice-selftest-loader'))return;const t=document.createElement('script');t.id='aa-voice-selftest-loader';t.src='./voice-selftest-v1.js?v=1.0.0';t.async=false;t.onerror=()=>console.error('Voice self-test failed to load');document.head.appendChild(t)}
 function loadSettingsGuard(){if(document.getElementById('aa-companion-settings-only-guard-loader'))return;const t=document.createElement('script');t.id='aa-companion-settings-only-guard-loader';t.src='./companion-settings-only-guard-v1.js?v=2.0.0';t.async=false;t.onerror=()=>console.error('Companion settings-only guard failed to load');document.head.appendChild(t)}
 function loadExplosionAnalytics(){if(document.getElementById('aa-explosion-analytics-loader'))return;const t=document.createElement('script');t.id='aa-explosion-analytics-loader';t.src='./analytics-explosion-v1.js?v=2.0.0';t.async=false;t.onerror=()=>console.error('Explosion analytics failed to load');document.head.appendChild(t)}
-rearmTodayLoginVisual();loadStorageResilience();loadReadingGlossTap();loadUnitSelectionFix();loadAnswerFeedbackAudio();loadExplosionAnalytics();loadChronologiaRecovery();forceCurrentSW();killVisuals();loadSettingsGuard();injectReviewLink();routeTimelineToChronologia();
-const s=document.createElement('script');s.src='./companion7-runtime.js?v=7.5.0-loginzip1';s.async=false;s.onload=()=>{killVisuals();queuePatch();loadStorageResilience();loadReadingGlossTap();loadUnitSelectionFix();loadAnswerFeedbackAudio();loadSelfTest();loadSettingsGuard();loadChronologiaRecovery()};s.onerror=()=>console.error('Companion login runtime failed to load');document.head.appendChild(s);
+bindDailyLoginVisualResume();loadStorageResilience();loadReadingGlossTap();loadUnitSelectionFix();loadAnswerFeedbackAudio();loadExplosionAnalytics();loadChronologiaRecovery();forceCurrentSW();killVisuals();loadSettingsGuard();injectReviewLink();routeTimelineToChronologia();
+const s=document.createElement('script');s.src='./companion7-runtime.js?v=7.5.0-loginzip1';s.async=false;s.onload=()=>{killVisuals();queuePatch();loadStorageResilience();loadReadingGlossTap();loadUnitSelectionFix();loadAnswerFeedbackAudio();loadSelfTest();loadSettingsGuard();loadChronologiaRecovery();queueDailyLoginVisualCheck(200)};s.onerror=()=>console.error('Companion login runtime failed to load');document.head.appendChild(s);
 })();
