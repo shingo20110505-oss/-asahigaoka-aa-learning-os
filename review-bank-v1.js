@@ -42,11 +42,14 @@ const items=[
   },
   {
     id:'en-time-clause-future-present-past-past-20260814',subject:'英語',unit:'時制・時間を表す節',title:'未来は現在形、過去は過去形のまま',question:'when / before / after などの時間を表す節では、未来のことは現在形を使う。では、過去のことを表すときはどうする？',answer:'過去のことは過去形のままにします。未来の時間を表す節では will を使わず現在形にしますが、過去の出来事まで現在形に変えるわけではありません。',why:'「未来なのに現在形」という特別なルールが働くのは、未来の時を表す副詞節です。すでに起きた過去の出来事を when / before / after などで表すときは、普通に過去形を使います。',examples:['I will call you when I get home.（家に着いたら電話します）→ 未来だが when 節は現在形','I called you when I got home.（家に着いたとき電話しました）→ 過去なので when 節も過去形','Before I went to bed, I studied English.（寝る前に英語を勉強しました）→ 過去は過去形のまま'],memory:'未来の時間節 → 現在形 / 過去の時間節 → 過去形のまま',tags:['時制','時間を表す節','when','before','after','未来','現在形','過去形'],createdAt:'2026-08-14'
+  },
+  {
+    id:'en-to-me-for-me-20260814',subject:'英語',unit:'前置詞・形容詞',title:'to me と for me の簡単な見分け方',question:'to me と for me は、どう見分ける？ 「interesting (　) me」と「difficult (　) me」には何を入れる？',answer:'「私にはそう感じる」という感じなら to、「私にとって〜するのが難しい・簡単」という感じなら for を使います。interesting to me / difficult for me です。',why:'まずは「感じる → to」「できる・難しい → for」と覚えると簡単です。interesting・strange などは「私にはそう感じる」ので to、easy・difficult などは「私にとってするのが〜」なので for が基本です。',examples:['Talking with Mr. Brown is interesting to me.（ブラウン先生と話すのは私には面白い）','This movie is interesting to me.（この映画は私には面白く感じる）','English is difficult for me.（英語は私にとって難しい）','It is easy for me to understand this question.（この問題を理解するのは私には簡単です）'],memory:'感じる → to / できる・難しい → for',tags:['to me','for me','前置詞','interesting','difficult','easy'],createdAt:'2026-08-14'
   }
 ];
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.11';
+window.AA_REVIEW_BANK_VERSION='1.0.12';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
