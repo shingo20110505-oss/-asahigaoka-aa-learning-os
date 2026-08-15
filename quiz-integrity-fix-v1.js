@@ -1,6 +1,6 @@
 (()=>{'use strict';
 if(window.__AA_QUIZ_INTEGRITY_FIX_V1__)return;
-window.__AA_QUIZ_INTEGRITY_FIX_V1__={version:'1.0.0-20260815'};
+window.__AA_QUIZ_INTEGRITY_FIX_V1__={version:'1.0.1-20260815'};
 
 const localNow=()=>typeof now==='function'?now():Date.now();
 const localUid=(p='q')=>typeof uid==='function'?uid(p):p+'_'+Math.random().toString(36).slice(2)+Date.now().toString(36);
@@ -61,8 +61,9 @@ function historyQueue(count=8){
  const formats=['year','event','cause','order'];
  return picked.map((x,i)=>historyQuestion(x,formats[i%formats.length]));
 }
+function validSingleChoice(q){return q&&Array.isArray(q.choices)&&q.choices.length===4&&q.choices.filter(c=>c.ok).length===1&&new Set(q.choices.map(c=>String(c.text))).size===4&&!q.answerIndices&&q.answerIndex===q.choices.findIndex(c=>c.ok)}
 function startHistoryRecall(){
- const queue=historyQueue(8);if(queue.length!==8||queue.some(q=>q.choices.length!==4||q.choices.filter(c=>c.ok).length!==1||new Set(q.choices.map(c=>c.text)).size!==4))return false;
+ const queue=historyQueue(8);if(queue.length!==8||queue.some(q=>!validSingleChoice(q)))return false;
  state.session={id:localUid('chronologia'),active:true,mode:'retrieval-spacing',kind:'chronologia',subject:'social',queue,index:0,subIndex:0,answers:{},feedback:null,startedAt:localNow(),accumulatedMs:0,lastActiveAt:localNow(),itemStartedAt:localNow(),scrollY:0,minimumDone:false,clockPaused:false,pausedAt:null};
  state.stats.sessions++;state.route='study';save();render();window.scrollTo(0,0);if(typeof startTicker==='function')startTicker();return true;
 }
@@ -70,7 +71,6 @@ function startHistoryRecall(){
 function classicalConfig(){
  try{const c=state?.ui?.practiceConfig;if(c?.subject!=='japanese')return null;const units=Array.isArray(c.unitsBySubject?.japanese)?c.unitsBySubject.japanese:[];return units.length===1&&units[0]==='classical'?c:null}catch(_){return null}
 }
-function validSingleChoice(q){return q&&Array.isArray(q.choices)&&q.choices.length===4&&q.choices.filter(c=>c.ok).length===1&&new Set(q.choices.map(c=>String(c.text))).size===4&&!q.answerIndices}
 function classicalQueue(config){
  const v2=window.AA_V2_TEST_API,v22=window.AA_V22_TEST_API;if(!v2?.banks?.japanese||!v2.makeQuestion||!v2.startPractice)return[];
  const difficulty=Math.max(1,Math.min(11,Math.round(Number(state.ui.subjectDifficulty)||7))),level=difficulty<=4?1:difficulty<=8?2:3,cap=level===1?7:level===2?9:11;
@@ -92,6 +92,35 @@ function startClassicalPractice(){
  state.session.kind='unitPractice';state.session.practiceConfig={subject:'japanese',length:config.length,units:['classical'],level,difficulty};state.session.practiceUnits=['classical'];save();render();return true;
 }
 
+function audit(){
+ const failures=[],rows=history(),samples=rows.filter((_,i)=>i%Math.max(1,Math.floor(rows.length/24))===0).slice(0,24);
+ if(rows.length<8)failures.push('history-bank-too-small');
+ for(const event of samples){
+  for(const format of ['year','event','cause','order']){
+   const q=historyQuestion(event,format);if(!validSingleChoice(q))failures.push('history-choice-'+format+':'+event.id);
+   if(format==='order'&&q.context==='chronologia-order'){
+    const seq=distinctYearSequence(event),years=seq.map(yr);if(seq.length!==4||new Set(years).size!==4||years.some((y,i)=>i>0&&y<=years[i-1]))failures.push('history-order-years:'+event.id);
+    const lines=q.stem.split('\n').slice(1),letterByEvent=new Map(lines.map(line=>[line.slice(2),line[0]])),expected=seq.map(x=>letterByEvent.get(String(x.event))).join('→');
+    if(q.choices[q.answerIndex]?.text!==expected)failures.push('history-order-answer:'+event.id);
+   }
+  }
+ }
+ for(const length of ['standard','deep']){
+  const target=length==='deep'?15:8,q=classicalQueue({length});
+  if(q.length!==target)failures.push('classical-count-'+length+':'+q.length);
+  if(q.some(x=>x.examUnit!=='classical'||!validSingleChoice(x)))failures.push('classical-invalid-'+length);
+  if(new Set(q.map(x=>String(x.reviewKey||x.code||x.id))).size!==q.length)failures.push('classical-duplicate-'+length);
+ }
+ return{ok:failures.length===0,failures,historyRows:rows.length,historySamples:samples.length,classicalStandard:classicalQueue({length:'standard'}).length,classicalDeep:classicalQueue({length:'deep'}).length,version:'1.0.1-20260815'};
+}
+function publishAudit(){
+ let report;try{report=audit()}catch(error){report={ok:false,failures:['exception:'+error.message],version:'1.0.1-20260815'}}
+ document.documentElement.dataset.aaQuizIntegrity=report.ok?'PASS':'FAIL';
+ document.documentElement.dataset.aaQuizIntegrityVersion=report.version;
+ const pre=document.createElement('pre');pre.id='aa-quiz-integrity-ci';pre.hidden=true;pre.textContent='AA_QUIZ_INTEGRITY='+(report.ok?'PASS':'FAIL')+' '+JSON.stringify(report);(document.body||document.documentElement).appendChild(pre);
+ window.AA_QUIZ_INTEGRITY_AUDIT=report;
+}
+
 function intercept(e){
  const el=e.target?.closest?.('[data-action]');if(!el)return;
  if(el.dataset.action==='start-timeline-recall'){
@@ -103,5 +132,6 @@ function intercept(e){
  }
 }
 document.addEventListener('click',intercept,true);
-window.AA_QUIZ_INTEGRITY_FIX={version:'1.0.0-20260815',historyQueue,classicalQueue,startHistoryRecall,startClassicalPractice};
+window.AA_QUIZ_INTEGRITY_FIX={version:'1.0.1-20260815',historyQueue,classicalQueue,startHistoryRecall,startClassicalPractice,audit};
+try{if(new URLSearchParams(location.search).get('aa_quiz_integrity_ci')==='1')setTimeout(publishAudit,0)}catch(_){}
 })();
