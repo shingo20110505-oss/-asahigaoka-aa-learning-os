@@ -13,10 +13,8 @@ ctx.makeReadingPassage=sc=>(sc.facts||[]).filter(Boolean).join('\n\n');
 vm.runInContext(fs.readFileSync('v23-english-main.js','utf8'),ctx);
 vm.runInContext(fs.readFileSync('reading-natural-v2.js','utf8'),ctx);
 vm.runInContext(fs.readFileSync('reading-natural-v3.js','utf8'),ctx);
-const sc=ctx.DATA.readingScenarios.find(x=>x.id==='r13')||ctx.DATA.readingScenarios[0];
-const passage=ctx.makeReadingPassage(sc,7,'standard');
-const before=ctx.readingQuestionSet(sc,passage,7);
+const sc=ctx.DATA.readingScenarios.find(x=>x.id==='nat-f17')||ctx.DATA.readingScenarios[0];
+const passage=ctx.makeReadingPassage(sc,1,'deep');
+const before=ctx.readingQuestionSet(sc,passage,1);
 const snapshotBefore=before.map(q=>({type:q.type,answerIndex:q.answerIndex,choices:(q.choices||[]).map(c=>({text:c.text,ok:c.ok,error:c.error})),evidenceRefs:q.evidenceRefs,evidence:q.evidence}));
-for(const q of before){let seen=new Set();for(const c of q.choices||[]){c.text=ctx.englishReadingChoice(q.type,c,sc);if(seen.has(c.text))c.text='A problem can have only one possible cause.';seen.add(c.text)}}
-const snapshotAfter=before.map(q=>({type:q.type,answerIndex:q.answerIndex,choices:(q.choices||[]).map(c=>({text:c.text,ok:c.ok,error:c.error})),evidenceRefs:q.evidenceRefs,evidence:q.evidence}));
-console.log(JSON.stringify({scenario:{id:sc.id,title:sc.title,facts:sc.facts,inference:sc.inference,lesson:sc.lesson},passage,before:snapshotBefore,after:snapshotAfter},null,2));
+console.log(JSON.stringify({scenario:{id:sc.id,title:sc.title,facts:sc.facts,inference:sc.inference,lesson:sc.lesson},passage,questions:snapshotBefore},null,2));
