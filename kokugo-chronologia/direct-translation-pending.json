@@ -1,1066 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 13353,
-  "english_only_remaining": 1647,
+  "already_direct_japanese": 13503,
+  "english_only_remaining": 1497,
   "english_only_rank_counts": {
-    "(blank)": 1647
+    "(blank)": 1497
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 13353,
-      "id": "1376880",
-      "term": "正規表現",
-      "reading": "せいきひょうげん",
-      "meaning": "regular expression / regex"
-    },
-    {
-      "source_index": 13354,
-      "id": "1376890",
-      "term": "正規分布",
-      "reading": "せいきぶんぷ",
-      "meaning": "normal distribution / Gaussian distribution"
-    },
-    {
-      "source_index": 13355,
-      "id": "2831594",
-      "term": "世紀末的",
-      "reading": "せいきまつてき",
-      "meaning": "fin-de-siècle / decadent"
-    },
-    {
-      "source_index": 13356,
-      "id": "2098110",
-      "term": "請求記号",
-      "reading": "せいきゅうきごう",
-      "meaning": "call number (e.g. of a book in a library)"
-    },
-    {
-      "source_index": 13357,
-      "id": "1735540",
-      "term": "政教一致",
-      "reading": "せいきょういっち",
-      "meaning": "unity of church and state"
-    },
-    {
-      "source_index": 13358,
-      "id": "1375910",
-      "term": "政教分離",
-      "reading": "せいきょうぶんり",
-      "meaning": "separation of church and state"
-    },
-    {
-      "source_index": 13359,
-      "id": "2853851",
-      "term": "正距図法",
-      "reading": "せいきょずほう",
-      "meaning": "equidistant projection"
-    },
-    {
-      "source_index": 13360,
-      "id": "2504770",
-      "term": "聖金曜日",
-      "reading": "せいきんようび",
-      "meaning": "Good Friday"
-    },
-    {
-      "source_index": 13361,
-      "id": "2368030",
-      "term": "制御階層",
-      "reading": "せいぎょかいそう",
-      "meaning": "control hierarchy"
-    },
-    {
-      "source_index": 13362,
-      "id": "2803430",
-      "term": "制御回路",
-      "reading": "せいぎょかいろ",
-      "meaning": "control circuit / controlling circuit"
-    },
-    {
-      "source_index": 13363,
-      "id": "2368050",
-      "term": "制御機能",
-      "reading": "せいぎょきのう",
-      "meaning": "control function"
-    },
-    {
-      "source_index": 13364,
-      "id": "2368110",
-      "term": "制御言語",
-      "reading": "せいぎょげんご",
-      "meaning": "command language / control language"
-    },
-    {
-      "source_index": 13365,
-      "id": "2860571",
-      "term": "制御工学",
-      "reading": "せいぎょこうがく",
-      "meaning": "control engineering"
-    },
-    {
-      "source_index": 13366,
-      "id": "2831459",
-      "term": "制御構造",
-      "reading": "せいぎょこうぞう",
-      "meaning": "control flow / flow of control"
-    },
-    {
-      "source_index": 13367,
-      "id": "1374780",
-      "term": "制御装置",
-      "reading": "せいぎょそうち",
-      "meaning": "controller / control unit"
-    },
-    {
-      "source_index": 13368,
-      "id": "2368170",
-      "term": "制御端末",
-      "reading": "せいぎょたんまつ",
-      "meaning": "controlling terminal"
-    },
-    {
-      "source_index": 13369,
-      "id": "2800140",
-      "term": "制御不能",
-      "reading": "せいぎょふのう",
-      "meaning": "out of control / uncontrollable"
-    },
-    {
-      "source_index": 13370,
-      "id": "2368210",
-      "term": "制御文字",
-      "reading": "せいぎょもじ",
-      "meaning": "control character"
-    },
-    {
-      "source_index": 13371,
-      "id": "2368220",
-      "term": "制御要素",
-      "reading": "せいぎょようそ",
-      "meaning": "control elements"
-    },
-    {
-      "source_index": 13372,
-      "id": "2368240",
-      "term": "制御領域",
-      "reading": "せいぎょりょういき",
-      "meaning": "control area / CA"
-    },
-    {
-      "source_index": 13373,
-      "id": "2868639",
-      "term": "政経学部",
-      "reading": "せいけいがくぶ",
-      "meaning": "faculty of political science and economics / school of political science and economics"
-    },
-    {
-      "source_index": 13374,
-      "id": "1376160",
-      "term": "整形外科",
-      "reading": "せいけいげか",
-      "meaning": "orthopedic surgery / orthopaedic surgery / orthopedics"
-    },
-    {
-      "source_index": 13375,
-      "id": "1764710",
-      "term": "整形手術",
-      "reading": "せいけいしゅじゅつ",
-      "meaning": "orthopedic surgery / plastic surgery"
-    },
-    {
-      "source_index": 13376,
-      "id": "5433099",
-      "term": "成蹊大学",
-      "reading": "せいけいだいがく",
-      "meaning": "Seikei University"
-    },
-    {
-      "source_index": 13377,
-      "id": "2047930",
-      "term": "整形美人",
-      "reading": "せいけいびじん",
-      "meaning": "plastic-surgery beauty / woman made beautiful by cosmetic surgery"
-    },
-    {
-      "source_index": 13378,
-      "id": "2830526",
-      "term": "政経分離",
-      "reading": "せいけいぶんり",
-      "meaning": "separation of politics from economics"
-    },
-    {
-      "source_index": 13379,
-      "id": "2726750",
-      "term": "政権運営",
-      "reading": "せいけんうんえい",
-      "meaning": "running a government administration / managing a cabinet"
-    },
-    {
-      "source_index": 13380,
-      "id": "2851327",
-      "term": "政権基盤",
-      "reading": "せいけんきばん",
-      "meaning": "power base (of a government)"
-    },
-    {
-      "source_index": 13381,
-      "id": "2047940",
-      "term": "政権構想",
-      "reading": "せいけんこうそう",
-      "meaning": "planning a new government / plan for a new administration"
-    },
-    {
-      "source_index": 13382,
-      "id": "1996220",
-      "term": "政権交代",
-      "reading": "せいけんこうたい",
-      "meaning": "change of government / regime change"
-    },
-    {
-      "source_index": 13383,
-      "id": "2133550",
-      "term": "政権公約",
-      "reading": "せいけんこうやく",
-      "meaning": "policy statement / manifesto"
-    },
-    {
-      "source_index": 13384,
-      "id": "5441914",
-      "term": "聖剣伝説",
-      "reading": "せいけんでんせつ",
-      "meaning": "Seiken Densetsu (lit: Holy Sword Legend), a.k.a. \"... of Mana\" (RPG series)"
-    },
-    {
-      "source_index": 13385,
-      "id": "2853068",
-      "term": "政権復帰",
-      "reading": "せいけんふっき",
-      "meaning": "return to power"
-    },
-    {
-      "source_index": 13386,
-      "id": "1735390",
-      "term": "政見放送",
-      "reading": "せいけんほうそう",
-      "meaning": "broadcast of political opinions / broadcast by candidate / party political broadcast"
-    },
-    {
-      "source_index": 13387,
-      "id": "2047950",
-      "term": "政権亡者",
-      "reading": "せいけんもうじゃ",
-      "meaning": "one who is obsessed with (getting into, holding on to) political power / one who is obsessed with the idea of taking over government"
-    },
-    {
-      "source_index": 13388,
-      "id": "1374720",
-      "term": "制限漢字",
-      "reading": "せいげんかんじ",
-      "meaning": "restricted kanji / limited number of kanji designated for daily use"
-    },
-    {
-      "source_index": 13389,
-      "id": "1377060",
-      "term": "正弦曲線",
-      "reading": "せいげんきょくせん",
-      "meaning": "sine curve"
-    },
-    {
-      "source_index": 13390,
-      "id": "2836873",
-      "term": "制限区域",
-      "reading": "せいげんくいき",
-      "meaning": "restricted area / security area"
-    },
-    {
-      "source_index": 13391,
-      "id": "2442670",
-      "term": "制限酵素",
-      "reading": "せいげんこうそ",
-      "meaning": "restriction enzyme / restriction endonuclease"
-    },
-    {
-      "source_index": 13392,
-      "id": "2439900",
-      "term": "精原細胞",
-      "reading": "せいげんさいぼう",
-      "meaning": "spermatogonium"
-    },
-    {
-      "source_index": 13393,
-      "id": "1784800",
-      "term": "制限時間",
-      "reading": "せいげんじかん",
-      "meaning": "time limit"
-    },
-    {
-      "source_index": 13394,
-      "id": "1374730",
-      "term": "制限事項",
-      "reading": "せいげんじこう",
-      "meaning": "restriction / limitation"
-    },
-    {
-      "source_index": 13395,
-      "id": "2214400",
-      "term": "制限戦争",
-      "reading": "せいげんせんそう",
-      "meaning": "limited war"
-    },
-    {
-      "source_index": 13396,
-      "id": "1374740",
-      "term": "制限速度",
-      "reading": "せいげんそくど",
-      "meaning": "speed limit"
-    },
-    {
-      "source_index": 13397,
-      "id": "2367890",
-      "term": "制限配信",
-      "reading": "せいげんはいしん",
-      "meaning": "restricted delivery"
-    },
-    {
-      "source_index": 13398,
-      "id": "2254050",
-      "term": "制限用法",
-      "reading": "せいげんようほう",
-      "meaning": "restrictive (of relative pronoun use)"
-    },
-    {
-      "source_index": 13399,
-      "id": "2047960",
-      "term": "晴好雨奇",
-      "reading": "せいこううき",
-      "meaning": "the scenery being beautiful in both sunny and rainy weather"
-    },
-    {
-      "source_index": 13400,
-      "id": "1376540",
-      "term": "晴耕雨読",
-      "reading": "せいこううどく",
-      "meaning": "working in the field in fine weather and reading at home in rainy weather / living in quiet retirement dividing time between work and intellectual pursuits"
-    },
-    {
-      "source_index": 13401,
-      "id": "2590640",
-      "term": "性交体位",
-      "reading": "せいこうたいい",
-      "meaning": "sex position"
-    },
-    {
-      "source_index": 13402,
-      "id": "2851244",
-      "term": "成功体験",
-      "reading": "せいこうたいけん",
-      "meaning": "successful experience / experiencing success"
-    },
-    {
-      "source_index": 13403,
-      "id": "2869822",
-      "term": "性交疼痛",
-      "reading": "せいこうとうつう",
-      "meaning": "dyspareunia / painful intercourse"
-    },
-    {
-      "source_index": 13404,
-      "id": "1766770",
-      "term": "西高東低",
-      "reading": "せいこうとうてい",
-      "meaning": "high barometric pressure to the west, low pressure to the east"
-    },
-    {
-      "source_index": 13405,
-      "id": "2861822",
-      "term": "性交不能",
-      "reading": "せいこうふのう",
-      "meaning": "apareunia / impotence"
-    },
-    {
-      "source_index": 13406,
-      "id": "2058130",
-      "term": "成功報酬",
-      "reading": "せいこうほうしゅう",
-      "meaning": "fee contingent upon success / contingency fee / completion bonus"
-    },
-    {
-      "source_index": 13407,
-      "id": "2837940",
-      "term": "聖刻文字",
-      "reading": "せいこくもじ",
-      "meaning": "hieroglyph / hieroglyphics"
-    },
-    {
-      "source_index": 13408,
-      "id": "2183990",
-      "term": "生痕化石",
-      "reading": "せいこんかせき",
-      "meaning": "trace fossil"
-    },
-    {
-      "source_index": 13409,
-      "id": "2689720",
-      "term": "正五角形",
-      "reading": "せいごかくけい",
-      "meaning": "regular pentagon / equilateral pentagon"
-    },
-    {
-      "source_index": 13410,
-      "id": "2713860",
-      "term": "政策官庁",
-      "reading": "せいさくかんちょう",
-      "meaning": "administrative government agency / policy-making government agency"
-    },
-    {
-      "source_index": 13411,
-      "id": "2563800",
-      "term": "政策関連",
-      "reading": "せいさくかんれん",
-      "meaning": "policy-related / policy based / policy relevant"
-    },
-    {
-      "source_index": 13412,
-      "id": "2368610",
-      "term": "製作会社",
-      "reading": "せいさくがいしゃ",
-      "meaning": "production company"
-    },
-    {
-      "source_index": 13413,
-      "id": "1735610",
-      "term": "政策協定",
-      "reading": "せいさくきょうてい",
-      "meaning": "policy agreement"
-    },
-    {
-      "source_index": 13414,
-      "id": "2525180",
-      "term": "政策金利",
-      "reading": "せいさくきんり",
-      "meaning": "policy interest rate"
-    },
-    {
-      "source_index": 13415,
-      "id": "1375960",
-      "term": "政策決定",
-      "reading": "せいさくけってい",
-      "meaning": "policy making"
-    },
-    {
-      "source_index": 13416,
-      "id": "2062850",
-      "term": "政策審議",
-      "reading": "せいさくしんぎ",
-      "meaning": "policy deliberation"
-    },
-    {
-      "source_index": 13417,
-      "id": "2060800",
-      "term": "政策調査",
-      "reading": "せいさくちょうさ",
-      "meaning": "party policy research"
-    },
-    {
-      "source_index": 13418,
-      "id": "1996230",
-      "term": "政策転換",
-      "reading": "せいさくてんかん",
-      "meaning": "policy shift / policy U-turn"
-    },
-    {
-      "source_index": 13419,
-      "id": "1996240",
-      "term": "政策秘書",
-      "reading": "せいさくひしょ",
-      "meaning": "policy secretary"
-    },
-    {
-      "source_index": 13420,
-      "id": "2047970",
-      "term": "政策不況",
-      "reading": "せいさくふきょう",
-      "meaning": "policy-induced slump / stagnation resulting from poor economic policies"
-    },
-    {
-      "source_index": 13421,
-      "id": "2611880",
-      "term": "政策方針",
-      "reading": "せいさくほうしん",
-      "meaning": "(political) policy position / line of policy / party line"
-    },
-    {
-      "source_index": 13422,
-      "id": "2132600",
-      "term": "政策目標",
-      "reading": "せいさくもくひょう",
-      "meaning": "policy objective"
-    },
-    {
-      "source_index": 13423,
-      "id": "1996250",
-      "term": "政策立案",
-      "reading": "せいさくりつあん",
-      "meaning": "policy making"
-    },
-    {
-      "source_index": 13424,
-      "id": "5742764",
-      "term": "星槎大学",
-      "reading": "せいさだいがく",
-      "meaning": "Seisa University"
-    },
-    {
-      "source_index": 13425,
-      "id": "1378980",
-      "term": "生殺与奪",
-      "reading": "せいさつよだつ",
-      "meaning": "(having) life-and-death power (over)"
-    },
-    {
-      "source_index": 13426,
-      "id": "1580870",
-      "term": "正三角形",
-      "reading": "せいさんかくけい",
-      "meaning": "equilateral triangle / regular triangle"
-    },
-    {
-      "source_index": 13427,
-      "id": "2772220",
-      "term": "正三角錐",
-      "reading": "せいさんかくすい",
-      "meaning": "triangular pyramid with equilateral base"
-    },
-    {
-      "source_index": 13428,
-      "id": "1830450",
-      "term": "生産過剰",
-      "reading": "せいさんかじょう",
-      "meaning": "overproduction"
-    },
-    {
-      "source_index": 13429,
-      "id": "2161880",
-      "term": "生産関数",
-      "reading": "せいさんかんすう",
-      "meaning": "production function"
-    },
-    {
-      "source_index": 13430,
-      "id": "1830460",
-      "term": "生産管理",
-      "reading": "せいさんかんり",
-      "meaning": "production control"
-    },
-    {
-      "source_index": 13431,
-      "id": "1750720",
-      "term": "清算会社",
-      "reading": "せいさんがいしゃ",
-      "meaning": "company in liquidation"
-    },
-    {
-      "source_index": 13432,
-      "id": "1996750",
-      "term": "生産拠点",
-      "reading": "せいさんきょてん",
-      "meaning": "production base"
-    },
-    {
-      "source_index": 13433,
-      "id": "1379000",
-      "term": "生産技術",
-      "reading": "せいさんぎじゅつ",
-      "meaning": "industrial science"
-    },
-    {
-      "source_index": 13434,
-      "id": "1830430",
-      "term": "生産組合",
-      "reading": "せいさんくみあい",
-      "meaning": "producer's association"
-    },
-    {
-      "source_index": 13435,
-      "id": "1996760",
-      "term": "生産計画",
-      "reading": "せいさんけいかく",
-      "meaning": "production schedule"
-    },
-    {
-      "source_index": 13436,
-      "id": "2653130",
-      "term": "生産現場",
-      "reading": "せいさんげんば",
-      "meaning": "point of production / production site / shop floor"
-    },
-    {
-      "source_index": 13437,
-      "id": "2827759",
-      "term": "生産工学",
-      "reading": "せいさんこうがく",
-      "meaning": "production engineering / industrial engineering"
-    },
-    {
-      "source_index": 13438,
-      "id": "2248540",
-      "term": "生産工程",
-      "reading": "せいさんこうてい",
-      "meaning": "production process / industrial operation"
-    },
-    {
-      "source_index": 13439,
-      "id": "2625480",
-      "term": "生産手段",
-      "reading": "せいさんしゅだん",
-      "meaning": "means of production"
-    },
-    {
-      "source_index": 13440,
-      "id": "2202870",
-      "term": "生産奨励",
-      "reading": "せいさんしょうれい",
-      "meaning": "manufacturing promotion / promotion of production"
-    },
-    {
-      "source_index": 13441,
-      "id": "1996780",
-      "term": "生産設備",
-      "reading": "せいさんせつび",
-      "meaning": "plant and equipment / production facilities / manufacturing equipment"
-    },
-    {
-      "source_index": 13442,
-      "id": "2794810",
-      "term": "生産中止",
-      "reading": "せいさんちゅうし",
-      "meaning": "production stoppage / discontinuance"
-    },
-    {
-      "source_index": 13443,
-      "id": "1750330",
-      "term": "青酸中毒",
-      "reading": "せいさんちゅうどく",
-      "meaning": "cyanide poisoning"
-    },
-    {
-      "source_index": 13444,
-      "id": "2655290",
-      "term": "生産調整",
-      "reading": "せいさんちょうせい",
-      "meaning": "adjustment of production / production adjustment"
-    },
-    {
-      "source_index": 13445,
-      "id": "1750730",
-      "term": "清算取引",
-      "reading": "せいさんとりひき",
-      "meaning": "open account transaction"
-    },
-    {
-      "source_index": 13446,
-      "id": "2031620",
-      "term": "精神一到",
-      "reading": "せいしんいっとう",
-      "meaning": "concentration of mind / mental concentration (on some task)"
-    },
-    {
-      "source_index": 13447,
-      "id": "1381190",
-      "term": "誠心誠意",
-      "reading": "せいしんせいい",
-      "meaning": "in all sincerity / with one's whole heart / whole-hearted devotion"
-    },
-    {
-      "source_index": 13448,
-      "id": "2031630",
-      "term": "精神統一",
-      "reading": "せいしんとういつ",
-      "meaning": "concentration of mind / mental concentration (on some task)"
-    },
-    {
-      "source_index": 13449,
-      "id": "2048070",
-      "term": "正邪曲直",
-      "reading": "せいじゃきょくちょく",
-      "meaning": "right and wrong / right or wrong"
-    },
-    {
-      "source_index": 13450,
-      "id": "2048110",
-      "term": "清浄潔白",
-      "reading": "せいじょうけっぱく",
-      "meaning": "upright and clean-handed / pure in heart and with a clean conscience"
-    },
-    {
-      "source_index": 13451,
-      "id": "1750630",
-      "term": "清浄無垢",
-      "reading": "せいじょうむく",
-      "meaning": "purity / spotlessness"
-    },
-    {
-      "source_index": 13452,
-      "id": "2048140",
-      "term": "聖人君子",
-      "reading": "せいじんくんし",
-      "meaning": "person of lofty virtue / man of noble character / perfect person"
-    },
-    {
-      "source_index": 13453,
-      "id": "2048200",
-      "term": "盛衰興亡",
-      "reading": "せいすいこうぼう",
-      "meaning": "rise and fall / ups and downs / waxing and waning"
-    },
-    {
-      "source_index": 13454,
-      "id": "1596030",
-      "term": "正々堂々",
-      "reading": "せいせいどうどう",
-      "meaning": "fair and square / open and aboveboard / bold and forthright"
-    },
-    {
-      "source_index": 13455,
-      "id": "2031570",
-      "term": "生々流転",
-      "reading": "せいせいるてん",
-      "meaning": "all things being in flux through the endless circle of birth, death, and rebirth / the circle of transmigration"
-    },
-    {
-      "source_index": 13456,
-      "id": "1829730",
-      "term": "生存競争",
-      "reading": "せいぞんきょうそう",
-      "meaning": "struggle for existence"
-    },
-    {
-      "source_index": 13457,
-      "id": "1848010",
-      "term": "清濁併せ呑む",
-      "reading": "せいだくあわせのむ",
-      "meaning": "to be broad-minded enough to associate with various types of people / to possess a capacious mind"
-    },
-    {
-      "source_index": 13458,
-      "id": "2031550",
-      "term": "清濁併呑",
-      "reading": "せいだくへいどん",
-      "meaning": "being so broad-minded as to accept all sorts of things, both good and evil / being broad-minded enough to be tolerant of people of all shades"
-    },
-    {
-      "source_index": 13459,
-      "id": "1381650",
-      "term": "青天の霹靂",
-      "reading": "せいてんのへきれき",
-      "meaning": "a bolt out of the blue"
-    },
-    {
-      "source_index": 13460,
-      "id": "1381680",
-      "term": "青天白日",
-      "reading": "せいてんはくじつ",
-      "meaning": "clear weather"
-    },
-    {
-      "source_index": 13461,
-      "id": "1377690",
-      "term": "正当防衛",
-      "reading": "せいとうぼうえい",
-      "meaning": "legitimate self-defence / legitimate self-defense"
-    },
-    {
-      "source_index": 13462,
-      "id": "2048240",
-      "term": "清風明月",
-      "reading": "せいふうめいげつ",
-      "meaning": "refreshing breeze and the bright moon / a beautiful nocturnal scene with a full moon"
-    },
-    {
-      "source_index": 13463,
-      "id": "2048270",
-      "term": "整理整頓",
-      "reading": "せいりせいとん",
-      "meaning": "keeping things tidy and in order"
-    },
-    {
-      "source_index": 13464,
-      "id": "1735600",
-      "term": "政略結婚",
-      "reading": "せいりゃくけっこん",
-      "meaning": "marriage of convenience / marriage for political reasons"
-    },
-    {
-      "source_index": 13465,
-      "id": "2031650",
-      "term": "精力絶倫",
-      "reading": "せいりょくぜつりん",
-      "meaning": "being of unbounded energy / being with matchless vigor / having endless sexual stamina"
-    },
-    {
-      "source_index": 13466,
-      "id": "2031540",
-      "term": "勢力伯仲",
-      "reading": "せいりょくはくちゅう",
-      "meaning": "(two sides) being evenly matched in influence or power"
-    },
-    {
-      "source_index": 13467,
-      "id": "2031660",
-      "term": "精励恪勤",
-      "reading": "せいれいかっきん",
-      "meaning": "assiduousness / attending diligently to one's study or duties"
-    },
-    {
-      "source_index": 13468,
-      "id": "1378430",
-      "term": "清廉潔白",
-      "reading": "せいれんけっぱく",
-      "meaning": "spotless integrity / absolute honesty / uprightness"
-    },
-    {
-      "source_index": 13469,
-      "id": "1888070",
-      "term": "生を受ける",
-      "reading": "せいをうける",
-      "meaning": "to be born / to come into this world"
-    },
-    {
-      "source_index": 13470,
-      "id": "2863395",
-      "term": "積羽沈舟",
-      "reading": "せきうちんしゅう",
-      "meaning": "small things in sufficient quantity can have a large influence / a large pile of feathers sinks a ship"
-    },
-    {
-      "source_index": 13471,
-      "id": "2048350",
-      "term": "赤手空拳",
-      "reading": "せきしゅくうけん",
-      "meaning": "barehanded / having no wealth or position to rely on (aside from one's own resourcefulness) (when embarking on something)"
-    },
-    {
-      "source_index": 13472,
-      "id": "1383200",
-      "term": "責任転嫁",
-      "reading": "せきにんてんか",
-      "meaning": "shifting the responsibility (for something) on to (someone) / passing the buck"
-    },
-    {
-      "source_index": 13473,
-      "id": "1811740",
-      "term": "関の山",
-      "reading": "せきのやま",
-      "meaning": "the most one can do / the best one can do / the best one can expect"
-    },
-    {
-      "source_index": 13474,
-      "id": "2866131",
-      "term": "背筋が凍る",
-      "reading": "せすじがこおる",
-      "meaning": "to have a chill run down one's spine"
-    },
-    {
-      "source_index": 13475,
-      "id": "1636860",
-      "term": "背筋が寒くなる",
-      "reading": "せすじがさむくなる",
-      "meaning": "to feel a chill run down one's spine"
-    },
-    {
-      "source_index": 13476,
-      "id": "2048400",
-      "term": "世態人情",
-      "reading": "せたいにんじょう",
-      "meaning": "(contemporary) customs and behavior / the picture of people's life in the contemporary world"
-    },
-    {
-      "source_index": 13477,
-      "id": "1939750",
-      "term": "世代交代",
-      "reading": "せだいこうたい",
-      "meaning": "alternation of generations / heterogenesis"
-    },
-    {
-      "source_index": 13478,
-      "id": "1385250",
-      "term": "切磋琢磨",
-      "reading": "せっさたくま",
-      "meaning": "diligent application (to work or study) / cultivating one's character by studying hard"
-    },
-    {
-      "source_index": 13479,
-      "id": "1385040",
-      "term": "切歯扼腕",
-      "reading": "せっしやくわん",
-      "meaning": "being enraged (indignant, impatient) / gnashing the teeth and clenching the arms on the breast (in anger or regret)"
-    },
-    {
-      "source_index": 13480,
-      "id": "1755050",
-      "term": "殺生禁断",
-      "reading": "せっしょうきんだん",
-      "meaning": "prohibition against hunting and fishing"
-    },
-    {
-      "source_index": 13481,
-      "id": "2869368",
-      "term": "雪中送炭",
-      "reading": "せっちゅうそうたん",
-      "meaning": "helping someone in trouble / sending charcoal to someone in the snow"
-    },
-    {
-      "source_index": 13482,
-      "id": "2868170",
-      "term": "雪泥鴻爪",
-      "reading": "せつでいのこうそう",
-      "meaning": "ephemeral nature of human deeds and events / evanescence of human affairs / leaving no trace"
-    },
-    {
-      "source_index": 13483,
-      "id": "2048550",
-      "term": "世道人心",
-      "reading": "せどうじんしん",
-      "meaning": "(public) morals and sentiments"
-    },
-    {
-      "source_index": 13484,
-      "id": "2859099",
-      "term": "背中で語る",
-      "reading": "せなかでかたる",
-      "meaning": "to let one's actions do the talking / to lead by example / to walk the talk"
-    },
-    {
-      "source_index": 13485,
-      "id": "2843773",
-      "term": "背中を追う",
-      "reading": "せなかをおう",
-      "meaning": "to walk behind someone"
-    },
-    {
-      "source_index": 13486,
-      "id": "2843527",
-      "term": "背中を押す",
-      "reading": "せなかをおす",
-      "meaning": "to push someone (towards) / to encourage someone"
-    },
-    {
-      "source_index": 13487,
-      "id": "1387090",
-      "term": "蝉時雨",
-      "reading": "せみしぐれ",
-      "meaning": "outburst of cicadas singing / chorus of cicadas"
-    },
-    {
-      "source_index": 13488,
-      "id": "1374320",
-      "term": "世話を焼く",
-      "reading": "せわをやく",
-      "meaning": "to take care of someone / to look after someone / to help"
-    },
-    {
-      "source_index": 13489,
-      "id": "2048600",
-      "term": "戦意喪失",
-      "reading": "せんいそうしつ",
-      "meaning": "loss of fighting spirit / losing the will to fight"
-    },
-    {
-      "source_index": 13490,
-      "id": "2048650",
-      "term": "浅学寡聞",
-      "reading": "せんがくかぶん",
-      "meaning": "shallow learning and limited information / being ignorant and badly informed"
-    },
-    {
-      "source_index": 13491,
-      "id": "1596150",
-      "term": "浅学非才",
-      "reading": "せんがくひさい",
-      "meaning": "one's lack of learning or ability / shallow learning and limited ability"
-    },
-    {
-      "source_index": 13492,
-      "id": "1581010",
-      "term": "千客万来",
-      "reading": "せんきゃくばんらい",
-      "meaning": "flood of customers / roaring business"
-    },
-    {
-      "source_index": 13493,
-      "id": "1388810",
-      "term": "千軍万馬",
-      "reading": "せんぐんばんば",
-      "meaning": "(having experienced) many battles"
-    },
-    {
-      "source_index": 13494,
-      "id": "2031730",
-      "term": "鮮血淋漓",
-      "reading": "せんけつりんり",
-      "meaning": "dripping with fresh blood"
-    },
-    {
-      "source_index": 13495,
-      "id": "1388820",
-      "term": "千言万語",
-      "reading": "せんげんばんご",
-      "meaning": "a great many words / huge number of words"
-    },
-    {
-      "source_index": 13496,
-      "id": "2048700",
-      "term": "先刻承知",
-      "reading": "せんこくしょうち",
-      "meaning": "being already (well) aware"
-    },
-    {
-      "source_index": 13497,
-      "id": "2048770",
-      "term": "千古万古",
-      "reading": "せんこばんこ",
-      "meaning": "remote antiquity / ancient times / the remote past"
-    },
-    {
-      "source_index": 13498,
-      "id": "2031700",
-      "term": "千古不易",
-      "reading": "せんこふえき",
-      "meaning": "eternally unchanging"
-    },
-    {
-      "source_index": 13499,
-      "id": "2048780",
-      "term": "千古不磨",
-      "reading": "せんこふま",
-      "meaning": "permanence / immortality / eternity"
-    },
-    {
-      "source_index": 13500,
-      "id": "2031710",
-      "term": "千古不滅",
-      "reading": "せんこふめつ",
-      "meaning": "everlasting / unchangeable / immortal"
-    },
-    {
-      "source_index": 13501,
-      "id": "1388840",
-      "term": "千差万別",
-      "reading": "せんさばんべつ",
-      "meaning": "an infinite variety of / multifarious / being extremely varied and wide-ranging"
-    },
-    {
-      "source_index": 13502,
-      "id": "1793140",
-      "term": "潜在意識",
-      "reading": "せんざいいしき",
-      "meaning": "subconsciousness / the subconscious"
-    },
     {
       "source_index": 13503,
       "id": "1388870",
@@ -7010,6 +5960,1056 @@
       "term": "貧者の一灯",
       "reading": "ひんじゃのいっとう",
       "meaning": "one's mite / widow's mite / one lantern from a poor man (i.e. no-one can give more than the only thing they have)"
+    },
+    {
+      "source_index": 14353,
+      "id": "2052640",
+      "term": "貧富貴賤",
+      "reading": "ひんぷきせん",
+      "meaning": "rich and poor, high and low / people of all ranks"
+    },
+    {
+      "source_index": 14354,
+      "id": "2052370",
+      "term": "媚眼秋波",
+      "reading": "びがんしゅうは",
+      "meaning": "casting a coquettish glance (at a man)"
+    },
+    {
+      "source_index": 14355,
+      "id": "2032330",
+      "term": "美酒佳肴",
+      "reading": "びしゅかこう",
+      "meaning": "fine wines and prized delicacies"
+    },
+    {
+      "source_index": 14356,
+      "id": "1486420",
+      "term": "美辞麗句",
+      "reading": "びじれいく",
+      "meaning": "flowery words / rhetorical flourishes"
+    },
+    {
+      "source_index": 14357,
+      "id": "2032340",
+      "term": "美人薄命",
+      "reading": "びじんはくめい",
+      "meaning": "beauty and fortune seldom go together / the beautiful die young"
+    },
+    {
+      "source_index": 14358,
+      "id": "2052510",
+      "term": "美味佳肴",
+      "reading": "びみかこう",
+      "meaning": "delicacies / epicurean dishes"
+    },
+    {
+      "source_index": 14359,
+      "id": "1724220",
+      "term": "眉目秀麗",
+      "reading": "びもくしゅうれい",
+      "meaning": "handsome"
+    },
+    {
+      "source_index": 14360,
+      "id": "2052660",
+      "term": "富貴栄華",
+      "reading": "ふうきえいが",
+      "meaning": "wealth, rank, and arrogant splendor"
+    },
+    {
+      "source_index": 14361,
+      "id": "1499810",
+      "term": "風紀紊乱",
+      "reading": "ふうきびんらん",
+      "meaning": "corrupt public morals"
+    },
+    {
+      "source_index": 14362,
+      "id": "2052670",
+      "term": "富貴浮雲",
+      "reading": "ふうきふうん",
+      "meaning": "riches and honors are as fleeting as floating clouds / fortune and fame are here today, gone tomorrow"
+    },
+    {
+      "source_index": 14363,
+      "id": "1844010",
+      "term": "風光明媚",
+      "reading": "ふうこうめいび",
+      "meaning": "scenic / beautiful / picturesque"
+    },
+    {
+      "source_index": 14364,
+      "id": "2859269",
+      "term": "風餐露宿",
+      "reading": "ふうさんろしゅく",
+      "meaning": "living in the harsh outdoors / roughing it in the wilderness / enduring a difficult journey"
+    },
+    {
+      "source_index": 14365,
+      "id": "2052680",
+      "term": "風声鶴唳",
+      "reading": "ふうせいかくれい",
+      "meaning": "getting frightened even by a slight noise / hearing the enemy in every leaf that rustles / being afraid of one's own shadow"
+    },
+    {
+      "source_index": 14366,
+      "id": "1844190",
+      "term": "風前の灯",
+      "reading": "ふうぜんのともしび",
+      "meaning": "precarious situation / precarious state"
+    },
+    {
+      "source_index": 14367,
+      "id": "2032430",
+      "term": "風俗壊乱",
+      "reading": "ふうぞくかいらん",
+      "meaning": "corruption of public morals / an offense against public morality"
+    },
+    {
+      "source_index": 14368,
+      "id": "2052700",
+      "term": "風俗習慣",
+      "reading": "ふうぞくしゅうかん",
+      "meaning": "manners and customs / customs and habits"
+    },
+    {
+      "source_index": 14369,
+      "id": "2052740",
+      "term": "風流韻事",
+      "reading": "ふうりゅういんじ",
+      "meaning": "elegant appreciation of nature through artistic pursuits such as poetry, painting and calligraphy"
+    },
+    {
+      "source_index": 14370,
+      "id": "2032440",
+      "term": "風流三昧",
+      "reading": "ふうりゅうざんまい",
+      "meaning": "taking delight in elegant pursuits / being absorbed in such elegant cultural pursuits as poetry, painting and calligraphy"
+    },
+    {
+      "source_index": 14371,
+      "id": "2015200",
+      "term": "風林火山",
+      "reading": "ふうりんかざん",
+      "meaning": "as fast as the wind, as quiet as the forest, as daring as fire, and immovable as the mountain"
+    },
+    {
+      "source_index": 14372,
+      "id": "2052750",
+      "term": "不易流行",
+      "reading": "ふえきりゅうこう",
+      "meaning": "the principle of fluidity and immutability in haiku / haiku is both fluid and transitory, and eternal and immutable / an interchange between the transient and the immutable is central to the soul of haiku"
+    },
+    {
+      "source_index": 14373,
+      "id": "2419070",
+      "term": "笛吹けども踊らず",
+      "reading": "ふえふけどもおどらず",
+      "meaning": "we have piped unto you and ye have not danced / people ignoring one's invitation or effort to do something together"
+    },
+    {
+      "source_index": 14374,
+      "id": "1491420",
+      "term": "不可抗力",
+      "reading": "ふかこうりょく",
+      "meaning": "act of God / irresistible force / inevitability"
+    },
+    {
+      "source_index": 14375,
+      "id": "1491430",
+      "term": "不可思議",
+      "reading": "ふかしぎ",
+      "meaning": "mystery / something inexplicable / wonder"
+    },
+    {
+      "source_index": 14376,
+      "id": "1740090",
+      "term": "不完全燃焼",
+      "reading": "ふかんぜんねんしょう",
+      "meaning": "incomplete combustion / imperfect combustion"
+    },
+    {
+      "source_index": 14377,
+      "id": "2052770",
+      "term": "不羈独立",
+      "reading": "ふきどくりつ",
+      "meaning": "free and independent"
+    },
+    {
+      "source_index": 14378,
+      "id": "2846482",
+      "term": "不帰の客となる",
+      "reading": "ふきのきゃくとなる",
+      "meaning": "to pass away / to depart this life"
+    },
+    {
+      "source_index": 14379,
+      "id": "1495520",
+      "term": "不羈奔放",
+      "reading": "ふきほんぽう",
+      "meaning": "free-spirited and uninhibited"
+    },
+    {
+      "source_index": 14380,
+      "id": "2032370",
+      "term": "不朽不滅",
+      "reading": "ふきゅうふめつ",
+      "meaning": "everlasting / eternal / immortal"
+    },
+    {
+      "source_index": 14381,
+      "id": "1624800",
+      "term": "不協和音",
+      "reading": "ふきょうわおん",
+      "meaning": "discord / dissonance / cacophony"
+    },
+    {
+      "source_index": 14382,
+      "id": "2052790",
+      "term": "俯仰天地",
+      "reading": "ふぎょうてんち",
+      "meaning": "looking up and down, from heaven to earth (having nothing to be ashamed of) / swearing by Heaven and Earth (having done nothing to be ashamed of)"
+    },
+    {
+      "source_index": 14383,
+      "id": "1827960",
+      "term": "複雑怪奇",
+      "reading": "ふくざつかいき",
+      "meaning": "complicated and mysterious"
+    },
+    {
+      "source_index": 14384,
+      "id": "2032450",
+      "term": "複雑多岐",
+      "reading": "ふくざつたき",
+      "meaning": "complex and wide-ranging / labyrinthine"
+    },
+    {
+      "source_index": 14385,
+      "id": "2032460",
+      "term": "複雑多様",
+      "reading": "ふくざつたよう",
+      "meaning": "complex and multifarious"
+    },
+    {
+      "source_index": 14386,
+      "id": "2869677",
+      "term": "福善禍淫",
+      "reading": "ふくぜんかいん",
+      "meaning": "fortune follows the virtuous, calamity befalls the wicked / heaven rewards the good and punishes the evil"
+    },
+    {
+      "source_index": 14387,
+      "id": "2052840",
+      "term": "不屈不撓",
+      "reading": "ふくつふとう",
+      "meaning": "indefatigability / indomitableness / with unremitting tenacity"
+    },
+    {
+      "source_index": 14388,
+      "id": "2052850",
+      "term": "福徳円満",
+      "reading": "ふくとくえんまん",
+      "meaning": "being perfectly happy and prosperous / wealth and happiness"
+    },
+    {
+      "source_index": 14389,
+      "id": "2052860",
+      "term": "伏竜鳳雛",
+      "reading": "ふくりょうほうすう",
+      "meaning": "gifted young person who shows much promise / unrecognized genius / great person whose talent is hidden under a bushel"
+    },
+    {
+      "source_index": 14390,
+      "id": "2839346",
+      "term": "服を着る",
+      "reading": "ふくをきる",
+      "meaning": "to put on clothes / to wear clothes"
+    },
+    {
+      "source_index": 14391,
+      "id": "1492020",
+      "term": "不倶戴天",
+      "reading": "ふぐたいてん",
+      "meaning": "cannot allow (oneself) to live (with someone) under the canopy of heaven / cannot allow (the sworn enemy) to live in this world / irreconcilable (enemy)"
+    },
+    {
+      "source_index": 14392,
+      "id": "1492260",
+      "term": "不言実行",
+      "reading": "ふげんじっこう",
+      "meaning": "action before words / work before talk"
+    },
+    {
+      "source_index": 14393,
+      "id": "1492270",
+      "term": "不言不語",
+      "reading": "ふげんふご",
+      "meaning": "silence"
+    },
+    {
+      "source_index": 14394,
+      "id": "2186550",
+      "term": "不幸中の幸い",
+      "reading": "ふこうちゅうのさいわい",
+      "meaning": "small mercy (from some misfortune) / silver lining of a dark cloud / consolation in sadness"
+    },
+    {
+      "source_index": 14395,
+      "id": "1826350",
+      "term": "富国強兵",
+      "reading": "ふこくきょうへい",
+      "meaning": "enrich the country, strengthen the army"
+    },
+    {
+      "source_index": 14396,
+      "id": "2851339",
+      "term": "ふさぎの虫",
+      "reading": "ふさぎのむし",
+      "meaning": "case of the blues"
+    },
+    {
+      "source_index": 14397,
+      "id": "1492470",
+      "term": "不在証明",
+      "reading": "ふざいしょうめい",
+      "meaning": "alibi"
+    },
+    {
+      "source_index": 14398,
+      "id": "2052900",
+      "term": "巫山雲雨",
+      "reading": "ふざんうんう",
+      "meaning": "sexual liaison"
+    },
+    {
+      "source_index": 14399,
+      "id": "2032410",
+      "term": "父子相伝",
+      "reading": "ふしそうでん",
+      "meaning": "transmission of the secrets of an art, craft, trade or learning from father to son"
+    },
+    {
+      "source_index": 14400,
+      "id": "2032380",
+      "term": "不惜身命",
+      "reading": "ふしゃくしんみょう",
+      "meaning": "devoting one's body and soul to Buddhist teachings / unsparing devotion to Buddhism"
+    },
+    {
+      "source_index": 14401,
+      "id": "2052960",
+      "term": "不祥事件",
+      "reading": "ふしょうじけん",
+      "meaning": "scandal / disgraceful incident / scandalous affair"
+    },
+    {
+      "source_index": 14402,
+      "id": "1841830",
+      "term": "夫唱婦随",
+      "reading": "ふしょうふずい",
+      "meaning": "a wife should do her husband's bidding"
+    },
+    {
+      "source_index": 14403,
+      "id": "1492890",
+      "term": "不承不承",
+      "reading": "ふしょうぶしょう",
+      "meaning": "reluctantly / grudgingly / unwillingly"
+    },
+    {
+      "source_index": 14404,
+      "id": "1493660",
+      "term": "不即不離",
+      "reading": "ふそくふり",
+      "meaning": "neutral / noncommittal"
+    },
+    {
+      "source_index": 14405,
+      "id": "2053000",
+      "term": "父祖伝来",
+      "reading": "ふそでんらい",
+      "meaning": "hereditary / patrimonial / handed down from generation to generation"
+    },
+    {
+      "source_index": 14406,
+      "id": "1461690",
+      "term": "二股膏薬",
+      "reading": "ふたまたこうやく",
+      "meaning": "double-dealer / timeserver / moving back and forth between two sides in a conflict"
+    },
+    {
+      "source_index": 14407,
+      "id": "2126780",
+      "term": "二股をかける",
+      "reading": "ふたまたをかける",
+      "meaning": "to cheat (in a romantic relationship)"
+    },
+    {
+      "source_index": 14408,
+      "id": "2402610",
+      "term": "蓋を開ける",
+      "reading": "ふたをあける",
+      "meaning": "to open the lid / to lift a lid"
+    },
+    {
+      "source_index": 14409,
+      "id": "2863787",
+      "term": "蓋をする",
+      "reading": "ふたをする",
+      "meaning": "to cover (a hole, a saucepan) / to put on a lid (top, cap)"
+    },
+    {
+      "source_index": 14410,
+      "id": "2264250",
+      "term": "不知不識",
+      "reading": "ふちふしき",
+      "meaning": "being unaware of what one is doing"
+    },
+    {
+      "source_index": 14411,
+      "id": "2862576",
+      "term": "筆を起こす",
+      "reading": "ふでをおこす",
+      "meaning": "to start writing (e.g. a book)"
+    },
+    {
+      "source_index": 14412,
+      "id": "1495510",
+      "term": "不撓不屈",
+      "reading": "ふとうふくつ",
+      "meaning": "tenacity / indomitableness / dauntlessness"
+    },
+    {
+      "source_index": 14413,
+      "id": "1494370",
+      "term": "不得要領",
+      "reading": "ふとくようりょう",
+      "meaning": "vague / ambiguous / noncommittal"
+    },
+    {
+      "source_index": 14414,
+      "id": "1736050",
+      "term": "船出",
+      "reading": "ふなで",
+      "meaning": "setting sail / putting out to sea"
+    },
+    {
+      "source_index": 14415,
+      "id": "2834567",
+      "term": "舟に刻みて剣を求む",
+      "reading": "ふねにきざみてけんをもとむ",
+      "meaning": "to not be getting with the times / to be unaware that things are changing"
+    },
+    {
+      "source_index": 14416,
+      "id": "2834565",
+      "term": "舟に刻して剣を求む",
+      "reading": "ふねにこくしてけんをもとむ",
+      "meaning": "to not be getting with the times / to be unaware that things are changing"
+    },
+    {
+      "source_index": 14417,
+      "id": "2267490",
+      "term": "船を漕ぐ",
+      "reading": "ふねをこぐ",
+      "meaning": "to nod off (while sitting) / to doze off / to row a boat"
+    },
+    {
+      "source_index": 14418,
+      "id": "2053080",
+      "term": "腐敗堕落",
+      "reading": "ふはいだらく",
+      "meaning": "debasement / corruption / degradation"
+    },
+    {
+      "source_index": 14419,
+      "id": "1494810",
+      "term": "不平不満",
+      "reading": "ふへいふまん",
+      "meaning": "discontent and grumbling"
+    },
+    {
+      "source_index": 14420,
+      "id": "2053100",
+      "term": "普遍妥当",
+      "reading": "ふへんだとう",
+      "meaning": "universal validity / fitting into any situation"
+    },
+    {
+      "source_index": 14421,
+      "id": "1494830",
+      "term": "不偏不党",
+      "reading": "ふへんふとう",
+      "meaning": "impartiality / neutrality / independence"
+    },
+    {
+      "source_index": 14422,
+      "id": "1740130",
+      "term": "不法行為",
+      "reading": "ふほうこうい",
+      "meaning": "tort / illegal act / illegal activity"
+    },
+    {
+      "source_index": 14423,
+      "id": "2872010",
+      "term": "踏みつけ",
+      "reading": "ふみつけ",
+      "meaning": "stepping (on) / trampling (on)"
+    },
+    {
+      "source_index": 14424,
+      "id": "1495030",
+      "term": "不眠不休",
+      "reading": "ふみんふきゅう",
+      "meaning": "no sleep or rest / working day and night"
+    },
+    {
+      "source_index": 14425,
+      "id": "2869875",
+      "term": "冬の時代",
+      "reading": "ふゆのじだい",
+      "meaning": "dark age / hard times / winter years"
+    },
+    {
+      "source_index": 14426,
+      "id": "2032400",
+      "term": "不埒千万",
+      "reading": "ふらちせんばん",
+      "meaning": "very insolent / extremely audacious / reprehensible"
+    },
+    {
+      "source_index": 14427,
+      "id": "2040770",
+      "term": "不立文字",
+      "reading": "ふりゅうもんじ",
+      "meaning": "Buddhist revelation through intuitive discernment / Spiritual awakening cannot be experienced with words and letters / Spiritual enlightenment can be attained only by means of communion of mind with mind (Zen Buddhism)"
+    },
+    {
+      "source_index": 14428,
+      "id": "2417240",
+      "term": "古い革袋に新しい酒を盛る",
+      "reading": "ふるいかわぶくろにあたらしいさけをもる",
+      "meaning": "to pour new wine into old wineskins / to give something unorthodox an orthodox presentation"
+    },
+    {
+      "source_index": 14429,
+      "id": "1495420",
+      "term": "不労所得",
+      "reading": "ふろうしょとく",
+      "meaning": "unearned income / investment income / passive income"
+    },
+    {
+      "source_index": 14430,
+      "id": "2032390",
+      "term": "不老長寿",
+      "reading": "ふろうちょうじゅ",
+      "meaning": "perpetual youth and longevity"
+    },
+    {
+      "source_index": 14431,
+      "id": "2863378",
+      "term": "不老長生",
+      "reading": "ふろうちょうせい",
+      "meaning": "perpetual youth and longevity / long life without growing old"
+    },
+    {
+      "source_index": 14432,
+      "id": "1495450",
+      "term": "不老不死",
+      "reading": "ふろうふし",
+      "meaning": "perpetual youth and longevity / immortality"
+    },
+    {
+      "source_index": 14433,
+      "id": "2040780",
+      "term": "付和随行",
+      "reading": "ふわずいこう",
+      "meaning": "participating in something by merely following the leaders"
+    },
+    {
+      "source_index": 14434,
+      "id": "1496450",
+      "term": "付和雷同",
+      "reading": "ふわらいどう",
+      "meaning": "following blindly / following suit without reflection"
+    },
+    {
+      "source_index": 14435,
+      "id": "2053200",
+      "term": "奮起一番",
+      "reading": "ふんきいちばん",
+      "meaning": "bracing oneself up to action, being inspired by something / getting down to work, putting heart and soul into it / tackling (a job) with gusto"
+    },
+    {
+      "source_index": 14436,
+      "id": "1504790",
+      "term": "粉骨砕身",
+      "reading": "ふんこつさいしん",
+      "meaning": "making one's best exertions"
+    },
+    {
+      "source_index": 14437,
+      "id": "2000540",
+      "term": "粉飾決算",
+      "reading": "ふんしょくけっさん",
+      "meaning": "fraudulent accounting / window-dressing settlement of accounts / creative accounting"
+    },
+    {
+      "source_index": 14438,
+      "id": "2032480",
+      "term": "焚書坑儒",
+      "reading": "ふんしょこうじゅ",
+      "meaning": "burning books on the Chinese classics and burying Confucian scholars alive (Qin dynasty thought suppression campaign)"
+    },
+    {
+      "source_index": 14439,
+      "id": "2013650",
+      "term": "踏んだり蹴ったり",
+      "reading": "ふんだりけったり",
+      "meaning": "having one misfortune after another / insult to injury"
+    },
+    {
+      "source_index": 14440,
+      "id": "2053230",
+      "term": "奮闘努力",
+      "reading": "ふんとうどりょく",
+      "meaning": "try one's best / all-out effort / strenuous efforts"
+    },
+    {
+      "source_index": 14441,
+      "id": "2838292",
+      "term": "ふんどしを締めてかかる",
+      "reading": "ふんどしをしめてかかる",
+      "meaning": "to roll up one's sleeves and get to work / to buckle down"
+    },
+    {
+      "source_index": 14442,
+      "id": "2419670",
+      "term": "分秒を争う",
+      "reading": "ふんびょうをあらそう",
+      "meaning": "to have no time to lose / to fight with every minute and every second"
+    },
+    {
+      "source_index": 14443,
+      "id": "2032490",
+      "term": "奮励努力",
+      "reading": "ふんれいどりょく",
+      "meaning": "making strenuous efforts / exerting oneself"
+    },
+    {
+      "source_index": 14444,
+      "id": "2032420",
+      "term": "武運長久",
+      "reading": "ぶうんちょうきゅう",
+      "meaning": "everlasting fortune in battle / continued luck in war"
+    },
+    {
+      "source_index": 14445,
+      "id": "2052870",
+      "term": "武芸百般",
+      "reading": "ぶげいひゃっぱん",
+      "meaning": "every martial art / all the martial arts"
+    },
+    {
+      "source_index": 14446,
+      "id": "1530050",
+      "term": "無事息災",
+      "reading": "ぶじそくさい",
+      "meaning": "safe and healthy / health and longevity"
+    },
+    {
+      "source_index": 14447,
+      "id": "2052930",
+      "term": "無事平穏",
+      "reading": "ぶじへいおん",
+      "meaning": "peace and quiet / safe and peaceful / tranquil and uneventful"
+    },
+    {
+      "source_index": 14448,
+      "id": "1674450",
+      "term": "武装蜂起",
+      "reading": "ぶそうほうき",
+      "meaning": "armed uprising"
+    },
+    {
+      "source_index": 14449,
+      "id": "1638890",
+      "term": "舞台装置",
+      "reading": "ぶたいそうち",
+      "meaning": "stage setting"
+    },
+    {
+      "source_index": 14450,
+      "id": "1457400",
+      "term": "豚に真珠",
+      "reading": "ぶたにしんじゅ",
+      "meaning": "casting pearls before swine"
+    },
+    {
+      "source_index": 14451,
+      "id": "2871288",
+      "term": "仏心鬼手",
+      "reading": "ぶっしんきしゅ",
+      "meaning": "compassionate ruthlessness / merciless scalpel of a merciful surgeon / a Buddha's heart and a demon's hand"
+    },
+    {
+      "source_index": 14452,
+      "id": "2032470",
+      "term": "物議騒然",
+      "reading": "ぶつぎそうぜん",
+      "meaning": "tumultuous public discussion / noisy public criticism"
+    },
+    {
+      "source_index": 14453,
+      "id": "1502590",
+      "term": "物情騒然",
+      "reading": "ぶつじょうそうぜん",
+      "meaning": "unrest prevailing / turmoil reigning"
+    },
+    {
+      "source_index": 14454,
+      "id": "1722650",
+      "term": "物々交換",
+      "reading": "ぶつぶつこうかん",
+      "meaning": "barter / bartering"
+    },
+    {
+      "source_index": 14455,
+      "id": "2823150",
+      "term": "舞文曲筆",
+      "reading": "ぶぶんきょくひつ",
+      "meaning": "twisting of the truth in one's writing / playing with text to distort the truth"
+    },
+    {
+      "source_index": 14456,
+      "id": "2542240",
+      "term": "ぶら下がり",
+      "reading": "ぶらさがり",
+      "meaning": "cornering someone by lying in wait, e.g. for an unexpected interview or photograph / doorstepping"
+    },
+    {
+      "source_index": 14457,
+      "id": "1498990",
+      "term": "武陵桃源",
+      "reading": "ぶりょうとうげん",
+      "meaning": "earthly paradise / Shangri-la"
+    },
+    {
+      "source_index": 14458,
+      "id": "2053190",
+      "term": "無礼千万",
+      "reading": "ぶれいせんばん",
+      "meaning": "extremely rude (impertinent, impolite)"
+    },
+    {
+      "source_index": 14459,
+      "id": "1505310",
+      "term": "文芸復興",
+      "reading": "ぶんげいふっこう",
+      "meaning": "Renaissance"
+    },
+    {
+      "source_index": 14460,
+      "id": "1622220",
+      "term": "文質彬彬",
+      "reading": "ぶんしつひんぴん",
+      "meaning": "harmony of beauty and substance / (perfect) balance of looks and character"
+    },
+    {
+      "source_index": 14461,
+      "id": "1946500",
+      "term": "文人墨客",
+      "reading": "ぶんじんぼっかく",
+      "meaning": "writers and artists / persons who take delight in such refined pursuits as poetry, literature, painting and calligraphy"
+    },
+    {
+      "source_index": 14462,
+      "id": "2053240",
+      "term": "文武兼備",
+      "reading": "ぶんぶけんび",
+      "meaning": "well up in both literary and military (martial) arts / well skilled in wielding both the sword and the pen"
+    },
+    {
+      "source_index": 14463,
+      "id": "2053250",
+      "term": "文武百官",
+      "reading": "ぶんぶひゃっかん",
+      "meaning": "all the officials, both military and civil"
+    },
+    {
+      "source_index": 14464,
+      "id": "2832846",
+      "term": "文武不岐",
+      "reading": "ぶんぶふき",
+      "meaning": "scholarship and swordsmanship are one and the same / the literary and the military are the same path"
+    },
+    {
+      "source_index": 14465,
+      "id": "1723350",
+      "term": "文武両道",
+      "reading": "ぶんぶりょうどう",
+      "meaning": "being accomplished in both the literary and military arts"
+    },
+    {
+      "source_index": 14466,
+      "id": "1723320",
+      "term": "文明開化",
+      "reading": "ぶんめいかいか",
+      "meaning": "civilization and enlightenment / Japan's Westernization movement during the Meiji era (Westernisation)"
+    },
+    {
+      "source_index": 14467,
+      "id": "2053260",
+      "term": "平安無事",
+      "reading": "へいあんぶじ",
+      "meaning": "peace and quiet / safe and peaceful / tranquil and uneventful"
+    },
+    {
+      "source_index": 14468,
+      "id": "1907180",
+      "term": "弊衣破帽",
+      "reading": "へいいはぼう",
+      "meaning": "shabby clothes and an old hat"
+    },
+    {
+      "source_index": 14469,
+      "id": "2053270",
+      "term": "弊衣蓬髪",
+      "reading": "へいいほうはつ",
+      "meaning": "unkempt hair and shabby clothes"
+    },
+    {
+      "source_index": 14470,
+      "id": "1507080",
+      "term": "平穏無事",
+      "reading": "へいおんぶじ",
+      "meaning": "peaceful / quiet / uneventful"
+    },
+    {
+      "source_index": 14471,
+      "id": "2053290",
+      "term": "閉月羞花",
+      "reading": "へいげつしゅうか",
+      "meaning": "charms of a uniquely beautiful woman / great beauty / (so beautiful that) the moon hides and flowers are abashed"
+    },
+    {
+      "source_index": 14472,
+      "id": "1507320",
+      "term": "平衡感覚",
+      "reading": "へいこうかんかく",
+      "meaning": "sense of equilibrium / sense of balance"
+    },
+    {
+      "source_index": 14473,
+      "id": "2032520",
+      "term": "閉口頓首",
+      "reading": "へいこうとんしゅ",
+      "meaning": "being at a complete loss as to what to do / being at one's wit's end / being at a loss for an answer"
+    },
+    {
+      "source_index": 14474,
+      "id": "2053300",
+      "term": "平沙万里",
+      "reading": "へいさばんり",
+      "meaning": "vast stretch of desert / vast expanse of sandy plain"
+    },
+    {
+      "source_index": 14475,
+      "id": "1507460",
+      "term": "平身低頭",
+      "reading": "へいしんていとう",
+      "meaning": "prostrating oneself / kowtowing / going down on one's knees"
+    },
+    {
+      "source_index": 14476,
+      "id": "2032500",
+      "term": "兵隊勘定",
+      "reading": "へいたいかんじょう",
+      "meaning": "Dutch treat / going Dutch"
+    },
+    {
+      "source_index": 14477,
+      "id": "1751920",
+      "term": "平々凡々",
+      "reading": "へいへいぼんぼん",
+      "meaning": "very ordinary / mediocre / all-too-common"
+    },
+    {
+      "source_index": 14478,
+      "id": "2053340",
+      "term": "閉門蟄居",
+      "reading": "へいもんちっきょ",
+      "meaning": "house arrest / being placed in confinement at home"
+    },
+    {
+      "source_index": 14479,
+      "id": "2053350",
+      "term": "碧眼紅毛",
+      "reading": "へきがんこうもう",
+      "meaning": "blue eyes and red hair / Westerner"
+    },
+    {
+      "source_index": 14480,
+      "id": "2571760",
+      "term": "壁立千仞",
+      "reading": "へきりつせんじん",
+      "meaning": "precipitous cliff of great height, metaphor for absolute nature of Buddhist truth"
+    },
+    {
+      "source_index": 14481,
+      "id": "2830220",
+      "term": "へそが茶を沸かす",
+      "reading": "へそがちゃをわかす",
+      "meaning": "what a joke! / don't make me laugh!"
+    },
+    {
+      "source_index": 14482,
+      "id": "2761770",
+      "term": "へそで茶を沸かす",
+      "reading": "へそでちゃをわかす",
+      "meaning": "what a joke! / don't make me laugh!"
+    },
+    {
+      "source_index": 14483,
+      "id": "1919400",
+      "term": "へそを曲げる",
+      "reading": "へそをまげる",
+      "meaning": "to (go into a) sulk / to get cranky / to get cross"
+    },
+    {
+      "source_index": 14484,
+      "id": "1185210",
+      "term": "下手の横好き",
+      "reading": "へたのよこずき",
+      "meaning": "loving something but being very bad at it"
+    },
+    {
+      "source_index": 14485,
+      "id": "2671440",
+      "term": "屁でもない",
+      "reading": "へでもない",
+      "meaning": "of no concern / nothing / trivial"
+    },
+    {
+      "source_index": 14486,
+      "id": "2563620",
+      "term": "屁とも思わない",
+      "reading": "へともおもわない",
+      "meaning": "not give a damn / not care a bit"
+    },
+    {
+      "source_index": 14487,
+      "id": "2796060",
+      "term": "反吐が出る",
+      "reading": "へどがでる",
+      "meaning": "to be nauseating / to be disgusting / to be revolting"
+    },
+    {
+      "source_index": 14488,
+      "id": "2261460",
+      "term": "屁の河童",
+      "reading": "へのかっぱ",
+      "meaning": "something easy to do / cinch"
+    },
+    {
+      "source_index": 14489,
+      "id": "2674380",
+      "term": "屁の突っ張りにもならない",
+      "reading": "へのつっぱりにもならない",
+      "meaning": "of no use whatsoever / good for nothing / useless"
+    },
+    {
+      "source_index": 14490,
+      "id": "1511020",
+      "term": "変幻自在",
+      "reading": "へんげんじざい",
+      "meaning": "phantasmagoric / protean / shape-shifting"
+    },
+    {
+      "source_index": 14491,
+      "id": "2032530",
+      "term": "片言隻句",
+      "reading": "へんげんせきく",
+      "meaning": "few words / single phrase"
+    },
+    {
+      "source_index": 14492,
+      "id": "1511660",
+      "term": "片言隻語",
+      "reading": "へんげんせきご",
+      "meaning": "(not even) a few words"
+    },
+    {
+      "source_index": 14493,
+      "id": "1907510",
+      "term": "偏旁冠脚",
+      "reading": "へんぼうかんきゃく",
+      "meaning": "radicals of a kanji (left, right, crown and lower) / kanji components"
+    },
+    {
+      "source_index": 14494,
+      "id": "2242190",
+      "term": "片利共生",
+      "reading": "へんりきょうせい",
+      "meaning": "commensalism"
+    },
+    {
+      "source_index": 14495,
+      "id": "2757420",
+      "term": "弁慶の立ち往生",
+      "reading": "べんけいのたちおうじょう",
+      "meaning": "situation in which one can move neither forward nor backward / Benkei's last stand"
+    },
+    {
+      "source_index": 14496,
+      "id": "1512780",
+      "term": "弁慶の泣き所",
+      "reading": "べんけいのなきどころ",
+      "meaning": "Achilles heel / one's weak point / shin"
+    },
+    {
+      "source_index": 14497,
+      "id": "2717340",
+      "term": "ぺんぺん草が生える",
+      "reading": "ぺんぺんぐさがはえる",
+      "meaning": "to be in ruins / to be dilapidated / to be desolated"
+    },
+    {
+      "source_index": 14498,
+      "id": "1747910",
+      "term": "砲煙弾雨",
+      "reading": "ほうえんだんう",
+      "meaning": "the smoke of guns and a rain of bullets or shells"
+    },
+    {
+      "source_index": 14499,
+      "id": "2868783",
+      "term": "報恩謝徳",
+      "reading": "ほうおんしゃとく",
+      "meaning": "repaying kindness with gratitude"
+    },
+    {
+      "source_index": 14500,
+      "id": "2053480",
+      "term": "法界悋気",
+      "reading": "ほうかいりんき",
+      "meaning": "being jealous of things that have nothing to do with one / being jealous of others who are in love with each other"
+    },
+    {
+      "source_index": 14501,
+      "id": "1710650",
+      "term": "放歌高吟",
+      "reading": "ほうかこうぎん",
+      "meaning": "loud singing"
+    },
+    {
+      "source_index": 14502,
+      "id": "1583150",
+      "term": "判官びいき",
+      "reading": "ほうがんびいき",
+      "meaning": "sympathy for a tragic hero / rooting for the underdog"
     }
   ]
 }
