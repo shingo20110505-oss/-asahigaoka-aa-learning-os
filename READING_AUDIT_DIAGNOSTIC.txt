@@ -1,58 +1,52 @@
 {
   "scenario": {
-    "id": "r13",
-    "title": "Training Harder Was Not Enough",
+    "id": "nat-f17",
+    "title": "The Quiet Part",
     "facts": [
-      "A running club wanted to improve its five-kilometer times.",
-      "Some members added a hard run every day.",
-      "Their times improved for a short period but then became less stable.",
-      "The coach added easier days between difficult sessions.",
-      "Several runners later completed faster times with less pain."
+      "During rehearsal, Rina always played the loudest part of the song with confidence.",
+      "The quiet middle section made her nervous, so she rushed through it.",
+      "One afternoon, the conductor stopped the group after the quiet section.",
+      "On the next try, Rina slowed down and noticed the piano line behind her.",
+      "Rina improved the quiet section by slowing down and listening to the other part."
     ],
-    "inference": "Recovery can be part of effective training rather than the opposite of effort.",
-    "lesson": "More effort is not always better when recovery is part of performance."
+    "inference": "Rina became more confident when she listened to the music around her instead of trying to fill the silence.",
+    "lesson": "Improvement can come from changing attention, not simply adding more force or speed."
   },
-  "passage": "A running club wanted to improve its five-kilometer times. Some members added a hard run every day.\n\nTheir times improved for a short period but then became less stable. The coach added easier days between difficult sessions.\n\nSeveral runners later completed faster times with less pain. The coach compared weekly training records instead of looking only at the hardest day. Runners with easier days could complete the next difficult session at a steadier pace. The pattern suggested recovery supported the quality of later practice.",
-  "before": [
+  "passage": "During rehearsal, Rina always played the loudest part of the song with confidence. The quiet middle section made her nervous, so she rushed through it.\n\nOne afternoon, the conductor stopped the group after the quiet section. He did not ask Rina to play louder. He asked everyone else to listen to the space between the notes. On the next try, Rina slowed down and noticed the piano line behind her. The section felt less empty because she was listening instead of trying to fill every second.\n\nAt the concert, the quiet part became the moment she remembered most clearly.",
+  "questions": [
     {
       "type": "detail",
       "answerIndex": 0,
       "choices": [
         {
-          "text": "Several runners later completed faster times with less pain.",
+          "text": "Rina improved the quiet section by slowing down and listening to the other part.",
           "ok": true
         },
         {
-          "text": "Every runner became faster as soon as hard training was added every day.",
+          "text": "Rina decided to skip the quiet section at the concert.",
           "ok": false,
           "error": "detailMismatch"
         },
         {
-          "text": "The coach removed all difficult sessions from the training plan.",
+          "text": "The conductor asked Rina to play every note faster.",
           "ok": false,
           "error": "unsupported"
         },
         {
-          "text": "Runners later became slower and reported more pain after easier days were added.",
+          "text": "The piano stopped playing during the middle section.",
           "ok": false,
           "error": "overgeneral"
         }
       ],
-      "evidenceRefs": [
-        {
-          "paragraph": 3,
-          "sentence": 1,
-          "quote": "Several runners later completed faster times with less pain."
-        }
-      ],
-      "evidence": "第3段落1文目"
+      "evidenceRefs": [],
+      "evidence": "本文全体"
     },
     {
       "type": "cause",
       "answerIndex": 0,
       "choices": [
         {
-          "text": "Because the earlier result or experience showed that the first approach did not work well enough.",
+          "text": "To help them understand the quiet section instead of simply making it louder.",
           "ok": true
         },
         {
@@ -75,41 +69,41 @@
         {
           "paragraph": 1,
           "sentence": 2,
-          "quote": "Some members added a hard run every day."
+          "quote": "The quiet middle section made her nervous, so she rushed through it."
         },
         {
           "paragraph": 2,
           "sentence": 1,
-          "quote": "Their times improved for a short period but then became less stable."
+          "quote": "One afternoon, the conductor stopped the group after the quiet section."
         },
         {
           "paragraph": 2,
-          "sentence": 2,
-          "quote": "The coach added easier days between difficult sessions."
+          "sentence": 4,
+          "quote": "On the next try, Rina slowed down and noticed the piano line behind her."
         }
       ],
-      "evidence": "第1段落2文目・第2段落1文目・第2段落2文目"
+      "evidence": "第1段落2文目・第2段落1文目・第2段落4文目"
     },
     {
       "type": "inference",
       "answerIndex": 0,
       "choices": [
         {
-          "text": "Recovery can be part of effective training rather than the opposite of effort.",
+          "text": "Rina became more confident when she listened to the music around her instead of trying to fill the silence.",
           "ok": true
         },
         {
-          "text": "Rest always reduces athletic performance.",
+          "text": "One method is always best in every situation.",
           "ok": false,
           "error": "detailMismatch"
         },
         {
-          "text": "The hardest possible training every day is the safest way to improve.",
+          "text": "The people in the passage should stop the activity completely.",
           "ok": false,
           "error": "unsupported"
         },
         {
-          "text": "Recovery and effective practice cannot be part of the same training plan.",
+          "text": "The result proves that the same choice will work for everyone.",
           "ok": false,
           "error": "overgeneral"
         }
@@ -118,31 +112,26 @@
         {
           "paragraph": 2,
           "sentence": 1,
-          "quote": "Their times improved for a short period but then became less stable."
+          "quote": "One afternoon, the conductor stopped the group after the quiet section."
         },
         {
           "paragraph": 2,
-          "sentence": 2,
-          "quote": "The coach added easier days between difficult sessions."
-        },
-        {
-          "paragraph": 3,
-          "sentence": 1,
-          "quote": "Several runners later completed faster times with less pain."
+          "sentence": 4,
+          "quote": "On the next try, Rina slowed down and noticed the piano line behind her."
         }
       ],
-      "evidence": "第2段落1文目・第2段落2文目・第3段落1文目"
+      "evidence": "第2段落1文目・第2段落4文目"
     },
     {
       "type": "mainIdea",
       "answerIndex": 0,
       "choices": [
         {
-          "text": "The main point is that more effort is not always better when recovery is part of performance.",
+          "text": "The main point is that improvement can come from changing attention, not simply adding more force or speed.",
           "ok": true
         },
         {
-          "text": "The passage mainly gives a complete history of running club.",
+          "text": "The passage mainly gives a complete history of music room.",
           "ok": false,
           "error": "detailMismatch"
         },
@@ -165,7 +154,7 @@
       "answerIndex": 0,
       "choices": [
         {
-          "text": "More effort is not always better when recovery is part of performance.",
+          "text": "Improvement can come from changing attention, not simply adding more force or speed.",
           "ok": true
         },
         {
@@ -187,229 +176,11 @@
       "evidenceRefs": [
         {
           "paragraph": 2,
-          "sentence": 2,
-          "quote": "The coach added easier days between difficult sessions."
-        },
-        {
-          "paragraph": 3,
-          "sentence": 1,
-          "quote": "Several runners later completed faster times with less pain."
+          "sentence": 4,
+          "quote": "On the next try, Rina slowed down and noticed the piano line behind her."
         }
       ],
-      "evidence": "第2段落2文目・第3段落1文目"
-    },
-    {
-      "type": "grammarTransfer",
-      "answerIndex": 0,
-      "choices": [
-        {
-          "text": "This route is twice as long as that one.",
-          "ok": true
-        },
-        {
-          "text": "This route is twice long as that one.",
-          "ok": false,
-          "error": "grammar"
-        },
-        {
-          "text": "This route is as twice long as that one.",
-          "ok": false,
-          "error": "wordOrder"
-        },
-        {
-          "text": "This route is twice as longer as that one.",
-          "ok": false,
-          "error": "grammar"
-        }
-      ],
-      "evidenceRefs": [],
-      "evidence": "文法知識"
-    }
-  ],
-  "after": [
-    {
-      "type": "detail",
-      "answerIndex": 0,
-      "choices": [
-        {
-          "text": "Several runners later completed faster times with less pain.",
-          "ok": true
-        },
-        {
-          "text": "Every runner became faster as soon as hard training was added every day.",
-          "ok": false,
-          "error": "detailMismatch"
-        },
-        {
-          "text": "The coach removed all difficult sessions from the training plan.",
-          "ok": false,
-          "error": "unsupported"
-        },
-        {
-          "text": "Runners later became slower and reported more pain after easier days were added.",
-          "ok": false,
-          "error": "overgeneral"
-        }
-      ],
-      "evidenceRefs": [
-        {
-          "paragraph": 3,
-          "sentence": 1,
-          "quote": "Several runners later completed faster times with less pain."
-        }
-      ],
-      "evidence": "第3段落1文目"
-    },
-    {
-      "type": "cause",
-      "answerIndex": 0,
-      "choices": [
-        {
-          "text": "Because the observations and measurements showed that the first explanation was not enough.",
-          "ok": true
-        },
-        {
-          "text": "Because the group knew the correct answer from the beginning.",
-          "ok": false,
-          "error": "detailMismatch"
-        },
-        {
-          "text": "A problem can have only one possible cause.",
-          "ok": false,
-          "error": "unsupported"
-        },
-        {
-          "text": "A problem can have only one possible cause.",
-          "ok": false,
-          "error": "overgeneral"
-        }
-      ],
-      "evidenceRefs": [
-        {
-          "paragraph": 1,
-          "sentence": 2,
-          "quote": "Some members added a hard run every day."
-        },
-        {
-          "paragraph": 2,
-          "sentence": 1,
-          "quote": "Their times improved for a short period but then became less stable."
-        },
-        {
-          "paragraph": 2,
-          "sentence": 2,
-          "quote": "The coach added easier days between difficult sessions."
-        }
-      ],
-      "evidence": "第1段落2文目・第2段落1文目・第2段落2文目"
-    },
-    {
-      "type": "inference",
-      "answerIndex": 0,
-      "choices": [
-        {
-          "text": "Recovery can be part of effective training rather than the opposite of effort.",
-          "ok": true
-        },
-        {
-          "text": "Rest always reduces athletic performance.",
-          "ok": false,
-          "error": "detailMismatch"
-        },
-        {
-          "text": "The hardest possible training every day is the safest way to improve.",
-          "ok": false,
-          "error": "unsupported"
-        },
-        {
-          "text": "Recovery and effective practice cannot be part of the same training plan.",
-          "ok": false,
-          "error": "overgeneral"
-        }
-      ],
-      "evidenceRefs": [
-        {
-          "paragraph": 2,
-          "sentence": 1,
-          "quote": "Their times improved for a short period but then became less stable."
-        },
-        {
-          "paragraph": 2,
-          "sentence": 2,
-          "quote": "The coach added easier days between difficult sessions."
-        },
-        {
-          "paragraph": 3,
-          "sentence": 1,
-          "quote": "Several runners later completed faster times with less pain."
-        }
-      ],
-      "evidence": "第2段落1文目・第2段落2文目・第3段落1文目"
-    },
-    {
-      "type": "mainIdea",
-      "answerIndex": 0,
-      "choices": [
-        {
-          "text": "To use Training Harder Was Not Enough to explain the importance of revising an idea with evidence.",
-          "ok": true
-        },
-        {
-          "text": "To argue that all school activities should be stopped.",
-          "ok": false,
-          "error": "detailMismatch"
-        },
-        {
-          "text": "A problem can have only one possible cause.",
-          "ok": false,
-          "error": "unsupported"
-        },
-        {
-          "text": "A problem can have only one possible cause.",
-          "ok": false,
-          "error": "overgeneral"
-        }
-      ],
-      "evidenceRefs": [],
-      "evidence": "本文全体"
-    },
-    {
-      "type": "paraphrase",
-      "answerIndex": 0,
-      "choices": [
-        {
-          "text": "It is important to update a judgment with relevant evidence instead of holding on to the first explanation.",
-          "ok": true
-        },
-        {
-          "text": "A problem can have only one possible cause.",
-          "ok": false,
-          "error": "detailMismatch"
-        },
-        {
-          "text": "A problem can have only one possible cause.",
-          "ok": false,
-          "error": "unsupported"
-        },
-        {
-          "text": "Increasing the amount of information always reveals the cause.",
-          "ok": false,
-          "error": "overgeneral"
-        }
-      ],
-      "evidenceRefs": [
-        {
-          "paragraph": 2,
-          "sentence": 2,
-          "quote": "The coach added easier days between difficult sessions."
-        },
-        {
-          "paragraph": 3,
-          "sentence": 1,
-          "quote": "Several runners later completed faster times with less pain."
-        }
-      ],
-      "evidence": "第2段落2文目・第3段落1文目"
+      "evidence": "第2段落4文目"
     },
     {
       "type": "grammarTransfer",
