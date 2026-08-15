@@ -1,0 +1,42 @@
+name: Audit Kokugo Advanced Jukugo
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'kokugo-chronologia/jukugo-bank.js'
+      - 'kokugo-chronologia/jukugo-bank-advanced-*.js'
+      - 'kokugo-chronologia/jukugo-extension.js'
+      - '.github/workflows/kokugo-jukugo-advanced-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify advanced two-kanji vocabulary
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs=require('fs'),vm=require('vm');
+          const ctx={window:{}}; vm.createContext(ctx);
+          vm.runInContext(fs.readFileSync('kokugo-chronologia/jukugo-bank.js','utf8'),ctx);
+          const base=ctx.window.AA_JUKUGO_BANK||[];
+          const baseKeys=new Set(base.filter(x=>x.kind==='二字熟語').map(x=>`${x.word}|${x.reading||''}`));
+          ctx.window.AA_JUKUGO_ADVANCED=[];
+          for(let i=1;i<=5;i++) vm.runInContext(fs.readFileSync(`kokugo-chronologia/jukugo-bank-advanced-${i}.js`,'utf8'),ctx);
+          const adv=ctx.window.AA_JUKUGO_ADVANCED||[];
+          const bad=adv.filter(x=>![...x.word].length||[...x.word].length!==2||!x.reading||!x.meaning||!['A','B','C'].includes(x.rank));
+          const seen=new Set(),duplicates=[]; for(const x of adv){const k=`${x.word}|${x.reading||''}`; if(seen.has(k))duplicates.push(k); else seen.add(k)}
+          const net=[...seen].filter(k=>!baseKeys.has(k));
+          const must=['錯綜','詭弁','敷衍','逡巡','矜持','乖離','涵養','斡旋'];
+          const words=new Set(adv.map(x=>x.word)); const missing=must.filter(x=>!words.has(x));
+          console.log(JSON.stringify({base_two:baseKeys.size,advanced_raw:adv.length,advanced_unique:seen.size,advanced_duplicate_rows:duplicates.length,net_new_unique:net.length,bad_rows:bad.length,missing_required:missing},null,2));
+          if(bad.length) throw new Error(`invalid rows: ${bad.length}`);
+          if(missing.length) throw new Error(`missing difficult target words: ${missing.join(',')}`);
+          if(net.length<1000) throw new Error(`net new unique two-kanji vocabulary is ${net.length}, below 1000`);
+          NODE
