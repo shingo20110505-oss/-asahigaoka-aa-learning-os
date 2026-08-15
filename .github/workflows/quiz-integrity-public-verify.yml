@@ -33,7 +33,7 @@ jobs:
           node --check v23-loader.js
           grep -q "quiz-integrity-fix-v1.js" v23-loader.js
           grep -q "1.0.1-20260815" quiz-integrity-fix-v1.js
-          grep -q "data.aaQuizIntegrity" quiz-integrity-fix-v1.js
+          grep -q "dataset.aaQuizIntegrity" quiz-integrity-fix-v1.js
           grep -q "classicalDeep" quiz-integrity-fix-v1.js
 
       - name: Wait for exact Pages release
