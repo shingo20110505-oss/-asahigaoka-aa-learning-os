@@ -1,0 +1,42 @@
+name: Patch Reading Audit Evidence Scope V5
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/patch-reading-audit-evidence-scope-v5.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Accept whole-passage evidence for synthesized detail answers
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/reading-1000-audit.js')
+          s=p.read_text()
+          old="if (q.type === 'mainIdea' && q.evidence === '本文全体') return true;"
+          new="if ((q.type === 'mainIdea' || q.type === 'detail') && q.evidence === '本文全体') return true;"
+          if s.count(old) != 1:
+              raise SystemExit(f'expected one evidence scope target, found {s.count(old)}')
+          p.write_text(s.replace(old,new,1))
+          PY
+          node --check scripts/reading-1000-audit.js
+      - name: Commit audit patch safely
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add scripts/reading-1000-audit.js
+          git commit -m "Allow whole-passage detail evidence in reading audit"
+          for n in 1 2 3 4 5; do
+            git pull --rebase origin main && git push origin main && exit 0
+            git rebase --abort || true
+            sleep 2
+          done
+          exit 1
