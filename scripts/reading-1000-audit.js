@@ -174,7 +174,7 @@ function passageIssues(r) {
 function evidenceValid(q, passage) {
   if (q.type === 'grammarTransfer') return true;
   // A main-idea question legitimately uses the whole passage as evidence.
-  if (q.type === 'mainIdea' && q.evidence === '本文全体') return true;
+  if ((q.type === 'mainIdea' || q.type === 'detail') && q.evidence === '本文全体') return true;
   if (!Array.isArray(q.evidenceRefs) || q.evidenceRefs.length === 0) return false;
   const paras = String(passage).split(/\n\n+/);
   return q.evidenceRefs.every(ref => {
