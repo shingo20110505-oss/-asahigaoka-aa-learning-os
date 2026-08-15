@@ -223,7 +223,24 @@ function makeReadingPassage(sc,diff=7,mode='standard'){
  paras.push(`${transitionB} ${sc.facts[4]} This result changed the way the group understood the problem.`);
  paras.push(`The lesson was not simply to work harder or collect more information. ${sc.lesson}`);
  return paras.join('\n\n')}
-function evidenceRefs(passage,needles){let paras=String(passage||'').split(/\n\n+/),out=[];for(let needle of (Array.isArray(needles)?needles:[needles])){if(!needle)continue;let found=null;for(let pi=0;pi<paras.length&&!found;pi++){let ss=paras[pi].match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[];for(let si=0;si<ss.length;si++){let q=ss[si].trim();if(q.includes(needle)||needle.includes(q)){found={paragraph:pi+1,sentence:si+1,quote:q};break}}}if(found)out.push(found)}return out}
+function evidenceRefs(passage,needles){
+ let paras=String(passage||'').split(/\n\n+/),out=[],all=[];
+ for(let pi=0;pi<paras.length;pi++){let ss=paras[pi].match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[];for(let si=0;si<ss.length;si++){let q=ss[si].trim();if(q)all.push({paragraph:pi+1,sentence:si+1,quote:q})}}
+ const stop=new Set('the a an and or but so to of in on at for from with by as is are was were be been being it this that these those they them their he him his she her we our you your i my its do does did have has had can could will would may might should must not no than then when while after before into out up down more most less very also only still other'.split(/\s+/));
+ const stem=w=>w.replace(/(?:ing|ied|ed|es|s)$/,'').replace(/i$/,'y');
+ const tokens=x=>(String(x||'').toLowerCase().match(/[a-z]+/g)||[]).filter(w=>w.length>2&&!stop.has(w)).map(stem);
+ const key=r=>`${r.paragraph}:${r.sentence}`;
+ for(let needle of (Array.isArray(needles)?needles:[needles])){
+  if(!needle)continue;let found=[];
+  for(let r of all){if(r.quote.includes(needle)||needle.includes(r.quote)){found=[r];break}}
+  if(!found.length){
+   let nt=new Set(tokens(needle)),ranked=all.map(r=>{let rt=new Set(tokens(r.quote)),hits=0;for(let w of nt)if(rt.has(w))hits++;return {r,hits,coverage:hits/Math.max(1,nt.size)}}).filter(x=>x.hits>=2||x.coverage>=.34).sort((a,b)=>b.hits-a.hits||b.coverage-a.coverage);
+   if(ranked.length){let top=ranked[0];found=[top.r];if(top.hits<3&&ranked[1]&&ranked[1].hits>=1)found.push(ranked[1].r)}
+  }
+  for(let r of found)if(!out.some(x=>key(x)===key(r)))out.push(r)
+ }
+ return out
+}
 function readingQuestionSet(sc,passage,diff){let facts=sc.facts,dm=READING_DISTRACTORS[sc.id]||[[],[]],qs=[];
  qs.push({type:'detail',stem:'本文の内容として最も適切なものを選びなさい。',choices:shuffleChoices([{text:facts[4],ok:true,reason:'本文の最終結果と一致します。'},...(dm[0]||[]).slice(0,3).map((text,i)=>({text,ok:false,reason:i===0?'本文の変化・結果と一致しません。':i===1?'本文の条件または結果を取り違えています。':'本文の時系列・行動と一致しません。',error:i===0?'detailChange':i===1?'detailMismatch':'chronology'}))]),skill:'en.read.detail',evidenceNeedles:[facts[4]]});
  qs.push({type:'cause',stem:'グループが最初の考えをそのまま採用しなかった主な理由として最も適切なものを選びなさい。',choices:shuffleChoices([{text:'観察・測定した情報が、最初の説明だけでは十分でないことを示したから。',ok:true,reason:'本文の「予想→観察・測定→修正」の因果をまとめています。'},{text:'先生が最初の考えを禁止したから。',ok:false,reason:'禁止されたとは書かれていません。',error:'invented'},{text:'より多くの費用を使う必要があったから。',ok:false,reason:'費用は主要因として示されていません。',error:'irrelevant'},{text:'最初から正しい答えを知っていたから。',ok:false,reason:'むしろ調査で考えを修正しています。',error:'opposite'}]),skill:'en.read.cause',evidenceNeedles:[facts[2],facts[3]]});

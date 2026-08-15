@@ -321,7 +321,7 @@ const majorPrefixes = [
   'empty-question','too-few-choices','empty-choice','duplicate-choice','no-correct-choice',
   'multiple-correct-choice','invalid-answer-index','answer-index-mismatch',
   'correct-answer-content-mismatch','evidence-missing-or-invalid','empty-explanation',
-  'vocab-too-hard-for-basic','missing-inference-question',
+  'missing-inference-question',
   'inference-depth-too-low','banned-template','placeholder','semantic-contradiction',
   'conversation-format','email-no-greeting','notice-format','experiment-format','abbreviation-split'
 ];
