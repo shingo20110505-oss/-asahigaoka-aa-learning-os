@@ -1,716 +1,16 @@
 {
   "mode": "assistant_direct_only",
   "total_rows": 15000,
-  "already_direct_japanese": 13705,
-  "english_only_remaining": 1295,
+  "already_direct_japanese": 13805,
+  "english_only_remaining": 1195,
   "english_only_rank_counts": {
-    "(blank)": 1295
+    "(blank)": 1195
   },
   "a_rank_total": 0,
   "selection": "first-visible-order (source rank is blank)",
   "max_batch_size": 1000,
   "batch_size": 1000,
   "targets": [
-    {
-      "source_index": 13705,
-      "id": "1420200",
-      "term": "男尊女卑",
-      "reading": "だんそんじょひ",
-      "meaning": "male domination of women / male chauvinism / subjection of women"
-    },
-    {
-      "source_index": 13706,
-      "id": "1838910",
-      "term": "談論風発",
-      "reading": "だんろんふうはつ",
-      "meaning": "spirited discussion"
-    },
-    {
-      "source_index": 13707,
-      "id": "2050090",
-      "term": "知育偏重",
-      "reading": "ちいくへんちょう",
-      "meaning": "too much intellectual training / overemphasis on intellectual education"
-    },
-    {
-      "source_index": 13708,
-      "id": "1555290",
-      "term": "力こぶを入れる",
-      "reading": "ちからこぶをいれる",
-      "meaning": "to put a lot of effort (into) / to take a strong interest (in) / to put great emphasis (on)"
-    },
-    {
-      "source_index": 13709,
-      "id": "1733070",
-      "term": "治外法権",
-      "reading": "ちがいほうけん",
-      "meaning": "extraterritoriality"
-    },
-    {
-      "source_index": 13710,
-      "id": "2772330",
-      "term": "血が騒ぐ",
-      "reading": "ちがさわぐ",
-      "meaning": "to get excited / to be roused (to action) / to get the itch (to do)"
-    },
-    {
-      "source_index": 13711,
-      "id": "2772650",
-      "term": "血が流れる",
-      "reading": "ちがながれる",
-      "meaning": "blood flows"
-    },
-    {
-      "source_index": 13712,
-      "id": "2031910",
-      "term": "知己朋友",
-      "reading": "ちきほうゆう",
-      "meaning": "intimate friends and acquaintances"
-    },
-    {
-      "source_index": 13713,
-      "id": "2031950",
-      "term": "遅疑逡巡",
-      "reading": "ちぎしゅんじゅん",
-      "meaning": "shilly-shally / hesitation / indecision"
-    },
-    {
-      "source_index": 13714,
-      "id": "2840309",
-      "term": "池魚の殃",
-      "reading": "ちぎょのわざわい",
-      "meaning": "collateral damage / getting embroiled in someone else's dispute / having a fire spread to one's own house"
-    },
-    {
-      "source_index": 13715,
-      "id": "1422380",
-      "term": "竹馬の友",
-      "reading": "ちくばのとも",
-      "meaning": "childhood friend / old playmate"
-    },
-    {
-      "source_index": 13716,
-      "id": "2603910",
-      "term": "竹林の七賢",
-      "reading": "ちくりんのしちけん",
-      "meaning": "Seven Sages of the Bamboo Grove / group of 3rd-century Qingtan scholars, writers, and musicians"
-    },
-    {
-      "source_index": 13717,
-      "id": "2031920",
-      "term": "知行合一",
-      "reading": "ちこうごういつ",
-      "meaning": "awareness comes only through practice"
-    },
-    {
-      "source_index": 13718,
-      "id": "2031930",
-      "term": "知者不惑",
-      "reading": "ちしゃふわく",
-      "meaning": "a wise person always follows the right course / a wise man never wavers"
-    },
-    {
-      "source_index": 13719,
-      "id": "1465190",
-      "term": "乳臭い",
-      "reading": "ちちくさい",
-      "meaning": "green / wet behind the ears / immature"
-    },
-    {
-      "source_index": 13720,
-      "id": "2050120",
-      "term": "蟄居閉門",
-      "reading": "ちっきょへいもん",
-      "meaning": "house arrest / being placed in confinement at home"
-    },
-    {
-      "source_index": 13721,
-      "id": "2732350",
-      "term": "血で血を洗う",
-      "reading": "ちでちをあらう",
-      "meaning": "to engage in a bloody feud / to have a family quarrel / to quarrel with one's own flesh and blood"
-    },
-    {
-      "source_index": 13722,
-      "id": "2760050",
-      "term": "地に足がつく",
-      "reading": "ちにあしがつく",
-      "meaning": "to keep one's feet on the ground / to be down to earth"
-    },
-    {
-      "source_index": 13723,
-      "id": "2423630",
-      "term": "地に足の着いた",
-      "reading": "ちにあしのついた",
-      "meaning": "realistic / practical / grounded"
-    },
-    {
-      "source_index": 13724,
-      "id": "2842653",
-      "term": "地に落ちる",
-      "reading": "ちにおちる",
-      "meaning": "to drop like a rock (e.g. of reputation, power, influence) / to go down the toilet"
-    },
-    {
-      "source_index": 13725,
-      "id": "1893320",
-      "term": "血の通った",
-      "reading": "ちのかよった",
-      "meaning": "flesh-and-blood / human / warm"
-    },
-    {
-      "source_index": 13726,
-      "id": "2872033",
-      "term": "血の出るよう",
-      "reading": "ちのでるよう",
-      "meaning": "painstaking (e.g. effort) / excruciating (e.g. hard work) / grueling"
-    },
-    {
-      "source_index": 13727,
-      "id": "2859963",
-      "term": "血のにじむよう",
-      "reading": "ちのにじむよう",
-      "meaning": "painstaking (e.g. effort) / excruciating (e.g. hard work) / grueling"
-    },
-    {
-      "source_index": 13728,
-      "id": "1574770",
-      "term": "魑魅魍魎",
-      "reading": "ちみもうりょう",
-      "meaning": "evil spirits of rivers and mountains"
-    },
-    {
-      "source_index": 13729,
-      "id": "1255090",
-      "term": "血も涙もない",
-      "reading": "ちもなみだもない",
-      "meaning": "cold-blooded / unfeeling / heartless"
-    },
-    {
-      "source_index": 13730,
-      "id": "2031960",
-      "term": "着眼大局",
-      "reading": "ちゃくがんたいきょく",
-      "meaning": "having an eye to the big picture / being aware of the general situation"
-    },
-    {
-      "source_index": 13731,
-      "id": "1928830",
-      "term": "茶を濁す",
-      "reading": "ちゃをにごす",
-      "meaning": "to evade (questions) / to reply evasively / to beat around the bush"
-    },
-    {
-      "source_index": 13732,
-      "id": "1717440",
-      "term": "忠君愛国",
-      "reading": "ちゅうくんあいこく",
-      "meaning": "loyalty and patriotism"
-    },
-    {
-      "source_index": 13733,
-      "id": "2031970",
-      "term": "忠言逆耳",
-      "reading": "ちゅうげんぎゃくじ",
-      "meaning": "good advice is harsh to the ears / honest advice is often unpleasant to the ears"
-    },
-    {
-      "source_index": 13734,
-      "id": "2844415",
-      "term": "忠孝両全",
-      "reading": "ちゅうこうりょうぜん",
-      "meaning": "being a good son and a loyal subject / possessing loyalty and filial piety"
-    },
-    {
-      "source_index": 13735,
-      "id": "2870364",
-      "term": "無中生有",
-      "reading": "ちゅうしょうゆう",
-      "meaning": "creation out of nothing / making something out of thin air / pure fabrication"
-    },
-    {
-      "source_index": 13736,
-      "id": "2033350",
-      "term": "躊躇逡巡",
-      "reading": "ちゅうちょしゅんじゅん",
-      "meaning": "hesitation and vacillation"
-    },
-    {
-      "source_index": 13737,
-      "id": "1425050",
-      "term": "中途半端",
-      "reading": "ちゅうとはんぱ",
-      "meaning": "halfway / half measures / unfinished"
-    },
-    {
-      "source_index": 13738,
-      "id": "1425200",
-      "term": "中肉中背",
-      "reading": "ちゅうにくちゅうぜい",
-      "meaning": "medium build"
-    },
-    {
-      "source_index": 13739,
-      "id": "1426450",
-      "term": "昼夜兼行",
-      "reading": "ちゅうやけんこう",
-      "meaning": "around-the-clock / (working) day and night"
-    },
-    {
-      "source_index": 13740,
-      "id": "2050240",
-      "term": "忠勇無双",
-      "reading": "ちゅうゆうむそう",
-      "meaning": "of peerless loyalty and bravery"
-    },
-    {
-      "source_index": 13741,
-      "id": "2031940",
-      "term": "知勇兼備",
-      "reading": "ちゆうけんび",
-      "meaning": "having both wisdom and courage"
-    },
-    {
-      "source_index": 13742,
-      "id": "2050250",
-      "term": "寵愛一身",
-      "reading": "ちょうあいいっしん",
-      "meaning": "standing highest in one's master's favor / monopolizing the affection (favor) of the lord / being the lord's favorite lady"
-    },
-    {
-      "source_index": 13743,
-      "id": "2185630",
-      "term": "寵愛昂じて尼になす",
-      "reading": "ちょうあいこうじてあまになす",
-      "meaning": "to love one's child too much for their own good / to love one's daughter so much as to make her a nun"
-    },
-    {
-      "source_index": 13744,
-      "id": "2050260",
-      "term": "朝雲暮雨",
-      "reading": "ちょううんぼう",
-      "meaning": "sexual liaison"
-    },
-    {
-      "source_index": 13745,
-      "id": "1428360",
-      "term": "朝三暮四",
-      "reading": "ちょうさんぼし",
-      "meaning": "being preoccupied with immediate (superficial) differences without realizing that there are no differences in substance / six of one and half a dozen of another"
-    },
-    {
-      "source_index": 13746,
-      "id": "2114710",
-      "term": "張三李四",
-      "reading": "ちょうさんりし",
-      "meaning": "the common run of men / the average Joe / good-for-nothing (person)"
-    },
-    {
-      "source_index": 13747,
-      "id": "2031990",
-      "term": "長身痩躯",
-      "reading": "ちょうしんそうく",
-      "meaning": "tall and lean figure / tall and slender figure"
-    },
-    {
-      "source_index": 13748,
-      "id": "1428060",
-      "term": "彫心鏤骨",
-      "reading": "ちょうしんるこつ",
-      "meaning": "laborious work / lucubration / lucubrations"
-    },
-    {
-      "source_index": 13749,
-      "id": "2851410",
-      "term": "帳尻が合う",
-      "reading": "ちょうじりがあう",
-      "meaning": "to balance (accounts)"
-    },
-    {
-      "source_index": 13750,
-      "id": "2040660",
-      "term": "喋々喃々",
-      "reading": "ちょうちょうなんなん",
-      "meaning": "billing and cooing / holding an intimate, long-winded conversation in whispers"
-    },
-    {
-      "source_index": 13751,
-      "id": "2031980",
-      "term": "丁々発止",
-      "reading": "ちょうちょうはっし",
-      "meaning": "with (the sound of) clashing swords"
-    },
-    {
-      "source_index": 13752,
-      "id": "2040670",
-      "term": "朝々暮々",
-      "reading": "ちょうちょうぼぼ",
-      "meaning": "every morning and evening"
-    },
-    {
-      "source_index": 13753,
-      "id": "2141510",
-      "term": "提灯に釣鐘",
-      "reading": "ちょうちんにつりがね",
-      "meaning": "two ill-matched things / two poorly balanced things / temple bells to paper lanterns"
-    },
-    {
-      "source_index": 13754,
-      "id": "2838055",
-      "term": "提灯を持つ",
-      "reading": "ちょうちんをもつ",
-      "meaning": "to sing someone's praises / to give someone a boost / to carry a lantern"
-    },
-    {
-      "source_index": 13755,
-      "id": "2050320",
-      "term": "長汀曲浦",
-      "reading": "ちょうていきょくほ",
-      "meaning": "long stretch of winding beach"
-    },
-    {
-      "source_index": 13756,
-      "id": "1776940",
-      "term": "頂門の一針",
-      "reading": "ちょうもんのいっしん",
-      "meaning": "painful reproach / a needle in one's scalp"
-    },
-    {
-      "source_index": 13757,
-      "id": "1429720",
-      "term": "跳梁跋扈",
-      "reading": "ちょうりょうばっこ",
-      "meaning": "being rampant / domination"
-    },
-    {
-      "source_index": 13758,
-      "id": "1428570",
-      "term": "朝令暮改",
-      "reading": "ちょうれいぼかい",
-      "meaning": "an unsettled course of action / (orders or laws) being revised often with no guiding principles"
-    },
-    {
-      "source_index": 13759,
-      "id": "1430740",
-      "term": "直往邁進",
-      "reading": "ちょくおうまいしん",
-      "meaning": "push boldly forward"
-    },
-    {
-      "source_index": 13760,
-      "id": "1431060",
-      "term": "直情径行",
-      "reading": "ちょくじょうけいこう",
-      "meaning": "impulsive and straightforward / guileless"
-    },
-    {
-      "source_index": 13761,
-      "id": "1597680",
-      "term": "直截簡明",
-      "reading": "ちょくせつかんめい",
-      "meaning": "plain and simple / straightforward"
-    },
-    {
-      "source_index": 13762,
-      "id": "1431590",
-      "term": "直立不動",
-      "reading": "ちょくりつふどう",
-      "meaning": "standing at attention / standing stiffly upright"
-    },
-    {
-      "source_index": 13763,
-      "id": "1427060",
-      "term": "猪突猛進",
-      "reading": "ちょとつもうしん",
-      "meaning": "headlong rush / rushing recklessly"
-    },
-    {
-      "source_index": 13764,
-      "id": "2031140",
-      "term": "治乱興亡",
-      "reading": "ちらんこうぼう",
-      "meaning": "nation's times of peace and war, rise and fall"
-    },
-    {
-      "source_index": 13765,
-      "id": "2050380",
-      "term": "沈魚落雁",
-      "reading": "ちんぎょらくがん",
-      "meaning": "charms of a uniquely beautiful woman / (so beautiful that) fish stay on the bottom of water and flying wild geese fall from the sky in shame"
-    },
-    {
-      "source_index": 13766,
-      "id": "1431720",
-      "term": "沈思黙考",
-      "reading": "ちんしもっこう",
-      "meaning": "being lost in deep thought"
-    },
-    {
-      "source_index": 13767,
-      "id": "2032000",
-      "term": "沈着冷静",
-      "reading": "ちんちゃくれいせい",
-      "meaning": "calm, cool, and collected / level and calm"
-    },
-    {
-      "source_index": 13768,
-      "id": "2032010",
-      "term": "珍味佳肴",
-      "reading": "ちんみかこう",
-      "meaning": "rare delicacies / rare treat"
-    },
-    {
-      "source_index": 13769,
-      "id": "2050400",
-      "term": "沈黙寡言",
-      "reading": "ちんもくかげん",
-      "meaning": "taciturn / reticent"
-    },
-    {
-      "source_index": 13770,
-      "id": "2032620",
-      "term": "枕流漱石",
-      "reading": "ちんりゅうそうせき",
-      "meaning": "sore loser who stubbornly refuses to admit being wrong"
-    },
-    {
-      "source_index": 13771,
-      "id": "1738210",
-      "term": "追善供養",
-      "reading": "ついぜんくよう",
-      "meaning": "memorial service"
-    },
-    {
-      "source_index": 13772,
-      "id": "2032020",
-      "term": "痛快無比",
-      "reading": "つうかいむひ",
-      "meaning": "very thrilling / extremely delightful / awfully pleasant"
-    },
-    {
-      "source_index": 13773,
-      "id": "2125780",
-      "term": "杖とも柱とも頼む",
-      "reading": "つえともはしらともたのむ",
-      "meaning": "to count on someone as the only support"
-    },
-    {
-      "source_index": 13774,
-      "id": "2860016",
-      "term": "つかえが取れる",
-      "reading": "つかえがとれる",
-      "meaning": "to get a load off one's chest / to be relieved of a worry"
-    },
-    {
-      "source_index": 13775,
-      "id": "1255440",
-      "term": "月とスッポン",
-      "reading": "つきとすっぽん",
-      "meaning": "two things that are superficially similar but completely different / night and day / chalk and cheese"
-    },
-    {
-      "source_index": 13776,
-      "id": "2844868",
-      "term": "月夜に釜を抜かれる",
-      "reading": "つきよにかまをぬかれる",
-      "meaning": "to make a blunder / to blunder / to have one's kettle stolen on a moonlit night"
-    },
-    {
-      "source_index": 13777,
-      "id": "2852979",
-      "term": "月夜の蟹",
-      "reading": "つきよのかに",
-      "meaning": "crab with little meat / crab of a moonlit night"
-    },
-    {
-      "source_index": 13778,
-      "id": "2849864",
-      "term": "机を並べる",
-      "reading": "つくえをならべる",
-      "meaning": "to work together (in the same class, workplace, etc.) / to be classmates / to sit side by side"
-    },
-    {
-      "source_index": 13779,
-      "id": "2202560",
-      "term": "ツケが回ってくる",
-      "reading": "つけがまわってくる",
-      "meaning": "to have to pay the price (for past mistakes) / to have one's past catching up with one / to have the bill come due (for past actions)"
-    },
-    {
-      "source_index": 13780,
-      "id": "2202570",
-      "term": "ツケが回る",
-      "reading": "つけがまわる",
-      "meaning": "to have to pay the price (for past mistakes) / to have one's past catching up with one / to have the bill come due (for past actions)"
-    },
-    {
-      "source_index": 13781,
-      "id": "1894670",
-      "term": "ツケを払う",
-      "reading": "つけをはらう",
-      "meaning": "to pay a bill / to pay one's debt / to pay one's tab"
-    },
-    {
-      "source_index": 13782,
-      "id": "2870652",
-      "term": "土をつける",
-      "reading": "つちをつける",
-      "meaning": "to defeat / to beat"
-    },
-    {
-      "source_index": 13783,
-      "id": "2871850",
-      "term": "釣った魚に餌をやらない",
-      "reading": "つったさかなにえさをやらない",
-      "meaning": "taking one's partner for granted once the relationship is secured / not feeding the fish once caught"
-    },
-    {
-      "source_index": 13784,
-      "id": "1597990",
-      "term": "津々浦々",
-      "reading": "つつうらうら",
-      "meaning": "all over the country / throughout the land / every nook and cranny of a country"
-    },
-    {
-      "source_index": 13785,
-      "id": "1778800",
-      "term": "九十九折",
-      "reading": "つづらおり",
-      "meaning": "winding / meandering / sinuous"
-    },
-    {
-      "source_index": 13786,
-      "id": "1280920",
-      "term": "綱渡り",
-      "reading": "つなわたり",
-      "meaning": "tightrope walking / high-wire act / funambulism"
-    },
-    {
-      "source_index": 13787,
-      "id": "2854766",
-      "term": "角を折る",
-      "reading": "つのをおる",
-      "meaning": "to give in (after initially resisting) / to yield / to concede"
-    },
-    {
-      "source_index": 13788,
-      "id": "2553380",
-      "term": "角を矯めて牛を殺す",
-      "reading": "つのをためてうしをころす",
-      "meaning": "to throw the baby out with the bath water / to strain at a gnat and swallow a camel / to obsess over insignificant details and miss the larger point"
-    },
-    {
-      "source_index": 13789,
-      "id": "2610460",
-      "term": "唾をつける",
-      "reading": "つばをつける",
-      "meaning": "to call dibs / to establish a claim / to spit on (thus preventing others from taking it)"
-    },
-    {
-      "source_index": 13790,
-      "id": "2125800",
-      "term": "つぶしが利く",
-      "reading": "つぶしがきく",
-      "meaning": "to be able to do other work / to have transferable skills / to be adaptable"
-    },
-    {
-      "source_index": 13791,
-      "id": "2833937",
-      "term": "つむじを曲げる",
-      "reading": "つむじをまげる",
-      "meaning": "to be contrary"
-    },
-    {
-      "source_index": 13792,
-      "id": "2827251",
-      "term": "詰めが甘い",
-      "reading": "つめがあまい",
-      "meaning": "having a poor endgame / failing at the final stage / missing at the last turn"
-    },
-    {
-      "source_index": 13793,
-      "id": "1433890",
-      "term": "爪で拾って箕で零す",
-      "reading": "つめでひろってみでこぼす",
-      "meaning": "penny wise and pound foolish"
-    },
-    {
-      "source_index": 13794,
-      "id": "2667460",
-      "term": "爪に火をともす",
-      "reading": "つめにひをともす",
-      "meaning": "to lead a stingy life / to scrimp and save / to pinch pennies"
-    },
-    {
-      "source_index": 13795,
-      "id": "2433620",
-      "term": "爪の垢",
-      "reading": "つめのあか",
-      "meaning": "dirt under one's fingernails"
-    },
-    {
-      "source_index": 13796,
-      "id": "2433630",
-      "term": "爪の垢を煎じて飲む",
-      "reading": "つめのあかをせんじてのむ",
-      "meaning": "to take a lesson from (someone serving as an example) / to learn from someone's example / to boil the dirt under (someone's) fingernails and drink it"
-    },
-    {
-      "source_index": 13797,
-      "id": "2112280",
-      "term": "面の皮が厚い",
-      "reading": "つらのかわがあつい",
-      "meaning": "shameless / bold / brazen"
-    },
-    {
-      "source_index": 13798,
-      "id": "2140260",
-      "term": "鶴の一声",
-      "reading": "つるのひとこえ",
-      "meaning": "final word / voice of authority / authoritative pronouncement"
-    },
-    {
-      "source_index": 13799,
-      "id": "2859861",
-      "term": "手足となる",
-      "reading": "てあしとなる",
-      "meaning": "to follow loyally / to wait on someone hand and foot / to be at someone's beck and call"
-    },
-    {
-      "source_index": 13800,
-      "id": "1758900",
-      "term": "低徊趣味",
-      "reading": "ていかいしゅみ",
-      "meaning": "disposition toward rejecting mundane affairs and enjoying nature and art"
-    },
-    {
-      "source_index": 13801,
-      "id": "1434170",
-      "term": "亭主関白",
-      "reading": "ていしゅかんぱく",
-      "meaning": "domineering husband / hectoring husband / husband who rules the roost"
-    },
-    {
-      "source_index": 13802,
-      "id": "1434660",
-      "term": "低頭平身",
-      "reading": "ていとうへいしん",
-      "meaning": "prostrating oneself"
-    },
-    {
-      "source_index": 13803,
-      "id": "2050470",
-      "term": "丁寧懇切",
-      "reading": "ていねいこんせつ",
-      "meaning": "kind, careful, and thorough (of an explanation, advice, etc.) / thoughtful and scrupulous"
-    },
-    {
-      "source_index": 13804,
-      "id": "2176610",
-      "term": "羝羊",
-      "reading": "ていよう",
-      "meaning": "ram (sheep)"
-    },
     {
       "source_index": 13805,
       "id": "2840343",
@@ -7010,6 +6310,706 @@
       "term": "目から鼻へ抜ける",
       "reading": "めからはなへぬける",
       "meaning": "to be very shrewd / to be highly intelligent / to be very smart"
+    },
+    {
+      "source_index": 14705,
+      "id": "2867233",
+      "term": "目が泳ぐ",
+      "reading": "めがおよぐ",
+      "meaning": "to dart around (of one's eyes) / to be shifty"
+    },
+    {
+      "source_index": 14706,
+      "id": "2859413",
+      "term": "目頭が熱くなる",
+      "reading": "めがしらがあつくなる",
+      "meaning": "to be moved to tears"
+    },
+    {
+      "source_index": 14707,
+      "id": "2859596",
+      "term": "目頭を押さえる",
+      "reading": "めがしらをおさえる",
+      "meaning": "to stop oneself from crying / to hold back tears"
+    },
+    {
+      "source_index": 14708,
+      "id": "2834796",
+      "term": "目が死んでいる",
+      "reading": "めがしんでいる",
+      "meaning": "to look dead on the inside / to have a blank expression"
+    },
+    {
+      "source_index": 14709,
+      "id": "1535110",
+      "term": "目が点になる",
+      "reading": "めがてんになる",
+      "meaning": "to be stunned / to be surprised / one's eyes turn into dots (as in a cartoon)"
+    },
+    {
+      "source_index": 14710,
+      "id": "2854750",
+      "term": "目くじら立てる",
+      "reading": "めくじらたてる",
+      "meaning": "to find fault (with trivial matters) / to scold over minor things / to get angry over trifles"
+    },
+    {
+      "source_index": 14711,
+      "id": "2079460",
+      "term": "目くじらを立てる",
+      "reading": "めくじらをたてる",
+      "meaning": "to find fault (with trivial matters) / to scold over minor things / to get angry over trifles"
+    },
+    {
+      "source_index": 14712,
+      "id": "2852791",
+      "term": "目くそが鼻くそを笑う",
+      "reading": "めくそがはなくそをわらう",
+      "meaning": "the pot calling the kettle black / the goop in the eye laughing at the snot in the nose"
+    },
+    {
+      "source_index": 14713,
+      "id": "2168370",
+      "term": "目くそ鼻くそを笑う",
+      "reading": "めくそはなくそをわらう",
+      "meaning": "the pot calling the kettle black / the goop in the eye laughing at the snot in the nose"
+    },
+    {
+      "source_index": 14714,
+      "id": "2118020",
+      "term": "飯の食い上げ",
+      "reading": "めしのくいあげ",
+      "meaning": "losing one's means of livelihood"
+    },
+    {
+      "source_index": 14715,
+      "id": "2817710",
+      "term": "飯の種",
+      "reading": "めしのたね",
+      "meaning": "means of making a living / source of income / bread and butter"
+    },
+    {
+      "source_index": 14716,
+      "id": "1911880",
+      "term": "飯を食う",
+      "reading": "めしをくう",
+      "meaning": "to have a meal / to eat"
+    },
+    {
+      "source_index": 14717,
+      "id": "1604980",
+      "term": "目茶目茶",
+      "reading": "めちゃめちゃ",
+      "meaning": "disorderly / messy / ruined"
+    },
+    {
+      "source_index": 14718,
+      "id": "1638450",
+      "term": "滅私奉公",
+      "reading": "めっしほうこう",
+      "meaning": "selfless devotion"
+    },
+    {
+      "source_index": 14719,
+      "id": "2028370",
+      "term": "目に入れても痛くない",
+      "reading": "めにいれてもいたくない",
+      "meaning": "thinking so highly of someone that you are blind to their faults / thinking the sun shines out of someone's eyes / being the apple of one's eye"
+    },
+    {
+      "source_index": 14720,
+      "id": "2129390",
+      "term": "目に角を立てる",
+      "reading": "めにかどをたてる",
+      "meaning": "to look angrily at / to look with anger in one's eyes"
+    },
+    {
+      "source_index": 14721,
+      "id": "2834373",
+      "term": "目に立つ",
+      "reading": "めにたつ",
+      "meaning": "to be conspicuous / to stand out"
+    },
+    {
+      "source_index": 14722,
+      "id": "2864984",
+      "term": "目にも止まらぬ",
+      "reading": "めにもとまらぬ",
+      "meaning": "extremely fast / in a flash / too quick for the eye to catch"
+    },
+    {
+      "source_index": 14723,
+      "id": "2118970",
+      "term": "目に物見せる",
+      "reading": "めにものみせる",
+      "meaning": "to teach someone a lesson / to show someone a thing or two / to show someone what one can do"
+    },
+    {
+      "source_index": 14724,
+      "id": "2662390",
+      "term": "目の色を変える",
+      "reading": "めのいろをかえる",
+      "meaning": "to be in a tizzy / to be in a frenzy / to have one's eyes light up"
+    },
+    {
+      "source_index": 14725,
+      "id": "2153140",
+      "term": "目の上のこぶ",
+      "reading": "めのうえのこぶ",
+      "meaning": "a thorn in one's side / a pain in the butt (often someone higher in rank, ability, etc.) / nuisance"
+    },
+    {
+      "source_index": 14726,
+      "id": "2736730",
+      "term": "目の黒いうち",
+      "reading": "めのくろいうち",
+      "meaning": "while alive (e.g. I won't allow ... while I'm alive) / as long as one lives"
+    },
+    {
+      "source_index": 14727,
+      "id": "2572810",
+      "term": "目の正月",
+      "reading": "めのしょうがつ",
+      "meaning": "feast for one's eyes / sight as pleasing as the New Year"
+    },
+    {
+      "source_index": 14728,
+      "id": "2222040",
+      "term": "目の中に入れても痛くない",
+      "reading": "めのなかにいれてもいたくない",
+      "meaning": "thinking the sun shines out of someone's eyes / being the apple of one's eye"
+    },
+    {
+      "source_index": 14729,
+      "id": "1535640",
+      "term": "目鼻が付く",
+      "reading": "めはながつく",
+      "meaning": "to complete most of something / to take a concrete shape / for the most important parts to be done"
+    },
+    {
+      "source_index": 14730,
+      "id": "2811220",
+      "term": "目元千両口元万両",
+      "reading": "めもとせんりょうくちもとまんりょう",
+      "meaning": "(woman with) beautiful eyes and mouth"
+    },
+    {
+      "source_index": 14731,
+      "id": "2129770",
+      "term": "目を皿にする",
+      "reading": "めをさらにする",
+      "meaning": "to open one's eyes wide"
+    },
+    {
+      "source_index": 14732,
+      "id": "2144580",
+      "term": "目を白黒させる",
+      "reading": "めをしろくろさせる",
+      "meaning": "to be surprised / to be bewildered / to be confused"
+    },
+    {
+      "source_index": 14733,
+      "id": "2837810",
+      "term": "目を背ける",
+      "reading": "めをそむける",
+      "meaning": "to look away (from) / to avert one's gaze"
+    },
+    {
+      "source_index": 14734,
+      "id": "2065920",
+      "term": "目をつける",
+      "reading": "めをつける",
+      "meaning": "to have an eye on / to zero in on"
+    },
+    {
+      "source_index": 14735,
+      "id": "2227030",
+      "term": "目を盗む",
+      "reading": "めをぬすむ",
+      "meaning": "to do without being seen (by) / to do behind (someone's) back / to do without the knowledge of (e.g. one's parents)"
+    },
+    {
+      "source_index": 14736,
+      "id": "2854219",
+      "term": "目を開く",
+      "reading": "めをひらく",
+      "meaning": "to open one's eyes"
+    },
+    {
+      "source_index": 14737,
+      "id": "2872051",
+      "term": "芽を吹く",
+      "reading": "めをふく",
+      "meaning": "to bud / to sprout"
+    },
+    {
+      "source_index": 14738,
+      "id": "1533140",
+      "term": "免許皆伝",
+      "reading": "めんきょかいでん",
+      "meaning": "possessing full mastery of an art (e.g. Judo) / initiation into the secrets (e.g. of an art) / full mastership"
+    },
+    {
+      "source_index": 14739,
+      "id": "1812170",
+      "term": "面向不背",
+      "reading": "めんこうふはい",
+      "meaning": "flawless"
+    },
+    {
+      "source_index": 14740,
+      "id": "2032820",
+      "term": "面従後言",
+      "reading": "めんじゅうこうげん",
+      "meaning": "pretending to obey someone to his face but badmouthing him behind his back"
+    },
+    {
+      "source_index": 14741,
+      "id": "1533470",
+      "term": "面従腹背",
+      "reading": "めんじゅうふくはい",
+      "meaning": "pretending to obey but secretly betraying (someone)"
+    },
+    {
+      "source_index": 14742,
+      "id": "2450250",
+      "term": "面壁九年",
+      "reading": "めんぺきくねん",
+      "meaning": "facing a wall for nine years in meditation (by Bodhidharma at Shaolin Temple)"
+    },
+    {
+      "source_index": 14743,
+      "id": "2032830",
+      "term": "面目一新",
+      "reading": "めんもくいっしん",
+      "meaning": "undergoing a complete change in appearance / changing something out of all recognition / a rise in one's reputation"
+    },
+    {
+      "source_index": 14744,
+      "id": "2032850",
+      "term": "面目躍如",
+      "reading": "めんもくやくじょ",
+      "meaning": "demonstrative of one's worth / worthy of one's reputation / living up to one's name"
+    },
+    {
+      "source_index": 14745,
+      "id": "2415850",
+      "term": "盲亀の浮木",
+      "reading": "もうきのふぼく",
+      "meaning": "unlikely event / rare occurrence"
+    },
+    {
+      "source_index": 14746,
+      "id": "2415840",
+      "term": "盲亀浮木",
+      "reading": "もうきふぼく",
+      "meaning": "unlikely event / rare occurrence"
+    },
+    {
+      "source_index": 14747,
+      "id": "2040840",
+      "term": "妄言多謝",
+      "reading": "もうげんたしゃ",
+      "meaning": "kindly excuse my reckless remarks / please excuse my thoughtless words"
+    },
+    {
+      "source_index": 14748,
+      "id": "2032860",
+      "term": "孟母三遷",
+      "reading": "もうぼさんせん",
+      "meaning": "the importance of creating an environment conducive to a child's learning / Mencius' mother, three moves"
+    },
+    {
+      "source_index": 14749,
+      "id": "2032360",
+      "term": "百舌勘定",
+      "reading": "もずかんじょう",
+      "meaning": "splitting the bill so that the others end up paying the whole amount / wheedling the others into paying the whole bill"
+    },
+    {
+      "source_index": 14750,
+      "id": "2153100",
+      "term": "沐猴にして冠す",
+      "reading": "もっこうにしてかんす",
+      "meaning": "to only look the part (but otherwise be wholly unsuited for it) / a monkey wearing a crown"
+    },
+    {
+      "source_index": 14751,
+      "id": "2133790",
+      "term": "以て瞑すべし",
+      "reading": "もってめいすべし",
+      "meaning": "being so content that one would not mind dying / one can now rest in peace / one ought to be contented with what has been accomplished"
+    },
+    {
+      "source_index": 14752,
+      "id": "2869228",
+      "term": "元が取れる",
+      "reading": "もとがとれる",
+      "meaning": "to recover (one's) costs / to break even"
+    },
+    {
+      "source_index": 14753,
+      "id": "2153080",
+      "term": "元の鞘に収まる",
+      "reading": "もとのさやにおさまる",
+      "meaning": "to bury the hatchet / to make up / to be reconciled"
+    },
+    {
+      "source_index": 14754,
+      "id": "2078990",
+      "term": "元も子もない",
+      "reading": "もともこもない",
+      "meaning": "losing everything / suffering a total loss / coming to nothing"
+    },
+    {
+      "source_index": 14755,
+      "id": "1502470",
+      "term": "物見遊山",
+      "reading": "ものみゆさん",
+      "meaning": "going on a pleasure jaunt"
+    },
+    {
+      "source_index": 14756,
+      "id": "2835412",
+      "term": "紅葉に鹿",
+      "reading": "もみじにしか",
+      "meaning": "match made in heaven / perfect match / great coupling"
+    },
+    {
+      "source_index": 14757,
+      "id": "2863382",
+      "term": "森のバター",
+      "reading": "もりのバター",
+      "meaning": "avocado / forest butter"
+    },
+    {
+      "source_index": 14758,
+      "id": "2619540",
+      "term": "もろ肌を脱ぐ",
+      "reading": "もろはだをぬぐ",
+      "meaning": "to strip to one's waist"
+    },
+    {
+      "source_index": 14759,
+      "id": "1536160",
+      "term": "門外不出",
+      "reading": "もんがいふしゅつ",
+      "meaning": "(treasuring something by) never taking (it) off the premises"
+    },
+    {
+      "source_index": 14760,
+      "id": "2032880",
+      "term": "門戸開放",
+      "reading": "もんこかいほう",
+      "meaning": "open door policy"
+    },
+    {
+      "source_index": 14761,
+      "id": "2032890",
+      "term": "門前雀羅",
+      "reading": "もんぜんじゃくら",
+      "meaning": "(a house) looking deserted with few visitors / sparrow net in front of the gate"
+    },
+    {
+      "source_index": 14762,
+      "id": "2832572",
+      "term": "門前雀羅を張る",
+      "reading": "もんぜんじゃくらをはる",
+      "meaning": "to be (practically) deserted / to have no visitors / to set a sparrow net in front of the gate"
+    },
+    {
+      "source_index": 14763,
+      "id": "2054300",
+      "term": "門前成市",
+      "reading": "もんぜんせいし",
+      "meaning": "having a constant stream of visitors / being thronged with callers"
+    },
+    {
+      "source_index": 14764,
+      "id": "2032870",
+      "term": "問答無益",
+      "reading": "もんどうむえき",
+      "meaning": "there being no use in arguing (about it) / not up for discussion"
+    },
+    {
+      "source_index": 14765,
+      "id": "1536070",
+      "term": "問答無用",
+      "reading": "もんどうむよう",
+      "meaning": "there being no use in arguing (about it) / not up for discussion"
+    },
+    {
+      "source_index": 14766,
+      "id": "1537800",
+      "term": "矢面に立つ",
+      "reading": "やおもてにたつ",
+      "meaning": "to be in the firing line / to bear the brunt of (an attack, criticism, etc.) / to face (e.g. questioning)"
+    },
+    {
+      "source_index": 14767,
+      "id": "1350440",
+      "term": "ヤキが回る",
+      "reading": "やきがまわる",
+      "meaning": "to become senile / to show signs of decline / to lose one's edge"
+    },
+    {
+      "source_index": 14768,
+      "id": "2856575",
+      "term": "ヤキモチ焼く",
+      "reading": "やきもちやく",
+      "meaning": "to be jealous"
+    },
+    {
+      "source_index": 14769,
+      "id": "2235460",
+      "term": "やきもちを焼く",
+      "reading": "やきもちをやく",
+      "meaning": "to be jealous"
+    },
+    {
+      "source_index": 14770,
+      "id": "2032930",
+      "term": "薬石無効",
+      "reading": "やくせきむこう",
+      "meaning": "neither medicines nor medical care having little effect on a patient"
+    },
+    {
+      "source_index": 14771,
+      "id": "2152910",
+      "term": "焼け石に水",
+      "reading": "やけいしにみず",
+      "meaning": "a drop in the bucket / a drop in the ocean / pointless exercise"
+    },
+    {
+      "source_index": 14772,
+      "id": "2564310",
+      "term": "焼け野の鴉",
+      "reading": "やけののからす",
+      "meaning": "blacker than black"
+    },
+    {
+      "source_index": 14773,
+      "id": "2418010",
+      "term": "焼けぼっくいに火がつく",
+      "reading": "やけぼっくいにひがつく",
+      "meaning": "the embers of a former relationship flare up again / old love blazes anew"
+    },
+    {
+      "source_index": 14774,
+      "id": "2032910",
+      "term": "野心満々",
+      "reading": "やしんまんまん",
+      "meaning": "burning with ambition / highly ambitious"
+    },
+    {
+      "source_index": 14775,
+      "id": "2834642",
+      "term": "柳は緑、花は紅",
+      "reading": "やなぎはみどり、はなはくれない",
+      "meaning": "natural state / being unspoilt by human touch / willows are green, flowers are crimson"
+    },
+    {
+      "source_index": 14776,
+      "id": "1538550",
+      "term": "薮蛇になる",
+      "reading": "やぶへびになる",
+      "meaning": "to only make work for oneself / to stir up a hornet's nest / to put one's foot in one's mouth"
+    },
+    {
+      "source_index": 14777,
+      "id": "2827765",
+      "term": "山あり谷あり",
+      "reading": "やまありたにあり",
+      "meaning": "(having) ups and downs"
+    },
+    {
+      "source_index": 14778,
+      "id": "2182640",
+      "term": "ヤマが当たる",
+      "reading": "やまがあたる",
+      "meaning": "to have one's predictions turn out exactly right / to have a speculation turn out well"
+    },
+    {
+      "source_index": 14779,
+      "id": "2417570",
+      "term": "山が見える",
+      "reading": "やまがみえる",
+      "meaning": "to have the end in sight / to see the mountains"
+    },
+    {
+      "source_index": 14780,
+      "id": "2859014",
+      "term": "山と言えば川",
+      "reading": "やまといえばかわ",
+      "meaning": "always contradicting what other people say"
+    },
+    {
+      "source_index": 14781,
+      "id": "1786080",
+      "term": "大和撫子",
+      "reading": "やまとなでしこ",
+      "meaning": "large pink (Dianthus superbus var. longicalycinus)"
+    },
+    {
+      "source_index": 14782,
+      "id": "2842425",
+      "term": "山を当てる",
+      "reading": "やまをあてる",
+      "meaning": "to make a lucky hit / to win against the odds / to anticipate correctly"
+    },
+    {
+      "source_index": 14783,
+      "id": "2526430",
+      "term": "山をかける",
+      "reading": "やまをかける",
+      "meaning": "to speculate / to make an educated guess / to gamble (e.g. on getting the right questions)"
+    },
+    {
+      "source_index": 14784,
+      "id": "2526440",
+      "term": "山を張る",
+      "reading": "やまをはる",
+      "meaning": "to speculate / to make an educated guess / to gamble (e.g. on getting the right questions)"
+    },
+    {
+      "source_index": 14785,
+      "id": "2837559",
+      "term": "ヤマを踏む",
+      "reading": "やまをふむ",
+      "meaning": "to commit a crime"
+    },
+    {
+      "source_index": 14786,
+      "id": "2844875",
+      "term": "闇に鉄砲",
+      "reading": "やみにてっぽう",
+      "meaning": "doing something without having decided what one's goal for it is / a rifle in the dark"
+    },
+    {
+      "source_index": 14787,
+      "id": "2743090",
+      "term": "闇の女",
+      "reading": "やみのおんな",
+      "meaning": "street prostitute"
+    },
+    {
+      "source_index": 14788,
+      "id": "2064485",
+      "term": "闇夜に烏",
+      "reading": "やみよにからす",
+      "meaning": "something indistinct / a crow in a pitch-black night"
+    },
+    {
+      "source_index": 14789,
+      "id": "2064480",
+      "term": "闇夜の烏",
+      "reading": "やみよのからす",
+      "meaning": "something indistinct / a crow in a pitch-black night"
+    },
+    {
+      "source_index": 14790,
+      "id": "2152830",
+      "term": "闇夜の礫",
+      "reading": "やみよのつぶて",
+      "meaning": "aimless attempt / crapshoot / shot in the dark"
+    },
+    {
+      "source_index": 14791,
+      "id": "2152820",
+      "term": "闇夜の鉄砲",
+      "reading": "やみよのてっぽう",
+      "meaning": "aimless attempt / shot in the dark / crapshoot"
+    },
+    {
+      "source_index": 14792,
+      "id": "1850370",
+      "term": "槍玉に挙げる",
+      "reading": "やりだまにあげる",
+      "meaning": "to make an example of / to make a victim of / to hold up someone (something) to ridicule"
+    },
+    {
+      "source_index": 14793,
+      "id": "1537240",
+      "term": "夜郎自大",
+      "reading": "やろうじだい",
+      "meaning": "throwing one's weight around without knowing one's limitations / Yelang thinks too highly of itself"
+    },
+    {
+      "source_index": 14794,
+      "id": "2054480",
+      "term": "唯一不二",
+      "reading": "ゆいいつふじ",
+      "meaning": "one and only / unique"
+    },
+    {
+      "source_index": 14795,
+      "id": "1538930",
+      "term": "唯一無二",
+      "reading": "ゆいいつむに",
+      "meaning": "one and only / unique"
+    },
+    {
+      "source_index": 14796,
+      "id": "1538940",
+      "term": "唯我独尊",
+      "reading": "ゆいがどくそん",
+      "meaning": "throughout heaven and earth, I alone am the honored one"
+    },
+    {
+      "source_index": 14797,
+      "id": "1539720",
+      "term": "勇往邁進",
+      "reading": "ゆうおうまいしん",
+      "meaning": "dash and go / pushing forward"
+    },
+    {
+      "source_index": 14798,
+      "id": "1541150",
+      "term": "有害無益",
+      "reading": "ゆうがいむえき",
+      "meaning": "more harm than good / harmful and of no use"
+    },
+    {
+      "source_index": 14799,
+      "id": "2040850",
+      "term": "雄気堂々",
+      "reading": "ゆうきどうどう",
+      "meaning": "with heroic drive and boundless energy"
+    },
+    {
+      "source_index": 14800,
+      "id": "2032950",
+      "term": "勇気凛凛",
+      "reading": "ゆうきりんりん",
+      "meaning": "full of spirit / brimming with courage / high-spirited"
+    },
+    {
+      "source_index": 14801,
+      "id": "1745410",
+      "term": "有形無形",
+      "reading": "ゆうけいむけい",
+      "meaning": "tangible and intangible / material and spiritual"
+    },
+    {
+      "source_index": 14802,
+      "id": "2054520",
+      "term": "有言実行",
+      "reading": "ゆうげんじっこう",
+      "meaning": "carrying out one's words / being as good as one's word / making good on one's promise"
+    },
+    {
+      "source_index": 14803,
+      "id": "2054540",
+      "term": "雄材大略",
+      "reading": "ゆうざいたいりゃく",
+      "meaning": "superior talent and strategic wisdom / outstanding abilities and a talent for developing and implementing grand strategies"
+    },
+    {
+      "source_index": 14804,
+      "id": "1539330",
+      "term": "優勝劣敗",
+      "reading": "ゆうしょうれっぱい",
+      "meaning": "survival of the fittest"
     }
   ]
 }
