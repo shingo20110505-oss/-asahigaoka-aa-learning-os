@@ -16,11 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          fetch-depth: 2
-      - name: Restore index.html from commit before accidental replacement
+          fetch-depth: 1
+      - name: Restore known-good index.html
         run: |
-          git show 216ba1b495852fc0d2e10d1e315513848b5c6704^:index.html > index.html
+          git fetch origin 5ad20b5bb4b662941ed91369d0c130a40170f4d9 --depth=1
+          git show 5ad20b5bb4b662941ed91369d0c130a40170f4d9:index.html > index.html
           test "$(wc -c < index.html)" -gt 10000
+          grep -q 'function evidenceRefs' index.html
       - name: Commit restore
         run: |
           git config user.name github-actions[bot]
