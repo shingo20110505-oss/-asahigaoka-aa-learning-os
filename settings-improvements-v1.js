@@ -90,3 +90,12 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   s.async=false;
   document.head.appendChild(s);
 })();
+
+(()=>{
+  if(document.getElementById('aa-quiz-integrity-fix-v1-loader'))return;
+  const s=document.createElement('script');
+  s.id='aa-quiz-integrity-fix-v1-loader';
+  s.src='./quiz-integrity-fix-v1.js?v=1.0.0-20260815';
+  s.async=false;
+  document.head.appendChild(s);
+})();
