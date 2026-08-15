@@ -1,6 +1,7 @@
 (()=>{'use strict';
 if(window.__CHRONOLOGIA_FORCE1000_V1__)return;window.__CHRONOLOGIA_FORCE1000_V1__=true;
 if(!/(?:^|\/)chronologia\.html$/.test(location.pathname))return;
+const QUIZ_NAV_VERSION='2026-08-15.1';
 const PACKS=[
  './chronologia-v7-data-1.js?force1000=20260811a',
  './chronologia-v7-data-2a.js?force1000=20260811a',
@@ -58,5 +59,55 @@ async function boot(){
  const n=mergePacks();
  if(n<1000){setTimeout(()=>{const retry=mergePacks();if(retry<1000)console.error(`Chronologia recovery incomplete: ${retry}/1000`)},1200)}
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+function answeredQuizDom(){
+ const play=document.getElementById('quizPlay');if(!play||play.hidden)return false;
+ if(document.querySelector('#quizAnswerArea .choice.correct,#quizAnswerArea .choice.wrong'))return true;
+ if(document.querySelector('#quizAnswerArea .choice:disabled'))return true;
+ if(document.getElementById('yearAnswer')?.disabled)return true;
+ return !!document.getElementById('quizFeedback')?.textContent?.trim();
+}
+function revealQuizNext(scroll=false){
+ if(!answeredQuizDom())return false;
+ const next=document.getElementById('nextQuizBtn');if(!next)return false;
+ next.hidden=false;next.removeAttribute('hidden');next.disabled=false;next.textContent='次の問題へ';
+ next.style.setProperty('display','inline-flex','important');next.style.alignItems='center';next.style.justifyContent='center';
+ if(matchMedia('(max-width:720px)').matches)next.style.width='100%';
+ document.documentElement.dataset.chronologiaQuizNavFix=QUIZ_NAV_VERSION;
+ if(scroll){setTimeout(()=>next.scrollIntoView({behavior:'smooth',block:'nearest'}),30)}
+ return true;
+}
+function markQuizAudit(ok,detail){
+ document.documentElement.dataset.aaSocialQuizUi=ok?'PASS':'FAIL';
+ let el=document.getElementById('aaSocialQuizUiAudit');if(!el){el=document.createElement('pre');el.id='aaSocialQuizUiAudit';el.hidden=true;document.body.appendChild(el)}
+ el.textContent=`AA_SOCIAL_QUIZ_UI=${ok?'PASS':'FAIL'} ${JSON.stringify(detail)}`;
+}
+function waitFor(test,timeout=30000){return new Promise((resolve,reject)=>{const start=Date.now(),tick=()=>{let value;try{value=test()}catch(_){}if(value)return resolve(value);if(Date.now()-start>timeout)return reject(new Error('timeout'));setTimeout(tick,80)};tick()})}
+async function runQuizAudit(){
+ if(!new URLSearchParams(location.search).has('aa_quiz_ui_ci'))return;
+ try{
+  const tab=await waitFor(()=>document.querySelector('.tab[data-view="quizView"]'));
+  tab.click();
+  const direction=await waitFor(()=>document.getElementById('quizDirection'));direction.value='yearToEvent';
+  const count=document.getElementById('quizCount');if(count)count.value='10';
+  document.getElementById('startQuizBtn').click();
+  const first=await waitFor(()=>document.querySelector('#quizAnswerArea .choice'));
+  const before=document.getElementById('quizIndex')?.textContent?.trim();
+  first.click();
+  await waitFor(()=>answeredQuizDom());revealQuizNext(false);
+  const next=await waitFor(()=>{const b=document.getElementById('nextQuizBtn');return b&&!b.hidden&&getComputedStyle(b).display!=='none'?b:null});
+  next.click();
+  const after=await waitFor(()=>{const t=document.getElementById('quizIndex')?.textContent?.trim();return t&&t!==before?t:null});
+  if(!/^2\s*\/\s*10$/.test(after))throw new Error(`index ${before} -> ${after}`);
+  markQuizAudit(true,{before,after,nextVisible:true,version:QUIZ_NAV_VERSION});
+ }catch(err){markQuizAudit(false,{error:String(err?.message||err),version:QUIZ_NAV_VERSION})}
+}
+function installQuizNavFix(){
+ const feedback=document.getElementById('quizFeedback'),answer=document.getElementById('quizAnswerArea');
+ if(!feedback||!answer){setTimeout(installQuizNavFix,80);return}
+ const mo=new MutationObserver(()=>revealQuizNext(false));mo.observe(feedback,{childList:true,subtree:true,characterData:true});mo.observe(answer,{childList:true,subtree:true,attributes:true,attributeFilter:['disabled','class']});
+ document.addEventListener('click',e=>{if(e.target?.closest?.('#quizAnswerArea .choice,#submitYear'))setTimeout(()=>revealQuizNext(true),20)},true);
+ document.documentElement.dataset.chronologiaQuizNavFix=QUIZ_NAV_VERSION;
+ runQuizAudit();
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',boot,{once:true});document.addEventListener('DOMContentLoaded',installQuizNavFix,{once:true})}else{boot();installQuizNavFix()}
 })();
