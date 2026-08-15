@@ -28,3 +28,8 @@ function reopenEnglish(){if(sessionStorage.getItem(REOPEN_KEY)!=='english')retur
 function renderAll(){syncNow();const en=renderEnglish(),ja=renderJapanese();if(en)reopenEnglish();return en||ja}
 syncNow();let tries=0;const t=setInterval(()=>{renderAll();if(++tries>120)clearInterval(t)},250);if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',renderAll,{once:true});else setTimeout(renderAll,0);document.documentElement.dataset.aaWrongHistory=VERSION;
 })();
+(()=>{'use strict';
+if(!/(?:^|\/)kokugo-chronologia(?:\/index\.html)?\/?$/.test(location.pathname))return;
+if(document.getElementById('aaKokugoQuizInteractionFixLoader'))return;
+const s=document.createElement('script');s.id='aaKokugoQuizInteractionFixLoader';s.src=new URL('./quiz-interaction-fix.js?v=20260815-2',location.href).href;s.async=false;s.onerror=()=>console.error('Kokugo quiz interaction fix failed to load');document.head.appendChild(s);
+})();
