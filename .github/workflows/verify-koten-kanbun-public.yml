@@ -38,6 +38,7 @@ jobs:
           assert sum(b=='漢文' for _,b in pairs)==300
           html=Path('kokugo-chronologia/index.html').read_text(encoding='utf-8')
           assert 'koten-kanbun-extension.js?v=20260815-1' in html
+          assert 'koten-extension.js?v=20260815-1' not in html
           PY
           expected_ext=$(sha256sum kokugo-chronologia/koten-kanbun-extension.js | awk '{print $1}')
           ok=0
@@ -51,6 +52,7 @@ jobs:
           test "$ok" = 1
           curl -fsSL "${BASE}/?verify=${GITHUB_SHA}" -o /tmp/public-index.html
           grep -q 'koten-kanbun-extension.js?v=20260815-1' /tmp/public-index.html
+          ! grep -q 'koten-extension.js?v=20260815-1' /tmp/public-index.html
           test "$(sha256sum /tmp/public-ext.js | awk '{print $1}')" = "$expected_ext"
           for n in 1 2 3 4; do
             curl -fsSL "${BASE}/koten-kanbun-bank-${n}.js?verify=${GITHUB_SHA}-${n}" -o "/tmp/public-bank-${n}.js"
