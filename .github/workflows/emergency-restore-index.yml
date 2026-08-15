@@ -1,0 +1,31 @@
+name: Emergency Restore Index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/emergency-restore-index.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
+      - name: Restore index.html from commit before accidental replacement
+        run: |
+          git show 216ba1b495852fc0d2e10d1e315513848b5c6704^:index.html > index.html
+          test "$(wc -c < index.html)" -gt 10000
+      - name: Commit restore
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add index.html
+          git commit -m "Restore index after accidental replacement"
+          git pull --rebase origin main
+          git push origin main
