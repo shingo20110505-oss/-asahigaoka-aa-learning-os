@@ -39,3 +39,5 @@ jobs:
         run: |
           grep -q 'READING_1000_VERDICT PASS' READING_1000_AUDIT.txt
           test "$AUDIT_EXIT_CODE" = "0"
+
+# Manual retrigger marker: integrated-question-audit-v2
