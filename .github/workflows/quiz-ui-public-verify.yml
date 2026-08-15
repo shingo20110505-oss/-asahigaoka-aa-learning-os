@@ -33,9 +33,10 @@ jobs:
           node --check kokugo-chronologia/quiz-interaction-fix.js
           node --check wrong-answer-history-v1.js
           node --check chronologia-force1000-v1.js
-          grep -q "2026-08-15.2" kokugo-chronologia/quiz-interaction-fix.js
+          grep -q "2026-08-16.1" kokugo-chronologia/quiz-interaction-fix.js
           grep -q "quiz-interaction-fix.js?v=20260815-2" wrong-answer-history-v1.js
           grep -q "aaKokugoQuizUi" kokugo-chronologia/quiz-interaction-fix.js
+          grep -q "realTouchCapture" kokugo-chronologia/quiz-interaction-fix.js
           grep -q "chronologiaQuizNavFix" chronologia-force1000-v1.js
           grep -q "aaSocialQuizUi" chronologia-force1000-v1.js
 
@@ -67,7 +68,7 @@ jobs:
           test "$(sha256sum kokugo-chronologia/quiz-interaction-fix.js | awk '{print $1}')" = "$(sha256sum /tmp/kokugo-fix.js | awk '{print $1}')"
           test "$(sha256sum wrong-answer-history-v1.js | awk '{print $1}')" = "$(sha256sum /tmp/wrong-history.js | awk '{print $1}')"
           test "$(sha256sum chronologia-force1000-v1.js | awk '{print $1}')" = "$(sha256sum /tmp/chrono-fix.js | awk '{print $1}')"
-          grep -q "2026-08-15.2" /tmp/kokugo-fix.js
+          grep -q "2026-08-16.1" /tmp/kokugo-fix.js
           grep -q "quiz-interaction-fix.js?v=20260815-2" /tmp/wrong-history.js
           grep -q "次の問題へ" /tmp/chrono-fix.js
 
@@ -94,6 +95,7 @@ jobs:
           grep -q 'AA_KOKUGO_QUIZ_UI=PASS' /tmp/kokugo-runtime.html
           grep -q '"graded":true' /tmp/kokugo-runtime.html
           grep -q '"nextVisible":true' /tmp/kokugo-runtime.html
+          grep -q '"realTouchCapture":true' /tmp/kokugo-runtime.html
 
       - name: Run live Social next-question audit
         env:
