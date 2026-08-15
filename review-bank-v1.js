@@ -78,11 +78,14 @@ const items=[
   },
   {
     id:'en-let-me-study-abroad-20260814',subject:'英語',unit:'let・使役',title:'Please let me study abroad.',question:'「私を留学させてください」を英語にすると？ 空所を埋めなさい：Please let (　) (　) abroad.',answer:'Please let me study abroad. です。空所は me / study。',why:'let + 人 + 動詞の原形 で「人に～させる・人が～することを許す」という形になります。let me study で「私に勉強させる／勉強することを許す」、study abroad で「留学する」です。',examples:['Please let me study abroad.（私を留学させてください）','Let me try.（私にやらせてください）','let + 人 + 動詞の原形'],memory:'let + 人 + 動詞の原形＝人に～させる。留学する＝study abroad',tags:['let','let me','study abroad','使役','動詞の原形'],createdAt:'2026-08-14'
+  },
+  {
+    id:'ja-kyotan-meaning-20260815',subject:'国語',unit:'語句・意味',title:'驚嘆（きょうたん）の意味',question:'「驚嘆（きょうたん）」とはどんな意味？',answer:'とても驚いて、感心すること。',why:'ただ驚くだけでなく、すばらしさや見事さなどに「すごい」と感心する気持ちまで含む言葉です。',examples:['彼の見事な演奏に驚嘆した。→ あまりの上手さに驚き、感心した。','その技術の高さに人々は驚嘆した。'],memory:'驚嘆＝「すごい！」と驚き、感心する',tags:['驚嘆','きょうたん','語句','意味','語彙'],createdAt:'2026-08-15'
   }
 ];
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.14';
+window.AA_REVIEW_BANK_VERSION='1.0.15';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
