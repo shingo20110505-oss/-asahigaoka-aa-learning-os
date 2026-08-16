@@ -1,5 +1,5 @@
 'use strict';
-const VERSION='2.5.301-storage-forensic-20260816';
+const VERSION='2.5.301-quality2-chronologia1000-storage-forensic-20260816-kokugo-direct-ja';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;
