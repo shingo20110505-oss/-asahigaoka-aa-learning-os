@@ -1,11 +1,11 @@
 (()=>{'use strict';
 if(window.__AA_STORAGE_V1_EXACT_RECOVERY_V1__)return;window.__AA_STORAGE_V1_EXACT_RECOVERY_V1__=true;
-const VERSION='1.0.1';
+const VERSION='1.0.2';
 const DB_NAME='asahigaoka-aa-os-storage',DB_STORE='snapshots';
 const MAIN_KEY='asahi_learning_os_v1',LEGACY_LOCAL_KEY='asahi_learning_os_v1_pre_v2';
 const V1_STATE_KEY='state',V1_LEGACY_KEY='legacy-pre-v2';
-const STATUS=window.__AA_STORAGE_V1_EXACT_STATUS__={version:VERSION,checked:false,before:0,after:0,added:0,entries:[],error:null};
-let renderQueued=false;
+const STATUS=window.__AA_STORAGE_V1_EXACT_STATUS__={version:VERSION,checked:false,before:0,after:0,added:0,entries:[],error:null,forensicLoader:'待機中'};
+let renderQueued=false,forensicLoading=false;
 function parse(s){try{return JSON.parse(s)}catch(_){return null}}
 function looks(x){return !!x&&typeof x==='object'&&!Array.isArray(x)&&(Array.isArray(x.attempts)||x.mastery||x.items||x.profile||x.schemaVersion!=null)}
 function akey(a){if(!a||typeof a!=='object')return'';return String(a.attemptId||`${a.itemId||''}:${a.timestamp||''}:${a.answer??''}`)}
@@ -28,10 +28,17 @@ function renderCard(){
  const host=document.getElementById('aaDailyAnalyticsCard');if(!host||!STATUS.checked)return;
  let box=document.getElementById('aaV1StorageDiagnostic');if(!box){box=document.createElement('div');box.id='aaV1StorageDiagnostic';box.className='notice';const h=host.querySelector('.aaSummary');if(h)h.insertAdjacentElement('beforebegin',box);else host.prepend(box)}
  const rows=STATUS.entries.map(e=>`<div style="display:flex;justify-content:space-between;gap:10px;margin-top:5px"><span>${esc(e.source)}</span><b>${e.found?e.attempts+'問':'なし'}</b></div>${e.found&&e.lastAt?`<div style="font-size:10px;color:var(--sub);text-align:right">最終回答 ${fmtDate(e.lastAt)}</div>`:''}`).join('');
- const html=`<b>V1保存領域を直接調査</b><br><span style="font-size:11px">V1が使っていた固定キー state / legacy-pre-v2 と旧localStorageを個別確認しています。削除はしません。</span>${rows}<div style="margin-top:7px"><b>V1から追加復旧：${STATUS.added}問</b>（現在 ${STATUS.after||STATUS.before}問）</div>`;
+ const html=`<b>V1保存領域を直接調査</b><br><span style="font-size:11px">V1が使っていた固定キー state / legacy-pre-v2 と旧localStorageを個別確認しています。削除はしません。</span>${rows}<div style="margin-top:7px"><b>V1から追加復旧：${STATUS.added}問</b>（現在 ${STATUS.after||STATUS.before}問）</div><div style="margin-top:5px;font-size:11px"><b>端末全領域追加調査：</b>${esc(STATUS.forensicLoader)}</div>`;
  if(box.innerHTML!==html)box.innerHTML=html;
 }
 function scheduleRenderCard(){if(renderQueued)return;renderQueued=true;setTimeout(renderCard,80)}
+function loadForensic(){
+ if(window.AAStorageForensicRecovery){STATUS.forensicLoader='読込済';scheduleRenderCard();setTimeout(()=>window.AAStorageForensicRecovery?.run?.(),120);return}
+ if(forensicLoading)return;forensicLoading=true;STATUS.forensicLoader='読込中';scheduleRenderCard();
+ const s=document.createElement('script');s.src='./storage-forensic-recovery-v1.js?direct=20260816-1637';s.async=false;
+ s.onload=()=>{forensicLoading=false;STATUS.forensicLoader=window.AAStorageForensicRecovery?'読込済':'読込完了・API未検出';scheduleRenderCard();setTimeout(()=>window.AAStorageForensicRecovery?.run?.(),150)};
+ s.onerror=()=>{forensicLoading=false;STATUS.forensicLoader='読込失敗';scheduleRenderCard()};document.head.appendChild(s)
+}
 async function recoverExact(forceNotice=false){
  try{
   if(typeof mergeState!=='function'||typeof save!=='function'||typeof state==='undefined'){setTimeout(()=>recoverExact(forceNotice),300);return false}
@@ -40,11 +47,11 @@ async function recoverExact(forceNotice=false){
   for(const [source,obj] of candidates){if(!looks(obj))continue;const prior=count(merged);try{state=merged;merged=mergeState(obj)}catch(_){continue}if(count(merged)>prior)sources.push(source)}
   state=merged;const after=count(state),added=Math.max(0,after-before);STATUS.after=after;STATUS.added=added;STATUS.sources=[...new Set(sources)];
   if(added>0){save();try{render()}catch(_){};toast(`V1保存領域から${added}問を追加復旧しました（合計${after}問）`)}else if(forceNotice)toast(`V1保存領域を直接調査しました。追加できる回答はありませんでした（現在${after}問）`);
-  scheduleRenderCard();document.dispatchEvent(new CustomEvent('aa:v1-storage-inspected',{detail:{...STATUS}}));return added>0;
- }catch(e){STATUS.error=String(e);STATUS.checked=true;scheduleRenderCard();if(forceNotice)toast('V1保存領域の調査中にエラーが発生しました。');return false}
+  scheduleRenderCard();document.dispatchEvent(new CustomEvent('aa:v1-storage-inspected',{detail:{...STATUS}}));setTimeout(loadForensic,120);return added>0;
+ }catch(e){STATUS.error=String(e);STATUS.checked=true;scheduleRenderCard();if(forceNotice)toast('V1保存領域の調査中にエラーが発生しました。');setTimeout(loadForensic,120);return false}
 }
-window.AAStorageV1ExactRecovery={version:VERSION,status:STATUS,inspect,recover:()=>recoverExact(true)};
+window.AAStorageV1ExactRecovery={version:VERSION,status:STATUS,inspect,recover:()=>recoverExact(true),loadForensic};
 const observer=new MutationObserver(()=>scheduleRenderCard());observer.observe(document.documentElement,{childList:true,subtree:true});
-document.addEventListener('click',e=>{if(e.target.closest('[data-route="analytics"]'))setTimeout(scheduleRenderCard,180)});
-setTimeout(()=>recoverExact(false),900);setTimeout(()=>{inspect().then(scheduleRenderCard)},3200);
+document.addEventListener('click',e=>{if(e.target.closest('[data-route="analytics"]')){setTimeout(scheduleRenderCard,180);setTimeout(loadForensic,240)}});
+setTimeout(()=>recoverExact(false),900);setTimeout(()=>{inspect().then(scheduleRenderCard)},3200);setTimeout(loadForensic,1500);
 })();
