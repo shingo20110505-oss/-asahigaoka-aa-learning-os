@@ -40,11 +40,12 @@ const items=[
   {id:'ja-koten-kiran-mu-intention-20260816',subject:'国語',unit:'古文・助動詞',title:'「切らん」：一人称なら意志',question:'「切らん」で主語が自分（一人称）のとき、「ん」はどんな意味？',answer:'「ん」は助動詞「む」が「ん」と表記されたものです。主語が一人称なら意志「〜しよう」を表すので、「切らん」＝「切ろう」です。',why:'「切ら」はラ行四段活用「切る」の未然形で、未然形＋助動詞「む」の形です。「む」は主語や文脈で意味が変わり、一人称主語では意志になるのが基本です。',examples:['我、髪を切らん。→ 私は髪を切ろう。','切ら＝「切る」の未然形','ん＝む。一人称＋む（ん）＝意志'],memory:'一人称＋む（ん）＝意志「〜しよう」。切らん＝切ろう',tags:['国語','古文','切らん','む','ん','助動詞','意志','一人称','未然形'],createdAt:'2026-08-16'},
   {id:'sci-volcano-shield-examples-20260816',subject:'理科',unit:'火山・火山の形',title:'盾状火山の代表例',question:'盾状火山の代表例を3つ答えなさい。',answer:'三原山・キラウエア・マウナロア。',why:'盾状火山は、傾斜がゆるく、盾を伏せたようななだらかな形の火山として整理します。代表例を3つセットで覚えます。',examples:['盾状火山 → 三原山','盾状火山 → キラウエア','盾状火山 → マウナロア'],memory:'盾状＝三原山・キラウエア・マウナロア',tags:['理科','火山','盾状火山','三原山','キラウエア','マウナロア','入試'],createdAt:'2026-08-16'},
   {id:'sci-volcano-stratovolcano-examples-20260816',subject:'理科',unit:'火山・火山の形',title:'成層火山の代表例',question:'成層火山の代表例を3つ答えなさい。',answer:'浅間山・桜島・富士山。',why:'成層火山は、溶岩や火山灰などの噴出物が積み重なってできる、円すい形の火山として整理します。代表例を3つセットで覚えます。',examples:['成層火山 → 浅間山','成層火山 → 桜島','成層火山 → 富士山'],memory:'成層＝浅間山・桜島・富士山',tags:['理科','火山','成層火山','浅間山','桜島','富士山','入試'],createdAt:'2026-08-16'},
-  {id:'sci-volcano-dome-examples-20260816',subject:'理科',unit:'火山・火山の形',title:'ドーム状火山の代表例',question:'ドーム状火山の代表例を3つ答えなさい。',answer:'雲仙普賢岳・昭和新山・平成新山。',why:'粘り気の強い溶岩が火口付近に盛り上がり、ドーム状の形をつくる火山として整理します。代表例を3つセットで覚えます。',examples:['ドーム → 雲仙普賢岳','ドーム → 昭和新山','ドーム → 平成新山'],memory:'ドーム＝雲仙普賢岳・昭和新山・平成新山',tags:['理科','火山','ドーム','ドーム状火山','溶岩ドーム','雲仙普賢岳','昭和新山','平成新山','入試'],createdAt:'2026-08-16'}
+  {id:'sci-volcano-dome-examples-20260816',subject:'理科',unit:'火山・火山の形',title:'ドーム状火山の代表例',question:'ドーム状火山の代表例を3つ答えなさい。',answer:'雲仙普賢岳・昭和新山・平成新山。',why:'粘り気の強い溶岩が火口付近に盛り上がり、ドーム状の形をつくる火山として整理します。代表例を3つセットで覚えます。',examples:['ドーム → 雲仙普賢岳','ドーム → 昭和新山','ドーム → 平成新山'],memory:'ドーム＝雲仙普賢岳・昭和新山・平成新山',tags:['理科','火山','ドーム','ドーム状火山','溶岩ドーム','雲仙普賢岳','昭和新山','平成新山','入試'],createdAt:'2026-08-16'},
+  {id:'en-dangerous-meaning-20260817',subject:'英語',unit:'語彙',title:'dangerous の意味',question:'dangerous の意味と品詞を答えなさい。',answer:'「危険な」という意味の形容詞です。',why:'dangerous は danger（危険）に -ous がついた形容詞です。人・物・場所・行為などが「危険な」と表すときに使います。',examples:['a dangerous road（危険な道路）','It is dangerous to swim here.（ここで泳ぐのは危険です）'],memory:'dangerous＝危険な（形容詞） / danger＝危険（名詞）。danger + ous でつづりも覚える',tags:['dangerous','danger','危険な','形容詞','語彙'],createdAt:'2026-08-17'}
 ];
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.25';
+window.AA_REVIEW_BANK_VERSION='1.0.26';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
