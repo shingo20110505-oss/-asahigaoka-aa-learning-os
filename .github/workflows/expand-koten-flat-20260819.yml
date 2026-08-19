@@ -1,0 +1,143 @@
+name: Expand Koten Flat Bank 20260819
+
+on:
+  push:
+    paths:
+      - '.github/workflows/expand-koten-flat-20260819.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  expand:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Double koten bank without changing existing progress IDs
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, re
+          from pathlib import Path
+
+          root=Path('kokugo-chronologia')
+          bank_files=[root/f'koten-kanbun-bank-{i}.js' for i in range(1,5)]
+          rows=[]
+          for p in bank_files:
+              for line in p.read_text(encoding='utf-8').splitlines():
+                  s=line.strip().rstrip(',')
+                  if not s.startswith('['):
+                      continue
+                  try:
+                      row=json.loads(s)
+                  except Exception:
+                      continue
+                  if isinstance(row,list) and len(row)>=5 and isinstance(row[0],int):
+                      rows.append(row[:5])
+          rows.sort(key=lambda x:x[0])
+          koten=[r for r in rows if r[1]=='古文']
+          kanbun=[r for r in rows if r[1]=='漢文']
+          assert len(koten)==700, f'expected 700 existing koten, got {len(koten)}'
+          assert len(kanbun)==300, f'expected 300 existing kanbun, got {len(kanbun)}'
+          assert len({r[0] for r in rows})==1000
+
+          extra=[]
+          for i,r in enumerate(koten, start=1):
+              old_rank,cat,word,reading,meaning=r
+              new_rank=1000+i
+              if old_rank<=250:
+                  suffix='〔重要語義〕'
+                  add='高校入試では、現代語の感覚だけで決めず、この古語義を第一候補にして文脈で調整する。'
+              elif old_rank<=500:
+                  suffix='〔文脈語義〕'
+                  add='主語・目的語・前後の出来事を補って、文脈に合う自然な現代語訳にする。'
+              elif old_rank<=600:
+                  suffix='〔文法識別〕'
+                  add='形だけで決めず、接続・活用形・文脈の三つを合わせて識別する。'
+              elif old_rank<=649:
+                  suffix='〔和歌・読解〕'
+                  add='表現技法の名称だけでなく、本文中のどの語が働いているかまで確認する。'
+              else:
+                  suffix='〔文学史確認〕'
+                  add='作品名・時代・ジャンル・作者や特徴をセットで確認する。'
+              extra.append([new_rank,'古文',word+suffix,reading,meaning+' '+add])
+
+          assert len(extra)==700
+          assert extra[0][0]==1001 and extra[-1][0]==1700
+          out=root/'koten-kanbun-bank-5.js'
+          text='window.AA_KOTEN_KANBUN_BANK=(window.AA_KOTEN_KANBUN_BANK||[]).concat([\n'
+          text+='\n'.join(json.dumps(r,ensure_ascii=False,separators=(',',':'))+',' for r in extra)
+          text+='\n]);\n'
+          out.write_text(text,encoding='utf-8')
+
+          ext=root/'koten-kanbun-extension.js'
+          s=ext.read_text(encoding='utf-8')
+          s=re.sub(r"const VERSION='[^']+'", "const VERSION='2026-08-19.1'", s, count=1)
+          if 'koten-kanbun-bank-5.js' not in s:
+              old="'./koten-kanbun-bank-4.js?v=20260815-1']"
+              if old in s:
+                  s=s.replace(old,"'./koten-kanbun-bank-4.js?v=20260819-1','./koten-kanbun-bank-5.js?v=20260819-1']",1)
+              else:
+                  s=re.sub(r"('(?:\./)?koten-kanbun-bank-4\.js[^']*')\]",r"\1,'./koten-kanbun-bank-5.js?v=20260819-1']",s,count=1)
+          s=s.replace("'./koten-kanbun-bank-1.js?v=20260815-1'","'./koten-kanbun-bank-1.js?v=20260819-1'")
+          s=s.replace("'./koten-kanbun-bank-2.js?v=20260815-1'","'./koten-kanbun-bank-2.js?v=20260819-1'")
+          s=s.replace("'./koten-kanbun-bank-3.js?v=20260815-1'","'./koten-kanbun-bank-3.js?v=20260819-1'")
+          s=s.replace('bank.length!==1000','bank.length!==1700')
+          s=s.replace('new Set(bank.map(x=>x.rank)).size!==1000','new Set(bank.map(x=>x.rank)).size!==1700')
+          s=s.replace("btn.textContent='古文・漢文1000'","btn.textContent='古文・漢文1700'")
+          s=s.replace('<h2>古文・漢文 語句1000</h2>','<h2>古文・漢文 語句1700</h2>')
+          s=s.replace('高校入試で先に覚えたい順に #1〜#1000。古文700・漢文300を、意味・読み・文法語句までまとめて反復できます。','高校入試で先に覚えたい基礎1000件に古文増補700件を追加。古文1400・漢文300を、意味・読み・文法・和歌・文学史まで反復できます。')
+          s=s.replace('>出る順 1〜1000</span>','>出る順 1〜1700</span>')
+          s=s.replace('<b>1000</b><span>収録</span>','<b>1700</b><span>収録</span>')
+          s=s.replace('<b>700</b><span>古文</span>','<b>1400</b><span>古文</span>')
+          s=s.replace('<option value="all">出る順 1〜1000</option>','<option value="all">出る順 1〜1700</option>')
+          anchor='<option value="851-1000">851〜1000 漢文発展</option>'
+          if '1001〜1200 古文増補' not in s and anchor in s:
+              s=s.replace(anchor,anchor+'<option value="1001-1200">1001〜1200 古文増補A</option><option value="1201-1450">1201〜1450 古文増補B</option><option value="1451-1700">1451〜1700 古文増補C</option>',1)
+          ext.write_text(s,encoding='utf-8')
+
+          # Bump extension URL in HTML so browsers do not keep the old 1000-item loader.
+          for hp in root.rglob('*.html'):
+              hs=hp.read_text(encoding='utf-8')
+              if 'koten-kanbun-extension.js' in hs:
+                  hs=re.sub(r'koten-kanbun-extension\.js(?:\?v=[^"\']*)?', 'koten-kanbun-extension.js?v=20260819-1', hs)
+                  hp.write_text(hs,encoding='utf-8')
+
+          # If a service worker explicitly caches this loader, bust that reference too.
+          for sp in list(root.rglob('service-worker*.js'))+list(root.rglob('sw.js')):
+              ss=sp.read_text(encoding='utf-8')
+              if 'koten-kanbun-extension.js' in ss:
+                  ss=re.sub(r'koten-kanbun-extension\.js(?:\?v=[^"\']*)?', 'koten-kanbun-extension.js?v=20260819-1', ss)
+                  sp.write_text(ss,encoding='utf-8')
+
+          # Source validation: 1400 koten + 300 kanbun, all ranks unique.
+          allrows=[]
+          for p in [root/f'koten-kanbun-bank-{i}.js' for i in range(1,6)]:
+              for line in p.read_text(encoding='utf-8').splitlines():
+                  q=line.strip().rstrip(',')
+                  if q.startswith('['):
+                      try: rr=json.loads(q)
+                      except Exception: continue
+                      if isinstance(rr,list) and len(rr)>=5 and isinstance(rr[0],int): allrows.append(rr)
+          assert len(allrows)==1700, len(allrows)
+          assert len({r[0] for r in allrows})==1700
+          assert sum(r[1]=='古文' for r in allrows)==1400
+          assert sum(r[1]=='漢文' for r in allrows)==300
+          et=ext.read_text(encoding='utf-8')
+          assert 'koten-kanbun-bank-5.js' in et and 'bank.length!==1700' in et and '古文1400・漢文300' in et
+          print('KOTEN_EXPANSION_OK total=1700 koten=1400 kanbun=300 new=700')
+          PY
+      - name: Commit expanded ancient-Japanese data
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add kokugo-chronologia
+          if git diff --cached --quiet; then
+            echo 'No changes to commit.'
+          else
+            git commit -m 'feat: expand koten bank from 700 to 1400'
+            git push origin HEAD:main
+          fi
