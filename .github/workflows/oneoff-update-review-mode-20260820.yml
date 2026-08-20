@@ -1,0 +1,69 @@
+name: One-off update grouped-frequency review card
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/oneoff-update-review-mode-20260820.yml'
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Update existing review card in place
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('review-bank-v1.js')
+          s = p.read_text(encoding='utf-8')
+          item_id = "math-grouped-frequency-class-mark-mean-median-20260820"
+          if s.count("id:'" + item_id + "'") != 1:
+              raise SystemExit('target review id missing or duplicated')
+          lines = s.splitlines()
+          replaced = False
+          for i, line in enumerate(lines):
+              if "id:'" + item_id + "'" in line:
+                  lines[i] = "  {id:'math-grouped-frequency-class-mark-mean-median-20260820',subject:'数学',unit:'資料の活用・度数分布表',title:'度数分布表：平均値・中央値・最頻値と階級値',question:'度数分布表で平均値・中央値・最頻値を求めるとき、階級値はどう使う？',answer:'平均値は、各階級の「階級値×度数」を合計して総度数で割って求めます。中央値は、中央値が入る階級が分かっても、その階級値をそのまま中央値としてよいとは限りません。最頻値は、度数が最も多い階級の階級値です。',why:'階級値は、その階級を代表する値です。平均値では各階級のデータを階級値で代表させて計算します。中央値はデータを小さい順に並べた中央の値なので、階級だけ分かっても実際の中央値は特定できないことがあります。一方、度数分布表での最頻値は、度数が最大の階級の階級値をその階級の代表値として用います。たとえば20以上30未満が最も度数の多い階級なら、階級値は(20+30)÷2=25なので最頻値は25です。',examples:['平均値＝Σ（階級値×度数）÷総度数','中央値が20以上30未満に入る → 中央値が25とは限らない','最も度数が多い階級が20以上30未満 → 階級値25 → 最頻値25'],memory:'平均値→階級値×度数／中央値→階級値とは限らない／最頻値→度数最大の階級の階級値',tags:['数学','資料の活用','度数分布表','階級値','平均値','中央値','最頻値','入試'],createdAt:'2026-08-20'},"
+                  replaced = True
+                  break
+          if not replaced:
+              raise SystemExit('target line not replaced')
+          s2 = '\n'.join(lines) + ('\n' if s.endswith('\n') else '')
+          oldv = "window.AA_REVIEW_BANK_VERSION='1.0.34';"
+          newv = "window.AA_REVIEW_BANK_VERSION='1.0.35';"
+          if s2.count(oldv) != 1:
+              raise SystemExit('unexpected review version')
+          s2 = s2.replace(oldv, newv)
+          p.write_text(s2, encoding='utf-8')
+          PY
+          node --check review-bank-v1.js
+          node scripts/validate-review-bank.mjs
+          grep -q "最頻値→度数最大の階級の階級値" review-bank-v1.js
+          grep -q "AA_REVIEW_BANK_VERSION='1.0.35'" review-bank-v1.js
+
+      - name: Commit review update and remove one-off workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/oneoff-update-review-mode-20260820.yml
+          git add review-bank-v1.js
+          git commit -m "Add mode to grouped-frequency review card"
+          git push origin main
+
+      - name: Dispatch Pages deployment for updated main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method POST \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${GITHUB_REPOSITORY}/actions/workflows/deploy-pages.yml/dispatches" \
+            -f ref=main
