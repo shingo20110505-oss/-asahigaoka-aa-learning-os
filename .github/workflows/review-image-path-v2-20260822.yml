@@ -1,0 +1,64 @@
+name: Update review image path v2 20260822
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/review-image-path-v2-20260822.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-review-bank:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Sync latest main
+        run: git pull --ff-only origin main
+
+      - name: Update image path and version safely
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path=Path('review-bank-v1.js')
+          s=path.read_text(encoding='utf-8')
+          item_id='ja-kanbun-kuchi-ji-atawazu-20260822'
+          old="assets/20260822-kobun-kuchi-atawazu.jpg"
+          new="assets/20260822-kobun-kuchi-atawazu-v2.jpg"
+          old_version="window.AA_REVIEW_BANK_VERSION='1.0.41';"
+          new_version="window.AA_REVIEW_BANK_VERSION='1.0.42';"
+          if s.count(item_id) != 1:
+              raise SystemExit('Target review ID missing or duplicated')
+          if s.count(old) != 1:
+              raise SystemExit('Expected old image path exactly once')
+          if old_version not in s:
+              raise SystemExit('Expected review version 1.0.41 not found')
+          if not Path('review/assets/20260822-kobun-kuchi-atawazu-v2.jpg').is_file():
+              raise SystemExit('New image file missing')
+          s=s.replace(old,new,1)
+          s=s.replace(old_version,new_version,1)
+          path.write_text(s,encoding='utf-8')
+          out=path.read_text(encoding='utf-8')
+          if out.count(item_id)!=1 or out.count(new)!=1 or new_version not in out:
+              raise SystemExit('Post-update validation failed')
+          if "id:'sci-kanji-haihou-20260822'" not in out:
+              raise SystemExit('Existing latest review item disappeared')
+          print('review image path v2 validated')
+          PY
+
+      - name: Commit review-bank update
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add review-bank-v1.js
+          git diff --cached --check
+          git commit -m 'Use cache-safe v2 image in review card'
+          git pull --rebase origin main
+          git push origin HEAD:main
