@@ -1,0 +1,67 @@
+name: Append Review Cards 2026-08-22
+
+on:
+  push:
+    paths:
+      - '.github/workflows/append-review-20260822.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  append-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Append today's efficient review cards
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('review-bank-v1.js')
+          s = p.read_text(encoding='utf-8')
+          expected_version = "window.AA_REVIEW_BANK_VERSION='1.0.38';"
+          new_version = "window.AA_REVIEW_BANK_VERSION='1.0.39';"
+          if expected_version not in s:
+              raise SystemExit('Unexpected review bank version; aborting safely')
+          ids = [
+              'ja-koten-aux-keri-20260822',
+              'ja-koten-aux-ki-20260822',
+              'ja-koten-aux-tari-perfective-20260822',
+              'ja-koten-nu-distinction-20260822',
+              'ja-koten-aux-mu-20260822',
+              'ja-koten-no-distinction-20260822',
+              'ja-koten-ba-distinction-20260822',
+          ]
+          dup = [x for x in ids if f"id:'{x}'" in s]
+          if dup:
+              raise SystemExit('Duplicate review IDs found: ' + ', '.join(dup))
+          items = r"""
+  {id:'ja-koten-aux-keri-20260822',subject:'国語',unit:'古文・助動詞',title:'助動詞「けり」：接続・活用・過去／詠嘆',question:'古文の助動詞「けり」は何形に接続し、どんな意味を表す？ また活用は？',answer:'連用形に接続します。意味は主に過去「〜た」と詠嘆「〜だなあ・〜ことよ」。活用は「けら／○／けり／ける／けれ／○」です。',why:'「けり」は過去の事実を述べるほか、あとから気づいたことや強い感動を詠嘆として表します。まず直前が連用形かを確認し、文末や和歌などで感動がこもるときは詠嘆を疑うと判別しやすいです。',examples:['昔、男ありけり。→ 昔、男がいた。','花の色は美しかりけり。→ 花の色は美しかったなあ。','接続：連用形／活用：けら・○・けり・ける・けれ・○'],memory:'けり＝連用形接続／過去「〜た」・詠嘆「〜だなあ」／けら○けりけるけれ○',tags:['国語','古文','助動詞','けり','過去','詠嘆','接続','活用'],createdAt:'2026-08-22'},
+  {id:'ja-koten-aux-ki-20260822',subject:'国語',unit:'古文・助動詞',title:'助動詞「き」：直接経験の過去',question:'古文の助動詞「き」は何形に接続し、どんな意味を表す？ 活用は？',answer:'連用形に接続し、過去「〜た」を表します。特に話し手が直接経験したこと・回想を述べるときに使われます。活用は「せ／○／き／し／しか／○」です。',why:'「き」も「けり」も過去ですが、「き」は自分が実際に経験した過去を回想する感覚が強いのがポイントです。連体形「し」、已然形「しか」が入試でよく問われます。',examples:['昨日見し花 → 昨日見た花','われ、昔ここに来しか。→ 私は昔ここに来たのだったか。','活用：せ・○・き・し・しか・○'],memory:'き＝連用形接続／直接経験の過去／せ○きししか○',tags:['国語','古文','助動詞','き','過去','直接経験','接続','活用'],createdAt:'2026-08-22'},
+  {id:'ja-koten-aux-tari-perfective-20260822',subject:'国語',unit:'古文・助動詞',title:'完了・存続の助動詞「たり」',question:'完了・存続の助動詞「たり」は何形に接続し、どう訳し分ける？',answer:'連用形に接続します。完了なら「〜た・〜てしまった」、存続なら「〜ている・〜てある」と訳します。活用は「たら／たり／たり／たる／たれ／たれ」です。',why:'動作が終わったことに重点があれば完了、終わった結果の状態が続いていることに重点があれば存続です。文脈を見て「〜た」で自然か「〜ている」で自然かを試すと判別しやすいです。',examples:['戸を閉ぢたり。→ 戸を閉めた。（完了）','花咲きたり。→ 花が咲いている。（存続）','活用：たら・たり・たり・たる・たれ・たれ'],memory:'たり＝連用形接続／完了「〜た」・存続「〜ている」／たらたりたりたるたれたれ',tags:['国語','古文','助動詞','たり','完了','存続','接続','活用'],createdAt:'2026-08-22'},
+  {id:'ja-koten-nu-distinction-20260822',subject:'国語',unit:'古文・助動詞判別',title:'「ぬ」の判別：完了の「ぬ」か打消の「ず」か',question:'古文で「ぬ」が出たとき、完了の助動詞「ぬ」と打消の助動詞「ず」の連体形「ぬ」をどう見分ける？',answer:'直前の語の活用形で見分けます。連用形＋ぬなら完了「〜た・〜てしまった」。未然形＋ぬなら打消「〜ない」の「ず」の連体形です。',why:'完了の「ぬ」は連用形接続、打消の「ず」は未然形接続だからです。たとえば「花散りぬ」の「散り」は連用形なので完了。「咲かぬ花」の「咲か」は未然形なので打消です。',examples:['花散りぬ。→ 花が散ってしまった。（散り＝連用形→完了）','咲かぬ花 → 咲かない花（咲か＝未然形→打消）','完了「ぬ」の活用：な・に・ぬ・ぬる・ぬれ・ね'],memory:'ぬ判別＝直前を見る！ 連用形＋ぬ→完了／未然形＋ぬ→打消',tags:['国語','古文','ぬ','完了','打消','ず','判別','連用形','未然形'],createdAt:'2026-08-22'},
+  {id:'ja-koten-aux-mu-20260822',subject:'国語',unit:'古文・助動詞',title:'助動詞「む」：主語で意味を絞る',question:'古文の助動詞「む」は何形に接続し、意味はどう判別すると効率的？',answer:'未然形に接続します。基本は、1人称主語なら意志「〜しよう」、2人称なら勧誘・適当「〜するのがよい」、3人称なら推量「〜だろう」をまず考えます。連体形で名詞を修飾するときは婉曲「〜ような」も重要です。活用は「○／○／む／む／め／○」。',why:'「む」は意味が多いので丸暗記より主語と文の形で絞る方が速いです。話し手自身なら意志、相手への働きかけなら勧誘・適当、第三者や未来の事柄なら推量が基本。名詞にかかる「む」は婉曲を疑います。',examples:['われ行かむ。→ 私は行こう。（意志）','君も行かむ。→ あなたも行くのがよい／行こう。（勧誘・適当）','雨降らむ。→ 雨が降るだろう。（推量）','来む人 → 来るような人（婉曲）'],memory:'む＝未然形接続／1人称→意志・2人称→勧誘適当・3人称→推量・名詞修飾→婉曲',tags:['国語','古文','助動詞','む','推量','意志','勧誘','適当','婉曲','未然形'],createdAt:'2026-08-22'},
+  {id:'ja-koten-no-distinction-20260822',subject:'国語',unit:'古文・助詞判別',title:'古文の「の」：主格か連体修飾かを判別',question:'古文の格助詞「の」は、主格「〜が」と連体修飾「〜の」をどう見分ける？',answer:'「の」の直後を見るのがコツです。後ろに名詞が続き、その名詞との所有・所属・性質の関係が自然なら「〜の」。後ろに述語が続き、「の」の前の名詞がその動作・状態の主語になるなら「〜が」と訳す主格を考えます。',why:'古文の「の」には現代語の「〜の」だけでなく、主格「〜が」の用法があります。「誰が／何が〜する・〜である」と置き換えて自然かを確認すると判別しやすくなります。',examples:['月の光 → 月の光（連体修飾）','鳥の鳴く声 → 鳥が鳴く声（主格）','人の言ふこと → 人が言うこと（主格）'],memory:'「の」の後ろを見る／名詞との関係→「〜の」／述語の主語になる→「〜が」',tags:['国語','古文','助詞','の','格助詞','主格','連体修飾','判別'],createdAt:'2026-08-22'},
+  {id:'ja-koten-ba-distinction-20260822',subject:'国語',unit:'古文・接続助詞',title:'「ば」の判別：未然形＋ば／已然形＋ば',question:'古文の接続助詞「ば」は、未然形接続と已然形接続で意味がどう変わる？',answer:'未然形＋ばは仮定条件「もし〜ならば」。已然形＋ばは確定条件で「〜ので・〜と・〜ところ」などと訳します。',why:'古文の「ば」は直前の活用形で意味が決まります。まだ起きていない仮定なら未然形、すでに成立している事実を受けるなら已然形です。入試では「ば」を見たらまず直前の活用形を判定します。',examples:['行かば → もし行くならば（行か＝未然形）','春になれば、花咲く。→ 春になると花が咲く。（なれ＝已然形）','雨降れば、出でず。→ 雨が降るので、出かけない。（降れ＝已然形）'],memory:'ば＝直前！ 未然形＋ば→もし〜ならば／已然形＋ば→〜ので・〜と',tags:['国語','古文','接続助詞','ば','未然形','已然形','仮定条件','確定条件','判別'],createdAt:'2026-08-22'},
+"""
+          marker = "\n];\nfunction normalize"
+          if marker not in s:
+              raise SystemExit('Review bank insertion marker not found')
+          s = s.replace(marker, "\n" + items.rstrip() + marker, 1)
+          s = s.replace(expected_version, new_version, 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit review bank update
+        shell: bash
+        run: |
+          if git diff --quiet -- review-bank-v1.js; then
+            echo 'No change detected'; exit 1
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add review-bank-v1.js
+          git commit -m 'Add efficient classical Japanese review for 2026-08-22'
+          git push origin HEAD:main
