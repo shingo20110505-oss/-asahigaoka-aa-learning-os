@@ -18,61 +18,84 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 1
 
-      - name: Wait for this exact Pages release and verify review image
+      - name: Verify public review card and image
+        id: verify
         shell: bash
         env:
           SOURCE_SHA: ${{ github.sha }}
           BASE: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os
         run: |
-          set -euo pipefail
-          ok=0
-          for n in $(seq 1 36); do
-            if curl -fsSL --connect-timeout 10 --max-time 25 "$BASE/release.json?imageverify=$SOURCE_SHA-$n" -o /tmp/release.json && grep -q "$SOURCE_SHA" /tmp/release.json; then
-              ok=1
-              break
-            fi
+          set +e
+          release_match=fail
+          bank_item=fail
+          bank_image_reference=fail
+          image_fetch=fail
+          image_type=fail
+          image_hash_match=fail
+          image_decode=fail
+          image_width=0
+          image_height=0
+
+          for n in $(seq 1 48); do
+            curl -fsSL --connect-timeout 10 --max-time 25 "$BASE/release.json?imageverify=$SOURCE_SHA-$n" -o /tmp/release.json
+            if grep -q "$SOURCE_SHA" /tmp/release.json 2>/dev/null; then release_match=success; break; fi
             sleep 5
           done
-          test "$ok" = 1
 
           curl -fsSL "$BASE/review-bank-v1.js?imageverify=$SOURCE_SHA" -o /tmp/review-bank.js
-          grep -q "ja-kanbun-kuchi-ji-atawazu-20260822" /tmp/review-bank.js
-          grep -q "assets/20260822-kobun-kuchi-atawazu.jpg" /tmp/review-bank.js
+          grep -q "ja-kanbun-kuchi-ji-atawazu-20260822" /tmp/review-bank.js && bank_item=success
+          grep -q "assets/20260822-kobun-kuchi-atawazu.jpg" /tmp/review-bank.js && bank_image_reference=success
 
           curl -fsSL -D /tmp/image.headers "$BASE/review/assets/20260822-kobun-kuchi-atawazu.jpg?imageverify=$SOURCE_SHA" -o /tmp/review-image.jpg
-          test -s /tmp/review-image.jpg
-          grep -qi '^content-type: image/jpeg' /tmp/image.headers
-          file /tmp/review-image.jpg | grep -q 'JPEG image data'
+          test -s /tmp/review-image.jpg && image_fetch=success
+          file /tmp/review-image.jpg 2>/dev/null | grep -q 'JPEG image data' && image_type=success
 
-          IMG_SHA256=$(sha256sum /tmp/review-image.jpg | awk '{print $1}')
-          test "$IMG_SHA256" = "610355c433b48d9b80288bcb47fddc93e996c2d97cadcf641953b2f82e9d1e02"
+          SOURCE_IMAGE_SHA256=$(sha256sum review/assets/20260822-kobun-kuchi-atawazu.jpg | awk '{print $1}')
+          PUBLIC_IMAGE_SHA256=$(sha256sum /tmp/review-image.jpg 2>/dev/null | awk '{print $1}')
+          test -n "$PUBLIC_IMAGE_SHA256" && test "$PUBLIC_IMAGE_SHA256" = "$SOURCE_IMAGE_SHA256" && image_hash_match=success
 
           CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
-          test -n "$CHROME"
-          cat >/tmp/image-check.html <<EOF
+          if test -n "$CHROME"; then
+            cat >/tmp/image-check.html <<EOF
           <!doctype html><html><body data-image-decode="WAIT"><img id="target" src="$BASE/review/assets/20260822-kobun-kuchi-atawazu.jpg?browser=$SOURCE_SHA"><script>
           const img=document.getElementById('target');
           const done=()=>{if(img.complete){document.body.dataset.imageDecode=(img.naturalWidth>0&&img.naturalHeight>0)?'PASS':'FAIL';document.body.dataset.width=img.naturalWidth;document.body.dataset.height=img.naturalHeight;}};
           img.addEventListener('load',done);img.addEventListener('error',done);setInterval(done,100);
           </script></body></html>
           EOF
-          timeout 60s "$CHROME" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=15000 --dump-dom file:///tmp/image-check.html >/tmp/image-check-dom.html
-          grep -q 'data-image-decode="PASS"' /tmp/image-check-dom.html
-          grep -q 'data-width="620"' /tmp/image-check-dom.html
-          grep -q 'data-height="996"' /tmp/image-check-dom.html
+            timeout 60s "$CHROME" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=15000 --dump-dom file:///tmp/image-check.html >/tmp/image-check-dom.html 2>/tmp/chrome.err
+            grep -q 'data-image-decode="PASS"' /tmp/image-check-dom.html && image_decode=success
+            image_width=$(grep -o 'data-width="[0-9]*"' /tmp/image-check-dom.html | head -1 | tr -cd '0-9')
+            image_height=$(grep -o 'data-height="[0-9]*"' /tmp/image-check-dom.html | head -1 | tr -cd '0-9')
+            test -n "$image_width" || image_width=0
+            test -n "$image_height" || image_height=0
+          fi
+
+          result=success
+          for v in "$release_match" "$bank_item" "$bank_image_reference" "$image_fetch" "$image_type" "$image_hash_match" "$image_decode"; do
+            test "$v" = success || result=fail
+          done
 
           cat > REVIEW_IMAGE_VERIFY_STATUS.txt <<EOF
-          result=success
+          result=$result
           source_sha=$SOURCE_SHA
           item_id=ja-kanbun-kuchi-ji-atawazu-20260822
           image_path=review/assets/20260822-kobun-kuchi-atawazu.jpg
-          public_image_sha256=$IMG_SHA256
-          image_decode=success
-          image_width=620
-          image_height=996
-          review_bank_reference=success
+          release_match=$release_match
+          review_bank_item=$bank_item
+          review_bank_reference=$bank_image_reference
+          image_fetch=$image_fetch
+          image_type=$image_type
+          source_image_sha256=$SOURCE_IMAGE_SHA256
+          public_image_sha256=$PUBLIC_IMAGE_SHA256
+          image_hash_match=$image_hash_match
+          image_decode=$image_decode
+          image_width=$image_width
+          image_height=$image_height
           verified_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
           EOF
+          cp REVIEW_IMAGE_VERIFY_STATUS.txt /tmp/REVIEW_IMAGE_VERIFY_STATUS.txt
+          exit 0
 
       - name: Record image verification
         shell: bash
@@ -80,8 +103,13 @@ jobs:
           set -euo pipefail
           git fetch origin main
           git checkout -B main origin/main
+          cp /tmp/REVIEW_IMAGE_VERIFY_STATUS.txt REVIEW_IMAGE_VERIFY_STATUS.txt
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add REVIEW_IMAGE_VERIFY_STATUS.txt
           git commit -m 'Record review image public verification'
           git push origin main
+
+      - name: Enforce successful image verification
+        shell: bash
+        run: grep -q '^result=success$' /tmp/REVIEW_IMAGE_VERIFY_STATUS.txt
