@@ -1,0 +1,77 @@
+name: Add prefecture area rankings to review bank
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-review-prefecture-area-20260823.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  add-review-items:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Verify exact review source and append items
+        shell: bash
+        run: |
+          set -euo pipefail
+          actual_blob="$(git rev-parse HEAD:review-bank-v1.js)"
+          test "$actual_blob" = "8efb0553488fdd00463e00eacedf13eb81a42d5c"
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('review-bank-v1.js')
+          s = p.read_text(encoding='utf-8')
+          old_version = "window.AA_REVIEW_BANK_VERSION='1.0.44';"
+          new_version = "window.AA_REVIEW_BANK_VERSION='1.0.45';"
+          ids = [
+              'soc-prefecture-area-small-ranking-20260823',
+              'soc-prefecture-area-large-ranking-20260823',
+          ]
+          if old_version not in s:
+              raise SystemExit('Expected review bank version 1.0.44 not found')
+          for item_id in ids:
+              if item_id in s:
+                  raise SystemExit(f'Duplicate review id: {item_id}')
+          marker = "];\nfunction normalize"
+          if marker not in s:
+              raise SystemExit('Review-bank insertion marker not found')
+          additions = """  {id:'soc-prefecture-area-small-ranking-20260823',subject:'社会',unit:'地理・都道府県',title:'面積が小さい都道府県ランキング',question:'日本の都道府県を面積が小さい順に4つ答えなさい。沖縄県は何番目に小さい？',answer:'小さい順は、1位 香川県、2位 大阪府、3位 東京都、4位 沖縄県。したがって沖縄県は4番目に小さい。',why:'国土地理院の令和8年（2026年）1月1日現在の都道府県別面積では、香川県1,876.83km²、大阪府1,905.26km²、東京都2,199.94km²、沖縄県2,282.11km²の順に小さい。',examples:['1番小さい → 香川県','2番目 → 大阪府','3番目 → 東京都','4番目 → 沖縄県'],memory:'小さい順＝香川→大阪→東京→沖縄。沖縄は4番目',tags:['社会','地理','都道府県','面積','香川県','大阪府','東京都','沖縄県','ランキング'],createdAt:'2026-08-23'},
+  {id:'soc-prefecture-area-large-ranking-20260823',subject:'社会',unit:'地理・都道府県',title:'面積が大きい都道府県ランキング',question:'日本の都道府県を面積が大きい順に5つ答えなさい。',answer:'大きい順は、1位 北海道、2位 岩手県、3位 福島県、4位 長野県、5位 新潟県。',why:'国土地理院の令和8年（2026年）1月1日現在の都道府県別面積では、北海道83,422.27km²、岩手県15,275.05km²、福島県13,784.41km²、長野県13,561.57km²、新潟県12,583.80km²の順。',examples:['1位 → 北海道','2位 → 岩手県','3位 → 福島県','4位 → 長野県','5位 → 新潟県'],memory:'大きい順＝北海道→岩手→福島→長野→新潟',tags:['社会','地理','都道府県','面積','北海道','岩手県','福島県','長野県','新潟県','ランキング'],createdAt:'2026-08-23'},
+"""
+          s = s.replace(marker, additions + marker, 1)
+          s = s.replace(old_version, new_version, 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+          grep -F "soc-prefecture-area-small-ranking-20260823" review-bank-v1.js
+          grep -F "soc-prefecture-area-large-ranking-20260823" review-bank-v1.js
+          grep -F "window.AA_REVIEW_BANK_VERSION='1.0.45';" review-bank-v1.js
+          sha256sum review-bank-v1.js
+
+      - name: Commit review bank update
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add review-bank-v1.js
+          git commit -m "Add prefecture area rankings to review bank"
+          git push origin HEAD:main
+
+      - name: Dispatch Pages deployment for updated main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          sleep 3
+          gh workflow run deploy-pages.yml --ref main
