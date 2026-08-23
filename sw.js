@@ -1,5 +1,5 @@
 'use strict';
-const VERSION='2.5.303-study-timer-20260823';
+const VERSION='2.5.303-quality2-chronologia1000-storage-guard-20260816-kokugo-direct-ja-study-timer-20260823';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;
