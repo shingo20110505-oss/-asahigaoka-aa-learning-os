@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <defs>
+    <style>
+      .bg{fill:#f7f9fc}.card{fill:#fff;stroke:#dbe3ee;stroke-width:2}.title{font:700 46px system-ui,-apple-system,"Hiragino Sans","Yu Gothic",sans-serif;fill:#172033}.sub{font:600 26px system-ui,-apple-system,"Hiragino Sans","Yu Gothic",sans-serif;fill:#44506a}.label{font:700 28px system-ui,-apple-system,"Hiragino Sans","Yu Gothic",sans-serif;fill:#172033}.small{font:500 22px system-ui,-apple-system,"Hiragino Sans","Yu Gothic",sans-serif;fill:#44506a}.seg{font:700 19px system-ui,-apple-system,"Hiragino Sans","Yu Gothic",sans-serif;fill:#172033}.segw{font:700 19px system-ui,-apple-system,"Hiragino Sans","Yu Gothic",sans-serif;fill:#fff}.note{font:700 23px system-ui,-apple-system,"Hiragino Sans","Yu Gothic",sans-serif;fill:#25324b}.source{font:500 17px system-ui,-apple-system,"Hiragino Sans","Yu Gothic",sans-serif;fill:#6d7890}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="1600"/>
+  <rect class="card" x="55" y="45" rx="28" ry="28" width="1090" height="1510"/>
+  <text class="title" x="100" y="120">主要な鉱産資源の生産割合</text>
+  <text class="sub" x="100" y="165">最大生産国と割合を、グラフでまとめて覚える</text>
+  <line x1="350" y1="220" x2="1050" y2="220" stroke="#9aa8bd" stroke-width="2"/>
+  <text class="small" x="340" y="210">0</text><text class="small" x="690" y="210">50</text><text class="small" x="1020" y="210">100%</text>
+
+  <!-- Cobalt -->
+  <text class="label" x="100" y="300">コバルト</text><text class="small" x="100" y="338">16.6万t（2022年）</text>
+  <g transform="translate(350 265)">
+    <rect x="0" y="0" width="469" height="95" fill="#2f6fed"/>
+    <rect x="469" y="0" width="38" height="95" fill="#90b1f8"/>
+    <rect x="507" y="0" width="25" height="95" fill="#b7caf6"/>
+    <rect x="532" y="0" width="20" height="95" fill="#d1dcf4"/>
+    <rect x="552" y="0" width="148" height="95" fill="#edf1f7"/>
+    <text class="segw" x="235" y="39" text-anchor="middle">コンゴ民主共和国</text><text class="segw" x="235" y="68" text-anchor="middle">67.0%</text>
+    <text class="seg" x="626" y="39" text-anchor="middle">その他</text><text class="seg" x="626" y="68" text-anchor="middle">21.3</text>
+  </g>
+  <text class="small" x="815" y="388">ロシア 5.4 ／ オーストラリア 3.5 ／ フィリピン 2.8</text>
+
+  <!-- Platinum -->
+  <text class="label" x="100" y="490">プラチナ</text><text class="small" x="100" y="528">192t（2021年）</text>
+  <g transform="translate(350 455)">
+    <rect x="0" y="0" width="517" height="95" fill="#8b5cf6"/>
+    <rect x="517" y="0" width="76" height="95" fill="#b8a0fa"/>
+    <rect x="593" y="0" width="54" height="95" fill="#d0c4fb"/>
+    <rect x="647" y="0" width="53" height="95" fill="#eeeafd"/>
+    <text class="segw" x="259" y="39" text-anchor="middle">南アフリカ共和国</text><text class="segw" x="259" y="68" text-anchor="middle">73.8%</text>
+  </g>
+  <text class="small" x="815" y="578">ロシア 10.9 ／ ジンバブエ 7.7 ／ その他 7.6</text>
+
+  <!-- Diamond -->
+  <text class="label" x="100" y="680">ダイヤモンド</text><text class="small" x="100" y="718">1億700万カラット（2020年）</text>
+  <g transform="translate(350 645)">
+    <rect x="0" y="0" width="204" height="95" fill="#0ea5a6"/>
+    <rect x="204" y="0" width="111" height="95" fill="#54c5c6"/>
+    <rect x="315" y="0" width="85" height="95" fill="#82d7d8"/>
+    <rect x="400" y="0" width="83" height="95" fill="#a9e5e5"/>
+    <rect x="483" y="0" width="71" height="95" fill="#c8eeee"/>
+    <rect x="554" y="0" width="146" height="95" fill="#eaf6f6"/>
+    <text class="segw" x="102" y="39" text-anchor="middle">ロシア</text><text class="segw" x="102" y="68" text-anchor="middle">29.2%</text>
+    <text class="seg" x="627" y="39" text-anchor="middle">その他</text><text class="seg" x="627" y="68" text-anchor="middle">20.6</text>
+  </g>
+  <text class="small" x="470" y="768">ボツワナ 15.9 ／ カナダ 12.2 ／ コンゴ民主共和国 11.9 ／ オーストラリア 10.2</text>
+
+  <!-- Chromium -->
+  <text class="label" x="100" y="870">クロム</text><text class="small" x="100" y="908">4220万t（2021年）</text>
+  <g transform="translate(350 835)">
+    <rect x="0" y="0" width="308" height="95" fill="#f59e0b"/>
+    <rect x="308" y="0" width="116" height="95" fill="#f8bd55"/>
+    <rect x="424" y="0" width="108" height="95" fill="#f9cf83"/>
+    <rect x="532" y="0" width="71" height="95" fill="#fbe0ad"/>
+    <rect x="603" y="0" width="97" height="95" fill="#fdf1d9"/>
+    <text class="segw" x="154" y="39" text-anchor="middle">南アフリカ共和国</text><text class="segw" x="154" y="68" text-anchor="middle">44.0%</text>
+  </g>
+  <text class="small" x="545" y="958">トルコ 16.5 ／ カザフスタン 15.4 ／ インド 10.1 ／ その他 14.0</text>
+
+  <rect x="100" y="1040" width="1000" height="335" rx="24" fill="#f1f5fb" stroke="#dbe3ee" stroke-width="2"/>
+  <text class="label" x="140" y="1100">覚えるポイント</text>
+  <text class="note" x="145" y="1160">① コバルト → コンゴ民主共和国が 67.0% で圧倒的</text>
+  <text class="note" x="145" y="1215">② プラチナ → 南アフリカ共和国が 73.8% で圧倒的</text>
+  <text class="note" x="145" y="1270">③ ダイヤモンド → ロシアが 29.2% で最大</text>
+  <text class="note" x="145" y="1325">④ クロム → 南アフリカ共和国が 44.0% で最大</text>
+
+  <text class="small" x="100" y="1440">語呂：コバルト＝コンゴ ／ プラチナ・クロム＝南ア ／ ダイヤ＝ロシア</text>
+  <text class="source" x="1090" y="1510" text-anchor="end">『世界国勢図会』2023/24年版による</text>
+</svg>
