@@ -75,3 +75,5 @@ jobs:
           set -euo pipefail
           sleep 3
           gh workflow run deploy-pages.yml --ref main
+
+# trigger registered workflow
