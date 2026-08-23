@@ -1,0 +1,85 @@
+name: Add mineral resources review card
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.add-review-mineral-resources-20260823-trigger'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: add-review-mineral-resources-20260823
+  cancel-in-progress: false
+
+jobs:
+  add-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Add review item safely
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, hashlib, subprocess
+
+          path = Path('review-bank-v1.js')
+          text = path.read_text(encoding='utf-8')
+          target_id = 'soc-mineral-resources-production-share-20260823'
+          print('before_blob_sha=', subprocess.check_output(['git','hash-object',str(path)], text=True).strip())
+          print('before_sha256=', hashlib.sha256(text.encode()).hexdigest())
+
+          if f"id:'{target_id}'" in text:
+              print('target already present; no mutation needed')
+              raise SystemExit(0)
+
+          item = """  {id:'soc-mineral-resources-production-share-20260823',subject:'社会',unit:'地理・鉱産資源',title:'鉱産資源の生産国：コバルト・プラチナ・ダイヤモンド・クロム',question:'図を見て、コバルト・プラチナ・ダイヤモンド・クロムの最大生産国をそれぞれ答えなさい。あわせて、特に割合が高いものはおよその割合も答えよう。',image:'assets/20260823-mineral-resources-production-v1.svg',imageAlt:'主要な鉱産資源の生産割合を見やすく再構成した学習用グラフ。コバルト、プラチナ、ダイヤモンド、クロムの国別生産割合と覚えるポイントを示す。',answer:'コバルト＝コンゴ民主共和国（67.0%）、プラチナ＝南アフリカ共和国（73.8%）、ダイヤモンド＝ロシア（29.2%）、クロム＝南アフリカ共和国（44.0%）。',why:'最大生産国を資源ごとにセットで覚える。コバルトはコンゴ民主共和国が約3分の2、プラチナは南アフリカ共和国が約4分の3で特に集中度が高い。クロムも南アフリカ共和国が最大で、ダイヤモンドはロシアが最大。入試では「資源名→代表的な生産国」の対応を地図や地域と結びつけて問われやすい。',examples:['コバルト → コンゴ民主共和国 67.0%','プラチナ → 南アフリカ共和国 73.8%','ダイヤモンド → ロシア 29.2%','クロム → 南アフリカ共和国 44.0%','語呂：コバルト＝コンゴ／プラチナ・クロム＝南ア／ダイヤ＝ロシア'],memory:'コバルト＝コンゴ、プラチナ・クロム＝南ア、ダイヤ＝ロシア',tags:['社会','地理','鉱産資源','コバルト','プラチナ','ダイヤモンド','クロム','コンゴ民主共和国','南アフリカ共和国','ロシア','生産割合','入試'],createdAt:'2026-08-23'},
+"""
+
+          marker = "\n];\nfunction normalize"
+          if marker not in text:
+              raise SystemExit('review bank end marker not found')
+          text = text.replace(marker, "\n" + item + "];\nfunction normalize", 1)
+
+          m = re.search(r"window\.AA_REVIEW_BANK_VERSION='(\d+)\.(\d+)\.(\d+)';", text)
+          if not m:
+              raise SystemExit('AA_REVIEW_BANK_VERSION not found')
+          old_version = '.'.join(m.groups())
+          new_version = f"{m.group(1)}.{m.group(2)}.{int(m.group(3))+1}"
+          text = text[:m.start()] + f"window.AA_REVIEW_BANK_VERSION='{new_version}';" + text[m.end():]
+
+          ids = re.findall(r"\bid:'([^']+)'", text)
+          if len(ids) != len(set(ids)):
+              dupes = sorted({x for x in ids if ids.count(x) > 1})
+              raise SystemExit(f'duplicate review ids: {dupes}')
+          if ids.count(target_id) != 1:
+              raise SystemExit('target id count is not exactly one')
+          if "image:'assets/20260823-mineral-resources-production-v1.svg'" not in text:
+              raise SystemExit('image reference missing')
+
+          path.write_text(text, encoding='utf-8')
+          print('version', old_version, '->', new_version)
+          print('review_count=', len(ids))
+          print('after_sha256=', hashlib.sha256(text.encode()).hexdigest())
+          PY
+
+      - name: Commit review bank update
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- review-bank-v1.js; then
+            echo 'No review bank change to commit.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add review-bank-v1.js
+          git commit -m 'Add mineral resources production review card'
+          git push origin HEAD:main
