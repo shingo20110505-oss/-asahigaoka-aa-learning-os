@@ -1,10 +1,8 @@
 name: Add prefecture area rankings to review bank
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/add-review-prefecture-area-20260823.yml'
+  issues:
+    types: [opened]
   workflow_dispatch:
 
 permissions:
@@ -13,6 +11,7 @@ permissions:
 
 jobs:
   add-review-items:
+    if: github.event_name == 'workflow_dispatch' || github.event.issue.title == '[review-add] prefecture-area-20260823'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
@@ -75,5 +74,3 @@ jobs:
           set -euo pipefail
           sleep 3
           gh workflow run deploy-pages.yml --ref main
-
-# trigger registered workflow
