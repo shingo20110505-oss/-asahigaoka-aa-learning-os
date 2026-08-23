@@ -99,3 +99,12 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   s.async=false;
   document.head.appendChild(s);
 })();
+
+(()=>{
+  if(document.getElementById('aa-study-timer-v1-loader'))return;
+  const s=document.createElement('script');
+  s.id='aa-study-timer-v1-loader';
+  s.src='./study-timer-v1.js?v=1.0.0-20260823';
+  s.async=false;
+  document.head.appendChild(s);
+})();
