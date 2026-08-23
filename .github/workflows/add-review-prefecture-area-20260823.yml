@@ -1,17 +1,20 @@
 name: Add prefecture area rankings to review bank
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.review-trigger-prefecture-20260823'
   issues:
     types: [opened]
   workflow_dispatch:
 
 permissions:
   contents: write
-  actions: write
 
 jobs:
   add-review-items:
-    if: github.event_name == 'workflow_dispatch' || github.event.issue.title == '[review-add] prefecture-area-20260823'
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.event.issue.title == '[review-add] prefecture-area-20260823'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
@@ -56,7 +59,7 @@ jobs:
           grep -F "window.AA_REVIEW_BANK_VERSION='1.0.45';" review-bank-v1.js
           sha256sum review-bank-v1.js
 
-      - name: Commit review bank update
+      - name: Commit and push review bank update safely
         shell: bash
         run: |
           set -euo pipefail
@@ -64,13 +67,13 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add review-bank-v1.js
           git commit -m "Add prefecture area rankings to review bank"
-          git push origin HEAD:main
-
-      - name: Dispatch Pages deployment for updated main
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          sleep 3
-          gh workflow run deploy-pages.yml --ref main
+          pushed=0
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then
+              pushed=1
+              break
+            fi
+            sleep 3
+          done
+          test "$pushed" = "1"
