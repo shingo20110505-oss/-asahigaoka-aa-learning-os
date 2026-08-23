@@ -1,4 +1,4 @@
-name: Add mineral resources review once
+name: Verify mineral resources review image 20260823
 
 on:
   push:
@@ -10,79 +10,121 @@ permissions:
   contents: write
 
 jobs:
-  add-mineral-review:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
-          fetch-depth: 0
+          ref: ${{ github.sha }}
+          fetch-depth: 1
 
-      - name: Update canonical review bank safely
+      - name: Verify public mineral review card and image
+        id: verify
+        shell: bash
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          BASE: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os
+          IMAGE_PATH: review/assets/20260823-mineral-resources-production-v1.svg
+          BANK_IMAGE_PATH: assets/20260823-mineral-resources-production-v1.svg
+          ITEM_ID: soc-mineral-resources-production-share-20260823
+          EXPECTED_WIDTH: '1200'
+          EXPECTED_HEIGHT: '1600'
+        run: |
+          set +e
+          release_match=fail
+          bank_item=fail
+          bank_image_reference=fail
+          image_fetch=fail
+          image_type=fail
+          image_xml=fail
+          image_hash_match=fail
+          image_decode=fail
+          image_dimensions=fail
+          image_width=0
+          image_height=0
+
+          for n in $(seq 1 60); do
+            curl -fsSL --connect-timeout 10 --max-time 25 "$BASE/release.json?mineralverify=$SOURCE_SHA-$n" -o /tmp/release.json
+            if grep -q "$SOURCE_SHA" /tmp/release.json 2>/dev/null; then release_match=success; break; fi
+            sleep 5
+          done
+
+          curl -fsSL "$BASE/review-bank-v1.js?mineralverify=$SOURCE_SHA" -o /tmp/review-bank.js
+          grep -q "$ITEM_ID" /tmp/review-bank.js && bank_item=success
+          grep -q "$BANK_IMAGE_PATH" /tmp/review-bank.js && bank_image_reference=success
+
+          curl -fsSL -D /tmp/image.headers "$BASE/$IMAGE_PATH?mineralverify=$SOURCE_SHA" -o /tmp/review-image.svg
+          test -s /tmp/review-image.svg && image_fetch=success
+          grep -q '<svg' /tmp/review-image.svg && image_type=success
+          python3 - <<'PY' && image_xml=success
+          import xml.etree.ElementTree as ET
+          ET.parse('/tmp/review-image.svg')
+          PY
+
+          SOURCE_IMAGE_SHA256=$(sha256sum "$IMAGE_PATH" | awk '{print $1}')
+          PUBLIC_IMAGE_SHA256=$(sha256sum /tmp/review-image.svg 2>/dev/null | awk '{print $1}')
+          test -n "$PUBLIC_IMAGE_SHA256" && test "$PUBLIC_IMAGE_SHA256" = "$SOURCE_IMAGE_SHA256" && image_hash_match=success
+
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
+          if test -n "$CHROME"; then
+            cat >/tmp/image-check.html <<EOF
+          <!doctype html><html><body data-image-decode="WAIT"><img id="target" src="$BASE/$IMAGE_PATH?browser=$SOURCE_SHA"><script>
+          const img=document.getElementById('target');
+          const done=()=>{if(img.complete){document.body.dataset.imageDecode=(img.naturalWidth>0&&img.naturalHeight>0)?'PASS':'FAIL';document.body.dataset.width=img.naturalWidth;document.body.dataset.height=img.naturalHeight;}};
+          img.addEventListener('load',done);img.addEventListener('error',done);setInterval(done,100);
+          </script></body></html>
+          EOF
+            timeout 60s "$CHROME" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=15000 --dump-dom file:///tmp/image-check.html >/tmp/image-check-dom.html 2>/tmp/chrome.err
+            grep -q 'data-image-decode="PASS"' /tmp/image-check-dom.html && image_decode=success
+            image_width=$(grep -o 'data-width="[0-9]*"' /tmp/image-check-dom.html | head -1 | tr -cd '0-9')
+            image_height=$(grep -o 'data-height="[0-9]*"' /tmp/image-check-dom.html | head -1 | tr -cd '0-9')
+            test -n "$image_width" || image_width=0
+            test -n "$image_height" || image_height=0
+            test "$image_width" = "$EXPECTED_WIDTH" && test "$image_height" = "$EXPECTED_HEIGHT" && image_dimensions=success
+          fi
+
+          result=success
+          for v in "$release_match" "$bank_item" "$bank_image_reference" "$image_fetch" "$image_type" "$image_xml" "$image_hash_match" "$image_decode" "$image_dimensions"; do
+            test "$v" = success || result=fail
+          done
+
+          cat > REVIEW_IMAGE_VERIFY_STATUS_20260823.txt <<EOF
+          result=$result
+          source_sha=$SOURCE_SHA
+          item_id=$ITEM_ID
+          image_path=$IMAGE_PATH
+          release_match=$release_match
+          review_bank_item=$bank_item
+          review_bank_reference=$bank_image_reference
+          image_fetch=$image_fetch
+          image_type=$image_type
+          image_xml=$image_xml
+          source_image_sha256=$SOURCE_IMAGE_SHA256
+          public_image_sha256=$PUBLIC_IMAGE_SHA256
+          image_hash_match=$image_hash_match
+          image_decode=$image_decode
+          image_dimensions=$image_dimensions
+          image_width=$image_width
+          image_height=$image_height
+          verified_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          EOF
+          cp REVIEW_IMAGE_VERIFY_STATUS_20260823.txt /tmp/REVIEW_IMAGE_VERIFY_STATUS_20260823.txt
+          exit 0
+
+      - name: Record mineral image verification
         shell: bash
         run: |
           set -euo pipefail
           git fetch origin main
-          git reset --hard origin/main
-          python3 - <<'PY'
-          from pathlib import Path
-          import re, hashlib, subprocess
-
-          path = Path('review-bank-v1.js')
-          text = path.read_text(encoding='utf-8')
-          target_id = 'soc-mineral-resources-production-share-20260823'
-          print('before_blob_sha=' + subprocess.check_output(['git','hash-object',str(path)], text=True).strip())
-          print('before_sha256=' + hashlib.sha256(text.encode()).hexdigest())
-
-          if f"id:'{target_id}'" in text:
-              print('target already present; nothing to do')
-              raise SystemExit(0)
-
-          item = """  {id:'soc-mineral-resources-production-share-20260823',subject:'社会',unit:'地理・鉱産資源',title:'鉱産資源の生産国：コバルト・プラチナ・ダイヤモンド・クロム',question:'図を見て、コバルト・プラチナ・ダイヤモンド・クロムの最大生産国をそれぞれ答えなさい。あわせて、特に割合が高いものはおよその割合も答えよう。',image:'assets/20260823-mineral-resources-production-v1.svg',imageAlt:'主要な鉱産資源の生産割合を見やすく再構成した学習用グラフ。コバルト、プラチナ、ダイヤモンド、クロムの国別生産割合と覚えるポイントを示す。',answer:'コバルト＝コンゴ民主共和国（67.0%）、プラチナ＝南アフリカ共和国（73.8%）、ダイヤモンド＝ロシア（29.2%）、クロム＝南アフリカ共和国（44.0%）。',why:'最大生産国を資源ごとにセットで覚える。コバルトはコンゴ民主共和国が約3分の2、プラチナは南アフリカ共和国が約4分の3で特に集中度が高い。クロムも南アフリカ共和国が最大で、ダイヤモンドはロシアが最大。入試では「資源名→代表的な生産国」の対応を地図や地域と結びつけて問われやすい。',examples:['コバルト → コンゴ民主共和国 67.0%','プラチナ → 南アフリカ共和国 73.8%','ダイヤモンド → ロシア 29.2%','クロム → 南アフリカ共和国 44.0%','語呂：コバルト＝コンゴ／プラチナ・クロム＝南ア／ダイヤ＝ロシア'],memory:'コバルト＝コンゴ、プラチナ・クロム＝南ア、ダイヤ＝ロシア',tags:['社会','地理','鉱産資源','コバルト','プラチナ','ダイヤモンド','クロム','コンゴ民主共和国','南アフリカ共和国','ロシア','生産割合','入試'],createdAt:'2026-08-23'},
-"""
-
-          marker = "\n];\nfunction normalize"
-          if marker not in text:
-              raise SystemExit('review bank end marker not found')
-          text = text.replace(marker, "\n" + item + "];\nfunction normalize", 1)
-
-          m = re.search(r"window\.AA_REVIEW_BANK_VERSION='(\d+)\.(\d+)\.(\d+)';", text)
-          if not m:
-              raise SystemExit('AA_REVIEW_BANK_VERSION not found')
-          new_version = f"{m.group(1)}.{m.group(2)}.{int(m.group(3))+1}"
-          text = text[:m.start()] + f"window.AA_REVIEW_BANK_VERSION='{new_version}';" + text[m.end():]
-
-          ids = re.findall(r"\bid:'([^']+)'", text)
-          if len(ids) != len(set(ids)):
-              raise SystemExit('duplicate review id detected')
-          if ids.count(target_id) != 1:
-              raise SystemExit('target review id count must equal 1')
-          if "image:'assets/20260823-mineral-resources-production-v1.svg'" not in text:
-              raise SystemExit('image reference missing')
-
-          path.write_text(text, encoding='utf-8')
-          print('new_version=' + new_version)
-          print('after_sha256=' + hashlib.sha256(text.encode()).hexdigest())
-          PY
-
-      - name: Commit and push canonical review bank
-        shell: bash
-        run: |
-          set -euo pipefail
-          if git diff --quiet -- review-bank-v1.js; then
-            echo 'No review bank change to commit.'
-            exit 0
-          fi
+          git checkout -B main origin/main
+          cp /tmp/REVIEW_IMAGE_VERIFY_STATUS_20260823.txt REVIEW_IMAGE_VERIFY_STATUS_20260823.txt
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add review-bank-v1.js
-          git commit -m 'Add mineral resources production review card'
-          for n in 1 2 3 4 5 6; do
-            git fetch origin main
-            if git rebase origin/main && git push origin HEAD:main; then
-              exit 0
-            fi
-            git rebase --abort 2>/dev/null || true
-            sleep 3
-          done
-          exit 1
+          git add REVIEW_IMAGE_VERIFY_STATUS_20260823.txt
+          git commit -m 'Record mineral review image public verification'
+          git pull --rebase origin main
+          git push origin main
+
+      - name: Enforce successful mineral image verification
+        shell: bash
+        run: grep -q '^result=success$' /tmp/REVIEW_IMAGE_VERIFY_STATUS_20260823.txt
