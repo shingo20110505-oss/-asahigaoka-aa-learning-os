@@ -92,10 +92,12 @@ const items=[
   {id:'ja-kanyoku-teshio-ni-kakeru-20260824',subject:'国語',unit:'ことわざ・慣用句',title:'手塩にかける',question:'「手塩にかける」の意味は？',answer:'時間や手間をかけて、大切に育てたり世話をしたりすること。',why:'自分の手元で細かく世話をするイメージから、愛情をもって丹念に育てることを表します。',examples:['祖父が手塩にかけて育てた野菜が実った。'],memory:'自分の手で手間をかける → 大切に育てる',tags:['国語','慣用句','手塩にかける','意味'],createdAt:'2026-08-24'},
   {id:'ja-kanyoku-tora-no-ko-20260824',subject:'国語',unit:'ことわざ・慣用句',title:'虎の子',question:'「虎の子」の意味は？',answer:'とても大切にして、手放さないもの。特に大切に蓄えているお金など。',why:'虎が子どもを非常に大切に守ると考えられたことから、手放したくない貴重なものを表します。',examples:['旅行のために、虎の子の貯金には手をつけなかった。'],memory:'虎が子を大切に守る → 手放したくない大切なもの',tags:['国語','慣用句','虎の子','意味'],createdAt:'2026-08-24'},
   {id:'ja-kanyoku-neko-no-hitai-20260824',subject:'国語',unit:'ことわざ・慣用句',title:'猫の額',question:'「猫の額」の意味は？',answer:'非常に狭い場所のこと。',why:'猫の額が小さく狭いことにたとえて、ごく狭い土地や場所を表します。',examples:['猫の額ほどの庭だが、花を育てている。'],memory:'猫の額は小さい → とても狭い場所',tags:['国語','慣用句','猫の額','意味'],createdAt:'2026-08-24'},
+  {id:'ja-kotowaza-issun-no-mushi-gobu-no-tamashii-20260824',subject:'国語',unit:'ことわざ・慣用句',title:'一寸の虫にも五分の魂',question:'「一寸の虫にも五分の魂」の意味は？',answer:'どんなに小さく弱い者にも、それなりの意地や誇りがあるので、侮ってはいけないということ。',why:'一寸ほどの小さな虫にも五分ほどの魂がある、というたとえから、弱そうに見える相手にも意地や誇りがあることを表します。',examples:['相手が年下だからと軽く見るのはよくない。「一寸の虫にも五分の魂」だ。'],memory:'小さな虫にも魂 → 弱そうな相手でも侮らない',tags:['国語','ことわざ','一寸の虫にも五分の魂','意味'],createdAt:'2026-08-24'},
+  {id:'ja-kotowaza-uogokoro-areba-mizugokoro-20260824',subject:'国語',unit:'ことわざ・慣用句',title:'魚心あれば水心',question:'「魚心あれば水心」の意味は？',answer:'相手が好意を示せば、自分もそれに応じて好意を返すということ。',why:'魚に水を求める心があれば、水も魚を受け入れる心をもつ、というたとえから、相手の出方に応じてこちらも好意を示すことを表します。',examples:['相手が親切にしてくれたので、こちらも助けようと思った。まさに「魚心あれば水心」だ。'],memory:'相手が好意 → こちらも好意で応える',tags:['国語','ことわざ','魚心あれば水心','意味'],createdAt:'2026-08-24'},
 ];
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.49';
+window.AA_REVIEW_BANK_VERSION='1.0.50';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
