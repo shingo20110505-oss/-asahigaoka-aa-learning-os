@@ -105,7 +105,7 @@ function mergePacks(){
    for(const item of pack.items||[]){
     const id=Number(item?.id);if(!Number.isFinite(id))continue;
     const current=byId.get(id);
-    if(current){Object.assign(current,item)}else{DATA.push(item);byId.set(item.id,item);if(typeof exactYearItems!=='undefined'&&/^(紀元前)?\d+年$/.test(item.date||''))exactYearItems.push(item)}
+    if(current){Object.assign(current,item)}else{DATA.push(item);byId.set(id,item);if(typeof exactYearItems!=='undefined'&&/^(紀元前)?\d+年$/.test(item.date||''))exactYearItems.push(item)}
    }
    if(typeof RICH_NOTES!=='undefined')for(const [key,note] of Object.entries(pack.notes||{}))RICH_NOTES[key]={...note,__chronoV7:true};
   }
