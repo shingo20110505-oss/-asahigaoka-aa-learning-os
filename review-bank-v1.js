@@ -95,10 +95,11 @@ const items=[
   {id:'ja-kotowaza-issun-no-mushi-gobu-no-tamashii-20260824',subject:'国語',unit:'ことわざ・慣用句',title:'一寸の虫にも五分の魂',question:'「一寸の虫にも五分の魂」の意味は？',answer:'どんなに小さく弱い者にも、それなりの意地や誇りがあるので、侮ってはいけないということ。',why:'一寸ほどの小さな虫にも五分ほどの魂がある、というたとえから、弱そうに見える相手にも意地や誇りがあることを表します。',examples:['相手が年下だからと軽く見るのはよくない。「一寸の虫にも五分の魂」だ。'],memory:'小さな虫にも魂 → 弱そうな相手でも侮らない',tags:['国語','ことわざ','一寸の虫にも五分の魂','意味'],createdAt:'2026-08-24'},
   {id:'ja-kotowaza-uogokoro-areba-mizugokoro-20260824',subject:'国語',unit:'ことわざ・慣用句',title:'魚心あれば水心',question:'「魚心あれば水心」の意味は？',answer:'相手が好意を示せば、自分もそれに応じて好意を返すということ。',why:'魚に水を求める心があれば、水も魚を受け入れる心をもつ、というたとえから、相手の出方に応じてこちらも好意を示すことを表します。',examples:['相手が親切にしてくれたので、こちらも助けようと思った。まさに「魚心あれば水心」だ。'],memory:'相手が好意 → こちらも好意で応える',tags:['国語','ことわざ','魚心あれば水心','意味'],createdAt:'2026-08-24'},
   {id:'math-area-ratio-two-sides-product-20260825',subject:'数学',unit:'図形・面積比',title:'2辺の比の積で面積比を出す公式',question:'図の△ABCで、△ABC＝20 cm²、AD:DB＝1:3、AE＝EC。△ADEの面積を求めなさい。また、この解き方のポイントは？',image:'assets/20260825-math-area-ratio-two-sides-v2.svg',imageAlt:'三角形ABCの問題図。Dは辺AB上でAD:DB=1:3、Eは辺AC上でAE=EC、△ABCの面積は20cm²。上部の△ADEが灰色で示されている。',answer:'△ADE＝5/2 cm²＝2.5 cm²。AD/AB＝1/4、AE/AC＝1/2なので、面積比は(1/4)×(1/2)=1/8。20×1/8＝5/2。',why:'△ADEと△ABCは頂点Aの角が共通で、Aから出る2辺の長さがそれぞれAD/AB、AE/ACに縮んでいるので、面積はその2つの比の積だけ縮む。一般に、DがAB上、EがAC上なら、[ADE]/[ABC]＝(AD/AB)×(AE/AC)。この関係に特別な固有名があるとは限らないが、「2辺の比の積で面積比を出す公式」と覚えると使いやすい。',examples:['AD:DB＝1:3 → AD:AB＝1:4','AE＝EC → AE:AC＝1:2','面積比 △ADE:△ABC＝(1/4)×(1/2)＝1:8','20×1/8＝5/2＝2.5'],memory:'面積比＝Aから出る2辺の比×2辺の比。分割比は「部分:全体」に直してから掛ける。',tags:['数学','図形','面積比','三角形','辺の比','2辺の比','裏技','AD:DB','AE:EC'],createdAt:'2026-08-25'},
+  {id:'ja-shisa-shisani-tomu-20260825',subject:'国語',unit:'語句・意味',title:'示唆・示唆に富むの意味',question:'「示唆（しさ）」とはどんな意味？ また「示唆に富む」とはどういう意味？',answer:'示唆とは、はっきり答えを言わずに、それとなく気づかせること・考えるヒントを与えること。「示唆に富む」は、考えるヒントや学べること、気づきが多いという意味。',why:'「示」は示す、「唆」はそそのかす・うながすという意味をもちます。そこから、直接答えを言うのではなく、相手が考えたり気づいたりするきっかけを与える意味になります。',examples:['先生の話は示唆に富んでいた。→ 考えるヒントや学びが多かった。','その結果は今後の研究に重要な示唆を与える。→ 今後考えるための重要なヒントを与える。'],memory:'示唆＝気づきのヒント／示唆に富む＝考えるヒント・学びが多い',tags:['国語','語彙','示唆','しさ','示唆に富む','意味'],createdAt:'2026-08-25'},
 ];
 function normalize(x){return {...x,examples:Array.isArray(x.examples)?x.examples:[],tags:Array.isArray(x.tags)?x.tags:[]}}
 const bank=items.map(normalize);
 window.AA_REVIEW_BANK=bank;
-window.AA_REVIEW_BANK_VERSION='1.0.52';
+window.AA_REVIEW_BANK_VERSION='1.0.53';
 window.AA_REVIEW_BANK_BY_ID=Object.fromEntries(bank.map(x=>[x.id,x]));
 })();
