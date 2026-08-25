@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const VERSION='2026-08-25.2';
+const VERSION='2026-08-16.1';
 if(window.__AA_KOKUGO_QUIZ_INTERACTION_FIX__)return;
 window.__AA_KOKUGO_QUIZ_INTERACTION_FIX__=VERSION;
 
