@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const VERSION='2026-08-16.1';
+const VERSION='2026-08-25.2';
 if(window.__AA_KOKUGO_QUIZ_INTERACTION_FIX__)return;
 window.__AA_KOKUGO_QUIZ_INTERACTION_FIX__=VERSION;
 
@@ -91,4 +91,4 @@ function install(){
 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
-(()=>{if(document.getElementById('aaKokugoQuizRankLoader'))return;const s=document.createElement('script');s.id='aaKokugoQuizRankLoader';s.src='./quiz-rank-select-v1.js?v=20260825-1';s.async=false;document.head.appendChild(s)})();
+(()=>{if(document.getElementById('aaKokugoQuizRankLoader'))return;const s=document.createElement('script');s.id='aaKokugoQuizRankLoader';s.src='./quiz-rank-select-v1.js?v=20260825-2';s.async=false;document.head.appendChild(s)})();
