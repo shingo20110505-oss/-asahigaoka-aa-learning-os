@@ -1,0 +1,81 @@
+name: Add review item - shisa 20260825
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-review-shisa-20260825.yml'
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  add-review-item:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Append review item safely
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, subprocess
+
+          path = Path('review-bank-v1.js')
+          text = path.read_text(encoding='utf-8')
+          expected_blob = '36afd802c42c818ad0056b12446a1c15ed4edb5b'
+          actual_blob = subprocess.check_output(['git','hash-object',str(path)], text=True).strip()
+          if actual_blob != expected_blob:
+              raise SystemExit(f'review-bank-v1.js changed unexpectedly: {actual_blob} != {expected_blob}')
+
+          item_id = 'ja-shisa-shisani-tomu-20260825'
+          if f"id:'{item_id}'" in text:
+              raise SystemExit('duplicate id detected')
+          if '示唆' in text:
+              raise SystemExit('an existing 示唆 item was found; aborting to avoid duplication')
+
+          item = "  {id:'ja-shisa-shisani-tomu-20260825',subject:'国語',unit:'語句・意味',title:'示唆・示唆に富むの意味',question:'「示唆（しさ）」とはどんな意味？ また「示唆に富む」とはどういう意味？',answer:'示唆とは、はっきり答えを言わずに、それとなく気づかせること・考えるヒントを与えること。「示唆に富む」は、考えるヒントや学べること、気づきが多いという意味。',why:'「示」は示す、「唆」はそそのかす・うながすという意味をもちます。そこから、直接答えを言うのではなく、相手が考えたり気づいたりするきっかけを与える意味になります。',examples:['先生の話は示唆に富んでいた。→ 考えるヒントや学びが多かった。','その結果は今後の研究に重要な示唆を与える。→ 今後考えるための重要なヒントを与える。'],memory:'示唆＝気づきのヒント／示唆に富む＝考えるヒント・学びが多い',tags:['国語','語彙','示唆','しさ','示唆に富む','意味'],createdAt:'2026-08-25'},\n"
+          marker = "\n];\nfunction normalize"
+          if text.count(marker) != 1:
+              raise SystemExit('review bank insertion marker not found uniquely')
+          text = text.replace(marker, "\n" + item + "];\nfunction normalize", 1)
+
+          m = re.search(r"window\.AA_REVIEW_BANK_VERSION='(\d+)\.(\d+)\.(\d+)';", text)
+          if not m:
+              raise SystemExit('AA_REVIEW_BANK_VERSION not found')
+          major, minor, patch = map(int, m.groups())
+          new_version = f"{major}.{minor}.{patch + 1}"
+          text = text[:m.start()] + f"window.AA_REVIEW_BANK_VERSION='{new_version}';" + text[m.end():]
+          path.write_text(text, encoding='utf-8')
+          print('new_version=' + new_version)
+          PY
+
+          node --check review-bank-v1.js
+          node scripts/validate-review-bank.mjs
+          grep -Fq "id:'ja-shisa-shisani-tomu-20260825'" review-bank-v1.js
+          grep -Fq "window.AA_REVIEW_BANK_VERSION='1.0.53'" review-bank-v1.js
+
+      - name: Commit review bank update
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add review-bank-v1.js
+          git commit -m 'Add review item: 示唆・示唆に富む'
+          git push origin HEAD:main
+
+      - name: Dispatch production deploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh workflow run deploy-pages.yml --ref main
