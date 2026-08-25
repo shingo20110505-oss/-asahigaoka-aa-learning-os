@@ -17,6 +17,17 @@ try{
   BASE_CANONICAL_SNAPSHOT.set(id,{id,sort:x.sort,date:x.date,event:x.event,area:x.area,period:x.period,level:x.level,detail:x.detail,tags:Array.isArray(x.tags)?[...x.tags]:[]});
  }
 }catch(_){}
+/* 1971 Nixon Shock: keep the existing id so saved progress/favorites survive,
+   but replace the broken legacy wording before this base range is restored. */
+const NIXON_1971_FIX={id:368,sort:1971,date:'1971年',event:'ニクソン・ショック',area:'欧米・世界',period:'現代',level:'A',detail:'アメリカがドルと金の交換停止を発表。固定相場制がくずれ、円高・変動相場制へつながった。',tags:['ニクソンショック','世界経済']};
+try{
+ const base=BASE_CANONICAL_SNAPSHOT.get(368);
+ if(base&&base.date==='1971年'&&/ニクソン/.test(base.event||'')){
+  Object.assign(base,NIXON_1971_FIX,{tags:[...NIXON_1971_FIX.tags]});
+  const live=typeof byId!=='undefined'?byId.get(368):null;
+  if(live&&live.date==='1971年'&&/ニクソン/.test(live.event||''))Object.assign(live,NIXON_1971_FIX,{tags:[...NIXON_1971_FIX.tags]});
+ }
+}catch(_){}
 function restoreCanonicalBaseRows(){
  let restored=0;
  try{
@@ -94,7 +105,7 @@ function mergePacks(){
    for(const item of pack.items||[]){
     const id=Number(item?.id);if(!Number.isFinite(id))continue;
     const current=byId.get(id);
-    if(current){Object.assign(current,item)}else{DATA.push(item);byId.set(id,item);if(typeof exactYearItems!=='undefined'&&/^(紀元前)?\d+年$/.test(item.date||''))exactYearItems.push(item)}
+    if(current){Object.assign(current,item)}else{DATA.push(item);byId.set(item.id,item);if(typeof exactYearItems!=='undefined'&&/^(紀元前)?\d+年$/.test(item.date||''))exactYearItems.push(item)}
    }
    if(typeof RICH_NOTES!=='undefined')for(const [key,note] of Object.entries(pack.notes||{}))RICH_NOTES[key]={...note,__chronoV7:true};
   }
