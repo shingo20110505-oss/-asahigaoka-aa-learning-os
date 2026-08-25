@@ -1,7 +1,68 @@
 (()=>{'use strict';
 if(window.__CHRONOLOGIA_FORCE1000_V1__)return;window.__CHRONOLOGIA_FORCE1000_V1__=true;
 if(!/(?:^|\/)chronologia\.html$/.test(location.pathname))return;
-const QUIZ_NAV_VERSION='2026-08-15.1';
+const QUIZ_NAV_VERSION='2026-08-25.2';
+/*
+ * Base DATA ids 353-385 were expanded after an older curated 351-400 table was
+ * created.  The old table still patches by numeric id, so e.g. current id 379
+ * (自衛隊) was overwritten with the old id 379 (瀬戸焼) explanation.
+ * Snapshot the authoritative base rows before any supplemental scripts run and
+ * restore them after every supplemental merge.  This keeps the current base
+ * event/date/detail/tags together as one canonical record.
+ */
+const BASE_CANONICAL_SNAPSHOT=new Map();
+try{
+ if(typeof DATA!=='undefined')for(const x of DATA){
+  const id=Number(x?.id);if(id<353||id>385)continue;
+  BASE_CANONICAL_SNAPSHOT.set(id,{id,sort:x.sort,date:x.date,event:x.event,area:x.area,period:x.period,level:x.level,detail:x.detail,tags:Array.isArray(x.tags)?[...x.tags]:[]});
+ }
+}catch(_){}
+function restoreCanonicalBaseRows(){
+ let restored=0;
+ try{
+  if(typeof byId==='undefined')return 0;
+  for(const [id,base] of BASE_CANONICAL_SNAPSHOT){
+   const current=byId.get(id);if(!current)continue;
+   const changed=current.date!==base.date||current.event!==base.event||current.detail!==base.detail||String(current.tags||'')!==String(base.tags||'');
+   Object.assign(current,base,{tags:[...base.tags]});
+   if(changed)restored++;
+  }
+  document.documentElement.dataset.chronologiaBaseRowsRepair=restored?'restored':'clean';
+  document.documentElement.dataset.chronologiaBaseRowsSnapshot=String(BASE_CANONICAL_SNAPSHOT.size);
+ }catch(e){console.error('Chronologia base-row restore failed',e)}
+ return restored;
+}
+function canonicalQuizItem(item){
+ try{const id=Number(item?.id),live=Number.isFinite(id)&&typeof byId!=='undefined'?byId.get(id):null;return live||item}catch(_){return item}
+}
+function explanationAudit(){
+ let ok=false,detail='';
+ try{
+  const item=typeof byId!=='undefined'?byId.get(379):null;detail=String(item?.detail||'');
+  ok=!!item&&item.date==='1954年'&&item.event==='自衛隊が発足する'&&/(?:保安隊|陸上・海上・航空自衛隊|安全保障)/.test(detail)&&!/瀬戸|陶土|陶磁器|窯業/.test(detail);
+ }catch(_){}
+ document.documentElement.dataset.aaSocialQuizExplanation=ok?'PASS':'FAIL';
+ let el=document.getElementById('aaSocialQuizExplanationAudit');if(!el){el=document.createElement('pre');el.id='aaSocialQuizExplanationAudit';el.hidden=true;document.body.appendChild(el)}
+ el.textContent=`AA_SOCIAL_QUIZ_EXPLANATION=${ok?'PASS':'FAIL'} ${JSON.stringify({id:379,event:'自衛隊が発足する',detail})}`;
+ return ok;
+}
+function installQuizExplanationFix(){
+ restoreCanonicalBaseRows();
+ if(typeof showQuiz==='function'&&!showQuiz.__aaCanonicalQuizItem){
+  const base=showQuiz;
+  const fixed=function(...args){
+   try{const q=state?.quiz,stale=q?.items?.[q.index],live=canonicalQuizItem(stale);if(q&&stale&&live)q.items[q.index]=live}catch(_){}
+   return base.apply(this,args);
+  };
+  fixed.__aaCanonicalQuizItem=true;showQuiz=fixed;
+ }
+ if(typeof finishAnswer==='function'&&!finishAnswer.__aaCanonicalQuizItem){
+  const base=finishAnswer;
+  const fixed=function(item,correct){return base.call(this,canonicalQuizItem(item),correct)};
+  fixed.__aaCanonicalQuizItem=true;finishAnswer=fixed;
+ }
+ explanationAudit();
+}
 const PACKS=[
  './chronologia-v7-data-1.js?force1000=20260811a',
  './chronologia-v7-data-2a.js?force1000=20260811a',
@@ -21,6 +82,7 @@ function updateVisibleCount(n){
  document.documentElement.dataset.chronologiaItems=String(n);
 }
 function announceReady(n,source){
+ restoreCanonicalBaseRows();installQuizExplanationFix();
  updateVisibleCount(n);
  if(n>=1000)document.documentElement.dataset.chronologiaReady='1';
  document.dispatchEvent(new CustomEvent('chronologia:content-updated',{detail:{items:n,source}}));
@@ -36,6 +98,7 @@ function mergePacks(){
    }
    if(typeof RICH_NOTES!=='undefined')for(const [key,note] of Object.entries(pack.notes||{}))RICH_NOTES[key]={...note,__chronoV7:true};
   }
+  restoreCanonicalBaseRows();
   const unique=new Map(DATA.map(x=>[Number(x.id),x]));
   if(unique.size!==DATA.length){DATA.splice(0,DATA.length,...[...unique.values()])}
   state.order=[...DATA].sort((a,b)=>(a.sort||0)-(b.sort||0)||(a.id||0)-(b.id||0)).map(x=>x.id);
@@ -50,12 +113,14 @@ function mergePacks(){
  }catch(e){console.error('Chronologia recovery merge failed',e);return 0}
 }
 async function boot(){
+ restoreCanonicalBaseRows();installQuizExplanationFix();
  let current=0;try{current=typeof DATA!=='undefined'?DATA.length:0}catch(_){}
  if(current>=1000){announceReady(current,'force1000-v1-existing');return}
  window.CHRONO_V7_PACKS=window.CHRONO_V7_PACKS||[];
  await loadOrdered(PACKS);
  try{if(window.CHRONO_V7_EXTRA_READY)await window.CHRONO_V7_EXTRA_READY}catch(e){console.error('Chronologia supplemental decode failed',e)}
  await loadOrdered(CURATED);
+ restoreCanonicalBaseRows();installQuizExplanationFix();
  const n=mergePacks();
  if(n<1000){setTimeout(()=>{const retry=mergePacks();if(retry<1000)console.error(`Chronologia recovery incomplete: ${retry}/1000`)},1200)}
 }
@@ -85,6 +150,8 @@ function waitFor(test,timeout=30000){return new Promise((resolve,reject)=>{const
 async function runQuizAudit(){
  if(!new URLSearchParams(location.search).has('aa_quiz_ui_ci'))return;
  try{
+  restoreCanonicalBaseRows();installQuizExplanationFix();
+  if(!explanationAudit())throw new Error('self-defense explanation mismatch');
   const tab=await waitFor(()=>document.querySelector('.tab[data-view="quizView"]'));
   tab.click();
   const direction=await waitFor(()=>document.getElementById('quizDirection'));direction.value='yearToEvent';
@@ -98,16 +165,20 @@ async function runQuizAudit(){
   next.click();
   const after=await waitFor(()=>{const t=document.getElementById('quizIndex')?.textContent?.trim();return t&&t!==before?t:null});
   if(!/^2\s*\/\s*10$/.test(after))throw new Error(`index ${before} -> ${after}`);
-  markQuizAudit(true,{before,after,nextVisible:true,version:QUIZ_NAV_VERSION});
+  markQuizAudit(true,{before,after,nextVisible:true,explanation:true,version:QUIZ_NAV_VERSION});
  }catch(err){markQuizAudit(false,{error:String(err?.message||err),version:QUIZ_NAV_VERSION})}
 }
 function installQuizNavFix(){
+ installQuizExplanationFix();
  const feedback=document.getElementById('quizFeedback'),answer=document.getElementById('quizAnswerArea');
  if(!feedback||!answer){setTimeout(installQuizNavFix,80);return}
  const mo=new MutationObserver(()=>revealQuizNext(false));mo.observe(feedback,{childList:true,subtree:true,characterData:true});mo.observe(answer,{childList:true,subtree:true,attributes:true,attributeFilter:['disabled','class']});
- document.addEventListener('click',e=>{if(e.target?.closest?.('#quizAnswerArea .choice,#submitYear'))setTimeout(()=>revealQuizNext(true),20)},true);
+ document.addEventListener('click',e=>{if(e.target?.closest?.('#quizAnswerArea .choice,#submitYear'))setTimeout(()=>{restoreCanonicalBaseRows();revealQuizNext(true)},20)},true);
  document.documentElement.dataset.chronologiaQuizNavFix=QUIZ_NAV_VERSION;
  runQuizAudit();
 }
+document.addEventListener('chronologia:content-updated',()=>{restoreCanonicalBaseRows();installQuizExplanationFix();explanationAudit()});
+setTimeout(()=>{restoreCanonicalBaseRows();installQuizExplanationFix();explanationAudit()},500);
+setTimeout(()=>{restoreCanonicalBaseRows();installQuizExplanationFix();explanationAudit()},1800);
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',boot,{once:true});document.addEventListener('DOMContentLoaded',installQuizNavFix,{once:true})}else{boot();installQuizNavFix()}
 })();
