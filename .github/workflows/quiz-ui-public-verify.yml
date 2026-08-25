@@ -33,12 +33,13 @@ jobs:
           node --check kokugo-chronologia/quiz-interaction-fix.js
           node --check wrong-answer-history-v1.js
           node --check chronologia-force1000-v1.js
-          grep -q "2026-08-16.1" kokugo-chronologia/quiz-interaction-fix.js
+          grep -q "2026-08-25.2" kokugo-chronologia/quiz-interaction-fix.js
           grep -q "quiz-interaction-fix.js?v=20260815-2" wrong-answer-history-v1.js
           grep -q "aaKokugoQuizUi" kokugo-chronologia/quiz-interaction-fix.js
           grep -q "realTouchCapture" kokugo-chronologia/quiz-interaction-fix.js
           grep -q "chronologiaQuizNavFix" chronologia-force1000-v1.js
           grep -q "aaSocialQuizUi" chronologia-force1000-v1.js
+          grep -q "aaSocialQuizExplanation" chronologia-force1000-v1.js
 
       - name: Wait for exact Pages release
         env:
@@ -68,9 +69,10 @@ jobs:
           test "$(sha256sum kokugo-chronologia/quiz-interaction-fix.js | awk '{print $1}')" = "$(sha256sum /tmp/kokugo-fix.js | awk '{print $1}')"
           test "$(sha256sum wrong-answer-history-v1.js | awk '{print $1}')" = "$(sha256sum /tmp/wrong-history.js | awk '{print $1}')"
           test "$(sha256sum chronologia-force1000-v1.js | awk '{print $1}')" = "$(sha256sum /tmp/chrono-fix.js | awk '{print $1}')"
-          grep -q "2026-08-16.1" /tmp/kokugo-fix.js
+          grep -q "2026-08-25.2" /tmp/kokugo-fix.js
           grep -q "quiz-interaction-fix.js?v=20260815-2" /tmp/wrong-history.js
           grep -q "次の問題へ" /tmp/chrono-fix.js
+          grep -q "AA_SOCIAL_QUIZ_EXPLANATION" /tmp/chrono-fix.js
 
       - name: Run live Kokugo touch audit
         env:
@@ -116,7 +118,10 @@ jobs:
             --virtual-time-budget=90000 \
             --dump-dom "${BASE}chronologia.html?aa_quiz_ui_ci=1&verify=${SOURCE_SHA}" > /tmp/social-runtime.html
           grep -o 'AA_SOCIAL_QUIZ_UI=[^<]*' /tmp/social-runtime.html || true
+          grep -o 'AA_SOCIAL_QUIZ_EXPLANATION=[^<]*' /tmp/social-runtime.html || true
           grep -q 'data-aa-social-quiz-ui="PASS"' /tmp/social-runtime.html
           grep -q 'AA_SOCIAL_QUIZ_UI=PASS' /tmp/social-runtime.html
+          grep -q 'data-aa-social-quiz-explanation="PASS"' /tmp/social-runtime.html
+          grep -q 'AA_SOCIAL_QUIZ_EXPLANATION=PASS' /tmp/social-runtime.html
           grep -q '"before":"1 / 10"' /tmp/social-runtime.html
           grep -q '"after":"2 / 10"' /tmp/social-runtime.html
