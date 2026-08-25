@@ -58,8 +58,10 @@ async function runAudit(){
     tab.click();
     const start=await waitFor(()=>document.getElementById('quizStart'));
     const kind=document.getElementById('quizKind'),mode=document.getElementById('quizMode');
-    if(kind)kind.value='two';if(mode)mode.value='meaning';
+    const rank=await waitFor(()=>document.getElementById('quizRank'));
+    if(kind)kind.value='two';if(mode)mode.value='meaning';rank.value='A';rank.dispatchEvent(new Event('change',{bubbles:true}));
     start.click();
+    await waitFor(()=>document.querySelector('#jkgQuiz .quiz-meta')?.textContent?.includes('A 最優先'));
     const choice=await waitFor(()=>document.querySelector('#jkgQuiz .quiz-opt'));
     const Ev=window.PointerEvent||window.MouseEvent;
     choice.dispatchEvent(new Ev('pointerup',{bubbles:true,cancelable:true,pointerType:'touch'}));
@@ -68,7 +70,7 @@ async function runAudit(){
     const disabled=[...document.querySelectorAll('#jkgQuiz .quiz-opt')].every(b=>b.disabled);
     const nextVisible=!!next&&getComputedStyle(next).display!=='none';
     if(!disabled||!nextVisible)throw new Error(`graded=${disabled} next=${nextVisible}`);
-    markAudit(true,{graded:true,nextVisible:true,realTouchCapture:true,version:VERSION});
+    markAudit(true,{graded:true,nextVisible:true,realTouchCapture:true,rankSelector:true,rank:'A',version:VERSION});
   }catch(err){markAudit(false,{error:String(err?.message||err),version:VERSION})}
 }
 
