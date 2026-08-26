@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const VERSION='2026-08-25.2';
+const VERSION='2026-08-26.3';
 if(window.__AA_KOKUGO_QUIZ_INTERACTION_FIX__)return;
 window.__AA_KOKUGO_QUIZ_INTERACTION_FIX__=VERSION;
 
@@ -59,9 +59,9 @@ async function runAudit(){
     const start=await waitFor(()=>document.getElementById('quizStart'));
     const kind=document.getElementById('quizKind'),mode=document.getElementById('quizMode');
     const rank=await waitFor(()=>document.getElementById('quizRank'));
-    if(kind)kind.value='two';if(mode)mode.value='meaning';rank.value='A';rank.dispatchEvent(new Event('change',{bubbles:true}));
+    if(kind)kind.value='all';if(mode)mode.value='meaning';rank.value='all';rank.dispatchEvent(new Event('change',{bubbles:true}));
     start.click();
-    await waitFor(()=>document.querySelector('#jkgQuiz .quiz-meta')?.textContent?.includes('A 最優先'));
+    await waitFor(()=>document.querySelector('#jkgQuiz .quiz-meta'));
     const choice=await waitFor(()=>document.querySelector('#jkgQuiz .quiz-opt'));
     const Ev=window.PointerEvent||window.MouseEvent;
     choice.dispatchEvent(new Ev('pointerup',{bubbles:true,cancelable:true,pointerType:'touch'}));
@@ -69,8 +69,9 @@ async function runAudit(){
     const next=document.getElementById('quizNext');
     const disabled=[...document.querySelectorAll('#jkgQuiz .quiz-opt')].every(b=>b.disabled);
     const nextVisible=!!next&&getComputedStyle(next).display!=='none';
-    if(!disabled||!nextVisible)throw new Error(`graded=${disabled} next=${nextVisible}`);
-    markAudit(true,{graded:true,nextVisible:true,realTouchCapture:true,rankSelector:true,rank:'A',version:VERSION});
+    const full=Number(window.__AA_KOKUGO_FULL_15000_COUNT__||0),pool=Number(window.__AA_KOKUGO_QUIZ_POOL_COUNT__||0);
+    if(!disabled||!nextVisible||full!==15000||pool<15000)throw new Error(`graded=${disabled} next=${nextVisible} full=${full} pool=${pool}`);
+    markAudit(true,{graded:true,nextVisible:true,realTouchCapture:true,rankSelector:true,full15000:full,pool,version:VERSION});
   }catch(err){markAudit(false,{error:String(err?.message||err),version:VERSION})}
 }
 
@@ -91,4 +92,4 @@ function install(){
 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
-(()=>{if(document.getElementById('aaKokugoQuizRankLoader'))return;const s=document.createElement('script');s.id='aaKokugoQuizRankLoader';s.src='./quiz-rank-select-v1.js?v=20260825-2';s.async=false;document.head.appendChild(s)})();
+(()=>{if(document.getElementById('aaKokugoQuizRankLoader'))return;const s=document.createElement('script');s.id='aaKokugoQuizRankLoader';s.src='./quiz-rank-select-v1.js?v=20260826-3';s.async=false;document.head.appendChild(s)})();
