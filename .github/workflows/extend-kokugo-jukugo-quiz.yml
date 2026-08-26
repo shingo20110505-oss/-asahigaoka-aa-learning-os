@@ -59,7 +59,10 @@ jobs:
           final=p.read_text(encoding='utf-8')
           assert "EXT_VERSION='2026-08-26.1'" in final
           assert 'function priorityShuffle(items){return shuffle([...items])}' in final
-          adaptive_line=next(line for line in final.splitlines() if line.startswith('function makeAdaptiveSet('))
+          adaptive_pos=final.find('function makeAdaptiveSet(')
+          assert adaptive_pos >= 0
+          adaptive_end=final.find('\n',adaptive_pos)
+          adaptive_line=final[adaptive_pos:adaptive_end if adaptive_end >= 0 else len(final)]
           assert 'wrongCandidates' not in adaptive_line
           assert 'Aランクを優先して出題します' not in final
           assert tag in index_path.read_text(encoding='utf-8')
