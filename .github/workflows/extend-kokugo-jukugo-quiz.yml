@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Patch latest main without touching translation files
+      - name: Refresh stored quiz order without resetting progress
         shell: bash
         run: |
           set -euo pipefail
@@ -26,55 +26,50 @@ jobs:
 
           index_path=Path('kokugo-chronologia/index.html')
           index=index_path.read_text(encoding='utf-8')
-          tag='<script src="./jukugo-extension.js?v=20260826-1"></script>'
+          tag='<script src="./jukugo-extension.js?v=20260826-2"></script>'
           index,n=re.subn(r'<script src="\./jukugo-extension\.js\?v=[^"]+"></script>',tag,index,count=1)
           if not n:
-              marker='<!-- KOKUGO_DIRECT_MEANING_OVERRIDE_V1 -->'
-              if marker in index:
-                  index=index.replace(marker,tag+marker,1)
-              elif '</body>' in index:
-                  index=index.replace('</body>',tag+'</body>',1)
-              else:
-                  raise SystemExit('index insertion point not found')
+              raise SystemExit('jukugo extension script tag not found')
           index_path.write_text(index,encoding='utf-8')
 
           p=Path('kokugo-chronologia/jukugo-extension.js')
           s=p.read_text(encoding='utf-8')
-          s,n_ver=re.subn(r"const EXT_VERSION='[^']+'","const EXT_VERSION='2026-08-26.1'",s,count=1)
-          s,n_weight=re.subn(r"function rankWeight\(rank\)\{[^\n]*\}","function rankWeight(){return 1}",s,count=1)
-          s,n_shuffle=re.subn(r"function priorityShuffle\(items\)\{[^\n]*\}","function priorityShuffle(items){return shuffle([...items])}",s,count=1)
-          replacement="function makeAdaptiveSet(kind,source,mode,pool){const deck=syncAdaptiveDeck(kind,mode,source),out=[],used=new Set(),recent=Array.isArray(deck.state.recent)?deck.state.recent:[],softRecent=new Set(recent.slice(-RECENT_LIMIT));const remainingItems=deck.scope.remaining.map(id=>deck.byId.get(id)).filter(Boolean),ordered=[...remainingItems.filter(x=>!softRecent.has(x.id)),...remainingItems.filter(x=>softRecent.has(x.id))];for(const item of ordered){if(out.length===10)break;if(used.has(item.id))continue;const q=buildQuestion(item,mode,pool);if(q){out.push(q);used.add(item.id)}}return out}"
-          s,n_adaptive=re.subn(r"function makeAdaptiveSet\(kind,source,mode,pool\)\{[^\n]*\}",replacement,s,count=1)
-          old_note='未出題を優先して一巡し、直近の語は避けます。誤答は早めに復習し、Aランクを優先して出題します。'
-          new_note='未出題を優先して一巡し、A/B/Cのランクに偏らずランダムに出題します。間違えた問題は専用ボタンで復習できます。'
-          s,n_note=(s.replace(old_note,new_note,1),s.count(old_note))
-          old_finish='未出題を優先して一巡します。誤答は早めに再出題し、直近40語は原則避けます。'
-          new_finish='未出題を優先して一巡します。A/B/Cは同じ確率で、直近40語は原則避けます。'
-          n_finish=s.count(old_finish)
-          s=s.replace(old_finish,new_finish,1)
-          if not all((n_ver,n_weight,n_shuffle,n_adaptive,n_note,n_finish)):
-              raise SystemExit(f'quiz patch target missing: version={n_ver} weight={n_weight} shuffle={n_shuffle} adaptive={n_adaptive} note={n_note} finish={n_finish}')
-          p.write_text(s,encoding='utf-8')
+          s,n_ver=re.subn(r"const EXT_VERSION='[^']+'","const EXT_VERSION='2026-08-26.2'",s,count=1)
 
+          old="let remaining=(Array.isArray(scope.remaining)?scope.remaining:[]).filter((id,i,a)=>validIds.has(id)&&a.indexOf(id)===i);const newItems="
+          new="let remaining=(Array.isArray(scope.remaining)?scope.remaining:[]).filter((id,i,a)=>validIds.has(id)&&a.indexOf(id)===i);if(scope.orderVersion!=='unbiased-20260826'){remaining=shuffle([...remaining]);scope.orderVersion='unbiased-20260826'}const newItems="
+          if old in s:
+              s=s.replace(old,new,1)
+          elif "scope.orderVersion!=='unbiased-20260826'" not in s:
+              raise SystemExit('stored-order migration insertion point not found')
+
+          if 'function rankWeight(){return 1}' not in s:
+              raise SystemExit('uniform rank weighting missing')
+          if 'function priorityShuffle(items){return shuffle([...items])}' not in s:
+              raise SystemExit('uniform shuffle missing')
+          adaptive_pos=s.find('function makeAdaptiveSet(')
+          if adaptive_pos < 0:
+              raise SystemExit('adaptive quiz function missing')
+          adaptive_end=s.find('\n',adaptive_pos)
+          adaptive_line=s[adaptive_pos:adaptive_end if adaptive_end >= 0 else len(s)]
+          if 'wrongCandidates' in adaptive_line:
+              raise SystemExit('normal quiz still injects wrong answers')
+          if 'Aランクを優先して出題します' in s:
+              raise SystemExit('old easy-rank note still present')
+
+          p.write_text(s,encoding='utf-8')
           final=p.read_text(encoding='utf-8')
-          assert "EXT_VERSION='2026-08-26.1'" in final
-          assert 'function priorityShuffle(items){return shuffle([...items])}' in final
-          adaptive_pos=final.find('function makeAdaptiveSet(')
-          assert adaptive_pos >= 0
-          adaptive_end=final.find('\n',adaptive_pos)
-          adaptive_line=final[adaptive_pos:adaptive_end if adaptive_end >= 0 else len(final)]
-          assert 'wrongCandidates' not in adaptive_line
-          assert 'Aランクを優先して出題します' not in final
+          assert "EXT_VERSION='2026-08-26.2'" in final
+          assert "scope.orderVersion!=='unbiased-20260826'" in final
           assert tag in index_path.read_text(encoding='utf-8')
-          assert Path('kokugo-chronologia/jukugo-bank.js').exists()
           PY
             git config user.name github-actions[bot]
             git config user.email 41898282+github-actions[bot]@users.noreply.github.com
             git add kokugo-chronologia/index.html kokugo-chronologia/jukugo-extension.js
             if git diff --cached --quiet; then
-              echo 'Kokugo quiz randomization already applied'; exit 0
+              echo 'Stored Kokugo quiz order already refreshed'; exit 0
             fi
-            git commit -m 'Randomize Kokugo quiz without easy-rank bias'
+            git commit -m 'Refresh stored Kokugo quiz order without resetting progress'
             if git push origin HEAD:main; then exit 0; fi
             sleep 2
           done
