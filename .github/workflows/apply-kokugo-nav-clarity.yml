@@ -1,0 +1,41 @@
+name: Apply Kokugo Navigation Clarity
+on:
+  push:
+    paths:
+      - '.ui-nav-clarity-trigger'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Add clear entry buttons for vocab, classical and quiz
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('kokugo-chronologia/index.html')
+          s=p.read_text(encoding='utf-8')
+          marker='<!-- AA_KOKUGO_QUICK_NAV_V1 -->'
+          if marker not in s:
+              block=r'''\n<!-- AA_KOKUGO_QUICK_NAV_V1 -->\n<style>\n#aaKokugoQuickNav{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}#aaKokugoQuickNav button{border:1px solid #d7dde7;background:#fff;border-radius:999px;padding:10px 14px;font-size:12px;font-weight:900;box-shadow:0 2px 8px rgba(20,35,60,.05)}#aaKokugoQuickNav button:active{transform:translateY(1px)}@media(max-width:600px){#aaKokugoQuickNav{display:grid;grid-template-columns:1fr 1fr}#aaKokugoQuickNav button:last-child{grid-column:1/-1}}\n</style>\n<script>\n(()=>{\n function fire(sel){const el=document.querySelector(sel);if(el){el.click();el.scrollIntoView({behavior:'smooth',block:'start'});return true}return false}\n function mount(){if(document.getElementById('aaKokugoQuickNav'))return;const nav=document.getElementById('jkgNav');if(!nav){setTimeout(mount,80);return}const q=document.createElement('div');q.id='aaKokugoQuickNav';q.innerHTML='<button data-go="vocab">慣用句・四字熟語</button><button data-go="classic">古文・漢文</button><button data-go="quiz">クイズ</button>';nav.parentNode.insertBefore(q,nav);q.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const g=b.dataset.go;if(g==='classic'){fire('[data-tab="kotenkanbun"]');setTimeout(()=>fire('[data-kk-view="list"]'),60);return}if(g==='quiz'){if(fire('[data-tab="kotenkanbun"]'))setTimeout(()=>fire('[data-kk-view="quiz"]'),60);else fire('[data-tab="quiz"]');return}if(g==='vocab'){fire('[data-tab="list"]')||fire('[data-tab="jukugo"]')||fire('[data-tab="words"]')||fire('.jkg-tab');}})}\n if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();\n})();\n</script>\n'''
+              if '</body>' in s:
+                  s=s.replace('</body>',block+'\n</body>',1)
+              else:
+                  raise SystemExit('body end not found')
+          p.write_text(s,encoding='utf-8')
+          PY
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add kokugo-chronologia/index.html
+          if git diff --cached --quiet; then
+            echo 'Quick navigation already installed'
+            exit 0
+          fi
+          git commit -m 'Add clear Kokugo navigation buttons'
+          git push origin HEAD:main
