@@ -1,6 +1,6 @@
 (()=>{'use strict';
 const EXT_VERSION='2026-08-26.2',BANK_URL='./jukugo-bank.js?v=20260815-2',ADVANCED_URLS=['./jukugo-bank-advanced-1.js?v=20260815-1','./jukugo-bank-advanced-2.js?v=20260815-1','./jukugo-bank-advanced-3.js?v=20260815-1','./jukugo-bank-advanced-4.js?v=20260815-1','./jukugo-bank-advanced-5.js?v=20260815-1'],STATE_KEY='kokugoChronologiaStateV2',WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1',QUIZ_CYCLE_KEY='aa_kokugo_vocab_cycle_v2',RECENT_LIMIT=40,WRONG_RETRY_LIMIT=2;
-const $=(s,r=document)=>r.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c])),hira=s=>(s||'').replace(/[ァ-ヶ]/g,c=>String.fromCharCode(c.charCodeAt(0)-96));
+const $=(s,r=document)=>r.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),hira=s=>(s||'').replace(/[ァ-ヶ]/g,c=>String.fromCharCode(c.charCodeAt(0)-96));
 const getState=()=>{try{return JSON.parse(localStorage.getItem(STATE_KEY)||'{}')}catch{return {}}},saveState=s=>localStorage.setItem(STATE_KEY,JSON.stringify(s));
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function loadWrong(){try{const a=JSON.parse(localStorage.getItem(WRONG_KEY)||'[]');return Array.isArray(a)?a:[]}catch{return []}}
