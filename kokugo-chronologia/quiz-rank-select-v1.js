@@ -1,6 +1,6 @@
 (()=>{'use strict';
-const VERSION='2026-08-26.3';
-const FULL_DATA_URL='./data.jsonl?v=quiz15000-20260826-3';
+const VERSION='2026-08-27.1';
+const FULL_DATA_URL='./data.jsonl?v=quiz15000-20260827-ja1';
 const STATE_KEY='kokugoChronologiaStateV2';
 const WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1';
 const CYCLE_KEY='aa_kokugo_vocab_full15000_cycle_v1';
@@ -9,6 +9,7 @@ window.__AA_KOKUGO_QUIZ_RANK_SELECT__=VERSION;
 
 const $=(s,r=document)=>r.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const hasJapanese=s=>/[\u3040-\u30ff\u3400-\u9fff]/.test(String(s||''));
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function getState(){try{return JSON.parse(localStorage.getItem(STATE_KEY)||'{}')}catch{return {}}}
 function saveState(s){try{localStorage.setItem(STATE_KEY,JSON.stringify(s))}catch(_){}}
@@ -21,6 +22,7 @@ function matchesFilter(x,kind,rank){return (kind==='all'||x.type===kind)&&(rank=
 function rankText(rank){return rank==='A'?'A 最優先':rank==='B'?'B 重要':rank==='C'?'C 発展':'全ランク'}
 function loadCycle(){try{const x=JSON.parse(localStorage.getItem(CYCLE_KEY)||'{}');return x&&typeof x==='object'?x:{}}catch{return {}}}
 function saveCycle(x){try{localStorage.setItem(CYCLE_KEY,JSON.stringify(x))}catch(_){}}
+function directMeaning(id){const v=(window.KOKUGO_DIRECT_MEANINGS||{})[String(id??'')];return typeof v==='string'?v.trim():''}
 
 let full15000=[];
 async function loadFull15000(){
@@ -30,10 +32,14 @@ async function loadFull15000(){
  const text=await res.text(),rows=text.split(/\r?\n/).filter(x=>x.trim()).map(x=>JSON.parse(x));
  if(rows.length!==15000)throw new Error('15,000語データ件数 '+rows.length+'（15,000ではありません）');
  const seen=new Set();
- full15000=rows.map((x,i)=>({
-   id:'quiz-full-'+String(x.id??i),word:String(x.term||''),reading:String(x.reading||''),meaning:String(x.meaning||''),
-   type:['yoji','idiom','four'].includes(x.type)?x.type:'four',rank:(x.type==='yoji'||x.type==='idiom')?'B':'C',source:'full15000'
- }));
+ full15000=rows.map((x,i)=>{
+   const meaning=directMeaning(x.id??i);
+   if(!meaning||!hasJapanese(meaning))throw new Error('日本語意味が未確認: '+String(x.term||x.id||i));
+   return{
+     id:'quiz-full-'+String(x.id??i),word:String(x.term||''),reading:String(x.reading||''),meaning,
+     type:['yoji','idiom','four'].includes(x.type)?x.type:'four',rank:(x.type==='yoji'||x.type==='idiom')?'B':'C',source:'full15000'
+   };
+ });
  for(const x of full15000){const k=x.word+'|'+x.reading;if(!x.word||seen.has(k))throw new Error('15,000語データに空欄または重複: '+k);seen.add(k)}
  window.__AA_KOKUGO_FULL_15000_COUNT__=full15000.length;
  return full15000;
@@ -41,20 +47,21 @@ async function loadFull15000(){
 
 function makePool(){
  const merged=[...(window.AA_JUKUGO_BANK||[]),...(window.AA_JUKUGO_ADVANCED||[])],seenBank=new Set(),bank=[];
- for(const x of merged){const key=`${x.word}|${x.reading||''}`;if(!x.word||seenBank.has(key))continue;seenBank.add(key);bank.push({id:x.id,word:x.word,reading:x.reading||'',meaning:x.meaning||'',type:x.kind==='二字熟語'?'two':'three',rank:x.rank||'C'})}
- const curated=(window.AA_IDIOM_BANK||[]).map((x,i)=>({id:'quiz-curated-'+i,word:x.word,reading:x.reading||'',meaning:x.meaning||'',type:x.kind==='四字熟語'?'yoji':'idiom',rank:x.rank||'B'}));
+ for(const x of merged){const key=`${x.word}|${x.reading||''}`;if(!x.word||seenBank.has(key))continue;seenBank.add(key);bank.push({id:x.id,word:x.word,reading:x.reading||'',meaning:directMeaning(x.id)||x.meaning||'',type:x.kind==='二字熟語'?'two':'three',rank:x.rank||'C'})}
+ const curated=(window.AA_IDIOM_BANK||[]).map((x,i)=>({id:'quiz-curated-'+i,word:x.word,reading:x.reading||'',meaning:directMeaning(x.id)||x.meaning||'',type:x.kind==='四字熟語'?'yoji':'idiom',rank:x.rank||'B'}));
  const out=[...full15000],seen=new Set(out.map(x=>`${x.word}|${x.reading||''}`));
  for(const x of [...bank,...curated]){const k=`${x.word}|${x.reading||''}`;if(!x.word||seen.has(k))continue;seen.add(k);out.push(x)}
  return out;
 }
 
+function validFieldValue(field,v){return !!v&&(field!=='meaning'||hasJapanese(v))}
 function pickDistractors(pool,item,field){
  const vals=[],seen=new Set([item[field]]),n=pool.length;
  for(let tries=0;tries<120&&vals.length<3;tries++){
    const x=pool[Math.floor(Math.random()*n)],v=x?.[field];
-   if(!x||x.id===item.id||!v||seen.has(v))continue;seen.add(v);vals.push(v)
+   if(!x||x.id===item.id||!validFieldValue(field,v)||seen.has(v))continue;seen.add(v);vals.push(v)
  }
- if(vals.length<3){for(const x of pool){const v=x?.[field];if(x.id===item.id||!v||seen.has(v))continue;seen.add(v);vals.push(v);if(vals.length===3)break}}
+ if(vals.length<3){for(const x of pool){const v=x?.[field];if(x.id===item.id||!validFieldValue(field,v)||seen.has(v))continue;seen.add(v);vals.push(v);if(vals.length===3)break}}
  return vals;
 }
 function buildQuestion(item,mode,pool){
@@ -63,7 +70,7 @@ function buildQuestion(item,mode,pool){
    const field=actual==='meaning'?'meaning':actual==='reading'?'reading':'word';
    const prompt=actual==='word'?item.meaning:item.word;
    const hint=actual==='meaning'?'意味を選んでください':actual==='reading'?'読みを選んでください':'この意味に合う語句を選んでください';
-   if(!item[field]||!prompt)continue;
+   if(!validFieldValue(field,item[field])||!prompt||(actual==='word'&&!hasJapanese(prompt)))continue;
    const values=pickDistractors(pool,item,field);if(values.length<3)continue;
    return{item,actual,field,prompt,hint,answer:item[field],options:shuffle([item[field],...values])};
  }
@@ -118,7 +125,7 @@ async function install(){
  body.innerHTML='<div class="quiz-summary">15,000語データ接続済み。「10問スタート」で開始します。</div>';
  document.documentElement.dataset.kokugoQuizRankSelect=VERSION;
  document.documentElement.dataset.aaKokugoQuizRank='PASS';
- document.documentElement.dataset.aaKokugoQuizRandom='FULL15000-NOREPEAT';
+ document.documentElement.dataset.aaKokugoQuizRandom='FULL15000-NOREPEAT-JA';
  document.documentElement.dataset.aaKokugoFull15000=String(full15000.length);
  document.documentElement.dataset.aaKokugoQuizPool=String(quizPool.length);
 }
