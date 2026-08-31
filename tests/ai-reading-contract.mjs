@@ -20,6 +20,8 @@ const loader = fs.readFileSync(path.join(root, 'v23-loader.js'), 'utf8');
 const serviceWorker = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
 
 assert.match(frontend, /aa_ai_reading_config_v1/);
+assert.match(frontend, /https:\/\/asahigaoka-aa-ai-reading\.shingo-20110505\.workers\.dev/);
+assert.match(frontend, /REQUEST_TIMEOUT_MS = 180000/);
 assert.match(frontend, /Gemini生成・正答二重検査済み/);
 assert.match(frontend, /translationJa/);
 assert.doesNotMatch(frontend, /GEMINI_API_KEY\s*=/);
