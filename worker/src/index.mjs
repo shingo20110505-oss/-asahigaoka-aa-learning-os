@@ -16,11 +16,12 @@ const SAFE_ID = /^[a-z0-9._-]{1,48}$/i;
 const WORD = /^[a-z]+(?:[-'][a-z]+)*$/i;
 
 class ApiError extends Error {
-  constructor(code, message, status = 400) {
+  constructor(code, message, status = 400, diagnostic = '') {
     super(message);
     this.name = 'ApiError';
     this.code = code;
     this.status = status;
+    this.diagnostic = cleanString(diagnostic, 800);
   }
 }
 
@@ -384,7 +385,12 @@ async function generateVerifiedReading(env, request) {
       }
     };
   }
-  throw new ApiError('quality_rejected', '正答一意性または本文根拠の二重検査を通過できませんでした。', 422);
+  throw new ApiError(
+    'quality_rejected',
+    '正答一意性または本文根拠の二重検査を通過できませんでした。',
+    422,
+    failures.join(';')
+  );
 }
 
 function configuredOrigins(env) {
@@ -473,7 +479,11 @@ export async function handleRequest(request, env) {
     const result = await generateVerifiedReading(env, clean);
     return jsonResponse(request, env, result);
   } catch (error) {
-    if (error instanceof ApiError) return jsonResponse(request, env, { error: { code: error.code, message: error.message } }, error.status);
+    if (error instanceof ApiError) {
+      const body = { code: error.code, message: error.message };
+      if (error.diagnostic) body.diagnostic = error.diagnostic;
+      return jsonResponse(request, env, { error: body }, error.status);
+    }
     if (error instanceof GeminiError) {
       let code = 'gemini_failed';
       if (error.status === 400) code = 'gemini_request_rejected';
