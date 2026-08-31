@@ -147,6 +147,8 @@ try {
   assert.equal(payload.quality.verified, true);
   assert.equal(payload.quality.method, 'independent-blind-answer-check');
   assert.equal(interactionRequests.length, 2);
+  assert.equal(interactionRequests.every(item => item.response_format?.type === 'text'), true);
+  assert.equal(interactionRequests.every(item => item.response_format?.mime_type === 'application/json'), true);
   assert.doesNotMatch(interactionRequests[1].input, /"answerIndex":\d/);
   assert.equal(interactionRequests.every(item => item.store === false), true);
 } finally {
