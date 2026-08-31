@@ -83,6 +83,14 @@ v1.5の精密英語機能をすべて維持します。
 - 愛知県英語筆記40分シミュレーターの第1パートにも図表＋レポート類題を収録
 - 英単語・連語の空所補充は、活用形を含めて正答語を空所へ置換し、本文中に答えが残っていないことを生成直後と全107語の回帰テストで検査
 
+### Gemini個別最適長文（任意接続）
+
+教科別トレーニングの「AI個別最適長文」「AI入試実戦」は、Cloudflare Worker経由でGemini APIを呼び出します。Level、長文タイプ、許可済み文法、弱い読解技能、弱点語、直近トピックだけを匿名化して送り、氏名・学校名・全解答履歴・自由記述は送りません。
+
+AIが長文と5問を作成した後、Workerは語数、段落、文法ゲート、4択の重複、本文中の完全一致根拠を検査します。さらに正答を伏せた別のGemini呼び出しで5問を解き直し、正答・根拠・信頼度が一致したセットだけを返します。検査に落ちた問題、無料枠切れ、オフライン時は既存の端末内長文へ退避できます。
+
+Gemini APIキーはWorkerのsecretだけに置き、GitHub Pages、localStorage、Git、バックアップJSONには入れません。AI接続設定は既存の学習保存キーと分離した `aa_ai_reading_config_v1` を使います。Workerの配備手順は `worker/README.md` にあります。Geminiの無料枠では、送信内容がGoogleの製品改善に利用される場合があります。
+
 ## 忘却予測と最適復習
 
 分析画面は項目ごとの記憶安定度Sと経過日数tから R(t)=exp(-t/S) を計算し、4教科の想起可能性を表示します。これはEbbinghaus-inspired forgetting modelであり、エビングハウス本人の厳密な公式とは表示しません。
@@ -124,6 +132,8 @@ SafariのWebサイトデータ削除では端末内コピーも消えます。�
 | curriculum-v2-data.js | 国語・数学・理科・社会のv2知識バンク |
 | learning-engine-v2.js | 適応出題、3段階入試テスト、忘却予測、v2移行 |
 | learning-engine-v22.js / .css | 独立入試ページ、R8大問構成、複数選択・部分点、詳細設定 |
+| ai-reading-v1.js | Gemini長文UI、匿名学習要約、既存セッションへの変換、通常長文への退避 |
+| worker/src/index.mjs | Gemini呼び出し、構造検査、正答を伏せた独立解答検査、CORS・Bearer認証 |
 | japanese-public-domain.js | 著作権保護期間満了作品8作品・引用読解23問・難度別出題 |
 | japanese-vocabulary-10000.js | 教育基本語彙DB由来の10,000語検索索引 |
 | chronologia.html | Chronologia 6.3歴史年表（独立保存領域） |
@@ -134,6 +144,7 @@ SafariのWebサイトデータ削除では端末内コピーも消えます。�
 | icons | iPhone、通常、maskable、favicon用アイコン |
 | tests/static-audit.mjs | PWA、構成、構文、アイコンの静的監査 |
 | tests/after-check.mjs | 操作、テスト分離、旧データ移行、強制終了復元 |
+| tests/ai-reading-contract.mjs | AI長文の構造・根拠・二重解答・秘密情報分離の契約検査 |
 | QA_REPORT.md | 公開前最終監査 |
 
 ## ローカル検査

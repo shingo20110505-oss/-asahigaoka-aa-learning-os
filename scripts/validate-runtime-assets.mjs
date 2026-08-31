@@ -21,6 +21,7 @@ const vocabMobile = read('vocab-mobile-card-fix-v1.js');
 const quality = read('quality-repair-v1.js');
 const qualityFinal = read('quality-repair-final-v1.js');
 const qualityCI = read('quality-ci-runner-v1.js');
+const aiReading = read('ai-reading-v1.js');
 const sw = read('sw.js');
 
 requireText(index, './aa-companion-v2.js', 'index entry');
@@ -38,6 +39,7 @@ for(const asset of [
   'quality-repair-v1.js',
   'quality-repair-final-v1.js',
   'quality-ci-runner-v1.js',
+  'ai-reading-v1.js',
   'english-vocab-examples-basic1-v1.js',
   'english-vocab-examples-basic2-v1.js',
   'english-vocab-examples-basic3-v1.js',
@@ -91,6 +93,7 @@ requireText(prod, 'window.AALoginProductionTest=', 'production test API');
 requireText(loader, "'quality-repair-v1.js'", 'quality repair load order');
 requireText(loader, "'quality-repair-final-v1.js'", 'final quality repair load order');
 requireText(loader, "'quality-ci-runner-v1.js'", 'browser quality runner load order');
+requireText(loader, "'ai-reading-v1.js'", 'AI reading load order');
 requireText(loader, "'english-vocab-examples-apply-v1.js'", 'vocab example audit load order');
 requireText(loader, "'english-vocab-example-ui-v1.js'", 'vocab example UI load order');
 requireText(loader, "'vocab-mobile-card-fix-v1.js'", 'compact vocab mobile card load order');
@@ -116,6 +119,11 @@ requireText(qualityCI, 'AA_QUALITY_REPAIR_FINAL', 'browser waits for final repai
 requireText(qualityCI, '長文生成・文法ゲート 36本', 'runtime long-reading gate');
 requireText(qualityCI, '数学公式暗記限定', 'runtime math formula gate');
 requireText(qualityCI, "dataset.aaQualityCi=result.pass?'PASS':'FAIL'", 'browser quality PASS marker');
+requireText(aiReading, 'window.__AA_AI_READING_V1__', 'AI reading runtime marker');
+requireText(aiReading, 'aa_ai_reading_config_v1', 'isolated AI connection storage');
+requireText(aiReading, 'Gemini生成・正答二重検査済み', 'AI verification badge');
+requireText(aiReading, 'translationJa', 'AI translation handoff');
+if(/GEMINI_API_KEY\s*=/.test(aiReading)) throw new Error('Gemini API key must not be present in browser code');
 
 if(!/const VERSION='[^']+'/.test(sw)) throw new Error('managed service worker version missing');
 requireText(sw, 'quality2-chronologia1000', 'shared PWA generation');
@@ -128,6 +136,7 @@ requireText(sw, "url('mobile-layout-guard-v1.js')", 'offline mobile layout guard
 requireText(sw, "url('quality-repair-v1.js')", 'offline quality repair');
 requireText(sw, "url('quality-repair-final-v1.js')", 'offline final quality repair');
 requireText(sw, "url('quality-ci-runner-v1.js')", 'offline browser quality runner');
+requireText(sw, "url('ai-reading-v1.js')", 'offline AI reading UI');
 requireText(sw, "u.pathname.endsWith('review-bank-v1.js')", 'review bank forced freshness');
 
 const referenced=[...mobile.matchAll(/['"]\.\/([^'"?]+\.js)/g)].map(m=>m[1]);

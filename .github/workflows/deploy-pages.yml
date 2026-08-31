@@ -57,6 +57,8 @@ jobs:
             vocab-mobile-card-fix-v1.js \
             quality-repair-v1.js \
             quality-ci-runner-v1.js \
+            ai-reading-v1.js \
+            worker/src/index.mjs \
             sw.js; do
             node --check "$f"
           done
@@ -64,6 +66,7 @@ jobs:
           node scripts/validate-review-bank.mjs
           node scripts/validate-review-ui.mjs
           node scripts/validate-runtime-assets.mjs
+          node tests/ai-reading-contract.mjs
 
           grep -q 'AA_REVIEW_BANK_VERSION=' review-bank-v1.js
           grep -q "a.href='./review/'" aa-companion-v2.js
@@ -75,6 +78,7 @@ jobs:
           grep -q 'setExplosionVoice' companion7-runtime.js
           grep -q 'quality-repair-v1.js' v23-loader.js
           grep -q 'quality-ci-runner-v1.js' v23-loader.js
+          grep -q 'ai-reading-v1.js' v23-loader.js
           grep -q 'vocab-mobile-card-fix-v1.js' v23-loader.js
           grep -q 'data-aa-vocab-mobile-card-fix' vocab-mobile-card-fix-v1.js
           grep -q 'window.__AA_QUALITY_REPAIR_V1__' quality-repair-v1.js
@@ -84,6 +88,9 @@ jobs:
           grep -q "url('mobile-layout-guard-v1.js')" sw.js
           grep -q "url('quality-repair-v1.js')" sw.js
           grep -q "url('quality-ci-runner-v1.js')" sw.js
+          grep -q "url('ai-reading-v1.js')" sw.js
+          grep -q 'window.__AA_AI_READING_V1__' ai-reading-v1.js
+          grep -q 'independent-blind-answer-check' worker/src/index.mjs
           test -f review/index.html
           test -f diagnostics.html
 
@@ -105,6 +112,7 @@ jobs:
           LAYOUT_SHA256=$(sha256sum mobile-layout-guard-v1.js | awk '{print $1}')
           QUALITY_REPAIR_SHA256=$(sha256sum quality-repair-v1.js | awk '{print $1}')
           QUALITY_CI_SHA256=$(sha256sum quality-ci-runner-v1.js | awk '{print $1}')
+          AI_READING_SHA256=$(sha256sum ai-reading-v1.js | awk '{print $1}')
           cat > release.json <<EOF
           {
             "sourceBranch": "main",
@@ -117,6 +125,7 @@ jobs:
             "mobileLayoutGuardSha256": "${LAYOUT_SHA256}",
             "qualityRepairSha256": "${QUALITY_REPAIR_SHA256}",
             "qualityCiSha256": "${QUALITY_CI_SHA256}",
+            "aiReadingSha256": "${AI_READING_SHA256}",
             "management": "validated-main-direct-to-pages"
           }
           EOF
@@ -154,6 +163,7 @@ jobs:
           EXPECTED_LAYOUT_SHA256=$(sha256sum mobile-layout-guard-v1.js | awk '{print $1}')
           EXPECTED_QUALITY_REPAIR_SHA256=$(sha256sum quality-repair-v1.js | awk '{print $1}')
           EXPECTED_QUALITY_CI_SHA256=$(sha256sum quality-ci-runner-v1.js | awk '{print $1}')
+          EXPECTED_AI_READING_SHA256=$(sha256sum ai-reading-v1.js | awk '{print $1}')
 
           stage release-json-await
           ok=0
@@ -174,6 +184,7 @@ jobs:
           grep -q "\"mobileLayoutGuardSha256\": \"${EXPECTED_LAYOUT_SHA256}\"" /tmp/release.json
           grep -q "\"qualityRepairSha256\": \"${EXPECTED_QUALITY_REPAIR_SHA256}\"" /tmp/release.json
           grep -q "\"qualityCiSha256\": \"${EXPECTED_QUALITY_CI_SHA256}\"" /tmp/release.json
+          grep -q "\"aiReadingSha256\": \"${EXPECTED_AI_READING_SHA256}\"" /tmp/release.json
 
           stage review-ui
           curl -fsSL "${BASE}review/?verify=${SOURCE_SHA}" -o /tmp/review.html
@@ -208,6 +219,14 @@ jobs:
           grep -q 'quality-repair-v1.js' /tmp/v23-loader.js
           grep -q 'quality-ci-runner-v1.js' /tmp/v23-loader.js
           grep -q 'vocab-mobile-card-fix-v1.js' /tmp/v23-loader.js
+          grep -q 'ai-reading-v1.js' /tmp/v23-loader.js
+
+          stage ai-reading
+          curl -fsSL "${BASE}ai-reading-v1.js?verify=${SOURCE_SHA}" -o /tmp/ai-reading.js
+          ACTUAL_AI_READING_SHA256=$(sha256sum /tmp/ai-reading.js | awk '{print $1}')
+          test "$ACTUAL_AI_READING_SHA256" = "$EXPECTED_AI_READING_SHA256"
+          grep -q 'window.__AA_AI_READING_V1__' /tmp/ai-reading.js
+          grep -q 'Gemini生成・正答二重検査済み' /tmp/ai-reading.js
 
           stage login-image
           curl -fsSL "${BASE}login-companion-v1.js?verify=${SOURCE_SHA}" -o /tmp/login-image.js
@@ -226,6 +245,7 @@ jobs:
           grep -q "url('mobile-layout-guard-v1.js')" /tmp/sw.js
           grep -q "url('quality-repair-v1.js')" /tmp/sw.js
           grep -q "url('quality-ci-runner-v1.js')" /tmp/sw.js
+          grep -q "url('ai-reading-v1.js')" /tmp/sw.js
           grep -q 'networkFirst' /tmp/sw.js
 
           stage quality-runtime
@@ -295,6 +315,7 @@ jobs:
           LAYOUT_SHA256=$(sha256sum mobile-layout-guard-v1.js | awk '{print $1}')
           QUALITY_REPAIR_SHA256=$(sha256sum quality-repair-v1.js | awk '{print $1}')
           QUALITY_CI_SHA256=$(sha256sum quality-ci-runner-v1.js | awk '{print $1}')
+          AI_READING_SHA256=$(sha256sum ai-reading-v1.js | awk '{print $1}')
           git fetch origin main
           git checkout -B main origin/main
           cat > PUBLIC_VERIFY_STATUS.txt <<EOF
@@ -309,9 +330,10 @@ jobs:
           mobile_layout_guard_sha256=${LAYOUT_SHA256}
           quality_repair_sha256=${QUALITY_REPAIR_SHA256}
           quality_ci_sha256=${QUALITY_CI_SHA256}
+          ai_reading_sha256=${AI_READING_SHA256}
           quality_runtime=${QUALITY_RUNTIME}
           vocab_mobile_runtime=${VOCAB_MOBILE_RUNTIME}
-          checks=public-release,review-v2,review-bank-exact-hash,mobile-layout-exact-hash,quality-repair-exact-hash,quality-browser-runtime,vocab-mobile-runtime,login-image,login-voice,service-worker,diagnostics
+          checks=public-release,review-v2,review-bank-exact-hash,mobile-layout-exact-hash,quality-repair-exact-hash,ai-reading-exact-hash,quality-browser-runtime,vocab-mobile-runtime,login-image,login-voice,service-worker,diagnostics
           EOF
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

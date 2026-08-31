@@ -19,6 +19,7 @@ const engineV2 = read('learning-engine-v2.js');
 const engineV22 = read('learning-engine-v22.js');
 const vocab10000 = read('japanese-vocabulary-10000.js');
 const japanesePublicDomain = read('japanese-public-domain.js');
+const aiReading = read('ai-reading-v1.js');
 const chronologia = read('chronologia.html');
 const scripts = [...index.matchAll(/<script(?![^>]*\bsrc=)(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(match => match[1]);
 const chronologiaScripts = [...chronologia.matchAll(/<script(?![^>]*\bsrc=)(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(match => match[1]);
@@ -113,6 +114,9 @@ check('Bayesian unknown-word evidence', /lexicalEvidenceState/.test(index) && /l
 check('v1.5 engine precached', sw.includes("learning-engine-v15.js"));
 check('v2 files precached', sw.includes("curriculum-v2-data.js") && sw.includes("learning-engine-v2.js"));
 check('v2.2 files precached', sw.includes("learning-engine-v22.js") && sw.includes("japanese-vocabulary-10000.js") && sw.includes("japanese-public-domain.js") && sw.includes("learning-engine-v22.css"));
+check('AI reading UI is isolated and precached', /aa_ai_reading_config_v1/.test(aiReading) && /__AA_AI_READING_V1__/.test(aiReading) && sw.includes("ai-reading-v1.js"));
+check('Gemini API key stays server-side', !/GEMINI_API_KEY\s*=/.test(aiReading) && fs.existsSync(path.join(root, 'worker/src/index.mjs')));
+check('AI reading requires independent verification', /quality\?\.verified !== true/.test(aiReading) && /Gemini生成・正答二重検査済み/.test(aiReading));
 check('Fixed convenience-tool prompt removed', !index.includes('便利な道具を増やすだけでは') && !japanesePublicDomain.includes('便利な道具を増やすだけでは'));
 check('Public-domain source attribution', /著作権保護期間満了作品/.test(japanesePublicDomain) && /青空文庫/.test(japanesePublicDomain) && /aozora\.gr\.jp/.test(japanesePublicDomain));
 check('Correct-answer anti-repeat gate', /function recentCorrectPenaltyForKey/.test(index) && /reviewKey/.test(index) && /recentCorrectPenaltyForKey/.test(engineV2) && /recentCorrectPenaltyForKey/.test(engineV22));

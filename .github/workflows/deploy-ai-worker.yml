@@ -1,0 +1,98 @@
+name: Deploy verified AI reading Worker
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ai-reading-worker-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact source commit
+        uses: actions/checkout@v4
+
+      - name: Validate Worker contract
+        run: |
+          set -euo pipefail
+          node --check worker/src/index.mjs
+          node tests/ai-reading-contract.mjs
+
+      - name: Confirm required GitHub secrets exist
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          AI_ACCESS_TOKEN: ${{ secrets.AI_ACCESS_TOKEN }}
+        run: |
+          set -euo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN"
+          test -n "$CLOUDFLARE_ACCOUNT_ID"
+          test -n "$GEMINI_API_KEY"
+          test "${#AI_ACCESS_TOKEN}" -ge 24
+
+      - name: Deploy Worker and encrypted secrets
+        id: deploy
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: worker
+          wranglerVersion: "4.127.1"
+          command: deploy
+          secrets: |
+            GEMINI_API_KEY
+            AI_ACCESS_TOKEN
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          AI_ACCESS_TOKEN: ${{ secrets.AI_ACCESS_TOKEN }}
+
+      - name: Verify public health, authentication, and real Gemini generation
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+          AI_ACCESS_TOKEN: ${{ secrets.AI_ACCESS_TOKEN }}
+        run: |
+          set -euo pipefail
+          test -n "$DEPLOYMENT_URL"
+          BASE="${DEPLOYMENT_URL%/}"
+          ORIGIN='https://shingo20110505-oss.github.io'
+
+          curl -fsSL --retry 4 --retry-delay 3 --max-time 30 \
+            "$BASE/health" -o /tmp/ai-health.json
+
+          curl -fsSL --retry 3 --retry-delay 3 --max-time 30 \
+            -X POST \
+            -H "Origin: $ORIGIN" \
+            -H "Authorization: Bearer $AI_ACCESS_TOKEN" \
+            -H 'Content-Type: application/json' \
+            --data '{}' \
+            "$BASE/v1/status" -o /tmp/ai-status.json
+
+          curl -fsSL --retry 2 --retry-delay 5 --max-time 180 \
+            -X POST \
+            -H "Origin: $ORIGIN" \
+            -H "Authorization: Bearer $AI_ACCESS_TOKEN" \
+            -H 'Content-Type: application/json' \
+            --data '{"schemaVersion":1,"difficulty":4,"readingType":"argument","assistMode":"scaffold","allowedGrammar":["basic","past","future","modal","infinitive","gerund","comparison","passive","presentPerfect","asMuchAs","asManyAs"],"weakSkills":[{"id":"en.read.inference","label":"英語・推論"}],"weakWords":[{"word":"evidence","meaningJa":"根拠"}],"knownWords":["student","school","plan"],"recentTopics":[],"recentErrorTypes":[]}' \
+            "$BASE/v1/reading" -o /tmp/ai-reading.json
+
+          node - <<'NODE'
+          const fs = require('fs');
+          const health = JSON.parse(fs.readFileSync('/tmp/ai-health.json', 'utf8'));
+          const status = JSON.parse(fs.readFileSync('/tmp/ai-status.json', 'utf8'));
+          const result = JSON.parse(fs.readFileSync('/tmp/ai-reading.json', 'utf8'));
+          if (health.ok !== true || status.ready !== true) throw new Error('Worker health/status verification failed');
+          if (result.schemaVersion !== 1 || result.quality?.verified !== true) throw new Error('AI quality verification failed');
+          if (!Array.isArray(result.reading?.questions) || result.reading.questions.length !== 5) throw new Error('Expected five questions');
+          for (const [index, question] of result.reading.questions.entries()) {
+            if (!result.reading.passage.includes(question.evidenceQuote)) throw new Error(`Question ${index + 1} evidence is not exact`);
+          }
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
+            `## AI reading Worker verified\n\n- URL: ${process.env.DEPLOYMENT_URL}\n- Model: ${status.model}\n- Questions: 5\n- Independent answer check: PASS\n`);
+          NODE
