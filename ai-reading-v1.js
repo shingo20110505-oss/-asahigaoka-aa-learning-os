@@ -3,11 +3,12 @@
 
   if (window.__AA_AI_READING_V1__) return;
 
-  const VERSION = '1.0.0';
+  const VERSION = '1.1.0';
   const CONFIG_KEY = 'aa_ai_reading_config_v1';
+  const DEFAULT_ENDPOINT = 'https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev';
   const ENDPOINT_PATH = '/v1/reading';
   const STATUS_PATH = '/v1/status';
-  const REQUEST_TIMEOUT_MS = 90000;
+  const REQUEST_TIMEOUT_MS = 180000;
   const SKILL_BY_TYPE = Object.freeze({
     detail: 'en.read.detail',
     cause: 'en.read.cause',
@@ -27,11 +28,11 @@
     try {
       const raw = JSON.parse(localStorage.getItem(CONFIG_KEY) || '{}');
       return {
-        endpoint: normalizeEndpoint(raw.endpoint),
+        endpoint: normalizeEndpoint(raw.endpoint) || DEFAULT_ENDPOINT,
         accessToken: typeof raw.accessToken === 'string' ? raw.accessToken : ''
       };
     } catch (_) {
-      return { endpoint: '', accessToken: '' };
+      return { endpoint: DEFAULT_ENDPOINT, accessToken: '' };
     }
   }
 
@@ -63,16 +64,7 @@
 
   function configure() {
     const current = readConfig();
-    const endpointInput = window.prompt(
-      'Cloudflare Worker のURLを入力してください。\n例: https://aa-reading.example.workers.dev',
-      current.endpoint
-    );
-    if (endpointInput === null) return false;
-    const endpoint = normalizeEndpoint(endpointInput);
-    if (!endpoint) {
-      window.alert('https:// で始まるWorker URLを入力してください。');
-      return false;
-    }
+    const endpoint = current.endpoint || DEFAULT_ENDPOINT;
     const tokenInput = window.prompt(
       current.accessToken
         ? '接続用トークンを変更する場合だけ入力してください。空欄なら現在の値を維持します。'
@@ -195,7 +187,7 @@
       }
       return payload;
     } catch (error) {
-      if (error?.name === 'AbortError') throw appError('timeout', '生成が90秒以内に完了しませんでした。');
+      if (error?.name === 'AbortError') throw appError('timeout', '生成が3分以内に完了しませんでした。');
       if (error?.code) throw error;
       throw appError('network_error', navigator.onLine ? 'AIサーバーに接続できませんでした。' : 'オフラインです。');
     } finally {
