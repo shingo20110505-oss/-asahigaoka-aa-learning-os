@@ -474,7 +474,13 @@ export async function handleRequest(request, env) {
     return jsonResponse(request, env, result);
   } catch (error) {
     if (error instanceof ApiError) return jsonResponse(request, env, { error: { code: error.code, message: error.message } }, error.status);
-    if (error instanceof GeminiError) return jsonResponse(request, env, { error: { code: 'gemini_failed', message: 'Geminiで生成できませんでした。' } }, 502);
+    if (error instanceof GeminiError) {
+      let code = 'gemini_failed';
+      if (error.status === 400) code = 'gemini_request_rejected';
+      else if (/no model text/i.test(error.message)) code = 'gemini_empty_output';
+      else if (/invalid json/i.test(error.message)) code = 'gemini_invalid_json';
+      return jsonResponse(request, env, { error: { code, message: 'Geminiで生成できませんでした。' } }, 502);
+    }
     return jsonResponse(request, env, { error: { code: 'internal_error', message: 'AI長文を生成できませんでした。' } }, 500);
   }
 }
