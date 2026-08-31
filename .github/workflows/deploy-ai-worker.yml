@@ -67,8 +67,17 @@ jobs:
           BASE="${DEPLOYMENT_URL%/}"
           ORIGIN='https://shingo20110505-oss.github.io'
 
-          curl -fsSL --retry 4 --retry-delay 3 --max-time 30 \
-            "$BASE/health" -o /tmp/ai-health.json
+          # A newly-created workers.dev hostname can briefly return 404 while
+          # Cloudflare propagates it. Retry all HTTP statuses before testing AI.
+          health_ready=false
+          for attempt in $(seq 1 12); do
+            if curl -fsSL --max-time 30 "$BASE/health" -o /tmp/ai-health.json; then
+              health_ready=true
+              break
+            fi
+            sleep 5
+          done
+          test "$health_ready" = true
 
           curl -fsSL --retry 3 --retry-delay 3 --max-time 30 \
             -X POST \
