@@ -66,7 +66,7 @@ jobs:
           test -n "$DEPLOYMENT_URL"
           BASE="${DEPLOYMENT_URL%/}"
           ORIGIN='https://shingo20110505-oss.github.io'
-          export EXPECTED_WORKER_VERSION='1.1.0'
+          export EXPECTED_WORKER_VERSION='1.1.1'
 
           # A newly-created workers.dev hostname can briefly return 404 while
           # Cloudflare propagates it. Retry all HTTP statuses before testing AI.
