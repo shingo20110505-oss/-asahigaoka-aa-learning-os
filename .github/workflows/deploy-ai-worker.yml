@@ -101,7 +101,9 @@ jobs:
           const fs = require('fs');
           let code = 'unknown_error';
           try { code = JSON.parse(fs.readFileSync('/tmp/ai-reading.json', 'utf8')).error?.code || code; } catch {}
-          console.error(`AI generation request failed (${process.env.READING_HTTP_STATUS}): ${code}`);
+          let diagnostic = '';
+          try { diagnostic = JSON.parse(fs.readFileSync('/tmp/ai-reading.json', 'utf8')).error?.diagnostic || ''; } catch {}
+          console.error(`AI generation request failed (${process.env.READING_HTTP_STATUS}): ${code}${diagnostic ? ` [${diagnostic}]` : ''}`);
           NODE
             exit 1
           fi
