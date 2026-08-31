@@ -182,7 +182,8 @@ export function validateReading(reading, request) {
   const passage = String(reading.passage || '').trim();
   const range = wordRangeForDifficulty(request.difficulty);
   const count = englishWordCount(passage);
-  if (count < range.min || count > range.max) errors.push(`word_count:${count}:${range.min}-${range.max}`);
+  const wordTolerance = 10;
+  if (count < range.min - wordTolerance || count > range.max + wordTolerance) errors.push(`word_count:${count}:${range.min}-${range.max}`);
   const paragraphs = passage.split(/\n\s*\n/).map(item => item.trim()).filter(Boolean);
   if (paragraphs.length < 3 || paragraphs.length > 8) errors.push(`paragraph_count:${paragraphs.length}`);
   if (hasJapanese(passage)) errors.push('passage_contains_japanese');
@@ -255,11 +256,12 @@ function requestedReadingType(request, attempt) {
 
 export function buildAuthorPrompt(request, attempt) {
   const range = wordRangeForDifficulty(request.difficulty);
+  const targetRange = { min: range.min + 20, max: range.max - 20 };
   const chosenType = requestedReadingType(request, attempt);
   const disallowedGrammar = GRAMMAR_TAGS.filter(tag => !request.allowedGrammar.includes(tag));
   return [
     'Create one original English reading-comprehension set for a Japanese grade-9 learner targeting the Aichi public high-school entrance exam and Asahigaoka level.',
-    `Write ${range.min}-${range.max} English words in 3-8 paragraphs. Difficulty is exactly Level ${request.difficulty}/11. Genre is ${chosenType}.`,
+    `Write ${targetRange.min}-${targetRange.max} English words in 3-8 paragraphs (the hard acceptance range is ${range.min}-${range.max}). Difficulty is exactly Level ${request.difficulty}/11. Genre is ${chosenType}.`,
     'Increase difficulty through evidence distance, paraphrase, information density, competing explanations, and discourse structure—not through grammar outside the allowed list.',
     `Allowed grammar tags: ${request.allowedGrammar.join(', ') || 'basic'}. Explicitly avoid: ${disallowedGrammar.join(', ') || 'none'}.`,
     'Create exactly five unique four-choice questions. Include exactly one detail question and exactly one inference question; use three different types from the remaining allowed types.',
@@ -283,6 +285,7 @@ export function buildVerifierPrompt(reading) {
     'Act as an independent entrance-exam answer-key verifier. Solve all five questions from the passage alone.',
     'You are deliberately not given the author answer key or explanations. Do not assume an intended answer.',
     'For each item, select one answerIndex (0-3), copy a verbatim contiguous evidenceQuote from the passage, and give calibrated confidence from 0 to 1.',
+    'Copy each evidenceQuote character-for-character from the passage, including punctuation and capitalization. Never paraphrase, normalize quotation marks, or use ellipses.',
     'Set overallPass=false if any question is ambiguous, has multiple defensible choices, needs outside knowledge, has no exact evidence, or has no uniquely correct answer.',
     JSON.stringify({ passage: reading.passage, questions: blindQuestions })
   ].join('\n');
