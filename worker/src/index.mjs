@@ -1,5 +1,5 @@
 const WORKER_VERSION = '1.0.0';
-const DEFAULT_MODEL = 'gemini-3.7-flash';
+const DEFAULT_MODEL = 'gemini-3.6-flash';
 const DEFAULT_ORIGIN = 'https://shingo20110505-oss.github.io';
 const INTERACTIONS_URL = 'https://generativelanguage.googleapis.com/v1beta/interactions';
 const MAX_BODY_BYTES = 24000;
