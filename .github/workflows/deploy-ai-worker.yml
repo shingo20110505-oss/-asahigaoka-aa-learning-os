@@ -66,12 +66,14 @@ jobs:
           test -n "$DEPLOYMENT_URL"
           BASE="${DEPLOYMENT_URL%/}"
           ORIGIN='https://shingo20110505-oss.github.io'
+          export EXPECTED_WORKER_VERSION='1.1.0'
 
           # A newly-created workers.dev hostname can briefly return 404 while
           # Cloudflare propagates it. Retry all HTTP statuses before testing AI.
           health_ready=false
           for attempt in $(seq 1 12); do
-            if curl -fsSL --max-time 30 "$BASE/health" -o /tmp/ai-health.json; then
+            if curl -fsSL --max-time 30 "$BASE/health" -o /tmp/ai-health.json \
+              && node -e 'const h=require("/tmp/ai-health.json"); process.exit(h.ok === true && h.version === process.env.EXPECTED_WORKER_VERSION ? 0 : 1)'; then
               health_ready=true
               break
             fi
