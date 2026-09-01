@@ -23,8 +23,14 @@ assert.match(frontend, /aa_ai_reading_config_v1/);
 assert.match(frontend, /https:\/\/asahigaoka-aa-ai-reading\.shingo-20110505\.workers\.dev/);
 assert.match(frontend, /REQUEST_TIMEOUT_MS = 180000/);
 assert.match(frontend, /Gemini生成・正答二重検査済み/);
+assert.match(frontend, /接続設定を保存し、Geminiまで接続できました/);
+assert.match(frontend, /毎日の音声と互換/);
 assert.match(frontend, /translationJa/);
 assert.doesNotMatch(frontend, /GEMINI_API_KEY\s*=/);
+assert.doesNotMatch(frontend, /aa-companion-voice-daily-(?:seen|pending|pick)/);
+assert.doesNotMatch(frontend, /indexedDB\.(?:open|deleteDatabase)/);
+assert.doesNotMatch(frontend, /speechSynthesis\.cancel/);
+assert.doesNotMatch(frontend, /localStorage\.clear/);
 assert.match(loader, /'ai-reading-v1\.js'/);
 assert.match(serviceWorker, /url\('ai-reading-v1\.js'\)/);
 
