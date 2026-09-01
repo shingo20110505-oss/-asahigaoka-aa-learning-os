@@ -3,7 +3,7 @@
 
   if (window.__AA_AI_READING_V1__) return;
 
-  const VERSION = '1.1.0';
+  const VERSION = '1.2.0';
   const CONFIG_KEY = 'aa_ai_reading_config_v1';
   const DEFAULT_ENDPOINT = 'https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev';
   const ENDPOINT_PATH = '/v1/reading';
@@ -23,6 +23,7 @@
   });
 
   let busy = false;
+  let connectionStatus = { state: 'idle', message: '' };
 
   function readConfig() {
     try {
@@ -62,7 +63,7 @@
     return Boolean(config.endpoint && config.accessToken.length >= 24);
   }
 
-  function configure() {
+  async function configure() {
     const current = readConfig();
     const endpoint = current.endpoint || DEFAULT_ENDPOINT;
     const tokenInput = window.prompt(
@@ -78,13 +79,15 @@
       return false;
     }
     writeConfig({ endpoint, accessToken });
+    connectionStatus = { state: 'checking', message: '保存済み・接続確認中' };
     render();
-    return true;
+    return verifyConnection({ configuredNow: true });
   }
 
   function clearConfig() {
     if (!window.confirm('AI接続設定をこの端末から削除しますか？\n学習履歴は削除されません。')) return;
     localStorage.removeItem(CONFIG_KEY);
+    connectionStatus = { state: 'idle', message: '' };
     render();
   }
 
@@ -372,7 +375,7 @@
   async function generate(assistMode) {
     if (busy) return;
     if (state.session?.active && !window.confirm('進行中のセットを保存したまま、AI長文を新しく開始しますか？')) return;
-    if (!isConfigured() && !configure()) return;
+    if (!isConfigured() && !(await configure())) return;
     busy = true;
     showBusy('あなたの弱点に合わせてAI長文を生成中…');
     try {
@@ -389,23 +392,41 @@
     }
   }
 
-  async function testConnection() {
-    if (!isConfigured() && !configure()) return;
-    showBusy('AIサーバーへの接続だけを確認中…');
+  async function verifyConnection({ configuredNow = false } = {}) {
+    showBusy(configuredNow ? '設定を保存して、AI接続を確認中…' : 'AIサーバーへの接続だけを確認中…');
     try {
       const result = await post(STATUS_PATH, {}, 15000);
-      window.alert(result?.ready ? `接続できました。\n使用モデル: ${result.model || 'Gemini'}` : 'Workerには接続できましたが、Gemini設定が未完了です。');
+      if (!result?.ready) throw appError('worker_not_ready', 'Workerには接続できましたが、Gemini設定が未完了です。');
+      connectionStatus = { state: 'ready', message: `接続確認済み（${result.model || 'Gemini'}）` };
+      render();
+      document.dispatchEvent(new CustomEvent('aa:ai-reading-connection', {
+        detail: { ready: true, model: String(result.model || 'Gemini') }
+      }));
+      window.alert(`${configuredNow ? '接続設定を保存し、Geminiまで接続できました。' : 'Geminiまで接続できました。'}\n使用モデル: ${result.model || 'Gemini'}\n\n毎日の音声・画像・学習履歴の設定は変更していません。`);
+      return true;
     } catch (error) {
-      window.alert(friendlyError(error));
+      connectionStatus = { state: 'error', message: '設定は保存済み・接続確認エラー' };
+      render();
+      window.alert(`${configuredNow ? '接続設定は保存しましたが、' : ''}${friendlyError(error)}\n\n毎日の音声データは変更していません。`);
+      return false;
     } finally {
       hideBusy();
     }
   }
 
+  async function testConnection() {
+    if (!isConfigured()) {
+      await configure();
+      return;
+    }
+    await verifyConnection();
+  }
+
   function aiCard() {
     const configured = isConfigured();
     const config = readConfig();
-    return `<div class="sp12"></div><section class="card" data-aa-ai-reading-card="${VERSION}"><div class="eyebrow">AI READING</div><h3 class="h3">Gemini 個別最適長文</h3><p class="sub">弱点語・読解技能・文法範囲だけを匿名化して送り、長文と5問を生成します。別の独立解答で正答と本文根拠が一致した問題だけを出題します。</p><div class="notice"><b>安全設計：</b> Gemini APIキーはアプリへ保存しません。氏名、学校名、全解答履歴、自由記述は送信しません。無料枠では送信内容がGoogleの製品改善に利用される場合があります。</div><div class="sp12"></div><div class="actions"><button class="btn primary" data-action="ai-reading-config">${configured ? 'AI接続設定を変更' : 'AI接続を設定'}</button><button class="btn soft" data-action="ai-reading-test" ${configured ? '' : 'disabled'}>接続テスト</button>${configured ? '<button class="btn ghost" data-action="ai-reading-clear">接続設定を削除</button>' : ''}</div><div class="tiny">状態：${configured ? `接続設定済み（${esc(config.endpoint)}）` : '未設定'}。接続用トークンはGemini APIキーとは別物で、この端末だけに保存します。</div></section>`;
+    const status = connectionStatus.message || (configured ? '接続設定済み' : '未設定');
+    return `<div class="sp12"></div><section class="card" data-aa-ai-reading-card="${VERSION}"><div class="eyebrow">AI READING</div><h3 class="h3">Gemini 個別最適長文</h3><p class="sub">弱点語・読解技能・文法範囲だけを匿名化して送り、長文と5問を生成します。別の独立解答で正答と本文根拠が一致した問題だけを出題します。</p><div class="notice"><b>安全設計：</b> Gemini APIキーはアプリへ保存しません。氏名、学校名、全解答履歴、自由記述は送信しません。無料枠では送信内容がGoogleの製品改善に利用される場合があります。</div><div class="notice"><b>毎日の音声と互換：</b> AI接続設定は専用領域へ保存します。毎日の音声・画像・連続記録には触れず、再生中の音声も停止しません。</div><div class="sp12"></div><div class="actions"><button class="btn primary" data-action="ai-reading-config">${configured ? 'AI接続設定を変更' : 'AI接続を設定'}</button><button class="btn soft" data-action="ai-reading-test" ${configured ? '' : 'disabled'}>接続テスト</button>${configured ? '<button class="btn ghost" data-action="ai-reading-clear">接続設定を削除</button>' : ''}</div><div class="tiny">状態：${esc(status)}${configured ? `（${esc(config.endpoint)}）` : ''}。接続用トークンはGemini APIキーとは別物で、この端末だけに保存します。</div></section>`;
   }
 
   function installStyle() {
@@ -429,7 +450,7 @@
   subjectsHTML = function () {
     let html = subjectsBeforeAi();
     const marker = '<button class="btn ghost" data-action="start-reading-exam">';
-    const controls = '<button class="btn primary" data-action="ai-reading-scaffold">AI個別最適長文</button><button class="btn ghost" data-action="ai-reading-exam">AI入試実戦</button><button class="btn ghost" data-action="ai-reading-config">AI接続設定</button>';
+    const controls = `<button class="btn primary" data-action="ai-reading-scaffold">AI個別最適長文</button><button class="btn ghost" data-action="ai-reading-exam">AI入試実戦</button><button class="btn ghost" data-action="ai-reading-config">${isConfigured() ? 'AI接続済み・変更' : 'AI接続設定'}</button>`;
     if (html.includes(marker) && !html.includes('data-action="ai-reading-scaffold"')) html = html.replace(marker, controls + marker);
     return html;
   };
@@ -465,8 +486,8 @@
     event.stopImmediatePropagation();
     if (action === 'ai-reading-scaffold') generate('scaffold');
     else if (action === 'ai-reading-exam') generate('exam');
-    else if (action === 'ai-reading-config') configure();
-    else if (action === 'ai-reading-test') testConnection();
+    else if (action === 'ai-reading-config') void configure();
+    else if (action === 'ai-reading-test') void testConnection();
     else if (action === 'ai-reading-clear') clearConfig();
   }, true);
 
