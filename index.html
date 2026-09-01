@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" data-theme="light">
+<html lang="ja" data-theme="light" class="aa-app-booting">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -17,6 +17,15 @@
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png">
 <link rel="stylesheet" href="./learning-engine-v22.css">
 <title>旭丘AA Learning OS｜PWA完全版</title>
+<style id="aa-app-boot-guard">
+html.aa-app-booting body>*{visibility:hidden!important}
+html.aa-app-booting body:before{content:"最新版を準備中…";position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:#edf1f6;color:#172033;visibility:visible!important;text-align:center;font:800 15px/1.6 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Yu Gothic",sans-serif}
+html.aa-app-booting.aa-app-boot-slow body:before{content:"最新版を読み込んでいます…\A通信を確認してください。";white-space:pre-line}
+[data-theme="dark"].aa-app-booting body:before{background:#0e1320;color:#f3f4f6}
+</style>
+<script id="aa-app-boot-guard-script">
+(()=>{'use strict';let done=false;const reveal=()=>{if(done)return;done=true;document.documentElement.classList.remove('aa-app-booting','aa-app-boot-slow')};document.addEventListener('aa:v23ready',()=>requestAnimationFrame(reveal),{once:true});addEventListener('pageshow',()=>{if(window.__AA_AI_READING_V1__)requestAnimationFrame(reveal)});setTimeout(()=>{if(window.__AA_AI_READING_V1__)reveal();else document.documentElement.classList.add('aa-app-boot-slow')},8000);setTimeout(reveal,15000)})();
+</script>
 <style>
 :root{
  --bg:#edf1f6;--bg2:#f8fafc;--card:#fff;--ink:#172033;--sub:#667085;--muted:#98a2b3;--line:#d9e0ea;
