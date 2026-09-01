@@ -3,7 +3,7 @@
 
   if (window.__AA_AI_READING_V1__) return;
 
-  const VERSION = '1.2.0';
+  const VERSION = '1.3.0';
   const CONFIG_KEY = 'aa_ai_reading_config_v1';
   const DEFAULT_ENDPOINT = 'https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev';
   const ENDPOINT_PATH = '/v1/reading';
@@ -63,25 +63,58 @@
     return Boolean(config.endpoint && config.accessToken.length >= 24);
   }
 
-  async function configure() {
+  function configModal() {
+    document.getElementById('aaAiReadingConfig')?.remove();
+    const current = readConfig();
+    const host = document.createElement('div');
+    host.id = 'aaAiReadingConfig';
+    host.className = 'aaAiReadingConfig';
+    host.innerHTML = `<div class="aaAiReadingConfigCard" role="dialog" aria-modal="true" aria-labelledby="aaAiReadingConfigTitle"><div class="eyebrow">AI CONNECTION</div><h3 class="h3" id="aaAiReadingConfigTitle">AI接続設定</h3><p class="sub">GitHubに登録した <b>AI_ACCESS_TOKEN</b> と同じ文字列を入力します。Gemini APIキーではありません。</p><label class="field"><span>接続用トークン（24文字以上）</span><div class="aaAiTokenRow"><input type="password" data-ai-token-input autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="${current.accessToken ? '変更しない場合は空欄のまま' : 'AI_ACCESS_TOKENを入力'}"><button class="btn ghost" type="button" data-action="ai-reading-token-toggle">表示</button></div></label><div class="notice"><b>毎日の音声と別保存：</b>この操作で音声・画像・連続記録は変更しません。</div><div class="actions"><button class="btn primary" type="button" data-action="ai-reading-config-save">保存して接続確認</button><button class="btn ghost" type="button" data-action="ai-reading-config-close">閉じる</button></div><div class="aaAiConfigStatus" data-ai-config-status role="status" aria-live="polite">${current.accessToken ? '現在の設定があります。空欄のまま保存すると、現在のトークンで接続確認します。' : 'まだ保存していません。'}</div></div>`;
+    document.body.appendChild(host);
+    const input = host.querySelector('[data-ai-token-input]');
+    input?.addEventListener('keydown', event => {
+      if (event.key !== 'Enter') return;
+      event.preventDefault();
+      void saveConfigFromModal();
+    });
+    setTimeout(() => input?.focus(), 50);
+  }
+
+  function closeConfigModal() {
+    document.getElementById('aaAiReadingConfig')?.remove();
+  }
+
+  async function saveConfigFromModal() {
+    const host = document.getElementById('aaAiReadingConfig');
+    const input = host?.querySelector('[data-ai-token-input]');
+    const status = host?.querySelector('[data-ai-config-status]');
+    const saveButton = host?.querySelector('[data-action="ai-reading-config-save"]');
+    if (!host || !input || !status || !saveButton) return false;
     const current = readConfig();
     const endpoint = current.endpoint || DEFAULT_ENDPOINT;
-    const tokenInput = window.prompt(
-      current.accessToken
-        ? '接続用トークンを変更する場合だけ入力してください。空欄なら現在の値を維持します。'
-        : 'Workerに設定した接続用トークンを入力してください（24文字以上）。\nGemini APIキーは入力しません。',
-      ''
-    );
-    if (tokenInput === null) return false;
-    const accessToken = tokenInput.trim() || current.accessToken;
+    const accessToken = input.value.trim() || current.accessToken;
     if (accessToken.length < 24 || /\s/.test(accessToken)) {
-      window.alert('接続用トークンは空白を含まない24文字以上にしてください。');
+      status.textContent = '入力エラー：空白を含まない24文字以上の接続用トークンを入力してください。';
+      status.dataset.state = 'error';
+      input.focus();
       return false;
     }
+    saveButton.disabled = true;
+    input.disabled = true;
+    status.textContent = '端末に保存しました。Geminiまで接続できるか確認中…';
+    status.dataset.state = 'checking';
     writeConfig({ endpoint, accessToken });
     connectionStatus = { state: 'checking', message: '保存済み・接続確認中' };
     render();
-    return verifyConnection({ configuredNow: true });
+    const ok = await verifyConnection({ configuredNow: true, notify: false });
+    status.textContent = ok
+      ? `接続成功：${connectionStatus.message}。この画面を閉じて「AI個別最適長文」を押してください。`
+      : `保存済みですが接続できません：${connectionStatus.message}。GitHubのAI_ACCESS_TOKENと同じ文字列か確認してください。`;
+    status.dataset.state = ok ? 'ready' : 'error';
+    saveButton.disabled = false;
+    input.disabled = false;
+    saveButton.textContent = ok ? 'もう一度接続確認' : '保存して再確認';
+    return ok;
   }
 
   function clearConfig() {
@@ -375,7 +408,10 @@
   async function generate(assistMode) {
     if (busy) return;
     if (state.session?.active && !window.confirm('進行中のセットを保存したまま、AI長文を新しく開始しますか？')) return;
-    if (!isConfigured() && !(await configure())) return;
+    if (!isConfigured()) {
+      configModal();
+      return;
+    }
     busy = true;
     showBusy('あなたの弱点に合わせてAI長文を生成中…');
     try {
@@ -392,7 +428,7 @@
     }
   }
 
-  async function verifyConnection({ configuredNow = false } = {}) {
+  async function verifyConnection({ configuredNow = false, notify = true } = {}) {
     showBusy(configuredNow ? '設定を保存して、AI接続を確認中…' : 'AIサーバーへの接続だけを確認中…');
     try {
       const result = await post(STATUS_PATH, {}, 15000);
@@ -402,12 +438,12 @@
       document.dispatchEvent(new CustomEvent('aa:ai-reading-connection', {
         detail: { ready: true, model: String(result.model || 'Gemini') }
       }));
-      window.alert(`${configuredNow ? '接続設定を保存し、Geminiまで接続できました。' : 'Geminiまで接続できました。'}\n使用モデル: ${result.model || 'Gemini'}\n\n毎日の音声・画像・学習履歴の設定は変更していません。`);
+      if (notify) window.alert(`${configuredNow ? '接続設定を保存し、Geminiまで接続できました。' : 'Geminiまで接続できました。'}\n使用モデル: ${result.model || 'Gemini'}\n\n毎日の音声・画像・学習履歴の設定は変更していません。`);
       return true;
     } catch (error) {
       connectionStatus = { state: 'error', message: '設定は保存済み・接続確認エラー' };
       render();
-      window.alert(`${configuredNow ? '接続設定は保存しましたが、' : ''}${friendlyError(error)}\n\n毎日の音声データは変更していません。`);
+      if (notify) window.alert(`${configuredNow ? '接続設定は保存しましたが、' : ''}${friendlyError(error)}\n\n毎日の音声データは変更していません。`);
       return false;
     } finally {
       hideBusy();
@@ -416,7 +452,7 @@
 
   async function testConnection() {
     if (!isConfigured()) {
-      await configure();
+      configModal();
       return;
     }
     await verifyConnection();
@@ -440,6 +476,11 @@
       .aaAiReadingSpinner{width:36px;height:36px;margin:0 auto 14px;border-radius:50%;border:4px solid rgba(73,118,255,.2);border-top-color:#4976ff;animation:aaAiSpin .85s linear infinite}
       .aaAiReadingBusyCard .tiny{margin-top:10px}
       .aiReadingBadge{display:inline-flex;align-items:center;gap:6px;margin:8px 0;padding:6px 10px;border-radius:999px;background:rgba(73,118,255,.12);color:#3152b7;font-size:12px;font-weight:800}
+      .aaAiReadingConfig{position:fixed;inset:0;z-index:10002;display:grid;place-items:center;padding:18px;background:rgba(6,12,24,.78);backdrop-filter:blur(9px)}
+      .aaAiReadingConfigCard{width:min(460px,100%);max-height:calc(100vh - 36px);overflow:auto;padding:22px;border-radius:22px;background:var(--card,#fff);color:var(--text,#172033);box-shadow:0 24px 70px rgba(0,0,0,.38)}
+      .aaAiReadingConfigCard .field{display:block;margin:16px 0}.aaAiReadingConfigCard .field>span{display:block;margin-bottom:7px;font-weight:800}
+      .aaAiTokenRow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}.aaAiTokenRow input{min-width:0;min-height:48px;padding:10px 12px;border:1px solid var(--line,#d7ddea);border-radius:12px;font:inherit;background:var(--card,#fff);color:var(--text,#172033)}
+      .aaAiConfigStatus{margin-top:12px;padding:11px 12px;border-radius:12px;background:rgba(73,118,255,.1);font-size:13px;font-weight:800;line-height:1.55}.aaAiConfigStatus[data-state="ready"]{background:#eaf8f1;color:#16724a}.aaAiConfigStatus[data-state="error"]{background:#fff0ef;color:#b42318}
       @keyframes aaAiSpin{to{transform:rotate(360deg)}}
       @media (prefers-reduced-motion:reduce){.aaAiReadingSpinner{animation:none}}
     `;
@@ -452,6 +493,9 @@
     const marker = '<button class="btn ghost" data-action="start-reading-exam">';
     const controls = `<button class="btn primary" data-action="ai-reading-scaffold">AI個別最適長文</button><button class="btn ghost" data-action="ai-reading-exam">AI入試実戦</button><button class="btn ghost" data-action="ai-reading-config">${isConfigured() ? 'AI接続済み・変更' : 'AI接続設定'}</button>`;
     if (html.includes(marker) && !html.includes('data-action="ai-reading-scaffold"')) html = html.replace(marker, controls + marker);
+    html = html.replace('<button class="btn soft" data-action="start-custom" data-kind="reading" data-subject="english">語彙支援長文</button>', '');
+    html = html.replace('<button class="btn ghost" data-action="start-reading-exam">入試実戦長文（辞書OFF）</button>', '');
+    html = html.replace('語彙支援長文は、あなたの推定既知語率に合わせて本文を選択。入試実戦は語彙支援を切り、結果だけを測ります。', 'AI個別最適長文は、推定既知語率・弱点・履修済み文法に合わせて生成します。AI入試実戦は語彙支援を切って結果を測ります。');
     return html;
   };
 
@@ -486,9 +530,18 @@
     event.stopImmediatePropagation();
     if (action === 'ai-reading-scaffold') generate('scaffold');
     else if (action === 'ai-reading-exam') generate('exam');
-    else if (action === 'ai-reading-config') void configure();
+    else if (action === 'ai-reading-config') configModal();
     else if (action === 'ai-reading-test') void testConnection();
     else if (action === 'ai-reading-clear') clearConfig();
+    else if (action === 'ai-reading-config-save') void saveConfigFromModal();
+    else if (action === 'ai-reading-config-close') closeConfigModal();
+    else if (action === 'ai-reading-token-toggle') {
+      const input = document.querySelector('[data-ai-token-input]');
+      if (input) {
+        input.type = input.type === 'password' ? 'text' : 'password';
+        element.textContent = input.type === 'password' ? '表示' : '隠す';
+      }
+    }
   }, true);
 
   installStyle();
