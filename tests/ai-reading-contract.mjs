@@ -16,6 +16,7 @@ import {
 
 const root = path.resolve(import.meta.dirname, '..');
 const frontend = fs.readFileSync(path.join(root, 'ai-reading-v1.js'), 'utf8');
+const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const loader = fs.readFileSync(path.join(root, 'v23-loader.js'), 'utf8');
 const serviceWorker = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
 
@@ -36,6 +37,10 @@ assert.doesNotMatch(frontend, /aa-companion-voice-daily-(?:seen|pending|pick)/);
 assert.doesNotMatch(frontend, /indexedDB\.(?:open|deleteDatabase)/);
 assert.doesNotMatch(frontend, /speechSynthesis\.cancel/);
 assert.doesNotMatch(frontend, /localStorage\.clear/);
+assert.match(index, /class="aa-app-booting"/);
+assert.match(index, /最新版を準備中…/);
+assert.match(index, /aa:v23ready/);
+assert.doesNotMatch(index, /aa-companion-voice-daily-(?:seen|pending|pick)/, 'boot guard must not touch daily voice state');
 assert.match(loader, /'ai-reading-v1\.js'/);
 assert.match(serviceWorker, /url\('ai-reading-v1\.js'\)/);
 
