@@ -69,6 +69,10 @@ jobs:
           node scripts/validate-review-ui.mjs
           node scripts/validate-runtime-assets.mjs
           node tests/ai-reading-contract.mjs
+          node tests/japanese-exam.mjs
+          node scripts/japanese-library.mjs
+          node --check japanese-exam/app.mjs
+          node --check japanese-exam/bridge.js
           node tests/reading-library.mjs
           node scripts/reading-library.mjs --validate
           node scripts/validate-math.mjs
@@ -239,6 +243,9 @@ jobs:
           stage mathematics
           node scripts/verify-math-public.mjs "${BASE}" "${SOURCE_SHA}"
 
+          stage japanese-exam
+          node scripts/verify-japanese-public.mjs "${BASE}" "${SOURCE_SHA}"
+
           stage login-image
           curl -fsSL "${BASE}login-companion-v1.js?verify=${SOURCE_SHA}" -o /tmp/login-image.js
           grep -q 'ZIPからまとめてインストール' /tmp/login-image.js
@@ -347,7 +354,9 @@ jobs:
           math_engine_sha256=${MATH_ENGINE_SHA256}
           quality_runtime=${QUALITY_RUNTIME}
           vocab_mobile_runtime=${VOCAB_MOBILE_RUNTIME}
-          checks=public-release,review-v2,review-bank-exact-hash,mobile-layout-exact-hash,quality-repair-exact-hash,ai-reading-exact-hash,math-engine-exact-hash,math-runtime,quality-browser-runtime,vocab-mobile-runtime,login-image,login-voice,service-worker,diagnostics
+          japanese_exam_public=success
+          japanese_exam_checks=public-assets-sha256,module-mime,22-point-scoring,choice-evidence
+          checks=japanese-exam-public,public-release,review-v2,review-bank-exact-hash,mobile-layout-exact-hash,quality-repair-exact-hash,ai-reading-exact-hash,math-engine-exact-hash,math-runtime,quality-browser-runtime,vocab-mobile-runtime,login-image,login-voice,service-worker,diagnostics
           EOF
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -393,3 +402,4 @@ jobs:
             git commit -m "Record Pages deployment outcome"
             git push origin main
           fi
+
