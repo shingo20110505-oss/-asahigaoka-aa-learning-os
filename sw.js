@@ -1,5 +1,5 @@
 'use strict';
-const VERSION='2.5.309-quality2-chronologia1000-aichi-math-application-1.0.1-20260902-japanese-exam-1.0.0-math-full-1.1.0-social-application-1.0.0';
+const VERSION='2.5.310-quality2-chronologia1000-aichi-math-application-1.0.1-20260902-japanese-exam-1.0.0-math-full-1.1.0-social-application-1.0.0-science-exam-1.0.0';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;
@@ -7,6 +7,9 @@ const CORE=[url('social-exam/bridge.js'),url('social-exam/core.mjs'),url('social
 CORE.unshift(url('math-exam/catalog.json'));
 CORE.unshift(url('math-exam/engine.js'));
 CORE.unshift(url('math-exam/adapter.js'));
+CORE.unshift(url('science-exam/core.mjs'));
+CORE.unshift(url('science-exam/generator.mjs'));
+CORE.unshift(url('science-exam/bridge.js'));
 async function putIfGood(cache,request,response){if(response&&response.ok)await cache.put(request,response.clone());return response}
 async function networkFirst(request,{reload=false}={}){const cache=await caches.open(CACHE_NAME);try{const response=await fetch(request,{cache:reload?'no-store':'no-cache'});return await putIfGood(cache,request,response)}catch(_){return(await cache.match(request))||(await caches.match(request))||null}}
 async function cacheFirstRefresh(request,event){const cache=await caches.open(CACHE_NAME);const cached=await cache.match(request)||await caches.match(request);const refresh=fetch(request).then(r=>putIfGood(cache,request,r)).catch(()=>null);if(cached){event?.waitUntil(refresh);return cached}return(await refresh)||new Response('',{status:504,statusText:'Offline'})}
