@@ -32,8 +32,10 @@ jobs:
           node --check math-exam/adapter.js
           node --check quality-ci-runner-v1.js
           node --check sw.js
+          node scripts/validate-runtime-assets.mjs
           node scripts/validate-math.mjs
           node tests/math-full-replacement.mjs
+          grep -q 'AA_QUALITY_REPAIR_FINAL' quality-ci-runner-v1.js
           grep -q 'math-exam/adapter.js?version=1.1.0' index.html
           grep -q "url('math-exam/adapter.js')" sw.js
           grep -q 'aaMathFullReplacement' math-exam/adapter.js
