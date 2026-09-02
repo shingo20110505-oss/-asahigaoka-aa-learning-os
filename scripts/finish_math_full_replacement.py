@@ -34,21 +34,31 @@ sw.write_text(s,encoding='utf-8')
 
 q=Path('quality-ci-runner-v1.js')
 s=q.read_text(encoding='utf-8')
-old='''    const mathSets = [1401,2202,3503,4804].map(seed => window.AAMathEngine.buildSet(seed, 2));
+legacy='''    const mathSets = [1401,2202,3503,4804].map(seed => window.AAMathEngine.buildSet(seed, 2));
     const math = mathSets.flat();
     const mathFormulaPracticePreserved = window.AA_QUALITY_REPAIR_FINAL?.math?.ok === true;
     add('愛知県型数学・応用検算', mathFormulaPracticePreserved && math.length === 76 && mathSets.every(qs => qs.length === 19 && qs.reduce((n,q)=>n+q.points,0) === 22) && math.every(q => q.choices.length === 4 && q.choices.filter(c => c.ok).length === 1 && q.source.curriculum === 'junior-high') && math.some(q => q.thinking === 'certainty') && math.some(q => q.thinking === 'reflection_area_bisection') && math.some(q => q.thinking === 'piecewise_intersections'), '通常演習を保持／4セット・76問／19解答単位・22点／応用思考を検査');
 '''
-new='''    const mathSets = [1401,2202,3503,4804].map(seed => window.AAMathEngine.buildSet(seed, 2));
+intermediate='''    const mathSets = [1401,2202,3503,4804].map(seed => window.AAMathEngine.buildSet(seed, 2));
     const math = mathSets.flat();
     const normalMath = Array.from({length: 44}, (_,i) => makeMathQ(9, 910000 + i));
     const mathFull = window.AAMathFullReplacement;
     add('愛知県型数学・応用検算', mathFull?.ok === true && document.documentElement.dataset.aaMathFullReplacement === 'PASS' && math.length === 76 && mathSets.every(qs => qs.length === 19 && qs.reduce((n,q)=>n+q.points,0) === 22) && math.every(q => q.choices.length === 4 && q.choices.filter(c => c.ok).length === 1 && q.source.curriculum === 'junior-high') && normalMath.every(q => q.source?.route === 'full-replacement' && q.source?.origin === 'verified-math-template' && q.choices.length === 4 && q.choices.filter(c=>c.ok).length === 1) && normalMath.some(q => q.mathFigure) && math.some(q => q.thinking === 'certainty') && math.some(q => q.thinking === 'reflection_area_bisection') && math.some(q => q.thinking === 'piecewise_intersections'), '通常演習も検証済みエンジンへ完全置換／4セット・76問／通常44問／図・応用思考を検査');
 '''
-if new not in s:
-    if old not in s:
+desired='''    const mathSets = [1401,2202,3503,4804].map(seed => window.AAMathEngine.buildSet(seed, 2));
+    const math = mathSets.flat();
+    const mathFormulaPracticePreserved = window.AA_QUALITY_REPAIR_FINAL?.math?.ok === true;
+    const normalMath = Array.from({length: 44}, (_,i) => makeMathQ(9, 910000 + i));
+    const mathFull = window.AAMathFullReplacement;
+    add('愛知県型数学・応用検算', mathFormulaPracticePreserved && mathFull?.ok === true && document.documentElement.dataset.aaMathFullReplacement === 'PASS' && math.length === 76 && mathSets.every(qs => qs.length === 19 && qs.reduce((n,q)=>n+q.points,0) === 22) && math.every(q => q.choices.length === 4 && q.choices.filter(c => c.ok).length === 1 && q.source.curriculum === 'junior-high') && normalMath.every(q => q.source?.route === 'full-replacement' && q.source?.origin === 'verified-math-template' && q.choices.length === 4 && q.choices.filter(c=>c.ok).length === 1) && normalMath.some(q => q.mathFigure) && math.some(q => q.thinking === 'certainty') && math.some(q => q.thinking === 'reflection_area_bisection') && math.some(q => q.thinking === 'piecewise_intersections'), '通常演習も検証済みエンジンへ完全置換／既存FINAL品質ゲート保持／4セット・76問／通常44問／図・応用思考を検査');
+'''
+if desired not in s:
+    if intermediate in s:
+        s=s.replace(intermediate,desired,1)
+    elif legacy in s:
+        s=s.replace(legacy,desired,1)
+    else:
         raise AssertionError('quality CI math marker missing')
-    s=s.replace(old,new,1)
 q.write_text(s,encoding='utf-8')
 
 Path('scripts/verify-math-public.mjs').write_text(r'''import {createHash} from "node:crypto";
