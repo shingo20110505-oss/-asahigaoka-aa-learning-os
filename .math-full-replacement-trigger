@@ -1,4 +1,4 @@
-run=2026-09-03T00:08:00+09:00
+run=2026-09-03T00:18:00+09:00
 purpose=disconnect-legacy-math-practice-and-verify-all-routes
-retry=4
-workflow=contents-only
+retry=5
+workflow=runtime-regression-guard
