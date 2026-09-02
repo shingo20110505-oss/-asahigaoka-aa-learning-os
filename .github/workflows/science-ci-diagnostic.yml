@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  diagnose:
+  repair:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,24 +19,30 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Capture exact failure
+      - name: Repair template delimiters and prove QA
         run: |
-          set +e
-          : > SCIENCE_CI_DIAGNOSTIC.txt
-          for cmd in \
-            "node --check science-exam/core.mjs" \
-            "node --check science-exam/generator.mjs" \
-            "node --check science-exam/bridge.js" \
-            "node tests/science-exam.mjs" \
-            "grep -q 'science-exam/bridge.js' v23-loader.js" \
-            "grep -q 'legacyGenericFallback:false' science-exam/bridge.js"; do
-            echo "CMD: $cmd" >> SCIENCE_CI_DIAGNOSTIC.txt
-            bash -lc "$cmd" >> SCIENCE_CI_DIAGNOSTIC.txt 2>&1
-            echo "EXIT: $?" >> SCIENCE_CI_DIAGNOSTIC.txt
-            echo >> SCIENCE_CI_DIAGNOSTIC.txt
-          done
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('science-exam/generator.mjs')
+          s=p.read_text()
+          before=s
+          s=s.replace('}))],\n','})],\n')
+          s=s.replace('}))}],\n','})}],\n')
+          s=s.replace('}))]\n];','})]\n];')
+          if s==before:
+              raise SystemExit('no template delimiter changes made')
+          p.write_text(s)
+          PY
+          node --check science-exam/core.mjs
+          node --check science-exam/generator.mjs
+          node --check science-exam/bridge.js
+          node tests/science-exam.mjs | tee SCIENCE_CI_DIAGNOSTIC.txt
+          grep -q '"ok":true' SCIENCE_CI_DIAGNOSTIC.txt
+          grep -q '"legacyGenericRemoved":true' SCIENCE_CI_DIAGNOSTIC.txt
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add SCIENCE_CI_DIAGNOSTIC.txt
-          git commit -m 'Record science CI diagnostic'
+          git add science-exam/generator.mjs SCIENCE_CI_DIAGNOSTIC.txt
+          git diff --cached --check
+          git commit -m 'Fix science generator syntax and pass QA'
           git push origin main
