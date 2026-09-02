@@ -63,6 +63,11 @@ try {
   assert.doesNotMatch(loader, /reading-natural-v[23]\.js|english-reading-variation/);
   const vocab = await fs.readFile(path.join(root, 'vocab.html'), 'utf8');
   assert.match(vocab, /type:'vocab',source:v,skills:\[\{id:'en.vocab.recall'/);
+  const progressFunction = vocab.match(/function prog\(v\)\{[\s\S]*?\}function progLabel/)[0].replace(/function progLabel$/, '');
+  const progress = vm.runInNewContext('(' + progressFunction + ')');
+  assert.equal(progress({progress:{seen:0,fromReading:true}}), 'weak');
+  assert.equal(progress({progress:{seen:0,fromReading:false}}), 'new');
+  assert.equal(progress({progress:{seen:3,correct:3,retention:.95,fromReading:false}}), 'mastered');
   await fs.writeFile(path.join(directory, entry.path), acceptedRaw + ' ');
   await assert.rejects(validateLibrary(directory), /digest_mismatch/);
   console.log('Reading library checks passed: daily budget, quota, duplicates, append-only content, hashes, same-origin fetch, offline fallback, grammar/difficulty matching, retired banks, vocabulary bridge.');
