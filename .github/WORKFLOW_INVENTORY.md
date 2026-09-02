@@ -4,87 +4,26 @@
 - `chronologia-63-qa.yml`
 - `chronologia-deep-audit.yml`
 - `content-v24-audit.yml`
+- `core-ci.yml`
 - `deploy-ai-worker.yml`
 - `deploy-pages.yml`
 - `difficulty-5subject-audit.yml`
 - `kokugo-chronologia-audit.yml`
 - `kokugo-jukugo-advanced-audit.yml`
-- `phase1-architecture-refactor.yml`
 - `reading-1000-audit.yml`
 - `replenish-reading.yml`
 - `science-exam-ci.yml`
 - `social-exam-check.yml`
-
-## Archived legacy / one-shot
-- `add-kokugo-chronologia-link.yml`
-- `add-kokugo-page-selector.yml`
-- `add-koten-kanbun-1000.yml`
-- `add-review-invite-20260901.yml`
-- `add-review-passive-prepositions-20260831.yml`
-- `add-review-sasu-20260830.yml`
-- `add-review-shisa-20260825.yml`
-- `add-review-to-for-20260831.yml`
-- `apply-kokugo-direct-ja.yml`
-- `apply-kokugo-mobile-design-now.yml`
-- `apply-kokugo-nav-clarity.yml`
-- `chronologia-63-guard.yml`
-- `chronologia-631-finish.yml`
-- `chronologia-companion-bridge-patch.yml`
-- `chronologia-live-companion-patch.yml`
-- `clear-stale-pages-run-20260831.yml`
-- `emergency-restore-index-v2.yml`
-- `emergency-restore-index.yml`
-- `extend-kokugo-jukugo-quiz.yml`
-- `extract-kokugo-a-pending.yml`
-- `finish-math-full-replacement.yml`
-- `fix-kokugo-quiz-tap-20260819.yml`
-- `fix-kokugo-table-overlap.yml`
-- `force-pages-source.yml`
-- `install-list-study-nav.yml`
-- `integrate-aa-companion-v2.yml`
-- `japanese-meanings-kokugo-fast.yml`
-- `japanese-meanings-kokugo.yml`
-- `kokugo-chronologia-generate.yml`
-- `kokugo-ja-all-continuous-v2.yml`
-- `kokugo-ja-all-continuous.yml`
-- `kokugo-mobile-dual-column.yml`
-- `merge-kokugo-direct-meanings.yml`
-- `observe-pages.yml`
-- `pages-run-diagnostic.yml`
-- `patch-reading-audit-evidence-scope-v5.yml`
-- `patch-reading-audit-v2.yml`
-- `patch-reading-detail-evidence-v4.yml`
-- `patch-reading-evidence-v3.yml`
-- `phase1-apply-nonworkflow.yml`
-- `phase1-export-transform.yml`
-- `phase1-fix-helper.yml`
-- `phase1-refactor-diagnostic.yml`
-- `phase1-runtime-probe.yml`
-- `prepare-kokugo-direct-translation.yml`
-- `quiz-integrity-public-verify.yml`
-- `quiz-ui-public-verify.yml`
-- `rank-koten-kanbun-exam-priority.yml`
-- `reading-audit-diagnostic.yml`
-- `recovery-deploy-review-20260831.yml`
-- `repair-kokugo-nav-v2.yml`
-- `report-aa-companion.yml`
-- `report-pages-650.yml`
-- `report-pages-runtime.yml`
-- `restore-main-index.yml`
-- `rollback-bad-kokugo-machine-ja.yml`
 - `social-public-verify.yml`
-- `validate-companion7.yml`
-- `verify-kokugo-direct-public.yml`
-- `verify-kokugo-quiz-tap-20260819-v2.yml`
-- `verify-kokugo-quiz-tap-20260819.yml`
-- `verify-koten-kanbun-public.yml`
-- `verify-public-pages.yml`
-- `verify-review-area-ratio-production-20260825.yml`
-- `verify-review-image-20260822-kuchi-atawazu.yml`
+
+## Retired / archived
+Legacy one-shot fixes, restores, public observers, report writers, old verification jobs, and Phase 1 helper workflows have been removed from `.github/workflows`. Historical one-shot workflows that were worth retaining are stored under `.github/workflow-archive/legacy-one-shot/` where they cannot trigger.
 
 ## Policy
-- Keep only reusable CI/deploy/maintenance and protected work-in-progress workflows active.
-- Historical fixes/restores/reports/verifiers are archived outside `.github/workflows` and cannot trigger.
-- `deploy-pages.yml` is the single Pages publisher. Its own status-file commits remain path-ignored, while obsolete Pages observer/report writers are disabled by archival.
-- Reading replenishment no longer manually dispatches Pages after pushing content.
-- Science and Social exam work remains protected while in progress.
+- `deploy-pages.yml` is the single GitHub Pages publisher.
+- Pages concurrency does not cancel an in-flight deployment.
+- Reading replenishment only commits generated content; its push to `main` naturally triggers Pages and does not manually dispatch a second deploy.
+- Deployment/public verification status files remain path-ignored so their bookkeeping commits do not recursively trigger Pages.
+- Science and Social entrance-exam implementations are completed, protected production systems. Their CI/public verification workflows remain active.
+- `core-ci.yml` is the permanent read-only gate for architecture, review, runtime assets, reading, Japanese and mathematics integrity.
+- New reusable workflows require a clear long-lived responsibility; temporary migration or diagnostic workflows must be retired after use.

@@ -17,7 +17,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -49,6 +49,7 @@ jobs:
             login-companion-v1.js \
             login-production-test-v1.js \
             settings-improvements-v1.js \
+            companion-media-settings-v1.js \
             review-bank-v1.js \
             review-page-v1.js \
             storage-resilience-v1.js \
@@ -61,6 +62,15 @@ jobs:
             ai-reading-library-v1.js \
             worker/src/index.mjs \
             math-exam/engine.js \
+            app/runtime-registry.js \
+            app/legacy/main-runtime.js \
+            app/app-shell.js \
+            app/state/state-manager.js \
+            app/learning/learning-engine.js \
+            app/subjects/subject-engines.js \
+            app/ui/ui-runtime.js \
+            app/pwa/pwa-runtime.js \
+            app/qa/qa-runtime.js \
             sw.js; do
             node --check "$f"
           done
@@ -76,6 +86,7 @@ jobs:
           node tests/reading-library.mjs
           node scripts/reading-library.mjs --validate
           node scripts/validate-math.mjs
+          node tests/architecture-boundaries.mjs
 
           grep -q 'AA_REVIEW_BANK_VERSION=' review-bank-v1.js
           grep -q "a.href='./review/'" aa-companion-v2.js
@@ -402,4 +413,3 @@ jobs:
             git commit -m "Record Pages deployment outcome"
             git push origin main
           fi
-

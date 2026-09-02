@@ -1,0 +1,44 @@
+name: Core architecture CI
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: core-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate architecture and protected systems
+        run: |
+          set -euo pipefail
+          for f in app/runtime-registry.js app/legacy/main-runtime.js app/app-shell.js app/state/state-manager.js app/learning/learning-engine.js app/subjects/subject-engines.js app/ui/ui-runtime.js app/pwa/pwa-runtime.js app/qa/qa-runtime.js companion-media-settings-v1.js aa-companion-mobile-fix.js v23-loader.js science-exam/bridge.js social-exam/bridge.js sw.js; do node --check "$f"; done
+          node tests/architecture-boundaries.mjs
+          node scripts/validate-review-bank.mjs
+          node scripts/validate-review-ui.mjs
+          node scripts/validate-runtime-assets.mjs
+          node tests/ai-reading-contract.mjs
+          node tests/japanese-exam.mjs
+          node scripts/japanese-library.mjs
+          node tests/reading-library.mjs
+          node scripts/reading-library.mjs --validate
+          node scripts/validate-math.mjs
+          node tests/science-exam.mjs
+          node tests/social-exam.mjs
+          grep -q 'setLoginVoices' companion7-runtime.js
+          grep -q 'setExplosionVoice' companion7-runtime.js
+          grep -q 'showDailyVisual' login-companion-v1.js
+          grep -q 'data-login-image-add' companion-media-settings-v1.js
+          grep -q 'data-login-voice-file' companion-media-settings-v1.js
