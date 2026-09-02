@@ -1,5 +1,5 @@
 'use strict';
-const VERSION='2.5.306-quality2-chronologia1000-aichi-math-application-1.0.0-20260902';
+const VERSION='2.5.307-quality2-chronologia1000-aichi-math-application-1.0.1-20260902';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;
