@@ -1,5 +1,82 @@
 {
   "schemaVersion": 1,
-  "updatedAt": null,
-  "entries": []
+  "updatedAt": "2026-09-02T08:40:26.344Z",
+  "entries": [
+    {
+      "id": "69d88b6e13475fd431f4279b6c311b82cf532796d11491fd923ec1b888cfda8b",
+      "sha256": "69d88b6e13475fd431f4279b6c311b82cf532796d11491fd923ec1b888cfda8b",
+      "path": "items/69d88b6e13475fd431f4279b6c311b82cf532796d11491fd923ec1b888cfda8b.json",
+      "title": "The Voice of the Old Clock",
+      "topic": "Restoring a traditional town clock through cooperation",
+      "difficulty": 7,
+      "readingType": "narrative",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison",
+        "passive",
+        "presentPerfect",
+        "asMuchAs",
+        "asManyAs"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.cause",
+        "en.read.inference",
+        "en.read.paraphrase",
+        "en.read.title"
+      ],
+      "words": [
+        "masterpiece",
+        "pendulum",
+        "rust",
+        "progress"
+      ],
+      "wordCount": 316,
+      "createdAt": "2026-09-02T08:39:50.906Z"
+    },
+    {
+      "id": "4a2968df8f7bfd0556dd46aa70f6fd87167f90ad0d30c49ff7901af25fbd74b4",
+      "sha256": "4a2968df8f7bfd0556dd46aa70f6fd87167f90ad0d30c49ff7901af25fbd74b4",
+      "path": "items/4a2968df8f7bfd0556dd46aa70f6fd87167f90ad0d30c49ff7901af25fbd74b4.json",
+      "title": "The Value of Board Games",
+      "topic": "The social and cognitive benefits of playing traditional board games",
+      "difficulty": 7,
+      "readingType": "argument",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison",
+        "passive",
+        "presentPerfect",
+        "asMuchAs",
+        "asManyAs"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.cause",
+        "en.read.referent",
+        "en.read.mainIdea"
+      ],
+      "words": [
+        "traditional",
+        "physical",
+        "economical",
+        "graphics"
+      ],
+      "wordCount": 381,
+      "createdAt": "2026-09-02T08:40:26.342Z"
+    }
+  ]
 }
