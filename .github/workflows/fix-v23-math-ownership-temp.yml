@@ -1,0 +1,41 @@
+name: Temporary V23 math ownership patch
+
+on:
+  push:
+    branches: [fix-v23-math-ownership-20260903]
+    paths: ['.github/workflows/fix-v23-math-ownership-temp.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix-v23-math-ownership-20260903
+          fetch-depth: 0
+      - name: Stop legacy V23 from overriding verified mathematics
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('learning-engine-v23.js')
+          s=p.read_text()
+          old="if(typeof makeMathQ==='function'){const old=makeMathQ;makeMathQ=function(diff=7){const areas=['number','algebra','equation','function','geometry','measure','probability','statistics'];return Math.random()<.82?math(pick(areas),diff):old(diff)}}"
+          new="if(typeof makeMathQ==='function'&&window.AAMathFullReplacement?.ok!==true){const old=makeMathQ;makeMathQ=function(diff=7){const areas=['number','algebra','equation','function','geometry','measure','probability','statistics'];return Math.random()<.82?math(pick(areas),diff):old(diff)}}"
+          if s.count(old)!=1:
+              raise SystemExit(f'expected one legacy math hook, found {s.count(old)}')
+          p.write_text(s.replace(old,new))
+          PY
+          node --check learning-engine-v23.js
+          grep -Fq "window.AAMathFullReplacement?.ok!==true" learning-engine-v23.js
+          node tests/architecture-boundaries.mjs
+          node scripts/validate-math.mjs
+      - name: Commit patch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add learning-engine-v23.js
+          git commit -m 'Prevent legacy V23 math override after verified adapter'
+          git push origin HEAD:fix-v23-math-ownership-20260903
