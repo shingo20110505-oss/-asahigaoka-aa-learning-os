@@ -1,5 +1,5 @@
 'use strict';
-const VERSION='2.5.305-quality2-chronologia1000-storage-guard-20260816-kokugo-direct-ja-study-timer-header-menu-ai-reading-no-legacy-flash-20260901';
+const VERSION='2.5.305-quality2-chronologia1000-storage-guard-20260816-kokugo-direct-ja-study-timer-header-menu-ai-reading-no-legacy-flash-20260901-connection-diagnostics-20260902';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;
@@ -26,3 +26,4 @@ self.addEventListener('install',event=>{event.waitUntil((async()=>{const cache=a
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('asahigaoka-aa-os-')&&k!==CACHE_NAME).map(k=>caches.delete(k)));await self.clients.claim()})())});
 self.addEventListener('message',event=>{if(event.data?.type==='SKIP_WAITING')self.skipWaiting();if(event.data?.type==='CLEAR_RUNTIME_CACHE')event.waitUntil(caches.delete(CACHE_NAME))});
 self.addEventListener('fetch',event=>{const request=event.request;if(request.method!=='GET')return;const u=new URL(request.url);if(u.origin!==self.location.origin||!u.href.startsWith(BASE))return;if(request.mode==='navigate'){event.respondWith((async()=>{const fresh=await networkFirst(request);if(fresh)return withChronologiaBootGuard(request,fresh);const fallback=(await caches.match(request))||(await caches.match(url('index.html')))||(await caches.match(url('offline.html')))||new Response('Offline',{status:503});return withChronologiaBootGuard(request,fallback)})());return}const ext=(u.pathname.split('.').pop()||'').toLowerCase();if(ext==='js'||ext==='css'||ext==='json'||ext==='webmanifest'){event.respondWith((async()=>{const fresh=await networkFirst(request,{reload:ext==='js'||u.pathname.endsWith('review-bank-v1.js')});return fresh||new Response('',{status:504,statusText:'Offline'})})());return}event.respondWith(cacheFirstRefresh(request,event))});
+

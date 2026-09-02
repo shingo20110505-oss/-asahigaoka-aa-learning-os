@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import './ai-connection-errors.mjs';
 import {
   READING_SCHEMA,
   VERIFIER_SCHEMA,
@@ -24,7 +25,7 @@ assert.match(frontend, /aa_ai_reading_config_v1/);
 assert.match(frontend, /https:\/\/asahigaoka-aa-ai-reading\.shingo-20110505\.workers\.dev/);
 assert.match(frontend, /REQUEST_TIMEOUT_MS = 180000/);
 assert.match(frontend, /Gemini生成・正答二重検査済み/);
-assert.match(frontend, /接続設定を保存し、Geminiまで接続できました/);
+assert.match(frontend, /接続設定を保存し、AIサーバーへの認証に成功しました/);
 assert.match(frontend, /毎日の音声と互換/);
 assert.match(frontend, /data-ai-token-input/);
 assert.match(frontend, /保存して接続確認/);

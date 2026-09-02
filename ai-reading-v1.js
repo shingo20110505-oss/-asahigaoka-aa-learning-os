@@ -3,7 +3,7 @@
 
   if (window.__AA_AI_READING_V1__) return;
 
-  const VERSION = '1.3.0';
+  const VERSION = '1.3.1';
   const CONFIG_KEY = 'aa_ai_reading_config_v1';
   const DEFAULT_ENDPOINT = 'https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev';
   const ENDPOINT_PATH = '/v1/reading';
@@ -52,10 +52,16 @@
   }
 
   function writeConfig(config) {
-    localStorage.setItem(CONFIG_KEY, JSON.stringify({
+    const serialized = JSON.stringify({
       endpoint: normalizeEndpoint(config.endpoint),
       accessToken: String(config.accessToken || '')
-    }));
+    });
+    try {
+      localStorage.setItem(CONFIG_KEY, serialized);
+      if (localStorage.getItem(CONFIG_KEY) !== serialized) throw new Error('Storage verification failed');
+    } catch (_) {
+      throw appError('storage_unavailable', 'このブラウザに接続設定を保存できませんでした。ブラウザの保存制限や端末の空き容量を確認してください。');
+    }
   }
 
   function isConfigured() {
@@ -89,7 +95,7 @@
     const input = host?.querySelector('[data-ai-token-input]');
     const status = host?.querySelector('[data-ai-config-status]');
     const saveButton = host?.querySelector('[data-action="ai-reading-config-save"]');
-    if (!host || !input || !status || !saveButton) return false;
+    if (!host || !input || !status || !saveButton || saveButton.disabled) return false;
     const current = readConfig();
     const endpoint = current.endpoint || DEFAULT_ENDPOINT;
     const accessToken = input.value.trim() || current.accessToken;
@@ -101,20 +107,37 @@
     }
     saveButton.disabled = true;
     input.disabled = true;
-    status.textContent = '端末に保存しました。Geminiまで接続できるか確認中…';
-    status.dataset.state = 'checking';
-    writeConfig({ endpoint, accessToken });
-    connectionStatus = { state: 'checking', message: '保存済み・接続確認中' };
-    render();
-    const ok = await verifyConnection({ configuredNow: true, notify: false });
-    status.textContent = ok
-      ? `接続成功：${connectionStatus.message}。この画面を閉じて「AI個別最適長文」を押してください。`
-      : `保存済みですが接続できません：${connectionStatus.message}。GitHubのAI_ACCESS_TOKENと同じ文字列か確認してください。`;
-    status.dataset.state = ok ? 'ready' : 'error';
-    saveButton.disabled = false;
-    input.disabled = false;
-    saveButton.textContent = ok ? 'もう一度接続確認' : '保存して再確認';
-    return ok;
+    let saved = false;
+    let ok = false;
+    try {
+      status.textContent = '接続設定を保存中…';
+      status.dataset.state = 'checking';
+      writeConfig({ endpoint, accessToken });
+      saved = true;
+      input.value = '';
+      input.type = 'password';
+      input.placeholder = '保存済み。再確認は空欄のままでOK';
+      const toggle = host.querySelector('[data-action="ai-reading-token-toggle"]');
+      if (toggle) toggle.textContent = '表示';
+      status.textContent = '端末に保存しました。AIサーバーへの接続を確認中…';
+      connectionStatus = { state: 'checking', message: '保存済み・接続確認中' };
+      render();
+      ok = await verifyConnection({ configuredNow: true, notify: false });
+      status.textContent = ok
+        ? `接続成功：${connectionStatus.message}。この画面を閉じて「AI個別最適長文」を押してください。`
+        : `設定は保存済みです。${connectionStatus.message}\n${connectionDiagnostics()}`;
+      status.dataset.state = ok ? 'ready' : 'error';
+      return ok;
+    } catch (error) {
+      connectionStatus = { state: 'error', code: error.code || 'client_error', message: friendlyError(error) };
+      status.textContent = `${saved ? '設定は保存済みです。' : ''}${connectionStatus.message}\n${connectionDiagnostics()}`;
+      status.dataset.state = 'error';
+      return false;
+    } finally {
+      saveButton.disabled = false;
+      input.disabled = false;
+      saveButton.textContent = ok ? 'もう一度接続確認' : saved ? '保存済みの設定で再確認' : '保存して接続確認';
+    }
   }
 
   function clearConfig() {
@@ -200,6 +223,10 @@
   async function post(path, body, timeoutMs = REQUEST_TIMEOUT_MS) {
     const config = readConfig();
     if (!config.endpoint || !config.accessToken) throw appError('not_configured', 'AI接続が未設定です。');
+    if (navigator.onLine === false) throw appError('offline', '端末がオフラインです。インターネットに接続して再確認してください。');
+    if (typeof fetch !== 'function' || typeof AbortController !== 'function') {
+      throw appError('client_unsupported', 'このブラウザはAI接続に必要な通信機能に対応していません。ブラウザを更新するか、対応するブラウザで開いてください。');
+    }
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeoutMs);
     try {
@@ -218,14 +245,17 @@
       let payload = null;
       try { payload = await response.json(); } catch (_) { /* handled below */ }
       if (!response.ok) {
-        const code = String(payload?.error?.code || 'request_failed');
-        throw appError(code, String(payload?.error?.message || `AIサーバーがエラーを返しました（${response.status}）。`));
+        const code = String(payload?.error?.code || (path === STATUS_PATH && payload?.ready === false ? 'worker_not_ready' : 'request_failed'));
+        const error = appError(code, String(payload?.error?.message || `AIサーバーがエラーを返しました（HTTP ${response.status}）。`));
+        error.httpStatus = response.status;
+        throw error;
       }
+      if (!payload || typeof payload !== 'object') throw appError('invalid_response', 'AIサーバーから正常な応答を受け取れませんでした。');
       return payload;
     } catch (error) {
-      if (error?.name === 'AbortError') throw appError('timeout', '生成が3分以内に完了しませんでした。');
-      if (error?.code) throw error;
-      throw appError('network_error', navigator.onLine ? 'AIサーバーに接続できませんでした。' : 'オフラインです。');
+      if (error?.name === 'AbortError') throw appError(path === STATUS_PATH ? 'connection_timeout' : 'timeout', path === STATUS_PATH ? 'AIサーバーの接続確認が15秒で時間切れになりました。' : '生成が3分以内に完了しませんでした。');
+      if (typeof error?.code === 'string') throw error;
+      throw appError(navigator.onLine === false ? 'offline' : 'network_error', 'AIサーバーへ通信できませんでした。');
     } finally {
       clearTimeout(timer);
     }
@@ -374,17 +404,19 @@
     startTicker();
   }
 
-  function showBusy(message) {
+  function showBusy(message, detail = '本文作成後、別のAI判定で全5問を解き直しています。画面を閉じないでください。') {
     let overlay = document.getElementById('aaAiReadingBusy');
     if (!overlay) {
       overlay = document.createElement('div');
       overlay.id = 'aaAiReadingBusy';
       overlay.className = 'aaAiReadingBusy';
-      overlay.innerHTML = '<div class="aaAiReadingBusyCard"><div class="aaAiReadingSpinner" aria-hidden="true"></div><div class="strong" data-ai-busy-message></div><div class="tiny">本文作成後、別のAI判定で全5問を解き直しています。画面を閉じないでください。</div></div>';
+      overlay.innerHTML = '<div class="aaAiReadingBusyCard"><div class="aaAiReadingSpinner" aria-hidden="true"></div><div class="strong" data-ai-busy-message></div><div class="tiny" data-ai-busy-detail></div></div>';
       document.body.appendChild(overlay);
     }
     const label = overlay.querySelector('[data-ai-busy-message]');
     if (label) label.textContent = message;
+    const description = overlay.querySelector('[data-ai-busy-detail]');
+    if (description) description.textContent = detail;
     overlay.hidden = false;
   }
 
@@ -397,12 +429,43 @@
     const messages = {
       quota_exceeded: 'Gemini無料枠の上限に達しました。時間を置くと再開できます。',
       quality_rejected: '正答の二重検査を通過できなかったため、この問題は出題しませんでした。',
-      unauthorized: '接続用トークンが一致しません。AI接続設定を確認してください。',
-      forbidden_origin: 'このアプリのURLはWorkerで許可されていません。',
+      unauthorized: 'AIサーバーが認証を拒否しました。サーバー側の接続設定との照合が必要です。',
+      forbidden_origin: 'このページのURLからの接続がAIサーバーで許可されていません。',
+      worker_not_ready: 'AIサーバー側の接続設定が完了していません。',
       timeout: 'AI生成が時間内に終わりませんでした。',
-      network_error: navigator.onLine ? 'AIサーバーへ接続できませんでした。' : 'オフラインのためAI生成を利用できません。'
+      connection_timeout: 'AIサーバーの接続確認が15秒で時間切れになりました。',
+      offline: '端末がオフラインです。インターネットに接続して再確認してください。',
+      network_error: 'ブラウザからAIサーバーへの通信が失敗しました。認証結果は取得できていません。'
     };
     return messages[error?.code] || error?.message || 'AI長文を生成できませんでした。';
+  }
+
+  async function probeConnection() {
+    // No token, cookies, or learner data is sent by this reachability check.
+    if (navigator.onLine === false || typeof fetch !== 'function' || typeof AbortController !== 'function') return 'unavailable';
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 5000);
+    try {
+      const response = await fetch(readConfig().endpoint + '/health', {
+        method: 'GET', signal: controller.signal, cache: 'no-store', credentials: 'omit', referrerPolicy: 'no-referrer'
+      });
+      if (!response.ok) return 'http_' + response.status;
+      const result = await response.json();
+      return result?.ok === true && result?.service === 'aa-ai-reading' ? 'reachable' : 'unexpected_response';
+    } catch (_) {
+      return 'unreachable';
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  function connectionDiagnostics() {
+    const details = [`接続診断 v${VERSION}`, `種類: ${connectionStatus.code || 'unknown'}`];
+    if (connectionStatus.httpStatus) details.push(`HTTP: ${connectionStatus.httpStatus}`);
+    details.push(`通信状態: ${navigator.onLine === false ? 'オフライン' : 'オンライン表示'}`);
+    details.push(`ページ: ${location.origin}`, `接続先: ${readConfig().endpoint}`);
+    if (connectionStatus.health) details.push(`疎通確認: ${connectionStatus.health}`);
+    return details.join('\n');
   }
 
   async function generate(assistMode) {
@@ -429,7 +492,7 @@
   }
 
   async function verifyConnection({ configuredNow = false, notify = true } = {}) {
-    showBusy(configuredNow ? '設定を保存して、AI接続を確認中…' : 'AIサーバーへの接続だけを確認中…');
+    showBusy(configuredNow ? '設定を保存して、AI接続を確認中…' : 'AIサーバーへの接続だけを確認中…', 'AIサーバーへの認証と準備状態を確認しています。長文は生成しません。');
     try {
       const result = await post(STATUS_PATH, {}, 15000);
       if (!result?.ready) throw appError('worker_not_ready', 'Workerには接続できましたが、Gemini設定が未完了です。');
@@ -438,12 +501,18 @@
       document.dispatchEvent(new CustomEvent('aa:ai-reading-connection', {
         detail: { ready: true, model: String(result.model || 'Gemini') }
       }));
-      if (notify) window.alert(`${configuredNow ? '接続設定を保存し、Geminiまで接続できました。' : 'Geminiまで接続できました。'}\n使用モデル: ${result.model || 'Gemini'}\n\n毎日の音声・画像・学習履歴の設定は変更していません。`);
+      if (notify) window.alert(`${configuredNow ? '接続設定を保存し、AIサーバーへの認証に成功しました。' : 'AIサーバーへの認証に成功しました。'}\n設定モデル: ${result.model || 'Gemini'}\n\n毎日の音声・画像・学習履歴の設定は変更していません。`);
       return true;
     } catch (error) {
-      connectionStatus = { state: 'error', message: '設定は保存済み・接続確認エラー' };
+      connectionStatus = { state: 'error', code: error.code || 'client_error', httpStatus: error.httpStatus, message: friendlyError(error) };
+      if (['network_error', 'connection_timeout'].includes(error.code)) {
+        connectionStatus.health = await probeConnection();
+        connectionStatus.message += connectionStatus.health === 'reachable'
+          ? ' 疎通確認ではサーバーに到達しました。認証を含む通信の制限や一時的な応答遅延が考えられます。'
+          : ' 疎通確認も正常に完了しませんでした。フィルターのある端末では、管理者に接続先のブロック記録と個別の通信許可を確認してください。';
+      }
       render();
-      if (notify) window.alert(`${configuredNow ? '接続設定は保存しましたが、' : ''}${friendlyError(error)}\n\n毎日の音声データは変更していません。`);
+      if (notify) window.alert(`${connectionStatus.message}\n\n${connectionDiagnostics()}`);
       return false;
     } finally {
       hideBusy();
@@ -480,7 +549,7 @@
       .aaAiReadingConfigCard{width:min(460px,100%);max-height:calc(100vh - 36px);overflow:auto;padding:22px;border-radius:22px;background:var(--card,#fff);color:var(--text,#172033);box-shadow:0 24px 70px rgba(0,0,0,.38)}
       .aaAiReadingConfigCard .field{display:block;margin:16px 0}.aaAiReadingConfigCard .field>span{display:block;margin-bottom:7px;font-weight:800}
       .aaAiTokenRow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}.aaAiTokenRow input{min-width:0;min-height:48px;padding:10px 12px;border:1px solid var(--line,#d7ddea);border-radius:12px;font:inherit;background:var(--card,#fff);color:var(--text,#172033)}
-      .aaAiConfigStatus{margin-top:12px;padding:11px 12px;border-radius:12px;background:rgba(73,118,255,.1);font-size:13px;font-weight:800;line-height:1.55}.aaAiConfigStatus[data-state="ready"]{background:#eaf8f1;color:#16724a}.aaAiConfigStatus[data-state="error"]{background:#fff0ef;color:#b42318}
+      .aaAiConfigStatus{margin-top:12px;padding:11px 12px;border-radius:12px;background:rgba(73,118,255,.1);font-size:14px;font-weight:800;line-height:1.55;white-space:pre-line;overflow-wrap:anywhere}.aaAiConfigStatus[data-state="ready"]{background:#eaf8f1;color:#16724a}.aaAiConfigStatus[data-state="error"]{background:#fff0ef;color:#b42318}
       @keyframes aaAiSpin{to{transform:rotate(360deg)}}
       @media (prefers-reduced-motion:reduce){.aaAiReadingSpinner{animation:none}}
     `;
