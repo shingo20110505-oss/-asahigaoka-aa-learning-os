@@ -57,8 +57,8 @@ try {
   offline = true; await api.load(true); assert.equal(api.snapshot().total, 1);
   assert.equal((await api.select(request, {})).entry.id, entry.id, 'cached accepted reading remains usable offline');
   assert.equal(storage.get('learner-progress'), 'preserved');
-  const index = await fs.readFile(path.join(root, 'index.html'), 'utf8');
-  assert.equal(JSON.parse(index.match(/const DATA = (.*);\n/)[1]).readingScenarios.length, 0);
+  const runtimeSource = await fs.readFile(path.join(root, 'app/legacy/main-runtime.js'), 'utf8');
+  assert.equal(JSON.parse(runtimeSource.match(/const DATA = (.*);\n/)[1]).readingScenarios.length, 0);
   const loader = await fs.readFile(path.join(root, 'v23-loader.js'), 'utf8');
   assert.doesNotMatch(loader, /reading-natural-v[23]\.js|english-reading-variation/);
   const vocab = await fs.readFile(path.join(root, 'vocab.html'), 'utf8');

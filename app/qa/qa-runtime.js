@@ -1,0 +1,1 @@
+(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('qa',{run:()=>typeof qaRun==='function'?qaRun():false,architecture:()=>A.status(),assertArchitecture:()=>A.assertComplete()});A.assertComplete();document.documentElement.dataset.aaArchitecture='phase1'})();

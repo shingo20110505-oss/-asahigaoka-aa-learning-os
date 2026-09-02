@@ -1,0 +1,81 @@
+name: Phase 1 apply validated non-workflow changes
+
+on:
+  push:
+    branches: [phase1-architecture-cleanup-20260903]
+    paths:
+      - '.github/workflows/phase1-apply-nonworkflow.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: phase1-apply-nonworkflow
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: phase1-architecture-cleanup-20260903
+          fetch-depth: 0
+
+      - name: Apply validated Phase 1 transform
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import textwrap
+          src=Path('.github/workflows/phase1-architecture-refactor.yml').read_text()
+          marker="          python3 - <<'PY'\n"
+          start=src.index(marker)+len(marker)
+          end=src.index('\n          PY',start)
+          exec(compile(textwrap.dedent(src[start:end]),'phase1-transform.py','exec'),{'__name__':'__main__'})
+          PY
+
+      - name: Run full Phase 1 validation
+        run: |
+          set -euo pipefail
+          for f in app/runtime-registry.js app/legacy/main-runtime.js app/app-shell.js app/state/state-manager.js app/learning/learning-engine.js app/subjects/subject-engines.js app/ui/ui-runtime.js app/pwa/pwa-runtime.js app/qa/qa-runtime.js companion-media-settings-v1.js aa-companion-mobile-fix.js v23-loader.js sw.js; do node --check "$f"; done
+          node tests/architecture-boundaries.mjs
+          node scripts/validate-review-bank.mjs
+          node scripts/validate-review-ui.mjs
+          node scripts/validate-runtime-assets.mjs
+          node tests/ai-reading-contract.mjs
+          node tests/japanese-exam.mjs
+          node scripts/japanese-library.mjs
+          node tests/reading-library.mjs
+          node scripts/reading-library.mjs --validate
+          node scripts/validate-math.mjs
+          grep -q 'setLoginVoices' companion7-runtime.js
+          grep -q 'setExplosionVoice' companion7-runtime.js
+          grep -q 'showDailyVisual' login-companion-v1.js
+          grep -q 'data-login-image-add' companion-media-settings-v1.js
+          grep -q 'data-login-voice-file' companion-media-settings-v1.js
+          grep -q 'answer-feedback-audio-v1.js' sw.js
+          ! grep -q 'gh workflow run deploy-pages.yml' .github/workflows/replenish-reading.yml
+
+      - name: Restore active workflow directory for connector-managed cleanup
+        run: |
+          set -euo pipefail
+          git checkout HEAD -- .github/workflows
+          rm -f PHASE1_RUNTIME_VALIDATOR_RESULT.txt
+
+      - name: Commit non-workflow Phase 1 changes
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'No non-workflow changes to commit.'
+            exit 0
+          fi
+          if git diff --cached --name-only | grep -q '^\.github/workflows/'; then
+            echo 'Refusing to push workflow-directory changes from Actions.' >&2
+            exit 1
+          fi
+          git commit -m 'Phase 1: apply validated architecture boundaries'
+          git push origin HEAD:phase1-architecture-cleanup-20260903

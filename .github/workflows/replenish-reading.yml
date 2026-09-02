@@ -8,7 +8,6 @@ on:
     paths: ['.reading-library-bootstrap']
 permissions:
   contents: write
-  actions: write
 concurrency:
   group: gemini-reading-replenishment
   cancel-in-progress: false
@@ -51,5 +50,4 @@ jobs:
               if git push origin HEAD:main; then break; fi
               if [ "$n" = 3 ]; then exit 1; fi
             done
-            gh workflow run deploy-pages.yml --ref main
           fi

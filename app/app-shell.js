@@ -1,0 +1,1 @@
+(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('appShell',{getRoute:()=>typeof state==='object'?state.route:null,navigate:r=>typeof setRoute==='function'?setRoute(r):false,render:()=>typeof render==='function'?render():false,version:()=>typeof APP_VERSION!=='undefined'?APP_VERSION:null})})();

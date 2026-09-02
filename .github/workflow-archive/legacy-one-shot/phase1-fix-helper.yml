@@ -1,0 +1,39 @@
+name: Patch Phase 1 helper compatibility
+
+on:
+  push:
+    branches: [phase1-architecture-cleanup-20260903]
+    paths:
+      - '.github/workflows/phase1-fix-helper.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: phase1-architecture-cleanup-20260903
+          fetch-depth: 0
+      - name: Preserve existing service-worker generation marker
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('.github/workflows/phase1-architecture-refactor.yml')
+          s=p.read_text()
+          old="const VERSION='2.6.0-phase1-architecture-20260903';"
+          new="const VERSION='{m.group(1)}-phase1-architecture-20260903';"
+          if old not in s:
+              raise SystemExit('target version literal not found')
+          s=s.replace(old,new,1)
+          s=s.replace("r\"const VERSION='[^']+';\"","r\"const VERSION='([^']+)';\"",1)
+          s=s.replace('st=re.sub(r"const VERSION=\'([^\']+)\';","const VERSION=\'{m.group(1)}-phase1-architecture-20260903\';",st,count=1)','st=re.sub(r"const VERSION=\'([^\']+)\';",lambda m:f"const VERSION=\'{m.group(1)}-phase1-architecture-20260903\';",st,count=1)',1)
+          p.write_text(s)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .github/workflows/phase1-architecture-refactor.yml
+          git commit -m 'Preserve service worker generation marker in Phase 1'
+          git push origin HEAD:phase1-architecture-cleanup-20260903

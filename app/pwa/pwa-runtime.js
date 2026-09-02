@@ -1,0 +1,1 @@
+(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('pwa',{get:()=>typeof PWA==='object'?PWA:null,init:()=>typeof initPWA==='function'?initPWA():false,check:n=>typeof checkPWAUpdate==='function'?checkPWAUpdate(Boolean(n)):false,registration:()=>typeof PWA==='object'?PWA.registration:null})})();
