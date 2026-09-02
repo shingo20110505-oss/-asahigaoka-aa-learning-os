@@ -36,7 +36,7 @@ jobs:
           node tests/math-full-replacement.mjs
           grep -q 'math-exam/adapter.js?version=1.1.0' index.html
           grep -q "url('math-exam/adapter.js')" sw.js
-          grep -q 'data-aa-math-full-replacement' math-exam/adapter.js
+          grep -q 'aaMathFullReplacement' math-exam/adapter.js
           grep -q 'normal-route=full-replacement' scripts/verify-math-public.mjs
       - name: Commit and push
         run: |
