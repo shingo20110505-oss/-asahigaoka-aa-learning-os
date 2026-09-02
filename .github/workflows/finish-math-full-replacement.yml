@@ -40,7 +40,7 @@ jobs:
           grep -q 'normal-route=full-replacement' scripts/verify-math-public.mjs
       - name: Commit and push
         run: |
-          git add index.html sw.js quality-ci-runner-v1.js scripts/verify-math-public.mjs .github/workflows/deploy-pages.yml
+          git add index.html sw.js quality-ci-runner-v1.js scripts/verify-math-public.mjs
           if git diff --cached --quiet; then
             echo 'No changes'
             exit 0
