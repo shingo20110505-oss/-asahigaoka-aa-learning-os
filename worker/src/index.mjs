@@ -52,7 +52,7 @@ export const READING_SCHEMA = Object.freeze({
       type: 'array', minItems: 4, maxItems: 24,
       items: {
         type: 'object', additionalProperties: false, required: ['word', 'meaningJa'],
-        properties: { word: stringSchema(1, 40), meaningJa: stringSchema(1, 80) }
+        properties: { word: { ...stringSchema(1, 40), pattern: "^[A-Za-z]+(?:[-'][A-Za-z]+)*$" }, meaningJa: stringSchema(1, 80) }
       }
     },
     questions: {
@@ -219,6 +219,7 @@ export function validateReading(reading, request) {
     choices.forEach((choice, choiceIndex) => {
       const text = String(choice?.text || '').replace(/\s+/g, ' ').trim();
       if (text.length < 4 || hasJapanese(text)) errors.push(`q${index}:choice${choiceIndex}:language`);
+      if (auditGrammarLeak(text, request.allowedGrammar).length) errors.push(`q${index}:choice${choiceIndex}:grammar`);
       const normalized = text.toLowerCase();
       if (choiceTexts.has(normalized)) errors.push(`q${index}:duplicate_choice`);
       choiceTexts.add(normalized);
@@ -266,6 +267,8 @@ export function buildAuthorPrompt(request, attempt) {
     `Allowed grammar tags: ${request.allowedGrammar.join(', ') || 'basic'}. Explicitly avoid: ${disallowedGrammar.join(', ') || 'none'}.`,
     'Create exactly five unique four-choice questions. Include exactly one detail question and exactly one inference question; use three different types from the remaining allowed types.',
     'All choices must be natural English and approximately parallel in length and specificity. Each distractor must be plausible but wrong for a distinct text-based reason.',
+    'The grammar restrictions apply to ALL English, including every answer choice. Do not use relative clauses or indirect questions unless explicitly allowed.',
+    'Each glossary word must be one English word in its dictionary form, with no spaces, parentheses, or explanations in the word field. Put its contextual Japanese meaning in meaningJa.',
     'Write stems, explanations, every choice reason, the lesson, glossary meanings, and the full translation in Japanese. Do not put Japanese in the passage or choices.',
     'For every question, evidenceQuote must be a verbatim contiguous substring copied from the passage. The correct answer must be uniquely defensible from the passage alone.',
     'Use a safe, age-appropriate, non-political topic. Do not use URLs, Markdown, copyrighted characters, real student data, or current-event claims.',

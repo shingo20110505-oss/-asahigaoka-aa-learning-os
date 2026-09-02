@@ -101,6 +101,7 @@ export async function replenish(directory, {env = process.env, generate = genera
       // Deliberately keep provider messages, prompts and credentials out of published status.
       status.state = error.code === 'quota_exceeded' || error.status === 429 ? 'quota' : 'retry_later';
       console.log(`Candidate rejected: ${error.code || 'validation_or_provider_error'}`);
+      if (/^(grammar_rejected|duplicate_passage|unverified|invalid_structure:)/.test(error.message || '')) console.log(`Validation: ${error.message}`);
       if (error.diagnostic) console.log(`Validation: ${error.diagnostic}`);
       if (status.state === 'quota' || error.code === 'gemini_auth_failed') break;
     } finally { await writeJson(statusFile, status); }
