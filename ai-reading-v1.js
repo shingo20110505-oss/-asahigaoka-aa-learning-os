@@ -468,7 +468,9 @@
     try {
       if (!window.AAReadingLibrary) throw new Error('教材機能を読み込めませんでした。ページを再読み込みしてください。');
       const request = buildRequest(assistMode);
-      const {entry, payload} = await window.AAReadingLibrary.select(request, state.profile.aiReadingSeen || {}, vocabularyScore);
+      const {entry, payload} = await window.AAReadingLibrary.select(request, state.profile.aiReadingSeen || {}, vocabularyScore, data => {
+        if (grammarLeakAudit(data.reading.passage).length) throw new Error('今の文法範囲に合う教材を補充しています。');
+      });
       const read = normalizeReading(payload, assistMode);
       read.aiLibraryId = entry.id;
       read.requestedDifficulty = request.difficulty;
@@ -639,6 +641,8 @@
     html = html.replace('<button class="btn ghost" data-action="start-reading-exam">入試実戦長文（辞書OFF）</button>', '');
     html = html.replace(/<button[^>]*data-action="(?:start-reading-simulator|start-graph-reading)"[^>]*>[\s\S]*?<\/button>/g, '');
     html = html.replace(/語彙支援長文は、[\s\S]*?シミュレーターです。/, '単語の学習記録は長文の選択と語彙サポートに反映します。');
+    html = html.replace('自動（4形式をバランス出題）', '自動（物語文・筆者の主張）');
+    html = html.replace('選んだLevelを長文の語数・情報密度・設問形式へそのまま反映します。', '選んだLevelに近い検査済み教材から出題します。実際の難度は長文に表示します。');
     const marker = '<section class="grid g2">';
     html = html.includes(marker) ? html.replace(marker, libraryCard() + '<div class="sp12"></div>' + marker) : html.replace('</main>', libraryCard() + '</main>');
     return html;

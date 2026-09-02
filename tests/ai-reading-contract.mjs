@@ -124,7 +124,9 @@ const badEvidence = structuredClone(reading);
 badEvidence.questions[0].evidenceQuote = 'This sentence is not in the passage.';
 assert.equal(validateReading(badEvidence, request).ok, false);
 
-assert.deepEqual(auditGrammarLeak('The student who measured it returned.', ['basic']), ['relativePronoun']);
+assert.deepEqual(auditGrammarLeak('The student who measured it returned.', ['basic']), ['relativePronoun', 'indirectQuestion']);
+assert.deepEqual(auditGrammarLeak('They teach us how to plan.', ['basic']), ['indirectQuestion']);
+assert.deepEqual(auditGrammarLeak('The people we love gather here.', ['basic']), ['relativePronoun']);
 assert.equal(await constantTimeEqual('a-secure-token', 'a-secure-token'), true);
 assert.equal(await constantTimeEqual('a-secure-token', 'a-different-token'), false);
 

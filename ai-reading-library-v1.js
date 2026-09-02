@@ -78,7 +78,7 @@
     payloads.set(entry.id, payload);
     return payload;
   }
-  async function select(request, seen, vocabularyScore) {
+  async function select(request, seen, vocabularyScore, validate = () => {}) {
     const data = await load();
     const candidates = rank(data.entries, request, seen, vocabularyScore);
     if (!candidates.length) throw new Error(data.entries.length
@@ -86,7 +86,7 @@
       : '最初の長文を作成・検査しています。補充後にここから開始できます。');
     let error;
     for (const entry of candidates.slice(0, 3)) {
-      try { return {entry, payload: await fetchEntry(entry)}; } catch (e) { error = e; }
+      try { const payload = await fetchEntry(entry); validate(payload); return {entry, payload}; } catch (e) { error = e; }
     }
     throw error;
   }

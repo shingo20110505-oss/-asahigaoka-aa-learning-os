@@ -1,49 +1,30 @@
-name: Reading 1000 Naturalness Audit
-
+name: Verified Gemini Reading Audit
 on:
   push:
     branches: [main]
     paths:
-      - 'scripts/reading-1000-audit.js'
-      - 'reading-natural-v2.js'
-      - 'reading-natural-v3.js'
-      - 'v23-english-main.js'
+      - 'ai-reading-v1.js'
+      - 'ai-reading-library-v1.js'
+      - 'ai-reading-library/**'
+      - 'scripts/reading-library.mjs'
+      - 'worker/src/index.mjs'
+      - 'tests/reading-library.mjs'
+      - 'vocab.html'
       - 'index.html'
       - '.github/workflows/reading-1000-audit.yml'
   workflow_dispatch:
-
 permissions:
-  contents: write
-
+  contents: read
 jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - name: Generate and audit 1000 passages
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check verified content, provenance, selection and vocabulary linkage
         run: |
-          set +e
-          node scripts/reading-1000-audit.js > READING_1000_AUDIT.txt 2>&1
-          code=$?
-          cat READING_1000_AUDIT.txt
-          echo "AUDIT_EXIT_CODE=$code" >> "$GITHUB_ENV"
-          exit 0
-      - name: Persist audit report
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add READING_1000_AUDIT.txt
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Record 1000-pass reading naturalness audit"
-          for n in 1 2 3 4 5; do
-            git pull --rebase origin main && git push origin main && exit 0
-            git rebase --abort || true
-            sleep 2
-          done
-          exit 1
-      - name: Require naturalness audit pass
-        run: |
-          grep -q 'READING_1000_VERDICT PASS' READING_1000_AUDIT.txt
-          test "$AUDIT_EXIT_CODE" = "0"
-
-# Manual retrigger marker: integrated-question-audit-v5
+          node tests/ai-reading-contract.mjs
+          node tests/reading-library.mjs
+          node scripts/reading-library.mjs --validate
