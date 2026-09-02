@@ -58,6 +58,7 @@ jobs:
             quality-repair-v1.js \
             quality-ci-runner-v1.js \
             ai-reading-v1.js \
+            ai-reading-library-v1.js \
             worker/src/index.mjs \
             sw.js; do
             node --check "$f"
@@ -67,6 +68,8 @@ jobs:
           node scripts/validate-review-ui.mjs
           node scripts/validate-runtime-assets.mjs
           node tests/ai-reading-contract.mjs
+          node tests/reading-library.mjs
+          node scripts/reading-library.mjs --validate
 
           grep -q 'AA_REVIEW_BANK_VERSION=' review-bank-v1.js
           grep -q "a.href='./review/'" aa-companion-v2.js
@@ -228,6 +231,9 @@ jobs:
           grep -q 'window.__AA_AI_READING_V1__' /tmp/ai-reading.js
           grep -q 'Gemini生成・正答二重検査済み' /tmp/ai-reading.js
 
+          stage reading-library
+          node scripts/verify-reading-public.mjs "${BASE}" "${SOURCE_SHA}"
+
           stage login-image
           curl -fsSL "${BASE}login-companion-v1.js?verify=${SOURCE_SHA}" -o /tmp/login-image.js
           grep -q 'ZIPからまとめてインストール' /tmp/login-image.js
@@ -264,10 +270,11 @@ jobs:
           grep -q 'data-aa-quality-ci="PASS"' /tmp/quality-runtime.html
           grep -q '英単語穴埋め・答え露出防止' /tmp/quality-runtime.html
           grep -q '段階学習プラン' /tmp/quality-runtime.html
-          grep -q '長文生成・文法ゲート 36本' /tmp/quality-runtime.html
-          grep -q '専用誤答タイプ' /tmp/quality-runtime.html
+          grep -q 'Gemini教材一覧・文法ゲート' /tmp/quality-runtime.html
+          grep -q 'Gemini長文・根拠・実戦モード' /tmp/quality-runtime.html
           grep -q '数学公式暗記限定' /tmp/quality-runtime.html
-          grep -q '長文タイプを出題へ反映' /tmp/quality-runtime.html
+          grep -q '長文と単語の学習記録連携' /tmp/quality-runtime.html
+          grep -q '非API長文の出題廃止' /tmp/quality-runtime.html
           echo 'quality_runtime=success' >> "$GITHUB_OUTPUT"
 
           stage vocab-mobile-runtime
@@ -379,3 +386,4 @@ jobs:
             git commit -m "Record Pages deployment outcome"
             git push origin main
           fi
+
