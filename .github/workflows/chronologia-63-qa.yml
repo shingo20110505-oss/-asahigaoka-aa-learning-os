@@ -49,7 +49,7 @@ jobs:
             'live expression bridge':"document.addEventListener('chronologia:voice'" in l,
             'PWA chronology':"url('chronologia.html')" in s and "url('chronologia-curated-901-1000.js')" in s,
             'PWA quality repair':"url('quality-repair-v1.js')" in s,
-            'managed cache generation':"quality-chronologia1000" in s,
+            'managed cache generation':"quality2-chronologia1000" in s,
           }
           for name,ok in checks.items(): print(('PASS' if ok else 'FAIL'),name)
           failed=[name for name,ok in checks.items() if not ok]

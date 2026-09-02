@@ -17,15 +17,13 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
       - name: Check runtime syntax
         run: |
           node --check chronologia-live-companion.js
@@ -50,14 +48,18 @@ jobs:
           node scripts/chronologia-deep-audit.js 2>&1 | tee CHRONOLOGIA_DEEP_AUDIT.txt
           echo "node_exit=${PIPESTATUS[0]}" >> CHRONOLOGIA_DEEP_AUDIT.txt
           exit 0
-      - name: Record audit result and timeline lists
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add CHRONOLOGIA_DEEP_AUDIT.txt CHRONOLOGIA_SUPPLEMENT_ITEMS.tsv CHRONOLOGIA_CORE_ITEMS.tsv CHRONOLOGIA_CORE_*.tsv
-          git commit -m "Record Chronologia detailed explanation audit" || exit 0
-          git pull --rebase origin main
-          git push
+      - name: Upload audit reports and timeline lists
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chronologia-deep-audit
+          path: |
+            CHRONOLOGIA_DEEP_AUDIT.txt
+            CHRONOLOGIA_SUPPLEMENT_ITEMS.tsv
+            CHRONOLOGIA_CORE_ITEMS.tsv
+            CHRONOLOGIA_CORE_*.tsv
+          if-no-files-found: warn
+          retention-days: 14
       - name: Gate detailed explanations
         run: |
           grep -q '"pass":true' CHRONOLOGIA_DEEP_AUDIT.txt
