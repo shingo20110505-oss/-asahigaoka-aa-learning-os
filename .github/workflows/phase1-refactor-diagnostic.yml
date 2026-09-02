@@ -39,7 +39,7 @@ jobs:
       - name: Gate 1 - syntax and architecture
         run: |
           set -euo pipefail
-          for f in app/runtime-registry.js app/legacy/main-runtime.js app/app-shell.js app/state/state-manager.js app/learning/learning-engine.js app/subjects/subject-engines.js app/ui/ui-runtime.js app/pwa/pwa-runtime.js app/qa/qa-runtime.js v23-loader.js sw.js; do node --check "$f"; done
+          for f in app/runtime-registry.js app/legacy/main-runtime.js app/app-shell.js app/state/state-manager.js app/learning/learning-engine.js app/subjects/subject-engines.js app/ui/ui-runtime.js app/pwa/pwa-runtime.js app/qa/qa-runtime.js companion-media-settings-v1.js aa-companion-mobile-fix.js v23-loader.js sw.js; do node --check "$f"; done
           node tests/architecture-boundaries.mjs
 
       - name: Gate 2 - review
@@ -75,6 +75,8 @@ jobs:
           grep -q 'setLoginVoices' companion7-runtime.js
           grep -q 'setExplosionVoice' companion7-runtime.js
           grep -q 'showDailyVisual' login-companion-v1.js
+          grep -q 'data-login-image-add' companion-media-settings-v1.js
+          grep -q 'data-login-voice-file' companion-media-settings-v1.js
           grep -q 'answer-feedback-audio-v1.js' sw.js
           ! grep -q 'gh workflow run deploy-pages.yml' .github/workflows/replenish-reading.yml
 
