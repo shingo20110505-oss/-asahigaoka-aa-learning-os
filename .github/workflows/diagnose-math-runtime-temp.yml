@@ -1,0 +1,36 @@
+name: Temporary browser math runtime diagnostic
+
+on:
+  push:
+    branches: [diagnose-math-runtime-20260903]
+    paths: ['.github/workflows/diagnose-math-runtime-temp.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instrument math quality detail in workspace only
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('quality-ci-runner-v1.js')
+          s=p.read_text()
+          old="'通常演習も検証済みエンジンへ完全置換／既存FINAL品質ゲート保持／4セット・76問／通常44問／図・応用思考を検査'"
+          new="JSON.stringify({mathFormulaPracticePreserved,mathFullOk:mathFull?.ok===true,dataset:document.documentElement.dataset.aaMathFullReplacement,mathLength:math.length,setShape:mathSets.every(qs=>qs.length===19&&qs.reduce((n,q)=>n+q.points,0)===22),examChoices:math.every(q=>q.choices.length===4&&q.choices.filter(c=>c.ok).length===1&&q.source.curriculum==='junior-high'),normalRoutes:normalMath.every(q=>q.source?.route==='full-replacement'&&q.source?.origin==='verified-math-template'&&q.choices.length===4&&q.choices.filter(c=>c.ok).length===1),normalFigure:normalMath.some(q=>q.mathFigure),certainty:math.some(q=>q.thinking==='certainty'),reflection:math.some(q=>q.thinking==='reflection_area_bisection'),piecewise:math.some(q=>q.thinking==='piecewise_intersections'),sampleNormal:normalMath.slice(0,3).map(q=>({id:q.id,route:q.source?.route,origin:q.source?.origin,family:q.family,figure:!!q.mathFigure}))})"
+          if s.count(old)!=1:
+              raise SystemExit(f'detail marker count={s.count(old)}')
+          p.write_text(s.replace(old,new))
+          PY
+      - name: Run local browser quality diagnostic
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8123 >/tmp/http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID 2>/dev/null || true' EXIT
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)
+          timeout 120s "$CHROME" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --user-data-dir=/tmp/aa-math-diag --virtual-time-budget=60000 --dump-dom 'http://127.0.0.1:8123/?aa_quality_ci=1&diag=math' > /tmp/dom.html
+          grep -o 'AA_QUALITY_CI=[^<]*' /tmp/dom.html
