@@ -23,7 +23,7 @@ jobs:
           ref: phase1-architecture-cleanup-20260903
           fetch-depth: 0
 
-      - name: Apply Phase 1 transform
+      - name: Apply Phase 1 transform against latest main sync
         run: |
           python3 - <<'PY'
           from pathlib import Path
