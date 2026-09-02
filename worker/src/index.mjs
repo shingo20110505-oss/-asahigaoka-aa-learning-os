@@ -345,7 +345,7 @@ async function callGemini(env, input, schema, maxOutputTokens) {
   return parseInteractionJson(data);
 }
 
-async function generateVerifiedReading(env, request) {
+export async function generateVerifiedReading(env, request) {
   const failures = [];
   for (let attempt = 1; attempt <= 2; attempt++) {
     let reading;
