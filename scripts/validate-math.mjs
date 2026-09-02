@@ -7,10 +7,42 @@ const require=createRequire(import.meta.url), E=require('../math-exam/engine.js'
 const fraction=s=>{const a=s.split('/').map(Number);return a.length===2?a[0]/a[1]:a[0];};
 const close=(a,b)=>Math.abs(a-b)<1e-8;
 const area=ps=>Math.abs(ps.reduce((s,p,i)=>{const q=ps[(i+1)%ps.length];return s+p[0]*q[1]-q[0]*p[1];},0))/2;
+const simpleScalar=text=>{
+ const s=String(text).trim().replaceAll('−','-').replace(/\s*(?:cm(?:²|³)?|°)\s*$/,'').trim();
+ const m=s.match(/^([+-]?\d+(?:\.\d+)?)(?:\/([+-]?\d+(?:\.\d+)?))?$/);
+ if(!m)return null;
+ const n=Number(m[1]),d=m[2]==null?1:Number(m[2]);
+ return Number.isFinite(n)&&Number.isFinite(d)&&d!==0?n/d:null;
+};
+function assertFiniteTree(value,label='value'){
+ if(typeof value==='number'){assert.ok(Number.isFinite(value),label+' must be finite');return;}
+ if(Array.isArray(value)){value.forEach((x,i)=>assertFiniteTree(x,`${label}[${i}]`));return;}
+ if(value&&typeof value==='object')for(const [k,v] of Object.entries(value))assertFiniteTree(v,`${label}.${k}`);
+}
+function verifyChoiceIntegrity(q){
+ assert.equal(q.choices.length,4);
+ assert.equal(new Set(q.choices.map(c=>c.text)).size,4);
+ assert.equal(q.choices.filter(c=>c.ok).length,1);
+ assert.ok(Number.isInteger(q.answerIndex)&&q.answerIndex>=0&&q.answerIndex<q.choices.length);
+ assert.equal(q.choices[q.answerIndex].ok,true);
+ for(const c of q.choices){
+  assert.ok(typeof c.text==='string'&&c.text.trim().length>0,'choice text required');
+  assert.ok(typeof c.reason==='string'&&c.reason.trim().length>0,'choice reason required');
+ }
+ const correctValue=simpleScalar(q.choices[q.answerIndex].text);
+ if(correctValue!==null){
+  for(const [i,c] of q.choices.entries())if(i!==q.answerIndex){
+   const v=simpleScalar(c.text);
+   if(v!==null)assert.ok(!close(v,correctValue),`semantically equivalent scalar distractor: ${q.family}: ${c.text}`);
+  }
+ }
+}
 export function verify(q){
- assert.equal(q.choices.length,4);assert.equal(new Set(q.choices.map(c=>c.text)).size,4);
- assert.equal(q.choices.filter(c=>c.ok).length,1);assert.equal(q.choices[q.answerIndex].ok,true);
+ verifyChoiceIntegrity(q);
  assert.ok(q.solutionSteps.length>=2);assert.equal(q.partialPoints,0);assert.equal(q.source.curriculum,'junior-high');
+ assert.equal(q.source.origin,'verified-math-template');assert.equal(q.format,'aichi-mark');assert.equal(q.subject,'math');
+ assert.ok(Number.isInteger(q.difficulty5)&&q.difficulty5>=1&&q.difficulty5<=5);
+ assert.ok(Number.isFinite(q.expectedMs)&&q.expectedMs>0);assertFiniteTree(q,'question');
  const a=q.choices[q.answerIndex].text,p=q.parameters,{k,n,j}=p;
  const value=fraction(a.replace(/ cm[²³]?$/,''));
  switch(q.family){
@@ -41,12 +73,26 @@ export function verify(q){
  }
  return true;
 }
+export function verifySet(qs,seed,level=2){
+ assert.equal(qs.length,19);assert.equal(qs.reduce((s,q)=>s+q.points,0),22);
+ assert.equal(qs.filter(q=>q.points===2).length,3);assert.ok(qs.every(q=>q.points===1||q.points===2));
+ assert.deepEqual([1,2,3].map(i=>qs.filter(q=>q.bigQuestion==='大問'+i).length),[10,4,5]);
+ assert.deepEqual([1,2,3].map(i=>qs.filter(q=>q.bigQuestion==='大問'+i).reduce((s,q)=>s+q.points,0)),[10,7,5]);
+ assert.equal(new Set(qs.map(q=>q.id)).size,19);assert.equal(new Set(qs.map(q=>q.code)).size,19);assert.equal(new Set(qs.map(q=>q.stem)).size,19);
+ qs.forEach((q,i)=>{assert.equal(q.id,`math-v1-${seed}-${level}-${i+1}`);assert.equal(q.reviewKey,q.id);assert.equal(q.testMode,true);verify(q);});
+ return true;
+}
 export async function validateBank(file=new URL('../math-exam/catalog.json',import.meta.url)){
  const c=JSON.parse(await fs.readFile(file,'utf8'));assert.equal(c.schemaVersion,1);assert.equal(c.engineVersion,E.VERSION);assert.ok(c.packs.length>=4);
- const ids=new Set();for(const p of c.packs){assert.ok(Number.isSafeInteger(p.seed)&&p.seed>0&&p.seed<10000000);assert.ok(!ids.has(p.seed));ids.add(p.seed);const qs=E.buildSet(p.seed,2);qs.forEach(verify);assert.equal(qs.length,19);assert.equal(qs.reduce((s,q)=>s+q.points,0),22);assert.deepEqual([1,2,3].map(i=>qs.filter(q=>q.bigQuestion==='大問'+i).reduce((s,q)=>s+q.points,0)),[10,7,5]);}
+ const ids=new Set();for(const p of c.packs){assert.ok(Number.isSafeInteger(p.seed)&&p.seed>0&&p.seed<10000000);assert.ok(!ids.has(p.seed));ids.add(p.seed);const qs=E.buildSet(p.seed,2);verifySet(qs,p.seed,2);assert.deepEqual(qs,E.buildSet(p.seed,2),'same seed must be deterministic');}
  return c;
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){
  let count=0;for(let seed=1;seed<=100;seed++)for(const f of E.FAMILIES){verify(E.make(f,seed,2));count++;}
- const c=await validateBank();console.log(`MATH_VALIDATED: ${count} parameter cases; ${c.packs.length} exam packs; 19 items / 22 points`);
+ let fullSets=0,fullItems=0;for(let seed=1;seed<=500;seed++){
+  const first=E.buildSet(seed,2),second=E.buildSet(seed,2);verifySet(first,seed,2);assert.deepEqual(first,second,'full set must be deterministic');
+  if(seed<500)assert.notDeepEqual(first.map(q=>q.stem),E.buildSet(seed+1,2).map(q=>q.stem),'adjacent seeds must not produce identical full exams');
+  fullSets++;fullItems+=first.length;
+ }
+ const c=await validateBank();console.log(`MATH_VALIDATED: ${count} parameter cases; ${fullSets} stress exam sets / ${fullItems} items; ${c.packs.length} catalog packs; deterministic 19 items / 22 points; semantic scalar distractors checked`);
 }
