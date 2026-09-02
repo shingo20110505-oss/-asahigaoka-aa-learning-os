@@ -25,4 +25,9 @@ for(let n=0;n<800;n++){
 for(const d of PROFILE.domains)assert.equal(counts[d]>120,true,'weighted domain missing '+d+': '+counts[d]);
 const bridge=await readFile(new URL('../science-exam/bridge.js',import.meta.url),'utf8');
 assert.match(bridge,/legacyGenericFallback:false/);assert.doesNotMatch(bridge,/return Math\.random\(\)<.*old\(/);
-console.log(JSON.stringify({ok:true,version:PROFILE.version,examSeeds:120,generated:800,counts}));
+const legacyRuntime=await readFile(new URL('../learning-engine-v23.js',import.meta.url),'utf8');
+assert.doesNotMatch(legacyRuntime,/function science\(area='biology'\)/,'obsolete generic science generator returned');
+assert.doesNotMatch(legacyRuntime,/Math\.random\(\)<\.62\?science\(/,'obsolete probabilistic science fallback returned');
+assert.doesNotMatch(legacyRuntime,/V\.generators=\{japanese,math,science,social\}/,'obsolete science registry returned');
+assert.match(legacyRuntime,/V\.generators=\{japanese,math,social\}/,'expected legacy registry without science missing');
+console.log(JSON.stringify({ok:true,version:PROFILE.version,examSeeds:120,generated:800,counts,legacyGenericRemoved:true}));
