@@ -1,0 +1,30 @@
+name: Validate Social Application Pack
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'social-exam/**'
+      - 'tests/social-exam.mjs'
+      - 'v23-loader.js'
+      - 'sw.js'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate social pack and bridge
+        run: |
+          set -euo pipefail
+          node tests/social-exam.mjs
+          node --check social-exam/bridge.js
+          node --check social-exam/core.mjs
+          node --check social-exam/application-pack.mjs
+          grep -q 'social-exam/bridge.js' v23-loader.js
+          grep -q "url('social-exam/core.mjs')" sw.js
+          grep -q "url('social-exam/application-pack.mjs')" sw.js
