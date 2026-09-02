@@ -117,7 +117,8 @@ requireText(qualityFinal, 'missingEvidence', 'reading evidence audit');
 requireText(qualityCI, "params.get('aa_quality_ci')!=='1'", 'browser quality runner opt-in');
 requireText(qualityCI, 'AA_QUALITY_REPAIR_FINAL', 'browser waits for final repair');
 requireText(qualityCI, 'Gemini教材一覧・文法ゲート', 'runtime long-reading gate');
-requireText(qualityCI, '数学公式暗記限定', 'runtime math formula gate');
+requireText(qualityCI, 'AA_QUALITY_REPAIR_FINAL', 'browser keeps normal mathematics practice');
+requireText(qualityCI, '愛知県型数学・応用検算', 'runtime Aichi applied mathematics gate');
 requireText(qualityCI, "dataset.aaQualityCi=result.pass?'PASS':'FAIL'", 'browser quality PASS marker');
 requireText(aiReading, 'window.__AA_AI_READING_V1__', 'AI reading runtime marker');
 requireText(aiReading, 'aa_ai_reading_config_v1', 'isolated AI connection storage');
@@ -145,4 +146,3 @@ for(const file of new Set(referenced)){
 }
 
 console.log(`runtime assets OK: referenced=${new Set(referenced).size}, final quality/Chronologia/layout/login/PWA/vocab-example/mobile-card checks passed`);
-

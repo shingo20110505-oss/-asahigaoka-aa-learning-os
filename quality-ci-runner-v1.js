@@ -16,7 +16,8 @@
     add('段階学習プラン', queue.length === 8 && queue.filter(q => q.srsId?.startsWith('phrase:')).length === 2 && new Set(queue.map(q => q.id)).size === 8, '8問・熟語2問・問題ID重複なし');
     const mathSets = [1401,2202,3503,4804].map(seed => window.AAMathEngine.buildSet(seed, 2));
     const math = mathSets.flat();
-    add('愛知県型数学・応用検算', math.length === 76 && mathSets.every(qs => qs.length === 19 && qs.reduce((n,q)=>n+q.points,0) === 22) && math.every(q => q.choices.length === 4 && q.choices.filter(c => c.ok).length === 1 && q.source.curriculum === 'junior-high') && math.some(q => q.thinking === 'certainty') && math.some(q => q.thinking === 'reflection_area_bisection') && math.some(q => q.thinking === 'piecewise_intersections'), '4セット・76問／19解答単位・22点／応用思考を検査');
+    const mathFormulaPracticePreserved = window.AA_QUALITY_REPAIR_FINAL?.math?.ok === true;
+    add('愛知県型数学・応用検算', mathFormulaPracticePreserved && math.length === 76 && mathSets.every(qs => qs.length === 19 && qs.reduce((n,q)=>n+q.points,0) === 22) && math.every(q => q.choices.length === 4 && q.choices.filter(c => c.ok).length === 1 && q.source.curriculum === 'junior-high') && math.some(q => q.thinking === 'certainty') && math.some(q => q.thinking === 'reflection_area_bisection') && math.some(q => q.thinking === 'piecewise_intersections'), '通常演習を保持／4セット・76問／19解答単位・22点／応用思考を検査');
     const vocabAudit = window.AA_ENGLISH_EXAMPLE_AUDIT || {};
     const advise = DATA.vocab.find(v => v.word.toLowerCase() === 'advise');
     const lookAfter = DATA.vocab.find(v => v.word.toLowerCase() === 'look after');
