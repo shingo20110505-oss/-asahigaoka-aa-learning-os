@@ -1,0 +1,42 @@
+name: Science CI diagnostic
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/science-ci-diagnostic.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Capture exact failure
+        run: |
+          set +e
+          : > SCIENCE_CI_DIAGNOSTIC.txt
+          for cmd in \
+            "node --check science-exam/core.mjs" \
+            "node --check science-exam/generator.mjs" \
+            "node --check science-exam/bridge.js" \
+            "node tests/science-exam.mjs" \
+            "grep -q 'science-exam/bridge.js' v23-loader.js" \
+            "grep -q 'legacyGenericFallback:false' science-exam/bridge.js"; do
+            echo "CMD: $cmd" >> SCIENCE_CI_DIAGNOSTIC.txt
+            bash -lc "$cmd" >> SCIENCE_CI_DIAGNOSTIC.txt 2>&1
+            echo "EXIT: $?" >> SCIENCE_CI_DIAGNOSTIC.txt
+            echo >> SCIENCE_CI_DIAGNOSTIC.txt
+          done
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add SCIENCE_CI_DIAGNOSTIC.txt
+          git commit -m 'Record science CI diagnostic'
+          git push origin main
