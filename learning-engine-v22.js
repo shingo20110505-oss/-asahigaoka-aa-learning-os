@@ -574,8 +574,18 @@
     state.stats.sessions++; state.route = 'study'; save(); render(); window.scrollTo(0, 0); startTicker();
   }
 
-  function aa22StartExam(configInput = aa22Config()) {
+  function aa22EffectiveExamConfig(configInput) {
     const config = aa22NormalizeConfig(configInput);
+    if (config.subject !== 'math' || config.length !== 'full') return config;
+    const allMathUnits = EXAM_UNITS.math.map(x => x[0]);
+    const hasEveryMathUnit = allMathUnits.every(unit => config.units.includes(unit));
+    // A full-length mathematics test with every unit selected is the official
+    // 19-answer-unit blueprint even if a stale checkbox event left scope=custom.
+    return hasEveryMathUnit ? { ...config, scope: 'full', units: allMathUnits } : config;
+  }
+
+  function aa22StartExam(configInput = aa22Config()) {
+    const config = aa22EffectiveExamConfig(configInput);
     state.ui.examConfig = config; state.ui.testSubject = config.subject; state.ui.testCourseLevel = config.level;
     if (config.subject === 'english') return aa22StartEnglish(config);
     let queue = aa22StructuredQueue(config.subject, config.level, config);
@@ -1068,6 +1078,10 @@
       const mathQs = aa22StructuredQueue('math', 3, mathCfg);
       add('愛知県型数学・応用検算', mathQs.length === 19 && mathQs.reduce((n,q)=>n+q.points,0) === 22 && mathQs.every(q => q.source?.origin === 'verified-math-template' && q.source?.curriculum === 'junior-high') && mathQs.some(q => q.thinking === 'reflection_area_bisection'),
         '19解答単位・22点／検算済み応用問題');
+      const staleMath = aa22EffectiveExamConfig({ ...mathCfg, scope: 'custom', units: EXAM_UNITS.math.map(x => x[0]), length: 'full' });
+      const staleMathQs = aa22StructuredQueue('math', 3, staleMath);
+      add('数学・全単元の本番件数固定', staleMath.scope === 'full' && staleMathQs.length === 19 && staleMathQs.reduce((n,q)=>n+q.points,0) === 22,
+        staleMathQs.length + '解答単位・' + staleMathQs.reduce((n,q)=>n+q.points,0) + '点');
       const l1Math = aa22StructuredQueue('math', 1, aa22DefaultConfig('math'));
       add('数学は中学範囲のみ', !EXAM_UNITS.math.some(x => x[0] === 'advanced') && l1Math.every(q => q.source?.curriculum === 'junior-high') && mathQs.every(q => q.source?.curriculum === 'junior-high'),
         '高校範囲の公式を入試問題へ混入させない');
@@ -1108,7 +1122,8 @@
 
   globalThis.AA_V22_TEST_API = {
     units: EXAM_UNITS, japaneseExam: aa22JapaneseExam, structuredQueue: aa22StructuredQueue,
-    normalizeConfig: aa22NormalizeConfig, startExam: aa22StartExam, allowedAreas: aa22AllowedAreas,
+    normalizeConfig: aa22NormalizeConfig, effectiveExamConfig: aa22EffectiveExamConfig,
+    startExam: aa22StartExam, allowedAreas: aa22AllowedAreas,
     vocabIndex: window.AA_JA_VOCAB_10000, graphReadingSet: aa22GraphReadingSet,
     advancedMathQueue: aa22AdvancedMathQueue, normalizePracticeConfig: aa22NormalizePracticeConfig,
     practiceQueue: aa22PracticeQueue, startUnitPractice: aa22StartUnitPractice,
