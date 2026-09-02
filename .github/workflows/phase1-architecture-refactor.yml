@@ -34,7 +34,7 @@ jobs:
               'v23-science.js', 'science-content-fix-v1.js', 'v23-social.js',
               'social-exam/bridge.js', 'social-exam/core.mjs', 'social-exam/application-pack.mjs',
               'review-bank-v1.js', 'review/index.html', 'aa-companion-v2.js',
-              'aa-companion-mobile-fix.js', 'companion7-runtime.js', 'login-companion-v1.js',
+              'companion7-runtime.js', 'login-companion-v1.js',
               'answer-feedback-audio-v1.js', 'storage-resilience-v1.js'
           ]
           def sha(path):
@@ -74,7 +74,7 @@ jobs:
           for d in ['app/state','app/learning','app/subjects','app/pwa','app/qa']:
               Path(d).mkdir(parents=True,exist_ok=True)
 
-          Path('app/runtime-registry.js').write_text("""(()=>{'use strict';if(window.AA_APP?.architectureVersion)return;const ORDER=['appShell','state','learning','subjects','ui','pwa','qa'],layers=Object.create(null),loaded=[];const root={architectureVersion:'1.0.0-phase1',order:Object.freeze([...ORDER]),layers,workInProgress:Object.freeze({scienceExam:true,socialExam:true}),protectedAssets:Object.freeze(['review-bank-v1.js','review/index.html','storage-resilience-v1.js','aa-companion-v2.js','aa-companion-mobile-fix.js','login-companion-v1.js','companion7-runtime.js','answer-feedback-audio-v1.js']),register(name,api){const expected=ORDER[loaded.length];if(name!==expected)throw new Error(`AA_APP layer order violation: expected ${expected}, got ${name}`);if(layers[name])throw new Error(`AA_APP duplicate layer: ${name}`);layers[name]=Object.freeze(api||{});loaded.push(name);return layers[name]},get(name){return layers[name]||null},status(){return{version:this.architectureVersion,loaded:[...loaded],complete:loaded.length===ORDER.length}},assertComplete(){if(loaded.length!==ORDER.length||ORDER.some((x,i)=>loaded[i]!==x))throw new Error(`AA_APP incomplete architecture: ${loaded.join(' > ')}`);return true}};window.AA_APP=Object.freeze(root)})();\n""",encoding='utf-8')
+          Path('app/runtime-registry.js').write_text("""(()=>{'use strict';if(window.AA_APP?.architectureVersion)return;const ORDER=['appShell','state','learning','subjects','ui','pwa','qa'],layers=Object.create(null),loaded=[];const root={architectureVersion:'1.0.0-phase1',order:Object.freeze([...ORDER]),layers,workInProgress:Object.freeze({scienceExam:true,socialExam:true}),protectedAssets:Object.freeze(['review-bank-v1.js','review/index.html','storage-resilience-v1.js','aa-companion-v2.js','aa-companion-mobile-fix.js','login-companion-v1.js','companion7-runtime.js','companion-media-settings-v1.js','answer-feedback-audio-v1.js']),register(name,api){const expected=ORDER[loaded.length];if(name!==expected)throw new Error(`AA_APP layer order violation: expected ${expected}, got ${name}`);if(layers[name])throw new Error(`AA_APP duplicate layer: ${name}`);layers[name]=Object.freeze(api||{});loaded.push(name);return layers[name]},get(name){return layers[name]||null},status(){return{version:this.architectureVersion,loaded:[...loaded],complete:loaded.length===ORDER.length}},assertComplete(){if(loaded.length!==ORDER.length||ORDER.some((x,i)=>loaded[i]!==x))throw new Error(`AA_APP incomplete architecture: ${loaded.join(' > ')}`);return true}};window.AA_APP=Object.freeze(root)})();\n""",encoding='utf-8')
           Path('app/app-shell.js').write_text("""(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('appShell',{getRoute:()=>typeof state==='object'?state.route:null,navigate:r=>typeof setRoute==='function'?setRoute(r):false,render:()=>typeof render==='function'?render():false,version:()=>typeof APP_VERSION!=='undefined'?APP_VERSION:null})})();\n""",encoding='utf-8')
           Path('app/state/state-manager.js').write_text("""(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('state',{get:()=>typeof state==='object'?state:null,save:()=>typeof save==='function'?save():false,backup:()=>typeof backupPayload==='function'?backupPayload():null,merge:x=>typeof mergeState==='function'?mergeState(x):null,importText:t=>typeof importJSON==='function'?importJSON(t):false})})();\n""",encoding='utf-8')
           Path('app/learning/learning-engine.js').write_text("""(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('learning',{mission:()=>typeof pickMission==='function'?pickMission():null,start:o=>typeof startSession==='function'?startSession(o):false,answer:i=>typeof selectAnswer==='function'?selectAnswer(i):false,next:()=>typeof nextQuestion==='function'?nextQuestion():false,reviewWrong:()=>typeof startWrongReview==='function'?startWrongReview():false})})();\n""",encoding='utf-8')
@@ -82,18 +82,42 @@ jobs:
           Path('app/ui/ui-runtime.js').write_text("""(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('ui',{render:()=>typeof render==='function'?render():false,layout:(c,n=true)=>typeof layout==='function'?layout(c,n):c,header:()=>typeof header==='function'?header():'',nav:()=>typeof nav==='function'?nav():''})})();\n""",encoding='utf-8')
           Path('app/pwa/pwa-runtime.js').write_text("""(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('pwa',{get:()=>typeof PWA==='object'?PWA:null,init:()=>typeof initPWA==='function'?initPWA():false,check:n=>typeof checkPWAUpdate==='function'?checkPWAUpdate(Boolean(n)):false,registration:()=>typeof PWA==='object'?PWA.registration:null})})();\n""",encoding='utf-8')
           Path('app/qa/qa-runtime.js').write_text("""(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('qa',{run:()=>typeof qaRun==='function'?qaRun():false,architecture:()=>A.status(),assertArchitecture:()=>A.assertComplete()});A.assertComplete();document.documentElement.dataset.aaArchitecture='phase1'})();\n""",encoding='utf-8')
-          Path('app/ARCHITECTURE.md').write_text('''# AA Learning OS architecture boundary — Phase 1\n\nRuntime ownership is explicit: App Shell -> State -> Learning -> Subject engines -> UI -> PWA -> QA.\n\n`app/legacy/main-runtime.js` is the compatibility island extracted from the former giant inline runtime. Phase 1 deliberately moves it without rewriting its behavior. New development should use `window.AA_APP` layer APIs rather than adding more same-name global overrides.\n\nProtected: learning history, review progress/data, PWA, Megumin/companion image display and local image storage, saved/replayed voice features, AI reading, Chronologia, Japanese 15,000-word content, and current adaptive learning. Science and Social exam development is work-in-progress and is not rewritten here.\n''',encoding='utf-8')
+          Path('app/ARCHITECTURE.md').write_text('''# AA Learning OS architecture boundary — Phase 1\n\nRuntime ownership is explicit: App Shell -> State -> Learning -> Subject engines -> UI -> PWA -> QA.\n\n`app/legacy/main-runtime.js` is the compatibility island extracted from the former giant inline runtime. Phase 1 deliberately moves it without rewriting its behavior. New development should use `window.AA_APP` layer APIs rather than adding more same-name global overrides.\n\nProtected: learning history, review progress/data, PWA, Megumin/companion image display and local image storage, saved/replayed voice features, AI reading, Chronologia, Japanese 15,000-word content, and current adaptive learning. Science and Social exam development is work-in-progress and is not rewritten here.\n\nThe old `v23-pet-settings.js` filename was misleading: it also owned the login image/voice settings UI. Its exact media-settings implementation is retained under `companion-media-settings-v1.js`; only the obsolete pet naming/reference is removed.\n''',encoding='utf-8')
+
+          # Preserve the media settings implementation while retiring the misleading pet filename.
+          old_media=Path('v23-pet-settings.js')
+          if not old_media.exists(): raise SystemExit('legacy media settings file missing')
+          media_text=old_media.read_text(encoding='utf-8')
+          for needle in ['data-login-image-add','data-login-voice-file','setLoginVoices','setExplosionVoice','AALoginCompanion']:
+              if needle not in media_text: raise SystemExit('media settings protection marker missing: '+needle)
+          Path('companion-media-settings-v1.js').write_text(media_text,encoding='utf-8')
+          old_media.unlink()
 
           loader=Path('v23-loader.js')
-          lt=loader.read_text(encoding='utf-8').replace("'v23-pet-settings.js',",'')
+          lt=loader.read_text(encoding='utf-8')
+          if "'v23-pet-settings.js'" not in lt: raise SystemExit('legacy media loader reference missing')
+          lt=lt.replace("'v23-pet-settings.js'","'companion-media-settings-v1.js'",1)
           loader.write_text(lt,encoding='utf-8')
-          pet=Path('v23-pet-settings.js')
-          if pet.exists(): pet.unlink()
+
+          mobile=Path('aa-companion-mobile-fix.js')
+          mobile_before=mobile.read_text(encoding='utf-8')
+          old_fn="function loadSettings(){loadScript('aa-pet-settings-loader','./v23-pet-settings.js?compat=229-loginzip1')}"
+          new_fn="function loadCompanionMediaSettings(){loadScript('aa-companion-media-settings-loader','./companion-media-settings-v1.js?compat=phase1')}"
+          old_call='loadSettings();loadV23();'
+          new_call='loadCompanionMediaSettings();loadV23();'
+          if old_fn not in mobile_before or old_call not in mobile_before: raise SystemExit('legacy media mobile loader signature missing')
+          mobile_after=mobile_before.replace(old_fn,new_fn,1).replace(old_call,new_call,1)
+          mobile.write_text(mobile_after,encoding='utf-8')
+          expected_mobile=mobile_before.replace(old_fn,new_fn,1).replace(old_call,new_call,1)
+          if mobile.read_text(encoding='utf-8')!=expected_mobile: raise SystemExit('unexpected companion mobile diff')
+          for needle in ['./login-companion-v1.js?v=1.2.0','./settings-improvements-v1.js','loadV23()','installEnglishClozeDedup']:
+              if needle not in mobile_after: raise SystemExit('companion mobile preservation marker missing: '+needle)
 
           sw=Path('sw.js')
           st=sw.read_text(encoding='utf-8')
           st=re.sub(r"const VERSION='([^']+)';",lambda m:f"const VERSION='{m.group(1)}-phase1-architecture-20260903';",st,count=1)
-          st=st.replace("url('v23-pet-settings.js'),",'')
+          if "url('v23-pet-settings.js')" not in st: raise SystemExit('legacy media SW reference missing')
+          st=st.replace("url('v23-pet-settings.js')","url('companion-media-settings-v1.js')",1)
           assets="url('app/ui/base.css'),url('app/runtime-registry.js'),url('app/legacy/main-runtime.js'),url('app/app-shell.js'),url('app/state/state-manager.js'),url('app/learning/learning-engine.js'),url('app/subjects/subject-engines.js'),url('app/ui/ui-runtime.js'),url('app/pwa/pwa-runtime.js'),url('app/qa/qa-runtime.js'),"
           marker="url('index.html'),"
           if assets not in st:
@@ -108,6 +132,7 @@ jobs:
           deploy=Path('.github/workflows/deploy-pages.yml')
           dt=deploy.read_text(encoding='utf-8')
           dt=dt.replace('  cancel-in-progress: true','  cancel-in-progress: false',1)
+          dt=dt.replace('            settings-improvements-v1.js \\\n', '            settings-improvements-v1.js \\\n            companion-media-settings-v1.js \\\n',1)
           dt=dt.replace('            sw.js; do',"            app/runtime-registry.js \\\n            app/legacy/main-runtime.js \\\n            app/app-shell.js \\\n            app/state/state-manager.js \\\n            app/learning/learning-engine.js \\\n            app/subjects/subject-engines.js \\\n            app/ui/ui-runtime.js \\\n            app/pwa/pwa-runtime.js \\\n            app/qa/qa-runtime.js \\\n            sw.js; do",1)
           dt=dt.replace('          node scripts/validate-math.mjs\n','          node scripts/validate-math.mjs\n          node tests/architecture-boundaries.mjs\n',1)
           deploy.write_text(dt,encoding='utf-8')
@@ -128,8 +153,12 @@ jobs:
           if(!index.includes('app/runtime-registry.js')||!index.includes('app/legacy/main-runtime.js'))throw new Error('Shell extraction missing');
           for(const m of index.matchAll(/<script(?![^>]*\\bsrc=)[^>]*>([\\s\\S]*?)<\\/script>/gi))if(m[1].length>12000)throw new Error('Large inline runtime remains');
           for(const m of index.matchAll(/<style[^>]*>([\\s\\S]*?)<\\/style>/gi))if(m[1].length>12000)throw new Error('Large inline CSS remains');
-          const loader=fs.readFileSync('v23-loader.js','utf8');if(loader.includes('v23-pet-settings.js')||fs.existsSync('v23-pet-settings.js'))throw new Error('Pet settings still active');
-          const sw=fs.readFileSync('sw.js','utf8');for(const f of ['app/ui/base.css','app/runtime-registry.js','app/legacy/main-runtime.js',...order])if(!sw.includes(`url('${f}')`))throw new Error(`PWA core missing ${f}`);
+          const loader=fs.readFileSync('v23-loader.js','utf8');
+          const mobile=fs.readFileSync('aa-companion-mobile-fix.js','utf8');
+          if(loader.includes('v23-pet-settings.js')||mobile.includes('v23-pet-settings.js')||fs.existsSync('v23-pet-settings.js'))throw new Error('Legacy pet naming still active');
+          if(!loader.includes('companion-media-settings-v1.js')||!mobile.includes('companion-media-settings-v1.js')||!fs.existsSync('companion-media-settings-v1.js'))throw new Error('Companion media settings migration missing');
+          const media=fs.readFileSync('companion-media-settings-v1.js','utf8');for(const n of ['data-login-image-add','data-login-voice-file','setLoginVoices','setExplosionVoice','AALoginCompanion'])if(!media.includes(n))throw new Error(`Companion media marker missing: ${n}`);
+          const sw=fs.readFileSync('sw.js','utf8');for(const f of ['app/ui/base.css','app/runtime-registry.js','app/legacy/main-runtime.js',...order,'companion-media-settings-v1.js'])if(!sw.includes(`url('${f}')`))throw new Error(`PWA core missing ${f}`);
           for(const f of ['review-bank-v1.js','review/index.html','storage-resilience-v1.js','aa-companion-v2.js','aa-companion-mobile-fix.js','login-companion-v1.js','companion7-runtime.js','answer-feedback-audio-v1.js'])if(!fs.existsSync(f))throw new Error(`Protected asset missing: ${f}`);
           const reg=fs.readFileSync('app/runtime-registry.js','utf8');if(!reg.includes('scienceExam:true')||!reg.includes('socialExam:true'))throw new Error('WIP guards missing');
           console.log('architecture-boundaries: PASS');
@@ -144,7 +173,7 @@ jobs:
       - name: Validate refactor before commit
         run: |
           set -euo pipefail
-          for f in app/runtime-registry.js app/legacy/main-runtime.js app/app-shell.js app/state/state-manager.js app/learning/learning-engine.js app/subjects/subject-engines.js app/ui/ui-runtime.js app/pwa/pwa-runtime.js app/qa/qa-runtime.js v23-loader.js sw.js; do node --check "$f"; done
+          for f in app/runtime-registry.js app/legacy/main-runtime.js app/app-shell.js app/state/state-manager.js app/learning/learning-engine.js app/subjects/subject-engines.js app/ui/ui-runtime.js app/pwa/pwa-runtime.js app/qa/qa-runtime.js companion-media-settings-v1.js aa-companion-mobile-fix.js v23-loader.js sw.js; do node --check "$f"; done
           node tests/architecture-boundaries.mjs
           node scripts/validate-review-bank.mjs
           node scripts/validate-review-ui.mjs
@@ -158,6 +187,8 @@ jobs:
           grep -q 'setLoginVoices' companion7-runtime.js
           grep -q 'setExplosionVoice' companion7-runtime.js
           grep -q 'showDailyVisual' login-companion-v1.js
+          grep -q 'data-login-image-add' companion-media-settings-v1.js
+          grep -q 'data-login-voice-file' companion-media-settings-v1.js
           grep -q 'answer-feedback-audio-v1.js' sw.js
           ! grep -q 'gh workflow run deploy-pages.yml' .github/workflows/replenish-reading.yml
 
