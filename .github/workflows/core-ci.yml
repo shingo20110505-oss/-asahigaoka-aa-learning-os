@@ -24,7 +24,7 @@ jobs:
       - name: Validate architecture and protected systems
         run: |
           set -euo pipefail
-          for f in app/runtime-registry.js app/legacy/main-runtime.js app/app-shell.js app/state/state-manager.js app/learning/learning-engine.js app/subjects/subject-engines.js app/ui/ui-runtime.js app/pwa/pwa-runtime.js app/qa/qa-runtime.js companion-media-settings-v1.js aa-companion-mobile-fix.js v23-loader.js science-exam/bridge.js social-exam/bridge.js sw.js; do node --check "$f"; done
+          for f in app/runtime-registry.js app/legacy/main-runtime.js app/app-shell.js app/state/state-manager.js app/learning/learning-engine.js app/subjects/subject-engines.js app/ui/ui-runtime.js app/ui/rise-dashboard-v1.js app/pwa/pwa-runtime.js app/qa/qa-runtime.js companion-media-settings-v1.js aa-companion-mobile-fix.js v23-loader.js science-exam/bridge.js social-exam/bridge.js sw.js; do node --check "$f"; done
           node tests/architecture-boundaries.mjs
           node scripts/validate-review-bank.mjs
           node scripts/validate-review-ui.mjs
@@ -42,3 +42,8 @@ jobs:
           grep -q 'showDailyVisual' login-companion-v1.js
           grep -q 'data-login-image-add' companion-media-settings-v1.js
           grep -q 'data-login-voice-file' companion-media-settings-v1.js
+          grep -q 'rise-ui-v1.css' index.html
+          grep -q 'rise-dashboard-v1.js' index.html
+          grep -q "url('app/ui/rise-ui-v1.css')" sw.js
+          grep -q "url('app/ui/rise-dashboard-v1.js')" sw.js
+          grep -q 'window.__RISE_DASHBOARD_V1__' app/ui/rise-dashboard-v1.js
