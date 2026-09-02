@@ -1,0 +1,151 @@
+name: Chronologia 1000 Guard
+
+on:
+  push:
+    paths:
+      - 'chronologia.html'
+      - 'chronologia-daily-companion.js'
+      - 'chronologia-live-companion.js'
+      - 'chronologia-force1000-v1.js'
+      - 'learning-engine-v22.js'
+      - 'sw.js'
+      - '.chronologia-63-trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Wire Chronologia 1000 into AA Learning OS
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          root = Path('.')
+          html_p = root / 'chronologia.html'
+          main_p = root / 'learning-engine-v22.js'
+          daily_p = root / 'chronologia-daily-companion.js'
+          live_p = root / 'chronologia-live-companion.js'
+          force_p = root / 'chronologia-force1000-v1.js'
+          sw_p = root / 'sw.js'
+          quality_final_p = root / 'quality-repair-final-v1.js'
+
+          required = [html_p, main_p, daily_p, live_p, force_p, sw_p, quality_final_p]
+          missing = [str(p) for p in required if not p.exists()]
+          if missing:
+              raise SystemExit('Missing required files: ' + ', '.join(missing))
+
+          daily = daily_p.read_text(encoding='utf-8')
+          if "new CustomEvent('chronologia:voice'" not in daily:
+              daily = daily.replace(
+                  "function playVoice(name,opt={}){\n  if(!opt.force&&!modeAllows(name))return false;",
+                  "function playVoice(name,opt={}){\n  if(!opt.force&&!modeAllows(name))return false;\n  try{document.dispatchEvent(new CustomEvent('chronologia:voice',{detail:{name}}))}catch(e){}"
+              )
+          daily_p.write_text(daily, encoding='utf-8')
+
+          live = live_p.read_text(encoding='utf-8')
+          if "document.addEventListener('chronologia:voice'" not in live:
+              raise SystemExit('live companion lost voice-expression bridge')
+
+          main = main_p.read_text(encoding='utf-8')
+          main = main.replace('CHRONOLOGIA 6.1', 'CHRONOLOGIA 6.3.1')
+          main = main.replace('385件の統合年表', '1000件の統合年表')
+          main_p.write_text(main, encoding='utf-8')
+
+          html = html_p.read_text(encoding='utf-8')
+          html = re.sub(r'<title>Chronologia\s+6\.\d+(?:\.\d+)?', '<title>Chronologia 6.3.1', html, count=1)
+          html = re.sub(r'const VERSION\s*=\s*[\"\']6\.\d+(?:\.\d+)?[\"\'];', 'const VERSION = "6.3.1";', html, count=1)
+          html = re.sub(r'\s*<!-- CHRONOLOGIA-FORCE1000-LOADER -->\s*', '\n', html)
+          html = re.sub(r'\s*<script\s+src=[\"\']\./chronologia-force1000-v1\.js(?:\?[^\"\']*)?[\"\']></script>\s*', '\n', html)
+          force_loader = '\n<!-- CHRONOLOGIA-FORCE1000-LOADER -->\n<script src="./chronologia-force1000-v1.js?v=20260812a"></script>\n'
+          marker = '<!-- CHRONOLOGIA-DAILY-COMPANION-LOADER -->'
+          if marker in html:
+              html = html.replace(marker, force_loader + marker, 1)
+          else:
+              pos = html.rfind('</body>')
+              if pos < 0:
+                  raise SystemExit('chronologia.html has no </body>')
+              html = html[:pos] + force_loader + html[pos:]
+          html_p.write_text(html, encoding='utf-8')
+
+          # One shared cache generation for Chronologia + all learning-quality repairs.
+          sw = sw_p.read_text(encoding='utf-8')
+          sw = re.sub(r"const VERSION\s*=\s*['\"][^'\"]+['\"];", "const VERSION='2.3.6-quality2-chronologia1000';", sw, count=1)
+          assets = [
+              'chronologia.html','chronologia-force1000-v1.js',
+              'chronologia-v7-data-1.js','chronologia-v7-data-2a.js','chronologia-v7-data-2b.js',
+              'chronologia-v7-data-3.js','chronologia-v7-data-4.js','chronologia-v7-overrides.js',
+              'chronologia-curated-001-050.js','chronologia-curated-051-100.js','chronologia-curated-101-149.js',
+              'chronologia-curated-150.js','chronologia-curated-151-200.js','chronologia-curated-201-250.js',
+              'chronologia-curated-251-300.js','chronologia-curated-301-350.js','chronologia-curated-351-400.js',
+              'chronologia-curated-401-450.js','chronologia-curated-451-500.js','chronologia-curated-501-600.js',
+              'chronologia-curated-601-700.js','chronologia-curated-701-800.js','chronologia-curated-801-900.js',
+              'chronologia-curated-901-1000.js','chronologia-curated-final-fixes.js',
+              'chronologia-daily-companion.js','chronologia-live-companion.js',
+              'v23-loader.js','quality-repair-v1.js','quality-repair-final-v1.js','quality-ci-runner-v1.js'
+          ]
+          anchor = "  url('manifest.webmanifest'),\n"
+          if anchor not in sw:
+              raise SystemExit('service worker CORE anchor not found')
+          missing_assets = [a for a in assets if f"url('{a}')" not in sw]
+          if missing_assets:
+              block = ''.join(f"  url('{a}'),\n" for a in missing_assets)
+              sw = sw.replace(anchor, anchor + block, 1)
+          sw_p.write_text(sw, encoding='utf-8')
+
+      - name: Verify Chronologia 1000 integration
+        shell: python
+        run: |
+          from pathlib import Path
+          h=Path('chronologia.html').read_text(encoding='utf-8')
+          m=Path('learning-engine-v22.js').read_text(encoding='utf-8')
+          f=Path('chronologia-force1000-v1.js').read_text(encoding='utf-8')
+          q=Path('quality-repair-final-v1.js').read_text(encoding='utf-8')
+          s=Path('sw.js').read_text(encoding='utf-8')
+          checks={
+            'main card version':'CHRONOLOGIA 6.3.1' in m,
+            'main card count':'1000件の統合年表' in m and '385件の統合年表' not in m,
+            'force1000 loader once':h.count('chronologia-force1000-v1.js?v=20260812a')==1,
+            'force1000 target':"if(current>=1000)" in f and 'chronologia-curated-901-1000.js' in f,
+            'page version':'const VERSION = "6.3.1";' in h,
+            'shared fresh PWA cache':"const VERSION='2.3.6-quality2-chronologia1000';" in s,
+            'PWA chronology page':"url('chronologia.html')" in s,
+            'PWA force loader':"url('chronologia-force1000-v1.js')" in s,
+            'PWA last pack':"url('chronologia-curated-901-1000.js')" in s,
+            'PWA quality repair':"url('quality-repair-v1.js')" in s,
+            'PWA final quality repair':"url('quality-repair-final-v1.js')" in s,
+            'PWA quality browser runner':"url('quality-ci-runner-v1.js')" in s,
+            'final math formula repair':"excludedStrategy:['m39','m40']" in q and "includedAdvancedTail:['m58','m59']" in q,
+          }
+          failed=[k for k,v in checks.items() if not v]
+          for k,v in checks.items(): print(('PASS' if v else 'FAIL'), k)
+          if failed: raise SystemExit('Failed: '+', '.join(failed))
+
+      - name: Commit repaired integration
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add chronologia.html learning-engine-v22.js chronologia-daily-companion.js sw.js
+          if git diff --cached --quiet; then
+            echo "Chronologia + quality PWA integration already current"
+            exit 0
+          fi
+          git commit -m "Wire Chronologia 1000 and quality repairs into PWA"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push raced with another status commit; retrying ($attempt/5)"
+            sleep 2
+          done
+          exit 1

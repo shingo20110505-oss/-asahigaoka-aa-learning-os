@@ -1,0 +1,180 @@
+name: Recovery deploy review 20260831
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/recovery-deploy-review-20260831.yml'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-recovery-20260831
+  cancel-in-progress: false
+
+jobs:
+  deploy-review-recovery:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout exact source commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+
+      - name: Setup Pages
+        id: setup
+        uses: actions/configure-pages@v5
+
+      - name: Validate review source
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check review-bank-v1.js
+          node scripts/validate-review-bank.mjs
+          node scripts/validate-review-ui.mjs
+          grep -Fq "window.AA_REVIEW_BANK_VERSION='1.0.57'" review-bank-v1.js
+          grep -Fq "id:'en-to-for-person-destination-beneficiary-20260831'" review-bank-v1.js
+          grep -q 'Review v2' review/index.html
+          grep -q "fetch('../review-bank-v1.js'" review/index.html
+
+      - name: Add release marker
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          REVIEW_VERSION=$(grep -o "AA_REVIEW_BANK_VERSION='[^']*'" review-bank-v1.js | head -1 | cut -d"'" -f2)
+          REVIEW_COUNT=$(node - <<'NODE'
+          const fs=require('fs'),vm=require('vm');
+          const s={window:{}}; vm.createContext(s);
+          vm.runInContext(fs.readFileSync('review-bank-v1.js','utf8'),s);
+          process.stdout.write(String((s.window.AA_REVIEW_BANK||[]).length));
+          NODE
+          )
+          REVIEW_SHA256=$(sha256sum review-bank-v1.js | awk '{print $1}')
+          SW_VERSION=$(grep -o "const VERSION='[^']*'" sw.js | head -1 | cut -d"'" -f2)
+          LAYOUT_SHA256=$(sha256sum mobile-layout-guard-v1.js | awk '{print $1}')
+          QUALITY_REPAIR_SHA256=$(sha256sum quality-repair-v1.js | awk '{print $1}')
+          QUALITY_CI_SHA256=$(sha256sum quality-ci-runner-v1.js | awk '{print $1}')
+          cat > release.json <<EOF
+          {
+            "sourceBranch": "main",
+            "sourceSha": "${SOURCE_SHA}",
+            "publishedAt": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')",
+            "reviewVersion": "${REVIEW_VERSION}",
+            "reviewCount": ${REVIEW_COUNT},
+            "reviewSha256": "${REVIEW_SHA256}",
+            "serviceWorkerVersion": "${SW_VERSION}",
+            "mobileLayoutGuardSha256": "${LAYOUT_SHA256}",
+            "qualityRepairSha256": "${QUALITY_REPAIR_SHA256}",
+            "qualityCiSha256": "${QUALITY_CI_SHA256}",
+            "management": "validated-main-recovery-to-pages"
+          }
+          EOF
+          touch .nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Verify actual public review
+        id: verify
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          SOURCE_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="${PAGE_URL%/}/"
+          EXPECTED_SHA=$(sha256sum review-bank-v1.js | awk '{print $1}')
+          EXPECTED_VERSION=$(grep -o "AA_REVIEW_BANK_VERSION='[^']*'" review-bank-v1.js | head -1 | cut -d"'" -f2)
+          EXPECTED_COUNT=$(node - <<'NODE'
+          const fs=require('fs'),vm=require('vm');
+          const s={window:{}}; vm.createContext(s);
+          vm.runInContext(fs.readFileSync('review-bank-v1.js','utf8'),s);
+          process.stdout.write(String((s.window.AA_REVIEW_BANK||[]).length));
+          NODE
+          )
+          ok=0
+          for n in $(seq 1 30); do
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}release.json?verify=${SOURCE_SHA}-${n}" -o /tmp/release.json && grep -Fq "${SOURCE_SHA}" /tmp/release.json; then
+              ok=1
+              break
+            fi
+            sleep 4
+          done
+          test "$ok" = 1
+          grep -Fq "\"reviewVersion\": \"${EXPECTED_VERSION}\"" /tmp/release.json
+          grep -Fq "\"reviewSha256\": \"${EXPECTED_SHA}\"" /tmp/release.json
+
+          curl -fsSL "${BASE}review/?verify=${SOURCE_SHA}" -o /tmp/review.html
+          grep -q 'Review v2' /tmp/review.html
+          grep -q "fetch('../review-bank-v1.js'" /tmp/review.html
+
+          curl -fsSL "${BASE}review-bank-v1.js?verify=${SOURCE_SHA}" -o /tmp/public-review.js
+          ACTUAL_SHA=$(sha256sum /tmp/public-review.js | awk '{print $1}')
+          test "$ACTUAL_SHA" = "$EXPECTED_SHA"
+          grep -Fq "window.AA_REVIEW_BANK_VERSION='1.0.57'" /tmp/public-review.js
+          grep -Fq "id:'en-to-for-person-destination-beneficiary-20260831'" /tmp/public-review.js
+          grep -Fq "to＝その人へ / for＝その人用" /tmp/public-review.js
+          curl -fsSL "${BASE}?verify=${SOURCE_SHA}" -o /tmp/root.html
+          curl -fsSL "${BASE}sw.js?verify=${SOURCE_SHA}" -o /tmp/sw.js
+
+          echo "review_sha256=${EXPECTED_SHA}" >> "$GITHUB_OUTPUT"
+          echo "review_version=${EXPECTED_VERSION}" >> "$GITHUB_OUTPUT"
+          echo "review_count=${EXPECTED_COUNT}" >> "$GITHUB_OUTPUT"
+
+      - name: Record required production verification status
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          REVIEW_SHA256: ${{ steps.verify.outputs.review_sha256 }}
+          REVIEW_VERSION: ${{ steps.verify.outputs.review_version }}
+          REVIEW_COUNT: ${{ steps.verify.outputs.review_count }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git checkout -B main origin/main
+          cat > PUBLIC_VERIFY_STATUS.txt <<EOF
+          result=success
+          source_sha=${SOURCE_SHA}
+          page_url=${PAGE_URL}
+          verified_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          review_version=${REVIEW_VERSION}
+          review_count=${REVIEW_COUNT}
+          review_sha256=${REVIEW_SHA256}
+          checks=public-release,review-v2,review-bank-exact-hash,review-item,root,service-worker
+          EOF
+          cat > DEPLOY_STATUS.txt <<EOF
+          source_sha=${SOURCE_SHA}
+          page_url=${PAGE_URL}
+          checked_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          setup=success
+          preflight=success
+          release_marker=success
+          upload=success
+          deploy=success
+          public_verify=success
+          public_verify_stage=complete
+          verified_record=success
+          EOF
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add PUBLIC_VERIFY_STATUS.txt DEPLOY_STATUS.txt
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record recovered Pages verification for review v1.0.57'
+            git push origin main
+          fi

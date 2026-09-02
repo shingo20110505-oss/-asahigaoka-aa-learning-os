@@ -1,0 +1,76 @@
+name: Verify Koten Kanbun 1000 Public
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'kokugo-chronologia/koten-kanbun-*.js'
+      - 'kokugo-chronologia/index.html'
+      - '.github/workflows/verify-koten-kanbun-public.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - name: Validate source and actual public site
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/kokugo-chronologia'
+          node --check kokugo-chronologia/koten-kanbun-extension.js
+          for f in kokugo-chronologia/koten-kanbun-bank-*.js; do node --check "$f"; done
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          pairs=[]
+          for n in range(1,5):
+              t=Path(f'kokugo-chronologia/koten-kanbun-bank-{n}.js').read_text(encoding='utf-8')
+              pairs += [(int(a),b) for a,b in re.findall(r'^\[(\d+),"(古文|漢文)",',t,re.M)]
+          assert len(pairs)==1000
+          assert [a for a,_ in pairs]==list(range(1,1001))
+          assert sum(b=='古文' for _,b in pairs)==700
+          assert sum(b=='漢文' for _,b in pairs)==300
+          html=Path('kokugo-chronologia/index.html').read_text(encoding='utf-8')
+          assert 'koten-kanbun-extension.js?v=20260815-1' in html
+          assert 'koten-extension.js?v=20260815-1' not in html
+          PY
+          expected_ext=$(sha256sum kokugo-chronologia/koten-kanbun-extension.js | awk '{print $1}')
+          ok=0
+          for n in $(seq 1 48); do
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}/koten-kanbun-extension.js?verify=${GITHUB_SHA}-${n}" -o /tmp/public-ext.js; then
+              got=$(sha256sum /tmp/public-ext.js | awk '{print $1}')
+              if [ "$got" = "$expected_ext" ]; then ok=1; break; fi
+            fi
+            sleep 5
+          done
+          test "$ok" = 1
+          curl -fsSL "${BASE}/?verify=${GITHUB_SHA}" -o /tmp/public-index.html
+          grep -q 'koten-kanbun-extension.js?v=20260815-1' /tmp/public-index.html
+          ! grep -q 'koten-extension.js?v=20260815-1' /tmp/public-index.html
+          test "$(sha256sum /tmp/public-ext.js | awk '{print $1}')" = "$expected_ext"
+          for n in 1 2 3 4; do
+            curl -fsSL "${BASE}/koten-kanbun-bank-${n}.js?verify=${GITHUB_SHA}-${n}" -o "/tmp/public-bank-${n}.js"
+            test "$(sha256sum "/tmp/public-bank-${n}.js" | awk '{print $1}')" = "$(sha256sum "kokugo-chronologia/koten-kanbun-bank-${n}.js" | awk '{print $1}')"
+          done
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
+          test -n "$CHROME"
+          rm -rf "/tmp/kk-chrome-${GITHUB_SHA}"
+          timeout 120s "$CHROME" \
+            --headless=new \
+            --no-sandbox \
+            --disable-gpu \
+            --disable-dev-shm-usage \
+            --user-data-dir="/tmp/kk-chrome-${GITHUB_SHA}" \
+            --virtual-time-budget=45000 \
+            --dump-dom "${BASE}/?verify=${GITHUB_SHA}" > /tmp/public-kk-dom.html
+          grep -q 'data-koten-kanbun-count="1000"' /tmp/public-kk-dom.html
+          grep -q '古文・漢文1000' /tmp/public-kk-dom.html
+          grep -q 'クイズ・解き直し' /tmp/public-kk-dom.html
+          grep -q '間違えた問題だけ' /tmp/public-kk-dom.html
+          echo 'PUBLIC_KOTEN_KANBUN_VERIFY=success'

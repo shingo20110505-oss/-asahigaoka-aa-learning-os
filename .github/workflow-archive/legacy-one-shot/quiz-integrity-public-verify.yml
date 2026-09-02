@@ -1,0 +1,90 @@
+name: Verify Timeline and Classical Quizzes
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'quiz-integrity-fix-v1.js'
+      - 'v23-loader.js'
+      - '.github/workflows/quiz-integrity-public-verify.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quiz-integrity-public-verify
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+
+      - name: Static integrity checks
+        run: |
+          set -euo pipefail
+          node --check quiz-integrity-fix-v1.js
+          node --check v23-loader.js
+          grep -q "quiz-integrity-fix-v1.js" v23-loader.js
+          grep -q "1.0.1-20260815" quiz-integrity-fix-v1.js
+          grep -q "dataset.aaQuizIntegrity" quiz-integrity-fix-v1.js
+          grep -q "classicalDeep" quiz-integrity-fix-v1.js
+
+      - name: Wait for exact Pages release
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          BASE: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+        run: |
+          set -euo pipefail
+          ok=0
+          for n in $(seq 1 36); do
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}release.json?quiz_verify=${SOURCE_SHA}-${n}" -o /tmp/release.json && grep -q "${SOURCE_SHA}" /tmp/release.json; then
+              ok=1
+              break
+            fi
+            sleep 5
+          done
+          test "$ok" = 1
+
+      - name: Verify public assets
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          BASE: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+        run: |
+          set -euo pipefail
+          curl -fsSL "${BASE}v23-loader.js?quiz_verify=${SOURCE_SHA}" -o /tmp/v23-loader.js
+          curl -fsSL "${BASE}quiz-integrity-fix-v1.js?quiz_verify=${SOURCE_SHA}" -o /tmp/quiz-fix.js
+          grep -q "quiz-integrity-fix-v1.js" /tmp/v23-loader.js
+          grep -q "1.0.1-20260815" /tmp/quiz-fix.js
+          test "$(sha256sum quiz-integrity-fix-v1.js | awk '{print $1}')" = "$(sha256sum /tmp/quiz-fix.js | awk '{print $1}')"
+          test "$(sha256sum v23-loader.js | awk '{print $1}')" = "$(sha256sum /tmp/v23-loader.js | awk '{print $1}')"
+
+      - name: Run production browser quiz audit
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          BASE: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+        run: |
+          set -euo pipefail
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
+          test -n "$CHROME"
+          rm -rf "/tmp/aa-quiz-integrity-${SOURCE_SHA}"
+          timeout 120s "$CHROME" \
+            --headless=new \
+            --no-sandbox \
+            --disable-gpu \
+            --disable-dev-shm-usage \
+            --user-data-dir="/tmp/aa-quiz-integrity-${SOURCE_SHA}" \
+            --virtual-time-budget=60000 \
+            --dump-dom "${BASE}?aa_quiz_integrity_ci=1&verify=${SOURCE_SHA}" > /tmp/quiz-runtime.html
+          grep -o 'AA_QUIZ_INTEGRITY=[^<]*' /tmp/quiz-runtime.html || true
+          grep -q 'data-aa-quiz-integrity="PASS"' /tmp/quiz-runtime.html
+          grep -q 'AA_QUIZ_INTEGRITY=PASS' /tmp/quiz-runtime.html
+          grep -q '"classicalStandard":8' /tmp/quiz-runtime.html
+          grep -q '"classicalDeep":15' /tmp/quiz-runtime.html
+          grep -q '"failures":\[\]' /tmp/quiz-runtime.html

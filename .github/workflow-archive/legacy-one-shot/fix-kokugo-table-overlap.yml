@@ -1,0 +1,78 @@
+name: Fix Kokugo Chronologia Table Overlap
+on:
+  push:
+    paths:
+      - '.fix-kokugo-table-overlap-trigger'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Sync latest main
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+      - name: Fix sticky header and mobile table spacing
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+          p = Path('kokugo-chronologia/index.html')
+          s = p.read_text(encoding='utf-8')
+          if '.th{position:sticky;top:64px;' in s:
+              s = s.replace(
+                  ".th{position:sticky;top:64px;z-index:15;background:#edf1f6;font-size:11px;font-weight:900}",
+                  ".th{position:sticky;top:0;z-index:15;background:#edf1f6;font-size:11px;font-weight:900;box-shadow:0 1px 0 #d9e1ec}",
+                  1,
+              )
+          elif '.th{position:sticky;top:0;' not in s:
+              raise SystemExit('target .th rule not found')
+          if '.tableWrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:#fff}' in s:
+              s = s.replace(
+                  ".tableWrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:#fff}",
+                  ".tableWrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:#fff;position:relative;-webkit-overflow-scrolling:touch}",
+                  1,
+              )
+          elif 'position:relative;-webkit-overflow-scrolling:touch' not in s:
+              raise SystemExit('target .tableWrap rule not found')
+          if '@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}' in s:
+              s = s.replace(
+                  '@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}',
+                  '@media(max-width:760px){.tableWrap{margin-top:4px}.stats{grid-template-columns:repeat(2,1fr)}',
+                  1,
+              )
+          p.write_text(s, encoding='utf-8')
+
+          sw = Path('sw.js')
+          t = sw.read_text(encoding='utf-8')
+          t2, n = re.subn(r"const VERSION='[^']+';", "const VERSION='2.3.9-kokugo-tablefix';", t, count=1)
+          if n != 1:
+              raise SystemExit('service worker version not found')
+          sw.write_text(t2, encoding='utf-8')
+      - name: Static assertions
+        run: |
+          grep -Fq '.th{position:sticky;top:0;' kokugo-chronologia/index.html
+          grep -Fq 'position:relative;-webkit-overflow-scrolling:touch' kokugo-chronologia/index.html
+          ! grep -Fq '.th{position:sticky;top:64px;' kokugo-chronologia/index.html
+          grep -Fq "const VERSION='2.3.9-kokugo-tablefix';" sw.js
+      - name: Commit and push safely
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add kokugo-chronologia/index.html sw.js
+          if git diff --cached --quiet; then
+            echo 'No changes needed'
+            exit 0
+          fi
+          git commit -m 'Fix Kokugo Chronologia sticky table header overlap'
+          for i in 1 2 3 4 5; do
+            if git push origin HEAD:main; then exit 0; fi
+            git fetch origin main
+            git rebase origin/main
+            sleep 2
+          done
+          exit 1

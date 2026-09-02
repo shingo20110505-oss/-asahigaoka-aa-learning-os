@@ -1,0 +1,90 @@
+name: Extract Kokugo Direct Translation Batch
+on:
+  push:
+    paths:
+      - '.extract-kokugo-a-pending-trigger'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Sync latest main
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+      - name: Extract assistant-only direct-translation batch
+        shell: python
+        run: |
+          import json,re
+          from collections import Counter
+          from pathlib import Path
+          src=Path('kokugo-chronologia/data.jsonl')
+          ov_path=Path('kokugo-chronologia/meaning-ja-overrides.json')
+          rows=[json.loads(x) for x in src.read_text(encoding='utf-8').splitlines() if x.strip()]
+          overrides=json.loads(ov_path.read_text(encoding='utf-8')) if ov_path.exists() and ov_path.read_text(encoding='utf-8').strip() else {}
+          done_ids={str(k) for k,v in overrides.items() if str(v).strip()}
+          def needs_ja(s):
+              s=str(s or '').strip()
+              jp=len(re.findall(r'[ぁ-んァ-ヶ一-龠々〆ヵヶ]',s))
+              latin=len(re.findall(r'[A-Za-z]',s))
+              return bool(s) and latin>=3 and jp==0
+          pending=[(i,r) for i,r in enumerate(rows) if needs_ja(r.get('meaning')) and str(r.get('id')) not in done_ids]
+          rank_counts=Counter(str(r.get('rank','')).strip() or '(blank)' for _,r in pending)
+          a=[(i,r) for i,r in pending if str(r.get('rank','')).strip().upper()=='A']
+          max_batch=1000
+          selected=a[:max_batch] if a else pending[:max_batch]
+          keys=('id','term','reading','meaning')
+          targets=[]
+          for i,r in selected:
+              x={'source_index':i}
+              x.update({k:r.get(k) for k in keys})
+              targets.append(x)
+          meta={
+            'mode':'assistant_direct_only',
+            'total_rows':len(rows),
+            'already_direct_japanese':len(done_ids),
+            'english_only_remaining':len(pending),
+            'english_only_rank_counts':dict(rank_counts),
+            'a_rank_total':len(a),
+            'selection':'A-rank' if a else 'first-visible-order (source rank is blank)',
+            'max_batch_size':max_batch,
+            'batch_size':len(targets),
+          }
+          out=dict(meta)
+          out['targets']=targets
+          assert len(targets) <= max_batch
+          assert len({str(x.get('id')) for x in targets}) == len(targets)
+          assert all(str(x.get('id')) not in done_ids for x in targets)
+          Path('kokugo-chronologia/direct-translation-pending.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          part_dir=Path('kokugo-chronologia/direct-translation-pending-parts')
+          part_dir.mkdir(parents=True,exist_ok=True)
+          for old in part_dir.glob('part-*.json'):
+              old.unlink()
+          part_size=50
+          for start in range(0,len(targets),part_size):
+              chunk=targets[start:start+part_size]
+              p=dict(meta)
+              p['part_start']=start
+              p['part_end']=start+len(chunk)-1
+              p['targets']=chunk
+              part_dir.joinpath(f'part-{start:04d}-{start+len(chunk)-1:04d}.json').write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(meta,ensure_ascii=False))
+      - name: Commit extraction
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add kokugo-chronologia/direct-translation-pending.json kokugo-chronologia/direct-translation-pending-parts/
+          if git diff --cached --quiet; then echo 'No changes'; exit 0; fi
+          git commit -m 'Extract next assistant-only Kokugo translation batch'
+          for i in 1 2 3 4 5; do
+            if git push origin HEAD:main; then exit 0; fi
+            git fetch origin main
+            git rebase origin/main
+            sleep 2
+          done
+          exit 1

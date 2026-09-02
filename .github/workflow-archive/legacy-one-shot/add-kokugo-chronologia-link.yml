@@ -1,0 +1,42 @@
+name: Add Kokugo Chronologia Link
+
+on:
+  push:
+    paths:
+      - '.kokugo-chronologia-link-trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  add-link:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Add visible link to main app
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          marker='id="kokugoChronologiaQuickLink"'
+          if marker not in s:
+              insert='''\n<a id="kokugoChronologiaQuickLink" href="./kokugo-chronologia/" aria-label="国語 語彙クロノロジアを開く" style="position:fixed;right:12px;bottom:calc(86px + env(safe-area-inset-bottom,0px));z-index:60;text-decoration:none;background:#172033;color:#fff;border:1px solid rgba(255,255,255,.2);box-shadow:0 8px 24px rgba(0,0,0,.22);border-radius:999px;padding:10px 13px;font-size:12px;font-weight:900;letter-spacing:.02em">国語 年表 15,000語</a>\n'''
+              if '</body>' not in s:
+                  raise SystemExit('no </body> in index.html')
+              s=s.replace('</body>',insert+'</body>',1)
+              p.write_text(s,encoding='utf-8')
+          assert marker in p.read_text(encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Add visible Kokugo Chronologia link to main app'
+          git pull --rebase origin main
+          git push origin HEAD:main

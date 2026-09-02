@@ -1,0 +1,1 @@
+(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('ui',{render:()=>typeof render==='function'?render():false,layout:(c,n=true)=>typeof layout==='function'?layout(c,n):c,header:()=>typeof header==='function'?header():'',nav:()=>typeof nav==='function'?nav():''})})();

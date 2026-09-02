@@ -1,0 +1,143 @@
+name: Extend Kokugo Jukugo Quiz
+on:
+  push:
+    paths:
+      - '.extend-kokugo-jukugo-quiz-trigger'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Connect full 15000 dataset to quiz
+        shell: bash
+        run: |
+          set -euo pipefail
+          for i in 1 2 3 4 5 6 7 8; do
+            git fetch origin main
+            git reset --hard origin/main
+            python - <<'PY'
+          from pathlib import Path
+          import json,re
+
+          data_path=Path('kokugo-chronologia/data.jsonl')
+          rows=[json.loads(x) for x in data_path.read_text(encoding='utf-8').splitlines() if x.strip()]
+          if len(rows)!=15000:
+              raise SystemExit(f'data.jsonl must contain exactly 15000 rows, got {len(rows)}')
+          if any(not str(x.get('term') or '').strip() for x in rows):
+              raise SystemExit('data.jsonl contains blank terms')
+          keys=[str(x.get('term') or '')+'|'+str(x.get('reading') or '') for x in rows]
+          if len(set(keys))!=15000:
+              raise SystemExit(f'data.jsonl unique term/reading count is {len(set(keys))}, expected 15000')
+          usable_meaning=sum(bool(str(x.get('term') or '').strip() and str(x.get('meaning') or '').strip()) for x in rows)
+          usable_reading=sum(bool(str(x.get('term') or '').strip() and str(x.get('reading') or '').strip()) for x in rows)
+          print(f'FULL_DATA rows=15000 unique=15000 meaning={usable_meaning} reading={usable_reading}')
+
+          rank_path=Path('kokugo-chronologia/quiz-rank-select-v1.js')
+          s=rank_path.read_text(encoding='utf-8')
+          s=re.sub(r"const VERSION='[^']+';","const VERSION='2026-08-26.3';\nconst FULL_DATA_URL='./data.jsonl?v=quiz15000-20260826-3';",s,count=1)
+
+          marker='async function loadFull15000()'
+          if marker not in s:
+              anchor="function rankText(rank){return rank==='A'?'A 最優先':rank==='B'?'B 重要':rank==='C'?'C 発展':'全ランク'}\n"
+              insert=r'''function rankText(rank){return rank==='A'?'A 最優先':rank==='B'?'B 重要':rank==='C'?'C 発展':'全ランク'}
+
+let full15000=[];
+async function loadFull15000(){
+ if(full15000.length===15000)return full15000;
+ const res=await fetch(FULL_DATA_URL,{cache:'no-cache'});if(!res.ok)throw new Error('15,000語データ HTTP '+res.status);
+ const text=await res.text(),rows=text.split(/\r?\n/).filter(x=>x.trim()).map(x=>JSON.parse(x));
+ if(rows.length!==15000)throw new Error('15,000語データ件数 '+rows.length);
+ const seen=new Set();
+ full15000=rows.map((x,i)=>({id:'quiz-full-'+String(x.id??i),word:String(x.term||''),reading:String(x.reading||''),meaning:String(x.meaning||''),type:['yoji','idiom','four'].includes(x.type)?x.type:'four',rank:(x.type==='yoji'||x.type==='idiom')?'B':'C',source:'full15000'}));
+ for(const x of full15000){const k=x.word+'|'+x.reading;if(!x.word||seen.has(k))throw new Error('15,000語データ重複/空欄: '+k);seen.add(k)}
+ window.__AA_KOKUGO_FULL_15000_COUNT__=full15000.length;
+ return full15000;
+}
+'''
+              if anchor not in s: raise SystemExit('rankText insertion point not found')
+              s=s.replace(anchor,insert,1)
+
+          old_pool=r'''function makePool(){
+ const merged=[...(window.AA_JUKUGO_BANK||[]),...(window.AA_JUKUGO_ADVANCED||[])],seen=new Set(),bank=[];
+ for(const x of merged){const key=`${x.word}|${x.reading||''}`;if(!x.word||seen.has(key))continue;seen.add(key);bank.push({...x,type:x.kind==='二字熟語'?'two':'three'})}
+ const curated=(window.AA_IDIOM_BANK||[]).map((x,i)=>({id:'quiz-curated-'+i,word:x.word,reading:x.reading||'',meaning:x.meaning||'',type:x.kind==='四字熟語'?'yoji':'idiom',rank:x.rank||'B'}));
+ return [...bank.map(x=>({id:x.id,word:x.word,reading:x.reading||'',meaning:x.meaning||'',type:x.type,rank:x.rank||'C'})),...curated];
+}'''
+          new_pool=r'''function makePool(){
+ const merged=[...(window.AA_JUKUGO_BANK||[]),...(window.AA_JUKUGO_ADVANCED||[])],seen=new Set(),bank=[];
+ for(const x of merged){const key=`${x.word}|${x.reading||''}`;if(!x.word||seen.has(key))continue;seen.add(key);bank.push({...x,type:x.kind==='二字熟語'?'two':'three'})}
+ const curated=(window.AA_IDIOM_BANK||[]).map((x,i)=>({id:'quiz-curated-'+i,word:x.word,reading:x.reading||'',meaning:x.meaning||'',type:x.kind==='四字熟語'?'yoji':'idiom',rank:x.rank||'B'}));
+ const out=[...full15000],allSeen=new Set(out.map(x=>`${x.word}|${x.reading||''}`));
+ for(const x of [...bank.map(x=>({id:x.id,word:x.word,reading:x.reading||'',meaning:x.meaning||'',type:x.type,rank:x.rank||'C'})),...curated]){const key=`${x.word}|${x.reading||''}`;if(!x.word||allSeen.has(key))continue;allSeen.add(key);out.push(x)}
+ return out;
+}'''
+          if old_pool in s:
+              s=s.replace(old_pool,new_pool,1)
+          elif 'const out=[...full15000]' not in s:
+              raise SystemExit('makePool replacement target not found')
+
+          s=s.replace('function install(){','async function install(){',1)
+          wait_line=" if(document.getElementById('quizRank'))return;\n"
+          load_block=r''' if(document.getElementById('quizRank'))return;
+ try{body.innerHTML='<div class="quiz-summary">15,000語データをクイズに読み込み中…</div>';await loadFull15000()}catch(err){body.innerHTML='<div class="quiz-summary">15,000語データを読み込めませんでした：'+esc(err?.message||err)+'</div>';return}
+ if(![...kindEl.options].some(o=>o.value==='four'))kindEl.insertAdjacentHTML('beforeend','<option value="four">四字語（補助）</option>');
+ kindEl.querySelectorAll('option').forEach(o=>o.selected=false);kindEl.value='all';
+'''
+          if '15,000語データをクイズに読み込み中' not in s:
+              if wait_line not in s: raise SystemExit('install insertion point not found')
+              s=s.replace(wait_line,load_block,1)
+
+          old_note="通常の10問は、選択した種類・ランクの全候補から毎回完全ランダムに出題します。過去の出題履歴・正答率・誤答履歴は通常出題の確率に影響しません。誤答だけの解き直しは専用ボタンからできます。"
+          new_note="通常の10問は、15,000語データを含む全候補からランダムに出題します。初期設定は「全部・全ランク」です。誤答だけの解き直しは専用ボタンからできます。"
+          s=s.replace(old_note,new_note)
+          s=s.replace("`${rankText(qRank)}の全候補から毎回完全ランダムで出題します。過去の出題履歴や正誤履歴による優先付けはありません。`","`${rankText(qRank)}・候補 ${quizPool.length.toLocaleString()}語（15,000語データ接続済み）からランダム出題します。`")
+
+          pool_line=" const quizPool=makePool(),liveByKey=new Map();quizPool.forEach(x=>liveByKey.set(wrongKey(x),x));\n"
+          pool_new=" const quizPool=makePool(),liveByKey=new Map();quizPool.forEach(x=>liveByKey.set(wrongKey(x),x));window.__AA_KOKUGO_QUIZ_POOL_COUNT__=quizPool.length;const badge=quiz.querySelector('.jkg-badge');if(badge){badge.textContent='10問 / 15,000語接続済み';badge.title='実際の候補 '+quizPool.length.toLocaleString()+'語'}\n"
+          if 'window.__AA_KOKUGO_QUIZ_POOL_COUNT__' not in s:
+              if pool_line not in s: raise SystemExit('quizPool insertion point not found')
+              s=s.replace(pool_line,pool_new,1)
+
+          rank_path.write_text(s,encoding='utf-8')
+
+          inter_path=Path('kokugo-chronologia/quiz-interaction-fix.js')
+          t=inter_path.read_text(encoding='utf-8')
+          t=re.sub(r"const VERSION='[^']+';","const VERSION='2026-08-26.3';",t,count=1)
+          t=re.sub(r"s\.src='./quiz-rank-select-v1\.js\?v=[^']+';","s.src='./quiz-rank-select-v1.js?v=20260826-3';",t,count=1)
+          inter_path.write_text(t,encoding='utf-8')
+
+          index_path=Path('kokugo-chronologia/index.html')
+          u=index_path.read_text(encoding='utf-8')
+          u,n=re.subn(r'<script src="\./quiz-interaction-fix\.js\?v=[^"]+"></script>','<script src="./quiz-interaction-fix.js?v=20260826-3"></script>',u,count=1)
+          if not n: raise SystemExit('quiz interaction script tag not found')
+          index_path.write_text(u,encoding='utf-8')
+
+          final=rank_path.read_text(encoding='utf-8')
+          assert "VERSION='2026-08-26.3'" in final
+          assert "FULL_DATA_URL='./data.jsonl?v=quiz15000-20260826-3'" in final
+          assert 'rows.length!==15000' in final
+          assert 'const out=[...full15000]' in final
+          assert "kindEl.value='all'" in final
+          assert 'window.__AA_KOKUGO_FULL_15000_COUNT__' in final
+          assert 'window.__AA_KOKUGO_QUIZ_POOL_COUNT__' in final
+          assert "quiz-rank-select-v1.js?v=20260826-3" in inter_path.read_text(encoding='utf-8')
+          assert "quiz-interaction-fix.js?v=20260826-3" in index_path.read_text(encoding='utf-8')
+          print('PATCH_OK full15000 connected, default kind=all, cache bust=20260826-3')
+          PY
+            git config user.name github-actions[bot]
+            git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+            git add kokugo-chronologia/quiz-rank-select-v1.js kokugo-chronologia/quiz-interaction-fix.js kokugo-chronologia/index.html
+            if git diff --cached --quiet; then
+              echo 'Kokugo 15000 quiz connection already applied'; exit 0
+            fi
+            git commit -m 'Connect Kokugo quiz to full 15000 dataset'
+            if git push origin HEAD:main; then exit 0; fi
+            sleep 2
+          done
+          echo 'Could not push after conflict-safe retries' >&2
+          exit 1

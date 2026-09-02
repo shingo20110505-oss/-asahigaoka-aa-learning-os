@@ -1,0 +1,130 @@
+name: Rank Koten Kanbun Exam Priority
+on:
+  push:
+    paths:
+      - '.rank-koten-kanbun-exam-priority-trigger'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Add safe exam-priority ranking without changing quiz IDs or answers
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git reset --hard origin/main
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('kokugo-chronologia/koten-kanbun-extension.js')
+          s = p.read_text(encoding='utf-8')
+
+          # Guard the identity/answer logic that must never change.
+          required = [
+              "id:'kk'+String(x[0]).padStart(4,'0')",
+              "answer:item[field]",
+              "options:shuffle([item[field],...vals])",
+              "function addWrong(item)",
+              "function removeWrong(item)",
+          ]
+          for token in required:
+              if token not in s:
+                  raise SystemExit(f'safety guard missing before patch: {token}')
+
+          s = re.sub(r"const VERSION='[^']+';", "const VERSION='2026-08-20.1';", s, count=1)
+
+          marker = "function waitNav(n=0){const nav=$('#jkgNav');if(nav)return init(nav);if(n<160)setTimeout(()=>waitNav(n+1),50);else console.error('古文・漢文UI: jkgNav not found')}\n"
+          helpers = marker + "function examTier(rank){return rank<=100?'S':rank<=300?'A':rank<=500?'B':rank<=1000?'C':'D'}\nfunction examWeight(rank){return rank<=100?6:rank<=300?5:rank<=500?4:rank<=850?3:rank<=1200?2:1}\nfunction priorityShuffle(items){return [...items].map(x=>({x,key:-Math.log(Math.max(Math.random(),1e-12))/examWeight(x.rank)})).sort((a,b)=>a.key-b.key).map(o=>o.x)}\n"
+          if 'function examTier(rank)' not in s:
+              if marker not in s:
+                  raise SystemExit('waitNav insertion marker not found')
+              s = s.replace(marker, helpers, 1)
+
+          old_map = "const bank=raw.map(x=>({rank:+x[0],category:x[1],word:x[2],reading:x[3]||'',meaning:x[4]||'',id:'kk'+String(x[0]).padStart(4,'0'),type:x[1]==='古文'?'koten':'kanbun'})).filter(x=>x.rank&&x.word);"
+          new_map = "const bank=raw.map(x=>({rank:+x[0],examTier:examTier(+x[0]),category:x[1],word:x[2],reading:x[3]||'',meaning:x[4]||'',id:'kk'+String(x[0]).padStart(4,'0'),type:x[1]==='古文'?'koten':'kanbun'})).filter(x=>x.rank&&x.word);"
+          if 'examTier:examTier(+x[0])' not in s:
+              if old_map not in s:
+                  raise SystemExit('bank map marker not found')
+              s = s.replace(old_map, new_map, 1)
+
+          css_old = ".kk-rank{font-weight:1000;text-align:center;color:var(--blue)}.kk-word"
+          css_new = ".kk-rank{font-weight:1000;text-align:center;color:var(--blue)}.kk-tier{display:block;margin-top:3px;font-size:9px;line-height:1;color:var(--sub)}.kk-word"
+          if '.kk-tier{' not in s:
+              if css_old not in s:
+                  raise SystemExit('rank css marker not found')
+              s = s.replace(css_old, css_new, 1)
+
+          row_old = '<div class=\\"kk-rank\\">#${x.rank}</div>'
+          row_new = '<div class=\\"kk-rank\\">#${x.rank}<span class=\\"kk-tier\\">${x.examTier}ランク</span></div>'
+          if '${x.examTier}ランク' not in s:
+              if row_old not in s:
+                  raise SystemExit('row rank marker not found')
+              s = s.replace(row_old, row_new, 1)
+
+          note_old = '意味・読み・語句を四択で出題。間違えると自動で「要復習」と誤答キューに入り、「間違えた問題だけ」で解き直せます。'
+          note_new = '意味・読み・語句を四択で出題。通常クイズは入試で出やすい上位ランクほど優先して出題します。間違えると自動で「要復習」と誤答キューに入り、「間違えた問題だけ」で解き直せます。'
+          if note_new not in s:
+              if note_old not in s:
+                  raise SystemExit('quiz note marker not found')
+              s = s.replace(note_old, note_new, 1)
+
+          make_old = "function makeSet(src,want,pool,count){const out=[];for(const item of shuffle([...src])){const q=question(item,want,pool);if(q)out.push(q);if(out.length===count)break}return out}"
+          make_new = "function makeSet(src,want,pool,count,preferExam=false){const out=[],items=preferExam?priorityShuffle(src):shuffle([...src]);for(const item of items){const q=question(item,want,pool);if(q)out.push(q);if(out.length===count)break}return out}"
+          if 'preferExam=false' not in s:
+              if make_old not in s:
+                  raise SystemExit('makeSet marker not found')
+              s = s.replace(make_old, make_new, 1)
+
+          start_old = "qset=makeSet(src,want,pool,count);qi=0;score=0;"
+          start_new = "qset=makeSet(src,want,pool,count,!isWrong);qi=0;score=0;"
+          if start_new not in s:
+              if start_old not in s:
+                  raise SystemExit('start marker not found')
+              s = s.replace(start_old, start_new, 1)
+
+          hint_old = "${esc(q.hint)}　#${q.item.rank} ${q.item.category}"
+          hint_new = "${esc(q.hint)}　#${q.item.rank} ${q.item.examTier}ランク ${q.item.category}"
+          if hint_new not in s:
+              if hint_old not in s:
+                  raise SystemExit('quiz hint marker not found')
+              s = s.replace(hint_old, hint_new, 1)
+
+          # Re-check the protected logic after patch.
+          for token in required:
+              if token not in s:
+                  raise SystemExit(f'safety guard missing after patch: {token}')
+          if s.count("id:'kk'+String(x[0]).padStart(4,'0')") != 1:
+              raise SystemExit('quiz ID expression changed or duplicated')
+          if 'preferExam?priorityShuffle(src):shuffle([...src])' not in s:
+              raise SystemExit('priority selector was not installed')
+
+          p.write_text(s, encoding='utf-8')
+
+          idx = Path('kokugo-chronologia/index.html')
+          html = idx.read_text(encoding='utf-8')
+          html2, n = re.subn(r'koten-kanbun-extension\.js\?v=[0-9-]+', 'koten-kanbun-extension.js?v=20260820-1', html, count=1)
+          if n != 1:
+              raise SystemExit('index cache-bust tag not found exactly once')
+          idx.write_text(html2, encoding='utf-8')
+          PY
+
+          node --check kokugo-chronologia/koten-kanbun-extension.js
+          git diff --check
+          changed="$(git diff --name-only)"
+          test "$changed" = $'kokugo-chronologia/index.html\nkokugo-chronologia/koten-kanbun-extension.js' || {
+            echo "Unexpected changed files:" >&2
+            printf '%s\n' "$changed" >&2
+            exit 1
+          }
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add kokugo-chronologia/index.html kokugo-chronologia/koten-kanbun-extension.js
+          git commit -m 'Prioritize frequent koten kanbun quiz items safely'
+          git push origin HEAD:main

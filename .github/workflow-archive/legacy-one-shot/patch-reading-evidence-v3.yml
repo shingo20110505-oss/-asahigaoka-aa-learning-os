@@ -1,0 +1,65 @@
+name: Patch Reading Evidence V3
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/patch-reading-evidence-v3.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Patch production evidence matching and audit severity
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          old="""function evidenceRefs(passage,needles){let paras=String(passage||'').split(/\\n\\n+/),out=[];for(let needle of (Array.isArray(needles)?needles:[needles])){if(!needle)continue;let found=null;for(let pi=0;pi<paras.length&&!found;pi++){let ss=paras[pi].match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[];for(let si=0;si<ss.length;si++){let q=ss[si].trim();if(q.includes(needle)||needle.includes(q)){found={paragraph:pi+1,sentence:si+1,quote:q};break}}}if(found)out.push(found)}return out}
+          """
+          new="""function evidenceRefs(passage,needles){
+           let paras=String(passage||'').split(/\\n\\n+/),out=[],all=[];
+           for(let pi=0;pi<paras.length;pi++){let ss=paras[pi].match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[];for(let si=0;si<ss.length;si++){let q=ss[si].trim();if(q)all.push({paragraph:pi+1,sentence:si+1,quote:q})}}
+           const stop=new Set('the a an and or but so to of in on at for from with by as is are was were be been being it this that these those they them their he him his she her we our you your i my its do does did have has had can could will would may might should must not no than then when while after before into out up down more most less very also only still other'.split(/\\s+/));
+           const stem=w=>w.replace(/(?:ing|ied|ed|es|s)$/,'').replace(/i$/,'y');
+           const tokens=x=>(String(x||'').toLowerCase().match(/[a-z]+/g)||[]).filter(w=>w.length>2&&!stop.has(w)).map(stem);
+           const key=r=>`${r.paragraph}:${r.sentence}`;
+           for(let needle of (Array.isArray(needles)?needles:[needles])){
+            if(!needle)continue;let found=[];
+            for(let r of all){if(r.quote.includes(needle)||needle.includes(r.quote)){found=[r];break}}
+            if(!found.length){
+             let nt=new Set(tokens(needle)),ranked=all.map(r=>{let rt=new Set(tokens(r.quote)),hits=0;for(let w of nt)if(rt.has(w))hits++;return {r,hits,coverage:hits/Math.max(1,nt.size)}}).filter(x=>x.hits>=2||x.coverage>=.34).sort((a,b)=>b.hits-a.hits||b.coverage-a.coverage);
+             if(ranked.length){let top=ranked[0];found=[top.r];if(top.hits<3&&ranked[1]&&ranked[1].hits>=1)found.push(ranked[1].r)}
+            }
+            for(let r of found)if(!out.some(x=>key(x)===key(r)))out.push(r)
+           }
+           return out
+          }
+          """
+          if old not in s: raise SystemExit('evidenceRefs block not found')
+          p.write_text(s.replace(old,new))
+
+          a=Path('scripts/reading-1000-audit.js')
+          t=a.read_text()
+          old2="""  'vocab-too-hard-for-basic','missing-inference-question',
+          """
+          new2="""  'missing-inference-question',
+          """
+          if old2 not in t: raise SystemExit('vocab severity block not found')
+          a.write_text(t.replace(old2,new2))
+          PY
+      - name: Syntax check audit
+        run: node --check scripts/reading-1000-audit.js
+      - name: Commit production fix
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add index.html scripts/reading-1000-audit.js
+          git commit -m "Improve reading evidence matching"
+          git push

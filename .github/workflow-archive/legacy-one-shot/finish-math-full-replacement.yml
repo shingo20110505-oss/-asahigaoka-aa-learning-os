@@ -1,0 +1,59 @@
+name: Finish Math Full Replacement
+
+on:
+  push:
+    paths:
+      - '.math-full-replacement-trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  replace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Sync latest main
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - name: Patch all mathematics routes
+        run: python scripts/finish_math_full_replacement.py
+      - name: Test complete replacement before commit
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/finish_math_full_replacement.py
+          node --check math-exam/engine.js
+          node --check math-exam/adapter.js
+          node --check quality-ci-runner-v1.js
+          node --check sw.js
+          node scripts/validate-runtime-assets.mjs
+          node scripts/validate-math.mjs
+          node tests/math-full-replacement.mjs
+          grep -q 'AA_QUALITY_REPAIR_FINAL' quality-ci-runner-v1.js
+          grep -q 'math-exam/adapter.js?version=1.1.0' index.html
+          grep -q "url('math-exam/adapter.js')" sw.js
+          grep -q 'aaMathFullReplacement' math-exam/adapter.js
+          grep -q 'normal-route=full-replacement' scripts/verify-math-public.mjs
+      - name: Commit and push
+        run: |
+          git add index.html sw.js quality-ci-runner-v1.js scripts/verify-math-public.mjs
+          if git diff --cached --quiet; then
+            echo 'No changes'
+            exit 0
+          fi
+          git commit -m 'feat(math): route all practice through verified Aichi engine'
+          for i in 1 2 3 4 5; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            git fetch origin main
+            git rebase origin/main
+            sleep 2
+          done
+          exit 1

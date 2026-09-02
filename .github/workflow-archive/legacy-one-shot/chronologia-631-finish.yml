@@ -1,0 +1,78 @@
+name: Chronologia 6.3.1 Finalize
+
+on:
+  push:
+    paths:
+      - '.chronologia-631-finish-trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Finalize integration
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          # Prevent blob: MP3 playback from overwriting the voice-name expression event with normal.
+          p=Path('chronologia-live-companion.js')
+          s=p.read_text(encoding='utf-8')
+          old="let exp='normal';for(const [name,id] of Object.entries(VOICE_EXPRESSION)){if(String(src).includes(name)){exp=id;break}}setExpression(exp,Math.max(1700,((Number.isFinite(a.duration)?a.duration:2.6)*1000)+300));"
+          new="let exp=null;for(const [name,id] of Object.entries(VOICE_EXPRESSION)){if(String(src).includes(name)){exp=id;break}}if(exp)setExpression(exp,Math.max(1700,((Number.isFinite(a.duration)?a.duration:2.6)*1000)+300));"
+          if old in s:s=s.replace(old,new,1)
+          p.write_text(s,encoding='utf-8')
+
+          # Make the page deterministic and duplicate-free.
+          p=Path('chronologia.html');h=p.read_text(encoding='utf-8')
+          h=re.sub(r'const VERSION\s*=\s*[\"\']6\.\d+(?:\.\d+)?[\"\'];','const VERSION = "6.3.1";',h,count=1)
+          h=re.sub(r'\s*<!-- CHRONOLOGIA-DAILY-COMPANION-LOADER -->\s*','\n',h)
+          h=re.sub(r'\s*<!-- CHRONOLOGIA-LIVE-COMPANION-LOADER -->\s*','\n',h)
+          h=re.sub(r'\s*<script\s+src=[\"\']\./chronologia-daily-companion\.js(?:\?[^\"\']*)?[\"\']></script>\s*','\n',h)
+          h=re.sub(r'\s*<script\s+src=[\"\']\./chronologia-live-companion\.js(?:\?[^\"\']*)?[\"\']></script>\s*','\n',h)
+          loader='''\n<!-- CHRONOLOGIA-DAILY-COMPANION-LOADER -->\n<script src="./chronologia-daily-companion.js?v=6.3.1"></script>\n<!-- CHRONOLOGIA-LIVE-COMPANION-LOADER -->\n<script src="./chronologia-live-companion.js?v=6.3.1"></script>\n'''
+          pos=h.rfind('</body>');assert pos>=0
+          h=h[:pos]+loader+h[pos:];p.write_text(h,encoding='utf-8')
+
+          # Keep main PWA semantic version stable but force an all-new cache generation.
+          p=Path('sw.js');sw=p.read_text(encoding='utf-8')
+          sw=re.sub(r"const VERSION = '[^']+';","const VERSION = '2.2.7';",sw,count=1)
+          sw=re.sub(r"const CACHE_NAME = `asahigaoka-aa-os-\$\{VERSION\}[^`]*`;","const CACHE_NAME = `asahigaoka-aa-os-${VERSION}-c631`;",sw,count=1)
+          p.write_text(sw,encoding='utf-8')
+
+          # Update the legacy global audit to the new standalone Chronologia identity.
+          p=Path('tests/static-audit.mjs');t=p.read_text(encoding='utf-8')
+          t=re.sub(r"check\('Chronologia 6\.1 identity'.*?;\n", "check('Chronologia 6.3.1 identity', /<title>Chronologia 6\\.3/.test(chronologia) && /const VERSION = \\\"6\\.3\\.1\\\"/.test(chronologia));\n", t, count=1)
+          p.write_text(t,encoding='utf-8')
+
+          for name in ['README.md','QA_REPORT.md']:
+              q=Path(name)
+              if q.exists():
+                  x=q.read_text(encoding='utf-8').replace('Chronologia 6.1','Chronologia 6.3')
+                  q.write_text(x,encoding='utf-8')
+
+      - name: Run existing AA OS audit
+        run: node tests/static-audit.mjs
+
+      - name: Run Chronologia 6.3 audit
+        run: node tests/chronologia-63-audit.mjs
+
+      - name: Commit final build
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add chronologia.html chronologia-live-companion.js sw.js tests/static-audit.mjs README.md QA_REPORT.md
+          if git diff --cached --quiet; then
+            echo "Chronologia 6.3.1 final build already current"
+            exit 0
+          fi
+          git commit -m "Finalize and audit Chronologia 6.3.1 companion"
+          git push
