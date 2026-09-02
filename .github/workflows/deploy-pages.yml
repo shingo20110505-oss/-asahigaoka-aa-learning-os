@@ -60,6 +60,7 @@ jobs:
             ai-reading-v1.js \
             ai-reading-library-v1.js \
             worker/src/index.mjs \
+            math-exam/engine.js \
             sw.js; do
             node --check "$f"
           done
@@ -70,6 +71,7 @@ jobs:
           node tests/ai-reading-contract.mjs
           node tests/reading-library.mjs
           node scripts/reading-library.mjs --validate
+          node scripts/validate-math.mjs
 
           grep -q 'AA_REVIEW_BANK_VERSION=' review-bank-v1.js
           grep -q "a.href='./review/'" aa-companion-v2.js
@@ -234,6 +236,9 @@ jobs:
           stage reading-library
           node scripts/verify-reading-public.mjs "${BASE}" "${SOURCE_SHA}"
 
+          stage mathematics
+          node scripts/verify-math-public.mjs "${BASE}" "${SOURCE_SHA}"
+
           stage login-image
           curl -fsSL "${BASE}login-companion-v1.js?verify=${SOURCE_SHA}" -o /tmp/login-image.js
           grep -q 'ZIPからまとめてインストール' /tmp/login-image.js
@@ -272,7 +277,7 @@ jobs:
           grep -q '段階学習プラン' /tmp/quality-runtime.html
           grep -q 'Gemini教材一覧・文法ゲート' /tmp/quality-runtime.html
           grep -q 'Gemini長文・根拠・実戦モード' /tmp/quality-runtime.html
-          grep -q '数学公式暗記限定' /tmp/quality-runtime.html
+          grep -q '愛知県型数学・応用検算' /tmp/quality-runtime.html
           grep -q '長文と単語の学習記録連携' /tmp/quality-runtime.html
           grep -q '非API長文の出題廃止' /tmp/quality-runtime.html
           echo 'quality_runtime=success' >> "$GITHUB_OUTPUT"
@@ -323,6 +328,7 @@ jobs:
           QUALITY_REPAIR_SHA256=$(sha256sum quality-repair-v1.js | awk '{print $1}')
           QUALITY_CI_SHA256=$(sha256sum quality-ci-runner-v1.js | awk '{print $1}')
           AI_READING_SHA256=$(sha256sum ai-reading-v1.js | awk '{print $1}')
+          MATH_ENGINE_SHA256=$(sha256sum math-exam/engine.js | awk '{print $1}')
           git fetch origin main
           git checkout -B main origin/main
           cat > PUBLIC_VERIFY_STATUS.txt <<EOF
@@ -338,9 +344,10 @@ jobs:
           quality_repair_sha256=${QUALITY_REPAIR_SHA256}
           quality_ci_sha256=${QUALITY_CI_SHA256}
           ai_reading_sha256=${AI_READING_SHA256}
+          math_engine_sha256=${MATH_ENGINE_SHA256}
           quality_runtime=${QUALITY_RUNTIME}
           vocab_mobile_runtime=${VOCAB_MOBILE_RUNTIME}
-          checks=public-release,review-v2,review-bank-exact-hash,mobile-layout-exact-hash,quality-repair-exact-hash,ai-reading-exact-hash,quality-browser-runtime,vocab-mobile-runtime,login-image,login-voice,service-worker,diagnostics
+          checks=public-release,review-v2,review-bank-exact-hash,mobile-layout-exact-hash,quality-repair-exact-hash,ai-reading-exact-hash,math-engine-exact-hash,math-runtime,quality-browser-runtime,vocab-mobile-runtime,login-image,login-voice,service-worker,diagnostics
           EOF
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -386,4 +393,3 @@ jobs:
             git commit -m "Record Pages deployment outcome"
             git push origin main
           fi
-

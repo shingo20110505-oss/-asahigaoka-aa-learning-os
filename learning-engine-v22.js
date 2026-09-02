@@ -18,9 +18,9 @@
       ['kanji', '漢字・語彙'], ['idiom', '慣用句・四字熟語'], ['classical', '古文'], ['kanbun', '漢文']
     ],
     math: [
-      ['number', '数と計算の公式・法則'], ['algebra', '展開・因数分解の公式'], ['equation', '方程式の法則'],
-      ['function', '関数の公式'], ['geometry', '図形の定理・面積・体積'], ['probability', '確率の公式'],
-      ['statistics', 'データの公式'], ['advanced', '高校公式（入試の時短・検算）']
+      ['number', '数と式'], ['algebra', '式の活用'], ['equation', '方程式'],
+      ['function', '関数・動点'], ['geometry', '平面・空間図形'], ['probability', '確率・場合分け'],
+      ['statistics', 'データの活用']
     ],
     science: [
       ['biology', '生命'], ['chemistry', '化学'], ['physics', '物理'], ['earth', '地学'], ['experiment', '実験・資料統合']
@@ -51,7 +51,7 @@
 
   function aa22DefaultConfig(subject = 'japanese') {
     return {
-      subject, level: 1, scope: 'full', units: EXAM_UNITS[subject].map(x => x[0]),
+      subject, level: subject === 'math' ? 2 : 1, scope: 'full', units: EXAM_UNITS[subject].map(x => x[0]),
       timeMin: DEFAULT_TIMES[subject], length: 'full'
     };
   }
@@ -397,9 +397,9 @@
 
   const BLUEPRINTS = {
     math: [
-      { name: '公式I', title: '数・式・方程式の公式', count: 5 },
-      { name: '公式II', title: '関数・確率・データの公式', count: 5 },
-      { name: '公式III', title: '図形の定理・面積・体積', count: 5 }
+      { name: '大問1', title: '基礎〜標準を短時間で処理', count: 10 },
+      { name: '大問2', title: 'データ・確率・関数・動点の融合', count: 4 },
+      { name: '大問3', title: '平面・空間図形の応用', count: 5 }
     ],
     science: [
       { name: '大問一', title: '粒子モデル・光', count: 2 }, { name: '大問二', title: '生物実験', count: 4 },
@@ -414,6 +414,27 @@
   };
 
   function aa22StructuredQueue(subject, level, config) {
+    if (subject === 'math' && window.AAMathEngine) {
+      const seeds = [1401, 2202, 3503, 4804];
+      const adapt = q => {
+        const copy = { ...q, choices: q.choices.map(c => ({ ...c })) };
+        copy.id = copy.code + ':' + uid('q');
+        copy.reviewKey = 'aichi-math:' + copy.family;
+        copy.mathFigure = copy.figure || null;
+        copy.evidence = '数値条件から再計算し、独立した検算規則を通過した問題です。';
+        copy.reasoningTag = copy.thinking;
+        copy.source = { ...copy.source, family: copy.family, parameters: copy.parameters };
+        return copy;
+      };
+      if (config.scope === 'full') {
+        const used = seed => state.attempts.filter(a => String(a.itemId || '').includes('math-v1-' + seed + '-')).length;
+        const seed = seeds.slice().sort((a, b) => used(a) - used(b) || a - b)[0];
+        return window.AAMathEngine.buildSet(seed, level).map(adapt);
+      }
+      const allowed = new Set(config.units), cap = level === 1 ? 3 : level === 2 ? 4 : 5;
+      return seeds.flatMap(seed => window.AAMathEngine.buildSet(seed, level))
+        .filter(q => allowed.has(q.examUnit) && q.difficulty5 <= cap).map(adapt);
+    }
     if (subject === 'japanese') return config.scope === 'full' ? aa22JapaneseExam(level) : aa22JapaneseUnitQueue(level, config);
     if (subject === 'english') return aa22EnglishUnitQueue(config);
     const blueprint = BLUEPRINTS[subject];
@@ -689,9 +710,9 @@
     const c = aa22Config(), rows = aa22BlueprintRows(c.subject);
     const units = EXAM_UNITS[c.subject].filter(x => c.level === 3 || x[0] !== 'advanced');
     const selectedLabels = c.scope === 'full' ? ['全単元'] : c.units.map(unit => aa22UnitLabel(c.subject, unit));
-    const blueprintHeading = c.subject === 'math' ? '数学・公式暗記の構成' : '令和8年度公開問題を基準にした構成';
+    const blueprintHeading = c.subject === 'math' ? '数学・愛知県型の構成' : '令和8年度公開問題を基準にした構成';
     const blueprintNote = c.subject === 'math'
-      ? '数学は公式・法則の暗記専用で、計算問題・文章題は出題しません。レベル1・2は中学公式のみ、レベル3では高校入試の時短・検算に使える高校公式も選べます。高校公式は中学校の正式な学習範囲外なので、記述や証明では中学知識からの説明もできるようにしてください。点数は非公式の22点換算です。'
+      ? '数学はすべて本アプリ作成のマーク問題です。本番構成は45分・19解答単位・22点（大問1＝10点、大問2＝7点、大問3＝5点）。データの断定、関数と図形、動点、相似、補助構成、空間図形を重点化しています。高校数学は使いません。数値条件から答えを再計算し、選択肢の一意性も自動検査しています。'
       : '問題文・文章・資料はすべて本アプリ作成。公開問題の転載ではなく、最新の大問構成・解答形式・時間条件を学習用にモデル化しています。';
     return layout('<section class="card examHero"><div class="eyebrow">AICHI EXAM LAB</div><h2 class="h2">入試対策</h2><p class="sub">通常演習とは完全に分離。試験中は正誤・解説を出さず、終了後に配点・誤答理由・単元をまとめて確認します。</p></section>' +
       '<div class="sp12"></div><section class="card"><h3 class="h3">1. 難度</h3>' + aa22CourseCards() + '</section>' +
@@ -703,7 +724,7 @@
       '<div class="wide"><label class="strong">単元</label><div class="unitGrid">' + units.map(([id, label]) => '<label class="unitCheck"><input type="checkbox" data-action="exam-unit" value="' + id + '" ' + (c.units.includes(id) ? 'checked' : '') + '><span>' + esc(label) + '</span></label>').join('') + '</div><div class="tiny">単元を変更すると、出題範囲は自動で「選択単元のみ」になります。</div></div></div>' +
       '<div class="notice"><b>現在の出題対象：</b>' + selectedLabels.map(esc).join('・') + '</div>' +
       '<div class="sp12"></div><div class="actions"><button class="btn primary" data-action="start-exam-v22">この設定で試験開始</button></div>' +
-      '<div class="tiny">「現在の既習範囲」「選択単元のみ」は、上のチェックだけを出題範囲として使います。単元別では本番の大問配列より選択単元を優先します。' + (c.subject === 'math' ? '数学は公式暗記だけです。レベル1・2は中学公式、旭丘レベルでは高校公式を追加します。高校公式は入試の時短・検算用で、中学校の正式範囲外です。' : '') + '</div></section>' +
+      '<div class="tiny">「現在の既習範囲」「選択単元のみ」は、上のチェックだけを出題範囲として使います。単元別では本番の大問配列より選択単元を優先します。' + (c.subject === 'math' ? '本番形式は検算済み4セットから未実施を優先します。単元別演習は誤答履歴と難度を使って応用問題を優先します。' : '') + '</div></section>' +
       '<div class="sp12"></div><section class="card"><h3 class="h3">' + blueprintHeading + '</h3><div class="tableWrap"><table class="blueprintTable"><thead><tr><th>区分</th><th>処理する力</th><th>構成</th></tr></thead><tbody>' + rows.map(r => '<tr><td><b>' + esc(r[0]) + '</b></td><td>' + esc(r[1]) + '</td><td>' + esc(r[2]) + '</td></tr>').join('') + '</tbody></table></div>' +
       '<p class="tiny">' + blueprintNote + '</p><a class="btn ghost" href="' + OFFICIAL_URL + '" target="_blank" rel="noopener">愛知県公式問題ページ</a></section>' +
       (c.subject === 'japanese' ? aa22VocabIndexHTML() : ''));
@@ -914,7 +935,8 @@
       const selectedLabels = safeArray(s.practiceUnits).map(unit => aa22UnitLabel(s.subject, unit));
       const meta = '<div class="examQuestionMeta"><span class="chip">単元演習</span>' + (unitLabel ? '<span class="chip">単元：' + esc(unitLabel) + '</span>' : '') + '<span class="chip">設定：' + selectedLabels.map(esc).join('・') + '</span></div>';
       const passage = q.aichiPassage ? '<details class="examPassage" open><summary>本文・資料</summary><div class="examPassageText">' + esc(q.aichiPassage) + '</div></details>' : '';
-      return html.replace('<section class="card"><div class="qstem">', '<section class="card">' + meta + passage + '<div class="qstem">');
+      const mathFigure = q.mathFigure && window.AAMathEngine ? window.AAMathEngine.figureHTML(q.mathFigure) : '';
+      return html.replace('<section class="card"><div class="qstem">', '<section class="card">' + meta + passage + mathFigure + '<div class="qstem">');
     }
     if (!s?.active || s.trackType !== 'test' || !q) return html;
     const selected = q.answerIndices ? safeArray(s.testPending?.[q.id]?.indices) : (s.testPending?.[q.id] ? [s.testPending[q.id].idx] : []);
@@ -922,7 +944,8 @@
     const meta = '<div class="examQuestionMeta"><span class="chip">' + esc(q.bigQuestion || '入試問題') + '</span><span class="chip">' + esc(q.bigTitle || '') + '</span>' + (unitLabel ? '<span class="chip">単元：' + esc(unitLabel) + '</span>' : '') + '<span class="chip">' + esc(q.officialSmallLabel || '') + '</span><span class="chip">' + Number(q.points || 1) + '点</span></div>' +
       (q.answerIndices ? '<div class="multiGuide">' + q.selectCount + 'つ選択（選択中 ' + selected.length + '/' + q.selectCount + '）' + (q.partialPoints ? '・部分点あり' : '') + '</div>' : '');
     const passage = q.aichiPassage ? '<details class="examPassage" open><summary>本文・資料</summary><div class="examPassageText">' + esc(q.aichiPassage) + '</div></details>' : '';
-    html = html.replace('<section class="card"><div class="qstem">', '<section class="card">' + meta + passage + '<div class="qstem">');
+    const mathFigure = q.mathFigure && window.AAMathEngine ? window.AAMathEngine.figureHTML(q.mathFigure) : '';
+    html = html.replace('<section class="card"><div class="qstem">', '<section class="card">' + meta + passage + mathFigure + '<div class="qstem">');
     for (const idx of selected) {
       const re = new RegExp('class="choice ([^"]*)" data-action="answer" data-index="' + idx + '"');
       html = html.replace(re, (all, cls) => 'class="choice ' + cls.replace(/\s*testSelected/g, '') + ' testSelected" data-action="answer" data-index="' + idx + '"');
@@ -1038,18 +1061,16 @@
       for (const subject of ['math', 'science', 'social']) {
         const cfg = aa22DefaultConfig(subject); cfg.level = 3;
         const qs = aa22StructuredQueue(subject, 3, cfg), points = qs.reduce((n, q) => n + q.points, 0);
-        const expected = subject === 'math' ? 15 : 20;
+        const expected = subject === 'math' ? 19 : 20;
         add('R8' + SUBJECTS[subject] + '構成', qs.length === expected && points === 22, qs.length + '解答項目 / ' + points + '点 / ' + new Set(qs.map(q => q.bigQuestion)).size + '大問');
       }
       const mathCfg = aa22DefaultConfig('math'); mathCfg.level = 3;
       const mathQs = aa22StructuredQueue('math', 3, mathCfg);
-      const formulaAreas = new Set(API.mathFormulaAreas);
-      add('数学は公式暗記だけ', mathQs.length === 15 && mathQs.every(q => formulaAreas.has(q.source?.area) && q.stem.includes('公式・法則') && q.skills.every(s => s.id === 'math.formula.recall')),
-        '計算・文章題なし／中学公式＋レベル3高校公式');
+      add('愛知県型数学・応用検算', mathQs.length === 19 && mathQs.reduce((n,q)=>n+q.points,0) === 22 && mathQs.every(q => q.source?.origin === 'verified-math-template' && q.source?.curriculum === 'junior-high') && mathQs.some(q => q.thinking === 'reflection_area_bisection'),
+        '19解答単位・22点／検算済み応用問題');
       const l1Math = aa22StructuredQueue('math', 1, aa22DefaultConfig('math'));
-      const advancedMath = aa22AdvancedMathQueue(15);
-      add('高校公式の単元反映', EXAM_UNITS.math.some(x => x[0] === 'advanced') && !l1Math.some(q => q.source?.area === 'advanced') && mathQs.some(q => q.source?.area === 'advanced') && advancedMath.every(q => q.source?.area === 'advanced'),
-        'レベル1・2は非表示／旭丘レベル・専用暗記で出題');
+      add('数学は中学範囲のみ', !EXAM_UNITS.math.some(x => x[0] === 'advanced') && l1Math.every(q => q.source?.curriculum === 'junior-high') && mathQs.every(q => q.source?.curriculum === 'junior-high'),
+        '高校範囲の公式を入試問題へ混入させない');
       for (const [subject, unit] of [['english', 'grammar'], ['japanese', 'kanbun'], ['math', 'geometry'], ['science', 'experiment'], ['social', 'data']]) {
         const cfg = aa22NormalizeConfig({ subject, level: 3, scope: 'custom', units: [unit], timeMin: 20, length: 'mini' });
         const qs = aa22StructuredQueue(subject, 3, cfg);
@@ -1062,10 +1083,10 @@
       const previousDifficulty = state.ui.subjectDifficulty;
       state.ui.subjectDifficulty = 11;
       const advancedPracticeConfig = aa22DefaultPracticeConfig('math');
-      advancedPracticeConfig.unitsBySubject.math = ['advanced'];
+      advancedPracticeConfig.unitsBySubject.math = ['geometry', 'function', 'statistics'];
       const advancedPractice = aa22PracticeQueue(advancedPracticeConfig);
       state.ui.subjectDifficulty = previousDifficulty;
-      add('演習・高校公式単元', advancedPractice.length > 0 && advancedPractice.every(q => q.examUnit === 'advanced' && q.source?.area === 'advanced'), advancedPractice.length + '問');
+      add('数学・応用集中演習', advancedPractice.length > 0 && advancedPractice.every(q => ['geometry','function','statistics'].includes(q.examUnit) && q.source?.curriculum === 'junior-high'), advancedPractice.length + '問');
       const modern = aa22JapaneseExam(3).filter(q => q.examUnit === 'modern'), literary = aa22JapaneseLiterary(3);
       const readingQuality = [...modern, ...literary].every(q => q.evidence && q.reasoningTag && q.choices.filter(c => !c.ok).every(c => c.error));
       add('国語文章問題の根拠精度', modern.length === 7 && literary.length === 4 && modern[0].aichiPassage.length >= 650 && literary[0].aichiPassage.length >= 500 && readingQuality,

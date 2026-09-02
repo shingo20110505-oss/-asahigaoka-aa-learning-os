@@ -30,7 +30,9 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.5-flash' }}
-          READING_LIMIT: ${{ github.event_name == 'push' && '3' || '10' }}
+          # One candidate can use up to four calls (author + blind verifier,
+          # with one retry). Keep daily capacity for the future Japanese bank.
+          READING_LIMIT: '1'
         run: node scripts/reading-library.mjs
       - name: Save accepted content and publish
         if: always()

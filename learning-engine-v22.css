@@ -21,6 +21,8 @@
 .vocabIndexRow{display:grid;grid-template-columns:minmax(120px,1.4fr) minmax(90px,1fr) 70px 70px;gap:8px;padding:9px 11px;border-bottom:1px solid var(--line);font-size:.78rem}.vocabIndexRow:last-child{border-bottom:0}.vocabIndexRow strong{font-size:.88rem}
 .testReview .reviewChoices{display:flex;flex-wrap:wrap;gap:6px}.testReview .reviewChoice{padding:4px 8px;border-radius:999px;background:var(--bg2);font-size:.75rem}.testReview .reviewChoice.correct{background:var(--green2);color:var(--green)}.testReview .reviewChoice.wrong{background:var(--red2);color:var(--red)}
 .partialText{color:var(--amber);font-weight:850}
+.mathFigure{margin:14px auto;padding:12px;max-width:520px;border:1px solid var(--line);border-radius:16px;background:color-mix(in srgb,var(--card) 88%,var(--blue2) 12%)}
+.mathFigure svg{display:block;width:100%;height:auto;max-height:330px}.mathFigure figcaption{margin-top:6px;color:var(--sub);font-size:12px;text-align:center}
 .feedback.good.successCue{animation:successCueSoft .38s ease-out}
 .successMark{display:inline-grid;place-items:center;width:1.45em;height:1.45em;margin-right:.42em;border-radius:50%;background:var(--green);color:#fff;font-size:.8em;vertical-align:.08em}
 @keyframes successCueSoft{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--green) 24%,transparent)}55%{box-shadow:0 0 0 7px color-mix(in srgb,var(--green) 9%,transparent)}100%{box-shadow:0 0 0 0 transparent}}
