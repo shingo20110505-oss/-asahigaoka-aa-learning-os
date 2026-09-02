@@ -92,7 +92,7 @@ jobs:
 
           sw=Path('sw.js')
           st=sw.read_text(encoding='utf-8')
-          st=re.sub(r"const VERSION='[^']+';","const VERSION='2.6.0-phase1-architecture-20260903';",st,count=1)
+          st=re.sub(r"const VERSION='([^']+)';",lambda m:f"const VERSION='{m.group(1)}-phase1-architecture-20260903';",st,count=1)
           st=st.replace("url('v23-pet-settings.js'),",'')
           assets="url('app/ui/base.css'),url('app/runtime-registry.js'),url('app/legacy/main-runtime.js'),url('app/app-shell.js'),url('app/state/state-manager.js'),url('app/learning/learning-engine.js'),url('app/subjects/subject-engines.js'),url('app/ui/ui-runtime.js'),url('app/pwa/pwa-runtime.js'),url('app/qa/qa-runtime.js'),"
           marker="url('index.html'),"
