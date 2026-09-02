@@ -14,4 +14,6 @@ const sw=fs.readFileSync('sw.js','utf8');for(const f of ['app/ui/base.css','app/
 for(const f of ['review-bank-v1.js','review/index.html','storage-resilience-v1.js','aa-companion-v2.js','aa-companion-mobile-fix.js','login-companion-v1.js','companion7-runtime.js','answer-feedback-audio-v1.js','science-exam/bridge.js','social-exam/bridge.js'])if(!fs.existsSync(f))throw new Error(`Protected asset missing: ${f}`);
 const reg=fs.readFileSync('app/runtime-registry.js','utf8');if(!reg.includes('scienceExam:false')||!reg.includes('socialExam:false'))throw new Error('Completed subject state missing');
 const subjects=fs.readFileSync('app/subjects/subject-engines.js','utf8');for(const n of ["science:'active'","social:'active'",'window.AAScienceExam','window.AASocialExam'])if(!subjects.includes(n))throw new Error(`Completed subject adapter missing: ${n}`);
+const legacyV23=fs.readFileSync('learning-engine-v23.js','utf8');
+if(!legacyV23.includes("typeof makeMathQ==='function'&&window.AAMathFullReplacement?.ok!==true"))throw new Error('Legacy V23 may override verified mathematics ownership');
 console.log('architecture-boundaries: PASS');
