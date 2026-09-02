@@ -30,56 +30,37 @@ jobs:
           from pathlib import Path
           import hashlib, json, re, shutil
 
-          root = Path('.')
           protected = [
-              'v23-science.js',
-              'science-content-fix-v1.js',
-              'v23-social.js',
-              'social-exam/bridge.js',
-              'social-exam/core.mjs',
-              'social-exam/application-pack.mjs',
-              'review-bank-v1.js',
-              'review/index.html',
-              'aa-companion-v2.js',
-              'aa-companion-mobile-fix.js',
-              'companion7-runtime.js',
-              'login-companion-v1.js',
-              'answer-feedback-audio-v1.js',
-              'storage-resilience-v1.js',
+              'v23-science.js', 'science-content-fix-v1.js', 'v23-social.js',
+              'social-exam/bridge.js', 'social-exam/core.mjs', 'social-exam/application-pack.mjs',
+              'review-bank-v1.js', 'review/index.html', 'aa-companion-v2.js',
+              'aa-companion-mobile-fix.js', 'companion7-runtime.js', 'login-companion-v1.js',
+              'answer-feedback-audio-v1.js', 'storage-resilience-v1.js'
           ]
           def sha(path):
-              p = Path(path)
+              p=Path(path)
               return hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
-          before = {p: sha(p) for p in protected}
+          before={p:sha(p) for p in protected}
 
-          # 1) Make index.html a real shell: keep only boot guard inline, move the large
-          #    application runtime and base CSS into dedicated files without rewriting them.
-          index = Path('index.html')
-          html = index.read_text(encoding='utf-8')
+          index=Path('index.html')
+          html=index.read_text(encoding='utf-8')
+          scripts=list(re.finditer(r'<script(?![^>]*\bsrc=)([^>]*)>(.*?)</script>',html,re.I|re.S))
+          main=max(scripts,key=lambda m:len(m.group(2)))
+          if len(main.group(2))<50000: raise SystemExit('largest inline script unexpectedly small')
+          Path('app/legacy').mkdir(parents=True,exist_ok=True)
+          Path('app/legacy/main-runtime.js').write_text(main.group(2).strip('\n')+'\n',encoding='utf-8')
+          html=html[:main.start()]+'<script src="./app/runtime-registry.js"></script>\n<script src="./app/legacy/main-runtime.js"></script>'+html[main.end():]
 
-          inline_scripts = list(re.finditer(r'<script(?![^>]*\bsrc=)([^>]*)>(.*?)</script>', html, re.I | re.S))
-          if not inline_scripts:
-              raise SystemExit('No inline scripts found in index.html')
-          main_script = max(inline_scripts, key=lambda m: len(m.group(2)))
-          if len(main_script.group(2)) < 50000:
-              raise SystemExit('Refusing extraction: largest inline script is unexpectedly small')
-          Path('app/legacy').mkdir(parents=True, exist_ok=True)
-          Path('app/legacy/main-runtime.js').write_text(main_script.group(2).strip('\n') + '\n', encoding='utf-8')
-          script_replacement = '<script src="./app/runtime-registry.js"></script>\n<script src="./app/legacy/main-runtime.js"></script>'
-          html = html[:main_script.start()] + script_replacement + html[main_script.end():]
+          styles=list(re.finditer(r'<style([^>]*)>(.*?)</style>',html,re.I|re.S))
+          base=max(styles,key=lambda m:len(m.group(2)))
+          if len(base.group(2))<10000: raise SystemExit('largest inline style unexpectedly small')
+          Path('app/ui').mkdir(parents=True,exist_ok=True)
+          Path('app/ui/base.css').write_text(base.group(2).strip('\n')+'\n',encoding='utf-8')
+          html=html[:base.start()]+'<link rel="stylesheet" href="./app/ui/base.css">'+html[base.end():]
 
-          inline_styles = list(re.finditer(r'<style([^>]*)>(.*?)</style>', html, re.I | re.S))
-          base_style = max(inline_styles, key=lambda m: len(m.group(2)))
-          if len(base_style.group(2)) < 10000:
-              raise SystemExit('Refusing extraction: largest inline style is unexpectedly small')
-          Path('app/ui').mkdir(parents=True, exist_ok=True)
-          Path('app/ui/base.css').write_text(base_style.group(2).strip('\n') + '\n', encoding='utf-8')
-          html = html[:base_style.start()] + '<link rel="stylesheet" href="./app/ui/base.css">' + html[base_style.end():]
-
-          anchor = '<script src="./aa-companion-mobile-fix.js?v=6.5.2"></script>'
-          if anchor not in html:
-              raise SystemExit('Companion anchor not found in index.html')
-          layers = '''\n<!-- PHASE-1 ARCHITECTURE BOUNDARIES: App Shell -> State -> Learning -> Subjects -> UI -> PWA -> QA -->
+          anchor='<script src="./aa-companion-mobile-fix.js?v=6.5.2"></script>'
+          if anchor not in html: raise SystemExit('companion anchor missing')
+          layers='''\n<!-- PHASE-1 ARCHITECTURE: App Shell -> State -> Learning -> Subjects -> UI -> PWA -> QA -->
           <script src="./app/app-shell.js"></script>
           <script src="./app/state/state-manager.js"></script>
           <script src="./app/learning/learning-engine.js"></script>
@@ -87,359 +68,83 @@ jobs:
           <script src="./app/ui/ui-runtime.js"></script>
           <script src="./app/pwa/pwa-runtime.js"></script>
           <script src="./app/qa/qa-runtime.js"></script>'''
-          html = html.replace(anchor, anchor + layers, 1)
-          index.write_text(html, encoding='utf-8')
+          html=html.replace(anchor,anchor+layers,1)
+          index.write_text(html,encoding='utf-8')
 
-          # 2) New namespaced compatibility boundary. Legacy globals remain untouched for now;
-          #    new work must go through window.AA_APP so later refactors can replace one layer at a time.
-          Path('app/state').mkdir(parents=True, exist_ok=True)
-          Path('app/learning').mkdir(parents=True, exist_ok=True)
-          Path('app/subjects').mkdir(parents=True, exist_ok=True)
-          Path('app/pwa').mkdir(parents=True, exist_ok=True)
-          Path('app/qa').mkdir(parents=True, exist_ok=True)
+          for d in ['app/state','app/learning','app/subjects','app/pwa','app/qa']:
+              Path(d).mkdir(parents=True,exist_ok=True)
 
-          Path('app/runtime-registry.js').write_text(r'''(()=>{
-          'use strict';
-          if(window.AA_APP?.architectureVersion)return;
-          const ORDER=['appShell','state','learning','subjects','ui','pwa','qa'];
-          const layers=Object.create(null),loaded=[];
-          const root={
-            architectureVersion:'1.0.0-phase1',
-            order:Object.freeze([...ORDER]),
-            layers,
-            workInProgress:Object.freeze({scienceExam:true,socialExam:true}),
-            protectedAssets:Object.freeze([
-              'review-bank-v1.js','review/index.html','storage-resilience-v1.js',
-              'aa-companion-v2.js','aa-companion-mobile-fix.js','login-companion-v1.js',
-              'companion7-runtime.js','answer-feedback-audio-v1.js'
-            ]),
-            register(name,api){
-              const expected=ORDER[loaded.length];
-              if(name!==expected)throw new Error(`AA_APP layer order violation: expected ${expected}, got ${name}`);
-              if(layers[name])throw new Error(`AA_APP duplicate layer: ${name}`);
-              layers[name]=Object.freeze(api||{}); loaded.push(name); return layers[name];
-            },
-            get(name){return layers[name]||null},
-            status(){return {version:this.architectureVersion,loaded:[...loaded],complete:loaded.length===ORDER.length}},
-            assertComplete(){
-              if(loaded.length!==ORDER.length||ORDER.some((x,i)=>loaded[i]!==x))throw new Error(`AA_APP incomplete architecture: ${loaded.join(' > ')}`);
-              return true;
-            }
-          };
-          window.AA_APP=Object.freeze(root);
-          })();
-          ''', encoding='utf-8')
+          Path('app/runtime-registry.js').write_text("""(()=>{'use strict';if(window.AA_APP?.architectureVersion)return;const ORDER=['appShell','state','learning','subjects','ui','pwa','qa'],layers=Object.create(null),loaded=[];const root={architectureVersion:'1.0.0-phase1',order:Object.freeze([...ORDER]),layers,workInProgress:Object.freeze({scienceExam:true,socialExam:true}),protectedAssets:Object.freeze(['review-bank-v1.js','review/index.html','storage-resilience-v1.js','aa-companion-v2.js','aa-companion-mobile-fix.js','login-companion-v1.js','companion7-runtime.js','answer-feedback-audio-v1.js']),register(name,api){const expected=ORDER[loaded.length];if(name!==expected)throw new Error(`AA_APP layer order violation: expected ${expected}, got ${name}`);if(layers[name])throw new Error(`AA_APP duplicate layer: ${name}`);layers[name]=Object.freeze(api||{});loaded.push(name);return layers[name]},get(name){return layers[name]||null},status(){return{version:this.architectureVersion,loaded:[...loaded],complete:loaded.length===ORDER.length}},assertComplete(){if(loaded.length!==ORDER.length||ORDER.some((x,i)=>loaded[i]!==x))throw new Error(`AA_APP incomplete architecture: ${loaded.join(' > ')}`);return true}};window.AA_APP=Object.freeze(root)})();\n""",encoding='utf-8')
+          Path('app/app-shell.js').write_text("""(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('appShell',{getRoute:()=>typeof state==='object'?state.route:null,navigate:r=>typeof setRoute==='function'?setRoute(r):false,render:()=>typeof render==='function'?render():false,version:()=>typeof APP_VERSION!=='undefined'?APP_VERSION:null})})();\n""",encoding='utf-8')
+          Path('app/state/state-manager.js').write_text("""(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('state',{get:()=>typeof state==='object'?state:null,save:()=>typeof save==='function'?save():false,backup:()=>typeof backupPayload==='function'?backupPayload():null,merge:x=>typeof mergeState==='function'?mergeState(x):null,importText:t=>typeof importJSON==='function'?importJSON(t):false})})();\n""",encoding='utf-8')
+          Path('app/learning/learning-engine.js').write_text("""(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('learning',{mission:()=>typeof pickMission==='function'?pickMission():null,start:o=>typeof startSession==='function'?startSession(o):false,answer:i=>typeof selectAnswer==='function'?selectAnswer(i):false,next:()=>typeof nextQuestion==='function'?nextQuestion():false,reviewWrong:()=>typeof startWrongReview==='function'?startWrongReview():false})})();\n""",encoding='utf-8')
+          Path('app/subjects/subject-engines.js').write_text("""(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');const status=Object.freeze({english:'active',japanese:'active',math:'active',science:'work-in-progress',social:'work-in-progress'});A.register('subjects',{status,start:(subject,kind='subject',mode='standard')=>typeof startSession==='function'?startSession({kind,subject,mode}):false,mathExam:()=>window.AA_MATH_EXAM||window.AA_MATH_EXAM_ENGINE||null,japaneseExam:()=>window.AA_JAPANESE_EXAM||null,scienceExam:()=>({status:'work-in-progress'}),socialExam:()=>({status:'work-in-progress'})})})();\n""",encoding='utf-8')
+          Path('app/ui/ui-runtime.js').write_text("""(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('ui',{render:()=>typeof render==='function'?render():false,layout:(c,n=true)=>typeof layout==='function'?layout(c,n):c,header:()=>typeof header==='function'?header():'',nav:()=>typeof nav==='function'?nav():''})})();\n""",encoding='utf-8')
+          Path('app/pwa/pwa-runtime.js').write_text("""(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('pwa',{get:()=>typeof PWA==='object'?PWA:null,init:()=>typeof initPWA==='function'?initPWA():false,check:n=>typeof checkPWAUpdate==='function'?checkPWAUpdate(Boolean(n)):false,registration:()=>typeof PWA==='object'?PWA.registration:null})})();\n""",encoding='utf-8')
+          Path('app/qa/qa-runtime.js').write_text("""(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('qa',{run:()=>typeof qaRun==='function'?qaRun():false,architecture:()=>A.status(),assertArchitecture:()=>A.assertComplete()});A.assertComplete();document.documentElement.dataset.aaArchitecture='phase1'})();\n""",encoding='utf-8')
+          Path('app/ARCHITECTURE.md').write_text('''# AA Learning OS architecture boundary — Phase 1\n\nRuntime ownership is explicit: App Shell -> State -> Learning -> Subject engines -> UI -> PWA -> QA.\n\n`app/legacy/main-runtime.js` is the compatibility island extracted from the former giant inline runtime. Phase 1 deliberately moves it without rewriting its behavior. New development should use `window.AA_APP` layer APIs rather than adding more same-name global overrides.\n\nProtected: learning history, review progress/data, PWA, Megumin/companion image display and local image storage, saved/replayed voice features, AI reading, Chronologia, Japanese 15,000-word content, and current adaptive learning. Science and Social exam development is work-in-progress and is not rewritten here.\n''',encoding='utf-8')
 
-          Path('app/app-shell.js').write_text(r'''(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('appShell',{
-          getRoute:()=>typeof state==='object'?state.route:null,
-          navigate:(route)=>typeof setRoute==='function'?setRoute(route):false,
-          render:()=>typeof render==='function'?render():false,
-          version:()=>typeof APP_VERSION!=='undefined'?APP_VERSION:null
-          })})();
-          ''', encoding='utf-8')
+          loader=Path('v23-loader.js')
+          lt=loader.read_text(encoding='utf-8').replace("'v23-pet-settings.js',",'')
+          loader.write_text(lt,encoding='utf-8')
+          pet=Path('v23-pet-settings.js')
+          if pet.exists(): pet.unlink()
 
-          Path('app/state/state-manager.js').write_text(r'''(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('state',{
-          get:()=>typeof state==='object'?state:null,
-          save:()=>typeof save==='function'?save():false,
-          backup:()=>typeof backupPayload==='function'?backupPayload():null,
-          merge:(incoming)=>typeof mergeState==='function'?mergeState(incoming):null,
-          importText:(text)=>typeof importJSON==='function'?importJSON(text):false
-          })})();
-          ''', encoding='utf-8')
+          sw=Path('sw.js')
+          st=sw.read_text(encoding='utf-8')
+          st=re.sub(r"const VERSION='[^']+';","const VERSION='2.6.0-phase1-architecture-20260903';",st,count=1)
+          st=st.replace("url('v23-pet-settings.js'),",'')
+          assets="url('app/ui/base.css'),url('app/runtime-registry.js'),url('app/legacy/main-runtime.js'),url('app/app-shell.js'),url('app/state/state-manager.js'),url('app/learning/learning-engine.js'),url('app/subjects/subject-engines.js'),url('app/ui/ui-runtime.js'),url('app/pwa/pwa-runtime.js'),url('app/qa/qa-runtime.js'),"
+          marker="url('index.html'),"
+          if assets not in st:
+              if marker not in st: raise SystemExit('SW index marker missing')
+              st=st.replace(marker,marker+assets,1)
+          sw.write_text(st,encoding='utf-8')
 
-          Path('app/learning/learning-engine.js').write_text(r'''(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('learning',{
-          mission:()=>typeof pickMission==='function'?pickMission():null,
-          start:(options)=>typeof startSession==='function'?startSession(options):false,
-          answer:(index)=>typeof selectAnswer==='function'?selectAnswer(index):false,
-          next:()=>typeof nextQuestion==='function'?nextQuestion():false,
-          reviewWrong:()=>typeof startWrongReview==='function'?startWrongReview():false
-          })})();
-          ''', encoding='utf-8')
+          repl=Path('.github/workflows/replenish-reading.yml')
+          rt=repl.read_text(encoding='utf-8').replace('  actions: write\n','').replace("            gh workflow run deploy-pages.yml --ref main\n",'')
+          repl.write_text(rt,encoding='utf-8')
 
-          Path('app/subjects/subject-engines.js').write_text(r'''(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');const status=Object.freeze({
-          english:'active',japanese:'active',math:'active',science:'work-in-progress',social:'work-in-progress'
-          });A.register('subjects',{
-          status,
-          start:(subject,kind='subject',mode='standard')=>typeof startSession==='function'?startSession({kind,subject,mode}):false,
-          mathExam:()=>window.AA_MATH_EXAM||window.AA_MATH_EXAM_ENGINE||null,
-          japaneseExam:()=>window.AA_JAPANESE_EXAM||null,
-          scienceExam:()=>({status:'work-in-progress'}),
-          socialExam:()=>({status:'work-in-progress'})
-          })})();
-          ''', encoding='utf-8')
+          deploy=Path('.github/workflows/deploy-pages.yml')
+          dt=deploy.read_text(encoding='utf-8')
+          dt=dt.replace('  cancel-in-progress: true','  cancel-in-progress: false',1)
+          dt=dt.replace('            sw.js; do',"            app/runtime-registry.js \\\n            app/legacy/main-runtime.js \\\n            app/app-shell.js \\\n            app/state/state-manager.js \\\n            app/learning/learning-engine.js \\\n            app/subjects/subject-engines.js \\\n            app/ui/ui-runtime.js \\\n            app/pwa/pwa-runtime.js \\\n            app/qa/qa-runtime.js \\\n            sw.js; do",1)
+          dt=dt.replace('          node scripts/validate-math.mjs\n','          node scripts/validate-math.mjs\n          node tests/architecture-boundaries.mjs\n',1)
+          deploy.write_text(dt,encoding='utf-8')
 
-          Path('app/ui/ui-runtime.js').write_text(r'''(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('ui',{
-          render:()=>typeof render==='function'?render():false,
-          layout:(content,showNav=true)=>typeof layout==='function'?layout(content,showNav):content,
-          header:()=>typeof header==='function'?header():'',
-          nav:()=>typeof nav==='function'?nav():''
-          })})();
-          ''', encoding='utf-8')
-
-          Path('app/pwa/pwa-runtime.js').write_text(r'''(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('pwa',{
-          get:()=>typeof PWA==='object'?PWA:null,
-          init:()=>typeof initPWA==='function'?initPWA():false,
-          check:(notify=false)=>typeof checkPWAUpdate==='function'?checkPWAUpdate(notify):false,
-          registration:()=>typeof PWA==='object'?PWA.registration:null
-          })})();
-          ''', encoding='utf-8')
-
-          Path('app/qa/qa-runtime.js').write_text(r'''(()=>{'use strict';const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');A.register('qa',{
-          run:()=>typeof qaRun==='function'?qaRun():false,
-          architecture:()=>A.status(),
-          assertArchitecture:()=>A.assertComplete()
-          });A.assertComplete();document.documentElement.dataset.aaArchitecture='phase1';})();
-          ''', encoding='utf-8')
-
-          Path('app/ARCHITECTURE.md').write_text('''# AA Learning OS architecture boundary — Phase 1\n\nRuntime ownership is now explicit:\n\n1. App Shell — routing and root render entry points\n2. State — persistence, backup, merge and state access\n3. Learning — mission/session/answer flow\n4. Subject engines — English/Japanese/Math plus protected WIP boundaries for Science/Social\n5. UI — presentation/render boundary\n6. PWA — service-worker/update boundary\n7. QA — runtime and architecture assertions\n\n`app/legacy/main-runtime.js` is a compatibility island extracted byte-for-byte from the former giant inline runtime. It is intentionally not rewritten in Phase 1. New code must use `window.AA_APP` boundaries instead of adding another same-name global override.\n\nProtected during this refactor: learning history, review state/data, PWA behavior, Megumin/companion image display and local image storage, saved/replayed voice features, AI reading, Chronologia, Japanese 15,000-word content, and all active adaptive-learning behavior. Science and Social exam work are explicitly marked work-in-progress and are not rewritten by this phase.\n''', encoding='utf-8')
-
-          # 3) Remove the explicit pet-settings layer only; companion/Megumin image+voice runtimes stay.
-          loader = Path('v23-loader.js')
-          loader_text = loader.read_text(encoding='utf-8')
-          loader_text = loader_text.replace("'v23-pet-settings.js',", '')
-          loader.write_text(loader_text, encoding='utf-8')
-          pet = Path('v23-pet-settings.js')
-          if pet.exists():
-              pet.unlink()
-
-          # 4) PWA: cache the new shell assets and remove the deleted pet file.
-          sw = Path('sw.js')
-          sw_text = sw.read_text(encoding='utf-8')
-          sw_text = re.sub(r"const VERSION='[^']+';", "const VERSION='2.6.0-phase1-architecture-20260903';", sw_text, count=1)
-          sw_text = sw_text.replace("url('v23-pet-settings.js'),", '')
-          app_assets = "url('app/ui/base.css'),url('app/runtime-registry.js'),url('app/legacy/main-runtime.js'),url('app/app-shell.js'),url('app/state/state-manager.js'),url('app/learning/learning-engine.js'),url('app/subjects/subject-engines.js'),url('app/ui/ui-runtime.js'),url('app/pwa/pwa-runtime.js'),url('app/qa/qa-runtime.js'),"
-          marker = "url('index.html'),"
-          if app_assets not in sw_text:
-              if marker not in sw_text: raise SystemExit('SW index marker missing')
-              sw_text = sw_text.replace(marker, marker + app_assets, 1)
-          sw.write_text(sw_text, encoding='utf-8')
-
-          # 5) Replenishment may write content to main, but it must not manually dispatch Pages;
-          #    the single push naturally starts one Pages run.
-          repl = Path('.github/workflows/replenish-reading.yml')
-          repl_text = repl.read_text(encoding='utf-8')
-          repl_text = repl_text.replace('  actions: write\n', '')
-          repl_text = repl_text.replace("            gh workflow run deploy-pages.yml --ref main\n", '')
-          repl.write_text(repl_text, encoding='utf-8')
-
-          # 6) Pages: stop committing status back to main. Deploy candidate -> verify -> add
-          #    truthful status files to runner -> deploy final artifact -> verify status publicly.
-          deploy = Path('.github/workflows/deploy-pages.yml')
-          d = deploy.read_text(encoding='utf-8')
-          d = d.replace('  contents: write\n  pages: write', '  contents: read\n  pages: write', 1)
-          d = d.replace('            sw.js; do', "            app/runtime-registry.js \\\n            app/legacy/main-runtime.js \\\n            app/app-shell.js \\\n            app/state/state-manager.js \\\n            app/learning/learning-engine.js \\\n            app/subjects/subject-engines.js \\\n            app/ui/ui-runtime.js \\\n            app/pwa/pwa-runtime.js \\\n            app/qa/qa-runtime.js \\\n            sw.js; do", 1)
-          d = d.replace('          node scripts/validate-math.mjs\n', '          node scripts/validate-math.mjs\n          node tests/architecture-boundaries.mjs\n', 1)
-          d = d.replace('"management": "validated-main-direct-to-pages"', '"management": "validated-main-direct-to-pages-no-status-commits"')
-          d = d.replace("      - name: Upload Pages artifact\n        id: upload\n        uses: actions/upload-pages-artifact@v4\n        with:\n          path: '.'", "      - name: Upload candidate Pages artifact\n        id: upload\n        uses: actions/upload-pages-artifact@v4\n        with:\n          name: github-pages-candidate\n          path: '.'", 1)
-          d = d.replace("      - name: Deploy to GitHub Pages\n        id: deployment\n        uses: actions/deploy-pages@v4", "      - name: Deploy candidate to GitHub Pages\n        id: deployment\n        uses: actions/deploy-pages@v4\n        with:\n          artifact_name: github-pages-candidate", 1)
-          cut = d.find('      - name: Record verified public release')
-          if cut < 0:
-              raise SystemExit('deploy-pages status commit section not found')
-          final_steps = r'''      - name: Prepare final verified status files
-        id: final_status
-        env:
-          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
-          SOURCE_SHA: ${{ github.sha }}
-          QUALITY_RUNTIME: ${{ steps.verify.outputs.quality_runtime }}
-          VOCAB_MOBILE_RUNTIME: ${{ steps.verify.outputs.vocab_mobile_runtime }}
-        run: |
-          set -euo pipefail
-          REVIEW_VERSION=$(grep -o "AA_REVIEW_BANK_VERSION='[^']*'" review-bank-v1.js | head -1 | cut -d"'" -f2)
-          REVIEW_COUNT=$(node - <<'NODE'
-          const fs=require('fs'),vm=require('vm');
-          const s={window:{}}; vm.createContext(s);
-          vm.runInContext(fs.readFileSync('review-bank-v1.js','utf8'),s);
-          process.stdout.write(String((s.window.AA_REVIEW_BANK||[]).length));
-          NODE
-          )
-          REVIEW_SHA256=$(sha256sum review-bank-v1.js | awk '{print $1}')
-          SW_VERSION=$(grep -o "const VERSION='[^']*'" sw.js | head -1 | cut -d"'" -f2)
-          LAYOUT_SHA256=$(sha256sum mobile-layout-guard-v1.js | awk '{print $1}')
-          QUALITY_REPAIR_SHA256=$(sha256sum quality-repair-v1.js | awk '{print $1}')
-          QUALITY_CI_SHA256=$(sha256sum quality-ci-runner-v1.js | awk '{print $1}')
-          AI_READING_SHA256=$(sha256sum ai-reading-v1.js | awk '{print $1}')
-          MATH_ENGINE_SHA256=$(sha256sum math-exam/engine.js | awk '{print $1}')
-          cat > PUBLIC_VERIFY_STATUS.txt <<EOF
-          result=success
-          source_sha=${SOURCE_SHA}
-          page_url=${PAGE_URL}
-          verified_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
-          review_version=${REVIEW_VERSION}
-          review_count=${REVIEW_COUNT}
-          review_sha256=${REVIEW_SHA256}
-          service_worker_version=${SW_VERSION}
-          mobile_layout_guard_sha256=${LAYOUT_SHA256}
-          quality_repair_sha256=${QUALITY_REPAIR_SHA256}
-          quality_ci_sha256=${QUALITY_CI_SHA256}
-          ai_reading_sha256=${AI_READING_SHA256}
-          math_engine_sha256=${MATH_ENGINE_SHA256}
-          quality_runtime=${QUALITY_RUNTIME}
-          vocab_mobile_runtime=${VOCAB_MOBILE_RUNTIME}
-          japanese_exam_public=success
-          architecture_phase=1
-          status_storage=pages-artifact-only
-          checks=public-release,review-v2,review-bank-exact-hash,mobile-layout-exact-hash,quality-repair-exact-hash,ai-reading-exact-hash,math-engine-exact-hash,math-runtime,quality-browser-runtime,vocab-mobile-runtime,login-image,login-voice,service-worker,diagnostics,architecture-boundaries
-          EOF
-          cat > DEPLOY_STATUS.txt <<EOF
-          source_sha=${SOURCE_SHA}
-          page_url=${PAGE_URL}
-          checked_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
-          setup=success
-          preflight=success
-          release_marker=success
-          upload=success
-          deploy=success
-          public_verify=success
-          public_verify_stage=complete
-          verified_record=pages-artifact-only
-          architecture_phase=1
-          EOF
-
-      - name: Upload final verified Pages artifact
-        id: final_upload
-        uses: actions/upload-pages-artifact@v4
-        with:
-          name: github-pages-final
-          path: '.'
-
-      - name: Deploy final verified Pages artifact
-        id: final_deployment
-        uses: actions/deploy-pages@v4
-        with:
-          artifact_name: github-pages-final
-
-      - name: Verify final published status
-        env:
-          PAGE_URL: ${{ steps.final_deployment.outputs.page_url }}
-          SOURCE_SHA: ${{ github.sha }}
-        run: |
-          set -euo pipefail
-          BASE="${PAGE_URL%/}/"
-          ok=0
-          for n in $(seq 1 24); do
-            if curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}DEPLOY_STATUS.txt?final=${SOURCE_SHA}-${n}" -o /tmp/deploy-status \
-              && grep -q "source_sha=${SOURCE_SHA}" /tmp/deploy-status \
-              && grep -q 'public_verify=success' /tmp/deploy-status \
-              && grep -q 'public_verify_stage=complete' /tmp/deploy-status; then
-              ok=1; break
-            fi
-            sleep 5
-          done
-          test "$ok" = 1
-          curl -fsSL "${BASE}PUBLIC_VERIFY_STATUS.txt?final=${SOURCE_SHA}" -o /tmp/public-status
-          grep -q 'result=success' /tmp/public-status
-          grep -q "source_sha=${SOURCE_SHA}" /tmp/public-status
-          grep -q 'architecture_phase=1' /tmp/public-status
-          EXPECTED_REVIEW_SHA256=$(sha256sum review-bank-v1.js | awk '{print $1}')
-          curl -fsSL "${BASE}review-bank-v1.js?final=${SOURCE_SHA}" -o /tmp/final-review-bank.js
-          test "$(sha256sum /tmp/final-review-bank.js | awk '{print $1}')" = "$EXPECTED_REVIEW_SHA256"
-          curl -fsSL "${BASE}app/runtime-registry.js?final=${SOURCE_SHA}" -o /tmp/final-registry.js
-          grep -q "architectureVersion:'1.0.0-phase1'" /tmp/final-registry.js
-          echo 'Final Pages artifact verified without any status commit to main.'
-          '''
-          d = d[:cut] + final_steps + '\n'
-          deploy.write_text(d, encoding='utf-8')
-
-          # 7) Consolidated read-only CI for branches/PRs. Main deployment already runs the same gate.
-          ci = Path('.github/workflows/ci.yml')
-          ci.write_text(r'''name: AA Learning OS CI
-
-          on:
-            pull_request:
-            push:
-              branches-ignore: [main]
-            workflow_dispatch:
-
-          permissions:
-            contents: read
-
-          concurrency:
-            group: ci-${{ github.ref }}
-            cancel-in-progress: true
-
-          jobs:
-            validate:
-              runs-on: ubuntu-latest
-              timeout-minutes: 20
-              steps:
-                - uses: actions/checkout@v4
-                - name: Syntax and architecture
-                  run: |
-                    set -euo pipefail
-                    for f in app/runtime-registry.js app/legacy/main-runtime.js app/app-shell.js app/state/state-manager.js app/learning/learning-engine.js app/subjects/subject-engines.js app/ui/ui-runtime.js app/pwa/pwa-runtime.js app/qa/qa-runtime.js sw.js v23-loader.js; do node --check "$f"; done
-                    node tests/architecture-boundaries.mjs
-                - name: Core regression suite
-                  run: |
-                    set -euo pipefail
-                    node scripts/validate-review-bank.mjs
-                    node scripts/validate-review-ui.mjs
-                    node scripts/validate-runtime-assets.mjs
-                    node tests/ai-reading-contract.mjs
-                    node tests/japanese-exam.mjs
-                    node scripts/japanese-library.mjs
-                    node tests/reading-library.mjs
-                    node scripts/reading-library.mjs --validate
-                    node scripts/validate-math.mjs
-          ''', encoding='utf-8')
-
-          # 8) Archive one-shot mutation/recovery/diagnostic workflows out of the active directory.
-          keep = {
-              'deploy-pages.yml','deploy-ai-worker.yml','replenish-reading.yml','ci.yml',
-              'chronologia-63-qa.yml','chronologia-deep-audit.yml','content-v24-audit.yml',
-              'difficulty-5subject-audit.yml','kokugo-chronologia-audit.yml',
-              'kokugo-jukugo-advanced-audit.yml','reading-1000-audit.yml','social-exam-check.yml',
-              'phase1-architecture-refactor.yml'
-          }
-          wf_dir = Path('.github/workflows')
-          archive_dir = Path('.github/workflow-archive/legacy-one-shot')
-          archive_dir.mkdir(parents=True, exist_ok=True)
+          keep={'deploy-pages.yml','deploy-ai-worker.yml','replenish-reading.yml','chronologia-63-qa.yml','chronologia-deep-audit.yml','content-v24-audit.yml','difficulty-5subject-audit.yml','kokugo-chronologia-audit.yml','kokugo-jukugo-advanced-audit.yml','reading-1000-audit.yml','social-exam-check.yml','phase1-architecture-refactor.yml'}
+          wf=Path('.github/workflows'); archive=Path('.github/workflow-archive/legacy-one-shot'); archive.mkdir(parents=True,exist_ok=True)
           archived=[]
-          for p in sorted(wf_dir.glob('*.yml')):
-              if p.name in keep or 'science' in p.name.lower():
-                  continue
-              shutil.move(str(p), str(archive_dir / p.name))
-              archived.append(p.name)
+          for p in sorted(wf.glob('*.yml')):
+              if p.name in keep or 'science' in p.name.lower(): continue
+              shutil.move(str(p),str(archive/p.name)); archived.append(p.name)
+          active=sorted(p.name for p in wf.glob('*.yml'))
+          Path('.github/WORKFLOW_INVENTORY.md').write_text('# Workflow inventory after Phase 1\n\n## Active\n'+''.join(f'- `{x}`\n' for x in active)+'\n## Archived legacy / one-shot\n'+''.join(f'- `{x}`\n' for x in archived)+'\n## Policy\n- Keep only reusable CI/deploy/maintenance and protected work-in-progress workflows active.\n- Historical fixes/restores/reports/verifiers are archived outside `.github/workflows` and cannot trigger.\n- `deploy-pages.yml` is the single Pages publisher. Its own status-file commits remain path-ignored, while obsolete Pages observer/report writers are disabled by archival.\n- Reading replenishment no longer manually dispatches Pages after pushing content.\n- Science and Social exam work remains protected while in progress.\n',encoding='utf-8')
 
-          active = sorted(p.name for p in wf_dir.glob('*.yml'))
-          Path('.github/WORKFLOW_INVENTORY.md').write_text(
-              '# Workflow inventory after Phase 1\n\n'
-              '## Active\n' + ''.join(f'- `{x}`\n' for x in active) +
-              '\n## Archived legacy / one-shot\n' + ''.join(f'- `{x}`\n' for x in archived) +
-              '\n## Policy\n- Active workflows must be reusable CI/deploy/maintenance or explicitly protected work-in-progress.\n- One-shot fix, restore, report, and historical verify workflows live outside `.github/workflows` and cannot trigger.\n- Pages verification status is published inside the Pages artifact; deploy workflows never commit status back to `main`.\n- Social and Science exam work remains protected while in progress.\n',
-              encoding='utf-8')
-
-          # 9) Static QA contract for the new boundary.
-          Path('tests/architecture-boundaries.mjs').write_text(r'''import fs from 'node:fs';
-          import crypto from 'node:crypto';
+          Path('tests/architecture-boundaries.mjs').write_text("""import fs from 'node:fs';
           const index=fs.readFileSync('index.html','utf8');
           const order=['app/app-shell.js','app/state/state-manager.js','app/learning/learning-engine.js','app/subjects/subject-engines.js','app/ui/ui-runtime.js','app/pwa/pwa-runtime.js','app/qa/qa-runtime.js'];
-          let last=-1; for(const file of order){const pos=index.indexOf(file); if(pos<0||pos<=last)throw new Error(`Architecture load order invalid: ${file}`); last=pos;}
+          let last=-1;for(const f of order){const p=index.indexOf(f);if(p<0||p<=last)throw new Error(`Architecture order invalid: ${f}`);last=p}
           if(!index.includes('app/runtime-registry.js')||!index.includes('app/legacy/main-runtime.js'))throw new Error('Shell extraction missing');
-          for(const m of index.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)){if(m[1].length>12000)throw new Error('Large inline runtime remains in index.html');}
-          for(const m of index.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)){if(m[1].length>12000)throw new Error('Large inline CSS remains in index.html');}
-          const loader=fs.readFileSync('v23-loader.js','utf8'); if(loader.includes('v23-pet-settings.js'))throw new Error('Pet settings still loaded');
-          if(fs.existsSync('v23-pet-settings.js'))throw new Error('Pet settings file still active');
-          const sw=fs.readFileSync('sw.js','utf8'); for(const file of ['app/ui/base.css','app/runtime-registry.js','app/legacy/main-runtime.js',...order])if(!sw.includes(`url('${file}')`))throw new Error(`PWA core missing ${file}`);
-          for(const file of ['review-bank-v1.js','review/index.html','storage-resilience-v1.js','aa-companion-v2.js','aa-companion-mobile-fix.js','login-companion-v1.js','companion7-runtime.js','answer-feedback-audio-v1.js'])if(!fs.existsSync(file))throw new Error(`Protected asset missing: ${file}`);
-          const reg=fs.readFileSync('app/runtime-registry.js','utf8'); if(!reg.includes('scienceExam:true')||!reg.includes('socialExam:true'))throw new Error('WIP subject guards missing');
-          console.log('architecture-boundaries: PASS', crypto.createHash('sha256').update(index).digest('hex').slice(0,16));
-          ''', encoding='utf-8')
+          for(const m of index.matchAll(/<script(?![^>]*\\bsrc=)[^>]*>([\\s\\S]*?)<\\/script>/gi))if(m[1].length>12000)throw new Error('Large inline runtime remains');
+          for(const m of index.matchAll(/<style[^>]*>([\\s\\S]*?)<\\/style>/gi))if(m[1].length>12000)throw new Error('Large inline CSS remains');
+          const loader=fs.readFileSync('v23-loader.js','utf8');if(loader.includes('v23-pet-settings.js')||fs.existsSync('v23-pet-settings.js'))throw new Error('Pet settings still active');
+          const sw=fs.readFileSync('sw.js','utf8');for(const f of ['app/ui/base.css','app/runtime-registry.js','app/legacy/main-runtime.js',...order])if(!sw.includes(`url('${f}')`))throw new Error(`PWA core missing ${f}`);
+          for(const f of ['review-bank-v1.js','review/index.html','storage-resilience-v1.js','aa-companion-v2.js','aa-companion-mobile-fix.js','login-companion-v1.js','companion7-runtime.js','answer-feedback-audio-v1.js'])if(!fs.existsSync(f))throw new Error(`Protected asset missing: ${f}`);
+          const reg=fs.readFileSync('app/runtime-registry.js','utf8');if(!reg.includes('scienceExam:true')||!reg.includes('socialExam:true'))throw new Error('WIP guards missing');
+          console.log('architecture-boundaries: PASS');
+          """,encoding='utf-8')
 
-          # Verify protected WIP and saved-media/review files were not changed.
-          after = {p: sha(p) for p in protected}
-          changed = [p for p in protected if before[p] != after[p]]
-          if changed:
-              raise SystemExit('Protected files changed unexpectedly: ' + ', '.join(changed))
-          Path('PHASE1_PROTECTED_HASHES.json').write_text(json.dumps(after, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-          print(f'Archived {len(archived)} legacy workflows; active workflows: {len(active)}')
+          after={p:sha(p) for p in protected}; changed=[p for p in protected if before[p]!=after[p]]
+          if changed: raise SystemExit('Protected files changed: '+', '.join(changed))
+          Path('PHASE1_PROTECTED_HASHES.json').write_text(json.dumps(after,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('archived',len(archived),'active',len(active))
           PY
 
       - name: Validate refactor before commit
         run: |
           set -euo pipefail
-          for f in app/runtime-registry.js app/legacy/main-runtime.js app/app-shell.js app/state/state-manager.js app/learning/learning-engine.js app/subjects/subject-engines.js app/ui/ui-runtime.js app/pwa/pwa-runtime.js app/qa/qa-runtime.js v23-loader.js sw.js; do
-            node --check "$f"
-          done
+          for f in app/runtime-registry.js app/legacy/main-runtime.js app/app-shell.js app/state/state-manager.js app/learning/learning-engine.js app/subjects/subject-engines.js app/ui/ui-runtime.js app/pwa/pwa-runtime.js app/qa/qa-runtime.js v23-loader.js sw.js; do node --check "$f"; done
           node tests/architecture-boundaries.mjs
           node scripts/validate-review-bank.mjs
           node scripts/validate-review-ui.mjs
@@ -454,8 +159,6 @@ jobs:
           grep -q 'setExplosionVoice' companion7-runtime.js
           grep -q 'showDailyVisual' login-companion-v1.js
           grep -q 'answer-feedback-audio-v1.js' sw.js
-          grep -q 'public_verify_stage=complete' .github/workflows/deploy-pages.yml
-          ! grep -q 'git push origin main' .github/workflows/deploy-pages.yml
           ! grep -q 'gh workflow run deploy-pages.yml' .github/workflows/replenish-reading.yml
 
       - name: Commit refactor branch
