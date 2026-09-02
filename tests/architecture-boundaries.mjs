@@ -16,4 +16,8 @@ const reg=fs.readFileSync('app/runtime-registry.js','utf8');if(!reg.includes('sc
 const subjects=fs.readFileSync('app/subjects/subject-engines.js','utf8');for(const n of ["science:'active'","social:'active'",'window.AAScienceExam','window.AASocialExam'])if(!subjects.includes(n))throw new Error(`Completed subject adapter missing: ${n}`);
 const legacyV23=fs.readFileSync('learning-engine-v23.js','utf8');
 if(!legacyV23.includes("typeof makeMathQ==='function'&&window.AAMathFullReplacement?.ok!==true"))throw new Error('Legacy V23 may override verified mathematics ownership');
+const qQuality=fs.readFileSync('question-quality-v1.js','utf8');
+if(!qQuality.includes("typeof makeMathQ==='function'&&window.AAMathFullReplacement?.ok!==true"))throw new Error('Question quality may override verified mathematics ownership');
+const difficulty=fs.readFileSync('difficulty-engine-v1.js','utf8');
+if(!difficulty.includes("originals.math&&window.AAMathFullReplacement?.ok!==true"))throw new Error('Difficulty engine may override verified mathematics ownership');
 console.log('architecture-boundaries: PASS');

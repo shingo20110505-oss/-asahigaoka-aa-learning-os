@@ -52,7 +52,7 @@ const originals={
  kanji:typeof makeKanjiQ==='function'?makeKanjiQ:null,planKanji:typeof planKanjiQueue==='function'?planKanjiQueue:null,
  subject:typeof makeSubjectQ==='function'?makeSubjectQ:null,handle:typeof handleAction==='function'?handleAction:null
 };
-if(originals.math)makeMathQ=(d=currentD())=>exactQuestion('math',d)||originals.math(d);
+if(originals.math&&window.AAMathFullReplacement?.ok!==true)makeMathQ=(d=currentD())=>exactQuestion('math',d)||originals.math(d);
 if(originals.science)makeScienceQ=(d=currentD())=>exactQuestion('science',d)||originals.science(d);
 if(originals.social)makeSocialQ=(d=currentD())=>exactQuestion('social',d)||originals.social(d);
 if(originals.japanese)makeJapaneseQ=(d=currentD())=>exactQuestion('japanese',d)||originals.japanese(d);
