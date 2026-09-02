@@ -1,0 +1,88 @@
+name: Phase 1 refactor split validation
+
+on:
+  push:
+    branches: [phase1-architecture-cleanup-20260903]
+    paths:
+      - '.github/workflows/phase1-refactor-diagnostic.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: phase1-refactor-split-validation
+  cancel-in-progress: false
+
+jobs:
+  refactor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: phase1-architecture-cleanup-20260903
+          fetch-depth: 0
+
+      - name: Apply Phase 1 transform
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import textwrap
+          src=Path('.github/workflows/phase1-architecture-refactor.yml').read_text()
+          marker="          python3 - <<'PY'\n"
+          start=src.index(marker)+len(marker)
+          end=src.index('\n          PY',start)
+          code=textwrap.dedent(src[start:end])
+          exec(compile(code,'phase1-transform.py','exec'),{'__name__':'__main__'})
+          PY
+
+      - name: Gate 1 - syntax and architecture
+        run: |
+          set -euo pipefail
+          for f in app/runtime-registry.js app/legacy/main-runtime.js app/app-shell.js app/state/state-manager.js app/learning/learning-engine.js app/subjects/subject-engines.js app/ui/ui-runtime.js app/pwa/pwa-runtime.js app/qa/qa-runtime.js v23-loader.js sw.js; do node --check "$f"; done
+          node tests/architecture-boundaries.mjs
+
+      - name: Gate 2 - review
+        run: |
+          set -euo pipefail
+          node scripts/validate-review-bank.mjs
+          node scripts/validate-review-ui.mjs
+
+      - name: Gate 3 - runtime assets
+        run: node scripts/validate-runtime-assets.mjs
+
+      - name: Gate 4 - AI reading
+        run: node tests/ai-reading-contract.mjs
+
+      - name: Gate 5 - Japanese exam
+        run: |
+          set -euo pipefail
+          node tests/japanese-exam.mjs
+          node scripts/japanese-library.mjs
+
+      - name: Gate 6 - reading library
+        run: |
+          set -euo pipefail
+          node tests/reading-library.mjs
+          node scripts/reading-library.mjs --validate
+
+      - name: Gate 7 - mathematics
+        run: node scripts/validate-math.mjs
+
+      - name: Gate 8 - protected image and voice runtimes
+        run: |
+          set -euo pipefail
+          grep -q 'setLoginVoices' companion7-runtime.js
+          grep -q 'setExplosionVoice' companion7-runtime.js
+          grep -q 'showDailyVisual' login-companion-v1.js
+          grep -q 'answer-feedback-audio-v1.js' sw.js
+          ! grep -q 'gh workflow run deploy-pages.yml' .github/workflows/replenish-reading.yml
+
+      - name: Commit validated Phase 1 refactor
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Phase 1: establish architecture boundaries and stabilize Actions'
+          git push origin HEAD:phase1-architecture-cleanup-20260903
