@@ -1,0 +1,59 @@
+name: Science exam production QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'science-exam/**'
+      - 'tests/science-exam.mjs'
+      - 'scripts/verify-science-public.mjs'
+      - 'v23-loader.js'
+      - 'sw.js'
+      - '.github/workflows/science-exam-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax and generation QA
+        run: |
+          set -euo pipefail
+          node --check science-exam/core.mjs
+          node --check science-exam/generator.mjs
+          node --check science-exam/bridge.js
+          node tests/science-exam.mjs
+          grep -q "science-exam/bridge.js" v23-loader.js
+          grep -q 'legacyGenericFallback:false' science-exam/bridge.js
+
+  public:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Wait for exact Pages source and verify
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          BASE: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+        run: |
+          set -euo pipefail
+          ok=0
+          for n in $(seq 1 36); do
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}release.json?science=${SOURCE_SHA}-${n}" -o /tmp/release.json && grep -q "${SOURCE_SHA}" /tmp/release.json; then
+              ok=1
+              break
+            fi
+            sleep 5
+          done
+          test "$ok" = 1
+          node scripts/verify-science-public.mjs "$BASE" "$SOURCE_SHA"

@@ -1,0 +1,69 @@
+name: Verify Social Application Pack on Pages
+
+on:
+  workflow_run:
+    workflows: ['Deploy AA Learning OS to GitHub Pages']
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-social-public:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.head_branch == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve deployed source
+        id: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${GITHUB_EVENT_NAME}" = "workflow_run" ]; then
+            SHA='${{ github.event.workflow_run.head_sha }}'
+          else
+            SHA='${{ github.sha }}'
+          fi
+          test -n "$SHA"
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.source.outputs.sha }}
+          fetch-depth: 1
+
+      - name: Validate source pack
+        run: |
+          set -euo pipefail
+          node tests/social-exam.mjs
+          grep -q 'social-exam/bridge.js' v23-loader.js
+          grep -q "url('social-exam/bridge.js')" sw.js
+          grep -q "url('social-exam/core.mjs')" sw.js
+          grep -q "url('social-exam/application-pack.mjs')" sw.js
+
+      - name: Verify exact public Social assets
+        env:
+          SOURCE_SHA: ${{ steps.source.outputs.sha }}
+          BASE: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+        run: |
+          set -euo pipefail
+          retry() {
+            local n=0
+            until "$@"; do
+              n=$((n+1)); [ "$n" -ge 18 ] && return 1
+              sleep 5
+            done
+          }
+          retry bash -c 'curl -fsSL "'"$BASE"'release.json?verify='"$SOURCE_SHA"'" -o /tmp/release.json && grep -q '"'"sourceSha"'"[[:space:]]*:[[:space:]]*"'"$SOURCE_SHA"'"' /tmp/release.json'
+          for path in social-exam/core.mjs social-exam/application-pack.mjs social-exam/bridge.js v23-loader.js sw.js; do
+            mkdir -p "/tmp/public/$(dirname "$path")"
+            retry curl -fsSL "${BASE}${path}?verify=${SOURCE_SHA}" -o "/tmp/public/${path}"
+            test "$(sha256sum "$path" | awk '{print $1}')" = "$(sha256sum "/tmp/public/${path}" | awk '{print $1}')"
+          done
+          grep -q 'social-exam/bridge.js' /tmp/public/v23-loader.js
+          grep -q "social-application-1.0.0" /tmp/public/sw.js
+          grep -q "url('social-exam/application-pack.mjs')" /tmp/public/sw.js
+          cp /tmp/public/social-exam/application-pack.mjs /tmp/public/social-exam/application-pack-copy.mjs
+          node -e "import('file:///tmp/public/social-exam/application-pack-copy.mjs').then(m=>{const q=m.applicationPack.questions;if(q.length!==10)process.exit(2);if(q.reduce((s,x)=>s+x.points,0)!==34)process.exit(3);console.log('public social pack ok: 10 questions / 34 points')})"
+          echo "Public Social assets exactly match source ${SOURCE_SHA}."
