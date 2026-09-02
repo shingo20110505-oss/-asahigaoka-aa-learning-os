@@ -23,11 +23,14 @@ jobs:
           from pathlib import Path
           p=Path('.github/workflows/phase1-architecture-refactor.yml')
           s=p.read_text()
-          old='''          st=re.sub(r"const VERSION='[^']+';","const VERSION='2.6.0-phase1-architecture-20260903';",st,count=1)'''
-          new='''          st=re.sub(r"const VERSION='([^']+)';",lambda m:f"const VERSION='{m.group(1)}-phase1-architecture-20260903';",st,count=1)'''
+          old="const VERSION='2.6.0-phase1-architecture-20260903';"
+          new="const VERSION='{m.group(1)}-phase1-architecture-20260903';"
           if old not in s:
-              raise SystemExit('target line not found')
-          p.write_text(s.replace(old,new,1))
+              raise SystemExit('target version literal not found')
+          s=s.replace(old,new,1)
+          s=s.replace("r\"const VERSION='[^']+';\"","r\"const VERSION='([^']+)';\"",1)
+          s=s.replace('st=re.sub(r"const VERSION=\'([^\']+)\';","const VERSION=\'{m.group(1)}-phase1-architecture-20260903\';",st,count=1)','st=re.sub(r"const VERSION=\'([^\']+)\';",lambda m:f"const VERSION=\'{m.group(1)}-phase1-architecture-20260903\';",st,count=1)',1)
+          p.write_text(s)
           PY
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
