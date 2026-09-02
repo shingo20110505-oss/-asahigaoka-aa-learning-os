@@ -3,7 +3,8 @@ name: Temporary Math quality diagnostic
 on:
   push:
     branches: [diagnose-math-quality-20260903]
-    paths: ['.github/workflows/math-quality-diagnostic-temp.yml']
+    paths:
+      - '.github/workflows/math-quality-diagnostic-temp.yml'
 
 permissions:
   contents: read
@@ -21,23 +22,9 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           p=Path('quality-ci-runner-v1.js')
-          s=p.read_text()
-          lines=s.splitlines()
+          lines=p.read_text().splitlines()
           idx=next(i for i,x in enumerate(lines) if "add('愛知県型数学・応用検算'" in x)
-          lines[idx]="""    const mathDiag = {
-          formulaFinal: mathFormulaPracticePreserved,
-          fullReplacementApi: mathFull?.ok === true,
-          datasetPass: document.documentElement.dataset.aaMathFullReplacement === 'PASS',
-          total76: math.length === 76,
-          setShape: mathSets.every(qs => qs.length === 19 && qs.reduce((n,q)=>n+q.points,0) === 22),
-          setQuestionContract: math.every(q => q.choices.length === 4 && q.choices.filter(c => c.ok).length === 1 && q.source.curriculum === 'junior-high'),
-          normal44Contract: normalMath.every(q => q.source?.route === 'full-replacement' && q.source?.origin === 'verified-math-template' && q.choices.length === 4 && q.choices.filter(c=>c.ok).length === 1),
-          normalHasFigure: normalMath.some(q => q.mathFigure),
-          certainty: math.some(q => q.thinking === 'certainty'),
-          reflectionAreaBisection: math.some(q => q.thinking === 'reflection_area_bisection'),
-          piecewiseIntersections: math.some(q => q.thinking === 'piecewise_intersections')
-        };
-        add('愛知県型数学・応用検算', Object.values(mathDiag).every(Boolean), JSON.stringify({mathDiag,finalMath:window.AA_QUALITY_REPAIR_FINAL?.math||null,normalSample:normalMath.slice(0,3).map(q=>({id:q?.id,family:q?.family,route:q?.source?.route,origin:q?.source?.origin,figure:!!q?.mathFigure}))}));"""
+          lines[idx]="    const mathDiag={formulaFinal:mathFormulaPracticePreserved,fullReplacementApi:mathFull?.ok===true,datasetPass:document.documentElement.dataset.aaMathFullReplacement==='PASS',total76:math.length===76,setShape:mathSets.every(qs=>qs.length===19&&qs.reduce((n,q)=>n+q.points,0)===22),setQuestionContract:math.every(q=>q.choices.length===4&&q.choices.filter(c=>c.ok).length===1&&q.source.curriculum==='junior-high'),normal44Contract:normalMath.every(q=>q.source?.route==='full-replacement'&&q.source?.origin==='verified-math-template'&&q.choices.length===4&&q.choices.filter(c=>c.ok).length===1),normalHasFigure:normalMath.some(q=>q.mathFigure),certainty:math.some(q=>q.thinking==='certainty'),reflectionAreaBisection:math.some(q=>q.thinking==='reflection_area_bisection'),piecewiseIntersections:math.some(q=>q.thinking==='piecewise_intersections')}; add('愛知県型数学・応用検算',Object.values(mathDiag).every(Boolean),JSON.stringify({mathDiag,finalMath:window.AA_QUALITY_REPAIR_FINAL?.math||null,normalSample:normalMath.slice(0,3).map(q=>({id:q?.id,family:q?.family,route:q?.source?.route,origin:q?.source?.origin,figure:!!q?.mathFigure}))}));"
           p.write_text('\n'.join(lines)+'\n')
           PY
           node --check quality-ci-runner-v1.js
@@ -53,4 +40,3 @@ jobs:
           CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)
           timeout 120s "$CHROME" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --user-data-dir=/tmp/aa-math-diag --virtual-time-budget=60000 --dump-dom 'http://127.0.0.1:8000/?aa_quality_ci=1&diag=math' > /tmp/diag.html
           grep -o 'AA_QUALITY_CI=[^<]*' /tmp/diag.html || true
-          grep -o '"mathDiag"[^<]*' /tmp/diag.html | head -1 || true
