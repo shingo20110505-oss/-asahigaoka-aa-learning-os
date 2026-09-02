@@ -1,5 +1,5 @@
 'use strict';
-const VERSION='2.5.305-quality2-chronologia1000-storage-guard-20260816-kokugo-direct-ja-study-timer-header-menu-ai-reading-no-legacy-flash-20260901-gemini-library-2-20260902';
+const VERSION='2.5.305-quality2-chronologia1000-storage-guard-20260816-kokugo-direct-ja-study-timer-header-menu-ai-reading-no-legacy-flash-20260901-gemini-library-2.0.1-20260902';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;

@@ -3,7 +3,7 @@
 
   if (window.__AA_AI_READING_V1__) return;
 
-  const VERSION = '2.0.0';
+  const VERSION = '2.0.1';
   const CONFIG_KEY = 'aa_ai_reading_config_v1';
   const DEFAULT_ENDPOINT = 'https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev';
   const ENDPOINT_PATH = '/v1/reading';
@@ -626,6 +626,7 @@
       .aaReadingMetrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:24px 0}.aaReadingMetrics>div{display:grid;gap:4px;border-left:2px solid rgba(73,118,255,.2);padding-left:14px}.aaReadingMetrics strong{font-size:28px;line-height:1.2;font-variant-numeric:tabular-nums}.aaReadingMetrics span{font-size:12px;color:var(--muted,#65718a);font-weight:500}.aaReadingMetrics strong span{margin-left:4px}
       .aaReadingModes{display:grid;grid-template-columns:1fr 1fr;gap:12px}.aaReadingModes button{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-width:0;min-height:84px;padding:16px;text-align:left;white-space:normal}.aaReadingModes b{font-size:16px}.aaReadingModes span{font-weight:400;font-size:12px;margin-top:6px;opacity:.85}
       .aaReadingFoot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0 8px;font-size:12px;line-height:1.7;color:var(--muted,#65718a)}.aaReadingVocabLink{display:inline-block;margin:8px 0;color:var(--accent,#3152b7);font-weight:700}.aaReadingAdvanced{margin-top:16px}.aaReadingAdvanced summary{cursor:pointer;font-weight:700;padding:4px 0}.aaReadingAdvanced[open] summary{margin-bottom:16px}
+      .aaReadingLibrary .sub,.aaReadingLibrary .tiny,.aaReadingFoot,.aaReadingMetrics span{color:var(--sub,#52617a)}
       @media(max-width:560px){.aaReadingTop{display:block}.aaReadingPill{margin:3px 0 10px}.aaReadingModes{grid-template-columns:1fr}.aaReadingMetrics{gap:6px}.aaReadingMetrics strong{font-size:24px}.aaReadingMetrics>div{padding-left:9px}.aaReadingFoot{align-items:flex-start}}
       @keyframes aaAiSpin{to{transform:rotate(360deg)}}
       @media (prefers-reduced-motion:reduce){.aaAiReadingSpinner{animation:none}}
@@ -709,7 +710,7 @@
     glossLookup = function (raw) {
       const info = lookupBefore(raw);
       const exact = String(raw || '').toLowerCase().replace(/^[^a-z]+|[^a-z']+$/g, '');
-      const saved = state.profile.aiReadingGlossary?.[exact];
+      const saved = state.profile.aiReadingGlossary?.[exact] || (READING_GLOSSARY[exact] ? {meaning: READING_GLOSSARY[exact]} : null);
       if (!info.data && saved) return {...info, lemma: exact, meaning: saved.meaning, source: 'geminiReading'};
       return info;
     };
