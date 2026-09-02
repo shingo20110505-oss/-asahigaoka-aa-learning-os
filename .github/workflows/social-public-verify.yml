@@ -11,18 +11,21 @@ permissions:
 
 jobs:
   verify-social-public:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.head_branch == 'main'
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
     steps:
       - name: Resolve deployed source
         id: source
         shell: bash
+        env:
+          BASE: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
         run: |
           set -euo pipefail
           if [ "${GITHUB_EVENT_NAME}" = "workflow_run" ]; then
             SHA='${{ github.event.workflow_run.head_sha }}'
           else
-            SHA='${{ github.sha }}'
+            curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}release.json?manual=${GITHUB_RUN_ID}" -o /tmp/release.json
+            SHA=$(node -e "const fs=require('fs');const r=JSON.parse(fs.readFileSync('/tmp/release.json','utf8'));process.stdout.write(String(r.sourceSha||''))")
           fi
           test -n "$SHA"
           echo "sha=$SHA" >> "$GITHUB_OUTPUT"
@@ -55,10 +58,14 @@ jobs:
               sleep 5
             done
           }
-          retry bash -c 'curl -fsSL "'"$BASE"'release.json?verify='"$SOURCE_SHA"'" -o /tmp/release.json && grep -q '"'"sourceSha"'"[[:space:]]*:[[:space:]]*"'"$SOURCE_SHA"'"' /tmp/release.json'
+          release_ready() {
+            curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}release.json?verify=${SOURCE_SHA}-${GITHUB_RUN_ATTEMPT}" -o /tmp/release.json || return 1
+            node -e "const fs=require('fs');const r=JSON.parse(fs.readFileSync('/tmp/release.json','utf8'));process.exit(r.sourceSha===process.env.SOURCE_SHA?0:1)"
+          }
+          retry release_ready
           for path in social-exam/core.mjs social-exam/application-pack.mjs social-exam/bridge.js v23-loader.js sw.js; do
             mkdir -p "/tmp/public/$(dirname "$path")"
-            retry curl -fsSL "${BASE}${path}?verify=${SOURCE_SHA}" -o "/tmp/public/${path}"
+            retry curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}${path}?verify=${SOURCE_SHA}" -o "/tmp/public/${path}"
             test "$(sha256sum "$path" | awk '{print $1}')" = "$(sha256sum "/tmp/public/${path}" | awk '{print $1}')"
           done
           grep -q 'social-exam/bridge.js' /tmp/public/v23-loader.js
