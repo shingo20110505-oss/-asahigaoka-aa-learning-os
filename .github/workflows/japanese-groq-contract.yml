@@ -6,10 +6,12 @@ on:
     paths:
       - 'japanese-exam/**'
       - 'scripts/japanese-library.mjs'
+      - 'scripts/japanese-groq-live-smoke.mjs'
       - 'tests/japanese-exam.mjs'
       - 'tests/japanese-groq-verifier.mjs'
       - 'worker/src/providers/**'
       - '.github/workflows/japanese-groq-contract.yml'
+      - '.github/workflows/japanese-groq-live-smoke.yml'
   workflow_dispatch:
 
 permissions:
@@ -33,6 +35,7 @@ jobs:
           set -euo pipefail
           node --check japanese-exam/groq-verifier.mjs
           node --check scripts/japanese-library.mjs
+          node --check scripts/japanese-groq-live-smoke.mjs
           node --check tests/japanese-exam.mjs
           node --check tests/japanese-groq-verifier.mjs
           node tests/japanese-exam.mjs
