@@ -17,6 +17,28 @@ const TEST_SCHEMA = Object.freeze({
   properties: { ok: { type: 'boolean' } }
 });
 
+const GROQ_COMPAT_SCHEMA = Object.freeze({
+  type: 'object',
+  additionalProperties: false,
+  required: ['answers'],
+  properties: {
+    answers: {
+      type: 'array',
+      minItems: 5,
+      maxItems: 5,
+      items: {
+        type: 'object',
+        additionalProperties: false,
+        required: ['evidence', 'confidence'],
+        properties: {
+          evidence: { type: 'string', minLength: 12, maxLength: 360, pattern: '.+' },
+          confidence: { type: 'number', minimum: 0, maximum: 1 }
+        }
+      }
+    }
+  }
+});
+
 assert.deepEqual(AI_PROVIDER_IDS, ['gemini', 'groq']);
 assert.equal(DEFAULT_GEMINI_MODEL, 'gemini-3.5-flash');
 assert.equal(DEFAULT_GROQ_MODEL, 'openai/gpt-oss-20b');
@@ -58,8 +80,11 @@ globalThis.fetch = async (url, options) => {
     }), { status: 200, headers: { 'content-type': 'application/json' } });
   }
   if (String(url).includes('api.groq.com')) {
+    const content = body.response_format?.json_schema?.name === 'groq_compat_contract'
+      ? '{"answers":[]}'
+      : '{"ok":true}';
     return new Response(JSON.stringify({
-      choices: [{ message: { role: 'assistant', content: '{"ok":true}' } }]
+      choices: [{ message: { role: 'assistant', content } }]
     }), { status: 200, headers: { 'content-type': 'application/json' } });
   }
   throw new Error(`unexpected URL: ${url}`);
@@ -92,7 +117,17 @@ try {
   assert.equal(groq.provider, 'groq');
   assert.equal(groq.model, 'openai/gpt-oss-20b');
 
-  assert.equal(requests.length, 2);
+  await callStructuredProvider('groq', {
+    GROQ_API_KEY: 'test-groq-secret',
+    GROQ_MODEL: 'openai/gpt-oss-20b'
+  }, {
+    input: 'Return a structured answer list.',
+    schema: GROQ_COMPAT_SCHEMA,
+    schemaName: 'groq_compat_contract',
+    maxOutputTokens: 512
+  });
+
+  assert.equal(requests.length, 3);
   const geminiRequest = requests[0];
   assert.match(geminiRequest.url, /generativelanguage\.googleapis\.com/);
   assert.equal(geminiRequest.headers['x-goog-api-key'], 'test-gemini-secret');
@@ -109,8 +144,20 @@ try {
   assert.equal(groqRequest.body.include_reasoning, false);
   assert.equal(groqRequest.body.stream, false);
   assert.equal(groqRequest.body.messages.some(message => /answerIndex|author answer/i.test(message.content)), false);
+
+  const compatibilityRequest = requests[2];
+  const normalized = compatibilityRequest.body.response_format.json_schema.schema;
+  assert.equal(normalized.properties.answers.minItems, undefined);
+  assert.equal(normalized.properties.answers.maxItems, undefined);
+  assert.equal(normalized.properties.answers.items.properties.evidence.minLength, undefined);
+  assert.equal(normalized.properties.answers.items.properties.evidence.maxLength, undefined);
+  assert.equal(normalized.properties.answers.items.properties.evidence.pattern, undefined);
+  assert.equal(normalized.properties.answers.items.properties.confidence.minimum, 0);
+  assert.equal(normalized.properties.answers.items.properties.confidence.maximum, 1);
+  assert.deepEqual(normalized.required, ['answers']);
+  assert.equal(normalized.additionalProperties, false);
 } finally {
   globalThis.fetch = originalFetch;
 }
 
-console.log('AI provider contract OK: Gemini/Groq adapters, secret isolation, structured JSON, and provider selection passed');
+console.log('AI provider contract OK: Gemini/Groq adapters, secret isolation, strict-schema normalization, structured JSON, and provider selection passed');

@@ -76,7 +76,7 @@ jobs:
           test -n "$DEPLOYMENT_URL"
           BASE="${DEPLOYMENT_URL%/}"
           ORIGIN='https://shingo20110505-oss.github.io'
-          export EXPECTED_WORKER_VERSION='1.2.0'
+          export EXPECTED_WORKER_VERSION='1.2.1'
 
           health_ready=false
           for attempt in $(seq 1 12); do
@@ -123,7 +123,7 @@ jobs:
           const health = JSON.parse(fs.readFileSync('/tmp/ai-health.json', 'utf8'));
           const status = JSON.parse(fs.readFileSync('/tmp/ai-status.json', 'utf8'));
           const result = JSON.parse(fs.readFileSync('/tmp/ai-reading.json', 'utf8'));
-          if (health.ok !== true || health.version !== '1.2.0' || status.ready !== true) throw new Error('Worker health/status verification failed');
+          if (health.ok !== true || health.version !== '1.2.1' || status.ready !== true) throw new Error('Worker health/status verification failed');
           if (status.model !== 'gemini-3.5-flash') throw new Error(`Unexpected Gemini model: ${status.model}`);
           if (status.verificationProvider !== 'groq' || status.verifierModel !== 'openai/gpt-oss-20b') throw new Error('Groq verifier status mismatch');
           if (result.schemaVersion !== 1 || result.quality?.verified !== true) throw new Error('AI quality verification failed');
