@@ -1,6 +1,6 @@
 (()=>{'use strict';
 if(window.__RISE_STABLE_ROOT_V4__)return;
-window.__RISE_STABLE_ROOT_V4__={version:'1.0.0'};
+window.__RISE_STABLE_ROOT_V4__={version:'1.0.1'};
 const root=document.documentElement,app=document.getElementById('app');
 if(!app)return;
 const host=document.createElement('main');
@@ -8,9 +8,14 @@ host.id='riseStableMain';host.hidden=true;host.setAttribute('aria-live','polite'
 app.insertAdjacentElement('afterend',host);
 const custom={home:'.riseHomeV4',subjects:'.riseSubjectsV4',analytics:'.riseAnalyticsV4',settings:'.riseSettingsV4'};
 const route=()=>{try{return window.AA_APP?.get?.('state')?.get?.()?.route||root.dataset.riseRoute||'home'}catch(_){return root.dataset.riseRoute||'home'}};
+const params=new URLSearchParams(location.search),visualRoute=params.get('visual_route');
+const visualMode=params.get('visual_verify')==='1'&&Object.hasOwn(custom,visualRoute||'');
+let visualRouteApplied=false;
+function applyVisualRoute(){if(!visualMode||visualRouteApplied)return;const target=app.querySelector(`[data-route="${visualRoute}"]`);if(!target)return;visualRouteApplied=true;target.click()}
 let frame=0,lastSig='';
 function schedule(){cancelAnimationFrame(frame);frame=requestAnimationFrame(sync)}
 function sync(){
+ applyVisualRoute();
  const r=route();root.dataset.riseRoute=r;
  const selector=custom[r];
  if(!selector){host.hidden=true;root.removeAttribute('data-rise-stable-ready');return}
