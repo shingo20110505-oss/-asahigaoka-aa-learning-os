@@ -105,7 +105,8 @@ globalThis.fetch = async (_url, init) => {
   const userPrompt = body.messages.find(message => message.role === 'user').content;
   const payload = JSON.parse(userPrompt.slice(userPrompt.lastIndexOf('\n') + 1));
   return new Response(JSON.stringify({
-    choices: [{ message: { content: JSON.stringify(fixtureForMajor(payload.major)) } }]
+    choices: [{ message: { content: JSON.stringify(fixtureForMajor(payload.major)) }, finish_reason: 'stop' }],
+    usage: { prompt_tokens: 1000, completion_tokens: 500, completion_tokens_details: { reasoning_tokens: 100 } }
   }), { status: 200, headers: { 'content-type': 'application/json' } });
 };
 
@@ -126,8 +127,9 @@ try {
     check(body.messages.length === 1 && body.messages[0].role === 'user', 'text JSON mode keeps GPT-OSS instructions in one user message');
     const prompt = body.messages.find(message => message.role === 'user').content;
     const blind = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
-    const expectedEffort = blind.major === 1 || blind.major === 3 ? 'medium' : 'low';
-    check(body.temperature === 0 && body.reasoning_effort === expectedEffort, 'deterministic subject-appropriate verifier settings');
+    check(body.temperature === 0 && body.reasoning_effort === 'low', 'Japanese verifier reserves output budget with low reasoning effort');
+    const expectedMax = blind.major === 1 || blind.major === 3 ? 4096 : 2600;
+    check(body.max_completion_tokens === expectedMax, 'Japanese verifier uses subject-sized output budget');
     check(!JSON.stringify(blind).includes('"answers"'), 'request does not reveal answer key');
     check(!JSON.stringify(blind).includes('"explanation"'), 'request does not reveal explanations');
   }
@@ -135,4 +137,4 @@ try {
   globalThis.fetch = originalFetch;
 }
 
-console.log(JSON.stringify({ ok: true, checks, provider: 'groq', apiCalls: 4, outputContract: 'unforced-text-json-plus-local-strict-validation' }));
+console.log(JSON.stringify({ ok: true, checks, provider: 'groq', apiCalls: 4, reasoningEffort: 'low', outputContract: 'unforced-text-json-plus-local-strict-validation' }));

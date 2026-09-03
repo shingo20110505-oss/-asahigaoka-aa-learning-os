@@ -42,11 +42,21 @@ export function normalizeGroqSchema(value) {
   return normalized;
 }
 
+function emptyOutputDiagnostic(data) {
+  const detail = {
+    finishReason: data?.choices?.[0]?.finish_reason || '',
+    promptTokens: Number(data?.usage?.prompt_tokens || 0),
+    completionTokens: Number(data?.usage?.completion_tokens || 0),
+    reasoningTokens: Number(data?.usage?.completion_tokens_details?.reasoning_tokens || 0)
+  };
+  try { return clean(JSON.stringify(detail), 700); } catch (_) { return ''; }
+}
+
 export function parseGroqJson(data) {
   const message = data?.choices?.[0]?.message;
   if (message?.refusal) throw new GroqProviderError(422, 'Groq refused the verification request.', 'provider_refused');
   const content = typeof message?.content === 'string' ? message.content.trim() : '';
-  if (!content) throw new GroqProviderError(502, 'Groq response contained no model text.', 'groq_empty_output');
+  if (!content) throw new GroqProviderError(502, 'Groq response contained no model text.', 'groq_empty_output', emptyOutputDiagnostic(data));
   const text = content.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '');
   try {
     return JSON.parse(text);
