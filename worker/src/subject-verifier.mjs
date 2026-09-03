@@ -2,6 +2,7 @@ import { callGroqJson, GroqProviderError } from './providers/index.mjs';
 
 const SAFE_ID = /^[a-z0-9._:-]{1,96}$/i;
 const SUBJECTS = Object.freeze(['math']);
+const confidenceThreshold = 0.8;
 
 export const SUBJECT_VERIFICATION_SCHEMA = Object.freeze({
   type: 'object',
@@ -125,7 +126,7 @@ export function buildSubjectVerifierPrompt(request) {
   throw new SubjectVerificationError('subject_not_supported', 'この教科はまだ共通AI検証へ接続されていません。');
 }
 
-export function verifySubjectAgreement(request, verification, threshold = 0.8) {
+export function verifySubjectAgreement(request, verification, threshold = confidenceThreshold) {
   const errors = [];
   if (!verification || typeof verification !== 'object') errors.push('verification_not_object');
   if (verification?.overallPass !== true) errors.push('verifier_overall_reject');
