@@ -121,10 +121,9 @@ try {
   for (const { init, body } of requests) {
     check(init.headers.authorization === 'Bearer test-groq-key', 'server-side Groq secret used');
     check(body.model === 'openai/gpt-oss-20b', 'caller-selected verifier model preserved');
-    check(body.response_format?.type === 'json_object', 'Japanese verifier uses Groq JSON object mode');
-    check(body.response_format?.json_schema === undefined, 'Japanese verifier does not request strict Groq schema generation');
-    check(body.reasoning_format === undefined && body.include_reasoning === false, 'GPT-OSS JSON mode excludes reasoning with include_reasoning');
-    check(body.messages.length === 1 && body.messages[0].role === 'user', 'JSON mode keeps GPT-OSS instructions in one user message');
+    check(body.response_format === undefined, 'Japanese verifier leaves Groq response format unforced');
+    check(body.reasoning_format === undefined && body.include_reasoning === false, 'GPT-OSS text mode excludes reasoning with include_reasoning');
+    check(body.messages.length === 1 && body.messages[0].role === 'user', 'text JSON mode keeps GPT-OSS instructions in one user message');
     const prompt = body.messages.find(message => message.role === 'user').content;
     const blind = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
     const expectedEffort = blind.major === 1 || blind.major === 3 ? 'medium' : 'low';
@@ -136,4 +135,4 @@ try {
   globalThis.fetch = originalFetch;
 }
 
-console.log(JSON.stringify({ ok: true, checks, provider: 'groq', apiCalls: 4, outputContract: 'json-object-plus-local-strict-validation' }));
+console.log(JSON.stringify({ ok: true, checks, provider: 'groq', apiCalls: 4, outputContract: 'unforced-text-json-plus-local-strict-validation' }));
