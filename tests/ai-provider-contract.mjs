@@ -80,6 +80,15 @@ globalThis.fetch = async (url, options) => {
     }), { status: 200, headers: { 'content-type': 'application/json' } });
   }
   if (String(url).includes('api.groq.com')) {
+    if (body.response_format?.json_schema?.name === 'groq_failed_generation_contract') {
+      return new Response(JSON.stringify({
+        error: {
+          type: 'invalid_request_error',
+          message: 'Failed to validate JSON. Please adjust your prompt.',
+          failed_generation: '{\n  "ok": true,\u0000  "extra": "diagnostic only"\n}'
+        }
+      }), { status: 400, headers: { 'content-type': 'application/json' } });
+    }
     const content = body.response_format?.json_schema?.name === 'groq_compat_contract'
       ? '{"answers":[]}'
       : '{"ok":true}';
@@ -127,7 +136,25 @@ try {
     maxOutputTokens: 512
   });
 
-  assert.equal(requests.length, 3);
+  await assert.rejects(
+    () => callStructuredProvider('groq', {
+      GROQ_API_KEY: 'test-groq-secret',
+      GROQ_MODEL: 'openai/gpt-oss-120b'
+    }, {
+      input: 'Return ok=true.',
+      schema: TEST_SCHEMA,
+      schemaName: 'groq_failed_generation_contract',
+      maxOutputTokens: 512
+    }),
+    error => error instanceof GroqProviderError
+      && error.code === 'groq_request_rejected'
+      && error.status === 400
+      && error.diagnostic.includes('diagnostic only')
+      && !/[\u0000-\u001f\u007f]/.test(error.diagnostic)
+      && !error.diagnostic.includes('test-groq-secret')
+  );
+
+  assert.equal(requests.length, 4);
   const geminiRequest = requests[0];
   assert.match(geminiRequest.url, /generativelanguage\.googleapis\.com/);
   assert.equal(geminiRequest.headers['x-goog-api-key'], 'test-gemini-secret');
@@ -160,4 +187,4 @@ try {
   globalThis.fetch = originalFetch;
 }
 
-console.log('AI provider contract OK: Gemini/Groq adapters, secret isolation, strict-schema normalization, structured JSON, and provider selection passed');
+console.log('AI provider contract OK: Gemini/Groq adapters, secret isolation, strict-schema normalization, failed-generation diagnostics, structured JSON, and provider selection passed');

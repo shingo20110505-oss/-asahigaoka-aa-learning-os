@@ -34,9 +34,7 @@ function fixtureForMajor(major) {
           confidence: 0.97,
           answerChoiceIndexes: structured ? [] : question.answers.map(id => question.choices.findIndex(choice => choice.id === id)),
           markChoiceIndexes: structured ? question.marks.map(mark => question.choices.findIndex(choice => choice.id === mark.answer)) : [],
-          choiceRelations: structured ? [] : question.choices.map(choice => choice.relation),
-          evidence,
-          reasonCode: 'unique_answer'
+          evidence
         };
       })
   };
@@ -71,27 +69,21 @@ for (const major of [1, 2, 3, 4]) {
   else mismatch.answers[0].answerChoiceIndexes = [(mismatch.answers[0].answerChoiceIndexes[0] + 1) % firstQuestion.choices.length];
   check(!verifyJapaneseChunkAgreement(pack, major, mismatch).ok, `major ${major} rejects wrong independent answer`);
 
-  if (!firstQuestion.marks) {
-    const independentLabels = structuredClone(fixture);
-    const firstNonAnswer = firstQuestion.choices.findIndex(choice => !firstQuestion.answers.includes(choice.id));
-    independentLabels.answers[0].choiceRelations[firstNonAnswer] = independentLabels.answers[0].choiceRelations[firstNonAnswer] === 'contradicted' ? 'not_stated' : 'contradicted';
-    check(verifyJapaneseChunkAgreement(pack, major, independentLabels).ok, `major ${major} does not require hidden author distractor labels`);
-
-    const inconsistentLabels = structuredClone(fixture);
-    const selectedIndex = inconsistentLabels.answers[0].answerChoiceIndexes[0];
-    inconsistentLabels.answers[0].choiceRelations[selectedIndex] = firstQuestion.polarity === 'not_stated' ? 'supported' : 'not_stated';
-    check(!verifyJapaneseChunkAgreement(pack, major, inconsistentLabels).ok, `major ${major} rejects relation-answer internal inconsistency`);
-  }
-
   if (major !== 2) {
     const fakeQuote = structuredClone(fixture);
     fakeQuote.answers[0].evidence = [{ passageIndex: 0, paragraph: 1, quote: '本文に存在しない検証用引用' }];
     check(!verifyJapaneseChunkAgreement(pack, major, fakeQuote).ok, `major ${major} rejects fabricated evidence`);
+
+    const noEvidence = structuredClone(fixture);
+    noEvidence.answers[0].evidence = [];
+    check(!verifyJapaneseChunkAgreement(pack, major, noEvidence).ok, `major ${major} rejects missing evidence`);
   }
 }
 
 check(JAPANESE_GROQ_SCHEMA.additionalProperties === false, 'strict root schema');
 check(JAPANESE_GROQ_SCHEMA.properties.answers.items.additionalProperties === false, 'strict answer schema');
+check(!('choiceRelations' in JAPANESE_GROQ_SCHEMA.properties.answers.items.properties), 'compact schema omits distractor classifications');
+check(!('reasonCode' in JAPANESE_GROQ_SCHEMA.properties.answers.items.properties), 'compact schema omits free-form reason field');
 
 const originalFetch = globalThis.fetch;
 const requests = [];
@@ -129,4 +121,4 @@ try {
   globalThis.fetch = originalFetch;
 }
 
-console.log(JSON.stringify({ ok: true, checks, provider: 'groq', apiCalls: 4 }));
+console.log(JSON.stringify({ ok: true, checks, provider: 'groq', apiCalls: 4, outputContract: 'compact' }));
