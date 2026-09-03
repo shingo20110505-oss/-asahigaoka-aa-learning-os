@@ -74,6 +74,7 @@ jobs:
             sw.js; do
             node --check "$f"
           done
+          node --check scripts/rise-quality-cdp.mjs
 
           node scripts/validate-review-bank.mjs
           node scripts/validate-review-ui.mjs
@@ -280,16 +281,8 @@ jobs:
           stage quality-runtime
           CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
           test -n "$CHROME"
-          rm -rf "/tmp/aa-quality-chrome-${SOURCE_SHA}"
-          timeout 120s "$CHROME" \
-            --headless=new \
-            --no-sandbox \
-            --disable-gpu \
-            --disable-dev-shm-usage \
-            --user-data-dir="/tmp/aa-quality-chrome-${SOURCE_SHA}" \
-            --virtual-time-budget=60000 \
-            --dump-dom "${BASE}?aa_quality_ci=1&verify=${SOURCE_SHA}" > /tmp/quality-runtime.html
-          grep -o 'AA_QUALITY_CI=[^<]*' /tmp/quality-runtime.html || true
+          export CHROME_PATH="$CHROME"
+          PAGE_URL="$BASE" SOURCE_SHA="$SOURCE_SHA" node scripts/rise-quality-cdp.mjs
           grep -q 'data-aa-quality-ci="PASS"' /tmp/quality-runtime.html
           grep -q '英単語穴埋め・答え露出防止' /tmp/quality-runtime.html
           grep -q '段階学習プラン' /tmp/quality-runtime.html
