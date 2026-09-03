@@ -2,6 +2,7 @@ html[data-rise-structure="optimized-4"][data-rise-route="home"] main>:not(.riseH
 html[data-rise-structure="optimized-4"] .navin{grid-template-columns:repeat(4,minmax(0,1fr))}
 html[data-rise-structure="optimized-4"] .rv4Welcome h2{max-width:780px}
 html[data-rise-structure="optimized-4"] .riseSettingsV4{margin:0 auto 0 0}
+html[data-rise-structure="optimized-4"] .rv4Donut{background:conic-gradient(var(--rv4-blue) 0 calc(var(--a)*1%),var(--rv4-green) calc(var(--a)*1%) calc(var(--b)*1%),var(--rv4-orange) calc(var(--b)*1%) calc(var(--v)*1%),rgba(255,255,255,.10) calc(var(--v)*1%) 100%)}
 html.aa-ios[data-rise-structure="optimized-4"] body>.nav{background:transparent!important;border:0!important;box-shadow:none!important;padding:0 8px calc(8px + env(safe-area-inset-bottom,0px))!important}
 html.aa-ios[data-rise-structure="optimized-4"] body>.nav>.navin{padding:6px;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:rgba(11,31,65,.97)!important;box-shadow:0 18px 50px rgba(4,13,34,.34),inset 0 1px 0 rgba(255,255,255,.06)}
 html[data-rise-structure="optimized-4"][data-rise-route="study"] .nav{opacity:.96}
