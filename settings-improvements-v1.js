@@ -6,6 +6,6 @@ function load(id,src,onload){
  s.addEventListener('error',()=>console.error('AA loader failed:',src),{once:true});
  document.head.appendChild(s);
 }
-function loadMenu(){load('aa-header-menu-v1-loader','./header-menu-v1.js?v=1.0.2-20260827')}
+function loadMenu(){load('aa-header-menu-v1-loader','./header-menu-v1.js?v=1.1.0-20260903')}
 load('aa-settings-improvements-core-v1-loader','./settings-improvements-core-v1.js?v=1.0.0-20260823',loadMenu);
 })();
