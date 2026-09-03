@@ -14,6 +14,33 @@ export class GroqProviderError extends Error {
   }
 }
 
+const GROQ_STRICT_UNSUPPORTED_VALIDATION_KEYWORDS = new Set([
+  'minLength',
+  'maxLength',
+  'pattern',
+  'minItems',
+  'maxItems',
+  'uniqueItems',
+  'minProperties',
+  'maxProperties',
+  'multipleOf',
+  'exclusiveMinimum',
+  'exclusiveMaximum',
+  'format'
+]);
+
+export function normalizeGroqSchema(value) {
+  if (Array.isArray(value)) return value.map(normalizeGroqSchema);
+  if (!value || typeof value !== 'object') return value;
+
+  const normalized = {};
+  for (const [key, child] of Object.entries(value)) {
+    if (GROQ_STRICT_UNSUPPORTED_VALIDATION_KEYWORDS.has(key)) continue;
+    normalized[key] = normalizeGroqSchema(child);
+  }
+  return normalized;
+}
+
 export function parseGroqJson(data) {
   const message = data?.choices?.[0]?.message;
   if (message?.refusal) throw new GroqProviderError(422, 'Groq refused the verification request.', 'provider_refused');
@@ -42,6 +69,8 @@ export async function callGroqJson(env, request) {
     throw new GroqProviderError(400, 'Groq structured request is incomplete.', 'provider_request_invalid');
   }
 
+  const groqSchema = normalizeGroqSchema(schema);
+
   let response;
   try {
     response = await fetch(GROQ_CHAT_COMPLETIONS_URL, {
@@ -61,7 +90,7 @@ export async function callGroqJson(env, request) {
           json_schema: {
             name: schemaName,
             strict: true,
-            schema
+            schema: groqSchema
           }
         },
         temperature: Number.isFinite(request?.temperature) ? request.temperature : 0,
@@ -79,7 +108,9 @@ export async function callGroqJson(env, request) {
   try { payload = await response.json(); } catch (_) { /* status mapping below */ }
   if (!response.ok) {
     const message = clean(payload?.error?.message || `Groq HTTP ${response.status}`, 300);
-    throw new GroqProviderError(response.status, message, response.status === 429 ? 'quota_exceeded' : 'groq_failed');
+    const type = clean(payload?.error?.type || '', 80);
+    const code = response.status === 429 ? 'quota_exceeded' : type === 'invalid_request_error' ? 'groq_request_rejected' : 'groq_failed';
+    throw new GroqProviderError(response.status, message, code);
   }
 
   return {
