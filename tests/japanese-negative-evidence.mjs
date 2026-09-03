@@ -98,7 +98,10 @@ try {
   check(result.provider === 'groq' && result.model === 'openai/gpt-oss-20b', 'major-3 policy path preserves Groq provider/model');
   check(requests.length === 1, 'major-3 not-written policy requires no redundant retry');
   check(requests[0].max_completion_tokens === 3200 && requests[0].reasoning_effort === 'low', 'major-3 request preserves normal budget');
-  check(!requests[0].messages[0].content.includes('"answers"'), 'blind request does not expose author answers');
+  const sentPrompt = requests[0].messages[0].content;
+  const blindPayload = JSON.parse(sentPrompt.slice(sentPrompt.lastIndexOf('\n') + 1));
+  check(!JSON.stringify(blindPayload).includes('"answers"'), 'blind payload does not expose author answers');
+  check(!JSON.stringify(blindPayload).includes('"explanation"'), 'blind payload does not expose explanations');
 } finally {
   globalThis.fetch = originalFetch;
 }
