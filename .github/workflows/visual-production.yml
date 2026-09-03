@@ -50,15 +50,18 @@ jobs:
           grep -q 'function analyticsHTML' /tmp/rise-ui-v4.js
           grep -q 'function settingsHTML' /tmp/rise-ui-v4.js
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-stable-root-v4.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-stable-root-v4.js
-          grep -q "version:'2.1.0'" /tmp/rise-stable-root-v4.js
-          grep -q "firstLoad:'immediate-capture'" /tmp/rise-stable-root-v4.js
+          grep -q "version:'2.2.0'" /tmp/rise-stable-root-v4.js
+          grep -q "prewarm:'all-custom'" /tmp/rise-stable-root-v4.js
+          grep -q "const primary=\['home','subjects','analytics','settings'\]" /tmp/rise-stable-root-v4.js
+          grep -q "reviewNavigation:'canonical-page'" /tmp/rise-stable-root-v4.js
+          grep -q 'goReview' /tmp/rise-stable-root-v4.js
           grep -q 'captureAdded' /tmp/rise-stable-root-v4.js
           grep -q "host.id='riseStableMain'" /tmp/rise-stable-root-v4.js
           grep -q 'visual_route' /tmp/rise-stable-root-v4.js
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}index.html?visual_asset=${SOURCE_SHA}" -o /tmp/index.html
-          grep -q 'rise-stable-root-v4.js?v=2.1.0' /tmp/index.html
+          grep -q 'rise-stable-root-v4.js?v=2.2.0' /tmp/index.html
           grep -q 'pwa-runtime.js?v=4.2.1' /tmp/index.html
-          test "$(grep -n 'rise-stable-root-v4.js?v=2.1.0' /tmp/index.html | cut -d: -f1)" -lt "$(grep -n 'rise-ui-v4.js?v=4.2.0' /tmp/index.html | tail -1 | cut -d: -f1)"
+          test "$(grep -n 'rise-stable-root-v4.js?v=2.2.0' /tmp/index.html | cut -d: -f1)" -lt "$(grep -n 'rise-ui-v4.js?v=4.2.0' /tmp/index.html | tail -1 | cut -d: -f1)"
 
       - name: Install Japanese rendering fonts
         run: |
@@ -90,17 +93,24 @@ jobs:
               --no-sandbox
               --disable-gpu
               --disable-dev-shm-usage
+              --disable-background-networking
+              --disable-component-update
+              --disable-sync
+              --disable-default-apps
+              --no-first-run
+              --metrics-recording-only
               --hide-scrollbars
               --force-device-scale-factor=1
               --window-size="${width},${height}"
               --user-data-dir="$profile"
-              --virtual-time-budget=12000
+              --virtual-time-budget=9000
               --run-all-compositor-stages-before-draw
             )
             if [ -n "$ua" ]; then common+=(--user-agent="$ua"); fi
 
-            timeout 120s "$CHROME" "${common[@]}" --dump-dom "$target" > "$dom"
-            timeout 120s "$CHROME" "${common[@]}" --screenshot="$out" "$target"
+            timeout 90s "$CHROME" "${common[@]}" --dump-dom "$target" > "$dom"
+            rm -rf "$profile"
+            timeout 90s "$CHROME" "${common[@]}" --screenshot="$out" "$target"
             test -s "$out"
             python3 - "$out" "$width" "$height" <<'PY'
           import os, struct, sys
@@ -119,7 +129,6 @@ jobs:
           PY
           }
 
-          # HOME is captured first with a brand-new browser profile: no review-page visit can initialize it.
           capture "rise-mobile-home-390x844" 390 844 "$IPHONE_UA" "home" ''
           for route in subjects analytics settings; do
             capture "rise-mobile-${route}-390x844" 390 844 "$IPHONE_UA" "$route" ''
@@ -138,6 +147,7 @@ jobs:
             echo "screens=home+subjects+analytics+settings+review"
             echo "viewports=390x844+iPhone-UA,1440x1000"
             echo "cold_start_home=direct-no-review-navigation"
+            echo "review_navigation=canonical-page"
             sha256sum visual-evidence/*.png
           } > visual-evidence/manifest.txt
 
@@ -218,6 +228,8 @@ jobs:
           PY
           echo 'result=success' >> visual-evidence/manifest.txt
           echo 'cold_start_home=success' >> visual-evidence/manifest.txt
+          echo 'settings_stable_route=success' >> visual-evidence/manifest.txt
+          echo 'review_canonical_page=success' >> visual-evidence/manifest.txt
           echo 'dom_gate=Rise+stable-root+home+subjects+analytics+settings+review+mobile+desktop+no-runtime-error+cold-start-home' >> visual-evidence/manifest.txt
           cat visual-evidence/manifest.txt
 
@@ -241,10 +253,8 @@ jobs:
             echo '- Mobile: `390x844` / iPhone User-Agent'
             echo '- Desktop: `1440x1000`'
             echo '- HOME is captured first using a brand-new browser profile, without visiting Review.'
+            echo '- Settings is required to hydrate inside the same stable-root contract as Home/Study/Record.'
+            echo '- Review is required to render as the canonical `review/` page, not as a cached previous pane.'
             echo '- Japanese Noto CJK fonts installed before rendering.'
-            echo '- DOM parser requires each custom screen inside the independent stable root and rejects runtime errors.'
-            echo '- Review v2 is checked separately on both viewports.'
             echo '- PNG signature, exact dimensions, and minimum file size validated for every screenshot.'
-            echo ''
-            echo '> UI changes are not considered visually complete until these screenshots are reviewed.'
           } >> "$GITHUB_STEP_SUMMARY"
