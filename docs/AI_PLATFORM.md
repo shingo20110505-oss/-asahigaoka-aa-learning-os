@@ -56,6 +56,8 @@ provider adapter: `worker/src/providers/groq.mjs`
 
 Groqは英語専用ではなく5教科共通検証providerとして設計する。ただし本番接続は段階的に行い、現在は英語のみ有効化する。
 
+Groq Strict Structured Outputsへ渡すJSON Schemaはprovider adapter内でGroq互換サブセットへ正規化する。`minItems`、`maxItems`、文字列長などprovider側で不要な検証制約を外しても、Rise側のdeterministic validationとagreement gateは維持し、教材品質基準を緩めない。
+
 ### 共通provider入口
 
 `worker/src/providers/index.mjs`
@@ -67,6 +69,8 @@ provider共通責務は `callStructuredProvider(provider, env, request)` と `ge
 `worker/src/entry.mjs`
 
 英語本番の編成責務を持ち、既存 `worker/src/index.mjs` の英語検証ロジックを再利用する。
+
+現在の本番Workerは `v1.2.1`。
 
 ## 4. セキュリティ
 
@@ -131,7 +135,7 @@ Rise側で次を比較する。
 
 ### 英語
 
-本番稼働中。
+本番稼働確認済み。
 
 `Gemini 3.5 Flash生成 -> 英語deterministic validation -> Groq GPT-OSS-20B blind verification -> agreement gate`
 
@@ -147,6 +151,8 @@ Rise側で次を比較する。
 - confidence閾値
 
 既存 `worker/src/index.mjs` の英語検証資産を捨てず、`worker/src/entry.mjs` から利用する。
+
+2026-09-03のWorker v1.2.1配備では、契約テスト、Secret確認、Cloudflare配備に加え、実際のGemini生成とGroq blind verificationを1セット実行し、`cross-provider-blind-answer-check`、生成/検証provider provenance、5問、本文根拠を含めて成功を確認した。
 
 ### 数学
 
@@ -262,6 +268,7 @@ AI変更では少なくとも以下を検査する。
 - Provider APIキーがfrontendへ含まれない
 - author answer keyがblind verifierへ含まれない
 - `explanationJa` / `reasonJa` がGroqへ送られない
+- Groqへ渡すStrict Schemaがprovider互換である
 - JSON parse失敗
 - 401/403
 - 429
@@ -298,15 +305,14 @@ Worker配備後も実Gemini生成＋実Groq検証を1セット実行し、provid
 
 ### Phase C — 英語で実証
 
-状態: **実装完了・本番配備検証対象**
+状態: **本番稼働確認済み**
 
 - Gemini 3.5 Flash生成を維持。
 - 英語blind verifierをGroq `openai/gpt-oss-20b` へ切替。
 - `worker/src/entry.mjs` を本番入口にする。
 - answer key / explanation / distractor reasonをGroqへ送らない契約テストを追加。
-- 配備Workflowで実Gemini＋実Groqを検証する。
-
-本番Workflow成功後に「本番稼働確認済み」へ更新する。
+- Groq Strict Structured Outputs向けSchema正規化をprovider層へ実装。
+- 配備Workflowで実Gemini＋実Groqの生成・独立検証成功を確認済み。
 
 ### Phase D — 5教科共通化
 
@@ -335,7 +341,9 @@ Worker配備後も実Gemini生成＋実Groq検証を1セット実行し、provid
 - Groq既定検証モデル: `openai/gpt-oss-20b`
 - `GROQ_API_KEY`: Worker配備Workflowへ渡せる
 - 英語Groq blind verification: 本番コードへ接続済み
+- 英語Groq blind verification本番確認: 成功
 - 英語Worker本番入口: `worker/src/entry.mjs`
+- 英語Worker本番version: `1.2.1`
 - 数学・国語・理科・社会のGroq検証: 未接続
 - 5教科共通Groq検証: 英語のみ接続済み
 
