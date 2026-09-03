@@ -36,7 +36,7 @@ new Function(pwaRuntime);
 requireText(index, './aa-companion-v2.js', 'index entry');
 requireText(index, './aa-companion-mobile-fix.js', 'index mobile entry');
 requireText(index, './app/ui/rise-ui-v4.js?v=4.2.0', 'complete Rise UI entry');
-requireText(index, './app/ui/rise-stable-root-v4.js?v=2.1.0', 'Rise cold-start stable root entry');
+requireText(index, './app/ui/rise-stable-root-v4.js?v=2.2.0', 'Rise stable root entry');
 requireText(index, './app/pwa/pwa-runtime.js?v=4.2.1', 'Rise PWA runtime generation');
 requireText(index, './app/ui/rise-structure-v4.css?v=4.2.0', 'complete Rise structure stylesheet');
 requireText(index, 'data-rise-structure="optimized-4"', 'Rise boot marker');
@@ -71,8 +71,13 @@ requireText(riseUI, '<span>ホーム</span>', 'Rise home nav');
 requireText(riseUI, '<span>学習</span>', 'Rise study nav');
 requireText(riseUI, '<span>復習</span>', 'Rise review nav');
 requireText(riseUI, '<span>記録</span>', 'Rise record nav');
-requireText(riseStable, "version:'2.1.0'", 'Rise stable root version');
+requireText(riseStable, "version:'2.2.0'", 'Rise stable root version');
 requireText(riseStable, "firstLoad:'immediate-capture'", 'Rise first-load capture marker');
+requireText(riseStable, "prewarm:'all-custom'", 'Rise all custom routes prewarmed');
+requireText(riseStable, "const primary=['home','subjects','analytics','settings']", 'Rise settings included in stable route cache');
+requireText(riseStable, "reviewNavigation:'canonical-page'", 'Rise canonical Review navigation');
+requireText(riseStable, 'goReview', 'Rise Review page navigation function');
+requireText(riseStable, 'stopImmediatePropagation', 'Rise Review legacy interception guard');
 requireText(riseStable, 'captureAdded', 'Rise immediate panel capture');
 requireText(pwaRuntime, "const RISE_BOOT='4.2.1'", 'Rise PWA runtime version');
 requireText(pwaRuntime, 'rise:sw-updated', 'Rise SW soft-update signal');
@@ -161,10 +166,10 @@ if(/GEMINI_API_KEY\s*=/.test(aiReading)) throw new Error('Gemini API key must no
 if(!/const VERSION='[^']+'/.test(sw)) throw new Error('managed service worker version missing');
 requireText(sw, 'quality2-chronologia1000', 'shared PWA generation');
 requireText(sw, "const RISE_BOOT='4.2.1'", 'complete Rise PWA generation');
-requireText(sw, 'firstload-2.1.0', 'Rise first-load PWA generation');
+requireText(sw, 'stable-2.2.0', 'Rise stable-route PWA generation');
 requireText(sw, "url('app/ui/rise-structure-v4.css')", 'offline Rise structure');
 requireText(sw, "url('app/ui/rise-ui-v4.js?v=4.2.0')", 'offline complete Rise UI');
-requireText(sw, "url('app/ui/rise-stable-root-v4.js?v=2.1.0')", 'offline cold-start stable root');
+requireText(sw, "url('app/ui/rise-stable-root-v4.js?v=2.2.0')", 'offline stable root');
 requireText(sw, "url('app/pwa/pwa-runtime.js?v=4.2.1')", 'offline PWA runtime generation');
 requireText(sw, 'async function networkFirst', 'network-first runtime');
 requireText(sw, "ext==='js'", 'generic JS freshness');
@@ -185,4 +190,4 @@ for(const file of new Set(referenced)){
   if(!fs.existsSync(file)) throw new Error(`mobile loader points to missing file: ${file}`);
 }
 
-console.log(`runtime assets OK: referenced=${new Set(referenced).size}, Rise 4.2.1 cold-start dashboard/study/review/record/settings + quality/Chronologia/layout/login/PWA checks passed`);
+console.log(`runtime assets OK: referenced=${new Set(referenced).size}, Rise 4.2.1 stable home/study/record/settings + canonical Review + quality/Chronologia/layout/login/PWA checks passed`);
