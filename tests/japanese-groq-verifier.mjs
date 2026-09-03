@@ -104,8 +104,9 @@ globalThis.fetch = async (_url, init) => {
   requests.push({ init, body });
   const userPrompt = body.messages.find(message => message.role === 'user').content;
   const payload = JSON.parse(userPrompt.slice(userPrompt.lastIndexOf('\n') + 1));
+  const content = `Verifier result:\n\`\`\`json\n${JSON.stringify(fixtureForMajor(payload.major))}\n\`\`\``;
   return new Response(JSON.stringify({
-    choices: [{ message: { content: JSON.stringify(fixtureForMajor(payload.major)) } }]
+    choices: [{ message: { content } }]
   }), { status: 200, headers: { 'content-type': 'application/json' } });
 };
 
@@ -121,10 +122,9 @@ try {
   for (const { init, body } of requests) {
     check(init.headers.authorization === 'Bearer test-groq-key', 'server-side Groq secret used');
     check(body.model === 'openai/gpt-oss-20b', 'caller-selected verifier model preserved');
-    check(body.response_format?.type === 'json_object', 'Japanese verifier uses Groq JSON object mode');
-    check(body.response_format?.json_schema === undefined, 'Japanese verifier does not request strict Groq schema generation');
-    check(body.reasoning_format === 'hidden' && body.include_reasoning === undefined, 'JSON mode uses hidden reasoning format');
-    check(body.messages.length === 1 && body.messages[0].role === 'user', 'JSON mode keeps GPT-OSS instructions in one user message');
+    check(body.response_format === undefined, 'Japanese verifier does not use Groq response-format enforcement');
+    check(body.include_reasoning === false && body.reasoning_format === undefined, 'plain mode suppresses GPT-OSS reasoning using supported option');
+    check(body.messages.length === 1 && body.messages[0].role === 'user', 'plain JSON mode keeps verification instructions in one user message');
     const prompt = body.messages.find(message => message.role === 'user').content;
     const blind = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
     const expectedEffort = blind.major === 1 || blind.major === 3 ? 'medium' : 'low';
@@ -136,4 +136,4 @@ try {
   globalThis.fetch = originalFetch;
 }
 
-console.log(JSON.stringify({ ok: true, checks, provider: 'groq', apiCalls: 4, outputContract: 'json-object-plus-local-strict-validation' }));
+console.log(JSON.stringify({ ok: true, checks, provider: 'groq', apiCalls: 4, outputContract: 'plain-json-plus-local-strict-validation' }));
