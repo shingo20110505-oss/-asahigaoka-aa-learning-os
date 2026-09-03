@@ -3,9 +3,27 @@
   if (window.__AA_QUALITY_CI_RUNNER_V1__) return;
   window.__AA_QUALITY_CI_RUNNER_V1__ = true;
   const params = new URLSearchParams(location.search);
+  function riseVisualReady() {
+    const root = document.documentElement;
+    const brand = document.querySelector('#app .brand h1')?.textContent?.trim();
+    const home = document.querySelector('#app main .riseHomeV4');
+    const nav = [...document.querySelectorAll('.navin > button,.navin > a')];
+    const labels = nav.map(x => x.querySelector('span')?.textContent?.trim()).filter(Boolean);
+    return root.dataset.riseSkin === 'v4' && root.dataset.riseUi === '4' && root.dataset.riseStructure === 'optimized-4' && brand === 'Rise' && !!home && nav.length === 4 && labels.join('/') === 'ホーム/学習/復習/記録';
+  }
+  async function waitForRiseVisual(timeoutMs=12000) {
+    if (riseVisualReady()) return true;
+    const started = Date.now();
+    while (Date.now() - started < timeoutMs) {
+      await new Promise(resolve => setTimeout(resolve, 100));
+      if (riseVisualReady()) return true;
+    }
+    return false;
+  }
   async function audit() {
     const checks = [];
     const add = (name, ok, detail) => checks.push({name, ok: !!ok, detail});
+    if (params.get('aa_quality_ci') === '1') await waitForRiseVisual();
     const riseRoot = document.documentElement;
     const riseBrand = document.querySelector('#app .brand h1')?.textContent?.trim();
     const riseHome = document.querySelector('#app main .riseHomeV4');
