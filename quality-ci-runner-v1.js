@@ -9,7 +9,7 @@
     const home = document.querySelector('#app main .riseHomeV4');
     const nav = [...document.querySelectorAll('.navin > button,.navin > a')];
     const labels = nav.map(x => x.querySelector('span')?.textContent?.trim()).filter(Boolean);
-    return root.dataset.riseSkin === 'v4' && root.dataset.riseUi === '4' && root.dataset.riseStructure === 'optimized-4' && brand === 'Rise' && !!home && nav.length === 4 && labels.join('/') === 'ホーム/学習/復習/記録';
+    return root.dataset.riseSkin === 'v4' && root.dataset.riseUi === '4' && root.dataset.riseStructure === 'optimized-4' && brand === 'Rise' && !!home && nav.length === 4 && labels.join('/') === 'ホーム/入試/学習/復習' && window.__RISE_INFORMATION_ARCHITECTURE_V1__?.version === '1.0.1';
   }
   async function waitForRiseVisual(timeoutMs=12000) {
     if (riseVisualReady()) return true;
@@ -30,7 +30,7 @@
     const riseNav = [...document.querySelectorAll('.navin > button,.navin > a')];
     const riseNavLabels = riseNav.map(x => x.querySelector('span')?.textContent?.trim()).filter(Boolean);
     add('Rise UI v4・表示レイヤー', riseRoot.dataset.riseSkin === 'v4' && riseRoot.dataset.riseUi === '4' && riseBrand === 'Rise' && !!riseHome, `skin=${riseRoot.dataset.riseSkin || '-'} / ui=${riseRoot.dataset.riseUi || '-'} / brand=${riseBrand || '-'} / home=${riseHome ? 'yes' : 'no'} / visual-productionで別検証`, false);
-    add('Rise・最適化ナビ', riseRoot.dataset.riseStructure === 'optimized-4' && riseNav.length === 4 && riseNavLabels.join('/') === 'ホーム/学習/復習/記録', `structure=${riseRoot.dataset.riseStructure || '-'} / nav=${riseNavLabels.join('/') || '-'} / visual-productionで別検証`, false);
+    add('Rise・最終4領域ナビ', riseRoot.dataset.riseStructure === 'optimized-4' && riseNav.length === 4 && riseNavLabels.join('/') === 'ホーム/入試/学習/復習' && window.__RISE_INFORMATION_ARCHITECTURE_V1__?.version === '1.0.1', `structure=${riseRoot.dataset.riseStructure || '-'} / nav=${riseNavLabels.join('/') || '-'} / ia=${window.__RISE_INFORMATION_ARCHITECTURE_V1__?.version || '-'} / visual-productionで別検証`, false);
     let clozeBad = 0;
     for (const v of DATA.vocab) {
       const q = makeVocabQ(v, 'cloze');
