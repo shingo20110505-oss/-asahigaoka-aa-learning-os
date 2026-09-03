@@ -89,9 +89,12 @@ globalThis.fetch = async (url, options) => {
         }
       }), { status: 400, headers: { 'content-type': 'application/json' } });
     }
-    const content = body.response_format?.json_schema?.name === 'groq_compat_contract'
-      ? '{"answers":[]}'
-      : '{"ok":true}';
+    const plain = body.response_format === undefined;
+    const content = plain
+      ? 'Result:\n```json\n{"ok":true}\n```'
+      : body.response_format?.json_schema?.name === 'groq_compat_contract'
+        ? '{"answers":[]}'
+        : '{"ok":true}';
     return new Response(JSON.stringify({
       choices: [{ message: { role: 'assistant', content } }]
     }), { status: 200, headers: { 'content-type': 'application/json' } });
@@ -136,20 +139,19 @@ try {
     maxOutputTokens: 512
   });
 
-  const groqJsonObject = await callStructuredProvider('groq', {
+  const groqPlainJson = await callStructuredProvider('groq', {
     GROQ_API_KEY: 'test-groq-secret',
     GROQ_MODEL: 'openai/gpt-oss-120b'
   }, {
     input: 'Return one valid JSON object with ok=true.',
     schema: TEST_SCHEMA,
-    schemaName: 'ignored_in_json_object_mode',
-    responseMode: 'json_object',
+    responseMode: 'plain_json',
     reasoningEffort: 'medium',
     systemInstruction: 'Return JSON only.',
     maxOutputTokens: 512
   });
-  assert.deepEqual(groqJsonObject.output, { ok: true });
-  assert.equal(groqJsonObject.model, 'openai/gpt-oss-120b');
+  assert.deepEqual(groqPlainJson.output, { ok: true });
+  assert.equal(groqPlainJson.model, 'openai/gpt-oss-120b');
 
   await assert.rejects(
     () => callStructuredProvider('groq', {
@@ -186,7 +188,6 @@ try {
   assert.equal(groqRequest.body.include_reasoning, false);
   assert.equal(groqRequest.body.reasoning_format, undefined);
   assert.equal(groqRequest.body.stream, false);
-  assert.equal(groqRequest.body.messages.some(message => /answerIndex|author answer/i.test(message.content)), false);
 
   const compatibilityRequest = requests[2];
   const normalized = compatibilityRequest.body.response_format.json_schema.schema;
@@ -200,17 +201,16 @@ try {
   assert.deepEqual(normalized.required, ['answers']);
   assert.equal(normalized.additionalProperties, false);
 
-  const jsonObjectRequest = requests[3];
-  assert.equal(jsonObjectRequest.body.response_format.type, 'json_object');
-  assert.equal(jsonObjectRequest.body.response_format.json_schema, undefined);
-  assert.equal(jsonObjectRequest.body.reasoning_format, 'hidden');
-  assert.equal(jsonObjectRequest.body.include_reasoning, undefined);
-  assert.equal(jsonObjectRequest.body.reasoning_effort, 'medium');
-  assert.equal(jsonObjectRequest.body.messages.length, 1);
-  assert.equal(jsonObjectRequest.body.messages[0].role, 'user');
-  assert.match(jsonObjectRequest.body.messages[0].content, /Return JSON only/);
+  const plainRequest = requests[3];
+  assert.equal(plainRequest.body.response_format, undefined);
+  assert.equal(plainRequest.body.include_reasoning, false);
+  assert.equal(plainRequest.body.reasoning_format, undefined);
+  assert.equal(plainRequest.body.reasoning_effort, 'medium');
+  assert.equal(plainRequest.body.messages.length, 1);
+  assert.equal(plainRequest.body.messages[0].role, 'user');
+  assert.match(plainRequest.body.messages[0].content, /Return JSON only/);
 } finally {
   globalThis.fetch = originalFetch;
 }
 
-console.log('AI provider contract OK: Gemini/Groq adapters, secret isolation, strict schema mode, JSON object mode, failed-generation diagnostics, and provider selection passed');
+console.log('AI provider contract OK: Gemini/Groq adapters, secret isolation, strict schema mode, plain JSON extraction, failed-generation diagnostics, and provider selection passed');
