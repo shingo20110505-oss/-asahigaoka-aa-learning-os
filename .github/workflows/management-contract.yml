@@ -34,6 +34,13 @@ jobs:
           node scripts/validate-management-contract.mjs
           node --check app/ui/rise-ui-v4.js
           node --check app/ui/rise-stable-root-v4.js
+          node --check app/pwa/pwa-runtime.js
+          node --check sw.js
           grep -q 'rise-stable-root-v4.js?v=1.0.0' index.html
           grep -q "url('app/ui/rise-stable-root-v4.js')" sw.js
           grep -q "url('app/ui/rise-stable-root-v4.js?v=1.0.0')" sw.js
+          grep -q "const RISE_BOOT='4.2.1'" app/pwa/pwa-runtime.js
+          grep -q "rise:sw-updated" app/pwa/pwa-runtime.js
+          grep -q 'no-auto-nav' sw.js
+          ! grep -q 'client.navigate' sw.js
+          ! grep -q 'refreshMainClients' sw.js
