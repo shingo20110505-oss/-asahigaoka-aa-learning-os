@@ -43,6 +43,9 @@ jobs:
           done
           test "$ok" = 1
           grep -q '"management": "validated-main-direct-to-pages"' /tmp/release.json
+          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-ui-v4.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-ui-v4.js
+          grep -q "version:'4.2.0'" /tmp/rise-ui-v4.js
+          grep -q 'function homeHTML' /tmp/rise-ui-v4.js
 
       - name: Install Japanese rendering fonts
         run: |
@@ -77,24 +80,12 @@ jobs:
               --force-device-scale-factor=1
               --window-size="${width},${height}"
               --user-data-dir="$profile"
-              --virtual-time-budget=15000
+              --virtual-time-budget=18000
               --run-all-compositor-stages-before-draw
             )
             if [ -n "$ua" ]; then common+=(--user-agent="$ua"); fi
 
             timeout 120s "$CHROME" "${common[@]}" --dump-dom "$target" > "$dom"
-            grep -q 'data-rise-structure="optimized-4"' "$dom"
-            grep -q '<h1>Rise</h1>' "$dom"
-            grep -q 'riseHomeV4' "$dom"
-            grep -q '>ホーム<' "$dom"
-            grep -q '>学習<' "$dom"
-            grep -q '>復習<' "$dom"
-            grep -q '>記録<' "$dom"
-            if grep -q 'id="aaLoginSetup"' "$dom"; then
-              echo "first-run setup modal obscures ${name}" >&2
-              exit 1
-            fi
-
             timeout 120s "$CHROME" "${common[@]}" --screenshot="$out" "$target"
             test -s "$out"
             python3 - "$out" "$width" "$height" <<'PY'
@@ -110,7 +101,7 @@ jobs:
           size=os.path.getsize(path)
           if size < 10000:
               raise SystemExit(f'screenshot too small: {path} {size} bytes')
-          print(f'VISUAL_OK {path} {actual[0]}x{actual[1]} {size} bytes')
+          print(f'VISUAL_CAPTURED {path} {actual[0]}x{actual[1]} {size} bytes')
           PY
           }
 
@@ -118,30 +109,59 @@ jobs:
           capture rise-desktop-1440x1000 1440 1000 ''
 
           {
-            echo "result=success"
             echo "source_sha=${SOURCE_SHA}"
             echo "page_url=${PAGE_URL}"
             echo "captured_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
             echo "mobile=rise-mobile-390x844.png"
-            echo "mobile_mode=Chromium+iPhone-UA+390x844+Noto-CJK"
             echo "desktop=rise-desktop-1440x1000.png"
-            echo "desktop_mode=Chromium+1440x1000+Noto-CJK"
-            echo "dom_gate=Rise+optimized-4+home+study+review+record+no-login-setup"
             sha256sum visual-evidence/rise-mobile-390x844.png
             sha256sum visual-evidence/rise-desktop-1440x1000.png
           } > visual-evidence/manifest.txt
+
+      - name: Validate hydrated production UI
+        run: |
+          set -euo pipefail
+          for dom in visual-evidence/rise-mobile-390x844.html visual-evidence/rise-desktop-1440x1000.html; do
+            grep -q 'data-rise-structure="optimized-4"' "$dom"
+            grep -q '<h1>Rise</h1>' "$dom"
+            grep -q 'data-ui-ver="4.2.0"' "$dom"
+            grep -q 'rv4Dashboard' "$dom"
+            grep -q '>今日の学習<' "$dom"
+            grep -q '>教科別の達成度<' "$dom"
+            grep -q '>ホーム<' "$dom"
+            grep -q '>学習<' "$dom"
+            grep -q '>復習<' "$dom"
+            grep -q '>記録<' "$dom"
+            if grep -q 'data-hydrated="0"' "$dom"; then
+              echo "temporary Rise shell remained visible: $dom" >&2
+              grep -o 'data-rise-runtime-error="[^"]*"' "$dom" || true
+              exit 1
+            fi
+            if grep -q 'data-rise-runtime-error=' "$dom"; then
+              echo "Rise runtime error marker found: $dom" >&2
+              grep -o 'data-rise-runtime-error="[^"]*"' "$dom" || true
+              exit 1
+            fi
+            if grep -q 'id="aaLoginSetup"' "$dom"; then
+              echo "first-run setup modal obscures $dom" >&2
+              exit 1
+            fi
+          done
+          echo 'result=success' >> visual-evidence/manifest.txt
+          echo 'dom_gate=Rise+hydrated-4.2-dashboard+today+subjects+four-nav+no-runtime-error+no-login-setup' >> visual-evidence/manifest.txt
           cat visual-evidence/manifest.txt
-          echo "visual_runtime=success" >> "$GITHUB_OUTPUT"
 
       - name: Upload production screenshot evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: rise-production-screenshots-${{ steps.source.outputs.source_sha }}
           path: visual-evidence/
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
 
       - name: Visual verification summary
+        if: success()
         run: |
           {
             echo '## Rise production visual evidence'
@@ -150,9 +170,9 @@ jobs:
             echo "- Mobile: \`390x844\` / iPhone User-Agent"
             echo "- Desktop: \`1440x1000\`"
             echo '- Japanese Noto CJK fonts installed before rendering.'
-            echo '- DOM gate confirms Rise, optimized four-item navigation, home panel, and no first-run setup overlay.'
+            echo '- DOM gate requires the fully hydrated Rise 4.2 dashboard, not the temporary loading shell.'
             echo '- PNG signature, exact dimensions, and minimum file size validated.'
-            echo '- Screenshots are stored in the rise-production-screenshots artifact.'
+            echo '- Screenshots and rendered DOM are stored in the rise-production-screenshots artifact.'
             echo ''
             echo '> UI changes are not considered visually complete until these screenshots are reviewed.'
           } >> "$GITHUB_STEP_SUMMARY"
