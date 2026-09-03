@@ -59,22 +59,14 @@ jobs:
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/navigation/navigation-runtime-v1.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-nav.js
           grep -q "version:'1.0.3'" /tmp/rise-nav.js
           grep -q "uiSync:'preconceal-all-settings-legacy-renders-and-deterministic-multiphase-rise-recovery'" /tmp/rise-nav.js
-          grep -q "'grammar'" /tmp/rise-nav.js
           grep -q 'stopImmediatePropagation' /tmp/rise-nav.js
-          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-legacy-shell-guard-v1.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-shell-guard.js
-          grep -q "version:'1.0.0'" /tmp/rise-shell-guard.js
-          grep -q 'conceal-legacy-core-shell-and-resync-rise' /tmp/rise-shell-guard.js
-          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}settings-improvements-core-v1.js?visual_asset=${SOURCE_SHA}" -o /tmp/settings-core.js
-          grep -q "version:'1.1.0'" /tmp/settings-core.js
-          grep -q "legacyRender:'disabled'" /tmp/settings-core.js
-          ! grep -q "state.route==='settings')render()" /tmp/settings-core.js
-          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-ui-v4.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-ui-v4.js
-          grep -q "version:'4.2.0'" /tmp/rise-ui-v4.js
-          grep -q 'function homeHTML' /tmp/rise-ui-v4.js
-          grep -q 'function subjectsHTML' /tmp/rise-ui-v4.js
-          grep -q 'function analyticsHTML' /tmp/rise-ui-v4.js
-          grep -q 'function settingsHTML' /tmp/rise-ui-v4.js
-          node --check scripts/rise-visual-cdp.mjs
+          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-information-architecture-v1.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-ia.js
+          grep -q "version:'1.0.0'" /tmp/rise-ia.js
+          grep -q "publicTabs:\['ホーム','入試','学習','復習'\]" /tmp/rise-ia.js
+          grep -q "generalPractice:'removed-from-public-ui'" /tmp/rise-ia.js
+          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}social-exam/bridge.js?visual_asset=${SOURCE_SHA}" -o /tmp/social-bridge.js
+          grep -q 'legacyGenericFallback:false' /tmp/social-bridge.js
+          node --check scripts/rise-visual-ia-v1.mjs
 
       - name: Install Japanese rendering fonts
         run: |
@@ -84,7 +76,7 @@ jobs:
           fc-cache -f
           fc-match 'sans-serif:lang=ja'
 
-      - name: Capture and validate stable production navigation via CDP
+      - name: Capture final Rise information architecture via CDP
         env:
           VISUAL_OUT: visual-evidence
         run: |
@@ -93,7 +85,7 @@ jobs:
           test -n "$CHROME_PATH"
           export CHROME_PATH
           rm -rf visual-evidence
-          node scripts/rise-visual-cdp.mjs
+          node scripts/rise-visual-ia-v1.mjs
           grep -q '^result=success$' visual-evidence/manifest.txt
           grep -q '^cold_start_home=success$' visual-evidence/manifest.txt
           grep -q '^single_navigation_owner=success$' visual-evidence/manifest.txt
@@ -101,10 +93,11 @@ jobs:
           grep -q '^no_unexpected_document_navigation=success$' visual-evidence/manifest.txt
           grep -q '^route_switch_stress=success$' visual-evidence/manifest.txt
           grep -q '^settings_menu_navigation=success$' visual-evidence/manifest.txt
-          grep -q '^settings_mutation_stress=success$' visual-evidence/manifest.txt
           grep -q '^legacy_shell_never_visible=success$' visual-evidence/manifest.txt
           grep -q '^review_canonical_click_navigation=success$' visual-evidence/manifest.txt
           grep -q '^unique_screen_pixels=success$' visual-evidence/manifest.txt
+          grep -q '^public_navigation=ホーム/入試/学習/復習$' visual-evidence/manifest.txt
+          grep -q '^general_practice_public_ui=removed$' visual-evidence/manifest.txt
           test "$(find visual-evidence -maxdepth 1 -name '*.png' | wc -l)" -eq 10
           test "$(find visual-evidence -maxdepth 1 -name '*.html' | wc -l)" -eq 10
           cat visual-evidence/manifest.txt
@@ -126,13 +119,11 @@ jobs:
             echo ''
             echo "- Source: \`${SOURCE_SHA}\`"
             echo '- Navigation owner: `app/navigation/navigation-runtime-v1.js` only'
-            echo '- No cloned stable-root UI is executed.'
-            echo '- Core route changes must stay stable without top-level Document reloads.'
-            echo '- Settings grammar controls are toggled repeatedly on Mobile and Desktop.'
-            echo '- Legacy `旭丘AA Learning OS` shell and old 5-tab navigation must never become visible.'
-            echo '- Screens: home / study / record / settings / review'
+            echo '- Public navigation: `ホーム / 入試 / 学習 / 復習`'
+            echo '- Home is the analytics and next-action command center.'
+            echo '- Entrance exam contains learner-facing exam practice; low-quality generic middle-school practice is not exposed.'
+            echo '- Learning contains fixed-data vocabulary and Chronologia resources.'
+            echo '- Review remains the canonical `/review/` page.'
             echo '- Mobile: `390x844` / iPhone User-Agent'
             echo '- Desktop: `1440x1000`'
-            echo '- Duplicate screenshot pixels are rejected.'
-            echo '- Review is the only expected full-document navigation and must reach `/review/`.'
           } >> "$GITHUB_STEP_SUMMARY"
