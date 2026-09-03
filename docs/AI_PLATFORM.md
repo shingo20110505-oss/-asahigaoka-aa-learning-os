@@ -12,19 +12,19 @@
 
 AIは教材制作を補助する。正答一意性、数値、保存契約、本番公開の最終保証をAI単独へ委ねない。
 
-## 2. 現在の生成モデル
+## 2. 現在のモデル
 
-現行の生成側Geminiモデルは:
+生成側Gemini:
 
 `gemini-3.5-flash`
 
-ユーザーから明示的な変更指示がない限り、このモデルを変更しない。
+ユーザーから明示的な変更指示がない限り変更しない。
 
-Groq独立検証providerの既定モデル候補は:
+独立検証側Groq:
 
 `openai/gpt-oss-20b`
 
-ただし、provider実装が存在することと本番教材経路で有効化されていることを区別する。現時点ではGroqを本番の英語blind verifierへまだ接続していない。
+英語では本番のblind verifierとして接続済み。数学・国語・理科・社会への本番接続はまだ行わない。
 
 ## 3. プロバイダ責務
 
@@ -37,13 +37,9 @@ Groq独立検証providerの既定モデル候補は:
 - 解説生成
 - 教科固有JSONスキーマへの出力
 
-APIキー:
+APIキー: `GEMINI_API_KEY`
 
-`GEMINI_API_KEY`
-
-provider adapter:
-
-`worker/src/providers/gemini.mjs`
+provider adapter: `worker/src/providers/gemini.mjs`
 
 ### Groq
 
@@ -54,32 +50,32 @@ provider adapter:
 - 本文・資料根拠の独立確認
 - Geminiと異なるモデル系統によるクロスチェック
 
-APIキー:
+APIキー: `GROQ_API_KEY`
 
-`GROQ_API_KEY`
+provider adapter: `worker/src/providers/groq.mjs`
 
-provider adapter:
-
-`worker/src/providers/groq.mjs`
-
-Groqは英語専用にしない。5教科共通の検証プロバイダとして統合する。
-
-GroqのHTTP/JSON Schema providerクライアントは実装済みだが、現時点では本番教材経路へ未接続である。英語の現行blind validationは引き続きGemini別リクエスト方式で稼働している。
+Groqは英語専用ではなく5教科共通検証providerとして設計する。ただし本番接続は段階的に行い、現在は英語のみ有効化する。
 
 ### 共通provider入口
 
 `worker/src/providers/index.mjs`
 
-教科コードは将来的にベンダー固有HTTP形式ではなく、`callStructuredProvider(provider, env, request)` を経由する。provider statusは秘密値を返さず、configured/model/roleのみを扱う。
+provider共通責務は `callStructuredProvider(provider, env, request)` と `getProviderStatus(env)` に集約する。
+
+### 本番Worker入口
+
+`worker/src/entry.mjs`
+
+英語本番の編成責務を持ち、既存 `worker/src/index.mjs` の英語検証ロジックを再利用する。
 
 ## 4. セキュリティ
 
-- `GEMINI_API_KEY` と `GROQ_API_KEY` をGitHub Pages、フロントエンドJS、localStorage、公開ログへ出さない。
+- `GEMINI_API_KEY` と `GROQ_API_KEY` をGitHub Pages、frontend JS、localStorage、公開ログへ出さない。
 - APIキーはCloudflare Workerの暗号化Secretとして扱う。
-- ブラウザはWorker URLとアプリ用接続トークンのみを扱う。
-- `AI_ACCESS_TOKEN` もソースへ直書きしない。
-- AIプロバイダのエラーレスポンスをそのまま公開画面へ返さず、秘密情報を含まない診断コードへ変換する。
-- 学習者の個人情報をAIへ送らない。適応情報は匿名・限定された弱点/既知語/難度等に絞る。
+- ブラウザはWorker URLと `AI_ACCESS_TOKEN` のみを扱う。
+- 学習者の個人情報をAIへ送らない。
+- 適応情報は匿名・限定された弱点、既知語、難度等に絞る。
+- AI providerの生エラーをそのままブラウザへ返さない。
 
 ## 5. 共通パイプライン
 
@@ -111,9 +107,9 @@ GroqのHTTP/JSON Schema providerクライアントは実装済みだが、現時
 
 ### Stage 4: Blind independent verification
 
-Groqへ、生成側の `answerIndex`・正答・解説を渡さずに問題を解かせる。
+Groqへ、生成側の `answerIndex`、正答、解説、各誤答理由を渡さずに解かせる。
 
-検証AIには必要最小限の本文、資料、設問、選択肢だけを渡す。
+英語では本文、設問タイプ、設問文、選択肢だけを渡す。
 
 ### Stage 5: Agreement gate
 
@@ -121,7 +117,7 @@ Rise側で次を比較する。
 
 - Gemini側の正答
 - Groq側の独立解答
-- 必要な根拠
+- 本文/資料根拠
 - 信頼度
 - 教科固有検証結果
 
@@ -129,11 +125,17 @@ Rise側で次を比較する。
 
 ### Stage 6: Delivery
 
-全ゲートを通過した問題だけをフロントエンドへ返す。
+全ゲートを通過した問題だけをfrontendへ返す。
 
 ## 6. 教科別の追加検証
 
 ### 英語
+
+本番稼働中。
+
+`Gemini 3.5 Flash生成 -> 英語deterministic validation -> Groq GPT-OSS-20B blind verification -> agreement gate`
+
+維持する検査:
 
 - 語数・段落数
 - 中学範囲の文法ゲート
@@ -141,9 +143,10 @@ Rise側で次を比較する。
 - 本文中の完全一致根拠
 - 4択の重複防止
 - 設問タイプ構成
-- 独立解答一致
+- Groq独立解答一致
+- confidence閾値
 
-現行 `worker/src/index.mjs` の英語検証資産を共通AI基盤へ移す際も失わない。
+既存 `worker/src/index.mjs` の英語検証資産を捨てず、`worker/src/entry.mjs` から利用する。
 
 ### 数学
 
@@ -200,7 +203,7 @@ AIの記憶だけに依存せず、Rise側の検証済み資料・データセ�
 
 ## 7. 共通レスポンス方針
 
-将来的な共通問題形式は、少なくとも次の概念を持つ。
+将来的な共通問題形式は少なくとも次を持つ。
 
 - `subject`
 - `skill`
@@ -218,27 +221,29 @@ AIの記憶だけに依存せず、Rise側の検証済み資料・データセ�
 
 ## 8. 品質情報
 
-採用問題には、可能な範囲で次を記録する。
+英語の採用問題では `quality` に次を記録する。
 
-- 生成モデル
-- 検証モデル
-- deterministic validation結果
-- independent verification結果
-- attempt数
-- checkedAt
-- schemaVersion
+- `method: cross-provider-blind-answer-check`
+- `generationProvider`
+- `generationModel`
+- `verificationProvider`
+- `verificationModel`
+- `attempt`
+- `questionCount`
+- `checkedAt`
 
-ブラウザへAPIキー・生のプロバイダエラー・内部プロンプトは返さない。
+APIキー、生providerエラー、内部プロンプトは返さない。
 
 ## 9. 無料枠保護
 
 - 失敗時の無限再試行を禁止する。
-- 1リクエストあたりの生成回数と検証回数に上限を持つ。
-- 429は明示的にquota状態へ変換する。
+- 1リクエストあたり生成は最大2試行。
+- 各候補問題にGroq検証は1回だけ行う。
+- 429をprovider別quotaエラーへ変換する。
 - 同じ問題を不要に再検証しない。
-- バッチ生成では1日上限を管理できる状態を維持する。
-- 有料APIへの自動フォールバックを勝手に追加しない。
-- Groq本番接続は、無料枠・quota・失敗時挙動を実測してから有効化する。
+- 有料APIへの自動フォールバックを追加しない。
+
+Groq `openai/gpt-oss-20b` の無料枠は運用時点の公式値を確認して管理する。2026-09-03確認時点では 30 RPM / 1,000 RPD / 8K TPM / 200K TPD。
 
 ## 10. フォールバック
 
@@ -246,8 +251,8 @@ Groqが一時的に利用不能でも、品質保証を下げて問題を通過�
 
 原則:
 
-- 独立検証が必須の生成経路では `verification_unavailable` として生成を保留/失敗させる。
-- 「Groqが落ちたのでGemini自身で検証して合格扱い」に自動劣化させない。
+- `verification_unavailable`、`groq_quota_exceeded`、`groq_auth_failed` 等として失敗させる。
+- Groq障害時にGemini自身の検証へ自動劣化させない。
 - オフライン時は既存の検証済み問題ライブラリを利用する。
 
 ## 11. テスト方針
@@ -256,56 +261,63 @@ AI変更では少なくとも以下を検査する。
 
 - Provider APIキーがfrontendへ含まれない
 - author answer keyがblind verifierへ含まれない
+- `explanationJa` / `reasonJa` がGroqへ送られない
 - JSON parse失敗
 - 401/403
 - 429
 - 5xx
-- timeout
 - verifier disagreement
 - low confidence
 - evidence mismatch
 - deterministic validation failure
 - provider secret未設定
 
-既存 `tests/ai-reading-contract.mjs` は英語契約として維持する。
+テスト正本:
 
-共通provider契約は `tests/ai-provider-contract.mjs` で検査し、Gemini/Groqのprovider選択、Secret非露出、Structured JSON request、未設定Secret、未対応providerを確認する。
+- `tests/ai-provider-contract.mjs`
+- `tests/ai-reading-contract.mjs`
+- `tests/ai-reading-groq-contract.mjs`
+
+Worker配備後も実Gemini生成＋実Groq検証を1セット実行し、provider provenanceを確認する。
 
 ## 12. 段階移行計画
 
 ### Phase A — 管理基盤
 
+状態: **完了**
+
 - `GROQ_API_KEY` をGitHub ActionsからWorker Secretへ安全に渡す。
 - AI基盤正本を本書へ統一する。
 
-状態: **完了**
-
 ### Phase B — Provider分離
 
-- Gemini呼び出しとGroq呼び出しをprovider層へ分離する。
-- 英語固有コードから共通provider責務を外す。
+状態: **完了**
 
-状態: **基盤実装済み**
-
-`worker/src/providers/` と共通契約テストを追加済み。現行英語runtimeはまだ旧直接Gemini呼び出しを使用しているため、完全な切替はPhase Cで行う。
+- Gemini/Groqを `worker/src/providers/` へ分離。
+- 共通provider契約テストを追加。
 
 ### Phase C — 英語で実証
 
-- 現行blind verifierをGroqへ切り替える。
-- Gemini 3.5 Flash生成は維持する。
-- 契約テスト・本番テストを通す。
-- 無料枠・429・timeout・Groq未設定時の失敗を確認する。
+状態: **実装完了・本番配備検証対象**
 
-状態: **未実施**
+- Gemini 3.5 Flash生成を維持。
+- 英語blind verifierをGroq `openai/gpt-oss-20b` へ切替。
+- `worker/src/entry.mjs` を本番入口にする。
+- answer key / explanation / distractor reasonをGroqへ送らない契約テストを追加。
+- 配備Workflowで実Gemini＋実Groqを検証する。
+
+本番Workflow成功後に「本番稼働確認済み」へ更新する。
 
 ### Phase D — 5教科共通化
 
-- 数学、国語、理科、社会へ共通validator interfaceを接続する。
-- 各教科のdeterministic validatorを優先し、Groqは追加ゲートとする。
-
 状態: **未実施**
 
+- 数学、国語、理科、社会へ共通validator interfaceを接続。
+- 教科deterministic validatorを優先し、Groqは追加ゲートとする。
+
 ### Phase E — 運用最適化
+
+状態: **未実施**
 
 - quota管理
 - キャッシュ
@@ -313,19 +325,18 @@ AI変更では少なくとも以下を検査する。
 - 品質統計
 - 失敗理由の可視化
 
-状態: **未実施**
-
 ## 13. 現在の状態
 
 - Gemini生成: 稼働中
 - Geminiモデル: `gemini-3.5-flash`
-- 既存英語blind validation: Gemini別リクエスト方式で稼働中
 - 共通provider interface: 実装済み
 - Gemini provider adapter: 実装済み
-- Groq provider adapter: 実呼び出しコード実装済み・本番未接続
-- Groq既定検証モデル候補: `openai/gpt-oss-20b`
+- Groq provider adapter: 実装済み
+- Groq既定検証モデル: `openai/gpt-oss-20b`
 - `GROQ_API_KEY`: Worker配備Workflowへ渡せる
-- Groq本番教材呼び出し: 未接続
-- 5教科共通Groq検証: 未接続
+- 英語Groq blind verification: 本番コードへ接続済み
+- 英語Worker本番入口: `worker/src/entry.mjs`
+- 数学・国語・理科・社会のGroq検証: 未接続
+- 5教科共通Groq検証: 英語のみ接続済み
 
-この状態表は実装を進めるたびに更新し、未接続を稼働済みと記載しない。
+この状態表は実装と本番検証に合わせて更新し、未検証を稼働確認済みと記載しない。

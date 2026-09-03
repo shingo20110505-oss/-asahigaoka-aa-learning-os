@@ -26,11 +26,13 @@ jobs:
         run: |
           set -euo pipefail
           node --check worker/src/index.mjs
+          node --check worker/src/entry.mjs
           node --check worker/src/providers/gemini.mjs
           node --check worker/src/providers/groq.mjs
           node --check worker/src/providers/index.mjs
           node tests/ai-provider-contract.mjs
           node tests/ai-reading-contract.mjs
+          node tests/ai-reading-groq-contract.mjs
 
       - name: Confirm required GitHub secrets exist
         env:
@@ -65,7 +67,7 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           AI_ACCESS_TOKEN: ${{ secrets.AI_ACCESS_TOKEN }}
 
-      - name: Verify public health, authentication, and real Gemini generation
+      - name: Verify public health, authentication, Gemini generation, and Groq verification
         env:
           DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
           AI_ACCESS_TOKEN: ${{ secrets.AI_ACCESS_TOKEN }}
@@ -74,10 +76,8 @@ jobs:
           test -n "$DEPLOYMENT_URL"
           BASE="${DEPLOYMENT_URL%/}"
           ORIGIN='https://shingo20110505-oss.github.io'
-          export EXPECTED_WORKER_VERSION='1.1.1'
+          export EXPECTED_WORKER_VERSION='1.2.0'
 
-          # A newly-created workers.dev hostname can briefly return 404 while
-          # Cloudflare propagates it. Retry all HTTP statuses before testing AI.
           health_ready=false
           for attempt in $(seq 1 12); do
             if curl -fsSL --max-time 30 "$BASE/health" -o /tmp/ai-health.json \
@@ -123,12 +123,17 @@ jobs:
           const health = JSON.parse(fs.readFileSync('/tmp/ai-health.json', 'utf8'));
           const status = JSON.parse(fs.readFileSync('/tmp/ai-status.json', 'utf8'));
           const result = JSON.parse(fs.readFileSync('/tmp/ai-reading.json', 'utf8'));
-          if (health.ok !== true || status.ready !== true) throw new Error('Worker health/status verification failed');
+          if (health.ok !== true || health.version !== '1.2.0' || status.ready !== true) throw new Error('Worker health/status verification failed');
+          if (status.model !== 'gemini-3.5-flash') throw new Error(`Unexpected Gemini model: ${status.model}`);
+          if (status.verificationProvider !== 'groq' || status.verifierModel !== 'openai/gpt-oss-20b') throw new Error('Groq verifier status mismatch');
           if (result.schemaVersion !== 1 || result.quality?.verified !== true) throw new Error('AI quality verification failed');
+          if (result.quality?.method !== 'cross-provider-blind-answer-check') throw new Error('Cross-provider verification method missing');
+          if (result.quality?.generationProvider !== 'gemini' || result.quality?.verificationProvider !== 'groq') throw new Error('Provider provenance mismatch');
+          if (result.quality?.generationModel !== 'gemini-3.5-flash' || result.quality?.verificationModel !== 'openai/gpt-oss-20b') throw new Error('Provider model provenance mismatch');
           if (!Array.isArray(result.reading?.questions) || result.reading.questions.length !== 5) throw new Error('Expected five questions');
           for (const [index, question] of result.reading.questions.entries()) {
             if (!result.reading.passage.includes(question.evidenceQuote)) throw new Error(`Question ${index + 1} evidence is not exact`);
           }
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
-            `## AI reading Worker verified\n\n- URL: ${process.env.DEPLOYMENT_URL}\n- Model: ${status.model}\n- Questions: 5\n- Independent answer check: PASS\n- Common provider adapters: contract PASS\n`);
+            `## AI reading Worker verified\n\n- URL: ${process.env.DEPLOYMENT_URL}\n- Generator: ${result.quality.generationProvider} / ${result.quality.generationModel}\n- Verifier: ${result.quality.verificationProvider} / ${result.quality.verificationModel}\n- Questions: 5\n- Cross-provider blind answer check: PASS\n`);
           NODE
