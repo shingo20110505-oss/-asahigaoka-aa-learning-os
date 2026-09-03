@@ -12,10 +12,10 @@
 <meta name="format-detection" content="telephone=no">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="愛知県立旭丘高校普通科合格を最終目的に、学習科学・教育測定・認知心理学・第二言語習得・HCIを統合したオフライン学習OS。">
-<link rel="manifest" href="./manifest.webmanifest?v=4.2.0">
-<link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png?v=4.2.0">
-<link rel="icon" href="./icons/rise-favicon.svg?v=4.2.0" type="image/svg+xml" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png?v=4.2.0">
+<link rel="manifest" href="./manifest.webmanifest?v=4.3.0">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png?v=4.3.0">
+<link rel="icon" href="./icons/rise-favicon.svg?v=4.3.0" type="image/svg+xml" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png?v=4.3.0">
 <link rel="stylesheet" href="./learning-engine-v22.css">
 <title>Rise｜旭丘合格のための学習OS</title>
 <script id="rise-runtime-diagnostics">
@@ -30,33 +30,11 @@ html.aa-app-booting body:before{content:"最新版を準備中…";position:fixe
 html.aa-app-booting.aa-app-boot-slow body:before{content:"最新版のRiseを読み込んでいます…\A通信を確認してください。";white-space:pre-line}
 </style>
 <script id="aa-app-boot-guard-script">
-(()=>{'use strict';let done=false;const reveal=()=>{if(done)return;done=true;document.documentElement.classList.remove('aa-app-booting','aa-app-boot-slow')};document.addEventListener('aa:v23ready',()=>requestAnimationFrame(reveal),{once:true});addEventListener('pageshow',()=>{if(window.__AA_AI_READING_V1__)requestAnimationFrame(reveal)});setTimeout(()=>{if(window.__AA_AI_READING_V1__)reveal();else document.documentElement.classList.add('aa-app-boot-slow')},8000);setTimeout(reveal,15000)})();
+(()=>{'use strict';const root=document.documentElement;let done=false,timer=0;const core=new Set(['home','subjects','analytics','settings']);const panel={home:'.riseHomeV4',subjects:'.riseSubjectsV4',analytics:'.riseAnalyticsV4',settings:'.riseSettingsV4'};const ready=()=>{if(!window.__RISE_UI_V4__||!document.querySelector('#app main'))return false;const route=window.AA_APP?.get?.('state')?.get?.()?.route||root.dataset.riseRoute||'home';if(!core.has(route))return true;return !!document.querySelector(`#app main ${panel[route]}[data-ui-ver="4.2.0"]`)};const reveal=()=>{if(done)return;done=true;if(timer)clearInterval(timer);root.classList.remove('aa-app-booting','aa-app-boot-slow')};const check=()=>{if(ready())requestAnimationFrame(reveal)};document.addEventListener('DOMContentLoaded',check);addEventListener('pageshow',check);document.addEventListener('rise:navigation',()=>requestAnimationFrame(check));timer=setInterval(check,80);setTimeout(()=>{if(!done)root.classList.add('aa-app-boot-slow')},6000);setTimeout(reveal,15000)})();
 </script>
 <link rel="stylesheet" href="./app/ui/base.css">
 <link rel="stylesheet" href="./app/ui/rise-ui-v4.css?v=4.2.0">
-<link rel="stylesheet" href="./app/ui/rise-structure-v4.css?v=4.2.0">
-<script id="rise-critical-shell">
-(()=>{'use strict';
- const root=document.documentElement;root.dataset.riseUi='4';root.dataset.riseSkin='v4';root.dataset.riseStructure='optimized-4';
- function navMarkup(route){const r=['subjects','mission','study','timeline'].includes(route)?'subjects':route;const a=x=>r===x?'active':'';return `<button class="${a('home')}" data-route="home" aria-label="ホーム"><b>⌂</b><span>ホーム</span></button><button class="${a('subjects')}" data-route="subjects" aria-label="学習"><b>▦</b><span>学習</span></button><a href="./review/" aria-label="復習"><b>↻</b><span>復習</span></a><button class="${a('analytics')}" data-route="analytics" aria-label="記録"><b>▥</b><span>記録</span></button>`}
- function apply(){
-  const app=document.getElementById('app');if(!app)return;
-  const active=document.querySelector('.nav [data-route].active');const route=active?.dataset?.route||root.dataset.riseRoute||'home';root.dataset.riseRoute=route;
-  const brand=app.querySelector('.brand');if(brand){const mark=brand.querySelector('.mark'),h=brand.querySelector('h1'),p=brand.querySelector('p');if(mark)mark.textContent='R';if(h)h.textContent='Rise';if(p)p.textContent='旭丘合格のための学習OS'}
-  const nav=document.querySelector('.nav');if(nav){let inner=nav.querySelector('.navin');if(!inner){inner=document.createElement('div');inner.className='navin';nav.replaceChildren(inner)}const sig='critical:'+route;if(inner.dataset.riseCritical!==sig){inner.dataset.riseCritical=sig;inner.innerHTML=navMarkup(route)}}
-  const main=app.querySelector('main');if(route==='home'&&main&&!main.querySelector('.riseHomeV4')){main.insertAdjacentHTML('afterbegin','<section class="riseHomeV4" data-hydrated="0"><header class="rv4Welcome"><span>RISE / LEARNING DASHBOARD</span><h2>今日の一歩を、合格力に。</h2><p>学習データを準備しています</p></header><article class="rv4Card"><div class="rv4CardHead"><h3>今日の学習</h3><span>準備中</span></div><p class="sub">最優先の学習を選んでいます。</p></article></section>')}
- }
- const mo=new MutationObserver(()=>requestAnimationFrame(apply));mo.observe(document.documentElement,{childList:true,subtree:true});document.addEventListener('DOMContentLoaded',apply);addEventListener('pageshow',apply);requestAnimationFrame(apply);
- let retries=0;
- function recoverHydration(){
-  const panel=document.querySelector('.riseHomeV4[data-ui-ver="4.2.0"] .rv4Dashboard');
-  if(panel){root.dataset.riseHydrated='1';delete root.dataset.riseRuntimeError;return}
-  const errors=window.__RISE_RUNTIME_ERRORS__||[];if(errors.length)root.dataset.riseRuntimeError=String(errors[errors.length-1]).replace(/[\r\n]+/g,' ').slice(0,280);else root.dataset.riseRuntimeError='Rise 4.2 dashboard not hydrated';
-  if(retries>=3)return;retries++;window.__RISE_UI_V4__=null;const s=document.createElement('script');s.src=`./app/ui/rise-ui-v4.js?v=4.2.0-retry-${retries}-${Date.now()}`;s.async=false;s.dataset.riseRecovery=String(retries);document.body.appendChild(s);setTimeout(recoverHydration,1200);
- }
- setTimeout(recoverHydration,1200);
-})();
-</script>
+<link rel="stylesheet" href="./app/ui/rise-structure-v4.css?v=4.3.0">
 </head>
 <body>
 <div class="app" id="app"></div>
@@ -79,11 +57,10 @@ html.aa-app-booting.aa-app-boot-slow body:before{content:"最新版のRiseを読
 <script src="./app/learning/learning-engine.js"></script>
 <script src="./app/subjects/subject-engines.js"></script>
 <script src="./app/ui/ui-runtime.js"></script>
-<script src="./app/pwa/pwa-runtime.js?v=4.2.1"></script>
+<script src="./app/pwa/pwa-runtime.js?v=4.3.0"></script>
 <script src="./app/qa/qa-runtime.js"></script>
-<!-- PHASE-2 UI: complete Rise structure; legacy learning logic remains untouched. -->
-<!-- stable root starts first so it cannot miss the initial complete panel on iOS/PWA cold start -->
-<script src="./app/ui/rise-stable-root-v4.js?v=2.3.0"></script>
+<!-- PHASE-2 UI: one state owner, one navigation owner, one live DOM; no cloned stable-root UI. -->
+<script src="./app/navigation/navigation-runtime-v1.js?v=1.0.0"></script>
 <script src="./app/ui/rise-ui-v4.js?v=4.2.0"></script>
 </body>
 </html>
