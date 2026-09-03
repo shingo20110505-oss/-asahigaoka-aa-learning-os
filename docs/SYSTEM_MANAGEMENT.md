@@ -191,9 +191,11 @@ AIは5教科共通基盤へ段階統合する。
 
 ## 10. 管理負債レジスタ
 
-### P0: Workflow自己更新・実行連鎖
+### P0: 公開状態ファイルによるmain更新
 
-状態記録のためのmain pushが別のPages実行を誘発・cancelし得る。今後、状態記録をartifactや同一runの出力へ寄せられるか設計する。
+`deploy-pages.yml` は `PUBLIC_VERIFY_STATUS.txt` と `DEPLOY_STATUS.txt` を公開確認後に `main` へ記録する。現在はこれらの状態ファイルを `paths-ignore` しているため、**状態ファイルだけの更新で同じPages Workflowが再起動することは抑制済み**。
+
+一方で、公開元の `github.sha` と、その後botが状態記録した最新 `main` HEAD は異なる。このため「最新mainのSHA＝公開したソースSHA」と単純にみなさず、状態ファイル内の `source_sha` とrelease markerを確認する。将来は、公開状態をリポジトリへcommitし続ける必要性と、artifact/外部状態へ分離する案を比較してから整理する。
 
 ### P0: main branch protection
 
