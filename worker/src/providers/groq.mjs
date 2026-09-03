@@ -6,11 +6,12 @@ function clean(value, maxLength = 300) {
 }
 
 export class GroqProviderError extends Error {
-  constructor(status, message, code = 'groq_failed') {
+  constructor(status, message, code = 'groq_failed', diagnostic = '') {
     super(message);
     this.name = 'GroqProviderError';
     this.status = Number(status) || 502;
     this.code = code;
+    this.diagnostic = clean(diagnostic, 700);
   }
 }
 
@@ -52,6 +53,15 @@ export function parseGroqJson(data) {
   } catch (_) {
     throw new GroqProviderError(502, 'Groq returned invalid JSON.', 'groq_invalid_json');
   }
+}
+
+function groqErrorDiagnostic(payload) {
+  const failedGeneration = payload?.error?.failed_generation;
+  if (typeof failedGeneration === 'string') return clean(failedGeneration, 700);
+  if (failedGeneration && typeof failedGeneration === 'object') {
+    try { return clean(JSON.stringify(failedGeneration), 700); } catch (_) { return ''; }
+  }
+  return '';
 }
 
 export async function callGroqJson(env, request) {
@@ -110,7 +120,7 @@ export async function callGroqJson(env, request) {
     const message = clean(payload?.error?.message || `Groq HTTP ${response.status}`, 300);
     const type = clean(payload?.error?.type || '', 80);
     const code = response.status === 429 ? 'quota_exceeded' : type === 'invalid_request_error' ? 'groq_request_rejected' : 'groq_failed';
-    throw new GroqProviderError(response.status, message, code);
+    throw new GroqProviderError(response.status, message, code, groqErrorDiagnostic(payload));
   }
 
   return {
