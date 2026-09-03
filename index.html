@@ -79,10 +79,11 @@ html.aa-app-booting.aa-app-boot-slow body:before{content:"最新版のRiseを読
 <script src="./app/learning/learning-engine.js"></script>
 <script src="./app/subjects/subject-engines.js"></script>
 <script src="./app/ui/ui-runtime.js"></script>
-<script src="./app/pwa/pwa-runtime.js"></script>
+<script src="./app/pwa/pwa-runtime.js?v=4.2.1"></script>
 <script src="./app/qa/qa-runtime.js"></script>
 <!-- PHASE-2 UI: complete Rise structure; legacy learning logic remains untouched. -->
+<!-- stable root starts first so it cannot miss the initial complete panel on iOS/PWA cold start -->
+<script src="./app/ui/rise-stable-root-v4.js?v=2.1.0"></script>
 <script src="./app/ui/rise-ui-v4.js?v=4.2.0"></script>
-<script src="./app/ui/rise-stable-root-v4.js?v=1.0.0"></script>
 </body>
 </html>
