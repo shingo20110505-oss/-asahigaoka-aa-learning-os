@@ -25,13 +25,19 @@ const aiReading = read('ai-reading-v1.js');
 const riseUI = read('app/ui/rise-ui-v4.js');
 const riseCSS = read('app/ui/rise-ui-v4.css');
 const riseStructure = read('app/ui/rise-structure-v4.css');
+const riseStable = read('app/ui/rise-stable-root-v4.js');
+const pwaRuntime = read('app/pwa/pwa-runtime.js');
 const reviewUI = read('review/index.html');
 const sw = read('sw.js');
 
 new Function(riseUI);
+new Function(riseStable);
+new Function(pwaRuntime);
 requireText(index, './aa-companion-v2.js', 'index entry');
 requireText(index, './aa-companion-mobile-fix.js', 'index mobile entry');
 requireText(index, './app/ui/rise-ui-v4.js?v=4.2.0', 'complete Rise UI entry');
+requireText(index, './app/ui/rise-stable-root-v4.js?v=2.1.0', 'Rise cold-start stable root entry');
+requireText(index, './app/pwa/pwa-runtime.js?v=4.2.1', 'Rise PWA runtime generation');
 requireText(index, './app/ui/rise-structure-v4.css?v=4.2.0', 'complete Rise structure stylesheet');
 requireText(index, 'data-rise-structure="optimized-4"', 'Rise boot marker');
 requireText(entry, "a.href='./review/'", 'review route');
@@ -40,7 +46,8 @@ requireText(entry, "register('./sw.js'", 'service worker refresh');
 for(const asset of [
   'mobile-layout-guard-v1.js','login-companion-v1.js','login-production-test-v1.js','companion7-runtime.js',
   'settings-improvements-v1.js','header-menu-v1.js','app/ui/rise-ui-v4.js','app/ui/rise-ui-v4.css',
-  'app/ui/rise-structure-v4.css','v23-loader.js','quality-repair-v1.js','quality-repair-final-v1.js',
+  'app/ui/rise-structure-v4.css','app/ui/rise-stable-root-v4.js','app/pwa/pwa-runtime.js',
+  'v23-loader.js','quality-repair-v1.js','quality-repair-final-v1.js',
   'quality-ci-runner-v1.js','ai-reading-v1.js','english-vocab-examples-basic1-v1.js',
   'english-vocab-examples-basic2-v1.js','english-vocab-examples-basic3-v1.js','english-vocab-examples-phrases-v1.js',
   'english-vocab-examples-apply-v1.js','english-vocab-example-ui-v1.js','vocab-mobile-card-fix-v1.js',
@@ -64,6 +71,11 @@ requireText(riseUI, '<span>ホーム</span>', 'Rise home nav');
 requireText(riseUI, '<span>学習</span>', 'Rise study nav');
 requireText(riseUI, '<span>復習</span>', 'Rise review nav');
 requireText(riseUI, '<span>記録</span>', 'Rise record nav');
+requireText(riseStable, "version:'2.1.0'", 'Rise stable root version');
+requireText(riseStable, "firstLoad:'immediate-capture'", 'Rise first-load capture marker');
+requireText(riseStable, 'captureAdded', 'Rise immediate panel capture');
+requireText(pwaRuntime, "const RISE_BOOT='4.2.1'", 'Rise PWA runtime version');
+requireText(pwaRuntime, 'rise:sw-updated', 'Rise SW soft-update signal');
 requireText(riseCSS, '.rv4Dashboard', 'Rise dashboard styling');
 requireText(riseCSS, '.rv4StudyHero', 'Rise study hub styling');
 requireText(riseCSS, '.rv4RecordHero', 'Rise record styling');
@@ -148,9 +160,12 @@ if(/GEMINI_API_KEY\s*=/.test(aiReading)) throw new Error('Gemini API key must no
 
 if(!/const VERSION='[^']+'/.test(sw)) throw new Error('managed service worker version missing');
 requireText(sw, 'quality2-chronologia1000', 'shared PWA generation');
-requireText(sw, "const RISE_BOOT='4.2.0'", 'complete Rise PWA generation');
+requireText(sw, "const RISE_BOOT='4.2.1'", 'complete Rise PWA generation');
+requireText(sw, 'firstload-2.1.0', 'Rise first-load PWA generation');
 requireText(sw, "url('app/ui/rise-structure-v4.css')", 'offline Rise structure');
 requireText(sw, "url('app/ui/rise-ui-v4.js?v=4.2.0')", 'offline complete Rise UI');
+requireText(sw, "url('app/ui/rise-stable-root-v4.js?v=2.1.0')", 'offline cold-start stable root');
+requireText(sw, "url('app/pwa/pwa-runtime.js?v=4.2.1')", 'offline PWA runtime generation');
 requireText(sw, 'async function networkFirst', 'network-first runtime');
 requireText(sw, "ext==='js'", 'generic JS freshness');
 requireText(sw, "ext==='css'", 'generic CSS freshness');
@@ -162,10 +177,12 @@ requireText(sw, "url('quality-repair-final-v1.js')", 'offline final quality repa
 requireText(sw, "url('quality-ci-runner-v1.js')", 'offline browser quality runner');
 requireText(sw, "url('ai-reading-v1.js')", 'offline AI reading UI');
 requireText(sw, "u.pathname.endsWith('review-bank-v1.js')", 'review bank forced freshness');
+if(sw.includes('client.navigate')) throw new Error('service worker must not auto-navigate the main UI');
+if(sw.includes('refreshMainClients')) throw new Error('legacy service-worker auto-refresh path must stay removed');
 
 const referenced=[...mobile.matchAll(/['"]\.\/([^'"?]+\.js)/g)].map(m=>m[1]);
 for(const file of new Set(referenced)){
   if(!fs.existsSync(file)) throw new Error(`mobile loader points to missing file: ${file}`);
 }
 
-console.log(`runtime assets OK: referenced=${new Set(referenced).size}, Rise 4.2 dashboard/study/review/record/settings + quality/Chronologia/layout/login/PWA checks passed`);
+console.log(`runtime assets OK: referenced=${new Set(referenced).size}, Rise 4.2.1 cold-start dashboard/study/review/record/settings + quality/Chronologia/layout/login/PWA checks passed`);
