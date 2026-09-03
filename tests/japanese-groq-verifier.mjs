@@ -71,6 +71,18 @@ for (const major of [1, 2, 3, 4]) {
   else mismatch.answers[0].answerChoiceIndexes = [(mismatch.answers[0].answerChoiceIndexes[0] + 1) % firstQuestion.choices.length];
   check(!verifyJapaneseChunkAgreement(pack, major, mismatch).ok, `major ${major} rejects wrong independent answer`);
 
+  if (!firstQuestion.marks) {
+    const independentLabels = structuredClone(fixture);
+    const firstNonAnswer = firstQuestion.choices.findIndex(choice => !firstQuestion.answers.includes(choice.id));
+    independentLabels.answers[0].choiceRelations[firstNonAnswer] = independentLabels.answers[0].choiceRelations[firstNonAnswer] === 'contradicted' ? 'not_stated' : 'contradicted';
+    check(verifyJapaneseChunkAgreement(pack, major, independentLabels).ok, `major ${major} does not require hidden author distractor labels`);
+
+    const inconsistentLabels = structuredClone(fixture);
+    const selectedIndex = inconsistentLabels.answers[0].answerChoiceIndexes[0];
+    inconsistentLabels.answers[0].choiceRelations[selectedIndex] = firstQuestion.polarity === 'not_stated' ? 'supported' : 'not_stated';
+    check(!verifyJapaneseChunkAgreement(pack, major, inconsistentLabels).ok, `major ${major} rejects relation-answer internal inconsistency`);
+  }
+
   if (major !== 2) {
     const fakeQuote = structuredClone(fixture);
     fakeQuote.answers[0].evidence = [{ passageIndex: 0, paragraph: 1, quote: '本文に存在しない検証用引用' }];
@@ -98,17 +110,18 @@ try {
   const result = await verifyJapanesePackWithGroq(env, pack, { cooldownMs: 0 });
   check(result.verified === true, 'pack verified');
   check(result.provider === 'groq', 'provider is Groq');
-  check(result.model === 'openai/gpt-oss-20b', 'model pinned');
+  check(result.model === 'openai/gpt-oss-20b', 'model propagated');
   check(result.questionCount === pack.questions.length, 'all questions verified');
   check(JSON.stringify(result.majors) === JSON.stringify([1,2,3,4]), 'all majors verified');
   check(requests.length === 4, 'one Groq request per major');
   for (const { init, body } of requests) {
     check(init.headers.authorization === 'Bearer test-groq-key', 'server-side Groq secret used');
-    check(body.model === 'openai/gpt-oss-20b', 'no silent verifier model upgrade');
+    check(body.model === 'openai/gpt-oss-20b', 'caller-selected verifier model preserved');
     check(body.response_format?.type === 'json_schema' && body.response_format?.json_schema?.strict === true, 'strict JSON schema requested');
-    check(body.temperature === 0 && body.reasoning_effort === 'low', 'deterministic low-cost verifier settings');
     const prompt = body.messages.find(message => message.role === 'user').content;
     const blind = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
+    const expectedEffort = blind.major === 1 || blind.major === 3 ? 'medium' : 'low';
+    check(body.temperature === 0 && body.reasoning_effort === expectedEffort, 'deterministic subject-appropriate verifier settings');
     check(!JSON.stringify(blind).includes('"answers"'), 'request does not reveal answer key');
     check(!JSON.stringify(blind).includes('"explanation"'), 'request does not reveal explanations');
   }
@@ -116,4 +129,4 @@ try {
   globalThis.fetch = originalFetch;
 }
 
-console.log(JSON.stringify({ ok: true, checks, provider: 'groq', model: 'openai/gpt-oss-20b', apiCalls: 4 }));
+console.log(JSON.stringify({ ok: true, checks, provider: 'groq', apiCalls: 4 }));
