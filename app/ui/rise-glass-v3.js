@@ -2,6 +2,7 @@
 const app=document.getElementById('app');
 if(!app||window.__RISE_GLASS_V3__)return;
 window.__RISE_GLASS_V3__=true;
+if(!document.getElementById('rise-v3-compat-style')){const style=document.createElement('style');style.id='rise-v3-compat-style';style.textContent='html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="home"] .riseDashboard{display:none!important}';document.head.appendChild(style)}
 const pad=n=>String(n).padStart(2,'0');
 const esc=s=>String(s??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]));
 const dayKey=(ts=Date.now())=>{const d=new Date(ts);return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`};
