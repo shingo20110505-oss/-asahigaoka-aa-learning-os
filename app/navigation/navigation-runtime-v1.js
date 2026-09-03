@@ -5,8 +5,8 @@ const root=document.documentElement;
 let sequence=0;
 function shell(){return window.AA_APP?.get?.('appShell')||null}
 function stateRoute(){try{return window.AA_APP?.get?.('state')?.get?.()?.route||root.dataset.riseRoute||'home'}catch(_){return root.dataset.riseRoute||'home'}}
-function reviewUrl(){return new URL('./review/index.html',location.href).href}
-function isReviewAnchor(el){if(!el||el.tagName!=='A')return false;try{const u=new URL(el.href,location.href),r=new URL(reviewUrl());return u.origin===r.origin&&(u.pathname===r.pathname||u.pathname===r.pathname.replace(/index\.html$/,''))}catch(_){return false}}
+function reviewUrl(){return new URL('./review/',location.href).href}
+function isReviewAnchor(el){if(!el||el.tagName!=='A')return false;try{const u=new URL(el.href,location.href),r=new URL(reviewUrl());return u.origin===r.origin&&(u.pathname===r.pathname||u.pathname===`${r.pathname}index.html`)}catch(_){return false}}
 function navigateCore(route,source='ui'){
  if(!CORE_ROUTES.has(route))return false;
  const appShell=shell();if(!appShell?.navigate)return false;
