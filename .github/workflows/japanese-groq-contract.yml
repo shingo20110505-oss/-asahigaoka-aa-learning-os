@@ -11,6 +11,7 @@ on:
       - 'tests/japanese-editorial-review.mjs'
       - 'tests/japanese-groq-verifier.mjs'
       - 'tests/japanese-vocabulary-root-pass.mjs'
+      - 'tests/japanese-negative-evidence.mjs'
       - 'worker/src/providers/**'
       - '.github/workflows/japanese-groq-contract.yml'
       - '.github/workflows/japanese-groq-live-smoke.yml'
@@ -45,8 +46,10 @@ jobs:
           node --check tests/japanese-editorial-review.mjs
           node --check tests/japanese-groq-verifier.mjs
           node --check tests/japanese-vocabulary-root-pass.mjs
+          node --check tests/japanese-negative-evidence.mjs
           node tests/japanese-exam.mjs
           node tests/japanese-editorial-review.mjs
           node tests/japanese-groq-verifier.mjs
           node tests/japanese-vocabulary-root-pass.mjs
+          node tests/japanese-negative-evidence.mjs
           node scripts/japanese-library.mjs
