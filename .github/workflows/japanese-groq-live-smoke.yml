@@ -1,0 +1,32 @@
+name: Japanese Groq live smoke
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.japanese-groq-live-smoke-trigger'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: japanese-groq-live-smoke
+  cancel-in-progress: false
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      GROQ_MODEL: openai/gpt-oss-20b
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Require Groq secret
+        run: test -n "${GROQ_API_KEY:-}"
+      - name: Run real Japanese blind verification
+        run: node scripts/japanese-groq-live-smoke.mjs
