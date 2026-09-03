@@ -203,8 +203,8 @@ try {
   const jsonObjectRequest = requests[3];
   assert.equal(jsonObjectRequest.body.response_format.type, 'json_object');
   assert.equal(jsonObjectRequest.body.response_format.json_schema, undefined);
-  assert.equal(jsonObjectRequest.body.reasoning_format, 'hidden');
-  assert.equal(jsonObjectRequest.body.include_reasoning, undefined);
+  assert.equal(jsonObjectRequest.body.reasoning_format, undefined);
+  assert.equal(jsonObjectRequest.body.include_reasoning, false);
   assert.equal(jsonObjectRequest.body.reasoning_effort, 'medium');
   assert.equal(jsonObjectRequest.body.messages.length, 1);
   assert.equal(jsonObjectRequest.body.messages[0].role, 'user');
@@ -213,4 +213,4 @@ try {
   globalThis.fetch = originalFetch;
 }
 
-console.log('AI provider contract OK: Gemini/Groq adapters, secret isolation, strict schema mode, JSON object mode, failed-generation diagnostics, and provider selection passed');
+console.log('AI provider contract OK: Gemini/Groq adapters, secret isolation, strict schema mode, GPT-OSS JSON object mode, failed-generation diagnostics, and provider selection passed');
