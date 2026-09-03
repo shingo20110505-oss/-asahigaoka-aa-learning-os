@@ -10,8 +10,8 @@
   "display": "standalone",
   "display_override": ["standalone"],
   "orientation": "portrait-primary",
-  "background_color": "#edf1f6",
-  "theme_color": "#111827",
+  "background_color": "#173051",
+  "theme_color": "#556ba9",
   "categories": ["education", "productivity"],
   "shortcuts": [
     {
@@ -23,6 +23,12 @@
     }
   ],
   "icons": [
+    {
+      "src": "./icons/rise-favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
     {
       "src": "./icons/icon-192.png",
       "sizes": "192x192",
