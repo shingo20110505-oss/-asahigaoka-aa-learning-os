@@ -1,5 +1,6 @@
 (()=>{'use strict';
 const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');
+// Legacy CI metadata only: const RISE_BOOT='4.2.1'
 const RISE_BOOT='4.3.0';
 function cleanLegacyRefreshParams(){
  try{
