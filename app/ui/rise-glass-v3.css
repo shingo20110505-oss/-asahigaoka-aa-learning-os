@@ -1,0 +1,185 @@
+/* Rise Glass v3 — premium dashboard skin inspired by the approved visual direction.
+   This file is visual-only. Learning, state, review, subject engines and scoring stay untouched. */
+html[data-rise-ui="2"][data-rise-skin="glass"]{
+ --rg-bg0:#07152d;
+ --rg-bg1:#102a55;
+ --rg-bg2:#75678f;
+ --rg-bg3:#d58e91;
+ --rg-ink:#f8faff;
+ --rg-sub:rgba(237,242,255,.72);
+ --rg-muted:rgba(224,232,250,.52);
+ --rg-line:rgba(255,255,255,.16);
+ --rg-line-soft:rgba(255,255,255,.09);
+ --rg-card:linear-gradient(145deg,rgba(35,57,96,.54),rgba(24,42,75,.38));
+ --rg-card-strong:linear-gradient(145deg,rgba(32,54,92,.70),rgba(18,34,64,.55));
+ --rg-blue:#77a7ff;
+ --rg-cyan:#69e0df;
+ --rg-violet:#a679ff;
+ --rg-pink:#ef83c3;
+ --rg-orange:#ffb265;
+ --rg-red:#ff6f77;
+ --rg-green:#5ed5b4;
+ --rg-shadow:0 24px 70px rgba(3,11,29,.30),inset 0 1px 0 rgba(255,255,255,.09);
+ --rg-shadow-soft:0 14px 38px rgba(3,11,29,.20),inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="home"] body,
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="subjects"] body,
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="analytics"] body{
+ color:var(--rg-ink);
+ background:
+  radial-gradient(78rem 48rem at 83% 7%,rgba(229,151,174,.43),transparent 57%),
+  radial-gradient(62rem 40rem at 46% 18%,rgba(121,128,210,.34),transparent 64%),
+  radial-gradient(48rem 34rem at 11% 82%,rgba(41,107,175,.38),transparent 66%),
+  linear-gradient(180deg,#8798c7 0%,#817eac 29%,#9b718d 49%,#31517d 68%,#071a38 100%);
+ background-attachment:fixed;
+ min-height:100vh;
+}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="home"] body:before,
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="subjects"] body:before,
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="analytics"] body:before{
+ content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+ background:
+  linear-gradient(180deg,rgba(255,255,255,.05),transparent 34%),
+  radial-gradient(circle at 80% 16%,rgba(255,205,210,.27),transparent 23%),
+  radial-gradient(circle at 18% 18%,rgba(116,162,255,.20),transparent 28%);
+}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-theme="dark"][data-rise-route="home"] body,
+html[data-rise-ui="2"][data-rise-skin="glass"][data-theme="dark"][data-rise-route="subjects"] body,
+html[data-rise-ui="2"][data-rise-skin="glass"][data-theme="dark"][data-rise-route="analytics"] body{
+ background:
+  radial-gradient(72rem 45rem at 84% 5%,rgba(157,88,146,.28),transparent 58%),
+  radial-gradient(58rem 37rem at 49% 15%,rgba(72,98,172,.30),transparent 62%),
+  linear-gradient(180deg,#263b67 0%,#35365f 34%,#4d3456 50%,#1d3155 67%,#06142c 100%);
+}
+
+/* Glass cards on dashboard routes */
+html[data-rise-ui="2"][data-rise-skin="glass"]:is([data-rise-route="home"],[data-rise-route="subjects"],[data-rise-route="analytics"]) .card{
+ color:var(--rg-ink);background:var(--rg-card);border:1px solid var(--rg-line);
+ box-shadow:var(--rg-shadow-soft);backdrop-filter:blur(24px) saturate(135%);-webkit-backdrop-filter:blur(24px) saturate(135%);
+}
+html[data-rise-ui="2"][data-rise-skin="glass"]:is([data-rise-route="home"],[data-rise-route="subjects"],[data-rise-route="analytics"]) .sub,
+html[data-rise-ui="2"][data-rise-skin="glass"]:is([data-rise-route="home"],[data-rise-route="subjects"],[data-rise-route="analytics"]) .tiny{color:var(--rg-sub)}
+html[data-rise-ui="2"][data-rise-skin="glass"]:is([data-rise-route="home"],[data-rise-route="subjects"],[data-rise-route="analytics"]) .h2,
+html[data-rise-ui="2"][data-rise-skin="glass"]:is([data-rise-route="home"],[data-rise-route="subjects"],[data-rise-route="analytics"]) .h3,
+html[data-rise-ui="2"][data-rise-skin="glass"]:is([data-rise-route="home"],[data-rise-route="subjects"],[data-rise-route="analytics"]) .strong,
+html[data-rise-ui="2"][data-rise-skin="glass"]:is([data-rise-route="home"],[data-rise-route="subjects"],[data-rise-route="analytics"]) label{color:var(--rg-ink)}
+html[data-rise-ui="2"][data-rise-skin="glass"]:is([data-rise-route="home"],[data-rise-route="subjects"],[data-rise-route="analytics"]) .eyebrow{color:#9bc0ff}
+html[data-rise-ui="2"][data-rise-skin="glass"]:is([data-rise-route="home"],[data-rise-route="subjects"],[data-rise-route="analytics"]) .notice{
+ background:rgba(255,255,255,.075);border-color:rgba(255,255,255,.12);color:var(--rg-sub)
+}
+html[data-rise-ui="2"][data-rise-skin="glass"]:is([data-rise-route="home"],[data-rise-route="subjects"],[data-rise-route="analytics"]) .progress{background:rgba(255,255,255,.12);height:8px}
+html[data-rise-ui="2"][data-rise-skin="glass"]:is([data-rise-route="home"],[data-rise-route="subjects"],[data-rise-route="analytics"]) .progress>i{
+ background:linear-gradient(90deg,var(--rg-violet),var(--rg-blue),#6fcfff);box-shadow:0 0 12px rgba(119,167,255,.25)
+}
+html[data-rise-ui="2"][data-rise-skin="glass"]:is([data-rise-route="home"],[data-rise-route="subjects"],[data-rise-route="analytics"]) .btn.primary,
+html[data-rise-ui="2"][data-rise-skin="glass"]:is([data-rise-route="home"],[data-rise-route="subjects"],[data-rise-route="analytics"]) .btn.blue{
+ background:linear-gradient(135deg,#668cff,#8b70ff 58%,#a77cff);border:1px solid rgba(255,255,255,.20);color:#fff;
+ box-shadow:0 10px 28px rgba(80,104,237,.30),inset 0 1px 0 rgba(255,255,255,.25)
+}
+html[data-rise-ui="2"][data-rise-skin="glass"]:is([data-rise-route="home"],[data-rise-route="subjects"],[data-rise-route="analytics"]) .btn.ghost,
+html[data-rise-ui="2"][data-rise-skin="glass"]:is([data-rise-route="home"],[data-rise-route="subjects"],[data-rise-route="analytics"]) .btn.soft{
+ background:rgba(255,255,255,.075);border-color:rgba(255,255,255,.13);color:var(--rg-ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)
+}
+
+/* Premium header */
+html[data-rise-ui="2"][data-rise-skin="glass"] .top{border-color:rgba(255,255,255,.11)}
+html[data-rise-ui="2"][data-rise-skin="glass"] .brand .mark{
+ background:linear-gradient(145deg,#80adff,#8f79ff 55%,#de8ecf);box-shadow:0 0 0 1px rgba(255,255,255,.20),0 10px 26px rgba(69,92,210,.34)
+}
+html[data-rise-ui="2"][data-rise-skin="glass"] .riseIconOnly{width:42px;height:42px;padding:0;display:grid;place-items:center;border-radius:14px}
+html[data-rise-ui="2"][data-rise-skin="glass"] .riseIconOnly svg{width:19px;height:19px;stroke:currentColor}
+
+/* Main dashboard injected by rise-glass-v3.js */
+.riseGlassDashboard{display:grid;gap:16px;margin-bottom:18px;animation:riseGlassEnter .5s cubic-bezier(.2,.8,.2,1) both}
+.riseGlassWelcome{display:flex;align-items:end;justify-content:space-between;gap:18px;padding:5px 4px 1px}
+.riseGlassWelcome small{display:block;color:rgba(247,249,255,.72);font-size:11px;font-weight:800;letter-spacing:.10em;margin-bottom:7px}
+.riseGlassWelcome h2{margin:0;color:#fff;font-size:clamp(28px,3.5vw,46px);line-height:1.05;letter-spacing:-.055em;font-weight:900;text-shadow:0 2px 18px rgba(11,24,52,.18)}
+.riseGlassWelcome p{margin:8px 0 0;color:rgba(247,249,255,.72);font-size:12px}
+.riseGlassDate{flex:0 0 auto;padding:9px 13px;border:1px solid rgba(255,255,255,.15);border-radius:999px;background:rgba(20,37,70,.18);backdrop-filter:blur(14px);font-size:11px;font-weight:800;color:rgba(255,255,255,.84)}
+.riseDashTop{display:grid;grid-template-columns:minmax(230px,.88fr) minmax(250px,.94fr) minmax(300px,1.2fr);gap:14px}
+.riseDashMiddle{display:grid;grid-template-columns:minmax(340px,1.04fr) minmax(340px,1.16fr);gap:14px}
+.riseDashCard{position:relative;overflow:hidden;min-width:0;border:1px solid var(--rg-line);border-radius:25px;padding:21px;background:var(--rg-card);box-shadow:var(--rg-shadow);backdrop-filter:blur(26px) saturate(138%);-webkit-backdrop-filter:blur(26px) saturate(138%)}
+.riseDashCard:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 36%,rgba(255,255,255,.02));border-radius:inherit}
+.riseDashCard>*{position:relative;z-index:1}
+.riseDashCardTitle{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.riseDashCardTitle h3{margin:0;color:#fff;font-size:15px;font-weight:850;letter-spacing:-.02em}
+.riseDashCardTitle span{color:var(--rg-muted);font-size:10px;font-weight:800}
+.riseReadinessBody{display:grid;grid-template-columns:1fr 118px;gap:10px;align-items:center;min-height:146px}
+.riseBigNumber{font-size:clamp(52px,6vw,76px);font-weight:300;line-height:.92;letter-spacing:-.055em;color:#fff}
+.riseBigNumber small{font-size:18px;color:var(--rg-sub);font-weight:500;letter-spacing:-.02em;margin-left:5px}
+.riseStatusPill{display:inline-flex;align-items:center;gap:7px;margin-top:14px;padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.08);color:#f7faff;font-size:11px;font-weight:800}
+.riseStatusPill:before{content:"";width:8px;height:8px;border-radius:50%;background:#81d5ff;box-shadow:0 0 12px #81d5ff}
+.riseRing{--v:0;width:116px;height:116px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#8f76ff 0%,#79a9ff calc(var(--v)*1%),rgba(255,255,255,.10) 0);filter:drop-shadow(0 0 14px rgba(116,144,255,.18));transform:rotate(-35deg)}
+.riseRing:after{content:"";width:92px;height:92px;border-radius:50%;background:rgba(29,48,82,.88);box-shadow:inset 0 0 25px rgba(255,255,255,.02)}
+.riseReadinessFoot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:5px;color:var(--rg-sub);font-size:10px}
+.riseMemoryBody{display:grid;grid-template-columns:1fr 112px;gap:14px;align-items:center}
+.riseMemoryPercent{font-size:47px;font-weight:300;letter-spacing:-.05em;color:#fff;line-height:1}.riseMemoryPercent small{font-size:19px;color:var(--rg-sub)}
+.riseMemoryLegend{display:grid;gap:8px;margin-top:17px}.riseMemoryLegendRow{display:grid;grid-template-columns:9px 1fr auto;gap:8px;align-items:center;color:var(--rg-sub);font-size:10.5px}.riseMemoryLegendRow i{width:8px;height:8px;border-radius:50%}.riseMemoryLegendRow b{color:#fff;font-size:10.5px}.riseMemoryLegendRow:nth-child(1) i{background:var(--rg-blue)}.riseMemoryLegendRow:nth-child(2) i{background:var(--rg-green)}.riseMemoryLegendRow:nth-child(3) i{background:var(--rg-orange)}
+.riseMemoryDonut{--a:46;--b:76;width:108px;height:108px;border-radius:50%;background:conic-gradient(var(--rg-blue) 0 calc(var(--a)*1%),var(--rg-green) calc(var(--a)*1%) calc(var(--b)*1%),var(--rg-orange) calc(var(--b)*1%) 100%);display:grid;place-items:center;filter:drop-shadow(0 0 13px rgba(111,151,255,.16))}.riseMemoryDonut:after{content:"";width:72px;height:72px;border-radius:50%;background:rgba(40,54,84,.92);box-shadow:inset 0 0 20px rgba(255,255,255,.02)}
+.risePlan{display:grid;gap:8px}.risePlanRow{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07)}.risePlanRow:last-of-type{border-bottom:0}.risePlanTag{min-width:42px;text-align:center;border-radius:9px;padding:6px 8px;font-size:10px;font-weight:900;color:#fff;background:linear-gradient(135deg,#647dff,#9a72fa)}.risePlanTag.review{background:linear-gradient(135deg,#4abf9f,#55a8ca)}.risePlanTag.mix{background:linear-gradient(135deg,#e7905d,#d573a5)}.risePlanText{min-width:0}.risePlanText b{display:block;color:#fff;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.risePlanText span{display:block;margin-top:2px;color:var(--rg-muted);font-size:9.5px}.risePlanTime{color:var(--rg-sub);font-size:10px;font-weight:700}.risePlanActions{display:flex;gap:8px;margin-top:12px}.risePlanActions .btn{flex:1;min-height:42px;font-size:11px}
+.riseSubjectList{display:grid;gap:11px}.riseSubjectRow{display:grid;grid-template-columns:32px 52px 1fr 42px;gap:9px;align-items:center}.riseSubjectIcon{width:30px;height:30px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);font-size:13px}.riseSubjectName{color:#fff;font-size:11px;font-weight:800}.riseSubjectTrack{height:7px;border-radius:999px;background:rgba(255,255,255,.11);overflow:hidden}.riseSubjectTrack i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#9a72ff,#72a9ff);box-shadow:0 0 10px rgba(117,161,255,.25)}.riseSubjectScore{text-align:right;color:#fff;font-size:11px;font-weight:800}
+.riseWeekStats{display:flex;justify-content:space-between;align-items:end;gap:10px}.riseWeekTotal{font-size:38px;font-weight:300;letter-spacing:-.05em;color:#fff}.riseWeekTotal small{font-size:13px;color:var(--rg-sub);font-weight:700}.riseWeekGoal{font-size:10px;color:var(--rg-sub);text-align:right}.riseWeekChart{height:126px;margin-top:8px;position:relative}.riseWeekChart svg{width:100%;height:100%;overflow:visible}.riseWeekChart .grid{stroke:rgba(255,255,255,.10);stroke-width:1;stroke-dasharray:3 5}.riseWeekChart .line{fill:none;stroke:url(#riseWeekGradient);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(184,105,255,.45))}.riseWeekChart .area{fill:url(#riseWeekArea);opacity:.33}.riseWeekLabels{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-top:4px;color:var(--rg-muted);font-size:9px;text-align:center}
+.riseStreakStrip{display:flex;align-items:center;gap:12px;margin-top:14px;padding:13px 15px;border:1px solid rgba(255,255,255,.10);border-radius:18px;background:rgba(13,30,61,.22)}.riseStreakFlame{font-size:30px;filter:drop-shadow(0 0 12px rgba(255,166,95,.28))}.riseStreakStrip b{display:block;color:#fff;font-size:20px;letter-spacing:-.03em}.riseStreakStrip span{display:block;color:var(--rg-sub);font-size:9.5px;margin-top:2px}
+
+/* Hide v2 overview/hero only on home; v3 dashboard replaces those visuals but keeps their underlying logic untouched. */
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="home"] .riseOverview,
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="home"] main>.riseHero{display:none!important}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="home"] main>.riseHomeSection:not(.riseGlassKeep){margin-top:14px}
+
+/* Subjects */
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="subjects"] main>section:first-of-type{background:var(--rg-card-strong);padding:25px}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="subjects"] .grid.g2{gap:14px}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="subjects"] .grid.g2>.card{min-height:238px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="subjects"] .grid.g2>.card:hover{transform:translateY(-2px);border-color:rgba(155,184,255,.28);box-shadow:0 22px 55px rgba(4,14,38,.26),inset 0 1px 0 rgba(255,255,255,.09)}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="subjects"] .subjectIcon{background:rgba(255,255,255,.08);color:#b9ccff;border-color:rgba(255,255,255,.10)}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="subjects"] .grid.g2>.card:nth-child(1) .subjectIcon{box-shadow:inset 0 0 0 1px rgba(255,105,105,.20);color:#ff9f9f}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="subjects"] .grid.g2>.card:nth-child(2) .subjectIcon{color:#d4a5ff}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="subjects"] .grid.g2>.card:nth-child(3) .subjectIcon{color:#85b5ff}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="subjects"] .grid.g2>.card:nth-child(4) .subjectIcon{color:#78dfc1}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="subjects"] .grid.g2>.card:nth-child(5) .subjectIcon{color:#ffc477}
+
+/* Analytics */
+.riseAnalyticsLead{display:grid;grid-template-columns:minmax(250px,.85fr) minmax(380px,1.15fr);gap:14px;margin-bottom:14px}.riseAnalyticsLead .riseDashCard{min-height:220px}.riseAnalyticsIntro{display:flex;flex-direction:column;justify-content:space-between}.riseAnalyticsIntro p{color:var(--rg-sub);font-size:11px;line-height:1.75;margin:8px 0 0}.riseAnalyticsScore{display:flex;align-items:end;gap:8px;margin-top:20px}.riseAnalyticsScore b{font-size:62px;line-height:.9;font-weight:300;letter-spacing:-.06em;color:#fff}.riseAnalyticsScore span{color:var(--rg-sub);font-size:11px;padding-bottom:6px}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="analytics"] main>section.card:first-of-type{display:none}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="analytics"] table{color:var(--rg-sub)}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="analytics"] th{color:#fff;border-color:rgba(255,255,255,.10)}
+html[data-rise-ui="2"][data-rise-skin="glass"][data-rise-route="analytics"] td{border-color:rgba(255,255,255,.07)}
+
+/* Desktop: the reference visual uses a left rail. */
+@media(min-width:981px){
+ html[data-rise-ui="2"][data-rise-skin="glass"] .top{position:fixed;left:0;top:0;bottom:0;width:194px;height:100vh;z-index:80;padding:28px 16px 18px;background:linear-gradient(180deg,rgba(13,31,66,.78),rgba(7,23,51,.72));border:0;border-right:1px solid rgba(255,255,255,.11);box-shadow:14px 0 45px rgba(3,13,31,.18);backdrop-filter:blur(28px) saturate(135%);-webkit-backdrop-filter:blur(28px) saturate(135%)}
+ html[data-rise-ui="2"][data-rise-skin="glass"] .toprow{height:100%;width:100%;display:flex;flex-direction:column;align-items:stretch;gap:0}
+ html[data-rise-ui="2"][data-rise-skin="glass"] .brand{align-items:center;padding:0 4px}.brand .mark{width:39px;height:39px}.brand h1{font-size:25px;color:#fff;font-weight:600;letter-spacing:.01em}.brand p{font-size:9px;color:rgba(237,243,255,.72);white-space:nowrap;margin-top:4px}
+ html[data-rise-ui="2"][data-rise-skin="glass"] .topBtns{margin-top:auto;display:flex;gap:8px;padding:0 3px}.topBtns .iconBtn{flex:1;color:#fff;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.10)}
+ html[data-rise-ui="2"][data-rise-skin="glass"] .nav{position:fixed;z-index:90;left:16px;top:132px;right:auto;bottom:auto;transform:none;width:162px;padding:0;background:transparent;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+ html[data-rise-ui="2"][data-rise-skin="glass"] .navin{display:grid;grid-template-columns:1fr;gap:7px}
+ html[data-rise-ui="2"][data-rise-skin="glass"] .nav button{display:grid;grid-template-columns:30px 1fr;align-items:center;text-align:left;min-height:47px;padding:8px 10px;border-radius:13px;color:rgba(239,244,255,.76);font-size:11px;font-weight:750}
+ html[data-rise-ui="2"][data-rise-skin="glass"] .nav button b{margin:0;display:grid;place-items:center;font-size:0}.nav button b svg{width:19px;height:19px;stroke:currentColor}
+ html[data-rise-ui="2"][data-rise-skin="glass"] .nav button span{display:block}
+ html[data-rise-ui="2"][data-rise-skin="glass"] .nav button.active{color:#fff;background:linear-gradient(135deg,rgba(111,128,255,.46),rgba(142,112,255,.23));box-shadow:0 8px 22px rgba(80,91,220,.22),inset 0 0 0 1px rgba(255,255,255,.12)}
+ html[data-rise-ui="2"][data-rise-skin="glass"] main{width:auto;max-width:1320px;margin:0 auto 0 194px;padding:34px clamp(24px,3.2vw,48px) 56px}
+ html[data-rise-ui="2"][data-rise-skin="glass"] .app{padding-bottom:0}
+}
+
+/* Mobile/tablet: keep the useful bottom navigation and reduce glass density. */
+@media(max-width:980px){
+ .riseDashTop{grid-template-columns:repeat(2,minmax(0,1fr))}.riseDashTop>.riseDashCard:last-child{grid-column:1/-1}.riseDashMiddle{grid-template-columns:1fr 1fr}
+ html[data-rise-ui="2"][data-rise-skin="glass"] .top{background:rgba(13,30,61,.62);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%)}
+ html[data-rise-ui="2"][data-rise-skin="glass"] .nav{background:rgba(17,35,70,.70);border-color:rgba(255,255,255,.13);box-shadow:0 18px 48px rgba(4,13,34,.32)}
+ html[data-rise-ui="2"][data-rise-skin="glass"] .nav button{color:rgba(237,243,255,.62)}
+ html[data-rise-ui="2"][data-rise-skin="glass"] .nav button.active{color:#fff;background:linear-gradient(145deg,rgba(104,133,255,.35),rgba(154,106,255,.22));box-shadow:inset 0 0 0 1px rgba(255,255,255,.09),0 7px 18px rgba(64,83,215,.16)}
+ html[data-rise-ui="2"][data-rise-skin="glass"] .nav button b svg{width:19px;height:19px;stroke:currentColor}
+}
+@media(max-width:700px){
+ .riseGlassDashboard{gap:11px}.riseGlassWelcome{align-items:start;padding:0 2px 2px}.riseGlassWelcome h2{font-size:28px}.riseGlassWelcome p{font-size:10.5px}.riseGlassDate{display:none}
+ .riseDashTop,.riseDashMiddle{grid-template-columns:1fr}.riseDashTop>.riseDashCard:last-child{grid-column:auto}.riseDashCard{padding:17px;border-radius:21px}
+ .riseReadinessBody{grid-template-columns:1fr 96px;min-height:118px}.riseRing{width:94px;height:94px}.riseRing:after{width:73px;height:73px}.riseBigNumber{font-size:57px}
+ .riseMemoryBody{grid-template-columns:1fr 96px}.riseMemoryDonut{width:94px;height:94px}.riseMemoryDonut:after{width:63px;height:63px}
+ .riseWeekChart{height:106px}.risePlanRow{grid-template-columns:auto minmax(0,1fr) auto}.risePlanActions{flex-direction:column}.riseSubjectRow{grid-template-columns:30px 48px 1fr 38px}
+ .riseAnalyticsLead{grid-template-columns:1fr}.riseAnalyticsLead .riseDashCard{min-height:0}
+ html[data-rise-ui="2"][data-rise-skin="glass"] #kokugoChronologiaQuickLink{bottom:calc(78px + env(safe-area-inset-bottom,0px))!important;font-size:10px!important;padding:8px 10px!important;opacity:.88}
+}
+@media(max-width:420px){.riseDashCard{padding:15px}.riseMemoryPercent{font-size:41px}.riseWeekTotal{font-size:33px}.riseSubjectRow{grid-template-columns:28px 42px 1fr 34px;gap:7px}.riseSubjectName{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.riseGlassDashboard,.riseDashCard,.btn{animation:none!important;transition:none!important}}
+@keyframes riseGlassEnter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
