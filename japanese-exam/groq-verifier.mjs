@@ -144,6 +144,47 @@ export function buildJapaneseVerifierPrompt(chunk) {
   ].join('\n');
 }
 
+export function buildJapaneseFocusedRetryChunk(pack, major, questionId) {
+  const selectedMajor = assertMajor(major);
+  const full = buildJapaneseBlindChunk(pack, selectedMajor);
+  const source = pack.questions.map((question, questionIndex) => ({ question, questionIndex }))
+    .find(({ question }) => question.major === selectedMajor && question.id === questionId);
+  if (!source || !Array.isArray(source.question.marks)) {
+    throw new JapaneseVerificationError('japanese_focus_invalid', '国語の再検証対象が正しくありません。', 400);
+  }
+  const question = full.questions.find(item => item.questionIndex === source.questionIndex);
+  if (!question) throw new JapaneseVerificationError('japanese_focus_missing', '国語の再検証問題を構成できませんでした。', 400);
+
+  const markerTokens = source.question.marks.map(mark => `【${mark.label}】`).filter(Boolean);
+  const narrowed = markerTokens.length ? full.passages
+    .map(passage => ({
+      ...passage,
+      paragraphs: passage.paragraphs.filter(paragraph => markerTokens.some(token => paragraph.includes(token)))
+    }))
+    .filter(passage => passage.paragraphs.length > 0) : [];
+
+  return Object.freeze({
+    schemaVersion: 1,
+    major: selectedMajor,
+    focused: true,
+    passages: narrowed.length ? narrowed : full.passages,
+    questions: [question]
+  });
+}
+
+export function buildJapaneseFocusedRetryPrompt(chunk) {
+  return [
+    'This is a focused second-pass audit of exactly one structured Japanese entrance-exam question.',
+    'Ignore any earlier solution and solve this question from scratch. The author answer key and explanations remain hidden.',
+    'Return exactly one valid JSON object using the same verifier shape and exactly one answers[] item for the supplied questionIndex.',
+    'marks are literal answer slots in the exact supplied order. Give one zero-based choice index per slot in markChoiceIndexes and answerChoiceIndexes=[].',
+    'If skill=connective_relation, treat every blank separately. First determine the local discourse relation around that blank: summary/restatement, contrast/reframing, addition, example, or alternative. Then choose the connective whose ordinary Japanese function matches that relation. Do not reuse a connective merely because another blank used it; reuse only when the local relation truly matches.',
+    'Cite exact text from the supplied passage for the structured answer. Do not invent text and do not output prose outside JSON.',
+    '',
+    JSON.stringify(chunk)
+  ].join('\n');
+}
+
 function diagnosticAnswers(result) {
   if (!Array.isArray(result?.answers)) return 'no_answers';
   return result.answers.map(answer => ({
@@ -205,30 +246,84 @@ export function verifyJapaneseChunkAgreement(pack, major, result, threshold = JA
   return { ok: errors.length === 0, errors };
 }
 
+function structuredRetryTargets(pack, major, errors) {
+  const selectedMajor = assertMajor(major);
+  const retryableCodes = new Set(['mark_disagreement', 'mark_count', 'missing_evidence', 'evidence_quote']);
+  const targets = new Set();
+  for (const error of errors) {
+    const match = /^([^:]+):(.+)$/.exec(error);
+    if (!match || !retryableCodes.has(match[1])) return [];
+    const question = pack.questions.find(item => item.major === selectedMajor && item.id === match[2]);
+    if (!question || !Array.isArray(question.marks)) return [];
+    targets.add(question.id);
+  }
+  return [...targets];
+}
+
+function mergeFocusedAnswer(baseOutput, focusedOutput, questionIndex) {
+  const shape = validateJapaneseVerifierShape(focusedOutput);
+  if (!shape.ok || focusedOutput.pass !== true || focusedOutput.answers.length !== 1) return baseOutput;
+  const focused = focusedOutput.answers[0];
+  if (focused.questionIndex !== questionIndex) return baseOutput;
+  return {
+    ...baseOutput,
+    answers: baseOutput.answers.map(answer => answer.questionIndex === questionIndex ? focused : answer)
+  };
+}
+
+async function callJapaneseVerifier(env, chunk, focused = false) {
+  return callGroqJson(env, {
+    input: focused ? buildJapaneseFocusedRetryPrompt(chunk) : buildJapaneseVerifierPrompt(chunk),
+    schema: JAPANESE_GROQ_SCHEMA,
+    schemaName: focused ? `rise_japanese_focus_${chunk.major}_blind_verification` : `rise_japanese_major_${chunk.major}_blind_verification`,
+    responseMode: 'text_json',
+    maxOutputTokens: focused ? 1400 : (chunk.major === 1 || chunk.major === 3 ? 3200 : 2000),
+    temperature: 0,
+    reasoningEffort: focused ? 'medium' : 'low',
+    systemInstruction: focused
+      ? 'Return only one valid JSON object. Re-solve the single structured Japanese question independently from the visible text. Never infer or request an author answer key.'
+      : 'Return only one valid JSON object. Independently solve the Japanese entrance-exam section from the visible text. Never infer or request an author answer key.'
+  });
+}
+
 export async function verifyJapaneseMajorWithGroq(env, pack, major) {
   const chunk = buildJapaneseBlindChunk(pack, major);
   let verified;
   try {
-    verified = await callGroqJson(env, {
-      input: buildJapaneseVerifierPrompt(chunk),
-      schema: JAPANESE_GROQ_SCHEMA,
-      schemaName: `rise_japanese_major_${chunk.major}_blind_verification`,
-      responseMode: 'text_json',
-      maxOutputTokens: chunk.major === 1 || chunk.major === 3 ? 3200 : 2000,
-      temperature: 0,
-      reasoningEffort: 'low',
-      systemInstruction: 'Return only one valid JSON object. Independently solve the Japanese entrance-exam section from the visible text. Never infer or request an author answer key.'
-    });
+    verified = await callJapaneseVerifier(env, chunk, false);
   } catch (error) {
     if (error instanceof GroqProviderError) throw error;
     throw new JapaneseVerificationError('japanese_verification_unavailable', '国語の独立検証を実行できませんでした。', 503);
   }
-  const agreement = verifyJapaneseChunkAgreement(pack, chunk.major, verified.output);
+
+  let output = verified.output;
+  let agreement = verifyJapaneseChunkAgreement(pack, chunk.major, output);
+  const targets = agreement.ok ? [] : structuredRetryTargets(pack, chunk.major, agreement.errors);
+  for (const questionId of targets) {
+    const focusedChunk = buildJapaneseFocusedRetryChunk(pack, chunk.major, questionId);
+    let retry;
+    try {
+      retry = await callJapaneseVerifier(env, focusedChunk, true);
+    } catch (error) {
+      if (error instanceof GroqProviderError) throw error;
+      throw new JapaneseVerificationError('japanese_verification_unavailable', '国語の構造問題を再検証できませんでした。', 503);
+    }
+    output = mergeFocusedAnswer(output, retry.output, focusedChunk.questions[0].questionIndex);
+  }
+  if (targets.length) agreement = verifyJapaneseChunkAgreement(pack, chunk.major, output);
+
   if (!agreement.ok) {
-    const detail = JSON.stringify(diagnosticAnswers(verified.output));
+    const detail = JSON.stringify(diagnosticAnswers(output));
     throw new JapaneseVerificationError('japanese_verification_rejected', '国語の独立検証で正答・根拠・一意性の一致を確認できませんでした。', 422, `${agreement.errors.slice(0, 12).join('|')} :: ${detail}`);
   }
-  return { major: chunk.major, questionCount: chunk.questions.length, provider: verified.provider, model: verified.model, output: verified.output };
+  return {
+    major: chunk.major,
+    questionCount: chunk.questions.length,
+    provider: verified.provider,
+    model: verified.model,
+    focusedRetryCount: targets.length,
+    output
+  };
 }
 
 export async function verifyJapanesePackWithGroq(env, pack, { cooldownMs = 61000, sleep = ms => new Promise(resolve => setTimeout(resolve, ms)) } = {}) {
@@ -244,6 +339,7 @@ export async function verifyJapanesePackWithGroq(env, pack, { cooldownMs = 61000
     provider: checks[0]?.provider || 'groq',
     model: checks[0]?.model || String(env.GROQ_MODEL || ''),
     questionCount: checks.reduce((sum, check) => sum + check.questionCount, 0),
+    focusedRetryCount: checks.reduce((sum, check) => sum + Number(check.focusedRetryCount || 0), 0),
     majors: checks.map(check => check.major)
   };
 }

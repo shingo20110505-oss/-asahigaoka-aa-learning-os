@@ -3,9 +3,12 @@ import { starterPacks } from '../japanese-exam/starter-packs.mjs';
 import {
   JAPANESE_GROQ_SCHEMA,
   buildJapaneseBlindChunk,
+  buildJapaneseFocusedRetryChunk,
+  buildJapaneseFocusedRetryPrompt,
   buildJapaneseVerifierPrompt,
   validateJapaneseVerifierShape,
   verifyJapaneseChunkAgreement,
+  verifyJapaneseMajorWithGroq,
   verifyJapanesePackWithGroq
 } from '../japanese-exam/groq-verifier.mjs';
 
@@ -103,6 +106,18 @@ for (const major of [1, 2, 3, 4]) {
   }
 }
 
+const structuredQuestion = pack.questions.find(question => question.major === 1 && Array.isArray(question.marks));
+const focusedChunk = buildJapaneseFocusedRetryChunk(pack, 1, structuredQuestion.id);
+check(focusedChunk.focused === true, 'focused retry chunk is explicitly marked');
+check(focusedChunk.questions.length === 1, 'focused retry contains exactly one question');
+check(focusedChunk.questions[0].questionIndex === pack.questions.indexOf(structuredQuestion), 'focused retry preserves original question index');
+check(!JSON.stringify(focusedChunk).includes('"answers"'), 'focused retry remains blind to answer key');
+check(!JSON.stringify(focusedChunk).includes('"explanation"'), 'focused retry remains blind to explanations');
+check(focusedChunk.passages.some(passage => passage.paragraphs.some(paragraph => paragraph.includes('【X】'))), 'focused retry retains marked passage context');
+const focusedPrompt = buildJapaneseFocusedRetryPrompt(focusedChunk);
+check(focusedPrompt.includes('focused second-pass audit'), 'focused retry prompt identifies second-pass audit');
+check(focusedPrompt.includes('treat every blank separately'), 'focused retry prompt requires per-slot connective reasoning');
+
 check(JAPANESE_GROQ_SCHEMA.additionalProperties === false, 'reference schema keeps strict root');
 check(JAPANESE_GROQ_SCHEMA.properties.answers.items.additionalProperties === false, 'reference schema keeps strict answer object');
 check(!('choiceRelations' in JAPANESE_GROQ_SCHEMA.properties.answers.items.properties), 'compact schema omits distractor classifications');
@@ -110,13 +125,28 @@ check(!('reasonCode' in JAPANESE_GROQ_SCHEMA.properties.answers.items.properties
 
 const originalFetch = globalThis.fetch;
 const requests = [];
+let injectStructuredMismatch = false;
 globalThis.fetch = async (_url, init) => {
   const body = JSON.parse(init.body);
   requests.push({ init, body });
   const userPrompt = body.messages.find(message => message.role === 'user').content;
   const payload = JSON.parse(userPrompt.slice(userPrompt.lastIndexOf('\n') + 1));
+  let responseFixture = fixtureForMajor(payload.major);
+
+  if (payload.focused === true) {
+    const targetIndex = payload.questions[0].questionIndex;
+    responseFixture = {
+      pass: true,
+      answers: responseFixture.answers.filter(answer => answer.questionIndex === targetIndex)
+    };
+  } else if (injectStructuredMismatch && payload.major === 1) {
+    const structured = responseFixture.answers.find(answer => Array.isArray(pack.questions[answer.questionIndex].marks));
+    structured.markChoiceIndexes[0] = (structured.markChoiceIndexes[0] + 1) % pack.questions[structured.questionIndex].choices.length;
+    injectStructuredMismatch = false;
+  }
+
   return new Response(JSON.stringify({
-    choices: [{ message: { content: JSON.stringify(fixtureForMajor(payload.major)) } }]
+    choices: [{ message: { content: JSON.stringify(responseFixture) } }]
   }), { status: 200, headers: { 'content-type': 'application/json' } });
 };
 
@@ -127,15 +157,16 @@ try {
   check(result.provider === 'groq', 'provider is Groq');
   check(result.model === 'openai/gpt-oss-20b', 'model propagated');
   check(result.questionCount === pack.questions.length, 'all questions verified');
+  check(result.focusedRetryCount === 0, 'clean pack needs no focused retry');
   check(JSON.stringify(result.majors) === JSON.stringify([1,2,3,4]), 'all majors verified');
-  check(requests.length === 4, 'one Groq request per major');
+  check(requests.length === 4, 'one Groq request per major when all answers agree');
   for (const { init, body } of requests.slice(0, 4)) {
     check(init.headers.authorization === 'Bearer test-groq-key', 'server-side Groq secret used');
     check(body.model === 'openai/gpt-oss-20b', 'caller-selected verifier model preserved');
     check(body.response_format === undefined, 'Japanese verifier leaves Groq response format unforced');
     check(body.reasoning_format === undefined && body.include_reasoning === false, 'GPT-OSS text mode excludes reasoning with include_reasoning');
     check(body.messages.length === 1 && body.messages[0].role === 'user', 'text JSON mode keeps GPT-OSS instructions in one user message');
-    check(body.temperature === 0 && body.reasoning_effort === 'low', 'all Japanese majors use low reasoning for final-answer budget');
+    check(body.temperature === 0 && body.reasoning_effort === 'low', 'normal Japanese verification uses low reasoning for final-answer budget');
     const prompt = body.messages.find(message => message.role === 'user').content;
     const blind = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
     const expectedBudget = blind.major === 1 || blind.major === 3 ? 3200 : 2000;
@@ -144,12 +175,26 @@ try {
     check(!JSON.stringify(blind).includes('"explanation"'), 'request does not reveal explanations');
   }
 
+  const beforeFocused = requests.length;
+  injectStructuredMismatch = true;
+  const recovered = await verifyJapaneseMajorWithGroq(env, pack, 1);
+  check(recovered.focusedRetryCount === 1, 'structured disagreement triggers exactly one focused retry');
+  check(requests.length === beforeFocused + 2, 'focused recovery uses one initial request plus one retry');
+  const retryBody = requests.at(-1).body;
+  const retryPromptText = retryBody.messages[0].content;
+  const retryPayload = JSON.parse(retryPromptText.slice(retryPromptText.lastIndexOf('\n') + 1));
+  check(retryPayload.focused === true && retryPayload.questions.length === 1, 'retry request is narrowly focused');
+  check(retryBody.reasoning_effort === 'medium', 'focused structured retry receives extra reasoning budget');
+  check(retryBody.max_completion_tokens === 1400, 'focused structured retry keeps output budget small');
+  check(!JSON.stringify(retryPayload).includes('"answers"'), 'focused retry does not reveal answer key');
+  check(!JSON.stringify(retryPayload).includes('"explanation"'), 'focused retry does not reveal explanations');
+
   const waits = [];
   await verifyJapanesePackWithGroq(env, pack, { cooldownMs: 7, sleep: async ms => { waits.push(ms); } });
   check(JSON.stringify(waits) === JSON.stringify([7,7,7]), 'free-tier pacing waits between every major');
-  check(requests.length === 8, 'paced verification still performs exactly four more requests');
+  check(requests.length === beforeFocused + 6, 'paced verification adds exactly four normal requests after focused recovery test');
 } finally {
   globalThis.fetch = originalFetch;
 }
 
-console.log(JSON.stringify({ ok: true, checks, provider: 'groq', apiCallsPerPack: 4, cooldownsPerPack: 3, outputContract: 'unforced-text-json-plus-local-strict-validation' }));
+console.log(JSON.stringify({ ok: true, checks, provider: 'groq', baseApiCallsPerPack: 4, focusedRetry: 'blind-on-structured-disagreement', cooldownsPerPack: 3, outputContract: 'unforced-text-json-plus-local-strict-validation' }));
