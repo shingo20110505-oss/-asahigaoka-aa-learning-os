@@ -1,7 +1,7 @@
 (()=>{'use strict';
 if(window.__RISE_NAVIGATION_V1__)return;
 const CORE_ROUTES=new Set(['home','subjects','analytics','settings']);
-const SETTINGS_RENDER_ACTIONS=new Set(['theme','copy-backup','import-open','import-do','modal-close','reset']);
+const SETTINGS_RENDER_ACTIONS=new Set(['theme','grammar','copy-backup','import-open','import-do','modal-close','reset']);
 const root=document.documentElement;
 let sequence=0;
 function shell(){return window.AA_APP?.get?.('appShell')||null}
@@ -27,11 +27,22 @@ function scheduleRiseRender(route,source,id){
 }
 function scheduleSettingsRecovery(action){
  const route=stateRoute();
- const fire=()=>document.dispatchEvent(new CustomEvent('aa:v23ready',{detail:{source:'settings-recovery',route,action}}));
+ const fire=()=>{
+  document.dispatchEvent(new CustomEvent('aa:v23ready',{detail:{source:'settings-recovery',route,action}}));
+  const app=document.getElementById('app');
+  if(app){const pulse=document.createComment(`rise-settings-sync:${action}:${Date.now()}`);app.appendChild(pulse);pulse.remove()}
+ };
  queueMicrotask(fire);
  requestAnimationFrame(fire);
  setTimeout(fire,40);
  setTimeout(fire,140);
+}
+function recoverSettingsAction(action){
+ if(!SETTINGS_RENDER_ACTIONS.has(action))return false;
+ if(stateRoute()!=='settings'&&action!=='theme')return false;
+ concealLegacyGap(`settings:${action}`);
+ scheduleSettingsRecovery(action);
+ return true;
 }
 function navigateCore(route,source='ui'){
  if(!CORE_ROUTES.has(route))return false;
@@ -69,11 +80,16 @@ document.addEventListener('click',e=>{
   e.preventDefault();e.stopImmediatePropagation();navigateCore(route,'route-control');return;
  }
  const actionTarget=e.target.closest?.('[data-action]');
- const action=actionTarget?.dataset?.action;
- if(SETTINGS_RENDER_ACTIONS.has(action)&&(stateRoute()==='settings'||action==='theme')){
-  concealLegacyGap(`settings:${action}`);
-  scheduleSettingsRecovery(action);
- }
+ recoverSettingsAction(actionTarget?.dataset?.action);
 },true);
-window.__RISE_NAVIGATION_V1__=Object.freeze({version:'1.0.2',uiSync:'preconceal-legacy-render-and-deterministic-multiphase-rise-recovery',coreRoutes:[...CORE_ROUTES],settingsRenderActions:[...SETTINGS_RENDER_ACTIONS],navigate:navigateCore,review:navigateReview,current:stateRoute});
+document.addEventListener('change',e=>{
+ const actionTarget=e.target.closest?.('[data-action]');
+ recoverSettingsAction(actionTarget?.dataset?.action);
+},true);
+document.addEventListener('rise:settings-changed',e=>{
+ if(stateRoute()!=='settings')return;
+ concealLegacyGap(`settings:${e.detail?.source||'changed'}`);
+ scheduleSettingsRecovery(e.detail?.source||'changed');
+});
+window.__RISE_NAVIGATION_V1__=Object.freeze({version:'1.0.3',uiSync:'preconceal-all-settings-legacy-renders-and-deterministic-multiphase-rise-recovery',coreRoutes:[...CORE_ROUTES],settingsRenderActions:[...SETTINGS_RENDER_ACTIONS],navigate:navigateCore,review:navigateReview,current:stateRoute});
 })();
