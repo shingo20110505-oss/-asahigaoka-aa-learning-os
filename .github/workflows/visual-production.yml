@@ -18,7 +18,7 @@ jobs:
   visual:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 10
     steps:
       - name: Resolve published source
         id: source
@@ -50,22 +50,21 @@ jobs:
           done
           test "$ok" = 1
           grep -q '"management": "validated-main-direct-to-pages"' /tmp/release.json
+          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}index.html?visual_asset=${SOURCE_SHA}" -o /tmp/index.html
+          grep -q 'navigation-runtime-v1.js?v=1.0.0' /tmp/index.html
+          grep -q 'pwa-runtime.js?v=4.3.0' /tmp/index.html
+          ! grep -q '<script src="./app/ui/rise-stable-root-v4.js' /tmp/index.html
+          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/navigation/navigation-runtime-v1.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-nav.js
+          grep -q "version:'1.0.0'" /tmp/rise-nav.js
+          grep -q "uiSync:'explicit-after-state-render'" /tmp/rise-nav.js
+          grep -q 'stopImmediatePropagation' /tmp/rise-nav.js
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-ui-v4.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-ui-v4.js
           grep -q "version:'4.2.0'" /tmp/rise-ui-v4.js
           grep -q 'function homeHTML' /tmp/rise-ui-v4.js
           grep -q 'function subjectsHTML' /tmp/rise-ui-v4.js
           grep -q 'function analyticsHTML' /tmp/rise-ui-v4.js
           grep -q 'function settingsHTML' /tmp/rise-ui-v4.js
-          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-stable-root-v4.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-stable-root-v4.js
-          grep -q "version:'2.3.0'" /tmp/rise-stable-root-v4.js
-          grep -q "prewarm:'none-on-demand'" /tmp/rise-stable-root-v4.js
-          ! grep -q 'warmPrimary' /tmp/rise-stable-root-v4.js
-          ! grep -q 'clickUnderlying' /tmp/rise-stable-root-v4.js
-          grep -q "reviewNavigation:'canonical-page'" /tmp/rise-stable-root-v4.js
-          grep -q 'goReview' /tmp/rise-stable-root-v4.js
-          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}index.html?visual_asset=${SOURCE_SHA}" -o /tmp/index.html
-          grep -q 'rise-stable-root-v4.js?v=2.3.0' /tmp/index.html
-          grep -q 'pwa-runtime.js?v=4.2.1' /tmp/index.html
+          node --check scripts/rise-navigation-diagnostic.mjs
           node --check scripts/rise-visual-cdp.mjs
 
       - name: Install Japanese rendering fonts
@@ -75,6 +74,14 @@ jobs:
           sudo apt-get install -y --no-install-recommends fonts-noto-cjk
           fc-cache -f
           fc-match 'sans-serif:lang=ja'
+
+      - name: Trace unexpected document navigation
+        run: |
+          set -euo pipefail
+          CHROME_PATH=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
+          test -n "$CHROME_PATH"
+          export CHROME_PATH
+          node scripts/rise-navigation-diagnostic.mjs
 
       - name: Capture and validate all production screens via CDP
         env:
@@ -88,6 +95,9 @@ jobs:
           node scripts/rise-visual-cdp.mjs
           grep -q '^result=success$' visual-evidence/manifest.txt
           grep -q '^cold_start_home=success$' visual-evidence/manifest.txt
+          grep -q '^single_navigation_owner=success$' visual-evidence/manifest.txt
+          grep -q '^single_live_dom=success$' visual-evidence/manifest.txt
+          grep -q '^route_switch_stress=success$' visual-evidence/manifest.txt
           grep -q '^settings_menu_navigation=success$' visual-evidence/manifest.txt
           grep -q '^review_canonical_click_navigation=success$' visual-evidence/manifest.txt
           test "$(find visual-evidence -maxdepth 1 -name '*.png' | wc -l)" -eq 10
@@ -110,13 +120,11 @@ jobs:
             echo '## Rise production visual evidence'
             echo ''
             echo "- Source: \`${SOURCE_SHA}\`"
+            echo '- Navigation owner: `app/navigation/navigation-runtime-v1.js` only'
+            echo '- No cloned stable-root UI is executed.'
             echo '- Screens: home / study / record / settings / review'
             echo '- Mobile: `390x844` / iPhone User-Agent'
             echo '- Desktop: `1440x1000`'
-            echo '- Chrome DevTools Protocol waits for the actual visible Rise ready state.'
-            echo '- No hidden route-prewarm clicks are allowed; HOME must remain HOME on cold start.'
-            echo '- Study and Record are opened by their real bottom-navigation buttons.'
-            echo '- Settings is opened through the real hamburger menu and Settings item.'
-            echo '- Review is clicked from the main app and must navigate to the canonical `/review/` page.'
-            echo '- Each route starts from a fresh browser profile and stores both DOM HTML and PNG evidence.'
+            echo '- Route stress and unexpected top-level Document navigation are hard failures.'
+            echo '- Review must leave the main shell and reach canonical `/review/`.'
           } >> "$GITHUB_STEP_SUMMARY"
