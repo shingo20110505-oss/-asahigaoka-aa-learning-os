@@ -1,5 +1,5 @@
 'use strict';
-const VERSION='2.5.313-quality2-chronologia1000-aichi-math-application-1.0.1-20260902-japanese-exam-1.0.0-math-full-1.1.0-social-application-1.0.0-science-exam-1.0.0-phase2-rise-ui-v4-20260903';
+const VERSION='2.5.314-quality2-chronologia1000-aichi-math-application-1.0.1-20260902-japanese-exam-1.0.0-math-full-1.1.0-social-application-1.0.0-science-exam-1.0.0-phase2-rise-ui-v4-mobileboot-20260903';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;
