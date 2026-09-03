@@ -47,6 +47,8 @@ html.aa-app-boot-error #riseBootRecovery{visibility:visible!important;position:f
 <!-- Must run before the legacy runtime: blocks its obsolete controllerchange -> location.reload handler. -->
 <script src="./app/pwa/legacy-controller-reload-guard-v1.js?v=1.0.0"></script>
 <script src="./app/legacy/main-runtime.js"></script>
+<!-- Prevent any later legacy render from becoming visible on Rise core routes. -->
+<script src="./app/ui/rise-legacy-shell-guard-v1.js?v=1.0.0"></script>
 <script src="./learning-engine-v15.js"></script>
 <script src="./japanese-vocabulary-10000.js"></script>
 <script src="./curriculum-v2-data.js"></script>
@@ -68,7 +70,7 @@ html.aa-app-boot-error #riseBootRecovery{visibility:visible!important;position:f
 <script src="./app/qa/qa-runtime.js"></script>
 <!-- NON-EXECUTABLE LEGACY CI METADATA ONLY: ./app/ui/rise-stable-root-v4.js?v=2.3.0 | ./app/pwa/pwa-runtime.js?v=4.2.1 | ./app/ui/rise-structure-v4.css?v=4.2.0 | aa:v23ready -->
 <!-- PHASE-2 UI: one state owner, one navigation owner, one live DOM; no cloned stable-root UI. -->
-<script src="./app/navigation/navigation-runtime-v1.js?v=1.0.2"></script>
+<script src="./app/navigation/navigation-runtime-v1.js?v=1.0.3"></script>
 <script src="./app/ui/rise-ui-v4.js?v=4.2.0"></script>
 </body>
 </html>
