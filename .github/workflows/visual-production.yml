@@ -44,6 +44,14 @@ jobs:
           test "$ok" = 1
           grep -q '"management": "validated-main-direct-to-pages"' /tmp/release.json
 
+      - name: Install Japanese rendering fonts
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+          fc-cache -f
+          fc-match 'sans-serif:lang=ja'
+
       - name: Capture mobile and desktop production screenshots
         id: capture
         run: |
@@ -56,9 +64,11 @@ jobs:
           capture(){
             name="$1"; width="$2"; height="$3"; ua="$4"
             out="visual-evidence/${name}.png"
+            dom="visual-evidence/${name}.html"
             profile="/tmp/rise-visual-${name}-${SOURCE_SHA}"
+            target="${PAGE_URL}?visual_verify=1&verify=${SOURCE_SHA}&viewport=${name}"
             rm -rf "$profile"
-            args=(
+            common=(
               --headless=new
               --no-sandbox
               --disable-gpu
@@ -69,10 +79,23 @@ jobs:
               --user-data-dir="$profile"
               --virtual-time-budget=15000
               --run-all-compositor-stages-before-draw
-              --screenshot="$out"
             )
-            if [ -n "$ua" ]; then args+=(--user-agent="$ua"); fi
-            timeout 120s "$CHROME" "${args[@]}" "${PAGE_URL}?visual_verify=1&verify=${SOURCE_SHA}&viewport=${name}"
+            if [ -n "$ua" ]; then common+=(--user-agent="$ua"); fi
+
+            timeout 120s "$CHROME" "${common[@]}" --dump-dom "$target" > "$dom"
+            grep -q 'data-rise-structure="optimized-4"' "$dom"
+            grep -q '<h1>Rise</h1>' "$dom"
+            grep -q 'riseHomeV4' "$dom"
+            grep -q '>ホーム<' "$dom"
+            grep -q '>学習<' "$dom"
+            grep -q '>復習<' "$dom"
+            grep -q '>記録<' "$dom"
+            if grep -q 'id="aaLoginSetup"' "$dom"; then
+              echo "first-run setup modal obscures ${name}" >&2
+              exit 1
+            fi
+
+            timeout 120s "$CHROME" "${common[@]}" --screenshot="$out" "$target"
             test -s "$out"
             python3 - "$out" "$width" "$height" <<'PY'
           import os, struct, sys
@@ -100,9 +123,10 @@ jobs:
             echo "page_url=${PAGE_URL}"
             echo "captured_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
             echo "mobile=rise-mobile-390x844.png"
-            echo "mobile_mode=Chromium+iPhone-UA+390x844"
+            echo "mobile_mode=Chromium+iPhone-UA+390x844+Noto-CJK"
             echo "desktop=rise-desktop-1440x1000.png"
-            echo "desktop_mode=Chromium+1440x1000"
+            echo "desktop_mode=Chromium+1440x1000+Noto-CJK"
+            echo "dom_gate=Rise+optimized-4+home+study+review+record+no-login-setup"
             sha256sum visual-evidence/rise-mobile-390x844.png
             sha256sum visual-evidence/rise-desktop-1440x1000.png
           } > visual-evidence/manifest.txt
@@ -125,6 +149,8 @@ jobs:
             echo "- Source: \`${SOURCE_SHA}\`"
             echo "- Mobile: \`390x844\` / iPhone User-Agent"
             echo "- Desktop: \`1440x1000\`"
+            echo '- Japanese Noto CJK fonts installed before rendering.'
+            echo '- DOM gate confirms Rise, optimized four-item navigation, home panel, and no first-run setup overlay.'
             echo '- PNG signature, exact dimensions, and minimum file size validated.'
             echo '- Screenshots are stored in the rise-production-screenshots artifact.'
             echo ''
