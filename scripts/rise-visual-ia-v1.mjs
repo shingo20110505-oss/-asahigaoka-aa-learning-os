@@ -23,6 +23,8 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const hash=b=>createHash('sha256').update(b).digest('hex');
 function pngSize(b){if(b.subarray(0,8).toString('hex')!=='89504e470d0a1a0a')throw new Error('bad png');return[b.readUInt32BE(16),b.readUInt32BE(20)]}
 async function freePort(){return await new Promise((resolve,reject)=>{const server=net.createServer();server.unref();server.on('error',reject);server.listen(0,'127.0.0.1',()=>{const address=server.address();const port=typeof address==='object'&&address?address.port:0;server.close(err=>err?reject(err):resolve(port))})})}
+function waitChildExit(p,timeout=3000){return new Promise(resolve=>{if(p.exitCode!==null||p.signalCode!==null)return resolve(true);let settled=false;const finish=value=>{if(settled)return;settled=true;clearTimeout(timer);p.off('exit',onExit);p.off('error',onExit);resolve(value)};const onExit=()=>finish(true);const timer=setTimeout(()=>finish(false),timeout);p.once('exit',onExit);p.once('error',onExit)})}
+async function cleanupChrome(p,profile){try{if(p.exitCode===null)p.kill('SIGTERM')}catch{};let exited=await waitChildExit(p,2500);if(!exited){try{if(p.exitCode===null)p.kill('SIGKILL')}catch{};await waitChildExit(p,2500)}await sleep(250);try{await rm(profile,{recursive:true,force:true,maxRetries:8,retryDelay:250})}catch(error){console.warn(`profile cleanup skipped: ${error?.code||error}`)}}
 async function launch(view){
  const profile=path.join(os.tmpdir(),`rise-ia-${view.name}-${Date.now()}-${Math.random()}`);await mkdir(profile,{recursive:true});
  const port=await freePort();
@@ -34,13 +36,13 @@ async function launch(view){
   try{const response=await fetch(`http://127.0.0.1:${port}/json/version`,{signal:AbortSignal.timeout(1200)});if(response.ok){const info=await response.json();if(info.webSocketDebuggerUrl){browserWs=info.webSocketDebuggerUrl;break}}}catch{}
   await sleep(180);
  }
- if(!browserWs){try{p.kill('SIGKILL')}catch{};await rm(profile,{recursive:true,force:true});throw new Error(`chrome startup failed exit=${p.exitCode} port=${port} ${err.slice(-1400)}`)}
+ if(!browserWs){await cleanupChrome(p,profile);throw new Error(`chrome startup failed exit=${p.exitCode} port=${port} ${err.slice(-1400)}`)}
  const pageResponse=await fetch(`http://127.0.0.1:${port}/json/new?about:blank`,{method:'PUT',signal:AbortSignal.timeout(5000)});if(!pageResponse.ok)throw new Error(`chrome page create failed ${pageResponse.status}`);const page=await pageResponse.json();
  const ws=new WebSocket(page.webSocketDebuggerUrl);await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error('cdp websocket timeout')),10000);ws.onopen=()=>{clearTimeout(timer);resolve()};ws.onerror=e=>{clearTimeout(timer);reject(e)}});
  let id=0;const pending=new Map(),docs=[];ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id&&pending.has(m.id)){const q=pending.get(m.id);pending.delete(m.id);m.error?q.reject(new Error(JSON.stringify(m.error))):q.resolve(m.result)}else if(m.method==='Network.requestWillBeSent'&&m.params?.type==='Document')docs.push(m.params.request?.url||'')};
  const cmd=(method,params={})=>new Promise((resolve,reject)=>{const n=++id;pending.set(n,{resolve,reject});ws.send(JSON.stringify({id:n,method,params}))});
  await cmd('Page.enable');await cmd('Runtime.enable');await cmd('Network.enable');await cmd('Emulation.setDeviceMetricsOverride',{width:view.width,height:view.height,screenWidth:view.width,screenHeight:view.height,deviceScaleFactor:1,mobile:!!view.ua});if(view.ua){await cmd('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:5});await cmd('Network.setUserAgentOverride',{userAgent:view.ua})}
- return{...view,cmd,docs,close:async()=>{try{ws.close()}catch{};try{p.kill('SIGKILL')}catch{};await rm(profile,{recursive:true,force:true})}}
+ return{...view,cmd,docs,close:async()=>{try{ws.close()}catch{};await sleep(80);await cleanupChrome(p,profile)}}
 }
 async function ev(c,expression){const r=await c.cmd('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw new Error(JSON.stringify(r.exceptionDetails));return r.result?.value}
 async function wait(c,expression,label,timeout=18000){const start=Date.now();while(Date.now()-start<timeout){try{if(await ev(c,expression))return}catch{}await sleep(100)}throw new Error(label+' timeout '+JSON.stringify(await ev(c,`({route:document.documentElement.dataset.riseRoute,text:(document.body?.innerText||'').slice(0,900),boot:document.documentElement.classList.contains('aa-app-booting'),error:document.documentElement.dataset.riseRuntimeError||''})`).catch(()=>null)))}
