@@ -1,6 +1,6 @@
 (()=>{'use strict';
 if(window.__RISE_STABLE_ROOT_V4__)return;
-window.__RISE_STABLE_ROOT_V4__={version:'2.1.0',performance:'2.2',navigation:'instant-four-tab',firstLoad:'immediate-capture',prewarm:'primary-only',reviewNavigation:'canonical-page'};
+window.__RISE_STABLE_ROOT_V4__={version:'2.2.0',performance:'2.3',navigation:'instant-four-tab',firstLoad:'immediate-capture',prewarm:'all-custom',reviewNavigation:'canonical-page'};
 const root=document.documentElement,app=document.getElementById('app');
 if(!app)return;
 const host=document.createElement('main');
@@ -8,7 +8,7 @@ host.id='riseStableMain';host.hidden=true;host.setAttribute('aria-live','polite'
 const panesHost=document.createElement('div');panesHost.id='riseStablePanes';host.appendChild(panesHost);
 app.insertAdjacentElement('afterend',host);
 const custom={home:'.riseHomeV4',subjects:'.riseSubjectsV4',analytics:'.riseAnalyticsV4',settings:'.riseSettingsV4'};
-const primary=['home','subjects','analytics'];
+const primary=['home','subjects','analytics','settings'];
 const panelSelector=Object.values(custom).map(s=>`${s}[data-ui-ver="4.2.0"]`).join(',');
 const params=new URLSearchParams(location.search),visualRoute=params.get('visual_route');
 const visualMode=params.get('visual_verify')==='1'&&Object.hasOwn(custom,visualRoute||'');
@@ -17,7 +17,7 @@ let visualRouteApplied=false,displayRoute='home',warming=false,warmStarted=false
 const panes=new Map(),sources=new Map();
 function normalizeRoute(r){return ['subjects','mission','study','timeline'].includes(r)?'subjects':r==='analytics'?'analytics':r==='settings'?'settings':'home'}
 function stateRoute(){try{return normalizeRoute(window.AA_APP?.get?.('state')?.get?.()?.route||root.dataset.riseRoute||'home')}catch(_){return normalizeRoute(root.dataset.riseRoute||'home')}}
-function ensureStyle(){if(document.getElementById('rise-instant-nav-v1'))return;const s=document.createElement('style');s.id='rise-instant-nav-v1';s.textContent='html[data-rise-structure="optimized-4"] #riseStableMain>#riseStablePanes{display:block!important;width:100%}.riseStablePane[hidden]{display:none!important}.riseStablePane{width:100%}';document.head.appendChild(s)}
+function ensureStyle(){if(document.getElementById('rise-instant-nav-v1'))return;const s=document.createElement('style');s.id='rise-instant-nav-v1';s.textContent='html[data-rise-structure="optimized-4"] #riseStableMain>#riseStablePanes{display:block!important;width:100%}.riseStablePane[hidden]{display:none!important}.riseStablePane{display:block!important;width:100%}';document.head.appendChild(s)}
 ensureStyle();
 function pane(r,extra=''){let p=panes.get(r);if(p)return p;p=document.createElement('div');p.className=`riseStablePane ${extra}`.trim();p.dataset.route=r;p.hidden=true;panes.set(r,p);panesHost.appendChild(p);return p}
 function updateNav(r){for(const el of document.querySelectorAll('.navin > [data-route],.navin > a[href]')){let active=false;if(el.dataset?.route)active=normalizeRoute(el.dataset.route)===r;el.classList.toggle('active',active)}}
@@ -38,7 +38,7 @@ function sync(){
  if(host.querySelector('.riseStablePane:not([hidden])'))return;
  host.hidden=true;root.removeAttribute('data-rise-stable-ready');
 }
-function waitForPane(r,timeout=1200){return new Promise(resolve=>{const start=performance.now();const tick=()=>{sync();if(panes.has(r))return resolve(true);if(performance.now()-start>timeout)return resolve(false);setTimeout(tick,24)};tick()})}
+function waitForPane(r,timeout=1400){return new Promise(resolve=>{const start=performance.now();const tick=()=>{sync();if(panes.has(r))return resolve(true);if(performance.now()-start>timeout)return resolve(false);setTimeout(tick,24)};tick()})}
 function clickUnderlying(r){const target=app.querySelector(`.nav [data-route="${r}"]`)||app.querySelector(`[data-route="${r}"]`);if(!target)return false;warmClick=true;try{target.click()}finally{warmClick=false}return true}
 async function warmPrimary(){
  if(warmStarted||visualMode||qualityMode)return;
