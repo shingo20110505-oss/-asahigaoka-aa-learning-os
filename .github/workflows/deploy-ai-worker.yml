@@ -93,13 +93,29 @@ jobs:
           done
           test "$health_ready" = true
 
-          curl -fsSL --retry 3 --retry-delay 3 --max-time 30 \
-            -X POST \
-            -H "Origin: $ORIGIN" \
-            -H "Authorization: Bearer $AI_ACCESS_TOKEN" \
-            -H 'Content-Type: application/json' \
-            --data '{}' \
-            "$BASE/v1/status" -o /tmp/ai-status.json
+          # Cloudflare propagation can briefly serve different Worker versions across requests.
+          # Require the authenticated status endpoint itself to report the expected version before AI smoke tests.
+          status_ready=false
+          for attempt in $(seq 1 12); do
+            STATUS_HTTP="$(curl -sS --max-time 30 -w '%{http_code}' \
+              -X POST \
+              -H "Origin: $ORIGIN" \
+              -H "Authorization: Bearer $AI_ACCESS_TOKEN" \
+              -H 'Content-Type: application/json' \
+              --data '{}' \
+              "$BASE/v1/status" -o /tmp/ai-status.json || true)"
+            if test "$STATUS_HTTP" = 200 \
+              && node -e 'const s=require("/tmp/ai-status.json"); process.exit(s.ready === true && s.version === process.env.EXPECTED_WORKER_VERSION && s.service === "rise-ai-platform" ? 0 : 1)'; then
+              status_ready=true
+              break
+            fi
+            sleep 5
+          done
+          if test "$status_ready" != true; then
+            echo 'Production /v1/status did not converge to the expected Worker version.' >&2
+            cat /tmp/ai-status.json >&2 || true
+            exit 1
+          fi
 
           export READING_HTTP_STATUS
           READING_HTTP_STATUS="$(curl -sS --max-time 180 -w '%{http_code}' \
@@ -157,7 +173,7 @@ jobs:
           const subjects = ['english','math','japanese','science','social'];
 
           if (health.ok !== true || health.version !== '1.4.0' || health.service !== 'rise-ai-platform') throw new Error('Worker health verification failed');
-          if (status.ready !== true || status.version !== '1.4.0') throw new Error('Worker status verification failed');
+          if (status.ready !== true || status.version !== '1.4.0' || status.service !== 'rise-ai-platform') throw new Error('Worker status verification failed');
           if (status.model !== 'gemini-3.5-flash') throw new Error(`Unexpected Gemini model: ${status.model}`);
           if (status.verificationProvider !== 'groq' || status.verifierModel !== 'openai/gpt-oss-20b') throw new Error('Groq verifier status mismatch');
           for (const subject of subjects) {
