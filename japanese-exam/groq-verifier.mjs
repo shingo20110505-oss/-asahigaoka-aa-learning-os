@@ -211,7 +211,7 @@ export async function verifyJapaneseMajorWithGroq(env, pack, major) {
       input: buildJapaneseVerifierPrompt(chunk),
       schema: JAPANESE_GROQ_SCHEMA,
       schemaName: `rise_japanese_major_${chunk.major}_blind_verification`,
-      responseMode: 'json_object',
+      responseMode: 'plain_json',
       maxOutputTokens: chunk.major === 1 || chunk.major === 3 ? 2600 : 1800,
       temperature: 0,
       reasoningEffort: chunk.major === 1 || chunk.major === 3 ? 'medium' : 'low',
