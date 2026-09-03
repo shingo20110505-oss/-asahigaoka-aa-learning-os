@@ -2,6 +2,7 @@ import {spawn} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {existsSync} from 'node:fs';
 import {mkdir,rm,writeFile} from 'node:fs/promises';
+import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
 
@@ -21,7 +22,26 @@ const specs={
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const hash=b=>createHash('sha256').update(b).digest('hex');
 function pngSize(b){if(b.subarray(0,8).toString('hex')!=='89504e470d0a1a0a')throw new Error('bad png');return[b.readUInt32BE(16),b.readUInt32BE(20)]}
-async function launch(view){const profile=path.join(os.tmpdir(),`rise-ia-${view.name}-${Date.now()}-${Math.random()}`);await mkdir(profile,{recursive:true});const args=['--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--disable-background-networking','--no-first-run','--hide-scrollbars','--force-device-scale-factor=1',`--user-data-dir=${profile}`,'--remote-debugging-port=0','about:blank'];const p=spawn(CHROME,args,{stdio:['ignore','ignore','pipe']});let err='';const browserWs=await new Promise((resolve,reject)=>{const t=setTimeout(()=>reject(new Error('chrome startup timeout '+err.slice(-800))),15000);p.stderr.on('data',d=>{err+=String(d);const m=err.match(/DevTools listening on (ws:\/\/[^\s]+)/);if(m){clearTimeout(t);resolve(m[1])}});p.once('exit',c=>reject(new Error('chrome exited '+c))) });const port=new URL(browserWs).port;const page=await(await fetch(`http://127.0.0.1:${port}/json/new?about:blank`,{method:'PUT'})).json();const ws=new WebSocket(page.webSocketDebuggerUrl);await new Promise((r,j)=>{ws.onopen=r;ws.onerror=j});let id=0;const pending=new Map(),docs=[];ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id&&pending.has(m.id)){const q=pending.get(m.id);pending.delete(m.id);m.error?q.reject(new Error(JSON.stringify(m.error))):q.resolve(m.result)}else if(m.method==='Network.requestWillBeSent'&&m.params?.type==='Document')docs.push(m.params.request?.url||'')};const cmd=(method,params={})=>new Promise((resolve,reject)=>{const n=++id;pending.set(n,{resolve,reject});ws.send(JSON.stringify({id:n,method,params}))});await cmd('Page.enable');await cmd('Runtime.enable');await cmd('Network.enable');await cmd('Emulation.setDeviceMetricsOverride',{width:view.width,height:view.height,screenWidth:view.width,screenHeight:view.height,deviceScaleFactor:1,mobile:!!view.ua});if(view.ua){await cmd('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:5});await cmd('Network.setUserAgentOverride',{userAgent:view.ua})}return{...view,cmd,docs,close:async()=>{try{ws.close()}catch{};try{p.kill('SIGKILL')}catch{};await rm(profile,{recursive:true,force:true})}}}
+async function freePort(){return await new Promise((resolve,reject)=>{const server=net.createServer();server.unref();server.on('error',reject);server.listen(0,'127.0.0.1',()=>{const address=server.address();const port=typeof address==='object'&&address?address.port:0;server.close(err=>err?reject(err):resolve(port))})})}
+async function launch(view){
+ const profile=path.join(os.tmpdir(),`rise-ia-${view.name}-${Date.now()}-${Math.random()}`);await mkdir(profile,{recursive:true});
+ const port=await freePort();
+ const args=['--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--disable-background-networking','--disable-extensions','--disable-component-update','--disable-default-apps','--disable-sync','--metrics-recording-only','--mute-audio','--no-first-run','--hide-scrollbars','--force-device-scale-factor=1',`--user-data-dir=${profile}`,'--remote-debugging-address=127.0.0.1',`--remote-debugging-port=${port}`,'about:blank'];
+ const p=spawn(CHROME,args,{stdio:['ignore','ignore','pipe']});let err='';p.stderr.on('data',d=>{err+=String(d)});
+ let browserWs='';const start=Date.now();
+ while(Date.now()-start<45000){
+  if(p.exitCode!==null)break;
+  try{const response=await fetch(`http://127.0.0.1:${port}/json/version`,{signal:AbortSignal.timeout(1200)});if(response.ok){const info=await response.json();if(info.webSocketDebuggerUrl){browserWs=info.webSocketDebuggerUrl;break}}}catch{}
+  await sleep(180);
+ }
+ if(!browserWs){try{p.kill('SIGKILL')}catch{};await rm(profile,{recursive:true,force:true});throw new Error(`chrome startup failed exit=${p.exitCode} port=${port} ${err.slice(-1400)}`)}
+ const pageResponse=await fetch(`http://127.0.0.1:${port}/json/new?about:blank`,{method:'PUT',signal:AbortSignal.timeout(5000)});if(!pageResponse.ok)throw new Error(`chrome page create failed ${pageResponse.status}`);const page=await pageResponse.json();
+ const ws=new WebSocket(page.webSocketDebuggerUrl);await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error('cdp websocket timeout')),10000);ws.onopen=()=>{clearTimeout(timer);resolve()};ws.onerror=e=>{clearTimeout(timer);reject(e)}});
+ let id=0;const pending=new Map(),docs=[];ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id&&pending.has(m.id)){const q=pending.get(m.id);pending.delete(m.id);m.error?q.reject(new Error(JSON.stringify(m.error))):q.resolve(m.result)}else if(m.method==='Network.requestWillBeSent'&&m.params?.type==='Document')docs.push(m.params.request?.url||'')};
+ const cmd=(method,params={})=>new Promise((resolve,reject)=>{const n=++id;pending.set(n,{resolve,reject});ws.send(JSON.stringify({id:n,method,params}))});
+ await cmd('Page.enable');await cmd('Runtime.enable');await cmd('Network.enable');await cmd('Emulation.setDeviceMetricsOverride',{width:view.width,height:view.height,screenWidth:view.width,screenHeight:view.height,deviceScaleFactor:1,mobile:!!view.ua});if(view.ua){await cmd('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:5});await cmd('Network.setUserAgentOverride',{userAgent:view.ua})}
+ return{...view,cmd,docs,close:async()=>{try{ws.close()}catch{};try{p.kill('SIGKILL')}catch{};await rm(profile,{recursive:true,force:true})}}
+}
 async function ev(c,expression){const r=await c.cmd('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw new Error(JSON.stringify(r.exceptionDetails));return r.result?.value}
 async function wait(c,expression,label,timeout=18000){const start=Date.now();while(Date.now()-start<timeout){try{if(await ev(c,expression))return}catch{}await sleep(100)}throw new Error(label+' timeout '+JSON.stringify(await ev(c,`({route:document.documentElement.dataset.riseRoute,text:(document.body?.innerText||'').slice(0,900),boot:document.documentElement.classList.contains('aa-app-booting'),error:document.documentElement.dataset.riseRuntimeError||''})`).catch(()=>null)))}
 const ready=r=>`!document.documentElement.classList.contains('aa-app-booting')&&document.documentElement.dataset.riseRoute==='${r}'&&!!document.querySelector('#app main .${specs[r].cls}[data-ui-ver="4.2.0"]')&&window.__RISE_NAVIGATION_V1__?.version==='1.0.3'&&window.__RISE_INFORMATION_ARCHITECTURE_V1__?.version==='1.0.1'`;
