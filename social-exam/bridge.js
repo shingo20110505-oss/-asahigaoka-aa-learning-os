@@ -13,11 +13,14 @@
    const cursor={geography:0,history:0,civics:0};
    const domains=['geography','history','civics'];
    const next=(domain)=>{const d=byDomain[domain]?.length?domain:domains[Math.floor(Math.random()*domains.length)],pool=byDomain[d];const q=pool[cursor[d]++%pool.length];return toLegacyQuestion(q)};
-   const original=typeof makeSocialQ==='function'?makeSocialQ:null;
-   if(original){makeSocialQ=function(diff=7){const d=domains[Math.floor(Math.random()*domains.length)];const p=Number(diff)>=6?.82:.45;return Math.random()<p?next(d):original(diff)}}
-   if(window.AA_V23_GENERATORS)window.AA_V23_GENERATORS.social=()=>next(domains[Math.floor(Math.random()*domains.length)]);
-   window.AASocialExam={version:VERSION,profileId:pack.profileId,pack,validatePack,scoreQuestion,scorePack,nextQuestion:next,source:'user-provided-analysis-plus-original-constructed-stimuli'};
-   document.dispatchEvent(new CustomEvent('aa:social-exam-ready',{detail:{version:VERSION,questions:pack.questions.length,totalPoints:pack.questions.reduce((s,q)=>s+q.points,0)}}));
+   // Learner-facing social practice must use only the validated application pack.
+   // The old generic generator is intentionally never used as a fallback.
+   if(typeof makeSocialQ==='function')makeSocialQ=function(){const d=domains[Math.floor(Math.random()*domains.length)];return next(d)};
+   window.AA_V23_GENERATORS=window.AA_V23_GENERATORS||{};
+   window.AA_V23_GENERATORS.social=()=>next(domains[Math.floor(Math.random()*domains.length)]);
+   if(window.AA_V23?.generators)window.AA_V23.generators.social=window.AA_V23_GENERATORS.social;
+   window.AASocialExam={version:VERSION,profileId:pack.profileId,pack,validatePack,scoreQuestion,scorePack,nextQuestion:next,source:'user-provided-analysis-plus-original-constructed-stimuli',legacyGenericFallback:false};
+   document.dispatchEvent(new CustomEvent('aa:social-exam-ready',{detail:{version:VERSION,questions:pack.questions.length,totalPoints:pack.questions.reduce((s,q)=>s+q.points,0),legacyGenericFallback:false}}));
   }catch(error){installed=false;console.error('Social application pack unavailable',error?.message||error)}
  }
  document.addEventListener('aa:v23ready',install,{once:true});
