@@ -125,16 +125,23 @@ try {
   assert.deepEqual(groq.output, { ok: true });
   assert.equal(groq.provider, 'groq');
   assert.equal(groq.model, 'openai/gpt-oss-20b');
+  assert.equal(groq.mode, 'json_schema');
+  assert.equal(groq.fallbackFrom, null);
 
-  await callStructuredProvider('groq', {
-    GROQ_API_KEY: 'test-groq-secret',
-    GROQ_MODEL: 'openai/gpt-oss-20b'
-  }, {
-    input: 'Return a structured answer list.',
-    schema: GROQ_COMPAT_SCHEMA,
-    schemaName: 'groq_compat_contract',
-    maxOutputTokens: 512
-  });
+  await assert.rejects(
+    () => callStructuredProvider('groq', {
+      GROQ_API_KEY: 'test-groq-secret',
+      GROQ_MODEL: 'openai/gpt-oss-20b'
+    }, {
+      input: 'Return a structured answer list.',
+      schema: GROQ_COMPAT_SCHEMA,
+      schemaName: 'groq_compat_contract',
+      maxOutputTokens: 512
+    }),
+    error => error instanceof GroqProviderError
+      && error.code === 'groq_schema_mismatch'
+      && error.diagnostic.includes('minItems')
+  );
 
   const groqJsonObject = await callStructuredProvider('groq', {
     GROQ_API_KEY: 'test-groq-secret',
@@ -150,26 +157,22 @@ try {
   });
   assert.deepEqual(groqJsonObject.output, { ok: true });
   assert.equal(groqJsonObject.model, 'openai/gpt-oss-120b');
+  assert.equal(groqJsonObject.mode, 'json_object');
 
-  await assert.rejects(
-    () => callStructuredProvider('groq', {
-      GROQ_API_KEY: 'test-groq-secret',
-      GROQ_MODEL: 'openai/gpt-oss-120b'
-    }, {
-      input: 'Return ok=true.',
-      schema: TEST_SCHEMA,
-      schemaName: 'groq_failed_generation_contract',
-      maxOutputTokens: 512
-    }),
-    error => error instanceof GroqProviderError
-      && error.code === 'groq_request_rejected'
-      && error.status === 400
-      && error.diagnostic.includes('diagnostic only')
-      && !/[\u0000-\u001f\u007f]/.test(error.diagnostic)
-      && !error.diagnostic.includes('test-groq-secret')
-  );
+  const fallback = await callStructuredProvider('groq', {
+    GROQ_API_KEY: 'test-groq-secret',
+    GROQ_MODEL: 'openai/gpt-oss-20b'
+  }, {
+    input: 'Return ok=true.',
+    schema: TEST_SCHEMA,
+    schemaName: 'groq_failed_generation_contract',
+    maxOutputTokens: 512
+  });
+  assert.deepEqual(fallback.output, { ok: true });
+  assert.equal(fallback.mode, 'json_object_fallback');
+  assert.equal(fallback.fallbackFrom, 'json_schema_failed_generation');
 
-  assert.equal(requests.length, 5);
+  assert.equal(requests.length, 6);
   const geminiRequest = requests[0];
   assert.match(geminiRequest.url, /generativelanguage\.googleapis\.com/);
   assert.equal(geminiRequest.headers['x-goog-api-key'], 'test-gemini-secret');
@@ -209,8 +212,17 @@ try {
   assert.equal(jsonObjectRequest.body.messages.length, 1);
   assert.equal(jsonObjectRequest.body.messages[0].role, 'user');
   assert.match(jsonObjectRequest.body.messages[0].content, /Return JSON only/);
+  assert.match(jsonObjectRequest.body.messages[0].content, /matching this schema/);
+
+  const failedSchemaRequest = requests[4];
+  assert.equal(failedSchemaRequest.body.response_format.type, 'json_schema');
+  const fallbackRequest = requests[5];
+  assert.equal(fallbackRequest.body.response_format.type, 'json_object');
+  assert.equal(fallbackRequest.body.messages.length, 1);
+  assert.match(fallbackRequest.body.messages[0].content, /matching this schema/);
+  assert.equal(fallbackRequest.headers.authorization, 'Bearer test-groq-secret');
 } finally {
   globalThis.fetch = originalFetch;
 }
 
-console.log('AI provider contract OK: Gemini/Groq adapters, secret isolation, strict schema mode, GPT-OSS JSON object mode, failed-generation diagnostics, and provider selection passed');
+console.log('AI provider contract OK: Gemini/Groq adapters, secret isolation, strict-schema primary mode, validated JSON-object fallback, and provider selection passed');
