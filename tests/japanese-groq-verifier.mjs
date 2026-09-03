@@ -118,21 +118,27 @@ try {
   check(result.questionCount === pack.questions.length, 'all questions verified');
   check(JSON.stringify(result.majors) === JSON.stringify([1,2,3,4]), 'all majors verified');
   check(requests.length === 4, 'one Groq request per major');
-  for (const { init, body } of requests) {
+  for (const { init, body } of requests.slice(0, 4)) {
     check(init.headers.authorization === 'Bearer test-groq-key', 'server-side Groq secret used');
     check(body.model === 'openai/gpt-oss-20b', 'caller-selected verifier model preserved');
     check(body.response_format === undefined, 'Japanese verifier leaves Groq response format unforced');
     check(body.reasoning_format === undefined && body.include_reasoning === false, 'GPT-OSS text mode excludes reasoning with include_reasoning');
     check(body.messages.length === 1 && body.messages[0].role === 'user', 'text JSON mode keeps GPT-OSS instructions in one user message');
+    check(body.temperature === 0 && body.reasoning_effort === 'low', 'all Japanese majors use low reasoning for final-answer budget');
     const prompt = body.messages.find(message => message.role === 'user').content;
     const blind = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
-    const expectedEffort = blind.major === 1 || blind.major === 3 ? 'medium' : 'low';
-    check(body.temperature === 0 && body.reasoning_effort === expectedEffort, 'deterministic subject-appropriate verifier settings');
+    const expectedBudget = blind.major === 1 || blind.major === 3 ? 3200 : 2000;
+    check(body.max_completion_tokens === expectedBudget, 'major-specific completion budget preserved');
     check(!JSON.stringify(blind).includes('"answers"'), 'request does not reveal answer key');
     check(!JSON.stringify(blind).includes('"explanation"'), 'request does not reveal explanations');
   }
+
+  const waits = [];
+  await verifyJapanesePackWithGroq(env, pack, { cooldownMs: 7, sleep: async ms => { waits.push(ms); } });
+  check(JSON.stringify(waits) === JSON.stringify([7,7,7]), 'free-tier pacing waits between every major');
+  check(requests.length === 8, 'paced verification still performs exactly four more requests');
 } finally {
   globalThis.fetch = originalFetch;
 }
 
-console.log(JSON.stringify({ ok: true, checks, provider: 'groq', apiCalls: 4, outputContract: 'unforced-text-json-plus-local-strict-validation' }));
+console.log(JSON.stringify({ ok: true, checks, provider: 'groq', apiCallsPerPack: 4, cooldownsPerPack: 3, outputContract: 'unforced-text-json-plus-local-strict-validation' }));
