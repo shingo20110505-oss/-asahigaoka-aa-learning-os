@@ -18,7 +18,7 @@ import {
   getProviderStatus
 } from './providers/index.mjs';
 
-const WORKER_VERSION = '1.2.0';
+const WORKER_VERSION = '1.2.1';
 const DEFAULT_ORIGIN = 'https://shingo20110505-oss.github.io';
 const MAX_BODY_BYTES = 24000;
 
@@ -107,11 +107,13 @@ function mapGeminiError(error) {
 
 function mapGroqError(error) {
   if (!(error instanceof GroqProviderError)) return null;
-  if (error.status === 429) return new ApiError('groq_quota_exceeded', 'Groq無料枠の上限に達したため独立検証できません。', 429);
-  if ([401, 403].includes(error.status)) return new ApiError('groq_auth_failed', 'Groq APIキーまたは権限を確認してください。', 502);
-  if (error.code === 'provider_not_configured') return new ApiError('verification_unavailable', 'Groq独立検証が設定されていません。', 503);
-  if (error.code === 'provider_refused') return new ApiError('verification_rejected', '独立検証モデルが検証を拒否しました。', 422);
-  return new ApiError('verification_unavailable', 'Groq独立検証を利用できません。', error.status >= 500 ? 503 : 502);
+  const diagnostic = `groq:${Number(error.status) || 0}:${cleanString(error.code || 'unknown', 80)}`;
+  if (error.status === 429) return new ApiError('groq_quota_exceeded', 'Groq無料枠の上限に達したため独立検証できません。', 429, diagnostic);
+  if ([401, 403].includes(error.status)) return new ApiError('groq_auth_failed', 'Groq APIキーまたは権限を確認してください。', 502, diagnostic);
+  if (error.code === 'provider_not_configured') return new ApiError('verification_unavailable', 'Groq独立検証が設定されていません。', 503, diagnostic);
+  if (error.code === 'provider_refused') return new ApiError('verification_rejected', '独立検証モデルが検証を拒否しました。', 422, diagnostic);
+  if (error.code === 'groq_request_rejected') return new ApiError('groq_request_rejected', 'Groqが検証リクエスト形式を受理できませんでした。', 502, diagnostic);
+  return new ApiError('verification_unavailable', 'Groq独立検証を利用できません。', error.status >= 500 ? 503 : 502, diagnostic);
 }
 
 export async function generateVerifiedReading(env, request) {
