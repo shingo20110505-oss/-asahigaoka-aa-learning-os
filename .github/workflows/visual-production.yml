@@ -57,13 +57,14 @@ jobs:
           grep -q 'function analyticsHTML' /tmp/rise-ui-v4.js
           grep -q 'function settingsHTML' /tmp/rise-ui-v4.js
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-stable-root-v4.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-stable-root-v4.js
-          grep -q "version:'2.2.0'" /tmp/rise-stable-root-v4.js
-          grep -q "prewarm:'all-custom'" /tmp/rise-stable-root-v4.js
-          grep -q "const primary=\['home','subjects','analytics','settings'\]" /tmp/rise-stable-root-v4.js
+          grep -q "version:'2.3.0'" /tmp/rise-stable-root-v4.js
+          grep -q "prewarm:'none-on-demand'" /tmp/rise-stable-root-v4.js
+          ! grep -q 'warmPrimary' /tmp/rise-stable-root-v4.js
+          ! grep -q 'clickUnderlying' /tmp/rise-stable-root-v4.js
           grep -q "reviewNavigation:'canonical-page'" /tmp/rise-stable-root-v4.js
           grep -q 'goReview' /tmp/rise-stable-root-v4.js
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}index.html?visual_asset=${SOURCE_SHA}" -o /tmp/index.html
-          grep -q 'rise-stable-root-v4.js?v=2.2.0' /tmp/index.html
+          grep -q 'rise-stable-root-v4.js?v=2.3.0' /tmp/index.html
           grep -q 'pwa-runtime.js?v=4.2.1' /tmp/index.html
           node --check scripts/rise-visual-cdp.mjs
 
@@ -112,7 +113,8 @@ jobs:
             echo '- Screens: home / study / record / settings / review'
             echo '- Mobile: `390x844` / iPhone User-Agent'
             echo '- Desktop: `1440x1000`'
-            echo '- Chrome DevTools Protocol waits for the actual Rise ready state; persistent app timers cannot block capture completion.'
+            echo '- Chrome DevTools Protocol waits for the actual visible Rise ready state.'
+            echo '- No hidden route-prewarm clicks are allowed; HOME must remain HOME on cold start.'
             echo '- Study and Record are opened by their real bottom-navigation buttons.'
             echo '- Settings is opened through the real hamburger menu and Settings item.'
             echo '- Review is clicked from the main app and must navigate to the canonical `/review/` page.'
