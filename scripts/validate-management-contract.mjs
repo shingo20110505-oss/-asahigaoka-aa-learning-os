@@ -97,13 +97,14 @@ assert.match(workerReadme, /5教科共通Groq検証:\s*\*\*英語のみ本番稼
 assert.match(workerReadme, /cross-provider-blind-answer-check/);
 
 const entry = read('worker/src/entry.mjs');
-assert.match(entry, /WORKER_VERSION = '1\.2\.0'/);
+assert.match(entry, /WORKER_VERSION = '1\.2\.1'/);
 assert.match(entry, /callGeminiJson/);
 assert.match(entry, /callGroqJson/);
 assert.match(entry, /buildVerifierPrompt/);
 assert.match(entry, /cross-provider-blind-answer-check/);
 assert.match(entry, /verificationProvider:\s*verified\.provider/);
 assert.match(entry, /verificationProvider:\s*'groq'/);
+assert.match(entry, /groq_request_rejected/);
 assert.doesNotMatch(entry, /GROQ_API_KEY\s*=/);
 assert.doesNotMatch(entry, /GEMINI_API_KEY\s*=/);
 
@@ -124,6 +125,9 @@ assert.match(groqProvider, /GROQ_API_KEY/);
 assert.match(groqProvider, /api\.groq\.com\/openai\/v1\/chat\/completions/);
 assert.match(groqProvider, /json_schema/);
 assert.match(groqProvider, /include_reasoning:\s*false/);
+assert.match(groqProvider, /normalizeGroqSchema/);
+assert.match(groqProvider, /minItems/);
+assert.match(groqProvider, /minLength/);
 assert.doesNotMatch(groqProvider, /GEMINI_API_KEY/);
 
 const wrangler = read('worker/wrangler.toml');
@@ -137,7 +141,7 @@ assert.match(aiDeploy, /GROQ_API_KEY:\s*\$\{\{\s*secrets\.GROQ_API_KEY\s*\}\}/);
 assert.match(aiDeploy, /test -n "\$GROQ_API_KEY"/);
 assert.match(aiDeploy, /tests\/ai-provider-contract\.mjs/);
 assert.match(aiDeploy, /tests\/ai-reading-groq-contract\.mjs/);
-assert.match(aiDeploy, /EXPECTED_WORKER_VERSION='1\.2\.0'/);
+assert.match(aiDeploy, /EXPECTED_WORKER_VERSION='1\.2\.1'/);
 assert.match(aiDeploy, /cross-provider-blind-answer-check/);
 
 const groqContract = read('tests/ai-reading-groq-contract.mjs');
@@ -145,6 +149,7 @@ assert.match(groqContract, /Groq must not receive the author answer key/);
 assert.match(groqContract, /Groq must not receive author explanations/);
 assert.match(groqContract, /Groq must not receive author distractor reasons/);
 assert.match(groqContract, /payload\.quality\.verificationProvider/);
+assert.match(groqContract, /compatible strict schema/);
 assert.match(groqContract, /cross-provider-blind-answer-check/);
 
 const pages = read('.github/workflows/deploy-pages.yml');
