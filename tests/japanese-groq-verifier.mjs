@@ -123,7 +123,7 @@ try {
     check(body.model === 'openai/gpt-oss-20b', 'caller-selected verifier model preserved');
     check(body.response_format?.type === 'json_object', 'Japanese verifier uses Groq JSON object mode');
     check(body.response_format?.json_schema === undefined, 'Japanese verifier does not request strict Groq schema generation');
-    check(body.reasoning_format === 'hidden' && body.include_reasoning === undefined, 'JSON mode uses hidden reasoning format');
+    check(body.reasoning_format === undefined && body.include_reasoning === false, 'GPT-OSS JSON mode excludes reasoning with include_reasoning');
     check(body.messages.length === 1 && body.messages[0].role === 'user', 'JSON mode keeps GPT-OSS instructions in one user message');
     const prompt = body.messages.find(message => message.role === 'user').content;
     const blind = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
