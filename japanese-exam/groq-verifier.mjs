@@ -50,7 +50,7 @@ export class JapaneseVerificationError extends Error {
     this.name = 'JapaneseVerificationError';
     this.code = code;
     this.status = status;
-    this.diagnostic = String(diagnostic || '').slice(0, 700);
+    this.diagnostic = String(diagnostic || '').slice(0, 900);
   }
 }
 
@@ -95,6 +95,7 @@ export function buildJapaneseVerifierPrompt(chunk) {
     'The author answer key, explanations, evidence metadata, scoring metadata, and choice truth labels are intentionally hidden.',
     'Solve every question independently from the visible text and ordinary junior-high Japanese knowledge only.',
     'For normal choice questions, return answerChoiceIndexes using zero-based choice positions and classify EVERY choice in choiceRelations as supported, contradicted, or not_stated.',
+    'The classification is your own semantic analysis. Do not try to guess hidden author labels. answerChoiceIndexes must exactly match the choices whose relation equals the question polarity.',
     'For ordered_choice or multi_slot_choice, return one zero-based markChoiceIndexes entry for each mark label in the supplied order; use answerChoiceIndexes=[] and choiceRelations=[].',
     'For non-vocabulary questions, cite at least one exact substring from a supplied paragraph. passageIndex is the zero-based passage position and paragraph is one-based.',
     'For vocabulary questions (major 2), evidence may be empty because hidden answer-only glossary material is not supplied.',
@@ -103,6 +104,26 @@ export function buildJapaneseVerifierPrompt(chunk) {
     '',
     JSON.stringify(chunk)
   ].join('\n');
+}
+
+function indexesForPolarity(relations, polarity) {
+  return relations.map((relation, index) => relation === polarity ? index : -1).filter(index => index >= 0);
+}
+
+function sameIndexes(left, right) {
+  return JSON.stringify([...left].sort((a,b)=>a-b)) === JSON.stringify([...right].sort((a,b)=>a-b));
+}
+
+function diagnosticAnswers(result) {
+  if (!Array.isArray(result?.answers)) return 'no_answers';
+  return result.answers.map(answer => ({
+    q: answer?.questionIndex,
+    a: answer?.answerChoiceIndexes,
+    m: answer?.markChoiceIndexes,
+    c: answer?.confidence,
+    amb: answer?.ambiguous,
+    ev: Array.isArray(answer?.evidence) ? answer.evidence.map(e => [e.passageIndex,e.paragraph,e.quote]) : []
+  }));
 }
 
 export function verifyJapaneseChunkAgreement(pack, major, result, threshold = JAPANESE_GROQ_CONFIDENCE_THRESHOLD) {
@@ -122,11 +143,11 @@ export function verifyJapaneseChunkAgreement(pack, major, result, threshold = JA
     if (typeof answer.reasonCode !== 'string' || answer.reasonCode.trim().length < 2) errors.push(`reason_code:${question.id}`);
     const structured = Array.isArray(question.marks);
     if (structured) {
-      if (!Array.isArray(answer.answerChoiceIndexes) || answer.answerIndexes?.length > 0 || answer.answerChoiceIndexes.length !== 0) errors.push(`structured_answer_indexes:${question.id}`);
+      if (!Array.isArray(answer.answerChoiceIndexes) || answer.answerChoiceIndexes.length !== 0) errors.push(`structured_answer_indexes:${question.id}`);
       if (!Array.isArray(answer.choiceRelations) || answer.choiceRelations.length !== 0) errors.push(`structured_relations:${question.id}`);
-      if (!Array.isArray(answer.markChoiceIndexes) || answer.markChoiceIndexes.length !== question.marks.length) errors.push(`mark_count:${question.id}`);
+      if (!Array.isArray(answer.markChoiceIndexes) || answer.markChoiceIndexes.length !== question.marks.length || answer.markChoiceIndexes.some(index => !Number.isInteger(index) || !question.choices[index])) errors.push(`mark_count:${question.id}`);
       else {
-        const solved = answer.markChoiceIndexes.map(index => question.choices[index]?.id || null);
+        const solved = answer.markChoiceIndexes.map(index => question.choices[index].id);
         const expectedMarks = question.marks.map(mark => mark.answer);
         if (JSON.stringify(solved) !== JSON.stringify(expectedMarks)) errors.push(`mark_disagreement:${question.id}`);
       }
@@ -139,8 +160,11 @@ export function verifyJapaneseChunkAgreement(pack, major, result, threshold = JA
         const expectedAnswers = [...question.answers].sort();
         if (JSON.stringify(solved) !== JSON.stringify(expectedAnswers)) errors.push(`answer_disagreement:${question.id}`);
       }
-      if (!Array.isArray(answer.choiceRelations) || answer.choiceRelations.length !== question.choices.length) errors.push(`relation_count:${question.id}`);
-      else if (question.choices.some((choice, index) => answer.choiceRelations[index] !== choice.relation)) errors.push(`choice_disagreement:${question.id}`);
+      if (!Array.isArray(answer.choiceRelations) || answer.choiceRelations.length !== question.choices.length || answer.choiceRelations.some(relation => !RELATIONS.includes(relation))) errors.push(`relation_count:${question.id}`);
+      else {
+        const inferredIndexes = indexesForPolarity(answer.choiceRelations, question.polarity || 'supported');
+        if (!sameIndexes(inferredIndexes, indexes)) errors.push(`relation_answer_inconsistent:${question.id}`);
+      }
     }
     if (selectedMajor !== 2) {
       if (!Array.isArray(answer.evidence) || answer.evidence.length < 1) errors.push(`missing_evidence:${question.id}`);
@@ -164,9 +188,9 @@ export async function verifyJapaneseMajorWithGroq(env, pack, major) {
       input: buildJapaneseVerifierPrompt(chunk),
       schema: JAPANESE_GROQ_SCHEMA,
       schemaName: `rise_japanese_major_${chunk.major}_blind_verification`,
-      maxOutputTokens: chunk.major === 1 || chunk.major === 3 ? 3200 : 2200,
+      maxOutputTokens: chunk.major === 1 || chunk.major === 3 ? 3600 : 2400,
       temperature: 0,
-      reasoningEffort: 'low',
+      reasoningEffort: chunk.major === 1 || chunk.major === 3 ? 'medium' : 'low',
       systemInstruction: 'Independently solve the Japanese entrance-exam section. Return only the requested compact JSON. Never infer or request an author answer key.'
     });
   } catch (error) {
@@ -174,7 +198,10 @@ export async function verifyJapaneseMajorWithGroq(env, pack, major) {
     throw new JapaneseVerificationError('japanese_verification_unavailable', '国語の独立検証を実行できませんでした。', 503);
   }
   const agreement = verifyJapaneseChunkAgreement(pack, chunk.major, verified.output);
-  if (!agreement.ok) throw new JapaneseVerificationError('japanese_verification_rejected', '国語の独立検証で正答・根拠・一意性の一致を確認できませんでした。', 422, agreement.errors.slice(0, 12).join('|'));
+  if (!agreement.ok) {
+    const detail = JSON.stringify(diagnosticAnswers(verified.output));
+    throw new JapaneseVerificationError('japanese_verification_rejected', '国語の独立検証で正答・根拠・一意性の一致を確認できませんでした。', 422, `${agreement.errors.slice(0, 12).join('|')} :: ${detail}`);
+  }
   return { major: chunk.major, questionCount: chunk.questions.length, provider: verified.provider, model: verified.model, output: verified.output };
 }
 
