@@ -4,6 +4,7 @@ import {
   JAPANESE_GROQ_SCHEMA,
   buildJapaneseBlindChunk,
   buildJapaneseVerifierPrompt,
+  validateJapaneseVerifierShape,
   verifyJapaneseChunkAgreement,
   verifyJapanesePackWithGroq
 } from '../japanese-exam/groq-verifier.mjs';
@@ -52,8 +53,19 @@ for (const major of [1, 2, 3, 4]) {
   }
   const prompt = buildJapaneseVerifierPrompt(chunk);
   check(prompt.endsWith(serialized), `major ${major} prompt contains exact blind payload`);
+  check(prompt.includes('Return one valid JSON object'), `major ${major} explicitly requests JSON object`);
   const fixture = fixtureForMajor(major);
+  check(validateJapaneseVerifierShape(fixture).ok, `major ${major} local output shape passes`);
   check(verifyJapaneseChunkAgreement(pack, major, fixture).ok, `major ${major} agreement passes`);
+
+  const extraKey = structuredClone(fixture);
+  extraKey.answers[0].extra = 'forbidden';
+  check(!validateJapaneseVerifierShape(extraKey).ok, `major ${major} rejects extra output key`);
+  check(!verifyJapaneseChunkAgreement(pack, major, extraKey).ok, `major ${major} shape gate runs before agreement`);
+
+  const invalidType = structuredClone(fixture);
+  invalidType.answers[0].confidence = '0.97';
+  check(!validateJapaneseVerifierShape(invalidType).ok, `major ${major} rejects coerced confidence`);
 
   const lowConfidence = structuredClone(fixture);
   lowConfidence.answers[0].confidence = 0.79;
@@ -80,8 +92,8 @@ for (const major of [1, 2, 3, 4]) {
   }
 }
 
-check(JAPANESE_GROQ_SCHEMA.additionalProperties === false, 'strict root schema');
-check(JAPANESE_GROQ_SCHEMA.properties.answers.items.additionalProperties === false, 'strict answer schema');
+check(JAPANESE_GROQ_SCHEMA.additionalProperties === false, 'reference schema keeps strict root');
+check(JAPANESE_GROQ_SCHEMA.properties.answers.items.additionalProperties === false, 'reference schema keeps strict answer object');
 check(!('choiceRelations' in JAPANESE_GROQ_SCHEMA.properties.answers.items.properties), 'compact schema omits distractor classifications');
 check(!('reasonCode' in JAPANESE_GROQ_SCHEMA.properties.answers.items.properties), 'compact schema omits free-form reason field');
 
@@ -109,7 +121,10 @@ try {
   for (const { init, body } of requests) {
     check(init.headers.authorization === 'Bearer test-groq-key', 'server-side Groq secret used');
     check(body.model === 'openai/gpt-oss-20b', 'caller-selected verifier model preserved');
-    check(body.response_format?.type === 'json_schema' && body.response_format?.json_schema?.strict === true, 'strict JSON schema requested');
+    check(body.response_format?.type === 'json_object', 'Japanese verifier uses Groq JSON object mode');
+    check(body.response_format?.json_schema === undefined, 'Japanese verifier does not request strict Groq schema generation');
+    check(body.reasoning_format === 'hidden' && body.include_reasoning === undefined, 'JSON mode uses hidden reasoning format');
+    check(body.messages.length === 1 && body.messages[0].role === 'user', 'JSON mode keeps GPT-OSS instructions in one user message');
     const prompt = body.messages.find(message => message.role === 'user').content;
     const blind = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
     const expectedEffort = blind.major === 1 || blind.major === 3 ? 'medium' : 'low';
@@ -121,4 +136,4 @@ try {
   globalThis.fetch = originalFetch;
 }
 
-console.log(JSON.stringify({ ok: true, checks, provider: 'groq', apiCalls: 4, outputContract: 'compact' }));
+console.log(JSON.stringify({ ok: true, checks, provider: 'groq', apiCalls: 4, outputContract: 'json-object-plus-local-strict-validation' }));
