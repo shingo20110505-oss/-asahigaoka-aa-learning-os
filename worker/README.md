@@ -2,65 +2,62 @@
 
 Cloudflare WorkerをAIプロバイダとRiseの間に置き、**APIキーをGitHub Pagesやブラウザへ出さずにAI生成・検証を行う**ためのバックエンドです。
 
-現在の実装は英語長文を中心に稼働しています。5教科共通AI基盤への移行方針は `../docs/AI_PLATFORM.md` を正本とします。
+現在の本番対象は英語長文です。5教科共通AI基盤への移行方針は `../docs/AI_PLATFORM.md` を正本とします。
 
 ## 現在の状態
 
-- 生成モデル: `gemini-3.5-flash`
-- 英語生成: Geminiで稼働中
-- 英語の独立答え直し: 現在はGeminiへの別リクエストで稼働中
+- 本番Worker入口: `src/entry.mjs`
+- 英語生成: Gemini `gemini-3.5-flash`
+- 英語の独立答え直し: Groq `openai/gpt-oss-20b`
+- 英語の決定的検証: 既存 `src/index.mjs` の語数・文法・本文根拠・選択肢等の検証資産を維持
 - 共通provider入口: `src/providers/index.mjs`
-- Gemini provider: `src/providers/gemini.mjs` に分離済み
-- Groq provider: `src/providers/groq.mjs` に実呼び出しクライアントを実装済み
-- Groq既定検証モデル候補: `openai/gpt-oss-20b`
-- `GROQ_API_KEY`: 配備Secretとして受け渡し可能
-- Groq本番接続: **まだ無効**
-- 5教科共通Groq検証: **まだ未接続**
+- Gemini provider: `src/providers/gemini.mjs`
+- Groq provider: `src/providers/groq.mjs`
+- `GEMINI_API_KEY` / `GROQ_API_KEY`: Workerの暗号化Secret
+- 5教科共通Groq検証: **英語のみ本番稼働、数学・国語・理科・社会は未接続**
 
-providerコードが存在することと、本番の教材生成経路で使用していることを混同しないでください。現行 `/v1/reading` は従来どおりGemini生成＋Gemini別リクエスト検証です。
+英語の本番経路は次の通りです。
+
+`request sanitation -> Gemini generation -> English deterministic validation -> Groq blind verification -> agreement gate -> delivery`
+
+Geminiが設定した `answerIndex`、解説、各誤答理由はGroqへ渡しません。Groqへ渡すのは本文、設問、選択肢など解答に必要な最小情報だけです。
 
 ## Provider層
 
-教科コードからAIベンダー固有のHTTP仕様を分離するため、次の共通入口を追加しています。
+教科コードからAIベンダー固有HTTP仕様を分離しています。
 
 - `callStructuredProvider('gemini', env, request)`
 - `callStructuredProvider('groq', env, request)`
 - `getProviderStatus(env)`
 
-共通requestは、`input`、`schema`、`schemaName`、`maxOutputTokens`、system instruction等を受け取り、providerごとの差異をadapter内で吸収します。
+共通requestは `input`、`schema`、`schemaName`、`maxOutputTokens`、system instruction等を受け取り、providerごとの差異をadapter内で吸収します。
 
-Groq adapterは公式OpenAI互換の `POST https://api.groq.com/openai/v1/chat/completions` とJSON Schema structured outputを使用する設計です。現段階では接続テスト用のprovider実装であり、既存英語品質ゲートへはまだ切り替えていません。
+Groq adapterは公式OpenAI互換の `POST https://api.groq.com/openai/v1/chat/completions` とJSON Schema Structured Outputsを使用します。
 
 ## GitHub Actionsから配備
 
-広い権限を要求する恒常的なCLIログインではなく、Cloudflare Worker編集に必要な範囲へ限定したAPIトークンを使用します。
-
 GitHubリポジトリの `Settings > Secrets and variables > Actions` に次のRepository secretsを登録します。
 
-- `CLOUDFLARE_API_TOKEN`: 配備先アカウントへ限定したCloudflare Worker編集トークン
-- `CLOUDFLARE_ACCOUNT_ID`: 配備先CloudflareアカウントID
-- `GEMINI_API_KEY`: Gemini APIキー
-- `GROQ_API_KEY`: Groq APIキー。共通独立検証への移行用
-- `AI_ACCESS_TOKEN`: RiseからWorkerへ接続するためのランダムなBearer token
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_ACCOUNT_ID`
+- `GEMINI_API_KEY`
+- `GROQ_API_KEY`
+- `AI_ACCESS_TOKEN`
 
 `.github/workflows/deploy-ai-worker.yml` は必要Secretの存在を確認し、Workerへ暗号化Secretとして設定します。
 
 ## Secretの扱い
-
-次を守ります。
 
 - APIキーをソースコードへ書かない。
 - APIキーをGitへcommitしない。
 - APIキーをGitHub Pagesへ配信しない。
 - APIキーをブラウザlocalStorageへ保存しない。
 - APIキーをActionsログやAPIレスポンスへ表示しない。
-- フロントエンドの「AI接続設定」へGemini/GroqのAPIキーを入力させない。
+- フロントエンドへGemini/GroqのAPIキーを入力させない。
 
-ブラウザが扱うのは、原則としてWorker URLと `AI_ACCESS_TOKEN` だけです。
+ブラウザが扱うのはWorker URLと `AI_ACCESS_TOKEN` だけです。
 
 ## 手元のCLIから配備する場合
-
-Cloudflareへログイン済みの自分の端末で `worker` ディレクトリから実行します。
 
 ```sh
 npx wrangler login
@@ -70,26 +67,34 @@ npx wrangler secret put AI_ACCESS_TOKEN
 npx wrangler deploy
 ```
 
-Secret値はファイルへ保存せず、対話入力で設定します。
-
-ローカル開発だけで `http://localhost` を許可する場合は、一時的に `ALLOW_LOCALHOST=true` を設定します。本番では `false` のままにします。
+本番では `ALLOW_LOCALHOST=false` を維持します。
 
 ## 現行API
 
-- `GET /health`: 秘密情報を返さない稼働確認
-- `POST /v1/status`: Bearer認証付きの設定確認
-- `POST /v1/reading`: 匿名化した学習要約から英語長文を生成
+- `GET /health`: 稼働確認。秘密情報は返さない
+- `POST /v1/status`: Bearer認証付き設定確認。生成/検証providerとモデルを返す
+- `POST /v1/reading`: 匿名化した学習要約から英語長文を生成し、Groq独立検証まで通過したものだけ返す
 
-現行英語フローは、Gemini生成後に構造・語数・文法ゲート・本文根拠を検査し、別リクエストで全5問を答え直します。正答と根拠が一致しないセットは返しません。
+成功レスポンスの `quality` には、少なくとも次を含めます。
+
+- `method: cross-provider-blind-answer-check`
+- `generationProvider: gemini`
+- `generationModel: gemini-3.5-flash`
+- `verificationProvider: groq`
+- `verificationModel: openai/gpt-oss-20b`
+
+Groqが利用不能、quota超過、認証失敗の場合にGemini自己検証へ自動劣化させません。品質保証を下げず、生成を失敗/保留させます。
+
+## テスト
+
+- `tests/ai-provider-contract.mjs`: provider共通契約
+- `tests/ai-reading-contract.mjs`: 既存英語検証資産
+- `tests/ai-reading-groq-contract.mjs`: Gemini生成→Groq blind verificationの本番編成契約
+
+Worker配備Workflowでは、配備後に実際のGemini生成とGroq検証を1セット実行し、provider provenanceまで確認します。
 
 ## 5教科共通化するときの原則
 
-共通provider層を使い、概ね次の責務へ整理します。
-
-`request sanitation -> Gemini generation -> subject deterministic validation -> Groq blind verification -> agreement gate -> delivery`
-
-ただし、数学や理科の数値検証、国語の採点構造、英語の文法/本文根拠など、**コードで正確に判定できる教科固有検証をGroqで置き換えません**。
-
-次段階では、現行英語のblind verifierだけを共通Groq providerへ接続し、生成側Geminiと教科固有検証を変更せずに実証します。無料枠・quota・失敗時挙動を確認するまで他教科へ横展開しません。
+英語で実証した同じprovider層を数学・国語・理科・社会へ段階的に接続します。ただし、数学や理科の数値再計算、国語の採点構造、英語の文法/本文根拠など、**コードで正確に判定できる教科固有検証をGroqで置き換えません**。
 
 詳細・移行段階・品質基準は `docs/AI_PLATFORM.md` を参照してください。
