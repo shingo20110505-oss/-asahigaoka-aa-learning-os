@@ -97,9 +97,6 @@ export async function callGroqJson(env, request) {
         { role: 'system', content: systemInstruction },
         { role: 'user', content: input }
       ];
-  const reasoningOptions = responseMode === 'json_object'
-    ? { reasoning_format: 'hidden' }
-    : { include_reasoning: false };
 
   let response;
   try {
@@ -116,7 +113,7 @@ export async function callGroqJson(env, request) {
         temperature: Number.isFinite(request?.temperature) ? request.temperature : 0,
         max_completion_tokens: maxOutputTokens,
         reasoning_effort: request?.reasoningEffort || 'low',
-        ...reasoningOptions,
+        include_reasoning: false,
         stream: false
       })
     });
