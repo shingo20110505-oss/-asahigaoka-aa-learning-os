@@ -24,7 +24,7 @@ jobs:
       - name: Validate architecture and protected systems
         run: |
           set -euo pipefail
-          for f in app/runtime-registry.js app/legacy/main-runtime.js app/app-shell.js app/state/state-manager.js app/learning/learning-engine.js app/subjects/subject-engines.js app/ui/ui-runtime.js app/pwa/pwa-runtime.js app/qa/qa-runtime.js companion-media-settings-v1.js aa-companion-mobile-fix.js v23-loader.js science-exam/bridge.js social-exam/bridge.js sw.js worker/src/entry.mjs worker/src/subject-verifier.mjs worker/src/providers/gemini.mjs worker/src/providers/groq.mjs worker/src/providers/index.mjs; do node --check "$f"; done
+          for f in app/runtime-registry.js app/legacy/main-runtime.js app/app-shell.js app/state/state-manager.js app/learning/learning-engine.js app/subjects/subject-engines.js app/ui/ui-runtime.js app/pwa/pwa-runtime.js app/qa/qa-runtime.js companion-media-settings-v1.js aa-companion-mobile-fix.js v23-loader.js science-exam/bridge.js social-exam/bridge.js japanese-exam/groq-verifier.mjs sw.js worker/src/entry.mjs worker/src/subject-verifier.mjs worker/src/providers/gemini.mjs worker/src/providers/groq.mjs worker/src/providers/index.mjs; do node --check "$f"; done
           node tests/architecture-boundaries.mjs
           node scripts/validate-review-bank.mjs
           node scripts/validate-review-ui.mjs
@@ -34,6 +34,7 @@ jobs:
           node tests/ai-reading-groq-contract.mjs
           node tests/ai-subject-verifier-contract.mjs
           node tests/japanese-exam.mjs
+          node tests/japanese-groq-verifier.mjs
           node scripts/japanese-library.mjs
           node tests/reading-library.mjs
           node scripts/reading-library.mjs --validate
