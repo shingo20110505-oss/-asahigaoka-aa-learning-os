@@ -45,6 +45,7 @@ for (const major of [1, 2, 3, 4]) {
   const chunk = buildJapaneseBlindChunk(pack, major);
   check(chunk.major === major, `major ${major} chunk`);
   check(chunk.questions.length === pack.questions.filter(q => q.major === major).length, `major ${major} question count`);
+  check(chunk.questions.every(q => typeof q.skill === 'string' && q.skill.length > 0), `major ${major} exposes skill without answer metadata`);
   check(chunk.questions.every(q => q.choices.every(choice => typeof choice === 'string')), `major ${major} choices are text only`);
   check(chunk.questions.every(q => q.marks.every(mark => typeof mark === 'string')), `major ${major} marks expose labels only`);
   const serialized = JSON.stringify(chunk);
@@ -54,6 +55,8 @@ for (const major of [1, 2, 3, 4]) {
   const prompt = buildJapaneseVerifierPrompt(chunk);
   check(prompt.endsWith(serialized), `major ${major} prompt contains exact blind payload`);
   check(prompt.includes('Return one valid JSON object'), `major ${major} explicitly requests JSON object`);
+  check(prompt.includes('marks are literal answer slots'), `major ${major} prompt explains structured mark semantics`);
+  check(prompt.includes('skill=connective_relation'), `major ${major} prompt explains connective-relation solving`);
   const fixture = fixtureForMajor(major);
   check(validateJapaneseVerifierShape(fixture).ok, `major ${major} local output shape passes`);
   check(verifyJapaneseChunkAgreement(pack, major, fixture).ok, `major ${major} agreement passes`);
@@ -82,6 +85,14 @@ for (const major of [1, 2, 3, 4]) {
   check(!verifyJapaneseChunkAgreement(pack, major, mismatch).ok, `major ${major} rejects wrong independent answer`);
 
   if (major !== 2) {
+    const firstWithEvidence = fixture.answers.find(answer => answer.evidence.length > 0);
+    if (firstWithEvidence) {
+      const shiftedParagraph = structuredClone(fixture);
+      const shifted = shiftedParagraph.answers.find(answer => answer.questionIndex === firstWithEvidence.questionIndex);
+      shifted.evidence[0].paragraph = shifted.evidence[0].paragraph === 1 ? 2 : 1;
+      check(verifyJapaneseChunkAgreement(pack, major, shiftedParagraph).ok, `major ${major} accepts exact quote when paragraph numbering is slightly wrong`);
+    }
+
     const fakeQuote = structuredClone(fixture);
     fakeQuote.answers[0].evidence = [{ passageIndex: 0, paragraph: 1, quote: '本文に存在しない検証用引用' }];
     check(!verifyJapaneseChunkAgreement(pack, major, fakeQuote).ok, `major ${major} rejects fabricated evidence`);
