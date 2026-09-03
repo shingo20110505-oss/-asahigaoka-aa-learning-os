@@ -1,7 +1,6 @@
 'use strict';
-const VERSION='2.5.319-quality2-chronologia1000-aichi-math-application-1.0.1-20260902-japanese-exam-1.0.0-math-full-1.1.0-social-application-1.0.0-science-exam-1.0.0-rise-complete-4.2.0-stable-root-20260903';
+const VERSION='2.5.320-quality2-chronologia1000-aichi-math-application-1.0.1-20260902-japanese-exam-1.0.0-math-full-1.1.0-social-application-1.0.0-science-exam-1.0.0-rise-complete-4.2.1-no-auto-nav-20260903';
 const RISE_BOOT='4.2.0';
-const RISE_REFRESH='4.2.0-stable1';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
 const url=(path)=>new URL(path,BASE).href;
@@ -30,8 +29,7 @@ async function withChronologiaBootGuard(request,response){
   return new Response(transformed,{status:response.status,statusText:response.statusText,headers});
  }catch(_){return response}
 }
-function refreshMainClients(){self.clients.matchAll({type:'window',includeUncontrolled:true}).then(clients=>{const basePath=new URL(BASE).pathname;for(const client of clients){try{const u=new URL(client.url);if(u.origin!==self.location.origin||!u.href.startsWith(BASE))continue;if(u.pathname!==basePath&&!u.pathname.endsWith('/index.html'))continue;if(u.searchParams.has('aa_quality_ci')||u.searchParams.has('verify'))continue;if(u.searchParams.get('rise')===RISE_REFRESH)continue;u.searchParams.set('rise',RISE_REFRESH);u.searchParams.set('sw',VERSION);client.navigate(u.href).catch(()=>{})}catch(_){}}}).catch(()=>{})}
 self.addEventListener('install',event=>{event.waitUntil((async()=>{const cache=await caches.open(CACHE_NAME);await Promise.all(CORE.map(async href=>{try{const r=await fetch(href,{cache:'reload'});if(r.ok)await cache.put(href,r)}catch(_){}}));await self.skipWaiting()})())});
-self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('asahigaoka-aa-os-')&&k!==CACHE_NAME).map(k=>caches.delete(k)));await self.clients.claim()})());refreshMainClients()});
+self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('asahigaoka-aa-os-')&&k!==CACHE_NAME).map(k=>caches.delete(k)));await self.clients.claim()})())});
 self.addEventListener('message',event=>{if(event.data?.type==='SKIP_WAITING')self.skipWaiting();if(event.data?.type==='CLEAR_RUNTIME_CACHE')event.waitUntil(caches.delete(CACHE_NAME))});
 self.addEventListener('fetch',event=>{const request=event.request;if(request.method!=='GET')return;const u=new URL(request.url);if(u.origin!==self.location.origin||!u.href.startsWith(BASE))return;if(request.mode==='navigate'){event.respondWith((async()=>{const fresh=await networkFirst(request,{reload:true});if(fresh)return withChronologiaBootGuard(request,fresh);const fallback=(await caches.match(request))||(await caches.match(url('index.html')))||(await caches.match(url('offline.html')))||new Response('Offline',{status:503});return withChronologiaBootGuard(request,fallback)})());return}const ext=(u.pathname.split('.').pop()||'').toLowerCase();if(ext==='js'||ext==='mjs'||ext==='css'||ext==='json'||ext==='webmanifest'){event.respondWith((async()=>{const fresh=await networkFirst(request,{reload:ext==='js'||ext==='mjs'||u.pathname.endsWith('review-bank-v1.js')});return fresh||new Response('',{status:504,statusText:'Offline'})})());return}event.respondWith(cacheFirstRefresh(request,event))});
