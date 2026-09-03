@@ -72,13 +72,14 @@ async function waitFor(c,expression,{timeout=18000,label='condition'}={}){
     try{last=await evaluate(c,expression);if(last)return last}catch(e){last=String(e)}
     await sleep(120);
   }
-  const diag=await evaluate(c,`({href:location.href,route:document.documentElement.dataset.riseRoute,ready:document.documentElement.dataset.riseStableReady,error:document.documentElement.dataset.riseRuntimeError||'',text:(document.body?.innerText||'').slice(0,800)})`).catch(()=>null);
+  const diag=await evaluate(c,`({href:location.href,route:document.documentElement.dataset.riseRoute,ready:document.documentElement.dataset.riseStableReady,error:document.documentElement.dataset.riseRuntimeError||'',booting:document.documentElement.classList.contains('aa-app-booting'),text:(document.body?.innerText||'').slice(0,800)})`).catch(()=>null);
   throw new Error(`${label} timeout; last=${JSON.stringify(last)} diag=${JSON.stringify(diag)}`);
 }
 async function navigate(c,url){await c.cmd('Page.navigate',{url});await waitFor(c,`document.readyState==='complete'||document.readyState==='interactive'`,{timeout:12000,label:'document ready'})}
-function readyExpr(route){const s=routeSpec[route];return `document.documentElement.dataset.riseStableReady==='1'&&document.documentElement.dataset.riseRoute==='${route}'&&!document.documentElement.dataset.riseRuntimeError&&!!document.querySelector('#riseStableMain:not([hidden]) .${s.cls}[data-ui-ver="4.2.0"]')`}
+function readyExpr(route){const s=routeSpec[route];return `!document.documentElement.classList.contains('aa-app-booting')&&document.documentElement.dataset.riseStableReady==='1'&&document.documentElement.dataset.riseRoute==='${route}'&&!document.documentElement.dataset.riseRuntimeError&&!!document.querySelector('#riseStableMain:not([hidden]) .${s.cls}[data-ui-ver="4.2.0"]')`}
 async function assertTokens(c,tokens,label){const text=await evaluate(c,`document.body?.innerText||''`);for(const token of tokens)if(!text.includes(token))throw new Error(`${label}: missing text ${token}`)}
 async function saveEvidence(c,name){
+  await sleep(220);
   const html=await evaluate(c,'document.documentElement.outerHTML');
   const shot=await c.cmd('Page.captureScreenshot',{format:'png',fromSurface:true,captureBeyondViewport:false});
   const png=Buffer.from(shot.data,'base64');const actual=pngSize(png);
