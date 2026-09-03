@@ -9,141 +9,42 @@ const PAGE_URL=(process.env.PAGE_URL||'').replace(/\/?$/,'/');
 const SOURCE_SHA=process.env.SOURCE_SHA||'';
 const OUT=process.env.VISUAL_OUT||'visual-evidence';
 if(!PAGE_URL||!SOURCE_SHA)throw new Error('PAGE_URL and SOURCE_SHA are required');
-
 const chromeCandidates=[process.env.CHROME_PATH,'/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium','/usr/bin/chromium-browser'].filter(Boolean);
-const CHROME=chromeCandidates.find(existsSync);
-if(!CHROME)throw new Error('Chromium/Chrome not found');
+const CHROME=chromeCandidates.find(existsSync);if(!CHROME)throw new Error('Chromium/Chrome not found');
 await mkdir(OUT,{recursive:true});
-
 const MOBILE_UA='Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Mobile/15E148 Safari/604.1';
 const routeSpec={
-  home:{cls:'riseHomeV4',tokens:['Rise','今日の学習','教科別の達成度','ホーム','学習','復習','記録']},
-  subjects:{cls:'riseSubjectsV4',tokens:['Rise','学習を始める','5教科ミックス','ホーム','学習','復習','記録']},
-  analytics:{cls:'riseAnalyticsV4',tokens:['Rise','学習記録','直近7日','ホーム','学習','復習','記録']},
-  settings:{cls:'riseSettingsV4',tokens:['Rise','設定','バックアップ','学習データを初期化']},
+ home:{cls:'riseHomeV4',tokens:['Rise','今日の学習','教科別の達成度','ホーム','学習','復習','記録']},
+ subjects:{cls:'riseSubjectsV4',tokens:['Rise','学習を始める','5教科ミックス','ホーム','学習','復習','記録']},
+ analytics:{cls:'riseAnalyticsV4',tokens:['Rise','学習記録','直近7日','ホーム','学習','復習','記録']},
+ settings:{cls:'riseSettingsV4',tokens:['Rise','設定','バックアップ','学習データを初期化']},
 };
-
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-function pngSize(buf){
-  if(buf.length<24||buf.subarray(0,8).toString('hex')!=='89504e470d0a1a0a')throw new Error('invalid PNG');
-  return [buf.readUInt32BE(16),buf.readUInt32BE(20)];
-}
+function pngSize(buf){if(buf.length<24||buf.subarray(0,8).toString('hex')!=='89504e470d0a1a0a')throw new Error('invalid PNG');return[buf.readUInt32BE(16),buf.readUInt32BE(20)]}
 function sha256(buf){return createHash('sha256').update(buf).digest('hex')}
 function targetUrl(){return `${PAGE_URL}?visual_verify=1&verify=${encodeURIComponent(SOURCE_SHA)}`}
-
 async function launch({width,height,ua,label}){
-  const profile=path.join(os.tmpdir(),`rise-cdp-${label}-${process.pid}-${Date.now()}`);
-  await mkdir(profile,{recursive:true});
-  const args=[
-    '--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage',
-    '--disable-background-networking','--disable-component-update','--disable-sync','--disable-default-apps',
-    '--no-first-run','--metrics-recording-only','--hide-scrollbars','--force-device-scale-factor=1',
-    `--user-data-dir=${profile}`,'--remote-debugging-port=0','about:blank'
-  ];
-  const proc=spawn(CHROME,args,{stdio:['ignore','ignore','pipe']});
-  let stderr='';
-  const browserWs=await new Promise((resolve,reject)=>{
-    const timer=setTimeout(()=>reject(new Error(`DevTools startup timeout: ${stderr.slice(-1000)}`)),12000);
-    proc.stderr.on('data',d=>{stderr+=String(d);const m=stderr.match(/DevTools listening on (ws:\/\/[^\s]+)/);if(m){clearTimeout(timer);resolve(m[1])}});
-    proc.once('exit',code=>{clearTimeout(timer);reject(new Error(`Chrome exited early: ${code}: ${stderr.slice(-1000)}`))});
-  });
-  const port=new URL(browserWs).port;
-  const pageInfo=await (await fetch(`http://127.0.0.1:${port}/json/new?about:blank`,{method:'PUT'})).json();
-  const ws=new WebSocket(pageInfo.webSocketDebuggerUrl);
-  await new Promise((resolve,reject)=>{ws.onopen=resolve;ws.onerror=reject});
-  let seq=0;const pending=new Map();
-  ws.onmessage=e=>{const m=JSON.parse(e.data);if(!m.id||!pending.has(m.id))return;const p=pending.get(m.id);pending.delete(m.id);m.error?p.reject(new Error(JSON.stringify(m.error))):p.resolve(m.result)};
-  const cmd=(method,params={})=>new Promise((resolve,reject)=>{const id=++seq;pending.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}))});
-  await cmd('Page.enable');await cmd('Runtime.enable');await cmd('Network.enable');
-  await cmd('Emulation.setDeviceMetricsOverride',{width,height,screenWidth:width,screenHeight:height,deviceScaleFactor:1,mobile:!!ua});
-  if(ua){await cmd('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:5});await cmd('Network.setUserAgentOverride',{userAgent:ua})}
-  const close=async()=>{try{ws.close()}catch{};try{proc.kill('SIGKILL')}catch{};await rm(profile,{recursive:true,force:true}).catch(()=>{})};
-  return {cmd,close,width,height};
+ const profile=path.join(os.tmpdir(),`rise-cdp-${label}-${process.pid}-${Date.now()}`);await mkdir(profile,{recursive:true});
+ const args=['--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--disable-background-networking','--disable-component-update','--disable-sync','--disable-default-apps','--no-first-run','--metrics-recording-only','--hide-scrollbars','--force-device-scale-factor=1',`--user-data-dir=${profile}`,'--remote-debugging-port=0','about:blank'];
+ const proc=spawn(CHROME,args,{stdio:['ignore','ignore','pipe']});let stderr='';
+ const browserWs=await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error(`DevTools startup timeout: ${stderr.slice(-1000)}`)),12000);proc.stderr.on('data',d=>{stderr+=String(d);const m=stderr.match(/DevTools listening on (ws:\/\/[^\s]+)/);if(m){clearTimeout(timer);resolve(m[1])}});proc.once('exit',code=>{clearTimeout(timer);reject(new Error(`Chrome exited early: ${code}: ${stderr.slice(-1000)}`))})});
+ const port=new URL(browserWs).port;const pageInfo=await(await fetch(`http://127.0.0.1:${port}/json/new?about:blank`,{method:'PUT'})).json();const ws=new WebSocket(pageInfo.webSocketDebuggerUrl);await new Promise((resolve,reject)=>{ws.onopen=resolve;ws.onerror=reject});
+ let seq=0;const pending=new Map();ws.onmessage=e=>{const m=JSON.parse(e.data);if(!m.id||!pending.has(m.id))return;const p=pending.get(m.id);pending.delete(m.id);m.error?p.reject(new Error(JSON.stringify(m.error))):p.resolve(m.result)};
+ const cmd=(method,params={})=>new Promise((resolve,reject)=>{const id=++seq;pending.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}))});
+ await cmd('Page.enable');await cmd('Runtime.enable');await cmd('Network.enable');await cmd('Emulation.setDeviceMetricsOverride',{width,height,screenWidth:width,screenHeight:height,deviceScaleFactor:1,mobile:!!ua});if(ua){await cmd('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:5});await cmd('Network.setUserAgentOverride',{userAgent:ua})}
+ const close=async()=>{try{ws.close()}catch{};try{proc.kill('SIGKILL')}catch{};await rm(profile,{recursive:true,force:true}).catch(()=>{})};return{cmd,close,width,height};
 }
-
-async function evaluate(c,expression){
-  const r=await c.cmd('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});
-  if(r.exceptionDetails)throw new Error(`Runtime evaluate failed: ${JSON.stringify(r.exceptionDetails).slice(0,1000)}`);
-  return r.result?.value;
-}
-async function waitFor(c,expression,{timeout=18000,label='condition'}={}){
-  const start=Date.now();let last;
-  while(Date.now()-start<timeout){
-    try{last=await evaluate(c,expression);if(last)return last}catch(e){last=String(e)}
-    await sleep(120);
-  }
-  const diag=await evaluate(c,`({href:location.href,route:document.documentElement.dataset.riseRoute,ready:document.documentElement.dataset.riseStableReady,error:document.documentElement.dataset.riseRuntimeError||'',booting:document.documentElement.classList.contains('aa-app-booting'),text:(document.body?.innerText||'').slice(0,800)})`).catch(()=>null);
-  throw new Error(`${label} timeout; last=${JSON.stringify(last)} diag=${JSON.stringify(diag)}`);
-}
+async function evaluate(c,expression){const r=await c.cmd('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw new Error(`Runtime evaluate failed: ${JSON.stringify(r.exceptionDetails).slice(0,1000)}`);return r.result?.value}
+async function waitFor(c,expression,{timeout=18000,label='condition'}={}){const start=Date.now();let last;while(Date.now()-start<timeout){try{last=await evaluate(c,expression);if(last)return last}catch(e){last=String(e)}await sleep(100)}const diag=await evaluate(c,`({href:location.href,route:document.documentElement.dataset.riseRoute,navigating:document.documentElement.dataset.riseNavigating||'',navOwner:window.__RISE_NAVIGATION_V1__?.version||'',error:document.documentElement.dataset.riseRuntimeError||document.documentElement.dataset.riseNavigationError||'',booting:document.documentElement.classList.contains('aa-app-booting'),navs:document.querySelectorAll('.nav').length,stable:!!document.getElementById('riseStableMain'),text:(document.body?.innerText||'').slice(0,800)})`).catch(()=>null);throw new Error(`${label} timeout; last=${JSON.stringify(last)} diag=${JSON.stringify(diag)}`)}
 async function navigate(c,url){await c.cmd('Page.navigate',{url});await waitFor(c,`document.readyState==='complete'||document.readyState==='interactive'`,{timeout:12000,label:'document ready'})}
-function readyExpr(route){const s=routeSpec[route];return `!document.documentElement.classList.contains('aa-app-booting')&&document.documentElement.dataset.riseStableReady==='1'&&document.documentElement.dataset.riseRoute==='${route}'&&!document.documentElement.dataset.riseRuntimeError&&!!document.querySelector('#riseStableMain:not([hidden]) .${s.cls}[data-ui-ver="4.2.0"]')`}
+function readyExpr(route){const s=routeSpec[route];return `!document.documentElement.classList.contains('aa-app-booting')&&document.documentElement.dataset.riseRoute==='${route}'&&!document.documentElement.dataset.riseRuntimeError&&!document.documentElement.dataset.riseNavigationError&&window.__RISE_NAVIGATION_V1__?.version==='1.0.0'&&!document.getElementById('riseStableMain')&&document.querySelectorAll('.nav').length===1&&!!document.querySelector('#app main .${s.cls}[data-ui-ver="4.2.0"]')`}
 async function assertTokens(c,tokens,label){const text=await evaluate(c,`document.body?.innerText||''`);for(const token of tokens)if(!text.includes(token))throw new Error(`${label}: missing text ${token}`)}
-async function saveEvidence(c,name){
-  await sleep(220);
-  const html=await evaluate(c,'document.documentElement.outerHTML');
-  const shot=await c.cmd('Page.captureScreenshot',{format:'png',fromSurface:true,captureBeyondViewport:false});
-  const png=Buffer.from(shot.data,'base64');const actual=pngSize(png);
-  if(actual[0]!==c.width||actual[1]!==c.height)throw new Error(`${name}: bad PNG dimensions ${actual.join('x')} expected ${c.width}x${c.height}`);
-  if(png.length<10000)throw new Error(`${name}: screenshot too small ${png.length}`);
-  await writeFile(path.join(OUT,`${name}.html`),html);await writeFile(path.join(OUT,`${name}.png`),png);
-  return {name,bytes:png.length,sha256:sha256(png),width:actual[0],height:actual[1]};
-}
-
-async function captureRoute(view,route){
-  const suffix=`${view.width}x${view.height}`,name=`rise-${view.name}-${route}-${suffix}`;
-  const c=await launch({...view,label:name});
-  try{
-    await navigate(c,targetUrl());
-    await waitFor(c,readyExpr('home'),{label:`${name} home cold start`});
-    if(route==='subjects'||route==='analytics'){
-      await evaluate(c,`document.querySelector('.navin [data-route="${route}"]')?.click()`);
-      await waitFor(c,readyExpr(route),{label:`${name} bottom-nav ${route}`});
-    }else if(route==='settings'){
-      await waitFor(c,`!!document.getElementById('aaHeaderMenuToggle')`,{label:`${name} menu toggle`});
-      await evaluate(c,`document.getElementById('aaHeaderMenuToggle').click()`);
-      await waitFor(c,`document.getElementById('aaHeaderMenuOverlay')?.classList.contains('open')`,{label:`${name} menu open`});
-      await evaluate(c,`document.querySelector('[data-aa-menu-key="settings"]')?.click()`);
-      await waitFor(c,readyExpr('settings'),{label:`${name} menu settings`});
-    }
-    await assertTokens(c,routeSpec[route].tokens,name);
-    return await saveEvidence(c,name);
-  }finally{await c.close()}
-}
-
-async function captureReview(view){
-  const suffix=`${view.width}x${view.height}`,name=`rise-${view.name}-review-${suffix}`;
-  const c=await launch({...view,label:name});
-  try{
-    await navigate(c,targetUrl());
-    await waitFor(c,readyExpr('home'),{label:`${name} home before review`});
-    await waitFor(c,`!![...document.querySelectorAll('a[href]')].find(a=>{try{return new URL(a.href,location.href).pathname.endsWith('/review/')}catch{return false}})`,{label:`${name} review link`});
-    await evaluate(c,`[...document.querySelectorAll('a[href]')].find(a=>{try{return new URL(a.href,location.href).pathname.endsWith('/review/')}catch{return false}})?.click()`);
-    await waitFor(c,`location.pathname.endsWith('/review/')&&(document.body?.innerText||'').includes('Review v2')&&(document.body?.innerText||'').includes('Rise / 復習')`,{timeout:18000,label:`${name} canonical review navigation`});
-    await assertTokens(c,['Rise / 復習','忘れる前に、取り戻す。','Review v2','要復習','覚えた'],name);
-    return await saveEvidence(c,name);
-  }finally{await c.close()}
-}
-
-const views=[
-  {name:'mobile',width:390,height:844,ua:MOBILE_UA},
-  {name:'desktop',width:1440,height:1000,ua:''},
-];
-const evidence=[];
-for(const view of views){
-  for(const route of ['home','subjects','analytics','settings'])evidence.push(await captureRoute(view,route));
-  evidence.push(await captureReview(view));
-}
-const lines=[
-  `source_sha=${SOURCE_SHA}`,
-  `page_url=${PAGE_URL}`,
-  `captured_at=${new Date().toISOString()}`,
-  'screens=home+subjects+analytics+settings+review',
-  'viewports=390x844+iPhone-UA,1440x1000',
-  'cold_start_home=success',
-  'settings_menu_navigation=success',
-  'review_canonical_click_navigation=success',
-  'result=success',
-  ...evidence.map(x=>`${x.sha256}  ${x.name}.png  ${x.width}x${x.height}  ${x.bytes}bytes`),
-];
-await writeFile(path.join(OUT,'manifest.txt'),lines.join('\n')+'\n');
-console.log(lines.join('\n'));
+async function assertSinglePanel(c,route,label){const ok=await evaluate(c,`(()=>{const m=document.querySelector('#app main');if(!m)return false;const map={home:'.riseHomeV4',subjects:'.riseSubjectsV4',analytics:'.riseAnalyticsV4',settings:'.riseSettingsV4'};const visible=Object.entries(map).filter(([r,s])=>{const el=m.querySelector(s);return el&&getComputedStyle(el).display!=='none'}).map(x=>x[0]);return visible.length===1&&visible[0]==='${route}'&&document.querySelectorAll('.nav').length===1&&!document.getElementById('riseStableMain')})()`);if(!ok)throw new Error(`${label}: multiple/stale route DOM detected`)}
+async function clickRoute(c,route,label){await evaluate(c,`document.querySelector('.navin [data-route="${route}"]')?.click()`);await waitFor(c,readyExpr(route),{label});await assertSinglePanel(c,route,label)}
+async function stressRoutes(c,label){for(const r of ['subjects','analytics','home','subjects','home','analytics','home'])await clickRoute(c,r,`${label} stress ${r}`);const state=await evaluate(c,`({route:window.AA_APP?.get?.('state')?.get?.()?.route,dataset:document.documentElement.dataset.riseRoute,navs:document.querySelectorAll('.nav').length,stable:!!document.getElementById('riseStableMain'),owner:window.__RISE_NAVIGATION_V1__?.version})`);if(state.route!=='home'||state.dataset!=='home'||state.navs!==1||state.stable||state.owner!=='1.0.0')throw new Error(`${label}: route stress final mismatch ${JSON.stringify(state)}`)}
+async function saveEvidence(c,name){await sleep(180);const html=await evaluate(c,'document.documentElement.outerHTML');const shot=await c.cmd('Page.captureScreenshot',{format:'png',fromSurface:true,captureBeyondViewport:false});const png=Buffer.from(shot.data,'base64'),actual=pngSize(png);if(actual[0]!==c.width||actual[1]!==c.height)throw new Error(`${name}: bad PNG dimensions ${actual.join('x')} expected ${c.width}x${c.height}`);if(png.length<10000)throw new Error(`${name}: screenshot too small ${png.length}`);await writeFile(path.join(OUT,`${name}.html`),html);await writeFile(path.join(OUT,`${name}.png`),png);return{name,bytes:png.length,sha256:sha256(png),width:actual[0],height:actual[1]}}
+async function captureRoute(view,route){const suffix=`${view.width}x${view.height}`,name=`rise-${view.name}-${route}-${suffix}`,c=await launch({...view,label:name});try{await navigate(c,targetUrl());await waitFor(c,readyExpr('home'),{label:`${name} home cold start`});await assertSinglePanel(c,'home',`${name} cold home`);if(route==='home')await stressRoutes(c,`${name} route switching`);else if(route==='subjects'||route==='analytics')await clickRoute(c,route,`${name} bottom-nav ${route}`);else if(route==='settings'){await waitFor(c,`!!document.getElementById('aaHeaderMenuToggle')`,{label:`${name} menu toggle`});await evaluate(c,`document.getElementById('aaHeaderMenuToggle').click()`);await waitFor(c,`document.getElementById('aaHeaderMenuOverlay')?.classList.contains('open')`,{label:`${name} menu open`});await evaluate(c,`document.querySelector('[data-aa-menu-key="settings"]')?.click()`);await waitFor(c,readyExpr('settings'),{label:`${name} menu settings`});await assertSinglePanel(c,'settings',`${name} menu settings`)}await assertTokens(c,routeSpec[route].tokens,name);return await saveEvidence(c,name)}finally{await c.close()}}
+async function captureReview(view){const suffix=`${view.width}x${view.height}`,name=`rise-${view.name}-review-${suffix}`,c=await launch({...view,label:name});try{await navigate(c,targetUrl());await waitFor(c,readyExpr('home'),{label:`${name} home before review`});await waitFor(c,`!![...document.querySelectorAll('a[href]')].find(a=>{try{return new URL(a.href,location.href).pathname.endsWith('/review/')}catch{return false}})`,{label:`${name} review link`});await evaluate(c,`[...document.querySelectorAll('a[href]')].find(a=>{try{return new URL(a.href,location.href).pathname.endsWith('/review/')}catch{return false}})?.click()`);await waitFor(c,`location.pathname.endsWith('/review/')&&(document.body?.innerText||'').includes('Review v2')&&(document.body?.innerText||'').includes('Rise / 復習')`,{timeout:18000,label:`${name} canonical review navigation`});await assertTokens(c,['Rise / 復習','忘れる前に、取り戻す。','Review v2','要復習','覚えた'],name);return await saveEvidence(c,name)}finally{await c.close()}}
+const views=[{name:'mobile',width:390,height:844,ua:MOBILE_UA},{name:'desktop',width:1440,height:1000,ua:''}],evidence=[];
+for(const view of views){for(const route of ['home','subjects','analytics','settings'])evidence.push(await captureRoute(view,route));evidence.push(await captureReview(view))}
+const lines=[`source_sha=${SOURCE_SHA}`,`page_url=${PAGE_URL}`,`captured_at=${new Date().toISOString()}`,'screens=home+subjects+analytics+settings+review','viewports=390x844+iPhone-UA,1440x1000','cold_start_home=success','single_navigation_owner=success','single_live_dom=success','route_switch_stress=success','settings_menu_navigation=success','review_canonical_click_navigation=success','result=success',...evidence.map(x=>`${x.sha256}  ${x.name}.png  ${x.width}x${x.height}  ${x.bytes}bytes`)];await writeFile(path.join(OUT,'manifest.txt'),lines.join('\n')+'\n');console.log(lines.join('\n'));
