@@ -46,6 +46,11 @@ jobs:
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-ui-v4.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-ui-v4.js
           grep -q "version:'4.2.0'" /tmp/rise-ui-v4.js
           grep -q 'function homeHTML' /tmp/rise-ui-v4.js
+          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-stable-root-v4.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-stable-root-v4.js
+          grep -q "version:'1.0.0'" /tmp/rise-stable-root-v4.js
+          grep -q "host.id='riseStableMain'" /tmp/rise-stable-root-v4.js
+          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}index.html?visual_asset=${SOURCE_SHA}" -o /tmp/index.html
+          grep -q 'rise-stable-root-v4.js?v=1.0.0' /tmp/index.html
 
       - name: Install Japanese rendering fonts
         run: |
@@ -118,37 +123,74 @@ jobs:
             sha256sum visual-evidence/rise-desktop-1440x1000.png
           } > visual-evidence/manifest.txt
 
-      - name: Validate hydrated production UI
+      - name: Validate stable hydrated production UI
         run: |
           set -euo pipefail
-          for dom in visual-evidence/rise-mobile-390x844.html visual-evidence/rise-desktop-1440x1000.html; do
-            grep -q 'data-rise-structure="optimized-4"' "$dom"
-            grep -q '<h1>Rise</h1>' "$dom"
-            grep -q 'data-ui-ver="4.2.0"' "$dom"
-            grep -q 'rv4Dashboard' "$dom"
-            grep -q '>今日の学習<' "$dom"
-            grep -q '>教科別の達成度<' "$dom"
-            grep -q '>ホーム<' "$dom"
-            grep -q '>学習<' "$dom"
-            grep -q '>復習<' "$dom"
-            grep -q '>記録<' "$dom"
-            if grep -q 'data-hydrated="0"' "$dom"; then
-              echo "temporary Rise shell remained visible: $dom" >&2
-              grep -o 'data-rise-runtime-error="[^"]*"' "$dom" || true
-              exit 1
-            fi
-            if grep -q 'data-rise-runtime-error=' "$dom"; then
-              echo "Rise runtime error marker found: $dom" >&2
-              grep -o 'data-rise-runtime-error="[^"]*"' "$dom" || true
-              exit 1
-            fi
-            if grep -q 'id="aaLoginSetup"' "$dom"; then
-              echo "first-run setup modal obscures $dom" >&2
-              exit 1
-            fi
-          done
+          python3 - visual-evidence/rise-mobile-390x844.html visual-evidence/rise-desktop-1440x1000.html <<'PY'
+          from html.parser import HTMLParser
+          import sys
+
+          class RiseParser(HTMLParser):
+              def __init__(self):
+                  super().__init__(convert_charrefs=True)
+                  self.stack=[]
+                  self.skip=0
+                  self.html_attrs={}
+                  self.stable_depth=None
+                  self.stable_hidden=False
+                  self.hydrated_in_stable=False
+                  self.login_setup=False
+                  self.text=[]
+              def handle_starttag(self,tag,attrs):
+                  a=dict(attrs)
+                  self.stack.append((tag,a))
+                  if tag in ('script','style'):
+                      self.skip += 1
+                  if tag=='html':
+                      self.html_attrs=a
+                  if a.get('id')=='aaLoginSetup':
+                      self.login_setup=True
+                  if tag=='main' and a.get('id')=='riseStableMain':
+                      self.stable_depth=len(self.stack)
+                      self.stable_hidden='hidden' in a
+                  if tag=='section' and self.stable_depth is not None and len(self.stack)>self.stable_depth:
+                      classes=set((a.get('class') or '').split())
+                      if 'riseHomeV4' in classes and a.get('data-ui-ver')=='4.2.0':
+                          self.hydrated_in_stable=True
+              def handle_endtag(self,tag):
+                  if tag in ('script','style') and self.skip:
+                      self.skip -= 1
+                  if self.stable_depth is not None and len(self.stack)==self.stable_depth and tag=='main':
+                      self.stable_depth=None
+                  if self.stack:
+                      self.stack.pop()
+              def handle_data(self,data):
+                  if not self.skip:
+                      s=' '.join(data.split())
+                      if s:
+                          self.text.append(s)
+
+          required_text=['Rise','今日の学習','教科別の達成度','ホーム','学習','復習','記録']
+          for path in sys.argv[1:]:
+              p=RiseParser()
+              with open(path,encoding='utf-8') as f:
+                  p.feed(f.read())
+              text=' '.join(p.text)
+              errors=[]
+              if p.html_attrs.get('data-rise-structure')!='optimized-4': errors.append('optimized-4 missing')
+              if p.html_attrs.get('data-rise-stable-ready')!='1': errors.append('stable-ready missing')
+              if p.html_attrs.get('data-rise-runtime-error'): errors.append('runtime-error present')
+              if not p.hydrated_in_stable: errors.append('hydrated Rise home is not inside #riseStableMain')
+              if p.stable_hidden: errors.append('#riseStableMain is hidden')
+              if p.login_setup: errors.append('login setup overlay present')
+              for token in required_text:
+                  if token not in text: errors.append(f'text missing: {token}')
+              if errors:
+                  raise SystemExit(f'{path}: ' + '; '.join(errors))
+              print(f'STABLE_DOM_OK {path}')
+          PY
           echo 'result=success' >> visual-evidence/manifest.txt
-          echo 'dom_gate=Rise+hydrated-4.2-dashboard+today+subjects+four-nav+no-runtime-error+no-login-setup' >> visual-evidence/manifest.txt
+          echo 'dom_gate=Rise+stable-root+hydrated-4.2-dashboard+today+subjects+four-nav+no-runtime-error+no-login-setup' >> visual-evidence/manifest.txt
           cat visual-evidence/manifest.txt
 
       - name: Upload production screenshot evidence
@@ -170,7 +212,7 @@ jobs:
             echo "- Mobile: \`390x844\` / iPhone User-Agent"
             echo "- Desktop: \`1440x1000\`"
             echo '- Japanese Noto CJK fonts installed before rendering.'
-            echo '- DOM gate requires the fully hydrated Rise 4.2 dashboard, not the temporary loading shell.'
+            echo '- DOM parser requires the hydrated Rise 4.2 dashboard to exist inside the independent stable root.'
             echo '- PNG signature, exact dimensions, and minimum file size validated.'
             echo '- Screenshots and rendered DOM are stored in the rise-production-screenshots artifact.'
             echo ''
