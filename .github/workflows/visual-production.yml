@@ -50,11 +50,15 @@ jobs:
           grep -q 'function analyticsHTML' /tmp/rise-ui-v4.js
           grep -q 'function settingsHTML' /tmp/rise-ui-v4.js
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-stable-root-v4.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-stable-root-v4.js
-          grep -q "version:'1.0.0'" /tmp/rise-stable-root-v4.js
+          grep -q "version:'2.1.0'" /tmp/rise-stable-root-v4.js
+          grep -q "firstLoad:'immediate-capture'" /tmp/rise-stable-root-v4.js
+          grep -q 'captureAdded' /tmp/rise-stable-root-v4.js
           grep -q "host.id='riseStableMain'" /tmp/rise-stable-root-v4.js
           grep -q 'visual_route' /tmp/rise-stable-root-v4.js
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}index.html?visual_asset=${SOURCE_SHA}" -o /tmp/index.html
-          grep -q 'rise-stable-root-v4.js?v=1.0.0' /tmp/index.html
+          grep -q 'rise-stable-root-v4.js?v=2.1.0' /tmp/index.html
+          grep -q 'pwa-runtime.js?v=4.2.1' /tmp/index.html
+          test "$(grep -n 'rise-stable-root-v4.js?v=2.1.0' /tmp/index.html | cut -d: -f1)" -lt "$(grep -n 'rise-ui-v4.js?v=4.2.0' /tmp/index.html | tail -1 | cut -d: -f1)"
 
       - name: Install Japanese rendering fonts
         run: |
@@ -115,10 +119,13 @@ jobs:
           PY
           }
 
-          for route in home subjects analytics settings; do
+          # HOME is captured first with a brand-new browser profile: no review-page visit can initialize it.
+          capture "rise-mobile-home-390x844" 390 844 "$IPHONE_UA" "home" ''
+          for route in subjects analytics settings; do
             capture "rise-mobile-${route}-390x844" 390 844 "$IPHONE_UA" "$route" ''
           done
-          for route in home subjects analytics settings; do
+          capture "rise-desktop-home-1440x1000" 1440 1000 '' "home" ''
+          for route in subjects analytics settings; do
             capture "rise-desktop-${route}-1440x1000" 1440 1000 '' "$route" ''
           done
           capture rise-mobile-review-390x844 390 844 "$IPHONE_UA" '' 'review/'
@@ -130,6 +137,7 @@ jobs:
             echo "captured_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
             echo "screens=home+subjects+analytics+settings+review"
             echo "viewports=390x844+iPhone-UA,1440x1000"
+            echo "cold_start_home=direct-no-review-navigation"
             sha256sum visual-evidence/*.png
           } > visual-evidence/manifest.txt
 
@@ -209,7 +217,8 @@ jobs:
               print(f'REVIEW_ROUTE_OK {path}')
           PY
           echo 'result=success' >> visual-evidence/manifest.txt
-          echo 'dom_gate=Rise+stable-root+home+subjects+analytics+settings+review+mobile+desktop+no-runtime-error' >> visual-evidence/manifest.txt
+          echo 'cold_start_home=success' >> visual-evidence/manifest.txt
+          echo 'dom_gate=Rise+stable-root+home+subjects+analytics+settings+review+mobile+desktop+no-runtime-error+cold-start-home' >> visual-evidence/manifest.txt
           cat visual-evidence/manifest.txt
 
       - name: Upload production screenshot evidence
@@ -231,6 +240,7 @@ jobs:
             echo '- Screens: home / study / record / settings / review'
             echo '- Mobile: `390x844` / iPhone User-Agent'
             echo '- Desktop: `1440x1000`'
+            echo '- HOME is captured first using a brand-new browser profile, without visiting Review.'
             echo '- Japanese Noto CJK fonts installed before rendering.'
             echo '- DOM parser requires each custom screen inside the independent stable root and rejects runtime errors.'
             echo '- Review v2 is checked separately on both viewports.'
