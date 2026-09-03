@@ -35,19 +35,22 @@ jobs:
           node --check app/ui/rise-ui-v4.js
           node --check app/ui/rise-stable-root-v4.js
           node --check app/pwa/pwa-runtime.js
+          node --check scripts/rise-visual-cdp.mjs
           node --check sw.js
-          grep -q "version:'2.2.0'" app/ui/rise-stable-root-v4.js
+          grep -q "version:'2.3.0'" app/ui/rise-stable-root-v4.js
           grep -q "firstLoad:'immediate-capture'" app/ui/rise-stable-root-v4.js
-          grep -q "prewarm:'all-custom'" app/ui/rise-stable-root-v4.js
-          grep -q "const primary=\['home','subjects','analytics','settings'\]" app/ui/rise-stable-root-v4.js
+          grep -q "prewarm:'none-on-demand'" app/ui/rise-stable-root-v4.js
+          ! grep -q 'warmPrimary' app/ui/rise-stable-root-v4.js
+          ! grep -q 'clickUnderlying' app/ui/rise-stable-root-v4.js
           grep -q "reviewNavigation:'canonical-page'" app/ui/rise-stable-root-v4.js
           grep -q 'captureAdded' app/ui/rise-stable-root-v4.js
           grep -q 'goReview' app/ui/rise-stable-root-v4.js
           grep -q 'stopImmediatePropagation' app/ui/rise-stable-root-v4.js
-          grep -q 'rise-stable-root-v4.js?v=2.2.0' index.html
+          grep -q 'rise-stable-root-v4.js?v=2.3.0' index.html
           grep -q 'pwa-runtime.js?v=4.2.1' index.html
-          test "$(grep -n 'rise-stable-root-v4.js?v=2.2.0' index.html | cut -d: -f1)" -lt "$(grep -n 'rise-ui-v4.js?v=4.2.0' index.html | tail -1 | cut -d: -f1)"
-          grep -q "url('app/ui/rise-stable-root-v4.js')" sw.js
+          test "$(grep -n 'rise-stable-root-v4.js?v=2.3.0' index.html | cut -d: -f1)" -lt "$(grep -n 'rise-ui-v4.js?v=4.2.0' index.html | tail -1 | cut -d: -f1)"
+          grep -q "url('app/ui/rise-stable-root-v4.js?v=2.3.0')" sw.js
+          grep -q 'stable-2.3.0' sw.js
           grep -q "url('app/pwa/pwa-runtime.js?v=4.2.1')" sw.js
           grep -q "const RISE_BOOT='4.2.1'" app/pwa/pwa-runtime.js
           grep -q "rise:sw-updated" app/pwa/pwa-runtime.js
