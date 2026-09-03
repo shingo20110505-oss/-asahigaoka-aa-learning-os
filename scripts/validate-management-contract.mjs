@@ -12,6 +12,7 @@ const requiredFiles = [
   'docs/SYSTEM_MANAGEMENT.md',
   'docs/AI_PLATFORM.md',
   'app/runtime-registry.js',
+  'storage-resilience-v1.js',
   'tests/architecture-boundaries.mjs',
   '.github/workflows/deploy-pages.yml',
   '.github/workflows/deploy-ai-worker.yml',
@@ -36,14 +37,23 @@ assert.match(operations, /review-bank-v1\.js/);
 assert.match(operations, /review\/index\.html/);
 assert.match(operations, /GROQ_API_KEY/);
 assert.match(operations, /gemini-3\.5-flash/);
+assert.match(operations, /aa-storage-best-v4/);
+assert.match(operations, /asahigaoka-aa-os-storage/);
+assert.doesNotMatch(operations, /asahi_learning_os_best_snapshot_v1/);
+assert.doesNotMatch(operations, /aa-learning-resilience-v1/);
 assert.doesNotMatch(operations, /site-publish\.yml/);
 assert.match(operations, /main:gh-pages\s+--force[^\n]*禁止/);
 
 const management = read('docs/SYSTEM_MANAGEMENT.md');
 for (const token of [
   'app/runtime-registry.js',
+  'storage-resilience-v1.js',
   'tests/architecture-boundaries.mjs',
+  'scripts/validate-management-contract.mjs',
+  '.github/workflows/management-contract.yml',
   'asahi_learning_os_v1',
+  'aa-storage-best-v4',
+  'asahigaoka-aa-os-storage',
   'asahi_review_progress_v1',
   'review-bank-v1.js',
   'review/index.html',
@@ -54,6 +64,8 @@ for (const token of [
 ]) assert.match(management, new RegExp(token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
 assert.match(management, /runtime[\s\S]*data[\s\S]*state[\s\S]*engines[\s\S]*ui/);
 assert.match(management, /branch protection[\s\S]*現在無効/);
+assert.doesNotMatch(management, /asahi_learning_os_best_snapshot_v1/);
+assert.doesNotMatch(management, /aa-learning-resilience-v1/);
 
 const aiPlatform = read('docs/AI_PLATFORM.md');
 assert.match(aiPlatform, /gemini-3\.5-flash/);
@@ -84,11 +96,18 @@ assert.match(pages, /Verify actual public site/);
 assert.match(pages, /public_verify/);
 
 const registry = read('app/runtime-registry.js');
-for (const key of [
-  'asahi_learning_os_v1',
-  'asahi_learning_os_best_snapshot_v1',
-  'asahi_review_progress_v1',
-  'aa_ai_reading_config_v1'
-]) assert.match(registry, new RegExp(key));
+for (const asset of [
+  'review-bank-v1.js',
+  'review/index.html',
+  'storage-resilience-v1.js',
+  'login-companion-v1.js',
+  'companion7-runtime.js'
+]) assert.match(registry, new RegExp(asset.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
 
-console.log('Management contract OK: canonical docs, deployment path, protected state, and AI secret/model state are consistent');
+const storage = read('storage-resilience-v1.js');
+assert.match(storage, /MAIN_KEY='asahi_learning_os_v1'/);
+assert.match(storage, /LOCAL_BEST_KEY='aa-storage-best-v4'/);
+assert.match(storage, /DB_NAME='asahigaoka-aa-os-storage'/);
+assert.match(storage, /DB_STORE='snapshots'/);
+
+console.log('Management contract OK: canonical docs, deployment path, storage ownership, protected assets, and AI secret/model state are consistent');
