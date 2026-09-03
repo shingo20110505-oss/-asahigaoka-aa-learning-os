@@ -8,6 +8,7 @@ on:
       - 'scripts/japanese-library.mjs'
       - 'scripts/japanese-groq-live-smoke.mjs'
       - 'tests/japanese-exam.mjs'
+      - 'tests/japanese-editorial-review.mjs'
       - 'tests/japanese-groq-verifier.mjs'
       - 'worker/src/providers/**'
       - '.github/workflows/japanese-groq-contract.yml'
@@ -33,11 +34,15 @@ jobs:
       - name: Validate Japanese cross-provider contract
         run: |
           set -euo pipefail
+          node --check japanese-exam/starter-packs.mjs
+          node --check japanese-exam/starter-packs.generated.mjs
           node --check japanese-exam/groq-verifier.mjs
           node --check scripts/japanese-library.mjs
           node --check scripts/japanese-groq-live-smoke.mjs
           node --check tests/japanese-exam.mjs
+          node --check tests/japanese-editorial-review.mjs
           node --check tests/japanese-groq-verifier.mjs
           node tests/japanese-exam.mjs
+          node tests/japanese-editorial-review.mjs
           node tests/japanese-groq-verifier.mjs
           node scripts/japanese-library.mjs
