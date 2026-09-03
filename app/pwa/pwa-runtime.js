@@ -1,27 +1,18 @@
 (()=>{'use strict';
 const A=window.AA_APP;if(!A)throw new Error('AA_APP registry missing');
-const RISE_BOOT='4.2.1';
-let reloading=false;
+const RISE_BOOT='4.3.0';
 function cleanLegacyRefreshParams(){
  try{
   const u=new URL(location.href);
-  if(u.searchParams.has('verify')||u.searchParams.has('visual_verify')||u.searchParams.has('aa_quality_ci'))return;
+  if(u.searchParams.has('verify')||u.searchParams.has('visual_verify')||u.searchParams.has('aa_quality_ci'))return false;
   let changed=false;
   for(const k of ['refresh','sw'])if(u.searchParams.has(k)){u.searchParams.delete(k);changed=true}
   if(u.searchParams.get('rise')&&u.searchParams.get('rise')!==RISE_BOOT){u.searchParams.set('rise',RISE_BOOT);changed=true}
   if(changed)history.replaceState(history.state,'',u.href);
- }catch(_){}
+  return changed;
+ }catch(_){return false}
 }
-function migrateToRise(){
- if(reloading)return false;
- reloading=true;
- try{
-  const u=new URL(location.href);
-  u.searchParams.set('rise',RISE_BOOT);
-  u.searchParams.delete('refresh');u.searchParams.delete('sw');
-  location.replace(u.href);return true;
- }catch(_){reloading=false;return false}
-}
+function migrateToRise(){return cleanLegacyRefreshParams()}
 cleanLegacyRefreshParams();
 if('serviceWorker'in navigator){
  navigator.serviceWorker.addEventListener('controllerchange',()=>{
