@@ -1,0 +1,40 @@
+name: Japanese Groq contract
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'japanese-exam/**'
+      - 'scripts/japanese-library.mjs'
+      - 'tests/japanese-exam.mjs'
+      - 'tests/japanese-groq-verifier.mjs'
+      - 'worker/src/providers/**'
+      - '.github/workflows/japanese-groq-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: japanese-groq-contract-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate Japanese cross-provider contract
+        run: |
+          set -euo pipefail
+          node --check japanese-exam/groq-verifier.mjs
+          node --check scripts/japanese-library.mjs
+          node --check tests/japanese-exam.mjs
+          node --check tests/japanese-groq-verifier.mjs
+          node tests/japanese-exam.mjs
+          node tests/japanese-groq-verifier.mjs
+          node scripts/japanese-library.mjs
