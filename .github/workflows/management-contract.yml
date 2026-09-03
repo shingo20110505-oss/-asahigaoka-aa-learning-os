@@ -43,8 +43,10 @@ jobs:
           grep -q 'pwa-runtime.js?v=4.2.1' index.html
           test "$(grep -n 'rise-stable-root-v4.js?v=2.1.0' index.html | cut -d: -f1)" -lt "$(grep -n 'rise-ui-v4.js?v=4.2.0' index.html | tail -1 | cut -d: -f1)"
           grep -q "url('app/ui/rise-stable-root-v4.js')" sw.js
+          grep -q "url('app/ui/rise-stable-root-v4.js?v=2.1.0')" sw.js
+          grep -q "url('app/pwa/pwa-runtime.js?v=4.2.1')" sw.js
           grep -q "const RISE_BOOT='4.2.1'" app/pwa/pwa-runtime.js
           grep -q "rise:sw-updated" app/pwa/pwa-runtime.js
-          grep -q 'no-auto-nav' sw.js
+          grep -q 'firstload-2.1.0' sw.js
           ! grep -q 'client.navigate' sw.js
           ! grep -q 'refreshMainClients' sw.js
