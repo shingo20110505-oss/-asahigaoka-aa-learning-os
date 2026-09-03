@@ -22,10 +22,16 @@ const quality = read('quality-repair-v1.js');
 const qualityFinal = read('quality-repair-final-v1.js');
 const qualityCI = read('quality-ci-runner-v1.js');
 const aiReading = read('ai-reading-v1.js');
+const riseUI = read('app/ui/rise-ui-v4.js');
+const riseStructure = read('app/ui/rise-structure-v4.css');
 const sw = read('sw.js');
 
+new Function(riseUI);
 requireText(index, './aa-companion-v2.js', 'index entry');
 requireText(index, './aa-companion-mobile-fix.js', 'index mobile entry');
+requireText(index, './app/ui/rise-ui-v4.js?v=4.1.0', 'optimized Rise UI entry');
+requireText(index, './app/ui/rise-structure-v4.css?v=4.1.0', 'optimized Rise structure stylesheet');
+requireText(index, 'data-rise-structure="optimized-4"', 'optimized Rise boot marker');
 requireText(entry, "a.href='./review/'", 'review route');
 requireText(entry, "register('./sw.js'", 'service worker refresh');
 
@@ -35,6 +41,10 @@ for(const asset of [
   'login-production-test-v1.js',
   'companion7-runtime.js',
   'settings-improvements-v1.js',
+  'header-menu-v1.js',
+  'app/ui/rise-ui-v4.js',
+  'app/ui/rise-ui-v4.css',
+  'app/ui/rise-structure-v4.css',
   'v23-loader.js',
   'quality-repair-v1.js',
   'quality-repair-final-v1.js',
@@ -54,6 +64,18 @@ for(const asset of [
 ]){
   if(!fs.existsSync(asset)) throw new Error(`missing managed runtime asset: ${asset}`);
 }
+
+requireText(riseUI, "version:'4.1.0'", 'Rise UI version');
+requireText(riseUI, "structure:'optimized'", 'Rise optimized structure marker');
+requireText(riseUI, "root.dataset.riseStructure='optimized-4'", 'Rise optimized DOM marker');
+requireText(riseUI, '<span>ホーム</span>', 'Rise home nav');
+requireText(riseUI, '<span>学習</span>', 'Rise study nav');
+requireText(riseUI, '<span>復習</span>', 'Rise review nav');
+requireText(riseUI, '<span>記録</span>', 'Rise record nav');
+requireText(riseUI, 'function settingsHTML', 'Rise minimal settings');
+requireText(riseStructure, '.rv4Focus', 'Rise focus-first home');
+requireText(riseStructure, '.rv4SettingsCard', 'Rise minimal settings styling');
+requireText(riseStructure, 'grid-template-columns:repeat(4', 'Rise four-item navigation layout');
 
 requireText(mobile, "./mobile-layout-guard-v1.js", 'mobile layout loader');
 requireText(mobile, "./login-companion-v1.js?v=1.2.0", 'decode-safe login visual loader');
@@ -116,8 +138,8 @@ requireText(qualityFinal, 'repairReadingEvidence', 'reading evidence repair');
 requireText(qualityFinal, 'missingEvidence', 'reading evidence audit');
 requireText(qualityCI, "params.get('aa_quality_ci')!=='1'", 'browser quality runner opt-in');
 requireText(qualityCI, 'AA_QUALITY_REPAIR_FINAL', 'browser waits for final repair');
+requireText(qualityCI, 'Rise・最適化ナビ', 'browser optimized Rise gate');
 requireText(qualityCI, 'Gemini教材一覧・文法ゲート', 'runtime long-reading gate');
-requireText(qualityCI, 'AA_QUALITY_REPAIR_FINAL', 'browser keeps normal mathematics practice');
 requireText(qualityCI, '愛知県型数学・応用検算', 'runtime Aichi applied mathematics gate');
 requireText(qualityCI, "dataset.aaQualityCi=result.pass?'PASS':'FAIL'", 'browser quality PASS marker');
 requireText(aiReading, 'window.__AA_AI_READING_V1__', 'AI reading runtime marker');
@@ -128,6 +150,8 @@ if(/GEMINI_API_KEY\s*=/.test(aiReading)) throw new Error('Gemini API key must no
 
 if(!/const VERSION='[^']+'/.test(sw)) throw new Error('managed service worker version missing');
 requireText(sw, 'quality2-chronologia1000', 'shared PWA generation');
+requireText(sw, "const RISE_BOOT='4.1.0'", 'optimized Rise PWA generation');
+requireText(sw, "url('app/ui/rise-structure-v4.css')", 'offline optimized Rise structure');
 requireText(sw, 'async function networkFirst', 'network-first runtime');
 requireText(sw, "ext==='js'", 'generic JS freshness');
 requireText(sw, "ext==='css'", 'generic CSS freshness');
@@ -145,4 +169,4 @@ for(const file of new Set(referenced)){
   if(!fs.existsSync(file)) throw new Error(`mobile loader points to missing file: ${file}`);
 }
 
-console.log(`runtime assets OK: referenced=${new Set(referenced).size}, final quality/Chronologia/layout/login/PWA/vocab-example/mobile-card checks passed`);
+console.log(`runtime assets OK: referenced=${new Set(referenced).size}, optimized Rise/navigation/settings + final quality/Chronologia/layout/login/PWA checks passed`);
