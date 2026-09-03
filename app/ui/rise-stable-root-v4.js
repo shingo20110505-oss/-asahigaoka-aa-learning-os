@@ -1,6 +1,6 @@
 (()=>{'use strict';
 if(window.__RISE_STABLE_ROOT_V4__)return;
-window.__RISE_STABLE_ROOT_V4__={version:'2.1.0',performance:'2.2',navigation:'instant-four-tab',firstLoad:'prewarm-all-four'};
+window.__RISE_STABLE_ROOT_V4__={version:'2.1.0',performance:'2.2',navigation:'instant-four-tab',firstLoad:'immediate-capture',prewarm:'all-four'};
 const root=document.documentElement,app=document.getElementById('app');
 if(!app)return;
 const host=document.createElement('main');
