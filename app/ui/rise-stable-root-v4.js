@@ -11,6 +11,7 @@ const custom={home:'.riseHomeV4',subjects:'.riseSubjectsV4',analytics:'.riseAnal
 const primary=['home','subjects','analytics'];
 const params=new URLSearchParams(location.search),visualRoute=params.get('visual_route');
 const visualMode=params.get('visual_verify')==='1'&&Object.hasOwn(custom,visualRoute||'');
+const qualityMode=params.get('aa_quality_ci')==='1';
 let visualRouteApplied=false,displayRoute='home',warming=false,warmStarted=false,userTouched=false,timer=0;
 const panes=new Map(),sources=new Map();
 function normalizeRoute(r){return ['subjects','mission','study','timeline'].includes(r)?'subjects':r==='analytics'?'analytics':r==='settings'?'settings':'home'}
@@ -36,8 +37,8 @@ function sync(){
  host.hidden=true;root.removeAttribute('data-rise-stable-ready');
 }
 function waitForPane(r,timeout=1400){return new Promise(resolve=>{const start=performance.now();const tick=()=>{sync();if(panes.has(r))return resolve(true);if(performance.now()-start>timeout)return resolve(false);setTimeout(tick,35)};tick()})}
-async function warmPrimary(){if(warmStarted||visualMode||userTouched)return;warmStarted=true;warming=true;const restore=stateRoute();const visible=displayRoute;for(const r of primary){if(panes.has(r))continue;const target=app.querySelector(`.nav [data-route="${r}"]`)||app.querySelector(`[data-route="${r}"]`);if(!target)continue;target.click();await waitForPane(r)}const back=app.querySelector(`.nav [data-route="${restore}"]`)||app.querySelector(`[data-route="${restore}"]`);if(back)back.click();await waitForPane(restore,800);warming=false;displayRoute=panes.has(visible)?visible:restore;show(displayRoute);reviewFrame()}
-function queueWarm(){const run=()=>warmPrimary().catch(()=>{});if('requestIdleCallback'in window)requestIdleCallback(run,{timeout:1200});else setTimeout(run,650)}
+async function warmPrimary(){if(warmStarted||visualMode||qualityMode||userTouched)return;warmStarted=true;warming=true;const restore=stateRoute();const visible=displayRoute;for(const r of primary){if(panes.has(r))continue;const target=app.querySelector(`.nav [data-route="${r}"]`)||app.querySelector(`[data-route="${r}"]`);if(!target)continue;target.click();await waitForPane(r)}const back=app.querySelector(`.nav [data-route="${restore}"]`)||app.querySelector(`[data-route="${restore}"]`);if(back)back.click();await waitForPane(restore,800);warming=false;displayRoute=panes.has(visible)?visible:restore;show(displayRoute);reviewFrame()}
+function queueWarm(){if(qualityMode||visualMode)return;const run=()=>warmPrimary().catch(()=>{});if('requestIdleCallback'in window)requestIdleCallback(run,{timeout:1200});else setTimeout(run,650)}
 document.addEventListener('pointerdown',()=>{userTouched=true},{once:true,passive:true,capture:true});
 document.addEventListener('click',e=>{const a=e.target.closest?.('a[href]');if(isReviewLink(a)){e.preventDefault();displayRoute='review';reviewFrame();show('review');return}const target=e.target.closest?.('[data-route]');if(!target||warming)return;const r=normalizeRoute(target.dataset.route);if(!Object.hasOwn(custom,r))return;displayRoute=r;root.dataset.riseRoute=r;if(panes.has(r))show(r);else schedule(0)},true);
 const mo=new MutationObserver(mutations=>{for(const m of mutations){if(m.type!=='childList'||(!m.addedNodes.length&&!m.removedNodes.length))continue;schedule();return}});mo.observe(app,{childList:true,subtree:true});
