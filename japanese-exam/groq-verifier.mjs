@@ -3,7 +3,7 @@ import { callGroqJson, GroqProviderError } from '../worker/src/providers/index.m
 
 const VALID_MAJORS = Object.freeze([1, 2, 3, 4]);
 const RELATIONS = Object.freeze(['supported', 'contradicted', 'not_stated']);
-const confidenceThreshold = 0.8;
+export const JAPANESE_GROQ_CONFIDENCE_THRESHOLD = 0.8;
 
 export const JAPANESE_GROQ_SCHEMA = Object.freeze({
   type: 'object',
@@ -105,7 +105,7 @@ export function buildJapaneseVerifierPrompt(chunk) {
   ].join('\n');
 }
 
-export function verifyJapaneseChunkAgreement(pack, major, result, threshold = confidenceThreshold) {
+export function verifyJapaneseChunkAgreement(pack, major, result, threshold = JAPANESE_GROQ_CONFIDENCE_THRESHOLD) {
   ensureValidPack(pack);
   const selectedMajor = assertMajor(major);
   const errors = [];
@@ -122,7 +122,7 @@ export function verifyJapaneseChunkAgreement(pack, major, result, threshold = co
     if (typeof answer.reasonCode !== 'string' || answer.reasonCode.trim().length < 2) errors.push(`reason_code:${question.id}`);
     const structured = Array.isArray(question.marks);
     if (structured) {
-      if (!Array.isArray(answer.answerChoiceIndexes) || answer.answerChoiceIndexes.length !== 0) errors.push(`structured_answer_indexes:${question.id}`);
+      if (!Array.isArray(answer.answerChoiceIndexes) || answer.answerIndexes?.length > 0 || answer.answerChoiceIndexes.length !== 0) errors.push(`structured_answer_indexes:${question.id}`);
       if (!Array.isArray(answer.choiceRelations) || answer.choiceRelations.length !== 0) errors.push(`structured_relations:${question.id}`);
       if (!Array.isArray(answer.markChoiceIndexes) || answer.markChoiceIndexes.length !== question.marks.length) errors.push(`mark_count:${question.id}`);
       else {
