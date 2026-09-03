@@ -23,59 +23,57 @@ const qualityFinal = read('quality-repair-final-v1.js');
 const qualityCI = read('quality-ci-runner-v1.js');
 const aiReading = read('ai-reading-v1.js');
 const riseUI = read('app/ui/rise-ui-v4.js');
+const riseCSS = read('app/ui/rise-ui-v4.css');
 const riseStructure = read('app/ui/rise-structure-v4.css');
+const reviewUI = read('review/index.html');
 const sw = read('sw.js');
 
 new Function(riseUI);
 requireText(index, './aa-companion-v2.js', 'index entry');
 requireText(index, './aa-companion-mobile-fix.js', 'index mobile entry');
-requireText(index, './app/ui/rise-ui-v4.js?v=4.1.0', 'optimized Rise UI entry');
-requireText(index, './app/ui/rise-structure-v4.css?v=4.1.0', 'optimized Rise structure stylesheet');
-requireText(index, 'data-rise-structure="optimized-4"', 'optimized Rise boot marker');
+requireText(index, './app/ui/rise-ui-v4.js?v=4.2.0', 'complete Rise UI entry');
+requireText(index, './app/ui/rise-structure-v4.css?v=4.2.0', 'complete Rise structure stylesheet');
+requireText(index, 'data-rise-structure="optimized-4"', 'Rise boot marker');
 requireText(entry, "a.href='./review/'", 'review route');
 requireText(entry, "register('./sw.js'", 'service worker refresh');
 
 for(const asset of [
-  'mobile-layout-guard-v1.js',
-  'login-companion-v1.js',
-  'login-production-test-v1.js',
-  'companion7-runtime.js',
-  'settings-improvements-v1.js',
-  'header-menu-v1.js',
-  'app/ui/rise-ui-v4.js',
-  'app/ui/rise-ui-v4.css',
-  'app/ui/rise-structure-v4.css',
-  'v23-loader.js',
-  'quality-repair-v1.js',
-  'quality-repair-final-v1.js',
-  'quality-ci-runner-v1.js',
-  'ai-reading-v1.js',
-  'english-vocab-examples-basic1-v1.js',
-  'english-vocab-examples-basic2-v1.js',
-  'english-vocab-examples-basic3-v1.js',
-  'english-vocab-examples-phrases-v1.js',
-  'english-vocab-examples-apply-v1.js',
-  'english-vocab-example-ui-v1.js',
-  'vocab-mobile-card-fix-v1.js',
-  'vocab-row-toggle-v1.js',
-  'vocab-sort-v1.js',
-  'diagnostics.html',
-  'review/index.html'
+  'mobile-layout-guard-v1.js','login-companion-v1.js','login-production-test-v1.js','companion7-runtime.js',
+  'settings-improvements-v1.js','header-menu-v1.js','app/ui/rise-ui-v4.js','app/ui/rise-ui-v4.css',
+  'app/ui/rise-structure-v4.css','v23-loader.js','quality-repair-v1.js','quality-repair-final-v1.js',
+  'quality-ci-runner-v1.js','ai-reading-v1.js','english-vocab-examples-basic1-v1.js',
+  'english-vocab-examples-basic2-v1.js','english-vocab-examples-basic3-v1.js','english-vocab-examples-phrases-v1.js',
+  'english-vocab-examples-apply-v1.js','english-vocab-example-ui-v1.js','vocab-mobile-card-fix-v1.js',
+  'vocab-row-toggle-v1.js','vocab-sort-v1.js','diagnostics.html','review/index.html'
 ]){
   if(!fs.existsSync(asset)) throw new Error(`missing managed runtime asset: ${asset}`);
 }
 
-requireText(riseUI, "version:'4.1.0'", 'Rise UI version');
-requireText(riseUI, "structure:'optimized'", 'Rise optimized structure marker');
-requireText(riseUI, "root.dataset.riseStructure='optimized-4'", 'Rise optimized DOM marker');
+requireText(riseUI, "version:'4.2.0'", 'Rise UI version');
+requireText(riseUI, "structure:'complete'", 'Rise complete structure marker');
+requireText(riseUI, "root.dataset.riseStructure='optimized-4'", 'Rise DOM marker');
+requireText(riseUI, 'function homeHTML', 'Rise dashboard');
+requireText(riseUI, 'function subjectsHTML', 'Rise study hub');
+requireText(riseUI, 'function analyticsHTML', 'Rise record dashboard');
+requireText(riseUI, 'function settingsHTML', 'Rise minimal settings');
+requireText(riseUI, '今日の学習', 'Rise today learning plan');
+requireText(riseUI, '教科別の達成度', 'Rise subject progress');
+requireText(riseUI, '5教科ミックス', 'Rise mixed study entry');
+requireText(riseUI, 'start-reading-simulator', 'Rise Aichi English simulator entry');
 requireText(riseUI, '<span>ホーム</span>', 'Rise home nav');
 requireText(riseUI, '<span>学習</span>', 'Rise study nav');
 requireText(riseUI, '<span>復習</span>', 'Rise review nav');
 requireText(riseUI, '<span>記録</span>', 'Rise record nav');
-requireText(riseUI, 'function settingsHTML', 'Rise minimal settings');
-requireText(riseStructure, '.rv4Focus', 'Rise focus-first home');
-requireText(riseStructure, '.rv4SettingsCard', 'Rise minimal settings styling');
+requireText(riseCSS, '.rv4Dashboard', 'Rise dashboard styling');
+requireText(riseCSS, '.rv4StudyHero', 'Rise study hub styling');
+requireText(riseCSS, '.rv4RecordHero', 'Rise record styling');
+requireText(riseCSS, '@media(max-width:800px)', 'Rise tablet/mobile reflow');
+requireText(riseStructure, 'main>:not(.riseSubjectsV4)', 'legacy subjects hidden under Rise');
+requireText(riseStructure, 'main>:not(.riseAnalyticsV4)', 'legacy analytics hidden under Rise');
 requireText(riseStructure, 'grid-template-columns:repeat(4', 'Rise four-item navigation layout');
+requireText(reviewUI, 'Rise / 復習', 'Rise review branding');
+requireText(reviewUI, 'Review v2', 'Review v2 contract retained');
+requireText(reviewUI, "fetch('../review-bank-v1.js'", 'Review canonical bank retained');
 
 requireText(mobile, "./mobile-layout-guard-v1.js", 'mobile layout loader');
 requireText(mobile, "./login-companion-v1.js?v=1.2.0", 'decode-safe login visual loader');
@@ -150,8 +148,9 @@ if(/GEMINI_API_KEY\s*=/.test(aiReading)) throw new Error('Gemini API key must no
 
 if(!/const VERSION='[^']+'/.test(sw)) throw new Error('managed service worker version missing');
 requireText(sw, 'quality2-chronologia1000', 'shared PWA generation');
-requireText(sw, "const RISE_BOOT='4.1.0'", 'optimized Rise PWA generation');
-requireText(sw, "url('app/ui/rise-structure-v4.css')", 'offline optimized Rise structure');
+requireText(sw, "const RISE_BOOT='4.2.0'", 'complete Rise PWA generation');
+requireText(sw, "url('app/ui/rise-structure-v4.css')", 'offline Rise structure');
+requireText(sw, "url('app/ui/rise-ui-v4.js?v=4.2.0')", 'offline complete Rise UI');
 requireText(sw, 'async function networkFirst', 'network-first runtime');
 requireText(sw, "ext==='js'", 'generic JS freshness');
 requireText(sw, "ext==='css'", 'generic CSS freshness');
@@ -169,4 +168,4 @@ for(const file of new Set(referenced)){
   if(!fs.existsSync(file)) throw new Error(`mobile loader points to missing file: ${file}`);
 }
 
-console.log(`runtime assets OK: referenced=${new Set(referenced).size}, optimized Rise/navigation/settings + final quality/Chronologia/layout/login/PWA checks passed`);
+console.log(`runtime assets OK: referenced=${new Set(referenced).size}, Rise 4.2 dashboard/study/review/record/settings + quality/Chronologia/layout/login/PWA checks passed`);
