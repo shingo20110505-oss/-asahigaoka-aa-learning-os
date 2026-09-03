@@ -212,9 +212,9 @@ export async function verifyJapaneseMajorWithGroq(env, pack, major) {
       schema: JAPANESE_GROQ_SCHEMA,
       schemaName: `rise_japanese_major_${chunk.major}_blind_verification`,
       responseMode: 'text_json',
-      maxOutputTokens: chunk.major === 1 || chunk.major === 3 ? 2600 : 1800,
+      maxOutputTokens: chunk.major === 1 || chunk.major === 3 ? 3200 : 2000,
       temperature: 0,
-      reasoningEffort: chunk.major === 1 || chunk.major === 3 ? 'medium' : 'low',
+      reasoningEffort: 'low',
       systemInstruction: 'Return only one valid JSON object. Independently solve the Japanese entrance-exam section from the visible text. Never infer or request an author answer key.'
     });
   } catch (error) {
@@ -232,11 +232,10 @@ export async function verifyJapaneseMajorWithGroq(env, pack, major) {
 export async function verifyJapanesePackWithGroq(env, pack, { cooldownMs = 61000, sleep = ms => new Promise(resolve => setTimeout(resolve, ms)) } = {}) {
   ensureValidPack(pack);
   const checks = [];
-  checks.push(await verifyJapaneseMajorWithGroq(env, pack, 1));
-  checks.push(await verifyJapaneseMajorWithGroq(env, pack, 2));
-  if (cooldownMs > 0) await sleep(cooldownMs);
-  checks.push(await verifyJapaneseMajorWithGroq(env, pack, 3));
-  checks.push(await verifyJapaneseMajorWithGroq(env, pack, 4));
+  for (let index = 0; index < VALID_MAJORS.length; index++) {
+    checks.push(await verifyJapaneseMajorWithGroq(env, pack, VALID_MAJORS[index]));
+    if (cooldownMs > 0 && index < VALID_MAJORS.length - 1) await sleep(cooldownMs);
+  }
   return {
     verified: true,
     method: 'cross-provider-blind-answer-check',
