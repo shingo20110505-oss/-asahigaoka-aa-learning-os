@@ -18,6 +18,7 @@ jobs:
   visual:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
+    timeout-minutes: 8
     steps:
       - name: Resolve published source
         id: source
@@ -29,6 +30,12 @@ jobs:
           echo "source_sha=${SOURCE_SHA}" >> "$GITHUB_OUTPUT"
           echo "SOURCE_SHA=${SOURCE_SHA}" >> "$GITHUB_ENV"
           echo "PAGE_URL=https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/" >> "$GITHUB_ENV"
+
+      - name: Checkout exact published source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.source.outputs.source_sha }}
+          fetch-depth: 1
 
       - name: Wait for exact production release
         run: |
@@ -55,13 +62,10 @@ jobs:
           grep -q "const primary=\['home','subjects','analytics','settings'\]" /tmp/rise-stable-root-v4.js
           grep -q "reviewNavigation:'canonical-page'" /tmp/rise-stable-root-v4.js
           grep -q 'goReview' /tmp/rise-stable-root-v4.js
-          grep -q 'captureAdded' /tmp/rise-stable-root-v4.js
-          grep -q "host.id='riseStableMain'" /tmp/rise-stable-root-v4.js
-          grep -q 'visual_route' /tmp/rise-stable-root-v4.js
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}index.html?visual_asset=${SOURCE_SHA}" -o /tmp/index.html
           grep -q 'rise-stable-root-v4.js?v=2.2.0' /tmp/index.html
           grep -q 'pwa-runtime.js?v=4.2.1' /tmp/index.html
-          test "$(grep -n 'rise-stable-root-v4.js?v=2.2.0' /tmp/index.html | cut -d: -f1)" -lt "$(grep -n 'rise-ui-v4.js?v=4.2.0' /tmp/index.html | tail -1 | cut -d: -f1)"
+          node --check scripts/rise-visual-cdp.mjs
 
       - name: Install Japanese rendering fonts
         run: |
@@ -71,166 +75,22 @@ jobs:
           fc-cache -f
           fc-match 'sans-serif:lang=ja'
 
-      - name: Capture all major production screens
-        id: capture
+      - name: Capture and validate all production screens via CDP
+        env:
+          VISUAL_OUT: visual-evidence
         run: |
           set -euo pipefail
-          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
-          test -n "$CHROME"
-          mkdir -p visual-evidence
-          IPHONE_UA='Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Mobile/15E148 Safari/604.1'
-
-          capture(){
-            name="$1"; width="$2"; height="$3"; ua="$4"; route="$5"; relative="$6"
-            out="visual-evidence/${name}.png"
-            dom="visual-evidence/${name}.html"
-            profile="/tmp/rise-visual-${name}-${SOURCE_SHA}"
-            target="${PAGE_URL}${relative}?visual_verify=1&verify=${SOURCE_SHA}&viewport=${name}"
-            if [ -n "$route" ]; then target="${target}&visual_route=${route}"; fi
-            rm -rf "$profile"
-            common=(
-              --headless=new
-              --no-sandbox
-              --disable-gpu
-              --disable-dev-shm-usage
-              --disable-background-networking
-              --disable-component-update
-              --disable-sync
-              --disable-default-apps
-              --no-first-run
-              --metrics-recording-only
-              --hide-scrollbars
-              --force-device-scale-factor=1
-              --window-size="${width},${height}"
-              --user-data-dir="$profile"
-              --virtual-time-budget=9000
-              --run-all-compositor-stages-before-draw
-            )
-            if [ -n "$ua" ]; then common+=(--user-agent="$ua"); fi
-
-            timeout 90s "$CHROME" "${common[@]}" --dump-dom "$target" > "$dom"
-            rm -rf "$profile"
-            timeout 90s "$CHROME" "${common[@]}" --screenshot="$out" "$target"
-            test -s "$out"
-            python3 - "$out" "$width" "$height" <<'PY'
-          import os, struct, sys
-          path=sys.argv[1]; expected=(int(sys.argv[2]),int(sys.argv[3]))
-          with open(path,'rb') as f:
-              head=f.read(24)
-          if head[:8] != b'\x89PNG\r\n\x1a\n':
-              raise SystemExit(f'not png: {path}')
-          actual=struct.unpack('>II',head[16:24])
-          if actual != expected:
-              raise SystemExit(f'bad dimensions: {path} {actual} != {expected}')
-          size=os.path.getsize(path)
-          if size < 10000:
-              raise SystemExit(f'screenshot too small: {path} {size} bytes')
-          print(f'VISUAL_CAPTURED {path} {actual[0]}x{actual[1]} {size} bytes')
-          PY
-          }
-
-          capture "rise-mobile-home-390x844" 390 844 "$IPHONE_UA" "home" ''
-          for route in subjects analytics settings; do
-            capture "rise-mobile-${route}-390x844" 390 844 "$IPHONE_UA" "$route" ''
-          done
-          capture "rise-desktop-home-1440x1000" 1440 1000 '' "home" ''
-          for route in subjects analytics settings; do
-            capture "rise-desktop-${route}-1440x1000" 1440 1000 '' "$route" ''
-          done
-          capture rise-mobile-review-390x844 390 844 "$IPHONE_UA" '' 'review/'
-          capture rise-desktop-review-1440x1000 1440 1000 '' '' 'review/'
-
-          {
-            echo "source_sha=${SOURCE_SHA}"
-            echo "page_url=${PAGE_URL}"
-            echo "captured_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-            echo "screens=home+subjects+analytics+settings+review"
-            echo "viewports=390x844+iPhone-UA,1440x1000"
-            echo "cold_start_home=direct-no-review-navigation"
-            echo "review_navigation=canonical-page"
-            sha256sum visual-evidence/*.png
-          } > visual-evidence/manifest.txt
-
-      - name: Validate all stable production routes
-        run: |
-          set -euo pipefail
-          python3 - visual-evidence <<'PY'
-          from html.parser import HTMLParser
-          from pathlib import Path
-          import sys
-
-          root_dir=Path(sys.argv[1])
-          classes={
-              'home':'riseHomeV4',
-              'subjects':'riseSubjectsV4',
-              'analytics':'riseAnalyticsV4',
-              'settings':'riseSettingsV4',
-          }
-          tokens={
-              'home':['Rise','今日の学習','教科別の達成度','ホーム','学習','復習','記録'],
-              'subjects':['Rise','学習を始める','5教科ミックス','ホーム','学習','復習','記録'],
-              'analytics':['Rise','学習記録','直近7日','ホーム','学習','復習','記録'],
-              'settings':['Rise','設定','バックアップ','学習データを初期化'],
-          }
-
-          class Parser(HTMLParser):
-              def __init__(self):
-                  super().__init__(convert_charrefs=True)
-                  self.stack=[]; self.skip=0; self.html_attrs={}; self.stable_depth=None
-                  self.stable_hidden=False; self.stable_route=None; self.sections=[]; self.login_setup=False; self.text=[]
-              def handle_starttag(self,tag,attrs):
-                  a=dict(attrs); self.stack.append((tag,a))
-                  if tag in ('script','style'): self.skip += 1
-                  if tag=='html': self.html_attrs=a
-                  if a.get('id')=='aaLoginSetup': self.login_setup=True
-                  if tag=='main' and a.get('id')=='riseStableMain':
-                      self.stable_depth=len(self.stack); self.stable_hidden='hidden' in a; self.stable_route=a.get('data-route')
-                  if tag=='section' and self.stable_depth is not None and len(self.stack)>self.stable_depth:
-                      self.sections.append((set((a.get('class') or '').split()),a.get('data-ui-ver')))
-              def handle_endtag(self,tag):
-                  if tag in ('script','style') and self.skip: self.skip-=1
-                  if self.stable_depth is not None and len(self.stack)==self.stable_depth and tag=='main': self.stable_depth=None
-                  if self.stack: self.stack.pop()
-              def handle_data(self,data):
-                  if not self.skip:
-                      s=' '.join(data.split())
-                      if s: self.text.append(s)
-
-          def parse(path):
-              p=Parser(); p.feed(path.read_text(encoding='utf-8')); return p,' '.join(p.text)
-
-          for viewport in ('mobile','desktop'):
-              suffix='390x844' if viewport=='mobile' else '1440x1000'
-              for route,cls in classes.items():
-                  path=root_dir/f'rise-{viewport}-{route}-{suffix}.html'
-                  p,text=parse(path); errors=[]
-                  if p.html_attrs.get('data-rise-structure')!='optimized-4': errors.append('optimized-4 missing')
-                  if p.html_attrs.get('data-rise-route')!=route: errors.append(f'route is {p.html_attrs.get("data-rise-route")!r}')
-                  if p.html_attrs.get('data-rise-stable-ready')!='1': errors.append('stable-ready missing')
-                  if p.html_attrs.get('data-rise-runtime-error'): errors.append('runtime-error present')
-                  if p.stable_hidden: errors.append('#riseStableMain hidden')
-                  if p.stable_route!=route: errors.append(f'stable route is {p.stable_route!r}')
-                  if not any(cls in c and v=='4.2.0' for c,v in p.sections): errors.append(f'{cls} 4.2.0 missing in stable root')
-                  if p.login_setup: errors.append('login setup overlay present')
-                  for token in tokens[route]:
-                      if token not in text: errors.append(f'text missing: {token}')
-                  if errors: raise SystemExit(f'{path}: '+ '; '.join(errors))
-                  print(f'STABLE_ROUTE_OK {path}')
-
-          for viewport in ('mobile','desktop'):
-              suffix='390x844' if viewport=='mobile' else '1440x1000'
-              path=root_dir/f'rise-{viewport}-review-{suffix}.html'
-              p,text=parse(path); errors=[]
-              for token in ['Rise / 復習','忘れる前に、取り戻す。','Review v2','要復習','覚えた']:
-                  if token not in text: errors.append(f'text missing: {token}')
-              if errors: raise SystemExit(f'{path}: '+ '; '.join(errors))
-              print(f'REVIEW_ROUTE_OK {path}')
-          PY
-          echo 'result=success' >> visual-evidence/manifest.txt
-          echo 'cold_start_home=success' >> visual-evidence/manifest.txt
-          echo 'settings_stable_route=success' >> visual-evidence/manifest.txt
-          echo 'review_canonical_page=success' >> visual-evidence/manifest.txt
-          echo 'dom_gate=Rise+stable-root+home+subjects+analytics+settings+review+mobile+desktop+no-runtime-error+cold-start-home' >> visual-evidence/manifest.txt
+          CHROME_PATH=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
+          test -n "$CHROME_PATH"
+          export CHROME_PATH
+          rm -rf visual-evidence
+          node scripts/rise-visual-cdp.mjs
+          grep -q '^result=success$' visual-evidence/manifest.txt
+          grep -q '^cold_start_home=success$' visual-evidence/manifest.txt
+          grep -q '^settings_menu_navigation=success$' visual-evidence/manifest.txt
+          grep -q '^review_canonical_click_navigation=success$' visual-evidence/manifest.txt
+          test "$(find visual-evidence -maxdepth 1 -name '*.png' | wc -l)" -eq 10
+          test "$(find visual-evidence -maxdepth 1 -name '*.html' | wc -l)" -eq 10
           cat visual-evidence/manifest.txt
 
       - name: Upload production screenshot evidence
@@ -252,9 +112,9 @@ jobs:
             echo '- Screens: home / study / record / settings / review'
             echo '- Mobile: `390x844` / iPhone User-Agent'
             echo '- Desktop: `1440x1000`'
-            echo '- HOME is captured first using a brand-new browser profile, without visiting Review.'
-            echo '- Settings is required to hydrate inside the same stable-root contract as Home/Study/Record.'
-            echo '- Review is required to render as the canonical `review/` page, not as a cached previous pane.'
-            echo '- Japanese Noto CJK fonts installed before rendering.'
-            echo '- PNG signature, exact dimensions, and minimum file size validated for every screenshot.'
+            echo '- Chrome DevTools Protocol waits for the actual Rise ready state; persistent app timers cannot block capture completion.'
+            echo '- Study and Record are opened by their real bottom-navigation buttons.'
+            echo '- Settings is opened through the real hamburger menu and Settings item.'
+            echo '- Review is clicked from the main app and must navigate to the canonical `/review/` page.'
+            echo '- Each route starts from a fresh browser profile and stores both DOM HTML and PNG evidence.'
           } >> "$GITHUB_STEP_SUMMARY"
