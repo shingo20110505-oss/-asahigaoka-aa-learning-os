@@ -1,0 +1,132 @@
+name: Rise production visual verification
+
+on:
+  workflow_run:
+    workflows: ["Deploy AA Learning OS to GitHub Pages"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: rise-production-visual
+  cancel-in-progress: true
+
+jobs:
+  visual:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve published source
+        id: source
+        env:
+          WORKFLOW_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+          SOURCE_SHA="${WORKFLOW_SHA:-$GITHUB_SHA}"
+          echo "source_sha=${SOURCE_SHA}" >> "$GITHUB_OUTPUT"
+          echo "SOURCE_SHA=${SOURCE_SHA}" >> "$GITHUB_ENV"
+          echo "PAGE_URL=https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/" >> "$GITHUB_ENV"
+
+      - name: Wait for exact production release
+        run: |
+          set -euo pipefail
+          ok=0
+          for n in $(seq 1 24); do
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${PAGE_URL}release.json?visual=${SOURCE_SHA}-${n}" -o /tmp/release.json && grep -q "${SOURCE_SHA}" /tmp/release.json; then
+              ok=1
+              break
+            fi
+            sleep 5
+          done
+          test "$ok" = 1
+          grep -q '"management": "validated-main-direct-to-pages"' /tmp/release.json
+
+      - name: Capture mobile and desktop production screenshots
+        id: capture
+        run: |
+          set -euo pipefail
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
+          test -n "$CHROME"
+          mkdir -p visual-evidence
+          IPHONE_UA='Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Mobile/15E148 Safari/604.1'
+
+          capture(){
+            name="$1"; width="$2"; height="$3"; ua="$4"
+            out="visual-evidence/${name}.png"
+            profile="/tmp/rise-visual-${name}-${SOURCE_SHA}"
+            rm -rf "$profile"
+            args=(
+              --headless=new
+              --no-sandbox
+              --disable-gpu
+              --disable-dev-shm-usage
+              --hide-scrollbars
+              --force-device-scale-factor=1
+              --window-size="${width},${height}"
+              --user-data-dir="$profile"
+              --virtual-time-budget=15000
+              --run-all-compositor-stages-before-draw
+              --screenshot="$out"
+            )
+            if [ -n "$ua" ]; then args+=(--user-agent="$ua"); fi
+            timeout 120s "$CHROME" "${args[@]}" "${PAGE_URL}?visual_verify=1&verify=${SOURCE_SHA}&viewport=${name}"
+            test -s "$out"
+            python3 - "$out" "$width" "$height" <<'PY'
+          import os, struct, sys
+          path=sys.argv[1]; expected=(int(sys.argv[2]),int(sys.argv[3]))
+          with open(path,'rb') as f:
+              head=f.read(24)
+          if head[:8] != b'\x89PNG\r\n\x1a\n':
+              raise SystemExit(f'not png: {path}')
+          actual=struct.unpack('>II',head[16:24])
+          if actual != expected:
+              raise SystemExit(f'bad dimensions: {path} {actual} != {expected}')
+          size=os.path.getsize(path)
+          if size < 10000:
+              raise SystemExit(f'screenshot too small: {path} {size} bytes')
+          print(f'VISUAL_OK {path} {actual[0]}x{actual[1]} {size} bytes')
+          PY
+          }
+
+          capture rise-mobile-390x844 390 844 "$IPHONE_UA"
+          capture rise-desktop-1440x1000 1440 1000 ''
+
+          {
+            echo "result=success"
+            echo "source_sha=${SOURCE_SHA}"
+            echo "page_url=${PAGE_URL}"
+            echo "captured_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            echo "mobile=rise-mobile-390x844.png"
+            echo "mobile_mode=Chromium+iPhone-UA+390x844"
+            echo "desktop=rise-desktop-1440x1000.png"
+            echo "desktop_mode=Chromium+1440x1000"
+            sha256sum visual-evidence/rise-mobile-390x844.png
+            sha256sum visual-evidence/rise-desktop-1440x1000.png
+          } > visual-evidence/manifest.txt
+          cat visual-evidence/manifest.txt
+          echo "visual_runtime=success" >> "$GITHUB_OUTPUT"
+
+      - name: Upload production screenshot evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: rise-production-screenshots-${{ steps.source.outputs.source_sha }}
+          path: visual-evidence/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Visual verification summary
+        run: |
+          {
+            echo '## Rise production visual evidence'
+            echo ''
+            echo "- Source: \`${SOURCE_SHA}\`"
+            echo "- Mobile: \`390x844\` / iPhone User-Agent"
+            echo "- Desktop: \`1440x1000\`"
+            echo '- PNG signature, exact dimensions, and minimum file size validated.'
+            echo '- Screenshots are stored in the rise-production-screenshots artifact.'
+            echo ''
+            echo '> UI changes are not considered visually complete until these screenshots are reviewed.'
+          } >> "$GITHUB_STEP_SUMMARY"
