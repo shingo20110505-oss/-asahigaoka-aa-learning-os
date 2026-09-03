@@ -29,6 +29,7 @@ html.aa-app-booting.aa-app-boot-slow body:before{content:"最新版を読み込�
 </script>
 <link rel="stylesheet" href="./app/ui/base.css">
 <link rel="stylesheet" href="./app/ui/rise-shell-v2.css">
+<link rel="stylesheet" href="./app/ui/rise-glass-v3.css">
 </head>
 <body>
 <div class="app" id="app"></div>
@@ -54,8 +55,9 @@ html.aa-app-booting.aa-app-boot-slow body:before{content:"最新版を読み込�
 <script src="./app/ui/ui-runtime.js"></script>
 <script src="./app/pwa/pwa-runtime.js"></script>
 <script src="./app/qa/qa-runtime.js"></script>
-<!-- PHASE-2 UI: visual layer only; learning/state/review behavior remains owned by Phase-1 layers -->
+<!-- PHASE-2 UI: visual layers only; learning/state/review behavior remains owned by Phase-1 layers -->
 <script src="./app/ui/rise-shell-v2.js"></script>
+<script src="./app/ui/rise-glass-v3.js"></script>
 
 <a id="kokugoChronologiaQuickLink" href="./kokugo-chronologia/" aria-label="国語 語彙クロノロジアを開く" style="position:fixed;right:12px;bottom:calc(86px + env(safe-area-inset-bottom,0px));z-index:60;text-decoration:none;background:#172033;color:#fff;border:1px solid rgba(255,255,255,.2);box-shadow:0 8px 24px rgba(0,0,0,.22);border-radius:999px;padding:10px 13px;font-size:12px;font-weight:900;letter-spacing:.02em">国語 年表 15,000語</a>
 </body>
