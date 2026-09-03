@@ -1,6 +1,6 @@
 (()=>{'use strict';
 if(window.__RISE_STABLE_ROOT_V4__)return;
-window.__RISE_STABLE_ROOT_V4__={version:'2.2.0',performance:'2.3',navigation:'instant-four-tab',firstLoad:'immediate-capture',prewarm:'all-custom',reviewNavigation:'canonical-page'};
+window.__RISE_STABLE_ROOT_V4__={version:'2.3.0',performance:'2.4',navigation:'instant-four-tab',firstLoad:'immediate-capture',prewarm:'none-on-demand',reviewNavigation:'canonical-page'};
 const root=document.documentElement,app=document.getElementById('app');
 if(!app)return;
 const host=document.createElement('main');
@@ -8,19 +8,17 @@ host.id='riseStableMain';host.hidden=true;host.setAttribute('aria-live','polite'
 const panesHost=document.createElement('div');panesHost.id='riseStablePanes';host.appendChild(panesHost);
 app.insertAdjacentElement('afterend',host);
 const custom={home:'.riseHomeV4',subjects:'.riseSubjectsV4',analytics:'.riseAnalyticsV4',settings:'.riseSettingsV4'};
-const primary=['home','subjects','analytics','settings'];
 const panelSelector=Object.values(custom).map(s=>`${s}[data-ui-ver="4.2.0"]`).join(',');
 const params=new URLSearchParams(location.search),visualRoute=params.get('visual_route');
 const visualMode=params.get('visual_verify')==='1'&&Object.hasOwn(custom,visualRoute||'');
-const qualityMode=params.get('aa_quality_ci')==='1';
-let visualRouteApplied=false,displayRoute='home',warming=false,warmStarted=false,warmClick=false,userChoiceEpoch=0,timer=0;
+let visualRouteApplied=false,displayRoute='home',timer=0;
 const panes=new Map(),sources=new Map();
 function normalizeRoute(r){return ['subjects','mission','study','timeline'].includes(r)?'subjects':r==='analytics'?'analytics':r==='settings'?'settings':'home'}
 function stateRoute(){try{return normalizeRoute(window.AA_APP?.get?.('state')?.get?.()?.route||root.dataset.riseRoute||'home')}catch(_){return normalizeRoute(root.dataset.riseRoute||'home')}}
 function ensureStyle(){if(document.getElementById('rise-instant-nav-v1'))return;const s=document.createElement('style');s.id='rise-instant-nav-v1';s.textContent='html[data-rise-structure="optimized-4"] #riseStableMain>#riseStablePanes{display:block!important;width:100%}.riseStablePane[hidden]{display:none!important}.riseStablePane{display:block!important;width:100%}';document.head.appendChild(s)}
 ensureStyle();
-function pane(r,extra=''){let p=panes.get(r);if(p)return p;p=document.createElement('div');p.className=`riseStablePane ${extra}`.trim();p.dataset.route=r;p.hidden=true;panes.set(r,p);panesHost.appendChild(p);return p}
-function updateNav(r){for(const el of document.querySelectorAll('.navin > [data-route],.navin > a[href]')){let active=false;if(el.dataset?.route)active=normalizeRoute(el.dataset.route)===r;el.classList.toggle('active',active)}}
+function pane(r){let p=panes.get(r);if(p)return p;p=document.createElement('div');p.className='riseStablePane';p.dataset.route=r;p.hidden=true;panes.set(r,p);panesHost.appendChild(p);return p}
+function updateNav(r){for(const el of document.querySelectorAll('.navin > [data-route],.navin > a[href]')){const active=!!el.dataset?.route&&normalizeRoute(el.dataset.route)===r;el.classList.toggle('active',active)}}
 function show(r){const p=panes.get(r);if(!p)return false;displayRoute=r;for(const [key,node] of panes)node.hidden=key!==r;host.hidden=false;host.dataset.route=r;root.dataset.riseRoute=r;root.dataset.riseStableReady='1';root.dataset.riseHydrated='1';root.dataset.riseInstantNav='1';root.removeAttribute('data-rise-runtime-error');updateNav(r);return true}
 function cacheSource(r,source){const previous=sources.get(r);if(previous===source&&panes.get(r)?.firstChild)return;const p=pane(r);p.replaceChildren(source.cloneNode(true));sources.set(r,source)}
 function routeForPanel(source){for(const [r,s] of Object.entries(custom))if(source.matches?.(s))return r;return null}
@@ -34,50 +32,23 @@ function sync(){
  const actual=stateRoute(),selector=custom[actual];
  if(selector){const source=app.querySelector(`main ${selector}[data-ui-ver="4.2.0"]`);if(source)cacheSource(actual,source)}
  if(panes.has(displayRoute)){show(displayRoute);return}
- if(!warming&&panes.has(actual)){displayRoute=actual;show(actual);return}
+ if(!host.dataset.route&&panes.has(actual)){displayRoute=actual;show(actual);return}
  if(host.querySelector('.riseStablePane:not([hidden])'))return;
  host.hidden=true;root.removeAttribute('data-rise-stable-ready');
 }
-function waitForPane(r,timeout=1400){return new Promise(resolve=>{const start=performance.now();const tick=()=>{sync();if(panes.has(r))return resolve(true);if(performance.now()-start>timeout)return resolve(false);setTimeout(tick,24)};tick()})}
-function clickUnderlying(r){const target=app.querySelector(`.nav [data-route="${r}"]`)||app.querySelector(`[data-route="${r}"]`);if(!target)return false;warmClick=true;try{target.click()}finally{warmClick=false}return true}
-async function warmPrimary(){
- if(warmStarted||visualMode||qualityMode)return;
- warmStarted=true;warming=true;const restore=stateRoute(),visible=displayRoute,startEpoch=userChoiceEpoch;
- for(const r of primary){
-  if(panes.has(r))continue;
-  if(userChoiceEpoch!==startEpoch)break;
-  if(!clickUnderlying(r))continue;
-  await waitForPane(r);
- }
- if(userChoiceEpoch===startEpoch){
-  if(stateRoute()!==restore)clickUnderlying(restore);
-  await waitForPane(restore,700);
-  displayRoute=panes.has(visible)?visible:restore;
- }else{
-  if(!panes.has(displayRoute))await waitForPane(displayRoute,900);
-  if(stateRoute()!==displayRoute&&Object.hasOwn(custom,displayRoute))clickUnderlying(displayRoute);
- }
- warming=false;
- if(panes.has(displayRoute))show(displayRoute);else sync();
- if(userChoiceEpoch!==startEpoch){warmStarted=false;setTimeout(()=>queueWarm(400),400)}
-}
-function queueWarm(delay=40){if(qualityMode||visualMode||warmStarted)return;setTimeout(()=>warmPrimary().catch(()=>{warming=false}),delay)}
 document.addEventListener('click',e=>{
  const a=e.target.closest?.('a[href]');
  if(isReviewLink(a)){
-  userChoiceEpoch++;
   e.preventDefault();e.stopImmediatePropagation();
   goReview();return;
  }
  const target=e.target.closest?.('[data-route]');if(!target)return;
  const r=normalizeRoute(target.dataset.route);if(!Object.hasOwn(custom,r))return;
- if(warmClick)return;
- userChoiceEpoch++;displayRoute=r;root.dataset.riseRoute=r;
+ displayRoute=r;root.dataset.riseRoute=r;
  if(panes.has(r))show(r);else schedule(0);
 },true);
 const mo=new MutationObserver(mutations=>{let changed=false;for(const m of mutations){if(m.type!=='childList')continue;for(const n of m.addedNodes)if(captureAdded(n))return;if(m.addedNodes.length||m.removedNodes.length)changed=true}if(changed)schedule()});mo.observe(app,{childList:true,subtree:true});
-function beginPrewarm(){if(qualityMode||visualMode)return;queueWarm(20)}
-document.addEventListener('aa:v23ready',()=>{displayRoute=stateRoute();schedule(0);setTimeout(beginPrewarm,20)});document.addEventListener('rise:sw-updated',()=>schedule(0));addEventListener('pageshow',()=>schedule(0));document.addEventListener('visibilitychange',()=>{if(!document.hidden)schedule(0)});
-requestAnimationFrame(()=>{displayRoute=stateRoute();sync();setTimeout(beginPrewarm,60)});
-let attempts=0;const boot=setInterval(()=>{attempts++;sync();if(root.dataset.riseStableReady==='1'||attempts>=20){clearInterval(boot);beginPrewarm()}},250);
+document.addEventListener('aa:v23ready',()=>schedule(0));document.addEventListener('rise:sw-updated',()=>schedule(0));addEventListener('pageshow',()=>schedule(0));document.addEventListener('visibilitychange',()=>{if(!document.hidden)schedule(0)});
+requestAnimationFrame(()=>sync());
+let attempts=0;const boot=setInterval(()=>{attempts++;sync();if(root.dataset.riseStableReady==='1'||attempts>=24)clearInterval(boot)},250);
 })();
