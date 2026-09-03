@@ -39,6 +39,8 @@ html.aa-app-booting.aa-app-boot-slow body:before{content:"最新版のRiseを読
 <body>
 <div class="app" id="app"></div>
 <script src="./app/runtime-registry.js"></script>
+<!-- Must run before the legacy runtime: blocks its obsolete controllerchange -> location.reload handler. -->
+<script src="./app/pwa/legacy-controller-reload-guard-v1.js?v=1.0.0"></script>
 <script src="./app/legacy/main-runtime.js"></script>
 <script src="./learning-engine-v15.js"></script>
 <script src="./japanese-vocabulary-10000.js"></script>
