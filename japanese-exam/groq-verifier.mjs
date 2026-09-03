@@ -114,6 +114,7 @@ export function buildJapaneseBlindChunk(pack, major) {
     .map(({ question, questionIndex }) => ({
       questionIndex,
       stem: question.stem,
+      skill: question.skill,
       format: question.format,
       polarity: question.polarity || 'supported',
       requiredCount: Number(question.requiredCount || 0),
@@ -132,8 +133,9 @@ export function buildJapaneseVerifierPrompt(chunk) {
     'Solve every question independently from the visible text and ordinary junior-high Japanese knowledge only.',
     'Return one valid JSON object and no prose. Use exactly this shape: {"pass":boolean,"answers":[{"questionIndex":integer,"ambiguous":boolean,"confidence":number,"answerChoiceIndexes":[integer],"markChoiceIndexes":[integer],"evidence":[{"passageIndex":integer,"paragraph":integer,"quote":string}]}]}.',
     'For normal choice questions, return answerChoiceIndexes using zero-based choice positions. Return markChoiceIndexes=[].',
-    'For ordered_choice or multi_slot_choice, return one zero-based markChoiceIndexes entry for each mark label in the supplied order. Return answerChoiceIndexes=[].',
-    'For every non-vocabulary question, cite at least one exact substring copied from a supplied paragraph. passageIndex is the zero-based passage position and paragraph is one-based.',
+    'For multi_slot_choice or ordered_choice, marks are literal answer slots in the exact supplied order. Return exactly one zero-based choice index per mark in markChoiceIndexes and return answerChoiceIndexes=[]. Do not sort the choices or reinterpret the marks as an ordering task unless the question itself asks for ordering. The same choice may be reused when the question permits it.',
+    'For skill=connective_relation, solve each displayed blank such as X/Y/Z independently by reading the sentence immediately before and after the blank and identifying the Japanese discourse relation (for example summary/restatement, contrast/reframing, addition, example, or alternative) before choosing the connective.',
+    'For every non-vocabulary question, cite at least one exact substring copied from a supplied passage. passageIndex must identify the supplied passage containing the quote. paragraph should be the one-based paragraph number, but exact quote existence in that passage is the authoritative evidence check.',
     'For vocabulary questions (major 2), evidence may be empty because hidden answer-only glossary material is not supplied.',
     'Set ambiguous=true or pass=false if there are multiple defensible answers, insufficient information, an invalid ordering, or conspicuous answer leakage.',
     'Do not add keys. Do not explain the answer outside the JSON object.',
@@ -152,6 +154,12 @@ function diagnosticAnswers(result) {
     amb: answer?.ambiguous,
     ev: Array.isArray(answer?.evidence) ? answer.evidence.map(e => [e.passageIndex,e.paragraph,e.quote]) : []
   }));
+}
+
+function hasExactEvidenceInPassage(evidence, visiblePassages) {
+  const passage = visiblePassages[evidence?.passageIndex];
+  if (!passage || typeof evidence?.quote !== 'string' || evidence.quote.length < 4) return false;
+  return passage.paragraphs.some(paragraph => typeof paragraph === 'string' && paragraph.includes(evidence.quote));
 }
 
 export function verifyJapaneseChunkAgreement(pack, major, result, threshold = JAPANESE_GROQ_CONFIDENCE_THRESHOLD) {
@@ -191,13 +199,7 @@ export function verifyJapaneseChunkAgreement(pack, major, result, threshold = JA
     }
     if (selectedMajor !== 2) {
       if (answer.evidence.length < 1) errors.push(`missing_evidence:${question.id}`);
-      else {
-        for (const evidence of answer.evidence) {
-          const passage = visiblePassages[evidence.passageIndex];
-          const paragraph = passage?.paragraphs?.[evidence.paragraph - 1];
-          if (!passage || evidence.quote.length < 4 || !paragraph?.includes(evidence.quote)) errors.push(`evidence_quote:${question.id}`);
-        }
-      }
+      else if (!answer.evidence.some(evidence => hasExactEvidenceInPassage(evidence, visiblePassages))) errors.push(`evidence_quote:${question.id}`);
     }
   }
   return { ok: errors.length === 0, errors };
