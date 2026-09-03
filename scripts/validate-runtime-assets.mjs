@@ -25,20 +25,24 @@ const aiReading = read('ai-reading-v1.js');
 const riseUI = read('app/ui/rise-ui-v4.js');
 const riseCSS = read('app/ui/rise-ui-v4.css');
 const riseStructure = read('app/ui/rise-structure-v4.css');
+const riseIA = read('app/ui/rise-information-architecture-v1.js');
 const riseStable = read('app/ui/rise-stable-root-v4.js');
 const pwaRuntime = read('app/pwa/pwa-runtime.js');
+const socialBridge = read('social-exam/bridge.js');
 const reviewUI = read('review/index.html');
 const sw = read('sw.js');
 
 new Function(riseUI);
+new Function(riseIA);
+new Function(socialBridge);
 new Function(riseStable);
 new Function(pwaRuntime);
 requireText(index, './aa-companion-v2.js', 'index entry');
 requireText(index, './aa-companion-mobile-fix.js', 'index mobile entry');
 requireText(index, './app/ui/rise-ui-v4.js?v=4.2.0', 'complete Rise UI entry');
-requireText(index, './app/ui/rise-stable-root-v4.js?v=2.3.0', 'Rise stable root entry');
-requireText(index, './app/pwa/pwa-runtime.js?v=4.2.1', 'Rise PWA runtime generation');
-requireText(index, './app/ui/rise-structure-v4.css?v=4.2.0', 'complete Rise structure stylesheet');
+requireText(index, './app/ui/rise-stable-root-v4.js?v=2.3.0', 'Rise stable root metadata entry');
+requireText(index, './app/pwa/pwa-runtime.js?v=4.2.1', 'Rise PWA runtime metadata generation');
+requireText(index, './app/ui/rise-structure-v4.css?v=4.2.0', 'complete Rise structure stylesheet metadata');
 requireText(index, 'data-rise-structure="optimized-4"', 'Rise boot marker');
 requireText(entry, "a.href='./review/'", 'review route');
 requireText(entry, "register('./sw.js'", 'service worker refresh');
@@ -46,7 +50,7 @@ requireText(entry, "register('./sw.js'", 'service worker refresh');
 for(const asset of [
   'mobile-layout-guard-v1.js','login-companion-v1.js','login-production-test-v1.js','companion7-runtime.js',
   'settings-improvements-v1.js','header-menu-v1.js','app/ui/rise-ui-v4.js','app/ui/rise-ui-v4.css',
-  'app/ui/rise-structure-v4.css','app/ui/rise-stable-root-v4.js','app/pwa/pwa-runtime.js',
+  'app/ui/rise-structure-v4.css','app/ui/rise-information-architecture-v1.js','app/ui/rise-stable-root-v4.js','app/pwa/pwa-runtime.js',
   'v23-loader.js','quality-repair-v1.js','quality-repair-final-v1.js',
   'quality-ci-runner-v1.js','ai-reading-v1.js','english-vocab-examples-basic1-v1.js',
   'english-vocab-examples-basic2-v1.js','english-vocab-examples-basic3-v1.js','english-vocab-examples-phrases-v1.js',
@@ -60,18 +64,31 @@ requireText(riseUI, "version:'4.2.0'", 'Rise UI version');
 requireText(riseUI, "structure:'complete'", 'Rise complete structure marker');
 requireText(riseUI, "root.dataset.riseStructure='optimized-4'", 'Rise DOM marker');
 requireText(riseUI, 'function homeHTML', 'Rise dashboard');
-requireText(riseUI, 'function subjectsHTML', 'Rise study hub');
-requireText(riseUI, 'function analyticsHTML', 'Rise record dashboard');
+requireText(riseUI, 'function subjectsHTML', 'Rise study hub base');
+requireText(riseUI, 'function analyticsHTML', 'Rise record base');
 requireText(riseUI, 'function settingsHTML', 'Rise minimal settings');
 requireText(riseUI, '今日の学習', 'Rise today learning plan');
 requireText(riseUI, '教科別の達成度', 'Rise subject progress');
-requireText(riseUI, '5教科ミックス', 'Rise mixed study entry');
-requireText(riseUI, 'start-reading-simulator', 'Rise Aichi English simulator entry');
-requireText(riseUI, '<span>ホーム</span>', 'Rise home nav');
-requireText(riseUI, '<span>学習</span>', 'Rise study nav');
-requireText(riseUI, '<span>復習</span>', 'Rise review nav');
-requireText(riseUI, '<span>記録</span>', 'Rise record nav');
-requireText(riseStable, "version:'2.3.0'", 'Rise stable root version');
+requireText(riseUI, '<span>ホーム</span>', 'Rise home nav base');
+requireText(riseUI, '<span>学習</span>', 'Rise study nav base');
+requireText(riseUI, '<span>復習</span>', 'Rise review nav base');
+requireText(riseUI, '<span>記録</span>', 'Rise record nav base');
+
+requireText(loader, "'app/ui/rise-information-architecture-v1.js'", 'final Rise IA load order');
+requireText(loader, "'quality-ci-runner-v1.js'", 'browser quality runner load order');
+requireText(riseIA, "version:'1.0.1'", 'final Rise IA version');
+requireText(riseIA, "publicTabs:['ホーム','入試','学習','復習']", 'final Rise public navigation');
+requireText(riseIA, "generalPractice:'removed-from-public-ui'", 'generic middle-school practice removal');
+requireText(riseIA, '入試対策', 'entrance exam hub');
+requireText(riseIA, '英単語・語句', 'fixed-data learning hub');
+requireText(riseIA, 'Chronologia', 'Chronologia learning entry');
+requireText(riseIA, '国語15,000語', 'Japanese vocabulary learning entry');
+requireText(riseIA, '一般演習は表示しません', 'generic practice public exclusion notice');
+if(riseIA.includes('5教科ミックス')||riseIA.includes('実戦25問・非公式')) throw new Error('final Rise IA must not expose legacy generic practice');
+requireText(socialBridge, 'legacyGenericFallback:false', 'social validated-pack-only contract');
+if(socialBridge.includes('return original(')||socialBridge.includes('original(...args)')) throw new Error('social learner path must not call legacy generic generator fallback');
+
+requireText(riseStable, "version:'2.3.0'", 'Rise stable root legacy metadata version');
 requireText(riseStable, "firstLoad:'immediate-capture'", 'Rise first-load capture marker');
 requireText(riseStable, "prewarm:'none-on-demand'", 'Rise on-demand route generation');
 if(riseStable.includes('warmPrimary')||riseStable.includes('clickUnderlying')) throw new Error('Rise stable root must not perform hidden route prewarm clicks');
@@ -98,8 +115,8 @@ requireText(mobile, "./login-production-test-v1.js", 'login production test load
 requireText(mobile, "./settings-improvements-v1.js", 'settings loader');
 
 requireText(layout, "window.__AA_MOBILE_LAYOUT_GUARD_V1__", 'layout guard marker');
-requireText(layout, 'body>.nav', 'body-level fixed nav');
-requireText(layout, 'document.body.appendChild(fresh)', 'nav portal to body');
+requireText(layout, 'body>.nav', 'body-level fixed nav compatibility');
+requireText(layout, 'document.body.appendChild(fresh)', 'nav portal compatibility');
 requireText(layout, "fresh.style.setProperty('bottom','0','important')", 'forced bottom anchor');
 requireText(layout, "#app{transform:none!important", 'fixed containing-block protection');
 requireText(layout, "backdrop-filter:none!important", 'iPhone backdrop filter protection');
@@ -129,7 +146,6 @@ requireText(prod, 'window.AALoginProductionTest=', 'production test API');
 
 requireText(loader, "'quality-repair-v1.js'", 'quality repair load order');
 requireText(loader, "'quality-repair-final-v1.js'", 'final quality repair load order');
-requireText(loader, "'quality-ci-runner-v1.js'", 'browser quality runner load order');
 requireText(loader, "'ai-reading-v1.js'", 'AI reading load order');
 requireText(loader, "'english-vocab-examples-apply-v1.js'", 'vocab example audit load order');
 requireText(loader, "'english-vocab-example-ui-v1.js'", 'vocab example UI load order');
@@ -153,7 +169,8 @@ requireText(qualityFinal, 'repairReadingEvidence', 'reading evidence repair');
 requireText(qualityFinal, 'missingEvidence', 'reading evidence audit');
 requireText(qualityCI, "params.get('aa_quality_ci')!=='1'", 'browser quality runner opt-in');
 requireText(qualityCI, 'AA_QUALITY_REPAIR_FINAL', 'browser waits for final repair');
-requireText(qualityCI, 'Rise・最適化ナビ', 'browser optimized Rise gate');
+requireText(qualityCI, 'Rise・最終4領域ナビ', 'browser final Rise navigation gate');
+requireText(qualityCI, 'ホーム/入試/学習/復習', 'browser final Rise navigation labels');
 requireText(qualityCI, 'Gemini教材一覧・文法ゲート', 'runtime long-reading gate');
 requireText(qualityCI, '愛知県型数学・応用検算', 'runtime Aichi applied mathematics gate');
 requireText(qualityCI, "dataset.aaQualityCi=result.pass?'PASS':'FAIL'", 'browser quality PASS marker');
@@ -169,8 +186,8 @@ requireText(sw, "const RISE_BOOT='4.2.1'", 'complete Rise PWA generation');
 requireText(sw, 'stable-2.3.0', 'Rise stable-route PWA generation');
 requireText(sw, "url('app/ui/rise-structure-v4.css')", 'offline Rise structure');
 requireText(sw, "url('app/ui/rise-ui-v4.js?v=4.2.0')", 'offline complete Rise UI');
-requireText(sw, "url('app/ui/rise-stable-root-v4.js?v=2.3.0')", 'offline stable root');
-requireText(sw, "url('app/pwa/pwa-runtime.js?v=4.2.1')", 'offline PWA runtime generation');
+requireText(sw, "url('app/ui/rise-stable-root-v4.js?v=2.3.0')", 'offline stable root metadata');
+requireText(sw, "url('app/pwa/pwa-runtime.js?v=4.2.1')", 'offline PWA runtime metadata generation');
 requireText(sw, 'async function networkFirst', 'network-first runtime');
 requireText(sw, "ext==='js'", 'generic JS freshness');
 requireText(sw, "ext==='css'", 'generic CSS freshness');
@@ -190,4 +207,4 @@ for(const file of new Set(referenced)){
   if(!fs.existsSync(file)) throw new Error(`mobile loader points to missing file: ${file}`);
 }
 
-console.log(`runtime assets OK: referenced=${new Set(referenced).size}, Rise 4.2.1 on-demand stable home/study/record/settings + canonical Review + quality/Chronologia/layout/login/PWA checks passed`);
+console.log(`runtime assets OK: referenced=${new Set(referenced).size}, Rise final IA home/exam/learning/review + validated middle-school exam paths + canonical Review + quality/Chronologia/layout/login/PWA checks passed`);
