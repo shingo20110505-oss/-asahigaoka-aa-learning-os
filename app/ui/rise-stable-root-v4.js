@@ -1,6 +1,6 @@
 (()=>{'use strict';
 if(window.__RISE_STABLE_ROOT_V4__)return;
-window.__RISE_STABLE_ROOT_V4__={version:'1.0.1'};
+window.__RISE_STABLE_ROOT_V4__={version:'1.0.0'};
 const root=document.documentElement,app=document.getElementById('app');
 if(!app)return;
 const host=document.createElement('main');
