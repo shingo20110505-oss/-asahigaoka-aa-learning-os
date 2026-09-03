@@ -1,0 +1,42 @@
+(()=>{'use strict';
+if(window.__RISE_NAVIGATION_V1__)return;
+const CORE_ROUTES=new Set(['home','subjects','analytics','settings']);
+const root=document.documentElement;
+let sequence=0;
+function shell(){return window.AA_APP?.get?.('appShell')||null}
+function stateRoute(){try{return window.AA_APP?.get?.('state')?.get?.()?.route||root.dataset.riseRoute||'home'}catch(_){return root.dataset.riseRoute||'home'}}
+function reviewUrl(){return new URL('./review/index.html',location.href).href}
+function isReviewAnchor(el){if(!el||el.tagName!=='A')return false;try{const u=new URL(el.href,location.href),r=new URL(reviewUrl());return u.origin===r.origin&&(u.pathname===r.pathname||u.pathname===r.pathname.replace(/index\.html$/,''))}catch(_){return false}}
+function navigateCore(route,source='ui'){
+ if(!CORE_ROUTES.has(route))return false;
+ const appShell=shell();if(!appShell?.navigate)return false;
+ const id=++sequence;
+ root.dataset.riseNavigating=route;
+ root.dataset.riseRoute=route;
+ try{appShell.navigate(route)}catch(err){delete root.dataset.riseNavigating;root.dataset.riseNavigationError=String(err?.message||err).slice(0,220);return false}
+ requestAnimationFrame(()=>{
+  if(id!==sequence)return;
+  root.dataset.riseRoute=stateRoute();
+  delete root.dataset.riseNavigating;
+  delete root.dataset.riseNavigationError;
+  document.dispatchEvent(new CustomEvent('rise:navigation',{detail:{route:root.dataset.riseRoute,source}}));
+ });
+ return true;
+}
+function navigateReview(source='ui'){
+ root.dataset.riseNavigating='review';
+ document.dispatchEvent(new CustomEvent('rise:navigation',{detail:{route:'review',source,external:true}}));
+ location.assign(reviewUrl());
+}
+document.addEventListener('click',e=>{
+ const anchor=e.target.closest?.('a[href]');
+ if(isReviewAnchor(anchor)){
+  e.preventDefault();e.stopImmediatePropagation();navigateReview('review-link');return;
+ }
+ const target=e.target.closest?.('[data-route]');
+ const route=target?.dataset?.route;
+ if(!CORE_ROUTES.has(route))return;
+ e.preventDefault();e.stopImmediatePropagation();navigateCore(route,'route-control');
+},true);
+window.__RISE_NAVIGATION_V1__=Object.freeze({version:'1.0.0',coreRoutes:[...CORE_ROUTES],navigate:navigateCore,review:navigateReview,current:stateRoute});
+})();
