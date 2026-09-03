@@ -135,6 +135,18 @@ try {
   assert.equal(calls[1].body.reasoning_effort, 'low');
   assert.equal(calls[1].body.include_reasoning, false);
 
+  const groqSchema = calls[1].body.response_format.json_schema.schema;
+  assert.equal(groqSchema.properties.answers.minItems, undefined);
+  assert.equal(groqSchema.properties.answers.maxItems, undefined);
+  assert.equal(groqSchema.properties.answers.items.properties.evidenceQuote.minLength, undefined);
+  assert.equal(groqSchema.properties.answers.items.properties.evidenceQuote.maxLength, undefined);
+  assert.equal(groqSchema.properties.answers.items.properties.confidence.minimum, 0);
+  assert.equal(groqSchema.properties.answers.items.properties.confidence.maximum, 1);
+  assert.deepEqual(groqSchema.required, ['overallPass', 'answers']);
+  assert.deepEqual(groqSchema.properties.answers.items.required, ['questionIndex', 'answerIndex', 'evidenceQuote', 'confidence']);
+  assert.equal(groqSchema.additionalProperties, false);
+  assert.equal(groqSchema.properties.answers.items.additionalProperties, false);
+
   const blindInput = calls[1].body.messages?.find(item => item.role === 'user')?.content || '';
   assert.doesNotMatch(blindInput, /"answerIndex"\s*:/, 'Groq must not receive the author answer key');
   assert.doesNotMatch(blindInput, /explanationJa/, 'Groq must not receive author explanations');
@@ -145,4 +157,4 @@ try {
   globalThis.fetch = originalFetch;
 }
 
-console.log('AI reading Groq contract OK: Gemini authors, Groq blindly verifies, answer keys remain hidden, and cross-provider metadata is returned');
+console.log('AI reading Groq contract OK: Gemini authors, Groq blindly verifies with a compatible strict schema, answer keys remain hidden, and cross-provider metadata is returned');
