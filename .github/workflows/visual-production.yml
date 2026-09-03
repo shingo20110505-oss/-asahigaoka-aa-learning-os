@@ -61,7 +61,7 @@ jobs:
           grep -q "uiSync:'preconceal-all-settings-legacy-renders-and-deterministic-multiphase-rise-recovery'" /tmp/rise-nav.js
           grep -q 'stopImmediatePropagation' /tmp/rise-nav.js
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-information-architecture-v1.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-ia.js
-          grep -q "version:'1.0.0'" /tmp/rise-ia.js
+          grep -q "version:'1.0.1'" /tmp/rise-ia.js
           grep -q "publicTabs:\['ホーム','入試','学習','復習'\]" /tmp/rise-ia.js
           grep -q "generalPractice:'removed-from-public-ui'" /tmp/rise-ia.js
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}social-exam/bridge.js?visual_asset=${SOURCE_SHA}" -o /tmp/social-bridge.js
