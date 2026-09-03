@@ -51,12 +51,13 @@ jobs:
           test "$ok" = 1
           grep -q '"management": "validated-main-direct-to-pages"' /tmp/release.json
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}index.html?visual_asset=${SOURCE_SHA}" -o /tmp/index.html
-          grep -q 'navigation-runtime-v1.js?v=1.0.0' /tmp/index.html
+          grep -q 'navigation-runtime-v1.js?v=1.0.1' /tmp/index.html
           grep -q 'pwa-runtime.js?v=4.3.0' /tmp/index.html
+          grep -q 'legacy-controller-reload-guard-v1.js?v=1.0.0' /tmp/index.html
           ! grep -q '<script src="./app/ui/rise-stable-root-v4.js' /tmp/index.html
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/navigation/navigation-runtime-v1.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-nav.js
-          grep -q "version:'1.0.0'" /tmp/rise-nav.js
-          grep -q "uiSync:'explicit-after-state-render'" /tmp/rise-nav.js
+          grep -q "version:'1.0.1'" /tmp/rise-nav.js
+          grep -q "uiSync:'deterministic-multiphase-after-state-render'" /tmp/rise-nav.js
           grep -q 'stopImmediatePropagation' /tmp/rise-nav.js
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-ui-v4.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-ui-v4.js
           grep -q "version:'4.2.0'" /tmp/rise-ui-v4.js
