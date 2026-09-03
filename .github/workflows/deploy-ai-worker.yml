@@ -26,6 +26,10 @@ jobs:
         run: |
           set -euo pipefail
           node --check worker/src/index.mjs
+          node --check worker/src/providers/gemini.mjs
+          node --check worker/src/providers/groq.mjs
+          node --check worker/src/providers/index.mjs
+          node tests/ai-provider-contract.mjs
           node tests/ai-reading-contract.mjs
 
       - name: Confirm required GitHub secrets exist
@@ -126,5 +130,5 @@ jobs:
             if (!result.reading.passage.includes(question.evidenceQuote)) throw new Error(`Question ${index + 1} evidence is not exact`);
           }
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
-            `## AI reading Worker verified\n\n- URL: ${process.env.DEPLOYMENT_URL}\n- Model: ${status.model}\n- Questions: 5\n- Independent answer check: PASS\n`);
+            `## AI reading Worker verified\n\n- URL: ${process.env.DEPLOYMENT_URL}\n- Model: ${status.model}\n- Questions: 5\n- Independent answer check: PASS\n- Common provider adapters: contract PASS\n`);
           NODE

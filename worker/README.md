@@ -9,11 +9,27 @@ Cloudflare WorkerをAIプロバイダとRiseの間に置き、**APIキーをGitH
 - 生成モデル: `gemini-3.5-flash`
 - 英語生成: Geminiで稼働中
 - 英語の独立答え直し: 現在はGeminiへの別リクエストで稼働中
+- 共通provider入口: `src/providers/index.mjs`
+- Gemini provider: `src/providers/gemini.mjs` に分離済み
+- Groq provider: `src/providers/groq.mjs` に実呼び出しクライアントを実装済み
+- Groq既定検証モデル候補: `openai/gpt-oss-20b`
 - `GROQ_API_KEY`: 配備Secretとして受け渡し可能
-- Groq実呼び出し: **まだ未実装**
-- 5教科共通Groq検証: **まだ未実装**
+- Groq本番接続: **まだ無効**
+- 5教科共通Groq検証: **まだ未接続**
 
-未実装の機能を稼働済みとして扱わないでください。
+providerコードが存在することと、本番の教材生成経路で使用していることを混同しないでください。現行 `/v1/reading` は従来どおりGemini生成＋Gemini別リクエスト検証です。
+
+## Provider層
+
+教科コードからAIベンダー固有のHTTP仕様を分離するため、次の共通入口を追加しています。
+
+- `callStructuredProvider('gemini', env, request)`
+- `callStructuredProvider('groq', env, request)`
+- `getProviderStatus(env)`
+
+共通requestは、`input`、`schema`、`schemaName`、`maxOutputTokens`、system instruction等を受け取り、providerごとの差異をadapter内で吸収します。
+
+Groq adapterは公式OpenAI互換の `POST https://api.groq.com/openai/v1/chat/completions` とJSON Schema structured outputを使用する設計です。現段階では接続テスト用のprovider実装であり、既存英語品質ゲートへはまだ切り替えていません。
 
 ## GitHub Actionsから配備
 
@@ -68,10 +84,12 @@ Secret値はファイルへ保存せず、対話入力で設定します。
 
 ## 5教科共通化するときの原則
 
-今後はprovider呼び出しを教科ロジックから分離し、概ね次の責務へ整理します。
+共通provider層を使い、概ね次の責務へ整理します。
 
 `request sanitation -> Gemini generation -> subject deterministic validation -> Groq blind verification -> agreement gate -> delivery`
 
 ただし、数学や理科の数値検証、国語の採点構造、英語の文法/本文根拠など、**コードで正確に判定できる教科固有検証をGroqで置き換えません**。
+
+次段階では、現行英語のblind verifierだけを共通Groq providerへ接続し、生成側Geminiと教科固有検証を変更せずに実証します。無料枠・quota・失敗時挙動を確認するまで他教科へ横展開しません。
 
 詳細・移行段階・品質基準は `docs/AI_PLATFORM.md` を参照してください。

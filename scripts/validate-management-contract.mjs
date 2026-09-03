@@ -14,10 +14,14 @@ const requiredFiles = [
   'app/runtime-registry.js',
   'storage-resilience-v1.js',
   'tests/architecture-boundaries.mjs',
+  'tests/ai-provider-contract.mjs',
   '.github/workflows/deploy-pages.yml',
   '.github/workflows/deploy-ai-worker.yml',
   'worker/README.md',
   'worker/wrangler.toml',
+  'worker/src/providers/index.mjs',
+  'worker/src/providers/gemini.mjs',
+  'worker/src/providers/groq.mjs',
   'review-bank-v1.js',
   'review/index.html',
   'DEPLOY_STATUS.txt',
@@ -69,26 +73,53 @@ assert.doesNotMatch(management, /aa-learning-resilience-v1/);
 
 const aiPlatform = read('docs/AI_PLATFORM.md');
 assert.match(aiPlatform, /gemini-3\.5-flash/);
+assert.match(aiPlatform, /openai\/gpt-oss-20b/);
 assert.match(aiPlatform, /GEMINI_API_KEY/);
 assert.match(aiPlatform, /GROQ_API_KEY/);
-assert.match(aiPlatform, /Groq実呼び出し:\s*未実装/);
-assert.match(aiPlatform, /5教科共通Groq検証:\s*未実装/);
+assert.match(aiPlatform, /共通provider interface:\s*実装済み/);
+assert.match(aiPlatform, /Groq provider adapter:\s*実呼び出しコード実装済み・本番未接続/);
+assert.match(aiPlatform, /Groq本番教材呼び出し:\s*未接続/);
+assert.match(aiPlatform, /5教科共通Groq検証:\s*未接続/);
 assert.match(aiPlatform, /Gemini generation|Gemini生成/);
 assert.match(aiPlatform, /deterministic validation|決定的検証/);
 assert.match(aiPlatform, /blind independent verification|独立解答/);
+assert.match(aiPlatform, /tests\/ai-provider-contract\.mjs/);
 
 const workerReadme = read('worker/README.md');
 assert.match(workerReadme, /gemini-3\.5-flash/);
+assert.match(workerReadme, /openai\/gpt-oss-20b/);
 assert.match(workerReadme, /GROQ_API_KEY/);
-assert.match(workerReadme, /Groq実呼び出し:\s*\*\*まだ未実装\*\*/);
+assert.match(workerReadme, /Groq provider:[\s\S]*実呼び出しクライアントを実装済み/);
+assert.match(workerReadme, /Groq本番接続:\s*\*\*まだ無効\*\*/);
+assert.match(workerReadme, /src\/providers\/index\.mjs/);
+
+const providerIndex = read('worker/src/providers/index.mjs');
+assert.match(providerIndex, /callStructuredProvider/);
+assert.match(providerIndex, /getProviderStatus/);
+assert.match(providerIndex, /gemini/);
+assert.match(providerIndex, /groq/);
+
+const geminiProvider = read('worker/src/providers/gemini.mjs');
+assert.match(geminiProvider, /gemini-3\.5-flash/);
+assert.match(geminiProvider, /GEMINI_API_KEY/);
+assert.doesNotMatch(geminiProvider, /GROQ_API_KEY/);
+
+const groqProvider = read('worker/src/providers/groq.mjs');
+assert.match(groqProvider, /openai\/gpt-oss-20b/);
+assert.match(groqProvider, /GROQ_API_KEY/);
+assert.match(groqProvider, /api\.groq\.com\/openai\/v1\/chat\/completions/);
+assert.match(groqProvider, /json_schema/);
+assert.doesNotMatch(groqProvider, /GEMINI_API_KEY/);
 
 const wrangler = read('worker/wrangler.toml');
 assert.match(wrangler, /GEMINI_MODEL\s*=\s*"gemini-3\.5-flash"/);
+assert.match(wrangler, /GROQ_MODEL\s*=\s*"openai\/gpt-oss-20b"/);
 
 const aiDeploy = read('.github/workflows/deploy-ai-worker.yml');
 assert.match(aiDeploy, /GEMINI_API_KEY:\s*\$\{\{\s*secrets\.GEMINI_API_KEY\s*\}\}/);
 assert.match(aiDeploy, /GROQ_API_KEY:\s*\$\{\{\s*secrets\.GROQ_API_KEY\s*\}\}/);
 assert.match(aiDeploy, /test -n "\$GROQ_API_KEY"/);
+assert.match(aiDeploy, /tests\/ai-provider-contract\.mjs/);
 
 const pages = read('.github/workflows/deploy-pages.yml');
 assert.match(pages, /paths-ignore:[\s\S]*PUBLIC_VERIFY_STATUS\.txt[\s\S]*DEPLOY_STATUS\.txt/);
@@ -110,4 +141,4 @@ assert.match(storage, /LOCAL_BEST_KEY='aa-storage-best-v4'/);
 assert.match(storage, /DB_NAME='asahigaoka-aa-os-storage'/);
 assert.match(storage, /DB_STORE='snapshots'/);
 
-console.log('Management contract OK: canonical docs, deployment path, storage ownership, protected assets, and AI secret/model state are consistent');
+console.log('Management contract OK: canonical docs, deployment path, storage ownership, protected assets, and AI provider state are consistent');
