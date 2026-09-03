@@ -9,7 +9,10 @@
     const riseRoot = document.documentElement;
     const riseBrand = document.querySelector('#app .brand h1')?.textContent?.trim();
     const riseHome = document.querySelector('#app main .riseHomeV4');
+    const riseNav = [...document.querySelectorAll('.navin > button,.navin > a')];
+    const riseNavLabels = riseNav.map(x => x.querySelector('span')?.textContent?.trim()).filter(Boolean);
     add('Rise UI v4・表示レイヤー', riseRoot.dataset.riseSkin === 'v4' && riseRoot.dataset.riseUi === '4' && riseBrand === 'Rise' && !!riseHome, `skin=${riseRoot.dataset.riseSkin || '-'} / ui=${riseRoot.dataset.riseUi || '-'} / brand=${riseBrand || '-'} / home=${riseHome ? 'yes' : 'no'}`);
+    add('Rise・最適化ナビ', riseRoot.dataset.riseStructure === 'optimized-4' && riseNav.length === 4 && riseNavLabels.join('/') === 'ホーム/学習/復習/記録', `structure=${riseRoot.dataset.riseStructure || '-'} / nav=${riseNavLabels.join('/') || '-'}`);
     let clozeBad = 0;
     for (const v of DATA.vocab) {
       const q = makeVocabQ(v, 'cloze');
@@ -41,7 +44,6 @@
     }
     const html = subjectsHTML();
     add('長文表示・開始経路', html.includes('data-aa-reading-library="2"') && html.includes('data-action="ai-reading-scaffold"') && !html.includes('data-action="start-reading-simulator"') && !html.includes('data-action="start-graph-reading"'), 'サポート付き・実戦・教材数・単語復習リンク');
-    // Work on a temporary state: a self-check must not change the learner's records.
     const original = state;
     try {
       state = JSON.parse(JSON.stringify(original));
