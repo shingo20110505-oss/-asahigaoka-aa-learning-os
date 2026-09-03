@@ -6,6 +6,10 @@
   async function audit() {
     const checks = [];
     const add = (name, ok, detail) => checks.push({name, ok: !!ok, detail});
+    const riseRoot = document.documentElement;
+    const riseBrand = document.querySelector('#app .brand h1')?.textContent?.trim();
+    const riseHome = document.querySelector('#app main .riseHomeV4');
+    add('Rise UI v4・表示レイヤー', riseRoot.dataset.riseSkin === 'v4' && riseRoot.dataset.riseUi === '4' && riseBrand === 'Rise' && !!riseHome, `skin=${riseRoot.dataset.riseSkin || '-'} / ui=${riseRoot.dataset.riseUi || '-'} / brand=${riseBrand || '-'} / home=${riseHome ? 'yes' : 'no'}`);
     let clozeBad = 0;
     for (const v of DATA.vocab) {
       const q = makeVocabQ(v, 'cloze');
