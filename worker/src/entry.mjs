@@ -17,8 +17,12 @@ import {
   callGroqJson,
   getProviderStatus
 } from './providers/index.mjs';
+import {
+  SubjectVerificationError,
+  verifySubjectQuestion
+} from './subject-verifier.mjs';
 
-const WORKER_VERSION = '1.2.1';
+const WORKER_VERSION = '1.3.0';
 const DEFAULT_ORIGIN = 'https://shingo20110505-oss.github.io';
 const MAX_BODY_BYTES = 24000;
 
@@ -116,6 +120,11 @@ function mapGroqError(error) {
   return new ApiError('verification_unavailable', 'Groq独立検証を利用できません。', error.status >= 500 ? 503 : 502, diagnostic);
 }
 
+function mapSubjectError(error) {
+  if (!(error instanceof SubjectVerificationError)) return null;
+  return new ApiError(error.code, error.message, error.status, error.diagnostic);
+}
+
 export async function generateVerifiedReading(env, request) {
   const failures = [];
   for (let attempt = 1; attempt <= 2; attempt++) {
@@ -199,7 +208,7 @@ export async function handleRequest(request, env) {
     return jsonResponse(request, env, { ok: true, service: 'aa-ai-reading', version: WORKER_VERSION });
   }
 
-  if (request.method !== 'POST' || !['/v1/status', '/v1/reading'].includes(url.pathname)) {
+  if (request.method !== 'POST' || !['/v1/status', '/v1/reading', '/v1/verify'].includes(url.pathname)) {
     return jsonResponse(request, env, { error: { code: 'not_found', message: 'Not found.' } }, 404);
   }
 
@@ -214,6 +223,13 @@ export async function handleRequest(request, env) {
       model: cleanString(env.GEMINI_MODEL || DEFAULT_GEMINI_MODEL, 80),
       verifierModel: cleanString(env.GROQ_MODEL || DEFAULT_GROQ_MODEL, 100),
       verificationProvider: 'groq',
+      subjectVerification: {
+        english: 'production',
+        math: 'production-audit',
+        japanese: 'not-connected',
+        science: 'not-connected',
+        social: 'not-connected'
+      },
       providers,
       version: WORKER_VERSION
     }, ready ? 200 : 503);
@@ -221,16 +237,22 @@ export async function handleRequest(request, env) {
 
   try {
     const input = await readJsonBody(request);
+    if (url.pathname === '/v1/verify') {
+      const result = await verifySubjectQuestion(env, input);
+      return jsonResponse(request, env, result);
+    }
     const clean = sanitizeRequest(input);
     const result = await generateVerifiedReading(env, clean);
     return jsonResponse(request, env, result);
   } catch (error) {
-    if (error instanceof ApiError) {
-      const body = { code: error.code, message: error.message };
-      if (error.diagnostic) body.diagnostic = error.diagnostic;
-      return jsonResponse(request, env, { error: body }, error.status);
+    const mapped = mapSubjectError(error) || mapGroqError(error) || mapGeminiError(error);
+    const apiError = mapped || (error instanceof ApiError ? error : null);
+    if (apiError) {
+      const body = { code: apiError.code, message: apiError.message };
+      if (apiError.diagnostic) body.diagnostic = apiError.diagnostic;
+      return jsonResponse(request, env, { error: body }, apiError.status);
     }
-    return jsonResponse(request, env, { error: { code: 'internal_error', message: 'AI長文を生成できませんでした。' } }, 500);
+    return jsonResponse(request, env, { error: { code: 'internal_error', message: 'AI処理を完了できませんでした。' } }, 500);
   }
 }
 

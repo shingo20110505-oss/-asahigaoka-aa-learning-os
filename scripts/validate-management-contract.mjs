@@ -16,11 +16,13 @@ const requiredFiles = [
   'tests/architecture-boundaries.mjs',
   'tests/ai-provider-contract.mjs',
   'tests/ai-reading-groq-contract.mjs',
+  'tests/ai-subject-verifier-contract.mjs',
   '.github/workflows/deploy-pages.yml',
   '.github/workflows/deploy-ai-worker.yml',
   'worker/README.md',
   'worker/wrangler.toml',
   'worker/src/entry.mjs',
+  'worker/src/subject-verifier.mjs',
   'worker/src/providers/index.mjs',
   'worker/src/providers/gemini.mjs',
   'worker/src/providers/groq.mjs',
@@ -79,34 +81,52 @@ assert.match(aiPlatform, /openai\/gpt-oss-20b/);
 assert.match(aiPlatform, /GEMINI_API_KEY/);
 assert.match(aiPlatform, /GROQ_API_KEY/);
 assert.match(aiPlatform, /共通provider interface:\s*実装済み/);
+assert.match(aiPlatform, /共通subject validator interface:\s*数学まで実装済み/);
 assert.match(aiPlatform, /英語Groq blind verification:\s*本番コードへ接続済み/);
-assert.match(aiPlatform, /英語Worker本番入口:\s*`worker\/src\/entry\.mjs`/);
-assert.match(aiPlatform, /数学・国語・理科・社会のGroq検証:\s*未接続/);
-assert.match(aiPlatform, /5教科共通Groq検証:\s*英語のみ接続済み/);
+assert.match(aiPlatform, /Worker本番入口:\s*`worker\/src\/entry\.mjs`/);
+assert.match(aiPlatform, /数学Groq blind verification:[^\n]*コード接続済み・本番確認待ち/);
+assert.match(aiPlatform, /国語・理科・社会のGroq検証:\s*未接続/);
+assert.match(aiPlatform, /5教科共通Groq検証:\s*英語本番＋数学本番監査候補まで接続/);
 assert.match(aiPlatform, /cross-provider-blind-answer-check/);
+assert.match(aiPlatform, /deterministic-plus-cross-provider-blind-answer-check/);
 assert.match(aiPlatform, /tests\/ai-provider-contract\.mjs/);
 assert.match(aiPlatform, /tests\/ai-reading-groq-contract\.mjs/);
+assert.match(aiPlatform, /tests\/ai-subject-verifier-contract\.mjs/);
 
 const workerReadme = read('worker/README.md');
 assert.match(workerReadme, /gemini-3\.5-flash/);
 assert.match(workerReadme, /openai\/gpt-oss-20b/);
 assert.match(workerReadme, /GROQ_API_KEY/);
 assert.match(workerReadme, /本番Worker入口:\s*`src\/entry\.mjs`/);
+assert.match(workerReadme, /Workerソースversion:\s*`1\.3\.0`/);
 assert.match(workerReadme, /英語の独立答え直し:\s*Groq/);
-assert.match(workerReadme, /5教科共通Groq検証:\s*\*\*英語のみ本番稼働、数学・国語・理科・社会は未接続\*\*/);
-assert.match(workerReadme, /cross-provider-blind-answer-check/);
+assert.match(workerReadme, /5教科共通Groq検証:\s*\*\*英語は本番稼働、数学はコード接続済み・本番確認待ち、国語・理科・社会は未接続\*\*/);
+assert.match(workerReadme, /POST \/v1\/verify/);
+assert.match(workerReadme, /deterministic-plus-cross-provider-blind-answer-check/);
 
 const entry = read('worker/src/entry.mjs');
-assert.match(entry, /WORKER_VERSION = '1\.2\.1'/);
+assert.match(entry, /WORKER_VERSION = '1\.3\.0'/);
 assert.match(entry, /callGeminiJson/);
 assert.match(entry, /callGroqJson/);
 assert.match(entry, /buildVerifierPrompt/);
+assert.match(entry, /verifySubjectQuestion/);
+assert.match(entry, /\/v1\/verify/);
 assert.match(entry, /cross-provider-blind-answer-check/);
 assert.match(entry, /verificationProvider:\s*verified\.provider/);
 assert.match(entry, /verificationProvider:\s*'groq'/);
+assert.match(entry, /math:\s*'production-audit'/);
 assert.match(entry, /groq_request_rejected/);
 assert.doesNotMatch(entry, /GROQ_API_KEY\s*=/);
 assert.doesNotMatch(entry, /GEMINI_API_KEY\s*=/);
+
+const subjectVerifier = read('worker/src/subject-verifier.mjs');
+assert.match(subjectVerifier, /SUBJECTS = Object\.freeze\(\['math'\]\)/);
+assert.match(subjectVerifier, /callGroqJson/);
+assert.match(subjectVerifier, /expectedAnswerIndex/);
+assert.match(subjectVerifier, /deterministic-plus-cross-provider-blind-answer-check/);
+assert.match(subjectVerifier, /confidence[^\n]*0\.8/);
+assert.doesNotMatch(subjectVerifier, /GROQ_API_KEY\s*=/);
+assert.doesNotMatch(subjectVerifier, /GEMINI_API_KEY\s*=/);
 
 const providerIndex = read('worker/src/providers/index.mjs');
 assert.match(providerIndex, /callStructuredProvider/);
@@ -141,8 +161,10 @@ assert.match(aiDeploy, /GROQ_API_KEY:\s*\$\{\{\s*secrets\.GROQ_API_KEY\s*\}\}/);
 assert.match(aiDeploy, /test -n "\$GROQ_API_KEY"/);
 assert.match(aiDeploy, /tests\/ai-provider-contract\.mjs/);
 assert.match(aiDeploy, /tests\/ai-reading-groq-contract\.mjs/);
-assert.match(aiDeploy, /EXPECTED_WORKER_VERSION='1\.2\.1'/);
-assert.match(aiDeploy, /cross-provider-blind-answer-check/);
+assert.match(aiDeploy, /tests\/ai-subject-verifier-contract\.mjs/);
+assert.match(aiDeploy, /EXPECTED_WORKER_VERSION='1\.3\.0'/);
+assert.match(aiDeploy, /\/v1\/verify/);
+assert.match(aiDeploy, /deterministic-plus-cross-provider-blind-answer-check/);
 
 const groqContract = read('tests/ai-reading-groq-contract.mjs');
 assert.match(groqContract, /Groq must not receive the author answer key/);
@@ -151,6 +173,14 @@ assert.match(groqContract, /Groq must not receive author distractor reasons/);
 assert.match(groqContract, /payload\.quality\.verificationProvider/);
 assert.match(groqContract, /compatible strict schema/);
 assert.match(groqContract, /cross-provider-blind-answer-check/);
+
+const subjectContract = read('tests/ai-subject-verifier-contract.mjs');
+assert.match(subjectContract, /expectedAnswerIndex/);
+assert.match(subjectContract, /author-explanation-secret/);
+assert.match(subjectContract, /author-correct-reason-secret/);
+assert.match(subjectContract, /doesNotMatch\(blindInput/);
+assert.match(subjectContract, /rise_math_blind_verification/);
+assert.match(subjectContract, /deterministic-plus-cross-provider-blind-answer-check/);
 
 const pages = read('.github/workflows/deploy-pages.yml');
 assert.match(pages, /paths-ignore:[\s\S]*PUBLIC_VERIFY_STATUS\.txt[\s\S]*DEPLOY_STATUS\.txt/);
@@ -172,4 +202,4 @@ assert.match(storage, /LOCAL_BEST_KEY='aa-storage-best-v4'/);
 assert.match(storage, /DB_NAME='asahigaoka-aa-os-storage'/);
 assert.match(storage, /DB_STORE='snapshots'/);
 
-console.log('Management contract OK: canonical docs, deployment path, storage ownership, protected assets, and cross-provider AI state are consistent');
+console.log('Management contract OK: canonical docs, deployment path, storage ownership, protected assets, and Phase D math cross-provider verification state are consistent');
