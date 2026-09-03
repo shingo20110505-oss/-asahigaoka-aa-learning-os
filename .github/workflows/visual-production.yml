@@ -64,7 +64,6 @@ jobs:
           grep -q 'function subjectsHTML' /tmp/rise-ui-v4.js
           grep -q 'function analyticsHTML' /tmp/rise-ui-v4.js
           grep -q 'function settingsHTML' /tmp/rise-ui-v4.js
-          node --check scripts/rise-navigation-diagnostic.mjs
           node --check scripts/rise-visual-cdp.mjs
 
       - name: Install Japanese rendering fonts
@@ -75,15 +74,7 @@ jobs:
           fc-cache -f
           fc-match 'sans-serif:lang=ja'
 
-      - name: Trace unexpected document navigation
-        run: |
-          set -euo pipefail
-          CHROME_PATH=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
-          test -n "$CHROME_PATH"
-          export CHROME_PATH
-          node scripts/rise-navigation-diagnostic.mjs
-
-      - name: Capture and validate all production screens via CDP
+      - name: Capture and validate stable production navigation via CDP
         env:
           VISUAL_OUT: visual-evidence
         run: |
@@ -97,9 +88,11 @@ jobs:
           grep -q '^cold_start_home=success$' visual-evidence/manifest.txt
           grep -q '^single_navigation_owner=success$' visual-evidence/manifest.txt
           grep -q '^single_live_dom=success$' visual-evidence/manifest.txt
+          grep -q '^no_unexpected_document_navigation=success$' visual-evidence/manifest.txt
           grep -q '^route_switch_stress=success$' visual-evidence/manifest.txt
           grep -q '^settings_menu_navigation=success$' visual-evidence/manifest.txt
           grep -q '^review_canonical_click_navigation=success$' visual-evidence/manifest.txt
+          grep -q '^unique_screen_pixels=success$' visual-evidence/manifest.txt
           test "$(find visual-evidence -maxdepth 1 -name '*.png' | wc -l)" -eq 10
           test "$(find visual-evidence -maxdepth 1 -name '*.html' | wc -l)" -eq 10
           cat visual-evidence/manifest.txt
@@ -122,9 +115,10 @@ jobs:
             echo "- Source: \`${SOURCE_SHA}\`"
             echo '- Navigation owner: `app/navigation/navigation-runtime-v1.js` only'
             echo '- No cloned stable-root UI is executed.'
+            echo '- Core route changes must stay stable without top-level Document reloads.'
             echo '- Screens: home / study / record / settings / review'
             echo '- Mobile: `390x844` / iPhone User-Agent'
             echo '- Desktop: `1440x1000`'
-            echo '- Route stress and unexpected top-level Document navigation are hard failures.'
-            echo '- Review must leave the main shell and reach canonical `/review/`.'
+            echo '- Duplicate screenshot pixels are rejected.'
+            echo '- Review is the only expected full-document navigation and must reach `/review/`.'
           } >> "$GITHUB_STEP_SUMMARY"
