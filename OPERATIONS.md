@@ -33,21 +33,23 @@
 
 ## 4. 守る保存データ
 
-移行設計なしにキー名変更・削除・全消去をしない。
+移行設計なしにキー名変更・削除・全消去をしない。保存キーは、そのキーを実際に所有する現行実装を確認して扱う。
 
 主な保護対象:
 
-- `asahi_learning_os_v1`
-- `asahi_learning_os_best_snapshot_v1`
-- `asahi_review_progress_v1`
-- `aa_review_page_v1`
-- `aa_ai_reading_config_v1`
-- `aa_japanese_exam_session_v1`
-- `aa_japanese_exam_history_v1`
-- `aa_japanese_exam_imports_v1`
-- IndexedDB `aa-learning-resilience-v1`
-- IndexedDB `aa-login-companion-v1`
-- IndexedDB `aa-companion-voice-v1`
+- 学習本体: `asahi_learning_os_v1`
+- 学習本体の保護スナップショット: `aa-storage-best-v4`
+- 保存保護IndexedDB: `asahigaoka-aa-os-storage` / store `snapshots`
+- 復習進捗: `asahi_review_progress_v1`
+- Review v2画面状態: `aa_review_page_v1`
+- AI接続設定: `aa_ai_reading_config_v1`
+- 国語入試: `aa_japanese_exam_session_v1`
+- 国語入試: `aa_japanese_exam_history_v1`
+- 国語入試: `aa_japanese_exam_imports_v1`
+- ログイン画像IndexedDB: `aa-login-companion-v1`
+- ログイン音声IndexedDB: `aa-companion-voice-v1`
+
+学習本体の保存保護は `storage-resilience-v1.js` の現行定義を基準にする。
 
 `localStorage.clear()` や、既存stateを移行なしで丸ごと置換する変更は禁止。
 
@@ -97,11 +99,14 @@
 
 - `tests/architecture-boundaries.mjs`
 - `tests/ai-reading-contract.mjs`
+- `scripts/validate-management-contract.mjs`
 - 復習検証
 - 数学検証
 - 国語検証
 - runtime asset検証
 - 重要JSの `node --check`
+
+管理正本・公開経路・保存契約・AIモデル/Secret配線の整合は `.github/workflows/management-contract.yml` でも自動検査する。
 
 テストを削って変更を通すことを修正とみなさない。
 
@@ -130,7 +135,7 @@
 以下は「存在を認識して管理する負債」であり、調査なしに削除しない。
 
 - `main` のbranch protectionが現在無効。
-- Workflowが状態ファイルを `main` へ記録するため、追加pushや実行連鎖が起こり得る。
+- Workflowが状態ファイルを `main` へ記録するため、公開元SHAと最新main HEADが異なり得る。
 - 旧Workflow・トリガーファイル・互換コードが残っている。
 - `index.html` に旧実装が大きく残り、後段モジュールとの段階移行中。
 
