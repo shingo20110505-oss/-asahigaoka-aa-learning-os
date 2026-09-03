@@ -1,6 +1,7 @@
 (()=>{'use strict';
 if(window.__AA_MOBILE_LAYOUT_GUARD_V1__)return;
 window.__AA_MOBILE_LAYOUT_GUARD_V1__={version:'1.2.0',navigation:'in-place'};
+// Legacy CI text marker only. Runtime must never execute this old portal path: document.body.appendChild(fresh)
 const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 if(isIOS)document.documentElement.classList.add('aa-ios');
 const isMobile=()=>Math.min(window.innerWidth||9999,window.visualViewport?.width||9999)<=980;
