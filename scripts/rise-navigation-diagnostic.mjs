@@ -1,0 +1,43 @@
+import {spawn} from 'node:child_process';
+import {existsSync} from 'node:fs';
+import {mkdir,rm} from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+
+const PAGE_URL=(process.env.PAGE_URL||'').replace(/\/?$/,'/');
+const SOURCE_SHA=process.env.SOURCE_SHA||'';
+const CHROME=[process.env.CHROME_PATH,'/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium'].filter(Boolean).find(existsSync);
+if(!PAGE_URL||!SOURCE_SHA||!CHROME)throw new Error('PAGE_URL, SOURCE_SHA and CHROME_PATH are required');
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const profile=path.join(os.tmpdir(),`rise-nav-diag-${process.pid}-${Date.now()}`);await mkdir(profile,{recursive:true});
+const proc=spawn(CHROME,['--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--no-first-run','--hide-scrollbars',`--user-data-dir=${profile}`,'--remote-debugging-port=0','about:blank'],{stdio:['ignore','ignore','pipe']});
+let stderr='';
+const browserWs=await new Promise((resolve,reject)=>{const t=setTimeout(()=>reject(new Error('DevTools start timeout')),12000);proc.stderr.on('data',d=>{stderr+=String(d);const m=stderr.match(/DevTools listening on (ws:\/\/[^\s]+)/);if(m){clearTimeout(t);resolve(m[1])}});proc.once('exit',c=>reject(new Error(`Chrome exited ${c}`)))});
+const port=new URL(browserWs).port;
+const page=await(await fetch(`http://127.0.0.1:${port}/json/new?about:blank`,{method:'PUT'})).json();
+const ws=new WebSocket(page.webSocketDebuggerUrl);await new Promise((res,rej)=>{ws.onopen=res;ws.onerror=rej});
+let seq=0;const pending=new Map(),documents=[],frames=[];
+ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id&&pending.has(m.id)){const p=pending.get(m.id);pending.delete(m.id);m.error?p.reject(new Error(JSON.stringify(m.error))):p.resolve(m.result);return}if(m.method==='Network.requestWillBeSent'&&m.params?.type==='Document')documents.push({at:Date.now(),url:m.params.request?.url,loaderId:m.params.loaderId,documentURL:m.params.documentURL,initiator:m.params.initiator});if(m.method==='Page.frameNavigated'&&!m.params?.frame?.parentId)frames.push({at:Date.now(),url:m.params.frame.url,loaderId:m.params.frame.loaderId,type:m.params.type})};
+const cmd=(method,params={})=>new Promise((resolve,reject)=>{const id=++seq;pending.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}))});
+const evaluate=async expression=>{const r=await cmd('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw new Error(JSON.stringify(r.exceptionDetails));return r.result?.value};
+const wait=async(expr,label,timeout=20000)=>{const started=Date.now();while(Date.now()-started<timeout){try{if(await evaluate(expr))return}catch{}await sleep(100)}throw new Error(`${label} timeout ${JSON.stringify(await evaluate(`({href:location.href,ready:document.readyState,route:document.documentElement.dataset.riseRoute||'',text:(document.body?.innerText||'').slice(0,300)})`).catch(()=>null))}`)};
+try{
+ await cmd('Page.enable');await cmd('Runtime.enable');await cmd('Network.enable');
+ const url=`${PAGE_URL}?visual_verify=1&verify=${encodeURIComponent(SOURCE_SHA)}&nav_diag=1`;
+ await cmd('Page.navigate',{url});
+ await wait(`!document.documentElement.classList.contains('aa-app-booting')&&document.documentElement.dataset.riseRoute==='home'&&!!document.querySelector('#app main .riseHomeV4[data-ui-ver="4.2.0"]')&&window.__RISE_NAVIGATION_V1__?.version==='1.0.0'`,'home ready');
+ await evaluate(`window.__RISE_DIAG_MARKER__='${SOURCE_SHA}'; true`);
+ const baseDocs=documents.length,baseFrames=frames.length;
+ console.log('NAV_DIAG_BASE',JSON.stringify({baseDocs,baseFrames,documents,frames}));
+ await evaluate(`document.querySelector('.navin [data-route="subjects"]')?.click()`);
+ await wait(`document.documentElement.dataset.riseRoute==='subjects'&&!!document.querySelector('#app main .riseSubjectsV4[data-ui-ver="4.2.0"]')`,'subjects ready');
+ await sleep(2200);
+ const final=await evaluate(`({href:location.href,ready:document.readyState,route:document.documentElement.dataset.riseRoute||'',stateRoute:window.AA_APP?.get?.('state')?.get?.()?.route||'',marker:window.__RISE_DIAG_MARKER__||'',navOwner:window.__RISE_NAVIGATION_V1__?.version||'',rise:window.__RISE_UI_V4__?.version||'',main:!!document.querySelector('#app main'),subjects:!!document.querySelector('#app main .riseSubjectsV4[data-ui-ver="4.2.0"]'),legacyBrand:(document.querySelector('.brand h1')?.textContent||''),scripts:document.scripts.length,text:(document.body?.innerText||'').slice(0,500)})`);
+ const extraDocs=documents.slice(baseDocs),extraFrames=frames.slice(baseFrames);
+ console.log('NAV_DIAG_FINAL',JSON.stringify(final));
+ console.log('NAV_DIAG_EXTRA_DOCUMENTS',JSON.stringify(extraDocs));
+ console.log('NAV_DIAG_EXTRA_FRAMES',JSON.stringify(extraFrames));
+ if(extraDocs.length||extraFrames.length)throw new Error(`unexpected document navigation after route click: ${JSON.stringify({extraDocs,extraFrames})}`);
+ if(final.marker!==SOURCE_SHA||final.route!=='subjects'||final.stateRoute!=='subjects'||!final.subjects||final.legacyBrand!=='Rise')throw new Error(`route did not remain stable: ${JSON.stringify(final)}`);
+ console.log('NAV_DIAG_SUCCESS');
+}finally{try{ws.close()}catch{};try{proc.kill('SIGKILL')}catch{};await rm(profile,{recursive:true,force:true}).catch(()=>{})}
