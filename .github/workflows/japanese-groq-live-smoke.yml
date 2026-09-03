@@ -20,7 +20,7 @@ jobs:
     timeout-minutes: 10
     env:
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-      GROQ_MODEL: openai/gpt-oss-20b
+      JAPANESE_GROQ_MODEL: openai/gpt-oss-120b
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
