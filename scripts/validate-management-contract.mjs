@@ -37,7 +37,7 @@ assert.match(operations, /review\/index\.html/);
 assert.match(operations, /GROQ_API_KEY/);
 assert.match(operations, /gemini-3\.5-flash/);
 assert.doesNotMatch(operations, /site-publish\.yml/);
-assert.doesNotMatch(operations, /main:gh-pages\s+--force/);
+assert.match(operations, /main:gh-pages\s+--force[^\n]*禁止/);
 
 const management = read('docs/SYSTEM_MANAGEMENT.md');
 for (const token of [
