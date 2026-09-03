@@ -46,9 +46,13 @@ jobs:
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-ui-v4.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-ui-v4.js
           grep -q "version:'4.2.0'" /tmp/rise-ui-v4.js
           grep -q 'function homeHTML' /tmp/rise-ui-v4.js
+          grep -q 'function subjectsHTML' /tmp/rise-ui-v4.js
+          grep -q 'function analyticsHTML' /tmp/rise-ui-v4.js
+          grep -q 'function settingsHTML' /tmp/rise-ui-v4.js
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-stable-root-v4.js?visual_asset=${SOURCE_SHA}" -o /tmp/rise-stable-root-v4.js
           grep -q "version:'1.0.0'" /tmp/rise-stable-root-v4.js
           grep -q "host.id='riseStableMain'" /tmp/rise-stable-root-v4.js
+          grep -q 'visual_route' /tmp/rise-stable-root-v4.js
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}index.html?visual_asset=${SOURCE_SHA}" -o /tmp/index.html
           grep -q 'rise-stable-root-v4.js?v=1.0.0' /tmp/index.html
 
@@ -60,7 +64,7 @@ jobs:
           fc-cache -f
           fc-match 'sans-serif:lang=ja'
 
-      - name: Capture mobile and desktop production screenshots
+      - name: Capture all major production screens
         id: capture
         run: |
           set -euo pipefail
@@ -70,11 +74,12 @@ jobs:
           IPHONE_UA='Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Mobile/15E148 Safari/604.1'
 
           capture(){
-            name="$1"; width="$2"; height="$3"; ua="$4"
+            name="$1"; width="$2"; height="$3"; ua="$4"; route="$5"; relative="$6"
             out="visual-evidence/${name}.png"
             dom="visual-evidence/${name}.html"
             profile="/tmp/rise-visual-${name}-${SOURCE_SHA}"
-            target="${PAGE_URL}?visual_verify=1&verify=${SOURCE_SHA}&viewport=${name}"
+            target="${PAGE_URL}${relative}?visual_verify=1&verify=${SOURCE_SHA}&viewport=${name}"
+            if [ -n "$route" ]; then target="${target}&visual_route=${route}"; fi
             rm -rf "$profile"
             common=(
               --headless=new
@@ -85,7 +90,7 @@ jobs:
               --force-device-scale-factor=1
               --window-size="${width},${height}"
               --user-data-dir="$profile"
-              --virtual-time-budget=18000
+              --virtual-time-budget=12000
               --run-all-compositor-stages-before-draw
             )
             if [ -n "$ua" ]; then common+=(--user-agent="$ua"); fi
@@ -110,94 +115,108 @@ jobs:
           PY
           }
 
-          capture rise-mobile-390x844 390 844 "$IPHONE_UA"
-          capture rise-desktop-1440x1000 1440 1000 ''
+          for route in home subjects analytics settings; do
+            capture "rise-mobile-${route}-390x844" 390 844 "$IPHONE_UA" "$route" ''
+          done
+          for route in home subjects analytics settings; do
+            capture "rise-desktop-${route}-1440x1000" 1440 1000 '' "$route" ''
+          done
+          capture rise-mobile-review-390x844 390 844 "$IPHONE_UA" '' 'review/'
+          capture rise-desktop-review-1440x1000 1440 1000 '' '' 'review/'
 
           {
             echo "source_sha=${SOURCE_SHA}"
             echo "page_url=${PAGE_URL}"
             echo "captured_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-            echo "mobile=rise-mobile-390x844.png"
-            echo "desktop=rise-desktop-1440x1000.png"
-            sha256sum visual-evidence/rise-mobile-390x844.png
-            sha256sum visual-evidence/rise-desktop-1440x1000.png
+            echo "screens=home+subjects+analytics+settings+review"
+            echo "viewports=390x844+iPhone-UA,1440x1000"
+            sha256sum visual-evidence/*.png
           } > visual-evidence/manifest.txt
 
-      - name: Validate stable hydrated production UI
+      - name: Validate all stable production routes
         run: |
           set -euo pipefail
-          python3 - visual-evidence/rise-mobile-390x844.html visual-evidence/rise-desktop-1440x1000.html <<'PY'
+          python3 - visual-evidence <<'PY'
           from html.parser import HTMLParser
+          from pathlib import Path
           import sys
 
-          class RiseParser(HTMLParser):
+          root_dir=Path(sys.argv[1])
+          classes={
+              'home':'riseHomeV4',
+              'subjects':'riseSubjectsV4',
+              'analytics':'riseAnalyticsV4',
+              'settings':'riseSettingsV4',
+          }
+          tokens={
+              'home':['Rise','今日の学習','教科別の達成度','ホーム','学習','復習','記録'],
+              'subjects':['Rise','学習を始める','5教科ミックス','ホーム','学習','復習','記録'],
+              'analytics':['Rise','学習記録','直近7日','ホーム','学習','復習','記録'],
+              'settings':['Rise','設定','バックアップ','学習データを初期化'],
+          }
+
+          class Parser(HTMLParser):
               def __init__(self):
                   super().__init__(convert_charrefs=True)
-                  self.stack=[]
-                  self.skip=0
-                  self.html_attrs={}
-                  self.stable_depth=None
-                  self.stable_hidden=False
-                  self.hydrated_in_stable=False
-                  self.login_setup=False
-                  self.text=[]
+                  self.stack=[]; self.skip=0; self.html_attrs={}; self.stable_depth=None
+                  self.stable_hidden=False; self.stable_route=None; self.sections=[]; self.login_setup=False; self.text=[]
               def handle_starttag(self,tag,attrs):
-                  a=dict(attrs)
-                  self.stack.append((tag,a))
-                  if tag in ('script','style'):
-                      self.skip += 1
-                  if tag=='html':
-                      self.html_attrs=a
-                  if a.get('id')=='aaLoginSetup':
-                      self.login_setup=True
+                  a=dict(attrs); self.stack.append((tag,a))
+                  if tag in ('script','style'): self.skip += 1
+                  if tag=='html': self.html_attrs=a
+                  if a.get('id')=='aaLoginSetup': self.login_setup=True
                   if tag=='main' and a.get('id')=='riseStableMain':
-                      self.stable_depth=len(self.stack)
-                      self.stable_hidden='hidden' in a
+                      self.stable_depth=len(self.stack); self.stable_hidden='hidden' in a; self.stable_route=a.get('data-route')
                   if tag=='section' and self.stable_depth is not None and len(self.stack)>self.stable_depth:
-                      classes=set((a.get('class') or '').split())
-                      if 'riseHomeV4' in classes and a.get('data-ui-ver')=='4.2.0':
-                          self.hydrated_in_stable=True
+                      self.sections.append((set((a.get('class') or '').split()),a.get('data-ui-ver')))
               def handle_endtag(self,tag):
-                  if tag in ('script','style') and self.skip:
-                      self.skip -= 1
-                  if self.stable_depth is not None and len(self.stack)==self.stable_depth and tag=='main':
-                      self.stable_depth=None
-                  if self.stack:
-                      self.stack.pop()
+                  if tag in ('script','style') and self.skip: self.skip-=1
+                  if self.stable_depth is not None and len(self.stack)==self.stable_depth and tag=='main': self.stable_depth=None
+                  if self.stack: self.stack.pop()
               def handle_data(self,data):
                   if not self.skip:
                       s=' '.join(data.split())
-                      if s:
-                          self.text.append(s)
+                      if s: self.text.append(s)
 
-          required_text=['Rise','今日の学習','教科別の達成度','ホーム','学習','復習','記録']
-          for path in sys.argv[1:]:
-              p=RiseParser()
-              with open(path,encoding='utf-8') as f:
-                  p.feed(f.read())
-              text=' '.join(p.text)
-              errors=[]
-              if p.html_attrs.get('data-rise-structure')!='optimized-4': errors.append('optimized-4 missing')
-              if p.html_attrs.get('data-rise-stable-ready')!='1': errors.append('stable-ready missing')
-              if p.html_attrs.get('data-rise-runtime-error'): errors.append('runtime-error present')
-              if not p.hydrated_in_stable: errors.append('hydrated Rise home is not inside #riseStableMain')
-              if p.stable_hidden: errors.append('#riseStableMain is hidden')
-              if p.login_setup: errors.append('login setup overlay present')
-              for token in required_text:
+          def parse(path):
+              p=Parser(); p.feed(path.read_text(encoding='utf-8')); return p,' '.join(p.text)
+
+          for viewport in ('mobile','desktop'):
+              suffix='390x844' if viewport=='mobile' else '1440x1000'
+              for route,cls in classes.items():
+                  path=root_dir/f'rise-{viewport}-{route}-{suffix}.html'
+                  p,text=parse(path); errors=[]
+                  if p.html_attrs.get('data-rise-structure')!='optimized-4': errors.append('optimized-4 missing')
+                  if p.html_attrs.get('data-rise-route')!=route: errors.append(f'route is {p.html_attrs.get("data-rise-route")!r}')
+                  if p.html_attrs.get('data-rise-stable-ready')!='1': errors.append('stable-ready missing')
+                  if p.html_attrs.get('data-rise-runtime-error'): errors.append('runtime-error present')
+                  if p.stable_hidden: errors.append('#riseStableMain hidden')
+                  if p.stable_route!=route: errors.append(f'stable route is {p.stable_route!r}')
+                  if not any(cls in c and v=='4.2.0' for c,v in p.sections): errors.append(f'{cls} 4.2.0 missing in stable root')
+                  if p.login_setup: errors.append('login setup overlay present')
+                  for token in tokens[route]:
+                      if token not in text: errors.append(f'text missing: {token}')
+                  if errors: raise SystemExit(f'{path}: '+ '; '.join(errors))
+                  print(f'STABLE_ROUTE_OK {path}')
+
+          for viewport in ('mobile','desktop'):
+              suffix='390x844' if viewport=='mobile' else '1440x1000'
+              path=root_dir/f'rise-{viewport}-review-{suffix}.html'
+              p,text=parse(path); errors=[]
+              for token in ['Rise / 復習','忘れる前に、取り戻す。','Review v2','要復習','覚えた']:
                   if token not in text: errors.append(f'text missing: {token}')
-              if errors:
-                  raise SystemExit(f'{path}: ' + '; '.join(errors))
-              print(f'STABLE_DOM_OK {path}')
+              if errors: raise SystemExit(f'{path}: '+ '; '.join(errors))
+              print(f'REVIEW_ROUTE_OK {path}')
           PY
           echo 'result=success' >> visual-evidence/manifest.txt
-          echo 'dom_gate=Rise+stable-root+hydrated-4.2-dashboard+today+subjects+four-nav+no-runtime-error+no-login-setup' >> visual-evidence/manifest.txt
+          echo 'dom_gate=Rise+stable-root+home+subjects+analytics+settings+review+mobile+desktop+no-runtime-error' >> visual-evidence/manifest.txt
           cat visual-evidence/manifest.txt
 
       - name: Upload production screenshot evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: rise-production-screenshots-${{ steps.source.outputs.source_sha }}
+          name: rise-production-all-screens-${{ steps.source.outputs.source_sha }}
           path: visual-evidence/
           if-no-files-found: warn
           retention-days: 30
@@ -209,12 +228,13 @@ jobs:
             echo '## Rise production visual evidence'
             echo ''
             echo "- Source: \`${SOURCE_SHA}\`"
-            echo "- Mobile: \`390x844\` / iPhone User-Agent"
-            echo "- Desktop: \`1440x1000\`"
+            echo '- Screens: home / study / record / settings / review'
+            echo '- Mobile: `390x844` / iPhone User-Agent'
+            echo '- Desktop: `1440x1000`'
             echo '- Japanese Noto CJK fonts installed before rendering.'
-            echo '- DOM parser requires the hydrated Rise 4.2 dashboard to exist inside the independent stable root.'
-            echo '- PNG signature, exact dimensions, and minimum file size validated.'
-            echo '- Screenshots and rendered DOM are stored in the rise-production-screenshots artifact.'
+            echo '- DOM parser requires each custom screen inside the independent stable root and rejects runtime errors.'
+            echo '- Review v2 is checked separately on both viewports.'
+            echo '- PNG signature, exact dimensions, and minimum file size validated for every screenshot.'
             echo ''
             echo '> UI changes are not considered visually complete until these screenshots are reviewed.'
           } >> "$GITHUB_STEP_SUMMARY"
