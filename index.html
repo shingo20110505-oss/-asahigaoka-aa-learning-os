@@ -18,6 +18,9 @@
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png?v=4.2.0">
 <link rel="stylesheet" href="./learning-engine-v22.css">
 <title>Rise｜旭丘合格のための学習OS</title>
+<script id="rise-runtime-diagnostics">
+(()=>{'use strict';const errors=[];window.__RISE_RUNTIME_ERRORS__=errors;const record=(type,value)=>{try{const text=String(value?.stack||value?.message||value||type).slice(0,700);errors.push(`${type}:${text}`);if(errors.length>8)errors.shift();document.documentElement.dataset.riseRuntimeError=text.replace(/[\r\n]+/g,' ').slice(0,280)}catch(_){}};addEventListener('error',e=>record('error',e.error||e.message));addEventListener('unhandledrejection',e=>record('rejection',e.reason))})();
+</script>
 <script id="aa-visual-verification-setup-bypass">
 (()=>{'use strict';const p=new URLSearchParams(location.search);if(p.get('visual_verify')!=='1'||!p.has('verify'))return;try{localStorage.setItem('aa-login-visual-setup-v1','1')}catch(_){}})();
 </script>
@@ -44,7 +47,14 @@ html.aa-app-booting.aa-app-boot-slow body:before{content:"最新版のRiseを読
   const main=app.querySelector('main');if(route==='home'&&main&&!main.querySelector('.riseHomeV4')){main.insertAdjacentHTML('afterbegin','<section class="riseHomeV4" data-hydrated="0"><header class="rv4Welcome"><span>RISE / LEARNING DASHBOARD</span><h2>今日の一歩を、合格力に。</h2><p>学習データを準備しています</p></header><article class="rv4Card"><div class="rv4CardHead"><h3>今日の学習</h3><span>準備中</span></div><p class="sub">最優先の学習を選んでいます。</p></article></section>')}
  }
  const mo=new MutationObserver(()=>requestAnimationFrame(apply));mo.observe(document.documentElement,{childList:true,subtree:true});document.addEventListener('DOMContentLoaded',apply);addEventListener('pageshow',apply);requestAnimationFrame(apply);
- setTimeout(()=>{if(!window.__RISE_UI_V4__){const s=document.createElement('script');s.src='./app/ui/rise-ui-v4.js?v=4.2.0-retry-'+Date.now();s.async=false;document.body.appendChild(s)}},900);
+ let retries=0;
+ function recoverHydration(){
+  const panel=document.querySelector('.riseHomeV4[data-ui-ver="4.2.0"] .rv4Dashboard');
+  if(panel){root.dataset.riseHydrated='1';delete root.dataset.riseRuntimeError;return}
+  const errors=window.__RISE_RUNTIME_ERRORS__||[];if(errors.length)root.dataset.riseRuntimeError=String(errors[errors.length-1]).replace(/[\r\n]+/g,' ').slice(0,280);else root.dataset.riseRuntimeError='Rise 4.2 dashboard not hydrated';
+  if(retries>=3)return;retries++;window.__RISE_UI_V4__=null;const s=document.createElement('script');s.src=`./app/ui/rise-ui-v4.js?v=4.2.0-retry-${retries}-${Date.now()}`;s.async=false;s.dataset.riseRecovery=String(retries);document.body.appendChild(s);setTimeout(recoverHydration,1200);
+ }
+ setTimeout(recoverHydration,1200);
 })();
 </script>
 </head>
