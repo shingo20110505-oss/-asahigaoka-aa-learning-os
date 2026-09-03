@@ -41,6 +41,29 @@ export const JAPANESE_GROQ_SCHEMA = Object.freeze({
   }
 });
 
+export const JAPANESE_GROQ_SLOT_SCHEMA = Object.freeze({
+  type: 'object',
+  additionalProperties: false,
+  required: ['questionIndex','slotIndex','ambiguous','confidence','choiceIndex','evidence'],
+  properties: {
+    questionIndex: { type: 'integer', minimum: 0, maximum: 30 },
+    slotIndex: { type: 'integer', minimum: 0, maximum: 8 },
+    ambiguous: { type: 'boolean' },
+    confidence: { type: 'number', minimum: 0, maximum: 1 },
+    choiceIndex: { type: 'integer', minimum: 0, maximum: 5 },
+    evidence: {
+      type: 'object',
+      additionalProperties: false,
+      required: ['passageIndex','paragraph','quote'],
+      properties: {
+        passageIndex: { type: 'integer', minimum: 0, maximum: 8 },
+        paragraph: { type: 'integer', minimum: 1, maximum: 40 },
+        quote: { type: 'string' }
+      }
+    }
+  }
+});
+
 export class JapaneseVerificationError extends Error {
   constructor(code, message, status = 422, diagnostic = '') {
     super(message);
@@ -185,6 +208,74 @@ export function buildJapaneseFocusedRetryPrompt(chunk) {
   ].join('\n');
 }
 
+function visiblePassagesForMajor(pack, major) {
+  return pack.passages.filter(passage => passage.role !== 'answer_only' && passage.major === major);
+}
+
+export function buildJapaneseSlotRetryChunk(pack, major, questionId, slotIndex) {
+  ensureValidPack(pack);
+  const selectedMajor = assertMajor(major);
+  const source = pack.questions.map((question, questionIndex) => ({ question, questionIndex }))
+    .find(({ question }) => question.major === selectedMajor && question.id === questionId);
+  if (!source || source.question.skill !== 'connective_relation' || source.question.format !== 'multi_slot_choice' || !Array.isArray(source.question.marks)) {
+    throw new JapaneseVerificationError('japanese_slot_invalid', '国語の欄別再検証対象が正しくありません。', 400);
+  }
+  const index = Number(slotIndex);
+  const mark = source.question.marks[index];
+  if (!Number.isInteger(index) || !mark) throw new JapaneseVerificationError('japanese_slot_index_invalid', '国語の欄番号が正しくありません。', 400);
+
+  const token = `【${mark.label}】`;
+  const visible = visiblePassagesForMajor(pack, selectedMajor);
+  const contexts = [];
+  visible.forEach((passage, passageIndex) => {
+    passage.paragraphs.forEach((paragraph, paragraphIndex) => {
+      if (!paragraph.includes(token)) return;
+      const start = Math.max(0, paragraphIndex - 1);
+      const end = Math.min(passage.paragraphs.length - 1, paragraphIndex + 1);
+      contexts.push({
+        passageIndex,
+        title: passage.title,
+        paragraphs: Array.from({ length: end - start + 1 }, (_, offset) => {
+          const originalIndex = start + offset;
+          return { paragraph: originalIndex + 1, text: passage.paragraphs[originalIndex] };
+        })
+      });
+    });
+  });
+  if (!contexts.length) throw new JapaneseVerificationError('japanese_slot_context_missing', '国語の欄別再検証文脈を構成できませんでした。', 400);
+
+  return Object.freeze({
+    schemaVersion: 1,
+    major: selectedMajor,
+    slotFocused: true,
+    question: {
+      questionIndex: source.questionIndex,
+      stem: source.question.stem,
+      skill: source.question.skill,
+      format: source.question.format,
+      choices: source.question.choices.map(choice => choice.text),
+      slotIndex: index,
+      markLabel: mark.label
+    },
+    contexts
+  });
+}
+
+export function buildJapaneseSlotRetryPrompt(chunk) {
+  return [
+    'This is an independent blind audit of exactly one blank in a Japanese entrance-exam connective question.',
+    'The author answer key, explanations, other blank answers, scoring data, and distractor labels are hidden.',
+    `Solve only the target blank 【${chunk.question.markLabel}】. Do not solve or infer answers for the other blanks.`,
+    'Read the text immediately before and after the target marker. If the marker is at a paragraph boundary, use the adjacent paragraph supplied in contexts.',
+    'First determine the local Japanese discourse relation for this one blank: summary/restatement, contrast/reframing, addition, example, or alternative. Then choose the connective whose ordinary function best matches that relation.',
+    'Return exactly one JSON object and no prose using this shape: {"questionIndex":integer,"slotIndex":integer,"ambiguous":boolean,"confidence":number,"choiceIndex":integer,"evidence":{"passageIndex":integer,"paragraph":integer,"quote":string}}.',
+    'choiceIndex is the zero-based position in choices. evidence.quote must be an exact substring copied from one supplied context paragraph, using its passageIndex and paragraph metadata.',
+    'Set ambiguous=true if more than one choice remains genuinely defensible.',
+    '',
+    JSON.stringify(chunk)
+  ].join('\n');
+}
+
 function diagnosticAnswers(result) {
   if (!Array.isArray(result?.answers)) return 'no_answers';
   return result.answers.map(answer => ({
@@ -203,6 +294,25 @@ function hasExactEvidenceInPassage(evidence, visiblePassages) {
   return passage.paragraphs.some(paragraph => typeof paragraph === 'string' && paragraph.includes(evidence.quote));
 }
 
+export function validateJapaneseSlotResult(pack, major, chunk, result, threshold = JAPANESE_GROQ_CONFIDENCE_THRESHOLD) {
+  ensureValidPack(pack);
+  const errors = [];
+  if (!exactKeys(result, ['questionIndex','slotIndex','ambiguous','confidence','choiceIndex','evidence'])) return { ok: false, errors: ['slot_shape'] };
+  if (result.questionIndex !== chunk.question.questionIndex) errors.push('slot_question_index');
+  if (result.slotIndex !== chunk.question.slotIndex) errors.push('slot_index');
+  if (result.ambiguous !== false) errors.push('slot_ambiguous');
+  if (!Number.isFinite(result.confidence) || result.confidence < threshold || result.confidence > 1) errors.push('slot_confidence');
+  if (!Number.isInteger(result.choiceIndex) || !chunk.question.choices[result.choiceIndex]) errors.push('slot_choice_index');
+  const evidence = result.evidence;
+  if (!exactKeys(evidence, ['passageIndex','paragraph','quote'])) errors.push('slot_evidence_shape');
+  else {
+    if (!Number.isInteger(evidence.passageIndex) || !Number.isInteger(evidence.paragraph)) errors.push('slot_evidence_index');
+    const visible = visiblePassagesForMajor(pack, assertMajor(major));
+    if (!hasExactEvidenceInPassage(evidence, visible)) errors.push('slot_evidence_quote');
+  }
+  return { ok: errors.length === 0, errors };
+}
+
 export function verifyJapaneseChunkAgreement(pack, major, result, threshold = JAPANESE_GROQ_CONFIDENCE_THRESHOLD) {
   ensureValidPack(pack);
   const selectedMajor = assertMajor(major);
@@ -210,7 +320,7 @@ export function verifyJapaneseChunkAgreement(pack, major, result, threshold = JA
   if (!shape.ok) return { ok: false, errors: shape.errors.map(error => `output_shape:${error}`) };
   const errors = [];
   const expected = pack.questions.map((question, questionIndex) => ({ question, questionIndex })).filter(({ question }) => question.major === selectedMajor);
-  const visiblePassages = pack.passages.filter(passage => passage.role !== 'answer_only' && passage.major === selectedMajor);
+  const visiblePassages = visiblePassagesForMajor(pack, selectedMajor);
   if (result.pass !== true || result.answers.length !== expected.length) return { ok: false, errors: ['verification_not_passed'] };
   const seen = new Set();
   for (const { question, questionIndex } of expected) {
@@ -271,6 +381,13 @@ function mergeFocusedAnswer(baseOutput, focusedOutput, questionIndex) {
   };
 }
 
+function mergeReplacementAnswer(baseOutput, replacement) {
+  return {
+    ...baseOutput,
+    answers: baseOutput.answers.map(answer => answer.questionIndex === replacement.questionIndex ? replacement : answer)
+  };
+}
+
 async function callJapaneseVerifier(env, chunk, focused = false) {
   return callGroqJson(env, {
     input: focused ? buildJapaneseFocusedRetryPrompt(chunk) : buildJapaneseVerifierPrompt(chunk),
@@ -286,6 +403,61 @@ async function callJapaneseVerifier(env, chunk, focused = false) {
   });
 }
 
+async function callJapaneseSlotVerifier(env, chunk) {
+  return callGroqJson(env, {
+    input: buildJapaneseSlotRetryPrompt(chunk),
+    schema: JAPANESE_GROQ_SLOT_SCHEMA,
+    schemaName: `rise_japanese_slot_${chunk.major}_${chunk.question.questionIndex}_${chunk.question.slotIndex}`,
+    responseMode: 'text_json',
+    maxOutputTokens: 700,
+    temperature: 0,
+    reasoningEffort: 'low',
+    systemInstruction: 'Return only one valid JSON object. Independently solve only the named Japanese connective blank. Never infer or request an author answer key or other blank answers.'
+  });
+}
+
+async function retryConnectiveQuestionBySlots(env, pack, major, questionId) {
+  const selectedMajor = assertMajor(major);
+  const source = pack.questions.map((question, questionIndex) => ({ question, questionIndex }))
+    .find(({ question }) => question.major === selectedMajor && question.id === questionId);
+  if (!source || source.question.skill !== 'connective_relation' || source.question.format !== 'multi_slot_choice' || !Array.isArray(source.question.marks)) {
+    throw new JapaneseVerificationError('japanese_slot_retry_invalid', '国語の欄別再検証対象が正しくありません。', 400);
+  }
+
+  const choices = [];
+  const evidence = [];
+  const confidence = [];
+  for (let slotIndex = 0; slotIndex < source.question.marks.length; slotIndex++) {
+    const slotChunk = buildJapaneseSlotRetryChunk(pack, selectedMajor, questionId, slotIndex);
+    let verified;
+    try {
+      verified = await callJapaneseSlotVerifier(env, slotChunk);
+    } catch (error) {
+      if (error instanceof GroqProviderError) throw error;
+      throw new JapaneseVerificationError('japanese_slot_retry_unavailable', '国語の接続語欄を再検証できませんでした。', 503);
+    }
+    const validation = validateJapaneseSlotResult(pack, selectedMajor, slotChunk, verified.output);
+    if (!validation.ok) {
+      throw new JapaneseVerificationError('japanese_slot_retry_rejected', '国語の接続語欄の独立検証を確認できませんでした。', 422, validation.errors.join('|'));
+    }
+    choices.push(verified.output.choiceIndex);
+    confidence.push(verified.output.confidence);
+    evidence.push(verified.output.evidence);
+  }
+
+  return {
+    answer: {
+      questionIndex: source.questionIndex,
+      ambiguous: false,
+      confidence: Math.min(...confidence),
+      answerChoiceIndexes: [],
+      markChoiceIndexes: choices,
+      evidence
+    },
+    slotRetryCount: source.question.marks.length
+  };
+}
+
 export async function verifyJapaneseMajorWithGroq(env, pack, major) {
   const chunk = buildJapaneseBlindChunk(pack, major);
   let verified;
@@ -299,7 +471,16 @@ export async function verifyJapaneseMajorWithGroq(env, pack, major) {
   let output = verified.output;
   let agreement = verifyJapaneseChunkAgreement(pack, chunk.major, output);
   const targets = agreement.ok ? [] : structuredRetryTargets(pack, chunk.major, agreement.errors);
+  let slotRetryCount = 0;
   for (const questionId of targets) {
+    const sourceQuestion = pack.questions.find(question => question.major === chunk.major && question.id === questionId);
+    if (sourceQuestion?.skill === 'connective_relation' && sourceQuestion?.format === 'multi_slot_choice') {
+      const slotRetry = await retryConnectiveQuestionBySlots(env, pack, chunk.major, questionId);
+      output = mergeReplacementAnswer(output, slotRetry.answer);
+      slotRetryCount += slotRetry.slotRetryCount;
+      continue;
+    }
+
     const focusedChunk = buildJapaneseFocusedRetryChunk(pack, chunk.major, questionId);
     let retry;
     try {
@@ -322,6 +503,7 @@ export async function verifyJapaneseMajorWithGroq(env, pack, major) {
     provider: verified.provider,
     model: verified.model,
     focusedRetryCount: targets.length,
+    slotRetryCount,
     output
   };
 }
@@ -340,6 +522,7 @@ export async function verifyJapanesePackWithGroq(env, pack, { cooldownMs = 61000
     model: checks[0]?.model || String(env.GROQ_MODEL || ''),
     questionCount: checks.reduce((sum, check) => sum + check.questionCount, 0),
     focusedRetryCount: checks.reduce((sum, check) => sum + Number(check.focusedRetryCount || 0), 0),
+    slotRetryCount: checks.reduce((sum, check) => sum + Number(check.slotRetryCount || 0), 0),
     majors: checks.map(check => check.major)
   };
 }
