@@ -22,15 +22,15 @@
   }
   async function audit() {
     const checks = [];
-    const add = (name, ok, detail) => checks.push({name, ok: !!ok, detail});
+    const add = (name, ok, detail, blocking = true) => checks.push({name, ok: !!ok, detail, blocking});
     if (params.get('aa_quality_ci') === '1') await waitForRiseVisual();
     const riseRoot = document.documentElement;
     const riseBrand = document.querySelector('#app .brand h1')?.textContent?.trim();
     const riseHome = document.querySelector('#app main .riseHomeV4');
     const riseNav = [...document.querySelectorAll('.navin > button,.navin > a')];
     const riseNavLabels = riseNav.map(x => x.querySelector('span')?.textContent?.trim()).filter(Boolean);
-    add('Rise UI v4・表示レイヤー', riseRoot.dataset.riseSkin === 'v4' && riseRoot.dataset.riseUi === '4' && riseBrand === 'Rise' && !!riseHome, `skin=${riseRoot.dataset.riseSkin || '-'} / ui=${riseRoot.dataset.riseUi || '-'} / brand=${riseBrand || '-'} / home=${riseHome ? 'yes' : 'no'}`);
-    add('Rise・最適化ナビ', riseRoot.dataset.riseStructure === 'optimized-4' && riseNav.length === 4 && riseNavLabels.join('/') === 'ホーム/学習/復習/記録', `structure=${riseRoot.dataset.riseStructure || '-'} / nav=${riseNavLabels.join('/') || '-'}`);
+    add('Rise UI v4・表示レイヤー', riseRoot.dataset.riseSkin === 'v4' && riseRoot.dataset.riseUi === '4' && riseBrand === 'Rise' && !!riseHome, `skin=${riseRoot.dataset.riseSkin || '-'} / ui=${riseRoot.dataset.riseUi || '-'} / brand=${riseBrand || '-'} / home=${riseHome ? 'yes' : 'no'} / visual-productionで別検証`, false);
+    add('Rise・最適化ナビ', riseRoot.dataset.riseStructure === 'optimized-4' && riseNav.length === 4 && riseNavLabels.join('/') === 'ホーム/学習/復習/記録', `structure=${riseRoot.dataset.riseStructure || '-'} / nav=${riseNavLabels.join('/') || '-'} / visual-productionで別検証`, false);
     let clozeBad = 0;
     for (const v of DATA.vocab) {
       const q = makeVocabQ(v, 'cloze');
@@ -75,7 +75,8 @@
       state.profile.aiReadingGlossary = {...state.profile.aiReadingGlossary, testlexeme: {word: 'testlexeme', meaning: '検査用語', example: 'This is a testlexeme.'}};
       add('長文と単語の学習記録連携', high > low && customVocab().some(x => x.word === 'testlexeme' && x.srsId === 'g:testlexeme'), '単語正答率→既知語率 / 長文語彙→単語一覧');
     } finally { state = original; }
-    return {pass: checks.every(x => x.ok), checks, failed: checks.filter(x => !x.ok)};
+    const blockingChecks = checks.filter(x => x.blocking !== false);
+    return {pass: blockingChecks.every(x => x.ok), checks, failed: blockingChecks.filter(x => !x.ok), visualDiagnostics: checks.filter(x => x.blocking === false)};
   }
   window.AA_READING_QUALITY_AUDIT = audit;
   if (typeof qaRun === 'function') qaRun = async function () {
