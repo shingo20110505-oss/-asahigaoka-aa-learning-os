@@ -1,8 +1,14 @@
 (()=>{'use strict';
+if(window.__AA_SETTINGS_IMPROVEMENTS_CORE_V1__)return;
+window.__AA_SETTINGS_IMPROVEMENTS_CORE_V1__={version:'1.1.0',legacyRender:'disabled'};
 const SUBJECT_IDS=['english','japanese','math','science','social'];
 const SUBJECT_LABELS={english:'英語',japanese:'国語',math:'数学',science:'理科',social:'社会'};
 const DEFAULT_PCT={english:20,japanese:20,math:20,science:20,social:20};
 
+function notifySettings(source='settings-core'){
+  try{document.dispatchEvent(new CustomEvent('rise:settings-changed',{detail:{source}}))}catch(_){}
+  try{document.dispatchEvent(new CustomEvent('aa:v23ready',{detail:{source,route:'settings'}}))}catch(_){}
+}
 function current(){
   try{
     const src=state?.ui?.subjectProbability;
@@ -17,7 +23,7 @@ function applyWeights(pct){
   try{for(const id of SUBJECT_IDS)SUBJECT_WEIGHTS[id]=Math.max(.01,(Number(pct[id])||0)/20)}catch(_){}
 }
 function persist(pct){
-  try{state.ui.subjectProbability={...pct};applyWeights(pct);save()}catch(_){}
+  try{state.ui.subjectProbability={...pct};applyWeights(pct);save();notifySettings('settings-probability')}catch(_){}
 }
 function probabilityCard(){
   const p=current();
@@ -77,7 +83,7 @@ function boot(){
   try{if(!state.ui.subjectProbability)state.ui.subjectProbability={...DEFAULT_PCT};applyWeights(current());save()}catch(_){}
   if(!patchSettings()){setTimeout(boot,120);return}
   wire();
-  try{if(state.route==='settings')render()}catch(_){}
+  try{if(state.route==='settings')notifySettings('settings-core-ready')}catch(_){}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
