@@ -141,10 +141,11 @@ assert.match(aiDeploy, /EXPECTED_WORKER_VERSION='1\.2\.0'/);
 assert.match(aiDeploy, /cross-provider-blind-answer-check/);
 
 const groqContract = read('tests/ai-reading-groq-contract.mjs');
-assert.match(groqContract, /doesNotMatch\(blindInput, \/\\"answerIndex/);
-assert.match(groqContract, /doesNotMatch\(blindInput, \/explanationJa/);
-assert.match(groqContract, /doesNotMatch\(blindInput, \/reasonJa/);
-assert.match(groqContract, /verificationProvider, 'groq'/);
+assert.match(groqContract, /Groq must not receive the author answer key/);
+assert.match(groqContract, /Groq must not receive author explanations/);
+assert.match(groqContract, /Groq must not receive author distractor reasons/);
+assert.match(groqContract, /payload\.quality\.verificationProvider/);
+assert.match(groqContract, /cross-provider-blind-answer-check/);
 
 const pages = read('.github/workflows/deploy-pages.yml');
 assert.match(pages, /paths-ignore:[\s\S]*PUBLIC_VERIFY_STATUS\.txt[\s\S]*DEPLOY_STATUS\.txt/);
