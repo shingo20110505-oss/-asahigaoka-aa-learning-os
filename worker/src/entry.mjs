@@ -21,8 +21,14 @@ import {
   SubjectVerificationError,
   verifySubjectQuestion
 } from './subject-verifier.mjs';
+import {
+  EXAM_PLATFORM_VERSION,
+  EXAM_SUBJECTS,
+  ExamPlatformError,
+  generateVerifiedExamBatch
+} from './exam-platform.mjs';
 
-const WORKER_VERSION = '1.3.0';
+const WORKER_VERSION = '1.4.0';
 const DEFAULT_ORIGIN = 'https://shingo20110505-oss.github.io';
 const MAX_BODY_BYTES = 24000;
 
@@ -103,7 +109,7 @@ async function readJsonBody(request) {
 
 function mapGeminiError(error) {
   if (!(error instanceof GeminiProviderError)) return null;
-  if (error.status === 429) return new ApiError('quota_exceeded', 'Gemini無料枠の上限に達しました。', 429);
+  if (error.status === 429) return new ApiError('quota_exceeded', 'Gemini無料枠の上限に達しました。新規生成を停止し、検証済み問題を利用してください。', 429);
   if ([401, 403].includes(error.status)) return new ApiError('gemini_auth_failed', 'Gemini APIキーまたはプロジェクト権限を確認してください。', 502);
   if (error.code === 'provider_not_configured') return new ApiError('server_not_configured', 'Gemini APIキーがWorkerに設定されていません。', 503);
   return new ApiError(error.code || 'gemini_failed', 'Geminiで生成できませんでした。', error.status >= 500 ? 503 : 502);
@@ -112,7 +118,7 @@ function mapGeminiError(error) {
 function mapGroqError(error) {
   if (!(error instanceof GroqProviderError)) return null;
   const diagnostic = `groq:${Number(error.status) || 0}:${cleanString(error.code || 'unknown', 80)}`;
-  if (error.status === 429) return new ApiError('groq_quota_exceeded', 'Groq無料枠の上限に達したため独立検証できません。', 429, diagnostic);
+  if (error.status === 429) return new ApiError('groq_quota_exceeded', 'Groq無料枠の上限に達したため独立検証できません。新規問題は採用しません。', 429, diagnostic);
   if ([401, 403].includes(error.status)) return new ApiError('groq_auth_failed', 'Groq APIキーまたは権限を確認してください。', 502, diagnostic);
   if (error.code === 'provider_not_configured') return new ApiError('verification_unavailable', 'Groq独立検証が設定されていません。', 503, diagnostic);
   if (error.code === 'provider_refused') return new ApiError('verification_rejected', '独立検証モデルが検証を拒否しました。', 422, diagnostic);
@@ -122,6 +128,11 @@ function mapGroqError(error) {
 
 function mapSubjectError(error) {
   if (!(error instanceof SubjectVerificationError)) return null;
+  return new ApiError(error.code, error.message, error.status, error.diagnostic);
+}
+
+function mapExamError(error) {
+  if (!(error instanceof ExamPlatformError)) return null;
   return new ApiError(error.code, error.message, error.status, error.diagnostic);
 }
 
@@ -205,10 +216,17 @@ export async function handleRequest(request, env) {
   }
 
   if (request.method === 'GET' && url.pathname === '/health') {
-    return jsonResponse(request, env, { ok: true, service: 'aa-ai-reading', version: WORKER_VERSION });
+    return jsonResponse(request, env, {
+      ok: true,
+      service: 'rise-ai-platform',
+      legacyService: 'aa-ai-reading',
+      version: WORKER_VERSION,
+      examPlatformVersion: EXAM_PLATFORM_VERSION
+    });
   }
 
-  if (request.method !== 'POST' || !['/v1/status', '/v1/reading', '/v1/verify'].includes(url.pathname)) {
+  const routes = ['/v1/status', '/v1/reading', '/v1/verify', '/v1/exam'];
+  if (request.method !== 'POST' || !routes.includes(url.pathname)) {
     return jsonResponse(request, env, { error: { code: 'not_found', message: 'Not found.' } }, 404);
   }
 
@@ -218,20 +236,26 @@ export async function handleRequest(request, env) {
   if (url.pathname === '/v1/status') {
     const providers = getProviderStatus(env);
     const ready = Boolean(env.AI_ACCESS_TOKEN && providers.gemini.configured && providers.groq.configured);
+    const subjectVerification = Object.fromEntries(EXAM_SUBJECTS.map(subject => [subject, 'production-audit']));
+    const examGeneration = Object.fromEntries(EXAM_SUBJECTS.map(subject => [subject, subject === 'english' ? 'production-small-item' : 'production']));
     return jsonResponse(request, env, {
       ready,
+      service: 'rise-ai-platform',
       model: cleanString(env.GEMINI_MODEL || DEFAULT_GEMINI_MODEL, 80),
       verifierModel: cleanString(env.GROQ_MODEL || DEFAULT_GROQ_MODEL, 100),
       verificationProvider: 'groq',
-      subjectVerification: {
-        english: 'production',
-        math: 'production-audit',
-        japanese: 'not-connected',
-        science: 'not-connected',
-        social: 'not-connected'
+      readingGeneration: { english: 'production' },
+      examGeneration,
+      subjectVerification,
+      safeguards: {
+        paidFallback: false,
+        quota429StopsGeneration: true,
+        authorAnswerHiddenFromVerifier: true,
+        maxExamBatch: 10
       },
       providers,
-      version: WORKER_VERSION
+      version: WORKER_VERSION,
+      examPlatformVersion: EXAM_PLATFORM_VERSION
     }, ready ? 200 : 503);
   }
 
@@ -241,11 +265,15 @@ export async function handleRequest(request, env) {
       const result = await verifySubjectQuestion(env, input);
       return jsonResponse(request, env, result);
     }
+    if (url.pathname === '/v1/exam') {
+      const result = await generateVerifiedExamBatch(env, input);
+      return jsonResponse(request, env, result);
+    }
     const clean = sanitizeRequest(input);
     const result = await generateVerifiedReading(env, clean);
     return jsonResponse(request, env, result);
   } catch (error) {
-    const mapped = mapSubjectError(error) || mapGroqError(error) || mapGeminiError(error);
+    const mapped = mapExamError(error) || mapSubjectError(error) || mapGroqError(error) || mapGeminiError(error);
     const apiError = mapped || (error instanceof ApiError ? error : null);
     if (apiError) {
       const body = { code: apiError.code, message: apiError.message };
