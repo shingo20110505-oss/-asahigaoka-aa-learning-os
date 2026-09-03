@@ -39,7 +39,7 @@ ws.onmessage=e=>{
 };
 const cmd=(method,params={})=>new Promise((resolve,reject)=>{const id=++seq;pending.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}))});
 async function evaluate(expression){const r=await cmd('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw new Error(`Runtime evaluate failed: ${JSON.stringify(r.exceptionDetails).slice(0,1200)}`);return r.result?.value}
-async function diagnostics(){return evaluate(`(()=>{const text=document.body?.innerText||'';return {href:location.href,ready:document.readyState,quality:document.documentElement.dataset.aaQualityCi||'',route:document.documentElement.dataset.riseRoute||'',booting:document.documentElement.classList.contains('aa-app-booting'),brand:document.querySelector('#app .brand h1')?.textContent?.trim()||'',navOwner:window.__RISE_NAVIGATION_V1__?.version||'',shellGuard:window.__RISE_LEGACY_SHELL_GUARD_V1__?.version||'',shellBlocked:window.__RISE_LEGACY_SHELL_GUARD_V1__?.blocked||0,settingsCore:window.__AA_SETTINGS_IMPROVEMENTS_CORE_V1__?.version||'',runtimeError:document.documentElement.dataset.riseRuntimeError||'',navigationError:document.documentElement.dataset.riseNavigationError||'',legacyTitle:text.includes('旭丘AA Learning OS'),legacySubtitle:text.includes('愛知県入試・当日再現性を最優先'),navLabels:[...document.querySelectorAll('.navin span')].map(x=>x.textContent?.trim()).filter(Boolean),qualityResult:window.__AA_QUALITY_CI_RESULT__||null,text:text.slice(0,1600)}})()`)}
+async function diagnostics(){return evaluate(`(()=>{const text=document.body?.innerText||'';return {href:location.href,ready:document.readyState,quality:document.documentElement.dataset.aaQualityCi||'',route:document.documentElement.dataset.riseRoute||'',booting:document.documentElement.classList.contains('aa-app-booting'),brand:document.querySelector('#app .brand h1')?.textContent?.trim()||'',navOwner:window.__RISE_NAVIGATION_V1__?.version||'',iaVersion:window.__RISE_INFORMATION_ARCHITECTURE_V1__?.version||'',shellGuard:window.__RISE_LEGACY_SHELL_GUARD_V1__?.version||'',shellBlocked:window.__RISE_LEGACY_SHELL_GUARD_V1__?.blocked||0,settingsCore:window.__AA_SETTINGS_IMPROVEMENTS_CORE_V1__?.version||'',runtimeError:document.documentElement.dataset.riseRuntimeError||'',navigationError:document.documentElement.dataset.riseNavigationError||'',legacyTitle:text.includes('旭丘AA Learning OS'),legacySubtitle:text.includes('愛知県入試・当日再現性を最優先'),navLabels:[...document.querySelectorAll('.navin span')].map(x=>x.textContent?.trim()).filter(Boolean),qualityResult:window.__AA_QUALITY_CI_RESULT__||null,text:text.slice(0,1600)}})()`)}
 async function close(){try{ws.close()}catch{};try{proc.kill('SIGKILL')}catch{};await rm(profile,{recursive:true,force:true}).catch(()=>{})}
 
 try{
@@ -69,10 +69,11 @@ try{
  for(const token of required)if(!text.includes(token))throw new Error(`Quality evidence missing: ${token}`);
  if(state.brand!=='Rise')throw new Error(`Wrong production brand: ${state.brand||'-'}`);
  if(state.navOwner!=='1.0.3')throw new Error(`Wrong navigation owner: ${state.navOwner||'-'}`);
+ if(state.iaVersion!=='1.0.1')throw new Error(`Wrong information architecture: ${state.iaVersion||'-'}`);
  if(state.shellGuard!=='1.0.0')throw new Error(`Legacy shell guard missing: ${state.shellGuard||'-'}`);
  if(state.runtimeError||state.navigationError)throw new Error(`Rise runtime error: ${state.runtimeError||state.navigationError}`);
  if(state.legacyTitle||state.legacySubtitle)throw new Error('Legacy AA shell became visible during quality audit');
- if(state.navLabels.join('/')!=='ホーム/学習/復習/記録')throw new Error(`Wrong navigation labels: ${state.navLabels.join('/')}`);
+ if(state.navLabels.join('/')!=='ホーム/入試/学習/復習')throw new Error(`Wrong navigation labels: ${state.navLabels.join('/')}`);
  if(documents.filter(d=>d.url.startsWith(PAGE_URL)).length!==1)throw new Error(`Unexpected document navigation during quality audit: ${JSON.stringify(documents)}`);
  console.log('RISE_QUALITY_CDP=PASS');
 } finally {
