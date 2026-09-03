@@ -16,10 +16,11 @@ Riseは、単一HTMLではなく、既存本体・複数世代の学習エンジ
 | コード | `main` | 開発の最終正本。通常は作業ブランチからマージ |
 | 実行境界 | `app/runtime-registry.js` | runtime/data/state/engines/ui の登録境界 |
 | 境界検査 | `tests/architecture-boundaries.mjs` | 新旧レイヤーの混線を検出する基準 |
+| 管理契約 | `scripts/validate-management-contract.mjs` / `.github/workflows/management-contract.yml` | 正本・公開経路・保存契約・AI設定の整合を自動検査 |
 | メインUI/旧本体 | `index.html` | 段階移行対象。一括削除しない |
 | 追加ロード | `v23-loader.js` | 後段モジュールの読み込み経路を確認する |
 | 学習状態 | `asahi_learning_os_v1` | 既存履歴を維持する |
-| 保存保護 | `storage-resilience-v1.js` | 履歴退行・破壊的上書きを防ぐ |
+| 保存保護 | `storage-resilience-v1.js` | 履歴退行・破壊的上書きと保護スナップショットを管理 |
 | 復習データ | `review-bank-v1.js` | 復習の唯一のデータ正本 |
 | 復習UI | `review/index.html` | Review v2 を現役UIとする |
 | 数学入試 | `math-exam/` | 愛知県型の決定的検証資産を維持 |
@@ -46,7 +47,7 @@ Riseは、単一HTMLではなく、既存本体・複数世代の学習エンジ
 
 ### runtime
 
-起動順、モジュール登録、依存解決を担当する。教材内容やUI状態を直接所有しない。
+起動順、モジュール登録、依存解決を担当する。教材内容やUI状態を直接所有しない。`app/runtime-registry.js` はレイヤー順と保護資産の登録を担当し、個々のlocalStorage/IndexedDBキーの所有者ではない。
 
 ### data
 
@@ -93,20 +94,23 @@ Riseは、単一HTMLではなく、既存本体・複数世代の学習エンジ
 
 ## 5. 保存契約
 
-`app/runtime-registry.js` が管理対象として扱う保存キーを基準とする。
+保存キーは、それを実際に所有する現行実装を基準に確認する。runtime registryへ保存キーを集約したものとみなさない。
 
-主な保護キー:
+学習本体の保存保護は `storage-resilience-v1.js` の現行定義を基準とする。
 
-- `asahi_learning_os_v1`
-- `asahi_learning_os_best_snapshot_v1`
-- `asahi_review_progress_v1`
-- `aa_review_page_v1`
-- `aa_ai_reading_config_v1`
-- `aa_japanese_exam_session_v1`
-- `aa_japanese_exam_history_v1`
-- `aa_japanese_exam_imports_v1`
+主な保護対象:
 
-IndexedDBを含む既存保存先も同様に保護する。
+- 学習本体localStorage: `asahi_learning_os_v1`
+- 保護スナップショットlocalStorage: `aa-storage-best-v4`
+- 保存保護IndexedDB: `asahigaoka-aa-os-storage` / store `snapshots`
+- 復習進捗: `asahi_review_progress_v1`
+- Review v2画面状態: `aa_review_page_v1`
+- AI接続設定: `aa_ai_reading_config_v1`
+- 国語入試: `aa_japanese_exam_session_v1`
+- 国語入試: `aa_japanese_exam_history_v1`
+- 国語入試: `aa_japanese_exam_imports_v1`
+
+その他のIndexedDBや保存先も、その機能の現行所有コードを確認してから変更する。
 
 禁止事項:
 
@@ -151,7 +155,7 @@ Workflow、状態ファイル、公開確認、文書。自己pushや重複実�
 2. 変更分類と影響範囲を決める。
 3. 作業ブランチを作る。
 4. 1目的に絞って変更する。
-5. 対応テストを実行する。
+5. 対応テストと管理契約を実行する。
 6. 差分を確認する。
 7. `main` へマージする。
 8. GitHub Actions / Pagesを確認する。
@@ -232,4 +236,4 @@ AIは5教科共通基盤へ段階統合する。
 
 コードを書いたこと、GitHubへcommitしたこと、ローカルテストが通ったことだけでは「本番完了」ではない。
 
-対象変更に応じたテスト、main反映、Pages公開、本番取得、本番runtime確認までを一つの変更単位として扱う。
+対象変更に応じたテスト、管理契約、main反映、Pages公開、本番取得、本番runtime確認までを一つの変更単位として扱う。
