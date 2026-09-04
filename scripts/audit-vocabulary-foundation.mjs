@@ -46,7 +46,8 @@ check('English reading sees vocabulary weakness', reading.includes('weakWords') 
 check('English reading sees known words', reading.includes('knownWords'));
 
 const jaQuiz = read('kokugo-chronologia/quiz-rank-select-v1.js');
-check('Japanese quiz expects 15,000 rows', /FULL_COUNT\s*=\s*15000/.test(jaQuiz));
+const enforces15000 = /rows\.length\s*!==\s*15000/.test(jaQuiz) && /full15000\.length\s*===\s*15000/.test(jaQuiz);
+check('Japanese quiz enforces 15,000 rows', enforces15000);
 check('Japanese progress store preserved', jaQuiz.includes('kokugoChronologiaStateV2'));
 check('Japanese wrong queue preserved', jaQuiz.includes('aa_kokugo_vocab_wrong_queue_v1'));
 check('Japanese no-repeat cycle preserved', jaQuiz.includes('aa_kokugo_vocab_full15000_cycle_v1') && jaQuiz.includes('makeNoRepeatSet'));
