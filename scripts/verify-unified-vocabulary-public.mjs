@@ -43,10 +43,12 @@ async function screenshot(name){const result=await cmd('Page.captureScreenshot',
 async function waitReady(){try{return await waitFor(`(()=>{const b=document.getElementById('startSession');const nums=['enCount','jaCount','soCount'].map(id=>Number((document.getElementById(id)?.textContent||'').replace(/[^0-9]/g,'')));return document.documentElement.dataset.unifiedVocabularyQuiz==='1.0.0'&&!b?.disabled&&nums[0]>=100&&nums[1]>=15000&&nums[2]>=1000?{nums,status:document.getElementById('connectionStatus')?.textContent||''}:null})()`,45000,'three-subject connection')}catch(error){const d=await sourceDiagnostics().catch(e=>({diagnosticError:String(e)}));console.error('UNIFIED_SOURCE_DIAGNOSTICS='+JSON.stringify(d));console.error('UNIFIED_BROWSER_EVENTS='+JSON.stringify(events.slice(-30)));await screenshot('unified-quiz-failure.png').catch(()=>{});await writeFile(path.join(artifacts,'unified-quiz-failure.json'),JSON.stringify({error:String(error),diagnostics:d,events:events.slice(-50)},null,2)).catch(()=>{});throw error}}
 async function diagnostics(){return evaluate(`(()=>({title:document.title,version:document.documentElement.dataset.unifiedVocabularyQuiz||'',tabs:[...document.querySelectorAll('[data-subject]')].map(x=>x.textContent.trim()),status:document.getElementById('connectionStatus')?.textContent||'',counts:['enCount','jaCount','soCount'].map(id=>document.getElementById(id)?.textContent||''),startDisabled:!!document.getElementById('startSession')?.disabled,innerWidth:innerWidth,scrollWidth:document.documentElement.scrollWidth,bodyScrollWidth:document.body.scrollWidth,hasHorizontalOverflow:document.documentElement.scrollWidth>innerWidth+1||document.body.scrollWidth>innerWidth+1,scienceVisible:(document.body.innerText||'').includes('理科'),legacyStore:localStorage.getItem('rise-unified-vocab-quiz-v1')!==null}))()`)}
 async function click(selector){await evaluate(`(()=>{const el=document.querySelector(${JSON.stringify(selector)});if(!el)return false;el.click();return true})()`)}
+async function setValue(selector,value){return evaluate(`(()=>{const el=document.querySelector(${JSON.stringify(selector)});if(!el)return false;el.value=${JSON.stringify(value)};el.dispatchEvent(new Event('change',{bubbles:true}));return el.value})()`)}
 const firstQuestionReadyExpression=`(()=>{const x=document.getElementById('questionIndex')?.textContent||'';const first=(x.split('/')[0]||'').trim();return !document.getElementById('studyCard')?.classList.contains('hidden')&&first==='1'?x:null})()`;
-async function startSubject(name){await click(`[data-subject="${name}"]`);await sleep(100);await click('#startSession');await waitFor(firstQuestionReadyExpression,30000,`${name} session start`)}
-async function answerFirst(){return evaluate(`(()=>{const c=document.querySelector('#choices .choice:not(:disabled)');if(c){c.click();return 'choice'}const input=document.getElementById('answerInput');const submit=document.getElementById('submitAnswer');if(input&&submit&&!input.closest('.hidden')){input.value='__qa_wrong__';input.dispatchEvent(new Event('input',{bubbles:true}));submit.click();return 'input'}return ''})()`)}
-async function waitFeedback(){return waitFor(`(()=>{const f=document.getElementById('feedback');return f&&!f.classList.contains('hidden')&&f.textContent.trim()?f.textContent.trim():null})()`,30000,'answer feedback')}
+async function startSubject(name,mode=''){await click(`[data-subject="${name}"]`);await sleep(100);if(mode)await setValue('#quizMode',mode);await click('#startSession');await waitFor(firstQuestionReadyExpression,30000,`${name} session start`)}
+async function startSocialTypedSession(){await click('[data-subject="social"]');await sleep(100);await setValue('#quizMode','eventToYear');for(let i=0;i<24;i++){await click('#startSession');await waitFor(firstQuestionReadyExpression,30000,'Social typed session start');const state=await evaluate(`(()=>({visible:!document.getElementById('inputRow')?.classList.contains('hidden'),disabled:!!document.getElementById('submitAnswer')?.disabled,mode:document.getElementById('modeName')?.textContent||''}))()`);if(state?.visible)return state;await sleep(20)}throw new Error('Could not obtain a Social event-to-year input question')}
+async function answerFirst(){return evaluate(`(()=>{const c=document.querySelector('#choices .choice:not(:disabled)');if(c){c.click();return 'choice'}const input=document.getElementById('answerInput');const submit=document.getElementById('submitAnswer');if(input&&submit&&!input.closest('.hidden')){input.value='__qa_wrong__';input.dispatchEvent(new Event('input',{bubbles:true}));submit.click();return submit.disabled?'input-disabled-after-click':'input'}return ''})()`)}
+async function waitFeedback(label='answer feedback'){return waitFor(`(()=>{const f=document.getElementById('feedback');return f&&!f.classList.contains('hidden')&&f.textContent.trim()?f.textContent.trim():null})()`,30000,label)}
 
 try{
  await cmd('Page.enable');await cmd('Runtime.enable');await cmd('Network.enable');await cmd('Log.enable');
@@ -65,18 +67,27 @@ try{
  await screenshot('unified-quiz-desktop-1440x1000.png');
 
  const englishBefore=await evaluate(`localStorage.getItem('asahi_learning_os_v1')`);
- await startSubject('english');const enAction=await answerFirst();if(!enAction)throw new Error('English answer control unavailable');await waitFeedback();
+ await startSubject('english','spell');
+ const enInputState=await evaluate(`(()=>({visible:!document.getElementById('inputRow')?.classList.contains('hidden'),disabled:!!document.getElementById('submitAnswer')?.disabled,mode:document.getElementById('modeName')?.textContent||''}))()`);
+ if(!enInputState?.visible||enInputState.disabled)throw new Error(`English spell input is not usable: ${JSON.stringify(enInputState)}`);
+ const enAction=await answerFirst();if(!enAction)throw new Error('English answer control unavailable');await waitFeedback('English answer feedback');
  const englishAfter=await evaluate(`localStorage.getItem('asahi_learning_os_v1')`);
  if(!englishAfter||englishAfter===englishBefore)throw new Error('English native learning state did not change after answer');
 
- await click('[data-subject="japanese"]');await sleep(100);const jaCycleBefore=await evaluate(`localStorage.getItem('aa_kokugo_vocab_full15000_cycle_v1')`);await click('#startSession');await waitFor(firstQuestionReadyExpression,30000,'Japanese session start');const jaCycleAfter=await evaluate(`localStorage.getItem('aa_kokugo_vocab_full15000_cycle_v1')`);if(!jaCycleAfter||jaCycleAfter===jaCycleBefore)throw new Error('Japanese native no-repeat cycle did not update');
+ await click('[data-subject="japanese"]');await sleep(100);await setValue('#quizMode','meaning');const jaCycleBefore=await evaluate(`localStorage.getItem('aa_kokugo_vocab_full15000_cycle_v1')`);await click('#startSession');await waitFor(firstQuestionReadyExpression,30000,'Japanese session start');const jaCycleAfter=await evaluate(`localStorage.getItem('aa_kokugo_vocab_full15000_cycle_v1')`);if(!jaCycleAfter||jaCycleAfter===jaCycleBefore)throw new Error('Japanese native no-repeat cycle did not update');
 
- const socialBefore=await evaluate(`localStorage.getItem('chronologia-aichi-v3')`);await startSubject('social');const soAction=await answerFirst();if(!soAction)throw new Error('Social answer control unavailable');await waitFeedback();const socialAfter=await evaluate(`localStorage.getItem('chronologia-aichi-v3')`);if(!socialAfter||socialAfter===socialBefore)throw new Error('Chronologia native progress did not change after answer');
+ const socialBefore=await evaluate(`localStorage.getItem('chronologia-aichi-v3')`);
+ const socialInputState=await startSocialTypedSession();
+ if(socialInputState.disabled)throw new Error(`Social typed input stayed disabled after new session: ${JSON.stringify(socialInputState)}`);
+ const soAction=await answerFirst();if(!soAction)throw new Error('Social answer control unavailable');await waitFeedback('Social typed answer feedback');
+ const socialAfter=await evaluate(`localStorage.getItem('chronologia-aichi-v3')`);if(!socialAfter||socialAfter===socialBefore)throw new Error('Chronologia native progress did not change after answer');
 
- const result={version:'1.0.1',page:`${PAGE_URL}quiz/`,sourceSha:SOURCE_SHA,mobileReady,desktopReady,mobile,desktop,nativeWrites:{english:true,japaneseCycle:true,social:true},screenshots:['unified-quiz-mobile-390x844.png','unified-quiz-desktop-1440x1000.png']};
+ const result={version:'1.0.2',page:`${PAGE_URL}quiz/`,sourceSha:SOURCE_SHA,mobileReady,desktopReady,mobile,desktop,regressions:{englishSpellThenSocialTyped:true},nativeWrites:{english:true,japaneseCycle:true,social:true},screenshots:['unified-quiz-mobile-390x844.png','unified-quiz-desktop-1440x1000.png']};
  console.log('UNIFIED_VOCAB_PUBLIC_QA='+JSON.stringify(result));
  await writeFile(path.join(artifacts,'unified-quiz-public-qa.json'),JSON.stringify(result,null,2));
  console.log('UNIFIED_VOCAB_PUBLIC_QA=PASS');
+} catch(error){
+ const d=await sourceDiagnostics().catch(e=>({diagnosticError:String(e)}));console.error('UNIFIED_FINAL_DIAGNOSTICS='+JSON.stringify(d));console.error('UNIFIED_BROWSER_EVENTS='+JSON.stringify(events.slice(-50)));await screenshot('unified-quiz-failure.png').catch(()=>{});await writeFile(path.join(artifacts,'unified-quiz-failure.json'),JSON.stringify({error:String(error),diagnostics:d,events:events.slice(-50)},null,2)).catch(()=>{});throw error;
 } finally {
  try{ws.close()}catch{};await cleanup(proc,profile);
 }
