@@ -6,14 +6,16 @@ const root = process.cwd();
 const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
 
 function extractAssignedLiteral(source, variableName) {
-  const re = new RegExp(`\\bconst\\s+${variableName}\\s*=`);
-  const m = re.exec(source);
-  if (!m) throw new Error(`assignment not found: ${variableName}`);
-  let i = m.index + m[0].length;
-  while (i < source.length && /\\s/.test(source[i])) i += 1;
+  const marker = `const ${variableName}`;
+  const markerIndex = source.indexOf(marker);
+  if (markerIndex < 0) throw new Error(`assignment not found: ${variableName}`);
+  const equalsIndex = source.indexOf('=', markerIndex + marker.length);
+  if (equalsIndex < 0) throw new Error(`assignment operator not found: ${variableName}`);
+  let i = equalsIndex + 1;
+  while (i < source.length && [' ', '\n', '\r', '\t'].includes(source[i])) i += 1;
   const start = i;
   const first = source[start];
-  if (first !== '{' && first !== '[') throw new Error(`unsupported literal start for ${variableName}: ${first}`);
+  if (first !== '{' && first !== '[') throw new Error(`unsupported literal start for ${variableName}: ${JSON.stringify(first)}`);
 
   const stack = [];
   let quote = null;
@@ -88,8 +90,12 @@ function listVocabularyRelatedFiles() {
       if (ignore.has(ent.name)) continue;
       const absolute = path.join(dir, ent.name);
       const relative = path.join(prefix, ent.name).replaceAll('\\', '/');
-      if (ent.isDirectory()) walk(absolute, relative);
-      else if (/vocab|vocabulary|jukugo|idiom|kokugo/i.test(relative)) out.push(relative);
+      if (ent.isDirectory()) {
+        walk(absolute, relative);
+        continue;
+      }
+      const lower = relative.toLowerCase();
+      if (['vocab', 'vocabulary', 'jukugo', 'idiom', 'kokugo'].some((token) => lower.includes(token))) out.push(relative);
     }
   }
   walk(root);
@@ -102,13 +108,12 @@ function reportEnglish() {
   const rows = Array.isArray(data?.vocab) ? data.vocab : [];
   if (!rows.length) throw new Error('English DATA.vocab is empty or unavailable');
   const engine15 = read('learning-engine-v15.js');
-  const extensionCollocationIds = [...engine15.matchAll(/\\bid\\s*:\\s*['"](col_[^'"]+)['"]/g)].map((m) => m[1]);
 
   return {
     source: 'app/legacy/main-runtime.js::DATA.vocab',
     baseRows: rows.length,
     idDuplicates: duplicates(rows.map((r) => r.id)),
-    wordDuplicates: duplicates(rows.map((r) => (r.w ?? r.word ?? r.term ?? '')).toString().toLowerCase()),
+    wordDuplicates: duplicates(rows.map((r) => (r.w ?? r.word ?? r.term ?? '').toString().toLowerCase())),
     coverage: {
       id: coverage(rows, (r) => r.id),
       word: coverage(rows, (r) => r.w ?? r.word ?? r.term),
@@ -128,14 +133,17 @@ function reportEnglish() {
       level: distribution(rows, (r) => r.lv ?? r.level ?? r.difficulty)
     },
     runtimeExtensions: {
-      learningEngineV15CollocationEntriesDetected: extensionCollocationIds.length,
+      learningEngineV15CollocationsPresent: engine15.includes('AA15_COLLOCATIONS'),
       note: 'Base DATA.vocab is measured separately because runtime vocabPool may append extension entries.'
     }
   };
 }
 
 function reportJapanese() {
-  const lines = read('kokugo-chronologia/data.jsonl').split(/\\r?\\n/).filter((line) => line.trim());
+  const lines = read('kokugo-chronologia/data.jsonl')
+    .split('\n')
+    .map((line) => line.endsWith('\r') ? line.slice(0, -1) : line)
+    .filter((line) => line.trim());
   const rows = [];
   const parseErrors = [];
   const keyCounts = new Map();
@@ -177,11 +185,18 @@ function reportJapanese() {
   };
 }
 
+function isExactYearLabel(value) {
+  const y = norm(value);
+  if (!y.endsWith('年')) return false;
+  let body = y.slice(0, -1);
+  if (body.startsWith('紀元前')) body = body.slice(3);
+  return body.length > 0 && [...body].every((ch) => ch >= '0' && ch <= '9');
+}
+
 function reportSocial() {
   const source = read('chronologia.html');
   const rows = extractAssignedLiteral(source, 'DATA');
   if (!Array.isArray(rows) || !rows.length) throw new Error('Chronologia DATA is empty or unavailable');
-  const exactYear = (r) => /^(紀元前)?\\d+年$/.test(norm(r.year));
   return {
     source: 'chronologia.html::DATA',
     rows: rows.length,
@@ -204,15 +219,15 @@ function reportSocial() {
       level: distribution(rows, (r) => r.level)
     },
     eventToYearEligible: {
-      count: rows.filter(exactYear).length,
+      count: rows.filter((r) => isExactYearLabel(r.year)).length,
       total: rows.length,
-      percent: pct(rows.filter(exactYear).length, rows.length)
+      percent: pct(rows.filter((r) => isExactYearLabel(r.year)).length, rows.length)
     }
   };
 }
 
 const report = {
-  version: '1.0.0',
+  version: '1.0.1',
   generatedAt: new Date().toISOString(),
   scope: ['english', 'japanese', 'social'],
   english: reportEnglish(),
