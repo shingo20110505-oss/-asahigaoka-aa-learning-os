@@ -1,0 +1,39 @@
+name: Rise vocabulary foundation audit
+
+on:
+  pull_request:
+    paths:
+      - 'vocabulary-core/**'
+      - 'scripts/audit-vocabulary-foundation.mjs'
+      - 'vocab.html'
+      - 'vocab-wrong-quiz-v1.js'
+      - 'ai-reading-v1.js'
+      - 'kokugo-chronologia/**'
+      - 'chronologia.html'
+      - '.github/workflows/vocabulary-foundation-audit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'vocabulary-core/**'
+      - 'scripts/audit-vocabulary-foundation.mjs'
+      - 'vocab.html'
+      - 'vocab-wrong-quiz-v1.js'
+      - 'ai-reading-v1.js'
+      - 'kokugo-chronologia/**'
+      - 'chronologia.html'
+      - '.github/workflows/vocabulary-foundation-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Audit vocabulary foundation
+        run: node scripts/audit-vocabulary-foundation.mjs
