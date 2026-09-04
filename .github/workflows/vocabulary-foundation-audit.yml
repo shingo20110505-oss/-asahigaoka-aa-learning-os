@@ -4,14 +4,17 @@ on:
   pull_request:
     paths:
       - 'vocabulary-core/**'
+      - 'quiz/**'
       - 'scripts/audit-vocabulary-foundation.mjs'
       - 'scripts/audit-vocabulary-normalization.mjs'
       - 'scripts/audit-vocabulary-progress-adapters.mjs'
+      - 'scripts/audit-unified-vocabulary-quiz.mjs'
       - 'scripts/report-vocabulary-data-quality.mjs'
       - 'vocab.html'
       - 'vocab-wrong-quiz-v1.js'
       - 'ai-reading-v1.js'
       - 'app/legacy/main-runtime.js'
+      - 'app/ui/rise-learning-expansion-v1.js'
       - 'learning-engine-v15.js'
       - 'kokugo-chronologia/**'
       - 'chronologia.html'
@@ -22,14 +25,17 @@ on:
     branches: [main]
     paths:
       - 'vocabulary-core/**'
+      - 'quiz/**'
       - 'scripts/audit-vocabulary-foundation.mjs'
       - 'scripts/audit-vocabulary-normalization.mjs'
       - 'scripts/audit-vocabulary-progress-adapters.mjs'
+      - 'scripts/audit-unified-vocabulary-quiz.mjs'
       - 'scripts/report-vocabulary-data-quality.mjs'
       - 'vocab.html'
       - 'vocab-wrong-quiz-v1.js'
       - 'ai-reading-v1.js'
       - 'app/legacy/main-runtime.js'
+      - 'app/ui/rise-learning-expansion-v1.js'
       - 'learning-engine-v15.js'
       - 'kokugo-chronologia/**'
       - 'chronologia.html'
@@ -57,3 +63,5 @@ jobs:
         run: node scripts/audit-vocabulary-normalization.mjs
       - name: Audit read-only progress adapters
         run: node scripts/audit-vocabulary-progress-adapters.mjs
+      - name: Audit unified native vocabulary quiz
+        run: node scripts/audit-unified-vocabulary-quiz.mjs
