@@ -28,7 +28,9 @@ function ensurePublicNav(){
  return nav;
 }
 function setNavLabel(el,label){if(!el)return false;let changed=false;if(el.getAttribute('aria-label')!==label){el.setAttribute('aria-label',label);changed=true}const span=el.querySelector('span');if(span&&span.textContent!==label){span.textContent=label;changed=true}return changed}
+function syncBrand(){const brand=document.querySelector('#app .brand');if(!brand)return false;const mark=brand.querySelector('.mark'),title=brand.querySelector('h1'),subtitle=brand.querySelector('p');let changed=false;if(mark&&mark.textContent!=='R'){mark.textContent='R';changed=true}if(title&&title.textContent.trim()!=='Rise'){title.textContent='Rise';changed=true}if(subtitle&&subtitle.textContent!=='旭丘合格のための学習OS'){subtitle.textContent='旭丘合格のための学習OS';changed=true}return changed}
 function syncPublicNav(){
+ syncBrand();
  const nav=ensurePublicNav();if(!nav)return false;
  const home=nav.querySelector('[data-route="home"]');
  const exam=nav.querySelector('[data-route="subjects"]');
@@ -49,7 +51,7 @@ function syncPublicNav(){
  return changed;
 }
 function schedulePublicNavSync(){if(navSyncRaf)return;navSyncRaf=requestAnimationFrame(()=>{navSyncRaf=0;syncPublicNav()})}
-function forcePublicNavSync(){syncPublicNav();schedulePublicNavSync()}
+function forcePublicNavSync(){syncBrand();syncPublicNav();schedulePublicNavSync()}
 function concealLegacyGap(reason){root.classList.add('aa-app-booting');root.dataset.riseTransition=reason||'legacy-render'}
 function requestRiseRender(route,source,id){if(id!==sequence)return;document.dispatchEvent(new CustomEvent('aa:v23ready',{detail:{source:'rise-navigation',route,navigationSource:source,sequence:id}}));const app=document.getElementById('app');if(app){const pulse=document.createComment(`rise-ui-sync:${id}:${route}`);app.appendChild(pulse);pulse.remove()}forcePublicNavSync()}
 function scheduleRiseRender(route,source,id){requestRiseRender(route,source,id);queueMicrotask(()=>requestRiseRender(route,source,id));requestAnimationFrame(()=>requestRiseRender(route,source,id));setTimeout(()=>requestRiseRender(route,source,id),40);setTimeout(()=>requestRiseRender(route,source,id),140)}

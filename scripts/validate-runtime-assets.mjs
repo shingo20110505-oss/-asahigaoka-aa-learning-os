@@ -70,9 +70,10 @@ requireText(riseUI, 'function settingsHTML', 'Rise minimal settings');
 requireText(riseUI, '今日の学習', 'Rise today learning plan');
 requireText(riseUI, '教科別の達成度', 'Rise subject progress');
 requireText(riseUI, '<span>ホーム</span>', 'Rise home nav base');
-requireText(riseUI, '<span>学習</span>', 'Rise study nav base');
+requireText(riseUI, '<span>入試</span>', 'Rise exam nav base');
+requireText(riseUI, '<span>学習</span>', 'Rise learning nav base');
 requireText(riseUI, '<span>復習</span>', 'Rise review nav base');
-requireText(riseUI, '<span>記録</span>', 'Rise record nav base');
+if(riseUI.includes('<span>記録</span>')) throw new Error('Rise base navigation must match the final four public areas');
 
 requireText(loader, "'app/ui/rise-information-architecture-v1.js'", 'final Rise IA load order');
 requireText(loader, "'quality-ci-runner-v1.js'", 'browser quality runner load order');

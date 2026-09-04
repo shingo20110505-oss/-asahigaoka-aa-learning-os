@@ -1,5 +1,5 @@
 'use strict';
-const VERSION='2.5.324-quality2-chronologia1000-aichi-math-application-1.0.1-20260902-japanese-exam-1.0.0-math-full-1.1.0-social-application-1.0.0-science-exam-1.0.0-rise-complete-4.3.0-stable-2.3.0-legacy-metadata-shellguard-1.0.0-nav-1.0.3-20260904-pwa-resilience-1.0.0-rise-ia-cache-1.0.0';
+const VERSION='2.5.324-quality2-chronologia1000-aichi-math-application-1.0.1-20260902-japanese-exam-1.0.0-math-full-1.1.0-social-application-1.0.0-science-exam-1.0.0-rise-complete-4.3.0-stable-2.3.0-legacy-metadata-shellguard-1.0.0-nav-1.0.3-20260904-pwa-resilience-1.0.0-rise-ia-cache-1.0.1';
 const RISE_BOOT='4.2.1';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
