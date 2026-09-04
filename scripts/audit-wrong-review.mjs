@@ -1,0 +1,25 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+const root=process.cwd(),read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const html=read('quiz/index.html'),review=read('quiz/review-algorithm-v1.js'),infinite=read('quiz/infinite-course-v1.js'),sw=read('sw.js');
+const checks=[],failures=[];const check=(name,ok,detail='')=>{checks.push({name,ok:!!ok,detail});if(!ok)failures.push(name+(detail?`: ${detail}`:''))};
+let syntax='';try{new vm.Script(review,{filename:'quiz/review-algorithm-v1.js'})}catch(e){syntax=String(e?.message||e)}
+check('Wrong-review runtime parses',!syntax,syntax);
+check('Review runtime loads before infinite engine',html.indexOf('./review-algorithm-v1.js')>0&&html.indexOf('./review-algorithm-v1.js')<html.indexOf('./infinite-course-v1.js'));
+check('Mixed review label is explicit',review.includes("'全教科の間違いだけ'"));
+check('English uses native wrong bank',review.includes('wrongBank()')&&review.includes("api.removeWrong?.(item.id)")&&review.includes("api.markWrong?.(item.id)"));
+check('Japanese uses native wrong queue',review.includes("JA_WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1'")&&review.includes('updateJapaneseWrong'));
+check('Classical Japanese and kanbun use currentWrong',review.includes('currentWrong=true')&&review.includes('currentWrong=false')&&review.includes("classicCandidates('classical')")&&review.includes("classicCandidates('kanbun')"));
+check('Normal classics feedback is observed for wrong tracking',review.includes('new MutationObserver')&&review.includes("['古文','漢文'].includes(mode)"));
+check('Social current wrong is native stage zero',review.includes("Number(x.progress?.stage||0)===0"));
+check('Priority combines failures/due/recency',review.includes('recentBoost')&&review.includes('(p.lapses||0)*12')&&review.includes('(p.due?20:0)')&&review.includes('(p.wrong||0)*10'));
+check('Interleaving blocks excessive same-source runs',review.includes("recent.at(-1)===recent.at(-2)")&&review.includes('x.source!==recent.at(-1)'));
+check('Mixed candidates include all five learning buckets',review.includes('englishCandidates()')&&review.includes("japaneseCandidates('all')")&&review.includes("classicCandidates('classical')")&&review.includes("classicCandidates('kanbun')")&&review.includes('socialCandidates()'));
+check('Review recalculates candidates every question',review.includes('const candidates=await collectCandidates(review.config)'));
+check('Review has no aggregate score storage key',!/(rise[_-]unified[_-].*score|WRONG_REVIEW_SCORE|reviewScoreKey)/i.test(review));
+check('Quiz page describes classics and cross-subject mistakes',html.includes('古文・漢文')&&html.includes('教科を横断して未克服問題を優先'));
+check('PWA precaches review/classics/infinite assets',sw.includes("url('quiz/review-algorithm-v1.js')")&&sw.includes("url('quiz/japanese-classics-bank-v1.js')")&&sw.includes("url('quiz/infinite-course-v1.js')"));
+check('Existing infinite engine remains present',infinite.includes('∞ 無限コース'));
+console.log(JSON.stringify({version:'1.0.0',checks,failures},null,2));
+if(failures.length)process.exit(1);
