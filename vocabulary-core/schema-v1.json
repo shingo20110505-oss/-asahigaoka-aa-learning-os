@@ -37,6 +37,7 @@
       "properties": {
         "store": {"type": "string", "minLength": 1},
         "nativeId": {"type": "string", "minLength": 1},
+        "aliases": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true, "default": []},
         "adapter": {"type": ["string", "null"]},
         "wrongStore": {"type": ["string", "null"]},
         "cycleStore": {"type": ["string", "null"]}
