@@ -77,9 +77,10 @@ try{
  const text=state.text+(state.qualityResult?JSON.stringify(state.qualityResult):'');
  for(const token of required)if(!text.includes(token))throw new Error(`Quality evidence missing: ${token}`);
  if(state.brand!=='Rise')throw new Error(`Wrong production brand: ${state.brand||'-'}`);
- if(state.navOwner!=='1.0.4')throw new Error(`Wrong navigation owner: ${state.navOwner||'-'}`);
+ if(state.navOwner!=='1.0.5')throw new Error(`Wrong navigation owner: ${state.navOwner||'-'}`);
  if(state.iaVersion!=='1.0.1')throw new Error(`Wrong information architecture: ${state.iaVersion||'-'}`);
  if(state.shellGuard!=='1.0.0')throw new Error(`Legacy shell guard missing: ${state.shellGuard||'-'}`);
+ if(state.booting)throw new Error('Rise boot guard did not reveal the production UI');
  if(state.runtimeError||state.navigationError)throw new Error(`Rise runtime error: ${state.runtimeError||state.navigationError}`);
  if(state.legacyTitle||state.legacySubtitle)throw new Error('Legacy AA shell became visible during quality audit');
  if(state.navLabels.join('/')!=='ホーム/入試/学習/復習')throw new Error(`Wrong navigation labels: ${state.navLabels.join('/')}`);
