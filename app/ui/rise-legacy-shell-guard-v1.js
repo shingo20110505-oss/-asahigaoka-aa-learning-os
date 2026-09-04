@@ -20,7 +20,7 @@ function hasLegacyChrome(){
   const title=app?.querySelector('.brand h1')?.textContent?.trim()||'';
   const nav=app?.querySelector('.nav .navin');
   const complete=String(nav?.dataset?.riseNav||'').startsWith('complete:');
-  return !title||title!=='Rise'||(!complete&&!!nav);
+  return (title&&title!=='Rise')||(!complete&&!!nav);
 }
 function pulse(source='legacy-shell-guard'){
   if(syncQueued)return;
