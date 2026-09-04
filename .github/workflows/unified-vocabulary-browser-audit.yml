@@ -1,0 +1,38 @@
+name: Unified vocabulary public browser audit
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/verify-unified-vocabulary-public.mjs'
+      - '.github/workflows/unified-vocabulary-browser-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Resolve Chrome
+        run: |
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
+          test -n "$CHROME"
+          echo "CHROME_PATH=$CHROME" >> "$GITHUB_ENV"
+      - name: Audit deployed unified quiz
+        env:
+          PAGE_URL: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+          SOURCE_SHA: 0ec582b9cca1834beff21d270cc6db01823f21f4
+        run: node scripts/verify-unified-vocabulary-public.mjs
+      - name: Upload visual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unified-vocabulary-browser-qa
+          path: qa-artifacts/
+          if-no-files-found: warn
+          retention-days: 7
