@@ -17,6 +17,11 @@
 <link rel="icon" href="./icons/rise-favicon.svg?v=4.3.0" type="image/svg+xml" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png?v=4.3.0">
 <link rel="stylesheet" href="./learning-engine-v22.css">
+<link rel="preload" href="./app/runtime-registry.js" as="script">
+<link rel="preload" href="./app/legacy/main-runtime.js" as="script">
+<link rel="preload" href="./app/navigation/navigation-runtime-v1.js?v=1.0.5" as="script">
+<link rel="preload" href="./app/ui/rise-ui-v4.js?v=4.2.0" as="script">
+<link rel="preload" href="./app/ui/rise-information-architecture-v1.js?v=1.0.1" as="script">
 <title>Rise｜旭丘合格のための学習OS</title>
 <script id="rise-runtime-diagnostics">
 (()=>{'use strict';const errors=[];window.__RISE_RUNTIME_ERRORS__=errors;const record=(type,value)=>{try{const text=String(value?.stack||value?.message||value||type).slice(0,700);errors.push(`${type}:${text}`);if(errors.length>8)errors.shift();document.documentElement.dataset.riseRuntimeError=text.replace(/[\r\n]+/g,' ').slice(0,280)}catch(_){}};addEventListener('error',e=>record('error',e.error||e.message));addEventListener('unhandledrejection',e=>record('rejection',e.reason))})();
@@ -31,10 +36,34 @@ html.aa-app-booting.aa-app-boot-slow body:before{content:"最新版のRiseを読
 #riseBootRecovery{display:none}
 html.aa-app-boot-error body:before{display:none!important}
 html.aa-app-boot-error #riseBootRecovery{visibility:visible!important;position:fixed;inset:0;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:28px;background:#0c1832;color:#f7f9ff;text-align:center;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Yu Gothic",sans-serif}
-#riseBootRecovery strong{font-size:20px}#riseBootRecovery span{max-width:28em;color:#cbd5eb;font-size:14px;line-height:1.7}#riseBootRecovery button{margin-top:6px;border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:12px 20px;background:#6079d9;color:#fff;font:800 15px inherit}
+#riseBootRecovery strong{font-size:20px}#riseBootRecovery span{max-width:28em;color:#cbd5eb;font-size:14px;line-height:1.7}#riseBootRecovery button{min-height:48px;margin-top:6px;border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:12px 20px;background:#6079d9;color:#fff;font:800 15px inherit}#riseBootRecovery button:disabled{opacity:.65}
 </style>
 <script id="aa-app-boot-guard-script">
-(()=>{'use strict';const root=document.documentElement;const core=new Set(['home','subjects','analytics','settings']);const panel={home:'.riseHomeV4',subjects:'.riseSubjectsV4',analytics:'.riseAnalyticsV4',settings:'.riseSettingsV4'};const expectedTabs=['ホーム','入試','学習','復習'];let blockedAt=Date.now(),observer=null;const state=()=>{try{return window.AA_APP?.get?.('state')?.get?.()||null}catch(_){return null}};const route=()=>state()?.route||root.dataset.riseRoute||'home';const canonicalizeBrand=()=>{const brand=document.querySelector('#app .brand');if(!brand)return false;const mark=brand.querySelector('.mark'),h=brand.querySelector('h1'),p=brand.querySelector('p');if(!h)return false;if(mark&&mark.textContent!=='R')mark.textContent='R';if(h.textContent.trim()!=='Rise')h.textContent='Rise';if(p&&p.textContent!=='旭丘合格のための学習OS')p.textContent='旭丘合格のための学習OS';return true};const canonicalizePublicNav=()=>{const nav=document.querySelector('#app .nav .navin');if(!nav||!String(nav.dataset?.riseNav||'').startsWith('complete:'))return false;const h=nav.querySelector('[data-route="home"]'),e=nav.querySelector('[data-route="subjects"]'),l=nav.querySelector('[data-route="analytics"]'),r=nav.querySelector('a[href*="review"]');if(!h||!e||!l||!r)return false;const label=(x,text)=>{if(x.getAttribute('aria-label')!==text)x.setAttribute('aria-label',text);const s=x.querySelector('span');if(s&&s.textContent!==text)s.textContent=text};label(h,'ホーム');label(e,'入試');label(l,'学習');label(r,'復習');const wanted=[h,e,l,r],current=[...nav.children];if(current.length!==wanted.length||wanted.some((x,i)=>current[i]!==x))nav.replaceChildren(...wanted);return true};const publicNavReady=()=>{if(!canonicalizePublicNav())return false;const nav=document.querySelector('#app .nav .navin'),tabs=[...nav.children];if(tabs.length!==expectedTabs.length)return false;const labels=tabs.map(x=>(x.querySelector('span')?.textContent||x.getAttribute('aria-label')||'').trim());return expectedTabs.every((label,i)=>labels[i]===label)};const chromeReady=r=>{if(!canonicalizeBrand())return false;if(core.has(r)&&!publicNavReady())return false;return true};const contentReady=(main,r)=>{const p=main.querySelector(`${panel[r]}[data-ui-ver="4.2.0"]`);if(!p)return false;if(r==='home')return p.querySelector('.rv4Welcome h2')?.textContent?.trim()==='今日やることを、迷わない。'&&p.querySelector('.rv4Plan .rv4CardHead h3')?.textContent?.trim()==='次の一手';if(r==='subjects')return p.dataset.riseIa==='exam-priority';if(r==='analytics')return p.dataset.riseIa==='learn-priority';return true};const ready=()=>{const main=document.querySelector('#app main');if(!window.__RISE_UI_V4__||!main)return false;const r=route();if(!chromeReady(r))return false;if(!core.has(r))return true;return contentReady(main,r)};const conceal=()=>{if(!blockedAt)blockedAt=Date.now();root.classList.add('aa-app-booting')};const reveal=()=>{blockedAt=0;root.classList.remove('aa-app-booting','aa-app-boot-slow','aa-app-boot-error')};const nudge=()=>{try{document.dispatchEvent(new Event('aa:v23ready'))}catch(_){}};const check=()=>{if(ready()){reveal();return true}conceal();const age=Date.now()-(blockedAt||Date.now());root.classList.toggle('aa-app-boot-slow',age>=4000);root.classList.toggle('aa-app-boot-error',age>=20000);nudge();return false};const protect=()=>{if(!ready())conceal();requestAnimationFrame(check)};const attach=()=>{const app=document.getElementById('app');if(app&&!observer){observer=new MutationObserver(protect);observer.observe(app,{childList:true,subtree:true})}check()};document.addEventListener('DOMContentLoaded',attach,{once:true});addEventListener('pageshow',()=>{if(!ready())conceal();attach()});document.addEventListener('rise:navigation',protect);setInterval(check,250);document.addEventListener('click',e=>{if(e.target?.closest?.('#riseBootRetry'))location.reload()})})();
+(()=>{'use strict';
+const root=document.documentElement,core=new Set(['home','subjects','analytics','settings']),panel={home:'.riseHomeV4',subjects:'.riseSubjectsV4',analytics:'.riseAnalyticsV4',settings:'.riseSettingsV4'},expectedTabs=['ホーム','入試','学習','復習'];
+let blockedAt=Date.now(),observer=null,checkRaf=0,recoveryToken=0,recoveryTimers=[];
+const state=()=>{try{return window.AA_APP?.get?.('state')?.get?.()||null}catch(_){return null}},route=()=>state()?.route||root.dataset.riseRoute||'home';
+const canonicalizeBrand=()=>{const brand=document.querySelector('#app .brand');if(!brand)return false;const mark=brand.querySelector('.mark'),h=brand.querySelector('h1'),p=brand.querySelector('p');if(!h)return false;if(mark&&mark.textContent!=='R')mark.textContent='R';if(h.textContent.trim()!=='Rise')h.textContent='Rise';if(p&&p.textContent!=='旭丘合格のための学習OS')p.textContent='旭丘合格のための学習OS';return true};
+const canonicalizePublicNav=()=>{const nav=document.querySelector('#app .nav .navin');if(!nav||!String(nav.dataset?.riseNav||'').startsWith('complete:'))return false;const h=nav.querySelector('[data-route="home"]'),e=nav.querySelector('[data-route="subjects"]'),l=nav.querySelector('[data-route="analytics"]'),r=nav.querySelector('a[href*="review"]');if(!h||!e||!l||!r)return false;const label=(x,text)=>{if(x.getAttribute('aria-label')!==text)x.setAttribute('aria-label',text);const s=x.querySelector('span');if(s&&s.textContent!==text)s.textContent=text};label(h,'ホーム');label(e,'入試');label(l,'学習');label(r,'復習');const wanted=[h,e,l,r],current=[...nav.children];if(current.length!==wanted.length||wanted.some((x,i)=>current[i]!==x))nav.replaceChildren(...wanted);return true};
+const publicNavReady=()=>{if(!canonicalizePublicNav())return false;const nav=document.querySelector('#app .nav .navin'),tabs=[...nav.children];if(tabs.length!==expectedTabs.length)return false;const labels=tabs.map(x=>(x.querySelector('span')?.textContent||x.getAttribute('aria-label')||'').trim());return expectedTabs.every((label,i)=>labels[i]===label)};
+const chromeReady=r=>canonicalizeBrand()&&(!core.has(r)||publicNavReady());
+const contentReady=(main,r)=>{const p=main.querySelector(`${panel[r]}[data-ui-ver="4.2.0"]`);if(!p)return false;if(r==='home')return p.querySelector('.rv4Welcome h2')?.textContent?.trim()==='今日やることを、迷わない。'&&p.querySelector('.rv4Plan .rv4CardHead h3')?.textContent?.trim()==='次の一手';if(r==='subjects')return p.dataset.riseIa==='exam-priority';if(r==='analytics')return p.dataset.riseIa==='learn-priority';return true};
+const ready=()=>{const main=document.querySelector('#app main');if(!window.__RISE_UI_V4__||!main)return false;const r=route();return chromeReady(r)&&(!core.has(r)||contentReady(main,r))};
+const conceal=()=>{if(!blockedAt)blockedAt=Date.now();root.classList.add('aa-app-booting')};
+const clearRefreshMarker=()=>{try{const u=new URL(location.href);if(!u.searchParams.has('rise_refresh'))return;u.searchParams.delete('rise_refresh');history.replaceState(history.state,'',u.href)}catch(_){}};
+const reveal=()=>{blockedAt=0;root.classList.remove('aa-app-booting','aa-app-boot-slow','aa-app-boot-error');clearRefreshMarker()};
+const updateBootState=()=>{if(ready()){reveal();return true}conceal();const age=Date.now()-(blockedAt||Date.now());root.classList.toggle('aa-app-boot-slow',age>=4000);root.classList.toggle('aa-app-boot-error',age>=20000);return false};
+const nudge=()=>{try{document.dispatchEvent(new Event('aa:v23ready'))}catch(_){}};
+const scheduleCheck=()=>{if(checkRaf)return;checkRaf=requestAnimationFrame(()=>{checkRaf=0;updateBootState()})};
+const stopRecoveryTimers=()=>{for(const id of recoveryTimers)clearTimeout(id);recoveryTimers=[]};
+const startRecoveryWindow=()=>{stopRecoveryTimers();const token=++recoveryToken;blockedAt=Date.now();conceal();for(const delay of [0,80,240,700,1600,3200,6000,12000,20000]){recoveryTimers.push(setTimeout(()=>{if(token!==recoveryToken)return;if(updateBootState())return;if(delay<20000)nudge()},delay))}};
+const attach=()=>{const app=document.getElementById('app');if(app&&!observer){observer=new MutationObserver(scheduleCheck);observer.observe(app,{childList:true,subtree:true})}if(ready())reveal();else startRecoveryWindow()};
+async function refreshLatest(){const btn=document.getElementById('riseBootRetry');if(btn){btn.disabled=true;btn.textContent='最新版を取得中…'}try{if('serviceWorker'in navigator){const regs=await navigator.serviceWorker.getRegistrations();await Promise.allSettled(regs.map(r=>r.update()));for(const r of regs){try{r.waiting?.postMessage?.({type:'SKIP_WAITING'})}catch(_){}}await new Promise(resolve=>setTimeout(resolve,450))}}catch(_){}const u=new URL(location.href);u.searchParams.set('rise_refresh',Date.now().toString(36));location.replace(u.href)}
+document.addEventListener('DOMContentLoaded',attach,{once:true});
+addEventListener('pageshow',()=>{if(ready())reveal();else attach()});
+document.addEventListener('rise:navigation',()=>{conceal();startRecoveryWindow()});
+document.addEventListener('click',e=>{if(e.target?.closest?.('#riseBootRetry'))void refreshLatest()});
+})();
 </script>
 <link rel="stylesheet" href="./app/ui/base.css">
 <link rel="stylesheet" href="./app/ui/rise-ui-v4.css?v=4.2.0">
@@ -43,37 +72,37 @@ html.aa-app-boot-error #riseBootRecovery{visibility:visible!important;position:f
 <body>
 <div id="riseBootRecovery" role="alert" aria-live="assertive"><strong>Riseを表示できませんでした</strong><span>旧画面には切り替えず、安全に停止しています。通信状態を確認して最新版を再読み込みしてください。</span><button id="riseBootRetry" type="button">Riseを再読み込み</button></div>
 <div class="app" id="app"></div>
-<script src="./app/runtime-registry.js"></script>
+<script defer src="./app/runtime-registry.js"></script>
 <!-- Must run before the legacy runtime: blocks its obsolete controllerchange -> location.reload handler. -->
-<script src="./app/pwa/legacy-controller-reload-guard-v1.js?v=1.0.0"></script>
-<script src="./app/legacy/main-runtime.js"></script>
+<script defer src="./app/pwa/legacy-controller-reload-guard-v1.js?v=1.0.0"></script>
+<script defer src="./app/legacy/main-runtime.js"></script>
 <!-- Prevent any later legacy render from becoming visible on Rise core routes. -->
-<script src="./app/ui/rise-legacy-shell-guard-v1.js?v=1.0.0"></script>
-<script src="./learning-engine-v15.js"></script>
-<script src="./japanese-vocabulary-10000.js"></script>
-<script src="./curriculum-v2-data.js"></script>
-<script src="./japanese-public-domain.js"></script>
-<script src="./math-exam/engine.js?version=1.0.0"></script>
-<script src="./learning-engine-v2.js"></script>
-<script src="./learning-engine-v22.js"></script>
-<script src="./math-exam/adapter.js?version=1.1.0"></script>
+<script defer src="./app/ui/rise-legacy-shell-guard-v1.js?v=1.0.0"></script>
+<script defer src="./learning-engine-v15.js"></script>
+<script defer src="./japanese-vocabulary-10000.js"></script>
+<script defer src="./curriculum-v2-data.js"></script>
+<script defer src="./japanese-public-domain.js"></script>
+<script defer src="./math-exam/engine.js?version=1.0.0"></script>
+<script defer src="./learning-engine-v2.js"></script>
+<script defer src="./learning-engine-v22.js"></script>
+<script defer src="./math-exam/adapter.js?version=1.1.0"></script>
 <!-- AA-COMPANION-V2 -->
-<script src="./aa-companion-v2.js?v=6.5.2"></script>
-<script src="./aa-companion-mobile-fix.js?v=6.5.2"></script>
+<script defer src="./aa-companion-v2.js?v=6.5.2"></script>
+<script defer src="./aa-companion-mobile-fix.js?v=6.5.2"></script>
 <!-- PHASE-1 ARCHITECTURE: App Shell -> State -> Learning -> Subjects -> UI -> PWA -> QA -->
-<script src="./app/app-shell.js"></script>
-<script src="./app/state/state-manager.js"></script>
-<script src="./app/learning/verified-question-pool-v1.js?v=1.0.0"></script>
-<script src="./app/learning/learning-engine.js"></script>
-<script src="./app/subjects/subject-engines.js"></script>
-<script src="./app/ui/ui-runtime.js"></script>
-<script src="./app/pwa/pwa-runtime.js?v=4.3.0"></script>
-<script src="./app/qa/qa-runtime.js"></script>
+<script defer src="./app/app-shell.js"></script>
+<script defer src="./app/state/state-manager.js"></script>
+<script defer src="./app/learning/verified-question-pool-v1.js?v=1.0.0"></script>
+<script defer src="./app/learning/learning-engine.js"></script>
+<script defer src="./app/subjects/subject-engines.js"></script>
+<script defer src="./app/ui/ui-runtime.js"></script>
+<script defer src="./app/pwa/pwa-runtime.js?v=4.3.0"></script>
+<script defer src="./app/qa/qa-runtime.js"></script>
 <!-- NON-EXECUTABLE LEGACY CI METADATA ONLY: ./app/ui/rise-stable-root-v4.js?v=2.3.0 | ./app/pwa/pwa-runtime.js?v=4.2.1 | ./app/ui/rise-structure-v4.css?v=4.2.0 | aa:v23ready -->
 <!-- PHASE-2 UI: one state owner, one navigation owner, one live DOM; no cloned stable-root UI. -->
-<script src="./app/navigation/navigation-runtime-v1.js?v=1.0.4"></script>
-<script src="./app/ui/rise-ui-v4.js?v=4.2.0"></script>
+<script defer src="./app/navigation/navigation-runtime-v1.js?v=1.0.5"></script>
+<script defer src="./app/ui/rise-ui-v4.js?v=4.2.0"></script>
 <!-- Information architecture enhances the already canonical public navigation and content hierarchy. -->
-<script src="./app/ui/rise-information-architecture-v1.js?v=1.0.1"></script>
+<script defer src="./app/ui/rise-information-architecture-v1.js?v=1.0.1"></script>
 </body>
 </html>
