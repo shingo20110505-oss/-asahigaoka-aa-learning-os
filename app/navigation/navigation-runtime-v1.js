@@ -119,5 +119,5 @@ document.addEventListener('aa:v23ready',schedulePublicNavSync);
 document.addEventListener('rise:navigation',schedulePublicNavSync);
 addEventListener('pageshow',schedulePublicNavSync);
 schedulePublicNavSync();
-window.__RISE_NAVIGATION_V1__=Object.freeze({version:'1.0.3',uiSync:'deterministic-public-four-tab-nav-plus-preconceal-all-settings-legacy-renders-and-multiphase-rise-recovery',coreRoutes:[...CORE_ROUTES],settingsRenderActions:[...SETTINGS_RENDER_ACTIONS],navigate:navigateCore,review:navigateReview,current:stateRoute,syncPublicNav});
+window.__RISE_NAVIGATION_V1__=Object.freeze({version:'1.0.3',uiSync:'preconceal-all-settings-legacy-renders-and-deterministic-multiphase-rise-recovery',coreRoutes:[...CORE_ROUTES],settingsRenderActions:[...SETTINGS_RENDER_ACTIONS],navigate:navigateCore,review:navigateReview,current:stateRoute,syncPublicNav});
 })();
