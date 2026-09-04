@@ -16,6 +16,7 @@ const SUBJECT_LABEL={mixed:'3教科',english:'英語',japanese:'国語',social:'
 const JA_STATE_KEY='kokugoChronologiaStateV2';
 const JA_WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1';
 const JA_CYCLE_KEY='aa_kokugo_vocab_full15000_cycle_v1';
+const JA_MEANING_SCRIPT='../kokugo-chronologia/meaning-ja-overrides.js?v=rise-unified-ja-20260905';
 
 const ui={
  status:$('#connectionStatus'),start:$('#startSession'),focus:$('#focusToggle'),count:$('#sessionCount'),mode:$('#quizMode'),filterA:$('#filterA'),filterB:$('#filterB'),filterALabel:$('#filterALabel'),filterBLabel:$('#filterBLabel'),
@@ -109,18 +110,43 @@ function removeJaWrong(item){const k=jaWrongKey(item.raw);saveJaWrong(loadJaWron
 function markJaReview(item){const state=loadJaState();state[item.raw.id]='review';saveJaState(state)}
 function loadJaCycle(){try{const v=JSON.parse(localStorage.getItem(JA_CYCLE_KEY)||'{}');return v&&typeof v==='object'?v:{}}catch{return{}}}
 function saveJaCycle(v){try{localStorage.setItem(JA_CYCLE_KEY,JSON.stringify(v))}catch(_){} }
+function directJaMeaning(id){const v=(window.KOKUGO_DIRECT_MEANINGS||{})[String(id??'')];return text(v)}
+function loadScriptOnce(src,id){
+ return new Promise((resolve,reject)=>{
+   if(id&&document.getElementById(id)){if(window.KOKUGO_DIRECT_MEANINGS)resolve();else setTimeout(()=>window.KOKUGO_DIRECT_MEANINGS?resolve():reject(new Error('日本語意味辞書を初期化できませんでした')),0);return}
+   const s=document.createElement('script');if(id)s.id=id;s.src=src;s.async=true;s.onload=resolve;s.onerror=()=>reject(new Error('日本語意味辞書を読み込めませんでした'));document.head.appendChild(s);
+ });
+}
+async function ensureJaMeanings(){
+ const current=window.KOKUGO_DIRECT_MEANINGS;
+ if(current&&typeof current==='object'&&Object.keys(current).length>=15000)return current;
+ await loadScriptOnce(JA_MEANING_SCRIPT,'rise-kokugo-direct-meanings');
+ const loaded=window.KOKUGO_DIRECT_MEANINGS,count=loaded&&typeof loaded==='object'?Object.keys(loaded).length:0;
+ if(count<15000)throw new Error(`日本語意味辞書 ${count.toLocaleString()}件（15,000未満）`);
+ return loaded;
+}
 
 async function loadJapanese(){
  try{
-   const res=await fetch('../kokugo-chronologia/data.jsonl?v=rise-unified-20260904',{cache:'no-cache'});if(!res.ok)throw new Error('HTTP '+res.status);
+   await ensureJaMeanings();
+   const res=await fetch('../kokugo-chronologia/data.jsonl?v=rise-unified-20260905-ja1',{cache:'no-cache'});if(!res.ok)throw new Error('HTTP '+res.status);
    const rows=(await res.text()).split(/\r?\n/).filter(Boolean).map(x=>JSON.parse(x));if(rows.length!==15000)throw new Error('15,000語データ件数 '+rows.length);
-   const full=rows.map((x,i)=>{const raw={id:'quiz-full-'+String(x.id??i),word:text(x.term),reading:text(x.reading),meaning:text(x.meaning),type:['yoji','idiom','four'].includes(x.type)?x.type:'four',rank:(x.type==='yoji'||x.type==='idiom')?'B':'C',source:'full15000'};return raw});
-   const bank=[...(window.AA_JUKUGO_BANK||[]),...(window.AA_JUKUGO_ADVANCED||[])].map(x=>({id:x.id,word:text(x.word),reading:text(x.reading),meaning:text(x.meaning),type:x.kind==='二字熟語'?'two':'three',rank:x.rank||'C',source:'jukugo'}));
-   const curated=(window.AA_IDIOM_BANK||[]).map((x,i)=>({id:'quiz-curated-'+i,word:text(x.word),reading:text(x.reading),meaning:text(x.meaning),type:x.kind==='四字熟語'?'yoji':'idiom',rank:x.rank||'B',source:'curated'}));
+   const seenFull=new Set();
+   const full=rows.map((x,i)=>{
+     const meaning=directJaMeaning(x.id??i),raw={id:'quiz-full-'+String(x.id??i),word:text(x.term),reading:text(x.reading),meaning,type:['yoji','idiom','four'].includes(x.type)?x.type:'four',rank:(x.type==='yoji'||x.type==='idiom')?'B':'C',source:'full15000'};
+     if(!meaning||!hasJapanese(meaning))throw new Error('日本語意味が未確認: '+text(x.term||x.id||i));
+     const key=raw.word+'|'+raw.reading;if(!raw.word||seenFull.has(key))throw new Error('15,000語データに空欄または重複: '+key);seenFull.add(key);
+     return raw;
+   });
+   const bank=[...(window.AA_JUKUGO_BANK||[]),...(window.AA_JUKUGO_ADVANCED||[])].map(x=>({id:x.id,word:text(x.word),reading:text(x.reading),meaning:directJaMeaning(x.id)||text(x.meaning),type:x.kind==='二字熟語'?'two':'three',rank:x.rank||'C',source:'jukugo'}));
+   const curated=(window.AA_IDIOM_BANK||[]).map((x,i)=>({id:'quiz-curated-'+i,word:text(x.word),reading:text(x.reading),meaning:directJaMeaning(x.id)||text(x.meaning),type:x.kind==='四字熟語'?'yoji':'idiom',rank:x.rank||'B',source:'curated'}));
    const merged=uniqueBy([...full,...bank,...curated],x=>x.word+'|'+x.reading).filter(x=>x.id&&x.word&&x.meaning&&hasJapanese(x.meaning));
    data.japanese=merged.map(raw=>({raw,record:core.normalizeJapanese(raw)}));
-   ready.japanese=full.length===15000&&data.japanese.length>=15000;updateCounts();setStatus();if(subject==='japanese')configureControls();
- }catch(err){ui.jaCount.textContent='接続失敗';ui.jaSub.textContent=text(err?.message||err);setStatus()}
+   ready.japanese=full.length===15000&&data.japanese.length>=15000;
+   if(!ready.japanese)throw new Error(`日本語確認済み候補 ${data.japanese.length.toLocaleString()}語（15,000未満）`);
+   window.__AA_RISE_UNIFIED_JAPANESE_COUNT__=data.japanese.length;
+   updateCounts();setStatus();if(subject==='japanese')configureControls();
+ }catch(err){ready.japanese=false;ui.jaCount.textContent='接続失敗';ui.jaSub.textContent=text(err?.message||err);setStatus()}
 }
 
 function injectSocialBridge(){

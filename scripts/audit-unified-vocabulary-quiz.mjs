@@ -28,6 +28,20 @@ check('Japanese wrong queue key is native',js.includes("JA_WRONG_KEY='aa_kokugo_
 check('Japanese no-repeat cycle key is native',js.includes("JA_CYCLE_KEY='aa_kokugo_vocab_full15000_cycle_v1'"));
 check('Japanese requires the full 15,000-row source',js.includes('rows.length!==15000'));
 check('Japanese full IDs match native quiz-full IDs',js.includes("id:'quiz-full-'+String(x.id??i)"));
+check('Japanese unified loader uses the verified native meaning source',js.includes('meaning-ja-overrides.js')&&js.includes('KOKUGO_DIRECT_MEANINGS')&&js.includes('directJaMeaning'));
+
+let japaneseRows=[];
+let directMeanings={};
+let japaneseDataError='';
+try{
+ japaneseRows=read('kokugo-chronologia/data.jsonl').split(/\r?\n/).filter(Boolean).map(line=>JSON.parse(line));
+ const sandbox={window:{}};vm.createContext(sandbox);vm.runInContext(read('kokugo-chronologia/meaning-ja-overrides.js'),sandbox,{filename:'meaning-ja-overrides.js'});directMeanings=sandbox.window.KOKUGO_DIRECT_MEANINGS||{};
+}catch(error){japaneseDataError=String(error?.message||error)}
+const hasJapanese=value=>/[\u3040-\u30ff\u3400-\u9fff]/.test(String(value||''));
+const missingJapanese=japaneseRows.filter((row,index)=>!hasJapanese(directMeanings[String(row.id??index)]));
+check('Japanese source is exactly 15,000 rows',!japaneseDataError&&japaneseRows.length===15000,japaneseDataError||String(japaneseRows.length));
+check('All 15,000 Japanese rows have verified Japanese meanings',!japaneseDataError&&japaneseRows.length===15000&&missingJapanese.length===0,missingJapanese.slice(0,5).map(x=>x.term||x.id).join(', '));
+check('Unified runtime rejects unverified Japanese meanings',js.includes("if(!meaning||!hasJapanese(meaning))throw new Error('日本語意味が未確認:"));
 check('Social writes through Chronologia recordAnswer',js.includes('recordAnswer(item.id,!!ok)'));
 check('Social bridge waits for effective 1,000-row Chronologia',js.includes('if(DATA.length<1000)throw 0'));
 check('Chronologia remains an independent linked learning asset',html.includes('href="../chronologia.html"')&&html.includes('年表本体は独立教材として継続'));
@@ -36,5 +50,5 @@ check('Japanese native page remains linked',html.includes('href="../kokugo-chron
 check('Learning card describes current three-subject scope',!/英語・国語・理科・社会/.test(card)&&/英語・国語・社会/.test(card));
 check('Unified quiz runtime has no unsupported subject dispatcher',!/(science|理科)/.test(js));
 
-console.log(JSON.stringify({version:'1.0.1',checkedAt:new Date().toISOString(),checks,failures},null,2));
+console.log(JSON.stringify({version:'1.0.2',checkedAt:new Date().toISOString(),checks,failures,japanese:{rows:japaneseRows.length,directMeanings:Object.keys(directMeanings).length,missingJapanese:missingJapanese.length}},null,2));
 if(failures.length)process.exit(1);
