@@ -29,6 +29,7 @@ check('Japanese no-repeat cycle key is native',js.includes("JA_CYCLE_KEY='aa_kok
 check('Japanese requires the full 15,000-row source',js.includes('rows.length!==15000'));
 check('Japanese full IDs match native quiz-full IDs',js.includes("id:'quiz-full-'+String(x.id??i)"));
 check('Japanese unified loader uses the verified native meaning source',js.includes('meaning-ja-overrides.js')&&js.includes('KOKUGO_DIRECT_MEANINGS')&&js.includes('directJaMeaning'));
+check('Each new question re-enables typed-answer controls',js.includes("ui.answerInput.value='';ui.answerInput.disabled=false;ui.submit.disabled=false;"));
 
 let japaneseRows=[];
 let directMeanings={};
@@ -50,5 +51,5 @@ check('Japanese native page remains linked',html.includes('href="../kokugo-chron
 check('Learning card describes current three-subject scope',!/英語・国語・理科・社会/.test(card)&&/英語・国語・社会/.test(card));
 check('Unified quiz runtime has no unsupported subject dispatcher',!/(science|理科)/.test(js));
 
-console.log(JSON.stringify({version:'1.0.2',checkedAt:new Date().toISOString(),checks,failures,japanese:{rows:japaneseRows.length,directMeanings:Object.keys(directMeanings).length,missingJapanese:missingJapanese.length}},null,2));
+console.log(JSON.stringify({version:'1.0.3',checkedAt:new Date().toISOString(),checks,failures,japanese:{rows:japaneseRows.length,directMeanings:Object.keys(directMeanings).length,missingJapanese:missingJapanese.length}},null,2));
 if(failures.length)process.exit(1);
