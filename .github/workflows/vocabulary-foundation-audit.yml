@@ -5,9 +5,11 @@ on:
     paths:
       - 'vocabulary-core/**'
       - 'scripts/audit-vocabulary-foundation.mjs'
+      - 'scripts/report-vocabulary-data-quality.mjs'
       - 'vocab.html'
       - 'vocab-wrong-quiz-v1.js'
       - 'ai-reading-v1.js'
+      - 'app/legacy/main-runtime.js'
       - 'kokugo-chronologia/**'
       - 'chronologia.html'
       - '.github/workflows/vocabulary-foundation-audit.yml'
@@ -16,9 +18,11 @@ on:
     paths:
       - 'vocabulary-core/**'
       - 'scripts/audit-vocabulary-foundation.mjs'
+      - 'scripts/report-vocabulary-data-quality.mjs'
       - 'vocab.html'
       - 'vocab-wrong-quiz-v1.js'
       - 'ai-reading-v1.js'
+      - 'app/legacy/main-runtime.js'
       - 'kokugo-chronologia/**'
       - 'chronologia.html'
       - '.github/workflows/vocabulary-foundation-audit.yml'
@@ -35,5 +39,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: Audit vocabulary foundation
+      - name: Audit vocabulary foundation contracts
         run: node scripts/audit-vocabulary-foundation.mjs
+      - name: Report vocabulary data quality
+        run: node scripts/report-vocabulary-data-quality.mjs
