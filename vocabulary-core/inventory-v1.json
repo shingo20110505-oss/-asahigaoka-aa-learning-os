@@ -1,0 +1,51 @@
+{
+  "version": "1.0.0",
+  "scope": {
+    "includedSubjects": ["english", "japanese", "social"],
+    "excludedSubjects": ["science", "math"],
+    "quizUiPhase": "deferred",
+    "principle": "Preserve native data, quiz semantics and progress; unify through adapters before replacing any existing UI."
+  },
+  "streams": {
+    "english": {
+      "dataEntry": "vocab.html",
+      "wrongQuizModule": "vocab-wrong-quiz-v1.js",
+      "readingModule": "ai-reading-v1.js",
+      "nativeApi": "AA_VOCAB_CATALOG_API",
+      "progressStore": "asahi_learning_os_v1",
+      "wrongStore": "aa_vocab_quiz_wrong_v1",
+      "nativeModes": ["en-ja", "ja-en", "spell"],
+      "preserve": ["SRS", "lapses", "retention", "due", "wrong-only", "10/20/30 sessions", "English reading linkage"],
+      "progressPolicy": "reference-native-do-not-copy"
+    },
+    "japanese": {
+      "page": "kokugo-chronologia/index.html",
+      "fullData": "kokugo-chronologia/data.jsonl",
+      "quizModule": "kokugo-chronologia/quiz-rank-select-v1.js",
+      "touchGuard": "kokugo-chronologia/quiz-interaction-fix.js",
+      "expectedFullRows": 15000,
+      "progressStore": "kokugoChronologiaStateV2",
+      "wrongStore": "aa_kokugo_vocab_wrong_queue_v1",
+      "cycleStore": "aa_kokugo_vocab_full15000_cycle_v1",
+      "nativeKinds": ["two", "three", "yoji", "idiom", "four", "all"],
+      "nativeModes": ["random", "meaning", "reading", "word"],
+      "preserve": ["15,000-word bank", "A/B/C rank filter", "no-repeat cycle", "wrong queue", "learned/review", "mobile touch hardening"],
+      "progressPolicy": "reference-native-do-not-copy"
+    },
+    "social": {
+      "page": "chronologia.html",
+      "progressStore": "chronologia-aichi-v3",
+      "nativeDirections": ["mixed", "eventToYear", "yearToEvent"],
+      "nativeCounts": [10, 20, 30],
+      "preserve": ["event-to-year input", "year-to-event choices", "same-period distractors", "stage", "nextReview", "weak", "period filter"],
+      "chronologiaIndependent": true,
+      "progressPolicy": "reference-native-do-not-copy"
+    }
+  },
+  "parallelWorkstreams": [
+    {"id": "EN", "goal": "Inventory and normalize English word/phrase metadata without replacing the existing SRS."},
+    {"id": "JA", "goal": "Audit and normalize the 15,000-entry Japanese bank while preserving rank, cycle and wrong-state semantics."},
+    {"id": "SOC", "goal": "Expose Chronologia quiz facts through an adapter while keeping Chronologia as an independent learning asset."},
+    {"id": "QA", "goal": "Continuously verify scope, row counts, storage keys and native integration contracts."}
+  ]
+}

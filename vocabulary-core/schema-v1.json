@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rise.local/schema/vocabulary-core-v1.json",
+  "title": "Rise Vocabulary Core Record v1",
+  "description": "Common, non-destructive vocabulary record for the English/Japanese/Social integrated quiz foundation. Native progress remains in each existing system.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "subject", "category", "term", "meaning", "source", "progressRef"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "subject": {"type": "string", "enum": ["english", "japanese", "social"]},
+    "category": {"type": "string", "minLength": 1},
+    "term": {"type": "string", "minLength": 1},
+    "reading": {"type": ["string", "null"]},
+    "meaning": {"type": "string", "minLength": 1},
+    "examples": {"type": "array", "items": {"type": "string"}, "default": []},
+    "importance": {"type": ["string", "number", "null"]},
+    "examRank": {"type": ["string", "null"]},
+    "tags": {"type": "array", "items": {"type": "string"}, "default": []},
+    "relatedTerms": {"type": "array", "items": {"type": "string"}, "default": []},
+    "confusionGroup": {"type": ["string", "null"]},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "nativeId"],
+      "properties": {
+        "system": {"type": "string", "minLength": 1},
+        "nativeId": {"type": "string", "minLength": 1},
+        "path": {"type": ["string", "null"]},
+        "quality": {"type": ["string", "null"]}
+      }
+    },
+    "progressRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["store", "nativeId"],
+      "properties": {
+        "store": {"type": "string", "minLength": 1},
+        "nativeId": {"type": "string", "minLength": 1},
+        "adapter": {"type": ["string", "null"]},
+        "wrongStore": {"type": ["string", "null"]},
+        "cycleStore": {"type": ["string", "null"]}
+      }
+    },
+    "english": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "word": {"type": ["string", "null"]},
+        "meaningJa": {"type": ["string", "null"]},
+        "partOfSpeech": {"type": ["string", "null"]},
+        "pronunciation": {"type": ["string", "null"]},
+        "forms": {"type": "array", "items": {"type": "string"}, "default": []}
+      }
+    },
+    "extensions": {"type": "object", "additionalProperties": true, "default": {}}
+  }
+}
