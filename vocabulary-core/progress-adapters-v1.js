@@ -1,5 +1,5 @@
 /* Rise Vocabulary Progress Adapters v1
- * Foundation only. Pure read functions: no localStorage/IndexedDB access and no writes.
+ * Foundation only. Pure read functions: no browser-storage API access and no writes.
  * Native systems remain the source of truth.
  */
 (function (root, factory) {
