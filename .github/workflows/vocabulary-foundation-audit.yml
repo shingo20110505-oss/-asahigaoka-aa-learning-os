@@ -5,26 +5,34 @@ on:
     paths:
       - 'vocabulary-core/**'
       - 'scripts/audit-vocabulary-foundation.mjs'
+      - 'scripts/audit-vocabulary-normalization.mjs'
       - 'scripts/report-vocabulary-data-quality.mjs'
       - 'vocab.html'
       - 'vocab-wrong-quiz-v1.js'
       - 'ai-reading-v1.js'
       - 'app/legacy/main-runtime.js'
+      - 'learning-engine-v15.js'
       - 'kokugo-chronologia/**'
       - 'chronologia.html'
+      - 'chronologia-v7-data-*.js'
+      - 'chronologia-force1000-v1.js'
       - '.github/workflows/vocabulary-foundation-audit.yml'
   push:
     branches: [main]
     paths:
       - 'vocabulary-core/**'
       - 'scripts/audit-vocabulary-foundation.mjs'
+      - 'scripts/audit-vocabulary-normalization.mjs'
       - 'scripts/report-vocabulary-data-quality.mjs'
       - 'vocab.html'
       - 'vocab-wrong-quiz-v1.js'
       - 'ai-reading-v1.js'
       - 'app/legacy/main-runtime.js'
+      - 'learning-engine-v15.js'
       - 'kokugo-chronologia/**'
       - 'chronologia.html'
+      - 'chronologia-v7-data-*.js'
+      - 'chronologia-force1000-v1.js'
       - '.github/workflows/vocabulary-foundation-audit.yml'
   workflow_dispatch:
 
@@ -43,3 +51,5 @@ jobs:
         run: node scripts/audit-vocabulary-foundation.mjs
       - name: Report vocabulary data quality
         run: node scripts/report-vocabulary-data-quality.mjs
+      - name: Audit native normalization readiness
+        run: node scripts/audit-vocabulary-normalization.mjs
