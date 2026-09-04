@@ -58,6 +58,12 @@ jobs:
           PAGE_URL: http://127.0.0.1:4173/
           SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
         run: node scripts/verify-unified-vocabulary-public.mjs
+      - name: Diagnose deployed base unified quiz from PR
+        if: github.event_name == 'pull_request'
+        env:
+          PAGE_URL: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+          SOURCE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: node scripts/verify-unified-vocabulary-public.mjs
       - name: Wait for matching Pages release
         if: github.event_name == 'push'
         env:
