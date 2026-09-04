@@ -207,7 +207,7 @@ function buildSession(){
  if(subject==='japanese')return buildJapaneseQuestions(count,mode,a,b,focusWeak,false);
  return buildSocialQuestions(count,mode,a,b,focusWeak);
 }
-function subjectModeLabel(q){if(q.subject==='english')return({en-ja:'英→日',ja-en:'日→英',spell:'スペル'})[q.actual]||q.actual;if(q.subject==='japanese')return({meaning:'意味',reading:'読み',word:'語句'})[q.actual]||q.actual;return q.actual==='eventToYear'?'出来事→年号':'年号→出来事'}
+function subjectModeLabel(q){if(q.subject==='english')return({'en-ja':'英→日','ja-en':'日→英',spell:'スペル'})[q.actual]||q.actual;if(q.subject==='japanese')return({meaning:'意味',reading:'読み',word:'語句'})[q.actual]||q.actual;return q.actual==='eventToYear'?'出来事→年号':'年号→出来事'}
 function speak(word){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=.88;speechSynthesis.speak(u)}catch(_){}}
 function showQuestion(){
  if(!session)return;if(session.index>=session.questions.length){finishSession();return}
