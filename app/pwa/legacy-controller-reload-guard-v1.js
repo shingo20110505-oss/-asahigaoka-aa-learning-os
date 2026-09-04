@@ -32,6 +32,14 @@ function ensureCanonicalNav(){
 }
 let navRaf=0;function scheduleCanonicalNav(){if(navRaf)return;navRaf=requestAnimationFrame(()=>{navRaf=0;ensureCanonicalNav()})}
 if(app){new MutationObserver(scheduleCanonicalNav).observe(app,{childList:true,subtree:true});scheduleCanonicalNav();document.addEventListener('aa:v23ready',scheduleCanonicalNav);document.addEventListener('rise:navigation',scheduleCanonicalNav);addEventListener('pageshow',scheduleCanonicalNav)}
+let retrying=false;
+async function refreshStaleRise(e){
+ e?.preventDefault?.();e?.stopImmediatePropagation?.();if(retrying)return;retrying=true;
+ root.classList.remove('aa-app-boot-error');root.classList.add('aa-app-booting','aa-app-boot-slow');
+ try{const reg=await navigator.serviceWorker?.getRegistration?.();await reg?.update?.();reg?.waiting?.postMessage?.({type:'SKIP_WAITING'})}catch(_){}
+ const u=new URL(location.href);u.searchParams.set('rise_refresh',Date.now().toString(36));location.replace(u.href);
+}
+document.addEventListener('click',e=>{if(e.target?.closest?.('#riseBootRetry'))void refreshStaleRise(e)},true);
 if(!sw||typeof sw.addEventListener!=='function')return;
 const nativeAdd=sw.addEventListener.bind(sw);
 const nativeRemove=sw.removeEventListener.bind(sw);
