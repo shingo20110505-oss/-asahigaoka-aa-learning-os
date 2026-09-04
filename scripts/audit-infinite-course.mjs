@@ -1,0 +1,26 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+const root=process.cwd(),read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const html=read('quiz/index.html'),engine=read('quiz/infinite-course-v1.js'),bankCode=read('quiz/japanese-classics-bank-v1.js');
+const failures=[],checks=[];const check=(name,ok,detail='')=>{checks.push({name,ok:!!ok,detail});if(!ok)failures.push(name+(detail?`: ${detail}`:''))};
+for(const [file,code] of [['infinite-course-v1.js',engine],['japanese-classics-bank-v1.js',bankCode]]){let err='';try{new vm.Script(code,{filename:file})}catch(e){err=String(e?.message||e)}check(`${file} parses`,!err,err)}
+const sandbox={window:{},Object};vm.createContext(sandbox);vm.runInContext(bankCode,sandbox,{filename:'japanese-classics-bank-v1.js'});const bank=sandbox.window.RISE_JAPANESE_CLASSICS_BANK_V1||{};
+check('Classical Japanese bank has at least 30 questions',(bank.classical?.length||0)>=30,String(bank.classical?.length||0));
+check('Kanbun bank has at least 20 questions',(bank.kanbun?.length||0)>=20,String(bank.kanbun?.length||0));
+const all=[...(bank.classical||[]),...(bank.kanbun||[])],ids=all.map(x=>x.id),unique=new Set(ids);
+check('Classics IDs are unique',unique.size===ids.length,`${unique.size}/${ids.length}`);
+check('Every classics question has four unique choices containing the answer',all.every(x=>Array.isArray(x.choices)&&x.choices.length===4&&new Set(x.choices).size===4&&x.choices.includes(x.answer)));
+check('Quiz page loads classics bank',html.includes('./japanese-classics-bank-v1.js'));
+check('Quiz page loads infinite engine',html.includes('./infinite-course-v1.js'));
+check('Infinite option is installed',engine.includes("o.value='infinite'")&&engine.includes('∞ 無限コース'));
+check('Infinite course can be ended manually',engine.includes('endInfiniteCourse')&&engine.includes('無限コースを終了'));
+check('Japanese UI exposes classical and kanbun filters',engine.includes("add('classical','古文')")&&engine.includes("add('kanbun','漢文')"));
+check('Infinite Japanese all mixes vocabulary/classical/kanbun',engine.includes("if(r<.2)return classicQuestion('classical')")&&engine.includes("if(r<.4)return classicQuestion('kanbun')"));
+check('Three-subject infinite uses English/Japanese/Social',engine.includes("let order=['english','japanese','social']"));
+check('English infinite writes to native English API',engine.includes("api.record(item.id,ok,ms,'infinite-'"));
+check('Japanese vocabulary infinite reuses native history keys',engine.includes("JA_STATE_KEY='kokugoChronologiaStateV2'")&&engine.includes("JA_WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1'")&&engine.includes("JA_CYCLE_KEY='aa_kokugo_vocab_full15000_cycle_v1'"));
+check('Social infinite writes to native Chronologia API',engine.includes('api.record(item.id,ok)'));
+check('Classics progress is subject-specific, not a unified aggregate score',engine.includes("CLASSIC_PROGRESS_KEY='rise_kokugo_classics_progress_v1'")&&!engine.includes('rise-unified-vocab-quiz-v1'));
+console.log(JSON.stringify({version:'1.0.0',checks,failures,bank:{classical:bank.classical?.length||0,kanbun:bank.kanbun?.length||0,total:all.length}},null,2));
+if(failures.length)process.exit(1);

@@ -8,6 +8,8 @@ on:
       - 'kokugo-chronologia/meaning-ja-overrides.js'
       - 'scripts/verify-unified-vocabulary-public.mjs'
       - 'scripts/audit-unified-vocabulary-quiz.mjs'
+      - 'scripts/audit-infinite-course.mjs'
+      - 'scripts/verify-infinite-course.mjs'
       - '.github/workflows/unified-vocabulary-browser-audit.yml'
   push:
     branches: [main]
@@ -17,6 +19,8 @@ on:
       - 'kokugo-chronologia/meaning-ja-overrides.js'
       - 'scripts/verify-unified-vocabulary-public.mjs'
       - 'scripts/audit-unified-vocabulary-quiz.mjs'
+      - 'scripts/audit-infinite-course.mjs'
+      - 'scripts/verify-infinite-course.mjs'
       - '.github/workflows/unified-vocabulary-browser-audit.yml'
   workflow_dispatch:
 
@@ -31,6 +35,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Audit infinite course contract
+        run: node scripts/audit-infinite-course.mjs
       - name: Install Japanese font
         run: |
           sudo apt-get update -qq
@@ -58,6 +64,12 @@ jobs:
           PAGE_URL: http://127.0.0.1:4173/
           SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
         run: node scripts/verify-unified-vocabulary-public.mjs
+      - name: Audit PR infinite course locally
+        if: github.event_name == 'pull_request'
+        env:
+          PAGE_URL: http://127.0.0.1:4173/
+          SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
+        run: node scripts/verify-infinite-course.mjs
       - name: Wait for matching Pages release
         if: github.event_name == 'push'
         env:
@@ -81,6 +93,12 @@ jobs:
           PAGE_URL: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
           SOURCE_SHA: ${{ github.sha }}
         run: node scripts/verify-unified-vocabulary-public.mjs
+      - name: Audit deployed infinite course
+        if: github.event_name == 'push'
+        env:
+          PAGE_URL: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+          SOURCE_SHA: ${{ github.sha }}
+        run: node scripts/verify-infinite-course.mjs
       - name: Upload visual evidence
         if: always()
         uses: actions/upload-artifact@v4
