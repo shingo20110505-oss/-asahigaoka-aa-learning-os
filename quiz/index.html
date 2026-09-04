@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b1024">
-<meta name="description" content="Riseの英語・国語・社会を1か所で復習する統合語彙クイズ。既存の学習履歴・誤答・SRS・Chronologia進捗をそのまま使います。">
-<title>統合語彙クイズ｜Rise</title>
+<meta name="description" content="Riseの英語・国語・社会を1か所で学習する統合クイズ。語彙・古文・漢文・Chronologiaを既存履歴のまま横断復習します。">
+<title>統合クイズ｜Rise</title>
 <style>
 :root{color-scheme:dark;--bg:#080d1d;--bg2:#0e1731;--panel:rgba(17,29,60,.78);--panel2:rgba(10,20,43,.88);--line:rgba(167,188,255,.17);--text:#f7f8ff;--sub:#afbdd8;--muted:#7889aa;--blue:#82a0ff;--violet:#a98cff;--pink:#f194c4;--ok:#70ddb5;--bad:#ff8e9a;--gold:#e6c777;--shadow:0 28px 80px rgba(0,0,0,.28);--radius:24px;--safe:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 10% -5%,rgba(87,113,244,.26),transparent 31rem),radial-gradient(circle at 92% 4%,rgba(234,117,188,.17),transparent 28rem),linear-gradient(180deg,#0a1024 0%,#070b18 72%,#060914 100%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Yu Gothic",sans-serif}button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1060px,100%);margin:auto;padding:18px 16px calc(88px + var(--safe))}.glass{border:1px solid var(--line);background:linear-gradient(145deg,rgba(23,38,76,.82),rgba(10,20,43,.84));box-shadow:var(--shadow);backdrop-filter:blur(18px)}
@@ -21,13 +21,13 @@
 </head>
 <body>
 <main class="wrap">
-  <header class="topbar"><a class="back" href="../">← Rise</a><div class="brand"><i>Q</i><span>Unified Vocabulary</span></div></header>
+  <header class="topbar"><a class="back" href="../">← Rise</a><div class="brand"><i>Q</i><span>Unified Quiz</span></div></header>
 
   <section class="hero glass">
     <div class="eyebrow">RISE · NATIVE HISTORY CONNECTED</div>
-    <h1>語彙を、ひとつの学習ループへ。</h1>
-    <p>英語・国語・社会だけを統合。ここでの正誤は別管理せず、英語SRS・国語の誤答/一巡履歴・Chronologia進捗へそのまま返します。既存の語彙ページと履歴は失われません。</p>
-    <div class="native-note">既存データを直接使用・独自成績ストアなし</div>
+    <h1>学習履歴を、ひとつの復習ループへ。</h1>
+    <p>英語・国語・社会を統合。国語は語彙に加えて古文・漢文にも対応し、間違い専用では教科を横断して未克服問題を優先します。正誤は各教材の既存履歴へ直接返します。</p>
+    <div class="native-note">既存データを直接使用・独自の統合成績ストアなし</div>
     <div class="counts">
       <article class="source en"><b id="enCount">接続中</b><span>英語</span><small id="enSub">SRSを読み込み中</small></article>
       <article class="source ja"><b id="jaCount">接続中</b><span>国語</span><small id="jaSub">15,000語を読み込み中</small></article>
@@ -37,7 +37,7 @@
   </section>
 
   <section class="setup glass" id="setupCard">
-    <div class="section-head"><div><h2>クイズ設定</h2><p>3教科ミックス、または教科ごとの本来の出題形式で演習できます。</p></div></div>
+    <div class="section-head"><div><h2>クイズ設定</h2><p>通常・無限・間違い専用を、3教科ミックスまたは教科別で演習できます。</p></div></div>
     <nav class="subject-tabs" aria-label="教科選択">
       <button class="subject on" type="button" data-subject="mixed">3教科ミックス</button>
       <button class="subject" type="button" data-subject="english">英語</button>
@@ -50,7 +50,7 @@
       <div class="control"><label id="filterALabel">配分</label><select id="filterA"></select></div>
       <div class="control"><label id="filterBLabel">範囲</label><select id="filterB"></select></div>
     </div>
-    <div class="actions"><button class="focus" id="focusToggle" type="button">苦手優先</button><button class="start" id="startSession" type="button" disabled>データ接続中…</button></div>
+    <div class="actions"><button class="focus" id="focusToggle" type="button">全教科の間違いだけ</button><button class="start" id="startSession" type="button" disabled>データ接続中…</button></div>
   </section>
 
   <section class="study glass hidden" id="studyCard">
@@ -85,6 +85,7 @@
 <script src="../vocabulary-core/progress-adapters-v1.js"></script>
 <script src="./unified-native-v1.js?v=1.0.0"></script>
 <script src="./japanese-classics-bank-v1.js?v=1.0.0"></script>
+<script src="./review-algorithm-v1.js?v=1.0.0"></script>
 <script src="./infinite-course-v1.js?v=1.0.0"></script>
 </body>
 </html>
