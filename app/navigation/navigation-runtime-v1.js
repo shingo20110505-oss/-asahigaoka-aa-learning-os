@@ -23,10 +23,12 @@ function syncPublicNav(){
  changed=setNavLabel(review,'復習')||changed;
  const ordered=[home,exam,learning,review],children=[...nav.children];
  if(ordered.some((node,i)=>children[i]!==node)||children.length!==ordered.length){nav.replaceChildren(...ordered);changed=true}
+ nav.dataset.risePublicNav='home-exam-learning-review';
  return changed;
 }
 let navSyncRaf=0;
 function schedulePublicNavSync(){if(navSyncRaf)return;navSyncRaf=requestAnimationFrame(()=>{navSyncRaf=0;syncPublicNav()})}
+function forcePublicNavSync(){syncPublicNav();schedulePublicNavSync()}
 function concealLegacyGap(reason){
  root.classList.add('aa-app-booting');
  root.dataset.riseTransition=reason||'legacy-render';
@@ -36,7 +38,7 @@ function requestRiseRender(route,source,id){
  document.dispatchEvent(new CustomEvent('aa:v23ready',{detail:{source:'rise-navigation',route,navigationSource:source,sequence:id}}));
  const app=document.getElementById('app');
  if(app){const pulse=document.createComment(`rise-ui-sync:${id}:${route}`);app.appendChild(pulse);pulse.remove()}
- schedulePublicNavSync();
+ forcePublicNavSync();
 }
 function scheduleRiseRender(route,source,id){
  requestRiseRender(route,source,id);
@@ -51,7 +53,7 @@ function scheduleSettingsRecovery(action){
   document.dispatchEvent(new CustomEvent('aa:v23ready',{detail:{source:'settings-recovery',route,action}}));
   const app=document.getElementById('app');
   if(app){const pulse=document.createComment(`rise-settings-sync:${action}:${Date.now()}`);app.appendChild(pulse);pulse.remove()}
-  schedulePublicNavSync();
+  forcePublicNavSync();
  };
  queueMicrotask(fire);
  requestAnimationFrame(fire);
@@ -80,7 +82,7 @@ function navigateCore(route,source='ui'){
   delete root.dataset.riseNavigating;
   delete root.dataset.riseNavigationError;
   delete root.dataset.riseTransition;
-  schedulePublicNavSync();
+  forcePublicNavSync();
   document.dispatchEvent(new CustomEvent('rise:navigation',{detail:{route:root.dataset.riseRoute,source,sequence:id}}));
  });
  return true;
@@ -114,10 +116,11 @@ document.addEventListener('rise:settings-changed',e=>{
  scheduleSettingsRecovery(e.detail?.source||'changed');
 });
 const app=document.getElementById('app');
-if(app)new MutationObserver(schedulePublicNavSync).observe(app,{childList:true,subtree:true});
-document.addEventListener('aa:v23ready',schedulePublicNavSync);
-document.addEventListener('rise:navigation',schedulePublicNavSync);
-addEventListener('pageshow',schedulePublicNavSync);
-schedulePublicNavSync();
-window.__RISE_NAVIGATION_V1__=Object.freeze({version:'1.0.3',uiSync:'preconceal-all-settings-legacy-renders-and-deterministic-multiphase-rise-recovery',coreRoutes:[...CORE_ROUTES],settingsRenderActions:[...SETTINGS_RENDER_ACTIONS],navigate:navigateCore,review:navigateReview,current:stateRoute,syncPublicNav});
+if(app)new MutationObserver(forcePublicNavSync).observe(app,{childList:true,subtree:true});
+document.addEventListener('aa:v23ready',forcePublicNavSync);
+document.addEventListener('rise:navigation',forcePublicNavSync);
+addEventListener('pageshow',forcePublicNavSync);
+forcePublicNavSync();
+let stabilizeTicks=0;const stabilizeTimer=setInterval(()=>{forcePublicNavSync();stabilizeTicks++;if(stabilizeTicks>=120)clearInterval(stabilizeTimer)},50);
+window.__RISE_NAVIGATION_V1__=Object.freeze({version:'1.0.4',uiSync:'deterministic-public-four-tab-nav-plus-synchronous-boot-stabilization-and-preconceal-settings-recovery',coreRoutes:[...CORE_ROUTES],settingsRenderActions:[...SETTINGS_RENDER_ACTIONS],navigate:navigateCore,review:navigateReview,current:stateRoute,syncPublicNav});
 })();
