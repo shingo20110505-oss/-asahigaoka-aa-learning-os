@@ -6,6 +6,7 @@ on:
       - 'vocabulary-core/**'
       - 'scripts/audit-vocabulary-foundation.mjs'
       - 'scripts/audit-vocabulary-normalization.mjs'
+      - 'scripts/audit-vocabulary-progress-adapters.mjs'
       - 'scripts/report-vocabulary-data-quality.mjs'
       - 'vocab.html'
       - 'vocab-wrong-quiz-v1.js'
@@ -23,6 +24,7 @@ on:
       - 'vocabulary-core/**'
       - 'scripts/audit-vocabulary-foundation.mjs'
       - 'scripts/audit-vocabulary-normalization.mjs'
+      - 'scripts/audit-vocabulary-progress-adapters.mjs'
       - 'scripts/report-vocabulary-data-quality.mjs'
       - 'vocab.html'
       - 'vocab-wrong-quiz-v1.js'
@@ -53,3 +55,5 @@ jobs:
         run: node scripts/report-vocabulary-data-quality.mjs
       - name: Audit native normalization readiness
         run: node scripts/audit-vocabulary-normalization.mjs
+      - name: Audit read-only progress adapters
+        run: node scripts/audit-vocabulary-progress-adapters.mjs
