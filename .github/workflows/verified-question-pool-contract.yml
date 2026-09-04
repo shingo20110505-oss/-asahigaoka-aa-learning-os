@@ -1,0 +1,36 @@
+name: Rise verified question pool contract
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'app/learning/verified-question-pool-v1.js'
+      - 'tests/verified-question-pool.contract.mjs'
+      - 'index.html'
+      - 'sw.js'
+      - '.github/workflows/verified-question-pool-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verified Question Pool contract
+        run: node tests/verified-question-pool.contract.mjs
+      - name: Runtime wiring contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq './app/learning/verified-question-pool-v1.js?v=1.0.0' index.html
+          grep -Fq "rise_verified_question_pool_v1" app/learning/verified-question-pool-v1.js
+          grep -Fq "'/v1/exam'" app/learning/verified-question-pool-v1.js
+          grep -Fq "LOCAL_ONLY_UNITS" app/learning/verified-question-pool-v1.js
+          grep -Fq "quality?.verified!==true" app/learning/verified-question-pool-v1.js
