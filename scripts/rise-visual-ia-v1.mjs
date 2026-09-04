@@ -14,7 +14,7 @@ if(!PAGE_URL||!SOURCE_SHA||!CHROME)throw new Error('visual environment missing')
 await mkdir(OUT,{recursive:true});
 const MOBILE_UA='Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Mobile/15E148 Safari/604.1';
 const specs={
- home:{cls:'riseHomeV4',tokens:['Rise','今日の学習','教科別の達成度','ホーム','入試','学習','復習']},
+ home:{cls:'riseHomeV4',tokens:['Rise','今日やることを、迷わない。','次の一手','教科別の達成度','ホーム','入試','学習','復習']},
  subjects:{cls:'riseSubjectsV4',tokens:['Rise','入試対策','愛知県公立高校入試','英語','数学','国語','理科','社会','一般演習は表示しません']},
  analytics:{cls:'riseAnalyticsV4',tokens:['Rise','学習','英単語・語句','漢字・国語語彙','Chronologia','国語15,000語']},
  settings:{cls:'riseSettingsV4',tokens:['Rise','設定','バックアップ']}
