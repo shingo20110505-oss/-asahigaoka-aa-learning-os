@@ -278,8 +278,8 @@ function reportSocial() {
   if (!Array.isArray(baseRows) || !baseRows.length) throw new Error('Chronologia base DATA is empty or unavailable');
 
   const boot = read('chronologia-force1000-v1.js');
-  const targetMatch = boot.match(/const\s+TARGET_COUNT\s*=\s*(\d+)/);
-  if (!targetMatch) throw new Error('Chronologia TARGET_COUNT not found');
+  const targetMatch = boot.match(/current\s*>=\s*(\d+)/) || boot.match(/n\s*<\s*(\d+)/);
+  if (!targetMatch) throw new Error('Chronologia runtime target not found in boot guards');
   const targetCount = Number(targetMatch[1]);
   const declaredPackRefs = extractAssignedLiteral(boot, 'PACKS').map(cleanAssetPath);
   const curatedRefs = extractAssignedLiteral(boot, 'CURATED').map(cleanAssetPath);
