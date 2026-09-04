@@ -1,5 +1,5 @@
 'use strict';
-const VERSION='2.5.324-quality2-chronologia1000-aichi-math-application-1.0.1-20260902-japanese-exam-1.0.0-math-full-1.1.0-social-application-1.0.0-science-exam-1.0.0-rise-complete-4.3.0-stable-2.3.0-legacy-metadata-shellguard-1.0.0-nav-1.0.3-20260904';
+const VERSION='2.5.324-quality2-chronologia1000-aichi-math-application-1.0.1-20260902-japanese-exam-1.0.0-math-full-1.1.0-social-application-1.0.0-science-exam-1.0.0-rise-complete-4.3.0-stable-2.3.0-legacy-metadata-shellguard-1.0.0-nav-1.0.3-20260904-pwa-resilience-1.0.0';
 const RISE_BOOT='4.2.1';
 const CACHE_NAME=`asahigaoka-aa-os-${VERSION}`;
 const BASE=self.registration.scope;
@@ -11,9 +11,13 @@ CORE.unshift(url('math-exam/adapter.js'));
 CORE.unshift(url('science-exam/core.mjs'));
 CORE.unshift(url('science-exam/generator.mjs'));
 CORE.unshift(url('science-exam/bridge.js'));
+const ESSENTIAL_CORE=[url('./'),url('index.html'),url('offline.html'),url('review/'),url('review/index.html'),url('review-bank-v1.js')];
 async function putIfGood(cache,request,response){if(response&&response.ok)await cache.put(request,response.clone());return response}
-async function networkFirst(request,{reload=false}={}){const cache=await caches.open(CACHE_NAME);try{const response=await fetch(request,{cache:reload?'no-store':'no-cache'});return await putIfGood(cache,request,response)}catch(_){return(await cache.match(request))||null}}
-async function cacheFirstRefresh(request,event){const cache=await caches.open(CACHE_NAME);const cached=await cache.match(request);const refresh=fetch(request).then(r=>putIfGood(cache,request,r)).catch(()=>null);if(cached){event?.waitUntil(refresh);return cached}return(await refresh)||new Response('',{status:504,statusText:'Offline'})}
+async function matchCached(cache,request){return(await cache.match(request))||(await cache.match(request,{ignoreSearch:true}))||null}
+async function networkFirst(request,{reload=false}={}){const cache=await caches.open(CACHE_NAME);try{const response=await fetch(request,{cache:reload?'no-store':'no-cache'});return await putIfGood(cache,request,response)}catch(_){return matchCached(cache,request)}}
+async function cacheFirstRefresh(request,event){const cache=await caches.open(CACHE_NAME);const cached=await matchCached(cache,request);const refresh=fetch(request).then(r=>putIfGood(cache,request,r)).catch(()=>null);if(cached){event?.waitUntil(refresh);return cached}return(await refresh)||new Response('',{status:504,statusText:'Offline'})}
+async function precacheCore(){const cache=await caches.open(CACHE_NAME);await Promise.all(CORE.map(async href=>{try{const r=await fetch(href,{cache:'reload'});if(r.ok)await cache.put(href,r)}catch(_){}}));const missing=[];for(const href of ESSENTIAL_CORE){if(!(await cache.match(href)))missing.push(href)}if(missing.length)throw new Error(`essential precache failed: ${missing.join(', ')}`);return cache}
+async function clearRuntimeCachePreservingCore(){const cache=await caches.open(CACHE_NAME);const coreSet=new Set(CORE);const keys=await cache.keys();await Promise.all(keys.filter(request=>!coreSet.has(request.url)).map(request=>cache.delete(request)));await Promise.all(CORE.map(async href=>{try{const r=await fetch(href,{cache:'reload'});if(r.ok)await cache.put(href,r)}catch(_){}}));return cache}
 async function withChronologiaBootGuard(request,response){
  if(!response||!response.ok)return response;
  const u=new URL(request.url);
@@ -29,7 +33,7 @@ async function withChronologiaBootGuard(request,response){
   return new Response(transformed,{status:response.status,statusText:response.statusText,headers});
  }catch(_){return response}
 }
-self.addEventListener('install',event=>{event.waitUntil((async()=>{const cache=await caches.open(CACHE_NAME);await Promise.all(CORE.map(async href=>{try{const r=await fetch(href,{cache:'reload'});if(r.ok)await cache.put(href,r)}catch(_){}}));await self.skipWaiting()})())});
+self.addEventListener('install',event=>{event.waitUntil((async()=>{await precacheCore();await self.skipWaiting()})())});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('asahigaoka-aa-os-')&&k!==CACHE_NAME).map(k=>caches.delete(k)));await self.clients.claim()})())});
-self.addEventListener('message',event=>{if(event.data?.type==='SKIP_WAITING')self.skipWaiting();if(event.data?.type==='CLEAR_RUNTIME_CACHE')event.waitUntil(caches.delete(CACHE_NAME))});
-self.addEventListener('fetch',event=>{const request=event.request;if(request.method!=='GET')return;const u=new URL(request.url);if(u.origin!==self.location.origin||!u.href.startsWith(BASE))return;if(request.mode==='navigate'){event.respondWith((async()=>{const fresh=await networkFirst(request,{reload:true});if(fresh)return withChronologiaBootGuard(request,fresh);const cache=await caches.open(CACHE_NAME);const fallback=(await cache.match(request))||(await cache.match(url('index.html')))||(await cache.match(url('offline.html')))||new Response('Offline',{status:503});return withChronologiaBootGuard(request,fallback)})());return}const ext=(u.pathname.split('.').pop()||'').toLowerCase();if(ext==='js'||ext==='mjs'||ext==='css'||ext==='json'||ext==='webmanifest'){event.respondWith((async()=>{const fresh=await networkFirst(request,{reload:ext==='js'||ext==='mjs'||u.pathname.endsWith('review-bank-v1.js')});return fresh||new Response('',{status:504,statusText:'Offline'})})());return}event.respondWith(cacheFirstRefresh(request,event))});
+self.addEventListener('message',event=>{if(event.data?.type==='SKIP_WAITING')self.skipWaiting();if(event.data?.type==='CLEAR_RUNTIME_CACHE')event.waitUntil(clearRuntimeCachePreservingCore())});
+self.addEventListener('fetch',event=>{const request=event.request;if(request.method!=='GET')return;const u=new URL(request.url);if(u.origin!==self.location.origin||!u.href.startsWith(BASE))return;if(request.mode==='navigate'){event.respondWith((async()=>{const fresh=await networkFirst(request,{reload:true});if(fresh)return withChronologiaBootGuard(request,fresh);const cache=await caches.open(CACHE_NAME);const fallback=(await matchCached(cache,request))||(await cache.match(url('index.html')))||(await cache.match(url('offline.html')))||new Response('Offline',{status:503});return withChronologiaBootGuard(request,fallback)})());return}const ext=(u.pathname.split('.').pop()||'').toLowerCase();if(ext==='js'||ext==='mjs'||ext==='css'||ext==='json'||ext==='webmanifest'){event.respondWith((async()=>{const fresh=await networkFirst(request,{reload:ext==='js'||ext==='mjs'||u.pathname.endsWith('review-bank-v1.js')});return fresh||new Response('',{status:504,statusText:'Offline'})})());return}event.respondWith(cacheFirstRefresh(request,event))});
