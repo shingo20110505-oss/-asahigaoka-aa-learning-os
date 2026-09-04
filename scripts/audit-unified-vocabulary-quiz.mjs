@@ -19,6 +19,8 @@ check('Unified quiz UI contains no Science subject',!/(data-subject="science"|>�
 check('Legacy independent unified score store is removed',!/(rise-unified-vocab-quiz-v1|state\.seen|state\.correct|state\.by)/.test(html+js));
 check('Vocabulary Core is loaded',html.includes('../vocabulary-core/core-v1.js'));
 check('Progress adapters are loaded',html.includes('../vocabulary-core/progress-adapters-v1.js'));
+check('Unified runtime cache key is current',html.includes('./unified-native-v1.js?v=1.0.1'));
+check('Each rendered question re-enables shared input controls',js.includes("ui.answerInput.value='';ui.answerInput.disabled=false;ui.submit.disabled=false;"));
 check('English writes through native recordAttempt',js.includes("recordAttempt(q,String(ans||''),!!ok,t"));
 check('English writes through native updateSRS',js.includes('updateSRS(sid,!!ok,t'));
 check('English persists native engine state',js.includes('updateSRS(sid,!!ok,t')&&js.includes('save();return snap(v)'));
@@ -50,5 +52,5 @@ check('Japanese native page remains linked',html.includes('href="../kokugo-chron
 check('Learning card describes current three-subject scope',!/英語・国語・理科・社会/.test(card)&&/英語・国語・社会/.test(card));
 check('Unified quiz runtime has no unsupported subject dispatcher',!/(science|理科)/.test(js));
 
-console.log(JSON.stringify({version:'1.0.2',checkedAt:new Date().toISOString(),checks,failures,japanese:{rows:japaneseRows.length,directMeanings:Object.keys(directMeanings).length,missingJapanese:missingJapanese.length}},null,2));
+console.log(JSON.stringify({version:'1.0.3',checkedAt:new Date().toISOString(),checks,failures,japanese:{rows:japaneseRows.length,directMeanings:Object.keys(directMeanings).length,missingJapanese:missingJapanese.length}},null,2));
 if(failures.length)process.exit(1);
