@@ -1,6 +1,7 @@
 import {spawn} from 'node:child_process';
 import {existsSync} from 'node:fs';
 import {mkdir,rm,writeFile} from 'node:fs/promises';
+import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
 
@@ -11,20 +12,28 @@ if(!PAGE_URL||!SOURCE_SHA)throw new Error('PAGE_URL and SOURCE_SHA are required'
 if(!CHROME)throw new Error('Chromium/Chrome not found');
 
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function freePort(){return await new Promise((resolve,reject)=>{const server=net.createServer();server.unref();server.on('error',reject);server.listen(0,'127.0.0.1',()=>{const address=server.address();const port=typeof address==='object'&&address?address.port:0;server.close(err=>err?reject(err):resolve(port))})})}
+function waitChildExit(proc,timeout=2500){return new Promise(resolve=>{if(proc.exitCode!==null||proc.signalCode!==null)return resolve(true);let done=false;const finish=v=>{if(done)return;done=true;clearTimeout(timer);proc.off('exit',onExit);resolve(v)};const onExit=()=>finish(true);const timer=setTimeout(()=>finish(false),timeout);proc.once('exit',onExit)})}
+async function cleanup(proc,profile){try{if(proc.exitCode===null)proc.kill('SIGTERM')}catch{};if(!(await waitChildExit(proc))){try{if(proc.exitCode===null)proc.kill('SIGKILL')}catch{};await waitChildExit(proc)}await rm(profile,{recursive:true,force:true,maxRetries:6,retryDelay:200}).catch(()=>{})}
+
 const profile=path.join(os.tmpdir(),`rise-quality-cdp-${process.pid}-${Date.now()}`);
 await mkdir(profile,{recursive:true});
-const args=['--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--disable-background-networking','--disable-component-update','--disable-sync','--disable-default-apps','--no-first-run','--metrics-recording-only',`--user-data-dir=${profile}`,'--remote-debugging-port=0','about:blank'];
+const port=await freePort();
+const args=['--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--disable-background-networking','--disable-component-update','--disable-sync','--disable-default-apps','--no-first-run','--metrics-recording-only',`--user-data-dir=${profile}`,'--remote-debugging-address=127.0.0.1',`--remote-debugging-port=${port}`,'about:blank'];
 const proc=spawn(CHROME,args,{stdio:['ignore','ignore','pipe']});
-let stderr='';
-const browserWs=await new Promise((resolve,reject)=>{
- const timer=setTimeout(()=>reject(new Error(`DevTools startup timeout: ${stderr.slice(-1200)}`)),16000);
- proc.stderr.on('data',d=>{stderr+=String(d);const m=stderr.match(/DevTools listening on (ws:\/\/[^\s]+)/);if(m){clearTimeout(timer);resolve(m[1])}});
- proc.once('exit',code=>{clearTimeout(timer);reject(new Error(`Chrome exited before CDP attach: ${code}: ${stderr.slice(-1200)}`))});
-});
-const port=new URL(browserWs).port;
-const pageInfo=await(await fetch(`http://127.0.0.1:${port}/json/new?about:blank`,{method:'PUT'})).json();
+let stderr='';proc.stderr.on('data',d=>{stderr+=String(d)});
+let browserWs='';const startup=Date.now();
+while(Date.now()-startup<30000){
+ if(proc.exitCode!==null)break;
+ try{const response=await fetch(`http://127.0.0.1:${port}/json/version`,{signal:AbortSignal.timeout(1200)});if(response.ok){const info=await response.json();if(info.webSocketDebuggerUrl){browserWs=info.webSocketDebuggerUrl;break}}}catch{}
+ await sleep(180);
+}
+if(!browserWs){await cleanup(proc,profile);throw new Error(`DevTools startup timeout: ${stderr.slice(-1200)}`)}
+const pageResponse=await fetch(`http://127.0.0.1:${port}/json/new?about:blank`,{method:'PUT',signal:AbortSignal.timeout(5000)});
+if(!pageResponse.ok){await cleanup(proc,profile);throw new Error(`Chrome page create failed: ${pageResponse.status}`)}
+const pageInfo=await pageResponse.json();
 const ws=new WebSocket(pageInfo.webSocketDebuggerUrl);
-await new Promise((resolve,reject)=>{ws.onopen=resolve;ws.onerror=reject});
+await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error('CDP websocket timeout')),10000);ws.onopen=()=>{clearTimeout(timer);resolve()};ws.onerror=e=>{clearTimeout(timer);reject(e)}});
 let seq=0;
 const pending=new Map();
 const documents=[];
@@ -40,7 +49,7 @@ ws.onmessage=e=>{
 const cmd=(method,params={})=>new Promise((resolve,reject)=>{const id=++seq;pending.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}))});
 async function evaluate(expression){const r=await cmd('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw new Error(`Runtime evaluate failed: ${JSON.stringify(r.exceptionDetails).slice(0,1200)}`);return r.result?.value}
 async function diagnostics(){return evaluate(`(()=>{const text=document.body?.innerText||'';return {href:location.href,ready:document.readyState,quality:document.documentElement.dataset.aaQualityCi||'',route:document.documentElement.dataset.riseRoute||'',booting:document.documentElement.classList.contains('aa-app-booting'),brand:document.querySelector('#app .brand h1')?.textContent?.trim()||'',navOwner:window.__RISE_NAVIGATION_V1__?.version||'',iaVersion:window.__RISE_INFORMATION_ARCHITECTURE_V1__?.version||'',shellGuard:window.__RISE_LEGACY_SHELL_GUARD_V1__?.version||'',shellBlocked:window.__RISE_LEGACY_SHELL_GUARD_V1__?.blocked||0,settingsCore:window.__AA_SETTINGS_IMPROVEMENTS_CORE_V1__?.version||'',runtimeError:document.documentElement.dataset.riseRuntimeError||'',navigationError:document.documentElement.dataset.riseNavigationError||'',legacyTitle:text.includes('旭丘AA Learning OS'),legacySubtitle:text.includes('愛知県入試・当日再現性を最優先'),navLabels:[...document.querySelectorAll('.navin span')].map(x=>x.textContent?.trim()).filter(Boolean),qualityResult:window.__AA_QUALITY_CI_RESULT__||null,text:text.slice(0,1600)}})()`)}
-async function close(){try{ws.close()}catch{};try{proc.kill('SIGKILL')}catch{};await rm(profile,{recursive:true,force:true}).catch(()=>{})}
+async function close(){try{ws.close()}catch{};await cleanup(proc,profile)}
 
 try{
  await cmd('Page.enable');await cmd('Runtime.enable');await cmd('Network.enable');
