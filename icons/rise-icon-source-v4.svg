@@ -1,43 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
 <defs>
   <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#8adfff"/>
-    <stop offset="0.26" stop-color="#6fa8ff"/>
-    <stop offset="0.52" stop-color="#7167ed"/>
-    <stop offset="0.76" stop-color="#c188f4"/>
-    <stop offset="1" stop-color="#ffc0d6"/>
+    <stop offset="0" stop-color="#8bdcff"/>
+    <stop offset="0.28" stop-color="#73a9ff"/>
+    <stop offset="0.53" stop-color="#7369ed"/>
+    <stop offset="0.76" stop-color="#c18af4"/>
+    <stop offset="1" stop-color="#ffc2d6"/>
   </linearGradient>
-  <radialGradient id="shine" cx="0.12" cy="0.04" r="0.92">
+  <radialGradient id="shine" cx="0.08" cy="0.04" r="0.95">
     <stop offset="0" stop-color="#ffffff" stop-opacity="0.48"/>
     <stop offset="0.34" stop-color="#ffffff" stop-opacity="0.08"/>
     <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
   </radialGradient>
   <linearGradient id="rfill" x1="0" y1="0" x2="1" y2="1">
     <stop offset="0" stop-color="#ffffff"/>
-    <stop offset="0.42" stop-color="#f8fbff"/>
-    <stop offset="0.72" stop-color="#f3eaff"/>
-    <stop offset="1" stop-color="#fff2f7"/>
+    <stop offset="0.45" stop-color="#fbfdff"/>
+    <stop offset="0.72" stop-color="#f0eaff"/>
+    <stop offset="1" stop-color="#fff1f7"/>
   </linearGradient>
-  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
-    <feGaussianBlur in="SourceAlpha" stdDeviation="11" result="b"/>
-    <feOffset dy="10" result="o"/>
-    <feColorMatrix in="o" type="matrix" values="0 0 0 0 0.21 0 0 0 0 0.19 0 0 0 0 0.56 0 0 0 .22 0"/>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="b"/>
+    <feOffset dy="9" result="o"/>
+    <feColorMatrix in="o" type="matrix" values="0 0 0 0 .18 0 0 0 0 .16 0 0 0 0 .52 0 0 0 .18 0"/>
     <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
   <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
-    <feGaussianBlur stdDeviation="10" result="g"/>
+    <feGaussianBlur stdDeviation="9" result="g"/>
     <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
 </defs>
 <rect width="1024" height="1024" fill="url(#bg)"/>
 <rect width="1024" height="1024" fill="url(#shine)"/>
-<path d="M54 735 C166 464 416 244 778 189 C824 182 856 179 878 180" fill="none" stroke="#fff" stroke-opacity="0.72" stroke-width="3.4" stroke-linecap="round"/>
+<path d="M56 738 C166 465 415 246 777 189 C821 182 852 180 878 180" fill="none" stroke="#fff" stroke-opacity="0.68" stroke-width="3.5" stroke-linecap="round"/>
 <g filter="url(#glow)" fill="#fff">
-  <path d="M868 153 L876 178 L901 186 L876 194 L868 219 L860 194 L835 186 L860 178 Z" opacity="0.95"/>
+  <path d="M867 152 L876 178 L902 186 L876 195 L867 221 L858 195 L832 186 L858 178 Z"/>
 </g>
-<g filter="url(#shadow)">
-  <text x="502" y="728" text-anchor="middle" font-family="Baskerville, 'Times New Roman', Georgia, serif" font-size="610" font-weight="400" fill="url(#rfill)" letter-spacing="-18">R</text>
+<g filter="url(#shadow)" fill="url(#rfill)">
+  <path fill-rule="evenodd" d="M322 267 L493 267 L493 291 L462 296 L462 749 L502 757 L502 781 L314 781 L314 757 L353 749 L353 298 L322 291 Z M441 277 C620 255 758 305 758 424 C758 543 656 595 454 574 L454 515 C601 531 650 493 650 425 C650 347 593 321 454 333 L441 337 Z"/>
+  <path d="M468 548 C560 568 621 702 720 772 C788 819 861 809 928 742 C894 830 819 869 739 842 C620 801 584 660 480 606 C457 594 446 582 442 568 Z"/>
 </g>
-<path d="M557 599 C624 624 661 735 754 774 C812 798 868 785 925 734 C887 805 816 837 746 815 C649 783 611 658 545 620 Z" fill="url(#rfill)" opacity="0.92"/>
-<path d="M558 602 C629 629 664 729 756 768" fill="none" stroke="#fff" stroke-opacity="0.34" stroke-width="8" stroke-linecap="round"/>
+<path d="M477 570 C563 593 612 713 718 784" fill="none" stroke="#fff" stroke-opacity="0.25" stroke-width="10" stroke-linecap="round"/>
 </svg>
