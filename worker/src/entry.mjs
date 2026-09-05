@@ -31,6 +31,8 @@ import {
 const WORKER_VERSION = '1.4.0';
 const DEFAULT_ORIGIN = 'https://shingo20110505-oss.github.io';
 const MAX_BODY_BYTES = 24000;
+export const READING_REQUEST_BUDGET_MS = 145000;
+export const READING_SECOND_ATTEMPT_MIN_MS = 65000;
 
 class ApiError extends Error {
   constructor(code, message, status = 400, diagnostic = '') {
@@ -44,6 +46,16 @@ class ApiError extends Error {
 
 function cleanString(value, maxLength = 300) {
   return String(value || '').replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, maxLength);
+}
+
+export function readingLatencyPlan(remainingMs) {
+  const remaining = Math.max(0, Number(remainingMs) || 0);
+  const verifierReserve = Math.min(35000, Math.max(12000, Math.floor(remaining * 0.28)));
+  const generationBudget = Math.max(20000, remaining - verifierReserve - 5000);
+  const interactionsTimeoutMs = Math.min(40000, Math.max(10000, Math.floor(generationBudget * 0.42)));
+  const generateTimeoutMs = Math.min(55000, Math.max(10000, generationBudget - interactionsTimeoutMs));
+  const groqTimeoutMs = Math.min(35000, Math.max(8000, remaining - interactionsTimeoutMs - generateTimeoutMs - 5000));
+  return { interactionsTimeoutMs, generateTimeoutMs, groqTimeoutMs };
 }
 
 function configuredOrigins(env) {
@@ -112,6 +124,7 @@ function mapGeminiError(error) {
   if (error.status === 429) return new ApiError('quota_exceeded', 'Gemini無料枠の上限に達しました。新規生成を停止し、検証済み問題を利用してください。', 429);
   if ([401, 403].includes(error.status)) return new ApiError('gemini_auth_failed', 'Gemini APIキーまたはプロジェクト権限を確認してください。', 502);
   if (error.code === 'provider_not_configured') return new ApiError('server_not_configured', 'Gemini APIキーがWorkerに設定されていません。', 503);
+  if (error.code === 'provider_timeout') return new ApiError('generation_timeout', 'Geminiの応答が時間内に完了しませんでした。検証済み問題を利用してください。', 503, error.diagnostic);
   return new ApiError(error.code || 'gemini_failed', 'Geminiで生成できませんでした。', error.status >= 500 ? 503 : 502);
 }
 
@@ -122,6 +135,7 @@ function mapGroqError(error) {
   if ([401, 403].includes(error.status)) return new ApiError('groq_auth_failed', 'Groq APIキーまたは権限を確認してください。', 502, diagnostic);
   if (error.code === 'provider_not_configured') return new ApiError('verification_unavailable', 'Groq独立検証が設定されていません。', 503, diagnostic);
   if (error.code === 'provider_refused') return new ApiError('verification_rejected', '独立検証モデルが検証を拒否しました。', 422, diagnostic);
+  if (error.code === 'provider_timeout') return new ApiError('verification_timeout', 'Groq独立検証が時間内に完了しなかったため、新規問題は採用しません。', 503, diagnostic);
   if (error.code === 'groq_request_rejected') return new ApiError('groq_request_rejected', 'Groqが検証リクエスト形式を受理できませんでした。', 502, diagnostic);
   return new ApiError('verification_unavailable', 'Groq独立検証を利用できません。', error.status >= 500 ? 503 : 502, diagnostic);
 }
@@ -138,7 +152,15 @@ function mapExamError(error) {
 
 export async function generateVerifiedReading(env, request) {
   const failures = [];
+  const deadline = Date.now() + READING_REQUEST_BUDGET_MS;
   for (let attempt = 1; attempt <= 2; attempt++) {
+    const remainingBeforeAuthor = deadline - Date.now();
+    if (remainingBeforeAuthor <= 0 || (attempt > 1 && remainingBeforeAuthor < READING_SECOND_ATTEMPT_MIN_MS)) {
+      failures.push(`attempt${attempt}:budget_exhausted:${Math.max(0, remainingBeforeAuthor)}`);
+      break;
+    }
+    const latency = readingLatencyPlan(remainingBeforeAuthor);
+
     let authored;
     try {
       authored = await callGeminiJson(env, {
@@ -147,7 +169,9 @@ export async function generateVerifiedReading(env, request) {
         schemaName: 'rise_english_reading',
         maxOutputTokens: 10000,
         temperature: 0.55,
-        thinkingLevel: 'low'
+        thinkingLevel: 'low',
+        interactionsTimeoutMs: latency.interactionsTimeoutMs,
+        generateTimeoutMs: latency.generateTimeoutMs
       });
     } catch (error) {
       throw mapGeminiError(error) || error;
@@ -160,6 +184,11 @@ export async function generateVerifiedReading(env, request) {
       continue;
     }
 
+    const remainingBeforeVerify = deadline - Date.now();
+    if (remainingBeforeVerify < 10000) {
+      throw new ApiError('generation_timeout', 'AI品質検査の時間予算を使い切りました。検証済み問題を利用してください。', 503, `remaining:${Math.max(0, remainingBeforeVerify)}`);
+    }
+
     let verified;
     try {
       verified = await callGroqJson(env, {
@@ -169,6 +198,7 @@ export async function generateVerifiedReading(env, request) {
         maxOutputTokens: 2500,
         temperature: 0,
         reasoningEffort: 'low',
+        timeoutMs: Math.min(latency.groqTimeoutMs, Math.max(8000, remainingBeforeVerify - 5000)),
         systemInstruction: 'Independently solve the supplied entrance-exam questions. Return only the requested JSON. Never infer an author answer key, and reject ambiguous items.'
       });
     } catch (error) {
