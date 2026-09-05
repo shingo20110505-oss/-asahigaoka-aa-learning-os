@@ -1,5 +1,11 @@
 import assert from 'node:assert/strict';
-import { callGeminiJson, normalizeGeminiSchema } from '../worker/src/providers/gemini.mjs';
+import {
+  GEMINI_GENERATE_CONTENT_BASE,
+  GEMINI_INTERACTIONS_URL,
+  GeminiProviderError,
+  callGeminiJson,
+  normalizeGeminiSchema
+} from '../worker/src/providers/gemini.mjs';
 
 const LOCAL_SCHEMA = Object.freeze({
   type: 'object',
@@ -17,6 +23,22 @@ const LOCAL_SCHEMA = Object.freeze({
   }
 });
 
+const ENV = Object.freeze({
+  GEMINI_API_KEY: 'gemini-contract-secret',
+  GEMINI_MODEL: 'gemini-3.5-flash'
+});
+
+const REQUEST = Object.freeze({
+  input: 'Return the required JSON.',
+  schema: LOCAL_SCHEMA,
+  maxOutputTokens: 512,
+  temperature: 0.1,
+  thinkingLevel: 'medium'
+});
+
+const JSON_TEXT = '{"word":"evidence","items":["a","b"],"score":1}';
+const originalFetch = globalThis.fetch;
+
 const normalized = normalizeGeminiSchema(LOCAL_SCHEMA);
 assert.equal(normalized.type, 'object');
 assert.equal(normalized.additionalProperties, false);
@@ -30,42 +52,118 @@ assert.equal(normalized.properties.items.items.minLength, undefined);
 assert.equal(normalized.properties.score.minimum, 0);
 assert.equal(normalized.properties.score.maximum, 1);
 
-const originalFetch = globalThis.fetch;
-let captured = null;
-globalThis.fetch = async (url, options) => {
-  captured = { url: String(url), headers: options.headers, body: JSON.parse(options.body) };
-  return new Response(JSON.stringify({
-    steps: [{ type: 'model_output', content: [{ type: 'text', text: '{"word":"evidence","items":["a","b"],"score":1}' }] }]
-  }), { status: 200, headers: { 'content-type': 'application/json' } });
-};
-
 try {
-  const result = await callGeminiJson({
-    GEMINI_API_KEY: 'gemini-contract-secret',
-    GEMINI_MODEL: 'gemini-3.5-flash'
-  }, {
-    input: 'Return the required JSON.',
-    schema: LOCAL_SCHEMA,
-    maxOutputTokens: 512,
-    temperature: 0.1,
-    thinkingLevel: 'medium'
-  });
+  {
+    let captured = null;
+    globalThis.fetch = async (url, options) => {
+      captured = { url: String(url), headers: options.headers, body: JSON.parse(options.body) };
+      return new Response(JSON.stringify({
+        steps: [{ type: 'model_output', content: [{ type: 'text', text: JSON_TEXT }] }]
+      }), { status: 200, headers: { 'content-type': 'application/json' } });
+    };
 
-  assert.equal(result.provider, 'gemini');
-  assert.equal(result.model, 'gemini-3.5-flash');
-  assert.equal(captured.url, 'https://generativelanguage.googleapis.com/v1beta/interactions');
-  assert.equal(captured.headers['x-goog-api-key'], 'gemini-contract-secret');
-  assert.equal(captured.headers['Api-Revision'], undefined);
-  assert.equal(captured.body.response_format.type, 'text');
-  assert.equal(captured.body.response_format.mime_type, 'application/json');
-  assert.equal(captured.body.response_format.schema.properties.word.minLength, undefined);
-  assert.equal(captured.body.response_format.schema.properties.word.pattern, undefined);
-  assert.equal(captured.body.response_format.schema.properties.items.minItems, 2);
-  assert.equal(captured.body.generation_config.thinking_level, 'medium');
-  assert.equal(captured.body.generation_config.temperature, undefined, 'Gemini 3.x sampling temperature must not be forced');
-  assert.equal(captured.body.store, false);
+    const result = await callGeminiJson(ENV, REQUEST);
+    assert.equal(result.provider, 'gemini');
+    assert.equal(result.model, 'gemini-3.5-flash');
+    assert.equal(result.mode, 'interactions');
+    assert.equal(result.fallbackFrom, null);
+    assert.equal(captured.url, GEMINI_INTERACTIONS_URL);
+    assert.equal(captured.headers['x-goog-api-key'], 'gemini-contract-secret');
+    assert.equal(captured.headers['Api-Revision'], undefined);
+    assert.equal(captured.body.response_format.type, 'text');
+    assert.equal(captured.body.response_format.mime_type, 'application/json');
+    assert.equal(captured.body.response_format.schema.properties.word.minLength, undefined);
+    assert.equal(captured.body.response_format.schema.properties.word.pattern, undefined);
+    assert.equal(captured.body.response_format.schema.properties.items.minItems, 2);
+    assert.equal(captured.body.generation_config.thinking_level, 'medium');
+    assert.equal(captured.body.generation_config.temperature, undefined, 'Gemini 3.x sampling temperature must not be forced');
+    assert.equal(captured.body.store, false);
+  }
+
+  {
+    const calls = [];
+    globalThis.fetch = async (url, options) => {
+      const call = { url: String(url), headers: options.headers, body: JSON.parse(options.body) };
+      calls.push(call);
+      if (calls.length === 1) {
+        return new Response(JSON.stringify({ error: { message: 'temporary upstream failure' } }), {
+          status: 503,
+          headers: { 'content-type': 'application/json' }
+        });
+      }
+      return new Response(JSON.stringify({
+        candidates: [{ content: { parts: [{ text: JSON_TEXT }] } }]
+      }), { status: 200, headers: { 'content-type': 'application/json' } });
+    };
+
+    const result = await callGeminiJson(ENV, REQUEST);
+    assert.equal(calls.length, 2);
+    assert.equal(calls[0].url, GEMINI_INTERACTIONS_URL);
+    assert.equal(calls[1].url, `${GEMINI_GENERATE_CONTENT_BASE}/gemini-3.5-flash:generateContent`);
+    assert.equal(calls[1].headers['x-goog-api-key'], 'gemini-contract-secret');
+    assert.equal(calls[1].body.contents[0].parts[0].text, REQUEST.input);
+    assert.equal(calls[1].body.systemInstruction.parts[0].text.length > 0, true);
+    assert.equal(calls[1].body.generationConfig.responseFormat.text.mimeType, 'application/json');
+    assert.equal(calls[1].body.generationConfig.responseFormat.text.schema.properties.word.minLength, undefined);
+    assert.equal(calls[1].body.generationConfig.responseFormat.text.schema.properties.items.minItems, 2);
+    assert.equal(calls[1].body.generationConfig.thinkingConfig.thinkingLevel, 'medium');
+    assert.equal(calls[1].body.generationConfig.temperature, undefined);
+    assert.equal(result.mode, 'generate_content_fallback');
+    assert.equal(result.fallbackFrom, 'interactions_5xx');
+    assert.deepEqual(result.output, { word: 'evidence', items: ['a', 'b'], score: 1 });
+  }
+
+  {
+    const calls = [];
+    globalThis.fetch = async (url, options) => {
+      calls.push({ url: String(url), body: JSON.parse(options.body) });
+      if (calls.length === 1) throw new TypeError('network down');
+      return new Response(JSON.stringify({
+        candidates: [{ content: { parts: [{ text: JSON_TEXT }] } }]
+      }), { status: 200, headers: { 'content-type': 'application/json' } });
+    };
+
+    const result = await callGeminiJson(ENV, REQUEST);
+    assert.equal(calls.length, 2);
+    assert.equal(result.mode, 'generate_content_fallback');
+    assert.equal(result.fallbackFrom, 'interactions_unreachable');
+  }
+
+  {
+    let calls = 0;
+    globalThis.fetch = async () => {
+      calls++;
+      return new Response(JSON.stringify({ error: { message: 'quota reached' } }), {
+        status: 429,
+        headers: { 'content-type': 'application/json' }
+      });
+    };
+
+    await assert.rejects(
+      () => callGeminiJson(ENV, REQUEST),
+      error => error instanceof GeminiProviderError && error.code === 'quota_exceeded' && error.status === 429
+    );
+    assert.equal(calls, 1, 'quota exhaustion must stop generation instead of trying another transport');
+  }
+
+  {
+    let calls = 0;
+    globalThis.fetch = async () => {
+      calls++;
+      return new Response(JSON.stringify({ error: { message: 'schema rejected' } }), {
+        status: 400,
+        headers: { 'content-type': 'application/json' }
+      });
+    };
+
+    await assert.rejects(
+      () => callGeminiJson(ENV, REQUEST),
+      error => error instanceof GeminiProviderError && error.code === 'gemini_request_rejected' && error.status === 400
+    );
+    assert.equal(calls, 1, 'invalid requests must fail closed instead of changing API transport');
+  }
 } finally {
   globalThis.fetch = originalFetch;
 }
 
-console.log('Gemini current Interactions contract OK: unsupported local validation keywords are stripped only at provider boundary, supported schema constraints remain, and Gemini 3.x sampling defaults are preserved');
+console.log('Gemini current contract OK: Interactions stays primary, same-provider GenerateContent handles only transport/5xx failures, quota and invalid requests fail closed, and both paths preserve structured output constraints');
