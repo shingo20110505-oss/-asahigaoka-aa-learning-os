@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const VERSION='2026-09-05.1';
+const VERSION='2026-09-05.2';
 if(window.__AA_KOKUGO_QUIZ_INTERACTION_FIX__)return;
 window.__AA_KOKUGO_QUIZ_INTERACTION_FIX__=VERSION;
 
@@ -71,7 +71,7 @@ async function runAudit(){
     const nextVisible=!!next&&getComputedStyle(next).display!=='none';
     const full=Number(window.__AA_KOKUGO_FULL_15000_COUNT__||0),pool=Number(window.__AA_KOKUGO_QUIZ_POOL_COUNT__||0);
     if(!disabled||!nextVisible||full!==15000||pool<15000)throw new Error(`graded=${disabled} next=${nextVisible} full=${full} pool=${pool}`);
-    markAudit(true,{graded:true,nextVisible:true,realTouchCapture:true,rankSelector:true,full15000:full,pool,version:VERSION});
+    markAudit(true,{graded:true,nextVisible:true,realTouchCapture:true,rankSelector:true,full15000:full,pool,supplementV1:window.__AA_JAPANESE_VOCAB_SUPPLEMENT__||null,supplementV2:window.__AA_JAPANESE_VOCAB_SUPPLEMENT_V2__||null,version:VERSION});
   }catch(err){markAudit(false,{error:String(err?.message||err),version:VERSION})}
 }
 
@@ -94,8 +94,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 (()=>{'use strict';
 if(document.getElementById('aaKokugoQuizRankLoader'))return;
-const loadRank=()=>{if(document.getElementById('aaKokugoQuizRankLoader'))return;const s=document.createElement('script');s.id='aaKokugoQuizRankLoader';s.src='./quiz-rank-select-v1.js?v=20260905-1';s.async=false;document.head.appendChild(s)};
-const waitSupplement=()=>{let tries=0;const timer=setInterval(()=>{if(window.__AA_JAPANESE_VOCAB_SUPPLEMENT__||++tries>=500){clearInterval(timer);loadRank()}},10)};
-if(document.getElementById('aaKokugoVocabSupplementV1')){waitSupplement();return}
-const sup=document.createElement('script');sup.id='aaKokugoVocabSupplementV1';sup.src='./jukugo-bank-supplement-v1.js?v=20260905-1';sup.async=false;sup.onload=waitSupplement;sup.onerror=loadRank;document.head.appendChild(sup);
+const loadRank=()=>{if(document.getElementById('aaKokugoQuizRankLoader'))return;const s=document.createElement('script');s.id='aaKokugoQuizRankLoader';s.src='./quiz-rank-select-v1.js?v=20260905-2';s.async=false;document.head.appendChild(s)};
+const loadV2=()=>{if(window.__AA_JAPANESE_VOCAB_SUPPLEMENT_V2__){loadRank();return}if(document.getElementById('aaKokugoVocabSupplementV2')){let tries=0;const timer=setInterval(()=>{if(window.__AA_JAPANESE_VOCAB_SUPPLEMENT_V2__||++tries>=500){clearInterval(timer);loadRank()}},10);return}const s=document.createElement('script');s.id='aaKokugoVocabSupplementV2';s.src='./jukugo-bank-supplement-v2.js?v=20260905-2';s.async=false;s.onload=loadRank;s.onerror=loadRank;document.head.appendChild(s)};
+const waitV1=()=>{if(window.__AA_JAPANESE_VOCAB_SUPPLEMENT__){loadV2();return}let tries=0;const timer=setInterval(()=>{if(window.__AA_JAPANESE_VOCAB_SUPPLEMENT__||++tries>=500){clearInterval(timer);loadV2()}},10)};
+if(document.getElementById('aaKokugoVocabSupplementV1')){waitV1();return}
+const sup=document.createElement('script');sup.id='aaKokugoVocabSupplementV1';sup.src='./jukugo-bank-supplement-v1.js?v=20260905-1';sup.async=false;sup.onload=waitV1;sup.onerror=loadV2;document.head.appendChild(sup);
 })();
