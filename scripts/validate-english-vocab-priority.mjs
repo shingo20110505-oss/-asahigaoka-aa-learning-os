@@ -13,7 +13,7 @@ const scripts={
  v2:read('english-vocabulary-supplement-v2.js')
 };
 function sandbox(){
- const s={window:{},DATA:structuredClone(base),console,document:{dispatchEvent(){}},CustomEvent:function(name,opts){this.type=name;this.detail=opts?.detail},setInterval(fn){fn();return 1},clearInterval(){}};
+ const s={window:{},DATA:{vocab:structuredClone(base)},console,document:{dispatchEvent(){}},CustomEvent:function(name,opts){this.type=name;this.detail=opts?.detail},setInterval(fn){fn();return 1},clearInterval(){}};
  vm.createContext(s);return s;
 }
 function run(includePriority){
