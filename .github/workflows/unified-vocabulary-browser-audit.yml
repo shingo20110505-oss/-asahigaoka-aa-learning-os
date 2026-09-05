@@ -4,6 +4,9 @@ on:
   pull_request:
     paths:
       - 'quiz/**'
+      - 'vocabulary-core/**'
+      - 'english-vocabulary-supplement-v1.js'
+      - 'kokugo-chronologia/jukugo-bank-supplement-v1.js'
       - 'kokugo-chronologia/data.jsonl'
       - 'kokugo-chronologia/meaning-ja-overrides.js'
       - 'scripts/verify-unified-vocabulary-public.mjs'
@@ -15,6 +18,9 @@ on:
     branches: [main]
     paths:
       - 'quiz/**'
+      - 'vocabulary-core/**'
+      - 'english-vocabulary-supplement-v1.js'
+      - 'kokugo-chronologia/jukugo-bank-supplement-v1.js'
       - 'kokugo-chronologia/data.jsonl'
       - 'kokugo-chronologia/meaning-ja-overrides.js'
       - 'scripts/verify-unified-vocabulary-public.mjs'

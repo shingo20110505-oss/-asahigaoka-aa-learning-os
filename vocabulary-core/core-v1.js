@@ -1,15 +1,31 @@
 /* Rise Vocabulary Core v1
- * Foundation only: this file is intentionally NOT loaded by the production UI yet.
- * It normalizes native records while keeping progress in the existing native stores.
+ * Normalizes native records while keeping progress in the existing native stores.
+ * The quiz bootstrap loads only append-only Japanese vocabulary content; progress state is never migrated here.
  */
 (function (root, factory) {
+  if (root && root.document && /\/quiz\/?$/.test(root.location?.pathname || '') && !root.__AA_JAPANESE_VOCAB_SUPPLEMENT__) {
+    try {
+      if (root.document.readyState === 'loading' && Array.isArray(root.AA_JUKUGO_BANK) && Array.isArray(root.AA_JUKUGO_ADVANCED)) {
+        let compatShim = root.document.getElementById('aaJukugoExtension');
+        const ownsShim = !compatShim;
+        if (ownsShim) {
+          compatShim = root.document.createElement('script');
+          compatShim.id = 'aaJukugoExtension';
+          compatShim.type = 'application/json';
+          root.document.head.appendChild(compatShim);
+        }
+        root.document.write('<script src="../kokugo-chronologia/jukugo-bank-supplement-v1.js?v=20260905-2"></script>');
+        if (ownsShim) compatShim.remove();
+      }
+    } catch (_) {}
+  }
   const api = factory();
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (root) root.RISE_VOCABULARY_CORE_V1 = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
 
-  const VERSION = '1.1.0';
+  const VERSION = '1.2.0';
   const SUBJECTS = Object.freeze(['english', 'japanese', 'social']);
 
   const text = (value) => value == null ? '' : String(value).trim();
@@ -60,7 +76,7 @@
         system: isPhrase ? 'english-collocation' : 'english-vocab',
         nativeId: id,
         path: isPhrase ? 'learning-engine-v15.js' : 'app/legacy/main-runtime.js',
-        quality: null
+        quality: native && (native.verified === true || native.qualityChecked === true) ? 'verified-local' : null
       },
       progressRef: {
         store: 'asahi_learning_os_v1',
@@ -124,7 +140,7 @@
         system: fullBaseId ? 'kokugo-chronologia-full15000' : 'kokugo-chronologia',
         nativeId: fullBaseId || nativeId,
         path: fullBaseId ? 'kokugo-chronologia/data.jsonl' : 'kokugo-chronologia/',
-        quality: null
+        quality: native && (native.verified === true || native.qualityChecked === true) ? 'verified-local' : null
       },
       progressRef: {
         store: 'kokugoChronologiaStateV2',
