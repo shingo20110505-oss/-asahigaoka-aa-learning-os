@@ -1,0 +1,43 @@
+name: Verify Koten Kanbun on Pages
+
+on:
+  workflow_run:
+    workflows: ['Deploy AA Learning OS to GitHub Pages']
+    types: [completed]
+
+permissions:
+  contents: read
+
+env:
+  PAGE_URL: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+
+jobs:
+  verify:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Static normalization audit
+        run: node scripts/audit-koten-kanbun-normalization.mjs
+      - name: Find Chrome
+        run: |
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
+          test -n "$CHROME"
+          echo "CHROME_PATH=$CHROME" >> "$GITHUB_ENV"
+      - name: Production browser verification
+        env:
+          SOURCE_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: node scripts/verify-koten-kanbun-public.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: koten-kanbun-browser-evidence-${{ github.event.workflow_run.head_sha }}
+          path: qa-artifacts/
+          if-no-files-found: warn
+          retention-days: 14
