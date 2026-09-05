@@ -1,0 +1,113 @@
+name: Apply Japanese vocabulary quality v2
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/apply-japanese-vocabulary-quality-v2.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Apply quality policy and guards
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const path=require('path');
+          const must=(ok,msg)=>{if(!ok)throw new Error(msg)};
+          const read=p=>fs.readFileSync(p,'utf8');
+          const write=(p,s)=>{fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,s)};
+          const one=(src,from,to,label)=>{must(src.includes(from),`Missing patch anchor: ${label}`);return src.replace(from,to)};
+
+          const policy=`(()=>{'use strict';
+          const VERSION='1.0.0';
+          const text=v=>v==null?'':String(v).trim();
+          const norm=v=>text(v).normalize('NFKC').toLowerCase();
+          const key=x=>\`${'${norm(x?.word??x?.term)}'}|${'${norm(x?.reading)}'}\`;
+          const exclusions=new Set(['間に合う|まにあう']);
+          const normalizeRank=v=>['A','B','C'].includes(String(v||'').toUpperCase())?String(v).toUpperCase():'C';
+          const category=x=>['two','three','yoji','idiom','four'].includes(x?.type)?x.type:'four';
+          function base(raw={}){return{rank:'C',examRank:'C',qualityConfidence:'low',reviewStatus:'pending-editorial',qualitySource:'full15000',category:category(raw)}}
+          function verified(raw={},source='curated'){const rank=normalizeRank(raw.rank);return{rank,examRank:rank,qualityConfidence:'high',reviewStatus:'verified',qualitySource:source,category:category(raw)}}
+          function isExcluded(x){return exclusions.has(key(x))}
+          function isExamImportant(x){return !!x&&!isExcluded(x)&&x.reviewStatus==='verified'&&['A','B'].includes(normalizeRank(x.examRank||x.rank))}
+          function summarize(rows=[]){const active=rows.filter(x=>!isExcluded(x)),verifiedRows=active.filter(x=>x.reviewStatus==='verified'),pendingRows=active.filter(x=>x.reviewStatus!=='verified');return Object.freeze({version:VERSION,total:active.length,verified:verifiedRows.length,pendingEditorial:pendingRows.length,examImportant:verifiedRows.filter(isExamImportant).length,rankA:active.filter(x=>normalizeRank(x.rank)==='A').length,rankB:active.filter(x=>normalizeRank(x.rank)==='B').length,rankC:active.filter(x=>normalizeRank(x.rank)==='C').length,excluded:rows.length-active.length})}
+          window.RISE_JAPANESE_EXAM_QUALITY_V1=Object.freeze({version:VERSION,key,exclusions,base,verified,isExcluded,isExamImportant,summarize});
+          })();\n`;
+          write('kokugo-chronologia/exam-quality-v1.js',policy);
+
+          let unified=read('quiz/unified-native-v1.js');
+          unified=one(unified,"const VERSION='1.1.0';","const VERSION='1.2.0';",'unified version');
+          unified=one(unified,"const progressAdapters=window.RISE_VOCABULARY_PROGRESS_ADAPTERS_V1;\nif(!core||!progressAdapters)throw new Error('Rise Vocabulary Core is unavailable');","const progressAdapters=window.RISE_VOCABULARY_PROGRESS_ADAPTERS_V1;\nconst jaQuality=window.RISE_JAPANESE_EXAM_QUALITY_V1;\nif(!core||!progressAdapters||!jaQuality)throw new Error('Rise Vocabulary Core / Japanese quality policy is unavailable');",'unified policy dependency');
+          unified=one(unified,"const JA_QUIZ_EXCLUSIONS=new Set(['間に合う|まにあう']);","const JA_QUIZ_EXCLUSIONS=jaQuality.exclusions;",'unified exclusions');
+          unified=one(unified,"rank:(x.type==='yoji'||x.type==='idiom')?'B':'C',source:'full15000'","...jaQuality.base({type:x.type}),source:'full15000'",'unified conservative base rank');
+          unified=one(unified,"rank:x.rank||'C',source:'jukugo'","...jaQuality.verified({...x,type:x.kind==='二字熟語'?'two':'three'},'jukugo'),source:'jukugo'",'unified jukugo verified');
+          unified=one(unified,"rank:x.rank||'B',source:'curated'","...jaQuality.verified({...x,type:x.kind==='四字熟語'?'yoji':'idiom'},'curated'),source:'curated'",'unified curated verified');
+          unified=one(unified,"existing.type=x.type||existing.type;existing.rank=x.rank||existing.rank;if(x.meaning&&hasJapanese(x.meaning))existing.meaning=x.meaning;existing.qualitySource=x.source;","existing.type=x.type||existing.type;Object.assign(existing,jaQuality.verified(x,x.source||'curated'));if(x.meaning&&hasJapanese(x.meaning))existing.meaning=x.meaning;existing.qualitySource=x.source||existing.qualitySource;",'unified verified overlay');
+          unified=one(unified,"const eligible=merged.filter(x=>!JA_QUIZ_EXCLUSIONS.has(jaContentKey(x))&&x.id&&x.word&&x.meaning&&hasJapanese(x.meaning));","const eligible=merged.filter(x=>!jaQuality.isExcluded(x)&&x.id&&x.word&&x.meaning&&hasJapanese(x.meaning));",'unified exclusion policy');
+          unified=one(unified,"window.__AA_RISE_UNIFIED_JAPANESE_QUALITY__=Object.freeze({version:VERSION,base:full.length,total:data.japanese.length,curatedOverrides,jukugoOverrides,added,excluded:[...JA_QUIZ_EXCLUSIONS]});","const qualitySummary=jaQuality.summarize(eligible);window.__AA_RISE_UNIFIED_JAPANESE_QUALITY__=Object.freeze({...qualitySummary,runtimeVersion:VERSION,base:full.length,curatedOverrides,jukugoOverrides,added,excludedTerms:[...JA_QUIZ_EXCLUSIONS]});",'unified quality summary');
+          write('quiz/unified-native-v1.js',unified);
+
+          let review=read('quiz/review-algorithm-v1.js');
+          review=one(review,"const JA_STATE_KEY='kokugoChronologiaStateV2',JA_WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1',CLASSIC_PROGRESS_KEY='rise_kokugo_classics_progress_v1';\nconst JA_QUIZ_EXCLUSIONS=new Set(['間に合う|まにあう']);","const JA_STATE_KEY='kokugoChronologiaStateV2',JA_WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1',CLASSIC_PROGRESS_KEY='rise_kokugo_classics_progress_v1';\nconst jaQuality=window.RISE_JAPANESE_EXAM_QUALITY_V1;if(!jaQuality)return;\nconst JA_QUIZ_EXCLUSIONS=jaQuality.exclusions;",'review policy dependency');
+          review=one(review,"rank:(x.type==='yoji'||x.type==='idiom')?'B':'C',source:'full15000'","...jaQuality.base({type:x.type}),source:'full15000'",'review conservative base rank');
+          review=one(review,"rank:x.rank||'C',source:'jukugo'","...jaQuality.verified({...x,type:x.kind==='二字熟語'?'two':'three'},'jukugo'),source:'jukugo'",'review jukugo verified');
+          review=one(review,"rank:x.rank||'B',source:'curated'","...jaQuality.verified({...x,type:x.kind==='四字熟語'?'yoji':'idiom'},'curated'),source:'curated'",'review curated verified');
+          review=one(review,"existing.type=x.type||existing.type;existing.rank=x.rank||existing.rank;if(x.meaning&&hasJapanese(x.meaning))existing.meaning=x.meaning;existing.qualitySource=x.source;","existing.type=x.type||existing.type;Object.assign(existing,jaQuality.verified(x,x.source||'curated'));if(x.meaning&&hasJapanese(x.meaning))existing.meaning=x.meaning;existing.qualitySource=x.source||existing.qualitySource;",'review verified overlay');
+          review=one(review,"japaneseVocab=merged.filter(x=>!JA_QUIZ_EXCLUSIONS.has(jaContentKey(x))&&x.word&&x.meaning&&hasJapanese(x.meaning));return japaneseVocab;","japaneseVocab=merged.filter(x=>!jaQuality.isExcluded(x)&&x.word&&x.meaning&&hasJapanese(x.meaning));return japaneseVocab;",'review exclusion policy');
+          write('quiz/review-algorithm-v1.js',review);
+
+          let quiz=read('quiz/index.html');
+          const qMarkers=['<script src="./unified-native-v1.js','<script src="./review-algorithm-v1.js'];
+          const qPos=qMarkers.map(x=>quiz.indexOf(x)).filter(x=>x>=0);must(qPos.length===2,'quiz script anchors missing');
+          const qAt=Math.min(...qPos),qStart=quiz.lastIndexOf('<script',qAt);must(qStart>=0,'quiz insertion point missing');
+          if(!quiz.includes('exam-quality-v1.js'))quiz=quiz.slice(0,qStart)+'<script src="../kokugo-chronologia/exam-quality-v1.js?v=1.0.0"></script>'+quiz.slice(qStart);
+          write('quiz/index.html',quiz);
+
+          let chrono=read('kokugo-chronologia/index.html');
+          chrono=one(chrono,'<script src="./meaning-ja-overrides.js"></script><script>','<script src="./meaning-ja-overrides.js"></script><script src="./exam-quality-v1.js?v=1.0.0"></script><script>','chronologia policy script');
+          chrono=one(chrono,"(()=>{'use strict';const $=s=>document.querySelector(s),rows=$('#rows'),pager=$('#pager');","(()=>{'use strict';const quality=window.RISE_JAPANESE_EXAM_QUALITY_V1;if(!quality)throw new Error('国語語彙品質ポリシーを読み込めません');const $=s=>document.querySelector(s),rows=$('#rows'),pager=$('#pager');",'chronologia policy dependency');
+          chrono=one(chrono,"function add(x){const k=x.term+'|'+(x.reading||'');if(!x.term||seen.has(k))return;seen.add(k);items.push(x)}","function add(x){const k=x.term+'|'+(x.reading||'');if(!x.term||seen.has(k)||quality.isExcluded({word:x.term,reading:x.reading}))return;seen.add(k);items.push(x)}",'chronologia exclusion');
+          const coarse="(x.type==='yoji'||x.type==='idiom')?'B':'C'";must(chrono.includes(coarse),'chronologia coarse-rank anchor missing');chrono=chrono.replaceAll(coarse,"'C'");
+          chrono=one(chrono,'手作業で確認した学習バンクのA/B/Cを最優先し、辞書拡張分は四字熟語・慣用句をB、一般四字語をCとしています。','A/Bは手作業で確認した学習バンクだけを入試重要として採用し、辞書拡張分は未精査としてC（発展・保留）に置きます。辞書上の種類だけでA/Bへ自動昇格させません。','chronologia explanatory note');
+          write('kokugo-chronologia/index.html',chrono);
+
+          let sw=read('sw.js');
+          sw=sw.replace(/const VERSION='([^']+)'/,(_,v)=>`const VERSION='${v}-ja-vocab-quality-v2'`);
+          must(sw.includes("url('quiz/unified-native-v1.js')"),'sw unified precache anchor missing');
+          if(!sw.includes("url('kokugo-chronologia/exam-quality-v1.js')"))sw=sw.replace("url('quiz/unified-native-v1.js')","url('kokugo-chronologia/exam-quality-v1.js'),\n  url('quiz/unified-native-v1.js')");
+          write('sw.js',sw);
+
+          const audit=`import fs from 'node:fs';\nimport vm from 'node:vm';\nconst read=p=>fs.readFileSync(p,'utf8');\nconst fail=[];const check=(name,ok)=>{if(!ok)fail.push(name);console.log((ok?'PASS ':'FAIL ')+name)};\nconst policy=read('kokugo-chronologia/exam-quality-v1.js'),unified=read('quiz/unified-native-v1.js'),review=read('quiz/review-algorithm-v1.js'),chrono=read('kokugo-chronologia/index.html'),quiz=read('quiz/index.html'),sw=read('sw.js');\nfor(const [n,c] of [['policy',policy],['unified',unified],['review',review]]){let ok=true;try{new vm.Script(c,{filename:n})}catch(e){ok=false;console.error(e.message)}check(n+' parses',ok)}\nconst s={window:{}};vm.createContext(s);vm.runInContext(policy,s);const q=s.window.RISE_JAPANESE_EXAM_QUALITY_V1;\ncheck('policy available',!!q);\ncheck('base-only entries are conservative C',q?.base({type:'yoji'}).rank==='C'&&q?.base({type:'idiom'}).reviewStatus==='pending-editorial');\ncheck('verified A/B retain entrance rank',q?.verified({rank:'A',type:'yoji'},'curated').rank==='A'&&q?.verified({rank:'B'},'jukugo').reviewStatus==='verified');\ncheck('exam-important requires verified A/B',q?.isExamImportant({...q.verified({rank:'A'},'curated'),word:'一石二鳥',reading:'いっせきにちょう'})===true&&q?.isExamImportant({...q.base({}),word:'仮語',reading:'かご'})===false);\ncheck('known non-idiom is excluded',q?.isExcluded({word:'間に合う',reading:'まにあう'})===true);\nconst coarse=\"(x.type==='yoji'||x.type==='idiom')?'B':'C'\";\ncheck('unified no coarse dictionary B promotion',!unified.includes(coarse)&&unified.includes('jaQuality.base({type:x.type})'));\ncheck('review no coarse dictionary B promotion',!review.includes(coarse)&&review.includes('jaQuality.base({type:x.type})'));\ncheck('unified exposes editorial counts',unified.includes('pendingEditorial')||unified.includes('qualitySummary=jaQuality.summarize'));\ncheck('old chronologia uses same policy',chrono.includes('exam-quality-v1.js')&&chrono.includes('辞書上の種類だけでA/Bへ自動昇格させません'));\nconst p=quiz.indexOf('exam-quality-v1.js'),u=quiz.indexOf('./unified-native-v1.js'),r=quiz.indexOf('./review-algorithm-v1.js');check('quiz loads policy before Japanese consumers',p>=0&&u>p&&r>p);\ncheck('PWA precaches policy',sw.includes(\"url('kokugo-chronologia/exam-quality-v1.js')\"));\ncheck('stable Japanese storage keys remain',unified.includes(\"JA_STATE_KEY='kokugoChronologiaStateV2'\")&&unified.includes(\"JA_WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1'\")&&unified.includes(\"JA_CYCLE_KEY='aa_kokugo_vocab_full15000_cycle_v1'\"));\nif(fail.length){console.error('JAPANESE_VOCAB_QUALITY_AUDIT=FAIL',fail);process.exit(1)}console.log('JAPANESE_VOCAB_QUALITY_AUDIT=PASS');\n`;
+          write('scripts/audit-japanese-vocabulary-quality.mjs',audit);
+
+          let wf=read('.github/workflows/unified-vocabulary-browser-audit.yml');
+          if(!wf.includes("kokugo-chronologia/exam-quality-v1.js"))wf=wf.replaceAll("      - 'kokugo-chronologia/data.jsonl'","      - 'kokugo-chronologia/data.jsonl'\n      - 'kokugo-chronologia/exam-quality-v1.js'\n      - 'kokugo-chronologia/index.html'");
+          if(!wf.includes("scripts/audit-japanese-vocabulary-quality.mjs"))wf=wf.replaceAll("      - 'scripts/audit-infinite-course.mjs'","      - 'scripts/audit-infinite-course.mjs'\n      - 'scripts/audit-japanese-vocabulary-quality.mjs'");
+          if(!wf.includes('Audit Japanese vocabulary editorial quality'))wf=wf.replace('      - name: Audit infinite course contract\n        run: node scripts/audit-infinite-course.mjs','      - name: Audit Japanese vocabulary editorial quality\n        run: node scripts/audit-japanese-vocabulary-quality.mjs\n      - name: Audit infinite course contract\n        run: node scripts/audit-infinite-course.mjs');
+          write('.github/workflows/unified-vocabulary-browser-audit.yml',wf);
+
+          const report={version:'2.0.0',policy:'conservative-unverified-to-C',baseSourceRows:15000,examImportantRule:'verified A/B only',knownExclusions:['間に合う|まにあう'],historyCompatibility:['kokugoChronologiaStateV2','aa_kokugo_vocab_wrong_queue_v1','aa_kokugo_vocab_full15000_cycle_v1'],generatedAt:new Date().toISOString(),status:'policy-applied; counts verified by runtime QA'};
+          write('kokugo-chronologia/EDITORIAL_QUALITY_STATUS.json',JSON.stringify(report,null,2)+'\n');
+          NODE
+          node scripts/audit-japanese-vocabulary-quality.mjs
+          node scripts/audit-infinite-course.mjs
+      - name: Commit applied changes and remove one-time workflow
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/apply-japanese-vocabulary-quality-v2.yml
+          git add quiz/unified-native-v1.js quiz/review-algorithm-v1.js quiz/index.html kokugo-chronologia/index.html kokugo-chronologia/exam-quality-v1.js kokugo-chronologia/EDITORIAL_QUALITY_STATUS.json scripts/audit-japanese-vocabulary-quality.mjs .github/workflows/unified-vocabulary-browser-audit.yml sw.js
+          git commit -m 'Enforce verified-only Japanese entrance vocabulary ranks'
+          git pull --rebase origin main
+          git push origin HEAD:main
