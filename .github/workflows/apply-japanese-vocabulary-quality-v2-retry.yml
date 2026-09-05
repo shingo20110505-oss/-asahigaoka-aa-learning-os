@@ -1,0 +1,55 @@
+name: Apply Japanese vocabulary quality v2 retry
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/apply-japanese-vocabulary-quality-v2-retry.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Reuse guarded migration and align legacy QA
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import textwrap
+          s=Path('.github/workflows/apply-japanese-vocabulary-quality-v2.yml').read_text()
+          a="          node <<'NODE'\n"
+          b="\n          NODE\n"
+          i=s.index(a)+len(a)
+          j=s.index(b,i)
+          Path('/tmp/apply-japanese-quality.js').write_text(textwrap.dedent(s[i:j]))
+          PY
+          node /tmp/apply-japanese-quality.js
+          node <<'NODE'
+          const fs=require('fs');
+          const p='scripts/audit-infinite-course.mjs';
+          let s=fs.readFileSync(p,'utf8');
+          const one=(from,to,label)=>{if(!s.includes(from))throw new Error('Missing audit anchor: '+label);s=s.replace(from,to)};
+          one("check('Japanese review overlays curated rank/type onto stable full-bank IDs',review.includes('existing.type=x.type||existing.type')&&review.includes('existing.rank=x.rank||existing.rank')&&review.includes('existing.qualitySource=x.source'));","check('Japanese review overlays verified metadata onto stable full-bank IDs',review.includes('existing.type=x.type||existing.type')&&review.includes('Object.assign(existing,jaQuality.verified')&&review.includes('existing.qualitySource=x.source||existing.qualitySource'));",'verified overlay');
+          one("check('Japanese review excludes known non-idiom from new quiz candidates',review.includes(\"JA_QUIZ_EXCLUSIONS=new Set(['間に合う|まにあう'])\")&&review.includes('!JA_QUIZ_EXCLUSIONS.has(jaContentKey(x))'));","check('Japanese review excludes known non-idiom through shared policy',review.includes('JA_QUIZ_EXCLUSIONS=jaQuality.exclusions')&&review.includes('!jaQuality.isExcluded(x)'));",'shared exclusion');
+          s=s.replace("console.log(JSON.stringify({version:'1.2.0'","console.log(JSON.stringify({version:'1.3.0'");
+          fs.writeFileSync(p,s);
+          NODE
+          node scripts/audit-japanese-vocabulary-quality.mjs
+          node scripts/audit-infinite-course.mjs
+      - name: Commit verified migration and clean temporary workflows
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/apply-japanese-vocabulary-quality-v2.yml .github/workflows/apply-japanese-vocabulary-quality-v2-retry.yml
+          git add -A
+          git commit -m 'Enforce verified-only Japanese entrance vocabulary ranks'
+          git pull --rebase origin main
+          git push origin HEAD:main
