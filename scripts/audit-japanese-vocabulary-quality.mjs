@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 const read=p=>fs.readFileSync(p,'utf8');
 const fail=[];const check=(name,ok)=>{if(!ok)fail.push(name);console.log((ok?'PASS ':'FAIL ')+name)};
-const policy=read('kokugo-chronologia/exam-quality-v1.js'),unified=read('quiz/unified-native-v1.js'),review=read('quiz/review-algorithm-v1.js'),chrono=read('kokugo-chronologia/index.html'),quiz=read('quiz/index.html'),sw=read('sw.js');
+const policy=read('kokugo-chronologia/exam-quality-v1.js'),unified=read('quiz/unified-native-v1.js'),review=read('quiz/review-algorithm-v1.js'),legacyQuiz=read('kokugo-chronologia/quiz-rank-select-v1.js'),chrono=read('kokugo-chronologia/index.html'),quiz=read('quiz/index.html'),sw=read('sw.js');
 for(const [n,c] of [['policy',policy],['unified',unified],['review',review]]){let ok=true;try{new vm.Script(c,{filename:n})}catch(e){ok=false;console.error(e.message)}check(n+' parses',ok)}
 const s={window:{}};vm.createContext(s);vm.runInContext(policy,s);const q=s.window.RISE_JAPANESE_EXAM_QUALITY_V1;
 check('policy available',!!q);
@@ -15,6 +15,11 @@ check('unified no coarse dictionary B promotion',!unified.includes(coarse)&&unif
 check('review no coarse dictionary B promotion',!review.includes(coarse)&&review.includes('jaQuality.base({type:x.type})'));
 check('unified exposes editorial counts',unified.includes('pendingEditorial')||unified.includes('qualitySummary=jaQuality.summarize'));
 check('old chronologia uses same policy',chrono.includes('exam-quality-v1.js')&&chrono.includes('辞書上の種類だけでA/Bへ自動昇格させません'));
+check('legacy quiz keeps dictionary supplement at C',legacyQuiz.includes("rank:'C',source:'full15000',quality:'dictionary-supplement'"));
+check('legacy quiz preserves wrong identity across metadata corrections',legacyQuiz.includes("function wrongKey(x){return [String(x?.id??''),x?.word||'',x?.reading||''].join('|')}"));
+check('legacy quiz avoids unrelated direct-meaning ID collision',!legacyQuiz.includes("directMeaning(x.id)||x.meaning"));
+check('legacy quiz distractors prefer same type and rank',legacyQuiz.includes('x.type===item.type&&x.rank===item.rank'));
+check('legacy quiz exposes verified and pending editorial counts',legacyQuiz.includes('pendingEditorial:clean.length-verified')&&legacyQuiz.includes('examImportant'));
 const p=quiz.indexOf('exam-quality-v1.js'),u=quiz.indexOf('./unified-native-v1.js'),r=quiz.indexOf('./review-algorithm-v1.js');check('quiz loads policy before Japanese consumers',p>=0&&u>p&&r>p);
 check('PWA precaches policy',sw.includes("url('kokugo-chronologia/exam-quality-v1.js')"));
 check('stable Japanese storage keys remain',unified.includes("JA_STATE_KEY='kokugoChronologiaStateV2'")&&unified.includes("JA_WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1'")&&unified.includes("JA_CYCLE_KEY='aa_kokugo_vocab_full15000_cycle_v1'"));

@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const VERSION='2026-09-05.2';
+const VERSION='2026-09-05.3';
 const FULL_DATA_URL='./data.jsonl?v=quiz15000-20260905-quality2';
 const STATE_KEY='kokugoChronologiaStateV2';
 const WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1';
@@ -9,14 +9,14 @@ if(window.__AA_KOKUGO_QUIZ_RANK_SELECT__)return;
 window.__AA_KOKUGO_QUIZ_RANK_SELECT__=VERSION;
 
 const $=(s,r=document)=>r.querySelector(s);
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const hasJapanese=s=>/[\u3040-\u30ff\u3400-\u9fff]/.test(String(s||''));
 const entryKey=x=>`${x?.word||''}|${x?.reading||''}`;
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function getState(){try{return JSON.parse(localStorage.getItem(STATE_KEY)||'{}')}catch{return {}}}
 function saveState(s){try{localStorage.setItem(STATE_KEY,JSON.stringify(s))}catch(_){}}
 function loadWrong(){try{const a=JSON.parse(localStorage.getItem(WRONG_KEY)||'[]');return Array.isArray(a)?a:[]}catch{return []}}
-function wrongKey(x){return [String(x?.id??''),x?.type||'',x?.word||'',x?.reading||''].join('|')}
+function wrongKey(x){return [String(x?.id??''),x?.word||'',x?.reading||''].join('|')}
 function saveWrong(list){const out=[],seen=new Set();for(const x of list||[]){if(!x||!x.word||!x.id)continue;const k=wrongKey(x);if(seen.has(k))continue;seen.add(k);out.push(x)}try{localStorage.setItem(WRONG_KEY,JSON.stringify(out))}catch(_){}return out}
 function addWrong(item){const list=loadWrong(),k=wrongKey(item);if(!list.some(x=>wrongKey(x)===k))list.push({id:item.id,word:item.word,reading:item.reading||'',meaning:item.meaning||'',type:item.type||'',rank:item.rank||'',createdAt:Date.now()});saveWrong(list)}
 function removeWrong(item){const k=wrongKey(item);saveWrong(loadWrong().filter(x=>wrongKey(x)!==k))}
@@ -66,25 +66,22 @@ function makePool(){
  const merged=[...(window.AA_JUKUGO_BANK||[]),...(window.AA_JUKUGO_ADVANCED||[])],seenBank=new Set();
  for(const x of merged){
    const k=`${x.word}|${x.reading||''}`;if(!x.word||seenBank.has(k))continue;seenBank.add(k);
-   put({id:x.id,word:x.word,reading:x.reading||'',meaning:directMeaning(x.id)||x.meaning||'',type:x.kind==='二字熟語'?'two':'three',rank:x.rank||'C',source:'jukugo-bank',quality:'verified-bank'},2)
+   put({id:x.id,word:x.word,reading:x.reading||'',meaning:x.meaning||'',type:x.kind==='二字熟語'?'two':'three',rank:x.rank||'C',source:'jukugo-bank',quality:'verified-bank'},2)
  }
  for(const [i,x] of (window.AA_IDIOM_BANK||[]).entries()){
-   put({id:'quiz-curated-'+i,word:x.word,reading:x.reading||'',meaning:directMeaning(x.id)||x.meaning||'',type:x.kind==='四字熟語'?'yoji':'idiom',rank:x.rank||'B',source:'idiom-bank',quality:'verified-curated'},3)
+   put({id:'quiz-curated-'+i,word:x.word,reading:x.reading||'',meaning:x.meaning||'',type:x.kind==='四字熟語'?'yoji':'idiom',rank:x.rank||'B',source:'idiom-bank',quality:'verified-curated'},3)
  }
  const clean=out.map(({_priority,...x})=>x);
- const rankCounts=clean.reduce((a,x)=>(a[x.rank]=(a[x.rank]||0)+1,a),{});
- window.__AA_KOKUGO_QUALITY_STATS__={raw15000:full15000.length,pool:clean.length,bankOverrides,curatedOverrides,excluded,rankCounts};
+ const rankCounts=clean.reduce((a,x)=>(a[x.rank]=(a[x.rank]||0)+1,a),{}),verified=clean.filter(x=>String(x.quality||'').startsWith('verified')).length,examImportant=clean.filter(x=>String(x.quality||'').startsWith('verified')&&['A','B'].includes(x.rank)).length;
+ window.__AA_KOKUGO_QUALITY_STATS__={raw15000:full15000.length,pool:clean.length,bankOverrides,curatedOverrides,excluded,verified,pendingEditorial:clean.length-verified,examImportant,rankCounts};
  return clean;
 }
 
 function validFieldValue(field,v){return !!v&&(field!=='meaning'||hasJapanese(v))}
 function pickDistractors(pool,item,field){
- const vals=[],seen=new Set([item[field]]),n=pool.length;
- for(let tries=0;tries<120&&vals.length<3;tries++){
-   const x=pool[Math.floor(Math.random()*n)],v=x?.[field];
-   if(!x||x.id===item.id||!validFieldValue(field,v)||seen.has(v))continue;seen.add(v);vals.push(v)
- }
- if(vals.length<3){for(const x of pool){const v=x?.[field];if(x.id===item.id||!validFieldValue(field,v)||seen.has(v))continue;seen.add(v);vals.push(v);if(vals.length===3)break}}
+ const vals=[],seen=new Set([item[field]]);
+ const take=pred=>{for(const x of shuffle([...pool])){if(vals.length>=3)break;const v=x?.[field];if(!x||x.id===item.id||!pred(x)||!validFieldValue(field,v)||seen.has(v))continue;seen.add(v);vals.push(v)}};
+ take(x=>x.type===item.type&&x.rank===item.rank);take(x=>x.type===item.type);take(x=>x.rank===item.rank);take(()=>true);
  return vals;
 }
 function buildQuestion(item,mode,pool){
