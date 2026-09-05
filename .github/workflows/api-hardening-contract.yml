@@ -9,6 +9,7 @@ on:
   push:
     branches:
       - rise-api-hardening-20260905
+      - rise-gemini-schema-hotfix-20260905
     paths:
       - 'worker/**'
       - 'tests/ai-*.mjs'
@@ -36,7 +37,10 @@ jobs:
           node --check worker/src/providers/gemini.mjs
           node --check worker/src/providers/groq.mjs
       - name: Hardened API contract
-        run: node tests/ai-api-hardening-contract.mjs
+        run: |
+          set -euo pipefail
+          node tests/ai-api-hardening-contract.mjs
+          node tests/ai-gemini-current-contract.mjs
       - name: Legacy compatibility contracts
         run: |
           set -euo pipefail
