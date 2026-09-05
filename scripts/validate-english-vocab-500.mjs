@@ -24,7 +24,7 @@ const v2=partFiles.flatMap((file,i)=>rowsFromRaw(read(file),`v2 part ${i+1}`));
 assert(v2.length===418,`v2 candidate count changed: ${v2.length}`);
 const v2Surface=new Set();for(const [i,row] of v2.entries()){const key=norm(row.word);assert(!v2Surface.has(key),`v2 duplicate surface: ${row.word} at ${i+1}`);v2Surface.add(key)}
 const v2Text=read('english-vocabulary-supplement-v2.js');
-assert(v2Text.includes("TARGET=500"),'v2 target 500 missing');
+assert(v2Text.includes('TARGET=500'),'v2 target 500 missing');
 assert(v2Text.includes('srsId:`v:${id}`'),'v2 stable SRS rule missing');
 assert(v2Text.includes("compatibility:'append-only-existing-id-preserved'"),'v2 append-only marker missing');
 
@@ -36,13 +36,13 @@ const v2Result=append(v2,'en-sup-v2-',500);
 assert(effective.length===500,`effective vocabulary must be exactly 500, got ${effective.length} (before v2 ${beforeV2})`);
 assert(new Set(effective.map(x=>x.id)).size===effective.length,'effective ids are not unique');
 assert(new Set(effective.map(x=>norm(x.word))).size===effective.length,'effective normalized words are not unique');
-assert(JSON.stringify(effective.slice(0,107).map(({srsId,...x})=>x))===baseSnapshot,'base 107 rows changed during simulation');
+assert(JSON.stringify(effective.slice(0,107))===baseSnapshot,'base 107 rows changed during simulation');
 for(const row of effective.slice(107)){assert(row.id&&row.word&&row.meaning&&row.pos&&row.level&&row.example&&row.cloze&&row.srsId,`new row missing required fields: ${row.id||row.word}`);assert(row.srsId===`v:${row.id}`,`unstable SRS key: ${row.id}`)}
 
 const registry=read('app/runtime-registry.js');
 for(const file of ['english-vocabulary-supplement-v1.js',...partFiles,'english-vocabulary-supplement-v2.js'])assert(registry.includes(file),`runtime registry missing ${file}`);
-const sw=read('sw.js');for(const file of ['english-vocabulary-supplement-v1.js',...partFiles,'english-vocabulary-supplement-v2.js'])assert(sw.includes(file),`service worker cache list missing ${file}`);
 const inventory=read('vocabulary-core/inventory-v1.json');assert(inventory.includes('asahi_learning_os_v1'),'native English progress store changed');assert(inventory.includes('reference-native-do-not-copy'),'native progress policy changed');
+const sw=read('sw.js');assert(sw.includes("ext==='js'||ext==='mjs'"),'service worker JS network-first cache path changed');
 
 console.log(JSON.stringify({status:fail.length?'FAIL':'PASS',base:base.length,v1Candidates:v1.length,v1Added:v1Result.added,v1Skipped:v1Result.skipped,beforeV2,v2Candidates:v2.length,v2Added:v2Result.added,v2SkippedBeforeTarget:v2Result.skipped,total:effective.length,failures:fail},null,2));
 if(fail.length)process.exit(1);
