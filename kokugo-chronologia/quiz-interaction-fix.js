@@ -1,5 +1,26 @@
 (()=>{'use strict';
-const VERSION='2026-08-26.3';
+if(window.__AA_KOKUGO_SUPPLEMENT_BARRIER__)return;
+window.__AA_KOKUGO_SUPPLEMENT_BARRIER__='1.0.0';
+const head=document.head;if(!head)return;
+const nativeAppend=head.appendChild;
+head.appendChild=function(node){
+  const src=String(node?.src||'');
+  if(node?.tagName==='SCRIPT'&&/jukugo-bank-advanced-5\.js/.test(src)){
+    head.appendChild=nativeAppend;
+    const prior=node.onload;
+    node.onload=function(ev){
+      if(window.RISE_JAPANESE_VOCAB_SUPPLEMENT){if(typeof prior==='function')prior.call(node,ev);return}
+      const sup=document.createElement('script');sup.src='./jukugo-bank-supplement-v1.js?v=20260905-1';sup.async=false;
+      const done=()=>{if(typeof prior==='function')prior.call(node,ev)};
+      sup.onload=done;sup.onerror=done;nativeAppend.call(head,sup);
+    };
+  }
+  return nativeAppend.call(this,node);
+};
+})();
+
+(()=>{'use strict';
+const VERSION='2026-09-05.1';
 if(window.__AA_KOKUGO_QUIZ_INTERACTION_FIX__)return;
 window.__AA_KOKUGO_QUIZ_INTERACTION_FIX__=VERSION;
 
@@ -71,7 +92,7 @@ async function runAudit(){
     const nextVisible=!!next&&getComputedStyle(next).display!=='none';
     const full=Number(window.__AA_KOKUGO_FULL_15000_COUNT__||0),pool=Number(window.__AA_KOKUGO_QUIZ_POOL_COUNT__||0);
     if(!disabled||!nextVisible||full!==15000||pool<15000)throw new Error(`graded=${disabled} next=${nextVisible} full=${full} pool=${pool}`);
-    markAudit(true,{graded:true,nextVisible:true,realTouchCapture:true,rankSelector:true,full15000:full,pool,version:VERSION});
+    markAudit(true,{graded:true,nextVisible:true,realTouchCapture:true,rankSelector:true,full15000:full,pool,supplement:window.RISE_JAPANESE_VOCAB_SUPPLEMENT||null,version:VERSION});
   }catch(err){markAudit(false,{error:String(err?.message||err),version:VERSION})}
 }
 
@@ -92,4 +113,4 @@ function install(){
 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
-(()=>{if(document.getElementById('aaKokugoQuizRankLoader'))return;const s=document.createElement('script');s.id='aaKokugoQuizRankLoader';s.src='./quiz-rank-select-v1.js?v=20260826-3';s.async=false;document.head.appendChild(s)})();
+(()=>{if(document.getElementById('aaKokugoQuizRankLoader'))return;const s=document.createElement('script');s.id='aaKokugoQuizRankLoader';s.src='./quiz-rank-select-v1.js?v=20260905-1';s.async=false;document.head.appendChild(s)})();
