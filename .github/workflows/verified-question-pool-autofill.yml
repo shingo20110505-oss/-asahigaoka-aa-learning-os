@@ -1,0 +1,150 @@
+name: Rise Verified Question Pool Autofill
+
+on:
+  schedule:
+    - cron: '15 7 * * *'   # 16:15 JST English
+    - cron: '45 7 * * *'   # 16:45 JST Math
+    - cron: '15 8 * * *'   # 17:15 JST Japanese
+    - cron: '45 8 * * *'   # 17:45 JST Science
+    - cron: '15 9 * * *'   # 18:15 JST Social
+  workflow_dispatch:
+    inputs:
+      subject:
+        description: Subject for manual verification run
+        required: false
+        default: english
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verified-question-pool-autofill.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rise-verified-question-pool-autofill
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      WORKER_URL: https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev
+      POOL_PATH: ai/verified-question-pool-v1.json
+      TARGET_PER_SUBJECT: '60'
+      BATCH_SIZE: '2'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve subject from staggered JST schedule
+        id: subject
+        shell: bash
+        env:
+          MANUAL_SUBJECT: ${{ github.event.inputs.subject }}
+        run: |
+          set -euo pipefail
+          case "${{ github.event.schedule }}" in
+            '15 7 * * *') SUBJECT=english ;;
+            '45 7 * * *') SUBJECT=math ;;
+            '15 8 * * *') SUBJECT=japanese ;;
+            '45 8 * * *') SUBJECT=science ;;
+            '15 9 * * *') SUBJECT=social ;;
+            '') SUBJECT="${MANUAL_SUBJECT:-english}" ;;
+            *) echo "Unknown schedule" >&2; exit 2 ;;
+          esac
+          case "$SUBJECT" in english|math|japanese|science|social) ;; *) exit 2 ;; esac
+          echo "subject=$SUBJECT" >> "$GITHUB_OUTPUT"
+          echo "Resolved subject: $SUBJECT"
+
+      - name: Confirm secrets and pool contract
+        env:
+          AI_ACCESS_TOKEN: ${{ secrets.AI_ACCESS_TOKEN }}
+        run: |
+          set -euo pipefail
+          test "${#AI_ACCESS_TOKEN}" -ge 24
+          test -f "$POOL_PATH"
+          node --check scripts/merge-verified-question-pool.mjs
+          node -e "const p=require('./$POOL_PATH'); for (const s of ['english','math','japanese','science','social']) if(!Array.isArray(p.subjects?.[s])) process.exit(1)"
+
+      - name: Decide whether refill is needed
+        id: refill
+        env:
+          SUBJECT: ${{ steps.subject.outputs.subject }}
+        run: |
+          set -euo pipefail
+          COUNT=$(node -e "const p=require('./$POOL_PATH'); console.log((p.subjects?.[process.env.SUBJECT]||[]).length)")
+          echo "current=$COUNT" >> "$GITHUB_OUTPUT"
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$COUNT" -ge "$TARGET_PER_SUBJECT" ]; then
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+            echo "Pool target already met: $SUBJECT=$COUNT"
+          else
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build deduplicated generation request
+        if: steps.refill.outputs.needed == 'true'
+        env:
+          SUBJECT: ${{ steps.subject.outputs.subject }}
+        run: |
+          node --input-type=module <<'NODE' > request.json
+          import fs from 'node:fs';
+          const pool = JSON.parse(fs.readFileSync(process.env.POOL_PATH, 'utf8'));
+          const items = pool.subjects?.[process.env.SUBJECT] || [];
+          const recent = items.slice(0, 60);
+          const payload = {
+            subject: process.env.SUBJECT,
+            count: Number(process.env.BATCH_SIZE || 2),
+            difficulty: 8,
+            skill: 'aichi.exam.application',
+            focus: ['愛知県公立高校入試型', '応用', '資料活用'],
+            recentQuestionIds: recent.map(x => x.id).filter(Boolean),
+            recentFingerprints: recent.map(x => x.fingerprint).filter(Boolean).slice(0,40)
+          };
+          process.stdout.write(JSON.stringify(payload));
+          NODE
+
+      - name: Generate and independently verify with production Rise API
+        if: steps.refill.outputs.needed == 'true'
+        env:
+          AI_ACCESS_TOKEN: ${{ secrets.AI_ACCESS_TOKEN }}
+        run: |
+          set -euo pipefail
+          HTTP=$(curl --silent --show-error --max-time 330 \
+            --output response.json --write-out '%{http_code}' \
+            -X POST "$WORKER_URL/v1/exam" \
+            -H 'Origin: https://shingo20110505-oss.github.io' \
+            -H "Authorization: Bearer $AI_ACCESS_TOKEN" \
+            -H 'Content-Type: application/json' \
+            --data-binary @request.json)
+          if [ "$HTTP" != "200" ]; then
+            echo "Rise generation safely failed with HTTP $HTTP" >&2
+            cat response.json >&2 || true
+            exit 1
+          fi
+          node -e "const r=require('./response.json'); if(r?.quality?.verified!==true || r?.quality?.method!=='gemini-authoring-subject-deterministic-groq-blind-agreement' || !r.items?.length) process.exit(1)"
+
+      - name: Merge only fully verified questions
+        if: steps.refill.outputs.needed == 'true'
+        env:
+          SUBJECT: ${{ steps.subject.outputs.subject }}
+        run: node scripts/merge-verified-question-pool.mjs "$POOL_PATH" response.json "$SUBJECT"
+
+      - name: Commit durable pool update
+        if: steps.refill.outputs.needed == 'true'
+        env:
+          SUBJECT: ${{ steps.subject.outputs.subject }}
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- "$POOL_PATH"; then
+            echo 'No new verified question to commit.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$POOL_PATH"
+          git commit -m "Autofill verified $SUBJECT question pool"
+          git pull --rebase origin main
+          git push origin HEAD:main
