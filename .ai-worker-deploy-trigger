@@ -1,4 +1,5 @@
 deploy-requested-version=1.4.0
 hardening-version=2.0.0
-reason=current-gemini-interactions-schema-compatibility
-source-merge=083ec52636459db9573d22d2e3712a8b5701089e
+gemini-transport-revision=dual-transport-v1
+reason=gemini-same-provider-transport-resilience
+source-merge=796228ddb7804b5f7e337fd582d9ae0dd8c40c3f
