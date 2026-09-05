@@ -1,9 +1,10 @@
 (()=>{'use strict';
-const VERSION='1.1.0';
+const VERSION='1.2.0';
 const SUBJECTS=Object.freeze(['english','japanese','social']);
 const core=window.RISE_VOCABULARY_CORE_V1;
 const progressAdapters=window.RISE_VOCABULARY_PROGRESS_ADAPTERS_V1;
-if(!core||!progressAdapters)throw new Error('Rise Vocabulary Core is unavailable');
+const jaQuality=window.RISE_JAPANESE_EXAM_QUALITY_V1;
+if(!core||!progressAdapters||!jaQuality)throw new Error('Rise Vocabulary Core / Japanese quality policy is unavailable');
 
 const $=s=>document.querySelector(s);
 const $$=s=>[...document.querySelectorAll(s)];
@@ -17,7 +18,7 @@ const JA_STATE_KEY='kokugoChronologiaStateV2';
 const JA_WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1';
 const JA_CYCLE_KEY='aa_kokugo_vocab_full15000_cycle_v1';
 const JA_MEANING_SCRIPT='../kokugo-chronologia/meaning-ja-overrides.js?v=rise-unified-ja-20260905';
-const JA_QUIZ_EXCLUSIONS=new Set(['間に合う|まにあう']);
+const JA_QUIZ_EXCLUSIONS=jaQuality.exclusions;
 
 const ui={
  status:$('#connectionStatus'),start:$('#startSession'),focus:$('#focusToggle'),count:$('#sessionCount'),mode:$('#quizMode'),filterA:$('#filterA'),filterB:$('#filterB'),filterALabel:$('#filterALabel'),filterBLabel:$('#filterBLabel'),
@@ -136,29 +137,29 @@ async function loadJapanese(){
    const rows=(await res.text()).split(/\r?\n/).filter(Boolean).map(x=>JSON.parse(x));if(rows.length!==15000)throw new Error('15,000語データ件数 '+rows.length);
    const seenFull=new Set();
    const full=rows.map((x,i)=>{
-     const meaning=directJaMeaning(x.id??i),raw={id:'quiz-full-'+String(x.id??i),word:text(x.term),reading:text(x.reading),meaning,type:['yoji','idiom','four'].includes(x.type)?x.type:'four',rank:(x.type==='yoji'||x.type==='idiom')?'B':'C',source:'full15000'};
+     const meaning=directJaMeaning(x.id??i),raw={id:'quiz-full-'+String(x.id??i),word:text(x.term),reading:text(x.reading),meaning,type:['yoji','idiom','four'].includes(x.type)?x.type:'four',...jaQuality.base({type:x.type}),source:'full15000'};
      if(!meaning||!hasJapanese(meaning))throw new Error('日本語意味が未確認: '+text(x.term||x.id||i));
      const key=jaContentKey(raw);if(!raw.word||seenFull.has(key))throw new Error('15,000語データに空欄または重複: '+key);seenFull.add(key);
      return raw;
    });
-   const bank=uniqueBy([...(window.AA_JUKUGO_BANK||[]),...(window.AA_JUKUGO_ADVANCED||[])].map(x=>({id:x.id,word:text(x.word),reading:text(x.reading),meaning:text(x.meaning),type:x.kind==='二字熟語'?'two':'three',rank:x.rank||'C',source:'jukugo'})),jaContentKey);
-   const curated=uniqueBy((window.AA_IDIOM_BANK||[]).filter(x=>x&&['四字熟語','慣用句'].includes(x.kind)).map((x,i)=>({id:'quiz-curated-'+i,word:text(x.word),reading:text(x.reading),meaning:text(x.meaning),type:x.kind==='四字熟語'?'yoji':'idiom',rank:x.rank||'B',source:'curated'})),jaContentKey);
+   const bank=uniqueBy([...(window.AA_JUKUGO_BANK||[]),...(window.AA_JUKUGO_ADVANCED||[])].map(x=>({id:x.id,word:text(x.word),reading:text(x.reading),meaning:text(x.meaning),type:x.kind==='二字熟語'?'two':'three',...jaQuality.verified({...x,type:x.kind==='二字熟語'?'two':'three'},'jukugo'),source:'jukugo'})),jaContentKey);
+   const curated=uniqueBy((window.AA_IDIOM_BANK||[]).filter(x=>x&&['四字熟語','慣用句'].includes(x.kind)).map((x,i)=>({id:'quiz-curated-'+i,word:text(x.word),reading:text(x.reading),meaning:text(x.meaning),type:x.kind==='四字熟語'?'yoji':'idiom',...jaQuality.verified({...x,type:x.kind==='四字熟語'?'yoji':'idiom'},'curated'),source:'curated'})),jaContentKey);
    const merged=[...full],byKey=new Map(merged.map(x=>[jaContentKey(x),x]));let curatedOverrides=0,jukugoOverrides=0,added=0;
    for(const x of [...bank,...curated]){
      const key=jaContentKey(x);if(!key||!x.word)continue;const existing=byKey.get(key);
      if(existing){
-       existing.type=x.type||existing.type;existing.rank=x.rank||existing.rank;if(x.meaning&&hasJapanese(x.meaning))existing.meaning=x.meaning;existing.qualitySource=x.source;
+       existing.type=x.type||existing.type;Object.assign(existing,jaQuality.verified(x,x.source||'curated'));if(x.meaning&&hasJapanese(x.meaning))existing.meaning=x.meaning;existing.qualitySource=x.source||existing.qualitySource;
        if(x.source==='curated')curatedOverrides++;else jukugoOverrides++;
        continue;
      }
      merged.push(x);byKey.set(key,x);added++;
    }
-   const eligible=merged.filter(x=>!JA_QUIZ_EXCLUSIONS.has(jaContentKey(x))&&x.id&&x.word&&x.meaning&&hasJapanese(x.meaning));
+   const eligible=merged.filter(x=>!jaQuality.isExcluded(x)&&x.id&&x.word&&x.meaning&&hasJapanese(x.meaning));
    data.japanese=eligible.map(raw=>({raw,record:core.normalizeJapanese(raw)}));
    ready.japanese=full.length===15000&&data.japanese.length>=15000;
    if(!ready.japanese)throw new Error(`日本語確認済み候補 ${data.japanese.length.toLocaleString()}語（15,000未満）`);
    window.__AA_RISE_UNIFIED_JAPANESE_COUNT__=data.japanese.length;
-   window.__AA_RISE_UNIFIED_JAPANESE_QUALITY__=Object.freeze({version:VERSION,base:full.length,total:data.japanese.length,curatedOverrides,jukugoOverrides,added,excluded:[...JA_QUIZ_EXCLUSIONS]});
+   const qualitySummary=jaQuality.summarize(eligible);window.__AA_RISE_UNIFIED_JAPANESE_QUALITY__=Object.freeze({...qualitySummary,runtimeVersion:VERSION,base:full.length,curatedOverrides,jukugoOverrides,added,excludedTerms:[...JA_QUIZ_EXCLUSIONS]});
    updateCounts();setStatus();if(subject==='japanese')configureControls();
  }catch(err){ready.japanese=false;ui.jaCount.textContent='接続失敗';ui.jaSub.textContent=text(err?.message||err);setStatus()}
 }

@@ -5,7 +5,8 @@ const text=v=>v==null?'':String(v).trim(),norm=v=>text(v).normalize('NFKC').toLo
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const hasJapanese=v=>/[\u3040-\u30ff\u3400-\u9fff]/.test(text(v));
 const JA_STATE_KEY='kokugoChronologiaStateV2',JA_WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1',CLASSIC_PROGRESS_KEY='rise_kokugo_classics_progress_v1';
-const JA_QUIZ_EXCLUSIONS=new Set(['間に合う|まにあう']);
+const jaQuality=window.RISE_JAPANESE_EXAM_QUALITY_V1;if(!jaQuality)return;
+const JA_QUIZ_EXCLUSIONS=jaQuality.exclusions;
 const ui={start:$('#startSession'),count:$('#sessionCount'),mode:$('#quizMode'),filterA:$('#filterA'),filterB:$('#filterB'),focus:$('#focusToggle'),study:$('#studyCard'),setup:$('#setupCard'),subjectName:$('#subjectName'),modeName:$('#modeName'),index:$('#questionIndex'),score:$('#sessionScore'),bar:$('#sessionBar'),prompt:$('#prompt'),hint:$('#hint'),choices:$('#choices'),inputRow:$('#inputRow'),answerInput:$('#answerInput'),submit:$('#submitAnswer'),feedback:$('#feedback'),next:$('#nextQuestion'),speak:$('#speakQuestion'),summary:$('#summary'),summaryTitle:$('#summaryTitle'),summaryScore:$('#summaryScore'),restart:$('#restartSession')};
 const frames={english:$('#englishBridge'),social:$('#socialBridge')};
 let japaneseVocab=null,review=null,lastConfig=null,questionStarted=0,lastObserved='';
@@ -27,12 +28,12 @@ async function ensureJapaneseVocab(){
  const meanings=window.KOKUGO_DIRECT_MEANINGS||{};if(Object.keys(meanings).length<15000)throw new Error('国語意味辞書の準備が完了していません');
  const res=await fetch('../kokugo-chronologia/data.jsonl?v=rise-review-20260905-quality',{cache:'force-cache'});if(!res.ok)throw new Error('国語15,000語を読み込めません');
  const rows=(await res.text()).split(/\r?\n/).filter(Boolean).map(x=>JSON.parse(x));if(rows.length!==15000)throw new Error('国語15,000語の件数が一致しません');
- const full=rows.map((x,i)=>({id:'quiz-full-'+String(x.id??i),word:text(x.term),reading:text(x.reading),meaning:text(meanings[String(x.id??i)]),type:['yoji','idiom','four'].includes(x.type)?x.type:'four',rank:(x.type==='yoji'||x.type==='idiom')?'B':'C',source:'full15000'})).filter(x=>x.word&&x.meaning&&hasJapanese(x.meaning));
- const extra=[...(window.AA_JUKUGO_BANK||[]),...(window.AA_JUKUGO_ADVANCED||[])].map(x=>({id:x.id,word:text(x.word),reading:text(x.reading),meaning:text(x.meaning),type:x.kind==='二字熟語'?'two':'three',rank:x.rank||'C',source:'jukugo'}));
- const curated=(window.AA_IDIOM_BANK||[]).filter(x=>x&&['四字熟語','慣用句'].includes(x.kind)).map((x,i)=>({id:'quiz-curated-'+i,word:text(x.word),reading:text(x.reading),meaning:text(x.meaning),type:x.kind==='四字熟語'?'yoji':'idiom',rank:x.rank||'B',source:'curated'}));
+ const full=rows.map((x,i)=>({id:'quiz-full-'+String(x.id??i),word:text(x.term),reading:text(x.reading),meaning:text(meanings[String(x.id??i)]),type:['yoji','idiom','four'].includes(x.type)?x.type:'four',...jaQuality.base({type:x.type}),source:'full15000'})).filter(x=>x.word&&x.meaning&&hasJapanese(x.meaning));
+ const extra=[...(window.AA_JUKUGO_BANK||[]),...(window.AA_JUKUGO_ADVANCED||[])].map(x=>({id:x.id,word:text(x.word),reading:text(x.reading),meaning:text(x.meaning),type:x.kind==='二字熟語'?'two':'three',...jaQuality.verified({...x,type:x.kind==='二字熟語'?'two':'three'},'jukugo'),source:'jukugo'}));
+ const curated=(window.AA_IDIOM_BANK||[]).filter(x=>x&&['四字熟語','慣用句'].includes(x.kind)).map((x,i)=>({id:'quiz-curated-'+i,word:text(x.word),reading:text(x.reading),meaning:text(x.meaning),type:x.kind==='四字熟語'?'yoji':'idiom',...jaQuality.verified({...x,type:x.kind==='四字熟語'?'yoji':'idiom'},'curated'),source:'curated'}));
  const merged=[...full],byKey=new Map(merged.map(x=>[jaContentKey(x),x]));
- for(const x of [...extra,...curated]){const key=jaContentKey(x);if(!key||!x.word)continue;const existing=byKey.get(key);if(existing){existing.type=x.type||existing.type;existing.rank=x.rank||existing.rank;if(x.meaning&&hasJapanese(x.meaning))existing.meaning=x.meaning;existing.qualitySource=x.source;continue}merged.push(x);byKey.set(key,x)}
- japaneseVocab=merged.filter(x=>!JA_QUIZ_EXCLUSIONS.has(jaContentKey(x))&&x.word&&x.meaning&&hasJapanese(x.meaning));return japaneseVocab;
+ for(const x of [...extra,...curated]){const key=jaContentKey(x);if(!key||!x.word)continue;const existing=byKey.get(key);if(existing){existing.type=x.type||existing.type;Object.assign(existing,jaQuality.verified(x,x.source||'curated'));if(x.meaning&&hasJapanese(x.meaning))existing.meaning=x.meaning;existing.qualitySource=x.source||existing.qualitySource;continue}merged.push(x);byKey.set(key,x)}
+ japaneseVocab=merged.filter(x=>!jaQuality.isExcluded(x)&&x.word&&x.meaning&&hasJapanese(x.meaning));return japaneseVocab;
 }
 function pickDistinct(rows,item,field,count=3,pred=()=>true){const out=[],seen=new Set([text(item[field])]);for(const x of shuffle(rows)){if(x===item||!pred(x))continue;const v=text(x[field]);if(!v||seen.has(v))continue;seen.add(v);out.push(v);if(out.length===count)break}return out}
 function jaWrongKey(x){return[text(x?.id),text(x?.type),text(x?.word),text(x?.reading)].join('|')}

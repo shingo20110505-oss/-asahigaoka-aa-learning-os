@@ -24,9 +24,9 @@ check('English review uses native wrong bank and recovery removal',review.includ
 check('English wrong-review mode is visibly identified',review.includes("'英→日・間違い'")&&review.includes("'日→英・間違い'")&&review.includes("'スペル・間違い'"));
 check('Japanese review uses native wrong queue',review.includes("JA_WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1'")&&review.includes('updateJapaneseWrong'));
 check('Japanese review requires exact 15,000 source rows',review.includes('rows.length!==15000'));
-check('Japanese review overlays curated rank/type onto stable full-bank IDs',review.includes('existing.type=x.type||existing.type')&&review.includes('existing.rank=x.rank||existing.rank')&&review.includes('existing.qualitySource=x.source'));
+check('Japanese review overlays verified metadata onto stable full-bank IDs',review.includes('existing.type=x.type||existing.type')&&review.includes('Object.assign(existing,jaQuality.verified')&&review.includes('existing.qualitySource=x.source||existing.qualitySource'));
 check('Japanese review keeps curated meanings independent of unrelated full-bank IDs',review.includes("meaning:text(x.meaning),type:x.kind==='二字熟語'")&&review.includes("meaning:text(x.meaning),type:x.kind==='四字熟語'"));
-check('Japanese review excludes known non-idiom from new quiz candidates',review.includes("JA_QUIZ_EXCLUSIONS=new Set(['間に合う|まにあう'])")&&review.includes('!JA_QUIZ_EXCLUSIONS.has(jaContentKey(x))'));
+check('Japanese review excludes known non-idiom through shared policy',review.includes('JA_QUIZ_EXCLUSIONS=jaQuality.exclusions')&&review.includes('!jaQuality.isExcluded(x)'));
 check('Japanese review preserves old wrong-history identity after metadata correction',review.includes('function jaStableKey')&&review.includes("text(x.id)===id||jaStableKey(x)===stable"));
 check('Japanese review distractors prefer same type and rank',review.includes('function japaneseDistractors')&&review.includes('x.type===item.type&&x.rank===item.rank'));
 check('Classical and kanbun review use currentWrong recovery state',review.includes('currentWrong=true')&&review.includes('currentWrong=false')&&review.includes("classicCandidates('classical')")&&review.includes("classicCandidates('kanbun')"));
@@ -38,5 +38,5 @@ check('Mixed review includes English, Japanese vocab, classical, kanbun, social'
 check('Review candidate set is recalculated after every answer',review.includes('const candidates=await collectCandidates(review.config)'));
 check('No aggregate unified review score is persisted',!/(rise[_-]unified[_-].*score|WRONG_REVIEW_SCORE|reviewScoreKey)/i.test(review));
 check('PWA precaches classics/review/infinite assets',sw.includes("url('quiz/japanese-classics-bank-v1.js')")&&sw.includes("url('quiz/review-algorithm-v1.js')")&&sw.includes("url('quiz/infinite-course-v1.js')"));
-console.log(JSON.stringify({version:'1.2.0',checks,failures,bank:{classical:bank.classical?.length||0,kanbun:bank.kanbun?.length||0,total:all.length}},null,2));
+console.log(JSON.stringify({version:'1.3.0',checks,failures,bank:{classical:bank.classical?.length||0,kanbun:bank.kanbun?.length||0,total:all.length}},null,2));
 if(failures.length)process.exit(1);
