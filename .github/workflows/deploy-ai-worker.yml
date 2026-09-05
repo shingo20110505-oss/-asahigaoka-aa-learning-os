@@ -37,6 +37,7 @@ jobs:
           node --check worker/src/providers/index.mjs
           node tests/ai-provider-contract.mjs
           node tests/ai-gemini-current-contract.mjs
+          node tests/ai-latency-budget-contract.mjs
           node tests/ai-reading-contract.mjs
           node tests/ai-reading-groq-contract.mjs
           node tests/ai-subject-verifier-contract.mjs
@@ -87,7 +88,7 @@ jobs:
           ORIGIN='https://shingo20110505-oss.github.io'
           export EXPECTED_WORKER_VERSION='1.4.0'
           export EXPECTED_HARDENING_VERSION='2.0.0'
-          export EXPECTED_GEMINI_TRANSPORT_REVISION='dual-transport-v3'
+          export EXPECTED_GEMINI_TRANSPORT_REVISION='dual-transport-v4-bounded'
 
           health_ready=false
           for attempt in $(seq 1 12); do
@@ -122,15 +123,27 @@ jobs:
             exit 1
           fi
 
-          export READING_HTTP_STATUS
-          READING_HTTP_STATUS="$(curl -sS --max-time 180 -w '%{http_code}' \
-            -X POST \
-            -H "Origin: $ORIGIN" \
-            -H "Authorization: Bearer $AI_ACCESS_TOKEN" \
-            -H 'Content-Type: application/json' \
-            --data '{"schemaVersion":1,"difficulty":4,"readingType":"argument","assistMode":"scaffold","allowedGrammar":["basic","past","future","modal","infinitive","gerund","comparison","passive","presentPerfect","asMuchAs","asManyAs"],"weakSkills":[{"id":"en.read.inference","label":"英語・推論"}],"weakWords":[{"word":"evidence","meaningJa":"根拠"}],"knownWords":["student","school","plan"],"recentTopics":[],"recentErrorTypes":[]}' \
-            "$BASE/v1/reading" -o /tmp/ai-reading.json)"
-          test "$READING_HTTP_STATUS" = 200 || { cat /tmp/ai-reading.json >&2; exit 1; }
+          reading_ready=false
+          for attempt in 1 2; do
+            READING_HTTP_STATUS="$(curl -sS --max-time 165 -w '%{http_code}' \
+              -X POST \
+              -H "Origin: $ORIGIN" \
+              -H "Authorization: Bearer $AI_ACCESS_TOKEN" \
+              -H 'Content-Type: application/json' \
+              --data '{"schemaVersion":1,"difficulty":4,"readingType":"argument","assistMode":"scaffold","allowedGrammar":["basic","past","future","modal","infinitive","gerund","comparison","passive","presentPerfect","asMuchAs","asManyAs"],"weakSkills":[{"id":"en.read.inference","label":"英語・推論"}],"weakWords":[{"word":"evidence","meaningJa":"根拠"}],"knownWords":["student","school","plan"],"recentTopics":[],"recentErrorTypes":[]}' \
+              "$BASE/v1/reading" -o /tmp/ai-reading.json || true)"
+            if test "$READING_HTTP_STATUS" = 200; then
+              reading_ready=true
+              break
+            fi
+            echo "English reading smoke attempt $attempt returned HTTP ${READING_HTTP_STATUS:-000}" >&2
+            cat /tmp/ai-reading.json >&2 || true
+            if test "$READING_HTTP_STATUS" = 401 || test "$READING_HTTP_STATUS" = 403 || test "$READING_HTTP_STATUS" = 429; then
+              break
+            fi
+            sleep 6
+          done
+          test "$reading_ready" = true
 
           node - <<'NODE' > /tmp/math-verify-request.json
           const E = require('./math-exam/engine.js');
@@ -177,15 +190,15 @@ jobs:
           const exam = JSON.parse(fs.readFileSync('/tmp/ai-exam.json', 'utf8'));
           const subjects = ['english','math','japanese','science','social'];
 
-          if (health.ok !== true || health.version !== '1.4.0' || health.hardeningVersion !== '2.0.0' || health.geminiTransportRevision !== 'dual-transport-v3' || health.service !== 'rise-ai-platform') throw new Error('Worker health verification failed');
-          if (status.ready !== true || status.version !== '1.4.0' || status.hardeningVersion !== '2.0.0' || status.geminiTransportRevision !== 'dual-transport-v3' || status.examPlatformVersion !== '2.0.0' || status.service !== 'rise-ai-platform') throw new Error('Worker status verification failed');
+          if (health.ok !== true || health.version !== '1.4.0' || health.hardeningVersion !== '2.0.0' || health.geminiTransportRevision !== 'dual-transport-v4-bounded' || health.service !== 'rise-ai-platform') throw new Error('Worker health verification failed');
+          if (status.ready !== true || status.version !== '1.4.0' || status.hardeningVersion !== '2.0.0' || status.geminiTransportRevision !== 'dual-transport-v4-bounded' || status.examPlatformVersion !== '2.0.0' || status.service !== 'rise-ai-platform') throw new Error('Worker status verification failed');
           if (status.model !== 'gemini-3.5-flash') throw new Error(`Unexpected Gemini model: ${status.model}`);
           if (status.verificationProvider !== 'groq' || status.verifierModel !== 'openai/gpt-oss-20b') throw new Error('Groq verifier status mismatch');
           for (const subject of subjects) {
             if (!String(status.examGeneration?.[subject] || '').startsWith('production')) throw new Error(`Exam generation status missing: ${subject}`);
             if (status.subjectVerification?.[subject] !== 'production-audit') throw new Error(`Subject verification status missing: ${subject}`);
           }
-          if (status.safeguards?.paidFallback !== false || status.safeguards?.quota429StopsGeneration !== true || status.safeguards?.authorAnswerHiddenFromVerifier !== true || status.safeguards?.strictVerifierFallbackDisabled !== true || status.safeguards?.geminiSameProviderTransportFallback !== true || status.safeguards?.originRequiredForApi !== true || status.safeguards?.jsonContentTypeRequired !== true) throw new Error('AI safeguards status mismatch');
+          if (status.safeguards?.paidFallback !== false || status.safeguards?.quota429StopsGeneration !== true || status.safeguards?.authorAnswerHiddenFromVerifier !== true || status.safeguards?.strictVerifierFallbackDisabled !== true || status.safeguards?.geminiSameProviderTransportFallback !== true || status.safeguards?.boundedProviderLatency !== true || status.safeguards?.originRequiredForApi !== true || status.safeguards?.jsonContentTypeRequired !== true) throw new Error('AI safeguards status mismatch');
 
           if (reading.schemaVersion !== 1 || reading.quality?.verified !== true) throw new Error('English AI quality verification failed');
           if (reading.quality?.generationProvider !== 'gemini' || reading.quality?.verificationProvider !== 'groq') throw new Error('English provider provenance mismatch');
@@ -203,5 +216,5 @@ jobs:
           if (!String(exam.quality?.hardening || '').includes('strict-groq-schema-no-fallback')) throw new Error('Science hardening marker missing');
 
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
-            `## Rise AI Platform production verified\n\n- URL: ${process.env.DEPLOYMENT_URL}\n- Worker: ${health.version} / hardening ${health.hardeningVersion}\n- Gemini transport revision: ${health.geminiTransportRevision}\n- English long reading: Gemini -> deterministic -> Groq PASS\n- Five-subject common verifier: strict JSON Schema connected\n- Math deterministic -> Groq strict audit: PASS\n- Science /v1/exam: Gemini -> deterministic -> Groq strict agreement PASS\n- Paid fallback: disabled\n- Strict verifier downgrade: disabled\n`);
+            `## Rise AI Platform production verified\n\n- URL: ${process.env.DEPLOYMENT_URL}\n- Worker: ${health.version} / hardening ${health.hardeningVersion}\n- Gemini transport revision: ${health.geminiTransportRevision}\n- English long reading: Gemini -> deterministic -> Groq PASS within bounded request latency\n- Five-subject common verifier: strict JSON Schema connected\n- Math deterministic -> Groq strict audit: PASS\n- Science /v1/exam: Gemini -> deterministic -> Groq strict agreement PASS\n- Paid fallback: disabled\n- Strict verifier downgrade: disabled\n`);
           NODE
