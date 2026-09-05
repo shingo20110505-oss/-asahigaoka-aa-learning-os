@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scope": {
     "includedSubjects": ["english", "japanese", "social"],
     "excludedSubjects": ["science", "math"],
@@ -11,6 +11,10 @@
       "dataEntry": "vocab.html",
       "wrongQuizModule": "vocab-wrong-quiz-v1.js",
       "readingModule": "ai-reading-v1.js",
+      "supplement": "english-vocab-supplement-v1.js",
+      "supplementLoadAfter": "v23-english-gloss-vocab.js",
+      "supplementIdNamespace": "en-sup-*",
+      "supplementPolicy": "append-only; existing normalized term and native collocation win; never renumber existing ids",
       "nativeApi": "AA_VOCAB_CATALOG_API",
       "progressStore": "asahi_learning_os_v1",
       "wrongStore": "aa_vocab_quiz_wrong_v1",
@@ -21,6 +25,10 @@
     "japanese": {
       "page": "kokugo-chronologia/index.html",
       "fullData": "kokugo-chronologia/data.jsonl",
+      "supplement": "kokugo-chronologia/jukugo-bank-supplement-v1.js",
+      "supplementIdNamespace": "ja-sup-v1-*",
+      "supplementIdentity": "word|reading",
+      "supplementPolicy": "append-only; existing word|reading wins; full 15,000 identities and jkg ids remain unchanged",
       "quizModule": "kokugo-chronologia/quiz-rank-select-v1.js",
       "touchGuard": "kokugo-chronologia/quiz-interaction-fix.js",
       "expectedFullRows": 15000,
@@ -43,9 +51,9 @@
     }
   },
   "parallelWorkstreams": [
-    {"id": "EN", "goal": "Inventory and normalize English word/phrase metadata without replacing the existing SRS."},
-    {"id": "JA", "goal": "Audit and normalize the 15,000-entry Japanese bank while preserving rank, cycle and wrong-state semantics."},
+    {"id": "EN", "goal": "Inventory, supplement and normalize English word/phrase metadata without replacing or renumbering the existing SRS."},
+    {"id": "JA", "goal": "Supplement and normalize Japanese vocabulary while preserving the 15,000-entry bank, word|reading identity, rank, cycle and wrong-state semantics."},
     {"id": "SOC", "goal": "Expose Chronologia quiz facts through an adapter while keeping Chronologia as an independent learning asset."},
-    {"id": "QA", "goal": "Continuously verify scope, row counts, storage keys and native integration contracts."}
+    {"id": "QA", "goal": "Continuously verify scope, row counts, storage keys, supplement namespaces and native integration contracts."}
   ]
 }
