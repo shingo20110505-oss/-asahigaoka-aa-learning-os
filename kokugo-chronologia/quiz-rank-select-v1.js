@@ -1,15 +1,17 @@
 (()=>{'use strict';
-const VERSION='2026-08-27.1';
-const FULL_DATA_URL='./data.jsonl?v=quiz15000-20260827-ja1';
+const VERSION='2026-09-05.2';
+const FULL_DATA_URL='./data.jsonl?v=quiz15000-20260905-quality2';
 const STATE_KEY='kokugoChronologiaStateV2';
 const WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1';
 const CYCLE_KEY='aa_kokugo_vocab_full15000_cycle_v1';
+const NON_IDIOM_EXCLUDE_KEYS=new Set(['間に合う|まにあう']);
 if(window.__AA_KOKUGO_QUIZ_RANK_SELECT__)return;
 window.__AA_KOKUGO_QUIZ_RANK_SELECT__=VERSION;
 
 const $=(s,r=document)=>r.querySelector(s);
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
 const hasJapanese=s=>/[\u3040-\u30ff\u3400-\u9fff]/.test(String(s||''));
+const entryKey=x=>`${x?.word||''}|${x?.reading||''}`;
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function getState(){try{return JSON.parse(localStorage.getItem(STATE_KEY)||'{}')}catch{return {}}}
 function saveState(s){try{localStorage.setItem(STATE_KEY,JSON.stringify(s))}catch(_){}}
@@ -37,21 +39,42 @@ async function loadFull15000(){
    if(!meaning||!hasJapanese(meaning))throw new Error('日本語意味が未確認: '+String(x.term||x.id||i));
    return{
      id:'quiz-full-'+String(x.id??i),word:String(x.term||''),reading:String(x.reading||''),meaning,
-     type:['yoji','idiom','four'].includes(x.type)?x.type:'four',rank:(x.type==='yoji'||x.type==='idiom')?'B':'C',source:'full15000'
+     type:['yoji','idiom','four'].includes(x.type)?x.type:'four',rank:'C',source:'full15000',quality:'dictionary-supplement'
    };
  });
- for(const x of full15000){const k=x.word+'|'+x.reading;if(!x.word||seen.has(k))throw new Error('15,000語データに空欄または重複: '+k);seen.add(k)}
+ for(const x of full15000){const k=entryKey(x);if(!x.word||seen.has(k))throw new Error('15,000語データに空欄または重複: '+k);seen.add(k)}
  window.__AA_KOKUGO_FULL_15000_COUNT__=full15000.length;
  return full15000;
 }
 
 function makePool(){
- const merged=[...(window.AA_JUKUGO_BANK||[]),...(window.AA_JUKUGO_ADVANCED||[])],seenBank=new Set(),bank=[];
- for(const x of merged){const key=`${x.word}|${x.reading||''}`;if(!x.word||seenBank.has(key))continue;seenBank.add(key);bank.push({id:x.id,word:x.word,reading:x.reading||'',meaning:directMeaning(x.id)||x.meaning||'',type:x.kind==='二字熟語'?'two':'three',rank:x.rank||'C'})}
- const curated=(window.AA_IDIOM_BANK||[]).map((x,i)=>({id:'quiz-curated-'+i,word:x.word,reading:x.reading||'',meaning:directMeaning(x.id)||x.meaning||'',type:x.kind==='四字熟語'?'yoji':'idiom',rank:x.rank||'B'}));
- const out=[...full15000],seen=new Set(out.map(x=>`${x.word}|${x.reading||''}`));
- for(const x of [...bank,...curated]){const k=`${x.word}|${x.reading||''}`;if(!x.word||seen.has(k))continue;seen.add(k);out.push(x)}
- return out;
+ const out=[],byKey=new Map();
+ let excluded=0,bankOverrides=0,curatedOverrides=0;
+ const put=(x,priority)=>{
+   const k=entryKey(x);if(!x.word||NON_IDIOM_EXCLUDE_KEYS.has(k)){if(NON_IDIOM_EXCLUDE_KEYS.has(k))excluded++;return}
+   const i=byKey.get(k);
+   if(i==null){byKey.set(k,out.length);out.push({...x,_priority:priority});return}
+   const prev=out[i];
+   if(priority>=(prev._priority||0)){
+     const stableId=prev.id||x.id;
+     out[i]={...prev,...x,id:stableId,_priority:priority};
+     if(priority===2)bankOverrides++;
+     if(priority===3)curatedOverrides++;
+   }
+ };
+ for(const x of full15000)put(x,1);
+ const merged=[...(window.AA_JUKUGO_BANK||[]),...(window.AA_JUKUGO_ADVANCED||[])],seenBank=new Set();
+ for(const x of merged){
+   const k=`${x.word}|${x.reading||''}`;if(!x.word||seenBank.has(k))continue;seenBank.add(k);
+   put({id:x.id,word:x.word,reading:x.reading||'',meaning:directMeaning(x.id)||x.meaning||'',type:x.kind==='二字熟語'?'two':'three',rank:x.rank||'C',source:'jukugo-bank',quality:'verified-bank'},2)
+ }
+ for(const [i,x] of (window.AA_IDIOM_BANK||[]).entries()){
+   put({id:'quiz-curated-'+i,word:x.word,reading:x.reading||'',meaning:directMeaning(x.id)||x.meaning||'',type:x.kind==='四字熟語'?'yoji':'idiom',rank:x.rank||'B',source:'idiom-bank',quality:'verified-curated'},3)
+ }
+ const clean=out.map(({_priority,...x})=>x);
+ const rankCounts=clean.reduce((a,x)=>(a[x.rank]=(a[x.rank]||0)+1,a),{});
+ window.__AA_KOKUGO_QUALITY_STATS__={raw15000:full15000.length,pool:clean.length,bankOverrides,curatedOverrides,excluded,rankCounts};
+ return clean;
 }
 
 function validFieldValue(field,v){return !!v&&(field!=='meaning'||hasJapanese(v))}
@@ -106,11 +129,11 @@ async function install(){
  const rankEl=document.createElement('select');rankEl.id='quizRank';rankEl.setAttribute('aria-label','出題ランク');rankEl.innerHTML='<option value="all" selected>全ランク</option><option value="A">A 最優先</option><option value="B">B 重要</option><option value="C">C 発展</option>';modeEl.insertAdjacentElement('afterend',rankEl);
  const config=rankEl.closest('.quiz-config');if(config)config.classList.add('aa-quiz-rank-ready');
  const style=document.createElement('style');style.id='aaKokugoQuizRankStyle';style.textContent='.quiz-config.aa-quiz-rank-ready{grid-template-columns:1fr 1fr 1fr auto auto}@media(max-width:760px){.quiz-config.aa-quiz-rank-ready{grid-template-columns:1fr 1fr}.quiz-config.aa-quiz-rank-ready #quizRank{grid-column:1/-1}.quiz-config.aa-quiz-rank-ready button{grid-column:1/-1}}';document.head.appendChild(style);
- const note=quiz.querySelector('.jkg-head .note');if(note)note.textContent='15,000語データをクイズに接続済みです。初期設定は「全部・全ランク」。同じ条件では一巡するまで同じ語を再出題しません。';
+ const note=quiz.querySelector('.jkg-head .note');if(note)note.textContent='A/Bは精査済み学習バンクを優先し、辞書拡張15,000語は未精査の重要度を過大評価しないようC（発展）として扱います。同じ条件では一巡するまで同じ語を再出題しません。';
 
  const quizPool=makePool(),liveByKey=new Map();quizPool.forEach(x=>liveByKey.set(wrongKey(x),x));
  window.__AA_KOKUGO_QUIZ_POOL_COUNT__=quizPool.length;
- const badge=quiz.querySelector('.jkg-badge');if(badge){badge.textContent='10問 / 15,000語接続済み';badge.title='実際の候補 '+quizPool.length.toLocaleString()+'語'}
+ const badge=quiz.querySelector('.jkg-badge');if(badge){badge.textContent='10問 / 15,000語接続済み';badge.title='品質統合後の候補 '+quizPool.length.toLocaleString()+'語'}
  let qset=[],qi=0,qscore=0,qAnswered=false,qWrongOnly=false,qKind='all',qMode='random',qRank='all';
 
  function updateWrongCount(){const kind=kindEl.value||'all',rank=rankEl.value||'all',n=loadWrong().filter(x=>matchesFilter(x,kind,rank)).length;const el=$('#quizWrongCount');if(el)el.textContent=n;return n}
@@ -122,12 +145,13 @@ async function install(){
 
  startEl.onclick=startQuiz;wrongStartEl.onclick=startWrongQuiz;
  kindEl.addEventListener('change',()=>setTimeout(updateWrongCount,0));rankEl.addEventListener('change',updateWrongCount);updateWrongCount();
- body.innerHTML='<div class="quiz-summary">15,000語データ接続済み。「10問スタート」で開始します。</div>';
+ body.innerHTML='<div class="quiz-summary">品質統合済み15,000語データ。「10問スタート」で開始します。</div>';
  document.documentElement.dataset.kokugoQuizRankSelect=VERSION;
- document.documentElement.dataset.aaKokugoQuizRank='PASS';
+ document.documentElement.dataset.aaKokugoQuizRank='PASS-QUALITY-MERGE';
  document.documentElement.dataset.aaKokugoQuizRandom='FULL15000-NOREPEAT-JA';
  document.documentElement.dataset.aaKokugoFull15000=String(full15000.length);
  document.documentElement.dataset.aaKokugoQuizPool=String(quizPool.length);
+ document.documentElement.dataset.aaKokugoQuality='CURATED-AB-DICTIONARY-C';
 }
 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
