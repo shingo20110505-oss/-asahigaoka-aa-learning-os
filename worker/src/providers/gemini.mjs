@@ -47,6 +47,11 @@ export function normalizeGeminiSchema(schema, depth = 0) {
   return out;
 }
 
+function generateParts(data) {
+  const candidates = Array.isArray(data?.candidates) ? data.candidates : [];
+  return candidates.flatMap(candidate => Array.isArray(candidate?.content?.parts) ? candidate.content.parts : []);
+}
+
 export function extractGeminiText(data) {
   if (typeof data?.output_text === 'string' && data.output_text.trim()) return data.output_text;
 
@@ -61,8 +66,8 @@ export function extractGeminiText(data) {
   }).join('');
   if (interactionText.trim()) return interactionText;
 
-  const candidates = Array.isArray(data?.candidates) ? data.candidates : [];
-  const generateText = candidates.flatMap(candidate => Array.isArray(candidate?.content?.parts) ? candidate.content.parts : [])
+  const generateText = generateParts(data)
+    .filter(part => part?.thought !== true)
     .map(part => typeof part?.text === 'string' ? part.text : '')
     .join('');
   if (generateText.trim()) return generateText;
@@ -70,12 +75,58 @@ export function extractGeminiText(data) {
   throw new GeminiProviderError(502, 'Gemini response contained no model text.', 'gemini_empty_output');
 }
 
+function extractBalancedJson(text) {
+  const source = String(text || '');
+  for (let start = 0; start < source.length; start++) {
+    const first = source[start];
+    if (first !== '{' && first !== '[') continue;
+    const stack = [];
+    let inString = false;
+    let escaped = false;
+    for (let i = start; i < source.length; i++) {
+      const ch = source[i];
+      if (inString) {
+        if (escaped) escaped = false;
+        else if (ch === '\\') escaped = true;
+        else if (ch === '"') inString = false;
+        continue;
+      }
+      if (ch === '"') {
+        inString = true;
+        continue;
+      }
+      if (ch === '{' || ch === '[') stack.push(ch);
+      else if (ch === '}' || ch === ']') {
+        const open = stack.pop();
+        if ((open === '{' && ch !== '}') || (open === '[' && ch !== ']')) break;
+        if (!stack.length) return source.slice(start, i + 1);
+      }
+    }
+  }
+  return '';
+}
+
+function finishReason(data) {
+  const candidates = Array.isArray(data?.candidates) ? data.candidates : [];
+  return clean(candidates[0]?.finishReason || candidates[0]?.finish_reason || '', 80);
+}
+
 export function parseGeminiJson(data) {
   const text = extractGeminiText(data).trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '');
   try {
     return JSON.parse(text);
   } catch (_) {
-    throw new GeminiProviderError(502, 'Gemini returned invalid JSON.', 'gemini_invalid_json');
+    const balanced = extractBalancedJson(text);
+    if (balanced && balanced !== text) {
+      try {
+        return JSON.parse(balanced);
+      } catch (_) {}
+    }
+    const reason = finishReason(data);
+    if (/MAX_TOKENS|LENGTH|TOKEN/i.test(reason)) {
+      throw new GeminiProviderError(502, 'Gemini output ended before valid JSON completed.', 'gemini_incomplete_output', `finish:${reason}`);
+    }
+    throw new GeminiProviderError(502, 'Gemini returned invalid JSON.', 'gemini_invalid_json', reason ? `finish:${reason}` : 'json-parse');
   }
 }
 
@@ -145,7 +196,7 @@ async function sendGenerateContent(apiKey, { model, input, systemInstruction, re
         systemInstruction: { parts: [{ text: systemInstruction }] },
         generationConfig: {
           maxOutputTokens,
-          thinkingConfig: { thinkingLevel },
+          thinkingConfig: { thinkingLevel, includeThoughts: false },
           responseFormat: {
             text: {
               mimeType: 'application/json',
