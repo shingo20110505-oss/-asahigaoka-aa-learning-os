@@ -53,3 +53,5 @@ jobs:
           git commit -m 'Enforce verified-only Japanese entrance vocabulary ranks'
           git pull --rebase origin main
           git push origin HEAD:main
+
+# retry-trigger: 2026-09-05-quality-finalize
