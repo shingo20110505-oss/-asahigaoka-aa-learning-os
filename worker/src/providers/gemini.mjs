@@ -103,10 +103,13 @@ export function normalizeGeminiReadingOutput(value) {
     if (!question || typeof question !== 'object' || Array.isArray(question)) return question;
     const choices = Array.isArray(question.choices) ? question.choices : [];
     const reasons = Array.isArray(question.choiceReasonsJa) ? question.choiceReasonsJa : [];
+    const canonicalChoices = choices.every(choice => choice && typeof choice === 'object' && !Array.isArray(choice))
+      ? choices.map(choice => ({ text: choice.text, reasonJa: choice.reasonJa }))
+      : choices.map((text, index) => ({ text, reasonJa: reasons[index] }));
     return {
       type: question.type,
       stemJa: question.stemJa,
-      choices: choices.map((text, index) => ({ text, reasonJa: reasons[index] })),
+      choices: canonicalChoices,
       answerIndex: question.answerIndex,
       explanationJa: question.explanationJa,
       evidenceQuote: question.evidenceQuote
