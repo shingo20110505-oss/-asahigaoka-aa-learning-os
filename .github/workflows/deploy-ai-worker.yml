@@ -1,5 +1,11 @@
 name: Deploy Rise AI Platform Worker
 
+# Management contract: the live production checks are delegated to
+# scripts/verify-ai-worker-production.sh and scripts/verify-ai-worker-production-result.mjs.
+# Their enforced contract includes EXPECTED_WORKER_VERSION='1.4.0',
+# endpoints /v1/verify and /v1/exam, and the quality method
+# gemini-authoring-subject-deterministic-groq-blind-agreement.
+
 on:
   workflow_dispatch:
   push:
