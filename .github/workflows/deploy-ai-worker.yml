@@ -6,6 +6,9 @@ on:
     branches: [main]
     paths:
       - '.ai-worker-deploy-trigger'
+      - '.github/workflows/deploy-ai-worker.yml'
+      - 'scripts/verify-ai-worker-production.sh'
+      - 'scripts/verify-ai-worker-production-result.mjs'
 
 permissions:
   contents: read
@@ -22,7 +25,7 @@ jobs:
       - name: Checkout exact source commit
         uses: actions/checkout@v4
 
-      - name: Validate Worker contracts
+      - name: Validate Worker contracts and production gate syntax
         run: |
           set -euo pipefail
           node --check worker/src/index.mjs
@@ -35,6 +38,8 @@ jobs:
           node --check worker/src/providers/gemini.mjs
           node --check worker/src/providers/groq.mjs
           node --check worker/src/providers/index.mjs
+          node --check scripts/verify-ai-worker-production-result.mjs
+          bash -n scripts/verify-ai-worker-production.sh
           node tests/ai-provider-contract.mjs
           node tests/ai-gemini-current-contract.mjs
           node tests/ai-reading-contract.mjs
@@ -82,172 +87,5 @@ jobs:
           AI_ACCESS_TOKEN: ${{ secrets.AI_ACCESS_TOKEN }}
         run: |
           set -euo pipefail
-          test -n "$DEPLOYMENT_URL"
-          BASE="${DEPLOYMENT_URL%/}"
-          ORIGIN='https://shingo20110505-oss.github.io'
-          export EXPECTED_WORKER_VERSION='1.4.0'
-          export EXPECTED_HARDENING_VERSION='2.0.0'
-          export EXPECTED_GEMINI_TRANSPORT_REVISION='dual-transport-v4'
-
-          health_ready=false
-          for attempt in $(seq 1 12); do
-            if curl -fsSL --max-time 30 "$BASE/health" -o /tmp/ai-health.json \
-              && node -e 'const h=require("/tmp/ai-health.json"); process.exit(h.ok === true && h.version === process.env.EXPECTED_WORKER_VERSION && h.hardeningVersion === process.env.EXPECTED_HARDENING_VERSION && h.geminiTransportRevision === process.env.EXPECTED_GEMINI_TRANSPORT_REVISION && h.service === "rise-ai-platform" ? 0 : 1)'; then
-              health_ready=true
-              break
-            fi
-            sleep 5
-          done
-          test "$health_ready" = true
-
-          status_ready=false
-          for attempt in $(seq 1 12); do
-            STATUS_HTTP="$(curl -sS --max-time 30 -w '%{http_code}' \
-              -X POST \
-              -H "Origin: $ORIGIN" \
-              -H "Authorization: Bearer $AI_ACCESS_TOKEN" \
-              -H 'Content-Type: application/json' \
-              --data '{}' \
-              "$BASE/v1/status" -o /tmp/ai-status.json || true)"
-            if test "$STATUS_HTTP" = 200 \
-              && node -e 'const s=require("/tmp/ai-status.json"); process.exit(s.ready === true && s.version === process.env.EXPECTED_WORKER_VERSION && s.hardeningVersion === process.env.EXPECTED_HARDENING_VERSION && s.geminiTransportRevision === process.env.EXPECTED_GEMINI_TRANSPORT_REVISION && s.safeguards?.providerDeadlines === true && s.safeguards?.quota429StopsGeneration === true && s.service === "rise-ai-platform" ? 0 : 1)'; then
-              status_ready=true
-              break
-            fi
-            sleep 5
-          done
-          if test "$status_ready" != true; then
-            echo 'Production /v1/status did not converge to the expected Worker build.' >&2
-            cat /tmp/ai-status.json >&2 || true
-            exit 1
-          fi
-
-          GEMINI_QUOTA_EXHAUSTED=false
-          GROQ_QUOTA_EXHAUSTED=false
-          READING_VERIFIED=false
-          MATH_VERIFIED=false
-          SCIENCE_VERIFIED=false
-
-          READING_HTTP_STATUS="$(curl -sS --max-time 180 -w '%{http_code}' \
-            -X POST \
-            -H "Origin: $ORIGIN" \
-            -H "Authorization: Bearer $AI_ACCESS_TOKEN" \
-            -H 'Content-Type: application/json' \
-            --data '{"schemaVersion":1,"difficulty":4,"readingType":"argument","assistMode":"scaffold","allowedGrammar":["basic","past","future","modal","infinitive","gerund","comparison","passive","presentPerfect","asMuchAs","asManyAs"],"weakSkills":[{"id":"en.read.inference","label":"英語・推論"}],"weakWords":[{"word":"evidence","meaningJa":"根拠"}],"knownWords":["student","school","plan"],"recentTopics":[],"recentErrorTypes":[]}' \
-            "$BASE/v1/reading" -o /tmp/ai-reading.json || true)"
-
-          if test "$READING_HTTP_STATUS" = 200; then
-            READING_VERIFIED=true
-          elif test "$READING_HTTP_STATUS" = 429 && node -e 'const p=require("/tmp/ai-reading.json"); process.exit(p.error?.code === "quota_exceeded" ? 0 : 1)'; then
-            GEMINI_QUOTA_EXHAUSTED=true
-            echo 'Gemini free quota is exhausted; generation smoke stops here and verified/local pool fallback is the required behavior.'
-          elif test "$READING_HTTP_STATUS" = 429 && node -e 'const p=require("/tmp/ai-reading.json"); process.exit(p.error?.code === "groq_quota_exceeded" ? 0 : 1)'; then
-            GROQ_QUOTA_EXHAUSTED=true
-            echo 'Groq free quota is exhausted; no newly generated item can be accepted.'
-          else
-            cat /tmp/ai-reading.json >&2 || true
-            exit 1
-          fi
-
-          if test "$GROQ_QUOTA_EXHAUSTED" != true; then
-            node - <<'NODE' > /tmp/math-verify-request.json
-            const E = require('./math-exam/engine.js');
-            const q = E.make('probability', 20260904, 2);
-            process.stdout.write(JSON.stringify({ schemaVersion: 1, subject: 'math', item: { id: 'deploy-math-probability', stem: q.stem, choices: q.choices.map(choice => choice.text), expectedAnswerIndex: q.answerIndex, figure: q.figure || null } }));
-            NODE
-
-            MATH_HTTP_STATUS="$(curl -sS --max-time 120 -w '%{http_code}' \
-              -X POST \
-              -H "Origin: $ORIGIN" \
-              -H "Authorization: Bearer $AI_ACCESS_TOKEN" \
-              -H 'Content-Type: application/json' \
-              --data-binary @/tmp/math-verify-request.json \
-              "$BASE/v1/verify" -o /tmp/math-verify.json || true)"
-            if test "$MATH_HTTP_STATUS" = 200; then
-              MATH_VERIFIED=true
-            elif test "$MATH_HTTP_STATUS" = 429 && node -e 'const p=require("/tmp/math-verify.json"); process.exit(p.error?.code === "groq_quota_exceeded" ? 0 : 1)'; then
-              GROQ_QUOTA_EXHAUSTED=true
-              echo 'Groq free quota became exhausted during the math audit; strict verification stops.'
-            else
-              cat /tmp/math-verify.json >&2 || true
-              exit 1
-            fi
-          else
-            printf '{"skipped":"groq_quota"}' > /tmp/math-verify.json
-          fi
-
-          if test "$GEMINI_QUOTA_EXHAUSTED" != true && test "$GROQ_QUOTA_EXHAUSTED" != true; then
-            EXAM_HTTP_STATUS="$(curl -sS --max-time 180 -w '%{http_code}' \
-              -X POST \
-              -H "Origin: $ORIGIN" \
-              -H "Authorization: Bearer $AI_ACCESS_TOKEN" \
-              -H 'Content-Type: application/json' \
-              --data '{"schemaVersion":1,"subject":"science","count":1,"difficulty":7,"skill":"sci.aichi.application","focus":["実験","資料読解","計算"],"recentQuestionIds":[],"recentFingerprints":[]}' \
-              "$BASE/v1/exam" -o /tmp/ai-exam.json || true)"
-            if test "$EXAM_HTTP_STATUS" = 200; then
-              SCIENCE_VERIFIED=true
-            elif test "$EXAM_HTTP_STATUS" = 429 && node -e 'const p=require("/tmp/ai-exam.json"); process.exit(["quota_exceeded","groq_quota_exceeded"].includes(p.error?.code) ? 0 : 1)'; then
-              CODE="$(node -e 'const p=require("/tmp/ai-exam.json"); process.stdout.write(p.error.code)')"
-              if test "$CODE" = quota_exceeded; then GEMINI_QUOTA_EXHAUSTED=true; else GROQ_QUOTA_EXHAUSTED=true; fi
-              echo 'Free-provider quota became exhausted during science generation; further generation stops.'
-            else
-              cat /tmp/ai-exam.json >&2 || true
-              exit 1
-            fi
-          else
-            printf '{"skipped":"provider_quota"}' > /tmp/ai-exam.json
-          fi
-
-          export GEMINI_QUOTA_EXHAUSTED GROQ_QUOTA_EXHAUSTED READING_VERIFIED MATH_VERIFIED SCIENCE_VERIFIED
-          node - <<'NODE'
-          const fs = require('fs');
-          const health = JSON.parse(fs.readFileSync('/tmp/ai-health.json', 'utf8'));
-          const status = JSON.parse(fs.readFileSync('/tmp/ai-status.json', 'utf8'));
-          const reading = JSON.parse(fs.readFileSync('/tmp/ai-reading.json', 'utf8'));
-          const math = JSON.parse(fs.readFileSync('/tmp/math-verify.json', 'utf8'));
-          const exam = JSON.parse(fs.readFileSync('/tmp/ai-exam.json', 'utf8'));
-          const geminiQuota = process.env.GEMINI_QUOTA_EXHAUSTED === 'true';
-          const groqQuota = process.env.GROQ_QUOTA_EXHAUSTED === 'true';
-          const readingVerified = process.env.READING_VERIFIED === 'true';
-          const mathVerified = process.env.MATH_VERIFIED === 'true';
-          const scienceVerified = process.env.SCIENCE_VERIFIED === 'true';
-          const subjects = ['english','math','japanese','science','social'];
-
-          if (health.ok !== true || health.version !== '1.4.0' || health.hardeningVersion !== '2.0.0' || health.geminiTransportRevision !== 'dual-transport-v4' || health.service !== 'rise-ai-platform') throw new Error('Worker health verification failed');
-          if (status.ready !== true || status.version !== '1.4.0' || status.hardeningVersion !== '2.0.0' || status.geminiTransportRevision !== 'dual-transport-v4' || status.examPlatformVersion !== '2.0.0' || status.service !== 'rise-ai-platform') throw new Error('Worker status verification failed');
-          if (status.model !== 'gemini-3.5-flash') throw new Error(`Unexpected Gemini model: ${status.model}`);
-          if (status.verificationProvider !== 'groq' || status.verifierModel !== 'openai/gpt-oss-20b') throw new Error('Groq verifier status mismatch');
-          for (const subject of subjects) {
-            if (!String(status.examGeneration?.[subject] || '').startsWith('production')) throw new Error(`Exam generation status missing: ${subject}`);
-            if (status.subjectVerification?.[subject] !== 'production-audit') throw new Error(`Subject verification status missing: ${subject}`);
-          }
-          if (status.safeguards?.paidFallback !== false || status.safeguards?.quota429StopsGeneration !== true || status.safeguards?.authorAnswerHiddenFromVerifier !== true || status.safeguards?.strictVerifierFallbackDisabled !== true || status.safeguards?.geminiSameProviderTransportFallback !== true || status.safeguards?.providerDeadlines !== true || status.safeguards?.originRequiredForApi !== true || status.safeguards?.jsonContentTypeRequired !== true) throw new Error('AI safeguards status mismatch');
-
-          if (readingVerified) {
-            if (reading.schemaVersion !== 1 || reading.quality?.verified !== true || reading.quality?.generationProvider !== 'gemini' || reading.quality?.verificationProvider !== 'groq' || !Array.isArray(reading.reading?.questions) || reading.reading.questions.length !== 5) throw new Error('English AI quality verification failed');
-          } else if (!geminiQuota && !groqQuota) {
-            throw new Error('English reading was neither verified nor stopped by an expected free-provider quota');
-          }
-
-          if (mathVerified) {
-            if (math.schemaVersion !== 1 || math.subject !== 'math' || math.accepted !== true || math.quality?.verified !== true || math.quality?.verificationProvider !== 'groq' || math.quality?.verifierMode !== 'json_schema') throw new Error('Math strict Groq audit failed');
-          } else if (!groqQuota) {
-            throw new Error('Math verification was neither verified nor stopped by Groq quota');
-          }
-
-          if (scienceVerified) {
-            if (exam.schemaVersion !== 1 || exam.subject !== 'science' || exam.deliveredCount < 1 || !Array.isArray(exam.items)) throw new Error('Science /v1/exam generation failed');
-            const item = exam.items[0];
-            if (item.subject !== 'science' || item.quality?.verified !== true) throw new Error('Science item was not quality verified');
-            if (!/^rise-science-[0-9a-f]{16}$/.test(item.id) || !/^[0-9a-f]{16}$/.test(item.fingerprint || '')) throw new Error('Science stable identity missing');
-            if (item.quality?.generationProvider !== 'gemini' || item.quality?.verificationProvider !== 'groq' || item.quality?.verifierMode !== 'json_schema' || item.quality?.strictStructuredOutput !== true) throw new Error('Science strict provider provenance mismatch');
-            if (exam.quality?.method !== 'gemini-authoring-subject-deterministic-groq-blind-agreement' || !String(exam.quality?.hardening || '').includes('strict-groq-schema-no-fallback')) throw new Error('Science agreement hardening marker missing');
-          } else if (!geminiQuota && !groqQuota) {
-            throw new Error('Science generation was neither verified nor stopped by an expected provider quota');
-          }
-
-          const geminiLine = geminiQuota ? 'quota exhausted -> generation stopped, pool fallback required (PASS)' : 'available';
-          const groqLine = groqQuota ? 'quota exhausted -> new items rejected (PASS)' : mathVerified ? 'strict live audit PASS' : 'available';
-          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
-            `## Rise AI Platform production gate\n\n- URL: ${process.env.DEPLOYMENT_URL}\n- Worker: ${health.version} / hardening ${health.hardeningVersion}\n- Gemini transport revision: ${health.geminiTransportRevision}\n- Provider deadlines: enabled\n- Gemini: ${geminiLine}\n- Groq: ${groqLine}\n- English live end-to-end: ${readingVerified ? 'PASS' : 'skipped after expected quota'}\n- Math strict Groq audit: ${mathVerified ? 'PASS' : 'skipped after expected quota'}\n- Science live end-to-end: ${scienceVerified ? 'PASS' : 'skipped after expected quota'}\n- Paid fallback: disabled\n- Strict verifier downgrade: disabled\n- Quota handling: fail closed and stop further generation\n`);
-          NODE
+          BASE="${DEPLOYMENT_URL:-https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev}"
+          bash scripts/verify-ai-worker-production.sh "$BASE" "$AI_ACCESS_TOKEN"
