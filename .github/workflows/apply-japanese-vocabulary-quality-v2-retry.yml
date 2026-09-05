@@ -1,4 +1,4 @@
-name: Apply Japanese vocabulary quality v2 retry
+name: Finalize Japanese vocabulary quality v2
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  apply:
+  finalize:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,40 +19,64 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: Reuse guarded migration and align legacy QA
+      - name: Finalize legacy compatibility and production QA contract
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          import textwrap
-          s=Path('.github/workflows/apply-japanese-vocabulary-quality-v2.yml').read_text()
-          a="          node <<'NODE'\n"
-          b="\n          NODE\n"
-          i=s.index(a)+len(a)
-          j=s.index(b,i)
-          Path('/tmp/apply-japanese-quality.js').write_text(textwrap.dedent(s[i:j]))
-          PY
-          node /tmp/apply-japanese-quality.js
+          git pull --rebase origin main
           node <<'NODE'
           const fs=require('fs');
-          const p='scripts/audit-infinite-course.mjs';
-          let s=fs.readFileSync(p,'utf8');
-          const one=(from,to,label)=>{if(!s.includes(from))throw new Error('Missing audit anchor: '+label);s=s.replace(from,to)};
-          one("check('Japanese review overlays curated rank/type onto stable full-bank IDs',review.includes('existing.type=x.type||existing.type')&&review.includes('existing.rank=x.rank||existing.rank')&&review.includes('existing.qualitySource=x.source'));","check('Japanese review overlays verified metadata onto stable full-bank IDs',review.includes('existing.type=x.type||existing.type')&&review.includes('Object.assign(existing,jaQuality.verified')&&review.includes('existing.qualitySource=x.source||existing.qualitySource'));",'verified overlay');
-          one("check('Japanese review excludes known non-idiom from new quiz candidates',review.includes(\"JA_QUIZ_EXCLUSIONS=new Set(['間に合う|まにあう'])\")&&review.includes('!JA_QUIZ_EXCLUSIONS.has(jaContentKey(x))'));","check('Japanese review excludes known non-idiom through shared policy',review.includes('JA_QUIZ_EXCLUSIONS=jaQuality.exclusions')&&review.includes('!jaQuality.isExcluded(x)'));",'shared exclusion');
-          s=s.replace("console.log(JSON.stringify({version:'1.2.0'","console.log(JSON.stringify({version:'1.3.0'");
-          fs.writeFileSync(p,s);
+          const must=(ok,msg)=>{if(!ok)throw new Error(msg)};
+          const patch=(file,fn)=>{const before=fs.readFileSync(file,'utf8'),after=fn(before);must(after!==before,`No patch applied: ${file}`);fs.writeFileSync(file,after)};
+          const one=(s,a,b,label)=>{must(s.includes(a),`Missing anchor: ${label}`);return s.replace(a,b)};
+
+          patch('scripts/verify-unified-vocabulary-public.mjs',s=>{
+            s=one(s,"document.documentElement.dataset.unifiedVocabularyQuiz==='1.1.0'","document.documentElement.dataset.unifiedVocabularyQuiz==='1.2.0'",'public verifier runtime version');
+            s=one(s,"legacyStore:localStorage.getItem('rise-unified-vocab-quiz-v1')!==null}))()","legacyStore:localStorage.getItem('rise-unified-vocab-quiz-v1')!==null,japaneseQuality:window.__AA_RISE_UNIFIED_JAPANESE_QUALITY__||null}))()",'public verifier diagnostics quality');
+            s=one(s,"await setViewport(390,844,true);await navigate('&viewport=mobile');const mobileReady=await waitReady();const mobile=await diagnostics();","await setViewport(390,844,true);await navigate('&viewport=mobile');const mobileReady=await waitReady();const mobile=await diagnostics();const japaneseQuality=mobile.japaneseQuality;if(!japaneseQuality||japaneseQuality.runtimeVersion!=='1.2.0'||!(japaneseQuality.verified>0)||!(japaneseQuality.pendingEditorial>0)||!(japaneseQuality.examImportant>0)||!(japaneseQuality.rankC>japaneseQuality.rankA))throw new Error('Japanese editorial quality runtime invalid: '+JSON.stringify(japaneseQuality));",'public verifier quality assertion');
+            s=one(s,"const result={version:'1.1.0',page:","const result={version:'1.2.0',japaneseQuality,page:",'public verifier result version');
+            return s;
+          });
+
+          patch('kokugo-chronologia/quiz-rank-select-v1.js',s=>{
+            s=one(s,"const VERSION='2026-09-05.2';","const VERSION='2026-09-05.3';",'legacy quiz version');
+            s=one(s,"'\"':'&quot'","'\"':'&quot;'",'legacy HTML escape');
+            s=one(s,"function wrongKey(x){return [String(x?.id??''),x?.type||'',x?.word||'',x?.reading||''].join('|')}","function wrongKey(x){return [String(x?.id??''),x?.word||'',x?.reading||''].join('|')}",'legacy wrong identity');
+            s=s.replaceAll("meaning:directMeaning(x.id)||x.meaning||''","meaning:x.meaning||''");
+            s=one(s,"const rankCounts=clean.reduce((a,x)=>(a[x.rank]=(a[x.rank]||0)+1,a),{});\n window.__AA_KOKUGO_QUALITY_STATS__={raw15000:full15000.length,pool:clean.length,bankOverrides,curatedOverrides,excluded,rankCounts};","const rankCounts=clean.reduce((a,x)=>(a[x.rank]=(a[x.rank]||0)+1,a),{}),verified=clean.filter(x=>String(x.quality||'').startsWith('verified')).length,examImportant=clean.filter(x=>String(x.quality||'').startsWith('verified')&&['A','B'].includes(x.rank)).length;\n window.__AA_KOKUGO_QUALITY_STATS__={raw15000:full15000.length,pool:clean.length,bankOverrides,curatedOverrides,excluded,verified,pendingEditorial:clean.length-verified,examImportant,rankCounts};",'legacy quality stats');
+            const oldDistr=`function pickDistractors(pool,item,field){\n const vals=[],seen=new Set([item[field]]),n=pool.length;\n for(let tries=0;tries<120&&vals.length<3;tries++){\n   const x=pool[Math.floor(Math.random()*n)],v=x?.[field];\n   if(!x||x.id===item.id||!validFieldValue(field,v)||seen.has(v))continue;seen.add(v);vals.push(v)\n }\n if(vals.length<3){for(const x of pool){const v=x?.[field];if(x.id===item.id||!validFieldValue(field,v)||seen.has(v))continue;seen.add(v);vals.push(v);if(vals.length===3)break}}\n return vals;\n}`;
+            const newDistr=`function pickDistractors(pool,item,field){\n const vals=[],seen=new Set([item[field]]);\n const take=pred=>{for(const x of shuffle([...pool])){if(vals.length>=3)break;const v=x?.[field];if(!x||x.id===item.id||!pred(x)||!validFieldValue(field,v)||seen.has(v))continue;seen.add(v);vals.push(v)}};\n take(x=>x.type===item.type&&x.rank===item.rank);take(x=>x.type===item.type);take(x=>x.rank===item.rank);take(()=>true);\n return vals;\n}`;
+            s=one(s,oldDistr,newDistr,'legacy distractor quality');
+            return s;
+          });
+
+          patch('scripts/audit-japanese-vocabulary-quality.mjs',s=>{
+            s=one(s,"const policy=read('kokugo-chronologia/exam-quality-v1.js'),unified=read('quiz/unified-native-v1.js'),review=read('quiz/review-algorithm-v1.js'),chrono=read('kokugo-chronologia/index.html'),quiz=read('quiz/index.html'),sw=read('sw.js');","const policy=read('kokugo-chronologia/exam-quality-v1.js'),unified=read('quiz/unified-native-v1.js'),review=read('quiz/review-algorithm-v1.js'),legacyQuiz=read('kokugo-chronologia/quiz-rank-select-v1.js'),chrono=read('kokugo-chronologia/index.html'),quiz=read('quiz/index.html'),sw=read('sw.js');",'audit legacy source');
+            const at="check('old chronologia uses same policy',chrono.includes('exam-quality-v1.js')&&chrono.includes('辞書上の種類だけでA/Bへ自動昇格させません'));";
+            const add=`${at}\ncheck('legacy quiz keeps dictionary supplement at C',legacyQuiz.includes("rank:'C',source:'full15000',quality:'dictionary-supplement'"));\ncheck('legacy quiz preserves wrong identity across metadata corrections',legacyQuiz.includes("function wrongKey(x){return [String(x?.id??''),x?.word||'',x?.reading||''].join('|')}"));\ncheck('legacy quiz avoids unrelated direct-meaning ID collision',!legacyQuiz.includes("directMeaning(x.id)||x.meaning"));\ncheck('legacy quiz distractors prefer same type and rank',legacyQuiz.includes('x.type===item.type&&x.rank===item.rank'));\ncheck('legacy quiz exposes verified and pending editorial counts',legacyQuiz.includes('pendingEditorial:clean.length-verified')&&legacyQuiz.includes('examImportant'));`;
+            s=one(s,at,add,'audit legacy checks');
+            return s;
+          });
+
+          patch('sw.js',s=>{
+            s=s.replace(/const VERSION='([^']+)'/,(_,v)=>`const VERSION='${v}-ja-vocab-editorial-v3'`);
+            if(!s.includes("url('kokugo-chronologia/quiz-rank-select-v1.js')"))s=one(s,"url('kokugo-chronologia/exam-quality-v1.js'),","url('kokugo-chronologia/exam-quality-v1.js'),url('kokugo-chronologia/quiz-rank-select-v1.js'),",'service worker legacy quiz precache');
+            return s;
+          });
+
+          const status=JSON.parse(fs.readFileSync('kokugo-chronologia/EDITORIAL_QUALITY_STATUS.json','utf8'));
+          status.version='2.1.0';status.runtimeVersion='1.2.0';status.legacyQuizVersion='2026-09-05.3';status.status='editorial-policy-finalized; production browser QA requested';status.finalizedAt=new Date().toISOString();
+          fs.writeFileSync('kokugo-chronologia/EDITORIAL_QUALITY_STATUS.json',JSON.stringify(status,null,2)+'\n');
           NODE
           node scripts/audit-japanese-vocabulary-quality.mjs
           node scripts/audit-infinite-course.mjs
-      - name: Commit verified migration without workflow mutations
+      - name: Commit non-workflow finalization
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git restore --source=HEAD -- .github/workflows
-          git add -A
-          git diff --cached --quiet && { echo 'No non-workflow changes to commit'; exit 0; }
-          git commit -m 'Enforce verified-only Japanese entrance vocabulary ranks'
+          git add scripts/verify-unified-vocabulary-public.mjs scripts/audit-japanese-vocabulary-quality.mjs kokugo-chronologia/quiz-rank-select-v1.js kokugo-chronologia/EDITORIAL_QUALITY_STATUS.json sw.js
+          git diff --cached --quiet && { echo 'No finalization changes to commit'; exit 0; }
+          git commit -m 'Finalize Japanese vocabulary editorial QA'
           git pull --rebase origin main
           git push origin HEAD:main
 
-# retry-trigger: 2026-09-05-quality-finalize-no-workflow-mutations
+# finalizer-trigger: 2026-09-05-editorial-v3
