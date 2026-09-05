@@ -12,8 +12,8 @@
 <meta name="format-detection" content="telephone=no">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="愛知県立旭丘高校普通科合格を最終目的に、学習科学・教育測定・認知心理学・第二言語習得・HCIを統合したオフライン学習OS。">
-<link rel="manifest" href="./manifest.webmanifest?v=4.3.0">
-<link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png?v=4.3.0">
+<link rel="manifest" href="./manifest.webmanifest?v=4.3.1">
+<link rel="apple-touch-icon" href="./icons/rise-apple-touch-icon-180-20260905.png">
 <link rel="icon" href="./icons/rise-favicon.svg?v=4.3.0" type="image/svg+xml" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png?v=4.3.0">
 <link rel="stylesheet" href="./learning-engine-v22.css">
@@ -50,7 +50,7 @@ const chromeReady=r=>canonicalizeBrand()&&(!core.has(r)||publicNavReady());
 const contentReady=(main,r)=>{const p=main.querySelector(`${panel[r]}[data-ui-ver="4.2.0"]`);if(!p)return false;if(r==='home')return p.querySelector('.rv4Welcome h2')?.textContent?.trim()==='今日やることを、迷わない。'&&p.querySelector('.rv4Plan .rv4CardHead h3')?.textContent?.trim()==='次の一手';if(r==='subjects')return p.dataset.riseIa==='exam-priority';if(r==='analytics')return p.dataset.riseIa==='learn-priority';return true};
 const ready=()=>{const main=document.querySelector('#app main');if(!window.__RISE_UI_V4__||!main)return false;const r=route();return chromeReady(r)&&(!core.has(r)||contentReady(main,r))};
 const conceal=()=>{if(!blockedAt)blockedAt=Date.now();root.classList.add('aa-app-booting')};
-const clearRefreshMarker=()=>{try{const u=new URL(location.href);if(!u.searchParams.has('rise_refresh'))return;u.searchParams.delete('rise_refresh');history.replaceState(history.state,'',u.href)}catch(_){}};
+const clearRefreshMarker=()=>{try{const u=new URL(location.href);if(!u.searchParams.has('rise_refresh'))return;u.searchParams.delete('rise_refresh');history.replaceState(history.state,'',u.href)}catch(_){} };
 const reveal=()=>{blockedAt=0;root.classList.remove('aa-app-booting','aa-app-boot-slow','aa-app-boot-error');clearRefreshMarker()};
 const updateBootState=()=>{if(ready()){reveal();return true}conceal();const age=Date.now()-(blockedAt||Date.now());root.classList.toggle('aa-app-boot-slow',age>=4000);root.classList.toggle('aa-app-boot-error',age>=20000);return false};
 const nudge=()=>{try{document.dispatchEvent(new Event('aa:v23ready'))}catch(_){}};
