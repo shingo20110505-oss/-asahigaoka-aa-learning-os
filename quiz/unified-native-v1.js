@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const VERSION='1.0.0';
+const VERSION='1.1.0';
 const SUBJECTS=Object.freeze(['english','japanese','social']);
 const core=window.RISE_VOCABULARY_CORE_V1;
 const progressAdapters=window.RISE_VOCABULARY_PROGRESS_ADAPTERS_V1;
@@ -17,6 +17,7 @@ const JA_STATE_KEY='kokugoChronologiaStateV2';
 const JA_WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1';
 const JA_CYCLE_KEY='aa_kokugo_vocab_full15000_cycle_v1';
 const JA_MEANING_SCRIPT='../kokugo-chronologia/meaning-ja-overrides.js?v=rise-unified-ja-20260905';
+const JA_QUIZ_EXCLUSIONS=new Set(['間に合う|まにあう']);
 
 const ui={
  status:$('#connectionStatus'),start:$('#startSession'),focus:$('#focusToggle'),count:$('#sessionCount'),mode:$('#quizMode'),filterA:$('#filterA'),filterB:$('#filterB'),filterALabel:$('#filterALabel'),filterBLabel:$('#filterBLabel'),
@@ -104,13 +105,15 @@ function loadJaState(){try{const v=JSON.parse(localStorage.getItem(JA_STATE_KEY)
 function saveJaState(v){try{localStorage.setItem(JA_STATE_KEY,JSON.stringify(v))}catch(_){}}
 function loadJaWrong(){try{const v=JSON.parse(localStorage.getItem(JA_WRONG_KEY)||'[]');return Array.isArray(v)?v:[]}catch{return[]}}
 function jaWrongKey(x){return [text(x?.id),text(x?.type),text(x?.word),text(x?.reading)].join('|')}
-function saveJaWrong(list){const out=[],seen=new Set();for(const x of list||[]){if(!x?.id||!x?.word)continue;const k=jaWrongKey(x);if(seen.has(k))continue;seen.add(k);out.push(x)}try{localStorage.setItem(JA_WRONG_KEY,JSON.stringify(out))}catch(_){}return out}
-function addJaWrong(item){const list=loadJaWrong(),k=jaWrongKey(item.raw);if(!list.some(x=>jaWrongKey(x)===k))list.push({id:item.raw.id,word:item.raw.word,reading:item.raw.reading||'',meaning:item.raw.meaning||'',type:item.raw.type||'',rank:item.raw.rank||'',createdAt:Date.now()});saveJaWrong(list)}
-function removeJaWrong(item){const k=jaWrongKey(item.raw);saveJaWrong(loadJaWrong().filter(x=>jaWrongKey(x)!==k))}
+function jaStableKey(x){return [norm(x?.word),norm(x?.reading)].join('|')}
+function saveJaWrong(list){const out=[],seen=new Set();for(const x of list||[]){if(!x?.id||!x?.word)continue;const k=text(x.id)||jaStableKey(x);if(seen.has(k))continue;seen.add(k);out.push(x)}try{localStorage.setItem(JA_WRONG_KEY,JSON.stringify(out))}catch(_){}return out}
+function addJaWrong(item){const list=loadJaWrong(),id=text(item.raw.id),stable=jaStableKey(item.raw);if(!list.some(x=>text(x.id)===id||jaStableKey(x)===stable))list.push({id:item.raw.id,word:item.raw.word,reading:item.raw.reading||'',meaning:item.raw.meaning||'',type:item.raw.type||'',rank:item.raw.rank||'',createdAt:Date.now()});saveJaWrong(list)}
+function removeJaWrong(item){const id=text(item.raw.id),stable=jaStableKey(item.raw);saveJaWrong(loadJaWrong().filter(x=>text(x.id)!==id&&jaStableKey(x)!==stable))}
 function markJaReview(item){const state=loadJaState();state[item.raw.id]='review';saveJaState(state)}
 function loadJaCycle(){try{const v=JSON.parse(localStorage.getItem(JA_CYCLE_KEY)||'{}');return v&&typeof v==='object'?v:{}}catch{return{}}}
 function saveJaCycle(v){try{localStorage.setItem(JA_CYCLE_KEY,JSON.stringify(v))}catch(_){} }
 function directJaMeaning(id){const v=(window.KOKUGO_DIRECT_MEANINGS||{})[String(id??'')];return text(v)}
+function jaContentKey(x){return `${norm(x?.word||x?.term)}|${norm(x?.reading)}`}
 function loadScriptOnce(src,id){
  return new Promise((resolve,reject)=>{
    if(id&&document.getElementById(id)){if(window.KOKUGO_DIRECT_MEANINGS)resolve();else setTimeout(()=>window.KOKUGO_DIRECT_MEANINGS?resolve():reject(new Error('日本語意味辞書を初期化できませんでした')),0);return}
@@ -129,22 +132,33 @@ async function ensureJaMeanings(){
 async function loadJapanese(){
  try{
    await ensureJaMeanings();
-   const res=await fetch('../kokugo-chronologia/data.jsonl?v=rise-unified-20260905-ja1',{cache:'no-cache'});if(!res.ok)throw new Error('HTTP '+res.status);
+   const res=await fetch('../kokugo-chronologia/data.jsonl?v=rise-unified-20260905-ja2',{cache:'no-cache'});if(!res.ok)throw new Error('HTTP '+res.status);
    const rows=(await res.text()).split(/\r?\n/).filter(Boolean).map(x=>JSON.parse(x));if(rows.length!==15000)throw new Error('15,000語データ件数 '+rows.length);
    const seenFull=new Set();
    const full=rows.map((x,i)=>{
      const meaning=directJaMeaning(x.id??i),raw={id:'quiz-full-'+String(x.id??i),word:text(x.term),reading:text(x.reading),meaning,type:['yoji','idiom','four'].includes(x.type)?x.type:'four',rank:(x.type==='yoji'||x.type==='idiom')?'B':'C',source:'full15000'};
      if(!meaning||!hasJapanese(meaning))throw new Error('日本語意味が未確認: '+text(x.term||x.id||i));
-     const key=raw.word+'|'+raw.reading;if(!raw.word||seenFull.has(key))throw new Error('15,000語データに空欄または重複: '+key);seenFull.add(key);
+     const key=jaContentKey(raw);if(!raw.word||seenFull.has(key))throw new Error('15,000語データに空欄または重複: '+key);seenFull.add(key);
      return raw;
    });
-   const bank=[...(window.AA_JUKUGO_BANK||[]),...(window.AA_JUKUGO_ADVANCED||[])].map(x=>({id:x.id,word:text(x.word),reading:text(x.reading),meaning:directJaMeaning(x.id)||text(x.meaning),type:x.kind==='二字熟語'?'two':'three',rank:x.rank||'C',source:'jukugo'}));
-   const curated=(window.AA_IDIOM_BANK||[]).map((x,i)=>({id:'quiz-curated-'+i,word:text(x.word),reading:text(x.reading),meaning:directJaMeaning(x.id)||text(x.meaning),type:x.kind==='四字熟語'?'yoji':'idiom',rank:x.rank||'B',source:'curated'}));
-   const merged=uniqueBy([...full,...bank,...curated],x=>x.word+'|'+x.reading).filter(x=>x.id&&x.word&&x.meaning&&hasJapanese(x.meaning));
-   data.japanese=merged.map(raw=>({raw,record:core.normalizeJapanese(raw)}));
+   const bank=uniqueBy([...(window.AA_JUKUGO_BANK||[]),...(window.AA_JUKUGO_ADVANCED||[])].map(x=>({id:x.id,word:text(x.word),reading:text(x.reading),meaning:text(x.meaning),type:x.kind==='二字熟語'?'two':'three',rank:x.rank||'C',source:'jukugo'})),jaContentKey);
+   const curated=uniqueBy((window.AA_IDIOM_BANK||[]).filter(x=>x&&['四字熟語','慣用句'].includes(x.kind)).map((x,i)=>({id:'quiz-curated-'+i,word:text(x.word),reading:text(x.reading),meaning:text(x.meaning),type:x.kind==='四字熟語'?'yoji':'idiom',rank:x.rank||'B',source:'curated'})),jaContentKey);
+   const merged=[...full],byKey=new Map(merged.map(x=>[jaContentKey(x),x]));let curatedOverrides=0,jukugoOverrides=0,added=0;
+   for(const x of [...bank,...curated]){
+     const key=jaContentKey(x);if(!key||!x.word)continue;const existing=byKey.get(key);
+     if(existing){
+       existing.type=x.type||existing.type;existing.rank=x.rank||existing.rank;if(x.meaning&&hasJapanese(x.meaning))existing.meaning=x.meaning;existing.qualitySource=x.source;
+       if(x.source==='curated')curatedOverrides++;else jukugoOverrides++;
+       continue;
+     }
+     merged.push(x);byKey.set(key,x);added++;
+   }
+   const eligible=merged.filter(x=>!JA_QUIZ_EXCLUSIONS.has(jaContentKey(x))&&x.id&&x.word&&x.meaning&&hasJapanese(x.meaning));
+   data.japanese=eligible.map(raw=>({raw,record:core.normalizeJapanese(raw)}));
    ready.japanese=full.length===15000&&data.japanese.length>=15000;
    if(!ready.japanese)throw new Error(`日本語確認済み候補 ${data.japanese.length.toLocaleString()}語（15,000未満）`);
    window.__AA_RISE_UNIFIED_JAPANESE_COUNT__=data.japanese.length;
+   window.__AA_RISE_UNIFIED_JAPANESE_QUALITY__=Object.freeze({version:VERSION,base:full.length,total:data.japanese.length,curatedOverrides,jukugoOverrides,added,excluded:[...JA_QUIZ_EXCLUSIONS]});
    updateCounts();setStatus();if(subject==='japanese')configureControls();
  }catch(err){ready.japanese=false;ui.jaCount.textContent='接続失敗';ui.jaSub.textContent=text(err?.message||err);setStatus()}
 }
@@ -194,11 +208,20 @@ function buildEnglishQuestions(count,mode,kind,progressFilter,wrongOnly=false,we
  return selected.map(x=>englishQuestion(x,mode,pool,wrongOnly)).filter(Boolean).slice(0,count);
 }
 
-function jaMatches(x,kind,rank){return(kind==='all'||x.raw.type===kind)&&(rank==='all'||x.raw.rank===rank)}
+function jaMatches(x,kind,rank){const rankOk=rank==='all'||(rank==='AB'?['A','B'].includes(x.raw.rank):x.raw.rank===rank);return(kind==='all'||x.raw.type===kind)&&rankOk}
 function jaValid(field,v){return!!text(v)&&(field!=='meaning'||hasJapanese(v))}
+function japaneseDistractors(pool,item,field,count=3){
+ const vals=[],seen=new Set([text(item.raw[field])]);
+ const take=predicate=>{for(const x of shuffle(pool)){if(vals.length>=count)break;if(x===item||!predicate(x)||!jaValid(field,x.raw[field]))continue;const v=text(x.raw[field]);if(!v||seen.has(v))continue;seen.add(v);vals.push(v)}};
+ take(x=>x.raw.type===item.raw.type&&x.raw.rank===item.raw.rank);
+ take(x=>x.raw.type===item.raw.type);
+ take(x=>x.raw.rank===item.raw.rank);
+ take(()=>true);
+ return vals;
+}
 function japaneseQuestion(item,mode,pool,wrongOnly){
  const modes=mode==='random'?shuffle(['meaning','reading','word']):[mode];
- for(const actual of modes){const field=actual==='meaning'?'meaning':actual==='reading'?'reading':'word',prompt=actual==='word'?item.raw.meaning:item.raw.word,answer=text(item.raw[field]);if(!jaValid(field,answer)||!prompt||(actual==='word'&&!hasJapanese(prompt)))continue;const vals=pickValues(pool,item,field,3,x=>jaValid(field,x.raw[field]));if(vals.length<3)continue;return{subject:'japanese',actual,prompt,hint:actual==='meaning'?'意味を選んでください':actual==='reading'?'読みを選んでください':'この意味に合う語句を選んでください',answer,choices:shuffle([answer,...vals]),input:false,item,explanation:`${item.raw.word}${item.raw.reading?'（'+item.raw.reading+'）':''}｜${item.raw.meaning}`,check:v=>text(v)===answer,commit(ok){if(wrongOnly&&ok)removeJaWrong(item);else if(!ok){addJaWrong(item);markJaReview(item)}updateCounts()}}}
+ for(const actual of modes){const field=actual==='meaning'?'meaning':actual==='reading'?'reading':'word',prompt=actual==='word'?item.raw.meaning:item.raw.word,answer=text(item.raw[field]);if(!jaValid(field,answer)||!prompt||(actual==='word'&&!hasJapanese(prompt)))continue;const vals=japaneseDistractors(pool,item,field,3);if(vals.length<3)continue;return{subject:'japanese',actual,prompt,hint:actual==='meaning'?'意味を選んでください':actual==='reading'?'読みを選んでください':'この意味に合う語句を選んでください',answer,choices:shuffle([answer,...vals]),input:false,item,explanation:`${item.raw.word}${item.raw.reading?'（'+item.raw.reading+'）':''}｜${item.raw.meaning}`,check:v=>text(v)===answer,commit(ok){if(wrongOnly&&ok)removeJaWrong(item);else if(!ok){addJaWrong(item);markJaReview(item)}updateCounts()}}}
  return null;
 }
 function makeJaNoRepeat(pool,kind,rank,mode,limit){
@@ -224,7 +247,7 @@ function socialQuestion(item,mode,pool){
 function buildSocialQuestions(count,mode,level,period,weakOnly=false){let pool=socialPool(level,period,weakOnly);if(pool.length<4&&!weakOnly)pool=socialPool('all','all',false);return shuffle(pool).map(x=>socialQuestion(x,mode,pool)).filter(Boolean).slice(0,count)}
 
 function mixedQuotas(count,bias){const q={english:Math.floor(count/3),japanese:Math.floor(count/3),social:Math.floor(count/3)},order=bias&&q[bias]!=null?[bias,'english','japanese','social'].filter((x,i,a)=>a.indexOf(x)===i):['english','japanese','social'];let rest=count-q.english-q.japanese-q.social,i=0;while(rest-->0){q[order[i++%order.length]]++}if(bias&&q[bias]!=null&&count>=10){const donor=order.find(x=>x!==bias&&q[x]>2);if(donor){q[bias]++;q[donor]--}}return q}
-function buildMixedQuestions(count,bias,exam){const q=mixedQuotas(count,bias==='balanced'?null:bias),weak=focusWeak;const en=buildEnglishQuestions(q.english,'random','all',exam==='exam'?'weak':'all',false,weak||exam==='exam');const ja=buildJapaneseQuestions(q.japanese,'random','all',exam==='exam'?'B':'all',false,weak);const so=buildSocialQuestions(q.social,'mixed',exam==='exam'?'SA':'all','all',weak);return shuffle([...en,...ja,...so]).slice(0,count)}
+function buildMixedQuestions(count,bias,exam){const q=mixedQuotas(count,bias==='balanced'?null:bias),weak=focusWeak;const en=buildEnglishQuestions(q.english,'random','all',exam==='exam'?'weak':'all',false,weak||exam==='exam');const ja=buildJapaneseQuestions(q.japanese,'random','all',exam==='exam'?'AB':'all',false,weak||exam==='exam');const so=buildSocialQuestions(q.social,'mixed',exam==='exam'?'SA':'all','all',weak);return shuffle([...en,...ja,...so]).slice(0,count)}
 
 function buildSession(){
  const count=Number(ui.count.value)||10,mode=ui.mode.value,a=ui.filterA.value,b=ui.filterB.value;
