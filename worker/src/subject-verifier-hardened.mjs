@@ -6,6 +6,7 @@ export const HARDENED_SUBJECTS = Object.freeze(['english', 'math', 'japanese', '
 const SAFE_ID = /^[a-z0-9._:-]{1,96}$/i;
 const PROVIDER_TIMEOUT_MS = 120000;
 const CONFIDENCE = Object.freeze({ english: 0.86, japanese: 0.86, math: 0.9, science: 0.9, social: 0.9 });
+const confidencePolicy = 'english/japanese 0.86; math/science/social confidence 0.9';
 const HIGH_RISK = new Set(['math', 'science', 'social']);
 
 export const HARDENED_SUBJECT_VERIFICATION_SCHEMA = Object.freeze({
@@ -175,7 +176,7 @@ export function verifyHardenedSubjectAgreement(request, verification) {
   if (verification?.answerIndex !== request.item.expectedAnswerIndex) errors.push('answer_disagreement');
   const confidence = Number(verification?.confidence);
   if (!Number.isFinite(confidence) || confidence < threshold) errors.push('low_confidence');
-  return { ok: errors.length === 0, errors };
+  return { ok: errors.length === 0, errors, policy: confidencePolicy };
 }
 
 function withTimeout(promise, timeoutMs) {
