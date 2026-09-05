@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const VERSION='2026-09-05.1';
+const VERSION='2026-09-05.2';
 const RAW=`ability|能力、できること|n|entrance|Practice helps us develop the ability to solve new problems.
 accept|受け入れる|v|core|We should accept useful advice and think about it carefully.
 access|利用する権利、利用する|n/v|entrance|Students can access the information from the school library.
@@ -108,7 +108,98 @@ so that|〜するために、〜となるように|phrase|phrase|The labels were
 one of|〜のうちの一つ|phrase|phrase|Water is one of the most important natural resources.
 each other|お互いに|phrase|phrase|The group members checked each other's work.
 either A or B|AかBのどちらか|phrase|phrase|Choose either plan A or plan B and explain your reason.
-both A and B|AとBの両方|phrase|phrase|Both speed and accuracy are important in this task.`;
+both A and B|AとBの両方|phrase|phrase|Both speed and accuracy are important in this task.
+abstract|抽象的な|adj|entrance|The idea is too abstract to explain with one example.
+accurate|正確な|adj|entrance|We need accurate information before making a decision.
+acknowledge|認める、受け入れる|v|entrance|We should acknowledge both the strengths and the limits of the plan.
+adequate|十分な、適切な|adj|entrance|The town needs an adequate supply of clean water.
+alternative|代わりのもの、別の選択肢|n|entrance|We looked for an alternative to using plastic bags.
+analyze|分析する|v|entrance|Students analyze the data before drawing a conclusion.
+apparent|明らかな、一見したところの|adj|entrance|The reason for the change was not immediately apparent.
+aspect|側面、観点|n|entrance|We considered every aspect of the problem.
+assume|仮定する、思い込む|v|entrance|Do not assume that everyone has the same opinion.
+capacity|能力、容量|n|entrance|The hall has a capacity of five hundred people.
+category|分類、種類|n|entrance|Put each example into the correct category.
+complex|複雑な|adj|entrance|Climate change is a complex global issue.
+concept|概念、考え方|n|entrance|The teacher explained the concept with a simple example.
+conclude|結論づける|v|entrance|From the evidence, we can conclude that the method worked.
+consequence|結果、影響|n|entrance|Every choice can have an unexpected consequence.
+consistent|一貫した、矛盾のない|adj|entrance|Her explanation is consistent with the facts.
+constitute|構成する、〜に当たる|v|entrance|Young people constitute a large part of the group.
+context|文脈、背景|n|entrance|The meaning of the word changes depending on the context.
+contrast|対照、対比する|n/v|entrance|The contrast between the two ideas is clear.
+conventional|従来の、一般的な|adj|entrance|The new design uses less energy than conventional systems.
+crucial|極めて重要な|adj|entrance|Communication is crucial when people work as a team.
+decline|減少する、衰える|v|entrance|The number of visitors began to decline.
+derive|引き出す、由来する|v|entrance|The word is derived from an older expression.
+distinguish|区別する|v|entrance|It is important to distinguish fact from opinion.
+diverse|多様な|adj|entrance|The city has a diverse population.
+efficient|効率的な|adj|entrance|Public transportation can be an efficient way to travel.
+emerge|現れる、明らかになる|v|entrance|New problems may emerge as technology develops.
+emphasis|強調、重点|n|entrance|The course places emphasis on practical communication.
+ensure|確実にする|v|entrance|Check the instructions carefully to ensure safety.
+estimate|見積もる、推定する|v|entrance|Experts estimate how much energy the building uses.
+evaluate|評価する|v|entrance|We need to evaluate the advantages and disadvantages.
+evident|明らかな|adj|entrance|It became evident that the first plan would not work.
+exclude|除外する|v|entrance|The survey does not exclude people who live outside the city.
+expand|拡大する、広げる|v|entrance|The program will expand to more schools next year.
+expose|さらす、明らかにする|v|entrance|The report exposed a problem that had been ignored.
+external|外部の|adj|entrance|External factors can affect the result.
+flexible|柔軟な|adj|entrance|A flexible schedule helps students manage their time.
+framework|枠組み|n|entrance|The rules provide a framework for making fair decisions.
+fundamental|基本的な、根本的な|adj|entrance|Trust is fundamental to a strong relationship.
+generate|生み出す、発生させる|v|entrance|Solar panels generate electricity from sunlight.
+identify|特定する、見分ける|v|entrance|The first step is to identify the main cause.
+imply|暗に示す|v|entrance|His words imply that he expects a different result.
+initial|最初の、初期の|adj|entrance|The initial results were better than expected.
+interpret|解釈する|v|entrance|Different readers may interpret the story in different ways.
+investigate|調査する|v|entrance|Scientists investigate why the water quality changed.
+justify|正当化する、根拠を示す|v|entrance|Use evidence to justify your answer.
+maintain|維持する、主張する|v|entrance|Regular care helps maintain the machine in good condition.
+obtain|得る、入手する|v|entrance|Students can obtain information from several reliable sources.
+occur|起こる、生じる|v|entrance|The event occurs every year in early spring.
+overall|全体的な|adj|entrance|The overall result shows a clear improvement.
+perceive|知覚する、捉える|v|entrance|People may perceive the same situation differently.
+potential|可能性、潜在的な|n/adj|entrance|The idea has the potential to reduce waste.
+primary|主要な、第一の|adj|entrance|The primary purpose of the survey is to understand local needs.
+principle|原則、原理|n|entrance|The system is based on a simple principle.
+proceed|進む、続行する|v|entrance|After checking the data, the team decided to proceed.
+promote|促進する、広める|v|entrance|The campaign promotes the use of reusable bottles.
+proportion|割合|n|entrance|A large proportion of students chose the second option.
+react|反応する|v|entrance|Plants react to changes in light.
+relevant|関連のある|adj|entrance|Choose only the information that is relevant to the question.
+rely|頼る、依存する|v|entrance|Many communities rely on public transportation.
+restrict|制限する|v|entrance|The rule restricts the use of cars in this area.
+significant|重要な、かなりの|adj|entrance|The new method produced a significant improvement.
+stable|安定した|adj|entrance|The population remained stable for several years.
+strategy|戦略、方法|n|entrance|She changed her study strategy after reviewing her mistakes.
+sufficient|十分な|adj|entrance|There was not sufficient evidence to support the claim.
+summarize|要約する|v|entrance|Summarize the writer's main point in one sentence.
+sustain|維持する、支える|v|entrance|The community needs a plan that can sustain the project.
+theory|理論、学説|n|entrance|The evidence supports the theory.
+transfer|移す、移動する|v|entrance|Heat can transfer from one object to another.
+transform|変える、変化させる|v|entrance|Digital tools can transform the way people learn.
+typical|典型的な|adj|entrance|This is a typical example of the pattern.
+vary|異なる、変化する|v|entrance|The results vary depending on age and location.
+widespread|広く行き渡った|adj|entrance|Smartphones are now widespread in many countries.
+regardless of|〜にかかわらず|phrase|phrase|Everyone can join regardless of age.
+in terms of|〜の点では|phrase|phrase|The two plans are different in terms of cost.
+in response to|〜に応じて|phrase|phrase|The school changed the rule in response to student feedback.
+be related to|〜と関係がある|phrase|phrase|The change may be related to the weather.
+be aware of|〜を意識している|phrase|phrase|We should be aware of how much energy we use.
+be capable of|〜する能力がある|phrase|phrase|The device is capable of storing a large amount of data.
+make use of|〜を利用する|phrase|phrase|Students should make use of the information in the graph.
+take advantage of|〜を活用する|phrase|phrase|We can take advantage of natural light during the day.
+be involved in|〜に関わっている|phrase|phrase|Many local people are involved in the project.
+be composed of|〜で構成されている|phrase|phrase|The group is composed of students from five schools.
+in other words|言い換えると|phrase|phrase|In other words, the writer believes that cooperation is necessary.
+for instance|例えば|phrase|phrase|Some animals, for instance, change their behavior in winter.
+even though|〜にもかかわらず|phrase|phrase|Even though the task was difficult, the team finished it.
+rather than|〜ではなく|phrase|phrase|We should solve the cause rather than only treat the result.
+in contrast|対照的に|phrase|phrase|In contrast, the second group showed almost no change.
+lead to|〜につながる|phrase|phrase|A lack of sleep can lead to poor concentration.
+result in|〜という結果になる|phrase|phrase|The change could result in lower energy use.
+focus on|〜に焦点を当てる|phrase|phrase|The report focuses on changes in the local environment.`;
 const rows=RAW.split(/\n/).map((line,index)=>{const [word,meaning,pos,level,example]=line.split('|');return{id:`en-sup-v1-${String(index+1).padStart(3,'0')}`,word,meaning,pos,level,example,cloze:example,family:[],syn:'',srsId:`v:en-sup-v1-${String(index+1).padStart(3,'0')}`,source:'rise-curated-supplement-v1',verified:true}});
 function install(){
  if(typeof DATA==='undefined'||!Array.isArray(DATA.vocab))return false;
