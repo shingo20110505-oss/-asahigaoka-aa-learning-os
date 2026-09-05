@@ -9,8 +9,13 @@ on:
       - 'kokugo-chronologia/jukugo-bank-supplement-v1.js'
       - 'kokugo-chronologia/data.jsonl'
       - 'kokugo-chronologia/meaning-ja-overrides.js'
+      - 'kokugo-chronologia/exam-quality-v1.js'
+      - 'kokugo-chronologia/quiz-rank-select-v1.js'
+      - 'kokugo-chronologia/index.html'
+      - 'kokugo-chronologia/EDITORIAL_QUALITY_STATUS.json'
       - 'scripts/verify-unified-vocabulary-public.mjs'
       - 'scripts/audit-unified-vocabulary-quiz.mjs'
+      - 'scripts/audit-japanese-vocabulary-quality.mjs'
       - 'scripts/audit-infinite-course.mjs'
       - 'scripts/verify-infinite-course.mjs'
       - '.github/workflows/unified-vocabulary-browser-audit.yml'
@@ -23,8 +28,13 @@ on:
       - 'kokugo-chronologia/jukugo-bank-supplement-v1.js'
       - 'kokugo-chronologia/data.jsonl'
       - 'kokugo-chronologia/meaning-ja-overrides.js'
+      - 'kokugo-chronologia/exam-quality-v1.js'
+      - 'kokugo-chronologia/quiz-rank-select-v1.js'
+      - 'kokugo-chronologia/index.html'
+      - 'kokugo-chronologia/EDITORIAL_QUALITY_STATUS.json'
       - 'scripts/verify-unified-vocabulary-public.mjs'
       - 'scripts/audit-unified-vocabulary-quiz.mjs'
+      - 'scripts/audit-japanese-vocabulary-quality.mjs'
       - 'scripts/audit-infinite-course.mjs'
       - 'scripts/verify-infinite-course.mjs'
       - '.github/workflows/unified-vocabulary-browser-audit.yml'
@@ -41,6 +51,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Audit Japanese vocabulary editorial quality
+        run: node scripts/audit-japanese-vocabulary-quality.mjs
       - name: Audit infinite course contract
         run: node scripts/audit-infinite-course.mjs
       - name: Install Japanese font
