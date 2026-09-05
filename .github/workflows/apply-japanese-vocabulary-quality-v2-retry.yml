@@ -44,14 +44,15 @@ jobs:
           NODE
           node scripts/audit-japanese-vocabulary-quality.mjs
           node scripts/audit-infinite-course.mjs
-      - name: Commit verified migration and clean temporary workflows
+      - name: Commit verified migration without workflow mutations
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git rm .github/workflows/apply-japanese-vocabulary-quality-v2.yml .github/workflows/apply-japanese-vocabulary-quality-v2-retry.yml
+          git restore --source=HEAD -- .github/workflows
           git add -A
+          git diff --cached --quiet && { echo 'No non-workflow changes to commit'; exit 0; }
           git commit -m 'Enforce verified-only Japanese entrance vocabulary ranks'
           git pull --rebase origin main
           git push origin HEAD:main
 
-# retry-trigger: 2026-09-05-quality-finalize
+# retry-trigger: 2026-09-05-quality-finalize-no-workflow-mutations
