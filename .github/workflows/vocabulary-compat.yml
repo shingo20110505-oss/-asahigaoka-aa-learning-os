@@ -1,0 +1,35 @@
+name: Vocabulary Compatibility QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'app/legacy/main-runtime.js'
+      - 'app/runtime-registry.js'
+      - 'english-vocabulary-supplement-v1.js'
+      - 'kokugo-chronologia/data.jsonl'
+      - 'kokugo-chronologia/jukugo-bank*.js'
+      - 'kokugo-chronologia/quiz-rank-select-v1.js'
+      - 'kokugo-chronologia/quiz-interaction-fix.js'
+      - 'scripts/validate-vocabulary-compat-v1.mjs'
+      - '.github/workflows/vocabulary-compat.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vocabulary-compat-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate English and Japanese vocabulary compatibility
+        run: node scripts/validate-vocabulary-compat-v1.mjs
