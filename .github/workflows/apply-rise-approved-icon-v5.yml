@@ -18,9 +18,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Render approved Rise icon
+      - name: Restore approved source and render icons
         run: |
           set -euo pipefail
+          if [ ! -f icons/rise-icon-approved-v5-source.jpg ]; then
+            cat .github/rise-v5-source.part1.b64 .github/rise-v5-source.part2.b64 .github/rise-v5-source.part3.b64 > /tmp/rise-v5-source.b64
+            base64 -d /tmp/rise-v5-source.b64 > icons/rise-icon-approved-v5-source.jpg
+          fi
+          test "$(sha256sum icons/rise-icon-approved-v5-source.jpg | awk '{print $1}')" = "05a9f0b8de4211ea08c351c1ab21ecac150e95a19fe7e3e7e477bc73b8760ad6"
           python3 -m pip install --disable-pip-version-check -q pillow
           python3 - <<'PY'
           from pathlib import Path
@@ -28,6 +33,7 @@ jobs:
           import hashlib
 
           src=Image.open('icons/rise-icon-approved-v5-source.jpg').convert('RGB')
+          assert src.size==(256,256), src.size
           outputs=[
             (180,'icons/rise-apple-touch-icon-180-20260905-v5.png'),
             (192,'icons/rise-icon-192-20260905-v5.png'),
@@ -56,7 +62,6 @@ jobs:
                    '<link rel="manifest" href="./manifest.webmanifest?v=4.3.4">',s,count=1)
           s=re.sub(r'<link rel="apple-touch-icon"[^>]*>',
                    '<link rel="apple-touch-icon" sizes="180x180" href="./icons/rise-apple-touch-icon-180-20260905-v5.png">',s,count=1)
-          # Use the approved raster for browser icons too, avoiding any font/vector mismatch.
           s=re.sub(r'<link rel="icon" href="\./icons/[^"]+" type="image/svg\+xml" sizes="any">',
                    '<link rel="icon" type="image/png" sizes="192x192" href="./icons/rise-icon-192-20260905-v5.png">',s,count=1)
           s=re.sub(r'<link rel="icon" type="image/png" sizes="32x32" href="\./icons/[^"]+">',
@@ -76,7 +81,8 @@ jobs:
           p.write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')
 
           p=Path('sw.js'); s=p.read_text()
-          if 'rise-icon-v5-approved' not in s.split('\n',2)[1]:
+          lines=s.split('\n')
+          if len(lines)>1 and 'rise-icon-v5-approved' not in lines[1]:
               s=re.sub(r"const VERSION='([^']+)'",lambda m:f"const VERSION='{m.group(1)}-rise-icon-v5-approved'",s,count=1)
           replacements={
             'icons/rise-apple-touch-icon-180-20260905-v4.png':'icons/rise-apple-touch-icon-180-20260905-v5.png',
@@ -86,7 +92,6 @@ jobs:
             'icons/rise-favicon-32-20260905-v4.png':'icons/rise-favicon-32-20260905-v5.png',
           }
           for old,new in replacements.items(): s=s.replace(old,new)
-          # Remove obsolete v4 SVG source from precache to ensure one visual source of truth.
           s=s.replace(",url('icons/rise-icon-source-v4.svg')",'')
           p.write_text(s)
 
@@ -94,6 +99,7 @@ jobs:
             'Rise approved icon release v5\n'
             'selected_design=balanced refined serif R with blue-violet-pink gradient and star arc\n'
             'source=icons/rise-icon-approved-v5-source.jpg\n'
+            'source_sha256=05a9f0b8de4211ea08c351c1ab21ecac150e95a19fe7e3e7e477bc73b8760ad6\n'
             'apple_touch_icon=icons/rise-apple-touch-icon-180-20260905-v5.png\n'
             'manifest_version=4.3.4\n'
             'released=2026-09-05\n'
@@ -118,17 +124,11 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add \
-            icons/rise-icon-approved-v5-source.jpg \
-            icons/rise-apple-touch-icon-180-20260905-v5.png \
-            icons/rise-icon-192-20260905-v5.png \
-            icons/rise-icon-512-20260905-v5.png \
-            icons/rise-icon-maskable-512-20260905-v5.png \
-            icons/rise-favicon-32-20260905-v5.png \
-            index.html manifest.webmanifest sw.js RISE_ICON_V5_RELEASE.txt
+          rm -f .github/rise-v5-source.part1.b64 .github/rise-v5-source.part2.b64 .github/rise-v5-source.part3.b64
+          git add -A
           git diff --cached --quiet && exit 0
           git commit -m 'Apply approved balanced Rise icon v5'
           git pull --rebase origin main
           git push origin HEAD:main
 
-# one-time trigger: approved-balanced-rise-icon-v5-20260905
+# one-time trigger: approved-balanced-rise-icon-v5-20260905-r2
