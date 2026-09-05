@@ -6,6 +6,7 @@ on:
       - 'app/legacy/main-runtime.js'
       - 'app/runtime-registry.js'
       - 'english-vocabulary-supplement-v1.js'
+      - 'english-vocabulary-supplement-v2*.js'
       - 'vocabulary-core/**'
       - 'quiz/**'
       - 'kokugo-chronologia/data.jsonl'
@@ -13,6 +14,7 @@ on:
       - 'kokugo-chronologia/quiz-rank-select-v1.js'
       - 'kokugo-chronologia/quiz-interaction-fix.js'
       - 'scripts/validate-vocabulary-compat-v1.mjs'
+      - 'scripts/validate-english-vocab-500.mjs'
       - 'scripts/audit-language-vocab-unified-integration.mjs'
       - '.github/workflows/vocabulary-compat.yml'
   push:
@@ -21,6 +23,7 @@ on:
       - 'app/legacy/main-runtime.js'
       - 'app/runtime-registry.js'
       - 'english-vocabulary-supplement-v1.js'
+      - 'english-vocabulary-supplement-v2*.js'
       - 'vocabulary-core/**'
       - 'quiz/**'
       - 'kokugo-chronologia/data.jsonl'
@@ -28,6 +31,7 @@ on:
       - 'kokugo-chronologia/quiz-rank-select-v1.js'
       - 'kokugo-chronologia/quiz-interaction-fix.js'
       - 'scripts/validate-vocabulary-compat-v1.mjs'
+      - 'scripts/validate-english-vocab-500.mjs'
       - 'scripts/audit-language-vocab-unified-integration.mjs'
       - '.github/workflows/vocabulary-compat.yml'
   workflow_dispatch:
@@ -50,5 +54,7 @@ jobs:
           node-version: '22'
       - name: Validate English and Japanese vocabulary compatibility
         run: node scripts/validate-vocabulary-compat-v1.mjs
+      - name: Validate exact English vocabulary 500 target
+        run: node scripts/validate-english-vocab-500.mjs
       - name: Audit unified vocabulary integration
         run: node scripts/audit-language-vocab-unified-integration.mjs
