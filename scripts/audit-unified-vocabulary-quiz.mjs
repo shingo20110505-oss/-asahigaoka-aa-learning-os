@@ -70,7 +70,7 @@ for(const x of idiomBank){const key=`${String(x.word||'').normalize('NFKC')}|${S
 const curatedSourceKeepsExcludedTerm=idiomBank.some(x=>String(x.word||'').normalize('NFKC')==='間に合う'&&String(x.reading||'').normalize('NFKC')==='まにあう');
 const policyExcludesKnownNonIdiom=!!qualityPolicy?.isExcluded?.({word:'間に合う',reading:'まにあう'})&&qualityPolicy?.exclusions?.has?.('間に合う|まにあう');
 check('Known non-idiom is excluded from Japanese quiz without deleting source data',
- curatedSourceKeepsExcludedTerm&&policyExcludesKnownNonIdiom&&js.includes('const JA_QUIZ_EXCLUSIONS=jaQuality.exclusions')&&js.includes('merged.filter(x=>!jaQuality.isExcluded(x)')));
+ curatedSourceKeepsExcludedTerm&&policyExcludesKnownNonIdiom&&js.includes('const JA_QUIZ_EXCLUSIONS=jaQuality.exclusions')&&js.includes('merged.filter(x=>!jaQuality.isExcluded(x)'));
 check('Curated idiom bank loads',!idiomError&&idiomBank.length>0,idiomError);
 check('Curated idiom bank has no word/reading duplicates',curatedDuplicates===0,String(curatedDuplicates));
 check('Curated ranks are A/B/C only',idiomBank.every(x=>['A','B','C'].includes(x.rank)));
