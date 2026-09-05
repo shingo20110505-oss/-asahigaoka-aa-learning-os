@@ -5,6 +5,7 @@ import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
 
+const QA_VERSION='1.0.2';
 const PAGE_URL=(process.env.PAGE_URL||'https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/').replace(/\/?$/,'/');
 const SOURCE_SHA=process.env.SOURCE_SHA||'public';
 const CHROME=[process.env.CHROME_PATH,'/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium','/usr/bin/chromium-browser'].filter(Boolean).find(existsSync);
@@ -37,6 +38,6 @@ try{
  await cmd('Page.enable');await cmd('Runtime.enable');await cmd('Log.enable');events.length=0;
  await viewport(390,844,true);await navigate('mobile');const mobile=await diagnostics();validate(mobile,'mobile');await screenshot('koten-kanbun-mobile-390x844.png');
  await viewport(1440,1000,false);await navigate('desktop');const desktop=await diagnostics();validate(desktop,'desktop');await screenshot('koten-kanbun-desktop-1440x1000.png');
- const result={version:'1.0.1',page:`${PAGE_URL}kokugo-chronologia/`,sourceSha:SOURCE_SHA,mobile,desktop,screenshots:['koten-kanbun-mobile-390x844.png','koten-kanbun-desktop-1440x1000.png'],events:events.slice(-20)};console.log('KOTEN_KANBUN_PUBLIC_QA='+JSON.stringify(result));await writeFile(path.join(artifacts,'koten-kanbun-public-qa.json'),JSON.stringify(result,null,2));console.log('KOTEN_KANBUN_PUBLIC_QA=PASS');
+ const result={version:QA_VERSION,page:`${PAGE_URL}kokugo-chronologia/`,sourceSha:SOURCE_SHA,mobile,desktop,screenshots:['koten-kanbun-mobile-390x844.png','koten-kanbun-desktop-1440x1000.png'],events:events.slice(-20)};console.log('KOTEN_KANBUN_PUBLIC_QA='+JSON.stringify(result));await writeFile(path.join(artifacts,'koten-kanbun-public-qa.json'),JSON.stringify(result,null,2));console.log('KOTEN_KANBUN_PUBLIC_QA=PASS');
 }catch(error){const diagnostic=await diagnostics().catch(e=>({diagnosticError:String(e)}));await screenshot('koten-kanbun-failure.png').catch(()=>{});await writeFile(path.join(artifacts,'koten-kanbun-failure.json'),JSON.stringify({error:String(error),diagnostic,events:events.slice(-50)},null,2)).catch(()=>{});console.error('KOTEN_KANBUN_PUBLIC_QA=FAIL '+String(error));throw error
 }finally{try{ws.close()}catch{}await cleanup(proc,profile)}
