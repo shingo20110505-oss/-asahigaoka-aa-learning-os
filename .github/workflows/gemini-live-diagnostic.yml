@@ -1,0 +1,27 @@
+name: Temporary Gemini live diagnostic
+
+on:
+  push:
+    branches: [gemini-live-diagnostic-20260905]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Probe Gemini request validation safely
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: gemini-3.5-flash
+        run: |
+          set -euo pipefail
+          test -n "$GEMINI_API_KEY"
+          node scripts/gemini-live-diagnostic.mjs
