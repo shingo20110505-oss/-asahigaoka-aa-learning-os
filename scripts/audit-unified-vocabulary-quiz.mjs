@@ -29,9 +29,20 @@ check('Japanese no-repeat cycle key is native',js.includes("JA_CYCLE_KEY='aa_kok
 check('Japanese requires the full 15,000-row source',js.includes('rows.length!==15000'));
 check('Japanese full IDs match native quiz-full IDs',js.includes("id:'quiz-full-'+String(x.id??i)"));
 check('Japanese unified loader uses the verified native meaning source',js.includes('meaning-ja-overrides.js')&&js.includes('KOKUGO_DIRECT_MEANINGS')&&js.includes('directJaMeaning'));
-check('Japanese curated metadata overrides coarse full-bank rank while retaining full IDs',js.includes('existing.type=x.type||existing.type')&&js.includes('existing.rank=x.rank||existing.rank')&&js.includes("existing.qualitySource=x.source"));
+
+let qualityPolicy=null;
+let qualityPolicyError='';
+try{
+ const sandbox={window:{}};vm.createContext(sandbox);vm.runInContext(read('kokugo-chronologia/exam-quality-v1.js'),sandbox,{filename:'exam-quality-v1.js'});qualityPolicy=sandbox.window.RISE_JAPANESE_EXAM_QUALITY_V1||null;
+}catch(error){qualityPolicyError=String(error?.message||error)}
+const verifiedProbe=qualityPolicy?.verified?.({rank:'A',type:'yoji'},'curated');
+check('Japanese quality policy loads',!!qualityPolicy&&!qualityPolicyError,qualityPolicyError);
+check('Japanese curated metadata overrides coarse full-bank rank while retaining full IDs',
+ js.includes('existing.type=x.type||existing.type')&&
+ js.includes("Object.assign(existing,jaQuality.verified(x,x.source||'curated'))")&&
+ js.includes("existing.qualitySource=x.source||existing.qualitySource")&&
+ verifiedProbe?.rank==='A'&&verifiedProbe?.examRank==='A'&&verifiedProbe?.reviewStatus==='verified'&&verifiedProbe?.qualitySource==='curated');
 check('Japanese curated/jukugo meanings use their own verified local meanings',js.includes("meaning:text(x.meaning),type:x.kind==='二字熟語'")&&js.includes("meaning:text(x.meaning),type:x.kind==='四字熟語'"));
-check('Known non-idiom is excluded from Japanese quiz without deleting source data',js.includes("JA_QUIZ_EXCLUSIONS=new Set(['間に合う|まにあう'])")&&js.includes('!JA_QUIZ_EXCLUSIONS.has(jaContentKey(x))'));
 check('Japanese wrong queue uses stable ID or term/reading identity',js.includes('function jaStableKey')&&js.includes("text(x.id)===id||jaStableKey(x)===stable"));
 check('Japanese distractors prefer same type and rank',js.includes('function japaneseDistractors')&&js.includes('x.raw.type===item.raw.type&&x.raw.rank===item.raw.rank'));
 check('Japanese exam-priority mode includes A and B',js.includes("rank==='AB'?['A','B'].includes(x.raw.rank)")&&js.includes("exam==='exam'?'AB':'all'"));
@@ -47,6 +58,10 @@ try{
 }catch(error){japaneseDataError=String(error?.message||error)}
 const hasJapanese=value=>/[\u3040-\u30ff\u3400-\u9fff]/.test(String(value||''));
 const missingJapanese=japaneseRows.filter((row,index)=>!hasJapanese(directMeanings[String(row.id??index)]));
+const sourceHasExcludedTerm=japaneseRows.some(row=>String(row.term||'').normalize('NFKC')==='間に合う'&&String(row.reading||'').normalize('NFKC')==='まにあう');
+const policyExcludesKnownNonIdiom=!!qualityPolicy?.isExcluded?.({word:'間に合う',reading:'まにあう'})&&qualityPolicy?.exclusions?.has?.('間に合う|まにあう');
+check('Known non-idiom is excluded from Japanese quiz without deleting source data',
+ sourceHasExcludedTerm&&policyExcludesKnownNonIdiom&&js.includes('const JA_QUIZ_EXCLUSIONS=jaQuality.exclusions')&&js.includes('merged.filter(x=>!jaQuality.isExcluded(x)'));
 check('Japanese source is exactly 15,000 rows',!japaneseDataError&&japaneseRows.length===15000,japaneseDataError||String(japaneseRows.length));
 check('All 15,000 Japanese rows have verified Japanese meanings',!japaneseDataError&&japaneseRows.length===15000&&missingJapanese.length===0,missingJapanese.slice(0,5).map(x=>x.term||x.id).join(', '));
 check('Unified runtime rejects unverified Japanese meanings',js.includes("if(!meaning||!hasJapanese(meaning))throw new Error('日本語意味が未確認:"));
@@ -70,5 +85,5 @@ check('Japanese native page remains linked',html.includes('href="../kokugo-chron
 check('Learning card describes current three-subject scope',!/英語・国語・理科・社会/.test(card)&&/英語・国語・社会/.test(card));
 check('Unified quiz runtime has no unsupported subject dispatcher',!/(science|理科)/.test(js));
 
-console.log(JSON.stringify({version:'1.1.0',checkedAt:new Date().toISOString(),checks,failures,japanese:{rows:japaneseRows.length,directMeanings:Object.keys(directMeanings).length,missingJapanese:missingJapanese.length,curated:idiomBank.length,curatedDuplicates}},null,2));
+console.log(JSON.stringify({version:'1.2.0',checkedAt:new Date().toISOString(),checks,failures,japanese:{rows:japaneseRows.length,directMeanings:Object.keys(directMeanings).length,missingJapanese:missingJapanese.length,curated:idiomBank.length,curatedDuplicates,qualityPolicy:qualityPolicy?.version||'',sourceHasExcludedTerm,policyExcludesKnownNonIdiom}},null,2));
 if(failures.length)process.exit(1);
