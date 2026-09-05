@@ -29,6 +29,13 @@ check('Japanese no-repeat cycle key is native',js.includes("JA_CYCLE_KEY='aa_kok
 check('Japanese requires the full 15,000-row source',js.includes('rows.length!==15000'));
 check('Japanese full IDs match native quiz-full IDs',js.includes("id:'quiz-full-'+String(x.id??i)"));
 check('Japanese unified loader uses the verified native meaning source',js.includes('meaning-ja-overrides.js')&&js.includes('KOKUGO_DIRECT_MEANINGS')&&js.includes('directJaMeaning'));
+check('Japanese curated metadata overrides coarse full-bank rank while retaining full IDs',js.includes('existing.type=x.type||existing.type')&&js.includes('existing.rank=x.rank||existing.rank')&&js.includes("existing.qualitySource=x.source"));
+check('Japanese curated/jukugo meanings use their own verified local meanings',js.includes("meaning:text(x.meaning),type:x.kind==='二字熟語'")&&js.includes("meaning:text(x.meaning),type:x.kind==='四字熟語'"));
+check('Known non-idiom is excluded from Japanese quiz without deleting source data',js.includes("JA_QUIZ_EXCLUSIONS=new Set(['間に合う|まにあう'])")&&js.includes('!JA_QUIZ_EXCLUSIONS.has(jaContentKey(x))'));
+check('Japanese wrong queue uses stable ID or term/reading identity',js.includes('function jaStableKey')&&js.includes("text(x.id)===id||jaStableKey(x)===stable"));
+check('Japanese distractors prefer same type and rank',js.includes('function japaneseDistractors')&&js.includes('x.raw.type===item.raw.type&&x.raw.rank===item.raw.rank'));
+check('Japanese exam-priority mode includes A and B',js.includes("rank==='AB'?['A','B'].includes(x.raw.rank)")&&js.includes("exam==='exam'?'AB':'all'"));
+check('Japanese runtime exposes quality diagnostics',js.includes('__AA_RISE_UNIFIED_JAPANESE_QUALITY__'));
 check('Each new question re-enables typed-answer controls',js.includes("ui.answerInput.value='';ui.answerInput.disabled=false;ui.submit.disabled=false;"));
 
 let japaneseRows=[];
@@ -43,6 +50,18 @@ const missingJapanese=japaneseRows.filter((row,index)=>!hasJapanese(directMeanin
 check('Japanese source is exactly 15,000 rows',!japaneseDataError&&japaneseRows.length===15000,japaneseDataError||String(japaneseRows.length));
 check('All 15,000 Japanese rows have verified Japanese meanings',!japaneseDataError&&japaneseRows.length===15000&&missingJapanese.length===0,missingJapanese.slice(0,5).map(x=>x.term||x.id).join(', '));
 check('Unified runtime rejects unverified Japanese meanings',js.includes("if(!meaning||!hasJapanese(meaning))throw new Error('日本語意味が未確認:"));
+
+let idiomBank=[];
+let idiomError='';
+try{const sandbox={window:{}};vm.createContext(sandbox);vm.runInContext(read('idiom/idiom-bank.js'),sandbox,{filename:'idiom/idiom-bank.js'});idiomBank=sandbox.window.AA_IDIOM_BANK||[]}catch(error){idiomError=String(error?.message||error)}
+const curatedKeys=new Set();let curatedDuplicates=0;
+for(const x of idiomBank){const key=`${String(x.word||'').normalize('NFKC')}|${String(x.reading||'').normalize('NFKC')}`;if(curatedKeys.has(key))curatedDuplicates++;curatedKeys.add(key)}
+check('Curated idiom bank loads',!idiomError&&idiomBank.length>0,idiomError);
+check('Curated idiom bank has no word/reading duplicates',curatedDuplicates===0,String(curatedDuplicates));
+check('Curated ranks are A/B/C only',idiomBank.every(x=>['A','B','C'].includes(x.rank)));
+check('Curated kinds are explicit',idiomBank.every(x=>['四字熟語','慣用句'].includes(x.kind)));
+check('Representative top-priority idiom remains A',idiomBank.some(x=>x.word==='一石二鳥'&&x.rank==='A'));
+
 check('Social writes through Chronologia recordAnswer',js.includes('recordAnswer(item.id,!!ok)'));
 check('Social bridge waits for effective 1,000-row Chronologia',js.includes('if(DATA.length<1000)throw 0'));
 check('Chronologia remains an independent linked learning asset',html.includes('href="../chronologia.html"')&&html.includes('年表本体は独立教材として継続'));
@@ -51,5 +70,5 @@ check('Japanese native page remains linked',html.includes('href="../kokugo-chron
 check('Learning card describes current three-subject scope',!/英語・国語・理科・社会/.test(card)&&/英語・国語・社会/.test(card));
 check('Unified quiz runtime has no unsupported subject dispatcher',!/(science|理科)/.test(js));
 
-console.log(JSON.stringify({version:'1.0.3',checkedAt:new Date().toISOString(),checks,failures,japanese:{rows:japaneseRows.length,directMeanings:Object.keys(directMeanings).length,missingJapanese:missingJapanese.length}},null,2));
+console.log(JSON.stringify({version:'1.1.0',checkedAt:new Date().toISOString(),checks,failures,japanese:{rows:japaneseRows.length,directMeanings:Object.keys(directMeanings).length,missingJapanese:missingJapanese.length,curated:idiomBank.length,curatedDuplicates}},null,2));
 if(failures.length)process.exit(1);
