@@ -178,9 +178,10 @@ try {
     assert.equal(calls[1].headers['x-goog-api-key'], 'gemini-contract-secret');
     assert.equal(calls[1].body.contents[0].parts[0].text, REQUEST.input);
     assert.equal(calls[1].body.systemInstruction.parts[0].text.length > 0, true);
-    assert.equal(calls[1].body.generationConfig.responseFormat.text.mimeType, 'application/json');
-    assert.equal(calls[1].body.generationConfig.responseFormat.text.schema.properties.word.minLength, undefined);
-    assert.equal(calls[1].body.generationConfig.responseFormat.text.schema.properties.items.minItems, 2);
+    assert.equal(calls[1].body.generationConfig.responseMimeType, 'application/json');
+    assert.equal(calls[1].body.generationConfig.responseSchema.properties.word.minLength, undefined);
+    assert.equal(calls[1].body.generationConfig.responseSchema.properties.items.minItems, 2);
+    assert.equal(calls[1].body.generationConfig.responseFormat, undefined, 'GenerateContent must not use Interactions response_format shape');
     assert.equal(calls[1].body.generationConfig.thinkingConfig.thinkingLevel, 'medium');
     assert.equal(calls[1].body.generationConfig.thinkingConfig.includeThoughts, false);
     assert.equal(calls[1].body.generationConfig.temperature, undefined);
@@ -212,6 +213,8 @@ try {
     const result = await callGeminiJson(ENV, REQUEST);
     assert.equal(calls.length, 2);
     assert.equal(calls[1].url, `${GEMINI_GENERATE_CONTENT_BASE}/gemini-3.5-flash:generateContent`);
+    assert.equal(calls[1].body.generationConfig.responseMimeType, 'application/json');
+    assert.deepEqual(calls[1].body.generationConfig.responseSchema.required, ['word', 'items', 'score']);
     assert.equal(result.mode, 'generate_content_fallback');
     assert.equal(result.fallbackFrom, 'interactions_400');
     assert.deepEqual(result.output, { word: 'evidence', items: ['a', 'b'], score: 1 });
@@ -250,4 +253,4 @@ try {
   globalThis.fetch = originalFetch;
 }
 
-console.log('Gemini current contract OK: reading authoring uses a lightweight remote schema with strict Rise normalization, final JSON excludes thought parts, wrapped JSON is safely isolated, truncated output is detected, and same-provider fallback stays fail-closed');
+console.log('Gemini current contract OK: Interactions uses response_format; GenerateContent uses responseMimeType + responseSchema; reading authoring keeps lightweight remote schema with strict Rise normalization; same-provider fallback stays fail-closed');

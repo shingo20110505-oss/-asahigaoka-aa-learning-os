@@ -134,7 +134,7 @@ export function normalizeGeminiReadingOutput(value) {
 }
 
 function readingFormatInstruction(input) {
-  return `${input}\nOutput JSON shape requirement: for every question, \"choices\" must be an array of exactly four English strings. \"choiceReasonsJa\" must be a parallel array of exactly four Japanese reasons in the same order. Do not emit choice objects. Rise will convert these parallel arrays to its internal strict format and reject any count mismatch.`;
+  return `${input}\nOutput JSON shape requirement: for every question, "choices" must be an array of exactly four English strings. "choiceReasonsJa" must be a parallel array of exactly four Japanese reasons in the same order. Do not emit choice objects. Rise will convert these parallel arrays to its internal strict format and reject any count mismatch.`;
 }
 
 function generateParts(data) {
@@ -286,13 +286,9 @@ async function sendGenerateContent(apiKey, { model, input, systemInstruction, re
         systemInstruction: { parts: [{ text: systemInstruction }] },
         generationConfig: {
           maxOutputTokens,
-          thinkingConfig: { thinkingLevel, includeThoughts: false },
-          responseFormat: {
-            text: {
-              mimeType: 'application/json',
-              schema: responseSchema
-            }
-          }
+          responseMimeType: 'application/json',
+          responseSchema,
+          thinkingConfig: { thinkingLevel, includeThoughts: false }
         }
       })
     });

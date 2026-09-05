@@ -87,7 +87,7 @@ jobs:
           ORIGIN='https://shingo20110505-oss.github.io'
           export EXPECTED_WORKER_VERSION='1.4.0'
           export EXPECTED_HARDENING_VERSION='2.0.0'
-          export EXPECTED_GEMINI_TRANSPORT_REVISION='dual-transport-v2'
+          export EXPECTED_GEMINI_TRANSPORT_REVISION='dual-transport-v3'
 
           health_ready=false
           for attempt in $(seq 1 12); do
@@ -177,8 +177,8 @@ jobs:
           const exam = JSON.parse(fs.readFileSync('/tmp/ai-exam.json', 'utf8'));
           const subjects = ['english','math','japanese','science','social'];
 
-          if (health.ok !== true || health.version !== '1.4.0' || health.hardeningVersion !== '2.0.0' || health.geminiTransportRevision !== 'dual-transport-v2' || health.service !== 'rise-ai-platform') throw new Error('Worker health verification failed');
-          if (status.ready !== true || status.version !== '1.4.0' || status.hardeningVersion !== '2.0.0' || status.geminiTransportRevision !== 'dual-transport-v2' || status.examPlatformVersion !== '2.0.0' || status.service !== 'rise-ai-platform') throw new Error('Worker status verification failed');
+          if (health.ok !== true || health.version !== '1.4.0' || health.hardeningVersion !== '2.0.0' || health.geminiTransportRevision !== 'dual-transport-v3' || health.service !== 'rise-ai-platform') throw new Error('Worker health verification failed');
+          if (status.ready !== true || status.version !== '1.4.0' || status.hardeningVersion !== '2.0.0' || status.geminiTransportRevision !== 'dual-transport-v3' || status.examPlatformVersion !== '2.0.0' || status.service !== 'rise-ai-platform') throw new Error('Worker status verification failed');
           if (status.model !== 'gemini-3.5-flash') throw new Error(`Unexpected Gemini model: ${status.model}`);
           if (status.verificationProvider !== 'groq' || status.verifierModel !== 'openai/gpt-oss-20b') throw new Error('Groq verifier status mismatch');
           for (const subject of subjects) {
