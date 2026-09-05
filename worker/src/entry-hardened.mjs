@@ -21,7 +21,7 @@ import { constantTimeEqual } from './index.mjs';
 
 const WORKER_VERSION = '1.4.0';
 const HARDENING_VERSION = '2.0.0';
-const GEMINI_TRANSPORT_REVISION = 'dual-transport-v3';
+const GEMINI_TRANSPORT_REVISION = 'dual-transport-v4';
 const DEFAULT_ORIGIN = 'https://shingo20110505-oss.github.io';
 const MAX_BODY_BYTES = 24000;
 const WINDOW_MS = 60000;
@@ -164,6 +164,7 @@ function mapError(error) {
     if (error.status === 429) return new ApiError('quota_exceeded', 'Gemini無料枠の上限に達しました。新規生成を停止し、検証済み問題を利用してください。', 429);
     if ([401, 403].includes(error.status)) return new ApiError('gemini_auth_failed', 'Gemini APIの認証を確認してください。', 502);
     if (error.code === 'provider_not_configured') return new ApiError('server_not_configured', 'Gemini APIがWorkerに設定されていません。', 503);
+    if (error.code === 'provider_timeout') return new ApiError('generation_timeout', 'Gemini生成が時間上限に達しました。検証済み問題を利用してください。', 503);
     return new ApiError(error.code || 'gemini_failed', 'Geminiで生成できませんでした。', error.status >= 500 ? 503 : 502);
   }
   if (error instanceof GroqProviderError) {
@@ -171,6 +172,7 @@ function mapError(error) {
     if (error.status === 429) return new ApiError('groq_quota_exceeded', 'Groq無料枠の上限に達したため独立検証できません。新規問題は採用しません。', 429, diagnostic);
     if ([401, 403].includes(error.status)) return new ApiError('groq_auth_failed', 'Groq APIの認証を確認してください。', 502, diagnostic);
     if (error.code === 'provider_not_configured') return new ApiError('verification_unavailable', 'Groq独立検証が設定されていません。', 503, diagnostic);
+    if (error.code === 'provider_timeout') return new ApiError('verification_timeout', '独立検証が時間上限に達したため新規問題を採用しません。', 503, diagnostic);
     if (error.code === 'provider_refused') return new ApiError('verification_rejected', '独立検証モデルが検証を拒否しました。', 422, diagnostic);
     if (error.code === 'groq_failed_generation' || error.code === 'groq_request_rejected' || error.code === 'groq_schema_mismatch') {
       return new ApiError('verification_strict_schema_failed', '独立検証のStrict JSON Schemaを満たせなかったため問題を採用しません。', 502, diagnostic);
@@ -200,6 +202,7 @@ function compatibleStatus(env) {
       authorAnswerHiddenFromVerifier: true,
       strictVerifierFallbackDisabled: true,
       geminiSameProviderTransportFallback: true,
+      providerDeadlines: true,
       maxExamBatch: 10,
       originRequiredForApi: String(env.ALLOW_NO_ORIGIN || '').toLowerCase() !== 'true',
       jsonContentTypeRequired: true,
@@ -225,9 +228,7 @@ async function processApiRequest(request, env, pathname) {
   inflight++;
   try {
     if (pathname === '/v1/status') return jsonResponse(request, env, compatibleStatus(env), compatibleStatus(env).ready ? 200 : 503);
-    if (pathname === '/v1/reading') {
-      return legacyHandleRequest(request, env);
-    }
+    if (pathname === '/v1/reading') return legacyHandleRequest(request, env);
     const input = await readJsonBody(request);
     if (pathname === '/v1/verify') return jsonResponse(request, env, await verifyHardenedSubjectQuestion(env, input));
     if (pathname === '/v1/exam') return jsonResponse(request, env, await generateHardenedVerifiedExamBatch(env, input));
@@ -277,5 +278,4 @@ export async function handleHardenedRequest(request, env) {
 
 export { compatibleStatus };
 export const __test = Object.freeze({ originAllowed, rateCost, requireJsonContentType });
-
 export default { fetch: handleHardenedRequest };
