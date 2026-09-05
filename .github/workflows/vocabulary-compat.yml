@@ -7,11 +7,26 @@ on:
       - 'app/legacy/main-runtime.js'
       - 'app/runtime-registry.js'
       - 'english-vocabulary-supplement-v1.js'
+      - 'english-vocabulary-supplement-v2.js'
       - 'kokugo-chronologia/data.jsonl'
       - 'kokugo-chronologia/jukugo-bank*.js'
       - 'kokugo-chronologia/quiz-rank-select-v1.js'
       - 'kokugo-chronologia/quiz-interaction-fix.js'
       - 'scripts/validate-vocabulary-compat-v1.mjs'
+      - 'scripts/validate-vocabulary-compat-v2.mjs'
+      - '.github/workflows/vocabulary-compat.yml'
+  pull_request:
+    paths:
+      - 'app/legacy/main-runtime.js'
+      - 'app/runtime-registry.js'
+      - 'english-vocabulary-supplement-v1.js'
+      - 'english-vocabulary-supplement-v2.js'
+      - 'kokugo-chronologia/data.jsonl'
+      - 'kokugo-chronologia/jukugo-bank*.js'
+      - 'kokugo-chronologia/quiz-rank-select-v1.js'
+      - 'kokugo-chronologia/quiz-interaction-fix.js'
+      - 'scripts/validate-vocabulary-compat-v1.mjs'
+      - 'scripts/validate-vocabulary-compat-v2.mjs'
       - '.github/workflows/vocabulary-compat.yml'
   workflow_dispatch:
 
@@ -31,5 +46,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Validate English and Japanese vocabulary compatibility
+      - name: Validate English and Japanese vocabulary compatibility v1
         run: node scripts/validate-vocabulary-compat-v1.mjs
+      - name: Validate English and Japanese vocabulary compatibility v2
+        run: node scripts/validate-vocabulary-compat-v2.mjs
