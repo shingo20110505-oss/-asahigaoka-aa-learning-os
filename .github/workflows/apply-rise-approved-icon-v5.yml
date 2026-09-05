@@ -1,0 +1,134 @@
+name: Apply approved Rise icon v5
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'icons/rise-icon-approved-v5-source.jpg'
+      - '.github/workflows/apply-rise-approved-icon-v5.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Render approved Rise icon
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check -q pillow
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import hashlib
+
+          src=Image.open('icons/rise-icon-approved-v5-source.jpg').convert('RGB')
+          outputs=[
+            (180,'icons/rise-apple-touch-icon-180-20260905-v5.png'),
+            (192,'icons/rise-icon-192-20260905-v5.png'),
+            (512,'icons/rise-icon-512-20260905-v5.png'),
+            (512,'icons/rise-icon-maskable-512-20260905-v5.png'),
+            (32,'icons/rise-favicon-32-20260905-v5.png'),
+          ]
+          for size,path in outputs:
+              im=src.resize((size,size),Image.Resampling.LANCZOS)
+              im.save(path,'PNG',optimize=True,compress_level=9)
+              check=Image.open(path)
+              assert check.size==(size,size), (path,check.size)
+              assert check.mode=='RGB', (path,check.mode)
+              print(path,hashlib.sha256(Path(path).read_bytes()).hexdigest())
+          PY
+
+      - name: Wire v5 icon everywhere
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+
+          p=Path('index.html'); s=p.read_text()
+          s=re.sub(r'<link rel="manifest" href="\./manifest\.webmanifest\?v=[^"]+">',
+                   '<link rel="manifest" href="./manifest.webmanifest?v=4.3.4">',s,count=1)
+          s=re.sub(r'<link rel="apple-touch-icon"[^>]*>',
+                   '<link rel="apple-touch-icon" sizes="180x180" href="./icons/rise-apple-touch-icon-180-20260905-v5.png">',s,count=1)
+          # Use the approved raster for browser icons too, avoiding any font/vector mismatch.
+          s=re.sub(r'<link rel="icon" href="\./icons/[^"]+" type="image/svg\+xml" sizes="any">',
+                   '<link rel="icon" type="image/png" sizes="192x192" href="./icons/rise-icon-192-20260905-v5.png">',s,count=1)
+          s=re.sub(r'<link rel="icon" type="image/png" sizes="32x32" href="\./icons/[^"]+">',
+                   '<link rel="icon" type="image/png" sizes="32x32" href="./icons/rise-favicon-32-20260905-v5.png">',s,count=1)
+          p.write_text(s)
+
+          p=Path('manifest.webmanifest')
+          m=json.loads(p.read_text())
+          m['start_url']='./?rise=4.3.4'
+          m['icons']=[
+            {'src':'./icons/rise-icon-192-20260905-v5.png','sizes':'192x192','type':'image/png','purpose':'any'},
+            {'src':'./icons/rise-icon-512-20260905-v5.png','sizes':'512x512','type':'image/png','purpose':'any'},
+            {'src':'./icons/rise-icon-maskable-512-20260905-v5.png','sizes':'512x512','type':'image/png','purpose':'maskable'},
+          ]
+          for item in m.get('shortcuts',[]):
+              item['icons']=[{'src':'./icons/rise-icon-192-20260905-v5.png','sizes':'192x192','type':'image/png'}]
+          p.write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')
+
+          p=Path('sw.js'); s=p.read_text()
+          if 'rise-icon-v5-approved' not in s.split('\n',2)[1]:
+              s=re.sub(r"const VERSION='([^']+)'",lambda m:f"const VERSION='{m.group(1)}-rise-icon-v5-approved'",s,count=1)
+          replacements={
+            'icons/rise-apple-touch-icon-180-20260905-v4.png':'icons/rise-apple-touch-icon-180-20260905-v5.png',
+            'icons/rise-icon-192-20260905-v4.png':'icons/rise-icon-192-20260905-v5.png',
+            'icons/rise-icon-512-20260905-v4.png':'icons/rise-icon-512-20260905-v5.png',
+            'icons/rise-icon-maskable-512-20260905-v4.png':'icons/rise-icon-maskable-512-20260905-v5.png',
+            'icons/rise-favicon-32-20260905-v4.png':'icons/rise-favicon-32-20260905-v5.png',
+          }
+          for old,new in replacements.items(): s=s.replace(old,new)
+          # Remove obsolete v4 SVG source from precache to ensure one visual source of truth.
+          s=s.replace(",url('icons/rise-icon-source-v4.svg')",'')
+          p.write_text(s)
+
+          Path('RISE_ICON_V5_RELEASE.txt').write_text(
+            'Rise approved icon release v5\n'
+            'selected_design=balanced refined serif R with blue-violet-pink gradient and star arc\n'
+            'source=icons/rise-icon-approved-v5-source.jpg\n'
+            'apple_touch_icon=icons/rise-apple-touch-icon-180-20260905-v5.png\n'
+            'manifest_version=4.3.4\n'
+            'released=2026-09-05\n'
+          )
+          PY
+
+      - name: Validate v5 wiring
+        run: |
+          set -euo pipefail
+          python3 -m json.tool manifest.webmanifest >/dev/null
+          node --check sw.js
+          grep -q 'manifest.webmanifest?v=4.3.4' index.html
+          grep -q 'rise-apple-touch-icon-180-20260905-v5.png' index.html
+          grep -q 'rise-icon-192-20260905-v5.png' index.html
+          grep -q 'rise-icon-192-20260905-v5.png' manifest.webmanifest
+          grep -q 'rise-icon-512-20260905-v5.png' manifest.webmanifest
+          grep -q 'rise-icon-maskable-512-20260905-v5.png' manifest.webmanifest
+          grep -q 'rise-icon-v5-approved' sw.js
+
+      - name: Commit approved Rise icon v5
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            icons/rise-icon-approved-v5-source.jpg \
+            icons/rise-apple-touch-icon-180-20260905-v5.png \
+            icons/rise-icon-192-20260905-v5.png \
+            icons/rise-icon-512-20260905-v5.png \
+            icons/rise-icon-maskable-512-20260905-v5.png \
+            icons/rise-favicon-32-20260905-v5.png \
+            index.html manifest.webmanifest sw.js RISE_ICON_V5_RELEASE.txt
+          git diff --cached --quiet && exit 0
+          git commit -m 'Apply approved balanced Rise icon v5'
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+# one-time trigger: approved-balanced-rise-icon-v5-20260905
