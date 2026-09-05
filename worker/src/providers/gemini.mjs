@@ -289,7 +289,7 @@ async function sendGenerateContent(apiKey, { model, input, systemInstruction, re
           thinkingConfig: { thinkingLevel, includeThoughts: false },
           responseFormat: {
             text: {
-              mimeType: 'application/json',
+              mimeType: 'APPLICATION_JSON',
               schema: responseSchema
             }
           }
