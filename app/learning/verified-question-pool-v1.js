@@ -2,16 +2,19 @@
 'use strict';
 if(window.RiseVerifiedQuestionPool)return;
 
-const VERSION='1.0.0';
+const VERSION='1.1.0';
 const STORE_KEY='rise_verified_question_pool_v1';
 const CONFIG_KEY='aa_ai_reading_config_v1';
 const DEFAULT_ENDPOINT='https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev';
 const EXAM_PATH='/v1/exam';
 const MAX_ITEMS=180;
+const MAX_ITEMS_PER_SUBJECT=60;
 const MAX_AI_PER_SESSION=4;
 const TIMEOUT_MS=180000;
 const SUBJECTS=new Set(['english','japanese','math','science','social']);
 const ID_RE=/^rise-(english|japanese|math|science|social)-[0-9a-f]{16}$/;
+const FINGERPRINT_RE=/^[0-9a-f]{16}$/;
+const CONFIDENCE_FLOOR=Object.freeze({english:.86,japanese:.86,math:.90,science:.90,social:.90});
 const LOCAL_ONLY_UNITS=new Set(['english:vocab','japanese:kanji','japanese:idiom']);
 const UNIT_LABELS=Object.freeze({
   english:{reading:'長文読解',dialogue:'会話文',data:'図表・案内',grammar:'文法・語順',vocab:'語彙・語句'},
@@ -49,36 +52,12 @@ function readConnection(){
 }
 function configured(){const c=readConnection();return!!(c.endpoint&&c.accessToken.length>=24&&!/\s/.test(c.accessToken));}
 function blankStore(){return{schemaVersion:1,version:VERSION,updatedAt:0,items:[]};}
-function validateStoredRecord(record){
-  if(!record||typeof record!=='object'||!validateItem(record.item,record.subject))return false;
-  if(record.subject!==record.item.subject||!String(record.examUnit||'').trim())return false;
-  return Number.isFinite(Number(record.addedAt))&&Number(record.addedAt)>0;
-}
-function loadStore(){
-  try{
-    const raw=JSON.parse(localStorage.getItem(STORE_KEY)||'null');
-    if(!raw||raw.schemaVersion!==1||!Array.isArray(raw.items))return blankStore();
-    const seen=new Set(),items=[];
-    for(const row of raw.items){
-      if(!validateStoredRecord(row)||seen.has(row.item.id))continue;
-      seen.add(row.item.id);items.push(row);
-    }
-    return{schemaVersion:1,version:VERSION,updatedAt:Number(raw.updatedAt)||0,items:items.slice(-MAX_ITEMS)};
-  }catch(_){return blankStore();}
-}
-function writeStore(store){
-  const next={schemaVersion:1,version:VERSION,updatedAt:now(),items:safeArray(store.items).filter(validateStoredRecord).slice(-MAX_ITEMS)};
-  const text=JSON.stringify(next);
-  try{
-    localStorage.setItem(STORE_KEY,text);
-    const check=JSON.parse(localStorage.getItem(STORE_KEY)||'null');
-    if(!check||check.schemaVersion!==1||!Array.isArray(check.items))throw new Error('verification');
-    return true;
-  }catch(_){return false;}
-}
+function confidenceFloor(subject){return Number(CONFIDENCE_FLOOR[subject]||.90);}
+function fingerprintOf(item){const fp=String(item?.fingerprint||'').toLowerCase();return FINGERPRINT_RE.test(fp)?fp:'';}
 function validateItem(item,expectedSubject){
   if(!item||typeof item!=='object'||!SUBJECTS.has(item.subject)||item.subject!==expectedSubject)return false;
   if(!ID_RE.test(String(item.id||'')))return false;
+  if(item.fingerprint!=null&&!fingerprintOf(item))return false;
   if(!String(item.skill||'').trim()||!Number.isInteger(Number(item.difficulty))||Number(item.difficulty)<1||Number(item.difficulty)>10)return false;
   if(!String(item.question||'').trim()||!Array.isArray(item.choices)||item.choices.length!==4)return false;
   const choices=item.choices.map(x=>String(x||'').trim());
@@ -87,8 +66,48 @@ function validateItem(item,expectedSubject){
   if(!Number.isInteger(ai)||ai<0||ai>3||String(item.answer||'')!==choices[ai])return false;
   if(String(item.explanation||'').trim().length<12||!String(item.evidence||'').trim()||!String(item.misconception||'').trim())return false;
   if(![1,2].includes(Number(item.marks)))return false;
-  if(item.quality?.verified!==true||Number(item.quality?.verifierConfidence||0)<0.8)return false;
+  if(item.quality?.verified!==true||Number(item.quality?.verifierConfidence||0)<confidenceFloor(item.subject))return false;
   return true;
+}
+function validateIncomingItem(item,expectedSubject){
+  if(!validateItem(item,expectedSubject)||!fingerprintOf(item))return false;
+  const q=item.quality||{};
+  return q.generationProvider==='gemini'&&q.verificationProvider==='groq'&&q.verifierMode==='json_schema'&&q.strictStructuredOutput===true;
+}
+function validateStoredRecord(record){
+  if(!record||typeof record!=='object'||!validateItem(record.item,record.subject))return false;
+  if(record.subject!==record.item.subject||!String(record.examUnit||'').trim())return false;
+  return Number.isFinite(Number(record.addedAt))&&Number(record.addedAt)>0;
+}
+function pruneItems(rows){
+  const ids=new Set(),fps=new Set(),valid=[];
+  for(const row of safeArray(rows).filter(validateStoredRecord).sort((a,b)=>Number(b.addedAt)-Number(a.addedAt))){
+    const id=String(row.item.id),fp=fingerprintOf(row.item);
+    if(ids.has(id)||(fp&&fps.has(fp)))continue;
+    ids.add(id);if(fp)fps.add(fp);valid.push(row);
+  }
+  const kept=[];
+  for(const subject of SUBJECTS){
+    kept.push(...valid.filter(row=>row.subject===subject).slice(0,MAX_ITEMS_PER_SUBJECT));
+  }
+  return kept.sort((a,b)=>Number(a.addedAt)-Number(b.addedAt)).slice(-MAX_ITEMS);
+}
+function loadStore(){
+  try{
+    const raw=JSON.parse(localStorage.getItem(STORE_KEY)||'null');
+    if(!raw||raw.schemaVersion!==1||!Array.isArray(raw.items))return blankStore();
+    return{schemaVersion:1,version:VERSION,updatedAt:Number(raw.updatedAt)||0,items:pruneItems(raw.items)};
+  }catch(_){return blankStore();}
+}
+function writeStore(store){
+  const next={schemaVersion:1,version:VERSION,updatedAt:now(),items:pruneItems(store.items)};
+  const text=JSON.stringify(next);
+  try{
+    localStorage.setItem(STORE_KEY,text);
+    const check=JSON.parse(localStorage.getItem(STORE_KEY)||'null');
+    if(!check||check.schemaVersion!==1||!Array.isArray(check.items))throw new Error('verification');
+    return true;
+  }catch(_){return false;}
 }
 function normalizeUnits(subject,units){
   const valid=UNIT_LABELS[subject]||{};
@@ -96,21 +115,44 @@ function normalizeUnits(subject,units){
 }
 function difficultyForLevel(level){return Number(level)<=1?4:Number(level)>=3?9:7;}
 function recentIds(state){
-  return [...new Set(safeArray(state?.attempts).slice(-120).reverse().map(x=>String(x?.itemId||'')).filter(x=>ID_RE.test(x)))].slice(0,40);
+  return [...new Set(safeArray(state?.attempts).slice(-120).reverse().map(x=>String(x?.reviewKey||x?.itemId||'')).filter(x=>ID_RE.test(x)))].slice(0,40);
+}
+function recentFingerprints(store){
+  return [...new Set(safeArray(store?.items).slice(-80).reverse().map(row=>fingerprintOf(row.item)).filter(Boolean))].slice(0,40);
 }
 function masteryNeed(state,skill){
   const row=state?.mastery?.[skill];
   if(!row)return .55;
   return 1-clamp(Number(row.mastery??row.pMastery??.5),0,1);
 }
+function latestAttempt(state,id){
+  const attempts=safeArray(state?.attempts);
+  for(let i=attempts.length-1,seen=0;i>=0&&seen<240;i--,seen++){
+    const a=attempts[i];
+    if(String(a?.reviewKey||'')===id||String(a?.itemId||'')===id)return a;
+  }
+  return null;
+}
+function itemReviewNeed(state,id){
+  const item=state?.items?.[id];
+  if(!item||!Number(item.seen))return .18;
+  const due=Number(item.dueAt)>0&&Number(item.dueAt)<=now()?1:0;
+  const lapse=clamp(Number(item.lapses||0)/3,0,1);
+  const errorRate=1-clamp(Number(item.correct||0)/Math.max(1,Number(item.seen||0)),0,1);
+  return clamp(.52*due+.28*lapse+.20*errorRate,0,1);
+}
 function scoreRecord(row,{subject,units,difficulty,recent,state}){
   if(row.subject!==subject||!units.includes(row.examUnit))return-Infinity;
   const item=row.item;
   let score=30-Math.abs(Number(item.difficulty)-difficulty)*4;
   score+=masteryNeed(state,item.skill)*22;
+  score+=itemReviewNeed(state,item.id)*24;
   score+=Math.min(10,(now()-Number(row.lastUsedAt||row.addedAt))/(86400000*2));
   score-=Number(row.useCount||0)*1.4;
-  if(recent.has(item.id))score-=80;
+  if(recent.has(item.id)){
+    const last=latestAttempt(state,item.id);
+    score+=last&&last.correct===false?18:-80;
+  }
   return score;
 }
 function selectRecords(store,request,count){
@@ -141,14 +183,17 @@ function ingestPayload(store,payload,subject,unit){
   if(payload?.subject!==subject||payload?.quality?.verified!==true)return[];
   const accepted=[];
   const byId=new Map(store.items.map(row=>[row.item.id,row]));
+  const fpToId=new Map(store.items.map(row=>[fingerprintOf(row.item),row.item.id]).filter(([fp])=>fp));
   for(const raw of safeArray(payload.items)){
-    if(!validateItem(raw,subject))continue;
+    if(!validateIncomingItem(raw,subject))continue;
     const item=deepClone(raw);if(!item)continue;
+    const fp=fingerprintOf(item),owner=fpToId.get(fp);
+    if(owner&&owner!==item.id)continue;
     const existing=byId.get(item.id);
     const row=existing?{...existing,item,examUnit:existing.examUnit||unit}:{subject,examUnit:unit,item,addedAt:now(),lastUsedAt:0,useCount:0};
-    byId.set(item.id,row);accepted.push(row);
+    byId.set(item.id,row);fpToId.set(fp,item.id);accepted.push(row);
   }
-  store.items=[...byId.values()].sort((a,b)=>Number(a.addedAt)-Number(b.addedAt)).slice(-MAX_ITEMS);
+  store.items=pruneItems([...byId.values()]);
   writeStore(store);
   return accepted;
 }
@@ -167,11 +212,17 @@ async function replenish(store,request,missing){
     const unit=order[i];
     const count=Math.min(2,missing-out.length);
     try{
-      const payload=await postExam({schemaVersion:1,subject:request.subject,count,difficulty:request.difficulty,skill:requestSkill(request.subject,unit),focus:[UNIT_LABELS[request.subject]?.[unit]||unit,'愛知県公立高校入試','応用・根拠判断'],recentQuestionIds:[...new Set([...request.recentQuestionIds,...store.items.slice(-30).map(x=>x.item.id)])].slice(-40)});
+      const payload=await postExam({
+        schemaVersion:1,subject:request.subject,count,difficulty:request.difficulty,
+        skill:requestSkill(request.subject,unit),
+        focus:[UNIT_LABELS[request.subject]?.[unit]||unit,'愛知県公立高校入試','応用・根拠判断'],
+        recentQuestionIds:[...new Set([...request.recentQuestionIds,...store.items.slice(-40).map(x=>x.item.id)])].slice(-40),
+        recentFingerprints:recentFingerprints(store)
+      });
       out.push(...ingestPayload(store,payload,request.subject,unit));
     }catch(error){
       console.warn('[Rise Verified Pool] replenish skipped:',error?.code||error?.message||error);
-      if(['quota_exceeded','unauthorized','forbidden_origin','not_configured'].includes(error?.code))break;
+      if(['quota_exceeded','groq_quota_exceeded','unauthorized','forbidden_origin','not_configured','server_not_configured'].includes(error?.code))break;
     }
   }
   return out;
@@ -202,14 +253,14 @@ function toPracticeQuestion(record,level){
   const item=record?.item;if(!validateItem(item,record?.subject))return null;
   const unit=record.examUnit;
   return{
-    id:item.id,reviewKey:item.id,code:item.id,type:item.subject,subject:item.subject,
+    id:item.id,reviewKey:item.id,srsId:item.id,code:item.id,type:item.subject,subject:item.subject,
     stem:item.context?`${item.context}\n\n${item.question}`:item.question,
     choices:item.choices.map((text,index)=>({text,ok:index===item.answerIndex,reason:index===item.answerIndex?item.explanation:`この選択肢は正答条件を満たしません。${item.misconception}`,error:index===item.answerIndex?null:'ai_verified_distractor',distractorType:index===item.answerIndex?null:'ai_verified_distractor'})),
     answerIndex:item.answerIndex,selectCount:1,points:1,partialPoints:0,explanation:item.explanation,
     skills:[{id:item.skill,role:'primary'}],expectedMs:50000+Number(item.difficulty)*4500,
     context:'rise-ai-verified-'+item.subject,format:'aichi-mark',testMode:false,courseLevel:Number(level)||2,
     evidence:item.evidence,reasoningTag:'cross-provider-verified',examUnit:unit,aichiPassage:item.context||'',
-    source:{area:unit,difficulty:item.difficulty,origin:'rise-ai-verified',curriculum:'junior-high',verified:true,quality:item.quality,poolVersion:VERSION}
+    source:{area:unit,difficulty:item.difficulty,origin:'rise-ai-verified',curriculum:'junior-high',verified:true,quality:item.quality,fingerprint:fingerprintOf(item),poolVersion:VERSION}
   };
 }
 function mergeQueues(localQueue,records,level){
@@ -280,7 +331,14 @@ document.addEventListener('click',event=>{
 
 window.RiseVerifiedQuestionPool=Object.freeze({
   version:VERSION,storeKey:STORE_KEY,configured,load:()=>deepClone(loadStore()),acquire,markUsed,toPracticeQuestion,
-  snapshot(){const store=loadStore();const counts={};for(const row of store.items)counts[row.subject]=(counts[row.subject]||0)+1;return{version:VERSION,total:store.items.length,counts,updatedAt:store.updatedAt,configured:configured()};},
-  __test:Object.freeze({validateItem,validateStoredRecord,normalizeUnits,difficultyForLevel,selectRecords,ingestPayload,mergeQueues,eligibleUnits,requestSkill,loadStore,writeStore})
+  snapshot(){
+    const store=loadStore(),state=currentState(),counts={},dueCounts={};
+    for(const row of store.items){
+      counts[row.subject]=(counts[row.subject]||0)+1;
+      if(itemReviewNeed(state,row.item.id)>=.5)dueCounts[row.subject]=(dueCounts[row.subject]||0)+1;
+    }
+    return{version:VERSION,total:store.items.length,counts,dueCounts,updatedAt:store.updatedAt,configured:configured()};
+  },
+  __test:Object.freeze({validateItem,validateIncomingItem,validateStoredRecord,normalizeUnits,difficultyForLevel,selectRecords,ingestPayload,mergeQueues,eligibleUnits,requestSkill,loadStore,writeStore,pruneItems,recentFingerprints,itemReviewNeed,confidenceFloor})
 });
 })();
