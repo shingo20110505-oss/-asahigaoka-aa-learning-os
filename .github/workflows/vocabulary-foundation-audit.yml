@@ -9,7 +9,10 @@ on:
       - 'scripts/audit-vocabulary-normalization.mjs'
       - 'scripts/audit-vocabulary-progress-adapters.mjs'
       - 'scripts/audit-unified-vocabulary-quiz.mjs'
+      - 'scripts/audit-en-ja-vocabulary-supplement.mjs'
       - 'scripts/report-vocabulary-data-quality.mjs'
+      - 'english-vocab-supplement-v1.js'
+      - 'v23-loader.js'
       - 'vocab.html'
       - 'vocab-wrong-quiz-v1.js'
       - 'ai-reading-v1.js'
@@ -30,7 +33,10 @@ on:
       - 'scripts/audit-vocabulary-normalization.mjs'
       - 'scripts/audit-vocabulary-progress-adapters.mjs'
       - 'scripts/audit-unified-vocabulary-quiz.mjs'
+      - 'scripts/audit-en-ja-vocabulary-supplement.mjs'
       - 'scripts/report-vocabulary-data-quality.mjs'
+      - 'english-vocab-supplement-v1.js'
+      - 'v23-loader.js'
       - 'vocab.html'
       - 'vocab-wrong-quiz-v1.js'
       - 'ai-reading-v1.js'
@@ -59,6 +65,8 @@ jobs:
         run: node scripts/audit-vocabulary-foundation.mjs
       - name: Report vocabulary data quality
         run: node scripts/report-vocabulary-data-quality.mjs
+      - name: Audit English/Japanese append-only supplements
+        run: node scripts/audit-en-ja-vocabulary-supplement.mjs
       - name: Audit native normalization readiness
         run: node scripts/audit-vocabulary-normalization.mjs
       - name: Audit read-only progress adapters
