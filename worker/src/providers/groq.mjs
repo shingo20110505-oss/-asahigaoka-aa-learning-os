@@ -1,8 +1,14 @@
 export const DEFAULT_GROQ_MODEL = 'openai/gpt-oss-20b';
 export const GROQ_CHAT_COMPLETIONS_URL = 'https://api.groq.com/openai/v1/chat/completions';
+export const DEFAULT_GROQ_TIMEOUT_MS = 35000;
 
 function clean(value, maxLength = 300) {
   return String(value || '').replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, maxLength);
+}
+
+function boundedTimeout(value, fallback) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? Math.max(100, Math.min(90000, Math.round(parsed))) : fallback;
 }
 
 export class GroqProviderError extends Error {
@@ -208,7 +214,9 @@ function buildRequestBody({ model, mode, input, schema, schemaName, systemInstru
   return body;
 }
 
-async function sendGroq(apiKey, body) {
+async function sendGroq(apiKey, body, timeoutMs) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
   let response;
   try {
     response = await fetch(GROQ_CHAT_COMPLETIONS_URL, {
@@ -217,10 +225,14 @@ async function sendGroq(apiKey, body) {
         'content-type': 'application/json',
         authorization: `Bearer ${apiKey}`
       },
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
+      signal: controller.signal
     });
-  } catch (_) {
+  } catch (error) {
+    if (error?.name === 'AbortError') throw new GroqProviderError(504, 'Groq verification timed out.', 'provider_timeout', `groq:${timeoutMs}`);
     throw new GroqProviderError(503, 'Could not reach Groq.', 'provider_unreachable');
+  } finally {
+    clearTimeout(timer);
   }
 
   let payload = null;
@@ -258,6 +270,7 @@ export async function callGroqJson(env, request) {
       : 'json_schema';
   const temperature = Number.isFinite(request?.temperature) ? request.temperature : 0;
   const reasoningEffort = request?.reasoningEffort || 'low';
+  const timeoutMs = boundedTimeout(request?.timeoutMs, DEFAULT_GROQ_TIMEOUT_MS);
 
   if (!input || !schema || typeof schema !== 'object') {
     throw new GroqProviderError(400, 'Groq structured request is incomplete.', 'provider_request_invalid');
@@ -274,7 +287,7 @@ export async function callGroqJson(env, request) {
     temperature,
     reasoningEffort
   });
-  const primary = await sendGroq(apiKey, primaryBody);
+  const primary = await sendGroq(apiKey, primaryBody, timeoutMs);
 
   let payload = primary.payload;
   let mode = responseMode;
@@ -299,7 +312,7 @@ export async function callGroqJson(env, request) {
       temperature,
       reasoningEffort
     });
-    const fallback = await sendGroq(apiKey, fallbackBody);
+    const fallback = await sendGroq(apiKey, fallbackBody, timeoutMs);
     if (!fallback.response.ok) throwGroqHttpError(fallback.response, fallback.payload);
     payload = fallback.payload;
     mode = 'json_object_fallback';
