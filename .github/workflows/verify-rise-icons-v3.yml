@@ -1,0 +1,134 @@
+name: Verify Rise v3 icons on public Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-rise-icons-v3.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify source wiring and PNG structure
+        run: |
+          set -euo pipefail
+          grep -q 'manifest.webmanifest?v=4.3.2' index.html
+          grep -q 'rise-apple-touch-icon-180-20260905-v3.png' index.html
+          grep -q 'rise-icon-192-20260905-v3.png' manifest.webmanifest
+          grep -q 'rise-icon-512-20260905-v3.png' manifest.webmanifest
+          grep -q 'rise-icon-maskable-512-20260905-v3.png' manifest.webmanifest
+          grep -q 'rise-icons-v3' sw.js
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct, hashlib
+          expected={
+            'icons/rise-apple-touch-icon-180-20260905-v3.png':(180,180),
+            'icons/rise-icon-192-20260905-v3.png':(192,192),
+            'icons/rise-icon-512-20260905-v3.png':(512,512),
+            'icons/rise-icon-maskable-512-20260905-v3.png':(512,512),
+          }
+          for p, size in expected.items():
+              b=Path(p).read_bytes()
+              assert b[:8]==b'\x89PNG\r\n\x1a\n', p
+              assert b[12:16]==b'IHDR', p
+              w,h,bit_depth,color_type,compression,filter_method,interlace=struct.unpack('>IIBBBBB',b[16:29])
+              assert (w,h)==size, (p,w,h)
+              assert bit_depth==8 and color_type==2, (p,bit_depth,color_type)  # opaque RGB
+              print('SOURCE',p,size,hashlib.sha256(b).hexdigest())
+          PY
+
+      - name: Verify exact files on public GitHub Pages
+        env:
+          BASE: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/rise-public/icons
+          ok=0
+          for n in $(seq 1 30); do
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}index.html?rise-icon-verify=${GITHUB_SHA}-${n}" -o /tmp/rise-public/index.html \
+              && curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}manifest.webmanifest?rise-icon-verify=${GITHUB_SHA}-${n}" -o /tmp/rise-public/manifest.webmanifest \
+              && grep -q 'rise-apple-touch-icon-180-20260905-v3.png' /tmp/rise-public/index.html \
+              && grep -q 'rise-icon-192-20260905-v3.png' /tmp/rise-public/manifest.webmanifest \
+              && grep -q 'rise-icon-512-20260905-v3.png' /tmp/rise-public/manifest.webmanifest \
+              && grep -q 'rise-icon-maskable-512-20260905-v3.png' /tmp/rise-public/manifest.webmanifest; then
+              ok=1
+              break
+            fi
+            sleep 5
+          done
+          test "$ok" = 1
+
+          for f in \
+            rise-apple-touch-icon-180-20260905-v3.png \
+            rise-icon-192-20260905-v3.png \
+            rise-icon-512-20260905-v3.png \
+            rise-icon-maskable-512-20260905-v3.png; do
+            curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}icons/${f}?rise-icon-verify=${GITHUB_SHA}" -o "/tmp/rise-public/icons/${f}"
+            test "$(sha256sum "icons/${f}" | awk '{print $1}')" = "$(sha256sum "/tmp/rise-public/icons/${f}" | awk '{print $1}')"
+          done
+
+          curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}sw.js?rise-icon-verify=${GITHUB_SHA}" -o /tmp/rise-public/sw.js
+          grep -q 'rise-icons-v3' /tmp/rise-public/sw.js
+          grep -q "url('icons/rise-apple-touch-icon-180-20260905-v3.png')" /tmp/rise-public/sw.js
+          grep -q "url('icons/rise-icon-192-20260905-v3.png')" /tmp/rise-public/sw.js
+          grep -q "url('icons/rise-icon-512-20260905-v3.png')" /tmp/rise-public/sw.js
+          grep -q "url('icons/rise-icon-maskable-512-20260905-v3.png')" /tmp/rise-public/sw.js
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct, hashlib
+          expected={
+            'rise-apple-touch-icon-180-20260905-v3.png':(180,180),
+            'rise-icon-192-20260905-v3.png':(192,192),
+            'rise-icon-512-20260905-v3.png':(512,512),
+            'rise-icon-maskable-512-20260905-v3.png':(512,512),
+          }
+          for f,size in expected.items():
+              b=Path('/tmp/rise-public/icons',f).read_bytes()
+              assert b[:8]==b'\x89PNG\r\n\x1a\n', f
+              assert b[12:16]==b'IHDR', f
+              w,h,bit_depth,color_type,compression,filter_method,interlace=struct.unpack('>IIBBBBB',b[16:29])
+              assert (w,h)==size, (f,w,h)
+              assert bit_depth==8 and color_type==2, (f,bit_depth,color_type)
+              print('PUBLIC',f,size,hashlib.sha256(b).hexdigest())
+          PY
+
+      - name: Record Rise icon public verification
+        env:
+          BASE: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+        run: |
+          set -euo pipefail
+          APPLE_SHA=$(sha256sum icons/rise-apple-touch-icon-180-20260905-v3.png | awk '{print $1}')
+          I192_SHA=$(sha256sum icons/rise-icon-192-20260905-v3.png | awk '{print $1}')
+          I512_SHA=$(sha256sum icons/rise-icon-512-20260905-v3.png | awk '{print $1}')
+          MASK_SHA=$(sha256sum icons/rise-icon-maskable-512-20260905-v3.png | awk '{print $1}')
+          cat > RISE_ICON_VERIFY_STATUS.txt <<EOF
+          result=success
+          verified_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          page_url=${BASE}
+          index_reference=success
+          manifest_reference=success
+          service_worker_reference=success
+          public_png_decode=success
+          public_source_sha256_match=success
+          apple_touch_180_sha256=${APPLE_SHA}
+          icon_192_sha256=${I192_SHA}
+          icon_512_sha256=${I512_SHA}
+          maskable_512_sha256=${MASK_SHA}
+          EOF
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git pull --rebase origin main
+          git add RISE_ICON_VERIFY_STATUS.txt
+          git diff --cached --quiet && exit 0
+          git commit -m 'Record verified Rise v3 public icons'
+          git pull --rebase origin main
+          git push origin HEAD:main
