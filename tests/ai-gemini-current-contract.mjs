@@ -52,6 +52,12 @@ assert.equal(normalized.properties.items.items.minLength, undefined);
 assert.equal(normalized.properties.score.minimum, 0);
 assert.equal(normalized.properties.score.maximum, 1);
 
+function generateSuccess() {
+  return new Response(JSON.stringify({
+    candidates: [{ content: { parts: [{ text: JSON_TEXT }] } }]
+  }), { status: 200, headers: { 'content-type': 'application/json' } });
+}
+
 try {
   {
     let captured = null;
@@ -91,9 +97,7 @@ try {
           headers: { 'content-type': 'application/json' }
         });
       }
-      return new Response(JSON.stringify({
-        candidates: [{ content: { parts: [{ text: JSON_TEXT }] } }]
-      }), { status: 200, headers: { 'content-type': 'application/json' } });
+      return generateSuccess();
     };
 
     const result = await callGeminiJson(ENV, REQUEST);
@@ -118,15 +122,34 @@ try {
     globalThis.fetch = async (url, options) => {
       calls.push({ url: String(url), body: JSON.parse(options.body) });
       if (calls.length === 1) throw new TypeError('network down');
-      return new Response(JSON.stringify({
-        candidates: [{ content: { parts: [{ text: JSON_TEXT }] } }]
-      }), { status: 200, headers: { 'content-type': 'application/json' } });
+      return generateSuccess();
     };
 
     const result = await callGeminiJson(ENV, REQUEST);
     assert.equal(calls.length, 2);
     assert.equal(result.mode, 'generate_content_fallback');
     assert.equal(result.fallbackFrom, 'interactions_unreachable');
+  }
+
+  {
+    const calls = [];
+    globalThis.fetch = async (url, options) => {
+      calls.push({ url: String(url), body: JSON.parse(options.body) });
+      if (calls.length === 1) {
+        return new Response(JSON.stringify({ error: { message: 'Interactions rejected this structured request' } }), {
+          status: 400,
+          headers: { 'content-type': 'application/json' }
+        });
+      }
+      return generateSuccess();
+    };
+
+    const result = await callGeminiJson(ENV, REQUEST);
+    assert.equal(calls.length, 2);
+    assert.equal(calls[1].url, `${GEMINI_GENERATE_CONTENT_BASE}/gemini-3.5-flash:generateContent`);
+    assert.equal(result.mode, 'generate_content_fallback');
+    assert.equal(result.fallbackFrom, 'interactions_400');
+    assert.deepEqual(result.output, { word: 'evidence', items: ['a', 'b'], score: 1 });
   }
 
   {
@@ -150,7 +173,7 @@ try {
     let calls = 0;
     globalThis.fetch = async () => {
       calls++;
-      return new Response(JSON.stringify({ error: { message: 'schema rejected' } }), {
+      return new Response(JSON.stringify({ error: { message: calls === 1 ? 'Interactions schema rejection' : 'GenerateContent schema rejection' } }), {
         status: 400,
         headers: { 'content-type': 'application/json' }
       });
@@ -158,12 +181,29 @@ try {
 
     await assert.rejects(
       () => callGeminiJson(ENV, REQUEST),
-      error => error instanceof GeminiProviderError && error.code === 'gemini_request_rejected' && error.status === 400
+      error => error instanceof GeminiProviderError && error.code === 'gemini_request_rejected' && error.status === 400 && error.diagnostic === 'generate_content'
     );
-    assert.equal(calls, 1, 'invalid requests must fail closed instead of changing API transport');
+    assert.equal(calls, 2, 'a structured request rejected by both official transports must fail closed');
+  }
+
+  {
+    let calls = 0;
+    globalThis.fetch = async () => {
+      calls++;
+      return new Response(JSON.stringify({ error: { message: 'auth failed' } }), {
+        status: 403,
+        headers: { 'content-type': 'application/json' }
+      });
+    };
+
+    await assert.rejects(
+      () => callGeminiJson(ENV, REQUEST),
+      error => error instanceof GeminiProviderError && error.status === 403
+    );
+    assert.equal(calls, 1, 'authentication failures must never be retried through another transport');
   }
 } finally {
   globalThis.fetch = originalFetch;
 }
 
-console.log('Gemini current contract OK: Interactions stays primary, same-provider GenerateContent handles only transport/5xx failures, quota and invalid requests fail closed, and both paths preserve structured output constraints');
+console.log('Gemini current contract OK: Interactions stays primary, GenerateContent retries only Interactions compatibility/transport failures, quota and auth stop immediately, and both official transports preserve the same structured-output constraints');
