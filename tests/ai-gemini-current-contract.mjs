@@ -2,11 +2,14 @@ import assert from 'node:assert/strict';
 import {
   GEMINI_GENERATE_CONTENT_BASE,
   GEMINI_INTERACTIONS_URL,
+  GEMINI_READING_SCHEMA_REVISION,
   GeminiProviderError,
   callGeminiJson,
   extractGeminiText,
+  normalizeGeminiReadingOutput,
   normalizeGeminiSchema,
-  parseGeminiJson
+  parseGeminiJson,
+  selectGeminiResponseSchema
 } from '../worker/src/providers/gemini.mjs';
 
 const LOCAL_SCHEMA = Object.freeze({
@@ -53,6 +56,63 @@ await assert.rejects(
   error => error instanceof GeminiProviderError && error.code === 'gemini_incomplete_output'
 );
 
+const STRICT_READING_SCHEMA_FIXTURE = Object.freeze({
+  type: 'object',
+  additionalProperties: false,
+  required: ['title', 'questions'],
+  properties: {
+    title: { type: 'string', minLength: 4, maxLength: 100 },
+    questions: {
+      type: 'array', minItems: 5, maxItems: 5,
+      items: {
+        type: 'object', additionalProperties: false,
+        required: ['choices'],
+        properties: {
+          choices: {
+            type: 'array', minItems: 4, maxItems: 4,
+            items: {
+              type: 'object', additionalProperties: false,
+              required: ['text', 'reasonJa'],
+              properties: { text: { type: 'string' }, reasonJa: { type: 'string' } }
+            }
+          }
+        }
+      }
+    }
+  }
+});
+const remoteReadingSchema = selectGeminiResponseSchema(STRICT_READING_SCHEMA_FIXTURE, 'rise_english_reading');
+assert.equal(remoteReadingSchema.additionalProperties, undefined, 'Gemini authoring schema must omit nonessential strict constraints');
+assert.equal(remoteReadingSchema.properties.questions.minItems, undefined, 'exact question count stays in Rise local validation');
+assert.equal(remoteReadingSchema.properties.questions.items.properties.choices.items.type, 'string', 'remote schema flattens nested choice objects');
+assert.equal(remoteReadingSchema.properties.questions.items.properties.choiceReasonsJa.items.type, 'string');
+assert.equal(remoteReadingSchema.properties.questions.items.properties.choices.items.properties, undefined);
+assert.equal(GEMINI_READING_SCHEMA_REVISION, 'lightweight-v1');
+
+const lightweightReading = {
+  title: 'A Better Plan',
+  passage: 'Students compared two plans before choosing one.',
+  translationJa: '生徒たちは二つの計画を比較してから一つを選びました。',
+  readingType: 'argument',
+  topic: 'school planning',
+  difficulty: 7,
+  lessonJa: '根拠を比較して判断する。',
+  grammarTags: ['basic', 'past'],
+  glossary: [{ word: 'compare', meaningJa: '比較する' }],
+  questions: [{
+    type: 'detail',
+    stemJa: '最も適切なものを選びなさい。',
+    choices: ['Plan A', 'Plan B', 'Plan C', 'Plan D'],
+    choiceReasonsJa: ['本文と一致する。', '本文と一致しない。', '本文と一致しない。', '本文と一致しない。'],
+    answerIndex: 0,
+    explanationJa: '本文の比較結果を確認する。',
+    evidenceQuote: 'Students compared two plans'
+  }]
+};
+const canonicalReading = normalizeGeminiReadingOutput(lightweightReading);
+assert.deepEqual(canonicalReading.questions[0].choices[0], { text: 'Plan A', reasonJa: '本文と一致する。' });
+assert.equal('choiceReasonsJa' in canonicalReading.questions[0], false);
+
 function generateSuccess(parts = [{ text: JSON_TEXT }]) {
   return new Response(JSON.stringify({ candidates: [{ finishReason: 'STOP', content: { parts } }] }), { status: 200, headers: { 'content-type': 'application/json' } });
 }
@@ -80,6 +140,27 @@ try {
     assert.equal(captured.body.generation_config.thinking_level, 'medium');
     assert.equal(captured.body.generation_config.temperature, undefined);
     assert.equal(captured.body.store, false);
+  }
+
+  {
+    let captured = null;
+    globalThis.fetch = async (url, options) => {
+      captured = { url: String(url), body: JSON.parse(options.body) };
+      return new Response(JSON.stringify({ steps: [{ type: 'model_output', content: [{ type: 'text', text: JSON.stringify(lightweightReading) }] }] }), { status: 200, headers: { 'content-type': 'application/json' } });
+    };
+    const result = await callGeminiJson(ENV, {
+      input: 'Create an English entrance-exam reading set.',
+      schema: STRICT_READING_SCHEMA_FIXTURE,
+      schemaName: 'rise_english_reading',
+      maxOutputTokens: 10000,
+      thinkingLevel: 'low'
+    });
+    assert.equal(captured.url, GEMINI_INTERACTIONS_URL);
+    assert.equal(captured.body.response_format.schema.properties.questions.items.properties.choices.items.type, 'string');
+    assert.equal(captured.body.response_format.schema.properties.questions.items.properties.choices.items.properties, undefined);
+    assert.match(captured.body.input, /choiceReasonsJa/);
+    assert.equal(result.schemaRevision, 'lightweight-v1');
+    assert.deepEqual(result.output.questions[0].choices[0], { text: 'Plan A', reasonJa: '本文と一致する。' });
   }
 
   {
@@ -169,4 +250,4 @@ try {
   globalThis.fetch = originalFetch;
 }
 
-console.log('Gemini current contract OK: final JSON excludes thought parts, wrapped JSON is safely isolated before local validation, truncated output is detected, Interactions remains primary, and official same-provider fallback stays fail-closed');
+console.log('Gemini current contract OK: reading authoring uses a lightweight remote schema with strict Rise normalization, final JSON excludes thought parts, wrapped JSON is safely isolated, truncated output is detected, and same-provider fallback stays fail-closed');
