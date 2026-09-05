@@ -178,7 +178,7 @@ try {
     assert.equal(calls[1].headers['x-goog-api-key'], 'gemini-contract-secret');
     assert.equal(calls[1].body.contents[0].parts[0].text, REQUEST.input);
     assert.equal(calls[1].body.systemInstruction.parts[0].text.length > 0, true);
-    assert.equal(calls[1].body.generationConfig.responseFormat.text.mimeType, 'application/json');
+    assert.equal(calls[1].body.generationConfig.responseFormat.text.mimeType, 'APPLICATION_JSON');
     assert.equal(calls[1].body.generationConfig.responseFormat.text.schema.properties.word.minLength, undefined);
     assert.equal(calls[1].body.generationConfig.responseFormat.text.schema.properties.items.minItems, 2);
     assert.equal(calls[1].body.generationConfig.thinkingConfig.thinkingLevel, 'medium');
@@ -250,4 +250,4 @@ try {
   globalThis.fetch = originalFetch;
 }
 
-console.log('Gemini current contract OK: reading authoring uses a lightweight remote schema with strict Rise normalization, final JSON excludes thought parts, wrapped JSON is safely isolated, truncated output is detected, and same-provider fallback stays fail-closed');
+console.log('Gemini current contract OK: Interactions uses application/json while GenerateContent uses APPLICATION_JSON, reading authoring stays lightweight with strict Rise normalization, and same-provider fallback stays fail-closed');
