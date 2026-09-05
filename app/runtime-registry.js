@@ -3,6 +3,7 @@ const addScript=(id,src)=>{let s=document.getElementById(id);if(s)return s;s=doc
 const V2_PARTS=['./english-vocabulary-supplement-v2-data-1.js?v=20260905-1','./english-vocabulary-supplement-v2-data-2.js?v=20260905-1','./english-vocabulary-supplement-v2-data-3.js?v=20260905-1','./english-vocabulary-supplement-v2-data-4.js?v=20260905-1'];
 const loadEnglishVocabSupplements=()=>{
  addScript('aaEnglishVocabSupplementV1','./english-vocabulary-supplement-v1.js?v=20260905-2');
+ addScript('aaEnglishVocabPriorityV1','./english-vocabulary-priority-v1.js?v=20260905-1');
  V2_PARTS.forEach((src,index)=>addScript(`aaEnglishVocabSupplementV2Data${index+1}`,src));
  addScript('aaEnglishVocabSupplementV2','./english-vocabulary-supplement-v2.js?v=20260905-1');
  addScript('aaEnglishVocabQualityFixesV1','./english-vocabulary-quality-fixes-v1.js?v=20260905-1');
