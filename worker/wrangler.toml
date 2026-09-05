@@ -1,5 +1,5 @@
 name = "asahigaoka-aa-ai-reading"
-main = "src/entry.mjs"
+main = "src/entry-hardened.mjs"
 compatibility_date = "2026-08-01"
 workers_dev = true
 preview_urls = true
@@ -9,3 +9,5 @@ GEMINI_MODEL = "gemini-3.5-flash"
 GROQ_MODEL = "openai/gpt-oss-20b"
 ALLOWED_ORIGINS = "https://shingo20110505-oss.github.io"
 ALLOW_LOCALHOST = "false"
+ALLOW_NO_ORIGIN = "false"
+EXPOSE_AI_DIAGNOSTICS = "false"

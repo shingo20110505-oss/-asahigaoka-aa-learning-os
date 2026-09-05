@@ -18,13 +18,18 @@ const requiredFiles = [
   'tests/ai-reading-groq-contract.mjs',
   'tests/ai-subject-verifier-contract.mjs',
   'tests/ai-exam-platform-contract.mjs',
+  'tests/ai-api-hardening-contract.mjs',
   '.github/workflows/deploy-pages.yml',
   '.github/workflows/deploy-ai-worker.yml',
+  '.github/workflows/api-hardening-contract.yml',
   'worker/README.md',
   'worker/wrangler.toml',
   'worker/src/entry.mjs',
+  'worker/src/entry-hardened.mjs',
   'worker/src/exam-platform.mjs',
+  'worker/src/exam-platform-hardened.mjs',
   'worker/src/subject-verifier.mjs',
+  'worker/src/subject-verifier-hardened.mjs',
   'worker/src/providers/index.mjs',
   'worker/src/providers/gemini.mjs',
   'worker/src/providers/groq.mjs',
@@ -114,6 +119,7 @@ assert.match(workerReadme, /deterministic-plus-cross-provider-blind-answer-check
 assert.match(workerReadme, /gemini-authoring-subject-deterministic-groq-blind-agreement/);
 assert.match(workerReadme, /Verified Question Poolへの保存・再利用[^\n]*まだ/);
 
+// Legacy entry remains the proven English-reading implementation and compatibility source.
 const entry = read('worker/src/entry.mjs');
 assert.match(entry, /WORKER_VERSION = '1\.4\.0'/);
 assert.match(entry, /callGeminiJson/);
@@ -134,6 +140,20 @@ assert.match(entry, /groq_request_rejected/);
 assert.doesNotMatch(entry, /GROQ_API_KEY\s*=/);
 assert.doesNotMatch(entry, /GEMINI_API_KEY\s*=/);
 
+const hardenedEntry = read('worker/src/entry-hardened.mjs');
+assert.match(hardenedEntry, /HARDENING_VERSION = '2\.0\.0'/);
+assert.match(hardenedEntry, /generateHardenedVerifiedExamBatch/);
+assert.match(hardenedEntry, /verifyHardenedSubjectQuestion/);
+assert.match(hardenedEntry, /legacyHandleRequest/);
+assert.match(hardenedEntry, /strictVerifierFallbackDisabled:\s*true/);
+assert.match(hardenedEntry, /originRequiredForApi/);
+assert.match(hardenedEntry, /jsonContentTypeRequired:\s*true/);
+assert.match(hardenedEntry, /serverBurstProtection:\s*true/);
+assert.match(hardenedEntry, /MAX_BODY_BYTES = 24000/);
+assert.match(hardenedEntry, /MAX_INFLIGHT = 4/);
+assert.doesNotMatch(hardenedEntry, /GROQ_API_KEY\s*=/);
+assert.doesNotMatch(hardenedEntry, /GEMINI_API_KEY\s*=/);
+
 const examPlatform = read('worker/src/exam-platform.mjs');
 assert.match(examPlatform, /EXAM_PLATFORM_VERSION = '1\.0\.0'/);
 assert.match(examPlatform, /EXAM_SUBJECTS = Object\.freeze\(\['english', 'math', 'japanese', 'science', 'social'\]\)/);
@@ -149,6 +169,19 @@ assert.match(examPlatform, /gemini-authoring-subject-deterministic-groq-blind-ag
 assert.doesNotMatch(examPlatform, /GROQ_API_KEY\s*=/);
 assert.doesNotMatch(examPlatform, /GEMINI_API_KEY\s*=/);
 
+const hardenedExamPlatform = read('worker/src/exam-platform-hardened.mjs');
+assert.match(hardenedExamPlatform, /HARDENED_EXAM_PLATFORM_VERSION = '2\.0\.0'/);
+assert.match(hardenedExamPlatform, /HARDENED_EXAM_SUBJECTS = Object\.freeze\(\['english', 'math', 'japanese', 'science', 'social'\]\)/);
+assert.match(hardenedExamPlatform, /stableHardenedExamItemId/);
+assert.match(hardenedExamPlatform, /recentFingerprints/);
+assert.match(hardenedExamPlatform, /semanticSimilarity/);
+assert.match(hardenedExamPlatform, /rotateChoices/);
+assert.match(hardenedExamPlatform, /evidence_not_exact_context_quote/);
+assert.match(hardenedExamPlatform, /math_numeric_answer_not_recomputed_in_explanation/);
+assert.match(hardenedExamPlatform, /social_volatile_fact/);
+assert.match(hardenedExamPlatform, /allowJsonObjectFallback:\s*false/);
+assert.match(hardenedExamPlatform, /strict-groq-schema-no-fallback/);
+
 const subjectVerifier = read('worker/src/subject-verifier.mjs');
 assert.match(subjectVerifier, /SUBJECTS = Object\.freeze\(\['english', 'math', 'japanese', 'science', 'social'\]\)/);
 assert.match(subjectVerifier, /callGroqJson/);
@@ -157,6 +190,13 @@ assert.match(subjectVerifier, /deterministic-plus-cross-provider-blind-answer-ch
 assert.match(subjectVerifier, /confidenceThreshold\s*=\s*0\.8/);
 assert.doesNotMatch(subjectVerifier, /GROQ_API_KEY\s*=/);
 assert.doesNotMatch(subjectVerifier, /GEMINI_API_KEY\s*=/);
+
+const hardenedSubjectVerifier = read('worker/src/subject-verifier-hardened.mjs');
+assert.match(hardenedSubjectVerifier, /HARDENED_SUBJECT_VERIFIER_VERSION = '2\.0\.0'/);
+assert.match(hardenedSubjectVerifier, /allowJsonObjectFallback:\s*false/);
+assert.match(hardenedSubjectVerifier, /expectedAnswerIndex/);
+assert.match(hardenedSubjectVerifier, /subject_deterministic_rejected/);
+assert.match(hardenedSubjectVerifier, /confidence.*0\.9/);
 
 const providerIndex = read('worker/src/providers/index.mjs');
 assert.match(providerIndex, /callStructuredProvider/);
@@ -181,9 +221,11 @@ assert.match(groqProvider, /minLength/);
 assert.doesNotMatch(groqProvider, /GEMINI_API_KEY/);
 
 const wrangler = read('worker/wrangler.toml');
-assert.match(wrangler, /main\s*=\s*"src\/entry\.mjs"/);
+assert.match(wrangler, /main\s*=\s*"src\/entry-hardened\.mjs"/);
 assert.match(wrangler, /GEMINI_MODEL\s*=\s*"gemini-3\.5-flash"/);
 assert.match(wrangler, /GROQ_MODEL\s*=\s*"openai\/gpt-oss-20b"/);
+assert.match(wrangler, /ALLOW_NO_ORIGIN\s*=\s*"false"/);
+assert.match(wrangler, /EXPOSE_AI_DIAGNOSTICS\s*=\s*"false"/);
 
 const aiDeploy = read('.github/workflows/deploy-ai-worker.yml');
 assert.match(aiDeploy, /GEMINI_API_KEY:\s*\$\{\{\s*secrets\.GEMINI_API_KEY\s*\}\}/);
@@ -197,6 +239,13 @@ assert.match(aiDeploy, /EXPECTED_WORKER_VERSION='1\.4\.0'/);
 assert.match(aiDeploy, /\/v1\/verify/);
 assert.match(aiDeploy, /\/v1\/exam/);
 assert.match(aiDeploy, /gemini-authoring-subject-deterministic-groq-blind-agreement/);
+
+const hardeningWorkflow = read('.github/workflows/api-hardening-contract.yml');
+assert.match(hardeningWorkflow, /entry-hardened\.mjs/);
+assert.match(hardeningWorkflow, /exam-platform-hardened\.mjs/);
+assert.match(hardeningWorkflow, /subject-verifier-hardened\.mjs/);
+assert.match(hardeningWorkflow, /tests\/ai-api-hardening-contract\.mjs/);
+assert.match(hardeningWorkflow, /Legacy compatibility contracts/);
 
 const groqContract = read('tests/ai-reading-groq-contract.mjs');
 assert.match(groqContract, /Groq must not receive the author answer key/);
@@ -222,6 +271,13 @@ assert.match(examContract, /social_volatile_fact/);
 assert.match(examContract, /Gemini authoring and Groq blind agreement/);
 assert.match(examContract, /gemini-authoring-subject-deterministic-groq-blind-agreement/);
 
+const hardeningContract = read('tests/ai-api-hardening-contract.mjs');
+assert.match(hardeningContract, /strict verifier must not downgrade to json_object/);
+assert.match(hardeningContract, /stable id must ignore choice order/);
+assert.match(hardeningContract, /science confidence below 0\.90 must fail closed/);
+assert.match(hardeningContract, /origin/);
+assert.match(hardeningContract, /application\/json/);
+
 const pages = read('.github/workflows/deploy-pages.yml');
 assert.match(pages, /paths-ignore:[\s\S]*PUBLIC_VERIFY_STATUS\.txt[\s\S]*DEPLOY_STATUS\.txt/);
 assert.match(pages, /Verify actual public site/);
@@ -242,4 +298,4 @@ assert.match(storage, /LOCAL_BEST_KEY='aa-storage-best-v4'/);
 assert.match(storage, /DB_NAME='asahigaoka-aa-os-storage'/);
 assert.match(storage, /DB_STORE='snapshots'/);
 
-console.log('Management contract OK: canonical docs, deployment path, storage ownership, protected assets, and five-subject Phase 3 AI platform state are consistent');
+console.log('Management contract OK: canonical docs, deployment path, storage ownership, protected assets, and hardened five-subject AI platform state are consistent');
