@@ -1,0 +1,26 @@
+name: Audit Koten Kanbun normalization
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'kokugo-chronologia/koten-kanbun-normalization-v1.js'
+      - 'kokugo-chronologia/koten-kanbun-bank-*.js'
+      - 'kokugo-chronologia/exam-quality-v1.js'
+      - 'scripts/audit-koten-kanbun-normalization.mjs'
+      - '.github/workflows/audit-koten-kanbun-normalization.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Audit normalized 1700-card curriculum
+        run: node scripts/audit-koten-kanbun-normalization.mjs
