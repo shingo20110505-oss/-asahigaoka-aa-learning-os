@@ -58,10 +58,6 @@ try{
 }catch(error){japaneseDataError=String(error?.message||error)}
 const hasJapanese=value=>/[\u3040-\u30ff\u3400-\u9fff]/.test(String(value||''));
 const missingJapanese=japaneseRows.filter((row,index)=>!hasJapanese(directMeanings[String(row.id??index)]));
-const sourceHasExcludedTerm=japaneseRows.some(row=>String(row.term||'').normalize('NFKC')==='間に合う'&&String(row.reading||'').normalize('NFKC')==='まにあう');
-const policyExcludesKnownNonIdiom=!!qualityPolicy?.isExcluded?.({word:'間に合う',reading:'まにあう'})&&qualityPolicy?.exclusions?.has?.('間に合う|まにあう');
-check('Known non-idiom is excluded from Japanese quiz without deleting source data',
- sourceHasExcludedTerm&&policyExcludesKnownNonIdiom&&js.includes('const JA_QUIZ_EXCLUSIONS=jaQuality.exclusions')&&js.includes('merged.filter(x=>!jaQuality.isExcluded(x)'));
 check('Japanese source is exactly 15,000 rows',!japaneseDataError&&japaneseRows.length===15000,japaneseDataError||String(japaneseRows.length));
 check('All 15,000 Japanese rows have verified Japanese meanings',!japaneseDataError&&japaneseRows.length===15000&&missingJapanese.length===0,missingJapanese.slice(0,5).map(x=>x.term||x.id).join(', '));
 check('Unified runtime rejects unverified Japanese meanings',js.includes("if(!meaning||!hasJapanese(meaning))throw new Error('日本語意味が未確認:"));
@@ -71,6 +67,10 @@ let idiomError='';
 try{const sandbox={window:{}};vm.createContext(sandbox);vm.runInContext(read('idiom/idiom-bank.js'),sandbox,{filename:'idiom/idiom-bank.js'});idiomBank=sandbox.window.AA_IDIOM_BANK||[]}catch(error){idiomError=String(error?.message||error)}
 const curatedKeys=new Set();let curatedDuplicates=0;
 for(const x of idiomBank){const key=`${String(x.word||'').normalize('NFKC')}|${String(x.reading||'').normalize('NFKC')}`;if(curatedKeys.has(key))curatedDuplicates++;curatedKeys.add(key)}
+const curatedSourceKeepsExcludedTerm=idiomBank.some(x=>String(x.word||'').normalize('NFKC')==='間に合う'&&String(x.reading||'').normalize('NFKC')==='まにあう');
+const policyExcludesKnownNonIdiom=!!qualityPolicy?.isExcluded?.({word:'間に合う',reading:'まにあう'})&&qualityPolicy?.exclusions?.has?.('間に合う|まにあう');
+check('Known non-idiom is excluded from Japanese quiz without deleting source data',
+ curatedSourceKeepsExcludedTerm&&policyExcludesKnownNonIdiom&&js.includes('const JA_QUIZ_EXCLUSIONS=jaQuality.exclusions')&&js.includes('merged.filter(x=>!jaQuality.isExcluded(x)')));
 check('Curated idiom bank loads',!idiomError&&idiomBank.length>0,idiomError);
 check('Curated idiom bank has no word/reading duplicates',curatedDuplicates===0,String(curatedDuplicates));
 check('Curated ranks are A/B/C only',idiomBank.every(x=>['A','B','C'].includes(x.rank)));
@@ -85,5 +85,5 @@ check('Japanese native page remains linked',html.includes('href="../kokugo-chron
 check('Learning card describes current three-subject scope',!/英語・国語・理科・社会/.test(card)&&/英語・国語・社会/.test(card));
 check('Unified quiz runtime has no unsupported subject dispatcher',!/(science|理科)/.test(js));
 
-console.log(JSON.stringify({version:'1.2.0',checkedAt:new Date().toISOString(),checks,failures,japanese:{rows:japaneseRows.length,directMeanings:Object.keys(directMeanings).length,missingJapanese:missingJapanese.length,curated:idiomBank.length,curatedDuplicates,qualityPolicy:qualityPolicy?.version||'',sourceHasExcludedTerm,policyExcludesKnownNonIdiom}},null,2));
+console.log(JSON.stringify({version:'1.2.0',checkedAt:new Date().toISOString(),checks,failures,japanese:{rows:japaneseRows.length,directMeanings:Object.keys(directMeanings).length,missingJapanese:missingJapanese.length,curated:idiomBank.length,curatedDuplicates,qualityPolicy:qualityPolicy?.version||'',curatedSourceKeepsExcludedTerm,policyExcludesKnownNonIdiom}},null,2));
 if(failures.length)process.exit(1);
