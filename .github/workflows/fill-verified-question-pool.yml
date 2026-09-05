@@ -1,0 +1,121 @@
+name: Fill Verified Question Pool
+
+on:
+  schedule:
+    - cron: '15 7 * * *'   # 16:15 JST English
+    - cron: '45 7 * * *'   # 16:45 JST Math
+    - cron: '15 8 * * *'   # 17:15 JST Japanese
+    - cron: '45 8 * * *'   # 17:45 JST Science
+    - cron: '15 9 * * *'   # 18:15 JST Social
+  workflow_dispatch:
+    inputs:
+      subject:
+        description: Subject to refill
+        required: true
+        type: choice
+        options: [english, math, japanese, science, social]
+      max_per_run:
+        description: Maximum new verified items
+        required: false
+        default: '1'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: verified-question-pool-${{ github.event.schedule || inputs.subject || 'manual' }}
+  cancel-in-progress: false
+
+jobs:
+  refill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      RISE_AI_WORKER_URL: https://asahigaoka-aa-ai-reading.enjoyprog1222.workers.dev
+      AI_ACCESS_TOKEN: ${{ secrets.AI_ACCESS_TOKEN }}
+      PUBLIC_POOL_URL: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/verified-question-pool-v1.json
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Resolve subject and batch size
+        id: resolve
+        shell: bash
+        env:
+          SCHEDULE_EXPR: ${{ github.event.schedule }}
+          MANUAL_SUBJECT: ${{ inputs.subject }}
+          MANUAL_MAX: ${{ inputs.max_per_run }}
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            SUBJECT="$MANUAL_SUBJECT"
+            MAX_PER_RUN="${MANUAL_MAX:-1}"
+          else
+            case "$SCHEDULE_EXPR" in
+              '15 7 * * *') SUBJECT=english ;;
+              '45 7 * * *') SUBJECT=math ;;
+              '15 8 * * *') SUBJECT=japanese ;;
+              '45 8 * * *') SUBJECT=science ;;
+              '15 9 * * *') SUBJECT=social ;;
+              *) echo "Unknown schedule: $SCHEDULE_EXPR" >&2; exit 2 ;;
+            esac
+            MAX_PER_RUN=3
+          fi
+          echo "subject=$SUBJECT" >> "$GITHUB_OUTPUT"
+          echo "max_per_run=$MAX_PER_RUN" >> "$GITHUB_OUTPUT"
+
+      - name: Validate current pool
+        run: node scripts/validate-verified-question-pool.mjs
+
+      - name: Generate only independently verified questions
+        env:
+          RISE_SUBJECT: ${{ steps.resolve.outputs.subject }}
+          RISE_MAX_PER_RUN: ${{ steps.resolve.outputs.max_per_run }}
+        run: node scripts/fill-verified-question-pool.mjs
+
+      - name: Validate updated pool
+        run: node scripts/validate-verified-question-pool.mjs
+
+      - name: Commit verified pool only when changed
+        id: commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- verified-question-pool-v1.json; then
+            echo 'Pool unchanged; nothing to publish.'
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          EXPECTED_SHA256=$(sha256sum verified-question-pool-v1.json | awk '{print $1}')
+          git config user.name 'rise-verified-pool-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add verified-question-pool-v1.json
+          git commit -m "chore(pool): refill ${{ steps.resolve.outputs.subject }} verified questions"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          echo 'changed=true' >> "$GITHUB_OUTPUT"
+          echo "sha256=$EXPECTED_SHA256" >> "$GITHUB_OUTPUT"
+
+      - name: Verify exact pool published on GitHub Pages
+        if: steps.commit.outputs.changed == 'true'
+        shell: bash
+        env:
+          EXPECTED_SHA256: ${{ steps.commit.outputs.sha256 }}
+        run: |
+          set -euo pipefail
+          ok=0
+          for n in $(seq 1 36); do
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${PUBLIC_POOL_URL}?verify=${GITHUB_RUN_ID}-${n}" -o /tmp/public-pool.json; then
+              ACTUAL_SHA256=$(sha256sum /tmp/public-pool.json | awk '{print $1}')
+              if [ "$ACTUAL_SHA256" = "$EXPECTED_SHA256" ]; then
+                node scripts/validate-verified-question-pool.mjs /tmp/public-pool.json
+                ok=1
+                break
+              fi
+            fi
+            sleep 10
+          done
+          test "$ok" = 1
