@@ -6,6 +6,7 @@ const loadEnglishVocabSupplements=()=>{
  V2_PARTS.forEach((src,index)=>addScript(`aaEnglishVocabSupplementV2Data${index+1}`,src));
  addScript('aaEnglishVocabSupplementV2','./english-vocabulary-supplement-v2.js?v=20260905-1');
  addScript('aaEnglishVocabQualityFixesV1','./english-vocabulary-quality-fixes-v1.js?v=20260905-1');
+ addScript('aaEnglishVocabQuizQualityV1','./english-vocabulary-quiz-quality-v1.js?v=20260905-1');
 };
 if(document.readyState==='complete')loadEnglishVocabSupplements();else document.addEventListener('DOMContentLoaded',loadEnglishVocabSupplements,{once:true});
 })();
