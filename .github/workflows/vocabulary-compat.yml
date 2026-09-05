@@ -1,17 +1,34 @@
 name: Vocabulary Compatibility QA
 
 on:
+  pull_request:
+    paths:
+      - 'app/legacy/main-runtime.js'
+      - 'app/runtime-registry.js'
+      - 'english-vocabulary-supplement-v1.js'
+      - 'vocabulary-core/**'
+      - 'quiz/**'
+      - 'kokugo-chronologia/data.jsonl'
+      - 'kokugo-chronologia/jukugo-bank*.js'
+      - 'kokugo-chronologia/quiz-rank-select-v1.js'
+      - 'kokugo-chronologia/quiz-interaction-fix.js'
+      - 'scripts/validate-vocabulary-compat-v1.mjs'
+      - 'scripts/audit-language-vocab-unified-integration.mjs'
+      - '.github/workflows/vocabulary-compat.yml'
   push:
     branches: [main]
     paths:
       - 'app/legacy/main-runtime.js'
       - 'app/runtime-registry.js'
       - 'english-vocabulary-supplement-v1.js'
+      - 'vocabulary-core/**'
+      - 'quiz/**'
       - 'kokugo-chronologia/data.jsonl'
       - 'kokugo-chronologia/jukugo-bank*.js'
       - 'kokugo-chronologia/quiz-rank-select-v1.js'
       - 'kokugo-chronologia/quiz-interaction-fix.js'
       - 'scripts/validate-vocabulary-compat-v1.mjs'
+      - 'scripts/audit-language-vocab-unified-integration.mjs'
       - '.github/workflows/vocabulary-compat.yml'
   workflow_dispatch:
 
@@ -33,3 +50,5 @@ jobs:
           node-version: '22'
       - name: Validate English and Japanese vocabulary compatibility
         run: node scripts/validate-vocabulary-compat-v1.mjs
+      - name: Audit unified vocabulary integration
+        run: node scripts/audit-language-vocab-unified-integration.mjs
