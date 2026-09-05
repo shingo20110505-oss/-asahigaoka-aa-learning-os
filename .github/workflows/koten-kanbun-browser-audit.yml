@@ -1,0 +1,99 @@
+name: Koten Kanbun production browser audit
+
+on:
+  pull_request:
+    paths:
+      - 'kokugo-chronologia/koten-kanbun-bank-*.js'
+      - 'kokugo-chronologia/koten-kanbun-extension.js'
+      - 'kokugo-chronologia/koten-kanbun-normalization-v1.js'
+      - 'kokugo-chronologia/exam-quality-v1.js'
+      - 'kokugo-chronologia/index.html'
+      - 'scripts/audit-koten-kanbun-normalization.mjs'
+      - 'scripts/verify-koten-kanbun-public.mjs'
+      - '.github/workflows/audit-koten-kanbun-normalization.yml'
+      - '.github/workflows/koten-kanbun-browser-audit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'kokugo-chronologia/koten-kanbun-bank-*.js'
+      - 'kokugo-chronologia/koten-kanbun-extension.js'
+      - 'kokugo-chronologia/koten-kanbun-normalization-v1.js'
+      - 'kokugo-chronologia/exam-quality-v1.js'
+      - 'kokugo-chronologia/index.html'
+      - 'scripts/audit-koten-kanbun-normalization.mjs'
+      - 'scripts/verify-koten-kanbun-public.mjs'
+      - '.github/workflows/audit-koten-kanbun-normalization.yml'
+      - '.github/workflows/koten-kanbun-browser-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Audit normalized 1700-card curriculum
+        run: node scripts/audit-koten-kanbun-normalization.mjs
+      - name: Install Japanese font
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+          fc-cache -f
+      - name: Resolve Chrome
+        run: |
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
+          test -n "$CHROME"
+          echo "CHROME_PATH=$CHROME" >> "$GITHUB_ENV"
+      - name: Start PR test server
+        if: github.event_name == 'pull_request'
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/koten-kanbun-server.log 2>&1 &
+          echo $! >/tmp/koten-kanbun-server.pid
+          for n in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4173/kokugo-chronologia/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/koten-kanbun-server.log || true
+          exit 1
+      - name: Audit PR classical UI locally
+        if: github.event_name == 'pull_request'
+        env:
+          PAGE_URL: http://127.0.0.1:4173/
+          SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
+        run: node scripts/verify-koten-kanbun-public.mjs
+      - name: Wait for matching Pages release
+        if: github.event_name == 'push'
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          BASE='https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/'
+          for n in $(seq 1 48); do
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}release.json?koten=${SOURCE_SHA}-${n}" -o /tmp/koten-release.json; then
+              if node -e "const x=require('/tmp/koten-release.json');process.exit(x.sourceSha===process.env.SOURCE_SHA?0:1)"; then
+                exit 0
+              fi
+            fi
+            sleep 5
+          done
+          cat /tmp/koten-release.json 2>/dev/null || true
+          exit 1
+      - name: Audit deployed classical UI
+        if: github.event_name == 'push'
+        env:
+          PAGE_URL: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+          SOURCE_SHA: ${{ github.sha }}
+        run: node scripts/verify-koten-kanbun-public.mjs
+      - name: Upload visual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: koten-kanbun-browser-qa-${{ github.run_id }}
+          path: qa-artifacts/
+          if-no-files-found: warn
+          retention-days: 7
