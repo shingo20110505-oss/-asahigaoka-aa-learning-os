@@ -1,4 +1,5 @@
 import './validate-english-vocab-500.mjs';
+import './validate-english-vocab-quiz-quality.mjs';
 import fs from 'node:fs';import vm from 'node:vm';
 const read=p=>{if(!fs.existsSync(p))throw new Error(`missing vocab example asset: ${p}`);return fs.readFileSync(p,'utf8')};
 const bankFiles=['english-vocab-examples-basic1-v1.js','english-vocab-examples-basic2-v1.js','english-vocab-examples-basic3-v1.js','english-vocab-examples-phrases-v1.js','english-vocab-examples-residual-v1.js'];
@@ -19,4 +20,4 @@ const residual=bank.volunteer&&bank.intersection&&bank.prediction&&bank.proof&&b
 const context=read(contextFile);for(const needle of ['DATA.readingScenarios','READING_DISTRACTORS','reading-corpus-v1','japaneseSupportAdded','uncoveredCount'])if(!context.includes(needle))throw new Error(`reading-context example layer missing ${needle}`);
 const ui=read(uiFile);for(const needle of ['aa-vocab-example-audit','aa-example-details','@media(max-width:700px)','vocab-row-toggle-v1.js','data-aa-example-s'])if(!ui.includes(needle))throw new Error(`vocab example UI missing ${needle}`);
 const loader=read(loaderFile);for(const f of [...bankFiles,normalizeFile,applyFile,contextFile,uiFile])if(!loader.includes(`'${f}'`))throw new Error(`loader missing ${f}`);
-console.log(`vocab examples OK: effective500=PASS, quality-fixes=PASS, glossary=${Object.keys(glossary).length}, phrases=${Object.keys(phrases).length}, forms=${verbs.length}, bank=${Object.keys(bank).length}, residual/context=PASS, samples=advise/look-after PASS`);
+console.log(`vocab examples OK: effective500=PASS, quality-fixes=PASS, quiz-quality=PASS, glossary=${Object.keys(glossary).length}, phrases=${Object.keys(phrases).length}, forms=${verbs.length}, bank=${Object.keys(bank).length}, residual/context=PASS, samples=advise/look-after PASS`);
