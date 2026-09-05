@@ -36,6 +36,7 @@ jobs:
           node --check worker/src/providers/groq.mjs
           node --check worker/src/providers/index.mjs
           node tests/ai-provider-contract.mjs
+          node tests/ai-gemini-current-contract.mjs
           node tests/ai-reading-contract.mjs
           node tests/ai-reading-groq-contract.mjs
           node tests/ai-subject-verifier-contract.mjs
@@ -98,8 +99,6 @@ jobs:
           done
           test "$health_ready" = true
 
-          # Cloudflare propagation can briefly serve different Worker versions across requests.
-          # Require the authenticated status endpoint itself to report the expected hardening version before AI smoke tests.
           status_ready=false
           for attempt in $(seq 1 12); do
             STATUS_HTTP="$(curl -sS --max-time 30 -w '%{http_code}' \
