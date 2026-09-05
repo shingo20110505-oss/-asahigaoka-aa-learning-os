@@ -21,7 +21,7 @@ import { constantTimeEqual } from './index.mjs';
 
 const WORKER_VERSION = '1.4.0';
 const HARDENING_VERSION = '2.0.0';
-const GEMINI_TRANSPORT_REVISION = 'dual-transport-v3';
+const GEMINI_TRANSPORT_REVISION = 'dual-transport-v4-bounded';
 const DEFAULT_ORIGIN = 'https://shingo20110505-oss.github.io';
 const MAX_BODY_BYTES = 24000;
 const WINDOW_MS = 60000;
@@ -164,6 +164,7 @@ function mapError(error) {
     if (error.status === 429) return new ApiError('quota_exceeded', 'Gemini無料枠の上限に達しました。新規生成を停止し、検証済み問題を利用してください。', 429);
     if ([401, 403].includes(error.status)) return new ApiError('gemini_auth_failed', 'Gemini APIの認証を確認してください。', 502);
     if (error.code === 'provider_not_configured') return new ApiError('server_not_configured', 'Gemini APIがWorkerに設定されていません。', 503);
+    if (error.code === 'provider_timeout') return new ApiError('generation_timeout', 'Gemini生成が時間内に完了しませんでした。新規問題は採用しません。', 503, error.diagnostic);
     return new ApiError(error.code || 'gemini_failed', 'Geminiで生成できませんでした。', error.status >= 500 ? 503 : 502);
   }
   if (error instanceof GroqProviderError) {
@@ -172,6 +173,7 @@ function mapError(error) {
     if ([401, 403].includes(error.status)) return new ApiError('groq_auth_failed', 'Groq APIの認証を確認してください。', 502, diagnostic);
     if (error.code === 'provider_not_configured') return new ApiError('verification_unavailable', 'Groq独立検証が設定されていません。', 503, diagnostic);
     if (error.code === 'provider_refused') return new ApiError('verification_rejected', '独立検証モデルが検証を拒否しました。', 422, diagnostic);
+    if (error.code === 'provider_timeout') return new ApiError('verification_timeout', 'Groq独立検証が時間内に完了しなかったため問題を採用しません。', 503, diagnostic);
     if (error.code === 'groq_failed_generation' || error.code === 'groq_request_rejected' || error.code === 'groq_schema_mismatch') {
       return new ApiError('verification_strict_schema_failed', '独立検証のStrict JSON Schemaを満たせなかったため問題を採用しません。', 502, diagnostic);
     }
@@ -200,6 +202,7 @@ function compatibleStatus(env) {
       authorAnswerHiddenFromVerifier: true,
       strictVerifierFallbackDisabled: true,
       geminiSameProviderTransportFallback: true,
+      boundedProviderLatency: true,
       maxExamBatch: 10,
       originRequiredForApi: String(env.ALLOW_NO_ORIGIN || '').toLowerCase() !== 'true',
       jsonContentTypeRequired: true,
