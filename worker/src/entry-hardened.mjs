@@ -21,6 +21,7 @@ import { constantTimeEqual } from './index.mjs';
 
 const WORKER_VERSION = '1.4.0';
 const HARDENING_VERSION = '2.0.0';
+const GEMINI_TRANSPORT_REVISION = 'dual-transport-v1';
 const DEFAULT_ORIGIN = 'https://shingo20110505-oss.github.io';
 const MAX_BODY_BYTES = 24000;
 const WINDOW_MS = 60000;
@@ -198,6 +199,7 @@ function compatibleStatus(env) {
       quota429StopsGeneration: true,
       authorAnswerHiddenFromVerifier: true,
       strictVerifierFallbackDisabled: true,
+      geminiSameProviderTransportFallback: true,
       maxExamBatch: 10,
       originRequiredForApi: String(env.ALLOW_NO_ORIGIN || '').toLowerCase() !== 'true',
       jsonContentTypeRequired: true,
@@ -206,6 +208,7 @@ function compatibleStatus(env) {
     providers,
     version: WORKER_VERSION,
     hardeningVersion: HARDENING_VERSION,
+    geminiTransportRevision: GEMINI_TRANSPORT_REVISION,
     examPlatformVersion: HARDENED_EXAM_PLATFORM_VERSION,
     subjectVerifierVersion: HARDENED_SUBJECT_VERIFIER_VERSION
   };
@@ -223,7 +226,6 @@ async function processApiRequest(request, env, pathname) {
   try {
     if (pathname === '/v1/status') return jsonResponse(request, env, compatibleStatus(env), compatibleStatus(env).ready ? 200 : 503);
     if (pathname === '/v1/reading') {
-      // Keep the proven English-reading pipeline intact; security/rate checks are enforced here first.
       return legacyHandleRequest(request, env);
     }
     const input = await readJsonBody(request);
@@ -248,6 +250,7 @@ export async function handleHardenedRequest(request, env) {
       legacyService: 'aa-ai-reading',
       version: WORKER_VERSION,
       hardeningVersion: HARDENING_VERSION,
+      geminiTransportRevision: GEMINI_TRANSPORT_REVISION,
       examPlatformVersion: HARDENED_EXAM_PLATFORM_VERSION,
       subjectVerifierVersion: HARDENED_SUBJECT_VERIFIER_VERSION
     });
