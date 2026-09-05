@@ -164,6 +164,14 @@ async function sendGenerateContent(apiKey, { model, input, systemInstruction, re
   return payload;
 }
 
+function fallbackReason(primary) {
+  if (primary.transportError) return 'interactions_unreachable';
+  const status = Number(primary.response?.status || 0);
+  if (status === 400) return 'interactions_400';
+  if (status >= 500) return 'interactions_5xx';
+  return '';
+}
+
 export async function callGeminiJson(env, request) {
   const apiKey = String(env?.GEMINI_API_KEY || '');
   if (!apiKey) throw new GeminiProviderError(503, 'Gemini API key is not configured.', 'provider_not_configured');
@@ -193,8 +201,8 @@ export async function callGeminiJson(env, request) {
     };
   }
 
-  const canFallback = primary.transportError || Number(primary.response?.status || 0) >= 500;
-  if (!canFallback) throwGeminiHttpError(primary.response, primary.payload, 'interactions');
+  const reason = fallbackReason(primary);
+  if (!reason) throwGeminiHttpError(primary.response, primary.payload, 'interactions');
 
   const fallbackPayload = await sendGenerateContent(apiKey, args);
   return {
@@ -202,6 +210,6 @@ export async function callGeminiJson(env, request) {
     provider: 'gemini',
     model,
     mode: 'generate_content_fallback',
-    fallbackFrom: primary.transportError ? 'interactions_unreachable' : 'interactions_5xx'
+    fallbackFrom: reason
   };
 }
