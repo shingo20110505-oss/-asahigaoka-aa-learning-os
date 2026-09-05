@@ -21,7 +21,7 @@ import { constantTimeEqual } from './index.mjs';
 
 const WORKER_VERSION = '1.4.0';
 const HARDENING_VERSION = '2.0.0';
-const GEMINI_TRANSPORT_REVISION = 'dual-transport-v1';
+const GEMINI_TRANSPORT_REVISION = 'dual-transport-v2';
 const DEFAULT_ORIGIN = 'https://shingo20110505-oss.github.io';
 const MAX_BODY_BYTES = 24000;
 const WINDOW_MS = 60000;
