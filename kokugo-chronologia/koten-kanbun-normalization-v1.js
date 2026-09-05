@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const VERSION='1.0.1';
+const VERSION='1.0.2';
 const TAG_RE=/〔(重要語義|文脈語義|文法識別|和歌・読解|文学史確認)〕/g;
 const norm=v=>String(v??'').normalize('NFKC').trim().toLowerCase();
 const baseWord=v=>String(v??'').replace(TAG_RE,'').trim();
@@ -32,7 +32,8 @@ function installBrowser(api){
  const setText=(el,value)=>{if(el&&el.textContent!==value)el.textContent=value};
  const setTitle=(el,value)=>{if(el&&el.title!==value)el.title=value};
  const apply=()=>{const sec=document.querySelector('#kkSection');if(!sec)return false;const h=sec.querySelector('.kk-head h2');setText(h,'古文・漢文 学習カード1700');const note=sec.querySelector('.kk-head .note');setText(note,`古文・漢文の学習カード1,700件。原語を削除せず、基礎・重要語義・文脈語義・文法識別・和歌読解・文学史確認を学習フェーズとして区別します。実質概念 ${api.uniqueConcepts.toLocaleString()}件／再演習カード ${api.repeatCards.toLocaleString()}件。`);let box=sec.querySelector('#kkNormalizationSummary');if(!box){box=document.createElement('div');box.id='kkNormalizationSummary';box.className='note';box.style.cssText='margin:8px 0 10px;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:#f8fafc;line-height:1.65';sec.querySelector('.kk-summary')?.after(box)}setText(box,['古語','敬語','文法','和歌','表現技法','古典常識','漢文'].map(k=>`${k} ${api.counts[k]||0}`).join(' ・ '));for(const row of sec.querySelectorAll('.kk-row')){const cell=row.querySelector('.kk-rank');if(!cell)continue;const n=Number((cell.textContent.match(/\d+/)||[])[0]);const meta=api.byRank.get(n);if(!meta)continue;const tier=cell.querySelector('.kk-tier');setText(tier,meta.displayBand);const cat=row.querySelector('.kk-cat');if(cat){setText(cat,meta.domain);setTitle(cat,meta.phase+(meta.isRepeat?`／基礎カード #${meta.variantOf} の再演習`:''))}}return true};
- const tryInstall=()=>{const raw=window.AA_KOTEN_KANBUN_BANK;if(Array.isArray(raw)&&raw.length===1700){const built=normalizeBank(raw);window.RISE_KOTEN_KANBUN_NORMALIZED_V1=built;apply();const root=document.querySelector('#kkSection');if(root&&!root.dataset.kkNormalizeObserver){root.dataset.kkNormalizeObserver='1';new MutationObserver(()=>apply()).observe(root,{childList:true,subtree:true})}return true}return false};
+ let built=null;
+ const tryInstall=()=>{const raw=window.AA_KOTEN_KANBUN_BANK;if(!Array.isArray(raw)||raw.length!==1700)return false;if(!built){built=normalizeBank(raw);window.RISE_KOTEN_KANBUN_NORMALIZED_V1=built}const root=document.querySelector('#kkSection');if(!root)return false;apply();if(!root.dataset.kkNormalizeObserver){root.dataset.kkNormalizeObserver='1';new MutationObserver(()=>apply()).observe(root,{childList:true,subtree:true})}return true};
  if(tryInstall())return;let n=0;const t=setInterval(()=>{if(tryInstall()||++n>240)clearInterval(t)},50);
 }
 const api=Object.freeze({version:VERSION,baseWord,tagOf,displayBand,phase,domain,normalizeBank});
