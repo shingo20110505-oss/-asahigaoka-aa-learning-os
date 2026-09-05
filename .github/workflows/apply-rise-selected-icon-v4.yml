@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/apply-rise-selected-icon-v4.yml'
+      - 'icons/rise-icon-source-v4.svg'
 
 permissions:
   contents: write
@@ -121,4 +122,4 @@ jobs:
           git pull --rebase origin main
           git push origin HEAD:main
 
-# one-time trigger: selected-refined-R-20260905
+# trigger: refined-serif-R-v4b-20260905
