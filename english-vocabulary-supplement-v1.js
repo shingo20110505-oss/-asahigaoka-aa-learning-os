@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const VERSION='2026-09-05.1';
+const VERSION='2026-09-05.2';
 const RAW=`ability|能力、できること|n|entrance|Practice helps us develop the ability to solve new problems.
 accept|受け入れる|v|core|We should accept useful advice and think about it carefully.
 access|利用する権利、利用する|n/v|entrance|Students can access the information from the school library.
@@ -108,7 +108,76 @@ so that|〜するために、〜となるように|phrase|phrase|The labels were
 one of|〜のうちの一つ|phrase|phrase|Water is one of the most important natural resources.
 each other|お互いに|phrase|phrase|The group members checked each other's work.
 either A or B|AかBのどちらか|phrase|phrase|Choose either plan A or plan B and explain your reason.
-both A and B|AとBの両方|phrase|phrase|Both speed and accuracy are important in this task.`;
+both A and B|AとBの両方|phrase|phrase|Both speed and accuracy are important in this task.
+abstract|抽象的な|adj|entrance|The final paragraph gives a more abstract explanation of the idea.
+adequate|十分な、適切な|adj|entrance|The evidence was adequate to support the conclusion.
+apparent|明らかな、見かけ上の|adj|entrance|The apparent difference disappeared after the second test.
+assess|評価する、判断する|v|entrance|We need to assess the strength of the evidence.
+assumption|仮定、思い込み|n|entrance|The argument depends on an assumption that may not be true.
+background|背景、予備知識|n|entrance|The first paragraph provides background information for the discussion.
+capacity|能力、容量|n|entrance|The tank has enough capacity to hold the water.
+circumstance|状況、事情|n|entrance|The best choice may change depending on the circumstances.
+claim|主張、主張する|n/v|entrance|The writer makes a claim and then supports it with evidence.
+clarify|明確にする|v|entrance|The example helps clarify the writer's main point.
+coherent|筋の通った、一貫した|adj|entrance|A coherent explanation connects each idea logically.
+complex|複雑な|adj|entrance|The problem is more complex than it first appears.
+component|構成要素、部品|n|entrance|Each component of the system has a different function.
+consistent|一貫した、矛盾しない|adj|entrance|The result is consistent with the data in the graph.
+constitute|構成する、〜に当たる|v|entrance|These three factors constitute the main cause of the change.
+context|文脈、状況|n|entrance|The meaning of the word becomes clear from the context.
+contrary|反対の|adj|entrance|The second result was contrary to the original prediction.
+criterion|基準|n|entrance|Cost was one important criterion in the final decision.
+crucial|極めて重要な|adj|entrance|The final sentence contains a crucial clue to the answer.
+deduce|推論して導く|v|entrance|We can deduce the writer's position from these examples.
+derive|引き出す、由来する|v|entrance|The conclusion is derived from several pieces of evidence.
+distinguish|区別する|v|entrance|You must distinguish the writer's opinion from the quoted fact.
+diversity|多様性|n|entrance|The article discusses the value of cultural diversity.
+eliminate|取り除く、除外する|v|entrance|Eliminate choices that contradict the passage.
+emphasize|強調する|v|entrance|The writer emphasizes the importance of checking evidence.
+equivalent|同等の、等しい|adj|entrance|The two expressions are not completely equivalent in meaning.
+evaluate|評価する|v|entrance|Students should evaluate each source before using it.
+exclude|除外する|v|entrance|The survey excluded answers with missing information.
+framework|枠組み|n|entrance|The diagram provides a framework for understanding the process.
+furthermore|さらに、そのうえ|adv|entrance|The method is faster; furthermore, it uses less energy.
+imply|暗に示す|v|entrance|The writer does not say it directly but implies the same idea.
+indicate|示す|v|entrance|The data indicates a gradual change over time.
+infer|推論する|v|entrance|Readers must infer the answer from several clues.
+interpret|解釈する|v|entrance|Different readers may interpret the example in different ways.
+justify|正当化する、根拠を示す|v|entrance|Use evidence from the passage to justify your answer.
+logical|論理的な|adj|entrance|The writer presents the ideas in a logical order.
+mechanism|仕組み、機構|n|entrance|The passage explains the mechanism behind the change.
+meanwhile|その間に、一方で|adv|entrance|One group collected data; meanwhile, the other group interviewed residents.
+moreover|そのうえ、さらに|adv|entrance|The plan is inexpensive; moreover, it is easy to maintain.
+nevertheless|それにもかかわらず|adv|entrance|The first trial failed; nevertheless, the team continued the experiment.
+notion|考え、概念|n|entrance|The article challenges the common notion that faster is always better.
+objective|客観的な、目的|adj/n|entrance|An objective report separates facts from personal opinions.
+overall|全体的な|adj/adv|entrance|The overall trend is upward despite several small decreases.
+perspective|観点、見方|n|entrance|The issue looks different from another perspective.
+phenomenon|現象|n|entrance|The experiment was designed to explain this phenomenon.
+primary|主要な、第一の|adj|entrance|The primary purpose of the paragraph is to explain the cause.
+principle|原理、原則|n|entrance|The same principle can be applied to a different problem.
+proportion|割合、比率|n|entrance|The proportion of students choosing the second option increased.
+relevant|関連のある|adj|entrance|Choose only the information that is relevant to the question.
+significant|重要な、著しい|adj|entrance|There was a significant difference between the two groups.
+sufficient|十分な|adj|entrance|The passage does not provide sufficient evidence for that conclusion.
+whereas|〜であるのに対して|conj|entrance|The first plan saves time, whereas the second saves money.
+due to|〜が原因で、〜のために|phrase|phrase|The event was canceled due to heavy rain.
+lead to|〜につながる|phrase|phrase|A small error can lead to a very different conclusion.
+result in|〜という結果になる|phrase|phrase|The change may result in lower energy use.
+result from|〜から生じる|phrase|phrase|The difference may result from the way the data was collected.
+be based on|〜に基づいている|phrase|phrase|The conclusion should be based on evidence.
+be responsible for|〜の原因である、〜に責任がある|phrase|phrase|Several factors may be responsible for the change.
+be related to|〜に関連している|phrase|phrase|The problem is closely related to population growth.
+consist of|〜から成る|phrase|phrase|The test consists of three parts.
+deal with|〜を扱う、対処する|phrase|phrase|The article deals with a problem in the local community.
+refer to|〜を指す、参照する|phrase|phrase|In this passage, the word refers to the earlier example.
+focus on|〜に焦点を当てる|phrase|phrase|Focus on the relationship between the two paragraphs.
+take place|起こる、行われる|phrase|phrase|The meeting took place at the community center.
+in addition to|〜に加えて|phrase|phrase|In addition to cost, the team considered safety.
+in contrast|対照的に|phrase|phrase|The first group improved. In contrast, the second group showed little change.
+in terms of|〜の点で|phrase|phrase|The two plans are different in terms of cost.
+in other words|言い換えれば|phrase|phrase|In other words, the writer is asking us to compare the two ideas.
+be regarded as|〜とみなされる|phrase|phrase|The discovery is regarded as an important turning point.`;
 const rows=RAW.split(/\n/).map((line,index)=>{const [word,meaning,pos,level,example]=line.split('|');return{id:`en-sup-v1-${String(index+1).padStart(3,'0')}`,word,meaning,pos,level,example,cloze:example,family:[],syn:'',srsId:`v:en-sup-v1-${String(index+1).padStart(3,'0')}`,source:'rise-curated-supplement-v1',verified:true}});
 function install(){
  if(typeof DATA==='undefined'||!Array.isArray(DATA.vocab))return false;
