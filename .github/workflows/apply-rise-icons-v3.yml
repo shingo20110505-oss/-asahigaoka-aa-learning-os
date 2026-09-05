@@ -1,0 +1,133 @@
+name: Apply Rise app icons v3
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/apply-rise-icons-v3.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate opaque Rise v3 PNG icons
+        run: |
+          python3 -m pip install --disable-pip-version-check -q pillow
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageDraw, ImageFont
+          import hashlib
+
+          def make_icon(size, out):
+              im=Image.new('RGB',(size,size))
+              px=im.load()
+              c1=(70,92,190); c2=(203,112,182); bands=32
+              for y in range(size):
+                  for x in range(size):
+                      t=(x+y)/(2*(size-1))
+                      t=round(t*(bands-1))/(bands-1)
+                      px[x,y]=tuple(round(c1[i]*(1-t)+c2[i]*t) for i in range(3))
+              d=ImageDraw.Draw(im)
+              w=max(3,size//32)
+              d.arc([size*.17,size*.10,size*.82,size*.70],195,315,fill=(255,255,255),width=w)
+              font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',int(size*.52))
+              bbox=d.textbbox((0,0),'R',font=font)
+              tw,th=bbox[2]-bbox[0],bbox[3]-bbox[1]
+              x=int(size*.47-tw/2); y=int(size*.56-th/2-bbox[1])
+              d.text((x,y),'R',font=font,fill=(255,255,255))
+              lw=max(5,size//20)
+              p1=(int(size*.58),int(size*.40)); p2=(int(size*.78),int(size*.20))
+              d.line([p1,p2],fill=(255,255,255),width=lw)
+              d.line([p2,(int(size*.67),int(size*.20))],fill=(255,255,255),width=lw)
+              d.line([p2,(int(size*.78),int(size*.31))],fill=(255,255,255),width=lw)
+              Path(out).parent.mkdir(parents=True,exist_ok=True)
+              im.save(out,format='PNG',optimize=True,compress_level=9)
+
+          outputs=[
+            (180,'icons/rise-apple-touch-icon-180-20260905-v3.png'),
+            (192,'icons/rise-icon-192-20260905-v3.png'),
+            (512,'icons/rise-icon-512-20260905-v3.png'),
+            (512,'icons/rise-icon-maskable-512-20260905-v3.png'),
+          ]
+          for size,path in outputs:
+              make_icon(size,path)
+              im=Image.open(path)
+              if im.size!=(size,size) or im.mode!='RGB':
+                  raise SystemExit(f'Invalid icon {path}: {im.size} {im.mode}')
+              print(path, hashlib.sha256(Path(path).read_bytes()).hexdigest(), im.size, im.mode)
+          PY
+
+      - name: Point Rise to unique v3 icon URLs
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          p=Path('index.html'); s=p.read_text()
+          pairs=[
+            ('<link rel="manifest" href="./manifest.webmanifest?v=4.3.1">','<link rel="manifest" href="./manifest.webmanifest?v=4.3.2">'),
+            ('<link rel="apple-touch-icon" href="./icons/rise-apple-touch-icon-180-20260905.png">','<link rel="apple-touch-icon" sizes="180x180" href="./icons/rise-apple-touch-icon-180-20260905-v3.png">'),
+          ]
+          for old,new in pairs:
+              if old not in s: raise SystemExit('Missing index anchor: '+old)
+              s=s.replace(old,new,1)
+          p.write_text(s)
+
+          p=Path('manifest.webmanifest'); s=p.read_text()
+          pairs=[
+            ('"start_url": "./?rise=4.3.1"','"start_url": "./?rise=4.3.2"'),
+            ('./icons/rise-icon-192-20260905.png','./icons/rise-icon-192-20260905-v3.png'),
+            ('./icons/rise-icon-512-20260905.png','./icons/rise-icon-512-20260905-v3.png'),
+            ('./icons/rise-icon-maskable-512-20260905.png','./icons/rise-icon-maskable-512-20260905-v3.png'),
+          ]
+          for old,new in pairs:
+              if old not in s: raise SystemExit('Missing manifest anchor: '+old)
+              s=s.replace(old,new)
+          p.write_text(s)
+
+          p=Path('sw.js'); s=p.read_text()
+          old="unified-review-1.0.0-ja-vocab-quality-v2';"
+          new="unified-review-1.0.0-ja-vocab-quality-v2-rise-icons-v3';"
+          if old not in s: raise SystemExit('Missing SW version anchor')
+          s=s.replace(old,new,1)
+          old_icons="url('icons/rise-favicon.svg'),url('icons/apple-touch-icon-180.png'),url('icons/icon-192.png'),url('icons/icon-512.png')]"
+          new_icons="url('icons/rise-favicon.svg'),url('icons/apple-touch-icon-180.png'),url('icons/icon-192.png'),url('icons/icon-512.png'),url('icons/rise-apple-touch-icon-180-20260905-v3.png'),url('icons/rise-icon-192-20260905-v3.png'),url('icons/rise-icon-512-20260905-v3.png'),url('icons/rise-icon-maskable-512-20260905-v3.png')]"
+          if old_icons not in s: raise SystemExit('Missing SW icon anchor')
+          s=s.replace(old_icons,new_icons,1)
+          p.write_text(s)
+          PY
+
+      - name: Validate icon wiring
+        run: |
+          set -euo pipefail
+          python3 -m json.tool manifest.webmanifest >/dev/null
+          grep -q 'rise-apple-touch-icon-180-20260905-v3.png' index.html
+          grep -q 'rise-icon-192-20260905-v3.png' manifest.webmanifest
+          grep -q 'rise-icon-512-20260905-v3.png' manifest.webmanifest
+          grep -q 'rise-icon-maskable-512-20260905-v3.png' manifest.webmanifest
+          grep -q 'rise-icons-v3' sw.js
+          node --check sw.js
+
+      - name: Commit Rise v3 icons
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            icons/rise-apple-touch-icon-180-20260905-v3.png \
+            icons/rise-icon-192-20260905-v3.png \
+            icons/rise-icon-512-20260905-v3.png \
+            icons/rise-icon-maskable-512-20260905-v3.png \
+            index.html manifest.webmanifest sw.js
+          git diff --cached --quiet && { echo 'No icon changes to commit'; exit 0; }
+          git commit -m 'Apply Rise v3 app icons'
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+# one-time trigger: 2026-09-05-rise-icons-v3
