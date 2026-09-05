@@ -5,8 +5,17 @@
 (function (root, factory) {
   if (root && root.document && /\/quiz\/?$/.test(root.location?.pathname || '') && !root.__AA_JAPANESE_VOCAB_SUPPLEMENT__) {
     try {
-      if (root.document.readyState === 'loading') {
+      if (root.document.readyState === 'loading' && Array.isArray(root.AA_JUKUGO_BANK) && Array.isArray(root.AA_JUKUGO_ADVANCED)) {
+        let compatShim = root.document.getElementById('aaJukugoExtension');
+        const ownsShim = !compatShim;
+        if (ownsShim) {
+          compatShim = root.document.createElement('script');
+          compatShim.id = 'aaJukugoExtension';
+          compatShim.type = 'application/json';
+          root.document.head.appendChild(compatShim);
+        }
         root.document.write('<script src="../kokugo-chronologia/jukugo-bank-supplement-v1.js?v=20260905-2"></script>');
+        if (ownsShim) compatShim.remove();
       }
     } catch (_) {}
   }
