@@ -4,5 +4,5 @@ gemini-transport-revision=dual-transport-v4
 reading-schema-revision=lightweight-v1
 provider-deadlines=enabled
 quota-aware-production-gate=enabled
-reason=final-production-publish-and-live-verification
-source-merge=d5d9c418f5d2dadfd90b0a69961df1fbe90ff55d
+reason=final-production-publish-after-gate-syntax-fix
+source-merge=8d4628f6ce1b6e7d084288308681e4bb25e9a5af
