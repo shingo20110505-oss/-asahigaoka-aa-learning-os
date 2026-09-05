@@ -6,6 +6,7 @@ const legacy=read('app/legacy/main-runtime.js');
 const dataLine=legacy.split(/\r?\n/).find(line=>line.startsWith('const DATA = '));
 if(!dataLine)throw new Error('base DATA line not found');
 const base=JSON.parse(dataLine.slice('const DATA = '.length,-1)).vocab;
+if(!Array.isArray(base))throw new Error('base DATA.vocab must be an array');
 const scripts={
  v1:read('english-vocabulary-supplement-v1.js'),
  priority:read('english-vocabulary-priority-v1.js'),
