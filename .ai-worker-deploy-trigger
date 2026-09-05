@@ -1,6 +1,7 @@
 deploy-requested-version=1.4.0
 hardening-version=2.0.0
-gemini-transport-revision=dual-transport-v3
+gemini-transport-revision=dual-transport-v4
 reading-schema-revision=lightweight-v1
-reason=generatecontent-current-rest-structured-output
-source-merge=1bfd446a9b9b011b56fc7d532b76f3abbccbeeb9
+provider-deadlines=enabled
+reason=bound-gemini-groq-latency-inside-app-timeout
+source-merge=a874ea25306d19c18610351d936742cfd2a3b88f
