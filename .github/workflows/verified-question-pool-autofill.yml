@@ -33,7 +33,7 @@ jobs:
       WORKER_URL: https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev
       POOL_PATH: ai/verified-question-pool-v1.json
       TARGET_PER_SUBJECT: '60'
-      BATCH_SIZE: '2'
+      BATCH_SIZE: '1'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -95,9 +95,10 @@ jobs:
           const items = pool.subjects?.[process.env.SUBJECT] || [];
           const recent = items.slice(0, 60);
           const payload = {
+            schemaVersion: 1,
             subject: process.env.SUBJECT,
-            count: Number(process.env.BATCH_SIZE || 2),
-            difficulty: 8,
+            count: Number(process.env.BATCH_SIZE || 1),
+            difficulty: 7,
             skill: 'aichi.exam.application',
             focus: ['愛知県公立高校入試型', '応用', '資料活用'],
             recentQuestionIds: recent.map(x => x.id).filter(Boolean),
