@@ -4,8 +4,13 @@ on:
   pull_request:
     paths:
       - 'quiz/**'
+      - 'vocabulary-core/**'
+      - 'english-vocabulary-supplement-v1.js'
+      - 'v23-loader.js'
       - 'kokugo-chronologia/data.jsonl'
       - 'kokugo-chronologia/meaning-ja-overrides.js'
+      - 'kokugo-chronologia/jukugo-bank-supplement-v1.js'
+      - 'kokugo-chronologia/quiz-interaction-fix.js'
       - 'scripts/verify-unified-vocabulary-public.mjs'
       - 'scripts/audit-unified-vocabulary-quiz.mjs'
       - 'scripts/audit-infinite-course.mjs'
@@ -15,8 +20,13 @@ on:
     branches: [main]
     paths:
       - 'quiz/**'
+      - 'vocabulary-core/**'
+      - 'english-vocabulary-supplement-v1.js'
+      - 'v23-loader.js'
       - 'kokugo-chronologia/data.jsonl'
       - 'kokugo-chronologia/meaning-ja-overrides.js'
+      - 'kokugo-chronologia/jukugo-bank-supplement-v1.js'
+      - 'kokugo-chronologia/quiz-interaction-fix.js'
       - 'scripts/verify-unified-vocabulary-public.mjs'
       - 'scripts/audit-unified-vocabulary-quiz.mjs'
       - 'scripts/audit-infinite-course.mjs'
