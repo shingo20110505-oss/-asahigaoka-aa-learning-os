@@ -9,6 +9,7 @@ const loadEnglishVocabSupplements=()=>{
  addScript('aaEnglishVocabQualityFixesV1','./english-vocabulary-quality-fixes-v1.js?v=20260905-1');
  addScript('aaEnglishVocabQuizQualityV1','./english-vocabulary-quiz-quality-v1.js?v=20260905-1');
  addScript('aaReadingGlossTapFixV1','./app/learning/reading-gloss-tap-fix-v1.js?v=1.1.0');
+ addScript('aaEnglishReadingWordTapV1','./app/learning/english-reading-word-tap-v1.js?v=1.0.0');
 };
 if(document.readyState==='complete')loadEnglishVocabSupplements();else document.addEventListener('DOMContentLoaded',loadEnglishVocabSupplements,{once:true});
 })();
