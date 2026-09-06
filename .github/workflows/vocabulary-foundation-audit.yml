@@ -9,6 +9,7 @@ on:
       - 'scripts/audit-vocabulary-normalization.mjs'
       - 'scripts/audit-vocabulary-progress-adapters.mjs'
       - 'scripts/audit-unified-vocabulary-quiz.mjs'
+      - 'scripts/audit-kokugo-taxonomy-v1.mjs'
       - 'scripts/report-vocabulary-data-quality.mjs'
       - 'vocab.html'
       - 'vocab-wrong-quiz-v1.js'
@@ -30,6 +31,7 @@ on:
       - 'scripts/audit-vocabulary-normalization.mjs'
       - 'scripts/audit-vocabulary-progress-adapters.mjs'
       - 'scripts/audit-unified-vocabulary-quiz.mjs'
+      - 'scripts/audit-kokugo-taxonomy-v1.mjs'
       - 'scripts/report-vocabulary-data-quality.mjs'
       - 'vocab.html'
       - 'vocab-wrong-quiz-v1.js'
@@ -59,6 +61,16 @@ jobs:
         run: node scripts/audit-vocabulary-foundation.mjs
       - name: Report vocabulary data quality
         run: node scripts/report-vocabulary-data-quality.mjs
+      - name: Audit Japanese taxonomy integrity
+        run: node scripts/audit-kokugo-taxonomy-v1.mjs
+      - name: Upload Japanese taxonomy audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kokugo-taxonomy-audit
+          path: artifacts/kokugo-taxonomy-audit.json
+          if-no-files-found: warn
+          retention-days: 14
       - name: Audit native normalization readiness
         run: node scripts/audit-vocabulary-normalization.mjs
       - name: Audit read-only progress adapters
