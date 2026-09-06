@@ -1,4 +1,4 @@
-name: One-time append twice-a-week review
+name: Add twice a week review card
 
 on:
   push:
@@ -8,65 +8,77 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
-  append-review:
+  apply:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout latest main
         uses: actions/checkout@v4
         with:
-          ref: main
           fetch-depth: 0
 
-      - name: Verify source SHA and append exactly one review item
-        shell: bash
+      - name: Sync latest main
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git checkout -B main origin/main
+
+      - name: Append review card safely
         run: |
           set -euo pipefail
           expected_sha='ae8b8473ecd80f47c8acb7e1d04294948a3cf1ef'
           actual_sha="$(git hash-object review-bank-v1.js)"
-          echo "expected=$expected_sha"
-          echo "actual=$actual_sha"
           test "$actual_sha" = "$expected_sha"
 
-          python - <<'PY'
+          python3 - <<'PY'
           from pathlib import Path
+          import re
 
-          path = Path('review-bank-v1.js')
-          text = path.read_text(encoding='utf-8')
-          new_id = 'en-twice-a-week-20260906'
-          if new_id in text:
-              raise SystemExit(f'duplicate id: {new_id}')
+          bank_path = Path('review-bank-v1.js')
+          bank = bank_path.read_text(encoding='utf-8')
+          item_id = 'en-twice-a-week-20260906'
+          if item_id in bank:
+              raise SystemExit(f'duplicate id: {item_id}')
 
-          marker = "\n];\nfunction normalize"
-          if text.count(marker) != 1:
-              raise SystemExit('review-bank array closing marker not unique')
+          marker = '\n];\nfunction normalize'
+          assert bank.count(marker) == 1, 'review bank insertion marker not unique'
 
-          item = """
-  {id:'en-twice-a-week-20260906',subject:'英語',unit:'頻度・回数表現',title:'twice a week＝週2回',question:'「週2回」を自然な英語で言うと？ また、なぜその形になる？',answer:'twice a week。「twice＝2回」「a week＝1週間につき」なので、twice a week＝1週間につき2回＝週2回。',why:'回数は once＝1回、twice＝2回、three times＝3回 のように表します。そこに a week（1週間につき）をつけるので、once a week＝週1回、twice a week＝週2回、three times a week＝週3回となります。two times a week でも意味は通じますが、通常は twice a week のほうが自然です。',examples:['I study English twice a week.（私は週2回英語を勉強します）','once a week＝週1回','twice a week＝週2回','three times a week＝週3回'],memory:'once＝1回 / twice＝2回 / three times＝3回。a week＝1週間につき → twice a week＝週2回',tags:['英語','twice','twice a week','once','回数','頻度表現','週2回'],createdAt:'2026-09-06'},
-"""
-          text = text.replace(marker, item + marker, 1)
+          entry = "  {id:'en-twice-a-week-20260906',subject:'英語',unit:'頻度・回数表現',title:'twice a week＝週2回',question:'「週2回」を自然な英語で言うと？ また、なぜその形になる？',answer:'twice a week。「twice＝2回」「a week＝1週間につき」なので、twice a week＝1週間につき2回＝週2回。',why:'回数は once＝1回、twice＝2回、three times＝3回 のように表します。そこに a week（1週間につき）をつけるので、once a week＝週1回、twice a week＝週2回、three times a week＝週3回となります。two times a week でも意味は通じますが、通常は twice a week のほうが自然です。',examples:['I study English twice a week.（私は週2回英語を勉強します）','once a week＝週1回','twice a week＝週2回','three times a week＝週3回'],memory:'once＝1回 / twice＝2回 / three times＝3回。a week＝1週間につき → twice a week＝週2回',tags:['英語','twice','twice a week','once','回数','頻度表現','週2回'],createdAt:'2026-09-06'},"
+          bank = bank.replace(marker, '\n' + entry + '];\nfunction normalize', 1)
 
-          old_version = "window.AA_REVIEW_BANK_VERSION='1.0.62';"
-          new_version = "window.AA_REVIEW_BANK_VERSION='1.0.63';"
-          if text.count(old_version) != 1:
-              raise SystemExit('expected AA_REVIEW_BANK_VERSION 1.0.62 exactly once')
-          text = text.replace(old_version, new_version, 1)
+          m = re.search(r"window\.AA_REVIEW_BANK_VERSION='(\d+)\.(\d+)\.(\d+)'", bank)
+          assert m, 'AA_REVIEW_BANK_VERSION not found'
+          old_version = '.'.join(m.groups())
+          assert old_version == '1.0.62', old_version
+          new_version = f"{m.group(1)}.{m.group(2)}.{int(m.group(3)) + 1}"
+          bank = bank.replace(f"window.AA_REVIEW_BANK_VERSION='{old_version}'", f"window.AA_REVIEW_BANK_VERSION='{new_version}'", 1)
+          bank_path.write_text(bank, encoding='utf-8')
 
-          path.write_text(text, encoding='utf-8')
+          final = bank_path.read_text(encoding='utf-8')
+          assert final.count("id:'en-twice-a-week-20260906'") == 1
+          assert "window.AA_REVIEW_BANK_VERSION='1.0.63'" in final
           PY
 
           node --check review-bank-v1.js
-          grep -Fq "id:'en-twice-a-week-20260906'" review-bank-v1.js
-          grep -Fq "window.AA_REVIEW_BANK_VERSION='1.0.63';" review-bank-v1.js
+          node scripts/validate-review-bank.mjs
 
-      - name: Commit review-bank change and remove this one-time workflow
-        shell: bash
+      - name: Commit review update and remove one-time workflow
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add review-bank-v1.js
-          git rm .github/workflows/review-append-twice-a-week-20260906.yml
-          git commit -m 'Add twice a week to review bank'
+          rm -f .github/workflows/review-append-twice-a-week-20260906.yml
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m 'Add twice a week review card'
+          git pull --rebase origin main
           git push origin HEAD:main
+
+      - name: Dispatch production Pages verification
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api -X POST repos/${{ github.repository }}/actions/workflows/deploy-pages.yml/dispatches -f ref=main
