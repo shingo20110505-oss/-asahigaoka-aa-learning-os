@@ -21,6 +21,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: verified-question-pool-${{ github.event.schedule || inputs.subject || 'manual' }}
@@ -100,6 +101,16 @@ jobs:
           echo 'changed=true' >> "$GITHUB_OUTPUT"
           echo "sha256=$EXPECTED_SHA256" >> "$GITHUB_OUTPUT"
 
+      - name: Trigger Pages deployment for updated pool
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh workflow run deploy-pages.yml --ref main
+          echo 'PAGES_DEPLOY_DISPATCHED=PASS'
+
       - name: Verify exact pool published on GitHub Pages
         if: steps.commit.outputs.changed == 'true'
         shell: bash
@@ -133,4 +144,5 @@ jobs:
             echo "- Worker: shingo-20110505 production Worker"
             echo "- Policy: Gemini authoring + deterministic checks + Groq blind verification only"
             echo "- Paid fallback: disabled"
+            echo "- Pages publish: explicit workflow_dispatch after pool commit"
           } >> "$GITHUB_STEP_SUMMARY"
