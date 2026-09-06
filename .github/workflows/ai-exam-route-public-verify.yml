@@ -7,6 +7,7 @@ on:
       - 'ai-exam-route-v1.js'
       - 'app/runtime-registry.js'
       - 'worker/src/**'
+      - 'tests/ai-public-exam-route-contract.mjs'
       - '.github/workflows/ai-exam-route-public-verify.yml'
   workflow_dispatch:
 
@@ -30,14 +31,25 @@ jobs:
           set -euo pipefail
           node --check ai-exam-route-v1.js
           node --check app/runtime-registry.js
-          grep -Fq "./ai-exam-route-v1.js?v=1.0.0" app/runtime-registry.js
+          node --check worker/src/entry-hardened.mjs
+          node tests/ai-public-exam-route-contract.mjs
+          grep -Fq "./ai-exam-route-v1.js?v=1.1.0" app/runtime-registry.js
+          grep -Fq "const VERSION='1.1.0'" ai-exam-route-v1.js
           grep -Fq "'/v1/exam'" ai-exam-route-v1.js
+          grep -Fq "requiresFrontendToken:false" ai-exam-route-v1.js
           grep -Fq "usesLegacyFallback:false" ai-exam-route-v1.js
           grep -Fq "cacheFallback:'verified-ai-only'" ai-exam-route-v1.js
           grep -Fq "const SUBJECTS=new Set(['math','science','social'])" ai-exam-route-v1.js
           grep -Fq "stopImmediatePropagation" ai-exam-route-v1.js
           grep -Fq "quality?.verified!==true" ai-exam-route-v1.js
+          grep -Fq "const PUBLIC_API_ROUTES = new Set(['/v1/exam'])" worker/src/entry-hardened.mjs
+          grep -Fq "requiresAccessToken(pathname) && !(await authorized(request, env))" worker/src/entry-hardened.mjs
+          if grep -Eq "aa_ai_reading_config_v1|accessToken|AI接続設定|authorization:'Bearer" ai-exam-route-v1.js; then
+            echo 'Frontend AI exam route still contains a user bearer-token dependency.' >&2
+            exit 1
+          fi
           echo 'AI_EXAM_ROUTE_LOCAL=PASS'
+          echo 'AI_EXAM_FRONTEND_TOKENLESS=PASS'
 
       - name: Wait for this commit on GitHub Pages
         env:
@@ -68,8 +80,15 @@ jobs:
           curl -fsSL --connect-timeout 10 --max-time 30 "${BASE}app/runtime-registry.js?verify=${SOURCE_SHA}" -o /tmp/runtime-registry.js
           test "$(sha256sum ai-exam-route-v1.js | awk '{print $1}')" = "$(sha256sum /tmp/ai-exam-route-v1.js | awk '{print $1}')"
           test "$(sha256sum app/runtime-registry.js | awk '{print $1}')" = "$(sha256sum /tmp/runtime-registry.js | awk '{print $1}')"
+          grep -Fq "const VERSION='1.1.0'" /tmp/ai-exam-route-v1.js
           grep -Fq "'/v1/exam'" /tmp/ai-exam-route-v1.js
+          grep -Fq "requiresFrontendToken:false" /tmp/ai-exam-route-v1.js
           grep -Fq "usesLegacyFallback:false" /tmp/ai-exam-route-v1.js
           grep -Fq "cacheFallback:'verified-ai-only'" /tmp/ai-exam-route-v1.js
-          grep -Fq "./ai-exam-route-v1.js?v=1.0.0" /tmp/runtime-registry.js
+          grep -Fq "./ai-exam-route-v1.js?v=1.1.0" /tmp/runtime-registry.js
+          if grep -Eq "aa_ai_reading_config_v1|accessToken|AI接続設定|authorization:'Bearer" /tmp/ai-exam-route-v1.js; then
+            echo 'Published frontend route still contains a bearer-token dependency.' >&2
+            exit 1
+          fi
           echo 'AI_EXAM_ROUTE_PUBLIC=PASS'
+          echo 'AI_EXAM_PUBLIC_FRONTEND_TOKENLESS=PASS'
