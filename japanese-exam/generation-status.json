@@ -1,11 +1,13 @@
 {
   "schemaVersion": 1,
-  "state": "scheduled_backend",
-  "attempted": 0,
+  "day": "2026-09-06",
+  "attempted": 1,
   "added": 0,
+  "state": "quota",
   "mode": "scheduled_backend",
   "generationTransport": "generateContent-v1beta",
   "maxCandidatesPerDay": 1,
   "maxCallsPerCandidate": 6,
-  "note": "GitHub Actions backendで1日1候補を生成し、Rise構造検査とGroq独立検証を通過した教材だけcatalogへ追加する。"
+  "httpStatus": 429,
+  "reason": "provider_or_validation_error"
 }
