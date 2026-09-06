@@ -1,40 +1,42 @@
-/* Rise feedback contrast fix v1.0.0
-   Keeps legacy answer feedback readable inside the Rise v4 dark glass skin. */
-html[data-rise-skin="v4"][data-rise-route="study"] .feedback{
+/* Rise feedback contrast fix v1.0.1
+   Keeps legacy answer feedback readable inside the Rise v4 dark glass skin.
+   Deliberately route-agnostic because entrance-exam questions live under the public
+   "subjects" route while other exercises may render under different internal routes. */
+html[data-rise-skin="v4"] #app main .feedback{
   color:#f8f9ff;
   background:linear-gradient(145deg,rgba(24,43,78,.92),rgba(13,30,59,.88));
   border-color:rgba(255,255,255,.16);
   box-shadow:0 18px 42px rgba(4,13,34,.18),inset 0 1px 0 rgba(255,255,255,.06);
 }
-html[data-rise-skin="v4"][data-rise-route="study"] .feedback.good{
+html[data-rise-skin="v4"] #app main .feedback.good{
   color:#f5fffb;
   background:linear-gradient(145deg,rgba(25,91,79,.72),rgba(18,54,66,.88));
   border-color:rgba(120,232,198,.34);
 }
-html[data-rise-skin="v4"][data-rise-route="study"] .feedback.bad{
+html[data-rise-skin="v4"] #app main .feedback.bad{
   color:#fff7f8;
   background:linear-gradient(145deg,rgba(121,43,64,.72),rgba(58,31,57,.90));
   border-color:rgba(255,153,165,.38);
 }
-html[data-rise-skin="v4"][data-rise-route="study"] .feedback h4,
-html[data-rise-skin="v4"][data-rise-route="study"] .feedback p,
-html[data-rise-skin="v4"][data-rise-route="study"] .feedback b,
-html[data-rise-skin="v4"][data-rise-route="study"] .feedback .explainAll,
-html[data-rise-skin="v4"][data-rise-route="study"] .feedback .explainChoice{
+html[data-rise-skin="v4"] #app main .feedback h4,
+html[data-rise-skin="v4"] #app main .feedback p,
+html[data-rise-skin="v4"] #app main .feedback b,
+html[data-rise-skin="v4"] #app main .feedback .explainAll,
+html[data-rise-skin="v4"] #app main .feedback .explainChoice{
   color:inherit;
 }
-html[data-rise-skin="v4"][data-rise-route="study"] .feedback .tiny{
+html[data-rise-skin="v4"] #app main .feedback .tiny{
   color:rgba(245,248,255,.76);
 }
-html[data-rise-skin="v4"][data-rise-route="study"] .feedback .evidence{
+html[data-rise-skin="v4"] #app main .feedback .evidence{
   color:#f8f9ff;
   background:rgba(7,22,48,.50);
   border:1px solid rgba(255,255,255,.10);
   border-left:4px solid #9ebcff;
 }
-html[data-rise-skin="v4"][data-rise-route="study"] .feedback .explainAll{
+html[data-rise-skin="v4"] #app main .feedback .explainAll{
   border-top-color:rgba(255,255,255,.13);
 }
-html[data-rise-skin="v4"][data-rise-route="study"] .feedback .explainChoice{
+html[data-rise-skin="v4"] #app main .feedback .explainChoice{
   border-bottom-color:rgba(255,255,255,.12);
 }
