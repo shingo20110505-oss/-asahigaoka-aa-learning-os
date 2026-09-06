@@ -1,6 +1,6 @@
 'use strict';
-const CACHE='rise-exam-formula-lab-1.2.0';
-const ASSETS=['./','./index.html','./formulas.js','./practice.js'];
+const CACHE='rise-exam-formula-lab-1.3.0';
+const ASSETS=['./','./index.html','./formulas.js','./practice.js','./visuals.js'];
 self.addEventListener('install',event=>{event.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(ASSETS);await self.skipWaiting()})())});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('rise-exam-formula-lab-')&&k!==CACHE).map(k=>caches.delete(k)));await self.clients.claim()})())});
 self.addEventListener('fetch',event=>{const req=event.request;if(req.method!=='GET')return;const u=new URL(req.url);if(u.origin!==self.location.origin||!u.href.startsWith(self.registration.scope))return;if(req.mode==='navigate'){event.respondWith((async()=>{const cache=await caches.open(CACHE);try{const fresh=await fetch(req,{cache:'no-store'});if(fresh&&fresh.ok)await cache.put('./index.html',fresh.clone());return fresh}catch(_){return (await cache.match(req,{ignoreSearch:true}))||(await cache.match('./index.html'))}})());return}event.respondWith((async()=>{const cache=await caches.open(CACHE);const cached=await cache.match(req,{ignoreSearch:true});const refresh=fetch(req,{cache:'no-cache'}).then(async r=>{if(r&&r.ok)await cache.put(req,r.clone());return r}).catch(()=>null);if(cached){event.waitUntil(refresh);return cached}return (await refresh)||new Response('',{status:504,statusText:'Offline'})})())});
