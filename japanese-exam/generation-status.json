@@ -1,9 +1,11 @@
 {
   "schemaVersion": 1,
-  "state": "disabled_pending_free_tier_confirmation",
+  "state": "scheduled_backend",
   "attempted": 0,
   "added": 0,
+  "mode": "scheduled_backend",
+  "generationTransport": "generateContent-v1beta",
   "maxCandidatesPerDay": 1,
-  "maxCallsPerCandidate": 3,
-  "note": "組み込み2セットは利用可能。追加のAPI生成は無料プロジェクトの確認まで実行しない。"
+  "maxCallsPerCandidate": 6,
+  "note": "GitHub Actions backendで1日1候補を生成し、Rise構造検査とGroq独立検証を通過した教材だけcatalogへ追加する。"
 }
