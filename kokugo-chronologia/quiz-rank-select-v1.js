@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const VERSION='2026-09-05.3';
+const VERSION='2026-09-06.1-category-integrity';
 const FULL_DATA_URL='./data.jsonl?v=quiz15000-20260905-quality2';
 const STATE_KEY='kokugoChronologiaStateV2';
 const WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1';
@@ -37,9 +37,11 @@ async function loadFull15000(){
  full15000=rows.map((x,i)=>{
    const meaning=directMeaning(x.id??i);
    if(!meaning||!hasJapanese(meaning))throw new Error('日本語意味が未確認: '+String(x.term||x.id||i));
+   const type=String(x.type||'');
+   if(!['yoji','idiom','four'].includes(type))throw new Error('15,000語データのカテゴリ不正: '+String(x.term||x.id||i)+' / '+type);
    return{
      id:'quiz-full-'+String(x.id??i),word:String(x.term||''),reading:String(x.reading||''),meaning,
-     type:['yoji','idiom','four'].includes(x.type)?x.type:'four',rank:'C',source:'full15000',quality:'dictionary-supplement'
+     type,rank:'C',source:'full15000',quality:'dictionary-supplement'
    };
  });
  for(const x of full15000){const k=entryKey(x);if(!x.word||seen.has(k))throw new Error('15,000語データに空欄または重複: '+k);seen.add(k)}
@@ -120,8 +122,9 @@ async function install(){
  if(document.getElementById('quizRank'))return;
  body.innerHTML='<div class="quiz-summary">15,000語データをクイズに読み込み中…</div>';
  try{await loadFull15000()}catch(err){body.innerHTML='<div class="quiz-summary">15,000語データを読み込めませんでした：'+esc(err?.message||err)+'</div>';return}
+ const selectedKind=['all','yoji','idiom','four'].includes(kindEl.value)?kindEl.value:'all';
  if(![...kindEl.options].some(o=>o.value==='four'))kindEl.insertAdjacentHTML('beforeend','<option value="four">四字語（補助）</option>');
- kindEl.value='all';
+ kindEl.value=selectedKind;
 
  const rankEl=document.createElement('select');rankEl.id='quizRank';rankEl.setAttribute('aria-label','出題ランク');rankEl.innerHTML='<option value="all" selected>全ランク</option><option value="A">A 最優先</option><option value="B">B 重要</option><option value="C">C 発展</option>';modeEl.insertAdjacentElement('afterend',rankEl);
  const config=rankEl.closest('.quiz-config');if(config)config.classList.add('aa-quiz-rank-ready');
@@ -137,7 +140,7 @@ async function install(){
  function markReview(item){const s=getState();s[item.id]='review';saveState(s)}
  function finishQuiz(){const remain=updateWrongCount(),title=qWrongOnly?'間違えた問題の解き直し終了':`${qset.length}問終了`,noteText=qWrongOnly?`正解した語は誤答リストから外しました。現在この範囲に残っている誤答は ${remain} 問です。`:`15,000語データ接続済み。${rankText(qRank)}・${qKind==='all'?'全部':qKind}は一巡するまで同じ語を再出題しません。`,label=qWrongOnly?'残りを続ける':'もう10問';body.innerHTML=`<div class="quiz-summary"><div>${title}</div><b>${qscore} / ${qset.length}</b><div class="note">${esc(noteText)}</div><button class="quiz-next" id="quizRestart">${label}</button></div>`;$('#quizRestart').onclick=qWrongOnly?startWrongQuiz:startQuiz}
  function showQ(){qAnswered=false;if(qi>=qset.length){finishQuiz();return}const q=qset[qi];body.innerHTML=`<div class="quiz-meta"><span>${qi+1} / ${qset.length}${qWrongOnly?'（解き直し）':''} ・ ${esc(rankText(qRank))}</span><span>正解 ${qscore}</span></div><div class="quiz-q">${esc(q.prompt)}</div><div class="quiz-hint">${esc(q.hint)}</div><div class="quiz-opts">${q.options.map(o=>`<button class="quiz-opt" data-answer="${esc(o)}">${esc(o)}</button>`).join('')}</div><div class="quiz-result" id="quizResult"></div><button class="quiz-next" id="quizNext" style="display:none">次へ</button>`;body.querySelectorAll('.quiz-opt').forEach(btn=>btn.onclick=()=>{if(qAnswered)return;qAnswered=true;const val=btn.dataset.answer,ok=val===q.answer;if(ok){qscore++;if(qWrongOnly)removeWrong(q.item)}else{addWrong(q.item);markReview(q.item)}updateWrongCount();body.querySelectorAll('.quiz-opt').forEach(b=>{if(b.dataset.answer===q.answer)b.classList.add('correct');else if(b===btn&&!ok)b.classList.add('wrong');b.disabled=true});$('#quizResult').textContent=ok?(qWrongOnly?'正解！ 誤答リストから外しました。':'正解！'):'正解：'+q.answer;$('#quizNext').style.display='inline-block'});$('#quizNext').onclick=()=>{qi++;showQ()}}
- function startQuiz(){const kind=kindEl.value,mode=modeEl.value,rank=rankEl.value,pool=quizPool.filter(x=>matchesFilter(x,kind,rank));qWrongOnly=false;qKind=kind;qMode=mode;qRank=rank;if(pool.length<4){body.innerHTML='<div class="quiz-summary">この条件では出題できる語が不足しています。</div>';return}qset=makeNoRepeatSet(pool,kind,rank,mode);qi=0;qscore=0;if(!qset.length){body.innerHTML='<div class="quiz-summary">この条件では四択を作れませんでした。</div>';return}showQ()}
+ function startQuiz(){const kind=kindEl.value,mode=modeEl.value,rank=rankEl.value,pool=quizPool.filter(x=>matchesFilter(x,kind,rank));if(kind!=='all'&&pool.some(x=>x.type!==kind)){body.innerHTML='<div class="quiz-summary">カテゴリ整合性エラーを検出しました。出題を停止しました。</div>';return}qWrongOnly=false;qKind=kind;qMode=mode;qRank=rank;if(pool.length<4){body.innerHTML='<div class="quiz-summary">この条件では出題できる語が不足しています。</div>';return}qset=makeNoRepeatSet(pool,kind,rank,mode);qi=0;qscore=0;if(!qset.length){body.innerHTML='<div class="quiz-summary">この条件では四択を作れませんでした。</div>';return}showQ()}
  function startWrongQuiz(){const kind=kindEl.value,mode=modeEl.value,rank=rankEl.value,pool=quizPool.filter(x=>matchesFilter(x,kind,rank)),saved=loadWrong().filter(x=>matchesFilter(x,kind,rank)),wrong=saved.map(x=>liveByKey.get(wrongKey(x))||x).filter(x=>x.word&&x.meaning);qWrongOnly=true;qKind=kind;qMode=mode;qRank=rank;if(!wrong.length){body.innerHTML='<div class="quiz-summary">この範囲に間違えた問題はありません。</div>';updateWrongCount();return}if(pool.length<4){body.innerHTML='<div class="quiz-summary">このランクでは四択の選択肢を作る語が不足しています。</div>';return}qset=makeSet(wrong,mode,pool);qi=0;qscore=0;if(!qset.length){body.innerHTML='<div class="quiz-summary">この条件では四択を作れませんでした。</div>';return}showQ()}
 
  startEl.onclick=startQuiz;wrongStartEl.onclick=startWrongQuiz;
