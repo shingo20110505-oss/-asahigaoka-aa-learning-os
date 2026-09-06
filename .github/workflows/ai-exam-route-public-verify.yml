@@ -6,6 +6,7 @@ on:
     paths:
       - 'ai-exam-route-v1.js'
       - 'app/runtime-registry.js'
+      - 'verified-question-pool-v1.json'
       - 'worker/src/**'
       - 'tests/ai-public-exam-route-contract.mjs'
       - '.github/workflows/ai-exam-route-public-verify.yml'
@@ -32,24 +33,34 @@ jobs:
           node --check ai-exam-route-v1.js
           node --check app/runtime-registry.js
           node --check worker/src/entry-hardened.mjs
+          node scripts/validate-verified-question-pool.mjs
           node tests/ai-public-exam-route-contract.mjs
-          grep -Fq "./ai-exam-route-v1.js?v=1.1.0" app/runtime-registry.js
-          grep -Fq "const VERSION='1.1.0'" ai-exam-route-v1.js
-          grep -Fq "'/v1/exam'" ai-exam-route-v1.js
+          grep -Fq "./ai-exam-route-v1.js?v=1.2.0" app/runtime-registry.js
+          grep -Fq "const VERSION='1.2.0'" ai-exam-route-v1.js
+          grep -Fq "const PUBLIC_POOL_PATH='./verified-question-pool-v1.json'" ai-exam-route-v1.js
+          grep -Fq "const POOL_TIMEOUT_MS=8000" ai-exam-route-v1.js
+          grep -Fq "liveGenerationOnUserAction:false" ai-exam-route-v1.js
+          grep -Fq "deliveryMode:'verified-pool-first'" ai-exam-route-v1.js
           grep -Fq "requiresFrontendToken:false" ai-exam-route-v1.js
           grep -Fq "usesLegacyFallback:false" ai-exam-route-v1.js
           grep -Fq "cacheFallback:'verified-ai-only'" ai-exam-route-v1.js
           grep -Fq "const SUBJECTS=new Set(['math','science','social'])" ai-exam-route-v1.js
           grep -Fq "stopImmediatePropagation" ai-exam-route-v1.js
-          grep -Fq "quality?.verified!==true" ai-exam-route-v1.js
+          grep -Fq "quality?.verified!==true" ai-exam-route-v1.js || true
+          grep -Fq "item.quality?.verified!==true" ai-exam-route-v1.js
           grep -Fq "const PUBLIC_API_ROUTES = new Set(['/v1/exam'])" worker/src/entry-hardened.mjs
           grep -Fq "requiresAccessToken(pathname) && !(await authorized(request, env))" worker/src/entry-hardened.mjs
           if grep -Eq "aa_ai_reading_config_v1|accessToken|AI接続設定|authorization:'Bearer" ai-exam-route-v1.js; then
             echo 'Frontend AI exam route still contains a user bearer-token dependency.' >&2
             exit 1
           fi
+          if grep -Eq "postExam\(|fetch\(DEFAULT_ENDPOINT\+ENDPOINT_PATH" ai-exam-route-v1.js; then
+            echo 'Entrance route still waits for live AI generation on user action.' >&2
+            exit 1
+          fi
           echo 'AI_EXAM_ROUTE_LOCAL=PASS'
-          echo 'AI_EXAM_FRONTEND_TOKENLESS=PASS'
+          echo 'AI_EXAM_VERIFIED_POOL_FIRST=PASS'
+          echo 'AI_EXAM_NO_LIVE_WAIT=PASS'
 
       - name: Wait for this commit on GitHub Pages
         env:
@@ -78,17 +89,26 @@ jobs:
           set -euo pipefail
           curl -fsSL --connect-timeout 10 --max-time 30 "${BASE}ai-exam-route-v1.js?verify=${SOURCE_SHA}" -o /tmp/ai-exam-route-v1.js
           curl -fsSL --connect-timeout 10 --max-time 30 "${BASE}app/runtime-registry.js?verify=${SOURCE_SHA}" -o /tmp/runtime-registry.js
+          curl -fsSL --connect-timeout 10 --max-time 30 "${BASE}verified-question-pool-v1.json?verify=${SOURCE_SHA}" -o /tmp/verified-question-pool-v1.json
           test "$(sha256sum ai-exam-route-v1.js | awk '{print $1}')" = "$(sha256sum /tmp/ai-exam-route-v1.js | awk '{print $1}')"
           test "$(sha256sum app/runtime-registry.js | awk '{print $1}')" = "$(sha256sum /tmp/runtime-registry.js | awk '{print $1}')"
-          grep -Fq "const VERSION='1.1.0'" /tmp/ai-exam-route-v1.js
-          grep -Fq "'/v1/exam'" /tmp/ai-exam-route-v1.js
+          node scripts/validate-verified-question-pool.mjs /tmp/verified-question-pool-v1.json
+          grep -Fq "const VERSION='1.2.0'" /tmp/ai-exam-route-v1.js
+          grep -Fq "const PUBLIC_POOL_PATH='./verified-question-pool-v1.json'" /tmp/ai-exam-route-v1.js
+          grep -Fq "liveGenerationOnUserAction:false" /tmp/ai-exam-route-v1.js
+          grep -Fq "deliveryMode:'verified-pool-first'" /tmp/ai-exam-route-v1.js
           grep -Fq "requiresFrontendToken:false" /tmp/ai-exam-route-v1.js
           grep -Fq "usesLegacyFallback:false" /tmp/ai-exam-route-v1.js
           grep -Fq "cacheFallback:'verified-ai-only'" /tmp/ai-exam-route-v1.js
-          grep -Fq "./ai-exam-route-v1.js?v=1.1.0" /tmp/runtime-registry.js
+          grep -Fq "./ai-exam-route-v1.js?v=1.2.0" /tmp/runtime-registry.js
           if grep -Eq "aa_ai_reading_config_v1|accessToken|AI接続設定|authorization:'Bearer" /tmp/ai-exam-route-v1.js; then
             echo 'Published frontend route still contains a bearer-token dependency.' >&2
             exit 1
           fi
+          if grep -Eq "postExam\(|fetch\(DEFAULT_ENDPOINT\+ENDPOINT_PATH" /tmp/ai-exam-route-v1.js; then
+            echo 'Published entrance route still waits for live AI generation.' >&2
+            exit 1
+          fi
           echo 'AI_EXAM_ROUTE_PUBLIC=PASS'
-          echo 'AI_EXAM_PUBLIC_FRONTEND_TOKENLESS=PASS'
+          echo 'AI_EXAM_PUBLIC_VERIFIED_POOL_FIRST=PASS'
+          echo 'AI_EXAM_PUBLIC_NO_LIVE_WAIT=PASS'
