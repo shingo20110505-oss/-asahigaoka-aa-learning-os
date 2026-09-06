@@ -1,6 +1,6 @@
 (()=>{'use strict';
-const VERSION='2026-09-06.1-category-integrity';
-const FULL_DATA_URL='./data.jsonl?v=quiz15000-20260905-quality2';
+const VERSION='2026-09-06.2-taxonomy-guard';
+const FULL_DATA_URL='./data.jsonl?v=quiz15000-20260906-taxonomy';
 const STATE_KEY='kokugoChronologiaStateV2';
 const WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1';
 const CYCLE_KEY='aa_kokugo_vocab_full15000_cycle_v1';
@@ -12,6 +12,7 @@ const $=(s,r=document)=>r.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const hasJapanese=s=>/[\u3040-\u30ff\u3400-\u9fff]/.test(String(s||''));
 const entryKey=x=>`${x?.word||''}|${x?.reading||''}`;
+function isCanonicalYojiSurface(word){const chars=Array.from(String(word||'').normalize('NFKC'));return chars.length===4&&chars.every(ch=>/^\p{Script=Han}$/u.test(ch)||ch==='々'||ch==='〻')}
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function getState(){try{return JSON.parse(localStorage.getItem(STATE_KEY)||'{}')}catch{return {}}}
 function saveState(s){try{localStorage.setItem(STATE_KEY,JSON.stringify(s))}catch(_){}}
@@ -20,7 +21,7 @@ function wrongKey(x){return [String(x?.id??''),x?.word||'',x?.reading||''].join(
 function saveWrong(list){const out=[],seen=new Set();for(const x of list||[]){if(!x||!x.word||!x.id)continue;const k=wrongKey(x);if(seen.has(k))continue;seen.add(k);out.push(x)}try{localStorage.setItem(WRONG_KEY,JSON.stringify(out))}catch(_){}return out}
 function addWrong(item){const list=loadWrong(),k=wrongKey(item);if(!list.some(x=>wrongKey(x)===k))list.push({id:item.id,word:item.word,reading:item.reading||'',meaning:item.meaning||'',type:item.type||'',rank:item.rank||'',createdAt:Date.now()});saveWrong(list)}
 function removeWrong(item){const k=wrongKey(item);saveWrong(loadWrong().filter(x=>wrongKey(x)!==k))}
-function matchesFilter(x,kind,rank){return (kind==='all'||x.type===kind)&&(rank==='all'||x.rank===rank)}
+function matchesFilter(x,kind,rank){const kindOk=kind==='all'||(kind==='yoji'?x.type==='yoji'&&isCanonicalYojiSurface(x.word):x.type===kind);return kindOk&&(rank==='all'||x.rank===rank)}
 function rankText(rank){return rank==='A'?'A 最優先':rank==='B'?'B 重要':rank==='C'?'C 発展':'全ランク'}
 function loadCycle(){try{const x=JSON.parse(localStorage.getItem(CYCLE_KEY)||'{}');return x&&typeof x==='object'?x:{}}catch{return {}}}
 function saveCycle(x){try{localStorage.setItem(CYCLE_KEY,JSON.stringify(x))}catch(_){}}
@@ -75,7 +76,10 @@ function makePool(){
  }
  const clean=out.map(({_priority,...x})=>x);
  const rankCounts=clean.reduce((a,x)=>(a[x.rank]=(a[x.rank]||0)+1,a),{}),verified=clean.filter(x=>String(x.quality||'').startsWith('verified')).length,examImportant=clean.filter(x=>String(x.quality||'').startsWith('verified')&&['A','B'].includes(x.rank)).length;
- window.__AA_KOKUGO_QUALITY_STATS__={raw15000:full15000.length,pool:clean.length,bankOverrides,curatedOverrides,excluded,verified,pendingEditorial:clean.length-verified,examImportant,rankCounts};
+ const canonicalYoji=clean.filter(x=>x.type==='yoji'&&isCanonicalYojiSurface(x.word)).length,nonCanonicalYoji=clean.filter(x=>x.type==='yoji'&&!isCanonicalYojiSurface(x.word)).length;
+ window.__AA_KOKUGO_QUALITY_STATS__={raw15000:full15000.length,pool:clean.length,bankOverrides,curatedOverrides,excluded,verified,pendingEditorial:clean.length-verified,examImportant,rankCounts,canonicalYoji,nonCanonicalYoji};
+ window.__AA_KOKUGO_CANONICAL_YOJI_COUNT__=canonicalYoji;
+ window.__AA_KOKUGO_NONCANONICAL_YOJI_EXCLUDED__=nonCanonicalYoji;
  return clean;
 }
 
@@ -121,27 +125,28 @@ async function install(){
  if(!quiz||!kindEl||!modeEl||!startEl||!wrongStartEl||!body||!Array.isArray(window.AA_JUKUGO_BANK)){setTimeout(install,60);return}
  if(document.getElementById('quizRank'))return;
  body.innerHTML='<div class="quiz-summary">15,000語データをクイズに読み込み中…</div>';
+ const selectedKind=['two','three','yoji','idiom','four','all'].includes(kindEl.value)?kindEl.value:'all';
  try{await loadFull15000()}catch(err){body.innerHTML='<div class="quiz-summary">15,000語データを読み込めませんでした：'+esc(err?.message||err)+'</div>';return}
- const selectedKind=['all','yoji','idiom','four'].includes(kindEl.value)?kindEl.value:'all';
  if(![...kindEl.options].some(o=>o.value==='four'))kindEl.insertAdjacentHTML('beforeend','<option value="four">四字語（補助）</option>');
  kindEl.value=selectedKind;
 
  const rankEl=document.createElement('select');rankEl.id='quizRank';rankEl.setAttribute('aria-label','出題ランク');rankEl.innerHTML='<option value="all" selected>全ランク</option><option value="A">A 最優先</option><option value="B">B 重要</option><option value="C">C 発展</option>';modeEl.insertAdjacentElement('afterend',rankEl);
  const config=rankEl.closest('.quiz-config');if(config)config.classList.add('aa-quiz-rank-ready');
  const style=document.createElement('style');style.id='aaKokugoQuizRankStyle';style.textContent='.quiz-config.aa-quiz-rank-ready{grid-template-columns:1fr 1fr 1fr auto auto}@media(max-width:760px){.quiz-config.aa-quiz-rank-ready{grid-template-columns:1fr 1fr}.quiz-config.aa-quiz-rank-ready #quizRank{grid-column:1/-1}.quiz-config.aa-quiz-rank-ready button{grid-column:1/-1}}';document.head.appendChild(style);
- const note=quiz.querySelector('.jkg-head .note');if(note)note.textContent='A/Bは精査済み学習バンクを優先し、辞書拡張15,000語は未精査の重要度を過大評価しないようC（発展）として扱います。同じ条件では一巡するまで同じ語を再出題しません。';
+ const note=quiz.querySelector('.jkg-head .note');if(note)note.textContent='A/Bは精査済み学習バンクを優先し、辞書拡張15,000語はC（発展）として扱います。四字熟語は4字表記（々を含む）だけに限定し、表記揺れや一般四字語は混ぜません。同じ条件では一巡するまで同じ語を再出題しません。';
 
  const quizPool=makePool(),liveByKey=new Map();quizPool.forEach(x=>liveByKey.set(wrongKey(x),x));
  window.__AA_KOKUGO_QUIZ_POOL_COUNT__=quizPool.length;
  const badge=quiz.querySelector('.jkg-badge');if(badge){badge.textContent='10問 / 15,000語接続済み';badge.title='品質統合後の候補 '+quizPool.length.toLocaleString()+'語'}
  let qset=[],qi=0,qscore=0,qAnswered=false,qWrongOnly=false,qKind='all',qMode='random',qRank='all';
 
+ function publishQuizDiagnostics(kind,set){window.__AA_KOKUGO_LAST_QUIZ_KIND__=kind;window.__AA_KOKUGO_LAST_QUIZ_ITEMS__=(set||[]).map(q=>({type:q.item.type,word:q.item.word,canonicalYoji:isCanonicalYojiSurface(q.item.word)}))}
  function updateWrongCount(){const kind=kindEl.value||'all',rank=rankEl.value||'all',n=loadWrong().filter(x=>matchesFilter(x,kind,rank)).length;const el=$('#quizWrongCount');if(el)el.textContent=n;return n}
  function markReview(item){const s=getState();s[item.id]='review';saveState(s)}
  function finishQuiz(){const remain=updateWrongCount(),title=qWrongOnly?'間違えた問題の解き直し終了':`${qset.length}問終了`,noteText=qWrongOnly?`正解した語は誤答リストから外しました。現在この範囲に残っている誤答は ${remain} 問です。`:`15,000語データ接続済み。${rankText(qRank)}・${qKind==='all'?'全部':qKind}は一巡するまで同じ語を再出題しません。`,label=qWrongOnly?'残りを続ける':'もう10問';body.innerHTML=`<div class="quiz-summary"><div>${title}</div><b>${qscore} / ${qset.length}</b><div class="note">${esc(noteText)}</div><button class="quiz-next" id="quizRestart">${label}</button></div>`;$('#quizRestart').onclick=qWrongOnly?startWrongQuiz:startQuiz}
  function showQ(){qAnswered=false;if(qi>=qset.length){finishQuiz();return}const q=qset[qi];body.innerHTML=`<div class="quiz-meta"><span>${qi+1} / ${qset.length}${qWrongOnly?'（解き直し）':''} ・ ${esc(rankText(qRank))}</span><span>正解 ${qscore}</span></div><div class="quiz-q">${esc(q.prompt)}</div><div class="quiz-hint">${esc(q.hint)}</div><div class="quiz-opts">${q.options.map(o=>`<button class="quiz-opt" data-answer="${esc(o)}">${esc(o)}</button>`).join('')}</div><div class="quiz-result" id="quizResult"></div><button class="quiz-next" id="quizNext" style="display:none">次へ</button>`;body.querySelectorAll('.quiz-opt').forEach(btn=>btn.onclick=()=>{if(qAnswered)return;qAnswered=true;const val=btn.dataset.answer,ok=val===q.answer;if(ok){qscore++;if(qWrongOnly)removeWrong(q.item)}else{addWrong(q.item);markReview(q.item)}updateWrongCount();body.querySelectorAll('.quiz-opt').forEach(b=>{if(b.dataset.answer===q.answer)b.classList.add('correct');else if(b===btn&&!ok)b.classList.add('wrong');b.disabled=true});$('#quizResult').textContent=ok?(qWrongOnly?'正解！ 誤答リストから外しました。':'正解！'):'正解：'+q.answer;$('#quizNext').style.display='inline-block'});$('#quizNext').onclick=()=>{qi++;showQ()}}
- function startQuiz(){const kind=kindEl.value,mode=modeEl.value,rank=rankEl.value,pool=quizPool.filter(x=>matchesFilter(x,kind,rank));if(kind!=='all'&&pool.some(x=>x.type!==kind)){body.innerHTML='<div class="quiz-summary">カテゴリ整合性エラーを検出しました。出題を停止しました。</div>';return}qWrongOnly=false;qKind=kind;qMode=mode;qRank=rank;if(pool.length<4){body.innerHTML='<div class="quiz-summary">この条件では出題できる語が不足しています。</div>';return}qset=makeNoRepeatSet(pool,kind,rank,mode);qi=0;qscore=0;if(!qset.length){body.innerHTML='<div class="quiz-summary">この条件では四択を作れませんでした。</div>';return}showQ()}
- function startWrongQuiz(){const kind=kindEl.value,mode=modeEl.value,rank=rankEl.value,pool=quizPool.filter(x=>matchesFilter(x,kind,rank)),saved=loadWrong().filter(x=>matchesFilter(x,kind,rank)),wrong=saved.map(x=>liveByKey.get(wrongKey(x))||x).filter(x=>x.word&&x.meaning);qWrongOnly=true;qKind=kind;qMode=mode;qRank=rank;if(!wrong.length){body.innerHTML='<div class="quiz-summary">この範囲に間違えた問題はありません。</div>';updateWrongCount();return}if(pool.length<4){body.innerHTML='<div class="quiz-summary">このランクでは四択の選択肢を作る語が不足しています。</div>';return}qset=makeSet(wrong,mode,pool);qi=0;qscore=0;if(!qset.length){body.innerHTML='<div class="quiz-summary">この条件では四択を作れませんでした。</div>';return}showQ()}
+ function startQuiz(){const kind=kindEl.value,mode=modeEl.value,rank=rankEl.value,pool=quizPool.filter(x=>matchesFilter(x,kind,rank));if(kind!=='all'&&pool.some(x=>x.type!==kind)){body.innerHTML='<div class="quiz-summary">カテゴリ整合性エラーを検出しました。出題を停止しました。</div>';return}if(kind==='yoji'&&pool.some(x=>!isCanonicalYojiSurface(x.word))){body.innerHTML='<div class="quiz-summary">四字熟語表記の整合性エラーを検出しました。出題を停止しました。</div>';return}qWrongOnly=false;qKind=kind;qMode=mode;qRank=rank;if(pool.length<4){body.innerHTML='<div class="quiz-summary">この条件では出題できる語が不足しています。</div>';return}qset=makeNoRepeatSet(pool,kind,rank,mode);qi=0;qscore=0;publishQuizDiagnostics(kind,qset);if(!qset.length){body.innerHTML='<div class="quiz-summary">この条件では四択を作れませんでした。</div>';return}showQ()}
+ function startWrongQuiz(){const kind=kindEl.value,mode=modeEl.value,rank=rankEl.value,pool=quizPool.filter(x=>matchesFilter(x,kind,rank)),saved=loadWrong().filter(x=>matchesFilter(x,kind,rank)),wrong=saved.map(x=>liveByKey.get(wrongKey(x))||x).filter(x=>x.word&&x.meaning&&matchesFilter(x,kind,rank));qWrongOnly=true;qKind=kind;qMode=mode;qRank=rank;if(!wrong.length){body.innerHTML='<div class="quiz-summary">この範囲に間違えた問題はありません。</div>';updateWrongCount();return}if(pool.length<4){body.innerHTML='<div class="quiz-summary">このランクでは四択の選択肢を作る語が不足しています。</div>';return}qset=makeSet(wrong,mode,pool);qi=0;qscore=0;publishQuizDiagnostics(kind,qset);if(!qset.length){body.innerHTML='<div class="quiz-summary">この条件では四択を作れませんでした。</div>';return}showQ()}
 
  startEl.onclick=startQuiz;wrongStartEl.onclick=startWrongQuiz;
  kindEl.addEventListener('change',()=>setTimeout(updateWrongCount,0));rankEl.addEventListener('change',updateWrongCount);updateWrongCount();
@@ -151,7 +156,9 @@ async function install(){
  document.documentElement.dataset.aaKokugoQuizRandom='FULL15000-NOREPEAT-JA';
  document.documentElement.dataset.aaKokugoFull15000=String(full15000.length);
  document.documentElement.dataset.aaKokugoQuizPool=String(quizPool.length);
- document.documentElement.dataset.aaKokugoQuality='CURATED-AB-DICTIONARY-C';
+ document.documentElement.dataset.aaKokugoCanonicalYoji=String(window.__AA_KOKUGO_CANONICAL_YOJI_COUNT__||0);
+ document.documentElement.dataset.aaKokugoNoncanonicalYojiExcluded=String(window.__AA_KOKUGO_NONCANONICAL_YOJI_EXCLUDED__||0);
+ document.documentElement.dataset.aaKokugoQuality='CURATED-AB-DICTIONARY-C-TAXONOMY-GUARD';
 }
 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
