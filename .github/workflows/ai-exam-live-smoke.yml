@@ -9,6 +9,7 @@ on:
       - 'worker/src/providers/gemini.mjs'
       - 'worker/src/exam-platform-hardened.mjs'
       - 'worker/src/entry-hardened.mjs'
+      - 'worker/wrangler.toml'
 
 permissions:
   contents: read
@@ -18,53 +19,36 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Diagnose exact Gemini exam schema
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: gemini-3.5-flash
-        shell: bash
-        run: |
-          node --input-type=module <<'NODE'
-          import { callGeminiJson } from './worker/src/providers/gemini.mjs';
-          import { HARDENED_EXAM_GENERATION_SCHEMA } from './worker/src/exam-platform-hardened.mjs';
-          try {
-            const result = await callGeminiJson(process.env, {
-              input: 'Create exactly one original junior-high mathematics four-choice item. Return only schema JSON.',
-              schema: HARDENED_EXAM_GENERATION_SCHEMA,
-              schemaName: 'rise_math_exam_hardened_v2',
-              maxOutputTokens: 3000,
-              thinkingLevel: 'low'
-            });
-            console.log('GEMINI_EXAM_SCHEMA=PASS mode='+result.mode);
-          } catch (error) {
-            console.log('GEMINI_EXAM_SCHEMA=FAIL');
-            console.log('code='+String(error?.code||''));
-            console.log('status='+String(error?.status||''));
-            console.log('message='+String(error?.message||'').replace(/\s+/g,' ').slice(0,1200));
-            console.log('diagnostic='+String(error?.diagnostic||''));
-            process.exitCode=1;
-          }
-          NODE
-
       - name: Call public production exam endpoint for all 3 subjects
         shell: bash
         run: |
           set -u
           BASE='https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev'
+          ORIGIN='https://shingo20110505-oss.github.io'
           overall=0
           for subject in math science social; do
             echo "=== SUBJECT=${subject} ==="
             code="$(curl -sS --connect-timeout 10 --max-time 210 -o "/tmp/${subject}.json" -w '%{http_code}' \
               -X POST "${BASE}/v1/exam" \
-              -H 'Origin: https://shingo20110505-oss.github.io' \
+              -H "Origin: ${ORIGIN}" \
               -H 'Content-Type: application/json' \
-              --data "{\"schemaVersion\":2,\"subject\":\"${subject}\",\"count\":1,\"difficulty\":8,\"skill\":\"aichi.exam.application\",\"focus\":[],\"recentQuestionIds\":[]}" || true)"
+              --data "{\"schemaVersion\":2,\"subject\":\"${subject}\",\"count\":3,\"difficulty\":8,\"skill\":\"aichi.exam.application\",\"focus\":[],\"recentQuestionIds\":[]}" || true)"
             echo "HTTP=${code}"
-            cat "/tmp/${subject}.json" || true
-            echo
-            if [ "$code" != '200' ]; then overall=1; fi
+            if [ "$code" = '200' ]; then
+              SUBJECT="$subject" node - <<'NODE'
+          const fs=require('fs');
+          const subject=process.env.SUBJECT;
+          const p=JSON.parse(fs.readFileSync(`/tmp/${subject}.json`,'utf8'));
+          const items=Array.isArray(p.items)?p.items:[];
+          const ok=p.schemaVersion===1 && p.subject===subject && p.quality?.verified===true && items.length>0 && items.every(x=>x?.quality?.verified===true && x?.quality?.generationProvider==='gemini' && x?.quality?.verificationProvider==='groq');
+          if(!ok){console.error(`LIVE_${subject.toUpperCase()}=INVALID`);process.exit(1)}
+          console.log(`LIVE_${subject.toUpperCase()}=PASS delivered=${items.length} requested=${p.requestedCount} partial=${Boolean(p.partial)} model=${items[0]?.quality?.generationModel||'-'}`);
+          NODE
+              if [ "$?" != '0' ]; then overall=1; fi
+            else
+              cat "/tmp/${subject}.json" || true
+              echo
+              overall=1
+            fi
           done
           exit "$overall"
