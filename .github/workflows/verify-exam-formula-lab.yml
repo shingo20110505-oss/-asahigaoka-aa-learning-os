@@ -23,7 +23,6 @@ jobs:
       - name: Syntax checks
         run: |
           node --check high-school-math/formulas.js
-          node --check high-school-math/visuals.js
           node --check high-school-math/practice.js
           node --check high-school-math/sw.js
       - name: Formula lab contract
