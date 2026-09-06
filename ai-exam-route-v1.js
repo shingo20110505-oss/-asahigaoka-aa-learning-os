@@ -2,36 +2,68 @@
   'use strict';
   if(window.__AA_AI_EXAM_ROUTE_V1__) return;
 
-  const VERSION='1.1.0';
-  const DEFAULT_ENDPOINT='https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev';
+  const VERSION='1.2.0';
   const ENDPOINT_PATH='/v1/exam';
+  const PUBLIC_POOL_PATH='./verified-question-pool-v1.json';
   const CACHE_KEY='aa_ai_exam_cache_v1';
   const SUBJECTS=new Set(['math','science','social']);
   const LABEL={math:'数学',science:'理科',social:'社会'};
-  const REQUEST_TIMEOUT_MS=180000;
+  const POOL_TIMEOUT_MS=8000;
   let busy=false;
 
   function appState(){
     try{return typeof state!=='undefined'?state:window.AA_APP?.get?.('state')?.get?.()||null}catch(_){return null}
   }
-  function clamp(n,min,max){return Math.max(min,Math.min(max,n))}
   function cacheRead(){try{return JSON.parse(localStorage.getItem(CACHE_KEY)||'{}')||{}}catch(_){return {}}}
   function cacheWrite(value){try{localStorage.setItem(CACHE_KEY,JSON.stringify(value))}catch(_){}}
   function recentIds(subject){
     const s=appState();
     return (Array.isArray(s?.attempts)?s.attempts:[]).slice(-160).map(x=>String(x?.itemId||'')).filter(id=>id.startsWith(`rise-${subject}-`)).slice(-60);
   }
+  function isUsableItem(item,subject){
+    if(!item||item.subject!==subject||item.quality?.verified!==true)return false;
+    const choices=Array.isArray(item.choices)?item.choices.map(String):[];
+    const answerIndex=Number(item.answerIndex);
+    return choices.length===4&&new Set(choices).size===4&&Number.isInteger(answerIndex)&&answerIndex>=0&&answerIndex<4&&String(item.question||'').trim().length>0;
+  }
   function cacheItems(subject,items){
+    const safe=(Array.isArray(items)?items:[]).filter(item=>isUsableItem(item,subject));
+    if(!safe.length)return;
     const cache=cacheRead();
     const old=Array.isArray(cache[subject]?.items)?cache[subject].items:[];
-    const byId=new Map([...items,...old].filter(Boolean).map(item=>[String(item.id||''),item]));
-    cache[subject]={updatedAt:Date.now(),items:[...byId.values()].filter(item=>item.id).slice(0,40)};
+    const byId=new Map([...safe,...old].filter(Boolean).map(item=>[String(item.id||''),item]));
+    cache[subject]={updatedAt:Date.now(),items:[...byId.values()].filter(item=>item.id&&isUsableItem(item,subject)).slice(0,40)};
     cacheWrite(cache);
   }
-  function cachedUnseen(subject,count){
+  function chooseItems(subject,items,count){
+    const safe=(Array.isArray(items)?items:[]).filter(item=>isUsableItem(item,subject));
+    if(!safe.length)return [];
     const seen=new Set(recentIds(subject));
+    const unseen=safe.filter(item=>!seen.has(String(item.id||'')));
+    return (unseen.length?unseen:safe).slice(0,count);
+  }
+  function cachedVerified(subject,count){
     const items=Array.isArray(cacheRead()[subject]?.items)?cacheRead()[subject].items:[];
-    return items.filter(item=>item?.quality?.verified===true&&!seen.has(String(item.id||''))).slice(0,count);
+    return chooseItems(subject,items,count);
+  }
+  async function fetchVerifiedPool(subject,count){
+    if(navigator.onLine===false)return [];
+    const controller=new AbortController();
+    const timer=setTimeout(()=>controller.abort(),POOL_TIMEOUT_MS);
+    try{
+      const url=new URL(PUBLIC_POOL_PATH,document.baseURI);
+      url.searchParams.set('risePool',String(Date.now()));
+      const response=await fetch(url.href,{method:'GET',signal:controller.signal,cache:'no-store',credentials:'same-origin'});
+      if(!response.ok)throw new Error(`検証済み問題の配信に失敗しました（HTTP ${response.status}）。`);
+      const payload=await response.json();
+      if(payload?.schemaVersion!==1||!Array.isArray(payload?.subjects?.[subject]))throw new Error('検証済み問題プールの形式が正しくありません。');
+      const all=payload.subjects[subject].filter(item=>isUsableItem(item,subject));
+      cacheItems(subject,all);
+      return chooseItems(subject,all,count);
+    }catch(error){
+      if(error?.name==='AbortError')throw Object.assign(new Error('検証済み問題の読み込みが時間切れになりました。'),{code:'pool_timeout'});
+      throw error;
+    }finally{clearTimeout(timer)}
   }
   function firstSubjectSkill(subject){
     try{
@@ -41,13 +73,11 @@
     }catch(_){return `${subject}.exam.application`}
   }
   function normalizeItem(item,subject){
-    if(!item||item.subject!==subject||item.quality?.verified!==true)throw new Error('検証済み問題の形式が正しくありません。');
-    const choices=Array.isArray(item.choices)?item.choices.map(String):[];
+    if(!isUsableItem(item,subject))throw new Error('検証済み問題の形式が正しくありません。');
+    const choices=item.choices.map(String);
     const answerIndex=Number(item.answerIndex);
-    if(choices.length!==4||new Set(choices).size!==4||!Number.isInteger(answerIndex)||answerIndex<0||answerIndex>3)throw new Error('選択肢の検査に失敗しました。');
     const context=String(item.context||'').trim();
     const question=String(item.question||'').trim();
-    if(!question)throw new Error('問題文を受け取れませんでした。');
     const skillId=firstSubjectSkill(subject);
     const misconception=String(item.misconception||'条件や資料の読み取りを再確認します。').trim();
     const explanation=String(item.explanation||'根拠を確認します。').trim();
@@ -71,38 +101,10 @@
     };
     try{return typeof prepareQuestionReview==='function'?prepareQuestionReview(q):q}catch(_){return q}
   }
-  function buildRequest(subject,count){
-    const s=appState();
-    const difficulty=clamp(Math.round(Number(s?.ui?.subjectDifficulty)||8),1,10);
-    const weak=[];
-    try{
-      if(typeof weakSkills==='function')for(const row of weakSkills(12)){
-        if(typeof DATA!=='undefined'&&DATA?.skills?.[row.id]?.subject===subject)weak.push(String(row.label||row.id).slice(0,80));
-        if(weak.length>=5)break;
-      }
-    }catch(_){}
-    return {schemaVersion:2,subject,count,difficulty,skill:'aichi.exam.application',focus:weak,recentQuestionIds:recentIds(subject)};
-  }
-  async function postExam(subject,count){
-    if(navigator.onLine===false)throw Object.assign(new Error('オフラインです。保存済みのAI問題がない場合は生成できません。'),{code:'offline'});
-    const controller=new AbortController();
-    const timer=setTimeout(()=>controller.abort(),REQUEST_TIMEOUT_MS);
-    try{
-      const response=await fetch(DEFAULT_ENDPOINT+ENDPOINT_PATH,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(buildRequest(subject,count)),signal:controller.signal,cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'});
-      let payload=null;try{payload=await response.json()}catch(_){}
-      if(!response.ok){const err=new Error(String(payload?.error?.message||`AIサーバーエラー（HTTP ${response.status}）`));err.code=String(payload?.error?.code||'request_failed');throw err}
-      if(payload?.schemaVersion!==1||payload?.quality?.verified!==true||payload?.subject!==subject||!Array.isArray(payload.items)||!payload.items.length)throw Object.assign(new Error('検証済み問題を受け取れませんでした。'),{code:'invalid_response'});
-      cacheItems(subject,payload.items);
-      return payload.items.slice(0,count);
-    }catch(error){
-      if(error?.name==='AbortError')throw Object.assign(new Error('AI問題生成が時間切れになりました。もう一度お試しください。'),{code:'timeout'});
-      throw error;
-    }finally{clearTimeout(timer)}
-  }
   function showBusy(subject){
     let host=document.getElementById('aaAiExamBusy');
-    if(!host){host=document.createElement('div');host.id='aaAiExamBusy';host.className='aaAiExamBusy';host.innerHTML='<div class="aaAiExamBusyCard" role="status" aria-live="polite"><div class="aaAiExamSpinner" aria-hidden="true"></div><strong data-ai-exam-title></strong><span>Geminiで作成後、別モデルが正答を独立検証しています。</span></div>';document.body.appendChild(host)}
-    const title=host.querySelector('[data-ai-exam-title]');if(title)title.textContent=`${LABEL[subject]}の入試問題を生成中…`;host.hidden=false;
+    if(!host){host=document.createElement('div');host.id='aaAiExamBusy';host.className='aaAiExamBusy';host.innerHTML='<div class="aaAiExamBusyCard" role="status" aria-live="polite"><div class="aaAiExamSpinner" aria-hidden="true"></div><strong data-ai-exam-title></strong><span>独立検証済みの問題を読み込んでいます。</span></div>';document.body.appendChild(host)}
+    const title=host.querySelector('[data-ai-exam-title]');if(title)title.textContent=`${LABEL[subject]}の入試問題を準備中…`;host.hidden=false;
   }
   function hideBusy(){const host=document.getElementById('aaAiExamBusy');if(host)host.hidden=true}
   function startSessionFromItems(subject,items){
@@ -112,7 +114,7 @@
     if(!queue.length)throw new Error('開始できる検証済み問題がありません。');
     const stamp=typeof now==='function'?now():Date.now();
     const sessionId=typeof uid==='function'?uid('ai-exam'):`ai-exam-${stamp}`;
-    s.session={id:sessionId,active:true,mode:'deep',kind:'ai-exam',subject,queue,index:0,subIndex:0,answers:{},feedback:null,startedAt:stamp,accumulatedMs:0,lastActiveAt:stamp,itemStartedAt:stamp,scrollY:0,minimumDone:false,clockPaused:false,pausedAt:null,aiGenerated:true,aiExam:true,apiRoute:ENDPOINT_PATH};
+    s.session={id:sessionId,active:true,mode:'deep',kind:'ai-exam',subject,queue,index:0,subIndex:0,answers:{},feedback:null,startedAt:stamp,accumulatedMs:0,lastActiveAt:stamp,itemStartedAt:stamp,scrollY:0,minimumDone:false,clockPaused:false,pausedAt:null,aiGenerated:true,aiExam:true,apiRoute:ENDPOINT_PATH,deliveryMode:'verified-pool'};
     if(s.stats)s.stats.sessions=Number(s.stats.sessions||0)+1;
     s.route='study';
     if(typeof save==='function')save();
@@ -127,14 +129,13 @@
     busy=true;showBusy(subject);
     try{
       let items=[];
-      try{items=await postExam(subject,8)}catch(error){
-        items=cachedUnseen(subject,8);
-        if(!items.length)throw error;
-        console.warn('AI exam generation unavailable; using verified AI cache only.',error?.code||error?.message||error);
-      }
+      let poolError=null;
+      try{items=await fetchVerifiedPool(subject,8)}catch(error){poolError=error;console.warn('Verified pool fetch failed; trying local verified cache.',error?.code||error?.message||error)}
+      if(!items.length)items=cachedVerified(subject,8);
+      if(!items.length)throw poolError||new Error('現在、配信できる検証済み問題がありません。自動補充後にもう一度お試しください。');
       startSessionFromItems(subject,items);
     }catch(error){
-      window.alert(error?.message||'AI入試問題を開始できませんでした。');
+      window.alert(error?.message||'入試問題を開始できませんでした。');
     }finally{busy=false;hideBusy()}
   }
   function decorate(root=document){
@@ -169,5 +170,5 @@
   document.addEventListener('rise:navigation',schedule);document.addEventListener('aa:v23ready',schedule);
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',schedule,{once:true});else schedule();
 
-  window.__AA_AI_EXAM_ROUTE_V1__=Object.freeze({version:VERSION,subjects:[...SUBJECTS],endpoint:DEFAULT_ENDPOINT,endpointPath:ENDPOINT_PATH,start,decorate,requiresFrontendToken:false,usesLegacyFallback:false,cacheFallback:'verified-ai-only'});
+  window.__AA_AI_EXAM_ROUTE_V1__=Object.freeze({version:VERSION,subjects:[...SUBJECTS],endpointPath:ENDPOINT_PATH,poolPath:PUBLIC_POOL_PATH,start,decorate,requiresFrontendToken:false,usesLegacyFallback:false,liveGenerationOnUserAction:false,deliveryMode:'verified-pool-first',cacheFallback:'verified-ai-only'});
 })();
