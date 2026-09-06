@@ -6,6 +6,9 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/ai-exam-live-smoke.yml'
+      - 'worker/src/providers/gemini.mjs'
+      - 'worker/src/exam-platform-hardened.mjs'
+      - 'worker/src/entry-hardened.mjs'
 
 permissions:
   contents: read
@@ -42,6 +45,7 @@ jobs:
             console.log('status='+String(error?.status||''));
             console.log('message='+String(error?.message||'').replace(/\s+/g,' ').slice(0,1200));
             console.log('diagnostic='+String(error?.diagnostic||''));
+            process.exitCode=1;
           }
           NODE
 
