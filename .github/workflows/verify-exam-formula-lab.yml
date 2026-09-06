@@ -1,0 +1,37 @@
+name: Verify Entrance Formula Lab
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'high-school-math/**'
+      - 'tests/exam-math-formula-bank.mjs'
+      - '.github/workflows/verify-exam-formula-lab.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax checks
+        run: |
+          node --check high-school-math/formulas.js
+          node --check high-school-math/visuals.js
+          node --check high-school-math/practice.js
+          node --check high-school-math/sw.js
+      - name: Formula lab contract
+        run: node tests/exam-math-formula-bank.mjs
+      - name: Protect normal entrance math boundary
+        run: |
+          grep -q "curriculum:'junior-high'" math-exam/adapter.js
+          if grep -R "RISE_EXAM_MATH_FORMULAS" math-exam/; then
+            echo 'Formula lab leaked into normal entrance math engine' >&2
+            exit 1
+          fi
