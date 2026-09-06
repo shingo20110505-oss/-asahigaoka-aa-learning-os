@@ -1,0 +1,139 @@
+name: Fix Menelaus review image v2
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-menelaus-review-v2-20260906.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Re-sync latest main
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git reset --hard origin/main
+          echo "main_sha=$(git rev-parse HEAD)"
+          echo "review_blob_sha=$(git hash-object review-bank-v1.js)"
+          grep -q "window.AA_REVIEW_BANK_VERSION='1.0.63'" review-bank-v1.js
+          test "$(grep -o "id:'math-menelaus-theorem-20260906'" review-bank-v1.js | wc -l)" -eq 1
+          test "$(grep -o "id:'math-ceva-theorem-20260906'" review-bank-v1.js | wc -l)" -eq 1
+
+      - name: Write corrected standalone SVG and update review bank
+        run: |
+          set -euo pipefail
+          cat > review/assets/20260906-menelaus-ceva-theorems-v2.svg <<'SVG'
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+            <title id="title">メネラウスの定理とチェバの定理</title>
+            <desc id="desc">左はDをBCの延長上、FをAB上、EをAC上に置き、D・F・Eが一直線になる正しいメネラウスの図。右は3本の線が1点Pで交わるチェバの図。</desc>
+            <rect width="1200" height="900" fill="#ffffff"/>
+            <text x="600" y="70" text-anchor="middle" font-size="48" font-weight="700" fill="#102a56" font-family="Noto Sans JP, Yu Gothic, sans-serif">高校数学　比の定理</text>
+
+            <rect x="35" y="130" width="550" height="690" rx="26" fill="#f8fbff" stroke="#4a9df8" stroke-width="4"/>
+            <rect x="35" y="130" width="550" height="88" rx="26" fill="#e8f4ff"/>
+            <text x="310" y="188" text-anchor="middle" font-size="34" font-weight="700" fill="#0f2d5c" font-family="Noto Sans JP, Yu Gothic, sans-serif">メネラウスの定理</text>
+
+            <line x1="50" y1="700" x2="550" y2="700" stroke="#111827" stroke-width="5"/>
+            <path d="M330 280 L150 700 L550 700 Z" fill="none" stroke="#111827" stroke-width="5"/>
+            <line x1="50" y1="700" x2="366.667" y2="350" stroke="#ef4444" stroke-width="6"/>
+
+            <circle cx="330" cy="280" r="9" fill="#111827"/><text x="317" y="258" font-size="28" font-weight="700">A</text>
+            <circle cx="150" cy="700" r="9" fill="#111827"/><text x="120" y="742" font-size="28" font-weight="700">B</text>
+            <circle cx="550" cy="700" r="9" fill="#111827"/><text x="558" y="742" font-size="28" font-weight="700">C</text>
+            <circle cx="50" cy="700" r="10" fill="#ef4444"/><text x="27" y="742" font-size="28" font-weight="700">D</text>
+            <circle cx="240" cy="490" r="10" fill="#ef4444"/><text x="210" y="482" font-size="28" font-weight="700">F</text>
+            <circle cx="366.667" cy="350" r="10" fill="#ef4444"/><text x="382" y="355" font-size="28" font-weight="700">E</text>
+
+            <rect x="100" y="748" width="420" height="48" rx="18" fill="#ffe8ea"/>
+            <text x="310" y="781" text-anchor="middle" font-size="25" font-weight="700" fill="#8a1538" font-family="Noto Sans JP, Yu Gothic, sans-serif">D・F・E が一直線</text>
+            <text x="310" y="810" text-anchor="middle" font-size="24" font-weight="700" fill="#111827" font-family="Noto Sans JP, Yu Gothic, sans-serif">BD/DC × CE/EA × AF/FB = 1</text>
+
+            <rect x="615" y="130" width="550" height="690" rx="26" fill="#f8fff9" stroke="#42a865" stroke-width="4"/>
+            <rect x="615" y="130" width="550" height="88" rx="26" fill="#e9f9ed"/>
+            <text x="890" y="188" text-anchor="middle" font-size="34" font-weight="700" fill="#164c2b" font-family="Noto Sans JP, Yu Gothic, sans-serif">チェバの定理</text>
+
+            <path d="M900 280 L720 700 L1100 700 Z" fill="none" stroke="#111827" stroke-width="5"/>
+            <line x1="900" y1="280" x2="910" y2="700" stroke="#ef4444" stroke-width="5"/>
+            <line x1="720" y1="700" x2="1000" y2="490" stroke="#ef4444" stroke-width="5"/>
+            <line x1="1100" y1="700" x2="810" y2="490" stroke="#ef4444" stroke-width="5"/>
+
+            <circle cx="900" cy="280" r="9" fill="#111827"/><text x="887" y="258" font-size="28" font-weight="700">A</text>
+            <circle cx="720" cy="700" r="9" fill="#111827"/><text x="690" y="742" font-size="28" font-weight="700">B</text>
+            <circle cx="1100" cy="700" r="9" fill="#111827"/><text x="1108" y="742" font-size="28" font-weight="700">C</text>
+            <circle cx="910" cy="700" r="9" fill="#111827"/><text x="898" y="742" font-size="28" font-weight="700">D</text>
+            <circle cx="1000" cy="490" r="9" fill="#111827"/><text x="1015" y="495" font-size="28" font-weight="700">E</text>
+            <circle cx="810" cy="490" r="9" fill="#111827"/><text x="779" y="495" font-size="28" font-weight="700">F</text>
+            <circle cx="906.667" cy="560" r="10" fill="#ef4444"/><text x="922" y="566" font-size="28" font-weight="700">P</text>
+
+            <rect x="680" y="748" width="420" height="48" rx="18" fill="#ffe8ea"/>
+            <text x="890" y="781" text-anchor="middle" font-size="25" font-weight="700" fill="#8a1538" font-family="Noto Sans JP, Yu Gothic, sans-serif">AD・BE・CF が1点 P で交わる</text>
+            <text x="890" y="810" text-anchor="middle" font-size="24" font-weight="700" fill="#111827" font-family="Noto Sans JP, Yu Gothic, sans-serif">BD/DC × CE/EA × AF/FB = 1</text>
+
+            <rect x="180" y="842" width="840" height="42" rx="18" fill="#fff5cc"/>
+            <text x="600" y="871" text-anchor="middle" font-size="24" font-weight="700" fill="#5b3b00" font-family="Noto Sans JP, Yu Gothic, sans-serif">覚え方：一直線 → メネラウス　／　1点で交わる → チェバ</text>
+          </svg>
+          SVG
+
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('review-bank-v1.js')
+          s=p.read_text(encoding='utf-8')
+          old_q="△ABCで、Dは辺BC上、Eは辺CA上、Fは辺ABの延長上にあり、D・E・Fが一直線上にある。成り立つ比の関係は？"
+          new_q="△ABCで、Dは辺BCのB側の延長上、Eは辺CA上、Fは辺AB上にあり、D・E・Fが一直線上にある。成り立つ比の関係は？"
+          assert s.count(old_q)==1
+          s=s.replace(old_q,new_q,1)
+          old_img="assets/20260906-menelaus-ceva-theorems.svg"
+          new_img="assets/20260906-menelaus-ceva-theorems-v2.svg"
+          assert s.count(old_img)==2
+          s=s.replace(old_img,new_img)
+          old_alt="メネラウスの定理とチェバの定理を比較した図。左はD・E・Fが一直線になるメネラウス、右は3本の線が1点Pで交わるチェバ。"
+          new_alt="メネラウスの定理とチェバの定理を比較した図。左はDをBCの延長上、FをAB上、EをAC上に置きD・F・Eが一直線になるメネラウス、右は3本の線が1点Pで交わるチェバ。"
+          assert s.count(old_alt)==2
+          s=s.replace(old_alt,new_alt)
+          assert s.count("window.AA_REVIEW_BANK_VERSION='1.0.63'")==1
+          s=s.replace("window.AA_REVIEW_BANK_VERSION='1.0.63'","window.AA_REVIEW_BANK_VERSION='1.0.64'",1)
+          p.write_text(s,encoding='utf-8')
+          PY
+
+      - name: Validate review bank and corrected diagram
+        run: |
+          set -euo pipefail
+          node --check review-bank-v1.js
+          node scripts/validate-review-bank.mjs
+          node scripts/validate-review-ui.mjs
+          python3 - <<'PY'
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+          svg=Path('review/assets/20260906-menelaus-ceva-theorems-v2.svg').read_text(encoding='utf-8')
+          root=ET.fromstring(svg)
+          assert root.tag.endswith('svg')
+          assert 'D・F・E が一直線' in svg
+          assert 'BD/DC × CE/EA × AF/FB = 1' in svg
+          assert 'https://' not in svg and 'data:' not in svg
+          bank=Path('review-bank-v1.js').read_text(encoding='utf-8')
+          assert bank.count("image:'assets/20260906-menelaus-ceva-theorems-v2.svg'")==2
+          assert "window.AA_REVIEW_BANK_VERSION='1.0.64'" in bank
+          PY
+          grep -q 'Review v2' review/index.html
+          grep -q "fetch('../review-bank-v1.js'" review/index.html
+
+      - name: Commit corrected review update
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f .github/workflows/fix-menelaus-review-v2-20260906.yml
+          git add review-bank-v1.js review/assets/20260906-menelaus-ceva-theorems-v2.svg .github/workflows/fix-menelaus-review-v2-20260906.yml
+          git commit -m "Fix Menelaus review diagram"
+          git push origin HEAD:main
