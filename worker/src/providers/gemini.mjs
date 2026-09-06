@@ -3,7 +3,7 @@ export const GEMINI_INTERACTIONS_URL = 'https://generativelanguage.googleapis.co
 export const GEMINI_GENERATE_CONTENT_BASE = 'https://generativelanguage.googleapis.com/v1beta/models';
 
 const GEMINI_SCHEMA_KEYS = new Set([
-  'type', 'title', 'description', 'properties', 'required', 'additionalProperties',
+  'type', 'title', 'description', 'properties', 'required',
   'enum', 'format', 'minimum', 'maximum', 'items', 'prefixItems', 'minItems', 'maxItems'
 ]);
 const READING_SCHEMA_NAME = 'rise_english_reading';
@@ -92,10 +92,6 @@ export function normalizeGeminiSchema(schema, depth = 0) {
     }
     if (key === 'prefixItems' && Array.isArray(value)) {
       out.prefixItems = value.map(child => normalizeGeminiSchema(child, depth + 1));
-      continue;
-    }
-    if (key === 'additionalProperties' && value && typeof value === 'object' && !Array.isArray(value)) {
-      out.additionalProperties = normalizeGeminiSchema(value, depth + 1);
       continue;
     }
     out[key] = value;
