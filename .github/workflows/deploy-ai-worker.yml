@@ -13,6 +13,9 @@ on:
     paths:
       - '.ai-worker-deploy-trigger'
       - '.github/workflows/deploy-ai-worker.yml'
+      - 'worker/src/**'
+      - 'worker/wrangler.toml'
+      - 'tests/ai-public-exam-route-contract.mjs'
       - 'scripts/verify-ai-worker-production.sh'
       - 'scripts/verify-ai-worker-production-result.mjs'
 
@@ -53,6 +56,7 @@ jobs:
           node tests/ai-subject-verifier-contract.mjs
           node tests/ai-exam-platform-contract.mjs
           node tests/ai-api-hardening-contract.mjs
+          node tests/ai-public-exam-route-contract.mjs
 
       - name: Confirm required GitHub secrets exist
         env:
@@ -86,6 +90,25 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           AI_ACCESS_TOKEN: ${{ secrets.AI_ACCESS_TOKEN }}
+
+      - name: Verify public Rise exam route needs no frontend token
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+        run: |
+          set -euo pipefail
+          BASE="${DEPLOYMENT_URL:-https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev}"
+          CODE="$(curl -sS --connect-timeout 10 --max-time 30 -o /tmp/public-exam-contract.json -w '%{http_code}' \
+            -X POST "${BASE}/v1/exam" \
+            -H 'Origin: https://shingo20110505-oss.github.io' \
+            -H 'Content-Type: application/json' \
+            --data '{"schemaVersion":2,"subject":"__contract_invalid__","count":1,"difficulty":8,"skill":"aichi.exam.application"}')"
+          test "$CODE" = "400"
+          grep -Fq 'subject_not_supported' /tmp/public-exam-contract.json
+          if grep -Fq 'unauthorized' /tmp/public-exam-contract.json; then
+            echo 'Public exam route unexpectedly requires a bearer token.' >&2
+            exit 1
+          fi
+          echo 'PUBLIC_EXAM_TOKENLESS=PASS'
 
       - name: Verify production health and AI quality gates
         env:
