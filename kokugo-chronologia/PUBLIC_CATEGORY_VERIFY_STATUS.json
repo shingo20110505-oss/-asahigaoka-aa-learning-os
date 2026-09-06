@@ -1,0 +1,100 @@
+{
+  "result": "success",
+  "verified_at": "2026-09-06T12:59:10.420560+00:00",
+  "page_base": "https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/kokugo-chronologia/",
+  "source_head": "70e2a4e837a18d48c59dec34c31c5176771271b6",
+  "public_data_sha256": "46d559715cd7c08f114c4101fd27178484999971902b451b665ac46abe82e0fb",
+  "source_data_sha256": "46d559715cd7c08f114c4101fd27178484999971902b451b665ac46abe82e0fb",
+  "checks": [
+    {
+      "name": "audit_status_clean",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "name": "audit_rows_15000",
+      "ok": true,
+      "detail": "15000"
+    },
+    {
+      "name": "audit_unique_15000",
+      "ok": true,
+      "detail": "15000"
+    },
+    {
+      "name": "audit_source_missing_zero",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "name": "audit_duplicates_zero",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "name": "audit_post_repair_mismatch_zero",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "name": "data_sha256_matches_main",
+      "ok": true,
+      "detail": "public=46d559715cd7c08f114c4101fd27178484999971902b451b665ac46abe82e0fb source=46d559715cd7c08f114c4101fd27178484999971902b451b665ac46abe82e0fb"
+    },
+    {
+      "name": "production_data_rows_15000",
+      "ok": true,
+      "detail": "15000"
+    },
+    {
+      "name": "gesaku_zanmai_present_once",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "gesaku_zanmai_is_four",
+      "ok": true,
+      "detail": "{\"id\": \"2044510\", \"term\": \"戯作三昧\", \"reading\": \"げさくざんまい\", \"meaning\": \"being absorbed in writing popular novels (cheap fiction) / being absorbed in writing something to amuse oneself\", \"type\": \"four\", \"strict\": false, \"idiom\": false, \"four\": true}"
+    },
+    {
+      "name": "quiz_version_taxonomy_guard",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "quiz_has_canonical_yoji_guard",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "quiz_preserves_selected_kind",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "quiz_no_forced_all_reset",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "quarantine_count_13",
+      "ok": true,
+      "detail": "13"
+    },
+    {
+      "name": "quarantine_exact_terms",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "quiz_js_sha256_matches_main",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "quarantine_sha256_matches_main",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}
