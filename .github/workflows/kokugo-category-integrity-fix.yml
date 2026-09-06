@@ -1,0 +1,237 @@
+name: Fix Kokugo Quiz Category Integrity
+
+on:
+  push:
+    paths:
+      - '.kokugo-category-integrity-trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix-and-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Apply permanent quiz category fix
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('kokugo-chronologia/quiz-rank-select-v1.js')
+          s = p.read_text(encoding='utf-8')
+          old_version = "const VERSION='2026-09-05.3';"
+          if old_version in s:
+              s = s.replace(old_version, "const VERSION='2026-09-06.1-category-integrity';", 1)
+
+          old_type = """   return{\n     id:'quiz-full-'+String(x.id??i),word:String(x.term||''),reading:String(x.reading||''),meaning,\n     type:['yoji','idiom','four'].includes(x.type)?x.type:'four',rank:'C',source:'full15000',quality:'dictionary-supplement'\n   };"""
+          new_type = """   const type=String(x.type||'');\n   if(!['yoji','idiom','four'].includes(type))throw new Error('15,000語データのカテゴリ不正: '+String(x.term||x.id||i)+' / '+type);\n   return{\n     id:'quiz-full-'+String(x.id??i),word:String(x.term||''),reading:String(x.reading||''),meaning,\n     type,rank:'C',source:'full15000',quality:'dictionary-supplement'\n   };"""
+          if old_type in s:
+              s = s.replace(old_type, new_type, 1)
+          elif "15,000語データのカテゴリ不正" not in s:
+              raise SystemExit('Expected type-normalization block not found')
+
+          old_reset = """ if(![...kindEl.options].some(o=>o.value==='four'))kindEl.insertAdjacentHTML('beforeend','<option value=\"four\">四字語（補助）</option>');\n kindEl.value='all';"""
+          new_reset = """ const selectedKind=['all','yoji','idiom','four'].includes(kindEl.value)?kindEl.value:'all';\n if(![...kindEl.options].some(o=>o.value==='four'))kindEl.insertAdjacentHTML('beforeend','<option value=\"four\">四字語（補助）</option>');\n kindEl.value=selectedKind;"""
+          if old_reset in s:
+              s = s.replace(old_reset, new_reset, 1)
+          elif 'kindEl.value=selectedKind;' not in s:
+              raise SystemExit('Expected category reset block not found')
+
+          # Defensive invariant: a selected category must never produce another category.
+          old_start = "function startQuiz(){const kind=kindEl.value,mode=modeEl.value,rank=rankEl.value,pool=quizPool.filter(x=>matchesFilter(x,kind,rank));qWrongOnly=false;"
+          new_start = "function startQuiz(){const kind=kindEl.value,mode=modeEl.value,rank=rankEl.value,pool=quizPool.filter(x=>matchesFilter(x,kind,rank));if(kind!=='all'&&pool.some(x=>x.type!==kind)){body.innerHTML='<div class=\"quiz-summary\">カテゴリ整合性エラーを検出しました。出題を停止しました。</div>';return}qWrongOnly=false;"
+          if old_start in s:
+              s = s.replace(old_start, new_start, 1)
+          elif 'カテゴリ整合性エラーを検出しました' not in s:
+              raise SystemExit('Expected startQuiz block not found')
+
+          p.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Commit runtime fix
+        run: |
+          if git diff --quiet -- kokugo-chronologia/quiz-rank-select-v1.js; then
+            echo 'Runtime fix already present.'
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add kokugo-chronologia/quiz-rank-select-v1.js
+            git commit -m 'Fix Kokugo quiz category reset permanently'
+            git push origin HEAD:main
+          fi
+
+      - name: Audit local 15000 database against JMdict
+        id: audit
+        continue-on-error: true
+        run: |
+          python - <<'PY'
+          import json, re, urllib.request
+          from collections import Counter
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          data_path = Path('kokugo-chronologia/data.jsonl')
+          report_path = Path('kokugo-chronologia/DATA_CATEGORY_AUDIT.json')
+          rows=[]
+          parse_errors=[]
+          for n,line in enumerate(data_path.read_text(encoding='utf-8').splitlines(),1):
+              if not line.strip():
+                  continue
+              try:
+                  rows.append(json.loads(line))
+              except Exception as e:
+                  parse_errors.append({'line':n,'error':str(e)})
+
+          allowed={'yoji','idiom','four'}
+          type_counts=Counter(str(x.get('type','')) for x in rows)
+          invalid_types=[]
+          duplicates=[]
+          seen={}
+          non_four_yoji=[]
+
+          def is_han(c):
+              n=ord(c)
+              return (0x3400<=n<=0x4DBF or 0x4E00<=n<=0x9FFF or 0xF900<=n<=0xFAFF or 0x20000<=n<=0x2FA1F)
+          def is_four_han(s):
+              return len(s)==4 and all(is_han(c) for c in s)
+
+          for i,x in enumerate(rows,1):
+              typ=str(x.get('type',''))
+              term=str(x.get('term',''))
+              reading=str(x.get('reading',''))
+              key=(term,reading)
+              if typ not in allowed:
+                  invalid_types.append({'row':i,'term':term,'reading':reading,'type':typ})
+              if key in seen:
+                  duplicates.append({'row':i,'first_row':seen[key],'term':term,'reading':reading})
+              else:
+                  seen[key]=i
+              if typ=='yoji' and not is_four_han(term):
+                  non_four_yoji.append({'row':i,'term':term,'reading':reading})
+
+          def text(x):
+              if isinstance(x,str): return x
+              if isinstance(x,dict): return str(x.get('text') or x.get('value') or x.get('keb') or x.get('reb') or '')
+              return ''
+          def arr(o,*keys):
+              if not isinstance(o,dict): return []
+              for k in keys:
+                  if isinstance(o.get(k),list): return o[k]
+              return []
+          def tags(e):
+              misc=[]
+              for sense in arr(e,'sense','senses'):
+                  misc.extend(text(x) for x in arr(sense,'misc','miscellaneous'))
+              m=' | '.join(x for x in misc if x).lower()
+              strict=bool('&yoji;' in m or 'four-character idiomatic' in m or 'yojijukugo' in m or re.search(r'(^|[^a-z])yoji([^a-z]|$)',m))
+              idi=bool('&id;' in m or 'idiomatic expression' in m or re.search(r'(^|[^a-z])idiom([^a-z]|$)',m))
+              return strict,idi
+
+          urls=[
+              'https://raw.githubusercontent.com/jpndium/jmdict/main/data/001.jsonl',
+              'https://raw.githubusercontent.com/jpndium/jmdict/main/data/002.jsonl',
+              'https://raw.githubusercontent.com/jpndium/jmdict/main/data/003.jsonl',
+          ]
+          source={}
+          for url in urls:
+              req=urllib.request.Request(url,headers={'User-Agent':'AA-Learning-OS-Kokugo-Category-Audit/1.0'})
+              with urllib.request.urlopen(req,timeout=120) as r:
+                  for raw in r:
+                      if not raw.strip(): continue
+                      e=json.loads(raw)
+                      ks=[text(x) for x in arr(e,'k_ele','kanji','kanjiElements')]; ks=[x for x in ks if x]
+                      rs=[text(x) for x in arr(e,'r_ele','kana','kanaElements','reading')]; rs=[x for x in rs if x]
+                      term=ks[0] if ks else (rs[0] if rs else text(e.get('word')) or text(e.get('term')))
+                      if not term: continue
+                      reading=rs[0] if rs else ''
+                      strict,idi=tags(e)
+                      four=is_four_han(term)
+                      if not (strict or idi or four): continue
+                      expected='yoji' if strict else ('idiom' if idi else 'four')
+                      source[(term,reading)]={'expected':expected,'strict':strict,'idiom':idi,'four':four}
+
+          source_missing=[]
+          type_mismatches=[]
+          yoji_without_source_strict=[]
+          for i,x in enumerate(rows,1):
+              term=str(x.get('term','')); reading=str(x.get('reading','')); typ=str(x.get('type',''))
+              src=source.get((term,reading))
+              if not src:
+                  source_missing.append({'row':i,'term':term,'reading':reading,'type':typ})
+                  continue
+              if typ!=src['expected']:
+                  type_mismatches.append({'row':i,'term':term,'reading':reading,'actual':typ,'expected':src['expected']})
+              if typ=='yoji' and not src['strict']:
+                  yoji_without_source_strict.append({'row':i,'term':term,'reading':reading})
+
+          problems={
+              'parse_errors':len(parse_errors),
+              'row_count_error':0 if len(rows)==15000 else 1,
+              'invalid_types':len(invalid_types),
+              'duplicates':len(duplicates),
+              'non_four_yoji':len(non_four_yoji),
+              'source_missing':len(source_missing),
+              'type_mismatches':len(type_mismatches),
+              'yoji_without_source_strict':len(yoji_without_source_strict),
+          }
+          clean=all(v==0 for v in problems.values())
+          report={
+              'generated_at':datetime.now(timezone.utc).isoformat(),
+              'database':'kokugo-chronologia/data.jsonl',
+              'rows':len(rows),
+              'unique_term_reading':len(seen),
+              'type_counts':dict(type_counts),
+              'status':'clean' if clean else 'contamination_detected',
+              'problems':problems,
+              'samples':{
+                  'parse_errors':parse_errors[:20],
+                  'invalid_types':invalid_types[:20],
+                  'duplicates':duplicates[:20],
+                  'non_four_yoji':non_four_yoji[:20],
+                  'source_missing':source_missing[:20],
+                  'type_mismatches':type_mismatches[:50],
+                  'yoji_without_source_strict':yoji_without_source_strict[:20],
+              },
+              'source':'jpndium/jmdict main (JMdict/EDRDG derived)',
+              'classification_rule':'yoji if strict JMdict yoji tag; else idiom if idiom tag; else four for 4-Han headword',
+          }
+          report_path.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          if not clean:
+              raise SystemExit(1)
+          PY
+
+      - name: Upload database audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kokugo-data-category-audit
+          path: kokugo-chronologia/DATA_CATEGORY_AUDIT.json
+          retention-days: 30
+
+      - name: Commit clean audit report
+        if: steps.audit.outcome == 'success'
+        run: |
+          git pull --rebase origin main
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add kokugo-chronologia/DATA_CATEGORY_AUDIT.json
+          if git diff --cached --quiet; then
+            echo 'Audit report unchanged.'
+          else
+            git commit -m 'Record Kokugo database category integrity audit'
+            git push origin HEAD:main
+          fi
+
+      - name: Fail when database contamination is detected
+        if: steps.audit.outcome != 'success'
+        run: |
+          echo 'Database category audit detected contamination. See uploaded report artifact.'
+          exit 1
