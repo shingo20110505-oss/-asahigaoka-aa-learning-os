@@ -4,16 +4,14 @@ import assert from 'node:assert/strict';
 
 const context={window:{}};
 vm.createContext(context);
-for(const file of ['formulas.js','visuals.js','practice.js']){
+for(const file of ['formulas.js','practice.js']){
   const src=fs.readFileSync(new URL(`../high-school-math/${file}`,import.meta.url),'utf8');
   vm.runInContext(src,context,{filename:file});
 }
 
 const bank=context.window.RISE_EXAM_MATH_FORMULAS;
-const visuals=context.window.RISE_EXAM_MATH_VISUALS;
 const practice=context.window.RISE_EXAM_MATH_PRACTICE;
 assert.ok(bank,'formula bank missing');
-assert.ok(visuals,'visual module missing');
 assert.ok(practice,'practice bank missing');
 assert.equal(bank.version,'1.2.0');
 assert.equal(bank.items.length,44,'expected 44 curated formulas');
@@ -30,20 +28,6 @@ for(const x of bank.items){
 }
 const mustHave=['チェバの定理','メネラウスの定理','方べき（2本の割線・交わる弦）','トレミーの定理','ヘロンの公式','スチュワートの定理','余弦定理','正弦定理','ブラーマグプタの公式','正四面体の体積'];
 for(const title of mustHave) assert.ok(bank.items.some(x=>x.title===title),`missing advanced formula: ${title}`);
-
-assert.equal(visuals.version,'1.0.0');
-assert.ok(Array.isArray(visuals.ids),'visual ids missing');
-assert.ok(visuals.ids.length>=20,`expected at least 20 formula diagrams, got ${visuals.ids.length}`);
-const formulaIds=new Set(bank.items.map(x=>x.id));
-for(const id of visuals.ids){
-  assert.ok(formulaIds.has(id),`diagram references unknown formula: ${id}`);
-  const svg=visuals.render(id);
-  assert.match(svg,/^<svg[\s\S]*<\/svg>$/i,`${id}: invalid SVG output`);
-  assert.ok(!/<script/i.test(svg),`${id}: diagram must not contain script`);
-}
-const advancedVisuals=visuals.ids.filter(id=>id.startsWith('a'));
-assert.ok(advancedVisuals.length>=12,'advanced formulas should have strong diagram coverage');
-for(const id of ['a01','a02','a03','a04','a05','a08','a09','a15','a16','a20','a23','a24']) assert.ok(visuals.has(id),`missing key advanced diagram: ${id}`);
 
 assert.equal(practice.version,'1.0.0');
 assert.equal(practice.items.length,28,'expected 28 practical drills');
@@ -68,8 +52,12 @@ for(const q of practice.items){
 }
 
 const html=fs.readFileSync(new URL('../high-school-math/index.html',import.meta.url),'utf8');
-for(const token of ['./formulas.js?v=1.2.0','./visuals.js?v=1.0.0','./practice.js?v=1.0.0','実戦ミニ問題','自己ベスト','serviceWorker.register(\'./sw.js\'']) assert.ok(html.includes(token),`index missing ${token}`);
+for(const token of ['./formulas.js?v=1.2.0','./practice.js?v=1.0.0','実戦ミニ問題','自己ベスト','Sランク','未定着','お気に入り','弱点優先','serviceWorker.register(\'./sw.js\'']) assert.ok(html.includes(token),`index missing ${token}`);
+assert.ok(!html.includes('visuals.js'),'index must not load formula diagrams');
+assert.ok(!html.includes('mathDiagramSvg'),'diagram CSS should be removed');
+assert.ok(!html.includes('図で見抜く'),'diagram-oriented copy should be removed');
 const sw=fs.readFileSync(new URL('../high-school-math/sw.js',import.meta.url),'utf8');
-for(const asset of ['./index.html','./formulas.js','./visuals.js','./practice.js']) assert.ok(sw.includes(asset),`scoped SW missing ${asset}`);
+for(const asset of ['./index.html','./formulas.js','./practice.js']) assert.ok(sw.includes(asset),`scoped SW missing ${asset}`);
+assert.ok(!sw.includes('visuals.js'),'scoped SW must not cache removed diagrams');
 
-console.log(`exam-math-formula-lab ok: formulas=${bank.items.length} speed=${speed.length} advanced=${advanced.length} diagrams=${visuals.ids.length} drills=${practice.items.length} advancedDrills=${advancedPractice.length}`);
+console.log(`exam-math-formula-lab ok: formulas=${bank.items.length} speed=${speed.length} advanced=${advanced.length} drills=${practice.items.length} advancedDrills=${advancedPractice.length} cleanUI=true`);
