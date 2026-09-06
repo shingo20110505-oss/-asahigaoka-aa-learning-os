@@ -1,0 +1,100 @@
+name: Replenish Japanese exam library
+
+on:
+  schedule:
+    # Daily 07:47 JST (22:47 UTC), staggered from the English reading job.
+    - cron: '47 22 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/replenish-japanese.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: japanese-exam-replenishment
+  cancel-in-progress: false
+
+jobs:
+  replenish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.5-flash' }}
+      GEMINI_FREE_TIER_CONFIRMED: 'true'
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      GROQ_MODEL: openai/gpt-oss-20b
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Require backend secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${GEMINI_API_KEY:-}"
+          test -n "${GROQ_API_KEY:-}"
+          case "${GEMINI_MODEL}" in
+            gemini-3.5-flash|gemini-3.6-flash|gemini-3.7-flash) ;;
+            *) echo "Unapproved Gemini model: ${GEMINI_MODEL}" >&2; exit 1 ;;
+          esac
+          test "${GROQ_MODEL}" = 'openai/gpt-oss-20b'
+
+      - name: Validate current Japanese library
+        run: node scripts/japanese-library.mjs
+
+      - name: Run deterministic Japanese tests
+        run: |
+          node tests/japanese-exam.mjs
+          node tests/japanese-groq-verifier.mjs
+
+      - name: Generate one candidate and independently verify
+        run: node scripts/japanese-library.mjs --generate | tee /tmp/japanese-generation.json
+
+      - name: Reject HTTP 400 transport failures explicitly
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require('fs');
+          const status = JSON.parse(fs.readFileSync('japanese-exam/generation-status.json', 'utf8'));
+          console.log(JSON.stringify(status));
+          if (status.state === 'request_rejected' || status.httpStatus === 400) {
+            console.error('Japanese backend generation was rejected with HTTP 400. Nothing will be accepted.');
+            process.exit(1);
+          }
+          NODE
+
+      - name: Revalidate accepted library
+        if: always()
+        run: node scripts/japanese-library.mjs
+
+      - name: Save accepted content and generation status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/japanese-library.mjs
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add japanese-exam/catalog.json japanese-exam/generation-status.json
+          if [ -d japanese-exam/items ]; then git add japanese-exam/items; fi
+          if ! git diff --cached --quiet; then
+            git commit -m 'Add verified Japanese exam pack and generation status'
+            for n in 1 2 3; do
+              git pull --rebase origin main
+              if git push origin HEAD:main; then break; fi
+              if [ "$n" = 3 ]; then exit 1; fi
+            done
+          fi
