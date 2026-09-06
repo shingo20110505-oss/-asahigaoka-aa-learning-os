@@ -1,43 +1,50 @@
 (()=>{'use strict';
-const VERSION='1.1.0';
+const VERSION='1.2.0';
 const study=document.getElementById('studyCard');
 const next=document.getElementById('nextQuestion');
 const index=document.getElementById('questionIndex');
 const prompt=document.getElementById('prompt');
 if(!study||!next)return;
 
-const prefersReducedMotion=()=>{
- try{return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches===true}
- catch(_){return false}
-};
 const marker=()=>`${index?.textContent||''}\n${prompt?.textContent||''}`;
 
-function scrollToQuestionTop(){
- requestAnimationFrame(()=>requestAnimationFrame(()=>{
-  study.scrollIntoView({behavior:prefersReducedMotion()?'auto':'smooth',block:'start'});
- }));
+function forceQuestionTop(){
+ if(study.classList.contains('hidden'))return;
+ const root=document.documentElement;
+ const previous=root.style.scrollBehavior;
+ root.style.scrollBehavior='auto';
+ const y=Math.max(0,window.scrollY+study.getBoundingClientRect().top-12);
+ window.scrollTo(0,y);
+ requestAnimationFrame(()=>{root.style.scrollBehavior=previous});
 }
 
 function scrollAfterQuestionChanges(before){
- let done=false;
- let fallback=0;
- const observer=new MutationObserver(()=>{
-  if(marker()!==before)finish(true);
-  else if(study.classList.contains('hidden'))finish(false);
- });
- const finish=shouldScroll=>{
-  if(done)return;
-  done=true;
-  observer.disconnect();
-  clearTimeout(fallback);
-  if(shouldScroll)scrollToQuestionTop();
+ const started=performance.now();
+ let finished=false;
+ const finish=()=>{
+  if(finished||study.classList.contains('hidden'))return;
+  finished=true;
+  // iOS/PWA can relayout once more after choices/feedback are replaced.
+  // Reassert the same position after the first paint so the viewport cannot
+  // remain at the old answer/next-button position.
+  forceQuestionTop();
+  requestAnimationFrame(forceQuestionTop);
+  setTimeout(forceQuestionTop,120);
  };
- observer.observe(study,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['class']});
- fallback=setTimeout(()=>finish(!study.classList.contains('hidden')),1800);
+ const check=()=>{
+  if(finished||study.classList.contains('hidden'))return;
+  if(marker()!==before){finish();return}
+  if(performance.now()-started<2500){requestAnimationFrame(check);return}
+  // Even if a mode reuses the same prompt text, a visible Next tap should
+  // still return the viewport to the active quiz card.
+  finish();
+ };
+ requestAnimationFrame(check);
 }
 
-// Capture on document so infinite/classics handlers cannot suppress this hook
-// with stopImmediatePropagation() on the button itself.
+// The quiz has three next-question owners (normal, infinite/classics, wrong
+// review). Listen above all of them and only handle viewport movement here;
+// scoring/history/navigation stay owned by their existing runtimes.
 document.addEventListener('click',event=>{
  const target=event.target instanceof Element?event.target.closest('#nextQuestion'):null;
  if(!target||target.classList.contains('hidden')||target.disabled)return;
