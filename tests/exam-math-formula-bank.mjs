@@ -58,6 +58,7 @@ assert.ok(!html.includes('mathDiagramSvg'),'diagram CSS should be removed');
 assert.ok(!html.includes('図で見抜く'),'diagram-oriented copy should be removed');
 const sw=fs.readFileSync(new URL('../high-school-math/sw.js',import.meta.url),'utf8');
 for(const asset of ['./index.html','./formulas.js','./practice.js']) assert.ok(sw.includes(asset),`scoped SW missing ${asset}`);
+assert.ok(sw.includes("rise-exam-formula-lab-1.2.0"),'scoped SW cache version must match formula lab 1.2.0');
 assert.ok(!sw.includes('visuals.js'),'scoped SW must not cache removed diagrams');
 
 console.log(`exam-math-formula-lab ok: formulas=${bank.items.length} speed=${speed.length} advanced=${advanced.length} drills=${practice.items.length} advancedDrills=${advancedPractice.length} cleanUI=true`);
