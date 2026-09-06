@@ -1,7 +1,8 @@
 (()=>{'use strict';
-const VERSION='2026-09-06.3';
+const VERSION='2026-09-06.4-taxonomy-quarantine';
 const KIND_MEMORY_KEY='aa_kokugo_quiz_preferred_kind_v1';
-const DB_AUDIT_URL='./data.jsonl?v=quiz-db-audit-20260906-1';
+const DB_AUDIT_URL='./data.jsonl?v=quiz-db-audit-20260906-2';
+const TAXONOMY_QUARANTINE_URL='./taxonomy-quarantine-v1.json?v=20260906-1';
 if(window.__AA_KOKUGO_QUIZ_INTERACTION_FIX__)return;
 window.__AA_KOKUGO_QUIZ_INTERACTION_FIX__=VERSION;
 
@@ -90,33 +91,53 @@ function markDbAudit(ok,detail){
   if(!el){el=document.createElement('pre');el.id='aaKokugoDbAudit';el.hidden=true;document.body.appendChild(el)}
   el.textContent=`AA_KOKUGO_DB_AUDIT=${ok?'PASS':'FAIL'} ${JSON.stringify(window.__AA_KOKUGO_DB_AUDIT__)}`;
 }
+function isCanonicalYojiSurface(term){
+  const chars=Array.from(String(term||'').normalize('NFKC'));
+  return chars.length===4&&chars.every(ch=>/^\p{Script=Han}$/u.test(ch)||ch==='々'||ch==='〻');
+}
 async function auditDatabase(){
-  const res=await fetch(DB_AUDIT_URL,{cache:'no-cache'});
+  const [res,qres]=await Promise.all([
+    fetch(DB_AUDIT_URL,{cache:'no-cache'}),
+    fetch(TAXONOMY_QUARANTINE_URL,{cache:'no-cache'})
+  ]);
   if(!res.ok)throw new Error('database HTTP '+res.status);
+  if(!qres.ok)throw new Error('taxonomy quarantine HTTP '+qres.status);
   const rows=(await res.text()).split(/\r?\n/).filter(Boolean).map(line=>JSON.parse(line));
+  const quarantine=await qres.json();
+  const quarantineRows=Array.isArray(quarantine.nonCanonicalYoji)?quarantine.nonCanonicalYoji:[];
+  const quarantineById=new Map(quarantineRows.map(x=>[String(x.id),x]));
   const validTypes=new Set(['yoji','idiom','four']);
-  const seen=new Set(),bad=[],counts={yoji:0,idiom:0,four:0};
+  const seen=new Set(),bad=[],counts={yoji:0,idiom:0,four:0},quarantined=[],nonCanonicalSeen=new Set();
   for(const x of rows){
-    const key=String(x.term||'')+'|'+String(x.reading||'');
-    const type=String(x.type||'');
+    const id=String(x.id??''),term=String(x.term||''),reading=String(x.reading||'');
+    const key=term+'|'+reading,type=String(x.type||'');
     if(counts[type]!=null)counts[type]++;
     const reasons=[];
-    if(!x.term)reasons.push('empty-term');
+    if(!term)reasons.push('empty-term');
     if(!validTypes.has(type))reasons.push('invalid-type');
     if(seen.has(key))reasons.push('duplicate');
     seen.add(key);
     if(type==='yoji'&&x.strict!==true)reasons.push('yoji-without-strict');
     if(x.strict===true&&type!=='yoji')reasons.push('strict-outside-yoji');
     if(type==='idiom'&&x.idiom!==true)reasons.push('idiom-flag-mismatch');
-    if(x.idiom===true&&type!=='idiom')reasons.push('idiom-type-mismatch');
-    if(type==='yoji'&&x.four!==true)reasons.push('yoji-four-flag-mismatch');
+    if(x.idiom===true&&x.strict!==true&&type!=='idiom')reasons.push('idiom-type-mismatch');
+    const nonCanonical=type==='yoji'&&!isCanonicalYojiSurface(term);
+    if(nonCanonical){
+      nonCanonicalSeen.add(id);
+      const q=quarantineById.get(id);
+      if(!q)reasons.push('unquarantined-noncanonical-yoji');
+      else if(String(q.term)!==term||String(q.reading)!==reading)reasons.push('taxonomy-quarantine-drift');
+      else if(quarantined.length<30)quarantined.push({id,term,reading});
+    }
+    if(type==='yoji'&&x.four!==true&&!quarantineById.has(id))reasons.push('yoji-four-flag-mismatch');
     if(type==='four'&&(x.strict===true||x.idiom===true))reasons.push('four-contaminated');
-    if(reasons.length&&bad.length<20)bad.push({id:x.id,term:x.term,reading:x.reading,type,reasons});
+    if(reasons.length&&bad.length<30)bad.push({id,term,reading,type,reasons});
   }
-  const ok=rows.length===15000&&bad.length===0;
-  markDbAudit(ok,{rows:rows.length,counts,bad});
-  if(!ok)throw new Error(`database audit failed rows=${rows.length} bad=${bad.length}`);
-  return {rows:rows.length,counts};
+  for(const q of quarantineRows){if(!nonCanonicalSeen.has(String(q.id)))bad.push({id:String(q.id),term:q.term,reading:q.reading,type:'quarantine',reasons:['quarantine-entry-not-present-as-noncanonical-yoji']})}
+  const ok=rows.length===15000&&bad.length===0&&nonCanonicalSeen.size===quarantineRows.length;
+  markDbAudit(ok,{rows:rows.length,counts,bad,quarantineVersion:quarantine.version||null,quarantinedNonCanonicalYoji:nonCanonicalSeen.size,quarantined});
+  if(!ok)throw new Error(`database audit failed rows=${rows.length} bad=${bad.length} quarantined=${nonCanonicalSeen.size}/${quarantineRows.length}`);
+  return {rows:rows.length,counts,quarantinedNonCanonicalYoji:nonCanonicalSeen.size};
 }
 function waitFor(test,timeout=30000){return new Promise((resolve,reject)=>{const start=Date.now(),tick=()=>{let value;try{value=test()}catch(_){}if(value)return resolve(value);if(Date.now()-start>timeout)return reject(new Error('timeout'));setTimeout(tick,80)};tick()})}
 async function runAudit(){
@@ -134,6 +155,10 @@ async function runAudit(){
     start.click();
     if(kind&&kind.value!=='yoji')throw new Error(`category persistence failed: ${kind.value}`);
     await waitFor(()=>document.querySelector('#jkgQuiz .quiz-meta'));
+    const diagnosticItems=Array.isArray(window.__AA_KOKUGO_LAST_QUIZ_ITEMS__)?window.__AA_KOKUGO_LAST_QUIZ_ITEMS__:[];
+    if(!diagnosticItems.length||diagnosticItems.some(x=>x.type!=='yoji'||x.canonicalYoji!==true))throw new Error('yoji taxonomy guard failed');
+    const excluded=Number(window.__AA_KOKUGO_NONCANONICAL_YOJI_EXCLUDED__||0);
+    if(excluded!==db.quarantinedNonCanonicalYoji)throw new Error(`yoji quarantine mismatch runtime=${excluded} db=${db.quarantinedNonCanonicalYoji}`);
     const choice=await waitFor(()=>document.querySelector('#jkgQuiz .quiz-opt'));
     const Ev=window.PointerEvent||window.MouseEvent;
     choice.dispatchEvent(new Ev('pointerup',{bubbles:true,cancelable:true,pointerType:'touch'}));
@@ -143,7 +168,7 @@ async function runAudit(){
     const nextVisible=!!next&&getComputedStyle(next).display!=='none';
     const full=Number(window.__AA_KOKUGO_FULL_15000_COUNT__||0),pool=Number(window.__AA_KOKUGO_QUIZ_POOL_COUNT__||0);
     if(!disabled||!nextVisible||full!==15000||pool<15000)throw new Error(`graded=${disabled} next=${nextVisible} full=${full} pool=${pool}`);
-    markAudit(true,{graded:true,nextVisible:true,realTouchCapture:true,rankSelector:true,categoryPersistence:true,databaseAudit:true,dbCounts:db.counts,full15000:full,pool,version:VERSION});
+    markAudit(true,{graded:true,nextVisible:true,realTouchCapture:true,rankSelector:true,categoryPersistence:true,databaseAudit:true,yojiTaxonomyGuard:true,quarantinedNonCanonicalYoji:excluded,dbCounts:db.counts,full15000:full,pool,version:VERSION});
   }catch(err){markAudit(false,{error:String(err?.message||err),dbAudit:window.__AA_KOKUGO_DB_AUDIT__||null,version:VERSION})}
 }
 
@@ -196,7 +221,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 (()=>{'use strict';
 if(document.getElementById('aaKokugoQuizRankLoader'))return;
-const loadRank=()=>{if(document.getElementById('aaKokugoQuizRankLoader'))return;const s=document.createElement('script');s.id='aaKokugoQuizRankLoader';s.src='./quiz-rank-select-v1.js?v=20260906-3';s.async=false;document.head.appendChild(s)};
+const loadRank=()=>{if(document.getElementById('aaKokugoQuizRankLoader'))return;const s=document.createElement('script');s.id='aaKokugoQuizRankLoader';s.src='./quiz-rank-select-v1.js?v=20260906-4';s.async=false;document.head.appendChild(s)};
 const waitSupplement=()=>{let tries=0;const timer=setInterval(()=>{if(window.__AA_JAPANESE_VOCAB_SUPPLEMENT__||++tries>=500){clearInterval(timer);loadRank()}},10)};
 if(document.getElementById('aaKokugoVocabSupplementV1')){waitSupplement();return}
 const sup=document.createElement('script');sup.id='aaKokugoVocabSupplementV1';sup.src='./jukugo-bank-supplement-v1.js?v=20260905-1';sup.async=false;sup.onload=waitSupplement;sup.onerror=loadRank;document.head.appendChild(sup);
