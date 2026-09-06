@@ -4,9 +4,19 @@ const root=document.documentElement;
 const app=document.getElementById('app');
 const CORE=new Set(['home','subjects','analytics','settings']);
 const PANEL={home:'.riseHomeV4',subjects:'.riseSubjectsV4',analytics:'.riseAnalyticsV4',settings:'.riseSettingsV4'};
+const AI_EXAM_SRC=new URL('../../ai-exam-route-v1.js?v=1.0.0',document.currentScript?.src||new URL('./app/ui/rise-legacy-shell-guard-v1.js',location.href)).href;
 let syncQueued=false;
 let legacyHits=0;
 
+function loadAiExamRoute(){
+  if(window.__AA_AI_EXAM_ROUTE_V1__||document.querySelector('script[data-aa-ai-exam-route="1"]'))return;
+  const script=document.createElement('script');
+  script.src=AI_EXAM_SRC;
+  script.async=false;
+  script.dataset.aaAiExamRoute='1';
+  script.onerror=()=>console.error('Rise AI entrance exam route failed to load');
+  document.head.appendChild(script);
+}
 function route(){
   try{return window.AA_APP?.get?.('state')?.get?.()?.route||root.dataset.riseRoute||'home'}catch(_){return root.dataset.riseRoute||'home'}
 }
@@ -68,12 +78,14 @@ function check(source='mutation'){
 }
 
 window.__RISE_LEGACY_SHELL_GUARD_V1__={
-  version:'1.0.0',
+  version:'1.0.1',
   strategy:'conceal-legacy-core-shell-and-resync-rise',
+  aiExamRoute:'1.0.0',
   get blocked(){return legacyHits},
   check:()=>check('manual')
 };
 
+loadAiExamRoute();
 wrapLegacyRender();
 if(app){
   let raf=0;
@@ -84,8 +96,8 @@ if(app){
 }
 document.addEventListener('rise:settings-changed',()=>check('settings-change'));
 document.addEventListener('rise:navigation',()=>check('navigation'));
-document.addEventListener('aa:v23ready',()=>wrapLegacyRender());
-addEventListener('pageshow',()=>check('pageshow'));
+document.addEventListener('aa:v23ready',()=>{wrapLegacyRender();loadAiExamRoute()});
+addEventListener('pageshow',()=>{check('pageshow');loadAiExamRoute()});
 setTimeout(()=>check('boot-250'),250);
 setTimeout(()=>check('boot-1200'),1200);
 })();
