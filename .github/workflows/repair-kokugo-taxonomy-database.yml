@@ -105,7 +105,6 @@ jobs:
           if missing:
               raise SystemExit(f'Rows missing from current JMdict source: {len(missing)}')
 
-          # Post-repair structural invariants.
           invalid=[]
           type_counts=Counter()
           flag_counts=Counter()
@@ -176,7 +175,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add kokugo-chronologia/data.jsonl kokugo-chronologia/KOKUGO_CHRONOLOGIA_STATUS.json kokugo-chronologia/DATA_CATEGORY_AUDIT.json reports/kokugo-taxonomy-audit-v1.json
+          git add kokugo-chronologia/data.jsonl kokugo-chronologia/KOKUGO_CHRONOLOGIA_STATUS.json kokugo-chronologia/DATA_CATEGORY_AUDIT.json
           if git diff --cached --quiet; then
             echo 'No taxonomy database changes required.'
             exit 0
