@@ -12,6 +12,7 @@
 - `aa_japanese_exam_session_v1` / `aa_japanese_exam_history_v1` / `aa_japanese_exam_imports_v1` のみ書き込む。
 - 途中再開、任意の制限時間、見直しフラグ、分野別演習、誤答オペレーターを優先する弱点演習。
 - ブラウザから外部AIへの呼び出しはなく、学習時のAPI料金は0。既存のService Workerを使用する。
+- `catalog.json` と `items/<sha256>.json` から、バックエンドで受理済みの追加教材をSHA-256確認後に読み込む。
 
 ## 限界を明示する
 
@@ -19,20 +20,25 @@
 
 新しい教材は、Geminiで本文生成→Geminiで設問生成→Riseの決定的構造検査→Groqによる4大問のblind独立解答→正答・各肢判定・本文完全一致引用の照合、という経路を使う。Groqには作者の正答ID・解説・根拠メタデータ・誤答オペレーター・語彙の解答用資料を渡さない。AI同士の一致も正しさを保証するものではないため、Riseの決定的検査を必ず併用する。
 
-## API生成（まだ自動実行しない）
+## バックエンド定期生成
 
-`node scripts/japanese-library.mjs --generate` は `GEMINI_API_KEY`、`GEMINI_MODEL`、`GEMINI_FREE_TIER_CONFIRMED=true`、`GROQ_API_KEY` が必要。`GROQ_MODEL` は未指定時 `openai/gpt-oss-20b` を使用し、現在はそれ以外への自動切替を認めない。Geminiも既存の `gemini-3.5-flash` をそのまま利用でき、コード側から勝手に上位モデルへ変更しない。
+`.github/workflows/replenish-japanese.yml` が毎日 07:47 JST（22:47 UTC）にGitHub Actions上で実行する。既存の英語長文生成（06:17 JST）とは90分ずらし、別concurrencyグループで動かす。ブラウザやGitHub PagesからGemini/Groqへ生成要求を送らない。
+
+`node scripts/japanese-library.mjs --generate` は `GEMINI_API_KEY`、`GEMINI_MODEL`、`GEMINI_FREE_TIER_CONFIRMED=true`、`GROQ_API_KEY` が必要。`GROQ_MODEL` は `openai/gpt-oss-20b` に固定し、それ以外への自動切替を認めない。Geminiも許可済みFlashモデルだけを使い、コード側から勝手に有料・上位モデルへ変更しない。
+
+Gemini生成は `v1beta/models/<model>:generateContent` のJSONモードを使う。Interactionsのrevision headerへ依存しない。HTTP 400は `request_rejected` として明示的に失敗させ、候補を受理しない。HTTP 429はその日の追加を停止し、自動再試行・有料Batch API・別プロバイダーへのフォールバックを行わない。既存教材はそのまま利用できる。
+
+1日1候補。候補ごとにGemini 2回（本文・設問）とGroq 4回（大問1〜4）の最大6回。Groqには大問単位の最小blind入力だけを送り、長い国語一式を一度に送らない。秘密鍵はGitHub Actions secrets / 環境変数からのみ取得し、公開ファイルやブラウザへ保存しない。
+
+候補がRise構造検査とGroq独立検証を通過した場合だけ `items/<sha256>.json` と `catalog.json` を更新して `main` に保存する。採用された日だけ `deploy-pages.yml` を明示起動し、Pagesの公開検証が完了するまで待つ。`scripts/verify-japanese-public.mjs` は公開中の国語アセット、catalog、追加教材JSONを取得し、SHA-256・モジュールMIME・22点採点・教材構造を検証する。公開検証が失敗した場合は定期生成Workflowも成功扱いにしない。
 
 確認フラグはAI Studioで対象プロジェクトが無料枠であることを管理者が確認した後にだけ設定する。フラグ自体が課金状態を技術的に照会・保証するものではない。
-
-1日1候補。候補ごとにGemini 2回（本文・設問）とGroq 4回（大問1〜4）の最大6回。Groqには大問単位の最小blind入力だけを送り、長い国語一式を一度に送らない。再試行・有料Batch API・別プロバイダーへの自動切替はしない。429なら追加を止め、既存教材を配信し続ける。秘密鍵は環境変数からのみ取得し、公開ファイルやブラウザへ保存しない。公開書き込みと生成の同時実行は避ける。
-
-既存の英語の自動生成スケジュールは変更していない。国語の定期実行は未設定。
 
 ## 検証
 
 - `node tests/japanese-exam.mjs`
 - `node tests/japanese-groq-verifier.mjs`
 - `node scripts/japanese-library.mjs`
+- `node scripts/verify-japanese-public.mjs <Pages URL> <source SHA>`
 
-テストは、配点・選択数・ID・本文引用・一意な並べ替えの形・採点・表示順不変・外部生成の無料確認ゲートに加え、Groqへ正答情報が漏れないこと、4大問を別々に照合すること、低信頼・曖昧回答・誤答・捏造引用を拒否することを検査する。実モデルの正答能力そのものは別のlive smokeで確認する。
+テストは、配点・選択数・ID・本文引用・一意な並べ替えの形・採点・表示順不変・外部生成の無料確認ゲートに加え、Groqへ正答情報が漏れないこと、4大問を別々に照合すること、低信頼・曖昧回答・誤答・捏造引用を拒否することを検査する。実モデルの正答能力そのものはlive smokeと実際の定期生成結果で確認する。
