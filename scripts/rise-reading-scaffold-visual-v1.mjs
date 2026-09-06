@@ -33,12 +33,16 @@ const views=[{name:'mobile',width:390,height:844,ua:MOBILE_UA},{name:'desktop',w
 for(const view of views){const c=await launch(view);try{
  const url=`${PAGE_URL}?visual_verify=1&verify=${encodeURIComponent(SOURCE_SHA)}&reading_visual=${encodeURIComponent(SOURCE_SHA)}`;
  await c.cmd('Page.navigate',{url});
- await waitFor(c,`window.__AA_READING_EXAM_SCAFFOLD_V1__?.version==='1.0.1'&&window.__AA_AI_READING_V1__?.version==='2.0.1'&&!!window.AAReadingLibrary&&!!document.querySelector('#app')`,'reading production stack');
+ await waitFor(c,`window.__AA_READING_EXAM_SCAFFOLD_V1__?.version==='1.1.0'&&window.__AA_AI_READING_V1__?.version==='2.0.1'&&!!window.AAReadingLibrary&&!!document.querySelector('#app')`,'reading production stack');
+ await waitFor(c,`typeof studyHTML==='function'&&studyHTML.__aaReadingExamScaffoldWrapped==='1.1.0'&&typeof subjectsHTML==='function'&&subjectsHTML.__aaReadingExamScaffoldWrapped==='1.1.0'`,'persistent reading hooks');
  await ev(c,`(()=>{const b=document.querySelector('[data-route="subjects"]');if(b){b.click();return true}try{if(typeof setRoute==='function'){setRoute('subjects');return true}}catch(_){}return false})()`);
  await waitFor(c,`!!document.querySelector('.riseSubjectsV4')`,'Rise subjects route');
  await waitFor(c,`!!document.querySelector('.riseSubjectsV4 [data-reading-mode="scaffold-exam"][data-action="ai-reading-scaffold"]')`,'support reading production button');
- const integration=await ev(c,`(()=>{const s=document.querySelector('.riseSubjectsV4 [data-reading-mode="scaffold-exam"]'),e=document.querySelector('.riseSubjectsV4 [data-reading-mode="exam"]'),t=document.body.innerText;return{supportAction:s?.dataset.action==='ai-reading-scaffold',supportLabel:s?.textContent?.trim()==='補助つき入試長文',examAction:e?.dataset.action==='ai-reading-exam',examLabel:e?.textContent?.trim()==='入試長文（補助なし）',note:t.includes('補助長文も愛知県入試型の5問4択'),runtime:document.documentElement.dataset.readingScaffold==='1.0.1'}})()`);
+ const integration=await ev(c,`(()=>{const s=document.querySelector('.riseSubjectsV4 [data-reading-mode="scaffold-exam"]'),e=document.querySelector('.riseSubjectsV4 [data-reading-mode="exam"]'),t=document.body.innerText;return{supportAction:s?.dataset.action==='ai-reading-scaffold',supportLabel:s?.textContent?.trim()==='補助つき入試長文',examAction:e?.dataset.action==='ai-reading-exam',examLabel:e?.textContent?.trim()==='入試長文（補助なし）',note:t.includes('補助長文も愛知県入試型の5問4択'),runtime:document.documentElement.dataset.readingScaffold==='1.1.0',studyHook:studyHTML.__aaReadingExamScaffoldWrapped==='1.1.0',subjectsHook:subjectsHTML.__aaReadingExamScaffoldWrapped==='1.1.0'}})()`);
  for(const [k,v] of Object.entries(integration))if(!v)throw new Error(`${view.name} integration failed: ${k}`);
+ await ev(c,`(()=>{try{localStorage.removeItem('aa_ai_reading_config_v1')}catch(_){}document.querySelector('.riseSubjectsV4 [data-action="ai-reading-scaffold"]')?.click();return true})()`);
+ await waitFor(c,`!!document.querySelector('#aaAiReadingConfig')`,'support click AI route');
+ await ev(c,`document.querySelector('#aaAiReadingConfig [data-action="ai-reading-config-close"]')?.click()`);
  let shot=await c.cmd('Page.captureScreenshot',{format:'png',fromSurface:true,captureBeyondViewport:false});
  await writeFile(path.join(OUT,`rise-reading-entry-${view.name}-${view.width}x${view.height}.png`),Buffer.from(shot.data,'base64'));
  const payload=JSON.stringify(sample);
@@ -49,5 +53,5 @@ for(const view of views){const c=await launch(view);try{
  await writeFile(path.join(OUT,`rise-reading-scaffold-${view.name}-${view.width}x${view.height}.png`),Buffer.from(shot.data,'base64'));
  await writeFile(path.join(OUT,`rise-reading-scaffold-${view.name}.html`),await ev(c,'document.documentElement.outerHTML'));
  }finally{await c.close()}}
-await writeFile(path.join(OUT,'manifest.txt'),['result=success','runtime=ai-reading-exam-scaffold-v1@1.0.1','ai_runtime=ai-reading-v1@2.0.1','library_runtime=connected','production_entry=verified','support_action=ai-reading-scaffold','support_format=aichi-exam','question_count_visual=5-format','choices_per_question=4','preteach=removed','chatgpt_during_attempt=removed','vocabulary_support=in-text-only','mobile=390x844','desktop=1440x1000'].join('\n')+'\n');
+await writeFile(path.join(OUT,'manifest.txt'),['result=success','runtime=ai-reading-exam-scaffold-v1@1.1.0','ai_runtime=ai-reading-v1@2.0.1','library_runtime=connected','production_entry=verified','support_action=ai-reading-scaffold','support_click_route=verified','persistent_hooks=verified','support_format=aichi-exam','question_count_visual=5-format','choices_per_question=4','preteach=removed','chatgpt_during_attempt=removed','vocabulary_support=in-text-only','mobile=390x844','desktop=1440x1000'].join('\n')+'\n');
 console.log('result=success');
