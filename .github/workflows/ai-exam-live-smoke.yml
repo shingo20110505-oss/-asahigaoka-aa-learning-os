@@ -15,6 +15,36 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Diagnose exact Gemini exam schema
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: gemini-3.5-flash
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import { callGeminiJson } from './worker/src/providers/gemini.mjs';
+          import { HARDENED_EXAM_GENERATION_SCHEMA } from './worker/src/exam-platform-hardened.mjs';
+          try {
+            const result = await callGeminiJson(process.env, {
+              input: 'Create exactly one original junior-high mathematics four-choice item. Return only schema JSON.',
+              schema: HARDENED_EXAM_GENERATION_SCHEMA,
+              schemaName: 'rise_math_exam_hardened_v2',
+              maxOutputTokens: 3000,
+              thinkingLevel: 'low'
+            });
+            console.log('GEMINI_EXAM_SCHEMA=PASS mode='+result.mode);
+          } catch (error) {
+            console.log('GEMINI_EXAM_SCHEMA=FAIL');
+            console.log('code='+String(error?.code||''));
+            console.log('status='+String(error?.status||''));
+            console.log('message='+String(error?.message||'').replace(/\s+/g,' ').slice(0,1200));
+            console.log('diagnostic='+String(error?.diagnostic||''));
+          }
+          NODE
+
       - name: Call public production exam endpoint for all 3 subjects
         shell: bash
         run: |
