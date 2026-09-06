@@ -1,5 +1,5 @@
 'use strict';
-const CACHE='rise-exam-formula-lab-1.1.0';
+const CACHE='rise-exam-formula-lab-1.2.0';
 const ASSETS=['./','./index.html','./formulas.js','./practice.js'];
 self.addEventListener('install',event=>{event.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(ASSETS);await self.skipWaiting()})())});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('rise-exam-formula-lab-')&&k!==CACHE).map(k=>caches.delete(k)));await self.clients.claim()})())});
