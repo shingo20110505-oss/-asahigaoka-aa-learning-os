@@ -1,0 +1,96 @@
+name: Verify Menelaus v2 public review image
+
+on:
+  push:
+    branches: [verify-menelaus-v2-public-20260906]
+    paths:
+      - '.github/workflows/verify-menelaus-v2-public-20260906.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout verification branch
+        uses: actions/checkout@v4
+
+      - name: Verify public review data and corrected image
+        run: |
+          set -euo pipefail
+          BASE='https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/'
+          ASSET='review/assets/20260906-menelaus-ceva-theorems-v2.svg'
+          BANK='review-bank-v1.js'
+          TARGET_SHA='533f9b625823fe25d539159449b1a7118f118bca'
+          BUSTER="$(date +%s)-${GITHUB_SHA}"
+
+          ok=0
+          for n in $(seq 1 24); do
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}release.json?verify=${BUSTER}-${n}" -o /tmp/release.json && grep -q "$TARGET_SHA" /tmp/release.json; then
+              ok=1
+              break
+            fi
+            sleep 5
+          done
+          test "$ok" = 1
+
+          curl -fsSL --retry 5 --retry-delay 2 -D /tmp/asset.headers "${BASE}${ASSET}?verify=${BUSTER}" -o /tmp/public.svg
+          curl -fsSL --retry 5 --retry-delay 2 "${BASE}${BANK}?verify=${BUSTER}" -o /tmp/public-bank.js
+          curl -fsSL --retry 5 --retry-delay 2 "${BASE}review/?verify=${BUSTER}" -o /tmp/public-review.html
+
+          SOURCE_ASSET_SHA=$(sha256sum "$ASSET" | awk '{print $1}')
+          PUBLIC_ASSET_SHA=$(sha256sum /tmp/public.svg | awk '{print $1}')
+          SOURCE_BANK_SHA=$(sha256sum "$BANK" | awk '{print $1}')
+          PUBLIC_BANK_SHA=$(sha256sum /tmp/public-bank.js | awk '{print $1}')
+
+          test "$SOURCE_ASSET_SHA" = "$PUBLIC_ASSET_SHA"
+          test "$SOURCE_BANK_SHA" = "$PUBLIC_BANK_SHA"
+          test "$SOURCE_BANK_SHA" = '4760a6aa3bb25acf4b20185b34a3e696b112c493391a184a06866ec567fdacd2'
+          grep -qi '^content-type:.*image/svg+xml' /tmp/asset.headers
+          grep -q "id:'math-menelaus-theorem-20260906'" /tmp/public-bank.js
+          grep -q "id:'math-ceva-theorem-20260906'" /tmp/public-bank.js
+          test "$(grep -o "image:'assets/20260906-menelaus-ceva-theorems-v2.svg'" /tmp/public-bank.js | wc -l)" -ge 2
+          grep -q 'Review v2' /tmp/public-review.html
+          grep -q "fetch('../review-bank-v1.js'" /tmp/public-review.html
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          p=Path('/tmp/public.svg')
+          data=p.read_text(encoding='utf-8')
+          root=ET.fromstring(data)
+          assert root.tag.endswith('svg')
+          assert root.attrib.get('viewBox') == '0 0 1200 900'
+          assert 'メネラウスの定理' in data
+          assert 'チェバの定理' in data
+          assert 'D・F・E が一直線' in data
+          assert 'BD/DC × CE/EA × AF/FB = 1' in data
+          assert 'DをBCの延長上' in data
+          assert 'https://' not in data
+          assert 'data:' not in data
+          print('PUBLIC_SVG_XML=success')
+          PY
+
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
+          test -n "$CHROME"
+          "$CHROME" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --window-size=1200,900 --screenshot=/tmp/menelaus-v2-public.png "${BASE}${ASSET}?render=${BUSTER}"
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct
+          p=Path('/tmp/menelaus-v2-public.png')
+          b=p.read_bytes()
+          assert b[:8] == b'\x89PNG\r\n\x1a\n'
+          w,h=struct.unpack('>II', b[16:24])
+          assert w >= 1000 and h >= 700
+          assert len(b) > 20000
+          print(f'PUBLIC_IMAGE_RENDER=success width={w} height={h} bytes={len(b)}')
+          PY
+
+          echo "SOURCE_ASSET_SHA256=${SOURCE_ASSET_SHA}"
+          echo "PUBLIC_ASSET_SHA256=${PUBLIC_ASSET_SHA}"
+          echo "SOURCE_REVIEW_SHA256=${SOURCE_BANK_SHA}"
+          echo "PUBLIC_REVIEW_SHA256=${PUBLIC_BANK_SHA}"
+          echo 'PUBLIC_CARD_IMAGE_REFERENCE=success'
+          echo 'MENELAUS_V2_PUBLIC_VERIFY=success'
