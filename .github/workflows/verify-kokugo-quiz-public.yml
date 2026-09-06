@@ -3,7 +3,9 @@ name: Verify Kokugo Quiz Category on Pages
 on:
   push:
     paths:
-      - '.kokugo-quiz-public-verify-trigger'
+      - '.kokugo-quiz-public-verify-trigger*'
+      - '.github/workflows/verify-kokugo-quiz-public.yml'
+      - 'scripts/verify-kokugo-quiz-public.py'
   workflow_dispatch:
 
 permissions:
