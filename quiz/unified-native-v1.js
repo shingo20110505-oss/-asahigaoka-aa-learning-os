@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const VERSION='1.2.0';
+const VERSION='1.2.1';
 const SUBJECTS=Object.freeze(['english','japanese','social']);
 const core=window.RISE_VOCABULARY_CORE_V1;
 const progressAdapters=window.RISE_VOCABULARY_PROGRESS_ADAPTERS_V1;
@@ -238,14 +238,15 @@ function buildJapaneseQuestions(count,mode,kind,rank,wrongOnly=false,weakPriorit
 }
 
 function socialPool(level,period,weakOnly=false){return data.social.filter(x=>{const r=x.raw;if(period!=='all'&&r.period!==period)return false;if(level==='SA'&&!['S','A'].includes(r.level))return false;if(level==='S'&&r.level!=='S')return false;if(weakOnly&&progressForSocial(x).status!=='weak')return false;return true})}
+function socialHasExactYear(item){return /^(紀元前)?\d+年$/.test(item.raw.date)}
 function normalizeYearInput(v){return text(v).normalize('NFKC').toLowerCase().replace(/[\s,，]/g,'').replace(/年$/g,'').replace(/^bc/g,'紀元前')}
 function acceptedYear(item,input){const a=normalizeYearInput(input);if(item.raw.sort<0){const n=String(Math.abs(item.raw.sort));return['紀元前'+n,'-'+n,n+'bc'].includes(a)}return a===String(item.raw.sort)}
 function socialQuestion(item,mode,pool){
- let actual=mode;if(actual==='mixed')actual=/^(紀元前)?\d+年$/.test(item.raw.date)&&Math.random()<.52?'eventToYear':'yearToEvent';if(actual==='eventToYear'&&!/^(紀元前)?\d+年$/.test(item.raw.date))actual='yearToEvent';
+ let actual=mode;if(actual==='mixed')actual=socialHasExactYear(item)&&Math.random()<.52?'eventToYear':'yearToEvent';if(actual==='eventToYear'&&!socialHasExactYear(item))return null;
  if(actual==='eventToYear')return{subject:'social',actual,prompt:item.raw.event,hint:'年号を入力してください（例：645 / 645年 / 紀元前221）',answer:item.raw.date,choices:null,input:true,inputMode:'year',item,explanation:item.raw.detail||`${item.raw.event}｜${item.raw.date}`,check:v=>acceptedYear(item,v),commit(ok){socialApi.record(item.raw.id,ok);refreshSocial()}};
  const same=pool.filter(x=>x!==item&&x.raw.period===item.raw.period&&x.raw.sort!==item.raw.sort),vals=pickValues(same,item,'event');if(vals.length<3)return null;return{subject:'social',actual,prompt:item.raw.date,hint:'この年の出来事を選んでください',answer:item.raw.event,choices:shuffle([item.raw.event,...vals]),input:false,item,explanation:item.raw.detail||`${item.raw.date}｜${item.raw.event}`,check:v=>text(v)===item.raw.event,commit(ok){socialApi.record(item.raw.id,ok);refreshSocial()}};
 }
-function buildSocialQuestions(count,mode,level,period,weakOnly=false){let pool=socialPool(level,period,weakOnly);if(pool.length<4&&!weakOnly)pool=socialPool('all','all',false);return shuffle(pool).map(x=>socialQuestion(x,mode,pool)).filter(Boolean).slice(0,count)}
+function buildSocialQuestions(count,mode,level,period,weakOnly=false){let pool=socialPool(level,period,weakOnly);if(mode==='eventToYear')pool=pool.filter(socialHasExactYear);if(pool.length<4&&!weakOnly){pool=socialPool('all','all',false);if(mode==='eventToYear')pool=pool.filter(socialHasExactYear)}return shuffle(pool).map(x=>socialQuestion(x,mode,pool)).filter(Boolean).slice(0,count)}
 
 function mixedQuotas(count,bias){const q={english:Math.floor(count/3),japanese:Math.floor(count/3),social:Math.floor(count/3)},order=bias&&q[bias]!=null?[bias,'english','japanese','social'].filter((x,i,a)=>a.indexOf(x)===i):['english','japanese','social'];let rest=count-q.english-q.japanese-q.social,i=0;while(rest-->0){q[order[i++%order.length]]++}if(bias&&q[bias]!=null&&count>=10){const donor=order.find(x=>x!==bias&&q[x]>2);if(donor){q[bias]++;q[donor]--}}return q}
 function buildMixedQuestions(count,bias,exam){const q=mixedQuotas(count,bias==='balanced'?null:bias),weak=focusWeak;const en=buildEnglishQuestions(q.english,'random','all',exam==='exam'?'weak':'all',false,weak||exam==='exam');const ja=buildJapaneseQuestions(q.japanese,'random','all',exam==='exam'?'AB':'all',false,weak||exam==='exam');const so=buildSocialQuestions(q.social,'mixed',exam==='exam'?'SA':'all','all',weak);return shuffle([...en,...ja,...so]).slice(0,count)}
