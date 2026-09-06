@@ -19,6 +19,7 @@ jobs:
           set -euo pipefail
           BASE='https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev'
           ORIGIN='https://shingo20110505-oss.github.io'
+          echo 'VERIFY_MODEL_SWITCH=gemini-3.5-flash-lite'
           curl -fsSL --max-time 30 "$BASE/health" | tee /tmp/health.json
           HTTP="$(curl -sS --max-time 210 -w '%{http_code}' \
             -X POST \
