@@ -1,5 +1,5 @@
-/* Rise feedback contrast fix v1.0.1
-   Keeps legacy answer feedback readable inside the Rise v4 dark glass skin.
+/* Rise feedback contrast fix v1.0.2
+   Keeps legacy answer feedback and legacy modal content readable inside the Rise v4 skin.
    Deliberately route-agnostic because entrance-exam questions live under the public
    "subjects" route while other exercises may render under different internal routes. */
 html[data-rise-skin="v4"] #app main .feedback{
@@ -39,4 +39,37 @@ html[data-rise-skin="v4"] #app main .feedback .explainAll{
 }
 html[data-rise-skin="v4"] #app main .feedback .explainChoice{
   border-bottom-color:rgba(255,255,255,.12);
+}
+
+/* Legacy modal boxes still use the base theme's light --card surface. Rise v4 sets
+   the page text to near-white, so without this scope WORD SUPPORT (and other legacy
+   dialogs) inherit white text on a white card. Keep the light modal surface, but pair
+   it with the base theme's dark ink/sub/blue tokens. */
+html[data-rise-skin="v4"] #app .modal .modalBox{
+  color:var(--ink);
+}
+html[data-rise-skin="v4"] #app .modal .modalBox .glossWord,
+html[data-rise-skin="v4"] #app .modal .modalBox .h2,
+html[data-rise-skin="v4"] #app .modal .modalBox .h3,
+html[data-rise-skin="v4"] #app .modal .modalBox p,
+html[data-rise-skin="v4"] #app .modal .modalBox b,
+html[data-rise-skin="v4"] #app .modal .modalBox label{
+  color:var(--ink);
+}
+html[data-rise-skin="v4"] #app .modal .modalBox .eyebrow{
+  color:var(--blue);
+}
+html[data-rise-skin="v4"] #app .modal .modalBox .sub,
+html[data-rise-skin="v4"] #app .modal .modalBox .tiny{
+  color:var(--sub);
+}
+html[data-rise-skin="v4"] #app .modal .modalBox .btn.soft{
+  color:var(--blue);
+  background:var(--blue2);
+  border-color:color-mix(in srgb,var(--blue) 20%,var(--line));
+}
+html[data-rise-skin="v4"] #app .modal .modalBox .btn.ghost{
+  color:var(--ink);
+  background:var(--card);
+  border-color:var(--line);
 }
