@@ -24,7 +24,6 @@ jobs:
           set -euo pipefail
           node tests/exam-math-formula-bank.mjs
           node --check high-school-math/formulas.js
-          node --check high-school-math/visuals.js
           node --check high-school-math/practice.js
           node --check high-school-math/sw.js
 
@@ -49,12 +48,17 @@ jobs:
           }
           verify_file index.html
           verify_file formulas.js
-          verify_file visuals.js
           verify_file practice.js
           verify_file sw.js
           grep -q '入試数学 便利公式' /tmp/index.html
           grep -q '実戦ミニ問題' /tmp/index.html
+          grep -q 'Sランク' /tmp/index.html
+          grep -q 'お気に入り' /tmp/index.html
+          grep -q '弱点優先' /tmp/index.html
           grep -q 'serviceWorker.register' /tmp/index.html
-          grep -q 'RISE_EXAM_MATH_VISUALS' /tmp/visuals.js
+          if grep -q 'visuals.js' /tmp/index.html; then
+            echo 'Removed diagram module is still referenced publicly' >&2
+            exit 1
+          fi
           grep -q 'RISE_EXAM_MATH_PRACTICE' /tmp/practice.js
           echo "Exam math formula lab public verification succeeded for ${SOURCE_SHA}."
