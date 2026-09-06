@@ -1,13 +1,513 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-05.1",
-  "updatedAt": null,
+  "poolVersion": "2026-09-06-14-06-22Z",
+  "updatedAt": "2026-09-06T14:06:22.792Z",
   "targetPerSubject": 24,
   "subjects": {
-    "english": [],
-    "math": [],
-    "japanese": [],
-    "science": [],
-    "social": []
+    "english": [
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "According to the notice, what happens if it rains heavily on Saturday morning?",
+        "context": "Notice: Green City Park Cleanup Day\nDate: Saturday, October 14th (Rain date: Sunday, October 15th)\nTime: 9:00 a.m. - 11:30 a.m.\nMeeting Place: South Gate of the park.\nWhat to bring: Gloves, a water bottle, and a student ID. Trash bags will be provided at the meeting place.\nNote: If it rains heavily on Saturday morning, the event will be postponed to the next day automatically. Participants who cannot attend on Sunday must cancel their registration by Friday noon.",
+        "choices": [
+          "The event is postponed until the following weekend automatically.",
+          "Participants must bring their own trash bags to the South Gate on Sunday.",
+          "Participants must cancel their registration by Saturday noon if they cannot attend on Sunday.",
+          "The event is automatically moved to Sunday, and those unable to attend must cancel by Friday noon."
+        ],
+        "answerIndex": 3,
+        "answer": "The event is automatically moved to Sunday, and those unable to attend must cancel by Friday noon.",
+        "explanation": "The text states that in case of heavy rain on Saturday morning, the event is automatically postponed to Sunday, and participants who cannot attend on that day need to complete their cancellation by Friday noon. A common trap is confusing the cancellation deadline day or misinterpreting who provides trash bags.",
+        "evidence": "If it rains heavily on Saturday morning, the event will be postponed to the next day automatically. Participants who cannot attend on Sunday must cancel their registration by Friday noon.",
+        "misconception": "Confusing the cancellation deadline (Friday noon) with the event day or assuming participants must bring their own trash bags despite the text stating they are provided.",
+        "marks": 2,
+        "id": "rise-english-2de95ac8c449b3a4",
+        "fingerprint": "f886af9d52322def",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-06T14:06:07.934Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "What does Ken suggest Yoko do to make her presentation fit the time limit?",
+        "context": "Ken: Hi, Yoko. How is your presentation about local traditional crafts going?\nYoko: Well, I found a lot of information about pottery in Tokoname, but my slides are too long. I have ten minutes, but my current script takes nearly fifteen.\nKen: Why don't you cut out the history part? You can just focus on how modern artisans make them today.\nYoko: That's a good idea, but the teacher said we need to explain both the origin and the current situation.\nKen: I see. Then maybe you can speed up your talking or use pictures instead of long sentences on your slides to save time.",
+        "choices": [
+          "Ask the teacher to extend the presentation time by five minutes.",
+          "Focus only on Tokoname pottery and skip using slides altogether.",
+          "Remove the history part completely to shorten the presentation script.",
+          "Speak faster or use pictures instead of long sentences on her slides."
+        ],
+        "answerIndex": 3,
+        "answer": "Speak faster or use pictures instead of long sentences on her slides.",
+        "explanation": "After Yoko rejects his first suggestion to cut the history part because the teacher requires both origin and current situation, Ken offers an alternative solution to save time. A strong distractor is his initial rejected suggestion about cutting the history part.",
+        "evidence": "Then maybe you can speed up your talking or use pictures instead of long sentences on your slides to save time.",
+        "misconception": "Selecting Ken's initial suggestion about cutting out the history part, overlooking the fact that Yoko points out the teacher's requirement making that suggestion unusable.",
+        "marks": 2,
+        "id": "rise-english-41909753a4b4dc9f",
+        "fingerprint": "aad7fcab358b8261",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-06T14:06:07.934Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "According to Lisa's email, what is her main concern regarding the schedule?",
+        "context": "From: Lisa Smith\nTo: Taro Tanaka\nSubject: Science Museum Visit Next Week\nHi Taro,\nThanks for organizing our visit to the Nagoya Science Museum next Tuesday. Here is my confirmation. I will meet you at the ticket gate of Sakae Station at 9:30 a.m. Since the special planetarium show starts at 10:00 a.m. and we need to buy tickets first, do you think 30 minutes will be enough time to get from the station to the museum entrance? Also, remember that we promised to bring our biology notebooks for the afternoon workshop.",
+        "choices": [
+          "Whether the planetarium show will be canceled or postponed due to bad weather.",
+          "Whether they need to bring their biology notebooks to the planetarium show.",
+          "Whether they can meet directly at the museum entrance instead of Sakae Station.",
+          "Whether 30 minutes is enough time to travel from the station to the museum and buy tickets."
+        ],
+        "answerIndex": 3,
+        "answer": "Whether 30 minutes is enough time to travel from the station to the museum and buy tickets.",
+        "explanation": "Lisa explicitly questions whether the 30-minute window between meeting at the station at 9:30 and the planetarium start time at 10:00 (while needing to buy tickets) is sufficient. A distractor mentions bringing biology notebooks, but that is noted as a separate matter for the afternoon workshop rather than a scheduling concern.",
+        "evidence": "do you think 30 minutes will be enough time to get from the station to the museum entrance?",
+        "misconception": "Confusing the afternoon workshop requirement (biology notebooks) with the time constraint concern raised about the morning schedule.",
+        "marks": 2,
+        "id": "rise-english-c6ce2758e0ed53ec",
+        "fingerprint": "ea17ec7ffc258a71",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-06T14:06:07.934Z"
+        }
+      }
+    ],
+    "math": [
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "1日の売上金額が最大となるときの価格は何万円か。ただし、価格xは整数値のみをとるものとする。",
+        "context": "ある製品の1日あたりの売上個数yは、価格x（万円）の一次関数として表され、価格を4万円にすると売上は16個になり、価格を8万円にすると売上は8個になる。この製品の1日の売上金額（売上個数×価格）を最大にするための価格を求める。",
+        "choices": [
+          "8万円",
+          "5万円",
+          "6万円",
+          "7万円"
+        ],
+        "answerIndex": 2,
+        "answer": "6万円",
+        "explanation": "売上個数yは一次関数であり、(4, 16)と(8, 8)を通るため、傾きは(8-16)/(8-4)=-2となる。これよりy=-2x+24と表せる。1日の売上金額RはR=x(-2x+24)=-2x^2+24x=-2(x-6)^2+72となる。xは整数であり、軸であるx=6のとき最大値72をとる。最強の罠は平均や単純な端の値を考えることであり、適切な平方完成または整数代入によりx=6が最適であると求められる。",
+        "evidence": "価格を4万円にすると売上は16個になり、価格を8万円にすると売上は8個になる。",
+        "misconception": "売上個数そのものを最大化しようとして低価格を選んでしまう、または二次関数の軸以外の整数値を誤って選んでしまう。",
+        "marks": 2,
+        "id": "rise-math-b4e120e83bbce964",
+        "fingerprint": "e1abcb7921af010b",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-06T14:05:27.357Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "つくった整数が4の倍数となる確率はいくつか。",
+        "context": "袋の中に1から6までの数字が1つずつ書かれた6枚のカードが入っている。この袋から同時に2枚のカードを取り出し、書かれた数の大きい方を十の位、小さい方を一の位として2けたの整数をつくる。",
+        "choices": [
+          "1/3",
+          "1/6",
+          "1/5",
+          "4/15"
+        ],
+        "answerIndex": 2,
+        "answer": "1/5",
+        "explanation": "6枚から2枚を取り出す組合せは全部で15通りである。つくられる2けたの整数のうち、4の倍数（下2桁が4の倍数）となるのは、十の位と一の位の組み合わせが(3, 2)からできる32、(5, 2)からできる52、(6, 4)からできる64の3通りである。したがって確率は3/15=1/5となる。最強の罠は順列として全事象を30通りと計算してしまい比率を誤ることである。",
+        "evidence": "この袋から同時に2枚のカードを取り出し、書かれた数の大きい方を十の位、小さい方を一の位として2けたの整数をつくる。",
+        "misconception": "同時に取り出す組合せではなく、順序を考慮した順列として全事象を計算してしまう。",
+        "marks": 2,
+        "id": "rise-math-1dcf0a1fd169999b",
+        "fingerprint": "1655b1dc4a62f3f6",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-06T14:05:27.357Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "三角形AEFの面積が3 cm²であるとき、平行四辺形ABCDの面積を求めよ。",
+        "context": "平行四辺形ABCDがあり、辺ABの中点をEとする。対角線ACと線分EDの交点をFとする。",
+        "choices": [
+          "30 cm²",
+          "36 cm²",
+          "42 cm²",
+          "24 cm²"
+        ],
+        "answerIndex": 1,
+        "answer": "36 cm²",
+        "explanation": "AB平行DCより三角形AEFと三角形CDFは相似であり、相似比はAE:DC=1:2である。したがってAF:CF=1:2となる。三角形AEFの面積が3cm²であるから、高さが共通で底面の比が1:2である三角形ECFの面積は6cm²となり、三角形AECの面積は9cm²となる。EはABの中点であるため三角形ABCの面積はその2倍の18cm²となり、平行四辺形ABCDの面積は三角形ABCの2倍の36cm²となる。",
+        "evidence": "平行四辺形ABCDがあり、辺ABの中点をEとする。対角線ACと線分EDの交点をFとする。",
+        "misconception": "相似比をそのまま面積比と勘違いして全体の面積を小さく見積もってしまう。",
+        "marks": 2,
+        "id": "rise-math-3fd553f768ff255b",
+        "fingerprint": "5743a8ef612d375d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-06T14:05:27.357Z"
+        }
+      }
+    ],
+    "japanese": [
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.japanese.reading.application",
+        "difficulty": 8,
+        "question": "本文において、筆者がデジタル上の文字コミュニケーションにおける限界として述べている内容として、最も適当なものを次の中から選びなさい。",
+        "context": "現代の私たちは、SNSをはじめとする文字を主軸としたデジタルコミュニケーションに囲まれている。文字によるやり取りは、時間や場所を選ばず情報を伝達できる点で極めて効率的である。しかし、対面での会話に備わっている表情の変化や声のトーンといった非言語的情報は削ぎ落とされる。その結果、送り手の意図が十分に含まれていない場合でも、受け手が自己の文脈で勝手に解釈を補完してしまい、すれ違いが生じやすい。「文字は雄弁であると同時に、最も沈黙する表現媒体である」という逆説を、私たちは常に意識しなければならない。",
+        "choices": [
+          "対面会話と比較して情報量が圧倒的に不足しているため、コミュニケーションの手段として完全に排除されるべきであること。",
+          "文字そのものが持つ表現力の限界によって、送り手がどのような意図を持っていても、受け手には冷淡な感情として伝わること。",
+          "文字情報は効率的である反面、非言語的情報が欠落するため、受け手が自己流の解釈を補うことで誤解やすれ違いが起きやすいこと。",
+          "時間や場所を選ばない利点がある一方で、送信にかかる技術的制約から、送り手の真意が完全に隠蔽されてしまうこと。"
+        ],
+        "answerIndex": 2,
+        "answer": "文字情報は効率的である反面、非言語的情報が欠落するため、受け手が自己流の解釈を補うことで誤解やすれ違いが起きやすいこと。",
+        "explanation": "本文では、文字コミュニケーションは非言語的情報が削ぎ落とされるため「受け手が自己の文脈で勝手に解釈を補完してしまい、すれ違いが生じやすい」と述べられています。この内容と一致するのは最初の選択肢です。他の選択肢は、完全に排除されるべきだという極端な主張や、真意が完全に隠蔽されるといった本文にない誇張、あるいは常に冷淡な感情として伝わるという誤った限定が含まれており、不適切です。",
+        "evidence": "表情の変化や声のトーンといった非言語的情報は削ぎ落とされる。その結果、送り手の意図が十分に含まれていない場合でも、受け手が自己の文脈で勝手に解釈を補完してしまい、すれ違いが生じやすい。",
+        "misconception": "「完全に排除されるべき」や「常に冷淡に伝わる」といった、筆者の論旨を超えた極端な断定や過度な一般化を正しいと勘違いしてしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-d4e6454eb5dc51f2",
+        "fingerprint": "920233b55ef4d197",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-06T14:06:18.926Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.japanese.classical.application",
+        "difficulty": 8,
+        "question": "次の古文調の短文において、主君のとった行動が周囲に与えた影響として、本文の記述から読み取れる最も適当なものを次の中から選びなさい。",
+        "context": "ある時、殿が城下の小さな村を訪れた際、供の者が住民の粗野な振る舞いを咎めようとした。しかし、殿はこれを制し、「民の無作法は、彼らを教え導くべき我が政の至らなさに由来する」として、自らの衣服の汚れをも恥じ入った。この姿勢を目の当たりにした家臣たちは、これまでの傲慢さを深く反省し、率先して民の暮らし向きに心を配るようになった。",
+        "choices": [
+          "供の者が住民を叱責したことにより、村全体が殿の一行に対して強い敵意を抱くようになったこと。",
+          "殿が衣服の汚れを気にして早々に城へ引き返したため、家臣たちは計画していた村の調査を断念せざるを得なかったこと。",
+          "殿が住民の無礼をとがめなかったことで、村人たちは殿を軽んじるようになり、治安がかえって悪化したこと。",
+          "殿が自身の政治の至らなさを反省した姿勢を見せたことで、家臣たちが自身の傲慢さを省みて民への配慮を強めるようになったこと。"
+        ],
+        "answerIndex": 3,
+        "answer": "殿が自身の政治の至らなさを反省した姿勢を見せたことで、家臣たちが自身の傲慢さを省みて民への配慮を強めるようになったこと。",
+        "explanation": "本文中では、殿が自身の政の至らなさと捉えて自らを恥じ入った姿を見た家臣たちが、「これまでの傲慢さを深く反省し、率先して民の暮らし向きに心を配るようになった」と述べられています。したがって、家臣たちの意識変容を正しく捉えている選択肢が正解です。他の選択肢は、村人や家臣の反応について本文の記述と異なる誤りを含んでいます。",
+        "evidence": "この姿勢を目の当たりにした家臣たちは、これまでの傲慢さを深く反省し、率先して民の暮らし向きに心を配るようになった。",
+        "misconception": "殿の寛容な態度が村人側に与えた影響（村人の治安悪化など）と、家臣側に与えた影響（反省と民への配慮）を取り違えること。",
+        "marks": 2,
+        "id": "rise-japanese-e5919573213e7ad7",
+        "fingerprint": "a3428bb437cf1fa6",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-06T14:06:18.926Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "本文の内容を踏まえて、筆者が「効率性」を追求することの懸念として挙げている点について、最も適当なものを次の中から一つ選びなさい。",
+        "context": "現代社会において、あらゆる場面で「効率性」の向上が求められている。無駄を省き、短時間で最大の成果を上げることは一見して合理的であるように思える。しかし、その効率化の過程で、私たちは数値化しにくい豊かな体験や、一見すると回り道に見える試行錯誤のプロセスを切り捨ててはいないだろうか。効率ばかりを優先するあまり、物事の背景にある文脈や、そこから得られる深い洞察を味わう余裕が失われつつある。真の豊かさとは、スピードや成果の量だけで測れるものではなく、むしろその「非効率な時間」の中にこそ、人間の感性を育む大切な営みが潜んでいるのである。",
+        "choices": [
+          "効率的なプロセスを追求することが、かえって人間本来の感性を豊かに育むための最も確実な手段となること。",
+          "短時間で成果を出そうとするあまり、物事の背景にある文脈や深い洞察を得る機会が損なわれていること。",
+          "無駄を省くことによって、数値化しにくい豊かな体験や試行錯誤がより一層重視されるようになること。",
+          "スピードや成果の量が重視される結果として、社会全体の経済的な発展スピードが著しく低下すること。"
+        ],
+        "answerIndex": 1,
+        "answer": "短時間で成果を出そうとするあまり、物事の背景にある文脈や深い洞察を得る機会が損なわれていること。",
+        "explanation": "本文では、効率化の過程で「物事の背景にある文脈や、そこから得られる深い洞察を味わう余裕が失われつつある」と述べられています。したがって、効率性を追求することの懸念点として最も適切なものは、背景にある文脈や深い洞察を得る機会が損なわれていることとなります。他の選択肢は本文の記述に反するか、誤った因果関係を含んでいます。",
+        "evidence": "効率ばかりを優先するあまり、物事の背景にある文脈や、そこから得られる深い洞察を味わう余裕が失われつつある。",
+        "misconception": "「非効率な時間の中にこそ感性が潜んでいる」という部分を逆にとらえ、効率的なプロセスそのものが感性を育む手段であると誤解してしまうことや、経済的発展の低下といった本文に書かれていない内容を付け加えてしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-8ac0b414047983a0",
+        "fingerprint": "f2513de754958105",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-06T14:06:22.773Z"
+        }
+      }
+    ],
+    "science": [
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "実験中の金属粉Aの質量が0.40gのとき、発生した気体の体積は何cm3か。",
+        "context": "金属粉Aの質量を0.10gから0.50gまで0.10g刻みで変化させ、それぞれに十分な量の塩酸を加えたところ発生した気体の体積を測定した。結果は次の通りである。質量0.10gのとき28cm3、質量0.20gのとき56cm3、質量0.30gのとき84cm3、質量0.40gのとき112cm3、質量0.50gのとき140cm3。",
+        "choices": [
+          "140cm3",
+          "84cm3",
+          "56cm3",
+          "112cm3"
+        ],
+        "answerIndex": 3,
+        "answer": "112cm3",
+        "explanation": "金属粉の質量と発生する気体の体積は比例関係にある。資料より質量0.40gのとき112cm3の気体が発生することが直接示されている。最も強い罠は比例関係を見誤り他の質量に対応する体積を選ぶことである。計算値は112cm3である。",
+        "evidence": "質量0.40gのとき112cm3",
+        "misconception": "金属粉の質量と発生する気体の体積が比例しない、あるいは別の質量の数値を読み違える誤解。",
+        "marks": 2,
+        "id": "rise-science-ac92c0984499d6dc",
+        "fingerprint": "424a1c804ad26c76",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-06T14:05:45.335Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "表の記録から、水溶液Pに電流を流したときに起こる変化として最も適切なものはどれか。",
+        "context": "水溶液Pに電流を流す実験を行ったところ、陽極側から特有の刺激臭を持つ黄緑色の気体が発生し、陰極側の電極表面には赤色の金属が付着した。この水溶液Pは塩化銅水溶液であり、電気分解によってそれぞれの物質が生成されることが確認された。",
+        "choices": [
+          "両極ともに金属のみが付着する",
+          "陰極側に赤色の金属が付着し、陽極側に黄緑色の気体が発生する",
+          "陽極側に赤色の金属が付着し、陰極側に黄緑色の気体が発生する",
+          "両極ともに気体のみが発生する"
+        ],
+        "answerIndex": 1,
+        "answer": "陰極側に赤色の金属が付着し、陽極側に黄緑色の気体が発生する",
+        "explanation": "塩化銅水溶液の電気分解では、銅イオンが陰極に引き寄せられて赤色の金属（銅）が析出し、塩化物イオンが陽極に引き寄せられて黄緑色の気体（塩素）が発生する。最も強い罠は陰極と陽極で発生する物質の組み合わせを逆にしてしまうことである。",
+        "evidence": "陽極側から特有の刺激臭を持つ黄緑色の気体が発生し、陰極側の電極表面には赤色の金属が付着した",
+        "misconception": "電気分解における陰極と陽極でのイオンの移動および生成物の位置を混同する誤解。",
+        "marks": 2,
+        "id": "rise-science-aa037194d58f1288",
+        "fingerprint": "2cce5700e6fe155a",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-06T14:05:45.335Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "ばねに加えた力の大きさと、ばねの全体の長さの関係について、図のグラフから読み取れる正しい記述はどれか。ただし、ばねの限界を超える力は加えていないものとする。",
+        "context": "自然の長さが10.0cmのばねに、1.0Nから5.0Nまでの力を1.0N刻みで加えたときのばねの全体の長さを測定した。結果は、1.0Nで12.0cm、2.0Nで14.0cm、3.0Nで16.0cm、4.0Nで18.0cm、5.0Nで20.0cmであった。",
+        "choices": [
+          "ばねののびは加えた力の大きさに比例する",
+          "ばねの全体の長さは加えた力の大きさに反比例する",
+          "ばねに力を加えないときの長さは12.0cmである",
+          "加えた力が2倍になるとばねの全体の長さも2倍になる計測値になる"
+        ],
+        "answerIndex": 0,
+        "answer": "ばねののびは加えた力の大きさに比例する",
+        "explanation": "力の大きさが1.0Nから5.0Nまで1.0N増えるごとに、全体の長さが12.0cmから20.0cmまで2.0cmずつ一定の割合で増加している。すなわち、ばねののび（全体の長さから自然の長さを引いたもの）は加えた力に比例する。全体の長さ自体は力に比例しないため、最後の選択肢のような誤答に注意が必要である。",
+        "evidence": "1.0Nで12.0cm、2.0Nで14.0cm、3.0Nで16.0cm、4.0Nで18.0cm、5.0Nで20.0cm",
+        "misconception": "ばねの「のび」と「全体の長さ」を混同し、全体の長さが力に正比例すると錯覚する誤解。",
+        "marks": 2,
+        "id": "rise-science-4bd959220225620e",
+        "fingerprint": "f0447930680bd6b6",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-06T14:05:45.335Z"
+        }
+      }
+    ],
+    "social": [
+      {
+        "subject": "social",
+        "skill": "aichi.exam.geography.regional_agriculture",
+        "difficulty": 8,
+        "question": "愛知県の地域的特色と農業の結びつきについて述べた文として最も適当なものはどれか。",
+        "context": "愛知県の渥美半島では、豊川用水の開通により農業用水が確保され、温暖な気候と日照時間の長さを活かした近郊農業や施設園芸が盛んである。特にキャベツや菊などの生産が全国トップクラスであり、コンピュータ制御などを用いた効率的な生産が行われている。",
+        "choices": [
+          "大都市近郊の利点を活かして乳牛の飼育が中心に行われ、酪農産物の出荷額が全国一である。",
+          "火山灰台地特有の乾燥した土壌を克服するため、主に干天に強い茶の栽培が行われている。",
+          "豊川用水の完成によって水不足が解消され、冷涼な気候を利用した稲作の単作地帯となっている。",
+          "温暖な気候や日照時間の長さに加え、用水の整備により施設園芸や近郊農業が発達している。"
+        ],
+        "answerIndex": 3,
+        "answer": "温暖な気候や日照時間の長さに加え、用水の整備により施設園芸や近郊農業が発達している。",
+        "explanation": "文中の記述から、渥美半島では豊川用水による水資源の確保と、温暖で日照時間に恵まれた気候条件を背景にして、近郊農業や施設園芸が発展したことが読み取れます。水不足の解消と気候の特性が結びついている選択肢が正解となります。冷涼な気候や茶の栽培、酪農中心とする記述は地域の実際の農業特色と異なるため不適当です。",
+        "evidence": "豊川用水の開通により農業用水が確保され、温暖な気候と日照時間の長さを活かした近郊農業や施設園芸が盛んである。",
+        "misconception": "他の地域（例えば牧之原台地のお茶や北海道の冷涼な農業など）の知識と混同し、誤った気候や農産物を選択してしまう。",
+        "marks": 2,
+        "id": "rise-social-acebe18fbfa89833",
+        "fingerprint": "155efa3f7186c9c5",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-06T14:05:58.400Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.history.modern_reform",
+        "difficulty": 8,
+        "question": "明治初期に行われた新たな税制改革の影響や仕組みについて述べた文として最も適当なものはどれか。",
+        "context": "明治時代初期、政府は財政基盤を安定させるため、土地の所有者に地券を発行し、地価の3％を現金で納めさせる税制改革を実施した。これにより農民の負担は確実なものとなり、凶作や価格変動の影響を受けた農民が土地を手放して都市へ流出するケースも見られた。",
+        "choices": [
+          "納付方法が収穫された米による物納から現金納付に変わったことで、米価の変動による農民の負担軽減につながった。",
+          "納税義務者が実際の耕作者から土地の所有者に変更され、地価をもとに現金で納めさせる仕組みとなった。",
+          "改革によって農民の税負担が大幅に軽減されたため、農村から都市への人口流出が完全に防止された。",
+          "税収が農産物の豊凶に左右される不安定な仕組みから、完全に脱却することはできなかった。"
+        ],
+        "answerIndex": 1,
+        "answer": "納税義務者が実際の耕作者から土地の所有者に変更され、地価をもとに現金で納めさせる仕組みとなった。",
+        "explanation": "地租改正では、土地の所有者に対して地券が交付され、土地の価格（地価）の一定割合を現金で納める制度となりました。現金納付とされたことで、不作や米価下落時にも税額が変わらず農民の大きな負担となったため、負担軽減につながったとする選択肢や、都市への流出が防がれたとする記述は誤りです。また、税収が豊凶に左右されない安定したものとなったため、脱却できなかったという記述も不適当です。",
+        "evidence": "土地の所有者に地券を発行し、地価の3％を現金で納めさせる税制改革を実施した。",
+        "misconception": "現金納付への変更が農民の負担を軽くしたという誤ったイメージを持つこと。",
+        "marks": 2,
+        "id": "rise-social-903f3bc5b72e0121",
+        "fingerprint": "bc0042a9fb6ec6f7",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-06T14:05:58.400Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.civics.local_finance",
+        "difficulty": 8,
+        "question": "日本の地方自治における財政の仕組みと国との関係について述べた文として最も適当なものはどれか。",
+        "context": "日本の地方自治において、自治体が住民サービスを安定して提供するためには、住民税などの地方税だけでなく、国からの地方交付税交付金などの財源も重要な役割を果たしている。これらは自治体間の財政力の格差を調整する目的も持っている。",
+        "choices": [
+          "自治体間の財政力の格差を調整し、どの地域でも一定の行政サービスを維持するために、国から交付される財源が存在する。",
+          "地方税の税率や税目はすべての地方自治体が独自に自由に決定できるため、地域による財政格差は発生しない。",
+          "地方自治体の歳入はすべて住民税などの自主財源でまかなわれており、国からの財政的な支援は一切受けていない。",
+          "地方交付税交付金は、すべての自治体が一律の金額を受け取ることで、地域の個性を活かした政策を自主的に行うためのものである。"
+        ],
+        "answerIndex": 0,
+        "answer": "自治体間の財政力の格差を調整し、どの地域でも一定の行政サービスを維持するために、国から交付される財源が存在する。",
+        "explanation": "文中に示されている通り、地方交付税交付金などの財源は、自治体間の財政力の格差を調整する目的を持っており、住民に対して一定の行政サービスを維持するために重要です。すべての自治体が自主財源のみでまかなっているわけではなく、また一律の金額が配分されるわけでもありません。地方税の税率や税目も完全に自由ではなく法律の枠内での設定となります。",
+        "evidence": "これらは自治体間の財政力の格差を調整する目的も持っている。",
+        "misconception": "地方自治体は完全に独立した財政運営を行っており、国からの補助や交付金に依存していないと誤解すること。",
+        "marks": 2,
+        "id": "rise-social-6ac630fb78925a0f",
+        "fingerprint": "6e178acbd52fcdd9",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-06T14:05:58.400Z"
+        }
+      }
+    ]
   }
 }
