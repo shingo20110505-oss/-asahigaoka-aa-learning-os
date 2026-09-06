@@ -2,7 +2,7 @@
   'use strict';
   if(window.__AA_READING_EXAM_SCAFFOLD_V1__) return;
 
-  const VERSION='1.0.1';
+  const VERSION='1.0.2';
   const ENTRANCE_DIFFICULTY=9;
   const SUPPORT_ACTIONS=new Set(['ai-reading-scaffold','ai-reading-live-scaffold']);
   const EXAM_ACTIONS=new Set(['ai-reading-exam','start-reading-simulator','start-reading-exam']);
@@ -65,10 +65,28 @@
     return out;
   }
 
+  function supportButton(className='btn ghost'){
+    const button=document.createElement('button');
+    button.type='button';
+    button.className=className;
+    button.dataset.action='ai-reading-scaffold';
+    button.dataset.readingMode='scaffold-exam';
+    button.textContent='補助つき入試長文';
+    button.setAttribute('aria-label','補助つき入試長文。愛知県入試型5問、単語補助のみ利用できます');
+    return button;
+  }
+
   function decorateRiseSubjects(root=document){
     const scope=root?.querySelector?root:document;
-    const support=scope.querySelector('.riseSubjectsV4 [data-action="start-custom"][data-kind="reading"][data-subject="english"], .riseSubjectsV4 [data-reading-mode="scaffold-exam"]');
-    const exam=scope.querySelector('.riseSubjectsV4 [data-action="start-reading-exam"], .riseSubjectsV4 [data-reading-mode="exam"]');
+    let support=scope.querySelector('.riseSubjectsV4 [data-action="ai-reading-scaffold"], .riseSubjectsV4 [data-action="start-custom"][data-kind="reading"][data-subject="english"], .riseSubjectsV4 [data-reading-mode="scaffold-exam"]');
+    const exam=scope.querySelector('.riseSubjectsV4 [data-action="ai-reading-exam"], .riseSubjectsV4 [data-action="start-reading-exam"], .riseSubjectsV4 [data-reading-mode="exam"]');
+    if(!support&&exam){
+      const actions=exam.closest('.r6Actions,.rv4SubjectExtras,.actions');
+      if(actions){
+        support=supportButton(exam.classList.contains('primary')?'btn ghost':'btn primary');
+        actions.insertBefore(support,exam);
+      }
+    }
     if(support){
       support.dataset.action='ai-reading-scaffold';
       support.dataset.readingMode='scaffold-exam';
@@ -83,14 +101,33 @@
       exam.textContent='入試長文（補助なし）';
       exam.setAttribute('aria-label','入試長文。補助なしで愛知県入試型5問を解きます');
     }
-    const card=support?.closest?.('.rv4SubjectCard');
-    if(card&&!card.querySelector('.aaReadingModeNote')){
-      const note=document.createElement('p');
-      note.className='tiny aaReadingModeNote';
-      note.textContent='補助長文も愛知県入試型の5問4択。違いは、分からない単語だけ本文中で確認できることです。';
-      card.appendChild(note);
+    const card=(support||exam)?.closest?.('.rv4SubjectCard,.r6Card');
+    if(card){
+      const desc=card.querySelector('.r6Subject p');
+      if(desc)desc.textContent='Gemini生成・正答検査済み。補助あり／なしを選べます。';
+      if(!card.querySelector('.aaReadingModeNote')){
+        const note=document.createElement('p');
+        note.className='tiny aaReadingModeNote';
+        note.textContent='補助長文も愛知県入試型の5問4択。違いは、分からない単語だけ本文中で確認できることです。';
+        card.appendChild(note);
+      }
     }
     return !!support;
+  }
+
+  function decorateRiseLearning(root=document){
+    const scope=root?.querySelector?root:document;
+    const panel=scope.querySelector('.riseAnalyticsV4[data-rise-ia="learn-priority"], .riseAnalyticsV4');
+    if(!panel)return false;
+    if(panel.querySelector('[data-aa-support-reading-learning="1"]'))return true;
+    const grid=panel.querySelector('.r6Grid.r6Learn');
+    if(!grid)return false;
+    const article=document.createElement('article');
+    article.className='rv4Card r6Card aaSupportReadingLearning';
+    article.dataset.aaSupportReadingLearning='1';
+    article.innerHTML='<div class="r6Top"><div class="r6Subject"><i class="r6Icon">読</i><div><h3>補助つき英語長文</h3><p>英単語の学習履歴と読解の弱点を使い、語彙サポート付きで読むGemini生成長文。</p></div></div><span class="r6Badge">API・語彙連動</span></div><div class="r6Actions"><button class="btn primary" type="button" data-action="ai-reading-scaffold" data-reading-mode="scaffold-exam">補助つき長文を読む</button><a class="btn ghost" href="./vocab.html">英単語を復習</a></div><p class="tiny aaReadingModeNote">長文はAPIで生成・検査済み。学習中は分からない単語だけ本文中で確認でき、記録は単語学習へ戻ります。</p>';
+    grid.prepend(article);
+    return true;
   }
 
   if(typeof studyHTML==='function'){
@@ -114,8 +151,6 @@
     };
   }
 
-  // ai-reading-v1 handles these clicks on document capture. Window capture runs first,
-  // so the request is built at the same entrance-exam difficulty for both modes.
   window.addEventListener('click',event=>{
     const action=event.target?.closest?.('[data-action]')?.dataset?.action;
     if(!SUPPORT_ACTIONS.has(action)&&!EXAM_ACTIONS.has(action)) return;
@@ -129,7 +164,11 @@
   const scheduleDecorate=()=>{
     if(decorateQueued)return;
     decorateQueued=true;
-    requestAnimationFrame(()=>{decorateQueued=false;decorateRiseSubjects(document);});
+    requestAnimationFrame(()=>{
+      decorateQueued=false;
+      decorateRiseSubjects(document);
+      decorateRiseLearning(document);
+    });
   };
   const attachRiseObserver=()=>{
     const app=document.getElementById('app');
@@ -141,6 +180,7 @@
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attachRiseObserver,{once:true});
   else attachRiseObserver();
   document.addEventListener('rise:navigation',scheduleDecorate);
+  document.addEventListener('aa:v23ready',scheduleDecorate);
   document.documentElement.dataset.readingScaffold=VERSION;
 
   const style=document.createElement('style');
@@ -152,7 +192,8 @@
     .aaReadingExamScaffold .passage{font-size:clamp(16px,2.6vw,18px);line-height:1.9}
     .aaReadingExamScaffold .qstem{font-size:clamp(16px,2.6vw,18px);line-height:1.7;font-weight:800}
     .aaReadingExamScaffold .choice{min-height:52px;text-align:left;line-height:1.55}
-    .riseSubjectsV4 .aaReadingModeNote{margin:10px 2px 0;line-height:1.6;color:var(--sub,#52617a)}
+    .riseSubjectsV4 .aaReadingModeNote,.riseAnalyticsV4 .aaReadingModeNote{margin:10px 2px 0;line-height:1.6;color:var(--sub,#52617a)}
+    .aaSupportReadingLearning{border-color:color-mix(in srgb,#8aa4ff 38%,rgba(255,255,255,.14))!important;background:linear-gradient(145deg,rgba(66,91,156,.48),rgba(92,66,138,.34))!important}
     @media(max-width:560px){.aaReadingExamScaffold .aaExamScaffoldRule{padding:11px 12px}.aaReadingExamScaffold .passage{line-height:1.82}}
   `;
   document.head.appendChild(style);
@@ -162,6 +203,7 @@
     entranceDifficulty:ENTRANCE_DIFFICULTY,
     transformStudyHtml,
     transformSubjectsHtml,
-    decorateRiseSubjects
+    decorateRiseSubjects,
+    decorateRiseLearning
   });
 })();
