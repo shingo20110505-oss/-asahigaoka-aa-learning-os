@@ -1,0 +1,45 @@
+name: Diagnose live Rise AI exam generation
+
+on:
+  push:
+    paths:
+      - '.github/workflows/ai-exam-live-diagnostic.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Call production Worker exactly like Rise
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev'
+          ORIGIN='https://shingo20110505-oss.github.io'
+          curl -fsSL --max-time 30 "$BASE/health" | tee /tmp/health.json
+          HTTP="$(curl -sS --max-time 210 -w '%{http_code}' \
+            -X POST \
+            -H "Origin: $ORIGIN" \
+            -H 'Content-Type: application/json' \
+            --data '{"schemaVersion":2,"subject":"math","count":8,"difficulty":8,"skill":"aichi.exam.application","focus":[],"recentQuestionIds":[]}' \
+            "$BASE/v1/exam" -o /tmp/exam.json || true)"
+          echo "PUBLIC_RISE_EXAM_HTTP=$HTTP"
+          cat /tmp/exam.json
+          echo
+          if [[ "$HTTP" != 200 ]]; then
+            node - <<'NODE'
+          const p=require('/tmp/exam.json');
+          console.error(`PUBLIC_RISE_EXAM_ERROR_CODE=${p?.error?.code||'unknown'}`);
+          console.error(`PUBLIC_RISE_EXAM_ERROR_MESSAGE=${p?.error?.message||'unknown'}`);
+          process.exit(1);
+          NODE
+          fi
+          node - <<'NODE'
+          const p=require('/tmp/exam.json');
+          const ok=p?.schemaVersion===1 && p?.quality?.verified===true && p?.subject==='math' && Array.isArray(p?.items) && p.items.length>0 && p.items.every(x=>x?.quality?.verified===true);
+          if(!ok){console.error('PUBLIC_RISE_EXAM_INVALID_RESPONSE');process.exit(1)}
+          console.log(`PUBLIC_RISE_EXAM_PASS items=${p.items.length}`);
+          NODE
