@@ -53,6 +53,7 @@ jobs:
           cmp -s ai-reading-exam-scaffold-v1.js /tmp/reading-scaffold.js
           grep -q "ENTRANCE_DIFFICULTY=9" /tmp/reading-scaffold.js
           grep -q "入試問題と同じ形式" /tmp/reading-scaffold.js
+          grep -q "version:VERSION" /tmp/reading-scaffold.js
           node --check scripts/rise-reading-scaffold-visual-v1.mjs
 
       - name: Install Japanese rendering fonts
@@ -73,10 +74,12 @@ jobs:
           rm -rf reading-scaffold-evidence
           node scripts/rise-reading-scaffold-visual-v1.mjs
           grep -q '^result=success$' reading-scaffold-evidence/manifest.txt
+          grep -q '^production_entry=verified$' reading-scaffold-evidence/manifest.txt
+          grep -q '^support_action=ai-reading-scaffold$' reading-scaffold-evidence/manifest.txt
           grep -q '^support_format=aichi-exam$' reading-scaffold-evidence/manifest.txt
           grep -q '^preteach=removed$' reading-scaffold-evidence/manifest.txt
           grep -q '^chatgpt_during_attempt=removed$' reading-scaffold-evidence/manifest.txt
-          test "$(find reading-scaffold-evidence -maxdepth 1 -name '*.png' | wc -l)" -eq 2
+          test "$(find reading-scaffold-evidence -maxdepth 1 -name '*.png' | wc -l)" -eq 4
           cat reading-scaffold-evidence/manifest.txt
 
       - name: Upload support reading screenshot evidence
@@ -95,6 +98,8 @@ jobs:
             echo '## Rise support reading production visual evidence'
             echo ''
             echo "- Source: \`${SOURCE_SHA}\`"
+            echo '- Production Study screen is connected to the verified AI reading runtime.'
+            echo '- The support button routes to `ai-reading-scaffold`.'
             echo '- Support reading uses the Aichi entrance-exam reading presentation.'
             echo '- Five-question / four-choice exam flow is retained.'
             echo '- Upfront vocabulary preteach is removed.'
