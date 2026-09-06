@@ -30,7 +30,7 @@ jobs:
         run: node tests/exam-math-formula-bank.mjs
       - name: Protect normal entrance math boundary
         run: |
-          grep -q "curriculum:'junior-high'" math-exam/adapter.js
+          grep -q "source.curriculum='junior-high'" math-exam/adapter.js
           if grep -R "RISE_EXAM_MATH_FORMULAS" math-exam/; then
             echo 'Formula lab leaked into normal entrance math engine' >&2
             exit 1
