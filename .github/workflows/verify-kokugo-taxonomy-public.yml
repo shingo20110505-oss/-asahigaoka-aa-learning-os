@@ -1,0 +1,134 @@
+name: Verify Kokugo Taxonomy on Pages
+
+on:
+  workflow_run:
+    workflows: ['Deploy AA Learning OS to GitHub Pages']
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PAGE_URL: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      SOURCE_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+    steps:
+      - name: Checkout exact source commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          fetch-depth: 1
+
+      - name: Wait for exact Pages release
+        run: |
+          set -euo pipefail
+          BASE="${PAGE_URL%/}/"
+          ok=0
+          for n in $(seq 1 30); do
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}release.json?kokugo=${SOURCE_SHA}-${n}" -o /tmp/kokugo-release.json; then
+              if node -e "const x=require('/tmp/kokugo-release.json'); process.exit(x.sourceSha===process.env.SOURCE_SHA?0:1)"; then
+                ok=1
+                break
+              fi
+            fi
+            sleep 5
+          done
+          if [ "$ok" != 1 ]; then
+            echo "Exact Pages release was not observed for SOURCE_SHA=${SOURCE_SHA}" >&2
+            if [ -f /tmp/kokugo-release.json ]; then cat /tmp/kokugo-release.json >&2 || true; fi
+            exit 1
+          fi
+
+      - name: Fetch production Kokugo assets
+        run: |
+          set -euo pipefail
+          BASE="${PAGE_URL%/}/kokugo-chronologia/"
+          curl -fsSL "${BASE}data.jsonl?kokugo=${SOURCE_SHA}" -o /tmp/kokugo-data.jsonl
+          curl -fsSL "${BASE}DATA_CATEGORY_AUDIT.json?kokugo=${SOURCE_SHA}" -o /tmp/kokugo-audit.json
+          curl -fsSL "${BASE}taxonomy-quarantine-v1.json?kokugo=${SOURCE_SHA}" -o /tmp/kokugo-quarantine.json
+          curl -fsSL "${BASE}quiz-rank-select-v1.js?kokugo=${SOURCE_SHA}" -o /tmp/kokugo-quiz.js
+
+      - name: Verify production bytes match source
+        run: |
+          set -euo pipefail
+          test "$(sha256sum kokugo-chronologia/data.jsonl | awk '{print $1}')" = "$(sha256sum /tmp/kokugo-data.jsonl | awk '{print $1}')"
+          test "$(sha256sum kokugo-chronologia/DATA_CATEGORY_AUDIT.json | awk '{print $1}')" = "$(sha256sum /tmp/kokugo-audit.json | awk '{print $1}')"
+          test "$(sha256sum kokugo-chronologia/taxonomy-quarantine-v1.json | awk '{print $1}')" = "$(sha256sum /tmp/kokugo-quarantine.json | awk '{print $1}')"
+          test "$(sha256sum kokugo-chronologia/quiz-rank-select-v1.js | awk '{print $1}')" = "$(sha256sum /tmp/kokugo-quiz.js | awk '{print $1}')"
+
+      - name: Audit 15000-row taxonomy and quarantine
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const assert=(ok,msg)=>{if(!ok)throw new Error(msg)};
+          const rows=fs.readFileSync('/tmp/kokugo-data.jsonl','utf8').split(/\r?\n/).filter(Boolean).map(JSON.parse);
+          const audit=JSON.parse(fs.readFileSync('/tmp/kokugo-audit.json','utf8'));
+          const quarantine=JSON.parse(fs.readFileSync('/tmp/kokugo-quarantine.json','utf8'));
+          const quiz=fs.readFileSync('/tmp/kokugo-quiz.js','utf8');
+          const key=x=>`${x.term}|${x.reading}`;
+          const isCanonicalYojiSurface=word=>{
+            const chars=Array.from(String(word||'').normalize('NFKC'));
+            return chars.length===4&&chars.every(ch=>/^\p{Script=Han}$/u.test(ch)||ch==='々'||ch==='〻');
+          };
+
+          assert(rows.length===15000,`rows=${rows.length}`);
+          assert(new Set(rows.map(key)).size===15000,'duplicate term/reading detected');
+          assert(rows.every(x=>['yoji','idiom','four'].includes(String(x.type||''))),'invalid type detected');
+
+          assert(audit.rows===15000,'audit rows mismatch');
+          assert(audit.unique_term_reading===15000,'audit unique mismatch');
+          assert(audit.source_missing_count===0,'source missing remains');
+          assert(audit.duplicate_count===0,'audit duplicate remains');
+          assert(audit.post_repair_mismatch_count===0,'post-repair taxonomy mismatch remains');
+          assert(audit.status==='clean','audit status is not clean');
+          assert(audit.type_counts?.yoji===1840,`yoji count=${audit.type_counts?.yoji}`);
+          assert((audit.type_counts?.yoji||0)+(audit.type_counts?.idiom||0)+(audit.type_counts?.four||0)===15000,'type counts do not total 15000');
+
+          const repaired=rows.find(x=>String(x.id)==='2044510');
+          assert(repaired,'戯作三昧 row missing');
+          assert(repaired.term==='戯作三昧','戯作三昧 term mismatch');
+          assert(repaired.type==='four'&&repaired.strict===false&&repaired.four===true,'戯作三昧 taxonomy repair missing');
+
+          const nonCanonical=rows.filter(x=>x.type==='yoji'&&!isCanonicalYojiSurface(x.term));
+          const listed=Array.isArray(quarantine.nonCanonicalYoji)?quarantine.nonCanonicalYoji:[];
+          assert(listed.length===13,`quarantine size=${listed.length}`);
+          assert(nonCanonical.length===listed.length,`non-canonical yoji=${nonCanonical.length}, quarantine=${listed.length}`);
+          const listedKeys=new Set(listed.map(key));
+          for(const x of nonCanonical)assert(listedKeys.has(key(x)),`unlisted non-canonical yoji: ${key(x)}`);
+
+          assert(quiz.includes("const VERSION='2026-09-06.2-taxonomy-guard'"),'taxonomy-guard quiz version missing');
+          assert(quiz.includes('function isCanonicalYojiSurface(word)'),'canonical yoji helper missing');
+          assert(quiz.includes("kind==='yoji'?x.type==='yoji'&&isCanonicalYojiSurface(x.word):x.type===kind"),'yoji canonical filter missing');
+          assert(quiz.includes('kindEl.value=selectedKind'),'category selection preservation missing');
+          assert(quiz.includes('カテゴリ整合性エラーを検出しました。出題を停止しました。'),'runtime category integrity stop missing');
+
+          console.log(JSON.stringify({
+            status:'success',
+            rows:rows.length,
+            yoji:audit.type_counts.yoji,
+            idiom:audit.type_counts.idiom,
+            four:audit.type_counts.four,
+            quarantine:listed.length,
+            repaired:'戯作三昧 -> four',
+            sourceSha:process.env.SOURCE_SHA
+          },null,2));
+          NODE
+
+      - name: Summary
+        run: |
+          {
+            echo '## Kokugo taxonomy production verification'
+            echo '- Pages release SHA: matched source commit'
+            echo '- data.jsonl: SHA-256 matched source'
+            echo '- DATA_CATEGORY_AUDIT.json: SHA-256 matched source'
+            echo '- taxonomy quarantine: SHA-256 matched source'
+            echo '- quiz runtime: SHA-256 matched source'
+            echo '- rows: 15,000 / duplicates: 0 / source missing: 0 / post-repair mismatch: 0'
+            echo '- 戯作三昧: four / strict=false'
+            echo '- non-canonical yoji quarantine: 13 entries'
+          } >> "$GITHUB_STEP_SUMMARY"
