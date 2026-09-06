@@ -2,7 +2,7 @@ name: Replenish Japanese exam library
 
 on:
   schedule:
-    # Daily 07:47 JST (22:47 UTC), staggered from the English reading job.
+    # Daily 07:47 JST (22:47 UTC), 90 minutes after the English reading job.
     - cron: '47 22 * * *'
   workflow_dispatch:
   push:
@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: japanese-exam-replenishment
@@ -20,7 +21,7 @@ concurrency:
 jobs:
   replenish:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 75
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.5-flash' }}
@@ -98,3 +99,32 @@ jobs:
               if [ "$n" = 3 ]; then exit 1; fi
             done
           fi
+
+      - name: Publish accepted pack to GitHub Pages and wait for public verification
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          ADDED=$(node -p "JSON.parse(require('fs').readFileSync('japanese-exam/generation-status.json','utf8')).added || 0")
+          if [ "$ADDED" != "1" ]; then
+            echo 'No verified pack was accepted; Pages deployment is not needed.'
+            exit 0
+          fi
+
+          git fetch origin main
+          SOURCE_SHA=$(git rev-parse origin/main)
+          gh workflow run deploy-pages.yml --ref main
+
+          RUN_ID=''
+          for n in $(seq 1 24); do
+            RUN_ID=$(gh run list --workflow deploy-pages.yml --branch main --event workflow_dispatch --limit 20 \
+              --json databaseId,headSha,status,createdAt \
+              --jq ".[] | select(.headSha == \"${SOURCE_SHA}\") | .databaseId" | head -1)
+            if [ -n "$RUN_ID" ]; then break; fi
+            sleep 5
+          done
+          test -n "$RUN_ID"
+          echo "Waiting for Pages/public verification run ${RUN_ID} at ${SOURCE_SHA}"
+          gh run watch "$RUN_ID" --exit-status
