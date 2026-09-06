@@ -1,0 +1,186 @@
+name: Repair Kokugo Taxonomy Database
+
+on:
+  push:
+    paths:
+      - '.kokugo-taxonomy-db-repair-trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resync all 15000 taxonomy rows with current JMdict
+        run: |
+          python - <<'PY'
+          import json, re, urllib.request
+          from collections import Counter
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          data_path=Path('kokugo-chronologia/data.jsonl')
+          status_path=Path('kokugo-chronologia/KOKUGO_CHRONOLOGIA_STATUS.json')
+          report_path=Path('kokugo-chronologia/DATA_CATEGORY_AUDIT.json')
+
+          lines=[x for x in data_path.read_text(encoding='utf-8').splitlines() if x.strip()]
+          if len(lines)!=15000:
+              raise SystemExit(f'Expected 15000 rows, got {len(lines)}')
+          rows=[json.loads(x) for x in lines]
+
+          def text(x):
+              if isinstance(x,str): return x
+              if isinstance(x,dict): return str(x.get('text') or x.get('value') or x.get('keb') or x.get('reb') or '')
+              return ''
+          def arr(o,*keys):
+              if not isinstance(o,dict): return []
+              for k in keys:
+                  if isinstance(o.get(k),list): return o[k]
+              return []
+          def is_han(c):
+              n=ord(c)
+              return (0x3400<=n<=0x4DBF or 0x4E00<=n<=0x9FFF or 0xF900<=n<=0xFAFF or 0x20000<=n<=0x2FA1F)
+          def is_four_han(s):
+              return len(s)==4 and all(is_han(c) for c in s)
+          def source_flags(e):
+              labels=[]
+              for sense in arr(e,'sense','senses'):
+                  labels.extend(text(x) for x in arr(sense,'misc','miscellaneous'))
+              m=' | '.join(x for x in labels if x).lower()
+              strict=bool('&yoji;' in m or 'four-character idiomatic' in m or 'yojijukugo' in m or re.search(r'(^|[^a-z])yoji([^a-z]|$)',m))
+              idi=bool('&id;' in m or 'idiomatic expression' in m or re.search(r'(^|[^a-z])idiom([^a-z]|$)',m))
+              return strict,idi
+
+          urls=[
+              'https://raw.githubusercontent.com/jpndium/jmdict/main/data/001.jsonl',
+              'https://raw.githubusercontent.com/jpndium/jmdict/main/data/002.jsonl',
+              'https://raw.githubusercontent.com/jpndium/jmdict/main/data/003.jsonl',
+          ]
+          source={}
+          for url in urls:
+              req=urllib.request.Request(url,headers={'User-Agent':'AA-Learning-OS-Kokugo-DB-Repair/1.0'})
+              with urllib.request.urlopen(req,timeout=120) as r:
+                  for raw in r:
+                      if not raw.strip(): continue
+                      e=json.loads(raw)
+                      ks=[text(x) for x in arr(e,'k_ele','kanji','kanjiElements')]; ks=[x for x in ks if x]
+                      rs=[text(x) for x in arr(e,'r_ele','kana','kanaElements','reading')]; rs=[x for x in rs if x]
+                      term=ks[0] if ks else (rs[0] if rs else text(e.get('word')) or text(e.get('term')))
+                      if not term: continue
+                      reading=rs[0] if rs else ''
+                      strict,idi=source_flags(e)
+                      four=is_four_han(term)
+                      if not (strict or idi or four): continue
+                      source[(term,reading)]={'strict':strict,'idiom':idi,'four':four}
+
+          changes=[]
+          missing=[]
+          seen=set()
+          duplicate=[]
+          for i,x in enumerate(rows,1):
+              term=str(x.get('term','')); reading=str(x.get('reading','')); key=(term,reading)
+              if key in seen: duplicate.append({'row':i,'term':term,'reading':reading})
+              seen.add(key)
+              src=source.get(key)
+              if not src:
+                  missing.append({'row':i,'term':term,'reading':reading})
+                  continue
+              expected='yoji' if src['strict'] else ('idiom' if src['idiom'] else 'four')
+              before={'type':x.get('type'),'strict':x.get('strict'),'idiom':x.get('idiom'),'four':x.get('four')}
+              after={'type':expected,'strict':src['strict'],'idiom':src['idiom'],'four':src['four']}
+              if before!=after:
+                  changes.append({'row':i,'id':x.get('id'),'term':term,'reading':reading,'before':before,'after':after})
+              x.update(after)
+
+          if duplicate:
+              raise SystemExit(f'Duplicate term/reading rows: {len(duplicate)}')
+          if missing:
+              raise SystemExit(f'Rows missing from current JMdict source: {len(missing)}')
+
+          # Post-repair structural invariants.
+          invalid=[]
+          type_counts=Counter()
+          flag_counts=Counter()
+          for i,x in enumerate(rows,1):
+              typ=x.get('type')
+              type_counts[typ]+=1
+              flag_counts['strict']+=int(x.get('strict') is True)
+              flag_counts['idiom']+=int(x.get('idiom') is True)
+              flag_counts['four']+=int(x.get('four') is True)
+              expected='yoji' if x.get('strict') is True else ('idiom' if x.get('idiom') is True else ('four' if x.get('four') is True else 'invalid'))
+              if typ!=expected or typ not in {'yoji','idiom','four'}:
+                  invalid.append({'row':i,'term':x.get('term'),'reading':x.get('reading'),'type':typ,'expected':expected})
+          if invalid:
+              raise SystemExit(f'Post-repair taxonomy invariant failures: {len(invalid)}')
+
+          data_path.write_text('\n'.join(json.dumps(x,ensure_ascii=False,separators=(',',':')) for x in rows)+'\n',encoding='utf-8')
+
+          status=json.loads(status_path.read_text(encoding='utf-8'))
+          status['generated_at']=datetime.now(timezone.utc).isoformat()
+          status['selected_total']=len(rows)
+          status['selected_strict_yojijukugo']=flag_counts['strict']
+          status['selected_idiomatic_expression']=flag_counts['idiom']
+          status['selected_four_han']=flag_counts['four']
+          status['result']='success'
+          status_path.write_text(json.dumps(status,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+          report={
+              'generated_at':datetime.now(timezone.utc).isoformat(),
+              'database':'kokugo-chronologia/data.jsonl',
+              'source':'jpndium/jmdict main (JMdict/EDRDG derived)',
+              'rows':len(rows),
+              'unique_term_reading':len(seen),
+              'type_counts':dict(type_counts),
+              'source_flag_counts':dict(flag_counts),
+              'taxonomy_changes_count':len(changes),
+              'taxonomy_changes':changes[:200],
+              'source_missing_count':len(missing),
+              'duplicate_count':len(duplicate),
+              'post_repair_mismatch_count':len(invalid),
+              'classification_rule':'yoji if current JMdict strict yoji tag; else idiom if current idiom tag; else four for exact 4-Han headword',
+              'status':'clean'
+          }
+          report_path.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+
+      - name: Run repository taxonomy audit
+        run: node scripts/audit-kokugo-taxonomy-v1.mjs
+
+      - name: Verify target mismatch is gone
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          found=[]
+          for line in Path('kokugo-chronologia/data.jsonl').read_text(encoding='utf-8').splitlines():
+              if not line.strip(): continue
+              x=json.loads(line)
+              if x.get('term')=='戯作三昧' and x.get('reading')=='げさくざんまい': found.append(x)
+          if len(found)!=1: raise SystemExit(f'戯作三昧 rows={len(found)}')
+          x=found[0]
+          if x.get('type')!='four' or x.get('strict') is True:
+              raise SystemExit('戯作三昧 taxonomy still contaminated: '+json.dumps(x,ensure_ascii=False))
+          print('戯作三昧 taxonomy repaired:',json.dumps(x,ensure_ascii=False))
+          PY
+
+      - name: Commit repaired database and audit report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add kokugo-chronologia/data.jsonl kokugo-chronologia/KOKUGO_CHRONOLOGIA_STATUS.json kokugo-chronologia/DATA_CATEGORY_AUDIT.json reports/kokugo-taxonomy-audit-v1.json
+          if git diff --cached --quiet; then
+            echo 'No taxonomy database changes required.'
+            exit 0
+          fi
+          git commit -m 'Repair Kokugo 15000 taxonomy database'
+          git pull --rebase origin main
+          git push origin HEAD:main
