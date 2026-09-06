@@ -35,7 +35,7 @@ const originalFetch = globalThis.fetch;
 
 const normalized = normalizeGeminiSchema(LOCAL_SCHEMA);
 assert.equal(normalized.type, 'object');
-assert.equal(normalized.additionalProperties, false);
+assert.equal(normalized.additionalProperties, undefined, 'Gemini remote schema must omit unsupported additionalProperties');
 assert.deepEqual(normalized.required, ['word', 'items', 'score']);
 assert.equal(normalized.properties.word.minLength, undefined);
 assert.equal(normalized.properties.word.maxLength, undefined);
@@ -134,6 +134,7 @@ try {
     assert.equal(captured.headers['Api-Revision'], undefined);
     assert.equal(captured.body.response_format.type, 'text');
     assert.equal(captured.body.response_format.mime_type, 'application/json');
+    assert.equal(captured.body.response_format.schema.additionalProperties, undefined);
     assert.equal(captured.body.response_format.schema.properties.word.minLength, undefined);
     assert.equal(captured.body.response_format.schema.properties.word.pattern, undefined);
     assert.equal(captured.body.response_format.schema.properties.items.minItems, 2);
@@ -179,6 +180,7 @@ try {
     assert.equal(calls[1].body.contents[0].parts[0].text, REQUEST.input);
     assert.equal(calls[1].body.systemInstruction.parts[0].text.length > 0, true);
     assert.equal(calls[1].body.generationConfig.responseMimeType, 'application/json');
+    assert.equal(calls[1].body.generationConfig.responseSchema.additionalProperties, undefined);
     assert.equal(calls[1].body.generationConfig.responseSchema.properties.word.minLength, undefined);
     assert.equal(calls[1].body.generationConfig.responseSchema.properties.items.minItems, 2);
     assert.equal(calls[1].body.generationConfig.responseFormat, undefined, 'GenerateContent must not use Interactions response_format shape');
@@ -214,6 +216,7 @@ try {
     assert.equal(calls.length, 2);
     assert.equal(calls[1].url, `${GEMINI_GENERATE_CONTENT_BASE}/gemini-3.5-flash:generateContent`);
     assert.equal(calls[1].body.generationConfig.responseMimeType, 'application/json');
+    assert.equal(calls[1].body.generationConfig.responseSchema.additionalProperties, undefined);
     assert.deepEqual(calls[1].body.generationConfig.responseSchema.required, ['word', 'items', 'score']);
     assert.equal(result.mode, 'generate_content_fallback');
     assert.equal(result.fallbackFrom, 'interactions_400');
@@ -253,4 +256,4 @@ try {
   globalThis.fetch = originalFetch;
 }
 
-console.log('Gemini current contract OK: Interactions uses response_format; GenerateContent uses responseMimeType + responseSchema; reading authoring keeps lightweight remote schema with strict Rise normalization; same-provider fallback stays fail-closed');
+console.log('Gemini current contract OK: unsupported remote schema keys are stripped; Interactions uses response_format; GenerateContent uses responseMimeType + responseSchema; reading authoring keeps lightweight remote schema with strict Rise normalization; same-provider fallback stays fail-closed');
