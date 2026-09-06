@@ -2,7 +2,7 @@
   'use strict';
   if(window.__AA_READING_EXAM_SCAFFOLD_V1__) return;
 
-  const VERSION='1.0.2';
+  const VERSION='1.1.0';
   const ENTRANCE_DIFFICULTY=9;
   const SUPPORT_ACTIONS=new Set(['ai-reading-scaffold','ai-reading-live-scaffold']);
   const EXAM_ACTIONS=new Set(['ai-reading-exam','start-reading-simulator','start-reading-exam']);
@@ -47,7 +47,7 @@
 
     const rule='<div class="aaExamScaffoldRule"><b>入試問題と同じ形式</b><span>本文・5問4択・採点・根拠解説は入試モードと共通。補助長文では、分からない単語だけ本文中で確認できます。</span></div>';
     const heading=/<h2 class="h2">[^<]*<\/h2>/;
-    if(heading.test(out)) out=out.replace(heading,match=>match+rule);
+    if(heading.test(out)&&!out.includes('aaExamScaffoldRule')) out=out.replace(heading,match=>match+rule);
 
     out=out.replace(
       /<div class="notice"><b>入試実戦：<\/b>解答中の語彙支援は使用しません。<\/div>/g,
@@ -125,39 +125,80 @@
     const article=document.createElement('article');
     article.className='rv4Card r6Card aaSupportReadingLearning';
     article.dataset.aaSupportReadingLearning='1';
-    article.innerHTML='<div class="r6Top"><div class="r6Subject"><i class="r6Icon">読</i><div><h3>補助つき英語長文</h3><p>英単語の学習履歴と読解の弱点を使い、語彙サポート付きで読むGemini生成長文。</p></div></div><span class="r6Badge">API・語彙連動</span></div><div class="r6Actions"><button class="btn primary" type="button" data-action="ai-reading-scaffold" data-reading-mode="scaffold-exam">補助つき長文を読む</button><a class="btn ghost" href="./vocab.html">英単語を復習</a></div><p class="tiny aaReadingModeNote">長文はAPIで生成・検査済み。学習中は分からない単語だけ本文中で確認でき、記録は単語学習へ戻ります。</p>';
+    article.innerHTML='<div class="r6Top"><div class="r6Subject"><i class="r6Icon">読</i><div><h3>補助つき英語長文</h3><p>愛知県入試型の本文・5問4択を、必要な単語補助だけ使って解きます。</p></div></div><span class="r6Badge">API・入試型</span></div><div class="r6Actions"><button class="btn primary" type="button" data-action="ai-reading-scaffold" data-reading-mode="scaffold-exam">補助つき入試長文</button><button class="btn ghost" type="button" data-action="ai-reading-exam" data-reading-mode="exam">入試長文（補助なし）</button></div><p class="tiny aaReadingModeNote">本文・設問・採点・根拠解説は入試モードと共通。補助ありでは分からない単語だけ本文中で確認できます。</p>';
     grid.prepend(article);
     return true;
   }
 
-  if(typeof studyHTML==='function'){
-    const beforeStudy=studyHTML;
-    studyHTML=function(){
+  function installStudyHook(){
+    if(typeof studyHTML!=='function')return false;
+    if(studyHTML.__aaReadingExamScaffoldWrapped===VERSION)return true;
+    const base=studyHTML;
+    const wrapped=function(){
       const read=typeof currentReading==='function'?currentReading():null;
-      return transformStudyHtml(beforeStudy(),read);
+      return transformStudyHtml(base.apply(this,arguments),read);
     };
+    wrapped.__aaReadingExamScaffoldWrapped=VERSION;
+    studyHTML=wrapped;
+    return true;
   }
 
-  if(typeof subjectsHTML==='function'){
-    const beforeSubjects=subjectsHTML;
-    subjectsHTML=function(){return transformSubjectsHtml(beforeSubjects());};
+  function installSubjectsHook(){
+    if(typeof subjectsHTML!=='function')return false;
+    if(subjectsHTML.__aaReadingExamScaffoldWrapped===VERSION)return true;
+    const base=subjectsHTML;
+    const wrapped=function(){return transformSubjectsHtml(base.apply(this,arguments));};
+    wrapped.__aaReadingExamScaffoldWrapped=VERSION;
+    subjectsHTML=wrapped;
+    return true;
   }
 
-  if(typeof startSession==='function'){
-    const beforeStartSession=startSession;
-    startSession=function(opts={}){
-      if(opts?.kind==='reading') return withEntranceDifficulty(()=>beforeStartSession(opts));
-      return beforeStartSession(opts);
+  function installSessionHook(){
+    if(typeof startSession!=='function')return false;
+    if(startSession.__aaReadingExamScaffoldWrapped===VERSION)return true;
+    const base=startSession;
+    const wrapped=function(opts={}){
+      if(opts?.kind==='reading')return withEntranceDifficulty(()=>base.apply(this,arguments));
+      return base.apply(this,arguments);
     };
+    wrapped.__aaReadingExamScaffoldWrapped=VERSION;
+    startSession=wrapped;
+    return true;
   }
 
+  function installHooks(){
+    installStudyHook();
+    installSubjectsHook();
+    installSessionHook();
+    decorateRiseSubjects(document);
+    decorateRiseLearning(document);
+    document.documentElement.dataset.readingScaffold=VERSION;
+  }
+
+  // Window capture runs before the legacy/document handlers. Convert the
+  // current Rise English button into the verified AI entrance-reading route
+  // before ai-reading-v1 decides which action to execute.
   window.addEventListener('click',event=>{
-    const action=event.target?.closest?.('[data-action]')?.dataset?.action;
-    if(!SUPPORT_ACTIONS.has(action)&&!EXAM_ACTIONS.has(action)) return;
-    if(typeof state==='undefined'||!state?.ui) return;
+    const target=event.target?.closest?.('[data-action]');
+    if(!target)return;
+    let action=target.dataset.action;
+    const legacySupport=action==='start-custom'&&target.dataset.kind==='reading'&&target.dataset.subject==='english';
+    if(legacySupport){
+      target.dataset.action='ai-reading-scaffold';
+      target.dataset.readingMode='scaffold-exam';
+      delete target.dataset.kind;
+      delete target.dataset.subject;
+      action='ai-reading-scaffold';
+    }else if(action==='start-reading-exam'){
+      target.dataset.action='ai-reading-exam';
+      target.dataset.readingMode='exam';
+      action='ai-reading-exam';
+    }
+    if(!SUPPORT_ACTIONS.has(action)&&!EXAM_ACTIONS.has(action))return;
+    if(typeof state==='undefined'||!state?.ui)return;
     const previous=state.ui.subjectDifficulty;
     state.ui.subjectDifficulty=ENTRANCE_DIFFICULTY;
-    queueMicrotask(()=>{state.ui.subjectDifficulty=previous;});
+    queueMicrotask(()=>{if(typeof state!=='undefined'&&state?.ui)state.ui.subjectDifficulty=previous;});
   },true);
 
   let decorateQueued=false;
@@ -177,11 +218,13 @@
     new MutationObserver(scheduleDecorate).observe(app,{childList:true,subtree:true});
     scheduleDecorate();
   };
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attachRiseObserver,{once:true});
-  else attachRiseObserver();
-  document.addEventListener('rise:navigation',scheduleDecorate);
-  document.addEventListener('aa:v23ready',scheduleDecorate);
-  document.documentElement.dataset.readingScaffold=VERSION;
+
+  const reinstall=()=>{installHooks();scheduleDecorate();};
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{attachRiseObserver();reinstall();},{once:true});
+  else{attachRiseObserver();reinstall();}
+  document.addEventListener('rise:navigation',reinstall);
+  document.addEventListener('aa:v23ready',reinstall);
+  for(const delay of [0,50,200,800,2000,5000])setTimeout(reinstall,delay);
 
   const style=document.createElement('style');
   style.id='aa-reading-exam-scaffold-style-v1';
@@ -204,6 +247,7 @@
     transformStudyHtml,
     transformSubjectsHtml,
     decorateRiseSubjects,
-    decorateRiseLearning
+    decorateRiseLearning,
+    installHooks
   });
 })();
