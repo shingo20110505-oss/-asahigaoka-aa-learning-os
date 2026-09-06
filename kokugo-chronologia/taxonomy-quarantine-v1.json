@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "policy": "Preserve upstream dictionary provenance in data.jsonl, but exclude non-canonical surface forms from the 四字熟語 quiz. Any new unlisted non-canonical yoji entry must fail CI until reviewed.",
+  "nonCanonicalYoji": [
+    {"id":"1748640","term":"浮き草稼業","reading":"うきくさかぎょう","reason":"not an exact four-character surface form"},
+    {"id":"2040040","term":"大盤振る舞い","reading":"おおばんぶるまい","reason":"not an exact four-character surface form"},
+    {"id":"2042920","term":"家族団らん","reading":"かぞくだんらん","reason":"not an exact four-character surface form"},
+    {"id":"1243640","term":"九牛の一毛","reading":"きゅうぎゅうのいちもう","reason":"phrase surface contains の and is not four characters"},
+    {"id":"2044630","term":"元気はつらつ","reading":"げんきはつらつ","reason":"not an exact four-character surface form"},
+    {"id":"2033310","term":"こんにゃく問答","reading":"こんにゃくもんどう","reason":"not an exact four-character surface form"},
+    {"id":"2030590","term":"極楽とんぼ","reading":"ごくらくとんぼ","reason":"not an exact four-character surface form"},
+    {"id":"2790370","term":"傷弓の鳥","reading":"しょうきゅうのとり","reason":"phrase surface contains の and is not four characters"},
+    {"id":"2603910","term":"竹林の七賢","reading":"ちくりんのしちけん","reason":"phrase surface contains の and is not four characters"},
+    {"id":"1483270","term":"悲喜こもごも","reading":"ひきこもごも","reason":"not an exact four-character surface form"},
+    {"id":"2841182","term":"貧者の一灯","reading":"ひんじゃのいっとう","reason":"phrase surface contains の and is not four characters"},
+    {"id":"1583150","term":"判官びいき","reading":"ほうがんびいき","reason":"not an exact four-character surface form"},
+    {"id":"1562050","term":"和気あいあい","reading":"わきあいあい","reason":"not an exact four-character surface form"}
+  ]
+}
