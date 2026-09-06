@@ -1,0 +1,126 @@
+name: Verify Kokugo Quiz Category on Pages
+
+on:
+  push:
+    paths:
+      - '.kokugo-quiz-public-verify-trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: verify-kokugo-quiz-public
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Verify Kokugo production category integrity
+        id: verify
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -uo pipefail
+          BASE='https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/kokugo-chronologia'
+          mkdir -p /tmp/kokugo-public
+          ok=1
+          fetch_retry(){
+            local url="$1" out="$2"
+            for i in $(seq 1 18); do
+              if curl -fsSL --max-time 25 -H 'Cache-Control: no-cache' "${url}?verify=$(date +%s)-${i}" -o "$out"; then return 0; fi
+              sleep 10
+            done
+            return 1
+          }
+          for f in DATA_CATEGORY_AUDIT.json data.jsonl quiz-rank-select-v1.js taxonomy-quarantine-v1.json; do
+            fetch_retry "$BASE/$f" "/tmp/kokugo-public/$f" || ok=0
+          done
+          if [ "$ok" -eq 1 ]; then
+            python - <<'PY' || ok=0
+          import json, hashlib, pathlib, re
+          root=pathlib.Path('.')
+          pub=pathlib.Path('/tmp/kokugo-public')
+          checks=[]
+          def add(name, cond, detail=''):
+              checks.append({'name':name,'ok':bool(cond),'detail':detail})
+          audit=json.loads((pub/'DATA_CATEGORY_AUDIT.json').read_text(encoding='utf-8'))
+          add('audit_status_clean', audit.get('status')=='clean', str(audit.get('status')))
+          add('audit_rows_15000', audit.get('rows')==15000, str(audit.get('rows')))
+          add('audit_unique_15000', audit.get('unique_term_reading')==15000, str(audit.get('unique_term_reading')))
+          add('audit_source_missing_zero', audit.get('source_missing_count')==0, str(audit.get('source_missing_count')))
+          add('audit_duplicates_zero', audit.get('duplicate_count')==0, str(audit.get('duplicate_count')))
+          add('audit_post_repair_mismatch_zero', audit.get('post_repair_mismatch_count')==0, str(audit.get('post_repair_mismatch_count')))
+          prod_data=(pub/'data.jsonl').read_bytes(); src_data=(root/'kokugo-chronologia/data.jsonl').read_bytes()
+          psha=hashlib.sha256(prod_data).hexdigest(); ssha=hashlib.sha256(src_data).hexdigest()
+          add('data_sha256_matches_main', psha==ssha, f'public={psha} source={ssha}')
+          rows=[json.loads(x) for x in prod_data.decode('utf-8').splitlines() if x.strip()]
+          add('production_data_rows_15000', len(rows)==15000, str(len(rows)))
+          target=[x for x in rows if str(x.get('id'))=='2044510']
+          add('gesaku_zanmai_present_once', len(target)==1, str(len(target)))
+          if target:
+              x=target[0]
+              add('gesaku_zanmai_is_four', x.get('term')=='戯作三昧' and x.get('type')=='four' and x.get('strict') is False, json.dumps(x,ensure_ascii=False))
+          js=(pub/'quiz-rank-select-v1.js').read_text(encoding='utf-8')
+          add('quiz_version_taxonomy_guard', "2026-09-06.2-taxonomy-guard" in js)
+          add('quiz_has_canonical_yoji_guard', 'isCanonicalYojiSurface' in js and "kind==='yoji'?x.type==='yoji'&&isCanonicalYojiSurface(x.word)" in js)
+          add('quiz_preserves_selected_kind', 'kindEl.value=selectedKind' in js)
+          add('quiz_no_forced_all_reset', "kindEl.value='all';" not in js)
+          q=json.loads((pub/'taxonomy-quarantine-v1.json').read_text(encoding='utf-8'))
+          quarantine=q.get('nonCanonicalYoji') or []
+          add('quarantine_count_13', len(quarantine)==13, str(len(quarantine)))
+          expected={'浮き草稼業','大盤振る舞い','家族団らん','九牛の一毛','元気はつらつ','こんにゃく問答','極楽とんぼ','傷弓の鳥','竹林の七賢','悲喜こもごも','貧者の一灯','判官びいき','和気あいあい'}
+          add('quarantine_exact_terms', {x.get('term') for x in quarantine}==expected)
+          js_src=(root/'kokugo-chronologia/quiz-rank-select-v1.js').read_bytes()
+          q_src=(root/'kokugo-chronologia/taxonomy-quarantine-v1.json').read_bytes()
+          add('quiz_js_sha256_matches_main', hashlib.sha256((pub/'quiz-rank-select-v1.js').read_bytes()).hexdigest()==hashlib.sha256(js_src).hexdigest())
+          add('quarantine_sha256_matches_main', hashlib.sha256((pub/'taxonomy-quarantine-v1.json').read_bytes()).hexdigest()==hashlib.sha256(q_src).hexdigest())
+          result='success' if all(x['ok'] for x in checks) else 'failure'
+          out={
+            'result':result,
+            'verified_at':__import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat(),
+            'page_base':'https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/kokugo-chronologia/',
+            'source_head':__import__('subprocess').check_output(['git','rev-parse','HEAD'],text=True).strip(),
+            'public_data_sha256':psha,
+            'source_data_sha256':ssha,
+            'checks':checks
+          }
+          pathlib.Path('kokugo-chronologia/PUBLIC_CATEGORY_VERIFY_STATUS.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2))
+          if result!='success': raise SystemExit(1)
+          PY
+          else
+            cat > kokugo-chronologia/PUBLIC_CATEGORY_VERIFY_STATUS.json <<EOF
+          {"result":"failure","reason":"production fetch failed"}
+          EOF
+          fi
+          exit $(( ok == 1 ? 0 : 1 ))
+
+      - name: Commit verification record
+        if: always()
+        shell: bash
+        run: |
+          set -e
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add kokugo-chronologia/PUBLIC_CATEGORY_VERIFY_STATUS.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Record Kokugo quiz public category verification'
+          for i in 1 2 3 4; do
+            git pull --rebase origin main || true
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((i*2))
+          done
+          exit 1
+
+      - name: Enforce verification success
+        if: steps.verify.outcome != 'success'
+        run: exit 1
