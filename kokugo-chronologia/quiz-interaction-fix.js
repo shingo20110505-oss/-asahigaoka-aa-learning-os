@@ -1,7 +1,29 @@
 (()=>{'use strict';
-const VERSION='2026-09-05.1';
+const VERSION='2026-09-06.1';
 if(window.__AA_KOKUGO_QUIZ_INTERACTION_FIX__)return;
 window.__AA_KOKUGO_QUIZ_INTERACTION_FIX__=VERSION;
+
+let preferredKind=null;
+function rememberKindSelection(e){
+  const el=e.target;
+  if(el?.id==='quizKind'&&el.value)preferredKind=el.value;
+}
+function restorePreferredKind(){
+  const kind=document.getElementById('quizKind');
+  if(!kind||!preferredKind)return false;
+  if(![...kind.options].some(o=>o.value===preferredKind))return false;
+  if(kind.value===preferredKind)return true;
+  kind.value=preferredKind;
+  kind.dispatchEvent(new Event('change',{bubbles:true}));
+  return true;
+}
+function protectQuizKind(e){
+  const start=e.target?.closest?.('#quizStart,#quizWrongStart');
+  if(start)restorePreferredKind();
+}
+document.addEventListener('change',rememberKindSelection,true);
+document.addEventListener('click',protectQuizKind,true);
+document.addEventListener('touchend',protectQuizKind,{capture:true,passive:true});
 
 function prepare(root=document){
   root.querySelectorAll?.('#jkgQuiz .quiz-opt').forEach(btn=>{
@@ -59,8 +81,11 @@ async function runAudit(){
     const start=await waitFor(()=>document.getElementById('quizStart'));
     const kind=document.getElementById('quizKind'),mode=document.getElementById('quizMode');
     const rank=await waitFor(()=>document.getElementById('quizRank'));
-    if(kind)kind.value='all';if(mode)mode.value='meaning';rank.value='all';rank.dispatchEvent(new Event('change',{bubbles:true}));
+    if(kind){kind.value='yoji';kind.dispatchEvent(new Event('change',{bubbles:true}))}
+    if(mode)mode.value='meaning';rank.value='all';rank.dispatchEvent(new Event('change',{bubbles:true}));
+    if(kind)kind.value='all';
     start.click();
+    if(kind&&kind.value!=='yoji')throw new Error(`category persistence failed: ${kind.value}`);
     await waitFor(()=>document.querySelector('#jkgQuiz .quiz-meta'));
     const choice=await waitFor(()=>document.querySelector('#jkgQuiz .quiz-opt'));
     const Ev=window.PointerEvent||window.MouseEvent;
@@ -71,7 +96,7 @@ async function runAudit(){
     const nextVisible=!!next&&getComputedStyle(next).display!=='none';
     const full=Number(window.__AA_KOKUGO_FULL_15000_COUNT__||0),pool=Number(window.__AA_KOKUGO_QUIZ_POOL_COUNT__||0);
     if(!disabled||!nextVisible||full!==15000||pool<15000)throw new Error(`graded=${disabled} next=${nextVisible} full=${full} pool=${pool}`);
-    markAudit(true,{graded:true,nextVisible:true,realTouchCapture:true,rankSelector:true,full15000:full,pool,version:VERSION});
+    markAudit(true,{graded:true,nextVisible:true,realTouchCapture:true,rankSelector:true,categoryPersistence:true,full15000:full,pool,version:VERSION});
   }catch(err){markAudit(false,{error:String(err?.message||err),version:VERSION})}
 }
 
@@ -86,6 +111,11 @@ function install(){
   window.addEventListener('click',captureClick,true);
   document.addEventListener('pointerup',e=>fallbackTap(e.target),true);
   document.addEventListener('touchend',e=>fallbackTap(e.target),{capture:true,passive:true});
+  let tries=0;
+  const restoreTimer=setInterval(()=>{
+    if(document.getElementById('quizRank')){clearInterval(restoreTimer);restorePreferredKind();return}
+    if(++tries>=600)clearInterval(restoreTimer);
+  },50);
   document.documentElement.dataset.kokugoQuizInteractionFix=VERSION;
   runAudit();
 }
