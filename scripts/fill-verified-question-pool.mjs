@@ -3,14 +3,12 @@ import path from 'node:path';
 
 const SUBJECTS = new Set(['english', 'math', 'japanese', 'science', 'social']);
 const subject = String(process.env.RISE_SUBJECT || process.argv[2] || '').trim().toLowerCase();
-const workerUrl = String(process.env.RISE_AI_WORKER_URL || 'https://asahigaoka-aa-ai-reading.enjoyprog1222.workers.dev').replace(/\/+$/, '');
-const token = String(process.env.AI_ACCESS_TOKEN || '').trim();
+const workerUrl = String(process.env.RISE_AI_WORKER_URL || 'https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev').replace(/\/+$/, '');
 const origin = 'https://shingo20110505-oss.github.io';
 const poolPath = path.resolve(process.env.RISE_POOL_PATH || 'verified-question-pool-v1.json');
-const maxPerRun = Math.max(1, Math.min(5, Number(process.env.RISE_MAX_PER_RUN || 3) || 3));
+const maxPerRun = Math.max(1, Math.min(8, Number(process.env.RISE_MAX_PER_RUN || 3) || 3));
 
 if (!SUBJECTS.has(subject)) throw new Error(`Unsupported RISE_SUBJECT: ${subject || '(empty)'}`);
-if (token.length < 24) throw new Error('AI_ACCESS_TOKEN is missing or too short.');
 
 const raw = await fs.readFile(poolPath, 'utf8');
 const pool = JSON.parse(raw);
@@ -45,7 +43,6 @@ const response = await fetch(`${workerUrl}/v1/exam`, {
   method: 'POST',
   headers: {
     'content-type': 'application/json',
-    authorization: `Bearer ${token}`,
     origin
   },
   body: JSON.stringify(requestBody),
