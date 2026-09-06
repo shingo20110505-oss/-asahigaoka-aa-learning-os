@@ -1,8 +1,8 @@
 {
   "result": "success",
-  "verified_at": "2026-09-06T12:59:10.420560+00:00",
+  "verified_at": "2026-09-06T13:02:45.200717+00:00",
   "page_base": "https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/kokugo-chronologia/",
-  "source_head": "70e2a4e837a18d48c59dec34c31c5176771271b6",
+  "source_head": "b0ea05d1e0a5189608a83daff776b23318a5ebab",
   "public_data_sha256": "46d559715cd7c08f114c4101fd27178484999971902b451b665ac46abe82e0fb",
   "source_data_sha256": "46d559715cd7c08f114c4101fd27178484999971902b451b665ac46abe82e0fb",
   "checks": [
@@ -77,6 +77,11 @@
       "detail": ""
     },
     {
+      "name": "quiz_js_sha256_matches_main",
+      "ok": true,
+      "detail": "public=80a53d58874edb1555f5e7700b0527ddd513bf1226f8ace1680205fdf3a99e85 source=80a53d58874edb1555f5e7700b0527ddd513bf1226f8ace1680205fdf3a99e85"
+    },
+    {
       "name": "quarantine_count_13",
       "ok": true,
       "detail": "13"
@@ -84,17 +89,12 @@
     {
       "name": "quarantine_exact_terms",
       "ok": true,
-      "detail": ""
-    },
-    {
-      "name": "quiz_js_sha256_matches_main",
-      "ok": true,
-      "detail": ""
+      "detail": "[\"こんにゃく問答\", \"九牛の一毛\", \"傷弓の鳥\", \"元気はつらつ\", \"判官びいき\", \"和気あいあい\", \"大盤振る舞い\", \"家族団らん\", \"悲喜こもごも\", \"極楽とんぼ\", \"浮き草稼業\", \"竹林の七賢\", \"貧者の一灯\"]"
     },
     {
       "name": "quarantine_sha256_matches_main",
       "ok": true,
-      "detail": ""
+      "detail": "public=47b16fd53d6e400ebf2d44e93566fcaee7fd6304432cc24e5f2509a03fe3f18a source=47b16fd53d6e400ebf2d44e93566fcaee7fd6304432cc24e5f2509a03fe3f18a"
     }
   ]
 }
