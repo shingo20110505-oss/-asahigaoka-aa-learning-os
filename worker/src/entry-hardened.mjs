@@ -27,6 +27,7 @@ const MAX_BODY_BYTES = 24000;
 const WINDOW_MS = 60000;
 const MAX_WEIGHT_PER_WINDOW = 28;
 const MAX_INFLIGHT = 4;
+const PUBLIC_API_ROUTES = new Set(['/v1/exam']);
 const buckets = new Map();
 let inflight = 0;
 
@@ -96,6 +97,10 @@ async function authorized(request, env) {
   const header = request.headers.get('authorization') || '';
   const supplied = header.startsWith('Bearer ') ? header.slice(7) : '';
   return constantTimeEqual(supplied, env.AI_ACCESS_TOKEN || '');
+}
+
+function requiresAccessToken(pathname) {
+  return !PUBLIC_API_ROUTES.has(pathname);
 }
 
 function requestIdentity(request) {
@@ -205,6 +210,8 @@ function compatibleStatus(env) {
       providerDeadlines: true,
       maxExamBatch: 10,
       originRequiredForApi: String(env.ALLOW_NO_ORIGIN || '').toLowerCase() !== 'true',
+      publicExamEndpoint: true,
+      publicExamProtection: 'origin+rate-limit',
       jsonContentTypeRequired: true,
       serverBurstProtection: true
     },
@@ -219,7 +226,7 @@ function compatibleStatus(env) {
 
 async function processApiRequest(request, env, pathname) {
   if (!originAllowed(request, env)) throw new ApiError('forbidden_origin', 'このOriginは許可されていません。', 403);
-  if (!(await authorized(request, env))) throw new ApiError('unauthorized', '接続用トークンが一致しません。', 401);
+  if (requiresAccessToken(pathname) && !(await authorized(request, env))) throw new ApiError('unauthorized', '接続用トークンが一致しません。', 401);
   requireJsonContentType(request);
   const rate = consumeRate(request, pathname);
   if (!rate.ok) throw new ApiError('rate_limited', '短時間のAIリクエストが多すぎます。少し間を空けてください。', 429, `retry-after:${rate.retryAfter}`);
@@ -277,5 +284,5 @@ export async function handleHardenedRequest(request, env) {
 }
 
 export { compatibleStatus };
-export const __test = Object.freeze({ originAllowed, rateCost, requireJsonContentType });
+export const __test = Object.freeze({ originAllowed, rateCost, requireJsonContentType, requiresAccessToken });
 export default { fetch: handleHardenedRequest };
