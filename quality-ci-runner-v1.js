@@ -50,7 +50,13 @@
     const lookAfter = DATA.vocab.find(v => v.word.toLowerCase() === 'look after');
     add('英単語例文・全件品質ゲート', vocabAudit.placeholdersAfter === 0 && vocabAudit.uncoveredCount === 0 && /advis/i.test(advise?.example || '') && /look.+after/i.test(lookAfter?.example || ''), `例文未整備${vocabAudit.uncoveredCount} ${(vocabAudit.uncovered || []).map(x => x.word).join(', ')}`);
     const apiReadingRuntimeReady = !!window.__AA_AI_READING_V1__ && !!window.AAReadingLibrary && !!window.AA_AI_READING_TEST_API__;
-    add('非API長文の出題廃止', apiReadingRuntimeReady && DATA.readingScenarios.length === 0, `従来素材=${DATA.readingScenarios.length}件 / AIランタイム=${apiReadingRuntimeReady ? 'ready' : 'missing'}`);
+    const readingHtml = subjectsHTML();
+    const legacyReadingReachable = /data-action="(?:start-reading-simulator|start-graph-reading|start-reading-exam)"/.test(readingHtml) || /data-action="start-custom"[^>]*data-kind="reading"/.test(readingHtml);
+    const apiReadingReachable = readingHtml.includes('data-action="ai-reading-scaffold"') && readingHtml.includes('data-action="ai-reading-exam"');
+    add('非API長文の出題廃止', apiReadingRuntimeReady && window.AA_API_READING_ONLY === true && apiReadingReachable && !legacyReadingReachable, `旧データ=${DATA.readingScenarios.length}件（到達不能） / API専用=${window.AA_API_READING_ONLY === true ? 'yes' : 'no'} / 旧導線=${legacyReadingReachable ? 'reachable' : 'blocked'}`);
+    const aiExam = window.__AA_AI_EXAM_ROUTE_V1__;
+    const aiExamSubjects = Array.isArray(aiExam?.subjects) ? [...aiExam.subjects].sort().join('/') : '';
+    add('AI入試3教科・API専用経路', aiExam?.version === '1.0.0' && aiExam?.endpointPath === '/v1/exam' && aiExam?.usesLegacyFallback === false && aiExam?.cacheFallback === 'verified-ai-only' && aiExamSubjects === 'math/science/social', `route=${aiExam?.endpointPath || '-'} / subjects=${aiExamSubjects || '-'} / legacyFallback=${String(aiExam?.usesLegacyFallback)} / cache=${aiExam?.cacheFallback || '-'}`);
     const catalog = await window.AAReadingLibrary.load(true);
     const request = window.AA_AI_READING_TEST_API__.buildRequest('scaffold');
     const compatible = window.AAReadingLibrary.rank(catalog.entries, request);
