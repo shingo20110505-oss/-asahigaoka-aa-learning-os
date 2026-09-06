@@ -2,22 +2,22 @@ name: Fill Verified Question Pool
 
 on:
   schedule:
-    - cron: '15 7 * * *'   # 16:15 JST English
-    - cron: '45 7 * * *'   # 16:45 JST Math
+    - cron: '15 6 * * *'   # 15:15 JST Math
+    - cron: '45 6 * * *'   # 15:45 JST Science
+    - cron: '15 7 * * *'   # 16:15 JST Social
+    - cron: '45 7 * * *'   # 16:45 JST English
     - cron: '15 8 * * *'   # 17:15 JST Japanese
-    - cron: '45 8 * * *'   # 17:45 JST Science
-    - cron: '15 9 * * *'   # 18:15 JST Social
   workflow_dispatch:
     inputs:
       subject:
         description: Subject to refill
         required: true
         type: choice
-        options: [english, math, japanese, science, social]
+        options: [math, science, social, english, japanese]
       max_per_run:
         description: Maximum new verified items
         required: false
-        default: '1'
+        default: '3'
 
 permissions:
   contents: write
@@ -31,8 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      RISE_AI_WORKER_URL: https://asahigaoka-aa-ai-reading.enjoyprog1222.workers.dev
-      AI_ACCESS_TOKEN: ${{ secrets.AI_ACCESS_TOKEN }}
+      RISE_AI_WORKER_URL: https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev
       PUBLIC_POOL_URL: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/verified-question-pool-v1.json
     steps:
       - name: Checkout main
@@ -52,20 +51,22 @@ jobs:
           set -euo pipefail
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             SUBJECT="$MANUAL_SUBJECT"
-            MAX_PER_RUN="${MANUAL_MAX:-1}"
+            MAX_PER_RUN="${MANUAL_MAX:-3}"
           else
             case "$SCHEDULE_EXPR" in
-              '15 7 * * *') SUBJECT=english ;;
-              '45 7 * * *') SUBJECT=math ;;
+              '15 6 * * *') SUBJECT=math ;;
+              '45 6 * * *') SUBJECT=science ;;
+              '15 7 * * *') SUBJECT=social ;;
+              '45 7 * * *') SUBJECT=english ;;
               '15 8 * * *') SUBJECT=japanese ;;
-              '45 8 * * *') SUBJECT=science ;;
-              '15 9 * * *') SUBJECT=social ;;
               *) echo "Unknown schedule: $SCHEDULE_EXPR" >&2; exit 2 ;;
             esac
             MAX_PER_RUN=3
           fi
           echo "subject=$SUBJECT" >> "$GITHUB_OUTPUT"
           echo "max_per_run=$MAX_PER_RUN" >> "$GITHUB_OUTPUT"
+          echo "AUTO_REFILL_SUBJECT=$SUBJECT"
+          echo "AUTO_REFILL_MAX=$MAX_PER_RUN"
 
       - name: Validate current pool
         run: node scripts/validate-verified-question-pool.mjs
@@ -119,3 +120,17 @@ jobs:
             sleep 10
           done
           test "$ok" = 1
+
+      - name: Refill summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## Rise verified question pool refill'
+            echo
+            echo "- Subject: ${{ steps.resolve.outputs.subject }}"
+            echo "- Maximum new items this run: ${{ steps.resolve.outputs.max_per_run }}"
+            echo "- Worker: shingo-20110505 production Worker"
+            echo "- Policy: Gemini authoring + deterministic checks + Groq blind verification only"
+            echo "- Paid fallback: disabled"
+          } >> "$GITHUB_STEP_SUMMARY"
