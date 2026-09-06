@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-09-06T12:54:04.109983+00:00",
+  "database": "kokugo-chronologia/data.jsonl",
+  "source": "jpndium/jmdict main (JMdict/EDRDG derived)",
+  "rows": 15000,
+  "unique_term_reading": 15000,
+  "type_counts": {
+    "four": 11762,
+    "idiom": 1398,
+    "yoji": 1840
+  },
+  "source_flag_counts": {
+    "strict": 1840,
+    "idiom": 1404,
+    "four": 13534
+  },
+  "taxonomy_changes_count": 1,
+  "taxonomy_changes": [
+    {
+      "row": 6784,
+      "id": "2044510",
+      "term": "戯作三昧",
+      "reading": "げさくざんまい",
+      "before": {
+        "type": "yoji",
+        "strict": true,
+        "idiom": false,
+        "four": true
+      },
+      "after": {
+        "type": "four",
+        "strict": false,
+        "idiom": false,
+        "four": true
+      }
+    }
+  ],
+  "source_missing_count": 0,
+  "duplicate_count": 0,
+  "post_repair_mismatch_count": 0,
+  "classification_rule": "yoji if current JMdict strict yoji tag; else idiom if current idiom tag; else four for exact 4-Han headword",
+  "status": "clean"
+}
