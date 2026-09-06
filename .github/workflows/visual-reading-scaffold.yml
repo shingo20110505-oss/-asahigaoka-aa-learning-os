@@ -16,7 +16,10 @@ concurrency:
 
 jobs:
   visual:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    # The main deploy can finish as failure after Pages was successfully deployed
+    # when an unrelated global quality-runtime check fails. In that case this
+    # feature-specific QA must still inspect the exact published release.
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion != 'cancelled'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -51,9 +54,11 @@ jobs:
           test "$ok" = 1
           curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}ai-reading-exam-scaffold-v1.js?reading_visual=${SOURCE_SHA}" -o /tmp/reading-scaffold.js
           cmp -s ai-reading-exam-scaffold-v1.js /tmp/reading-scaffold.js
+          grep -q "VERSION='1.1.0'" /tmp/reading-scaffold.js
           grep -q "ENTRANCE_DIFFICULTY=9" /tmp/reading-scaffold.js
           grep -q "入試問題と同じ形式" /tmp/reading-scaffold.js
-          grep -q "version:VERSION" /tmp/reading-scaffold.js
+          grep -q "installStudyHook" /tmp/reading-scaffold.js
+          grep -q "legacySupport" /tmp/reading-scaffold.js
           node --check scripts/rise-reading-scaffold-visual-v1.mjs
 
       - name: Install Japanese rendering fonts
@@ -76,6 +81,8 @@ jobs:
           grep -q '^result=success$' reading-scaffold-evidence/manifest.txt
           grep -q '^production_entry=verified$' reading-scaffold-evidence/manifest.txt
           grep -q '^support_action=ai-reading-scaffold$' reading-scaffold-evidence/manifest.txt
+          grep -q '^support_click_route=verified$' reading-scaffold-evidence/manifest.txt
+          grep -q '^persistent_hooks=verified$' reading-scaffold-evidence/manifest.txt
           grep -q '^support_format=aichi-exam$' reading-scaffold-evidence/manifest.txt
           grep -q '^preteach=removed$' reading-scaffold-evidence/manifest.txt
           grep -q '^chatgpt_during_attempt=removed$' reading-scaffold-evidence/manifest.txt
@@ -99,7 +106,8 @@ jobs:
             echo ''
             echo "- Source: \`${SOURCE_SHA}\`"
             echo '- Production Study screen is connected to the verified AI reading runtime.'
-            echo '- The support button routes to `ai-reading-scaffold`.'
+            echo '- The support button routes to `ai-reading-scaffold` and the actual click reaches the AI reading route.'
+            echo '- The final studyHTML/subjectsHTML hooks remain installed after later learning-engine layers load.'
             echo '- Support reading uses the Aichi entrance-exam reading presentation.'
             echo '- Five-question / four-choice exam flow is retained.'
             echo '- Upfront vocabulary preteach is removed.'
