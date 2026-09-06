@@ -177,7 +177,9 @@ try {
   assert.match(geminiRequest.url, /generativelanguage\.googleapis\.com/);
   assert.equal(geminiRequest.headers['x-goog-api-key'], 'test-gemini-secret');
   assert.equal(geminiRequest.body.response_format.mime_type, 'application/json');
-  assert.deepEqual(geminiRequest.body.response_format.schema, TEST_SCHEMA);
+  assert.equal(geminiRequest.body.response_format.schema.additionalProperties, undefined);
+  assert.deepEqual(geminiRequest.body.response_format.schema.required, ['ok']);
+  assert.deepEqual(geminiRequest.body.response_format.schema.properties, { ok: { type: 'boolean' } });
   assert.equal(geminiRequest.body.store, false);
 
   const groqRequest = requests[1];
@@ -225,4 +227,4 @@ try {
   globalThis.fetch = originalFetch;
 }
 
-console.log('AI provider contract OK: Gemini/Groq adapters, secret isolation, strict-schema primary mode, validated JSON-object fallback, and provider selection passed');
+console.log('AI provider contract OK: Gemini-compatible schema normalization, Gemini/Groq adapters, secret isolation, strict-schema primary mode, validated JSON-object fallback, and provider selection passed');
