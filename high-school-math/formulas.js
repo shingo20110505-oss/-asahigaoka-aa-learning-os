@@ -45,4 +45,5 @@ window.RISE_EXAM_MATH_FORMULAS={version:'1.2.0',updated:'2026-09-06',items:[
 {id:'a26',cat:'count',tier:'advanced',priority:'A',title:'組合せ nCr',formula:'nCr=n!/{r!(n-r)!}',trigger:'n個から順番を区別せずr個を選ぶ',meaning:'樹形図が大きくなる選び方を短く数えられる。',caution:'順番を区別する並べ方にはそのまま使わない。'},
 {id:'a27',cat:'pattern',tier:'advanced',priority:'A',title:'等差数列',formula:'aₙ=a₁+(n-1)d　／　Sₙ=n(a₁+aₙ)/2',trigger:'規則性問題で一定の差で増減する数列が現れる',meaning:'n番目・最初からn番目までの合計を一気に式にできる。',caution:'差dが一定であることを先に確認する。'}
 ]};
+if(typeof document!=='undefined'&&!window.RISE_EXAM_MATH_VISUALS){const s=document.createElement('script');s.src='./visuals.js?v=1.0.0';s.defer=true;document.head.appendChild(s)}
 })();
