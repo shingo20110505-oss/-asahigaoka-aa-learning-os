@@ -1,0 +1,4 @@
+Gemini exam schema compatibility release
+- additionalProperties is stripped only from the remote Gemini response schema.
+- Rise deterministic validation and Groq independent verification remain strict.
+- math/science/social public /v1/exam smoke must return verified output.
