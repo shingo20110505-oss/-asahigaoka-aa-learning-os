@@ -2,8 +2,7 @@
   'use strict';
   if(window.__AA_AI_EXAM_ROUTE_V1__) return;
 
-  const VERSION='1.0.0';
-  const CONFIG_KEY='aa_ai_reading_config_v1';
+  const VERSION='1.1.0';
   const DEFAULT_ENDPOINT='https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev';
   const ENDPOINT_PATH='/v1/exam';
   const CACHE_KEY='aa_ai_exam_cache_v1';
@@ -14,23 +13,6 @@
 
   function appState(){
     try{return typeof state!=='undefined'?state:window.AA_APP?.get?.('state')?.get?.()||null}catch(_){return null}
-  }
-  function readConfig(){
-    try{
-      const raw=JSON.parse(localStorage.getItem(CONFIG_KEY)||'{}');
-      return {endpoint:normalizeEndpoint(raw.endpoint)||DEFAULT_ENDPOINT,accessToken:typeof raw.accessToken==='string'?raw.accessToken:''};
-    }catch(_){return {endpoint:DEFAULT_ENDPOINT,accessToken:''}}
-  }
-  function normalizeEndpoint(value){
-    const text=String(value||'').trim().replace(/\/+$/,'');
-    if(!text)return '';
-    try{
-      const url=new URL(text);
-      const local=url.hostname==='localhost'||url.hostname==='127.0.0.1';
-      if(url.protocol!=='https:'&&!(local&&url.protocol==='http:'))return '';
-      if(url.username||url.password||url.search||url.hash)return '';
-      return url.origin+url.pathname.replace(/\/+$/,'');
-    }catch(_){return ''}
   }
   function clamp(n,min,max){return Math.max(min,Math.min(max,n))}
   function cacheRead(){try{return JSON.parse(localStorage.getItem(CACHE_KEY)||'{}')||{}}catch(_){return {}}}
@@ -102,13 +84,11 @@
     return {schemaVersion:2,subject,count,difficulty,skill:'aichi.exam.application',focus:weak,recentQuestionIds:recentIds(subject)};
   }
   async function postExam(subject,count){
-    const config=readConfig();
-    if(!config.accessToken||config.accessToken.length<24)throw Object.assign(new Error('AI接続設定が未設定です。英語AI長文と同じ接続用トークンを設定してください。'),{code:'not_configured'});
     if(navigator.onLine===false)throw Object.assign(new Error('オフラインです。保存済みのAI問題がない場合は生成できません。'),{code:'offline'});
     const controller=new AbortController();
     const timer=setTimeout(()=>controller.abort(),REQUEST_TIMEOUT_MS);
     try{
-      const response=await fetch(config.endpoint+ENDPOINT_PATH,{method:'POST',headers:{'content-type':'application/json',authorization:'Bearer '+config.accessToken},body:JSON.stringify(buildRequest(subject,count)),signal:controller.signal,cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'});
+      const response=await fetch(DEFAULT_ENDPOINT+ENDPOINT_PATH,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(buildRequest(subject,count)),signal:controller.signal,cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'});
       let payload=null;try{payload=await response.json()}catch(_){}
       if(!response.ok){const err=new Error(String(payload?.error?.message||`AIサーバーエラー（HTTP ${response.status}）`));err.code=String(payload?.error?.code||'request_failed');throw err}
       if(payload?.schemaVersion!==1||payload?.quality?.verified!==true||payload?.subject!==subject||!Array.isArray(payload.items)||!payload.items.length)throw Object.assign(new Error('検証済み問題を受け取れませんでした。'),{code:'invalid_response'});
@@ -189,5 +169,5 @@
   document.addEventListener('rise:navigation',schedule);document.addEventListener('aa:v23ready',schedule);
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',schedule,{once:true});else schedule();
 
-  window.__AA_AI_EXAM_ROUTE_V1__=Object.freeze({version:VERSION,subjects:[...SUBJECTS],endpointPath:ENDPOINT_PATH,start,decorate,usesLegacyFallback:false,cacheFallback:'verified-ai-only'});
+  window.__AA_AI_EXAM_ROUTE_V1__=Object.freeze({version:VERSION,subjects:[...SUBJECTS],endpoint:DEFAULT_ENDPOINT,endpointPath:ENDPOINT_PATH,start,decorate,requiresFrontendToken:false,usesLegacyFallback:false,cacheFallback:'verified-ai-only'});
 })();
