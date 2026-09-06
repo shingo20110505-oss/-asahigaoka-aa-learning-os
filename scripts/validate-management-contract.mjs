@@ -222,7 +222,7 @@ assert.doesNotMatch(groqProvider, /GEMINI_API_KEY/);
 
 const wrangler = read('worker/wrangler.toml');
 assert.match(wrangler, /main\s*=\s*"src\/entry-hardened\.mjs"/);
-assert.match(wrangler, /GEMINI_MODEL\s*=\s*"gemini-3\.5-flash"/);
+assert.match(wrangler, /GEMINI_MODEL\s*=\s*"gemini-3\.5-flash-lite"/);
 assert.match(wrangler, /GROQ_MODEL\s*=\s*"openai\/gpt-oss-20b"/);
 assert.match(wrangler, /ALLOW_NO_ORIGIN\s*=\s*"false"/);
 assert.match(wrangler, /EXPOSE_AI_DIAGNOSTICS\s*=\s*"false"/);
