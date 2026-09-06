@@ -1,0 +1,36 @@
+name: AI exam live smoke
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ai-exam-live-smoke.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  live-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Call public production exam endpoint for all 3 subjects
+        shell: bash
+        run: |
+          set -u
+          BASE='https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev'
+          overall=0
+          for subject in math science social; do
+            echo "=== SUBJECT=${subject} ==="
+            code="$(curl -sS --connect-timeout 10 --max-time 210 -o "/tmp/${subject}.json" -w '%{http_code}' \
+              -X POST "${BASE}/v1/exam" \
+              -H 'Origin: https://shingo20110505-oss.github.io' \
+              -H 'Content-Type: application/json' \
+              --data "{\"schemaVersion\":2,\"subject\":\"${subject}\",\"count\":1,\"difficulty\":8,\"skill\":\"aichi.exam.application\",\"focus\":[],\"recentQuestionIds\":[]}" || true)"
+            echo "HTTP=${code}"
+            cat "/tmp/${subject}.json" || true
+            echo
+            if [ "$code" != '200' ]; then overall=1; fi
+          done
+          exit "$overall"
