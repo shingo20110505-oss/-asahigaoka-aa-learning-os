@@ -49,7 +49,8 @@
     const advise = DATA.vocab.find(v => v.word.toLowerCase() === 'advise');
     const lookAfter = DATA.vocab.find(v => v.word.toLowerCase() === 'look after');
     add('英単語例文・全件品質ゲート', vocabAudit.placeholdersAfter === 0 && vocabAudit.uncoveredCount === 0 && /advis/i.test(advise?.example || '') && /look.+after/i.test(lookAfter?.example || ''), `例文未整備${vocabAudit.uncoveredCount} ${(vocabAudit.uncovered || []).map(x => x.word).join(', ')}`);
-    add('非API長文の出題廃止', window.AA_API_READING_ONLY && DATA.readingScenarios.length === 0, '従来素材の出題バンクは空');
+    const apiReadingRuntimeReady = !!window.__AA_AI_READING_V1__ && !!window.AAReadingLibrary && !!window.AA_AI_READING_TEST_API__;
+    add('非API長文の出題廃止', apiReadingRuntimeReady && DATA.readingScenarios.length === 0, `従来素材=${DATA.readingScenarios.length}件 / AIランタイム=${apiReadingRuntimeReady ? 'ready' : 'missing'}`);
     const catalog = await window.AAReadingLibrary.load(true);
     const request = window.AA_AI_READING_TEST_API__.buildRequest('scaffold');
     const compatible = window.AAReadingLibrary.rank(catalog.entries, request);
