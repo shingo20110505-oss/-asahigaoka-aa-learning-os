@@ -2,7 +2,7 @@
   'use strict';
   if(window.__AA_READING_EXAM_SCAFFOLD_V1__) return;
 
-  const VERSION='1.0.0';
+  const VERSION='1.0.1';
   const ENTRANCE_DIFFICULTY=9;
   const SUPPORT_ACTIONS=new Set(['ai-reading-scaffold','ai-reading-live-scaffold']);
   const EXAM_ACTIONS=new Set(['ai-reading-exam','start-reading-simulator','start-reading-exam']);
@@ -65,6 +65,34 @@
     return out;
   }
 
+  function decorateRiseSubjects(root=document){
+    const scope=root?.querySelector?root:document;
+    const support=scope.querySelector('.riseSubjectsV4 [data-action="start-custom"][data-kind="reading"][data-subject="english"], .riseSubjectsV4 [data-reading-mode="scaffold-exam"]');
+    const exam=scope.querySelector('.riseSubjectsV4 [data-action="start-reading-exam"], .riseSubjectsV4 [data-reading-mode="exam"]');
+    if(support){
+      support.dataset.action='ai-reading-scaffold';
+      support.dataset.readingMode='scaffold-exam';
+      delete support.dataset.kind;
+      delete support.dataset.subject;
+      support.textContent='補助つき入試長文';
+      support.setAttribute('aria-label','補助つき入試長文。愛知県入試型5問、単語補助のみ利用できます');
+    }
+    if(exam){
+      exam.dataset.action='ai-reading-exam';
+      exam.dataset.readingMode='exam';
+      exam.textContent='入試長文（補助なし）';
+      exam.setAttribute('aria-label','入試長文。補助なしで愛知県入試型5問を解きます');
+    }
+    const card=support?.closest?.('.rv4SubjectCard');
+    if(card&&!card.querySelector('.aaReadingModeNote')){
+      const note=document.createElement('p');
+      note.className='tiny aaReadingModeNote';
+      note.textContent='補助長文も愛知県入試型の5問4択。違いは、分からない単語だけ本文中で確認できることです。';
+      card.appendChild(note);
+    }
+    return !!support;
+  }
+
   if(typeof studyHTML==='function'){
     const beforeStudy=studyHTML;
     studyHTML=function(){
@@ -97,6 +125,24 @@
     queueMicrotask(()=>{state.ui.subjectDifficulty=previous;});
   },true);
 
+  let decorateQueued=false;
+  const scheduleDecorate=()=>{
+    if(decorateQueued)return;
+    decorateQueued=true;
+    requestAnimationFrame(()=>{decorateQueued=false;decorateRiseSubjects(document);});
+  };
+  const attachRiseObserver=()=>{
+    const app=document.getElementById('app');
+    if(!app||app.dataset.readingScaffoldObserver==='1')return;
+    app.dataset.readingScaffoldObserver='1';
+    new MutationObserver(scheduleDecorate).observe(app,{childList:true,subtree:true});
+    scheduleDecorate();
+  };
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attachRiseObserver,{once:true});
+  else attachRiseObserver();
+  document.addEventListener('rise:navigation',scheduleDecorate);
+  document.documentElement.dataset.readingScaffold=VERSION;
+
   const style=document.createElement('style');
   style.id='aa-reading-exam-scaffold-style-v1';
   style.textContent=`
@@ -106,6 +152,7 @@
     .aaReadingExamScaffold .passage{font-size:clamp(16px,2.6vw,18px);line-height:1.9}
     .aaReadingExamScaffold .qstem{font-size:clamp(16px,2.6vw,18px);line-height:1.7;font-weight:800}
     .aaReadingExamScaffold .choice{min-height:52px;text-align:left;line-height:1.55}
+    .riseSubjectsV4 .aaReadingModeNote{margin:10px 2px 0;line-height:1.6;color:var(--sub,#52617a)}
     @media(max-width:560px){.aaReadingExamScaffold .aaExamScaffoldRule{padding:11px 12px}.aaReadingExamScaffold .passage{line-height:1.82}}
   `;
   document.head.appendChild(style);
@@ -114,6 +161,7 @@
     version:VERSION,
     entranceDifficulty:ENTRANCE_DIFFICULTY,
     transformStudyHtml,
-    transformSubjectsHtml
+    transformSubjectsHtml,
+    decorateRiseSubjects
   });
 })();
