@@ -1,13 +1,12 @@
 {
   "schemaVersion": 1,
-  "day": "2026-09-06",
+  "day": "2026-09-07",
   "attempted": 1,
   "added": 0,
-  "state": "quota",
+  "state": "rejected",
   "mode": "scheduled_backend",
   "generationTransport": "generateContent-v1beta",
   "maxCandidatesPerDay": 1,
   "maxCallsPerCandidate": 6,
-  "httpStatus": 429,
-  "reason": "provider_or_validation_error"
+  "reason": "missing_passage"
 }
