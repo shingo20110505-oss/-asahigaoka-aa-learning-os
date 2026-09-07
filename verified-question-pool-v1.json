@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-07-13-29-24Z",
-  "updatedAt": "2026-09-07T13:29:24.309Z",
+  "poolVersion": "2026-09-07-13-41-55Z",
+  "updatedAt": "2026-09-07T13:41:55.248Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -102,6 +102,105 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-06T14:06:07.934Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "According to the notice, what is required for students who want to join the park cleanup?",
+        "context": "Notice: Green Park Cleanup Event\nDate: Saturday, October 15th\nMeeting Time: 9:00 a.m. at the West Park Gate (Please do not be late.)\nWhat to bring: Gloves and water bottles. (Cleaning tools will be provided by the city.)\nImportant: All participants must hand in a permission form signed by a parent to the teacher's office no later than Thursday, October 13th. School uniforms are not necessary; please wear comfortable clothes.",
+        "choices": [
+          "They are required to wear their school uniforms during the activity.",
+          "They must submit a parent-signed permission slip by Thursday.",
+          "They need to bring their own cleaning tools like brooms and buckets.",
+          "They should meet at the station gate at 9:00 a.m. sharp."
+        ],
+        "answerIndex": 1,
+        "answer": "They must submit a parent-signed permission slip by Thursday.",
+        "explanation": "The text states that participants must hand in a permission form signed by a parent to the teacher's office no later than Thursday, October 13th. The strongest distractor claims participants must bring their own cleaning tools, but the text explicitly notes that cleaning tools will be provided by the city.",
+        "evidence": "All participants must hand in a permission form signed by a parent to the teacher's office no later than Thursday, October 13th.",
+        "misconception": "Assuming that school-sponsored events always require students to bring their own equipment or wear school uniforms, ignoring explicit text stating otherwise.",
+        "marks": 2,
+        "id": "rise-english-4f8af5fb76cd07e7",
+        "fingerprint": "a78f770989ea24f7",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-07T13:41:55.230Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "Which of the following best fits the blank in the conversation?",
+        "context": "Ken: We only have three days left before the festival, and we haven't finished making the posters yet.\nYumi: I know. If we try to do everything ourselves tonight, we won't finish in time.\nKen: That's true. What should we do?\nYumi: Why don't we ask Sarah and Leo for help? They finished their project yesterday.\nKen: That's a great idea! _______________\nYumi: I'll message them right now to see if they are free after school.",
+        "choices": [
+          "We should finish it without them.",
+          "Why did they finish so early?",
+          "Let's ask the teacher for more time.",
+          "Do you think they are available?"
+        ],
+        "answerIndex": 3,
+        "answer": "Do you think they are available?",
+        "explanation": "Yumi suggests asking Sarah and Leo for help, and Ken responds that it is a great idea. Yumi's immediate follow-up is to message them to check if they are free, which naturally aligns with wondering or asking about their availability. The distractor about finishing without them contradicts the positive reaction to getting help.",
+        "evidence": "I'll message them right now to see if they are free after school.",
+        "misconception": "Focusing only on the time pressure mentioned at the beginning of the dialogue rather than tracking the immediate conversational turn regarding contacting classmates.",
+        "marks": 2,
+        "id": "rise-english-2b5afa3cf426b3b0",
+        "fingerprint": "7082296a64db62b4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-07T13:41:55.230Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "According to the library information, what is true about borrowing books?",
+        "context": "Library Information & Rules:\n- Opening Hours: Monday to Friday, 9:00 a.m. - 5:00 p.m. (Closed on weekends and national holidays.)\n- Book Loans: Students can borrow up to three books at a time for two weeks.\n- Renewals: If you want to keep a book longer, you can extend the return date once, provided no other student has reserved it.\n- Overdue Books: If you return a book late, you cannot borrow new books until all overdue items are returned.",
+        "choices": [
+          "The library remains open on Saturday mornings for returning books.",
+          "Students are allowed to borrow up to five books during summer vacation.",
+          "You can extend your borrowing period multiple times if you ask the librarian.",
+          "Borrowing new books is suspended if a student has an overdue book."
+        ],
+        "answerIndex": 3,
+        "answer": "Borrowing new books is suspended if a student has an overdue book.",
+        "explanation": "The text explicitly specifies that if a student returns a book late, they cannot borrow new books until all overdue items are returned, which means borrowing privileges are suspended. The distractor regarding multiple extensions is incorrect because the rules state you can extend the return date 'once'.",
+        "evidence": "If you return a book late, you cannot borrow new books until all overdue items are returned.",
+        "misconception": "Confusing conditional library rules with general exceptions (such as assuming special permissions can override explicit limits like a single renewal or borrowing caps).",
+        "marks": 2,
+        "id": "rise-english-f827e6513febbefd",
+        "fingerprint": "a8dd26bd9edb7893",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-07T13:41:55.230Z"
         }
       }
     ],
