@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-07-13-00-52Z",
-  "updatedAt": "2026-09-07T13:00:52.374Z",
+  "poolVersion": "2026-09-07-13-29-24Z",
+  "updatedAt": "2026-09-07T13:29:24.309Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -572,6 +572,105 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-06T14:05:58.400Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "愛知県内の工業出荷額の構成と特徴に関する次の記述のうち、資料から読み取れる内容として最も適切なものを一つ答えよ。",
+        "context": "【愛知県の主要工業部門別出荷額の構成比（仮設データ）】輸送用機械器具は全体の約45%を占め、自動車関連産業の集積が非常に強い。また、機械工業全体（輸送・一般・電気・生産用）で愛知県の製造品出荷額等の約7割を占めている。一方、素材系産業である鉄鋼業や化学工業も一定の割合を維持しつつ、最終組立産業を支える裾野の広い構造を持つ。",
+        "choices": [
+          "愛知県の工業は特定の業種に依存せず、すべての部門が完全に均等な割合で出荷額を構成している。",
+          "自動車を中心とする輸送用機械器具の比率が極めて高く、機械工業全体で製造品出荷額等の大部分を占めている。",
+          "食料品や繊維工業などの軽工業部門が、県内の製造品出荷額等の過半数を占める最も主要な産業となっている。",
+          "素材系産業である鉄鋼業や化学工業が全体の約7割を占め、機械工業の割合はわずかなものにとどまっている。"
+        ],
+        "answerIndex": 1,
+        "answer": "自動車を中心とする輸送用機械器具の比率が極めて高く、機械工業全体で製造品出荷額等の大部分を占めている。",
+        "explanation": "輸送用機械器具が約45%を占め、機械工業全体で約7割を占めるという文中の記述から、自動車を中心とした機械工業が極めて大きい比率を持つことが導かれます。軽工業が過半数を占めるという選択肢や素材産業が7割という選択肢は数値や傾向がデータに反しています。",
+        "evidence": "輸送用機械器具は全体の約45%を占め、自動車関連産業の集積が非常に強い。また、機械工業全体（輸送・一般・電気・生産用）で愛知県の製造品出荷額等の約7割を占めている。",
+        "misconception": "愛知県＝自動車という表面的な知識から、他の産業（軽工業や素材産業など）の比率を過大評価してしまう誤解。",
+        "marks": 2,
+        "id": "rise-social-e90b728f17259273",
+        "fingerprint": "ede8b6fbe6602a91",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-07T13:29:24.284Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "中世から近世にかけての尾張・三河地方の産業や交通の発展に関する次の記述のうち、最も適切なものを一つ答えよ。",
+        "context": "【尾張・三河地域の歴史的展開に関する資料】戦国時代から江戸時代にかけて、濃尾平野や三河の諸地域では河川の改修や新田開発が進められた。また、名古屋城の築城に伴い、清洲越しによって都市機能や商人・職人が移転し、城下町としての経済基盤が形成された。街道沿いでは宿場町が整備され、木綿や陶磁器などの地域特産物が流通するネットワークが拡大した。",
+        "choices": [
+          "戦国時代以降、新田開発は一切行われず、農業生産力は常に低迷したままであった。",
+          "江戸時代の街道や宿場町は整備されず、地域間の特産物の流通ネットワークは完全に断絶していた。",
+          "清洲越しによって名古屋の都市機能は解体され、尾張の中心地は完全に別の地域へと移行した。",
+          "名古屋城の築城に伴う清洲越しにより、都市機能や商工業者が移転して城下町の経済基盤が形成された。"
+        ],
+        "answerIndex": 3,
+        "answer": "名古屋城の築城に伴う清洲越しにより、都市機能や商工業者が移転して城下町の経済基盤が形成された。",
+        "explanation": "文中に「名古屋城の築城に伴い、清洲越しによって都市機能や商人・職人が移転し、城下町としての経済基盤が形成された」と明記されているため、これが正解となります。他の選択肢は資料の記述に矛盾しています。",
+        "evidence": "名古屋城の築城に伴い、清洲越しによって都市機能や商人・職人が移転し、城下町としての経済基盤が形成された。",
+        "misconception": "清洲越しを都市の衰退や機能の破綻と勘違いする誤解。",
+        "marks": 2,
+        "id": "rise-social-be02779d0f6083f1",
+        "fingerprint": "ab0c5d8ff921ace1",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-07T13:29:24.284Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "地方自治における住民参加と直接請求権に関する次の記述のうち、最も適切なものを一つ答えよ。",
+        "context": "【地方自治法における住民の権利に関する資料】日本の地方自治制度では、住民が地域社会の意思決定に直接関与するための権利が定められている。例えば、選挙権だけでなく、条例の制定や改廃の請求、事務の監査請求、さらには一定の署名を集めることで議会の解散や長・議員の解職を求める権利（リコール）などが認められており、これらは住民自治の重要な基盤となっている。",
+        "choices": [
+          "監査請求やリコールなどの制度は憲法上認められておらず、法律にも規定がない。",
+          "住民は、一定数以上の署名を集めることで、条例の制定や改廃、リコールなどの直接請求を行うことができる。",
+          "地方自治における住民の権利は首長の決定に従うのみであり、条例の制定や改廃を請求する手段は一切存在しない。",
+          "住民による直接請求権は認められておらず、いかなる場合でも議会の解散を求めることはできない。"
+        ],
+        "answerIndex": 1,
+        "answer": "住民は、一定数以上の署名を集めることで、条例の制定や改廃、リコールなどの直接請求を行うことができる。",
+        "explanation": "資料および地方自治法の規定通り、住民は条例の制定・改廃や解職請求（リコール）などの直接請求を行う権利を持っています。否定的な選択肢はすべて法制度の事実に反しています。",
+        "evidence": "条例の制定や改廃の請求、事務の監査請求、さらには一定の署名を集めることで議会の解散や長・議員の解職を求める権利（リコール）などが認められており",
+        "misconception": "住民の政治参加は投票のみに制限されており、直接請求権は存在しないと思い込む誤解。",
+        "marks": 2,
+        "id": "rise-social-4cd7a9c3f778bdb7",
+        "fingerprint": "4d1c1be555187c4b",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-07T13:29:24.284Z"
         }
       }
     ]
