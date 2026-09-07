@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-07-13-41-55Z",
-  "updatedAt": "2026-09-07T13:41:55.248Z",
+  "poolVersion": "2026-09-07-14-14-08Z",
+  "updatedAt": "2026-09-07T14:14:08.417Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -403,6 +403,105 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-06T14:06:22.773Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.text_analysis",
+        "difficulty": 8,
+        "question": "筆者が考える、この自治体のゴミ減量化施策が成功した最も核心的な要因は何か。",
+        "context": "持続可能な地域社会の実現に向けて、ある自治体では住民参加型のゴミ減量化施策を導入した。従来の行政主導による一律の分別回収から、各地区の特性に応じた分別ルールへと変更したところ、住民の意識向上と排出量の大幅な削減が同時に達成された。この成功の要因は、自分たちの生活圏に即したルール作りを通じて、住民が環境問題への当事者意識を持つに至った点にある。",
+        "choices": [
+          "ゴミの排出量を削減することで自治体から経済的な報奨金が出たこと",
+          "専門家の指導のもとで最新のゴミ処理施設が短期間で建設されたこと",
+          "行政が一律の分別回収ルールを厳格に定めて徹底させたこと",
+          "住民が生活圏に即したルール作りを通して当事者意識を持ったこと"
+        ],
+        "answerIndex": 3,
+        "answer": "住民が生活圏に即したルール作りを通して当事者意識を持ったこと",
+        "explanation": "本文では、一律の回収から地区の特性に応じたルールに変更し、それが住民の意識向上と排出量削減につながった理由として、自分たちの生活圏に即したルール作りを通じて住民が当事者意識を持つに至った点を挙げている。行政が厳格に定めたことや経済的報奨金などは本文に書かれておらず誤りである。",
+        "evidence": "自分たちの生活圏に即したルール作りを通じて、住民が環境問題への当事者意識を持つに至った点にある。",
+        "misconception": "本文の冒頭にある従来の行政主導という表現や、一般的な行政施策のイメージにとらわれ、住民の主体性ではなく行政の強制力や制度そのものが成功の要因であると誤解すること。",
+        "marks": 2,
+        "id": "rise-japanese-129a95a5a8587251",
+        "fingerprint": "018b3bbab88f86a0",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-07T14:14:08.386Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.argument_structure",
+        "difficulty": 8,
+        "question": "本文における「真の継承」についての説明として、最も適切なものはどれか。",
+        "context": "伝統文化の継承において、形骸化した古い手順をただ忠実に守り続けることは、かえってその文化の生命力を奪う結果を招く。真の継承とは、時代の変化に応じて新たな解釈や表現を取り入れながら、その根底にある精神を未来へつむぎ直していく不断の営みである。すなわち、過去への固執ではなく、未来に向けた創造的な変革こそが伝統を持続させる。",
+        "choices": [
+          "古い手順を一切変えずにそのままの状態で後世に完璧に保存すること",
+          "時代に応じた新たな解釈や表現を取り入れつつ精神をつむぎ直すこと",
+          "過去の伝統を完全に捨て去り全く新しい文化をゼロから創り出すこと",
+          "専門家の評価に基づき不要となった古い伝統を速やかに廃止すること"
+        ],
+        "answerIndex": 1,
+        "answer": "時代に応じた新たな解釈や表現を取り入れつつ精神をつむぎ直すこと",
+        "explanation": "本文では真の継承について時代の変化に応じて新たな解釈や表現を取り入れながらその根底にある精神を未来へつむぎ直していく不断の営みであると明確に定義している。形骸化した手順を守ることやゼロから創り出すこと、廃止することは本文の主張に反する。",
+        "evidence": "時代の変化に応じて新たな解釈や表現を取り入れながら、その根底にある精神を未来へつむぎ直していく不断の営みである。",
+        "misconception": "伝統という言葉から古いものをそのまま変えずに守るべきだという先入観を持ち、変革を伴う継承のあり方を見落とすこと。",
+        "marks": 2,
+        "id": "rise-japanese-755999a620addb62",
+        "fingerprint": "af9b5f16b15ef9d8",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-07T14:14:08.386Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.data_reading",
+        "difficulty": 8,
+        "question": "筆者が考える、互いの深い信頼関係を構築するうえで決定的である要素は何か。",
+        "context": "現代のコミュニケーションにおいて、デジタルツールによる効率的な情報伝達は不可欠なものとなっている。しかし、文字情報や短縮された記号だけでは、発話者の表情や声のトーンといった非言語のニュアンスが欠落しがちである。対面での対話がもつ、偶発的な笑いや沈黙の共有といった五感を通じた情報のやり取りこそが、互いの深い信頼関係を構築するうえで決定的な役割を果たしている。",
+        "choices": [
+          "発話者の表情や声のトーンを排除した客観的な事実のみの確認",
+          "デジタルツールを用いた迅速かつ効率的な情報伝達の徹底",
+          "文字や記号を活用した誤解のない正確な文章の作成と共有",
+          "対面での対話を通じた五感による情報やニュアンスの共有"
+        ],
+        "answerIndex": 3,
+        "answer": "対面での対話を通じた五感による情報やニュアンスの共有",
+        "explanation": "本文の後半で対面での対話がもつ、偶発的な笑いや沈黙の共有といった五感を通じた情報のやり取りこそが互いの深い信頼関係を構築するうえで決定的な役割を果たしていると述べられている。効率的な情報伝達や文字情報のみのやり取りは信頼関係の構築ではなく効率面の説明であり不適当。",
+        "evidence": "対面での対話がもつ、偶発的な笑いや沈黙の共有といった五感を通じた情報のやり取りこそが、互いの深い信頼関係を構築するうえで決定的な役割を果たしている。",
+        "misconception": "デジタルツールの利便性の高さに注目しすぎてしまい、対面による非言語的コミュニケーションの重要性を過小評価してしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-d3c8e7c46aa5ff30",
+        "fingerprint": "7c9a50af3689c95d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-07T14:14:08.386Z"
         }
       }
     ],
