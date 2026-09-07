@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-06-14-06-22Z",
-  "updatedAt": "2026-09-06T14:06:22.792Z",
+  "poolVersion": "2026-09-07-13-00-52Z",
+  "updatedAt": "2026-09-07T13:00:52.374Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -405,6 +405,72 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-06T14:05:45.335Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.physics",
+        "difficulty": 8,
+        "question": "台車を斜面に沿って上向きにはじき、運動の様子を記録テープで調べた。記録タイマーは1秒間に50打点のものである。打点の間隔が最も広くなった直後の、台車が最高点に達するまでの運動と力の関係について最も適当なものを次のうちから1つ選びなさい。",
+        "context": "小車を1秒間に50打点の記録タイマーに接続したテープを引かせて斜面の上向きにはじいた。斜面を上っている間、記録テープの打点の間隔はだんだん狭くなり、最高点に達した後はだんだん広くなった。最高点に達した瞬間、台車の速度は一時的に0m/sになった。",
+        "choices": [
+          "上向きのはじかれた勢いによる力が上向きに働き続けている。",
+          "摩擦力のみが働き、重力は斜面と垂直な方向成分しか持たない。",
+          "力は一切働いておらず、慣性のみで運動している。",
+          "斜面を下向きに引く重力の分力が働き続けている。"
+        ],
+        "answerIndex": 3,
+        "answer": "斜面を下向きに引く重力の分力が働き続けている。",
+        "explanation": "斜面上の物体には常に下向きに重力が働いており、斜面に平行な下向きの分力が常に存在するため、上向きに運動している間も減速し続け、最高点に達した後も加速し続ける。力は「はじかれた勢い」というものが物体に残り続けるわけではなく、非接触の重力成分が常に下向きに加わっている点がポイントである。",
+        "evidence": "斜面を上っている間、記録テープの打点の間隔はだんだん狭くなり、最高点に達した後はだんだん広くなった。",
+        "misconception": "物体を投げ上げたりはじいたりしたとき、その運動方向へ「勢いの力」や「初速度の力」が押し続けるように存在し続けるという誤った直観的力学観。",
+        "marks": 2,
+        "id": "rise-science-e1d931a20c832206",
+        "fingerprint": "483d13c02954b3aa",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-07T13:00:36.707Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.biology",
+        "difficulty": 8,
+        "question": "植物の葉における蒸散量と気孔の観察に関する記述として最も適当なものを次のうちから1つ選びなさい。",
+        "context": "晴天の日の午前中に、ツキミソウの葉の表側と裏側からそれぞれセロハンテープ法で表皮の剥離物をとり、顕微鏡で観察した。葉の裏側には多数の気孔が見られたが、表側にはほとんど見られなかった。また、同じ植物の枝葉を使って、ワセリンを塗る条件を変えて質量変化を測定した。",
+        "choices": [
+          "葉の表側のみにワセリンを塗った場合、裏側のみに塗った場合よりも蒸散量が大幅に多くなる。",
+          "葉の裏側には気孔が多く存在するため、裏側からの水分放出が蒸散の大部分を占める。",
+          "気孔は光の有無に関わらず、夜間でも昼間と同程度に開き続けて水分を放出する。",
+          "蒸散は植物体の温度を調節するための能動的なポンプ機能によって強制的に行われる。"
+        ],
+        "answerIndex": 1,
+        "answer": "葉の裏側には気孔が多く存在するため、裏側からの水分放出が蒸散の大部分を占める。",
+        "explanation": "文脈および一般的な植物の葉の構造において、多くの場合気孔は裏側に多く分布する。そのため裏面からの蒸散量が大部分を占める。表側だけにワセリンを塗っても気孔が少ないため蒸散量の低下は比較的小さく、裏側に塗ったときのほうが蒸散量は著しく減少する。したがって裏側の気孔を通した水分放出が主であるという記述が正しい。",
+        "evidence": "葉の裏側には多数の気孔が見られたが、表側にはほとんど見られなかった。",
+        "misconception": "葉の表と裏で気孔の数は同じであり、表裏同等に蒸散が行われているという思い込み。",
+        "marks": 2,
+        "id": "rise-science-f8656afa1ce6466e",
+        "fingerprint": "393545b89406b792",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-07T13:00:36.707Z"
         }
       }
     ],
