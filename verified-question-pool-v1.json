@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-08-12-07-28Z",
-  "updatedAt": "2026-09-08T12:07:28.179Z",
+  "poolVersion": "2026-09-08-12-17-56Z",
+  "updatedAt": "2026-09-08T12:17:56.734Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -201,6 +201,105 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-07T13:41:55.230Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application.dialogue_inference",
+        "difficulty": 8,
+        "question": "What is the primary reason Ken decided to join the community cleanup event?",
+        "context": "Ken: \"Yumi, are you going to the river cleanup next Saturday? I'm still not sure if I should sign up.\" \nYumi: \"I am. The local youth center needs at least twenty volunteers so they can get the new recycling equipment for our neighborhood park.\" \nKen: \"Oh, is that right? When I heard about it, I thought it was just about picking up trash along the riverbank. But if it directly helps us get better park facilities for our kids and teenagers, that changes everything. Count me on!\" \nYumi: \"Glad to hear that! The registration closes this Wednesday.\"",
+        "choices": [
+          "He wanted to finish his community service assignment before Wednesday.",
+          "He wanted to spend more time outdoors near the riverbank.",
+          "He realized the event would help secure recycling equipment for the local park.",
+          "He was pressured by the local youth center to meet a volunteer quota."
+        ],
+        "answerIndex": 2,
+        "answer": "He realized the event would help secure recycling equipment for the local park.",
+        "explanation": "Ken initially thought the event was only about picking up trash, but changed his mind when he learned that reaching the volunteer threshold would help obtain new recycling equipment for the neighborhood park. A common misconception is assuming Ken joined simply because he loves outdoor cleaning or because of a general requirement, but the text specifically highlights the direct link between volunteer numbers and park facilities.",
+        "evidence": "But if it directly helps us get better park facilities for our kids and teenagers, that changes everything.",
+        "misconception": "Confusing the general activity of the cleanup (picking up trash) with the actual motivating factor that changed Ken's mind (getting park equipment).",
+        "marks": 2,
+        "id": "rise-english-64f293009ddc5464",
+        "fingerprint": "b6465f64da6775ea",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-08T12:17:56.710Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application.notice_interpretation",
+        "difficulty": 8,
+        "question": "According to the library notice, what must students do if they want to borrow books over the summer vacation period?",
+        "context": "[Library Notice: Summer Borrowing Rules]\n1. Regular students can borrow up to three books at a time during the term.\n2. During the summer break, the limit is increased to five books, provided that students submit a signed parent permission slip by July 15th.\n3. All books borrowed before the break must be returned by September 1st, regardless of the check-out date.\n4. Reference books and dictionaries are strictly excluded from summer borrowing.",
+        "choices": [
+          "Borrow no more than three books during the summer break.",
+          "Return all previously borrowed books before July 15th.",
+          "Submit a parent permission slip with a signature by July 15th.",
+          "Limit their summer selections to reference books and dictionaries."
+        ],
+        "answerIndex": 2,
+        "answer": "Submit a parent permission slip with a signature by July 15th.",
+        "explanation": "Rule 2 states that the book limit increases to five books provided that students submit a signed parent permission slip by July 15th. The strongest distractor involves returning books or borrowing limits, misinterpreting the conditions listed in the notice.",
+        "evidence": "provided that students submit a signed parent permission slip by July 15th.",
+        "misconception": "Assuming that the regular term rules (like the 3-book limit) apply universally or confusing the return deadline with the permission slip deadline.",
+        "marks": 2,
+        "id": "rise-english-4d70c0853d3eda31",
+        "fingerprint": "ee4489ecade62fc2",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-08T12:17:56.710Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application.informational_reading",
+        "difficulty": 8,
+        "question": "Which of the following statements is true about the city's new bus schedule according to the announcement?",
+        "context": "City Transit Announcement:\nStarting next month, Route 4 buses will run every 15 minutes instead of every 30 minutes during morning rush hours (7:00 AM to 9:00 AM). However, weekend schedules will remain unchanged. Please note that the evening departure times for Route 4 will be shifted ten minutes later to better connect with the local train arrivals.",
+        "choices": [
+          "Evening departure times for Route 4 will be moved ten minutes earlier.",
+          "Morning rush hours for Route 4 will now start at 6:00 AM.",
+          "Route 4 buses will run twice as frequently during morning rush hours next month.",
+          "Weekend schedules for Route 4 will be adjusted to match the new morning times."
+        ],
+        "answerIndex": 2,
+        "answer": "Route 4 buses will run twice as frequently during morning rush hours next month.",
+        "explanation": "The text states that buses will run every 15 minutes instead of every 30 minutes during morning rush hours, which means the frequency is doubled (running twice as often). A common trap is misinterpreting the time changes or assuming weekend schedules changed.",
+        "evidence": "Route 4 buses will run every 15 minutes instead of every 30 minutes during morning rush hours",
+        "misconception": "Failing to connect the change from 30-minute intervals to 15-minute intervals with an increase in frequency (doubling).",
+        "marks": 2,
+        "id": "rise-english-7fc62d6315cd94b7",
+        "fingerprint": "8469261f38493f5d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-08T12:17:56.710Z"
         }
       }
     ],
