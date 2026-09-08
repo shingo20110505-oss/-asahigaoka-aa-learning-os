@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-08-12-17-56Z",
-  "updatedAt": "2026-09-08T12:17:56.734Z",
+  "poolVersion": "2026-09-08-12-51-19Z",
+  "updatedAt": "2026-09-08T12:51:19.271Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -601,6 +601,105 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-07T14:14:08.386Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading_comprehension",
+        "difficulty": 8,
+        "question": "本文における筆者の「体験学習」に対する考え方として、最も適当なものを次の中から一つ選べ。",
+        "context": "近年、学校教育において地域社会と連携した体験学習の導入が急速に進められている。教室の中だけでは得られない生きた知識や、他者との協働によるコミュニケーション能力の育成がその主な目的とされる。しかし、単に学校外の活動へ参加するだけで自動的に教育的効果が得られるわけではない。事前の動機づけや、活動後の振り返り（リフレクション）という内省のプロセスが不可欠なのである。体験の量よりも、体験から何を引き出し、自らの言葉で再構築するかが学習の本質を決めるのである。",
+        "choices": [
+          "学校外の活動へ参加さえすれば、自動的に高い教育的効果やコミュニケーション能力が身につく。",
+          "体験そのものの量がいかに多いかが、学習の深さや質を決定づける最も重要な要因である。",
+          "体験学習の成果は、事前の動機づけや事後の内省的な振り返りを通じて初めて引き出される。",
+          "教室の中での座学の知識は、体験学習の導入によって完全に代替されるべきものである。"
+        ],
+        "answerIndex": 2,
+        "answer": "体験学習の成果は、事前の動機づけや事後の内省的な振り返りを通じて初めて引き出される。",
+        "explanation": "本文では、「単に学校外の活動へ参加するだけで自動的に教育的効果が得られるわけではない。事前の動機づけや、活動後の振り返り（リフレクション）という内省のプロセスが不可欠なのである」と述べられています。したがって、体験学習の成果には振り返りや内省が不可欠であるとする選択肢が正解となります。参加すれば自動的に効果が得られるとする誤答は、本文の「自動的に教育的効果が得られるわけではない」という記述に反しています。",
+        "evidence": "事前の動機づけや、活動後の振り返り（リフレクション）という内省のプロセスが不可欠なのである。",
+        "misconception": "「体験学習の導入が進められている」という前半の事実や活動への参加という表層的な部分だけに注目し、「参加すれば自動的に効果がある」という安易な因果関係に飛びついてしまう誤解。",
+        "marks": 2,
+        "id": "rise-japanese-f7ce93aab810bb06",
+        "fingerprint": "e3b17b81cde15387",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-08T12:51:19.243Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.argument_structure",
+        "difficulty": 8,
+        "question": "次の文章で、筆者が「効率性」の追求について懸念している理由として、最も適当なものを次の中から一つ選べ。",
+        "context": "現代社会はあらゆる場面で「効率性」や「迅速な成果」を最優先する傾向にある。情報通信技術の発展により、私たちは無駄を省き、最短距離で正解にたどり着く方法を容易に手に入れた。だが、その結果として、試行錯誤の過程で得られる深い気づきや、思いがけない出会いといった偶発的な価値が切り捨てられてはいないだろうか。効率ばかりを追求するあまり、人間が本来持っている熟考する余裕や、時間をかけて物事を味わう感性が失われつつあることこそが、現代の深刻な問題なのである。",
+        "choices": [
+          "効率性を重視するあまり、試行錯誤の過程にある偶発的な価値や熟考する余裕が失われるから。",
+          "最短距離で成果を出すことが、結果として技術の進歩や社会の発展を妨げる要因になるから。",
+          "無駄を省く行動が、人間関係のトラブルを引き起こし、コミュニケーションを断絶させるから。",
+          "情報通信技術の発展によって、誰もが正解にたどり着く手段を完全に失ってしまっているから。"
+        ],
+        "answerIndex": 0,
+        "answer": "効率性を重視するあまり、試行錯誤の過程にある偶発的な価値や熟考する余裕が失われるから。",
+        "explanation": "本文中では、効率や迅速な成果を最優先する結果、「試行錯誤の過程で得られる深い気づきや、思いがけない出会いといった偶発的な価値が切り捨てられてはいないだろうか」「熟考する余裕や、時間をかけて物事を味わう感性が失われつつある」と述べられています。したがって、効率性の追求が偶発的な価値や熟考の余裕を失わせるという点が理由となります。",
+        "evidence": "効率ばかりを追求するあまり、人間が本来持っている熟考する余裕や、時間をかけて物事を味わう感性が失われつつあることこそが、現代の深刻な問題なのである。",
+        "misconception": "「情報通信技術の発展」という語句に引きずられ、技術の進歩そのものが社会の発展を妨げているという、筆者の主張を超えた飛躍した解釈を選ぶ誤り。",
+        "marks": 2,
+        "id": "rise-japanese-0da9ce56b055af5a",
+        "fingerprint": "b86968f8b7b9b996",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-08T12:51:19.243Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.expression_analysis",
+        "difficulty": 8,
+        "question": "次の文章における「他者の視座に立つ」という表現の意図として、最も適当なものを次の中から一つ選べ。",
+        "context": "私たちは日常生活において、無意識のうちに自分自身の経験や価値観というフィルターを通して物事を判断している。しかし、自分とは異なる文化や背景を持つ人々と対話するとき、そのフィルターが誤解や偏見を生む原因となる。真の対話とは、単に自分の意見を相手に納得させることではない。自分を一旦脇に置き、他者の視座に立つこと、すなわち相手の置かれた文脈や論理をその内側から追体験することを通じて、世界を新たな角度から捉え直す営みなのだ。",
+        "choices": [
+          "自分の意見の正しさを相手に強く主張し、自身の考え方に相手を完全に同化させること。",
+          "自分自身の経験や価値観を絶対に崩さず、常に客観的で冷静な批評眼を保ち続けること。",
+          "自分を一旦脇に置き、相手の置かれた文脈や論理を内側から追体験して世界を捉え直すこと。",
+          "異なる文化や背景を持つ人々の意見をすべて無条件に受け入れ、批判を一切行わないこと。"
+        ],
+        "answerIndex": 2,
+        "answer": "自分を一旦脇に置き、相手の置かれた文脈や論理を内側から追体験して世界を捉え直すこと。",
+        "explanation": "本文では「自分を一旦脇に置き、他者の視座に立つこと、すなわち相手の置かれた文脈や論理をその内側から追体験することを通じて、世界を新たな角度から捉え直す営みなのだ」と明確に説明されています。したがって、相手の論理を追体験して世界を捉え直すことを指している選択肢が正解となります。",
+        "evidence": "自分を一旦脇に置き、他者の視座に立つこと、すなわち相手の置かれた文脈や論理をその内側から追体験することを通じて、世界を新たな角度から捉え直す営みなのだ。",
+        "misconception": "「対話」という言葉から、自分の意見を相手に納得させることや、相手の意見を無条件に受け入れることといった、対話の表面的なイメージに囚われる誤解。",
+        "marks": 2,
+        "id": "rise-japanese-85c21f677f549bb3",
+        "fingerprint": "fe4cf777458e36c5",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-08T12:51:19.243Z"
         }
       }
     ],
