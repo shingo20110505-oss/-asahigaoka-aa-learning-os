@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-08-11-43-42Z",
-  "updatedAt": "2026-09-08T11:43:42.955Z",
+  "poolVersion": "2026-09-08-12-07-28Z",
+  "updatedAt": "2026-09-08T12:07:28.179Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -968,6 +968,105 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-07T13:29:24.284Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.geography.industry",
+        "difficulty": 8,
+        "question": "文章から読み取れる愛知県の工業の特色として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "愛知県の工業出荷額は長年全国第1位を誇っており、特に輸送用機械器具の割合が極めて高い。県内には自動車本体の組立工場だけでなく、多くの部品メーカーや関連産業が立地し、いわゆる集積の効果が見られる。一方で、近年は環境配慮型の次世代自動車の開発や、航空宇宙産業など新たな分野への取り組みも進められている。",
+        "choices": [
+          "伝統的な繊維工業が現在でも工業出荷額全体の首位を維持していること。",
+          "食料品や印刷関連など、都市型の地場産業のみが経済を支えていること。",
+          "金属製品や化学工業が全体の約8割を占め、素材型産業が中心であること。",
+          "輸送用機械器具の割合が高く、多数の関連部品メーカーが地域に集積していること。"
+        ],
+        "answerIndex": 3,
+        "answer": "輸送用機械器具の割合が高く、多数の関連部品メーカーが地域に集積していること。",
+        "explanation": "愛知県の工業は、自動車などの輸送用機械器具が圧倒的な割合を占め、多数の関連部品メーカーが近くに集まることで効率的な生産体制（集積の効果）を築いている点が最大の特徴です。素材型工業が中心であるとか、伝統的な繊維工業が首位を維持しているとする選択肢は、現在の統計データや産業構造の実態に反しています。",
+        "evidence": "特に輸送用機械器具の割合が極めて高い。県内には自動車本体の組立工場だけでなく、多くの部品メーカーや関連産業が立地し、いわゆる集積の効果が見られる。",
+        "misconception": "過度な歴史的イメージや他の都道府県の工業地域（京浜工業地帯などの素材・重化学工業）の特徴と愛知県の実態を混同してしまうこと。",
+        "marks": 2,
+        "id": "rise-social-5cbd57f49b96e640",
+        "fingerprint": "a54b49b210420afc",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-08T12:07:28.145Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.history.modern",
+        "difficulty": 8,
+        "question": "大正時代の政治的・社会的な動向について述べた文として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "大正時代、国民の間から政治参加を求める声が高まり、政党政治の展開や普通選挙の実現を求める運動が活発化した。これには、第一次世界大戦後の経済変化や社会運動の拡大が背景にあり、労働争議や小作争議、さらには女性の参政権を求める動きなども現れた。",
+        "choices": [
+          "普通選挙法が制定され、満20歳以上のすべての男女に選挙権が与えられたこと。",
+          "政党政治が本格化し、護憲運動などを背景に民意を反映させようとする動きが見られたこと。",
+          "大戦景気によって労働者の生活が安定し、労働争議や社会運動は完全に消滅したこと。",
+          "藩閥政治がそのまま温存され、民間からの政治参加の要求はほとんど見られなかったこと。"
+        ],
+        "answerIndex": 1,
+        "answer": "政党政治が本格化し、護憲運動などを背景に民意を反映させようとする動きが見られたこと。",
+        "explanation": "大正時代には、憲政擁護運動などを背景に、帝国議会で政党が内閣を組織する政党政治が本格化し、民主化を求める大正デモクラシーの風潮が高まりました。普通選挙法に関する選択肢は、対象が満25歳以上の男子であったことや、女性の参政権が戦後まで認められなかった点において誤りです。",
+        "evidence": "国民の間から政治参加を求める声が高まり、政党政治の展開や普通選挙の実現を求める運動が活発化した。",
+        "misconception": "1925年の普通選挙法制定によって、現代と同様に男女平等かつ満20歳以上の全員に選挙権が与えられたと誤解すること。",
+        "marks": 2,
+        "id": "rise-social-f88f160f1359f82b",
+        "fingerprint": "7394dafbd3549fd1",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-08T12:07:28.145Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.civics.local_autonomy",
+        "difficulty": 8,
+        "question": "地方自治の仕組みや原則について述べた文として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "地方自治は住民が自らの地域の問題を解決する仕組みであり、地方公共団体には条例制定権や予算執行権がある。首長と議会はそれぞれ住民の直接選挙で選ばれ、相互に抑制と均衡を保つ関係にある。",
+        "choices": [
+          "国会が制定した法律に反しない範囲であれば、地方公共団体は独自の条例を制定できないこと。",
+          "地方自治体には立法・司法・行政の三権が完全に独立した形で設置されていること。",
+          "住民の直接請求権として、解職請求のほかに法律の制定を求める権利が含まれていること。",
+          "地方公共団体の長と議会の議員は、いずれも住民による直接選挙によって選出されること。"
+        ],
+        "answerIndex": 3,
+        "answer": "地方公共団体の長と議会の議員は、いずれも住民による直接選挙によって選出されること。",
+        "explanation": "地方公共団体の長（知事や市町村長）および議会の議員は、どちらも住民の直接選挙によって選ばれます。条例は法律に反しない限り制定できるため「制定できない」とする記述は誤りであり、また地方自治体に司法権は存在しません。",
+        "evidence": "首長と議会はそれぞれ住民の直接選挙で選ばれ、相互に抑制と均衡を保つ関係にある。",
+        "misconception": "地方議会の議員のみが選挙で選ばれ、首長は任命制であると誤認したり、条例制定の条件を誤解すること。",
+        "marks": 2,
+        "id": "rise-social-58bed9985784cd74",
+        "fingerprint": "4f667dba5ebb4038",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-08T12:07:28.145Z"
         }
       }
     ]
