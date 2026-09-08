@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-07-14-14-08Z",
-  "updatedAt": "2026-09-07T14:14:08.417Z",
+  "poolVersion": "2026-09-08-11-43-42Z",
+  "updatedAt": "2026-09-08T11:43:42.955Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -669,6 +669,105 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-07T13:00:36.707Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemical_change",
+        "difficulty": 8,
+        "question": "実験で得られた結果から、銅粉の質量と結びついた酸素の質量の関係として正しいものを1つ選びなさい。",
+        "context": "【実験】ステンレス皿に銅粉を4.0gとり、全体をよくかき混ぜながらガスバーナーで十分に加熱した。冷えた後に質量を測定すると5.0gであった。次に、銅粉の質量を2.0g、6.0g、8.0gに変えて同様の加熱を行い、完全に反応させたときの加熱後の物質の質量を測定したところ、それぞれ2.5g、7.5g、10.0gであった。",
+        "choices": [
+          "銅粉の質量と結びついた酸素の質量の比は常に一定（4:1）である",
+          "銅粉の質量と結びついた酸素の質量の比は常に一定（5:1）である",
+          "銅粉の質量を増やすと、結びつく酸素の質量の割合は次第に小さくなる",
+          "銅粉の質量を増やすと、結びつく酸素の質量の割合は次第に大きくなる"
+        ],
+        "answerIndex": 0,
+        "answer": "銅粉の質量と結びついた酸素の質量の比は常に一定（4:1）である",
+        "explanation": "実験結果より、銅4.0gに対して酸素が5.0 - 4.0 = 1.0g結びついています。銅2.0gでは2.5 - 2.0 = 0.5g、銅6.0gでは7.5 - 6.0 = 1.5g、銅8.0gでは10.0 - 8.0 = 2.0gの酸素が結びついています。したがって、銅の質量と結びついた酸素の質量の比は常に 4:1 で一定です。最強の罠は加熱後の質量の数値をそのまま比にしてしまう誤解です。",
+        "evidence": "銅粉の質量を2.0g、6.0g、8.0gに変えて同様の加熱を行い、完全に反応させたときの加熱後の物質の質量を測定したところ、それぞれ2.5g、7.5g、10.0gであった。",
+        "misconception": "加熱後の物質の質量をそのまま酸素の質量や比率の計算に用いてしまう。",
+        "marks": 2,
+        "id": "rise-science-747142ccd6731c58",
+        "fingerprint": "88ef0d30b9a3bb66",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-08T11:43:42.936Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.weather",
+        "difficulty": 8,
+        "question": "表の観測結果から、露点と湿度の関係について正しく述べられているものを1つ選びなさい。",
+        "context": "【観測】ある日の気温と湿度の変化を調べた。時刻A（気温15.0℃、湿度60%）、時刻B（気温20.0℃、湿度60%）、時刻C（気温20.0℃、湿度45%）。なお、15.0℃のときの飽和水蒸気量は12.8g/m³、20.0℃のときの飽和水蒸気量は17.3g/m³である。",
+        "choices": [
+          "時刻Aの露点は時刻Bの露点より高い",
+          "時刻Bの露点は時刻Cの露点より低い",
+          "時刻Bと時刻Cの露点は等しい",
+          "時刻Aの露点は時刻Bの露点より低い"
+        ],
+        "answerIndex": 3,
+        "answer": "時刻Aの露点は時刻Bの露点より低い",
+        "explanation": "時刻Aは気温15.0℃で湿度60%なので、水蒸気量は12.8 × 0.6 = 7.68g/m³です。時刻Bは気温20.0℃で湿度60%なので、水蒸気量は17.3 × 0.6 = 10.38g/m³です。水蒸気量が多い時刻Bの方が、露点（空気が冷やされて露し始める温度）が高くなります。したがって、時刻Aの露点は時刻Bの露点よりも低いです。時刻Bと時刻Cの比較では、同じ気温で湿度が高い時刻Bの方が水蒸気量が多く露点が高いです。",
+        "evidence": "時刻A（気温15.0℃、湿度60%）、時刻B（気温20.0℃、湿度60%）、時刻C（気温20.0℃、湿度45%）",
+        "misconception": "湿度が同じであれば露点も同じであると混同してしまう。",
+        "marks": 2,
+        "id": "rise-science-025e8a78048662f4",
+        "fingerprint": "a6d5fd966829e4ec",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-08T11:43:42.936Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.force_and_pressure",
+        "difficulty": 8,
+        "question": "直方体のレンガを置く向きを変えたときの圧力について、正しく述べられているものを1つ選びなさい。",
+        "context": "【実験】重さ30N、一辺の長さがそれぞれ10cm、20cm、40cmの直方体のレンガがある。このレンガをスポンジの上に置き、へこみの深さを調べた。面S1（10cm×20cm）を下にして置いたときの圧力をP1、面S2（20cm×40cm）を下にして置いたときの圧力をP2とする。",
+        "choices": [
+          "P1はP2より小さい",
+          "P1とP2は等しい",
+          "レンガの向きを変えてもスポンジのへこみの深さは変わらない",
+          "P1はP2より大きい"
+        ],
+        "answerIndex": 3,
+        "answer": "P1はP2より大きい",
+        "explanation": "圧力の大きさは、力を加える面積が小さいほど大きくなります。面S1の面積は 0.1m × 0.2m = 0.02m² であり、面S2の面積は 0.2m × 0.4m = 0.08m² です。重さは同じ30Nであるため、面積が小さい面S1を下にしたときの圧力P1（30 ÷ 0.02 = 1500Pa）は、面S2を下にしたときの圧力P2（30 ÷ 0.08 = 375Pa）よりも大きくなります。",
+        "evidence": "面S1（10cm×20cm）を下にして置いたときの圧力をP1、面S2（20cm×40cm）を下にして置いたときの圧力をP2とする。",
+        "misconception": "面積が大きい方が圧力が大きくなると勘違いする。",
+        "marks": 2,
+        "id": "rise-science-8e08f69b230f078f",
+        "fingerprint": "97aaf0f4ab3aa8f2",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-08T11:43:42.936Z"
         }
       }
     ],
