@@ -49,8 +49,8 @@ jobs:
           curl -fsSL --connect-timeout 10 --max-time 25 "${BASE}quiz/auto-scroll-v1.js?unified-quiz=${SOURCE_SHA}" -o /tmp/auto-scroll.js
           ACTUAL_JS_SHA=$(sha256sum /tmp/auto-scroll.js | awk '{print $1}')
           test "$ACTUAL_JS_SHA" = "$EXPECTED_JS_SHA"
-          grep -q "next.addEventListener('click',scrollToQuestionTop)" /tmp/auto-scroll.js
-          grep -q "study.scrollIntoView" /tmp/auto-scroll.js
+          grep -q "document.addEventListener('click',event=>" /tmp/auto-scroll.js
+          grep -q "scrollAfterQuestionChanges(marker())" /tmp/auto-scroll.js
           grep -q "requestAnimationFrame" /tmp/auto-scroll.js
 
           echo "Unified quiz production auto-scroll verification succeeded."
