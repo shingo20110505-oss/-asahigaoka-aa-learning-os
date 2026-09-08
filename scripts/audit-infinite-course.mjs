@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 const root=process.cwd(),read=p=>fs.readFileSync(path.join(root,p),'utf8');
-const html=read('quiz/index.html'),engine=read('quiz/infinite-course-v1.js'),review=read('quiz/review-algorithm-v1.js'),bankCode=read('quiz/japanese-classics-bank-v1.js'),normalizerCode=read('kokugo-chronologia/koten-kanbun-normalization-v1.js'),vocabPage=read('classics-vocab/index.html'),vocabApp=read('classics-vocab/app.js'),sw=read('sw.js');
+const html=read('quiz/index.html'),native=read('quiz/unified-native-v1.js'),engine=read('quiz/infinite-course-v1.js'),review=read('quiz/review-algorithm-v1.js'),bankCode=read('quiz/japanese-classics-bank-v1.js'),normalizerCode=read('kokugo-chronologia/koten-kanbun-normalization-v1.js'),vocabPage=read('classics-vocab/index.html'),vocabApp=read('classics-vocab/app.js'),sw=read('sw.js');
 const failures=[],checks=[];const check=(name,ok,detail='')=>{checks.push({name,ok:!!ok,detail});if(!ok)failures.push(name+(detail?`: ${detail}`:''))};
 for(const [file,code] of [['infinite-course-v1.js',engine],['review-algorithm-v1.js',review],['japanese-classics-bank-v1.js',bankCode],['koten-kanbun-normalization-v1.js',normalizerCode],['classics-vocab/app.js',vocabApp]]){let err='';try{new vm.Script(code,{filename:file})}catch(e){err=String(e?.message||e)}check(`${file} parses`,!err,err)}
 const sandbox={window:{},Object,console,setInterval:()=>0,clearInterval:()=>{}};vm.createContext(sandbox);for(let i=1;i<=5;i++)vm.runInContext(read(`kokugo-chronologia/koten-kanbun-bank-${i}.js`),sandbox,{filename:`koten-kanbun-bank-${i}.js`});vm.runInContext(normalizerCode,sandbox,{filename:'koten-kanbun-normalization-v1.js'});vm.runInContext(bankCode,sandbox,{filename:'japanese-classics-bank-v1.js'});const bank=sandbox.window.RISE_JAPANESE_CLASSICS_BANK_V1||{};
@@ -17,6 +17,7 @@ check('Quiz page loads review algorithm before infinite engine',html.indexOf('./
 check('Infinite option is installed',engine.includes("o.value='infinite'")&&engine.includes('∞ 無限コース'));
 check('Infinite course can be ended manually',engine.includes('endInfiniteCourse')&&engine.includes('無限コースを終了'));
 check('Japanese UI exposes classical and kanbun filters',engine.includes("add('classical','古文')")&&engine.includes("add('kanbun','漢文')"));
+check('Native Japanese controls preserve classical and kanbun after data reload',native.includes("['classical','古文'],['kanbun','漢文']")&&native.includes('configureJapaneseRange(previous.filterB)')&&native.includes("if(subject==='japanese')configureJapaneseRange()"));
 check('Infinite Japanese all mixes vocabulary/classical/kanbun',engine.includes("if(r<.2)return classicQuestion('classical')")&&engine.includes("if(r<.4)return classicQuestion('kanbun')"));
 check('Classics uses a persistent no-repeat cycle',engine.includes("CLASSIC_CYCLE_KEY='rise_kokugo_classics_cycle_v1'")&&engine.includes('state[key]=rem')&&engine.includes('rem.shift()'));
 check('Classics questions use the 1,000-word adapter',engine.includes('BANK.makeQuestion(item,ui.mode.value,pool)')&&review.includes("BANK.makeQuestion(item,'random',pool)"));

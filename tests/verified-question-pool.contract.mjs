@@ -11,6 +11,10 @@ function storage(){
 function item(id='rise-math-0123456789abcdef',subject='math',skill='math.aichi.geometry'){
   return{id,subject,skill,difficulty:9,question:'図の条件から正しい結論を選びなさい。',context:'AB=ACで、点Dは辺BC上にある。',choices:['AD=BD','AD=CD','BD=CD','AB=BD'],answerIndex:2,answer:'BD=CD',explanation:'与えられた条件を順に用いると、BDとCDが等しいことが導けます。',evidence:'AB=AC',misconception:'見た目だけで長さを判断すると誤ります。',marks:2,quality:{verified:true,verifierConfidence:.93,method:'test'}};
 }
+function incomingItem(id='rise-math-fedcba9876543210',subject='math',skill='math.aichi.geometry'){
+  const base=item(id,subject,skill);
+  return{...base,fingerprint:id.slice(-16),quality:{...base.quality,generationProvider:'gemini',verificationProvider:'groq',verifierMode:'json_schema',strictStructuredOutput:true}};
+}
 function boot(){
   const localStorage=storage();
   const fakeState={ui:{subjectDifficulty:10,practiceConfig:{}},attempts:[],mastery:{},session:null};
@@ -36,7 +40,7 @@ function boot(){
 {
   const t=boot();
   t.localStorage.setItem('aa_ai_reading_config_v1',JSON.stringify({endpoint:'https://example.test',accessToken:'123456789012345678901234567890'}));
-  const generated=item('rise-math-fedcba9876543210');
+  const generated=incomingItem();
   t.setFetchHandler(async()=>({ok:true,status:200,json:async()=>({subject:'math',quality:{verified:true},items:[generated]})}));
   const result=await t.api.acquire({subject:'math',units:['geometry'],level:3,count:1});
   assert.equal(t.getFetchCount(),1,'pool miss should call API once');
@@ -48,7 +52,7 @@ function boot(){
 {
   const t=boot();
   t.localStorage.setItem('aa_ai_reading_config_v1',JSON.stringify({endpoint:'https://example.test',accessToken:'123456789012345678901234567890'}));
-  const bad={...item('rise-science-1111111111111111','science','sci.aichi.physics'),quality:{verified:false,verifierConfidence:.99}};
+  const bad={...incomingItem('rise-science-1111111111111111','science','sci.aichi.physics'),quality:{verified:false,verifierConfidence:.99}};
   t.setFetchHandler(async()=>({ok:true,status:200,json:async()=>({subject:'science',quality:{verified:true},items:[bad]})}));
   const result=await t.api.acquire({subject:'science',units:['physics'],level:3,count:1});
   assert.equal(result.items.length,0);

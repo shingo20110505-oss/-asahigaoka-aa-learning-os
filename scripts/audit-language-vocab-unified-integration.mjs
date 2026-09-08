@@ -15,7 +15,7 @@ check(raw.length===15000,`Japanese raw bank changed: ${raw.length}`);
 check(rank.includes("kokugoChronologiaStateV2"),'Japanese state key changed');
 check(rank.includes("aa_kokugo_vocab_wrong_queue_v1"),'Japanese wrong key changed');
 check(rank.includes("aa_kokugo_vocab_full15000_cycle_v1"),'Japanese cycle key changed');
-check(rank.includes("x.word+'|'+x.reading"),'Japanese word|reading dedupe guard missing');
+check(rank.includes("const entryKey=x=>`${x?.word||''}|${x?.reading||''}`")&&rank.includes('const k=entryKey(x)'),'Japanese word|reading dedupe guard missing');
 
 check(en.includes("srsId:`v:en-sup-v1-"),'English stable supplement SRS IDs missing');
 check(en.includes("compatibility:'append-only-existing-id-preserved'"),'English append-only compatibility marker missing');
@@ -34,7 +34,7 @@ check(core.includes("wrongStore: 'aa_kokugo_vocab_wrong_queue_v1'"),'Japanese wr
 check(core.includes("cycleStore: 'aa_kokugo_vocab_full15000_cycle_v1'"),'Japanese cycle store changed in core');
 
 check(unified.includes("...(window.AA_JUKUGO_ADVANCED||[])"),'Unified Japanese pool no longer consumes advanced/supplement bank');
-check(unified.includes("uniqueBy([...full,...bank,...curated],x=>x.word+'|'+x.reading)"),'Unified Japanese word|reading dedupe missing');
+check(unified.includes('const seenFull=new Set()')&&unified.includes('const key=jaContentKey(raw)')&&unified.includes('byKey=new Map(merged.map(x=>[jaContentKey(x),x]))'),'Unified Japanese word|reading dedupe missing');
 check(unified.includes("if(rows.length!==15000)"),'Unified Japanese 15k hard guard missing');
 
 const result={status:failures.length?'FAIL':'PASS',rawJapaneseRows:raw.length,failures};

@@ -68,7 +68,7 @@ assert(quizRank.includes("const STATE_KEY='kokugoChronologiaStateV2'"),'Japanese
 assert(quizRank.includes("const WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1'"),'Japanese wrong queue key changed');
 assert(quizRank.includes("const CYCLE_KEY='aa_kokugo_vocab_full15000_cycle_v1'"),'Japanese no-repeat cycle key changed');
 assert(quizRank.includes("if(rows.length!==15000)"),'Japanese 15k hard guard missing');
-assert(quizRank.includes("const k=x.word+'|'+x.reading"),'Japanese word|reading duplicate guard missing');
+assert(quizRank.includes("const entryKey=x=>`${x?.word||''}|${x?.reading||''}`")&&quizRank.includes('const k=entryKey(x)'),'Japanese word|reading duplicate guard missing');
 const touch=read('kokugo-chronologia/quiz-interaction-fix.js');
 assert(touch.includes("captureTouch")&&touch.includes("capturePointer")&&touch.includes("fallbackTap"),'Japanese mobile quiz tap hardening missing');
 assert(touch.includes('jukugo-bank-supplement-v1.js'),'Japanese supplement loader missing');

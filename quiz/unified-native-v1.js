@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const VERSION='1.2.1';
+const VERSION='1.2.2';
 const SUBJECTS=Object.freeze(['english','japanese','social']);
 const core=window.RISE_VOCABULARY_CORE_V1;
 const progressAdapters=window.RISE_VOCABULARY_PROGRESS_ADAPTERS_V1;
@@ -49,7 +49,22 @@ function updateCounts(){
  if(ready.social){const weak=data.social.filter(x=>progressForSocial(x).status==='weak').length;ui.soCount.textContent=data.social.length.toLocaleString();ui.soSub.textContent=`弱点 ${weak.toLocaleString()}`}
 }
 
+function configureJapaneseRange(value=''){
+ const kind=ui.filterA.value;
+ if(kind==='classical'){
+   ui.filterBLabel.textContent='レベル';
+   setOptions(ui.filterB,[['all','全レベル'],['S','S 最優先'],['A','A 頻出'],['B','B 重要'],['C','C 発展']],value);
+ }else if(kind==='kanbun'){
+   ui.filterBLabel.textContent='レベル';
+   setOptions(ui.filterB,[['all','全レベル'],['A','A 頻出'],['B','B 発展']],value);
+ }else{
+   ui.filterBLabel.textContent='ランク';
+   setOptions(ui.filterB,[['all','全ランク'],['A','A 最優先'],['B','B 重要'],['C','C 発展']],value);
+ }
+}
+
 function configureControls(){
+ const previous={mode:ui.mode.value,filterA:ui.filterA.value,filterB:ui.filterB.value};
  focusWeak=false;ui.focus.classList.remove('on');
  if(subject==='mixed'){
    setOptions(ui.mode,[['auto','3教科ミックス']]);
@@ -62,9 +77,9 @@ function configureControls(){
    ui.filterBLabel.textContent='状態';setOptions(ui.filterB,[['all','全状態'],['weak','要復習'],['new','未学習'],['mastered','定着']]);
    ui.focus.textContent='間違いだけ';
  }else if(subject==='japanese'){
-   setOptions(ui.mode,[['random','ランダム形式'],['meaning','語句 → 意味'],['reading','語句 → 読み'],['word','意味 → 語句']]);
-   ui.filterALabel.textContent='種類';setOptions(ui.filterA,[['all','全部'],['two','二字熟語'],['three','三字熟語'],['yoji','四字熟語'],['idiom','慣用句'],['four','四字語']]);
-   ui.filterBLabel.textContent='ランク';setOptions(ui.filterB,[['all','全ランク'],['A','A 最優先'],['B','B 重要'],['C','C 発展']]);
+   setOptions(ui.mode,[['random','ランダム形式'],['meaning','語句 → 意味'],['reading','語句 → 読み'],['word','意味 → 語句']],previous.mode);
+   ui.filterALabel.textContent='種類';setOptions(ui.filterA,[['all','全部'],['two','二字熟語'],['three','三字熟語'],['yoji','四字熟語'],['idiom','慣用句'],['four','四字語'],['classical','古文'],['kanbun','漢文']],previous.filterA);
+   configureJapaneseRange(previous.filterB);
    ui.focus.textContent='間違いだけ';
  }else{
    setOptions(ui.mode,[['mixed','出来事 ↔ 年号'],['eventToYear','出来事 → 年号'],['yearToEvent','年号 → 出来事']]);
@@ -282,6 +297,7 @@ function startSession(){
 }
 
 $$('[data-subject]').forEach(b=>b.onclick=()=>setSubject(b.dataset.subject));
+ui.filterA.addEventListener('change',()=>{if(subject==='japanese')configureJapaneseRange()});
 ui.focus.onclick=()=>{focusWeak=!focusWeak;ui.focus.classList.toggle('on',focusWeak)};
 ui.start.onclick=startSession;ui.next.onclick=nextQuestion;ui.submit.onclick=()=>answerQuestion(ui.answerInput.value,null);ui.answerInput.onkeydown=e=>{if(e.key==='Enter'&&!ui.submit.disabled)answerQuestion(ui.answerInput.value,null)};ui.restart.onclick=()=>{ui.summary.classList.add('hidden');startSession()};
 frames.english.addEventListener('load',()=>connectEnglish());frames.social.addEventListener('load',()=>connectSocial());
