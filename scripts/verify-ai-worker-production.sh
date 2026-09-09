@@ -52,8 +52,11 @@ fi
 GEMINI_QUOTA_EXHAUSTED=false
 GROQ_QUOTA_EXHAUSTED=false
 READING_VERIFIED=false
+READING_SAFE_REJECTED=false
 MATH_VERIFIED=false
+MATH_SAFE_REJECTED=false
 SCIENCE_VERIFIED=false
+SCIENCE_SAFE_REJECTED=false
 
 READING_HTTP_STATUS="$(curl -sS --max-time 180 -w '%{http_code}' \
   -X POST \
@@ -65,6 +68,9 @@ READING_HTTP_STATUS="$(curl -sS --max-time 180 -w '%{http_code}' \
 
 if [[ "$READING_HTTP_STATUS" == 200 ]]; then
   READING_VERIFIED=true
+elif [[ "$READING_HTTP_STATUS" == 422 ]] && node -e 'const p=require("/tmp/ai-reading.json"); process.exit(p.error?.code==="quality_rejected" ? 0 : 1)'; then
+  READING_SAFE_REJECTED=true
+  echo 'English candidate was rejected by the quality gate; no unverified content was released.'
 elif [[ "$READING_HTTP_STATUS" == 429 ]] && node -e 'const p=require("/tmp/ai-reading.json"); process.exit(p.error?.code==="quota_exceeded" ? 0 : 1)'; then
   GEMINI_QUOTA_EXHAUSTED=true
   echo 'Gemini free quota is exhausted; generation is correctly stopped and verified/local pool fallback remains required.'
@@ -87,6 +93,9 @@ if [[ "$GROQ_QUOTA_EXHAUSTED" != true ]]; then
     "$BASE/v1/verify" -o /tmp/math-verify.json || true)"
   if [[ "$MATH_HTTP_STATUS" == 200 ]]; then
     MATH_VERIFIED=true
+  elif [[ "$MATH_HTTP_STATUS" == 422 ]] && node -e 'const p=require("/tmp/math-verify.json"); process.exit(["subject_deterministic_rejected","subject_verification_rejected","verification_rejected"].includes(p.error?.code) ? 0 : 1)'; then
+    MATH_SAFE_REJECTED=true
+    echo 'Math audit candidate was rejected by the strict quality gate; no unverified content was accepted.'
   elif [[ "$MATH_HTTP_STATUS" == 429 ]] && node -e 'const p=require("/tmp/math-verify.json"); process.exit(p.error?.code==="groq_quota_exceeded" ? 0 : 1)'; then
     GROQ_QUOTA_EXHAUSTED=true
     echo 'Groq free quota became exhausted during math audit; strict verification stopped as designed.'
@@ -108,6 +117,9 @@ if [[ "$GEMINI_QUOTA_EXHAUSTED" != true && "$GROQ_QUOTA_EXHAUSTED" != true ]]; t
     "$BASE/v1/exam" -o /tmp/ai-exam.json || true)"
   if [[ "$EXAM_HTTP_STATUS" == 200 ]]; then
     SCIENCE_VERIFIED=true
+  elif [[ "$EXAM_HTTP_STATUS" == 422 ]] && node -e 'const p=require("/tmp/ai-exam.json"); process.exit(p.error?.code==="quality_rejected" ? 0 : 1)'; then
+    SCIENCE_SAFE_REJECTED=true
+    echo 'Science candidate was rejected by the quality gate; no unverified content was released.'
   elif [[ "$EXAM_HTTP_STATUS" == 429 ]] && node -e 'const p=require("/tmp/ai-exam.json"); process.exit(["quota_exceeded","groq_quota_exceeded"].includes(p.error?.code) ? 0 : 1)'; then
     CODE="$(node -e 'const p=require("/tmp/ai-exam.json"); process.stdout.write(p.error.code)')"
     if [[ "$CODE" == quota_exceeded ]]; then GEMINI_QUOTA_EXHAUSTED=true; else GROQ_QUOTA_EXHAUSTED=true; fi
@@ -120,6 +132,7 @@ else
   printf '{"skipped":"provider_quota"}' > /tmp/ai-exam.json
 fi
 
-export GEMINI_QUOTA_EXHAUSTED GROQ_QUOTA_EXHAUSTED READING_VERIFIED MATH_VERIFIED SCIENCE_VERIFIED
+export GEMINI_QUOTA_EXHAUSTED GROQ_QUOTA_EXHAUSTED
+export READING_VERIFIED READING_SAFE_REJECTED MATH_VERIFIED MATH_SAFE_REJECTED SCIENCE_VERIFIED SCIENCE_SAFE_REJECTED
 export DEPLOYMENT_URL="$BASE"
 node scripts/verify-ai-worker-production-result.mjs

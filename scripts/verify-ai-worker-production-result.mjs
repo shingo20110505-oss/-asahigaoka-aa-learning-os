@@ -10,8 +10,11 @@ const exam = readJson('/tmp/ai-exam.json');
 const geminiQuota = process.env.GEMINI_QUOTA_EXHAUSTED === 'true';
 const groqQuota = process.env.GROQ_QUOTA_EXHAUSTED === 'true';
 const readingVerified = process.env.READING_VERIFIED === 'true';
+const readingSafeRejected = process.env.READING_SAFE_REJECTED === 'true';
 const mathVerified = process.env.MATH_VERIFIED === 'true';
+const mathSafeRejected = process.env.MATH_SAFE_REJECTED === 'true';
 const scienceVerified = process.env.SCIENCE_VERIFIED === 'true';
+const scienceSafeRejected = process.env.SCIENCE_SAFE_REJECTED === 'true';
 const subjects = ['english', 'math', 'japanese', 'science', 'social'];
 const expectedGeminiModel = process.env.EXPECTED_GEMINI_MODEL || 'gemini-3.5-flash-lite';
 
@@ -44,16 +47,20 @@ if (readingVerified) {
   if (reading.schemaVersion !== 1 || reading.quality?.verified !== true || reading.quality?.generationProvider !== 'gemini' || reading.quality?.verificationProvider !== 'groq' || !Array.isArray(reading.reading?.questions) || reading.reading.questions.length !== 5) {
     throw new Error('English AI quality verification failed');
   }
+} else if (readingSafeRejected) {
+  if (reading.error?.code !== 'quality_rejected') throw new Error('English safe rejection response mismatch');
 } else if (!geminiQuota && !groqQuota) {
-  throw new Error('English reading was neither verified nor stopped by an expected free-provider quota');
+  throw new Error('English reading was neither verified, safely rejected, nor stopped by an expected free-provider quota');
 }
 
 if (mathVerified) {
   if (math.schemaVersion !== 1 || math.subject !== 'math' || math.accepted !== true || math.quality?.verified !== true || math.quality?.verificationProvider !== 'groq' || math.quality?.verifierMode !== 'json_schema') {
     throw new Error('Math strict Groq audit failed');
   }
+} else if (mathSafeRejected) {
+  if (!['subject_deterministic_rejected', 'subject_verification_rejected', 'verification_rejected'].includes(math.error?.code)) throw new Error('Math safe rejection response mismatch');
 } else if (!groqQuota) {
-  throw new Error('Math verification was neither verified nor stopped by Groq quota');
+  throw new Error('Math verification was neither verified, safely rejected, nor stopped by Groq quota');
 }
 
 if (scienceVerified) {
@@ -67,12 +74,17 @@ if (scienceVerified) {
   if (exam.quality?.method !== 'gemini-authoring-subject-deterministic-groq-blind-agreement' || !String(exam.quality?.hardening || '').includes('strict-groq-schema-no-fallback')) {
     throw new Error('Science agreement hardening marker missing');
   }
+} else if (scienceSafeRejected) {
+  if (exam.error?.code !== 'quality_rejected') throw new Error('Science safe rejection response mismatch');
 } else if (!geminiQuota && !groqQuota) {
-  throw new Error('Science generation was neither verified nor stopped by an expected provider quota');
+  throw new Error('Science generation was neither verified, safely rejected, nor stopped by an expected provider quota');
 }
 
 const geminiLine = geminiQuota ? 'quota exhausted -> generation stopped, pool fallback required (PASS)' : `${status.model} available`;
 const groqLine = groqQuota ? 'quota exhausted -> new items rejected (PASS)' : mathVerified ? 'strict live audit PASS' : 'available';
-const summary = `## Rise AI Platform production gate\n\n- URL: ${process.env.DEPLOYMENT_URL || ''}\n- Worker: ${health.version} / hardening ${health.hardeningVersion}\n- Gemini transport revision: ${health.geminiTransportRevision}\n- Gemini model: ${status.model}\n- Provider deadlines: enabled\n- Gemini: ${geminiLine}\n- Groq: ${groqLine}\n- English live end-to-end: ${readingVerified ? 'PASS' : 'skipped after expected quota'}\n- Math strict Groq audit: ${mathVerified ? 'PASS' : 'skipped after expected quota'}\n- Science live end-to-end: ${scienceVerified ? 'PASS' : 'skipped after expected quota'}\n- Paid fallback: disabled\n- Strict verifier downgrade: disabled\n- Quota handling: fail closed and stop further generation\n`;
+const readingOutcome = readingVerified ? 'PASS' : readingSafeRejected ? 'safe quality rejection (PASS)' : 'skipped after expected quota';
+const mathOutcome = mathVerified ? 'PASS' : mathSafeRejected ? 'safe quality rejection (PASS)' : 'skipped after expected quota';
+const scienceOutcome = scienceVerified ? 'PASS' : scienceSafeRejected ? 'safe quality rejection (PASS)' : 'skipped after expected quota';
+const summary = `## Rise AI Platform production gate\n\n- URL: ${process.env.DEPLOYMENT_URL || ''}\n- Worker: ${health.version} / hardening ${health.hardeningVersion}\n- Gemini transport revision: ${health.geminiTransportRevision}\n- Gemini model: ${status.model}\n- Provider deadlines: enabled\n- Gemini: ${geminiLine}\n- Groq: ${groqLine}\n- English live end-to-end: ${readingOutcome}\n- Math strict Groq audit: ${mathOutcome}\n- Science live end-to-end: ${scienceOutcome}\n- Paid fallback: disabled\n- Strict verifier downgrade: disabled\n- Quota handling: fail closed and stop further generation\n`;
 if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
 console.log('Rise AI production verification PASS');
