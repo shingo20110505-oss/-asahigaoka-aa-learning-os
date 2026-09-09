@@ -61,7 +61,7 @@ jobs:
       - name: Generate one candidate and independently verify
         run: node scripts/japanese-library.mjs --generate | tee /tmp/japanese-generation.json
 
-      - name: Reject HTTP 400 transport failures explicitly
+      - name: Record generation outcome
         shell: bash
         run: |
           set -euo pipefail
@@ -69,10 +69,6 @@ jobs:
           const fs = require('fs');
           const status = JSON.parse(fs.readFileSync('japanese-exam/generation-status.json', 'utf8'));
           console.log(JSON.stringify(status));
-          if (status.state === 'request_rejected' || status.httpStatus === 400) {
-            console.error('Japanese backend generation was rejected with HTTP 400. Nothing will be accepted.');
-            process.exit(1);
-          }
           NODE
 
       - name: Revalidate accepted library
@@ -128,3 +124,19 @@ jobs:
           test -n "$RUN_ID"
           echo "Waiting for Pages/public verification run ${RUN_ID} at ${SOURCE_SHA}"
           gh run watch "$RUN_ID" --exit-status
+
+      - name: Require an accepted pack or an already-used daily slot
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require('fs');
+          const status = JSON.parse(fs.readFileSync('japanese-exam/generation-status.json', 'utf8'));
+          if (status.added === 1 || status.state === 'daily_limit') {
+            console.log(`Japanese replenishment outcome: ${status.state}`);
+            process.exit(0);
+          }
+          console.error(`Japanese replenishment did not add a pack: ${status.state || 'unknown'} / ${status.reason || 'no reason'}`);
+          process.exit(1);
+          NODE

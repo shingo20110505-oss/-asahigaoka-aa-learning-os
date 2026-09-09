@@ -56,8 +56,10 @@ if (!response.ok) {
   const code = String(payload?.error?.code || 'request_failed');
   const message = String(payload?.error?.message || `HTTP ${response.status}`);
   if (response.status === 429 || ['quota_exceeded', 'groq_quota_exceeded', 'rate_limited'].includes(code)) {
-    console.log(`[rise-pool] ${subject}: generation safely skipped (${code}). ${message}`);
-    process.exit(0);
+    console.error(`[rise-pool] ${subject}: free-tier capacity blocked replenishment (${code}). ${message}`);
+    // A quota stop is safe for learners because no unverified item is accepted, but
+    // it is not a successful replenishment. Keep the workflow red and observable.
+    process.exit(75);
   }
   throw new Error(`[rise-pool] ${subject}: ${code}: ${message}`);
 }

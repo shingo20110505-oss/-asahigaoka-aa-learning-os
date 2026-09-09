@@ -136,6 +136,7 @@ assert.ok(semanticSimilarity('二次関数と図形の面積を求める。', '�
 const originalFetch = globalThis.fetch;
 let providerCalls = [];
 let strictFailure = false;
+let examStrictFailuresRemaining = 0;
 globalThis.fetch = async (url, options) => {
   const href = String(url);
   const body = JSON.parse(options.body || '{}');
@@ -147,11 +148,15 @@ globalThis.fetch = async (url, options) => {
   if (href === 'https://api.groq.com/openai/v1/chat/completions') {
     assert.equal(body.response_format?.type, 'json_schema');
     assert.equal(body.response_format?.json_schema?.strict, true);
+    const name = body.response_format?.json_schema?.name || '';
+    if (name.includes('exam_blind_hardened') && examStrictFailuresRemaining > 0) {
+      examStrictFailuresRemaining--;
+      return new Response(JSON.stringify({ error: { type: 'invalid_request_error', message: 'Failed to validate JSON.', failed_generation: '{"invalid":true}' } }), { status: 400, headers: { 'content-type': 'application/json' } });
+    }
     if (strictFailure) {
       return new Response(JSON.stringify({ error: { type: 'invalid_request_error', message: 'Failed to validate JSON.', failed_generation: '{"invalid":true}' } }), { status: 400, headers: { 'content-type': 'application/json' } });
     }
     const user = body.messages.find(message => message.role === 'user')?.content || '';
-    const name = body.response_format?.json_schema?.name || '';
     if (name.includes('exam_blind_hardened')) {
       const publicItems = JSON.parse(user.slice(user.lastIndexOf('[{')));
       const item = publicItems[0];
@@ -174,6 +179,18 @@ try {
   assert.equal(batch.items[0].quality.strictStructuredOutput, true);
   assert.match(batch.quality.hardening, /strict-groq-schema-no-fallback/);
   assert.equal(providerCalls.filter(call => call.href.includes('api.groq.com')).length, 1);
+
+  providerCalls = [];
+  examStrictFailuresRemaining = 1;
+  const retriedBatch = await generateHardenedVerifiedExamBatch(ENV, { subject: 'science', count: 1, difficulty: 9, skill: SCIENCE.skill, focus: ['実験', '計算'] });
+  const retryCalls = providerCalls.filter(call => call.href.includes('api.groq.com'));
+  assert.equal(retriedBatch.deliveredCount, 1);
+  assert.equal(retriedBatch.items[0].quality.verifierStrictRetry, true);
+  assert.equal(retryCalls.length, 2, 'failed strict batch verification is retried exactly once');
+  assert.equal(retryCalls[0].body.response_format.type, 'json_schema');
+  assert.equal(retryCalls[1].body.response_format.type, 'json_schema', 'strict retry must never downgrade to json_object');
+  assert.equal(retryCalls[0].body.reasoning_effort, 'medium');
+  assert.equal(retryCalls[1].body.reasoning_effort, 'low');
 
   providerCalls = [];
   const verified = await verifyHardenedSubjectQuestion(ENV, {

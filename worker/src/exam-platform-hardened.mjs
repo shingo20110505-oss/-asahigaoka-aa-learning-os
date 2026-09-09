@@ -437,18 +437,37 @@ async function callAuthor(env, request, count, attempt, diagnostics) {
 
 async function callVerifier(env, request, items) {
   const reasoningEffort = HIGH_RISK.has(request.subject) || request.difficulty >= 8 ? 'medium' : 'low';
+  const verifierRequest = effort => ({
+    input: buildHardenedBlindVerifierPrompt(request.subject, items),
+    schema: HARDENED_BATCH_VERIFIER_SCHEMA,
+    schemaName: `rise_${request.subject}_exam_blind_hardened_v2`,
+    maxOutputTokens: Math.min(9000, 1800 + items.length * 1200),
+    temperature: 0,
+    reasoningEffort: effort,
+    allowJsonObjectFallback: false,
+    systemInstruction: 'Independently solve every supplied exam item. Return only strict schema JSON. Never infer an author answer key. Reject ambiguity and uncertain facts.'
+  });
   try {
-    return await withTimeout(callGroqJson(env, {
-      input: buildHardenedBlindVerifierPrompt(request.subject, items),
-      schema: HARDENED_BATCH_VERIFIER_SCHEMA,
-      schemaName: `rise_${request.subject}_exam_blind_hardened_v2`,
-      maxOutputTokens: Math.min(9000, 1200 + items.length * 700),
-      temperature: 0,
-      reasoningEffort,
-      allowJsonObjectFallback: false,
-      systemInstruction: 'Independently solve every supplied exam item. Return only strict schema JSON. Never infer an author answer key. Reject ambiguity and uncertain facts.'
-    }), PROVIDER_TIMEOUT_MS, 'Groq');
+    return await withTimeout(callGroqJson(env, verifierRequest(reasoningEffort)), PROVIDER_TIMEOUT_MS, 'Groq');
   } catch (error) {
+    // gpt-oss can occasionally abort a constrained generation before returning its
+    // otherwise valid strict object. Retry once with lower reasoning effort and the
+    // exact same JSON Schema; never downgrade to json_object or accept raw text.
+    const retryable = error instanceof GroqProviderError && new Set([
+      'groq_failed_generation',
+      'groq_empty_output',
+      'groq_invalid_json',
+      'groq_schema_mismatch'
+    ]).has(error.code);
+    if (retryable) {
+      try {
+        const retried = await withTimeout(callGroqJson(env, verifierRequest('low')), PROVIDER_TIMEOUT_MS, 'Groq');
+        return { ...retried, strictRetry: true, strictRetryFrom: error.code };
+      } catch (retryError) {
+        if (retryError instanceof GroqProviderError || retryError instanceof HardenedExamError) throw retryError;
+        throw new HardenedExamError('exam_verification_unavailable', '独立検証を実行できませんでした。', 503);
+      }
+    }
     if (error instanceof GroqProviderError || error instanceof HardenedExamError) throw error;
     throw new HardenedExamError('exam_verification_unavailable', '独立検証を実行できませんでした。', 503);
   }
@@ -530,6 +549,7 @@ export async function generateHardenedVerifiedExamBatch(env, input) {
           verificationProvider: verified.provider,
           verificationModel: verified.model,
           verifierMode: verified.mode || 'json_schema',
+          verifierStrictRetry: verified.strictRetry === true,
           verifierConfidence: Number(entry.verification.confidence),
           strictStructuredOutput: verified.mode === 'json_schema',
           checkedAt: new Date().toISOString()
@@ -564,7 +584,7 @@ export async function generateHardenedVerifiedExamBatch(env, input) {
     quality: {
       verified: true,
       method: 'gemini-authoring-subject-deterministic-groq-blind-agreement',
-      hardening: 'strict-groq-schema-no-fallback+choice-rotation+semantic-dedupe+evidence-gates',
+      hardening: 'strict-groq-schema-no-fallback+bounded-strict-retry+choice-rotation+semantic-dedupe+evidence-gates',
       attempts,
       rejectedCount: attempts.reduce((sum, row) => sum + Number(row.deterministicRejected || 0) + Number(row.verificationRejected || 0), 0)
     }

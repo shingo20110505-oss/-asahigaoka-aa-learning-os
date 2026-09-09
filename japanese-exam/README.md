@@ -28,9 +28,9 @@
 
 Gemini生成は `v1beta/models/<model>:generateContent` のJSONモードを使う。Interactionsのrevision headerへ依存しない。HTTP 400は `request_rejected` として明示的に失敗させ、候補を受理しない。HTTP 429はその日の追加を停止し、自動再試行・有料Batch API・別プロバイダーへのフォールバックを行わない。既存教材はそのまま利用できる。
 
-1日1候補。候補ごとにGemini 2回（本文・設問）とGroq 4回（大問1〜4）の最大6回。Groqには大問単位の最小blind入力だけを送り、長い国語一式を一度に送らない。秘密鍵はGitHub Actions secrets / 環境変数からのみ取得し、公開ファイルやブラウザへ保存しない。
+1日1候補。通常はGemini 2回（本文・設問）とGroq 4回（大問1〜4）の6回。本文JSONの大問欠落・型ずれ・必要字数不足だけは、診断を絞った本文再生成を1回まで許可し、最大7回とする。429や通信失敗は再試行しない。Groqには大問単位の最小blind入力だけを送り、長い国語一式を一度に送らない。秘密鍵はGitHub Actions secrets / 環境変数からのみ取得し、公開ファイルやブラウザへ保存しない。
 
-候補がRise構造検査とGroq独立検証を通過した場合だけ `items/<sha256>.json` と `catalog.json` を更新して `main` に保存する。採用された日だけ `deploy-pages.yml` を明示起動し、Pagesの公開検証が完了するまで待つ。`scripts/verify-japanese-public.mjs` は公開中の国語アセット、catalog、追加教材JSONを取得し、SHA-256・モジュールMIME・22点採点・教材構造を検証する。公開検証が失敗した場合は定期生成Workflowも成功扱いにしない。
+候補がRise構造検査とGroq独立検証を通過した場合だけ `items/<sha256>.json` と `catalog.json` を更新して `main` に保存する。採用された日だけ `deploy-pages.yml` を明示起動し、Pagesの公開検証が完了するまで待つ。`scripts/verify-japanese-public.mjs` は公開中の国語アセット、catalog、追加教材JSONを取得し、SHA-256・モジュールMIME・22点採点・教材構造を検証する。quota・生成棄却・公開検証失敗は定期生成Workflowを成功扱いにしない（同日の実行枠を既に使った `daily_limit` のみ正常終了）。
 
 確認フラグはAI Studioで対象プロジェクトが無料枠であることを管理者が確認した後にだけ設定する。フラグ自体が課金状態を技術的に照会・保証するものではない。
 

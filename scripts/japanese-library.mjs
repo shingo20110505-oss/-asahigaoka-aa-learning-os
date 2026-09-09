@@ -33,6 +33,64 @@ export function freeGate(env){
   if(!env.GROQ_API_KEY)throw Error('groq_key_missing');
   if(env.GROQ_MODEL && env.GROQ_MODEL!=='openai/gpt-oss-20b')throw Error('unconfirmed_groq_model');
 }
+function cleanDiagnostic(value,max=80){return String(value??'').replace(/[\u0000-\u001f\u007f]/g,' ').replace(/\s+/g,' ').trim().slice(0,max);}
+function inferredPassageRole(passage){
+  const explicit=cleanDiagnostic(passage?.role,24).toLowerCase();
+  if(explicit==='reference'||explicit==='answer_only'||explicit==='main')return explicit;
+  const marker=[passage?.id,passage?.title,passage?.genre].map(value=>cleanDiagnostic(value,80)).join(' ');
+  return Number(passage?.major)===1&&/(参考|資料|reference)/i.test(marker)?'reference':'main';
+}
+export function normalizeJapaneseMaterial(input){
+  const source=input&&typeof input==='object'&&!Array.isArray(input)?input:{};
+  const passages=(Array.isArray(source.passages)?source.passages:[]).map(passage=>{
+    if(!passage||typeof passage!=='object'||Array.isArray(passage))return passage;
+    const paragraphs=Array.isArray(passage.paragraphs)?passage.paragraphs:typeof passage.paragraphs==='string'?[passage.paragraphs]:passage.paragraphs;
+    return {...passage,id:String(passage.id??'').trim(),major:Number(passage.major),role:inferredPassageRole(passage),paragraphs};
+  });
+  return {...source,passages,propositions:Array.isArray(source.propositions)?source.propositions:[]};
+}
+export function validateJapaneseMaterial(input){
+  const material=normalizeJapaneseMaterial(input),errors=[];
+  const passages=material.passages;
+  if(passages.length<4)errors.push('passage_count');
+  const ids=passages.map(p=>String(p?.id||''));
+  if(ids.some(id=>!id)||new Set(ids).size!==ids.length)errors.push('passage_ids');
+  for(const passage of passages){
+    if(!passage||typeof passage!=='object'||!Number.isInteger(passage.major)||![1,3,4].includes(passage.major)||
+      typeof passage.title!=='string'||!passage.title.trim()||typeof passage.genre!=='string'||!passage.genre.trim()||
+      !Array.isArray(passage.paragraphs)||!passage.paragraphs.length||passage.paragraphs.some(text=>typeof text!=='string'||!text.trim())||
+      passage.rights?.kind!=='original'||typeof passage.rights?.label!=='string'||!passage.rights.label.trim())errors.push(`invalid_passage:${cleanDiagnostic(passage?.id||'?')}`);
+  }
+  const required=[
+    ['major1-main',passages.find(p=>p?.major===1&&p.role!=='reference'),1000],
+    ['major1-reference',passages.find(p=>p?.major===1&&p.role==='reference'),150],
+    ['major3-main',passages.find(p=>p?.major===3&&p.role!=='reference'),1000],
+    ['major4-main',passages.find(p=>p?.major===4&&p.role!=='reference'),200]
+  ];
+  const missing=required.filter(([,passage])=>!passage).map(([name])=>name);
+  const short=required.filter(([,passage,min])=>passage&&passage.paragraphs.join('').length<min).map(([name,passage,min])=>`${name}:${passage.paragraphs.join('').length}/${min}`);
+  if(missing.length)errors.push(`missing_passage:${missing.join(',')}`);
+  if(short.length)errors.push(`passage_too_short:${short.join(',')}`);
+  const diagnostic=passages.slice(0,8).map(p=>`${Number.isInteger(p?.major)?p.major:'?'}:${cleanDiagnostic(p?.id||'?',24)}:${inferredPassageRole(p)}:${Array.isArray(p?.paragraphs)?p.paragraphs.join('').length:0}`).join('|');
+  return {ok:errors.length===0,errors,diagnostic,material};
+}
+function materialValidationError(result){
+  const prefix=result.errors.find(error=>error.startsWith('missing_passage'))||result.errors.find(error=>error.startsWith('passage_too_short'))||'invalid_material';
+  const error=Error(`${prefix};shape=${result.diagnostic||'empty'}`.slice(0,300));
+  error.code=prefix.split(':')[0];
+  error.retryableMaterial=true;
+  return error;
+}
+async function generateMaterial(request){
+  let lastError;
+  for(let attempt=1;attempt<=2;attempt++){
+    const raw=await request(passagePrompt(attempt===1?'':lastError?.message||'invalid_material'),12000);
+    const result=validateJapaneseMaterial(raw);
+    if(result.ok)return {material:result.material,attempts:attempt};
+    lastError=materialValidationError(result);
+  }
+  throw lastError;
+}
 async function callGeminiGenerateContent(env,prompt,tokens){
   // Use the long-established generateContent REST shape for scheduled backend generation.
   // This avoids the Interactions revision/header mismatch that has previously surfaced as HTTP 400.
@@ -65,12 +123,10 @@ export async function generatePack({env=process.env,call,verify,clock=()=>new Da
   freeGate(env);
   const request=call||((prompt,tokens)=>callGeminiGenerateContent(env,prompt,tokens));
   const verifier=verify|| (pack=>verifyJapanesePackWithGroq({...env,GROQ_MODEL:env.GROQ_MODEL||'openai/gpt-oss-20b'},pack));
-  // Per candidate: two Gemini generation calls plus four compact Groq major-section checks.
-  // There are no automatic retries, paid fallback providers, or silent model upgrades.
-  const material=await request(passagePrompt(),12000);
-  if(!Array.isArray(material.passages)||material.passages.length<4)throw Error('invalid_material');
-  for(const major of [1,3,4]){const p=material.passages.find(p=>p.major===major&&p.genre!=='参考文');if(!p||!Array.isArray(p.paragraphs)||p.paragraphs.some(x=>typeof x!=='string'))throw Error('missing_passage');
-    if(p.paragraphs.join('').length<(major===4?200:1000))throw Error('passage_too_short');}
+  // Per candidate: two normal Gemini calls, one bounded material-only repair call
+  // when the first JSON shape is unusable, and four compact Groq section checks.
+  // Quota/provider failures are never retried, and no paid or weaker validation fallback exists.
+  const {material,attempts:materialGenerationAttempts}=await generateMaterial(request);
   const pack=await request(questionPrompt(material),30000);
   pack.schemaVersion=1;pack.nonOfficial=true;pack.quality={method:'editorial-evidence-check',checkedAt:clock().toISOString(),note:'Unverified candidate'};
   const structural=validatePack(pack);if(!structural.ok)throw Error('structure_rejected:'+structural.errors.slice(0,8).join('|'));
@@ -82,6 +138,7 @@ export async function generatePack({env=process.env,call,verify,clock=()=>new Da
   pack.quality={method:'independent-blind-answer-check',verified:true,checkedAt:clock().toISOString(),model:env.GEMINI_MODEL,
     generationProvider:'gemini',generationModel:env.GEMINI_MODEL,generationTransport:'generateContent-v1beta',verificationProvider:verification.provider,
     verificationModel:verification.model,verificationMethod:'cross-provider-blind-answer-check',verifiedMajors:verification.majors,
+    materialGenerationAttempts,
     note:'Gemini生成後、正答・解説・根拠メタデータを伏せ、Groqが4大問を独立解答。Riseの決定的検証と照合済み。AI一致は正確性の完全保証ではない。'};
   return assertPack(pack);
 }
@@ -90,7 +147,7 @@ export async function replenish(directory=root,{env=process.env,generate=generat
   const statusFile=path.join(directory,'generation-status.json'),day=date.toISOString().slice(0,10);
   let status;try{status=JSON.parse(await fs.readFile(statusFile,'utf8'));}catch{status={};}
   if(status.day===day&&status.attempted>=1)return {state:'daily_limit'};
-  status={schemaVersion:1,day,attempted:1,added:0,state:'running',mode:'scheduled_backend',generationTransport:'generateContent-v1beta',maxCandidatesPerDay:1,maxCallsPerCandidate:6};
+  status={schemaVersion:1,day,attempted:1,added:0,state:'running',mode:'scheduled_backend',generationTransport:'generateContent-v1beta',maxCandidatesPerDay:1,maxCallsPerCandidate:7};
   await writeJSON(statusFile,status);
   try{
     const pack=await generate({env});

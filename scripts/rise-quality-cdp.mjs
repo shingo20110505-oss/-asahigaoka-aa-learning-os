@@ -73,7 +73,7 @@ try{
  const html=await evaluate('document.documentElement.outerHTML');
  await writeFile('/tmp/quality-runtime.html',html);
  if(state.quality!=='PASS')throw new Error(`Quality audit failed: ${JSON.stringify(state.qualityResult)}`);
- const required=['英単語穴埋め・答え露出防止','段階学習プラン','Gemini教材一覧・文法ゲート','Gemini長文・根拠・実戦モード','愛知県型数学・応用検算','長文と単語の学習記録連携','非API長文の出題廃止','AI入試3教科・検証済みプール配信'];
+ const required=['英単語穴埋め・答え露出防止','段階学習プラン','Gemini教材一覧・文法ゲート','Gemini長文・根拠・実戦モード','愛知県型数学・応用検算','長文と単語の学習記録連携','非API長文の出題廃止','AI入試4教科・検証済みプール配信'];
  const text=state.text+(state.qualityResult?JSON.stringify(state.qualityResult):'');
  for(const token of required)if(!text.includes(token))throw new Error(`Quality evidence missing: ${token}`);
  if(state.brand!=='Rise')throw new Error(`Wrong production brand: ${state.brand||'-'}`);
@@ -85,7 +85,7 @@ try{
  if(state.legacyTitle||state.legacySubtitle)throw new Error('Legacy AA shell became visible during quality audit');
  if(state.navLabels.join('/')!=='ホーム/入試/学習/復習')throw new Error(`Wrong navigation labels: ${state.navLabels.join('/')}`);
  const aiExamSubjects=Array.isArray(state.aiExam?.subjects)?[...state.aiExam.subjects].sort().join('/'):'';
- if(state.aiExam?.version!=='1.2.0'||state.aiExam?.endpointPath!=='/v1/exam'||state.aiExam?.poolPath!=='./verified-question-pool-v1.json'||state.aiExam?.requiresFrontendToken!==false||state.aiExam?.usesLegacyFallback!==false||state.aiExam?.liveGenerationOnUserAction!==false||state.aiExam?.deliveryMode!=='verified-pool-first'||state.aiExam?.cacheFallback!=='verified-ai-only'||aiExamSubjects!=='math/science/social')throw new Error(`AI entrance exam route invalid: ${JSON.stringify(state.aiExam)}`);
+ if(state.aiExam?.version!=='1.3.0'||state.aiExam?.endpointPath!=='/v1/exam'||state.aiExam?.poolPath!=='./verified-question-pool-v1.json'||state.aiExam?.requiresFrontendToken!==false||state.aiExam?.usesLegacyFallback!==false||state.aiExam?.liveGenerationOnUserAction!==false||state.aiExam?.deliveryMode!=='verified-pool-first'||state.aiExam?.cacheFallback!=='verified-ai-only'||aiExamSubjects!=='japanese/math/science/social')throw new Error(`AI entrance exam route invalid: ${JSON.stringify(state.aiExam)}`);
  if(documents.filter(d=>d.url.startsWith(PAGE_URL)).length!==1)throw new Error(`Unexpected document navigation during quality audit: ${JSON.stringify(documents)}`);
  console.log('RISE_QUALITY_CDP=PASS');
 } finally {

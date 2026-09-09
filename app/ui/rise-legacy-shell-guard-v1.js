@@ -4,7 +4,7 @@ const root=document.documentElement;
 const app=document.getElementById('app');
 const CORE=new Set(['home','subjects','analytics','settings']);
 const PANEL={home:'.riseHomeV4',subjects:'.riseSubjectsV4',analytics:'.riseAnalyticsV4',settings:'.riseSettingsV4'};
-const AI_EXAM_SRC=new URL('../../ai-exam-route-v1.js?v=1.0.0',document.currentScript?.src||new URL('./app/ui/rise-legacy-shell-guard-v1.js',location.href)).href;
+const AI_EXAM_SRC=new URL('../../ai-exam-route-v1.js?v=1.3.0',document.currentScript?.src||new URL('./app/ui/rise-legacy-shell-guard-v1.js',location.href)).href;
 let syncQueued=false;
 let legacyHits=0;
 
@@ -80,7 +80,7 @@ function check(source='mutation'){
 window.__RISE_LEGACY_SHELL_GUARD_V1__={
   version:'1.0.1',
   strategy:'conceal-legacy-core-shell-and-resync-rise',
-  aiExamRoute:'1.0.0',
+  aiExamRoute:'1.3.0',
   get blocked(){return legacyHits},
   check:()=>check('manual')
 };

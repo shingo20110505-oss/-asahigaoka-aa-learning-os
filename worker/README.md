@@ -8,9 +8,9 @@ Riseの最新方針は、AIを「無限生成ボタン」にせず、学習履�
 
 - 本番Worker入口: `src/entry.mjs`
 - Workerソースversion: `1.4.0`
-- Exam platform version: `1.0.0`
-- 英語長文生成: Gemini `gemini-3.5-flash`
-- 5教科の入試小問生成: Gemini `gemini-3.5-flash`
+- Exam platform hardening version: `2.0.0`
+- 英語長文生成: 許可済みGemini Flashモデル
+- 5教科の入試小問生成: 本番既定 Gemini `gemini-3.5-flash-lite`
 - 英語の独立答え直し: Groq `openai/gpt-oss-20b`
 - 5教科共通Groq検証: **英語・数学・国語・理科・社会をコード接続済み**
 - 英語の決定的検証: 既存 `src/index.mjs` の語数・文法・本文根拠・選択肢等の検証資産を維持
@@ -177,9 +177,9 @@ Worker配備Workflowでは、配備後に実際のGemini英語長文＋Groq検�
 
 ## Verified Question Poolとの境界
 
-`POST /v1/exam` は「検証済み問題を作って返す」Phase 3のバックエンドです。**永続的なVerified Question Poolへの保存・再利用、学習履歴からの自動補充、復習への自動連携は別段階で、まだこのWorkerだけでは完了していません。**
+`POST /v1/exam` は検証済みdelivery candidateを返し、リポジトリ側の `.github/workflows/fill-verified-question-pool.yml` が唯一の正本 `../verified-question-pool-v1.json` へ重複排除して保存・公開します。Worker単体は永続保存を行いません。
 
-したがって現時点で、AI APIの完成をプロジェクト全体の学習循環完成とは扱いません。次段階は、合格した共通ID付き問題をプールへ保存し、Riseの弱点分析が「次の一問」を選択できるようにすることです。
+公開アプリは未出題IDを優先し、API停止時は公開プールと端末内の検証済みキャッシュを使います。次段階は弱点別の不足判定と補充要求、復習・分析への共通ID接続です。
 
 ## 5教科共通化の原則
 

@@ -73,6 +73,7 @@ jobs:
         run: node scripts/validate-verified-question-pool.mjs
 
       - name: Generate only independently verified questions
+        id: generate
         env:
           RISE_SUBJECT: ${{ steps.resolve.outputs.subject }}
           RISE_MAX_PER_RUN: ${{ steps.resolve.outputs.max_per_run }}
@@ -142,6 +143,7 @@ jobs:
             echo "- Subject: ${{ steps.resolve.outputs.subject }}"
             echo "- Maximum new items this run: ${{ steps.resolve.outputs.max_per_run }}"
             echo "- Worker: shingo-20110505 production Worker"
+            echo "- Generation outcome: ${{ steps.generate.outcome }}"
             echo "- Policy: Gemini authoring + deterministic checks + Groq blind verification only"
             echo "- Paid fallback: disabled"
             echo "- Pages publish: explicit workflow_dispatch after pool commit"

@@ -2,14 +2,15 @@
   'use strict';
   if(window.__AA_AI_EXAM_ROUTE_V1__) return;
 
-  const VERSION='1.2.0';
+  const VERSION='1.3.0';
   const ENDPOINT_PATH='/v1/exam';
   const PUBLIC_POOL_PATH='./verified-question-pool-v1.json';
   const CACHE_KEY='aa_ai_exam_cache_v1';
-  const SUBJECTS=new Set(['math','science','social']);
-  const LABEL={math:'数学',science:'理科',social:'社会'};
+  const SUBJECTS=new Set(['math','japanese','science','social']);
+  const LABEL={math:'数学',japanese:'国語',science:'理科',social:'社会'};
   const POOL_TIMEOUT_MS=8000;
   let busy=false;
+  let poolSnapshot=null,poolLoading=null,poolLoadedAt=0,poolLastAttempt=0;
 
   function appState(){
     try{return typeof state!=='undefined'?state:window.AA_APP?.get?.('state')?.get?.()||null}catch(_){return null}
@@ -46,24 +47,50 @@
     const items=Array.isArray(cacheRead()[subject]?.items)?cacheRead()[subject].items:[];
     return chooseItems(subject,items,count);
   }
+  function applyInventory(scope=document){
+    if(!poolSnapshot)return;
+    const root=scope?.querySelector?scope:document;
+    for(const button of root.querySelectorAll('[data-ai-exam-route="1"][data-subject]')){
+      const subject=button.dataset.subject,count=poolSnapshot.subjects?.[subject]?.filter(item=>isUsableItem(item,subject)).length||0;
+      const badge=button.closest('.r6Card')?.querySelector('.r6Badge');
+      if(!badge)continue;
+      const label=subject==='japanese'?`単問 ${count}問`:`${count}問`;
+      if(badge.textContent!==label)badge.textContent=label;
+      badge.title=`公開中の検証済み${LABEL[subject]}問題：${count}問`;
+    }
+  }
+  async function loadVerifiedPool(force=false){
+    if(navigator.onLine===false)return poolSnapshot;
+    const time=Date.now();
+    if(!force&&poolSnapshot&&time-poolLoadedAt<60000)return poolSnapshot;
+    if(!force&&!poolSnapshot&&time-poolLastAttempt<30000)return null;
+    if(poolLoading)return poolLoading;
+    poolLastAttempt=time;
+    poolLoading=(async()=>{
+      const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),POOL_TIMEOUT_MS);
+      try{
+        const url=new URL(PUBLIC_POOL_PATH,document.baseURI);
+        url.searchParams.set('risePool',String(Date.now()));
+        const response=await fetch(url.href,{method:'GET',signal:controller.signal,cache:'no-store',credentials:'same-origin'});
+        if(!response.ok)throw new Error(`検証済み問題の配信に失敗しました（HTTP ${response.status}）。`);
+        const payload=await response.json();
+        if(payload?.schemaVersion!==1||!payload.subjects||[...SUBJECTS].some(subject=>!Array.isArray(payload.subjects[subject])))throw new Error('検証済み問題プールの形式が正しくありません。');
+        poolSnapshot=payload;poolLoadedAt=Date.now();
+        for(const subject of SUBJECTS)cacheItems(subject,payload.subjects[subject]);
+        applyInventory(document);
+        return payload;
+      }catch(error){
+        if(error?.name==='AbortError')throw Object.assign(new Error('検証済み問題の読み込みが時間切れになりました。'),{code:'pool_timeout'});
+        throw error;
+      }finally{clearTimeout(timer)}
+    })();
+    try{return await poolLoading}finally{poolLoading=null}
+  }
   async function fetchVerifiedPool(subject,count){
-    if(navigator.onLine===false)return [];
-    const controller=new AbortController();
-    const timer=setTimeout(()=>controller.abort(),POOL_TIMEOUT_MS);
-    try{
-      const url=new URL(PUBLIC_POOL_PATH,document.baseURI);
-      url.searchParams.set('risePool',String(Date.now()));
-      const response=await fetch(url.href,{method:'GET',signal:controller.signal,cache:'no-store',credentials:'same-origin'});
-      if(!response.ok)throw new Error(`検証済み問題の配信に失敗しました（HTTP ${response.status}）。`);
-      const payload=await response.json();
-      if(payload?.schemaVersion!==1||!Array.isArray(payload?.subjects?.[subject]))throw new Error('検証済み問題プールの形式が正しくありません。');
-      const all=payload.subjects[subject].filter(item=>isUsableItem(item,subject));
-      cacheItems(subject,all);
-      return chooseItems(subject,all,count);
-    }catch(error){
-      if(error?.name==='AbortError')throw Object.assign(new Error('検証済み問題の読み込みが時間切れになりました。'),{code:'pool_timeout'});
-      throw error;
-    }finally{clearTimeout(timer)}
+    const payload=await loadVerifiedPool(true);
+    if(!payload)return [];
+    const all=payload.subjects[subject].filter(item=>isUsableItem(item,subject));
+    return chooseItems(subject,all,count);
   }
   function firstSubjectSkill(subject){
     try{
@@ -140,18 +167,26 @@
   }
   function decorate(root=document){
     const scope=root?.querySelector?root:document;
+    for(const link of scope.querySelectorAll('.r6Actions a[href="./japanese-exam/"]')){
+      const actions=link.closest('.r6Actions');
+      if(!actions||actions.querySelector('[data-ai-exam-quick="1"]'))continue;
+      const button=document.createElement('button');button.type='button';button.className='btn ghost';button.dataset.action='start-custom';button.dataset.kind='subject';button.dataset.subject='japanese';button.dataset.aiExamQuick='1';button.textContent='国語 AI単問';actions.appendChild(button);
+    }
     for(const button of scope.querySelectorAll('[data-action="start-custom"][data-kind="subject"][data-subject]')){
       const subject=button.dataset.subject;
       if(!SUBJECTS.has(subject))continue;
+      if(subject==='japanese'&&button.dataset.aiExamQuick!=='1')continue;
       button.dataset.aiExamRoute='1';
       button.setAttribute('aria-label',`${LABEL[subject]}のAI生成・独立検証済み入試問題を開始`);
-      if(button.closest('.riseSubjectsV4'))button.textContent=`${LABEL[subject]} 入試問題`;
+      if(button.closest('.riseSubjectsV4'))button.textContent=subject==='japanese'?'国語 AI単問':`${LABEL[subject]} 入試問題`;
     }
+    applyInventory(scope);
+    void loadVerifiedPool(false).catch(error=>console.warn('Verified pool inventory unavailable.',error?.code||error?.message||error));
   }
   window.addEventListener('click',event=>{
     const action=event.target?.closest?.('[data-action]');
     if(!action)return;
-    const isSubjectStart=action.matches?.('[data-action="start-custom"][data-kind="subject"][data-subject]')&&SUBJECTS.has(action.dataset.subject);
+    const isSubjectStart=action.matches?.('[data-action="start-custom"][data-kind="subject"][data-subject]')&&SUBJECTS.has(action.dataset.subject)&&(action.dataset.subject!=='japanese'||action.dataset.aiExamQuick==='1');
     const s=appState();
     const isAnotherAiSet=action.dataset.action==='another-set'&&s?.session?.kind==='ai-exam'&&SUBJECTS.has(s.session.subject);
     if(!isSubjectStart&&!isAnotherAiSet)return;
