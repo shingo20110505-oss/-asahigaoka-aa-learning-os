@@ -5,8 +5,11 @@ const app=document.getElementById('app');
 const CORE=new Set(['home','subjects','analytics','settings']);
 const PANEL={home:'.riseHomeV4',subjects:'.riseSubjectsV4',analytics:'.riseAnalyticsV4',settings:'.riseSettingsV4'};
 const AI_EXAM_SRC=new URL('../../ai-exam-route-v1.js?v=1.3.0',document.currentScript?.src||new URL('./app/ui/rise-legacy-shell-guard-v1.js',location.href)).href;
+const SETTLE_MS=120;
 let syncQueued=false;
 let legacyHits=0;
+let settleTimer=0;
+let settleSeq=0;
 
 function loadAiExamRoute(){
   if(window.__AA_AI_EXAM_ROUTE_V1__||document.querySelector('script[data-aa-ai-exam-route="1"]'))return;
@@ -41,20 +44,35 @@ function pulse(source='legacy-shell-guard'){
     if(!isCore(r))return;
     try{document.dispatchEvent(new CustomEvent('aa:v23ready',{detail:{source,route:r}}))}catch(_){}
     try{document.dispatchEvent(new CustomEvent('rise:legacy-shell-blocked',{detail:{source,route:r,hits:legacyHits}}))}catch(_){}
-    if(app){const marker=document.createComment(`rise-legacy-shell-sync:${legacyHits}:${r}`);app.appendChild(marker);marker.remove()}
   });
+}
+function beginSettle(source){
+  const r=route();
+  if(!isCore(r))return false;
+  legacyHits++;
+  const seq=++settleSeq;
+  root.classList.add('aa-app-booting');
+  root.dataset.riseLegacySettling='1';
+  root.dataset.riseLegacyShellBlocked=String(legacyHits);
+  root.dataset.riseLegacyShellSource=source;
+  clearTimeout(settleTimer);
+  settleTimer=setTimeout(()=>{
+    if(seq!==settleSeq||!isCore())return;
+    pulse(`${source}:settled`);
+    requestAnimationFrame(()=>{
+      if(seq!==settleSeq)return;
+      delete root.dataset.riseLegacySettling;
+      try{document.dispatchEvent(new CustomEvent('rise:legacy-settled',{detail:{source,route:route(),hits:legacyHits}}))}catch(_){}
+    });
+  },SETTLE_MS);
+  return true;
 }
 function concealAndRecover(source){
   const r=route();
   if(!isCore(r))return false;
   if(!hasLegacyChrome()&&hasRisePanel(r))return false;
-  legacyHits++;
-  root.classList.add('aa-app-booting');
-  root.dataset.riseLegacyShellBlocked=String(legacyHits);
-  root.dataset.riseLegacyShellSource=source;
+  beginSettle(source);
   pulse(source);
-  requestAnimationFrame(()=>pulse(`${source}:raf`));
-  setTimeout(()=>pulse(`${source}:40ms`),40);
   return true;
 }
 function wrapLegacyRender(){
@@ -62,9 +80,10 @@ function wrapLegacyRender(){
   if(typeof fn!=='function'||fn.__riseLegacyShellGuarded)return false;
   function guardedRender(...args){
     const r=route();
-    if(isCore(r))root.classList.add('aa-app-booting');
+    const core=isCore(r);
+    if(core)beginSettle('legacy-render');
     const out=fn.apply(this,args);
-    if(isCore(r))concealAndRecover('legacy-render');
+    if(core)pulse('legacy-render');
     return out;
   }
   guardedRender.__riseLegacyShellGuarded=true;
@@ -78,9 +97,10 @@ function check(source='mutation'){
 }
 
 window.__RISE_LEGACY_SHELL_GUARD_V1__={
-  version:'1.0.1',
-  strategy:'conceal-legacy-core-shell-and-resync-rise',
+  version:'1.0.2',
+  strategy:'coalesced-legacy-core-shell-settle-and-single-resync',
   aiExamRoute:'1.3.0',
+  settleMs:SETTLE_MS,
   get blocked(){return legacyHits},
   check:()=>check('manual')
 };
@@ -99,5 +119,4 @@ document.addEventListener('rise:navigation',()=>check('navigation'));
 document.addEventListener('aa:v23ready',()=>{wrapLegacyRender();loadAiExamRoute()});
 addEventListener('pageshow',()=>{check('pageshow');loadAiExamRoute()});
 setTimeout(()=>check('boot-250'),250);
-setTimeout(()=>check('boot-1200'),1200);
 })();
