@@ -67,8 +67,9 @@ jobs:
           set -euo pipefail
           node - <<'NODE'
           const fs = require('fs');
+          const result = JSON.parse(fs.readFileSync('/tmp/japanese-generation.json', 'utf8'));
           const status = JSON.parse(fs.readFileSync('japanese-exam/generation-status.json', 'utf8'));
-          console.log(JSON.stringify(status));
+          console.log(JSON.stringify({ result, persistedStatus: status }));
           NODE
 
       - name: Revalidate accepted library
@@ -132,11 +133,14 @@ jobs:
           set -euo pipefail
           node - <<'NODE'
           const fs = require('fs');
-          const status = JSON.parse(fs.readFileSync('japanese-exam/generation-status.json', 'utf8'));
-          if (status.added === 1 || status.state === 'daily_limit') {
-            console.log(`Japanese replenishment outcome: ${status.state}`);
+          const resultPath = '/tmp/japanese-generation.json';
+          const outcome = fs.existsSync(resultPath)
+            ? JSON.parse(fs.readFileSync(resultPath, 'utf8'))
+            : JSON.parse(fs.readFileSync('japanese-exam/generation-status.json', 'utf8'));
+          if (outcome.added === 1 || outcome.state === 'daily_limit') {
+            console.log(`Japanese replenishment outcome: ${outcome.state}`);
             process.exit(0);
           }
-          console.error(`Japanese replenishment did not add a pack: ${status.state || 'unknown'} / ${status.reason || 'no reason'}`);
+          console.error(`Japanese replenishment did not add a pack: ${outcome.state || 'unknown'} / ${outcome.reason || 'no reason'}`);
           process.exit(1);
           NODE

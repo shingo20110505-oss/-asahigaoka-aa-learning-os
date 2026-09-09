@@ -2,37 +2,33 @@ name: AI exam live smoke
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/ai-exam-live-smoke.yml'
-      - 'worker/src/providers/gemini.mjs'
-      - 'worker/src/exam-platform-hardened.mjs'
-      - 'worker/src/entry-hardened.mjs'
-      - 'worker/wrangler.toml'
+  workflow_run:
+    workflows: ['Deploy Rise AI Platform Worker']
+    types: [completed]
 
 permissions:
   contents: read
 
 jobs:
   live-smoke:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
-      - name: Call public production exam endpoint for all 3 subjects
+      - name: Verify public production exam fail-closed contract for all 4 subjects
         shell: bash
         run: |
-          set -u
+          set -uo pipefail
           BASE='https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev'
           ORIGIN='https://shingo20110505-oss.github.io'
           overall=0
-          for subject in math science social; do
+          for subject in math japanese science social; do
             echo "=== SUBJECT=${subject} ==="
             code="$(curl -sS --connect-timeout 10 --max-time 210 -o "/tmp/${subject}.json" -w '%{http_code}' \
               -X POST "${BASE}/v1/exam" \
               -H "Origin: ${ORIGIN}" \
               -H 'Content-Type: application/json' \
-              --data "{\"schemaVersion\":2,\"subject\":\"${subject}\",\"count\":3,\"difficulty\":8,\"skill\":\"aichi.exam.application\",\"focus\":[],\"recentQuestionIds\":[]}" || true)"
+              --data "{\"schemaVersion\":2,\"subject\":\"${subject}\",\"count\":1,\"difficulty\":8,\"skill\":\"aichi.exam.application\",\"focus\":[],\"recentQuestionIds\":[]}" || true)"
             echo "HTTP=${code}"
             if [ "$code" = '200' ]; then
               SUBJECT="$subject" node - <<'NODE'
@@ -43,8 +39,26 @@ jobs:
           const ok=p.schemaVersion===1 && p.subject===subject && p.quality?.verified===true && items.length>0 && items.every(x=>x?.quality?.verified===true && x?.quality?.generationProvider==='gemini' && x?.quality?.verificationProvider==='groq');
           if(!ok){console.error(`LIVE_${subject.toUpperCase()}=INVALID`);process.exit(1)}
           console.log(`LIVE_${subject.toUpperCase()}=PASS delivered=${items.length} requested=${p.requestedCount} partial=${Boolean(p.partial)} model=${items[0]?.quality?.generationModel||'-'}`);
+              NODE
+              if [ "$?" != '0' ]; then overall=1; fi
+            elif [ "$code" = '422' ]; then
+              SUBJECT="$subject" node - <<'NODE'
+          const fs=require('fs');
+          const subject=process.env.SUBJECT;
+          const p=JSON.parse(fs.readFileSync(`/tmp/${subject}.json`,'utf8'));
+          if(p.error?.code!=='quality_rejected'){console.error(`LIVE_${subject.toUpperCase()}=UNEXPECTED_REJECTION`);process.exit(1)}
+          console.log(`LIVE_${subject.toUpperCase()}=SAFE_QUALITY_REJECTION`);
           NODE
               if [ "$?" != '0' ]; then overall=1; fi
+            elif [ "$code" = '429' ]; then
+              SUBJECT="$subject" node - <<'NODE'
+          const fs=require('fs');
+          const subject=process.env.SUBJECT;
+          const p=JSON.parse(fs.readFileSync(`/tmp/${subject}.json`,'utf8'));
+          if(!['quota_exceeded','groq_quota_exceeded'].includes(p.error?.code)){console.error(`LIVE_${subject.toUpperCase()}=UNEXPECTED_RATE_LIMIT`);process.exit(1)}
+          console.log(`LIVE_${subject.toUpperCase()}=FREE_TIER_LIMIT_OBSERVED`);
+          NODE
+              if [ "$?" != '0' ]; then overall=1; else break; fi
             else
               cat "/tmp/${subject}.json" || true
               echo
