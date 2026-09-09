@@ -1,0 +1,184 @@
+name: Fix wrong replay and add classical word-only view 20260909
+on:
+  push:
+    paths:
+      - '.fix-wrong-replay-koten-words-20260909-trigger'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Patch replay fidelity and classical word-only view
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git reset --hard origin/main
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          def replace_js_function(src, name, replacement):
+              marker=f'function {name}('
+              start=src.find(marker)
+              if start<0:
+                  raise SystemExit(f'{name}: function not found')
+              open_brace=src.find('{', start)
+              if open_brace<0:
+                  raise SystemExit(f'{name}: opening brace not found')
+              depth=0
+              for i in range(open_brace, len(src)):
+                  c=src[i]
+                  if c=='{': depth+=1
+                  elif c=='}':
+                      depth-=1
+                      if depth==0:
+                          return src[:start]+replacement+src[i+1:]
+              raise SystemExit(f'{name}: closing brace not found')
+
+          # 1) Global integrated quiz: preserve the exact missed question instance.
+          p=Path('app/legacy/main-runtime.js')
+          s=p.read_text(encoding='utf-8')
+          helper='''function makeWrongReplayQuestion(q){
+            if(!q || typeof q!=="object") return null;
+            try{ return JSON.parse(JSON.stringify(q)); }
+            catch(_){
+              return {
+                id:q.id, type:q.type, subject:q.subject,
+                skills:Array.isArray(q.skills)?q.skills.slice():[],
+                stem:q.stem, prompt:q.prompt, question:q.question,
+                choices:Array.isArray(q.choices)?q.choices.slice():[],
+                answerIndex:q.answerIndex, answer:q.answer,
+                explanation:q.explanation, expectedMs:q.expectedMs,
+                context:q.context, passage:q.passage, srsId:q.srsId
+              };
+            }
+          }
+
+          '''
+          marker='function recordAttempt({ q, answerIndex, correct, latencyMs }){'
+          if 'function makeWrongReplayQuestion(q)' not in s:
+              if marker not in s: raise SystemExit('recordAttempt marker not found')
+              s=s.replace(marker,helper+marker,1)
+          if 'replayQuestion: !correct ? makeWrongReplayQuestion(q) : null,' not in s:
+              s,n=re.subn(r'(\n\s*answerIndex,\n)(\s*asahiEvidenceRefs:)',r'\1    replayQuestion: !correct ? makeWrongReplayQuestion(q) : null,\n\2',s,count=1)
+              if n!=1: raise SystemExit('recordAttempt replay field insertion failed')
+          old_set='  setAttempts(attempts.slice(-10000));'
+          if 'let replayKeep=200;' not in s:
+              if old_set not in s: raise SystemExit('setAttempts marker not found')
+              s=s.replace(old_set,'''  let replayKeep=200;
+            for(let j=attempts.length-1;j>=0;j--){
+              if(attempts[j]?.replayQuestion){
+                if(replayKeep>0) replayKeep--;
+                else delete attempts[j].replayQuestion;
+              }
+            }
+            setAttempts(attempts.slice(-10000));''',1)
+          new_wrong='''function startWrongReview(){
+            try{
+              state.session = state.session || { subjects:["English"], difficulty:"Standard" };
+              const all = getAttempts().filter(a=>!a.correct);
+              if(!all.length){ toast("Wrong-only", "No wrong answers yet."); return; }
+              const cfg = { ...state.session };
+              const wrong = all.filter(a=> (cfg.subjects||[]).includes(a.subject)).slice(-20);
+              const list = wrong.length ? wrong : all.slice(-20);
+              const qs = list.map(a=>{
+                const saved=a?.replayQuestion;
+                if(saved && typeof saved==="object"){
+                  try{ return JSON.parse(JSON.stringify(saved)); }
+                  catch(_){ return { ...saved, choices:Array.isArray(saved.choices)?saved.choices.slice():saved.choices }; }
+                }
+                return makeQuestionBySkill(a.subject, a.skills?.[0] || subjectSkillPool(a.subject,cfg.difficulty)[0], cfg.difficulty);
+              }).filter(Boolean);
+              state.qs = qs;
+              state.i = 0; state.answers = []; state.startedAt = Date.now();
+              saveState();
+              show("pick");
+              renderQuestion();
+              toast("Wrong-only", `Loaded ${qs.length} question(s).`);
+            }catch(e){ toast("Error", e?.message || String(e)); }
+          }'''
+          s=replace_js_function(s,'startWrongReview',new_wrong)
+          p.write_text(s,encoding='utf-8')
+
+          # 2) Classical Japanese / Kanbun: preserve exact mode + choices in wrong-only.
+          p=Path('kokugo-chronologia/koten-kanbun-extension.js')
+          s=p.read_text(encoding='utf-8')
+          s=s.replace("const VERSION='2026-08-20.1';","const VERSION='2026-09-09.1';",1)
+          new_add='''function addWrong(item,replayQuestion=null){const list=loadWrong(),k=wrongKey(item),snap=replayQuestion?{field:replayQuestion.field||'',prompt:replayQuestion.prompt||'',hint:replayQuestion.hint||'',answer:replayQuestion.answer||'',options:Array.isArray(replayQuestion.options)?replayQuestion.options.slice():[]}:null,idx=list.findIndex(x=>wrongKey(x)===k);if(idx>=0){if(snap)list[idx]={...list[idx],replayQuestion:snap}}else list.push({...item,...(snap?{replayQuestion:snap}:{}),createdAt:Date.now()});saveWrong(list)}'''
+          s=replace_js_function(s,'addWrong',new_add)
+          new_start='''function start(isWrong=false){const cat=$('#kkQuizCategory').value,want=$('#kkQuizMode').value,count=+$('#kkQuizCount').value||10,pool=bank.filter(x=>cat==='all'||x.category===cat);wrongOnly=isWrong;if(isWrong){const saved=compatibleWrong();if(!saved.length){$('#kkQuizBody').innerHTML='<div class="kk-center">この範囲に間違えた問題はありません。</div>';updateWrongCount();return}const out=[];for(const stored of saved){const item=live.get(wrongKey(stored))||stored;if(!item?.word||!item?.meaning)continue;const r=stored.replayQuestion;let q=null;if(r&&r.field&&r.answer&&Array.isArray(r.options)&&r.options.length){q={item,field:r.field,prompt:r.prompt,hint:r.hint,answer:r.answer,options:r.options.slice()}}else q=question(item,want,pool);if(q)out.push(q);if(out.length===count)break}qset=out}else qset=makeSet(pool,want,pool,count,true);qi=0;score=0;if(!qset.length){$('#kkQuizBody').innerHTML='<div class="kk-center">この条件では四択を作れませんでした。</div>';return}showQ()}'''
+          s=replace_js_function(s,'start',new_start)
+          if 'addWrong(q.item,q);markReview(q.item)' not in s:
+              s=s.replace('else{addWrong(q.item);markReview(q.item)}','else{addWrong(q.item,q);markReview(q.item)}',1)
+          if 'addWrong(q.item,q);markReview(q.item)' not in s: raise SystemExit('classical wrong snapshot hook failed')
+
+          # 3) Add a dedicated word-only view based on the canonical first 1000 entries.
+          tabs='<div class="kk-inner-tabs"><button class="kk-inner on" data-kk-view="list">出る順一覧</button><button class="kk-inner" data-kk-view="quiz">クイズ・解き直し</button></div>'
+          tabs_new='<div class="kk-inner-tabs"><button class="kk-inner on" data-kk-view="list">出る順一覧</button><button class="kk-inner" data-kk-view="words">単語のみ</button><button class="kk-inner" data-kk-view="quiz">クイズ・解き直し</button></div>'
+          if 'data-kk-view="words"' not in s:
+              if tabs not in s: raise SystemExit('inner tabs marker not found')
+              s=s.replace(tabs,tabs_new,1)
+          words_html=''' <div id="kkWordsView" style="display:none"><div class="note">英単語ページのように、古文・漢文の語句だけを集中して確認する画面です。増補の重複語義を除いた基礎1000語句（古文700・漢文300）を表示します。</div><div class="kk-wordonly-controls"><input id="kkWordOnlySearch" placeholder="単語・読み・意味を検索"><select id="kkWordOnlyCategory"><option value="all">古文＋漢文 1000</option><option value="古文">古文 700</option><option value="漢文">漢文 300</option></select></div><div class="kk-wordonly-meta" id="kkWordOnlyMeta"></div><div class="kk-wordonly-list" id="kkWordOnlyRows"></div></div>\n'''
+          quiz_marker=' <div id="kkQuizView" style="display:none">'
+          if 'id="kkWordsView"' not in s:
+              if quiz_marker not in s: raise SystemExit('quiz view marker not found')
+              s=s.replace(quiz_marker,words_html+quiz_marker,1)
+          css_marker='.kk-center{text-align:center;padding:20px}.kk-center b{font-size:28px}'
+          css_add=css_marker+'''.kk-wordonly-controls{display:grid;grid-template-columns:2fr 1fr;gap:7px;margin-top:10px}.kk-wordonly-controls input,.kk-wordonly-controls select{width:100%;padding:10px;border:1px solid var(--line);border-radius:11px;background:#fff}.kk-wordonly-meta{margin:9px 0;color:var(--sub);font-size:11px;font-weight:800}.kk-wordonly-list{display:grid;gap:7px}.kk-wordonly-row{display:grid;grid-template-columns:minmax(130px,1fr) minmax(90px,.7fr) minmax(220px,2fr);border:1px solid var(--line);border-radius:11px;background:#fff;overflow:hidden}.kk-wordonly-row>div{padding:10px;border-right:1px solid #e9edf3}.kk-wordonly-row>div:last-child{border-right:0}.kk-wordonly-term{font-weight:1000}.kk-wordonly-reading{font-size:11px;color:var(--sub)}.kk-wordonly-meaning{font-size:12px;line-height:1.55}@media(max-width:760px){.kk-wordonly-controls{grid-template-columns:1fr}.kk-wordonly-row{grid-template-columns:minmax(105px,34%) minmax(0,1fr);grid-template-rows:auto auto}.kk-wordonly-row>div{border:0}.kk-wordonly-term{grid-column:1;grid-row:1}.kk-wordonly-reading{grid-column:1;grid-row:2}.kk-wordonly-meaning{grid-column:2;grid-row:1/span 2;border-left:1px solid #e9edf3!important}}'''
+          if '.kk-wordonly-controls{' not in s:
+              if css_marker not in s: raise SystemExit('classical CSS marker not found')
+              s=s.replace(css_marker,css_add,1)
+          new_setinner='''function setInner(v){sec.querySelectorAll('[data-kk-view]').forEach(b=>b.classList.toggle('on',b.dataset.kkView===v));$('#kkListView').style.display=v==='list'?'':'none';$('#kkWordsView').style.display=v==='words'?'':'none';$('#kkQuizView').style.display=v==='quiz'?'':'none';if(v==='words')renderWordOnly();if(v==='quiz')updateWrongCount()}'''
+          s=replace_js_function(s,'setInner',new_setinner)
+          hook=" sec.querySelectorAll('[data-kk-view]').forEach(b=>b.onclick=()=>setInner(b.dataset.kkView));"
+          word_js='''\n const wordOnlyBank=bank.filter(x=>x.rank<=1000);\n function renderWordOnly(){const cat=$('#kkWordOnlyCategory')?.value||'all',q=($('#kkWordOnlySearch')?.value||'').trim().toLowerCase(),rows=wordOnlyBank.filter(x=>(cat==='all'||x.category===cat)&&(!q||(x.word+x.reading+x.meaning).toLowerCase().includes(q)));if($('#kkWordOnlyMeta'))$('#kkWordOnlyMeta').textContent=`${rows.length}語句を表示（古文 ${rows.filter(x=>x.category==='古文').length}・漢文 ${rows.filter(x=>x.category==='漢文').length}）`;if($('#kkWordOnlyRows'))$('#kkWordOnlyRows').innerHTML=rows.map(x=>`<div class="kk-wordonly-row"><div class="kk-wordonly-term">${esc(x.word)}</div><div class="kk-wordonly-reading">${esc(x.reading||'—')}</div><div class="kk-wordonly-meaning">${esc(x.meaning)}</div></div>`).join('')||'<div class="kk-center">該当する単語はありません。</div>'}\n $('#kkWordOnlyCategory').onchange=renderWordOnly;$('#kkWordOnlySearch').oninput=renderWordOnly;\n'''
+          if 'const wordOnlyBank=bank.filter(x=>x.rank<=1000);' not in s:
+              if hook not in s: raise SystemExit('word-only hook not found')
+              s=s.replace(hook,hook+word_js,1)
+          p.write_text(s,encoding='utf-8')
+
+          # 4) Cache-bust both changed runtimes without touching progress/storage keys.
+          p=Path('index.html'); s=p.read_text(encoding='utf-8')
+          s=re.sub(r'href="\./app/legacy/main-runtime\.js(?:\?v=[^"]+)?"', 'href="./app/legacy/main-runtime.js?v=20260909-1"', s)
+          s=re.sub(r'src="\./app/legacy/main-runtime\.js(?:\?v=[^"]+)?"', 'src="./app/legacy/main-runtime.js?v=20260909-1"', s)
+          p.write_text(s,encoding='utf-8')
+          p=Path('kokugo-chronologia/index.html'); s=p.read_text(encoding='utf-8')
+          s=re.sub(r'<script src="\./koten-kanbun-extension\.js\?v=[^"]+"></script>', '<script src="./koten-kanbun-extension.js?v=20260909-1"></script>', s)
+          p.write_text(s,encoding='utf-8')
+
+          # Static safety/contract checks.
+          main=Path('app/legacy/main-runtime.js').read_text(encoding='utf-8')
+          ext=Path('kokugo-chronologia/koten-kanbun-extension.js').read_text(encoding='utf-8')
+          assert 'replayQuestion: !correct ? makeWrongReplayQuestion(q) : null,' in main
+          assert 'const saved=a?.replayQuestion;' in main
+          assert 'let replayKeep=200;' in main
+          assert 'addWrong(q.item,q);markReview(q.item)' in ext
+          assert 'stored.replayQuestion' in ext
+          assert 'data-kk-view="words"' in ext and 'wordOnlyBank=bank.filter(x=>x.rank<=1000)' in ext
+          pairs=[]
+          for f in sorted(Path('kokugo-chronologia').glob('koten-kanbun-bank-*.js')):
+              t=f.read_text(encoding='utf-8')
+              pairs += [(int(a),b) for a,b in re.findall(r'^\[(\d+),"(古文|漢文)",',t,re.M)]
+          base=[x for x in pairs if x[0]<=1000]
+          assert len(base)==1000, len(base)
+          assert sum(b=='古文' for _,b in base)==700
+          assert sum(b=='漢文' for _,b in base)==300
+          print('contracts ok: global replay, classical replay, word-only 700+300')
+          PY
+          node --check app/legacy/main-runtime.js
+          node --check kokugo-chronologia/koten-kanbun-extension.js
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add app/legacy/main-runtime.js kokugo-chronologia/koten-kanbun-extension.js index.html kokugo-chronologia/index.html
+          if git diff --cached --quiet; then
+            echo 'Already applied'
+            exit 0
+          fi
+          git commit -m 'Fix wrong-only replay fidelity and add classical word-only view'
+          git push origin HEAD:main
