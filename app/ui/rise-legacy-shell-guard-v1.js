@@ -6,10 +6,13 @@ const CORE=new Set(['home','subjects','analytics','settings']);
 const PANEL={home:'.riseHomeV4',subjects:'.riseSubjectsV4',analytics:'.riseAnalyticsV4',settings:'.riseSettingsV4'};
 const AI_EXAM_SRC=new URL('../../ai-exam-route-v1.js?v=1.3.0',document.currentScript?.src||new URL('./app/ui/rise-legacy-shell-guard-v1.js',location.href)).href;
 const SETTLE_MS=120;
+const STARTUP_SUPPRESS_MS=3200;
 let syncQueued=false;
 let legacyHits=0;
+let suppressedRenders=0;
 let settleTimer=0;
 let settleSeq=0;
+let firstStableAt=0;
 
 function loadAiExamRoute(){
   if(window.__AA_AI_EXAM_ROUTE_V1__||document.querySelector('script[data-aa-ai-exam-route="1"]'))return;
@@ -35,6 +38,18 @@ function hasLegacyChrome(){
   const complete=String(nav?.dataset?.riseNav||'').startsWith('complete:');
   return (title&&title!=='Rise')||(!complete&&!!nav);
 }
+function noteStable(){
+  const r=route();
+  if(firstStableAt||!isCore(r)||!hasRisePanel(r)||hasLegacyChrome())return false;
+  firstStableAt=Date.now();
+  root.dataset.riseFirstStableAt=String(firstStableAt);
+  return true;
+}
+function inStartupStableWindow(r=route()){
+  if(!isCore(r)||!hasRisePanel(r)||hasLegacyChrome())return false;
+  noteStable();
+  return firstStableAt>0&&Date.now()-firstStableAt<STARTUP_SUPPRESS_MS;
+}
 function pulse(source='legacy-shell-guard'){
   if(syncQueued)return;
   syncQueued=true;
@@ -43,7 +58,7 @@ function pulse(source='legacy-shell-guard'){
     const r=route();
     if(!isCore(r))return;
     try{document.dispatchEvent(new CustomEvent('aa:v23ready',{detail:{source,route:r}}))}catch(_){}
-    try{document.dispatchEvent(new CustomEvent('rise:legacy-shell-blocked',{detail:{source,route:r,hits:legacyHits}}))}catch(_){}
+    try{document.dispatchEvent(new CustomEvent('rise:legacy-shell-blocked',{detail:{source,route:r,hits:legacyHits,suppressed:suppressedRenders}}))}catch(_){}
   });
 }
 function beginSettle(source){
@@ -62,7 +77,8 @@ function beginSettle(source){
     requestAnimationFrame(()=>{
       if(seq!==settleSeq)return;
       delete root.dataset.riseLegacySettling;
-      try{document.dispatchEvent(new CustomEvent('rise:legacy-settled',{detail:{source,route:route(),hits:legacyHits}}))}catch(_){}
+      noteStable();
+      try{document.dispatchEvent(new CustomEvent('rise:legacy-settled',{detail:{source,route:route(),hits:legacyHits,suppressed:suppressedRenders}}))}catch(_){}
     });
   },SETTLE_MS);
   return true;
@@ -70,7 +86,7 @@ function beginSettle(source){
 function concealAndRecover(source){
   const r=route();
   if(!isCore(r))return false;
-  if(!hasLegacyChrome()&&hasRisePanel(r))return false;
+  if(!hasLegacyChrome()&&hasRisePanel(r)){noteStable();return false}
   beginSettle(source);
   pulse(source);
   return true;
@@ -81,6 +97,12 @@ function wrapLegacyRender(){
   function guardedRender(...args){
     const r=route();
     const core=isCore(r);
+    if(core&&inStartupStableWindow(r)){
+      suppressedRenders++;
+      root.dataset.riseLegacyRenderSuppressed=String(suppressedRenders);
+      pulse('legacy-render-suppressed');
+      return;
+    }
     if(core)beginSettle('legacy-render');
     const out=fn.apply(this,args);
     if(core)pulse('legacy-render');
@@ -93,15 +115,19 @@ function wrapLegacyRender(){
 }
 function check(source='mutation'){
   wrapLegacyRender();
-  if(isCore()&&(hasLegacyChrome()||!hasRisePanel()))concealAndRecover(source);
+  const r=route();
+  if(isCore(r)&&(hasLegacyChrome()||!hasRisePanel(r)))concealAndRecover(source);else noteStable();
 }
 
 window.__RISE_LEGACY_SHELL_GUARD_V1__={
   version:'1.0.2',
-  strategy:'coalesced-legacy-core-shell-settle-and-single-resync',
+  build:'2026-09-09.2',
+  strategy:'startup-stable-rise-render-suppression-plus-coalesced-recovery',
   aiExamRoute:'1.3.0',
   settleMs:SETTLE_MS,
+  startupSuppressMs:STARTUP_SUPPRESS_MS,
   get blocked(){return legacyHits},
+  get suppressed(){return suppressedRenders},
   check:()=>check('manual')
 };
 
@@ -116,7 +142,7 @@ if(app){
 }
 document.addEventListener('rise:settings-changed',()=>check('settings-change'));
 document.addEventListener('rise:navigation',()=>check('navigation'));
-document.addEventListener('aa:v23ready',()=>{wrapLegacyRender();loadAiExamRoute()});
+document.addEventListener('aa:v23ready',()=>{wrapLegacyRender();loadAiExamRoute();noteStable()});
 addEventListener('pageshow',()=>{check('pageshow');loadAiExamRoute()});
 setTimeout(()=>check('boot-250'),250);
 })();
