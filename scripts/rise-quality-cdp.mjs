@@ -48,11 +48,12 @@ ws.onmessage=e=>{
 };
 const cmd=(method,params={})=>new Promise((resolve,reject)=>{const id=++seq;pending.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}))});
 async function evaluate(expression){const r=await cmd('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw new Error(`Runtime evaluate failed: ${JSON.stringify(r.exceptionDetails).slice(0,1200)}`);return r.result?.value}
-async function diagnostics(){return evaluate(`(()=>{const text=document.body?.innerText||'';const aiExam=window.__AA_AI_EXAM_ROUTE_V1__||null;return {href:location.href,ready:document.readyState,quality:document.documentElement.dataset.aaQualityCi||'',route:document.documentElement.dataset.riseRoute||'',booting:document.documentElement.classList.contains('aa-app-booting'),brand:document.querySelector('#app .brand h1')?.textContent?.trim()||'',navOwner:window.__RISE_NAVIGATION_V1__?.version||'',iaVersion:window.__RISE_INFORMATION_ARCHITECTURE_V1__?.version||'',shellGuard:window.__RISE_LEGACY_SHELL_GUARD_V1__?.version||'',shellBlocked:window.__RISE_LEGACY_SHELL_GUARD_V1__?.blocked||0,settingsCore:window.__AA_SETTINGS_IMPROVEMENTS_CORE_V1__?.version||'',runtimeError:document.documentElement.dataset.riseRuntimeError||'',navigationError:document.documentElement.dataset.riseNavigationError||'',legacyTitle:text.includes('旭丘AA Learning OS'),legacySubtitle:text.includes('愛知県入試・当日再現性を最優先'),navLabels:[...document.querySelectorAll('.navin span')].map(x=>x.textContent?.trim()).filter(Boolean),aiExam:aiExam?{version:aiExam.version,subjects:aiExam.subjects,endpointPath:aiExam.endpointPath,poolPath:aiExam.poolPath,requiresFrontendToken:aiExam.requiresFrontendToken,usesLegacyFallback:aiExam.usesLegacyFallback,liveGenerationOnUserAction:aiExam.liveGenerationOnUserAction,deliveryMode:aiExam.deliveryMode,cacheFallback:aiExam.cacheFallback}:null,qualityResult:window.__AA_QUALITY_CI_RESULT__||null,text:text.slice(0,1600)}})()`)}
+async function diagnostics(){return evaluate(`(()=>{const text=document.body?.innerText||'';const aiExam=window.__AA_AI_EXAM_ROUTE_V1__||null;return {href:location.href,ready:document.readyState,quality:document.documentElement.dataset.aaQualityCi||'',route:document.documentElement.dataset.riseRoute||'',booting:document.documentElement.classList.contains('aa-app-booting'),brand:document.querySelector('#app .brand h1')?.textContent?.trim()||'',navOwner:window.__RISE_NAVIGATION_V1__?.version||'',iaVersion:window.__RISE_INFORMATION_ARCHITECTURE_V1__?.version||'',shellGuard:window.__RISE_LEGACY_SHELL_GUARD_V1__?.version||'',shellGuardBuild:window.__RISE_LEGACY_SHELL_GUARD_V1__?.build||'',shellBlocked:window.__RISE_LEGACY_SHELL_GUARD_V1__?.blocked||0,shellSuppressed:window.__RISE_LEGACY_SHELL_GUARD_V1__?.suppressed||0,settingsCore:window.__AA_SETTINGS_IMPROVEMENTS_CORE_V1__?.version||'',runtimeError:document.documentElement.dataset.riseRuntimeError||'',navigationError:document.documentElement.dataset.riseNavigationError||'',legacyTitle:text.includes('旭丘AA Learning OS'),legacySubtitle:text.includes('愛知県入試・当日再現性を最優先'),navLabels:[...document.querySelectorAll('.navin span')].map(x=>x.textContent?.trim()).filter(Boolean),aiExam:aiExam?{version:aiExam.version,subjects:aiExam.subjects,endpointPath:aiExam.endpointPath,poolPath:aiExam.poolPath,requiresFrontendToken:aiExam.requiresFrontendToken,usesLegacyFallback:aiExam.usesLegacyFallback,liveGenerationOnUserAction:aiExam.liveGenerationOnUserAction,deliveryMode:aiExam.deliveryMode,cacheFallback:aiExam.cacheFallback}:null,qualityResult:window.__AA_QUALITY_CI_RESULT__||null,text:text.slice(0,1600)}})()`)}
 async function close(){try{ws.close()}catch{};await cleanup(proc,profile)}
 
 try{
  await cmd('Page.enable');await cmd('Runtime.enable');await cmd('Network.enable');
+ await cmd('Page.addScriptToEvaluateOnNewDocument',{source:`(()=>{'use strict';const stats=window.__RISE_BOOT_TRANSITIONS__={attached:false,initial:null,removals:0,readds:0,history:[]};const mark=(type,booting)=>{stats.history.push({type,booting,at:Math.round(performance.now())});if(stats.history.length>20)stats.history.shift()};const attach=()=>{const root=document.documentElement;if(!root||stats.attached)return !!root;stats.attached=true;let prev=root.classList.contains('aa-app-booting');stats.initial=prev;mark('initial',prev);new MutationObserver(()=>{const cur=root.classList.contains('aa-app-booting');if(cur===prev)return;if(prev&&!cur){stats.removals++;mark('reveal',cur)}else if(!prev&&cur){stats.readds++;mark('reblock',cur)}prev=cur}).observe(root,{attributes:true,attributeFilter:['class']});return true};if(!attach()){const o=new MutationObserver(()=>{if(attach())o.disconnect()});o.observe(document,{childList:true,subtree:true})}})();`});
  const url=`${PAGE_URL}?aa_quality_ci=1&visual_verify=1&verify=${encodeURIComponent(SOURCE_SHA)}`;
  await cmd('Page.navigate',{url});
  const started=Date.now();
@@ -80,6 +81,7 @@ try{
  if(state.navOwner!=='1.0.6')throw new Error(`Wrong navigation owner: ${state.navOwner||'-'}`);
  if(state.iaVersion!=='1.0.1')throw new Error(`Wrong information architecture: ${state.iaVersion||'-'}`);
  if(state.shellGuard!=='1.0.2')throw new Error(`Legacy shell guard missing: ${state.shellGuard||'-'}`);
+ if(state.shellGuardBuild!=='2026-09-09.2')throw new Error(`Startup flicker guard build missing: ${state.shellGuardBuild||'-'}`);
  if(state.booting)throw new Error('Rise boot guard did not reveal the production UI');
  if(state.runtimeError||state.navigationError)throw new Error(`Rise runtime error: ${state.runtimeError||state.navigationError}`);
  if(state.legacyTitle||state.legacySubtitle)throw new Error('Legacy AA shell became visible during quality audit');
@@ -87,6 +89,16 @@ try{
  const aiExamSubjects=Array.isArray(state.aiExam?.subjects)?[...state.aiExam.subjects].sort().join('/'):'';
  if(state.aiExam?.version!=='1.3.0'||state.aiExam?.endpointPath!=='/v1/exam'||state.aiExam?.poolPath!=='./verified-question-pool-v1.json'||state.aiExam?.requiresFrontendToken!==false||state.aiExam?.usesLegacyFallback!==false||state.aiExam?.liveGenerationOnUserAction!==false||state.aiExam?.deliveryMode!=='verified-pool-first'||state.aiExam?.cacheFallback!=='verified-ai-only'||aiExamSubjects!=='japanese/math/science/social')throw new Error(`AI entrance exam route invalid: ${JSON.stringify(state.aiExam)}`);
  if(documents.filter(d=>d.url.startsWith(PAGE_URL)).length!==1)throw new Error(`Unexpected document navigation during quality audit: ${JSON.stringify(documents)}`);
+ await sleep(4200);
+ const bootTransitions=await evaluate('window.__RISE_BOOT_TRANSITIONS__||null');
+ const settled=await diagnostics();
+ console.log('RISE_BOOT_TRANSITIONS='+JSON.stringify(bootTransitions));
+ console.log('RISE_STARTUP_SETTLED='+JSON.stringify({...settled,qualityResult:undefined,text:undefined}));
+ if(!bootTransitions?.attached)throw new Error('Startup flicker observer did not attach');
+ if(bootTransitions.readds!==0)throw new Error(`Rise was hidden again after first reveal: ${JSON.stringify(bootTransitions)}`);
+ if(settled.booting)throw new Error('Rise returned to booting state after startup settled');
+ if(settled.brand!=='Rise'||settled.navLabels.join('/')!=='ホーム/入試/学習/復習')throw new Error(`Rise startup settled into wrong UI: ${JSON.stringify(settled)}`);
+ console.log('RISE_STARTUP_FLICKER=PASS');
  console.log('RISE_QUALITY_CDP=PASS');
 } finally {
  await close();
