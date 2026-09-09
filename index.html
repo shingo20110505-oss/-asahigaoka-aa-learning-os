@@ -22,7 +22,7 @@
 <link rel="preload" href="./ai-reading-library-v1.js?v=1.0.0" as="script">
 <link rel="preload" href="./ai-reading-v1.js?v=2.0.1" as="script">
 <link rel="preload" href="./ai-reading-exam-scaffold-v1.js?v=1.1.0" as="script">
-<link rel="preload" href="./app/navigation/navigation-runtime-v1.js?v=1.0.5" as="script">
+<link rel="preload" href="./app/navigation/navigation-runtime-v1.js?v=1.0.6" as="script">
 <link rel="preload" href="./app/ui/rise-ui-v4.js?v=4.2.0" as="script">
 <link rel="preload" href="./app/ui/rise-information-architecture-v1.js?v=1.0.1" as="script">
 <title>Rise｜旭丘合格のための学習OS</title>
@@ -51,7 +51,7 @@ const canonicalizePublicNav=()=>{const nav=document.querySelector('#app .nav .na
 const publicNavReady=()=>{if(!canonicalizePublicNav())return false;const nav=document.querySelector('#app .nav .navin'),tabs=[...nav.children];if(tabs.length!==expectedTabs.length)return false;const labels=tabs.map(x=>(x.querySelector('span')?.textContent||x.getAttribute('aria-label')||'').trim());return expectedTabs.every((label,i)=>labels[i]===label)};
 const chromeReady=r=>canonicalizeBrand()&&(!core.has(r)||publicNavReady());
 const contentReady=(main,r)=>{const p=main.querySelector(`${panel[r]}[data-ui-ver="4.2.0"]`);if(!p)return false;if(r==='home')return p.querySelector('.rv4Welcome h2')?.textContent?.trim()==='今日やることを、迷わない。'&&p.querySelector('.rv4Plan .rv4CardHead h3')?.textContent?.trim()==='次の一手';if(r==='subjects')return p.dataset.riseIa==='exam-priority';if(r==='analytics')return p.dataset.riseIa==='learn-priority';return true};
-const ready=()=>{const main=document.querySelector('#app main');if(!window.__RISE_UI_V4__||!main)return false;const r=route();return chromeReady(r)&&(!core.has(r)||contentReady(main,r))};
+const ready=()=>{if(root.dataset.riseLegacySettling==='1')return false;const main=document.querySelector('#app main');if(!window.__RISE_UI_V4__||!main)return false;const r=route();return chromeReady(r)&&(!core.has(r)||contentReady(main,r))};
 const conceal=()=>{if(!blockedAt)blockedAt=Date.now();root.classList.add('aa-app-booting')};
 const clearRefreshMarker=()=>{try{const u=new URL(location.href);if(!u.searchParams.has('rise_refresh'))return;u.searchParams.delete('rise_refresh');history.replaceState(history.state,'',u.href)}catch(_){} };
 const reveal=()=>{blockedAt=0;root.classList.remove('aa-app-booting','aa-app-boot-slow','aa-app-boot-error');clearRefreshMarker()};
@@ -59,12 +59,13 @@ const updateBootState=()=>{if(ready()){reveal();return true}conceal();const age=
 const nudge=()=>{try{document.dispatchEvent(new Event('aa:v23ready'))}catch(_){}};
 const scheduleCheck=()=>{if(checkRaf)return;checkRaf=requestAnimationFrame(()=>{checkRaf=0;updateBootState()})};
 const stopRecoveryTimers=()=>{for(const id of recoveryTimers)clearTimeout(id);recoveryTimers=[]};
-const startRecoveryWindow=()=>{stopRecoveryTimers();const token=++recoveryToken;blockedAt=Date.now();conceal();for(const delay of [0,80,240,700,1600,3200,6000,12000,20000]){recoveryTimers.push(setTimeout(()=>{if(token!==recoveryToken)return;if(updateBootState())return;if(delay<20000)nudge()},delay))}};
+const startRecoveryWindow=()=>{stopRecoveryTimers();const token=++recoveryToken;blockedAt=Date.now();conceal();for(const delay of [0,120,400,1200,4000,12000,20000]){recoveryTimers.push(setTimeout(()=>{if(token!==recoveryToken)return;if(updateBootState())return;if(delay<12000)nudge()},delay))}};
 const attach=()=>{const app=document.getElementById('app');if(app&&!observer){observer=new MutationObserver(scheduleCheck);observer.observe(app,{childList:true,subtree:true})}if(ready())reveal();else startRecoveryWindow()};
 async function refreshLatest(){const btn=document.getElementById('riseBootRetry');if(btn){btn.disabled=true;btn.textContent='最新版を取得中…'}try{if('serviceWorker'in navigator){const regs=await navigator.serviceWorker.getRegistrations();await Promise.allSettled(regs.map(r=>r.update()));for(const r of regs){try{r.waiting?.postMessage?.({type:'SKIP_WAITING'})}catch(_){}}await new Promise(resolve=>setTimeout(resolve,450))}}catch(_){}const u=new URL(location.href);u.searchParams.set('rise_refresh',Date.now().toString(36));location.replace(u.href)}
 document.addEventListener('DOMContentLoaded',attach,{once:true});
 addEventListener('pageshow',()=>{if(ready())reveal();else attach()});
 document.addEventListener('rise:navigation',()=>{conceal();startRecoveryWindow()});
+document.addEventListener('rise:legacy-settled',scheduleCheck);
 document.addEventListener('click',e=>{if(e.target?.closest?.('#riseBootRetry'))void refreshLatest()});
 })();
 </script>
@@ -85,7 +86,7 @@ document.addEventListener('click',e=>{if(e.target?.closest?.('#riseBootRetry'))v
 <script defer src="./ai-reading-v1.js?v=2.0.1"></script>
 <script defer src="./ai-reading-exam-scaffold-v1.js?v=1.1.0"></script>
 <!-- Prevent any later legacy render from becoming visible on Rise core routes. -->
-<script defer src="./app/ui/rise-legacy-shell-guard-v1.js?v=1.0.0"></script>
+<script defer src="./app/ui/rise-legacy-shell-guard-v1.js?v=1.0.2"></script>
 <script defer src="./learning-engine-v15.js"></script>
 <script defer src="./japanese-vocabulary-10000.js"></script>
 <script defer src="./curriculum-v2-data.js"></script>
@@ -108,7 +109,7 @@ document.addEventListener('click',e=>{if(e.target?.closest?.('#riseBootRetry'))v
 <script defer src="./app/qa/qa-runtime.js"></script>
 <!-- NON-EXECUTABLE LEGACY CI METADATA ONLY: ./app/ui/rise-stable-root-v4.js?v=2.3.0 | ./app/pwa/pwa-runtime.js?v=4.2.1 | ./app/ui/rise-structure-v4.css?v=4.2.0 | aa:v23ready -->
 <!-- PHASE-2 UI: one state owner, one navigation owner, one live DOM; no cloned stable-root UI. -->
-<script defer src="./app/navigation/navigation-runtime-v1.js?v=1.0.5"></script>
+<script defer src="./app/navigation/navigation-runtime-v1.js?v=1.0.6"></script>
 <script defer src="./app/ui/rise-ui-v4.js?v=4.2.0"></script>
 <!-- Information architecture enhances the already canonical public navigation and content hierarchy. -->
 <script defer src="./app/ui/rise-information-architecture-v1.js?v=1.0.1"></script>
