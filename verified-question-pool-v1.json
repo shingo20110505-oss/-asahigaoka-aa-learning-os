@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-08-12-51-19Z",
-  "updatedAt": "2026-09-08T12:51:19.271Z",
+  "poolVersion": "2026-09-09-11-17-14Z",
+  "updatedAt": "2026-09-09T11:17:14.792Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -401,6 +401,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-06T14:05:27.357Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.probability",
+        "difficulty": 8,
+        "question": "袋の中に赤玉が2個、白玉が3個入っている。この袋から同時に2個の玉を取り出すとき、2個とも同じ色である確率を求めよ。",
+        "context": "A bag contains 2 red balls and 3 white balls. Two balls are drawn simultaneously from the bag.",
+        "choices": [
+          "\\dfrac{2}{5}",
+          "\\dfrac{3}{10}",
+          "\\dfrac{7}{20}",
+          "\\dfrac{1}{2}"
+        ],
+        "answerIndex": 0,
+        "answer": "\\dfrac{2}{5}",
+        "explanation": "袋にある全部の玉の数は2+3=5個である。5個から同時に2個を取り出す総数は、組み合わせの計算より 5C2 = (5×4)/(2×1) = 10通り である。2個とも同じ色になる場合は、「2個とも赤色」の場合と「2個とも白色」の場合がある。2個とも赤色になる場合は 2C2 = 1通り。2個とも白色になる場合は 3C2 = 3通り。したがって、同じ色になる総数は 1 + 3 = 4通り である。求める確率は 4/10 = 2/5 となる。一番強い間違いとしては、同時に取り出すことを考慮せず順列として計算してしまったり、余事象を取り違えることなどが挙げられる。",
+        "evidence": "袋から同時に2個の玉を取り出すとき、2個とも同じ色である確率",
+        "misconception": "全事象や条件を満たす場合の数を計算する際に、組み合わせ（組合せ）ではなく順列として誤って計算したり、赤と白が1個ずつ出る確率と混同してしまう。",
+        "marks": 2,
+        "id": "rise-math-ca747914c47b93d0",
+        "fingerprint": "91d525903189e5a6",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-09T11:16:57.673Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.probability",
+        "difficulty": 8,
+        "question": "袋の中に1から5までの数字が1つずつ書かれた5個の玉が入っている。この袋から同時に2個の玉を取り出すとき、書かれている2つの数の和が奇数になる確率を求めよ。",
+        "context": "1から5までの異なる数字が1つずつ書かれた5個の玉が入った袋があり、同時に2個の玉を取り出す試行を行う。",
+        "choices": [
+          "2/5",
+          "1/2",
+          "3/10",
+          "3/5"
+        ],
+        "answerIndex": 3,
+        "answer": "3/5",
+        "explanation": "5個の玉から同時に2個の玉を取り出す総数は、5C2 = 10通りである。和が奇数になるのは、奇数と偶数の組み合わせを取り出すときであり、1〜5の中には奇数が3個(1, 3, 5)、偶数が2個(2, 4)ある。したがって、奇数から1個、偶数から1個を選ぶ場合の数は、3C1 × 2C1 = 3 × 2 = 6通りである。求める確率は 6/10 = 3/5 となる。強い誤答トラップとして、すべての場合の数を単純に分母にして和が偶数になる場合を計算してしまう誤りがあるが、計算を進めると正解は3/5に確定する。",
+        "evidence": "1から5までの異なる数字が1つずつ書かれた5個の玉が入った袋があり、同時に2個の玉を取り出す試行を行う。",
+        "misconception": "偶数同士または奇数同士を選んだ場合と混同し、分母や分子の組み合わせ数を誤って計算してしまう。",
+        "marks": 2,
+        "id": "rise-math-56a7da4589caad61",
+        "fingerprint": "9a1e9e46394de930",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-09T11:17:14.773Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.geometry",
+        "difficulty": 8,
+        "question": "半径が6cmの円Oがあり、円周上に3点A, B, Cがこの順にある。弧ABの長さが円周の1/6で、弧BCの長さが円周の1/4であるとき、四角形OABCの面積を求めよ。ただし、点Oは四角形の内部にあるものとする。",
+        "context": "半径6cmの円Oの円周上に点A, B, Cがこの順にあり、弧ABは円周の1/6、弧BCは円周の1/4の長さである。",
+        "choices": [
+          "18(√3 + 1) cm²",
+          "9(√3 + 3) cm²",
+          "9(√3 + 2) cm²",
+          "9√3 + 18 cm²"
+        ],
+        "answerIndex": 3,
+        "answer": "9√3 + 18 cm²",
+        "explanation": "円周の1/6の弧に対する中心角は 360° × (1/6) = 60° であり、弧BC(円周の1/4)に対する中心角は 360° × (1/4) = 90° である。四角形OABCは三角形OABと三角形OBCに分割できる。三角形OABは、一辺の長さが6cmで頂角が60°の二等辺三角形であるため、正三角形となり、その面積は (1/2) × 6 × 6 × sin(60°) = 9√3 cm² である。三角形OBCは、直角二等辺三角形であり(中心角90°)、その面積は (1/2) × 6 × 6 = 18 cm² である。したがって、四角形OABCの面積は 9√3 + 18 cm² となる。",
+        "evidence": "半径が6cmの円Oがあり、円周上に3点A, B, Cがこの順にある。",
+        "misconception": "中心角の大きさを弧の割合から正しく求められず、三角比や三平方の定理を用いた面積計算で角度を誤る。",
+        "marks": 2,
+        "id": "rise-math-8f2165d26d242e26",
+        "fingerprint": "331bcb609640920a",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-09T11:17:14.773Z"
         }
       }
     ],
