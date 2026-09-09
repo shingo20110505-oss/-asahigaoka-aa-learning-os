@@ -18,7 +18,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/rise-favicon-32-20260905-v5.png">
 <link rel="stylesheet" href="./learning-engine-v22.css">
 <link rel="preload" href="./app/runtime-registry.js" as="script">
-<link rel="preload" href="./app/legacy/main-runtime.js" as="script">
+<link rel="preload" href="./app/legacy/main-runtime.js?v=20260909-1" as="script">
 <link rel="preload" href="./ai-reading-library-v1.js?v=1.0.0" as="script">
 <link rel="preload" href="./ai-reading-v1.js?v=2.0.1" as="script">
 <link rel="preload" href="./ai-reading-exam-scaffold-v1.js?v=1.1.0" as="script">
@@ -79,7 +79,7 @@ document.addEventListener('click',e=>{if(e.target?.closest?.('#riseBootRetry'))v
 <script defer src="./app/runtime-registry.js"></script>
 <!-- Must run before the legacy runtime: blocks its obsolete controllerchange -> location.reload handler. -->
 <script defer src="./app/pwa/legacy-controller-reload-guard-v1.js?v=1.0.0"></script>
-<script defer src="./app/legacy/main-runtime.js"></script>
+<script defer src="./app/legacy/main-runtime.js?v=20260909-1"></script>
 <!-- Reading stack: verified library -> AI runtime -> Aichi exam scaffold. Must run after legacy runtime. -->
 <script defer src="./ai-reading-library-v1.js?v=1.0.0"></script>
 <script defer src="./ai-reading-v1.js?v=2.0.1"></script>
