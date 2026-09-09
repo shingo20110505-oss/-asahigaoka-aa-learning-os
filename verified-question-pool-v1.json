@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-09-12-30-07Z",
-  "updatedAt": "2026-09-09T12:30:07.173Z",
+  "poolVersion": "2026-09-09-12-57-19Z",
+  "updatedAt": "2026-09-09T12:57:19.258Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1006,6 +1006,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-09T11:39:59.882Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.kokugo.data_interpretation",
+        "difficulty": 8,
+        "question": "文章およびグラフの記述から読み取れる内容として、最も適当なものを次の中から一つ選べ。",
+        "context": "【文章】\n近年、地域の伝統文化の継承において、デジタルアーカイブ（記録保存）の活用が進んでいる。かつては高齢の伝承者からの口頭伝承や紙の資料に頼っていたが、3DスキャンやVR技術の導入により、形や動きを立体的に残す試みが本格化している。しかし、形や映像を保存するだけでは不十分であり、それを日々の生活や地域コミュニティの中でどう活かすかという「文脈の共有」こそが継承の鍵であると専門家は指摘する。\n\n【図：伝統文化継承手法と地域住民の参加意識に関する調査】\n・単なる資料・映像の閲覧のみ：理解度 72% ／ 地域イベントへの参加意欲 18%\n・体験型VRおよびワークショップの併用：理解度 85% ／ 地域イベントへの参加意欲 64%",
+        "choices": [
+          "デジタル技術の導入により、形や動きを立体的に残す試みが進んでおり、資料の閲覧だけでも十分な継承が可能であるという見解が主流になっている。",
+          "かつての口頭伝承や紙の資料による方法は完全に廃れており、現代ではすべての地域で3DスキャンやVR技術による保存に移行している。",
+          "映像や形を保存するだけでなく、生活やコミュニティの中で活かす文脈の共有が重要であり、体験型の手法を組み合わせることで参加意欲を高める効果が示されている。",
+          "理解度の高さにかかわらず、地域イベントへの参加意欲は一貫して低い水準にとどまっており、デジタル技術の活用は住民の意識に何ら影響を与えていない。"
+        ],
+        "answerIndex": 2,
+        "answer": "映像や形を保存するだけでなく、生活やコミュニティの中で活かす文脈の共有が重要であり、体験型の手法を組み合わせることで参加意欲を高める効果が示されている。",
+        "explanation": "文章では「形や映像を保存するだけでは不十分であり、それを日々の生活や地域コミュニティの中でどう活かすかという『文脈の共有』こそが継承の鍵である」と述べられており、図のデータでも体験型VRとワークショップを併用することで地域イベントへの参加意欲が大きく高まることが示されている。したがって、これらを総合した選択肢が最も適当である。不適切な選択肢は、文章の趣旨に反する断定や、図のデータと矛盾する記述が含まれている。",
+        "evidence": "形や映像を保存するだけでは不十分であり、それを日々の生活や地域コミュニティの中でどう活かすかという「文脈の共有」こそが継承の鍵である",
+        "misconception": "文章の一部や図の数値を誤読し、デジタル化さえすれば全てが解決するという極端な結論や、データ全体の傾向を無視した飛躍的な解釈をしてしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-95742f17048801a3",
+        "fingerprint": "b0d89f2b10e5e719",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-09T12:57:19.222Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.kokugo.author_intent",
+        "difficulty": 8,
+        "question": "筆者が「言葉の持つ二面性」について述べている意図として、最も適当なものを次の中から一つ選べ。",
+        "context": "私たちは日々、言葉を用いて他者と意思疎通を図っている。言葉は、自分の内面にある複雑な感情や抽象的な思考を形にして相手に伝える強力な道具であると同時に、時に相手を意図せず傷つけたり、固定観念を植え付けたりする諸刃の剣でもある。筆者は、言葉が持つこの明瞭な伝達力と、境界線を引いて他者を排除してしまう危うさという二面性に自覚的であるべきだと説く。言葉は万能ではなく、私たちがそれをどのように選び、使うかという倫理的な姿勢が常に問われているのである。",
+        "choices": [
+          "言葉が持つ伝達力の高さだけに注目し、他者を傷つける側面については現代社会ではすでに解消されていると主張するため。",
+          "言葉は本来、他者との摩擦を生むだけの無力な存在であり、できるだけ使用を控えるべきであるという結論を導くため。",
+          "言葉が正確な思考を伝える道具である一方、他者を排除する危うさも孕んでいることを示し、その使用において自覚的で倫理的な姿勢が必要であることを強調するため。",
+          "抽象的な思考を形にする能力こそが言葉の本質であり、感情を表現する手段としては不適切であると定義するため。"
+        ],
+        "answerIndex": 2,
+        "answer": "言葉が正確な思考を伝える道具である一方、他者を排除する危うさも孕んでいることを示し、その使用において自覚的で倫理的な姿勢が必要であることを強調するため。",
+        "explanation": "文章では、言葉が意思疎通の強力な道具である一方で他者を傷つける危うさ（諸刃の剣）を持つという二面性に触れ、その使用において「倫理的な姿勢が常に問われている」と結んでいる。したがって、言葉の持つ表裏の側面を踏まえた上で、主体的な自覚と責任を求めている点を取り上げた記述が正解となる。",
+        "evidence": "言葉は万能ではなく、私たちがそれをどのように選び、使うかという倫理的な姿勢が常に問われているのである。",
+        "misconception": "文章内に登場する「強力な道具」や「諸刃の剣」といった言葉の断片だけに囚われ、筆者の主たる主張である倫理的姿勢や自覚の必要性を読み落としてしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-8341f5dc593a7960",
+        "fingerprint": "08bde17e8a3405d8",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-09T12:57:19.222Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.kokugo.expression_analysis",
+        "difficulty": 8,
+        "question": "次の文章における比喩表現や対比の構造についての説明として、最も適当なものを次の中から一つ選べ。",
+        "context": "都市の景観は、絶えずスクラップ・アンド・ビルドを繰り返しながら変貌を遂げている。古い建物が取り壊され、真新しい高層ビルが建ち並ぶ光景は、一見すると「進歩」や「発展」の象徴のように映る。しかし、それは同時に、その土地が何十年、何百年と培ってきた記憶や文脈が、効率という名のシャベルでリセットされていく過程でもある。私たちは便利で効率的な空間を手に入れる代償として、かつて街が持っていた固有の「匂い」や「歴史の重み」を静かに手放しているのだ。",
+        "choices": [
+          "固有の匂いや歴史の重みが失われることは避けられないため、過去の記憶を一切振り返らずに未来へ進むべきだと主張している。",
+          "効率というシャベルという表現を用いて、都市の近代化が人々の生活をどれほど豊かにしているかを称賛している。",
+          "古い建物の取り壊しを進歩と捉える見方と、歴史の喪失と捉える見方を対比させ、効率性と引き換えに失われるものの大きさに警鐘を鳴らしている。",
+          "都市の景観が変わらないことの重要性を説くために、高層ビルの建設がいかに環境破壊につながるかを論理的に証明している。"
+        ],
+        "answerIndex": 2,
+        "answer": "古い建物の取り壊しを進歩と捉える見方と、歴史の喪失と捉える見方を対比させ、効率性と引き換えに失われるものの大きさに警鐘を鳴らしている。",
+        "explanation": "文章の前半では「進歩や発展の象徴」としての側面を挙げつつ、後半では「効率という名のシャベルでリセットされていく」「記憶や文脈を手放している」と述べ、便利さと引き換えに大切な歴史や記憶が失われていることへの懸念を示している。この対比構造と筆者の警鐘の意図を正確に捉えている選択肢が正解となる。",
+        "evidence": "私たちは便利で効率的な空間を手に入れる代償として、かつて街が持っていた固有の「匂い」や「歴史の重み」を静かに手放しているのだ。",
+        "misconception": "「進歩や発展」という表面的な言葉に引きずられ、筆者が都市開発を全面的に肯定していると誤解してしまう誤り、あるいは環境問題の文脈にすり替えてしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-9c49ae88a597bef4",
+        "fingerprint": "c82d1b8bfa89fabd",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-09T12:57:19.222Z"
         }
       }
     ],
