@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-09-12-19-38Z",
-  "updatedAt": "2026-09-09T12:19:38.479Z",
+  "poolVersion": "2026-09-09-12-30-07Z",
+  "updatedAt": "2026-09-09T12:30:07.173Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -300,6 +300,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-08T12:17:56.710Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application.dialogue_comprehension",
+        "difficulty": 8,
+        "question": "Why did Ken decide to change his club activity plan for this weekend?",
+        "context": "Yuka: Hi Ken, are you still practicing tennis on Saturday morning?\nKen: Actually, I changed my mind. The weather forecast says it will rain heavily all day Saturday, so the tennis courts will be closed.\nYuka: Oh, I see. Are you going to stay home then?\nKen: No, the art club is holding an indoor workshop in the school gym instead, so I signed up for that.",
+        "choices": [
+          "The tennis courts will be unavailable because of bad weather conditions.",
+          "His teacher told him to join the art club workshop in the school gym.",
+          "The tennis practice was canceled because other students booked the gym.",
+          "He wanted to try something completely different because he got tired of tennis."
+        ],
+        "answerIndex": 0,
+        "answer": "The tennis courts will be unavailable because of bad weather conditions.",
+        "explanation": "Ken explains that heavy rain is forecasted for Saturday, which causes the tennis courts to be closed. Therefore, he switched his activity. The distractor about getting tired of tennis or his teacher telling him are not supported by the dialogue.",
+        "evidence": "The weather forecast says it will rain heavily all day Saturday, so the tennis courts will be closed.",
+        "misconception": "Assuming that Ken changed his mind simply out of personal preference rather than the weather condition mentioned in the text.",
+        "marks": 2,
+        "id": "rise-english-b0b26c762e6cd81a",
+        "fingerprint": "b9526bcc7b6baace",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-09T12:29:49.358Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application.information_integration",
+        "difficulty": 8,
+        "question": "Based on the schedule and notes, which activity is scheduled immediately after the museum tour?",
+        "context": "[School Trip Itinerary]\n09:00 - Depart from school by bus\n10:30 - Arrive at the City Museum and start guided tour\n12:00 - Lunch at the courtyard garden\n13:30 - Workshop at the Science Center\n15:00 - Return departure\n[Notes]: The guided tour will take exactly 90 minutes. Lunch will be served immediately following the morning activity.",
+        "choices": [
+          "Departing from school by bus",
+          "Having lunch at the courtyard garden",
+          "Attending a workshop at the Science Center",
+          "Preparing for the return departure"
+        ],
+        "answerIndex": 1,
+        "answer": "Having lunch at the courtyard garden",
+        "explanation": "According to the itinerary, the museum tour starts at 10:30 and takes 90 minutes (ending at 12:00). At 12:00, the schedule shows 'Lunch at the courtyard garden'. Thus, lunch occurs immediately after the tour.",
+        "evidence": "12:00 - Lunch at the courtyard garden",
+        "misconception": "Jumping straight to the afternoon workshop at the Science Center by miscalculating the time elapsed during the morning tour.",
+        "marks": 2,
+        "id": "rise-english-37cbb098d671d78c",
+        "fingerprint": "d6e06ccce8df6ac6",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-09T12:29:49.358Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "Which statement is true according to the email?",
+        "context": "To: Green Club Members\nFrom: Ms. Baker\nDate: October 12\nSubject: Preparation for the Eco-Fair\nThank you all for your hard work on the upcoming Eco-Fair. Here is the schedule for next week. On Monday, Group A will collect old newspapers in the gymnasium from 3:30 p.m. to 4:30 p.m. Group B will check plastic bottle caps in the science room at the same time. On Tuesday, Group A and Group B will swap tasks: Group A works in the science room, and Group B works in the gymnasium. Please remember that all activities must finish by 4:30 p.m. because the school building closes early for cleaning.",
+        "choices": [
+          "Group B will work in the gymnasium on Monday from 4:30 p.m. to 5:00 p.m.",
+          "Both groups will collect old newspapers in the gymnasium on Tuesday.",
+          "Group A and Group B will finish their tasks after the school building is cleaned.",
+          "Group A will work in the science room on Tuesday."
+        ],
+        "answerIndex": 3,
+        "answer": "Group A will work in the science room on Tuesday.",
+        "explanation": "The text explicitly outlines that the two groups swap their locations and roles on the second day, meaning the group originally assigned to the gymnasium on Monday moves to the science room on Tuesday. A strong distractor misinterprets the timing or mixes up the tasks assigned to each group across the days.",
+        "evidence": "On Tuesday, Group A and Group B will swap tasks: Group A works in the science room, and Group B works in the gymnasium.",
+        "misconception": "Confusing the day-to-day task assignments and incorrectly attributing Monday's locations to Tuesday's schedule.",
+        "marks": 2,
+        "id": "rise-english-a7974e60884d10fc",
+        "fingerprint": "23434eb90aacf363",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-09T12:30:07.143Z"
         }
       }
     ],
