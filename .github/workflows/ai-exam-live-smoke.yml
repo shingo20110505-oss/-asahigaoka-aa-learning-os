@@ -2,6 +2,9 @@ name: AI exam live smoke
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/ai-exam-live-smoke.yml']
   workflow_run:
     workflows: ['Deploy Rise AI Platform Worker']
     types: [completed]
@@ -39,7 +42,7 @@ jobs:
           const ok=p.schemaVersion===1 && p.subject===subject && p.quality?.verified===true && items.length>0 && items.every(x=>x?.quality?.verified===true && x?.quality?.generationProvider==='gemini' && x?.quality?.verificationProvider==='groq');
           if(!ok){console.error(`LIVE_${subject.toUpperCase()}=INVALID`);process.exit(1)}
           console.log(`LIVE_${subject.toUpperCase()}=PASS delivered=${items.length} requested=${p.requestedCount} partial=${Boolean(p.partial)} model=${items[0]?.quality?.generationModel||'-'}`);
-              NODE
+          NODE
               if [ "$?" != '0' ]; then overall=1; fi
             elif [ "$code" = '422' ]; then
               SUBJECT="$subject" node - <<'NODE'

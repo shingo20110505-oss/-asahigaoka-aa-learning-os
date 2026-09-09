@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import { __test } from '../worker/src/entry-hardened.mjs';
 
 assert.equal(__test.requiresAccessToken('/v1/exam'), false, 'Rise exam delivery must not require a frontend bearer token');
@@ -28,6 +29,15 @@ assert.match(smokeWorkflow, /workflow_run:/, 'live smoke must wait for Worker de
 assert.match(smokeWorkflow, /for subject in math japanese science social/);
 assert.match(smokeWorkflow, /count\\\":1/, 'live smoke must minimize free-tier consumption');
 assert.match(smokeWorkflow, /SAFE_QUALITY_REJECTION/, 'quality rejection is a safe fail-closed outcome');
+const smokeRunMarker = '        run: |\n';
+const smokeRunStart = smokeWorkflow.indexOf(smokeRunMarker);
+assert.notEqual(smokeRunStart, -1, 'live smoke shell block must exist');
+const smokeScript = smokeWorkflow.slice(smokeRunStart + smokeRunMarker.length)
+  .split('\n')
+  .map(line => line.startsWith('          ') ? line.slice(10) : line)
+  .join('\n');
+const smokeSyntax = spawnSync('bash', ['-n'], { input: smokeScript, encoding: 'utf8' });
+assert.equal(smokeSyntax.status, 0, `live smoke shell syntax failed: ${smokeSyntax.stderr}`);
 
 const productionGate = fs.readFileSync(new URL('../scripts/verify-ai-worker-production-result.mjs', import.meta.url), 'utf8');
 assert.match(productionGate, /readingSafeRejected/);
