@@ -68,10 +68,12 @@
 
 - ブラウザやGitHub PagesへAIプロバイダのAPIキーを置かない。
 - APIキーはCloudflare Workerの暗号化Secretとして扱う。
-- 現行Gemini生成モデルは `gemini-3.5-flash`。明示的な変更指示なしにモデルを変更しない。
+- 公開Workerの入試単問は `worker/wrangler.toml` の `gemini-3.5-flash-lite`、長文・国語22点教材の定期生成は許可済みFlashモデルを使う。明示的な変更指示と無料枠確認なしにモデルを変更しない。
 - `GEMINI_API_KEY`、`GROQ_API_KEY`、`AI_ACCESS_TOKEN` をソース・ログ・公開レスポンスへ出さない。
 - 5教科のAI生成・検証の共通方針は `docs/AI_PLATFORM.md` を正本とする。
 - Groqは共通の独立検証基盤として統合する。教科固有の決定的検証を置き換えない。
+- 入試単問プールの唯一の正本はルート直下の `verified-question-pool-v1.json`。別ディレクトリへ同名プールを作らない。
+- `.github/workflows/fill-verified-question-pool.yml` のquota停止・生成失敗・検証失敗は補充成功として扱わない。
 
 ## 7. 教科エンジン
 

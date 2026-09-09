@@ -27,6 +27,8 @@ Riseは、単一HTMLではなく、既存本体・複数世代の学習エンジ
 | 国語入試 | `japanese-exam/` | 22点構造・採点単位・根拠検証を維持 |
 | 英語AI | `ai-reading-v1.js` + `worker/` | ブラウザとAIプロバイダを分離 |
 | AI共通方針 | `docs/AI_PLATFORM.md` | 5教科の生成・独立検証の正本 |
+| 検証済み入試単問 | `verified-question-pool-v1.json` | 公開・補充・PWAが共有する唯一の正本。`ai/` 等へ複製しない |
+| 単問自動補充 | `.github/workflows/fill-verified-question-pool.yml` | 教科別生成、検査、main保存、Pages公開確認を担当 |
 | PWA | `manifest.webmanifest` / `sw.js` | 更新性とオフライン互換を維持 |
 | 公開 | `.github/workflows/deploy-pages.yml` | GitHub Pagesの正規公開経路 |
 | 本番状態 | `DEPLOY_STATUS.txt` / `PUBLIC_VERIFY_STATUS.txt` | 公開後検証の結果を確認 |

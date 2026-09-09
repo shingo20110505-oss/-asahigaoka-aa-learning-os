@@ -96,7 +96,7 @@ assert.match(aiPlatform, /数学Groq blind verification:\s*コード接続済み
 assert.match(aiPlatform, /国語・理科・社会のGroq検証:\s*コード接続済み/);
 assert.match(aiPlatform, /5教科共通Groq検証:\s*英語・数学・国語・理科・社会をコード接続済み/);
 assert.match(aiPlatform, /POST \/v1\/exam/);
-assert.match(aiPlatform, /Verified Question Pool永続保存:\s*未実装/);
+assert.match(aiPlatform, /Verified Question Pool永続保存:\s*ルート直下 `verified-question-pool-v1\.json` に実装済み/);
 assert.match(aiPlatform, /cross-provider-blind-answer-check/);
 assert.match(aiPlatform, /deterministic-plus-cross-provider-blind-answer-check/);
 assert.match(aiPlatform, /gemini-authoring-subject-deterministic-groq-blind-agreement/);
@@ -117,7 +117,9 @@ assert.match(workerReadme, /POST \/v1\/verify/);
 assert.match(workerReadme, /POST \/v1\/exam/);
 assert.match(workerReadme, /deterministic-plus-cross-provider-blind-answer-check/);
 assert.match(workerReadme, /gemini-authoring-subject-deterministic-groq-blind-agreement/);
-assert.match(workerReadme, /Verified Question Poolへの保存・再利用[^\n]*まだ/);
+assert.match(workerReadme, /fill-verified-question-pool\.yml[^\n]*verified-question-pool-v1\.json/);
+assert.equal(fs.existsSync('ai/verified-question-pool-v1.json'), false, 'duplicate unpublished AI pool must not return');
+assert.equal(fs.existsSync('.github/workflows/verified-question-pool-autofill.yml'), false, 'obsolete duplicate-pool workflow must not return');
 
 // Legacy entry remains the proven English-reading implementation and compatibility source.
 const entry = read('worker/src/entry.mjs');

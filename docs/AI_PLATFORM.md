@@ -14,7 +14,7 @@ AIは教材制作を補助する。正答一意性、数値、保存契約、本
 
 ## 2. 現在の到達点
 
-2026-09-04時点のソース状態:
+2026-09-09時点のソース状態:
 
 - 共通provider interface: 実装済み
 - 共通subject validator interface: 5教科まで実装済み
@@ -27,17 +27,21 @@ AIは教材制作を補助する。正答一意性、数値、保存契約、本
 - 5教科共通Groq検証: 英語・数学・国語・理科・社会をコード接続済み
 - 数学Groq blind verification: コード接続済み
 - 国語・理科・社会のGroq検証: コード接続済み
-- Verified Question Pool永続保存: 未実装
-- 弱点分析からの自動プール補充: 未実装
+- Verified Question Pool永続保存: ルート直下 `verified-question-pool-v1.json` に実装済み
+- 定期自動補充: `.github/workflows/fill-verified-question-pool.yml` に実装済み
+- 公開演習接続: 数学・国語単問・理科・社会で実装済み。英語長文は専用ライブラリを使用
+- 学習履歴からの未出題優先: 実装済み。詳細な弱点別補充は未実装
 - 共通問題ID: `rise-<subject>-<16hex>` を実装済み
 
-この段階を、最新プロジェクト計画における**Phase 3「AI Problem Production Engine」の共通バックエンド実装**と扱う。Phase 4のVerified Question Pool、Phase 5のAdaptive Engine統合までを「学習循環完成」とは呼ばない。
+Phase 3の生成基盤とPhase 4のVerified Question Poolは本番接続済み。Phase 5は未出題優先まで実装し、弱点別の不足判定・補充は継続課題とする。
 
 ## 3. 現在のモデル
 
 生成側Gemini:
 
-`gemini-3.5-flash`
+公開Workerの入試単問: `gemini-3.5-flash-lite`
+
+英語長文・国語22点教材の定期生成: 許可済みFlashモデル（既定 `gemini-3.5-flash`）
 
 ユーザーから明示的な変更指示がない限り変更しない。
 
@@ -184,15 +188,15 @@ Rise側で次を比較する。
 
 ### Stage 6: Delivery candidate
 
-全ゲートを通った問題だけを共通問題形式で返す。現時点ではこの返却を**Verified Question Poolに保存する前のdelivery candidate**と扱う。
+全ゲートを通った問題だけを共通問題形式で返す。定期補充ではこの返却を**Verified Question Poolへ保存する前のdelivery candidate**として再検査する。
 
-### Stage 7: Verified Question Pool（次段階）
+### Stage 7: Verified Question Pool（実装済み）
 
-合格問題を永続保存し、同じ問題を何度もAI生成・再検証しない。オフライン時やAPI上限時にも学習を継続できるようにする。
+合格問題は唯一の正本 `verified-question-pool-v1.json` へ安定ID・fingerprint付きで保存する。公開時にSHA-256と構造を再検査し、PWA/端末内検証済みキャッシュへフォールバックする。旧 `ai/verified-question-pool-v1.json` のような未使用複製は作らない。
 
-### Stage 8: Adaptive selection（次段階）
+### Stage 8: Adaptive selection（一部実装）
 
-学習履歴・弱点・復習予定からRise自身が次問を選び、プール不足時だけAI生成を要求する。
+学習履歴の共通IDから未出題を優先する。弱点・復習予定からの不足判定と補充要求は次段階とする。ブラウザ操作からライブ生成は行わない。
 
 ## 7. 教科別方針
 
@@ -312,11 +316,12 @@ APIキー、生providerエラー、内部プロンプトは返さない。
 
 - 失敗時の無限再試行を禁止する。
 - 1リクエストあたり生成は最大2試行。
-- バッチ単位でGroqへblind検証する。
+- バッチ単位でGroqへblind検証し、Strict Structured Outputの生成中断だけ同じschemaで1回再試行する。`json_object` や本文JSONへ劣化させない。
 - 429をprovider別quotaエラーへ変換する。
 - 同じIDの問題を不要に再採用しない。
 - 有料APIへの自動フォールバックを追加しない。
-- Gemini/Groqが止まっても、将来のVerified Question Poolから学習継続できる設計にする。
+- Gemini/Groqが止まっても、公開済みVerified Question Poolから学習を継続する。
+- 定期補充の429や検証失敗をWorkflow成功として隠さない。
 - 数学の既存ローカル学習ホットパスはGroq通信でブロックしない。
 
 ## 11. フォールバック
@@ -329,7 +334,7 @@ Groqが一時的に利用不能でも、品質保証を下げて問題を通過�
 - Groq障害時にGemini自身の検証へ自動劣化させない。
 - Gemini 429時は新規生成を停止する。
 - 有料providerへ自動切替しない。
-- オフライン/API停止時は既存教材と、Phase 4以降の検証済み問題プールを利用する。
+- オフライン/API停止時は既存教材と公開済み検証済み問題プールを利用する。
 
 ## 12. テスト方針
 
@@ -396,12 +401,9 @@ AI変更では少なくとも以下を検査する。
 
 API基盤の次は以下の順で進める。
 
-1. Verified Question Poolの正本形式を決める
-2. 合格した共通ID問題を永続保存・重複排除する
-3. PWAへ検証済みプールをキャッシュする
-4. 学習履歴・弱点から次問を選ぶAdaptive Engineへ接続する
-5. プール不足時だけ `POST /v1/exam` を呼ぶ
-6. 誤答を復習へつなぎ、同じ問題IDで分析へ戻す
-7. 既存教科エンジンの高度な決定的検査をadapter化して共通APIへ追加する
+1. 学習履歴・弱点から教科/skill別のプール不足を判定する
+2. 不足時だけバックエンド補充Workflowへ要求する
+3. 誤答を復習へつなぎ、同じ問題IDで分析へ戻す
+4. 既存教科エンジンの高度な決定的検査をadapter化して共通APIへ追加する
 
 これにより、Riseは「APIで問題を作る機能」ではなく、**AI Problem Production Engine + Verified Question Pool + Adaptive Engine + Review + Analytics**が循環する学習OSになる。
