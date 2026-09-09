@@ -51,11 +51,11 @@ function syncPublicNav(){
  return changed;
 }
 function schedulePublicNavSync(){if(navSyncRaf)return;navSyncRaf=requestAnimationFrame(()=>{navSyncRaf=0;syncPublicNav()})}
-function forcePublicNavSync(){syncBrand();syncPublicNav();schedulePublicNavSync()}
+function forcePublicNavSync(){syncPublicNav()}
 function concealLegacyGap(reason){root.classList.add('aa-app-booting');root.dataset.riseTransition=reason||'legacy-render'}
-function requestRiseRender(route,source,id){if(id!==sequence)return;document.dispatchEvent(new CustomEvent('aa:v23ready',{detail:{source:'rise-navigation',route,navigationSource:source,sequence:id}}));const app=document.getElementById('app');if(app){const pulse=document.createComment(`rise-ui-sync:${id}:${route}`);app.appendChild(pulse);pulse.remove()}forcePublicNavSync()}
-function scheduleRiseRender(route,source,id){requestRiseRender(route,source,id);queueMicrotask(()=>requestRiseRender(route,source,id));requestAnimationFrame(()=>requestRiseRender(route,source,id));setTimeout(()=>requestRiseRender(route,source,id),40);setTimeout(()=>requestRiseRender(route,source,id),140)}
-function scheduleSettingsRecovery(action){const route=stateRoute();const fire=()=>{document.dispatchEvent(new CustomEvent('aa:v23ready',{detail:{source:'settings-recovery',route,action}}));const app=document.getElementById('app');if(app){const pulse=document.createComment(`rise-settings-sync:${action}:${Date.now()}`);app.appendChild(pulse);pulse.remove()}forcePublicNavSync()};queueMicrotask(fire);requestAnimationFrame(fire);setTimeout(fire,40);setTimeout(fire,140)}
+function requestRiseRender(route,source,id){if(id!==sequence)return;document.dispatchEvent(new CustomEvent('aa:v23ready',{detail:{source:'rise-navigation',route,navigationSource:source,sequence:id}}));forcePublicNavSync()}
+function scheduleRiseRender(route,source,id){requestRiseRender(route,source,id);requestAnimationFrame(()=>requestRiseRender(route,source,id))}
+function scheduleSettingsRecovery(action){const route=stateRoute();const fire=()=>{document.dispatchEvent(new CustomEvent('aa:v23ready',{detail:{source:'settings-recovery',route,action}}));forcePublicNavSync()};fire();requestAnimationFrame(fire)}
 function recoverSettingsAction(action){if(!SETTINGS_RENDER_ACTIONS.has(action))return false;if(stateRoute()!=='settings'&&action!=='theme')return false;concealLegacyGap(`settings:${action}`);scheduleSettingsRecovery(action);return true}
 function navigateCore(route,source='ui'){
  if(!CORE_ROUTES.has(route))return false;
@@ -73,6 +73,6 @@ document.addEventListener('rise:settings-changed',e=>{if(stateRoute()!=='setting
 const app=document.getElementById('app');if(app)new MutationObserver(schedulePublicNavSync).observe(app,{childList:true,subtree:true});
 document.addEventListener('aa:v23ready',schedulePublicNavSync);document.addEventListener('rise:navigation',schedulePublicNavSync);addEventListener('pageshow',forcePublicNavSync);
 forcePublicNavSync();
-for(const delay of [0,80,240,700,1600,3200])setTimeout(forcePublicNavSync,delay);
-window.__RISE_NAVIGATION_V1__=Object.freeze({version:'1.0.5',uiSync:'self-healing-public-four-tab-nav-with-coalesced-observation',coreRoutes:[...CORE_ROUTES],settingsRenderActions:[...SETTINGS_RENDER_ACTIONS],navigate:navigateCore,review:navigateReview,current:stateRoute,syncPublicNav});
+requestAnimationFrame(forcePublicNavSync);
+window.__RISE_NAVIGATION_V1__=Object.freeze({version:'1.0.6',uiSync:'single-frame-self-healing-public-four-tab-nav',coreRoutes:[...CORE_ROUTES],settingsRenderActions:[...SETTINGS_RENDER_ACTIONS],navigate:navigateCore,review:navigateReview,current:stateRoute,syncPublicNav});
 })();
