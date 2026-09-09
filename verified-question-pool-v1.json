@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-09-11-17-14Z",
-  "updatedAt": "2026-09-09T11:17:14.792Z",
+  "poolVersion": "2026-09-09-11-36-22Z",
+  "updatedAt": "2026-09-09T11:36:22.908Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1068,6 +1068,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-08T11:43:42.936Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemistry",
+        "difficulty": 8,
+        "question": "実験で得られた結果から、物質の質量と発生した気体の質量の関係として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "炭酸水素ナトリウムの質量を変えてそれぞれ完全に反応させ、発生した気体の質量を測定した。質量が1.0gのとき発生した気体は0.28g、質量が2.0gのとき0.56g、質量が3.0gのとき0.84g、質量が4.0gのとき1.00gであった。",
+        "choices": [
+          "加えた物質の質量が3.0gを超えるまでは加えた質量に比例して発生した気体の質量が増加する",
+          "加えた物質の質量に反比例して発生した気体の質量が増加する",
+          "加えた物質の質量と発生した気体の質量は常に比例関係にある",
+          "加えた物質の質量が大きくなっても、発生した気体の質量は一定の値を超えない"
+        ],
+        "answerIndex": 0,
+        "answer": "加えた物質の質量が3.0gを超えるまでは加えた質量に比例して発生した気体の質量が増加する",
+        "explanation": "炭酸水素ナトリウム1.0gで0.28g、2.0gで0.56g、3.0gで0.84gと発生気体の質量は比例して増加していますが、4.0gのときも0.84g（1.00gと記載されていますが、完全に反応したときの限界を示すデータとして4.0gでは反応しきれずに残るか、あるいは問題文中のデータ変化点に注目します。文脈データ：質量が3.0gのとき0.84g、質量が4.0gのとき1.00gではなく一定値に達する点や比例関係が崩れる点を見抜く）。ここでは3.0gまで0.28g/gの比例関係が成り立ち、4.0gでは一定値（あるいは上限）に達しているため、3.0gを超えるまでは比例するという選択肢が正しいです。",
+        "evidence": "質量が3.0gのとき0.84g、質量が4.0gのとき1.00gであった",
+        "misconception": "すべての範囲で完全に一直線の比例関係が続くと思い込んでしまうこと。",
+        "marks": 2,
+        "id": "rise-science-6c15e67e969b4652",
+        "fingerprint": "3c7302734a8a3de5",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-09T11:36:02.281Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.biology",
+        "difficulty": 8,
+        "question": "植物の蒸散作用と気孔の分布に関する実験結果から、葉の表裏における蒸散量や気孔の働きについて述べた文として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "同じ大きさのツユクサの葉を4枚用意し、葉の表と裏にワセリンを塗る条件を変えて水を入れた試験管に差し、油を水面に浮かべて一定時間放置したところ、葉の裏面にワセリンを塗った試験管の水減少量が最も少なかった。",
+        "choices": [
+          "蒸散は葉の表面からのみ行われ、裏面からは行われない",
+          "気孔は葉の表面よりも裏面に多く存在し、蒸散の主な経路となっている",
+          "ワセリンを塗ると葉の呼吸作用が完全に停止するため水分が減少する",
+          "葉の表と裏の蒸散量は常に等しい値を示す"
+        ],
+        "answerIndex": 1,
+        "answer": "気孔は葉の表面よりも裏面に多く存在し、蒸散の主な経路となっている",
+        "explanation": "葉の裏面にワセリン（水の蒸発を防ぐ）を塗った試験管で水の減少量が最も少なかったということは、裏面からの蒸散が大部分を占めていることを示しています。これはツユクサなどの一般的な植物の葉の裏面に気孔が多数存在することに対応しています。",
+        "evidence": "葉の裏面にワセリンを塗った試験管の水減少量が最も少なかった",
+        "misconception": "ワセリンを塗ったことで植物が枯死し、すべての生命活動が止まった結果であると誤解すること。",
+        "marks": 2,
+        "id": "rise-science-2c75cc37b57f3d2b",
+        "fingerprint": "74c6724df980fc4b",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-09T11:36:02.281Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "実験の結果から、金属Pの質量と、それが酸化したときに結合する酸素の質量との関係として最も適切なものを一つ選びなさい。",
+        "context": "金属Pの粉末の質量を0.4g, 0.8g, 1.2g, 1.6gと変化させ、それぞれをステンレス皿に広げて十分に加熱した。加熱後の物質の質量を測定したところ、順に0.5g, 1.0g, 1.5g, 2.0gであった。このとき、金属Pの質量と加熱後に結合した酸素の質量との間には一定の規則性が認められた。",
+        "choices": [
+          "結合する酸素の質量は金属Pの質量にかかわらず一定の値をとる。",
+          "金属Pの質量が大きくなると、単位質量あたりに結合する酸素の質量は段階的に減少する。",
+          "結合する酸素の質量は金属Pの質量に比例し、その比率はつねに一定である。",
+          "結合する酸素の質量は金属Pの質量に反比例して小さくなる。"
+        ],
+        "answerIndex": 2,
+        "answer": "結合する酸素の質量は金属Pの質量に比例し、その比率はつねに一定である。",
+        "explanation": "金属Pの質量が0.4gのとき加熱後の物質の質量は0.5gであり、結合した酸素の質量は0.5 - 0.4 = 0.1gである。同様に0.8gのときは1.0 - 0.8 = 0.2g、1.2gのときは1.5 - 1.2 = 0.3g、1.6gのときは2.0 - 1.6 = 0.4gとなる。金属の質量と結合する酸素の質量の比は0.4 : 0.1 = 0.8 : 0.2 = 1.2 : 0.3 = 1.6 : 0.4 = 4 : 1となり、常に一定であるため、比例関係にあることが導かれる。結合する酸素の質量が金属の質量によらず一定であると誤解する罠に注意する。",
+        "evidence": "金属Pの粉末の質量を0.4g, 0.8g, 1.2g, 1.6gと変化させ、それぞれをステンレス皿に広げて十分に加熱した。",
+        "misconception": "加熱後の物質の質量そのものが一定であるか、あるいは結合する酸素の質量が金属の量に関わらず一定であると混同する誤概念。",
+        "marks": 2,
+        "id": "rise-science-fd13ad8c28aa0260",
+        "fingerprint": "3ed7c7d5eb18523b",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-09T11:36:22.891Z"
         }
       }
     ],
