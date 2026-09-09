@@ -26,7 +26,18 @@ jobs:
           def replace_js_function(src,name,replacement):
               start=src.find(f'function {name}(')
               if start<0: raise SystemExit(f'{name}: function not found')
-              op=src.find('{',start); depth=0
+              paren=src.find('(',start)
+              pdepth=0; close=-1
+              for i in range(paren,len(src)):
+                  if src[i]=='(': pdepth+=1
+                  elif src[i]==')':
+                      pdepth-=1
+                      if pdepth==0:
+                          close=i; break
+              if close<0: raise SystemExit(f'{name}: signature close not found')
+              op=src.find('{',close)
+              if op<0: raise SystemExit(f'{name}: body open not found')
+              depth=0
               for i in range(op,len(src)):
                   if src[i]=='{': depth+=1
                   elif src[i]=='}':
