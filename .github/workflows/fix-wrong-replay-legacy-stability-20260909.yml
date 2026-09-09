@@ -1,4 +1,4 @@
-name: Fix legacy wrong replay stability 20260909
+name: Restore unified quiz stable review controller 20260909
 on:
   push:
     paths:
@@ -13,53 +13,30 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Preserve legacy wrong-answer question formats across all subjects
+      - name: Restore review controller from last known-good revision
         shell: bash
         run: |
           set -euo pipefail
           git fetch origin main
           git reset --hard origin/main
+          git checkout 3c00df93a97657f21648056ab225d2ca063992ca -- quiz/review-algorithm-v1.js
           python - <<'PY'
           from pathlib import Path
-
-          p=Path('app/legacy/main-runtime.js')
+          import re
+          p=Path('quiz/index.html')
           s=p.read_text(encoding='utf-8')
-          start=s.find('function startWrongReview(){')
-          end=s.find('\nfunction startSession(',start)
-          if start<0 or end<0:
-              raise SystemExit('startWrongReview boundary not found')
-
-          replacement=r'''function legacyWrongTemplatePrefix(itemId){let id=String(itemId||'');let m=id.match(/^(math|sci|soc):([^:]+):/);return m?`${m[1]}:${m[2]}:`:''}
-          function legacyWrongReplayQuestion(a,skill,sub){let id=String(a?.itemId||''),m=id.match(/^vocab:([^:]+):([^:]+):/);if(m){let v=DATA.vocab.find(x=>String(x.id)===m[1]);if(v)return makeVocabQ(v,m[2])}m=id.match(/^kanji:([^:]+):([^:]+):/);if(m){let k=DATA.kanji.find(x=>String(x.id)===m[1]);if(k)return makeKanjiQ(k,m[2])}if(sub==='english'){let r=generateReading(state.ui.subjectDifficulty||7,'micro');registerReading(r);return r}let prefix=legacyWrongTemplatePrefix(id);if(prefix&&sub){let diffs=[state.ui.subjectDifficulty||7,11,7,5,3,1];for(let d of diffs){for(let i=0;i<160;i++){let q=makeSubjectQ(sub,d);if(q&&String(q.id||'').startsWith(prefix))return q}}}if(skill?.startsWith('en.vocab'))return makeVocabQ();if(skill?.startsWith('ja.kanji'))return makeKanjiQ();return sub?makeSubjectQ(sub,state.ui.subjectDifficulty||7):null}
-          function startWrongReview(){let wrong=state.attempts.filter(a=>!a.correct).slice(-30).reverse(),queue=[],used=[],migrated=false;for(let a of wrong){let replay=a.replayQuestion,key=a.reviewKey||a.itemId||a.attemptId||a.skills?.[0]?.id;if(!key||used.includes(key))continue;if(replay&&typeof replay==='object'){used.push(key);try{queue.push(JSON.parse(JSON.stringify(replay)))}catch(_){queue.push(replay)}if(queue.length>=8)break;continue}let skill=a.skills?.[0]?.id;if(!skill)continue;let sub=DATA.skills[skill]?.subject,q=legacyWrongReplayQuestion(a,skill,sub);if(!q)continue;try{a.replayQuestion=JSON.parse(JSON.stringify(q));replay=a.replayQuestion;migrated=true}catch(_){replay=q}used.push(key);try{queue.push(JSON.parse(JSON.stringify(replay)))}catch(_){queue.push(replay)}if(queue.length>=8)break}if(migrated)save();if(!queue.length){let m=pickMission();startSession({kind:m.kind,subject:m.subject,mode:'standard'});return}state.session={id:uid('review'),active:true,mode:'review',kind:'review',subject:'mixed',queue,index:0,subIndex:0,answers:{},feedback:null,startedAt:now(),accumulatedMs:0,lastActiveAt:now(),itemStartedAt:now(),scrollY:0,minimumDone:false,clockPaused:false,pausedAt:null};state.stats.sessions++;state.route='study';save();render();window.scrollTo(0,0);startTicker()}'''
-          replacement=replacement.replace('\n          ','\n')
-          s=s[:start]+replacement+s[end:]
+          s=re.sub(r'(review-algorithm-v1\.js\?v=)[^\"\']+',r'\g<1>1.0.9-stable-20260909',s)
           p.write_text(s,encoding='utf-8')
-
-          p=Path('index.html')
-          s=p.read_text(encoding='utf-8')
-          old='app/legacy/main-runtime.js?v=20260909-1'
-          new='app/legacy/main-runtime.js?v=20260909-2'
-          if old not in s and new not in s:
-              raise SystemExit('main-runtime cache version token not found')
-          s=s.replace(old,new)
-          p.write_text(s,encoding='utf-8')
-
-          main=Path('app/legacy/main-runtime.js').read_text(encoding='utf-8')
-          index=Path('index.html').read_text(encoding='utf-8')
-          assert 'function legacyWrongReplayQuestion' in main
-          assert 'makeVocabQ(v,m[2])' in main
-          assert 'makeKanjiQ(k,m[2])' in main
-          assert 'legacyWrongTemplatePrefix(id)' in main
-          assert 'a.replayQuestion=JSON.parse(JSON.stringify(q))' in main
-          assert 'if(migrated)save()' in main
-          assert 'main-runtime.js?v=20260909-2' in index
-          print('legacy wrong-replay migration contracts ok')
+          js=Path('quiz/review-algorithm-v1.js').read_text(encoding='utf-8')
+          assert "function activeSubject()" in js
+          assert "ui.start?.addEventListener('click'" in js
+          assert 'review-algorithm-v1.js?v=1.0.9-stable-20260909' in s
+          print('stable unified review controller restored')
           PY
-          node --check app/legacy/main-runtime.js
+          node --check quiz/review-algorithm-v1.js
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add app/legacy/main-runtime.js index.html
+          git add quiz/review-algorithm-v1.js quiz/index.html
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'Fix legacy wrong-only format stability across subjects'
+          git commit -m 'Restore stable unified quiz review controller'
           git push origin HEAD:main
