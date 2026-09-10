@@ -1,12 +1,13 @@
 {
   "schemaVersion": 1,
-  "day": "2026-09-09",
+  "day": "2026-09-10",
   "attempted": 1,
   "added": 0,
   "state": "rejected",
   "mode": "scheduled_backend",
   "generationTransport": "generateContent-v1beta",
   "maxCandidatesPerDay": 1,
-  "maxCallsPerCandidate": 6,
-  "reason": "missing_passage"
+  "maxCallsPerCandidate": 7,
+  "httpStatus": 503,
+  "reason": "provider_or_validation_error"
 }
