@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-10-11-13-59Z",
-  "updatedAt": "2026-09-10T11:13:59.349Z",
+  "poolVersion": "2026-09-10-11-48-19Z",
+  "updatedAt": "2026-09-10T11:48:19.029Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1612,6 +1612,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-09T11:49:58.326Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.biology.mitosis",
+        "difficulty": 8,
+        "question": "タマネギの根の先端を観察したところ、細胞分裂を行っている多くの細胞が見られた。ある視野において、観察された全細胞数が200個であり、そのうち核の形が失われ染色体が一本ずつ明確に観察できる（分裂期の中期〜後期にあたる）細胞が20個であった。この植物の組織における細胞分裂の分裂期の時間として最も適当なものを、次の選択肢の中から1つ選びなさい。ただし、このタマネギの細胞周期の全体時間は20時間であるとする。",
+        "context": "生物の細胞分裂の様子を調べるため、タマネギの根の先端を用いてプレパラートを作り、顕微鏡で観察を行った。細胞周期の各時期の長さは、それぞれの時期にある細胞の割合に比例するものとする。観察された全細胞数は200個であり、その中で分裂期の状態にある細胞の数は合計で20個であった。このタマネギの細胞周期の全体時間は20時間である。",
+        "choices": [
+          "12時間",
+          "1時間",
+          "2時間",
+          "10時間"
+        ],
+        "answerIndex": 2,
+        "answer": "2時間",
+        "explanation": "細胞周期の各時期の長さは、その時期にある細胞の割合（細胞数）に比例するという原則を利用する。全細胞数が200個で、そのうち分裂期にある細胞数が20個であるので、分裂期が占める割合は 20 / 200 = 0.1（10%）となる。細胞周期の全体時間が20時間であるため、分裂期にかかる時間は 20時間 × 0.1 = 2時間 と算出される。典型的な誤りは、全細胞数と分裂期細胞数の比率を逆にして計算したり、時期の割合をそのまま時間と勘違いして計算するものである。",
+        "evidence": "観察された全細胞数は200個であり、その中で分裂期の状態にある細胞の数は合計で20個であった。このタマネギの細胞周期の全体時間は20時間である。",
+        "misconception": "全細胞数に対する分裂期細胞数の割合を求めず、単純に細胞数同士の差をとったり、周期の全体時間を考慮せずに細胞数そのものを時間としてしまう誤り。",
+        "marks": 2,
+        "id": "rise-science-a6178df4599474e8",
+        "fingerprint": "2bd50ae01bbf60b2",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-10T11:48:12.049Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemical_change",
+        "difficulty": 8,
+        "question": "文中で行われた実験について、マグネシウムの質量と結びついた酸素の質量の関係として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "愛知県内の中学校の理科部員が、マグネシウムの粉末をステンレス皿に薄く広げて十分に加熱し、加熱後の物質の質量を測定する実験を行った。表はその結果をまとめたものである。\n実験1：マグネシウム粉末0.30gを加熱したところ、加熱後の物質の質量は0.50gであった。\n実験2：マグネシウム粉末0.60gを加熱したところ、加熱後の物質の質量は1.00gであった。\n実験3：マグネシウム粉末0.90gを加熱したところ、加熱後の物質の質量は1.50gであった。\n実験4：マグネシウム粉末1.20gを加熱したところ、加熱後の物質の質量は1.80gであった。",
+        "choices": [
+          "マグネシウムの質量と結びついた酸素の質量は比例関係にあり、マグネシウム0.30gに対して酸素は0.50gの割合で結びついている。",
+          "加熱後の物質の質量はマグネシウムの質量に比例し、マグネシウムの質量が増加しても結びついた酸素の質量は一定である。",
+          "マグネシウムの質量と結びついた酸素の質量は反比例の関係にあり、加熱を続けるほど酸素の割合が小さくなる。",
+          "マグネシウムの質量と結びついた酸素の質量は比例関係にあり、マグネシウム0.30gに対して酸素は0.20gの割合で結びついている。"
+        ],
+        "answerIndex": 3,
+        "answer": "マグネシウムの質量と結びついた酸素の質量は比例関係にあり、マグネシウム0.30gに対して酸素は0.20gの割合で結びついている。",
+        "explanation": "実験結果より、マグネシウムの質量が0.30gのとき加熱後の物質は0.50gであり、結びついた酸素の質量は0.50 - 0.30 = 0.20gである。同様に、0.60gのときは1.00 - 0.60 = 0.40g、0.90gのときは1.50 - 0.90 = 0.60g、1.20gのときは1.80 - 1.20 = 0.60g...あれ、実験4では1.20gのマグネシウムが1.80gになっており、酸素は0.60gである。マグネシウムと酸素の比は 0.30 : 0.20 = 0.60 : 0.40 = 0.90 : 0.60 = 1.20 : 0.80のはずが、実験4では1.80gなので加熱が不十分である。しかし最初の3つの実験では 0.30:0.20, 0.60:0.40, 0.90:0.60 となり比例している。したがって、マグネシウムの質量と結びついた酸素の質量は比例関係であり、マグネシウム0.30gに対して酸素0.20gの割合である。最も強力な罠は、加熱後の物質の質量（0.50gなど）をそのまま結びついた酸素の質量と勘違いすることである。",
+        "evidence": "実験1：マグネシウム粉末0.30gを加熱したところ、加熱後の物質の質量は0.50gであった。",
+        "misconception": "加熱後の物質の質量全体を、結びついた酸素の質量と混同してしまう誤解。",
+        "marks": 2,
+        "id": "rise-science-1b63aaedd8194379",
+        "fingerprint": "68cf8f3f40540171",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-10T11:48:19.011Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.earth_science",
+        "difficulty": 8,
+        "question": "日本付近のプレートの動きと地学現象に関して、海洋プレートが大陸プレートの下に沈み込むことによって生じる現象の組み合わせとして最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "愛知県を含む日本列島周辺では、太平洋プレートやフィリピン海プレートといった海洋プレートが、ユーラシアプレートや北アメリカプレートといった大陸プレートの下へと沈み込んでいる。このプレートの沈み込み帯では、地下深い場所でマグマが生成されたり、岩盤に大きな力が加わって破壊されたりすることで、さまざまな地形や現象が引き起こされている。",
+        "choices": [
+          "大陸プレート同士の衝突による巨大な褶曲山脈の形成のみ、および深発地震の完全な欠如",
+          "海溝の形成、マグマ活動による火山フロントに沿った火山活動、および浅いところから深いところまでの地震の発生",
+          "中央海嶺の形成、プレートの湧き出しによる玄武岩質の火山活動、および浅い地震の発生のみ",
+          "大地のトランスフォーム断層に沿った横ずれ運動のみ、および火山のまったく存在しない造山運動"
+        ],
+        "answerIndex": 1,
+        "answer": "海溝の形成、マグマ活動による火山フロントに沿った火山活動、および浅いところから深いところまでの地震の発生",
+        "explanation": "海洋プレートが大陸プレートの下に沈み込む場所では、プレートの境界に深い溝状の地形である「海溝」が形成される。また、沈み込んだプレートから水などが放出されてマントルの融点下がりマグマができ、火山活動が活発になる。さらに、プレート同士が強く押し合い、ひずみが限界に達して岩盤が破壊されることで地震が発生する。沈み込むにつれて震源が深くなるため、浅いところから深いところまで地震が起きる。中央海嶺はプレートが湧き出す場所であるため不正解。",
+        "evidence": "太平洋プレートやフィリピン海プレートといった海洋プレートが、ユーラシアプレートや北アメリカプレートといった大陸プレートの下へと沈み込んでいる。",
+        "misconception": "沈み込み帯と、プレートが湧き出す中央海嶺やトランスフォーム断層の現象を混同してしまう誤解。",
+        "marks": 2,
+        "id": "rise-science-a8de614d470069f1",
+        "fingerprint": "8a9847abcb969d0d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-10T11:48:19.011Z"
         }
       }
     ],
