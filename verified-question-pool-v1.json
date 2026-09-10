@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-10-12-13-57Z",
-  "updatedAt": "2026-09-10T12:13:57.085Z",
+  "poolVersion": "2026-09-10-12-23-28Z",
+  "updatedAt": "2026-09-10T12:23:28.092Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -402,6 +402,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-09T12:30:07.143Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "According to the notice, what will happen if bad weather approaches on the morning of October 15?",
+        "context": "Notice: Green City Cleanup Day\nDate: Saturday, October 15\nMeeting Time & Place: 9:00 AM at City Park Front Gate (Rain or Shine)\nTasks: Collecting plastic bottles and papers around the river area.\nImportant Notes:\n1. All participants must bring their own work gloves and reusable water bottles.\n2. High school students can earn volunteer certificates if they submit a reflection sheet by October 22.\n3. If heavy rain or a typhoon is approaching, the event will be postponed to Saturday, October 22. In that case, the notice will be updated on the city website by 6:00 AM on October 15.\n4. Lunch is not provided, but light snacks will be distributed after the activity.",
+        "choices": [
+          "Participants will meet at City Park Front Gate at 6:00 AM instead.",
+          "The event will take place on October 22, and the city website will show an update by 6:00 AM.",
+          "High school students must submit their reflection sheets on October 15.",
+          "Light snacks and lunch will be provided at the river area."
+        ],
+        "answerIndex": 1,
+        "answer": "The event will take place on October 22, and the city website will show an update by 6:00 AM.",
+        "explanation": "The notice states that severe weather like a typhoon causes the event to be postponed to October 22, and an update is posted on the city website by 6:00 AM on October 15. The strongest trap confuses the website update time with the meeting time or mixes up event dates with submission deadlines.",
+        "evidence": "If heavy rain or a typhoon is approaching, the event will be postponed to Saturday, October 22. In that case, the notice will be updated on the city website by 6:00 AM on October 15.",
+        "misconception": "Confusing the postponement date and website update schedule with participant arrival times or submission deadlines.",
+        "marks": 2,
+        "id": "rise-english-52b4a386d676cfca",
+        "fingerprint": "20d8a5da1de62188",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-10T12:23:22.924Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application.dialogue_inference",
+        "difficulty": 8,
+        "question": "What is the main reason why Ken decided to change his club activity plan for this year?",
+        "context": "Ken: Hi, Yoko! How are your club activities going? Are you still in the science club?\nYoko: Yes, I am. We are building a robot for the city science fair in autumn. What about you, Ken? Did you join the track and field team again?\nKen: Actually, I wanted to, but the practice schedule overlaps completely with the English presentation club meetings on Tuesdays and Thursdays. Since I want to improve my speaking skills for the study-abroad program next spring, I chose the English club instead.\nYoko: I see. That makes sense, especially since you need a high score on the interview test.",
+        "choices": [
+          "His practice schedule for the track and field team conflicted with the English club meetings.",
+          "He realized that track and field practice was too physically demanding for him.",
+          "He already achieved all his goals in the track and field team last year.",
+          "He wanted to build a robot for the upcoming city science fair."
+        ],
+        "answerIndex": 0,
+        "answer": "His practice schedule for the track and field team conflicted with the English club meetings.",
+        "explanation": "Ken explains that he wanted to join the track and field team again, but the practice schedule overlaps completely with the English presentation club meetings, which he chose because he wants to improve his speaking skills for a study-abroad program. The strongest distractor is the option mentioning that track and field was too physically demanding, but the text never states physical difficulty as the reason; the schedule overlap is the explicit cause of his change.",
+        "evidence": "the practice schedule overlaps completely with the English presentation club meetings on Tuesdays and Thursdays.",
+        "misconception": "Confusing a student's general interest or assumed difficulty with the actual stated cause of action in the dialogue.",
+        "marks": 2,
+        "id": "rise-english-bd0cec67bf02c5bb",
+        "fingerprint": "7fc6a92ff6e1812d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-10T12:23:28.074Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application.informational_text_analysis",
+        "difficulty": 8,
+        "question": "According to the notice, what must all participants do before attending the community cleanup event?",
+        "context": "Notice: Green City Community Cleanup\nDate: Saturday, October 14th, 9:00 AM - 11:30 AM\nLocation: Central Park South Gatefront\nDetails: We will collect plastic bottles and paper waste around the neighborhood. All participants must submit a signed parent consent form to the community center office by Thursday, October 12th. Gloves and garbage bags will be provided on-site at no cost, so you do not need to bring your own cleaning tools. Rain or clear weather, the event will take place unless a storm warning is announced.",
+        "choices": [
+          "Register online using their smartphones before arriving at the South Gatefront.",
+          "Bring their own gloves and garbage bags to the park.",
+          "Submit a signed parent consent form to the community center office by October 12th.",
+          "Check the weather forecast on Saturday morning to confirm the event is happening."
+        ],
+        "answerIndex": 2,
+        "answer": "Submit a signed parent consent form to the community center office by October 12th.",
+        "explanation": "The notice explicitly states that all participants must submit a signed parent consent form to the community center office by Thursday, October 12th. The distractor about bringing cleaning tools is incorrect because gloves and bags are provided on-site and participants do not need to bring them.",
+        "evidence": "All participants must submit a signed parent consent form to the community center office by Thursday, October 12th.",
+        "misconception": "Assuming participants must bring their own equipment because cleanup events usually require it, ignoring the text's statement that tools are provided.",
+        "marks": 2,
+        "id": "rise-english-f474b45aab4054ae",
+        "fingerprint": "fb5c03ddb4dbf55f",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-10T12:23:28.074Z"
         }
       }
     ],
