@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-10-11-48-19Z",
-  "updatedAt": "2026-09-10T11:48:19.029Z",
+  "poolVersion": "2026-09-10-12-13-57Z",
+  "updatedAt": "2026-09-10T12:13:57.085Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2149,6 +2149,108 @@
           "verifierConfidence": 0.9,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-09T12:19:38.437Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "文中の表における古代から中世にかけての日本の産業・対外関係の変遷に関して述べた文として正しいものを、次の選択肢の中から1つ選びなさい。",
+        "context": "時代ごとの生産力や貿易の特色をまとめた資料がある。A期：鉄製農具の普及により耕地拡大が進み、遣唐使の派遣を通じて大陸の文化や制度を積極的に取り入れた。B期：宋銭が広く流通し、日宋貿易・日明貿易を通じて陶磁器や生糸などが輸入された。C期：武家政権のもとで商工業者が座を結成し、定期市が開かれるなど国内商業が発達した。",
+        "choices": [
+          "C期には、座と呼ばれる同業者組合が結成され、特権の維持や営業の独占を図った。",
+          "A期からC期にかけて、貨幣経済は一貫して衰退し、自給自足の物納経済が全国的に徹底された。",
+          "A期には、遣唐使の派遣が停止され、国風文化と呼ばれる独自の文化が発達した。",
+          "B期における日明貿易では、明からの輸入額が常に輸出額を下回り、日本国内の銀の流出を防いでいた。"
+        ],
+        "answerIndex": 0,
+        "answer": "C期には、座と呼ばれる同業者組合が結成され、特権の維持や営業の独占を図った。",
+        "explanation": "C期に関する説明として、武家政権のもとで商工業者が座を結成し、特権の維持や営業の独占を図ったことは歴史的事実として正しい。A期の選択肢にある遣唐使の停止は平安時代初期（10世紀初め）であり、A期の一般的説明である大陸文化の積極的受容の時期とはずれている。日明貿易では銅銭や生糸などの輸入超過であった。貨幣経済は鎌倉時代以降、宋銭の流入などでむしろ発展した。",
+        "evidence": "C期：武家政権のもとで商工業者が座を結成し、定期市が開かれるなど国内商業が発達した。",
+        "misconception": "鎌倉・室町時代の経済を全て自給自足の物納経済と捉え、貨幣や商業の発達を見落とす誤解。",
+        "marks": 2,
+        "id": "rise-social-c52ad52d9061c561",
+        "fingerprint": "3a142b0843574a52",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-10T12:13:15.331Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "1890年から1905年にかけての愛知県における製糸・紡績業の変化について述べた文として最も適切なものを次の中から選びなさい。",
+        "context": "明治中期以降、愛知県内では従来の座繰製糸にかわり、機械制の製糸場や紡績工場が次第に普及していきました。特に尾張地方や西三河地方では、動力源として水車や蒸気機関が導入され、女性労働者を中心とした工場制手工業から機械制大工業への移行が進みました。資料によると、1890年時点での県内の製糸・紡績業における動力付工場の割合は約15%でしたが、1905年には約65%へと急増しました。この背景には、日清・日露戦争を通じた軍需の高まりや、国内外での綿糸・生糸の需要拡大がありました。",
+        "choices": [
+          "座繰製糸が改良され、女性労働者に代わって男性労働者が工場の中心となった。",
+          "日清・日露戦争の影響で綿糸・生糸の需要が低迷し、手工業へと回帰した。",
+          "尾張・西三河地方から動力源が完全に姿を消し、手作業による生産が主流となった。",
+          "動力付工場の割合が大幅に増加し、機械制大工業への移行が進んだ。"
+        ],
+        "answerIndex": 3,
+        "answer": "動力付工場の割合が大幅に増加し、機械制大工業への移行が進んだ。",
+        "explanation": "資料に示されている通り、1890年の約15%から1905年の約65%へと動力付工場の割合が急増しており、機械制大工業への移行が読み取れる。戦争による需要拡大や女性労働者中心の工場制という文脈とも一致している。男性労働者中心になったとする点や手工業に回帰したとする点は誤りである。",
+        "evidence": "1890年時点での県内の製糸・紡績業における動力付工場の割合は約15%でしたが、1905年には約65%へと急増しました。",
+        "misconception": "戦争＝産業の停滞や手工業への回帰を招くという誤った因果関係の思い込み。",
+        "marks": 2,
+        "id": "rise-social-9073dd65f3f7a9c1",
+        "fingerprint": "79729872439188bc",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-10T12:13:57.060Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "愛知県の産業構造や近年の動向について述べた文として最も適切なものを次の中から選びなさい。",
+        "context": "愛知県は、自動車産業を中心とする機械工業が非常に盛んであり、製造品出荷額等は長年全国第1位を誇っています。近年の統計や産業構造の傾向を分析すると、県内総生産における第2次産業の割合が全国平均と比較して高い一方で、国際的な部品供給網や為替変動、さらには脱炭素化に向けた環境規制などの外的要因の影響を受けやすいという課題も抱えています。そのため、県や各自治体は、新たな成長産業の育成や中小企業のデジタル化支援など、産業の多角化に向けた取り組みを強化しています。",
+        "choices": [
+          "製造品出荷額等の全国順位は低いが、観光業と情報通信業のみで経済が成り立っている。",
+          "脱炭素化に向けた環境規制の影響を受けないため、既存の生産体制を一切変更せず維持している。",
+          "機械工業が盛んで製造品出荷額等が全国上位であるが、外的要因への対応や産業の多角化が課題となっている。",
+          "第1次産業が県内総生産の大部分を占めており、農業と漁業の特化地域として発展している。"
+        ],
+        "answerIndex": 2,
+        "answer": "機械工業が盛んで製造品出荷額等が全国上位であるが、外的要因への対応や産業の多角化が課題となっている。",
+        "explanation": "愛知県は機械工業が盛んで製造品出荷額等が全国第1位である一方、国際情勢や環境規制などの外的要因の影響を受けやすいため、産業の多角化などの課題に取り組んでいる。第1次産業中心である点や規制の影響を受けないとする点は文脈に反する。",
+        "evidence": "県内総生産における第2次産業の割合が全国平均と比較して高い一方で、国際的な部品供給網や為替変動、さらには脱炭素化に向けた環境規制などの外的要因の影響を受けやすいという課題も抱えています。",
+        "misconception": "製造品出荷額等が全国1位であることから、あらゆる経済的リスクや課題が存在しない完璧な構造であると誤認すること。",
+        "marks": 2,
+        "id": "rise-social-f0ad92b1e7dfec95",
+        "fingerprint": "5b1678dabc986f74",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-10T12:13:57.060Z"
         }
       }
     ]
