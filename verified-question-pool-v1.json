@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-09-12-57-19Z",
-  "updatedAt": "2026-09-09T12:57:19.258Z",
+  "poolVersion": "2026-09-10-11-13-59Z",
+  "updatedAt": "2026-09-10T11:13:59.349Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -605,6 +605,40 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-09T11:17:14.773Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.function",
+        "difficulty": 8,
+        "question": "放物線 y = 1/2 x^2 と直線 y = x + 4 が2点 A, B で交わっている。原点 O と点 A, B を結んでできる三角形 OAB の面積を求めよ。",
+        "context": "放物線 y = 1/2 x^2 と直線 y = x + 4 が2点 A, B で交わっている。原点 O と点 A, B を結んでできる三角形 OAB の面積を求める。",
+        "choices": [
+          "16",
+          "12",
+          "8",
+          "10"
+        ],
+        "answerIndex": 1,
+        "answer": "12",
+        "explanation": "交点 A, B の座標を求めるために方程式 1/2 x^2 = x + 4 を解く。両辺を2倍して x^2 - 2x - 8 = 0 となり、因数分解すると (x - 4)(x + 2) = 0 より x = -2, 4 である。直線の方程式に代入すると、x = -2 のとき y = 2 (-2, 2)、x = 4 のとき y = 8 (4, 8) となる。したがって A(-2, 2), B(4, 8) である。直線 y = x + 4 の切片（y軸との交点）を点 C とすると、C(0, 4) である。三角形 OAB の面積は、直線 AB と y 軸の交点 C を利用して 2つの三角形 (OCA と OCB) に分けて求めることができる。三角形 OCA の面積は 1/2 × 4 × 2 = 4、三角形 OCB の面積は 1/2 × 4 × 4 = 8 となる。よって、三角形 OAB の面積は 4 + 8 = 12 である。",
+        "evidence": "放物線 y = 1/2 x^2 と直線 y = x + 4 が2点 A, B で交わっている。",
+        "misconception": "交点の座標を求めるときに二次方程式の符号を間違えたり、三角形を分割せずに底辺と高さを複雑に計算して計算ミスをすること。",
+        "marks": 2,
+        "id": "rise-math-fd5c792d77c2b7a1",
+        "fingerprint": "32cf534c7c071dfe",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-10T11:13:38.770Z"
         }
       }
     ],
