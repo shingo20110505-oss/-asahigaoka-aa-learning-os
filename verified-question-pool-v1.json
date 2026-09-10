@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-10-12-23-28Z",
-  "updatedAt": "2026-09-10T12:23:28.092Z",
+  "poolVersion": "2026-09-10-12-54-22Z",
+  "updatedAt": "2026-09-10T12:54:22.899Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1244,6 +1244,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-09T12:57:19.222Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "筆者が「現代の風景には情報の過剰と希薄が同居している」と述べている真意として最も適切なものを、次の四つの中から一つ選びなさい。",
+        "context": "私たちの身の回りには、看板、スマートフォン、案内表示など、膨大な文字や映像があふれ返っている。私たちは日夜、数え切れないほどの情報を受信し続けているが、その一つひとつに対する思索の時間はほとんど確保されていない。情報は洪水のように押し寄せ、瞬間的に消費されては消えていく。つまり、現代の風景には情報の過剰と希薄が同居しているのである。私たちは視覚的な刺激の多さに圧倒されている一方で、その内容を深く味わったり、自分自身の内面へと沈殿させたりする体験からは極めて遠ざかっている。情報量が増大した結果として、かえって言葉や事象の本質的な意味が軽視され、記憶に残らない表層的なコミュニケーションばかりが横行するようになったのだ。",
+        "choices": [
+          "デジタル機器の普及によって、個人のプライバシーが完全に失われ、社会全体の情報管理が過剰になっていること。",
+          "過去の歴史的な遺産が失われ、現代の都市景観そのものが単調で退屈なものに変化してしまっていること。",
+          "視覚的な情報が溢れている一方で、人々がそれらの情報を深く味わうことなく表層的に消費してしまっていること。",
+          "情報の量が増えたことで、かえって人々が新しい技術を使いこなせず、コミュニケーションが完全に断絶していること。"
+        ],
+        "answerIndex": 2,
+        "answer": "視覚的な情報が溢れている一方で、人々がそれらの情報を深く味わうことなく表層的に消費してしまっていること。",
+        "explanation": "文脈の中で「情報の過剰と希薄が同居している」という表現の直後に、「私たちは視覚的な刺激の多さに圧倒されている一方で、その内容を深く味わったり、自分自身の内面へと沈殿させたりする体験からは極めて遠ざかっている」と説明されています。したがって、情報量が多い（過剰）ことと、内容が深く味わわれない（希薄）ことが対比されています。もっとも強力な不正解は、コミュニケーションの完全な断絶やプライバシーなど本文に書かれていない過大な情報を持ち込む選択肢です。",
+        "evidence": "私たちは視覚的な刺激の多さに圧倒されている一方で、その内容を深く味わったり、自分自身の内面へと沈殿させたりする体験からは極めて遠ざかっている。",
+        "misconception": "過剰と希薄という言葉を、情報の過不足ではなく人間関係や技術の普及度合いに関する問題へと拡大解釈してしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-e7c833756af4f679",
+        "fingerprint": "3efe15e683ebb6c4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-10T12:54:22.879Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "次の文章で筆者が主張する、私たちが言葉を学ぶ本来の意義について最も適切なものを、次の四つの中から一つ選びなさい。",
+        "context": "言語は単なる意思疎通の道具に留まらない。私たちは言葉を獲得することによって初めて、自分の感情の輪郭を捉え、世界の複雑な構造を認識することができる。もし私たちが画一的な決まり文句や効率的な短縮語だけに依存するならば、自分自身の固有の痛みや喜びさえも正確に表現する術を失ってしまうだろう。言葉を磨くとは、他者と円滑に連絡を取り合うためだけではなく、他者との差異を引き受けつつ、自分だけの思考の奥行きを切り拓くための不可欠な営みなのだ。",
+        "choices": [
+          "他者とのスムーズな連絡にとどまらず、自分自身の思考の奥行きを切り拓き、感情の輪郭を捉えるためにあること。",
+          "社会全体で共通の価値観を共有し、無用な対立や摩擦を避けるための画一的なルールとして機能させること。",
+          "効率的な短縮語を駆使して、現代のスピード社会に合わせた迅速な意思疎通を完璧にやり遂げること。",
+          "過去の文学作品に記された教訓を正確に読み取り、それを現代の生活習慣にそのまま当てはめること。"
+        ],
+        "answerIndex": 0,
+        "answer": "他者とのスムーズな連絡にとどまらず、自分自身の思考の奥行きを切り拓き、感情の輪郭を捉えるためにあること。",
+        "explanation": "筆者は「言葉を磨くとは、他者と円滑に連絡を取り合うためだけではなく、他者との差異を引き受けつつ、自分だけの思考の奥行きを切り拓くための不可欠な営みなのだ」と述べており、自己の思考を深め感情の輪郭を捉える意義を強調しています。効率化や摩擦の回避を目的とする選択肢は、筆者の主張とは逆の方向を向いているか、あるいは部分的な側面を過大視したものです。",
+        "evidence": "言葉を磨くとは、他者と円滑に連絡を取り合うためだけではなく、他者との差異を引き受けつつ、自分だけの思考の奥行きを切り拓くための不可欠な営みなのだ。",
+        "misconception": "効率性や円滑な連絡という利便性こそが言語の本質であるという、現代の風潮に基づいた俗流の思い込み。",
+        "marks": 2,
+        "id": "rise-japanese-ae93673c7cfe9d70",
+        "fingerprint": "10fd2c03e59e7c79",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-10T12:54:22.879Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "次の文章で述べられている「伝統」に対する筆者の見解として最も適切なものを、次の四つの中から一つ選びなさい。",
+        "context": "伝統とは、過去から無批判に受け継がれた古い教義や形式をそのまま凍結し、現代の生活を縛り付けるものではない。むしろ、それは絶え間なく変化する現在という文脈の中で、過去の先人たちが何を恐れ、何を希求したのかを今の言葉で問い直す動的な営みである。形式だけを厳格に保存しても、そこに現代的な解釈や問いかけが失われていれば、それは生きた文化ではなく、ただの骨董品にすぎない。",
+        "choices": [
+          "時代の変化にかかわらず、先人たちの残した教えを一切の改変なく厳格に守り抜くことで初めて価値が生まれること。",
+          "現代社会において無用の長物となった過去の遺産は速やかに捨てるべきであり、伝統にこだわる必要性はないこと。",
+          "個人の自由な解釈に委ねられるべきものではなく、国家や社会の秩序を維持するための不変のルールであること。",
+          "過去の形式をそのまま固定化するのではなく、現代的な問い直しを通じて絶えず新しく解釈し続ける動的なものであること。"
+        ],
+        "answerIndex": 3,
+        "answer": "過去の形式をそのまま固定化するのではなく、現代的な問い直しを通じて絶えず新しく解釈し続ける動的なものであること。",
+        "explanation": "文中で筆者は伝統を「現在の文脈の中で、過去の先人たちが何を恐れ、何を希求したのかを今の言葉で問い直す動的な営みである」と定義しています。形式だけの保存を批判し、動的な解釈を重視しているため、変化を受け付けない厳格な保存を主張する選択肢などは不適切です。",
+        "evidence": "それは絶え間なく変化する現在という文脈の中で、過去の先人たちが何を恐れ、何を希求したのかを今の言葉で問い直す動的な営みである。",
+        "misconception": "伝統とは変わらないものを頑なに守るべきだという固定観念に基づく誤り。",
+        "marks": 2,
+        "id": "rise-japanese-aec5c5de7a3d7412",
+        "fingerprint": "e2804516579ea9e8",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-10T12:54:22.879Z"
         }
       }
     ],
