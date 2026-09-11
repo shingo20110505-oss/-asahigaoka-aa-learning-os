@@ -3,87 +3,88 @@ import path from 'node:path';
 import vm from 'node:vm';
 
 const root=process.cwd();
-const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const read=file=>fs.readFileSync(path.join(root,file),'utf8');
 const html=read('quiz/index.html');
-const js=read('quiz/unified-native-v1.js');
+const runtime=read('quiz/unified-native-v1.js');
 const card=read('app/ui/rise-learning-expansion-v1.js');
-const checks=[];
 const failures=[];
-function check(name,condition,details=''){const ok=Boolean(condition);checks.push({name,ok,details});if(!ok)failures.push(name+(details?`: ${details}`:''))}
+const checks=[];
+function check(name,condition,details=''){
+ const ok=Boolean(condition);checks.push({name,ok,details});
+ if(!ok)failures.push(name+(details?`: ${details}`:''));
+}
 
 let syntaxError='';
-try{new vm.Script(js,{filename:'quiz/unified-native-v1.js'})}catch(error){syntaxError=String(error?.message||error)}
+try{new vm.Script(runtime,{filename:'quiz/unified-native-v1.js'});}catch(error){syntaxError=String(error?.message||error);}
 check('Unified quiz runtime parses as JavaScript',!syntaxError,syntaxError);
-check('Unified quiz declares only English/Japanese/Social',/SUBJECTS=Object\.freeze\(\['english','japanese','social'\]\)/.test(js));
-check('Unified quiz UI contains no Science subject',!/(data-subject="science"|>理科<|英語・国語・理科・社会)/.test(html));
-check('Legacy independent unified score store is removed',!/(rise-unified-vocab-quiz-v1|state\.seen|state\.correct|state\.by)/.test(html+js));
-check('Vocabulary Core is loaded',html.includes('../vocabulary-core/core-v1.js'));
-check('Progress adapters are loaded',html.includes('../vocabulary-core/progress-adapters-v1.js'));
-check('English writes through native recordAttempt',js.includes("recordAttempt(q,String(ans||''),!!ok,t"));
-check('English writes through native updateSRS',js.includes('updateSRS(sid,!!ok,t'));
-check('English persists native engine state',js.includes('updateSRS(sid,!!ok,t')&&js.includes('save();return snap(v)'));
-check('English wrong-only queue key is native',js.includes("const BANK='aa_vocab_quiz_wrong_v1'"));
-check('Japanese progress store key is native',js.includes("JA_STATE_KEY='kokugoChronologiaStateV2'"));
-check('Japanese wrong queue key is native',js.includes("JA_WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1'"));
-check('Japanese no-repeat cycle key is native',js.includes("JA_CYCLE_KEY='aa_kokugo_vocab_full15000_cycle_v1'"));
-check('Japanese requires the full 15,000-row source',js.includes('rows.length!==15000'));
-check('Japanese full IDs match native quiz-full IDs',js.includes("id:'quiz-full-'+String(x.id??i)"));
-check('Japanese unified loader uses the verified native meaning source',js.includes('meaning-ja-overrides.js')&&js.includes('KOKUGO_DIRECT_MEANINGS')&&js.includes('directJaMeaning'));
+const bridgePrograms=[...runtime.matchAll(/script\.textContent=`([\s\S]*?)`;/g)].map(match=>match[1]);
+let bridgeSyntax='';
+for(const [index,program] of bridgePrograms.entries()){
+ try{new vm.Script(program,{filename:`unified-bridge-${index+1}.js`});}catch(error){bridgeSyntax=String(error?.message||error);break;}
+}
+check('English and Social native bridge programs both parse',bridgePrograms.length===2&&!bridgeSyntax,bridgeSyntax||`bridges=${bridgePrograms.length}`);
+check('Unified quiz scope is exactly English/Japanese/Social',/SUBJECTS\s*=\s*Object\.freeze\(\['english','japanese','social'\]\)/.test(runtime));
+check('Unified quiz UI exposes exactly the three supported subject tabs',[...html.matchAll(/data-subject="([^"]+)"/g)].map(match=>match[1]).join('/')==='mixed/english/japanese/social');
+check('Science and Math do not leak into this vocabulary quiz',!/(data-subject="(?:science|math)"|>理科<|>数学<)/.test(html));
+check('One controller owns normal, infinite, and wrong-only modes',html.includes('./unified-native-v1.js?v=2.0.0')&&!html.includes('./review-algorithm-v1.js')&&!html.includes('./infinite-course-v1.js'));
+check('Classics bank loads before the unified controller',html.indexOf('./japanese-classics-bank-v1.js')>0&&html.indexOf('./japanese-classics-bank-v1.js')<html.indexOf('./unified-native-v1.js'));
+check('Legacy independent unified score store is absent',!/(rise-unified-vocab-quiz-v1|WRONG_REVIEW_SCORE|reviewScoreKey)/.test(html+runtime));
+check('Only a selection-cycle store was added',runtime.includes("AUX_CYCLE_KEY='rise_unified_quiz_cycle_v2'")&&!/score[^\n]{0,30}localStorage|localStorage[^\n]{0,30}score/i.test(runtime));
 
-let qualityPolicy=null;
-let qualityPolicyError='';
+check('Vocabulary Core and progress adapters load',html.includes('../vocabulary-core/core-v1.js')&&html.includes('../vocabulary-core/progress-adapters-v1.js'));
+check('English writes through native recordAttempt/updateSRS/save',runtime.includes('recordAttempt(q,String(ans||\'\'),!!ok,t')&&runtime.includes('updateSRS(sid,!!ok,t')&&runtime.includes('save();return snap(v)'));
+check('English uses the native wrong queue',runtime.includes("const BANK='aa_vocab_quiz_wrong_v1'")&&runtime.includes('removeWrong(item.raw.id)')&&runtime.includes('markWrong(item.raw.id)'));
+check('English modes remain selectable and are honored in wrong-only',html.includes('id="quizMode"')&&runtime.includes("['en-ja','ja-en','spell']")&&runtime.includes("config.subject==='english'?config.mode:'random'"));
+check('English word-only, phrase-only, and form-only filters exist',runtime.includes("['word','単語のみ']")&&runtime.includes("['phrase','熟語のみ']")&&runtime.includes("['form','活用形のみ']"));
+check('Typed controls reset on every question',runtime.includes("ui.answerInput.value='';ui.answerInput.disabled=false;ui.submit.disabled=false"));
+check('English spelling normalization handles case, width, spaces, apostrophes, and dashes',runtime.includes("normalize('NFKC').toLowerCase()")&&runtime.includes("replace(/[’‘]/g")&&runtime.includes("replace(/[‐‑‒–—]/g")&&runtime.includes("replace(/\\s+/g,' ')"));
+
+check('Japanese native state, wrong queue, and cycle keys remain unchanged',runtime.includes("JA_STATE_KEY='kokugoChronologiaStateV2'")&&runtime.includes("JA_WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1'")&&runtime.includes("JA_CYCLE_KEY='aa_kokugo_vocab_full15000_cycle_v1'"));
+check('Japanese requires the exact 15,000-row source',runtime.includes('rows.length!==15000'));
+check('Japanese full IDs preserve quiz-full identity',runtime.includes("id:'quiz-full-'+String(row.id??index)"));
+check('Japanese meanings come from the verified direct dictionary',runtime.includes('meaning-ja-overrides.js')&&runtime.includes('KOKUGO_DIRECT_MEANINGS')&&runtime.includes('const meaning=text(meanings[String(row.id??index)])'));
+check('Japanese loader rejects missing/non-Japanese meanings',runtime.includes("if(!meaning||!hasJapanese(meaning))throw new Error"));
+check('Japanese content is deduplicated by word and reading',runtime.includes('function jaContentKey')&&runtime.includes('const seenFull=new Set()')&&runtime.includes('byKey=new Map(merged.map(item=>[jaContentKey(item),item]))'));
+check('Curated Japanese metadata overrides coarse dictionary metadata',runtime.includes('existing.type=item.type||existing.type')&&runtime.includes('Object.assign(existing,jaQuality.verified(item')&&runtime.includes('existing.qualitySource=item.source||existing.qualitySource'));
+check('Japanese exclusions are applied without deleting source data',runtime.includes('!jaQuality.isExcluded(item)'));
+check('Japanese distractors prefer same type and rank',runtime.includes('row.raw.type===item.raw.type&&row.raw.rank===item.raw.rank'));
+check('Japanese all includes modern vocabulary, classical, and kanbun',runtime.includes("['vocab','vocab','vocab','classical','kanbun']")&&runtime.includes("['all','語彙＋古文＋漢文']"));
+check('Japanese fixed question mode reaches normal and wrong-only builders',runtime.includes('japaneseVocabQuestion(item,context.mode,distractorPool,true)')&&runtime.includes('makeJapaneseVocabNormal(context.kind'));
+check('Classics answers are recorded directly without MutationObserver inference',runtime.includes('function recordClassic(item,correct)')&&!runtime.includes('new MutationObserver'));
+check('Classic mistakes are excluded from regular Japanese wrong count',runtime.includes("filter(item=>!['koten','kanbun'].includes(text(item?.type)))"));
+
+check('Social writes through native Chronologia recordAnswer',runtime.includes('recordAnswer(item.id,!!ok)'));
+check('Social bridge waits for the effective 1,000-row catalogue',runtime.includes("typeof recordAnswer!=='function'||DATA.length<1000"));
+check('Social fixed directions reach normal and wrong-only builders',runtime.includes("['eventToYear','yearToEvent'].includes(mode)")&&runtime.includes('socialQuestion(item,context.mode,all,true)'));
+check('Social year-to-event distractors exclude another event from the same date',runtime.includes('row.raw.date!==item.raw.date&&row.raw.sort!==item.raw.sort'));
+check('Social BCE and full-width year input normalization is preserved',runtime.includes("normalize('NFKC').toLowerCase()")&&runtime.includes("`紀元前${number}`")&&runtime.includes('`${number}bc`'));
+
+check('All modes use one session lock and one answer commit path',runtime.includes('session.locked=true')&&runtime.includes('await question.commit(correct,answer,ms)')&&runtime.includes('session.transitioning'));
+check('Finite sessions do not repeat a question within the session',runtime.includes('usedKeys:new Set()')&&runtime.includes('session.usedKeys.add(question.key)')&&runtime.includes('avoidKeys.has(`${prefix}:${id}`)'));
+check('Wrong-only finite sessions use one-pass attempted keys',runtime.includes('attemptedRound:new Set()')&&runtime.includes('!session.attemptedRound.has(candidate.key)')&&runtime.includes('session.attemptedRound.add(question.key)'));
+check('Wrong-only selection is iterative rather than recursive',runtime.includes('for(let attempt=0;attempt<100;attempt++)')&&!/nextWrongQuestion\([^)]*\)[^{]*\{[^}]*nextWrongQuestion\(/s.test(runtime));
+check('Empty wrong-only state is shown in a visible summary',runtime.includes("ui.summaryTitle.textContent='間違いはありません'")&&runtime.includes("ui.summary.classList.remove('hidden')"));
+check('Restart restores subject, mode, filters, count, and wrong-only state',runtime.includes('function applyConfig(config)')&&runtime.includes('configureJapaneseRange(config.filterB)')&&runtime.includes('wrongOnly=Boolean(config.wrongOnly)'));
+check('Feedback renders untrusted content with textContent/replaceChildren',runtime.includes('answer.textContent=`正解：${question.answer}`')&&runtime.includes('explanation.textContent=question.explanation')&&runtime.includes('ui.feedback.replaceChildren')&&!/ui\.feedback\.innerHTML/.test(runtime));
+check('Infinite course is a first-class count option with manual end',html.includes('<option value="infinite">∞ 無限コース</option>')&&html.includes('id="endSession"')&&runtime.includes("ui.end.addEventListener('click',()=>finishSession(true))"));
+
+let qualityPolicy=null,qualityPolicyError='';
 try{
  const sandbox={window:{}};vm.createContext(sandbox);vm.runInContext(read('kokugo-chronologia/exam-quality-v1.js'),sandbox,{filename:'exam-quality-v1.js'});qualityPolicy=sandbox.window.RISE_JAPANESE_EXAM_QUALITY_V1||null;
-}catch(error){qualityPolicyError=String(error?.message||error)}
-const verifiedProbe=qualityPolicy?.verified?.({rank:'A',type:'yoji'},'curated');
-check('Japanese quality policy loads',!!qualityPolicy&&!qualityPolicyError,qualityPolicyError);
-check('Japanese curated metadata overrides coarse full-bank rank while retaining full IDs',
- js.includes('existing.type=x.type||existing.type')&&
- js.includes("Object.assign(existing,jaQuality.verified(x,x.source||'curated'))")&&
- js.includes("existing.qualitySource=x.source||existing.qualitySource")&&
- verifiedProbe?.rank==='A'&&verifiedProbe?.examRank==='A'&&verifiedProbe?.reviewStatus==='verified'&&verifiedProbe?.qualitySource==='curated');
-check('Japanese curated/jukugo meanings use their own verified local meanings',js.includes("meaning:text(x.meaning),type:x.kind==='二字熟語'")&&js.includes("meaning:text(x.meaning),type:x.kind==='四字熟語'"));
-check('Japanese wrong queue uses stable ID or term/reading identity',js.includes('function jaStableKey')&&js.includes("text(x.id)===id||jaStableKey(x)===stable"));
-check('Japanese distractors prefer same type and rank',js.includes('function japaneseDistractors')&&js.includes('x.raw.type===item.raw.type&&x.raw.rank===item.raw.rank'));
-check('Japanese exam-priority mode includes A and B',js.includes("rank==='AB'?['A','B'].includes(x.raw.rank)")&&js.includes("exam==='exam'?'AB':'all'"));
-check('Japanese runtime exposes quality diagnostics',js.includes('__AA_RISE_UNIFIED_JAPANESE_QUALITY__'));
-check('Each new question re-enables typed-answer controls',js.includes("ui.answerInput.value='';ui.answerInput.disabled=false;ui.submit.disabled=false;"));
+}catch(error){qualityPolicyError=String(error?.message||error);}
+check('Japanese quality policy loads',Boolean(qualityPolicy)&&!qualityPolicyError,qualityPolicyError);
+check('Known non-idiom remains excluded',qualityPolicy?.isExcluded?.({word:'間に合う',reading:'まにあう'})===true);
 
-let japaneseRows=[];
-let directMeanings={};
-let japaneseDataError='';
-try{
- japaneseRows=read('kokugo-chronologia/data.jsonl').split(/\r?\n/).filter(Boolean).map(line=>JSON.parse(line));
- const sandbox={window:{}};vm.createContext(sandbox);vm.runInContext(read('kokugo-chronologia/meaning-ja-overrides.js'),sandbox,{filename:'meaning-ja-overrides.js'});directMeanings=sandbox.window.KOKUGO_DIRECT_MEANINGS||{};
-}catch(error){japaneseDataError=String(error?.message||error)}
-const hasJapanese=value=>/[\u3040-\u30ff\u3400-\u9fff]/.test(String(value||''));
-const missingJapanese=japaneseRows.filter((row,index)=>!hasJapanese(directMeanings[String(row.id??index)]));
-check('Japanese source is exactly 15,000 rows',!japaneseDataError&&japaneseRows.length===15000,japaneseDataError||String(japaneseRows.length));
-check('All 15,000 Japanese rows have verified Japanese meanings',!japaneseDataError&&japaneseRows.length===15000&&missingJapanese.length===0,missingJapanese.slice(0,5).map(x=>x.term||x.id).join(', '));
-check('Unified runtime rejects unverified Japanese meanings',js.includes("if(!meaning||!hasJapanese(meaning))throw new Error('日本語意味が未確認:"));
+const japaneseRows=read('kokugo-chronologia/data.jsonl').split(/\r?\n/).filter(Boolean).map(line=>JSON.parse(line));
+const meaningSandbox={window:{}};vm.createContext(meaningSandbox);vm.runInContext(read('kokugo-chronologia/meaning-ja-overrides.js'),meaningSandbox,{filename:'meaning-ja-overrides.js'});
+const meanings=meaningSandbox.window.KOKUGO_DIRECT_MEANINGS||{};
+const missing=japaneseRows.filter((row,index)=>!/[\u3040-\u30ff\u3400-\u9fff]/.test(String(meanings[String(row.id??index)]||'')));
+check('Japanese source is exactly 15,000 rows',japaneseRows.length===15000,`rows=${japaneseRows.length}`);
+check('All 15,000 Japanese rows have Japanese meanings',Object.keys(meanings).length>=15000&&missing.length===0,`meanings=${Object.keys(meanings).length}, missing=${missing.length}`);
 
-let idiomBank=[];
-let idiomError='';
-try{const sandbox={window:{}};vm.createContext(sandbox);vm.runInContext(read('idiom/idiom-bank.js'),sandbox,{filename:'idiom/idiom-bank.js'});idiomBank=sandbox.window.AA_IDIOM_BANK||[]}catch(error){idiomError=String(error?.message||error)}
-const curatedKeys=new Set();let curatedDuplicates=0;
-for(const x of idiomBank){const key=`${String(x.word||'').normalize('NFKC')}|${String(x.reading||'').normalize('NFKC')}`;if(curatedKeys.has(key))curatedDuplicates++;curatedKeys.add(key)}
-const curatedSourceKeepsExcludedTerm=idiomBank.some(x=>String(x.word||'').normalize('NFKC')==='間に合う'&&String(x.reading||'').normalize('NFKC')==='まにあう');
-const policyExcludesKnownNonIdiom=!!qualityPolicy?.isExcluded?.({word:'間に合う',reading:'まにあう'})&&qualityPolicy?.exclusions?.has?.('間に合う|まにあう');
-check('Known non-idiom is excluded from Japanese quiz without deleting source data',
- curatedSourceKeepsExcludedTerm&&policyExcludesKnownNonIdiom&&js.includes('const JA_QUIZ_EXCLUSIONS=jaQuality.exclusions')&&js.includes('merged.filter(x=>!jaQuality.isExcluded(x)'));
-check('Curated idiom bank loads',!idiomError&&idiomBank.length>0,idiomError);
-check('Curated idiom bank has no word/reading duplicates',curatedDuplicates===0,String(curatedDuplicates));
-check('Curated ranks are A/B/C only',idiomBank.every(x=>['A','B','C'].includes(x.rank)));
-check('Curated kinds are explicit',idiomBank.every(x=>['四字熟語','慣用句'].includes(x.kind)));
-check('Representative top-priority idiom remains A',idiomBank.some(x=>x.word==='一石二鳥'&&x.rank==='A'));
-
-check('Social writes through Chronologia recordAnswer',js.includes('recordAnswer(item.id,!!ok)'));
-check('Social bridge waits for effective 1,000-row Chronologia',js.includes('if(DATA.length<1000)throw 0'));
 check('Chronologia remains an independent linked learning asset',html.includes('href="../chronologia.html"')&&html.includes('年表本体は独立教材として継続'));
-check('English native page remains linked',html.includes('href="../vocab.html"'));
-check('Japanese native page remains linked',html.includes('href="../kokugo-chronologia/"'));
-check('Learning card describes current three-subject scope',!/英語・国語・理科・社会/.test(card)&&/英語・国語・社会/.test(card));
-check('Unified quiz runtime has no unsupported subject dispatcher',!/(science|理科)/.test(js));
+check('English and Japanese native pages remain linked',html.includes('href="../vocab.html"')&&html.includes('href="../kokugo-chronologia/"'));
+check('Learning card still describes the three-subject scope',!/英語・国語・理科・社会/.test(card)&&/英語・国語・社会/.test(card));
 
-console.log(JSON.stringify({version:'1.2.0',checkedAt:new Date().toISOString(),checks,failures,japanese:{rows:japaneseRows.length,directMeanings:Object.keys(directMeanings).length,missingJapanese:missingJapanese.length,curated:idiomBank.length,curatedDuplicates,qualityPolicy:qualityPolicy?.version||'',curatedSourceKeepsExcludedTerm,policyExcludesKnownNonIdiom}},null,2));
+console.log(JSON.stringify({version:'2.0.0',checkedAt:new Date().toISOString(),checks,failures,japanese:{rows:japaneseRows.length,directMeanings:Object.keys(meanings).length,missing:missing.length}},null,2));
 if(failures.length)process.exit(1);

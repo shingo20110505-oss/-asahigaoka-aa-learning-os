@@ -34,7 +34,7 @@ check(core.includes("wrongStore: 'aa_kokugo_vocab_wrong_queue_v1'"),'Japanese wr
 check(core.includes("cycleStore: 'aa_kokugo_vocab_full15000_cycle_v1'"),'Japanese cycle store changed in core');
 
 check(unified.includes("...(window.AA_JUKUGO_ADVANCED||[])"),'Unified Japanese pool no longer consumes advanced/supplement bank');
-check(unified.includes('const seenFull=new Set()')&&unified.includes('const key=jaContentKey(raw)')&&unified.includes('byKey=new Map(merged.map(x=>[jaContentKey(x),x]))'),'Unified Japanese word|reading dedupe missing');
+check(unified.includes('const seenFull=new Set()')&&unified.includes('const key=jaContentKey(raw)')&&unified.includes('byKey=new Map(merged.map(item=>[jaContentKey(item),item]))'),'Unified Japanese word|reading dedupe missing');
 check(unified.includes("if(rows.length!==15000)"),'Unified Japanese 15k hard guard missing');
 
 const result={status:failures.length?'FAIL':'PASS',rawJapaneseRows:raw.length,failures};

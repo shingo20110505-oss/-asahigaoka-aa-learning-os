@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const VERSION='1.2.0';
+const VERSION='1.3.0';
 const study=document.getElementById('studyCard');
 const next=document.getElementById('nextQuestion');
 const index=document.getElementById('questionIndex');
@@ -42,9 +42,8 @@ function scrollAfterQuestionChanges(before){
  requestAnimationFrame(check);
 }
 
-// The quiz has three next-question owners (normal, infinite/classics, wrong
-// review). Listen above all of them and only handle viewport movement here;
-// scoring/history/navigation stay owned by their existing runtimes.
+// Question/scoring/history navigation has one owner. This listener only
+// restores the viewport after that controller advances the visible question.
 document.addEventListener('click',event=>{
  const target=event.target instanceof Element?event.target.closest('#nextQuestion'):null;
  if(!target||target.classList.contains('hidden')||target.disabled)return;

@@ -9,6 +9,7 @@ on:
       - 'scripts/audit-vocabulary-normalization.mjs'
       - 'scripts/audit-vocabulary-progress-adapters.mjs'
       - 'scripts/audit-unified-vocabulary-quiz.mjs'
+      - 'scripts/test-unified-quiz-controller.mjs'
       - 'scripts/audit-kokugo-taxonomy-v1.mjs'
       - 'scripts/report-vocabulary-data-quality.mjs'
       - 'vocab.html'
@@ -31,6 +32,7 @@ on:
       - 'scripts/audit-vocabulary-normalization.mjs'
       - 'scripts/audit-vocabulary-progress-adapters.mjs'
       - 'scripts/audit-unified-vocabulary-quiz.mjs'
+      - 'scripts/test-unified-quiz-controller.mjs'
       - 'scripts/audit-kokugo-taxonomy-v1.mjs'
       - 'scripts/report-vocabulary-data-quality.mjs'
       - 'vocab.html'
@@ -77,3 +79,5 @@ jobs:
         run: node scripts/audit-vocabulary-progress-adapters.mjs
       - name: Audit unified native vocabulary quiz
         run: node scripts/audit-unified-vocabulary-quiz.mjs
+      - name: Test unified quiz controller behavior
+        run: node scripts/test-unified-quiz-controller.mjs

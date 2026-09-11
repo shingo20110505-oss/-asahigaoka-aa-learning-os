@@ -1,49 +1,77 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
-const root=process.cwd(),read=p=>fs.readFileSync(path.join(root,p),'utf8');
-const html=read('quiz/index.html'),native=read('quiz/unified-native-v1.js'),engine=read('quiz/infinite-course-v1.js'),review=read('quiz/review-algorithm-v1.js'),bankCode=read('quiz/japanese-classics-bank-v1.js'),normalizerCode=read('kokugo-chronologia/koten-kanbun-normalization-v1.js'),vocabPage=read('classics-vocab/index.html'),vocabApp=read('classics-vocab/app.js'),sw=read('sw.js');
-const failures=[],checks=[];const check=(name,ok,detail='')=>{checks.push({name,ok:!!ok,detail});if(!ok)failures.push(name+(detail?`: ${detail}`:''))};
-for(const [file,code] of [['infinite-course-v1.js',engine],['review-algorithm-v1.js',review],['japanese-classics-bank-v1.js',bankCode],['koten-kanbun-normalization-v1.js',normalizerCode],['classics-vocab/app.js',vocabApp]]){let err='';try{new vm.Script(code,{filename:file})}catch(e){err=String(e?.message||e)}check(`${file} parses`,!err,err)}
-const sandbox={window:{},Object,console,setInterval:()=>0,clearInterval:()=>{}};vm.createContext(sandbox);for(let i=1;i<=5;i++)vm.runInContext(read(`kokugo-chronologia/koten-kanbun-bank-${i}.js`),sandbox,{filename:`koten-kanbun-bank-${i}.js`});vm.runInContext(normalizerCode,sandbox,{filename:'koten-kanbun-normalization-v1.js'});vm.runInContext(bankCode,sandbox,{filename:'japanese-classics-bank-v1.js'});const bank=sandbox.window.RISE_JAPANESE_CLASSICS_BANK_V1||{};
+
+const root=process.cwd(),read=file=>fs.readFileSync(path.join(root,file),'utf8');
+const html=read('quiz/index.html');
+const runtime=read('quiz/unified-native-v1.js');
+const bankCode=read('quiz/japanese-classics-bank-v1.js');
+const normalizerCode=read('kokugo-chronologia/koten-kanbun-normalization-v1.js');
+const vocabPage=read('classics-vocab/index.html');
+const vocabApp=read('classics-vocab/app.js');
+const sw=read('sw.js');
+const failures=[],checks=[];
+const check=(name,condition,detail='')=>{const ok=Boolean(condition);checks.push({name,ok,detail});if(!ok)failures.push(name+(detail?`: ${detail}`:''));};
+
+for(const [file,code] of [['unified-native-v1.js',runtime],['japanese-classics-bank-v1.js',bankCode],['koten-kanbun-normalization-v1.js',normalizerCode],['classics-vocab/app.js',vocabApp]]){
+ let error='';try{new vm.Script(code,{filename:file});}catch(caught){error=String(caught?.message||caught);}
+ check(`${file} parses`,!error,error);
+}
+
+const sandbox={window:{},Object,console,setInterval:()=>0,clearInterval:()=>{}};vm.createContext(sandbox);
+for(let index=1;index<=5;index++)vm.runInContext(read(`kokugo-chronologia/koten-kanbun-bank-${index}.js`),sandbox,{filename:`koten-kanbun-bank-${index}.js`});
+vm.runInContext(normalizerCode,sandbox,{filename:'koten-kanbun-normalization-v1.js'});
+vm.runInContext(bankCode,sandbox,{filename:'japanese-classics-bank-v1.js'});
+const bank=sandbox.window.RISE_JAPANESE_CLASSICS_BANK_V1||{};
+
 check('Classical bank exposes 700 unique words',(bank.classical?.length||0)===700,String(bank.classical?.length||0));
 check('Kanbun bank exposes 300 unique expressions',(bank.kanbun?.length||0)===300,String(bank.kanbun?.length||0));
-check('Classics adapter consumes all 1,700 learning cards',bank.sourceTotal===1700&&bank.total===1000,`${bank.sourceTotal}/${bank.total}`);
-const all=[...(bank.classical||[]),...(bank.kanbun||[])],ids=all.map(x=>x.id),unique=new Set(ids);
-check('Classics IDs are unique',unique.size===ids.length,`${unique.size}/${ids.length}`);
-check('Every classics word can build four unique meaning choices',all.every(x=>{const q=bank.makeQuestion?.(x,'meaning',x.kind==='classical'?bank.classical:bank.kanbun);return Array.isArray(q?.choices)&&q.choices.length===4&&new Set(q.choices).size===4&&q.choices.includes(q.answer)}));
-check('Quiz page loads all five classics sources before the adapter',[1,2,3,4,5].every(i=>html.includes(`koten-kanbun-bank-${i}.js`))&&html.indexOf('koten-kanbun-bank-5.js')<html.indexOf('./japanese-classics-bank-v1.js'));
-check('Quiz page loads review algorithm before infinite engine',html.indexOf('./review-algorithm-v1.js')>0&&html.indexOf('./review-algorithm-v1.js')<html.indexOf('./infinite-course-v1.js'));
-check('Infinite option is installed',engine.includes("o.value='infinite'")&&engine.includes('∞ 無限コース'));
-check('Infinite course can be ended manually',engine.includes('endInfiniteCourse')&&engine.includes('無限コースを終了'));
-check('Japanese UI exposes classical and kanbun filters',engine.includes("add('classical','古文')")&&engine.includes("add('kanbun','漢文')"));
-check('Native Japanese controls preserve classical and kanbun after data reload',native.includes("['classical','古文'],['kanbun','漢文']")&&native.includes('configureJapaneseRange(previous.filterB)')&&native.includes("if(subject==='japanese')configureJapaneseRange()"));
-check('Infinite Japanese all mixes vocabulary/classical/kanbun',engine.includes("if(r<.2)return classicQuestion('classical')")&&engine.includes("if(r<.4)return classicQuestion('kanbun')"));
-check('Classics uses a persistent no-repeat cycle',engine.includes("CLASSIC_CYCLE_KEY='rise_kokugo_classics_cycle_v1'")&&engine.includes('state[key]=rem')&&engine.includes('rem.shift()'));
-check('Classics questions use the 1,000-word adapter',engine.includes('BANK.makeQuestion(item,ui.mode.value,pool)')&&review.includes("BANK.makeQuestion(item,'random',pool)"));
-check('Classics level filters are available in quiz and word list',engine.includes("['S','S 最優先']")&&engine.includes("['B','B 発展']")&&vocabPage.includes('id="level"')&&vocabApp.includes("level==='all'||x.level===level"));
-check('Standalone word list exposes unresolved wrong-only mode and shared native progress',vocabPage.includes('間違えた単語だけ')&&vocabApp.includes("STATE_KEY='kokugoChronologiaStateV2'")&&vocabApp.includes("PROGRESS_KEY='rise_kokugo_classics_progress_v1'")&&vocabApp.includes('wrong.has(x.id)'));
-check('Quiz links to standalone classics word list',html.includes('href="../classics-vocab/"')&&html.includes('古文・漢文 単語帳'));
-check('Three-subject infinite uses English/Japanese/Social',engine.includes("let order=['english','japanese','social']"));
-check('Existing native-history writes remain intact',engine.includes("api.record(item.id,ok,ms,'infinite-'")&&engine.includes("JA_WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1'")&&engine.includes('api.record(item.id,ok)'));
-check('Review label explicitly means all-subject wrong-only',review.includes("'全教科の間違いだけ'"));
-check('English review uses native wrong bank and recovery removal',review.includes('wrongBank()')&&review.includes('api.removeWrong?.(item.id)')&&review.includes('api.markWrong?.(item.id)'));
-check('English wrong-review mode is visibly identified',review.includes("'英→日・間違い'")&&review.includes("'日→英・間違い'")&&review.includes("'スペル・間違い'"));
-check('Japanese review uses native wrong queue',review.includes("JA_WRONG_KEY='aa_kokugo_vocab_wrong_queue_v1'")&&review.includes('updateJapaneseWrong'));
-check('Japanese review requires exact 15,000 source rows',review.includes('rows.length!==15000'));
-check('Japanese review overlays verified metadata onto stable full-bank IDs',review.includes('existing.type=x.type||existing.type')&&review.includes('Object.assign(existing,jaQuality.verified')&&review.includes('existing.qualitySource=x.source||existing.qualitySource'));
-check('Japanese review keeps curated meanings independent of unrelated full-bank IDs',review.includes("meaning:text(x.meaning),type:x.kind==='二字熟語'")&&review.includes("meaning:text(x.meaning),type:x.kind==='四字熟語'"));
-check('Japanese review excludes known non-idiom through shared policy',review.includes('JA_QUIZ_EXCLUSIONS=jaQuality.exclusions')&&review.includes('!jaQuality.isExcluded(x)'));
-check('Japanese review preserves old wrong-history identity after metadata correction',review.includes('function jaStableKey')&&review.includes("text(x.id)===id||jaStableKey(x)===stable"));
-check('Japanese review distractors prefer same type and rank',review.includes('function japaneseDistractors')&&review.includes('x.type===item.type&&x.rank===item.rank'));
-check('Classical and kanbun review use currentWrong recovery state',review.includes('currentWrong=true')&&review.includes('currentWrong=false')&&review.includes("classicCandidates('classical')")&&review.includes("classicCandidates('kanbun')"));
-check('Normal classics answers feed currentWrong automatically',review.includes('new MutationObserver')&&review.includes("['古文','漢文'].includes(mode)"));
-check('Social wrong-only means native stage zero after an error',review.includes("Number(x.progress?.stage||0)===0"));
-check('Review priority uses mistakes, due state, and recency',review.includes('recentBoost')&&review.includes('(p.lapses||0)*12')&&review.includes('(p.due?20:0)')&&review.includes('(p.wrong||0)*10'));
-check('Review interleaves sources after repeated same-source questions',review.includes("recent.at(-1)===recent.at(-2)")&&review.includes('x.source!==recent.at(-1)'));
-check('Mixed review includes English, Japanese vocab, classical, kanbun, social',review.includes('englishCandidates()')&&review.includes("japaneseCandidates('all')")&&review.includes("classicCandidates('classical')")&&review.includes("classicCandidates('kanbun')")&&review.includes('socialCandidates()'));
-check('Review candidate set is recalculated after every answer',review.includes('const candidates=await collectCandidates(review.config)'));
-check('No aggregate unified review score is persisted',!/(rise[_-]unified[_-].*score|WRONG_REVIEW_SCORE|reviewScoreKey)/i.test(review));
-check('PWA precaches classics/review/infinite and standalone vocabulary assets',sw.includes("url('quiz/japanese-classics-bank-v1.js')")&&sw.includes("url('quiz/review-algorithm-v1.js')")&&sw.includes("url('quiz/infinite-course-v1.js')")&&sw.includes("url('classics-vocab/app.js')")&&sw.includes("url('kokugo-chronologia/koten-kanbun-bank-5.js')"));
-console.log(JSON.stringify({version:'2.0.0',checks,failures,bank:{sourceTotal:bank.sourceTotal||0,classical:bank.classical?.length||0,kanbun:bank.kanbun?.length||0,total:all.length}},null,2));
+check('Classics adapter consumes all 1,700 source cards',bank.sourceTotal===1700&&bank.total===1000,`${bank.sourceTotal}/${bank.total}`);
+const all=[...(bank.classical||[]),...(bank.kanbun||[])];
+check('Classics IDs are unique',new Set(all.map(item=>item.id)).size===all.length,`${new Set(all.map(item=>item.id)).size}/${all.length}`);
+for(const mode of ['meaning','reading','word']){
+ check(`Every classics item can build four unique ${mode} choices`,all.every(item=>{const pool=item.kind==='classical'?bank.classical:bank.kanbun;const question=bank.makeQuestion?.(item,mode,pool);return Array.isArray(question?.choices)&&question.choices.length===4&&new Set(question.choices).size===4&&question.choices.includes(question.answer);}));
+}
+
+check('All five classics sources load before normalization and adapter',[1,2,3,4,5].every(index=>html.includes(`koten-kanbun-bank-${index}.js`))&&html.indexOf('koten-kanbun-bank-5.js')<html.indexOf('koten-kanbun-normalization-v1.js')&&html.indexOf('koten-kanbun-normalization-v1.js')<html.indexOf('./japanese-classics-bank-v1.js'));
+check('Unified runtime loads after the classics adapter',html.indexOf('./japanese-classics-bank-v1.js')<html.indexOf('./unified-native-v1.js'));
+check('Legacy competing infinite and review controllers are not loaded',!html.includes('./review-algorithm-v1.js')&&!html.includes('./infinite-course-v1.js'));
+check('Infinite option is present in stable HTML',html.includes('<option value="infinite">∞ 無限コース</option>'));
+check('Infinite course can be ended manually',html.includes('id="endSession"')&&runtime.includes("ui.end.addEventListener('click',()=>finishSession(true))"));
+check('One runtime publishes normal, infinite, and wrong-review diagnostics',runtime.includes("dataset.riseInfiniteCourse=VERSION")&&runtime.includes("dataset.riseWrongReview=VERSION")&&runtime.includes('RISE_UNIFIED_QUIZ_V2'));
+
+check('Japanese UI exposes all, modern vocabulary, classical, and kanbun filters',runtime.includes("['all','語彙＋古文＋漢文']")&&runtime.includes("['vocab','現代語彙のみ']")&&runtime.includes("['classical','古文']")&&runtime.includes("['kanbun','漢文']"));
+check('Japanese all interleaves modern vocabulary/classical/kanbun',runtime.includes("shuffle(['vocab','vocab','vocab','classical','kanbun'])"));
+check('Classics uses its persistent no-repeat cycle',runtime.includes("CLASSIC_CYCLE_KEY='rise_kokugo_classics_cycle_v1'")&&runtime.includes('cyclePick(CLASSIC_CYCLE_KEY'));
+check('Modern Japanese keeps its native persistent no-repeat cycle',runtime.includes("JA_CYCLE_KEY='aa_kokugo_vocab_full15000_cycle_v1'")&&runtime.includes('cyclePick(JA_CYCLE_KEY'));
+check('English and Social gain selection-only persistent cycles',runtime.includes("AUX_CYCLE_KEY='rise_unified_quiz_cycle_v2'")&&runtime.includes('cyclePick(AUX_CYCLE_KEY'));
+check('Session-level keys prevent repeats across overlapping cycle buckets',runtime.includes('usedKeys:new Set()')&&runtime.includes('session.usedKeys.add(question.key)'));
+check('Normal infinite mode starts a new no-repeat cycle after exhaustion',runtime.includes('function tryNextNormalQuestion()')&&runtime.includes("session.usedKeys=new Set(previous?[previous]:[])")&&runtime.includes('cycleAttempt<2'));
+
+check('Classics questions use the normalized 1,000-item adapter',runtime.includes('classics.makeQuestion(item,mode,pool)'));
+check('All three classic directions reach normal and wrong-only',runtime.includes("['meaning','reading','word'].includes(mode)")&&runtime.includes('classicQuestion(item,area,context.mode,pool,true)'));
+check('Classics level filters exist in quiz and standalone list',runtime.includes("['S','S 最優先']")&&runtime.includes("['B','B 発展']")&&vocabPage.includes('id="level"')&&vocabApp.includes("level==='all'||x.level===level"));
+check('Standalone list exposes unresolved wrong-only and shared progress',vocabPage.includes('間違えた単語だけ')&&vocabApp.includes("STATE_KEY='kokugoChronologiaStateV2'")&&vocabApp.includes("PROGRESS_KEY='rise_kokugo_classics_progress_v1'")&&vocabApp.includes('wrong.has(x.id)'));
+check('Quiz links to the standalone classics list',html.includes('href="../classics-vocab/"'));
+
+check('Three-subject infinite queue uses English/Japanese/Social',runtime.includes("const order=['english','japanese','social']"));
+check('Existing native-history writes remain intact',runtime.includes('recordAttempt(q,String(ans||\'\'),!!ok,t')&&runtime.includes('updateJapaneseWrong(item,correct,true)')&&runtime.includes('recordAnswer(item.id,!!ok)'));
+check('Wrong-only label explicitly covers all three subjects',html.includes('全教科の間違いだけ'));
+check('English wrong review removes recovered items',runtime.includes('else if(isWrongReview)englishApi.removeWrong(item.raw.id)'));
+check('Japanese wrong review removes by stable ID or term/reading',runtime.includes('function sameJaWrong(left,right)')&&runtime.includes('if(correct&&canRecover)'));
+check('Classic currentWrong is updated directly on every answer',runtime.includes('progress.currentWrong=false')&&runtime.includes('progress.currentWrong=true')&&!runtime.includes('new MutationObserver'));
+check('Classic entries are not double-counted as regular Japanese errors',runtime.includes("filter(item=>!['koten','kanbun'].includes(text(item?.type)))"));
+check('Social wrong-only means last native answer is wrong (stage zero)',runtime.includes('(Number(progress.wrong)||0)>0&&Number(progress.stage||0)===0'));
+check('Review priority includes errors, due state, and recency',runtime.includes('recentBoost')&&runtime.includes('(progress.lapses||0)*12')&&runtime.includes('(Number(progress.wrong)||0)*10')&&runtime.includes('progress.nextReview'));
+check('Review suppresses immediate source repetition',runtime.includes('recentSources.length>=2')&&runtime.includes('candidate.source!==recentSources[recentSources.length-1]'));
+check('Infinite review avoids a same-question repeat at cycle boundaries',runtime.includes('withoutImmediateRepeat')&&runtime.includes('candidate.key!==previous'));
+check('Mixed review gathers every source',runtime.includes('englishWrongCandidates(config)')&&runtime.includes('japaneseWrongCandidates(config)')&&runtime.includes('socialWrongCandidates(config)'));
+check('Candidate set is recalculated for every next question',runtime.includes('const candidates=collectWrongCandidates(session.config)'));
+check('Finite wrong review ends after one pass instead of repeating',runtime.includes('!session.attemptedRound.has(candidate.key)')&&runtime.includes('if(!pool.length&&session.infinite'));
+check('Invalid candidates use a bounded loop, not recursion',runtime.includes('for(let attempt=0;attempt<100;attempt++)'));
+check('No aggregate quiz score is persisted',!/localStorage\.setItem\([^\n]*(?:score|result)/i.test(runtime));
+
+check('PWA precaches unified runtime, classics, and standalone assets',sw.includes("url('quiz/unified-native-v1.js')")&&sw.includes("url('quiz/japanese-classics-bank-v1.js')")&&sw.includes("url('classics-vocab/app.js')")&&sw.includes("url('kokugo-chronologia/koten-kanbun-bank-5.js')"));
+
+console.log(JSON.stringify({version:'3.0.0',checks,failures,bank:{sourceTotal:bank.sourceTotal||0,classical:bank.classical?.length||0,kanbun:bank.kanbun?.length||0,total:all.length}},null,2));
 if(failures.length)process.exit(1);
