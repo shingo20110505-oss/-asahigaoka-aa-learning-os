@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "day": "2026-09-10",
+  "day": "2026-09-11",
   "attempted": 1,
   "added": 0,
   "state": "rejected",
@@ -8,6 +8,5 @@
   "generationTransport": "generateContent-v1beta",
   "maxCandidatesPerDay": 1,
   "maxCallsPerCandidate": 7,
-  "httpStatus": 503,
-  "reason": "provider_or_validation_error"
+  "reason": "structure_rejected:difficulty:aichi-q1-1|difficulty:aichi-q1-2|polarity:aichi-q1-3|error_span:aichi-q1-3:a|error_span:aichi-q1-3:c|error_span:aichi-q1-3:d|difficulty:aichi-q1-3|difficulty:aichi-q1-4"
 }
