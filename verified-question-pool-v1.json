@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-11-12-12-17Z",
-  "updatedAt": "2026-09-11T12:12:17.170Z",
+  "poolVersion": "2026-09-11-12-22-05Z",
+  "updatedAt": "2026-09-11T12:22:05.844Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -504,6 +504,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-10T12:23:28.074Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application.english.reading",
+        "difficulty": 8,
+        "question": "According to the notice, what is the primary condition for students who wish to use the library during the summer vacation?",
+        "context": "Library Notice for Summer Vacation: The library will be open from 9:00 AM to 3:00 PM on weekdays in August. Students who want to borrow books during this period must submit a special reading plan form approved by their homeroom teacher by July 25. Please note that returning overdue books from the first term is not allowed during August.",
+        "choices": [
+          "They must visit the library only between 9:00 AM and 3:00 PM on weekends.",
+          "They must be accompanied by their homeroom teacher when borrowing books.",
+          "They must return all overdue books before July 25.",
+          "They must get their reading plan approved by their homeroom teacher."
+        ],
+        "answerIndex": 3,
+        "answer": "They must get their reading plan approved by their homeroom teacher.",
+        "explanation": "The text states that students who want to borrow books during the summer vacation period must submit a special reading plan form approved by their homeroom teacher. A common misconception is assuming that returning overdue books is required or that weekend visits are permitted, but the text specifically highlights the approval of the reading plan.",
+        "evidence": "Students who want to borrow books during this period must submit a special reading plan form approved by their homeroom teacher by July 25.",
+        "misconception": "Confusing the rule about overdue books with the requirement for borrowing books during the vacation.",
+        "marks": 2,
+        "id": "rise-english-3f0d5ee93ae7f155",
+        "fingerprint": "7e5075134d00ba75",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-11T12:22:05.821Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application.english.dialogue",
+        "difficulty": 8,
+        "question": "Why does Ken decide not to join the environmental club cleanup event this Saturday?",
+        "context": "Yumi: Ken, are you coming to the river cleanup this Saturday morning? Ken: I'd love to, but my uncle is visiting from Hokkaido, and our family is taking him to the pottery center in Tokoname. Yumi: Oh, I see! That sounds like a wonderful family event. Maybe you can join our next project in September.",
+        "choices": [
+          "He is planning to visit his uncle in Hokkaido.",
+          "He is going on a family trip to a pottery center.",
+          "He prefers to participate in the September project instead.",
+          "He has to prepare for an upcoming school examination."
+        ],
+        "answerIndex": 1,
+        "answer": "He is going on a family trip to a pottery center.",
+        "explanation": "Ken explains that his uncle is visiting and his family is taking him to the pottery center in Tokoname on Saturday. The strongest distractor involves visiting Hokkaido, but the text clarifies that the uncle is visiting *from* Hokkaido, not that Ken is going there.",
+        "evidence": "my uncle is visiting from Hokkaido, and our family is taking him to the pottery center in Tokoname",
+        "misconception": "Misinterpreting the origin of the visiting uncle as Ken's destination.",
+        "marks": 2,
+        "id": "rise-english-30001fca5c206c0e",
+        "fingerprint": "11413a195985dfdf",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-11T12:22:05.821Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application.english.information",
+        "difficulty": 8,
+        "question": "Which event is available for students interested in science and technology on a weekday afternoon?",
+        "context": "School Festival Activity Schedule: 1. Eco-Bag Design Workshop: Tuesday, 2:00 PM - 4:00 PM in Art Room 1 (Crafts). 2. Robot Programming Challenge: Thursday, 3:00 PM - 5:00 PM in Computer Lab B (Technology). 3. English Speech Presentation: Saturday, 10:00 AM - 12:00 PM in Auditorium (Language). 4. Local History Exhibition: Sunday, 1:00 PM - 4:00 PM in Library Gallery (Social Studies).",
+        "choices": [
+          "Local History Exhibition",
+          "Eco-Bag Design Workshop",
+          "Robot Programming Challenge",
+          "English Speech Presentation"
+        ],
+        "answerIndex": 2,
+        "answer": "Robot Programming Challenge",
+        "explanation": "The question asks for an event related to science and technology on a weekday afternoon. Looking at the schedule, the Robot Programming Challenge takes place on Thursday (a weekday) from 3:00 PM to 5:00 PM in Computer Lab B, categorized under technology. The Eco-Bag workshop is crafts, and the other two are on weekends.",
+        "evidence": "Robot Programming Challenge: Thursday, 3:00 PM - 5:00 PM in Computer Lab B (Technology).",
+        "misconception": "Selecting another weekday workshop without checking whether its subject area matches science and technology.",
+        "marks": 2,
+        "id": "rise-english-29cd0028c9c16554",
+        "fingerprint": "19a037ddcacfc2ab",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-11T12:22:05.821Z"
         }
       }
     ],
