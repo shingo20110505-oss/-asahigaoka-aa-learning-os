@@ -11,7 +11,7 @@ for(const [index,source] of bridgeSources.entries())assert.doesNotThrow(()=>new 
 {
  const bridgeStore=new Map(),calls=[];
  const bridgeStorage={getItem:key=>bridgeStore.get(key)||null,setItem:(key,value)=>bridgeStore.set(key,String(value))};
- const context={window:null,localStorage:bridgeStorage,Date,setTimeout,clearTimeout,AA_API_READING_ONLY:true,state:{items:{},profile:{unknownWords:{}}},vocabPool:()=>[{id:'native-en',srsId:'v:native-en',word:'native',meaning:'既存',pos:'n',level:'entrance',example:'A native bridge.'}],recordAttempt:(...args)=>calls.push(['attempt',...args]),updateSRS:(...args)=>calls.push(['srs',...args]),save:()=>calls.push(['save']),retention:()=>.8};
+ const context={window:null,localStorage:bridgeStorage,Date,setTimeout,clearTimeout,AA_API_READING_ONLY:true,AA_V23_STATS:{loaderComplete:true},state:{items:{},profile:{unknownWords:{}}},vocabPool:()=>[{id:'native-en',srsId:'v:native-en',word:'native',meaning:'既存',pos:'n',level:'entrance',example:'A native bridge.'}],recordAttempt:(...args)=>calls.push(['attempt',...args]),updateSRS:(...args)=>calls.push(['srs',...args]),save:()=>calls.push(['save']),retention:()=>.8};
  context.window=context;vm.createContext(context);vm.runInContext(bridgeSources[0],context);
  assert.equal(context.AA_RISE_UNIFIED_ENGLISH_API.list().length,1);
  context.AA_RISE_UNIFIED_ENGLISH_API.record('native-en',false,500,'spell','wrong');

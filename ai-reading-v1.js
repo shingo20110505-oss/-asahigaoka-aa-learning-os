@@ -7,11 +7,12 @@
   // data/history bridge. UI decorators are neither needed nor safe there.
   const bridgeOnly = typeof location !== 'undefined' && /(?:^|[?&])rise_unified_vocab_bridge=1(?:&|$)/.test(location.search || '');
   if (bridgeOnly) {
-    window.__AA_AI_READING_V1__ = Object.freeze({ version: '2.0.2', bridgeOnly: true });
+    window.AA_API_READING_ONLY = true;
+    window.__AA_AI_READING_V1__ = Object.freeze({ version: '2.0.3', bridgeOnly: true });
     return;
   }
 
-  const VERSION = '2.0.2';
+  const VERSION = '2.0.3';
   const CONFIG_KEY = 'aa_ai_reading_config_v1';
   const DEFAULT_ENDPOINT = 'https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev';
   const ENDPOINT_PATH = '/v1/reading';

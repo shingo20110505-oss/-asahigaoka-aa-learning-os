@@ -30,9 +30,10 @@ check('Unified quiz scope is exactly English/Japanese/Social',/SUBJECTS\s*=\s*Ob
 check('Unified quiz UI exposes exactly the three supported subject tabs',[...html.matchAll(/data-subject="([^"]+)"/g)].map(match=>match[1]).join('/')==='mixed/english/japanese/social');
 check('Science and Math do not leak into this vocabulary quiz',!/(data-subject="(?:science|math)"|>理科<|>数学<)/.test(html));
 check('One controller owns normal, infinite, and wrong-only modes',html.includes('./unified-native-v1.js?v=2.0.0')&&!html.includes('./review-algorithm-v1.js')&&!html.includes('./infinite-course-v1.js'));
-check('English history bridge skips UI-only AI reading decorators',aiReading.includes('rise_unified_vocab_bridge=1')&&aiReading.includes('bridgeOnly: true'));
+check('English history bridge skips UI-only AI reading decorators while preserving readiness',aiReading.includes('rise_unified_vocab_bridge=1')&&aiReading.includes('bridgeOnly: true')&&aiReading.includes('window.AA_API_READING_ONLY = true'));
 check('Question quality tolerates bridge data before vocabulary hydration',questionQuality.includes("!Array.isArray(DATA?.vocab)?null")&&questionQuality.includes('unsafeInflectionCount()'));
-check('Bridge safety fixes use fresh production asset URLs',loader.includes('gemini-library-2.0.5-exam-scaffold-rise-ia-bridge-guard')&&loader.includes('question-quality-1.1.1-bridge-safe'));
+check('English bridge waits for complete vocabulary hydration',runtime.includes("window.AA_V23_STATS?.loaderComplete!==true")&&loader.includes('loaderComplete:true'));
+check('Bridge safety fixes use fresh production asset URLs',loader.includes('gemini-library-2.0.6-exam-scaffold-rise-ia-bridge-ready')&&loader.includes('question-quality-1.1.1-bridge-safe'));
 check('Classics bank loads before the unified controller',html.indexOf('./japanese-classics-bank-v1.js')>0&&html.indexOf('./japanese-classics-bank-v1.js')<html.indexOf('./unified-native-v1.js'));
 check('Legacy independent unified score store is absent',!/(rise-unified-vocab-quiz-v1|WRONG_REVIEW_SCORE|reviewScoreKey)/.test(html+runtime));
 check('Only a selection-cycle store was added',runtime.includes("AUX_CYCLE_KEY='rise_unified_quiz_cycle_v2'")&&!/score[^\n]{0,30}localStorage|localStorage[^\n]{0,30}score/i.test(runtime));
@@ -96,7 +97,7 @@ let bridgeGuardError='';
 try{
  const sandbox={window:{},location:{search:'?rise_unified_vocab_bridge=1'},URLSearchParams};
  vm.createContext(sandbox);vm.runInContext(aiReading,sandbox,{filename:'ai-reading-v1.js'});
- check('AI reading bridge guard exits cleanly',sandbox.window.__AA_AI_READING_V1__?.bridgeOnly===true);
+ check('AI reading bridge guard exits cleanly',sandbox.window.__AA_AI_READING_V1__?.bridgeOnly===true&&sandbox.window.AA_API_READING_ONLY===true);
 }catch(error){bridgeGuardError=String(error?.message||error);check('AI reading bridge guard exits cleanly',false,bridgeGuardError);}
 try{
  const sandbox={window:{},DATA:{},localStorage:{setItem(){}},console:{info(){},warn(){}}};
