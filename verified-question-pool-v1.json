@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-11-11-47-54Z",
-  "updatedAt": "2026-09-11T11:47:54.483Z",
+  "poolVersion": "2026-09-11-12-12-17Z",
+  "updatedAt": "2026-09-11T12:12:17.170Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2489,6 +2489,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-10T12:13:57.060Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "日本の工業地帯・地域に関する記述として正しいものを、次のア〜エから1つ選びなさい。",
+        "context": "日本の太平洋ベルトには、様々な特徴を持つ工業地帯や地域が連なっている。中京工業地帯は、自動車関連産業を中心に高い出荷額を誇る。また、瀬戸内工業地域では温暖な気候や海上交通の利便性を活かして、臨海部に石油化学コンビナートなどが発達した。北九州工業地帯は、かつての官営製鉄所の設立を契機に発展し、現在は金属加工や自動車産業などへの転換が進められている。",
+        "choices": [
+          "中京工業地帯は、輸送用機械工業などの割合が高く、製造品出荷額等で全国第1位の地位を長年維持している。",
+          "瀬戸内工業地域は、内陸部の山間部に広大な敷地を確保し、大規模な機械組み立て工場が集中している。",
+          "北九州工業地帯は、水力発電の豊富な電力を背景に、第二次世界大戦後に初めて開発された新興の工業地域である。",
+          "太平洋ベルトから外れた地域では工業生産が行われておらず、すべての工業が特定の限られた一極に集中している。"
+        ],
+        "answerIndex": 0,
+        "answer": "中京工業地帯は、輸送用機械工業などの割合が高く、製造品出荷額等で全国第1位の地位を長年維持している。",
+        "explanation": "中京工業地帯は自動車などの輸送用機械工業の割合が非常に高く、製造品出荷額等で全国第1位を誇っています。他の選択肢は、瀬戸内が内陸部にあるとしている点、北九州が水力発電や戦後新興であるとしている点、太平洋ベルト外で工業が行われていないとしている点などが誤りです。",
+        "evidence": "中京工業地帯は、自動車関連産業を中心に高い出荷額を誇る。",
+        "misconception": "日本の主要な工業地帯の立地条件や製造品出荷額の特徴を混同し、内陸立地や歴史的背景を誤って捉えている。",
+        "marks": 2,
+        "id": "rise-social-c99824977a20c0c3",
+        "fingerprint": "a1e7d0eac7092df0",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-11T12:12:08.185Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "日本の地方自治制度に関する記述として正しいものを、次のア〜エから1つ選びなさい。",
+        "context": "日本国憲法は第92条以下で地方自治を保障しており、住民による民主的な政治参加の基盤となっている。地方公共団体には議会と長が置かれ、それぞれ住民の選挙によって選ばれる。議会は条例の制定や予算の議決などの議決権を持ち、長は予算の執行や行政事務を行う執行権を持つ。また、住民は直接請求権を行使して、条例の制定・改廃や長の解職などを求めることができる。",
+        "choices": [
+          "地方自治は国からの完全な独立行政権を意味し、国会が制定した法律は地方公共団体には適用されない。",
+          "地方公共団体の長と議会の議員はともに住民による選挙で選ばれ、相互にチェックし合う関係にある。",
+          "地方議会は行政事務を直接執行する権限を持ち、長の許可を得ることなくすべての予算執行を行う。",
+          "住民による直接請求権には、条例の制定や改廃の請求はあるが、長の解職に関する請求は含まれていない。"
+        ],
+        "answerIndex": 1,
+        "answer": "地方公共団体の長と議会の議員はともに住民による選挙で選ばれ、相互にチェックし合う関係にある。",
+        "explanation": "地方自治においては、住民が直接選挙で選んだ長と議会が、それぞれの権限を持ちながら抑制と均衡（チェック・アンド・バランス）の関係を保っています。他の選択肢は、議会が予算執行権を持つとしている点、解職請求が含まれないとしている点、国家法が適用されないとしている点などが誤りです。",
+        "evidence": "地方公共団体には議会と長が置かれ、それぞれ住民の選挙によって選ばれる。",
+        "misconception": "地方議会の役割を行政執行機関と混同している、または直接請求の種類や国と地方の関係を誤認している。",
+        "marks": 2,
+        "id": "rise-social-672339d1996803f5",
+        "fingerprint": "e4df0a0715fb15cd",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-11T12:12:08.185Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "上記の文章で説明されている地域A〜Cに関する記述として、最も適当なものはどれか。",
+        "context": "次の文章は、日本の主な工業地域の特徴や統計的傾向についてまとめたものである。\n「地域A：機械工業の割合が全体の約6割に達し、輸送用機械器具（自動車など）の出荷額が全国の多くの割合を占める。製造品出荷額等でも全国第1位の規模を誇る中京工業地域に該当する。」\n「地域B：金属工業や化学工業、さらには多様な消費関連産業などがバランスよく立地し、首都圏の市場を背景に発展した京浜工業地帯に該当する。」\n「地域C：かつては繊維工業が中心であったが、現在は金属工業や化学工業などの重化学工業の比率が高まり、大阪湾周辺に広がる阪神工業地帯に該当する。」",
+        "choices": [
+          "地域Cは、日本最大の農林水産物出荷額を誇り、農業を中心とした産業地域である。",
+          "地域Aから地域Cまでのすべての地域は、太平洋ベルトから外れた日本海側に位置している。",
+          "地域Aは、自動車関連産業の集積により機械工業の割合が極めて高く、製造品出荷額等が全国第1位である。",
+          "地域Bは、重化学工業の比率が全国で最も低く、伝統的工芸品の生産のみに特化している。"
+        ],
+        "answerIndex": 2,
+        "answer": "地域Aは、自動車関連産業の集積により機械工業の割合が極めて高く、製造品出荷額等が全国第1位である。",
+        "explanation": "文章中の地域Aは中京工業地域を指しており、愛知県を中心とする自動車産業の強い結びつきから機械工業の割合が非常に高く、製造品出荷額等も長年全国第1位を維持している。他の選択肢は工業地域の産業構造や立地（太平洋ベルト沿いであること）の事実関係に反している。最も強い罠は、工業地域の地理的分布や他地域の特徴（農業地域や伝統工芸特化など）と混同させることである。",
+        "evidence": "地域A：機械工業の割合が全体の約6割に達し、輸送用機械器具（自動車など）の出荷額が全国の多くの割合を占める。製造品出荷額等でも全国第1位の規模を誇る中京工業地域に該当する。",
+        "misconception": "中京工業地域や三大工業地帯が日本海側に位置しているという誤った地理的認識や、工業地域が農業や伝統工芸中心であるという誤解。",
+        "marks": 2,
+        "id": "rise-social-6bb5eb074e1bc97b",
+        "fingerprint": "d255dcd03c7cde1e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-11T12:12:17.153Z"
         }
       }
     ]
