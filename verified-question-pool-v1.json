@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-10-12-54-22Z",
-  "updatedAt": "2026-09-10T12:54:22.899Z",
+  "poolVersion": "2026-09-11-11-47-54Z",
+  "updatedAt": "2026-09-11T11:47:54.483Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1918,6 +1918,40 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-10T11:48:19.011Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science.biology",
+        "difficulty": 8,
+        "question": "オオカナダモの葉を用いた光合成の実験を行った。光の強さと酸素の発生量に関する考察として最も適当なものを1つ選べ。",
+        "context": "【実験と結果】\n十分な光を当てたオオカナダモから発生する気泡の数を測定したところ、光源から葉までの距離を 10cm、20cm、40cm と離していくにつれて、単位時間あたりに発生する気泡の数は急激に減少した。さらに二酸化炭素濃度を変化させたところ、ある一定の濃度を超えるとそれ以上は光合成速度が増加しなくなった。",
+        "choices": [
+          "光源からの距離を2倍にすると、単位時間あたりの光合成速度はちょうど2分の1になる。",
+          "光源からの距離を離すほど、光のエネルギーは距離の2乗に反比例して減少するため、光合成速度の減少割合は距離が大きくなるほど緩やかになる。",
+          "二酸化炭素濃度を無限に高くすれば、光合成速度も無限に大きくなり続ける。",
+          "オオカナダモの葉緑体に光が当たらない暗黒下でも、光合成による微量の酸素が発生し続ける。"
+        ],
+        "answerIndex": 1,
+        "answer": "光源からの距離を離すほど、光のエネルギーは距離の2乗に反比例して減少するため、光合成速度の減少割合は距離が大きくなるほど緩やかになる。",
+        "explanation": "光の強さは光源からの距離の2乗に反比例する（光度と距離の関係）。したがって、距離を10cmから20cm、40cmと離していくと、光の強さは急激に弱まり、それに伴う光合成速度の減少の仕方も変化する。一定濃度を超えると光合成速度が一定になる現象（光合成の飽和）と同様に、変数の非線形な関係を正しく捉えているものが正解となる。",
+        "evidence": "光源から葉までの距離を 10cm、20cm、40cm と離していくにつれて、単位時間あたりに発生する気泡の数は急激に減少した。",
+        "misconception": "距離が2倍になると光の強さや光合成速度も単純に2分の1になるという線形の変化を想定してしまう誤解。",
+        "marks": 2,
+        "id": "rise-science-adcebbf95f964b25",
+        "fingerprint": "8a07c24dce2d08ff",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-11T11:47:41.019Z"
         }
       }
     ],
