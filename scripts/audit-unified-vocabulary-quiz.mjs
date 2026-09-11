@@ -7,6 +7,9 @@ const read=file=>fs.readFileSync(path.join(root,file),'utf8');
 const html=read('quiz/index.html');
 const runtime=read('quiz/unified-native-v1.js');
 const card=read('app/ui/rise-learning-expansion-v1.js');
+const aiReading=read('ai-reading-v1.js');
+const questionQuality=read('question-quality-v1.js');
+const loader=read('v23-loader.js');
 const failures=[];
 const checks=[];
 function check(name,condition,details=''){
@@ -27,6 +30,9 @@ check('Unified quiz scope is exactly English/Japanese/Social',/SUBJECTS\s*=\s*Ob
 check('Unified quiz UI exposes exactly the three supported subject tabs',[...html.matchAll(/data-subject="([^"]+)"/g)].map(match=>match[1]).join('/')==='mixed/english/japanese/social');
 check('Science and Math do not leak into this vocabulary quiz',!/(data-subject="(?:science|math)"|>理科<|>数学<)/.test(html));
 check('One controller owns normal, infinite, and wrong-only modes',html.includes('./unified-native-v1.js?v=2.0.0')&&!html.includes('./review-algorithm-v1.js')&&!html.includes('./infinite-course-v1.js'));
+check('English history bridge skips UI-only AI reading decorators',aiReading.includes('rise_unified_vocab_bridge=1')&&aiReading.includes('bridgeOnly: true'));
+check('Question quality tolerates bridge data before vocabulary hydration',questionQuality.includes("!Array.isArray(DATA?.vocab)?null")&&questionQuality.includes('unsafeInflectionCount()'));
+check('Bridge safety fixes use fresh production asset URLs',loader.includes('gemini-library-2.0.5-exam-scaffold-rise-ia-bridge-guard')&&loader.includes('question-quality-1.1.1-bridge-safe'));
 check('Classics bank loads before the unified controller',html.indexOf('./japanese-classics-bank-v1.js')>0&&html.indexOf('./japanese-classics-bank-v1.js')<html.indexOf('./unified-native-v1.js'));
 check('Legacy independent unified score store is absent',!/(rise-unified-vocab-quiz-v1|WRONG_REVIEW_SCORE|reviewScoreKey)/.test(html+runtime));
 check('Only a selection-cycle store was added',runtime.includes("AUX_CYCLE_KEY='rise_unified_quiz_cycle_v2'")&&!/score[^\n]{0,30}localStorage|localStorage[^\n]{0,30}score/i.test(runtime));
@@ -85,6 +91,18 @@ check('All 15,000 Japanese rows have Japanese meanings',Object.keys(meanings).le
 check('Chronologia remains an independent linked learning asset',html.includes('href="../chronologia.html"')&&html.includes('年表本体は独立教材として継続'));
 check('English and Japanese native pages remain linked',html.includes('href="../vocab.html"')&&html.includes('href="../kokugo-chronologia/"'));
 check('Learning card still describes the three-subject scope',!/英語・国語・理科・社会/.test(card)&&/英語・国語・社会/.test(card));
+
+let bridgeGuardError='';
+try{
+ const sandbox={window:{},location:{search:'?rise_unified_vocab_bridge=1'},URLSearchParams};
+ vm.createContext(sandbox);vm.runInContext(aiReading,sandbox,{filename:'ai-reading-v1.js'});
+ check('AI reading bridge guard exits cleanly',sandbox.window.__AA_AI_READING_V1__?.bridgeOnly===true);
+}catch(error){bridgeGuardError=String(error?.message||error);check('AI reading bridge guard exits cleanly',false,bridgeGuardError);}
+try{
+ const sandbox={window:{},DATA:{},localStorage:{setItem(){}},console:{info(){},warn(){}}};
+ vm.createContext(sandbox);vm.runInContext(questionQuality,sandbox,{filename:'question-quality-v1.js'});
+ check('Question quality bridge guard executes without DATA.vocab',sandbox.window.AA_QUESTION_QUALITY?.version==='1.1.1'&&sandbox.window.AA_QUESTION_QUALITY?.initialAudit?.unsafeInflectionsRemaining===null);
+}catch(error){check('Question quality bridge guard executes without DATA.vocab',false,String(error?.message||error));}
 
 console.log(JSON.stringify({version:'2.0.0',checkedAt:new Date().toISOString(),checks,failures,japanese:{rows:japaneseRows.length,directMeanings:Object.keys(meanings).length,missing:missing.length}},null,2));
 if(failures.length)process.exit(1);

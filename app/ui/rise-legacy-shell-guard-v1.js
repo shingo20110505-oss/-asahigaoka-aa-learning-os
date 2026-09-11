@@ -45,10 +45,10 @@ function noteStable(){
   root.dataset.riseFirstStableAt=String(firstStableAt);
   return true;
 }
-function inStartupStableWindow(r=route()){
+function stableRiseOwnsCore(r=route()){
   if(!isCore(r)||!hasRisePanel(r)||hasLegacyChrome())return false;
   noteStable();
-  return firstStableAt>0&&Date.now()-firstStableAt<STARTUP_SUPPRESS_MS;
+  return firstStableAt>0;
 }
 function pulse(source='legacy-shell-guard'){
   if(syncQueued)return;
@@ -97,7 +97,7 @@ function wrapLegacyRender(){
   function guardedRender(...args){
     const r=route();
     const core=isCore(r);
-    if(core&&inStartupStableWindow(r)){
+    if(core&&stableRiseOwnsCore(r)){
       suppressedRenders++;
       root.dataset.riseLegacyRenderSuppressed=String(suppressedRenders);
       pulse('legacy-render-suppressed');
@@ -120,9 +120,9 @@ function check(source='mutation'){
 }
 
 window.__RISE_LEGACY_SHELL_GUARD_V1__={
-  version:'1.0.2',
-  build:'2026-09-09.2',
-  strategy:'startup-stable-rise-render-suppression-plus-coalesced-recovery',
+  version:'1.0.3',
+  build:'2026-09-11.1',
+  strategy:'stable-rise-ownership-plus-coalesced-recovery',
   aiExamRoute:'1.3.0',
   settleMs:SETTLE_MS,
   startupSuppressMs:STARTUP_SUPPRESS_MS,
