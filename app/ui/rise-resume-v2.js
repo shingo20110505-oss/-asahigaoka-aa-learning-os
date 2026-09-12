@@ -1,7 +1,7 @@
 (()=>{
   'use strict';
   if(window.__RISE_RESUME_V2__) return;
-  window.__RISE_RESUME_V2__={version:'2.0.0'};
+  window.__RISE_RESUME_V2__={version:'2.1.0'};
 
   const app=document.getElementById('app');
   if(!app) return;
@@ -61,25 +61,11 @@
   function cardMarkup(session){
     const detail=[titleFor(session),positionFor(session),elapsedFor(session)].filter(Boolean).join(' · ');
     const signature=signatureFor(session);
-    return `<article class="rv4ResumeCard rv4Card" data-rise-resume="1" data-resume-signature="${signature}" aria-label="保存した学習の続き"><div class="rv4ResumeCopy"><span class="rv4ResumeBadge">保存済み</span><h3>前回の学習の続き</h3><p>${detail}</p></div><button type="button" class="btn primary rv4ResumeBtn" data-route="study" data-rise-resume-action="resume">続きからやる</button></article>`;
+    return `<article class="rv4ResumeCard rv4Card" data-rise-resume="1" data-resume-signature="${signature}" aria-label="保存した学習の続き"><div class="rv4ResumeCopy"><span class="rv4ResumeBadge">保存済み</span><h3>前回の学習の続き</h3><p>${detail}</p></div><button type="button" class="btn primary rv4ResumeBtn" data-route="study">続きからやる</button></article>`;
   }
 
   function removeCards(){
     app.querySelectorAll('[data-rise-resume="1"]').forEach(card=>card.remove());
-  }
-
-  function resumeSession(){
-    const state=currentState();
-    if(!resumable(state?.session)){
-      scheduleSync();
-      return false;
-    }
-    const shell=window.AA_APP?.get?.('appShell');
-    if(typeof shell?.navigate!=='function') return false;
-    document.documentElement.dataset.riseRoute='study';
-    const result=shell.navigate('study');
-    document.dispatchEvent(new CustomEvent('rise:navigation',{detail:{route:'study',source:'resume-saved-session'}}));
-    return result!==false;
   }
 
   function sync(){
@@ -118,14 +104,6 @@
     if(pendingFrame) return;
     pendingFrame=requestAnimationFrame(sync);
   }
-
-  document.addEventListener('click',event=>{
-    const button=event.target.closest?.('[data-rise-resume-action="resume"]');
-    if(!button) return;
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    resumeSession();
-  },true);
 
   new MutationObserver(scheduleSync).observe(app,{childList:true,subtree:true});
   document.addEventListener('aa:v23ready',scheduleSync);
