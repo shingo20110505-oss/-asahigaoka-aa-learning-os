@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-12-11-35-58Z",
-  "updatedAt": "2026-09-12T11:35:58.523Z",
+  "poolVersion": "2026-09-12-11-44-06Z",
+  "updatedAt": "2026-09-12T11:44:06.509Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -606,6 +606,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-11T12:22:05.821Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application.english.dialogue_inference",
+        "difficulty": 8,
+        "question": "What is the main reason why Ken changed his plan for Saturday?",
+        "context": "Ken: Hi, Yoko! Are you going to the community center clean-up event this Saturday? \nYoko: Yes, I am. The notice said we will clean up the park near the station from 9 a.m. \nKen: Oh, really? I wanted to join, but my mother asked me to help her paint the living room walls that morning. So I was planning to stay home. \nYoko: But the weather forecast says it will rain heavily on Saturday morning, so the clean-up might be postponed to Sunday. \nKen: Wow, is that right? Then if it's postponed, I can participate in the clean-up on Sunday instead of Saturday, because my mother's painting work is only scheduled for Saturday morning!",
+        "choices": [
+          "The clean-up event was rescheduled to a day when he is available.",
+          "His mother decided to cancel the painting work completely.",
+          "The weather forecast predicted sunny weather for the weekend.",
+          "He finished painting the living room walls much earlier than expected."
+        ],
+        "answerIndex": 0,
+        "answer": "The clean-up event was rescheduled to a day when he is available.",
+        "explanation": "Ken initially could not join the Saturday clean-up because he had to help his mother paint on Saturday morning. However, upon hearing that the event might be postponed to Sunday due to rain, he realizes he can participate on Sunday because his mother's work is only on Saturday. Thus, the change or potential change in his participation is due to the event being rescheduled to a day he is free. The strongest distractor claims he finished painting early, which is incorrect because the painting was just scheduled for a different day.",
+        "evidence": "Then if it's postponed, I can participate in the clean-up on Sunday instead of Saturday, because my mother's painting work is only scheduled for Saturday morning!",
+        "misconception": "Believing that Ken's mother changed her schedule or that the painting task itself was finished ahead of time, rather than recognizing that the clean-up event's potential postponement to a free day enables his participation.",
+        "marks": 2,
+        "id": "rise-english-726ae6da247ab956",
+        "fingerprint": "54a50eebe959b1f1",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-12T11:43:58.478Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application.english.information_integration",
+        "difficulty": 8,
+        "question": "According to the notice, what must all club members do before submitting their application forms?",
+        "context": "NOTICE: Photography Club Members!\n1. All application forms for the school exhibition must be submitted to Room 302 by Friday afternoon.\n2. Before handing in your form, you must have your club advisor sign it after checking your photo selection.\n3. Make sure to print out two copies of each photo you plan to exhibit and attach them to the back of your form.",
+        "choices": [
+          "Get a signature from the club advisor after photo review.",
+          "Upload digital copies of the photos to the school website.",
+          "Display the printed photos on the bulletin board in Room 302.",
+          "Pay the exhibition entry fee at the school office."
+        ],
+        "answerIndex": 0,
+        "answer": "Get a signature from the club advisor after photo review.",
+        "explanation": "Point 2 of the notice explicitly states that before handing in the form, members must have their club advisor sign it after checking their photo selection. The distractor about uploading digital copies or paying a fee are fabricated details not present in the text.",
+        "evidence": "Before handing in your form, you must have your club advisor sign it after checking your photo selection.",
+        "misconception": "Confusing the requirement of having the advisor check photos and sign the form with online submissions or physical display tasks not mentioned in the text.",
+        "marks": 1,
+        "id": "rise-english-6a1a5c826beb3966",
+        "fingerprint": "978175a16816eaaf",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-12T11:43:58.478Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "english.reading.notice",
+        "difficulty": 8,
+        "question": "According to the notice, which statement is correct about the cleanup event?",
+        "context": "Green Valley Community Center is organizing a weekend cleanup event.\nNotice Details:\n- Date: Saturday, November 14 (Rain date: Sunday, November 15)\n- Time: 9:00 a.m. - 11:30 a.m.\n- Meeting Place: East Gate of Green Valley Park\n- Note from Organizer: Volunteers under 12 must be accompanied by an adult guardian. All participants will receive a reusable eco-bag and drinks free of charge. Gloves and trash bags are provided on site. Participants should wear comfortable clothes and sneakers, and bringing your own hat is strongly recommended.",
+        "choices": [
+          "The event has a designated rain date scheduled for Sunday, November 15.",
+          "Only participants who bring a hat will receive free drinks.",
+          "Volunteers are required to bring their own gloves and trash bags.",
+          "Volunteers under 12 years old can participate without an adult."
+        ],
+        "answerIndex": 0,
+        "answer": "The event has a designated rain date scheduled for Sunday, November 15.",
+        "explanation": "The notice explicitly mentions a backup date in case of bad weather on Saturday. The other options are incorrect because the text states that gloves and trash bags are provided on site, volunteers under 12 must be accompanied by an adult guardian, and all participants receive free drinks regardless of bringing a hat.",
+        "evidence": "(Rain date: Sunday, November 15)",
+        "misconception": "Overlooking specific operational details such as who provides equipment or misinterpreting eligibility conditions for gifts and supervision.",
+        "marks": 2,
+        "id": "rise-english-13cd782ffad59073",
+        "fingerprint": "69a03c67dbc8c6d5",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-12T11:44:06.488Z"
         }
       }
     ],
