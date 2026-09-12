@@ -37,24 +37,48 @@ jobs:
           ref: ${{ steps.source.outputs.source_sha }}
           fetch-depth: 1
 
-      - name: Wait for exact production release
+      - name: Check verifier syntax
         run: |
           set -euo pipefail
-          ok=0
-          for n in $(seq 1 24); do
-            if curl -fsSL --connect-timeout 10 --max-time 25 "${PAGE_URL}release.json?resume=${SOURCE_SHA}-${n}" -o /tmp/release.json && grep -q "${SOURCE_SHA}" /tmp/release.json; then
-              ok=1
+          node --check scripts/rise-resume-production-v1.mjs
+
+      - name: Wait for complete production bundle
+        run: |
+          set -euo pipefail
+          ready=0
+          for n in $(seq 1 36); do
+            release_ok=0
+            loader_ok=0
+            module_ok=0
+
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${PAGE_URL}release.json?resume=${SOURCE_SHA}-${n}" -o /tmp/release.json && grep -Fq "${SOURCE_SHA}" /tmp/release.json; then
+              release_ok=1
+            fi
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${PAGE_URL}app/state/state-manager.js?resume=${SOURCE_SHA}-${n}" -o /tmp/state-manager.js && grep -Fq 'rise-resume-v2.js?v=2.1.0' /tmp/state-manager.js; then
+              loader_ok=1
+            fi
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${PAGE_URL}app/ui/rise-resume-v2.js?resume=${SOURCE_SHA}-${n}" -o /tmp/rise-resume-v2.js && grep -Fq "version:'2.1.0'" /tmp/rise-resume-v2.js && grep -Fq '続きからやる' /tmp/rise-resume-v2.js; then
+              module_ok=1
+            fi
+
+            echo "attempt=${n} release=${release_ok} loader=${loader_ok} module=${module_ok}"
+            if [ "$release_ok" = 1 ] && [ "$loader_ok" = 1 ] && [ "$module_ok" = 1 ]; then
+              ready=1
               break
             fi
             sleep 5
           done
-          test "$ok" = 1
-          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/state/state-manager.js?resume=${SOURCE_SHA}" -o /tmp/state-manager.js
-          grep -q 'rise-resume-v2.js?v=2.0.0' /tmp/state-manager.js
-          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-resume-v2.js?resume=${SOURCE_SHA}" -o /tmp/rise-resume-v2.js
-          grep -q "version:'2.0.0'" /tmp/rise-resume-v2.js
-          grep -q '続きからやる' /tmp/rise-resume-v2.js
-          node --check scripts/rise-resume-production-v1.mjs
+
+          if [ "$ready" != 1 ]; then
+            echo 'Production bundle did not become internally consistent.'
+            echo '--- release.json ---'
+            cat /tmp/release.json 2>/dev/null || true
+            echo '--- state-manager.js ---'
+            cat /tmp/state-manager.js 2>/dev/null || true
+            echo '--- resume module header ---'
+            head -c 600 /tmp/rise-resume-v2.js 2>/dev/null || true
+            exit 1
+          fi
 
       - name: Install Japanese rendering fonts
         run: |
