@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-12-11-44-06Z",
-  "updatedAt": "2026-09-12T11:44:06.509Z",
+  "poolVersion": "2026-09-12-12-09-26Z",
+  "updatedAt": "2026-09-12T12:09:26.505Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1618,6 +1618,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-11T12:48:50.116Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "文章の内容に照らして、筆者が「古い習慣を見直す」ことについて最も適切に述べているものはどれか。",
+        "context": "現代社会において、伝統や古い習慣は一見時代遅れのものとして切り捨てられがちである。しかし、それらは単なる過去の遺物ではなく、先人たちが長い年月をかけて環境に適応させ、生活の知恵として洗練させてきた結晶である。もちろん、現代の価値観に合わない部分をそのまま無批判に受け入れるべきではないが、表層的な効率性のみを基準にしてすべてを否定することは、歴史的な連続性を断ち切る危険性を孕んでいる。重要なのは、形式にとらわれずその内実にある本質的意義を現代の文脈に翻訳し、再構築していく主体的な態度である。",
+        "choices": [
+          "効率性だけを基準に古いものを排除せず、その本質的意義を見出して現代に活かすべきだという姿勢",
+          "先人の知恵である伝統や習慣は現代でも一切の変更を加えることなく厳格に守られるべきだという見解",
+          "現代社会の発展のためには歴史的な連続性を一度完全に断ち切る必要があるという主張",
+          "過去の習慣はすべて現代の価値観に合わせて完全に刷新されなければならないという意見"
+        ],
+        "answerIndex": 0,
+        "answer": "効率性だけを基準に古いものを排除せず、その本質的意義を見出して現代に活かすべきだという姿勢",
+        "explanation": "文章では、効率性のみを基準にすべてを否定することを戒め、内実にある本質的意義を現代の文脈に翻訳し再構築していく重要性が述べられています。したがって、効率性だけを基準に排除せず本質を見出すという内容が正解です。他の選択肢は内容を極端に誇張したり、文章の主張と矛盾したりしています。",
+        "evidence": "表層的な効率性のみを基準にしてすべてを否定することは、歴史的な連続性を断ち切る危険性を孕んでいる。",
+        "misconception": "過去の習慣をすべて無条件で肯定するか、あるいは完全に否定して刷新すべきだという極端な二項対立に陥る誤解。",
+        "marks": 2,
+        "id": "rise-japanese-e920062c24db9a30",
+        "fingerprint": "dfe373c901a9a477",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-12T12:09:26.486Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "次の会話文において、Kさんが導き出した結論として最も適切なものはどれか。",
+        "context": "先生「資料によると、A市では近年、地域の祭りへの参加者が減少していますが、同時にオンラインを活用した情報発信やバーチャル参加の導入により、市外からの関心が高まっています。この現象をどう捉えますか。」\nKさん「伝統的な形式が失われることを危惧する声もありますが、現地に行けない人々が関わりを持つ窓口が広がったことで、新しいつながりが生まれています。単に昔のやり方を維持するのではなく、参加の形を多様化させることが持続可能性につながっているといえます。」\n先生「その通りですね。変化を前向きに捉える視点が重要です。」",
+        "choices": [
+          "昔のやり方の維持にこだわらず、参加の形を多様化させることが持続可能性につながる。",
+          "市外からの関心を高めるためには、現地での対面による交流を完全に廃止する必要がある。",
+          "伝統的な形式を守るためには、オンラインの導入を一切禁止して現地参加だけに限定すべきである。",
+          "参加者の減少を解決するには、祭りの開催自体を取りやめて別のイベントに変更するべきである。"
+        ],
+        "answerIndex": 0,
+        "answer": "昔のやり方の維持にこだわらず、参加の形を多様化させることが持続可能性につながる。",
+        "explanation": "Kさんは、形式の変更を恐れずに関わりの窓口を広げ、参加の形を多様化させることが持続可能性につながるという意見を述べています。この主張と一致する選択肢が正解となります。",
+        "evidence": "単に昔のやり方を維持するのではなく、参加の形を多様化させることが持続可能性につながっているといえます。",
+        "misconception": "伝統行事は一切の変化やデジタル化を拒絶すべきであるという固定観念に基づく誤解。",
+        "marks": 2,
+        "id": "rise-japanese-8813756de59da589",
+        "fingerprint": "724dc07bfdc1483d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-12T12:09:26.486Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "次の文章で筆者が指摘している「言葉の表層と深層のギャップ」についての説明として、最も適切なものはどれか。",
+        "context": "私たちは日常会話の中で、相手を思いやるあまり、紋切り型の美しい言葉を並べ立てることがある。しかし、そこにはしばしば実感や責任感が伴っておらず、ただ場をやり過ごすための記号として言葉が消費されている。言葉は本来、他者と自己の内面を深く結びつけるための生きた道具であるはずだ。表層的な美辞麗句に安住し、その奥にある痛みを伴う現実から目を背けるとき、コミュニケーションは形骸化し、かえって深い孤独を生み出す結果となる。",
+        "choices": [
+          "他者と自己の内面を結びつけるためには、日常的な会話を一切避けて書物による対話に頼るべきだという主張",
+          "言葉が持つ意味は時代とともに変化するため、過去の表現はすべて現代では通用しないという見解",
+          "言葉の美しさを追求するあまり、正しい文法や語彙の選択がおろそかになっているという指摘",
+          "実感のない記号としての美しい言葉に安住し、現実から目を背けることでコミュニケーションが形骸化するという問題"
+        ],
+        "answerIndex": 3,
+        "answer": "実感のない記号としての美しい言葉に安住し、現実から目を背けることでコミュニケーションが形骸化するという問題",
+        "explanation": "文章では、実感や責任感を伴わない美しい言葉（美辞麗句）が記号として消費され、現実から目を背けることでコミュニケーションが形骸化することを指摘しています。これに合致するものが正解です。",
+        "evidence": "表層的な美辞麗句に安住し、その奥にある痛みを伴う現実から目を背けるとき、コミュニケーションは形骸化し、かえって深い孤独を生み出す結果となる。",
+        "misconception": "言葉の乱れを単なる文法や語彙の間違いであると勘違いする誤解。",
+        "marks": 2,
+        "id": "rise-japanese-39d2d01ceddc3e10",
+        "fingerprint": "76aa911240a7d5d4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-12T12:09:26.486Z"
         }
       }
     ],
