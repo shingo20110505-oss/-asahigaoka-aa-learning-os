@@ -1,6 +1,6 @@
 (()=>{'use strict';
 if(window.__RISE_RESUME_V1__)return;
-window.__RISE_RESUME_V1__={version:'1.0.0'};
+window.__RISE_RESUME_V1__={version:'1.0.1'};
 const app=document.getElementById('app');
 if(!app)return;
 const SUBJECTS={english:'英語',japanese:'国語',math:'数学',science:'理科',social:'社会',mixed:'5教科'};
@@ -16,10 +16,12 @@ function ensureStyle(){if(document.getElementById('riseResumeV1Style'))return;co
 .rv4ResumeCopy{min-width:0}.rv4ResumeBadge{display:inline-flex;align-items:center;min-height:24px;padding:3px 9px;border-radius:999px;background:rgba(104,92,220,.10);color:#5b55b6;font-size:11px;font-weight:800;letter-spacing:.08em}.rv4ResumeCopy h3{margin:7px 0 3px;font-size:18px;line-height:1.35}.rv4ResumeCopy p{margin:0;color:var(--muted,#667085);font-size:13px;line-height:1.55}.rv4ResumeBtn{flex:0 0 auto;min-width:148px;min-height:46px}.riseSubjectsV4>.rv4ResumeCard{margin-bottom:16px}
 @media(max-width:680px){.rv4ResumeCard{align-items:stretch;flex-direction:column;padding:16px}.rv4ResumeBtn{width:100%;min-width:0}.rv4ResumeCopy h3{font-size:17px}}
 `;document.head.appendChild(style)}
-function cardHTML(s){const elapsed=elapsedFor(s),details=[labelFor(s),progressFor(s),elapsed].filter(Boolean).join(' · ');return `<article class="rv4ResumeCard rv4Card" data-rise-resume="1" aria-label="保存した学習の続き"><div class="rv4ResumeCopy"><span class="rv4ResumeBadge">保存済み</span><h3>前回の学習の続き</h3><p>${details}</p></div><button type="button" class="btn primary rv4ResumeBtn" data-route="study">続きからやる</button></article>`}
+function cardHTML(s){const elapsed=elapsedFor(s),details=[labelFor(s),progressFor(s),elapsed].filter(Boolean).join(' · ');return `<article class="rv4ResumeCard rv4Card" data-rise-resume="1" aria-label="保存した学習の続き"><div class="rv4ResumeCopy"><span class="rv4ResumeBadge">保存済み</span><h3>前回の学習の続き</h3><p>${details}</p></div><button type="button" class="btn primary rv4ResumeBtn" data-rise-resume-action="resume">続きからやる</button></article>`}
 function removeCards(){for(const el of app.querySelectorAll('[data-rise-resume="1"]'))el.remove()}
+function resumeSession(){const state=getState();if(!activeSession(state)){schedule();return false}const shell=window.AA_APP?.get?.('appShell');if(typeof shell?.navigate!=='function')return false;const root=document.documentElement;root.dataset.riseRoute='study';const ok=shell.navigate('study');document.dispatchEvent(new CustomEvent('rise:navigation',{detail:{route:'study',source:'resume-saved-session'}}));return ok!==false}
 function sync(){raf=0;const state=getState();if(!activeSession(state)){removeCards();return}ensureStyle();const s=state.session,home=app.querySelector('.riseHomeV4 .rv4Dashboard'),subjects=app.querySelector('.riseSubjectsV4');const hosts=[];if(home)hosts.push({host:home,before:home.querySelector('.rv4Metrics')||home.firstElementChild});if(subjects)hosts.push({host:subjects,before:subjects.querySelector('.rv4StudyHero')||subjects.firstElementChild});for(const {host,before} of hosts){let card=host.querySelector(':scope > [data-rise-resume="1"]');const html=cardHTML(s);if(!card){if(before)before.insertAdjacentHTML('beforebegin',html);else host.insertAdjacentHTML('afterbegin',html)}else if(card.outerHTML!==html)card.outerHTML=html}for(const card of app.querySelectorAll('[data-rise-resume="1"]')){if(!home?.contains(card)&&!subjects?.contains(card))card.remove()}}
 function schedule(){if(raf)return;raf=requestAnimationFrame(sync)}
+document.addEventListener('click',e=>{const btn=e.target.closest?.('[data-rise-resume-action="resume"]');if(!btn)return;e.preventDefault();e.stopImmediatePropagation();resumeSession()},true);
 new MutationObserver(schedule).observe(app,{childList:true,subtree:true});
 document.addEventListener('aa:v23ready',schedule);
 document.addEventListener('rise:navigation',schedule);
