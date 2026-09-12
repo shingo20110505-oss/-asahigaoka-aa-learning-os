@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-12-11-15-01Z",
-  "updatedAt": "2026-09-12T11:15:01.784Z",
+  "poolVersion": "2026-09-12-11-35-58Z",
+  "updatedAt": "2026-09-12T11:35:58.523Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2863,6 +2863,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-11T12:12:17.153Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "愛知県内の特定の農業地域の動向について述べた資料として最も適当なものを、次の選択肢の中から1つ選びなさい。",
+        "context": "【愛知県の農業に関する資料の抜粋】\n資料X：渥美半島では、温暖な気候や日照時間の長さを活かし、パイプハウス等を利用した野菜や花きの栽培が盛んであり、電照菊などの生産が全国的に有名である。\n資料Y：濃尾平野の北部では、木曽川の豊かな水を利用した稲作に加え、都市近郊の利点を活かした野菜の施設園芸や、名古屋市などの大消費地へ向けた近郊農業が展開されている。\n資料Z：矢作川流域の山間部や三河高原では、広大な土地を利用した酪農や肉用牛の飼育、および標高差を活かした夏秋野菜の栽培が中心に行われている。",
+        "choices": [
+          "三河高原や矢作川流域の山間部では、大消費地を背景にした近郊農業として稲作のみが単一で行われている。",
+          "愛知県の農業は全域で米の単作地帯となっており、野菜や花きの栽培はほとんど行われていない。",
+          "渥美半島では、温暖な気候や日照時間の長さを活かして電照菊などの花きや野菜の栽培が盛んに行われている。",
+          "濃尾平野の北部では、広大な牧草地を利用した大規模な酪農が県内生産の中心を占めている。"
+        ],
+        "answerIndex": 2,
+        "answer": "渥美半島では、温暖な気候や日照時間の長さを活かして電照菊などの花きや野菜の栽培が盛んに行われている。",
+        "explanation": "資料Xには「渥美半島では、温暖な気候や日照時間の長さを活かし、パイプハウス等を利用した野菜や花きの栽培が盛んであり、電照菊などの生産が全国的に有名である」と明記されており、最初の選択肢の内容と一致します。他の選択肢は資料の記述や実際の地理的特徴と矛盾しています。",
+        "evidence": "渥美半島では、温暖な気候や日照時間の長さを活かし、パイプハウス等を利用した野菜や花きの栽培が盛んであり、電照菊などの生産が全国的に有名である",
+        "misconception": "愛知県＝中京工業地帯というイメージや、平野部＝稲作のみという固定観念から、渥美半島などの特徴的な園芸農業の記述を見落とし、誤った選択肢を選んでしまう誤解。",
+        "marks": 2,
+        "id": "rise-social-c0a18f99633884bd",
+        "fingerprint": "3c7065dfe99d5f0d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-12T11:35:50.301Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "日本国憲法における人権の保障や裁判制度に関する記述として最も適当なものを、次の選択肢の中から1つ選びなさい。",
+        "context": "【憲法と司法に関する資料】\n資料P：日本国憲法第14条では法の下の平等が定められており、人種、信条、性別、社会的身分または門地により、政治的、経済的または社会的関係において差別されないことが規定されている。\n資料Q：刑事裁判において、被告人が有罪であることが法廷で完全に証明されるまでは、被告人は無罪であるものとして扱われるという原則を無罪推定の原則といい、人権保障の観点から極めて重要である。\n資料R：最高裁判所は違憲審査制の終審裁判所であり、特定の法律や命令などが憲法に適合しているかどうかを最終的に判断する権限（憲法の番人）を有している。",
+        "choices": [
+          "日本国憲法第14条では法の下の平等が定められており、人種や性別などによる差別が禁止されている。",
+          "刑事裁判では、被告人が有罪と確定する前であっても最初から有罪として扱われるのが原則である。",
+          "最高裁判所はいかなる場合でも法律の違憲審査を行うことはできず、内閣の判断が優先される。",
+          "基本的人権は侵すことのできない永久の権利であるが、公共の福祉のために制限されることは一切ない。"
+        ],
+        "answerIndex": 0,
+        "answer": "日本国憲法第14条では法の下の平等が定められており、人種や性別などによる差別が禁止されている。",
+        "explanation": "資料Pに「日本国憲法第14条では法の下の平等が定められており、人種、信条、性別…により…差別されないことが規定されている」とあり、最初の選択肢が正確な内容を伝えています。刑事裁判の無罪推定、最高裁判所の違憲審査権、公共の福祉による人権の制約についての誤った説明が他の選択肢に含まれています。",
+        "evidence": "日本国憲法第14条では法の下の平等が定められており、人種、信条、性別、社会的身分または門地により、政治的、経済的または社会的関係において差別されないことが規定されている",
+        "misconception": "基本的人権は絶対的なもので制限されないという誤解や、刑事裁判における無罪推定の原則を理解していないことによる誤り。",
+        "marks": 2,
+        "id": "rise-social-461472e15f290cd5",
+        "fingerprint": "d13a6e0609066fc4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-12T11:35:50.301Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.industry",
+        "difficulty": 8,
+        "question": "愛知県を中心とする中京工業地帯および本県の工業の特色に関する説明として、最も適切なものを次の選択肢から1つ選びなさい。",
+        "context": "日本の工業生産に関する調査において、愛知県を中心とする中京工業地帯は、輸送用機械器具をはじめとする機械工業の比率が極めて高いことで知られている。ある年の統計によると、全国の製造品出荷額等において愛知県は圧倒的な首位であり、「愛知県の製造品出荷額等のうち、輸送用機械器具が占める割合は半分近くに達し、自動車関連産業への依存度や関連下請・部品産業の集積が顕著である」という特徴が見られる。また、臨海部だけでなく内陸部にも工業団地が広がり、多様な製造業が展開されている。",
+        "choices": [
+          "愛知県は全国第1位の農業県であり、工業の生産額は全国平均を大きく下回り、県内経済における比率はごくわずかである。",
+          "愛知県の製造品出荷額等における輸送用機械器具の割合の高さは、自動車関連を中心とする産業の集積を反映している。",
+          "愛知県の工業は重化学工業化の比率が低く、現在でも伝統的な繊維工業や食料品工業が製造品出荷額の大半を占めている。",
+          "中京工業地帯の工場は太平洋ベルトの臨海部にのみ集中しており、内陸部への工場の広がりや工業団地の形成は見られない。"
+        ],
+        "answerIndex": 1,
+        "answer": "愛知県の製造品出荷額等における輸送用機械器具の割合の高さは、自動車関連を中心とする産業の集積を反映している。",
+        "explanation": "文中の記述から、愛知県の製造品出荷額等では輸送用機械器具の占める割合が非常に高く、自動車関連産業や関連下請・部品産業の集積が顕著であると読み取れる。したがって、この特徴を正しく説明している選択肢が適切である。なお、愛知県は伝統的に繊維工業なども盛んであったが、現在は自動車を中心とする機械工業が圧倒的な比率を占めており、臨海部だけでなく内陸部にも工場や工業団地が広がっているため、他の選択肢は不適切となる。",
+        "evidence": "愛知県の製造品出荷額等のうち、輸送用機械器具が占める割合は半分近くに達し、自動車関連産業への依存度や関連下請・部品産業の集積が顕著である",
+        "misconception": "愛知県の歴史的な一宮などの繊維工業のイメージや、農業産出額が上位であること（キャベツや花きなど）から、現在の工業全体の構造や自動車産業を中心とした圧倒的な製造品出荷額の首位という実態を見落とす誤解。",
+        "marks": 2,
+        "id": "rise-social-ed52af71e555c725",
+        "fingerprint": "cf42614316980a91",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-12T11:35:58.500Z"
         }
       }
     ]
