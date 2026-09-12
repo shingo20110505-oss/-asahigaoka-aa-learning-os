@@ -1,7 +1,7 @@
 (()=>{
   'use strict';
   if(window.__RISE_RESUME_V2__) return;
-  window.__RISE_RESUME_V2__={version:'2.0.1'};
+  window.__RISE_RESUME_V2__={version:'2.0.0'};
 
   const app=document.getElementById('app');
   if(!app) return;
@@ -61,7 +61,7 @@
   function cardMarkup(session){
     const detail=[titleFor(session),positionFor(session),elapsedFor(session)].filter(Boolean).join(' · ');
     const signature=signatureFor(session);
-    return `<article class="rv4ResumeCard rv4Card" data-rise-resume="1" data-resume-signature="${signature}" aria-label="保存した学習の続き"><div class="rv4ResumeCopy"><span class="rv4ResumeBadge">保存済み</span><h3>前回の学習の続き</h3><p>${detail}</p></div><button type="button" class="btn primary rv4ResumeBtn" data-rise-resume-action="resume">続きからやる</button></article>`;
+    return `<article class="rv4ResumeCard rv4Card" data-rise-resume="1" data-resume-signature="${signature}" aria-label="保存した学習の続き"><div class="rv4ResumeCopy"><span class="rv4ResumeBadge">保存済み</span><h3>前回の学習の続き</h3><p>${detail}</p></div><button type="button" class="btn primary rv4ResumeBtn" data-route="study" data-rise-resume-action="resume">続きからやる</button></article>`;
   }
 
   function removeCards(){
