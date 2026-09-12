@@ -1,0 +1,107 @@
+name: Rise production resume verification
+
+on:
+  workflow_run:
+    workflows: ["Deploy AA Learning OS to GitHub Pages"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: rise-production-resume
+  cancel-in-progress: true
+
+jobs:
+  resume:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Resolve published source
+        id: source
+        env:
+          WORKFLOW_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+          SOURCE_SHA="${WORKFLOW_SHA:-$GITHUB_SHA}"
+          echo "source_sha=${SOURCE_SHA}" >> "$GITHUB_OUTPUT"
+          echo "SOURCE_SHA=${SOURCE_SHA}" >> "$GITHUB_ENV"
+          echo "PAGE_URL=https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/" >> "$GITHUB_ENV"
+
+      - name: Checkout exact published source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.source.outputs.source_sha }}
+          fetch-depth: 1
+
+      - name: Wait for exact production release
+        run: |
+          set -euo pipefail
+          ok=0
+          for n in $(seq 1 24); do
+            if curl -fsSL --connect-timeout 10 --max-time 25 "${PAGE_URL}release.json?resume=${SOURCE_SHA}-${n}" -o /tmp/release.json && grep -q "${SOURCE_SHA}" /tmp/release.json; then
+              ok=1
+              break
+            fi
+            sleep 5
+          done
+          test "$ok" = 1
+          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/state/state-manager.js?resume=${SOURCE_SHA}" -o /tmp/state-manager.js
+          grep -q 'rise-resume-v2.js?v=2.0.0' /tmp/state-manager.js
+          curl -fsSL --connect-timeout 10 --max-time 30 "${PAGE_URL}app/ui/rise-resume-v2.js?resume=${SOURCE_SHA}" -o /tmp/rise-resume-v2.js
+          grep -q "version:'2.0.0'" /tmp/rise-resume-v2.js
+          grep -q '続きからやる' /tmp/rise-resume-v2.js
+          node --check scripts/rise-resume-production-v1.mjs
+
+      - name: Install Japanese rendering fonts
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+          fc-cache -f
+
+      - name: Verify save and resume flow
+        env:
+          RESUME_OUT: resume-evidence
+        run: |
+          set -euo pipefail
+          CHROME_PATH=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
+          test -n "$CHROME_PATH"
+          export CHROME_PATH
+          rm -rf resume-evidence
+          node scripts/rise-resume-production-v1.mjs
+          grep -q '^result=success$' resume-evidence/manifest.txt
+          grep -q '^resume_hidden_without_session=success$' resume-evidence/manifest.txt
+          grep -q '^save_to_home=success$' resume-evidence/manifest.txt
+          grep -q '^resume_card=success$' resume-evidence/manifest.txt
+          grep -q '^resume_exact_session=success$' resume-evidence/manifest.txt
+          grep -q '^mobile_390x844=success$' resume-evidence/manifest.txt
+          grep -q '^desktop_1440x1000=success$' resume-evidence/manifest.txt
+          test "$(find resume-evidence -maxdepth 1 -name '*.png' | wc -l)" -eq 2
+          cat resume-evidence/manifest.txt
+
+      - name: Upload resume evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rise-production-resume-${{ steps.source.outputs.source_sha }}
+          path: resume-evidence/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Resume verification summary
+        if: success()
+        run: |
+          {
+            echo '## Rise saved-session resume verification'
+            echo ''
+            echo "- Source: \`${SOURCE_SHA}\`"
+            echo '- No saved session: resume card hidden.'
+            echo '- Saved session: resume card visible on home.'
+            echo '- `続きからやる`: returns to the exact saved session position.'
+            echo '- Mobile: `390x844`'
+            echo '- Desktop: `1440x1000`'
+          } >> "$GITHUB_STEP_SUMMARY"
