@@ -51,7 +51,7 @@ async function verify(view){
   const c=await launch(view);
   try{
     await c.cmd('Page.navigate',{url:`${PAGE_URL}?resume_verify=1&verify=${encodeURIComponent(SOURCE_SHA)}`});
-    await wait(c,`!document.documentElement.classList.contains('aa-app-booting')&&document.querySelector('.riseHomeV4')&&window.__RISE_RESUME_V2__?.version==='2.0.0'`,`${view.name} home`);
+    await wait(c,`!document.documentElement.classList.contains('aa-app-booting')&&document.querySelector('.riseHomeV4')&&window.__RISE_RESUME_V2__?.version==='2.1.0'`,`${view.name} home`);
     const absent=await ev(c,`!document.querySelector('[data-rise-resume="1"]')`);
     if(!absent)throw new Error(`${view.name}: resume button visible without saved session`);
 
