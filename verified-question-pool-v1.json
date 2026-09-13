@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-13-12-16-49Z",
-  "updatedAt": "2026-09-13T12:16:49.351Z",
+  "poolVersion": "2026-09-13-12-43-00Z",
+  "updatedAt": "2026-09-13T12:43:00.725Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -3203,6 +3203,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-12T11:35:58.500Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.social.geography.industry",
+        "difficulty": 8,
+        "question": "A県に該当する地域およびその産業に関する記述として、最も適当なものを次の選択肢から1つ選びなさい。",
+        "context": "次の資料は、日本国内の特定の3県（A〜C県）における工業の状況（製造品出荷額等および主要な産業部門）をまとめたものである。\nA県：製造品出荷額等が全国第1位であり、輸送用機械器具製造業の割合が非常に高い。自動車関連産業が集積している。\nB県：食料品や金属製品の割合が比較的高く、消費地に近接した立地を生かした産業が見られる。\nC県：鉄鋼業や化学工業などの基礎素材型産業の割合が高く、臨海部のコンビナートを中心に発展している。",
+        "choices": [
+          "北陸地方に位置し、伝統的な繊維工業や機械金属工業が中心である。",
+          "首都圏に隣接し、印刷・出版業や先端技術産業の事業所数が日本一である。",
+          "瀬戸内海沿岸に位置し、石油化学コンビナートが発達している。",
+          "ものづくり産業が盛んであり、自動車やその関連部品の生産が特に集中している。"
+        ],
+        "answerIndex": 3,
+        "answer": "ものづくり産業が盛んであり、自動車やその関連部品の生産が特に集中している。",
+        "explanation": "資料にある通り、A県は製造品出荷額等が全国第1位であり、輸送用機械器具（自動車）の集積が大きな特徴である。これは日本の工業の中心である愛知県などの特徴に合致する。誤った選択肢は、それぞれ瀬戸内や北陸、首都圏といった他地域の産業的特徴を述べているものであり、A県の特徴とは一致しない。",
+        "evidence": "A県：製造品出荷額等が全国第1位であり、輸送用機械器具製造業の割合が非常に高い。自動車関連産業が集積している。",
+        "misconception": "愛知県などの自動車工業が盛んな地域の特徴と、他地域の臨海コンビナートや北陸などの伝統工業地域の特徴を混同してしまうこと。",
+        "marks": 2,
+        "id": "rise-social-a37d644209302d96",
+        "fingerprint": "881b69aa85dc94c0",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-13T12:42:52.286Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.industry",
+        "difficulty": 8,
+        "question": "上記の資料および愛知県の工業の特色に関する説明として、最も適当なものを次の中から選びなさい。",
+        "context": "愛知県を中心とする中京工業地帯は、日本国内の工業製造品出荷額等において長年上位を占めている。次の資料は、愛知県内における製造業の産業別出荷額の割合と、下請中小企業の集積に関する特徴を示したものである。「輸送用機械器具が製造品出荷額の過半数を占めており、自動車産業に関連する幅広い部品製造業や金属加工業が県内各地に重層的な下請構造を形成して立地している。また、近年では環境対応型技術や自動化に向けた研究開発型企業への転換も進みつつある。」",
+        "choices": [
+          "輸送用機械器具の割合が高く、自動車産業に関連する幅広い部品製造業や金属加工業が重層的に集積している。",
+          "重化学工業の比率が極めて低く、主に生活必需品を大量生産する軽工業中心の地域である。",
+          "国内市場の縮小に対応するため、すべての製造業が海外への全面的な工場移転を完了している。",
+          "繊維工業が製造品出荷額の大部分を占めており、古くからの伝統的な地場産業のみで構成されている。"
+        ],
+        "answerIndex": 0,
+        "answer": "輸送用機械器具の割合が高く、自動車産業に関連する幅広い部品製造業や金属加工業が重層的に集積している。",
+        "explanation": "資料には輸送用機械器具が製造品出荷額の過半数を占め、自動車産業に関する部品製造業や金属加工業が重層的な下請構造を形成していることが示されている。そのため、機械工業（特に自動車関連）が中核を担っていることを表す説明が正解となる。繊維工業を主軸とする誤った選択肢は、現代の産業構造の実態や資料の記述と矛盾している。",
+        "evidence": "輸送用機械器具が製造品出荷額の過半数を占めており、自動車産業に関連する幅広い部品製造業や金属加工業が県内各地に重層的な下請構造を形成して立地している。",
+        "misconception": "尾張地方の毛織物工業など歴史的な地場産業のイメージにとらわれ、現代の中京工業地帯の主力が機械工業（自動車関連）であることを混同してしまう。",
+        "marks": 2,
+        "id": "rise-social-b4b6c8bafae417fe",
+        "fingerprint": "a064727f7167c3a5",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-13T12:43:00.715Z"
         }
       }
     ]
