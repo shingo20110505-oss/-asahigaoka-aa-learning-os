@@ -29,16 +29,17 @@ jobs:
           assert "window.AA_REVIEW_BANK_VERSION='1.0.65';" in s, 'unexpected review bank version'
           marker = "},];\nfunction normalize"
           assert s.count(marker) == 1, 'tail marker must be unique'
-          card = """  {id:'soc-japan-prefecture-population-ranking-20260913',subject:'社会',unit:'地理・都道府県・人口',title:'都道府県の人口ランキング（2023年）',question:'2023年10月1日現在の都道府県別人口で、人口が多い順に上位10都道府県を答えなさい。また、写真の表の「人口5,103千人」は何県か。',image:'assets/20260913-prefecture-population-table-source-v3.jpeg',imageAlt:'九州地方の県別データ表を撮影した問題写真。面積、人口、農業産出額、海面漁業漁獲量、製造品出荷額などの数値から県名を判別する表で、人口5,103千人の行が含まれる。',answer:'1位 東京都（14,086千人）、2位 神奈川県（9,229千人）、3位 大阪府（8,763千人）、4位 愛知県（7,477千人）、5位 埼玉県（7,331千人）、6位 千葉県（6,257千人）、7位 兵庫県（5,370千人）、8位 福岡県（5,103千人）、9位 北海道（5,092千人）、10位 静岡県（3,555千人）。写真の5,103千人は福岡県。',why:'総務省統計局の2023年10月1日現在の人口推計では、福岡県は5,103千人で全国8位。北海道の5,092千人をわずかに上回る。したがって写真の「5,103千人」の行は福岡県と判断できる。',examples:['1〜5位：東京→神奈川→大阪→愛知→埼玉','6〜10位：千葉→兵庫→福岡→北海道→静岡','福岡5,103千人 > 北海道5,092千人','5,103千人＝約510.3万人＝福岡県'],memory:'東京→神奈川→大阪→愛知→埼玉→千葉→兵庫→福岡→北海道→静岡。福岡5,103千人、北海道5,092千人。',tags:['社会','地理','都道府県','人口','人口ランキング','福岡県','2023年'],createdAt:'2026-09-13'}"""
+          card = """  {id:'soc-japan-prefecture-population-ranking-20260913',subject:'社会',unit:'地理・都道府県・人口',title:'都道府県の人口ランキング（2023年）',question:'2023年10月1日現在の都道府県別人口で、人口が多い順に上位10都道府県を答えなさい。また、画像の表の「人口5,103千人」は何県か。',image:'assets/20260913-prefecture-population-table-source-v4.svg',imageAlt:'九州地方の県別データ表を元写真から復習用に再構成した画像。面積、人口、農業産出額、海面漁業漁獲量、製造品出荷額などの数値があり、人口5,103千人の行を含む。',answer:'1位 東京都（14,086千人）、2位 神奈川県（9,229千人）、3位 大阪府（8,763千人）、4位 愛知県（7,477千人）、5位 埼玉県（7,331千人）、6位 千葉県（6,257千人）、7位 兵庫県（5,370千人）、8位 福岡県（5,103千人）、9位 北海道（5,092千人）、10位 静岡県（3,555千人）。画像の5,103千人は福岡県。',why:'総務省統計局の2023年10月1日現在の人口推計では、福岡県は5,103千人で全国8位。北海道の5,092千人をわずかに上回る。したがって画像の「5,103千人」の行は福岡県と判断できる。',examples:['1〜5位：東京→神奈川→大阪→愛知→埼玉','6〜10位：千葉→兵庫→福岡→北海道→静岡','福岡5,103千人 > 北海道5,092千人','5,103千人＝約510.3万人＝福岡県'],memory:'東京→神奈川→大阪→愛知→埼玉→千葉→兵庫→福岡→北海道→静岡。福岡5,103千人、北海道5,092千人。',tags:['社会','地理','都道府県','人口','人口ランキング','福岡県','2023年'],createdAt:'2026-09-13'}"""
           s = s.replace(marker, "},\n" + card + ",];\nfunction normalize", 1)
           s = s.replace("window.AA_REVIEW_BANK_VERSION='1.0.65';", "window.AA_REVIEW_BANK_VERSION='1.0.66';", 1)
           ids = re.findall(r"\bid:'([^']+)'", s)
           assert len(ids) == len(set(ids)), 'duplicate review ids detected'
           assert s.count(new_id) == 1, 'new id count must be 1'
           assert s.count("window.AA_REVIEW_BANK_VERSION='1.0.66';") == 1, 'version not updated exactly once'
-          asset = Path('review/assets/20260913-prefecture-population-table-source-v3.jpeg')
-          b = asset.read_bytes()
-          assert b[:2] == b'\xff\xd8' and b[-2:] == b'\xff\xd9', 'review image is not a complete JPEG'
+          asset = Path('review/assets/20260913-prefecture-population-table-source-v4.svg')
+          svg = asset.read_text(encoding='utf-8')
+          assert svg.lstrip().startswith('<svg') and '</svg>' in svg, 'review image is not a complete standalone SVG'
+          assert '5,103' in svg and '福岡県' in svg, 'review image is missing the key population clue'
           path.write_text(s, encoding='utf-8')
           PY
           node --check review-bank-v1.js
