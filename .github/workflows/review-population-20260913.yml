@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   update-review:
-    if: github.event.head_commit.message == 'Stage prefecture population review update'
+    if: github.event.head_commit.message == 'Trigger prefecture population review update'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
