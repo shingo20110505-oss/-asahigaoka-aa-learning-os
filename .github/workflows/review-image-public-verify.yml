@@ -1,0 +1,127 @@
+name: Verify Review Images on Pages
+
+on:
+  workflow_run:
+    workflows: ["Deploy AA Learning OS to GitHub Pages"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  verify-review-images:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    env:
+      BASE_URL: https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+      SOURCE_SHA: ${{ github.event.workflow_run.head_sha }}
+    steps:
+      - name: Checkout deployed source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 1
+
+      - name: Collect review image references
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE' > /tmp/review-images.txt
+          const fs=require('fs'),vm=require('vm');
+          const s={window:{}}; vm.createContext(s);
+          vm.runInContext(fs.readFileSync('review-bank-v1.js','utf8'),s);
+          const images=[...new Set((s.window.AA_REVIEW_BANK||[]).map(x=>x&&x.image).filter(Boolean))];
+          for(const image of images) console.log(image);
+          NODE
+          echo "review_image_count=$(grep -c . /tmp/review-images.txt || true)"
+
+      - name: Fetch and validate every public review image
+        shell: bash
+        run: |
+          set -euo pipefail
+          : > /tmp/review-image-urls.txt
+          n=0
+          while IFS= read -r image; do
+            [ -n "$image" ] || continue
+            case "$image" in
+              http:*|https:*|//*|*..*) echo "Unsafe review image path: $image" >&2; exit 1;;
+              assets/*) ;;
+              *) echo "Review image must stay under review/assets/: $image" >&2; exit 1;;
+            esac
+            n=$((n+1))
+            url="${BASE_URL}review/${image}?verify=${SOURCE_SHA}-${n}"
+            out="/tmp/review-image-${n}"
+            curl -fL --retry 3 --retry-delay 2 --connect-timeout 10 --max-time 30 "$url" -o "$out"
+            test -s "$out"
+            printf '%s\n' "$url" >> /tmp/review-image-urls.txt
+            case "${image##*.}" in
+              svg|SVG)
+                python - "$out" <<'PY'
+          import sys, xml.etree.ElementTree as ET
+          root=ET.parse(sys.argv[1]).getroot()
+          if root.tag.split('}')[-1].lower() != 'svg':
+              raise SystemExit('not an SVG root')
+          PY
+                ;;
+              png|PNG)
+                python - "$out" <<'PY'
+          import sys
+          data=open(sys.argv[1],'rb').read(8)
+          assert data == b'\x89PNG\r\n\x1a\n', 'invalid PNG signature'
+          PY
+                ;;
+              jpg|JPG|jpeg|JPEG)
+                python - "$out" <<'PY'
+          import sys
+          data=open(sys.argv[1],'rb').read()
+          assert data[:2] == b'\xff\xd8' and data[-2:] == b'\xff\xd9', 'invalid JPEG framing'
+          PY
+                ;;
+              webp|WEBP)
+                python - "$out" <<'PY'
+          import sys
+          data=open(sys.argv[1],'rb').read(12)
+          assert data[:4] == b'RIFF' and data[8:12] == b'WEBP', 'invalid WEBP framing'
+          PY
+                ;;
+              *) echo "Unsupported review image type: $image" >&2; exit 1;;
+            esac
+          done < /tmp/review-images.txt
+
+      - name: Verify browser can decode and display every public review image
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)
+          test -n "$CHROME"
+          python - <<'PY'
+          import json, html
+          urls=[line.strip() for line in open('/tmp/review-image-urls.txt',encoding='utf-8') if line.strip()]
+          srcs=''.join(f'<img src="{html.escape(u, quote=True)}" alt="review-image">' for u in urls)
+          script=r'''<script>
+          (async()=>{
+            const imgs=[...document.images];
+            const results=await Promise.all(imgs.map(img=>new Promise(resolve=>{
+              const done=()=>resolve(img.complete && img.naturalWidth>0 && img.naturalHeight>0);
+              if(img.complete) return done();
+              img.addEventListener('load',done,{once:true});
+              img.addEventListener('error',()=>resolve(false),{once:true});
+            })));
+            document.body.setAttribute('data-aa-review-images',results.every(Boolean)?'PASS':'FAIL');
+            document.body.setAttribute('data-aa-review-image-count',String(imgs.length));
+          })();
+          </script>'''
+          open('/tmp/review-image-browser-test.html','w',encoding='utf-8').write('<!doctype html><meta charset="utf-8"><body data-aa-review-images="PENDING">'+srcs+script+'</body>')
+          PY
+          rm -rf /tmp/aa-review-image-browser
+          timeout 90s "$CHROME" \
+            --headless=new \
+            --no-sandbox \
+            --disable-gpu \
+            --disable-dev-shm-usage \
+            --allow-file-access-from-files \
+            --user-data-dir=/tmp/aa-review-image-browser \
+            --virtual-time-budget=20000 \
+            --dump-dom file:///tmp/review-image-browser-test.html > /tmp/review-image-browser-dom.html
+          grep -q 'data-aa-review-images="PASS"' /tmp/review-image-browser-dom.html
+          echo "Public review images fetched, decoded, and displayed successfully."
