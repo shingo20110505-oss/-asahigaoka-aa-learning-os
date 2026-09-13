@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-13-12-43-00Z",
-  "updatedAt": "2026-09-13T12:43:00.725Z",
+  "poolVersion": "2026-09-13-12-51-42Z",
+  "updatedAt": "2026-09-13T12:51:42.016Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -708,6 +708,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-12T11:44:06.488Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application.english.reading_comprehension",
+        "difficulty": 8,
+        "question": "According to the notice, what is the main rule for students who want to join the volunteer clean-up activity?",
+        "context": "[School Notice: Green Earth Club Volunteer Day]\nDate: Saturday, November 14\nTime: 9:00 AM - 11:30 AM\nLocation: Kansai River Bank\nDetails: We will pick up plastic waste and empty bottles along the river. All participants must wear school physical education uniforms and bring their own working gloves. Free drinks will be provided at the end. If it rains, the event will postpone to the following day (Sunday). Registration deadline is by Friday, November 6 at the school office. Note: Students in the first and second yearso must submit a permission slip signed by their parents/guardians, regardless of age.",
+        "choices": [
+          "They must turn in a signed permission slip by November 6 if they are in the first or second year.",
+          "They are required to wear their regular everyday school uniforms during the clean-up.",
+          "They can register on the morning of the event at the Kansai River Bank without prior notice.",
+          "They must bring their own drinks and snacks because no refreshments will be provided."
+        ],
+        "answerIndex": 0,
+        "answer": "They must turn in a signed permission slip by November 6 if they are in the first or second year.",
+        "explanation": "The text states that registration must be done by Friday, November 6 at the school office and that first- and second-year students must submit a signed permission slip. Evaluating the alternatives, wearing everyday uniforms contradicts the requirement for physical education uniforms, registering on the morning is false since the deadline is November 6, and drinks are provided rather than absent. Therefore, the statement about turning in a signed permission slip by November 6 for first- or second-year students is correct.",
+        "evidence": "Registration deadline is by Friday, November 6 at the school office. Note: Students in the first and second yearso must submit a permission slip signed by their parents/guardians, regardless of age.",
+        "misconception": "Students might misread or assume that registration can be done on the day of the event or confuse the uniform requirements.",
+        "marks": 2,
+        "id": "rise-english-88037df264e40b36",
+        "fingerprint": "9a50b7f28830d678",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-13T12:51:41.979Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application.english.dialogue_inference",
+        "difficulty": 8,
+        "question": "What will Ken probably do next based on the conversation?",
+        "context": "Ken: Hi, Yoko. Are you ready for our presentation about local history tomorrow?\nYoko: Almost. I've finished the slides, but I'm worried about the time limit. We only have five minutes.\nKen: Let's check how long our speech takes right now. I have my stopwatch ready.\nYoko: Great. Let's start from the beginning. Tell me if I speak too fast.\nKen: Okay, go ahead.",
+        "choices": [
+          "He will time Yoko's speech with his stopwatch to check the length.",
+          "He will rewrite all the presentation slides by himself.",
+          "He will ask the teacher to change the presentation date to next week.",
+          "He will practice speaking instead of Yoko for the entire five minutes."
+        ],
+        "answerIndex": 0,
+        "answer": "He will time Yoko's speech with his stopwatch to check the length.",
+        "explanation": "Yoko expresses worry about the five-minute time limit. Ken responds by saying, 'Let's check how long our speech takes right now. I have my stopwatch ready.' This indicates he is about to time her practice speech. The other choices contradict his stated intention of timing the current speech.",
+        "evidence": "Let's check how long our speech takes right now. I have my stopwatch ready.",
+        "misconception": "Students might assume Ken will take over the presentation entirely or rewrite the slides, missing his immediate supportive role of timing the rehearsal.",
+        "marks": 2,
+        "id": "rise-english-3a468fbb04e333bf",
+        "fingerprint": "5bfa26583c28144e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-13T12:51:41.979Z"
+        }
+      },
+      {
+        "subject": "english",
+        "skill": "aichi.exam.application.english.information_synthesis",
+        "difficulty": 8,
+        "question": "Which of the following statements is true about the library rules described in the guide?",
+        "context": "[Library Use Guide]\n1. Opening Hours: Weekdays 8:30 AM - 5:00 PM. Closed on weekends and national holidays.\n2. Borrowing Books: Students can borrow up to three books at a time for two weeks.\n3. Computers: Internet use is allowed only for school projects and research. Games and social media are strictly prohibited.\n4. Food and Drink: Eating is not allowed anywhere inside the library. However, bottled water in sealed containers is permitted at reading desks only.",
+        "choices": [
+          "Students may use the library computers to check their social media accounts during lunch.",
+          "The library is open every Saturday afternoon for students who want to study.",
+          "Students are allowed to bring bottled water into the library as long as it is in a sealed container.",
+          "Students can borrow up to five books at a time for a period of one month."
+        ],
+        "answerIndex": 2,
+        "answer": "Students are allowed to bring bottled water into the library as long as it is in a sealed container.",
+        "explanation": "Rule 4 states that 'bottled water in sealed containers is permitted at reading desks only.' This directly supports the statement that students are allowed to bring bottled water if it is in a sealed container. The other choices violate the rules regarding book limits, computer use, and weekend closures.",
+        "evidence": "However, bottled water in sealed containers is permitted at reading desks only.",
+        "misconception": "Students might generalize the food and drink ban to mean absolutely no liquids of any kind are allowed, missing the specific exception for bottled water.",
+        "marks": 2,
+        "id": "rise-english-8fcdd1eabb0acc7e",
+        "fingerprint": "ea3535a1c7c5253b",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-13T12:51:41.979Z"
         }
       }
     ],
