@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-12-12-09-26Z",
-  "updatedAt": "2026-09-12T12:09:26.505Z",
+  "poolVersion": "2026-09-13-12-16-49Z",
+  "updatedAt": "2026-09-13T12:16:49.351Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2428,6 +2428,40 @@
           "verifierConfidence": 0.9,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-12T11:15:01.761Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.physics",
+        "difficulty": 8,
+        "question": "実験において、小球が斜面を下り始めてから水平面上を移動して静止するまでの間、小球の運動エネルギーが最も大きくなった瞬間について、最も適切な説明を1つ選びなさい。",
+        "context": "愛知県の公立高校の理科の授業で、斜面と水平面をなめらかにつないだコースを使い、質量200gの小球を斜面の高さ20cmの位置から静かに手放す実験を行った。小球は斜面を下り、水平面上を一定の距離進んでから摩擦によって減速し、やがて静止した。水平面と小球の間には一定の大きさの摩擦力がはたらいている。",
+        "choices": [
+          "水平面を進み始めてから、静止する直前の瞬間",
+          "斜面を下りきって、水平面に入った瞬間",
+          "水平面上を移動している途中で、ちょうど速さが最大になった瞬間",
+          "水平面上の摩擦力によって、減速し始めた瞬間"
+        ],
+        "answerIndex": 1,
+        "answer": "斜面を下りきって、水平面に入った瞬間",
+        "explanation": "小球は斜面を下る間、位置エネルギーが減少し、その分だけ運動エネルギーが増加するため、斜面の一番下（水平面に入った瞬間）で速さが最大になり、運動エネルギーも最大になります。水平面に入った後は、水平面との間に摩擦力がはたらくため、摩擦力によって仕事がされ続け、運動エネルギーは減少し続けます。したがって、水平面に入った瞬間が最も運動エネルギーが大きくなります。",
+        "evidence": "小球は斜面を下り、水平面上を一定の距離進んでから摩擦によって減速し、やがて静止した。",
+        "misconception": "水平面上を進んでいる最中に力が加わり続けて加速すると誤解し、摩擦で止まる直前や途中に最も速くなると考えてしまうこと。",
+        "marks": 2,
+        "id": "rise-science-c6900b551c8f2389",
+        "fingerprint": "0ad85d668f0a60d4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-13T12:16:49.328Z"
         }
       }
     ],
