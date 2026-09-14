@@ -79,7 +79,7 @@ try{
  for(const token of required)if(!text.includes(token))throw new Error(`Quality evidence missing: ${token}`);
  if(state.brand!=='Rise')throw new Error(`Wrong production brand: ${state.brand||'-'}`);
  if(state.navOwner!=='1.0.6')throw new Error(`Wrong navigation owner: ${state.navOwner||'-'}`);
- if(state.iaVersion!=='1.0.1')throw new Error(`Wrong information architecture: ${state.iaVersion||'-'}`);
+ if(state.iaVersion!=='1.0.2')throw new Error(`Wrong information architecture: ${state.iaVersion||'-'}`);
  if(state.shellGuard!=='1.0.3')throw new Error(`Legacy shell guard missing: ${state.shellGuard||'-'}`);
  if(state.shellGuardBuild!=='2026-09-11.1')throw new Error(`Startup flicker guard build missing: ${state.shellGuardBuild||'-'}`);
  if(state.booting)throw new Error('Rise boot guard did not reveal the production UI');
