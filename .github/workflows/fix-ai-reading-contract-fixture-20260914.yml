@@ -1,0 +1,69 @@
+name: Repair reading contract fixture blocking Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-ai-reading-contract-fixture-20260914.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Expand test passage without weakening production validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('tests/ai-reading-contract.mjs')
+          text = p.read_text()
+          old = """const passage = [
+  'A school club wanted to improve its meeting room. Students compared two plans and recorded clear evidence before they changed their final decision.',
+  'The first plan was cheaper, but it offered less space for group work. The second plan cost more, but students could use the room in several different ways.',
+  'After discussing both plans, the club chose the second plan. The members believed the extra space would help future activities even though it required more money.',
+  'Their choice showed that a good decision does not always mean choosing the lowest price. It can mean looking carefully at how something will be used.'
+].join('\\n\\n');"""
+          new = """const passage = [
+  'A school club wanted to improve its meeting room. Students compared two plans and recorded clear evidence before they changed their final decision.',
+  'The first plan was cheaper, but it offered less space for group work. The second plan cost more, but students could use the room in several different ways.',
+  'After discussing both plans, the club chose the second plan. The members believed the extra space would help future activities even though it required more money.',
+  'Their choice showed that a good decision does not always mean choosing the lowest price. It can mean looking carefully at how something will be used.'
+].map(paragraph => `${paragraph} ${paragraph} ${paragraph}`).join('\\n\\n');"""
+          if old not in text:
+              raise SystemExit('expected passage fixture not found')
+          p.write_text(text.replace(old, new, 1))
+          PY
+      - name: Verify contract and production gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check tests/ai-reading-contract.mjs
+          node tests/ai-reading-contract.mjs
+          node scripts/validate-runtime-assets.mjs
+          node scripts/validate-verified-question-pool.mjs
+      - name: Commit fixture repair
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add tests/ai-reading-contract.mjs
+          if git diff --cached --quiet; then
+            echo 'No fixture change required.'
+            exit 0
+          fi
+          git commit -m 'Fix reading contract passage length fixture'
+          git pull --rebase origin main
+          git push origin HEAD:main
