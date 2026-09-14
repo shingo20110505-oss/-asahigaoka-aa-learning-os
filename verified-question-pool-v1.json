@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-14-13-20-29Z",
-  "updatedAt": "2026-09-14T13:20:29.030Z",
+  "poolVersion": "2026-09-14-15-00-01Z",
+  "updatedAt": "2026-09-14T15:00:01.779Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1958,6 +1958,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-13T13:17:38.039Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading",
+        "difficulty": 8,
+        "question": "文章の内容に照らして、筆者が「効率的な対話」において最も重視している条件として適しているものはどれか。",
+        "context": "人間同士のコミュニケーションにおいて、単なる情報の伝達手段としての言語使用を超えた領域に、真の意思疎通の本質がある。しばしば私たちは、言葉数を増やすことや論理の正確さを極めることが対話の効率を上げると錯覚しがちである。しかし、実際のところ、相手の背景にある文脈や暗黙の前提を無視したまま言葉を積み重ねても、摩擦を生むだけであろう。効率的な対話とは、情報の密度が高い状態を指すのではなく、互いの前提の違いをあらかじめ引き受けた上で、言葉の背後にある意図を推し量る余白を共有できている状態を指すのである。",
+        "choices": [
+          "言語使用を超えた領域を排除し、情報伝達のスピードと正確さだけに集中すること",
+          "相手との前提の違いを前提とし、言葉の背後にある意図を推し量る余白を共有すること",
+          "言葉数をできる限り増やして、誤解の余地を完全に排除した情報を伝達すること",
+          "論理の正確さを極めて、情報の密度を高めた正確なロジックを構築すること"
+        ],
+        "answerIndex": 1,
+        "answer": "相手との前提の違いを前提とし、言葉の背後にある意図を推し量る余白を共有すること",
+        "explanation": "文章中では、単なる情報伝達や言葉数の増加、論理の正確さの追求ではなく、互いの前提の違いを引き受けた上で意図を推し量る余白を共有することが効率的な対話の状態であると述べられています。したがって、それと合致する選択肢が正解となります。他の選択肢は、文章が否定している要素や部分的な誤解を含んでいます。",
+        "evidence": "効率的な対話とは、情報の密度が高い状態を指すのではなく、互いの前提の違いをあらかじめ引き受けた上で、言葉の背後にある意図を推し量る余白を共有できている状態を指すのである。",
+        "misconception": "筆者が否定している「情報密度の高さ」や「論理の正確さの追求」を逆にとり、それが効率化につながるという誤解に基づくもの。",
+        "marks": 2,
+        "id": "rise-japanese-36905b2934756505",
+        "fingerprint": "27dabffb4592629d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-14T15:00:01.746Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.critical_thinking",
+        "difficulty": 8,
+        "question": "次の文章で述べられている筆者の主張をふまえたとき、筆者の見解に最も合致する行動はどれか。",
+        "context": "現代社会にあふれる膨大な情報は、私たちの判断力を高めるどころか、むしろ決断を遅らせる要因となっている。選択肢が多いほど自由度が増すという考え方は一見もっともらしいが、実際には選択の過多が「選べない苦しみ」を生み出している。重要なのは、情報を集め続けることではなく、自らの基準に基づいて不要なものを積極的に切り捨てる「引き算の思考」である。私たちは、足るを知り、あえて不完全な情報の中で決断を下す勇気を持たなければならない。",
+        "choices": [
+          "より多くの情報を徹底的に集めてから、完璧な選択肢を時間をかけて吟味すること",
+          "選択肢の数が多い環境を積極的に整えて、自由度を最大限に高めること",
+          "情報の多さに頼りながら、決断の先送りを繰り返して慎重を期すこと",
+          "あえて多くの情報収集を避け、自らの基準で情報を絞り込んで決断を下すこと"
+        ],
+        "answerIndex": 3,
+        "answer": "あえて多くの情報収集を避け、自らの基準で情報を絞り込んで決断を下すこと",
+        "explanation": "文章では情報を集め続けるのではなく「引き算の思考」によって不要なものを切り捨て、不完全な情報の中でも決断を下すことが重要であると主張されています。そのため、情報収集を制限し自らの基準で絞り込む行動が合致します。他は筆者の主張に反する内容です。",
+        "evidence": "重要なのは、情報を集め続けることではなく、自らの基準に基づいて不要なものを積極的に切り捨てる「引き算の思考」である。",
+        "misconception": "「情報の多さが判断力を高める」という一般的な思い込みや、慎重に情報を集めることが常に良いとする誤った一般化。",
+        "marks": 2,
+        "id": "rise-japanese-01aca2e913ce9cb5",
+        "fingerprint": "7e531af7bb9528f9",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-14T15:00:01.746Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.structure",
+        "difficulty": 8,
+        "question": "この文章の構成と展開について、最も適切に説明しているものはどれか。",
+        "context": "伝統的な職人の技というものは、言語化できない身体知に依存していると一般には考えられてきた。言葉によるマニュアル化を拒む領域にこそ本質があるという見方である。たしかに、全てのノウハウを形式知に置き換えることは不可能かもしれない。しかし、その不可知性を過剰に神格化してしまうと、技術の継承や発展は閉ざされたものになってしまう。だからこそ私たちは、言語化の限界を認めつつも、あえて言葉を尽くして暗黙の知を可視化しようとする試みを放棄してはならないのだ。",
+        "choices": [
+          "過去の文献から引用を行い、歴史的な変遷をたどりながら技術継承の難しさを解説している",
+          "一般の通念を提示した上で一定の理解を示しつつ、それを過度に神格化する弊害を指摘して独自の主張を展開している",
+          "はじめに独自の仮説を提示し、その具体例をいくつも列挙した上で結論を導き出している",
+          "伝統的な職人の技を完全に否定し、すべての技術を完全にマニュアル化すべきだと断言している"
+        ],
+        "answerIndex": 1,
+        "answer": "一般の通念を提示した上で一定の理解を示しつつ、それを過度に神格化する弊害を指摘して独自の主張を展開している",
+        "explanation": "冒頭で「言語化できない身体知に依存している」という一般の考え（通念）を挙げ、一定の理解を示したのち、それを過度に神格化する弊害を指摘し、最終的に「可視化しようとする試みを放棄してはならない」という独自の主張を述べています。",
+        "evidence": "たしかに、全てのノウハウを形式知に置き換えることは不可能かもしれない。しかし、その不可知性を過剰に神格化してしまうと、技術の継承や発展は閉ざされたものになってしまう。",
+        "misconception": "文章前半の譲歩表現（たしかに〜かもしれない）を筆者の最終的な結論であると勘違いしてしまう読解の罠。",
+        "marks": 2,
+        "id": "rise-japanese-2f8fb49a707c5eae",
+        "fingerprint": "7d9ee00e2c45ab98",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-14T15:00:01.746Z"
         }
       }
     ],
