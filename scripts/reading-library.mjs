@@ -64,17 +64,17 @@ async function writeJson(file, data) {
   await fs.writeFile(file + '.tmp', JSON.stringify(data, null, 2) + '\n');
   await fs.rename(file + '.tmp', file);
 }
-export async function replenish(directory, {env = process.env, generate = generateVerifiedReading, limit = 10, date = new Date()} = {}) {
+export async function replenish(directory, {env = process.env, generate = generateVerifiedReading, limit = 5, date = new Date()} = {}) {
   const manifest = await validateLibrary(directory);
   const statusFile = path.join(directory, 'generation-status.json');
   const previousStatus = JSON.parse(await fs.readFile(statusFile, 'utf8'));
   const day = new Date(date.getTime() + 9 * 3600000).toISOString().slice(0, 10);
   const status = previousStatus.day === day ? previousStatus : {schemaVersion: 1, day, attempted: 0, added: 0};
-  Object.assign(status, {dailyLimit: 10, lastRunAt: date.toISOString(), state: 'running'});
+  Object.assign(status, {dailyLimit: 5, lastRunAt: date.toISOString(), state: 'running'});
   const passages = await Promise.all(manifest.entries.map(async entry => JSON.parse(await fs.readFile(path.join(directory, entry.path), 'utf8')).reading.passage));
   await fs.mkdir(path.join(directory, 'items'), {recursive: true});
   let failures = 0;
-  const count = Math.max(0, Math.min(10 - status.attempted, Math.floor(limit)));
+  const count = Math.max(0, Math.min(5 - status.attempted, Math.floor(limit)));
   for (let i = 0; i < count; i++) {
     status.attempted++;
     await writeJson(statusFile, status);
@@ -119,6 +119,6 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
     // Bound individual upstream calls as well as the number of candidates per day.
     const upstreamFetch = globalThis.fetch;
     globalThis.fetch = (url, options = {}) => upstreamFetch(url, {...options, signal: AbortSignal.timeout(90000)});
-    console.log(JSON.stringify(await replenish(directory, {limit: Number(process.env.READING_LIMIT || 10)})));
+    console.log(JSON.stringify(await replenish(directory, {limit: Number(process.env.READING_LIMIT || 5)})));
   }
 }
