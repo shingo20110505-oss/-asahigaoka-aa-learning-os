@@ -31,8 +31,8 @@ try {
   assert.equal(quota.total, 1); assert.equal(quota.attempted, 3); assert.equal(quota.state, 'quota');
   assert.doesNotMatch(await fs.readFile(path.join(directory, 'generation-status.json'), 'utf8'), /private provider detail/);
   await fs.writeFile(path.join(directory, 'generation-status.json'), JSON.stringify({...quota, attempted: 10}));
-  const capped = await replenish(directory, {date: today, generate: () => {throw new Error('must not run');}});
-  assert.equal(capped.attempted, 10); assert.equal(capped.state, 'daily_limit');
+  const capped = await replenish(directory, {date: today, env: {READING_DAILY_LIMIT: '12'}, generate: () => {throw new Error('must not run');}});
+  assert.equal(capped.attempted, 10); assert.equal(capped.dailyLimit, 10); assert.equal(capped.state, 'daily_limit');
   assert.equal(nearDuplicate(passage, [passage.toUpperCase()]), true);
   assert.equal(nearDuplicate('A different narrative with another topic.', [passage]), false);
   const callsToBrowser = [], storage = new Map([['learner-progress', 'preserved']]);
@@ -71,5 +71,5 @@ try {
   assert.equal(progress({progress:{seen:3,correct:3,retention:.95,fromReading:false}}), 'mastered');
   await fs.writeFile(path.join(directory, entry.path), acceptedRaw + ' ');
   await assert.rejects(validateLibrary(directory), /digest_mismatch/);
-  console.log('Reading library checks passed: cross-provider verification, daily budget, quota, duplicates, append-only content, hashes, same-origin fetch, offline fallback, grammar/difficulty matching, retired banks, vocabulary bridge.');
+  console.log('Reading library checks passed: cross-provider verification, hard daily cap, quota, duplicates, append-only content, hashes, same-origin fetch, offline fallback, grammar/difficulty matching, retired banks, vocabulary bridge.');
 } finally {await fs.rm(directory, {recursive: true, force: true});}
