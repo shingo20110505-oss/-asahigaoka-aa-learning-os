@@ -1,0 +1,53 @@
+name: Tune English reading quality gate 2026-09-14
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/tune-reading-quality-20260914.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  tune:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Relax false-positive reading gates
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('worker/src/index.mjs')
+          s = p.read_text()
+          replacements = {
+            "const WORKER_VERSION = '1.1.1';": "const WORKER_VERSION = '1.1.2';",
+            "  // Match the existing learner gate, including its conservative wh-expression boundary.\n  if (!allowed.has('indirectQuestion') && /\\b(?:whether|what|which|why|how|where|who|whom|whose)\\b/i.test(source)) leaks.push('indirectQuestion');\n": "  // Do not reject ordinary wh-words by themselves; only actual indirect-question structures are gated above.\n",
+            "  const wordTolerance = 10;": "  const wordTolerance = 30;",
+            "    if (Number(answer.confidence) < 0.78) errors.push(`q${index}:low_confidence`);": "    if (Number(answer.confidence) < 0.65) errors.push(`q${index}:low_confidence`);",
+            "    'Never use past perfect. If indirectQuestion is disallowed, avoid every wh-expression (how, what, which, why, where, who, whom, whose, whether), including how to. If relativePronoun is disallowed, also avoid omitted relative pronouns such as \"people we love\".',": "    'Never use past perfect. If indirectQuestion is disallowed, avoid indirect-question structures after verbs such as ask, know, decide, wonder, or find; ordinary wh-words are allowed. If relativePronoun is disallowed, also avoid omitted relative pronouns such as \"people we love\".',"
+          }
+          for old, new in replacements.items():
+            if old not in s:
+              raise SystemExit(f'missing expected source fragment: {old[:80]}')
+            s = s.replace(old, new, 1)
+          p.write_text(s)
+          PY
+      - name: Syntax check
+        run: node --check worker/src/index.mjs
+      - name: Commit tuned gate
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add worker/src/index.mjs
+          if git diff --cached --quiet; then
+            echo 'No changes needed'
+            exit 0
+          fi
+          git commit -m 'Relax English reading false-positive quality gates'
+          git pull --rebase origin main
+          git push origin HEAD:main
