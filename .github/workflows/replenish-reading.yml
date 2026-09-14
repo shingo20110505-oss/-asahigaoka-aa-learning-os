@@ -29,9 +29,9 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.5-flash' }}
-          # One candidate can use up to four calls (author + blind verifier,
-          # with one retry). Keep daily capacity for the future Japanese bank.
-          READING_LIMIT: '1'
+          # Try up to five candidates per day so one rejected candidate does not stall replenishment.
+          # Each candidate can use author + blind-verifier calls and one internal retry.
+          READING_LIMIT: '5'
         run: node scripts/reading-library.mjs
       - name: Save accepted content and publish
         if: always()
