@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-14-12-38-52Z",
-  "updatedAt": "2026-09-14T12:38:52.745Z",
+  "poolVersion": "2026-09-14-13-20-29Z",
+  "updatedAt": "2026-09-14T13:20:29.030Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2700,6 +2700,74 @@
           "verifierConfidence": 0.9,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-13T12:16:49.328Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemical_change",
+        "difficulty": 8,
+        "question": "文中の実験結果から、試験管Dに加えた希塩酸の質量が20.0gのとき、発生した気体の質量は何gか。最も適当なものを1つ選べ。",
+        "context": "炭酸水素ナトリウムの質量を一定の1.5gにし、加える希塩酸の質量を5.0g、10.0g、15.0g、20.0g、25.0gと変化させて、それぞれ発生した気体の質量を測定した。実験結果によると、希塩酸5.0gでは0.8gの気体が発生し、希塩酸10.0gでは1.6gの気体が発生し、希塩酸15.0gでは2.4gの気体が発生し、希塩酸20.0gでは2.4gの気体が発生し、希塩酸25.0gでは2.4gの気体が発生した。",
+        "choices": [
+          "3.0g",
+          "1.6g",
+          "2.0g",
+          "2.4g"
+        ],
+        "answerIndex": 3,
+        "answer": "2.4g",
+        "explanation": "炭酸水素ナトリウム1.5gに対し、希塩酸が5.0g、10.0g、15.0gのときは発生する気体の質量が比例して増加しています（それぞれ0.8g、1.6g、2.4g）。しかし、希塩酸が20.0gおよび25.0gのときは、発生する気体の質量は2.4gで一定となっています。これは、加えた炭酸水素ナトリウム1.5gが完全に反応しきってしまい、反応する物質がなくなった（過不足なく反応したのが希塩酸15.0gのときである）ためです。したがって、希塩酸20.0gのときも発生する気体は2.4gとなります。最も強力な罠は、塩酸の質量と発生する気体の質量がどこまでも比例し続けると誤解し、20.0gのときに3.2gなどと計算してしまうミスです。",
+        "evidence": "希塩酸20.0gでは2.4gの気体が発生し",
+        "misconception": "反応物がすべて消費されて反応が終了しているにもかかわらず、加えた薬液の量に比例して無制限に生成物が増え続けると誤認する誤解。",
+        "marks": 2,
+        "id": "rise-science-ded4897d315f2421",
+        "fingerprint": "6edb0d8d316136e3",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-14T13:20:28.982Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.electric_circuit",
+        "difficulty": 8,
+        "question": "文中の実験回路において、電熱線に加わる電圧を2倍にしたとき、消費される電力は何倍になるか。最も適当なものを1つ選べ。",
+        "context": "一定の抵抗を持つ電熱線を用いて回路を組み立て、電源の電圧を変化させて電流と電圧の値を測定した。その結果、電熱線にかかる電圧をV[V]、流れる電流をI[A]としたとき、オームの法則に従い電圧に比例して電流も大きくなった。この電熱線に加える電圧を元の2倍にした。",
+        "choices": [
+          "8倍",
+          "1倍",
+          "2倍",
+          "4倍"
+        ],
+        "answerIndex": 3,
+        "answer": "4倍",
+        "explanation": "電力Pは電圧Vと電流Iの積（P = V × I）で表されます。オームの法則により、抵抗Rが一定であれば、電圧Vを2倍にすると流れる電流Iも2倍になります。したがって、消費される電力は「電圧の2倍 × 電流の2倍」となり、元の4倍になります。最も強力な罠は、電力は電圧に比例するだけだと勘違いして、電圧を2倍にしたのだから電力も2倍になると考えてしまうミスです。",
+        "evidence": "オームの法則に従い電圧に比例して電流も大きくなった",
+        "misconception": "電力（P=VI）を求める際に、電圧が2倍になると電流も2倍になることで電力が4倍になることを見落とし、電圧の倍率がそのまま電力の倍率になると誤解する misconception。",
+        "marks": 2,
+        "id": "rise-science-d4e4a9f46e9dc130",
+        "fingerprint": "07d9933e22fe57f4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-14T13:20:28.982Z"
         }
       }
     ],
