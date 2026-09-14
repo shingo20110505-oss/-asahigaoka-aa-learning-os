@@ -265,8 +265,17 @@ export async function callGroqJson(env, request) {
     mode = 'json_object_fallback';
     fallbackFrom = 'json_schema_failed_generation';
   }
-  const output = parseGroqJson(payload);
-  const validation = validateGroqOutputAgainstSchema(output, schema);
-  if (!validation.ok) throw new GroqProviderError(502, 'Groq output did not satisfy the Rise verification schema.', 'groq_schema_mismatch', validation.errors.slice(0, 12).join('|'));
-  return { output, provider: 'groq', model, mode, fallbackFrom };
-}
+  let output = parseGroqJson(payload);
+    let validation = validateGroqOutputAgainstSchema(output, schema);
+    if (!validation.ok && schemaName === READING_VERIFIER_SCHEMA_NAME && mode === 'json_schema' && request?.allowJsonObjectFallback !== false) {
+      const fallbackBody = buildRequestBody({ model, mode: 'json_object', input, schema, schemaName, systemInstruction, maxOutputTokens, temperature, reasoningEffort });
+      const fallback = await sendGroq(apiKey, fallbackBody, timeoutMs);
+      if (!fallback.response.ok) throwGroqHttpError(fallback.response, fallback.payload);
+      output = parseGroqJson(fallback.payload);
+      validation = validateGroqOutputAgainstSchema(output, schema);
+      mode = 'json_object_validation_fallback';
+      fallbackFrom = 'json_schema_local_validation';
+    }
+    if (!validation.ok) throw new GroqProviderError(502, 'Groq output did not satisfy the Rise verification schema.', 'groq_schema_mismatch', validation.errors.slice(0, 12).join('|'));
+    return { output, provider: 'groq', model, mode, fallbackFrom };
+    }
