@@ -17,37 +17,93 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Relax false-positive reading gates
+      - name: Tune reading acceptance and structured output
         run: |
           python - <<'PY'
           from pathlib import Path
-          p = Path('worker/src/index.mjs')
-          s = p.read_text()
-          replacements = {
-            "const WORKER_VERSION = '1.1.1';": "const WORKER_VERSION = '1.1.2';",
-            "  // Match the existing learner gate, including its conservative wh-expression boundary.\n  if (!allowed.has('indirectQuestion') && /\\b(?:whether|what|which|why|how|where|who|whom|whose)\\b/i.test(source)) leaks.push('indirectQuestion');\n": "  // Do not reject ordinary wh-words by themselves; only actual indirect-question structures are gated above.\n",
-            "  const wordTolerance = 10;": "  const wordTolerance = 30;",
-            "    if (Number(answer.confidence) < 0.78) errors.push(`q${index}:low_confidence`);": "    if (Number(answer.confidence) < 0.65) errors.push(`q${index}:low_confidence`);",
-            "    'Never use past perfect. If indirectQuestion is disallowed, avoid every wh-expression (how, what, which, why, where, who, whom, whose, whether), including how to. If relativePronoun is disallowed, also avoid omitted relative pronouns such as \"people we love\".',": "    'Never use past perfect. If indirectQuestion is disallowed, avoid indirect-question structures after verbs such as ask, know, decide, wonder, or find; ordinary wh-words are allowed. If relativePronoun is disallowed, also avoid omitted relative pronouns such as \"people we love\".',"
-          }
-          for old, new in replacements.items():
-            if old not in s:
-              raise SystemExit(f'missing expected source fragment: {old[:80]}')
-            s = s.replace(old, new, 1)
-          p.write_text(s)
+
+          def replace_once(path, old, new):
+              p = Path(path)
+              s = p.read_text()
+              if old not in s:
+                  raise SystemExit(f'missing expected source fragment in {path}: {old[:120]}')
+              p.write_text(s.replace(old, new, 1))
+
+          # Keep the entrance-exam length target, but do not reject a sound passage
+          # for being only a few dozen words outside the preferred band.
+          replace_once(
+              'worker/src/index.mjs',
+              '  const wordTolerance = 30;',
+              '  const wordTolerance = 50;'
+          )
+
+          # Relative-pronoun and participle structures are normal receptive-reading
+          # material for a grade-9 entrance-exam learner. Keep the raw detector for
+          # diagnostics, but make only the genuinely advanced gates blocking here.
+          replace_once(
+              'worker/src/index.mjs',
+              '  const leaks = auditGrammarLeak(passage, request.allowedGrammar);\n  if (leaks.length) errors.push(`grammar_leak:${leaks.join(\',\')}`);',
+              "  const leaks = auditGrammarLeak(passage, request.allowedGrammar).filter(tag => !['relativePronoun', 'participle'].includes(tag));\n  if (leaks.length) errors.push(`grammar_leak:${leaks.join(',')}`);"
+          )
+          replace_once(
+              'worker/src/index.mjs',
+              '      if (auditGrammarLeak(text, request.allowedGrammar).length) errors.push(`q${index}:choice${choiceIndex}:grammar`);',
+              "      if (auditGrammarLeak(text, request.allowedGrammar).some(tag => !['relativePronoun', 'participle'].includes(tag))) errors.push(`q${index}:choice${choiceIndex}:grammar`);"
+          )
+
+          # The append-only library re-validates accepted payloads. Keep it aligned
+          # with the Worker so a valid cross-provider result is not rejected later.
+          replace_once(
+              'scripts/reading-library.mjs',
+              "  if (auditGrammarLeak(english, request.allowedGrammar).length) throw new Error('grammar_rejected');",
+              "  if (auditGrammarLeak(english, request.allowedGrammar).some(tag => !['relativePronoun', 'participle'].includes(tag))) throw new Error('grammar_rejected');"
+          )
+
+          # The live UI performs one final local grammar check. Apply the same
+          # receptive-reading tolerance there so production behavior matches CI.
+          replace_once(
+              'ai-reading-v1.js',
+              "    const leaks = grammarLeakAudit(passage);\n    if (leaks.length) throw appError('grammar_rejected', `未履修文法が検出されました（${leaks.join(', ')}）。`);",
+              "    const leaks = grammarLeakAudit(passage).filter(tag => !['relativePronoun', 'participle'].includes(tag));\n    if (leaks.length) throw appError('grammar_rejected', `未履修文法が検出されました（${leaks.join(', ')}）。`);"
+          )
+          replace_once(
+              'ai-reading-v1.js',
+              "        if (grammarLeakAudit(data.reading.passage).length) throw new Error('今の文法範囲に合う教材を補充しています。');",
+              "        if (grammarLeakAudit(data.reading.passage).some(tag => !['relativePronoun', 'participle'].includes(tag))) throw new Error('今の文法範囲に合う教材を補充しています。');"
+          )
+
+          # Constrain Gemini's lightweight schema to the exact question-type IDs
+          # Rise understands. This prevents otherwise good candidates from failing
+          # later with qN:type after spending provider quota.
+          replace_once(
+              'worker/src/providers/gemini.mjs',
+              "        properties: {\n          type: { type: 'string' },\n          stemJa: { type: 'string' },",
+              "        properties: {\n          type: { type: 'string', enum: ['detail', 'cause', 'inference', 'paraphrase', 'mainIdea', 'title', 'referent', 'paragraphRole', 'sentenceInsertion', 'summary'] },\n          stemJa: { type: 'string' },"
+          )
           PY
-      - name: Syntax check
-        run: node --check worker/src/index.mjs
+      - name: Verify tuned contracts
+        run: |
+          set -euo pipefail
+          node --check worker/src/index.mjs
+          node --check worker/src/providers/gemini.mjs
+          node --check scripts/reading-library.mjs
+          node --check ai-reading-v1.js
+          node tests/ai-reading-contract.mjs
+          node tests/ai-gemini-current-contract.mjs
+          node tests/reading-library.mjs
       - name: Commit tuned gate
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add worker/src/index.mjs
+          git add worker/src/index.mjs worker/src/providers/gemini.mjs scripts/reading-library.mjs ai-reading-v1.js
           if git diff --cached --quiet; then
             echo 'No changes needed'
             exit 0
           fi
-          git commit -m 'Relax English reading false-positive quality gates'
-          git pull --rebase origin main
-          git push origin HEAD:main
+          git commit -m 'Relax English reading false-positive gates and constrain question types'
+          for n in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then break; fi
+            if [ "$n" = 3 ]; then exit 1; fi
+          done
