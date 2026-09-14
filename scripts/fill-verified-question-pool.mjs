@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const SUBJECTS = new Set(['english', 'math', 'japanese', 'science', 'social']);
+const CONTINUOUS_SUBJECTS = new Set(['math', 'japanese', 'science', 'social']);
 const subject = String(process.env.RISE_SUBJECT || process.argv[2] || '').trim().toLowerCase();
 const workerUrl = String(process.env.RISE_AI_WORKER_URL || 'https://asahigaoka-aa-ai-reading.shingo-20110505.workers.dev').replace(/\/+$/, '');
 const origin = 'https://shingo20110505-oss.github.io';
@@ -20,14 +21,15 @@ const allItems = Object.values(pool.subjects).flatMap(items => Array.isArray(ite
 const existingIds = new Set(allItems.map(item => String(item?.id || '')).filter(Boolean));
 const existingFingerprints = new Set(allItems.map(item => String(item?.fingerprint || '')).filter(Boolean));
 const target = Math.max(1, Number(pool.targetPerSubject || 24) || 24);
-const gap = Math.max(0, target - pool.subjects[subject].length);
+const continuous = CONTINUOUS_SUBJECTS.has(subject);
+const gap = continuous ? maxPerRun : Math.max(0, target - pool.subjects[subject].length);
 
-if (!gap) {
+if (!continuous && !gap) {
   console.log(`[rise-pool] ${subject}: target already satisfied (${target}). No API call.`);
   process.exit(0);
 }
 
-const count = Math.min(maxPerRun, gap);
+const count = continuous ? maxPerRun : Math.min(maxPerRun, gap);
 const requestBody = {
   schemaVersion: 2,
   subject,
@@ -86,9 +88,10 @@ if (!accepted.length) {
 }
 
 pool.subjects[subject].push(...accepted);
-pool.subjects[subject] = pool.subjects[subject].slice(0, target);
+if (!continuous) pool.subjects[subject] = pool.subjects[subject].slice(0, target);
 pool.updatedAt = new Date().toISOString();
 pool.poolVersion = pool.updatedAt.replace(/[:T]/g, '-').replace(/\.\d{3}Z$/, 'Z');
 
 await fs.writeFile(poolPath, `${JSON.stringify(pool, null, 2)}\n`, 'utf8');
-console.log(`[rise-pool] ${subject}: added ${accepted.length}; now ${pool.subjects[subject].length}/${target}.`);
+const suffix = continuous ? ' (continuous growth)' : `/${target}`;
+console.log(`[rise-pool] ${subject}: added ${accepted.length}; now ${pool.subjects[subject].length}${suffix}.`);
