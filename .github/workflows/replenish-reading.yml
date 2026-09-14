@@ -28,11 +28,17 @@ jobs:
       - name: Generate and independently verify
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.5-flash' }}
-          # Try up to five candidates per day so one rejected candidate does not stall replenishment.
-          # Each candidate can use author + blind-verifier calls and one internal retry.
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.5-flash-lite' }}
+          GEMINI_FALLBACK_MODEL: ${{ vars.GEMINI_FALLBACK_MODEL || 'gemini-3.1-flash-lite' }}
+          # Gemini authors each candidate; Groq independently verifies the answer key.
+          # A Gemini 429 gets one retry on the configured free fallback model.
           READING_LIMIT: '5'
-        run: node scripts/reading-library.mjs
+        run: |
+          set -euo pipefail
+          test -n "$GEMINI_API_KEY"
+          test -n "$GROQ_API_KEY"
+          node scripts/reading-library.mjs
       - name: Save accepted content and publish
         if: always()
         env:
