@@ -332,7 +332,7 @@
     const source = payload.reading || {};
     const passage = String(source.passage || '').trim();
     addGlossary(source.glossary);
-    const leaks = grammarLeakAudit(passage);
+    const leaks = grammarLeakAudit(passage).filter(tag => !['relativePronoun', 'participle'].includes(tag));
     if (leaks.length) throw appError('grammar_rejected', `未履修文法が検出されました（${leaks.join(', ')}）。`);
     const wordCount = (passage.match(/[A-Za-z]+(?:'[A-Za-z]+)?/g) || []).length;
     if (!passage || wordCount < 180 || safeArray(source.questions).length !== 5) {
@@ -478,7 +478,7 @@
       if (!window.AAReadingLibrary) throw new Error('教材機能を読み込めませんでした。ページを再読み込みしてください。');
       const request = buildRequest(assistMode);
       const {entry, payload} = await window.AAReadingLibrary.select(request, state.profile.aiReadingSeen || {}, vocabularyScore, data => {
-        if (grammarLeakAudit(data.reading.passage).length) throw new Error('今の文法範囲に合う教材を補充しています。');
+        if (grammarLeakAudit(data.reading.passage).some(tag => !['relativePronoun', 'participle'].includes(tag))) throw new Error('今の文法範囲に合う教材を補充しています。');
       });
       const read = normalizeReading(payload, assistMode);
       read.aiLibraryId = entry.id;

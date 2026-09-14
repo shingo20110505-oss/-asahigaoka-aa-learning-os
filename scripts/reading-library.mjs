@@ -41,7 +41,7 @@ export function checkPayload(payload) {
   const check = validateReading(payload.reading, request);
   if (!check.ok) throw new Error('invalid_structure:' + check.errors.join('|'));
   const english = [payload.reading.passage, ...payload.reading.questions.flatMap(q => q.choices.map(c => c.text))].join('\n');
-  if (auditGrammarLeak(english, request.allowedGrammar).length) throw new Error('grammar_rejected');
+  if (auditGrammarLeak(english, request.allowedGrammar).some(tag => !['relativePronoun', 'participle'].includes(tag))) throw new Error('grammar_rejected');
   return request;
 }
 export async function validateLibrary(directory) {

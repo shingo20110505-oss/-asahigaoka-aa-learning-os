@@ -39,7 +39,7 @@ const LIGHTWEIGHT_READING_SCHEMA = Object.freeze({
         type: 'object',
         required: ['type', 'stemJa', 'choices', 'choiceReasonsJa', 'answerIndex', 'explanationJa', 'evidenceQuote'],
         properties: {
-          type: { type: 'string' },
+          type: { type: 'string', enum: ['detail', 'cause', 'inference', 'paraphrase', 'mainIdea', 'title', 'referent', 'paragraphRole', 'sentenceInsertion', 'summary'] },
           stemJa: { type: 'string' },
           choices: { type: 'array', items: { type: 'string' } },
           choiceReasonsJa: { type: 'array', items: { type: 'string' } },

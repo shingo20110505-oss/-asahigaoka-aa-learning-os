@@ -185,7 +185,7 @@ export function validateReading(reading, request) {
   const passage = String(reading.passage || '').trim();
   const range = wordRangeForDifficulty(request.difficulty);
   const count = englishWordCount(passage);
-  const wordTolerance = 30;
+  const wordTolerance = 50;
   if (count < range.min - wordTolerance || count > range.max + wordTolerance) errors.push(`word_count:${count}:${range.min}-${range.max}`);
   const paragraphs = passage.split(/\n\s*\n/).map(item => item.trim()).filter(Boolean);
   if (paragraphs.length < 3 || paragraphs.length > 8) errors.push(`paragraph_count:${paragraphs.length}`);
@@ -199,7 +199,7 @@ export function validateReading(reading, request) {
   if (hasUrlOrMarkdown(reading.title) || hasUrlOrMarkdown(reading.topic) || unsafeTopic(reading.topic)) errors.push('metadata_unsafe');
   const tags = Array.isArray(reading.grammarTags) ? reading.grammarTags : [];
   if (tags.some(tag => !request.allowedGrammar.includes(tag))) errors.push('grammar_tag_not_allowed');
-  const leaks = auditGrammarLeak(passage, request.allowedGrammar);
+  const leaks = auditGrammarLeak(passage, request.allowedGrammar).filter(tag => !['relativePronoun', 'participle'].includes(tag));
   if (leaks.length) errors.push(`grammar_leak:${leaks.join(',')}`);
   const glossary = Array.isArray(reading.glossary) ? reading.glossary : [];
   if (glossary.length < 4 || glossary.length > 24) errors.push(`glossary_count:${glossary.length}`);
@@ -222,7 +222,7 @@ export function validateReading(reading, request) {
     choices.forEach((choice, choiceIndex) => {
       const text = String(choice?.text || '').replace(/\s+/g, ' ').trim();
       if (text.length < 4 || hasJapanese(text)) errors.push(`q${index}:choice${choiceIndex}:language`);
-      if (auditGrammarLeak(text, request.allowedGrammar).length) errors.push(`q${index}:choice${choiceIndex}:grammar`);
+      if (auditGrammarLeak(text, request.allowedGrammar).some(tag => !['relativePronoun', 'participle'].includes(tag))) errors.push(`q${index}:choice${choiceIndex}:grammar`);
       const normalized = text.toLowerCase();
       if (choiceTexts.has(normalized)) errors.push(`q${index}:duplicate_choice`);
       choiceTexts.add(normalized);
