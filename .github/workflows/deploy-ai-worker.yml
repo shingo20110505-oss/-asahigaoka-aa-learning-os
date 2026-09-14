@@ -53,6 +53,7 @@ jobs:
           node tests/ai-gemini-current-contract.mjs
           node tests/ai-reading-contract.mjs
           node tests/ai-reading-groq-contract.mjs
+          node tests/ai-reading-groq-validation-fallback.mjs
           node tests/ai-subject-verifier-contract.mjs
           node tests/ai-exam-platform-contract.mjs
           node tests/ai-api-hardening-contract.mjs
