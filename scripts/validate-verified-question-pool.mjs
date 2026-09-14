@@ -3,6 +3,7 @@ import fs from 'node:fs';
 const file = process.argv[2] || 'verified-question-pool-v1.json';
 const pool = JSON.parse(fs.readFileSync(file, 'utf8'));
 const subjects = ['english', 'math', 'japanese', 'science', 'social'];
+const continuousSubjects = new Set(['math', 'japanese', 'science', 'social']);
 const ids = new Set();
 const fingerprints = new Set();
 
@@ -12,7 +13,9 @@ if (!Number.isInteger(pool?.targetPerSubject) || pool.targetPerSubject < 1 || po
 for (const subject of subjects) {
   const items = pool?.subjects?.[subject];
   if (!Array.isArray(items)) throw new Error(`missing subject array: ${subject}`);
-  if (items.length > pool.targetPerSubject) throw new Error(`${subject}: pool exceeds target`);
+  // targetPerSubject remains the initial baseline. Math/Japanese/Science/Social
+  // intentionally continue growing beyond it; English keeps the legacy cap.
+  if (!continuousSubjects.has(subject) && items.length > pool.targetPerSubject) throw new Error(`${subject}: pool exceeds target`);
   for (const item of items) {
     if (item?.subject !== subject) throw new Error(`${subject}: subject mismatch`);
     if (!/^rise-(english|math|japanese|science|social)-[0-9a-f]{16}$/.test(String(item?.id || ''))) throw new Error(`${subject}: invalid id`);
