@@ -136,13 +136,34 @@ function mapExamError(error) {
   return new ApiError(error.code, error.message, error.status, error.diagnostic);
 }
 
+function buildStrictReadingAuthorPrompt(request, attempt) {
+  const typePlan = attempt === 1
+    ? ['detail', 'inference', 'cause', 'mainIdea', 'summary']
+    : ['detail', 'inference', 'paraphrase', 'title', 'summary'];
+  const rules = [
+    `HARD QUESTION-TYPE CONTRACT: use these exact type IDs in this exact order: ${typePlan.join(', ')}. Never invent, translate, capitalize differently, or substitute a type ID.`,
+    'HARD LENGTH CONTRACT: before returning JSON, count only English words in passage. Do not return until passage is inside the target word range stated above. If it is short, add relevant evidence, contrast, or detail using only allowed grammar.',
+    'HARD LANGUAGE CONTRACT: passage and every choices[] English text must contain English only. Japanese belongs only in stemJa, reasonJa, explanationJa, lessonJa, glossary meaningJa, and translationJa.',
+    'HARD EVIDENCE CONTRACT: finalize passage first. Then copy every evidenceQuote character-for-character as one contiguous substring from that finalized passage. Never paraphrase the quote.',
+    'HARD CHOICE CONTRACT: every question has exactly four distinct English choice strings. Keep all choice grammar inside the same allowed grammar list as the passage.',
+    'FINAL SELF-CHECK BEFORE OUTPUT: verify word count, five exact type IDs, four English choices per question, allowed grammar only, and five exact evidence substrings. Repair any violation before emitting JSON.'
+  ];
+  if (!request.allowedGrammar.includes('relativePronoun')) {
+    rules.push('RELATIVE-CLAUSE BAN: do not use who, whom, whose, or a noun followed by which/that as a relative clause. Also avoid omitted-relative patterns such as "people we know", "books I read", or "things they use" in passage and choices.');
+  }
+  if (!request.allowedGrammar.includes('indirectQuestion')) {
+    rules.push('INDIRECT-QUESTION BAN: do not use ask/know/decide/wonder/find followed by whether, what, which, why, how, where, who, or when clauses in passage or choices.');
+  }
+  return `${buildAuthorPrompt(request, attempt)}\n${rules.join('\n')}`;
+}
+
 export async function generateVerifiedReading(env, request) {
   const failures = [];
   for (let attempt = 1; attempt <= 2; attempt++) {
     let authored;
     try {
       authored = await callGeminiJson(env, {
-        input: buildAuthorPrompt(request, attempt),
+        input: buildStrictReadingAuthorPrompt(request, attempt),
         schema: READING_SCHEMA,
         schemaName: 'rise_english_reading',
         maxOutputTokens: 10000,
