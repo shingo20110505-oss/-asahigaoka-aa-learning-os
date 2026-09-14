@@ -70,11 +70,11 @@ export async function replenish(directory, {env = process.env, generate = genera
   const previousStatus = JSON.parse(await fs.readFile(statusFile, 'utf8'));
   const day = new Date(date.getTime() + 9 * 3600000).toISOString().slice(0, 10);
   const status = previousStatus.day === day ? previousStatus : {schemaVersion: 1, day, attempted: 0, added: 0};
-  Object.assign(status, {dailyLimit: 5, lastRunAt: date.toISOString(), state: 'running'});
+  Object.assign(status, {dailyLimit: 10, lastRunAt: date.toISOString(), state: 'running'});
   const passages = await Promise.all(manifest.entries.map(async entry => JSON.parse(await fs.readFile(path.join(directory, entry.path), 'utf8')).reading.passage));
   await fs.mkdir(path.join(directory, 'items'), {recursive: true});
   let failures = 0;
-  const count = Math.max(0, Math.min(5 - status.attempted, Math.floor(limit)));
+  const count = Math.max(0, Math.min(10 - status.attempted, Math.floor(limit)));
   for (let i = 0; i < count; i++) {
     status.attempted++;
     await writeJson(statusFile, status);
