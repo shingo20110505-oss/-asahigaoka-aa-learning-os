@@ -8,7 +8,7 @@ import {replenish, validateLibrary, digest, nearDuplicate} from '../scripts/read
 const root = path.resolve(import.meta.dirname, '..');
 const sentence = 'Students compared two plans and recorded clear evidence before they changed their final decision.';
 const passage = Array.from({length: 4}, () => Array.from({length: 6}, () => sentence).join(' ')).join('\n\n');
-const fixture = request => ({schemaVersion: 1, quality: {verified: true, method: 'independent-blind-answer-check', model: 'test-only', checkedAt: new Date().toISOString()},
+const fixture = request => ({schemaVersion: 1, quality: {verified: true, method: 'cross-provider-blind-answer-check', model: 'test-only', generationProvider: 'gemini', verificationProvider: 'groq', checkedAt: new Date().toISOString()},
   reading: {title: 'Comparing Two Plans', passage, translationJa: '生徒たちは二つの計画を比較し、判断の前に根拠を記録しました。'.repeat(12),
     readingType: request.readingType, difficulty: request.difficulty, topic: 'planning', lessonJa: '本文にある比較と記録から根拠を考えます。', grammarTags: ['basic', 'past'],
     glossary: ['compare', 'record', 'evidence', 'decision'].map(word => ({word, meaningJa: '検査用の語義'})),
@@ -26,6 +26,7 @@ try {
   assert.equal(first.total, 1, 'same passage cannot be re-added with different answers or genre');
   const manifest = await validateLibrary(directory), entry = manifest.entries[0];
   const acceptedRaw = await fs.readFile(path.join(directory, entry.path), 'utf8');
+  assert.equal(JSON.parse(acceptedRaw).quality.method, 'cross-provider-blind-answer-check');
   const quota = await replenish(directory, {date: today, limit: 10, generate: async () => {throw Object.assign(new Error('private provider detail'), {code: 'quota_exceeded'});}});
   assert.equal(quota.total, 1); assert.equal(quota.attempted, 3); assert.equal(quota.state, 'quota');
   assert.doesNotMatch(await fs.readFile(path.join(directory, 'generation-status.json'), 'utf8'), /private provider detail/);
@@ -46,7 +47,7 @@ try {
   vm.runInContext(await fs.readFile(path.join(root, 'ai-reading-library-v1.js'), 'utf8'), context);
   const api = context.window.AAReadingLibrary;
   const request = {difficulty: 7, readingType: 'mixed', allowedGrammar: entry.requiredGrammar};
-  assert.equal((await api.select(request, {})).entry.id, entry.id);
+  assert.equal((await api.select(request, {})).entry.id, entry.id, 'cross-provider verified reading must be selectable in the browser');
   assert.equal(callsToBrowser.every(c => c.url.startsWith('https://site.test/app/ai-reading-library/') && c.options.credentials === 'omit' && !c.options.body && !c.options.headers?.authorization), true);
   const unseen = {...entry, id: 'b'.repeat(64), sha256: 'b'.repeat(64), path: `items/${'b'.repeat(64)}.json`};
   assert.equal(api.rank([entry, unseen], request, {[entry.id]: 1})[0].id, unseen.id);
@@ -70,5 +71,5 @@ try {
   assert.equal(progress({progress:{seen:3,correct:3,retention:.95,fromReading:false}}), 'mastered');
   await fs.writeFile(path.join(directory, entry.path), acceptedRaw + ' ');
   await assert.rejects(validateLibrary(directory), /digest_mismatch/);
-  console.log('Reading library checks passed: daily budget, quota, duplicates, append-only content, hashes, same-origin fetch, offline fallback, grammar/difficulty matching, retired banks, vocabulary bridge.');
+  console.log('Reading library checks passed: cross-provider verification, daily budget, quota, duplicates, append-only content, hashes, same-origin fetch, offline fallback, grammar/difficulty matching, retired banks, vocabulary bridge.');
 } finally {await fs.rm(directory, {recursive: true, force: true});}
