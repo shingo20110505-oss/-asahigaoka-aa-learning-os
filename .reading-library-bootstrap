@@ -2,3 +2,4 @@
 2026-09-06 test: production-like automatic replenishment trigger verification.
 2026-09-14 test: production-equivalent English reading replenishment after quality-gate tuning; max 5 candidates per run, 10 per day.
 2026-09-14 repair: trigger cross-provider replenishment with Gemini free-model quota fallback.
+2026-09-14 final-test: run production English replenishment with Gemini authoring, Groq verification, max 5 candidates.
