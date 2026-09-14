@@ -2,13 +2,15 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
-import { generateVerifiedReading, sanitizeRequest, validateReading, auditGrammarLeak } from '../worker/src/index.mjs';
+import { generateVerifiedReading } from '../worker/src/entry.mjs';
+import { sanitizeRequest, validateReading, auditGrammarLeak } from '../worker/src/index.mjs';
 
 export const digest = value => createHash('sha256').update(value).digest('hex');
 const normal = text => String(text).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 const basic = ['basic', 'past', 'future', 'modal', 'infinitive', 'gerund', 'comparison'];
 const standard = [...basic, 'passive', 'presentPerfect', 'asMuchAs', 'asManyAs'];
 const levels = [7, 6, 8, 5, 9, 4, 3, 10, 2, 11, 1];
+const verifiedMethods = new Set(['independent-blind-answer-check', 'cross-provider-blind-answer-check']);
 const profiles = levels.flatMap(difficulty => ['narrative', 'argument'].map(readingType => ({
   difficulty, readingType, allowedGrammar: difficulty <= 3 ? basic : standard
 })));
@@ -34,7 +36,7 @@ export function nearDuplicate(passage, previous) {
 }
 export function checkPayload(payload) {
   if (payload?.schemaVersion !== 1 || payload?.quality?.verified !== true ||
-      payload?.quality?.method !== 'independent-blind-answer-check') throw new Error('unverified');
+      !verifiedMethods.has(payload?.quality?.method)) throw new Error('unverified');
   const request = sanitizeRequest(payload.curriculum);
   const check = validateReading(payload.reading, request);
   if (!check.ok) throw new Error('invalid_structure:' + check.errors.join('|'));
@@ -64,6 +66,18 @@ async function writeJson(file, data) {
   await fs.writeFile(file + '.tmp', JSON.stringify(data, null, 2) + '\n');
   await fs.rename(file + '.tmp', file);
 }
+export async function generateWithFallback(generate, env, curriculum) {
+  try {
+    return await generate(env, curriculum);
+  } catch (error) {
+    const fallbackModel = String(env?.GEMINI_FALLBACK_MODEL || '').trim();
+    const primaryModel = String(env?.GEMINI_MODEL || '').trim();
+    const geminiQuota = error?.code === 'quota_exceeded';
+    if (!geminiQuota || !fallbackModel || fallbackModel === primaryModel) throw error;
+    console.log('Primary Gemini model quota reached; retrying with configured free fallback model.');
+    return generate({...env, GEMINI_MODEL: fallbackModel}, curriculum);
+  }
+}
 export async function replenish(directory, {env = process.env, generate = generateVerifiedReading, limit = 5, date = new Date()} = {}) {
   const manifest = await validateLibrary(directory);
   const statusFile = path.join(directory, 'generation-status.json');
@@ -80,7 +94,7 @@ export async function replenish(directory, {env = process.env, generate = genera
     await writeJson(statusFile, status);
     try {
       const curriculum = nextRequest(manifest.entries, failures);
-      const payload = {...await generate(env, curriculum), curriculum};
+      const payload = {...await generateWithFallback(generate, env, curriculum), curriculum};
       checkPayload(payload);
       if (nearDuplicate(payload.reading.passage, passages)) throw new Error('duplicate_passage');
       const raw = JSON.stringify(payload, null, 2) + '\n', id = digest(raw), r = payload.reading;
@@ -116,6 +130,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
   if (process.argv.includes('--validate')) console.log(`Reading library OK: ${(await validateLibrary(directory)).entries.length} passages`);
   else {
     if (!process.env.GEMINI_API_KEY) throw new Error('GEMINI_API_KEY is not configured');
+    if (!process.env.GROQ_API_KEY) throw new Error('GROQ_API_KEY is not configured');
     // Bound individual upstream calls as well as the number of candidates per day.
     const upstreamFetch = globalThis.fetch;
     globalThis.fetch = (url, options = {}) => upstreamFetch(url, {...options, signal: AbortSignal.timeout(90000)});
