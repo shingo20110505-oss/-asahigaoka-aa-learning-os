@@ -24,7 +24,7 @@
 <link rel="preload" href="./ai-reading-exam-scaffold-v1.js?v=1.1.0" as="script">
 <link rel="preload" href="./app/navigation/navigation-runtime-v1.js?v=1.0.6" as="script">
 <link rel="preload" href="./app/ui/rise-ui-v4.js?v=4.2.0" as="script">
-<link rel="preload" href="./app/ui/rise-information-architecture-v1.js?v=1.0.1" as="script">
+<link rel="preload" href="./app/ui/rise-information-architecture-v1.js?v=1.0.2" as="script">
 <title>Rise｜旭丘合格のための学習OS</title>
 <script id="rise-runtime-diagnostics">
 (()=>{'use strict';const errors=[];window.__RISE_RUNTIME_ERRORS__=errors;const record=(type,value)=>{try{const text=String(value?.stack||value?.message||value||type).slice(0,700);errors.push(`${type}:${text}`);if(errors.length>8)errors.shift();document.documentElement.dataset.riseRuntimeError=text.replace(/[\r\n]+/g,' ').slice(0,280)}catch(_){}};addEventListener('error',e=>record('error',e.error||e.message));addEventListener('unhandledrejection',e=>record('rejection',e.reason))})();
@@ -112,6 +112,6 @@ document.addEventListener('click',e=>{if(e.target?.closest?.('#riseBootRetry'))v
 <script defer src="./app/navigation/navigation-runtime-v1.js?v=1.0.6"></script>
 <script defer src="./app/ui/rise-ui-v4.js?v=4.2.0"></script>
 <!-- Information architecture enhances the already canonical public navigation and content hierarchy. -->
-<script defer src="./app/ui/rise-information-architecture-v1.js?v=1.0.1"></script>
+<script defer src="./app/ui/rise-information-architecture-v1.js?v=1.0.2"></script>
 </body>
 </html>

@@ -77,14 +77,14 @@ if(riseUI.includes('<span>記録</span>')) throw new Error('Rise base navigation
 
 requireText(loader, "'app/ui/rise-information-architecture-v1.js'", 'final Rise IA load order');
 requireText(loader, "'quality-ci-runner-v1.js'", 'browser quality runner load order');
-requireText(riseIA, "version:'1.0.1'", 'final Rise IA version');
+requireText(riseIA, "version:'1.0.2'", 'final Rise IA version');
 requireText(riseIA, "publicTabs:['ホーム','入試','学習','復習']", 'final Rise public navigation');
 requireText(riseIA, "generalPractice:'removed-from-public-ui'", 'generic middle-school practice removal');
 requireText(riseIA, '入試対策', 'entrance exam hub');
 requireText(riseIA, '英単語・語句', 'fixed-data learning hub');
 requireText(riseIA, 'Chronologia', 'Chronologia learning entry');
 requireText(riseIA, '国語15,000語', 'Japanese vocabulary learning entry');
-requireText(riseIA, '一般演習は表示しません', 'generic practice public exclusion notice');
+requireText(riseIA, '24問到達後も増え続けます', 'continuous verified pool notice');
 if(riseIA.includes('5教科ミックス')||riseIA.includes('実戦25問・非公式')) throw new Error('final Rise IA must not expose legacy generic practice');
 requireText(socialBridge, 'legacyGenericFallback:false', 'social validated-pack-only contract');
 if(socialBridge.includes('return original(')||socialBridge.includes('original(...args)')) throw new Error('social learner path must not call legacy generic generator fallback');
