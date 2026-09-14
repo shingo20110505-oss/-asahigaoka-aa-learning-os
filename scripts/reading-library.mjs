@@ -84,7 +84,7 @@ export async function replenish(directory, {env = process.env, generate = genera
   const previousStatus = JSON.parse(await fs.readFile(statusFile, 'utf8'));
   const day = new Date(date.getTime() + 9 * 3600000).toISOString().slice(0, 10);
   const status = previousStatus.day === day ? previousStatus : {schemaVersion: 1, day, attempted: 0, added: 0};
-  const dailyLimit = Math.max(1, Math.min(20, Math.floor(Number(env.READING_DAILY_LIMIT || 10)) || 10));
+  const dailyLimit = Math.max(1, Math.min(10, Math.floor(Number(env.READING_DAILY_LIMIT || 10)) || 10));
   Object.assign(status, {dailyLimit, lastRunAt: date.toISOString(), state: 'running'});
   const passages = await Promise.all(manifest.entries.map(async entry => JSON.parse(await fs.readFile(path.join(directory, entry.path), 'utf8')).reading.passage));
   await fs.mkdir(path.join(directory, 'items'), {recursive: true});
