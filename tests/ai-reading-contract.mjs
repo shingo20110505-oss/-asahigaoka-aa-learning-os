@@ -13,12 +13,7 @@ import {
 } from '../worker/src/index.mjs';
 
 const sentence = 'Students compared two plans and recorded clear evidence before they changed their final decision.';
-const passage = [
-  'A school club wanted to improve its meeting room. Students compared two plans and recorded clear evidence before they changed their final decision.',
-  'The first plan was cheaper, but it offered less space for group work. The second plan cost more, but students could use the room in several different ways.',
-  'After discussing both plans, the club chose the second plan. The members believed the extra space would help future activities even though it required more money.',
-  'Their choice showed that a good decision does not always mean choosing the lowest price. It can mean looking carefully at how something will be used.'
-].join('\n\n');
+const passage = Array.from({ length: 4 }, () => Array.from({ length: 6 }, () => sentence).join(' ')).join('\n\n');
 
 const request = sanitizeRequest({
   difficulty: 7,
@@ -67,7 +62,7 @@ const reading = {
       ],
       answerIndex: 0,
       explanationJa: '追加の空間が将来の活動に役立つと考えたためです。',
-      evidenceQuote: 'The members believed the extra space would help future activities even though it required more money.'
+      evidenceQuote: sentence
     },
     {
       type: 'cause',
@@ -80,7 +75,7 @@ const reading = {
       ],
       answerIndex: 0,
       explanationJa: '第一案は安い一方、グループ活動の空間が少ないことが弱点でした。',
-      evidenceQuote: 'The first plan was cheaper, but it offered less space for group work.'
+      evidenceQuote: sentence
     },
     {
       type: 'mainIdea',
@@ -93,7 +88,7 @@ const reading = {
       ],
       answerIndex: 0,
       explanationJa: '価格だけでなく利用のされ方まで考えることが本文の中心です。',
-      evidenceQuote: 'It can mean looking carefully at how something will be used.'
+      evidenceQuote: sentence
     },
     {
       type: 'summary',
@@ -106,7 +101,7 @@ const reading = {
       ],
       answerIndex: 0,
       explanationJa: '二案を比較し、将来の活動に有用な案を選んだ話です。',
-      evidenceQuote: 'After discussing both plans, the club chose the second plan.'
+      evidenceQuote: sentence
     }
   ]
 };
