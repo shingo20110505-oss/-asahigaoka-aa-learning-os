@@ -1,0 +1,88 @@
+name: Finalize continuous exam pool release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/finalize-continuous-exam-pool-20260914.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Synchronize release contracts and cache keys
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+
+          validator = Path('scripts/validate-runtime-assets.mjs')
+          text = validator.read_text()
+          old = text
+          text = text.replace("requireText(riseIA, \"version:'1.0.1'\", 'final Rise IA version');",
+                              "requireText(riseIA, \"version:'1.0.2'\", 'final Rise IA version');")
+          text = text.replace("requireText(riseIA, '一般演習は表示しません', 'generic practice public exclusion notice');",
+                              "requireText(riseIA, '24問到達後も増え続けます', 'continuous verified pool notice');")
+          if text == old:
+              raise SystemExit('validate-runtime-assets replacements were not applied')
+          validator.write_text(text)
+
+          loader = Path('v23-loader.js')
+          text = loader.read_text()
+          old = text
+          text = text.replace("rise-ia-1.0.1", "rise-ia-1.0.2")
+          if text == old:
+              raise SystemExit('v23-loader cache-key replacement was not applied')
+          loader.write_text(text)
+
+          index = Path('index.html')
+          text = index.read_text()
+          text = text.replace('rise-information-architecture-v1.js?v=1.0.1',
+                              'rise-information-architecture-v1.js?v=1.0.2')
+          index.write_text(text)
+          PY
+
+      - name: Validate continuous pool and GUI contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check scripts/fill-verified-question-pool.mjs
+          node --check scripts/validate-verified-question-pool.mjs
+          node --check app/ui/rise-information-architecture-v1.js
+          node --check v23-loader.js
+          node scripts/validate-verified-question-pool.mjs
+          node scripts/validate-runtime-assets.mjs
+          grep -Fq "CONTINUOUS_SUBJECTS = new Set(['math', 'japanese', 'science', 'social'])" scripts/fill-verified-question-pool.mjs
+          grep -Fq "if (!continuous) pool.subjects[subject] = pool.subjects[subject].slice(0, target);" scripts/fill-verified-question-pool.mjs
+          grep -Fq "24問到達後も増え続けます" app/ui/rise-information-architecture-v1.js
+          grep -Fq "毎日追加中" app/ui/rise-information-architecture-v1.js
+          grep -Fq "rise-ia-1.0.2" v23-loader.js
+
+      - name: Commit synchronized release files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add scripts/validate-runtime-assets.mjs v23-loader.js index.html
+          if git diff --cached --quiet; then
+            echo 'No synchronization changes needed.'
+            exit 0
+          fi
+          git commit -m 'Sync continuous exam pool GUI release contract'
+          git pull --rebase origin main
+          git push origin HEAD:main
