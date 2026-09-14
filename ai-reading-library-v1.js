@@ -3,6 +3,7 @@
   if (window.AAReadingLibrary) return;
   const base = new URL('./ai-reading-library/', document.currentScript?.src || location.href);
   const CACHE_KEY = 'aa_verified_reading_catalog_v1';
+  const VERIFIED_METHODS = new Set(['independent-blind-answer-check', 'cross-provider-blind-answer-check']);
   let manifest = null, status = null, loading = null;
   const payloads = new Map();
   const validEntry = e => e && /^[a-f0-9]{64}$/.test(e.id) && e.sha256 === e.id && e.path === `items/${e.id}.json` &&
@@ -71,7 +72,7 @@
       if (hash !== entry.sha256) throw new Error('教材の更新を確認できませんでした。再読み込みしてください。');
     }
     const payload = JSON.parse(raw);
-    if (payload?.quality?.verified !== true || payload.quality.method !== 'independent-blind-answer-check' ||
+    if (payload?.quality?.verified !== true || !VERIFIED_METHODS.has(payload.quality.method) ||
         payload?.reading?.questions?.length !== 5 || payload.reading.difficulty !== entry.difficulty ||
         payload.reading.readingType !== entry.readingType ||
         JSON.stringify(payload.curriculum?.allowedGrammar) !== JSON.stringify(entry.requiredGrammar)) throw new Error('検査済み教材を取得できませんでした。');
