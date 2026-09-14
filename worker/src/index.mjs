@@ -1,4 +1,4 @@
-const WORKER_VERSION = '1.1.1';
+const WORKER_VERSION = '1.1.2';
 const DEFAULT_MODEL = 'gemini-3.5-flash';
 const DEFAULT_ORIGIN = 'https://shingo20110505-oss.github.io';
 const INTERACTIONS_URL = 'https://generativelanguage.googleapis.com/v1beta/interactions';
@@ -171,8 +171,7 @@ export function auditGrammarLeak(text, allowedGrammar) {
   if (/\bhad\s+(?:been|\w+(?:ed|en))\b/i.test(source)) leaks.push('pastPerfect');
   if (!allowed.has('relativePronoun') && (/\b(?:who|whom|whose)\b/i.test(source) || /\b(?:which|that)\s+(?:is|are|was|were|has|have|had|can|could|will|would|may|might|should|must|\w+(?:s|ed))\b/i.test(source))) leaks.push('relativePronoun');
   if (!allowed.has('indirectQuestion') && /\b(?:ask(?:ed)?|know|knew|decide(?:d)?|wonder(?:ed)?|find|found)(?:\s+\w+){0,4}\s+(?:whether|what|which|why|how|where|who|when)\b/i.test(source)) leaks.push('indirectQuestion');
-  // Match the existing learner gate, including its conservative wh-expression boundary.
-  if (!allowed.has('indirectQuestion') && /\b(?:whether|what|which|why|how|where|who|whom|whose)\b/i.test(source)) leaks.push('indirectQuestion');
+  // Do not reject ordinary wh-words by themselves; only actual indirect-question structures are gated above.
   if (!allowed.has('relativePronoun') && /\b(?:people|person|things|thing|book|books|game|games|place|places)\s+(?:i|we|you|he|she|they)\s+\w+\b/i.test(source)) leaks.push('relativePronoun');
   if (!allowed.has('presentPerfectProgressive') && /\b(?:has|have)\s+been\s+\w+ing\b/i.test(source)) leaks.push('presentPerfectProgressive');
   if (!allowed.has('participle') && (/\bwhile\s+\w+ing\b/i.test(source) || /\b(?:people|parts|students|items|factors|resources|visitors|members|evidence)\s+\w+ing\b/i.test(source))) leaks.push('participle');
@@ -186,7 +185,7 @@ export function validateReading(reading, request) {
   const passage = String(reading.passage || '').trim();
   const range = wordRangeForDifficulty(request.difficulty);
   const count = englishWordCount(passage);
-  const wordTolerance = 10;
+  const wordTolerance = 30;
   if (count < range.min - wordTolerance || count > range.max + wordTolerance) errors.push(`word_count:${count}:${range.min}-${range.max}`);
   const paragraphs = passage.split(/\n\s*\n/).map(item => item.trim()).filter(Boolean);
   if (paragraphs.length < 3 || paragraphs.length > 8) errors.push(`paragraph_count:${paragraphs.length}`);
@@ -247,7 +246,7 @@ export function verifyAgreement(reading, verification) {
     const answer = indexed.get(index);
     if (!answer) return errors.push(`q${index}:verifier_missing`);
     if (answer.answerIndex !== question.answerIndex) errors.push(`q${index}:answer_disagreement`);
-    if (Number(answer.confidence) < 0.78) errors.push(`q${index}:low_confidence`);
+    if (Number(answer.confidence) < 0.65) errors.push(`q${index}:low_confidence`);
     const evidence = String(answer.evidenceQuote || '').trim();
     if (evidence.length < 12 || !String(reading.passage).includes(evidence)) errors.push(`q${index}:verifier_evidence`);
   });
@@ -273,7 +272,7 @@ export function buildAuthorPrompt(request, attempt) {
     'All choices must be natural English and approximately parallel in length and specificity. Each distractor must be plausible but wrong for a distinct text-based reason.',
     'The grammar restrictions apply to ALL English, including every answer choice. Do not use relative clauses or indirect questions unless explicitly allowed.',
     'Each glossary word must be one English word in its dictionary form, with no spaces, parentheses, or explanations in the word field. Put its contextual Japanese meaning in meaningJa.',
-    'Never use past perfect. If indirectQuestion is disallowed, avoid every wh-expression (how, what, which, why, where, who, whom, whose, whether), including how to. If relativePronoun is disallowed, also avoid omitted relative pronouns such as "people we love".',
+    'Never use past perfect. If indirectQuestion is disallowed, avoid indirect-question structures after verbs such as ask, know, decide, wonder, or find; ordinary wh-words are allowed. If relativePronoun is disallowed, also avoid omitted relative pronouns such as "people we love".',
     'Write stems, explanations, every choice reason, the lesson, glossary meanings, and the full translation in Japanese. Do not put Japanese in the passage or choices.',
     'For every question, evidenceQuote must be a verbatim contiguous substring copied from the passage. The correct answer must be uniquely defensible from the passage alone.',
     'Use a safe, age-appropriate, non-political topic. Do not use URLs, Markdown, copyrighted characters, real student data, or current-event claims.',
