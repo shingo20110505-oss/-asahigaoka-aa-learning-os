@@ -17,91 +17,104 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Tune reading acceptance and structured output
+      - name: Repair Groq verifier structural retry
         run: |
           python - <<'PY'
           from pathlib import Path
 
-          def replace_once(path, old, new):
-              p = Path(path)
-              s = p.read_text()
-              if old not in s:
-                  raise SystemExit(f'missing expected source fragment in {path}: {old[:120]}')
-              p.write_text(s.replace(old, new, 1))
+          p = Path('worker/src/providers/groq.mjs')
+          s = p.read_text()
+          old = """  const output = parseGroqJson(payload);
+          const validation = validateGroqOutputAgainstSchema(output, schema);
+          if (!validation.ok) throw new GroqProviderError(502, 'Groq output did not satisfy the Rise verification schema.', 'groq_schema_mismatch', validation.errors.slice(0, 12).join('|'));
+          return { output, provider: 'groq', model, mode, fallbackFrom };
+          }"""
+          new = """  let output = parseGroqJson(payload);
+          let validation = validateGroqOutputAgainstSchema(output, schema);
+          if (!validation.ok && schemaName === READING_VERIFIER_SCHEMA_NAME && mode === 'json_schema' && request?.allowJsonObjectFallback !== false) {
+            const fallbackBody = buildRequestBody({ model, mode: 'json_object', input, schema, schemaName, systemInstruction, maxOutputTokens, temperature, reasoningEffort });
+            const fallback = await sendGroq(apiKey, fallbackBody, timeoutMs);
+            if (!fallback.response.ok) throwGroqHttpError(fallback.response, fallback.payload);
+            output = parseGroqJson(fallback.payload);
+            validation = validateGroqOutputAgainstSchema(output, schema);
+            mode = 'json_object_validation_fallback';
+            fallbackFrom = 'json_schema_local_validation';
+          }
+          if (!validation.ok) throw new GroqProviderError(502, 'Groq output did not satisfy the Rise verification schema.', 'groq_schema_mismatch', validation.errors.slice(0, 12).join('|'));
+          return { output, provider: 'groq', model, mode, fallbackFrom };
+          }"""
+          if old not in s:
+              raise SystemExit('missing Groq provider tail')
+          p.write_text(s.replace(old, new, 1))
 
-          # Keep the entrance-exam length target, but do not reject a sound passage
-          # for being only a few dozen words outside the preferred band.
-          replace_once(
-              'worker/src/index.mjs',
-              '  const wordTolerance = 30;',
-              '  const wordTolerance = 50;'
-          )
+          Path('tests/ai-reading-groq-validation-fallback.mjs').write_text(r'''import assert from 'node:assert/strict';
+          import { callGroqJson } from '../worker/src/providers/groq.mjs';
+          import { VERIFIER_SCHEMA } from '../worker/src/index.mjs';
 
-          # Relative-pronoun and participle structures are normal receptive-reading
-          # material for a grade-9 entrance-exam learner. Keep the raw detector for
-          # diagnostics, but make only the genuinely advanced gates blocking here.
-          replace_once(
-              'worker/src/index.mjs',
-              '  const leaks = auditGrammarLeak(passage, request.allowedGrammar);\n  if (leaks.length) errors.push(`grammar_leak:${leaks.join(\',\')}`);',
-              "  const leaks = auditGrammarLeak(passage, request.allowedGrammar).filter(tag => !['relativePronoun', 'participle'].includes(tag));\n  if (leaks.length) errors.push(`grammar_leak:${leaks.join(',')}`);"
-          )
-          replace_once(
-              'worker/src/index.mjs',
-              '      if (auditGrammarLeak(text, request.allowedGrammar).length) errors.push(`q${index}:choice${choiceIndex}:grammar`);',
-              "      if (auditGrammarLeak(text, request.allowedGrammar).some(tag => !['relativePronoun', 'participle'].includes(tag))) errors.push(`q${index}:choice${choiceIndex}:grammar`);"
-          )
+          const sentence = 'Students compared two plans and recorded clear evidence before they changed their final decision.';
+          const valid = {
+            overallPass: true,
+            answers: [0,1,2,3,4].map(questionIndex => ({questionIndex, answerIndex: questionIndex % 4, evidenceQuote: sentence, confidence: 0.9}))
+          };
+          const malformedButJson = { overallPass: true, answers: [valid.answers[0]] };
+          const calls = [];
+          const originalFetch = globalThis.fetch;
+          globalThis.fetch = async (url, options = {}) => {
+            const body = JSON.parse(options.body || '{}');
+            calls.push(body);
+            const output = calls.length === 1 ? malformedButJson : valid;
+            return new Response(JSON.stringify({choices:[{message:{content:JSON.stringify(output)}}]}), {status:200, headers:{'content-type':'application/json'}});
+          };
+          try {
+            const result = await callGroqJson({GROQ_API_KEY:'test-key', GROQ_MODEL:'openai/gpt-oss-20b'}, {
+              input:'Blindly solve five questions.',
+              schema:VERIFIER_SCHEMA,
+              schemaName:'rise_english_blind_verification',
+              maxOutputTokens:2500,
+              temperature:0,
+              reasoningEffort:'low'
+            });
+            assert.equal(calls.length, 2);
+            assert.equal(calls[0].response_format?.type, 'json_schema');
+            assert.equal(calls[1].response_format?.type, 'json_object');
+            assert.equal(result.mode, 'json_object_validation_fallback');
+            assert.equal(result.fallbackFrom, 'json_schema_local_validation');
+            assert.deepEqual(result.output, valid);
+          } finally {
+            globalThis.fetch = originalFetch;
+          }
+          console.log('Groq reading validation fallback OK: schema-shape drift retries once with JSON object and remains locally validated.');
+          ''')
 
-          # The append-only library re-validates accepted payloads. Keep it aligned
-          # with the Worker so a valid cross-provider result is not rejected later.
-          replace_once(
-              'scripts/reading-library.mjs',
-              "  if (auditGrammarLeak(english, request.allowedGrammar).length) throw new Error('grammar_rejected');",
-              "  if (auditGrammarLeak(english, request.allowedGrammar).some(tag => !['relativePronoun', 'participle'].includes(tag))) throw new Error('grammar_rejected');"
-          )
-
-          # The live UI performs one final local grammar check. Apply the same
-          # receptive-reading tolerance there so production behavior matches CI.
-          replace_once(
-              'ai-reading-v1.js',
-              "    const leaks = grammarLeakAudit(passage);\n    if (leaks.length) throw appError('grammar_rejected', `未履修文法が検出されました（${leaks.join(', ')}）。`);",
-              "    const leaks = grammarLeakAudit(passage).filter(tag => !['relativePronoun', 'participle'].includes(tag));\n    if (leaks.length) throw appError('grammar_rejected', `未履修文法が検出されました（${leaks.join(', ')}）。`);"
-          )
-          replace_once(
-              'ai-reading-v1.js',
-              "        if (grammarLeakAudit(data.reading.passage).length) throw new Error('今の文法範囲に合う教材を補充しています。');",
-              "        if (grammarLeakAudit(data.reading.passage).some(tag => !['relativePronoun', 'participle'].includes(tag))) throw new Error('今の文法範囲に合う教材を補充しています。');"
-          )
-
-          # Constrain Gemini's lightweight schema to the exact question-type IDs
-          # Rise understands. This prevents otherwise good candidates from failing
-          # later with qN:type after spending provider quota.
-          replace_once(
-              'worker/src/providers/gemini.mjs',
-              "        properties: {\n          type: { type: 'string' },\n          stemJa: { type: 'string' },",
-              "        properties: {\n          type: { type: 'string', enum: ['detail', 'cause', 'inference', 'paraphrase', 'mainIdea', 'title', 'referent', 'paragraphRole', 'sentenceInsertion', 'summary'] },\n          stemJa: { type: 'string' },"
-          )
+          deploy = Path('.github/workflows/deploy-ai-worker.yml')
+          ds = deploy.read_text()
+          anchor = '          node tests/ai-reading-groq-contract.mjs\n'
+          extra = anchor + '          node tests/ai-reading-groq-validation-fallback.mjs\n'
+          if 'node tests/ai-reading-groq-validation-fallback.mjs' not in ds:
+              if anchor not in ds:
+                  raise SystemExit('missing deploy worker Groq test anchor')
+              deploy.write_text(ds.replace(anchor, extra, 1))
           PY
-      - name: Verify tuned contracts
+      - name: Verify Groq verifier repair
         run: |
           set -euo pipefail
-          node --check worker/src/index.mjs
-          node --check worker/src/providers/gemini.mjs
-          node --check scripts/reading-library.mjs
-          node --check ai-reading-v1.js
+          node --check worker/src/providers/groq.mjs
+          node tests/ai-provider-contract.mjs
+          node tests/ai-reading-groq-contract.mjs
+          node tests/ai-reading-groq-validation-fallback.mjs
           node tests/ai-reading-contract.mjs
-          node tests/ai-gemini-current-contract.mjs
           node tests/reading-library.mjs
-      - name: Commit tuned gate
+      - name: Commit Groq verifier repair
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add worker/src/index.mjs worker/src/providers/gemini.mjs scripts/reading-library.mjs ai-reading-v1.js
+          git add worker/src/providers/groq.mjs tests/ai-reading-groq-validation-fallback.mjs .github/workflows/deploy-ai-worker.yml
           if git diff --cached --quiet; then
             echo 'No changes needed'
             exit 0
           fi
-          git commit -m 'Relax English reading false-positive gates and constrain question types'
+          git commit -m 'Retry malformed Groq reading verification in validated JSON mode'
           for n in 1 2 3; do
             git pull --rebase origin main
             if git push origin HEAD:main; then break; fi
