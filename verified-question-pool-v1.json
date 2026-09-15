@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-15-12-38-49Z",
-  "updatedAt": "2026-09-15T12:38:49.355Z",
+  "poolVersion": "2026-09-15-13-30-43Z",
+  "updatedAt": "2026-09-15T13:30:43.728Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2060,6 +2060,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-14T15:00:01.746Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "文章中の筆者の主張として最も適当なものを、次の選択肢の中から一つ選びなさい。",
+        "context": "私たちが普段目にする「風景」とは、ただ物理的なモノの配置がそこにあるわけではない。歴史や記憶、そしてそれを受け取る人間のまなざしが交差することで、初めて意味を持った景観として立ち現れてくるのである。近代以降、効率や機能性が重視されるあまり、風景は均質化され、どこにでもあるような無機質な空間へと変貌しがちである。しかし、地域固有の語りや人々の営みに目を向けるならば、風景は単なる背景ではなく、人間と環境が織りなす対話の場として再び豊かさを取り戻すことができるのだ。",
+        "choices": [
+          "物理的なモノの配置さえ整えれば、誰にとっても美しい意味のある風景が自然と成立する。",
+          "効率や機能性を最優先する近代の都市開発こそが、真に豊かな風景を生み出す基盤である。",
+          "風景とは物理的環境そのものを指すため、人間の主観的なまなざしや歴史的記憶は関係がない。",
+          "風景は単なる無機質な背景ではなく、歴史や人々の営みを通じた人間と環境の対話の場として捉え直されるべきである。"
+        ],
+        "answerIndex": 3,
+        "answer": "風景は単なる無機質な背景ではなく、歴史や人々の営みを通じた人間と環境の対話の場として捉え直されるべきである。",
+        "explanation": "文章の後半において、筆者は風景が均質化し無機質な空間になりがちであるという問題意識を示した上で、「地域固有の語りや人々の営みに目を向けるならば、風景は単なる背景ではなく、人間と環境が織りなす対話の場として再び豊かさを取り戻すことができるのだ」と述べており、これが筆者の主張そのものである。他の選択肢は、物理的配置を重視しすぎたり、近代の効率性を肯定したり、主観的まなざしを否定したりするなど、文章全体の論旨や筆者の立場に反している。",
+        "evidence": "風景は単なる背景ではなく、人間と環境が織りなす対話の場として再び豊かさを取り戻すことができるのだ。",
+        "misconception": "効率や機能性を重視する近代の発展こそが重要であるという、筆者の問題提起（批判）とは逆の立場を正解と勘違いする誤り。",
+        "marks": 2,
+        "id": "rise-japanese-0cee1b3eaaa97a02",
+        "fingerprint": "447718322cb59390",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-15T13:30:43.700Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "傍線部「風景は均質化され、どこにでもあるような無機質な空間へと変貌しがちである」とあるが、その原因として筆者が本文中で挙げていることとして最も適当なものを、次の選択肢の中から一つ選びなさい。",
+        "context": "私たちが普段目にする「風景」とは、ただ物理的なモノの配置がそこにあるわけではない。歴史や記憶、そしてそれを受け取る人間のまなざしが交差することで、初めて意味を持った景観として立ち現れてくるのである。近代以降、効率や機能性が重視されるあまり、風景は均質化され、どこにでもあるような無機質な空間へと変貌しがちである。しかし、地域固有の語りや人々の営みに目を向けるならば、風景は単なる背景ではなく、人間と環境が織りなす対話の場として再び豊かさを取り戻すことができるのだ。",
+        "choices": [
+          "近代以降、効率や機能性が過度に重視されるようになったこと。",
+          "地域固有の語りや人々の営みが、地域住民の手によって十分に記録・継承されていること。",
+          "人間と環境の対話が日常的に行われ、画一的な空間づくりが妨げられていること。",
+          "人々が歴史や記憶を過剰に重視し、新しい技術や変化を受け入れようとしないこと。"
+        ],
+        "answerIndex": 0,
+        "answer": "近代以降、効率や機能性が過度に重視されるようになったこと。",
+        "explanation": "文章中の該当部分の直前に「近代以降、効率や機能性が重視されるあまり、風景は均質化され」と書かれており、効率や機能性の重視が均質化を招く原因として明記されている。したがって、それが原因として最も適当である。",
+        "evidence": "近代以降、効率や機能性が重視されるあまり、風景は均質化され、どこにでもあるような無機質な空間へと変貌しがちである。",
+        "misconception": "文章の後半にある解決策（地域固有の語りや人々の営みに目を向けること）を、原因と混同してしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-f6bece09c66bf55d",
+        "fingerprint": "278beeca7ae37488",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-15T13:30:43.700Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "筆者が考える「風景」が意味を持った景観として立ち現れるために不可欠な要素として、本文中で述べられている内容に合致するものを、次の選択肢の中から一つ選びなさい。",
+        "context": "私たちが普段目にする「風景」とは、ただ物理的なモノの配置がそこにあるわけではない。歴史や記憶、そしてそれを受け取る人間のまなざしが交差することで、初めて意味を持った景観として立ち現れてくるのである。近代以降、効率や機能性が重視されるあまり、風景は均質化され、どこにでもあるような無機質な空間へと変貌しがちである。しかし、地域固有の語りや人々の営みに目を向けるならば、風景は単なる背景ではなく、人間と環境が織りなす対話の場として再び豊かさを取り戻すことができるのだ。",
+        "choices": [
+          "物理的なモノの配置を均質で無機質な状態に保つこと。",
+          "人間が環境から独立し、客観的な視点のみで空間を観察すること。",
+          "歴史や記憶と、それを受け取る人間のまなざしが交差すること。",
+          "景観の維持において、効率性と機能性を最大限に高めること。"
+        ],
+        "answerIndex": 2,
+        "answer": "歴史や記憶と、それを受け取る人間のまなざしが交差すること。",
+        "explanation": "文章の前半部分に「歴史や記憶、そしてそれを受け取る人間のまなざしが交差することで、初めて意味を持った景観として立ち現れてくるのである」と明確に示されており、これが不可欠な要素である。他の選択肢は本文の記述に反している。",
+        "evidence": "歴史や記憶、そしてそれを受け取る人間のまなざしが交差することで、初めて意味を持った景観として立ち現れてくるのである。",
+        "misconception": "物理的なモノの配置や効率性がそのまま風景の成立に寄与するという、本文の主旨とは逆の選択肢を選ぶ誤り。",
+        "marks": 2,
+        "id": "rise-japanese-14fa9bcdd4e293d9",
+        "fingerprint": "4c93bd63f5f8b741",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-15T13:30:43.700Z"
         }
       }
     ],
