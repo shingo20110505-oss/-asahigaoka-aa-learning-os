@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-15-12-06-38Z",
-  "updatedAt": "2026-09-15T12:06:38.718Z",
+  "poolVersion": "2026-09-15-12-38-49Z",
+  "updatedAt": "2026-09-15T12:38:49.355Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -3747,6 +3747,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-13T12:43:00.715Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "愛知県内の工業都市の特性について述べた次の文のうち、中部地方の産業構造や統計的傾向に照らして、最も適切なものはどれか。",
+        "context": "愛知県は自動車産業を中心とする機械工業が非常に盛んであり、製造品出荷額等は長年全国第1位を誇っている。県内の特定の地域では、自動車関連部品を生産する中小工場が多数集積しているほか、臨海部では鉄鋼業や石油化学工業などの重化学工業も発達している。また、農業においては温暖な気候や灌漑用水の整備を活かした近郊農業・施設園芸が盛んであり、太平洋ベルトの一翼を担う重要な地域である。",
+        "choices": [
+          "太平洋ベルトに位置する愛知県では、農業生産額よりも鉱工業生産額の方が圧倒的に小さい構造となっている。",
+          "自動車関連の部品工場は、大都市の中心部にのみ集中しており、周辺の町村や農村部にはほとんど波及していない。",
+          "愛知県の製造品出荷額等は、重化学工業の比率が低く、主に軽工業や繊維産業によって全国第1位を維持している。",
+          "県内の臨海部には鉄鋼業や石油化学工業などの重化学工業が発達し、内陸部や周辺地域には自動車関連の工場が集積している。"
+        ],
+        "answerIndex": 3,
+        "answer": "県内の臨海部には鉄鋼業や石油化学工業などの重化学工業が発達し、内陸部や周辺地域には自動車関連の工場が集積している。",
+        "explanation": "愛知県の産業構造に関する記述として、臨海部における重化学工業の発達と内陸部等への自動車関連工場集積の様子を正しく述べた選択肢が適切です。自動車部品工場は周辺地域にも広く分散・集積しており、また愛知県は重化学工業（機械・金属など）の比率が極めて高く、農業生産額より鉱工業生産額がはるかに大きい特徴があります。",
+        "evidence": "県内の特定の地域では、自動車関連部品を生産する中小工場が多数集積しているほか、臨海部では鉄鋼業や石油化学工業などの重化学工業も発達している。",
+        "misconception": "愛知県＝自動車というイメージから、すべての工場が一定の場所にのみ偏在し重化学工業が他地域に存在しないと思い込む誤解。",
+        "marks": 2,
+        "id": "rise-social-7043526f5e0fae43",
+        "fingerprint": "582a0309e10e0bcf",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-15T12:38:49.319Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "近世から近代にかけての中部地方・愛知県域における歴史的動向について述べた次の文のうち、最も適切なものはどれか。",
+        "context": "尾張藩や三河地域では、江戸時代を通じて農業生産力の向上や綿花栽培、木綿の生産が発展した。明治維新後、これらの伝統的な手工業や織物業の蓄積を基盤として近代的な器械製糸業や紡績業、さらに機械工業への展開が進み、地域の産業発展の基礎が築かれることになった。",
+        "choices": [
+          "明治政府による廃藩置県以降、名古屋を中心とする地域は急速に農業中心の経済へと回帰し、工業化は全く進まなかった。",
+          "江戸時代の尾張や三河では、藩の専売制により商工業の発展が完全に禁止され、農業以外の生産活動は一切行われなかった。",
+          "明治維新以降、愛知県域の伝統的な機織りや手工業の蓄積は、近代の繊維産業やその後の機械工業の発展へと引き継がれた。",
+          "愛知県域は江戸時代を通じて鎖国の影響を強く受け、他地域との商品流通や経済的結びつきが完全に断絶していた。"
+        ],
+        "answerIndex": 2,
+        "answer": "明治維新以降、愛知県域の伝統的な機織りや手工業の蓄積は、近代の繊維産業やその後の機械工業の発展へと引き継がれた。",
+        "explanation": "江戸時代から近代への産業の連続性に注目した記述が適切です。愛知県域（尾張・三河）では、江戸時代の綿花栽培や機織りなどの手工業の蓄積があり、それが近代以降の繊維産業や機械工業の発展につながりました。",
+        "evidence": "明治維新後、これらの伝統的な手工業や織物業の蓄積を基盤として近代的な器械製糸業や紡績業、さらに機械工業への展開が進み、地域の産業発展の基礎が築かれることになった。",
+        "misconception": "近代化を従来の伝統産業との断絶として捉え、すべての産業がゼロから突然始まったと勘違いする誤解。",
+        "marks": 2,
+        "id": "rise-social-07a31f8a710839de",
+        "fingerprint": "bf72b4b9c1afaf07",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-15T12:38:49.319Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "地方自治における住民参加や地方財政の仕組みに関して述べた次の文のうち、最も適切なものはどれか。",
+        "context": "地方自治体は、住民に身近な行政サービスを提供するために重要な役割を果たしている。その財源には、住民が納める住民税などの地方税のほか、国から交付される地方交付税などがあり、自主財源と依存財源に大別される。また、条例の制定や改廃の請求、あるいは議会の解散請求など、住民が直接政治に参加する制度も法律によって保障されている。",
+        "choices": [
+          "地方交付税は、すべての自治体が同額を受け取る仕組みになっており、地域の財政力の格差を調整する機能はない。",
+          "地方議会で決定されたすべての条例や予算は、国の事前の承認を受けなければ効力を生じない仕組みになっている。",
+          "地方自治体の収入のうち、地方税などの依存財源が大部分を占めており、自主財源の割合は極めて低いのが一般的である。",
+          "住民が直接政治に参加する制度として、条例の制定や改廃の請求、議会の解散請求などが地方自治法によって定められている。"
+        ],
+        "answerIndex": 3,
+        "answer": "住民が直接政治に参加する制度として、条例の制定や改廃の請求、議会の解散請求などが地方自治法によって定められている。",
+        "explanation": "地方自治における住民の直接請求権（条例の制定・改廃請求、解散請求など）に関する記述が正しい内容です。地方税は自主財源であり、地方交付税は依存財源です。また、地方自治体は一定の自治権を持ち、国の事前承認なしに条例を制定できます。",
+        "evidence": "また、条例の制定や改廃の請求、あるいは議会の解散請求など、住民が直接政治に参加する制度も法律によって保障されている。",
+        "misconception": "地方自治体の財政や決定権がすべて国に完全従属していると捉え、住民の直接請求制度や自主財源の存在を軽視する誤解。",
+        "marks": 2,
+        "id": "rise-social-fdb71efb9a4e5e5f",
+        "fingerprint": "9d66d1fa0c7740fc",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-15T12:38:49.319Z"
         }
       }
     ]
