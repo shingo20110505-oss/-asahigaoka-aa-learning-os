@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-14-15-00-01Z",
-  "updatedAt": "2026-09-14T15:00:01.779Z",
+  "poolVersion": "2026-09-15-12-06-38Z",
+  "updatedAt": "2026-09-15T12:06:38.718Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2870,6 +2870,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-14T13:20:28.982Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.chemistry.chemical_change_and_mass",
+        "difficulty": 8,
+        "question": "この実験に関する考察として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "うすい塩酸20.0cm³に石灰石1.0gを加えたところ、気体が発生した。完全に反応させた後全体の質量を測定すると、反応前の合計質量より軽くなった。同様の実験を石灰石の質量を2.0g、3.0g、4.0g、5.0gと変えて行ったところ、石灰石が4.0gのときまで発生した気体の質量は直線的に増加し、5.0gのとき発生した気体の質量は4.0gのときと同じであった。",
+        "choices": [
+          "石灰石4.0gを加えたとき、うすい塩酸はちょうど過不足なく反応している。",
+          "石灰石5.0gを加えたとき、うすい塩酸がすべて反応しずに残っている。",
+          "発生した気体の質量は、加えた石灰石の質量に常に比例する。",
+          "反応前の合計質量と反応後の合計質量の差は、発生した塩化水素の質量である。"
+        ],
+        "answerIndex": 0,
+        "answer": "石灰石4.0gを加えたとき、うすい塩酸はちょうど過不足なく反応している。",
+        "explanation": "一定量のうすい塩酸に対して石灰石の量を増やしていくと、発生する気体の質量は増加するが、塩酸がすべて反応し終わるとそれ以上石灰石を加えても気体の発生量は一定になる。資料から4.0gのときと5.0gのときで発生気体の量が同じであるため、4.0gのときがちょうど過不足なく反応している点である。最強の誤解は、塩酸が余っていて石灰石が足りていないと勘違いすることである。",
+        "evidence": "石灰石が4.0gのときまで発生した気体の質量は直線的に増加し、5.0gのとき発生した気体の質量は4.0gのときと同じであった。",
+        "misconception": "気体の発生が止まったのは石灰石が溶けきらなかっただけであり、塩酸が余っていると誤認すること。",
+        "marks": 2,
+        "id": "rise-science-b3d7ac83e859927f",
+        "fingerprint": "11e32c0ce7ddc76e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-15T12:06:27.321Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.biology.ecosystem_and_energy",
+        "difficulty": 8,
+        "question": "生態系におけるエネルギーの流れや生物の数量関係に関する記述として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "ある草原の生態系において、植物（生産者）、草食動物（一次消費者）、肉食動物（二次消費者）のエネルギー量を調べたところ、生産者のエネルギー量が最も大きく、上位の消費者になるほどエネルギー量が少なくなっていた。さらに、この草原に生息するある肉食動物の個体数を詳細に調査したところ、春季には個体数が急増したが、夏季には草食動物の減少に伴い肉食動物の個体数も減少に転じた。",
+        "choices": [
+          "肉食動物の個体数が減少した原因は、生産者のエネルギー量が直接すべて消失したからである。",
+          "生態系全体のエネルギーの総量は、消費者が増えるにつれて増加する。",
+          "一次消費者のエネルギー量は、常に二次消費者のエネルギー量よりも少ない。",
+          "上位の栄養段階に行くほど、得られるエネルギーの総量は減少する。"
+        ],
+        "answerIndex": 3,
+        "answer": "上位の栄養段階に行くほど、得られるエネルギーの総量は減少する。",
+        "explanation": "生態系のエネルギーは生産者から消費者へと移るが、それぞれの段階で呼吸による放出などで失われるため、上位の栄養段階に行くほどエネルギーの総量は減少する。最強の誤解は、消費者の段階でもエネルギーが増幅されていくと勘違いすることである。",
+        "evidence": "生産者のエネルギー量が最も大きく、上位の消費者になるほどエネルギー量が少なくなっていた。",
+        "misconception": "上位の生物ほど多くのエネルギーを体内に蓄積できるという誤解。",
+        "marks": 2,
+        "id": "rise-science-79adca74c9310bb0",
+        "fingerprint": "6e14a7d3b417015d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-15T12:06:27.321Z"
         }
       }
     ],
