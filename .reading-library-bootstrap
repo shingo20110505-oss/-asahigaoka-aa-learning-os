@@ -4,3 +4,4 @@
 2026-09-14 repair: trigger cross-provider replenishment with Gemini free-model quota fallback.
 2026-09-14 final-test: run production English replenishment with Gemini authoring, Groq verification, max 5 candidates.
 2026-09-14 strict-repair: exercise two post-fix candidates with strict question-type, length, grammar, and evidence contracts.
+2026-09-15 remaining-budget: use the remaining five English reading candidates after the morning retry-later result.
