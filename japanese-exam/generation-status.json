@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "day": "2026-09-15",
+  "day": "2026-09-16",
   "attempted": 1,
   "added": 0,
   "state": "rejected",
@@ -8,5 +8,6 @@
   "generationTransport": "generateContent-v1beta",
   "maxCandidatesPerDay": 1,
   "maxCallsPerCandidate": 7,
-  "reason": "structure_rejected:evidence_quote:q1-2|single_point:q1-5|evidence_quote:q1-5|domain:q2-1|domain:q2-2|evidence_quote:q2-2|domain:q2-3|evidence_quote:q2-3"
+  "httpStatus": 503,
+  "reason": "provider_or_validation_error"
 }
