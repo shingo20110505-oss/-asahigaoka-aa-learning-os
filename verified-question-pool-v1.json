@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-16-12-35-14Z",
-  "updatedAt": "2026-09-16T12:35:14.780Z",
+  "poolVersion": "2026-09-16-13-29-09Z",
+  "updatedAt": "2026-09-16T13:29:09.118Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2264,6 +2264,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-15T13:30:43.700Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading_comprehension",
+        "difficulty": 8,
+        "question": "文章中の筆者の主張に照らして、自然との関わり方に関する記述として最も適切なものを一つ答えよ。",
+        "context": "人間は長らく、自然を人間の管理下におくべき客体として捉え、科学技術の発展によって効率的な利用を進めてきた。しかし、その結果生じた環境問題や生態系の破壊は、人間自身が自然という大きな網の目の不可欠な一部にすぎないという事実を私たちにつきつけている。もはや自然を「征服すべき対象」として見るのではなく、相互に影響を与え合う「共生のネットワーク」のなかに自己を位置づけ直すことが急務である。すなわち、利便性の追求を無制限に肯定するのではなく、自らの欲望に制限を設ける自発的な倫理こそが、現代の私たちに求められているのである。",
+        "choices": [
+          "環境問題の解決は個人の倫理観には依存せず、もっぱら自然の自発的な回復力に委ねられるべきである。",
+          "科学技術を用いて自然を完全に管理下に置き、人間の利便性を最優先に追求し続けるべきである。",
+          "人間は自然から独立した存在であるため、生態系への影響を過度に恐れる必要はない。",
+          "自然を征服の対象から共生のネットワークの一部へと捉え直し、自らの欲望に制限を設けるべきである。"
+        ],
+        "answerIndex": 3,
+        "answer": "自然を征服の対象から共生のネットワークの一部へと捉え直し、自らの欲望に制限を設けるべきである。",
+        "explanation": "文章中では、自然を征服すべき対象とする見方から脱却し、「共生のネットワーク」の中に人間を位置づけ直し、自らの欲望に制限を設ける自発的な倫理が求められていると述べられている。したがって、この内容を正しく言い換えている選択肢が正解となる。他の選択肢は、文章全体の主旨や部分的な論理に反している。",
+        "evidence": "もはや自然を「征服すべき対象」として見るのではなく、相互に影響を与え合う「共生のネットワーク」のなかに自己を位置づけ直すことが急務である。",
+        "misconception": "文章前半で述べられている過去の人間観（自然を管理下におく）や、部分的な語句（科学技術、利便性）に引きずられて、筆者が否定している方向性を正しいと勘違いする誤り。",
+        "marks": 2,
+        "id": "rise-japanese-52e0eac0abda726c",
+        "fingerprint": "fcbc3faf25c8a7cd",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-16T13:29:09.087Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.document_analysis",
+        "difficulty": 8,
+        "question": "グラフや資料の読み取りとして、資料から確実に導き出せる結論を一つ答えよ。",
+        "context": "【市民意識調査の結果】\nある都市における「公共交通機関の利用促進に向けた取り組み」に関する市民意識調査（回答者数1,000人）によると、「運賃の引き下げ」を求める声が全体の42%と最も多く、次いで「運行本数の増加」が30%、「駅周辺の利便施設拡充」が18%、「その他・無回答」が10%であった。また、前年度の調査と比較すると、「運行本数の増加」を挙げた人の割合が前年度の20%から10ポイント増加した一方で、「運賃の引き下げ」は前年度の52%から10ポイント減少した。",
+        "choices": [
+          "今年度の調査において、「運賃の引き下げ」を求めた人は全体の半数を超えている。",
+          "前年度と比較して、「運行本数の増加」を挙げた人の割合が増加した一方で、「運賃の引き下げ」を挙げた人の割合は減少した。",
+          "「駅周辺の利便施設拡充」を求める人は、前年度から倍増していることが確認できる。",
+          "今年度の調査では、「運行本数の増加」を求める人の割合が「運賃の引き下げ」を求める人の割合を上回った。"
+        ],
+        "answerIndex": 1,
+        "answer": "前年度と比較して、「運行本数の増加」を挙げた人の割合が増加した一方で、「運賃の引き下げ」を挙げた人の割合は減少した。",
+        "explanation": "資料の記述によれば、「運賃の引き下げ」は42%で最も多いが全体の半数（50%）を超えてはいない。また、前年度と比較して「運行本数の増加」は20%から30%（10ポイント増）になり、「運賃の引き下げ」は52%から42%（10ポイント減）になっている。したがって、前年度と比較して「運行本数の増加」の割合が増加し、「運賃の引き下げ」の割合が減少したという記述が資料から確実に導き出せる。",
+        "evidence": "また、前年度の調査と比較すると、「運行本数の増加」を挙げた人の割合が前年度の20%から10ポイント増加した一方で、「運賃の引き下げ」は前年度の52%から10ポイント減少した。",
+        "misconception": "割合の大小や単一の数値だけに注目し、前年度との比較や全体に対する割合の条件を見誤る誤り。",
+        "marks": 2,
+        "id": "rise-japanese-5f017d66429e525a",
+        "fingerprint": "7d7dfcbd21edaf93",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-16T13:29:09.087Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.logical_structure",
+        "difficulty": 8,
+        "question": "次の文章における、筆者の論理展開についての説明として最も適切なものを一つ答えよ。",
+        "context": "私たちは、言葉を交わすとき、相手が自分の意図通りに理解してくれることを当然のように期待している。しかし、言葉というものは常に多義的であり、同じ表現であっても文脈や聞き手の背景によって異なる意味を持ちうる。そのため、コミュニケーションの不全はむしろ日常茶飯事なのである。この事実を前にしたとき、私たちは絶望するしかないのだろうか。いや、そうではない。むしろ、言葉の不完全性を前提とし、そのすれ違いを埋めようと絶えず解釈し合う営みの中にこそ、真の対話の可能性が宿るのである。",
+        "choices": [
+          "聞き手の背景に関わらず、言葉の意味が一義的に定まるという前提に立って論を進めている。",
+          "言葉の完全性を信じる立場を肯定した上で、現代社会における対話の重要性を強調している。",
+          "言葉の本質的な不完全性を指摘し、そこから生じるすれ違いを対話の可能性の源泉として肯定的に捉え直している。",
+          "コミュニケーションの不全がもたらす絶望感を訴え、言葉による意思疎通を諦めるべきだと結論づけている。"
+        ],
+        "answerIndex": 2,
+        "answer": "言葉の本質的な不完全性を指摘し、そこから生じるすれ違いを対話の可能性の源泉として肯定的に捉え直している。",
+        "explanation": "筆者は、言葉が多義的でありコミュニケーションに不全が生じるという不完全性を指摘した上で（「言葉というものは常に多義的であり…」）、「いや、そうではない」と反問を起こし、その不完全性やすれ違いを埋めようとする営みに真の対話の可能性があると結論づけている。したがって、この構造を正確に捉えている選択肢が正解となる。",
+        "evidence": "むしろ、言葉の不完全性を前提とし、そのすれ違いを埋めようと絶えず解釈し合う営みの中にこそ、真の対話の可能性が宿るのである。",
+        "misconception": "文章前半の「言葉の多義性や不全」というネガティブな事実の指摘部分だけに囚われ、筆者の最終的な結論（前向きな転換）を見落とす誤り。",
+        "marks": 2,
+        "id": "rise-japanese-fc3f197ec8f1ec4a",
+        "fingerprint": "c42798babb36dec4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-16T13:29:09.087Z"
         }
       }
     ],
