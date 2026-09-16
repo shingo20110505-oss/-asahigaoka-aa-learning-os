@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-16-12-01-42Z",
-  "updatedAt": "2026-09-16T12:01:42.985Z",
+  "poolVersion": "2026-09-16-12-35-14Z",
+  "updatedAt": "2026-09-16T12:35:14.780Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -4155,6 +4155,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-15T12:38:49.319Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.geography.industrial_statistics",
+        "difficulty": 8,
+        "question": "愛知県の工業の特色とその背景について述べた文として最も適当なものを次の中から選びなさい。",
+        "context": "愛知県の製造業の動向に関する資料によると、愛知県の製造品出荷額等は全国の都道府県の中で長年第1位を維持している。その大きな理由として、自動車関連産業をはじめとする機械工業が非常に高い割合を占めていることが挙げられる。一方で、これに伴う課題として、原材料やエネルギーの海外依存度が高く、国際情勢や資源価格の変動による影響を受けやすいという特徴がある。",
+        "choices": [
+          "臨海部に大規模な製鉄所や造船所が集中しているが、自動車関連の工場はほとんど見られない。",
+          "地場産業のみが経済を支えており、全国的な大規模工業都市としての側面は薄い。",
+          "金属や機械を加工する産業の比率が高く、製造品出荷額等は全国上位の水準にある。",
+          "食料品や繊維工業の比率が圧倒的に高く、軽工業が県内産業の中心を担っている。"
+        ],
+        "answerIndex": 2,
+        "answer": "金属や機械を加工する産業の比率が高く、製造品出荷額等は全国上位の水準にある。",
+        "explanation": "愛知県は自動車産業を中心とする機械工業が非常に盛んであり、製造品出荷額等で全国トップクラスの水準を誇っている。軽工業中心である点や造船・地場産業のみに偏る点などは現実の産業構造と異なるため不適切である。",
+        "evidence": "愛知県の製造品出荷額等は全国の都道府県の中で長年第1位を維持している。その大きな理由として、自動車関連産業をはじめとする機械工業が非常に高い割合を占めていることが挙げられる。",
+        "misconception": "愛知県といえば伝統的な地場産業や繊維工業のイメージに引きずられ、現代の主力である機械工業の圧倒的なウェイトを見落とす誤解。",
+        "marks": 2,
+        "id": "rise-social-7cfc3628ffae4a74",
+        "fingerprint": "628300537b9dbd75",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-16T12:35:14.759Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.history.edo_economy",
+        "difficulty": 8,
+        "question": "江戸時代の経済活動や流通の変化について述べた文として最も適当なものを次の中から選びなさい。",
+        "context": "江戸時代中期以降、農業生産力の向上や商品の流通が活発化する中で、各地の特産物が生産されるようになった。西廻り航路などの海上交通路が整備されると、日本海側から瀬戸内海を経て大坂や江戸へ向かう物資の輸送が盛んに行われるようになった。大坂には諸藩の蔵屋敷が置かれ、全国の経済の中心地として「天下の台所」と呼ばれるようになった。",
+        "choices": [
+          "江戸時代初期にはすでに全国一円で共通の紙幣が発行され、藩の枠を超えた統一市場が完成していた。",
+          "大坂には諸藩の蔵屋敷が置かれ、全国から集まった物資の取引や金融の中心地として機能した。",
+          "西廻り航路の整備により、太平洋側の海運を通じて主に東北地方と九州の間で直接貿易が行われた。",
+          "幕府の鎖国政策により国内の商業活動は全面的に禁止され、物資の流通は一切行われなかった。"
+        ],
+        "answerIndex": 1,
+        "answer": "大坂には諸藩の蔵屋敷が置かれ、全国から集まった物資の取引や金融の中心地として機能した。",
+        "explanation": "江戸時代の大坂は「天下の台所」と呼ばれ、蔵屋敷を通じて諸藩の年貢米や特産物が換金・取引される経済・金融の中心地であった。鎖国による国内流通の完全停止や航路の位置の誤りなどは不適切である。",
+        "evidence": "大坂には諸藩の蔵屋敷が置かれ、全国の経済の中心地として「天下の台所」と呼ばれるようになった。",
+        "misconception": "鎖国＝国内の流通や商業も完全に停止していたと勘違いする誤解、または西廻り航路のルートや大坂の役割に関する混同。",
+        "marks": 2,
+        "id": "rise-social-a7158c29128abeed",
+        "fingerprint": "760697e2e37b63a4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-16T12:35:14.759Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.civics.human_rights",
+        "difficulty": 8,
+        "question": "日本国憲法が保障する人権やその新しい展開に関して述べた文として最も適当なものを次の中から選びなさい。",
+        "context": "日本国憲法は、基本的人権の尊重を重要な原則の一つとして掲げている。社会の急激な変化や科学技術の発展に伴い、伝統的な人権規定だけでは個人の尊厳やプライバシーを十分に守ることが難しくなったため、環境権やプライバシー権などの「新しい人権」が主張され、裁判所の判例などをを通じて認められてきた。これらは、個人の生活環境を守り、精神的な自由を確保するための重要な権利として位置づけられている。",
+        "choices": [
+          "プライバシー権や環境権は個人の利益のみを追求するものであり、公共の福祉による制約を受けない。",
+          "社会の変化や技術の進展に伴い、個人の生活や環境を守るための新しい人権が裁判所の判例等で認められてきた。",
+          "日本国憲法に定められた基本的人権は、公益のために国家がいつでも無制限に制限することができる。",
+          "新しい人権はすべて憲法典の条文に直接明記されており、解釈によって拡張される余地は一切ない。"
+        ],
+        "answerIndex": 1,
+        "answer": "社会の変化や技術の進展に伴い、個人の生活や環境を守るための新しい人権が裁判所の判例等で認められてきた。",
+        "explanation": "プライバシー権や環境権などの新しい人権は、社会の変化や技術発展に伴って伝統的な条文の解釈や裁判所の判例を通じて認められてきたものである。人権は公共の福祉による制約を受ける点や明文規定がないものも解釈で認められる点がポイントとなる。",
+        "evidence": "社会の急激な変化や科学技術の発展に伴い、伝統的な人権規定だけでは個人の尊厳やプライバシーを十分に守ることが難しくなったため、環境権やプライバシー権などの「新しい人権」が主張され、裁判所の判例などをを通じて認められてきた。",
+        "misconception": "憲法に書かれていない権利は一切認められない、あるいは人権はどのような理由であっても無制限・無制約であると思い込む誤解。",
+        "marks": 2,
+        "id": "rise-social-b9293098b4443344",
+        "fingerprint": "9f6a8490f40219f2",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-16T12:35:14.759Z"
         }
       }
     ]
