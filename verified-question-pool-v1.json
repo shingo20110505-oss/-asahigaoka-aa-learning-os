@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-16-11-27-08Z",
-  "updatedAt": "2026-09-16T11:27:08.496Z",
+  "poolVersion": "2026-09-16-12-01-42Z",
+  "updatedAt": "2026-09-16T12:01:42.985Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -3142,6 +3142,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-15T12:06:27.321Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.biology",
+        "difficulty": 8,
+        "question": "植物の蒸散と葉のつくりに関する実験結果から、表皮の構造や気孔の分布について読み取れることとして正しいものはどれか。",
+        "context": "同じ大きさの葉をもつ同種の植物の枝4本を用意し、葉の裏側にのみワセリンを厚く塗ったもの（A）、葉の表側にのみワセリンを塗ったもの（B）、両面にワセリンを塗ったもの（C）、何も塗らなかったもの（D）をそれぞれ水を入れたメスシリンダーに差し、一定時間後の減少した水の量を測定した。減少した水の量は、多い順に D ＞ A ＞ B ＞ C であった。",
+        "choices": [
+          "葉の表側よりも裏側の方が、多くの蒸散が行われている。",
+          "ワセリンを塗ると気孔がふさがり、蒸散が完全にゼロになる。",
+          "葉の表側から失われる水分の量は、裏側から失われる水分よりも多い。",
+          "水分の減少量の違いは、葉からの光合成による酸素の放出量の違いによるものである。"
+        ],
+        "answerIndex": 0,
+        "answer": "葉の表側よりも裏側の方が、多くの蒸散が行われている。",
+        "explanation": "減少した水の量は D（何もなし：最大）＞ A（裏側にワセリン：表からのみ蒸散）＞ B（表側にワセリン：裏からのみ蒸散）＞ C（両面ワセリン：最小）となっています。AとBを比べると、A（表からのみ）よりもB（裏からのみ）の方が水の減少量が少ない（D > A > B > C なので、Aの方が水が減っている＝裏側にワセリンを塗ると蒸散量が大きく減る＝裏側からの蒸散量が多い）ことがわかります。したがって、裏側の方が多くの蒸散が行われています。",
+        "evidence": "減少した水の量は、多い順に D ＞ A ＞ B ＞ C であった。",
+        "misconception": "ワセリンを塗った面の反対側から蒸散が行われることや、表裏の気孔の数の違いによる蒸散量の大小関係を逆に捉えてしまうこと。",
+        "marks": 2,
+        "id": "rise-science-47e1c8c4cdd1bb98",
+        "fingerprint": "7a1eb4b54d9ed313",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-16T12:01:37.079Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.physics",
+        "difficulty": 8,
+        "question": "電流回路において、電源電圧を一定に保ったまま、抵抗器の接続を変えたときの電流や電圧の変化に関する実験を行った。この実験で、図1の回路全体の消費電力が最も大きくなる接続状態を選べ。",
+        "context": "図1は、同じ抵抗値をもつ3つの同一の抵抗器R（各$10\\,\\Omega$）と、電圧$12\\,\\mathrm{V}$の電源を組み合わせてさまざまな回路をつくったものである。回路全体の消費電力（W）は、電源の電圧（V）と回路全体の電流（A）の積で表される。",
+        "choices": [
+          "3つの抵抗器をすべて直列に接続した回路",
+          "3つの抵抗器をすべて並列に接続した回路",
+          "2つの抵抗器を直列につないだものに、残りの1つを並列に接続した混合回路",
+          "2つの抵抗器を並列につないだものに、残りの1つを直列に接続した混合回路"
+        ],
+        "answerIndex": 1,
+        "answer": "3つの抵抗器をすべて並列に接続した回路",
+        "explanation": "回路全体の消費電力は、電源電圧が一定（$12\\,\\mathrm{V}$）であるとき、回路全体の抵抗が最も小さくなり、回路全体の電流が最も大きくなる状態のときに最大となる。3つの同一抵抗器をすべて並列に接続したとき、合成抵抗は最も小さく（$10/3\\,\\Omega$）なり、流れる電流が最大となるため、消費電力も最大になる。強すぎるトラップとして直列接続を選ぶ誤りがあるが、直列接続では合成抵抗が最大となり消費電力は最小となる。",
+        "evidence": "回路全体の消費電力（W）は、電源の電圧（V）と回路全体の電流（A）の積で表される。",
+        "misconception": "抵抗を多くつなぐほど電力や明るさが大きくなるというイメージから、直列回路ですべての抵抗器を使うと全体で最も多くの電力を消費すると勘違いする。",
+        "marks": 2,
+        "id": "rise-science-b34fed232f59cfdf",
+        "fingerprint": "ccfa2888190caad6",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-16T12:01:42.956Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemistry",
+        "difficulty": 8,
+        "question": "化学変化と質量変化を調べるため、密閉できる容器に薄い塩酸$20.0\\,\\mathrm{cm^3}$と石灰石$1.0\\,\\mathrm{g}$を入れて密閉し、全体の質量を測定したあと容器を傾けて反応させた。反応が完全に終わったあと、再び容器全体の質量を測定し、さらに容器のふたを開けて十分に時間が経過したあとの質量を測定した。この実験に関する記述として正しいものを選べ。",
+        "context": "密閉容器内でうすい塩酸と石灰石を反応させると、気体が発生して二酸化炭素が生じる。反応前後の密閉容器全体の質量は変化せず、ふたを開けると発生した気体が逃げるため、質量が減少する。",
+        "choices": [
+          "反応前後の容器全体の質量は、発生した気体の質量だけ軽くなる。",
+          "反応前後の容器全体の質量は変わらず、ふたを開けると発生した気体の質量だけ軽くなる。",
+          "ふたを開けても容器全体の質量はまったく変わらない。",
+          "反応前後の容器全体の質量は増加し、ふたを開けると元に戻る。"
+        ],
+        "answerIndex": 1,
+        "answer": "反応前後の容器全体の質量は変わらず、ふたを開けると発生した気体の質量だけ軽くなる。",
+        "explanation": "化学変化の前後で、容器全体を密閉していれば気体を含めて物質の総質量は保存されるため、反応前後の容器全体の質量は変わらない。しかし、ふたを開けると発生した二酸化炭素が大気中に放出されるため、その気体の質量分だけ容器全体の質量が軽くなる。質量保存の法則と開放系・閉鎖系での質量の違いを正しく結びつける必要がある。",
+        "evidence": "反応前後の密閉容器全体の質量は変化せず、ふたを開けると発生した気体が逃げるため、質量が減少する。",
+        "misconception": "気体が発生する化学変化では、気体が逃げなくても反応時に必ず質量が軽くなると誤解している。",
+        "marks": 2,
+        "id": "rise-science-142679ff82ca7c73",
+        "fingerprint": "deda89ac39a943b6",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-16T12:01:42.956Z"
         }
       }
     ],
