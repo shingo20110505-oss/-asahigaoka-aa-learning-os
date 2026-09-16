@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-15-13-30-43Z",
-  "updatedAt": "2026-09-15T13:30:43.728Z",
+  "poolVersion": "2026-09-16-11-27-08Z",
+  "updatedAt": "2026-09-16T11:27:08.496Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1149,6 +1149,108 @@
           "verifierConfidence": 0.99,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-14T12:38:52.714Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.probability",
+        "difficulty": 8,
+        "question": "直線 y = ax + b が点 (1, 6) を通る確率はいくつか。",
+        "context": "箱の中に1から5までの数字が1つずつ書かれた5枚のカードが入っている。この箱から同時に2枚のカードを取り出し、取り出したカードに書かれた2つの数のうち、小さい方を a、大きい方を b とする。このとき、直線 y = ax + b が点 (1, 6) を通る確率を求めよ。",
+        "choices": [
+          "2/5",
+          "3/10",
+          "1/10",
+          "1/5"
+        ],
+        "answerIndex": 3,
+        "answer": "1/5",
+        "explanation": "直線 y = ax + b が点 (1, 6) を通るためには、x=1, y=6 を代入して 6 = a + b となる必要がある。カードから異なる2枚を取り出すとき、小さい方を a、大きい方を b とすると a < b であり、組み合わせは全部で 10通り。a + b = 6 を満たす組み合わせは (1, 5) と (2, 4) の2通りである。よって確率は 2/10 = 1/5 となる。最大の罠は、カードを順番に引く順列として計算して全事象を誤ることである。",
+        "evidence": "箱の中に1から5までの数字が1つずつ書かれた5枚のカードが入っている。",
+        "misconception": "カードを引く順番を区別して全事象を20通りとしてしまい、確率を誤って計算してしまう。",
+        "marks": 2,
+        "id": "rise-math-492bef3ad4150bae",
+        "fingerprint": "3e21ce5ac134c9cc",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-16T11:26:41.053Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.function",
+        "difficulty": 8,
+        "question": "a の値はいくつか。",
+        "context": "関数 y = ax^2 （a>0）のグラフ上に2点A, Bがある。点Aの x 座標は -2、点Bの x 座標は 4 である。直線ABの式が y = x + 4 であるとき、a の値を求めよ。",
+        "choices": [
+          "1/4",
+          "2",
+          "1/3",
+          "1/2"
+        ],
+        "answerIndex": 3,
+        "answer": "1/2",
+        "explanation": "点Aのx座標が-2、点Bのx座標が4であることから、点Aのy座標は4a、点Bのy座標は16aとなる。直線ABの傾きは (16a - 4a) / (4 - (-2)) = 12a / 6 = 2a と表せる。直線ABの式が y = x + 4 であり傾きが 1 であるため、2a = 1 より a = 1/2 が得られる。",
+        "evidence": "直線ABの式が y = x + 4 であるとき、a の値を求めよ。",
+        "misconception": "直線ABの傾きを求める際に、y座標の差をx座標の差で割る計算で係数の代入を忘れ、傾きを a そのものとしてしまう。",
+        "marks": 2,
+        "id": "rise-math-5f65bf6320eddd27",
+        "fingerprint": "f4b1659909016dbf",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-16T11:26:41.053Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "直線 $y = ax + b$ が領域 $D$ と少なくとも1つの共有点を持つような、目の出方の組合せ $(a, b)$ は全部で何通りあるか。",
+        "context": "大小2つのさいころを同時に投げ、出た目の数をそれぞれ $a, b$ とする。座標平面上に直線 $y = ax + b$ を引く。このとき、点 $(1, 2)$ を中心とする半径 $2$ の円の周および内部の領域を $D$ とする。",
+        "choices": [
+          "32通り",
+          "24通り",
+          "28通り",
+          "30通り"
+        ],
+        "answerIndex": 3,
+        "answer": "30通り",
+        "explanation": "直線が円の周および内部と共有点を持つための条件は、円の中心 $(1, 2)$ と直線 $y - ax - b = 0$ の距離 $d$ が円の半径 $r = 2$ 以下であることである。点と直線の距離の公式より、$d = \\frac{|a + b - 2|}{\\sqrt{a^2 + 1}} \\le 2$ となり、両辺を2乗して整理すると $(a + b - 2)^2 \\le 4(a^2 + 1)$ が得られる。大小2つのさいころの目の出方は全部で $6 \\times 6 = 36$ 通りあり、条件を満たさない（距離が $2$ より大きくなる）組合せを数える。$a=1$ のとき $b=4, 5, 6$ の 3通り、$a=2$ のとき $b=5, 6$ の 2通り、$a=3$ のとき $b=6$ の 1通りであり、$a \\ge 4$ ではすべての $b$ が条件を満たす。したがって、条件を満たさない組合せは $3 + 2 + 1 = 6$ 通りであるため、求める組合せの総数は $36 - 6 = 30$ 通りとなる。",
+        "evidence": "大小2つのさいころを同時に投げ、出た目の数をそれぞれ $a, b$ とする。座標平面上に直線 $y = ax + b$ を引く。このとき、点 $(1, 2)$ を中心とする半径 $2$ の円の周および内部の領域を $D$ とする。",
+        "misconception": "円と直線の位置関係を距離の公式ではなく、単に切片や傾きの大小関係だけで直感的に判断し、境界の不等式評価を誤る。",
+        "marks": 2,
+        "id": "rise-math-a18d554b76a2933f",
+        "fingerprint": "0b8af46ac7bc4df8",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-16T11:27:08.471Z"
         }
       }
     ],
