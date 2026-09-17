@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-17-12-04-24Z",
-  "updatedAt": "2026-09-17T12:04:24.926Z",
+  "poolVersion": "2026-09-17-12-35-03Z",
+  "updatedAt": "2026-09-17T12:35:03.586Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -4563,6 +4563,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-16T12:35:14.759Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography.industry",
+        "difficulty": 8,
+        "question": "地域Aの特徴として最も適当なものはどれか。",
+        "context": "次の表は、日本国内の主要な工業地域における工業品出荷額の構成比（機械工業、金属工業、化学工業など）を示したものである。地域Aは自動車関連を中心とする輸送用機械器具の比率が約50％を占め、全国1位の出荷額を誇る。地域Bは特定の産業に偏らず、金属・化学・機械などがバランスよく分布している。地域Cは京浜工業地帯であり、印刷業や食料品などの都市型産業や多様な加工組立型産業が見られる。",
+        "choices": [
+          "機械工業の割合が極めて高く、特に輸送用機械器具の生産が盛んで、製造品出荷額等で全国のトップを維持している。",
+          "軽工業や食料品工業の比率が過半数を占め、消費地に近い利点を生かした都市型工業が中心となっている。",
+          "重化学工業化が最も遅れた地域であり、現在も伝統的工芸品や地場産業が主軸を担っている。",
+          "原料の輸入に依存する臨海部型コンビナートの形成が最も早く、石油化学工業の生産額が全国一である。"
+        ],
+        "answerIndex": 0,
+        "answer": "機械工業の割合が極めて高く、特に輸送用機械器具の生産が盛んで、製造品出荷額等で全国のトップを維持している。",
+        "explanation": "地域Aは自動車関連を中心とする輸送用機械器具の比率が極めて高く、製造品出荷額等が全国1位である中京工業地域に該当する。他の選択肢は都市型工業や他地域の誤った説明であるため不適切となる。",
+        "evidence": "地域Aは自動車関連を中心とする輸送用機械器具の比率が約50％を占め、全国1位の出荷額を誇る。",
+        "misconception": "他の工業地域の特性と混同し、消費地向けの軽工業や都市型工業が主軸であると誤解すること。",
+        "marks": 2,
+        "id": "rise-social-edf3adeef47e4dd2",
+        "fingerprint": "4b8b76bfe68cffed",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-17T12:34:52.673Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history.institutions",
+        "difficulty": 8,
+        "question": "文中に見られる政策を実施した改革の名称とその内容に関する説明として最も適当なものはどれか。",
+        "context": "江戸時代のある改革期において、幕府は財政再建と幕政の立て直しを図るため、次のような政策を実施した。すなわち、大名に対しては、上米の制を課す代わりに参勤交代の期間を緩和して財政負担を軽減させようとした。また、都市の商人に対しては、既得権益を持つ同業者組合の統制を強め、物価の引き下げを図るために株仲間の解散を命じた。さらに、都市へ流入した農民を村落へ送り返す法令や、質素倹約を奨励する令などが次々と出された。",
+        "choices": [
+          "商業の統制緩和と物価の抑制を目的として株仲間の解散などが命じられたが、かえって流通の混乱や物価の高騰を招いた。",
+          "新田開発を積極的に進めて米の増産を図り、上米の制によって幕府の財政は完全に安定を取り戻した。",
+          "三大改革のうち最初の改革であり、目安箱の設置によって広く庶民の意見を政治に反映させた。",
+          "株仲間の公認を通じて流通を支配し、商人から冥加金を上納させることで幕府の収入を増やそうとした。"
+        ],
+        "answerIndex": 0,
+        "answer": "商業の統制緩和と物価の抑制を目的として株仲間の解散などが命じられたが、かえって流通の混乱や物価の高騰を招いた。",
+        "explanation": "文中に示された政策（上米の制、株仲間の解散、人返しの法など）は天保の改革の特徴である。株仲間の解散は物価引き下げをねらったが、かえって流通が混乱し失敗した。他の選択肢は享保の改革や寛政の改革などの要素や誤った結果が含まれている。",
+        "evidence": "大名に対しては、上米の制を課す代わりに参勤交代の期間を緩和して財政負担を軽減させようとした。また、都市の商人に対しては、既得権益を持つ同業者組合の統制を強め、物価の引き下げを図るために株仲間の解散を命じた。",
+        "misconception": "天保の改革の株仲間解散を、物価引き下げではなく収入増加を目的とした他の経済政策や改革と混同すること。",
+        "marks": 2,
+        "id": "rise-social-58ebecee92660b4a",
+        "fingerprint": "a0b5178d463f8acf",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-17T12:34:52.673Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.industry",
+        "difficulty": 8,
+        "question": "本文の記述をもとに、愛知県の工業構造の特徴を正しく説明しているものを次の中から1つ選びなさい。",
+        "context": "中部地方の主要県における工業構造を比較したところ、次のような地域的特徴が確認された。『愛知県は輸送用機械器具の割合が突出して高く、自動車産業を中心とした工業構造が見られる。』一方、長野県では精密機械や電子部品などの組み立て型産業の比率が高く、静岡県では輸送用機械のほかにも多様な業種がバランスよく立地している。",
+        "choices": [
+          "特定の業種に偏らず、すべての業種が完全に均等な割合で立地している。",
+          "自動車産業を中心とする輸送用機械器具の割合が非常に高い。",
+          "食料品製造業や木製品などの軽工業が工業全体の大部分を占めている。",
+          "精密機械や電子部品の生産割合が中部地方で最も高い。"
+        ],
+        "answerIndex": 1,
+        "answer": "自動車産業を中心とする輸送用機械器具の割合が非常に高い。",
+        "explanation": "本文において、愛知県は輸送用機械器具の割合が突出して高く、自動車産業を中心とした工業構造が見られることが直接示されています。他の選択肢は長野県や静岡県の特徴、あるいは事実と異なる内容が含まれており不適当です。",
+        "evidence": "愛知県は輸送用機械器具の割合が突出して高く、自動車産業を中心とした工業構造が見られる。",
+        "misconception": "長野県の精密機械・電子部品の比率が高い点や、静岡県の多様な業種の立地といった他の地域の記述と混同し、愛知県も同様の産業構造であると誤認すること。",
+        "marks": 2,
+        "id": "rise-social-48cad9eb59df31a7",
+        "fingerprint": "73f05f1e7b803150",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-17T12:35:03.559Z"
         }
       }
     ]
