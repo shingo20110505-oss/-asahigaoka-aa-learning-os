@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-17-12-35-03Z",
-  "updatedAt": "2026-09-17T12:35:03.586Z",
+  "poolVersion": "2026-09-17-13-24-54Z",
+  "updatedAt": "2026-09-17T13:24:54.985Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2468,6 +2468,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-16T13:29:09.087Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.kanji_context",
+        "difficulty": 8,
+        "question": "文脈において、「定着する」という表現が使われているが、筆者がこの言葉で最も言いたかった内容として適切なものはどれか。",
+        "context": "新しい地域文化や言語がコミュニティの中に深く根を下ろし、単に一過性のブームではなく、住民の日常的なコミュニケーションや行動様式の一部として自然に組み込まれていく過程を「定着する」と呼ぶ。この状態に達するには、異なる世代間の交流や、地域の行事を通じた継続的な参加が不可欠であり、外から持ち込まれたものが内部の固有の価値観と融合しながら変容していく柔軟な営みが求められる。したがって、行政が上から強制的に制度を導入するだけでは、真の意味での根づきは期待できない。",
+        "choices": [
+          "一過性のブームとして一時的に人々が興味を示し、表面的な消費に終わること。",
+          "外来の要素が地域の固有の価値観と融合し、住民の日常的な行動様式の一部として根づくこと。",
+          "世代間の交流を一切断ち切り、伝統的な価値観のみを頑なに守り続けること。",
+          "行政主導の制度改革によって、新しい文化が短期間で地域全体に義務化されること。"
+        ],
+        "answerIndex": 1,
+        "answer": "外来の要素が地域の固有の価値観と融合し、住民の日常的な行動様式の一部として根づくこと。",
+        "explanation": "文脈において「定着する」とは、「一過性のブームではなく、住民の日常的なコミュニケーションや行動様式の一部として自然に組み込まれていく」「外から持ち込まれたものが内部の固有の価値観と融合しながら変容していく」状態を指すと説明されています。したがって、外来の要素が地域の価値観と融合し、日常の一部として根づくことを表す選択肢が正解となります。他の選択肢は、行政による強制や一過性の消費、交流の断絶など、本文の記述や「定着」のニュアンスに反しています。",
+        "evidence": "住民の日常的なコミュニケーションや行動様式の一部として自然に組み込まれていく過程を「定着する」と呼ぶ。",
+        "misconception": "「行政が上から強制的に制度を導入する」という文言の「制度」という言葉に引きずられ、行政主導の改革が定着につながるという逆の解釈をしてしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-9d752053a51a551f",
+        "fingerprint": "ccfb2e70bb3d48e2",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-17T13:24:54.968Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.read_comprehension",
+        "difficulty": 8,
+        "question": "筆者は、新しい地域文化が真の意味で定着するために不可欠な条件として、何が必要であると述べているか。",
+        "context": "新しい地域文化や言語がコミュニティの中に深く根を下ろし、単に一過性のブームではなく、住民の日常的なコミュニケーションや行動様式の一部として自然に組み込まれていく過程を「定着する」と呼ぶ。この状態に達するには、異なる世代間の交流や、地域の行事を通じた継続的な参加が不可欠であり、外から持ち込まれたものが内部の固有の価値観と融合しながら変容していく柔軟な営みが求められる。したがって、行政が上から強制的に制度を導入するだけでは、真の意味での根づきは期待できない。",
+        "choices": [
+          "異なる世代間の交流や、地域の行事を通じた継続的な参加。",
+          "行政による厳格な規則の制定と迅速な強制力の発揮。",
+          "外部からの影響を完全に遮断し、独自の文化を守ること。",
+          "住民が外来の文化をそのまま一切改変せずに受け入れること。"
+        ],
+        "answerIndex": 0,
+        "answer": "異なる世代間の交流や、地域の行事を通じた継続的な参加。",
+        "explanation": "本文の後半部分に「この状態に達するには、異なる世代間の交流や、地域の行事を通じた継続的な参加が不可欠であり」と明記されています。したがって、世代間の交流や行事を通じた継続的な参加を挙げている選択肢が正しいものとなります。他の選択肢は、文化の改変拒否、行政による強制、外部の影響の遮断など、本文の主張や根拠と矛盾しています。",
+        "evidence": "異なる世代間の交流や、地域の行事を通じた継続的な参加が不可欠であり",
+        "misconception": "本文末尾にある「行政が上から強制的に制度を導入する」という文脈を主軸と捉え、行政の強制力こそが必要であると勘違いする誤り。",
+        "marks": 2,
+        "id": "rise-japanese-f4889d38b063f724",
+        "fingerprint": "4722fa8159eeee53",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-17T13:24:54.968Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.author_intent",
+        "difficulty": 8,
+        "question": "筆者が「行政が上から強制的に制度を導入するだけでは、真の意味での根づきは期待できない」と述べている理由として、最も適当なものはどれか。",
+        "context": "新しい地域文化や言語がコミュニティの中に深く根を下ろし、単に一過性のブームではなく、住民の日常的なコミュニケーションや行動様式の一部として自然に組み込まれていく過程を「定着する」と呼ぶ。この状態に達するには、異なる世代間の交流や、地域の行事を通じた継続的な参加が不可欠であり、外から持ち込まれたものが内部の固有の価値観と融合しながら変容していく柔軟な営みが求められる。したがって、行政が上から強制的に制度を導入するだけでは、真の意味での根づきは期待できない。",
+        "choices": [
+          "住民は行政の行うすべての施策に対して常に反対する傾向があるから。",
+          "制度が導入されると、世代間の交流が過剰に活発になりすぎて混乱が生じるから。",
+          "行政による制度の導入はコストが高く、地域の財政を圧迫するため。",
+          "真の定着には、外来の要素が内部の価値観と融合する柔軟な営みや住民の自発的な参加が不可欠だから。"
+        ],
+        "answerIndex": 3,
+        "answer": "真の定着には、外来の要素が内部の価値観と融合する柔軟な営みや住民の自発的な参加が不可欠だから。",
+        "explanation": "筆者は、文化の定着には「外から持ち込まれたものが内部の固有の価値観と融合しながら変容していく柔軟な営み」や「異なる世代間の交流や、地域の行事を通じた継続的な参加」が不可欠であると述べています。そのため、単なる行政による上からの強制的な制度導入では、そうした自発的な融合や参加が伴わず、真の根づきには至らないという論理展開になっています。したがって、住民の自発的な参加や融合が求められるとする選択肢が適切です。",
+        "evidence": "外から持ち込まれたものが内部の固有の価値観と融合しながら変容していく柔軟な営みが求められる。したがって、行政が上から強制的に制度を導入するだけでは、真の意味での根づきは期待できない。",
+        "misconception": "財政問題や住民の反発といった、本文中に一切言及されていない要因を推測して理由として選んでしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-ea425c44740a1578",
+        "fingerprint": "651800c8463ce6e2",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-17T13:24:54.968Z"
         }
       }
     ],
