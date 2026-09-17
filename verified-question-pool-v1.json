@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-17-11-35-46Z",
-  "updatedAt": "2026-09-17T11:35:46.149Z",
+  "poolVersion": "2026-09-17-12-04-24Z",
+  "updatedAt": "2026-09-17T12:04:24.926Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -3448,6 +3448,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-16T12:01:42.956Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.chemistry.solubility_and_concentration",
+        "difficulty": 8,
+        "question": "物質Xの結晶が何g析出するか、最も適当なものを1つ選べ。",
+        "context": "物質Xの溶解度は、60℃で水100gあたり110g、20℃で水100gあたり30gである。ある実験で、60℃の水50gに物質Xを溶かして飽和水溶液をつくった後、この水溶液を20℃まで冷却した。",
+        "choices": [
+          "15g",
+          "40g",
+          "80g",
+          "55g"
+        ],
+        "answerIndex": 1,
+        "answer": "40g",
+        "explanation": "60度における溶解度が水100gあたり110gであるため、水50gには55gの物質Xが溶ける。20度における溶解度は水100gあたり30gであるため、水50gに溶ける物質Xは15gである。したがって、冷却することで55gから15gを引いた40gの結晶が析出する。もっとも強い誤解は、溶解度の数値をそのまま引き算して80gとしてしまうことである。",
+        "evidence": "60℃で水100gあたり110g、20℃で水100gあたり30gである",
+        "misconception": "溶解度の水100gあたりの値と実際に用いた水の質量（50g）の関係を無視して、そのまま引き算してしまう。",
+        "marks": 2,
+        "id": "rise-science-55eba846467c17e2",
+        "fingerprint": "d00f24ce76db0300",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-17T12:04:12.859Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.earth_science.strata_and_history",
+        "difficulty": 8,
+        "question": "この地域の地層全体の傾きの方向として最も適当なものを1つ選べ。",
+        "context": "ある地域において、同じ標高の基準面から測ったある鍵層の上面の深さを調べた。北側に位置する地点Pでは地表から20mの深さ、東側に位置する地点Qでは地表から40mの深さ、南側に位置する地点Rでは地表から10mの深さであった。3地点の地表の標高はすべて同じ100mである。",
+        "choices": [
+          "北の方向へ向かって下がっている",
+          "南の方向へ向かって下がっている",
+          "東の方向へ向かって下がっている",
+          "西の方向へ向かって下がっている"
+        ],
+        "answerIndex": 2,
+        "answer": "東の方向へ向かって下がっている",
+        "explanation": "地表の標高がすべての地点で100mであるため、鍵層上面の標高は地点Pの北側が80m、地点Qの東側が60m、地点Rの南側が90mとなる。南が最も高く、東に向かって標高が低くなっていることから、この地層は東の方向へ向かって下がっていると判断できる。誤った考え方として、深さの数値が大きいほど地層が高い位置にあると錯覚し、深さの大小をそのまま逆にしてしまうケースがある。",
+        "evidence": "北側に位置する地点Pでは地表から20mの深さ、東側に位置する地点Qでは地表から40mの深さ、南側に位置する地点Rでは地表から10mの深さであった。3地点の地表の標高はすべて同じ100mである。",
+        "misconception": "地表からの「深さ」の数値が大きいほど地層の位置が高いと勘違いしてしまう。",
+        "marks": 2,
+        "id": "rise-science-1266df80f49172fc",
+        "fingerprint": "faeea841daf807c7",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-17T12:04:12.859Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "この操作によって析出した硝酸カリウムの質量は何gか。",
+        "context": "硝酸カリウムの溶解度は、60℃で110g、20℃で32gである（いずれも水100gに対する値）。60℃の水100gに硝酸カリウムを90g溶かしてつくった水溶液を加熱して水を20g蒸発させた後、20℃まで冷却したところ、硝酸カリウムの結晶が析出した。このとき、20℃の水80gに溶ける硝酸カリウムの質量は25.6gである。",
+        "choices": [
+          "84.4g",
+          "78.0g",
+          "64.4g",
+          "58.0g"
+        ],
+        "answerIndex": 2,
+        "answer": "64.4g",
+        "explanation": "析出した結晶の質量を求めるには、溶液中に含まれる溶質の総質量から、冷却後の温度で水に溶けていられる溶質の質量を引く必要がある。もともと溶かした硝酸カリウムの質量は90gであり、加熱により水が20g蒸発したため、残りの水の質量は80g（100g - 20g）になる。20℃の水80gに溶ける硝酸カリウムの質量は25.6gであると与えられているため、水溶液中に溶けきれずに析出する結晶の質量は、90g - 25.6g = 64.4gとなる。最も強力な誤答トラップは、水の蒸発を考慮せず、もとの水の量（100g）に対する20℃の溶解度（32g）を用いて 90g - 32g = 58.0g と計算してしまうことである。",
+        "evidence": "60℃の水100gに硝酸カリウムを90g溶かしてつくった水溶液を加熱して水を20g蒸発させた後、20℃まで冷却したところ、硝酸カリウムの結晶が析出した。",
+        "misconception": "水が蒸発したことによる水量の変化を見落とし、蒸発前の水の量に対する溶解度をそのまま適用して計算してしまう誤解。",
+        "marks": 2,
+        "id": "rise-science-d77dfe4d9137f2a1",
+        "fingerprint": "c49bf7edad809be3",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-17T12:04:24.906Z"
         }
       }
     ],
