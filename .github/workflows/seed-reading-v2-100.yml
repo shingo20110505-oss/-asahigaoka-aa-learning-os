@@ -1,0 +1,41 @@
+name: Seed English Reading V2 to 100
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/seed-reading-v2-100.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seed-reading-v2-100
+  cancel-in-progress: false
+
+jobs:
+  seed:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Generate and validate 100-passage library
+        run: node scripts/seed-reading-v2-100.mjs
+
+      - name: Commit generated reading data
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reading-v2-data/manifest.json reading-v2-data/batch-0002.json reading-v2-data/batch-0003.json reading-v2-data/batch-0004.json reading-v2-data/batch-0005.json reading-v2-data/batch-0006.json
+          if git diff --cached --quiet; then
+            echo "Reading V2 data already up to date."
+            exit 0
+          fi
+          git commit -m "Expand English reading V2 to 100 passages"
+          git push
