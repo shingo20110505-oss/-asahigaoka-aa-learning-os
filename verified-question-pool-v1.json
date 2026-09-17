@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-16-13-29-09Z",
-  "updatedAt": "2026-09-16T13:29:09.118Z",
+  "poolVersion": "2026-09-17-11-35-46Z",
+  "updatedAt": "2026-09-17T11:35:46.149Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1251,6 +1251,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-16T11:27:08.471Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.probability",
+        "difficulty": 8,
+        "question": "袋の中に1から5までの数字が1つずつ書かれた5個の玉が入っている。この袋から同時に2個の玉を取り出し、書かれた数の大きい方を $a$、小さい方を $b$ とする。このとき、$a - b$ の値が偶数となる確率を求めよ。",
+        "context": "1から5までの数字が1つずつ書かれた5個の玉が入った袋があり、同時に2個の玉を取り出す試行を行う。",
+        "choices": [
+          "2/5",
+          "3/10",
+          "1/2",
+          "3/5"
+        ],
+        "answerIndex": 0,
+        "answer": "2/5",
+        "explanation": "袋から同時に2個の玉を取り出す組み合わせの総数は全部で 5C2 = 10 通りである。それぞれの組み合わせについて、大きい方を $a$、小さい方を $b$ として $a - b$ の値を求めると、(2,1)→1, (3,1)→2, (4,1)→3, (5,1)→4, (3,2)→1, (4,2)→2, (5,2)→3, (4,3)→1, (5,3)→2, (5,4)→1 となる。このうち $a - b$ が偶数になるのは、差が2である場合（(3,1), (4,2), (5,3) の3通り）と、差が4である場合（(5,1) の1通り）の合計 3 + 1 = 4 通りである。したがって、確率は 4/10 = 2/5 となる。最も一般的な誤りは、順序を考慮して全体の事象数を 20通りなどと誤認することである。",
+        "evidence": "1から5までの数字が1つずつ書かれた5個の玉が入った袋があり、同時に2個の玉を取り出す試行を行う。",
+        "misconception": "全事象を異なる色の玉として順序を考慮した樹形図などで数え間違え、分母を誤る。",
+        "marks": 2,
+        "id": "rise-math-0836c1840a6726c8",
+        "fingerprint": "9ed970a843b779a6",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-17T11:35:46.130Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.geometry",
+        "difficulty": 8,
+        "question": "図のように、円Oの円周上に3点A, B, Cがあり、AB = AC である。線分BC上に点Dをとる。点Aと点Dを結び、点Dを通りABに平行な直線とACとの交点をEとする。AB = 6cm, BC = 8cm, BD = 2cm のとき、線分AEの長さを求めよ。",
+        "context": "円Oの円周上に3点A, B, Cがあり、AB = AC である。BC上に点Dをとり、点Aと点Dを結ぶ。Dを通りABに平行な直線とACとの交点をEとする。AB = 6cm, BC = 8cm, BD = 2cm。",
+        "choices": [
+          "2.5cm",
+          "3.0cm",
+          "1.5cm",
+          "2.0cm"
+        ],
+        "answerIndex": 2,
+        "answer": "1.5cm",
+        "explanation": "AB = AC より三角形ABCは二等辺三角形であるため、底角の大きさが等しい。DE平行ABより、角EDC = 角B、角DEC = 角A となり、三角形CDEも二等辺三角形 CE = CD となる。BC = 8cm で BD = 2cm であるから、DC = BC - BD = 6cm である。よって CE = 6cm。また、ED平行ABより、三角形CEDは三角形CABと相似である。しかし簡単には、平行線と線分の比の定理を用いる。AE : EC = BD : DC である（なぜならED平行ABよりAE/EC = BD/DC）。DC = 6, BD = 2, EC = 6 であるから、AE : 6 = 2 : 6 となり、AE = 2cm... ではなく、AE : EC = BD : DC の関係から、AE/AC = BD/BC を用いる。AC = AB = 6cm であるから、AE / 6 = 2 / 8 より AE = 6 * (2/8) = 1.5cm と求まる。もっともありがちなミスは相似比をそのまま辺の長さの比と取り違えることである。",
+        "evidence": "AB = 6cm, BC = 8cm, BD = 2cm のとき、線分AEの長さを求めよ。",
+        "misconception": "三角形の相似比の対応を誤り、平行線と線分の比を適用する際に不適切な辺の長さを代入してしまう。",
+        "marks": 2,
+        "id": "rise-math-86d5125244504716",
+        "fingerprint": "37d83b54570f946e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-17T11:35:46.130Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.function",
+        "difficulty": 8,
+        "question": "座標平面上に直線 l: y = -x + 6 があり、l と x 軸、y 軸との交点をそれぞれ A, B とする。点Pは線分AB上を原点O以外の場所で動く点とする。点Pから x 軸、y 軸に垂線を下ろし、その交点をそれぞれ Q, R とする。長方形 OQPR の面積が 8 となるとき、点Pの座標として正しいものを求めよ。",
+        "context": "直線 l: y = -x + 6 が x 軸、y 軸と交わる点をそれぞれ A, B とし、点Pは線分AB上の動点である。Pから各軸に下ろした垂線による長方形OQPRの面積が8となる。",
+        "choices": [
+          "(1, 5) または (5, 1)",
+          "(3, 3)",
+          "(2, 3) または (3, 2)",
+          "(2, 4) または (4, 2)"
+        ],
+        "answerIndex": 3,
+        "answer": "(2, 4) または (4, 2)",
+        "explanation": "直線 y = -x + 6 の x 切片は A(6, 0)、y 切片は B(0, 6) である。点P(t, -t + 6) は線分AB上を動くため、0 < t < 6 である。長方形OQPRの縦の長さは y 座標の -t + 6、横の長さは x 座標の t である。長方形の面積は t(-t + 6) と表され、これが 8 に等しいので、-t^2 + 6t = 8 すなわち t^2 - 6t + 8 = 0 となる。これを解くと (t - 2)(t - 4) = 0 より t = 2, 4 を得る。t = 2 のとき y = 4 であり、Pの座標は (2, 4)。t = 4 のとき y = 2 であり、Pの座標は (4, 2)。したがって、求める点Pの座標は (2, 4) または (4, 2) である。",
+        "evidence": "長方形 OQPR の面積が 8 となるとき、点Pの座標として正しいものを求めよ。",
+        "misconception": "方程式を立てたあとに因数分解や解の公式の計算を誤り、特定の解のみを採用してしまう。",
+        "marks": 2,
+        "id": "rise-math-0fb7293b5e07ec5f",
+        "fingerprint": "6a71ff3146d82ab7",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-17T11:35:46.130Z"
         }
       }
     ],
