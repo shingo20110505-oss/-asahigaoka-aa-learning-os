@@ -69,6 +69,23 @@ function migrate(s){
  s.schemaVersion=SCHEMA_VERSION;s.appVersion=APP_VERSION;return s
 }
 let state=migrate((()=>{try{return JSON.parse(storageGet(STORE_KEY)||'null')}catch(e){return null}})());
+function normalizeStandaloneBootState(){
+ if(!IS_STANDALONE())return false;
+ const transient=new Set(['mission','exam','timeline','study','result']);
+ if(!transient.has(state.route))return false;
+ state.lastRoute=state.route;
+ state.route='home';
+ if(plainObj(state.ui))state.ui={...state.ui,modal:null,toast:null};
+ else state.ui={...defaultState().ui};
+ if(state.session?.active){
+  const t=now();
+  state.session={...state.session,clockPaused:true,pausedAt:Number.isFinite(state.session.pausedAt)?state.session.pausedAt:t,lastActiveAt:Number.isFinite(state.session.lastActiveAt)?state.session.lastActiveAt:t};
+ }
+ storageSet(STORE_KEY,JSON.stringify(state));
+ document.documentElement.dataset.riseBootStateNormalized='1';
+ return true
+}
+normalizeStandaloneBootState();
 function save(){state.updatedAt=now();storageSet(STORE_KEY,JSON.stringify(state))}
 function setRoute(r){if(state.route==='study'&&state.session?.active&&r!=='study'){save()}state.lastRoute=state.route;state.route=r;save();render();window.scrollTo(0,0)}
 function getSkill(id){let d={skillId:id,attempts:0,correct:0,mastery:.48,confidence:.08,transfer:.35,speedIndex:.5,retention:.5,recentErrors:[],lastSeenAt:null,lastSuccessAt:null,contextsSucceeded:[],updatedAt:now(),stabilityDays:1,dueAt:0};if(!state.mastery[id])state.mastery[id]=d;else state.mastery[id]={...d,...state.mastery[id],skillId:id};return state.mastery[id]}
@@ -608,5 +625,30 @@ handleAction=function(el,e){
  return handleActionBeforeSuccessFeedback(el,e)
 };
 if(repairSavedReadingGrammarGate())save();
-render();
+function safeInitialRender(){
+ try{render();return true}catch(firstError){
+  console.error('[Rise boot] recovering saved view state',firstError);
+  document.documentElement.dataset.riseBootRecovery='view';
+  const failedRoute=state.route,failedSession=state.session;
+  state.lastRoute=failedRoute;
+  state.route='home';
+  state.ui=plainObj(state.ui)?{...state.ui,modal:null,toast:null}:{...defaultState().ui};
+  if(state.session?.active){
+   const t=now();
+   state.session={...state.session,clockPaused:true,pausedAt:t,lastActiveAt:Number.isFinite(state.session.lastActiveAt)?state.session.lastActiveAt:t}
+  }
+  try{save();render();return true}catch(secondError){
+   console.error('[Rise boot] quarantining incompatible active session',secondError);
+   document.documentElement.dataset.riseBootRecovery='session';
+   try{storageSet(STORE_KEY+'_boot_session_recovery',JSON.stringify({savedAt:now(),route:failedRoute,session:failedSession}))}catch(_){}
+   state.session=null;
+   state.route='home';
+   state.ui={...defaultState().ui,subjectDifficulty:clamp(Number(state.ui?.subjectDifficulty)||7,1,11),successFeedback:state.ui?.successFeedback!==false};
+   save();
+   render();
+   return true
+  }
+ }
+}
+safeInitialRender();
 initPWA();

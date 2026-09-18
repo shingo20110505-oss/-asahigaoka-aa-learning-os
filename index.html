@@ -18,7 +18,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="./icons/rise-favicon-32-20260905-v5.png">
 <link rel="stylesheet" href="./learning-engine-v22.css">
 <link rel="preload" href="./app/runtime-registry.js" as="script">
-<link rel="preload" href="./app/legacy/main-runtime.js?v=20260909-2" as="script">
+<link rel="preload" href="./app/legacy/main-runtime.js?v=20260918-bootstate-1" as="script">
 <link rel="preload" href="./ai-reading-library-v1.js?v=1.0.0" as="script">
 <link rel="preload" href="./ai-reading-v1.js?v=2.0.3" as="script">
 <link rel="preload" href="./ai-reading-exam-scaffold-v1.js?v=1.1.0" as="script">
@@ -35,7 +35,7 @@
 <style id="aa-app-boot-guard">
 html.aa-app-booting body>*{visibility:hidden!important}
 html.aa-app-booting body:before{content:"最新版を準備中…";position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:#0c1832;color:#f7f9ff;visibility:visible!important;text-align:center;font:800 15px/1.6 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Yu Gothic",sans-serif}
-html.aa-app-booting.aa-app-boot-slow body:before{content:"最新版のRiseを読み込んでいます…\A通信を確認してください。";white-space:pre-line}
+html.aa-app-booting.aa-app-boot-slow body:before{content:"Riseの起動状態を修復しています…\Aそのままお待ちください。";white-space:pre-line}
 #riseBootRecovery{display:none}
 html.aa-app-boot-error body:before{display:none!important}
 html.aa-app-boot-error #riseBootRecovery{visibility:visible!important;position:fixed;inset:0;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:28px;background:#0c1832;color:#f7f9ff;text-align:center;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Yu Gothic",sans-serif}
@@ -76,12 +76,12 @@ document.addEventListener('click',e=>{if(e.target?.closest?.('#riseBootRetry'))v
 <link rel="stylesheet" href="./app/ui/rise-structure-v4.css?v=4.3.0">
 </head>
 <body>
-<div id="riseBootRecovery" role="alert" aria-live="assertive"><strong>Riseを表示できませんでした</strong><span>旧画面には切り替えず、安全に停止しています。通信状態を確認して最新版を再読み込みしてください。</span><button id="riseBootRetry" type="button">Riseを再読み込み</button></div>
+<div id="riseBootRecovery" role="alert" aria-live="assertive"><strong>Riseの起動状態を修復します</strong><span>学習履歴は残したまま、一時状態とアプリキャッシュを修復して最新版を読み込みます。</span><button id="riseBootRetry" type="button">Riseを修復して再読み込み</button></div>
 <div class="app" id="app"></div>
 <script defer src="./app/runtime-registry.js"></script>
 <!-- Must run before the legacy runtime: blocks its obsolete controllerchange -> location.reload handler. -->
 <script defer src="./app/pwa/legacy-controller-reload-guard-v1.js?v=1.1.0"></script>
-<script defer src="./app/legacy/main-runtime.js?v=20260909-2"></script>
+<script defer src="./app/legacy/main-runtime.js?v=20260918-bootstate-1"></script>
 <!-- Reading stack: verified library -> AI runtime -> Aichi exam scaffold. Must run after legacy runtime. -->
 <script defer src="./ai-reading-library-v1.js?v=1.0.0"></script>
 <script defer src="./ai-reading-v1.js?v=2.0.3"></script>

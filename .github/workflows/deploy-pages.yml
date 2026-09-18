@@ -88,6 +88,7 @@ jobs:
           node scripts/reading-library.mjs --validate
           node scripts/validate-math.mjs
           node tests/architecture-boundaries.mjs
+          node tests/pwa-boot-recovery-contract.mjs
 
           grep -q 'AA_REVIEW_BANK_VERSION=' review-bank-v1.js
           grep -q "a.href='./review/'" aa-companion-v2.js
