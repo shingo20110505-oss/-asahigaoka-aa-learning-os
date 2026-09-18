@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-18-11-47-47Z",
-  "updatedAt": "2026-09-18T11:47:47.383Z",
+  "poolVersion": "2026-09-18-12-13-15Z",
+  "updatedAt": "2026-09-18T12:13:15.572Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -4869,6 +4869,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-17T12:35:03.559Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "愛知県内の農業や工業の地域的特徴に関して、記述として正しいものを次のうちから1つ選びなさい。",
+        "context": "愛知県は、矢作川などを水源とする豊川用水や愛知用水などの農業用水の整備により、台地や平野部での農業が発展してきました。また、県内の工業については、輸送用機械器具製造業を中心とした高い出荷額を誇り、特に関連する部品工場などが各地に広がっています。さらに、渥美半島などの温暖な気候を利用した近郊農業が盛んであり、太平洋ベルトの一角として日本の経済を支える重要な役割を担っています。",
+        "choices": [
+          "渥美半島では、寒冷で雪深い気候を活かした稲作中心の単作農業が古くから盛んに行われている。",
+          "愛知県の工業地帯は、瀬戸内工業地域の一部として位置づけられており、重化学工業化はあまり進んでいない。",
+          "愛知県では、愛知用水や豊川用水などの農業用水の整備が進められ、農業生産の振興に大きく寄与している。",
+          "名古屋市を中心とする工業生産品出荷額のうち、最も大きな割合を占めているのは食料品製造業である。"
+        ],
+        "answerIndex": 2,
+        "answer": "愛知県では、愛知用水や豊川用水などの農業用水の整備が進められ、農業生産の振興に大きく寄与している。",
+        "explanation": "愛知県では、愛知用水や豊川用水といった大規模な農業用水の整備により、水不足に悩んでいた台地などで農業生産が大きく発展しました。したがって、農業用水の整備に関する記述が正しいものとなります。輸送用機械器具製造業が中心であることや、渥美半島は温暖な気候を利用していること、太平洋ベルトに属していることなどがポイントです。",
+        "evidence": "愛知県は、矢作川などを水源とする豊川用水や愛知用水などの農業用水の整備により、台地や平野部での農業が発展してきました。",
+        "misconception": "愛知県の主要な工業分野を輸送用機械器具ではなく食料品と混同したり、渥美半島の気候や農業形態を誤って捉えたりする誤解。",
+        "marks": 2,
+        "id": "rise-social-75228d0c05e05dd0",
+        "fingerprint": "f99db4d13114afef",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-18T12:13:15.501Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "中世から近世にかけての日本の歴史的動向について、正しく述べられているものを次のうちから1つ選びなさい。",
+        "context": "鎌倉時代から室町時代、そして江戸時代にかけて、日本の社会や経済は大きく変化した。室町時代には、日明貿易などによって中国から銅銭などが大量に流入し、国内の商業が活発化した。また、江戸時代に入ると、幕府や藩による交通網の整備や経済の発展に伴って、全国各地を結ぶ流通が盛んになり、大阪は「天下の台所」と呼ばれる経済の中心地として栄えるようになった。",
+        "choices": [
+          "室町時代の初めには、全国の商工業者が自主的な同業組合である株仲間を幕府の主導ですべて解散させた。",
+          "鎌倉時代初期の幕府は、京の朝廷を完全に廃止し、全国の直轄地に国司を直接派遣して直接統治を行った。",
+          "江戸時代の鎖国体制のもとでは、朝鮮との貿易や外交関係は一切断絶され、いっさいの交流が禁止されていた。",
+          "江戸時代には、大阪が「天下の台所」と呼ばれ、全国の経済や流通の中心地として重要な役割を果たした。"
+        ],
+        "answerIndex": 3,
+        "answer": "江戸時代には、大阪が「天下の台所」と呼ばれ、全国の経済や流通の中心地として重要な役割を果たした。",
+        "explanation": "江戸時代には、諸藩の蔵屋敷が置かれた大阪に全国から年貢米や特産品が集まり、「天下の台所」として経済の中心地になりました。室町時代の同業組合は座であり、株仲間は江戸時代のものです。鎌倉時代初期は守護・地頭が置かれましたが朝廷は存続しており、江戸時代の鎖国中も対馬藩を通じた朝鮮との貿易は行われていました。",
+        "evidence": "江戸時代に入ると、幕府や藩による交通網の整備や経済の発展に伴って、全国各地を結ぶ流通が盛んになり、大阪は「天下の台所」と呼ばれる経済の中心地として栄えるようになった。",
+        "misconception": "株仲間と室町時代の「座」の成立時期を混同したり、鎖国によって朝鮮との関係が完全に断絶していたと誤解したりする誤り。",
+        "marks": 2,
+        "id": "rise-social-d2f9d5984711dbfc",
+        "fingerprint": "32834d98005ac22e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-18T12:13:15.501Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "日本国憲法が保障する基本的人権や民主主義の仕組みについて、正しく説明しているものを次のうちから1つ選びなさい。",
+        "context": "日本国憲法は、基本的人権の尊重を重要な原理の一つとして掲げている。これには、法の下の平等や、個人の尊厳を守るためのさまざまな自由権、そして人間らしい最低限度の生活を営む権利である生存権などが含まれる。また、国民主権に基づき、国民は選挙などを通じて政治に参加し、代表者を選ぶことで民主的な政治を実現している。",
+        "choices": [
+          "国民主権の原則により、国の最高法規である憲法は、内閣の判断のみによっていつでも自由に変更できる。",
+          "間接民主制を採用している日本では、国民が直接すべての法律案を国会に提出して投票で決定する仕組みが中心である。",
+          "日本国憲法では、すべての国民が健康で文化的な最低限度の生活を営む権利として、生存権が保障されている。",
+          "基本的人権のうち、精神の自由に関する権利は、公共の福祉による制限を受けることなく絶対無制限に保障される。"
+        ],
+        "answerIndex": 2,
+        "answer": "日本国憲法では、すべての国民が健康で文化的な最低限度の生活を営む権利として、生存権が保障されている。",
+        "explanation": "憲法第25条において、すべての国民は健康で文化的な最低限度の生活を営む権利（生存権）を有することが定められています。基本的人権は「公共の福祉」による制限を受けますし、憲法の改正には厳格な手続き（国民投票など）が必要です。また、日本は間接民主制（代表民主制）を採っています。",
+        "evidence": "これには、法の下の平等や、個人の尊厳を守るためのさまざまな自由権、そして人間らしい最低限度の生活を営む権利である生存権などが含まれる。",
+        "misconception": "基本的人権は絶対無制限であると誤解したり、憲法改正の仕組みや直接民主制・間接民主制の違いを混同したりする誤り。",
+        "marks": 2,
+        "id": "rise-social-4d88eb4ad289111e",
+        "fingerprint": "9662a07fab842d41",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-18T12:13:15.501Z"
         }
       }
     ]
