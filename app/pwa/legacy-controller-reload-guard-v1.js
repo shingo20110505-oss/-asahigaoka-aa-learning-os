@@ -1,6 +1,6 @@
 (()=>{'use strict';
 if(window.__RISE_LEGACY_SW_RELOAD_GUARD__)return;
-window.__RISE_LEGACY_SW_RELOAD_GUARD__={version:'1.0.0',blocked:0,canonicalNav:'home-exam-learning-review'};
+window.__RISE_LEGACY_SW_RELOAD_GUARD__={version:'1.1.0',blocked:0,canonicalNav:'home-exam-learning-review',recovery:'hard-reset-delegation'};
 const root=document.documentElement;
 const app=document.getElementById('app');
 const sw=navigator.serviceWorker;
@@ -34,10 +34,13 @@ let navRaf=0;function scheduleCanonicalNav(){if(navRaf)return;navRaf=requestAnim
 if(app){new MutationObserver(scheduleCanonicalNav).observe(app,{childList:true,subtree:true});scheduleCanonicalNav();document.addEventListener('aa:v23ready',scheduleCanonicalNav);document.addEventListener('rise:navigation',scheduleCanonicalNav);addEventListener('pageshow',scheduleCanonicalNav)}
 let retrying=false;
 async function refreshStaleRise(e){
- e?.preventDefault?.();e?.stopImmediatePropagation?.();if(retrying)return;retrying=true;
+ e?.preventDefault?.();e?.stopImmediatePropagation?.();
+ if(typeof window.__RISE_HARD_RECOVER__==='function')return window.__RISE_HARD_RECOVER__(e);
+ if(retrying)return;retrying=true;
  root.classList.remove('aa-app-boot-error');root.classList.add('aa-app-booting','aa-app-boot-slow');
- try{const reg=await navigator.serviceWorker?.getRegistration?.();await reg?.update?.();reg?.waiting?.postMessage?.({type:'SKIP_WAITING'})}catch(_){}
- const u=new URL(location.href);u.searchParams.set('rise_refresh',Date.now().toString(36));location.replace(u.href);
+ try{if('serviceWorker'in navigator){const regs=await navigator.serviceWorker.getRegistrations();for(const r of regs){try{r.active?.postMessage?.({type:'CLEAR_RUNTIME_CACHE'})}catch(_){}try{r.waiting?.postMessage?.({type:'SKIP_WAITING'})}catch(_){}try{await r.update()}catch(_){}}await new Promise(resolve=>setTimeout(resolve,650));const latest=await navigator.serviceWorker.getRegistrations();await Promise.allSettled(latest.map(r=>r.unregister()))}}catch(_){}
+ try{if('caches'in window){const keys=await caches.keys();await Promise.allSettled(keys.filter(k=>k.startsWith('asahigaoka-aa-os-')).map(k=>caches.delete(k)))}}catch(_){}
+ const u=new URL(location.href);for(const k of ['rise_refresh','rise_recovered','refresh','sw'])u.searchParams.delete(k);u.searchParams.set('rise_recovered',Date.now().toString(36));location.replace(u.href);
 }
 document.addEventListener('click',e=>{if(e.target?.closest?.('#riseBootRetry'))void refreshStaleRise(e)},true);
 if(!sw||typeof sw.addEventListener!=='function')return;
