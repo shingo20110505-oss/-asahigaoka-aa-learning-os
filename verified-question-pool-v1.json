@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-18-12-13-15Z",
-  "updatedAt": "2026-09-18T12:13:15.572Z",
+  "poolVersion": "2026-09-18-12-57-08Z",
+  "updatedAt": "2026-09-18T12:57:08.784Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2570,6 +2570,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-17T13:24:54.968Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.kanji_context",
+        "difficulty": 8,
+        "question": "文脈上、漢字「きんこう」の表記として最も適切なものを一つ選べ。",
+        "context": "地域の伝統工芸を守る職人たちは、現代のライフスタイルの変化に対応しつつも、伝統の技法と新しいデザインとの（均衡）を保ちながら、新たな作品作りに挑んでいる。",
+        "choices": [
+          "金鉱",
+          "均衡",
+          "禁固",
+          "近郷"
+        ],
+        "answerIndex": 1,
+        "answer": "均衡",
+        "explanation": "文脈では伝統と新しいデザインの釣り合いを保っていることを表しているため、バランスを意味する「均衡」が適切である。他の選択肢はそれぞれ鉱山、刑罰、近隣の郷を意味しており文脈に合わない。",
+        "evidence": "伝統の技法と新しいデザインとの（均衡）を保ちながら",
+        "misconception": "音読が同じ熟語の間で、文脈上の意味を吟味せず漢字の選択を誤る。",
+        "marks": 2,
+        "id": "rise-japanese-45a08e4daa780661",
+        "fingerprint": "c809fe3c65f2edc6",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-18T12:57:08.745Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading_comprehension",
+        "difficulty": 8,
+        "question": "筆者が述べている「言葉の持つ多面的な役割」について、本文の内容と合致するものを一つ選べ。",
+        "context": "私たちは日常、言葉を単なる情報の伝達手段として捉えがちである。しかし、言葉は他者との感情的な橋渡しをするだけでなく、自分自身の内面を整理し、未知の概念を構築する思考の道具としても機能している。つまり、言葉は他者に向かう矢であると同時に、自己の内面を映し出す鏡でもあるのだ。",
+        "choices": [
+          "言葉は他者への伝達だけでなく、自分の内面を整理する思考の道具としても働く。",
+          "言葉は感情を隠すための防壁としてのみ機能し、思考には影響を与えない。",
+          "言葉を使うことで、他者との関係を完全に断ち切り孤独を深めることができる。",
+          "言葉は情報を正確に相手に伝えることだけが唯一の重要な役割である。"
+        ],
+        "answerIndex": 0,
+        "answer": "言葉は他者への伝達だけでなく、自分の内面を整理する思考の道具としても働く。",
+        "explanation": "本文において、言葉は情報の伝達だけでなく、自分自身の内面を整理し概念を構築する思考の道具としても機能すると述べられている。したがって、内面を整理する役割に言及しているものが正解となる。",
+        "evidence": "自分自身の内面を整理し、未知の概念を構築する思考の道具としても機能している",
+        "misconception": "「情報の伝達手段」という部分的な記述に囚われ、言葉の多面的な働きを見落とす。",
+        "marks": 2,
+        "id": "rise-japanese-b99a78326b669dc6",
+        "fingerprint": "b89f547dc7101173",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-18T12:57:08.745Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.argument_structure",
+        "difficulty": 8,
+        "question": "次の文章の論理展開として最も適切なものを一つ選べ。",
+        "context": "美術館のデジタル化が進む現在、実物の作品を見ることの価値が改めて問われている。高精細な画像データは細部まで拡大でき、自宅にいながら世界中の名作を楽しめるという利便性がある。しかし、画面越しに得られる情報量がいかに増えようとも、その場に身を置き、作品が放つ圧倒的な物質感や空間の空気感を体感することはできない。したがって、デジタル技術の普及は、かえって実物を鑑賞する体験の固有の価値を鮮明に浮かび上がらせていると言える。",
+        "choices": [
+          "デジタル技術の利便性を称賛した上で、実物の鑑賞が無意味になったと結論付けている。",
+          "デジタル化の進行を否定し、すべての美術館を閉鎖すべきだと主張している。",
+          "デジタル技術の利便性を認めた上で、実物の鑑賞には代替不可能な独自の価値があると結論付けている。",
+          "実物の価値を認めつつも、今後はすべての芸術鑑賞が画面越しに移行すると予測している。"
+        ],
+        "answerIndex": 2,
+        "answer": "デジタル技術の利便性を認めた上で、実物の鑑賞には代替不可能な独自の価値があると結論付けている。",
+        "explanation": "筆者はデジタル画像の利便性を認めた上で、「しかし」以降で実物ならではの体感の重要性を述べ、最終的にデジタル普及が実物鑑賞の固有の価値を鮮明にしていると結んでいる。",
+        "evidence": "デジタル技術の普及は、かえって実物を鑑賞する体験の固有の価値を鮮明に浮かび上がらせていると言える。",
+        "misconception": "デジタル化のメリットとデメリットの対比を読み間違え、技術の否定や完全な移行を主張していると誤認する。",
+        "marks": 2,
+        "id": "rise-japanese-be1aba457fa85019",
+        "fingerprint": "09bbbe3c746ab3ba",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-18T12:57:08.745Z"
         }
       }
     ],
