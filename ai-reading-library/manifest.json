@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-16T23:41:02.446Z",
+  "updatedAt": "2026-09-18T23:20:36.926Z",
   "entries": [
     {
       "id": "ed9e7fb8cae0a59fa5c08f3e8cbd3edc9df7813238490fae60000c9a59c2b579",
@@ -389,6 +389,81 @@
       ],
       "wordCount": 200,
       "createdAt": "2026-09-16T23:41:02.442Z"
+    },
+    {
+      "id": "4c47bebaf0140ffba2a13fc7b1303c529ea2c966c703405e7d2c8a847df26808",
+      "sha256": "4c47bebaf0140ffba2a13fc7b1303c529ea2c966c703405e7d2c8a847df26808",
+      "path": "items/4c47bebaf0140ffba2a13fc7b1303c529ea2c966c703405e7d2c8a847df26808.json",
+      "title": "A Morning in the Old Workshop",
+      "topic": "A boy learning woodworking from his grandfather",
+      "difficulty": 4,
+      "readingType": "narrative",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison",
+        "passive",
+        "presentPerfect",
+        "asMuchAs",
+        "asManyAs"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.paraphrase",
+        "en.read.title",
+        "en.read.summary"
+      ],
+      "words": [
+        "workshop",
+        "illuminate",
+        "craft",
+        "blade",
+        "achieve",
+        "patience",
+        "dedication"
+      ],
+      "wordCount": 258,
+      "createdAt": "2026-09-18T23:20:20.007Z"
+    },
+    {
+      "id": "f76838ef49c5746a6ddc4e165128e2d0d296f7252b1470f180f70603f33c5105",
+      "sha256": "f76838ef49c5746a6ddc4e165128e2d0d296f7252b1470f180f70603f33c5105",
+      "path": "items/f76838ef49c5746a6ddc4e165128e2d0d296f7252b1470f180f70603f33c5105.json",
+      "title": "The Value of Public Parks in Cities",
+      "topic": "The Value of Public Parks in Cities",
+      "difficulty": 3,
+      "readingType": "argument",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.cause",
+        "en.read.mainIdea",
+        "en.read.summary"
+      ],
+      "words": [
+        "citizen",
+        "stress",
+        "concrete",
+        "investment"
+      ],
+      "wordCount": 244,
+      "createdAt": "2026-09-18T23:20:36.923Z"
     }
   ]
 }
