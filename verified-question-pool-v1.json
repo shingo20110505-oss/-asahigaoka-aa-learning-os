@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-17-13-24-54Z",
-  "updatedAt": "2026-09-17T13:24:54.985Z",
+  "poolVersion": "2026-09-18-11-47-47Z",
+  "updatedAt": "2026-09-18T11:47:47.383Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -3652,6 +3652,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-17T12:04:24.906Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemistry",
+        "difficulty": 8,
+        "question": "水酸化ナトリウム水溶液と塩酸の中和反応において、生じる塩の種類と混合液の性質の組合せとして最も適切なものはどれか。",
+        "context": "実験室において、同濃度・同体積の0.1 mol/L 塩酸 20 mL と 0.1 mol/L 水酸化ナトリウム水溶液 20 mL を混合したところ、水溶液の温度が上昇し、BTB溶液を加えた水溶液の色は緑色を示した。この水溶液を蒸発乾固させると白い結晶が得られた。",
+        "choices": [
+          "塩化ナトリウムが生じ、混合液は中性を示す。",
+          "水酸化ナトリウムが残り、混合液はアルカリ性を示す。",
+          "塩化水素が残り、混合液は酸性を示す。",
+          "炭酸ナトリウムが生じ、混合液は中性を示す。"
+        ],
+        "answerIndex": 0,
+        "answer": "塩化ナトリウムが生じ、混合液は中性を示す。",
+        "explanation": "塩酸（HCl）と水酸化ナトリウム（NaOH）が中和反応すると、水（H2O）と塩化ナトリウム（NaCl）が生じる。同濃度・同体積で完全に中和するため、BTB溶液は緑色（中性）を示す。誤った選択肢では酸性や塩の種類を誤認させるものが含まれている。",
+        "evidence": "BTB溶液を加えた水溶液の色は緑色を示した。",
+        "misconception": "中和反応では常に酸性の物質がわずかに残る、または生じる塩が炭酸塩であるという勘違い。",
+        "marks": 2,
+        "id": "rise-science-02aff94b974bb107",
+        "fingerprint": "b1dea607fa357e3d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-18T11:47:36.019Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.biology",
+        "difficulty": 8,
+        "question": "アサガオの葉を用いた光合成の実験で、十分に日光に当てた葉のデンプンを検出する手順として適切なものはどれか。",
+        "context": "植物の光合成によってデンプンが作られることを確かめるため、アルミニウム箔で一部を覆ったアサガオの葉を丸一日日光に当てた。その後、葉を摘み取り、ヨウ素液を使ってデンプンの有無を調べた。実験ノートには「直接ヨウ素液をつけても葉の緑色が邪魔になり色の変化が見えにくいため、事前の処理が必要である」と記されていた。",
+        "choices": [
+          "葉を熱したエタノールに浸して脱色してから、ヨウ素液に浸す。",
+          "葉を水で薄めたヨウ素液に直接浸したあと、日光に当てる。",
+          "葉を冷凍庫で凍らせてから、水で洗い流してヨウ素液をつける。",
+          "葉をアルミニウム箔で包んだまま、ヨウ素液の入った試験管で加熱する。"
+        ],
+        "answerIndex": 0,
+        "answer": "葉を熱したエタノールに浸して脱色してから、ヨウ素液に浸す。",
+        "explanation": "葉の緑色（クロロフィル）が残っているとヨウ素反応の青紫色（黄褐色から青紫色への変化）が確認しづらいため、脱色処理が必須である。葉を直接エタノールに入れ、湯煎して葉緑素を溶出させてからヨウ素液を反応させる手順が正しい。直火でエタノールを加熱してはならないが、エタノールによる脱色という基本操作を選ぶ必要がある。",
+        "evidence": "直接ヨウ素液をつけても葉の緑色が邪魔になり色の変化が見えにくいため、事前の処理が必要である",
+        "misconception": "葉緑素を抜かずにそのままヨウ素液を滴下してもデンプンが検出できるという思い込み。",
+        "marks": 2,
+        "id": "rise-science-411bd2c9e3c3c45d",
+        "fingerprint": "5a71aa57d749d365",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-18T11:47:36.019Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "実験で水溶液を20℃まで冷却したときに析出した硝酸カリウムの結晶の質量として最も適当なものを、次の選択肢から選びなさい。",
+        "context": "物質の溶解度に関する実験を行った。\n資料：硝酸カリウムの溶解度（100gの水に溶ける物質の最大質量）は、20℃で31.6g、60℃で109.2gである。\n[実験] ビーカーに水50.0gを入れ、そこに硝酸カリウム40.0gを加えて60℃に加熱したところ、すべて溶けて透明な水溶液になった。その後、この水溶液を水槽で20℃まで冷却したところ、結晶が析出した。",
+        "choices": [
+          "15.8g",
+          "24.2g",
+          "29.8g",
+          "8.4g"
+        ],
+        "answerIndex": 1,
+        "answer": "24.2g",
+        "explanation": "60℃における水の量は50.0gであり、この温度での硝酸カリウムの溶解度は109.2g/水100gであるため、50.0gの水には最大で109.2 × (50.0 / 100) = 54.6gまで溶けることができます。したがって、加えた40.0gの硝酸カリウムは60℃で完全に溶解します。次に、20℃における溶解度は31.6g/水100gであるため、50.0gの水に20℃で溶けることができる硝酸カリウムの質量は、31.6 × (50.0 / 100) = 15.8gとなります。冷却によって析出する結晶の質量は、最初に溶かした質量から20℃で水に溶けていられる質量を引いたものになるため、40.0g - 15.8g = 24.2gとなります。最も強い誤答の罠は、20℃の溶解度（31.6g）をそのまま用いて40.0gから引いてしまうことであり、水の量が50.0g（100gの半分）であることを考慮して比例計算し忘れるミスにつながります。",
+        "evidence": "20℃で31.6g、60℃で109.2gである",
+        "misconception": "水の量が100gから50.0gに変わっていることを見落とし、溶解度の数値をそのまま引き算に用いてしまう誤解。",
+        "marks": 2,
+        "id": "rise-science-32b9404191705f95",
+        "fingerprint": "8a39d740ccb6439a",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-18T11:47:47.359Z"
         }
       }
     ],
