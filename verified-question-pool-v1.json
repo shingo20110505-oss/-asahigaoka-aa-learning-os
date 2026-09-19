@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-18-12-57-08Z",
-  "updatedAt": "2026-09-18T12:57:08.784Z",
+  "poolVersion": "2026-09-19-10-53-35Z",
+  "updatedAt": "2026-09-19T10:53:35.956Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1353,6 +1353,40 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-17T11:35:46.130Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.probability",
+        "difficulty": 8,
+        "question": "1から5までの数字が1つずつ書かれた5枚のカードがある。このカードから同時に2枚を取り出し、書かれた数の積を求めて変数Xとする。Xが偶数である確率を求めよ。",
+        "context": "1, 2, 3, 4, 5の数字が書かれた5枚のカードから同時に2枚を取り出す。2枚のカードに書かれた数の積をXとする。",
+        "choices": [
+          "\\frac{2}{5}",
+          "\\frac{3}{5}",
+          "\\frac{7}{10}",
+          "\\frac{4}{5}"
+        ],
+        "answerIndex": 2,
+        "answer": "\\frac{7}{10}",
+        "explanation": "5枚のカードから同時に2枚を取り出すすべての組み合わせは全部で \\frac{5 \\times 4}{2} = 10 通りである。積Xが奇数になるのは、取り出した2枚のカードの数がどちらも奇数である場合のみである。1から5までの奇数は 1, 3, 5 の3枚であり、この中から2枚を選ぶ組み合わせは \\frac{3 \\times 2}{2} = 3 通りである。したがって、積Xが奇数になる確率は \\frac{3}{10} である。積Xが偶数になる確率は、全体から積が奇数になる確率を引いたものになるので、1 - \\frac{3}{10} = \\frac{7}{10} と求められる。",
+        "evidence": "すべての組み合わせは10通りであり、そのうち積が奇数になるのは3通りであるから、積が偶数になる確率は 1 - \\frac{3}{10} = \\frac{7}{10} である。",
+        "misconception": "すべてが偶数になる確率や、奇数・偶数の組み合わせの数を単純な比率で考えてしまい、全事象の組み合わせの数を見誤る。",
+        "marks": 2,
+        "id": "rise-math-0882bcb337b8e1c7",
+        "fingerprint": "cba87e4f3eb1a401",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-19T10:53:24.720Z"
         }
       }
     ],
