@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-19-10-53-35Z",
-  "updatedAt": "2026-09-19T10:53:35.956Z",
+  "poolVersion": "2026-09-19-11-31-16Z",
+  "updatedAt": "2026-09-19T11:31:16.392Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -3890,6 +3890,40 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-18T11:47:47.359Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.electric_circuit_and_power",
+        "difficulty": 8,
+        "question": "回路における電力と発熱量に関する実験において、文脈中の条件と測定結果から導かれる考察として、最も適切なものを一つ選びなさい。",
+        "context": "抵抗の大きさがそれぞれ異なる電熱線A（6Ω）と電熱線B（12Ω）を用意し、それぞれに12Vの電圧を加えた。それぞれの電熱線を一定時間のこぎり状に水に入れたカロリメーターの中で発熱させ、水の温度上昇を調べた。電熱線Aに12Vの電圧を加えたとき、流れる電流の大きさは2.0Aであり、発生する電力は24Wであった。",
+        "choices": [
+          "電熱線Aと電熱線Bを直列に接続して12Vの電圧を加えたとき、回路全体の電力は電熱線A単体に12Vを加えたときよりも大きくなる。",
+          "電熱線Aを流れる電流が電熱線Bを流れる電流の2倍であるため、電熱線Aで発生する単位時間あたりの熱量は電熱線Bの半分になる。",
+          "電熱線Aと電熱線Bのどちらを用いても、加える電圧を半分にすると、発生する電力はもとの1/2になる。",
+          "電熱線Bに12Vの電圧を加えたとき、電熱線Bに流れる電流は1.0Aであり、発生する電力は12Wである。"
+        ],
+        "answerIndex": 3,
+        "answer": "電熱線Bに12Vの電圧を加えたとき、電熱線Bに流れる電流は1.0Aであり、発生する電力は12Wである。",
+        "explanation": "電熱線Bの抵抗は12Ωであり、12Vの電圧を加えたとき、オームの法則より電流は I = 12 / 12 = 1.0A となる。電力は P = V × I = 12V × 1.0A = 12W である。したがって選択肢0が正しい。選択肢3について、電圧を半分にすると電力はV²に比例するため1/4になる。よって誤り。",
+        "evidence": "抵抗の大きさがそれぞれ異なる電熱線A（6Ω）と電熱線B（12Ω）を用意し、それぞれに12Vの電圧を加えた。",
+        "misconception": "電力は電圧に比例するという誤った比例関係を信じてしまい、電圧を半分にしたときに電力も1/2になると勘違いする誤解。",
+        "marks": 2,
+        "id": "rise-science-5ab3c6be5464d1ba",
+        "fingerprint": "9976ccc2439b7768",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-19T11:31:16.364Z"
         }
       }
     ],
