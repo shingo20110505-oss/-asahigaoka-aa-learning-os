@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-19-11-31-16Z",
-  "updatedAt": "2026-09-19T11:31:16.392Z",
+  "poolVersion": "2026-09-19-11-56-05Z",
+  "updatedAt": "2026-09-19T11:56:05.138Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -5141,6 +5141,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-18T12:13:15.501Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "日本の異なる地域における農業と気候の特徴に関する次の資料を読んで、あてはまる内容を次の中から選びなさい。",
+        "context": "資料によると、A地域は年間を通して降水量が比較的少なく、冬の季節風が山脈によって遮られるため日照時間が長い。一方、B地域は冬季に日本海側からの季節風の影響を受けて降雪量が多く、夏季にはフェーン現象の影響で気温が上がりやすい特徴を持っている。「A地域は瀬戸内地方に位置し、みかんなどの果樹栽培が盛んである。」",
+        "choices": [
+          "A地域は東北地方の太平洋側に位置し稲作が盛んで、B地域は内陸性気候の中央高地を示している。",
+          "A地域は沖縄県の亜熱帯気候地域を示し、B地域は瀬戸内地方の温暖な気候の特徴を示している。",
+          "A地域は瀬戸内地方に位置し果樹栽培が盛んで、B地域は北陸地方などの豪雪地帯の特徴を示している。",
+          "A地域は九州南部地方に位置し台地での畑作が中心で、B地域は関東地方の稲作地帯の特徴を示している。"
+        ],
+        "answerIndex": 2,
+        "answer": "A地域は瀬戸内地方に位置し果樹栽培が盛んで、B地域は北陸地方などの豪雪地帯の特徴を示している。",
+        "explanation": "資料中の記述から、降水量が少なく冬の季節風が遮られ日照時間が長いという特徴は瀬戸内地方（A地域）の気候条件に合致し、冬季の降雪量が多いという特徴は日本海側の豪雪地帯（B地域）に合致する。したがって、A地域が瀬戸内地方で果樹栽培が盛んであることを示す選択肢が正解となる。最も強いひっかけは、地域の特徴を取り違えたり別の気候区と混同させるものである。",
+        "evidence": "A地域は瀬戸内地方に位置し、みかんなどの果樹栽培が盛んである。",
+        "misconception": "瀬戸内地方と日本海側の気候的特徴（降水量や季節風の影響）を逆にして捉えてしまう誤解。",
+        "marks": 2,
+        "id": "rise-social-db95d1d19e9d5ced",
+        "fingerprint": "c1467a647d94bdf6",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-19T11:56:05.108Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "日本の近代化の過程における産業や経済の推移を示した次の説明文を読んで、下線部の内容について正しく述べているものを次の中から選びなさい。",
+        "context": "明治時代中期以降、日清・日露戦争を経て、日本の産業構造は大きく変化した。「製糸業などの軽工業が輸出の中心として初期の近代化を支えたが、のちに重工業の比率が徐々に高まり、労働争議なども発生するようになった。」この産業の発展段階に関する記述として正しいものはどれか。",
+        "choices": [
+          "第一次世界大戦中には日本の重工業は完全に衰退し、農業国へと逆戻りした。",
+          "日露戦争の直後から自動車の大規模な輸出が始まり、経済の中心となった。",
+          "日清戦争後、官営の八幡製鉄所が操業を開始するなど、国家の主導で重工業化が少しずつ推進された。",
+          "明治時代初期の段階ですでに鉄鋼業や造船業が輸出総額の大部分を占めていた。"
+        ],
+        "answerIndex": 2,
+        "answer": "日清戦争後、官営の八幡製鉄所が操業を開始するなど、国家の主導で重工業化が少しずつ推進された。",
+        "explanation": "明治時代初期から中期にかけては生糸や綿糸などの軽工業が中心であったが、日清戦争後に政府が八幡製鉄所を建設し、重工業化への基盤が築かれた。したがって、官営製鉄所の操業開始と重工業化の推進についての記述が正しい。最も強いひっかけは、近代化の初期から重工業が中心であったと誤認させるものである。",
+        "evidence": "製糸業などの軽工業が輸出の中心として初期の近代化を支えたが、のちに重工業の比率が徐々に高まり、労働争議なども発生するようになった。",
+        "misconception": "明治初期から工業の中心は常に重工業であったという誤解。",
+        "marks": 2,
+        "id": "rise-social-a4dcbbdc74285260",
+        "fingerprint": "084555b285e76834",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-19T11:56:05.108Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "日本国憲法における国会の権限と二院制の仕組みに関する次の記述について、最も適当なものを次の中から選びなさい。",
+        "context": "憲法上、国会は「国の唯一の立法機関」と定められており、衆議院と参議院の二院制が採用されている。「衆議院と参議院で議決が異なった場合、衆議院の優越が認められる事項が存在し、予算の議決や条約の承認などはその代表例である。」この二院制の運用に関して正しいものはどれか。",
+        "choices": [
+          "法律案はいかなる場合でも参議院の同意が絶対不可欠であり、衆議院が再議決することはできない。",
+          "内閣不信任決議の採択は参議院のみが行うことができる固有の権限である。",
+          "条約の承認については参議院の議決が常に衆議院の議決よりも優先される仕組みになっている。",
+          "予算案の議決において両院の意見が一致しない場合、衆議院の優越規定により衆議院の議決が国会の議決となる。"
+        ],
+        "answerIndex": 3,
+        "answer": "予算案の議決において両院の意見が一致しない場合、衆議院の優越規定により衆議院の議決が国会の議決となる。",
+        "explanation": "衆議院と参議院で意見が異なる場合、予算の議決、条約の承認、内閣総理大臣の指名などにおいては衆議院の優越が認められている。したがって、予算案の議決において意見が一致しない場合に衆議院の議決が優越するという記述が正しい。最も強いひっかけは、参議院の優越や両院の完全な対等性を誤って主張する選択肢である。",
+        "evidence": "衆議院と参議院で議決が異なった場合、衆議院の優越が認められる事項が存在し、予算の議決や条約の承認などはその代表例である。",
+        "misconception": "参議院の方が衆議院よりも強い権限を持っている、あるいは両院の権限が完全に同一であるという誤解。",
+        "marks": 2,
+        "id": "rise-social-ad0ab280e4ec49dc",
+        "fingerprint": "250ccb07ae1ccf19",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-19T11:56:05.108Z"
         }
       }
     ]
