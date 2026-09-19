@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-19-11-56-05Z",
-  "updatedAt": "2026-09-19T11:56:05.138Z",
+  "poolVersion": "2026-09-19-12-28-53Z",
+  "updatedAt": "2026-09-19T12:28:53.604Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2706,6 +2706,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-18T12:57:08.745Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "筆者が述べる「真の理解」とはどのような営みであるか、最も適当なものを一つ選べ。",
+        "context": "現代社会において、私たちは膨大な情報に囲まれている。そこでは、言葉の持つ意味が単一的ではなく、発信者の意図や受け手の背景によって多様に解釈されることが日常茶飯事である。このような状況下で重要なのは、字面通りの意味だけで判断するのではなく、その背後にある文脈や状況証拠を総合的に読み解くことである。特に、対話型コミュニケーションにおいては、相手の沈黙や表情の変化といった非言語的要素もまた、言葉と同等以上のメッセージ性を帯びている。したがって、真の理解とは、明示された言葉の足し算ではなく、隠された文脈の復元作業にほかならない。",
+        "choices": [
+          "文字として明示された情報に非言語的要素の数値を機械的に足し合わせていく作業",
+          "言葉の表面的な意味にとどまらず、状況や背景といった隠された文脈を総合的に復元する作業",
+          "受け手の個人的な経験や背景のみを基準にして、自分勝手に都合よく解釈し直す作業",
+          "発信者が意図した単一的で正確な意味を字面通りにすばやく正確に受け取る作業"
+        ],
+        "answerIndex": 1,
+        "answer": "言葉の表面的な意味にとどまらず、状況や背景といった隠された文脈を総合的に復元する作業",
+        "explanation": "筆者は「真の理解とは、明示された言葉の足し算ではなく、隠された文脈の復元作業にほかならない」と述べている。したがって、表面的な言葉だけでなく、背景や文脈を総合的に読み解くことが真の理解につながる。誤った選択肢は、字面通りの正確さを重視したり、機械的な足し算や自分勝手な解釈を促したりしており、筆者の主張に反している。",
+        "evidence": "真の理解とは、明示された言葉の足し算ではなく、隠された文脈の復元作業にほかならない。",
+        "misconception": "言葉の意味は辞書的な定義通りに正確に受け取るべきだという思い込みから、字面通りの正確な解釈を正解と混同する。",
+        "marks": 2,
+        "id": "rise-japanese-3a4360f5b64856c1",
+        "fingerprint": "0eab13f8455358da",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-19T12:28:53.585Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "本文の記述から読み取れる内容として、最も適当なものを一つ選べ。",
+        "context": "ある調査によれば、高校生のSNS利用において、「テキストメッセージのやり取りで誤解が生じた経験がある」と答えた生徒の割合は八割を超えている。その最大の原因として挙げられたのは、相手の表情や声のトーンが分からないことによる「文脈の欠如」である。これに対処するため、多くの生徒が絵文字やスタンプを活用しているが、それらもまた解釈の幅が広いため、かえって新たな誤解を招くケースが散見される。このことから、メディアの利便性が高まるほど、受け手側が慎重に背景を推し量るリテラシーの重要性が増していることが分かる。",
+        "choices": [
+          "メディアの利便性が向上した現代においては、受け手が慎重に背景を推し量るリテラシーがますます重要になっている。",
+          "音声や表情などの非言語的要素が伝わらない環境下では、誤解が生じることはほとんどない。",
+          "SNSでの誤解のほとんどは、文字数が少なすぎることに起因するため、長文を送ることで完全に解消される。",
+          "絵文字やスタンプの活用は解釈の幅を狭めるため、誤解を生まないための最も確実な手段となっている。"
+        ],
+        "answerIndex": 0,
+        "answer": "メディアの利便性が向上した現代においては、受け手が慎重に背景を推し量るリテラシーがますます重要になっている。",
+        "explanation": "本文の結びにおいて、メディアの利便性が高まるほど受け手側が慎重に背景を推し量るリテラシーの重要性が増すと述べられている。他の選択肢は、長文を送れば解消される、絵文字が解釈の幅を狭める、誤解が生じないなど、本文の記述や趣旨に矛盾している。",
+        "evidence": "このことから、メディアの利便性が高まるほど、受け手側が慎重に背景を推し量るリテラシーの重要性が増していることが分かる。",
+        "misconception": "絵文字やスタンプなどのツールを使えば問題が解決するという表面的な記述に引きずられ、リテラシーの必要性に関する筆者の結論を見落とす。",
+        "marks": 2,
+        "id": "rise-japanese-190ca3f1e048d4bd",
+        "fingerprint": "70c1bcc2e827637c",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-19T12:28:53.585Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "筆者が述べる、桜の散り際に無常観を見出すことの意味として、最も適当なものを一つ選べ。",
+        "context": "日本の伝統的な自然観には、四季の移ろいを単なる気候の変化としてではなく、人間の内面的な感情の投影として捉える傾向がある。例えば、桜の散り際に無常観を見出すことは、単に植物の生理現象を観察しているのではなく、命の有限性に対する深い思索の表れである。現代の私たちは効率や合理性を優先しがちであるが、こうした古くからの感受성은、効率化の対極にある「無駄」の中に豊かな価値を見出す視点を与えてくれる。",
+        "choices": [
+          "命の有限性に対する深い思索であり、人間の内面的な感情の表れであること",
+          "効率や合理性を最優先する現代社会のシステムを全面的に肯定すること",
+          "植物の生理現象としての桜の成長過程を科学的かつ客観的に分析すること",
+          "単なる気候の変化にすぎない自然現象に対して、不満や不快感を抱くこと"
+        ],
+        "answerIndex": 0,
+        "answer": "命の有限性に対する深い思索であり、人間の内面的な感情の表れであること",
+        "explanation": "本文では、桜の散り際に無常観を見出すことについて「単に植物の生理現象を観察しているのではなく、命の有限性に対する深い思索の表れである」と明記されている。したがって、命の有限性についての深い思索であるとする選択肢が正しい。科学的分析や現代システムの肯定などは本文の主張に反する。",
+        "evidence": "桜の散り際に無常観を見出すことは、単に植物の生理現象を観察しているのではなく、命の有限性に対する深い思索の表れである。",
+        "misconception": "「植物」や「自然現象」という言葉から、理科的な観察や客観的な分析を行うことと勘違いしてしまう。",
+        "marks": 2,
+        "id": "rise-japanese-69bca7cb0972fdff",
+        "fingerprint": "38da2d1bf228aa81",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-19T12:28:53.585Z"
         }
       }
     ],
