@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-19-12-28-53Z",
-  "updatedAt": "2026-09-19T12:28:53.604Z",
+  "poolVersion": "2026-09-20-11-17-13Z",
+  "updatedAt": "2026-09-20T11:17:13.871Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1387,6 +1387,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-19T10:53:24.720Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.probability",
+        "difficulty": 8,
+        "question": "箱の中に1から5までの数字が1つずつ書かれた5枚のカードが入っている。この箱から同時に2枚のカードを取り出し、取り出したカードに書かれた数のうち大きい方をa、小さい方をbとする。a - b の値が偶数となる確率を求めよ。",
+        "context": "箱の中に1, 2, 3, 4, 5のカードが1枚ずつあり、同時に2枚を取り出す操作を行う。",
+        "choices": [
+          "1/2",
+          "3/5",
+          "2/5",
+          "3/10"
+        ],
+        "answerIndex": 2,
+        "answer": "2/5",
+        "explanation": "1から5までのカードから同時に2枚を取り出す場合の数は全部で 5C2 = 10通り。それぞれの場合の (a, b) の組と a - b の値は以下の通り。(5,4)→1, (5,3)→2, (5,2)→3, (5,1)→4, (4,3)→1, (4,2)→2, (4,1)→3, (3,2)→1, (3,1)→2, (2,1)→1。このうち a - b が偶数になるのは (5,3)の2, (5,1)の4, (4,2)の2, (3,1)の2 の4通りである。したがって、確率は 4/10 = 2/5 となる。最も多い間違いはすべての差のパリティを誤認することや全事象の数を間違えることである。",
+        "evidence": "箱の中に1から5までの数字が1つずつ書かれた5枚のカードが入っている。",
+        "misconception": "全事象を重複順列として計算してしまい、場合の数の比率を誤る。",
+        "marks": 2,
+        "id": "rise-math-bedbc87fe6c2339b",
+        "fingerprint": "87d4dabc04859fc2",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-20T11:17:05.640Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.function",
+        "difficulty": 8,
+        "question": "関数 y = 1/2 x^2 について、x の変域が -4 <= x <= 2 のとき、y の変域を求めよ。",
+        "context": "関数 y = 1/2 x^2 において、x の変域が -4 <= x <= 2 である。",
+        "choices": [
+          "2 <= y <= 8",
+          "0 <= y <= 8",
+          "-8 <= y <= 8",
+          "-8 <= y <= 0"
+        ],
+        "answerIndex": 1,
+        "answer": "0 <= y <= 8",
+        "explanation": "関数 y = 1/2 x^2 は放物線であり、x = 0 のとき y = 0 で最小値をとる。x の変域が -4 <= x <= 2 であるため、x = -4 のとき y = 1/2 * (-4)^2 = 8、x = 2 のとき y = 1/2 * 2^2 = 2 となる。したがって、y の値は 0 から 8 まで変化し、変域は 0 <= y <= 8 となる。誤った選択肢では負の最小値を取ると勘違いしたり、端点の計算をミスすることがある。",
+        "evidence": "関数 y = 1/2 x^2 について、x の変域が -4 <= x <= 2 のとき",
+        "misconception": "二次関数のグラフが原点を通る下向きの放物線であると錯覚するか、最小値を負の値にしてしまう。",
+        "marks": 2,
+        "id": "rise-math-aca669c137ca4af5",
+        "fingerprint": "dc98472ef2ac7ab0",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-20T11:17:05.640Z"
         }
       }
     ],
