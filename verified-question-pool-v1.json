@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-20-12-19-04Z",
-  "updatedAt": "2026-09-20T12:19:04.744Z",
+  "poolVersion": "2026-09-20-13-02-20Z",
+  "updatedAt": "2026-09-20T13:02:20.647Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2876,6 +2876,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-19T12:28:53.585Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.kokugo.reading",
+        "difficulty": 8,
+        "question": "文章中で筆者が指摘している「伝統工芸における形式の保存」に関する説明として、最も適切なものを一つ選べ。",
+        "context": "多くの伝統工芸は、その歴史的背景や地域性に根ざした技術の継承を最重要視してきた。しかし、現代社会においては、単に昔からの「型」をそのまま守り抜くだけでは、技術の形骸化を招くおそれがある。真の継承とは、時代の変化に伴う生活様式の変容や人々のニーズの多様化を見据え、素材の扱いやデザインの細部に現代的な解釈を取り入れることである。変化を恐れて硬直した保存に終始するとき、伝統は生きた文化ではなく、博物館の展示品のようなものになってしまうのだ。",
+        "choices": [
+          "昔からの型を一切変えずに厳格に守り抜くことこそが、現代における伝統工芸の理想的な保存のあり方である。",
+          "時代による生活様式やニーズの変化に合わせ、現代的な解釈や工夫を加えることが真の継承につながる。",
+          "現代の多様なニーズに対応するためには、これまでの地域性や歴史的背景を完全に排除しなければならない。",
+          "技術が形骸化するのを防ぐために、あえて伝統的な素材の使用をやめて全く新しい工業製品へと転換すべきだ。"
+        ],
+        "answerIndex": 1,
+        "answer": "時代による生活様式やニーズの変化に合わせ、現代的な解釈や工夫を加えることが真の継承につながる。",
+        "explanation": "文章中では、単に昔からの型を守り抜くだけでは形骸化を招くと述べられており、「時代の変化に伴う生活様式や人々のニーズの多様化を見据え、素材の扱いやデザインの細部に現代的な解釈を取り入れること」が真の継承であるとされています。したがって、時代やニーズの変化に合わせた現代的解釈を取り入れることが正しいことになります。他の選択肢は、変化を拒む硬直した保存を推奨していたり、歴史的背景の完全排除や工業製品への転換といった極端・不当な内容を含んでおり不適切です。",
+        "evidence": "時代の変化に伴う生活様式の変容や人々のニーズの多様化を見据え、素材の扱いやデザインの細部に現代的な解釈を取り入れることである。",
+        "misconception": "「昔からの『型』をそのまま守り抜く」という文面の一部だけに注目し、変化させずにそのまま維持することが最善であると誤解してしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-a28372b5b405cc61",
+        "fingerprint": "e91d579b382b9575",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-20T13:02:20.619Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.kokugo.reasoning",
+        "difficulty": 8,
+        "question": "文章中で筆者が「博物館の展示品のようなものになってしまう」と比喩的に表現している事態として、最も適当なものを一つ選べ。",
+        "context": "多くの伝統工芸は、その歴史的背景や地域性に根ざした技術の継承を最重要視してきた。しかし、現代社会においては、単に昔からの「型」をそのまま守り抜くだけでは、技術の形骸化を招くおそれがある。真の継承とは、時代の変化に伴う生活様式の変容や人々のニーズの多様化を見据え、素材の扱いやデザインの細部に現代的な解釈を取り入れることである。変化を恐れて硬直した保存に終始するとき、伝統は生きた文化ではなく、博物館の展示品のようなものになってしまうのだ。",
+        "choices": [
+          "伝統工芸品が実際の生活の場から切り離され、実用性や現代の息吹を失った過去の遺物になってしまうこと。",
+          "最新の科学技術によって復元された工芸品が、世界中の博物館で一般公開されるようになること。",
+          "伝統工芸の技術が広く社会一般に浸透し、誰もが日常的にその価値を享受できるようになること。",
+          "過去の職人たちの製作技法が失われ、誰もその歴史的背景を検証できなくなってしまうこと。"
+        ],
+        "answerIndex": 0,
+        "answer": "伝統工芸品が実際の生活の場から切り離され、実用性や現代の息吹を失った過去の遺物になってしまうこと。",
+        "explanation": "文脈において「博物館の展示品のようなものになってしまう」の直前では、「変化を恐れて硬直した保存に終始するとき、伝統は生きた文化ではなく」と述べられています。このことから、生活の中で使われなくなるなどして「生きた文化」としての実質を失い、過去のものとして固定化してしまう状態を指していることがわかります。したがって、生活の場から切り離され実用性や現代の息吹を失った状態を表す選択肢が適切です。",
+        "evidence": "変化を恐れて硬直した保存に終始するとき、伝統は生きた文化ではなく、博物館の展示品のようなものになってしまうのだ。",
+        "misconception": "「博物館の展示品」という言葉から、美術館や博物館で広く展示されて多くの人に価値が認められるというポジティブな状況であると誤認してしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-ebdb92c90f90770d",
+        "fingerprint": "43f7aa45f674a9af",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-20T13:02:20.619Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.kokugo.structure",
+        "difficulty": 8,
+        "question": "この文章全体の構成や論理展開に関して、最も適切なものを一つ選べ。",
+        "context": "多くの伝統工芸は、その歴史的背景や地域性に根ざした技術の継承を最重要視してきた。しかし、現代社会においては、単に昔からの「型」をそのまま守り抜くだけでは、技術の形骸化を招くおそれがある。真の継承とは、時代の変化に伴う生活様式の変容や人々のニーズの多様化を見据え、素材の扱いやデザインの細部に現代的な解釈を取り入れることである。変化を恐れて硬直した保存に終始するとき、伝統は生きた文化ではなく、博物館の展示品のようなものになってしまうのだ。",
+        "choices": [
+          "前半で従来の伝統継承のあり方を肯定しつつ、後半ではその歴史的背景そのものを否定して別の産業を提案している。",
+          "これまでの一般的な伝統の守り方を一旦提示した上で、現代における課題と本来あるべき継承の姿を対比させて論じている。",
+          "具体的な事例を複数挙げながら、伝統工芸が抱える経営上の問題点と行政による支援のあり方を詳細に分析している。",
+          "筆者自身の過去の経験に基づき、伝統工芸の世界がいかに閉鎖的であるかを順序立てて告発している。"
+        ],
+        "answerIndex": 1,
+        "answer": "これまでの一般的な伝統の守り方を一旦提示した上で、現代における課題と本来あるべき継承の姿を対比させて論じている。",
+        "explanation": "文章の前半では「多くの伝統工芸は、その歴史的背景や地域性に根ざした技術の継承を最重要視してきた」とこれまでの一般的なあり方を示しつつ、「しかし」という逆接以降で「現代社会においては、単に昔からの『型』をそのまま守り抜くだけでは……形骸化を招くおそれがある」として課題を指摘しています。そして「真の継承とは～」と本来あるべき姿を示しているため、これまでの守り方を提示した上で現代の課題と本来の姿を対比させている構成が最も適切です。",
+        "evidence": "多くの伝統工芸は、その歴史的背景や地域性に根ざした技術の継承を最重要視してきた。しかし、現代社会においては、単に昔からの「型」をそのまま守り抜くだけでは、技術の形骸化を招くおそれがある。",
+        "misconception": "文章前半の記述をそのまま筆者の最終的な主張だと勘違いし、過去の継承方法を全面的に支持していると誤解すること。",
+        "marks": 2,
+        "id": "rise-japanese-54df7c8f375c223b",
+        "fingerprint": "242e009c889a41e2",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-20T13:02:20.619Z"
         }
       }
     ],
