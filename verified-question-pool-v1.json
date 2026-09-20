@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-20-11-48-03Z",
-  "updatedAt": "2026-09-20T11:48:03.031Z",
+  "poolVersion": "2026-09-20-12-19-04Z",
+  "updatedAt": "2026-09-20T12:19:04.744Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -5515,6 +5515,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-19T11:56:05.108Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "メモの内容のうち、歴史的事実として誤っている記述が含まれているものを一つ選べ。",
+        "context": "明治から大正時代にかけての日本の歴史的事実についてまとめた次のメモがある。ア：日清戦争後、紡績業などの軽工業を中心に工場制機械工業が発展し、女性労働者が多くの割合を占めた。イ：第一次世界大戦中、ヨーロッパ諸国の生産力が低下したため日本の輸出が急増し、国際収支が債権国へと転換した。ウ：1919（大正8）年に制定された普通選挙法により、すべての成人男性に参政権が与えられた。エ：大正デモクラシーの風潮の中、吉野作造らは民本主義を提唱し、政党政治の実現や言論の自由を求めた。",
+        "choices": [
+          "ウ",
+          "エ",
+          "ア",
+          "イ"
+        ],
+        "answerIndex": 0,
+        "answer": "ウ",
+        "explanation": "普通選挙法が制定されたのは1925（大正14）年であり、1919年ではない。1919年はヴェルサイユ条約調印や朝鮮の三・一独立運動などが起きた年である。",
+        "evidence": "ウ：1919（大正8）年に制定された普通選挙法により、すべての成人男性に参政権が与えられた。",
+        "misconception": "大正時代の重要法案の成立年や歴史的事件の年号の混同。",
+        "marks": 2,
+        "id": "rise-social-c2043eb5c67aa739",
+        "fingerprint": "36ba437fb031c90d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-20T12:18:57.368Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history_chronology_analysis",
+        "difficulty": 8,
+        "question": "文中で述べられている歴史的事象に関して、鎌倉時代から室町時代にかけての社会や経済の変動を示す内容として最も適切なものを一つ選びなさい。",
+        "context": "13世紀から15世紀にかけての日本の流通経済および農村の発展は、貨幣経済の浸透と地域ごとの産業の自立を促した。畿内周辺を中心に、定期市がひらかれ、商工業者による同業者組織が形成された。また、農業生産力の向上に伴い、二毛作や肥料の使用が広まりを見せた。",
+        "choices": [
+          "この時期、中国との貿易は全面的に禁止されており、国内の産業は海外からの影響を受けずに独自に発展した。",
+          "商工業者は「座」と呼ばれる同業者組織を結成し、特権的な営業の保護を受ける見返りに、朝廷や幕府、寺社などの権門に銭を納めた。",
+          "鎌倉時代初期に全国一律で流通した「永楽通宝」が主要な貨幣として広く使われ、幕府が貨幣の鋳造を完全に独占管理した。",
+          "室町時代の農村では、惣と呼ばれる自治的な村落組織が結成され、年貢の納入や用水の管理を完全に放棄する動きが広がった。"
+        ],
+        "answerIndex": 1,
+        "answer": "商工業者は「座」と呼ばれる同業者組織を結成し、特権的な営業の保護を受ける見返りに、朝廷や幕府、寺社などの権門に銭を納めた。",
+        "explanation": "鎌倉時代から室町時代にかけて、商工業者は「座」と呼ばれる同業者組織を結成して、守護大名や寺社などの権門（保護者）と結びつき、営業の独占権を獲得する代わりに税を納めていました。したがってこれが最も適切です。誤った選択肢は、永楽通宝が室町時代以降に中国から大量に輸入されたものである点や、惣が自治組織でありながら年貢の納入や用水管理などの責任を担った点、日明貿易などが行われていた点と矛盾します。",
+        "evidence": "商工業者による同業者組織が形成された。",
+        "misconception": "惣の組織が自治組織であることから、幕府や領主からの支配を完全に脱却してあらゆる義務を放棄したと誤解しやすいことや、貨幣の流通時期に関する混同が挙げられます。",
+        "marks": 2,
+        "id": "rise-social-22ef34eb2ce7702f",
+        "fingerprint": "db2a3e253ba20413",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-20T12:19:04.710Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics_constitution_analysis",
+        "difficulty": 8,
+        "question": "文中で説明されている現代の政治機構および基本的人権の保障の仕組みに関する記述として、最も適切なものを一つ選びなさい。",
+        "context": "日本国憲法は、国民主権、基本的人権の尊重、平和主義を基本原理として掲げている。国会は「国権の最高機関」であり、唯一の立法機関とされる。また、司法権の独立が保障されており、裁判所は法令や処分が憲法に違反していないかを審査する違憲審査権を有している。",
+        "choices": [
+          "国民主権の原則に基づき、国民は主権を直接行使するため、すべての法律の制定や条約の承認は国民投票によって直接決定されなければならない。",
+          "裁判所は、具体的な争訟が持ち込まれていない段階であっても、政治的判断に基づいてあらゆる法律や行政処分の抽象的な合憲性を事前に審査する権限を持っている。",
+          "国会は唯一の立法機関とされているが、内閣が制定する政令は法律よりも上位の法規範として機能し、国会の議決を経ずに効力を持つ。",
+          "司法権の独立は、裁判官が外部からの干渉を受けずに良心に従い憲法および法律のみに拘束されて裁判を行うことで、人権保障の最後の砦としての役割を果たす。"
+        ],
+        "answerIndex": 3,
+        "answer": "司法権の独立は、裁判官が外部からの干渉を受けずに良心に従い憲法および法律のみに拘束されて裁判を行うことで、人権保障の最後の砦としての役割を果たす。",
+        "explanation": "司法権の独立は、裁判官の身分を保障し、政治権力や外部からの不当な干渉を受けずに公正な裁判を行うことで人権を守る仕組みです。したがってこれが正しい記述です。裁判所は抽象的審査を行わず具体的事件が必要であること、政令は法律の下位にあること、間接民主制が原則であることなどが他の選択肢の誤りです。",
+        "evidence": "司法権の独立が保障されており、裁判所は法令や処分が憲法に違反していないかを審査する違憲審査権を有している。",
+        "misconception": "司法権の独立を裁判所が一切の社会的・政治的責任を負わない免責特権であると誤解したり、直接民主制と間接民主制の混同が生じやすい点がトラップとなります。",
+        "marks": 2,
+        "id": "rise-social-cf7259d5318785e9",
+        "fingerprint": "9edacc849499539a",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-20T12:19:04.710Z"
         }
       }
     ]
