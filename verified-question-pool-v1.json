@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-20-11-17-13Z",
-  "updatedAt": "2026-09-20T11:17:13.871Z",
+  "poolVersion": "2026-09-20-11-48-03Z",
+  "updatedAt": "2026-09-20T11:48:03.031Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -4094,6 +4094,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-19T11:31:16.364Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.chemistry.solubility",
+        "difficulty": 8,
+        "question": "60℃の水溶液を40℃まで冷却したときに析出した結晶の質量として正しいものを答えよ。",
+        "context": "物質Pの溶解度は温度によって異なり、20℃で30g、40℃で50g、60℃で80g（いずれも水100gに対する値）である。いま、60℃の水100gに物質Pを90g入れたところ、一部が溶けきらなかった。この混合液をろ過して溶けきらなかった物質Pを取り除き、得られた60℃の水溶液を40℃まで冷却したところ、結晶が析出した。",
+        "choices": [
+          "10g",
+          "30g",
+          "40g",
+          "50g"
+        ],
+        "answerIndex": 1,
+        "answer": "30g",
+        "explanation": "60℃における物質Pの溶解度は水100gに対して80gであるため、90gのうち水に溶けているのは80gである。これを40℃まで冷却すると、40℃における溶解度は水100gに対して50gであるため、水溶液中に溶けていられるのは50gとなる。したがって、析出する結晶の質量は80g - 50g = 30gとなる。最強の誤答は、初期に入れた総質量90gから40℃の溶解度50gを引いて40gとしてしまう誤りである。",
+        "evidence": "60℃の水100gに物質Pを90g入れたところ、一部が溶けきらなかった。",
+        "misconception": "初期に入れた総質量から低温時の溶解度を引いてしまう誤り。",
+        "marks": 2,
+        "id": "rise-science-337b3d15cf0d17e9",
+        "fingerprint": "acd0db6b259d4b25",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-20T11:47:52.142Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.physics.ohm_law",
+        "difficulty": 8,
+        "question": "抵抗器R3の電気抵抗の大きさとして正しいものを答えよ。",
+        "context": "図1のような回路で、抵抗器R1（10Ω）と抵抗器R2（20Ω）を直列につなぎ、電源電圧を12Vにして電流を流した。その後、R2を別の抵抗器R3に取り替えたところ、回路全体の電流が0.3Aになった。",
+        "choices": [
+          "25Ω",
+          "30Ω",
+          "15Ω",
+          "20Ω"
+        ],
+        "answerIndex": 1,
+        "answer": "30Ω",
+        "explanation": "電源電圧が12Vで、R3に取り替えた後の回路全体の電流が0.3Aであるとき、オームの法則より直列回路全体の抵抗は12V ÷ 0.3A = 40Ωとなる。R1の電気抵抗は10Ωであるため、抵抗器R3の電気抵抗は40Ω - 10Ω = 30Ωとなる。最強の誤答は、電圧と電流の比率の計算を誤ったり、並列回路の合成抵抗の計算式を適用してしまうことである。",
+        "evidence": "抵抗器R1（10Ω）と抵抗器R2（20Ω）を直列につなぎ、電源電圧を12Vにして電流を流した。",
+        "misconception": "全体の抵抗を求める際に計算を混同し、誤った合成抵抗の公式や数値を当てはめてしまう誤り。",
+        "marks": 2,
+        "id": "rise-science-4dce5b7fc161d8a3",
+        "fingerprint": "3af07c1eebfaa5f4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-20T11:47:52.142Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.solubility",
+        "difficulty": 8,
+        "question": "実験1および実験2で、水溶液を60℃から20℃まで冷やしたときの固体の出方に関する説明として、最も適当なものはどれか。",
+        "context": "生徒のAさんは、物質の溶解度に関する実験を行った。表は、物質Xと物質Yの100gの水に対する溶解度（g）を、20℃と60℃で示したものである。\n・20℃における物質Xの溶解度：31.6g、物質Yの溶解度：35.8g\n・60℃における物質Xの溶解度：110.0g、物質Yの溶解度：37.3g\n実験1：60℃の水100gが入ったビーカーに物質Xを40g加え、完全にとかした。その後、この水溶液を20℃まで冷やしたところ、固体が出てきた。\n実験2：60℃の水100gが入ったビーカーに物質Yを40g加え、完全にはとかせなかった。その後、この水溶液をろ過して物質Yの固体の残りをとり除き、得られた水溶液を20℃まで冷やしたところ、固体が出てきた。",
+        "choices": [
+          "実験1では固体が出てくるが、実験2では20℃における溶解度より溶けている量が少ないため固体は出てこない。",
+          "実験1では物質Xが40gすべてとけているため、20℃に冷やしても固体は出てこないが、実験2では固体が出てくる。",
+          "実験1でも実験2でも、温度を下げても水への溶け方は変わらないため、固体は出てこない。",
+          "実験1でも実験2でも、20℃まで冷やすと固体が出てくる。"
+        ],
+        "answerIndex": 3,
+        "answer": "実験1でも実験2でも、20℃まで冷やすと固体が出てくる。",
+        "explanation": "実験1では、60℃の水100gに対して物質Xの溶解度が110.0gであるため、40gはすべてとける。これを20℃まで冷却すると、20℃における溶解度は31.6gであるため、40g - 31.6g = 8.4gの固体が析出する。実験2では、60℃の水100gに物質Yを40g加えると、溶解度（37.3g）を超えるため一部がとけ残り、ろ過によってろ液には37.3gがとけた状態になる。これを20℃まで冷却すると、20℃における溶解度は35.8gであるため、37.3g - 35.8g = 1.5gの固体が析出する。したがって、両方の実験において20℃に冷やすと固体が出てくる。",
+        "evidence": "・20℃における物質Xの溶解度：31.6g、物質Yの溶解度：35.8g",
+        "misconception": "一度すべてとけた物質は冷やしても固体に戻らないと誤解したり、ろ過によって60℃の飽和水溶液からとけ残りをとり除いたあとに溶けている質量が20℃の溶解度を下回っていると勘違いすること。",
+        "marks": 2,
+        "id": "rise-science-4a45afa0dd5d70ec",
+        "fingerprint": "7bf12202f86b5a7c",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-20T11:48:03.010Z"
         }
       }
     ],
