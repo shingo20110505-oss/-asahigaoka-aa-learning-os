@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-20-13-02-20Z",
-  "updatedAt": "2026-09-20T13:02:20.647Z",
+  "poolVersion": "2026-09-21-12-42-53Z",
+  "updatedAt": "2026-09-21T12:42:53.479Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1455,6 +1455,40 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-20T11:17:05.640Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.algebra",
+        "difficulty": 8,
+        "question": "ある自然数Nを2乗したところ、下2桁が「25」になった。このような自然数Nのうち、100未満のものの個数は全部で何個あるか求めよ。",
+        "context": "Nは自然数。N^2の下2桁が25である。N < 100。",
+        "choices": [
+          "2個",
+          "4個",
+          "5個",
+          "10個"
+        ],
+        "answerIndex": 3,
+        "answer": "10個",
+        "explanation": "N^2の下一桁が5であるためには、Nの下一桁は必ず5でなければならない。なぜなら、5以外の数字の2乗で下1桁が5になるものはないからである（0^2=0, 1^2=1, 2^2=4, 3^2=9, 4^2=6, 5^2=25, 6^2=36, 7^2=49, 8^2=64, 9^2=81）。したがって、Nは 5, 15, 25, 35, 45, 55, 65, 75, 85, 95 のいずれかである。これら10個の数について、実際に2乗の下2桁が25になるか確認する。下1桁が5の数を 10a + 5 と表すと、(10a + 5)^2 = 100a^2 + 100a + 25 = 100(a^2 + a) + 25 となり、これは常に下2桁が25になる。したがって、100未満の自然数Nのうち条件を満たすものは、下1桁が5である100未満のすべての自然数であり、全部で10個である。",
+        "evidence": "ある自然数Nを2乗したところ、下2桁が「25」になった。このような自然数Nのうち、100未満のものの個数は全部で何個あるか求めよ。",
+        "misconception": "下2桁が25になるのは5の倍数のうち特定の偶数倍や奇数倍だけだと誤解し、個数を少なく見積もってしまう。",
+        "marks": 1,
+        "id": "rise-math-7cfbe7e8f21e9d6c",
+        "fingerprint": "7ee1e1414eb48457",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": true,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-21T12:42:23.554Z"
         }
       }
     ],
