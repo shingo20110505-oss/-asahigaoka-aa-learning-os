@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-21-12-42-53Z",
-  "updatedAt": "2026-09-21T12:42:53.479Z",
+  "poolVersion": "2026-09-21-13-20-01Z",
+  "updatedAt": "2026-09-21T13:20:01.154Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -4332,6 +4332,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-20T11:48:03.010Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science.physics",
+        "difficulty": 8,
+        "question": "図の回路において、抵抗Rの大きさを変えたとき、電源電圧が一定であれば、抵抗Rを流れる電流の大きさと、回路全体の消費電力の変化について、最も適当なものを次のうちから1つ選びなさい。",
+        "context": "一定の電圧を供給する電源に、抵抗の大きさが可変である抵抗Rを接続した回路がある。抵抗Rの抵抗値を2倍に大きくしたところ、回路に流れる電流の大きさが測定された。",
+        "choices": [
+          "電流の大きさはもとの1/2倍になり、消費電力はもとの2倍になる。",
+          "電流の大きさはもとは変わらず、消費電力はもとの1/2倍になる。",
+          "電流の大きさはもとの2倍になり、消費電力ももとの2倍になる。",
+          "電流の大きさはもとの1/2倍になり、消費電力ももとの1/2倍になる。"
+        ],
+        "answerIndex": 3,
+        "answer": "電流の大きさはもとの1/2倍になり、消費電力ももとの1/2倍になる。",
+        "explanation": "オームの法則より、電圧が一定のとき、電流は抵抗に反比例するため、抵抗値を2倍にすると電流の大きさはもとの1/2倍になる。また、消費電力PはP = IV または P = V^2 / R で表され、電圧Vが一定のとき消費電力は抵抗Rに反比例する。したがって、抵抗を2倍にすると消費電力はもとの1/2倍になる。",
+        "evidence": "抵抗Rの抵抗値を2倍に大きくしたところ、回路に流れる電流の大きさが測定された。",
+        "misconception": "抵抗を大きくすると消費電力も大きくなると誤解したり、電流が半分になっても消費電力は変わらないと思い込むこと。",
+        "marks": 2,
+        "id": "rise-science-b207b2047ec88a00",
+        "fingerprint": "cfc3f0ce1469b2f4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-21T13:19:56.279Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science.biology",
+        "difficulty": 8,
+        "question": "植物の蒸散作用に関する実験において、葉の表と裏のどちらから多くの水蒸気が放出されているかを調べるため、ワセリンを塗布する実験を行った。このときの気孔の分布と蒸散量について、最も適当なものを次のうちから1つ選びなさい。",
+        "context": "同程度の大きさと葉の枚数をもつ植物の枝を4本用意し、葉の表側のみ、裏側のみ、両面、何も塗らない状態のそれぞれにワセリンを塗り、一定時間後の水の減少量を測定した。その結果、葉の裏面に塗った場合の水分の減少量が最も大きかった。",
+        "choices": [
+          "気孔は葉の表裏に均等に存在するため、どちらに塗っても減少量は同じである。",
+          "ワセリンは蒸散を妨げないため、どの葉の枝でも水の減少量は変わらない。",
+          "葉の裏面には気孔が多く存在するため、裏面にワセリンを塗ると蒸散が最も強く抑えられる。",
+          "葉の表面には気孔が多く存在するため、表面にワセリンを塗ると蒸散が最も強く抑えられる。"
+        ],
+        "answerIndex": 2,
+        "answer": "葉の裏面には気孔が多く存在するため、裏面にワセリンを塗ると蒸散が最も強く抑えられる。",
+        "explanation": "一般的な双子葉類などの植物の葉では、気孔は裏面に多く分布している。そのため、蒸散の大部分は裏面から行われる。裏面にワセリンを塗って気孔をふさぐと、水蒸気の放出が大きく妨げられるため、水の減少量が最も抑えられる（減少量が小さくなる、あるいは実験条件における比較で裏面塗布の影響が大きい）。文脈では裏面に塗った場合の変化や、気孔の分布の特徴を正しく結びつける必要がある。",
+        "evidence": "葉の裏面に塗った場合の水分の減少量が最も大きかった。",
+        "misconception": "表面の方が日光を多く受けるため表面に気孔が多いと勘違いすること。",
+        "marks": 2,
+        "id": "rise-science-47504b60636b2a3c",
+        "fingerprint": "97063a44746e206e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-21T13:19:56.279Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemistry",
+        "difficulty": 8,
+        "question": "実験で行った金属の加熱による質量変化において、ステンレス皿に残った物質の質量が一定になったとき、その物質の中に含まれる酸素の質量と結びついた金属の質量との関係として正しいものを、次の選択肢から1つ選びなさい。",
+        "context": "ある中学生が、銅粉とマグネシウム粉末を用いて、それぞれ異なる質量でステンレス皿に広げ、十分な加熱を繰り返して質量が完全に一定になるまで反応させる実験を行った。実験の結果、銅粉1.20gを完全に反応させたとき生成物の質量は1.50gであり、マグネシウム粉末1.20gを完全に反応させたとき生成物の質量は2.00gであった。",
+        "choices": [
+          "銅粉を完全に反応させたときに結びついた酸素の質量は、マグネシウム粉末を完全に反応させたときに結びついた酸素の質量よりも大きい。",
+          "銅粉1.20gと結びついた酸素の質量は0.80gである。",
+          "マグネシウム粉末1.20gと結びついた酸素の質量は0.80gである。",
+          "一定量の金属と結びつく酸素の質量は、金属の種類に関わらず一定である。"
+        ],
+        "answerIndex": 2,
+        "answer": "マグネシウム粉末1.20gと結びついた酸素の質量は0.80gである。",
+        "explanation": "銅1.20gを完全に反応させたときの生成物は1.50gなので、結びついた酸素の質量は 1.50g - 1.20g = 0.30g である。一方、マグネシウム1.20gを完全に反応させたときの生成物は2.00gなので、結びついた酸素の質量は 2.00g - 1.20g = 0.80g である。したがって、マグネシウム粉末1.20gと結びついた酸素の質量は0.80gとなり、正しい記述はマグネシウム粉末の酸素質量に関するものである。罠となる選択肢では酸素の質量計算を混同したり金属の種類による違いを無視したりしている。",
+        "evidence": "マグネシウム粉末1.20gを完全に反応させたとき生成物の質量は2.00gであった。",
+        "misconception": "銅とマグネシウムの生成物の質量や計算値を混同し、銅の方が多くの酸素と結びつくと誤解する、あるいは金属の種類によって結びつく酸素の割合が同じだと勘違いする。",
+        "marks": 2,
+        "id": "rise-science-0150078b26d47e2f",
+        "fingerprint": "d8fdfbeef4b2b790",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-21T13:20:01.116Z"
         }
       }
     ],
