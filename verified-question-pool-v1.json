@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-21-13-20-01Z",
-  "updatedAt": "2026-09-21T13:20:01.154Z",
+  "poolVersion": "2026-09-22-11-31-33Z",
+  "updatedAt": "2026-09-22T11:31:33.628Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1489,6 +1489,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-21T12:42:23.554Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.probability",
+        "difficulty": 8,
+        "question": "Find the probability that the sum x + y is a multiple of 3.",
+        "context": "Box A contains four cards with the numbers 1, 2, 3, and 4. Box B contains three cards with the numbers 2, 4, and 6. One card is drawn at random from Box A, and let its number be x. One card is drawn at random from Box B, and let its number be y.",
+        "choices": [
+          "\\frac{1}{2}",
+          "\\frac{1}{4}",
+          "\\frac{1}{3}",
+          "\\frac{5}{12}"
+        ],
+        "answerIndex": 2,
+        "answer": "\\frac{1}{3}",
+        "explanation": "There are 4 possible outcomes for x and 3 for y, giving 12 total pairs (x, y). The pairs where x + y is a multiple of 3 are (1, 2), (2, 4), (3, 6), and (4, 2), totaling 4 successful outcomes. Thus, the probability is 4 out of 12, which simplifies to 1/3. The strongest trap is miscounting the pairs by missing combinations involving x=4 or incorrectly listing multiples of 3.",
+        "evidence": "Box A contains four cards with the numbers 1, 2, 3, and 4. Box B contains three cards with the numbers 2, 4, and 6.",
+        "misconception": "Forgetting that 4 + 2 equals 6, which is a multiple of 3, leading to an undercount of favorable outcomes.",
+        "marks": 2,
+        "id": "rise-math-1fe01382719dcec6",
+        "fingerprint": "7f131de461e57096",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": true,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-22T11:31:22.804Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.geometry_function",
+        "difficulty": 8,
+        "question": "Find the area of triangle OAC.",
+        "context": "In a coordinate plane, let line L pass through the points A(-2, 2) and B(4, 8). Let C be the intersection point of line L and the y-axis, and let O be the origin (0, 0).",
+        "choices": [
+          "6",
+          "2",
+          "3",
+          "4"
+        ],
+        "answerIndex": 3,
+        "answer": "4",
+        "explanation": "The slope of line L passing through (-2, 2) and (4, 8) is (8 - 2) / (4 - (-2)) = 6 / 6 = 1. The equation of line L is y - 2 = 1(x + 2), which simplifies to y = x + 4. The y-intercept C is (0, 4). Triangle OAC has a base OC of length 4 along the y-axis and a height equal to the absolute value of the x-coordinate of point A, which is |-2| = 2. Therefore, the area is (1/2) * 4 * 2 = 4. The strongest trap is calculating the base incorrectly using point B instead of the y-axis intercept.",
+        "evidence": "Let C be the intersection point of line L and the y-axis, and let O be the origin (0, 0).",
+        "misconception": "Using the coordinates of point B instead of finding the y-intercept C for the base of the triangle.",
+        "marks": 2,
+        "id": "rise-math-6811bde3ca39c107",
+        "fingerprint": "9f7498ace0663656",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": true,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-22T11:31:22.804Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "$\\triangle OPQ$ の面積が $\\triangle OAB$ の面積の $2$ 倍になるとき、点 $P$ の $x$ 座標を求めよ。ただし、座標軸の単位長さは $1\\text{cm}$ とする。",
+        "context": "座標平面上に、直線 $l: y = \\frac{1}{2}x + 3$ がある。直線 $l$ と $y$ 軸との交点を $A$、$x$ 軸との交点を $B$ とする。直線 $l$ 上の $x > 0$ の部分に点 $P$ をとる。点 $P$ から $x$ 軸に垂線を引き、$x$ 軸との交点を $Q$ とする。",
+        "choices": [
+          "4",
+          "5",
+          "6",
+          "8"
+        ],
+        "answerIndex": 2,
+        "answer": "6",
+        "explanation": "まず、直線 $l$ の式 $y = \\frac{1}{2}x + 3$ から点 $A$ および点 $B$ の座標を求める。$x = 0$ のとき $y = 3$ であるから $A(0, 3)$、$y = 0$ のとき $x = -6$ であるから $B(-6, 0)$ となる。これより、$\\triangle OAB$ の面積は底辺を $OB = 6$、高さを $OA = 3$ として、$\\frac{1}{2} \\times 6 \\times 3 = 9$ と求まる。$\\triangle OPQ$ の面積は $\\triangle OAB$ の面積の $2$ 倍であるから、$9 \\times 2 = 18$ である。点 $P$ の $x$ 座標を $t$ ($t > 0$) とすると、点 $P$ の座標は $\\left(t, \\frac{1}{2}t + 3\\right)$、点 $Q$ の座標は $(t, 0)$ と表される。したがって、$\\triangle OPQ$ の面積は $\\frac{1}{2} \\times t \\times \\left(\\frac{1}{2}t + 3\\right) = \\frac{1}{4}t^2 + \\frac{3}{2}t$ となる。これが $18$ に等しいので、$\\frac{1}{4}t^2 + \\frac{3}{2}t = 18$ を解く。両辺を $4$ 倍して整理すると $t^2 + 6t - 72 = 0$ となり、これを因数分解すると $(t + 12)(t - 6) = 0$ を得る。$t > 0$ より $t = 6$ となる。",
+        "evidence": "$\\triangle OPQ$ の面積が $\\triangle OAB$ の面積の $2$ 倍になるとき、点 $P$ の $x$ 座標を求めよ。",
+        "misconception": "三角形の面積を求める際に係数の $\\frac{1}{2}$ を掛け忘れたり、相似比と面積比の混同から座標の比を直接 $2$ 倍として誤った値を導いてしまう。",
+        "marks": 2,
+        "id": "rise-math-6aea295e6a0863f2",
+        "fingerprint": "efc6486a04032e18",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-22T11:31:33.582Z"
         }
       }
     ],
