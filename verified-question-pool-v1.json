@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-22-11-31-33Z",
-  "updatedAt": "2026-09-22T11:31:33.628Z",
+  "poolVersion": "2026-09-22-12-02-37Z",
+  "updatedAt": "2026-09-22T12:02:37.832Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -4536,6 +4536,40 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-21T13:20:01.116Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.science.physics.electricity",
+        "difficulty": 8,
+        "question": "10Ωの抵抗器R1と20Ωの抵抗器R2を並列に接続し、6Vの電源につないだ。この回路全体で消費される電力は何Wか。",
+        "context": "10Ωの抵抗器R1と20Ωの抵抗器R2を並列に接続し、6Vの電源につないだ。この回路全体で消費される電力は何Wか。",
+        "choices": [
+          "3.6 W",
+          "5.4 W",
+          "10.8 W",
+          "16.2 W"
+        ],
+        "answerIndex": 1,
+        "answer": "5.4 W",
+        "explanation": "並列回路では各抵抗器にかかる電圧は電源電圧と等しく6Vである。抵抗器R1を流れる電流は6V ÷ 10Ω = 0.6Aであり、消費電力は6V × 0.6A = 3.6Wである。抵抗器R2を流れる電流は6V ÷ 20Ω = 0.3Aであり、消費電力は6V × 0.3A = 1.8Wである。回路全体の消費電力はそれぞれの消費電力の和となるため、3.6W + 1.8W = 5.4Wとなる。",
+        "evidence": "10Ωの抵抗器R1と20Ωの抵抗器R2を並列に接続し、6Vの電源につないだ。",
+        "misconception": "合成抵抗を求めてから計算する際に、並列回路の合成抵抗の計算式を直列回路のもの（和をとる）と混同してしまい、30Ωとして計算してしまう誤り。",
+        "marks": 2,
+        "id": "rise-science-a852241dbb7bf5b1",
+        "fingerprint": "eb0a1b098d26e5f7",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-22T12:02:11.380Z"
         }
       }
     ],
