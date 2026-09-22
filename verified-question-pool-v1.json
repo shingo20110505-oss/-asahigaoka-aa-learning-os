@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-22-12-02-37Z",
-  "updatedAt": "2026-09-22T12:02:37.832Z",
+  "poolVersion": "2026-09-22-12-34-54Z",
+  "updatedAt": "2026-09-22T12:34:54.662Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -5991,6 +5991,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-20T12:19:04.710Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "愛知県の工業および産業構造の特徴に関する記述として最も適当なものを、次の選択肢の中から1つ選びなさい。",
+        "context": "愛知県は、自動車産業をはじめとする機械工業の集積が非常に高く、製造品出荷額等が全国第1位である。近年では、ものづくりの中枢として環境技術や航空宇宙産業の育成にも取り組んでおり、農業においては都市近郊農業や施設園芸が盛んで、キャベツやトマトなどの生産額も上位に位置している。",
+        "choices": [
+          "重化学工業化が最も遅れた地域であり、現在は観光業と水産業が産業の大部分を占めている。",
+          "農業生産額の大部分が米の単一耕作によるものであり、野菜や果樹の栽培はほとんど行われていない。",
+          "伝統的な地場産業のみに依存しており、近代的なハイテク産業や航空宇宙産業の進出は見られない。",
+          "製造品出荷額等が全国で最も高く、自動車関連産業などの機械工業が極めて発達している。"
+        ],
+        "answerIndex": 3,
+        "answer": "製造品出荷額等が全国で最も高く、自動車関連産業などの機械工業が極めて発達している。",
+        "explanation": "文脈資料から、愛知県は製造品出荷額等が全国第1位であり、自動車産業などの機械工業が集積していることが読み取れる。他の選択肢は水産業や観光業が中心であること、米の単一耕作であること、ハイテク産業が見られないことなど事実と異なる記述を含んでいる。",
+        "evidence": "製造品出荷額等が全国第1位である。近年では、ものづくりの中枢として環境技術や航空宇宙産業の育成にも取り組んでおり",
+        "misconception": "愛知県を伝統工業のみの地域や農業が衰退した地域と誤解している場合の罠。",
+        "marks": 2,
+        "id": "rise-social-8f5cfedc9f72e7e8",
+        "fingerprint": "e9c020c8164c0bb2",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-22T12:34:54.556Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "中世から近世にかけての日本の歴史的展開に関する記述として最も適当なものを、次の選択肢の中から1つ選びなさい。",
+        "context": "鎌倉時代から室町時代にかけて、貨幣経済が浸透し、農村では二毛作が普及して生産力が向上した。また、各地の商工業者は「座」と呼ばれる同業組合を結成して特権を守ろうとしたが、戦国時代を経て豊臣秀吉の時代には「楽市・楽座」政策によってその特権が徐々に破られ、自由な商業取引が促進される素地が作られた。",
+        "choices": [
+          "商工業者が結成した「座」の特権は、のちに豊臣秀吉などの手によって改革・破られ、自由な商業の促進につながった。",
+          "鎌倉時代には貨幣経済が未発達であったため、市場や定期市は一切開かれず、物々交換のみが行われていた。",
+          "室町時代の農村では、二毛作の普及によって農業生産力が低下し、飢饉や一揆が全く発生しなくなった。",
+          "戦国時代から安土桃山時代にかけて、全国の関所はすべて維持され、物流や商業の発展が強く制限され続けた。"
+        ],
+        "answerIndex": 0,
+        "answer": "商工業者が結成した「座」の特権は、のちに豊臣秀吉などの手によって改革・破られ、自由な商業の促進につながった。",
+        "explanation": "文脈資料において「座」と呼ばれる同業組合が結成され、それが豊臣秀吉らの「楽市・楽座」政策によって特権が破られていったことが述べられている。他の選択肢は鎌倉時代の貨幣経済、室町時代の農業生産力、関所の維持について誤った記述である。",
+        "evidence": "「座」と呼ばれる同業組合を結成して特権を守ろうとしたが、戦国時代を経て豊臣秀吉の時代には「楽市・楽座」政策によってその特権が徐々に破られ",
+        "misconception": "「楽市・楽座」が室町幕府によって最初に行われたと誤認したり、「座」の存在意義を過小評価する誤り。",
+        "marks": 2,
+        "id": "rise-social-8ea175f28ef5018e",
+        "fingerprint": "fa4f709fccfb02a1",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-22T12:34:54.556Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "日本国憲法が保障する人権および司法制度に関する記述として最も適当なものを、次の選択肢の中から1つ選びなさい。",
+        "context": "日本国憲法は、基本的人権の尊重を基本原理の一つとして掲げており、法の下の平等や精神的自由、経済的自由などを保障している。また、適正手続の保障として、裁判を受ける権利や、刑事被告人が公平な裁判所の迅速な公開裁判を受ける権利などが定められており、国民の権利を守るための制度的仕組みが整えられている。",
+        "choices": [
+          "法の下の平等や精神的自由は、憲法上は明記されておらず、法律によってのみ限定的に認められている。",
+          "裁判を受ける権利は司法権の濫用を防ぐために一般国民には認められておらず、国家機関のみが行使できる。",
+          "適正手続の保障は、被告人の人権を守るものではなく、捜査機関の権限を無制限に拡大するためのものである。",
+          "憲法は基本的人権を保障しており、刑事被告人が公平な裁判所の迅速な公開裁判を受ける権利なども規定されている。"
+        ],
+        "answerIndex": 3,
+        "answer": "憲法は基本的人権を保障しており、刑事被告人が公平な裁判所の迅速な公開裁判を受ける権利なども規定されている。",
+        "explanation": "文脈資料から、憲法が基本的人権を保障し、裁判を受ける権利や公平な裁判所の迅速な公開裁判を受ける権利を定めていることが直接確認できる。他の選択肢は憲法に明記されていないとする点や、権利の主体を誤る点などで不適当である。",
+        "evidence": "刑事被告人が公平な裁判所の迅速な公開裁判を受ける権利などが定められており、国民の権利を守るための制度的仕組みが整えられている。",
+        "misconception": "刑事被告人の権利や裁判を受ける権利が人権保障の一部ではないと勘違いする誤り。",
+        "marks": 2,
+        "id": "rise-social-3bb0d4d08dec59a4",
+        "fingerprint": "f1f2462b856988d5",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-22T12:34:54.556Z"
         }
       }
     ]
