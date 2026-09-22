@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-22-12-34-54Z",
-  "updatedAt": "2026-09-22T12:34:54.662Z",
+  "poolVersion": "2026-09-22-13-24-22Z",
+  "updatedAt": "2026-09-22T13:24:22.768Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -3114,6 +3114,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-20T13:02:20.619Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.data",
+        "difficulty": 8,
+        "question": "アンケート結果から読み取れる内容として最も適切なものはどれか。",
+        "context": "図書館の利用実態に関する生徒会アンケートの結果、「読書のために利用する」と答えた生徒の割合は1年生が65％、2年生が50％、3年生が40％であった。また、「自習のために利用する」と答えた生徒の割合は1年生が20％、2年生が35％、3年生が45％であった。この結果から、学年が上がるにつれて読書目的の利用が減り、自習目的の利用が増加していることがわかる。さらに、全体の総利用人数は各学年でほぼ同数であった。",
+        "choices": [
+          "3年生において、「読書のために利用する」と答えた生徒の割合が最も高い。",
+          "2年生の図書館利用目的は、そのほとんどが読書によるものである。",
+          "学年が上がるにつれて、図書館を自習目的で利用する生徒の割合が増加している。",
+          "全体の総利用人数は、1年生が最も多く、3年生に向かって段階的に減少している。"
+        ],
+        "answerIndex": 2,
+        "answer": "学年が上がるにつれて、図書館を自習目的で利用する生徒の割合が増加している。",
+        "explanation": "文章中のデータを見ると、自習目的の利用割合は1年生が20％、2年生が35％、3年生が45％となっており、学年が上がるにつれて一貫して増加していることがわかる。他の選択肢は総利用人数についての記述の誤りや、読書目的の割合の高低を取り違えたものである。",
+        "evidence": "「自習のために利用する」と答えた生徒の割合は1年生が20％、2年生が35％、3年生が45％であった。",
+        "misconception": "読書目的と自習目的の数値の推移を混同し、学年が上がると自習目的が減ると思い込んでしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-b8e14d12b841bd06",
+        "fingerprint": "69a2e5c74b288dd9",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-22T13:24:06.411Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.critical",
+        "difficulty": 8,
+        "question": "Ａ氏とＢ氏の主張に関する説明として最も適切なものはどれか。",
+        "context": "公共の場所におけるルールの設定について、Ａ氏は「利用者の自由を最大限尊重すべきであり、細かい制限はトラブルの元になるため極力避けるべきだ」と主張し、Ｂ氏は多様な利用者が共存するためには明確なガイドラインを設けて行動の基準を共有することが不可欠であると主張している。両者の意見は一見対立しているように見えるが、どちらもすべての利用者が快適に過ごせる環境を作りたいという共通の目的を持っている。",
+        "choices": [
+          "Ａ氏はガイドラインの必要性を訴えているのに対し、Ｂ氏は制限を一切設けないことを主張している。",
+          "両者は完全に異なる最終目的を掲げており、環境づくりのあり方について一致点を見出すことはできない。",
+          "Ｂ氏は個人の自由を最優先すべきだと考えており、Ａ氏の意見はルール共有の重要性を説くものである。",
+          "両者の意見は一見対立しているが、すべての利用者が快適に過ごせる環境を作るという目的においては共通している。"
+        ],
+        "answerIndex": 3,
+        "answer": "両者の意見は一見対立しているが、すべての利用者が快適に過ごせる環境を作るという目的においては共通している。",
+        "explanation": "文章では、Ａ氏とＢ氏の手段やアプローチに関する意見は対立しているように見えながらも、目指している目的自体は共通していることが明記されている。選択肢のうち、この点と合致しているものが正しい。他の選択肢は、主張内容を入れ違えたり目的の共通性を否定したりしている。",
+        "evidence": "両者の意見は一見対立しているように見えるが、どちらもすべての利用者が快適に過ごせる環境を作りたいという共通の目的を持っている。",
+        "misconception": "意見の対立部分だけに注目し、目指している最終的な目的や環境づくりの方向性にも違いがあると思い込んでしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-58fb8010a26b198c",
+        "fingerprint": "a132120213f1df90",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-22T13:24:06.411Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "筆者が「言葉の輪郭」を明瞭にすることの意義として本文中で述べている内容として、最も適当なものを次の選択肢から選びなさい。",
+        "context": "人間が日々のコミュニケーションで用いる言語は、往々にして曖昧さを含んでいる。その曖昧さゆえに他者との情緒的な融和が生まれる側面があることも否定できない。しかし、私たちが自分の思考を深く掘り下げ、論理的に他者へ伝達しようとするとき、この曖昧さは大きな障害となる。言葉の輪郭を一つひとつ明瞭にすることは、単に誤解を防ぐという消極的な意味にとどまらない。それは、他者に伝わる形にする過程を通じて、自分自身のぼんやりとした思考の全体像をくっきりと再構築する積極的な営みなのだ。すなわち、明確な表現の獲得は、未分化だった自らの内面を切り出し、新たな認識へと到達するための不可欠な手段であるといえる。",
+        "choices": [
+          "他者へ伝達する過程で自分自身の思考の全体像を再構築し、新たな認識に到達できる点。",
+          "未分化な内面をあえて曖昧なままにしておくことで、多様な解釈の余地を残すことができる点。",
+          "他者との情緒的な融和を生み出すことで、円滑な人間関係を構築することができる点。",
+          "他者に誤解を与えないようにするための、最低限のコミュニケーション上の防衛手段となる点。"
+        ],
+        "answerIndex": 0,
+        "answer": "他者へ伝達する過程で自分自身の思考の全体像を再構築し、新たな認識に到達できる点。",
+        "explanation": "文章中では、言葉の輪郭を明瞭にすることが、他者に伝わる形にする過程を通じて自分自身の思考の全体像をくっきりと再構築する積極的な営みであり、新たな認識へと到達するための手段であると述べられています。最も強い罠となる選択肢は、消極的な防衛手段にすぎないと誤認させるものや、本文が冒頭で否定気味に触れている情緒的融和を主目的とするものです。したがって、自らの思考の再構築と新しい認識の獲得に焦点を当てたものが正解となります。",
+        "evidence": "それは、他者に伝わる形にする過程を通じて、自分自身のぼんやりとした思考の全体像をくっきりと再構築する積極的な営みなのだ。",
+        "misconception": "言葉の明確化の効果を単なる「誤解を防ぐ防衛手段」という消極的な側面に矮小化してしまう誤解。",
+        "marks": 2,
+        "id": "rise-japanese-d380a90e0573c52a",
+        "fingerprint": "46a7fafb7ee1d291",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-22T13:24:22.741Z"
         }
       }
     ],
