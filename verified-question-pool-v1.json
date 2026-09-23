@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-23-11-29-31Z",
-  "updatedAt": "2026-09-23T11:29:31.757Z",
+  "poolVersion": "2026-09-23-12-07-32Z",
+  "updatedAt": "2026-09-23T12:07:32.228Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -4706,6 +4706,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-22T12:02:11.380Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemistry",
+        "difficulty": 8,
+        "question": "実験で得られた結果から、物質の質量と発生した気体の関係について正しく述べているものを次から1つ選びなさい。",
+        "context": "炭酸水素ナトリウムの質量を変えて、十分な量の塩酸と反応させたとき発生する気体の質量を調べた。炭酸水素ナトリウム1.0gに対して発生した気体は0.5gであった。同様に2.0gでは1.0g、3.0gでは1.5gの気体が発生したが、4.0gの炭酸水素ナトリウムを加えたところ、発生した気体の質量は1.8gであった。",
+        "choices": [
+          "炭酸水素ナトリウム4.0gの実験では、加えた塩酸の量が不足していたため発生する気体の質量が頭打ちになったと考えられる。",
+          "炭酸水素ナトリウムと発生する気体の質量の比は、常に一定の割合を保ち続ける。",
+          "発生した気体の質量が1.8gになったのは、炭酸水素ナトリウムがすべて反応しきって完全に分解されたからである。",
+          "加えた炭酸水素ナトリウムの質量に比例して、発生する気体の質量はどこまでも無限に増え続ける。"
+        ],
+        "answerIndex": 0,
+        "answer": "炭酸水素ナトリウム4.0gの実験では、加えた塩酸の量が不足していたため発生する気体の質量が頭打ちになったと考えられる。",
+        "explanation": "炭酸水素ナトリウム1.0gで0.5g、2.0gで1.0g、3.0gで1.5gの気体が発生していることから、最初のうちは炭酸水素ナトリウムの質量に比例して気体が発生します。しかし4.0gのとき1.8gとなり比例関係から外れているため、もう一方の反応物質である塩酸が不足したと考えられます。一番強い誤答トラップは比例関係が最後まで続くとするものであり、量的関係の限界を見落とす誤解に基づきます。",
+        "evidence": "4.0gの炭酸水素ナトリウムを加えたところ、発生した気体の質量は1.8gであった。",
+        "misconception": "化学変化において特定の物質を増やせば、他の物質の量に関わらず生成物も比例して増え続けるという誤解。",
+        "marks": 2,
+        "id": "rise-science-175e4f891c0bf34d",
+        "fingerprint": "c1d4982565dea63b",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-23T12:07:32.191Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.physics",
+        "difficulty": 8,
+        "question": "図の回路と実験結果に基づき、電流、電圧、抵抗の関係について正しく述べているものを次から1つ選びなさい。",
+        "context": "直列回路に接続された抵抗器Aと抵抗器Bの両端の電圧を測定した。抵抗器Aに加わる電圧は3.0V、回路全体を流れる電流は0.5Aであった。抵抗器Aの抵抗の値は6.0Ωであり、回路全体の電圧は8.0Vであった。",
+        "choices": [
+          "回路全体を流れる電流を2倍にすると、回路全体の抵抗の値も2倍になる。",
+          "抵抗器Bに加わる電圧は5.0Vであり、抵抗器Bの抵抗のの値は10.0Ωである。",
+          "直列回路では各抵抗器を流れる電流の大きさが異なるため、電圧の単純な和は全体電圧に等しくならない。",
+          "抵抗器Aの抵抗の値は抵抗器Bの抵抗の値よりも大きい。"
+        ],
+        "answerIndex": 1,
+        "answer": "抵抗器Bに加わる電圧は5.0Vであり、抵抗器Bの抵抗のの値は10.0Ωである。",
+        "explanation": "直列回路全体の電圧が8.0Vであり、抵抗器Aに加わる電圧が3.0Vなので、抵抗器Bに加わる電圧は8.0V - 3.0V = 5.0Vとなります。直列回路を流れる電流はどこも等しく0.5Aであるため、抵抗器Bの抵抗の値は5.0V ÷ 0.5A = 10.0Ωとなります。一番強い誤答トラップは、オームの計算を誤ったり回路全体の電圧の分配を見誤るものです。",
+        "evidence": "抵抗器Aに加わる電圧は3.0V、回路全体を流れる電流は0.5Aであった。抵抗器Aの抵抗の値は6.0Ωであり、回路全体の電圧は8.0Vであった。",
+        "misconception": "直列回路の電圧の法則や、オームの法則を用いた各部分の抵抗の計算に関する混同。",
+        "marks": 2,
+        "id": "rise-science-58d311efec6ce423",
+        "fingerprint": "aec65a47281fac31",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-23T12:07:32.191Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.biology",
+        "difficulty": 8,
+        "question": "植物の蒸散と葉の裏表の気孔の分布に関する記述として正しいものを次から1つ選びなさい。",
+        "context": "同じ植物の同じ大きさの葉を3枚用意し、葉の処理を変えて一定時間置いたところ、ワセリンを塗った面からの水分の放出量に違いが見られた。葉の裏面全体にワセリンを塗った葉からの蒸散量が最も少なく、表面全体に塗った葉はそれより多く、何も塗らなかった葉が最も多くの水分を放出した。",
+        "choices": [
+          "植物の蒸散は葉の表面のクチクラ層からのみ起こり、気孔の分布は蒸散量に関係しない。",
+          "葉の裏面にワセリンを塗った方が蒸散量が多いのは、表面からの水分蒸発が遮られたからである。",
+          "蒸散は主に気孔を通じて行われ、この植物の葉では表面よりも裏面の方が気孔が多く分布している。",
+          "葉の表面にのみワセリンを塗ると、気孔がすべて塞がれるため蒸散が完全にゼロになる。"
+        ],
+        "answerIndex": 2,
+        "answer": "蒸散は主に気孔を通じて行われ、この植物の葉では表面よりも裏面の方が気孔が多く分布している。",
+        "explanation": "裏面にワセリンを塗った葉からの蒸散量が最も少なかったということは、裏面を塞ぐことで水分の放出が大きく抑えられたことを示しており、裏面により多くの気孔があるためであるとわかります。一番強い誤答トラップは、表面と裏面の気孔数の大小を逆に捉えたり、ワセリンによる完全遮断を勘違いするものです。",
+        "evidence": "葉の裏面全体にワセリンを塗った葉からの蒸散量が最も少なく、表面全体に塗った葉はそれより多く、何も塗らなかった葉が最も多くの水分を放出した。",
+        "misconception": "葉の表面と裏面の気孔の分布密度や蒸散の主な経路に関する誤解。",
+        "marks": 2,
+        "id": "rise-science-3e39bc289e873374",
+        "fingerprint": "652580a3a2097ee5",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-23T12:07:32.191Z"
         }
       }
     ],
