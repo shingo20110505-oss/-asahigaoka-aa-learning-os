@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-22-13-24-22Z",
-  "updatedAt": "2026-09-22T13:24:22.768Z",
+  "poolVersion": "2026-09-23-11-29-31Z",
+  "updatedAt": "2026-09-23T11:29:31.757Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1591,6 +1591,40 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-22T11:31:33.582Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.statistics",
+        "difficulty": 8,
+        "question": "グループAの人数として正しいものを求めよ。",
+        "context": "あるクラスの生徒30人のテストの平均点は74点であった。このクラスをグループAとグループBに分けたところ、グループAの平均点は65点、グループBの平均点は80点であった。",
+        "choices": [
+          "18人",
+          "10人",
+          "12人",
+          "15人"
+        ],
+        "answerIndex": 2,
+        "answer": "12人",
+        "explanation": "グループAの人数を $x$ 人とすると、グループBの人数は $(30 - x)$ 人となる。全体の得点の総和について方程式を立てると、$65x + 80(30 - x) = 74 imes 30$ となる。これを計算すると $65x + 2400 - 80x = 2220$、$-15x = -180$ より $x = 12$ を得る。したがって、グループAの人数は12人である。",
+        "evidence": "あるクラスの生徒30人のテストの平均点は74点であった。このクラスをグループAとグループBに分けたところ、グループAの平均点は65点、グループBの平均点は80点であった。",
+        "misconception": "2つのグループの平均点の単純平均をとって人数が均等であると勘違いしてしまう誤解。",
+        "marks": 2,
+        "id": "rise-math-146411d140ef149d",
+        "fingerprint": "ee9bee6f90443029",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-23T11:29:31.711Z"
         }
       }
     ],
