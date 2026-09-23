@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-23-12-07-32Z",
-  "updatedAt": "2026-09-23T12:07:32.228Z",
+  "poolVersion": "2026-09-23-12-44-16Z",
+  "updatedAt": "2026-09-23T12:44:16.417Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -6331,6 +6331,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-22T12:34:54.556Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography.industry",
+        "difficulty": 8,
+        "question": "愛知県の産業構造および工業生産品出荷額等に関する特徴について述べた文として、最も適当なものを次の中から1つ選びなさい。",
+        "context": "愛知県は、自動車産業をはじめとする機械工業が盛んであり、製造品出荷額等が全国で長年第1位を誇る地域である。また、渥美半島などの温暖な気候や平坦な地形を活かした近郊農業や施設園芸農業が行われ、キャベツやメロンなどの生産が盛んである。さらに、濃尾平野では木曽川の水を引いた農業用水路が整備され、古くから米作を中心とした稲作農業が営まれてきた。",
+        "choices": [
+          "渥美半島などの太平洋側沿岸部では、寒冷な気候を利用した高冷地農業や酪農が盛んに行われている。",
+          "愛知県の総産業の中で第一次産業の従事者割合が約半数を占め、農業が経済の中心を担っている。",
+          "県内の工業では輸送用機械器具の割合が非常に高く、製造品出荷額等が全国第1位の県である。",
+          "木曽川流域の濃尾平野では、乾燥した気候を利用してぶどうやももなどの果樹栽培が広く行われている。"
+        ],
+        "answerIndex": 2,
+        "answer": "県内の工業では輸送用機械器具の割合が非常に高く、製造品出荷額等が全国第1位の県である。",
+        "explanation": "愛知県は自動車関連の輸送用機械器具製造が極めて盛んであり、製造品出荷額等で全国第1位を占めている。選択肢のうち、輸送用機械器具の割合が高く製造品出荷額等全国1位であるという記述が正当である。他の選択肢は気候や農業の特色が誤っている。",
+        "evidence": "愛知県は、自動車産業をはじめとする機械工業が盛んであり、製造品出荷額等が全国で長年第1位を誇る地域である。",
+        "misconception": "愛知県の農業地域としての側面を過大評価し、果樹栽培や高冷地農業が中心であると誤解すること。",
+        "marks": 2,
+        "id": "rise-social-650bfa02d3850fae",
+        "fingerprint": "2499d58e9323c428",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.99,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-23T12:44:06.090Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics.constitution",
+        "difficulty": 8,
+        "question": "日本国憲法における基本的人権の保障や裁判所・国会の仕組みに関する記述として、最も適当なものを次の中から1つ選びなさい。",
+        "context": "日本国憲法は、基本的人権の尊重を重要な原則の一つとして掲げている。また、国権の最高機関として国会が唯一の立法機関と定められており、内閣は行政権を行使する。さらに、司法権の独立が保障された裁判所には、法令や処分が憲法に違反していないかを審査する違憲審査権が与えられている。",
+        "choices": [
+          "国会は内閣に対して優越を持ち、内閣の閣僚を罷免する権限や、すべての行政権を直接行使する権限を有している。",
+          "日本国憲法で保障される基本的人権は絶対無制限のものであり、公共の福祉を理由にいかなる制限も受けることがない。",
+          "司法権の独立を維持するため、裁判官は国会によっていつでも自由に罷免や更迭ができる仕組みになっている弾劾制度がある。",
+          "裁判所には、一切の法的紛争の解決とともに、法令などが憲法に適合しているかを審査する違憲審査権が与えられている。"
+        ],
+        "answerIndex": 3,
+        "answer": "裁判所には、一切の法的紛争の解決とともに、法令などが憲法に適合しているかを審査する違憲審査権が与えられている。",
+        "explanation": "裁判所は司法権を行使して紛争を解決するだけでなく、違憲審査権（憲法判断の権限）を有している。他の選択肢は、内閣の権限や基本的人権の制限（公共の福祉）、裁判官の身分保障に関する誤りを含んでいる。",
+        "evidence": "さらに、司法権の独立が保障された裁判所には、法令や処分が憲法に違反していないかを審査する違憲審査権が与えられている。",
+        "misconception": "基本的人権が無制限であるという誤解や、国会と裁判所の権限・身分保障に関する混同。",
+        "marks": 2,
+        "id": "rise-social-9addc3752c47a3c9",
+        "fingerprint": "ae2f43b9918d63b7",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.99,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-23T12:44:06.090Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "資料中の「県A」の産業的特徴および属する工業地帯に関する説明として、最も適切なものを次の選択肢から1つ選びなさい。",
+        "context": "次の表に関する記述の一部である。県Aは、「製造品出荷額等が全国第1位であり、その中で輸送用機械器具製造業が極めて高い割合を占める自動車工業の中心地である」。県Bは、鉄鋼業などの素材型産業や化学工業の割合が高く、沿岸部に広大な工業地帯が形成されている。県Cは、食料品や金属製品などの生活密着型の産業が比較的バランスよく立地している。",
+        "choices": [
+          "阪神工業地帯に属し、繊維工業や金属工業を中心に中小企業が密集して発展した。",
+          "北九州工業地帯に属し、かつての製鉄所を発祥とする重化学工業が現在も経済の中心である。",
+          "中京工業地帯に属し、輸送用機械器具を中心とする機械工業の出荷額が全国で最も高い。",
+          "京浜工業地帯に属し、印刷・出版業や情報通信機械器具製造業が産業の中心を占める。"
+        ],
+        "answerIndex": 2,
+        "answer": "中京工業地帯に属し、輸送用機械器具を中心とする機械工業の出荷額が全国で最も高い。",
+        "explanation": "本問は日本国内の工業地域や都道府県ごとの産業構造の特色に関する読解問題である。提示された資料において、県Aは製造品出荷額が全国第1位であり、輸送用機械器具製造業（自動車工業）が極めて高い割合を占めると述べられている。これは愛知県を中心に発展している中京工業地帯の最大の特徴と完全に一致する。強力な誤答トラップは、他地域の工業都市や工業地帯（首都圏など）の産業構造の特徴と混同させるものであるため、地域の生産品目の違いを正確に読み取る必要がある。",
+        "evidence": "製造品出荷額等が全国第1位であり、その中で輸送用機械器具製造業が極めて高い割合を占める自動車工業の中心地である",
+        "misconception": "首都圏周辺に見られる印刷・出版業や情報通信機械の集積などと、愛知県を中心とする中京工業地帯の輸送用機械（自動車）の圧倒的な出荷割合を混同してしまう誤解。",
+        "marks": 2,
+        "id": "rise-social-d11b931503d4f759",
+        "fingerprint": "aab2b2423f58a480",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-23T12:44:16.399Z"
         }
       }
     ]
