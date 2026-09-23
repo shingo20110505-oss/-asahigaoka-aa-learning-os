@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-23-12-44-16Z",
-  "updatedAt": "2026-09-23T12:44:16.417Z",
+  "poolVersion": "2026-09-23-13-37-48Z",
+  "updatedAt": "2026-09-23T13:37:48.814Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -3250,6 +3250,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-22T13:24:22.741Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading",
+        "difficulty": 8,
+        "question": "筆者が警鐘を鳴らしていることとして、本文に照らして最も適切なものはどれか。",
+        "context": "効率性と利便性が最優先される現代社会において、私たちは目に見える成果や即時的な利益ばかりを追い求めがちである。しかし、時間をかけて熟成される思考や、すぐに結果が出ないものの中にこそ、人間としての本質的な豊かさが潜んでいる。即効性のある解決策だけに飛びつき、熟考するプロセスを軽視し続けるならば、私たちの社会は深い洞察力を失い、やがて文化的空洞化に直面することになるだろう。",
+        "choices": [
+          "効率性や利便性を追求するあまり、すぐに結果が出ないプロセスや熟考する姿勢を軽視することによって、文化的空洞化を招くこと。",
+          "目に見える成果や即時的な利益を一切求めず、すべての産業活動を停止させてしまうこと。",
+          "時間をかけて熟成される思考を完全に排除し、デジタル技術による自動化のみを全面的に推し進めること。",
+          "効率的な解決策をスピーディーに見出すことこそが、現代社会の文化的な豊かさを担保する唯一の手段であること。"
+        ],
+        "answerIndex": 0,
+        "answer": "効率性や利便性を追求するあまり、すぐに結果が出ないプロセスや熟考する姿勢を軽視することによって、文化的空洞化を招くこと。",
+        "explanation": "本文では「即効性のある解決策だけに飛びつき、熟考するプロセスを軽視し続けるならば、私たちの社会は深い洞察力を失い、やがて文化的空洞化に直面する」と述べられています。この内容と一致するのは最初の選択肢です。他の選択肢は筆者の主張と逆であるか、極端な誇張が含まれています。",
+        "evidence": "即効性のある解決策だけに飛びつき、熟考するプロセスを軽視し続けるならば、私たちの社会は深い洞察力を失い、やがて文化的空洞化に直面することになるだろう。",
+        "misconception": "効率性や利便性そのものを完全に否定していると誤読し、すべての技術革新や迅速な対応が悪であると捉えてしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-9fb6fefd512714e1",
+        "fingerprint": "a583736539451e03",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-23T13:37:12.607Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading",
+        "difficulty": 8,
+        "question": "「他者との対話」の意義について、筆者がどのような効果があると述べているか、最も適しているものはどれか。",
+        "context": "私たちは自らの内省を通じて自己理解を深めることができるが、それだけではどうしても視野が偏りがちになる。自分とは異なる背景や価値観を持つ他者と対話を交わすことは、自明視していた前提を揺さぶり、新たな視座を獲得する契機となる。他者の言葉に耳を傾け、摩擦を恐れずに意見を交わすことで、自己の思考の枠組みをより開かれたものへとアップデートしていくことができるのだ。",
+        "choices": [
+          "自己の内省だけで十分に視野は広がるため、他者との対話は補助的な役割にすぎないこと。",
+          "他者と意見を一致させることで、社会的な対立や摩擦を完全に回避できるようになること。",
+          "自分と同じ価値観を持つ者同士で集まり、お互いの意見を補強し合って安心感を得ること。",
+          "自分とは異なる背景を持つ他者との対話を通じて、自明視していた前提が揺さぶられ、新しい視座を獲得できること。"
+        ],
+        "answerIndex": 3,
+        "answer": "自分とは異なる背景を持つ他者との対話を通じて、自明視していた前提が揺さぶられ、新しい視座を獲得できること。",
+        "explanation": "本文では「自分とは異なる背景や価値観を持つ他者と対話を交わすことは、自明視していた前提を揺さぶり、新たな視座を獲得する契機となる」と述べられています。したがって、異なる価値観を持つ他者との対話によって新しい視座を得るという内容が正解となります。",
+        "evidence": "自分とは異なる背景や価値観を持つ他者と対話を交わすことは、自明視していた前提を揺さぶり、新たな視座を獲得する契機となる。",
+        "misconception": "対話の目的を意見の一致や摩擦の回避、あるいは内省の補完程度にとどめてしまう不十分な理解。",
+        "marks": 2,
+        "id": "rise-japanese-4730956daee95b61",
+        "fingerprint": "2ba14942412eee68",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-23T13:37:12.607Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "文章の主旨と資料の読み取りとして最も適切なものを一つ選びなさい。",
+        "context": "近年、私たちの生活空間においてデジタル化が進む一方で、紙の持つ手触りや一覧性の高さを見直す動きがある。ある商店街で行われた調査によると、紙のパンフレットを導入した店舗では、スマートフォンアプリのみで情報提供を行っていた時期と比較して、高齢層だけでなく若年層の回遊率や店舗滞在時間が向上したという結果が得られた。これは、目的の情報へ直接アクセスするデジタルメディアの利便性とは異なり、紙媒体が偶発的な情報の発見や空間全体への関心を喚起する特性を持っていることを示している。",
+        "choices": [
+          "デジタルメディアの利便性のみが情報の価値を高めるため、紙媒体の有用性は完全に失われている。",
+          "紙媒体は偶発的な情報の発見や空間への関心を促す特性を持ち、多様な世代で回遊率の向上に寄与している。",
+          "スマートフォンアプリの導入により、すべての世代において店舗の滞在時間が一律に短縮された。",
+          "商店街の調査では、若年層に対してのみ紙のパンフレットが有効であるという結果が示されている。"
+        ],
+        "answerIndex": 1,
+        "answer": "紙媒体は偶発的な情報の発見や空間への関心を促す特性を持ち、多様な世代で回遊率の向上に寄与している。",
+        "explanation": "文章では、紙媒体が偶発的な情報の発見や空間への関心を喚起する特性を持ち、高齢層だけでなく若年層も含めて回遊率や滞在時間が向上したことが述べられています。したがって、紙媒体が多様な世代の回遊率向上に寄与しているとする選択肢が正解となります。不適切な選択肢は、一部の世代に限定したり、デジタルのみが価値を持つとしたり、事実と反する記述が含まれています。",
+        "evidence": "紙媒体が偶発的な情報の発見や空間全体への関心を喚起する特性を持っている",
+        "misconception": "特定の世代（若者や高齢者など）だけに効果が限定されるという誤った限定化や、デジタルメディアの利便性のみを過剰に肯定する思い込み。",
+        "marks": 2,
+        "id": "rise-japanese-10450d174f3cd0bb",
+        "fingerprint": "9ec708968c73fb38",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-23T13:37:48.796Z"
         }
       }
     ],
