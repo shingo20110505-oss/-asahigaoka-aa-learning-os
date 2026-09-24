@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-23-13-37-48Z",
-  "updatedAt": "2026-09-23T13:37:48.814Z",
+  "poolVersion": "2026-09-24-11-40-07Z",
+  "updatedAt": "2026-09-24T11:40:07.089Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1625,6 +1625,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-23T11:29:31.711Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.probability",
+        "difficulty": 8,
+        "question": "1から5までの数字が1つずつ書かれた5枚のカードがある。この中から同時に2枚のカードを取り出すとき、書かれた数の和が奇数になる確率を求めよ。",
+        "context": "1, 2, 3, 4, 5 の数字が書かれた5枚のカードから同時に2枚を取り出す操作を考える。",
+        "choices": [
+          "7/10",
+          "3/5",
+          "2/5",
+          "3/10"
+        ],
+        "answerIndex": 1,
+        "answer": "3/5",
+        "explanation": "1から5までの5枚のカードから同時に2枚を取り出す場合の数は、全部で 5×4÷2 = 10通り である。和が奇数になるのは、「奇数＋偶数」の組み合わせの場合である。1から5までのカードのうち、奇数は 1, 3, 5 の3枚、偶数は 2, 4 の2枚である。奇数3枚から1枚選ぶ方法は3通り、偶数2枚から1枚選ぶ方法は2通りあり、その選び方の積は 3×2 = 6通り となる。したがって、求める確率は 6/10 = 3/5 となる。強い誤答として、すべての場合の数を重複を考慮せず順列として計算したり、奇数同士や偶数同士の場合を足してしまう誤りがある。",
+        "evidence": "1から5までの数字が1つずつ書かれた5枚のカードがある。この中から同時に2枚のカードを取り出すとき",
+        "misconception": "和が奇数になる条件を「どちらも奇数」と勘違いしたり、全体の総数を誤って計算してしまうこと。",
+        "marks": 2,
+        "id": "rise-math-c4657557f20f144b",
+        "fingerprint": "4ae59b42df9e6db8",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-24T11:39:48.310Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.geometry",
+        "difficulty": 8,
+        "question": "一辺の長さが6cmの正方形ABCDがある。辺AB上に点Pをとり、点Pを通り対角線ACに平行な直線がBCと交わる点をQとする。三角形PBQの面積が2cm²になるとき、線分APの長さを求めよ。",
+        "context": "一辺の長さが6cmの正方形ABCDにおいて、辺AB上に点Pをとり、点Pを通り対角線ACに平行な直線がBCと交わる点をQとする。",
+        "choices": [
+          "5cm",
+          "2cm",
+          "3cm",
+          "4cm"
+        ],
+        "answerIndex": 3,
+        "answer": "4cm",
+        "explanation": "正方形ABCDの一辺は6cmである。AP = x cm とすると、PB = 6 - x cm となる。直線PQは対角線ACに平行である。正方形の対角線ACと辺AB、BCのなする角は45度であるため、三角形PBQも直角二等辺三角形となる。具体的には、角PBQ = 90度、角PQB = 45度であるから、PB = BQ = 6 - x cm が成り立つ。三角形PBQの面積は 1/2 × PB × BQ = 1/2 × (6 - x)² と表される。これが2cm²に等しいので、1/2 × (6 - x)² = 2 となり、(6 - x)² = 4 を得る。これを解くと、6 - x = ±2 となり、x = 6 - 2 = 4 または x = 6 + 2 = 8 である。点Pは辺AB上の点（長さは0から6）であるため、x = 4 が適する。したがって、線分APの長さは4cmとなる。",
+        "evidence": "一辺の長さが6cmの正方形ABCDがある。辺AB上に点Pをとり、点Pを通り対角線ACに平行な直線がBCと交わる点をQとする。",
+        "misconception": "三角形PBQの面積公式で1/2をかけ忘れたり、二次方程式の解から辺の長さの範囲（0<x<6）を考慮し忘れて不適な解を選んでしまうこと。",
+        "marks": 2,
+        "id": "rise-math-b33dd98b25e95157",
+        "fingerprint": "be0fed49d65625d3",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-24T11:39:48.310Z"
         }
       }
     ],
