@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-24-12-42-46Z",
-  "updatedAt": "2026-09-24T12:42:46.410Z",
+  "poolVersion": "2026-09-24-13-32-23Z",
+  "updatedAt": "2026-09-24T13:32:23.854Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -3420,6 +3420,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-23T13:37:48.796Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.reading.application",
+        "difficulty": 8,
+        "question": "本文の内容に照らして、住民参加型の都市計画が持つ特徴について述べているものとして最も適切なものを一つ選びなさい。",
+        "context": "現代の都市計画においては、住民参加型のワークショップが広く導入されている。これによって行政が一方的に計画を決定するのではなく、住民の日常的な動線や隠れたニーズが反映される利点がある反面、参加者の利害対立や合意形成の長期化という課題も生じる。例えば、ある自治体の商店街活性化プロジェクトでは、歩行者天国化を推進するグループと、車両乗り入れを死守したい配送業者との間で意見が割れ、全体の決定までに一年以上の議論を要した。このように、住民参加は民主的なプロセスを深化させる一方で、利害の調整コストを増大させる二面性を持っている。",
+        "choices": [
+          "住民参加によって民主的なプロセスが進むため、利害対立や調整のコストは発生しなくなる。",
+          "住民参加型の手法は、行政の決定を迅速化し、利害対立をスムーズに解消する効果がある。",
+          "住民の日常的な動線が反映される利点がある一方で、合意形成に時間がかかるという側面もある。",
+          "商店街の活性化プロジェクトにおいては、配送業者の意見が全面的に採用される傾向にある。"
+        ],
+        "answerIndex": 2,
+        "answer": "住民の日常的な動線が反映される利点がある一方で、合意形成に時間がかかるという側面もある。",
+        "explanation": "本文では、住民参加型の都市計画について、住民の日常的な動線やニーズが反映されるというメリットがある一方で、利害の対立や合意形成が長期化するという二面性が指摘されています。この点に合致するのが二番目の選択肢です。スピードアップやコスト消失を主張する選択肢は本文の記述に反しており、配送業者の意見が全面的に採用されたという記述も事実と異なります。",
+        "evidence": "住民の日常的な動線や隠れたニーズが反映される利点がある反面、参加者の利害対立や合意形成の長期化という課題も生じる",
+        "misconception": "部分的なメリットのみに着目し、後半で述べられているデメリットを無視してしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-6f1609fb1d10a247",
+        "fingerprint": "d48d9de848d75c8e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-24T13:32:23.819Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.data.analysis",
+        "difficulty": 8,
+        "question": "本文の論旨に最もよく合致するものを一つ選びなさい。",
+        "context": "愛知県の伝統的工芸品である有松・鳴海絞りは、四百年以上の歴史を持つ。近年、後継者不足やライフスタイルの変化により生産量が減少傾向にあるが、SNSを活用した若年層向けのワークショップ開催や、他業種のデザインブランドとのコラボレーションによって、新たな顧客層の開拓が進められている。伝統を守るだけでなく、現代の感性を取り入れた商品開発を行うことが、持続可能な発展のカギとなっている。",
+        "choices": [
+          "現代の感性を取り入れた商品開発が行われた結果、伝統的工芸品としての独自の歴史的価値は失われてしまった。",
+          "伝統的工芸品を持続させるためには、過去の製造手法を一切変えずにそのまま継承することが最優先される。",
+          "ライフスタイルの変化に対応するため、SNSの活用や他業種との協働を通じた現代的なアプローチが試みられている。",
+          "後継者不足の解消には、若年層向けのワークショップよりも大規模な工場生産への移行が効果的である。"
+        ],
+        "answerIndex": 2,
+        "answer": "ライフスタイルの変化に対応するため、SNSの活用や他業種との協働を通じた現代的なアプローチが試みられている。",
+        "explanation": "本文では、伝統的工芸品が直面する課題に対し、SNSの活用や他業種のデザインブランドとのコラボレーションといった現代的なアプローチで新たな顧客層を開拓していることが述べられています。これに直接対応するのが二番目の選択肢です。手法を一切変えないことや歴史的価値が失われたとする選択肢、工場生産への移行を述べる選択肢は、いずれも本文の記述や趣旨に反しています。",
+        "evidence": "SNSを活用した若年層向けのワークショップ開催や、他業種のデザインブランドとのコラボレーションによって、新たな顧客層の開拓が進められている。",
+        "misconception": "「伝統」という言葉から過度に保守的な変化拒絶の姿勢を読み取ってしまうことや、本文にない大規模生産などの要素を混同すること。",
+        "marks": 2,
+        "id": "rise-japanese-9fda4f834c34233f",
+        "fingerprint": "163c5286b6b38890",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-24T13:32:23.819Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.critical.thinking",
+        "difficulty": 8,
+        "question": "本文で述べられている、現代の公共図書館の機能の変化に関する説明として最も適切なものを一つ選びなさい。",
+        "context": "現代の公共図書館は、単に書籍を保管・貸出する場所から、地域住民が集い交流する「サードプレイス（第3の場所）」としての役割を強めている。例えば、読書のための閲覧席だけでなく、地域課題に関する資料を展示するスペースや、市民が主体となってイベントを開催できる多目的室を備えた施設が増えている。これにより、利用者は受け身の情報収集にとどまらず、自ら地域社会に関与する主体としての意識を高めることが可能になっている。",
+        "choices": [
+          "書籍の保管や貸出業務を中心に行うことで、地域住民の交流を制限する空間へと変化している。",
+          "利用者が受け身の姿勢で情報収集を行うための、静寂を保った空間としての機能が完全に廃止された。",
+          "資料の貸出にとどまらず、住民が交流し、自ら地域社会に関与する主体となる場としての役割が強まっている。",
+          "市民が主体となってイベントを開催するようになった結果、図書館本来の読書のための閲覧機能はすべて失われた。"
+        ],
+        "answerIndex": 2,
+        "answer": "資料の貸出にとどまらず、住民が交流し、自ら地域社会に関与する主体となる場としての役割が強まっている。",
+        "explanation": "本文では、公共図書館が単なる書籍の貸出場所から、住民が交流するサードプレイスへと変化し、利用者が自ら地域社会に関与する主体となる意識を高められる場になっていることが説明されています。三番目の選択肢はこの要旨を正確に表現しています。閲覧機能が失われたり交流が制限されたりするとする選択肢は、本文の記述と矛盾しています。",
+        "evidence": "利用者は受け身の情報収集にとどまらず、自ら地域社会に関与する主体としての意識を高めることが可能になっている。",
+        "misconception": "図書館の新しい機能が強調されていることから、従来の機能が完全に失われたと極端に解釈してしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-dd6e49cfb9345b2b",
+        "fingerprint": "d846bfde14d303a8",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-24T13:32:23.819Z"
         }
       }
     ],
