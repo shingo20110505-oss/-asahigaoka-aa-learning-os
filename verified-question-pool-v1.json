@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-24-12-12-03Z",
-  "updatedAt": "2026-09-24T12:12:03.032Z",
+  "poolVersion": "2026-09-24-12-42-46Z",
+  "updatedAt": "2026-09-24T12:42:46.410Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -6705,6 +6705,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-23T12:44:16.399Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "文中に示された近世日本の社会政策や経済動向に関する記述として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "江戸時代中期以降、幕府や藩は財政難を立て直すために様々な改革を行った。享保の改革では目安箱が設置されて広く庶民の意見を取り入れようとしたほか、上米の制などによって藩の財政立て直しを図った藩も現れた。また、都市部では商工業者の同業組合である株仲間の結成が公認され、幕府や藩はこれを通じて運上金や冥加金を徴収するとともに、流通の統制を図った。",
+        "choices": [
+          "享保の改革では、徳川吉宗が将軍として新田開発を推進し、上米の制を定めて大名から米を上納させる代わりに参勤交代の緩和を行った。",
+          "江戸時代の株仲間は、自由な競争を促進するために幕府が解散を命じた商業組合であり、これによって物価の引き下げが達成された。",
+          "目安箱に投じられた庶民の意見は、すべて朝廷に上奏され、朝幕協調のもとで全国的な法改正へと結びつけられた。",
+          "享保の改革で行われた上米の制は、のちにすべての藩で恒久的な制度となり、幕府の財政は完全に安定することになった。"
+        ],
+        "answerIndex": 0,
+        "answer": "享保の改革では、徳川吉宗が将軍として新田開発を推進し、上米の制を定めて大名から米を上納させる代わりに参勤交代の緩和を行った。",
+        "explanation": "享保の改革では、徳川吉宗が将軍として財政再建や新田開発を進め、大名に米を上納させる代わりに参勤交代の期間を短縮する上米の制を実施した。他の選択肢は株仲間の役割や目安箱の扱い、上米の制の結果に関する事実関係の誤りが含まれている。",
+        "evidence": "享保の改革では目安箱が設置されて広く庶民の意見を取り入れようとしたほか、上米の制などによって藩の財政立て直しを図った藩も現れた。",
+        "misconception": "株仲間が自由競争を促したと誤解したり、上米の制が幕府財政を完全に安定させたという誇張された結果を正しいと勘違いする誤り。",
+        "marks": 2,
+        "id": "rise-social-f911071fbd3268db",
+        "fingerprint": "8938117c20046caa",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-24T12:42:46.379Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "文中に挙げられた日本の工業地帯・地域の特徴と地形・交通条件との関係について最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "日本の太平洋ベルトに位置する中京工業地帯は、自動車工業を中心に機械工業の出荷額が全国第1位を誇る地域である。愛知県の臨海部では、広大な埋め立て地を利用して自動車関連工場や石油化学コンビナートが発達している一方で、矢作川などの河川の水資源や、名古屋港を中心とする充実した海上交通網が工業生産を支えている。",
+        "choices": [
+          "中京工業地帯の主軸である自動車工業は、河川の水資源を一切必要としないため、水不足が深刻な山間部に集中している。",
+          "中京工業地帯は、内陸部の狭小な盆地に立地するため、主に小規模な伝統的工芸品の生産に特化している点が大きな特徴である。",
+          "愛知県の臨海部では、埋め立て地を利用した広大な敷地に自動車関連工場や石油化学コンビナートが発達している。",
+          "名古屋港などの海上交通網は利用されず、すべての工業製品の輸送は山岳地帯を越える鉄道貨物のみに依存している。"
+        ],
+        "answerIndex": 2,
+        "answer": "愛知県の臨海部では、埋め立て地を利用した広大な敷地に自動車関連工場や石油化学コンビナートが発達している。",
+        "explanation": "本文の記述から、愛知県の臨海部では埋め立て地を活用して自動車関連工場や石油化学コンビナートが発達していることがわかる。他の選択肢は伝統的工芸品への特化、海上交通網の否定、水資源を必要としない点などの誤った主張を含んでいる。",
+        "evidence": "愛知県の臨海部では、広大な埋め立て地を利用して自動車関連工場や石油化学コンビナートが発達している一方で、矢作川などの河川の水資源や、名古屋港を中心とする充実した海上交通網が工業生産を支えている。",
+        "misconception": "中京工業地帯を内陸の伝統産業地域と混同したり、臨海部の工業が海運を利用していないと思い込む誤り。",
+        "marks": 2,
+        "id": "rise-social-f376c780566383cc",
+        "fingerprint": "8e541465c2536adb",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-24T12:42:46.379Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "文中に示された日本国憲法における人権や政治の仕組みに関する記述として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "日本国憲法では、基本的人権が侵すことのできない永久の権利として保障されている。また、政治権力の濫権を防ぎ国民の権利を守るために、国会、内閣、裁判所の三権分立が採用されており、それぞれが互いに抑制し合う均衡のシステムが構築されている。国会は唯一の立法機関であり、内閣に対して不信任決議案を可決できる権限も持っている。",
+        "choices": [
+          "内閣は法律案を提出する権限を持たず、すべての法案は必ず最高裁判所の司法審査を経てから国会に提出される仕組みになっている。",
+          "三権分立のもとで、国会は唯一の立法機関であり、衆議院で内閣不信任決議案が可決された場合、内閣は衆議院を解散するか総辞職しなければならない。",
+          "日本国憲法に定められた基本的人権は、いかなる場合であっても公共の福祉を理由として制限されることは一切ない。",
+          "司法権を行使する裁判所は、国会や内閣から完全に独立しており、両者に対して一切の抑制や権限の行使を行うことはできない。"
+        ],
+        "answerIndex": 1,
+        "answer": "三権分立のもとで、国会は唯一の立法機関であり、衆議院で内閣不信任決議案が可決された場合、内閣は衆議院を解散するか総辞職しなければならない。",
+        "explanation": "国会は唯一の立法機関であり、内閣不信任決議案が可決された際の内閣の対応（衆議院解散または総辞職）は憲法上の正しい仕組みである。他は公共の福祉による制限の否定や司法の独立に関する誤解、内閣の法案提出権に関する誤りを含んでいる。",
+        "evidence": "国会は唯一の立法機関であり、内閣に対して不信任決議案を可決できる権限も持っている。",
+        "misconception": "基本的人権が無制限であるという誤解や、裁判所が三権分立の中で全く関与しないと捉える誤り。",
+        "marks": 2,
+        "id": "rise-social-e9a4da49f80857dd",
+        "fingerprint": "e95b3a294b23b2c3",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-24T12:42:46.379Z"
         }
       }
     ]
