@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-24-11-40-07Z",
-  "updatedAt": "2026-09-24T11:40:07.089Z",
+  "poolVersion": "2026-09-24-12-12-03Z",
+  "updatedAt": "2026-09-24T12:12:03.032Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -4978,6 +4978,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-23T12:07:32.191Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.physics",
+        "difficulty": 8,
+        "question": "実験で行った回路において、電流計が示す値が最も小さくなるのは、スイッチをどのように操作したときか、最も適当なものを1つ選べ。",
+        "context": "ある班は、電源装置、抵抗器X（20Ω）、抵抗器Y（30Ω）、スイッチ、電流計、電圧計を用いて回路の実験を行った。回路全体に加わる電圧を一定の10Vに保ったまま、回路の接続やスイッチの開閉を変えて電流の大きさを測定した。実験の結果、回路全体の合成抵抗を変化させることで電流計の値が変化することが確かめられた。",
+        "choices": [
+          "抵抗器Yのみを回路に接続し、スイッチを入れたとき",
+          "抵抗器Xと抵抗器Yを直列に接続し、スイッチを入れたとき",
+          "抵抗器Xと抵抗器Yを並列に接続し、スイッチを入れたとき",
+          "抵抗器Xのみを回路に接続し、スイッチを入れたとき"
+        ],
+        "answerIndex": 1,
+        "answer": "抵抗器Xと抵抗器Yを直列に接続し、スイッチを入れたとき",
+        "explanation": "電圧が一定のとき、回路を流れる電流の大きさは合成抵抗の大きさに反比例する。電流計が示す値が最も小さくなるのは合成抵抗が最も大きくなるときである。抵抗器を直列に接続すると合成抵抗はそれぞれの抵抗の和になり、20Ω＋30Ω＝50Ωとなる。並列接続の場合や単体の場合は合成抵抗がこれより小さくなるため、直列接続のときが最も電流が小さくなる。最も強いトラップは並列接続の方が抵抗が大きくなると勘違いすることである。",
+        "evidence": "抵抗器X（20Ω）、抵抗器Y（30Ω）、スイッチ、電流計、電圧計を用いて回路の実験を行った。",
+        "misconception": "直列接続では抵抗が小さくなり、並列接続で抵抗が大きくなるという誤った回路の性質の理解。",
+        "marks": 2,
+        "id": "rise-science-44f528718bde50fd",
+        "fingerprint": "53adf64aa13768ec",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-24T12:11:22.471Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemistry",
+        "difficulty": 8,
+        "question": "水溶液の質量パーセント濃度を求める実験において、最も適切な手順と得られる濃度の関係について述べたものとして適当なものを1つ選べ。",
+        "context": "生徒Aは、質量が10gの食塩をビーカーに入れ、水を加えて完全に溶かして全体で50gの水溶液を作製した。その後、この水溶液の性質や濃度について考察を行った。作製した水溶液について、溶質の質量と水溶液全体の質量の比率から濃度を算出した。",
+        "choices": [
+          "溶質の質量を水溶液全体の質量で割って100を掛けることで算出される濃度は20%である",
+          "溶質の質量を水の質量で割って100を掛けることで算出される濃度は20%である",
+          "溶質の質量を水溶液全体の質量で割って100を掛けることで算出される濃度は25%である",
+          "溶質の質量を水の質量で割って100を掛けることで算出される濃度は25%である"
+        ],
+        "answerIndex": 0,
+        "answer": "溶質の質量を水溶液全体の質量で割って100を掛けることで算出される濃度は20%である",
+        "explanation": "質量パーセント濃度は、（溶質の質量÷水溶液全体の質量）×100で求められる。食塩10gを水に溶かして全体を50gにしたので、溶質は10g、水溶液全体は50gである。したがって、(10÷50)×100＝20%となる。分母に水の質量（40g）を用いて計算してしまう誤りが最も強力なトラップである。",
+        "evidence": "質量が10gの食塩をビーカーに入れ、水を加えて完全に溶かして全体で50gの水溶液を作製した。",
+        "misconception": "質量パーセント濃度の計算で、分母に溶媒（水）の質量を使ってしまう誤り。",
+        "marks": 2,
+        "id": "rise-science-bfc3ceac0c50d8f0",
+        "fingerprint": "94fed09dee9abb6b",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-24T12:11:22.471Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "この水溶液を20℃まで冷却したとき、析出する物質Aの質量は何gか。最も適当なものを次の選択肢から1つ選びなさい。",
+        "context": "物質Aの溶解度について調べるため、実験を行った。【表】は、水100gに対する物質Aの溶解度を示したものである。60℃の水200gに物質Aを150g加えて完全に溶かしたところ、均質な水溶液になった。【表】20℃における溶解度：31.6g、60℃における溶解度：109.2g",
+        "choices": [
+          "118.4g",
+          "155.6g",
+          "77.6g",
+          "86.8g"
+        ],
+        "answerIndex": 3,
+        "answer": "86.8g",
+        "explanation": "60℃の水100gに対する物質Aの溶解度は109.2gであるため、水200gには最大218.4gまで溶ける。加えた150gはすべて溶けている。20℃の水100gに対する溶解度は31.6gであるため、水200gに溶ける質量は31.6g×2＝63.2gとなる。よって、析出する質量は150g－63.2g＝86.8gとなる。最強の誤概念は、水の量が200gであることを見落とし、溶解度の差（109.2－31.6）をそのまま用いて計算してしまうことである。",
+        "evidence": "60℃の水200gに物質Aを150g加えて完全に溶かした",
+        "misconception": "水の質量が200gである条件を無視して、100gあたりの溶解度の差をそのまま計算してしまう。",
+        "marks": 2,
+        "id": "rise-science-81f0fa376878f45b",
+        "fingerprint": "00790f95959d687b",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-24T12:12:03.001Z"
         }
       }
     ],
