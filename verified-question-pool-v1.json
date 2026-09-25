@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-25-12-45-02Z",
-  "updatedAt": "2026-09-25T12:45:02.936Z",
+  "poolVersion": "2026-09-25-13-43-43Z",
+  "updatedAt": "2026-09-25T13:43:43.084Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -3590,6 +3590,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-24T13:32:23.819Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "文章の内容と照らし合わせたとき、筆者が述べている都市計画の本質として最も適切なものを一つ選びなさい。",
+        "context": "現代の都市計画において、効率性や利便性ばかりが追求されがちである。しかし、真に豊かな都市とは、住民の記憶や土地の歴史が景観や建造物に刻まれ、世代を超えて共有される場所のことである。利便性を優先して古いものをすべて刷新することは、都市から「物語」を奪う行為に他ならない。もちろん、近代化や防災面の強化を否定するわけではないが、それらは過去の蓄積を尊ぶ姿勢と調和して初めて意味を持つ。都市は単なる経済活動の器ではなく、人間が人間らしく生きるための文化的記憶の装置なのである。",
+        "choices": [
+          "古い建造物を保存するためには、住民の利便性や防災面の向上を完全に犠牲にすることもやむを得ない。",
+          "近代化や防災の視点を持ちつつも、土地の歴史や記憶を尊ぶ姿勢との調和を図ることが重要である。",
+          "都市計画において重要なのは経済活動の器としての機能を高めることであり、文化的記憶は副次的な要素に過ぎない。",
+          "経済的効率性や近代的な利便性の向上こそが、住民の豊かな生活を実現するための最優先課題である。"
+        ],
+        "answerIndex": 1,
+        "answer": "近代化や防災の視点を持ちつつも、土地の歴史や記憶を尊ぶ姿勢との調和を図ることが重要である。",
+        "explanation": "文章中では、「近代化や防災面の強化を否定するわけではないが、それらは過去の蓄積を尊ぶ姿勢と調和して初めて意味を持つ」と述べられており、近代化等の実用的な側面と、歴史や記憶を尊ぶ姿勢との調和が重要視されています。最も強い誤答は、利便性や効率性を最優先とする選択肢や、古いものの保存を絶対視して他を犠牲にする極端な選択肢です。これらは筆者の「調和」という主張の一部を見落としたり過剰に誇張したりした部分一致・方向違いの誤りです。",
+        "evidence": "近代化や防災面の強化を否定するわけではないが、それらは過去の蓄積を尊ぶ姿勢と調和して初めて意味を持つ。",
+        "misconception": "効率性や利便性といった現代的な価値観のみを重視し、筆者の「調和」の視点を見落とすこと。",
+        "marks": 2,
+        "id": "rise-japanese-eba5dcf924564bad",
+        "fingerprint": "52861d9fd7a9bf15",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-25T13:43:43.031Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "本文において、筆者が「対話」のもつ本来の意義について述べている部分として最も適切なものを一つ選びなさい。",
+        "context": "他者との対話とは、自分の意見を相手に納得させたり、どちらが正しいかを競い合ったりするための手段ではない。真の対話とは、自分とは異なる背景を持つ他者の言葉に耳を傾け、自らの内なる前提や偏見に揺らぎを生じさせるプロセスそのものである。言葉を交わすことで私たちは自分の正しさを補強するのではなく、むしろ自らの未熟さや視野の狭さに直面し、そこから世界を捉え直す視野の広がりを獲得していくのである。",
+        "choices": [
+          "自らの意見に固執せず、他者の言葉を通じて自分自身の前提を揺らし、世界を捉え直すこと。",
+          "お互いの共通点を確認し合い、意見の対立を避けることで円滑な人間関係を維持すること。",
+          "自分自身の意見や主張の正しさを相手に認めさせ、議論を優位に進めるために言葉を交わすこと。",
+          "他者との意見の違いを明確にし、どちらの主張がより合理的であるかを迅速に判定すること。"
+        ],
+        "answerIndex": 0,
+        "answer": "自らの意見に固執せず、他者の言葉を通じて自分自身の前提を揺らし、世界を捉え直すこと。",
+        "explanation": "本文では対話を「自らの内なる前提や偏見に揺らぎを生じさせるプロセス」「世界を捉え直す視野の広がりを獲得していく」ものとして位置づけています。したがって、自らの前提を揺らし捉え直すとする選択肢が正解です。議論の勝敗や優劣を決めること、あるいは対立を避けることとする選択肢は、文章で否定されている内容や筆者の主張から外れた誤りです。",
+        "evidence": "真の対話とは、自分とは異なる背景を持つ他者の言葉に耳を傾け、自らの内なる前提や偏見に揺らぎを生じさせるプロセスそのものである。",
+        "misconception": "対話を自己の主張を通すための手段や、争いを避けるための表面的なコミュニケーションと捉えてしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-42d81a7fe43db363",
+        "fingerprint": "fe1b2d84dd08d99a",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-25T13:43:43.031Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "次の文章で筆者が警告している現代の傾向として、最も適切なものを一つ選びなさい。",
+        "context": "私たちは今、膨大な情報が瞬時に手に入る時代に生きている。しかし、その手軽さと引き換えに、私たちはじっくりと一つの対象に向き合い、行間を味わう力を失いつつある。情報量が多ければ多いほど、表面的な記号としての言葉だけが消費され、その背後にある複雑な文脈や痛みが捨象されていく。スピードと効率が価値を持つ社会において、立ち止まって深く考える営みは、しばしば「無駄」なものとして切り捨てられてしまうのである。",
+        "choices": [
+          "情報の処理速度が速くなることで、かえって人間関係の希薄化や孤独感が深刻化していること。",
+          "効率性とスピードが重視されるあまり、深く考えることや複雑な文脈を味わうことが軽視されていること。",
+          "インターネット上の情報量が不足しているために、正確な事実や知識にアクセスできないこと。",
+          "一つの対象にじっくり向き合いすぎることが原因で、新しい情報を取り入れる柔軟性が失われていること。"
+        ],
+        "answerIndex": 1,
+        "answer": "効率性とスピードが重視されるあまり、深く考えることや複雑な文脈を味わうことが軽視されていること。",
+        "explanation": "文章の後半で「スピードと効率が価値を持つ社会において、立ち止まって深く考える営みは、しばしば『無駄』なものとして切り捨てられてしまう」と述べられており、効率優先によって深い思索や複雑な文脈が失われていることが警告されています。情報量が不足しているとする選択肢は事実と異なり、人間関係の希薄化を主たる警告とする選択肢は部分的な連想による誤りです。",
+        "evidence": "スピードと効率が価値を持つ社会において、立ち止まって深く考える営みは、しばしば「無駄」なものとして切り捨てられてしまうのである。",
+        "misconception": "情報技術の発展そのものや情報の不足を問題視していると早計に判断してしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-99f99ae6cf955b72",
+        "fingerprint": "e2337b14d1d2d6b2",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-25T13:43:43.031Z"
         }
       }
     ],
