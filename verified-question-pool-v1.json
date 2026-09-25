@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-24-13-32-23Z",
-  "updatedAt": "2026-09-24T13:32:23.854Z",
+  "poolVersion": "2026-09-25-11-46-29Z",
+  "updatedAt": "2026-09-25T11:46:29.132Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1693,6 +1693,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-24T11:39:48.310Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "math.quadratic_functions",
+        "difficulty": 8,
+        "question": "座標平面上に放物線y = ax^2 (a>0)と直線y = x + 4があり、2点A, Bで交わっている。点Aのx座標が-2のとき、定数aの値として正しいものを次の選択肢から選びなさい。",
+        "context": "関数y = ax^2 (a>0)のグラフと直線y = x + 4が2点A, Bで交わっている。点Aのx座標は-2である。",
+        "choices": [
+          "a = 1",
+          "a = 3/2",
+          "a = 1/2",
+          "a = 3/4"
+        ],
+        "answerIndex": 2,
+        "answer": "a = 1/2",
+        "explanation": "点Aは直線y = x + 4上の点であり、x座標が-2であるから、y = -2 + 4 = 2となり、Aの座標は(-2, 2)である。これが放物線y = ax^2上の点でもあるので、2 = a*(-2)^2より4a = 2となり、a = 1/2が求まる。誤った選択肢は交点の代入ミスや符号の誤りによるものである。",
+        "evidence": "点Aのx座標は-2である。",
+        "misconception": "直線の式への代入時に座標の計算を誤り、y座標を別の値としてしまう誤謬。",
+        "marks": 2,
+        "id": "rise-math-c127daaba9f4c32f",
+        "fingerprint": "5625ed2d3e7b3c03",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-25T11:45:58.398Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.geometry",
+        "difficulty": 8,
+        "question": "AB=6cm、AD=8cm、高さが6cmの直方体ABCD-EFGHがある。辺BFの中点をMとする。頂点Aから表面を通って点Mに至る最短の線の長さを求めよ。",
+        "context": "AB=6cm、AD=8cm、高さが6cmの直方体ABCD-EFGHがある。辺BFの中点をMとする。頂点Aから表面を通って点Mに至る最短の線の長さを求めよ。",
+        "choices": [
+          "3\\sqrt{5}cm",
+          "3\\sqrt{6}cm",
+          "\\sqrt{51}cm",
+          "2\\sqrt{13}cm"
+        ],
+        "answerIndex": 0,
+        "answer": "3\\sqrt{5}cm",
+        "explanation": "頂点Aから辺BF上の点Mに至る最短の経路を考えるため、面ABFEと面BCGFを展開した長方形を考える。展開図において、Aを基準(0, 6)、Mを(6, 3)と座標をとると、2点間の距離は直角三角形の斜辺として計算できる。横の長さの差は6cm、縦の長さの差は3cmとなるため、三平方の定理より 6^2 + 3^2 = 36 + 9 = 45 となり、その平方根をとると 3\\sqrt{5} cm と求められる。最強の罠は、展開する面を誤って遠回りの経路で計算してしまうことである。最終的な最短の長さは 3\\sqrt{5} cm である。",
+        "evidence": "AB=6cm、AD=8cm、高さが6cmの直方体ABCD-EFGHがある。辺BFの中点をMとする。頂点Aから表面を通って点Mに至る最短の線の長さを求めよ。",
+        "misconception": "どの面を展開して展開図を描くべきかの選択を誤り、誤った長方形の辺の長さを用いてしまうこと。",
+        "marks": 2,
+        "id": "rise-math-a9e624dc60b30890",
+        "fingerprint": "9b3f8297a138a4ad",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-25T11:46:29.102Z"
         }
       }
     ],
