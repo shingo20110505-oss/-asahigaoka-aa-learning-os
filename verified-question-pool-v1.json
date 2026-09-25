@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-25-11-46-29Z",
-  "updatedAt": "2026-09-25T11:46:29.132Z",
+  "poolVersion": "2026-09-25-12-12-34Z",
+  "updatedAt": "2026-09-25T12:12:34.912Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -5250,6 +5250,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-24T12:12:03.001Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.physics.work",
+        "difficulty": 8,
+        "question": "この実験において、小体が斜面を移動する間に摩擦力がした仕事の大きさは何Jか。",
+        "context": "質量2.0kgの小体を、長さ1.2m、高さ0.6mの斜面に沿って一定の速さで引き上げる実験を行った。斜面に沿って加えた力は14Nであった。ただし、質量100gの物体にはたらく重力の大きさを1Nとする。",
+        "choices": [
+          "4.8J",
+          "1.6J",
+          "2.0J",
+          "3.6J"
+        ],
+        "answerIndex": 0,
+        "answer": "4.8J",
+        "explanation": "斜面に沿って加えた力仕事は14N×1.2m=16.8Jである。一方、重力に逆らってした仕事（位置エネルギーの増加分）は20N×0.6m=12.0Jである。加えた仕事と位置エネルギーの増加分の差である4.8Jが、摩擦力がした仕事（熱等に変換されたエネルギー）となる。",
+        "evidence": "質量2.0kgの小体を、長さ1.2m、高さ0.6mの斜面に沿って一定の速さで引き上げる実験を行った。斜面に沿って加えた力は14Nであった。",
+        "misconception": "斜面に沿って加えた力仕事の値をそのまま答えとしたり、重力や質量の単位換算を誤るミス。",
+        "marks": 2,
+        "id": "rise-science-25c6e82edbfe91b2",
+        "fingerprint": "666eeb3dd70e0b23",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-25T12:12:34.887Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.chemistry.solubility",
+        "difficulty": 8,
+        "question": "20℃まで冷却したときに析出した硝酸カリウムの結晶の質量として最も適当なものはどれか。",
+        "context": "60℃の水50gに硝酸カリウムを50g加えて完全にとかした水溶液を作製した。その後、この水溶液を20℃まで冷却したところ、結晶が析出した。なお、硝酸カリウムの溶解度は、60℃で109g/100g水、20℃で32g/100g水である。",
+        "choices": [
+          "18g",
+          "34g",
+          "38.5g",
+          "50g"
+        ],
+        "answerIndex": 1,
+        "answer": "34g",
+        "explanation": "60℃の水50gにとける硝酸カリウムは109×(50/100)=54.5gなので、50gはすべてとけている。20℃の水50gにとける硝酸カリウムは32×(50/100)=16gである。したがって、冷却により析出する結晶の質量は50-16=34gとなる。",
+        "evidence": "60℃の水50gに硝酸カリウムを50g加えて完全にとかした水溶液を作製した。",
+        "misconception": "溶解度の数値をそのまま引き算して109-32=77gの半分として計算するなどの比例計算の誤り。",
+        "marks": 2,
+        "id": "rise-science-9f2813e7f7c6a30b",
+        "fingerprint": "44b3113c21130ae6",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-25T12:12:34.887Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.biology.gas_exchange",
+        "difficulty": 8,
+        "question": "暗所に置いた容器内では、オオカナダモやメダカの生命活動によって二酸化炭素の濃度はどのように変化するか。",
+        "context": "オオカナダモとメダカを入れた密閉容器を用意し、十分な光を当てた後、完全に遮光して暗所に置いた。遮光した後の容器内における二酸化炭素の増減について調べた。",
+        "choices": [
+          "光を当てていたときよりも、二酸化炭素の濃度は下降する。",
+          "光を当てていたときと変わらず、二酸化炭素の濃度は一定に保たれる。",
+          "光を当てていたときよりも、二酸化炭素の濃度はいったん上昇したのち下降する。",
+          "光を当てていたときよりも、二酸化炭素の濃度は上昇する。"
+        ],
+        "answerIndex": 3,
+        "answer": "光を当てていたときよりも、二酸化炭素の濃度は上昇する。",
+        "explanation": "暗所では植物の光合成が行われず、呼吸のみが行われる。オオカナダモもメダカも呼吸によって二酸化炭素を常に排出し続けるため、光合成によって二酸化炭素が吸収されていた光照射時と比べ、容器内の二酸化炭素濃度は上昇する。",
+        "evidence": "オオカナダモとメダカを入れた密閉容器を用意し、十分な光を当てた後、完全に遮光して暗所に置いた。",
+        "misconception": "植物は暗所でも光合成を行うと勘違いしたり、動物のみが呼吸して植物は呼吸しないと誤認する。",
+        "marks": 2,
+        "id": "rise-science-fc4f16dbc4ab3c9f",
+        "fingerprint": "25cb9b9afe5d86dc",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-25T12:12:34.887Z"
         }
       }
     ],
