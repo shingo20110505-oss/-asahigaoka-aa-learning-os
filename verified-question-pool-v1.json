@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-25-12-12-34Z",
-  "updatedAt": "2026-09-25T12:12:34.912Z",
+  "poolVersion": "2026-09-25-12-45-02Z",
+  "updatedAt": "2026-09-25T12:45:02.936Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -7079,6 +7079,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-24T12:42:46.379Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "愛知県の特産品や工業製品の出荷額に関する記述として、最も適当なものを次の選択肢から1つ選びなさい。",
+        "context": "愛知県の産業構造を見ると、自動車関連産業をはじめとする機械工業の比率が極めて高い。また、渥美半島などの温暖な気候を生かした近郊農業や施設園芸が盛んであり、キャベツやメロンなどの生産が全国トップクラスである。さらに、木曽川の豊かな水を利用した濃尾平野での稲作も歴史的に行われてきた。",
+        "choices": [
+          "渥美半島では冷涼な気候を活かしたリンゴなどの果樹栽培が全国第1位の規模を誇っている。",
+          "濃尾平野の大部分では、乾燥した気候を利用した茶の栽培が最も盛んに行われている。",
+          "県内の農業産出額に占める割合は水稲の栽培が常に過半数を超えて圧倒的な1位である。",
+          "自動車およびその部品を中心とする機械工業の製造品出荷額が全国で長年第1位である。"
+        ],
+        "answerIndex": 3,
+        "answer": "自動車およびその部品を中心とする機械工業の製造品出荷額が全国で長年第1位である。",
+        "explanation": "愛知県は自動車産業を中心とする機械工業の製造品出荷額が長年全国第1位であり、日本のものづくりをリードしています。渥美半島は温暖な気候を利用した野菜や花きの栽培が盛んであり、冷涼な気候の果樹栽培ではありません。濃尾平野は温暖・湿潤で稲作や野菜栽培が盛んであり乾燥気候ではありません。農業産出額では野菜や花き、畜産なども大きな割合を占めており、水稲が常に過半数を占めているわけではありません。最強の誤解は、日本一の産業や地形的特徴に関する知識を混同し、農業や他の産業の比率を過大評価することです。",
+        "evidence": "愛知県の産業構造を見ると、自動車関連産業をはじめとする機械工業の比率が極めて高い。",
+        "misconception": "愛知県＝自動車という連想から、県内の産業や農業のあらゆる側面がすべて日本一である、あるいは気候条件が特殊であると誤解する。",
+        "marks": 2,
+        "id": "rise-social-03627f86b2986caa",
+        "fingerprint": "e3de577d731a3433",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-25T12:44:54.775Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "日本国憲法における基本的人権や民主主義の仕組みに関する記述として、最も適当なものを次の選択肢から1つ選びなさい。",
+        "context": "日本国憲法は、国民主権、基本的人権の尊重、平和主義を基本原則としている。国会は、唯一の立法機関として法律を制定する権限を持ち、国民の代表から構成される。また、裁判所は法に基づいて公正な裁判を行い、政治部門が憲法や法律に違反していないかを審査する違憲審査制などの権限を有している。",
+        "choices": [
+          "国会は唯一の立法機関として法律を制定する権限を持っており、国民の代表機関である。",
+          "裁判所は独自の法律を勝手に制定する広範な立法権を直接行使することができる。",
+          "日本国憲法の基本原則には国民主権や平和主義が含まれておらず、国民の権利は保障されていない。",
+          "内閣はすべての法律案を単独で最終決定し、国会の議決を経ずに施行できる。"
+        ],
+        "answerIndex": 0,
+        "answer": "国会は唯一の立法機関として法律を制定する権限を持っており、国民の代表機関である。",
+        "explanation": "日本国憲法第41条において、国会は『国権の最高機関であって、国の唯一の立法機関である』と定められています。裁判所は司法権を行使し、法律の制定権は持ちません。日本国憲法は国民主権や基本的人権の尊重、平和主義を基本原則としています。内閣は法案を提出することはできますが、法律を制定するのは国会の議決が必要です。最強の誤解は、三権分立における各機関の権限の境界線を混同し、内閣や裁判所が立法権を持つと誤認することです。",
+        "evidence": "国会は、唯一の立法機関として法律を制定する権限を持ち、国民の代表から構成される。",
+        "misconception": "三権分立の原則を軽視し、内閣や裁判所が国会と同様の立法機能を果たせると誤解すること。",
+        "marks": 2,
+        "id": "rise-social-ded59823fb184af7",
+        "fingerprint": "d99f7327b33296cd",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-25T12:44:54.775Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "資料中の地域Xに関する説明として最も適当なものはどれか。",
+        "context": "次の文章は、日本の主な工業地域についてまとめたものである。\n「資料Aの地域Xは、自動車工業や機械工業の割合が極めて高く、県別の製造品出荷額等では全国で長年上位を占めている。この地域には、関連する中小の部品メーカーや加工業者が集積しており、ものづくりが盛んな地域である。」\n「資料Bの地域Yは、京浜工業地帯であり、鉄鋼業や印刷・出版業、情報通信機械工業など多様な業種がバランスよく立地しているが、消費地に近接した印刷や食料品などの割合や、高度な技術・サービスに関連する産業の比重が高い。」",
+        "choices": [
+          "自動車関連産業を中心とする機械工業の比重が非常に高く、県別の製造品出荷額等で長年第1位を維持している愛知県が含まれる。",
+          "水力発電をいかしたアルミニウム精錬などの金属工業が古くから発達し、太平洋ベルトの終端に位置している。",
+          "繊維工業などの軽工業が中心であったが、近年はIT関連企業の進出により情報通信機械の生産額が急増している。",
+          "石油化学コンビナートが臨海部に多数建設され、製品の多くが輸出に回されている。"
+        ],
+        "answerIndex": 0,
+        "answer": "自動車関連産業を中心とする機械工業の比重が非常に高く、県別の製造品出荷額等で長年第1位を維持している愛知県が含まれる。",
+        "explanation": "地域Xは、自動車工業や機械工業が非常に盛んであり、県別の製造品出荷額等で長年第1位を維持している愛知県を中心とする中京工業地帯を指している。石油化学コンビナートの記述は瀬戸内工業地域などの臨海型工業地域の特徴であり、地域Xとは合致しない。",
+        "evidence": "資料Aの地域Xは、自動車工業や機械工業の割合が極めて高く、県別の製造品出荷額等では全国で長年上位を占めている。",
+        "misconception": "日本の主要な工業地帯ごとの立地特性や中心となる産業（石油化学コンビナートや金属工業など）の知識を、中京工業地域の特徴と混同してしまうこと。",
+        "marks": 2,
+        "id": "rise-social-d42fbe754762fee9",
+        "fingerprint": "1c5d6ad62de37828",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-25T12:45:02.913Z"
         }
       }
     ]
