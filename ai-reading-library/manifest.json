@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-22T00:08:48.981Z",
+  "updatedAt": "2026-09-25T23:59:09.236Z",
   "entries": [
     {
       "id": "ed9e7fb8cae0a59fa5c08f3e8cbd3edc9df7813238490fae60000c9a59c2b579",
@@ -618,6 +618,79 @@
       ],
       "wordCount": 271,
       "createdAt": "2026-09-22T00:08:48.975Z"
+    },
+    {
+      "id": "1d0e7f301796d5cc3a8c62324e196255412f084c98494dc7493ea6462c583af7",
+      "sha256": "1d0e7f301796d5cc3a8c62324e196255412f084c98494dc7493ea6462c583af7",
+      "path": "items/1d0e7f301796d5cc3a8c62324e196255412f084c98494dc7493ea6462c583af7.json",
+      "title": "The Value of Morning Walks",
+      "topic": "The Value of Morning Walks",
+      "difficulty": 10,
+      "readingType": "argument",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison",
+        "passive",
+        "presentPerfect",
+        "asMuchAs",
+        "asManyAs"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.cause",
+        "en.read.mainIdea",
+        "en.read.summary"
+      ],
+      "words": [
+        "habit",
+        "oxygen",
+        "hormone",
+        "schedule",
+        "stress"
+      ],
+      "wordCount": 405,
+      "createdAt": "2026-09-25T23:58:09.897Z"
+    },
+    {
+      "id": "4aabb1eff509df0ace88e93665b3be13ba0e845d32a05d12888b1fde90cd9241",
+      "sha256": "4aabb1eff509df0ace88e93665b3be13ba0e845d32a05d12888b1fde90cd9241",
+      "path": "items/4aabb1eff509df0ace88e93665b3be13ba0e845d32a05d12888b1fde90cd9241.json",
+      "title": "The Old Clock in the Village",
+      "topic": "A boy helping fix a wooden clock in a village shop and learning patience",
+      "difficulty": 1,
+      "readingType": "narrative",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.cause",
+        "en.read.mainIdea",
+        "en.read.summary"
+      ],
+      "words": [
+        "station",
+        "gear",
+        "screw",
+        "patience"
+      ],
+      "wordCount": 220,
+      "createdAt": "2026-09-25T23:59:09.232Z"
     }
   ]
 }
