@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-26-11-45-58Z",
-  "updatedAt": "2026-09-26T11:45:58.809Z",
+  "poolVersion": "2026-09-26-12-13-25Z",
+  "updatedAt": "2026-09-26T12:13:25.208Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -7385,6 +7385,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-25T12:45:02.913Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "地方自治法に定められている住民の直接請求権に関する記述として最も適当なものはどれか。",
+        "context": "地方自治法に基づき、住民は選挙権を有する者の一定数以上の連署をもって、長や議会の解職、条例の制定・改廃などを請求することができる。このような制度は住民自治を支える重要な仕組みである。",
+        "choices": [
+          "住民の意見に関わらず、国会がすべての地方自治体の条例を直接書き換えることができる。",
+          "住民投票で過半数が賛成すれば、憲法改正の発議を行うことが可能となる。",
+          "地方自治体の予算案は必ず全国民の直接投票によって決定されなければならない。",
+          "有権者が一定数以上の署名を集めることで、条例の制定や改廃、首長や議会議員の解職を請求できる。"
+        ],
+        "answerIndex": 3,
+        "answer": "有権者が一定数以上の署名を集めることで、条例の制定や改廃、首長や議会議員の解職を請求できる。",
+        "explanation": "直接請求は地方自治において署名を集めて条例の制定・改廃や解職を求める制度です。国会や憲法改正、全国民投票と混同するのを防ぐ必要があります。",
+        "evidence": "地方自治法に基づき、住民は選挙権を有する者の一定数以上の連署をもって、長や議会の解職、条例の制定・改廃などを請求することができる。",
+        "misconception": "地方自治の直接請求制度を国の政治制度や憲法改正手続きと混同している。",
+        "marks": 2,
+        "id": "rise-social-928edbe6b03e8ff2",
+        "fingerprint": "7178c0de775e66e4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-26T12:13:06.043Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history_geography",
+        "difficulty": 8,
+        "question": "資料1の都市化の進展と産業別の就業者の割合の変動に関する記述として正しいものを、次の選択肢から1つ選びなさい。",
+        "context": "資料1：ある地域の産業別就業者の割合と人口集中度の推移。1960年：第一次産業が45.0%、第二次産業が30.0%、第三次産業が25.0%、人口集中度（中心市街地への割合）が35%。1990年：第一次産業が5.0%、第二次産業が45.0%、第三次産業が50.0%、人口集中度（中心市街地への割合）が68%。2020年：第一次産業が1.0%、第二次産業が24.0%、第三次産業が75.0%、人口集中度（中心市街地への割合）が82%。この地域では、経済成長とともに産業構造の高度化が進み、人口が都市部に集中する現象が見られる。",
+        "choices": [
+          "1960年から2020年にかけて、第一次産業の割合が減少する一方で第三次産業の割合が一貫して増加し、人口集中度も高まった。",
+          "1960年から1990年にかけて第二次産業の就業者割合は低下したが、その後2020年にかけて急激に上昇した。",
+          "1990年から2020年にかけて、中心市街地への人口集中度は低下し、同時に第一次産業の就業者割合が増加した。",
+          "2020年における第一次産業の割合は第二次産業の割合を上回り、農業中心の地域構造へと変化した。"
+        ],
+        "answerIndex": 0,
+        "answer": "1960年から2020年にかけて、第一次産業の割合が減少する一方で第三次産業の割合が一貫して増加し、人口集中度も高まった。",
+        "explanation": "資料1の数値を確認すると、第一次産業の割合は1960年の45.0%から1990年の5.0%、2020年の1.0%へと一貫して減少しています。一方、第三次産業の割合は25.0%から50.0%、75.0%へと一貫して増加し、人口集中度も35%から68%、82%へと高まっています。したがって、第一次産業の減少、第三次産業の増加、人口集中度の上昇がすべて合致する記述が正解となります。もっとも強力な不正解の選択肢は、数値の変動傾向や産業の逆転現象に関する誤った記述を含んでおり、資料の数値を正確に追うことで排除できます。",
+        "evidence": "1960年：第一次産業が45.0%、第二次産業が30.0%、第三次産業が25.0%、人口集中度（中心市街地への割合）が35%。",
+        "misconception": "産業の発展段階において、すべての産業がどの時代でも同じ方向に変動するという誤解や、一時的な数値を全体の傾向と混同する思い込み。",
+        "marks": 2,
+        "id": "rise-social-fc015f8351213437",
+        "fingerprint": "cef8e571101bdcd7",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-26T12:13:25.165Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "資料2の地方自治における財政状況に関する記述として正しいものを、次の選択肢から1つ選びなさい。",
+        "context": "資料2：A市の歳入構造の推移（単位：億円）。2000年：市税が400億円、地方交付税が100億円、国庫支出金が50億円（総歳入600億円）。2020年：市税が350億円、地方交付税が180億円、国庫支出金が120億円（総歳入750億円）。A市では、少子高齢化に伴う扶助費の増加やインフラ老朽化への対応により、自主財源の割合が低下し、国からの移転財源への依存度が高まる傾向が見られる。",
+        "choices": [
+          "2020年における市税の額は2000年よりも増加しており、地方自治体の財政健全化が完全に達成された。",
+          "国庫支出金は地方自治体が自由に使える一般財源であり、2020年にはその金額が市税を上回った。",
+          "2000年から2020年にかけて、総歳入に占める市税の金額は減少した一方で、地方交付税などの依存財源の金額は増加している。",
+          "2000年から2020年にかけて、A市の自主財源の比率は一貫して上昇し、地方交付税の受給額はゼロに近づいた。"
+        ],
+        "answerIndex": 2,
+        "answer": "2000年から2020年にかけて、総歳入に占める市税の金額は減少した一方で、地方交付税などの依存財源の金額は増加している。",
+        "explanation": "資料2の数値を見ると、市税は2000年の400億円から2020年の350億円へと減少しています。一方、地方交付税は100億円から180億円へ、国庫支出金は50億円から120億円へとそれぞれ増加しています。したがって、市税の減少と依存財源（地方交付税や国庫支出金など）の増加を述べた記述が正しいです。不正解の選択肢は自主財源の割合が上昇している点や、国庫支出金が一般財源であるという誤った点を含んでいます。",
+        "evidence": "2000年：市税が400億円、地方交付税が100億円、国庫支出金が50億円（総歳入600億円）。2020年：市税が350億円、地方交付税が180億円、国庫支出金が120億円（総歳入750億円）。",
+        "misconception": "地方税や国庫支出金の性質（自主財源と依存財源の区分や一般財源・特定財源の違い）についての混同。",
+        "marks": 2,
+        "id": "rise-social-85862577e496e103",
+        "fingerprint": "23e4f7005cf6256e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-26T12:13:25.165Z"
         }
       }
     ]
