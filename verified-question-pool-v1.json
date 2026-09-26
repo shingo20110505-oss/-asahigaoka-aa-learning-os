@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-25-13-43-43Z",
-  "updatedAt": "2026-09-25T13:43:43.084Z",
+  "poolVersion": "2026-09-26-11-45-58Z",
+  "updatedAt": "2026-09-26T11:45:58.809Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -5454,6 +5454,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-25T12:12:34.887Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemistry.solutions",
+        "difficulty": 8,
+        "question": "文中の実験において、硝酸カリウムの溶解度に関して得られる考察として最も適当なものはどれか。",
+        "context": "物質の溶解度を調べるため、水100gを入れた4つのビーカーに、それぞれ硝酸カリウムを20g, 40g, 60g, 80g加え、20℃に保ちながらよくかき混ぜたところ、60g加えたビーカーではすべて溶けたが、80g加えたビーカーでは21.6gの固体が溶け残った。次に、それぞれのビーカーの温度を60℃に上昇させたところ、溶け残っていた固体も含めてすべての硝酸カリウムが完全に溶解した。",
+        "choices": [
+          "60℃における水100gに対する硝酸カリウムの溶解度は、58.4g以上である。",
+          "20℃における水100gに対する硝酸カリウムの溶解度は、80gよりも大きい。",
+          "60℃における水100gに対する硝酸カリウムの溶解度は、38.4gである。",
+          "硝酸カリウムの溶解度は、水の温度に関わらず一定である。"
+        ],
+        "answerIndex": 0,
+        "answer": "60℃における水100gに対する硝酸カリウムの溶解度は、58.4g以上である。",
+        "explanation": "20℃で80g加えたとき21.6gが溶け残ったことから、20℃の水100gに溶ける硝酸カリウムの質量は80 - 21.6 = 58.4gとなります。60℃に加熱したとき溶け残っていた固体も含めてすべて溶けたということは、60℃の水100gには80g以上の硝酸カリウムが溶けることを示しています。したがって、60℃における溶解度は58.4g以上（正確には109g程度ですが、この実験データから確実に言えるのは58.4g以上であること）となります。最も適切な記述は60℃における溶解度が58.4g以上であるという選択肢です。強い誤解として、溶け残った量をそのまま溶解度と勘違いしたり、温度上昇による溶解度の変化を無視する誤謬があります。",
+        "evidence": "80g加えたビーカーでは21.6gの固体が溶け残った",
+        "misconception": "溶け残った固体の質量や加えた総量をそのままその温度での溶解度と混同してしまうこと。",
+        "marks": 2,
+        "id": "rise-science-60d26fd04fcf79cc",
+        "fingerprint": "27da13d38b5a341d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-26T11:45:58.781Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.physics.force",
+        "difficulty": 8,
+        "question": "文中の実験結果から、斜面を下る台車の運動について導き出せる結論として最も適当なものはどれか。",
+        "context": "質量1.0kgの台車を、傾きの異なる2つの斜面A, Bにそれぞれ静かに置き、動き始めてからの1.0秒間における移動距離を測定した。斜面Aでは1.0秒間に40cm進み、斜面Bでは1.0秒間に80cm進んだ。斜面Bは斜面Aよりも傾きが大きく、台車にはたらく斜面に沿った下向きの力がより大きかった。",
+        "choices": [
+          "斜面をくだる台車は、斜面の傾きに関わらず常に一定の速さで等速直線運動をする。",
+          "斜面の傾きが大きいほど、一定時間に移動する距離が大きくなり、台車にはたらく斜面に沿った力も大きくなる。",
+          "斜面の傾きの大きさと、台車の移動距離の間には何ら関係性はない。",
+          "斜面の傾きが小さくても、台車の質量を大きくすれば斜面Bと同じ距離を進む。"
+        ],
+        "answerIndex": 1,
+        "answer": "斜面の傾きが大きいほど、一定時間に移動する距離が大きくなり、台車にはたらく斜面に沿った力も大きくなる。",
+        "explanation": "斜面Bは斜面Aより傾きが大きく、力の大きさも大きく、移動距離も40cmから80cmへと大きくなっています。このことから、斜面の傾きが大きいほど斜面に沿った下向きの力が大きくなり、それに伴って一定時間に移動する距離も大きくなることが分かります。主なトラップは、斜面の傾きと運動の速さや距離の関係性を無視し、等速直線運動であると誤認することです。",
+        "evidence": "斜面Bは斜面Aよりも傾きが大きく、台車にはたらく斜面に沿った下向きの力がより大きかった",
+        "misconception": "斜面を下る運動を等速直線運動であると誤解し、力の大きさと移動距離の因果関係を見落とすこと。",
+        "marks": 2,
+        "id": "rise-science-55694cd92d5e9675",
+        "fingerprint": "382e13b30b6bbe29",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-26T11:45:58.781Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.biology.ecosystem",
+        "difficulty": 8,
+        "question": "文中の観察結果から、この池の生態系における生物の間でのエネルギーや物質の流れについて考察した記述として最も適当なものはどれか。",
+        "context": "ある閉ざされた池の生態系を調べたところ、植物プランクトンが光合成によって生産する有機物の総量は年間で1200g/m²であった。これを食べる動物プランクトンが得るエネルギー量は200g/m²相当であり、さらにそれを捕食する肉食性の小魚が得るエネルギー量は30g/m²相当であった。",
+        "choices": [
+          "上位の栄養段階に行くほど、得られるエネルギーの総量が段階的に減少している。",
+          "最上位の肉食性の小魚が生産するエネルギーが、生態系全体のエネルギー源となっている。",
+          "すべての栄養段階において、やり取りされるエネルギーの量は常に一定である。",
+          "動物プランクトンは植物プランクトンよりも多くのエネルギーを生産している。"
+        ],
+        "answerIndex": 0,
+        "answer": "上位の栄養段階に行くほど、得られるエネルギーの総量が段階的に減少している。",
+        "explanation": "生産者である植物プランクトンの1200g/m²から、一次消費者の動物プランクトン200g/m²、二次消費者の小魚30g/m²へと、栄養段階が上がるにつれてエネルギーの量が減少していることが読み取れます。これは生態系のピラミッド構造を示しています。強い誤解としては、消費者が生産者よりも多くのエネルギーを作り出しているという誤認や、各段階でエネルギーが失われないという誤解があります。",
+        "evidence": "植物プランクトンが光合成によって生産する有機物の総量は年間で1200g/m²であった。これを食べる動物プランクトンが得るエネルギー量は200g/m²相当であり、さらにそれを捕食する肉食性の小魚が得るエネルギー量は30g/m²相当であった",
+        "misconception": "消費者が自らエネルギーを生み出している、あるいは栄養段階が進んでもエネルギー量が減らないと錯覚すること。",
+        "marks": 2,
+        "id": "rise-science-e0f1bd3e8e8d69ea",
+        "fingerprint": "2ba88effcbeefb29",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-26T11:45:58.781Z"
         }
       }
     ],
