@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-26-12-13-25Z",
-  "updatedAt": "2026-09-26T12:13:25.208Z",
+  "poolVersion": "2026-09-26-13-03-05Z",
+  "updatedAt": "2026-09-26T13:03:05.093Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -3692,6 +3692,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-25T13:43:43.031Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.japanese.reading",
+        "difficulty": 8,
+        "question": "本文における伝統の「変化」に対するAさんとBさんの見解の関係性として最も適当なものを次の中から選びなさい。",
+        "context": "「伝統文化の維持においては、形骸化した手法を守り続けることだけが正解ではない。時代に合わせて柔軟に姿を変えることで、本質的な価値が次代へと継承されるのである。」という意見に対し、Aさんは「変化させると伝統が失われる」と懸念を示し、Bさんは「変化こそが存続の条件である」と肯定している。",
+        "choices": [
+          "「変化」の具体例について、双方がともに現代の経済効果のみを重視して検討している",
+          "「変化」のもたらす影響について、一方は消滅の危機を危惧し、他方は継続の可能性を見出している点で対立している",
+          "「変化」の是非について、双方がともに全面的な否定から出発して同一の結論に達している",
+          "「変化」の必要性について、双方がともに過去の模倣こそが唯一の解決策であると主張している"
+        ],
+        "answerIndex": 1,
+        "answer": "「変化」のもたらす影響について、一方は消滅の危機を危惧し、他方は継続の可能性を見出している点で対立している",
+        "explanation": "Aさんは変化によって伝統が失われると危惧し、Bさんは変化こそが存続の条件であると肯定しており、変化のもたらす影響に対する捉え方で意見が対立しています。一番目の選択肢がこの関係を正確に説明しています。他の選択肢は内容が本文の記述と矛盾します。",
+        "evidence": "「変化させると伝統が失われる」と懸念を示し、Bさんは「変化こそが存続の条件である」と肯定している",
+        "misconception": "双方が同じ方向性の意見を持っていると誤解してしまうことや、対立関係を見誤ること。",
+        "marks": 2,
+        "id": "rise-japanese-406488dd336af2b9",
+        "fingerprint": "e6be7d887f90bd76",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-26T13:03:00.629Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.japanese.data_integration",
+        "difficulty": 8,
+        "question": "ノートの内容を踏まえて、主人公の心情の推移を正しく説明しているものを次の中から選びなさい。",
+        "context": "ある小説の登場人物の心情変化について、生徒がノートにまとめた。「主人公は当初、周囲の期待に応えるために自己を抑圧していたが、中盤の事件をきっかけに自分の内なる声に気づき、終盤では他者との関係性を再構築しながら自立した生き方を選択している。」",
+        "choices": [
+          "自己の抑圧から内面の自覚を経て、他者と関わりながら自立へ至っている",
+          "周囲の期待を最後まで優先し続け、自己の欲望を完全に抑え込んでいる",
+          "中盤の事件以降は内省を放棄し、受動的な態度に終始している",
+          "他者との関係を完全に断ち切ることで、孤高の精神を獲得している"
+        ],
+        "answerIndex": 0,
+        "answer": "自己の抑圧から内面の自覚を経て、他者と関わりながら自立へ至っている",
+        "explanation": "ノートには当初の自己抑圧、中盤の内面の自覚、終盤の他者との関係再構築を通じた自立が示されており、二番目の選択肢がその筋道を正しく要約しています。他の選択肢は「関係を断ち切る」「優先し続け」「内省を放棄」など、ノートの記述に反しています。",
+        "evidence": "「主人公は当初、周囲の期待に応えるために自己を抑圧していたが、中盤の事件をきっかけに自分の内なる声に気づき、終盤では他者との関係性を再構築しながら自立した生き方を選択している。」",
+        "misconception": "主人公の成長過程の一部分のみに着目し、全体の変化の筋道を読み違えること。",
+        "marks": 2,
+        "id": "rise-japanese-05e5fe358be89861",
+        "fingerprint": "a3f691a75c8b6335",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-26T13:03:00.629Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "文章中の筆者の主張や論理展開に照らして、情報の読み取り方として最も適当なものを次の中から一つ選びなさい。",
+        "context": "現代の私たちは、次々と生み出される効率的で便利な情報技術に囲まれて暮らしている。しかし、その利便性の裏側で、自ら深く考えるプロセスを省略し、他者が提示した簡易的な結論に依拠する傾向が強まっているのではないか。もちろん、技術そのものが悪なのではない。問題は、私たちがその利便性に過度に依存するあまり、思考の「手間」を惜しむ姿勢が日常化している点にある。真の理解とは、効率よく正解にたどり着くことではなく、むしろ迷いや試行錯誤という遠回りの中にこそ宿るのである。",
+        "choices": [
+          "利便性の高い技術に頼ることで、自ら考えるプロセスが省かれがちになる点に筆者は懸念を示している。",
+          "技術の進歩自体が社会のモラルを低下させる最大の原因であると筆者は強く非難している。",
+          "現代人は正解に早くたどり着くことよりも、迷いや試行錯誤を好む傾向が強まっていると指摘されている。",
+          "効率的な情報技術の利用は、人間の思考力を高める上で常に不可欠な要素であると筆者は述べている。"
+        ],
+        "answerIndex": 0,
+        "answer": "利便性の高い技術に頼ることで、自ら考えるプロセスが省かれがちになる点に筆者は懸念を示している。",
+        "explanation": "文章では、効率的で便利な情報技術に囲まれる一方で「自ら深く考えるプロセスを省略し、他者が提示した簡易的な結論に依拠する傾向が強まっている」とし、技術の利便性に過度に依存して思考の手間を惜しむ姿勢が日常化している点に問題意識が向けられています。したがって、利便性の高い技術に頼ることで自ら考えるプロセスが省かれがちになる点に懸念を示している選択肢が適切です。技術が不可欠であるとする記述や技術自体を非難する記述、現代人が迷いを好むとする記述は、文章の内容や筆者の主張と矛盾または乖離しています。",
+        "evidence": "利便性の裏側で、自ら深く考えるプロセスを省略し、他者が提示した簡易的な結論に依拠する傾向が強まっている",
+        "misconception": "技術の発展や利便性という表面的なキーワードに引きずられ、筆者が技術そのものを全面的に否定（非難）していると誤解してしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-dd2cd846b45855aa",
+        "fingerprint": "e9cdd4e5a0a9b6e7",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-26T13:03:05.066Z"
         }
       }
     ],
