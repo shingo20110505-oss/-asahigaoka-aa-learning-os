@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-27-12-26-12Z",
-  "updatedAt": "2026-09-27T12:26:12.649Z",
+  "poolVersion": "2026-09-27-12-59-06Z",
+  "updatedAt": "2026-09-27T12:59:06.181Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -7759,6 +7759,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-26T12:13:25.165Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history_geography",
+        "difficulty": 8,
+        "question": "愛知県内の工業や農業の特色に関する資料を読み取った内容として、最も適切なものを次の選択肢から1つ選びなさい。",
+        "context": "【愛知県の産業に関する統計資料（仮説データ）】\n資料X：愛知県は工業出荷額が全国ライバル都市を大きく引き離して長年第1位を維持している。特に輸送用機械器具の比率が高く、県内の工業都市において自動車関連産業への依存度や集積が進んでいる。\n資料Y：県内の農業においては、温暖な気候や都市近郊という立地条件を活かした近郊農業が盛んであり、キャベツやトマトなどの生産額や出荷額が全国上位に位置している。",
+        "choices": [
+          "愛知県の農業では、寒冷な気候を活かした稲作の単作経営が中心であり、野菜の生産額は全国平均を下回っている。",
+          "愛知県の工業は、伝統工芸品や繊維工業が全体の出荷額の過半数を占めており、重化学工業の比率は低い。",
+          "愛知県の農業は、広大な北海道型の大規模牧畜が主流であり、都市近郊型の農業はほとんど見られない。",
+          "愛知県の工業では、自動車などの輸送用機械器具の割合が非常に高く、工業出荷額で長年全国トップクラスを維持している。"
+        ],
+        "answerIndex": 3,
+        "answer": "愛知県の工業では、自動車などの輸送用機械器具の割合が非常に高く、工業出荷額で長年全国トップクラスを維持している。",
+        "explanation": "資料Xでは、愛知県が輸送用機械器具の比率が高く工業出荷額で長年第1位であること、資料Yでは野菜等の近郊農業が盛んであることが述べられている。これに合致するのは最初の選択肢である。他の選択肢は寒冷地農業や伝統工芸中心という誤った記述を含んでおり不適切。",
+        "evidence": "愛知県は工業出荷額が全国ライバル都市を大きく引き離して長年第1位を維持している。特に輸送用機械器具の比率が高く",
+        "misconception": "愛知県の産業を伝統的な地場産業や繊維工業のイメージと混同し、現代の自動車産業を中心とした重化学工業の圧倒的なシェアを見落とすこと。",
+        "marks": 2,
+        "id": "rise-social-cfceb575f18f0989",
+        "fingerprint": "973637bf77b6dcd1",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-27T12:59:06.158Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics_constitution",
+        "difficulty": 8,
+        "question": "日本国憲法における人権の保障や裁判制度に関する記述として、最も適切なものを次の選択肢から1つ選びなさい。",
+        "context": "【憲法と司法制度に関する資料】\n資料A：日本国憲法第14条では法の下の平等が定められており、人種、信条、性別、社会的身分または門地により、政治的、経済的または社会的関係において、差別されないことが規定されている。\n資料B：国民の権利を実効的に守るため、司法権の独立が保障されており、裁判官はその良心に従い独立してその職権を行い、この憲法および法律にのみ拘束される。",
+        "choices": [
+          "国会は司法権を持ち、最高裁判所の裁判官を罷免するかどうかを裁判所自身とは無関係に単独ですべて決定する。",
+          "法の下の平等では、人種や性別、社会的身分などによる差別が禁止されており、憲法でその基本原則が定められている。",
+          "裁判官の身分は政治的圧力によって頻繁に変更される仕組みになっており、司法権の独立は認められていない。",
+          "日本国憲法では基本的人権は絶対無制限のものであり、公共の福祉のために制限されることは一切ない。"
+        ],
+        "answerIndex": 1,
+        "answer": "法の下の平等では、人種や性別、社会的身分などによる差別が禁止されており、憲法でその基本原則が定められている。",
+        "explanation": "資料Aに示されている通り、日本国憲法第14条では法の下の平等が規定され、差別されないことが定められている。基本的人権は公共の福祉による制限を受けることや、司法権の独立があることなどから他の選択肢は誤りである。",
+        "evidence": "日本国憲法第14条では法の下の平等が定められており、人種、信条、性別、社会的身分または門地により、政治的、経済的または社会的関係において、差別されないことが規定されている。",
+        "misconception": "基本的人権は無制限であるという誤解や、司法の独立に関する制度的理解の不足。",
+        "marks": 2,
+        "id": "rise-social-1ec1f84b1557d3ef",
+        "fingerprint": "859b29b33a352ba5",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-27T12:59:06.158Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history_chronology",
+        "difficulty": 8,
+        "question": "日本の近代化の歩みや産業革命期の社会状況について述べた文章として、最も適切なものを次の選択肢から1つ選びなさい。",
+        "context": "【明治期以降の日本の産業発展に関する資料】\n資料P：明治時代に入ると、政府は「殖産興業」政策を推進し、官営模範工場を設立するなどして近代産業の育成を図った。特に製糸業や紡績業などの軽工業が輸出の中心となり、初期の産業革命を牽引した。\n資料Q：日清・日露戦争を経て、重工業化も徐々に進展し、大正時代には第一次世界大戦の特需を背景に日本経済は大きく飛躍した。",
+        "choices": [
+          "第一次世界大戦中、日本は輸出が激減し深刻な不景気に見舞われた。",
+          "江戸時代の鎖国体制から直接、昭和の高度経済成長期へと移行したため明治期の産業革命は存在しない。",
+          "明治初期の殖産興業政策のもとで製糸業などの軽工業が発展し、初期の産業革命を牽引した。",
+          "明治政府は官営模範工場を一切作らず、すべての工場を民間の自由競争のみに委ねた。"
+        ],
+        "answerIndex": 2,
+        "answer": "明治初期の殖産興業政策のもとで製糸業などの軽工業が発展し、初期の産業革命を牽引した。",
+        "explanation": "資料Pに「製糸業や紡績業などの軽工業が輸出の中心となり、初期の産業革命を牽引した」とあり、明治期の殖産興業政策の記述と一致する。官営模範工場の設立などの史実にも合致する。",
+        "evidence": "明治時代に入ると、政府は「殖産興業」政策を推進し、官営模範工場を設立するなどして近代産業の育成を図った。特に製糸業や紡績業などの軽工業が輸出の中心となり、初期の産業革命を牽引した。",
+        "misconception": "明治時代の産業革命期における主役が軽工業（製糸・紡績）ではなく最初から重工業であったと誤認すること。",
+        "marks": 2,
+        "id": "rise-social-0973ca18dae0603c",
+        "fingerprint": "bbb35ddb6bfa6265",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-27T12:59:06.158Z"
         }
       }
     ]
