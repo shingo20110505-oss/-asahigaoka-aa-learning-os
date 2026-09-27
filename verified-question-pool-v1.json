@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-26-13-03-05Z",
-  "updatedAt": "2026-09-26T13:03:05.093Z",
+  "poolVersion": "2026-09-27-11-57-51Z",
+  "updatedAt": "2026-09-27T11:57:51.380Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1761,6 +1761,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-25T11:46:29.102Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "math.probability.application",
+        "difficulty": 8,
+        "question": "座標平面上に、直線 y = -x + 6 と x 軸、y 軸で囲まれた三角形の内部および周上の点のうち、x座標、y座標がともに整数である点を考える。この中から無作為に1点を選ぶとき、その座標 (x, y) が y \\le x^2 を満たす確率として正しいものを次の選択肢から選べ。",
+        "context": "座標平面上に、直線 y = -x + 6 と x 軸、y 軸で囲まれた三角形の内部および周上の点のうち、x座標、y座標がともに整数である点を考える。",
+        "choices": [
+          "9/14",
+          "5/7",
+          "4/7",
+          "11/14"
+        ],
+        "answerIndex": 0,
+        "answer": "9/14",
+        "explanation": "直線 y = -x + 6 と両軸で囲まれた領域の格子点を数える。x = 0 のとき y = 0から6の7個、x = 1 のとき y = 0から5の6個、x = 2 のとき5個、x = 3 のとき4個、x = 4 のとき3個、x = 5 のとき2個、x = 6 のとき1個であり、総格子点数は 7 + 6 + 5 + 4 + 3 + 2 + 1 = 28個である。次に y \\le x^2 を満たす格子点を数えると、x = 0で1個、x = 1で2個、x = 2で5個、x = 3で4個、x = 4で3個、x = 5で2個、x = 6で1個となり、該当する点数の合計は 1 + 2 + 5 + 4 + 3 + 2 + 1 = 18個となる。したがって確率は 18/28 = 9/14 となる。",
+        "evidence": "直線 y = -x + 6 と x 軸、y 軸で囲まれた三角形の内部および周上の点のうち、x座標、y座標がともに整数である点を考える。",
+        "misconception": "領域内の総格子点数を計算する際に、軸上の点や端点のカウントを漏らしたり重複させたりする計算ミス。",
+        "marks": 2,
+        "id": "rise-math-2baa3f7e84f68e4a",
+        "fingerprint": "1fc43f609c731652",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-27T11:57:46.930Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "math.algebra.application",
+        "difficulty": 8,
+        "question": "ある店では、A品物を1個 x 円、B品物を1個 y 円で販売している。先月はA品物を50個、B品物を30個販売し、売上の合計は24000円であった。今月は、A品物の販売個数を先月よりも20%増やし、B品物の販売個数を先月よりも10%減らしたところ、売上の合計は先月と同じ24000円であった。ただし、今月はA品物を1個につき10円値上げし、B品物を1個につき20円値下げして販売した。このとき、x と y の値の組み合わせとして正しいものを次の選択肢から選べ。",
+        "context": "先月はA品物を50個、B品物を30個販売し、売上の合計は24000円であった。今月は、A品物の販売個数を先月よりも20%増やし、B品物の販売個数を先月よりも10%減らしたところ、売上の合計は先月と同じ24000円であった。今月はA品物を1個につき10円値上げし、B品物を1個につき20円値下げして販売した。",
+        "choices": [
+          "x = 160, y = 533",
+          "x = 150, y = 550",
+          "x = 165, y = 525",
+          "x = 156, y = 540"
+        ],
+        "answerIndex": 3,
+        "answer": "x = 156, y = 540",
+        "explanation": "先月の売上から 50x + 30y = 24000 すなわち 5x + 3y = 2400 を得る。今月はA品物が 50 * 1.2 = 60個、B品物が 30 * 0.9 = 27個となり、価格はそれぞれ x + 10、y - 20 となる。売上の式は 60(x + 10) + 27(y - 20) = 24000 であり、整理すると 60x + 27y = 23940 すなわち 20x + 9y = 7980 となる。連立方程式を解くと、5x + 3y = 2400 の両辺を3倍して 15x + 9y = 7200 を得て、20x + 9y = 7980 との差をとると 5x = 780 より x = 156 と求まる。これを代入して y = 540 を得る。",
+        "evidence": "先月はA品物を50個、B品物を30個販売し、売上の合計は24000円であった。今月は、A品物の販売個数を先月よりも20%増やし、B品物の販売個数を先月よりも10%減らしたところ、売上の合計は先月と同じ24000円であった。",
+        "misconception": "品数の増減率（20%増、10%減）や価格の変動分（10円値上げ、20円値下げ）を方程式の係数に正しく反映させられない誤解。",
+        "marks": 2,
+        "id": "rise-math-49f0a4ced27020da",
+        "fingerprint": "4383185c5cac6f7e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-27T11:57:46.930Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.geometry_algebra_fusion",
+        "difficulty": 8,
+        "question": "右の図のように、関数 $y = \\frac{1}{2}x^2$ のグラフ上に2点A, Bがあり、点Aの $x$ 座標は $-2$、点Bの $x$ 座標は $4$ である。直線ABと $y$ 軸との交点をCとする。また、原点Oを通り、直線ABと平行な直線と、関数 $y = \\frac{1}{2}x^2$ のグラフとの交点のうち、$x$ 座標が正である点をPとする。このとき、点Pの座標を求めなさい。",
+        "context": "関数 $y = \\frac{1}{2}x^2$ のグラフ上に点A(-2, 2)と点B(4, 8)がある。直線ABの式は $y = x + 4$ であり、直線ABと $y$ 軸との交点Cの座標は $(0, 4)$ である。原点Oを通り直線ABと平行な直線の式は $y = x$ である。",
+        "choices": [
+          "(4, 8)",
+          "(2, 2)",
+          "(\\sqrt{2}, \\sqrt{2})",
+          "(2\\sqrt{2}, 4)"
+        ],
+        "answerIndex": 1,
+        "answer": "(2, 2)",
+        "explanation": "点Aの $x$ 座標は $-2$ より $y = \\frac{1}{2} \\times (-2)^2 = 2$ なので A(-2, 2) です。点Bの $x$ 座標は $4$ より $y = \\frac{1}{2} \\times 4^2 = 8$ なので B(4, 8) です。直線ABの傾きは $\\frac{8 - 2}{4 - (-2)} = 1$ であり、切片が $4$ であることから直線ABの式は $y = x + 4$ と求まります。原点Oを通り直線ABと平行な直線の傾きは直線ABと同じく $1$ なので、$y = x$ となります。この直線と関数 $y = \\frac{1}{2}x^2$ のグラフとの交点を求めるため、方程式 $\\frac{1}{2}x^2 = x$ を解きます。両辺を $2$ 倍して $x^2 = 2x$、$x^2 - 2x = 0$、$x(x - 2) = 0$ となり、$x = 0, 2$ を得ます。問題文より $x$ 座標が正である点Pの $x$ 座標は $2$ です。これを $y = x$ に代入すると $y = 2$ となるため、点Pの座標は $(2, 2)$ となります。最強の罠は、直線ABそのものとの交点や他の切片の値を誤って点Pの座標として選んでしまうことです。",
+        "evidence": "原点Oを通り、直線ABと平行な直線と、関数 $y = \\frac{1}{2}x^2$ のグラフとの交点のうち、$x$ 座標が正である点をPとする。",
+        "misconception": "平行な直線の傾きを求めるときに切片の移動や符号を混同し、誤った方程式を立ててしまうこと。",
+        "marks": 2,
+        "id": "rise-math-ea44161e9d3c83b2",
+        "fingerprint": "2f1756a0a4ac98a2",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-27T11:57:51.344Z"
         }
       }
     ],
