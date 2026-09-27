@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-26T23:39:42.916Z",
+  "updatedAt": "2026-09-27T23:49:48.903Z",
   "entries": [
     {
       "id": "ed9e7fb8cae0a59fa5c08f3e8cbd3edc9df7813238490fae60000c9a59c2b579",
@@ -730,6 +730,86 @@
       ],
       "wordCount": 251,
       "createdAt": "2026-09-26T23:39:42.911Z"
+    },
+    {
+      "id": "def2c22b5e02104f6359b561646920a0777b098b707d92266d23b1d93698c9fd",
+      "sha256": "def2c22b5e02104f6359b561646920a0777b098b707d92266d23b1d93698c9fd",
+      "path": "items/def2c22b5e02104f6359b561646920a0777b098b707d92266d23b1d93698c9fd.json",
+      "title": "The Old Windmill by the River",
+      "topic": "A boy cleaning an old historic mill and inspiring community action",
+      "difficulty": 11,
+      "readingType": "narrative",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison",
+        "passive",
+        "presentPerfect",
+        "asMuchAs",
+        "asManyAs"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.paraphrase",
+        "en.read.title",
+        "en.read.summary"
+      ],
+      "words": [
+        "valley",
+        "wheat",
+        "factory",
+        "structure",
+        "traveler",
+        "project",
+        "museum",
+        "symbol"
+      ],
+      "wordCount": 402,
+      "createdAt": "2026-09-27T23:49:19.930Z"
+    },
+    {
+      "id": "b2de1f211b9fb31eb9b0c969eef1723cce37840089247ca21417e7177ab98daa",
+      "sha256": "b2de1f211b9fb31eb9b0c969eef1723cce37840089247ca21417e7177ab98daa",
+      "path": "items/b2de1f211b9fb31eb9b0c969eef1723cce37840089247ca21417e7177ab98daa.json",
+      "title": "The Power of School Uniforms",
+      "topic": "The benefits of school uniforms in daily education",
+      "difficulty": 1,
+      "readingType": "argument",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.cause",
+        "en.read.mainIdea",
+        "en.read.summary"
+      ],
+      "words": [
+        "uniform",
+        "fashionable",
+        "equal",
+        "community",
+        "respect",
+        "opponent",
+        "personality",
+        "environment"
+      ],
+      "wordCount": 220,
+      "createdAt": "2026-09-27T23:49:48.898Z"
     }
   ]
 }
