@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-27-11-57-51Z",
-  "updatedAt": "2026-09-27T11:57:51.380Z",
+  "poolVersion": "2026-09-27-12-26-12Z",
+  "updatedAt": "2026-09-27T12:26:12.649Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -5760,6 +5760,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-26T11:45:58.781Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.biology",
+        "difficulty": 8,
+        "question": "オオカナダモを用いて光合成と呼吸に関する実験を行った。十分な光をあてたときの単位時間あたりの酸素発生量を測定したところ、光源からオオカナダモまでの距離を2倍にすると、発生する気体の量は4分の1ではなく、それ以上の減少または異なる変化を示した。この現象に関する考察として最も適当なものを1つ選べ。",
+        "context": "観察記録: 「光源の距離を10cmから20cmに遠ざけたところ、オオカナダモから発生する単位時間あたりの気体の泡の数は、光の強さが距離の二乗に反比例して4分の1になると予想されたが、実際には気体の減少割合が異なり、呼吸による酸素の消費量や水温の変化が影響していることが示唆された。」",
+        "choices": [
+          "距離を2倍にすると光の強さは2分の1になるため、光合成速度も正確に2分の1になる。",
+          "光の強さが弱くなっても、植物の呼吸による酸素消費量は変化しないため、見かけの光合成速度の減少割合は光の減少割合とは一致しない。",
+          "光源を遠ざけると水温が上昇するため、光合成速度は予想よりも大きくなる。",
+          "オオカナダモが発生する気体はすべて二酸化炭素であり、光合成とは無関係に放出される。"
+        ],
+        "answerIndex": 1,
+        "answer": "光の強さが弱くなっても、植物の呼吸による酸素消費量は変化しないため、見かけの光合成速度の減少割合は光の減少割合とは一致しない。",
+        "explanation": "見かけの光合成速度は実際の光合成速度から呼吸量を引いたものであるため、光の強さが弱くなっても呼吸量分は一定で消費され続け、見かけの気体発生量の割合は単純な二乗に反比例とは一致しない。誤答トラップは距離に反比例して光合成速度も単純に比例・反比例すると考えることである。",
+        "evidence": "実際には気体の減少割合が異なり、呼吸による酸素の消費量や水温の変化が影響していることが示唆された。",
+        "misconception": "呼吸による気体の出入りを無視して光合成だけで気体が増減すると考えてしまう。",
+        "marks": 2,
+        "id": "rise-science-6c527f6c877d92b8",
+        "fingerprint": "51640f13e7e909a9",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-27T12:26:02.162Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.biology",
+        "difficulty": 8,
+        "question": "植物の葉の裏側にある気孔の観察と、蒸散に関する実験を行った。アブラナの葉を4枚用意し、葉の表裏にワセリンを塗る条件を変えて一定時間放置したところ、吸水量が表のような結果になった。条件A（両面に塗らない）、条件B（表側にのみ塗る）、条件C（裏側にのみ塗る）、条件D（両面に塗る）。この実験結果から考察される内容として最も適当なものを、次のうちから1つ選びなさい。",
+        "context": "【実験条件と吸水量（相対値）】\n・条件A（ワセリンなし）：100\n・条件B（表側にのみ塗る）：85\n・条件C（裏側にのみ塗る）：20\n・条件D（両面に塗る）：5\n※ワセリンは空気や水分の出入りを遮断する目的で塗布している。",
+        "choices": [
+          "ワセリンを両面に塗ると、葉の呼吸作用が完全に停止するため水分を全く吸収しなくなる。",
+          "表側に塗ったワセリンは蒸散を完全に防ぐが、裏側に塗ったワセリンには蒸散を防ぐ効果はない。",
+          "葉からの蒸散は、裏側よりも表側の方がさかんに行われている。",
+          "葉からの蒸散の大部分は、気孔が多く存在する裏側で行われている。"
+        ],
+        "answerIndex": 3,
+        "answer": "葉からの蒸散の大部分は、気孔が多く存在する裏側で行われている。",
+        "explanation": "表側にのみワセリンを塗った条件Bでは吸水量が100から85へわずかしか減少しないのに対し、裏側にのみワセリンを塗った条件Cでは吸水量が20へと大幅に減少しています。このことから、植物の蒸散の大半は裏側（気孔が多数存在する面）を通じて行われていることが分かります。最強の罠は、表裏の数値を逆に読み違えて表側の方が蒸散が多いと勘違いすることです。",
+        "evidence": "条件B（表側にのみ塗る）：85",
+        "misconception": "ワセリンを塗った側の効果を過小評価したり、表裏の気孔の分布密度の違いによる蒸散量の差を逆に捉えたりする誤解。",
+        "marks": 2,
+        "id": "rise-science-dfac012f288056fb",
+        "fingerprint": "2a2d6f5786cdd289",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-27T12:26:12.617Z"
         }
       }
     ],
