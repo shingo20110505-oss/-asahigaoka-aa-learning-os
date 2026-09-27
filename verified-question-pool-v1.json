@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-27-12-59-06Z",
-  "updatedAt": "2026-09-27T12:59:06.181Z",
+  "poolVersion": "2026-09-27-13-55-40Z",
+  "updatedAt": "2026-09-27T13:55:40.755Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -3896,6 +3896,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-26T13:03:05.066Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading.argument",
+        "difficulty": 8,
+        "question": "筆者が伝統工芸とデジタル技術の関係について述べている内容として、最も適当なものを次の選択肢から一つ選びなさい。",
+        "context": "現代において伝統工芸が生き残るためには、単に過去の技法を頑なに守るだけでは不十分である。もちろん、職人の手仕事が生み出す独特の質感や温もりは代替不可能な価値を持つ。しかし、三次元測定やデジタルアーカイブといった技術を導入することで、破損した部材の復元精度を高めたり、次世代への技術継承を効率化したりすることが可能になる。デジタル技術は職人の手仕事を駆逐するものではなく、むしろ伝統の核心を次代へ橋渡しするための補助線として機能させるべきなのである。",
+        "choices": [
+          "デジタル技術の役割は製品の宣伝や販売に限定されるべきであり、制作現場に関与させるべきではない。",
+          "デジタル技術は職人の手仕事を補完し、技術の継承や復元を支える有効な手段として活用すべきである。",
+          "デジタル技術を活用すれば、手仕事のプロセスを完全に自動化し、すべての工程を機械に置き換えるべきである。",
+          "デジタル技術は伝統工芸の本質を損なう恐れが強いため、制作のいかなる段階においても導入すべきではない。"
+        ],
+        "answerIndex": 1,
+        "answer": "デジタル技術は職人の手仕事を補完し、技術の継承や復元を支える有効な手段として活用すべきである。",
+        "explanation": "文章中では、手仕事の価値を認めつつも、三次元測定やデジタルアーカイブなどのデジタル技術を導入することで復元精度や技術継承の効率化が図れると述べられています。さらに、デジタル技術は手仕事を駆逐するものではなく「補助線として機能させるべき」と結ばれているため、技術を補完・活用すべきとする内容が正解となります。すべての自動化を主張する選択肢や導入を全面否定する選択肢は、筆者の「手仕事とデジタルの共存・活用」という主張に反しています。",
+        "evidence": "デジタル技術は職人の手仕事を駆逐するものではなく、むしろ伝統の核心を次代へ橋渡しするための補助線として機能させるべきなのである。",
+        "misconception": "筆者が「手仕事の独自性」や「過去の技法を頑なに守るだけでは不十分」と述べている部分から、伝統工芸の価値を全否定して完全に機械化すべきだという極端な飛躍や、逆にデジタルの一切の排除を導いてしまう誤読。",
+        "marks": 2,
+        "id": "rise-japanese-59ea9c2dd73d27a1",
+        "fingerprint": "e46e1a897f7cf977",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-27T13:55:40.734Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading.literary",
+        "difficulty": 8,
+        "question": "傍線部「春の暮れゆく空を眺めて、ただ過ぎにし方の名残を惜しむ」とあるが、このときの人物の心情を説明したものとして最も適当なものを次の選択肢から一つ選びなさい。",
+        "context": "庭の桜もすっかり散り果て、新緑の葉が風に揺れている。ひと昔前の賑やかだった日々が、まるで昨日のことのように思い出される。春の暮れゆく空を眺めて、ただ過ぎにし方の名残を惜しむよりほかなし。雲の切れ間から漏れる夕日は、どこか切なさを帯びて人の心を深く揺さぶるのだった。",
+        "choices": [
+          "周囲の喧騒に無関心であり、ただ現実逃避のために空を見上げている。",
+          "過ぎ去った美しい季節や過去の日々を懐かしみ、心に切なさを感じている。",
+          "これから訪れる夏の活気あるイベントに対して、胸を躍らせている。",
+          "自然の移り変わりに対して怒りを感じ、過去を完全に忘却しようとしている。"
+        ],
+        "answerIndex": 1,
+        "answer": "過ぎ去った美しい季節や過去の日々を懐かしみ、心に切なさを感じている。",
+        "explanation": "文脈において、散り果てた桜や過去の日々を思い出す様子、さらに「名残を惜しむ」「切なさを帯びて」という表現から、過ぎ去った時間への郷愁や物悲しさを抱いていることが読み取れます。したがって、過去を懐かしみ切なさを感じているとする選択肢が適切です。夏の到来に胸を躍らせたり怒りを感じたりする内容は文脈に反しています。",
+        "evidence": "春の暮れゆく空を眺めて、ただ過ぎにし方の名残を惜しむよりほかなし。",
+        "misconception": "「春の暮れゆく」という季節の変わり目という言葉から、単純に新しい季節への期待やポジティブな高揚感と勘違いする誤り。",
+        "marks": 2,
+        "id": "rise-japanese-c7db2aa2875c244e",
+        "fingerprint": "accc675e0ca15260",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-27T13:55:40.734Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.practical",
+        "difficulty": 8,
+        "question": "生徒会が企画した図書館利用促進キャンペーンの条件として、提示された資料の記述に合致しているものを次の選択肢から一つ選びなさい。",
+        "context": "【図書館利用促進キャンペーン要項】\n・対象：全校生徒\n・実施方法：各クラスで事前アンケートを実施し、その集計結果を踏まえて図書の選定を行う。\n・注意点：予算の都合上、新規購入冊数は各学年最大十冊までとし、オンラインフォームまたは紙の投票用紙のいずれかで意見を集約すること。",
+        "choices": [
+          "アンケートは実施せず、生徒会役員だけで独自に選んだ書籍のみを一方的に購入する。",
+          "意見集約の方法として紙の投票用紙のみを指定し、オンラインの利用は一切禁止する。",
+          "全校生徒を対象にアンケートを行い、予算や冊数の制限を守りつつ選定した図書を導入する。",
+          "予算の制限を設けず、希望するすべての書籍を無制限に購入して全校生徒に配付する。"
+        ],
+        "answerIndex": 2,
+        "answer": "全校生徒を対象にアンケートを行い、予算や冊数の制限を守りつつ選定した図書を導入する。",
+        "explanation": "要項には「対象：全校生徒」「事前アンケートを実施し…選定」「予算の都合上、新規購入冊数は各学年最大十冊まで」「オンラインフォームまたは紙の投票用紙のいずれかで」と明記されています。これらにすべて合致しているのは、全校生徒対象のアンケートを行い、制限を守って選定・導入するという内容です。無制限の購入やアンケートの不実施、方法の限定などは要項の記述と矛盾します。",
+        "evidence": "各クラスで事前アンケートを実施し、その集計結果を踏まえて図書の選定を行う。",
+        "misconception": "「オンラインフォームまたは紙の投票用紙のいずれかで」という選択肢を「どちらか一方しか使えない（オンライン禁止など）」と限定的に誤解してしまう点や、予算の制限を見落とすこと。",
+        "marks": 2,
+        "id": "rise-japanese-813473b313e36cff",
+        "fingerprint": "cc945613e38d7e5d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-27T13:55:40.734Z"
         }
       }
     ],
