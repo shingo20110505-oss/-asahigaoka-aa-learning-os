@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-29-12-46-41Z",
-  "updatedAt": "2026-09-29T12:46:41.400Z",
+  "poolVersion": "2026-09-29-13-19-11Z",
+  "updatedAt": "2026-09-29T13:19:11.294Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -5998,6 +5998,74 @@
           "verifierConfidence": 0.9,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-27T12:26:12.617Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.biology",
+        "difficulty": 8,
+        "question": "表の植物における光合成速度と呼吸速度の関係から、一日あたりの有機物の純生産量が最も大きくなると推測される条件を1つ選びなさい。",
+        "context": "ある緑色植物を異なる温度および光の強さのもとで一定時間置き、二酸化炭素の吸収量および放出量を測定した。温度20℃、光の強さ記号Aのとき二酸化炭素吸収量は5mg/h、呼吸による放出量は2mg/hであった。温度20℃、光の強さ記号B（Aより強い）のとき二酸化炭素吸収量は10mg/h、放出量は2mg/hであった。温度30℃、光の強さ記号Bのとき二酸化炭素吸収量は8mg/h、呼吸による放出量は4mg/hであった。温度30℃、光の強さ記号Aのときの二酸化炭素吸収量は3mg/h、放出量は4mg/hであった。",
+        "choices": [
+          "温度30℃・光の強さB",
+          "温度20℃・光の強さA",
+          "温度20℃・光の強さB",
+          "温度30℃・光の強さA"
+        ],
+        "answerIndex": 2,
+        "answer": "温度20℃・光の強さB",
+        "explanation": "見かけの光合成速度（二酸化炭素吸収量）と呼吸速度（二酸化炭素放出量）の和が、植物全体の真の光合成速度となります。有機物の生産量を表す指標として、単位時間あたりの真の光合成速度（吸収量＋放出量）を計算します。温度20℃・光の強さAでは 5 + 2 = 7mg/h。温度20℃・光の強さBでは 10 + 2 = 12mg/h。温度30℃・光の強さAでは 3 + 4 = 7mg/h。温度30℃・光の強さBでは 8 + 4 = 12mg/h ですが、呼吸による消耗を差し引いた「純生産量（見かけの光合成速度）」を比較すると、温度20℃・光の強さBのときが10mg/hと最も大きくなります。純生産量は見かけの光合成速度（二酸化炭素の吸収量）そのものであり、これが最大になるのは温度20℃・光の強さBの10mg/hです。",
+        "evidence": "温度20℃、光の強さ記号B（Aより強い）のとき二酸化炭素吸収量は10mg/h、放出量は2mg/hであった。",
+        "misconception": "真の光合成速度（吸収量＋放出量）と見かけの光合成速度（吸収量のみ）の区別がつかず、単純に足し算の値だけで判断してしまう誤解。",
+        "marks": 2,
+        "id": "rise-science-3e6a40c16bfe93ed",
+        "fingerprint": "05002461b74e1863",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-29T13:19:01.261Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.physics",
+        "difficulty": 8,
+        "question": "台車が斜面を下った後の水平面上の運動について、記録テープから読み取れる内容として正しいものを1つ選びなさい。",
+        "context": "1秒間に50打点する記録タイマーに取り付けた台車を斜面上の異なる位置から静かに放し、水平面上を移動する様子を記録した。斜面の傾きを一定にし、手放す高さを変えて実験を行ったところ、高い位置から放したときの方が、水平面上に進んだときの1打点あたりの移動距離の減少割合が小さく、より遠くまで進んで停止した。",
+        "choices": [
+          "高い位置から放したときほど、水平面上での台車の速さはより速く減衰する。",
+          "高い位置から放したときほど、水平面上を移動する台車にはたらく摩擦力が小さくなる。",
+          "高い位置から放したときほど、水平面上における台車の慣性による運動の持続性が高まる。",
+          "高い位置から放したときほど、水平面上の台車にはたらく上向きの力が大きくなる。"
+        ],
+        "answerIndex": 2,
+        "answer": "高い位置から放したときほど、水平面上における台車の慣性による運動の持続性が高まる。",
+        "explanation": "高い位置から台車を放すと、斜面を下った直後の水平面上の初速度が大きくなります。水平面上では摩擦力によって台車は減速しますが、初速度が大きいほど同じ摩擦力による減速であっても、より遠くまで移動し、慣性によって運動が持続する距離が長くなります。摩擦力そのものは台車の質量と接触面の性質で決まるため変化しませんが、運動のエネルギーが大きいため遠くまで進みます。したがって、慣性による運動の持続性が高まるという表現が適切です。",
+        "evidence": "高い位置から放したときの方が、水平面上に進んだときの1打点あたりの移動距離の減少割合が小さく、より遠くまで進んで停止した。",
+        "misconception": "高い位置から落とすと台車自体の重さや摩擦力が変化すると誤認してしまう点。",
+        "marks": 2,
+        "id": "rise-science-d1c21a6a86968a16",
+        "fingerprint": "c12fbbfddec46a5b",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-29T13:19:01.261Z"
         }
       }
     ],
