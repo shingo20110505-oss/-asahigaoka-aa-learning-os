@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-27-13-55-40Z",
-  "updatedAt": "2026-09-27T13:55:40.755Z",
+  "poolVersion": "2026-09-29-12-46-41Z",
+  "updatedAt": "2026-09-29T12:46:41.400Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1863,6 +1863,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-27T11:57:51.344Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.quadratic_function",
+        "difficulty": 8,
+        "question": "放物線 $y = \\frac{1}{2}x^2$ と直線 $y = x + 4$ が2点 $\\text{A}, \\text{B}$ で交わっている（点 $\\text{A}$ の $x$ 座標は負である）。放物線上を点 $\\text{A}$ から点 $\\text{B}$ まで動く点 $\\text{P}$ をとるとき、$\\triangle \\text{PAB}$ の面積が最大になるときの中の面積を求めよ。",
+        "context": "放物線 $y = \\frac{1}{2}x^2$ と直線 $y = x + 4$ が2点 $\\text{A}, \\text{B}$ で交わっている。",
+        "choices": [
+          "9",
+          "11",
+          "13.5",
+          "15"
+        ],
+        "answerIndex": 2,
+        "answer": "13.5",
+        "explanation": "点Aの $x$ 座標は $-2$、点Bの $x$ 座標は $4$ である。直線ABの式は $y = x + 4$ であり、線分ABの長さは $6\\sqrt{2}$ である。三角形PABの面積が最大となるのは、点Pにおける放物線の接線の傾きが直線ABの傾きと等しくなるときである。傾きが $1$ となるのは $x = 1$ のときであり、点Pの座標は $(1, \\frac{1}{2})$ となる。点Pと直線 $x - y + 4 = 0$ との距離は $\\frac{9}{2\\sqrt{2}}$ である。したがって、最大の面積は $\\frac{1}{2} \\times 6\\sqrt{2} \\times \\frac{9}{2\\sqrt{2}} = \\frac{27}{2} = 13.5$ と求められる。",
+        "evidence": "放物線 $y = \\frac{1}{2}x^2$ と直線 $y = x + 4$ が2点 $\\text{A}, \\text{B}$ で交わっている",
+        "misconception": "誤って点Pを線分ABの中点などと勘違いして高さを計算してしまうミス。",
+        "marks": 2,
+        "id": "rise-math-afde709f65a5c7f3",
+        "fingerprint": "8098290aa572a298",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-29T12:46:41.350Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.solid_geometry",
+        "difficulty": 8,
+        "question": "底面の半径が $3\\text{cm}$、母線の長さが $9\\text{cm}$ の円すいがある。この円すいの底面の周上の点 $\\text{A}$ から、側面に沿って1周して点 $\\text{A}$ に戻る最短のひもの長さを求めよ。",
+        "context": "底面の半径が $3\\text{cm}$、母線の長さが $9\\text{cm}$ の円すいがある。この円すいの底面の周上の点 $\\text{A}$ から、側面に沿って1周して点 $\\text{A}$ に戻る最短のひもをかける。",
+        "choices": [
+          "$9\\sqrt{3}\\text{cm}$",
+          "$12\\sqrt{3}\\text{cm}$",
+          "$18\\sqrt{3}\\text{cm}$",
+          "$6\\sqrt{3}\\text{cm}$"
+        ],
+        "answerIndex": 0,
+        "answer": "$9\\sqrt{3}\\text{cm}$",
+        "explanation": "円すいの側面の展開図は、半径 $9\\text{cm}$、中心角 $120^\\circ$ のおうぎ形になる。点Aから1周して点Aに戻る最短のひもの長さは、展開図におけるおうぎ形の両端の半径を結ぶ線分の長さに等しい。中心角が $120^\\circ$ であるため、二等辺三角形の性質より、その長さは $9 \\times \\sqrt{3} = 9\\sqrt{3}\\text{cm}$ と求められる。",
+        "evidence": "底面の半径が $3\\text{cm}$、母線の長さが $9\\text{cm}$ の円すいがある。この円すいの底面の周上の点 $\\text{A}$ から、側面に沿って1周して点 $\\text{A}$ に戻る最短のひも",
+        "misconception": "展開図の中心角を計算せず、単に母線の長さや底面の周の長さの和で計算してしまうミス。",
+        "marks": 2,
+        "id": "rise-math-743d5a981ee2c6a4",
+        "fingerprint": "4433ae2b76f23129",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-29T12:46:41.350Z"
         }
       }
     ],
