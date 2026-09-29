@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-29-13-19-11Z",
-  "updatedAt": "2026-09-29T13:19:11.294Z",
+  "poolVersion": "2026-09-29-14-02-32Z",
+  "updatedAt": "2026-09-29T14:02:32.154Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -8099,6 +8099,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-27T12:59:06.158Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "愛知県内の工業都市における製造品出荷額等の特徴と、近年の産業構造の変化に関する説明として、最も適切なものを一つ答えなさい。",
+        "context": "愛知県は全国トップクラスの製造品出荷額等を誇り、自動車関連産業をはじめとする機械工業が盛んです。近年では環境配慮型の自動車開発や航空宇宙産業の集積も進んでいますが、少子高齢化に伴う労働力不足や、特定の業種への依存度が高いことへの課題も指摘されています。ある地域の統計資料では、基幹産業以外の新産業の育成やデジタル技術を活用したスマート工場の導入が急務とされています。",
+        "choices": [
+          "愛知県の工業は重化学工業よりも、伝統的な地場産業や繊維工業を中心とした軽工業の出荷額が全体の大部分を占めている。",
+          "愛知県内では、高度経済成長期以降、工業の臨海部への集中が解消され、すべての市町村で同程度の製造品出荷額が記録されている。",
+          "愛知県の製造業における労働力不足の解消のため、近年は工業生産の大部分が海外からの完成品輸入へと完全に移行している。",
+          "愛知県は自動車関連を中心とした機械工業の割合が非常に高く、全国の都道府県の中で長年にわたり製造品出荷額等で上位を占めている。"
+        ],
+        "answerIndex": 3,
+        "answer": "愛知県は自動車関連を中心とした機械工業の割合が非常に高く、全国の都道府県の中で長年にわたり製造品出荷額等で上位を占めている。",
+        "explanation": "愛知県は自動車産業を中心とする機械工業が非常に発達しており、長年製造品出荷額等で全国第1位を維持しています。他の選択肢は、軽工業中心である点、すべての市町村で同程度である点、海外輸入へ完全に移行している点など、いずれも実際の愛知県の工業の状況や記述内容と矛盾しているため不適切です。",
+        "evidence": "愛知県は全国トップクラスの製造品出荷額等を誇り、自動車関連産業をはじめとする機械工業が盛んです。",
+        "misconception": "愛知県の産業といえば自動車産業が有名である一方、歴史的な地場産業のイメージや他の地域の特徴と混同してしまうこと。",
+        "marks": 2,
+        "id": "rise-social-73f6596d392ee149",
+        "fingerprint": "62df78643be72922",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-29T14:02:32.116Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "中部地方の地形および気候的特徴が農業や産業に与える影響について述べた文として、最も適切なものを一つ答えなさい。",
+        "context": "中部地方は日本アルプスをはじめとする高い山々によって、地方内が中央高地、北陸、東海などの気候区に大きく分けられます。冬期には北陸側で多量の雪が降り、東海側では太平洋側の気候の特性から比較的温暖で日照時間が長いという特徴があります。また、中央高地では標高の高さを利用した夏季の冷涼な気候を活かした農業が見られます。",
+        "choices": [
+          "東海地方では冬に温暖で日照時間が長い気候を活かして、近郊農業や施設園芸農業が盛んに行われている。",
+          "北陸地方では冬の多雪の気候を完全に克服し、すべての地域で冬期に露地野菜の栽培が大規模に行われている。",
+          "中央高地では一年を通じて降水量が非常に多く、その気候を活かして稲作の二期作が広く行われている。",
+          "中部地方のすべての気候区において、地形的な共通性から同じ農作物が一斉に栽培されている。"
+        ],
+        "answerIndex": 0,
+        "answer": "東海地方では冬に温暖で日照時間が長い気候を活かして、近郊農業や施設園芸農業が盛んに行われている。",
+        "explanation": "東海地方は太平洋側の気候に属し、冬が温暖で日照時間が長いため、大都市圏に向けた近郊農業やビニールハウスなどを用いた施設園芸農業が発達しています。北陸の多雪地帯での露地栽培の困難さ、中央高地の冷涼な気候での稲作二期作の不可能性など、他の選択肢は気候条件と農業の実際の結びつきに誤りがあります。",
+        "evidence": "東海側では太平洋側の気候の特性から比較的温暖で日照時間が長いという特徴があります。",
+        "misconception": "中部地方全域が一律の気候条件にあると誤認したり、積雪地域や高冷地の農業実態を過度に一般化してしまうこと。",
+        "marks": 2,
+        "id": "rise-social-58baec8d37340a09",
+        "fingerprint": "da3742df10487a1d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-29T14:02:32.116Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "歴史的な日本の対外交易や産業の発展において、中世から近世にかけての変遷を説明した文として、最も適切なものを一つ答えなさい。",
+        "context": "中世の日本においては、日明貿易などを通じて中国からの銭貨や生糸などが輸入され、国内の商業や手工業の発達を促しました。近世に入ると、江戸幕府による統制のもとで鎖国政策がとられましたが、長崎や対馬などの特定の窓口を通じた貿易は継続され、国内の産業も各地で特産物の生産が活発化しました。",
+        "choices": [
+          "中世の貿易はすべて朝廷によって直接管理されており、近世の鎖国以降は一切の対外窓口が完全に閉ざされていた。",
+          "近世の日本はすべての対外関係を断絶したため、国内での商業活動や手工業の発展は一切見られなかった。",
+          "中世の商業は自給自足が基本であり、貨幣や大陸からの輸入品が国内の産業に影響を与えることはなかった。",
+          "中世の対外交易を通じて大陸から貨幣経済がもたらされ、近世には国内の各地域で特産物の生産や交通路・商業が発達した。"
+        ],
+        "answerIndex": 3,
+        "answer": "中世の対外交易を通じて大陸から貨幣経済がもたらされ、近世には国内の各地域で特産物の生産や交通路・商業が発達した。",
+        "explanation": "中世には日明貿易等を通じて銭貨が流入して貨幣経済が浸透し、近世には幕府の統制下でありながらも交通路や諸藩の特産物生産、商業が大きく発展しました。鎖国により一切の窓口が閉ざされたわけではないことや、中世から貨幣や輸入品が影響を与えていた点などを踏まえると、最初の選択肢が正解となります。",
+        "evidence": "中世の日本においては、日明貿易などを通じて中国からの銭貨や生糸などが輸入され、国内の商業や手工業の発達を促しました。",
+        "misconception": "鎖国という言葉から外国との交流が完全に途絶えたと勘違いし、国内の経済発展や交易の継続を見落とすこと。",
+        "marks": 2,
+        "id": "rise-social-0ccddd5646dd70aa",
+        "fingerprint": "07d1cf22446d4cb0",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-29T14:02:32.116Z"
         }
       }
     ]
