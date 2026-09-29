@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-29-14-02-32Z",
-  "updatedAt": "2026-09-29T14:02:32.154Z",
+  "poolVersion": "2026-09-29-14-50-19Z",
+  "updatedAt": "2026-09-29T14:50:19.063Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -4066,6 +4066,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-27T13:55:40.734Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.japanese.reading_comprehension",
+        "difficulty": 8,
+        "question": "文章中において、筆者が「効率性の追求がもたらす逆説的な現象」として最も強く懸念していることは何か。次の中から最も適当なものを一つ選べ。",
+        "context": "現代社会において、利便性や効率性を極限まで高めた技術やシステムの普及は、一見すると私たちの生活を豊かにしているように思える。しかし、その裏側で私たちは、自ら考える余地や、予期せぬ偶発的な出会いを楽しむ余裕を失いつつある。AIによる最適化されたレコメンド機能は、個人の好みに合わせた情報を迅速に提供してくれるが、それは同時に、個人の世界を既知の情報の反復へと閉じ込め、視野を狭める結果を招いている。効率を追求するあまり、遠回りのプロセスに潜んでいた豊かな気づきや、人間的な成熟の機会が削ぎ落とされているという事実を、私たちは直視しなければならない。",
+        "choices": [
+          "利便性の高い製品の普及によって、人々の経済格差が広がり、社会的な分断が深刻化していること",
+          "効率的なシステムを維持するためのコストが増大し、社会全体の持続可能性が脅かされていること",
+          "個人の好みに合わせた情報提供によって、未知の視点や偶発的な気づきを得る機会が損なわれていること",
+          "技術やシステムの急速な進化により、情報の処理速度が人間の認知能力の限界を超えてしまっていること"
+        ],
+        "answerIndex": 2,
+        "answer": "個人の好みに合わせた情報提供によって、未知の視点や偶発的な気づきを得る機会が損なわれていること",
+        "explanation": "文章では、効率性や最適化された技術の追求が、人々の「考える余地」や「予期せぬ偶発的な出会いを楽しむ余裕」を奪い、「遠回りのプロセスに潜んでいた豊かな気づきや、人間的な成熟の機会が削ぎ落とされている」と述べられています。これを的確に言い換えている選択肢が正解となります。他の選択肢は、経済格差やシステムの維持コスト、認知能力の限界など、本文に書かれていないあるいは主旨から外れた内容が含まれています。",
+        "evidence": "効率を追求するあまり、遠回りのプロセスに潜んでいた豊かな気づきや、人間的な成熟の機会が削ぎ落とされているという事実を、私たちは直視しなければならない。",
+        "misconception": "本文に登場する「情報」「効率」といったキーワードから連想し、技術の進化速度や経済的側面に話を広げてしまう拡大解釈のエラー。",
+        "marks": 2,
+        "id": "rise-japanese-8f79ed1e6c10799a",
+        "fingerprint": "3a5fa24f661dd435",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-29T14:50:08.208Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.japanese.classical_inference",
+        "difficulty": 8,
+        "question": "次の古文の一節において、作者がこの和歌（または文章）に込めた心情として最も適切なものを一つ選べ。",
+        "context": "春の野にすみれ摘みにとし行けど君をいかにしてかは思ひ出でむ（※歌意：春の野原にすみれを摘みにいきましたが、あなたをどのようにして忘れることができずに思い出してしまうのでしょうか）",
+        "choices": [
+          "美しい春の野原で草花を摘む楽しさに夢中になり、一時的に悩みや憂いを忘れることができた解放感",
+          "かつて愛した人との思い出の場所を再訪し、時の経過によって悲しみが癒やされていく穏やかな心境",
+          "季節の移り変わりに対する鋭い無常観と、自分の老いを感じて周囲の自然を疎ましく思う孤独感",
+          "何気ない自然の営みや風景に触れたことで、かえって特定の人物への断ち難い思いが呼び起こされている切なさ"
+        ],
+        "answerIndex": 3,
+        "answer": "何気ない自然の営みや風景に触れたことで、かえって特定の人物への断ち難い思いが呼び起こされている切なさ",
+        "explanation": "歌の中では、春の野原ですみれを摘むという日常的な行為の最中であっても、「君」を思い出さずにはいられない、どうして忘れられようかという切実な思いが詠まれています。したがって、何気ない景色のなかでこそ、かえって特定の人物への思いが強く喚起される切なさを表した選択肢が正解です。",
+        "evidence": "君をいかにしてかは思ひ出でむ",
+        "misconception": "春の野原という明るい情景から、単なる季節の楽しみや、時間の経過による悲しみの癒やしといったポジティブな状態へ曲解してしまうエラー。",
+        "marks": 2,
+        "id": "rise-japanese-a2c31692752c742e",
+        "fingerprint": "55ea738e8edef470",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-29T14:50:08.208Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.text_comprehension",
+        "difficulty": 8,
+        "question": "筆者の主張として最も適切なものはどれか、次の中から一つ選べ。",
+        "context": "近年の対面および非対面コミュニケーションの比較研究において、メッセージの簡略化が進んでいることが指摘されている。特にテキストベースの通信手段では、状況証拠や過去のやり取りから推測可能な要素が「省略」される傾向が顕著である。しかし、この省略は単なる手抜きではなく、「共通の前提（コンテキスト）」が緊密に共有されている集団内においては、むしろ情報の伝達効率を高め、心理的距離を縮める機能を持つという。一方で、前提を共有しない異なる集団間や初対面の場面では、この省略が重大な誤解や意思疎通の不全を招くリスクを孕んでいる。したがって、現代の言語生活においては、状況に応じた情報の補完と省略の使い分けが極めて重要である。",
+        "choices": [
+          "対面コミュニケーションでは状況証拠が不可欠であるのに対し、非対面コミュニケーションでは一切の前提共有が不要である。",
+          "現代の言語生活において、心理的距離を縮めるためには、集団の大小に関わらず常に言葉を完全に補完し合う必要がある。",
+          "テキストベースの通信手段における省略は、情報伝達の効率を著しく低下させるため、いかなる場面でも厳に慎むべきである。",
+          "メッセージの簡略化や省略は、共通の前提がある関係では効率を高めるが、異なる集団間では誤解を招く危険があるため、状況に応じた使い分けが重要である。"
+        ],
+        "answerIndex": 3,
+        "answer": "メッセージの簡略化や省略は、共通の前提がある関係では効率を高めるが、異なる集団間では誤解を招く危険があるため、状況に応じた使い分けが重要である。",
+        "explanation": "本文では、メッセージの省略や簡略化が共通の前提を持つ集団内では効率を高める機能を持つ一方、前提を共有しない集団間では誤解を招くリスクがあることが示されており、最終的に状況に応じた使い分けが重要であると結論づけられています。したがって、両面の効果と使い分けの必要性を正しくまとめている選択肢が適切です。最強の誤り選択肢は、省略をすべて一律に否定するものであり、前提を共有する集団における肯定的な側面を無視している点で不適切です。",
+        "evidence": "したがって、現代の言語生活においては、状況に応じた情報の補完と省略の使い分けが極めて重要である。",
+        "misconception": "文章の特定の側面（省略のもたらすリスクや利益のどちらか一方）のみに注目し、条件によって使い分けるという筆者の総合的な主張を見落とすこと。",
+        "marks": 2,
+        "id": "rise-japanese-2038f482613d3046",
+        "fingerprint": "4dee388de1bb7507",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-29T14:50:18.972Z"
         }
       }
     ],
