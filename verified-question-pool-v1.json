@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-30-12-29-33Z",
-  "updatedAt": "2026-09-30T12:29:33.583Z",
+  "poolVersion": "2026-09-30-12-59-51Z",
+  "updatedAt": "2026-09-30T12:59:51.665Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -6202,6 +6202,108 @@
           "verifierConfidence": 0.9,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-29T13:19:01.261Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.science.chemistry.solution",
+        "difficulty": 8,
+        "question": "実験の結果から、20℃における物質Xの溶解度（水100gに溶ける物質の最大質量[g]）として最も適切なものを、次のうちから1つ選びなさい。",
+        "context": "ある班は、物質Xの溶解度を調べるために次の実験を行った。\n[実験1] 20℃の水100gが入ったビーカーに物質Xを少しずつ加え、ガラス棒でよくかき混ぜたところ、35.0gまで完全に溶けたが、さらに2.0gを加えたところ、一部が溶けきれずに残った。\n[実験2] 実験1で溶けきれずに残った物質Xがあるビーカーを加熱して60℃まで温度を上げたところ、残っていた物質Xはすべて溶け、さらに物質Xを12.0g追加してかき混ぜたが、完全に溶けて底に残った。\n[実験3] 実験2のビーカーをさらに加熱して完全に溶かした後、温度をゆっくり下げていくと、50℃になったときに結晶が析出はじめた。",
+        "choices": [
+          "35.0g",
+          "37.0g",
+          "49.0g",
+          "33.0g"
+        ],
+        "answerIndex": 0,
+        "answer": "35.0g",
+        "explanation": "溶解度とは、一定の温度で水100gに溶ける溶質の最大質量を指す。実験1の記述において、20℃の水100gに対して物質Xを35.0g加えた時点では完全に溶けたが、さらに2.0g（合計37.0g）を加えたところ溶けきれずに残ったことから、20℃の水100gに溶ける物質Xの限界量は35.0gであることが直接わかる。誤った選択肢として、全投入量である37.0gを選んでしまう誤解（溶け残った量まで含めてしまう錯覚）があるが、溶けきれずに残った分は溶解量に含まれない。",
+        "evidence": "20℃の水100gが入ったビーカーに物質Xを少しずつ加え、ガラス棒でよくかき混ぜたところ、35.0gまで完全に溶けたが、さらに2.0gを加えたところ、一部が溶けきれずに残った。",
+        "misconception": "溶け残った質量も含めた総量を溶解度と勘違いする誤解。",
+        "marks": 2,
+        "id": "rise-science-8a40d6908c57ec1c",
+        "fingerprint": "bc68e48539fef473",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-30T12:59:43.316Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemistry",
+        "difficulty": 8,
+        "question": "水酸化バリウム水溶液と希硫酸を混合したときの実験について、この化学反応と水溶液の性質の変化に関する記述として正しいものを1つ選びなさい。",
+        "context": "実験室において、薄い水酸化バリウム水溶液20.0cm³に少量のフェノールフタレイン液を加えたところ、液は赤色を示した。ここに、濃度が等しい希硫酸を少量ずつピペットで加えていき、混合液の体積と水溶液中のイオンのようすを調べた。希硫酸を15.0cm³加えた時点で混合液の赤色が完全に消え、さらに希硫酸を加え続けて25.0cm³にしたところ、水溶液には電流がほとんど流れない状態を経て、再び電流が流れるようになった。また、この混合液の全域で白色沈殿の生成が確認された。",
+        "choices": [
+          "希硫酸を25.0cm³加えた時点では、水溶液中に過剰な水酸化物イオンが存在するため、青色リトマス紙を赤色に変える性質を示す。",
+          "水酸化バリウム水溶液に希硫酸を加えると、バリウムイオンと硫酸イオンが結びついて水に溶けにくい白色沈殿が生じるため、液中のイオンの総数は減少する。",
+          "希硫酸を15.0cm³加えた時点では、中和が完全に終わっており、水溶液中にはバリウムイオン、水酸化物イオン、水素イオン、硫酸イオンがすべて存在している。",
+          "水酸化バリウム水溶液に希硫酸を加えていくと、フェノールフタレイン液の赤色が消えるまでは水溶液の電気抵抗が小さくなり、電流が流れやすくなる。"
+        ],
+        "answerIndex": 1,
+        "answer": "水酸化バリウム水溶液に希硫酸を加えると、バリウムイオンと硫酸イオンが結びついて水に溶けにくい白色沈殿が生じるため、液中のイオンの総数は減少する。",
+        "explanation": "水酸化バリウム水溶液(Ba(OH)₂)に希硫酸(H₂SO₄)を加えると、バリウムイオン(Ba²⁺)と硫酸イオン(SO₄²⁻)が反応して硫酸バリウム(BaSO₄)の白色沈殿を生じます。また、水素イオン(H⁺)と水酸化物イオン(OH⁻)が反応して水(H₂O)が生成する中和反応が起こります。この反応により、水溶液中の移動できるイオン（Ba²⁺とSO₄²⁻、あるいはH⁺とOH⁻）が減少し、沈殿と水になるため、液中のイオン総数は減少し電流が流れにくくなります。したがって最初の記述が正解です。誤った選択肢の罠として、中和点（赤色が消えた点）ではイオンがほとんど存在せず電流が最小（ほぼ流れなくなる）になることや、酸性になった溶液が青色リトマス紙を赤くする（アルカリ性は赤から無色や青など）点、電気抵抗の変化に関する誤解があります。",
+        "evidence": "この混合液の全域で白色沈殿の生成が確認された。",
+        "misconception": "中和反応が起きるとき、酸とアルカリを混ぜ合わせるため水溶液中のイオンの総数は常に一定である、あるいは増加するという誤解。",
+        "marks": 2,
+        "id": "rise-science-8c51cc97ff415a23",
+        "fingerprint": "d470d420bd17c852",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-30T12:59:51.637Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.physics",
+        "difficulty": 8,
+        "question": "台車を用いた力のつり合いと斜面上の運動に関する実験について、運動の様子を分析した記述として正しいものを1つ選びなさい。",
+        "context": "長さ1.0mのなめらかな斜面を用意し、斜面に沿って質量1.0kgの台車を静かに放し、1秒間に50打点する記録タイマーを用いて台車の運動を記録した。記録されたテープを0.1秒ごとの区間に切り分け、各区間の平均の速さを求めたところ、放してから0.1秒間隔で順に 0.10m/s, 0.30m/s, 0.50m/s, 0.70m/s となった。この斜面において、台車には常に斜面を下る向きに一定の大きさと向きの力がはたらいていた。",
+        "choices": [
+          "斜面の角度をさらに大きくして同様の実験を行うと、同じ時間を経過したときの各区間の平均の速さは、角度を大きくする前よりも小さくなる。",
+          "台車には常に斜面を下る向きに一定の大きさの力がはたらいており、この力によって台車は一定の割合で速さが増す等加速度直線運動をしている。",
+          "各区間の平均の速さが0.20m/sずつ一定の割合で大きくなっていることから、台車には時間とともに大きさが大きくなる推進力のような力がはたらき続けている。",
+          "放した瞬間の台車の速さは0.10m/sであり、記録タイマーのテープの打点の間隔は台車が下るにつれて狭くなっていく。"
+        ],
+        "answerIndex": 1,
+        "answer": "台車には常に斜面を下る向きに一定の大きさの力がはたらいており、この力によって台車は一定の割合で速さが増す等加速度直線運動をしている。",
+        "explanation": "与えられたデータから、各0.1秒間隔での平均の速さは 0.10, 0.30, 0.50, 0.70 m/s と、0.20m/sずつ一定に増加しています。これは、斜面に沿って一定の大きさの力がはたらき続けているため、単位時間あたりに速さが一定の割合で増加する（加速度が一定である）運動、すなわち等加速度直線運動をしていることを示しています。したがって最初の記述が正しいです。「力が時間とともに大きくなっている」とする選択肢は、速さが増す原因を力の増加と勘違いしている誤りです。実際には一定の力で速さが比例して増加します。",
+        "evidence": "各区間の平均の速さを求めたところ、放してから0.1秒間隔で順に 0.10m/s, 0.30m/s, 0.50m/s, 0.70m/s となった。",
+        "misconception": "物体の速さが大きくなっているのだから、それを押す力や引っ張る力も時間とともに大きくなっているはずだという誤解。",
+        "marks": 2,
+        "id": "rise-science-b911308a9ac59c5e",
+        "fingerprint": "98fb1c1c00176d0e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-30T12:59:51.637Z"
         }
       }
     ],
