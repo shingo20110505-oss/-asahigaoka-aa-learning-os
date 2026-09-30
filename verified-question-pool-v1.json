@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-29-14-50-19Z",
-  "updatedAt": "2026-09-29T14:50:19.063Z",
+  "poolVersion": "2026-09-30-12-29-33Z",
+  "updatedAt": "2026-09-30T12:29:33.583Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1931,6 +1931,40 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-29T12:46:41.350Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.function",
+        "difficulty": 8,
+        "question": "関数 y = ax^2 について、xの変域が -2 ≦ x ≦ 4 のとき、yの変域が 0 ≦ y ≦ 16 である。このとき、aの値として正しいものを求めよ。",
+        "context": "関数 y = ax^2 について、xの変域が -2 ≦ x ≦ 4 のとき、yの変域が 0 ≦ y ≦ 16 である。",
+        "choices": [
+          "1",
+          "2",
+          "4",
+          "8"
+        ],
+        "answerIndex": 0,
+        "answer": "1",
+        "explanation": "関数 y = ax^2 において、xの変域が -2 ≦ x ≦ 4 であり、yの変域が 0 ≦ y ≦ 16 である。yの最小値が0であることから、x=0を含み、放物線の頂点が原点であることがわかる。a＞0の場合、xが最も絶対値が大きいとき（すなわちx=4のとき）にyは最大値をとる。x=4のとき、y = a × 4^2 = 16a となる。これがyの最大値16に等しいので、16a = 16 より a = 1 と求められる。もしa＜0であればyの最大値は0になってしまうため、a＞0である。したがって、a=1が正解である。",
+        "evidence": "関数 y = ax^2 について、xの変域が -2 ≦ x ≦ 4 のとき、yの変域が 0 ≦ y ≦ 16 である。",
+        "misconception": "xの変域の端点である -2 を代入して計算してしまう、または変域の最大値と最小値の関係を取り違える誤解。",
+        "marks": 1,
+        "id": "rise-math-252428368fc53d22",
+        "fingerprint": "b51f2ceeb5f8a4f4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-30T12:28:57.517Z"
         }
       }
     ],
