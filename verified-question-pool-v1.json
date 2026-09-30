@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-30-13-39-20Z",
-  "updatedAt": "2026-09-30T13:39:20.828Z",
+  "poolVersion": "2026-09-30-14-53-57Z",
+  "updatedAt": "2026-09-30T14:53:57.223Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -4202,6 +4202,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-29T14:50:18.972Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.kanji_context",
+        "difficulty": 8,
+        "question": "文脈において、傍線部「かんよう」の漢字表記として最も適切なものを一つ選びなさい。",
+        "context": "地域の歴史的建造物を保存・活用するにあたり、行政と住民が互いに意見を交わし、共通の目的を（かんよう）していくことが不可欠である。",
+        "choices": [
+          "涵養",
+          "簡要",
+          "慣用",
+          "寛容"
+        ],
+        "answerIndex": 0,
+        "answer": "涵養",
+        "explanation": "「涵養」は、水が自然にしみ込むように、徐々に養い育てることを意味する。「共通の目的を涵養する」という文脈では、目的や意識を時間をかけて培い、育てていくという意味合いに最も適している。「寛容」は心が広くよく許すこと、「簡要」は簡単で要をついていること、「慣用」は古くからの習慣として用いられることであるため、いずれも不適切である。",
+        "evidence": "共通の目的を（かんよう）していく",
+        "misconception": "「かんよう」という音の響きから、日常会話でよく耳にする「寛容」や「慣用」を選んでしまう誤りが最も多い。",
+        "marks": 2,
+        "id": "rise-japanese-4b524b4ef29bd27a",
+        "fingerprint": "d9e4ca966277e38c",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-30T14:53:57.193Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading_comprehension",
+        "difficulty": 8,
+        "question": "本文の筆者の主張に照らして、筆者が「効率性」についてどのように捉えていると述べられているか、最も適切なものを一つ選びなさい。",
+        "context": "現代社会はあらゆる場面で効率性が重視され、無駄を削ぎ落とすことが善とされる傾向にある。しかし、一見して無駄に思える寄り道や立ち止まる時間こそが、人間の内面を豊かにし、予期せぬ発見をもたらす源泉なのである。効率の良さばかりを追い求めることは、結果として思考の幅を狭め、文化の多様性を損なう危険性を孕んでいる。",
+        "choices": [
+          "効率性は文化の多様性を生み出す源泉であり、現代社会においてさらに推進されるべきである。",
+          "効率性は人間の内面を豊かにするものであり、あらゆる場面で最優先されるべきである。",
+          "効率性は無駄を削ぎ落とすために不可欠であるが、時には思考の幅を広げる役割も果たす。",
+          "効率性ばかりを追求すると、結果として思考の幅を狭めたり多様性を損なったりする危険がある。"
+        ],
+        "answerIndex": 3,
+        "answer": "効率性ばかりを追求すると、結果として思考の幅を狭めたり多様性を損なったりする危険がある。",
+        "explanation": "本文の後半では、「効率の良さばかりを追い求めることは、結果として思考の幅を狭め、文化の多様性を損なう危険性を孕んでいる」と述べられており、効率性の過度な追求に警鐘を鳴らしている。したがって、効率性の追求が思考の幅を狭め多様性を損なう危険があるとする選択肢が正しい。他の選択肢は、効率性を全面的に肯定しているか、本文の記述と矛盾する内容が含まれている。",
+        "evidence": "効率の良さばかりを追い求めることは、結果として思考の幅を狭め、文化の多様性を損なう危険性を孕んでいる。",
+        "misconception": "現代社会の一般的な風潮（効率性重視）と筆者の実際の主張（効率性の危険性への警鐘）を混同し、効率性を肯定する選択肢を選んでしまう。",
+        "marks": 2,
+        "id": "rise-japanese-c1e74d89d56211bd",
+        "fingerprint": "5cb97ce6a2c0c1f4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-30T14:53:57.193Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.classical_grammar",
+        "difficulty": 8,
+        "question": "次の古文の一節において、傍線部の助動詞の文法的な意味として最も適切なものを一つ選びなさい。",
+        "context": "春の野に若菜摘みつつ歩むうちに、ふと見れば、珍しき花匹（たぐい）ありけり。",
+        "choices": [
+          "詠嘆",
+          "完了",
+          "推量",
+          "過去"
+        ],
+        "answerIndex": 3,
+        "answer": "過去",
+        "explanation": "「ありけり」の「けり」は、過去の助動詞であり、過去に実際にあった事象を回想しつつ、現在に思い起こす意味を表す。ここでは「珍しき花匹あり」という過去の出来事を発見したことを表しているため、「過去」が正解となる。詠嘆の意味で使われる「けり」もあるが、ここでは直接的な過去の事実の発見を表している。",
+        "evidence": "珍しき花匹（たぐい）ありけり。",
+        "misconception": "「けり」をすべて和歌や物語の結びによくある「詠嘆」と直感してしまい、文脈上の「過去」を見落とす。",
+        "marks": 2,
+        "id": "rise-japanese-6f1504f28791146e",
+        "fingerprint": "9582d16a39e993c4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-30T14:53:57.193Z"
         }
       }
     ],
