@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-29T01:01:32.224Z",
+  "updatedAt": "2026-09-30T00:29:33.360Z",
   "entries": [
     {
       "id": "ed9e7fb8cae0a59fa5c08f3e8cbd3edc9df7813238490fae60000c9a59c2b579",
@@ -850,6 +850,45 @@
       ],
       "wordCount": 294,
       "createdAt": "2026-09-29T01:01:32.217Z"
+    },
+    {
+      "id": "45aaf89de2c288be561c281f4d30a08d7e8c04435c48345a7338a12983c93087",
+      "sha256": "45aaf89de2c288be561c281f4d30a08d7e8c04435c48345a7338a12983c93087",
+      "path": "items/45aaf89de2c288be561c281f4d30a08d7e8c04435c48345a7338a12983c93087.json",
+      "title": "The Old Windmill Keeper",
+      "topic": "A high school boy restoring an abandoned historic windmill in his town",
+      "difficulty": 10,
+      "readingType": "narrative",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison",
+        "passive",
+        "presentPerfect",
+        "asMuchAs",
+        "asManyAs"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.paraphrase",
+        "en.read.title",
+        "en.read.summary"
+      ],
+      "words": [
+        "windmill",
+        "grain",
+        "mechanism",
+        "gear",
+        "resident"
+      ],
+      "wordCount": 406,
+      "createdAt": "2026-09-30T00:29:33.352Z"
     }
   ]
 }
