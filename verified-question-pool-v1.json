@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-30-12-59-51Z",
-  "updatedAt": "2026-09-30T12:59:51.665Z",
+  "poolVersion": "2026-09-30-13-39-20Z",
+  "updatedAt": "2026-09-30T13:39:20.828Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -8439,6 +8439,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-29T14:02:32.116Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography.industry",
+        "difficulty": 8,
+        "question": "文章で示される特徴を持つ県（X県）の工業および農業のあり方に関して、最も適当なものを次の中から選びなさい。",
+        "context": "X県は、自動車関連産業をはじめとする機械工業の集積が著しく、製造品出荷額等で長年全国トップクラスを維持している。また、平野部では稲作が行われる一方、半島部では温暖な気候を利用した野菜のハウス栽培や輪作・近郊農業が盛んである。",
+        "choices": [
+          "温暖な気候の半島部では、稲作のみに特化した単一耕作が行われている。",
+          "自動車工業の発展に伴い、関連する部品工場や素材産業が特定の地域に集中している。",
+          "酪農や畜産業が農業産出額の大半を占め、稲作はほとんど行われていない。",
+          "重化学工業の衰退により、製造品出荷額等は全国平均を大きく下回っている。"
+        ],
+        "answerIndex": 1,
+        "answer": "自動車工業の発展に伴い、関連する部品工場や素材産業が特定の地域に集中している。",
+        "explanation": "X県（愛知県）は自動車産業およびその関連産業が非常に発達しており、部品工場や素材産業が集中して集積している点が特徴です。文章中でも製造品出荷額等が全国トップクラスであると述べられており、重化学工業が衰退しているわけではありません。また農業においても稲作と近郊農業が組み合わされています。",
+        "evidence": "X県は、自動車関連産業をはじめとする機械工業の集積が著しく、製造品出荷額等で長年全国トップクラスを維持している。",
+        "misconception": "農業が盛んな地域であるという記述から、工業が衰退しているあるいは農業が稲作のみに特化していると思い込む誤解。",
+        "marks": 2,
+        "id": "rise-social-26e18d6a33fa0f1e",
+        "fingerprint": "d256ef2c18b378de",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-30T13:39:11.843Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics.finance",
+        "difficulty": 8,
+        "question": "我が国の財政や租税の仕組みについて述べた文として最も適当なものはどれか。",
+        "context": "我が国の財政において、歳出の大部分を占める社会保障関係費は、高齢化の進展に伴い増加傾向にある。また、景気の安定化や所得の再分配機能を発揮するため、租税の果たす役割は重要である。",
+        "choices": [
+          "国の財政赤字を解消するため、国債の発行は法律により一切禁止されている。",
+          "所得税や法人税などの直接税は、所得が多いほど税率が高くなる累進課税制度がとられており、所得の再分配機能を持つ。",
+          "消費税などの間接税は、税金を負担する人と実際に納税する人が一致する仕組みになっている。",
+          "社会保障関係費は歳出全体の縮小傾向に伴い、近年急速に減少している。"
+        ],
+        "answerIndex": 1,
+        "answer": "所得税や法人税などの直接税は、所得が多いほど税率が高くなる累進課税制度がとられており、所得の再分配機能を持つ。",
+        "explanation": "所得税などの直接税には累進課税制度が導入されており、所得の格差を和らげる「所得の再分配機能」を果たしています。間接税では担税者と納税者が異なります。また社会保障関係費は増加傾向にあり、国債発行は法律により禁止されていません。",
+        "evidence": "我が国の財政において、歳出の大部分を占める社会保障関係費は、高齢化の進展に伴い増加傾向にある。また、景気の安定化や所得の再分配機能を発揮するため、租税の果たす役割は重要である。",
+        "misconception": "間接税の担税者と納税者が一致すると誤解する、または国債発行が法律で全面的に禁止されていると思い込む誤解。",
+        "marks": 2,
+        "id": "rise-social-6624fa6154c9e76d",
+        "fingerprint": "023058ecf81a7bce",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-30T13:39:11.843Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "資料に示された特徴を持つ県Xの産業構造や立地環境に関する説明として最も適当なものはどれか。",
+        "context": "以下の資料は、日本国内の3つの県（X・Y・Z）における製造品出荷額等の主要産業部門別構成割合および地域的特徴をまとめたものである。\n\n【資料】\n県X：輸送用機械器具が約45%を占め、自動車関連部品や完成品の生産が非常に盛んであり、製造品出荷額等で長年全国上位に位置している。中小の協力工場や部品メーカーが広範囲に集積している。\n県Y：食料品や繊維工業などが比較的バランスよく分布し、大消費地を背景にした食品加工業が見られる。\n県Z：鉄鋼業や化学工業などの基礎素材型産業の割合が高く、太平洋ベルト沿いの臨海地域に大規模なコンビナートが形成されている。",
+        "choices": [
+          "近代的な重化学工業の比率は極めて低く、経済活動の中心は古くからの伝統的工芸品の生産と観光業のみである。",
+          "国内有数の金属鉱山の採掘地であり、鉱業から派生した製錬業やエネルギー関連産業が経済の大部分を支えている。",
+          "自動車工業を中心とした機械工業の比率が極めて高く、多くの関連中小企業や部品メーカーが緊密に集積している。",
+          "寒冷な気候と広大な土地を活かした酪農およびその関連食品加工業が、県全体の製造品出荷額の大半を占めている。"
+        ],
+        "answerIndex": 2,
+        "answer": "自動車工業を中心とした機械工業の比率が極めて高く、多くの関連中小企業や部品メーカーが緊密に集積している。",
+        "explanation": "資料中の県Xは輸送用機械器具が約45%を占め、自動車関連部品・完成品の生産が盛んで製造品出荷額が全国上位であるという記述から、中京工業地帯の中核である愛知県などの特徴を示している。したがって、自動車工業を中心とする機械工業の比率が高く、多くの関連中小企業が集積しているという記述が適切である。他の選択肢は、寒冷地の酪農、伝統工芸のみ、鉱業中心など、実際の地域や資料の記述と矛盾している。",
+        "evidence": "県X：輸送用機械器具が約45%を占め、自動車関連部品や完成品の生産が非常に盛んであり、製造品出荷額等で長年全国上位に位置している。",
+        "misconception": "工業が盛んな地域＝すべての地域が石油化学や鉄鋼などの基礎素材型臨海工業であるという誤解や、地方の主要産業は伝統工芸や第一次産業の加工に偏っているという思い込み。",
+        "marks": 2,
+        "id": "rise-social-6f01ec13481f329f",
+        "fingerprint": "a5a7d32fb9b6c15d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-09-30T13:39:20.800Z"
         }
       }
     ]
