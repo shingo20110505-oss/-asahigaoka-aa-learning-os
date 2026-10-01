@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-01-14-26-09Z",
-  "updatedAt": "2026-10-01T14:26:09.848Z",
+  "poolVersion": "2026-10-01-15-25-42Z",
+  "updatedAt": "2026-10-01T15:25:42.548Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -4304,6 +4304,108 @@
           "verifierConfidence": 0.9,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-30T14:53:57.193Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.japanese.informational_text",
+        "difficulty": 8,
+        "question": "本文において、筆者が伝統工芸の活性化においてデジタル技術の導入だけでは不十分だと考える理由として、最も適切なものはどれか。",
+        "context": "地方都市における伝統工芸の存続をめぐり、近年、3DプリンターやVRを活用した体験型ワークショップの導入が進んでいる。これらは若年層の関心を惹きつける「入り口」として一定の成果を上げている。しかし、職人たちが何十年もかけて培ってきた素材との対話や、微細な手の感覚に基づく技法の習得は、画面上のシミュレーションに置き換えることができない。デジタル技術は入り口を広げるが、素材と対話しながら培われる手仕事の身体知そのものを代替することはできない。真の継承には、効率化の枠を超えた泥臭い修行のプロセスが不可欠なのである。",
+        "choices": [
+          "若年層はデジタル体験に満足してしまい、実際の工房に足を運ぶことがなくなるから。",
+          "デジタル技術は興味の入り口にはなるものの、素材と向き合う手仕事の本質的な身体知を代替することはできないから。",
+          "地域住民の間で伝統工芸に電子機器を持ち込むことに対する根強い反対運動が存在するから。",
+          "デジタル機器の維持費や導入コストが高額であり、小規模な工房の経営を圧迫しているから。"
+        ],
+        "answerIndex": 1,
+        "answer": "デジタル技術は興味の入り口にはなるものの、素材と向き合う手仕事の本質的な身体知を代替することはできないから。",
+        "explanation": "本文では、デジタル技術は若年層を引きつける「入り口」としては機能するものの、「素材と対話しながら培われる手仕事の身体知そのものを代替することはできない」と述べられています。したがって、技術導入だけでは工芸の真の継承や本質的な解決にはならないという主張が正解となります。経済的なコストや住民の反対運動などは本文に記載されていないため、事実無根の選択肢となります。",
+        "evidence": "デジタル技術は入り口を広げるが、素材と対話しながら培われる手仕事の身体知そのものを代替することはできない。",
+        "misconception": "本文中で「導入が進んでいる」「維持費」などの経済・実務関連の言葉から連想し、コストや経営圧迫が原因であると誤認すること。",
+        "marks": 2,
+        "id": "rise-japanese-6278af43ca11daa7",
+        "fingerprint": "6f56769c5fa704fa",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-01T15:25:42.523Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.japanese.literary_comprehension",
+        "difficulty": 8,
+        "question": "傍線部「もぎ手のない柿の実が、秋の深まりとともに一つ、また一つとアスファルトの路上に重い音を立てて落ちていく」という描写が、作中のどのような状況や心情を象徴しているか、最も適切なものはどれか。",
+        "context": "かつては子供たちの笑い声が路地裏に満ちていたこの街も、今では高齢化が進み、家々の庭にある果実すら収穫されずに放置されることが多くなった。もぎ手のない柿の実が、秋の深まりとともに一つ、また一つとアスファルトの路上に重い音を立てて落ちていく。その様子は、かつての活気を失いつつあるこの街の時間を静かに物語っていた。私は散歩の足を止め、乾いた地面に散らばる朱色の果肉を見つめながら、過ぎ去った日々の記憶をたぐり寄せた。",
+        "choices": [
+          "住民の高齢化によって街が活気を失い、かつての賑わいが薄れている寂寥感。",
+          "豊かな自然の恵みが十分に収穫されず、過剰生産に陥っている農村部の経済的課題。",
+          "季節の移り変わりに対する驚きと、自然の美しさに心を奪われた主人公の無邪気な喜び。",
+          "放置された果物が環境悪化を招いていることに対する、地域住民の強い苛立ちと不満。"
+        ],
+        "answerIndex": 0,
+        "answer": "住民の高齢化によって街が活気を失い、かつての賑わいが薄れている寂寥感。",
+        "explanation": "文脈から、子供たちの声が消え高齢化が進む街の様子が描かれており、「もぎ手のない柿の実」が落ちていく描写は、かつての活気が失われ寂れていく街の時間の経過と寂寥感を象徴しています。農業の経済的課題や環境悪化への不満といった記述は文脈にありません。",
+        "evidence": "その様子は、かつての活気を失いつつあるこの街の時間を静かに物語っていた。",
+        "misconception": "自然景観や植物の描写に着目し、環境問題や季節の美しさそのものを主題として捉えてしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-7f36cbe127bfb415",
+        "fingerprint": "0b1b563091a17736",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-01T15:25:42.523Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.japanese.argumentative_logic",
+        "difficulty": 8,
+        "question": "本文において、筆者が社会システムにおける「冗長性（ゆとり・無駄）」についてどのように述べているか、最も適切なものはどれか。",
+        "context": "現代の社会は、あらゆる場面で「効率性」と「最適化」が求められる傾向にある。ムダを徹底的に削ぎ落としたシステムは、平時には経済的で合理的であるように見える。しかし、一見すると無駄に見える冗長性こそが、予測不能な危機が訪れた際にシステム全体の崩壊を防ぐ不可欠な緩衝材となる。余剰や遊びの部分をすべて排除してしまうことは、未来の不確実性に対する耐性を自ら手放すことにほかならない。",
+        "choices": [
+          "冗長性と効率性は完全に両立不可能な概念であり、効率性を高めるためには個人の自由を犠牲にしなければならない。",
+          "冗長性は経済活動を停滞させるだけの有害な要素であり、あらゆる手段を用いて完全に排除すべきである。",
+          "冗長性は予測できない危機から社会システムを守るための不可欠な緩衝材としての役割を持つ。",
+          "冗長性は教育現場においては必要であるが、ビジネスや行政の場においては一切認められるべきではない。"
+        ],
+        "answerIndex": 2,
+        "answer": "冗長性は予測できない危機から社会システムを守るための不可欠な緩衝材としての役割を持つ。",
+        "explanation": "本文では「一見すると無駄に見える冗長性こそが、予測不能な危機が訪れた際にシステム全体の崩壊を防ぐ不可欠な緩衝材となる」と明確に主張されています。したがって、危機に対する緩衝材としての価値を認めている選択肢が正解となります。",
+        "evidence": "一見すると無駄に見える冗長性こそが、予測不能な危機が訪れた際にシステム全体の崩壊を防ぐ不可欠な緩衝材となる。",
+        "misconception": "冒頭の「効率性が求められる」という記述に引きずられ、筆者も効率化のために無駄を削るべきだと主張していると誤読すること。",
+        "marks": 2,
+        "id": "rise-japanese-a21274841ea3f4c8",
+        "fingerprint": "a0c8e04e1fa6fa00",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-01T15:25:42.523Z"
         }
       }
     ],
