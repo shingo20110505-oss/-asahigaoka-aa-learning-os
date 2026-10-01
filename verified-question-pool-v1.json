@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-09-30-14-53-57Z",
-  "updatedAt": "2026-09-30T14:53:57.223Z",
+  "poolVersion": "2026-10-01-13-53-02Z",
+  "updatedAt": "2026-10-01T13:53:02.511Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -6406,6 +6406,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-30T12:59:51.637Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.physics.ohm_law",
+        "difficulty": 8,
+        "question": "回路の電力と発熱量に関する実験を行った。電源電圧を一定にした状態で、抵抗値が異なる2つの電熱線を用いて測定を行ったときの説明として正しいものはどれか。",
+        "context": "電源の電圧を6.0Vに一定にし、抵抗値が10Ωの電熱線Aと、20Ωの電熱線Bをそれぞれ回路につないだ。電熱線Aに流れる電流は0.6A、電熱線Bに流れる電流は0.3Aであった。それぞれの電熱線を1分間電流を流したときの発熱量を比較した。",
+        "choices": [
+          "電熱線Aで消費される電力は、電熱線Bで消費される電力の4倍である",
+          "電熱線Bに流れる電流は電熱線Aの2倍である",
+          "電熱線Aで発生する熱量は、電熱線Bで発生する熱量の2倍である",
+          "電熱線Bで発生する熱量は、電熱線Aで発生する熱量の2倍である"
+        ],
+        "answerIndex": 2,
+        "answer": "電熱線Aで発生する熱量は、電熱線Bで発生する熱量の2倍である",
+        "explanation": "電熱線Aの電力は6.0V × 0.6A = 3.6W、電熱線Bの電力は6.0V × 0.3A = 1.8Wである。1分間（60秒）あたりの発熱量は、電熱線Aが3.6W × 60s = 216J、電熱線Bが1.8W × 60s = 108Jとなり、AはBの2倍の熱量を発生させる。抵抗が小さいほうが電流が大きくなり、電力および発熱量も大きくなることを理解しているかが問われる。",
+        "evidence": "電熱線Aに流れる電流は0.6A、電熱線Bに流れる電流は0.3Aであった。",
+        "misconception": "抵抗が大きいほど発熱量も大きくなると勘違いし、抵抗値の比にそのまま発熱量を比例させてしまう誤解。",
+        "marks": 2,
+        "id": "rise-science-ecf8aab435df9160",
+        "fingerprint": "b6d7551b633ca7e1",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-01T13:52:49.299Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.biology.mitosis",
+        "difficulty": 8,
+        "question": "タマネギの根端を用いて細胞分裂の様子を観察する実験を行った。この観察に関する記述として正しいものはどれか。",
+        "context": "タマネギの根端を塩酸に入れて温める「解離」の操作を行った後、スライドガラスにのせて押しつぶす「押しつぶし」の操作を行って顕微鏡で観察した。その結果、さまざまな時期の細胞が見られ、核が消失して染色体が一本ずつ見えている時期の細胞が多く確認できた。",
+        "choices": [
+          "プレパラートを作製する際の押しつぶし操作は、細胞を一層にして重なりを防ぐためではなく、染色体を破壊するためである",
+          "塩酸処理（解離）を行う目的は、細胞同士を離れやすくして観察しやすくするためである",
+          "細胞分裂の各時期のうち、核が消失して染色体が現れる時期の細胞数が最も長いため、どの時期よりも圧倒的多数の細胞がその時期で観察される",
+          "タマネギの根の先端の細胞は、細胞分裂によって横方向にのみ成長していく"
+        ],
+        "answerIndex": 1,
+        "answer": "塩酸処理（解離）を行う目的は、細胞同士を離れやすくして観察しやすくするためである",
+        "explanation": "塩酸処理（解離）は、細胞同士を結びつけているペクチン質などを分解し、押しつぶしやすく（細胞がバラバラになりやすく）するために行う。細胞分裂の各時期の長さと観察される細胞の割合は比例するが、特定の時期が常に圧倒的多数になるとは限らず、それぞれの時期の長さに依存する。押しつぶし操作は細胞を重ならないように一層にするためのものである。",
+        "evidence": "タマネギの根端を塩酸に入れて温める「解離」の操作を行った後、スライドガラスにのせて押しつぶす「押しつぶし」の操作を行って顕微鏡で観察した。",
+        "misconception": "塩酸処理が細胞を染色するためのものや、染色体を染めるための手順であると混同する誤解。",
+        "marks": 2,
+        "id": "rise-science-f60448906b8ada7c",
+        "fingerprint": "6b1ab9a01a3d2052",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-01T13:52:49.299Z"
         }
       }
     ],
