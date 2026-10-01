@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-01-13-53-02Z",
-  "updatedAt": "2026-10-01T13:53:02.511Z",
+  "poolVersion": "2026-10-01-14-26-09Z",
+  "updatedAt": "2026-10-01T14:26:09.848Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -8711,6 +8711,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-30T13:39:20.800Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics_constitution",
+        "difficulty": 8,
+        "question": "次の会話文は、日本国憲法における人権の保障と新しい人権について、中学生のAさんたちが話し合ったものである。下線部のアに関して述べた説明として最も適当なものを、後の選択肢から1つ選びなさい。",
+        "context": "Aさん：「日本国憲法は、基本的人権の尊重を基本原理の一つとしているよね。憲法第13条や第14条などがその基盤だけど、社会の変化に伴って新しく主張される権利もあるよね。」\nBさん：「そうそう、プライバシーの権利や環境権などがその代表例だよ。これらは、憲法が制定された当初には明文で規定されていなかったけれど、憲法の精神に基づいて新しく認められてきたんだ。」\nAさん：「これらの権利のうち、個人の私生活に関する情報が本人の同意なく公開されないように求める権利や、自己の情報をコントロールする権利のことを<u>ア：プライバシーの権利</u>と呼んで、裁判所もその保護を認めているよね。」",
+        "choices": [
+          "社会権の代表的なものとして労働三権と並び称され、国家に対して生存権の保障を直接要求するための具体的な権利である。",
+          "伝統的な精神的自由権の一つとして明治憲法時代から明文で保障されていた権利であり、情報の公開請求権と同一の概念である。",
+          "憲法第13条の幸福追求権の理念を根拠として、現代社会において個人の尊厳を守るために認められてきた新しい人権の一つである。",
+          "経済活動の自由を無制限に認めるための規定であり、公共の福祉による制限を受けない絶対的な権利として位置づけられている。"
+        ],
+        "answerIndex": 2,
+        "answer": "憲法第13条の幸福追求権の理念を根拠として、現代社会において個人の尊厳を守るために認められてきた新しい人権の一つである。",
+        "explanation": "プライバシーの権利は、憲法第13条の「個人の尊重」および「幸福追求権」の理念を根拠として、現代社会におけるプライバシー保護の必要性から裁判例などを通じて確立されてきた「新しい人権」の一つである。明治憲法時代には明文の規定はなく、また絶対的な権利ではなく公共の福祉による制限を受ける。社会権や経済活動の自由とも異なる。",
+        "evidence": "これらは、憲法が制定された当初には明文で規定されていなかったけれど、憲法の精神に基づいて新しく認められてきたんだ。",
+        "misconception": "基本的人権という言葉の古さから、憲法制定当初（戦前・戦後すぐ）から当然のように個別の条文として存在していたと誤解すること。",
+        "marks": 2,
+        "id": "rise-social-a15340e1cda583ad",
+        "fingerprint": "1fffb06093e43302",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-01T14:26:02.919Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "文中で述べられている愛知県内の特定の農業地域で行われている特徴的な経営形態として、最も適切なものを次の選択肢から1つ選びなさい。",
+        "context": "愛知県は全国屈指の農業県であり、渥美半島などの温暖な気候風土をいかした農業が盛んである。同地域では、春の訪れを告げる輪菊などの花き類や、キャベツなどの野菜において、電照設備を用いて夜間の日照時間を人工的に調整し、出荷時期をコントロールする栽培が広く行われている。",
+        "choices": [
+          "降水量の少ない乾燥した気候条件のもとで牧草地を広げる粗放的牧畜",
+          "大型機械を導入して広い農地で穀物を単一栽培する企業的穀物農業",
+          "冷涼な気候を利用して高原野菜を夏期に出荷する高冷地農業",
+          "施設や設備を活用して集約的に野菜や花きを栽培する近郊・園芸農業"
+        ],
+        "answerIndex": 3,
+        "answer": "施設や設備を活用して集約的に野菜や花きを栽培する近郊・園芸農業",
+        "explanation": "文中で取り上げられている渥美半島などの地域では、温暖な気候と電照設備などの施設園芸の技術を組み合わせ、花きや野菜を集約的に生産しています。これは都市近郊という立地条件や高度な設備利用を背景とする近郊・園芸農業（施設園芸）の特徴に合致します。誤った選択肢は、気候条件や経営規模が実際の渥美半島の状況と大きく矛盾しています。",
+        "evidence": "同地域では、春の訪れを告げる輪菊などの花き類や、キャベツなどの野菜において、電照設備を用いて夜間の日照時間を人工的に調整し、出荷時期をコントロールする栽培が広く行われている。",
+        "misconception": "愛知県＝日本の主要な自動車工業や農業県であるというイメージから、大規模な穀物生産や北海道・長野県で見られるような高冷地農業と混同してしまう誤解が挙げられます。",
+        "marks": 2,
+        "id": "rise-social-a4cec3a6142791c2",
+        "fingerprint": "2cd7d051614bf46f",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-01T14:26:09.826Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "文中で示された近代日本の産業や経済政策の変遷に関して、最も適切なものを次の選択肢から1つ選びなさい。",
+        "context": "明治時代初期の日本政府は、近代化を急ぐために官営の模範工場を各地に設置して産業の育成を図った。その後、1980年代後半にかけて民間企業の力が強まると、これら官営の工場や事業の多くは民間に払い下げられ、私企業によるさらなる産業発展の基盤となった。",
+        "choices": [
+          "政府は殖産興業政策の一環として官営工場を設立し、のちに民間へ払い下げた。",
+          "幕末の開港以降、日本は輸入超過を解消するためすべての輸出品に関税自主権を即座に適用した。",
+          "日清戦争の賠償金を活用して、日本最初の本格的な製鉄所である八幡製鉄所が操業を開始した。",
+          "第一次世界大戦中の特需によって、日本は綿織物の輸入国から主要な輸入超過国へと転換した。"
+        ],
+        "answerIndex": 0,
+        "answer": "政府は殖産興業政策の一環として官営工場を設立し、のちに民間へ払い下げた。",
+        "explanation": "明治政府は、欧米諸国に対抗する近代的な国づくりを進めるため「殖産興業」政策を掲げ、官営模範工場を建設して産業の近代化をリードさせました。その後、財政上の理由や民間資本の成長に伴い、それらの多くは民間に払い下げられました。選択肢の中ではこの官営事業の払い下げと殖産興業の流れを正しく説明しているものが正解となります。",
+        "evidence": "明治時代初期の日本政府は、近代化を急ぐために官営の模範工場を各地に設置して産業の育成を図った。その後、1980年代後半にかけて民間企業の力が強まると、これら官営の工場や事業の多くは民間に払い下げられ",
+        "misconception": "日清戦争後の八幡製鉄所の設立や第一次世界大戦の好景気（大戦景気）に関する知識を混同し、時期や輸出入の方向性を誤って捉えることが強い罠となります。",
+        "marks": 2,
+        "id": "rise-social-c0c3f174bd3859d0",
+        "fingerprint": "36f5868dc3af9c0f",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-01T14:26:09.826Z"
         }
       }
     ]
