@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-01T00:35:45.160Z",
+  "updatedAt": "2026-10-02T00:49:21.264Z",
   "entries": [
     {
       "id": "ed9e7fb8cae0a59fa5c08f3e8cbd3edc9df7813238490fae60000c9a59c2b579",
@@ -975,6 +975,46 @@
       ],
       "wordCount": 424,
       "createdAt": "2026-10-01T00:35:45.153Z"
+    },
+    {
+      "id": "f7bba62bcf217facda222d72066e63364896e9ee30813d746a5eb89d016f3261",
+      "sha256": "f7bba62bcf217facda222d72066e63364896e9ee30813d746a5eb89d016f3261",
+      "path": "items/f7bba62bcf217facda222d72066e63364896e9ee30813d746a5eb89d016f3261.json",
+      "title": "The Old Bakery Sign",
+      "topic": "A boy finding an old recipe notebook near a closed bakery and learning patience",
+      "difficulty": 6,
+      "readingType": "narrative",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison",
+        "passive",
+        "presentPerfect",
+        "asMuchAs",
+        "asManyAs"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.paraphrase",
+        "en.read.title",
+        "en.read.summary"
+      ],
+      "words": [
+        "bakery",
+        "golden",
+        "recipe",
+        "patience",
+        "ruined",
+        "effort"
+      ],
+      "wordCount": 310,
+      "createdAt": "2026-10-02T00:49:21.256Z"
     }
   ]
 }
