@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "day": "2026-10-01",
+  "day": "2026-10-02",
   "attempted": 1,
   "added": 0,
   "state": "rejected",
@@ -8,5 +8,6 @@
   "generationTransport": "generateContent-v1beta",
   "maxCandidatesPerDay": 1,
   "maxCallsPerCandidate": 7,
-  "reason": "structure_rejected:evidence_quote:aichi-2026-q1-3|error_span:aichi-2026-q1-5:a|error_span:aichi-2026-q1-5:c|evidence_quote:aichi-2026-q1-6|domain:aichi-2026-q2-1|domain:aichi-2026-q2-2|domain:aichi-2026-q2-3|domain:aichi-2026-q3-1"
+  "httpStatus": 503,
+  "reason": "provider_or_validation_error"
 }
