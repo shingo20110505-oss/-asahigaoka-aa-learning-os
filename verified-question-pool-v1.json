@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-02-12-27-37Z",
-  "updatedAt": "2026-10-02T12:27:37.576Z",
+  "poolVersion": "2026-10-02-13-09-40Z",
+  "updatedAt": "2026-10-02T13:09:40.191Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -6610,6 +6610,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-01T13:52:49.299Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science.physics",
+        "difficulty": 8,
+        "question": "文中の実験結果から、小球が斜面を下る運動について正しく述べているものを、次の選択肢から1つ選びなさい。",
+        "context": "1秒間に60打点する記録タイマーに取り付けたテープを小球につなぎ、傾きの異なる2種類の斜面（斜面Aおよび斜面B）に沿って小球を静かに手からはなして転がした。斜面Aにおける0.1秒ごとの移動距離は、はなしてから最初の0.1秒間が2cm、次の0.1秒間が6cm、その次の0.1秒間が10cmであった。",
+        "choices": [
+          "小球にはたらく力の合力は常に一定であり、単位時間あたりの速度の変化の割合も一定である。",
+          "小球にはたらく斜面方向の力の合力は次第に大きくなり、運動の向きに加速している。",
+          "小球の速度は一定の割合で減少しており、等加速度直線運動ではない。",
+          "小球が移動する距離は経過した時間の2乗に反比例して増加している。"
+        ],
+        "answerIndex": 0,
+        "answer": "小球にはたらく力の合力は常に一定であり、単位時間あたりの速度の変化の割合も一定である。",
+        "explanation": "記録された0.1秒ごとの移動距離は2cm、6cm、10cmであり、速度の変化量（速度の差）は毎0.1秒間に4cmずつ一定に増加しています。これは、小球が一定の大きさの力を受け続けて等加速度直線運動をしていることを示しています。斜面上の運動では、斜面に平行な方向の重力の分力が一定であるため、合力も一定となります。誤答の罠は、移動距離が増えていることを見て合力も大きくなると勘違いすることです。",
+        "evidence": "斜面Aにおける0.1秒ごとの移動距離は、はなしてから最初の0.1秒間が2cm、次の0.1秒間が6cm、その次の0.1秒間が10cmであった。",
+        "misconception": "移動距離が増加していることから、力や加速度も比例して大きくなっていると誤認するミス。",
+        "marks": 2,
+        "id": "rise-science-ad420370c22b3a2c",
+        "fingerprint": "3fd73626fc1860cc",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-02T13:09:29.531Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science.biology",
+        "difficulty": 8,
+        "question": "文中の植物の葉で行われる光合成と呼吸に関する記述として正しいものを、次の選択肢から1つ選びなさい。",
+        "context": "密閉された透明なガラス容器の中に緑色植物を入れ、十分に光を当てた状態から、暗い暗室に移して一定時間放置した。光を当てている間、容器内の二酸化炭素濃度は減少し続けたが、暗室に移した瞬間から容器内の二酸化炭素濃度は増加し始めた。",
+        "choices": [
+          "暗室に移したことで呼吸が停止し、光合成で蓄えられた養分が急速に分解されたため。",
+          "光を当てている間は呼吸が行われておらず、暗室に入ったとき初めて呼吸が始まったため。",
+          "暗室に移しても光合成と呼吸が同時に同じ強さで続き、容器内の気体出入りが釣り合ったため。",
+          "暗室に移したことで光合成が停止し、呼吸による二酸化炭素の放出量が見かけ上表れたため。"
+        ],
+        "answerIndex": 3,
+        "answer": "暗室に移したことで光合成が停止し、呼吸による二酸化炭素の放出量が見かけ上表れたため。",
+        "explanation": "植物は光が当たっているときは光合成と呼吸の両方を行いますが、光合成のほうが圧倒的に盛んなため、外部（容器内）の二酸化炭素濃度は減少します。しかし、暗室に移すと光合成に必要な光エネルギーが得られないため光合成が停止し、常に行われている呼吸による二酸化炭素の放出だけが表面化するため、容器内の二酸化炭素濃度が増加します。最も強力な誤答は、暗室で呼吸が新しく始まったと誤解するものです。",
+        "evidence": "暗室に移した瞬間から容器内の二酸化炭素濃度は増加し始めた。",
+        "misconception": "呼吸は暗いところでしか行われない、あるいは光合成が行われている間は呼吸が完全に抑制されているという誤解。",
+        "marks": 2,
+        "id": "rise-science-f970278096b517ac",
+        "fingerprint": "561762d7a3c7bfd1",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-02T13:09:29.531Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "手順3でろ過して取り出した固体について述べた文として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "愛知県内のある中学校の理科部員が、硝酸カリウムと塩化ナトリウムの混合物から物質を取り出す実験を行った。表は、それぞれの物質の100gの水に対する溶解度を20℃と80℃で示したものである。\n・80℃の水100gに溶ける限界の質量：硝酸カリウム 169.0g, 塩化ナトリウム 38.0g\n・20℃の水100gに溶ける限界の質量：硝酸カリウム 31.6g, 塩化ナトリウム 36.0g\n実験の手順は以下の通りである。\n手順1：ビーカーに50.0gの水を入れ、80℃に温めた。\n手順2：硝酸カリウム35.0gと塩化ナトリウム5.0gの混合物を手順1の水にすべて加え、完全に溶かして水溶液とした。\n手順3：この水溶液を20℃まで冷却し、析出した固体（結晶）をろ過して取り出した。",
+        "choices": [
+          "硝酸カリウムの結晶約35.0gが得られ、塩化ナトリウムも一部が析出する。",
+          "硝酸カリウムと塩化ナトリウムの両方の結晶が合計で約24.2g得られる。",
+          "塩化ナトリウムの結晶約5.0gが得られ、硝酸カリウムは析出しない。",
+          "硝酸カリウムの結晶約19.2gが得られ、塩化ナトリウムは析出しない。"
+        ],
+        "answerIndex": 3,
+        "answer": "硝酸カリウムの結晶約19.2gが得られ、塩化ナトリウムは析出しない。",
+        "explanation": "80℃の水50.0gに溶かすことができる物質の最大質量は、硝酸カリウムが169.0g × (50.0/100) = 84.5g、塩化ナトリウムが38.0g × (50.0/100) = 19.0gであるため、手順2で加えた硝酸カリウム35.0gおよび塩化ナトリウム5.0gは完全に水に溶ける。次に、20℃の水50.0gに溶かすことができる物質の最大質量は、硝酸カリウムが31.6g × (50.0/100) = 15.8g、塩化ナトリウムが36.0g × (50.0/100) = 18.0gとなる。手順3で20℃まで冷却したとき、硝酸カリウムは溶解度を超える分（35.0g - 15.8g = 19.2g）が結晶として析出する。一方、塩化ナトリウムは5.0gしか溶かしておらず、20℃の水50.0gに溶ける限界である18.0gよりも少ないため、結晶は析出せずに水溶液中に溶けたままとなる。したがって、得られる固体は硝酸カリウムの結晶約19.2gとなる。",
+        "evidence": "20℃の水100gに溶ける限界の質量：硝酸カリウム 31.6g, 塩化ナトリウム 36.0g",
+        "misconception": "水量が100gではなく50gであることによる溶解量の比例計算を見落とし、100gあたりの溶解度数値から直接引き算して計算違いをしたり、温度低下によってすべての物質が同時に析出すると誤解する間違い。",
+        "marks": 2,
+        "id": "rise-science-8de21fd2553af1be",
+        "fingerprint": "58888befa9acd8a1",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-02T13:09:40.167Z"
         }
       }
     ],
