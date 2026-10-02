@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-01-15-25-42Z",
-  "updatedAt": "2026-10-01T15:25:42.548Z",
+  "poolVersion": "2026-10-02-12-27-37Z",
+  "updatedAt": "2026-10-02T12:27:37.576Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1965,6 +1965,40 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-09-30T12:28:57.517Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.functions",
+        "difficulty": 8,
+        "question": "関数 y = ax^2 について、x の変域が -2 ≦ x ≦ 4 のとき、y の変域が 0 ≦ y ≦ 8 である。このとき、a の値を求めよ。",
+        "context": "関数 y = ax^2 において、x の変域が -2 ≦ x ≦ 4 のとき、y の変域が 0 ≦ y ≦ 8 である。",
+        "choices": [
+          "1/2",
+          "2/3",
+          "3/4",
+          "2"
+        ],
+        "answerIndex": 0,
+        "answer": "1/2",
+        "explanation": "関数 y = ax^2 において、y の変域が 0 を含むことから、比例定数 a は正の数（a > 0）である。a > 0 のとき、y の値は x = 0 のときに最小値 0 をとり、x の絶対値が最も大きいところで最大値をとる。x の変域は -2 ≦ x ≦ 4 であるから、x の絶対値が最大になるのは x = 4 のときである。したがって、x = 4 のときに y = 8 となる。これを y = ax^2 に代入すると、8 = a × 4^2、8 = 16a となり、a = 8/16 = 1/2 を得られる。よくある誤りとして、x の変域の端点である -2 と 4 を両方代入してそれぞれが最大値になると勘違いしたり、a < 0 と取り違えて計算して負の値を選んでしまうことがある。正しくは a = 1/2 である。",
+        "evidence": "関数 y = ax^2 について、x の変域が -2 ≦ x ≦ 4 のとき、y の変域が 0 ≦ y ≦ 8 である。",
+        "misconception": "x の変域の両端をそのまま代入してしまい、変域の最大値が絶対値の最も大きいところで決まるという性質を見落とす。",
+        "marks": 1,
+        "id": "rise-math-c94cd78b886a777f",
+        "fingerprint": "3f422f6fa17bf001",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-02T12:27:24.942Z"
         }
       }
     ],
