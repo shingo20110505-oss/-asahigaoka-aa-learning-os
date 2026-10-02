@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-02-13-09-40Z",
-  "updatedAt": "2026-10-02T13:09:40.191Z",
+  "poolVersion": "2026-10-02-13-49-48Z",
+  "updatedAt": "2026-10-02T13:49:48.758Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -9051,6 +9051,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-01T14:26:09.826Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.geography.industry",
+        "difficulty": 8,
+        "question": "愛知県を中心とする東海地方の工業の特色や、製造業の構造について述べた文として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "東海地方に位置するX県は、製造品出荷額等において長年全国トップクラスを維持している。下表は、X県における主要製造業の割合を示したものである。「機械工業（特に輸送用機械器具など）が圧倒的な比率を占めており、完成車メーカーを中心に多くの関連企業が周辺に集積しているのが特徴である。」",
+        "choices": [
+          "伝統的な地場産業が中心であり、近代的な機械工業の割合は極めて低く、労働力の大半は伝統工芸に従事している。",
+          "温暖な気候を利用した近郊農業が産業の大部分を占めており、製造品出荷額は全国的に見ても非常に低い水準にある。",
+          "輸送用機械器具の出荷額割合が高いため、自動車の生産に特化しており、他業種との関連企業によるネットワーク（下請・関連中小企業）の広がりがみられる。",
+          "臨海部に大規模な製鉄所が集中しているため、重化学工業の中心は常に鉄鋼業であり、輸送用機械器具の比率は低い。"
+        ],
+        "answerIndex": 2,
+        "answer": "輸送用機械器具の出荷額割合が高いため、自動車の生産に特化しており、他業種との関連企業によるネットワーク（下請・関連中小企業）の広がりがみられる。",
+        "explanation": "愛知県をはじめとする東海地方は、自動車産業を中心とした機械工業の集積地として知られています。完成車メーカーのもとに多くの部品メーカーや関連企業が集まるネットワーク（企業城下町や集積回路・産業集積）が形成されている点が最大の特色です。鉄鋼業中心とする説や、農業主体・地場産業主体とする説は、実際の統計データや地域の産業構造の現状に反しています。",
+        "evidence": "機械工業（特に輸送用機械器具など）が圧倒的な比率を占めており、完成車メーカーを中心に多くの関連企業が周辺に集積しているのが特徴である。",
+        "misconception": "愛知県＝中京工業地帯という知識から、鉄鋼業や化学工業などの基礎素材型工業がすべての中心であるという誤解。",
+        "marks": 2,
+        "id": "rise-social-8cb60a42fc6bad3e",
+        "fingerprint": "3a74cbdb2bc42449",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-02T13:49:48.676Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.history.industrialization",
+        "difficulty": 8,
+        "question": "明治から大正期にかけての日本の産業発展や、愛知県における工業化の歴史について述べた文として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "明治時代以降、愛知県周辺では農業だけでなく、器械製糸や綿織物などの繊維産業が盛んになった。さらに大正時代になると、豊田佐吉が発明した自動織機の実用化を契機に、機械工業への移行が進み、のちに自動車産業へと発展する基盤がつくられた。",
+        "choices": [
+          "繊維産業から機械工業への技術革新やその応用が、のちの地域の工業発展における重要な転換点となった。",
+          "明治維新直後から自動車の大量生産が始まっており、産業革命の中心は一貫して自動車産業であった。",
+          "豊田佐吉の発明は農業分野における農機具の改良にとどまり、地域の工業化には一切影響を与えなかった。",
+          "大正時代にはすべての産業が国営化され、民間による機械工業の発達は完全に禁止されていた。"
+        ],
+        "answerIndex": 0,
+        "answer": "繊維産業から機械工業への技術革新やその応用が、のちの地域の工業発展における重要な転換点となった。",
+        "explanation": "明治・大正期の日本では、まず生糸や綿糸などの繊維産業（軽工業）が産業革命を牽引しました。愛知県においても豊田佐吉による自動織機の開発など、繊維機械の製造技術が発達し、それがのちの自動車製造（豊田自動織機から自動車部への展開）へ繋がる歴史的経緯があります。明治期に自動車の大量生産が行われていたわけではなく、国営化が全面強制された事実もありません。",
+        "evidence": "大正時代になると、豊田佐吉が発明した自動織機の実用化を契機に、機械工業への移行が進み、のちに自動車産業へと発展する基盤がつくられた。",
+        "misconception": "日本の自動車産業が明治維新直後の欧米文化受容期からすでに大規模に存在していたという勘違い。",
+        "marks": 2,
+        "id": "rise-social-c0df2f57de93f69b",
+        "fingerprint": "3c2d21974a26ce8d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-02T13:49:48.676Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.civics.local_autonomy",
+        "difficulty": 8,
+        "question": "地方自治における住民参加の制度（直接請求など）について述べた文として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "地方自治においては、住民が直接政治に参加する制度が認められている。例えば、条例の制定や改廃の請求、議会の解散や首長・議員の解職の請求などがあり、これらは地方自治法に基づいて一定数以上の有権者の署名を集めることで行われる。",
+        "choices": [
+          "条例の制定や改廃の請求などを行うには、地方自治法に定められた一定数以上の有権者の署名が必要とされる。",
+          "住民による直接請求制度は、国政選挙においてのみ適用され、地方公共団体の首長や議会に対しては適用されない。",
+          "首長の解職請求が認められた場合、住民投票を行うことなく、直ちに首長が失職することが法律で義務付けられている。",
+          "議会の解散請求は、日本国憲法に直接規定されている事項であり、地方自治法には何ら規定されていない。"
+        ],
+        "answerIndex": 0,
+        "answer": "条例の制定や改廃の請求などを行うには、地方自治法に定められた一定数以上の有権者の署名が必要とされる。",
+        "explanation": "地方自治法に基づく直接請求（リコールや条例の制定・改廃請求など）は、有権者の一定数以上の署名を集めることで、首長や議会に対して手続きを行うことができる制度です。国政選挙ではなく地方自治特有の制度であり、首長の解職請求においても最終的には住民投票の過半数の賛成が必要となります。",
+        "evidence": "これらは地方自治法に基づいて一定数以上の有権者の署名を集めることで行われる。",
+        "misconception": "直接請求制度が国政の仕組み（国民投票や法律の制定など）と混同されやすい点。",
+        "marks": 2,
+        "id": "rise-social-ace9bf16997c766a",
+        "fingerprint": "8b144df3db114fad",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-02T13:49:48.676Z"
         }
       }
     ]
