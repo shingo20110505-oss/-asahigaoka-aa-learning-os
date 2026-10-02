@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-02-13-49-48Z",
-  "updatedAt": "2026-10-02T13:49:48.758Z",
+  "poolVersion": "2026-10-02-14-43-25Z",
+  "updatedAt": "2026-10-02T14:43:25.152Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -4440,6 +4440,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-01T15:25:42.523Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading",
+        "difficulty": 8,
+        "question": "文章の筆者が述べている「言葉の持つ二面性」についての説明として、最も適当なものを次の中から選べ。",
+        "context": "人間が用いる言葉には、明確な事実を伝達する道具としての側面がある一方で、発話者の感情や隠された意図をまとう曖昧な表現としての側面もある。科学的な記述において前者は極めて重要視されるが、文学的な表現や日常の対話においては、むしろ後者の曖昧さが豊かな共感や想像力を生み出す原動力となっている。しばしば私たちは言葉の正確さばかりを追求しがちであるが、その多義性こそが人間のコミュニケーションを深くしているのである。",
+        "choices": [
+          "文学的な表現において言葉は常に事実伝達の道具として使われ、日常会話では感情の伝達のみに特化している。",
+          "科学的な記述と日常の対話では言葉の果たす役割が全く逆であり、言葉自体の意味は固定化されている。",
+          "言葉には事実を正確に伝える側面と、感情や意図をまとう曖昧な側面の両方があり、後者がコミュニケーションの深みを生み出している。",
+          "言葉の正確さだけが人間のコミュニケーションにおいて重要であり、曖昧な表現は誤解を招くため排除されるべきである。"
+        ],
+        "answerIndex": 2,
+        "answer": "言葉には事実を正確に伝える側面と、感情や意図をまとう曖昧な側面の両方があり、後者がコミュニケーションの深みを生み出している。",
+        "explanation": "文章中では、言葉には事実を伝える側面と曖昧な表現という二面性があり、日常の対話などでその曖昧さが共感や想像力を生み出しコミュニケーションを深くしていると述べられています。したがって、両方の側面を認めつつ後者の価値を評価している選択肢が正解となります。正確さのみを重視する立場や役割が逆だとするものは本文の内容に反しています。",
+        "evidence": "人間が用いる言葉には、明確な事実を伝達する道具としての側面がある一方で、発話者の感情や隠された意図をまとう曖昧な表現としての側面もある。",
+        "misconception": "科学的記述や正確さの重要性についての言及に引きずられ、言葉の曖昧な側面を否定し正確さのみが重要であると曲解してしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-b2aae7691256cab5",
+        "fingerprint": "0f35dc1a5bc47650",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-02T14:43:25.121Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading",
+        "difficulty": 8,
+        "question": "筆者が現代のコミュニケーションのあり方に対して抱いている懸念について、最も適当なものを次の中から選べ。",
+        "context": "現代の私たちは、効率性やスピードを重視するあまり、短い言葉のやり取りや記号的な表現に頼りがちである。その結果、他者の背景にある文脈や複雑な心情を想像する余裕が失われ、言葉が本来持っている重層的な意味合いが看過されてしまう傾向にある。言葉をただの情報の伝達手段としてのみ扱うことは、人間の内面的な豊かさを狭める危険性を孕んでいる。",
+        "choices": [
+          "情報の伝達スピードが遅すぎることによって、現代人が他者とのコミュニケーションを避けるようになっていること。",
+          "効率性を優先するあまり言葉が単なる情報伝達の手段になり、他者の複雑な心情や文脈を想像する力が失われていること。",
+          "短文や記号的な表現が普及したことで、人々が感情的になりすぎ、冷静な科学的議論ができなくなっていること。",
+          "言葉の持つ多義性が失われ、すべての人が同じ意味で言葉を受け取る理想的な社会が到来していること。"
+        ],
+        "answerIndex": 1,
+        "answer": "効率性を優先するあまり言葉が単なる情報伝達の手段になり、他者の複雑な心情や文脈を想像する力が失われていること。",
+        "explanation": "文脈では効率性やスピードの重視により、短い言葉や記号に頼り、他者の背景にある文脈や複雑な心情を想像する余裕が失われていることが指摘されています。また言葉をただの情報の伝達手段として扱うことが内面の豊かさを狭める危険性があるとされています。そのため、情報伝達手段への偏りと想像力の欠如に焦点を当てた選択肢が適切です。",
+        "evidence": "効率性やスピードを重視するあまり、短い言葉のやり取りや記号的な表現に頼りがちである。その結果、他者の背景にある文脈や複雑な心情を想像する余裕が失われ、",
+        "misconception": "現代のコミュニケーションの課題として、情報伝達のスピード不足や感情の過熱といった本文に書かれていない要因を原因として推測してしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-23d7039b2dba486f",
+        "fingerprint": "17a6a690ecd929ee",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-02T14:43:25.121Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading",
+        "difficulty": 8,
+        "question": "文章の最後に筆者が主張している「言葉の可能性」についての記述として、最も適当なものを次の中から選べ。",
+        "context": "私たちが日常で何気なく交わしている言葉の背後には、それぞれが歩んできた人生や文化の蓄積が存在している。言葉を単なる記号としてではなく、他者と自己をつなぐ深い生きた営みとして捉え直すとき、私たちの世界はより広い広がりを獲得する。言葉を磨くことは、すなわち他者の痛みや喜びを自分のこととして受け止める感性を養うことに他ならない。",
+        "choices": [
+          "個人の内面を他者に完全に知られないようにするために、あえて言葉の持つ曖昧さを隠すべきであるということ。",
+          "言葉を他者と自己をつなぐ生きた営みとして捉え直し、磨くことで、他者への共感や豊かな感性を養うことができるということ。",
+          "言葉を高度な記号体系として完全にマスターすれば、他者との摩擦や誤解を完全にゼロにできるということ。",
+          "人生や文化の蓄積を無視して、誰にでも通じる標準化された新しい言語を作り出す必要があるということ。"
+        ],
+        "answerIndex": 1,
+        "answer": "言葉を他者と自己をつなぐ生きた営みとして捉え直し、磨くことで、他者への共感や豊かな感性を養うことができるということ。",
+        "explanation": "本文では、言葉を記号ではなく生きた営みとして捉え直すことで世界に広がりが生まれ、言葉を磨くことが他者の痛みや喜びを受け止める感性を養うことにつながると結ばれています。したがって、共感や感性の育成を説く選択肢が正解です。摩擦の完全解消や標準語の創設などは本文の趣旨から外れています。",
+        "evidence": "言葉を単なる記号としてではなく、他者と自己をつなぐ深い生きた営みとして捉え直すとき、私たちの世界はより広い広がりを獲得する。言葉を磨くことは、すなわち他者の痛みや喜びを自分のこととして受け止める感性を養うことに他ならない。",
+        "misconception": "言葉の学習や向上を、他者との対立をなくすための技術的・実用的なスキル向上であると限定的に捉えてしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-2f3621aeb9c66d6a",
+        "fingerprint": "ec28e42d9539b693",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-02T14:43:25.121Z"
         }
       }
     ],
