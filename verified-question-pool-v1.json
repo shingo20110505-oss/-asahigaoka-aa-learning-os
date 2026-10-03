@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-03-12-30-08Z",
-  "updatedAt": "2026-10-03T12:30:08.918Z",
+  "poolVersion": "2026-10-03-13-21-34Z",
+  "updatedAt": "2026-10-03T13:21:34.499Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -4644,6 +4644,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-02T14:43:25.121Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading_comprehension",
+        "difficulty": 8,
+        "question": "文章中のA氏とB氏の見解について、本文の内容から読み取れる関係として最も適切なものを選べ。",
+        "context": "商店街の活性化に向けたアンケート調査の結果、平日の来街者は「買い物目的」が減少した一方で、「カフェや休憩スペースの利用」を挙げる割合が昨年度より15ポイント増加していた。これについてA氏は「平日の昼間に自由に過ごせる空間のニーズが高まっている」と分析し、B氏は「店舗数が減ったため目的が散漫になった」と異なる見解を示している。商店街組合としては、この結果をどう解釈し次の施策に繋げるかが問われている。",
+        "choices": [
+          "A氏は平日の来街者の変化を空間的ニーズの表れと捉え、B氏はそれを店舗数の減少に伴う消極的な結果と捉えている。",
+          "A氏もB氏も、平日の来街者増加の主な要因は新規オープンしたカフェにあると考えている。",
+          "A氏は店舗数の減少が原因だと主張し、B氏は空間的ニーズが高まっていると主張している。",
+          "A氏とB氏は、平日の買い物目的が減少した原因はアンケートの調査方法にあるという点で一致している。"
+        ],
+        "answerIndex": 0,
+        "answer": "A氏は平日の来街者の変化を空間的ニーズの表れと捉え、B氏はそれを店舗数の減少に伴う消極的な結果と捉えている。",
+        "explanation": "本文において、A氏はカフェや休憩スペースの利用増加を自由に過ごせる空間のニーズが高まっていると肯定的な空間的ニーズとして捉えているのに対し、B氏は店舗減少による目的の散漫化という別の視点を示している。他の選択肢は主張の主旨が入れ替わっていたり本文にない内容が含まれているため不適切である。",
+        "evidence": "これについてA氏は「平日の昼間に自由に過ごせる空間のニーズが高まっている」と分析し、B氏は「店舗数が減ったため目的が散漫になった」と異なる見解を示している。",
+        "misconception": "A氏とB氏の主張内容を混同したり、本文に書かれていないカフェの新規オープンなどを要因と誤認する思い込み。",
+        "marks": 2,
+        "id": "rise-japanese-887cae49cf35dc6d",
+        "fingerprint": "bc0cfe1a9b32f6d0",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-03T13:21:34.468Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.logical_thinking",
+        "difficulty": 8,
+        "question": "筆者が述べている「情報の吟味」の必要性について、最も適しているものを次の中から選べ。",
+        "context": "現代社会において、インターネット上の情報は膨大であり、私たちが必要な情報を得る手段として不可欠なものとなっている。しかし、発信源が曖昧な情報や、特定の意見に偏ったデータも少なくない。そのため、提示されたデータがどのような条件や範囲で集計されたものであるかを確認する「情報の吟味」が重要視されている。データを鵜呑みにせず、その背景を検証する姿勢こそが、情報過多の時代を生き抜くために求められる。",
+        "choices": [
+          "インターネット上の情報だけで必要な情報を得ることは不可能であるため、すべての発信源を排除するべきである。",
+          "発信源が曖昧な情報は必ず誤りであるため、インターネットの利用自体を一切やめるべきである。",
+          "膨大な情報を得るためには、データの背景を確認するよりも、すべての情報を鵜呑みにする方が効率的である。",
+          "インターネット上の情報は特定の意見に偏ったデータも少なくないため、集計された条件や範囲などの背景を検証する必要がある。"
+        ],
+        "answerIndex": 3,
+        "answer": "インターネット上の情報は特定の意見に偏ったデータも少なくないため、集計された条件や範囲などの背景を検証する必要がある。",
+        "explanation": "本文では、偏ったデータや発信源が曖昧な情報が存在するため、どのような条件や範囲で集計されたかを確認する背景の検証が重要であると述べられている。インターネットの全面否定や情報を鵜呑みにすることを推奨する選択肢は本文の趣旨に反する。",
+        "evidence": "そのため、提示されたデータがどのような条件や範囲で集計されたものであるかを確認する「情報の吟味」が重要視されている。",
+        "misconception": "筆者の主張を過度に極端に捉え、インターネット自体の利用や発信の全否定を結論だと勘違いする誤り。",
+        "marks": 2,
+        "id": "rise-japanese-70e07d9c2cbfe380",
+        "fingerprint": "9b448ca09d0c257a",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-03T13:21:34.468Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.data_analysis",
+        "difficulty": 8,
+        "question": "専門家が「影響を切り分けて評価する必要がある」と指摘している理由として、最も適切なものを次の中から選べ。",
+        "context": "ある自治体では、ごみの減量化を目指し、市民を対象とした「食品ロス削減プロジェクト」を実施した。その結果、家庭から排出される生ごみの量は前年度に比べて12%減少した。一方で、プロジェクトに参加していない地域でも生ごみが8%減少していたことが判明した。専門家は「自治体の広報活動全体を通じて住民全体の意識が間接的に高まった可能性もあるが、同時期に導入された有料ごみ袋制度の影響を切り分けて評価する必要がある」と指摘している。",
+        "choices": [
+          "プロジェクトに参加していない地域でもごみが減少しており、同時期に導入された別の制度の影響も考えられるから。",
+          "家庭から排出される生ごみの量が前年度に比べて12%という大きな割合で減少したことが確実だから。",
+          "市民を対象としたプロジェクトの効果が全地域で一律に表れたため、これ以上の調査が不要だから。",
+          "プロジェクトが完全に失敗し、ごみの減量化に一切貢献しなかったことがデータで証明されたから。"
+        ],
+        "answerIndex": 0,
+        "answer": "プロジェクトに参加していない地域でもごみが減少しており、同時期に導入された別の制度の影響も考えられるから。",
+        "explanation": "参加していない地域でもごみが減少していることや同時期に導入された別の制度があるため、プロジェクト単体による純粋な効果を正しく測るためにはそれらの影響を区別する必要がある。プロジェクトの成功や失敗を一方的に断定する選択肢は誤りである。",
+        "evidence": "一方で、プロジェクトに参加していない地域でも生ごみが8%減少していたことが判明した。専門家は「自治体の広報活動全体を通じて住民全体の意識が間接的に高まった可能性もあるが、同時期に導入された有料ごみ袋制度の影響を切り分けて評価する必要がある」と指摘している。",
+        "misconception": "プロジェクト参加地域の減少率の高さだけに注目し、未参加地域での減少や他要因の存在を無視してしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-495d23cca7d19560",
+        "fingerprint": "343df5180ffd94de",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-03T13:21:34.468Z"
         }
       }
     ],
