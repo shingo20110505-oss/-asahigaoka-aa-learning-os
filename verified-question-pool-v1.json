@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-02-14-43-25Z",
-  "updatedAt": "2026-10-02T14:43:25.152Z",
+  "poolVersion": "2026-10-03-11-35-41Z",
+  "updatedAt": "2026-10-03T11:35:41.214Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -1999,6 +1999,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-02T12:27:24.942Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.geometry",
+        "difficulty": 8,
+        "question": "0 \\le t \\le 3の範囲において、三角形PBQの面積Sが4 \\text{ cm}^2}になるときのtの値を求めよ。",
+        "context": "縦ABが6 \\text{ cm}、横BCが8 \\text{ cm}の長方形ABCDがある。点Pは点Bを出発し、毎秒1 \\text{ cm}の速さで辺BC上をCまで動く。点Qは点Pと同時に点Bを出発し、毎秒2 \\text{ cm}の速さで辺BA上をAまで動き、Aに到着した後はそこで停止する。点PがBを出発してからt秒後の三角形PBQの面積をS \\text{ cm}^2とする。",
+        "choices": [
+          "\\sqrt{5}",
+          "2\\sqrt{2}",
+          "1",
+          "2"
+        ],
+        "answerIndex": 3,
+        "answer": "2",
+        "explanation": "0 \\le t \\le 3のとき、点Pは辺BC上を動くのでBP = t、点Qは辺BA上を動くのでBQ = 2tとなる。三角形PBQは\\angle B = 90^\\circの直角三角形であるから、面積Sは S = \\frac{1}{2} \\times \\text{BP} \\times \\text{BQ} = \\frac{1}{2} \\times t \\times 2t = t^2 と表される。S = 4のとき、t^2 = 4となり、t > 0よりt = 2となる。これは0 \\le t \\le 3の範囲を満たす。最大の誤答は三角形の面積公式の係数\\frac{1}{2}を忘れてt^2 = 8とするミスや、速度の比率を取り違えることである。",
+        "evidence": "点PがBを出発してからt秒後の三角形PBQの面積をS \\text{ cm}^2とする。",
+        "misconception": "三角形の面積公式における係数\\frac{1}{2}を掛け忘れる。",
+        "marks": 2,
+        "id": "rise-math-154d9a9445791998",
+        "fingerprint": "a2390be256c3d4cc",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-03T11:35:41.191Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.probability",
+        "difficulty": 8,
+        "question": "2つの直線とx軸で囲まれた三角形の面積が整数になる確率は幾らか。",
+        "context": "大小2つのさいころを同時に投げ、出た目の数をそれぞれa, bとする。座標平面上に直線y = -\\frac{1}{2}x + aと直線y = 2x + bがある。これら2つの直線とx軸で囲まれた三角形の面積が整数になる確率を求める。",
+        "choices": [
+          "\\frac{1}{9}",
+          "\\frac{1}{6}",
+          "\\frac{1}{18}",
+          "\\frac{1}{12}"
+        ],
+        "answerIndex": 0,
+        "answer": "\\frac{1}{9}",
+        "explanation": "二直線の方程式からそれぞれのx軸との交点と交点を求め、囲まれた三角形の底辺と高さを計算すると、面積Sは S = \\frac{(4a+b)^2}{20} と表される。Sが整数になるためには、分子の(4a+b)^2が分母の20の倍数、すなわち4a+bが10の倍数（10, 20, 30）となる必要がある。これを満たすさいころの目の組(a, b)は、(1, 6), (2, 2), (4, 4), (6, 6)の4通りである。全事象は36通りであるため、確率は \\frac{4}{36} = \\frac{1}{9} となる。",
+        "evidence": "大小2つのさいころを同時に投げ、出た目の数をそれぞれa, bとする。",
+        "misconception": "面積の式における係数や分母の処理を誤り、条件を満たす場合の数を正しく数え上げられない。",
+        "marks": 2,
+        "id": "rise-math-1a10aa351351bef9",
+        "fingerprint": "af3a282ff60ddfd1",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-03T11:35:41.191Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.algebra",
+        "difficulty": 8,
+        "question": "1年生の人数は何人か。",
+        "context": "ある中学校で、生徒全員が参加するボランティア活動を行った。1年生は1人あたり2kg、2年生は1人あたり3kgのペットボトルを回収する目標を立てた。全校生徒の人数は300人で、全体の目標回収量の合計は810kgであった。",
+        "choices": [
+          "120",
+          "150",
+          "210",
+          "90"
+        ],
+        "answerIndex": 3,
+        "answer": "90",
+        "explanation": "1年生の人数をx人、2年生の人数をy人とする。生徒数の合計からx + y = 300、回収量の合計から2x + 3y = 810という連立方程式が成り立つ。この方程式を解くと、x = 90、y = 210が得られる。したがって、1年生の人数は90人である。誤答として2年生の人数である210人を選ぶミスが起こりやすい。",
+        "evidence": "全校生徒の人数は300人で、全体の目標回収量の合計は810kgであった。",
+        "misconception": "連立方程式を解いた際、変数を逆にして2年生の人数を答えにしてしまう。",
+        "marks": 1,
+        "id": "rise-math-458557212053af9d",
+        "fingerprint": "d3a2ca55b7123677",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-03T11:35:41.191Z"
         }
       }
     ],
