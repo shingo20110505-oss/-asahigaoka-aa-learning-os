@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-03-12-01-14Z",
-  "updatedAt": "2026-10-03T12:01:14.027Z",
+  "poolVersion": "2026-10-03-12-30-08Z",
+  "updatedAt": "2026-10-03T12:30:08.918Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -9425,6 +9425,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-02T13:49:48.676Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "愛知県の工業および農業の特徴に関して、地理的な立地や統計データから読み取れる内容として正しいものはどれか。",
+        "context": "愛知県は自動車関連産業を中心に全国第1位の製造品出荷額を誇る一方、渥美半島などの温暖な気候や灌漑整備を活かした近郊農業・施設園芸農業も盛んである。県内の産業動向に関する資料によると、「動力機械器具製造業等の出荷額割合が極めて高く、工業用水としては工業用水道だけでなく地下水や回収水も利用されていること」、また農業においては「温暖な気候を利用した野菜の花き栽培や、台地における酪農・養豚などの畜産業が組み合わさっていること」が示されている。",
+        "choices": [
+          "伝統的工芸品の生産額が日本一である一方で、農業は冷涼な気候をいかした高冷地野菜の栽培や稲作の単作経営が中心となっている。",
+          "機械工業よりも食料品・繊維工業などの軽工業の比率が圧倒的に高く、農業では盆地特有の寒暖差をいかした果樹栽培のみに特化している。",
+          "製造品出荷額において輸送用機械器具（自動車関連）の占める割合が非常に高く、農業では渥美半島を中心に温暖な気候を活かした施設園芸や花きの栽培が盛んである。",
+          "重化学工業の中心が臨海部の製鉄業に限定されており、農業では乾燥した気候を利用した小麦や大麦の麦作地帯が県土の大半を占めている。"
+        ],
+        "answerIndex": 2,
+        "answer": "製造品出荷額において輸送用機械器具（自動車関連）の占める割合が非常に高く、農業では渥美半島を中心に温暖な気候を活かした施設園芸や花きの栽培が盛んである。",
+        "explanation": "愛知県は自動車産業（輸送用機械器具製造業）が製造品出荷額の大部分を占め、日本一の工業県となっています。農業面では、渥美半島などにおいて温暖な気候やきめ細かな灌漑（用水の確保）を利用した施設園芸農業や花きの栽培が盛んなことで知られています。他の選択肢は、製鉄業に限定されている点や冷涼な気候・軽工業中心などの事実と異なる記述を含んでおり誤りです。",
+        "evidence": "愛知県は自動車関連産業を中心に全国第1位の製造品出荷額を誇る一方、渥美半島などの温暖な気候や灌漑整備を活かした近郊農業・施設園芸農業も盛んである。",
+        "misconception": "愛知県＝中京工業地帯＝すべての工業が製鉄や軽工業中心である、あるいは北海道などの高冷地農業と混同してしまう誤解がトラップとなります。",
+        "marks": 2,
+        "id": "rise-social-ddea915db8032ef9",
+        "fingerprint": "d8cfe71263849758",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-03T12:29:50.853Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "日本の産業革命期における経済や社会の変化について述べた文として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "日清戦争後の時期、日本の近代産業は大きく発展し、特に生糸や綿糸などの軽工業が輸出を主導した。その後、第一次世界大戦の最中にはヨーロッパ諸国の生産力が低下したため、日本の輸出が急増し、貿易黒字に転じて工業化がさらに進展した。また、農村の次男・三男などが都市の工場労働者として流入し、労働問題が表面化する契機となった。",
+        "choices": [
+          "第一次世界大戦の最中にはヨーロッパ諸国の輸出が急増して日本は輸入超過に陥った。",
+          "農村の労働力不足が深刻化し、都市から農村への人口移動が本格化した。",
+          "産業革命初期から労働基準法が制定され、過酷な労働環境は完全に解消された。",
+          "日清戦争後の時期には生糸や綿糸などの軽工業が輸出の中心となった。"
+        ],
+        "answerIndex": 3,
+        "answer": "日清戦争後の時期には生糸や綿糸などの軽工業が輸出の中心となった。",
+        "explanation": "日清戦争後の時期には、器械製糸や紡績業を中心とした軽工業が発展し、輸出を主導しました。第一次世界大戦中には日本は輸出が急増して貿易黒字国となり、工業化が進展しました。労働問題については、労働争議や女性労働者の過酷な労働環境が社会問題化しましたが、労働基準法が制定されたのは第二次世界大戦後の1947年であり、当時すぐに解消されたわけではありません。また人口は農村から都市へ移動しました。",
+        "evidence": "特に生糸や綿糸などの軽工業が輸出を主導した。",
+        "misconception": "第一次世界大戦中の日本の貿易動向や労働立法の制定時期に関する混乱から、誤った選択肢を選んでしまう誤解。",
+        "marks": 2,
+        "id": "rise-social-90e8bb0facff9903",
+        "fingerprint": "6eb0f88575a5faff",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-03T12:30:08.764Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "日本国憲法における最高法規の原則および憲法改正の手続きについて述べた文として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "日本国憲法は国の最高法規であり、憲法に反する法律や命令、詔勅などは効力を有しない。また、憲法を改正するためには、各議院の総議員の3分の2以上の賛成で国会が発議し、その後の国民投票において有効投票数の過半数の賛成を必要とする厳格な手続きが定められている。",
+        "choices": [
+          "憲法改正の承認に必要な国民投票は、有権者総数の過半数の賛成が必要である。",
+          "最高法規の原則により、憲法は通常の法律と同じ手続きで改正することができる。",
+          "日本国憲法に違反する法律や命令は効力を有しない。",
+          "憲法改正の発議には各議院の過半数の賛成が必要である。"
+        ],
+        "answerIndex": 2,
+        "answer": "日本国憲法に違反する法律や命令は効力を有しない。",
+        "explanation": "日本国憲法は最高法規であり、これに反する法律や命令は無効となります。憲法改正の発議には各議院の総議員の3分の2以上が必要であり、国民投票は「有効投票数」の過半数であって有権者総数ではありません。また、憲法は通常の法律よりも改正手続きが厳格な硬い憲法（硬性憲法）とされています。",
+        "evidence": "憲法に反する法律や命令、詔勅などは効力を有しない。",
+        "misconception": "憲法改正の発議要件や国民投票の過半数の基準、硬性憲法としての性質に関する誤認。",
+        "marks": 2,
+        "id": "rise-social-d0bb604507044f29",
+        "fingerprint": "c4245866c04b7744",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-03T12:30:08.764Z"
         }
       }
     ]
