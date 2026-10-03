@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-03-11-35-41Z",
-  "updatedAt": "2026-10-03T11:35:41.214Z",
+  "poolVersion": "2026-10-03-12-01-14Z",
+  "updatedAt": "2026-10-03T12:01:14.027Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -6916,6 +6916,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-02T13:09:40.167Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.weather_and_humidity",
+        "difficulty": 8,
+        "question": "気温と湿度の関係を調べる観察において、露点と飽和水蒸気量の変化を正しく説明しているものはどれか。",
+        "context": "室温20℃の部屋で金属製のコップに水を入れ、氷水を少しずつ加えてかき混ぜたところ、水温が12℃になったときにコップの表面に水滴がつき始めた。このときの部屋の空気を調べると、空気1m^3あたりに含まれる水蒸気の質量は10.7gであった。",
+        "choices": [
+          "室温を20℃から30℃に上昇させると、空気中の水蒸気量が一定であっても露点は12℃より高くなる。",
+          "露点は空気中の水蒸気量に関係なく、その日の気温のみによって一意に決まる。",
+          "水温が下がってコップの表面に水滴がつく現象は、気温が露点より高くなったときに起こる。",
+          "コップの表面に水滴がついたときの温度である12℃を露点といい、このときの空気の湿度は100%である。"
+        ],
+        "answerIndex": 3,
+        "answer": "コップの表面に水滴がついたときの温度である12℃を露点といい、このときの空気の湿度は100%である。",
+        "explanation": "空気中の水蒸気が凝縮し始めて水滴がつくときの温度を露点といい、露点に達したときの空気は水蒸気で飽和しているため湿度は100%になります。誤った選択肢では気温や露点の関係を混同したり、露点が気温に依存すると誤解させようとしています。",
+        "evidence": "水温が12℃になったときにコップの表面に水滴がつき始めた",
+        "misconception": "露点が気温の変化に応じて変動すると誤解していること",
+        "marks": 2,
+        "id": "rise-science-85bc39f2f956281e",
+        "fingerprint": "8ccf2eb5f0e18343",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-03T12:01:05.878Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemistry.aqueous_solution",
+        "difficulty": 8,
+        "question": "ミョウバンの水への溶解度に関する記述として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "ある実験室において、20℃の水100gにミョウバンを少しずつ加えていき、完全に溶かしたところ、最大で14.0g溶けた。さらに、この水溶液の温度を60℃まで上昇させたところ、固体のミョウバンを追加しなくてもすべて完全に溶解し、さらに追加で33.0gのミョウバンを溶かすことができた。",
+        "choices": [
+          "ミョウバンの溶解度は温度が高くなるほど大きくなるが、60℃の水100gには最大で33.0gまでしか溶けない。",
+          "ミョウバンの溶解度は温度が高くなるほど大きくなり、60℃の水100gには合計で47.0g以上のミョウバンが溶ける。",
+          "ミョウバンの溶解度は温度が高くなるほど小さくなり、60℃の水100gには合計で14.0gのミョウバンが溶ける。",
+          "ミョウバンの溶解度は温度によらず一定であり、60℃の水100gには合計で33.0gのミョウバンが溶ける。"
+        ],
+        "answerIndex": 1,
+        "answer": "ミョウバンの溶解度は温度が高くなるほど大きくなり、60℃の水100gには合計で47.0g以上のミョウバンが溶ける。",
+        "explanation": "文中の実験において、20℃の水100gに14.0g溶け、さらに60℃に昇温したことで追加せずに溶けきり、加えて33.0g溶かすことができたことから、60℃の水100gには合計で 14.0g + 33.0g = 47.0g 以上のミョウバンが溶けることがわかる。一般に物質の溶解度は温度上昇に伴って大きくなる傾向がある（ミョウバンはその代表例である）。最も強い誤答は、追加で溶けた量のみを60℃での溶解度と誤認するものや、温度による溶解度の変化傾向を誤解しているものである。",
+        "evidence": "20℃の水100gにミョウバンを少しずつ加えていき、完全に溶かしたところ、最大で14.0g溶けた。さらに、この水溶液の温度を60℃まで上昇させたところ、固体のミョウバンを追加しなくてもすべて完全に溶解し、さらに追加で33.0gのミョウバンを溶かすことができた。",
+        "misconception": "追加で溶けた33.0gという数値のみに着目し、もともと溶けていた14.0gを加算し忘れること。",
+        "marks": 2,
+        "id": "rise-science-661c987bdaacf067",
+        "fingerprint": "f35fe251c3ed6f1b",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-03T12:01:13.998Z"
         }
       }
     ],
