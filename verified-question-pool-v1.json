@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-04-12-17-19Z",
-  "updatedAt": "2026-10-04T12:17:19.953Z",
+  "poolVersion": "2026-10-04-12-50-58Z",
+  "updatedAt": "2026-10-04T12:50:58.580Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -7188,6 +7188,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-03T12:01:13.998Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science.physics",
+        "difficulty": 8,
+        "question": "記録テープの打点データをもとに、台車が斜面を下る運動について正しく説明しているものを次の中から選びなさい。",
+        "context": "1秒間に60打点する記録タイマーを使って、斜面を下る台車の運動を記録した。連続する0.1秒ごとの区間をテープで切り取ると、各区間の長さは順に 1.2cm, 2.4cm, 3.6cm, 4.8cm であった。",
+        "choices": [
+          "台車が移動するにつれて平均の速さは速くなるが、瞬間の速さは各区間の中央の時刻において一定である。",
+          "台車には斜面方向の下向きに一定の大きさが働くため、一定の割合で速さが増加する等加速度直線運動をしている。",
+          "各区間の長さの増加分が一定であることから、台車にはたらく力は次第に大きくなっている。",
+          "0.1秒ごとの移動距離の差が常に1.2cmであるため、台車の速さは一定である。"
+        ],
+        "answerIndex": 1,
+        "answer": "台車には斜面方向の下向きに一定の大きさが働くため、一定の割合で速さが増加する等加速度直線運動をしている。",
+        "explanation": "0.1秒ごとの移動距離が 1.2cm, 2.4cm, 3.6cm, 4.8cm と、一定の割合（0.1秒ごとに1.2cmずつ）で増加しています。これは一定の加速度で速さが増す運動（等加速度直線運動）を表しています。斜面を下る物体には、斜面下向きに一定の分力がはたらくため、このような運動になります。もっとも強い誤答は、移動距離が増えていることをもって力が次第に大きくなっていると勘違いするものです。",
+        "evidence": "連続する0.1秒ごとの区間をテープで切り取ると、各区間の長さは順に 1.2cm, 2.4cm, 3.6cm, 4.8cm であった。",
+        "misconception": "移動距離が増加しているのは、台車を引く力が時間とともに強くなっているからだという誤解。",
+        "marks": 2,
+        "id": "rise-science-7a7fa818db7dc1a4",
+        "fingerprint": "2ad3101c8d41bb7e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-04T12:50:54.324Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science.biology",
+        "difficulty": 8,
+        "question": "オオカナダモの葉を用いた光合成の実験において、気体の発生と光の条件に関して正しく述べられているものを次の中から選びなさい。",
+        "context": "オオカナダモをいれた試験管に光を当てたところ、葉の表面から小さな気泡が発生した。発生した気体を集めて線香の火を近づけると、線香は激しく燃え上がった。",
+        "choices": [
+          "光を当てなくても同量の気泡が発生することから、この気体は光合成とは無関係である。",
+          "発生した気体は酸素であり、この反応は植物の葉緑体で光エネルギーを用いて二酸化炭素と水から有機物が合成される過程で生じる。",
+          "発生した気体は二酸化炭素であり、植物が呼吸によって放出したものが気泡となって現れたものである。",
+          "線香が激しく燃え上がったのは水素が発生したためであり、水が光によって分解されたことによる。"
+        ],
+        "answerIndex": 1,
+        "answer": "発生した気体は酸素であり、この反応は植物の葉緑体で光エネルギーを用いて二酸化炭素と水から有機物が合成される過程で生じる。",
+        "explanation": "線香を激しく燃え上がらせる性質を持つ気体は酸素です。光合成により、植物は葉緑体で光エネルギーを利用して二酸化炭素と水から養分を作り、その副産物として酸素を放出します。もっとも強い誤答は、発生した気体を呼吸による二酸化炭素と混同するもの、または水素などの他の気体と誤認するものです。",
+        "evidence": "発生した気体を集めて線香の火を近づけると、線香は激しく燃え上がった。",
+        "misconception": "植物が気泡を出すのは呼吸によるものであり、気体は二酸化炭素であるという誤解。",
+        "marks": 2,
+        "id": "rise-science-9e8f85386babbc84",
+        "fingerprint": "f9b21cde04bd2368",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-04T12:50:54.324Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science.chemistry",
+        "difficulty": 8,
+        "question": "実験で得られた結果から、水溶液中のイオンの移動や電流について述べた文として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "あある中学校の科学部員が、塩化銅水溶液に電流を流す実験を行った。うすい塩化銅水溶液を満たしたU字管に炭素棒の電極を入れ、直流電源をつないで電流を流したところ、陽極側から黄緑色の気体が発生し、陰極側の炭素棒の表面には赤色の固体が付着した。このとき、水溶液中の銅イオン（Cu^{2+}）と塩化物イオン（Cl^-）はそれぞれ反対の極に向かって移動していた。",
+        "choices": [
+          "陽極側では塩化物イオンが電子を受け取り、原子になって気体として発生する。",
+          "陰極側では銅イオンが電子を受け取り、原子（金属）として炭素棒の表面に付着する。",
+          "水溶液中に電流を流したとき、電子は水溶液中を銅イオンや塩化物イオンとは逆の方向に移動している。",
+          "塩化銅が水に溶けて電離するとき、銅原子は陽イオンに、塩素原子は陰イオンになるが、水溶液全体としては電気的に正に帯電している。"
+        ],
+        "answerIndex": 1,
+        "answer": "陰極側では銅イオンが電子を受け取り、原子（金属）として炭素棒の表面に付着する。",
+        "explanation": "塩化銅水溶液（CuCl_2水溶液）に電流を流すと、電離している銅イオン（Cu^2+）は陰極（マイナスの極）へ引き寄せられ、陰極で電子を受け取って銅原子（金属の銅）となり、電極の表面に赤色の固体として付着します。一方、塩化物イオン（Cl^-）は陽極へ移動して電子を失い、塩素の気体が発生します。したがって、陰極側での変化を正しく述べた文が正解となります。もっとも強力な不正解の罠は、イオンが電子を「受け取る」か「失う」かの極による違い（酸化還元反応の方向）や、水溶液全体の電気的中性に関する誤解です。水溶液全体は常に電気的に中性であり、正に帯電することはありません。",
+        "evidence": "陰極側の炭素棒の表面には赤色の固体が付着した",
+        "misconception": "水溶液全体が電気的に帯電している、または陽極と陰極における電子の授受の向きを逆に捉えていること。",
+        "marks": 2,
+        "id": "rise-science-b996537bfd524fb7",
+        "fingerprint": "5ebbf0b964e7fd47",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-04T12:50:58.562Z"
         }
       }
     ],
