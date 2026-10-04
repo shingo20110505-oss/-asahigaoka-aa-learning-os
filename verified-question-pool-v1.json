@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-04-13-10-34Z",
-  "updatedAt": "2026-10-04T13:10:34.099Z",
+  "poolVersion": "2026-10-04-14-04-05Z",
+  "updatedAt": "2026-10-04T14:04:05.285Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -4848,6 +4848,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-03T13:21:34.468Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading.inference",
+        "difficulty": 8,
+        "question": "筆者が述べている「デジタル技術の導入が伝統工芸に与えた影響」についての説明として、最も適当なものを一つ選べ。",
+        "context": "伝統的な手仕事の価値は、効率の悪さや偶然性の中にあると語られることが多い。しかし、近年の3D造形技術の導入は、その職人の勘と経験を数値化することで、かえって人間の手による微細な調整の妙を浮き彫りにしている。効率化を目的としたデジタル技術が、結果として伝統工芸の本質を再定義する契機となっているのである。",
+        "choices": [
+          "偶然性に頼る必要性をなくし、すべての工程を機械化することに成功した点。",
+          "伝統的な技法を衰退させ、新しい工業製品へと完全に転換させている点。",
+          "効率化のみを追求し、人間の手仕事による価値を完全に排除している点。",
+          "職人の経験を数値化することで、手作業の細やかな調整のすばらしさを逆に際立たせている点。"
+        ],
+        "answerIndex": 3,
+        "answer": "職人の経験を数値化することで、手作業の細やかな調整のすばらしさを逆に際立たせている点。",
+        "explanation": "文章では、デジタル技術（3D造形）の導入によって、効率化にとどまらず「かえって人間の手による微細な調整の妙を浮き彫りにしている」と述べられている。したがって、職人の手作業の価値がより明確に意識されるようになったとする記述が正解となる。他の選択肢は「完全に排除」「すべて機械化」「完全に転換」などと極端な表現が含まれており、筆者の主張から外れている。",
+        "evidence": "近年の3D造形技術の導入は、その職人の勘と経験を数値化することで、かえって人間の手による微細な調整の妙を浮き彫りにしている。",
+        "misconception": "デジタル技術や機械化が導入されると、伝統的な手仕事の価値が完全に失われるという極端な二項対立的な誤解。",
+        "marks": 2,
+        "id": "rise-japanese-18785205c3c7aae1",
+        "fingerprint": "a1453342276a1110",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-04T14:04:05.258Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.kobun.interpretation",
+        "difficulty": 8,
+        "question": "文中の下線部「ここには人おはせむ」の意味として、最も適当なものを一つ選べ。",
+        "context": "ある人、京より下る道にて、日暮れて宿かる所なく、心細く思ひけるに、ある家の戸口より、明かりの漏り来るを見つけて、「ここには人おはせむ」とて、歩み寄りぬ。",
+        "choices": [
+          "ここにはどんな人が住んでいるのだろうか。",
+          "ここにはもう人が集まっていないようだ。",
+          "ここには誰もいないにちがいない。",
+          "ここにはきっと人がいらっしゃるだろう。"
+        ],
+        "answerIndex": 3,
+        "answer": "ここにはきっと人がいらっしゃるだろう。",
+        "explanation": "「おはす」は「いる・行く・来る」の尊敬語であり、「おはせむ」は未然形「おはせ」に推量の助動詞「む」が続いた形である。したがって、「ここに人は（いらっしゃる）だろう」という推量の意味になる。暗がりの中で明かりを見つけ、人がいることを期待している文脈にも合致する。",
+        "evidence": "ある家の戸口より、明かりの漏り来るを見つけて、「ここには人おはせむ」とて、歩み寄りぬ。",
+        "misconception": "古文の尊敬語の識別を見誤り、否定表現や疑問詞と混同してしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-6fd686150ac36701",
+        "fingerprint": "39581a603ac8413e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-04T14:04:05.258Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.grammar.usage",
+        "difficulty": 8,
+        "question": "次の文における接続助詞「が」の働きと同じ意味・用法で使われているものを、ア～エの中から一つ選べ。\n\n「彼は一生懸命に説明したが、相手にはなかなか伝わらなかった。」",
+        "context": "文法的な接続助詞の働きに関する問題。提示された文：彼は一生懸命に説明したが、相手にはなかなか伝わらなかった。",
+        "choices": [
+          "あの店に行けば、美味しいお土産が買える。",
+          "私が部屋に入ると、猫が驚いて逃げた。",
+          "空が晴れたが、風が冷たい。",
+          "この本を借りたいのですが、よろしいでしょうか。"
+        ],
+        "answerIndex": 2,
+        "answer": "空が晴れたが、風が冷たい。",
+        "explanation": "問題文の「が」は、前後の事柄が逆接（相反する内容）の関係を結ぶ働きをしている。選択肢の中では「空が晴れたが、風が冷たい」の「が」も同様に逆接（晴れているが風は冷たい）を表している。二番目は丁寧な前置き、三番目は条件、四番目は格助詞としての用法である。",
+        "evidence": "彼は一生懸命に説明したが、相手にはなかなか伝わらなかった。",
+        "misconception": "接続助詞「が」が持つ複数の用法（逆接、前置き・クッション、順接的接続など）を区別せず、形式だけで判断してしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-8998bbbe77c24efa",
+        "fingerprint": "e449557cd1c99b52",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-04T14:04:05.258Z"
         }
       }
     ],
