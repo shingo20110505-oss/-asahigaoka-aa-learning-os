@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-04-12-50-58Z",
-  "updatedAt": "2026-10-04T12:50:58.580Z",
+  "poolVersion": "2026-10-04-13-10-34Z",
+  "updatedAt": "2026-10-04T13:10:34.099Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -9833,6 +9833,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-03T12:30:08.764Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "日本の工業地帯・地域の特徴に関する記述として、最も適当なものを次の中から1つ選びなさい。",
+        "context": "日本の太平洋ベルトには主要な工業地帯や地域が集中している。中京工業地帯は自動車産業を中心とする機械工業の出荷額が全国第1位であり、愛知県を中心に発展している。一方、北九州工業地帯はかつて官営八幡製鉄所を基盤に重化学工業で栄え、現在は環境対策や産業の多角化を進めている。",
+        "choices": [
+          "北九州工業地帯は現在でも国内最大の自動車生産台数を誇り、機械工業の出荷額が全国首位である。",
+          "太平洋ベルトから外れた地域には工業集積が一切みられず、すべての地域で農業中心の経済構造である。",
+          "京浜工業地帯は製鉄業や造船業が現在でも中心であり、他の産業の進出はみられない。",
+          "中京工業地帯は自動車関連の機械工業の割合が高く、工業品出荷額で全国的に高い地位を占めている。"
+        ],
+        "answerIndex": 3,
+        "answer": "中京工業地帯は自動車関連の機械工業の割合が高く、工業品出荷額で全国的に高い地位を占めている。",
+        "explanation": "中京工業地帯は自動車産業を中心とした機械工業の割合が非常に高く、工業品出荷額は全国第1位を誇っています。北九州工業地帯は製鉄業を基盤として発展した歴史があり、自動車の生産台数首位は中京地域です。",
+        "evidence": "中京工業地帯は自動車産業を中心とする機械工業の出荷額が全国第1位であり、愛知県を中心に発展している。",
+        "misconception": "製鉄業で有名な北九州工業地帯が現在も工業全体の出荷額や自動車生産で首位であると混同している。",
+        "marks": 2,
+        "id": "rise-social-7b384b034d5bd14f",
+        "fingerprint": "3c6f5617b0ade225",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-04T13:10:26.410Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "愛知県内の工業出荷額の特徴や、工業統計における産業別傾向に関する記述として、最も適当なものを次の選択肢から1つ選びなさい。",
+        "context": "【資料：愛知県の工業に関する統計概要（仮説的まとめ）】\n愛知県は全国屈指の「ものづくり王国」として知られ、製造品出荷額等は長年にわたり全国第1位を誇っている。特に県内の工業を支える最大の柱は輸送用機械器具製造業であり、自動車本体やその関連部品の生産が非常に盛んである。一方で、名古屋市周辺の内陸部から臨海部にかけては鉄鋼業や化学工業などの基礎素材型産業も立地しているが、全体の出荷額構成比において最も大きなウェイトを占めるのは機械関連（輸送用機械、電気機械、一般機械など）である。また、近年では環境配慮型の生産や、デジタル技術を活用したスマートファクトリーの導入も進みつつある。",
+        "choices": [
+          "製造品出荷額等の全国順位において、愛知県は長年にわたり上位を維持し続けており、特に輸送用機械器具製造業の占める割合が非常に大きい。",
+          "愛知県の工業において最も出荷額の割合が大きいのは、繊維工業や食料品製造業などの軽工業中心の部門である。",
+          "愛知県内の工業は、名古屋港周辺の臨海部にすべての工場が集中しており、内陸部での工業生産は一切行われていない。",
+          "愛知県の製造品出荷額等の大部分は基礎素材型産業（鉄鋼業や化学工業など）によって占められており、機械関連産業の割合はわずかである。"
+        ],
+        "answerIndex": 0,
+        "answer": "製造品出荷額等の全国順位において、愛知県は長年にわたり上位を維持し続けており、特に輸送用機械器具製造業の占める割合が非常に大きい。",
+        "explanation": "愛知県は自動車関連を中心とする「輸送用機械器具製造業」が極めて大きなウェイトを占めており、製造品出荷額等で全国第1位を維持している。軽工業や基礎素材型産業のみに依存しているわけではなく、また工場は臨海部だけでなく内陸部にも広がっているため、輸送用機械器具の比率の大きさを述べている選択肢が正解となる。最強の罠は軽工業や素材産業を主と誤認させるものや立地を極端に限定するものである。",
+        "evidence": "特に県内の工業を支える最大の柱は輸送用機械器具製造業であり、自動車本体やその関連部品の生産が非常に盛んである。",
+        "misconception": "愛知県＝自動車というイメージを持ちつつも、伝統的な愛知の地場産業（繊維など）や、全国的な印象から軽工業が主であると混同してしまう誤解。",
+        "marks": 2,
+        "id": "rise-social-56b83f5a4f53f036",
+        "fingerprint": "2d0b225e8ab06d10",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-04T13:10:34.079Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "近世から近代にかけての愛知県（尾張・三河）および日本の産業・交通の発展に関する記述として、最も適当なものを次の選択肢から1つ選びなさい。",
+        "context": "【資料：尾張・三河地域の近代化と産業の歩み】\n江戸時代、尾張藩は徳川御三家の一つとして城下町名古屋を中心に商業や文化が栄え、また美濃路や東海道などの交通路を通じて周辺地域との結びつきが強かった。明治時代以降、愛知県域では従来の綿織物や絹織物などの伝統的な手工業技術を基盤として近代的な器械製糸や力織機が導入され、繊維産業が急速に発展した。さらに、大正から昭和にかけては、こうした機械化やものづくりの基盤が、のちに自動車産業をはじめとする多様な機械工業へと発展していく素地となった。鉄道網についても、東海道本線の開通をはじめとして人や物の移動が劇的に変化し、産業の近代化を強力に後押しした。",
+        "choices": [
+          "鉄道網の整備は愛知県の近代化には一切寄与せず、物資の流通は江戸時代から昭和に至るまで全く変化しなかった。",
+          "愛知県域では、伝統的な織物技術などの基盤が近代以降の繊維産業の発展につながり、それがのちの機械工業へと発展する素地となった。",
+          "江戸時代の愛知県域は、すべての交通路から完全に孤立しており、他地域との商業的な交流は一切行われていなかった。",
+          "明治時代以降の愛知県では、伝統的な手工業技術がすべて否定・破棄され、農業以外の産業は全く育たなかった。"
+        ],
+        "answerIndex": 1,
+        "answer": "愛知県域では、伝統的な織物技術などの基盤が近代以降の繊維産業の発展につながり、それがのちの機械工業へと発展する素地となった。",
+        "explanation": "資料によると、伝統的な織物技術などの基盤が近代の繊維産業発展につながり、それが後の機械工業の素地となったことが述べられている。他の選択肢は交通の孤立や技術の全否定など、歴史的事実や資料の記述に矛盾する極端な誤りを含んでいる。",
+        "evidence": "明治時代以降、愛知県域では従来の綿織物や絹織物などの伝統的な手工業技術を基盤として近代的な器械製糸や力織機が導入され、繊維産業が急速に発展した。さらに、大正から昭和にかけては、こうした機械化やものづくりの基盤が、のちに自動車産業をはじめとする多様な機械工業へと発展していく素地となった。",
+        "misconception": "近代化を「伝統の完全な破壊と全否定」と捉えがちであるが、実際には江戸時代からの在来技術や蓄積が近代産業のステップボードとなった点を見落とす誤解。",
+        "marks": 2,
+        "id": "rise-social-e85cd7a75f54bd6b",
+        "fingerprint": "5c5db6dc2c819efe",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-04T13:10:34.079Z"
         }
       }
     ]
