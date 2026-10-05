@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-05-14-29-03Z",
-  "updatedAt": "2026-10-05T14:29:03.524Z",
+  "poolVersion": "2026-10-05-15-15-55Z",
+  "updatedAt": "2026-10-05T15:15:55.160Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -7494,6 +7494,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-04T12:50:58.562Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science.chemistry",
+        "difficulty": 8,
+        "question": "水溶液の電気分解に関する実験で、両極から発生する気体の体積を測定した。電流を流した時間と発生した気体の総体積の関係を調べたところ、ある時間以降、陰極側の気体の増加割合が変化した。この現象を引き起こす最も適切な要因として正しいものはどれか。",
+        "context": "実験では、うすい塩化ナトリウム水溶液に電流を流し、陽極と陰極からそれぞれ発生する気体の体積を一定時間ごとに記録した。その結果、ある時間までは陰極から水素、陽極から塩素が発生していたが、特定の時間を境に、発生する気体の組成や溶質の濃度変化に起因する影響により、気体の発生挙動に変化が見られた。記録されたデータでは「陰極側で発生する気体の体積の増加速度が途中で低下した」ことが確認された。",
+        "choices": [
+          "水溶液中の溶質が完全に電気分解され尽くし、純水の電気分解のみに切り替わったため",
+          "発生した気体の一部が水に再び溶け込んだり、電極付近の濃度が変化したりしたため",
+          "電圧を一定に保っていたにもかかわらず、電源装置の内部抵抗が急激に増加したため",
+          "陽極から発生した気体が陰極側に拡散し、陰極側の気体と化学反応を起こしたため"
+        ],
+        "answerIndex": 1,
+        "answer": "発生した気体の一部が水に再び溶け込んだり、電極付近の濃度が変化したりしたため",
+        "explanation": "電気分解において、発生した気体が水に溶解する性質や電極周辺のイオン濃度変化により、見かけの発生速度が変化することがある。塩化ナトリウム水溶液の電気分解では、発生する塩素が水に溶けやすい性質を持つことなどが全体の効率や測定値に影響を与える。最も科学的に妥当な要因は気体の溶解や局所的な濃度変化である。他の選択肢は化学的・物理的条件として適切ではない。",
+        "evidence": "陰極側で発生する気体の体積の増加速度が途中で低下した",
+        "misconception": "全ての水溶液の電気分解において水溶液中の溶質が必ず完全に枯渇して純水になると誤解すること。",
+        "marks": 2,
+        "id": "rise-science-db9fdaa531a08039",
+        "fingerprint": "81e87a67738b2271",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-05T15:15:55.130Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science.physics",
+        "difficulty": 8,
+        "question": "斜面上の台車運動に関する実験で、1秒間に50回打点する記録タイマーを用いて台車の運動を調べた。斜面の傾きを大きくしたとき、得られたテープの打点間隔の変化についての記述として最も適切なものはどれか。",
+        "context": "質量が等しい台車を用い、水平面上からある傾きを持つ斜面に台車を静かに手放して下らせた。記録タイマーのテープには、打点打撃ごとの位置が記録された。斜面の傾きを大きくした実験では、「各打点間の距離が、同じ経過時間であってもより大きく広がる傾向を示した」。",
+        "choices": [
+          "斜面に平行方向にはたらく下向きの力が大きくなり、台車の加速度が増加するため",
+          "台車に作用する重力が大きくなり、空気抵抗との合力が常にゼロになるため",
+          "慣性の法則により、台車が等速直線運動を続ける区間が長くなるため",
+          "記録タイマーの打点頻度が自動的に高くなり、打点の間隔が狭く記録されるため"
+        ],
+        "answerIndex": 0,
+        "answer": "斜面に平行方向にはたらく下向きの力が大きくなり、台車の加速度が増加するため",
+        "explanation": "斜面の傾きを大きくすると、斜面に平行方向にはたらく重力の分力が大きくなるため、台車に生じる加速度が大きくなる。その結果、同じ時間あたりの速度の変化が大きくなり、テープ上の打点間隔はより大きく広がる。他の選択肢は力学的関係や記録タイマーの原理に反している。",
+        "evidence": "各打点間の距離が、同じ経過時間であってもより大きく広がる傾向を示した",
+        "misconception": "斜面の傾きを変えると質量そのものや記録タイマーの打点頻度が変化すると誤解すること。",
+        "marks": 2,
+        "id": "rise-science-6ff49d6fba0ae6ab",
+        "fingerprint": "623fc7bca8ad94ca",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-05T15:15:55.130Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science.biology",
+        "difficulty": 8,
+        "question": "植物の蒸散作用に関する実験で、ワセリンを塗る条件を変えた葉を用いて、一定時間ごとの質量減少量を測定した。実験結果から気孔の分布と蒸散量について考察した記述として最も適切なものはどれか。",
+        "context": "アジサイの葉を用いて、表のみ、裏のみ、両面、および全面にワセリンを塗布した葉を準備し、それぞれ一定時間放置した。その結果、「葉の裏面にワセリンを塗布した条件では、表面のみに塗布した条件に比べて質量の減少量が著しく小さかった」。",
+        "choices": [
+          "表側の気孔が完全に閉鎖したことにより、裏側の気孔の数が自動的に増加したため",
+          "気孔は葉の表側よりも裏側に多く存在し、蒸散の大部分が裏面で行われているため",
+          "ワセリンを塗布したことで葉の光合成速度が急激に低下し、呼吸量が増加したため",
+          "表皮細胞の厚さが表と裏で異なり、裏面からの蒸発は物理的な水分蒸発のみであるため"
+        ],
+        "answerIndex": 1,
+        "answer": "気孔は葉の表側よりも裏側に多く存在し、蒸散の大部分が裏面で行われているため",
+        "explanation": "植物の葉（多くは双子葉類）では、気孔が裏面に多く分布している。そのため、裏面にワセリンを塗って気孔を塞ぐと蒸散が大きく抑制され、質量の減少量が小さくなる。表面のみに塗った場合との比較から、裏面が蒸散の主な経路であることがわかる。",
+        "evidence": "葉の裏面にワセリンを塗布した条件では、表面のみに塗布した条件に比べて質量の減少量が著しく小さかった",
+        "misconception": "植物の気孔は葉の表面（上側）にのみ存在すると誤解すること。",
+        "marks": 2,
+        "id": "rise-science-1090f6cd144290e9",
+        "fingerprint": "cc85957094057f86",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-05T15:15:55.130Z"
         }
       }
     ],
