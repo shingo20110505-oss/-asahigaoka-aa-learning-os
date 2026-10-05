@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-05-15-58-12Z",
-  "updatedAt": "2026-10-05T15:58:12.910Z",
+  "poolVersion": "2026-10-05-17-07-28Z",
+  "updatedAt": "2026-10-05T17:07:28.947Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -5052,6 +5052,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-04T14:04:05.258Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.data",
+        "difficulty": 8,
+        "question": "調査結果から読み取れる公共施設の利用傾向について正しいものはどれか。",
+        "context": "ある地域の公共施設利用調査によると、平日に来館する層の中心は高齢者と学生であり、特に午後は自習や読書を目的とする学生の割合が全体の四割を占めている。一方、休日は家族連れが全体の半分を超え、体験型講座やワークショップへの参加が主な目的となっている。平日の午前は趣味のサークル利用が多く、曜日や時間帯によって利用者の目的と属性が大きく変化している。",
+        "choices": [
+          "曜日にかかわらず利用者の目的や属性には大きな変化が見られない",
+          "休日は家族連れが過半数を占め体験型講座への参加が主目的である",
+          "平日の午後は高齢者が全体の四割を占めており主な利用層である",
+          "平日の午前は学生が自習や読書をするために多数訪れている"
+        ],
+        "answerIndex": 1,
+        "answer": "休日は家族連れが過半数を占め体験型講座への参加が主目的である",
+        "explanation": "休日は家族連れが全体の半分を超え（過半数）、体験型講座やワークショップへの参加が主な目的となっていると記述されている。平日午後の四割は学生であり高齢者ではない。",
+        "evidence": "休日は家族連れが全体の半分を超え、体験型講座やワークショップへの参加が主な目的となっている。",
+        "misconception": "属性と割合の対応関係を読み違える部分一致エラー。",
+        "marks": 2,
+        "id": "rise-japanese-3ac0b4c449d82208",
+        "fingerprint": "3b3bc73d470f975b",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-05T17:07:19.264Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.expression",
+        "difficulty": 8,
+        "question": "筆者が言語を「川の流れ」にたとえた意図として最も適切なものはどれか。",
+        "context": "言語は固定された石の彫刻のようなものではなく、川の流れのように常に変化し続けるものである。私たちが何気なく使う言葉も、時代や社会のうねりを受けて新しい意味を獲得し、時には古い意味を捨て去っていく。その動的な営みを見つめることなしに、言葉の本当の姿を理解することはできない。",
+        "choices": [
+          "言葉が常に変化し動的に動き続けている性質を強調するため",
+          "言葉が透明で誰にでも同じように理解できることを示すため",
+          "言葉の流れが最終的に一つの海に到達する運命にあるため",
+          "言葉の歴史が古くから途切れることなく保存されてきたため"
+        ],
+        "answerIndex": 0,
+        "answer": "言葉が常に変化し動的に動き続けている性質を強調するため",
+        "explanation": "川の流れにたとえたのは常に変化し続ける性質を表すためであり、最初の選択肢が正解。透明性や一つの海、歴史の保存などはたとえの趣旨から外れる。",
+        "evidence": "言語は固定された石の彫刻のようなものではなく、川の流れのように常に変化し続けるものである。",
+        "misconception": "比喩表現の共通点を見誤り、文脈に合わない連想をするエラー。",
+        "marks": 1,
+        "id": "rise-japanese-3825de8f3e66ee0b",
+        "fingerprint": "95eff27561c1a603",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-05T17:07:19.264Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "本文で述べられている、効率の良さがもたらす弊害についての説明として、最も適当なものを次の選択肢から一つ選べ。",
+        "context": "近年、デジタル技術の進展によって、私たちは時間や場所を選ばず素早く情報を得られるようになった。この「効率の良さ」は生活を便利にする一方で、過程における試行錯誤の経験を希薄にしている。例えば、かつては辞書を引いて言葉の意味を探るなかで、周辺の別の言葉に目が止まり、偶然の知の出会いが生まれた。しかし、検索機能は目的の答えだけを瞬時に提示するため、その偶然性や、答えに至るまでの自らの手と頭を動かした記憶が残りづらい。効率化は目的達成のスピードを上げるが、それと引き換えに、私たちは「遠回りする豊かさ」を失いつつあるのではないか。",
+        "choices": [
+          "目的の答えに素早く到達できる反面、その過程で得られる偶然の気づきや、手足を動かした記憶が希薄になること。",
+          "デジタル機器の普及によって辞書が使われなくなり、言語に対する正確な意味の理解力が大幅に低下していること。",
+          "効率化の追求があらゆる分野に及び、情報へのアクセス速度が遅い従来の手段がすべて排除されてしまっていること。",
+          "検索機能の進化によって情報入手が容易になった結果、人々の知的好奇心や学習意欲が完全に失われてしまっていること。"
+        ],
+        "answerIndex": 0,
+        "answer": "目的の答えに素早く到達できる反面、その過程で得られる偶然の気づきや、手足を動かした記憶が希薄になること。",
+        "explanation": "本文では、効率の良い検索機能によって目的の答えだけが瞬時に得られるようになる一方で、そこに至るまでの過程での気づきや記憶が残りづらくなることが指摘されています。選択肢のなかで、この内容を正確に言い換えているものが正解となります。他の選択肢にある「完全に失われている」「大幅に低下している」「すべて排除されている」といった極端な表現や断定は、本文の記述を超えた過度な一般化や誤りです。",
+        "evidence": "検索機能は目的の答えだけを瞬時に提示するため、その偶然性や、答えに至るまでの自らの手と頭を動かした記憶が残りづらい。",
+        "misconception": "本文の限定的な指摘（記憶や気づきの希薄化）を、「完全に失われた」「すべて排除された」といった極端なものや過度な一般化として捉えてしまう、範囲の誤認エラー。",
+        "marks": 2,
+        "id": "rise-japanese-6d35ca70b01a58fc",
+        "fingerprint": "80d096079fcacb99",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-05T17:07:28.917Z"
         }
       }
     ],
