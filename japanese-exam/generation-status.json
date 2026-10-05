@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "day": "2026-10-04",
+  "day": "2026-10-05",
   "attempted": 1,
   "added": 0,
   "state": "rejected",
@@ -8,5 +8,5 @@
   "generationTransport": "generateContent-v1beta",
   "maxCandidatesPerDay": 1,
   "maxCallsPerCandidate": 7,
-  "reason": "structure_rejected:evidence_quote:aichi-current-q1-3|error_span:aichi-current-q1-4:a|error_span:aichi-current-q1-4:b|error_span:aichi-current-q1-4:d|evidence_quote:aichi-current-q1-5|domain:aichi-current-q2-1|domain:aichi-current-q2-2|evidence_quote:aichi-current-q2-2"
+  "reason": "structure_rejected:question_ids_count|single_point:aichi-mock-q1-3|error_span:aichi-mock-q1-3:b|domain:aichi-mock-q2-1|error_span:aichi-mock-q2-1:d|domain:aichi-mock-q2-2|domain:aichi-mock-q3-1|domain:aichi-mock-q3-2"
 }
