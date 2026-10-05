@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-04-14-04-05Z",
-  "updatedAt": "2026-10-04T14:04:05.285Z",
+  "poolVersion": "2026-10-05-14-29-03Z",
+  "updatedAt": "2026-10-05T14:29:03.524Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2203,6 +2203,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-04T12:17:19.923Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.function_and_moving_points",
+        "difficulty": 8,
+        "question": "2点P, Qを結ぶ線分PQの中点Mの $x$ 座標が 3 となるとき、$t$ の値として正しいものを 1 つ選べ。",
+        "context": "座標平面上に直線 $l: y = 2x$ と直線 $m: y = -x + 8$ がある。点Pは原点Oを出発し、直線 $l$ 上を $x$ 座標が毎秒 1 の速さで $x > 0$ の方向に動く。点Qは点Pと同時に点(0, 8)を出発し、直線 $m$ 上を $x$ 座標が毎秒 2 の速さで $x > 0$ の方向に動く。点Pが動き始めてから $t$ 秒後の点Pの $x$ 座標を $t$ とする。",
+        "choices": [
+          "1.5",
+          "2",
+          "3",
+          "1"
+        ],
+        "answerIndex": 1,
+        "answer": "2",
+        "explanation": "点Pは直線 $y = 2x$ 上を $x$ 座標が毎秒 1 で動くため、$t$ 秒後の座標は $(t, 2t)$ である。点Qは直線 $y = -x + 8$ 上を $x$ 座標が毎秒 2 で動くため、$t$ 秒後の $x$ 座標は $2t$ であり、$y$ 座標は $-(2t) + 8 = -2t + 8$ となる。したがって、点Qの座標は $(2t, -2t + 8)$ である。線分PQの中点Mの $x$ 座標は $\\frac{t + 2t}{2} = \\frac{3}{2}t$ と表される。これが 3 になるとき、 $\\frac{3}{2}t = 3$ より $t = 2$ と求められる。",
+        "evidence": "点Pは原点Oを出発し、直線 $l$ 上を $x$ 座標が毎秒 1 の速さで $x > 0$ の方向に動く。",
+        "misconception": "点Qの $x$ 座標の速さが毎秒 2 であることを考慮せず、点Pと同じ速さとして計算してしまうと $t=3$ と誤る。",
+        "marks": 2,
+        "id": "rise-math-12605b49b12b7dc5",
+        "fingerprint": "fbbf35169c5b5054",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-05T14:29:03.497Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.geometry_ratio",
+        "difficulty": 8,
+        "question": "$\\triangle ABC$ の面積が 36 のとき、四角形AMPNの面積として正しいものを 1 つ選べ。",
+        "context": "$\\triangle ABC$ において、辺ABの中点をM、辺AC上に点Nをとる。線分BNとCMの交点をPとする。$AN:NC = 2:1$ である。",
+        "choices": [
+          "12",
+          "14",
+          "15",
+          "18"
+        ],
+        "answerIndex": 2,
+        "answer": "15",
+        "explanation": "座標やベクトルを用いて各点の位置を定めると、M(-3, 3)、N(4, 2)、P(1.5, 1.5) と求まる。四角形AMPNを対角線APで2つの三角形に分割してそれぞれの面積を求めると、三角形AMPの面積は 9、三角形APNの面積は 6 となり、合算すると 15 が得られる。",
+        "evidence": "$AN:NC = 2:1$ である。",
+        "misconception": "単純に全体の面積を $2:1$ や $1:1$ に分割するだけで、交点Pの位置を考慮せずに比率を誤る。",
+        "marks": 2,
+        "id": "rise-math-ad10146c7dc070d8",
+        "fingerprint": "84d315dbc6844add",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-05T14:29:03.497Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.simultaneous_equations",
+        "difficulty": 8,
+        "question": "$a$ と $b$ の値の組み合わせとして正しいものを 1 つ選べ。",
+        "context": "長机を1台ずつ隙間なく直線状に並べるとき、長机1台あたりの長さを $a$ cm、両端の余白をそれぞれ $b$ cm とすると、並べた机の台数を $n$ 台としたときの全体の長さ $L$ cm は $L = an + 2b$ で表される。6台並べたときの全体の長さは 310 cm であり、10台並べたときの全体の長さは 490 cm であった。",
+        "choices": [
+          "a = 50, b = 5",
+          "a = 40, b = 35",
+          "a = 45, b = 20",
+          "a = 48, b = 11"
+        ],
+        "answerIndex": 2,
+        "answer": "a = 45, b = 20",
+        "explanation": "関係式 $L = an + 2b$ に $n = 6, L = 310$ と $n = 10, L = 490$ を代入して連立方程式 $6a + 2b = 310$ と $10a + 2b = 490$ を作る。辺々を引くと $4a = 180$ より $a = 45$ となる。これを代入すると $270 + 2b = 310$ より $2b = 40$、すなわち $b = 20$ と求まる。",
+        "evidence": "6台並べたときの全体の長さは 310 cm であり、10台並べたときの全体の長さは 490 cm であった。",
+        "misconception": "余白が両端ではなく片側のみであると勘違いして $b$ の係数を 1 として計算してしまう誤り。",
+        "marks": 1,
+        "id": "rise-math-e4821b2f9d09a223",
+        "fingerprint": "f74522977c361fe1",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-05T14:29:03.497Z"
         }
       }
     ],
