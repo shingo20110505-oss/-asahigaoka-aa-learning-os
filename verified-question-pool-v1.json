@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-05-15-15-55Z",
-  "updatedAt": "2026-10-05T15:15:55.160Z",
+  "poolVersion": "2026-10-05-15-58-12Z",
+  "updatedAt": "2026-10-05T15:58:12.910Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -10241,6 +10241,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-04T13:10:34.079Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "江戸時代の産業や交通の発達に関する記述として、資料の内容から正しく読み取れるものを1つ選びなさい。",
+        "context": "資料：江戸時代の交通網と特産物の流通に関する記録。江戸時代中期以降、全国を結ぶ五街道や海の航路である西回り航路・東回り航路が整備され、各地で特産物が生産されるようになった。西回り航路は日本海側から瀬戸内海を経て大坂に至る航路であり、東北地方の米や日本海の海産物が大坂や江戸へ運ばれた。また、各地の藩は独自の統制を強め、特産物の専売制を行って財政の立て直しを図った。これに伴い、貨幣経済が全国に浸透し、農村でも商品作物の栽培が盛んになった。",
+        "choices": [
+          "西回り航路は、日本海側から瀬戸内海を経て大坂に至る航路であり、東北地方の米や海産物などの輸送に利用された。",
+          "東回り航路は、日本海側を経由して大坂に直接向かう航路であり、すべての物資が大坂に集められた。",
+          "江戸時代の交通網は五街道のみであり、海上交通路は一切整備されていなかった。",
+          "藩は特産物の専売制を禁止し、自由な商業取引を全面的に奨励することで財政を立て直そうとした。"
+        ],
+        "answerIndex": 0,
+        "answer": "西回り航路は、日本海側から瀬戸内海を経て大坂に至る航路であり、東北地方の米や海産物などの輸送に利用された。",
+        "explanation": "資料には「西回り航路は日本海側から瀬戸内海を経て大坂に至る航路であり、東北地方の米や日本海の海産物が大坂や江戸へ運ばれた」と明確に記されています。他の選択肢は資料の記述や歴史的事実と矛盾します。",
+        "evidence": "西回り航路は日本海側から瀬戸内海を経て大坂に至る航路であり、東北地方の米や日本海の海産物が大坂や江戸へ運ばれた。",
+        "misconception": "航路の名称や経由地、あるいは藩の経済政策（専売制の有無）について、資料の記述を正確に読み取れていない場合、誤った選択肢を選んでしまう可能性があります。",
+        "marks": 2,
+        "id": "rise-social-fb51b657bb5abef3",
+        "fingerprint": "88d5e4a8bfee8a12",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-05T15:58:12.453Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "日本の工業地帯・地域の特徴と日本の地形や人口分布の関係に関する記述として、最も適切なものを1つ選びなさい。",
+        "context": "資料：日本の主な工業地域に関する統計と立地条件。太平洋ベルト地帯には、京浜・中京・阪神などの主要な工業都市が集中しており、輸出入に便利な平野や湾岸部が工場用地として利用されてきた。これに対し、内陸部や東北地方などの一部地域では、高速道路網の整備や広い敷地を求めて、ICなどの電子部品工場や自動車関連工場が分散して立地するようになった。また、過疎化が進む地域では、地元の雇用確保や産業振興のために工場誘致を進める動きが見られる。",
+        "choices": [
+          "過疎地域においては、工場の誘致が一切行われておらず、産業の多様化は進んでいない。",
+          "太平洋ベルト地帯には輸出入に便利な湾岸部や平野が広がり、主要な工業都市が集中している。",
+          "すべての工業は、原料の産地である山間部に直接立地しなければならないという制約がある。",
+          "内陸部には工場が一切立地せず、すべての製造業は臨海部に集中している。"
+        ],
+        "answerIndex": 1,
+        "answer": "太平洋ベルト地帯には輸出入に便利な湾岸部や平野が広がり、主要な工業都市が集中している。",
+        "explanation": "資料の記述「太平洋ベルト地帯には、京浜・中京・阪神などの主要な工業都市が集中しており、輸出入に便利な平野や湾岸部が工場用地として利用されてきた」という内容がそのまま正解となります。",
+        "evidence": "太平洋ベルト地帯には、京浜・中京・阪神などの主要な工業都市が集中しており、輸出入に便利な平野や湾岸部が工場用地として利用されてきた。",
+        "misconception": "全ての工業が臨海部や原料産地にのみ立地するという固定観念や、内陸部での工場進出が進んでいないという誤解。",
+        "marks": 2,
+        "id": "rise-social-41eb322766339a5b",
+        "fingerprint": "5016283f7c3edd21",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-05T15:58:12.453Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "日本国憲法における基本的人権と民主主義の仕組みに関する記述として、資料の内容に基づいて正しいものを1つ選びなさい。",
+        "context": "資料：現代社会と民主主義に関するレポート。民主主義社会においては、国民が主権を持ち、選挙などを通じて政治に参加する権利が保障されている。また、憲法によって基本的人権が保障されており、法の下の平等や表現の自由などが定められている。しかし、権利の行使には責任が伴い、他人の人権を侵害してはならないという制限がある。これらは「公共の福祉」による制約と呼ばれ、社会の秩序と公正を維持するために不可欠な考え方である。",
+        "choices": [
+          "「公共の福祉」という概念は、個人の権利を不当に奪うためだけに用いられる。",
+          "基本的人権の行使には制限がなく、他人の権利を侵害しても自由に認められる。",
+          "民主主義社会における選挙は、国民が政治に参加するための重要な手段である。",
+          "表現の自由や法の下の平等は、憲法ではなく個々の自治体の条例によってのみ保障されている。"
+        ],
+        "answerIndex": 2,
+        "answer": "民主主義社会における選挙は、国民が政治に参加するための重要な手段である。",
+        "explanation": "資料には「選挙などを通じて政治に参加する権利が保障されている」とあり、民主主義社会における選挙の重要性が述べられています。「公共の福祉」による制限があるため他の選択肢は不適切です。",
+        "evidence": "民主主義社会においては、国民が主権を持ち、選挙などを通じて政治に参加する権利が保障されている。",
+        "misconception": "人権が無制限であるという誤解や、「公共の福祉」の意味を権利の不当な剥奪と混同してしまう思い込み。",
+        "marks": 2,
+        "id": "rise-social-543d1cc1ef7ebaa5",
+        "fingerprint": "2eee84380d189eee",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-05T15:58:12.453Z"
         }
       }
     ]
