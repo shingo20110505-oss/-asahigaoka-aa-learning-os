@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-06-13-15-17Z",
-  "updatedAt": "2026-10-06T13:15:17.646Z",
+  "poolVersion": "2026-10-06-13-36-43Z",
+  "updatedAt": "2026-10-06T13:36:43.811Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -7800,6 +7800,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-05T15:15:55.130Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.science.physics.ohm_law_circuit",
+        "difficulty": 8,
+        "question": "図1の回路で、スイッチを入れてからの時間と電圧計の示す値の関係について、正しいものはどれか。",
+        "context": "図1は、電熱線に加わる電圧を変えたときの電流の大きさを調べるために、電源装置、電流計、電圧計、スイッチ、および抵抗の大きさが等しい2つの電熱線XとYを組み合わせてつくった回路である。電熱線Xの両端の電圧を測定したところ、回路全体の電源電圧を6.0Vに保った状態で、スイッチを入れると電熱線X単体に比べ、直列回路の場合と並列回路の場合で電圧計の示す値が異なった。並列回路にしたとき、電熱線Xにかかる電圧は6.0Vであった。",
+        "choices": [
+          "並列回路にしたとき、電熱線Xにかかる電圧は直列回路にしたときよりも小さくなる。",
+          "直列回路にしたとき、電熱線Xにかかる電圧は電源電圧の半分である3.0Vになる。",
+          "直列回路にしたとき、電熱線Xにかかる電圧は並列回路にしたときよりも大きくなる。",
+          "並列回路にしたとき、電熱線Xにかかる電圧は電源電圧の半分である3.0Vになる。"
+        ],
+        "answerIndex": 1,
+        "answer": "直列回路にしたとき、電熱線Xにかかる電圧は電源電圧の半分である3.0Vになる。",
+        "explanation": "抵抗の大きさが等しい2つの電熱線XとYを直列に接続した場合、電源電圧はそれぞれの電熱線に等しく分配されるため、電熱線Xにかかる電圧は電源電圧6.0Vの半分の3.0Vになります。一方、並列回路ではそれぞれの電熱線に電源電圧がそのまま加わるため6.0Vになります。したがって、直列回路にしたときの電圧は3.0Vとなります。最も強力な誤答は、並列回路の電圧と直列回路の電圧の関係を混同するものです。",
+        "evidence": "抵抗の大きさが等しい2つの電熱線XとYを組み合わせてつくった回路である",
+        "misconception": "直列回路と並列回路における電圧のかかり方の違いを混同し、直列でも電源電圧がそのままかかると誤解している。",
+        "marks": 2,
+        "id": "rise-science-86fb158298f845b6",
+        "fingerprint": "bc19170b0b7aef41",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-06T13:36:27.496Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.science.chemistry.aqueous_solution_density",
+        "difficulty": 8,
+        "question": "実験で得られた質量パーセント濃度と密度の関係について、適切なものはどれか。",
+        "context": "表1は、室温20℃における塩化ナトリウム水溶液の質量パーセント濃度と密度の関係を示したものである。濃度が5.0%のときの密度は1.04 g/cm^3、10.0%のときの密度は1.07 g/cm^3、15.0%のときの密度は1.11 g/cm^3、20.0%のときの密度は1.15 g/cm^3であった。この水溶液100cm^3に含まれる塩化ナトリウムの質量を求めたとき、濃度が高くなるにつれてどのようなことがいえるか。",
+        "choices": [
+          "質量パーセント濃度と水溶液の密度には、比例関係が成り立つ。",
+          "質量パーセント濃度に関わらず、水溶液の密度は一定である。",
+          "質量パーセント濃度が高くなるにつれて、水溶液の密度は大きくなる。",
+          "質量パーセント濃度が高くなるにつれて、水溶液の密度は小さくなる。"
+        ],
+        "answerIndex": 2,
+        "answer": "質量パーセント濃度が高くなるにつれて、水溶液の密度は大きくなる。",
+        "explanation": "表1のデータより、濃度が5.0%で1.04 g/cm^3、10.0%で1.07 g/cm^3、15.0%で1.11 g/cm^3、20.0%で1.15 g/cm^3となっており、濃度が高くなるにつれて密度も増加していることがわかります。強すぎる誤答として、濃度と密度が比例すると錯覚する選択肢があげられますが、値の増加割合は一定ではないため比例ではありません。",
+        "evidence": "濃度が5.0%のときの密度は1.04 g/cm^3、10.0%のときの密度は1.07 g/cm^3、15.0%のときの密度は1.11 g/cm^3、20.0%のときの密度は1.15 g/cm^3であった。",
+        "misconception": "密度は濃度に比例して直線的に増加すると誤って仮定してしまう。",
+        "marks": 2,
+        "id": "rise-science-533a1c10a75dedc4",
+        "fingerprint": "799392c9cbece01b",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-06T13:36:27.496Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science",
+        "difficulty": 8,
+        "question": "金属の酸化と質量変化に関する実験において、図の装置を用いてステンレス粉末4.0gを十分に加熱したところ、加熱後の粉末全体の質量が5.0gになった。次に、同じステンレス粉末6.0gを用いて同様の加熱を行ったが、途中で加熱を止めたため、加熱後の粉末全体の質量が7.1gであった。この途中で加熱を止めた粉末について、まだ酸化せずに残っているステンレスの質量は何gか求めよ。",
+        "context": "ステンレス粉末は、加熱すると酸素と結びついて一定の割合で酸化物になる。完全に酸化したとき、ステンレス粉末4.0gの質量は5.0gになる。さらに、ある質量のステンレス粉末を途中で加熱を止めたところ、質量が7.1gになった。",
+        "choices": [
+          "1.6g",
+          "2.0g",
+          "2.4g",
+          "1.2g"
+        ],
+        "answerIndex": 0,
+        "answer": "1.6g",
+        "explanation": "ステンレス粉末が完全に酸化するとき、金属の質量と結びつく酸素の質量の比は一定です。4.0gのステンレス粉末が完全に酸化すると5.0gになるため、ステンレス4.0gに対して酸素1.0gが結合します。つまり、ステンレスと結合する酸素の比率は、ステンレスの質量の4分の1（1.0/4.0 = 0.25）です。いま、6.0gのステンレスを加熱して全体が7.1gになったということは、結合した酸素の質量は 7.1g - 6.0g = 1.1g です。完全に酸化したと仮定すると、6.0gのステンレスが結合する酸素の質量は 6.0g × 0.25 = 1.5g です。実際に結合した酸素は1.1gであるため、まだ反応していない酸素の不足分は 1.5g - 1.1g = 0.4g です。酸素0.4g不足しているということは、その0.4g分の酸素と結びつくはずのステンレスがまだ反応せずに残っていることになります。必要なステンレスの質量は、酸素の質量0.4gの4倍であるため、0.4g × 4 = 1.6g と求められます。",
+        "evidence": "完全に酸化したとき、ステンレス粉末4.0gの質量は5.0gになる。",
+        "misconception": "反応せずに残ったステンレスの質量を、全体の質量から単純に引いた値や、比例計算の誤りから生じる数値をそのまま選んでしまう誤解。",
+        "marks": 2,
+        "id": "rise-science-575310114732fff5",
+        "fingerprint": "7fe50d51fe63d6bf",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-06T13:36:43.782Z"
         }
       }
     ],
