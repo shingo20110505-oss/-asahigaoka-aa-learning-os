@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-06-14-09-35Z",
-  "updatedAt": "2026-10-06T14:09:35.004Z",
+  "poolVersion": "2026-10-06-15-07-51Z",
+  "updatedAt": "2026-10-06T15:07:51.475Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -5256,6 +5256,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-05T17:07:28.917Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.japanese.reading",
+        "difficulty": 8,
+        "question": "文章の筆者の主張や資料の読み取りとして最も適当なものを一つ選びなさい。",
+        "context": "愛知県内のとある伝統的産業の町では、単なる観光地の保存にとどまらず、地域の住民が日常的に歴史的建造物を活用することで、活気を維持している。古い町並みをカフェや工房として再利用する取り組みは、外部からの観光客を呼び込むだけでなく、住民自身が地域への愛着を再確認する契機となっている。筆者は、文化財は厳重に保護して遠ざけるべきものではなく、現代の生活の中に溶け込ませることで真の価値を発揮すると考えている。",
+        "choices": [
+          "歴史的建造物は観光客の誘致を最優先し、住民の立ち入りは制限すべきである。",
+          "文化財は日常の生活空間に取り入れることで、本来の価値や活力を発揮する。",
+          "古い町並みは商業的な開発を一切行わず、完全に昔のままの状態で静態保存すべきである。",
+          "地域への愛着は外部からの観光客が増加するほど自然に高まるものである。"
+        ],
+        "answerIndex": 1,
+        "answer": "文化財は日常の生活空間に取り入れることで、本来の価値や活力を発揮する。",
+        "explanation": "本文では、文化財を厳重に保護するだけでなく現代の生活の中に溶け込ませることが重要であると述べられています。選択肢の一つは、日常の生活空間に取り入れることで価値を発揮するという筆者の主旨と完全に一致しています。よくある誤解として、観光客の誘致や商業化を最優先すべきだとする極端な見方や、完全な静態保存を主張する見方がありますが、これらは本文の趣旨から外れています。",
+        "evidence": "文化財は厳重に保護して遠ざけるべきものではなく、現代の生活の中に溶け込ませることで真の価値を発揮すると考えている。",
+        "misconception": "観光地としての経済効果や商業的発展のみを重視し、住民の生活との調和という視点を見落とすこと。",
+        "marks": 2,
+        "id": "rise-japanese-84ae7a9b4a29c3c7",
+        "fingerprint": "68212ee65f0c1804",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-06T15:07:51.453Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.japanese.argument",
+        "difficulty": 8,
+        "question": "筆者が「伝統的な敬語表現の価値」についてどのように述べているか、最も適切なものを一つ選びなさい。",
+        "context": "現代社会において、コミュニケーションの効率性が重視されるあまり、簡略化された言葉遣いが好まれる傾向にある。しかし、筆者は伝統的な敬語表現が単なる形式的なマナーにとどまらず、相手への深い敬意と心理的な距離感を適切に調整する高度な手段であると指摘する。言葉の簡略化は便利である一方、人間関係の機微を損なう危険性を孕んでいるため、状況に応じた使い分けが不可欠である。",
+        "choices": [
+          "敬語表現の形式を守ることだけが、現代社会において唯一重視されるべきマナーである。",
+          "敬語表現は現代の効率的なコミュニケーションにおいては不要なものである。",
+          "伝統的な敬語は、人間関係の距離感を調整し相手への敬意を示す重要な手段である。",
+          "言葉の簡略化が進むことで、すべての人間関係が円滑になり深まりを見せている。"
+        ],
+        "answerIndex": 2,
+        "answer": "伝統的な敬語は、人間関係の距離感を調整し相手への敬意を示す重要な手段である。",
+        "explanation": "本文では、伝統的な敬語表現が単なる形式ではなく、相手への敬意と心理的距離感を調整する手段であると述べられています。したがって、人間関係の距離感を調整し敬意を示す重要な手段とする選択肢が正解となります。効率性を過剰に肯定するものや、形式のみを絶対視するものは誤りです。",
+        "evidence": "伝統的な敬語表現が単なる形式的なマナーにとどまらず、相手への深い敬意と心理的な距離感を適切に調整する高度な手段であると指摘する。",
+        "misconception": "効率性や簡略化のみを時代の進歩と捉え、伝統的表現の持つ心理的・社会的機能を軽視すること。",
+        "marks": 2,
+        "id": "rise-japanese-3515fc95e9d3fbd1",
+        "fingerprint": "90f1de7239e562f0",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-06T15:07:51.453Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.japanese.comparison",
+        "difficulty": 8,
+        "question": "二つの博物館の展示方針の共通点または相違点について、本文の記述に合致するものを一つ選びなさい。",
+        "context": "地域の歴史を伝える博物館において、A館は実物をガラスケース越しに展示する静的な手法をとり、来館者に厳かな鑑賞体験を提供している。一方、B館は来館者が実際に道具に触れたり体験したりできる参加型の展示を導入し、生活史の追体験を重視している。両館はアプローチこそ異なるが、地域の歴史を単なる過去の出来事ではなく、現在につながる生きた経験として伝えようとする点において目的を同じくしている。",
+        "choices": [
+          "両館は展示手法が異なるものの、地域の歴史を生きた経験として伝えるという目的は共通している。",
+          "A館は体験型展示を重視し、B館はガラスケース越しの静的な鑑賞を主たる方針としている。",
+          "両館ともに実物に触れる展示を採用しており、来館者に厳かな鑑賞体験を提供している。",
+          "B館は過去の出来事として歴史を伝えることに終始しており、現在へのつながりは意識していない。"
+        ],
+        "answerIndex": 0,
+        "answer": "両館は展示手法が異なるものの、地域の歴史を生きた経験として伝えるという目的は共通している。",
+        "explanation": "本文ではA館が静的な展示、B館が参加型の体験型展示という違いがあることが述べられていますが、最後の文で両館ともに歴史を現在につながる生きた経験として伝える目的が共通していることが示されています。したがって、手法は異なるが目的は共通しているとする選択肢が正解です。",
+        "evidence": "両館はアプローチこそ異なるが、地域の歴史を単なる過去の出来事ではなく、現在につながる生きた経験として伝えようとする点において目的を同じくしている。",
+        "misconception": "展示手法の相違点に囚われるあまり、両者が共有している根底の目的を見落としてしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-ea977edc87aa2d50",
+        "fingerprint": "0988b0a7a75c2319",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-06T15:07:51.453Z"
         }
       }
     ],
