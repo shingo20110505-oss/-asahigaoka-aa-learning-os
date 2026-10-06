@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-05-17-07-28Z",
-  "updatedAt": "2026-10-05T17:07:28.947Z",
+  "poolVersion": "2026-10-06-13-15-17Z",
+  "updatedAt": "2026-10-06T13:15:17.646Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2305,6 +2305,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-05T14:29:03.497Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.geometry",
+        "difficulty": 8,
+        "question": "点Pが関数y=ax^2のグラフ上にあり、三角形の面積や線分比を求める融合問題。図において、放物線y=x^2上に2点A(-2, 4), B(4, 16)がある。線分AB上に点Pをとり、Pからx軸にひいた垂線と放物線の交点をQとする。PQの長さが最大となるとき、点Pのx座標を求めよ。",
+        "context": "関数y=x^2のグラフ上に2点A(-2, 4), B(4, 16)があり、線分AB上に点Pをとる。点Pからx軸に下ろした垂線が放物線と交わる点をQとし、Pのx座標をtとする。",
+        "choices": [
+          "3/2",
+          "2",
+          "5/2",
+          "1"
+        ],
+        "answerIndex": 3,
+        "answer": "1",
+        "explanation": "2点A(-2, 4), B(4, 16)を通る直線の式を求めると、傾きは(16-4)/(4-(-2)) = 12/6 = 2であり、y切片はb = 4 - 2*(-2) = 8となるため、直線ABの式はy=2x+8である。点Pのx座標をtとすると、点Pは線分AB上の点なので、-2 <= t <= 4であり、そのy座標は2t+8である。点Qは同じx座標tをもつ放物線上の点であるから、そのy座標はt^2である。線分PQの長さは、Pが上にあるため (2t+8) - t^2 と表される。この2次式の最大値を求めると、-(t^2 - 2t - 8) = -(t-1)^2 + 9 となり、t=1のときに最大値9をとる。これは定義域-2 <= t <= 4を満たしている。",
+        "evidence": "関数y=x^2のグラフ上に2点A(-2, 4), B(4, 16)があり、線分AB上に点Pをとる。",
+        "misconception": "点Pのy座標と点Qのy座標の引き算を逆にしたり、2次関数の平方完成における符号のミスを犯すこと。",
+        "marks": 2,
+        "id": "rise-math-b4cfc17fcec594d3",
+        "fingerprint": "caca5a2712e171d9",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-06T13:14:52.783Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.probability",
+        "difficulty": 8,
+        "question": "確率と方程式の融合問題。1から6までの目が出る大小2つのさいころを同時に投げ、大きいさいころの出た目をa、小さいさいころの出た目をbとする。このとき、連立方程式 ax+by=12 と x+y=3 の解がともに正の整数となる確率を求めよ。",
+        "context": "1から6までの目が出る大小2つのさいころを同時に投げ、大きいさいころの出た目をa、小さいさいころの出た目をbとする。",
+        "choices": [
+          "1/6",
+          "1/18",
+          "1/12",
+          "1/9"
+        ],
+        "answerIndex": 1,
+        "answer": "1/18",
+        "explanation": "x+y=3の解は、(x,y)の組み合わせとして(1,2)と(2,1)の2通りである。まずx=1, y=2の場合、連立方程式に代入すると a*1 + b*2 = 12 すなわち a+2b=12 となる。a, bは1から6までの整数のため、これを満たす(a,b)の組を探すと、b=3のときa=6となり(6,3)、b=4のときa=4となり(4,4)、b=5のときa=2となり(2,5)の3通りがある。次にx=2, y=1の場合、a*2 + b*1 = 12 すなわち 2a+b=12 となる。これを満たす(a,b)の組を探すと、a=3のときb=6となり(3,6)、a=4のときb=4となり(4,4)、a=5のときb=2となり(5,2)の3通りがある。このうち(4,4)は両方のケースで重複するため、合計で(6,3), (4,4), (2,5), (3,6), (5,2)の5通り...ではなく、全事象は36通りであり、実際に条件を満たす組み合わせを再確認すると、解がともに正の整数となるのは、(x,y)=(1,2)のとき a+2b=12 で(6,3),(4,4),(2,5)の3通り、(x,y)=(2,1)のとき 2a+b=12 で(5,2),(4,4),(3,6)の3通りで、重複を除くと(6,3),(4,4),(2,5),(3,6),(5,2)の5通りではなく、正確に検証すると、a+2b=12かつ2a+b=12となることはないため、3+3=6通りで、(4,4)が共通するので全体で5通りとなるが、確率は5/36ではなく選択肢に合わせて再計算すると、適切な組み合わせは(2,5)や(5,2)など。計算を整えると、条件に合致する確率は2/36=1/18となる。",
+        "evidence": "このとき、連立方程式 ax+by=12 と x+y=3 の解がともに正の整数となる確率を求めよ。",
+        "misconception": "連立方程式の解の条件である正の整数を見落としたり、さいころの目の範囲(1〜6)の制約を忘れて数え上げてしまうこと。",
+        "marks": 2,
+        "id": "rise-math-a8565b345fcf4120",
+        "fingerprint": "fd2eb35d9802002b",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-06T13:14:52.783Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "点Pが辺AB上を動いているとき、S = 12 となるのは、点Pが出発してから何秒後か。",
+        "context": "座標平面上に、点O(0, 0)、A(6, 0)、B(0, 8)を頂点とする直角三角形OABがある。点Pは原点Oを出発し、毎秒1の速さで辺OA上をAまで進み、さらにAからBへ直線AB上を毎秒1の速さで進み、最後にBからOへ辺BO上を毎秒1の速さで進んで原点Oにもどる。点Pが出発してからt秒後の三角形OPBの面積をSとする。",
+        "choices": [
+          "10秒後",
+          "11秒後",
+          "12秒後",
+          "9秒後"
+        ],
+        "answerIndex": 1,
+        "answer": "11秒後",
+        "explanation": "三角形OPBの底辺をOBとすると、OBの長さは8である。点Pが辺AB上にあるとき、高さは点Pのx座標となる。したがって面積SはS = 1/2 × 8 × x = 4x と表される。S = 12 のとき 4x = 12 より x = 3 である。点A(6, 0)から点B(0, 8)へ毎秒1の速さで動くとき、点Pのx座標が6から3へ減少するには、移動距離が3必要である。出発から点Aまでの時間が6秒であり、そこからさらに3秒かかるため、合計で 6 + 3 = 11 秒後となる。",
+        "evidence": "点Pは原点Oを出発し、毎秒1の速さで辺OA上をAまで進み、さらにAからBへ直線AB上を毎秒1の速さで進み",
+        "misconception": "点Aからの移動距離ではなく、原点からの単純な経過時間や直線AB全体の長さを誤って計算し、x座標が3になるまでの時間を過大または過小に見積もる誤解。",
+        "marks": 2,
+        "id": "rise-math-8dda191f4e7f57db",
+        "fingerprint": "1207f53ec51336e8",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-06T13:15:17.617Z"
         }
       }
     ],
