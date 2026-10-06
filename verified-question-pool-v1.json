@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-06-13-36-43Z",
-  "updatedAt": "2026-10-06T13:36:43.811Z",
+  "poolVersion": "2026-10-06-14-09-35Z",
+  "updatedAt": "2026-10-06T14:09:35.004Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -10649,6 +10649,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-05T15:58:12.453Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "愛知県内の農業や工業の地域的特徴に関して、記述された資料の記述として正しいものはどれか。次の選択肢の中から1つ選びなさい。",
+        "context": "【資料：愛知県の産業に関するメモ】\n・渥美半島などの地域では温暖な気候や用水の整備を活かし、キャベツや菊などの近郊農業・施設園芸農業が盛んである。\n・名古屋市周辺の内陸部では、伝統的な伝統工芸品の生産や大規模な製鉄業のみが経済の中心を占め、自動車関連産業はほとんど見られない。\n・濃尾平野の木曽川流域では、水害を防ぐために輪中が発達したが、現在では水田農業だけでなく稲作の転換による野菜栽培なども行われている。\n・矢作川流域の豊田市周辺では、かつての養蚕業の伝統から発展して、今日では航空機部品の生産が最も中心的な工業となっている。",
+        "choices": [
+          "渥美半島などの地域では温暖な気候や用水の整備を活かし、キャベツや菊などの近郊農業・施設園芸農業が盛んである。",
+          "名古屋市周辺の内陸部では、伝統的な伝統工芸品の生産や大規模な製鉄業のみが経済の中心を占め、自動車関連産業はほとんど見られない。",
+          "濃尾平野の木曽川流域では、水害を防ぐために輪中が発達したが、現在では水田農業だけでなく稲作の転換による野菜栽培なども行われている。",
+          "矢作川流域の豊田市周辺では、かつての養蚕業の伝統から発展して、今日では航空機部品の生産が最も中心的な工業となっている。"
+        ],
+        "answerIndex": 0,
+        "answer": "渥美半島などの地域では温暖な気候や用水の整備を活かし、キャベツや菊などの近郊農業・施設園芸農業が盛んである。",
+        "explanation": "渥美半島は温暖な気候や用水（豊川用水など）に恵まれ、大都市圏に向けたキャベツや菊などの近郊農業・施設園芸農業が非常に盛んです。他の選択肢について、名古屋市周辺や豊田市周辺は自動車関連産業が中心であり、航空機部品や製鉄のみが中心であるなどの記述は誤りです。また、木曽川流域の輪中地域の記述も部分的に不正確な点が含まれます。",
+        "evidence": "渥美半島などの地域では温暖な気候や用水の整備を活かし、キャベツや菊などの近郊農業・施設園芸農業が盛んである。",
+        "misconception": "愛知県の工業といえば自動車産業であるが、特定の地域（豊田市や名古屋市周辺）を過小評価したり、誤った工業品目を結びつけてしまう誤解。",
+        "marks": 2,
+        "id": "rise-social-f98a20a190947d9d",
+        "fingerprint": "9679175129fea0cf",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-06T14:09:25.992Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "中世から近世にかけての日本の社会や経済の変動に関する次の記述のうち、最も適切なものはどれか。次の選択肢の中から1つ選びなさい。",
+        "context": "【資料：中世・近世の歴史的動向メモ】\n・鎌倉時代、御恩と奉公の主従関係を基盤とした封建社会が成立し、新古今和歌集などの文化が栄えた。\n・室町時代、日明貿易を通じて銅銭が大量に流入したが、国内の経済取引には物々交換のみが使われ貨幣は浸透しなかった。\n・江戸時代初期、幕府は全国の直轄地や大名領を厳しく統制するため、武家諸法度や禁中並公家諸法度を制定した。\n・江戸時代中期、新田開発が進むとともに、商品作物の栽培が全国に広がり、各藩では藩の財政立て直しのため専売制を実施した動きが見られた。",
+        "choices": [
+          "江戸時代初期、幕府は全国の直轄地や大名領を厳しく統制するため、武家諸法度や禁中並公家諸法度を制定した。",
+          "江戸時代中期、新田開発が進むとともに、商品作物の栽培が全国に広がり、各藩では藩の財政立て直しのため専売制を実施した動きが見られた。",
+          "鎌倉時代、御恩と奉公の主従関係を基盤とした封建社会が成立し、新古今和歌集などの文化が栄えた。",
+          "室町時代、日明貿易を通じて銅銭が大量に流入したが、国内の経済取引には物々交換のみが使われ貨幣は浸透しなかった。"
+        ],
+        "answerIndex": 0,
+        "answer": "江戸時代初期、幕府は全国の直轄地や大名領を厳しく統制するため、武家諸法度や禁中並公家諸法度を制定した。",
+        "explanation": "江戸時代初期に幕府が体制を固めるため、武家諸法度や禁中並公家諸法度を制定した歴史的事実は正しいです。室町時代の銅銭に関する記述は、貨幣経済が急速に発達した点と矛盾するため誤りです。他の選択肢も部分的な誤りや引っかけが含まれています。",
+        "evidence": "江戸時代初期、幕府は全国の直轄地や大名領を厳しく統制するため、武家諸法度や禁中並公家諸法度を制定した。",
+        "misconception": "室町時代などの貨幣流通や、中世・近世の文化や制度の成立時期を混同する誤解。",
+        "marks": 2,
+        "id": "rise-social-301fe9c156da929d",
+        "fingerprint": "f2437fe038868fbe",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-06T14:09:25.992Z"
         }
       }
     ]
