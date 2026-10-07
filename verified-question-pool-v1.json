@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-07-14-28-05Z",
-  "updatedAt": "2026-10-07T14:28:05.891Z",
+  "poolVersion": "2026-10-07-15-32-22Z",
+  "updatedAt": "2026-10-07T15:32:22.120Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -5358,6 +5358,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-06T15:07:51.453Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading",
+        "difficulty": 8,
+        "question": "筆者が「一見すると非効率的で無駄に見えるプロセス」について述べている内容として、最も適当なものを次の中から一つ選べ。",
+        "context": "現代社会において、情報処理の効率性は絶対的な価値として扱われがちである。瞬時に判断を下し、最適解を導くアルゴリズムが生活のあらゆる領域に浸透している。しかし、文学や芸術を鑑賞する際、あるいは他者と深い対話を行う際、私たちはしばしば『寄り道』や『立ち止まり』を経験する。この、一見すると非効率的で無駄に見えるプロセスこそが、人間の感性を豊かにし、固定観念から解放される契機となるのである。",
+        "choices": [
+          "現代社会の生活領域に素早く判断を下す仕組みを浸透させること",
+          "文学や芸術における絶対的な価値を数理的に分析して明らかにすること",
+          "情報処理の効率性を高めるための技術的なアルゴリズムを構築すること",
+          "人間の感性を豊かにし、固定観念から解放される契機をもたらすこと"
+        ],
+        "answerIndex": 3,
+        "answer": "人間の感性を豊かにし、固定観念から解放される契機をもたらすこと",
+        "explanation": "本文では、一見非効率に見えるプロセスが人間の感性を豊かにし固定観念から解放する契機になると述べられている。選択肢はこれを的確に反映している。",
+        "evidence": "この、一見すると非効率的で無駄に見えるプロセスこそが、人間の感性を豊かにし、固定観念から解放される契機となるのである。",
+        "misconception": "効率性を追求する現代社会の仕組みやアルゴリズム自体のメリットと混同するエラー。",
+        "marks": 2,
+        "id": "rise-japanese-c8f10b6b7d9060f7",
+        "fingerprint": "e72a58af86733b19",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-07T15:32:22.098Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reasoning",
+        "difficulty": 8,
+        "question": "文中において、現代の読者が古歌を読み解く際に求められている姿勢として、最も適当なものを次の中から一つ選べ。",
+        "context": "古歌を鑑賞する際、単に単語の意味や文法を解釈するだけでは、その歌が持つ真の味わいに到達することはできない。歌人は、自然の移り変わりや日常の些細な出来事を通して、言葉の裏に沈潜する個人の内面や、当時の人々が共有していた世界観を表現しようとした。したがって、私たち現代の読者は、自らの視点を当時の文化的背景に重ね合わせ、詠み手の息づかいを想像しながら読み解く姿勢が求められるのである。",
+        "choices": [
+          "自らの視点を当時の文化的背景に重ね合わせ、詠み手の息づかいを想像すること",
+          "現代の日常における些細な出来事と完全に切り離して鑑賞すること",
+          "単語の意味や文法事項の正確な分析に特化して解釈を進めること",
+          "自然の移り変わりを客観的なデータとして数値化して捉えること"
+        ],
+        "answerIndex": 0,
+        "answer": "自らの視点を当時の文化的背景に重ね合わせ、詠み手の息づかいを想像すること",
+        "explanation": "本文の後半に自らの視点を当時の文化的背景に重ね合わせ詠み手の息づかいを想像しながら読み解く姿勢が求められると明記されている。",
+        "evidence": "自らの視点を当時の文化的背景に重ね合わせ、詠み手の息づかいを想像しながら読み解く姿勢が求められるのである。",
+        "misconception": "古語の辞書的な意味や文法解析だけを重視すれば十分であると誤解するパターン。",
+        "marks": 2,
+        "id": "rise-japanese-2aa0572b717091ff",
+        "fingerprint": "4e7f5655ba1db127",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-07T15:32:22.098Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.structure",
+        "difficulty": 8,
+        "question": "筆者が述べる「コミュニケーション」の本質についての説明として、最も適当なものを次の中から一つ選べ。",
+        "context": "私たちは言葉を用いて他者と意思疎通を図る際、しばしば『伝わった』と安易に思い込みがちである。しかし、言葉という記号は、発話者の意図を完全に無傷のまま受信者に届けることはできない。言葉の背後には、それぞれの人生経験や文化的文脈が複雑に絡み合っており、その隙間を埋めるための想像力や共感の作業が不可欠となる。つまり、コミュニケーションとは、情報を一方的に伝達する技術ではなく、互いのズレを引き受けながら意味を共同で生成していくプロセスなのだ。",
+        "choices": [
+          "情報を一方的に送り届けることで誤解やズレをあらかじめ解消しておくこと",
+          "互いのズレを引き受けながら意味を共同で生成していくプロセスであること",
+          "発話者の意図を記号化して受信者へ無傷のまま完璧に伝達すること",
+          "互いの人生経験や文化的文脈の違いを完全に排除して合意形成すること"
+        ],
+        "answerIndex": 1,
+        "answer": "互いのズレを引き受けながら意味を共同で生成していくプロセスであること",
+        "explanation": "本文の結びにおいてコミュニケーションは情報を一方的に伝達する技術ではなく互いのズレを引き受けながら意味を共同で生成していくプロセスと結論づけられている。",
+        "evidence": "コミュニケーションとは、情報を一方的に伝達する技術ではなく、互いのズレを引き受けながら意味を共同で生成していくプロセスなのだ。",
+        "misconception": "コミュニケーションを単なる情報伝達の効率や正確性の高さと捉えてしまうエラー。",
+        "marks": 2,
+        "id": "rise-japanese-58c9e881660339c5",
+        "fingerprint": "31206c5c413daeb6",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-07T15:32:22.098Z"
         }
       }
     ],
