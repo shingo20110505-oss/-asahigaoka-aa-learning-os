@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-06-15-07-51Z",
-  "updatedAt": "2026-10-06T15:07:51.475Z",
+  "poolVersion": "2026-10-07-13-54-35Z",
+  "updatedAt": "2026-10-07T13:54:35.343Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -8004,6 +8004,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-06T13:36:43.782Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.physics.current_and_voltage",
+        "difficulty": 8,
+        "question": "回路全体の消費電力が最も大きくなる組み合わせを、次の選択肢から1つ選びなさい。",
+        "context": "図のような電源電圧が一定の回路において、抵抗器Xと抵抗器Yを用いて実験を行った。抵抗器Xの抵抗値は10Ω、抵抗器Yの抵抗値は20Ωである。電源電圧は10Vで一定とする。回路の接続方法として、抵抗器Xと抵抗器Yを直列につないだ場合と、並列につないだ場合、およびそれぞれ単独でつないだ場合を比較する。",
+        "choices": [
+          "抵抗器Xと抵抗器Yを直列につないだ回路",
+          "抵抗器Xと抵抗器Yを並列につないだ回路",
+          "抵抗器Xのみを単独につないだ回路",
+          "抵抗器Yのみを単独につないだ回路"
+        ],
+        "answerIndex": 1,
+        "answer": "抵抗器Xと抵抗器Yを並列につないだ回路",
+        "explanation": "消費電力PはP = V^2 / R で表される。電源電圧Vが一定であるため、合成抵抗Rが小さいほど消費電力は大きくなる。直列回路の合成抵抗は30Ω、X単独は10Ω、Y単独は20Ω、並列回路の合成抵抗は (10 × 20) / (10 + 20) = 20/3 ≈ 6.67Ω となり、合成抵抗が最も小さくなる並列回路で消費電力が最大となる。最も強い誤答は、抵抗値が大きい方が電力も大きくなると誤解して直列や単体の大きい抵抗を選ぶことである。",
+        "evidence": "抵抗器Xの抵抗値は10Ω、抵抗器Yの抵抗値は20Ωである。電源電圧は10Vで一定とする。",
+        "misconception": "抵抗が大きいほど電力が大きくなるという誤解や、直列接続の方が全体として多くの抵抗を使うため電力が増すと考える誤解。",
+        "marks": 2,
+        "id": "rise-science-bd6b5ae7d943cb1b",
+        "fingerprint": "1aa07b5a1634fccc",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.99,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-07T13:54:16.539Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.chemistry.aqueous_solutions_and_ions",
+        "difficulty": 8,
+        "question": "水酸化ナトリウム水溶液に塩酸を少しずつ加えたときの中和反応に関する記述として、最も適当なものを次の選択肢から1つ選びなさい。",
+        "context": "ビーカーにうすい水酸化ナトリウム水溶液20cm^3を入れたところ、溶液はアルカリ性を示した。この水溶液にうすい塩酸をピペットで1cm^3ずつ加えていき、加えた塩酸の総体積と水溶液中に存在するイオンの数の変化を調べた。",
+        "choices": [
+          "中和点が近づくにつれて、水溶液中の水酸化物イオンの数は次第に減少し、塩化物イオンの数は増加する。",
+          "水溶液が完全に中性になったとき、水溶液中にはナトリウムイオンと塩化物イオンしか存在しない。",
+          "塩酸を加えるにつれて、水溶液中のナトリウムイオンの数は次第に減少する。",
+          "塩酸を加えるにつれて、水溶液中の水素イオンの数は最初から直線的に増加し続ける。"
+        ],
+        "answerIndex": 0,
+        "answer": "中和点が近づくにつれて、水溶液中の水酸化物イオンの数は次第に減少し、塩化物イオンの数は増加する。",
+        "explanation": "水酸化ナトリウム水溶液に塩酸を加えると、水素イオンと水酸化物イオンが反応して水が生成するため、水酸化物イオンは減少する。一方、加えた塩酸に含まれる塩化物イオンは中和反応に関与しないため、加えた量に比例して増加する。ナトリウムイオンは spectator ion (傍観者イオン)であり数は一定である。中性になったときもナトリウムイオンと塩化物イオンに加えて水分子や微量の水素・水酸化物イオンが存在する。したがって、水酸化物イオンが減少し塩化物イオンが増加するという記述が正しい。",
+        "evidence": "この水溶液にうすい塩酸をピペットで1cm^3ずつ加えていき、加えた塩酸の総体積と水溶液中に存在するイオンの数の変化を調べた。",
+        "misconception": "中和によって全てのイオンが消滅する、または全てのイオンが反応して数が増減すると混同する誤解。",
+        "marks": 2,
+        "id": "rise-science-df3ccf373a8f8bf3",
+        "fingerprint": "752424d5094d8f1f",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-07T13:54:16.539Z"
         }
       }
     ],
