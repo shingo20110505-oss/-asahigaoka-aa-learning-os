@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-07-13-54-35Z",
-  "updatedAt": "2026-10-07T13:54:35.343Z",
+  "poolVersion": "2026-10-07-14-28-05Z",
+  "updatedAt": "2026-10-07T14:28:05.891Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -10887,6 +10887,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-06T14:09:25.992Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "日本国憲法に定められる基本的人権の保障や、地方自治の仕組みに関する記述として最も適切なものはどれか。",
+        "context": "日本国憲法は、基本的人権として自由権や社会権、参政権などを保障している。また、憲法第92条以下において「地方自治の本旨」が規定され、住民自治と団体自治を基本原則とする地方自治制度が確立されている。地方公共団体には、条例を制定する権限や、住民の直接請求によって首長や議員の解職を求める制度などが認められており、住民参画の仕組みが用意されている。",
+        "choices": [
+          "住民の直接請求制度によって首長の解職を請求する場合、有権者の署名は一切必要とされない。",
+          "地方自治の本旨には住民自治と団体自治が含まれ、住民は直接請求権などを用いて政治に参加する仕組みが保障されている。",
+          "基本的人権のうち社会権は、国家による介入を一切排除し、自由な経済活動を最優先するための権利である。",
+          "地方公共団体が制定する条例は、国会が定める法律よりも常に上位に位置し、法律に反していても優先される。"
+        ],
+        "answerIndex": 1,
+        "answer": "地方自治の本旨には住民自治と団体自治が含まれ、住民は直接請求権などを用いて政治に参加する仕組みが保障されている。",
+        "explanation": "地方自治の本旨は住民自治と団体自治であり、住民発案や解職請求（リコール）などの直接請求権が憲法や地方自治法で保障されている点が正しい。最も強い罠は、条例と法律の優劣を逆に捉えたり、直接請求の要件（署名数など）を過小評価したりする選択肢である。",
+        "evidence": "憲法第92条以下において「地方自治の本旨」が規定され、住民自治と団体自治を基本原則とする地方自治制度が確立されている。地方公共団体には、条例を制定する権限や、住民の直接請求によって首長や議員の解職を求める制度などが認められており",
+        "misconception": "地方自治体の権限が国（法律）よりも優越するという誤解や、社会権の定義に関する混同。",
+        "marks": 2,
+        "id": "rise-social-1a474109e9a6682d",
+        "fingerprint": "641938fd10398fc7",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-07T14:27:55.330Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "文章で述べられている渥美半島の農業の特色に関する説明として最も適当なものはどれか。",
+        "context": "愛知県南部にある渥美半島では、温暖な気候や日照時間の長さを活かした農業が盛んである。近年の統計資料によると、この地域では電子制御された温室を用いた施設園芸が発達しており、電照菊やトマトなどの栽培で全国有数の出荷量を誇っている。また、水不足を解消するために愛知用水が整備され、農業生産性の向上に大きく貢献している。",
+        "choices": [
+          "冷涼な気候を利用した高原野菜の栽培が中心で、高冷地農業が発達している。",
+          "火山灰質の赤土と冷涼な気候を利用して、茶の栽培が県内一の生産量を誇る。",
+          "水稲の単作地帯として古くから開かれ、米の二期作が広く行われている。",
+          "温暖な気候や施設園芸を活かし、電照菊や野菜の生産が盛んである。"
+        ],
+        "answerIndex": 3,
+        "answer": "温暖な気候や施設園芸を活かし、電照菊や野菜の生産が盛んである。",
+        "explanation": "文脈の中で、渥美半島は温暖な気候や日照時間を活かした電子制御の温室による施設園芸が発達し、電照菊やトマトの栽培で全国有数の出荷量を誇ると述べられている。したがって、温暖な気候や施設園芸を活かして電照菊や野菜の生産が盛んであるとする説明が最も適当である。他の選択肢は、高冷地農業や茶の栽培など、本文の内容や地域の実際の地理的条件に反している。",
+        "evidence": "渥美半島では、温暖な気候や日照時間の長さを活かした農業が盛んである。近年の統計資料によると、この地域では電子制御された温室を用いた施設園芸が発達しており、電照菊やトマトなどの栽培で全国有数の出荷量を誇っている。",
+        "misconception": "冷涼な気候や火山灰地など、他の農業地域の特性と渥美半島の温暖な沿岸型農業（施設園芸）を混同してしまう誤解。",
+        "marks": 2,
+        "id": "rise-social-d3f0260aab3df67e",
+        "fingerprint": "8c5e87934271ca71",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.99,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-07T14:28:05.861Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "資料に示された大日本帝国憲法と日本国憲法における政治体制の違いに関する説明として、最も適当なものはどれか。",
+        "context": "日本の憲法における政治体制の変遷について、ある歴史資料には次のように記されている。「かつての憲法の下では、帝国議会は天皇の立法権を『協賛』する機関にとどまり、行政権を握る内閣は天皇を補佐するものであって議会に対して連帯して責任を負わなかった。これに対し、現行の日本国憲法では、国会が『国権の最高機関』とされ、内閣は国会に対して連帯して責任を負う仕組みへと改められた。」",
+        "choices": [
+          "大日本帝国憲法の下でも、内閣は常に帝国議会の信任によって成立し、議会に対して責任を負っていた。",
+          "日本国憲法では、国会が国権の最高機関とされ、内閣は国会に対して連帯して責任を負う。",
+          "大日本帝国憲法の下では、天皇は統治権の総攬者ではなく、主権は完全に国民に存していた。",
+          "日本国憲法では、裁判所が国権の最高機関と位置づけられ、内閣や国会を統括する権限を持っている。"
+        ],
+        "answerIndex": 1,
+        "answer": "日本国憲法では、国会が国権の最高機関とされ、内閣は国会に対して連帯して責任を負う。",
+        "explanation": "資料には、現行の日本国憲法では国会が国権の最高機関とされ、内閣は国会に対して連帯して責任を負う仕組みへと改められたと明記されている。したがって、日本国憲法における国会と内閣の関係を正しく述べた説明が適当である。旧憲法下では内閣は議会に対して責任を負わず、主権は天皇にあった。",
+        "evidence": "これに対し、現行の日本国憲法では、国会が『国権の最高機関』とされ、内閣は国会に対して連帯して責任を負う仕組みへと改められた。",
+        "misconception": "大日本帝国憲法の下でも現在の議院内閣制と同様に内閣が議会に対して責任を負っていたと誤解する思い込み。",
+        "marks": 2,
+        "id": "rise-social-91ad143e0e99e5aa",
+        "fingerprint": "36116e092278ba8f",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.99,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-07T14:28:05.861Z"
         }
       }
     ]
