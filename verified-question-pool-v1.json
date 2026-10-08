@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-08-13-21-42Z",
-  "updatedAt": "2026-10-08T13:21:42.110Z",
+  "poolVersion": "2026-10-08-14-00-41Z",
+  "updatedAt": "2026-10-08T14:00:41.934Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -8276,6 +8276,74 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-07T13:54:16.539Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.physics.ohm_law",
+        "difficulty": 8,
+        "question": "実験で行った回路において、電熱線に加わる電圧を2倍にしたとき、回路全体の消費電力がどのように変化するか、最も適当なものを次の1〜4の中から1つ選びなさい。",
+        "context": "ある班は、10Ωの電熱線を用いて回路を組み、電源の電圧を変化させて流れる電流と消費電力の関係を調べる実験を行った。実験の結果、電源電圧が3.0Vのとき、電熱線には0.3Aの電流が流れ、消費電力は0.9Wであった。その後、電源電圧を6.0Vに上げて同様に測定を行ったところ、電熱線に流れる電流は0.6Aとなり、回路の抵抗値自体は変化しなかった。",
+        "choices": [
+          "電圧を2倍にすると、電熱線を流れる電流は4倍になり、消費電力も4倍になる。",
+          "電圧を2倍にすると、電熱線を流れる電流も2倍になり、消費電力は4倍になる。",
+          "電圧を2倍にすると、電熱線を流れる電流は変わらず、消費電力は2倍になる。",
+          "電圧を2倍にすると、電熱線を流れる電流は半分になり、消費電力も半分になる。"
+        ],
+        "answerIndex": 1,
+        "answer": "電圧を2倍にすると、電熱線を流れる電流も2倍になり、消費電力は4倍になる。",
+        "explanation": "オームの法則および電力の公式（電力＝電圧×電流）を用いる。電圧を3.0Vから6.0Vへ2倍にすると、抵抗が一定であるため電流も0.3Aから0.6Aへと2倍になる。消費電力は電圧（2倍）×電流（2倍）＝4倍となる。実験値でも0.9Wから3.6W（6.0V×0.6A）となり、4倍になっていることが確認できる。強い罠としては、消費電力は電圧に比例して2倍になると誤認する誤解がある。",
+        "evidence": "電源電圧が3.0Vのとき、電熱線には0.3Aの電流が流れ、消費電力は0.9Wであった。その後、電源電圧を6.0Vに上げて同様に測定を行ったところ、電熱線に流れる電流は0.6Aとなり",
+        "misconception": "電力は電圧に比例して大きくなると考え、電圧が2倍になれば電力も2倍になるという比例関係で捉えてしまう誤解。",
+        "marks": 2,
+        "id": "rise-science-7a11c7a1eac1dbc5",
+        "fingerprint": "8e8ba3f2e3b39a9c",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-08T14:00:32.392Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.biology.mitosis",
+        "difficulty": 8,
+        "question": "タマネギの根の先端の細胞分裂の様子を観察したとき、細胞周期全体に対するそれぞれの時期の長さについての考察として最も適当なものを次の1〜4の中から1つ選びなさい。",
+        "context": "タマネギの根の先端をプレパラートにして顕微鏡で多数の細胞を観察し、分裂の各時期（間期、前期、中期、後期、終期）にある細胞の数を数えた。その結果、観察された総細胞数のうち、大部分の細胞が核の形がはっきりしておりDNAが複製されている時期の細胞であり、分裂期の各時期にある細胞の数はそれぞれ非常に少なかった。",
+        "choices": [
+          "分裂期の各時期の細胞数は均等であり、どの時期も細胞周期の中で同じ長さの時間を占めている。",
+          "中期にある細胞数が最も多く観察されるため、中期は細胞周期の中で最も時間が長い時期である。",
+          "すべての時期の細胞数がほぼ同じであるため、どの時期も同じ長さの時間を要する。",
+          "間期の時間が細胞周期の中で最も長いため、どの瞬間を切り取っても間期にある細胞数が最も多く観察される。"
+        ],
+        "answerIndex": 3,
+        "answer": "間期の時間が細胞周期の中で最も長いため、どの瞬間を切り取っても間期にある細胞数が最も多く観察される。",
+        "explanation": "細胞周期の中で、細胞分裂の準備期間である「間期」は全体の大部分を占め非常に長い。そのため、ランダムに細胞を固定して観察したとき、間期にある細胞の割合が最も高くなる。観察される細胞の数の割合は、その時期が細胞周期の中で占める時間の長さに比例する。強い罠として、目立って観察しやすい中期などの分裂期が一番長いと勘違いする誤解がある。",
+        "evidence": "観察された総細胞数のうち、大部分の細胞が核の形がはっきりしておりDNAが複製されている時期の細胞であり、分裂期の各時期にある細胞の数はそれぞれ非常に少なかった。",
+        "misconception": "顕微鏡で見慣れない染色体が並んでいる中期などの姿が印象に残り、分裂期の方が間期よりも長い、または重要であるため時間も長いと考えてしまう誤解。",
+        "marks": 2,
+        "id": "rise-science-e4a5697bc3fd7fc7",
+        "fingerprint": "2097770cc6df22ce",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-08T14:00:32.392Z"
         }
       }
     ],
