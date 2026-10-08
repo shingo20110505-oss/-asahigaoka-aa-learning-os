@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-07T00:45:57.050Z",
+  "updatedAt": "2026-10-08T01:02:56.707Z",
   "entries": [
     {
       "id": "ed9e7fb8cae0a59fa5c08f3e8cbd3edc9df7813238490fae60000c9a59c2b579",
@@ -1133,6 +1133,84 @@
       ],
       "wordCount": 264,
       "createdAt": "2026-10-07T00:45:57.043Z"
+    },
+    {
+      "id": "36f1a23fc224c63c248c4ca00a24717de43a20b5bcae8710e74d9ab89dfc6162",
+      "sha256": "36f1a23fc224c63c248c4ca00a24717de43a20b5bcae8710e74d9ab89dfc6162",
+      "path": "items/36f1a23fc224c63c248c4ca00a24717de43a20b5bcae8710e74d9ab89dfc6162.json",
+      "title": "The Old Wooden Boat",
+      "topic": "A boy and his grandfather restoring an old wooden boat together during summer vacation",
+      "difficulty": 5,
+      "readingType": "narrative",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison",
+        "passive",
+        "presentPerfect",
+        "asMuchAs",
+        "asManyAs"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.cause",
+        "en.read.mainIdea",
+        "en.read.summary"
+      ],
+      "words": [
+        "dock",
+        "dust",
+        "repair",
+        "tool",
+        "surface"
+      ],
+      "wordCount": 265,
+      "createdAt": "2026-10-08T01:02:38.440Z"
+    },
+    {
+      "id": "6fd7904265944fb39de91f07a47a4580e44a4756dd73f9f452afc846b8c39773",
+      "sha256": "6fd7904265944fb39de91f07a47a4580e44a4756dd73f9f452afc846b8c39773",
+      "path": "items/6fd7904265944fb39de91f07a47a4580e44a4756dd73f9f452afc846b8c39773.json",
+      "title": "The Value of Traditional Board Games",
+      "topic": "The value and benefits of traditional board games compared to digital games",
+      "difficulty": 5,
+      "readingType": "argument",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison",
+        "passive",
+        "presentPerfect",
+        "asMuchAs",
+        "asManyAs"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.paraphrase",
+        "en.read.title",
+        "en.read.summary"
+      ],
+      "words": [
+        "device",
+        "isolate",
+        "defeat",
+        "precious",
+        "solitary"
+      ],
+      "wordCount": 284,
+      "createdAt": "2026-10-08T01:02:56.700Z"
     }
   ]
 }
