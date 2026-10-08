@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-08-14-00-41Z",
-  "updatedAt": "2026-10-08T14:00:41.934Z",
+  "poolVersion": "2026-10-08-14-33-29Z",
+  "updatedAt": "2026-10-08T14:33:29.996Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -11261,6 +11261,108 @@
           "verifierConfidence": 0.99,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-07T14:28:05.861Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "愛知県の農業の特色について述べた文として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "愛知県は、農業産出額において全国上位に位置し、多様な農業が展開されている。渥美半島を中心とする太平洋側の温暖な気候を利用した野菜の施設園芸や、知多半島での花きの栽培が盛んである。また、矢作川流域などの平野部では稲作が行われ、都市近郊では消費地に近い利点を生かした近郊農業が見られる。",
+        "choices": [
+          "渥美半島では、温暖な気候を利用した施設園芸により野菜や花きの栽培が盛んである。",
+          "矢作川流域の平野部では、主に乾燥した気候を利用した小麦の大規模栽培が行われている。",
+          "知多半島では、寒冷な気候を生かしたリンゴやブドウなどの果樹栽培が中心である。",
+          "県内の全域で稲作のみが単一耕作として行われ、野菜や花きの栽培はほとんど見られない。"
+        ],
+        "answerIndex": 0,
+        "answer": "渥美半島では、温暖な気候を利用した施設園芸により野菜や花きの栽培が盛んである。",
+        "explanation": "文脈資料から、渥美半島を中心とする太平洋側では温暖な気候を生かした野菜の施設園芸や花きの栽培が盛んに行われていることが確認できる。他の選択肢にある「乾燥した気候」「寒冷な気候」「稲作のみの単一耕作」などは、文脈および実際の地理的事実に反している。",
+        "evidence": "渥美半島を中心とする太平洋側の温暖な気候を利用した野菜の施設園芸や、知多半島での花きの栽培が盛んである。",
+        "misconception": "他の地域（例えば北海道などの大規模農業や寒冷地での果樹栽培）の知識と愛知県の地域的特色を混同してしまうこと。",
+        "marks": 2,
+        "id": "rise-social-37dce6a1f58613d5",
+        "fingerprint": "efa5ec7fba6bb751",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.99,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-08T14:33:25.060Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "地方自治における直接請求権について述べた文として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "地方自治法により、地方公共団体には住民の意思を反映させるための様々な仕組みが用意されている。その一つとして、一定数以上の有権者の署名を集めることで、条例の制定や改廃、あるいは議会の解散などを直接請求することができる直接請求権が保障されている。これにより、住民は間接民主制を補完する形で政治に参加することができる。",
+        "choices": [
+          "直接請求権は国政選挙においてのみ認められており、地方自治体レベルでは一切利用することができない。",
+          "住民の意思に関わらず、中央政府の命令によってのみ条例の制定や改廃が行われる仕組みである。",
+          "一定数以上の有権者の署名によって、条例の制定や改廃などを請求することができ、間接民主制を補完する役割を持つ。",
+          "有権者の署名は不要であり、地方公共団体の長の判断だけでいつでも自由に議会を解散させることができる。"
+        ],
+        "answerIndex": 2,
+        "answer": "一定数以上の有権者の署名によって、条例の制定や改廃などを請求することができ、間接民主制を補完する役割を持つ。",
+        "explanation": "文脈資料から、直接請求権は一定数以上の有権者の署名を集めることで行使でき、間接民主制を補完する役割を持つことがわかる。長や中央政府の独断によるものではなく、住民の署名が必要である点がポイントである。",
+        "evidence": "一定数以上の有権者の署名を集めることで、条例の制定や改廃、あるいは議会の解散などを直接請求することができる直接請求権が保障されている。これにより、住民は間接民主制を補完する形で政治に参加することができる。",
+        "misconception": "地方自治の決定は長や国会・中央政府のみが行うものであり、住民側からの具体的な法的手続や署名による関与手段（直接請求）が存在しないと誤認すること。",
+        "marks": 2,
+        "id": "rise-social-99addd7914c8f7e5",
+        "fingerprint": "6f81f2cbdbeea75d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.99,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-08T14:33:25.060Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history_geography_civics_integration",
+        "difficulty": 8,
+        "question": "資料に示された日本の主なエネルギー資源の動向と産業構造の変化に関して、最も適当なものを次のうちから1つ選びなさい。",
+        "context": "資料：日本の1960年度から2020年度における一次エネルギー国内供給構成の推移と、工業地帯・地域の製造品出荷額等の構成比。1960年度は国産の石炭が国内供給の主力を占めていたが、のちに石油中心の「エネルギー革命」が起きた。その後、1970年代の石油危機を契機にエネルギー源の多様化が進められた。愛知県を中心とする中京工業地帯は、石油化学コンビナートの発展や自動車工業をはじめとする機械工業の集積により、日本の製造品出荷額等で長年第1位を維持している。「我が国のエネルギー自給率は近年依然として低い水準にあり、海外からの資源輸入への依存が大きい。」",
+        "choices": [
+          "我が国の一次エネルギー国内供給における自給率は、近年では海外からの再生可能エネルギー輸入の増加によりほぼ100％に達している。",
+          "石炭から石油へのエネルギー資源の転換が進んだ時期には、筑豊炭田などの国内主要炭田の周辺で新たな工業都市が急成長した。",
+          "1970年代に起きた石油危機をきっかけとして、発電における石油への依存度を引き下げるため、天然ガスや原子力などの導入が進められた。",
+          "愛知県の中京工業地帯は、戦前の繊維工業の発展を契機として石油化学工業が中心となり、現在は製造品出荷額等で全国最下位となっている。"
+        ],
+        "answerIndex": 2,
+        "answer": "1970年代に起きた石油危機をきっかけとして、発電における石油への依存度を引き下げるため、天然ガスや原子力などの導入が進められた。",
+        "explanation": "1970年代に発生した2度の石油危機（オイルショック）を契機に、石油への過度な依存を見直し、天然ガスや原子力、石炭の再評価などエネルギー源の多様化・省エネルギー化が図られました。これが正しい記述となります。他の選択肢について、エネルギー転換期には国内炭田は衰退し離職や過疎化が問題となりました。中京工業地帯は製造品出荷額等で全国第1位であり最下位ではありません。また我が国のエネルギー自給率は依然として低い水準にあります。",
+        "evidence": "1970年代の石油危機を契機にエネルギー源の多様化が進められた。",
+        "misconception": "愛知県が製造品出荷額等で第1位であることや、エネルギー自給率が低いという基本的事実についての思い違い、あるいは産業の盛衰の歴史的順序に関する混乱。",
+        "marks": 2,
+        "id": "rise-social-72bcad7de4990989",
+        "fingerprint": "9734991d11c36fbb",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-08T14:33:29.931Z"
         }
       }
     ]
