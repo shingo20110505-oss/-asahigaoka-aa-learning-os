@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-07-15-32-22Z",
-  "updatedAt": "2026-10-07T15:32:22.120Z",
+  "poolVersion": "2026-10-08-13-21-42Z",
+  "updatedAt": "2026-10-08T13:21:42.110Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2407,6 +2407,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-06T13:15:17.617Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "math.geometry.function.area_bisector",
+        "difficulty": 8,
+        "question": "関数 $y = ax^2$ ($a > 0$) のグラフ上に 2 点 A, B があり、点 A の $x$ 座標は $-2$，点 B の $x$ 座標は $4$ である。直線 AB の式が $y = x + 4$ であるとき、点 O を通り、三角形 OAB の面積を 2 等分する直線の式を求めよ。",
+        "context": "関数 $y = ax^2$ ($a > 0$) のグラフ上に 2 点 A, B があり、点 A の $x$ 座標は $-2$，点 B の $x$ 座標は $4$ である。直線 AB の式が $y = x + 4$ である。原点を O とする。",
+        "choices": [
+          "y = 4x",
+          "y = 5x",
+          "y = 6x",
+          "y = 3x"
+        ],
+        "answerIndex": 1,
+        "answer": "y = 5x",
+        "explanation": "まず点 A と点 B の座標を求める。点 A の $x$ 座標は $-2$ で直線 $y = x + 4$ 上にあるため、$y$ 座標は $-2 + 4 = 2$ となり、A$(-2, 2)$ である。同様に点 B の $x$ 座標は $4$ なので、B$(4, 8)$ である。三角形 OAB の面積を頂点 O を通る直線で 2 等分する場合、その直線は対辺である線分 AB の中点を通る必要がある。線分 AB の中点 M の座標は $\\left(\\frac{-2+4}{2}, \\frac{2+8}{2}\\right) = (1, 5)$ と計算できる。したがって、原点 O$(0, 0)$ と中点 M$(1, 5)$ を通る直線の傾きは $\\frac{5-0}{1-0} = 5$ となり、求める直線の式は $y = 5x$ である。主な誤答として、原点ではなく $y$ 軸上の切片を通る直線や、中点ではなく点 A, B の座標をそのまま直線の傾きに誤用してしまうケースがある。",
+        "evidence": "直線 AB の式が $y = x + 4$ である。",
+        "misconception": "中点座標を求めずに点 A または点 B の座標そのものを直線の傾きや通過点として計算してしまう誤り。",
+        "marks": 2,
+        "id": "rise-math-20277d2c9c64d940",
+        "fingerprint": "b2d63974ba65e42a",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-08T13:21:31.484Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.probability",
+        "difficulty": 8,
+        "question": "このとき、プレイヤーが勝つ確率として正しいものを次の選択肢から選びなさい。",
+        "context": "袋の中に1から5までの数字が1つずつ書かれた5枚のカードが入っている。この袋から同時に2枚のカードを取り出し、大きい方の数を $X$、2枚のカードの数の和を $Y$ とする。「$X$ が偶数であり、かつ $Y$ が 3 の倍数である」とき、プレイヤーの勝ちとする。",
+        "choices": [
+          "1/5",
+          "3/10",
+          "2/5",
+          "1/10"
+        ],
+        "answerIndex": 0,
+        "answer": "1/5",
+        "explanation": "全ての取り出し方は 5枚から2枚を選ぶ組合せで 10通りである。それぞれの組合せについて、大きい方の数 $X$ と和 $Y$ を調べると、(1, 2) のときは $X=2$ (偶数), $Y=3$ (3の倍数) となり条件を満たす。(2, 4) のときは $X=4$ (偶数), $Y=6$ (3の倍数) となり条件を満たす。他の組合せでは両方の条件を同時に満たさない。したがって、条件を満たす場合は 2通りであり、確率は 2/10 = 1/5 となる。",
+        "evidence": "袋の中に1から5までの数字が1つずつ書かれた5枚のカードが入っている。この袋から同時に2枚のカードを取り出し、大きい方の数を $X$、2枚のカードの数の和を $Y$ とする。",
+        "misconception": "条件のどちらか一方（例えば和が3の倍数であることのみ）を見落としたり、重複組合せの総数を誤って計算してしまう。",
+        "marks": 2,
+        "id": "rise-math-70993d17402af1b3",
+        "fingerprint": "b630d53dca03b7db",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-08T13:21:42.070Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.geometry",
+        "difficulty": 8,
+        "question": "線分 $AP$ の長さを求めよ。",
+        "context": "下図のような、1辺の長さが 6 cm の正方形 $ABCD$ がある。辺 $AB$ の中点を $M$ とし、対角線 $AC$ と線分 $DM$ の交点を $P$ とする。",
+        "choices": [
+          "\\sqrt{2}\\text{ cm}",
+          "2\\sqrt{2}\\text{ cm}",
+          "3\\sqrt{2}\\text{ cm}",
+          "4\\sqrt{2}\\text{ cm}"
+        ],
+        "answerIndex": 1,
+        "answer": "2\\sqrt{2}\\text{ cm}",
+        "explanation": "座標平面上に頂点を配置して考えると、点 $A(0, 6)$、$B(6, 6)$、$C(6, 0)$、$D(0, 0)$ とおくことができる。辺 $AB$ の中点 $M$ の座標は $(3, 6)$ である。直線 $DM$ の式は $y = 2x$ となり、対角線 $AC$ の式は $x + y = 6$ となる。この2直線の交点 $P$ の座標は連立方程式を解いて $(2, 4)$ と求められる。点 $A(0, 6)$ と点 $P(2, 4)$ の間の距離を求めると、\\sqrt{(2-0)^2 + (4-6)^2} = \\sqrt{4 + 4} = \\sqrt{8} = 2\\sqrt{2}\\text{ cm} となる。",
+        "evidence": "1辺の長さが 6 cm の正方形 $ABCD$ がある。辺 $AB$ の中点を $M$ とし、対角線 $AC$ と線分 $DM$ の交点を $P$ とする。",
+        "misconception": "相似比や比の分配を誤って捉え、交点 $P$ の位置を単純な $1:2$ の内分点と誤認してしまう。",
+        "marks": 2,
+        "id": "rise-math-56034609c9ac7ecd",
+        "fingerprint": "752ecae286d441a8",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-08T13:21:42.070Z"
         }
       }
     ],
