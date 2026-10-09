@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-08T01:02:56.707Z",
+  "updatedAt": "2026-10-09T01:14:42.099Z",
   "entries": [
     {
       "id": "ed9e7fb8cae0a59fa5c08f3e8cbd3edc9df7813238490fae60000c9a59c2b579",
@@ -1211,6 +1211,45 @@
       ],
       "wordCount": 284,
       "createdAt": "2026-10-08T01:02:56.700Z"
+    },
+    {
+      "id": "3decdab762ba9fa80de32a6041216a1a11cda031d219312d721169bccf4c73a2",
+      "sha256": "3decdab762ba9fa80de32a6041216a1a11cda031d219312d721169bccf4c73a2",
+      "path": "items/3decdab762ba9fa80de32a6041216a1a11cda031d219312d721169bccf4c73a2.json",
+      "title": "The Glass Workshop",
+      "topic": "A boy learning glassblowing from a master craftsman",
+      "difficulty": 8,
+      "readingType": "narrative",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison",
+        "passive",
+        "presentPerfect",
+        "asMuchAs",
+        "asManyAs"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.paraphrase",
+        "en.read.title",
+        "en.read.summary"
+      ],
+      "words": [
+        "workshop",
+        "material",
+        "handle",
+        "expand",
+        "confidence"
+      ],
+      "wordCount": 365,
+      "createdAt": "2026-10-09T01:14:42.089Z"
     }
   ]
 }
