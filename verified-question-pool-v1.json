@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-08-15-33-54Z",
-  "updatedAt": "2026-10-08T15:33:54.205Z",
+  "poolVersion": "2026-10-09-13-44-43Z",
+  "updatedAt": "2026-10-09T13:44:43.817Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -8446,6 +8446,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-08T14:00:32.392Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemistry",
+        "difficulty": 8,
+        "question": "実験の結果から、金属Aの質量と結びついた酸素の質量的割合について述べた文として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "金属の酸化に関する実験を行った。ステンレス皿に銅粉を正確に4.0gとり、よく熱したところ、銅は酸素と結びついて黒色の酸化銅になり、全体の質量が5.0gになった。次に、同じ金属粉を異なる質量で同様に加熱し、完全に反応させたところ、金属Aの質量が2.0gのときは加熱後の全体の質量が2.5gに、金属Bの質量が6.0gのときは加熱後の全体の質量が7.5gになった。",
+        "choices": [
+          "金属Aの質量が増えるほど、金属の質量に対して結びつく酸素の質量的割合は大きくなる。",
+          "金属Aの質量が増えるほど、金属の質量に対して結びつく酸素の質量的割合は小さくなる。",
+          "完全に反応したとき、金属Aの質量と結びついた酸素の質量的割合は金属の種類によって異なる。",
+          "金属Aの質量にかかわらず、金属の質量と結びついた酸素の質量的割合は常に一定である。"
+        ],
+        "answerIndex": 3,
+        "answer": "金属Aの質量にかかわらず、金属の質量と結びついた酸素の質量的割合は常に一定である。",
+        "explanation": "文中のデータから、4.0gの金属が反応して5.0g（酸素1.0gが結合）、2.0gの金属が2.5g（酸素0.5gが結合）、6.0gの金属が7.5g（酸素1.5gが結合）になっています。いずれの実験でも、金属の質量に対する酸素の質量的割合は 1.0/4.0 = 0.5/2.0 = 1.5/6.0 = 1/4 (25%) で一定です。したがって、金属の質量にかかわらず割合は常に一定であるという記述が適当です。",
+        "evidence": "金属Aの質量が2.0gのときは加熱後の全体の質量が2.5gに、金属Bの質量が6.0gのときは加熱後の全体の質量が7.5gになった。",
+        "misconception": "化学変化における質的・量的関係で、反応物の量が増えると結びつく割合も比例して変化する（あるいは頭打ちになる）と誤解し、定比例の法則を見落とすこと。",
+        "marks": 2,
+        "id": "rise-science-d3a85c2ba1eea317",
+        "fingerprint": "6e5daa95a0f87ac7",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-09T13:44:33.015Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.physics",
+        "difficulty": 8,
+        "question": "記録テープの打点間隔から推測される台車の運動について、最も適当なものを次の選択肢から1つ選びなさい。",
+        "context": "1秒間に50打点する記録タイマーを用いて、斜面を下る台車の運動を記録した。スタートからの連続する0.1秒間ごとの移動距離を調べたところ、最初の0.1秒間は2.0cm、次の0.1秒間は6.0cm、その次の0.1秒間は10.0cmであった。",
+        "choices": [
+          "台車には斜面方向を下向きに一定の大きさの力がはたらき続けており、速度は一定の割合で増加している。",
+          "台車には斜面方向を下向きに働く力が徐々に大きくなる力がはたらき、速度の増加する割合も大きくなっている。",
+          "台車の速度は一定の割合で増加しているが、移動距離の増加分は時間とともに小さくなっている。",
+          "台車には力がはたらかなくなったため、最初の0.1秒間以降は等速直線運動をしている。"
+        ],
+        "answerIndex": 0,
+        "answer": "台車には斜面方向を下向きに一定の大きさの力がはたらき続けており、速度は一定の割合で増加している。",
+        "explanation": "0.1秒間ごとの移動距離の変化を調べると、2.0cmから6.0cmへは+4.0cm、6.0cmから10.0cmへも+4.0cmと、等しい時間あたりの移動距離の増加分（速度の変化量）が一定です。これは、一定の大きさの力が斜面方向に常にはたらき続けている斜面の運動（等加速度直線運動）の典型的な特徴であり、速度は一定の割合で増加しています。",
+        "evidence": "最初の0.1秒間は2.0cm、次の0.1秒間は6.0cm、その次の0.1秒間は10.0cmであった。",
+        "misconception": "移動距離そのものが一定の割合で増えている（等速である）と勘違いしたり、距離の差が一定であることから加速度が時間とともに増加していると誤認すること。",
+        "marks": 2,
+        "id": "rise-science-30ef63198a4a8ebd",
+        "fingerprint": "8ac4eaeddf048bf3",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-09T13:44:33.015Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.science.solubility",
+        "difficulty": 8,
+        "question": "ビーカーAおよびビーカーBを20℃まで冷却したとき、それぞれのビーカーで析出する結晶について述べた文として最も適当なものを1つ選びなさい。",
+        "context": "次の実験について、あとの問いに答えなさい。\n\n[実験]\n① ビーカーAに60℃の水50.0gを入れ、硝酸カリウム50.0gを加えて完全に溶かした。\n② ビーカーBに60℃の水50.0gを入れ、塩化ナトリウム15.0gを加えて完全に溶かした。\n③ ビーカーAおよびビーカーBを20℃まで冷却し、析出した結晶の様子を観察した。\n\n（ただし、20℃および60℃における100gの水に対する溶解度は、硝酸カリウムが20℃で31.6g、60℃で110.0gであり、塩化ナトリウムが20℃で35.8g、60℃で37.3gであるとする。）",
+        "choices": [
+          "ビーカーAのみ結晶が析出し、その質量は34.2gである。",
+          "ビーカーAのみ結晶が析出し、その質量は18.4gである。",
+          "ビーカーAとビーカーBの両方で結晶が析出し、析出する結晶の質量はビーカーAの方が大きい。",
+          "ビーカーAとビーカーBの両方で結晶が析出し、析出する結晶の質量はビーカーBの方が大きい。"
+        ],
+        "answerIndex": 0,
+        "answer": "ビーカーAのみ結晶が析出し、その質量は34.2gである。",
+        "explanation": "硝酸カリウムの溶解度は水100gあたり60℃で110.0g、20℃で31.6gであるため、水50.0gに溶ける質量は20℃で31.6×(50.0/100)＝15.8gとなる。ビーカーAでは60℃の水50.0gに硝酸カリウム50.0gがすべて溶けており、20℃まで冷却すると50.0－15.8＝34.2gの結晶が析出する。一方、塩化ナトリウムの溶解度は20℃で35.8g/100g水であり、水50.0gには最大35.8×(50.0/100)＝17.9g溶ける。ビーカーBには15.0gしか溶かしておらず、20℃における溶解度（17.9g）よりも少ないため、冷却しても結晶は析出しない。したがってビーカーAのみ結晶が析出し、その質量は34.2gとなる。",
+        "evidence": "ビーカーAに60℃の水50.0gを入れ、硝酸カリウム50.0gを加えて完全に溶かした。",
+        "misconception": "水の質量が100gではなく50gであることを見落とし、20℃における溶解度の値をそのまま引き算して50.0－31.6＝18.4gとしてしまう誤解や、すべての物質は冷却すれば必ず析出するという思い込み。",
+        "marks": 2,
+        "id": "rise-science-60905a10d4649b04",
+        "fingerprint": "7e5a1e274cccf465",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-09T13:44:43.784Z"
         }
       }
     ],
