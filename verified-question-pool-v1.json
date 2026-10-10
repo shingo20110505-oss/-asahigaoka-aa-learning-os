@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-10-13-37-00Z",
-  "updatedAt": "2026-10-10T13:37:00.850Z",
+  "poolVersion": "2026-10-10-14-27-15Z",
+  "updatedAt": "2026-10-10T14:27:15.355Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -5766,6 +5766,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-09T15:16:07.678Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading",
+        "difficulty": 8,
+        "question": "次の文章において、筆者が「効率性」を過剰に追求することの弊害として最も適切に述べているものを一つ選びなさい。",
+        "context": "現代社会において、あらゆる場面で効率化が叫ばれている。移動時間、労働時間、あるいはコミュニケーションの手段に至まで、無駄を削ぎ落とすことが美徳とされがちだ。しかし、この「無駄」の排除が行き過ぎると、人間が本来持っている、偶然の出会いや予期せぬ発見から得られる豊かな発想の余白が失われてしまう。効率的なルートだけを歩む人生は、確かに目的地へ早く着くかもしれないが、その途中で美しい景色に出会う機会を自ら手放しているようなものなのだ。",
+        "choices": [
+          "最短距離で目的地に到達できなくなるため、社会的な生産性が著しく低下すること。",
+          "無駄を削ぎ落とすことで、予期せぬ発見や豊かな発想を生む余白が失われてしまうこと。",
+          "移動や労働の時間が長くなり、精神的な余裕が奪われてストレスが増加すること。",
+          "コミュニケーションの手段が多様化し、人と人との直接的なつながりが希薄になること。"
+        ],
+        "answerIndex": 1,
+        "answer": "無駄を削ぎ落とすことで、予期せぬ発見や豊かな発想を生む余白が失われてしまうこと。",
+        "explanation": "文章中では、「無駄の排除が行き過ぎると、人間が本来持っている、偶然の出会いや予期せぬ発見から得られる豊かな発想の余白が失われてしまう」と述べられており、これが効率性の過剰な追求の弊害であると示されている。この内容に直接合致する選択肢を選ぶ。",
+        "evidence": "しかし、この「無駄」の排除が行き過ぎると、人間が本来持っている、偶然の出会いや予期せぬ発見から得られる豊かな発想の余白が失われてしまう。",
+        "misconception": "効率化によって逆に生産性が低下するという、文章に書かれていない経済的なデメリットを勝手に付け加えてしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-0b61e68eadd9d392",
+        "fingerprint": "8b2ec0209f3b038e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-10T14:27:08.194Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.composition",
+        "difficulty": 8,
+        "question": "次の会話文において、Aさんの発言に対するBさんの返答として、論理的整合性と資料の読み取りの観点から最も適切なものを一つ選びなさい。",
+        "context": "Aさん：「先月の市内の図書館の利用状況のデータを見ると、平日の午前中は高齢者の利用が多い一方で、土日は中高生の自習利用が急増しているね。このデータから、平日と週末で利用者のニーズが大きく異なっていることがわかるよ。」\nBさん：「そうだね。だから、[　　　]。」",
+        "choices": [
+          "高齢者と中高生が同じ時間帯に交流できるイベントを毎日開催するべきだ。",
+          "すべての曜日の開館時間を一律に短縮して、全体の運営コストを削減するべきだ。",
+          "平日と週末でそれぞれ求められる役割や利用目的に合わせた環境整備を行う必要がある。",
+          "中高生の利用が多い平日午後の自習スペースを全面的に廃止するべきだ。"
+        ],
+        "answerIndex": 2,
+        "answer": "平日と週末でそれぞれ求められる役割や利用目的に合わせた環境整備を行う必要がある。",
+        "explanation": "Aさんは「平日と週末で利用者のニーズが大きく異なっている」と分析しているため、その分析を受けたBさんの発言としては、その違い（ニーズの相違）に応じた対策や方針を述べるものが最も論理的である。一律の短縮や廃止、現実的でない毎日開催などはデータやAさんの発言の趣旨に合致しない。",
+        "evidence": "平日の午前中は高齢者の利用が多い一方で、土日は中高生の自習利用が急増しているね。このデータから、平日と週末で利用者のニーズが大きく異なっていることがわかるよ。",
+        "misconception": "データの一部分（中高生の利用増など）だけに着目し、全体のニーズの多様性という結論を無視した極端な施策を選択してしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-4ea910693f507555",
+        "fingerprint": "8be6ed36ba122d90",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-10T14:27:08.194Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "本文の内容から読み取れる、現在の伝統産業（瀬戸焼）を取り巻く状況やその変化に関する記述として、最も適当なものを一つ選べ。",
+        "context": "地域の伝統産業である『瀬戸焼』の生産量・出荷額の変化に関する報告書によると、近年、量産品からオーダーメイドの美術工芸品や生活雑貨へのシフトが進んでいる。ある調査では、『日常使いの器としての需要は縮小したが、個人のこだわりに応える一点ものの価値が再評価されている』という結果が示された。これについて、職人のA氏は『以前は大量生産によって効率よく市場のニーズを満たすことが主目的であったが、現在は買い手との直接的な対話を通じて、使い手のストーリーを反映させた作品作りへと変化している』と述べる。また、B氏は『若い世代や観光客の間で体験型ワークショップの人気が高まっており、単なる消費ではなく制作プロセスそのものを価値とする消費行動への移行が見られる』と指摘している。",
+        "choices": [
+          "買い手との直接的な対話は減少している一方で、個人のこだわりに応えるオーダーメイド品の大量生産が主流になりつつある。",
+          "大量生産による効率的な供給体制が依然として中心であり、若い世代の観光客による体験型ワークショップもそのための手法として位置づけられている。",
+          "日常使いの器としての需要は縮小しているものの、買い手との対話や制作プロセス自体に価値を見出す新たな需要が生まれている。",
+          "効率よく市場のニーズを満たすことが現在の主目的となっており、職人による一点ものの美術工芸品へのシフトは停滞している。"
+        ],
+        "answerIndex": 2,
+        "answer": "日常使いの器としての需要は縮小しているものの、買い手との対話や制作プロセス自体に価値を見出す新たな需要が生まれている。",
+        "explanation": "本文では、以前は大量生産が主目的であったが現在はオーダーメイドや一点ものへのシフトが進んでいること、日常使いの需要は縮小した一方で個人のこだわりや制作プロセスに価値が見出されていることが述べられています。選択肢の1つ目は現在の主目的が大量生産である点が本文と矛盾します。3つ目はシフトが停滞しているという記述が本文の「シフトが進んでいる」に反しています。4つ目は対話が減少している点やオーダーメイドの大量生産という矛盾した表現が誤りです。したがって、文章全体の論旨および細部の記述と正確に一致する選択肢が正解となります。",
+        "evidence": "日常使いの器としての需要は縮小したが、個人のこだわりに応える一点ものの価値が再評価されている",
+        "misconception": "本文の一部にあるキーワード（大量生産や日常使いの縮小など）を拾いながら、全体の因果関係や現状の変化（シフトが進んでいることや対話の増加）を事実と逆に混同する部分一致・逆転の誤り。",
+        "marks": 2,
+        "id": "rise-japanese-edc1e3758546c111",
+        "fingerprint": "77e1913c40eaa1aa",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-10T14:27:15.339Z"
         }
       }
     ],
