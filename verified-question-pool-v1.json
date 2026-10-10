@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-09-15-16-07Z",
-  "updatedAt": "2026-10-09T15:16:07.960Z",
+  "poolVersion": "2026-10-10-13-02-10Z",
+  "updatedAt": "2026-10-10T13:02:10.435Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -8650,6 +8650,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-09T13:44:43.784Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.physics.ohm_law",
+        "difficulty": 8,
+        "question": "回路全体の消費電力が最も大きくなる組み合わせを、実験結果をもとに選べ。",
+        "context": "実験で、電源電圧が12Vの電源に抵抗器Xと抵抗器Yを接続した。抵抗器Xの抵抗値は6Ω、抵抗器Yの抵抗値は4Ωである。この2つの抵抗器を直列または並列に接続し、回路全体の消費電力を測定したところ、それぞれの接続方法で異なる値を示した。",
+        "choices": [
+          "抵抗器Xと抵抗器Yを直列に接続したとき",
+          "抵抗器Xと抵抗器Yを並列に接続したとき",
+          "抵抗器Xのみを接続したとき",
+          "抵抗器Yのみを接続したとき"
+        ],
+        "answerIndex": 1,
+        "answer": "抵抗器Xと抵抗器Yを並列に接続したとき",
+        "explanation": "回路全体の消費電力PはP = V^2 / Rで表され、電源電圧Vが一定のとき、合成抵抗Rが小さいほど消費電力は大きくなる。直列接続時の合成抵抗は6+4=10Ωとなり、並列接続時の合成抵抗は (6×4)/(6+4) = 2.4Ωとなる。したがって、合成抵抗が最も小さくなる並列接続のとき、回路全体の消費電力が最も大きくなる。",
+        "evidence": "電源電圧が12Vの電源に抵抗器Xと抵抗器Yを接続した。",
+        "misconception": "直列接続では抵抗の和が大きくなるため電力も大きくなると誤解する。",
+        "marks": 2,
+        "id": "rise-science-f6d0600f0e8e2af3",
+        "fingerprint": "1a18135c96391f36",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-10T13:02:10.418Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.chemistry.solution_density",
+        "difficulty": 8,
+        "question": "表中の水溶液について、質量パーセント濃度が最も高いものを答えよ。",
+        "context": "室温でそれぞれ異なる量の溶質を水に溶かして4種類の水溶液を作製した。水溶液Aは水85gに溶質15g、水溶液Bは水80gに溶質20g、水溶液Cは水75gに溶質25g、水溶液Dは水70gに溶質30gを完全に溶かした。",
+        "choices": [
+          "水溶液A",
+          "水溶液B",
+          "水溶液C",
+          "水溶液D"
+        ],
+        "answerIndex": 3,
+        "answer": "水溶液D",
+        "explanation": "質量パーセント濃度は（溶質の質量÷水溶液の質量）×100で計算される。水溶液Aは15/(85+15)×100=15%、水溶液Bは20/(80+20)×100=20%、水溶液Cは25/(75+25)×100=25%、水溶液Dは30/(70+30)×100=30%となるため、水溶液Dの濃度が最も高くなる。",
+        "evidence": "水溶液Dは水70gに溶質30gを完全に溶かした。",
+        "misconception": "溶質の質量だけを比較して最も数値が大きいものを選んでしまう、あるいは水の量が少ないからといって単純に比較する。",
+        "marks": 2,
+        "id": "rise-science-78b08e564a0090fa",
+        "fingerprint": "f71a45397ff31483",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-10T13:02:10.418Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.biology.cell_division",
+        "difficulty": 8,
+        "question": "タマネギの根端の細胞分裂の観察において、細胞の配列や染色体のようすを観察する際、細胞同士をバラバラにして観察しやすくするために行う操作として正しいものを答えよ。",
+        "context": "タマネギの根端を用いて細胞分裂のようすを観察する実験を行った。根端をプレパラートにのせる前に、塩酸を用いて一定時間温め、その後押しつぶし操作を行った。",
+        "choices": [
+          "塩酸で処理して組織の細胞をバラバラにしやすくする",
+          "酢酸カーミン液で染色体を緑色に染める",
+          "スライドガラスの上で強く加熱して水分を完全に蒸発させる",
+          "エタノールに浸して葉緑体を脱色する"
+        ],
+        "answerIndex": 0,
+        "answer": "塩酸で処理して組織の細胞をバラバラにしやすくする",
+        "explanation": "根端を塩酸で温める（解離）操作は、ペクチンを溶かして細胞同士を結びつけている結合を断ち切り、押しつぶし操作によって細胞を1層にほぐしやすくするために行う。エタノール脱色は光合成を行う葉などの緑色組織で行うものであり、染色体の染色は酢酸カーミンや酢酸オルセインなどの液で赤〜紫色に染める。",
+        "evidence": "根端をプレパラートにのせる前に、塩酸を用いて一定時間温め、その後押しつぶし操作を行った。",
+        "misconception": "塩酸の役割を染色体の染色液の定着や脱色と勘違いする。",
+        "marks": 1,
+        "id": "rise-science-4ecd43500e208f5c",
+        "fingerprint": "b61c5bb2363fae00",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-10T13:02:10.418Z"
         }
       }
     ],
