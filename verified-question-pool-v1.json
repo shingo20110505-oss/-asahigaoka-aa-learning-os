@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-10-14-27-15Z",
-  "updatedAt": "2026-10-10T14:27:15.355Z",
+  "poolVersion": "2026-10-11-12-43-01Z",
+  "updatedAt": "2026-10-11T12:43:01.938Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2509,6 +2509,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-08T13:21:42.070Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.probability",
+        "difficulty": 8,
+        "question": "袋の中に1から5までの数字が1つずつ書かれた5枚のカードが入っている。この袋から同時に2枚のカードを取り出し、書かれた数の大きい方をa、小さい方をbとする。a - b の値が偶数となる確率を求めよ。",
+        "context": "袋の中に1から5までの数字が1つずつ書かれた5枚のカードが入っている。同時に2枚のカードを取り出し、書かれた数の大きい方をa、小さい方をbとする。",
+        "choices": [
+          "1/2",
+          "3/5",
+          "2/5",
+          "3/10"
+        ],
+        "answerIndex": 2,
+        "answer": "2/5",
+        "explanation": "5枚のカードから同時に2枚を取り出す組合せの総数は全部で 5 × 4 ÷ 2 = 10 通りである。すべての組合せ (a, b) について a - b の値を調べると、(2,1)→1, (3,1)→2, (3,2)→1, (4,1)→3, (4,2)→2, (4,3)→1, (5,1)→4, (5,2)→3, (5,3)→2, (5,4)→1 となる。このうち、差 a - b が偶数になるのは (3,1), (4,2), (5,1), (5,3) の4通りである。したがって、確率は 4 / 10 = 2 / 5 となる。",
+        "evidence": "袋の中に1から5までの数字が1つずつ書かれた5枚のカードが入っている。この袋から同時に2枚のカードを取り出し、書かれた数の大きい方をa、小さい方をbとする。",
+        "misconception": "すべての組合せ数を誤って重複を許した順列として計算したり、差が奇数になる場合と勘違いして数え間違えること。",
+        "marks": 2,
+        "id": "rise-math-bcf444b94c88206d",
+        "fingerprint": "6094d8b7287fcd8d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-11T12:42:48.793Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.coordinate_geometry",
+        "difficulty": 8,
+        "question": "三角形PHQの面積が 16 であるとき、t の値を求めよ。",
+        "context": "直線 y = 2x 上に点Pがあり、点Pの x 座標を t（t > 0）とする。点Pを通り、傾き -1/2 の直線が x 軸と交わる点をQとする。また、点Pから x 軸に垂線を下ろし、その交点をHとする。",
+        "choices": [
+          "4",
+          "\\sqrt{2}",
+          "2",
+          "2\\sqrt{2}"
+        ],
+        "answerIndex": 2,
+        "answer": "2",
+        "explanation": "点Pの x 座標が t で直線 y = 2x 上にあるため、Pの座標は (t, 2t) である。点Pを通り傾き -1/2 の直線の方程式は y - 2t = -1/2(x - t) となり、整理すると y = -1/2 x + (5/2)t を得る。この直線と x 軸との交点Qの x 座標は y = 0 を代入して求まると 5t となるため、Qの座標は (5t, 0) である。また、点Hの座標は (t, 0) である。したがって、三角形PHQの底辺HQの長さは 5t - t = 4t、高さPHの長さは 2t となる。面積は 1/2 × 4t × 2t = 4t^2 と表される。これが 16 に等しいので 4t^2 = 16 すなわち t^2 = 4 を得る。t > 0 より t = 2 と求まる。",
+        "evidence": "直線 y = 2x 上に点Pがあり、点Pの x 座標を t（t > 0）とする。",
+        "misconception": "直線の切片の計算ミスや、三角形の底辺の長さを求める際に x 座標の差（5t - t）ではなく誤って座標そのものを長さに使ってしまう誤り。",
+        "marks": 2,
+        "id": "rise-math-1ba7d842caf4de96",
+        "fingerprint": "d067e98676a1b894",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-11T12:43:01.743Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.probability",
+        "difficulty": 8,
+        "question": "大小2つのサイコロの出た目の組み合わせについて、直線 ax + by = 12 と x 軸、y 軸で囲まれる三角形の面積が整数になる確率を求めよ。",
+        "context": "大小2つのサイコロを同時に投げ、大きいサイコロの出た目を a、小さいサイコロの出た目を b とする。座標平面上に直線 ax + by = 12 を引く。",
+        "choices": [
+          "\\frac{1}{3}",
+          "\\frac{1}{2}",
+          "\\frac{2}{3}",
+          "\\frac{3}{4}"
+        ],
+        "answerIndex": 2,
+        "answer": "\\frac{2}{3}",
+        "explanation": "直線 ax + by = 12 と x 軸との交点は (12/a, 0)、y 軸との交点は (0, 12/b) である。この直線と両軸で囲まれる三角形は直角三角形であり、その面積 S は S = 1/2 × (12/a) × (12/b) = 72 / (ab) と表される。面積 S が整数になるためには、分母の ab が 72 の約数である必要がある。サイコロの出た目 a, b はそれぞれ 1 から 6 の整数であるため、積 ab は 1 から 36 までの値をとる。ab が 72 の約数（かつ 1 以上 36 以下）となる (a, b) の組み合わせを数えると、ab = 1 (1通り), 2 (2通り), 3 (2通り), 4 (3通り), 6 (4通り), 8 (2通り), 9 (1通り), 12 (4通り), 18 (2通り), 24 (2通り), 36 (1通り) となり、合計で 1+2+2+3+4+2+1+4+2+2+1 = 24 通りとなる。全事象は 6 × 6 = 36 通りであるため、求める確率は 24/36 = 2/3 となる。",
+        "evidence": "大小2つのサイコロを同時に投げ、大きいサイコロの出た目を a、小さいサイコロの出た目を b とする。",
+        "misconception": "面積の公式において 1/2 を掛け忘れたり、積 ab が 72 の約数でなく a や b 単体が 12 の約数でなければならないと勘違いしたりする誤り。",
+        "marks": 2,
+        "id": "rise-math-a7f1276622df15a2",
+        "fingerprint": "b9d346ee21534f6c",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-11T12:43:01.743Z"
         }
       }
     ],
