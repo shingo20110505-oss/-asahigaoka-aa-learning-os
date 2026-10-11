@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-11-13-30-46Z",
-  "updatedAt": "2026-10-11T13:30:46.344Z",
+  "poolVersion": "2026-10-11-13-59-50Z",
+  "updatedAt": "2026-10-11T13:59:50.741Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -12213,6 +12213,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-10T13:37:00.817Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.geography.industry",
+        "difficulty": 8,
+        "question": "資料Aおよび資料Bの記述から読み取れる愛知県の農業・工業の特色について、最も適当なものを次の中から1つ選びなさい。",
+        "context": "愛知県南部の人文・自然環境に関する次の資料がある。\n資料A：「渥美半島の先端に位置する地域では、水不足を解消するために豊川用水が建設され、温暖な気候を利用した促成栽培や花きの生産が盛んである。」\n資料B：「矢作川流域や三河高原周辺では、自動車産業を中心とする機械工業の関連工場が広がるとともに、近郊農業として都市向けの野菜栽培も行われている。」",
+        "choices": [
+          "三河高原周辺では、大規模な稲作単作地帯が広がっている。",
+          "渥美半島では、冷涼な気候を活かした高原野菜の栽培が中心である。",
+          "豊川用水の完成により、水不足が緩和されて農業生産が多角化した。",
+          "矢作川流域では、水力発電のみに依存した重化学工業が発展した。"
+        ],
+        "answerIndex": 2,
+        "answer": "豊川用水の完成により、水不足が緩和されて農業生産が多角化した。",
+        "explanation": "資料Aには渥美半島で水不足を解消するために豊川用水が建設され、温暖な気候を利用した促成栽培や花きの生産が盛んであることが示されている。したがって、豊川用水の完成によって水不足が緩和され、農業生産が多角化したことを述べた文が適切である。他の選択肢は資料の記述や実際の地理的条件（冷涼ではなく温暖である点、水力発電のみではない点など）に反している。",
+        "evidence": "水不足を解消するために豊川用水が建設され、温暖な気候を利用した促成栽培や花きの生産が盛んである。",
+        "misconception": "渥美半島のような温暖な地域を冷涼な高原と混同したり、工業地域における動力源を水力発電のみと思い込んだりする誤解。",
+        "marks": 2,
+        "id": "rise-social-b05ba879aee3169d",
+        "fingerprint": "7e026bed60e100af",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": true,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-11T13:59:50.706Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.history.modern",
+        "difficulty": 8,
+        "question": "この時期の経済・社会状況に関して述べた文として最も適当なものを次の中から1つ選びなさい。",
+        "context": "明治時代から大正時代にかけての日本の産業発展に関する次の資料がある。\n資料：「日清・日露戦争を経て、国内では綿糸や生糸などの軽工業が輸出を牽引する一方で、重工業の比重も徐々に高まっていった。都市部では工場労働者が増加し、労働問題や公害問題（足尾鉱毒事件など）が社会的な課題として表面化した。」",
+        "choices": [
+          "殖産興業政策の推進により、明治初期にはすでに重工業が日本の輸出総額の大部分を占めていた。",
+          "日清戦争後、官営の八幡製鉄所の操業が始まり、国内の鉄鋼生産力が大きく高まった。",
+          "日露戦争の勝利により、日本はすべての不平等条約の改正に完全に成功した。",
+          "この時期、農業中心の経済から工業中心の経済への転換が進む中で、女性労働者は工場から完全に排除された。"
+        ],
+        "answerIndex": 1,
+        "answer": "日清戦争後、官営の八幡製鉄所の操業が始まり、国内の鉄鋼生産力が大きく高まった。",
+        "explanation": "日清戦争後に政府は重工業の育成を図り、1901年に官営八幡製鉄所が操業を開始したことで国内の鉄鋼生産力が向上した。これは歴史的事実として正しく、資料にある重工業の比重の高まりとも合致する。関税自主権の完全回復は1911年であることや、当時は製糸業などの軽工業を中心に女性労働者が多数活躍していたことなどが他の選択肢の誤りである。",
+        "evidence": "重工業の比重も徐々に高まっていった。",
+        "misconception": "不平等条約の改正時期や、明治・大正期の労働者の構成（女性労働者の役割）に関する歴史的事実の混同。",
+        "marks": 2,
+        "id": "rise-social-3fab3b6a0ac89cc6",
+        "fingerprint": "79e168fec17c1f48",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": true,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-11T13:59:50.706Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.civics.economy",
+        "difficulty": 8,
+        "question": "資料の記述および現代の財政・社会保障の仕組みに関して述べた文として最も適当なものを次の中から1つ選びなさい。",
+        "context": "現代の経済社会における政府の役割や財政に関する次の資料がある。\n資料：「現代の市場経済では、価格メカニズムによって資源の効率的な配分が行われる一方で、所得の格差の拡大や、環境問題などの市場の失敗が生じることがある。そのため、政府は租税を財源として社会保障制度を充実させ、所得の再分配機能を発揮する役割を担っている。」",
+        "choices": [
+          "市場の失敗を防ぐため、政府はすべての財・サービスの価格を一律に統制している。",
+          "日本の社会保障制度のうち、医療保険や年金保険は、原則として保険料を徴収せず税金のみで運営されている。",
+          "景気が過熱してインフレが懸念される場合、政府や中央銀行は財政支出の大幅な拡大や金融緩和を行うのが原則である。",
+          "所得の再分配とは、直接税や社会保障給付などを通じて、所得格差を緩和する政府の機能のことである。"
+        ],
+        "answerIndex": 3,
+        "answer": "所得の再分配とは、直接税や社会保障給付などを通じて、所得格差を緩和する政府の機能のことである。",
+        "explanation": "資料にある通り、政府は租税を財源として社会保障などを通じた所得の再分配機能を持つ。所得税などの直接税による負担と社会保障給付を通じて格差を緩和する仕組みは、現代の財政の主要な機能である。価格一律統制や税金のみによる社会保険の運営、インフレ時の財政・金融拡大はいずれも経済原則に反している。",
+        "evidence": "政府は租税を財源として社会保障制度を充実させ、所得の再分配機能を発揮する役割を担っている。",
+        "misconception": "社会保険制度の財源がすべて税金であるという誤解や、インフレ抑制時には金融引き締めや財政支出の抑制が行われるべきところを拡大と混同する誤解。",
+        "marks": 2,
+        "id": "rise-social-b064f3725b2d8f9e",
+        "fingerprint": "4738337f089cab85",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": true,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-11T13:59:50.706Z"
         }
       }
     ]
