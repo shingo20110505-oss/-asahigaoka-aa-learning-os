@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-11-13-59-50Z",
-  "updatedAt": "2026-10-11T13:59:50.741Z",
+  "poolVersion": "2026-10-11-14-54-08Z",
+  "updatedAt": "2026-10-11T14:54:08.542Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -5970,6 +5970,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-10T14:27:15.339Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.text_analysis",
+        "difficulty": 8,
+        "question": "本文の論旨に照らし、デジタル上の文章表現において配慮すべきこととして最も適当なものを次の中から一つ選べ。",
+        "context": "文字によるコミュニケーションが主流になるにつれて、私たちは相手の表情や声のトーンという非言語情報を欠いたまま言葉をやり取りするようになった。その結果、同じ表現であっても、受け手のその時の心理状態や過去の経験によって意味が何通りにも解釈され、予期せぬすれ違いが生じることがある。したがって、デジタル上の文章表現では、対面時以上に言葉の持つ多義性や文脈への配慮が不可欠となる。",
+        "choices": [
+          "非言語情報が補完されるため、対面時よりも文脈への配慮を簡略化できること。",
+          "言葉の持つ多義性や文脈への配慮を対面時以上に怠らないようにすること。",
+          "受け手の心理状態や過去の経験に関わらず、一意的な解釈ができる表現を選ぶこと。",
+          "声のトーンや表情をテキスト内に記号として正確に再現すること。"
+        ],
+        "answerIndex": 1,
+        "answer": "言葉の持つ多義性や文脈への配慮を対面時以上に怠らないようにすること。",
+        "explanation": "本文では、非言語情報を欠くことで受け手の心理状態により解釈が多様化し、すれ違いが生じやすくなると述べているため、対面時以上に文脈や多義性への配慮が必要であるとする選択肢が適切である。最強の罠は対面時よりも簡略化できるとする逆の主張や、一意的な解釈を求める不可能な条件である。",
+        "evidence": "したがって、デジタル上の文章表現では、対面時以上に言葉の持つ多義性や文脈への配慮が不可欠となる。",
+        "misconception": "非言語情報が欠如している点を逆にとらえ、テキストだからこそ簡略化できるという誤解や、記号化ですべて解決できるという短絡的な思い込み。",
+        "marks": 2,
+        "id": "rise-japanese-4e78d025d860a891",
+        "fingerprint": "d77a15bcd562ae2e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-11T14:54:08.519Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.data_reading",
+        "difficulty": 8,
+        "question": "本文が示すデータや現状から導き出されるＡ商店街の課題として最も適当なものを次の中から一つ選べ。",
+        "context": "Ａ商店街の来街者アンケートによると、休日の滞在時間は過去五年間で減少傾向にある。一方で、個別の店舗での購買単価は微増している。この現象は、目的買いの客層が増えた一方で、散策や回遊を楽しむ買い物が減ったことを示唆している。すなわち、街全体としての魅力発信や回遊性を高める仕掛けが不足している現状が浮き彫りになってきた。",
+        "choices": [
+          "滞在時間の減少を解消するために、個々の店舗の滞在時間を制限すること。",
+          "購買単価の低下を防ぐため、個別の店舗での単価引き上げを最優先で進めること。",
+          "来街者の総数自体を増ために、休日の営業日数を減らすこと。",
+          "目的買い以外の層を呼び込み、街全体の回遊性を高める工夫を行うこと。"
+        ],
+        "answerIndex": 3,
+        "answer": "目的買い以外の層を呼び込み、街全体の回遊性を高める工夫を行うこと。",
+        "explanation": "目的買いが増えて散策や回遊が減り、滞在時間が減少しているという事実から、街全体の回遊性を高めることが課題として導かれる。購買単価は微増しているため単価引き上げが最優先というのは不適切である。",
+        "evidence": "すなわち、街全体としての魅力発信や回遊性を高める仕掛けが不足している現状が浮き彫りになってきた。",
+        "misconception": "購買単価が微増していることに着目し、さらなる単価引き上げを行えばよいと考える部分最適の誤謬。",
+        "marks": 2,
+        "id": "rise-japanese-b8ee1db0906d1874",
+        "fingerprint": "3c81ce5813171e1e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-11T14:54:08.519Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.logical_structure",
+        "difficulty": 8,
+        "question": "筆者の主張として最も適当なものを次の中から一つ選べ。",
+        "context": "伝統工芸の継承において、単に古い技法をそのまま守り抜くことが最善とは限らない。時代とともに人々のライフスタイルや価値観が変化する中で、伝統もまた、現代の生活に寄り添う形で適応していく必要がある。もちろん、核となる精神や技術の本質を失ってはならないが、形態や用途を柔軟に変えることこそが、結果として伝統を未来へ繋ぐ確実な道となるのである。",
+        "choices": [
+          "用途や形態の変化よりも、昔ながらの用途を忠実に再現することを優先すべきである。",
+          "ライフスタイルの変化に関わらず、古い技法を一切変えずに維持し続けるべきである。",
+          "伝統の核となる精神を守りつつ、現代の生活に合わせて柔軟に形や用途を変えるべきである。",
+          "現代の生活に合わせるためには、伝統の精神や技術の本質を捨て去る必要がある。"
+        ],
+        "answerIndex": 2,
+        "answer": "伝統の核となる精神を守りつつ、現代の生活に合わせて柔軟に形や用途を変えるべきである。",
+        "explanation": "筆者は古い技法をそのまま守り抜くだけではなく、核となる精神を守りつつ現代の生活に合わせて形態や用途を柔軟に変えることが伝統の継承につながると主張している。そのため、精神を守りつつ柔軟に変えるとする選択肢が正解となる。",
+        "evidence": "もちろん、核となる精神や技術の本質を失ってはならないが、形態や用途を柔軟に変えることこそが、結果として伝統を未来へ繋ぐ確実な道となるのである。",
+        "misconception": "古い技法をそのまま守り抜くことが最善とは限らないという部分を無視して、古いものをそのまま維持すべきという従来の固定観念に引きずられる誤解。",
+        "marks": 2,
+        "id": "rise-japanese-6a477d54e91c4380",
+        "fingerprint": "0f266398928568ea",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-11T14:54:08.519Z"
         }
       }
     ],
