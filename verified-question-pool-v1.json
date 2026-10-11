@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-11-12-43-01Z",
-  "updatedAt": "2026-10-11T12:43:01.938Z",
+  "poolVersion": "2026-10-11-13-30-46Z",
+  "updatedAt": "2026-10-11T13:30:46.344Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -8956,6 +8956,40 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-10T13:02:10.418Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemistry",
+        "difficulty": 8,
+        "question": "実験結果から得られた水溶液の性質に関する記述として正しいものはどれか。最も適当なものを1つ選べ。",
+        "context": "質量パーセント濃度が同じ水酸化ナトリウム水溶液と希塩酸を用意し、中和の実験を行った。ビーカーに入れた希塩酸20cm^3に、水酸化ナトリウム水溶液を少量ずつ加えていき、加えた水酸化ナトリウム水溶液の体積とビーカー内の水溶液のpHおよび存在するイオンの数との関係を調べたところ、水酸化ナトリウム水溶液を20cm^3加えたときにちょうど中性となった。",
+        "choices": [
+          "水酸化ナトリウム水溶液を30cm^3加えたとき、水溶液にフェノールフタレイン溶液を加えると無色になる。",
+          "中和によって水が生成するとき、水素イオンと水酸化物イオンが1:2の割合で反応している。",
+          "中和が完全に終わったとき、水溶液中にはナトリウムイオンと塩化物イオンの数が等しく存在する。",
+          "水酸化ナトリウム水溶液を10cm^3加えたとき、水溶液はアルカリ性を示している。"
+        ],
+        "answerIndex": 2,
+        "answer": "中和が完全に終わったとき、水溶液中にはナトリウムイオンと塩化物イオンの数が等しく存在する。",
+        "explanation": "同濃度の水酸化ナトリウム水溶液と希塩酸が20cm^3ずつでちょうど中和したということは、両者のモル濃度および体積あたりの溶質の物質量が等しいことを示している。中和点では、投入されたナトリウムイオン（Na+）と塩化物イオン（Cl-）の総量は等しくなる。水酸化ナトリウム水溶液10cm^3の時点では酸（塩酸）が過剰であるため酸性であり、30cm^3加えたときはアルカリ性となりフェノールフタレインは赤色を示す。中和反応では水素イオン（H+）と水酸化物イオン（OH-）が1:1の割合で反応して水（H2O）を生成する。",
+        "evidence": "水酸化ナトリウム水溶液を20cm^3加えたときにちょうど中性となった。",
+        "misconception": "中和点においてもイオンの数が異なると誤認したり、中和の量的関係を1:2と勘違いする誤解。",
+        "marks": 2,
+        "id": "rise-science-fd5a10ce1afadcc2",
+        "fingerprint": "2c8d6be6292d7c8c",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-11T13:30:46.298Z"
         }
       }
     ],
