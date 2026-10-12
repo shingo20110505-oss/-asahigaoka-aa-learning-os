@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-12-16-05-16Z",
-  "updatedAt": "2026-10-12T16:05:16.455Z",
+  "poolVersion": "2026-10-12-16-42-31Z",
+  "updatedAt": "2026-10-12T16:42:31.835Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -12587,6 +12587,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-11T13:59:50.706Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "次の文章で述べられている愛知県内の特定の産業都市における工業の特徴として正しいものはどれか。最も適当なものを1つ選べ。",
+        "context": "愛知県の臨海部に位置するある都市は、太平洋ベルトの中央部にあり、広大な埋立地に自動車関連工場や石油化学コンビナートが立ち並んでいます。市内には港湾施設が整備され、輸出入の拠点となっています。製造品出荷額等は長年日本全国でトップクラスを誇り、機械工業がその中核を担っています。",
+        "choices": [
+          "自動車やその関連部品の生産が非常に盛んであり、製造品出荷額等が全国上位の都市である。",
+          "伝統的工芸品である陶磁器の生産が中心であり、古くからの窯業の町として知られている。",
+          "寒冷な気候と豊かな水資源を利用した水力発電が盛んで、重化学工業が発達した。",
+          "平野部で近郊農業が発達し、花きや野菜の栽培が日本一の生産額を誇っている。"
+        ],
+        "answerIndex": 0,
+        "answer": "自動車やその関連部品の生産が非常に盛んであり、製造品出荷額等が全国上位の都市である。",
+        "explanation": "文章中の記述「自動車関連工場や石油化学コンビナート」「製造品出荷額等が長年日本全国でトップクラス」から、これは豊田市や名古屋市、刈谷市などの愛知県の代表的な工業都市・臨海工業地帯の特徴を表しています。したがって、自動車工業を中心とした機械工業が盛んで製造品出荷額が高い都市の説明が正解となります。伝統工芸品や農業を挙げる選択肢は誤りです。",
+        "evidence": "自動車関連工場や石油化学コンビナートが立ち並んでいます。",
+        "misconception": "愛知県の産業として有名な瀬戸市や常滑市の窯業（陶磁器）と混同してしまうこと。",
+        "marks": 2,
+        "id": "rise-social-dfc49f523f0dd57e",
+        "fingerprint": "4e8bff8aaf1f0a44",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-12T16:42:31.807Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "次の歴史的出来事と、それが愛知県（尾張・三河）の歴史や全国の政治に与えた影響の組み合わせとして正しいものはどれか。最も適当なものを1つ選べ。",
+        "context": "16世紀後半、尾張の国から頭角を現した織田信長は、桶狭間の戦いで強敵を破り、天下統一への足がかりをつくりました。その後、信長を引き継いだ豊臣秀吉が全国を統一し、江戸時代には徳川家康が三河を基盤として江戸幕府を開きました。愛知県は、戦国時代から江戸幕府の成立にかけて、日本の政治体制を大きく動かした武将たちの出身地となりました。",
+        "choices": [
+          "鎌倉幕府の御家人として三河国の守護に任じられ、鎌倉時代の政治制度の基礎を固めた。",
+          "室町幕府の拠点として京都と直接結ばれ、幕府の財政を支える直轄地として栄えた。",
+          "明治維新の際に西南戦争の主戦場となり、近代的な軍事制度改革のきっかけとなった。",
+          "織田信長や徳川家康などの三英傑を輩出し、日本の歴史的転換期において中心的な役割を果たした。"
+        ],
+        "answerIndex": 3,
+        "answer": "織田信長や徳川家康などの三英傑を輩出し、日本の歴史的転換期において中心的な役割を果たした。",
+        "explanation": "文脈および歴史的事実から、愛知県（尾張・三河）は織田信長、豊臣秀吉、徳川家康といういわゆる「三英傑」を輩出し、戦国時代から江戸時代への移行という日本の歴史的転換期に深く関わっています。鎌倉時代や室町幕府の直接的な拠点、西南戦争の主戦場とする選択肢は歴史的事実と異なります。",
+        "evidence": "愛知県は、戦国時代から江戸幕府の成立にかけて、日本の政治体制を大きく動かした武将たちの出身地となりました。",
+        "misconception": "鎌倉幕府や室町幕府など、他の時代の中央政権の成立と愛知県の地理的結びつきを混同すること。",
+        "marks": 2,
+        "id": "rise-social-e408bf2fdeb0c913",
+        "fingerprint": "3cdcc724ce446fe6",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-12T16:42:31.807Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "次の地方自治に関する文章を読み、住民参加の仕組みについて述べた記述として正しいものはどれか。最も適当なものを1つ選べ。",
+        "context": "地方自治は「民主主義の学校」と呼ばれ、住民が自らの地域の問題を自分たちの手で解決する住民自治が基本となります。愛知県内の各自治体でも、住民の意見を市政や県政に反映させるため、条例の制定や改廃を直接請求する制度や、首長・議会議員の解職を求める制度などが法律によって定められています。",
+        "choices": [
+          "直接請求権は国の法律の制定や改正に対しても直接行使することが可能である。",
+          "有権者は一定数以上の署名を集めることで、条例の制定や改廃を直接請求することができる。",
+          "住民投票の結果は常に地方公共団体の長や議会に対して法的な絶対的拘束力を持ち、修正が一切できない。",
+          "地方自治体の議会の解散を請求するには、有権者総数の過半数の署名が必ず必要である。"
+        ],
+        "answerIndex": 1,
+        "answer": "有権者は一定数以上の署名を集めることで、条例の制定や改廃を直接請求することができる。",
+        "explanation": "地方自治法における直接請求の仕組みとして、有権者の一定数以上の署名を集めることで、条例の制定・改廃、事務の監査、議会の解散、議員や首長の解職などを請求することができます。住民投票の結果は案件によって拘束力が異なる場合があり、議会解散の必要署名数は法定の割合（通常は3分の1以上など）であり過半数とは限らず、直接請求は地方自治に関するものであり国政には直接行使できません。",
+        "evidence": "条例の制定や改廃を直接請求する制度や、首長・議会議員の解職を求める制度などが法律によって定められています。",
+        "misconception": "直接請求の要件や住民投票の法的拘束力の範囲を、国政の仕組みや過半数といった誤った条件と混同すること。",
+        "marks": 2,
+        "id": "rise-social-18c4f4d72525de13",
+        "fingerprint": "914aa3349e32db12",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-12T16:42:31.807Z"
         }
       }
     ]
