@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-12-16-42-31Z",
-  "updatedAt": "2026-10-12T16:42:31.835Z",
+  "poolVersion": "2026-10-12-17-51-07Z",
+  "updatedAt": "2026-10-12T17:51:07.818Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -6140,6 +6140,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-11T14:54:08.519Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.japanese.reading_comprehension",
+        "difficulty": 8,
+        "question": "本文における筆者の「伝統的な工芸における技術の継承」についての考え方に合致するものを、次の四つの中から一つ選びなさい。",
+        "context": "伝統的な工芸品の製作現場において、技術の継承とは単に過去の型や手順を機械的に反復することではない。素材の声を聞き、その時々の気候や湿度の変化に合わせて微細な調整を加えるという、職人の身体感覚に根ざした判断の積み重ねこそが本質なのだ。したがって、マニュアル化された手順だけを次世代に伝えても、生きた技術が引き継がれたことにはならない。真の継承とは、変化する環境の中で自ら考え、工夫し続ける実践知の伝達を意味するのである。",
+        "choices": [
+          "気候や湿度の変化に応じた微細な調整を行う身体感覚や、自ら工夫する姿勢を伝えることが本質である。",
+          "素材の性質にかかわらず、一定のルールに従って反復作業を行うことで新しい価値が生まれる。",
+          "環境の変化に左右されない普遍的な工程を確立し、個人の判断を排除することが求められる。",
+          "過去の型や手順を正確にマニュアル化して網羅することが、確実な技術継承につながる。"
+        ],
+        "answerIndex": 0,
+        "answer": "気候や湿度の変化に応じた微細な調整を行う身体感覚や、自ら工夫する姿勢を伝えることが本質である。",
+        "explanation": "本文では、技術の継承が単なる過去の型や手順の機械的な反復ではなく、「素材の声を聞き、その時々の気候や湿度の変化に合わせて微細な調整を加えるという、職人の身体感覚に根ざした判断の積み重ね」であり、「変化する環境の中で自ら考え、工夫し続ける実践知の伝達」であると述べられています。したがって、それに最も合致する選択肢が正解となります。他の選択肢はマニュアル化や個人の判断の排除など、本文の主張と逆の内容を述べています。",
+        "evidence": "変化する環境の中で自ら考え、工夫し続ける実践知の伝達を意味するのである。",
+        "misconception": "「マニュアル化された手順」という表現の一部に惑わされ、効率的な手順の共有こそが継承であると誤解してしまう罠。",
+        "marks": 2,
+        "id": "rise-japanese-56a5f3913b384655",
+        "fingerprint": "3c1801530a02c319",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-12T17:51:07.780Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.japanese.argument_analysis",
+        "difficulty": 8,
+        "question": "次の文章で筆者が最も主張したい中心的な考え方はどれか、次の四つの中から一つ選びなさい。",
+        "context": "私たちは、効率性や利便性を追求するあまり、無駄を徹底的に排除した社会を作り上げてきた。しかし、一見して「無駄」に見える余白の時間や手間こそが、人間の創造性や他者への共感を生み出す源泉である。効率ばかりを重視して遊びやゆとりを失った社会は、予期せぬ変化に対して極めてもろい。真に持続可能な社会を築くためには、あえて効率の枠外にある「無駄」の価値を再評価し、日々の生活に取り戻すことが不可欠なのである。",
+        "choices": [
+          "効率性ばかりを追求するのではなく、一見無駄に見える余白やゆとりの価値を再評価し、生活に取り戻すべきである。",
+          "予期せぬ変化に対応するためには、個人の共感能力に頼らず、厳格なマニュアルによる統制を強めるべきである。",
+          "社会の持続可能性を高めるためには、効率性と利便性をさらに徹底して追求し、無駄をなくす必要がある。",
+          "人間の創造性を高めるためには、個人の自由な時間を完全に管理し、生産性を最大化しなければならない。"
+        ],
+        "answerIndex": 0,
+        "answer": "効率性ばかりを追求するのではなく、一見無駄に見える余白やゆとりの価値を再評価し、生活に取り戻すべきである。",
+        "explanation": "本文の結びにおいて、筆者は「あえて効率の枠外にある『無駄』の価値を再評価し、日々の生活に取り戻すことが不可欠なのである」と述べています。効率性一辺倒の社会に対する警鐘を鳴らし、余白やゆとり（無駄に見えるもの）の価値を再評価することを求めているため、それを正確に反映している選択肢が正解です。",
+        "evidence": "あえて効率の枠外にある「無駄」の価値を再評価し、日々の生活に取り戻すことが不可欠なのである。",
+        "misconception": "冒頭の「効率性や利便性を追求する」という現状説明の部分だけを切り取り、効率化の推進が主張であると勘違いする誤り。",
+        "marks": 2,
+        "id": "rise-japanese-c8270fa93833a3ad",
+        "fingerprint": "64a8ae4de029b5cf",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-12T17:51:07.780Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.japanese.word_meaning",
+        "difficulty": 8,
+        "question": "下線部「言葉の持つ両面性」について、本文が示している具体例として最も適切なものを、次の四つの中から一つ選びなさい。",
+        "context": "私たちが日常的に交わす言葉には、人と人とを結びつけ、互いの心を深く理解し合うための温かな絆となる一方で、不用意な表現によって相手の心を深く傷つけ、取り返しのつかない溝を生む凶器にもなるという、いわば「言葉の持つ両面性」がある。したがって、私たちは言葉を発する際、その重みと影響力を常に自覚し、慎重かつ誠実に向き合わなければならない。",
+        "choices": [
+          "言葉は論理的な思考を整理する道具であると同時に、芸術的な作品を創作するための唯一の素材であるということ。",
+          "言葉は人々の心を繋ぐ温かな絆になる一方で、相手を傷つける凶器にもなり得ること。",
+          "言葉は古い歴史や文化を継承するための記録であると同時に、新しい流行を生み出す発信源であるということ。",
+          "言葉は自分の意思を正確に伝える手段であると同時に、他人の意見を一方的に否定する議論の武器であること。"
+        ],
+        "answerIndex": 1,
+        "answer": "言葉は人々の心を繋ぐ温かな絆になる一方で、相手を傷つける凶器にもなり得ること。",
+        "explanation": "本文では「言葉の持つ両面性」の内容について、「人と人とを結びつけ、互いの心を深く理解し合うための温かな絆となる一方で、不用意な表現によって相手の心を深く傷つけ、取り返しのつかない溝を生む凶器にもなる」と具体的に説明されています。これに合致する選択肢が正解となります。",
+        "evidence": "人と人とを結びつけ、互いの心を深く理解し合うための温かな絆となる一方で、不用意な表現によって相手の心を深く傷つけ、取り返しのつかない溝を生む凶器にもなる",
+        "misconception": "言葉の持つ影響力を「論理的思考」や「歴史的継承」といった本文にない文脈にすり替えてしまう不適切選択肢を選ぶこと。",
+        "marks": 1,
+        "id": "rise-japanese-fd977085ad7fffd9",
+        "fingerprint": "093c94e9efba9777",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-12T17:51:07.780Z"
         }
       }
     ],
