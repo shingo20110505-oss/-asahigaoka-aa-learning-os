@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-12-15-15-18Z",
-  "updatedAt": "2026-10-12T15:15:18.250Z",
+  "poolVersion": "2026-10-12-16-05-16Z",
+  "updatedAt": "2026-10-12T16:05:16.455Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -9160,6 +9160,108 @@
           "verifierConfidence": 0.9,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-11T13:30:46.298Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science.chemistry.solutions",
+        "difficulty": 8,
+        "question": "硝酸カリウムの水に対する溶解度について、実験結果から導かれる考察として最も適切なものを1つ選べ。",
+        "context": "室温20℃の水100gに硝酸カリウムを溶かして飽和水溶液をつくった。この水溶液を加熱してさらに硝酸カリウムを追加で溶かし、60℃の飽和水溶液210gを得た。その後、この60℃の飽和水溶液を20℃まで冷却したところ、硝酸カリウムの結晶が析出した。なお、60℃における硝酸カリウムの溶解度は110g、20℃における硝酸カリウムの溶解度は32gである。",
+        "choices": [
+          "60℃の飽和水溶液210gを20℃に冷却すると、析出する結晶の質量は110gである。",
+          "60℃の飽和水溶液210gに含まれる水の質量は100gである。",
+          "20℃の水100gに溶ける硝酸カリウムの最大質量は110gである。",
+          "60℃の飽和水溶液210gを20℃に冷却すると、析出する結晶の質量は78gである。"
+        ],
+        "answerIndex": 3,
+        "answer": "60℃の飽和水溶液210gを20℃に冷却すると、析出する結晶の質量は78gである。",
+        "explanation": "60℃の飽和水溶液210gは、水100gに溶質110gが溶けたものであるため、水100g、硝酸カリウム110gで構成されます。これを20℃まで冷却すると、20℃の水100gに溶けることができる硝酸カリウムの質量は32gまで減少します。したがって、析出する結晶の質量は、冷却前と冷却後の溶解度の差である110g - 32g = 78gとなります。最も強力な誤答は、析出量を計算する際に温度ごとの水の質量の変化や溶解度の定義を誤認してしまうものです。",
+        "evidence": "60℃における硝酸カリウムの溶解度は110g、20℃における硝酸カリウムの溶解度は32gである。",
+        "misconception": "温度が下がったときに溶媒である水の質量自体が減少し、すべての溶質が析出するという誤解",
+        "marks": 2,
+        "id": "rise-science-f65d3bb80b1592cc",
+        "fingerprint": "9c5aee68c48961c2",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-12T16:05:16.393Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science.physics.force_pressure",
+        "difficulty": 8,
+        "question": "直方体の木片を用いた圧力に関する実験について、最も適切な説明を1つ選べ。",
+        "context": "質量が600gで、各面の大きさがそれぞれ 10cm×20cm、10cm×30cm、20cm×30cm である直方体の木片がある。この木片を異なる面を下にして床の上に置いた。なお、100gの物体にはたらく重力の大きさを1Nとする。",
+        "choices": [
+          "最も狭い面を下にして置いたとき、床が受ける圧力の大きさが最大ではなく一定である。",
+          "すべての面を下にして置いたとき、床が受ける圧力の大きさは等しい。",
+          "どの面を下にして置いても、木片が床に加える力の大きさは異なる。",
+          "最も広い面を下にして置いたとき、床が受ける圧力の大きさが最小になる。"
+        ],
+        "answerIndex": 3,
+        "answer": "最も広い面を下にして置いたとき、床が受ける圧力の大きさが最小になる。",
+        "explanation": "木片が床に加える力（重力）の大きさは、どの面を下にして置いても質量600g分で一定（6N）です。圧力は「力の大きさ（N）÷ 面積（m²）」で表されるため、力を受ける面積が最も広い面を下にしたときに圧力が最小になり、最も狭い面を下にしたときに圧力が最大になります。したがって、最も広い面を下にしたときが最小になるという選択肢が適切です。",
+        "evidence": "質量が600gで、各面の大きさがそれぞれ 10cm×20cm、10cm×30cm、20cm×30cm である直方体の木片がある。",
+        "misconception": "面積が変わると木片自体が受ける重力の大きさも変化するという誤解",
+        "marks": 2,
+        "id": "rise-science-8e549fc5a0c48cf1",
+        "fingerprint": "971178bd2821197f",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-12T16:05:16.393Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science.biology.cell_photosynthesis",
+        "difficulty": 8,
+        "question": "オオカナダモを用いた光合成と呼吸に関する実験考察として、最も適切なものを1つ選べ。",
+        "context": "アルミニウム箔で一部をおおったオオカナダモの葉を、一定時間日光に当てた後、脱色してヨウ素液に浸した。その結果、アルミニウム箔でおおわれていた部分はヨウ素反応を示さず、日光が当たっていた部分は青紫色に変化した。",
+        "choices": [
+          "アルミニウム箔をかぶせた部分は、光が遮断されたことでデンプンが新たに合成された。",
+          "日光が当たっていた部分では、光合成によってデンプンが生成されたためヨウ素反応が起きた。",
+          "アルミニウム箔でおおわれていた部分では、呼吸が行われなかったためデンプンが消失した。",
+          "ヨウ素液は光合成色素と反応して青紫色に変色する性質がある。"
+        ],
+        "answerIndex": 1,
+        "answer": "日光が当たっていた部分では、光合成によってデンプンが生成されたためヨウ素反応が起きた。",
+        "explanation": "植物は光が当たることで光合成を行い、デンプンをつくり出します。アルミニウム箔でおおわれて光が遮られた部分は光合成ができずデンプンができないため、デンプンと反応して青紫色になるヨウ素液が反応しません。一方、日光が当たった部分は光合成によりデンプンが合成されているため、青紫色に変化します。誤答はヨウ素液の性質や呼吸と光合成の役割を混同するものです。",
+        "evidence": "アルミニウム箔でおおわれていた部分はヨウ素反応を示さず、日光が当たっていた部分は青紫色に変化した。",
+        "misconception": "ヨウ素液が光そのものや葉緑素と直接反応して変色するという誤解",
+        "marks": 2,
+        "id": "rise-science-0d319d0a89aaf3b6",
+        "fingerprint": "1466549b203c06d1",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-12T16:05:16.393Z"
         }
       }
     ],
