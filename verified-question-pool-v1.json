@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-11-14-54-08Z",
-  "updatedAt": "2026-10-11T14:54:08.542Z",
+  "poolVersion": "2026-10-12-15-15-18Z",
+  "updatedAt": "2026-10-12T15:15:18.250Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2611,6 +2611,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-11T12:43:01.743Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.quadratic_function",
+        "difficulty": 8,
+        "question": "点Bのy座標として正しいものを次の選択肢から1つ選びなさい。",
+        "context": "座標平面上に放物線 y = ax^2 (a > 0) があり、点A(-2, 2)を通っている。この放物線上にx座標が t (t > 0) である点Bをとる。直線ABの傾きが1であるとき、点Bのy座標を求めよ。",
+        "choices": [
+          "10",
+          "4",
+          "6",
+          "8"
+        ],
+        "answerIndex": 3,
+        "answer": "8",
+        "explanation": "まず点A(-2, 2)を放物線に代入してaの値を求めると、2 = a(-2)^2 より a = 1/2 となる。点Bのx座標をtとすると、点Bの座標は(t, (1/2)t^2)と表せる。直線ABの傾きは、(-2からtまで増加したときのyの増加量を考え、( (1/2)t^2 - 2 ) / (t - (-2)) )となる。これが1に等しいことから方程式を立てて解くと、t = 4 が得られる。これを代入して計算すると、点Bのy座標は8となる。",
+        "evidence": "座標平面上に放物線 y = ax^2 (a > 0) があり、点A(-2, 2)を通っている。",
+        "misconception": "点Bのx座標を求める二次方程式を解く際に、符号のミスや正負の条件の考慮漏れにより不正解のtの値を選んでしまう。",
+        "marks": 2,
+        "id": "rise-math-1e96864f587adcb3",
+        "fingerprint": "ce508e2853c71872",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-12T15:15:18.213Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.plane_geometry",
+        "difficulty": 8,
+        "question": "線分DEの長さとして正しいものを次の選択肢から1つ選びなさい。",
+        "context": "図のように、AB = 9cm, BC = 12cm, ∠ABC = 90° の直角三角形ABCがある。辺AC上に点Dをとり、点Dから辺ABに垂線を下ろし、その交点をEとする。AE = 3cm のとき、線分DEの長さを求めよ。",
+        "choices": [
+          "4cm",
+          "5cm",
+          "6cm",
+          "3cm"
+        ],
+        "answerIndex": 0,
+        "answer": "4cm",
+        "explanation": "三角形ADEと三角形ABCにおいて、共通の角および直角が等しいため2組の角がそれぞれ等しく、両者は相似である。相似比はAE対AB、すなわち3対9であり、これは1対3である。したがってDE対BCも1対3となり、BCが12cmであることから、DEの長さは12を3で割った4cmとなる。",
+        "evidence": "AB = 9cm, BC = 12cm, ∠ABC = 90° の直角三角形ABCがある。",
+        "misconception": "三角形の相似比を取り違え、辺の長さをそのまま引き算してしまう誤りや、直角三角形の相似関係を誤認する。",
+        "marks": 2,
+        "id": "rise-math-7681f50a8a3ad786",
+        "fingerprint": "de197e9f0c2670a1",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-12T15:15:18.213Z"
         }
       }
     ],
