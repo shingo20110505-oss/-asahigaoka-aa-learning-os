@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-12T00:35:17.655Z",
+  "updatedAt": "2026-10-13T02:36:37.034Z",
   "entries": [
     {
       "id": "ed9e7fb8cae0a59fa5c08f3e8cbd3edc9df7813238490fae60000c9a59c2b579",
@@ -1325,6 +1325,115 @@
       ],
       "wordCount": 320,
       "createdAt": "2026-10-12T00:35:17.648Z"
+    },
+    {
+      "id": "27ef6e5a9da76292766500a224843ed37146dacad945a8532b9cc6639c3838c8",
+      "sha256": "27ef6e5a9da76292766500a224843ed37146dacad945a8532b9cc6639c3838c8",
+      "path": "items/27ef6e5a9da76292766500a224843ed37146dacad945a8532b9cc6639c3838c8.json",
+      "title": "A Quiet Morning in the Forest",
+      "topic": "A boy observing nature in a forest for an art project",
+      "difficulty": 3,
+      "readingType": "narrative",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.paraphrase",
+        "en.read.title",
+        "en.read.summary"
+      ],
+      "words": [
+        "forest",
+        "project",
+        "trunk",
+        "moss",
+        "creature"
+      ],
+      "wordCount": 202,
+      "createdAt": "2026-10-13T02:35:43.444Z"
+    },
+    {
+      "id": "f69c82075a2f2a60e3eb34423d949aeb8e8ff8edc7e020ca0c039665d6ed27e3",
+      "sha256": "f69c82075a2f2a60e3eb34423d949aeb8e8ff8edc7e020ca0c039665d6ed27e3",
+      "path": "items/f69c82075a2f2a60e3eb34423d949aeb8e8ff8edc7e020ca0c039665d6ed27e3.json",
+      "title": "The Value of Morning Walks in Nature",
+      "topic": "The benefits of a morning walk in nature for students",
+      "difficulty": 10,
+      "readingType": "argument",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison",
+        "passive",
+        "presentPerfect",
+        "asMuchAs",
+        "asManyAs"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.cause",
+        "en.read.mainIdea",
+        "en.read.summary"
+      ],
+      "words": [
+        "solution",
+        "scents",
+        "artificial",
+        "routine",
+        "function"
+      ],
+      "wordCount": 411,
+      "createdAt": "2026-10-13T02:36:14.668Z"
+    },
+    {
+      "id": "c32328e7b08c10d099cbcd9774f102d0f4b73670c40b2bb70746edde79538cd4",
+      "sha256": "c32328e7b08c10d099cbcd9774f102d0f4b73670c40b2bb70746edde79538cd4",
+      "path": "items/c32328e7b08c10d099cbcd9774f102d0f4b73670c40b2bb70746edde79538cd4.json",
+      "title": "Hana's Special Bread",
+      "topic": "A girl learning to bake bread with her grandmother",
+      "difficulty": 2,
+      "readingType": "narrative",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.paraphrase",
+        "en.read.title",
+        "en.read.summary"
+      ],
+      "words": [
+        "recipe",
+        "dough",
+        "crust",
+        "impatient",
+        "effort"
+      ],
+      "wordCount": 247,
+      "createdAt": "2026-10-13T02:36:37.028Z"
     }
   ]
 }
