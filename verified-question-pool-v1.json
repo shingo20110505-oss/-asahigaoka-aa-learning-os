@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-14-12-50-58Z",
-  "updatedAt": "2026-10-14T12:50:58.781Z",
+  "poolVersion": "2026-10-14-13-40-30Z",
+  "updatedAt": "2026-10-14T13:40:30.503Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -6310,6 +6310,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-12T17:51:07.780Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.argument",
+        "difficulty": 8,
+        "question": "筆者が「道具を主導権を持って使いこなすためのリテラシーを再構築しなければならない」と述べている理由として、最も適当なものを一つ選びなさい。",
+        "context": "私たちは文字やデジタル機器という『外部記憶』を手に入れたことで、脳の負担を大きく軽減してきた。しかし、すべてを外部に委ねることによって、自分自身で深く思考し、情報を構造化する力が低下しているという指摘がある。これは道具の進化がもたらした利便性の裏返しであり、私たちは道具に使われるのではなく、道具を主導権を持って使いこなすためのリテラシーを再構築しなければならない。",
+        "choices": [
+          "外部記憶装置の性能が未熟であるため、人間が補助しなければ正しく情報を処理できないから。",
+          "デジタル機器の普及により、誰もが情報を構造化する能力を失っており、すべての外部記憶装置の使用を禁止すべきだから。",
+          "外部記憶への依存が脳の負担を減らす一方で、自ら深く考える力を低下させているという懸念があるから。",
+          "文字やデジタル機器などの道具は人間の知性を退化させるだけであり、利便性よりも有害性が上回っているから。"
+        ],
+        "answerIndex": 2,
+        "answer": "外部記憶への依存が脳の負担を減らす一方で、自ら深く考える力を低下させているという懸念があるから。",
+        "explanation": "文章前半では、外部記憶の利用によって脳の負担が軽減される利点が述べられる一方で、「すべてを外部に委ねることによって、自分自身で深く思考し、情報を構造化する力が低下しているという指摘がある」と懸念が示されています。このトレードオフの状況を受け止めて主体的に道具を扱う必要性を説いているため、外部記憶への依存による思考力低下への懸念が理由となります。道具が全面的に有害であるとする選択肢や、使用禁止を主張する選択肢は筆者の論旨を超えた極端な歪曲です。",
+        "evidence": "すべてを外部に委ねることによって、自分自身で深く思考し、情報を構造化する力が低下しているという指摘がある。",
+        "misconception": "文章の一部を取り出して「道具は有害である」「使用を禁止すべきだ」といった極端な解釈に飛躍してしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-c166b177837fd153",
+        "fingerprint": "bcbd2d48c414a0aa",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-14T13:40:30.480Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.practical",
+        "difficulty": 8,
+        "question": "図書委員会の企画におけるポスター制作の条件として、本文の内容に合致しているものを一つ選びなさい。",
+        "context": "図書委員会では、来月の全校集会に向けたポスター制作の企画を進めている。条件は以下の通りである。第一に、テーマは『地域の歴史と未来』に関連するものとし、単なる過去の紹介に終始しないこと。第二に、制作するポスターはB2サイズ一種類のみとし、手書きまたはデジタル作成のいずれかを選択できる。第三に、提出期限は来月十日の放課後まで厳守とし、遅れた場合は審査対象外となる。なお、グループ制作も個人制作も同等に受け付けるが、グループの場合はメンバー全員の役割分担表の添付が必須となる。",
+        "choices": [
+          "ポスターのサイズは複数種類から選択可能であり、用途に応じて大きさを変えられる。",
+          "グループで制作を行う場合には、メンバー全員の役割分担表を添付しなければならない。",
+          "提出期限に遅れた場合でも、理由が正当であれば審査の対象として認められる。",
+          "テーマは過去の歴史を紹介する内容であれば、未来への展望が含まれていなくてもよい。"
+        ],
+        "answerIndex": 1,
+        "answer": "グループで制作を行う場合には、メンバー全員の役割分担表を添付しなければならない。",
+        "explanation": "条件の最後に「グループの場合はメンバー全員の役割分担表の添付が必須となる」と明記されているため、これが正解となります。他の選択肢について、テーマは「単なる過去の紹介に終始しないこと」、サイズは「B2サイズ一種類のみ」、提出期限は「厳守とし、遅れた場合は審査対象外となる」とあるため、それぞれ本文に反しています。",
+        "evidence": "グループの場合はメンバー全員の役割分担表の添付が必須となる。",
+        "misconception": "本文中の条件の細部（期限の例外やサイズの複数性など）を誤認する、または条件の否定形を見落とす誤り。",
+        "marks": 2,
+        "id": "rise-japanese-23c6609d623928b1",
+        "fingerprint": "a2945857ef4f865d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-14T13:40:30.480Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.expression",
+        "difficulty": 8,
+        "question": "下線部「その光は、ただ通りを明るくするだけでなく、家路を急ぐ人々の足取りをどこか柔らかく包み込んでいるように感じられた」とあるが、この表現に込められた心情や情景描写の効果として最も適当なものを一つ選びなさい。",
+        "context": "夕暮れの商店街に差しかかると、シャッターを下ろした店先から漂う冷気とは対照的に、八百屋の軒先だけがオレンジ色の温かい白熱灯に照らされていた。その光は、ただ通りを明るくするだけでなく、家路を急ぐ人々の足取りをどこか柔らかく包み込んでいるように感じられた。",
+        "choices": [
+          "白熱灯の明るさによって、家路を急ぐ人々が周囲の景色を全く見ずに慌てて通り過ぎる様子を描いている。",
+          "寒々とした夕暮れの風景の中に温かみのある光を見出すことで、人々の緊張した心を和ませるような安らぎを表現している。",
+          "八百屋の商売が繁盛している活気を描き出すことで、商店街全体が活力を取り戻したことを示している。",
+          "静まり返った商店街の暗さを強調し、一日の終わりにおける強い孤独感や絶望感を際立たせている。"
+        ],
+        "answerIndex": 1,
+        "answer": "寒々とした夕暮れの風景の中に温かみのある光を見出すことで、人々の緊張した心を和ませるような安らぎを表現している。",
+        "explanation": "「シャッターを下ろした店先から漂う冷気」という寒々しい状況と対比させる形で、「オレンジ色の温かい白熱灯」が人々の足取りを「柔らかく包み込んでいる」と表現されています。これにより、夕暮れの冷たい空気や寂しい雰囲気が漂う中で、温かい光が人々の心を和ませ、安心感をもたらしている効果を読み取ることができます。孤独感や商業的な活気を示すものではなく、また人々が慌てて通り過ぎているわけでもありません。",
+        "evidence": "シャッターを下ろした店先から漂う冷気とは対照的に、八百屋の軒先だけがオレンジ色の温かい白熱灯に照らされていた。その光は、ただ通りを明るくするだけでなく、家路を急ぐ人々の足取りをどこか柔らかく包み込んでいるように感じられた",
+        "misconception": "対比構造に着目した際、冷たさの描写ばかりに引きずられてしまい、光がもたらす心理的な温かみや安らぎの効果を見落とす誤り。",
+        "marks": 2,
+        "id": "rise-japanese-d974e037baa8ff73",
+        "fingerprint": "6c447a82b1d87604",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-14T13:40:30.480Z"
         }
       }
     ],
