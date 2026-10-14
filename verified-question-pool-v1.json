@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-14-12-21-32Z",
-  "updatedAt": "2026-10-14T12:21:32.543Z",
+  "poolVersion": "2026-10-14-12-50-58Z",
+  "updatedAt": "2026-10-14T12:50:58.781Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -12927,6 +12927,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-12T16:42:31.807Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "愛知県の農業の地域的特色と自然環境・水利の結びつきについて述べた文として正しいものはどれか。",
+        "context": "愛知県の農業は、全国上位の産出額を誇る多様性に富んだ地域である。特に渥美半島では、「渥美半島では、豊川用水の開通により安定した農業用水が確保され、温暖な気候を利用した野菜や花のハウス栽培（施設園芸）が盛んに行われている。」という特徴が見られ、大消費地への安定供給を支えている。",
+        "choices": [
+          "標高の高い山間地域であるため、大規模な稲作地帯が広がり、二期作が行われている。",
+          "冷涼な気候と広大な土地をいかして、酪農や大規模な放牧が県の中心産業となっている。",
+          "豊川用水の完成により水不足が解消され、温暖な気候をいかして施設園芸が発展した。",
+          "寒冷な気候をいかして、リンゴやブドウなどの果樹栽培が県内全域で中心的に行われている。"
+        ],
+        "answerIndex": 2,
+        "answer": "豊川用水の完成により水不足が解消され、温暖な気候をいかして施設園芸が発展した。",
+        "explanation": "渥美半島は温暖な気候に加え、豊川用水の開通によって農業用水が確保されたことで、野菜や花の施設園芸（ハウス栽培）が大きく発展しました。愛知県を冷涼な気候や山間部の稲作中心地と誤解する誤りが最も強い錯覚です。",
+        "evidence": "渥美半島では、豊川用水の開通により安定した農業用水が確保され、温暖な気候を利用した野菜や花のハウス栽培（施設園芸）が盛んに行われている。",
+        "misconception": "愛知県の地形や気候を過度に山間的・寒冷的と捉え、稲作や冷涼地農業が主であると勘違いすること。",
+        "marks": 2,
+        "id": "rise-social-fbaf502746bedddb",
+        "fingerprint": "7588b17a932dc59c",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-14T12:50:58.747Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "日本の産業革命期における工業の発展と労働状況について述べた文として正しいものはどれか。",
+        "context": "日清戦争後の産業革命期において、日本の工業の中心となったのは軽工業であった。「特に綿糸や生糸の生産が急増し、その工場では多くの女性労働者が過酷な労働環境の中で働いていた。」という歴史的背景があり、近代化の原動力となった一方で社会問題を生み出した。",
+        "choices": [
+          "重化学工業が産業の中心であり、大半の労働者は男性の熟練工であった。",
+          "綿糸や生糸を中心とする軽工業が発展し、多くの女性労働者が工場で従事した。",
+          "機械制大工場での生産よりも、伝統的な手工業による生産が圧倒的に優勢であった。",
+          "政府の労働基準法が厳格に適用され、労働者の権利や福祉が完全に保障されていた。"
+        ],
+        "answerIndex": 1,
+        "answer": "綿糸や生糸を中心とする軽工業が発展し、多くの女性労働者が工場で従事した。",
+        "explanation": "日清戦争後の産業革命期を牽引したのは製糸業や紡績業といった軽工業であり、工場では若い女性労働者が低賃金・長時間労働という過酷な環境で働いていました。重化学工業が中心となるのは第一次世界大戦以降であり、労働基準法は当時は存在しません。",
+        "evidence": "特に綿糸や生糸の生産が急増し、その工場では多くの女性労働者が過酷な労働環境の中で働いていた。",
+        "misconception": "産業革命期＝重化学工業の勃興と捉え、最初から鉄鋼業や機械工業が中心であったと誤解すること。",
+        "marks": 2,
+        "id": "rise-social-79d4093719f1932b",
+        "fingerprint": "88627a2e59d449fc",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-14T12:50:58.747Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "我が国の地方自治における住民の政治参加の仕組みについて述べた文として正しいものはどれか。",
+        "context": "地方自治法に基づき、住民は地域政治への参加や行政の監視を行う権利が保障されている。「住民は、一定数以上の署名を集めることで、条例の制定・改廃や、長・議員の解職などを地方公共団体の長に請求する直接請求権を行使することができる。」",
+        "choices": [
+          "住民は、国会に対して直接法律案を提出し、国民投票によって成立させることができる。",
+          "地方議会の決定を覆すことは、住民の署名を集めても一切認められていない。",
+          "直接請求は日本国憲法に規定された国政レベルの直接民主制の主要な手段である。",
+          "住民は、直接請求権を用いて首長や議員の解職などを請求することができる。"
+        ],
+        "answerIndex": 3,
+        "answer": "住民は、直接請求権を用いて首長や議員の解職などを請求することができる。",
+        "explanation": "地方自治においては、住民が条例の制定・改廃や首長・議員の解職（リコール）などを求める直接請求権が認められています。これらは地方自治特有の制度であり、国政レベルの法律案直接提出制度はありません。",
+        "evidence": "住民は、一定数以上の署名を集めることで、条例の制定・改廃や、長・議員の解職などを地方公共団体の長に請求する直接請求権を行使することができる。",
+        "misconception": "地方の直接請求制度と国政レベルの仕組みを混同し、国会に対して直接請求ができると思い込むこと。",
+        "marks": 2,
+        "id": "rise-social-a86fb20b807bd17f",
+        "fingerprint": "80d4f1088a8067c6",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-14T12:50:58.747Z"
         }
       }
     ]
