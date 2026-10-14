@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-12-17-51-07Z",
-  "updatedAt": "2026-10-12T17:51:07.818Z",
+  "poolVersion": "2026-10-14-11-45-54Z",
+  "updatedAt": "2026-10-14T11:45:54.949Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2679,6 +2679,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-12T15:15:18.213Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "三角形OPQの面積を求めよ。",
+        "context": "平面上の点A(-2, 4), 点B(4, 1)を通る直線lがあり、y軸との交点をPとする。原点Oを通る直線mが直線lと点Qで交わっており、点Qのx座標が2である。",
+        "choices": [
+          "3",
+          "4",
+          "6",
+          "2"
+        ],
+        "answerIndex": 0,
+        "answer": "3",
+        "explanation": "直線lの傾きは (1 - 4) / (4 - (-2)) = -1/2 であり、y切片が3であるため、式は y = -1/2 x + 3 となる。y軸との交点Pの座標は (0, 3) である。点Qは直線l上にありx座標が2であるから、y = -1/2 * 2 + 3 = 2 となり、点Qの座標は (2, 2) である。三角形OPQにおいて、y軸上の線分OPを底面とすると長さは3、点Qのx座標が高さの2となるため、面積は 1/2 * 3 * 2 = 3 と求められる。",
+        "evidence": "原点Oを通る直線mが直線lと点Qで交わっており、点Qのx座標が2である。",
+        "misconception": "三角形の底辺や高さを取る際に座標軸の値を混同し、誤った寸法で面積を計算してしまう。",
+        "marks": 2,
+        "id": "rise-math-b6401712b3426cbe",
+        "fingerprint": "449557d8656e8d96",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.99,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-14T11:45:37.601Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "計算した積が4の倍数になる確率を求めよ。",
+        "context": "1から5までの数字が1つずつ書かれた5枚のカードがある。この中から同時に2枚のカードを取り出し、書かれた数の積を計算する。",
+        "choices": [
+          "1/5",
+          "3/10",
+          "2/5",
+          "1/2"
+        ],
+        "answerIndex": 2,
+        "answer": "2/5",
+        "explanation": "5枚のカードから同時に2枚を取り出す総数は 5C2 = 10 通りである。それぞれの組み合わせの積を求めると、(1,2)=2, (1,3)=3, (1,4)=4, (1,5)=5, (2,3)=6, (2,4)=8, (2,5)=10, (3,4)=12, (3,5)=15, (4,5)=20 となる。この中で4の倍数となるのは 4, 8, 12, 20 の4通りである。したがって、確率は 4/10 = 2/5 となる。",
+        "evidence": "1から5までの数字が1つずつ書かれた5枚のカードがある。この中から同時に2枚のカードを取り出し、書かれた数の積を計算する。",
+        "misconception": "偶数と4の倍数を混同し、2の倍数である積も含めて確率を計算してしまう。",
+        "marks": 2,
+        "id": "rise-math-7b8fb110e10b36ec",
+        "fingerprint": "d4202b0f851c7f51",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.99,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-14T11:45:37.601Z"
         }
       }
     ],
