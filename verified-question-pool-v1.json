@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-14-11-45-54Z",
-  "updatedAt": "2026-10-14T11:45:54.949Z",
+  "poolVersion": "2026-10-14-12-21-32Z",
+  "updatedAt": "2026-10-14T12:21:32.543Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -9432,6 +9432,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-12T16:05:16.393Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemistry",
+        "difficulty": 8,
+        "question": "水酸化バリウム水溶液と希硫酸の中和反応に関する実験を行った。一定量の希硫酸に水酸化バリウム水溶液を少しずつ加えていき、生成する沈殿（硫酸バリウム）の質量を測定したところ、次のような結果が得られた。\n\n[実験結果]\n・水酸化バリウム水溶液の加えた体積 5.0 cm³, 沈殿の質量 0.46 g\n・水酸化バリウム水溶液の加えた体積 10.0 cm³, 沈殿の質量 0.92 g\n・水酸化バリウム水溶液の加えた体積 15.0 cm³, 沈殿の質量 1.38 g\n・水酸化バリウム水溶液の加えた体積 20.0 cm³, 沈殿の質量 1.84 g\n・水酸化バリウム水溶液の加えた体積 25.0 cm³, 沈殿の質量 1.84 g\n\n水酸化バリウム水溶液を 20.0 cm³ 加えた後、さらに水酸化バリウム水溶液を加えても沈殿の質量が増加しなくなった理由として最も適当なものを次の中から選びなさい。",
+        "context": "水酸化バリウム水溶液と希硫酸の中和反応に関する実験を行った。一定量の希硫酸に水酸化バリウム水溶液を少しずつ加えていき、生成する沈殿（硫酸バリウム）の質量を測定したところ、次のような結果が得られた。\n\n[実験結果]\n・水酸化バリウム水溶液の加えた体積 5.0 cm³, 沈殿の質量 0.46 g\n・水酸化バリウム水溶液の加えた体積 10.0 cm³, 沈殿の質量 0.92 g\n・水酸化バリウム水溶液の加えた体積 15.0 cm³, 沈殿の質量 1.38 g\n・水酸化バリウム水溶液の加えた体積 20.0 cm³, 沈殿の質量 1.84 g\n・水酸化バリウム水溶液の加えた体積 25.0 cm³, 沈殿の質量 1.84 g",
+        "choices": [
+          "水温が下がったことで、化学反応が完全に停止したから。",
+          "希硫酸がすべて反応して使い果たされ、これ以上沈殿を作るもとになる物質がなくなったから。",
+          "水酸化バリウムが熱分解を起こしてしまい、反応に寄与しなくなったから。",
+          "生成した沈殿が過剰の水に再び溶けてしまったから。"
+        ],
+        "answerIndex": 1,
+        "answer": "希硫酸がすべて反応して使い果たされ、これ以上沈殿を作るもとになる物質がなくなったから。",
+        "explanation": "実験データから、水酸化バリウム水溶液の体積が 20.0 cm³ に達するまで沈殿の質量は比例して増加（0.46 g → 0.92 g → 1.38 g → 1.84 g）しているが、25.0 cm³ に増やしても 1.84 g のままで一定となっている。これは、用いた希硫酸が 20.0 cm³ 時点で完全に中和され、それ以上加えた水酸化バリウムと反応すべき硫酸イオンが存在しなくなったためである。最も強い誤答トラップは「沈殿が水に溶けた」とするものであるが、硫酸バリウムは水に極めて難溶な塩であり溶解しない。",
+        "evidence": "・水酸化バリウム水溶液の加えた体積 20.0 cm³, 沈殿の質量 1.84 g\n・水酸化バリウム水溶液の加えた体積 25.0 cm³, 沈殿の質量 1.84 g",
+        "misconception": "沈殿が水に溶けやすい物質であると誤解し、過剰な水分によって沈殿量が減ったり頭打ちになったりすると考える誤謬。",
+        "marks": 2,
+        "id": "rise-science-5a6f33b6101df222",
+        "fingerprint": "32e8c3a947ae3a1b",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-14T12:21:32.516Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.biology",
+        "difficulty": 8,
+        "question": "オオカナダモを用いて光合成と呼吸に関する実験を行った。一定条件のもとで、水中の二酸化炭素濃度の変化量を測定したところ、次の結果が得られた。\n\n[実験結果]\n・チューブA（オオカナダモを入れ、光を当てた）：二酸化炭素濃度が 120 ppm/時間 減少した。\n・チューブB（オオカナダモを入れ、暗所に置いた）：二酸化炭素濃度が 30 ppm/時間 増加した。\n・チューブC（オオカナダモを入れず、光を当てた）：二酸化炭素濃度の変化はなかった。\n\nこのオオカナダモが光合成によって実際に吸収した二酸化炭素の量（真の光合成量）は、1時間あたり何 ppm に相当するか。最も適当なものを次の中から選びなさい。",
+        "context": "・チューブA（オオカナダモを入れ、光を当てた）：二酸化炭素濃度が 120 ppm/時間 減少した。\n・チューブB（オオカナダモを入れ、暗所に置いた）：二酸化炭素濃度が 30 ppm/時間 増加した。\n・チューブC（オオカナダモを入れず、光を当てた）：二酸化炭素濃度の変化はなかった。",
+        "choices": [
+          "120 ppm",
+          "90 ppm",
+          "30 ppm",
+          "150 ppm"
+        ],
+        "answerIndex": 3,
+        "answer": "150 ppm",
+        "explanation": "暗所で測定された二酸化炭素の増加量（30 ppm/時間）は、植物の呼吸によって排出された量を示している。光を当てたとき（チューブA）に観測される見かけの減少量（120 ppm/時間）は、真の光合成による吸収量から呼吸による放出量を差し引いた差額である。したがって、真の光合成量は、見かけの減少量（120 ppm）に呼吸による放出量（30 ppm）を加えた 150 ppm と計算される。",
+        "evidence": "・チューブA（オオカナダモを入れ、光を当てた）：二酸化炭素濃度が 120 ppm/時間 減少した。\n・チューブB（オオカナダモを入れ、暗所に置いた）：二酸化炭素濃度が 30 ppm/時間 増加した。",
+        "misconception": "見かけの減少量をそのまま真の光合成量として捉えたり、両者の値を引き算して 90 ppm と誤算してしまう誤謬。",
+        "marks": 2,
+        "id": "rise-science-5cb500c9bd8f7d5d",
+        "fingerprint": "1a390e3d73df2ad7",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-14T12:21:32.516Z"
         }
       }
     ],
