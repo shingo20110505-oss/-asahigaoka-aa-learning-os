@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-14T00:19:37.549Z",
+  "updatedAt": "2026-10-15T23:43:09.626Z",
   "entries": [
     {
       "id": "ed9e7fb8cae0a59fa5c08f3e8cbd3edc9df7813238490fae60000c9a59c2b579",
@@ -1469,6 +1469,82 @@
       ],
       "wordCount": 179,
       "createdAt": "2026-10-14T00:19:37.543Z"
+    },
+    {
+      "id": "70e35559ddb5d3e250f2c77a4ac6db2a78ce3622312042fe4f52ef02b6a33ea0",
+      "sha256": "70e35559ddb5d3e250f2c77a4ac6db2a78ce3622312042fe4f52ef02b6a33ea0",
+      "path": "items/70e35559ddb5d3e250f2c77a4ac6db2a78ce3622312042fe4f52ef02b6a33ea0.json",
+      "title": "Restoring an Old Clock",
+      "topic": "Restoring an old wooden clock with a grandfather",
+      "difficulty": 10,
+      "readingType": "narrative",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison",
+        "passive",
+        "presentPerfect",
+        "asMuchAs",
+        "asManyAs"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.cause",
+        "en.read.mainIdea",
+        "en.read.summary"
+      ],
+      "words": [
+        "workbench",
+        "repair",
+        "patience",
+        "gear",
+        "spring",
+        "rhythm",
+        "dedication"
+      ],
+      "wordCount": 428,
+      "createdAt": "2026-10-15T23:42:29.438Z"
+    },
+    {
+      "id": "dc8a9a971fdce795a8428e5d2ce6a218a8309eab3d2238408fddff29a1f9cce4",
+      "sha256": "dc8a9a971fdce795a8428e5d2ce6a218a8309eab3d2238408fddff29a1f9cce4",
+      "path": "items/dc8a9a971fdce795a8428e5d2ce6a218a8309eab3d2238408fddff29a1f9cce4.json",
+      "title": "The Value of Morning Walks",
+      "topic": "The benefits of a morning walk for students",
+      "difficulty": 1,
+      "readingType": "argument",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.cause",
+        "en.read.mainIdea",
+        "en.read.summary"
+      ],
+      "words": [
+        "expose",
+        "regulate",
+        "alert",
+        "observe",
+        "sluggishness"
+      ],
+      "wordCount": 186,
+      "createdAt": "2026-10-15T23:43:09.618Z"
     }
   ]
 }
