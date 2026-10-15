@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-15-12-06-24Z",
-  "updatedAt": "2026-10-15T12:06:24.899Z",
+  "poolVersion": "2026-10-15-12-38-28Z",
+  "updatedAt": "2026-10-15T12:38:28.799Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -13335,6 +13335,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-14T12:50:58.747Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "資料に示された都道府県P〜Rに関する記述として正しいものを、次の選択肢から1つ選びなさい。",
+        "context": "【資料】日本の3つの都道府県における工業の状況について。都道府県Pは、製造品出荷額等が全国第1位であり、その中で輸送用機械器具製造業の占める割合が極めて高い。都道府県Qは、広大な土地や農業・酪農の基盤を活かし、食料品製造業の比率が高い。都道府県Rは、多様な商品や印刷・情報関連産業が集積するが、大規模な機械工業の比率はPほど高くない。",
+        "choices": [
+          "都道府県Qは北海道であり、重化学工業の出荷額割合が全国で最も高い。",
+          "都道府県Rは東京都であり、日本アルプスの水資源を利用した製糸業が現在でも主軸である。",
+          "都道府県Pは愛知県ではなく東京都であり、機械工業の比率が全国一である。",
+          "都道府県Pは愛知県であり、中京工業地帯の中核として自動車工業が盛んである。"
+        ],
+        "answerIndex": 3,
+        "answer": "都道府県Pは愛知県であり、中京工業地帯の中核として自動車工業が盛んである。",
+        "explanation": "都道府県Pは製造品出荷額等が全国第1位で輸送用機械器具の比率が極めて高いため愛知県に該当する。中京工業地帯の中心として自動車関連産業が発達している。他の選択肢は記述の対応関係や実際の産業構造に反する。",
+        "evidence": "都道府県Pは、製造品出荷額等が全国第1位であり、その中で輸送用機械器具製造業の占める割合が極めて高い。",
+        "misconception": "首都である東京都が製造品出荷額や自動車工業でも1位であると誤認する。",
+        "marks": 2,
+        "id": "rise-social-76c4675dcddbb961",
+        "fingerprint": "785301daa88f4358",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-15T12:38:28.769Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history",
+        "difficulty": 8,
+        "question": "資料の時期に行われた改革や、その背景にある当時の社会状況に関する説明として正しいものを、次の選択肢から1つ選びなさい。",
+        "context": "【資料】江戸時代から明治時代初めにかけての幕政および地方支配に関する史料の抜粋である。『…藩主に対して領内の検地や農政の改革を命じるとともに、都市の商工業者に対しては株仲間の解散令が出され、自由な営業活動が奨励されたが、のちに混乱が生じたため一部政策は修正された。また、地方では農村の荒廃を防ぐため農民の離村を制限する法令が出され、上知令などの政策も検討されたが断念された。』",
+        "choices": [
+          "株仲間の解散令が出され自由な営業が奨励されたのは、天保の改革における水野忠邦の政策の一環である。",
+          "上知令が発令されて幕府の財政基盤は完全に安定し、その後の幕末の動乱を防ぐことに成功した。",
+          "この時期の改革はすべて成功し、農村の人口流出や都市の物価高騰は完全に解消された。",
+          "藩主に対して農政の改革が命じられたのは、室町時代の守護大名による惣国一揆への対応のためである。"
+        ],
+        "answerIndex": 0,
+        "answer": "株仲間の解散令が出され自由な営業が奨励されたのは、天保の改革における水野忠邦の政策の一環である。",
+        "explanation": "天保の改革において老中水野忠邦は、物価を引き下げるために株仲間の解散令を出して自由な営業を奨励し、また上知令を計画したが反対にあい断念した。したがって天保の改革に関する記述が正解となる。",
+        "evidence": "都市の商工業者に対しては株仲間の解散令が出され、自由な営業活動が奨励された",
+        "misconception": "享保の改革や寛政の改革など他の江戸三大改革の施策と水野忠邦の天保の改革の施策を混同する。",
+        "marks": 2,
+        "id": "rise-social-40cede4858e418f4",
+        "fingerprint": "0dd6cf76e18ad3d4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-15T12:38:28.769Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "資料および日本国憲法における地方自治に関する説明として正しいものを、次の選択肢から1つ選びなさい。",
+        "context": "【資料】日本国憲法における地方自治の規定および住民参加に関する説明文である。『日本国憲法第92条では、地方公共団体の組織及び運営に関する事項は、地方自治の本旨に基いて法律でこれを定むると規定されている。地方自治の本旨には、住民の意思に基づいて政治を行う住民自治と、国から比較的独立した立場で地域社会の行政を行う団体自治の2つの側面が含まれている。これにより、地方公共団体は条例を制定する権限などが与えられている。』",
+        "choices": [
+          "住民自治は住民の意思に基づく政治を指し、団体自治は国から独立した地域行政を指す。",
+          "地方公共団体が制定する条例は、国会が制定する法律よりも常に優越する効力を持つ。",
+          "地方自治の本旨における団体自治とは、国が地方のすべての予算を直接管理する仕組みである。",
+          "憲法第92条の規定により、地方公共団体は独自の憲法を制定して国家の法体系から独立できる。"
+        ],
+        "answerIndex": 0,
+        "answer": "住民自治は住民の意思に基づく政治を指し、団体自治は国から独立した地域行政を指す。",
+        "explanation": "地方自治の本旨は住民自治と団体自治からなり、住民自治は住民の意思に基づく民主的な政治、団体自治は国から独立した立場で地方事務を行うことを意味する。条例は法律の範囲内で制定されるため法律より優越はしない。",
+        "evidence": "地方自治の本旨には、住民の意思に基づいて政治を行う住民自治と、国から比較的独立した立場で地域社会の行政を行う団体自治の2つの側面が含まれている。",
+        "misconception": "地方自治の条例が国の法律よりも優先されると誤解する、あるいは団体自治を国の地方管理と勘違いする。",
+        "marks": 2,
+        "id": "rise-social-4aeab387605748c3",
+        "fingerprint": "39c671b6190fe114",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-15T12:38:28.769Z"
         }
       }
     ]
