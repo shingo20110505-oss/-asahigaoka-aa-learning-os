@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-14-13-40-30Z",
-  "updatedAt": "2026-10-14T13:40:30.503Z",
+  "poolVersion": "2026-10-15-11-21-46Z",
+  "updatedAt": "2026-10-15T11:21:46.157Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2747,6 +2747,108 @@
           "verifierConfidence": 0.99,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-14T11:45:37.601Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.geometry",
+        "difficulty": 8,
+        "question": "1辺の長さが6cmの正方形ABCDがある。辺AB上に点Pをとり、頂点Cと点Pを結ぶ。線分CPを折り目として正方形を折ったとき、頂点Bが移った点をQとする。点Qが正方形の内部または周上にあり、かつ三角形ADPの面積が12cm²であるとき、線分APの長さを求めよ。",
+        "context": "1辺の長さが6cmの正方形ABCDがある。辺AB上に点Pをとり、頂点Cと点Pを結ぶ。線分CPを折り目として正方形を折ったとき、頂点Bが移った点をQとする。",
+        "choices": [
+          "4cm",
+          "4.5cm",
+          "5cm",
+          "3cm"
+        ],
+        "answerIndex": 0,
+        "answer": "4cm",
+        "explanation": "正方形ABCDの1辺は6cm。三角形ADPの面積が12cm²である。三角形ADPはADを底辺とすると、底辺が6cm、高さがAPである。面積は 1/2 × 6 × AP = 12 より、3 × AP = 12 となり、AP = 4cm が得られる。このとき点PはAB上の点であり、AB=6cmなので条件を満たす。折り紙の条件（点Qの位置など）は余分な情報であり、基本の三角形の面積公式から直接APが求まる。",
+        "evidence": "三角形ADPの面積が12cm²である",
+        "misconception": "折り返した図形の複雑さに惑わされて、単純な三角形ADPの面積公式（底辺×高さ÷2）の利用を見落とすこと。",
+        "marks": 2,
+        "id": "rise-math-3f3d7a2ce79f8580",
+        "fingerprint": "1ea66f052a084b17",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-15T11:21:28.972Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.function",
+        "difficulty": 8,
+        "question": "関数 y = 1/2 x^2 について、x の変域が -2 ≦ x ≦ 4 のとき、y の変域は a ≦ y ≦ b である。このとき、a と b の和 (a + b) の値を求めよ。",
+        "context": "関数 y = 1/2 x^2 について、x の変域が -2 ≦ x ≦ 4 のとき、y の変域は a ≦ y ≦ b である。",
+        "choices": [
+          "10",
+          "12",
+          "6",
+          "8"
+        ],
+        "answerIndex": 3,
+        "answer": "8",
+        "explanation": "関数 y = 1/2 x^2 において、x の変域が -2 ≦ x ≦ 4 のとき、グラフは原点を通る下にとつな放物線である。x = 0 のとき最小値 y = 0 をとる。x の変域に 0 が含まれているため、y の最小値 a は 0 となる。最大値 b は、変域の両端のうち原点から遠い方、すなわち x = 4 のときに得られる。x = 4 を代入すると、y = 1/2 × 4^2 = 8 となる。したがって、b = 8。よって、a + b = 0 + 8 = 8 となる。",
+        "evidence": "x の変域が -2 ≦ x ≦ 4 のとき、y の変域は a ≦ y ≦ b である。",
+        "misconception": "x の両端の値をそのまま関数に代入して、最小値も負の値になると勘違いしたり、変域に 0 を含むことによる最小値の処理を誤ること。",
+        "marks": 1,
+        "id": "rise-math-e9ecbae35c0a1347",
+        "fingerprint": "9d043cbaad40efa4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-15T11:21:28.972Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "座標平面上に、直線y=2xと、点A(4, 0)を通る傾きa (0 < a < 2) の直線mがある。直線mとy軸との交点をB、直線mと直線y=2xとの交点をPとする。三角形OBPの面積が三角形OAPの面積の1/3になるとき、直線mの傾きaの値を求めよ。",
+        "context": "座標平面上の図形問題において、点Aの座標は(4, 0)、直線の方程式はy=2x、直線mは点Aを通り傾きaの直線である。0 < a < 2とする。直線mとy軸との交点をB、直線mと直線y=2xとの交点をPとし、三角形OBPと三角形OAPの面積の関係が与えられている。",
+        "choices": [
+          "4/5",
+          "1/2",
+          "2/3",
+          "3/4"
+        ],
+        "answerIndex": 2,
+        "answer": "2/3",
+        "explanation": "点Aは(4, 0)であるから、線分OAを底辺とみると、三角形OAPの高さは点Pのy座標の絶対値である。一方、直線mは点A(4, 0)を通るので、方程式はy=a(x-4)となる。y軸との交点Bの座標は(0, -4a)である。三角形OBPと三角形OAPの面積比が1/3であるとき、点Bを通るy軸を底辺とみなすと、それぞれの三角形の高さは点Pのx座標と点Aのx座標の比になるか、または底辺と共通の高さの関係から面積比を考えることができる。直線y=2xとy=ax-4aの交点Pのx座標を求めると、2x = ax - 4a から x(2-a) = -4a より x = 4a/(a-2) の符号に注意して連立を解く。点Pのx座標は負になるため、長さを正として計算する。直線mの方程式は y = ax - 4a であり、B(0, -4a)である。OB=4a。三角形OBPの面積は 1/2 * OB * (Pのx座標の絶対値) である。計算を進めると、a = 2/3 が得られる。",
+        "evidence": "三角形OBPの面積が三角形OAPの面積の1/3になる",
+        "misconception": "三角形の底辺の比をそのまま直線の傾きの比と勘違いして、単に比例配分から値を求めてしまうこと。",
+        "marks": 2,
+        "id": "rise-math-c53dd6c7be5ac04b",
+        "fingerprint": "565010d41dbc7a0a",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-15T11:21:46.133Z"
         }
       }
     ],
