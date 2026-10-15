@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-15-11-21-46Z",
-  "updatedAt": "2026-10-15T11:21:46.157Z",
+  "poolVersion": "2026-10-15-12-06-24Z",
+  "updatedAt": "2026-10-15T12:06:24.899Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -9704,6 +9704,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-14T12:21:32.516Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.chemistry.aqueous_solutions",
+        "difficulty": 8,
+        "question": "硝酸カリウムの溶解度に関する実験で、60℃の水100gに硝酸カリウムを80g加えて完全に溶かした水溶液がある。この水溶液を冷却し、結晶を析出させる操作を行った。60℃における硝酸カリウムの溶解度を110、20℃における溶解度を32とするとき、20℃まで冷却したときに析出する結晶の質量として正しいものを1つ選びなさい。",
+        "context": "硝酸カリウムの水に対する溶解度は温度によって異なり、60℃では水100gに110gまで、20℃では水100gに32gまで溶ける。いま、60℃の水100gに硝酸カリウム80gを溶かした水溶液を作成し、これを20℃まで冷却した。",
+        "choices": [
+          "48g",
+          "80g",
+          "110g",
+          "32g"
+        ],
+        "answerIndex": 0,
+        "answer": "48g",
+        "explanation": "60℃の水100gに硝酸カリウム80gを溶かした水溶液を20℃まで冷却すると、20℃の水100gに溶ける限界の質量である32gを超える分の結晶が析出します。初めに溶かした量は80gであるため、析出する結晶の質量は 80 - 32 = 48g と計算されます。溶解度そのものを答えとするなどの誤解に注意が必要です。",
+        "evidence": "60℃の水100gに硝酸カリウム80gを溶かした水溶液を作成し、これを20℃まで冷却した。",
+        "misconception": "20℃での溶解度そのものや、初めに加えた量をそのまま結晶の質量としてしまう誤解",
+        "marks": 2,
+        "id": "rise-science-726168ff2a9f626b",
+        "fingerprint": "ba71b4c72efea281",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-15T12:06:24.627Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.physics.electric_current",
+        "difficulty": 8,
+        "question": "電磁誘導に関する実験で、コイルに検流計を接続し、棒磁石のN極をコイルに近づけたり遠ざけたりした。このとき、検流計の針が振れる現象について述べた文として正しいものを1つ選びなさい。",
+        "context": "コイルのまわりの磁界が変化するとき、コイルに電圧が生じて電流が流れる現象を電磁誘導という。N極をコイルに近づけると、コイルを貫く磁力線が増加し、特定の方向に電流が流れる。",
+        "choices": [
+          "棒磁石のN極をコイルから遠ざけるときと、S極をコイルに近づけるときでは、検流計の針が振れる向きが逆になる。",
+          "棒磁石のN極をコイルに近づける速さを速くすると、検流計の針の振れの大きさが小さくなる。",
+          "棒磁石をコイルの内部で静止させても、コイルを貫く磁界が変化するため電流が流れ続ける。",
+          "棒磁石のN極をコイルに近づけるときと、S極をコイルに近づけるときでは、検流計の針が同じ向きに振れる。"
+        ],
+        "answerIndex": 0,
+        "answer": "棒磁石のN極をコイルから遠ざけるときと、S極をコイルに近づけるときでは、検流計の針が振れる向きが逆になる。",
+        "explanation": "磁石を近づける・遠ざける、あるいはN極・S極を入れ替えることでコイルを貫く磁界の変化の向きが逆になるため、流れる電流の向きも逆になります。磁石を速く動かすと振れは大きくなり、静止させると電流は流れません。",
+        "evidence": "コイルのまわりの磁界が変化するとき、コイルに電圧が生じて電流が流れる現象を電磁誘導という。",
+        "misconception": "磁極の種類を変えたときや移動方向を変えたときの電流の向きの関係を混同する誤解",
+        "marks": 2,
+        "id": "rise-science-edc1cf5898977f94",
+        "fingerprint": "dcf9fa09a028a3fb",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-15T12:06:24.627Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "science.biology.cell_division",
+        "difficulty": 8,
+        "question": "植物の根の先端にある成長点における細胞分裂の観察を行った。次の記述のうち、細胞分裂のようすや細胞の成長について最も適当なものを1つ選びなさい。",
+        "context": "タマネギの根の先端をプレパラートにし、顕微鏡で観察したところ、さまざまな形の細胞が見られた。成長点付近には、核が消えて染色体が現れ、やがて2つに分かれていく時期にある細胞が多く見つかった。",
+        "choices": [
+          "細胞分裂の過程では、核の中にある染色体が消滅したのち、細胞の中央に新しい核が複数作られてから細胞がちぎれる。",
+          "成長点の細胞はすべて同じ大きさであり、一度細胞分裂を完了すると二度と分裂することはない。",
+          "細胞分裂によって、染色体の数は親細胞のものもとに半分になり、次の世代で元に戻る。",
+          "細胞分裂によってできたばかりの細胞は、小さく分裂を繰り返すが、やがて水分を吸収するなどして大きくなり、それぞれの役割に適した形や大きさに変化する。"
+        ],
+        "answerIndex": 3,
+        "answer": "細胞分裂によってできたばかりの細胞は、小さく分裂を繰り返すが、やがて水分を吸収するなどして大きくなり、それぞれの役割に適した形や大きさに変化する。",
+        "explanation": "細胞分裂によって生まれた細胞は分化・成長して組織や器官を形作ります。染色体は消失するのではなく現れて縦に分かれ、分裂後の染色体数は親細胞と同じになります。",
+        "evidence": "成長点付近には、核が消えて染色体が現れ、やがて2つに分かれていく時期にある細胞が多く見つかった。",
+        "misconception": "細胞分裂の際に染色体数が半分になる（減数分裂と体細胞分裂の混同）という誤解",
+        "marks": 2,
+        "id": "rise-science-84946f4a270ef3ce",
+        "fingerprint": "c59ecfa8adc1048a",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-15T12:06:24.627Z"
         }
       }
     ],
