@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-15T23:43:09.626Z",
+  "updatedAt": "2026-10-16T23:38:45.312Z",
   "entries": [
     {
       "id": "ed9e7fb8cae0a59fa5c08f3e8cbd3edc9df7813238490fae60000c9a59c2b579",
@@ -1545,6 +1545,41 @@
       ],
       "wordCount": 186,
       "createdAt": "2026-10-15T23:43:09.618Z"
+    },
+    {
+      "id": "dce841f86d1fdb6acc1476fc0c9f892ddf08e7c773b3fabc7a3bedda81627c0b",
+      "sha256": "dce841f86d1fdb6acc1476fc0c9f892ddf08e7c773b3fabc7a3bedda81627c0b",
+      "path": "items/dce841f86d1fdb6acc1476fc0c9f892ddf08e7c773b3fabc7a3bedda81627c0b.json",
+      "title": "A Quiet Day at the Library",
+      "topic": "A boy studying and drawing in a library on a Saturday afternoon",
+      "difficulty": 1,
+      "readingType": "narrative",
+      "questionCount": 5,
+      "requiredGrammar": [
+        "basic",
+        "past",
+        "future",
+        "modal",
+        "infinitive",
+        "gerund",
+        "comparison"
+      ],
+      "skills": [
+        "en.read.detail",
+        "en.read.inference",
+        "en.read.cause",
+        "en.read.mainIdea",
+        "en.read.summary"
+      ],
+      "words": [
+        "project",
+        "shelf",
+        "trunk",
+        "buzzed",
+        "sigh"
+      ],
+      "wordCount": 190,
+      "createdAt": "2026-10-16T23:38:45.303Z"
     }
   ]
 }
