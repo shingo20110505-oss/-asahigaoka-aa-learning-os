@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-15-13-23-00Z",
-  "updatedAt": "2026-10-15T13:23:00.293Z",
+  "poolVersion": "2026-10-16-11-53-57Z",
+  "updatedAt": "2026-10-16T11:53:57.245Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -9908,6 +9908,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-15T12:06:24.627Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemical_change",
+        "difficulty": 8,
+        "question": "実験で得られた結果から、加熱によって生じた気体の質量と発生した物質についての説明として正しいものを1つ選べ。",
+        "context": "金属の酸化に関する実験を行った。ステンレス皿に銅粉末を4.0gとり、よくかき混ぜながらガスバーナーで十分加熱したところ、銅はすべて黒色の酸化銅に変化し、その質量は5.0gであった。次に、この銅粉末の質量をかえて同様の実験を行ったところ、銅粉末6.0gを加熱したときは酸化銅の質量が7.5gになり、銅粉末8.0gを加熱したときは酸化銅の質量が10.0gになった。なお、空気中の酸素と化合するものとする。",
+        "choices": [
+          "銅粉末8.0gを加熱したときに化合した酸素の質量は2.5gであり、生成した酸化銅の質量は用いた銅の質量的割合によらず変化しない。",
+          "加熱によって質量が増加するのは、金属が分解されて新しい気体が発生したためである。",
+          "銅粉末4.0gを加熱したときに化合した酸素の質量は1.0gであり、銅と化合する酸素の質量的割合は常に一定である。",
+          "銅粉末6.0gを加熱したときに化合した酸素の質量は1.5gであり、銅の質量と化合する酸素の質量的割合は銅の質量が増えるほど大きくなる。"
+        ],
+        "answerIndex": 2,
+        "answer": "銅粉末4.0gを加熱したときに化合した酸素の質量は1.0gであり、銅と化合する酸素の質量的割合は常に一定である。",
+        "explanation": "銅粉末4.0gを加熱したとき、生成した酸化銅の質量が5.0gであるため、化合した酸素の質量は5.0g - 4.0g = 1.0gとなる。同様に、銅6.0gでは7.5g - 6.0g = 1.5g、銅8.0gでは10.0g - 8.0g = 2.0gとなり、銅と化合する酸素の質量的割合（銅:酸素 = 4:1）は常に一定である。最強の誤答は、質量的割合が変化すると誤認するものや、質量増加の原因を分解によるものとする不適切な記述である。",
+        "evidence": "銅粉末を4.0gとり、よくかき混ぜながらガスバーナーで十分加熱したところ、銅はすべて黒色の酸化銅に変化し、その質量は5.0gであった。",
+        "misconception": "金属を加熱して質量が増えるのは気体が新しく発生したため、または化合比率が一定ではないという誤解。",
+        "marks": 2,
+        "id": "rise-science-86d7bc2ef1ac159a",
+        "fingerprint": "641a00a01efd5d36",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-16T11:53:57.220Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.earth_science",
+        "difficulty": 8,
+        "question": "表の観測データと日本付近のプレートの動きから、東海地方における地震の発生メカニズムについて述べた文として正しいものを1つ選べ。",
+        "context": "ある地域のプレート境界付近で発生する地震について調査した。海側のプレートが陸側のプレートの下に沈み込んでおり、プレートの境界が引きずられてゆがみが蓄積され、限界に達したときに地震が発生する。観測地点Aにおける初期微動継続時間を調査したところ、震源からの距離に比例していることが確認された。",
+        "choices": [
+          "海側のプレートが陸側のプレートの下へ沈み込むことでひずみが蓄積され、そのひずみが一気に解消されるときに地震が発生する。",
+          "陸側のプレートが海側のプレートの下へ沈み込むことでマグマが生成され、その膨張圧によって大きな断層が破壊される。",
+          "プレートの沈み込み運動は関与せず、大陸棚の重力崩壊によって常に一定の周期で内陸型地震が引き起こされる。",
+          "初期微動継続時間が短いほど震源からの距離が遠く、P波の伝播速度がS波の伝播速度よりも遅いことを示している。"
+        ],
+        "answerIndex": 0,
+        "answer": "海側のプレートが陸側のプレートの下へ沈み込むことでひずみが蓄積され、そのひずみが一気に解消されるときに地震が発生する。",
+        "explanation": "日本周辺では、太平洋プレートやフィリピン海プレートなどの海側プレートが陸側プレートの下に沈み込んでおり、その摩擦によってひずみが蓄積され、耐えきれなくなって跳ね上がることで大地震が発生する。初期微動継続時間は震源からの距離に比例し、P波の速度はS波よりも速い。",
+        "evidence": "海側のプレートが陸側のプレートの下に沈み込んでおり、プレートの境界が引きずられてゆがみが蓄積され、限界に達したときに地震が発生する。",
+        "misconception": "陸側が沈み込むという逆の運動や、P波の方が遅いという波の性質に関する誤認。",
+        "marks": 2,
+        "id": "rise-science-ab1a70ea7b6d81ae",
+        "fingerprint": "d16e75d641d3e738",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-16T11:53:57.220Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.electric_current",
+        "difficulty": 8,
+        "question": "回路図の測定値をもとに、電熱線にかかる電圧と消費電力量の関係について正しく述べられているものを1つ選べ。",
+        "context": "抵抗値の異なる2種類の電熱線X（10Ω）とY（20Ω）を用いて回路を組み、電源電圧を変化させて電流と電圧を測定した。電熱線Xに6.0Vの電圧を加えたとき、流れた電流は0.6Aであった。この電熱線Xを30秒間電流を流したときに発生する熱量を求めたところ、一定の値が得られた。",
+        "choices": [
+          "電熱線Xに6.0Vの電圧を30秒間加えたときに発生する熱量は180Jである。",
+          "電熱線Yの抵抗値は電熱線Xの半分であるため、同じ電圧を加えたときに流れる電流は電熱線Xの2倍になる。",
+          "電熱線に流れる電流の強さは、加える電圧の大きさに反比例し、抵抗の大きさに比例する。",
+          "電熱線Xに6.0Vの電圧を30秒間加えたときに発生する熱量は108Jである。"
+        ],
+        "answerIndex": 3,
+        "answer": "電熱線Xに6.0Vの電圧を30秒間加えたときに発生する熱量は108Jである。",
+        "explanation": "発熱量（J）は、電力（W）× 時間（s）で計算できる。電力は電圧（V）× 電流（A）＝ 6.0V × 0.6A = 3.6Wである。これを30秒間流すため、3.6W × 30s = 108Jとなる。オームの法則により電流は電圧に比例し抵抗に反比例するため、Y（20Ω）はX（10Ω）の2倍の抵抗なので電流は半分になる。",
+        "evidence": "電熱線Xに6.0Vの電圧を加えたとき、流れた電流は0.6Aであった。",
+        "misconception": "発熱量の計算において電力に時間を掛け忘れたり、オームの法則の比例・反比例の関係を取り違える誤解。",
+        "marks": 2,
+        "id": "rise-science-4036d6b83bad88fc",
+        "fingerprint": "a1d94108c0d4a81a",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-16T11:53:57.220Z"
         }
       }
     ],
