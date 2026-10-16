@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-16-11-53-57Z",
-  "updatedAt": "2026-10-16T11:53:57.245Z",
+  "poolVersion": "2026-10-16-13-13-53Z",
+  "updatedAt": "2026-10-16T13:13:53.376Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -6616,6 +6616,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-15T13:23:00.242Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading",
+        "difficulty": 8,
+        "question": "文章の内容から読み取れる、地方の歴史資料のデジタル化に関する記述として、最も適当なものを一つ選びなさい。",
+        "context": "地方の歴史資料のデジタル化は、単なる保存にとどまらず、新たな地域活性化の契機となっている。従来、博物館の収蔵庫に眠っていた古文書や民具は、専門家以外の目に触れる機会が少なかった。しかし、高解像度スキャンとクラウドデータベース化により、遠隔地の研究者だけでなく、地域の小中学生が総合的な学習の時間で活用できるようになった。さらに、AIを活用した文字認識技術の導入により、解読作業のスピードが飛躍的に向上し、これまで見過ごされてきた地域固有の生活史が次々と明らかにされている。一方で、データ整備のコストや専門人材の不足という課題も抱えており、持続可能な運営体制の構築が急務となっている。",
+        "choices": [
+          "専門家以外の目に触れる機会が少なかった古文書や民具が、データベース化により教育現場等で活用されるようになったこと。",
+          "AI文字認識技術の導入により、すべての自治体において専門人材の不足という課題が完全に解決されたこと。",
+          "収蔵庫の資料を公開することで、観光客が急増し、地域全体の経済的自立が即座に達成されたこと。",
+          "デジタル化のコストがゼロになったことで、すべての博物館が独自に高度なシステムを運用できるようになったこと。"
+        ],
+        "answerIndex": 0,
+        "answer": "専門家以外の目に触れる機会が少なかった古文書や民具が、データベース化により教育現場等で活用されるようになったこと。",
+        "explanation": "本文では、高解像度スキャンとクラウドデータベース化により、専門家以外の目に触れる機会が少なかった古文書や民具が小中学生などにも活用されるようになったと述べられています。他の選択肢はコストや人材の課題が完全に解決されたとする点や、経済的自立が即座に達成されたとする点などが本文の記述と矛盾するか拡大解釈です。",
+        "evidence": "高解像度スキャンとクラウドデータベース化により、遠隔地の研究者だけでなく、地域の小中学生が総合的な学習の時間で活用できるようになった。",
+        "misconception": "課題が完全に解決されたり経済的効果が誇張されたりする記述を、本文の一部をもとに過度に一般化・拡大解釈してしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-bd749bb0d7b3f0fc",
+        "fingerprint": "035d1166b6f07bd0",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-16T13:13:53.356Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.critical_thinking",
+        "difficulty": 8,
+        "question": "筆者の主張として最も適当なものを一つ選びなさい。",
+        "context": "討論会において自分の主張を効果的に伝えるためには、単に論理的な正しさを追求するだけでなく、聴き手の背景や関心に寄り添う姿勢が不可欠である。ある研究では、統計データのみを提示した場合よりも、具体的なエピソードを交えながらデータの意味を説明した場合の方が、聴き手の理解度と納得感双方が高まることが示されている。ただし、エピソードに頼りすぎると、感情的な説得に偏り、客観的な妥当性が損なわれる危険性もある。したがって、客観的なデータと個別具体的な事例を適切に往復させながら議論を構築することが求められる。",
+        "choices": [
+          "討論会では客観的なデータのみを提示することが最も効果的であり、個別具体的な事例は排除すべきである。",
+          "聴き手の理解を深めるためには、客観的データと個別具体のエピソードをバランスよく組み合わせることが重要である。",
+          "感情的な説得力を高めることさえできれば、論理的な正しさや統計データは特に必要とされない。",
+          "聴き手の背景や関心を考慮する必要はなく、専門的な知識を一方的に伝えることが最優先される。"
+        ],
+        "answerIndex": 1,
+        "answer": "聴き手の理解を深めるためには、客観的データと個別具体のエピソードをバランスよく組み合わせることが重要である。",
+        "explanation": "文章の結びにおいて、客観的なデータと個別具体的な事例を適切に往復させながら議論を構築することが求められると述べられています。他の選択肢は事例を排除すべきとする点、データが不要とする点、聴き手を考慮する必要がないとする点など、筆者の主張に反しています。",
+        "evidence": "したがって、客観的なデータと個別具体的な事例を適切に往復させながら議論を構築することが求められる。",
+        "misconception": "一方の要素の重要性を強調するあまり、もう一方を完全に否定したり無視したりする極端な選択肢を選んでしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-5133529218f5493e",
+        "fingerprint": "f43c634c5d50cafa",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-16T13:13:53.356Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.data_interpretation",
+        "difficulty": 8,
+        "question": "記述内容から読み取れるA市の施策と現状に関する説明として、最も適当なものを一つ選びなさい。",
+        "context": "A市では、プラスチックごみの削減を目指し、昨年度から店舗でのレジ袋有料化に加えて、マイボトルの利用を奨励する給水スポットを市内各所に設置した。市の調査によると、昨年度のプラスチック製レジ袋の配布枚数は前年度比で四〇％減少した。一方で、給水スポットの利用回数は予想を上回るペースで増加したが、公共の場所におけるマナー違反のゴミ放置に関する苦情件数は前年度とほぼ同数で推移しており、市民の環境意識全体の向上と具体的な行動変容の浸透にはまだ時間がかかる部分もある。",
+        "choices": [
+          "レジ袋の配布枚数が減少した一方で、マナー違反のゴミ放置に関する苦情件数は前年度とほぼ同じ水準である。",
+          "給水スポットの設置により、マナー違反のゴミ放置に関する苦情件数が前年度から激減した。",
+          "マイボトルの普及によってレジ袋の有料化が不要になり、すべての店舗で配布が全面禁止された。",
+          "市民の環境意識が完全に向上し、ゴミ問題に関する課題はすべて解決された。"
+        ],
+        "answerIndex": 0,
+        "answer": "レジ袋の配布枚数が減少した一方で、マナー違反のゴミ放置に関する苦情件数は前年度とほぼ同じ水準である。",
+        "explanation": "本文には、レジ袋の配布枚数が前年度比で四〇％減少し、ゴミ放置に関する苦情件数は前年度とほぼ同数で推移していると明記されています。他の選択肢は苦情が激減したとする点や、全面禁止されたとする点、課題がすべて解決されたとする点など、本文の記述と異なります。",
+        "evidence": "昨年度のプラスチック製レジ袋の配布枚数は前年度比で四〇％減少した。一方で、給水スポットの利用回数は予想を上回るペースで増加したが、公共の場所におけるマナー違反のゴミ放置に関する苦情件数は前年度とほぼ同数で推移しており",
+        "misconception": "施策の一部が成功したことから、関連するすべての問題が完全に解決したと過大に評価してしまう誤り。",
+        "marks": 1,
+        "id": "rise-japanese-df262663845d1327",
+        "fingerprint": "67aa7bc1016a2577",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-16T13:13:53.356Z"
         }
       }
     ],
