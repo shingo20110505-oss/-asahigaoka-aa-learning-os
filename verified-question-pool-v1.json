@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-17-10-36-00Z",
-  "updatedAt": "2026-10-17T10:36:00.497Z",
+  "poolVersion": "2026-10-17-11-10-02Z",
+  "updatedAt": "2026-10-17T11:10:02.657Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -10180,6 +10180,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-16T11:53:57.220Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemical_change",
+        "difficulty": 8,
+        "question": "実験で得られたそれぞれの水溶液の性質やイオンに関する記述として最も適当なものを次の中から1つ選びなさい。",
+        "context": "愛知県内のある中学校の科学部員が、塩酸と水酸化ナトリウム水溶液の中和反応について調べる実験を行った。ビーカーにうすい塩酸20.0cm3を入れ、青色リトマス紙を浸したところ赤色に変色した。この塩酸にうすい水酸化ナトリウム水溶液を少量ずつ加えていくと、ある加えた量でリトマス紙の色が青色に変わった。さらに水酸化ナトリウム水溶液を加え続けると、BTB液を加えたときに溶液の色が青色になった。",
+        "choices": [
+          "水酸化ナトリウム水溶液を加えていくと、溶液全体のナトリウムイオンの数は減少し続ける。",
+          "塩酸にうすい水酸化ナトリウム水溶液を加える操作では、温度変化は一切起こらない。",
+          "BTB液が青色を示す水溶液にさらに塩酸を大量に加えると、溶液は酸性にならず中性を維持する。",
+          "中和が完全に起こった点では、溶液中に存在する水素イオンの数と水酸化物イオンの数が等しくなっている。"
+        ],
+        "answerIndex": 3,
+        "answer": "中和が完全に起こった点では、溶液中に存在する水素イオンの数と水酸化物イオンの数が等しくなっている。",
+        "explanation": "中和反応の本質は酸から生じる水素イオン（H+）とアルカリから生じる水酸化物イオン（H-）が結びついて水（H2O）を生成することであり、中和点が完全に成立した瞬間には、溶液中に存在する水素イオンの数と水酸化物イオンの数が等しくなります。ナトリウムイオンは中和反応に関与しないため、水酸化ナトリウム水溶液を加えるにつれて数は増え続けます。中和反応は発熱反応であるため温度は上昇し、塩酸を過剰に加えれば溶液は酸性になります。一番の強敵となる誤解はナトリウムイオン数が減るという誤りや発熱しないという誤りです。",
+        "evidence": "塩酸にうすい水酸化ナトリウム水溶液を少量ずつ加えていくと、ある加えた量でリトマス紙の色が青色に変わった。",
+        "misconception": "中和が進むとナトリウムイオンや塩化物イオンなどのすべてのイオンが減少するという混同",
+        "marks": 2,
+        "id": "rise-science-d58d2b6f7da7c4cb",
+        "fingerprint": "2584b1ee8dfb39a8",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-17T11:10:02.626Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.force_and_pressure",
+        "difficulty": 8,
+        "question": "文中の実験結果から、物体が床面におよぼす圧力の大きさについて述べたものとして最も適当なものを次の中から1つ選びなさい。",
+        "context": "直方体の形をした質量1.2kgの木製ブロックを使い、3種類の異なる面を下にして水平な床の上に置いた。それぞれの面をA面（底面積20cm2）、B面（底面積40cm2）、C面（底面積60cm2）とする。質量100gの物体にはたらく重力の大きさを1Nとする。",
+        "choices": [
+          "接触する面積が大きくなればなるほど、床面が受ける圧力の大きさも大きくなる。",
+          "C面を下にして置いたとき、床面が受ける圧力の大きさは、A面を下にして置いたときの3分の1になる。",
+          "B面を下にして置いたとき、床面が受ける圧力の大きさは、A面を下にして置いたときの2倍になる。",
+          "どの面を下にして置いても、木製ブロックが床面におよぼす圧力の大きさは等しい。"
+        ],
+        "answerIndex": 1,
+        "answer": "C面を下にして置いたとき、床面が受ける圧力の大きさは、A面を下にして置いたときの3分の1になる。",
+        "explanation": "木製ブロックの質量は1.2kgであり、重力の大きさは12Nです。圧力（N/m2またはPa）は、力が働く面積（面積が小さいほど圧力は大きくなる）に反比例します。A面の面積は20cm2、C面の面積は60cm2であり、C面の面積はA面の3倍です。そのため、C面を下にして置いたときの圧力はA面の3分の1になります。B面を下にした場合は、面積が2倍になるため圧力は2分の1になります。面積が大きくなると圧力は小さくなります。",
+        "evidence": "A面（底面積20cm2）、B面（底面積40cm2）、C面（底面積60cm2）",
+        "misconception": "接触面積が大きいほど圧力が大きくなるという、力と面積の比例関係に関する勘違い",
+        "marks": 2,
+        "id": "rise-science-f142dbdbef52e79f",
+        "fingerprint": "7a6c89133fbba479",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-17T11:10:02.626Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.weather_observation",
+        "difficulty": 8,
+        "question": "表の気象観測データから読み取れる大気の状態の変化についての説明として最も適当なものを次の中から1つ選びなさい。",
+        "context": "ある日の午前9時から午後3時まで、名古屋市内の校庭で1時間ごとに気温と湿度を測定したところ、午前9時は気温16.0℃・湿度60%、正午は気温22.0℃・湿度40%、午後3時は気温20.0℃・湿度50%であった。気温の変化に伴い空気中の水蒸気量や露点も変動している。",
+        "choices": [
+          "気温が最も高くなった正午においても、空気中の飽和水蒸気量は午前9時より小さくなっている。",
+          "空気中の水蒸気量が一定であっても、気温が上昇すれば湿度は低下し、気温が下降すれば湿度は上昇する。",
+          "正午の空気は午前9時に比べて気温が上がり、空気1m3あたりの実際の水蒸気量は午前9時から正午にかけて増加している。",
+          "午後3時の湿度は午前9時より低くなっているが、空気中の実際の水蒸気量は午後3時の方が午前9時よりも少ない。"
+        ],
+        "answerIndex": 1,
+        "answer": "空気中の水蒸気量が一定であっても、気温が上昇すれば湿度は低下し、気温が下降すれば湿度は上昇する。",
+        "explanation": "湿度は（実際の水蒸気量÷その気温での飽和水蒸気量）×100で表されます。実際の水蒸気量が一定である場合、気温が上がると飽和水蒸気量が大きくなるため湿度は低下し、気温が下がると飽和水蒸気量は小さくなるため湿度は上昇します。データから、午前9時の実際の水蒸気量は飽和水蒸気量（13.6g/m3付近）×0.6≒8.2g/m3、正午は19.4g/m3×0.4≒7.8g/m3となり、水蒸気量はほぼ同等か微減しているため、正午の水分増加説や午後3時が少ないという単純な断定は誤りです。気温上昇に伴う飽和水蒸気量の変化と湿度の関係を正しく理解しているかが問われます。",
+        "evidence": "午前9時は気温16.0℃・湿度60%、正午は気温22.0℃・湿度40%、午後3時は気温20.0℃・湿度50%",
+        "misconception": "湿度が低いときは空気中の水分が絶対的に少ないと決めつける誤解",
+        "marks": 2,
+        "id": "rise-science-ada38323a2a01057",
+        "fingerprint": "53b4579f2cc0fd89",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-17T11:10:02.626Z"
         }
       }
     ],
