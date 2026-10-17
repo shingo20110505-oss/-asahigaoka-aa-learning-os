@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-17-11-10-02Z",
-  "updatedAt": "2026-10-17T11:10:02.657Z",
+  "poolVersion": "2026-10-17-11-34-39Z",
+  "updatedAt": "2026-10-17T11:34:39.894Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -13913,6 +13913,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-15T12:38:28.769Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.history_geography",
+        "difficulty": 8,
+        "question": "この地域の工業的特徴やその背景に関する記述として、最も適当なものを次の中から選びなさい。",
+        "context": "資料：ある地域における製造品出荷額等の構成比の推移（1960年～2020年）。1960年には繊維工業などの軽工業の割合が比較的高かったが、1980年以降は輸送用機械器具をはじめとする機械工業が圧倒的なシェアを占め、「自動車産業を中心とした工業都市の発展がみられる」。",
+        "choices": [
+          "中京工業地帯の中心に位置し、高度経済成長期以降、関連下請中小企業が集積して機械工業が高度に発達した。",
+          "瀬戸内海沿岸の温暖な気候と水資源を利用して、重化学工業を中心とする臨海コンビナートが形成された。",
+          "北九州工業地帯の一部として、官営八幡製鉄所の設立以降、鉄鋼業を基盤とした重工業が発展した。",
+          "関東地方の内陸部に位置し、近年は輸送網の充実にともなって食料品や機械器具の工場が分散・立地している。"
+        ],
+        "answerIndex": 0,
+        "answer": "中京工業地帯の中心に位置し、高度経済成長期以降、関連下請中小企業が集積して機械工業が高度に発達した。",
+        "explanation": "中京工業地帯は愛知県を中心に自動車産業をはじめとする輸送用機械器具の出荷額が全国1位を誇る地域である。資料中の記述から読み取れる自動車産業の集積や、歴史的な中小企業のネットワークによる機械工業の発達がその特徴である。ほかの選択肢はそれぞれ瀬戸内、北九州、北関東などの特徴を述べており、対象地域の地理的・歴史的背景と矛盾する。",
+        "evidence": "自動車産業を中心とした工業都市の発展がみられる",
+        "misconception": "愛知県を中心とする中京工業地帯の発展要因を、他の沿岸部や鉄鋼業を基盤とする工業地帯の歴史的背景と混同してしまう誤解。",
+        "marks": 2,
+        "id": "rise-social-0cccbe27163da50b",
+        "fingerprint": "c9c204a053aeaf1e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-17T11:34:39.850Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "この文章で触れられている住民の直接請求権や地方自治の仕組みに関して、正しい説明をしたものを次の中から選びなさい。",
+        "context": "地方自治法に基づく住民の権利に関する説明文の一部。「有権者の一定数以上の署名を集めることで、地方公共団体の長や議会の解散・議員の解職などを直接請求（リコール）することができるほか、条例の制定や改廃を請求することも認められている。」",
+        "choices": [
+          "住民投票によって過半数が賛成した場合、その結果は地方議会の決定を拘束せず、単なる参考意見にとどまる。",
+          "日本国憲法には地方自治に関する規定は存在せず、すべて地方自治法という法律のみによってその権限が保障されている。",
+          "条例の制定や改廃の請求を行う場合、まずはその地方公共団体の長に対して直接請求を行い、長は意見を付して議会を招集・付議しなければならない。",
+          "議会の解散請求や議員の解職請求は、首長に対して直接行われ、首長の判断だけで即座に効力が発生する。"
+        ],
+        "answerIndex": 2,
+        "answer": "条例の制定や改廃の請求を行う場合、まずはその地方公共団体の長に対して直接請求を行い、長は意見を付して議会を招集・付議しなければならない。",
+        "explanation": "条例の制定・改廃請求は、選挙権を有する者の50分の1以上の署名を集めて地方公共団体の長に対して行い、長は議会を招集して意見を付して付議する必要がある。リコールや住民投票の手続き、および日本国憲法第92条に地方自治の基本原則が定められている点に関する正確な理解が求められる。",
+        "evidence": "条例の制定や改廃を請求することも認められている。",
+        "misconception": "直接請求の手続きの流れや、首長および議会の権限関係、憲法上の位置づけを誤って認識している誤解。",
+        "marks": 2,
+        "id": "rise-social-2cf2c08b71b22007",
+        "fingerprint": "b59c4f8d3ad866f3",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-17T11:34:39.850Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "P地域およびQ地域に該当する気候区の組み合わせとして、最も適切なものを次の中から選びなさい。",
+        "context": "表：世界の2つの地域（P地域・Q地域）における気候と農業の特色。P地域は「夏に高温乾燥し、オリーブやブドウなどの果樹栽培や、乾燥に強い穀物の栽培が盛ん」であり、Q地域は「年間を通じて降水量が少なく、気温の年較差が大きい砂漠気候が広がり、オアシス農業や遊牧が行われている」。",
+        "choices": [
+          "P：温暖湿潤気候 － Q：ステップ気候",
+          "P：地中海性気候 － Q：乾燥帯（砂漠気候）",
+          "P：西岸海洋性気候 － Q：サバナ気候",
+          "P：地中海性気候 － Q：ツンドラ気候"
+        ],
+        "answerIndex": 1,
+        "answer": "P：地中海性気候 － Q：乾燥帯（砂漠気候）",
+        "explanation": "夏に高温乾燥し、オリーブやブドウなどの果樹栽培（地中海式農業）が行われるのは「地中海性気候」の特徴である。また、年間を通じて降水量が少ない砂漠気候は「乾燥帯」に属する。他の選択肢は気候と栽培作物・農業形態の組み合わせが一致しない。",
+        "evidence": "夏に高温乾燥し、オリーブやブドウなどの果樹栽培や、乾燥に強い穀物の栽培が盛ん",
+        "misconception": "地中海性気候特有の農業景観と、西岸海洋性気候や温暖湿潤気候といった他の温帯気候における農業を混同してしまう誤解。",
+        "marks": 2,
+        "id": "rise-social-b9d713b812db635c",
+        "fingerprint": "471610fbf7394ed1",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-17T11:34:39.850Z"
         }
       }
     ]
