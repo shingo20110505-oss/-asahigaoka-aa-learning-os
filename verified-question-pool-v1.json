@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-16-13-13-53Z",
-  "updatedAt": "2026-10-16T13:13:53.376Z",
+  "poolVersion": "2026-10-17-10-36-00Z",
+  "updatedAt": "2026-10-17T10:36:00.497Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2849,6 +2849,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-15T11:21:46.133Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.geometry.function",
+        "difficulty": 8,
+        "question": "直角三角形ABCにおいて、AB=6cm、BC=8cm、角B=90度である。点PはBを出発してBC上を毎秒2cmの速さでCに向かい、同時に点Aを出発した点QはAB上を毎秒1cmの速さでBに向かう。点Pと点Qが同時に出発してからt秒後の三角形PBQの面積が5平方センチメートルになるのは、出発してから何秒後か求めよ。ただし、0 < t < 4 とする。",
+        "context": "三角形ABC：AB=6cm, BC=8cm, 角B=90度。\n点P：Bを出発、BC上を秒速2cmでCに向かう（0 < t < 4）。\n点Q：Aを出発、AB上を秒速1cmでBに向かう。\nt秒後の三角形PBQの面積が5平方センチメートルとなる。",
+        "choices": [
+          "3秒後",
+          "1秒後",
+          "2秒後",
+          "2.5秒後"
+        ],
+        "answerIndex": 1,
+        "answer": "1秒後",
+        "explanation": "t秒後において、点Pの位置する線分BC上の距離はPB = 2t cmであり、点Qの位置する線分AB上の距離はBQ = AB - (1 × t) = 6 - t cmである。三角形PBQは角B=90度の直角三角形であるため、その面積は (1/2) × PB × BQ で表される。これに代入すると、(1/2) × 2t × (6 - t) = t(6 - t) = 6t - t^2 となる。これが5平方センチメートルに等しいと置くと、方程式 6t - t^2 = 5、すなわち t^2 - 6t + 5 = 0 が得られる。これを因数分解すると (t - 1)(t - 5) = 0 となり、条件 0 < t < 4 を満たす解は t = 1 である。",
+        "evidence": "点PはBを出発してBC上を毎秒2cmの速さでCに向かい、同時に点Aを出発した点QはAB上を毎秒1cmの速さでBに向かう。",
+        "misconception": "点Qが点Aから出発する際に、残りの長さではなく進んだ距離（t）をそのままBQの長さとして誤って計算してしまうこと。",
+        "marks": 2,
+        "id": "rise-math-c8ec74648a3aab08",
+        "fingerprint": "20ec2d76630f7264",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-17T10:35:49.501Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.probability",
+        "difficulty": 8,
+        "question": "1から6までの数字が1つずつ書かれた6枚のカードが入った箱がある。この箱から同時に2枚のカードを取り出し、書かれた数の大きい方をa、小さい方をbとする。このとき、a - bの値が2以上になる確率を求めよ。",
+        "context": "1から6までの6枚のカードから同時に2枚を取り出す。大きい方をa、小さい方をbとする。a - b ≧ 2 となる確率を求める。",
+        "choices": [
+          "2/5",
+          "1/2",
+          "3/5",
+          "2/3"
+        ],
+        "answerIndex": 3,
+        "answer": "2/3",
+        "explanation": "6枚のカードから同時に2枚を取り出す場合の総数は、組合せの計算により 6C2 = 15通りである。このうち、a - b ≧ 2 を満たすカードのペア (a, b) を数える。差が2のものは (3,1), (4,2), (5,3), (6,4) の4通り、差が3のものは (4,1), (5,2), (6,3) の3通り、差が4のものは (5,1), (6,2) の2通り、差が5のものは (6,1) の1通りである。これらを合計すると、4 + 3 + 2 + 1 = 10通りとなる。したがって、求める確率は 10/15 を約分して 2/3 となる。",
+        "evidence": "1から6までの数字が1つずつ書かれた6枚のカードが入った箱がある。この箱から同時に2枚のカードを取り出し、書かれた数の大きい方をa、小さい方をbとする。",
+        "misconception": "すべての全事象を重複順列（6×6=36など）として計算したり、差が「2より大きい」と誤認して条件を満たす組み合わせを少なく見積もってしまうこと。",
+        "marks": 2,
+        "id": "rise-math-27404d0401f5f478",
+        "fingerprint": "99e981b3ddcdb90d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-17T10:35:49.501Z"
         }
       }
     ],
