@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-17-12-09-54Z",
-  "updatedAt": "2026-10-17T12:09:54.032Z",
+  "poolVersion": "2026-10-18-11-41-05Z",
+  "updatedAt": "2026-10-18T11:41:05.269Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -10384,6 +10384,108 @@
           "verifierConfidence": 0.9,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-17T11:10:02.626Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemistry.aqueous_solutions",
+        "difficulty": 8,
+        "question": "この実験において、水溶液中の質量パーセント濃度を求めるための記述として正しいものはどれか。",
+        "context": "実験室で、質量が20.0gの硝酸カリウムを水80.0gに完全に溶かして水溶液を作製した。この水溶液の性質を調べるため、温度を20℃に保ちながら、溶け残りが生じないことを確認した。",
+        "choices": [
+          "溶質の質量を水の質量で割って100を掛けることで求められ、この水溶液の濃度は20.0%である。",
+          "溶質の質量を水溶液全体の質量で割って100を掛けることで求められ、この水溶液の濃度は20.0%である。",
+          "溶質の質量を水の質量で割って100を掛けることで求められ、この水溶液の濃度は25.0%である。",
+          "溶質の質量を水溶液全体の質量で割って100を掛けることで求められ、この水溶液の濃度は25.0%である。"
+        ],
+        "answerIndex": 1,
+        "answer": "溶質の質量を水溶液全体の質量で割って100を掛けることで求められ、この水溶液の濃度は20.0%である。",
+        "explanation": "質量パーセント濃度は、（溶質の質量 ÷ 水溶液全体の質量）× 100 で求められます。この実験では溶質（硝酸カリウム）が20.0g、溶媒（水）が80.0gなので、水溶液全体の質量は 20.0g ＋ 80.0g ＝ 100.0g となります。したがって、濃度は (20.0g ÷ 100.0g) × 100 ＝ 20.0% となります。分母に水の質量のみを用いて計算してしまう誤りが最も一般的な罠です。",
+        "evidence": "質量が20.0gの硝酸カリウムを水80.0gに完全に溶かして水溶液を作製した。",
+        "misconception": "水溶液全体の質量ではなく、水の質量（溶媒の質量）を分母にして計算してしまう誤り。",
+        "marks": 2,
+        "id": "rise-science-c76dc9f84d0baffc",
+        "fingerprint": "fc65f59a99091fc4",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-18T11:41:05.249Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.physics.ohm_law",
+        "difficulty": 8,
+        "question": "図の回路において、電源電圧を一定に保ったまま、抵抗器Xに別の抵抗器Yを直列に接続したとき、回路全体の電流と抵抗器Xに加わる電圧の変化についての記述として正しいものはどれか。",
+        "context": "図の回路は、一定の電圧を示す電源に、抵抗器X（抵抗値10Ω）が接続されている状態である。ここに、抵抗値が20Ωの抵抗器Yを直列に新たにつないだ。導線や電源の内部抵抗は無視できるものとする。",
+        "choices": [
+          "回路全体の電流は小さくなり、抵抗器Xに加わる電圧は小さくなる。",
+          "回路全体の電流は大きくなり、抵抗器Xに加わる電圧は大きくなる。",
+          "回路全体の電流は小さくなり、抵抗器Xに加わる電圧は大きくなる。",
+          "回路全体の電流は変化せず、抵抗器Xに加わる電圧は小さくなる。"
+        ],
+        "answerIndex": 0,
+        "answer": "回路全体の電流は小さくなり、抵抗器Xに加わる電圧は小さくなる。",
+        "explanation": "抵抗器を直列に追加すると、回路全体の抵抗が大きくなります。オームの法則（I = V / R）より、電源電圧Vが一定であれば、合成抵抗Rが増加すると回路全体の電流Iは小さくなります。また、抵抗器Xにかかる電圧は V_X = I × R_X で表されるため、電流Iが減少すると、抵抗器Xの抵抗値R_Xが一定であっても、加わる電圧V_Xは小さくなります。",
+        "evidence": "抵抗値が20Ωの抵抗器Yを直列に新たにつないだ。",
+        "misconception": "直列接続にすると、各抵抗にかかる電圧は電源電圧のまま変わらない、あるいは電流が増加すると勘違いする誤り。",
+        "marks": 2,
+        "id": "rise-science-d0e53c993170e51d",
+        "fingerprint": "6442f5a1f313d113",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-18T11:41:05.249Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.biology.photosynthesis",
+        "difficulty": 8,
+        "question": "オオカナダモを用いた実験で、光合成によって発生する気体を調べる際の説明として正しいものはどれか。",
+        "context": "十分な日光が当たる窓際に置いた試験管内のオオカナダモから、小さな気体の泡が発生しているのが観察された。この気体が何であるかを確かめるため、発生した気体を集めて火を近づけたところ、線香の先が激しく燃え上がった。",
+        "choices": [
+          "発生した気体は二酸化炭素であり、植物の呼吸によって体外へ排せつされたものである。",
+          "発生した気体は水素であり、水の電気分解が葉の内部で起きて生じたものである。",
+          "発生した気体は窒素であり、大気中の成分が葉の気孔からそのまま通り抜けたものである。",
+          "発生した気体は酸素であり、光合成によって二酸化炭素が吸収されて代わりに放出されたものである。"
+        ],
+        "answerIndex": 3,
+        "answer": "発生した気体は酸素であり、光合成によって二酸化炭素が吸収されて代わりに放出されたものである。",
+        "explanation": "線香の先が激しく燃え上がる現象は、酸素に特有の性質（助燃性）です。植物は光合成を行う際に二酸化炭素を取り込み、酸素を放出します。誤った選択肢では、呼吸の産物である二酸化炭素や他の気体と混同するトラップが仕掛けられています。",
+        "evidence": "発生した気体を集めて火を近づけたところ、線香の先が激しく燃え上がった。",
+        "misconception": "気体の性質に関する確認テストで、二酸化炭素がもつ消炎作用や水素がもつ可燃性と、酸素の助燃性を混同する誤り。",
+        "marks": 2,
+        "id": "rise-science-11acaba16148aad5",
+        "fingerprint": "e469820145cd052f",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-18T11:41:05.249Z"
         }
       }
     ],
