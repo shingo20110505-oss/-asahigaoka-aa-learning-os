@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-18-11-41-05Z",
-  "updatedAt": "2026-10-18T11:41:05.269Z",
+  "poolVersion": "2026-10-18-12-02-39Z",
+  "updatedAt": "2026-10-18T12:02:39.007Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -14219,6 +14219,40 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-17T11:34:39.850Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "history.modern_reforms",
+        "difficulty": 8,
+        "question": "文中の空欄（ ① ）および（ ② ）に入る語句の組み合わせとして最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "明治時代初期、日本は欧米列強との間に結んだ不平等条約の改正を国家の重大目標とした。1894（明治27）年、日清戦争開戦の直前にイギリスとの間で条約改正（日英通商航海条約）の調印に成功し、のちに（ ① ）の撤廃に成功した。さらに1911（明治44）年には、小村寿太郎外相の努力により、（ ② ）の回復を果たした。",
+        "choices": [
+          "① 協定税率 ② 領事裁判権",
+          "① 領事裁判権 ② 関税自主権",
+          "① 関税自主権 ② 領事裁判権",
+          "① 治外法権（領事裁判権） ② 朝租権"
+        ],
+        "answerIndex": 1,
+        "answer": "① 領事裁判権 ② 関税自主権",
+        "explanation": "1894年の日英通商航海条約によって撤廃されたのは、外国人が日本で裁判を受けない権利である領事裁判権（治外法権）であり、関税自主権の完全な回復は1911年の小村寿太郎外相による条約改正で達成された。したがって、①に領事裁判権、②に関税自主権が入る組み合わせが正しい。",
+        "evidence": "1894（明治27）年、日清戦争開戦の直前にイギリスとの間で条約改正（日英通商航海条約）の調印に成功し、のちに（ ① ）の撤廃に成功した。さらに1911（明治44）年には、小村寿太郎外相の努力により、（ ② ）の回復を果たした。",
+        "misconception": "領事裁判権の撤廃と関税自主権の回復の時期や、それぞれを達成した外相（陸奥宗光と小村寿太郎）の業績を混同してしまう誤解。",
+        "marks": 2,
+        "id": "rise-social-f1caa7aec652b30a",
+        "fingerprint": "bdf539f1c9d110df",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.9,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-18T12:02:31.405Z"
         }
       }
     ]
