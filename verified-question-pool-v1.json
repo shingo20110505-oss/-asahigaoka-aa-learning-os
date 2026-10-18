@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-18-12-02-39Z",
-  "updatedAt": "2026-10-18T12:02:39.007Z",
+  "poolVersion": "2026-10-18-12-35-41Z",
+  "updatedAt": "2026-10-18T12:35:41.397Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -6888,6 +6888,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-17T12:09:54.005Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading_comprehension",
+        "difficulty": 8,
+        "question": "文章の内容と照らし合わせたとき、筆者の主張や論理展開として最も適切なものを、次の四つの選択肢から一つ選びなさい。",
+        "context": "現代の私たちは、過去の文化遺産や伝統を単に保存すべき対象としてのみ捉えがちである。しかし、真に価値のある伝統とは、過去の凍結された形骸ではなく、現代の新しい文脈や課題に直面したときに、その都度批判的に再解釈され、組み替えられることで初めて生命力を維持するものである。すなわち、伝統の継承とは、過去をそのままの姿で未来へと手渡すことではなく、現在という鏡を通して過去を問い直し、新たな創造へとつなげるダイナミックな実践なのだ。",
+        "choices": [
+          "伝統の継承は、現在における再解釈と創造的な実践を伴うことで初めて生きたものとなる。",
+          "過去の文化遺産は現代の課題解決には役に立たないため、新しい創造に置き換えていくべきである。",
+          "現代人は伝統を過大評価しすぎているため、古い文化形式を速やかに刷新し、過去を忘却する必要がある。",
+          "伝統の維持においては、過去の形態をいっさい改変せずにそのまま次世代に伝えることが最も重要である。"
+        ],
+        "answerIndex": 0,
+        "answer": "伝統の継承は、現在における再解釈と創造的な実践を伴うことで初めて生きたものとなる。",
+        "explanation": "文脈において、真に価値のある伝統は「現代の新しい文脈や課題に直面したときに、その都度批判的に再解釈され、組み替えられることで初めて生命力を維持する」と述べられており、伝統の継承を「現在という鏡を通して過去を問い直し、新たな創造へとつなげるダイナミックな実践」と捉えている。したがって、現在における再解釈と創造的な実践を伴うことが継承の本質であるとする選択肢が最も適切である。「過去の形態をいっさい改変せずに伝えるべき」とする選択肢は「過去の凍結された形骸ではなく」という筆者の否定する立場に反しており、これが最大の引っかけ（誤った理解）である。",
+        "evidence": "伝統の継承とは、過去をそのままの姿で未来へと手渡すことではなく、現在という鏡を通して過去を問い直し、新たな創造へとつなげるダイナミックな実践なのだ。",
+        "misconception": "「過去の形態をそのまま変えずに残すことこそが伝統を守ることだ」という、筆者が文章内で否定している従来の固定化した保存観念に引きずられてしまう誤解。",
+        "marks": 2,
+        "id": "rise-japanese-db4f1137a2138e23",
+        "fingerprint": "6b311617fe13c325",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-18T12:35:41.371Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.logical_structure",
+        "difficulty": 8,
+        "question": "次の文章において、二段落目が一段落目に対してどのような役割を果たしているか、最も適切なものを一つ選びなさい。",
+        "context": "【一段落目】言葉によるコミュニケーションにおいて、私たちはしばしば「言いたいことが正確に相手に伝わった」と安易に思い込みがちである。しかし、発話された言葉の持つ意味は、受け手の経験や文脈によって常に揺らぎ、変容している。【二段落目】例えば、親しい友人同士の間であっても、「疲れた」という一言が持つニュアンスは、その日の文脈や表情、過去の共有体験によって全く異なる意味として相手に受信される。言葉は決して透明な容器ではなく、常に解釈のフィルターを通される不完全な媒体なのだ。",
+        "choices": [
+          "一段落目で提起された課題の原因を歴史的背景から説明し、解決のための具体策を提案している。",
+          "一段落目の結論を全面的に否定し、言葉のコミュニケーションにおける絶対的な確実性を証明している。",
+          "一段落目で述べられた一般的な傾向や抽象的な問題提起に対して、具体的な例を挙げてその妥当性を補強している。",
+          "一段落目で示された筆者の意見に対する反論をあえて提示し、その論理の矛盾を鋭く突いている。"
+        ],
+        "answerIndex": 2,
+        "answer": "一段落目で述べられた一般的な傾向や抽象的な問題提起に対して、具体的な例を挙げてその妥当性を補強している。",
+        "explanation": "一段落目では、言葉の伝達が正確にいくという思い込みに対し、意味が揺らぐという抽象的な指摘を行っている。続く二段落目では「例えば、親しい友人同士の間であっても…」と具体的な場面を提示し、言葉が解釈のフィルターを通る不完全な媒体であることを裏付けている。したがって、抽象的な主張に対して具体例をもって補強する役割を果たしている。反論や歴史的背景、全面的否定とする選択肢は文脈に合致しない。",
+        "evidence": "例えば、親しい友人同士の間であっても、「疲れた」という一言が持つニュアンスは、その日の文脈や表情、過去の共有体験によって全く異なる意味として相手に受信される。",
+        "misconception": "「例えば」という表現から単なる別話題の挿入と捉えたり、筆者の意見の「否定・反論」が始まると誤読したりしてしまうこと。",
+        "marks": 2,
+        "id": "rise-japanese-f18c32f091efa2ac",
+        "fingerprint": "a6a52512e9c6e8f8",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-18T12:35:41.371Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.information_synthesis",
+        "difficulty": 8,
+        "question": "次の文章の筆者の立場に関する記述として、本文の論旨に最もよく合致するものを一つ選びなさい。",
+        "context": "効率性や合理性が過度に追求される現代社会では、結果や成果に直結しないプロセスや、すぐに役立たない「無駄」なものや時間が徹底的に排除される傾向にある。しかし、人間が深い思考に達したり、新しい発想を生み出したりするとき、そこには必ず一見すると非効率的で回り道に見えるような「余白の時間」が存在していた。効率化の追求が行き過ぎると、結果的に私たちの思考の奥行きや創造性の土壌を痩せ細らせることになる。",
+        "choices": [
+          "一見無駄に見える余白の時間や非効率なプロセスこそが、豊かな思考や創造性を育む上で重要な基盤となる。",
+          "結果に直結しないプロセスは現代においては無価値であり、創造性を高めるためには完全に排除しなければならない。",
+          "効率性を追求することは人間社会の発展に不可欠であり、無駄な時間は可能な限り排除すべきである。",
+          "現代社会の効率化は、人間の思考の奥行きを深めるために大いに貢献しているため、一層推進されるべきだ。"
+        ],
+        "answerIndex": 0,
+        "answer": "一見無駄に見える余白の時間や非効率なプロセスこそが、豊かな思考や創造性を育む上で重要な基盤となる。",
+        "explanation": "本文では、効率化の過度な追求によって無駄な時間が排除されている現状を問題視し、「一見すると非効率的で回り道に見えるような『余白の時間』が存在していた」「効率化の追求が行き過ぎると、結果的に私たちの思考の奥行きや創造性の土壌を痩せ細らせることになる」と述べている。したがって、非効率に見える余白の時間こそが創造性の土壌として重要であるとする選択肢が正しい。効率性を全面的に肯定する他の選択肢は、筆者の主張と真っ向から対立する。",
+        "evidence": "人間が深い思考に達したり、新しい発想を生み出したりするとき、そこには必ず一見すると非効率的で回り道に見えるような「余白の時間」が存在していた。",
+        "misconception": "現代社会の風潮（効率性重視）をそのまま筆者の理想と混同し、効率化や結果の重視を肯定する選択肢を選んでしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-11692b04c0bc3fd8",
+        "fingerprint": "3730660b0596dea5",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-18T12:35:41.371Z"
         }
       }
     ],
