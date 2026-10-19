@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-19-14-38-47Z",
-  "updatedAt": "2026-10-19T14:38:47.355Z",
+  "poolVersion": "2026-10-19-15-34-11Z",
+  "updatedAt": "2026-10-19T15:34:11.156Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -6990,6 +6990,108 @@
           "verifierConfidence": 0.95,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-18T12:35:41.371Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.kanji",
+        "difficulty": 8,
+        "question": "文脈上、傍線部「かんがみ」を漢字で書くとき、最も適切なものを一つ選びなさい。",
+        "context": "昨今の急激なデジタル技術の進展に鑑み、学校現場においても新たな情報教育のあり方を早急に検討する必要がある。",
+        "choices": [
+          "鑑み",
+          "省み",
+          "顧み",
+          "試み"
+        ],
+        "answerIndex": 0,
+        "answer": "鑑み",
+        "explanation": "「〜に鑑み」は、前にある事情や状況を参考にして、それを手本や判断の基準にするという意味を表す。ここでは「急激なデジタル技術の進展を参考にして・考慮して」という意味になるため、「鑑み」が適切である。「省み」は自分の言動を振り返ること、「顧み」は気にかける・振り返ること、「試み」はためしてみることであるため、文脈に合わない。",
+        "evidence": "昨今の急激なデジタル技術の進展に鑑み",
+        "misconception": "「省み」や「顧み」も同じ「かみる」系の響きや反省・配慮に関連する漢字として混同しやすい。",
+        "marks": 2,
+        "id": "rise-japanese-0e1555b183ba228d",
+        "fingerprint": "07ce9d34ce4cb252",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-19T15:34:11.085Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.reading",
+        "difficulty": 8,
+        "question": "本文において、筆者が「対話的思考」について述べている内容として、最も適切なものを一つ選びなさい。",
+        "context": "私たちは他者と意見を交わす際、しばしば自分の正しさを証明することに終始しがちである。しかし、真の対話的思考とは、相手を論破することではなく、自分とは異なる前提や背景に身を置くことで、自らの思考の枠組み自体を揺さぶり、再構成する営みである。このプロセスを経ることで、私たちは単なる妥協点ではなく、より多角的な視点を獲得することができるのである。",
+        "choices": [
+          "自説の正当性を論理的に証明し、相手を納得させること。",
+          "相手の背景にある問題を分析して、効率的に議論を解決すること。",
+          "自分の思考の前提をあえて見直し、より広い視点を手に入れること。",
+          "お互いの意見を譲り合って速やかに妥協点を見出すこと。"
+        ],
+        "answerIndex": 2,
+        "answer": "自分の思考の前提をあえて見直し、より広い視点を手に入れること。",
+        "explanation": "本文では「自分とは異なる前提や背景に身を置くことで、自らの思考の枠組み自体を揺さぶり、再構成する営み」であり「より多角的な視点を獲得することができる」と述べられている。したがって、自分の思考の前提を見直し広い視点を手に入れるとする説明が正しい。妥協点を見出すことや論破・証明することは否定または異なる文脈として書かれているため不適切。",
+        "evidence": "自分とは異なる前提や背景に身を置くことで、自らの思考の枠組み自体を揺さぶり、再構成する営みである。",
+        "misconception": "「妥協点」という言葉に引きずられ、話し合いによって譲り合うことだと誤解してしまう。また、「論理的に証明」などの表現は「自分の正しさを証明することに終始しがち」という筆者が退ける態度に属する。",
+        "marks": 2,
+        "id": "rise-japanese-05c1aa9507c0ef31",
+        "fingerprint": "b35b2150fd210b2e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-19T15:34:11.085Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application.argument",
+        "difficulty": 8,
+        "question": "次の会話文において、生徒Bの意見を補強する論拠として最も適切なものを一つ選びなさい。",
+        "context": "生徒A：「地域の伝統行事は、維持するための人手や資金が不足しているため、現代の効率化の波に合わせて縮小・廃止していくべきだ。存続させるべきではない。」\n生徒B：「確かに効率やコストの面だけで見ればその通りかもしれないが、地域コミュニティのつながりを保つ機能がある以上、簡単に廃止すべきではない。」",
+        "choices": [
+          "災害時などの緊急時において、普段からの地縁による結びつきが互助の基盤として機能するため。",
+          "伝統行事を開催することで、観光客が増加し商業的な利益が直接的に生まれるため。",
+          "一度廃止してしまった行事を後から復元するには、多大な時間と労力がかかるため。",
+          "現代の効率化を最優先する姿勢が、個人の自由な時間を奪っている原因になるため。"
+        ],
+        "answerIndex": 0,
+        "answer": "災害時などの緊急時において、普段からの地縁による結びつきが互助の基盤として機能するため。",
+        "explanation": "生徒Bは「地域コミュニティのつながりを保つ機能」を存続の理由として挙げている。これに最も直接的につながる論拠は、そのつながりが災害時の助け合い（互助）など実質的な社会的価値を持っているという点である。商業的利益や復元の難しさは論点がずれているか不十分である。",
+        "evidence": "地域コミュニティのつながりを保つ機能がある以上、簡単に廃止すべきではない。",
+        "misconception": "「維持のための人手や資金」という生徒A側のコスト論に対する反論として、金銭的メリット（観光客の増加や利益）を論拠に選んでしまうエラー。",
+        "marks": 2,
+        "id": "rise-japanese-d962411ab3b70126",
+        "fingerprint": "65d075773dab0861",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-19T15:34:11.085Z"
         }
       }
     ],
