@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-18-12-35-41Z",
-  "updatedAt": "2026-10-18T12:35:41.397Z",
+  "poolVersion": "2026-10-19-13-56-07Z",
+  "updatedAt": "2026-10-19T13:56:07.738Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -10588,6 +10588,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-18T11:41:05.249Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.biology",
+        "difficulty": 8,
+        "question": "表の植物のグループとそれぞれの特徴の組み合わせとして、最も適当なものを次から選びなさい。",
+        "context": "被子植物であるアブラナとマツ（裸子植物）について調べた。アブラナは胚珠が子房に包まれており、花弁、がく、おしべ、めしべがある。一方、マツには子房がなく、胚珠がむき出しについている。また、アブラナは網状脈で主根と側根をもち、マツは平行脈ではなく、維管束が輪状に並び、根は主根と側根をもつ（または松の葉は針状葉）。",
+        "choices": [
+          "アブラナは子房の中に胚珠があり、葉の葉脈は網状脈である。",
+          "マツは子房があり、花弁が目立つ花をつける。",
+          "アブラナは胚珠がむき出しで、根はひげ根である。",
+          "マツは維管束がバラバラに散らばっており、平行脈の葉をもつ。"
+        ],
+        "answerIndex": 0,
+        "answer": "アブラナは子房の中に胚珠があり、葉の葉脈は網状脈である。",
+        "explanation": "アブラナは被子植物なので子房の中に胚珠があり、双子葉類であるため葉脈は網状脈である。マツは裸子植物であり子房はなく花弁もない。したがって最初の選択肢が正しい。誤答は裸子植物と被子植物の特徴、あるいは単子葉類と双子葉類の特徴（網状脈・ひげ根など）を混同している。",
+        "evidence": "アブラナは胚珠が子房に包まれており、花弁、がく、おしべ、めしべがある。一方、マツには子房がなく、胚珠がむき出しについている。",
+        "misconception": "裸子植物であるマツにも被子植物と同様の子房や花弁があると勘違いしたり、双子葉類の葉脈や根のつくりを単子葉類のものと取り違えたりする。",
+        "marks": 1,
+        "id": "rise-science-46dfb30e0c108eda",
+        "fingerprint": "bf1441dc935c0efe",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-19T13:56:00.946Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.chemical_change",
+        "difficulty": 8,
+        "question": "実験で得られた結果に基づき、マグネシウムの質量と化合する酸素の質量の関係として最も適切なものを1つ選びなさい。",
+        "context": "あきらさんは、マグネシウムの粉末の質量を変えてそれぞれ十分に加熱し、できた酸化マグネシウムの質量を測定する実験を行った。その結果、ステンレス皿にのせたマグネシウムの質量が1.2gのとき、できた酸化マグネシウムの質量は2.0gであった。また、マグネシウムの質量を2.4gにして同様に十分加熱したところ、できた酸化マグネシウムの質量は4.0gであった。",
+        "choices": [
+          "マグネシウムの質量と化合する酸素の質量の比は、加熱する温度によって変化する。",
+          "マグネシウムの質量と化合する酸素の質量は比例しない。",
+          "マグネシウムの質量と化合する酸素の質量の比は常に一定である。",
+          "マグネシウムの質量が増えると、化合する酸素の質量の割合は次第に小さくなる。"
+        ],
+        "answerIndex": 2,
+        "answer": "マグネシウムの質量と化合する酸素の質量の比は常に一定である。",
+        "explanation": "マグネシウム1.2gを加熱したとき、できた酸化マグネシウムが2.0gであるため、化合した酸素の質量は2.0g - 1.2g = 0.8gである。また、マグネシウム2.4gのときは、4.0g - 2.4g = 1.6gの酸素が化合している。マグネシウムの質量(1.2gから2.4gへ2倍)に対して化合した酸素の質量(0.8gから1.6gへ2倍)も比例して増加しており、マグネシウムの質量と化合する酸素の質量の比は常に一定（3:2）であることがわかる。したがって、マグネシウムの質量と化合する酸素の質量の比は常に一定であるという記述が正しい。最も強力な罠は、酸素ではなく生成した酸化マグネシウムの質量をそのまま比例関係の根拠と混同することや、質量保存の法則を誤解して比が一定でないと思い込むことである。",
+        "evidence": "マグネシウムの質量が1.2gのとき、できた酸化マグネシウムの質量は2.0gであった。",
+        "misconception": "化合する酸素の質量ではなく、金属と生成物の全体の質量変化だけで考えてしまう、あるいは質量比は一定にならないという誤解。",
+        "marks": 2,
+        "id": "rise-science-66d6e01e381c2162",
+        "fingerprint": "90a6ac6c2e716e7a",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-19T13:56:07.712Z"
         }
       }
     ],
