@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-19-13-56-07Z",
-  "updatedAt": "2026-10-19T13:56:07.738Z",
+  "poolVersion": "2026-10-19-14-38-47Z",
+  "updatedAt": "2026-10-19T14:38:47.355Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -14423,6 +14423,74 @@
           "verifierConfidence": 0.9,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-18T12:02:31.405Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.geography.industrial_regions",
+        "difficulty": 8,
+        "question": "中京工業地域の特徴について述べた文として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "中京工業地域は、愛知県を中心に自動車やその関連部品をはじめとする機械工業の比率が極めて高く、我が国の工業の中心地の一つとなっている。また、内陸部の工業団地への進出や、港湾周辺の埋立地における重化学工業の発展など、立地条件に応じた多様な展開が見られる。",
+        "choices": [
+          "自動車関連産業を中心とする機械工業が発達しており、中小企業による分業体制がみられる。",
+          "北九州工業地帯のように、周辺の炭田から産出される石炭をエネルギー源として発展した。",
+          "京浜工業地帯と同様に、商業や金融の中心地としての機能が強く、工場の大部分が海外へ移転している。",
+          "製造品出荷額等の全国に占める割合が長年第1位であり、その中心は繊維工業などの軽工業である。"
+        ],
+        "answerIndex": 0,
+        "answer": "自動車関連産業を中心とする機械工業が発達しており、中小企業による分業体制がみられる。",
+        "explanation": "中京工業地域は、自動車などの機械工業が非常に盛んであり、大手メーカーを支える多数の下請け・関連中小企業による密接な分業ネットワークが構築されている点が最大の特色です。歴史的な伝統として繊維工業が栄えた時期もありましたが、現在の中心は圧倒的に機械工業です。石炭をエネルギー源として発達した点や商業金融機能が中心である点はいずれも不適当です。",
+        "evidence": "中京工業地域は、愛知県を中心に自動車やその関連部品をはじめとする機械工業の比率が極めて高く、我が国の工業の中心地の一つとなっている。",
+        "misconception": "中京工業地域の歴史的ルーツである尾張地域の綿織物などの繊維工業のイメージを引きずり、現在も軽工業が中心であると誤認する。",
+        "marks": 2,
+        "id": "rise-social-58b5e309fa4f00e5",
+        "fingerprint": "68b7f8714cbb3f0b",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.99,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-19T14:38:36.369Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.history.modern_reforms",
+        "difficulty": 8,
+        "question": "この文章で述べられている政策（農地改革）が日本社会に与えた影響について述べた文として最も適当なものを、次の選択肢から1つ選びなさい。",
+        "context": "第二次世界大戦後、連合国軍総司令部（GHQ）の指令の下で日本の民主化が進められた。その中で、農村の経済的自立と民主化を目的として、地主が所有していた広大な貸付地を政府が買収し、小作人へ安価で売り渡す政策が断行された。",
+        "choices": [
+          "第一次世界大戦の好景気によって農村の負債が急増し、農民運動が激化した。",
+          "寄生地主制が消滅し、多くの自作農が誕生して農村の民主化が進んだ。",
+          "財閥解体により労働者の権利が制限され、企業の経営基盤が強化された。",
+          "皇室財産の解放が行われ、すべての土地が国有化された。"
+        ],
+        "answerIndex": 1,
+        "answer": "寄生地主制が消滅し、多くの自作農が誕生して農村の民主化が進んだ。",
+        "explanation": "農地改革によって、不在地主や寄生地主の土地が国に買収されて小作人に安く売り渡された結果、多くの自作農が誕生しました。これにより農村の民主化が大きく進みました。財閥解体は独占資本の排除と経済の民主化を目的としたものであり、土地の国有化や第一次大戦期の農民運動とは内容が異なります。",
+        "evidence": "その中で、農村の経済的自立と民主化を目的として、地主が所有していた広大な貸付地を政府が買収し、小作人へ安価で売り渡す政策が断行された。",
+        "misconception": "戦後改革の諸施策（財閥解体、労働組合法制定、農地改革など）の用語と効果を混同してしまう。",
+        "marks": 2,
+        "id": "rise-social-b2c4e6dc375d6db0",
+        "fingerprint": "9e44a276d4a21b18",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.99,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-19T14:38:36.369Z"
         }
       }
     ]
