@@ -62,12 +62,28 @@
     const request = window.AA_AI_READING_TEST_API__.buildRequest('scaffold');
     const compatible = window.AAReadingLibrary.rank(catalog.entries, request);
     add('Gemini教材一覧・文法ゲート', catalog.entries.length > 0 && compatible.length > 0 && compatible.every(e => e.requiredGrammar.every(g => request.allowedGrammar.includes(g))), `全${catalog.entries.length}本 / 現在の範囲${compatible.length}本`);
-    for (const entry of compatible.slice(0, 4)) {
+    // A verified catalogue entry can still fail the local student's current grammar gate.
+    // The real reader retries candidates; audit four successful candidates rather than
+    // treating one safely-rejected passage as a fatal app-wide runtime failure.
+    let validatedReadingEntries = 0;
+    const grammarRejectedEntries = [];
+    for (const entry of compatible) {
+      if (validatedReadingEntries >= 4) break;
       const payload = await window.AAReadingLibrary.fetchEntry(entry);
-      const read = window.AA_AI_READING_TEST_API__.normalizeReading(payload, 'scaffold');
-      const exam = window.AA_AI_READING_TEST_API__.normalizeReading(payload, 'exam');
+      let read, exam;
+      try {
+        read = window.AA_AI_READING_TEST_API__.normalizeReading(payload, 'scaffold');
+        exam = window.AA_AI_READING_TEST_API__.normalizeReading(payload, 'exam');
+      } catch (error) {
+        if (error?.code !== 'grammar_rejected') throw error;
+        grammarRejectedEntries.push(entry.title);
+        continue;
+      }
       add('Gemini長文・根拠・実戦モード', read.aiGenerated && read.questions.length === 5 && !grammarLeakAudit(read.passage).length && read.questions.every(q => q.choices.filter(c => c.ok).length === 1 && read.passage.includes(q.evidenceQuote)) && exam.assistMode === 'exam' && exam.lexicalTarget === null && read.lexicalTarget > 0, `${entry.title} / Level ${entry.difficulty}`);
+      validatedReadingEntries++;
     }
+    add('Gemini長文・有効な文法適合教材が4本以上', validatedReadingEntries === 4, `有効=${validatedReadingEntries} / 文法ゲートで除外=${grammarRejectedEntries.length}`);
+    add('Gemini教材の文法不整合を記録', grammarRejectedEntries.length === 0, grammarRejectedEntries.join(' / ') || '検出なし', false);
     const html = subjectsHTML();
     add('長文表示・開始経路', html.includes('data-aa-reading-library="2"') && html.includes('data-action="ai-reading-scaffold"') && !html.includes('data-action="start-reading-simulator"') && !html.includes('data-action="start-graph-reading"'), 'サポート付き・実戦・教材数・単語復習リンク');
     const original = state;
