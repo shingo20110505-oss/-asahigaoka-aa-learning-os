@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-20-12-09-13Z",
-  "updatedAt": "2026-10-20T12:09:13.485Z",
+  "poolVersion": "2026-10-20-12-42-28Z",
+  "updatedAt": "2026-10-20T12:42:28.229Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -14763,6 +14763,108 @@
           "verifierConfidence": 0.99,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-19T14:38:36.369Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.geography",
+        "difficulty": 8,
+        "question": "愛知県内の工業都市における製造品出荷額等の構成や特徴に関する次の記述のうち、もっとも適当なものをひとつ選べ。",
+        "context": "愛知県は自動車関連産業を中心に日本屈指の工業県である。資源やエネルギーの状況、臨海部から内陸部にかけての立地の違いにより、地域ごとに工業の性格が大きく異なる。ある都市では自動車車体や部品製造が極めて高い割合を占め、また別の都市では鉄鋼業や化学工業などの基礎素材型工業が臨海部の平坦地に大規模なコンビナートを形成している。さらに、農業が盛んな地域では食料品製造業も一定のシェアを持つなど、多様な発展を遂げている。",
+        "choices": [
+          "臨海部のコンビナート地帯に立地する都市では、製品の重量が極めて軽いため、内陸部の山間部に工場が集積している。",
+          "愛知県の工業の特徴として、重化学工業の割合は極めて低く、軽工業や伝統的工芸品が製造品出荷額の大半を占めている。",
+          "食料品製造業の割合が高い地域は、すべて大規模な海底油田や鉱山資源の採掘現場の近くに計画的に建設されている。",
+          "自動車関連産業が中心の都市では、部品の調達や輸送の利便性から内陸部や高速道路網沿いにも工場が広がっている。"
+        ],
+        "answerIndex": 3,
+        "answer": "自動車関連産業が中心の都市では、部品の調達や輸送の利便性から内陸部や高速道路網沿いにも工場が広がっている。",
+        "explanation": "愛知県の自動車関連産業は、部品工場などが効率的なネットワーク（ジャスト・イン・タイム方式など）を構築するため、高速道路網や主要幹線道路沿いを中心に内陸部へも広く展開しています。鉄鋼や化学などの素材型は臨海部に集まるため他の選択肢は不適切です。",
+        "evidence": "資源やエネルギーの状況、臨海部から内陸部にかけての立地の違いにより、地域ごとに工業の性格が大きく異なる。",
+        "misconception": "臨海部のコンビナートと内陸部の立地条件の区別を混同し、重化学工業が山間部にあると思い込む誤解。",
+        "marks": 2,
+        "id": "rise-social-2129352866fcb91c",
+        "fingerprint": "612538157bd13bc3",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-20T12:42:05.648Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application.civics",
+        "difficulty": 8,
+        "question": "現代の民主政治と地方自治制度に関する次の記述のうち、もっとも適当なものをひとつ選べ。",
+        "context": "日本国憲法は、国民主権の原理を基本としつつ、住民による身近な民主主義を実現するために地方自治を保障している。地方公共団体には、法律の範囲内で条例を制定する権限が与えられており、住民の直接請求権（リコールなど）も認められている。これにより、住民は地方政治の意思決定に直接参加し、行政の監視を行うことができる。",
+        "choices": [
+          "地方公共団体には条例制定権が与えられており、住民には直接請求権が認められている。",
+          "日本国憲法は地方自治に関する規定を一切置かず、すべての行政事務を中央政府が一括して管理している。",
+          "条例は国会でのみ議決することができる法規範であり、地方議会で制定することは一切できない。",
+          "住民の直接請求権は、いかなる場合においても首長や議会を解職することしかできず、ルールの制定には使えない。"
+        ],
+        "answerIndex": 0,
+        "answer": "地方公共団体には条例制定権が与えられており、住民には直接請求権が認められている。",
+        "explanation": "地方自治法や憲法第九２条などに基づき、地方公共団体は法律の範囲内で条例を制定でき、住民には直接請求権（条例の制定・改廃請求や解職請求など）が認められています。中央集権的な他の選択肢は不適切です。",
+        "evidence": "地方公共団体には、法律の範囲内で条例を制定する権限が与えられており、住民の直接請求権（リコールなど）も認められている。",
+        "misconception": "条例の制定権が国会にあると誤認したり、地方自治の本旨に関する中央集権的な仕組みを想定してしまう誤解。",
+        "marks": 2,
+        "id": "rise-social-ceac280626610982",
+        "fingerprint": "a46777e3cc372a41",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-20T12:42:05.648Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "愛知県内の工業都市における製造品出荷額等の特徴と、近年の産業構造の変化に関する説明として、最も適切なものを一つ選びなさい。",
+        "context": "愛知県は全国トップクラスの製造品出荷額を誇り、県内でも地域によって工業の特徴が異なる。西三河地域では自動車およびその関連部品の生産が極めて高い割合を占め、特定の輸送用機械工業への依存度が強い。一方、名古屋市を中心とする地域では、航空宇宙産業や、機械器具だけでなく食料品や化学工業なども含めた比較的バランスの取れた多様な産業構造が見られる。近年では環境配慮型の次世代自動車の開発や、ICTを活用したスマートモビリティへの取り組みが進められている。",
+        "choices": [
+          "愛知県の工業は近年、第一次産業の比率を高める方向で急速に転換している。",
+          "西三河地域では多様な軽工業が中心であり、重化学工業の割合は極めて小さい。",
+          "西三河地域は輸送用機械工業への依存度が高い一方で、名古屋市周辺では比較的バランスの取れた産業構造が見られる。",
+          "名古屋市中心部では自動車関連産業が圧倒的な割合を占め、他業種の割合は極めて低い。"
+        ],
+        "answerIndex": 2,
+        "answer": "西三河地域は輸送用機械工業への依存度が高い一方で、名古屋市周辺では比較的バランスの取れた産業構造が見られる。",
+        "explanation": "西三河地域は自動車などの輸送用機械工業の比率が極めて高く、名古屋市周辺は航空宇宙や幅広い業種を含む比較的バランスの取れた構造を持つ。最も強い誤解は、全ての地域が一律に同じ単一の工業偏重であると決めつけることである。",
+        "evidence": "西三河地域では自動車およびその関連部品の生産が極めて高い割合を占め、特定の輸送用機械工業への依存度が強い。一方、名古屋市を中心とする地域では、航空宇宙産業や、機械器具だけでなく食料品や化学工業なども含めた比較的バランスの取れた多様な産業構造が見られる。",
+        "misconception": "県内全体の工業構造がどの地域でも全く同じ特徴を持っていると誤解する。",
+        "marks": 2,
+        "id": "rise-social-f660757309a1d07f",
+        "fingerprint": "9e0ee79aa5748658",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-20T12:42:28.209Z"
         }
       }
     ]
