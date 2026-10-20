@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-19-15-34-11Z",
-  "updatedAt": "2026-10-19T15:34:11.156Z",
+  "poolVersion": "2026-10-20-11-29-44Z",
+  "updatedAt": "2026-10-20T11:29:44.874Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -2917,6 +2917,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-17T10:35:49.501Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.probability",
+        "difficulty": 8,
+        "question": "太郎さんが計算した、少なくとも1本が当たる確率として正しいものを次の選択肢から選びなさい。",
+        "context": "ある中学校の文化祭で、A, B 2つのくじ引きの企画が行われた。くじAは全部で50本あり、そのうち当たりが10本含まれている。くじBは全部で80本あり、そのうち当たりが20本含まれている。生徒の太郎さんは、「くじAとくじBを同時に1本ずつ引くとき、少なくとも1本が当たる確率」を計算することにした。",
+        "choices": [
+          "7/10",
+          "3/10",
+          "2/5",
+          "1/2"
+        ],
+        "answerIndex": 2,
+        "answer": "2/5",
+        "explanation": "くじAでハズレを引く確率は50分の40で4/5であり、くじBでハズレを引く確率は80分の60で3/4である。両方ともハズレる確率は4/5×3/4=3/5となる。したがって、少なくとも1本が当たる確率は、全体の1から両方ハズレる確率を引いた1-3/5=2/5となる。",
+        "evidence": "くじAは全部で50本あり、そのうち当たりが10本含まれている。くじBは全部で80本あり、そのうち当たりが20本含まれている。",
+        "misconception": "それぞれの確率を単純に足し合わせたり、余事象ではなく不適切な計算をしたりする誤り。",
+        "marks": 2,
+        "id": "rise-math-8581e1a4743b2b30",
+        "fingerprint": "fad0b00ce7871aba",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-20T11:29:44.857Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.function",
+        "difficulty": 8,
+        "question": "乗車距離が8kmのときの運賃 $y$ 円として正しいものを次の選択肢から選びなさい。",
+        "context": "ある地域の路線バスは、区間によって運賃が異なる。発着点からの距離 $x$ km と運賃 $y$ 円の関係について調べたところ、「乗車距離が3kmまでは一律200円であり、3kmを超えると、3kmを超える1kmにつき50円ずつ加算される」ことがわかった。花子さんは、このバスを利用して $x$ km 乗車したときの運賃 $y$ 円について、$x$ と $y$ の関係を表すグラフを考えた。",
+        "choices": [
+          "500円",
+          "350円",
+          "400円",
+          "450円"
+        ],
+        "answerIndex": 3,
+        "answer": "450円",
+        "explanation": "乗車距離が3kmまでは200円である。3kmを超える距離は8-3=5kmであり、この分の追加料金は5×50=250円となる。したがって、8km乗車したときの運賃は200+250=450円となる。",
+        "evidence": "乗車距離が3kmまでは一律200円であり、3kmを超えると、3kmを超える1kmにつき50円ずつ加算される",
+        "misconception": "全体の距離8kmにそのまま単価を掛けたり、基本料金を加算し忘れたりする誤り。",
+        "marks": 1,
+        "id": "rise-math-7896b3cb48cba987",
+        "fingerprint": "7a2d9a56434be0dc",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-20T11:29:44.857Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.data",
+        "difficulty": 8,
+        "question": "女子30人の平均値として正しいものを次の選択肢から選びなさい。",
+        "context": "ある中学校の2年生60人を対象に、1カ月の読書時間を調査した。その結果、全体の平均値は4.5時間であった。男子30人の平均値が4.0時間であるとき、女子30人の平均値として正しいものを次の選択肢から選びなさい。",
+        "choices": [
+          "4.5時間",
+          "4.8時間",
+          "5.0時間",
+          "5.2時間"
+        ],
+        "answerIndex": 2,
+        "answer": "5.0時間",
+        "explanation": "全体60人の平均値が4.5時間であるため、読書時間の総計は60×4.5=270時間である。男子30人の平均値が4.0時間であるため、男子の総計は30×4.0=120時間である。女子30人の総計は270-120=150時間となり、女子の平均値は150÷30=5.0時間となる。",
+        "evidence": "全体60人を対象に、1カ月の読書時間を調査した。その結果、全体の平均値は4.5時間であった。男子30人の平均値が4.0時間である",
+        "misconception": "男子と女子の平均値を単純に足して2で割るなど、総計を考慮せずに計算してしまう誤り。",
+        "marks": 2,
+        "id": "rise-math-ad371df1caa12235",
+        "fingerprint": "1d4717e9d0896f47",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-20T11:29:44.857Z"
         }
       }
     ],
