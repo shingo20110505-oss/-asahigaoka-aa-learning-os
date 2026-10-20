@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-20-12-42-28Z",
-  "updatedAt": "2026-10-20T12:42:28.229Z",
+  "poolVersion": "2026-10-20-13-33-11Z",
+  "updatedAt": "2026-10-20T13:33:11.938Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -7194,6 +7194,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-19T15:34:11.085Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "文章とデータの読み取りに関する記述として、最も適当なものを次のうちから一つ選びなさい。",
+        "context": "名古屋市近郊の商店街における近年の店舗動向調査によると、かつて中心だった衣料品などの物販店が減少する一方で、カフェや交流スペースといった飲食・サービス業の割合が増加している。この変化について、ある研究者は「単なる衰退ではなく、地域のコミュニティ機能を取り戻すための新たな適応の形である」と指摘している。実際に、住民アンケートでは『買い物目的だけでなく、人と会うために商店街を訪れるようになった』という回答が半数を超えており、空間の利用目的が多様化していることが示されている。",
+        "choices": [
+          "住民の多くは、以前と変わらず日常的な買い物のために商店街を利用し続けている。",
+          "研究者は、商店街がコミュニティ機能を完全に失ったと結論づけている。",
+          "アンケート結果によれば、住民の大多数が飲食店の減少を深刻に懸念している。",
+          "物販店の減少は商店街の衰退を意味するだけでなく、新たな機能への適応の側面も含んでいる。"
+        ],
+        "answerIndex": 3,
+        "answer": "物販店の減少は商店街の衰退を意味するだけでなく、新たな機能への適応の側面も含んでいる。",
+        "explanation": "文章では物販店の減少と飲食・サービスの増加がコミュニティ機能の回復に向けた適応の形であると述べられており、最初の選択肢が内容と完全に一致する。他の選択肢は、物販店のみの利用にとどまっていない点やコミュニティ機能の回復という記述に反しており不適切。",
+        "evidence": "単なる衰退ではなく、地域のコミュニティ機能を取り戻すための新たな適応の形である",
+        "misconception": "物販店の減少という一部の事実のみをとらえて、商店街の全面的な衰退と短絡的に結びつけてしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-9cba1771d41f6125",
+        "fingerprint": "35f0873f6dfa04bd",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-20T13:33:00.500Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "筆者のコミュニケーションに関する論理展開について、最も適切なものを次のうちから一つ選びなさい。",
+        "context": "私たちは文字によるデジタルコミュニケーションの利便性に慣れ親しんでいるが、そこでは表情や声のトーンといった非言語情報が削ぎ落とされている。この情報量の少なさは誤解を生む原因になりやすい一方で、相手の反応を過剰に気にせず自分の意思を端的に伝える自由をもたらしているとも言える。したがって、対面とデジタルの優劣を単純に決めるのではなく、それぞれの特性に応じた使い分けが不可欠なのである。",
+        "choices": [
+          "非言語情報の欠如がもたらす両面性に言及し、単純な優劣の判断を戒めている。",
+          "文字によるやり取りが常に誤解を生むため、早期に廃止すべきだと主張している。",
+          "対面での会話は自由な意思伝達を妨げるため、デジタルに置き換えるべきだと論じている。",
+          "デジタルコミュニケーションの利便性を全否定した上で、対面のみの価値を強調している。"
+        ],
+        "answerIndex": 0,
+        "answer": "非言語情報の欠如がもたらす両面性に言及し、単純な優劣の判断を戒めている。",
+        "explanation": "筆者はデジタルコミュニケーションにおける情報の少なさが誤解を生む側面と、自由に意思を伝えられる側面の双方に触れ、優劣を単純に決めないよう結論づけている。したがって、両面性に言及し優劣の判断を戒める記述が正しい。",
+        "evidence": "対面とデジタルの優劣を単純に決めるのではなく、それぞれの特性に応じた使い分けが不可欠なのである。",
+        "misconception": "デジタルコミュニケーションの欠点のみに注目し、その利点や多面的な捉え方を見落としてしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-f92f6fc1c384fefd",
+        "fingerprint": "ac2c416b755ae681",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-20T13:33:00.500Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "文章の内容に照らして、筆者が「対話の真の価値」として最も適切に述べているものはどれか、次の中から選びなさい。",
+        "context": "私たちは日々のコミュニケーションにおいて、効率的な情報の伝達や合意形成を重視しがちである。しかし、本当に価値のある対話とは、あらかじめ持っていた自己の意見を効率よく相手に納得させることではない。むしろ、他者との意見の衝突や予期せぬ問いかけによって、自分自身が前提として疑わなかった世界の見方が揺さぶられ、自らの内面が変容していくプロセスそのものにこそ、対話の真の価値が宿っているのである。意見の一致を見ることは結果にすぎず、そこに至るまでの摩擦や揺らぎこそが、人間の思考を深める鍵となるのだ。",
+        "choices": [
+          "意見の不一致を避け、常に穏やかな共通認識を築き上げること",
+          "効率的な情報伝達によって、相手と速やかに合意形成を図ること",
+          "自己の意見の正しさを証明し、相手を説得して納得させること",
+          "他者との衝突や揺らぎを通じて、自身の前提や世界の見方を変容させること"
+        ],
+        "answerIndex": 3,
+        "answer": "他者との衝突や揺らぎを通じて、自身の前提や世界の見方を変容させること",
+        "explanation": "文脈の中で筆者は、「あらかじめ持っていた自己の意見を効率よく相手に納得させることではない」と述べた上で、「他者との意見の衝突や予期せぬ問いかけによって、自分自身が前提として疑わなかった世界の見方が揺さぶられ、自らの内面が変容していくプロセスそのものにこそ、対話の真の価値が宿っている」と結論付けています。したがって、自身の前提や世界の見方が変容することを選んだものが正解となります。他の選択肢は、筆者が否定している内容や、本文の趣旨から外れた部分的な情報に基づいた誤り（トラップ）です。",
+        "evidence": "他者との意見の衝突や予期せぬ問いかけによって、自分自身が前提として疑わなかった世界の見方が揺さぶられ、自らの内面が変容していくプロセスそのものにこそ、対話の真の価値が宿っているのである。",
+        "misconception": "効率的な情報伝達や合意形成、意見の一致を重視する一般的なコミュニケーションのあり方を、そのまま対話の「真の価値」と混同してしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-019ec3341f4bca40",
+        "fingerprint": "6be460880423e78a",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-20T13:33:11.910Z"
         }
       }
     ],
