@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-20-11-29-44Z",
-  "updatedAt": "2026-10-20T11:29:44.874Z",
+  "poolVersion": "2026-10-20-12-09-13Z",
+  "updatedAt": "2026-10-20T12:09:13.485Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -10860,6 +10860,74 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-19T13:56:07.712Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.physics",
+        "difficulty": 8,
+        "question": "水溶液に加える物質の質量と発生する気体の体積の関係に関する実験において、グラフから得られる規則性から、完全に反応し終わる境界を読み取る思考力を問う問題。実験で得られた値に基づき、もっとも適切な記述を選べ。",
+        "context": "ある生徒は、炭酸水素ナトリウムの質量を変えて十分な量のうすい塩酸に加え、発生する二酸化炭素の質量を測定する実験を行った。実験の結果、炭酸水素ナトリウムの質量を1.0g、2.0g、3.0g、4.0g、5.0gと増やしていくと、発生した二酸化炭素の質量はそれぞれ0.44g、0.88g、1.32g、1.60g、1.60gであった。",
+        "choices": [
+          "炭酸水素ナトリウムを5.0g加えたとき、発生する二酸化炭素の質量は2.20gになる。",
+          "炭酸水素ナトリウムの質量と発生する気体の質量の間には、常に比例関係が成り立つ。",
+          "炭酸水素ナトリウムが3.0gまでは、加えた質量に比例して発生する二酸化炭素の質量が増加する。",
+          "炭酸水素ナトリウムを4.0g加えたとき、うすい塩酸がすべて反応し尽くさずに残っている。"
+        ],
+        "answerIndex": 2,
+        "answer": "炭酸水素ナトリウムが3.0gまでは、加えた質量に比例して発生する二酸化炭素の質量が増加する。",
+        "explanation": "炭酸水素ナトリウムの質量が1.0gのとき0.44g、2.0gのとき0.88g、3.0gのとき1.32gであり、発生する気体の質量は加えた固体の質量に比例して増加しています（0.44 / 1.0 = 0.88 / 2.0 = 1.32 / 3.0 = 0.44）。しかし、4.0gと5.0gではどちらも1.60gで一定となっているため、塩酸のほうが先にすべて反応し尽くし、4.0gや5.0gでは炭酸水素ナトリウムが余っていることがわかります。したがって、3.0gまでは比例関係が成り立ち、それ以上では一定になるという法則が導けます。",
+        "evidence": "炭酸水素ナトリウムの質量を1.0g、2.0g、3.0g、4.0g、5.0gと増やしていくと、発生した二酸化炭素の質量はそれぞれ0.44g、0.88g、1.32g、1.60g、1.60gであった。",
+        "misconception": "全てのデータ範囲で一律に比例関係が続くという誤解や、塩酸ではなく炭酸水素ナトリウムが不足して反応が止まると誤認する錯覚。",
+        "marks": 2,
+        "id": "rise-science-83e527a8892a5c8c",
+        "fingerprint": "c5f6e85361b3f019",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-20T12:09:07.576Z"
+        }
+      },
+      {
+        "subject": "science",
+        "skill": "aichi.exam.application.science.physics",
+        "difficulty": 8,
+        "question": "記録された台車の運動データから、斜面を下る運動と水平面をすすむ運動について正しく説明しているものを次から1つ選びなさい。",
+        "context": "名古屋市内の実験室で、1秒間に50打点する記録タイマーに取り付けた台車を斜面の上端から静かに放し、斜面を下ったのち水平面上を移動する運動を記録用紙に打点させた。斜面上の区間では、打点の間隔が一定の割合で広がりながら進み、水平面上に入ると打点の間隔は一定の幅を保ちながら進んだのち、やがて停止した。",
+        "choices": [
+          "水平面上を進んでいる間、台車にはたらくすべての力の合力はゼロではなく、進行方向と逆向きに力はたらいでいる。",
+          "水平面上を進んでいる間、台車にはたらく合力がゼロであるため、台車は等速直線運動をずっと続ける。",
+          "斜面を下っている間、台車にはたらく力の向きと運動の向きは垂直であるため、速さは変化しない。",
+          "斜面を下っている間、台車にはたらく重力と垂直抗力の合力は常にゼロである。"
+        ],
+        "answerIndex": 0,
+        "answer": "水平面上を進んでいる間、台車にはたらくすべての力の合力はゼロではなく、進行方向と逆向きに力はたらいでいる。",
+        "explanation": "水平面上を進む台車はやがて停止することから、摩擦力や空気抵抗などの抵抗力が進行方向と逆向きにはたらいており、これらはつりあっていない（合力がゼロではない）ため、だんだん速さが減って停止します。完全な等速直線運動を続けるには摩擦をゼロにする必要がありますが、実際には摩擦があるため合力はゼロになりません。強い誤解として、水平面上を進む物体には力がはたらいいていない、あるいは等速でずっと進み続けると錯覚することが挙げられます。",
+        "evidence": "水平面上に入ると打点の間隔は一定の幅を保ちながら進んだのち、やがて停止した。",
+        "misconception": "水平面上を進む物体には力がはたらかない、または摩擦があっても運動を続ける限り合力がゼロであると勘違いすること。",
+        "marks": 2,
+        "id": "rise-science-010ca5f2be12f4e6",
+        "fingerprint": "e93572859bfc44a3",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-20T12:09:13.459Z"
         }
       }
     ],
