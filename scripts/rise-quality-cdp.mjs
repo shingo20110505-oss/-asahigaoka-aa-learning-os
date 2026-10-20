@@ -23,7 +23,7 @@ const args=['--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-u
 const proc=spawn(CHROME,args,{stdio:['ignore','ignore','pipe']});
 let stderr='';proc.stderr.on('data',d=>{stderr+=String(d)});
 let browserWs='';const startup=Date.now();
-while(Date.now()-startup<30000){
+while(Date.now()-startup<75000){
  if(proc.exitCode!==null)break;
  try{const response=await fetch(`http://127.0.0.1:${port}/json/version`,{signal:AbortSignal.timeout(1200)});if(response.ok){const info=await response.json();if(info.webSocketDebuggerUrl){browserWs=info.webSocketDebuggerUrl;break}}}catch{}
  await sleep(180);
