@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-21-11-42-01Z",
-  "updatedAt": "2026-10-21T11:42:01.754Z",
+  "poolVersion": "2026-10-21-12-54-44Z",
+  "updatedAt": "2026-10-21T12:54:44.668Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -15069,6 +15069,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-20T12:42:28.209Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.geography.regional_development",
+        "difficulty": 8,
+        "question": "愛知県の農業や地域開発に関する記述として最も適当なものを、次の選択肢の中から一つ選びなさい。",
+        "context": "愛知県東部の渥美半島では、かつて慢性的な水不足に悩まされていたが、豊川用水の完成により水不足が解消されたことで、畑作や温室園芸が盛んになった。",
+        "choices": [
+          "木曽川の水を利用する愛知用水の開通により、知多半島全域が広大な水田地帯へと変化した。",
+          "矢作川流域の平野部では、豊富な雪解け水を利用した稲作の二期作が広く行われている。",
+          "伊勢湾に面した温暖な沿岸部では、寒冷な気候に強い高冷地野菜の栽培が中心となっている。",
+          "豊川用水の完成により、水不足に悩んでいた渥美半島の台地で畑作や温室園芸が盛んになった。"
+        ],
+        "answerIndex": 3,
+        "answer": "豊川用水の完成により、水不足に悩んでいた渥美半島の台地で畑作や温室園芸が盛んになった。",
+        "explanation": "渥美半島は温暖な気候と日照時間に恵まれており、大規模な農業用水路の整備によって、キャベツなどの畑作やメロンなどの温室園芸（施設園芸）が飛躍的に発展しました。知多半島は畑作や果樹・畜産が中心であり全域が水田地帯になったわけではありません。また、愛知県で稲作の二期作は行われておらず、高冷地農業は主に標高の高い地域で行われます。",
+        "evidence": "豊川用水の完成により水不足が解消されたことで、畑作や温室園芸が盛んになった。",
+        "misconception": "愛知県内の主要な用水（豊川用水と愛知用水）や半島（渥美半島と知多半島）の農業的特徴や栽培作物の違いを混同している。",
+        "marks": 2,
+        "id": "rise-social-24909d0c8b4e77d0",
+        "fingerprint": "c040a32c855c4172",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-21T12:54:34.036Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.geography.industrial_analysis",
+        "difficulty": 8,
+        "question": "この資料に関する記述として正しいものを、次の選択肢から1つ選びなさい。",
+        "context": "愛知県を含む東海地方および周辺地域の製造業の特色についてまとめた資料がある。資料によると、『A県は自動車関連産業の出荷額の割合が極めて高く、県別の製造品出荷額等で長年全国第1位を維持している。B県は首都圏に近く、機械器具や食料品など多様な工業が発達している。C県は瀬戸内工業地域に属し、石油化学工業や鉄鋼業などの重化学工業が臨海部に集中している。』という特徴が見られる。",
+        "choices": [
+          "資料のA県・B県・C県はいずれも内陸型の工業が中心であり、臨海部には工場がほとんど見られない。",
+          "資料のA県は、自動車関連産業の出荷額割合が高く、製造品出荷額等で全国第1位である。",
+          "資料のB県は、瀬戸内工業地域に属し、石油化学工業が臨海部に集中している。",
+          "資料のC県は、首都圏に近く機械器具や食料品など多様な工業が発達している。"
+        ],
+        "answerIndex": 1,
+        "answer": "資料のA県は、自動車関連産業の出荷額割合が高く、製造品出荷額等で全国第1位である。",
+        "explanation": "資料中の記述を正確に読み取る問題である。資料には『A県は自動車関連産業の出荷額の割合が極めて高く、県別の製造品出荷額等で長年全国第1位を維持している』と明記されている。B県やC県の説明はそれぞれ別の地域（首都圏や瀬戸内工業地域）の特徴が当てられており、選択肢の内容と入れ替わっている。最強の不正解の罠は、各地域の特徴（自動車、首都圏の多様な工業、瀬戸内などの臨海重化学工業）を混同させることにある。",
+        "evidence": "A県は自動車関連産業の出荷額の割合が極めて高く、県別の製造品出荷額等で長年全国第1位を維持している。",
+        "misconception": "地域ごとの工業の特色（中京・関東・瀬戸内などの立地や主要産業）を混同してしまうこと。",
+        "marks": 2,
+        "id": "rise-social-a5818a867c450da2",
+        "fingerprint": "c1120549ad4f8dc3",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-21T12:54:44.656Z"
+        }
+      },
+      {
+        "subject": "social",
+        "skill": "aichi.exam.history.document_analysis",
+        "difficulty": 8,
+        "question": "この文章が示す近代日本の政治の動きに関する説明として正しいものを、次の選択肢から1つ選びなさい。",
+        "context": "近代の日本における政治体制の変化についての説明文である。『1889年に発布された大日本帝国憲法では、天皇が統治権を総攬し、議会は協賛機関にとどまった。その後、大正時代に入ると、「憲政の常道」と呼ばれる政党内閣が組織されるなど、政党政治が展開された。しかし、昭和期に入ると軍部の影響力が強まり、やがて太平洋戦争へと向かうことになった。』",
+        "choices": [
+          "大正時代には政党内閣が組織されるなど、政党政治が展開される時期があった。",
+          "昭和期に入ると軍部の影響力が低下し、政党政治がより一層安定して継続された。",
+          "1889年の憲法発布と同時に、すべての国民に男女平等の参政権が保障された。",
+          "大日本帝国憲法のもとで、議会は天皇の統治権を制限する決定機関であった。"
+        ],
+        "answerIndex": 0,
+        "answer": "大正時代には政党内閣が組織されるなど、政党政治が展開される時期があった。",
+        "explanation": "文章の記述内容と歴史的事実を照らし合わせる問題である。文中に『大正時代に入ると、「憲政の常道」と呼ばれる政党内閣が組織されるなど、政党政治が展開された』とあるため、大正時代に政党政治が展開されたことが正しいと導ける。大日本帝国憲法下では議会は協賛機関であり決定機関ではないこと、昭和期には軍部が台頭して政党政治が衰退したこと、男女平等の参政権は戦後の日本国憲法下で実現したことなどが他の選択肢の誤りである。最強の不正解の罠は、憲法発布や議会の権限について大日本帝国憲法と日本国憲法（戦後）の仕組みを混同させることである。",
+        "evidence": "大正時代に入ると、「憲政の常道」と呼ばれる政党内閣が組織されるなど、政党政治が展開された。",
+        "misconception": "大日本帝国憲法における帝国議会の権限や、昭和初期の軍部台頭による政党政治の変遷を誤って捉えること。",
+        "marks": 2,
+        "id": "rise-social-8fe4a4679ac6aec3",
+        "fingerprint": "d24391338b9591b9",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-21T12:54:44.656Z"
         }
       }
     ]
