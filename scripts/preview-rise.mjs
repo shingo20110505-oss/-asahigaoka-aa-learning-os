@@ -1,0 +1,1 @@
+import{createBridge}from'../bridge/server.mjs';const server=await createBridge({port:Number(process.env.PORT||4318)});console.log('Local: '+server.url);process.on('SIGINT',async()=>{await server.close();process.exit(0);});
