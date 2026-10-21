@@ -1,0 +1,68 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import {setTimeout as delay} from 'node:timers/promises';
+import {randomUUID} from 'node:crypto';
+import {RelayCore,authorized} from '../relay/core.mjs';
+import {encode,validRoute} from '../relay/protocol.mjs';
+import {startRelay} from '../bridge/relay-client.mjs';
+import {createBridge} from '../bridge/server.mjs';
+import {secret,passwordHash} from '../bridge/security.mjs';
+
+test('relay authenticates the PC, refuses arbitrary paths, times out an offline host and closes pending work',async t=>{
+  const token=secret(),origin='https://relay.example',relay=new RelayCore({RISE_RELAY_TOKEN:token},{pollMs:20,headerMs:25,idleMs:50});t.after(()=>relay.close());
+  assert.equal(await authorized(new Request(origin,{headers:{Authorization:'Bearer '+token}}),token),true);
+  assert.equal(await authorized(new Request(origin),token),false);
+  for(const route of ['/api/../setup','//evil/api/status','https://evil/api/status','/api/%2e%2e','/setup','/api/status?next=https://evil'])assert.equal(validRoute(route),false);
+  assert.equal((await relay.fetch(new Request(origin+'/api/status'))).status,503);
+  assert.equal((await relay.fetch(new Request(origin+'/_rise/host/hello',{method:'POST'}))).status,401);
+  const headers={Authorization:'Bearer '+token,'X-Rise-Instance':randomUUID()};
+  assert.equal((await relay.fetch(new Request(origin+'/_rise/host/hello',{method:'POST',headers}))).status,200);
+  assert.equal((await relay.fetch(new Request(origin+'/api/login',{method:'POST',headers:{Origin:'https://evil.invalid'}}))).status,403);
+  const pending=relay.fetch(new Request(origin+'/api/status'));assert.equal((await pending).status,503);assert.equal(relay.pending.size,0);
+  assert.equal((await relay.fetch(new Request(origin+'/_rise/host/hello',{method:'POST',headers:{...headers,'X-Rise-Instance':randomUUID()}}))).status,409);
+});
+
+test('remote connector preserves role isolation, streamed replies, binary uploads and ranges without exposing PC setup',async t=>{
+  const dir=await fs.mkdtemp(path.join(os.tmpdir(),'rise-relay-test-')),token=secret(),origin='https://relay.example';
+  const config={ownerPassword:await passwordHash('owner-123'),guestPassword:await passwordHash('guest-123'),relayToken:token,publicOrigin:origin};
+  const provider={ready:()=>true,async run({onDelta,signal}){for(const value of ['リアル','タイム','回答']){await delay(20,undefined,{signal});onDelta(value);}}};
+  const app=await createBridge({privateDir:dir,config,provider,publicOrigin:origin}),relay=new RelayCore({RISE_RELAY_TOKEN:token},{pollMs:200,headerMs:1000,idleMs:5000});
+  const transport=async(url,options)=>new URL(url).origin===origin?relay.fetch(new Request(url,options)):fetch(url,options);
+  let online=false;const connector=startRelay({origin,token,localURL:app.url,fetchImpl:transport,onStatus:s=>{online=s.connected;}});
+  t.after(async()=>{await connector.close();relay.close();await app.close();if(path.dirname(dir)===os.tmpdir()&&path.basename(dir).startsWith('rise-relay-test-'))await fs.rm(dir,{recursive:true});});
+  for(let n=0;!online&&n<100;n++)await delay(5);assert.equal(online,true);
+  const request=(route,options={})=>relay.fetch(new Request(origin+'/api/'+route,{...options,headers:{Origin:origin,'CF-Connecting-IP':'192.0.2.1',...options.headers}}));
+  assert.equal((await request('status')).status,200);
+  assert.equal((await fetch(app.url+'/api/status',{headers:{'X-Rise-Public-Origin':origin}})).status,403);
+  const login=async role=>{const response=await request('login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({role,password:role+'-123'})});assert.equal(response.status,200);assert.match(response.headers.get('set-cookie'),/HttpOnly.*SameSite=Strict.*Secure/);const result=await response.json();return {Cookie:response.headers.get('set-cookie').split(';')[0],'X-Rise-CSRF':result.csrf,'Content-Type':'application/json'};};
+  const owner=await login('owner'),guest=await login('guest'),other=await login('guest');
+  const thread=await(await request('threads',{method:'POST',headers:guest,body:'{}'})).json();assert.ok(thread.id);
+  assert.equal((await request('threads/'+thread.id,{headers:owner})).status,404);assert.equal((await request('threads/'+thread.id,{headers:other})).status,404);
+  const recovery=await(await request('recovery',{method:'POST',headers:guest,body:'{}'})).json();const recovered=await request('login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({role:'guest',password:'guest-123',recovery:recovery.code})});assert.equal(recovered.status,200);assert.equal((await request('threads/'+thread.id,{headers:{Cookie:recovered.headers.get('set-cookie').split(';')[0]}})).status,200);
+  const events=await request('events',{headers:guest}),reader=events.body.getReader();assert.match(new TextDecoder().decode((await reader.read()).value),/connected/);
+  const sent=await request('threads/'+thread.id+'/messages',{method:'POST',headers:guest,body:JSON.stringify({text:'確認',files:[]})});assert.equal(sent.status,201);await sent.arrayBuffer();
+  let text='';while(!text.includes('"type":"done"')){const part=await reader.read();assert.equal(part.done,false);text+=new TextDecoder().decode(part.value);}assert.match(text,/リアル/);assert.match(text,/タイム/);await reader.cancel();
+  const binary=Buffer.alloc(180000,57);binary.write('%PDF-1.7');const upload=await(await request('uploads',{method:'POST',headers:guest,body:JSON.stringify({name:'fixture.pdf',size:binary.length,fingerprint:'a'.repeat(64)})})).json();
+  const chunk=await request('uploads/'+upload.id,{method:'PATCH',headers:{...guest,'Content-Type':'application/octet-stream','Upload-Offset':'0'},body:binary});
+  assert.equal(chunk.status,200);await chunk.arrayBuffer();
+  assert.equal((await request('uploads/'+upload.id+'/complete',{method:'POST',headers:guest,body:'{}'})).status,200);
+  const file=await request('files/'+upload.id,{headers:guest});assert.deepEqual(Buffer.from(await file.arrayBuffer()),binary);
+  const range=await request('files/'+upload.id,{headers:{...guest,Range:'bytes=100-999'}});assert.equal(range.status,206);assert.equal(range.headers.get('content-range'),'bytes 100-999/180000');assert.deepEqual(Buffer.from(await range.arrayBuffer()),binary.subarray(100,1000));
+  assert.equal((await request('files/'+upload.id,{headers:other})).status,404);
+  assert.equal((await relay.fetch(new Request(origin+'/setup.mjs'))).status,404);
+});
+
+test('relay bounds request/chunk memory, rejects out-of-order data and cleans up reader cancellation',async t=>{
+  const token=secret(),origin='https://relay.example',relay=new RelayCore({RISE_RELAY_TOKEN:token},{pollMs:50,headerMs:500,idleMs:1000});t.after(()=>relay.close());
+  const headers={Authorization:'Bearer '+token,'X-Rise-Instance':randomUUID(),'Content-Type':'application/json'};
+  const host=(action,body={})=>relay.fetch(new Request(origin+'/_rise/host/'+action,{method:'POST',headers,body:JSON.stringify(body)}));
+  await host('hello');assert.equal((await relay.fetch(new Request(origin+'/api/login',{method:'POST',body:new Uint8Array(3*1024*1024+1)}))).status,413);
+  const pending=relay.fetch(new Request(origin+'/api/status'));const {items}=await(await host('poll')).json();const id=items[0].id;
+  await host('headers',{id,status:200,headers:{'content-type':'text/event-stream'}});const response=await pending,reader=response.body.getReader();
+  assert.equal((await host('chunk',{id,sequence:1,body:encode(new Uint8Array([1]))})).status,409);
+  assert.equal((await host('chunk',{id,sequence:0,body:encode(new Uint8Array(65537))})).status,400);
+  await host('chunk',{id,sequence:0,body:encode(new Uint8Array([7,8,9]))});assert.deepEqual((await reader.read()).value,new Uint8Array([7,8,9]));await reader.cancel();assert.equal(relay.pending.size,0);
+});

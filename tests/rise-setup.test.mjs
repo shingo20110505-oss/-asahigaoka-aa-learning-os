@@ -29,7 +29,8 @@ test('PC-only setup delays password creation, enforces origin and CSRF, hashes p
   const post=(endpoint,input,extra={})=>fetch(setup.url+'/api/'+endpoint,{method:'POST',headers:{Cookie:cookie,Origin:setup.url,'X-Rise-CSRF':status.csrf,'Content-Type':'application/json',...extra},body:JSON.stringify(input)});
   assert.equal((await post('settings',{}, {'X-Rise-CSRF':'wrong'})).status,403);
   const configResult=await post('settings',{codexExecutable:'codex',ownerModel:'',guestOllama:null,publicOrigin:''});assert.equal(configResult.status,200);assert.equal((await(await fetch(bridge.url+'/api/status')).json()).configured,false);
-  const owner='Owner fixture password 45',guest='Guest fixture password 46';
+  const owner='Owner1234',guest='Guest123';
+  assert.equal((await post('passwords',{ownerPassword:'short12',ownerConfirm:'short12',guestPassword:guest,guestConfirm:guest})).status,400);
   assert.equal((await post('passwords',{ownerPassword:owner,ownerConfirm:'different',guestPassword:guest,guestConfirm:guest})).status,400);
   const values={ownerPassword:owner,ownerConfirm:owner,guestPassword:guest,guestConfirm:guest};assert.equal((await post('passwords',values)).status,200);
   const config=await configStore.read();assert.equal(await passwordMatches(owner,config.ownerPassword),true);assert.equal(await passwordMatches(guest,config.guestPassword),true);

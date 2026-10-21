@@ -1,6 +1,8 @@
 import{randomBytes,scrypt,timingSafeEqual,createHash}from'node:crypto';import{promisify}from'node:util';
 const derive=promisify(scrypt);export const secret=()=>randomBytes(32).toString('base64url');export const digest=value=>createHash('sha256').update(String(value)).digest('hex');
-export async function passwordHash(password){if(typeof password!=='string'||password.length<12||password.length>512)throw Error('パスワードは12〜512文字で設定してください');const salt=randomBytes(16).toString('hex');return{salt,hash:(await derive(password,salt,64)).toString('hex')};}
+export const PASSWORD_MIN_LENGTH=8;
+export function validPassword(password){return typeof password==='string'&&password.length>=PASSWORD_MIN_LENGTH&&password.length<=512;}
+export async function passwordHash(password){if(!validPassword(password))throw Error('パスワードは8〜512文字で設定してください');const salt=randomBytes(16).toString('hex');return{salt,hash:(await derive(password,salt,64)).toString('hex')};}
 export async function passwordMatches(password,record){if(typeof password!=='string'||password.length>512||!record)return false;try{const actual=await derive(password,record.salt,64),expected=Buffer.from(record.hash,'hex');return expected.length===actual.length&&timingSafeEqual(actual,expected);}catch{return false;}}
 export function validId(id){return typeof id==='string'&&/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(id);}
 export function parseRange(value,size){if(!value)return null;const match=/^bytes=(\d*)-(\d*)$/.exec(value);if(!match||(!match[1]&&!match[2])||size<=0)throw Error('Invalid range');let start=match[1]?Number(match[1]):Math.max(0,size-Number(match[2])),end=match[1]?(match[2]?Number(match[2]):size-1):size-1;if(!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start<0||end<start||start>=size)throw Error('Invalid range');return{start,end:Math.min(end,size-1)};}

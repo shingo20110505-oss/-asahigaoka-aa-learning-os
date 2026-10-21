@@ -3,11 +3,16 @@
   "version": "6.0.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=24" },
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "start": "node bridge/start.mjs",
     "test": "node --test tests/rise-*.test.mjs",
     "build": "node scripts/build-rise.mjs && node scripts/validate-rise-build.mjs",
     "preview": "node scripts/preview-rise.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "4.151.3"
   }
 }

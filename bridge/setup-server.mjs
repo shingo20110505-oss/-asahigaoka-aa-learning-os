@@ -3,7 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {ConfigStore,validOllama,validPublicOrigin} from './config.mjs';
-import {secret,digest,passwordHash,passwordMatches} from './security.mjs';
+import {secret,digest,passwordHash,passwordMatches,validPassword} from './security.mjs';
 import {openCodex,discoverCodex} from './codex-client.mjs';
 
 const here=path.dirname(fileURLToPath(import.meta.url));
@@ -11,7 +11,7 @@ const error=(message,status=400)=>Object.assign(Error(message),{status});
 const json=(res,value,status=200,headers={})=>{res.writeHead(status,{'Content-Type':'application/json; charset=utf-8',...headers});res.end(JSON.stringify(value));};
 async function body(req){if(!req.headers['content-type']?.startsWith('application/json'))throw error('JSONで送信してください',415);let size=0,parts=[];for await(const part of req){size+=part.length;if(size>16384)throw error('入力が大きすぎます',413);parts.push(part);}try{return JSON.parse(Buffer.concat(parts).toString('utf8'));}catch{throw error('入力形式を確認してください');}}
 
-export async function createSetupServer({privateDir,port=4320,bridgeURL='http://127.0.0.1:4318',onConfigChange=async()=>{},codexFactory=openCodex,discover=discoverCodex}={}){
+export async function createSetupServer({privateDir,port=4320,bridgeURL='http://127.0.0.1:4318',onConfigChange=async()=>{},codexFactory=openCodex,discover=discoverCodex,relayStatus=()=>({connected:false,message:'遠隔接続は未設定です'})}={}){
   const configStore=new ConfigStore(privateDir),sessions=new Map(),guesses=new Map();
   const executable=await discover();let client=null,clientPromise=null,closed=false,generation=0,changeQueue=Promise.resolve();
   let codex={available:false,connected:false,plan:'',models:[],pending:false,message:'接続確認を押してください'};
@@ -58,7 +58,7 @@ export async function createSetupServer({privateDir,port=4320,bridgeURL='http://
       const raw=(req.headers.cookie||'').match(/(?:^|;\s*)rise_setup=([A-Za-z0-9_-]+)/)?.[1],session=raw&&sessions.get(digest(raw));
       if(!session||session.expires<Date.now())throw error('PC設定画面を開き直してください',401);
       const config=await configStore.read();
-      if(p==='/api/status'&&req.method==='GET')return json(res,{csrf:session.csrf,unlocked:session.unlocked,passwordsConfigured:Boolean(config.ownerPassword&&config.guestPassword),bridgeURL,codex:session.unlocked?codex:{connected:false,message:'管理者パスワードで設定を開いてください'},settings:session.unlocked?{codexExecutable:config.codexExecutable||executable,ownerModel:config.ownerModel||'',ownerCodex:Boolean(config.ownerCodex),guestOllama:config.guestOllama||null,publicOrigin:config.publicOrigin||''}:null});
+      if(p==='/api/status'&&req.method==='GET')return json(res,{csrf:session.csrf,unlocked:session.unlocked,passwordsConfigured:Boolean(config.ownerPassword&&config.guestPassword),bridgeURL,relay:session.unlocked?{...relayStatus(),keyConfigured:Boolean(config.relayToken)}:null,codex:session.unlocked?codex:{connected:false,message:'管理者パスワードで設定を開いてください'},settings:session.unlocked?{codexExecutable:config.codexExecutable||executable,ownerModel:config.ownerModel||'',ownerCodex:Boolean(config.ownerCodex),guestOllama:config.guestOllama||null,publicOrigin:config.publicOrigin||''}:null});
       if(req.method!=='POST')throw error('見つかりません',404);
       if(req.headers['x-rise-csrf']!==session.csrf)throw error('設定画面を開き直してください',403);
       const input=await body(req);
@@ -76,7 +76,7 @@ export async function createSetupServer({privateDir,port=4320,bridgeURL='http://
         await changed(await configStore.update(c=>{Object.assign(c,{codexExecutable:program,ownerModel,guestOllama,publicOrigin});}));return json(res,{ok:true});
       }
       if(p==='/api/passwords'){
-        if([input.ownerPassword,input.guestPassword].some(p=>typeof p!=='string'||p.length<12||p.length>512))throw error('パスワードは12〜512文字で設定してください');
+        if([input.ownerPassword,input.guestPassword].some(p=>!validPassword(p)))throw error('パスワードは8〜512文字で設定してください');
         if(input.ownerPassword!==input.ownerConfirm||input.guestPassword!==input.guestConfirm)throw error('確認用パスワードが一致していません');
         if(input.ownerPassword===input.guestPassword)throw error('管理者とゲストは別のパスワードにしてください');
         const ownerPassword=await passwordHash(input.ownerPassword),guestPassword=await passwordHash(input.guestPassword);

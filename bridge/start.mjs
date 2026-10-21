@@ -6,13 +6,15 @@ import {ConfigStore} from './config.mjs';
 import {createBridge} from './server.mjs';
 import {createProviders} from './providers.mjs';
 import {createSetupServer} from './setup-server.mjs';
+import {startRelay} from './relay-client.mjs';
 
 export async function startRise({privateDir=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../.rise-private'),port=4318,setupPort=4320}={}){
   const configStore=new ConfigStore(privateDir),config=await configStore.read();
   const app=await createBridge({privateDir,config,provider:await createProviders({privateDir,config}),port,publicOrigin:config.publicOrigin||null});
-  let setup;
-  try{setup=await createSetupServer({privateDir,port:setupPort,bridgeURL:app.url,onConfigChange:async(next,options)=>{const nextProvider=await createProviders({privateDir,config:next});await app.reloadConfig({nextProvider,...options});}});}catch(error){await app.close();throw error;}
-  return {app,setup,async close(){await setup.close();await app.close();}};
+  let setup,relay,relayKey='',relayState={connected:false,message:'遠隔接続は未設定です'};
+  async function configureRelay(next){const key=JSON.stringify([next.publicOrigin,next.relayToken,Boolean(next.ownerPassword&&next.guestPassword)]);if(key===relayKey)return;relayKey=key;await relay?.close();relay=null;relayState={connected:false,message:'遠隔接続は未設定です'};if(next.publicOrigin&&next.relayToken&&next.ownerPassword&&next.guestPassword)relay=startRelay({origin:next.publicOrigin,token:next.relayToken,localURL:app.url,onStatus:status=>{relayState=status;}});}
+  try{await configureRelay(config);setup=await createSetupServer({privateDir,port:setupPort,bridgeURL:app.url,relayStatus:()=>relayState,onConfigChange:async(next,options)=>{const nextProvider=await createProviders({privateDir,config:next});await app.reloadConfig({nextProvider,...options});await configureRelay(next);}});}catch(error){await relay?.close();await app.close();throw error;}
+  return {app,setup,async close(){await setup.close();await relay?.close();await app.close();}};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
   const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
