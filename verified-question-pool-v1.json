@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-21-12-54-44Z",
-  "updatedAt": "2026-10-21T12:54:44.668Z",
+  "poolVersion": "2026-10-21-13-44-44Z",
+  "updatedAt": "2026-10-21T13:44:44.525Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -7398,6 +7398,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-20T13:33:11.910Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "本文の内容に照らして、緑川市のパブリックアート設置の取り組みの真の価値として最も適切なものはどれか。",
+        "context": "緑川市では、中心市街地の活性化を目的としてパブリックアートの設置が進められている。行政主導ではなく、住民のワークショップでの意見交換を基にして制作場所やテーマが決定される点が特徴である。この取り組みについて、単に景観の美化だけでなく、住民が自分たちの街の歴史や未来について対話する契機を生み出すことに真の価値があるという指摘がなされている。",
+        "choices": [
+          "住民同士が街の歴史や未来について対話する契機を生み出すこと",
+          "観光客を大量に誘致して商業的な利益を最優先でもたらすこと",
+          "専門家のデザインによって現代的な都市のイメージを定着させること",
+          "行政が主導して効率的に中心市街地の景観を美化すること"
+        ],
+        "answerIndex": 0,
+        "answer": "住民同士が街の歴史や未来について対話する契機を生み出すこと",
+        "explanation": "本文では、行政主導ではなく住民の対話から始まり、景観の美化だけでなく街の歴史や未来について対話する契機を生み出すことに真の価値がある旨が述べられている。行政主導や商業的利益、専門家のデザインのみを強調する選択肢は不適切である。",
+        "evidence": "住民が自分たちの街の歴史や未来について対話する契機を生み出すことに真の価値がある",
+        "misconception": "表面的な景観の美化や行政主導の効率性だけに注目し、文章の主眼である住民の対話や主体性を見落とす誤り。",
+        "marks": 2,
+        "id": "rise-japanese-863f07e482603e48",
+        "fingerprint": "3040585fc6cfe5dd",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-21T13:44:44.514Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "デジタルアーカイブ化を進める際の重要な課題として本文が述べていることは何か、最も適切なものを一つ選べ。",
+        "context": "地域の伝統芸能や古い写真などのデジタルアーカイブ化が進んでいる。これにより物理的な保存が困難な資料も後世への継承が可能になる一方で、データ化された情報がネットワーク上で断片的に流通し、本来の文脈や地域住民にとっての文脈が失われてしまう懸念も指摘されている。したがって、デジタル化を進める際には、単に保存するだけでなく、その背景にある歴史的・社会的文脈をどのように付記し共有するかが重要な課題となっている。",
+        "choices": [
+          "地域住民の協力を得ずに、専門の行政機関だけで独占的に管理すること",
+          "ネットワーク上でデータを断片的に流通させ、素早く情報を拡散させること",
+          "物理的な保存を一切やめて、完全にオンライン上のデータのみに移行すること",
+          "データ保存とともに、その背景にある歴史的・社会的文脈を付記し共有すること"
+        ],
+        "answerIndex": 3,
+        "answer": "データ保存とともに、その背景にある歴史的・社会的文脈を付記し共有すること",
+        "explanation": "本文の後半で、デジタル化を進める際には背景にある歴史的・社会的文脈をどのように付記し共有するかが重要な課題であると明記されている。他の選択肢は本文の記述に反するか、内容が歪められている。",
+        "evidence": "その背景にある歴史的・社会的文脈をどのように付記し共有するかが重要な課題となっている",
+        "misconception": "デジタル化の利便性や効率性だけを過大評価し、文脈の共有という筆者の主張を見落とす誤り。",
+        "marks": 2,
+        "id": "rise-japanese-940124cc2af58a20",
+        "fingerprint": "0f9bc60e5eedcf90",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-21T13:44:44.514Z"
+        }
+      },
+      {
+        "subject": "japanese",
+        "skill": "aichi.exam.application",
+        "difficulty": 8,
+        "question": "都市部における環境配慮型モビリティ導入に伴う課題を解決するために不可欠な視点として、本文が挙げているものはどれか。",
+        "context": "都市部における環境配慮型モビリティの導入は、二酸化炭素排出量の削減に大きく貢献する。しかし、歩行者用道路と電動モビリティの動線が十分に分離されていない場合、利用者の利便性が高まる一方で、歩行者の安全性が脅かされるというジレンマが生じる。この課題を解決するためには、単に新しい移動手段を導入するだけでなく、誰もが安心して通行できる空間設計と利用ルールの徹底を同時に図る視点が不可欠である。",
+        "choices": [
+          "歩行者の安全性を脅かさない空間設計と利用ルールの徹底を同時に図ること",
+          "自動車専用道路をすべて廃止して、モビリティ専用の高速レーンを増やすこと",
+          "二酸化炭素排出量の削減を目標から除外し、歩行者専用道路だけを維持すること",
+          "利用者の利便性のみを最優先して、移動時間を大幅に短縮すること"
+        ],
+        "answerIndex": 0,
+        "answer": "歩行者の安全性を脅かさない空間設計と利用ルールの徹底を同時に図ること",
+        "explanation": "本文の結びにおいて、誰もが安心して通行できる空間設計と利用ルールの徹底を同時に図る視点が不可欠であると述べられている。利便性のみを優先したり自動車専用道路を廃止したりする内容は本文に含まれない。",
+        "evidence": "誰もが安心して通行できる空間設計と利用ルールの徹底を同時に図る視点が不可欠である",
+        "misconception": "新しい移動手段の導入によるメリット（利便性向上や環境負荷低減）だけに着目し、安全性の確保やルール徹底という解決策の要件を無視してしまう誤り。",
+        "marks": 2,
+        "id": "rise-japanese-d47188a68da33f12",
+        "fingerprint": "1f2a3f37b794211d",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 0.95,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-21T13:44:44.514Z"
         }
       }
     ],
