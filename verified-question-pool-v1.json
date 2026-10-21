@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "poolVersion": "2026-10-20-13-33-11Z",
-  "updatedAt": "2026-10-20T13:33:11.938Z",
+  "poolVersion": "2026-10-21-11-42-01Z",
+  "updatedAt": "2026-10-21T11:42:01.754Z",
   "targetPerSubject": 24,
   "subjects": {
     "english": [
@@ -3019,6 +3019,108 @@
           "verifierConfidence": 1,
           "strictStructuredOutput": true,
           "checkedAt": "2026-10-20T11:29:44.857Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.algebra",
+        "difficulty": 8,
+        "question": "参加した総人数が300人であり、大人の人数は子どもの人数の2倍より30人少なかった。大人1人あたりの平均獲得ポイントがx点、子ども1人あたりの平均獲得ポイントがy点であるとき、参加者全員の獲得ポイントの総和を表す最も適切な式を選べ。",
+        "context": "ある商店街のイベントで、大人と子どもの参加者に対してくじ引きを行った。参加した総人数は300人であり、大人の人数は子どもの人数の2倍より30人少なかった。大人1人あたりの平均獲得ポイントはx点、子ども1人あたりの平均獲得ポイントはy点である。",
+        "choices": [
+          "200x + 100y",
+          "180x + 120y",
+          "210x + 90y",
+          "190x + 110y"
+        ],
+        "answerIndex": 3,
+        "answer": "190x + 110y",
+        "explanation": "子どもの人数をc人、大人の人をa人とおくと、全体の人数からa+c=300となり、大人の人数は子どもの人数の2倍より30人少ないことからa=2c-30という関係が得られます。これらを連立させて解くと、子どもの人数は110人、大人の人数は190人となります。したがって、獲得ポイントの総和は大人1人あたりのポイントに190を掛けたものと子ども1人あたりのポイントに110を掛けたものの和となり、求める式は190x + 110yとなります。",
+        "evidence": "参加した総人数は 300 人であり、大人の人数は子どもの人数層の 2 倍より 30 人少なかった。",
+        "misconception": "全体を単純に2等分して150人ずつとして計算してしまう誤りや、倍率の条件を取り違えて人数を誤算出する誤り。",
+        "marks": 1,
+        "id": "rise-math-fb0aeaff2f2fb7a3",
+        "fingerprint": "76122bfe93c5eac0",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-21T11:42:01.729Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.geometry",
+        "difficulty": 8,
+        "question": "座標平面上に、頂点 A(0, 6), B(0, 0), C(6, 0), D(6, 6) とする正方形がある。辺 BC の中点を M(3, 0) とし、対角線 AC と線分 DM の交点を P とする。このとき、三角形 PCM の面積を求めよ。",
+        "context": "座標平面上に、頂点 A(0, 6), B(0, 0), C(6, 0), D(6, 6) とする正方形がある。辺 BC の中点を M(3, 0) とし、対角線 AC と線分 DM の交点を P とする。このとき、三角形 PCM の面積を求める。",
+        "choices": [
+          "9/2cm^2",
+          "4cm^2",
+          "7/2cm^2",
+          "3cm^2"
+        ],
+        "answerIndex": 3,
+        "answer": "3cm^2",
+        "explanation": "対角線 AC の直線の方程式は y = -x + 6 であり、線分 DM の直線の方程式は y = 2x - 6 です。この2直線の交点 P の座標を求めると (4, 2) となります。三角形 PCM において、底辺を CM（長さは 3）とすると、高さは点 P の y 座標である 2 となるため、面積は 1/2 × 3 × 2 = 3cm^2 となります。",
+        "evidence": "座標平面上に、頂点 A(0, 6), B(0, 0), C(6, 0), D(6, 6) とする正方形がある。辺 BC の中点を M(3, 0) とし、対角線 AC と線分 DM の交点を P とする。",
+        "misconception": "相似比を誤って適用して面積を単純な半分などとして計算してしまう誤りや、交点座標の計算ミス。",
+        "marks": 2,
+        "id": "rise-math-51fd0817e85513db",
+        "fingerprint": "0ad04ac4d8cdecd6",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-21T11:42:01.729Z"
+        }
+      },
+      {
+        "subject": "math",
+        "skill": "aichi.exam.application.probability",
+        "difficulty": 8,
+        "question": "1から6までの目が出ることの確からしさが同様に確からしい大小2つのさいころを同時に1回投げる。大きいさいころの出た目を a、小さいさいころの出た目を b とするとき、座標平面上の直線 y = ax + b が点 (1, 4) を通る確率を求めよ。",
+        "context": "1から6までの目が出ることの確からしさが同様に確からしい大小2つのさいころを同時に1回投げる。大きいさいころの出た目を a、小さいさいころの出た目を b とするとき、座標平面上の直線 y = ax + b が点 (1, 4) を通る確率を求める。",
+        "choices": [
+          "5/36",
+          "1/12",
+          "1/9",
+          "1/6"
+        ],
+        "answerIndex": 1,
+        "answer": "1/12",
+        "explanation": "直線 y = ax + b が点 (1, 4) を通る条件は、代入して得られる方程式 a + b = 4 を満たすことです。大小2つのさいころの出た目の組み合わせ (a, b) のうち、和が 4 となるものは、(1, 3), (2, 2), (3, 1) の 3 通りです。すべての起こりうる目の出方は 6 × 6 = 36 通りであるため、確率は 3/36 = 1/12 となります。",
+        "evidence": "大きいさいころの出た目を a、小さいさいころの出た目を b とするとき、座標平面上の直線 y = ax + b が点 (1, 4) を通る確率を求める。",
+        "misconception": "座標の代入順序を間違える、あるいは和が 4 以外の条件と混同して組み合わせを数え間違える誤り。",
+        "marks": 2,
+        "id": "rise-math-5b47931e021f1e7a",
+        "fingerprint": "819be04c9d23070e",
+        "quality": {
+          "verified": true,
+          "method": "subject-structural-deterministic-plus-cross-provider-blind-answer-check",
+          "generationProvider": "gemini",
+          "generationModel": "gemini-3.5-flash-lite",
+          "verificationProvider": "groq",
+          "verificationModel": "openai/gpt-oss-20b",
+          "verifierMode": "json_schema",
+          "verifierStrictRetry": false,
+          "verifierConfidence": 1,
+          "strictStructuredOutput": true,
+          "checkedAt": "2026-10-21T11:42:01.729Z"
         }
       }
     ],
