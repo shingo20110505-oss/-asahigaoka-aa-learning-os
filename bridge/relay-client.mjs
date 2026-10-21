@@ -16,7 +16,8 @@ export function startRelay({origin,token,localURL,fetchImpl=fetch,onStatus=()=>{
       const headers=new Headers();for(const name of REQUEST_HEADERS)if(typeof item.headers?.[name]==='string')headers.set(name,item.headers[name]);
       headers.set('X-Rise-Public-Origin',remote.origin);headers.set('X-Rise-Relay',token);headers.set('X-Rise-Client',typeof item.clientIP==='string'?item.clientIP.slice(0,100):'unknown');
       const body=decode(item.body,BODY_LIMIT),response=await fetchImpl(new URL(item.path,local),{method:item.method,headers,body:['GET','HEAD'].includes(item.method)?undefined:body,redirect:'error',signal:controller.signal});
-      await send('headers',{id:item.id,status:response.status,headers:selectHeaders(response.headers,RESPONSE_HEADERS)},controller.signal);
+      const responseHeaders=selectHeaders(response.headers,RESPONSE_HEADERS);const cookies=response.headers.getSetCookie();if(cookies.length)responseHeaders['set-cookie']=cookies;
+      await send('headers',{id:item.id,status:response.status,headers:responseHeaders},controller.signal);
       if(item.method==='HEAD'||[204,205,304].includes(response.status))return;
       let sequence=0;for await(const part of response.body||[]){for(let offset=0;offset<part.length;offset+=CHUNK_LIMIT)await send('chunk',{id:item.id,sequence:sequence++,body:encode(part.subarray(offset,offset+CHUNK_LIMIT))},controller.signal);}
       await send('end',{id:item.id,sequence},controller.signal);

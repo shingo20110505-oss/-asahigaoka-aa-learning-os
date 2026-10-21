@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 export const disabledFeatures=['apps','plugins','remote_plugin','memories','multi_agent','multi_agent_v2','shell_tool','unified_exec','shell_snapshot','browser_use','browser_use_external','computer_use','in_app_browser','image_generation','hooks','view_image','workspace_dependencies','code_mode_host','skill_search','skill_mcp_dependency_install','sleep_tool','goals'];
-export function codexArguments(){return ['app-server','--stdio',...disabledFeatures.flatMap(x=>['--disable',x]),'-c','web_search="disabled"','-c','mcp_servers={}','-c','approval_policy="never"','-c','sandbox_mode="read-only"','-c','cli_auth_credentials_store="file"'];}
+export function codexArguments(){return ['app-server','--stdio',...disabledFeatures.flatMap(x=>['--disable',x]),'-c','web_search="disabled"','-c','mcp_servers={}','-c','project_doc_max_bytes=0','-c','approval_policy="never"','-c','default_permissions="rise-chat"','-c','permissions.rise-chat.filesystem={":workspace_roots"={"."="read"}}','-c','permissions.rise-chat.network.enabled=false','-c','cli_auth_credentials_store="file"'];}
 export async function codexEnvironment(privateDir){
   const home=path.join(privateDir,'codex-owner'),cwd=path.join(privateDir,'codex-empty');
   await fs.mkdir(home,{recursive:true});await fs.mkdir(cwd,{recursive:true});
@@ -36,7 +36,7 @@ export class CodexClient {
     if(this.closed)return Promise.reject(this.error||Error('Codex接続は閉じています'));
     return new Promise((resolve,reject)=>{const id=this.next++,timer=setTimeout(()=>{this.pending.delete(id);reject(Error('Codexの応答が時間切れになりました'));},this.requestTimeout);this.pending.set(id,{resolve,reject,timer});this.send({id,method,params});});
   }
-  async initialize(){await this.request('initialize',{clientInfo:{name:'rise_learning',version:'6.0.0'}});this.send({method:'initialized',params:{}});}
+  async initialize(){await this.request('initialize',{clientInfo:{name:'rise_learning',version:'6.0.0'},capabilities:{experimentalApi:true}});this.send({method:'initialized',params:{}});}
   observe(fn){this.observers.add(fn);return()=>this.observers.delete(fn);}
   finish(error){if(this.closed)return;this.closed=true;this.error=error;for(const p of this.pending.values()){clearTimeout(p.timer);p.reject(error);}this.pending.clear();for(const observe of this.observers)observe({method:'rise/closed',params:{message:error.message}});}
   close(){this.finish(Error('Codex接続を閉じました'));this.lines.close();this.child.kill();}

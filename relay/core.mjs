@@ -44,7 +44,7 @@ export class RelayCore {
     this.touch(p);
     if(action==='headers'){
       if(p.started||!Number.isInteger(input.status)||input.status<200||input.status>599)return json({error:'Invalid response'},400);
-      const headers=new Headers();for(const [name,value] of Object.entries(input.headers||{}))if(RESPONSE_HEADERS.includes(name)&&typeof value==='string')headers.set(name,value);
+      const headers=new Headers();for(const [name,value] of Object.entries(input.headers||{}))if(RESPONSE_HEADERS.includes(name)){if(name==='set-cookie'&&Array.isArray(value)){for(const cookie of value)if(typeof cookie==='string')headers.append(name,cookie);}else if(typeof value==='string')headers.set(name,value);}
       headers.set('Cache-Control','no-store');p.started=true;
       if(p.request.method==='HEAD'||[204,205,304].includes(input.status)){p.resolve(new Response(null,{status:input.status,headers}));this.finish(p);return json({ok:true});}
       const stream=new ReadableStream({start:controller=>{p.controller=controller;},pull:()=>{p.release?.();p.release=null;},cancel:()=>this.remove(p.id)},{highWaterMark:256*1024,size:chunk=>chunk.length});

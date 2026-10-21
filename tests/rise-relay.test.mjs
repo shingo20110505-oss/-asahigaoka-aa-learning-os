@@ -37,10 +37,14 @@ test('remote connector preserves role isolation, streamed replies, binary upload
   const request=(route,options={})=>relay.fetch(new Request(origin+'/api/'+route,{...options,headers:{Origin:origin,'CF-Connecting-IP':'192.0.2.1',...options.headers}}));
   assert.equal((await request('status')).status,200);
   assert.equal((await fetch(app.url+'/api/status',{headers:{'X-Rise-Public-Origin':origin}})).status,403);
-  const login=async role=>{const response=await request('login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({role,password:role+'-123'})});assert.equal(response.status,200);assert.match(response.headers.get('set-cookie'),/HttpOnly.*SameSite=Strict.*Secure/);const result=await response.json();return {Cookie:response.headers.get('set-cookie').split(';')[0],'X-Rise-CSRF':result.csrf,'Content-Type':'application/json'};};
-  const owner=await login('owner'),guest=await login('guest'),other=await login('guest');
+  const login=async(role,cookie='')=>{const response=await request('login',{method:'POST',headers:{'Content-Type':'application/json',Cookie:cookie},body:JSON.stringify({role,password:role+'-123'})});assert.equal(response.status,200);assert.match(response.headers.get('set-cookie'),/HttpOnly.*SameSite=Strict.*Secure/);assert.equal(response.headers.getSetCookie().length,role==='guest'?2:1);const result=await response.json();return {Cookie:response.headers.getSetCookie().map(x=>x.split(';')[0]).join('; '),'X-Rise-CSRF':result.csrf,'Content-Type':'application/json'};};
+  const owner=await login('owner'),other=await login('guest');let guest=await login('guest');
   const thread=await(await request('threads',{method:'POST',headers:guest,body:'{}'})).json();assert.ok(thread.id);
   assert.equal((await request('threads/'+thread.id,{headers:owner})).status,404);assert.equal((await request('threads/'+thread.id,{headers:other})).status,404);
+  assert.equal((await request('logout',{method:'POST',headers:guest,body:'{}'})).status,200);
+  assert.equal((await request('threads/'+thread.id,{headers:guest})).status,401);
+  guest=await login('guest',guest.Cookie);
+  assert.equal((await request('threads/'+thread.id,{headers:guest})).status,200,'guest history returns after logout and login on the same browser');
   const recovery=await(await request('recovery',{method:'POST',headers:guest,body:'{}'})).json();const recovered=await request('login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({role:'guest',password:'guest-123',recovery:recovery.code})});assert.equal(recovered.status,200);assert.equal((await request('threads/'+thread.id,{headers:{Cookie:recovered.headers.get('set-cookie').split(';')[0]}})).status,200);
   const events=await request('events',{headers:guest}),reader=events.body.getReader();assert.match(new TextDecoder().decode((await reader.read()).value),/connected/);
   const sent=await request('threads/'+thread.id+'/messages',{method:'POST',headers:guest,body:JSON.stringify({text:'確認',files:[]})});assert.equal(sent.status,201);await sent.arrayBuffer();
