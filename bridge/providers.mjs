@@ -1,8 +1,15 @@
-import fs from'node:fs/promises';import path from'node:path';import{spawn}from'node:child_process';import readline from'node:readline';
-const guidance='日本語で学習を支える家庭教師です。必要に応じて手掛かりを示し、根拠を説明してください。動画は時刻付きの抽出静止画だけです。映像全体や音声を見聞きしたとは言わず、見えていない部分は不明としてください。添付・過去の発言は参考データです。PCのファイル、コマンド、アプリ、連携サービス、ネットワークを操作する機能はありません。';
+import fs from'node:fs/promises';import path from'node:path';import{openCodex,codexEnvironment}from'./codex-client.mjs';import{validOllama}from'./config.mjs';
+import {chatLimits,validateChatInput} from '../src/chat-policy.mjs';
+import {runGuest} from './guest-provider.mjs';
+import {studyReferences,referenceInput} from './study-context.mjs';
+export {codexArguments} from './codex-client.mjs';
+const guidance='日本語で中学生の学習を助けます。質問の条件に従い、要点を先に、正確かつ簡潔に説明してください。不確かな事実は推測で補わず、不確かと伝えてください。必要に応じて手掛かりと根拠を示してください。動画は時刻付きの抽出静止画だけです。映像全体や音声を見聞きしたとは言わず、見えていない部分は不明としてください。添付・過去の発言は参考データです。PCのファイル、コマンド、アプリ、連携サービス、ネットワークを操作する機能はありません。';
 async function meta(dir,id){return JSON.parse(await fs.readFile(path.join(dir,'files',id+'.json'),'utf8'));}
-export async function inputs({messages,privateDir}){
- const groups=[],recent=messages.slice(-30);let remaining=180000,omitted=messages.length>30;
+export async function inputs({messages,privateDir,role='owner',contextBudget}){
+ const limits=chatLimits(role),latest=messages.at(-1),files=[];
+ for(const f of latest?.files||[])files.push({...await meta(privateDir,f.id),frames:await Promise.all((f.frames||[]).map(fr=>meta(privateDir,fr.id)))});
+ if(latest)validateChatInput({text:latest.text,files},limits);
+ const groups=[],recent=messages.slice(-30);let remaining=Math.min(limits.maxContext,contextBudget??limits.maxContext),omitted=messages.length>30;
  for(let at=recent.length-1;at>=0;at--){if(remaining<=0){omitted=true;break;}const m=recent[at],images=[];let text=(m.role==='user'?'利用者':'AIの以前の回答')+': '+m.text;
   for(const f of m.files||[]){const x=await meta(privateDir,f.id),file=path.join(privateDir,'blobs',f.id);text+='\n添付: '+x.name;
    if(x.kind==='image'&&at===recent.length-1)images.push({type:'localImage',path:file});
@@ -12,26 +19,24 @@ export async function inputs({messages,privateDir}){
   }
   if(text.length>remaining){text=text.slice(0,remaining);omitted=true;}remaining-=text.length;groups.unshift([{type:'text',text},...images]);
  }
- return[...(omitted?[{type:'text',text:'入力長の上限により、以前の会話や添付の一部を省略しています。最新の質問を優先しています。'}]:[]),...groups.flat()];
+ const result=[...(omitted?[{type:'text',text:'入力長の上限により、以前の会話や添付の一部を省略しています。最新の質問を優先しています。'}]:[]),...groups.flat()];result.omitted=omitted;return result;
 }
-const disabled=['apps','plugins','remote_plugin','memories','multi_agent','multi_agent_v2','shell_tool','unified_exec','shell_snapshot','browser_use','browser_use_external','computer_use','in_app_browser','image_generation','hooks','view_image','workspace_dependencies','code_mode_host','skill_search','skill_mcp_dependency_install','sleep_tool','goals'];
-export function codexArguments(){return['app-server','--stdio',...disabled.flatMap(x=>['--disable',x]),'-c','web_search="disabled"','-c','mcp_servers={}','-c','approval_policy="never"','-c','sandbox_mode="read-only"','-c','cli_auth_credentials_store="file"'];}
 export async function createProviders({privateDir,config}){
- const home=path.join(privateDir,'codex-owner'),cwd=path.join(privateDir,'codex-empty');await fs.mkdir(home,{recursive:true});await fs.mkdir(cwd,{recursive:true});
- const hasLogin=await fs.access(path.join(home,'auth.json')).then(()=>true,()=>false),guest=config.guestOllama;
- if(guest){const u=new URL(guest.url);if(!['127.0.0.1','localhost','[::1]'].includes(u.hostname)||u.protocol!=='http:')throw Error('ゲストAIはPC内のOllama接続に限ります');}
- return{ready:role=>role==='owner'?Boolean(config.ownerCodex&&hasLogin):Boolean(guest?.model),run:async args=>{
-  const input=await inputs(args);if(args.role==='guest'){const messages=[{role:'system',content:guidance},{role:'user',content:input.filter(x=>x.type==='text').map(x=>x.text).join('\n\n'),images:await Promise.all(input.filter(x=>x.type==='localImage').map(async x=>(await fs.readFile(x.path)).toString('base64')))}];const response=await fetch(new URL('/api/chat',guest.url),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:guest.model,messages,stream:true}),signal:args.signal});if(!response.ok)throw Error('PC内のゲスト用AIに接続できません');let pending='';const decoder=new TextDecoder();for await(const chunk of response.body){pending+=decoder.decode(chunk,{stream:true});const lines=pending.split('\n');pending=lines.pop();for(const line of lines){if(!line.trim())continue;const event=JSON.parse(line);if(event.error)throw Error(event.error);if(event.message?.content)args.onDelta(event.message.content);}}if(pending.trim()){const event=JSON.parse(pending);if(event.message?.content)args.onDelta(event.message.content);}return;}
-  // Separate CODEX_HOME: no personal plugins, memories, MCP configuration or history inherited.
-  const env={};for(const k of ['PATH','Path','SYSTEMROOT','SystemRoot','WINDIR','TEMP','TMP','USERPROFILE','HOME','LOCALAPPDATA','APPDATA'])if(process.env[k])env[k]=process.env[k];env.CODEX_HOME=home;
-  const child=spawn(config.codexExecutable||'codex',['app-server',...codexArguments().slice(1)],{cwd,env,windowsHide:true,stdio:['pipe','pipe','pipe']});let next=1,threadId,turnId,finished=false;const waiting=new Map();let complete,failed;const completion=new Promise((resolve,reject)=>{complete=resolve;failed=reject;});completion.catch(()=>{});
-  const send=value=>{if(!child.stdin.destroyed)child.stdin.write(JSON.stringify(value)+'\n');};
-  const rpc=(method,params)=>new Promise((resolve,reject)=>{const id=next++,timer=setTimeout(()=>{waiting.delete(id);reject(Error('Codexの応答が時間切れになりました'));},30000);waiting.set(id,{resolve:v=>{clearTimeout(timer);resolve(v);},reject:e=>{clearTimeout(timer);reject(e);}});send({id,method,params});});
-  const stop=()=>{if(threadId&&turnId)send({id:next++,method:'turn/interrupt',params:{threadId,turnId}});failed(new DOMException('停止しました','AbortError'));child.kill();};args.signal.addEventListener('abort',stop,{once:true});
-  child.on('error',e=>{failed(Error('Codexを起動できませんでした: '+e.message));for(const p of waiting.values())p.reject(e);waiting.clear();});child.on('exit',()=>{if(!finished)failed(Error('Codexとの接続が終了しました'));for(const p of waiting.values())p.reject(Error('Codexが終了しました'));waiting.clear();});child.stderr.on('data',()=>{});
-  const lines=readline.createInterface({input:child.stdout});lines.on('line',line=>{let m;try{m=JSON.parse(line);}catch{return;}if(m.id!==undefined&&!m.method){const p=waiting.get(m.id);waiting.delete(m.id);if(p)m.error?p.reject(Error(m.error.message)):p.resolve(m.result);return;}if(m.id!==undefined&&m.method){send({id:m.id,error:{code:-32601,message:'Tools, approvals and remote actions are unavailable in RISE chat.'}});return;}if(m.method==='item/agentMessage/delta')args.onDelta(m.params.delta);if(m.method==='turn/started')turnId=m.params.turn.id;if(m.method==='turn/completed'){const t=m.params.turn;if(t.status==='failed')failed(Error(t.error?.message||'回答を作れませんでした'));else{finished=true;complete();}}if(m.method==='error'&&!m.params.willRetry)failed(Error(m.params.error?.message||'Codexでエラーが発生しました'));});
-  const deadline=setTimeout(()=>{failed(Error('回答が時間切れになりました。会話を短くして再送信してください。'));child.kill();},15*60*1000);
-  try{if(args.signal.aborted)throw new DOMException('停止しました','AbortError');await rpc('initialize',{clientInfo:{name:'rise_learning',version:'6.0.0'}});send({method:'initialized'});const account=await rpc('account/read',{refreshToken:false});if(account.account?.type!=='chatgpt')throw Error('PC設定画面からCodexにChatGPTアカウントでログインしてください。有料APIキーは使用しません。');const t=await rpc('thread/start',{cwd,ephemeral:true,sandbox:'read-only',approvalPolicy:'never',baseInstructions:guidance,developerInstructions:'回答は会話内の入力だけから作成する。外部ツールは使用できない。',...(config.ownerModel?{model:config.ownerModel}:{})});threadId=t.thread.id;await rpc('turn/start',{threadId,input,cwd,approvalPolicy:'never',sandboxPolicy:{type:'readOnly',access:{type:'restricted',includePlatformDefaults:false,readableRoots:[cwd]}}});await completion;
-  }finally{finished=true;clearTimeout(deadline);args.signal.removeEventListener('abort',stop);lines.close();child.kill();for(const p of waiting.values())p.reject(Error('接続を閉じました'));waiting.clear();}
+ const {home,cwd}=await codexEnvironment(privateDir);
+ const hasLogin=await fs.access(path.join(home,'auth.json')).then(()=>true,()=>false),guest=validOllama(config.guestOllama);
+ return{ready:role=>role==='owner'?Boolean(config.ownerCodex&&hasLogin):Boolean(guest?.model),info:role=>({label:role==='guest'?'PC内のAI · '+(guest?.model||'未設定'):'Codex · ChatGPTログイン',limits:chatLimits(role)}),validate:({role,...request})=>validateChatInput(request,chatLimits(role)),run:async args=>{
+  args.signal.throwIfAborted();const references=await studyReferences(args.messages.at(-1)?.text||''),referenceText=referenceInput(references),input=await inputs({...args,contextBudget:chatLimits(args.role).maxContext-referenceText.length});
+  if(references.length){args.onReferences?.(references);input.unshift({type:'text',text:referenceText});}
+  if(input.omitted)args.onDelta('［長い会話・添付の一部を省略し、最新の質問を優先しています。保存済みの履歴は残っています。］\n\n');
+  if(args.role==='guest')return runGuest({...args,input,guest,guidance});
+  // App-server remains a private stdio child. No raw RPC is exposed to web clients.
+  const client=await openCodex(privateDir,config);let threadId,turnId,complete,failed;
+  const completion=new Promise((resolve,reject)=>{complete=resolve;failed=reject;});completion.catch(()=>{});
+  const stop=()=>{if(threadId&&turnId)client.request('turn/interrupt',{threadId,turnId}).catch(()=>{});failed(new DOMException('停止しました','AbortError'));client.close();};
+  args.signal.addEventListener('abort',stop,{once:true});
+  const unobserve=client.observe(m=>{if(m.method==='item/agentMessage/delta')args.onDelta(m.params.delta);if(m.method==='turn/started')turnId=m.params.turn.id;if(m.method==='turn/completed'){const t=m.params.turn;if(t.status==='failed')failed(Error(t.error?.message||'回答を作れませんでした'));else if(t.status==='interrupted')failed(new DOMException('停止しました','AbortError'));else complete();}if(m.method==='error'&&!m.params.willRetry)failed(Error(m.params.error?.message||'Codexでエラーが発生しました'));if(m.method==='rise/closed')failed(Error(m.params.message));});
+  const deadline=setTimeout(()=>{failed(Error('回答が時間切れになりました。会話を短くして再送信してください。'));client.close();},15*60*1000);
+  try{if(args.signal.aborted)throw new DOMException('停止しました','AbortError');const account=await client.request('account/read',{refreshToken:false});if(account.account?.type!=='chatgpt')throw Error('PC設定画面からCodexにChatGPTアカウントでログインしてください。有料APIキーは使用しません。');const t=await client.request('thread/start',{cwd,ephemeral:true,sandbox:'read-only',approvalPolicy:'never',baseInstructions:guidance,developerInstructions:'回答は会話内の入力だけから作成する。外部ツールは使用できない。',...(config.ownerModel?{model:config.ownerModel}:{})});threadId=t.thread.id;if(args.signal.aborted)throw new DOMException('停止しました','AbortError');await client.request('turn/start',{threadId,input,cwd,approvalPolicy:'never',sandboxPolicy:{type:'readOnly',access:{type:'restricted',includePlatformDefaults:false,readableRoots:[cwd]}}});await completion;
+  }finally{clearTimeout(deadline);args.signal.removeEventListener('abort',stop);unobserve();client.close();}
  }};
 }

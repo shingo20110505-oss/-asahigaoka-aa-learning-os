@@ -55,16 +55,24 @@ Research and baseline inspection complete for the original runtime/storage. Impl
 
 ## Checked implementation, 2026-10-22
 
-- `node --test tests/rise-*.test.mjs`: 30 tests pass, covering migration, data IDs, numerical model invariants, calendar dates, reading time/filters, private chat isolation, recovery, interrupted uploads, streaming, media signatures and prompt bounds.
+- `node --test tests/rise-*.test.mjs`: 43 tests pass, covering migration, data IDs, numerical model invariants, calendar dates, reading time/filters, private chat isolation, recovery, interrupted uploads, streaming, media signatures and prompt bounds.
 - `node scripts/build-rise.mjs` and `node scripts/validate-rise-build.mjs`: 114 review items, 130 reading texts, 1,000 original history records; original review image and approved logo bytes preserved. History UI includes 7 explicitly sourced additions.
 - Browser checks: new reading screen at 390/768/1024/1440 CSS pixels, 16 learning routes at 390px, representative routes at tablet/desktop widths. No horizontal overflow in the checked states.
 - Reader summary, paragraph notes/roles, favorites and review date survive reload. Learning-note creation followed by update leaves one linked note. Simulated save failure keeps the draft and prevents leaving before retry.
 - History note persistence and backup/restore including a file were exercised in a separate disposable localhost fixture. Chat mock-provider tests do not establish real Codex inference.
 - Old 54 workflow definitions are preserved under `legacy/workflows/*.disabled`. The replacement CI only uploads `dist`, using pinned Actions and read-only build permissions. Old runtime and PC-private bridge files are excluded from the published artifact.
 
-Still required for the full chat delivery: PC setup wizard and local password entry, actual owner Codex authentication/inference, guest backend configuration, authenticated remote relay/deployment, physical iPad/school-network verification. These must not be represented as operational because mock-provider tests pass. No PHP or paid API is introduced.
+The PC setup wizard is implemented on a separate loopback-only port. `RISE-PC.cmd` starts the app and setup UI; `RISE-PC.cmd --check` validates the local launcher without opening a browser. Codex stdio initialization and unauthenticated account state have been checked against the installed executable. The managed ChatGPT login is implemented but has not been completed by the user. Password creation stays in the final collapsed section; actual user passwords remain unset.
+
+Guest Ollama text and synthetic-image inference were exercised on this PC. The initial Gemma 3 4B model recognized the test shapes but gave an incorrect English-grammar explanation, so transport success must not be presented as educational accuracy. The additional local Qwen 3.5 4B model was evaluated with explicit sampling controls. It answered the checked English, quadratic-extrema and synthetic-image cases correctly, but an ungrounded history answer was wrong. RISE now supplies matching reading guides and explicitly sourced history records as reference context; with those references, the checked constitution/Diet chronology answer was correct. This is a small operational check, not a general accuracy guarantee. References are stored with the response and can be opened in the chat UI. Inference uses a single cancellable queue, a bounded model context and `keep_alive: 0`; an actual run released the loaded model after completion.
+
+Chat input limits are per AI request, separate from stored original file sizes: guest 4,000 prompt characters, four images/frames, 8 MB per image; owner 30,000 prompt characters, 24 images/frames, 12 MB per image. Long context is visibly disclosed when shortened. File-resume fingerprints now cover all bytes with bounded-memory chunk hashing. Bridge shutdown awaits interrupted-reply persistence. Browser testing blocked SSE delivery and confirmed the fallback snapshot restored the completed answer; snapshots preserve newer streamed text. MP4 extraction produced four timestamped frames in guest mode.
+
+Still required for the full chat delivery: local user password entry, actual owner Codex authentication/inference, authenticated remote relay/deployment, physical iPad/school-network verification. These must not be represented as operational because mock-provider tests pass. No PHP or paid API is introduced.
 
 ## 維持する条件
 
 - ロゴは既存の承認済み v5 画像をそのまま使う。ヘッダー、favicon、PWA、Apple touch icon を含む。色や形を加工しない。
 - PHP は使わない。フロントは静的 HTML/CSS/JavaScript、PC 側は Node.js。将来 PHP を採用する場合は導入時点の最新安定版とセキュリティ修正を確認する。
+
+Research for the chronology correction: National Diet Library modern-history chronology (https://www.ndl.go.jp/modern/utility/chronology.html), the diary timeline (https://www.ndl.go.jp/nikki/timeline/1890), and National Archives constitution exhibit (https://www.archives.go.jp/ayumi/kobetsu/m22_1889_01.html). IDs 220 and 222 now distinguish proclamation, convocation, opening ceremony and enforcement. Model runtime controls follow https://docs.ollama.com/api/chat and https://docs.ollama.com/capabilities/thinking; the evaluated optional model is https://ollama.com/library/qwen3.5:4b.

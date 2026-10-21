@@ -5,6 +5,7 @@
   "type": "module",
   "engines": { "node": ">=24" },
   "scripts": {
+    "start": "node bridge/start.mjs",
     "test": "node --test tests/rise-*.test.mjs",
     "build": "node scripts/build-rise.mjs && node scripts/validate-rise-build.mjs",
     "preview": "node scripts/preview-rise.mjs"

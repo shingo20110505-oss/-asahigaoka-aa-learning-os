@@ -11,9 +11,20 @@ export async function extractFrames(file,{count=8,times,signal,onProgress=()=>{}
   return{duration,width:video.videoWidth,height:video.videoHeight,frames};
  }finally{video.pause();video.removeAttribute('src');video.load();URL.revokeObjectURL(url);}
 }
-export async function fileFingerprint(file){const sample=await file.slice(0,65536).arrayBuffer(),header=new TextEncoder().encode([file.name,file.size,file.lastModified,file.type].join('|')),bytes=new Uint8Array(header.length+sample.byteLength);bytes.set(header);bytes.set(new Uint8Array(sample),header.length);return[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(x=>x.toString(16).padStart(2,'0')).join('');}
+export async function fileFingerprint(file,{signal}={}){
+ const metadata=new TextEncoder().encode(JSON.stringify({version:2,name:file.name,size:file.size,lastModified:file.lastModified,type:file.type}));
+ let hash=new Uint8Array(await crypto.subtle.digest('SHA-256',metadata));
+ // Hash every byte in bounded chunks. A prefix-only fingerprint could resume
+ // a different MP4 with the same name, size and first video header.
+ for(let offset=0;offset<file.size;offset+=1024*1024){
+  signal?.throwIfAborted();
+  const chunk=new Uint8Array(await crypto.subtle.digest('SHA-256',await file.slice(offset,offset+1024*1024).arrayBuffer()));
+  const pair=new Uint8Array(64);pair.set(hash);pair.set(chunk,32);hash=new Uint8Array(await crypto.subtle.digest('SHA-256',pair));
+ }
+ signal?.throwIfAborted();return[...hash].map(x=>x.toString(16).padStart(2,'0')).join('');
+}
 export async function uploadFile(file,{api,signal,onProgress=()=>{}}){
- const fingerprint=await fileFingerprint(file);const upload=await api('/uploads',{method:'POST',body:{name:file.name,size:file.size,type:file.type||'application/octet-stream',fingerprint},signal});let offset=upload.offset;const chunkSize=upload.chunkSize;
+ const fingerprint=await fileFingerprint(file,{signal});const upload=await api('/uploads',{method:'POST',body:{name:file.name,size:file.size,type:file.type||'application/octet-stream',fingerprint},signal});let offset=upload.offset;const chunkSize=upload.chunkSize;
  if(!Number.isSafeInteger(offset)||offset<0||offset>file.size||!Number.isSafeInteger(chunkSize)||chunkSize<1||chunkSize>4*1024*1024)throw Error('アップロードの応答が不正です');
  onProgress(offset,file.size);while(offset<file.size){if(signal?.aborted)throw new DOMException('中止しました','AbortError');const end=Math.min(file.size,offset+chunkSize);const result=await api('/uploads/'+encodeURIComponent(upload.id),{method:'PATCH',body:file.slice(offset,end),headers:{'Upload-Offset':String(offset),'Content-Type':'application/octet-stream'},signal});if(result.offset!==end)throw Error('送信位置が一致しません。再送信して再開してください。');offset=end;onProgress(offset,file.size);}
  return api('/uploads/'+encodeURIComponent(upload.id)+'/complete',{method:'POST',body:{},signal});

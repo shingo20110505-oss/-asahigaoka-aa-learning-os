@@ -11,3 +11,15 @@ test('bridge auth, private history, CSRF, resumed MP4 ranges, recovery and strea
  const code=(await call('/recovery',{who:a,method:'POST',body:{}})).data.code;const recovered=await login(code);assert.equal((await call('/threads/'+thread.id,{who:recovered})).response.status,200);await call('/logout',{who:a,method:'POST',body:{}});assert.equal((await call('/threads',{who:a})).response.status,401);
 });
 test('passwords unset means login disabled, never public access',async t=>{const dir=await fs.mkdtemp(path.join(os.tmpdir(),'rise-unset-')),b=await createBridge({privateDir:dir});t.after(async()=>{await b.close();if(path.dirname(dir)===os.tmpdir()&&path.basename(dir).startsWith('rise-unset-'))await fs.rm(dir,{recursive:true});});const r=await fetch(b.url+'/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});assert.equal(r.status,503);assert.equal((await(await fetch(b.url+'/api/status')).json()).configured,false);});
+
+test('closing the PC bridge waits for interrupted reply persistence and rejects invalid input before saving',async t=>{
+ const dir=await fs.mkdtemp(path.join(os.tmpdir(),'rise-close-test-')),password='Disposable test fixture 56';let started;const ready=new Promise(r=>started=r),config={ownerPassword:await passwordHash(password),guestPassword:await passwordHash(password)};
+ const provider={ready:()=>true,validate:({text})=>{if(text==='invalid')throw Error('invalid fixture');},run:async({signal,onDelta})=>{onDelta('受信済み');started();await new Promise((resolve,reject)=>{if(signal.aborted)return reject(signal.reason);signal.addEventListener('abort',async()=>{await new Promise(r=>setTimeout(r,40));reject(signal.reason);},{once:true});});}};
+ const app=await createBridge({privateDir:dir,config,provider});let closed=false;
+ t.after(async()=>{if(!closed)await app.close();if(path.dirname(dir)===os.tmpdir()&&path.basename(dir).startsWith('rise-close-test-'))await fs.rm(dir,{recursive:true});});
+ const login=await fetch(app.url+'/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({role:'owner',password})}),session=await login.json(),headers={'Content-Type':'application/json',Cookie:login.headers.get('set-cookie').split(';')[0],'X-Rise-CSRF':session.csrf};
+ const thread=await(await fetch(app.url+'/api/threads',{method:'POST',headers,body:'{"title":"fixture"}'})).json();
+ const send=text=>fetch(app.url+'/api/threads/'+thread.id+'/messages',{method:'POST',headers,body:JSON.stringify({text,files:[]})});
+ assert.equal((await send('invalid')).status,400);assert.equal((await send('question')).status,201);await ready;await app.close();closed=true;
+ const saved=JSON.parse(await fs.readFile(path.join(dir,'users','owner','threads',thread.id+'.json'),'utf8'));assert.equal(saved.messages.length,2);assert.equal(saved.messages[1].text,'受信済み');assert.equal(saved.messages[1].status,'interrupted');
+});
