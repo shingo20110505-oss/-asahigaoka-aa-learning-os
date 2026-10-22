@@ -1,6 +1,6 @@
 // Shared, deliberately narrow HTTP surface. No PC paths or Codex RPC can be forwarded.
 export const BODY_LIMIT=3*1024*1024, CHUNK_LIMIT=64*1024;
-export const REQUEST_HEADERS=['accept','content-type','cookie','origin','range','sec-fetch-site','x-rise-csrf','upload-offset'];
+export const REQUEST_HEADERS=['accept','content-type','cookie','origin','range','sec-fetch-site','x-rise-csrf','upload-offset','authorization','x-rise-transport'];
 export const RESPONSE_HEADERS=['content-type','content-length','content-range','accept-ranges','content-disposition','set-cookie','cache-control','x-content-type-options','referrer-policy','content-security-policy','x-frame-options'];
 export function validRoute(value){return typeof value==='string'&&/^\/api\/[a-z0-9/-]+(?:\?download=1)?$/.test(value)&&!value.includes('//')&&!value.includes('..');}
 export function validId(value){return typeof value==='string'&&/^[a-f0-9-]{36}$/.test(value);}
