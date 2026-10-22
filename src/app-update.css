@@ -1,0 +1,4 @@
+.app-update-notice{position:fixed;z-index:90;right:16px;bottom:16px;display:flex;align-items:center;flex-wrap:wrap;gap:10px;width:min(520px,calc(100% - 32px));padding:16px;border:1px solid var(--border);border-radius:14px;background:var(--surface);box-shadow:0 6px 30px #0002;font-size:14px}
+.app-update-notice p{width:100%;margin:0}.app-update-notice small{display:block;color:var(--muted);font-size:12px}
+@media(max-width:800px){.app-update-notice{bottom:calc(86px + env(safe-area-inset-bottom));right:12px;width:calc(100% - 24px)}}
+body.chat-pinched-active .app-update-notice{display:none}
