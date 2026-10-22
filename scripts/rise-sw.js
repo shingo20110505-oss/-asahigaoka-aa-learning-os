@@ -1,7 +1,8 @@
 import {createChatProxy,credentialStore} from './src/chat-proxy.mjs';
-import {CHAT_ORIGIN,PAGES_ORIGIN} from './src/chat-target.mjs';
+import {CHAT_ORIGIN,CHAT_GATEWAY,PAGES_ORIGIN} from './src/chat-target.mjs';
+import {gatewayFetch} from './src/chat-gateway.mjs';
 const CACHE='rise-v6-__VERSION__',SHELL=__SHELL__;
-const chat=createChatProxy({apiRoot:CHAT_ORIGIN+'/api/',store:credentialStore(self.indexedDB)});
+const chat=createChatProxy({apiRoot:CHAT_ORIGIN+'/api/',store:credentialStore(self.indexedDB),fetchImpl:gatewayFetch(CHAT_GATEWAY)});
 self.addEventListener('message',event=>{if(event.data?.type==='RISE_ACTIVATE')event.waitUntil(self.skipWaiting());if(event.data?.type==='RISE_CHAT_READY')event.ports[0]?.postMessage({chatTransport:1});});
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)));});
 self.addEventListener('activate',e=>e.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('rise-v6-')&&key!==CACHE)await caches.delete(key);await self.clients.claim();})()));
