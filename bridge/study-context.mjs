@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import {enrichHistory} from '../src/history-content.mjs';
+import {enrichHistory} from './history-reference-content.mjs';
 import {readingGuide} from '../src/reading-guide.mjs';
 
 let historyPromise;
