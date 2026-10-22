@@ -1,3 +1,5 @@
+import {warmChat} from './chat-warmup.mjs';
+warmChat();
 import {Store} from './store.mjs';
 import {dayKey,DAY,weeklyMinutes} from './domain.mjs';
 import {icon,esc,heading,link,button,badge,empty,dialog,field,toast} from './ui.mjs';
