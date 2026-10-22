@@ -56,6 +56,9 @@ test('remote connector preserves role isolation, streamed replies, binary upload
   const file=await request('files/'+upload.id,{headers:guest});assert.deepEqual(Buffer.from(await file.arrayBuffer()),binary);
   const range=await request('files/'+upload.id,{headers:{...guest,Range:'bytes=100-999'}});assert.equal(range.status,206);assert.equal(range.headers.get('content-range'),'bytes 100-999/180000');assert.deepEqual(Buffer.from(await range.arrayBuffer()),binary.subarray(100,1000));
   assert.equal((await request('files/'+upload.id,{headers:other})).status,404);
+  assert.equal((await request('threads/'+thread.id,{method:'DELETE',headers:other})).status,404);
+  assert.equal((await request('threads/'+thread.id,{method:'DELETE',headers:guest})).status,200);
+  assert.equal((await request('threads/'+thread.id,{headers:guest})).status,404);
   assert.equal((await relay.fetch(new Request(origin+'/setup.mjs'))).status,404);
 });
 
