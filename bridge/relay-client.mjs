@@ -12,7 +12,7 @@ export function startRelay({origin,token,localURL,fetchImpl=fetch,onStatus=()=>{
   async function send(action,input,signal=stop.signal,timeout=35000){const response=await fetchImpl(new URL('/_rise/host/'+action,remote),{method:'POST',headers:{Authorization:'Bearer '+token,'X-Rise-Instance':instance,'Content-Type':'application/json'},body:JSON.stringify(input||{}),redirect:'error',signal:AbortSignal.any([signal,AbortSignal.timeout(timeout)])});if(!response.ok)throw Object.assign(Error(response.status===401?'中継の接続キーが一致しません':response.status===409?'別のPC接続が動作中です':'中継接続を再試行しています'),{status:response.status});return response.json();}
   async function handle(item,controller){
     try{
-      if(!validId(item.id)||!validRoute(item.path)||!['GET','POST','PATCH','HEAD'].includes(item.method))throw Error('Invalid relay request');
+      if(!validId(item.id)||!validRoute(item.path)||!['GET','POST','PATCH','HEAD','DELETE'].includes(item.method))throw Error('Invalid relay request');
       const headers=new Headers();for(const name of REQUEST_HEADERS)if(typeof item.headers?.[name]==='string')headers.set(name,item.headers[name]);
       headers.set('X-Rise-Public-Origin',remote.origin);headers.set('X-Rise-Relay',token);headers.set('X-Rise-Client',typeof item.clientIP==='string'?item.clientIP.slice(0,100):'unknown');
       const body=decode(item.body,BODY_LIMIT),response=await fetchImpl(new URL(item.path,local),{method:item.method,headers,body:['GET','HEAD'].includes(item.method)?undefined:body,redirect:'error',signal:controller.signal});
