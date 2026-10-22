@@ -11,6 +11,9 @@ export async function createBridge({privateDir=path.join(ROOT,'.rise-private'),s
  privateDir=path.resolve(privateDir);await fs.mkdir(privateDir,{recursive:true});let config=injectedConfig||await read(path.join(privateDir,'config.json'),{});const db=await read(path.join(privateDir,'accounts.json'),{sessions:{},guests:{}}),listeners=new Map(),jobs=new Map(),locks=new Map(),attempts=new Map(),running=new Set();let dbWrite=Promise.resolve(),authGeneration=0,closing=false;
  db.devices??={};
  const saveDB=()=>dbWrite=dbWrite.catch(()=>{}).then(()=>atomic(path.join(privateDir,'accounts.json'),db));
+ if(!db.offlineNamespace){db.offlineNamespace=secret();await saveDB();}
+ // Public cache identity is not a credential and never selects a server-side user.
+ const offlineIdentity=(session,key)=>({id:digest(db.offlineNamespace+':'+session.user),session:digest('offline:'+key),expires:session.expires});
  const userPath=id=>{if(id!=='owner'&&!validId(id))throw fail('無効な利用者',403);return path.join(privateDir,'users',id);};
  const itemPath=(user,type,id)=>{if(!validId(id))throw fail('見つかりません',404);return path.join(userPath(user),type,id+'.json');};
  const getItem=async(user,type,id)=>{const x=await read(itemPath(user,type,id),null);if(!x)throw fail('見つかりません',404);return x;};
@@ -45,11 +48,11 @@ export async function createBridge({privateDir=path.join(ROOT,'.rise-private'),s
     }
     for(const [key,oldSession]of Object.entries(db.sessions))if(oldSession.expires<Date.now())delete db.sessions[key];
     const token=secret(),session={user,role:f.role,csrf:secret(),expires:Date.now()+30*86400000,...(pages?{transport:'pages',origin:frontendOrigin}:{})};db.sessions[digest(token)]=session;await saveDB();
-    const result={role:session.role,csrf:session.csrf,providerReady:Boolean(provider?.ready?.(session.role)),provider:provider?.info?.(session.role)};
+    const result={role:session.role,csrf:session.csrf,offline:offlineIdentity(session,digest(token)),providerReady:Boolean(provider?.ready?.(session.role)),provider:provider?.info?.(session.role)};
     return pages?json(res,200,{...result,accessToken:token,...(deviceToken?{deviceToken}:{})}):json(res,200,result,{'Set-Cookie':[cookie(req,token,30*86400),...(deviceToken?[cookie(req,deviceToken,365*86400).replace('rise_session=','rise_device=')]:[])]});
    }
    if(p.startsWith('/api/')){const auth=authorize(req),user=auth.user,role=auth.role;
-    if(p==='/api/session'&&method==='GET')return json(res,200,{role,csrf:auth.csrf,providerReady:Boolean(provider?.ready?.(role)),provider:provider?.info?.(role)});
+    if(p==='/api/session'&&method==='GET')return json(res,200,{role,csrf:auth.csrf,offline:offlineIdentity(auth,auth.key),providerReady:Boolean(provider?.ready?.(role)),provider:provider?.info?.(role)});
     if(p==='/api/logout'&&method==='POST'){delete db.sessions[auth.key];await saveDB();for(const r of listeners.get(user)||[])if(r.sessionKey===auth.key)r.end();return json(res,200,{ok:true},{'Set-Cookie':cookie(req,'',0)});}
     if(p==='/api/recovery'&&method==='POST'){if(role!=='guest')throw fail('管理者は別端末でも管理者パスワードで同じ履歴を開けます');const code=secret();db.guests[user].recovery=digest(code);await saveDB();return json(res,200,{code});}
     if(p==='/api/events'&&method==='GET'){res.writeHead(200,{'Content-Type':'text/event-stream','Cache-Control':'no-store','Connection':'keep-alive'});res.write(': connected\n\n');res.sessionKey=auth.key;if(!listeners.has(user))listeners.set(user,new Set());listeners.get(user).add(res);const timer=setInterval(()=>{if(!db.sessions[auth.key]||db.sessions[auth.key].expires<Date.now())res.end();else res.write(': ping\n\n');},20000);res.on('close',()=>{clearInterval(timer);listeners.get(user)?.delete(res);});return;}

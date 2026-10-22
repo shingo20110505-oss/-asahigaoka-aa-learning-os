@@ -10,7 +10,7 @@ export function credentialStore(indexedDB){
   const failure=()=>Object.assign(Error('Connection storage unavailable'),{publicMessage:'ブラウザのログイン保存領域を開けません。RISEの別のタブを閉じ、ブラウザの保存設定を確認してください。'});
   const open=()=>opened??=new Promise((resolve,reject)=>{let done=false;const timer=setTimeout(()=>{done=true;reject(failure());},2500);let r;try{r=indexedDB.open('rise-chat-connection',1);}catch{clearTimeout(timer);reject(failure());return;}r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains('connection'))r.result.createObjectStore('connection');};r.onsuccess=()=>{clearTimeout(timer);if(done){r.result.close();return;}done=true;r.result.onversionchange=()=>{r.result.close();opened=null;};resolve(r.result);};r.onerror=r.onblocked=()=>{clearTimeout(timer);done=true;reject(failure());};}).catch(error=>{opened=null;throw error;});
   const transaction=async(mode,action)=>{const db=await open();return new Promise((resolve,reject)=>{let tx;const timer=setTimeout(()=>{try{tx?.abort();}catch{}reject(failure());},2500);try{tx=db.transaction('connection',mode);const req=action(tx.objectStore('connection'));tx.oncomplete=()=>{clearTimeout(timer);resolve(req.result);};tx.onerror=tx.onabort=()=>{clearTimeout(timer);reject(failure());};}catch{clearTimeout(timer);reject(failure());}});};
-  return {async read(){return await transaction('readonly',s=>s.get('current'))||{};},async write(value){await transaction('readwrite',s=>s.put(value,'current'));}};
+  return {async read(){return await transaction('readonly',s=>s.get('current'))||{};},async write(value){await transaction('readwrite',s=>s.put(value,'current'));},async clearSession(expectedToken){await transaction('readwrite',s=>{const r=s.get('current');r.addEventListener('success',()=>{if(r.result?.token===expectedToken)s.put({deviceToken:r.result?.deviceToken},'current');});return r;});}};
 }
 
 export function createChatProxy({apiRoot,store,fetchImpl=fetch}){
@@ -34,7 +34,7 @@ export function createChatProxy({apiRoot,store,fetchImpl=fetch}){
         delete result.accessToken;delete result.deviceToken;return json(result,response.status);
       }
       if(route==='logout'&&request.method==='POST'&&response.ok||response.status===401&&route!=='login'){
-        const latest=await store.read();if(latest.token===saved.token)await store.write({deviceToken:latest.deviceToken});
+        if(store.clearSession)await store.clearSession(saved.token);else{const latest=await store.read();if(latest.token===saved.token)await store.write({deviceToken:latest.deviceToken});}
       }
       const returned=new Headers({'Cache-Control':'no-store'});for(const name of responseHeaders){const value=response.headers.get(name);if(value!==null)returned.set(name,value);}
       // Preserve streaming and Range responses; never collect a whole video in memory.
