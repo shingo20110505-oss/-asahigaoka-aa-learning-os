@@ -1,18 +1,32 @@
 import {BODY_LIMIT,CHUNK_LIMIT,REQUEST_HEADERS,RESPONSE_HEADERS,validRoute,validId,selectHeaders,encode,decode,limitedBody} from './protocol.mjs';
+import {PAGES_ORIGIN} from '../src/chat-target.mjs';
 const json=(value,status=200)=>new Response(JSON.stringify(value),{status,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
 export async function authorized(request,token){if(!/^[A-Za-z0-9_-]{43,128}$/.test(token||''))return false;const supplied=request.headers.get('authorization')||'';if(supplied.length>160)return false;const hash=async s=>new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)));const [a,b]=await Promise.all([hash(supplied),hash('Bearer '+token)]);let difference=0;for(let i=0;i<a.length;i++)difference|=a[i]^b[i];return difference===0;}
 
 export class RelayCore {
-  constructor(env,{pollMs=25000,headerMs=25000,idleMs=60000}={}){this.env=env;this.pollMs=pollMs;this.headerMs=headerMs;this.idleMs=idleMs;this.pending=new Map();this.queue=[];this.waiter=null;this.instance=null;this.lastSeen=0;this.receiving=0;this.queuedBytes=0;}
+  constructor(env,{pollMs=25000,headerMs=25000,idleMs=60000,frontendOrigin=PAGES_ORIGIN}={}){this.env=env;this.pollMs=pollMs;this.headerMs=headerMs;this.idleMs=idleMs;this.frontendOrigin=frontendOrigin;this.pending=new Map();this.queue=[];this.waiter=null;this.instance=null;this.lastSeen=0;this.receiving=0;this.queuedBytes=0;}
   push(item){if(this.waiter){const p=this.pending.get(item.id);if(p){this.queuedBytes-=p.bodyBytes;p.bodyBytes=0;}const done=this.waiter;this.waiter=null;done([item]);}else{this.queue.push(item);if(this.queue.length>128)this.queue.shift();}}
   remove(id,{error='PCとの接続が終了しました',cancel=true}={}){const p=this.pending.get(id);if(!p)return;this.pending.delete(id);this.queuedBytes-=p.bodyBytes;p.bodyBytes=0;this.queue=this.queue.filter(x=>x.id!==id);clearTimeout(p.timer);p.release?.();p.request.signal.removeEventListener('abort',p.abort);if(!p.started)p.resolve(json({error},503));else{try{p.controller.error(Error(error));}catch{}}if(cancel)this.push({type:'cancel',id});}
   touch(p){clearTimeout(p.timer);p.timer=setTimeout(()=>this.remove(p.id),this.idleMs);}
   async fetch(request){
+    const response=await this.handle(request),url=new URL(request.url);
+    if(!url.pathname.startsWith('/api/')||request.headers.get('origin')!==this.frontendOrigin)return response;
+    const headers=new Headers(response.headers);headers.set('Access-Control-Allow-Origin',this.frontendOrigin);headers.set('Vary','Origin');headers.set('Access-Control-Expose-Headers','Content-Type, Content-Length, Content-Range, Accept-Ranges, Content-Disposition');
+    return new Response(response.body,{status:response.status,headers});
+  }
+  async handle(request){
     const url=new URL(request.url),path=url.pathname;
     try {
       if(path.startsWith('/_rise/host/'))return await this.host(request,path.slice(12));
-      if(!validRoute(path+url.search)||!['GET','POST','PATCH','HEAD'].includes(request.method))return json({error:'見つかりません'},404);
-      if(request.headers.get('origin')&&request.headers.get('origin')!==url.origin||request.headers.get('sec-fetch-site')==='cross-site')return json({error:'この接続元は許可されていません'},403);
+      if(!validRoute(path+url.search))return json({error:'見つかりません'},404);
+      const pages=request.headers.get('origin')===this.frontendOrigin;
+      if(request.method==='OPTIONS'){
+        const method=request.headers.get('access-control-request-method'),headers=(request.headers.get('access-control-request-headers')||'').toLowerCase().split(',').map(x=>x.trim()).filter(Boolean);
+        if(!pages||!['GET','POST','PATCH','HEAD'].includes(method)||headers.some(h=>!['accept','content-type','range','x-rise-csrf','upload-offset','authorization','x-rise-transport'].includes(h)))return json({error:'この接続元は許可されていません'},403);
+        return new Response(null,{status:204,headers:{'Access-Control-Allow-Methods':'GET, POST, PATCH, HEAD','Access-Control-Allow-Headers':'Accept, Content-Type, Range, X-Rise-CSRF, Upload-Offset, Authorization, X-Rise-Transport','Access-Control-Max-Age':'600','Cache-Control':'no-store'}});
+      }
+      if(!['GET','POST','PATCH','HEAD'].includes(request.method))return json({error:'見つかりません'},404);
+      if(pages?request.headers.get('x-rise-transport')!=='pages':request.headers.get('origin')&&request.headers.get('origin')!==url.origin||request.headers.get('sec-fetch-site')==='cross-site')return json({error:'この接続元は許可されていません'},403);
       if(!this.instance||Date.now()-this.lastSeen>45000)return json({error:'PCがオフラインです。PCでRISEを起動してください。'},503);
       if(this.pending.size+this.receiving>=64||this.queuedBytes+(this.receiving+1)*BODY_LIMIT>12*1024*1024)return json({error:'接続が混み合っています。少し待ってから試してください。'},429);
       let body;this.receiving++;try{body=await limitedBody(request,BODY_LIMIT);}catch{return json({error:'送信データが大きすぎます'},413);}finally{this.receiving--;}
