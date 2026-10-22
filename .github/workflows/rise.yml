@@ -26,6 +26,8 @@ jobs:
           node-version: '24'
       - name: Run domain, preservation and bridge isolation tests
         run: npm test
+      - name: Check fixed-destination gateway boundaries
+        run: python3 -m unittest discover -s gateway -p 'test_*.py'
       - name: Build and validate the public asset allowlist
         run: npm run build
       - name: Upload only the built static app
