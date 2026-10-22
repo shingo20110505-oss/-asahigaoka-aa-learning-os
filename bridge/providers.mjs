@@ -1,4 +1,4 @@
-import fs from'node:fs/promises';import path from'node:path';import{openCodex,codexEnvironment}from'./codex-client.mjs';import{validOllama}from'./config.mjs';
+import fs from'node:fs/promises';import path from'node:path';import{openCodex,codexEnvironment}from'./codex-client.mjs';import{validOllama,codexSelection,guestProvider}from'./config.mjs';
 import {chatLimits,validateChatInput} from '../src/chat-policy.mjs';
 import {runGuest} from './guest-provider.mjs';
 import {studyReferences,referenceInput} from './study-context.mjs';
@@ -21,22 +21,24 @@ export async function inputs({messages,privateDir,role='owner',contextBudget}){
  }
  const result=[...(omitted?[{type:'text',text:'入力長の上限により、以前の会話や添付の一部を省略しています。最新の質問を優先しています。'}]:[]),...groups.flat()];result.omitted=omitted;return result;
 }
-export async function createProviders({privateDir,config}){
+export async function createProviders({privateDir,config,codexFactory=openCodex}){
  const {home,cwd}=await codexEnvironment(privateDir);
- const hasLogin=await fs.access(path.join(home,'auth.json')).then(()=>true,()=>false),guest=validOllama(config.guestOllama);
- return{ready:role=>role==='owner'?Boolean(config.ownerCodex&&hasLogin):Boolean(guest?.model),info:role=>({label:role==='guest'?'PC内のAI · '+(guest?.model||'未設定'):'Codex · ChatGPTログイン',limits:chatLimits(role)}),validate:({role,...request})=>validateChatInput(request,chatLimits(role)),run:async args=>{
+ const hasLogin=await fs.access(path.join(home,'auth.json')).then(()=>true,()=>false),guestKind=guestProvider(config),guest=guestKind==='ollama'?validOllama(config.guestOllama):null;
+ const isCodex=role=>role==='owner'||guestKind==='codex',selections={owner:codexSelection(config,'owner'),guest:codexSelection(config,'guest')};
+ const names={'gpt-6-astra':'GPT-6 Astra','gpt-6.1-sol':'GPT-6.1 Sol'},efforts={low:'低',medium:'中',high:'高',xhigh:'さらに高',max:'最大',ultra:'Ultra'};
+ return{ready:role=>isCodex(role)?Boolean(config.ownerCodex&&hasLogin):Boolean(guest?.model),info:role=>{const selected=selections[role];return{kind:isCodex(role)?'codex':'ollama',model:isCodex(role)?selected.model:guest?.model,reasoningEffort:isCodex(role)?selected.effort:'',label:isCodex(role)?'Codex · '+(names[selected.model]||selected.model||'標準モデル')+(selected.effort?' · 推論: '+efforts[selected.effort]:''):'PC内のAI · '+(guest?.model||'未設定'),limits:chatLimits(role)};},validate:({role,...request})=>validateChatInput(request,chatLimits(role)),run:async args=>{
   args.signal.throwIfAborted();const references=await studyReferences(args.messages.at(-1)?.text||''),referenceText=referenceInput(references),input=await inputs({...args,contextBudget:chatLimits(args.role).maxContext-referenceText.length});
   if(references.length){args.onReferences?.(references);input.unshift({type:'text',text:referenceText});}
   if(input.omitted)args.onDelta('［長い会話・添付の一部を省略し、最新の質問を優先しています。保存済みの履歴は残っています。］\n\n');
-  if(args.role==='guest')return runGuest({...args,input,guest,guidance});
+  if(!isCodex(args.role))return runGuest({...args,input,guest,guidance});
   // App-server remains a private stdio child. No raw RPC is exposed to web clients.
-  const client=await openCodex(privateDir,config);let threadId,turnId,complete,failed;
+  const selected=selections[args.role],client=await codexFactory(privateDir,config);let threadId,turnId,complete,failed;
   const completion=new Promise((resolve,reject)=>{complete=resolve;failed=reject;});completion.catch(()=>{});
   const stop=()=>{if(threadId&&turnId)client.request('turn/interrupt',{threadId,turnId}).catch(()=>{});failed(new DOMException('停止しました','AbortError'));client.close();};
   args.signal.addEventListener('abort',stop,{once:true});
   const unobserve=client.observe(m=>{if(m.method==='item/agentMessage/delta')args.onDelta(m.params.delta);if(m.method==='turn/started')turnId=m.params.turn.id;if(m.method==='turn/completed'){const t=m.params.turn;if(t.status==='failed')failed(Error(t.error?.message||'回答を作れませんでした'));else if(t.status==='interrupted')failed(new DOMException('停止しました','AbortError'));else complete();}if(m.method==='error'&&!m.params.willRetry)failed(Error(m.params.error?.message||'Codexでエラーが発生しました'));if(m.method==='rise/closed')failed(Error(m.params.message));});
   const deadline=setTimeout(()=>{failed(Error('回答が時間切れになりました。会話を短くして再送信してください。'));client.close();},15*60*1000);
-  try{if(args.signal.aborted)throw new DOMException('停止しました','AbortError');const account=await client.request('account/read',{refreshToken:false});if(account.account?.type!=='chatgpt')throw Error('PC設定画面からCodexにChatGPTアカウントでログインしてください。有料APIキーは使用しません。');const t=await client.request('thread/start',{cwd,ephemeral:true,permissions:'rise-chat',approvalPolicy:'never',baseInstructions:guidance,developerInstructions:'回答は会話内の入力だけから作成する。外部ツールは使用できない。',...(config.ownerModel?{model:config.ownerModel}:{})});threadId=t.thread.id;if(args.signal.aborted)throw new DOMException('停止しました','AbortError');await client.request('turn/start',{threadId,input,cwd,approvalPolicy:'never',permissions:'rise-chat'});await completion;
+  try{if(args.signal.aborted)throw new DOMException('停止しました','AbortError');const account=await client.request('account/read',{refreshToken:false});if(account.account?.type!=='chatgpt')throw Error('PC設定画面からCodexにChatGPTアカウントでログインしてください。有料APIキーは使用しません。');const t=await client.request('thread/start',{cwd,ephemeral:true,permissions:'rise-chat',approvalPolicy:'never',baseInstructions:guidance,developerInstructions:'回答は会話内の入力だけから作成する。外部ツールは使用できない。',...(selected.model?{model:selected.model}:{})});threadId=t.thread.id;if(selected.model&&t.model!==selected.model)throw Error('指定したモデルに接続できませんでした。PC設定を確認してください。');if(args.signal.aborted)throw new DOMException('停止しました','AbortError');await client.request('turn/start',{threadId,input,cwd,approvalPolicy:'never',permissions:'rise-chat',...(selected.model?{model:selected.model}:{}),...(selected.effort?{effort:selected.effort}:{})});await completion;
   }finally{clearTimeout(deadline);args.signal.removeEventListener('abort',stop);unobserve();client.close();}
  }};
 }

@@ -29,6 +29,11 @@ test('PC-only setup delays password creation, enforces origin and CSRF, hashes p
   const post=(endpoint,input,extra={})=>fetch(setup.url+'/api/'+endpoint,{method:'POST',headers:{Cookie:cookie,Origin:setup.url,'X-Rise-CSRF':status.csrf,'Content-Type':'application/json',...extra},body:JSON.stringify(input)});
   assert.equal((await post('settings',{}, {'X-Rise-CSRF':'wrong'})).status,403);
   const configResult=await post('settings',{codexExecutable:'codex',ownerModel:'',guestOllama:null,publicOrigin:''});assert.equal(configResult.status,200);assert.equal((await(await fetch(bridge.url+'/api/status')).json()).configured,false);
+  assert.equal((await post('settings',{ownerModel:'gpt-6-astra',ownerReasoningEffort:'high',guestProvider:'codex',guestCodexModel:'gpt-6.1-sol'})).status,200);
+  assert.equal((await post('settings',{guestReasoningEffort:'invalid'})).status,400);
+  assert.equal((await post('settings',{guestProvider:'unknown'})).status,400);
+  assert.equal((await post('settings',{publicOrigin:''})).status,200);
+  const savedSelection=await configStore.read();assert.equal(savedSelection.ownerReasoningEffort,'high');assert.equal(savedSelection.guestProvider,'codex');assert.equal(savedSelection.guestCodexModel,'gpt-6.1-sol');
   const owner='Owner1234',guest='Guest123';
   assert.equal((await post('passwords',{ownerPassword:'short12',ownerConfirm:'short12',guestPassword:guest,guestConfirm:guest})).status,400);
   assert.equal((await post('passwords',{ownerPassword:owner,ownerConfirm:'different',guestPassword:guest,guestConfirm:guest})).status,400);

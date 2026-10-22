@@ -1,3 +1,5 @@
+export const HISTORY_RANKS=['S','A','B'];
+export function historyRank(row,progress={}){return HISTORY_RANKS.includes(progress?.rank)?progress.rank:HISTORY_RANKS.includes(row.level)?row.level:'B';}
 export const isJapan=x=>x.area.includes('日本');
 export const yearOf=x=>Math.trunc(x.sort);
 export const datePart=x=>{const m=x.date.match(/年(\d+)月(?:(\d+)日)?/);return m?Number(m[1])*100+Number(m[2]||0):0;};

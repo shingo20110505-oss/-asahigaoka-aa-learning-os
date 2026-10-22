@@ -16,4 +16,7 @@ for(const name of ['rise-apple-touch-icon-180','rise-icon-192','rise-icon-512','
 for(const image of manifest.reviewImages){assert.ok((await fs.readFile(path.join(out,image))).equals(await fs.readFile(path.join(root,'review',image))),'Review image was changed');}
 const webmanifest=await json('manifest.webmanifest');for(const icon of webmanifest.icons)await fs.access(path.join(out,icon.src));
 assert.ok(!(await fs.readFile(path.join(out,'sw.js'),'utf8')).includes('__VERSION__'));
+const worker=await fs.readFile(path.join(out,'sw.js'),'utf8'),offline=JSON.parse(worker.match(/SHELL=(\[[^\n]+\]);/)[1]);
+for(const file of files){const rel=path.relative(out,file).replaceAll('\\','/');if(!['sw.js','version.json','.nojekyll'].includes(rel))assert.ok(offline.includes('./'+rel),'Missing offline material: '+rel);}
+assert.equal(new Set(offline).size,offline.length);assert.ok(offline.every(x=>!/(api\/|setup|\.rise-private|bridge\/)/.test(x)),'Private route in offline cache');
 console.log(JSON.stringify({checkedFiles:files.length,preserved:{review:review.length,history:history.length,reading:reading.length},logo:'byte-identical',privateBridge:'excluded'}));
