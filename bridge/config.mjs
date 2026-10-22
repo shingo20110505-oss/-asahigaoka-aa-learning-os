@@ -7,6 +7,15 @@ export class ConfigStore {
   async read(){try{return JSON.parse(await fs.readFile(this.file,'utf8'));}catch(error){if(error.code==='ENOENT')return {};throw error;}}
   async update(mutator){const task=this.queue.catch(()=>{}).then(async()=>{const next=await this.read();await mutator(next);await fs.mkdir(this.dir,{recursive:true});const temp=this.file+'.'+randomUUID()+'.tmp';await fs.writeFile(temp,JSON.stringify(next,null,2),{mode:0o600});await fs.rename(temp,this.file);return next;});this.queue=task;return task;}
 }
+export const REASONING_EFFORTS=['low','medium','high','xhigh','max','ultra'];
+export function codexSelection(config,role){
+  const model=String((role==='guest'?config.guestCodexModel:config.ownerModel)||'').trim();
+  const effort=String((role==='guest'?config.guestReasoningEffort:config.ownerReasoningEffort)||'').trim();
+  if(model&&!/^[\w./-]{1,100}$/.test(model))throw Error('モデル名を確認してください');
+  if(effort&&!REASONING_EFFORTS.includes(effort))throw Error('推論の強さを確認してください');
+  return {model,effort};
+}
+export function guestProvider(config){const kind=config.guestProvider??'ollama';if(!['codex','ollama'].includes(kind))throw Error('ゲストの接続方法を確認してください');return kind;}
 export function validOllama(value){
   if(!value||!value.model)return null;
   const u=new URL(value.url||'http://127.0.0.1:11434');

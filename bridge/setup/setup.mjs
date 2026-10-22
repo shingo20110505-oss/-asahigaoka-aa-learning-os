@@ -11,15 +11,16 @@ async function refresh(fill=false){
   $('password-status').textContent=state.passwordsConfigured?'設定済みです。パスワードの内容は表示・再取得できません。':'未設定です。準備が終わってから、ここで設定してください。';
   $('open-chat').href=state.bridgeURL+'/#/chat';
   $('relay-status').textContent=state.relay?.message||'遠隔接続は未設定です';$('remote-chat').hidden=!state.relay?.connected;if(state.relay?.connected)$('remote-chat').href=state.relay.origin+'/#/chat';
-  if(fill){settings.elements.codexExecutable.value=state.settings.codexExecutable;settings.elements.ownerModel.value=state.settings.ownerModel;settings.elements.ollamaURL.value=state.settings.guestOllama?.url||'http://127.0.0.1:11434';settings.elements.guestModel.value=state.settings.guestOllama?.model||'';settings.elements.publicOrigin.value=state.settings.publicOrigin;}
-  const chosen=fill?state.settings.ownerModel:settings.elements.ownerModel.value;
-  const models=[{id:'',name:'Codexの標準設定'},...state.codex.models];if(chosen&&!models.some(m=>m.id===chosen))models.push({id:chosen,name:chosen});
-  settings.elements.ownerModel.replaceChildren(...models.map(m=>new Option(m.name,m.id,false,m.id===chosen)));
+  if(fill){settings.elements.codexExecutable.value=state.settings.codexExecutable;settings.elements.ownerModel.value=state.settings.ownerModel;settings.elements.ollamaURL.value=state.settings.guestOllama?.url||'http://127.0.0.1:11434';settings.elements.guestModel.value=state.settings.guestOllama?.model||'';settings.elements.publicOrigin.value=state.settings.publicOrigin;for(const key of ['ownerReasoningEffort','guestReasoningEffort','guestProvider'])settings.elements[key].value=state.settings[key]||'';}
+  for(const key of ['ownerModel','guestCodexModel']){const chosen=fill?state.settings[key]:settings.elements[key].value;const models=[{id:'',name:'Codexの標準設定'},...state.codex.models];if(chosen&&!models.some(m=>m.id===chosen))models.push({id:chosen,name:chosen});settings.elements[key].replaceChildren(...models.map(m=>new Option(m.name,m.id,false,m.id===chosen)));}
+  showGuest();
   clearTimeout(pollTimer);if(state.codex.pending||state.relay?.keyConfigured)pollTimer=setTimeout(()=>refresh().catch(e=>notice(e.message,true)),2500);
 }
+function showGuest(){const codex=settings.elements.guestProvider.value==='codex';$('guest-codex-settings').hidden=!codex;$('guest-ollama-settings').hidden=codex;}
+settings.elements.guestProvider.onchange=showGuest;
 async function action(fn){if(busy)return;busy=true;document.querySelectorAll('button').forEach(b=>b.disabled=true);try{await fn();}catch(e){notice(e.message,true);}finally{busy=false;document.querySelectorAll('button').forEach(b=>b.disabled=false);}}
 $('unlock-form').onsubmit=e=>{e.preventDefault();action(async()=>{await api('unlock',{password:e.target.elements.password.value});e.target.reset();await refresh(true);notice('管理者設定を開きました');});};
-settings.onsubmit=e=>{e.preventDefault();action(async()=>{const f=new FormData(settings);await api('settings',{codexExecutable:f.get('codexExecutable'),ownerModel:f.get('ownerModel'),publicOrigin:f.get('publicOrigin'),guestOllama:{url:f.get('ollamaURL'),model:f.get('guestModel')}});await refresh();notice('接続設定を保存しました');});};
+settings.onsubmit=e=>{e.preventDefault();action(async()=>{const f=new FormData(settings);await api('settings',{codexExecutable:f.get('codexExecutable'),ownerModel:f.get('ownerModel'),ownerReasoningEffort:f.get('ownerReasoningEffort'),guestProvider:f.get('guestProvider'),guestCodexModel:f.get('guestCodexModel'),guestReasoningEffort:f.get('guestReasoningEffort'),publicOrigin:f.get('publicOrigin'),guestOllama:{url:f.get('ollamaURL'),model:f.get('guestModel')}});await refresh();notice('接続設定を保存しました');});};
 $('password-form').onsubmit=e=>{e.preventDefault();action(async()=>{const form=e.target;await api('passwords',Object.fromEntries(new FormData(form)));form.reset();await refresh();notice('パスワードを設定しました。チャットでログインできます。');});};
 document.addEventListener('click',e=>{const button=e.target.closest('[data-action]');if(!button)return;action(async()=>{
   if(button.dataset.action==='probe'){notice('Codexの起動とログイン状態を確認しています…');await api('codex/probe',{});await refresh();notice(state.codex.message);}

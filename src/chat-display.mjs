@@ -1,0 +1,12 @@
+export function chatDisplay(main){
+ let maximized=false,scroll=[0,0];const background=new Map();
+ const viewport=()=>{if(!maximized)return;main.style.setProperty('--chat-viewport-height',(window.visualViewport?.height||window.innerHeight)+'px');main.style.setProperty('--chat-viewport-top',(window.visualViewport?.offsetTop||0)+'px');};
+ const sync=()=>{const b=main.querySelector('[data-action="maximize"]');if(b){b.textContent=maximized?'元の表示':'最大化';b.setAttribute('aria-label',maximized?'チャットを元の表示に戻す':'チャットを最大化');b.setAttribute('aria-pressed',String(maximized));}};
+ const set=value=>{if(value===maximized)return;if(value)scroll=[window.scrollX,window.scrollY];maximized=value;main.classList.toggle('chat-maximized',value);document.body.classList.toggle('chat-expanded',value);
+  if(value){for(const node of document.querySelectorAll('.sidebar,.topbar,.mobile-nav,.skip')){background.set(node,node.inert);node.inert=true;}viewport();}
+  else{for(const [node,inert]of background)node.inert=inert;background.clear();main.style.removeProperty('--chat-viewport-height');main.style.removeProperty('--chat-viewport-top');window.scrollTo(...scroll);}sync();
+ };
+ const key=e=>{if(!maximized||document.querySelector('dialog[open]')||document.fullscreenElement)return;if(e.key==='Escape'){e.preventDefault();set(false);main.querySelector('[data-action="maximize"]')?.focus();}if(e.key==='Tab'){const items=[...main.querySelectorAll('button,a[href],input,textarea,select,[tabindex="0"]')].filter(x=>!x.disabled&&x.getClientRects().length),first=items[0],last=items.at(-1);if(e.shiftKey&&(document.activeElement===first||!main.contains(document.activeElement))){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}};
+ document.addEventListener('keydown',key);window.visualViewport?.addEventListener('resize',viewport);window.visualViewport?.addEventListener('scroll',viewport);window.addEventListener('resize',viewport);
+ return {sync,toggle:()=>set(!maximized),restore:()=>set(false),dispose(){set(false);document.removeEventListener('keydown',key);window.visualViewport?.removeEventListener('resize',viewport);window.visualViewport?.removeEventListener('scroll',viewport);window.removeEventListener('resize',viewport);}};
+}

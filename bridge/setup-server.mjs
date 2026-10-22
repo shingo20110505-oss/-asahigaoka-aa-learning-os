@@ -2,7 +2,7 @@ import http from 'node:http';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {ConfigStore,validOllama,validPublicOrigin} from './config.mjs';
+import {ConfigStore,validOllama,validPublicOrigin,codexSelection,guestProvider} from './config.mjs';
 import {secret,digest,passwordHash,passwordMatches,validPassword} from './security.mjs';
 import {openCodex,discoverCodex} from './codex-client.mjs';
 
@@ -40,7 +40,7 @@ export async function createSetupServer({privateDir,port=4320,bridgeURL='http://
   async function probe(){
     const c=await ensureClient(),account=await c.request('account/read',{refreshToken:false});if(client!==c||closed)throw error('接続設定が変更されました。接続確認をやり直してください',409);codex.available=true;codex.connected=account.account?.type==='chatgpt';codex.plan=codex.connected?String(account.account.planType||''):'';
     codex.message=codex.connected?'RISE専用のChatGPTログインを確認しました':account.account?'ChatGPTでログインしてください。有料APIキーは使用しません。':'Codexは起動できました。ChatGPTへのログインはまだです。';
-    if(codex.connected){const result=await c.request('model/list',{includeHidden:false});if(client!==c||closed)throw error('接続設定が変更されました',409);codex.models=(result.data||[]).map(x=>({id:x.model||x.id,name:x.displayName||x.model||x.id})).filter(x=>x.id);}else codex.models=[];
+    if(codex.connected){const result=await c.request('model/list',{includeHidden:false});if(client!==c||closed)throw error('接続設定が変更されました',409);codex.models=(result.data||[]).map(x=>({id:x.model||x.id,name:x.displayName||x.model||x.id,efforts:(x.supportedReasoningEfforts||[]).map(e=>e.reasoningEffort)})).filter(x=>x.id);}else codex.models=[];
     return codex;
   }
   const server=http.createServer(async(req,res)=>{
@@ -58,7 +58,7 @@ export async function createSetupServer({privateDir,port=4320,bridgeURL='http://
       const raw=(req.headers.cookie||'').match(/(?:^|;\s*)rise_setup=([A-Za-z0-9_-]+)/)?.[1],session=raw&&sessions.get(digest(raw));
       if(!session||session.expires<Date.now())throw error('PC設定画面を開き直してください',401);
       const config=await configStore.read();
-      if(p==='/api/status'&&req.method==='GET')return json(res,{csrf:session.csrf,unlocked:session.unlocked,passwordsConfigured:Boolean(config.ownerPassword&&config.guestPassword),bridgeURL,relay:session.unlocked?{...relayStatus(),keyConfigured:Boolean(config.relayToken)}:null,codex:session.unlocked?codex:{connected:false,message:'管理者パスワードで設定を開いてください'},settings:session.unlocked?{codexExecutable:config.codexExecutable||executable,ownerModel:config.ownerModel||'',ownerCodex:Boolean(config.ownerCodex),guestOllama:config.guestOllama||null,publicOrigin:config.publicOrigin||''}:null});
+      if(p==='/api/status'&&req.method==='GET')return json(res,{csrf:session.csrf,unlocked:session.unlocked,passwordsConfigured:Boolean(config.ownerPassword&&config.guestPassword),bridgeURL,relay:session.unlocked?{...relayStatus(),keyConfigured:Boolean(config.relayToken)}:null,codex:session.unlocked?codex:{connected:false,message:'管理者パスワードで設定を開いてください'},settings:session.unlocked?{codexExecutable:config.codexExecutable||executable,ownerModel:config.ownerModel||'',ownerReasoningEffort:config.ownerReasoningEffort||'',guestProvider:guestProvider(config),guestCodexModel:config.guestCodexModel||'',guestReasoningEffort:config.guestReasoningEffort||'',ownerCodex:Boolean(config.ownerCodex),guestOllama:config.guestOllama||null,publicOrigin:config.publicOrigin||''}:null});
       if(req.method!=='POST')throw error('見つかりません',404);
       if(req.headers['x-rise-csrf']!==session.csrf)throw error('設定画面を開き直してください',403);
       const input=await body(req);
@@ -70,10 +70,10 @@ export async function createSetupServer({privateDir,port=4320,bridgeURL='http://
       if(p==='/api/settings'){
         const program=String(input.codexExecutable||'codex').trim();
         if(program!=='codex'&&(!path.isAbsolute(program)||!program.toLowerCase().endsWith('.exe')||!(await fs.stat(program).catch(()=>null))?.isFile()))throw error('Codexの実行ファイル（.exe）を確認してください');
-        const guestOllama=validOllama(input.guestOllama),publicOrigin=validPublicOrigin(input.publicOrigin),ownerModel=String(input.ownerModel||'').trim();
-        if(ownerModel&&!/^[\w./-]{1,100}$/.test(ownerModel))throw error('モデル名を確認してください');
+        const guestOllama=validOllama(input.guestOllama),publicOrigin=validPublicOrigin(input.publicOrigin),next={...config,...Object.fromEntries(['ownerModel','ownerReasoningEffort','guestProvider','guestCodexModel','guestReasoningEffort'].filter(k=>k in input).map(k=>[k,input[k]]))};
+        let owner,guest,kind;try{owner=codexSelection(next,'owner');guest=codexSelection(next,'guest');kind=guestProvider(next);}catch(e){throw error(e.message);}
         if(program!==(config.codexExecutable||executable))await closeClient();
-        await changed(await configStore.update(c=>{Object.assign(c,{codexExecutable:program,ownerModel,guestOllama,publicOrigin});}));return json(res,{ok:true});
+        await changed(await configStore.update(c=>{Object.assign(c,{codexExecutable:program,ownerModel:owner.model,ownerReasoningEffort:owner.effort,guestProvider:kind,guestCodexModel:guest.model,guestReasoningEffort:guest.effort,guestOllama,publicOrigin});}));return json(res,{ok:true});
       }
       if(p==='/api/passwords'){
         if([input.ownerPassword,input.guestPassword].some(p=>!validPassword(p)))throw error('パスワードは8〜512文字で設定してください');
