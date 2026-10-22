@@ -15,6 +15,7 @@ self.addEventListener('fetch',e=>{
  const u=new URL(e.request.url),base=new URL(self.registration.scope);if(u.origin!==base.origin||!u.pathname.startsWith(base.pathname))return;const rel=u.pathname.slice(base.pathname.length);
  if(base.origin===PAGES_ORIGIN&&rel.startsWith('api/')){e.respondWith(chat(e.request,rel.slice(4)+u.search));return;}
  if(e.request.method!=='GET'||/^(api\/|setup|chat-api\/)/.test(rel))return;
+ if(['update.html','src/app-updater.mjs'].includes(rel)){e.respondWith(fetch(e.request,{cache:'no-store'}).catch(async()=>await(await caches.open(CACHE)).match(new URL('./'+rel,base))||Response.error()));return;}
  const path='./'+rel;if(!SHELL.includes(path)&&e.request.mode!=='navigate')return;
  e.respondWith((async()=>{const cache=await caches.open(CACHE),saved=await cache.match(new URL(path,base));if(saved)return saved;try{return await fetch(e.request);}catch{if(e.request.mode==='navigate')return(await cache.match('./index.html'))||Response.error();return Response.error();}})());
 });
