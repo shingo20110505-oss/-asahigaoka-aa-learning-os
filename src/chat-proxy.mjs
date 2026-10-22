@@ -16,7 +16,7 @@ export function credentialStore(indexedDB){
 export function createChatProxy({apiRoot,store,fetchImpl=fetch}){
   const root=new URL(apiRoot);if(!['https:','http:'].includes(root.protocol)||root.username||root.password)throw Error('Invalid chat relay');
   return async(request,route)=>{
-    if(!/^[a-z0-9/-]+(?:\?download=1)?$/.test(route)||route.includes('//')||!['GET','HEAD','POST','PATCH'].includes(request.method))return json({error:'見つかりません'},404);
+    if(!/^[a-z0-9/-]+(?:\?download=1)?$/.test(route)||route.includes('//')||!['GET','HEAD','POST','PATCH','DELETE'].includes(request.method))return json({error:'見つかりません'},404);
     try{
       const saved=await store.read(),headers=new Headers();for(const name of requestHeaders){const value=request.headers.get(name);if(value!==null)headers.set(name,value);}
       headers.set('X-Rise-Transport','pages');if(tokenOK(saved.token))headers.set('Authorization','Bearer '+saved.token);

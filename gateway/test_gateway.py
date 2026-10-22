@@ -67,6 +67,12 @@ class GatewayTest(unittest.TestCase):
                 parse_request(envelope('status', method))
         self.assertIsNone(NoRedirect().redirect_request(None, None, 302, '', {}, 'https://evil.test'))
 
+    def test_delete_only_accepts_a_single_thread(self):
+        parse_request(envelope('threads/' + FILE, 'DELETE'))
+        for route in ['threads', 'files/' + FILE, 'threads/' + FILE + '/messages']:
+            with self.assertRaises(InvalidRequest):
+                parse_request(envelope(route, 'DELETE'))
+
     def test_invalid_headers_and_bodies(self):
         for headers in [{'origin': 'https://evil.test'}, {'cookie': 'foo'}, {'host': 'evil.test'},
                         {'x-rise-relay': 'secret'}, {'authorization': 'Bearer x\r\nHost: evil'},

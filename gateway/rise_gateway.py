@@ -22,6 +22,7 @@ UUID = r'[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}'
 ROUTES = {
     'GET': rf'(?:status|session|threads|threads/{UUID}|files/{UUID}(?:\?download=1)?)',
     'HEAD': rf'files/{UUID}(?:\?download=1)?',
+    'DELETE': rf'threads/{UUID}',
     'POST': rf'(?:login|logout|recovery|threads|threads/{UUID}/(?:messages|cancel)|uploads|uploads/{UUID}/complete)',
     'PATCH': rf'uploads/{UUID}',
 }
