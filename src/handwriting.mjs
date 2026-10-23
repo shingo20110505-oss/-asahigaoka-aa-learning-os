@@ -1,38 +1,101 @@
 import {esc,button,download} from './ui.mjs';
-import {INK_WIDTH,INK_HEIGHT,inkHistory,inkPoint,paintStroke,paintInk} from './ink.mjs';
+import {INK_WIDTH,INK_HEIGHT,inkPoint,paintStroke,paintInk} from './ink.mjs';
+import {notebookHistory} from './ink-notebook.mjs';
+
 export function handwritingEditor({title,value,onSave,onClose}){
- const history=inkHistory(value),host=document.createElement('dialog'),previous=document.activeElement;host.className='ink-editor';host.setAttribute('aria-label','ノートの手書き');
- host.innerHTML=`<header class="ink-heading"><div><h2>${esc(title)}</h2><p>手書きノート</p></div><div class="actions">${button('最大化','maximize','secondary','aria-pressed="false" aria-label="手書き画面を最大化"')}${button('閉じる','close','secondary')}</div></header><div class="ink-tools" role="toolbar" aria-label="手書きの道具">${button('ペン','pen','secondary','aria-pressed="true"')}${button('消しゴム','eraser','secondary','aria-pressed="false"')}<label>色<select aria-label="ペンの色"><option value="#182d29">黒</option><option value="#2457b2">青</option><option value="#bf3939">赤</option><option value="#186653">緑</option></select></label><label>太さ<select aria-label="線の太さ"><option value="3">細</option><option value="6" selected>普通</option><option value="12">太</option></select></label>${button('↶','undo','secondary','aria-label="手書きを取り消す"')}${button('↷','redo','secondary','aria-label="手書きをやり直す"')}${button('全消去','clear','secondary')}<label><input type="checkbox" data-finger checked>指でも書く</label><label><input type="checkbox" data-grid checked>方眼</label></div><div class="ink-stage"><div class="ink-paper ink-grid"><canvas width="${INK_WIDTH}" height="${INK_HEIGHT}" aria-label="手書きキャンバス。ペン、指、マウスで書けます。"></canvas></div></div><footer class="ink-footer"><div><p data-status role="status">書き込みはこの端末に自動保存します。</p><p data-error role="alert"></p></div>${button('画像を書き出す','export','secondary')}</footer><section class="ink-confirm" hidden><p>まだ保存できていない書き込みがあります。</p><div class="actions">${button('保存して閉じる','save-close','primary')}${button('編集を続ける','continue','secondary')}${button('保存せず閉じる','discard','ghost')}</div></section>`;
- document.body.append(host);const canvas=host.querySelector('canvas'),ctx=canvas.getContext('2d'),paper=host.querySelector('.ink-paper'),stage=host.querySelector('.ink-stage'),status=host.querySelector('[data-status]'),error=host.querySelector('[data-error]');
- let tool='pen',active=null,lastPen=0,changed=0,saved=0,pending=null,timer=null,closed=false,maximized=false;
- const sync=()=>{host.querySelector('[data-action=undo]').disabled=!history.canUndo;host.querySelector('[data-action=redo]').disabled=!history.canRedo;host.querySelector('[data-action=clear]').disabled=!history.strokes.length;};
- const redraw=()=>{paintInk(canvas,{strokes:history.strokes});sync();};
- const resize=()=>{const width=Math.max(1,Math.min(stage.clientWidth-24,(stage.clientHeight-24)*INK_WIDTH/INK_HEIGHT));paper.style.width=width+'px';paper.style.height=width*INK_HEIGHT/INK_WIDTH+'px';};
+ const book=notebookHistory(value),host=document.createElement('dialog'),previous=document.activeElement;
+ host.className='ink-editor ink-maximized';host.setAttribute('aria-label','ノートの手書き');
+ host.innerHTML=`<header class="ink-heading"><div><h2>${esc(title)}</h2><p data-page-heading></p></div><div class="actions">${button('道具を隠す','tools','secondary','aria-expanded="true" aria-controls="ink-toolbar"')}${button('元の表示','maximize','secondary','aria-pressed="true" aria-label="手書き画面を元に戻す"')}${button('閉じる','close','secondary')}</div></header>
+ <div id="ink-toolbar" class="ink-controls">
+  <div class="ink-tools" role="toolbar" aria-label="手書きの道具">
+   <label>道具<select aria-label="書く道具"><option value="pen">ペン</option><option value="highlighter">蛍光ペン</option><option value="eraser">消しゴム</option><option value="line">直線</option><option value="rectangle">四角</option><option value="ellipse">丸</option><option value="pan">移動</option></select></label>
+   <label>色<input type="color" aria-label="ペンの色" value="#182d29"></label><label>太さ<select aria-label="線の太さ"><option value="1">極細</option><option value="3">細</option><option value="6" selected>普通</option><option value="12">太</option><option value="24">極太</option></select></label>
+   ${button('↶','undo','secondary','aria-label="手書きを取り消す"')}${button('↷','redo','secondary','aria-label="手書きをやり直す"')}
+   <label><input type="checkbox" data-finger checked>指でも書く</label>
+   <label>表示<select aria-label="手書きの表示倍率"><option value="width">幅に合わせる</option><option value="fit">ページ全体</option><option value="50">50%</option><option value="75">75%</option><option value="100">100%</option><option value="150">150%</option><option value="200">200%</option><option value="300">300%</option><option value="custom" disabled>ピンチで拡大</option></select></label>
+  </div>
+  <details class="ink-more"><summary>用紙・ページ操作</summary><div class="ink-tools">
+   <label>用紙<select aria-label="用紙の種類"><option value="grid">方眼</option><option value="ruled">罫線</option><option value="blank">無地</option></select></label>
+   ${button('ページを複製','duplicate-page','secondary')}${button('前へ移す','move-before','secondary')}${button('後ろへ移す','move-after','secondary')}${button('ページを削除','delete-page','secondary')}${button('このページを白紙に','clear','secondary')}${button('このページを書き出す','export','secondary')}
+  </div></details>
+ </div>
+ <div class="ink-stage" tabindex="0" aria-label="手書き用紙。移動モードや2本指でスクロールできます。"><div class="ink-paper"><canvas width="${INK_WIDTH}" height="${INK_HEIGHT}" aria-label="手書きキャンバス。ペン、指、マウスで書けます。"></canvas></div></div>
+ <nav class="ink-pages" aria-label="手書きのページ移動">${button('前','previous-page','secondary','aria-label="前のページ"')}<label class="ink-page-select"><span class="sr-only">ページ</span><select aria-label="手書きのページ"></select></label>${button('次','next-page','secondary','aria-label="次のページ"')}${button('＋ ページ','add-page','primary','aria-label="ページを追加"')}</nav>
+ <footer class="ink-footer"><p data-status role="status">この端末に自動保存 · 移動モードか2本指で用紙を動かせます。</p><p data-error role="alert"></p><p data-notice aria-live="polite"></p></footer>
+ <section class="ink-confirm" hidden><p>まだ保存できていない書き込みがあります。</p><div class="actions">${button('保存して閉じる','save-close','primary')}${button('編集を続ける','continue','secondary')}${button('保存せず閉じる','discard','ghost')}</div></section>`;
+ document.body.append(host);
+ const canvas=host.querySelector('canvas'),ctx=canvas.getContext('2d'),paper=host.querySelector('.ink-paper'),stage=host.querySelector('.ink-stage'),status=host.querySelector('[data-status]'),error=host.querySelector('[data-error]'),notice=host.querySelector('[data-notice]'),pageSelect=host.querySelector('[aria-label="手書きのページ"]'),zoomSelect=host.querySelector('[aria-label="手書きの表示倍率"]');
+ let tool='pen',active=null,pan=null,gesture=null,gestureEnded=false,lastPen=0,changed=0,saved=0,pending=null,timer=null,closed=false,maximized=true,zoom='width',customWidth=INK_WIDTH;
+ const touches=new Map(),control=a=>host.querySelector('[data-action="'+a+'"]');
+ const sync=()=>{
+  control('undo').disabled=!book.canUndo;control('redo').disabled=!book.canRedo;control('clear').disabled=!book.page.strokes.length;
+  for(const action of ['previous-page','move-before'])control(action).disabled=book.index===0;
+  for(const action of ['next-page','move-after'])control(action).disabled=book.index===book.pages.length-1;
+  control('delete-page').disabled=book.pages.length===1;
+  pageSelect.innerHTML=book.pages.map((p,i)=>`<option value="${esc(p.id)}" ${i===book.index?'selected':''}>${i+1} / ${book.pages.length} ページ</option>`).join('');
+  host.querySelector('[data-page-heading]').textContent=`手書きノート · ${book.index+1} / ${book.pages.length} ページ`;
+  host.querySelector('[aria-label="用紙の種類"]').value=book.page.paper;
+  paper.className='ink-paper ink-'+book.page.paper;
+ };
+ const redraw=()=>{paintInk(canvas,book.page);sync();};
+ function sizePaper(width){paper.style.width=width+'px';paper.style.height=width*INK_HEIGHT/INK_WIDTH+'px';paper.style.setProperty('--ink-grid-size',32*width/INK_WIDTH+'px');}
+ function resize(){const available=Math.max(120,stage.clientWidth-24);sizePaper(zoom==='width'?available:zoom==='fit'?Math.min(available,Math.max(120,(stage.clientHeight-24)*INK_WIDTH/INK_HEIGHT)):zoom==='custom'?customWidth:INK_WIDTH*Number(zoom)/100);}
  async function flush(){
-  clearTimeout(timer);if(pending)await pending;
-  if(closed||saved===changed)return;
-  pending=(async()=>{while(saved!==changed&&!closed){const revision=changed,snapshot=history.snapshot();status.textContent='保存しています…';error.textContent='';await onSave(snapshot);saved=revision;}status.textContent='この端末に保存済み · オフラインでも使えます。';})().finally(()=>{pending=null;});
-  return pending;
+  clearTimeout(timer);if(pending)await pending;if(closed||saved===changed)return;
+  pending=(async()=>{while(saved!==changed&&!closed){const revision=changed,snapshot=book.snapshot();status.textContent='保存しています…';error.textContent='';await onSave(snapshot);saved=revision;}status.textContent='この端末に保存済み · オフラインでも使えます。';})().finally(()=>{pending=null;});return pending;
  }
  const saveError=e=>{status.textContent='未保存';error.textContent=e.message||'保存できませんでした。画面を閉じずに再試行してください。';};
  const dirty=()=>{changed++;status.textContent='保存待ち…';clearTimeout(timer);timer=setTimeout(()=>flush().catch(saveError),400);sync();};
- function finish(e){if(!active||e&&e.pointerId!==active.id)return;history.add(active.stroke);active=null;dirty();}
- canvas.onpointerdown=e=>{if(active||e.button!==0||e.pointerType==='touch'&&(!host.querySelector('[data-finger]').checked||Date.now()-lastPen<1000))return;if(e.pointerType==='pen')lastPen=Date.now();e.preventDefault();const stroke={tool,color:host.querySelector('[aria-label="ペンの色"]').value,width:Number(host.querySelector('[aria-label="線の太さ"]').value)*(tool==='eraser'?4:1),points:[inkPoint(e.clientX,e.clientY,canvas.getBoundingClientRect())]};active={id:e.pointerId,stroke};canvas.setPointerCapture(e.pointerId);paintStroke(ctx,stroke);};
- canvas.onpointermove=e=>{if(active?.id!==e.pointerId)return;e.preventDefault();if(e.pointerType==='pen')lastPen=Date.now();const samples=e.getCoalescedEvents?.();for(const sample of samples?.length?samples:[e]){const p=inkPoint(sample.clientX,sample.clientY,canvas.getBoundingClientRect()),last=active.stroke.points.at(-1);if(Math.hypot(p.x-last.x,p.y-last.y)<1)continue;active.stroke.points.push(p);paintStroke(ctx,{...active.stroke,points:[last,p]});}};
- canvas.onpointerup=canvas.onpointercancel=canvas.onlostpointercapture=finish;
+ function finish(){if(!active)return;book.add(active.stroke);active=null;dirty();}
+ const center=()=>{const a=[...touches.values()];return{x:(a[0].x+a[1].x)/2,y:(a[0].y+a[1].y)/2,distance:Math.max(1,Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y))};};
+ canvas.onpointerdown=e=>{
+  if(e.pointerType==='touch'&&Date.now()-lastPen<800)return;
+  if(e.pointerType==='touch')touches.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(touches.size>=2){e.preventDefault();active=null;pan=null;redraw();const c=center(),rect=canvas.getBoundingClientRect();gesture={...c,width:rect.width,anchorX:(c.x-rect.left)/rect.width,anchorY:(c.y-rect.top)/rect.height};canvas.setPointerCapture(e.pointerId);return;}
+  if(active||pan||gestureEnded||e.button!==0)return;e.preventDefault();canvas.setPointerCapture(e.pointerId);
+  if(tool==='pan'||e.pointerType==='touch'&&!host.querySelector('[data-finger]').checked){pan={id:e.pointerId,x:e.clientX,y:e.clientY,left:stage.scrollLeft,top:stage.scrollTop};return;}
+  if(e.pointerType==='pen')lastPen=Date.now();
+  const stroke={tool,color:host.querySelector('[aria-label="ペンの色"]').value,width:Math.min(100,Number(host.querySelector('[aria-label="線の太さ"]').value)*(['eraser','highlighter'].includes(tool)?4:1)),points:[inkPoint(e.clientX,e.clientY,canvas.getBoundingClientRect())]};active={id:e.pointerId,stroke};paintStroke(ctx,stroke);
+ };
+ canvas.onpointermove=e=>{
+  if(touches.has(e.pointerId))touches.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(gesture&&touches.size>=2){e.preventDefault();const c=center();zoom='custom';customWidth=Math.max(120,Math.min(4800,gesture.width*c.distance/gesture.distance));zoomSelect.value='custom';resize();const rect=canvas.getBoundingClientRect();stage.scrollLeft+=rect.left+gesture.anchorX*rect.width-c.x;stage.scrollTop+=rect.top+gesture.anchorY*rect.height-c.y;return;}
+  if(pan?.id===e.pointerId){e.preventDefault();stage.scrollLeft=pan.left-(e.clientX-pan.x);stage.scrollTop=pan.top-(e.clientY-pan.y);return;}
+  if(active?.id!==e.pointerId)return;e.preventDefault();if(e.pointerType==='pen')lastPen=Date.now();
+  const shape=['line','rectangle','ellipse'].includes(tool),samples=e.getCoalescedEvents?.();
+  for(const sample of samples?.length?samples:[e]){const p=inkPoint(sample.clientX,sample.clientY,canvas.getBoundingClientRect()),last=active.stroke.points.at(-1);if(Math.hypot(p.x-last.x,p.y-last.y)<1)continue;if(shape)active.stroke.points=[active.stroke.points[0],p];else active.stroke.points.push(p);
+   if(shape||tool==='highlighter'){paintInk(canvas,book.page);paintStroke(ctx,active.stroke);}else paintStroke(ctx,{...active.stroke,points:[last,p]});}
+ };
+ const endPointer=e=>{if(active?.id===e.pointerId)finish();if(pan?.id===e.pointerId)pan=null;touches.delete(e.pointerId);if(gesture&&touches.size<2){gesture=null;gestureEnded=true;}if(!touches.size)gestureEnded=false;};
+ canvas.onpointerup=canvas.onpointercancel=canvas.onlostpointercapture=endPointer;
  const beforeUnload=e=>{if(saved!==changed||active){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',beforeUnload);
  function destroy(){if(closed)return;closed=true;clearTimeout(timer);observer.disconnect();window.removeEventListener('beforeunload',beforeUnload);host.close();host.remove();if(!document.querySelector('.ink-editor[open]'))document.body.classList.remove('ink-editor-open');previous?.isConnected&&previous.focus({preventScroll:true});onClose?.();}
  async function close(){finish();try{await flush();destroy();}catch(e){saveError(e);host.querySelector('.ink-confirm').hidden=false;}}
+ function afterPageChange(){redraw();resize();stage.scrollTo(0,0);dirty();}
  host.onclick=async e=>{const action=e.target.closest('[data-action]')?.dataset.action;if(!action)return;
-  try{if(action==='close'||action==='save-close')return await close();if(action==='discard'){if(pending)try{await pending;}catch{}return destroy();}if(action==='continue'){host.querySelector('.ink-confirm').hidden=true;return;}
-   if(action==='pen'||action==='eraser'){tool=action;for(const a of ['pen','eraser'])host.querySelector('[data-action='+a+']').setAttribute('aria-pressed',String(a===tool));}
-   if(action==='undo'||action==='redo'){finish();if(history[action]()){redraw();dirty();}}
-   if(action==='clear'&&history.strokes.length){finish();history.clear();redraw();dirty();}
-   if(action==='maximize'){maximized=!maximized;host.classList.toggle('ink-maximized',maximized);const b=e.target.closest('button');b.textContent=maximized?'元の表示':'最大化';b.setAttribute('aria-pressed',String(maximized));b.setAttribute('aria-label',maximized?'手書き画面を元に戻す':'手書き画面を最大化');resize();}
-   if(action==='export'){finish();const out=document.createElement('canvas');out.width=INK_WIDTH;out.height=INK_HEIGHT;const context=out.getContext('2d');context.fillStyle='white';context.fillRect(0,0,out.width,out.height);context.drawImage(canvas,0,0);const blob=await new Promise(resolve=>out.toBlob(resolve,'image/png'));if(!blob)throw Error('画像を書き出せませんでした');download((title.replace(/[<>:"/\\|?*]/g,'_')||'note')+'-手書き.png',blob,'image/png');}
+  try{
+   if(action==='close'||action==='save-close')return await close();
+   if(action==='discard'){if(pending)try{await pending;}catch{}return destroy();}
+   if(action==='continue'){host.querySelector('.ink-confirm').hidden=true;return;}
+   finish();notice.textContent='';
+   if(action==='undo'||action==='redo'){if(book[action]())afterPageChange();}
+   if(action==='clear'&&book.clear()){redraw();dirty();notice.textContent='白紙にしました。「取り消す」で戻せます。';}
+   if(action==='add-page'||action==='duplicate-page'){book.addPage(action==='duplicate-page');afterPageChange();}
+   if(action==='previous-page'||action==='next-page'){const p=book.pages[book.index+(action==='previous-page'?-1:1)];if(p&&book.select(p.id))afterPageChange();}
+   if(action==='move-before'||action==='move-after'){if(book.movePage(action==='move-before'?-1:1))afterPageChange();}
+   if(action==='delete-page'&&book.removePage()){afterPageChange();notice.textContent='ページを削除しました。「取り消す」で戻せます。';}
+   if(action==='tools'){const controls=host.querySelector('.ink-controls');controls.hidden=!controls.hidden;control('tools').textContent=controls.hidden?'道具を表示':'道具を隠す';control('tools').setAttribute('aria-expanded',String(!controls.hidden));resize();}
+   if(action==='maximize'){maximized=!maximized;host.classList.toggle('ink-maximized',maximized);control('maximize').textContent=maximized?'元の表示':'最大化';control('maximize').setAttribute('aria-pressed',String(maximized));control('maximize').setAttribute('aria-label',maximized?'手書き画面を元に戻す':'手書き画面を最大化');resize();}
+   if(action==='export'){const out=document.createElement('canvas');out.width=INK_WIDTH;out.height=INK_HEIGHT;const context=out.getContext('2d');context.fillStyle='white';context.fillRect(0,0,out.width,out.height);context.drawImage(canvas,0,0);const blob=await new Promise(resolve=>out.toBlob(resolve,'image/png'));if(!blob)throw Error('画像を書き出せませんでした');download((title.replace(/[<>:"/\\|?*]/g,'_')||'note')+`-p${book.index+1}.png`,blob,'image/png');}
   }catch(e){saveError(e);}
  };
- host.querySelector('[data-grid]').onchange=e=>paper.classList.toggle('ink-grid',e.target.checked);
+ host.onchange=e=>{finish();const label=e.target.getAttribute('aria-label');
+  if(label==='書く道具'){tool=e.target.value;canvas.classList.toggle('ink-pan',tool==='pan');}
+  if(label==='手書きのページ'&&book.select(e.target.value))afterPageChange();
+  if(label==='用紙の種類'&&book.setPaper(e.target.value)){redraw();dirty();}
+  if(label==='手書きの表示倍率'){zoom=e.target.value;resize();stage.scrollTo(0,0);}
+ };
+ host.onkeydown=e=>{if(e.target.matches('input,textarea,select')||!(e.ctrlKey||e.metaKey))return;const key=e.key.toLowerCase();if(key==='z'||key==='y'){e.preventDefault();control(key==='y'||e.shiftKey?'redo':'undo').click();}};
  host.addEventListener('cancel',e=>{e.preventDefault();close();});
  const observer=new ResizeObserver(resize);observer.observe(stage);host.showModal();document.body.classList.add('ink-editor-open');redraw();resize();
  return{close,async dispose(){finish();try{await flush();destroy();}catch(e){saveError(e);host.querySelector('.ink-confirm').hidden=false;}}};
