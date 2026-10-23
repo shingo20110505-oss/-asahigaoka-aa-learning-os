@@ -41,5 +41,5 @@ export function notes({main,store,tail,chat}){
   if(a==='archive'){const restore=Boolean(x.archived);await store.change(s=>{s.notes.find(n=>n.id===x.id).archived=!restore;});showArchived=false;selected=restore?x.id:'';draw();toast(restore?'ノートを戻しました':'ノートを保管しました。保管したノートから戻せます。');}
   if(a==='card')dialog('ノートから暗記カードを作る',field('問い','question',x.title,'text','required')+area('答え','answer',x.body||'','required'),{onSubmit:async f=>{await store.change(s=>s.cards.unshift({id:uid(),title:String(f.get('question')),question:String(f.get('question')),answer:String(f.get('answer')),subject:x.subject,tags:x.tags||[],source:'notes/'+x.id,createdAt:Date.now()}));toast('暗記スタジオに追加しました');}});
   if(a==='export-note')download((x.title.replace(/[<>:"/\\|?*]/g,'_')||'note')+'.txt',x.title+'\n\n'+(x.body||''),'text/plain');
- });draw();return()=>{disposed=true;viewer?.close();ink?.dispose();main.onclick=null;main.oninput=null;};
+ });draw();return Object.assign(async()=>{disposed=true;viewer?.close();await ink?.dispose();main.onclick=null;main.oninput=null;},{refresh:draw,suspend:async()=>{viewer?.close();await ink?.dispose();}});
 }

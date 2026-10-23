@@ -3,6 +3,7 @@ import {uid, dayKey} from '../domain.mjs';
 import {paragraphs, readingItems, isReadingDue, planReadingReview, readingNoteBody, ReadingClock} from '../reading-domain.mjs';
 import {readingGuide, paragraphRoles} from '../reading-guide.mjs';
 import {readingAssist} from '../reading-assist.mjs';
+import {ensureReadingWordCard,readingWordCard} from '../reading-vocabulary.mjs';
 
 export async function mount(ctx) {
   const {main, store, data, tail} = ctx, [index,baseLexicon,dictionary] = await Promise.all([data('reading/index'),data('reading-lexicon'),data('reading-dictionary')]);const lexicon={...dictionary,...baseLexicon};
@@ -46,6 +47,7 @@ export async function mount(ctx) {
   function library() {
     ++openTicket; assist?.dispose();assist=null;focused=false;document.body.classList.remove('reading-focused');clearTimeout(scrollTimer); stopSpeech(); clock.pause(); current = null; selection = '';
     if (location.hash.startsWith('#/reading/')) history.pushState(null, '', '#/reading');
+    ctx.rememberPath?.();
     const last = index.find(x => x.id === store.state.settings.lastReading);
     const due = index.filter(x => isReadingDue(store.state.reading[x.id])).length;
     const completed = index.filter(x => store.state.reading[x.id]?.completedAt).length;
@@ -69,7 +71,7 @@ export async function mount(ctx) {
   async function open(id) {
     const ticket = ++openTicket;
     clock.pause();
-    try { await save(); } catch (error) { if (!paused && !document.hidden) clock.start(); throw error; }
+    try { await save(); } catch (error) { if (!paused && !document.hidden && ctx.active()) clock.start(); throw error; }
     clearTimeout(memoTimer); clearTimeout(scrollTimer);
     let book;
     try { book = await data('reading/'+id); } catch (error) { if (!paused && !document.hidden && current && ctx.active()) clock.start(); throw error; }
@@ -81,6 +83,7 @@ export async function mount(ctx) {
     if (!document.hidden) clock.start();
     draft = record().memo || ''; memoVersion = savedMemoVersion = 0; selection = ''; selectionParagraph = null; reveal = parallel = false;
     if (location.hash !== '#/reading/'+id) history.pushState(null,'','#/reading/'+id);
+    ctx.rememberPath?.();
     draw(); main.querySelector('h1')?.focus({preventScroll:true}); window.scrollTo({top:0});
   }
   const marked=(text,index)=>assist.paragraph(text,index,signals);
@@ -105,8 +108,9 @@ export async function mount(ctx) {
     const answers=record().quiz||{};
     host.innerHTML=`<h2>本文の根拠を確かめる</h2><p class="small muted">答えを選ぶと、根拠となる英文と解説が表示されます。</p>${questions.map((q,i)=>{const chosen=answers[i],done=Number.isInteger(chosen);return `<article class="reader-question"><h3>${i+1}. ${esc(q.prompt)}</h3><div class="reader-choices">${q.options.map((text,j)=>button(esc(text),'quiz-answer','secondary'+(done&&j===q.answer?' is-correct':'')+(done&&j===chosen&&j!==q.answer?' is-incorrect':''),`data-question="${i}" data-choice="${j}" ${done?'disabled':''} aria-pressed="${chosen===j}"`)).join('')}</div>${done?`<div class="reader-quiz-answer" role="status"><strong>${chosen===q.answer?'正解です':'正解：'+esc(q.options[q.answer])}</strong><blockquote lang="en">${esc(q.evidence)}</blockquote><p>${esc(q.explanation)}</p>${button('もう一度解く','quiz-reset','ghost small',`data-question="${i}"`)}</div>`:''}</article>`;}).join('')}`;
   }
-  function drawWords(){const host=main.querySelector('#reader-saved-words');if(!host)return;const words=record().words||[];host.innerHTML=`<h2>この英文で覚えたい語句 <small>${words.length}件</small></h2><p class="small muted">意味を思い出してから答えを開きましょう。</p>${words.length?words.map(w=>`<article class="reader-saved-word"><div class="card-meta"><strong lang="en">${esc(w.word)}</strong>${w.known?badge('覚えた','green'):''}</div><blockquote lang="en">${esc(w.sentence)}</blockquote>${revealedWords.has(w.id)?`<div class="answer-panel">${esc(w.meaning||'意味はAIや辞書で確認しましょう。')}${w.phrases.map(p=>`<p><b lang="en">${esc(p.label)}</b>：${esc(p.meaning)}</p>`).join('')}</div>`:''}<div class="actions">${button(revealedWords.has(w.id)?'意味を隠す':'意味を確認','word-reveal','secondary small',`data-id="${w.id}"`)}${button(w.known?'もう一度復習':'覚えた','word-known','ghost small',`data-id="${w.id}"`)}${button('暗記カードに追加','word-card','ghost small',`data-id="${w.id}"`)}${button('外す','word-remove','ghost small',`data-id="${w.id}"`)}</div></article>`).join(''):'<p class="muted small">単語の解説から「復習リストに保存」で追加できます。</p>'}`;}
+  function drawWords(){const host=main.querySelector('#reader-saved-words');if(!host)return;const words=record().words||[];host.innerHTML=`<h2>この英文で覚えたい語句 <small>${words.length}件</small></h2><p class="small muted">意味を思い出してから答えを開きましょう。保存した語句は暗記カードにも追加されます。</p>${words.length?link('暗記スタジオで復習する','memory','secondary small'):''}${words.length?words.map(w=>`<article class="reader-saved-word"><div class="card-meta"><strong lang="en">${esc(w.word)}</strong>${w.known?badge('覚えた','green'):''}</div><blockquote lang="en">${esc(w.sentence)}</blockquote>${revealedWords.has(w.id)?`<div class="answer-panel">${esc(w.meaning||'意味はAIや辞書で確認しましょう。')}${w.phrases.map(p=>`<p><b lang="en">${esc(p.label)}</b>：${esc(p.meaning)}</p>`).join('')}</div>`:''}<div class="actions">${button(revealedWords.has(w.id)?'意味を隠す':'意味を確認','word-reveal','secondary small',`data-id="${w.id}"`)}${button(w.known?'もう一度復習':'覚えた','word-known','ghost small',`data-id="${w.id}"`)}${button(readingWordCard(store.state,current.id,w)?'暗記カードに保存済み':'暗記カードに追加','word-card','ghost small',`data-id="${w.id}" ${readingWordCard(store.state,current.id,w)?'disabled':''}`)}${button('外す','word-remove','ghost small',`data-id="${w.id}"`)}</div></article>`).join(''):'<p class="muted small">単語の解説から「復習リストに保存」で追加できます。</p>'}`;}
   function chosen() {
+    if (!ctx.active()) return;
     const s=window.getSelection(), host=main.querySelector('#passage');
     if (s?.anchorNode && s.focusNode && host?.contains(s.anchorNode) && host.contains(s.focusNode) && s.toString().trim()) {
       selection=s.toString().trim().slice(0,4000);
@@ -114,16 +118,17 @@ export async function mount(ctx) {
     }
   }
   function scroll() {
+    if (!ctx.active()) return;
     clearTimeout(scrollTimer); const id=current?.id;
     scrollTimer=setTimeout(()=>{
-      if (!id || current?.id!==id || disposed) return;
+      if (!id || current?.id!==id || disposed || !ctx.active()) return;
       const found=[...main.querySelectorAll('[data-paragraph]')].find(x=>x.getBoundingClientRect().bottom>90);
       if (found) {const paragraph=Number(found.dataset.paragraph);store.change(s=>{s.reading[id]={...s.reading[id],paragraph};}).catch(()=>{});}
     },500);
   }
   function pagehide() { clock.pause(); save().catch(()=>{}); }
   function visibility() {
-    if (!current) return;
+    if (!current || !ctx.active()) return;
     if (document.hidden) {clock.pause();stopSpeech();} else if (!paused) clock.start();
     save().catch(()=>{});
   }
@@ -168,7 +173,7 @@ export async function mount(ctx) {
       if(a==='focus-reader'){focused=!focused;document.body.classList.toggle('reading-focused',focused);draw();return;}
       if(a==='reader-chat'){assist?.close();await ctx.chat.show();return;}
       if(a==='ask-paragraph'){const text=paragraphs(current.passage)[Number(b.dataset.paragraphIndex)];await ctx.chat.ask({title:current.title,quote:text,question:'この段落の内容と、読み解くうえで重要な表現を日本語で説明してください。',send:true});return;}
-      if(a.startsWith('word-')){const word=(record().words||[]).find(w=>w.id===b.dataset.id);if(!word)return;if(a==='word-reveal'){revealedWords.has(word.id)?revealedWords.delete(word.id):revealedWords.add(word.id);}if(a==='word-known')await store.change(s=>{const w=s.reading[id].words.find(w=>w.id===word.id);w.known=!w.known;});if(a==='word-remove')await store.change(s=>{s.reading[id].words=s.reading[id].words.filter(w=>w.id!==word.id);});if(a==='word-card'){const source='reading-word/'+id+'/'+word.key;await store.change(s=>{if(!s.cards.some(c=>c.source===source))s.cards.unshift({id:uid(),title:word.word,question:word.word,answer:word.meaning||'意味を確認して入力してください。',context:word.sentence,subject:'英語',tags:['長文の語句'],source,createdAt:Date.now()});});toast('暗記カードに追加しました');}drawWords();return;}
+      if(a.startsWith('word-')){const word=(record().words||[]).find(w=>w.id===b.dataset.id);if(!word)return;if(a==='word-reveal'){revealedWords.has(word.id)?revealedWords.delete(word.id):revealedWords.add(word.id);}if(a==='word-known')await store.change(s=>{const w=s.reading[id].words.find(w=>w.id===word.id);w.known=!w.known;});if(a==='word-remove')await store.change(s=>{s.reading[id].words=s.reading[id].words.filter(w=>w.id!==word.id);});if(a==='word-card'){await store.change(s=>ensureReadingWordCard(s,id,word));toast('暗記カードに保存しました');}drawWords();return;}
 
       if(a==='resume')main.querySelector(`[data-paragraph="${record().paragraph}"]`)?.scrollIntoView({block:'start',behavior:'instant'});
       if(a==='translation'){reveal=!reveal;draw();}
@@ -196,10 +201,18 @@ export async function mount(ctx) {
   };
   main.addEventListener('rise:reading-word-saved',drawWords);
   document.addEventListener('selectionchange',chosen);document.addEventListener('visibilitychange',visibility);window.addEventListener('pagehide',pagehide);window.addEventListener('scroll',scroll,{passive:true});
-  const ticker=setInterval(()=>{const el=main.querySelector('#read-time');if(el)el.textContent=duration(totalTime());},1000);
-  const persist=setInterval(()=>{if(!disposed)save().catch(()=>{});},15000);
-  const dispose=()=>{assist?.dispose();main.removeEventListener('rise:reading-word-saved',drawWords);document.body.classList.remove('reading-focused');disposed=true;++openTicket;clock.pause();clearTimeout(memoTimer);clearTimeout(scrollTimer);clearInterval(ticker);clearInterval(persist);document.removeEventListener('selectionchange',chosen);document.removeEventListener('visibilitychange',visibility);window.removeEventListener('pagehide',pagehide);window.removeEventListener('scroll',scroll);stopSpeech();save().catch(()=>{});main.onclick=null;main.oninput=null;main.onchange=null;};
+  let ticker,persist;
+  const startTimers=()=>{clearInterval(ticker);clearInterval(persist);
+    ticker=setInterval(()=>{if(!ctx.active())return;const el=main.querySelector('#read-time');if(el)el.textContent=duration(totalTime());},1000);
+    persist=setInterval(()=>{if(!disposed&&ctx.active())save().catch(()=>{});},15000);
+  };
+  const suspend=async()=>{++openTicket;clock.pause();clearTimeout(memoTimer);clearTimeout(scrollTimer);clearInterval(ticker);clearInterval(persist);assist?.close();stopSpeech();document.body.classList.remove('reading-focused');await save();};
+  const dispose=async()=>{assist?.dispose();main.removeEventListener('rise:reading-word-saved',drawWords);if(main.isConnected){document.body.classList.remove('reading-focused');stopSpeech();}disposed=true;++openTicket;clock.pause();clearTimeout(memoTimer);clearTimeout(scrollTimer);clearInterval(ticker);clearInterval(persist);document.removeEventListener('selectionchange',chosen);document.removeEventListener('visibilitychange',visibility);window.removeEventListener('pagehide',pagehide);window.removeEventListener('scroll',scroll);main.onclick=null;main.oninput=null;main.onchange=null;await save();};
+  dispose.suspend=suspend;
+  dispose.flush=save;
+  dispose.resume=()=>{document.body.classList.toggle('reading-focused',focused);if(current&&!paused&&!document.hidden)clock.start();memoStatus();startTimers();};
+  startTimers();
   dispose.refresh=()=>{if(current){drawWords();drawQuiz();if(memoVersion===savedMemoVersion){draft=record().memo||'';const el=main.querySelector('#reading-memo');if(el)el.value=draft;}}else updateList();};
-  try {if(tail&&index.some(x=>x.id===tail))await open(tail);else library();} catch(error) {dispose();throw error;}
+  try {if(tail&&index.some(x=>x.id===tail))await open(tail);else library();} catch(error) {await dispose();throw error;}
   return dispose;
 }
