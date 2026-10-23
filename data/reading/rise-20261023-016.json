@@ -1,0 +1,34 @@
+{
+  "id": "rise-20261023-016",
+  "title": "A Message People Could Act On",
+  "level": 4,
+  "topic": "防災・言語",
+  "questions": [
+    {
+      "prompt": "単純に情報を削ることが適切でなかった理由はどれですか。",
+      "options": [
+        "長い文なら必ず正確だから。",
+        "詳細の中に、一部の人の行動に欠かせない情報があったから。",
+        "誰も短い文を読めなかったから。"
+      ],
+      "answer": 1,
+      "evidence": "could determine whether another reader was able to act",
+      "explanation": "バスや介助者など、利用者によって不可欠な情報が異なります。"
+    },
+    {
+      "prompt": "改善後に重視した評価はどれですか。",
+      "options": [
+        "作成者の満足度だけ。",
+        "文の短さだけ。",
+        "利用者が情報を見つけ、行動に結びつけられるか。"
+      ],
+      "answer": 2,
+      "evidence": "whether people could find and use that information",
+      "explanation": "情報の存在から、利用者が使えるかへ評価の視点が変わりました。"
+    }
+  ],
+  "passage": "During a town emergency exercise, volunteers tested a message telling residents to move to a temporary shelter. The notice used official terms and included several long sentences. Every required detail was present, so its writers expected it to work well. Yet when participants were asked to explain their next action, some could not identify the shelter, and others confused the starting time with the deadline.\n\nThe volunteers first considered making the notice shorter by removing details. A resident pointed out that the bus route mattered to people who could not walk far. Another needed to know whether an assistant could accompany her. What looked like extra information to one reader could determine whether another reader was able to act. Shortening the message without understanding its users could make it less useful.\n\nThey rewrote the main instruction as a short sequence: who should move, where they should go, and by what time. Additional information appeared under clear headings. A map used both written names and symbols, so a color difference was not the only way to identify a route. Translations were checked by people familiar with the languages, and a telephone contact was included for questions that the notice could not answer.\n\nIn a second exercise, different participants tried to use the revised notice without help from its writers. Their questions revealed two remaining problems, which the volunteers corrected. They had moved from asking whether the notice contained all the information to asking whether people could find and use that information. The revised message was not the shortest version they could have written. It was the version that had been tested against the actions it was meant to support.",
+  "translation": "町の防災訓練で、避難先への移動を伝える通知を試しました。専門的な表現と長い文が使われ、必要な情報はすべて入っていました。しかし参加者に次の行動を説明してもらうと、場所がわからない人や、開始時刻と期限を取り違える人がいました。\n\nボランティアは情報を削って短くしようとしましたが、遠くまで歩けない人にはバス経路が重要で、介助者の同行可否を知る必要がある人もいました。一人には余分に見える情報が、別の人には行動できるかを左右します。利用者を理解せず短くすると、かえって役立たなくなりかねません。\n\n中心の指示を、誰が・どこへ・いつまでに移動するかという短い順序に書き直しました。追加情報には明確な見出しを付けました。地図は色の違いだけに頼らず地名と記号を併用し、翻訳は言語に詳しい人が確認しました。通知だけでは解決できない質問のために電話連絡先も載せました。\n\n二回目は別の参加者が、作成者の助けなしに通知を使いました。質問から残る二つの問題がわかり、修正しました。情報が全部あるかという問いから、必要な情報を見つけて使えるかという問いに進んだのです。完成版は最短の文ではなく、支えるべき行動に照らして試された文でした。",
+  "origin": "RISE original",
+  "addedAt": "2026-10-23"
+}

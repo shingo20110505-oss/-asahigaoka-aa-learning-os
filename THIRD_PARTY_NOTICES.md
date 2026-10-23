@@ -28,3 +28,13 @@
 - 宮沢賢治「よだかの星」: https://www.aozora.gr.jp/cards/000081/files/473_42318.html
 
 青空文庫の入力・校正・公開に携わったボランティアへ謝意を表します。本文は参照先と照合できる短い引用に限定し、アプリ内では「著作権保護期間満了」と明記します。
+
+## EJDict / EJDictHand
+
+英語リーダーの補助辞書 `data/reading-dictionary.json` は、[くじらはんどのEJDict](https://github.com/kujirahand/EJDict) の `src/a.txt`〜`src/z.txt` から、教材に必要な見出し語を抽出・JSON化したものです。
+
+- ライセンス：[CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
+- 固定した版：`9663055d59a8cb1a35078a71db7a09ff39305828`
+- 生成スクリプト：`scripts/build-reading-dictionary.mjs`
+- RISEの既存語彙・独自の説明を優先し、未収録語に補助辞書を使用します。補助辞書の語義は文脈全体の翻訳ではありません。
+- 文法確認に使用した一次資料は `data/reading-sources.json` に記載。文法解説・追加長文20本・設問・和訳は本アプリ用の独自作成です。

@@ -1,0 +1,34 @@
+{
+  "id": "rise-20261023-017",
+  "title": "The Fairest Schedule Was Not a Single Number",
+  "level": 5,
+  "topic": "技術・社会",
+  "questions": [
+    {
+      "prompt": "最初のプログラムの問題として最も適切なものはどれですか。",
+      "options": [
+        "時間の合計を計算できなかった。",
+        "公平さを、同じ時間数という一つの基準だけで扱った。",
+        "当番を一つも割り振らなかった。"
+      ],
+      "answer": 1,
+      "evidence": "they were no longer mistaken for a complete account of fairness",
+      "explanation": "合計時間は正しくても、交通費や移動回数などの負担の違いを捉えていませんでした。"
+    },
+    {
+      "prompt": "改善後も人の判断を残した理由はどれですか。",
+      "options": [
+        "希望の衝突や例外への対応には、説明と責任を伴う判断が必要だから。",
+        "計算結果を誰にも見せたくないから。",
+        "全員の家庭事情を公開するため。"
+      ],
+      "answer": 0,
+      "evidence": "a named coordinator remained responsible",
+      "explanation": "機械が予定案を出しても、調整・異議・判断理由を引き受ける人が必要でした。"
+    }
+  ],
+  "passage": "A student volunteer group used a simple program to assign weekend duties. The program gave everyone the same number of hours, which seemed an obvious definition of fairness. It produced a schedule in seconds, ending the long meetings that had previously been required. After a month, however, several members said that the new system was less fair than the old discussions had been. The programmer was puzzled: the totals were almost identical.\n\nThe problem became clearer when members described the hours themselves. An early duty required one student to take a costly taxi because no bus was running. Another student had been assigned three separate short duties rather than one longer visit, creating extra travel. Someone who had listed a time as available had meant that it was possible in an emergency, not that it was equally convenient. The program treated these distinctions as if they did not exist because nobody had represented them in its rules.\n\nThe group could have demanded increasingly detailed personal information, but that would have created a different problem. Members should not have to explain private family circumstances to every organizer simply to request a change. Instead, they added broad preferences, allowed people to mark certain times as unavailable, and introduced a confidential way to ask for adjustments. The program suggested a draft schedule; a named coordinator remained responsible for reviewing requests and explaining decisions.\n\nThis approach did not produce a perfect schedule. Two reasonable requests could still conflict, and accommodating one person sometimes increased another person's burden. The group kept a record of repeated inconveniences so that the same members would not always make the sacrifices. Equal totals remained useful, but they were no longer mistaken for a complete account of fairness. Automation had made one calculation easier. It had not removed the need to decide which differences mattered, who could challenge a result, or how responsibility should be shared when no arrangement satisfied everyone.",
+  "translation": "生徒のボランティア団体は、週末当番をプログラムで割り振りました。全員の時間を同じにするのが公平に思え、長い会議が数秒で済むようになりました。しかし一か月後、以前より不公平だという声が出ました。合計時間はほぼ同じなのに、と作成者は戸惑いました。\n\n早朝当番にはバスがなく高いタクシー代がかかる人がいました。一回の長い当番でなく三回の短い当番になり、移動が増えた人もいました。「可能」と登録した時間も、緊急なら行けるだけで、他の時間と同じ都合のよさではない場合がありました。ルールに表現されていない違いを、プログラムは存在しないものとして扱っていました。\n\n細かな個人情報を求めることもできましたが、別の問題を生みます。変更を頼むためだけに家庭の事情を全担当者へ説明すべきではありません。そこで大まかな希望と不可時間を登録できるようにし、事情を非公開で伝えて調整を求める方法を設けました。プログラムは予定案を出し、担当者が依頼の検討と判断の説明に責任を持ちました。\n\n完全な予定ができるわけではありません。妥当な希望同士が衝突し、一人への配慮が別の人の負担を増やすこともあります。同じ人ばかりが譲らないよう、繰り返す不都合も記録しました。時間の平等は有用でも公平さのすべてではありません。自動化は計算を容易にしましたが、考慮する違い、異議を伝える方法、全員が満足しないときの責任分担を決める必要は残ります。",
+  "origin": "RISE original",
+  "addedAt": "2026-10-23"
+}

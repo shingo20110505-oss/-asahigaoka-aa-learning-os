@@ -1,0 +1,34 @@
+{
+  "id": "rise-20261023-004",
+  "title": "The Last Page of the Recipe",
+  "level": 1,
+  "topic": "暮らし",
+  "questions": [
+    {
+      "prompt": "最初の写真に足りなかった情報はどれですか。",
+      "options": [
+        "野菜の名前。",
+        "水の量と煮る時間。",
+        "買い物袋の色。"
+      ],
+      "answer": 1,
+      "evidence": "how much water to add and how long to cook the soup",
+      "explanation": "二つ目のページに、水の量と調理時間がありました。"
+    },
+    {
+      "prompt": "半分の量を作った理由はどれですか。",
+      "options": [
+        "6人分の作り方に対して食べる人が3人だったから。",
+        "野菜を半分しか買えなかったから。",
+        "鍋が壊れていたから。"
+      ],
+      "answer": 0,
+      "evidence": "Only three people would eat at home that evening.",
+      "explanation": "作り方の分量は6人分、実際に食べるのは3人なので半分にしました。"
+    }
+  ],
+  "passage": "Tomo wanted to make vegetable soup for his family. He found a recipe in an old notebook and took a picture of the page. At the shop, he bought all the vegetables in the picture. He was proud that he had remembered to bring his own shopping bag. When he got home, he put everything on the kitchen table.\n\nHe washed and cut the vegetables. Then he read the last line in his picture: \"Put the vegetables into the pot and follow the directions on the next page.\" Tomo had photographed only the first page. The second page explained how much water to add and how long to cook the soup. Fortunately, the notebook was still on the shelf.\n\nHis grandmother helped him check the complete recipe. She also pointed to a note at the bottom. It said that the amounts were for six people. Only three people would eat at home that evening. They decided to make half the amount and keep the remaining vegetables for the next day.\n\nThe soup tasted good. Later, Tomo took pictures of both pages and added a short note: \"Read everything before starting.\" He understood that having a clear picture was useful, but checking whether the information was complete was just as important.",
+  "translation": "トモは家族のために野菜スープを作ろうと思いました。古いノートで作り方を見つけ、そのページを撮影しました。店では、写真に写っている野菜をすべて買いました。買い物袋も忘れず持参したので、うまく準備できたと思っていました。家に帰ると、材料を台所の机に並べました。\n\n野菜を洗って切ってから、写真の最後の行を読みました。「野菜を鍋に入れ、次のページの手順に従います」と書いてあります。トモが撮影したのは最初のページだけでした。二つ目のページには、水の量と煮る時間が書かれていました。幸い、ノートはまだ棚にありました。\n\n祖母と一緒に作り方全体を確認しました。祖母はページの下の注意書きも指さしました。分量は6人分と書かれていましたが、その晩に家で食べるのは3人だけでした。半分の量を作り、残りの野菜は翌日に使うことにしました。\n\nスープはおいしくできました。後でトモは両方のページを撮影し、「始める前に全部読む」と短く書き添えました。鮮明な写真は役に立ちますが、必要な情報がすべてそろっているかを確かめることも同じくらい重要だとわかりました。",
+  "origin": "RISE original",
+  "addedAt": "2026-10-23"
+}

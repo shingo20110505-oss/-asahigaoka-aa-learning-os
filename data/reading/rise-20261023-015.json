@@ -1,0 +1,34 @@
+{
+  "id": "rise-20261023-015",
+  "title": "The Garden on the Other Side of Town",
+  "level": 4,
+  "topic": "科学・地域",
+  "questions": [
+    {
+      "prompt": "最初の二校の比較から断定できなかったことはどれですか。",
+      "options": [
+        "北校に畑があったこと。",
+        "収穫量の違いが落ち葉だけによって生じたこと。",
+        "二校が活動に参加したこと。"
+      ],
+      "answer": 1,
+      "evidence": "did not isolate the effect of the leaves",
+      "explanation": "日照・土・品種も異なり、落ち葉だけの効果を分離できませんでした。"
+    },
+    {
+      "prompt": "二回目の実験で改善した点はどれですか。",
+      "options": [
+        "各校内で条件を近づけて覆いの有無を比べた。",
+        "結果を見てから方法を決めた。",
+        "雨量を記録しなくなった。"
+      ],
+      "answer": 0,
+      "evidence": "compared covered sections with uncovered ones",
+      "explanation": "同じ畑・品種の中で比較し、他の条件の違いを減らしました。"
+    }
+  ],
+  "passage": "Two schools joined a project to grow vegetables with less water. Students at North School chose a thick covering of fallen leaves for the soil. Those at South School left the soil uncovered. At the end of the month, North School had used less water and harvested more vegetables. A student proposed announcing that leaves had caused the improvement, since the difference appeared large and useful.\n\nBefore the announcement, the groups exchanged photographs and notes. North School's garden received afternoon shade, while South School's was exposed to sunlight all day. The soil and varieties of vegetables were different too. Neither group had acted carelessly: each had worked with the garden available to it. Nevertheless, comparing the final totals did not isolate the effect of the leaves.\n\nThe next term, both schools divided their gardens into several smaller sections. Within each garden, they used the same vegetable variety and compared covered sections with uncovered ones. They recorded rainfall as well as water added by hand. The new design did not remove every source of uncertainty, but it allowed each school to make a comparison under more similar conditions. They agreed on the method before seeing the results.\n\nThe leaves helped in some sections more than in others. Rather than treating this variation as an embarrassment, the students asked what might explain it. A useful method might depend on the place where it was used. Their report therefore described the gardens and the limits of their observations alongside the results. Someone reading only a bold headline would learn less than someone who could see how the comparison had actually been made.",
+  "translation": "二校が節水栽培の活動に参加しました。北校は土を落ち葉で厚く覆い、南校は覆いませんでした。一か月後、北校は水の使用量が少なく収穫量も多かったため、ある生徒は落ち葉が改善の原因だと発表しようと提案しました。差は大きく、役立つように見えたからです。\n\n発表前に写真と記録を交換すると、北校の畑は午後に日陰になり、南校は一日中日が当たっていました。土や野菜の品種も違いました。どちらも使える畑で取り組んだので、不注意だったわけではありません。それでも合計値の比較だけでは落ち葉の効果を取り出せません。\n\n次の学期、両校とも畑を小区画に分けました。各校内では品種をそろえ、覆う区画と覆わない区画を比較し、手で加えた水だけでなく雨量も記録しました。不確かさをすべて除けたわけではありませんが、より近い条件で比較できました。結果を見る前に方法を決めたのです。\n\n落ち葉の効果は区画によって異なりました。生徒たちはその違いを恥ずかしいこととせず、説明できる要因を考えました。方法の有効性は使う場所にも左右されるかもしれません。報告には結果とともに畑の条件と観察の限界を示しました。大きな見出しだけより、比較の方法までわかる方が得られる情報は多いのです。",
+  "origin": "RISE original",
+  "addedAt": "2026-10-23"
+}

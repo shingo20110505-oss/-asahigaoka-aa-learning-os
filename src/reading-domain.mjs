@@ -8,16 +8,18 @@ export function readingItems(index, records, {level = '全部', filter = 'すべ
   const terms = normalized(query).split(/\s+/).filter(Boolean);
   const result = index.filter(item => {
     const p = records[item.id] || {};
-    const haystack = normalized([item.title, p.memo, ...Object.values(p.paragraphNotes || {})].join(' '));
+    const haystack = normalized([item.title, item.topic, p.memo, ...Object.values(p.paragraphNotes || {})].join(' '));
     return (level === '全部' || item.level === Number(level)) && terms.every(t => haystack.includes(t)) &&
       (filter !== '未読' || !p.lastOpened && !p.completedAt) &&
       (filter !== '読みかけ' || p.lastOpened && !p.completedAt) &&
       (filter !== '読了' || p.completedAt) &&
       (filter !== 'お気に入り' || p.favorite) &&
+      (filter !== '追加教材' || item.addedAt) &&
       (filter !== '復習する' || isReadingDue(p, now));
   });
   if (sort === '短い順') result.sort((a, b) => a.words - b.words || a.id.localeCompare(b.id));
   if (sort === '最近開いた順') result.sort((a, b) => (records[b.id]?.lastOpened || 0) - (records[a.id]?.lastOpened || 0));
+  if (sort === '追加が新しい順') result.sort((a,b)=>(b.addedAt||'').localeCompare(a.addedAt||''));
   if (sort === '復習日順') result.sort((a, b) => (records[a.id]?.review?.due || Infinity) - (records[b.id]?.review?.due || Infinity));
   return result;
 }
