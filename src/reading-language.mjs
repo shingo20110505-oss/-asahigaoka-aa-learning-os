@@ -31,5 +31,18 @@ export function phraseMatches(text,phrases){
   if(match&&!/[^A-Za-z’'\s-]/.test(text.slice(words[i].start,words[i+pattern.length-1].end)))hits.push({...phrase,start:words[i].start,end:words[i+pattern.length-1].end});
  }}return hits.sort((a,b)=>(b.end-b.start)-(a.end-a.start));
 }
-export function inspectToken(text,start,lexicon,phrases){const token=tokenize(text).find(x=>x.start===start);if(!token)return null;const sentence=sentences(text).find(s=>start>=s.start&&start<s.end);return {...lookupWord(token.text,lexicon),token,sentence,phrases:phraseMatches(text,phrases).filter(x=>start>=x.start&&start<x.end)};}
+export function inspectToken(text,start,lexicon,phrases){
+ const token=tokenize(text).find(x=>x.start===start);if(!token)return null;
+ const sentence=sentences(text).find(s=>start>=s.start&&start<s.end),word=normalizeWord(token.text);let entry=lookupWord(word,lexicon);
+ // A dictionary may have a separate noun/adjective entry for taking, opening, etc.
+ // Keep that entry, but also show the verb form; a nearby be-verb is a useful clue.
+ if(entry.lemma===word&&entry.source==='ejdict'&&/(ing|ed)$/.test(word)){
+  const lemma=lemmaCandidates(word).slice(1).find(w=>{const x=lexicon[w];return x&&x.source!=='ejdict'&&(!x.pos||x.pos.split('/').includes('v'));});
+  if(lemma){const form={...lookupWord(lemma,lexicon),word,lemma};
+   if(/ing$/.test(word)&&/\b(?:am|is|are|was|were|be|been|being)(?:\s+(?:not|still|already|always|never|[a-z]+ly)){0,3}\s+$/i.test(text.slice(sentence?.start||0,start)))entry={...form,formLabel:'-ing形（進行形の候補）',otherMeaning:entry.meaning};
+   else entry={...entry,verbForm:form};
+  }
+ }
+ return {...entry,token,sentence,phrases:phraseMatches(text,phrases).filter(x=>start>=x.start&&start<x.end)};
+}
 export function matchGrammar(text,rules){return rules.flatMap(rule=>{const matches=[...text.matchAll(new RegExp(rule.pattern,'gi'))];return matches.length?[{...rule,examples:matches.map(m=>m[0])}]:[];});}
