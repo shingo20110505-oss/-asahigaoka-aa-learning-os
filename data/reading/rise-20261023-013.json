@@ -1,0 +1,34 @@
+{
+  "id": "rise-20261023-013",
+  "title": "The Cost of Keeping a Laptop",
+  "level": 4,
+  "topic": "技術・環境",
+  "questions": [
+    {
+      "prompt": "起動が速くなっても、一部の機種が不適切だった理由は何ですか。",
+      "options": [
+        "文書を書く人がいなかったから。",
+        "必要なセキュリティ更新を受けられなかったから。",
+        "電池の色が違ったから。"
+      ],
+      "answer": 1,
+      "evidence": "could no longer receive the security updates",
+      "explanation": "速度だけでなく、安全に運用できることも利用条件でした。"
+    },
+    {
+      "prompt": "ミナの考えはどう変わりましたか。",
+      "options": [
+        "全交換を無条件に支持するようになった。",
+        "点検せず価格だけを見るようになった。",
+        "全修理を主張することから、個別に判断する方法づくりへ進んだ。"
+      ],
+      "answer": 2,
+      "evidence": "a way to decide which repairs were worthwhile",
+      "explanation": "結論を先に決めるのでなく、どの修理に価値があるかを確かめる方法を作りました。"
+    }
+  ],
+  "passage": "When a school received money for new computers, its technology committee proposed replacing all the old laptops. Several were slow, and teachers had lost lesson time waiting for them to start. Replacing the whole group seemed simpler than inspecting each machine. Mina, a student member, asked whether the committee knew how many laptops actually needed replacement. Nobody had counted them.\n\nThe school asked a qualified technician to inspect the devices. Some could be made useful again with a new battery or more memory. Others could no longer receive the security updates required by the school. Those machines would remain unsuitable even if they started more quickly. Mina realized that working well enough to open a document was not the only condition a school computer had to meet.\n\nNext, the committee compared the price of repair with the likely period of further use. A cheap repair was less attractive if another expensive part was close to failing. They also included the technician's time and the need for spare machines during repairs. The figures were estimates rather than promises, so the report showed a range of possible costs instead of a single exact total.\n\nIn the end, the school repaired some laptops and replaced others. It recorded why each decision had been made so that the next committee could review the results. Mina had initially hoped to prove that repairing everything was better. Instead, she had helped create a way to decide which repairs were worthwhile. The useful question was not simply whether old technology should be kept, but what evidence would justify keeping a particular device.",
+  "translation": "学校にパソコン購入の予算が入り、技術委員会は古いノートパソコンの全交換を提案しました。一部は起動が遅く、授業時間も失われていました。一台ずつ調べるより全交換の方が簡単に思えましたが、生徒委員のミナが交換の必要な台数を尋ねると、まだ数えていませんでした。\n\n学校は専門の技術者に点検を依頼しました。電池やメモリーを交換すれば使えるものもありました。一方、学校が必要とするセキュリティ更新を受けられなくなった機種もあり、それらは起動が速くなっても適切ではありません。ミナは、文書を開ける程度に動くことだけが条件ではないと気づきました。\n\n次に修理代と、今後使えると見込まれる期間を比較しました。別の高価な部品も故障しそうなら、安い修理でも利点は小さくなります。技術者の作業時間や修理中の代替機も考慮しました。数値は確約ではなく見積もりなので、報告書には一つの正確な合計額ではなく費用の幅を示しました。\n\n結局、一部は修理し、一部は交換しました。次の委員会が結果を検証できるよう判断理由も記録しました。ミナは当初、すべて修理する方がよいと証明したいと思っていましたが、実際には修理の価値を判断する方法づくりに貢献しました。問うべきなのは古い技術を残すかどうかだけでなく、個々の機器を残す根拠でした。",
+  "origin": "RISE original",
+  "addedAt": "2026-10-23"
+}

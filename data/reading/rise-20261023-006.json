@@ -1,0 +1,34 @@
+{
+  "id": "rise-20261023-006",
+  "title": "Two Routes and an Earlier Train",
+  "level": 2,
+  "topic": "交通",
+  "questions": [
+    {
+      "prompt": "大通りを選んだ決め手はどれですか。",
+      "options": [
+        "実測時間が公園より短かった。",
+        "信号が一つもなかった。",
+        "大人数で歩ける広い歩道があった。"
+      ],
+      "answer": 2,
+      "evidence": "because it had a wide pavement",
+      "explanation": "実測では大通り24分、公園23分でした。広い歩道が決め手です。"
+    },
+    {
+      "prompt": "8時5分から8時40分までは何分ありますか。",
+      "options": [
+        "25分。",
+        "35分。",
+        "45分。"
+      ],
+      "answer": 1,
+      "evidence": "changed the departure time from 8:20 to 8:05",
+      "explanation": "集合時刻8時40分との差は35分。実測24分に対して11分の余裕があります。"
+    }
+  ],
+  "passage": "Riku's class was planning a visit to a museum. They needed to meet at the station by 8:40. A route app showed that walking from school would take eighteen minutes along the main road or twenty-two minutes through a park. Riku recommended the main road because the number on the screen was smaller. His friend Mei asked whether the number included waiting at the traffic lights.\n\nThey tried both routes on different mornings at the same starting time. On the main road, they stopped at three crossings. Their actual journey took twenty-four minutes. The park route took twenty-three minutes, but part of the path was narrow and muddy after rain. Neither route was exactly like the simple description in the app.\n\nTheir teacher reminded them that thirty students would travel together. A large group might need longer to cross a road, and a narrow path could make it difficult to stay together. They chose the main road because it had a wide pavement, but they changed the departure time from 8:20 to 8:05. This gave them time for delays without requiring anyone to hurry.\n\nOn the day of the trip, one crossing took longer than usual, yet the class arrived before 8:40. Riku did not delete the app. He still found it useful for comparing possible routes. However, he now treated the estimated time as a starting point. Choosing a route required information about the people making the journey as well as the distance they would travel.",
+  "translation": "リクのクラスは博物館見学を計画し、8時40分までに駅で集合する必要がありました。経路アプリでは、学校から大通りを歩くと18分、公園を通ると22分でした。リクは表示された数が小さい大通りを勧めました。メイは、その時間に信号待ちが含まれるのか尋ねました。\n\n二人は別の日の朝、同じ時刻に出発して両方を歩きました。大通りでは三つの横断歩道で止まり、実際には24分かかりました。公園経由は23分でしたが、一部が狭く、雨の後はぬかるんでいました。どちらもアプリの簡単な説明どおりではありませんでした。\n\n先生は、30人で移動することも考えるよう伝えました。大人数では横断に時間がかかり、狭い道ではまとまって歩きにくくなります。広い歩道のある大通りを選びましたが、出発時刻は8時20分から8時5分へ早めました。これなら遅れがあっても、急ぐ必要がありません。\n\n見学当日は一つの横断歩道で普段より時間がかかりましたが、8時40分前に到着しました。リクはアプリを削除しませんでした。候補を比べるのには今も役立つからです。ただし、表示時間は検討の出発点として扱うようになりました。経路を選ぶには、距離だけでなく、移動する人たちについての情報も必要だったのです。",
+  "origin": "RISE original",
+  "addedAt": "2026-10-23"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "rise-20261023-010",
+  "title": "The Cold Box Test That Needed a Second Day",
+  "level": 3,
+  "topic": "科学・実験",
+  "questions": [
+    {
+      "prompt": "最初の比較から、材料の効果だけを判断できない理由はどれですか。",
+      "options": [
+        "水温を一度も測らなかったから。",
+        "実験に箱を使ったから。",
+        "置き場所やボトルの大きさも違ったから。"
+      ],
+      "answer": 2,
+      "evidence": "The bottles were also different sizes.",
+      "explanation": "覆う材料以外の条件も違い、原因を切り分けられていません。"
+    },
+    {
+      "prompt": "最終報告に最初の比較も入れた理由はどれですか。",
+      "options": [
+        "方法を改善した経緯を示すため。",
+        "失敗を成功として扱うため。",
+        "最初の結果だけを採用するため。"
+      ],
+      "answer": 0,
+      "evidence": "It showed why they had changed the method",
+      "explanation": "方法と結論が改善された理由を読者に示すためです。"
+    }
+  ],
+  "passage": "A science club wanted to keep drinks cool during a summer event. Its members compared two boxes: one wrapped in newspaper and one covered with a thick cloth. They put a bottle of cold water in each box and measured the water temperature after an hour. The bottle in the newspaper box was cooler. The club leader immediately suggested using newspaper for every box at the event.\n\nBefore writing their report, another member checked the photographs taken during the test. The newspaper box had stood under a shelf, while the cloth box had been beside a sunny window. The bottles were also different sizes. These differences made it difficult to know which factor had affected the result. The students had changed several things while trying to compare only the coverings.\n\nThey repeated the test with identical boxes and bottles, equal amounts of water, and the same starting temperature. Both boxes were placed away from direct sunlight. On a second day, they exchanged the positions of the boxes and tested them again. They wrote down the temperature each time rather than recording only which box seemed better. The difference between the two coverings was now much smaller than it had been in the first test.\n\nThe club did not conclude that the materials would always work equally well. Its test covered only a particular period, place, and set of materials. For the event, the students chose a practical covering and decided to keep all the boxes in the shade. Their final report included the first unsuccessful comparison. It showed why they had changed the method and why the later conclusion deserved more confidence. A mistake became useful when it helped them ask a more precise question.",
+  "translation": "科学部は夏の行事で飲み物を冷たく保つため、新聞紙で包んだ箱と厚い布で覆った箱を比較しました。それぞれに冷水の入ったボトルを置き、一時間後の水温を測ると新聞紙の箱の方が低かったため、部長は行事の箱すべてに新聞紙を使おうと提案しました。\n\n報告書を書く前に別の部員が実験写真を確認すると、新聞紙の箱は棚の下、布の箱は日差しの入る窓際に置かれていました。ボトルの大きさも違いました。この違いのため、どの要因が結果に影響したのか判断できません。覆う材料だけを比べるつもりで、複数の条件を変えていたのです。\n\n同じ箱とボトル、水量、開始時の水温をそろえて再実験し、どちらも直射日光を避けました。さらに別の日には置く位置を交換して繰り返しました。どちらがよさそうかだけでなく、毎回の水温も記録しました。すると、材料による違いは最初よりずっと小さくなりました。\n\n部員は、二つの材料が常に同じ働きをすると結論づけたわけではありません。試したのは特定の時間・場所・材料だからです。行事では扱いやすい材料を選び、すべて日陰に置くことにしました。報告書には最初の不適切な比較も載せ、方法を変えた理由と後の結論の方が信頼できる理由を説明しました。誤りも、より正確な問いにつながれば役に立つのです。",
+  "origin": "RISE original",
+  "addedAt": "2026-10-23"
+}

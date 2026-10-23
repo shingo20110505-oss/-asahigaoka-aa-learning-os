@@ -34,6 +34,17 @@ test('Learning note includes summaries, paragraph roles, quoted evidence and ref
 });
 test('All preserved 130 reading files have stable IDs and usable passage and translation paragraphs',async()=>{
   const root=new URL('../data/reading/',import.meta.url),index=JSON.parse(await fs.readFile(new URL('index.json',root),'utf8'));
-  assert.equal(index.length,130);assert.equal(new Set(index.map(x=>x.id)).size,130);
+  assert.equal(index.length,150);assert.equal(new Set(index.map(x=>x.id)).size,150);
+  for(let n=1;n<=130;n++)assert.ok(index.some(x=>x.id==='rv3-'+String(n).padStart(6,'0')));
   for(const item of index){const book=JSON.parse(await fs.readFile(new URL(item.id+'.json',root),'utf8'));assert.equal(book.id,item.id);assert.ok(paragraphs(book.passage).length>0);assert.ok(paragraphs(book.translation).length>0);}
+});
+
+test('Twenty original additions have aligned translations, grounded answer keys and balanced levels',async()=>{
+  const root=new URL('../data/reading/',import.meta.url),index=JSON.parse(await fs.readFile(new URL('index.json',root),'utf8'));
+  const added=index.filter(x=>x.addedAt);assert.equal(added.length,20);
+  for(const level of [1,2,3,4,5])assert.equal(added.filter(x=>x.level===level).length,4);
+  const passages=new Set();
+  for(const x of added){const b=JSON.parse(await fs.readFile(new URL(x.id+'.json',root),'utf8'));assert.ok(x.words>=180);assert.equal(paragraphs(b.passage).length,paragraphs(b.translation).length);assert.equal(b.questions.length,2);assert.ok(!passages.has(b.passage));passages.add(b.passage);for(const q of b.questions){assert.ok(Number.isInteger(q.answer)&&q.answer>=0&&q.answer<q.options.length);assert.ok(b.passage.includes(q.evidence));assert.ok(q.explanation.length>15);assert.equal(new Set(q.options).size,q.options.length);}}
+  assert.equal(readingItems(index,{}, {filter:'追加教材'}).length,20);
+  assert.ok(readingItems(index,{}, {query:'防災'}).every(x=>x.topic.includes('防災')));
 });

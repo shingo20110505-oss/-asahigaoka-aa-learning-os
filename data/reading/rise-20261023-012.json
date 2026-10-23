@@ -1,0 +1,34 @@
+{
+  "id": "rise-20261023-012",
+  "title": "A Bird Survey with an Empty Column",
+  "level": 3,
+  "topic": "科学・自然",
+  "questions": [
+    {
+      "prompt": "元の表で空欄が問題だった理由はどれですか。",
+      "options": [
+        "未調査と、調査しても見つからなかった場合を区別できなかった。",
+        "ゼロという数を記録できなかった。",
+        "鳥の種類が一種類しかなかった。"
+      ],
+      "answer": 0,
+      "evidence": "The same mark was being used for different situations.",
+      "explanation": "鳥がいなかったのか、調べていなかったのかを同じ空欄では判別できません。"
+    },
+    {
+      "prompt": "生徒が手紙を変更したことは何を示していますか。",
+      "options": [
+        "工事は絶対に影響しないと確信した。",
+        "問題を調べるのをやめた。",
+        "懸念を保ちつつ、証拠を確かめる方法を改善した。"
+      ],
+      "answer": 2,
+      "evidence": "Their concern about construction did not disappear.",
+      "explanation": "懸念は残し、情報の取得と、より明確な調査を求める内容にしました。"
+    }
+  ],
+  "passage": "A nature club counted birds in a park every Saturday morning. Its members used a shared sheet with columns for the date, the bird's name, and the number seen. After several weeks, they noticed fewer birds in one area and wondered whether construction nearby had caused them to leave. The club prepared to write a letter asking the town to stop the work.\n\nTheir adviser asked them to examine the records first. On one Saturday, only two members had visited that area instead of the usual six. On another, heavy rain had ended the survey after fifteen minutes. A blank space in the sheet could mean that no birds were seen, but it could also mean that nobody had checked the area. The same mark was being used for different situations.\n\nThe students redesigned the sheet. They recorded how many people had searched, how long they had stayed, and whether weather had limited visibility. They used zero only when someone had completed the search and seen no birds. An unchecked area received a different mark. They also kept the old records, with notes explaining the missing information, instead of filling the gaps with guessed numbers.\n\nTheir concern about construction did not disappear. Noise and changes to the park still deserved investigation. However, the students changed their letter. They asked for information about the work and proposed a longer survey with clearer records. They had learned that being careful with evidence did not mean ignoring a possible problem. It meant making the question strong enough that other people could examine it, repeat the observations, and disagree for reasons that could be discussed.",
+  "translation": "自然観察部は毎週土曜日の朝に公園の鳥を数え、日付・鳥の名前・数を共有表に記録していました。数週間後、ある区域で鳥が減ったように見え、近くの工事で鳥が去ったのではないかと考えました。部では工事の中止を求める手紙を準備しました。\n\n顧問はまず記録を調べるよう求めました。ある日は通常6人のところ2人しかその区域を訪れず、別の日は大雨で15分で観察を終えていました。空欄は鳥を見なかったことかもしれませんが、誰も調べなかったことかもしれません。違う状況を同じ表示で扱っていたのです。\n\n生徒は記録表を作り直しました。人数、観察時間、天候による見えにくさも記録しました。ゼロは、観察を終えても鳥が見つからなかった場合だけに使い、未調査の区域には別の印を付けました。古い記録も、不足情報を説明する注記を添えて残し、推測で空欄を埋めませんでした。\n\n工事への心配がなくなったわけではありません。騒音や公園の変化は調べる価値があります。ただし手紙は、工事の情報を求め、明確な記録による長期間の調査を提案する内容へ変えました。証拠を慎重に扱うことは問題の可能性を無視することではなく、他者が検討・追試し、理由を示して議論できる問いにすることだと学んだのです。",
+  "origin": "RISE original",
+  "addedAt": "2026-10-23"
+}

@@ -3,7 +3,7 @@ export const features=[
  {id:'explore',title:'理解の実験室',label:'EXPLORE',desc:'動点・箱ひげ図・中和・遺伝。10のモデルを動かして理解する。',icon:'flask',tone:'blue',subject:'数学・理科・資料読解'},
  {id:'evidence',title:'根拠を整理する',label:'EVIDENCE',desc:'主張・理由・具体例・条件を、自分の判断につなぐ。',icon:'notes',tone:'orange',subject:'国語・英語・社会'},
  {id:'listening',title:'聞き取りスタジオ',label:'LISTENING',desc:'聞こえなかった数秒を、区間リピートと速度調整でもう一度。',icon:'chat',tone:'purple',subject:'英語'},
- {id:'reading',title:'英語リーダー',label:'ENGLISH',desc:'130本の英文を、自分の速さで。訳・記録・気づきを一緒に。',icon:'learn',tone:'blue',subject:'英語'},
+ {id:'reading',title:'英語リーダー',label:'ENGLISH',desc:'150本の英文。単語・文法をタップで確認し、AIと読み解く。',icon:'learn',tone:'blue',subject:'英語'},
  {id:'vocabulary',title:'国語のことば',label:'WORDS & CONTEXT',desc:'意味を知る。その文で使える。語彙を理解につなげる。',icon:'notes',tone:'orange',subject:'国語'},
  {id:'review',title:'復習ライブラリ',label:'RECALL',desc:'これまでの復習を引き継いで、思い出せる知識へ。',icon:'history',tone:'green',subject:'全教科'},
  {id:'memory',title:'暗記スタジオ',label:'SPACED MEMORY',desc:'自分のカードを作って、覚えにくいものから取り戻す。',icon:'cards',tone:'purple',subject:'全教科'},

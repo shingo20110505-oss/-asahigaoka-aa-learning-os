@@ -1,0 +1,34 @@
+{
+  "id": "rise-20261023-020",
+  "title": "When a Warning Appeared to Be Wrong",
+  "level": 5,
+  "topic": "防災・判断",
+  "questions": [
+    {
+      "prompt": "晴れたという結果だけで屋内移動を誤りと決められない理由はどれですか。",
+      "options": [
+        "判断時点では結果が不確かで、その時点の情報と被害の可能性を考慮する必要があるから。",
+        "予報は必ず当たるから。",
+        "費用はいくらでも無視してよいから。"
+      ],
+      "answer": 0,
+      "evidence": "as if the outcome had already been known",
+      "explanation": "結果を知った後の視点だけでなく、事前に得られた情報に照らして評価します。"
+    },
+    {
+      "prompt": "振り返りの進め方として本文に合うものはどれですか。",
+      "options": [
+        "中心の判断が妥当なら改善点はない。",
+        "妥当だった点と改善できる点を分けて検討する。",
+        "晴れた日は今後すべて警告を無視する。"
+      ],
+      "answer": 1,
+      "evidence": "even if the main decision had been sensible",
+      "explanation": "主要な判断の妥当性と、通知や代替案の改善は両立します。"
+    }
+  ],
+  "passage": "Before a large outdoor school event, the organizing committee received a forecast warning of a possible severe storm. Moving indoors would mean canceling several popular activities and losing money already spent on temporary equipment. The committee decided to move anyway. In the end, the storm passed outside the town, and the afternoon remained dry. On social media, some students called the decision a clear mistake: the bad weather had not occurred where they were.\n\nAt the review meeting, the chair separated two questions. One was whether the forecast had accurately represented the uncertainty at the time. The other was whether moving the event had been reasonable given that forecast and the possible consequences. A decision made before an uncertain event cannot fairly be evaluated only as if the outcome had already been known. Conversely, describing a threat as possible does not make every costly precaution reasonable. The seriousness of the risk and the available alternatives still matter.\n\nThe committee examined what information it had received, when equipment could still be moved safely, and whether there had been a less disruptive option. It found that one notice to students had been confusing and that a sheltered waiting area could have reduced some inconvenience. These were genuine opportunities for improvement even if the main decision had been sensible. The group avoided treating the review as a choice between defending everything and admitting that everything had been wrong.\n\nFor the following year, the committee wrote down its decision process in advance and arranged a cheaper indoor alternative. It also explained that a warning describes a risk, not a promise that the worst outcome will occur at a particular place. Reviewing many forecasts and decisions would provide more information than judging a single afternoon. The dry weather was fortunate, but it did not by itself answer whether the earlier choice had been wise. A useful review had to consider both the evidence available before the decision and what could be improved after it.",
+  "translation": "屋外行事の前に激しい嵐の可能性が予報されました。屋内へ移すと人気企画が中止になり、仮設設備の費用も無駄になります。それでも実行委員会は移動を決めました。結果的に嵐は町の外を通り、午後は晴れました。一部の生徒は、当地で悪天候にならなかったのだから明らかな誤判断だと述べました。\n\n振り返りでは二つの問いを分けました。予報がその時点の不確かさを適切に表したか。そして、その予報と起こり得る結果を踏まえて屋内移動が妥当だったかです。結果を事前に知っていたかのように、結果だけで判断を評価するのは適切ではありません。一方、可能性があるだけで高価な予防策がすべて妥当になるわけでもなく、危険の大きさや代替策も重要です。\n\n委員会は受け取った情報、安全に設備を動かせた期限、影響の小さい代替策を調べました。生徒への通知の一つがわかりにくく、屋根付き待機場所で不便を減らせたことが判明しました。中心の判断が妥当でも改善点はあります。すべてを擁護するか、すべて誤りと認めるかという二択にはしませんでした。\n\n翌年に向けて判断手順を事前に記し、安価な屋内代替案を用意しました。警告は危険を伝えるもので、特定地点で最悪の事態が必ず起こるという約束ではないとも説明しました。一午後だけでなく、多くの予報と判断を振り返る方が情報を得られます。晴天は幸運でしたが、それだけでは先の判断の妥当性を決められません。判断前の証拠と、判断後に改善できる点の両方を見る必要がありました。",
+  "origin": "RISE original",
+  "addedAt": "2026-10-23"
+}
