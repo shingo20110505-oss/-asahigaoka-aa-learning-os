@@ -29,3 +29,11 @@ test('Context contains only the requested excerpt and quick send never consumes 
  assert.equal(contextualMessage('Plain text',null),'Plain text');assert.equal(normalizeChatContext({context:'x'.repeat(9000)}).context.length,8000);
  assert.ok(canSendQuickQuestion({session:true}));for(const patch of [{draft:'unsent'}, {files:[{}]}, {busy:true}, {preparing:true}, {offline:true}, {session:false}])assert.ok(!canSendQuickQuestion({session:true,...patch}));
 });
+
+test('Progressive taking uses take while a separate dictionary noun entry remains available',()=>{
+ const dictionary={take:{meaning:'取る',pos:'v'},taking:{meaning:'取ること／魅力的な',source:'ejdict'},paint:{meaning:'描く',pos:'v'},painting:{meaning:'絵画',source:'ejdict'}};
+ const text='Students were taking off their shoes in a hurry.';
+ const info=inspectToken(text,text.indexOf('taking'),dictionary,readingPhrases);
+ assert.equal(info.lemma,'take');assert.equal(info.meaning,'取る');assert.equal(info.otherMeaning,'取ること／魅力的な');assert.equal(info.phrases[0].label,'take off');
+ const noun=inspectToken('A painting was missing.',2,dictionary,readingPhrases);assert.equal(noun.meaning,'絵画');assert.equal(noun.verbForm.lemma,'paint');
+});
