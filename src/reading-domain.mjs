@@ -27,6 +27,18 @@ export function planReadingReview(previous = {}, days, now = Date.now()) {
   if (![1, 3, 7, 14].includes(days)) throw Error('復習間隔を選び直してください');
   return {...previous, due: now + days * DAY, last: now, interval: days, repetitions: (Number(previous.repetitions) || 0) + 1};
 }
+// One record owns the review date. The calendar reads it instead of copying tasks.
+export function completeReading(previous = {}, now = Date.now()) {
+  if (previous.completedAt) return previous;
+  const hasPlan = Object.hasOwn(previous.review || {}, 'due');
+  return {...previous, completedAt:new Date(now).toISOString(),
+    review:hasPlan ? previous.review : planReadingReview({}, 1, now)};
+}
+export function finishReadingReview(previous = {}, now = Date.now()) {
+  const interval = [1,3,7,14].find(n=>n>(previous.review?.interval || 1)) || 14;
+  return {...previous, lastRevisited:now, review:{...planReadingReview(previous.review, interval, now),
+    completedReviews:(Number(previous.review?.completedReviews)||0)+1}};
+}
 export function readingNoteBody(book, progress, memo = progress.memo || '') {
   const blocks = ['英文：' + book.title, '要約・気づき：\n' + memo];
   for (const [i, note] of Object.entries(progress.paragraphNotes || {})) {

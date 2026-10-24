@@ -7,7 +7,7 @@ export const features=[
  {id:'listening',title:'聞き取りスタジオ',label:'LISTENING',desc:'聞こえなかった数秒を、区間リピートと速度調整でもう一度。',icon:'chat',tone:'purple',subject:'英語'},
  {id:'reading',title:'英語リーダー',label:'ENGLISH',desc:'150本の英文。単語・文法をタップで確認し、AIと読み解く。',icon:'learn',tone:'blue',subject:'英語'},
  {id:'vocabulary',title:'国語のことば',label:'WORDS & CONTEXT',desc:'意味を知る。その文で使える。語彙を理解につなげる。',icon:'notes',tone:'orange',subject:'国語'},
- {id:'classical',title:'古文・漢文の単語',label:'CLASSICAL WORDS',desc:'古文100語・漢文40語。重要度順に、意味を隠して暗記する。',icon:'cards',tone:'orange',subject:'国語'},
+ {id:'classical',title:'古文・漢文の単語',label:'CLASSICAL WORDS',desc:'古文110語・漢文40語。重要度順に、意味を隠して暗記する。',icon:'cards',tone:'orange',subject:'国語'},
  {id:'review',title:'復習ライブラリ',label:'RECALL',desc:'これまでの復習を引き継いで、思い出せる知識へ。',icon:'history',tone:'green',subject:'全教科'},
  {id:'memory',title:'暗記スタジオ',label:'SPACED MEMORY',desc:'自分のカードを作って、覚えにくいものから取り戻す。',icon:'cards',tone:'purple',subject:'全教科'},
  {id:'history',title:'歴史をつなぐ',label:'CHRONOLOGIA',desc:'1,007の出来事。日本と世界、テーマの流れを比べて理解する。',icon:'history',tone:'orange',subject:'社会'},

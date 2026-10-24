@@ -1,5 +1,6 @@
 // Original, editorial study order for junior-high students. These ranks are
 // learning priorities, NOT measured entrance-exam occurrence counts.
+import {wordEvidence} from './classical-evidence.mjs';
 const groups = [
  ['古文','S',`
 あはれなり|あわれなり|しみじみと心にしみる。しみじみとした趣がある。
@@ -107,6 +108,19 @@ const groups = [
 本意|ほい|本来の望み。本当の気持ち。
 つと|つと|じっと。急に。さっと。
 `],
+ // Append new words after the original 100 so saved progress IDs never move.
+ ['古文','A',`
+あやしむ|あやしむ|不思議に思う。疑う。
+召す|めす|お呼びになる。召し上がる。お召しになる。
+すみやかなり|すみやかなり|すぐだ。手早い。
+さとる|さとる|気づく。理解する。
+まめやかなり|まめやかなり|まじめだ。本格的だ。本当だ。
+失す|うす|なくなる。姿を消す。亡くなる。
+心地|ここち|気持ち。感じ。体の具合。
+こよなし|こよなし|程度の違いが大きい。格段だ。
+そこばく|そこばく|たくさん。多く。
+尋ぬ|たづぬ（たずぬ）|探し求める。問い尋ねる。訪ねる。
+`],
  ['漢文','S',`
 曰|いはく（いわく）|言うことには。
 不|ず|…ない。
@@ -155,13 +169,21 @@ const groups = [
 `]
 ];
 const count = new Map();
-export const classicalWords=groups.flatMap(([kind,rank,source])=>source.trim().split('\n').map(line=>{
+const baseWords=groups.flatMap(([kind,rank,source])=>source.trim().split('\n').map(line=>{
  const [word,reading,meaning]=line.split('|'),order=(count.get(kind)||0)+1;count.set(kind,order);
  return Object.freeze({id:`classical-${kind==='古文'?'kobun':'kanbun'}-${String(order).padStart(3,'0')}`,kind,rank,order,word,reading,meaning});
 }));
+// Reading priorities based on the checked papers and basic reading needs, not
+// sorting by a claimed nationwide occurrence count. Keep original IDs intact.
+const firstWords=['侍り','候ふ','給ふ','申す','参る','仰す','のたまふ','おはす','奉る','召す','あやし','あやしむ','本意'];
+const ranks={'いづれ':'A','かく':'A','さながら':'A','そこばく':'B','こよなし':'B'};
+const position=w=>firstWords.includes(w.word)?firstWords.indexOf(w.word):-1;
+const ordered=baseWords.map(w=>({...w,rank:w.kind==='古文'?(position(w)>=0?'S':ranks[w.word]||w.rank):w.rank,evidence:w.kind==='古文'?wordEvidence(w.word):[]}));
+// Sort each kind explicitly; do not rely on the source groups after rank changes.
+export const classicalWords=['古文','漢文'].flatMap(kind=>ordered.filter(w=>w.kind===kind).sort((a,b)=>'SAB'.indexOf(a.rank)-'SAB'.indexOf(b.rank)||((position(a)<0?999:position(a))-(position(b)<0?999:position(b)))||a.order-b.order).map((w,i)=>Object.freeze({...w,order:i+1})));
 export const rankLabels={S:'S まず覚える',A:'A 次に覚える',B:'B 余裕があれば'};
 export function wordProgress(state,id){return state.vocabulary?.[id]||{};}
 export function selectWords(state,{kind='古文',rank='all',filter='all',query=''}={},now=Date.now()){
  const term=query.trim().toLowerCase();
- return classicalWords.filter(w=>{const p=wordProgress(state,w.id);return w.kind===kind&&(rank==='all'||rank===w.rank)&&(!term||[w.word,w.reading,w.meaning].join(' ').toLowerCase().includes(term))&&(filter!=='new'||!p.repetitions)&&(filter!=='weak'||['again','hard'].includes(p.rating))&&(filter!=='due'||(p.repetitions&&p.due<=now));});
+ return classicalWords.filter(w=>{const p=wordProgress(state,w.id);return w.kind===kind&&(rank==='all'||rank===w.rank)&&(!term||[w.word,w.reading,w.meaning].join(' ').toLowerCase().includes(term))&&(filter!=='new'||!p.repetitions)&&(filter!=='weak'||['again','hard'].includes(p.rating))&&(filter!=='exam'||w.evidence.length>0)&&(filter!=='due'||(p.repetitions&&p.due<=now));});
 }
