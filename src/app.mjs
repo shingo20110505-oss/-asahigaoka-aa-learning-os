@@ -9,7 +9,7 @@ import {setupSidebar} from './sidebar.mjs';
 import {createChatWorkspace} from './side-chat.mjs';
 import {ViewCache,viewPath,viewGroup,capturePosition,restorePosition} from './view-cache.mjs';
 const store=new Store();let main=document.getElementById('main');
-const nav=[['home','ホーム','home'],['exam','旭丘・5教科対策','learn'],['learn','学ぶ・覚える','learn'],['notes','ノート・資料','notes'],['plan','学習プラン','plan'],['insights','振り返り','insights'],['chat','AIチャット','chat'],['ai-tools','AI学習ツール','flask'],['web','検索・Web閲覧','search']];
+const nav=[['home','ホーム','home'],['exam','旭丘・5教科対策','learn'],['learn','学ぶ・覚える','learn'],['notes','ノート・資料','notes'],['plan','学習プラン','plan'],['insights','振り返り','insights'],['chat','AIチャット','chat'],['ai-tools','AI学習ツール','flask']];
 const navHTML=items=>items.map(([id,label,glyph])=>`<a href="#/${id}" data-nav="${id}">${icon(glyph)}<span>${label}</span></a>`).join('');
 document.getElementById('side-nav').innerHTML=navHTML(nav);document.getElementById('side-bottom').innerHTML=navHTML([['settings','設定とデータ','settings']]);document.getElementById('mobile-nav').innerHTML=navHTML([['home','ホーム','home'],['learn','学ぶ','learn'],['notes','ノート','notes'],['plan','計画','plan'],['chat','AI','chat']]);
 document.getElementById('global-search').innerHTML=icon('search')+'<span>ノート・教材を検索</span><kbd>⌘ K</kbd>';document.getElementById('settings-link').innerHTML=icon('settings');
@@ -38,14 +38,18 @@ const views=new ViewCache({
   if(route==='chat'||route==='ai-task')return()=>{};
   if(route==='home'||route==='learn'){const readingIndex=route==='home'?await data('reading/index'):null;const draw=()=>route==='home'?drawHome(host,store.state,readingIndex):learning(host);draw();return Object.assign(()=>{},{refresh:draw});}
   host.innerHTML='<div class="loading" role="status">読み込んでいます…</div>';
-  const file=({classical:'classical','ai-tools':'ai-tools',web:'web-browser',exam:'exam-hub',explore:'explore',evidence:'evidence',listening:'listening'})[route]||(['reading','vocabulary','review','memory','history'].includes(route)?'learn':route==='labs'?'labs':'workspace');
+  const file=({classical:'classical','ai-tools':'ai-tools',exam:'exam-hub',explore:'explore',evidence:'evidence',listening:'listening'})[route]||(['reading','vocabulary','review','memory','history'].includes(route)?'learn':route==='labs'?'labs':'workspace');
   const mod=await import('./views/'+file+'.mjs');if(!views.active(entry))return;
   return mod.mount({store,main:host,data,render,chat:chatWorkspace,active:()=>views.active(entry),route,tail,query,
    rememberPath:()=>{views.remember(location.hash);chrome(entry.path);},beforeRestore:()=>views.clearInactive()});
  },
  error:(error,entry)=>{if(!entry)return toast(error.message,true);entry.element.innerHTML=heading('SOMETHING WENT WRONG','画面を開けませんでした。',error.message)+button('もう一度読み込む','retry');entry.element.querySelector('[data-action=retry]').onclick=()=>render({reload:true});}
 });
-export async function render(options={}){await views.show(viewPath(location.hash),options);}
+export async function render(options={}){
+ let path=viewPath(location.hash);
+ if(routeInfo(path).route==='web'){path='home';history.replaceState(history.state,'','#/home');}
+ await views.show(path,options);
+}
 // Only sidebar/mobile navigation resumes the last screen in a section. Links to
 // a library, another book, or a specific note keep their explicit destination.
 document.addEventListener('click',e=>{
