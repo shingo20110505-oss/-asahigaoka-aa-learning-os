@@ -40,7 +40,7 @@ test('legacy ink becomes page one without changing strokes and survives backup r
  const book=copyNotebook(legacy);assert.equal(book.pages.length,1);assert.deepEqual(book.pages[0].strokes,legacy.strokes);assert.deepEqual(legacy,original);
  const state=freshState();state.notes.push({id:'legacy',handwriting:legacy});saveNoteInk(state,'legacy',book,4);
  const restored=validState(JSON.parse(JSON.stringify(state)));assert.deepEqual(copyNotebook(restored.notes[0].handwriting),book);assert.equal(restored.notes[0].handwriting.revision,5);
- assert.throws(()=>copyNotebook({version:3}),/更新/);
+ assert.throws(()=>copyNotebook({version:4}),/更新/);
 });
 test('pages keep independent drawings, paper, order and active selection after reopening',()=>{
  const book=notebookHistory({strokes:[stroke()]}),first=book.page.id;book.addPage();const second=book.page.id;

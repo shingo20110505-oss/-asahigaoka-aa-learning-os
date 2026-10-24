@@ -1,3 +1,4 @@
+import {expandDaimon2Further} from './rise-daimon2-expanded.mjs';
 import{expandDaimon2}from'./rise-daimon2-data.mjs';
 import fs from'node:fs/promises';
 // Original learning examples; no past-paper text or commercial question bank copied.
@@ -92,4 +93,5 @@ const quizzes=[
 ];
 for(const[title,context,question,choices,why]of quizzes){const x=data.find(x=>x.title===title);if(!x.quiz)x.quiz=[];x.quiz.push({context,question,choices,correct:0,why});}
 expandDaimon2(data);
+expandDaimon2Further(data);
 await fs.writeFile(new URL('../data/vocabulary.json',import.meta.url),JSON.stringify(data,null,2)+'\n');console.log(JSON.stringify({words:data.length,contextTasks:data.reduce((n,x)=>n+(x.quiz?.length||0),0)}));

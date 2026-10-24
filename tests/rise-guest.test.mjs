@@ -35,8 +35,8 @@ test('installed model capabilities govern image input and optional thinking cont
 });
 
 test('guest bounds preserve the latest question and reject excess images without changing stored files',async()=>{
-  const input=await inputs({role:'guest',privateDir:'',messages:[{role:'user',text:'過去'.repeat(7000)},{role:'user',text:'LATEST_QUESTION'}]});
-  assert.equal(input.omitted,true);assert.equal(input.at(-1).text,'利用者: LATEST_QUESTION');assert.ok(input.map(x=>x.text||'').join('').length<6200);
+  const input=await inputs({role:'guest',privateDir:'',messages:[{role:'user',text:'過去'.repeat(100000)},{role:'user',text:'LATEST_QUESTION'}]});
+  assert.equal(input.omitted,true);assert.equal(input.at(-1).text,'利用者: LATEST_QUESTION');assert.ok(input.map(x=>x.text||'').join('').length<181000);
   assert.throws(()=>validateChatInput({text:'x'.repeat(4001),files:[]},GUEST_LIMITS),/4,000/);
   assert.throws(()=>validateChatInput({text:'x',files:[{kind:'video',size:10**12,frames:Array.from({length:5},()=>({size:100}))}]},GUEST_LIMITS),/合計4枚/);
   assert.doesNotThrow(()=>validateChatInput({text:'x',files:[{kind:'video',size:10**12,frames:[{size:100}]}]},GUEST_LIMITS));

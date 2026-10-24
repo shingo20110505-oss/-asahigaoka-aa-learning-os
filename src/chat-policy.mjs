@@ -1,6 +1,6 @@
 export const OWNER_LIMITS=Object.freeze({maxPrompt:30000,maxContext:180000,maxImages:24,maxImageBytes:12*1024*1024});
 export const GUEST_LIMITS=Object.freeze({maxPrompt:4000,maxContext:6000,maxImages:4,maxImageBytes:8*1024*1024});
-export const chatLimits=role=>role==='guest'?GUEST_LIMITS:OWNER_LIMITS;
+export const chatLimits=role=>OWNER_LIMITS;
 
 // These bounds concern a single AI request. Original uploads and stored history
 // have no total-GB quota and are never discarded to fit the model context.

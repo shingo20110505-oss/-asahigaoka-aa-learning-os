@@ -42,7 +42,23 @@
       "語彙",
       "入試の言語事項"
     ],
-    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf"
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-085",
+        "type": "kanji",
+        "context": "複数の具体例から、共通する性質をチュウショウする。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "抽象",
+          "中傷",
+          "抽称",
+          "仲商"
+        ],
+        "correct": 0,
+        "why": "共通する性質を取り出して捉えること。悪口を言う「中傷」とは別。"
+      }
+    ]
   },
   {
     "id": "jp-v6-004",
@@ -57,7 +73,23 @@
       "語彙",
       "入試の言語事項"
     ],
-    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf"
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-009",
+        "type": "kanji",
+        "context": "時代や地域を超えて当てはまる、フヘン的な価値を考える。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "普遍",
+          "不変",
+          "不偏",
+          "普変"
+        ],
+        "correct": 0,
+        "why": "すべてに広く当てはまること。変わらないことは「不変」。"
+      }
+    ]
   },
   {
     "id": "jp-v6-005",
@@ -162,7 +194,23 @@
       "語彙",
       "入試の言語事項"
     ],
-    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf"
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-015",
+        "type": "kanji",
+        "context": "足跡を手掛かりに、動物が進んだ方向をスイソクした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "推測",
+          "推側",
+          "水測",
+          "垂測"
+        ],
+        "correct": 0,
+        "why": "分かっている事柄から、未知の事柄を推し量ること。"
+      }
+    ]
   },
   {
     "id": "jp-v6-012",
@@ -563,7 +611,23 @@
       "語彙",
       "入試の言語事項"
     ],
-    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf"
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-109",
+        "type": "kanji",
+        "context": "結論を一文でタンテキに示した。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "端的",
+          "単的",
+          "短的",
+          "胆的"
+        ],
+        "correct": 0,
+        "why": "大事な点をはっきりと示すさま。短さだけでなく明確さが必要。"
+      }
+    ]
   },
   {
     "id": "jp-v6-033",
@@ -620,6 +684,20 @@
         ],
         "correct": 0,
         "why": "どちらにも長所と短所がある。"
+      },
+      {
+        "id": "jp-d2-expanded-idiom-029",
+        "type": "idiom",
+        "context": "案Aにも案Bにも、よい点と悪い点がある。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "一長一短",
+          "一挙両得",
+          "一朝一夕",
+          "一網打尽"
+        ],
+        "correct": 0,
+        "why": "長所も短所もあること。"
       }
     ]
   },
@@ -680,6 +758,20 @@
         ],
         "correct": 0,
         "why": "状況の変化に合わせて適切に対応している。"
+      },
+      {
+        "id": "jp-d2-expanded-idiom-001",
+        "type": "idiom",
+        "context": "急な雨で会場が使えず、状況に合わせて進め方を変えた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "臨機応変",
+          "画一的",
+          "優柔不断",
+          "杓子定規"
+        ],
+        "correct": 0,
+        "why": "その場の状況に応じて適切に対応すること。"
       }
     ]
   },
@@ -709,6 +801,20 @@
         ],
         "correct": 0,
         "why": "理解という本来の目的より、装飾を優先している。"
+      },
+      {
+        "id": "jp-d2-expanded-idiom-014",
+        "type": "idiom",
+        "context": "発表の中身より飾りに時間を使い、説明の準備ができなかった。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "本末転倒",
+          "適材適所",
+          "首尾一貫",
+          "臨機応変"
+        ],
+        "correct": 0,
+        "why": "大切なことと枝葉のことを取り違えること。"
       }
     ]
   },
@@ -738,6 +844,20 @@
         ],
         "correct": 0,
         "why": "自分で考えずに他人へ同調している。"
+      },
+      {
+        "id": "jp-d2-expanded-idiom-012",
+        "type": "idiom",
+        "context": "自分では内容を考えず、多数派の意見にそのまま賛成した。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "付和雷同",
+          "独立独歩",
+          "切磋琢磨",
+          "異口同音"
+        ],
+        "correct": 0,
+        "why": "自分の考えを持たず、他人の意見に同調すること。"
       }
     ]
   },
@@ -816,7 +936,23 @@
       "語彙",
       "入試の言語事項"
     ],
-    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf"
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-002",
+        "type": "idiom",
+        "context": "最初から最後まで、説明の方針が変わらず筋が通っている。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "首尾一貫",
+          "支離滅裂",
+          "朝令暮改",
+          "右往左往"
+        ],
+        "correct": 0,
+        "why": "初めから終わりまで一つの方針で筋が通ること。"
+      }
+    ]
   },
   {
     "id": "jp-v6-042",
@@ -846,6 +982,20 @@
         ],
         "correct": 0,
         "why": "多くの人が同じことを言うこと。考えずに同調したとは限らない。"
+      },
+      {
+        "id": "jp-d2-expanded-kanji-001",
+        "type": "kanji",
+        "context": "別々に聞いた感想なのに、皆がイクドウオンに同じ点を褒めた。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "異口同音",
+          "異句同音",
+          "異口同意",
+          "異句同意"
+        ],
+        "correct": 0,
+        "why": "異なる口から同じ言葉が出ること。「口」と「音」を対応させる。"
       }
     ]
   },
@@ -862,7 +1012,23 @@
       "語彙",
       "入試の言語事項"
     ],
-    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf"
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-016",
+        "type": "idiom",
+        "context": "自分で作った作品を、自分で大げさに褒めていた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "自画自賛",
+          "自業自得",
+          "自問自答",
+          "自暴自棄"
+        ],
+        "correct": 0,
+        "why": "自分で自分のことを褒めること。"
+      }
+    ]
   },
   {
     "id": "jp-v6-044",
@@ -892,7 +1058,23 @@
       "語彙",
       "入試の言語事項"
     ],
-    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf"
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-034",
+        "type": "idiom",
+        "context": "過去にも例がなく、今後もないだろうと思うほどの偉業だった。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "空前絶後",
+          "日常茶飯事",
+          "一長一短",
+          "首尾一貫"
+        ],
+        "correct": 0,
+        "why": "前にもなく、後にもないと思われるほど珍しいこと。"
+      }
+    ]
   },
   {
     "id": "jp-v6-046",
@@ -936,7 +1118,23 @@
       "語彙",
       "入試の言語事項"
     ],
-    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf"
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-048",
+        "type": "idiom",
+        "context": "選考に落ちたと知り、がっかりしてうつむいた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "肩を落とす",
+          "肩を並べる",
+          "肩を持つ",
+          "肩の荷が下りる"
+        ],
+        "correct": 0,
+        "why": "落胆して、元気をなくすこと。"
+      }
+    ]
   },
   {
     "id": "jp-v6-048",
@@ -982,7 +1180,23 @@
       "語彙",
       "入試の言語事項"
     ],
-    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf"
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-061",
+        "type": "idiom",
+        "context": "短期間での驚くほどの上達に、強く感心した。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "目を見張る",
+          "目をつぶる",
+          "目をそらす",
+          "目を盗む"
+        ],
+        "correct": 0,
+        "why": "驚きや感動で、目を大きく開いて見ること。"
+      }
+    ]
   },
   {
     "id": "jp-v6-050",
@@ -3462,6 +3676,6216 @@
         ],
         "correct": 0,
         "why": "力量が及ばず、対抗できないこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-002",
+    "title": "専念",
+    "reading": "せんねん",
+    "category": "漢字の表記",
+    "question": "「専念」の意味・使い方を説明しよう。",
+    "answer": "一つのことに心を集中すること。「専」はもっぱらの意。",
+    "context": "大会が終わったので、今月は研究にセンネンする。",
+    "confusion": "一つのことに心を集中すること。「専」はもっぱらの意。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-002",
+        "type": "kanji",
+        "context": "大会が終わったので、今月は研究にセンネンする。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "専念",
+          "専年",
+          "先念",
+          "宣念"
+        ],
+        "correct": 0,
+        "why": "一つのことに心を集中すること。「専」はもっぱらの意。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-003",
+    "title": "柔軟",
+    "reading": "じゅうなん",
+    "category": "漢字の表記",
+    "question": "「柔軟」の意味・使い方を説明しよう。",
+    "answer": "しなやかで、融通が利くこと。硬く固定した考え方と対比する。",
+    "context": "状況が変わっても対応できる、ジュウナンな考え方を持つ。",
+    "confusion": "しなやかで、融通が利くこと。硬く固定した考え方と対比する。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-003",
+        "type": "kanji",
+        "context": "状況が変わっても対応できる、ジュウナンな考え方を持つ。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "柔軟",
+          "柔難",
+          "軟柔",
+          "従軟"
+        ],
+        "correct": 0,
+        "why": "しなやかで、融通が利くこと。硬く固定した考え方と対比する。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-004",
+    "title": "妥協",
+    "reading": "だきょう",
+    "category": "漢字の表記",
+    "question": "「妥協」の意味・使い方を説明しよう。",
+    "answer": "対立する双方が譲り合って合意すること。読みは「だきょう」。",
+    "context": "互いに条件の一部を譲り、ダキョウして合意した。",
+    "confusion": "対立する双方が譲り合って合意すること。読みは「だきょう」。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-004",
+        "type": "kanji",
+        "context": "互いに条件の一部を譲り、ダキョウして合意した。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "妥協",
+          "打協",
+          "妥強",
+          "打強"
+        ],
+        "correct": 0,
+        "why": "対立する双方が譲り合って合意すること。読みは「だきょう」。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-005",
+    "title": "貢献",
+    "reading": "こうけん",
+    "category": "漢字の表記",
+    "question": "「貢献」の意味・使い方を説明しよう。",
+    "answer": "物事の役に立つよう力を尽くすこと。",
+    "context": "地域の清掃活動を続け、環境の改善にコウケンした。",
+    "confusion": "物事の役に立つよう力を尽くすこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-005",
+        "type": "kanji",
+        "context": "地域の清掃活動を続け、環境の改善にコウケンした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "貢献",
+          "貢検",
+          "公献",
+          "効献"
+        ],
+        "correct": 0,
+        "why": "物事の役に立つよう力を尽くすこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-006",
+    "title": "模索",
+    "reading": "もさく",
+    "category": "漢字の表記",
+    "question": "「模索」の意味・使い方を説明しよう。",
+    "answer": "手探りで、方法や手掛かりを探すこと。",
+    "context": "まだ答えが見えず、新しい解決策をモサクしている。",
+    "confusion": "手探りで、方法や手掛かりを探すこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-006",
+        "type": "kanji",
+        "context": "まだ答えが見えず、新しい解決策をモサクしている。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "模索",
+          "摸作",
+          "模作",
+          "摸策"
+        ],
+        "correct": 0,
+        "why": "手探りで、方法や手掛かりを探すこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-007",
+    "title": "均衡",
+    "reading": "きんこう",
+    "category": "漢字の表記",
+    "question": "「均衡」の意味・使い方を説明しよう。",
+    "answer": "二つ以上の物の釣り合い。都市の近くは「近郊」。",
+    "context": "左右の重りを調整し、てんびんのキンコウを保った。",
+    "confusion": "二つ以上の物の釣り合い。都市の近くは「近郊」。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-007",
+        "type": "kanji",
+        "context": "左右の重りを調整し、てんびんのキンコウを保った。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "均衡",
+          "近郊",
+          "近交",
+          "均行"
+        ],
+        "correct": 0,
+        "why": "二つ以上の物の釣り合い。都市の近くは「近郊」。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-008",
+    "title": "普及",
+    "reading": "ふきゅう",
+    "category": "漢字の表記",
+    "question": "「普及」の意味・使い方を説明しよう。",
+    "answer": "広い範囲に行き渡ること。価値が後世に残るのは「不朽」。",
+    "context": "新しい通信技術が全国にフキュウした。",
+    "confusion": "広い範囲に行き渡ること。価値が後世に残るのは「不朽」。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-008",
+        "type": "kanji",
+        "context": "新しい通信技術が全国にフキュウした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "普及",
+          "不朽",
+          "腐朽",
+          "不急"
+        ],
+        "correct": 0,
+        "why": "広い範囲に行き渡ること。価値が後世に残るのは「不朽」。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-010",
+    "title": "不変",
+    "reading": "ふへん",
+    "category": "漢字の表記",
+    "question": "「不変」の意味・使い方を説明しよう。",
+    "answer": "変わらないこと。「すべてに当てはまる」とは意味が異なる。",
+    "context": "形を変えても、この図形の面積はフヘンである。",
+    "confusion": "変わらないこと。「すべてに当てはまる」とは意味が異なる。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-010",
+        "type": "kanji",
+        "context": "形を変えても、この図形の面積はフヘンである。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "不変",
+          "普遍",
+          "不偏",
+          "普変"
+        ],
+        "correct": 0,
+        "why": "変わらないこと。「すべてに当てはまる」とは意味が異なる。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-011",
+    "title": "不偏",
+    "reading": "ふへん",
+    "category": "漢字の表記",
+    "question": "「不偏」の意味・使い方を説明しよう。",
+    "answer": "一方に偏らないこと。「偏」という字で公平さを捉える。",
+    "context": "どちらの立場にも偏らない、フヘン不党の報道を目指す。",
+    "confusion": "一方に偏らないこと。「偏」という字で公平さを捉える。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-011",
+        "type": "kanji",
+        "context": "どちらの立場にも偏らない、フヘン不党の報道を目指す。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "不偏",
+          "不変",
+          "普遍",
+          "普変"
+        ],
+        "correct": 0,
+        "why": "一方に偏らないこと。「偏」という字で公平さを捉える。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-012",
+    "title": "検証",
+    "reading": "けんしょう",
+    "category": "漢字の表記",
+    "question": "「検証」の意味・使い方を説明しよう。",
+    "answer": "事実や論理に基づいて正しさを確かめること。",
+    "context": "実験結果が正しいか、別の方法でもケンショウする。",
+    "confusion": "事実や論理に基づいて正しさを確かめること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-012",
+        "type": "kanji",
+        "context": "実験結果が正しいか、別の方法でもケンショウする。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "検証",
+          "懸賞",
+          "顕彰",
+          "検賞"
+        ],
+        "correct": 0,
+        "why": "事実や論理に基づいて正しさを確かめること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-013",
+    "title": "継承",
+    "reading": "けいしょう",
+    "category": "漢字の表記",
+    "question": "「継承」の意味・使い方を説明しよう。",
+    "answer": "前からある地位・事業・文化などを受け継ぐこと。",
+    "context": "地域に伝わる祭りを、次の世代へケイショウする。",
+    "confusion": "前からある地位・事業・文化などを受け継ぐこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-013",
+        "type": "kanji",
+        "context": "地域に伝わる祭りを、次の世代へケイショウする。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "継承",
+          "警鐘",
+          "軽傷",
+          "継唱"
+        ],
+        "correct": 0,
+        "why": "前からある地位・事業・文化などを受け継ぐこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-014",
+    "title": "警鐘",
+    "reading": "けいしょう",
+    "category": "漢字の表記",
+    "question": "「警鐘」の意味・使い方を説明しよう。",
+    "answer": "危険を知らせて注意を促すこと。「鳴らす」が手掛かり。",
+    "context": "専門家は、森林破壊が進む現状にケイショウを鳴らした。",
+    "confusion": "危険を知らせて注意を促すこと。「鳴らす」が手掛かり。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-014",
+        "type": "kanji",
+        "context": "専門家は、森林破壊が進む現状にケイショウを鳴らした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "警鐘",
+          "継承",
+          "軽傷",
+          "警唱"
+        ],
+        "correct": 0,
+        "why": "危険を知らせて注意を促すこと。「鳴らす」が手掛かり。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-016",
+    "title": "推奨",
+    "reading": "すいしょう",
+    "category": "漢字の表記",
+    "question": "「推奨」の意味・使い方を説明しよう。",
+    "answer": "よいものとして人に勧めること。褒めるだけでなく勧める点が大切。",
+    "context": "図書委員が、学年に合った本をスイショウした。",
+    "confusion": "よいものとして人に勧めること。褒めるだけでなく勧める点が大切。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-016",
+        "type": "kanji",
+        "context": "図書委員が、学年に合った本をスイショウした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "推奨",
+          "推賞",
+          "推称",
+          "水晶"
+        ],
+        "correct": 0,
+        "why": "よいものとして人に勧めること。褒めるだけでなく勧める点が大切。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-017",
+    "title": "照合",
+    "reading": "しょうごう",
+    "category": "漢字の表記",
+    "question": "「照合」の意味・使い方を説明しよう。",
+    "answer": "二つを照らし合わせて確かめること。名前の比較が手掛かり。",
+    "context": "提出者名を名簿とショウゴウし、間違いがないか確かめた。",
+    "confusion": "二つを照らし合わせて確かめること。名前の比較が手掛かり。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-017",
+        "type": "kanji",
+        "context": "提出者名を名簿とショウゴウし、間違いがないか確かめた。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "照合",
+          "称号",
+          "商号",
+          "照号"
+        ],
+        "correct": 0,
+        "why": "二つを照らし合わせて確かめること。名前の比較が手掛かり。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-018",
+    "title": "照会",
+    "reading": "しょうかい",
+    "category": "漢字の表記",
+    "question": "「照会」の意味・使い方を説明しよう。",
+    "answer": "相手に問い合わせて確かめること。人を引き合わせる「紹介」と区別。",
+    "context": "不明な点について、担当部署にショウカイした。",
+    "confusion": "相手に問い合わせて確かめること。人を引き合わせる「紹介」と区別。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-018",
+        "type": "kanji",
+        "context": "不明な点について、担当部署にショウカイした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "照会",
+          "紹介",
+          "商会",
+          "詳解"
+        ],
+        "correct": 0,
+        "why": "相手に問い合わせて確かめること。人を引き合わせる「紹介」と区別。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-019",
+    "title": "紹介",
+    "reading": "しょうかい",
+    "category": "漢字の表記",
+    "question": "「紹介」の意味・使い方を説明しよう。",
+    "answer": "人や物事を相手に知らせたり、引き合わせたりすること。",
+    "context": "転校してきた生徒を、クラスの皆にショウカイした。",
+    "confusion": "人や物事を相手に知らせたり、引き合わせたりすること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-019",
+        "type": "kanji",
+        "context": "転校してきた生徒を、クラスの皆にショウカイした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "紹介",
+          "照会",
+          "商会",
+          "詳解"
+        ],
+        "correct": 0,
+        "why": "人や物事を相手に知らせたり、引き合わせたりすること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-020",
+    "title": "製作",
+    "reading": "せいさく",
+    "category": "漢字の表記",
+    "question": "「製作」の意味・使い方を説明しよう。",
+    "answer": "道具や物品を作ること。芸術作品を作る「制作」と使い分ける。",
+    "context": "木材を切り、実際に使う机をセイサクした。",
+    "confusion": "道具や物品を作ること。芸術作品を作る「制作」と使い分ける。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-020",
+        "type": "kanji",
+        "context": "木材を切り、実際に使う机をセイサクした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "製作",
+          "制作",
+          "政策",
+          "精索"
+        ],
+        "correct": 0,
+        "why": "道具や物品を作ること。芸術作品を作る「制作」と使い分ける。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-021",
+    "title": "制作",
+    "reading": "せいさく",
+    "category": "漢字の表記",
+    "question": "「制作」の意味・使い方を説明しよう。",
+    "answer": "絵画などの芸術作品を作ること。",
+    "context": "美術の授業で、風景を題材に版画をセイサクした。",
+    "confusion": "絵画などの芸術作品を作ること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-021",
+        "type": "kanji",
+        "context": "美術の授業で、風景を題材に版画をセイサクした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "制作",
+          "製作",
+          "政策",
+          "精索"
+        ],
+        "correct": 0,
+        "why": "絵画などの芸術作品を作ること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-022",
+    "title": "政策",
+    "reading": "せいさく",
+    "category": "漢字の表記",
+    "question": "「政策」の意味・使い方を説明しよう。",
+    "answer": "行政などが目標を実現するための方針や方法。",
+    "context": "市は、子育てを支援する新しいセイサクを発表した。",
+    "confusion": "行政などが目標を実現するための方針や方法。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-022",
+        "type": "kanji",
+        "context": "市は、子育てを支援する新しいセイサクを発表した。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "政策",
+          "制作",
+          "製作",
+          "精索"
+        ],
+        "correct": 0,
+        "why": "行政などが目標を実現するための方針や方法。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-023",
+    "title": "探究",
+    "reading": "たんきゅう",
+    "category": "漢字の表記",
+    "question": "「探究」の意味・使い方を説明しよう。",
+    "answer": "学問などを深く調べて明らかにすること。「真理」が手掛かり。",
+    "context": "原因を深く調べ、科学の真理をタンキュウする。",
+    "confusion": "学問などを深く調べて明らかにすること。「真理」が手掛かり。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-023",
+        "type": "kanji",
+        "context": "原因を深く調べ、科学の真理をタンキュウする。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "探究",
+          "探求",
+          "短急",
+          "単級"
+        ],
+        "correct": 0,
+        "why": "学問などを深く調べて明らかにすること。「真理」が手掛かり。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-024",
+    "title": "探求",
+    "reading": "たんきゅう",
+    "category": "漢字の表記",
+    "question": "「探求」の意味・使い方を説明しよう。",
+    "answer": "目的とするものを探し求めること。「探究」は深く調べること。",
+    "context": "旅を重ね、自分が理想とする生き方をタンキュウする。",
+    "confusion": "目的とするものを探し求めること。「探究」は深く調べること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-024",
+        "type": "kanji",
+        "context": "旅を重ね、自分が理想とする生き方をタンキュウする。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "探求",
+          "探究",
+          "短急",
+          "単級"
+        ],
+        "correct": 0,
+        "why": "目的とするものを探し求めること。「探究」は深く調べること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-025",
+    "title": "追究",
+    "reading": "ついきゅう",
+    "category": "漢字の表記",
+    "question": "「追究」の意味・使い方を説明しよう。",
+    "answer": "原因や真相を深く調べ、明らかにすること。",
+    "context": "実験を重ね、失敗した原因を徹底的にツイキュウする。",
+    "confusion": "原因や真相を深く調べ、明らかにすること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-025",
+        "type": "kanji",
+        "context": "実験を重ね、失敗した原因を徹底的にツイキュウする。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "追究",
+          "追求",
+          "追及",
+          "追給"
+        ],
+        "correct": 0,
+        "why": "原因や真相を深く調べ、明らかにすること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-026",
+    "title": "追求",
+    "reading": "ついきゅう",
+    "category": "漢字の表記",
+    "question": "「追求」の意味・使い方を説明しよう。",
+    "answer": "望むものをどこまでも求めること。",
+    "context": "利用者の声を聞き、道具の使いやすさをツイキュウする。",
+    "confusion": "望むものをどこまでも求めること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-026",
+        "type": "kanji",
+        "context": "利用者の声を聞き、道具の使いやすさをツイキュウする。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "追求",
+          "追究",
+          "追及",
+          "追給"
+        ],
+        "correct": 0,
+        "why": "望むものをどこまでも求めること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-027",
+    "title": "追及",
+    "reading": "ついきゅう",
+    "category": "漢字の表記",
+    "question": "「追及」の意味・使い方を説明しよう。",
+    "answer": "責任や欠点を問い詰めること。「責任」が判断の手掛かり。",
+    "context": "委員会は、規則違反をした責任をツイキュウした。",
+    "confusion": "責任や欠点を問い詰めること。「責任」が判断の手掛かり。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-027",
+        "type": "kanji",
+        "context": "委員会は、規則違反をした責任をツイキュウした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "追及",
+          "追究",
+          "追求",
+          "追給"
+        ],
+        "correct": 0,
+        "why": "責任や欠点を問い詰めること。「責任」が判断の手掛かり。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-028",
+    "title": "意志",
+    "reading": "いし",
+    "category": "漢字の表記",
+    "question": "「意志」の意味・使い方を説明しよう。",
+    "answer": "何かを実現しようとする積極的な心。やり抜く決意に着目する。",
+    "context": "途中で諦めず、やり抜くという強いイシを持つ。",
+    "confusion": "何かを実現しようとする積極的な心。やり抜く決意に着目する。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-028",
+        "type": "kanji",
+        "context": "途中で諦めず、やり抜くという強いイシを持つ。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "意志",
+          "意思",
+          "遺志",
+          "医師"
+        ],
+        "correct": 0,
+        "why": "何かを実現しようとする積極的な心。やり抜く決意に着目する。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-029",
+    "title": "意思",
+    "reading": "いし",
+    "category": "漢字の表記",
+    "question": "「意思」の意味・使い方を説明しよう。",
+    "answer": "その人が持つ考えや意向。決意の強さを尋ねているのではない。",
+    "context": "賛成か反対か、全員のイシを確認した。",
+    "confusion": "その人が持つ考えや意向。決意の強さを尋ねているのではない。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-029",
+        "type": "kanji",
+        "context": "賛成か反対か、全員のイシを確認した。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "意思",
+          "意志",
+          "遺志",
+          "医師"
+        ],
+        "correct": 0,
+        "why": "その人が持つ考えや意向。決意の強さを尋ねているのではない。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-030",
+    "title": "遺志",
+    "reading": "いし",
+    "category": "漢字の表記",
+    "question": "「遺志」の意味・使い方を説明しよう。",
+    "answer": "亡くなった人が生前に抱いていた志。",
+    "context": "亡くなった祖父のイシを継ぎ、資料を公開した。",
+    "confusion": "亡くなった人が生前に抱いていた志。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-030",
+        "type": "kanji",
+        "context": "亡くなった祖父のイシを継ぎ、資料を公開した。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "遺志",
+          "意志",
+          "意思",
+          "医師"
+        ],
+        "correct": 0,
+        "why": "亡くなった人が生前に抱いていた志。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-031",
+    "title": "関知",
+    "reading": "かんち",
+    "category": "漢字の表記",
+    "question": "「関知」の意味・使い方を説明しよう。",
+    "answer": "関係するものとして知っていること。検知の「感知」と区別。",
+    "context": "その計画は担当外で、私はカンチしていない。",
+    "confusion": "関係するものとして知っていること。検知の「感知」と区別。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-031",
+        "type": "kanji",
+        "context": "その計画は担当外で、私はカンチしていない。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "関知",
+          "感知",
+          "完治",
+          "官地"
+        ],
+        "correct": 0,
+        "why": "関係するものとして知っていること。検知の「感知」と区別。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-032",
+    "title": "感知",
+    "reading": "かんち",
+    "category": "漢字の表記",
+    "question": "「感知」の意味・使い方を説明しよう。",
+    "answer": "変化や刺激を感じ取って知ること。",
+    "context": "センサーが人の動きをカンチすると、照明がつく。",
+    "confusion": "変化や刺激を感じ取って知ること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-032",
+        "type": "kanji",
+        "context": "センサーが人の動きをカンチすると、照明がつく。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "感知",
+          "関知",
+          "完治",
+          "官地"
+        ],
+        "correct": 0,
+        "why": "変化や刺激を感じ取って知ること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-033",
+    "title": "体制",
+    "reading": "たいせい",
+    "category": "漢字の表記",
+    "question": "「体制」の意味・使い方を説明しよう。",
+    "answer": "継続的に機能する組織や仕組み。組織の整備に着目する。",
+    "context": "災害に備え、自治体は救援のタイセイを整えた。",
+    "confusion": "継続的に機能する組織や仕組み。組織の整備に着目する。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-033",
+        "type": "kanji",
+        "context": "災害に備え、自治体は救援のタイセイを整えた。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "体制",
+          "態勢",
+          "大勢",
+          "耐性"
+        ],
+        "correct": 0,
+        "why": "継続的に機能する組織や仕組み。組織の整備に着目する。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-034",
+    "title": "態勢",
+    "reading": "たいせい",
+    "category": "漢字の表記",
+    "question": "「態勢」の意味・使い方を説明しよう。",
+    "answer": "ある行動に対応するための構えや準備。",
+    "context": "笛が鳴り、選手たちはすぐ走り出せるタイセイを取った。",
+    "confusion": "ある行動に対応するための構えや準備。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-034",
+        "type": "kanji",
+        "context": "笛が鳴り、選手たちはすぐ走り出せるタイセイを取った。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "態勢",
+          "体制",
+          "大勢",
+          "耐性"
+        ],
+        "correct": 0,
+        "why": "ある行動に対応するための構えや準備。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-035",
+    "title": "耐性",
+    "reading": "たいせい",
+    "category": "漢字の表記",
+    "question": "「耐性」の意味・使い方を説明しよう。",
+    "answer": "ある条件や作用に耐える性質。",
+    "context": "この植物は乾燥へのタイセイが強い。",
+    "confusion": "ある条件や作用に耐える性質。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-035",
+        "type": "kanji",
+        "context": "この植物は乾燥へのタイセイが強い。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "耐性",
+          "体制",
+          "態勢",
+          "大勢"
+        ],
+        "correct": 0,
+        "why": "ある条件や作用に耐える性質。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-036",
+    "title": "大勢",
+    "reading": "たいせい",
+    "category": "漢字の表記",
+    "question": "「大勢」の意味・使い方を説明しよう。",
+    "answer": "物事の全体的な流れや成り行き。この文の読みは「たいせい」。",
+    "context": "議論のタイセイが賛成に傾いた。",
+    "confusion": "物事の全体的な流れや成り行き。この文の読みは「たいせい」。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-036",
+        "type": "kanji",
+        "context": "議論のタイセイが賛成に傾いた。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "大勢",
+          "体制",
+          "態勢",
+          "耐性"
+        ],
+        "correct": 0,
+        "why": "物事の全体的な流れや成り行き。この文の読みは「たいせい」。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-037",
+    "title": "対象",
+    "reading": "たいしょう",
+    "category": "漢字の表記",
+    "question": "「対象」の意味・使い方を説明しよう。",
+    "answer": "行為や関心が向けられる相手・事柄。",
+    "context": "この調査は中学生をタイショウとしている。",
+    "confusion": "行為や関心が向けられる相手・事柄。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-037",
+        "type": "kanji",
+        "context": "この調査は中学生をタイショウとしている。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "対象",
+          "対照",
+          "対称",
+          "大賞"
+        ],
+        "correct": 0,
+        "why": "行為や関心が向けられる相手・事柄。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-038",
+    "title": "対称",
+    "reading": "たいしょう",
+    "category": "漢字の表記",
+    "question": "「対称」の意味・使い方を説明しよう。",
+    "answer": "基準となる点・線などに対し、対応する位置や形になっていること。",
+    "context": "この図形は、一本の直線を軸として左右がタイショウだ。",
+    "confusion": "基準となる点・線などに対し、対応する位置や形になっていること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-038",
+        "type": "kanji",
+        "context": "この図形は、一本の直線を軸として左右がタイショウだ。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "対称",
+          "対象",
+          "対照",
+          "大賞"
+        ],
+        "correct": 0,
+        "why": "基準となる点・線などに対し、対応する位置や形になっていること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-039",
+    "title": "対照",
+    "reading": "たいしょう",
+    "category": "漢字の表記",
+    "question": "「対照」の意味・使い方を説明しよう。",
+    "answer": "二つを照らし合わせて比較すること。",
+    "context": "原文と訳文をタイショウして、抜けた内容を探す。",
+    "confusion": "二つを照らし合わせて比較すること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-039",
+        "type": "kanji",
+        "context": "原文と訳文をタイショウして、抜けた内容を探す。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "対照",
+          "対象",
+          "対称",
+          "大賞"
+        ],
+        "correct": 0,
+        "why": "二つを照らし合わせて比較すること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-040",
+    "title": "確信",
+    "reading": "かくしん",
+    "category": "漢字の表記",
+    "question": "「確信」の意味・使い方を説明しよう。",
+    "answer": "固く信じて疑わないこと。",
+    "context": "繰り返し確かめた結果、この方法なら成功するとカクシンした。",
+    "confusion": "固く信じて疑わないこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-040",
+        "type": "kanji",
+        "context": "繰り返し確かめた結果、この方法なら成功するとカクシンした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "確信",
+          "核心",
+          "革新",
+          "改心"
+        ],
+        "correct": 0,
+        "why": "固く信じて疑わないこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-041",
+    "title": "革新",
+    "reading": "かくしん",
+    "category": "漢字の表記",
+    "question": "「革新」の意味・使い方を説明しよう。",
+    "answer": "古い仕組みなどを改め、新しくすること。",
+    "context": "古い制度を改め、組織のカクシンを進める。",
+    "confusion": "古い仕組みなどを改め、新しくすること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-041",
+        "type": "kanji",
+        "context": "古い制度を改め、組織のカクシンを進める。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "革新",
+          "確信",
+          "核心",
+          "改心"
+        ],
+        "correct": 0,
+        "why": "古い仕組みなどを改め、新しくすること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-042",
+    "title": "核心",
+    "reading": "かくしん",
+    "category": "漢字の表記",
+    "question": "「核心」の意味・使い方を説明しよう。",
+    "answer": "物事の最も重要な中心部分。",
+    "context": "長い話し合いの末、問題のカクシンが見えてきた。",
+    "confusion": "物事の最も重要な中心部分。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-042",
+        "type": "kanji",
+        "context": "長い話し合いの末、問題のカクシンが見えてきた。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "核心",
+          "確信",
+          "革新",
+          "改心"
+        ],
+        "correct": 0,
+        "why": "物事の最も重要な中心部分。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-043",
+    "title": "効率",
+    "reading": "こうりつ",
+    "category": "漢字の表記",
+    "question": "「効率」の意味・使い方を説明しよう。",
+    "answer": "使った時間や労力に対して得られる成果の割合。",
+    "context": "作業時間と成果を比べ、コウリツのよい方法を選んだ。",
+    "confusion": "使った時間や労力に対して得られる成果の割合。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-043",
+        "type": "kanji",
+        "context": "作業時間と成果を比べ、コウリツのよい方法を選んだ。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "効率",
+          "公立",
+          "高率",
+          "功律"
+        ],
+        "correct": 0,
+        "why": "使った時間や労力に対して得られる成果の割合。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-044",
+    "title": "公立",
+    "reading": "こうりつ",
+    "category": "漢字の表記",
+    "question": "「公立」の意味・使い方を説明しよう。",
+    "answer": "地方公共団体が設置していること。",
+    "context": "県が設置して運営するコウリツ高校に通う。",
+    "confusion": "地方公共団体が設置していること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-044",
+        "type": "kanji",
+        "context": "県が設置して運営するコウリツ高校に通う。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "公立",
+          "効率",
+          "高率",
+          "功律"
+        ],
+        "correct": 0,
+        "why": "地方公共団体が設置していること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-045",
+    "title": "以外",
+    "reading": "いがい",
+    "category": "漢字の表記",
+    "question": "「以外」の意味・使い方を説明しよう。",
+    "answer": "一定の範囲から外にあるもの。「関係者を除く」の意。",
+    "context": "関係者イガイは、この部屋に入れない。",
+    "confusion": "一定の範囲から外にあるもの。「関係者を除く」の意。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-045",
+        "type": "kanji",
+        "context": "関係者イガイは、この部屋に入れない。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "以外",
+          "意外",
+          "異外",
+          "違外"
+        ],
+        "correct": 0,
+        "why": "一定の範囲から外にあるもの。「関係者を除く」の意。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-046",
+    "title": "意外",
+    "reading": "いがい",
+    "category": "漢字の表記",
+    "question": "「意外」の意味・使い方を説明しよう。",
+    "answer": "予想や考えていたことから外れること。",
+    "context": "予想とは違う結果になり、イガイに感じた。",
+    "confusion": "予想や考えていたことから外れること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-046",
+        "type": "kanji",
+        "context": "予想とは違う結果になり、イガイに感じた。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "意外",
+          "以外",
+          "異外",
+          "違外"
+        ],
+        "correct": 0,
+        "why": "予想や考えていたことから外れること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-047",
+    "title": "回答",
+    "reading": "かいとう",
+    "category": "漢字の表記",
+    "question": "「回答」の意味・使い方を説明しよう。",
+    "answer": "質問や要求に答えること。試験問題を解いて答えるのは「解答」。",
+    "context": "学校生活のアンケートにカイトウする。",
+    "confusion": "質問や要求に答えること。試験問題を解いて答えるのは「解答」。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-047",
+        "type": "kanji",
+        "context": "学校生活のアンケートにカイトウする。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "回答",
+          "解答",
+          "会頭",
+          "怪盗"
+        ],
+        "correct": 0,
+        "why": "質問や要求に答えること。試験問題を解いて答えるのは「解答」。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-048",
+    "title": "解答",
+    "reading": "かいとう",
+    "category": "漢字の表記",
+    "question": "「解答」の意味・使い方を説明しよう。",
+    "answer": "問題を解いて答えを出すこと。",
+    "context": "方程式を解き、カイトウ用紙に答えを書く。",
+    "confusion": "問題を解いて答えを出すこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-048",
+        "type": "kanji",
+        "context": "方程式を解き、カイトウ用紙に答えを書く。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "解答",
+          "回答",
+          "会頭",
+          "怪盗"
+        ],
+        "correct": 0,
+        "why": "問題を解いて答えを出すこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-049",
+    "title": "開放",
+    "reading": "かいほう",
+    "category": "漢字の表記",
+    "question": "「開放」の意味・使い方を説明しよう。",
+    "answer": "閉じていた場所や施設を開いて利用できるようにすること。",
+    "context": "休日は体育館を地域の人にカイホウする。",
+    "confusion": "閉じていた場所や施設を開いて利用できるようにすること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-049",
+        "type": "kanji",
+        "context": "休日は体育館を地域の人にカイホウする。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "開放",
+          "解放",
+          "介抱",
+          "快方"
+        ],
+        "correct": 0,
+        "why": "閉じていた場所や施設を開いて利用できるようにすること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-050",
+    "title": "解放",
+    "reading": "かいほう",
+    "category": "漢字の表記",
+    "question": "「解放」の意味・使い方を説明しよう。",
+    "answer": "束縛や負担から自由になること。",
+    "context": "仕事が終わり、重い責任からカイホウされた。",
+    "confusion": "束縛や負担から自由になること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-050",
+        "type": "kanji",
+        "context": "仕事が終わり、重い責任からカイホウされた。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "解放",
+          "開放",
+          "介抱",
+          "快方"
+        ],
+        "correct": 0,
+        "why": "束縛や負担から自由になること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-051",
+    "title": "快方",
+    "reading": "かいほう",
+    "category": "漢字の表記",
+    "question": "「快方」の意味・使い方を説明しよう。",
+    "answer": "病気やけががよくなる方向。「向かう」と組み合わせる。",
+    "context": "治療が進み、病状がカイホウに向かっている。",
+    "confusion": "病気やけががよくなる方向。「向かう」と組み合わせる。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-051",
+        "type": "kanji",
+        "context": "治療が進み、病状がカイホウに向かっている。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "快方",
+          "解放",
+          "開放",
+          "介抱"
+        ],
+        "correct": 0,
+        "why": "病気やけががよくなる方向。「向かう」と組み合わせる。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-052",
+    "title": "介抱",
+    "reading": "かいほう",
+    "category": "漢字の表記",
+    "question": "「介抱」の意味・使い方を説明しよう。",
+    "answer": "病人やけが人の世話をすること。",
+    "context": "気分の悪くなった友人を、日陰でカイホウした。",
+    "confusion": "病人やけが人の世話をすること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-052",
+        "type": "kanji",
+        "context": "気分の悪くなった友人を、日陰でカイホウした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "介抱",
+          "解放",
+          "開放",
+          "快方"
+        ],
+        "correct": 0,
+        "why": "病人やけが人の世話をすること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-053",
+    "title": "過程",
+    "reading": "かてい",
+    "category": "漢字の表記",
+    "question": "「過程」の意味・使い方を説明しよう。",
+    "answer": "物事が進む道筋や経過。",
+    "context": "答えだけでなく、そこに至るカテイも説明する。",
+    "confusion": "物事が進む道筋や経過。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-053",
+        "type": "kanji",
+        "context": "答えだけでなく、そこに至るカテイも説明する。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "過程",
+          "課程",
+          "仮定",
+          "家庭"
+        ],
+        "correct": 0,
+        "why": "物事が進む道筋や経過。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-054",
+    "title": "課程",
+    "reading": "かてい",
+    "category": "漢字の表記",
+    "question": "「課程」の意味・使い方を説明しよう。",
+    "answer": "学校などの教育内容を系統立てた段階や道筋。",
+    "context": "定められた教育カテイに従って学ぶ。",
+    "confusion": "学校などの教育内容を系統立てた段階や道筋。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-054",
+        "type": "kanji",
+        "context": "定められた教育カテイに従って学ぶ。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "課程",
+          "過程",
+          "仮定",
+          "家庭"
+        ],
+        "correct": 0,
+        "why": "学校などの教育内容を系統立てた段階や道筋。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-055",
+    "title": "仮定",
+    "reading": "かてい",
+    "category": "漢字の表記",
+    "question": "「仮定」の意味・使い方を説明しよう。",
+    "answer": "まだ確定していない事柄を、そうであると一時的に置くこと。",
+    "context": "雨が降った場合をカテイし、別の会場を考えた。",
+    "confusion": "まだ確定していない事柄を、そうであると一時的に置くこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-055",
+        "type": "kanji",
+        "context": "雨が降った場合をカテイし、別の会場を考えた。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "仮定",
+          "過程",
+          "課程",
+          "家庭"
+        ],
+        "correct": 0,
+        "why": "まだ確定していない事柄を、そうであると一時的に置くこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-056",
+    "title": "協調",
+    "reading": "きょうちょう",
+    "category": "漢字の表記",
+    "question": "「協調」の意味・使い方を説明しよう。",
+    "answer": "互いに協力し、調和を図ること。",
+    "context": "互いの立場を尊重し、他の班ともキョウチョウして作業する。",
+    "confusion": "互いに協力し、調和を図ること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-056",
+        "type": "kanji",
+        "context": "互いの立場を尊重し、他の班ともキョウチョウして作業する。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "協調",
+          "強調",
+          "共聴",
+          "強長"
+        ],
+        "correct": 0,
+        "why": "互いに協力し、調和を図ること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-057",
+    "title": "強調",
+    "reading": "きょうちょう",
+    "category": "漢字の表記",
+    "question": "「強調」の意味・使い方を説明しよう。",
+    "answer": "ある事柄を強く示し、印象付けること。",
+    "context": "特に大事な注意点を、声を強めてキョウチョウした。",
+    "confusion": "ある事柄を強く示し、印象付けること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-057",
+        "type": "kanji",
+        "context": "特に大事な注意点を、声を強めてキョウチョウした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "強調",
+          "協調",
+          "共聴",
+          "強長"
+        ],
+        "correct": 0,
+        "why": "ある事柄を強く示し、印象付けること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-058",
+    "title": "構成",
+    "reading": "こうせい",
+    "category": "漢字の表記",
+    "question": "「構成」の意味・使い方を説明しよう。",
+    "answer": "複数の要素を組み合わせ、全体を作ること。",
+    "context": "序論・本論・結論という文章のコウセイを考える。",
+    "confusion": "複数の要素を組み合わせ、全体を作ること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-058",
+        "type": "kanji",
+        "context": "序論・本論・結論という文章のコウセイを考える。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "構成",
+          "公正",
+          "校正",
+          "更生"
+        ],
+        "correct": 0,
+        "why": "複数の要素を組み合わせ、全体を作ること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-059",
+    "title": "校正",
+    "reading": "こうせい",
+    "category": "漢字の表記",
+    "question": "「校正」の意味・使い方を説明しよう。",
+    "answer": "文字や印刷の誤りを、原稿などと照らして直すこと。",
+    "context": "印刷前の原稿をコウセイし、誤字を直した。",
+    "confusion": "文字や印刷の誤りを、原稿などと照らして直すこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-059",
+        "type": "kanji",
+        "context": "印刷前の原稿をコウセイし、誤字を直した。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "校正",
+          "構成",
+          "公正",
+          "更生"
+        ],
+        "correct": 0,
+        "why": "文字や印刷の誤りを、原稿などと照らして直すこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-060",
+    "title": "公正",
+    "reading": "こうせい",
+    "category": "漢字の表記",
+    "question": "「公正」の意味・使い方を説明しよう。",
+    "answer": "偏りがなく、正しく公平であること。",
+    "context": "親しい相手でも特別扱いせず、コウセイに審査する。",
+    "confusion": "偏りがなく、正しく公平であること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-060",
+        "type": "kanji",
+        "context": "親しい相手でも特別扱いせず、コウセイに審査する。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "公正",
+          "構成",
+          "校正",
+          "更生"
+        ],
+        "correct": 0,
+        "why": "偏りがなく、正しく公平であること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-061",
+    "title": "更生",
+    "reading": "こうせい",
+    "category": "漢字の表記",
+    "question": "「更生」の意味・使い方を説明しよう。",
+    "answer": "生活や態度を改め、立ち直ること。",
+    "context": "過去の過ちを反省し、社会で生活を立て直すコウセイを支える。",
+    "confusion": "生活や態度を改め、立ち直ること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-061",
+        "type": "kanji",
+        "context": "過去の過ちを反省し、社会で生活を立て直すコウセイを支える。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "更生",
+          "構成",
+          "校正",
+          "公正"
+        ],
+        "correct": 0,
+        "why": "生活や態度を改め、立ち直ること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-062",
+    "title": "制作意図",
+    "reading": "せいさくいと",
+    "category": "漢字の表記",
+    "question": "「制作意図」の意味・使い方を説明しよう。",
+    "answer": "芸術作品を作る目的や考え。「制作」と「意図」の組合せ。",
+    "context": "作者が作品に込めたセイサクイトを、解説から読み取る。",
+    "confusion": "芸術作品を作る目的や考え。「制作」と「意図」の組合せ。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-062",
+        "type": "kanji",
+        "context": "作者が作品に込めたセイサクイトを、解説から読み取る。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "制作意図",
+          "製作異図",
+          "政策意図",
+          "製作意途"
+        ],
+        "correct": 0,
+        "why": "芸術作品を作る目的や考え。「制作」と「意図」の組合せ。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-063",
+    "title": "適用",
+    "reading": "てきよう",
+    "category": "漢字の表記",
+    "question": "「適用」の意味・使い方を説明しよう。",
+    "answer": "規則や法律などを具体的な場合に当てはめること。",
+    "context": "新しい規則は、来月の大会からテキヨウされる。",
+    "confusion": "規則や法律などを具体的な場合に当てはめること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-063",
+        "type": "kanji",
+        "context": "新しい規則は、来月の大会からテキヨウされる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "適用",
+          "摘要",
+          "適応",
+          "適要"
+        ],
+        "correct": 0,
+        "why": "規則や法律などを具体的な場合に当てはめること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-064",
+    "title": "摘要",
+    "reading": "てきよう",
+    "category": "漢字の表記",
+    "question": "「摘要」の意味・使い方を説明しよう。",
+    "answer": "重要な部分を抜き出してまとめたもの。",
+    "context": "報告書のテキヨウを読み、全体の要点をつかむ。",
+    "confusion": "重要な部分を抜き出してまとめたもの。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-064",
+        "type": "kanji",
+        "context": "報告書のテキヨウを読み、全体の要点をつかむ。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "摘要",
+          "適用",
+          "適応",
+          "適要"
+        ],
+        "correct": 0,
+        "why": "重要な部分を抜き出してまとめたもの。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-065",
+    "title": "収集",
+    "reading": "しゅうしゅう",
+    "category": "漢字の表記",
+    "question": "「収集」の意味・使い方を説明しよう。",
+    "answer": "物や情報を集めること。混乱を収めるのは「収拾」。",
+    "context": "地域の昔の写真をシュウシュウし、展示した。",
+    "confusion": "物や情報を集めること。混乱を収めるのは「収拾」。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-065",
+        "type": "kanji",
+        "context": "地域の昔の写真をシュウシュウし、展示した。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "収集",
+          "収拾",
+          "習修",
+          "収修"
+        ],
+        "correct": 0,
+        "why": "物や情報を集めること。混乱を収めるのは「収拾」。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-066",
+    "title": "習得",
+    "reading": "しゅうとく",
+    "category": "漢字の表記",
+    "question": "「習得」の意味・使い方を説明しよう。",
+    "answer": "習って技術などを身に付けること。",
+    "context": "練習を繰り返して、泳ぎ方をシュウトクした。",
+    "confusion": "習って技術などを身に付けること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-066",
+        "type": "kanji",
+        "context": "練習を繰り返して、泳ぎ方をシュウトクした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "習得",
+          "修得",
+          "取得",
+          "拾得"
+        ],
+        "correct": 0,
+        "why": "習って技術などを身に付けること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-067",
+    "title": "取得",
+    "reading": "しゅとく",
+    "category": "漢字の表記",
+    "question": "「取得」の意味・使い方を説明しよう。",
+    "answer": "資格や権利などを手に入れること。読みは「しゅとく」。",
+    "context": "必要な試験に合格し、資格をシュトクした。",
+    "confusion": "資格や権利などを手に入れること。読みは「しゅとく」。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-067",
+        "type": "kanji",
+        "context": "必要な試験に合格し、資格をシュトクした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "取得",
+          "習得",
+          "修得",
+          "拾得"
+        ],
+        "correct": 0,
+        "why": "資格や権利などを手に入れること。読みは「しゅとく」。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-068",
+    "title": "拾得",
+    "reading": "しゅうとく",
+    "category": "漢字の表記",
+    "question": "「拾得」の意味・使い方を説明しよう。",
+    "answer": "落ちているものを拾うこと。",
+    "context": "落とし物を見つけ、シュウトク物として届けた。",
+    "confusion": "落ちているものを拾うこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-068",
+        "type": "kanji",
+        "context": "落とし物を見つけ、シュウトク物として届けた。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "拾得",
+          "習得",
+          "修得",
+          "取得"
+        ],
+        "correct": 0,
+        "why": "落ちているものを拾うこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-069",
+    "title": "修める",
+    "reading": "おさめる",
+    "category": "漢字の表記",
+    "question": "「修める」の意味・使い方を説明しよう。",
+    "answer": "学問や技術を身に付けるときは「修める」。",
+    "context": "大学で歴史学をオサめる。",
+    "confusion": "学問や技術を身に付けるときは「修める」。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-069",
+        "type": "kanji",
+        "context": "大学で歴史学をオサめる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "修める",
+          "収める",
+          "納める",
+          "治める"
+        ],
+        "correct": 0,
+        "why": "学問や技術を身に付けるときは「修める」。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-070",
+    "title": "納める",
+    "reading": "おさめる",
+    "category": "漢字の表記",
+    "question": "「納める」の意味・使い方を説明しよう。",
+    "answer": "金品を支払ったり、相手へ渡したりするときは「納める」。",
+    "context": "期日までに税金をオサめる。",
+    "confusion": "金品を支払ったり、相手へ渡したりするときは「納める」。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-070",
+        "type": "kanji",
+        "context": "期日までに税金をオサめる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "納める",
+          "収める",
+          "修める",
+          "治める"
+        ],
+        "correct": 0,
+        "why": "金品を支払ったり、相手へ渡したりするときは「納める」。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-071",
+    "title": "治める",
+    "reading": "おさめる",
+    "category": "漢字の表記",
+    "question": "「治める」の意味・使い方を説明しよう。",
+    "answer": "国や地域を統治するときは「治める」。",
+    "context": "争いの多かった国を平和にオサめる。",
+    "confusion": "国や地域を統治するときは「治める」。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-071",
+        "type": "kanji",
+        "context": "争いの多かった国を平和にオサめる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "治める",
+          "納める",
+          "収める",
+          "修める"
+        ],
+        "correct": 0,
+        "why": "国や地域を統治するときは「治める」。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-072",
+    "title": "収める",
+    "reading": "おさめる",
+    "category": "漢字の表記",
+    "question": "「収める」の意味・使い方を説明しよう。",
+    "answer": "一定の場所へ入れてしまうときは「収める」。",
+    "context": "旅行で撮った写真をアルバムにオサめる。",
+    "confusion": "一定の場所へ入れてしまうときは「収める」。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-072",
+        "type": "kanji",
+        "context": "旅行で撮った写真をアルバムにオサめる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "収める",
+          "修める",
+          "納める",
+          "治める"
+        ],
+        "correct": 0,
+        "why": "一定の場所へ入れてしまうときは「収める」。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-073",
+    "title": "測る",
+    "reading": "はかる",
+    "category": "漢字の表記",
+    "question": "「測る」の意味・使い方を説明しよう。",
+    "answer": "長さ・高さ・面積などを調べるときは「測る」。",
+    "context": "ものさしで机の長さをハカる。",
+    "confusion": "長さ・高さ・面積などを調べるときは「測る」。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-073",
+        "type": "kanji",
+        "context": "ものさしで机の長さをハカる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "測る",
+          "計る",
+          "量る",
+          "図る"
+        ],
+        "correct": 0,
+        "why": "長さ・高さ・面積などを調べるときは「測る」。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-074",
+    "title": "計る",
+    "reading": "はかる",
+    "category": "漢字の表記",
+    "question": "「計る」の意味・使い方を説明しよう。",
+    "answer": "時間を計測したり、数を計算したりするときは「計る」。",
+    "context": "ストップウォッチで走った時間をハカる。",
+    "confusion": "時間を計測したり、数を計算したりするときは「計る」。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-074",
+        "type": "kanji",
+        "context": "ストップウォッチで走った時間をハカる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "計る",
+          "測る",
+          "量る",
+          "図る"
+        ],
+        "correct": 0,
+        "why": "時間を計測したり、数を計算したりするときは「計る」。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-075",
+    "title": "図る",
+    "reading": "はかる",
+    "category": "漢字の表記",
+    "question": "「図る」の意味・使い方を説明しよう。",
+    "answer": "実現を目指して工夫すること。数値を測定する意味ではない。",
+    "context": "作業の順序を変え、時間の短縮をハカる。",
+    "confusion": "実現を目指して工夫すること。数値を測定する意味ではない。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-075",
+        "type": "kanji",
+        "context": "作業の順序を変え、時間の短縮をハカる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "図る",
+          "測る",
+          "計る",
+          "量る"
+        ],
+        "correct": 0,
+        "why": "実現を目指して工夫すること。数値を測定する意味ではない。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-076",
+    "title": "諮る",
+    "reading": "はかる",
+    "category": "漢字の表記",
+    "question": "「諮る」の意味・使い方を説明しよう。",
+    "answer": "意見を求めて相談すること。「会議に」が手掛かり。",
+    "context": "校則の変更案を、生徒会の会議にハカる。",
+    "confusion": "意見を求めて相談すること。「会議に」が手掛かり。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-076",
+        "type": "kanji",
+        "context": "校則の変更案を、生徒会の会議にハカる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "諮る",
+          "謀る",
+          "図る",
+          "計る"
+        ],
+        "correct": 0,
+        "why": "意見を求めて相談すること。「会議に」が手掛かり。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-077",
+    "title": "謀る",
+    "reading": "はかる",
+    "category": "漢字の表記",
+    "question": "「謀る」の意味・使い方を説明しよう。",
+    "answer": "よくない計画を立てたり、人をだましたりすること。",
+    "context": "仲間をだまし、自分だけの利益をハカる。",
+    "confusion": "よくない計画を立てたり、人をだましたりすること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-077",
+        "type": "kanji",
+        "context": "仲間をだまし、自分だけの利益をハカる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "謀る",
+          "諮る",
+          "測る",
+          "量る"
+        ],
+        "correct": 0,
+        "why": "よくない計画を立てたり、人をだましたりすること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-078",
+    "title": "努める",
+    "reading": "つとめる",
+    "category": "漢字の表記",
+    "question": "「努める」の意味・使い方を説明しよう。",
+    "answer": "目的のために力を尽くすこと。",
+    "context": "誰もが参加しやすい雰囲気づくりにツトめる。",
+    "confusion": "目的のために力を尽くすこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-078",
+        "type": "kanji",
+        "context": "誰もが参加しやすい雰囲気づくりにツトめる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "努める",
+          "勤める",
+          "務める",
+          "勧める"
+        ],
+        "correct": 0,
+        "why": "目的のために力を尽くすこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-079",
+    "title": "勤める",
+    "reading": "つとめる",
+    "category": "漢字の表記",
+    "question": "「勤める」の意味・使い方を説明しよう。",
+    "answer": "勤務先に所属して働くこと。",
+    "context": "母は駅前の会社にツトめている。",
+    "confusion": "勤務先に所属して働くこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-079",
+        "type": "kanji",
+        "context": "母は駅前の会社にツトめている。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "勤める",
+          "努める",
+          "務める",
+          "勧める"
+        ],
+        "correct": 0,
+        "why": "勤務先に所属して働くこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-080",
+    "title": "務める",
+    "reading": "つとめる",
+    "category": "漢字の表記",
+    "question": "「務める」の意味・使い方を説明しよう。",
+    "answer": "役割や任務を引き受けて果たすこと。",
+    "context": "文化祭で司会をツトめる。",
+    "confusion": "役割や任務を引き受けて果たすこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-080",
+        "type": "kanji",
+        "context": "文化祭で司会をツトめる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "務める",
+          "努める",
+          "勤める",
+          "勧める"
+        ],
+        "correct": 0,
+        "why": "役割や任務を引き受けて果たすこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-081",
+    "title": "表す",
+    "reading": "あらわす",
+    "category": "漢字の表記",
+    "question": "「表す」の意味・使い方を説明しよう。",
+    "answer": "気持ちや意味を外へ示すこと。",
+    "context": "感謝の気持ちを言葉でアラワす。",
+    "confusion": "気持ちや意味を外へ示すこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-081",
+        "type": "kanji",
+        "context": "感謝の気持ちを言葉でアラワす。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "表す",
+          "現す",
+          "著す",
+          "顕す"
+        ],
+        "correct": 0,
+        "why": "気持ちや意味を外へ示すこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-082",
+    "title": "現す",
+    "reading": "あらわす",
+    "category": "漢字の表記",
+    "question": "「現す」の意味・使い方を説明しよう。",
+    "answer": "隠れていたものが見える状態になること。",
+    "context": "雲の間から太陽が姿をアラワす。",
+    "confusion": "隠れていたものが見える状態になること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-082",
+        "type": "kanji",
+        "context": "雲の間から太陽が姿をアラワす。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "現す",
+          "表す",
+          "著す",
+          "顕す"
+        ],
+        "correct": 0,
+        "why": "隠れていたものが見える状態になること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-083",
+    "title": "著す",
+    "reading": "あらわす",
+    "category": "漢字の表記",
+    "question": "「著す」の意味・使い方を説明しよう。",
+    "answer": "書物を書いて世に出すこと。",
+    "context": "長年の研究成果を、一冊の本にアラワす。",
+    "confusion": "書物を書いて世に出すこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-083",
+        "type": "kanji",
+        "context": "長年の研究成果を、一冊の本にアラワす。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "著す",
+          "現す",
+          "表す",
+          "顕す"
+        ],
+        "correct": 0,
+        "why": "書物を書いて世に出すこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-084",
+    "title": "象徴",
+    "reading": "しょうちょう",
+    "category": "漢字の表記",
+    "question": "「象徴」の意味・使い方を説明しよう。",
+    "answer": "目に見えるものを通して、抽象的な意味を示すこと。",
+    "context": "鳩は、平和のショウチョウとして描かれることがある。",
+    "confusion": "目に見えるものを通して、抽象的な意味を示すこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-084",
+        "type": "kanji",
+        "context": "鳩は、平和のショウチョウとして描かれることがある。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "象徴",
+          "象徹",
+          "症徴",
+          "像徴"
+        ],
+        "correct": 0,
+        "why": "目に見えるものを通して、抽象的な意味を示すこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-086",
+    "title": "中傷",
+    "reading": "ちゅうしょう",
+    "category": "漢字の表記",
+    "question": "「中傷」の意味・使い方を説明しよう。",
+    "answer": "根拠のないことを言って他人の名誉を傷つけること。",
+    "context": "根拠のない噂で人をチュウショウしてはいけない。",
+    "confusion": "根拠のないことを言って他人の名誉を傷つけること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-086",
+        "type": "kanji",
+        "context": "根拠のない噂で人をチュウショウしてはいけない。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "中傷",
+          "抽象",
+          "抽称",
+          "仲商"
+        ],
+        "correct": 0,
+        "why": "根拠のないことを言って他人の名誉を傷つけること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-087",
+    "title": "憶測",
+    "reading": "おくそく",
+    "category": "漢字の表記",
+    "question": "「憶測」の意味・使い方を説明しよう。",
+    "answer": "確かな根拠がないまま推し量ること。「推測」より根拠の乏しさを含む。",
+    "context": "事実を確かめず、オクソクだけで判断した。",
+    "confusion": "確かな根拠がないまま推し量ること。「推測」より根拠の乏しさを含む。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-087",
+        "type": "kanji",
+        "context": "事実を確かめず、オクソクだけで判断した。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "憶測",
+          "臆側",
+          "億測",
+          "億側"
+        ],
+        "correct": 0,
+        "why": "確かな根拠がないまま推し量ること。「推測」より根拠の乏しさを含む。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-088",
+    "title": "簡潔",
+    "reading": "かんけつ",
+    "category": "漢字の表記",
+    "question": "「簡潔」の意味・使い方を説明しよう。",
+    "answer": "短くまとまっていて、無駄がないこと。",
+    "context": "説明が長くなりすぎないよう、要点をカンケツに述べる。",
+    "confusion": "短くまとまっていて、無駄がないこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-088",
+        "type": "kanji",
+        "context": "説明が長くなりすぎないよう、要点をカンケツに述べる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "簡潔",
+          "完結",
+          "間欠",
+          "簡決"
+        ],
+        "correct": 0,
+        "why": "短くまとまっていて、無駄がないこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-089",
+    "title": "完結",
+    "reading": "かんけつ",
+    "category": "漢字の表記",
+    "question": "「完結」の意味・使い方を説明しよう。",
+    "answer": "物事が終わって、全体がまとまること。",
+    "context": "最後の巻が刊行され、長編小説がカンケツした。",
+    "confusion": "物事が終わって、全体がまとまること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-089",
+        "type": "kanji",
+        "context": "最後の巻が刊行され、長編小説がカンケツした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "完結",
+          "簡潔",
+          "間欠",
+          "簡決"
+        ],
+        "correct": 0,
+        "why": "物事が終わって、全体がまとまること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-090",
+    "title": "緊密",
+    "reading": "きんみつ",
+    "category": "漢字の表記",
+    "question": "「緊密」の意味・使い方を説明しよう。",
+    "answer": "関係が密接で、しっかり結び付いていること。読みと文脈を確かめる。",
+    "context": "隣の自治体とキンミツに連絡を取り合う。",
+    "confusion": "関係が密接で、しっかり結び付いていること。読みと文脈を確かめる。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-090",
+        "type": "kanji",
+        "context": "隣の自治体とキンミツに連絡を取り合う。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "緊密",
+          "親密",
+          "機密",
+          "精密"
+        ],
+        "correct": 0,
+        "why": "関係が密接で、しっかり結び付いていること。読みと文脈を確かめる。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-091",
+    "title": "精密",
+    "reading": "せいみつ",
+    "category": "漢字の表記",
+    "question": "「精密」の意味・使い方を説明しよう。",
+    "answer": "細部まで正確で、きめ細かいこと。",
+    "context": "セイミツな測定器を使い、小さな差も調べる。",
+    "confusion": "細部まで正確で、きめ細かいこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-091",
+        "type": "kanji",
+        "context": "セイミツな測定器を使い、小さな差も調べる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "精密",
+          "清密",
+          "整密",
+          "制密"
+        ],
+        "correct": 0,
+        "why": "細部まで正確で、きめ細かいこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-092",
+    "title": "簡素",
+    "reading": "かんそ",
+    "category": "漢字の表記",
+    "question": "「簡素」の意味・使い方を説明しよう。",
+    "answer": "無駄な飾りがなく、質素ですっきりしていること。",
+    "context": "飾りを減らし、カンソで使いやすい部屋にした。",
+    "confusion": "無駄な飾りがなく、質素ですっきりしていること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-092",
+        "type": "kanji",
+        "context": "飾りを減らし、カンソで使いやすい部屋にした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "簡素",
+          "閑疎",
+          "乾燥",
+          "簡疎"
+        ],
+        "correct": 0,
+        "why": "無駄な飾りがなく、質素ですっきりしていること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-093",
+    "title": "既存",
+    "reading": "きそん",
+    "category": "漢字の表記",
+    "question": "「既存」の意味・使い方を説明しよう。",
+    "answer": "すでに存在していること。まだ存在しない計画とは区別する。",
+    "context": "新しく建てるだけでなく、キソンの施設を活用する。",
+    "confusion": "すでに存在していること。まだ存在しない計画とは区別する。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-093",
+        "type": "kanji",
+        "context": "新しく建てるだけでなく、キソンの施設を活用する。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "既存",
+          "寄存",
+          "基存",
+          "期存"
+        ],
+        "correct": 0,
+        "why": "すでに存在していること。まだ存在しない計画とは区別する。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-094",
+    "title": "概略",
+    "reading": "がいりゃく",
+    "category": "漢字の表記",
+    "question": "「概略」の意味・使い方を説明しよう。",
+    "answer": "物事のおおよその内容やあらまし。",
+    "context": "詳しい説明の前に、計画のガイリャクを示す。",
+    "confusion": "物事のおおよその内容やあらまし。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-094",
+        "type": "kanji",
+        "context": "詳しい説明の前に、計画のガイリャクを示す。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "概略",
+          "外略",
+          "該略",
+          "概絡"
+        ],
+        "correct": 0,
+        "why": "物事のおおよその内容やあらまし。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-095",
+    "title": "把握",
+    "reading": "はあく",
+    "category": "漢字の表記",
+    "question": "「把握」の意味・使い方を説明しよう。",
+    "answer": "内容や状態をしっかりつかむこと。",
+    "context": "全員の意見を聞き、状況をハアクした。",
+    "confusion": "内容や状態をしっかりつかむこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-095",
+        "type": "kanji",
+        "context": "全員の意見を聞き、状況をハアクした。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "把握",
+          "波握",
+          "破悪",
+          "把悪"
+        ],
+        "correct": 0,
+        "why": "内容や状態をしっかりつかむこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-096",
+    "title": "慎む",
+    "reading": "つつしむ",
+    "category": "漢字の表記",
+    "question": "「慎む」の意味・使い方を説明しよう。",
+    "answer": "行き過ぎないよう自分の言動を控えること。「謹む」は敬意を表す態度。",
+    "context": "授業中は、周りの妨げになる言動をツツシむ。",
+    "confusion": "行き過ぎないよう自分の言動を控えること。「謹む」は敬意を表す態度。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-096",
+        "type": "kanji",
+        "context": "授業中は、周りの妨げになる言動をツツシむ。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "慎む",
+          "謹む",
+          "包む",
+          "摘む"
+        ],
+        "correct": 0,
+        "why": "行き過ぎないよう自分の言動を控えること。「謹む」は敬意を表す態度。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-097",
+    "title": "謹む",
+    "reading": "つつしむ",
+    "category": "漢字の表記",
+    "question": "「謹む」の意味・使い方を説明しよう。",
+    "answer": "相手への敬意を表して、かしこまること。",
+    "context": "恩師のご冥福を、ツツシんでお祈りします。",
+    "confusion": "相手への敬意を表して、かしこまること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-097",
+        "type": "kanji",
+        "context": "恩師のご冥福を、ツツシんでお祈りします。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "謹む",
+          "慎む",
+          "包む",
+          "摘む"
+        ],
+        "correct": 0,
+        "why": "相手への敬意を表して、かしこまること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-098",
+    "title": "携わる",
+    "reading": "たずさわる",
+    "category": "漢字の表記",
+    "question": "「携わる」の意味・使い方を説明しよう。",
+    "answer": "ある仕事や活動に関係し、従事すること。",
+    "context": "地域の伝統工芸を守る仕事にタズサわる。",
+    "confusion": "ある仕事や活動に関係し、従事すること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-098",
+        "type": "kanji",
+        "context": "地域の伝統工芸を守る仕事にタズサわる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "携わる",
+          "係わる",
+          "備わる",
+          "伴わる"
+        ],
+        "correct": 0,
+        "why": "ある仕事や活動に関係し、従事すること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-099",
+    "title": "培う",
+    "reading": "つちかう",
+    "category": "漢字の表記",
+    "question": "「培う」の意味・使い方を説明しよう。",
+    "answer": "時間をかけて能力や性質を育てること。",
+    "context": "部活動でツチカった集中力を、学習にも生かす。",
+    "confusion": "時間をかけて能力や性質を育てること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-099",
+        "type": "kanji",
+        "context": "部活動でツチカった集中力を、学習にも生かす。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "培う",
+          "養う",
+          "耕う",
+          "栽う"
+        ],
+        "correct": 0,
+        "why": "時間をかけて能力や性質を育てること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-100",
+    "title": "促す",
+    "reading": "うながす",
+    "category": "漢字の表記",
+    "question": "「促す」の意味・使い方を説明しよう。",
+    "answer": "相手に行動するよう働きかけること。",
+    "context": "司会者が、まだ話していない人の発言をウナガす。",
+    "confusion": "相手に行動するよう働きかけること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-100",
+        "type": "kanji",
+        "context": "司会者が、まだ話していない人の発言をウナガす。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "促す",
+          "催す",
+          "施す",
+          "翻す"
+        ],
+        "correct": 0,
+        "why": "相手に行動するよう働きかけること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-101",
+    "title": "補う",
+    "reading": "おぎなう",
+    "category": "漢字の表記",
+    "question": "「補う」の意味・使い方を説明しよう。",
+    "answer": "足りない部分を足して、整えること。",
+    "context": "不足していた説明を、図を加えてオギナう。",
+    "confusion": "足りない部分を足して、整えること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-101",
+        "type": "kanji",
+        "context": "不足していた説明を、図を加えてオギナう。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "補う",
+          "償う",
+          "培う",
+          "賄う"
+        ],
+        "correct": 0,
+        "why": "足りない部分を足して、整えること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-102",
+    "title": "償う",
+    "reading": "つぐなう",
+    "category": "漢字の表記",
+    "question": "「償う」の意味・使い方を説明しよう。",
+    "answer": "過失や損害の埋め合わせをすること。",
+    "context": "自分の過ちで生じた損害をツグナう。",
+    "confusion": "過失や損害の埋め合わせをすること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-102",
+        "type": "kanji",
+        "context": "自分の過ちで生じた損害をツグナう。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "償う",
+          "補う",
+          "培う",
+          "賄う"
+        ],
+        "correct": 0,
+        "why": "過失や損害の埋め合わせをすること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-103",
+    "title": "賄う",
+    "reading": "まかなう",
+    "category": "漢字の表記",
+    "question": "「賄う」の意味・使い方を説明しよう。",
+    "answer": "必要な費用や物を用意して、用を足すこと。",
+    "context": "地域の寄付で、活動に必要な費用をマカナう。",
+    "confusion": "必要な費用や物を用意して、用を足すこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-103",
+        "type": "kanji",
+        "context": "地域の寄付で、活動に必要な費用をマカナう。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "賄う",
+          "補う",
+          "償う",
+          "培う"
+        ],
+        "correct": 0,
+        "why": "必要な費用や物を用意して、用を足すこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-104",
+    "title": "承諾",
+    "reading": "しょうだく",
+    "category": "漢字の表記",
+    "question": "「承諾」の意味・使い方を説明しよう。",
+    "answer": "相手の要求や依頼を受け入れること。",
+    "context": "事情を説明したところ、依頼をショウダクしてもらえた。",
+    "confusion": "相手の要求や依頼を受け入れること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-104",
+        "type": "kanji",
+        "context": "事情を説明したところ、依頼をショウダクしてもらえた。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "承諾",
+          "承託",
+          "招諾",
+          "招託"
+        ],
+        "correct": 0,
+        "why": "相手の要求や依頼を受け入れること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-105",
+    "title": "承認",
+    "reading": "しょうにん",
+    "category": "漢字の表記",
+    "question": "「承認」の意味・使い方を説明しよう。",
+    "answer": "正当・適切なものとして認めること。",
+    "context": "会議で提案がショウニンされ、正式に実施が決まった。",
+    "confusion": "正当・適切なものとして認めること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-105",
+        "type": "kanji",
+        "context": "会議で提案がショウニンされ、正式に実施が決まった。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "承認",
+          "証人",
+          "商人",
+          "召人"
+        ],
+        "correct": 0,
+        "why": "正当・適切なものとして認めること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-106",
+    "title": "承知",
+    "reading": "しょうち",
+    "category": "漢字の表記",
+    "question": "「承知」の意味・使い方を説明しよう。",
+    "answer": "事情を知っていること。この文では依頼を引き受ける意味ではない。",
+    "context": "困難があることはショウチの上で、挑戦した。",
+    "confusion": "事情を知っていること。この文では依頼を引き受ける意味ではない。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-106",
+        "type": "kanji",
+        "context": "困難があることはショウチの上で、挑戦した。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "承知",
+          "招致",
+          "小知",
+          "証知"
+        ],
+        "correct": 0,
+        "why": "事情を知っていること。この文では依頼を引き受ける意味ではない。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-107",
+    "title": "招致",
+    "reading": "しょうち",
+    "category": "漢字の表記",
+    "question": "「招致」の意味・使い方を説明しよう。",
+    "answer": "人や催しを招いて来てもらうこと。",
+    "context": "国際大会を町にショウチする計画が進んでいる。",
+    "confusion": "人や催しを招いて来てもらうこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-107",
+        "type": "kanji",
+        "context": "国際大会を町にショウチする計画が進んでいる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "招致",
+          "承知",
+          "小知",
+          "証知"
+        ],
+        "correct": 0,
+        "why": "人や催しを招いて来てもらうこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-108",
+    "title": "比較",
+    "reading": "ひかく",
+    "category": "漢字の表記",
+    "question": "「比較」の意味・使い方を説明しよう。",
+    "answer": "複数のものを比べ合わせること。",
+    "context": "二つの資料をヒカクし、共通点と相違点を整理する。",
+    "confusion": "複数のものを比べ合わせること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-108",
+        "type": "kanji",
+        "context": "二つの資料をヒカクし、共通点と相違点を整理する。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "比較",
+          "比格",
+          "批角",
+          "批較"
+        ],
+        "correct": 0,
+        "why": "複数のものを比べ合わせること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-110",
+    "title": "妥当",
+    "reading": "だとう",
+    "category": "漢字の表記",
+    "question": "「妥当」の意味・使い方を説明しよう。",
+    "answer": "事情によく合っていて適切であること。",
+    "context": "条件を検討し、その判断がダトウか確かめる。",
+    "confusion": "事情によく合っていて適切であること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-110",
+        "type": "kanji",
+        "context": "条件を検討し、その判断がダトウか確かめる。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "妥当",
+          "打倒",
+          "打当",
+          "妥倒"
+        ],
+        "correct": 0,
+        "why": "事情によく合っていて適切であること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-kanji-111",
+    "title": "打倒",
+    "reading": "だとう",
+    "category": "漢字の表記",
+    "question": "「打倒」の意味・使い方を説明しよう。",
+    "answer": "相手を打ち負かすこと。「判断が適切」とは意味が違う。",
+    "context": "選手たちは、強豪校のダトウを目標に練習した。",
+    "confusion": "相手を打ち負かすこと。「判断が適切」とは意味が違う。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-kanji-111",
+        "type": "kanji",
+        "context": "選手たちは、強豪校のダトウを目標に練習した。",
+        "question": "カタカナ部分に合う表記を選ぼう。",
+        "choices": [
+          "打倒",
+          "妥当",
+          "打当",
+          "妥倒"
+        ],
+        "correct": 0,
+        "why": "相手を打ち負かすこと。「判断が適切」とは意味が違う。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-003",
+    "title": "支離滅裂",
+    "reading": "しりめつれつ",
+    "category": "四字熟語",
+    "question": "「支離滅裂」の意味・使い方を説明しよう。",
+    "answer": "内容がばらばらで、筋道が通っていないこと。",
+    "context": "前後の話が食い違い、何を言いたいのか筋道が通らない。",
+    "confusion": "内容がばらばらで、筋道が通っていないこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-003",
+        "type": "idiom",
+        "context": "前後の話が食い違い、何を言いたいのか筋道が通らない。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "支離滅裂",
+          "首尾一貫",
+          "理路整然",
+          "単刀直入"
+        ],
+        "correct": 0,
+        "why": "内容がばらばらで、筋道が通っていないこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-004",
+    "title": "理路整然",
+    "reading": "りろせいぜん",
+    "category": "四字熟語",
+    "question": "「理路整然」の意味・使い方を説明しよう。",
+    "answer": "話や考えの筋道が、整ってはっきりしていること。",
+    "context": "理由と結論の関係が明確で、順序立てた説明だった。",
+    "confusion": "話や考えの筋道が、整ってはっきりしていること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-004",
+        "type": "idiom",
+        "context": "理由と結論の関係が明確で、順序立てた説明だった。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "理路整然",
+          "支離滅裂",
+          "意味深長",
+          "半信半疑"
+        ],
+        "correct": 0,
+        "why": "話や考えの筋道が、整ってはっきりしていること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-005",
+    "title": "単刀直入",
+    "reading": "たんとうちょくにゅう",
+    "category": "四字熟語",
+    "question": "「単刀直入」の意味・使い方を説明しよう。",
+    "answer": "遠回しな言い方をせず、すぐに要点に入ること。",
+    "context": "前置きを省き、すぐに本題を切り出した。",
+    "confusion": "遠回しな言い方をせず、すぐに要点に入ること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-005",
+        "type": "idiom",
+        "context": "前置きを省き、すぐに本題を切り出した。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "単刀直入",
+          "紆余曲折",
+          "右往左往",
+          "意味深長"
+        ],
+        "correct": 0,
+        "why": "遠回しな言い方をせず、すぐに要点に入ること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-006",
+    "title": "紆余曲折",
+    "reading": "うよきょくせつ",
+    "category": "四字熟語",
+    "question": "「紆余曲折」の意味・使い方を説明しよう。",
+    "answer": "物事が複雑な経過をたどり、簡単には進まないこと。",
+    "context": "計画は何度も変更され、遠回りを経てようやく実現した。",
+    "confusion": "物事が複雑な経過をたどり、簡単には進まないこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-006",
+        "type": "idiom",
+        "context": "計画は何度も変更され、遠回りを経てようやく実現した。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "紆余曲折",
+          "順風満帆",
+          "単刀直入",
+          "一朝一夕"
+        ],
+        "correct": 0,
+        "why": "物事が複雑な経過をたどり、簡単には進まないこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-007",
+    "title": "順風満帆",
+    "reading": "じゅんぷうまんぱん",
+    "category": "四字熟語",
+    "question": "「順風満帆」の意味・使い方を説明しよう。",
+    "answer": "物事が滞りなく順調に進むこと。",
+    "context": "準備も交渉も予定どおりに進み、事業は順調だった。",
+    "confusion": "物事が滞りなく順調に進むこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-007",
+        "type": "idiom",
+        "context": "準備も交渉も予定どおりに進み、事業は順調だった。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "順風満帆",
+          "悪戦苦闘",
+          "紆余曲折",
+          "四面楚歌"
+        ],
+        "correct": 0,
+        "why": "物事が滞りなく順調に進むこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-008",
+    "title": "悪戦苦闘",
+    "reading": "あくせんくとう",
+    "category": "四字熟語",
+    "question": "「悪戦苦闘」の意味・使い方を説明しよう。",
+    "answer": "困難な状況で、苦しみながら努力すること。",
+    "context": "難しい課題に、何度も失敗しながら懸命に取り組んだ。",
+    "confusion": "困難な状況で、苦しみながら努力すること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-008",
+        "type": "idiom",
+        "context": "難しい課題に、何度も失敗しながら懸命に取り組んだ。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "悪戦苦闘",
+          "順風満帆",
+          "悠々自適",
+          "自画自賛"
+        ],
+        "correct": 0,
+        "why": "困難な状況で、苦しみながら努力すること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-009",
+    "title": "孤立無援",
+    "reading": "こりつむえん",
+    "category": "四字熟語",
+    "question": "「孤立無援」の意味・使い方を説明しよう。",
+    "answer": "孤立して、助けてくれる者がいないこと。",
+    "context": "周囲に助けてくれる人がなく、一人で問題に向き合った。",
+    "confusion": "孤立して、助けてくれる者がいないこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-009",
+        "type": "idiom",
+        "context": "周囲に助けてくれる人がなく、一人で問題に向き合った。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "孤立無援",
+          "一致団結",
+          "切磋琢磨",
+          "和気藹々"
+        ],
+        "correct": 0,
+        "why": "孤立して、助けてくれる者がいないこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-010",
+    "title": "四面楚歌",
+    "reading": "しめんそか",
+    "category": "四字熟語",
+    "question": "「四面楚歌」の意味・使い方を説明しよう。",
+    "answer": "周囲が敵や反対者ばかりで、孤立していること。",
+    "context": "周囲の人が皆反対に回り、味方がいない状態になった。",
+    "confusion": "周囲が敵や反対者ばかりで、孤立していること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-010",
+        "type": "idiom",
+        "context": "周囲の人が皆反対に回り、味方がいない状態になった。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "四面楚歌",
+          "意気投合",
+          "異口同音",
+          "大器晩成"
+        ],
+        "correct": 0,
+        "why": "周囲が敵や反対者ばかりで、孤立していること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-011",
+    "title": "一致団結",
+    "reading": "いっちだんけつ",
+    "category": "四字熟語",
+    "question": "「一致団結」の意味・使い方を説明しよう。",
+    "answer": "多くの人が心を一つにし、協力すること。",
+    "context": "皆が同じ目標を掲げ、力を合わせて取り組んだ。",
+    "confusion": "多くの人が心を一つにし、協力すること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-011",
+        "type": "idiom",
+        "context": "皆が同じ目標を掲げ、力を合わせて取り組んだ。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "一致団結",
+          "四分五裂",
+          "自画自賛",
+          "十人十色"
+        ],
+        "correct": 0,
+        "why": "多くの人が心を一つにし、協力すること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-013",
+    "title": "独立独歩",
+    "reading": "どくりつどっぽ",
+    "category": "四字熟語",
+    "question": "「独立独歩」の意味・使い方を説明しよう。",
+    "answer": "他人に頼らず、自らの信念と力で行動すること。",
+    "context": "他人に頼らず、自分の信じる道を自分の力で進む。",
+    "confusion": "他人に頼らず、自らの信念と力で行動すること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-013",
+        "type": "idiom",
+        "context": "他人に頼らず、自分の信じる道を自分の力で進む。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "独立独歩",
+          "付和雷同",
+          "一致団結",
+          "一蓮托生"
+        ],
+        "correct": 0,
+        "why": "他人に頼らず、自らの信念と力で行動すること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-015",
+    "title": "適材適所",
+    "reading": "てきざいてきしょ",
+    "category": "四字熟語",
+    "question": "「適材適所」の意味・使い方を説明しよう。",
+    "answer": "その人の能力にふさわしい役割や位置に配置すること。",
+    "context": "絵が得意な人はポスター、話すのが得意な人は司会を担当した。",
+    "confusion": "その人の能力にふさわしい役割や位置に配置すること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-015",
+        "type": "idiom",
+        "context": "絵が得意な人はポスター、話すのが得意な人は司会を担当した。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "適材適所",
+          "本末転倒",
+          "画竜点睛",
+          "千載一遇"
+        ],
+        "correct": 0,
+        "why": "その人の能力にふさわしい役割や位置に配置すること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-017",
+    "title": "自問自答",
+    "reading": "じもんじとう",
+    "category": "四字熟語",
+    "question": "「自問自答」の意味・使い方を説明しよう。",
+    "answer": "自分で自分に問い掛け、自分で答えること。",
+    "context": "何を大事にしたいのか、自分に問い、自分で答えを考えた。",
+    "confusion": "自分で自分に問い掛け、自分で答えること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-017",
+        "type": "idiom",
+        "context": "何を大事にしたいのか、自分に問い、自分で答えを考えた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "自問自答",
+          "自画自賛",
+          "自業自得",
+          "自暴自棄"
+        ],
+        "correct": 0,
+        "why": "自分で自分に問い掛け、自分で答えること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-018",
+    "title": "自暴自棄",
+    "reading": "じぼうじき",
+    "category": "四字熟語",
+    "question": "「自暴自棄」の意味・使い方を説明しよう。",
+    "answer": "希望を失い、自分を大切にせず投げやりになること。",
+    "context": "失敗に絶望し、どうなってもよいと乱暴な行動を取った。",
+    "confusion": "希望を失い、自分を大切にせず投げやりになること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-018",
+        "type": "idiom",
+        "context": "失敗に絶望し、どうなってもよいと乱暴な行動を取った。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "自暴自棄",
+          "自問自答",
+          "泰然自若",
+          "勇往邁進"
+        ],
+        "correct": 0,
+        "why": "希望を失い、自分を大切にせず投げやりになること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-019",
+    "title": "泰然自若",
+    "reading": "たいぜんじじゃく",
+    "category": "四字熟語",
+    "question": "「泰然自若」の意味・使い方を説明しよう。",
+    "answer": "何が起きても落ち着いて、動じないさま。",
+    "context": "予想外の質問を受けても慌てず、落ち着いて答えた。",
+    "confusion": "何が起きても落ち着いて、動じないさま。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-019",
+        "type": "idiom",
+        "context": "予想外の質問を受けても慌てず、落ち着いて答えた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "泰然自若",
+          "戦々恐々",
+          "右往左往",
+          "疑心暗鬼"
+        ],
+        "correct": 0,
+        "why": "何が起きても落ち着いて、動じないさま。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-020",
+    "title": "戦々恐々",
+    "reading": "せんせんきょうきょう",
+    "category": "四字熟語",
+    "question": "「戦々恐々」の意味・使い方を説明しよう。",
+    "answer": "恐れて、おびえているさま。",
+    "context": "失敗を厳しく責められるのではないかと、ひどく恐れていた。",
+    "confusion": "恐れて、おびえているさま。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-020",
+        "type": "idiom",
+        "context": "失敗を厳しく責められるのではないかと、ひどく恐れていた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "戦々恐々",
+          "泰然自若",
+          "意気揚々",
+          "悠々自適"
+        ],
+        "correct": 0,
+        "why": "恐れて、おびえているさま。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-021",
+    "title": "疑心暗鬼",
+    "reading": "ぎしんあんき",
+    "category": "四字熟語",
+    "question": "「疑心暗鬼」の意味・使い方を説明しよう。",
+    "answer": "疑う心があるため、何でも不安や恐れの対象に見えてしまうこと。",
+    "context": "一度疑い始めると、普通の言葉まで悪意があるように感じた。",
+    "confusion": "疑う心があるため、何でも不安や恐れの対象に見えてしまうこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-021",
+        "type": "idiom",
+        "context": "一度疑い始めると、普通の言葉まで悪意があるように感じた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "疑心暗鬼",
+          "明鏡止水",
+          "意気投合",
+          "大同小異"
+        ],
+        "correct": 0,
+        "why": "疑う心があるため、何でも不安や恐れの対象に見えてしまうこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-022",
+    "title": "明鏡止水",
+    "reading": "めいきょうしすい",
+    "category": "四字熟語",
+    "question": "「明鏡止水」の意味・使い方を説明しよう。",
+    "answer": "曇りのない鏡や静かな水のように、心が澄み切って穏やかなこと。",
+    "context": "心の迷いが消え、澄んで落ち着いた気持ちで臨んだ。",
+    "confusion": "曇りのない鏡や静かな水のように、心が澄み切って穏やかなこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-022",
+        "type": "idiom",
+        "context": "心の迷いが消え、澄んで落ち着いた気持ちで臨んだ。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "明鏡止水",
+          "疑心暗鬼",
+          "一喜一憂",
+          "戦々恐々"
+        ],
+        "correct": 0,
+        "why": "曇りのない鏡や静かな水のように、心が澄み切って穏やかなこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-023",
+    "title": "意気揚々",
+    "reading": "いきようよう",
+    "category": "四字熟語",
+    "question": "「意気揚々」の意味・使い方を説明しよう。",
+    "answer": "得意で、気持ちが高ぶっているさま。",
+    "context": "試合に勝った選手は、誇らしげな様子で引き揚げた。",
+    "confusion": "得意で、気持ちが高ぶっているさま。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-023",
+        "type": "idiom",
+        "context": "試合に勝った選手は、誇らしげな様子で引き揚げた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "意気揚々",
+          "意気消沈",
+          "半信半疑",
+          "五里霧中"
+        ],
+        "correct": 0,
+        "why": "得意で、気持ちが高ぶっているさま。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-024",
+    "title": "意気消沈",
+    "reading": "いきしょうちん",
+    "category": "四字熟語",
+    "question": "「意気消沈」の意味・使い方を説明しよう。",
+    "answer": "元気や意欲を失い、しょげること。",
+    "context": "期待していた結果が出ず、すっかり元気をなくした。",
+    "confusion": "元気や意欲を失い、しょげること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-024",
+        "type": "idiom",
+        "context": "期待していた結果が出ず、すっかり元気をなくした。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "意気消沈",
+          "意気揚々",
+          "意気投合",
+          "勇往邁進"
+        ],
+        "correct": 0,
+        "why": "元気や意欲を失い、しょげること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-025",
+    "title": "意気投合",
+    "reading": "いきとうごう",
+    "category": "四字熟語",
+    "question": "「意気投合」の意味・使い方を説明しよう。",
+    "answer": "互いの気持ちや考え方がぴったり合うこと。",
+    "context": "初めて会ったが考え方がよく合い、話が弾んだ。",
+    "confusion": "互いの気持ちや考え方がぴったり合うこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-025",
+        "type": "idiom",
+        "context": "初めて会ったが考え方がよく合い、話が弾んだ。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "意気投合",
+          "意気消沈",
+          "疑心暗鬼",
+          "付和雷同"
+        ],
+        "correct": 0,
+        "why": "互いの気持ちや考え方がぴったり合うこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-026",
+    "title": "大器晩成",
+    "reading": "たいきばんせい",
+    "category": "四字熟語",
+    "question": "「大器晩成」の意味・使い方を説明しよう。",
+    "answer": "大人物は才能を完成させるまでに時間がかかるということ。",
+    "context": "若い頃は目立たなかったが、長い努力の末に大きな才能が開いた。",
+    "confusion": "大人物は才能を完成させるまでに時間がかかるということ。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-026",
+        "type": "idiom",
+        "context": "若い頃は目立たなかったが、長い努力の末に大きな才能が開いた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "大器晩成",
+          "一朝一夕",
+          "先手必勝",
+          "朝令暮改"
+        ],
+        "correct": 0,
+        "why": "大人物は才能を完成させるまでに時間がかかるということ。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-027",
+    "title": "一朝一夕",
+    "reading": "いっちょういっせき",
+    "category": "四字熟語",
+    "question": "「一朝一夕」の意味・使い方を説明しよう。",
+    "answer": "ひと朝、ひと晩ほどの短い時間。普通「一朝一夕には〜ない」と使う。",
+    "context": "読解力は、ごく短い期間では身に付かない。",
+    "confusion": "ひと朝、ひと晩ほどの短い時間。普通「一朝一夕には〜ない」と使う。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-027",
+        "type": "idiom",
+        "context": "読解力は、ごく短い期間では身に付かない。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "一朝一夕",
+          "一期一会",
+          "一進一退",
+          "千載一遇"
+        ],
+        "correct": 0,
+        "why": "ひと朝、ひと晩ほどの短い時間。普通「一朝一夕には〜ない」と使う。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-028",
+    "title": "一期一会",
+    "reading": "いちごいちえ",
+    "category": "四字熟語",
+    "question": "「一期一会」の意味・使い方を説明しよう。",
+    "answer": "一生に一度の出会いと考え、その機会を大切にすること。",
+    "context": "この出会いは二度とない機会かもしれないと、一瞬を大切にした。",
+    "confusion": "一生に一度の出会いと考え、その機会を大切にすること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-028",
+        "type": "idiom",
+        "context": "この出会いは二度とない機会かもしれないと、一瞬を大切にした。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "一期一会",
+          "一朝一夕",
+          "一進一退",
+          "一長一短"
+        ],
+        "correct": 0,
+        "why": "一生に一度の出会いと考え、その機会を大切にすること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-030",
+    "title": "千差万別",
+    "reading": "せんさばんべつ",
+    "category": "四字熟語",
+    "question": "「千差万別」の意味・使い方を説明しよう。",
+    "answer": "違いが多く、いろいろであること。",
+    "context": "同じ町でも、住む人の事情や希望はさまざまだ。",
+    "confusion": "違いが多く、いろいろであること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-030",
+        "type": "idiom",
+        "context": "同じ町でも、住む人の事情や希望はさまざまだ。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "千差万別",
+          "大同小異",
+          "首尾一貫",
+          "異口同音"
+        ],
+        "correct": 0,
+        "why": "違いが多く、いろいろであること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-031",
+    "title": "千載一遇",
+    "reading": "せんざいいちぐう",
+    "category": "四字熟語",
+    "question": "「千載一遇」の意味・使い方を説明しよう。",
+    "answer": "千年に一度と思うほど、まれなよい機会。",
+    "context": "めったに得られない好機が訪れ、ぜひ生かしたいと考えた。",
+    "confusion": "千年に一度と思うほど、まれなよい機会。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-031",
+        "type": "idiom",
+        "context": "めったに得られない好機が訪れ、ぜひ生かしたいと考えた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "千載一遇",
+          "一朝一夕",
+          "日常茶飯事",
+          "前途多難"
+        ],
+        "correct": 0,
+        "why": "千年に一度と思うほど、まれなよい機会。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-032",
+    "title": "日常茶飯事",
+    "reading": "にちじょうさはんじ",
+    "category": "慣用句",
+    "question": "「日常茶飯事」の意味・使い方を説明しよう。",
+    "answer": "日常でよくある、ありふれた出来事。",
+    "context": "その程度の小さな失敗なら、普段からよく起きている。",
+    "confusion": "日常でよくある、ありふれた出来事。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-032",
+        "type": "idiom",
+        "context": "その程度の小さな失敗なら、普段からよく起きている。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "日常茶飯事",
+          "前代未聞",
+          "空前絶後",
+          "千載一遇"
+        ],
+        "correct": 0,
+        "why": "日常でよくある、ありふれた出来事。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-033",
+    "title": "前代未聞",
+    "reading": "ぜんだいみもん",
+    "category": "四字熟語",
+    "question": "「前代未聞」の意味・使い方を説明しよう。",
+    "answer": "これまで聞いたことがないこと。",
+    "context": "これまで一度も聞いたことがないほど、珍しい出来事だった。",
+    "confusion": "これまで聞いたことがないこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-033",
+        "type": "idiom",
+        "context": "これまで一度も聞いたことがないほど、珍しい出来事だった。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "前代未聞",
+          "日常茶飯事",
+          "大同小異",
+          "温故知新"
+        ],
+        "correct": 0,
+        "why": "これまで聞いたことがないこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-035",
+    "title": "画竜点睛",
+    "reading": "がりょうてんせい",
+    "category": "四字熟語",
+    "question": "「画竜点睛」の意味・使い方を説明しよう。",
+    "answer": "最後の大切な仕上げによって、全体を生き生きと完成させること。",
+    "context": "最後に要点を示す一文を加え、発表全体を完成させた。",
+    "confusion": "最後の大切な仕上げによって、全体を生き生きと完成させること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-035",
+        "type": "idiom",
+        "context": "最後に要点を示す一文を加え、発表全体を完成させた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "画竜点睛",
+          "蛇足",
+          "本末転倒",
+          "五里霧中"
+        ],
+        "correct": 0,
+        "why": "最後の大切な仕上げによって、全体を生き生きと完成させること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-036",
+    "title": "蛇足",
+    "reading": "だそく",
+    "category": "慣用句",
+    "question": "「蛇足」の意味・使い方を説明しよう。",
+    "answer": "付け加える必要のない、余計なもの。",
+    "context": "説明は十分伝わっていたのに、余計な一言を加えて台無しにした。",
+    "confusion": "付け加える必要のない、余計なもの。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-036",
+        "type": "idiom",
+        "context": "説明は十分伝わっていたのに、余計な一言を加えて台無しにした。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "蛇足",
+          "画竜点睛",
+          "切磋琢磨",
+          "単刀直入"
+        ],
+        "correct": 0,
+        "why": "付け加える必要のない、余計なもの。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-037",
+    "title": "杓子定規",
+    "reading": "しゃくしじょうぎ",
+    "category": "四字熟語",
+    "question": "「杓子定規」の意味・使い方を説明しよう。",
+    "answer": "一つの基準にとらわれ、融通が利かないこと。",
+    "context": "事情が違うのに、同じ規則を機械的に当てはめた。",
+    "confusion": "一つの基準にとらわれ、融通が利かないこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-037",
+        "type": "idiom",
+        "context": "事情が違うのに、同じ規則を機械的に当てはめた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "杓子定規",
+          "臨機応変",
+          "公明正大",
+          "温故知新"
+        ],
+        "correct": 0,
+        "why": "一つの基準にとらわれ、融通が利かないこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-038",
+    "title": "公明正大",
+    "reading": "こうめいせいだい",
+    "category": "四字熟語",
+    "question": "「公明正大」の意味・使い方を説明しよう。",
+    "answer": "公平でやましいところがなく、堂々としていること。",
+    "context": "隠し事や不正がなく、公平で堂々とした態度だった。",
+    "confusion": "公平でやましいところがなく、堂々としていること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-038",
+        "type": "idiom",
+        "context": "隠し事や不正がなく、公平で堂々とした態度だった。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "公明正大",
+          "我田引水",
+          "付和雷同",
+          "優柔不断"
+        ],
+        "correct": 0,
+        "why": "公平でやましいところがなく、堂々としていること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-039",
+    "title": "我田引水",
+    "reading": "がでんいんすい",
+    "category": "四字熟語",
+    "question": "「我田引水」の意味・使い方を説明しよう。",
+    "answer": "自分の利益になるように、強引に物事を運ぶこと。",
+    "context": "共同の計画なのに、自分に都合のよい理屈ばかり持ち出した。",
+    "confusion": "自分の利益になるように、強引に物事を運ぶこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-039",
+        "type": "idiom",
+        "context": "共同の計画なのに、自分に都合のよい理屈ばかり持ち出した。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "我田引水",
+          "公明正大",
+          "切磋琢磨",
+          "適材適所"
+        ],
+        "correct": 0,
+        "why": "自分の利益になるように、強引に物事を運ぶこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-040",
+    "title": "優柔不断",
+    "reading": "ゆうじゅうふだん",
+    "category": "四字熟語",
+    "question": "「優柔不断」の意味・使い方を説明しよう。",
+    "answer": "ぐずぐずして、決断力に乏しいこと。",
+    "context": "選択肢を前にいつまでも迷い、なかなか決められない。",
+    "confusion": "ぐずぐずして、決断力に乏しいこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-040",
+        "type": "idiom",
+        "context": "選択肢を前にいつまでも迷い、なかなか決められない。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "優柔不断",
+          "即断即決",
+          "単刀直入",
+          "首尾一貫"
+        ],
+        "correct": 0,
+        "why": "ぐずぐずして、決断力に乏しいこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-041",
+    "title": "馬耳東風",
+    "reading": "ばじとうふう",
+    "category": "四字熟語",
+    "question": "「馬耳東風」の意味・使い方を説明しよう。",
+    "answer": "他人の意見や注意を、心に留めず聞き流すこと。",
+    "context": "何度注意しても気に留めず、聞き流していた。",
+    "confusion": "他人の意見や注意を、心に留めず聞き流すこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-041",
+        "type": "idiom",
+        "context": "何度注意しても気に留めず、聞き流していた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "馬耳東風",
+          "傾聴",
+          "切磋琢磨",
+          "温故知新"
+        ],
+        "correct": 0,
+        "why": "他人の意見や注意を、心に留めず聞き流すこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-042",
+    "title": "右往左往",
+    "reading": "うおうさおう",
+    "category": "四字熟語",
+    "question": "「右往左往」の意味・使い方を説明しよう。",
+    "answer": "混乱して、あちらこちらへ動き回ること。",
+    "context": "突然の出来事に慌て、どうすればよいか分からず動き回った。",
+    "confusion": "混乱して、あちらこちらへ動き回ること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-042",
+        "type": "idiom",
+        "context": "突然の出来事に慌て、どうすればよいか分からず動き回った。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "右往左往",
+          "泰然自若",
+          "理路整然",
+          "首尾一貫"
+        ],
+        "correct": 0,
+        "why": "混乱して、あちらこちらへ動き回ること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-043",
+    "title": "胸を張る",
+    "reading": "むねをはる",
+    "category": "四字熟語",
+    "question": "「胸を張る」の意味・使い方を説明しよう。",
+    "answer": "自信や誇りを持ち、堂々とすること。",
+    "context": "努力した結果なので、誇りを持って堂々と報告した。",
+    "confusion": "自信や誇りを持ち、堂々とすること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-043",
+        "type": "idiom",
+        "context": "努力した結果なので、誇りを持って堂々と報告した。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "胸を張る",
+          "胸を痛める",
+          "胸をなで下ろす",
+          "胸を借りる"
+        ],
+        "correct": 0,
+        "why": "自信や誇りを持ち、堂々とすること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-044",
+    "title": "胸を痛める",
+    "reading": "むねをいためる",
+    "category": "慣用句",
+    "question": "「胸を痛める」の意味・使い方を説明しよう。",
+    "answer": "悲しんだり心配したりすること。",
+    "context": "友人がつらい思いをしていると知り、悲しく心配になった。",
+    "confusion": "悲しんだり心配したりすること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-044",
+        "type": "idiom",
+        "context": "友人がつらい思いをしていると知り、悲しく心配になった。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "胸を痛める",
+          "胸を張る",
+          "胸がすく",
+          "胸を借りる"
+        ],
+        "correct": 0,
+        "why": "悲しんだり心配したりすること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-045",
+    "title": "胸を借りる",
+    "reading": "むねをかりる",
+    "category": "慣用句",
+    "question": "「胸を借りる」の意味・使い方を説明しよう。",
+    "answer": "実力が上の人に相手をしてもらい、練習すること。",
+    "context": "強い先輩に、練習相手になってもらった。",
+    "confusion": "実力が上の人に相手をしてもらい、練習すること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-045",
+        "type": "idiom",
+        "context": "強い先輩に、練習相手になってもらった。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "胸を借りる",
+          "胸を張る",
+          "胸を痛める",
+          "胸がすく"
+        ],
+        "correct": 0,
+        "why": "実力が上の人に相手をしてもらい、練習すること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-046",
+    "title": "胸がすく",
+    "reading": "むねがすく",
+    "category": "四字熟語",
+    "question": "「胸がすく」の意味・使い方を説明しよう。",
+    "answer": "もやもやした気持ちがなくなり、すっきりすること。",
+    "context": "見事な逆転劇を見て、つかえていた気持ちが晴れた。",
+    "confusion": "もやもやした気持ちがなくなり、すっきりすること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-046",
+        "type": "idiom",
+        "context": "見事な逆転劇を見て、つかえていた気持ちが晴れた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "胸がすく",
+          "胸を痛める",
+          "胸を借りる",
+          "胸に秘める"
+        ],
+        "correct": 0,
+        "why": "もやもやした気持ちがなくなり、すっきりすること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-047",
+    "title": "肩を並べる",
+    "reading": "かたをならべる",
+    "category": "慣用句",
+    "question": "「肩を並べる」の意味・使い方を説明しよう。",
+    "answer": "能力や地位などが同じ程度になること。",
+    "context": "努力の末、実力で強豪選手と同じ水準に達した。",
+    "confusion": "能力や地位などが同じ程度になること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-047",
+        "type": "idiom",
+        "context": "努力の末、実力で強豪選手と同じ水準に達した。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "肩を並べる",
+          "肩を持つ",
+          "肩を落とす",
+          "肩をすくめる"
+        ],
+        "correct": 0,
+        "why": "能力や地位などが同じ程度になること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-049",
+    "title": "頭を冷やす",
+    "reading": "あたまをひやす",
+    "category": "慣用句",
+    "question": "「頭を冷やす」の意味・使い方を説明しよう。",
+    "answer": "興奮や怒りを静め、冷静になること。",
+    "context": "怒ったまま決めず、一度落ち着いて考え直した。",
+    "confusion": "興奮や怒りを静め、冷静になること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-049",
+        "type": "idiom",
+        "context": "怒ったまま決めず、一度落ち着いて考え直した。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "頭を冷やす",
+          "頭に来る",
+          "頭が下がる",
+          "頭を抱える"
+        ],
+        "correct": 0,
+        "why": "興奮や怒りを静め、冷静になること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-050",
+    "title": "頭角を現す",
+    "reading": "とうかくをあらわす",
+    "category": "慣用句",
+    "question": "「頭角を現す」の意味・使い方を説明しよう。",
+    "answer": "才能や力が、周囲よりも目立ってくること。",
+    "context": "入部した頃は無名だったが、才能が目立ち始めた。",
+    "confusion": "才能や力が、周囲よりも目立ってくること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-050",
+        "type": "idiom",
+        "context": "入部した頃は無名だったが、才能が目立ち始めた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "頭角を現す",
+          "頭を抱える",
+          "頭が下がる",
+          "頭を冷やす"
+        ],
+        "correct": 0,
+        "why": "才能や力が、周囲よりも目立ってくること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-051",
+    "title": "鼻が高い",
+    "reading": "はながたかい",
+    "category": "四字熟語",
+    "question": "「鼻が高い」の意味・使い方を説明しよう。",
+    "answer": "誇らしく思い、得意になること。",
+    "context": "友人の活躍を、自分まで誇らしく感じた。",
+    "confusion": "誇らしく思い、得意になること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-051",
+        "type": "idiom",
+        "context": "友人の活躍を、自分まで誇らしく感じた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "鼻が高い",
+          "鼻につく",
+          "鼻で笑う",
+          "鼻を明かす"
+        ],
+        "correct": 0,
+        "why": "誇らしく思い、得意になること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-052",
+    "title": "鼻につく",
+    "reading": "はなにつく",
+    "category": "四字熟語",
+    "question": "「鼻につく」の意味・使い方を説明しよう。",
+    "answer": "言動などが気に障り、不快に感じること。",
+    "context": "同じ自慢話を何度も聞かされ、不快に感じた。",
+    "confusion": "言動などが気に障り、不快に感じること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-052",
+        "type": "idiom",
+        "context": "同じ自慢話を何度も聞かされ、不快に感じた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "鼻につく",
+          "鼻が高い",
+          "鼻を明かす",
+          "鼻を折る"
+        ],
+        "correct": 0,
+        "why": "言動などが気に障り、不快に感じること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-053",
+    "title": "鼻を明かす",
+    "reading": "はなをあかす",
+    "category": "慣用句",
+    "question": "「鼻を明かす」の意味・使い方を説明しよう。",
+    "answer": "相手の予想を裏切ることをして、驚かせること。",
+    "context": "油断していた相手を驚かせる成果を出し、あっと言わせた。",
+    "confusion": "相手の予想を裏切ることをして、驚かせること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-053",
+        "type": "idiom",
+        "context": "油断していた相手を驚かせる成果を出し、あっと言わせた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "鼻を明かす",
+          "鼻につく",
+          "鼻が高い",
+          "鼻にかける"
+        ],
+        "correct": 0,
+        "why": "相手の予想を裏切ることをして、驚かせること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-054",
+    "title": "耳を貸す",
+    "reading": "みみをかす",
+    "category": "四字熟語",
+    "question": "「耳を貸す」の意味・使い方を説明しよう。",
+    "answer": "相手の話を聞こうとすること。",
+    "context": "反対意見も無視せず、聞こうとした。",
+    "confusion": "相手の話を聞こうとすること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-054",
+        "type": "idiom",
+        "context": "反対意見も無視せず、聞こうとした。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "耳を貸す",
+          "耳を疑う",
+          "耳をそろえる",
+          "耳が早い"
+        ],
+        "correct": 0,
+        "why": "相手の話を聞こうとすること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-055",
+    "title": "耳が早い",
+    "reading": "みみがはやい",
+    "category": "四字熟語",
+    "question": "「耳が早い」の意味・使い方を説明しよう。",
+    "answer": "噂や情報を聞き付けるのが早いこと。",
+    "context": "誰よりも先に、新しい知らせを知っていた。",
+    "confusion": "噂や情報を聞き付けるのが早いこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-055",
+        "type": "idiom",
+        "context": "誰よりも先に、新しい知らせを知っていた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "耳が早い",
+          "耳が痛い",
+          "耳を疑う",
+          "耳をそろえる"
+        ],
+        "correct": 0,
+        "why": "噂や情報を聞き付けるのが早いこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-056",
+    "title": "耳にたこができる",
+    "reading": "みみにたこができる",
+    "category": "慣用句",
+    "question": "「耳にたこができる」の意味・使い方を説明しよう。",
+    "answer": "同じことを繰り返し聞かされ、聞き飽きること。",
+    "context": "同じ注意を何度も聞き、うんざりするほどだった。",
+    "confusion": "同じことを繰り返し聞かされ、聞き飽きること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-056",
+        "type": "idiom",
+        "context": "同じ注意を何度も聞き、うんざりするほどだった。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "耳にたこができる",
+          "耳を疑う",
+          "耳が早い",
+          "耳をそろえる"
+        ],
+        "correct": 0,
+        "why": "同じことを繰り返し聞かされ、聞き飽きること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-057",
+    "title": "口を挟む",
+    "reading": "くちをはさむ",
+    "category": "四字熟語",
+    "question": "「口を挟む」の意味・使い方を説明しよう。",
+    "answer": "他人の会話に割り込んで、意見を言うこと。",
+    "context": "二人が話している途中で、横から意見を述べた。",
+    "confusion": "他人の会話に割り込んで、意見を言うこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-057",
+        "type": "idiom",
+        "context": "二人が話している途中で、横から意見を述べた。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "口を挟む",
+          "口が堅い",
+          "口を濁す",
+          "口をそろえる"
+        ],
+        "correct": 0,
+        "why": "他人の会話に割り込んで、意見を言うこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-058",
+    "title": "口を濁す",
+    "reading": "くちをにごす",
+    "category": "四字熟語",
+    "question": "「口を濁す」の意味・使い方を説明しよう。",
+    "answer": "都合の悪いことなどを、はっきり言わないこと。",
+    "context": "はっきり答えるのを避け、曖昧な言い方をした。",
+    "confusion": "都合の悪いことなどを、はっきり言わないこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-058",
+        "type": "idiom",
+        "context": "はっきり答えるのを避け、曖昧な言い方をした。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "口を濁す",
+          "口をそろえる",
+          "口を割る",
+          "口火を切る"
+        ],
+        "correct": 0,
+        "why": "都合の悪いことなどを、はっきり言わないこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-059",
+    "title": "口火を切る",
+    "reading": "くちびをきる",
+    "category": "慣用句",
+    "question": "「口火を切る」の意味・使い方を説明しよう。",
+    "answer": "物事が始まるきっかけを作ること。",
+    "context": "誰も発言しない中で、最初に問題を提起した。",
+    "confusion": "物事が始まるきっかけを作ること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-059",
+        "type": "idiom",
+        "context": "誰も発言しない中で、最初に問題を提起した。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "口火を切る",
+          "口を閉ざす",
+          "口を濁す",
+          "口をそろえる"
+        ],
+        "correct": 0,
+        "why": "物事が始まるきっかけを作ること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-060",
+    "title": "口が堅い",
+    "reading": "くちがかたい",
+    "category": "四字熟語",
+    "question": "「口が堅い」の意味・使い方を説明しよう。",
+    "answer": "言うべきでないことや秘密を、むやみに話さないこと。",
+    "context": "秘密を打ち明けても、他人には決して漏らさない。",
+    "confusion": "言うべきでないことや秘密を、むやみに話さないこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-060",
+        "type": "idiom",
+        "context": "秘密を打ち明けても、他人には決して漏らさない。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "口が堅い",
+          "口が軽い",
+          "口を挟む",
+          "口火を切る"
+        ],
+        "correct": 0,
+        "why": "言うべきでないことや秘密を、むやみに話さないこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-062",
+    "title": "目を通す",
+    "reading": "めをとおす",
+    "category": "四字熟語",
+    "question": "「目を通す」の意味・使い方を説明しよう。",
+    "answer": "全体をひととおり見る、または読むこと。",
+    "context": "会議の前に、資料全体をざっと読んだ。",
+    "confusion": "全体をひととおり見る、または読むこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-062",
+        "type": "idiom",
+        "context": "会議の前に、資料全体をざっと読んだ。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "目を通す",
+          "目を盗む",
+          "目を掛ける",
+          "目をつぶる"
+        ],
+        "correct": 0,
+        "why": "全体をひととおり見る、または読むこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-063",
+    "title": "目をつぶる",
+    "reading": "めをつぶる",
+    "category": "慣用句",
+    "question": "「目をつぶる」の意味・使い方を説明しよう。",
+    "answer": "欠点や過ちを、見なかったこととして扱うこと。",
+    "context": "今回は小さな失敗を問題にせず、見逃すことにした。",
+    "confusion": "欠点や過ちを、見なかったこととして扱うこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-063",
+        "type": "idiom",
+        "context": "今回は小さな失敗を問題にせず、見逃すことにした。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "目をつぶる",
+          "目を通す",
+          "目を掛ける",
+          "目を見張る"
+        ],
+        "correct": 0,
+        "why": "欠点や過ちを、見なかったこととして扱うこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-064",
+    "title": "手を打つ",
+    "reading": "てをうつ",
+    "category": "四字熟語",
+    "question": "「手を打つ」の意味・使い方を説明しよう。",
+    "answer": "必要な対策を講じること。",
+    "context": "混雑が予想されたので、前もって係員を増やした。",
+    "confusion": "必要な対策を講じること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-064",
+        "type": "idiom",
+        "context": "混雑が予想されたので、前もって係員を増やした。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "手を打つ",
+          "手を抜く",
+          "手を焼く",
+          "手をこまねく"
+        ],
+        "correct": 0,
+        "why": "必要な対策を講じること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-065",
+    "title": "手をこまねく",
+    "reading": "てをこまねく",
+    "category": "慣用句",
+    "question": "「手をこまねく」の意味・使い方を説明しよう。",
+    "answer": "何もせず、傍観していること。",
+    "context": "問題が悪化するのを、何もせずに見ているだけだった。",
+    "confusion": "何もせず、傍観していること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-065",
+        "type": "idiom",
+        "context": "問題が悪化するのを、何もせずに見ているだけだった。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "手をこまねく",
+          "手を打つ",
+          "手を尽くす",
+          "手を貸す"
+        ],
+        "correct": 0,
+        "why": "何もせず、傍観していること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-066",
+    "title": "手を尽くす",
+    "reading": "てをつくす",
+    "category": "慣用句",
+    "question": "「手を尽くす」の意味・使い方を説明しよう。",
+    "answer": "できる限りの方法を使い、努力すること。",
+    "context": "解決のため、考えられる方法をすべて試した。",
+    "confusion": "できる限りの方法を使い、努力すること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-066",
+        "type": "idiom",
+        "context": "解決のため、考えられる方法をすべて試した。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "手を尽くす",
+          "手を抜く",
+          "手をこまねく",
+          "手を焼く"
+        ],
+        "correct": 0,
+        "why": "できる限りの方法を使い、努力すること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-067",
+    "title": "足が出る",
+    "reading": "あしがでる",
+    "category": "四字熟語",
+    "question": "「足が出る」の意味・使い方を説明しよう。",
+    "answer": "支出が予算を上回り、赤字になること。",
+    "context": "必要な物を買いそろえたら、予算を超えてしまった。",
+    "confusion": "支出が予算を上回り、赤字になること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-067",
+        "type": "idiom",
+        "context": "必要な物を買いそろえたら、予算を超えてしまった。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "足が出る",
+          "足がつく",
+          "足を洗う",
+          "足を引っ張る"
+        ],
+        "correct": 0,
+        "why": "支出が予算を上回り、赤字になること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-068",
+    "title": "足を引っ張る",
+    "reading": "あしをひっぱる",
+    "category": "慣用句",
+    "question": "「足を引っ張る」の意味・使い方を説明しよう。",
+    "answer": "他人の成功や進歩を妨げること。",
+    "context": "協力するどころか、他の人の進行を邪魔した。",
+    "confusion": "他人の成功や進歩を妨げること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-068",
+        "type": "idiom",
+        "context": "協力するどころか、他の人の進行を邪魔した。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "足を引っ張る",
+          "足が出る",
+          "足を運ぶ",
+          "足を洗う"
+        ],
+        "correct": 0,
+        "why": "他人の成功や進歩を妨げること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-069",
+    "title": "水を向ける",
+    "reading": "みずをむける",
+    "category": "慣用句",
+    "question": "「水を向ける」の意味・使い方を説明しよう。",
+    "answer": "相手の関心を、ある話題などへ向けさせること。",
+    "context": "話しやすくなるよう、相手の得意な話題をさりげなく出した。",
+    "confusion": "相手の関心を、ある話題などへ向けさせること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-069",
+        "type": "idiom",
+        "context": "話しやすくなるよう、相手の得意な話題をさりげなく出した。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "水を向ける",
+          "水を差す",
+          "水に流す",
+          "水を得た魚"
+        ],
+        "correct": 0,
+        "why": "相手の関心を、ある話題などへ向けさせること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-idiom-070",
+    "title": "水を得た魚",
+    "reading": "みずをえたうお",
+    "category": "慣用句",
+    "question": "「水を得た魚」の意味・使い方を説明しよう。",
+    "answer": "自分に合った場で、本来の力を発揮すること。",
+    "context": "得意な役割を任され、生き生きと力を発揮した。",
+    "confusion": "自分に合った場で、本来の力を発揮すること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-idiom-070",
+        "type": "idiom",
+        "context": "得意な役割を任され、生き生きと力を発揮した。",
+        "question": "この場面に合う表現を選ぼう。",
+        "choices": [
+          "水を得た魚",
+          "水に流す",
+          "水を差す",
+          "水を向ける"
+        ],
+        "correct": 0,
+        "why": "自分に合った場で、本来の力を発揮すること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-001",
+    "title": "温和の「温」",
+    "reading": "おんわ",
+    "category": "漢字の意味",
+    "question": "「温和の「温」」の意味・使い方を説明しよう。",
+    "answer": "温和・温厚の「温」は、性格などが穏やかなこと。他は主に熱や温度。",
+    "context": "「温和」の「温」と近い意味で使われているものは？",
+    "confusion": "温和・温厚の「温」は、性格などが穏やかなこと。他は主に熱や温度。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-001",
+        "type": "meaning",
+        "context": "「温和」の「温」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "温厚",
+          "温度",
+          "保温",
+          "温泉"
+        ],
+        "correct": 0,
+        "why": "温和・温厚の「温」は、性格などが穏やかなこと。他は主に熱や温度。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-002",
+    "title": "重責の「重」",
+    "reading": "じゅうせき",
+    "category": "漢字の意味",
+    "question": "「重責の「重」」の意味・使い方を説明しよう。",
+    "answer": "重責・重大は重要で程度が大きいこと。重複・重版・重層は重なりや繰り返し。",
+    "context": "「重責」の「重」と近い意味で使われているものは？",
+    "confusion": "重責・重大は重要で程度が大きいこと。重複・重版・重層は重なりや繰り返し。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-002",
+        "type": "meaning",
+        "context": "「重責」の「重」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "重大",
+          "重複",
+          "重版",
+          "重層"
+        ],
+        "correct": 0,
+        "why": "重責・重大は重要で程度が大きいこと。重複・重版・重層は重なりや繰り返し。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-003",
+    "title": "長官の「長」",
+    "reading": "ちょうかん",
+    "category": "漢字の意味",
+    "question": "「長官の「長」」の意味・使い方を説明しよう。",
+    "answer": "長官・会長の「長」は組織のかしら。長所は優れた点、成長は育つこと。",
+    "context": "「長官」の「長」と近い意味で使われているものは？",
+    "confusion": "長官・会長の「長」は組織のかしら。長所は優れた点、成長は育つこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-003",
+        "type": "meaning",
+        "context": "「長官」の「長」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "会長",
+          "長距離",
+          "長所",
+          "成長"
+        ],
+        "correct": 0,
+        "why": "長官・会長の「長」は組織のかしら。長所は優れた点、成長は育つこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-004",
+    "title": "長大の「長」",
+    "reading": "ちょうだい",
+    "category": "漢字の意味",
+    "question": "「長大の「長」」の意味・使い方を説明しよう。",
+    "answer": "長大・長距離は空間的に長いこと。年長は年齢が上であること。",
+    "context": "「長大」の「長」と近い意味で使われているものは？",
+    "confusion": "長大・長距離は空間的に長いこと。年長は年齢が上であること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-004",
+        "type": "meaning",
+        "context": "「長大」の「長」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "長距離",
+          "会長",
+          "長所",
+          "年長"
+        ],
+        "correct": 0,
+        "why": "長大・長距離は空間的に長いこと。年長は年齢が上であること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-005",
+    "title": "難解の「解」",
+    "reading": "なんかい",
+    "category": "漢字の意味",
+    "question": "「難解の「解」」の意味・使い方を説明しよう。",
+    "answer": "難解・理解は、意味や道理を解き明かして分かること。",
+    "context": "「難解」の「解」と近い意味で使われているものは？",
+    "confusion": "難解・理解は、意味や道理を解き明かして分かること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-005",
+        "type": "meaning",
+        "context": "「難解」の「解」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "理解",
+          "分解",
+          "解散",
+          "解雇"
+        ],
+        "correct": 0,
+        "why": "難解・理解は、意味や道理を解き明かして分かること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-006",
+    "title": "解除の「解」",
+    "reading": "かいじょ",
+    "category": "漢字の意味",
+    "question": "「解除の「解」」の意味・使い方を説明しよう。",
+    "answer": "解除・解雇は、拘束や関係を解いてなくすこと。他は意味や答えを明らかにすること。",
+    "context": "「解除」の「解」と近い意味で使われているものは？",
+    "confusion": "解除・解雇は、拘束や関係を解いてなくすこと。他は意味や答えを明らかにすること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-006",
+        "type": "meaning",
+        "context": "「解除」の「解」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "解雇",
+          "理解",
+          "解答",
+          "解釈"
+        ],
+        "correct": 0,
+        "why": "解除・解雇は、拘束や関係を解いてなくすこと。他は意味や答えを明らかにすること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-007",
+    "title": "再三の「再」",
+    "reading": "さいさん",
+    "category": "漢字の意味",
+    "question": "「再三の「再」」の意味・使い方を説明しよう。",
+    "answer": "再は再びの意味。「最」「災」「採」は同じ音でも別の漢字。",
+    "context": "「再三」の「再」と近い意味で使われているものは？",
+    "confusion": "再は再びの意味。「最」「災」「採」は同じ音でも別の漢字。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-007",
+        "type": "meaning",
+        "context": "「再三」の「再」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "再度",
+          "最上",
+          "災害",
+          "採取"
+        ],
+        "correct": 0,
+        "why": "再は再びの意味。「最」「災」「採」は同じ音でも別の漢字。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-008",
+    "title": "謝礼の「謝」",
+    "reading": "しゃれい",
+    "category": "漢字の意味",
+    "question": "「謝礼の「謝」」の意味・使い方を説明しよう。",
+    "answer": "謝礼・感謝は礼を言うこと。謝罪はわびる、謝絶は断る、代謝は入れ替わること。",
+    "context": "「謝礼」の「謝」と近い意味で使われているものは？",
+    "confusion": "謝礼・感謝は礼を言うこと。謝罪はわびる、謝絶は断る、代謝は入れ替わること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-008",
+        "type": "meaning",
+        "context": "「謝礼」の「謝」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "感謝",
+          "謝罪",
+          "謝絶",
+          "代謝"
+        ],
+        "correct": 0,
+        "why": "謝礼・感謝は礼を言うこと。謝罪はわびる、謝絶は断る、代謝は入れ替わること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-009",
+    "title": "辞職の「辞」",
+    "reading": "じしょく",
+    "category": "漢字の意味",
+    "question": "「辞職の「辞」」の意味・使い方を説明しよう。",
+    "answer": "辞職・辞退の辞は、やめる・断ること。他は言葉という意味。",
+    "context": "「辞職」の「辞」と近い意味で使われているものは？",
+    "confusion": "辞職・辞退の辞は、やめる・断ること。他は言葉という意味。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-009",
+        "type": "meaning",
+        "context": "「辞職」の「辞」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "辞退",
+          "祝辞",
+          "辞典",
+          "美辞"
+        ],
+        "correct": 0,
+        "why": "辞職・辞退の辞は、やめる・断ること。他は言葉という意味。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-010",
+    "title": "絶景の「絶」",
+    "reading": "ぜっけい",
+    "category": "漢字の意味",
+    "question": "「絶景の「絶」」の意味・使い方を説明しよう。",
+    "answer": "絶景・絶妙はこの上なく優れていること。他はつながりや命が絶えること。",
+    "context": "「絶景」の「絶」と近い意味で使われているものは？",
+    "confusion": "絶景・絶妙はこの上なく優れていること。他はつながりや命が絶えること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-010",
+        "type": "meaning",
+        "context": "「絶景」の「絶」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "絶妙",
+          "絶交",
+          "断絶",
+          "絶命"
+        ],
+        "correct": 0,
+        "why": "絶景・絶妙はこの上なく優れていること。他はつながりや命が絶えること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-011",
+    "title": "絶交の「絶」",
+    "reading": "ぜっこう",
+    "category": "漢字の意味",
+    "question": "「絶交の「絶」」の意味・使い方を説明しよう。",
+    "answer": "絶交・断絶は関係が途絶えること。他は程度の大きさや優秀さ。",
+    "context": "「絶交」の「絶」と近い意味で使われているものは？",
+    "confusion": "絶交・断絶は関係が途絶えること。他は程度の大きさや優秀さ。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-011",
+        "type": "meaning",
+        "context": "「絶交」の「絶」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "断絶",
+          "絶景",
+          "絶妙",
+          "絶大"
+        ],
+        "correct": 0,
+        "why": "絶交・断絶は関係が途絶えること。他は程度の大きさや優秀さ。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-012",
+    "title": "親友の「親」",
+    "reading": "しんゆう",
+    "category": "漢字の意味",
+    "question": "「親友の「親」」の意味・使い方を説明しよう。",
+    "answer": "親友・親密の親は親しいこと。父親・母親・親子は身内の親。",
+    "context": "「親友」の「親」と近い意味で使われているものは？",
+    "confusion": "親友・親密の親は親しいこと。父親・母親・親子は身内の親。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-012",
+        "type": "meaning",
+        "context": "「親友」の「親」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "親密",
+          "父親",
+          "母親",
+          "親子"
+        ],
+        "correct": 0,
+        "why": "親友・親密の親は親しいこと。父親・母親・親子は身内の親。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-013",
+    "title": "親筆の「親」",
+    "reading": "しんぴつ",
+    "category": "漢字の意味",
+    "question": "「親筆の「親」」の意味・使い方を説明しよう。",
+    "answer": "親筆・親書の親は自らすること。親しいことや父母の意味とは違う。",
+    "context": "「親筆」の「親」と近い意味で使われているものは？",
+    "confusion": "親筆・親書の親は自らすること。親しいことや父母の意味とは違う。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-013",
+        "type": "meaning",
+        "context": "「親筆」の「親」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "親書",
+          "親友",
+          "親子",
+          "親密"
+        ],
+        "correct": 0,
+        "why": "親筆・親書の親は自らすること。親しいことや父母の意味とは違う。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-014",
+    "title": "余暇の「余」",
+    "reading": "よか",
+    "category": "漢字の意味",
+    "question": "「余暇の「余」」の意味・使い方を説明しよう。",
+    "answer": "余暇・余力は残っている時間や力。他は別の人・本筋以外・別の場所。",
+    "context": "「余暇」の「余」と近い意味で使われているものは？",
+    "confusion": "余暇・余力は残っている時間や力。他は別の人・本筋以外・別の場所。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-014",
+        "type": "meaning",
+        "context": "「余暇」の「余」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "余力",
+          "余人",
+          "余談",
+          "余所"
+        ],
+        "correct": 0,
+        "why": "余暇・余力は残っている時間や力。他は別の人・本筋以外・別の場所。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-015",
+    "title": "余談の「余」",
+    "reading": "よだん",
+    "category": "漢字の意味",
+    "question": "「余談の「余」」の意味・使い方を説明しよう。",
+    "answer": "余談・余事の余は、本筋や本来の仕事以外のこと。",
+    "context": "「余談」の「余」と近い意味で使われているものは？",
+    "confusion": "余談・余事の余は、本筋や本来の仕事以外のこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-015",
+        "type": "meaning",
+        "context": "「余談」の「余」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "余事",
+          "余力",
+          "余裕",
+          "余剰"
+        ],
+        "correct": 0,
+        "why": "余談・余事の余は、本筋や本来の仕事以外のこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-016",
+    "title": "故郷の「故」",
+    "reading": "こきょう",
+    "category": "漢字の意味",
+    "question": "「故郷の「故」」の意味・使い方を説明しよう。",
+    "answer": "故郷・故旧の故は古くからのものという意味。事故・故障はよくない出来事。",
+    "context": "「故郷」の「故」と近い意味で使われているものは？",
+    "confusion": "故郷・故旧の故は古くからのものという意味。事故・故障はよくない出来事。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-016",
+        "type": "meaning",
+        "context": "「故郷」の「故」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "故旧",
+          "事故",
+          "故意",
+          "故障"
+        ],
+        "correct": 0,
+        "why": "故郷・故旧の故は古くからのものという意味。事故・故障はよくない出来事。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-017",
+    "title": "事故の「故」",
+    "reading": "じこ",
+    "category": "漢字の意味",
+    "question": "「事故の「故」」の意味・使い方を説明しよう。",
+    "answer": "事故・故障の故は、好ましくない出来事や差し支え。故人は亡くなった人。",
+    "context": "「事故」の「故」と近い意味で使われているものは？",
+    "confusion": "事故・故障の故は、好ましくない出来事や差し支え。故人は亡くなった人。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-017",
+        "type": "meaning",
+        "context": "「事故」の「故」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "故障",
+          "故郷",
+          "故人",
+          "故意"
+        ],
+        "correct": 0,
+        "why": "事故・故障の故は、好ましくない出来事や差し支え。故人は亡くなった人。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-018",
+    "title": "利便の「便」",
+    "reading": "りべん",
+    "category": "漢字の意味",
+    "question": "「利便の「便」」の意味・使い方を説明しよう。",
+    "answer": "利便・便利の便は都合がよいこと。郵便は便りを届ける仕組み。",
+    "context": "「利便」の「便」と近い意味で使われているものは？",
+    "confusion": "利便・便利の便は都合がよいこと。郵便は便りを届ける仕組み。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-018",
+        "type": "meaning",
+        "context": "「利便」の「便」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "便利",
+          "郵便",
+          "便乗",
+          "大便"
+        ],
+        "correct": 0,
+        "why": "利便・便利の便は都合がよいこと。郵便は便りを届ける仕組み。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-019",
+    "title": "往信の「信」",
+    "reading": "おうしん",
+    "category": "漢字の意味",
+    "question": "「往信の「信」」の意味・使い方を説明しよう。",
+    "answer": "往信・返信の信は便りや知らせ。信用・信念・信仰は信じること。",
+    "context": "「往信」の「信」と近い意味で使われているものは？",
+    "confusion": "往信・返信の信は便りや知らせ。信用・信念・信仰は信じること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-019",
+        "type": "meaning",
+        "context": "「往信」の「信」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "返信",
+          "信用",
+          "信念",
+          "信仰"
+        ],
+        "correct": 0,
+        "why": "往信・返信の信は便りや知らせ。信用・信念・信仰は信じること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-020",
+    "title": "信頼の「信」",
+    "reading": "しんらい",
+    "category": "漢字の意味",
+    "question": "「信頼の「信」」の意味・使い方を説明しよう。",
+    "answer": "信頼・信用は信じること。他は知らせや連絡。",
+    "context": "「信頼」の「信」と近い意味で使われているものは？",
+    "confusion": "信頼・信用は信じること。他は知らせや連絡。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-020",
+        "type": "meaning",
+        "context": "「信頼」の「信」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "信用",
+          "返信",
+          "通信",
+          "音信"
+        ],
+        "correct": 0,
+        "why": "信頼・信用は信じること。他は知らせや連絡。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-021",
+    "title": "精読の「精」",
+    "reading": "せいどく",
+    "category": "漢字の意味",
+    "question": "「精読の「精」」の意味・使い方を説明しよう。",
+    "answer": "精読・精査の精は細かく丁寧に行うこと。精米は米をつくこと。",
+    "context": "「精読」の「精」と近い意味で使われているものは？",
+    "confusion": "精読・精査の精は細かく丁寧に行うこと。精米は米をつくこと。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-021",
+        "type": "meaning",
+        "context": "「精読」の「精」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "精査",
+          "精神",
+          "精霊",
+          "精米"
+        ],
+        "correct": 0,
+        "why": "精読・精査の精は細かく丁寧に行うこと。精米は米をつくこと。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-022",
+    "title": "盛況の「盛」",
+    "reading": "せいきょう",
+    "category": "漢字の意味",
+    "question": "「盛況の「盛」」の意味・使い方を説明しよう。",
+    "answer": "盛況・隆盛は勢いが盛んなこと。飯や料理を盛る意味ではない。",
+    "context": "「盛況」の「盛」と近い意味で使われているものは？",
+    "confusion": "盛況・隆盛は勢いが盛んなこと。飯や料理を盛る意味ではない。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-022",
+        "type": "meaning",
+        "context": "「盛況」の「盛」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "隆盛",
+          "目盛",
+          "盛飯",
+          "盛り付け"
+        ],
+        "correct": 0,
+        "why": "盛況・隆盛は勢いが盛んなこと。飯や料理を盛る意味ではない。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-023",
+    "title": "逆境の「境」",
+    "reading": "ぎゃっきょう",
+    "category": "漢字の意味",
+    "question": "「逆境の「境」」の意味・使い方を説明しよう。",
+    "answer": "逆境・境遇の境は置かれた状態。他は地域などの境目。",
+    "context": "「逆境」の「境」と近い意味で使われているものは？",
+    "confusion": "逆境・境遇の境は置かれた状態。他は地域などの境目。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-023",
+        "type": "meaning",
+        "context": "「逆境」の「境」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "境遇",
+          "国境",
+          "県境",
+          "境界"
+        ],
+        "correct": 0,
+        "why": "逆境・境遇の境は置かれた状態。他は地域などの境目。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-024",
+    "title": "国境の「境」",
+    "reading": "こっきょう",
+    "category": "漢字の意味",
+    "question": "「国境の「境」」の意味・使い方を説明しよう。",
+    "answer": "国境・境界は境目。逆境・境遇・心境は状態。",
+    "context": "「国境」の「境」と近い意味で使われているものは？",
+    "confusion": "国境・境界は境目。逆境・境遇・心境は状態。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-024",
+        "type": "meaning",
+        "context": "「国境」の「境」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "境界",
+          "逆境",
+          "境遇",
+          "心境"
+        ],
+        "correct": 0,
+        "why": "国境・境界は境目。逆境・境遇・心境は状態。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-025",
+    "title": "会見の「見」",
+    "reading": "かいけん",
+    "category": "漢字の意味",
+    "question": "「会見の「見」」の意味・使い方を説明しよう。",
+    "answer": "会見・謁見は人に会うこと。意見・見解・偏見は考え方。",
+    "context": "「会見」の「見」と近い意味で使われているものは？",
+    "confusion": "会見・謁見は人に会うこと。意見・見解・偏見は考え方。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-025",
+        "type": "meaning",
+        "context": "「会見」の「見」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "謁見",
+          "意見",
+          "見解",
+          "偏見"
+        ],
+        "correct": 0,
+        "why": "会見・謁見は人に会うこと。意見・見解・偏見は考え方。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-026",
+    "title": "見解の「見」",
+    "reading": "けんかい",
+    "category": "漢字の意味",
+    "question": "「見解の「見」」の意味・使い方を説明しよう。",
+    "answer": "見解・意見の見は考え方。見る行為そのものではない。",
+    "context": "「見解」の「見」と近い意味で使われているものは？",
+    "confusion": "見解・意見の見は考え方。見る行為そのものではない。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-026",
+        "type": "meaning",
+        "context": "「見解」の「見」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "意見",
+          "会見",
+          "見物",
+          "見学"
+        ],
+        "correct": 0,
+        "why": "見解・意見の見は考え方。見る行為そのものではない。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-027",
+    "title": "急報の「報」",
+    "reading": "きゅうほう",
+    "category": "漢字の意味",
+    "question": "「急報の「報」」の意味・使い方を説明しよう。",
+    "answer": "急報・通報は知らせること。他は受けたことに報いる意味。",
+    "context": "「急報」の「報」と近い意味で使われているものは？",
+    "confusion": "急報・通報は知らせること。他は受けたことに報いる意味。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-027",
+        "type": "meaning",
+        "context": "「急報」の「報」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "通報",
+          "報恩",
+          "報復",
+          "報酬"
+        ],
+        "correct": 0,
+        "why": "急報・通報は知らせること。他は受けたことに報いる意味。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-028",
+    "title": "報恩の「報」",
+    "reading": "ほうおん",
+    "category": "漢字の意味",
+    "question": "「報恩の「報」」の意味・使い方を説明しよう。",
+    "answer": "報恩・報復は受けたことに報いること。善意か害かという対象は異なる。",
+    "context": "「報恩」の「報」と近い意味で使われているものは？",
+    "confusion": "報恩・報復は受けたことに報いること。善意か害かという対象は異なる。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-028",
+        "type": "meaning",
+        "context": "「報恩」の「報」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "報復",
+          "速報",
+          "通報",
+          "予報"
+        ],
+        "correct": 0,
+        "why": "報恩・報復は受けたことに報いること。善意か害かという対象は異なる。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-029",
+    "title": "表面の「表」",
+    "reading": "ひょうめん",
+    "category": "漢字の意味",
+    "question": "「表面の「表」」の意味・使い方を説明しよう。",
+    "answer": "表面・地表の表は外側、おもて。他は示す・表すという意味。",
+    "context": "「表面」の「表」と近い意味で使われているものは？",
+    "confusion": "表面・地表の表は外側、おもて。他は示す・表すという意味。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-029",
+        "type": "meaning",
+        "context": "「表面」の「表」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "地表",
+          "発表",
+          "代表",
+          "表現"
+        ],
+        "correct": 0,
+        "why": "表面・地表の表は外側、おもて。他は示す・表すという意味。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-030",
+    "title": "発表の「表」",
+    "reading": "はっぴょう",
+    "category": "漢字の意味",
+    "question": "「発表の「表」」の意味・使い方を説明しよう。",
+    "answer": "発表・表明の表は外へ示すこと。他は外側やおもて。",
+    "context": "「発表」の「表」と近い意味で使われているものは？",
+    "confusion": "発表・表明の表は外へ示すこと。他は外側やおもて。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-030",
+        "type": "meaning",
+        "context": "「発表」の「表」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "表明",
+          "地表",
+          "表皮",
+          "表面"
+        ],
+        "correct": 0,
+        "why": "発表・表明の表は外へ示すこと。他は外側やおもて。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-031",
+    "title": "納税の「納」",
+    "reading": "のうぜい",
+    "category": "漢字の意味",
+    "question": "「納税の「納」」の意味・使い方を説明しよう。",
+    "answer": "納税・納付の納は金品を支払うこと。納得は理解し受け入れる、納屋・納戸は物をしまう場所。",
+    "context": "「納税」の「納」と近い意味で使われているものは？",
+    "confusion": "納税・納付の納は金品を支払うこと。納得は理解し受け入れる、納屋・納戸は物をしまう場所。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-031",
+        "type": "meaning",
+        "context": "「納税」の「納」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "納付",
+          "納得",
+          "納屋",
+          "納戸"
+        ],
+        "correct": 0,
+        "why": "納税・納付の納は金品を支払うこと。納得は理解し受け入れる、納屋・納戸は物をしまう場所。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-032",
+    "title": "厚遇の「厚」",
+    "reading": "こうぐう",
+    "category": "漢字の意味",
+    "question": "「厚遇の「厚」」の意味・使い方を説明しよう。",
+    "answer": "厚遇・厚情の厚は手厚く心が深いこと。他は物理的な厚さ。",
+    "context": "「厚遇」の「厚」と近い意味で使われているものは？",
+    "confusion": "厚遇・厚情の厚は手厚く心が深いこと。他は物理的な厚さ。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-032",
+        "type": "meaning",
+        "context": "「厚遇」の「厚」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "厚情",
+          "厚紙",
+          "厚板",
+          "肉厚"
+        ],
+        "correct": 0,
+        "why": "厚遇・厚情の厚は手厚く心が深いこと。他は物理的な厚さ。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-033",
+    "title": "省略の「省」",
+    "reading": "しょうりゃく",
+    "category": "漢字の意味",
+    "question": "「省略の「省」」の意味・使い方を説明しよう。",
+    "answer": "省略・省力は省くこと。反省・自省は振り返る、帰省は故郷に帰ること。",
+    "context": "「省略」の「省」と近い意味で使われているものは？",
+    "confusion": "省略・省力は省くこと。反省・自省は振り返る、帰省は故郷に帰ること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-033",
+        "type": "meaning",
+        "context": "「省略」の「省」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "省力",
+          "反省",
+          "帰省",
+          "自省"
+        ],
+        "correct": 0,
+        "why": "省略・省力は省くこと。反省・自省は振り返る、帰省は故郷に帰ること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-034",
+    "title": "自省の「省」",
+    "reading": "じせい",
+    "category": "漢字の意味",
+    "question": "「自省の「省」」の意味・使い方を説明しよう。",
+    "answer": "自省・反省は、自分の言動などを振り返って確かめること。",
+    "context": "「自省」の「省」と近い意味で使われているものは？",
+    "confusion": "自省・反省は、自分の言動などを振り返って確かめること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-034",
+        "type": "meaning",
+        "context": "「自省」の「省」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "反省",
+          "省略",
+          "省力",
+          "省電力"
+        ],
+        "correct": 0,
+        "why": "自省・反省は、自分の言動などを振り返って確かめること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-035",
+    "title": "興味の「興」",
+    "reading": "きょうみ",
+    "category": "漢字の意味",
+    "question": "「興味の「興」」の意味・使い方を説明しよう。",
+    "answer": "興味・余興の興は面白みや楽しみ。復興・興国・興業は起こし盛んにすること。",
+    "context": "「興味」の「興」と近い意味で使われているものは？",
+    "confusion": "興味・余興の興は面白みや楽しみ。復興・興国・興業は起こし盛んにすること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-035",
+        "type": "meaning",
+        "context": "「興味」の「興」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "余興",
+          "復興",
+          "興国",
+          "興業"
+        ],
+        "correct": 0,
+        "why": "興味・余興の興は面白みや楽しみ。復興・興国・興業は起こし盛んにすること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-036",
+    "title": "復興の「興」",
+    "reading": "ふっこう",
+    "category": "漢字の意味",
+    "question": "「復興の「興」」の意味・使い方を説明しよう。",
+    "answer": "復興・興国は盛んに起こすこと。他は面白みや楽しみ。",
+    "context": "「復興」の「興」と近い意味で使われているものは？",
+    "confusion": "復興・興国は盛んに起こすこと。他は面白みや楽しみ。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-036",
+        "type": "meaning",
+        "context": "「復興」の「興」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "興国",
+          "興味",
+          "余興",
+          "興趣"
+        ],
+        "correct": 0,
+        "why": "復興・興国は盛んに起こすこと。他は面白みや楽しみ。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-037",
+    "title": "快走の「快」",
+    "reading": "かいそう",
+    "category": "漢字の意味",
+    "question": "「快走の「快」」の意味・使い方を説明しよう。",
+    "answer": "快走・快速の快は速度が速く勢いがよいこと。快復はよくなること。",
+    "context": "「快走」の「快」と近い意味で使われているものは？",
+    "confusion": "快走・快速の快は速度が速く勢いがよいこと。快復はよくなること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-037",
+        "type": "meaning",
+        "context": "「快走」の「快」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "快速",
+          "快復",
+          "快諾",
+          "快適"
+        ],
+        "correct": 0,
+        "why": "快走・快速の快は速度が速く勢いがよいこと。快復はよくなること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-038",
+    "title": "快諾の「快」",
+    "reading": "かいだく",
+    "category": "漢字の意味",
+    "question": "「快諾の「快」」の意味・使い方を説明しよう。",
+    "answer": "快諾・快適の快は気持ちがよいこと。快諾は気持ちよく承諾すること。",
+    "context": "「快諾」の「快」と近い意味で使われているものは？",
+    "confusion": "快諾・快適の快は気持ちがよいこと。快諾は気持ちよく承諾すること。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-038",
+        "type": "meaning",
+        "context": "「快諾」の「快」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "快適",
+          "快速",
+          "快復",
+          "快癒"
+        ],
+        "correct": 0,
+        "why": "快諾・快適の快は気持ちがよいこと。快諾は気持ちよく承諾すること。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-039",
+    "title": "好物の「好」",
+    "reading": "こうぶつ",
+    "category": "漢字の意味",
+    "question": "「好物の「好」」の意味・使い方を説明しよう。",
+    "answer": "好物・愛好の好は好むこと。他はよい状態や機会。",
+    "context": "「好物」の「好」と近い意味で使われているものは？",
+    "confusion": "好物・愛好の好は好むこと。他はよい状態や機会。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-039",
+        "type": "meaning",
+        "context": "「好物」の「好」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "愛好",
+          "好天",
+          "好調",
+          "好機"
+        ],
+        "correct": 0,
+        "why": "好物・愛好の好は好むこと。他はよい状態や機会。"
+      }
+    ]
+  },
+  {
+    "id": "jp-d2-expanded-meaning-040",
+    "title": "好機の「好」",
+    "reading": "こうき",
+    "category": "漢字の意味",
+    "question": "「好機の「好」」の意味・使い方を説明しよう。",
+    "answer": "好機・好天はよいこと。好物・愛好・好奇心は好む心に関わる。",
+    "context": "「好機」の「好」と近い意味で使われているものは？",
+    "confusion": "好機・好天はよいこと。好物・愛好・好奇心は好む心に関わる。",
+    "tags": [
+      "国語大問2"
+    ],
+    "source": "https://www.pref.aichi.jp/uploaded/attachment/609757.pdf",
+    "quiz": [
+      {
+        "id": "jp-d2-expanded-meaning-040",
+        "type": "meaning",
+        "context": "「好機」の「好」と近い意味で使われているものは？",
+        "question": "漢字の意味の共通点に注目して選ぼう。",
+        "choices": [
+          "好天",
+          "好物",
+          "愛好",
+          "好奇心"
+        ],
+        "correct": 0,
+        "why": "好機・好天はよいこと。好物・愛好・好奇心は好む心に関わる。"
       }
     ]
   }
