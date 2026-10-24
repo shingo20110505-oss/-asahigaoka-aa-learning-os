@@ -1,6 +1,6 @@
 import {randomUUID} from 'node:crypto';
 import {setTimeout as delay} from 'node:timers/promises';
-import {BODY_LIMIT,CHUNK_LIMIT,REQUEST_HEADERS,RESPONSE_HEADERS,validRoute,validId,selectHeaders,encode,decode} from '../relay/protocol.mjs';
+import {BODY_LIMIT,CHUNK_LIMIT,REQUEST_HEADERS,RESPONSE_HEADERS,validRoute,validId,selectHeaders,encode,decode,limitedBody} from '../relay/protocol.mjs';
 
 // Only this outbound connector knows the relay secret. The browser never receives it.
 export function startRelay({origin,token,localURL,fetchImpl=fetch,onStatus=()=>{}}){
@@ -17,9 +17,15 @@ export function startRelay({origin,token,localURL,fetchImpl=fetch,onStatus=()=>{
       headers.set('X-Rise-Public-Origin',remote.origin);headers.set('X-Rise-Relay',token);headers.set('X-Rise-Client',typeof item.clientIP==='string'?item.clientIP.slice(0,100):'unknown');
       const body=decode(item.body,BODY_LIMIT),response=await fetchImpl(new URL(item.path,local),{method:item.method,headers,body:['GET','HEAD'].includes(item.method)?undefined:body,redirect:'error',signal:controller.signal});
       const responseHeaders=selectHeaders(response.headers,RESPONSE_HEADERS);const cookies=response.headers.getSetCookie();if(cookies.length)responseHeaders['set-cookie']=cookies;
+      let compact;
+      if(/^\/api\/uploads(?:\/|$)/.test(item.path)&&response.headers.get('content-type')?.includes('application/json')){
+        compact=await limitedBody(response,CHUNK_LIMIT);
+        try{await send('response',{id:item.id,status:response.status,headers:responseHeaders,body:encode(compact)},controller.signal);return;}
+        catch(error){if(error.status!==404)throw error;}
+      }
       await send('headers',{id:item.id,status:response.status,headers:responseHeaders},controller.signal);
       if(item.method==='HEAD'||[204,205,304].includes(response.status))return;
-      let sequence=0;for await(const part of response.body||[]){for(let offset=0;offset<part.length;offset+=CHUNK_LIMIT)await send('chunk',{id:item.id,sequence:sequence++,body:encode(part.subarray(offset,offset+CHUNK_LIMIT))},controller.signal);}
+      let sequence=0;for await(const part of compact?[compact]:response.body||[]){for(let offset=0;offset<part.length;offset+=CHUNK_LIMIT)await send('chunk',{id:item.id,sequence:sequence++,body:encode(part.subarray(offset,offset+CHUNK_LIMIT))},controller.signal);}
       await send('end',{id:item.id,sequence},controller.signal);
     }catch{if(!stop.signal.aborted)await send('error',{id:item.id},stop.signal,5000).catch(()=>{});}
     finally{controller.abort();tasks.delete(item.id);}

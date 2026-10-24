@@ -12,6 +12,14 @@ Media uploads retain resumable 1 MiB chunks. Downloads use 1 MiB HTTP ranges;
 the browser assembles a Blob for playback, so very large files still depend on
 available browser memory. No total file-size limit is added by this gateway.
 
+Image uploads preserve the original bytes. The browser prepares fingerprints
+locally when images are attached, then sends at most two files concurrently on
+Send. Completed attachments can be reused within the same login; account
+changes invalidate that cache. The PC connector returns upload acknowledgments
+in a single bounded host response (64 KiB maximum), replacing separate headers,
+body and end calls. Older relay versions retain the original response fallback.
+The gateway's domains, body limits, authentication and 1 MiB chunks are unchanged.
+
 ## Installation
 
 Keep `rise_gateway.py` and its Python runtime outside the web root in a private
