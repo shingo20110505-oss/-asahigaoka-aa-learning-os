@@ -1,10 +1,11 @@
 import {dayKey,DAY,weeklyMinutes} from './domain.mjs';
 import {heading,esc,link,badge,icon} from './ui.mjs';
 import {dueNotes} from './note-data.mjs';
+import {isReadingDue} from './reading-domain.mjs';
 export function recommendReading(index,records,now=Date.now()){
  const opened=index.filter(b=>records[b.id]?.lastOpened&&!records[b.id]?.completedAt).sort((a,b)=>records[b.id].lastOpened-records[a.id].lastOpened);
  if(opened.length)return{book:opened[0],reason:'読みかけの続きから'};
- const due=index.filter(b=>records[b.id]?.review?.due<=now).sort((a,b)=>records[a.id].review.due-records[b.id].review.due);
+ const due=index.filter(b=>isReadingDue(records[b.id],now)).sort((a,b)=>records[a.id].review.due-records[b.id].review.due);
  if(due.length)return{book:due[0],reason:'復習のタイミングです'};
  const completed=index.filter(b=>records[b.id]?.completedAt).sort((a,b)=>records[b.id].completedAt-records[a.id].completedAt),level=completed[0]?.level||2;
  const unread=index.filter(b=>!records[b.id]?.completedAt),pool=unread.filter(b=>b.level===level),choices=pool.length?pool:unread.length?unread:index;
