@@ -1,4 +1,5 @@
 import {backfillReadingWordCards} from './reading-vocabulary.mjs';
+import {purgeNoteTrash} from './note-data.mjs';
 import {freshState,migrateLegacy,validState,uid} from './domain.mjs';
 const LEGACY_KEYS=['asahi_review_progress_v1','rise_reading_v2_progress_v1','chronologia-aichi-v3','asahi_learning_os_v1'];
 const request=req=>new Promise((resolve,reject)=>{req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});
@@ -15,6 +16,14 @@ export class Store {
  async putFile(file){const id=uid(),tx=this.db.transaction('files','readwrite'),done=complete(tx);tx.objectStore('files').put({id,name:file.name,type:file.type,size:file.size,blob:file},id);await done;return{id,name:file.name,type:file.type,size:file.size};}
  async file(id){return request(this.db.transaction('files','readonly').objectStore('files').get(id));}
  async deleteFile(id){const tx=this.db.transaction('files','readwrite'),done=complete(tx);tx.objectStore('files').delete(id);await done;}
+ async emptyNoteTrash(confirmed){
+  const tx=this.db.transaction(['state','files'],'readwrite'),done=complete(tx);done.catch(()=>{});
+  try{const s=tx.objectStore('state'),current=await request(s.get('current')),next=structuredClone(current),result=purgeNoteTrash(next,confirmed);
+   next.revision=(current.revision||0)+1;next.updatedAt=Date.now();s.put(next,'current');
+   for(const id of result.fileIds)tx.objectStore('files').delete(id);
+   await done;this.state=next;this.channel?.postMessage({revision:next.revision});return result;
+  }catch(e){try{tx.abort();}catch{}throw e;}
+ }
  async export(){await this.refresh();const tx=this.db.transaction(['snapshots','files'],'readonly');const [snapshots,files]=await Promise.all([request(tx.objectStore('snapshots').getAll()),request(tx.objectStore('files').getAll())]);const encoded=[];for(const file of files){const data=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=()=>reject(r.error);r.readAsDataURL(file.blob);});encoded.push({...file,blob:undefined,data});}return{format:'rise-backup',version:6,exportedAt:new Date().toISOString(),state:this.state,snapshots,files:encoded};}
  async restore(backup){if(backup?.format!=='rise-backup')throw Error('RISEのバックアップを選んでください');validState(backup.state);if(!Array.isArray(backup.files)||!Array.isArray(backup.snapshots))throw Error('バックアップの構造を確認してください');const files=[];for(const file of backup.files){if(typeof file.id!=='string'||!/^data:[^,]*;base64,/.test(file.data||''))throw Error('添付ファイル形式が不正です');const bytes=Uint8Array.from(atob(file.data.slice(file.data.indexOf(',')+1)),c=>c.charCodeAt(0));files.push({id:file.id,name:String(file.name),type:String(file.type||''),size:bytes.length,blob:new Blob([bytes],{type:file.type||''})});}
   const tx=this.db.transaction(['state','snapshots','files'],'readwrite'),done=complete(tx);const current=await request(tx.objectStore('state').get('current'));tx.objectStore('snapshots').put({createdAt:Date.now(),state:current},'before-restore-'+uid());for(const snap of backup.snapshots)tx.objectStore('snapshots').put(snap,'import-'+uid());for(const file of files)tx.objectStore('files').put(file,file.id);const next={...backup.state,revision:(current?.revision||0)+1};backfillReadingWordCards(next);tx.objectStore('state').put(next,'current');await done;this.state=next;this.channel?.postMessage({revision:next.revision});return next;
