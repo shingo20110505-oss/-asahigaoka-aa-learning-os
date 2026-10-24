@@ -1,6 +1,5 @@
 export const features=[
  {id:'ai-tools',title:'AI学習ツール',label:'AI TOOLS',desc:'手書き消去・難易度別の類題作成・画像生成。',icon:'flask',tone:'green',subject:'AI'},
- {id:'web',title:'検索・Web閲覧',label:'SEARCH',desc:'検索・Web閲覧・お気に入り。調べた内容をノートへ。',icon:'search',tone:'blue',subject:'調べ学習'},
  {id:'exam',title:'旭丘・5教科対策',label:'ASAHIGAOKA',desc:'公式問題3年分から、伸ばしたい読み方・考え方を選ぶ。',icon:'learn',tone:'green',subject:'全教科'},
  {id:'explore',title:'理解の実験室',label:'EXPLORE',desc:'動点・箱ひげ図・中和・遺伝。10のモデルを動かして理解する。',icon:'flask',tone:'blue',subject:'数学・理科・資料読解'},
  {id:'evidence',title:'根拠を整理する',label:'EVIDENCE',desc:'主張・理由・具体例・条件を、自分の判断につなぐ。',icon:'notes',tone:'orange',subject:'国語・英語・社会'},
