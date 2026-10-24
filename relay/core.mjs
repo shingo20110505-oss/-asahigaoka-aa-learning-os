@@ -56,11 +56,18 @@ export class RelayCore {
     let input;try{input=JSON.parse(new TextDecoder().decode(await limitedBody(request,100000)));}catch{return json({error:'Invalid body'},400);}
     const p=this.pending.get(input.id);if(!p)return json({error:'Request ended'},410);
     this.touch(p);
-    if(action==='headers'){
+    if(action==='headers'||action==='response'){
       if(p.started||!Number.isInteger(input.status)||input.status<200||input.status>599)return json({error:'Invalid response'},400);
+      let compact;
+      if(action==='response'){
+        if(!/^\/api\/uploads(?:\/|$)/.test(new URL(p.request.url).pathname))return json({error:'Invalid response route'},400);
+        try{compact=decode(input.body,CHUNK_LIMIT);}catch{return json({error:'Invalid body'},400);}
+        if((p.request.method==='HEAD'||[204,205,304].includes(input.status))&&compact.length)return json({error:'Unexpected body'},400);
+      }
       const headers=new Headers();for(const [name,value] of Object.entries(input.headers||{}))if(RESPONSE_HEADERS.includes(name)){if(name==='set-cookie'&&Array.isArray(value)){for(const cookie of value)if(typeof cookie==='string')headers.append(name,cookie);}else if(typeof value==='string')headers.set(name,value);}
       headers.set('Cache-Control','no-store');p.started=true;
       if(p.request.method==='HEAD'||[204,205,304].includes(input.status)){p.resolve(new Response(null,{status:input.status,headers}));this.finish(p);return json({ok:true});}
+      if(compact){p.resolve(new Response(compact,{status:input.status,headers}));this.finish(p);return json({ok:true});}
       const stream=new ReadableStream({start:controller=>{p.controller=controller;},pull:()=>{p.release?.();p.release=null;},cancel:()=>this.remove(p.id)},{highWaterMark:256*1024,size:chunk=>chunk.length});
       p.resolve(new Response(stream,{status:input.status,headers}));return json({ok:true});
     }

@@ -25,12 +25,12 @@ test('relay authenticates the PC, refuses arbitrary paths, times out an offline 
   assert.equal((await relay.fetch(new Request(origin+'/_rise/host/hello',{method:'POST',headers:{...headers,'X-Rise-Instance':randomUUID()}}))).status,409);
 });
 
-test('remote connector preserves role isolation, streamed replies, binary uploads and ranges without exposing PC setup',async t=>{
+for(const compactSupported of [true,false])test('remote connector preserves isolation, binary uploads and ranges with compact support '+compactSupported,async t=>{
   const dir=await fs.mkdtemp(path.join(os.tmpdir(),'rise-relay-test-')),token=secret(),origin='https://relay.example';
   const config={ownerPassword:await passwordHash('owner-123'),guestPassword:await passwordHash('guest-123'),relayToken:token,publicOrigin:origin};
   const provider={ready:()=>true,async run({onDelta,signal}){for(const value of ['リアル','タイム','回答']){await delay(20,undefined,{signal});onDelta(value);}}};
   const app=await createBridge({privateDir:dir,config,provider,publicOrigin:origin}),relay=new RelayCore({RISE_RELAY_TOKEN:token},{pollMs:200,headerMs:1000,idleMs:5000});
-  const transport=async(url,options)=>new URL(url).origin===origin?relay.fetch(new Request(url,options)):fetch(url,options);
+  const hostCalls=[];const transport=async(url,options)=>{if(new URL(url).origin!==origin)return fetch(url,options);const action=new URL(url).pathname.split('/').at(-1);hostCalls.push(action);if(!compactSupported&&action==='response')return new Response('{}',{status:404});return relay.fetch(new Request(url,options));};
   let online=false;const connector=startRelay({origin,token,localURL:app.url,fetchImpl:transport,onStatus:s=>{online=s.connected;}});
   t.after(async()=>{await connector.close();relay.close();await app.close();if(path.dirname(dir)===os.tmpdir()&&path.basename(dir).startsWith('rise-relay-test-'))await fs.rm(dir,{recursive:true});});
   for(let n=0;!online&&n<100;n++)await delay(5);assert.equal(online,true);
@@ -49,10 +49,11 @@ test('remote connector preserves role isolation, streamed replies, binary upload
   const events=await request('events',{headers:guest}),reader=events.body.getReader();assert.match(new TextDecoder().decode((await reader.read()).value),/connected/);
   const sent=await request('threads/'+thread.id+'/messages',{method:'POST',headers:guest,body:JSON.stringify({text:'確認',files:[]})});assert.equal(sent.status,201);await sent.arrayBuffer();
   let text='';while(!text.includes('"type":"done"')){const part=await reader.read();assert.equal(part.done,false);text+=new TextDecoder().decode(part.value);}assert.match(text,/リアル/);assert.match(text,/タイム/);await reader.cancel();
-  const binary=Buffer.alloc(180000,57);binary.write('%PDF-1.7');const upload=await(await request('uploads',{method:'POST',headers:guest,body:JSON.stringify({name:'fixture.pdf',size:binary.length,fingerprint:'a'.repeat(64)})})).json();
+  hostCalls.length=0;const binary=Buffer.alloc(180000,57);binary.write('%PDF-1.7');const upload=await(await request('uploads',{method:'POST',headers:guest,body:JSON.stringify({name:'fixture.pdf',size:binary.length,fingerprint:'a'.repeat(64)})})).json();
   const chunk=await request('uploads/'+upload.id,{method:'PATCH',headers:{...guest,'Content-Type':'application/octet-stream','Upload-Offset':'0'},body:binary});
   assert.equal(chunk.status,200);await chunk.arrayBuffer();
   assert.equal((await request('uploads/'+upload.id+'/complete',{method:'POST',headers:guest,body:'{}'})).status,200);
+  assert.equal(hostCalls.filter(x=>x==='response').length,3);if(compactSupported)assert.equal(hostCalls.filter(x=>['headers','chunk','end'].includes(x)).length,0,'three upload acknowledgments use 3 host calls instead of 9');
   const file=await request('files/'+upload.id,{headers:guest});assert.deepEqual(Buffer.from(await file.arrayBuffer()),binary);
   const range=await request('files/'+upload.id,{headers:{...guest,Range:'bytes=100-999'}});assert.equal(range.status,206);assert.equal(range.headers.get('content-range'),'bytes 100-999/180000');assert.deepEqual(Buffer.from(await range.arrayBuffer()),binary.subarray(100,1000));
   assert.equal((await request('files/'+upload.id,{headers:other})).status,404);
@@ -72,4 +73,19 @@ test('relay bounds request/chunk memory, rejects out-of-order data and cleans up
   assert.equal((await host('chunk',{id,sequence:1,body:encode(new Uint8Array([1]))})).status,409);
   assert.equal((await host('chunk',{id,sequence:0,body:encode(new Uint8Array(65537))})).status,400);
   await host('chunk',{id,sequence:0,body:encode(new Uint8Array([7,8,9]))});assert.deepEqual((await reader.read()).value,new Uint8Array([7,8,9]));await reader.cancel();assert.equal(relay.pending.size,0);
+});
+
+
+test('compact upload acknowledgments keep body bounds, authorization and single completion',async t=>{
+ const token=secret(),origin='https://relay.example',relay=new RelayCore({RISE_RELAY_TOKEN:token},{pollMs:50,headerMs:1000});t.after(()=>relay.close());
+ const headers={Authorization:'Bearer '+token,'X-Rise-Instance':randomUUID(),'Content-Type':'application/json'};
+ const host=(action,body={})=>relay.fetch(new Request(origin+'/_rise/host/'+action,{method:'POST',headers,body:JSON.stringify(body)}));
+ await host('hello');const pending=relay.fetch(new Request(origin+'/api/uploads',{method:'POST',body:'{}'}));const {items}=await(await host('poll')).json(),id=items[0].id;
+ assert.equal((await host('response',{id,status:200,headers:{},body:encode(new Uint8Array(65537))})).status,400);
+ assert.equal((await host('response',{id,status:204,headers:{},body:encode(new Uint8Array([1]))})).status,400);
+ const body=encode(new TextEncoder().encode('{"offset":1048576}'));
+ assert.equal((await relay.fetch(new Request(origin+'/_rise/host/response',{method:'POST',body:JSON.stringify({id,status:200,body})}))).status,401);
+ assert.equal((await host('response',{id,status:200,headers:{'content-type':'application/json','x-untrusted':'no'},body})).status,200);
+ const response=await pending;assert.deepEqual(await response.json(),{offset:1048576});assert.equal(response.headers.get('x-untrusted'),null);assert.equal(relay.pending.size,0);
+ assert.equal((await host('response',{id,status:200,headers:{},body})).status,410);
 });
