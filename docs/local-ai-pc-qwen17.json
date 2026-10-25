@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "runtime": "0.2.86",
+  "createdAt": "2026-10-25T15:38:39.326Z",
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "supported": true,
+    "reason": "",
+    "gpu": "amd",
+    "maxBufferSize": 2147483648,
+    "maxStorageBufferBindingSize": 2147483644
+  },
+  "screening": "固定6問の語句照合による簡易判定。入試全般の正確さの保証ではありません。",
+  "results": [
+    {
+      "model": "Qwen3-1.7B-q4f16_1-MLC",
+      "cases": [
+        {
+          "id": "english",
+          "prompt": "英語の because と although の意味の違いを、日本語で短く説明し、それぞれの意味を書いてください。",
+          "answer": "「because」と「although」は英語でどちらも「なぜか」を意味する語ですが、使い方や意味の違いが存在します。以下に日本語で短く説明します。\n\n---\n\n**because**  \n- **意味**：原因を述べ、その理由を説明する。  \n- **例**：I like apples **because** they are sweet.（私はリンゴを好きだが、それらが甘いから。）\n\n**although**  \n- **意味**：「even though」の意味で、その状態が依然としてあることを強調する。  \n- **例**：I don't like apples, **although** they are sweet.（私はリンゴを嫌いだが、それらが甘いから。）\n\n---\n\n**違いまとめ**  \n| ことば       | 意味                                 | 例文                             |\n|-------------|--------------------------------------|----------------------------------|\n| **because** | 原因を述べる                         | I like apples **because** they are",
+          "firstTokenMs": 3767.899999976158,
+          "totalMs": 14739.5,
+          "tokens": 216,
+          "decodeTokensPerSecond": 19.710665760262614,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 2,
+            "japanese": true,
+            "repetition": true,
+            "rejected": false
+          }
+        },
+        {
+          "id": "equation",
+          "prompt": "方程式 3x + 5 = 20 を解いてください。途中の計算を一行添えてください。",
+          "answer": "方程式 $ 3x + 5 = 20 $ を解くために、まず $ 3x $ と $ 20 $ との差を求める必要があります。  \n**計算：** $ 3x = 20 - 5 $  \n\nその後、$ x $ に変換するため、両辺を $ 3 $ で割ります。  \n**答え：** $ x = \\frac{15}{3} $  \n\nしたがって、方程式の解は $ x = 5 $ です。",
+          "firstTokenMs": 1661.1000000238419,
+          "totalMs": 7965.700000047684,
+          "tokens": 121,
+          "decodeTokensPerSecond": 19.119544956064768,
+          "quality": {
+            "passed": true,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "history",
+          "prompt": "鎌倉幕府の御恩と奉公とは何ですか。将軍と御家人という語を使って、日本語で説明してください。",
+          "answer": "鎌倉幕府の「御恩」（おん）と「奉公」（ほうこう）は、幕府の構造や役割を理解する上で重要な概念です。これらは、鎌倉幕府の将軍とその家族、御家人（御家人）との関係を説明する上で非常に重要です。\n\n---\n\n### 1. **御恩（おん）**\n\n- **意味**：  \n  鎌倉幕府の将軍が、自分の家族や親族（御家人）に対して、その役割や義務を果たすことを意味する語です。  \n  つまり、「御恩」とは、将軍が自分の家族や御家人に対して、その役割を果たすことを意味します。\n\n- **例**：  \n  鎌倉幕府の将軍は、自分の家族（御家人）に対して、その役割を果たすことを「御恩」と言います。  \n  例えば、将軍が",
+          "firstTokenMs": 1845.2000000476837,
+          "totalMs": 12884.400000095367,
+          "tokens": 216,
+          "decodeTokensPerSecond": 19.49653596742697,
+          "quality": {
+            "passed": false,
+            "matched": 3,
+            "total": 4,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "science",
+          "prompt": "植物の光合成で、材料として取り入れる気体と、発生する気体の名前を順に答えてください。",
+          "answer": "植物の光合成において、材料として取り入れる気体と発生する気体の名前は以下の通りです：\n\n**材料として取り入れる気体：**  \n- **水（H₂O）**\n\n**発生する気体：**  \n- **二酸化炭素（CO₂）**\n\nこれらは、光合成の基本的な反応で、植物がエネルギーを生成する過程に必要になります。  \n例：  \n- 水は、植物が光合成を行うために必要な原料です。  \n- 二酸化炭素は、植物がエネルギーを生成するための原料です。  \n- 一方、光合成では、二酸化炭素が発生します（これは、植物が発生した気体です）。  \n\nこの反応は、植物が光を吸収し、エネルギーを生成する過程に重要な役割を果たします。",
+          "firstTokenMs": 1664.8999999761581,
+          "totalMs": 11951.299999952316,
+          "tokens": 198,
+          "decodeTokensPerSecond": 19.24956029012888,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 2,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "vocabulary",
+          "prompt": "「顕著」の意味を、中学生にわかる日本語で説明してください。",
+          "answer": "「顕著」は、とても大きなことや、非常に重要なこと、または、よく見られるもの、よく知られているものという意味です。例えば、あることばや物事は、よく聞くことや、よく見られるので、「顕著」と言います。\n\nもう少し詳しく説明すると、  \n「顕著」は、何かが「よく見られる」「よく聞く」「とても重要」という意味です。  \n例えば、テレビやニュースでよく紹介されるもの、または、学校でよく学ぶこと、あるいは、とても大切なものなど、そんなものに対して「顕著」と言います。\n\nもう少しわかりやすい例を挙げると：  \n- 「このことばは、よく見られるので、顕著です。」  \n- 「この学校の先生は、とても重要なので、顕著です。」  \n\nこのように、「顕著」という言葉は、何かがよく知られていること、または大切であることを意味します。",
+          "firstTokenMs": 1598.6000000238419,
+          "totalMs": 12186.399999976158,
+          "tokens": 209,
+          "decodeTokensPerSecond": 19.741837507257582,
+          "quality": {
+            "passed": false,
+            "matched": 0,
+            "total": 1,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "no-fabrication",
+          "prompt": "この会話には添付画像がありません。画像に書かれている答えを教えてください。",
+          "answer": "ごめんなさい、この会話には画像がありませんでした。ごめんなさい。もし、何か特定の問題やテーマについて質問がある場合は、お手数おかけしますが、おっしゃりください。",
+          "firstTokenMs": 1580.1999999284744,
+          "totalMs": 3962.399999976158,
+          "tokens": 48,
+          "decodeTokensPerSecond": 19.80782198286602,
+          "quality": {
+            "passed": true,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        }
+      ],
+      "offlineVerified": true,
+      "state": "complete",
+      "loadMs": 37643.299999952316,
+      "wasCached": false,
+      "offlineSmokePassed": true,
+      "offlineReloadMs": 4076.399999976158,
+      "offlineAnswer": "1 + 1 の答えは **2** です。",
+      "medianFirstTokenMs": 1664.8999999761581,
+      "medianTotalMs": 12186.399999976158,
+      "passed": 2
+    }
+  ],
+  "recommendation": null
+}

@@ -1,0 +1,344 @@
+{
+  "schema": 1,
+  "runtime": "0.2.86",
+  "createdAt": "2026-10-25T15:20:39.684Z",
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "supported": true,
+    "reason": "",
+    "gpu": "amd",
+    "maxBufferSize": 2147483648,
+    "maxStorageBufferBindingSize": 2147483644
+  },
+  "screening": "固定6問の語句照合による簡易判定。入試全般の正確さの保証ではありません。",
+  "results": [
+    {
+      "model": "Qwen2.5-0.5B-Instruct-q4f16_1-MLC",
+      "cases": [
+        {
+          "id": "english",
+          "prompt": "英語の because と although の意味の違いを、日本語で短く説明し、それぞれの意味を書いてください。",
+          "answer": "\"Because\" は、主に日本語で使われている表現です。これは、状況や理由を説明する意味を持っています。\n\n例： \"I will go to the party because I heard it was a great idea.\" (彼は、彼が聴いたところ、「それは素晴らしいアイデアだった」という理由で彼は彼の友人に会い出る予定を持っている)\n\n\"Although\" は、状況や理由について述べる意味を持っています。これは、状況や理由について述べることを示しています。\n\n例：\"Although it is raining, I still went for a walk.\" (雨が降っているので、私は歩き出しました。)",
+          "firstTokenMs": 26630.600000023842,
+          "totalMs": 37278.60000002384,
+          "tokens": 145,
+          "decodeTokensPerSecond": 13.599660009265335,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 2,
+            "japanese": true,
+            "repetition": false
+          }
+        },
+        {
+          "id": "equation",
+          "prompt": "方程式 3x + 5 = 20 を解いてください。途中の計算を一行添えてください。",
+          "answer": "3x + 5 = 20\n\n1. 関数を解く\n3x = 20 - 5\n3x = 15\n\n2. 解の対象\nx = ?\n\n3. 積算\nx = ?\n\n4. 得したxの値は、方程式の真実である。\n\nx = (20 - 5) / 3\nx = 15 / 3\nx = 5\n\nしたがって、方程式 3x + 5 = 20 の解は x = 5。",
+          "firstTokenMs": 469.40000009536743,
+          "totalMs": 8884.800000071526,
+          "tokens": 128,
+          "decodeTokensPerSecond": 15.16309279611455,
+          "quality": {
+            "passed": true,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": false
+          }
+        },
+        {
+          "id": "history",
+          "prompt": "鎌倉幕府の御恩と奉公とは何ですか。将軍と御家人という語を使って、日本語で説明してください。",
+          "answer": "鎌倉幕府の御恩と奉公とは、日本語で「徳」と「忠実」を表す言葉です。この言葉は、将軍が日本の政治経済において重要な役割を果たしたことを示しています。\n\n徳：敬意や尊敬\n忠実：信頼\n\nまた、「奉公」という言葉も使用されます。「奉公」とは、将軍が日本の政治経済において重要な役割を果たしたことを示していることを指します。これは、将軍が日本の政治経済に貢献したことを述べています。\n\nこれらの表現は、日本語で説明することで、より詳細な内容を伝えることができます。",
+          "firstTokenMs": 542.5999999046326,
+          "totalMs": 6857.699999928474,
+          "tokens": 155,
+          "decodeTokensPerSecond": 24.42118617236144,
+          "quality": {
+            "passed": false,
+            "matched": 2,
+            "total": 4,
+            "japanese": true,
+            "repetition": false
+          }
+        },
+        {
+          "id": "science",
+          "prompt": "植物の光合成で、材料として取り入れる気体と、発生する気体の名前を順に答えてください。",
+          "answer": "植物の光合成で、材料として取り入れる気体は、水（H₂O）、二氧化碳（CO₂）です。発生する気体は、氧气（O₂）と窒素（SiO₂）です。",
+          "firstTokenMs": 321.7999999523163,
+          "totalMs": 1638.5,
+          "tokens": 52,
+          "decodeTokensPerSecond": 38.996788504747116,
+          "quality": {
+            "passed": false,
+            "matched": 0,
+            "total": 2,
+            "japanese": true,
+            "repetition": false
+          }
+        },
+        {
+          "id": "vocabulary",
+          "prompt": "「顕著」の意味を、中学生にわかる日本語で説明してください。",
+          "answer": "「顕著」は、英語の \"outstanding\" と日本語の \"出品\" を意味します。これは、良い、優れた、上位、有名なことを指す言葉です。\n\n例句：\n1. 試験に合格した学生は、「優れた成績を収めている」と表現されます。\n2. 今週の会議で発表された研究報告は、「有名な論文」と評されるでしょう。\n3. その日には、元気で参加したチームが、「出品の良いチーム」と評されています。\n\nこれらの例では、「顕著」は「優れた」という意味合いを持っています。",
+          "firstTokenMs": 300.2000000476837,
+          "totalMs": 4246.800000071526,
+          "tokens": 145,
+          "decodeTokensPerSecond": 36.79100663609736,
+          "quality": {
+            "passed": false,
+            "matched": 0,
+            "total": 1,
+            "japanese": true,
+            "repetition": false
+          }
+        },
+        {
+          "id": "no-fabrication",
+          "prompt": "この会話には添付画像がありません。画像に書かれている答えを教えてください。",
+          "answer": "申し訳ありませんが、画像を提供していただけません。しかし、私が可能な限り正確に回答できるように努力しています。具体的な質問があれば、教えてください。",
+          "firstTokenMs": 312.1999999284744,
+          "totalMs": 1245.3999999761581,
+          "tokens": 37,
+          "decodeTokensPerSecond": 38.83495147129285,
+          "quality": {
+            "passed": true,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": false
+          }
+        }
+      ],
+      "offlineVerified": false,
+      "loadMs": 13940.299999952316,
+      "wasCached": false,
+      "offlineReloadMs": 1491.1999999284744,
+      "offlineAnswer": "1 + 1 の答えは、数字だけで答えると、必ず10になります。",
+      "medianFirstTokenMs": 469.40000009536743,
+      "medianTotalMs": 6857.699999928474,
+      "passed": 2
+    },
+    {
+      "model": "Qwen3-0.6B-q4f16_1-MLC",
+      "cases": [
+        {
+          "id": "english",
+          "prompt": "英語の because と although の意味の違いを、日本語で短く説明し、それぞれの意味を書いてください。",
+          "answer": "<think>\n\n</think>\n\nbecause は「理由」を指し、although は「although」の意味と使われます。  \nbecause: 例: Because I didn't go to school.  \nalthough: 例: Although it was raining, I went out.  \n\n質問の内容に合わせて、短く説明できますように。",
+          "firstTokenMs": 2956.9000000953674,
+          "totalMs": 5535.800000071526,
+          "tokens": 70,
+          "decodeTokensPerSecond": 26.934186897830706,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 2,
+            "japanese": true,
+            "repetition": false
+          }
+        },
+        {
+          "id": "equation",
+          "prompt": "方程式 3x + 5 = 20 を解いてください。途中の計算を一行添えてください。",
+          "answer": "<think>\n\n</think>\n\n3x + 5 = 20  \n3x = 15  \nx = 5  \n\n(途中の計算: 3x = 20 - 5 → 3x = 15 → x = 5)",
+          "firstTokenMs": 475.6999999284744,
+          "totalMs": 2001.1000000238419,
+          "tokens": 52,
+          "decodeTokensPerSecond": 33.64559968174792,
+          "quality": {
+            "passed": true,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": false
+          }
+        },
+        {
+          "id": "history",
+          "prompt": "鎌倉幕府の御恩と奉公とは何ですか。将軍と御家人という語を使って、日本語で説明してください。",
+          "answer": "<think>\n\n</think>\n\n鎌倉幕府の御恩と奉公とは、将軍や御家人が朝廷や政府に従事する場合のことを指します。具体的には、将軍が朝廷の事務官や政府職員を務め、御家人が家族や従者に従事するという意味です。一方、将軍と御家人の役割は、自身の職務や家族の活用によって共有されるものであり、特に将軍が朝廷に従事する場合があります。",
+          "firstTokenMs": 516.1000000238419,
+          "totalMs": 4202,
+          "tokens": 111,
+          "decodeTokensPerSecond": 29.814337980397102,
+          "quality": {
+            "passed": false,
+            "matched": 3,
+            "total": 4,
+            "japanese": true,
+            "repetition": false
+          }
+        },
+        {
+          "id": "science",
+          "prompt": "植物の光合成で、材料として取り入れる気体と、発生する気体の名前を順に答えてください。",
+          "answer": "<think>\n\n</think>\n\n光合成における材料として使用される気体としては、**水**と**酸素**です。  \n発生する気体としては、**水**と**酸素**です。  \n\n水（H₂O）と酸素（O₂）は光合成の生じる気体です。",
+          "firstTokenMs": 483.7999999523163,
+          "totalMs": 2456.7999999523163,
+          "tokens": 66,
+          "decodeTokensPerSecond": 33.17342042917585,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 2,
+            "japanese": true,
+            "repetition": false
+          }
+        },
+        {
+          "id": "vocabulary",
+          "prompt": "「顕著」の意味を、中学生にわかる日本語で説明してください。",
+          "answer": "<think>\n\n</think>\n\n「顕著」は、言葉の意味によって言えることや、事実があることを指します。例えば、「**顕著な出来事**」や、「**顕著な状況**」など、具体的な例を挙げると、理解が深まります。\n\n例文としては、「**学校の朝の朝の朝**」や、「**春の花の花の花**」など、言葉の意味を示す例です。具体的には、学習内容や、日常生活の例文なども添えれば、理解が容易になります。",
+          "firstTokenMs": 475.89999997615814,
+          "totalMs": 3978.899999976158,
+          "tokens": 125,
+          "decodeTokensPerSecond": 35.670109024451534,
+          "quality": {
+            "passed": false,
+            "matched": 0,
+            "total": 1,
+            "japanese": true,
+            "repetition": false
+          }
+        },
+        {
+          "id": "no-fabrication",
+          "prompt": "この会話には添付画像がありません。画像に書かれている答えを教えてください。",
+          "answer": "<think>\n\n</think>\n\n画像がない場合は、会話内容を分析して答えを推測してくださいました。例:  \n**会話内容**: \"今日の学習内容は、英語の英語語彙です。\"  \n**答え**: 英語の英語語彙を例として、画像に書かれている答えを示すとおり、画像の内容を推測して回答しました。",
+          "firstTokenMs": 452.2000000476837,
+          "totalMs": 3022.5,
+          "tokens": 85,
+          "decodeTokensPerSecond": 32.89860181464544,
+          "quality": {
+            "passed": true,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": false
+          }
+        }
+      ],
+      "offlineVerified": true,
+      "loadMs": 27188,
+      "wasCached": false,
+      "offlineReloadMs": 1566.1999999284744,
+      "offlineAnswer": "<think>\n\n</think>\n\n1 + 1 の答えは 2 です。数字だけで答えると、2 が答えです。",
+      "medianFirstTokenMs": 483.7999999523163,
+      "medianTotalMs": 3978.899999976158,
+      "passed": 2
+    },
+    {
+      "model": "Qwen3.5-0.8B-q4f16_1-MLC",
+      "cases": [
+        {
+          "id": "english",
+          "prompt": "英語の because と although の意味の違いを、日本語で短く説明し、それぞれの意味を書いてください。",
+          "answer": "<think>\n\n</think>\n\n### 英語の「because」と「although」の日本語意味\n\n**1. because（なぜ）**\n*   **意味:** 原因や理由を表す。\n*   **例:**\n    *   「I like apples because they are sweet.」（私は甘い苹果が好き。→ 理由：甘い）\n    *   「He is tired because he has been working all day.」（彼は日中ずっと働いて疲れた。→ 理由：日中ずっと働いて）\n\n**2. although（〜でも）**\n*   **意味:** 条件や状況を表す。\n*   **例:**\n    *   \"I like apples although they are sweet.\"（私は甘い苹果が好き。）→ 条件：甘い（ただし、）\n    *   \"She is tired although she has been working all day.\"（彼女は日中ずっと働いて疲れた。）→ 条件：日中ずっと働いて（ただし、）\n\n**補足:**\nこの二つの言葉は、英語の「because」と「although」",
+          "firstTokenMs": 20235.300000071526,
+          "totalMs": 35736.700000047684,
+          "tokens": 216,
+          "decodeTokensPerSecond": 13.925141032274968,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 2,
+            "japanese": true,
+            "repetition": false
+          }
+        },
+        {
+          "id": "equation",
+          "prompt": "方程式 3x + 5 = 20 を解いてください。途中の計算を一行添えてください。",
+          "answer": "<think>\n\n</think>\n\n### 方程式の解\n\n**3x + 5 = 20**\n\n**解:**\n$$3x = 20 - 5$$\n$$3x = 15$$\n$$x = 15 \\div 3$$\n$$x = 5$$\n\n**答え:** $x = 5$\n\n---\n\n### 解説（理由と例）\n\nこの問題の解くための手順と理由を、計算過程を**一行**にまとめています。\n\n1.  **等号の両辺に 5 を引算する**\n    式右辺の 20 を式左辺の 5 だけ引算します。\n    $$3x + 5 - 5 = 20 - 5$$\n    $$3x = 15$$\n\n2.  **等号の両辺に 3 を割算する**\n    式左辺の 3 を式右辺の 15 で割算します。\n   ",
+          "firstTokenMs": 1041.3999999761581,
+          "totalMs": 14559,
+          "tokens": 216,
+          "decodeTokensPerSecond": 15.967204104127587,
+          "quality": {
+            "passed": true,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": false
+          }
+        },
+        {
+          "id": "history",
+          "prompt": "鎌倉幕府の御恩と奉公とは何ですか。将軍と御家人という語を使って、日本語で説明してください。",
+          "answer": "<think>\n\n</think>\n\n### 鎌倉幕府における「御恩」と「奉公」の解説\n\n**1. 御恩とは何か**\n\n「御恩」とは、日本古代において神様（天照）が神官（神官）を捧げ、その神官を神官として奉わせたこと。また、神官が神官を捧げ、その神官を神官として奉わせたこと。\n\nこのようにして神官は神官として奉わせたこと。\n\n**2. 奉公とは何か**\n\n「奉公」とは、神官が神官を捧げ、その神官を神官として奉わせたこと。また、神官が神官を捧げ、その神官を神官として奉わせたこと。\n\nこのようにして神官は神官として奉わせたこと。\n\n---\n\n### 例文\n\n**例文 1: 将軍と御家人**\n\n将軍とは、将軍（将軍）という語で、",
+          "firstTokenMs": 1043.8999999761581,
+          "totalMs": 14667.399999976158,
+          "tokens": 216,
+          "decodeTokensPerSecond": 15.842839037089382,
+          "quality": {
+            "passed": false,
+            "matched": 3,
+            "total": 4,
+            "japanese": true,
+            "repetition": false
+          }
+        },
+        {
+          "id": "science",
+          "prompt": "植物の光合成で、材料として取り入れる気体と、発生する気体の名前を順に答えてください。",
+          "answer": "<think>\n\n</think>\n\n植物の光合成において、材料として取り入れられる気体（原料）と、発生する気体（产物）は以下の通りです。\n\n**材料として取り入れる気体:**\n*   **光（光線）**\n*   **水（H₂O）**\n*   **無機質（窒素 N や 炭素 C など）**\n\n**発生する気体:**\n*   **酸素（O₂）**\n\n**解説:**\nこの現象は「光合成」と呼ばれ、植物が光を浴びて栄養を生成する過程です。光合成の式は一般的に以下のように表されます。\n\n$$6CO_2 + 6H_2O + 光 \\rightarrow C_6H_{10}O_5 + O_2$$\n\nこの式から、材料（原料）は光、水、無機質であることがわかります。一方、生成された気体は酸素であることが確認できます。",
+          "firstTokenMs": 1033.7000000476837,
+          "totalMs": 13743.700000047684,
+          "tokens": 203,
+          "decodeTokensPerSecond": 15.952993949386917,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 2,
+            "japanese": true,
+            "repetition": false
+          }
+        },
+        {
+          "id": "vocabulary",
+          "prompt": "「顕著」の意味を、中学生にわかる日本語で説明してください。",
+          "answer": "<think>\n\n</think>\n\n### 「顕著」の意味\n\n**「顕著」**は、**「非常に多くの人に見られること」**という意味です。\n\n#### 1. 意味の解説\n- **多くの人に見られること**: 多くの人が見ていたこと、または多くの人が見ていないこと。\n- **強さ**: 非常に強く、印象的なもの。\n- **特徴**: 多くの人が見ていたこと、または多くの人が見ていないこと。\n\n#### 2. 例\n- **例**: 彼は**顕著**な学生だ。\n  - （例：彼は**顕著**な学生だ。→ 例：彼は**顕著**な学生だ。）\n\n- **例**: 彼は**顕著**な学生だ。\n  - （例：彼は**顕著**な学生だ。）\n\n- **例**: 彼は**顕著**な学生だ。\n  - （例：彼は**顕著**な学生だ。）\n\n#### 3. 推測された例\n- **例**:",
+          "firstTokenMs": 851,
+          "totalMs": 14590.599999904633,
+          "tokens": 216,
+          "decodeTokensPerSecond": 15.712239468433745,
+          "quality": {
+            "passed": false,
+            "matched": 0,
+            "total": 1,
+            "japanese": true,
+            "repetition": false
+          }
+        },
+        {
+          "id": "no-fabrication",
+          "prompt": "この会話には添付画像がありません。画像に書かれている答えを教えてください。",
+          "answer": "<think>\n\n</think>\n\n申し訳ありませんが、ご質問には**添付画像**がありません。\n\n学習アシスタントとして、画像に書かれている答えを導き出すことはできません。\n\nしかし、以下の状況では、**「資料が必要ならそう伝えてください」**という指示に従って、必要な情報を整理して回答いたします。\n\n1.  **画像の内容**（例：数学の方程式、日本語の文章、地理の地図など）\n2.  **質問の内容**（例：「この方程式を解く」など）\n3.  **目的**（例：「答えを教えてください」など）\n\nこれらの要素があれば、さらに具体的な情報を整理し、**「資料が必要ならそう伝えてください」**という指示に従って回答いたします。\n\nまた、**「検索や画像解析を実行したとは言わないでください」**という指示に従って、画像に書かれている答えを導き出すことはできません。\n\n---\n\n### 結論\n**「この会話には添付画像がありません。」**\n\nしたがって、画像に書かれている答えを導き出すことはできません",
+          "firstTokenMs": 853.5,
+          "totalMs": 18406.399999976158,
+          "tokens": 216,
+          "decodeTokensPerSecond": 12.302093644228085,
+          "quality": {
+            "passed": true,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": false
+          }
+        }
+      ],
+      "offlineVerified": true,
+      "loadMs": 18332.899999976158,
+      "wasCached": false,
+      "offlineReloadMs": 3123.600000023842,
+      "offlineAnswer": "### 1 + 1 の答え\n\n**2**\n\n### 必要な理由\n\n1.  **数学的定義**: 数学",
+      "medianFirstTokenMs": 1041.3999999761581,
+      "medianTotalMs": 14667.399999976158,
+      "passed": 2
+    }
+  ],
+  "recommendation": null
+}

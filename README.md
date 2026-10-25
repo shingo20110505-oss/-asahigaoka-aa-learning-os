@@ -36,6 +36,12 @@ GitHubの `RISE authenticated PC relay` ワークフローは、既存のCloudfl
 
 管理者のチャット履歴は同じPCの履歴を開きます。以前の別ドメインで使っていたゲスト履歴は、そちらで発行した引き継ぎコードを元のRISEのログイン画面に入力すると移せます。学習ノート・復習記録は元のRISEの保存先をそのまま使います。
 
+## 手書き消去と端末内AIの検証
+
+AI学習ツールまたはチャットの「＋ ツール」から `#/handwriting-clean` を開きます。赤・青の候補抽出、「消す／残す」ブラシ、複数枚の逐次処理、全画面プレビューに対応します。結果は原本と別に資料室へ保存します。キャッシュ準備後は通信なしでも処理・保存できます。黒い筆記の自動判定や、印刷に隠れた文字の復元は保証しません。比較と実測は [手書き消去の評価](docs/handwriting-evaluation.md) を参照してください。
+
+`#/device-ai` は端末内LLMの検証画面です。今回のWebLLM・Windows/AMDでの比較では、日本語学習チャットへ自動採用するモデルはありません。比較機能とオフライン会話の仕組みは実装していますが、通常チャットへの自動切り替えは無効です。PCでの計測や画面サイズ変更をA16 iPad実測とは扱いません。モデルは利用者が比較を開始したときだけダウンロードします。詳細は [端末内AIの評価](docs/local-ai-evaluation.md) を参照してください。
+
 ## 検証と公開
 
 `node --test tests/rise-*.test.mjs` と `node scripts/build-rise.mjs`、`node scripts/validate-rise-build.mjs` を実行します。公開するのは `dist/` の許可された静的ファイルだけです。Worker開発用依存は `pnpm install --frozen-lockfile` で固定します。

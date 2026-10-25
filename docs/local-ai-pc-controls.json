@@ -1,0 +1,49 @@
+{
+  "control": true,
+  "results": [
+    {
+      "prompt": "What gas do plants absorb during photosynthesis? Answer briefly in English.",
+      "text": "During photosynthesis, plants absorb carbon dioxide (CO₂) from the air.",
+      "model": "Qwen3-0.6B-q4f16_1-MLC",
+      "metrics": {
+        "firstTokenMs": 476.10000002384186,
+        "totalMs": 944.8000000715256,
+        "tokens": 17,
+        "decodeTokensPerSecond": 34.46790178064246
+      }
+    },
+    {
+      "prompt": "光合成で植物が吸収する気体は何ですか。短く答えてください。",
+      "text": "光合成で植物が吸収する気体は、光エネルギー（光子）です。",
+      "model": "Qwen3-0.6B-q4f16_1-MLC",
+      "metrics": {
+        "firstTokenMs": 203.69999992847443,
+        "totalMs": 872,
+        "tokens": 22,
+        "decodeTokensPerSecond": 31.645569624801023
+      }
+    },
+    {
+      "prompt": "Explain the meaning of although briefly in English.",
+      "text": "Although means \"even though\" or \"despite the situation\". It's used to express that something is still true or that a situation is happening despite some obstacles. For example:  \n\"Although it was raining, we went outside to play.\"",
+      "model": "Qwen3-0.6B-q4f16_1-MLC",
+      "metrics": {
+        "firstTokenMs": 206.5,
+        "totalMs": 1659.0999999046326,
+        "tokens": 50,
+        "decodeTokensPerSecond": 33.98765346353565
+      }
+    },
+    {
+      "prompt": "although の日本語の意味は？",
+      "text": "「の」は、文脈によって意味が異なることがあります。例えば：\n\n- **の**（例：**の犬**）：犬のことを指す。\n- **の**（例：**の朝**）：朝のことを指す。\n- **の**（例：**の場**）：場所（例：**の場**は朝の場です）。\n\n具体的には文の内容や語彙によって意味が変わるため、文を明確にしてくださいね。😊",
+      "model": "Qwen3-0.6B-q4f16_1-MLC",
+      "metrics": {
+        "firstTokenMs": 132.29999995231628,
+        "totalMs": 3101.100000023842,
+        "tokens": 107,
+        "decodeTokensPerSecond": 36.01277434872287
+      }
+    }
+  ]
+}

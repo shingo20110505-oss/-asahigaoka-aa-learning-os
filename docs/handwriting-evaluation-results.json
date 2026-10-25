@@ -1,0 +1,438 @@
+{
+  "evaluatedAt": "2026-10-26",
+  "results": {
+    "pixel-engine": {
+      "device": "AMD Ryzen 5 7535U with Radeon Graphics         ",
+      "node": "v24.19.0",
+      "fixture": "1200x1600 deterministic synthetic paper; not photographed handwriting accuracy",
+      "measurement": "CPU pixel processing only; no image decode, encode, transfer or disk IO",
+      "cases": {
+        "color": {
+          "elapsedMs": 36.908699999999996,
+          "precision": 1,
+          "recall": 1,
+          "printedRetention": 1,
+          "outsideMaskChangedPixels": 0
+        },
+        "black": {
+          "elapsedMs": 17.447900000000004,
+          "precision": 0,
+          "recall": 0,
+          "printedRetention": 1,
+          "outsideMaskChangedPixels": 0
+        },
+        "coloredPrint": {
+          "elapsedMs": 18.901999999999987,
+          "precision": 0.8672427336999214,
+          "recall": 1,
+          "printedRetention": 0.9669883189436262,
+          "outsideMaskChangedPixels": 0
+        },
+        "shadow": {
+          "elapsedMs": 34.834100000000035,
+          "precision": 1,
+          "recall": 1,
+          "printedRetention": 1,
+          "outsideMaskChangedPixels": 0
+        }
+      },
+      "batches": [
+        {
+          "count": 1,
+          "pixelMs": 20.83069999999998
+        },
+        {
+          "count": 3,
+          "pixelMs": 96.90469999999993
+        },
+        {
+          "count": 10,
+          "pixelMs": 192.11619999999994
+        }
+      ]
+    },
+    "same-fixture-color": {
+      "fixture": "Same synthetic Japanese text/triangle/stroke-path fixtures as handwriting-model-eval.py; not real worksheet accuracy",
+      "measurement": "Pixel processing (excludes PNG decode/encode)",
+      "cases": {
+        "color": {
+          "elapsedMs": 47.144800000000004,
+          "precision": 1,
+          "recall": 1,
+          "printedRetention": 1,
+          "outsideMaskChangedPixels": 0
+        },
+        "black": {
+          "elapsedMs": 19.2003,
+          "precision": 0,
+          "recall": 0,
+          "printedRetention": 1,
+          "outsideMaskChangedPixels": 0
+        },
+        "overlap": {
+          "elapsedMs": 42.53739999999999,
+          "precision": 0,
+          "recall": 0,
+          "printedRetention": 1,
+          "outsideMaskChangedPixels": 0
+        },
+        "colored-print": {
+          "elapsedMs": 22.783500000000004,
+          "precision": 0.8674848731922928,
+          "recall": 1,
+          "printedRetention": 0.9602302729017219,
+          "outsideMaskChangedPixels": 0
+        },
+        "shadow": {
+          "elapsedMs": 36.95020000000005,
+          "precision": 1,
+          "recall": 1,
+          "printedRetention": 1,
+          "outsideMaskChangedPixels": 0
+        }
+      }
+    },
+    "opencv": {
+      "opencv": "5.0.0",
+      "fixture": "Same synthetic Japanese print and stroke-path fixture as DIS; not real worksheet accuracy",
+      "cases": {
+        "color": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "iou": 1.0,
+          "visible_print_retained": 1.0,
+          "selected": 20215,
+          "process_ms": 86.17869997397065,
+          "outside_mask_changed_pixels": 0,
+          "masked_pixel_mae": 3.7618435155412646
+        },
+        "black": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "iou": 0.0,
+          "visible_print_retained": 1.0,
+          "selected": 0,
+          "process_ms": 61.58109998796135,
+          "outside_mask_changed_pixels": 0,
+          "masked_pixel_mae": 0
+        },
+        "overlap": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "iou": 0.0,
+          "visible_print_retained": 1.0,
+          "selected": 0,
+          "process_ms": 62.44759995024651,
+          "outside_mask_changed_pixels": 0,
+          "masked_pixel_mae": 0
+        },
+        "colored-print": {
+          "precision": 0.8674848731922928,
+          "recall": 1.0,
+          "iou": 0.8674848731922928,
+          "visible_print_retained": 0.9602302729017219,
+          "selected": 23303,
+          "process_ms": 87.50239992514253,
+          "outside_mask_changed_pixels": 0,
+          "masked_pixel_mae": 20.829249452860147
+        },
+        "shadow": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "iou": 1.0,
+          "visible_print_retained": 1.0,
+          "selected": 20215,
+          "process_ms": 81.68920001480728,
+          "outside_mask_changed_pixels": 0,
+          "masked_pixel_mae": 3.6565916398713827
+        }
+      },
+      "batches": [
+        {
+          "count": 1,
+          "read_process_png_ms": 132.3636999586597
+        },
+        {
+          "count": 3,
+          "read_process_png_ms": 339.92569998372346
+        },
+        {
+          "count": 10,
+          "read_process_png_ms": 1173.11149998568
+        }
+      ]
+    },
+    "dis-512": {
+      "device": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "torch": "2.14.1+cpu",
+      "threads": 6,
+      "input_size": 512,
+      "checkpoint_sha256": "d685cc76a8c4d6aebf9a82499b7771d13aaa27ebd90e933036bdd004db4beefa",
+      "model_load_ms": 544.7701000375673,
+      "fixture_note": "Synthetic Japanese print with programmatic ink; NOT real photographed worksheet accuracy.",
+      "cases": {
+        "color": {
+          "inference_ms": 672.1460000844672,
+          "precision": 0.4590562267235898,
+          "recall": 1.0,
+          "iou": 0.4590562267235898,
+          "visible_print_retained": 0.9914871147629657,
+          "selected": 44036
+        },
+        "black": {
+          "inference_ms": 535.0977999623865,
+          "precision": 0.1797752808988764,
+          "recall": 0.0015829829334652486,
+          "iou": 0.0015716320416482492,
+          "visible_print_retained": 0.99929166613005,
+          "selected": 178
+        },
+        "overlap": {
+          "inference_ms": 524.8581999912858,
+          "precision": 0.43665436654366546,
+          "recall": 0.0175612169181301,
+          "iou": 0.017172156919653656,
+          "visible_print_retained": 0.9982388481810002,
+          "selected": 813
+        },
+        "colored-print": {
+          "inference_ms": 492.45120002888143,
+          "precision": 0.4585753176043557,
+          "recall": 0.9999505317833293,
+          "iou": 0.45856491458905196,
+          "visible_print_retained": 0.9914871147629657,
+          "selected": 44080
+        },
+        "shadow": {
+          "inference_ms": 478.4479000372812,
+          "precision": 0.36896561662391564,
+          "recall": 0.6332921098194411,
+          "iou": 0.3040132985039183,
+          "visible_print_retained": 0.9939340863137017,
+          "selected": 34697
+        }
+      },
+      "batches": [
+        {
+          "count": 1,
+          "read_infer_png_ms": 574.1363000124693
+        },
+        {
+          "count": 3,
+          "read_infer_png_ms": 1589.800599962473
+        },
+        {
+          "count": 10,
+          "read_infer_png_ms": 5474.208500003442
+        }
+      ]
+    },
+    "dis-1024": {
+      "device": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "torch": "2.14.1+cpu",
+      "threads": 6,
+      "input_size": 1024,
+      "checkpoint_sha256": "d685cc76a8c4d6aebf9a82499b7771d13aaa27ebd90e933036bdd004db4beefa",
+      "model_load_ms": 395.48910001758486,
+      "fixture_note": "Synthetic Japanese print with programmatic ink; NOT real photographed worksheet accuracy.",
+      "cases": {
+        "color": {
+          "inference_ms": 2122.1382000949234,
+          "precision": 0.5513432428746762,
+          "recall": 1.0,
+          "iou": 0.5513432428746762,
+          "visible_print_retained": 0.9936121163728154,
+          "selected": 36665
+        },
+        "black": {
+          "inference_ms": 1946.2031000293791,
+          "precision": 0.7253246753246754,
+          "recall": 0.05525599802127133,
+          "iou": 0.05412346157573408,
+          "visible_print_retained": 1.0,
+          "selected": 1540
+        },
+        "overlap": {
+          "inference_ms": 2002.206200035289,
+          "precision": 0.638753904894134,
+          "recall": 0.36413554291367795,
+          "iou": 0.301952580195258,
+          "visible_print_retained": 1.0,
+          "selected": 11524
+        },
+        "colored-print": {
+          "inference_ms": 1945.3488000435755,
+          "precision": 0.47508813160987073,
+          "recall": 1.0,
+          "iou": 0.47508813160987073,
+          "visible_print_retained": 0.9466817777892256,
+          "selected": 42550
+        },
+        "shadow": {
+          "inference_ms": 1705.8263000799343,
+          "precision": 0.42365244362477994,
+          "recall": 1.0,
+          "iou": 0.42365244362477994,
+          "visible_print_retained": 0.9931613584555746,
+          "selected": 47716
+        }
+      },
+      "batches": [
+        {
+          "count": 1,
+          "read_infer_png_ms": 1734.4171999720857
+        },
+        {
+          "count": 3,
+          "read_infer_png_ms": 4893.396299914457
+        },
+        {
+          "count": 10,
+          "read_infer_png_ms": 16917.201600037515
+        }
+      ]
+    },
+    "dis-1024-author-pad": {
+      "device": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "torch": "2.14.1+cpu",
+      "threads": 6,
+      "input_size": 1024,
+      "layout": "author-pad",
+      "checkpoint_sha256": "d685cc76a8c4d6aebf9a82499b7771d13aaa27ebd90e933036bdd004db4beefa",
+      "model_load_ms": 332.1773000061512,
+      "fixture_note": "Synthetic Japanese print with programmatic ink; NOT real photographed worksheet accuracy.",
+      "cases": {
+        "color": {
+          "inference_ms": 1616.4546998916194,
+          "precision": 0.5620429838463036,
+          "recall": 1.0,
+          "iou": 0.5620429838463036,
+          "visible_print_retained": 0.9938954499207954,
+          "selected": 35967
+        },
+        "black": {
+          "inference_ms": 1621.6150999534875,
+          "precision": 0.8194945848375451,
+          "recall": 0.022458570368538214,
+          "iou": 0.022348018705390105,
+          "visible_print_retained": 0.9998454544283746,
+          "selected": 554
+        },
+        "overlap": {
+          "inference_ms": 1591.4281000150368,
+          "precision": 0.7649620906597838,
+          "recall": 0.23457828345288154,
+          "iou": 0.21880767811000368,
+          "visible_print_retained": 1.0,
+          "selected": 6199
+        },
+        "colored-print": {
+          "inference_ms": 1574.2172000464052,
+          "precision": 0.48253884897238203,
+          "recall": 1.0,
+          "iou": 0.48253884897238203,
+          "visible_print_retained": 0.947402990456811,
+          "selected": 41893
+        },
+        "shadow": {
+          "inference_ms": 1624.0923000732437,
+          "precision": 0.42559686723651524,
+          "recall": 1.0,
+          "iou": 0.42559686723651524,
+          "visible_print_retained": 0.9931484796579392,
+          "selected": 47498
+        }
+      },
+      "batches": [
+        {
+          "count": 1,
+          "read_infer_png_ms": 1698.4657000284642
+        },
+        {
+          "count": 3,
+          "read_infer_png_ms": 5000.168400001712
+        },
+        {
+          "count": 10,
+          "read_infer_png_ms": 16428.735899971798
+        }
+      ],
+      "process_peak_working_set_mb": 1620.67578125
+    },
+    "dis-1024-author-pad-real": {
+      "device": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "torch": "2.14.1+cpu",
+      "threads": 6,
+      "input_size": 1024,
+      "layout": "author-pad",
+      "checkpoint_sha256": "d685cc76a8c4d6aebf9a82499b7771d13aaa27ebd90e933036bdd004db4beefa",
+      "model_load_ms": 430.79689994920045,
+      "fixture_note": "Synthetic Japanese print with programmatic ink; NOT real photographed worksheet accuracy.",
+      "cases": {},
+      "batches": [],
+      "real_dataset_note": "First five sorted published validation images. Chinese task domain; no guarantee independent from model selection. No Japanese real-photo claim.",
+      "real_cases": [
+        {
+          "name": "im/dehw_train_00714.jpg",
+          "width": 629,
+          "height": 629,
+          "inference_ms": 1909.4931000145152,
+          "precision": 0.9886363636363636,
+          "recall": 0.649878331729953,
+          "iou": 0.6450598213784193,
+          "selected": 11616,
+          "non_handwriting_dark_retained": 0.9976069398743643
+        },
+        {
+          "name": "im/dehw_train_00715.jpg",
+          "width": 751,
+          "height": 751,
+          "inference_ms": 1981.1696000397205,
+          "precision": 0.9758873319581762,
+          "recall": 0.8078666902196314,
+          "iou": 0.7920563445329638,
+          "selected": 14059,
+          "non_handwriting_dark_retained": 0.9966248440824712
+        },
+        {
+          "name": "im/dehw_train_00716.jpg",
+          "width": 690,
+          "height": 690,
+          "inference_ms": 1810.9125000191852,
+          "precision": 0.9745319487607065,
+          "recall": 0.8526710216533475,
+          "iou": 0.8340847902948523,
+          "selected": 26386,
+          "non_handwriting_dark_retained": 0.9900079302141158
+        },
+        {
+          "name": "im/dehw_train_00717.jpg",
+          "width": 1024,
+          "height": 1024,
+          "inference_ms": 2060.462999972515,
+          "precision": 0.9340518595490684,
+          "recall": 0.9046905720438161,
+          "iou": 0.850372912679031,
+          "selected": 41381,
+          "non_handwriting_dark_retained": 0.9831131395628153
+        },
+        {
+          "name": "im/dehw_train_00718.jpg",
+          "width": 1024,
+          "height": 1024,
+          "inference_ms": 1520.022499957122,
+          "precision": 0.9292527821939587,
+          "recall": 0.8966139547474565,
+          "iou": 0.839320029563932,
+          "selected": 42772,
+          "non_handwriting_dark_retained": 0.9810658762325328
+        }
+      ],
+      "process_peak_working_set_mb": 1587.9375
+    }
+  }
+}

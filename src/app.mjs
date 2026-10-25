@@ -24,7 +24,7 @@ async function search(){const s=store.state;dialog('RISE内を検索',field('キ
 document.getElementById('global-search').onclick=()=>search().catch(e=>toast(e.message,true));document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();search().catch(e=>toast(e.message,true));}});
 function routeInfo(path){const [pathname,search='']=path.split('?'),[route,tail='']=pathname.split('/');return {route,tail,query:new URLSearchParams(search)};}
 function chrome(path){
- const {route}=routeInfo(path),group=viewGroup(path),name=features.find(x=>x.id===route)?.title||nav.find(x=>x[0]===route)?.[1]||'設定';
+ const {route}=routeInfo(path),group=viewGroup(path),name=features.find(x=>x.id===route)?.title||nav.find(x=>x[0]===route)?.[1]||({'device-ai':'端末内AI','handwriting-clean':'手書き消去'})[route]||'設定';
  document.title='RISE | '+name;document.getElementById('breadcrumb').textContent='ワークスペース / '+name;
  document.getElementById('school-label').textContent=store.state.settings.school;document.getElementById('avatar').textContent=(store.state.settings.name||'R').slice(0,1);
  document.querySelectorAll('[data-nav]').forEach(x=>{const active=x.dataset.nav===group;x.classList.toggle('active',active);if(active)x.setAttribute('aria-current','page');else x.removeAttribute('aria-current');x.href='#/'+views.destination(x.dataset.nav);});
@@ -38,7 +38,7 @@ const views=new ViewCache({
   if(route==='chat'||route==='ai-task')return()=>{};
   if(route==='home'||route==='learn'){const readingIndex=route==='home'?await data('reading/index'):null;const draw=()=>route==='home'?drawHome(host,store.state,readingIndex):learning(host);draw();return Object.assign(()=>{},{refresh:draw});}
   host.innerHTML='<div class="loading" role="status">読み込んでいます…</div>';
-  const file=({classical:'classical','ai-tools':'ai-tools',exam:'exam-hub',explore:'explore',evidence:'evidence',listening:'listening'})[route]||(['reading','vocabulary','review','memory','history'].includes(route)?'learn':route==='labs'?'labs':'workspace');
+  const file=({'device-ai':'device-ai','handwriting-clean':'handwriting-clean',classical:'classical','ai-tools':'ai-tools',exam:'exam-hub',explore:'explore',evidence:'evidence',listening:'listening'})[route]||(['reading','vocabulary','review','memory','history'].includes(route)?'learn':route==='labs'?'labs':'workspace');
   const mod=await import('./views/'+file+'.mjs');if(!views.active(entry))return;
   return mod.mount({store,main:host,data,render,chat:chatWorkspace,active:()=>views.active(entry),route,tail,query,
    rememberPath:()=>{views.remember(location.hash);chrome(entry.path);},beforeRestore:()=>views.clearInactive()});

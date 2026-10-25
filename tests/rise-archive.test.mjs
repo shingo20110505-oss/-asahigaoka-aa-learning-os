@@ -31,3 +31,14 @@ test('server supplies stable per-account cache identities, distinct sessions and
 });
 
 test('deleting a cached conversation removes its unshared media and preserves another conversation',async()=>{const a=new ChatArchive({storage:memoryStorage(),now:()=>1000,channel:null});await a.open();await a.activate(session('owner','a'));const first=thread('remove');first.messages[0].files=[{id:fileId,name:'only.png'}];const second={...thread('keep'),id:'33333333-3333-4333-8333-333333333333'};await a.list([first,second]);await a.save(first);await a.save(second);await a.putFile(fileId,new Blob(['copy']));await a.remove(threadId);assert.equal(await a.thread(threadId),null);assert.equal(await a.file(fileId),null);assert.equal((await a.thread(second.id)).title,'keep');assert.equal((await a.summary()).threads.length,1);await a.save(first);await a.list([first,second]);assert.equal(await a.thread(threadId),null);assert.equal((await a.summary()).threads.length,1);});
+
+
+test('local AI conversations survive remote list refresh and remain fenced by account and logout',async()=>{
+ const storage=memoryStorage(),a=new ChatArchive({storage,now:()=>1000,channel:null});await a.open();await a.activate(session('owner','a'));
+ const local={...thread('local conversation'),localOnly:true};local.messages[0].localModel='Qwen';await a.save(local);
+ assert.equal((await a.summary()).threads[0].localOnly,true);
+ await a.list([]);assert.equal((await a.thread(threadId)).localOnly,true);assert.equal((await a.thread(threadId)).messages[0].localModel,'Qwen');
+ const old=a.binding;await a.lock();await a.activate(session('guest','b'));assert.equal(await a.thread(threadId),null);
+ await assert.rejects(()=>a.save(local,old),{code:'ARCHIVE_SESSION_CHANGED'});
+ await a.save(local);await a.remove(threadId);await a.list([]);assert.deepEqual((await a.summary()).threads,[]);
+});
