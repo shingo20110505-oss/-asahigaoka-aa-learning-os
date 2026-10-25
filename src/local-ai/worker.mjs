@@ -1,4 +1,4 @@
-import {appConfig,modelById} from './models.mjs';
+import {appConfig,modelById,visibleAnswer,messagesForModel} from './models.mjs';
 let engine,activeModel,working=false,cachedOnly=false;
 const originalFetch=globalThis.fetch.bind(globalThis),originalAdd=Cache.prototype.add,originalAddAll=Cache.prototype.addAll;
 globalThis.fetch=(...args)=>{if(cachedOnly)throw Error('保存済みデータが不足しています。オンラインで端末内AIを準備してください。');return originalFetch(...args);};
@@ -18,9 +18,9 @@ self.onmessage=async({data:{id,type,payload={}}})=>{
   }else if(type==='generate'){
    if(!engine||!activeModel)throw Error('端末内AIを準備してください。');
    await engine.resetChat();
-   const m=modelById(activeModel),start=performance.now();let firstTokenMs=null,text='',usage;
-   const stream=await engine.chat.completions.create({messages:payload.messages,temperature:0.2,top_p:0.9,frequency_penalty:0.1,max_tokens:payload.maxTokens||384,stream:true,stream_options:{include_usage:true},...(m.thinking?{extra_body:{enable_thinking:false}}:{})});
-   for await(const chunk of stream){const delta=chunk.choices?.[0]?.delta?.content||'';if(delta){firstTokenMs??=performance.now()-start;text+=delta;send(id,'delta',{delta});}if(chunk.usage)usage=chunk.usage;}
+   const m=modelById(activeModel),start=performance.now();let firstTokenMs=null,text='',raw='',usage;
+   const stream=await engine.chat.completions.create({messages:messagesForModel(activeModel,payload.messages),temperature:0.2,top_p:0.9,frequency_penalty:0.1,max_tokens:payload.maxTokens||384,stream:true,stream_options:{include_usage:true},...(m.thinking?{extra_body:{enable_thinking:false}}:{})});
+   for await(const chunk of stream){const content=chunk.choices?.[0]?.delta?.content||'';if(content){raw+=content;const visible=m.thinking?visibleAnswer(raw):raw,delta=visible.slice(text.length);if(delta){firstTokenMs??=performance.now()-start;text=visible;send(id,'delta',{delta});}}if(chunk.usage)usage=chunk.usage;}
    if(!text.trim())throw Error('回答が空でした。質問を短くして、もう一度お試しください。');
    send(id,'done',{text,model:activeModel,metrics:{firstTokenMs,totalMs:performance.now()-start,tokens:usage?.completion_tokens??null,decodeTokensPerSecond:usage?.extra?.decode_tokens_per_s??null}});
   }else if(type==='unload'){if(engine)await engine.unload();engine=null;activeModel=null;send(id,'done',{});}

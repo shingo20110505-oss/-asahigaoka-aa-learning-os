@@ -1,7 +1,7 @@
 import {MODELS,DEFAULT_MODEL,RUNTIME_VERSION,modelById,normalizeMessages} from './models.mjs';
 import {detectSupport,inspectModelCache} from './cache.mjs';
 import {STUDY_CASES,scoreAnswer,chooseRecommendation,median} from './quality.mjs';
-const SELECTION='rise-local-ai-model-v1',REPORT='rise-local-ai-report-v1';
+const SELECTION='rise-local-ai-model-v1',REPORT='rise-local-ai-report-v1',VALIDATION='rise-local-ai-validation-v1';
 const abortError=()=>new DOMException('処理を中止しました。','AbortError');
 const loadStored=key=>{try{return JSON.parse(localStorage.getItem(key)||'null');}catch{return null;}};
 const saveStored=(key,value)=>{try{localStorage.setItem(key,JSON.stringify(value));}catch{}};
@@ -12,7 +12,8 @@ export class LocalAIClient{
  notify(){if(typeof window!=='undefined')window.dispatchEvent(new CustomEvent('rise:local-ai'));}
  selected(){const id=loadStored(SELECTION);return MODELS.some(m=>m.id===id)?id:DEFAULT_MODEL;}
  report(){return loadStored(REPORT);}
- async status(){const capability=await this.support();const entries=await Promise.all(MODELS.map(async m=>({model:m.id,...await this.inspect(m.id)})));const installed=entries.filter(e=>e.complete).map(e=>e.model);const preferred=this.selected(),selectedModel=installed.includes(preferred)?preferred:installed[0]||preferred;return {...capability,installed,cache:entries,selectedModel,ready:capability.supported&&installed.includes(selectedModel),loadedModel:this.loadedModel,busy:!!this.pending||this.benchmarking,error:this.lastError};}
+ validated(model){const entry=loadStored(VALIDATION)?.[model];return !!entry&&entry.runtime===RUNTIME_VERSION&&entry.revision===modelById(model).revision&&entry.passed===true;}
+ async status(){const capability=await this.support();const entries=await Promise.all(MODELS.map(async m=>({model:m.id,...await this.inspect(m.id)})));const installed=entries.filter(e=>e.complete).map(e=>e.model),validated=installed.filter(id=>this.validated(id));const preferred=this.selected(),selectedModel=validated.includes(preferred)?preferred:validated[0]||preferred;return {...capability,installed,validated,cache:entries,selectedModel,ready:capability.supported&&validated.includes(selectedModel),loadedModel:this.loadedModel,busy:!!this.pending||this.benchmarking,error:this.lastError};}
  ensureWorker(){if(this.worker)return;this.worker=this.workerFactory();this.worker.onmessage=({data})=>{const task=this.pending;if(!task||task.id!==data.id)return;if(data.type==='progress')task.onProgress?.(data.data);else if(data.type==='delta')task.onDelta?.(data.data.delta);else if(data.type==='done')task.resolve(data.data);else if(data.type==='error')task.reject(Error(explainLocalAIError(data.data.message)));};this.worker.onerror=()=>{this.pending?.reject(Error('端末内AIを起動できませんでした。ページを再読み込みしてください。'));this.destroy();};}
  destroy(){this.worker?.terminate();this.worker=null;this.loadedModel=null;}
  async call(type,payload,{signal,onProgress,onDelta,timeout=120000}={}){
@@ -27,13 +28,19 @@ export class LocalAIClient{
   this.checkBusy(internal);modelById(model);const capability=await this.support();if(!capability.supported)throw Error(capability.reason);
   if(signal?.aborted)throw abortError();
   const cached=await this.inspect(model);if(cachedOnly&&!cached.complete)throw Error('この端末にモデルが保存されていません。オンラインで端末内AIを準備してください。');
+  if(!internal&&!this.validated(model)){
+   if(cachedOnly)throw Error('このモデルは、この端末での回答確認がまだ済んでいません。端末内AIの設定で準備してください。');
+   const report=await this.benchmark({modelIds:[model],onProgress,signal});
+   if(report.recommendation!==model)throw Error('このモデルは日本語の回答確認を通過しませんでした。別のモデルを比較してください。');
+   return this.prepare(model,{onProgress,signal,cachedOnly:true});
+  }
   this.checkBusy(internal);
-  if(this.loadedModel===model&&cached.complete){saveStored(SELECTION,model);return {model,cached:true};}
+  if(this.loadedModel===model&&cached.complete){if(!internal)saveStored(SELECTION,model);return {model,cached:true};}
   this.destroy();this.lastError='';
   if(!cachedOnly)try{await navigator.storage?.persist?.();}catch{}
   const start=performance.now();await this.call('prepare',{model,cachedOnly},{onProgress,signal,timeout:cachedOnly?180000:900000});
   this.loadedModel=model;const stored=await this.inspect(model);if(!stored.complete){this.destroy();throw Error('モデルを保存できませんでした。端末の空き容量を確認してください。');}
-  saveStored(SELECTION,model);this.notify();return {model,cached:cached.complete,loadMs:performance.now()-start};
+  if(!internal)saveStored(SELECTION,model);this.notify();return {model,cached:cached.complete,loadMs:performance.now()-start};
  }
  async generate(messages,{onDelta,signal,maxTokens=384,internal=false}={}){
   this.checkBusy(internal);const normalized=normalizeMessages(messages);
@@ -46,19 +53,21 @@ export class LocalAIClient{
   this.checkBusy();this.benchmarking=true;this.notify();const original=this.selected(),capability=await this.support();const report={schema:1,runtime:RUNTIME_VERSION,createdAt:new Date().toISOString(),environment:{userAgent:globalThis.navigator?.userAgent||'',...capability},screening:'固定6問の語句照合による簡易判定。入試全般の正確さの保証ではありません。',results:[],recommendation:null};
   try{
    if(!capability.supported)throw Error(capability.reason);
-   for(const model of modelIds){if(signal?.aborted)throw abortError();modelById(model);const result={model,cases:[],offlineVerified:false};onProgress?.({stage:'model',model,text:modelById(model).name+'を準備しています'});
+   for(const model of modelIds){if(signal?.aborted)throw abortError();modelById(model);const result={model,cases:[],offlineVerified:false,state:'running'};report.results.push(result);saveStored(REPORT,report);onProgress?.({stage:'model',model,text:modelById(model).name+'を準備しています'});
     try{
      const prepared=await this.prepare(model,{signal,internal:true,onProgress:p=>onProgress?.({stage:'load',model,...p})});result.loadMs=prepared.loadMs??0;result.wasCached=prepared.cached;
-     for(const test of STUDY_CASES){onProgress?.({stage:'question',model,test:test.id,text:`${result.cases.length+1}/${STUDY_CASES.length}問を確認しています`});const answer=await this.generate([{role:'user',content:test.prompt}],{signal,internal:true,maxTokens:220});result.cases.push({id:test.id,prompt:test.prompt,answer:answer.text,...answer.metrics,quality:scoreAnswer(test,answer.text)});}
+     for(const test of STUDY_CASES){onProgress?.({stage:'question',model,test:test.id,text:`${result.cases.length+1}/${STUDY_CASES.length}問を確認しています`});const answer=await this.generate([{role:'user',content:test.prompt}],{signal,internal:true,maxTokens:220});result.cases.push({id:test.id,prompt:test.prompt,answer:answer.text,...answer.metrics,quality:scoreAnswer(test,answer.text)});saveStored(REPORT,report);}
      await this.unload();onProgress?.({stage:'offline',model,text:'通信なしの再起動を確認しています'});
      // A new worker is loaded with all network reads disabled, so this checks durable restart.
-     const offline=await this.prepare(model,{signal,cachedOnly:true,internal:true});const reply=await this.generate([{role:'user',content:'1 + 1 の答えを数字だけで答えてください。'}],{signal,internal:true,maxTokens:32});result.offlineVerified=/2|２/.test(reply.text);result.offlineReloadMs=offline.loadMs;result.offlineAnswer=reply.text;
+     const offline=await this.prepare(model,{signal,cachedOnly:true,internal:true});const reply=await this.generate([{role:'user',content:'1 + 1 の答えを数字だけで答えてください。'}],{signal,internal:true,maxTokens:32});result.offlineVerified=!!reply.text.trim();result.offlineSmokePassed=/2|２/.test(reply.text);result.offlineReloadMs=offline.loadMs;result.offlineAnswer=reply.text;
      result.medianFirstTokenMs=median(result.cases.map(c=>c.firstTokenMs));result.medianTotalMs=median(result.cases.map(c=>c.totalMs));result.passed=result.cases.filter(c=>c.quality.passed).length;
-    }catch(error){if(error.name==='AbortError')throw error;result.error=explainLocalAIError(error);}
+     result.state='complete';
+    }catch(error){result.state=error.name==='AbortError'?'cancelled':'error';result.error=explainLocalAIError(error);saveStored(REPORT,report);if(error.name==='AbortError')throw error;}
     finally{await this.unload();}
-    report.results.push(result);saveStored(REPORT,report);onProgress?.({stage:'result',model,result});
+    const validation=loadStored(VALIDATION)||{};validation[model]={runtime:RUNTIME_VERSION,revision:modelById(model).revision,passed:chooseRecommendation([result])===model,at:new Date().toISOString()};saveStored(VALIDATION,validation);
+    saveStored(REPORT,report);onProgress?.({stage:'result',model,result});
    }
-   report.recommendation=chooseRecommendation(report.results);const chosen=report.recommendation||(report.results.find(r=>r.model===original&&!r.error)?.model)||report.results.find(r=>!r.error)?.model||original;saveStored(SELECTION,chosen);saveStored(REPORT,report);return report;
+   report.recommendation=chooseRecommendation(report.results);if(report.recommendation)saveStored(SELECTION,report.recommendation);saveStored(REPORT,report);return report;
   }finally{this.benchmarking=false;this.notify();}
  }
 }
