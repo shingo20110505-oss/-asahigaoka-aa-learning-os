@@ -1,0 +1,251 @@
+{
+  "schema": 1,
+  "runtime": "0.2.86",
+  "createdAt": "2026-10-25T15:31:03.492Z",
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "supported": true,
+    "reason": "",
+    "gpu": "amd",
+    "maxBufferSize": 2147483648,
+    "maxStorageBufferBindingSize": 2147483644
+  },
+  "screening": "固定6問の語句照合による簡易判定。入試全般の正確さの保証ではありません。",
+  "results": [
+    {
+      "model": "gemma3-1b-it-q4f16_1-MLC",
+      "cases": [
+        {
+          "id": "english",
+          "prompt": "英語の because と although の意味の違いを、日本語で短く説明し、それぞれの意味を書いてください。",
+          "answer": "英語の「because」と「although」は、文脈によって意味が変わります。\n\n「because」は、理由や原因、または状況を説明する際に、または、論理的な理由を説明する際に使われます。\n\n「although」は、論理的な理由や状況を説明する際に、または、状況を説明する際に、または、論理的な理由を説明する際に、または、状況を説明する際に、または、または、論理的な理由を説明する時に使われます。\n\n「although」とは、論理的な理由を説明する際に、または、論理的な理由を説明する際に、または、論理的な状況を説明する時に使われます。\n\n英語の「although」は、論理的な理由を説明する際に、または、論理的な状況を説明する際に、または、論理的な状況を説明する際に、または、論理的な状況を\n\n「although」\n\n英語の「although」は、文脈によって意味が変わります。\n\n「because」は、文脈によって",
+          "firstTokenMs": 16430.299999952316,
+          "totalMs": 26921.799999952316,
+          "tokens": 220,
+          "decodeTokensPerSecond": 20.98947650985329,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 2,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "equation",
+          "prompt": "方程式 3x + 5 = 20 を解いてください。途中の計算を一行添えてください。",
+          "answer": "3x + 5 = 20\n\nx = 2.5\n\nx = 2.5\n\n答え：\n\nx = 2.5\n\nx = 2.5\n\nx = 2.5\n\nx = 2.5\n\nx = 2.5\n\nx = 2.5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx = 5\n\nx",
+          "firstTokenMs": 454.5,
+          "totalMs": 10338.699999928474,
+          "tokens": 220,
+          "decodeTokensPerSecond": 22.27420667182107,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": true,
+            "rejected": false
+          }
+        },
+        {
+          "id": "history",
+          "prompt": "鎌倉幕府の御恩と奉公とは何ですか。将軍と御家人という語を使って、日本語で説明してください。",
+          "answer": "鎌倉幕府の恩は、御家人（みごうか）とは、鎌倉幕国（かかぐみ）を意味します。\n\n鎌倉国（かかぐん）を指します。\n\n鎌倉国は、鎌倉（かまかぐん）は、鎌倉（鎌倉）のことで、鎌倉（鎌倉）を意味する言葉です。これは、鎌倉（鎌倉）のことで、鎌（鎌）を意味する言葉で、鎌（鎌）を意味する。\n\n鎌（鎌）を意味する言葉です。\n\n鎌（鎌）を意味する言葉です。\n\n鎌（鎌）は、鎌（鎌）の\n\n鎌（鎌）を意味する言葉です。\n\n鎌（鎌）\n\n鎌（鎌）\n\n鎌（鎌）\n\n鎌（鎌）\n\n鎌（鎌）\n\n鎌（鎌）\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌",
+          "firstTokenMs": 569.7999999523163,
+          "totalMs": 10421.599999904633,
+          "tokens": 220,
+          "decodeTokensPerSecond": 22.342834990959084,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 4,
+            "japanese": true,
+            "repetition": true,
+            "rejected": false
+          }
+        },
+        {
+          "id": "science",
+          "prompt": "植物の光合成で、材料として取り入れる気体と、発生する気体の名前を順に答えてください。",
+          "answer": "植物の光合成における、材料として取り入れられる気体と、発生する気体の名前を以下に記載します。\n\n*   水 (H₂O\n*   酸素 (O₂\n*   二酸化炭素 (CO₂\n\nご回答：\n\n植物の光合成における材料として取り入れられる気体：水 (H₂O\n",
+          "firstTokenMs": 461.1999999284744,
+          "totalMs": 3699.5,
+          "tokens": 76,
+          "decodeTokensPerSecond": 23.265192164120922,
+          "quality": {
+            "passed": true,
+            "matched": 2,
+            "total": 2,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "vocabulary",
+          "prompt": "「顕著」の意味を、中学生にわかる日本語で説明してください。",
+          "answer": "顕著（顕著）とは、\n\n「顕著」は、\n\n「顕著」は、\n\n「顕著」は、\n\n「顕著」は、\n\n「顕著」は、\n\n「顕著」は、\n\n「顕著」は、\n\n「顕著」は、\n\n「顕著」は、\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n「顕著」\n\n顕着\n\n顕着\n\n顕着\n\n顕着\n\n顕",
+          "firstTokenMs": 447.60000002384186,
+          "totalMs": 10172.100000023842,
+          "tokens": 220,
+          "decodeTokensPerSecond": 22.62677191509983,
+          "quality": {
+            "passed": false,
+            "matched": 0,
+            "total": 1,
+            "japanese": true,
+            "repetition": true,
+            "rejected": false
+          }
+        },
+        {
+          "id": "no-fabrication",
+          "prompt": "この会話には添付画像がありません。画像に書かれている答えを教えてください。",
+          "answer": "はい、承知しました。画像がないとのこと、承知しました。画像がないとのこと、了解しました。どのような質問でも構いません。どのような情報でも構いません。画像がないと、ご不便をおかけする可能性もあります。どのような情報でも構いません。\n",
+          "firstTokenMs": 431.3000000715256,
+          "totalMs": 2682.3000000715256,
+          "tokens": 54,
+          "decodeTokensPerSecond": 23.657545868673242,
+          "quality": {
+            "passed": true,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        }
+      ],
+      "offlineVerified": true,
+      "state": "complete",
+      "loadMs": 3037.899999976158,
+      "wasCached": true,
+      "offlineSmokePassed": false,
+      "offlineReloadMs": 2801.5999999046326,
+      "offlineAnswer": "1\n",
+      "medianFirstTokenMs": 461.1999999284744,
+      "medianTotalMs": 10338.699999928474,
+      "passed": 2
+    },
+    {
+      "model": "gemma-2-2b-jpn-it-q4f16_1-MLC",
+      "cases": [
+        {
+          "id": "english",
+          "prompt": "英語の because と although の意味の違いを、日本語で短く説明し、それぞれの意味を書いてください。",
+          "answer": "## Because と Although の違い\n\n**Because** は、**原因や理由**を示すときに使います。\n\n* **例:**\n    * The game was canceled because of the rain. (雨が降ったので、ゲームは中止になった)\n    * I went to bed early because I was tired. (私は疲れているので、早めに寝た)\n\n**Although** は、**状況や事実を認めつつ、そのことを認めながらも、別の視点や考え方を持っていることを示す**ときに使います。\n\n* **例:**\n    * Although it was cold, I went for a walk. (寒くても、私は散歩に出かけた)\n    * Although I don't like pizza, I tried it once. (私はピザが好きではないけど、一度だけ試した)\n\n\n\n \n\n\n",
+          "firstTokenMs": 4181.700000047684,
+          "totalMs": 16215.5,
+          "tokens": 166,
+          "decodeTokensPerSecond": 13.770196288327288,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 2,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "equation",
+          "prompt": "方程式 3x + 5 = 20 を解いてください。途中の計算を一行添えてください。",
+          "answer": "方程式の解法は以下の通りです。\n\n1. **両辺から 5 を減算する:**\n   3x + 5 - 5 = 20 - 5\n   3x = 15\n\n2. **両辺を x で割る:**\n   3x / 3 = 15 / 3\n   x = 5\n\nよって、方程式の解は x = 5 です。\n\n\n\n",
+          "firstTokenMs": 1661,
+          "totalMs": 8157.900000095367,
+          "tokens": 96,
+          "decodeTokensPerSecond": 14.673854280579677,
+          "quality": {
+            "passed": true,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "history",
+          "prompt": "鎌倉幕府の御恩と奉公とは何ですか。将軍と御家人という語を使って、日本語で説明してください。",
+          "answer": "鎌倉幕府の御恩と奉公は、将軍とその家臣、つまり御家人との関係性における、相互の信頼と協力の表現です。\n\n**御恩**：将軍は、御家人の功績や貢献を認め、その功績に応じて、御家人に特別な恩恵や報酬を与え、感謝の気持ちを表します。\n\n* **例：**鎌倉幕府は、御家人に領地や財産を与えたり、軍事的支援を行ったりすることもありました。\n\n**奉公**：御家人は、将軍の命を受けて、幕府の任務や事業に協力し、幕府の安定と発展に貢献します。\n\n* **例：**御家人たちは、幕府の軍隊を編成したり、幕府の行政機関の運営に参加したり、幕府の財政管理に協力したりしました。\n\n\n \n\n\n",
+          "firstTokenMs": 1645.8999999761581,
+          "totalMs": 14588.699999928474,
+          "tokens": 185,
+          "decodeTokensPerSecond": 14.265335236459135,
+          "quality": {
+            "passed": true,
+            "matched": 4,
+            "total": 4,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "science",
+          "prompt": "植物の光合成で、材料として取り入れる気体と、発生する気体の名前を順に答えてください。",
+          "answer": "植物の光合成で取り入れる気体：**二酸化炭素 (CO2)**\n発生する気体：**酸素 (O2)** \n\n\n \n\n\n",
+          "firstTokenMs": 1654.8999999761581,
+          "totalMs": 4089,
+          "tokens": 37,
+          "decodeTokensPerSecond": 14.828850354078394,
+          "quality": {
+            "passed": true,
+            "matched": 2,
+            "total": 2,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "vocabulary",
+          "prompt": "「顕著」の意味を、中学生にわかる日本語で説明してください。",
+          "answer": "「顕著」は、**はっきり見える、よくわかる、目立つ**という意味です。\n\n例えば、\n\n* **成績が顕著に良い**：成績がすごくよく、他の生徒に比べて大きく差があることを表します。\n* **彼女の笑顔は顕著だった**：彼女の笑顔は、周りの人にとても印象的で、目立つように感じます。\n\n\n\n \n\n\n",
+          "firstTokenMs": 1634,
+          "totalMs": 7225.399999976158,
+          "tokens": 80,
+          "decodeTokensPerSecond": 14.171420370907715,
+          "quality": {
+            "passed": true,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "no-fabrication",
+          "prompt": "この会話には添付画像がありません。画像に書かれている答えを教えてください。",
+          "answer": "すみません、画像がないので質問に答えられません。 \n\n\n \n\n\n",
+          "firstTokenMs": 1600.1000000238419,
+          "totalMs": 2631.7999999523163,
+          "tokens": 16,
+          "decodeTokensPerSecond": 14.573010781327522,
+          "quality": {
+            "passed": true,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        }
+      ],
+      "offlineVerified": true,
+      "state": "complete",
+      "loadMs": 84036.5,
+      "wasCached": false,
+      "offlineSmokePassed": true,
+      "offlineReloadMs": 6100.400000095367,
+      "offlineAnswer": "1 + 1 = 2 \n\n\n",
+      "medianFirstTokenMs": 1654.8999999761581,
+      "medianTotalMs": 8157.900000095367,
+      "passed": 5
+    }
+  ],
+  "recommendation": "gemma-2-2b-jpn-it-q4f16_1-MLC"
+}

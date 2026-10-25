@@ -1,0 +1,141 @@
+{
+  "schema": 1,
+  "runtime": "0.2.86",
+  "createdAt": "2026-10-25T15:28:23.530Z",
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "supported": true,
+    "reason": "",
+    "gpu": "amd",
+    "maxBufferSize": 2147483648,
+    "maxStorageBufferBindingSize": 2147483644
+  },
+  "screening": "固定6問の語句照合による簡易判定。入試全般の正確さの保証ではありません。",
+  "results": [
+    {
+      "model": "Qwen2.5-1.5B-Instruct-q4f16_1-MLC",
+      "cases": [
+        {
+          "id": "english",
+          "prompt": "英語の because と although の意味の違いを、日本語で短く説明し、それぞれの意味を書いてください。",
+          "answer": "\"Because\"と\"although\"は英語で主に「理由」や「理由のため」という意味を持ちます。\n\n1. \"Because\": 主に「なぜか」「理由がある」を示します。例：\n   - I'm late because of traffic.\n   (交通渋滞のために遅刻しているんだよ。)\n2. \"Although\": これは「しかし」「それでも」のようなニュアンスを持つ表現です。「ただし」、「ただしも」などとも呼ばれます。例：\n   - Although it's raining, we can still go out.\n   (雨が降っているけど、出かけることもできるんだよ。)\n\n両方とも「理由」や「状況」を示すのに使われますが、\"because\"の方がより具体的な理由を示し、\"although\"はその対比的なニュアンスを含んでいます。",
+          "firstTokenMs": 3679.6999999284744,
+          "totalMs": 12481.899999976158,
+          "tokens": 184,
+          "decodeTokensPerSecond": 20.91763253714455,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 2,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "equation",
+          "prompt": "方程式 3x + 5 = 20 を解いてください。途中の計算を一行添えてください。",
+          "answer": "まず、始まります。方程式を解くためには、等式の両辺に等しい数や式を足したり引いたり乗ったり除きたりすることで、未知数（この場合は「x」）を消去し、それが「=」で示される式の左側と右側が同じになるようにします。\n\n始点から計算を始めると：\n\n1. 3x + 5 = 20\n\nまずは等号の左側から始めて、5を足して20から25にする。\n2. 3x + 5 = 20\n   3x + 5 = 25\n\n次に、等号の左側から5を引いて20になる。\n3. 3x + 5 = 25\n   3x = 20\n\n最後に、等号の左側から3xを引いて20になる。\n4. 3x = 20\n   x = (20 / 3)\n\nしたが",
+          "firstTokenMs": 1346.9000000953674,
+          "totalMs": 11290.400000095367,
+          "tokens": 220,
+          "decodeTokensPerSecond": 22.156124801169618,
+          "quality": {
+            "passed": false,
+            "matched": 0,
+            "total": 1,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "history",
+          "prompt": "鎌倉幕府の御恩と奉公とは何ですか。将軍と御家人という語を使って、日本語で説明してください。",
+          "answer": "鎌倉幕府の「御恩」は、将軍やその他の権力者に対して、そのような人々が彼に敬意を表し、感謝の気持ちを示す行為のことです。これは一般的な礼儀奉仕の形態であり、特に将軍に対する尊敬と感謝の心を表現するものです。\n\n「奉公」は、将軍や権力者の下で働く従属者が行う日常生活の仕事や勤務のことです。これは具体的には、食事や寝る場所、衣服などの着用、そして会見や出発などを行うことから成り立ちます。また、この言葉は、将軍や権力者に対して敬意を払う態度や行動を指すこともあります。\n\nこれらの語は日本語で「将軍」と「御家人」を使って説明できます。「将軍」は権力者や主君を指します。「御家人」は将軍の下で働いて生活している従属者たちを指",
+          "firstTokenMs": 1427.1999999284744,
+          "totalMs": 11657.599999904633,
+          "tokens": 220,
+          "decodeTokensPerSecond": 21.42961984366518,
+          "quality": {
+            "passed": false,
+            "matched": 3,
+            "total": 4,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "science",
+          "prompt": "植物の光合成で、材料として取り入れる気体と、発生する気体の名前を順に答えてください。",
+          "answer": "光合成で必要な材料の気体は、CO2（窒素酸素）です。発生する気体はO2（酸素）です。\n\n質問が不明な点があれば、追加情報を提供していただければと思います。",
+          "firstTokenMs": 1394.8000000715256,
+          "totalMs": 3706.9000000953674,
+          "tokens": 53,
+          "decodeTokensPerSecond": 22.58218613353507,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 2,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "vocabulary",
+          "prompt": "「顕著」の意味を、中学生にわかる日本語で説明してください。",
+          "answer": "「顕著」の意味は、以下のようになります：\n\n「顕著」（ひけょう）とは、明確に見えて、直感的にわかる特徴や状況を指します。これは「顕著」の字面からも分かりやすく表現されています。\n\n例：\n1. 「その言葉は非常に顕著に伝わる。」\n2. 「彼の行動は非常に顕著に示されている。」\n\nこのように、「顕著」は具体的な特徴や状況を指し出しており、直感的に理解できる表現です。",
+          "firstTokenMs": 1304.7999999523163,
+          "totalMs": 7569.399999976158,
+          "tokens": 128,
+          "decodeTokensPerSecond": 20.369865431976162,
+          "quality": {
+            "passed": false,
+            "matched": 0,
+            "total": 1,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "no-fabrication",
+          "prompt": "この会話には添付画像がありません。画像に書かれている答えを教えてください。",
+          "answer": "申し訳ありませんが、添付画像の答えを提供することはできません。画像にはまだ情報を載せていませんし、その内容も理解できません。そのため、あなたが必要とする情報を得るためには、画像に描かれた内容や質問について詳しく説明していただかなければなりません。",
+          "firstTokenMs": 1292,
+          "totalMs": 4298.200000047684,
+          "tokens": 64,
+          "decodeTokensPerSecond": 21.051224646304743,
+          "quality": {
+            "passed": true,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        }
+      ],
+      "offlineVerified": true,
+      "state": "complete",
+      "loadMs": 34497.89999997616,
+      "wasCached": false,
+      "offlineSmokePassed": true,
+      "offlineReloadMs": 4590.599999904633,
+      "offlineAnswer": "1 + 1 の答えは2です。",
+      "medianFirstTokenMs": 1394.8000000715256,
+      "medianTotalMs": 11290.400000095367,
+      "passed": 1
+    },
+    {
+      "model": "gemma3-1b-it-q4f16_1-MLC",
+      "cases": [],
+      "offlineVerified": false,
+      "state": "error",
+      "error": "Only one of context_window_size and sliding_window_size can be positive. Got: context_window_size: 4096, sliding_window_size: 512\nConsider modifying ModelRecord.overrides to set one of them to -1."
+    }
+  ],
+  "recommendation": null
+}

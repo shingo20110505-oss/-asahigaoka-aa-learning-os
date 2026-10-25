@@ -8,8 +8,12 @@ export const MODELS=Object.freeze([
  {id:'Qwen2.5-1.5B-Instruct-q4f16_1-MLC',name:'Qwen2.5 · 1.5B',description:'日本語の比較候補',revision:'9bd564b064631febf14deadcac492efb761d60c3',vramMB:1629.75,wasm:'Qwen2-1.5B-Instruct-q4f16_1_cs1k-webgpu.wasm',thinking:false},
  {id:'gemma3-1b-it-q4f16_1-MLC',name:'Gemma 3 · 1B',description:'軽量な多言語モデル',revision:'0f6103ed635931ff91a95db543365f0a77cbfb7d',vramMB:711.07,wasm:'gemma3-1b-it-q4f16_1_cs1k-webgpu.wasm',thinking:false,license:'https://ai.google.dev/gemma/terms'},
  {id:'gemma-2-2b-jpn-it-q4f16_1-MLC',name:'Gemma 2 · 日本語 2B',description:'日本語を優先したモデル',revision:'f052549e60b778bd6df27def1422e17ef4233fbb',vramMB:1895.3,wasm:'gemma-2-2b-jpn-it-q4f16_1_cs1k-webgpu.wasm',thinking:false,license:'https://ai.google.dev/gemma/terms'},
+ {id:'Qwen3-1.7B-q4f16_1-MLC',name:'Qwen3 · 1.7B',description:'日本語の回答を優先する比較候補',revision:'80b3abcec6c3b3f5355dc0cc99cc4fb578f192bc',vramMB:2036.66,wasm:'Qwen3-1.7B-q4f16_1_cs1k-webgpu.wasm',thinking:true},
 ].map(m=>Object.freeze({...m,model:`https://huggingface.co/mlc-ai/${m.id}/resolve/${m.revision}/`,model_lib:libRoot+m.wasm})));
 export const DEFAULT_MODEL=MODELS[1].id;
+// No evaluated build met the Japanese-study criteria on this tested runtime path.
+// An automatic keyword-screen pass cannot promote a rejected model to production.
+export const RELEASE_MODEL_IDS=Object.freeze([]);
 export function modelById(id){const found=MODELS.find(m=>m.id===id);if(!found)throw Error('未対応の端末内モデルです。');return found;}
 export const appConfig={cacheBackend:'cache',model_list:MODELS.map(m=>({model_id:m.id,model:m.model,model_lib:m.model_lib,required_features:['shader-f16'],low_resource_required:true,vram_required_MB:m.vramMB,overrides:{context_window_size:4096,...(m.id.startsWith('Qwen3.5')?{max_history_size:1}:{}),...(m.id.startsWith('gemma3')?{sliding_window_size:-1}:{})}}))};
 export const LOCAL_SYSTEM='あなたは日本の中学生の学習を手伝うアシスタントです。質問には日本語で、必要な理由や例も添えて答えてください。不明なことは推測で断定せず、資料が必要ならそう伝えてください。検索や画像解析を実行したとは言わないでください。';

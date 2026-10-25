@@ -1,0 +1,251 @@
+{
+  "schema": 1,
+  "runtime": "0.2.86",
+  "createdAt": "2026-10-25T15:35:05.733Z",
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "supported": true,
+    "reason": "",
+    "gpu": "amd",
+    "maxBufferSize": 2147483648,
+    "maxStorageBufferBindingSize": 2147483644
+  },
+  "screening": "固定6問の語句照合による簡易判定。入試全般の正確さの保証ではありません。",
+  "results": [
+    {
+      "model": "gemma3-1b-it-q4f16_1-MLC",
+      "cases": [
+        {
+          "id": "english",
+          "prompt": "英語の because と although の意味の違いを、日本語で短く説明し、それぞれの意味を書いてください。",
+          "answer": "英語の「although」は、\n\n「although」は、\n\n英語の「although」は、\n\n英語の「although」は、\n\n「although」は、\n\n英語の「although」は、\n\n英語の「although」は、\n\n英語の「although」は、\n\n英語の「although」は、\n\n英語の「although」は、\n\n英語の「although」は\n\n英語の「although」は\n\n英語の「although」は\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n英語の\n\n",
+          "firstTokenMs": 738.8999999761581,
+          "totalMs": 10858,
+          "tokens": 220,
+          "decodeTokensPerSecond": 21.76332631035586,
+          "quality": {
+            "passed": false,
+            "matched": 0,
+            "total": 2,
+            "japanese": true,
+            "repetition": true,
+            "rejected": false
+          }
+        },
+        {
+          "id": "equation",
+          "prompt": "方程式 3x + 5 = 20 を解いてください。途中の計算を一行添えてください。",
+          "answer": "はい、承知しました。方程式 3x + 5 = 20 を解いて、その答えを求めます。\n\n3x + 5 = 20\n\n3x + 5 = 20\n\n3x + 5 = 20\n\n3x + 5\n\n3x + 5\n\n3x + 5\n\n3x + 5\n\n3x + 5\n\n3x\n\n3x + 5\n\n3x\n\n3x + 5\n\n3x\n\n3x\n\n3x + 5\n\n3x\n\n3x + 5\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n3x\n\n",
+          "firstTokenMs": 449.5,
+          "totalMs": 10323.099999904633,
+          "tokens": 220,
+          "decodeTokensPerSecond": 22.303469767509306,
+          "quality": {
+            "passed": false,
+            "matched": 0,
+            "total": 1,
+            "japanese": true,
+            "repetition": true,
+            "rejected": false
+          }
+        },
+        {
+          "id": "history",
+          "prompt": "鎌倉幕府の御恩と奉公とは何ですか。将軍と御家人という語を使って、日本語で説明してください。",
+          "answer": "鎌倉幕府の恩の理由を説明する、御家人について、日本語で説明します。\n\n鎌倉時代（112027年から1357年）の日本において、\n\n鎌倉御家人\n\n鎌倉は、\n\n鎌倉は、\n\n鎌倉は、\n\n鎌倉\n\n鎌倉\n\n鎌倉\n\n鎌倉\n\n鎌倉\n\n鎌倉\n\n鎌倉\n\n鎌\n\n鎌\n\n鎌倉\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌\n\n鎌",
+          "firstTokenMs": 560.8999999761581,
+          "totalMs": 11071.699999928474,
+          "tokens": 220,
+          "decodeTokensPerSecond": 20.94090648212034,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 4,
+            "japanese": true,
+            "repetition": true,
+            "rejected": false
+          }
+        },
+        {
+          "id": "science",
+          "prompt": "植物の光合成で、材料として取り入れる気体と、発生する気体の名前を順に答えてください。",
+          "answer": "はい、承知しました。植物の光合成で、材料として取り入れる気体と、発生する気体の名前を順に答えます。\n\n植物の光合成において、材料として取り入れる気体と、発生する気体の名前を順に、\n\n植物の光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成において、\n\n光合成",
+          "firstTokenMs": 472.89999997615814,
+          "totalMs": 10444.199999928474,
+          "tokens": 220,
+          "decodeTokensPerSecond": 22.07394266599766,
+          "quality": {
+            "passed": false,
+            "matched": 0,
+            "total": 2,
+            "japanese": true,
+            "repetition": true,
+            "rejected": false
+          }
+        },
+        {
+          "id": "vocabulary",
+          "prompt": "「顕著」の意味を、中学生にわかる日本語で説明してください。",
+          "answer": "顕著 (顕著)\n\n顕著 (顕著)\n\n顕著\n\n顕著とは、**非常に明らかで、はっきくっきりしている。ひどく。\n\n例：\n\n*   「あのニュースの顕著な問題は、とても明らかだ。\n*   「今回の事故の顕著な問題は、とても明らかだ。\n*   「事故の顕著な問題は、とても明らかだ。\n*   今回の事故の顕著な問題は、とても明らかだ。\n*   今回の事故の顕著な問題は、とても明らかだ。\n*   今回の事故の顕著な問題は、とても明らかだ。\n\nこの言葉は、とても明らかだ。\n\nこの言葉は、とても顕著である。\n\nこの言葉は、とても顕著な。\n\nこの言葉は、とても顕著な。\n\nこの言葉は、とても顕著な。\n\nこの言葉は、とても顕著な。\n\nこの言葉は、とても顕著な。\n\nこの言葉は、とても顕著な。\n\nこの言葉は",
+          "firstTokenMs": 436.1999999284744,
+          "totalMs": 11619.199999928474,
+          "tokens": 220,
+          "decodeTokensPerSecond": 19.682208721580768,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": true,
+            "rejected": false
+          }
+        },
+        {
+          "id": "no-fabrication",
+          "prompt": "この会話には添付画像がありません。画像に書かれている答えを教えてください。",
+          "answer": "承知しました。どのような質問でも、画像に書かれている情報に基づいて、日本語で答えます。\n",
+          "firstTokenMs": 462,
+          "totalMs": 1340.3000000715256,
+          "tokens": 22,
+          "decodeTokensPerSecond": 23.997257462174897,
+          "quality": {
+            "passed": false,
+            "matched": 0,
+            "total": 1,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        }
+      ],
+      "offlineVerified": true,
+      "state": "complete",
+      "loadMs": 4124,
+      "wasCached": true,
+      "offlineSmokePassed": false,
+      "offlineReloadMs": 2814,
+      "offlineAnswer": "1\n",
+      "medianFirstTokenMs": 472.89999997615814,
+      "medianTotalMs": 10858,
+      "passed": 0
+    },
+    {
+      "model": "gemma-2-2b-jpn-it-q4f16_1-MLC",
+      "cases": [
+        {
+          "id": "english",
+          "prompt": "英語の because と although の意味の違いを、日本語で短く説明し、それぞれの意味を書いてください。",
+          "answer": "## because と although の違い\n\n**because** は、**原因や理由を述べる**時に使います。\n* **例:**\n    *  私は勉強したから、テストで良い成績を取れたよ。 (原因を示す)\n    *  雨が降ったら、家に帰る必要があるよ。 (状況や原因を示す)\n\n**although** は、**状況や事実を述べる**時に使います。\n* **例:**\n    *  私は勉強したけど、テストで良い成績を取れなかった。 (状況や事実を述べる)\n    *  雨が降ったら、家に帰る必要がある、でも、私は友達と公園に行きたかった。 (状況や事実を述べる)\n\n\n\n \n\n\n",
+          "firstTokenMs": 2282.7000000476837,
+          "totalMs": 12828.799999952316,
+          "tokens": 153,
+          "decodeTokensPerSecond": 14.47012680485986,
+          "quality": {
+            "passed": false,
+            "matched": 1,
+            "total": 2,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "equation",
+          "prompt": "方程式 3x + 5 = 20 を解いてください。途中の計算を一行添えてください。",
+          "answer": "方程式の解法は以下の通りです。\n\n1. **両辺から 5 を減算する**:\n   3x + 5 - 5 = 20 - 5\n   3x = 15\n\n2. **両辺を x で割る**:\n   3x / 3 = 15 / 3\n   x = 5\n\nしたがって、方程式 x = 5 は正しい解です。\n\n\n\n",
+          "firstTokenMs": 1610.8999999761581,
+          "totalMs": 8322.5,
+          "tokens": 97,
+          "decodeTokensPerSecond": 14.352350197958716,
+          "quality": {
+            "passed": true,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "history",
+          "prompt": "鎌倉幕府の御恩と奉公とは何ですか。将軍と御家人という語を使って、日本語で説明してください。",
+          "answer": "鎌倉幕府の御恩と奉公は、将軍と御家人との関係性における、相互の信頼と協力の表現です。\n\n**御恩**：将軍は、御家人の功績や貢献を認め、その功績に応じて、経済的な支援や、政治的な影響力などを与えることを指します。\n\n**奉公**：御家人は、将軍の命令に従い、幕府の行政や軍事活動に積極的に協力することを指します。\n\n**将軍**：鎌倉幕府の統治者であり、政治、行政、軍事など、幕府のすべての活動の指揮・統制を行います。\n\n**御家人**：鎌倉幕府の有力な家臣であり、将軍の側近として、幕府の行政や軍事活動に深く関与していました。 \n\n\n\n \n\n\n",
+          "firstTokenMs": 1654.1999999284744,
+          "totalMs": 13155.199999928474,
+          "tokens": 172,
+          "decodeTokensPerSecond": 14.922247237174943,
+          "quality": {
+            "passed": false,
+            "matched": 3,
+            "total": 4,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "science",
+          "prompt": "植物の光合成で、材料として取り入れる気体と、発生する気体の名前を順に答えてください。",
+          "answer": "植物の光合成で、材料として取り入れる気体：**二酸化炭素（CO2）**\n発生する気体：**酸素（O2）**\n\n\n \n\n\n",
+          "firstTokenMs": 1754,
+          "totalMs": 4675.900000095367,
+          "tokens": 41,
+          "decodeTokensPerSecond": 13.726364913614432,
+          "quality": {
+            "passed": true,
+            "matched": 2,
+            "total": 2,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "vocabulary",
+          "prompt": "「顕著」の意味を、中学生にわかる日本語で説明してください。",
+          "answer": "「顕著」は、はっきり見える、よくわかる、目立つという意味です。 \n\n例えば、\n\n* **成績が顕著に良い**：成績がすごくよく、他の生徒に比べて大きく差があることを表します。\n* **彼女の笑顔は顕著だった**：彼女の笑顔は、周りの人にとても印象的で、目立つように感じます。\n\n\n\n \n\n\n",
+          "firstTokenMs": 1531.6999999284744,
+          "totalMs": 6767.399999976158,
+          "tokens": 79,
+          "decodeTokensPerSecond": 14.943673845694686,
+          "quality": {
+            "passed": true,
+            "matched": 1,
+            "total": 1,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        },
+        {
+          "id": "no-fabrication",
+          "prompt": "この会話には添付画像がありません。画像に書かれている答えを教えてください。",
+          "answer": "すみません、会話の内容を教えてください！😊 \n\n\n",
+          "firstTokenMs": 1558.3999999761581,
+          "totalMs": 2205.399999976158,
+          "tokens": 11,
+          "decodeTokensPerSecond": 15.499070057514846,
+          "quality": {
+            "passed": false,
+            "matched": 0,
+            "total": 1,
+            "japanese": true,
+            "repetition": false,
+            "rejected": false
+          }
+        }
+      ],
+      "offlineVerified": true,
+      "state": "complete",
+      "loadMs": 6665.100000023842,
+      "wasCached": true,
+      "offlineSmokePassed": true,
+      "offlineReloadMs": 6467.100000023842,
+      "offlineAnswer": "1 + 1 = 2 です。 \n\n\n",
+      "medianFirstTokenMs": 1654.1999999284744,
+      "medianTotalMs": 8322.5,
+      "passed": 3
+    }
+  ],
+  "recommendation": null
+}
