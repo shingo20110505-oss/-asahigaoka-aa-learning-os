@@ -45,7 +45,7 @@ try{
  await page.setViewportSize({width:1180,height:850});
  await alignedOverlay();
  await page.goto(app.url+'/#/device-ai');
- await page.getByRole('heading',{name:'端末内AI',exact:true}).waitFor();
+ await page.getByRole('heading',{name:'端末内AIの検証',exact:true}).waitFor();
  await page.screenshot({path:path.join(results,'device-ai-desktop.png')});
  await page.setViewportSize({width:390,height:844});
  await page.screenshot({path:path.join(results,'device-ai-phone.png')});
