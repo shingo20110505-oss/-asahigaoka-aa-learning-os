@@ -84,7 +84,14 @@ try{
  await page.getByRole('button',{name:'ログアウト',exact:true}).click();await page.locator('#chat-login').waitFor();
  await page.locator('#chat-login [name=role]').selectOption({label:'管理者'});await page.locator('#chat-login [name=password]').fill(password);await page.getByRole('button',{name:'ログインする',exact:true}).click();await page.locator('#chat-text').waitFor();
  assert.equal((await snapshot()).threads.length,0,'guest local chat is absent for owner');
+ await context.setOffline(true);await page.goto(app.url+'/#/handwriting-clean');
+ await page.locator('[data-clean-files]').setInputFiles({name:'offline-worksheet.png',mimeType:'image/png',buffer:Buffer.from(png,'base64')});
+ await page.getByRole('button',{name:'まとめて消去結果を作る'}).click();
+ await page.getByRole('button',{name:'原本と結果を資料室へ',exact:true}).waitFor();
+ await page.waitForFunction(()=>!document.querySelector('[data-action="save"]').disabled);
+ await page.getByRole('button',{name:'原本と結果を資料室へ',exact:true}).click();
+ await page.getByText('原本と消去結果を資料室に保存しました',{exact:true}).waitFor();
  assert.equal(errors.length,0,errors.join('\n'));
- console.log(JSON.stringify({ok:true,checks:['multi-page cleanup and save','fullscreen desktop/phone','brush aligned across portrait/landscape resize','device AI desktop/phone','offline attachment removal','single generation on double submit','reconnect draft and local history','stream checkpoint/reload interruption','owner/guest isolation'],screenshots:results,inference:'UI stub only; not a model benchmark'}));
+ console.log(JSON.stringify({ok:true,checks:['multi-page cleanup and save','fullscreen desktop/phone','brush aligned across portrait/landscape resize','device AI desktop/phone','offline attachment removal','single generation on double submit','reconnect draft and local history','stream checkpoint/reload interruption','owner/guest isolation','offline cleanup worker and save'],screenshots:results,inference:'UI stub only; not a model benchmark'}));
 }catch(error){await page.screenshot({path:path.join(results,'failure.png')}).catch(()=>{});console.error(await page.locator('body').innerText().catch(()=>''));throw error;}
 finally{await browser.close();await app.close();if(path.dirname(privateDir)===results&&path.basename(privateDir).startsWith('fixture-'))await fs.rm(privateDir,{recursive:true,force:true});}
