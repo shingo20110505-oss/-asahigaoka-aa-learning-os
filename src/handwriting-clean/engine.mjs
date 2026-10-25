@@ -28,7 +28,7 @@ export function estimatePaper(image,mask,tileSize=64) {
   for(let ty=0;ty<rows;ty++)for(let tx=0;tx<cols;tx++){
     // Find the bright neutral paper in each neighborhood, ignoring handwriting, print and diagrams.
     let r=0,g=0,b=0,count=0,brightest=0,br=255,bg=255,bb=255;
-    for(let y=Math.max(0,ty*tileSize-tileSize/2);y<Math.min(height,(ty+1)*tileSize+tileSize/2);y+=3)for(let x=Math.max(0,tx*tileSize-tileSize/2);x<Math.min(width,(tx+1)*tileSize+tileSize/2);x+=3){const p=y*width+x,i=p*4;if(mask[p]||data[i+3]<128)continue;const hi=Math.max(data[i],data[i+1],data[i+2]),lo=Math.min(data[i],data[i+1],data[i+2]);if(hi-lo>35)continue;if(lo>brightest){brightest=lo;br=data[i];bg=data[i+1];bb=data[i+2];}if(lo>185){r+=data[i];g+=data[i+1];b+=data[i+2];count++;}}
+    for(let y=Math.max(0,ty*tileSize-tileSize/2);y<Math.min(height,(ty+1)*tileSize+tileSize/2);y+=3)for(let x=Math.max(0,tx*tileSize-tileSize/2);x<Math.min(width,(tx+1)*tileSize+tileSize/2);x+=3){const p=y*width+x,i=p*4;if(mask[p]||data[i+3]<128)continue;const hi=Math.max(data[i],data[i+1],data[i+2]),lo=Math.min(data[i],data[i+1],data[i+2]);if(hi-lo>35)continue;if(lo>brightest){brightest=lo;br=data[i];bg=data[i+1];bb=data[i+2];}if(lo>145){r+=data[i];g+=data[i+1];b+=data[i+2];count++;}}
     const i=(ty*cols+tx)*3;paper[i]=count?Math.round(r/count):br;paper[i+1]=count?Math.round(g/count):bg;paper[i+2]=count?Math.round(b/count):bb;
   }
   return {paper,cols,rows,tileSize};
@@ -38,8 +38,8 @@ export function cleanPixels(image,options={}) {
   let mask=options.mask?new Uint8Array(options.mask):colorMask(image,options);
   if(mask.length!==width*height)throw Error('消去範囲と画像の大きさが一致しません。');
   mask=applyStrokes(mask,width,height,options.strokes);
-  const output=new Uint8ClampedArray(data),{paper,cols,tileSize}=estimatePaper(image,mask);let changed=0,selected=0;
-  for(let p=0;p<mask.length;p++){if(!mask[p])continue;selected++;const i=p*4,pi=(Math.floor(Math.floor(p/width)/tileSize)*cols+Math.floor((p%width)/tileSize))*3;let differs=false;for(let c=0;c<3;c++){output[i+c]=paper[pi+c];differs ||= output[i+c]!==data[i+c];}if(differs)changed++;}
+  const output=new Uint8ClampedArray(data),{paper,cols,rows,tileSize}=estimatePaper(image,mask);let changed=0,selected=0;
+  for(let p=0;p<mask.length;p++){if(!mask[p])continue;selected++;const i=p*4,x=Math.max(0,Math.min(cols-1,(p%width)/tileSize-.5)),y=Math.max(0,Math.min(rows-1,Math.floor(p/width)/tileSize-.5)),x0=Math.floor(x),y0=Math.floor(y),x1=Math.min(cols-1,x0+1),y1=Math.min(rows-1,y0+1),fx=x-x0,fy=y-y0;let differs=false;for(let c=0;c<3;c++){const a=paper[(y0*cols+x0)*3+c]*(1-fx)+paper[(y0*cols+x1)*3+c]*fx,b=paper[(y1*cols+x0)*3+c]*(1-fx)+paper[(y1*cols+x1)*3+c]*fx;output[i+c]=Math.round(a*(1-fy)+b*fy);differs ||= output[i+c]!==data[i+c];}if(differs)changed++;}
   return {data:output,mask,width,height,selected,changed,elapsedMs:performance.now()-start};
 }
 export function maskPreview(image,mask) {

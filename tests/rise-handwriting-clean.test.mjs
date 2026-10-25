@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {cleanPixels,colorMask,applyStrokes,maskPreview,validateImage} from '../src/handwriting-clean/engine.mjs';
 import {syntheticPage,compareMask} from '../src/handwriting-clean/fixtures.mjs';
+import {createCleaner} from '../src/handwriting-clean/client.mjs';
 
 test('color cleanup retains every black printed pixel and every pixel outside its mask',()=>{
   const source=syntheticPage(),before=new Uint8ClampedArray(source.data),result=cleanPixels(source),metrics=compareMask(source,result);
@@ -35,4 +36,15 @@ test('region restricts automatic detection and mask preview does not mutate imag
 });
 test('malformed and excessively large input fail before allocating image copies',()=>{
   assert.throws(()=>validateImage({width:40000,height:40000,data:[]}));assert.throws(()=>cleanPixels({width:2,height:2,data:new Uint8ClampedArray(12)}));assert.throws(()=>cleanPixels(syntheticPage(20,30),{mask:new Uint8Array(5)}));
+});
+test('worker queue decodes at most one page at a time and cancellation invalidates pending pages',async()=>{
+  const originals=Object.fromEntries(['Worker','OffscreenCanvas','createImageBitmap'].map(k=>[k,globalThis[k]]));let active=0,peak=0;
+  class WorkerFixture {postMessage({id}){active++;peak=Math.max(peak,active);this.timer=setTimeout(()=>{active--;this.onmessage({data:{id,blob:new Blob(['copy']),width:1,height:1}});},8);}terminate(){if(this.timer){clearTimeout(this.timer);this.timer=null;active=0;}}}
+  globalThis.Worker=WorkerFixture;globalThis.OffscreenCanvas=class{};globalThis.createImageBitmap=()=>{};
+  const cleaner=createCleaner();
+  try{
+    const results=await Promise.all([cleaner.process(new Blob()),cleaner.process(new Blob()),cleaner.process(new Blob())]);assert.equal(peak,1);assert.equal(results.length,3);
+    const first=cleaner.process(new Blob()),queued=cleaner.process(new Blob());const rejected=Promise.all([assert.rejects(first,{name:'AbortError'}),assert.rejects(queued,{name:'AbortError'})]);cleaner.cancel();await rejected;
+    assert.equal((await cleaner.process(new Blob())).width,1);
+  }finally{cleaner.dispose();for(const [k,value]of Object.entries(originals)){if(value===undefined)delete globalThis[k];else globalThis[k]=value;}}
 });
