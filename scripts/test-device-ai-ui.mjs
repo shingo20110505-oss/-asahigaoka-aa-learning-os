@@ -17,12 +17,13 @@ const page=await context.newPage();const errors=[];page.on('response',r=>{if(r.s
 async function localFixture(){
  await page.evaluate(async()=>{
   const {localAI}=await import('./src/local-ai/client.mjs');
-  localAI.status=async()=>({ready:true,supported:true,selectedModel:'fixture',installed:['fixture']});
+  localAI.status=async()=>({ready:true,supported:true,selectedModel:'fixture',installed:['fixture'],validated:['fixture']});
   localAI.generate=async(messages,{onDelta,signal})=>{window.__localCalls=(window.__localCalls||0)+1;onDelta('保存できる途中の文章。');await new Promise((resolve,reject)=>{const timer=setTimeout(resolve,2500);signal.addEventListener('abort',()=>{clearTimeout(timer);reject(new DOMException('stopped','AbortError'));},{once:true});});onDelta('回答が完了しました。');return {text:'保存できる途中の文章。回答が完了しました。',model:'fixture'};};
   window.dispatchEvent(new Event('rise:local-ai'));
  });
 }
 async function snapshot(){return page.evaluate(async()=>{const {ChatArchive}=await import('./src/chat-archive.mjs');const a=new ChatArchive({channel:null});await a.open();const s=await a.summary();const t=await Promise.all(s.savedIds.map(id=>a.thread(id)));a.close();return {summary:s,threads:t};});}
+async function alignedOverlay(){await page.waitForFunction(()=>{const image=document.querySelector('[data-clean-image]'),canvas=document.querySelector('[data-clean-overlay]');if(!image?.complete||!canvas)return false;const a=image.getBoundingClientRect(),b=canvas.getBoundingClientRect();return a.width>0&&Math.abs(a.width-b.width)<1&&Math.abs(a.height-b.height)<1&&Math.abs(a.left-b.left)<1&&Math.abs(a.top-b.top)<1;});}
 try{
  await page.goto(app.url+'/#/handwriting-clean');
  await page.getByRole('heading',{name:'手書き消去',exact:true}).waitFor();
@@ -33,11 +34,22 @@ try{
  await page.getByRole('button',{name:'完成したページをまとめて保存'}).click();
  await page.getByText('完成したページを資料室に保存しました',{exact:true}).waitFor();
  await page.getByRole('button',{name:'全画面',exact:true}).click();
+ await alignedOverlay();
  await page.screenshot({path:path.join(results,'handwriting-desktop.png')});
  await page.setViewportSize({width:390,height:844});
+ await alignedOverlay();
  await page.screenshot({path:path.join(results,'handwriting-phone.png')});
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'phone has no horizontal page overflow');
+ await page.setViewportSize({width:844,height:390});await alignedOverlay();
  await page.getByRole('button',{name:'元の大きさ'}).click();
+ await page.setViewportSize({width:1180,height:850});
+ await alignedOverlay();
+ await page.goto(app.url+'/#/device-ai');
+ await page.getByRole('heading',{name:'端末内AI',exact:true}).waitFor();
+ await page.screenshot({path:path.join(results,'device-ai-desktop.png')});
+ await page.setViewportSize({width:390,height:844});
+ await page.screenshot({path:path.join(results,'device-ai-phone.png')});
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'device AI page fits phone');
  await page.setViewportSize({width:1180,height:850});
  await page.goto(app.url+'/#/chat');
  await page.locator('#chat-login').waitFor();
@@ -73,6 +85,6 @@ try{
  await page.locator('#chat-login [name=role]').selectOption({label:'管理者'});await page.locator('#chat-login [name=password]').fill(password);await page.getByRole('button',{name:'ログインする',exact:true}).click();await page.locator('#chat-text').waitFor();
  assert.equal((await snapshot()).threads.length,0,'guest local chat is absent for owner');
  assert.equal(errors.length,0,errors.join('\n'));
- console.log(JSON.stringify({ok:true,checks:['multi-page cleanup and save','fullscreen desktop/phone','offline attachment removal','single generation on double submit','reconnect draft and local history','stream checkpoint/reload interruption','owner/guest isolation'],screenshots:results,inference:'UI stub only; not a model benchmark'}));
+ console.log(JSON.stringify({ok:true,checks:['multi-page cleanup and save','fullscreen desktop/phone','brush aligned across portrait/landscape resize','device AI desktop/phone','offline attachment removal','single generation on double submit','reconnect draft and local history','stream checkpoint/reload interruption','owner/guest isolation'],screenshots:results,inference:'UI stub only; not a model benchmark'}));
 }catch(error){await page.screenshot({path:path.join(results,'failure.png')}).catch(()=>{});console.error(await page.locator('body').innerText().catch(()=>''));throw error;}
 finally{await browser.close();await app.close();if(path.dirname(privateDir)===results&&path.basename(privateDir).startsWith('fixture-'))await fs.rm(privateDir,{recursive:true,force:true});}

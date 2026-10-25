@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {forkLocalThread, localChatMessages, recoverLocalThread} from '../src/local-chat.mjs';
+import {forkLocalThread, localChatMessages, recoverLocalThread, savedThreadId} from '../src/local-chat.mjs';
 
 test('offline continuation forks a PC conversation without mutating its messages or id', () => {
   const pc = {id:'pc-id', messages:[{role:'assistant',text:'元の回答',files:[{id:'file'}]}]};
@@ -32,4 +32,12 @@ test('reopening an unfinished device conversation retains visible text as interr
  const value={localOnly:true,busy:true,messages:[{role:'assistant',text:'保存した途中の文章',status:'inProgress'}]};
  const restored=recoverLocalThread(value);assert.equal(restored.busy,false);assert.equal(restored.messages[0].status,'interrupted');assert.equal(restored.messages[0].text,value.messages[0].text);assert.equal(value.messages[0].status,'inProgress');
  const remote={messages:[],busy:true};assert.equal(recoverLocalThread(remote),remote);
+});
+
+test('offline restart chooses the most recent saved conversation, not UUID key order',()=>{
+ const data={savedIds:['aaa-old','zzz-recent'],threads:[{id:'missing',updatedAt:30},{id:'aaa-old',updatedAt:10},{id:'zzz-recent',updatedAt:20,localOnly:true}]};
+ assert.equal(savedThreadId(data),'zzz-recent');
+ assert.equal(savedThreadId(data,'aaa-old'),'aaa-old');
+ assert.equal(savedThreadId(data,'deleted'),'zzz-recent');
+ assert.equal(savedThreadId({savedIds:[],threads:[]}),undefined);
 });
