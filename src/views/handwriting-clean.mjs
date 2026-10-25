@@ -5,8 +5,30 @@ import {createCleaner} from '../handwriting-clean/client.mjs';
 import {syntheticPage,compareMask} from '../handwriting-clean/fixtures.mjs';
 import {cleanPixels} from '../handwriting-clean/engine.mjs';
 
+// Keep the drawing coordinate system aligned with the displayed image after rotation,
+// responsive layout changes and cached-view restoration. Return one complete disposer.
+export function observeImageOverlay(image,canvas,onResize=()=>{},environment={}) {
+  const Observer=environment.ResizeObserver??globalThis.ResizeObserver;
+  const resizeTarget=environment.resizeTarget??globalThis.window;
+  let disposed=false,lastWidth=0,lastHeight=0;
+  const sync=()=>{
+    if(disposed)return;
+    const {width,height}=image.getBoundingClientRect();
+    if(!(width>0&&height>0))return; // A cached view may temporarily be detached.
+    const changed=width!==lastWidth||height!==lastHeight;
+    if(changed){onResize();canvas.width=Math.max(1,Math.round(width));canvas.height=Math.max(1,Math.round(height));lastWidth=width;lastHeight=height;}
+    canvas.style.width=width+'px';canvas.style.height=height+'px';
+  };
+  image.addEventListener('load',sync);
+  const observer=typeof Observer==='function'?new Observer(sync):null;
+  if(observer)observer.observe(image);else resizeTarget?.addEventListener('resize',sync);
+  sync();
+  return()=>{disposed=true;observer?.disconnect();image.removeEventListener('load',sync);if(!observer)resizeTarget?.removeEventListener('resize',sync);};
+}
+
 export function mount({main,store,query=new URLSearchParams()}) {
   const cleaner=createCleaner(),pages=[];let selected=-1,disposed=false,busy=false,controller=null,full=false,display='original',tool='view',brush=.012,pendingStroke=null,viewUrl='',generation=0;
+  let disposeOverlay=()=>{};
   let config={red:true,blue:true,strength:38},status='',benchmark=null;
   if(!document.querySelector('link[data-handwriting-clean-style]')){const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../handwriting-clean/style.css',import.meta.url).href;css.dataset.handwritingCleanStyle='';document.head.append(css);}
   const current=()=>pages[selected];
@@ -18,6 +40,7 @@ export function mount({main,store,query=new URLSearchParams()}) {
   function updateStatus(){const e=main.querySelector('[data-clean-status]');if(e)e.textContent=status;}
   function list(){const e=main.querySelector('[data-clean-pages]');if(!e)return;e.innerHTML=pages.map((p,i)=>`<button type="button" class="clean-page ${i===selected?'active':''}" data-clean="page" data-index="${i}" aria-pressed="${i===selected}"><img src="${esc(p.url)}" alt="" loading="lazy"><span>${i+1}. ${esc(p.file.name)}</span><small>${p.saved?'保存済み':p.result?'確認できます':p.error?'処理できませんでした':'原本'}</small></button>`).join('');}
   function draw(){
+    disposeOverlay();disposeOverlay=()=>{};pendingStroke=null;
     generation++;if(!busy)cleaner.cancel();
     main.innerHTML=`<section class="handwriting-clean ${full?'clean-fullscreen':''}">${heading('HANDWRITING CLEANUP','手書き消去','消す部分を確認して、原本と結果を別々に保存。',button(full?'元の大きさ':'全画面','fullscreen','secondary'))}<div class="clean-controls"><label class="button secondary clean-file-label">画像を追加<input type="file" accept="image/*" multiple data-clean-files ${busy?'disabled':''}></label>${button('まとめて消去結果を作る','batch','primary',pages.length&&!busy?'':'disabled')}${busy?button('中止','cancel','secondary'):''}<label><input type="checkbox" data-red ${config.red?'checked':''} ${busy?'disabled':''}>赤</label><label><input type="checkbox" data-blue ${config.blue?'checked':''} ${busy?'disabled':''}>青</label><label>検出の強さ<input aria-label="色の検出閾値" type="range" min="18" max="80" value="${config.strength}" data-strength ${busy?'disabled':''}></label></div><p class="small muted clean-help">赤・青の候補を自動で選びます。黒い書き込みは「消す」で指定し、残したい印刷は「残す」でなぞれます。</p><p data-clean-status role="status">${esc(status)}</p><div class="clean-workspace"><nav class="clean-pages" data-clean-pages aria-label="画像一覧"></nav><div class="clean-main"><div class="clean-tools"><div role="group" aria-label="表示">${[['original','原本'],['mask','消去範囲'],['result','消去後']].map(([id,label])=>button(label,'display-'+id,'secondary small',`aria-pressed="${display===id}" ${busy?'disabled':''}`)).join('')}</div><div role="group" aria-label="消去範囲の編集">${[['view','見る'],['erase','消す'],['protect','残す']].map(([id,label])=>button(label,'tool-'+id,'secondary small',`aria-pressed="${tool===id}" ${busy?'disabled':''}`)).join('')}${button('ひとつ戻す','undo','ghost small',current()?.strokes.length&&!busy?'':'disabled')}<label>太さ<input type="range" min="3" max="60" value="${Math.round(brush*1000)}" data-brush aria-label="ブラシの太さ"></label></div></div><div class="clean-stage" data-clean-stage>${current()?'<div class="clean-image-wrap"><img data-clean-image alt="教材のプレビュー" draggable="false"><canvas data-clean-overlay aria-label="消す範囲・残す範囲をなぞる"></canvas></div>':'<p class="clean-placeholder">教材の写真を選んでください。複数枚をまとめて追加できます。</p>'}</div><div class="clean-actions">${button('原本と結果を資料室へ','save','primary',current()?.result&&!busy?'':'disabled')}${button('結果をダウンロード','download','secondary',current()?.result&&!busy?'':'disabled')}${button('AIで原本から消去（PC）','ai-finish','secondary',current()&&!busy?'':'disabled')}${button('原本に戻す','reset','ghost',current()&&!busy?'':'disabled')}${button('一覧から外す','remove','ghost',current()&&!busy?'':'disabled')}${pages.filter(p=>p.result&&!p.saved).length>1?button('完成したページをまとめて保存','save-all','secondary',busy?'disabled':''):''}</div></div></div><details class="clean-benchmark"><summary>この端末の処理速度を確認</summary><p class="small muted">テスト画像の1・3・10枚を計測します。実際の教材の精度を表す値ではありません。</p>${button('計測する','benchmark','secondary',busy?'disabled':'')}<pre data-clean-benchmark>${benchmark?esc(JSON.stringify(benchmark,null,2)):''}</pre></details></section>`;
     list();bind();paint();
@@ -32,7 +55,7 @@ export function mount({main,store,query=new URLSearchParams()}) {
       else{viewUrl=URL.createObjectURL(result.blob);img.src=viewUrl;attachOverlay();}
     }catch(e){if(e.name!=='AbortError'&&!disposed&&token===generation){status=e.message;updateStatus();}}
   }
-  function attachOverlay(){const img=main.querySelector('[data-clean-image]'),canvas=main.querySelector('[data-clean-overlay]');if(!img||!canvas)return;canvas.style.pointerEvents=tool==='view'?'none':'auto';canvas.style.touchAction='none';const resize=()=>{const r=img.getBoundingClientRect();canvas.width=Math.max(1,Math.round(r.width));canvas.height=Math.max(1,Math.round(r.height));canvas.style.width=r.width+'px';canvas.style.height=r.height+'px';};img.onload=resize;if(img.complete)resize();}
+  function attachOverlay(){const img=main.querySelector('[data-clean-image]'),canvas=main.querySelector('[data-clean-overlay]');if(!img||!canvas)return;disposeOverlay();canvas.style.pointerEvents=tool==='view'?'none':'auto';canvas.style.touchAction='none';disposeOverlay=observeImageOverlay(img,canvas,()=>{pendingStroke=null;});}
   function coords(e,canvas){const r=canvas.getBoundingClientRect();return [Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)),Math.max(0,Math.min(1,(e.clientY-r.top)/r.height))];}
   function drawStroke(canvas,stroke){const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);ctx.strokeStyle=stroke.mode==='protect'?'rgba(30,160,120,.65)':'rgba(245,70,80,.65)';ctx.fillStyle=ctx.strokeStyle;ctx.lineWidth=stroke.radius*Math.min(canvas.width,canvas.height)*2;ctx.lineCap=ctx.lineJoin='round';ctx.beginPath();stroke.points.forEach(([x,y],i)=>i?ctx.lineTo(x*canvas.width,y*canvas.height):ctx.moveTo(x*canvas.width,y*canvas.height));ctx.stroke();if(stroke.points.length===1){ctx.beginPath();ctx.arc(stroke.points[0][0]*canvas.width,stroke.points[0][1]*canvas.height,ctx.lineWidth/2,0,Math.PI*2);ctx.fill();}}
   async function addFiles(files){for(const file of files){if(!file.type.startsWith('image/')&&!/\.(png|jpe?g|webp|gif|avif|heic)$/i.test(file.name))continue;pages.push({id:uid(),file,url:URL.createObjectURL(file),strokes:[],result:null,saved:false});}if(selected<0&&pages.length)selected=0;display='original';status=pages.length+'枚を選択しました';draw();}
@@ -73,5 +96,5 @@ export function mount({main,store,query=new URLSearchParams()}) {
   }
   draw();
   if(query.get('material'))guard(async()=>{const material=store.state.materials.find(m=>m.id===query.get('material'));const files=materialFiles(material||{}).filter(f=>(!query.get('file')||f.id===query.get('file'))&&f.type?.startsWith('image/'));for(const f of files){const saved=await store.file(f.id);if(saved&&!disposed)await addFiles([new File([saved.blob],f.name,{type:f.type})]);}})();
-  return Object.assign(()=>{disposed=true;generation++;controller?.abort();cleaner.dispose();pages.forEach(release);revokeView();main.onclick=null;},{suspend(){full=false;main.querySelector('.handwriting-clean')?.classList.remove('clean-fullscreen');},refresh(){}});
+  return Object.assign(()=>{disposed=true;generation++;disposeOverlay();pendingStroke=null;controller?.abort();cleaner.dispose();pages.forEach(release);revokeView();main.onclick=null;},{suspend(){full=false;pendingStroke=null;main.querySelector('.handwriting-clean')?.classList.remove('clean-fullscreen');},refresh(){}});
 }
