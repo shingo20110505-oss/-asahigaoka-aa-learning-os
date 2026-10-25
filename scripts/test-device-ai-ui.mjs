@@ -58,7 +58,8 @@ try{
  await page.locator('#chat-text').waitFor();
  await page.locator('#chat-text').fill('PCの会話');await page.locator('#chat-compose').evaluate(f=>f.requestSubmit());
  await page.getByText('PC側の試験回答です。',{exact:true}).waitFor();await page.getByRole('button',{name:'送信する ↑',exact:true}).waitFor();
- await page.waitForFunction(async()=>{const {offlineState}=await import('./src/offline.mjs');return offlineState().phase==='ready';});
+ await page.evaluate(async()=>{window.__offlineState=(await import('./src/offline.mjs')).offlineState;});
+ await page.waitForFunction(()=>window.__offlineState().phase==='ready'&&!!navigator.serviceWorker.controller);
  console.log('initial SW',await page.evaluate(async()=>({controller:navigator.serviceWorker.controller?.scriptURL,registrations:(await navigator.serviceWorker.getRegistrations()).map(r=>r.scope),caches:await Promise.all((await caches.keys()).map(async key=>({key,count:(await(await caches.open(key)).keys()).length})))})));
  await page.locator('#chat-files').setInputFiles({name:'queued.png',mimeType:'image/png',buffer:Buffer.from(png,'base64')});
  await page.locator('#chat-text').fill('端末の質問');await localFixture();
