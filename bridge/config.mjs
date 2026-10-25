@@ -1,11 +1,11 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import {randomUUID} from 'node:crypto';
+import {atomicJSON} from './atomic-json.mjs';
 
 export class ConfigStore {
   constructor(privateDir){this.dir=path.resolve(privateDir);this.file=path.join(this.dir,'config.json');this.queue=Promise.resolve();}
   async read(){try{return JSON.parse(await fs.readFile(this.file,'utf8'));}catch(error){if(error.code==='ENOENT')return {};throw error;}}
-  async update(mutator){const task=this.queue.catch(()=>{}).then(async()=>{const next=await this.read();await mutator(next);await fs.mkdir(this.dir,{recursive:true});const temp=this.file+'.'+randomUUID()+'.tmp';await fs.writeFile(temp,JSON.stringify(next,null,2),{mode:0o600});await fs.rename(temp,this.file);return next;});this.queue=task;return task;}
+  async update(mutator){const task=this.queue.catch(()=>{}).then(async()=>{const next=await this.read();await mutator(next);await atomicJSON(this.file,next,{space:2});return next;});this.queue=task;return task;}
 }
 export const REASONING_EFFORTS=['low','medium','high','xhigh','max','ultra'];
 export function codexSelection(config,role){

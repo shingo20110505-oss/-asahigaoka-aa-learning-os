@@ -26,7 +26,7 @@ export function observeImageOverlay(image,canvas,onResize=()=>{},environment={})
   return()=>{disposed=true;observer?.disconnect();image.removeEventListener('load',sync);if(!observer)resizeTarget?.removeEventListener('resize',sync);};
 }
 
-export function mount({main,store,query=new URLSearchParams()}) {
+export function mount({main,store,query=new URLSearchParams(),onAI}) {
   const cleaner=createCleaner(),pages=[];let selected=-1,disposed=false,busy=false,controller=null,full=false,display='original',tool='view',brush=.012,pendingStroke=null,viewUrl='',generation=0;
   let disposeOverlay=()=>{};
   let config={red:true,blue:true,strength:38},status='',benchmark=null;
@@ -89,7 +89,7 @@ export function mount({main,store,query=new URLSearchParams()}) {
       if(a==='undo'){p.strokes.pop();invalidate(p);display='mask';draw();return;}
       if(a==='reset'){p.strokes=[];invalidate(p);display='original';draw();return;}
       if(a==='remove'){release(p);pages.splice(selected,1);selected=Math.min(selected,pages.length-1);display='original';draw();return;}
-      if(a==='ai-finish'){busy=true;draw();const id=uid();let file;try{file=await store.putFile(new File([p.file],p.file.name,{type:p.file.type}));await store.change(s=>s.materials.unshift({id,title:p.file.name.replace(/\.[^.]*$/,'')+' · AI消去の原本',subject:'その他',kind:'ファイル',memo:'手書き消去に渡した原本',attachments:[file],updatedAt:Date.now()}));location.hash='#/ai-task?mode=clean&material='+encodeURIComponent(id)+'&file='+encodeURIComponent(file.id);}catch(e){if(file)await store.deleteFile(file.id);throw e;}finally{busy=false;if(!disposed)draw();}return;}
+      if(a==='ai-finish'){busy=true;draw();const id=uid();let file;try{if(onAI){await onAI(p.file);return;}file=await store.putFile(new File([p.file],p.file.name,{type:p.file.type}));await store.change(s=>s.materials.unshift({id,title:p.file.name.replace(/\.[^.]*$/,'')+' · AI消去の原本',subject:'その他',kind:'ファイル',memo:'手書き消去に渡した原本',attachments:[file],updatedAt:Date.now()}));location.hash='#/ai-task?mode=clean&material='+encodeURIComponent(id)+'&file='+encodeURIComponent(file.id);}catch(e){if(file)await store.deleteFile(file.id);throw e;}finally{busy=false;if(!disposed)draw();}return;}
       if(a==='save'){await savePage(p);status='原本と消去結果を資料室に保存しました';draw();return;}
       if(a==='download'&&p.result){const a=document.createElement('a');a.href=p.outputUrl;a.download=p.file.name.replace(/\.[^.]*$/,'')+'-手書き消去.png';a.click();}
     });
