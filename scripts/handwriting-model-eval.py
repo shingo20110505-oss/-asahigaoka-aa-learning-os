@@ -74,9 +74,12 @@ def main():
         else:resized=np.array(Image.fromarray(rgb).resize((args.size,args.size),Image.Resampling.BILINEAR))[:,:,::-1].copy()
         tensor=torch.from_numpy(resized).permute(2,0,1).float()[None]/255-.5
         with torch.inference_mode():prediction=net(tensor)[0][0]
-        low=prediction.min();high=prediction.max();prediction=(prediction-low)/(high-low).clamp(min=1e-8)
-        if args.layout=='author-pad':prediction=prediction[:,:,:h,:w]
-        prediction=torch.nn.functional.interpolate(prediction,size=rgb.shape[:2],mode='bilinear',align_corners=False)[0,0]
+        if args.layout=='author-pad':
+            low=prediction.min();high=prediction.max();prediction=(prediction-low)/(high-low).clamp(min=1e-8)
+            prediction=torch.nn.functional.interpolate(prediction[:,:,:h,:w],size=rgb.shape[:2],mode='bilinear',align_corners=False)[0,0]
+        else:
+            prediction=torch.nn.functional.interpolate(prediction,size=rgb.shape[:2],mode='bilinear',align_corners=False)[0,0]
+            low=prediction.min();high=prediction.max();prediction=(prediction-low)/(high-low).clamp(min=1e-8)
         return prediction.numpy()>.35
     report=dict(device=platform.processor(),platform=platform.platform(),torch=torch.__version__,threads=args.threads,input_size=args.size,layout=args.layout,checkpoint_sha256=sha,model_load_ms=load_ms,fixture_note='Synthetic Japanese print with programmatic ink; NOT real photographed worksheet accuracy.',cases={},batches=[])
     suffix='-author-pad' if args.layout=='author-pad' else ''
