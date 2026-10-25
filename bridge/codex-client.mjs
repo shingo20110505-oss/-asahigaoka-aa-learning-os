@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 export const disabledFeatures=['apps','plugins','remote_plugin','memories','multi_agent','multi_agent_v2','shell_tool','unified_exec','shell_snapshot','browser_use','browser_use_external','computer_use','in_app_browser','image_generation','hooks','view_image','workspace_dependencies','code_mode_host','skill_search','skill_mcp_dependency_install','sleep_tool','goals'];
-export function codexArguments({images=false}={}){return ['app-server','--stdio',...(images?['--enable','image_generation','--enable','code_mode_host']:[]),...disabledFeatures.filter(x=>!images||!['image_generation','code_mode_host'].includes(x)).flatMap(x=>['--disable',x]),'-c','web_search="disabled"','-c','mcp_servers={}','-c','project_doc_max_bytes=0','-c','approval_policy="never"','-c','default_permissions="rise-chat"','-c','permissions.rise-chat.filesystem={":workspace_roots"={"."="read"}}','-c','permissions.rise-chat.network.enabled=false','-c','cli_auth_credentials_store="file"'];}
+export function codexArguments({images=false,search=false}={}){return ['app-server','--stdio',...(images?['--enable','image_generation','--enable','code_mode_host']:[]),...disabledFeatures.filter(x=>!images||!['image_generation','code_mode_host'].includes(x)).flatMap(x=>['--disable',x]),'-c',search?'web_search="live"':'web_search="disabled"','-c','mcp_servers={}','-c','project_doc_max_bytes=0','-c','approval_policy="never"','-c','default_permissions="rise-chat"','-c','permissions.rise-chat.filesystem={":workspace_roots"={"."="read"}}','-c','permissions.rise-chat.network.enabled=false','-c','cli_auth_credentials_store="file"'];}
 export async function codexEnvironment(privateDir){
   const home=path.join(privateDir,'codex-owner'),cwd=path.join(privateDir,'codex-empty');
   await fs.mkdir(home,{recursive:true});await fs.mkdir(cwd,{recursive:true});
@@ -42,6 +42,6 @@ export class CodexClient {
   close(){this.finish(Error('Codex接続を閉じました'));this.lines.close();this.child.kill();}
 }
 export async function openCodex(privateDir,config={}){
-  const environment=await codexEnvironment(privateDir),client=new CodexClient({executable:config.codexExecutable||await discoverCodex(),...environment,args:codexArguments({images:Boolean(config.imageMode)})});
+  const environment=await codexEnvironment(privateDir),client=new CodexClient({executable:config.codexExecutable||await discoverCodex(),...environment,args:codexArguments({images:Boolean(config.imageMode),search:Boolean(config.webSearch)})});
   try{await client.initialize();return client;}catch(error){client.close();throw error;}
 }

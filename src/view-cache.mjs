@@ -4,7 +4,7 @@ export const viewPath = hash => (String(hash || '').replace(/^#?\/?/, '') || 'ho
 export function viewGroup(path) {
   const route = viewPath(path).split(/[/?]/)[0];
   return ['reading','vocabulary','classical','review','memory','history','labs','focus','explore','evidence','listening'].includes(route)
-    ? 'learn' : route === 'materials' ? 'notes' : route;
+    ? 'learn' : ['materials','desk'].includes(route) ? 'notes' : route;
 }
 
 export class ViewCache {

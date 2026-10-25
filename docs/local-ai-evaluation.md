@@ -1,3 +1,5 @@
+> Historical evidence only. On 2026-10-26 the user requested removal of all current browser-local LLMs. Their application code, model download/comparison UI and runtime were removed. The updated app purges model caches. Commands and source paths below describe the retired release and are not current instructions.
+
 # RISE 端末内LLM比較記録
 
 評価日: 2026-10-26 JST。公開判定: **今回の固定WebLLM・AMD WebGPU実行経路では採用保留**。

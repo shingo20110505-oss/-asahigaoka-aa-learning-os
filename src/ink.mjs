@@ -1,7 +1,7 @@
 export const INK_WIDTH=1200,INK_HEIGHT=1600;
 export function inkPoint(x,y,rect){return{x:Math.max(0,Math.min(INK_WIDTH,(x-rect.left)/rect.width*INK_WIDTH)),y:Math.max(0,Math.min(INK_HEIGHT,(y-rect.top)/rect.height*INK_HEIGHT))};}
 export function copyInk(value){
- const strokes=(value?.strokes||[]).map(s=>{if(!['pen','eraser','highlighter','line','rectangle','ellipse','text'].includes(s.tool)||!Number.isFinite(s.width)||s.width<=0||s.width>100||!/^#[a-f0-9]{6}$/i.test(s.color)||!Array.isArray(s.points))throw Error('手書きデータを読み込めませんでした。');const points=s.points.map(p=>{if(!Number.isFinite(p.x)||!Number.isFinite(p.y))throw Error('手書きデータを読み込めませんでした。');return{x:Math.max(0,Math.min(INK_WIDTH,p.x)),y:Math.max(0,Math.min(INK_HEIGHT,p.y))};});return{tool:s.tool,width:s.width,color:s.color,points,...(s.tool==='text'?{text:String(s.text||'').slice(0,500)}:{})};});
+ const strokes=(value?.strokes||[]).map(s=>{if(!['pen','eraser','highlighter','line','rectangle','ellipse','text'].includes(s.tool)||!Number.isFinite(s.width)||s.width<=0||s.width>100||!/^#[a-f0-9]{6}$/i.test(s.color)||!Array.isArray(s.points))throw Error('手書きデータを読み込めませんでした。');const points=s.points.map(p=>{if(!Number.isFinite(p.x)||!Number.isFinite(p.y))throw Error('手書きデータを読み込めませんでした。');return{x:Math.max(0,Math.min(INK_WIDTH,p.x)),y:Math.max(0,Math.min(INK_HEIGHT,p.y))};});return{tool:s.tool,width:s.width,color:s.color,points,...(s.tool==='text'?{text:String(s.text||'').slice(0,500),...(Number.isFinite(s.rotation)?{rotation:s.rotation%360}:{})}:{})};});
  return{version:1,width:INK_WIDTH,height:INK_HEIGHT,strokes};
 }
 export function inkHistory(value){let strokes=copyInk(value).strokes,undo=[],redo=[];return{
@@ -15,7 +15,7 @@ export function inkHistory(value){let strokes=copyInk(value).strokes,undo=[],red
 export function paintStroke(ctx,stroke){
  const points=stroke.points;if(!points.length)return;const first=points[0],last=points.at(-1);
  ctx.save();ctx.globalCompositeOperation=stroke.tool==='eraser'?'destination-out':'source-over';ctx.globalAlpha=stroke.tool==='highlighter'?.3:1;ctx.strokeStyle=ctx.fillStyle=stroke.color;ctx.lineWidth=stroke.width;ctx.lineCap=ctx.lineJoin='round';ctx.beginPath();
- if(stroke.tool==='text'){ctx.font=(stroke.width*4)+'px sans-serif';ctx.textBaseline='top';ctx.fillText(stroke.text||'',first.x,first.y);}
+ if(stroke.tool==='text'){ctx.font=(stroke.width*4)+'px sans-serif';ctx.textBaseline='top';ctx.translate(first.x,first.y);ctx.rotate((stroke.rotation||0)*Math.PI/180);ctx.fillText(stroke.text||'',0,0);}
  else if(stroke.tool==='rectangle'){ctx.rect(first.x,first.y,last.x-first.x,last.y-first.y);ctx.stroke();}
  else if(stroke.tool==='ellipse'){ctx.ellipse((first.x+last.x)/2,(first.y+last.y)/2,Math.abs(last.x-first.x)/2,Math.abs(last.y-first.y)/2,0,0,Math.PI*2);ctx.stroke();}
  else if(points.length===1){ctx.arc(first.x,first.y,stroke.width/2,0,Math.PI*2);ctx.fill();}

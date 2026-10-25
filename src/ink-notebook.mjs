@@ -1,11 +1,12 @@
 import {copyInk,INK_WIDTH,INK_HEIGHT} from './ink.mjs';
 const papers=['grid','ruled','blank'];
+const copyViewport=v=>({zoom:['width','fit','custom','50','75','100','150','200','300'].includes(v.zoom)?v.zoom:'width',width:Math.max(120,Math.min(4800,Number(v.width)||1200)),left:Math.max(0,Math.min(100000,Number(v.left)||0)),top:Math.max(0,Math.min(100000,Number(v.top)||0))});
 const pageId=()=>crypto.randomUUID();
 export function copyNotebook(value){
  if(value?.version>3)throw Error('この手書きは新しいRISEで作成されています。アプリを更新してください。');
  if(value?.pages!==undefined&&!Array.isArray(value.pages))throw Error('手書きのページを読み込めませんでした。');
  const source=value?.pages?.length?value.pages:[value||{}],ids=new Set();
- const pages=source.map((p,i)=>{const id=String(p.id||'page-'+(i+1));if(ids.has(id))throw Error('手書きのページIDが重複しています。');ids.add(id);return{id,...copyInk(p),paper:papers.includes(p.paper)?p.paper:'grid',...(typeof p.backgroundId==='string'?{backgroundId:p.backgroundId}:{})};});
+ const pages=source.map((p,i)=>{const id=String(p.id||'page-'+(i+1));if(ids.has(id))throw Error('手書きのページIDが重複しています。');ids.add(id);return{id,...copyInk(p),paper:papers.includes(p.paper)?p.paper:'grid',...(p.viewport?{viewport:copyViewport(p.viewport)}:{}),...(typeof p.backgroundId==='string'?{backgroundId:p.backgroundId}:{})};});
  return{version:3,width:INK_WIDTH,height:INK_HEIGHT,pages,activePageId:ids.has(value?.activePageId)?value.activePageId:pages[0].id};
 }
 export const notebookPages=value=>value?.pages?.length?value.pages:value?[value]:[];
@@ -18,6 +19,7 @@ export function notebookHistory(value){
  const update=change=>{const pages=state.pages.slice(),i=index();pages[i]={...pages[i],...change};commit({...state,pages});};
  return{
   get pages(){return state.pages;},get index(){return index();},get page(){return state.pages[index()];},
+  setViewport(viewport){const pages=state.pages.slice();pages[index()]={...this.page,viewport:copyViewport(viewport)};state={...state,pages};},
   replaceStrokes(strokes){update({strokes:copyInk({strokes}).strokes});},
   setBackground(backgroundId){update({backgroundId:backgroundId||undefined});},
   get canUndo(){return undo.length>0;},get canRedo(){return redo.length>0;},

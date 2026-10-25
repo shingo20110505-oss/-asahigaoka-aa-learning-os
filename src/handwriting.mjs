@@ -1,4 +1,4 @@
-import {selectStrokes,selectionBounds,moveStrokes,strokeAt} from './ink-selection.mjs';
+import {selectStrokes,selectionBounds,moveStrokes,strokeAt,transformStrokes} from './ink-selection.mjs';
 import {esc,button,download} from './ui.mjs';
 import {INK_WIDTH,INK_HEIGHT,inkPoint,paintStroke,paintInk} from './ink.mjs';
 import {notebookHistory} from './ink-notebook.mjs';
@@ -15,7 +15,7 @@ export function handwritingEditor({title,value,onSave,onClose,images=[],loadImag
    <label><input type="checkbox" data-finger checked>指でも書く</label>
    <label>表示<select aria-label="手書きの表示倍率"><option value="width">幅に合わせる</option><option value="fit">ページ全体</option><option value="50">50%</option><option value="75">75%</option><option value="100">100%</option><option value="150">150%</option><option value="200">200%</option><option value="300">300%</option><option value="custom" disabled>ピンチで拡大</option></select></label>
   </div>
-  <div class="ink-selection-tools" hidden><span data-selection-count></span>${button('複製','copy-selection','secondary small')}${button('選んだ色に変更','color-selection','secondary small')}${button('削除','delete-selection','secondary small')}</div>
+  <div class="ink-selection-tools" hidden><span data-selection-count></span>${button('縮小','shrink-selection','secondary small','aria-label="選択範囲を縮小"')}${button('拡大','grow-selection','secondary small','aria-label="選択範囲を拡大"')}${button('↶ 15°','rotate-left','secondary small','aria-label="選択範囲を左に回転"')}${button('15° ↷','rotate-right','secondary small','aria-label="選択範囲を右に回転"')}${button('太さを変更','width-selection','secondary small')}${button('複製','copy-selection','secondary small')}${button('選んだ色に変更','color-selection','secondary small')}${button('削除','delete-selection','secondary small')}</div>
   <label class="ink-text-entry" hidden>置く文字<input type="text" maxlength="500" data-ink-text placeholder="文字を入力し、用紙をタップ"></label>
   <details class="ink-more"><summary>用紙・ページ操作</summary><div class="ink-tools">
    <label>用紙<select aria-label="用紙の種類"><option value="grid">方眼</option><option value="ruled">罫線</option><option value="blank">無地</option></select></label>
@@ -86,16 +86,20 @@ export function handwritingEditor({title,value,onSave,onClose,images=[],loadImag
  canvas.onpointerup=canvas.onpointercancel=canvas.onlostpointercapture=endPointer;
  const beforeUnload=e=>{if(saved!==changed||active){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',beforeUnload);
  function destroy(){if(closed)return;closed=true;for(const url of backgroundUrls.values())URL.revokeObjectURL(url);clearTimeout(timer);observer.disconnect();window.removeEventListener('beforeunload',beforeUnload);host.close();host.remove();if(!document.querySelector('.ink-editor[open]'))document.body.classList.remove('ink-editor-open');previous?.isConnected&&previous.focus({preventScroll:true});onClose?.();}
- async function close(){finish();try{await flush();destroy();}catch(e){saveError(e);host.querySelector('.ink-confirm').hidden=false;}}
- function afterPageChange(){selection=[];redraw();resize();stage.scrollTo(0,0);dirty();}
+ async function close(){finish();rememberViewport();changed++;try{await flush();destroy();}catch(e){saveError(e);host.querySelector('.ink-confirm').hidden=false;}}
+ function rememberViewport(){book.setViewport({zoom,width:customWidth,left:stage.scrollLeft,top:stage.scrollTop});}
+ function afterPageChange(){selection=[];const v=book.page.viewport||{zoom:'width',left:0,top:0};zoom=v.zoom;customWidth=v.width||INK_WIDTH;zoomSelect.value=zoom;redraw();resize();stage.scrollTo(v.left||0,v.top||0);dirty();}
+
  host.onclick=async e=>{const action=e.target.closest('[data-action]')?.dataset.action;if(!action)return;
   try{
    if(action==='close'||action==='save-close')return await close();
    if(action==='discard'){if(pending)try{await pending;}catch{}return destroy();}
    if(action==='continue'){host.querySelector('.ink-confirm').hidden=true;return;}
-   finish();notice.textContent='';
+   finish();rememberViewport();notice.textContent='';
    if(action==='page-overview'){const overview=host.querySelector('.ink-page-overview');overview.hidden=!overview.hidden;control(action).setAttribute('aria-expanded',String(!overview.hidden));sync();resize();}
    if(action==='select-page'&&book.select(e.target.closest('[data-page]').dataset.page))afterPageChange();
+   if(selection.length&&['shrink-selection','grow-selection','rotate-left','rotate-right'].includes(action)){book.replaceStrokes(transformStrokes(book.page.strokes,selection,{scale:action==='grow-selection'?1.25:action==='shrink-selection'?.8:1,rotation:action==='rotate-left'?-15:action==='rotate-right'?15:0}));redraw();dirty();}
+   if(action==='width-selection'&&selection.length){const width=Number(host.querySelector('[aria-label="線の太さ"]').value);book.replaceStrokes(book.page.strokes.map((s,i)=>selection.includes(i)?{...s,width}:s));redraw();dirty();}
    if(action==='delete-selection'&&selection.length){book.replaceStrokes(book.page.strokes.filter((_,i)=>!selection.includes(i)));selection=[];redraw();dirty();}
    if(action==='copy-selection'&&selection.length){const copies=moveStrokes(book.page.strokes,selection,30,30).filter((_,i)=>selection.includes(i)),start=book.page.strokes.length;book.replaceStrokes([...book.page.strokes,...copies]);selection=copies.map((_,i)=>start+i);redraw();dirty();}
    if(action==='color-selection'&&selection.length){const color=host.querySelector('[aria-label="ペンの色"]').value;book.replaceStrokes(book.page.strokes.map((s,i)=>selection.includes(i)?{...s,color}:s));redraw();dirty();}
@@ -110,7 +114,7 @@ export function handwritingEditor({title,value,onSave,onClose,images=[],loadImag
    if(action==='export'){const out=document.createElement('canvas');out.width=INK_WIDTH;out.height=INK_HEIGHT;const context=out.getContext('2d');context.fillStyle='white';context.fillRect(0,0,out.width,out.height);if(!background.hidden){await background.decode();const scale=Math.min(INK_WIDTH/background.naturalWidth,INK_HEIGHT/background.naturalHeight),w=background.naturalWidth*scale,h=background.naturalHeight*scale;context.drawImage(background,(INK_WIDTH-w)/2,(INK_HEIGHT-h)/2,w,h);}paintInk(canvas,book.page);context.drawImage(canvas,0,0);selectionBox(selectionBounds(book.page.strokes,selection));const blob=await new Promise(resolve=>out.toBlob(resolve,'image/png'));if(!blob)throw Error('画像を書き出せませんでした');download((title.replace(/[<>:"/\\|?*]/g,'_')||'note')+`-p${book.index+1}.png`,blob,'image/png');}
   }catch(e){saveError(e);}
  };
- host.onchange=e=>{finish();const label=e.target.getAttribute('aria-label');
+ host.onchange=e=>{finish();rememberViewport();const label=e.target.getAttribute('aria-label');
   if(label==='下に敷く画像'){book.setBackground(e.target.value);dirty();redraw();}
   if(label==='書く道具'){tool=e.target.value;selection=[];redraw();host.querySelector('.ink-text-entry').hidden=tool!=='text';canvas.classList.toggle('ink-pan',tool==='pan');}
   if(label==='手書きのページ'&&book.select(e.target.value))afterPageChange();
@@ -119,6 +123,6 @@ export function handwritingEditor({title,value,onSave,onClose,images=[],loadImag
  };
  host.onkeydown=e=>{if(e.target.matches('input,textarea,select')||!(e.ctrlKey||e.metaKey))return;const key=e.key.toLowerCase();if(key==='z'||key==='y'){e.preventDefault();control(key==='y'||e.shiftKey?'redo':'undo').click();}};
  host.addEventListener('cancel',e=>{e.preventDefault();close();});
- const observer=new ResizeObserver(resize);observer.observe(stage);host.showModal();document.body.classList.add('ink-editor-open');redraw();resize();
- return{close,async dispose(){finish();try{await flush();destroy();}catch(e){saveError(e);host.querySelector('.ink-confirm').hidden=false;}}};
+ const observer=new ResizeObserver(resize);observer.observe(stage);host.showModal();document.body.classList.add('ink-editor-open');const initial=book.page.viewport;if(initial){zoom=initial.zoom;customWidth=initial.width||INK_WIDTH;zoomSelect.value=zoom;}redraw();resize();if(initial)stage.scrollTo(initial.left||0,initial.top||0);
+ return{close,async dispose(){finish();rememberViewport();changed++;try{await flush();destroy();}catch(e){saveError(e);host.querySelector('.ink-confirm').hidden=false;}}};
 }

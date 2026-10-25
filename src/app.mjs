@@ -1,3 +1,5 @@
+import {retireLocalAI} from './retire-local-ai.mjs';
+retireLocalAI().catch(()=>{});
 import {drawHome} from './home.mjs';
 import {warmChat} from './chat-warmup.mjs';
 warmChat();
@@ -9,9 +11,9 @@ import {setupSidebar} from './sidebar.mjs';
 import {createChatWorkspace} from './side-chat.mjs';
 import {ViewCache,viewPath,viewGroup,capturePosition,restorePosition} from './view-cache.mjs';
 const store=new Store();let main=document.getElementById('main');
-const nav=[['home','ホーム','home'],['exam','旭丘・5教科対策','learn'],['learn','学ぶ・覚える','learn'],['notes','ノート・資料','notes'],['plan','学習プラン','plan'],['insights','振り返り','insights'],['chat','AIチャット','chat'],['ai-tools','AI学習ツール','flask']];
+const nav=[['home','ホーム','home'],['exam','旭丘・5教科対策','learn'],['learn','学ぶ・覚える','learn'],['notes','ノート・資料','notes'],['plan','カレンダー','plan'],['insights','振り返り','insights'],['chat','AIチャット','chat'],['ai-tools','AI学習ツール','flask']];
 const navHTML=items=>items.map(([id,label,glyph])=>`<a href="#/${id}" data-nav="${id}">${icon(glyph)}<span>${label}</span></a>`).join('');
-document.getElementById('side-nav').innerHTML=navHTML(nav);document.getElementById('side-bottom').innerHTML=navHTML([['settings','設定とデータ','settings']]);document.getElementById('mobile-nav').innerHTML=navHTML([['home','ホーム','home'],['learn','学ぶ','learn'],['notes','ノート','notes'],['plan','計画','plan'],['chat','AI','chat']]);
+document.getElementById('side-nav').innerHTML=navHTML(nav);document.getElementById('side-bottom').innerHTML=navHTML([['settings','設定とデータ','settings']]);document.getElementById('mobile-nav').innerHTML=navHTML([['home','ホーム','home'],['learn','学ぶ','learn'],['notes','ノート','notes'],['plan','予定','plan'],['chat','AI','chat']]);
 document.getElementById('global-search').innerHTML=icon('search')+'<span>ノート・教材を検索</span><kbd>⌘ K</kbd>';document.getElementById('settings-link').innerHTML=icon('settings');
 setupSidebar();
 document.querySelector('.skip').onclick=e=>{e.preventDefault();main.focus();main.scrollIntoView();};
@@ -24,7 +26,7 @@ async function search(){const s=store.state;dialog('RISE内を検索',field('キ
 document.getElementById('global-search').onclick=()=>search().catch(e=>toast(e.message,true));document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();search().catch(e=>toast(e.message,true));}});
 function routeInfo(path){const [pathname,search='']=path.split('?'),[route,tail='']=pathname.split('/');return {route,tail,query:new URLSearchParams(search)};}
 function chrome(path){
- const {route}=routeInfo(path),group=viewGroup(path),name=features.find(x=>x.id===route)?.title||nav.find(x=>x[0]===route)?.[1]||({'device-ai':'端末内AI','handwriting-clean':'手書き消去'})[route]||'設定';
+ const {route}=routeInfo(path),group=viewGroup(path),name=features.find(x=>x.id===route)?.title||nav.find(x=>x[0]===route)?.[1]||({desk:'ノートと資料','handwriting-clean':'手書き消去'})[route]||'設定';
  document.title='RISE | '+name;document.getElementById('breadcrumb').textContent='ワークスペース / '+name;
  document.getElementById('school-label').textContent=store.state.settings.school;document.getElementById('avatar').textContent=(store.state.settings.name||'R').slice(0,1);
  document.querySelectorAll('[data-nav]').forEach(x=>{const active=x.dataset.nav===group;x.classList.toggle('active',active);if(active)x.setAttribute('aria-current','page');else x.removeAttribute('aria-current');x.href='#/'+views.destination(x.dataset.nav);});
@@ -38,7 +40,7 @@ const views=new ViewCache({
   if(route==='chat'||route==='ai-task')return()=>{};
   if(route==='home'||route==='learn'){const readingIndex=route==='home'?await data('reading/index'):null;const draw=()=>route==='home'?drawHome(host,store.state,readingIndex):learning(host);draw();return Object.assign(()=>{},{refresh:draw});}
   host.innerHTML='<div class="loading" role="status">読み込んでいます…</div>';
-  const file=({'device-ai':'device-ai','handwriting-clean':'handwriting-clean',classical:'classical','ai-tools':'ai-tools',exam:'exam-hub',explore:'explore',evidence:'evidence',listening:'listening'})[route]||(['reading','vocabulary','review','memory','history'].includes(route)?'learn':route==='labs'?'labs':'workspace');
+  const file=({desk:'desk','handwriting-clean':'handwriting-clean',classical:'classical','ai-tools':'ai-tools',exam:'exam-hub',explore:'explore',evidence:'evidence',listening:'listening'})[route]||(['reading','vocabulary','review','memory','history'].includes(route)?'learn':route==='labs'?'labs':'workspace');
   const mod=await import('./views/'+file+'.mjs');if(!views.active(entry))return;
   return mod.mount({store,main:host,data,render,chat:chatWorkspace,active:()=>views.active(entry),route,tail,query,
    rememberPath:()=>{views.remember(location.hash);chrome(entry.path);},beforeRestore:()=>views.clearInactive()});
@@ -47,7 +49,7 @@ const views=new ViewCache({
 });
 export async function render(options={}){
  let path=viewPath(location.hash);
- if(routeInfo(path).route==='web'){path='home';history.replaceState(history.state,'','#/home');}
+ if(['web','device-ai'].includes(routeInfo(path).route)){path='home';history.replaceState(history.state,'','#/home');}
  await views.show(path,options);
 }
 // Only sidebar/mobile navigation resumes the last screen in a section. Links to
