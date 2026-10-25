@@ -1,2 +1,6 @@
 import {heading,link,icon} from '../ui.mjs';
-export function mount({main}){main.innerHTML=heading('AI TOOLS','AI学習ツール','目的を選んで、資料を添えて使います。通常の質問はAIチャットへ。',link('AIチャット','chat','secondary'))+`<div class="grid-3">${[['clean','手書きを消す','書き込んだ教材の写真から、手書きを消したコピーを作成。印刷された文字や図は原本と照合してください。'],['similar','類題を作る','教材や問題文をもとに、基礎・標準・発展の類題と解説を作成。'],['image','画像を作る','説明に使う図やイメージを、文章や参考画像から作成。']].map(([id,title,description])=>`<section class="panel"><span class="feature-icon">${icon('flask',24)}</span><h2>${title}</h2><p>${description}</p>${link('使う','ai-task?mode='+id,'primary')}</section>`).join('')}</div><p class="small muted section-space">PCへの接続とログインが必要です。お使いのCodexの利用枠で処理します。</p>`;return()=>{};}
+export function mount({main}){
+ const tools=[['handwriting-clean','手書きを消す','複数枚をまとめて処理。消去範囲を直し、原本と結果を保存できます。'],['ai-task?mode=similar','類題を作る','教材から、難易度に合わせた類題と解説を作成。'],['ai-task?mode=image','画像を作る','文章や参考画像から、図やイメージを作成。'],['device-ai','端末内AI','通信なしで質問できるモデルを準備・比較します。']];
+ main.innerHTML=heading('AI TOOLS','AI学習ツール','',link('AIチャット','chat','secondary'))+`<div class="grid-3">${tools.map(([route,title,description])=>`<section class="panel"><span class="feature-icon">${icon('flask',24)}</span><h2>${title}</h2><p>${description}</p>${link('使う',route,'primary')}</section>`).join('')}</div>`;
+ return()=>{};
+}
