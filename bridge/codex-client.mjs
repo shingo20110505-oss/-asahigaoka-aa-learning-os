@@ -16,6 +16,11 @@ export async function discoverCodex(){
   if(base){try{const dirs=await fs.readdir(base,{withFileTypes:true}),candidates=[];for(const d of dirs.filter(x=>x.isDirectory())){const file=path.join(base,d.name,'codex.exe');try{candidates.push({file,mtime:(await fs.stat(file)).mtimeMs});}catch{}}candidates.sort((a,b)=>b.mtime-a.mtime);if(candidates.length)return candidates[0].file;}catch{}}
   return 'codex';
 }
+// The desktop app replaces its versioned executable directory during updates.
+// Resolve the automatic choice for every connection, not from an old PATH.
+export async function resolveCodexExecutable(configured){
+  return !configured||configured==='codex'?await discoverCodex():configured;
+}
 export class CodexClient {
   constructor({executable,cwd,env,args=codexArguments(),requestTimeout=30000}){
     this.pending=new Map();this.observers=new Set();this.next=1;this.closed=false;this.requestTimeout=requestTimeout;
@@ -42,6 +47,6 @@ export class CodexClient {
   close(){this.finish(Error('Codex接続を閉じました'));this.lines.close();this.child.kill();}
 }
 export async function openCodex(privateDir,config={}){
-  const environment=await codexEnvironment(privateDir),client=new CodexClient({executable:config.codexExecutable||await discoverCodex(),...environment,args:codexArguments({images:Boolean(config.imageMode),search:Boolean(config.webSearch)})});
+  const environment=await codexEnvironment(privateDir),client=new CodexClient({executable:await resolveCodexExecutable(config.codexExecutable),...environment,args:codexArguments({images:Boolean(config.imageMode),search:Boolean(config.webSearch)})});
   try{await client.initialize();return client;}catch(error){client.close();throw error;}
 }
