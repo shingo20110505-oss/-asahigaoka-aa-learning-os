@@ -1,0 +1,99 @@
+{
+  "id": "Qwen3.5-4B-q4f16_1-MLC",
+  "startedAt": "2026-10-26T07:45:01.820Z",
+  "navigatorOnline": true,
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "platform": "Win32",
+    "hardwareConcurrency": 12,
+    "deviceMemory": 16,
+    "maxTouchPoints": 0,
+    "secureContext": true,
+    "crossOriginIsolated": false,
+    "webAssembly": true,
+    "webGPU": true,
+    "gpu": {
+      "vendor": "amd",
+      "architecture": "rdna-2",
+      "device": "",
+      "description": ""
+    },
+    "features": [
+      "depth32float-stencil8",
+      "rg11b10ufloat-renderable",
+      "texture-formats-tier1",
+      "bgra8unorm-storage",
+      "chromium-experimental-multi-draw-indirect",
+      "texture-compression-bc",
+      "dual-source-blending",
+      "chromium-experimental-sampling-resource-table",
+      "core-features-and-limits",
+      "chromium-experimental-timestamp-query-inside-passes",
+      "float32-filterable",
+      "indirect-first-instance",
+      "float32-blendable",
+      "atomic-vec2u-min-max",
+      "subgroup-size-control",
+      "texture-compression-unaligned",
+      "depth-clip-control",
+      "texture-compression-bc-sliced-3d",
+      "timestamp-query",
+      "texture-formats-tier2",
+      "shader-f16",
+      "clip-distances",
+      "primitive-index",
+      "texture-component-swizzle",
+      "subgroups"
+    ],
+    "limits": {
+      "maxBufferSize": 2147483648,
+      "maxStorageBufferBindingSize": 2147483644,
+      "maxStorageBuffersPerShaderStage": 16
+    },
+    "storage": {
+      "quota": 17178489694,
+      "usage": 6441071454,
+      "usageDetails": {
+        "caches": 6441070592,
+        "serviceWorkerRegistrations": 862
+      }
+    },
+    "memory": {
+      "jsUsedHeapBytes": 3449342,
+      "jsHeapLimitBytes": 4395630592,
+      "note": "JS heap only; excludes GPU/native allocations"
+    },
+    "physicalDevice": "unspecified; UA is not hardware proof"
+  },
+  "networkControl": "worker blocks external fetch; for full-page proof also disable network before reloading",
+  "load": {
+    "loadMs": 8131.5,
+    "backend": "webllm",
+    "context": 4096
+  },
+  "answer": {
+    "answer": "<think>\n\n</think>\n\n結論：光合成で取り入れるのは**二酸化炭素**（CO₂）、出すのは**酸素**（O₂）です。\n\n理由：植物は光合成の過程で、葉の気孔から**二酸化炭素**を取り込み、太陽光エネルギーを使って糖を合成します。その結果、副産物として**酸素**を発生させ、再び気孔から放出します。",
+    "firstTokenMs": 5149.399999999907,
+    "firstVisibleTokenMs": 5149.5,
+    "totalMs": 25120.599999999627,
+    "usage": {
+      "completion_tokens": 85,
+      "prompt_tokens": 97,
+      "total_tokens": 182,
+      "extra": {
+        "e2e_latency_s": 25.12,
+        "prefill_tokens_per_s": 18.84739439630013,
+        "decode_tokens_per_s": 4.210821812056673,
+        "time_to_first_token_s": 5.1466000000000935,
+        "time_per_output_token_s": 0.23748333333335103
+      }
+    },
+    "finishReason": "stop",
+    "timings": null,
+    "outputTokensPerSecond": 3.383677141469601,
+    "decodeTokensPerSecond": 4.210821812056673
+  },
+  "completed": true,
+  "fullPageReloadWithOriginServerStopped": true,
+  "uncachedFetchFailed": true
+}

@@ -1,0 +1,38 @@
+{
+  "webllm": {
+    "version": "0.2.86",
+    "shasum": "8ebbf3f3eafb1fb75dc911d78a7a4ccf6cf0eabb",
+    "tarball": "https://registry.npmjs.org/@mlc-ai/web-llm/-/web-llm-0.2.86.tgz",
+    "fileCount": 73,
+    "integrity": "sha512-plciXBCYtY7iTKHzEcsqOfSO+s5u8NqMYFPnHmRbsN8CEdKcolgXIoGLPbzO6FtJHV43m7YP00x6qQ6Kb8CJJw==",
+    "signatures": [
+      {
+        "sig": "MEUCIQCOpCnwimen03BcIfvj/SljSeAB6/HG/6PRrel9xuj+kwIgKZ5GV8MWFOzaZ5a+EFQnxtsFpYCieNlLW90zyCrxQ3M=",
+        "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+      },
+      {
+        "sig": "MEYCIQDYjPKTth73h5bAflLud3zWITYdKOIpB5A314qtIfa2JAIhAJb731RdUAvhThs9WQb3CWUoBSvqgH5ZiGMCyAlb0pP6",
+        "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+      }
+    ],
+    "unpackedSize": 14415285
+  },
+  "wllama": {
+    "version": "3.8.1",
+    "shasum": "e0353359cbfa3d93c844bf5787914bfedc1190cb",
+    "tarball": "https://registry.npmjs.org/@wllama/wllama/-/wllama-3.8.1.tgz",
+    "fileCount": 90,
+    "integrity": "sha512-Pl7BEJhPU8OHnV/yhn3DFZYhLLOdSHh+4TND79WCftHnlUAdQPAsyc/CfIOY+4mVxvf5VW3Xw3Uf7BBfotS1gw==",
+    "signatures": [
+      {
+        "sig": "MEUCIEkxUs9qhqvsk76eev+TBr0qXle4jCHBrRJXkthaUBtUAiEA1tabExFBsC36izXTdQKKrcbWtyiyWlVVS/ViKEi5T9g=",
+        "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+      },
+      {
+        "sig": "MEUCIQD7hBzBvpWKLB9VhqwtOKNsIlNnNVG7SGg0aTfCKYQFxgIgVfUvax6Qwntpd19Evfiz7ogVmlwZrhTUTzEGC/k9/VQ=",
+        "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+      }
+    ],
+    "unpackedSize": 20248968
+  }
+}

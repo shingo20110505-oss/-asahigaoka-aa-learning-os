@@ -1,0 +1,1407 @@
+{
+  "mode": "context",
+  "results": [
+    {
+      "id": "Qwen2.5-3B-Instruct-q4f16_1-MLC",
+      "kind": "synthetic 21-turn history retention; prior assistant turns are fixtures, not model-generated",
+      "messages": [
+        {
+          "role": "system",
+          "content": "あなたは日本の中学生の学習を手伝うアシスタントです。日本語で、結論と必要な理由を簡潔に説明してください。誤った前提は訂正してください。資料がないことや分からないことは推測で断定せず伝えてください。検索や画像解析を実行したとは言わないでください。"
+        },
+        {
+          "role": "user",
+          "content": "最初の約束を記憶してください。合言葉は「青いノート」。一次関数 y=2x+1 で x=-3 のとき y=-5 です。最後にこの2点を質問します。"
+        },
+        {
+          "role": "assistant",
+          "content": "合言葉と計算結果を確認しました。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録1。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録1を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録2。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録2を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録3。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録3を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録4。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録4を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録5。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録5を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録6。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録6を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録7。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録7を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録8。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録8を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録9。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録9を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録10。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録10を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録11。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録11を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録12。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録12を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録13。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録13を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録14。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録14を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録15。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録15を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録16。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録16を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録17。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録17を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録18。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録18を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録19。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録19を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録20。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録20を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "最初に伝えた合言葉と、x=-3 のときの y の値を答えてください。短く答えてください。"
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "platform": "Win32",
+        "hardwareConcurrency": 12,
+        "deviceMemory": 16,
+        "maxTouchPoints": 0,
+        "secureContext": true,
+        "crossOriginIsolated": false,
+        "webAssembly": true,
+        "webGPU": true,
+        "gpu": {
+          "vendor": "amd",
+          "architecture": "rdna-2",
+          "device": "",
+          "description": ""
+        },
+        "features": [
+          "depth32float-stencil8",
+          "rg11b10ufloat-renderable",
+          "bgra8unorm-storage",
+          "texture-formats-tier1",
+          "chromium-experimental-multi-draw-indirect",
+          "texture-compression-bc",
+          "dual-source-blending",
+          "core-features-and-limits",
+          "chromium-experimental-sampling-resource-table",
+          "chromium-experimental-timestamp-query-inside-passes",
+          "float32-filterable",
+          "indirect-first-instance",
+          "float32-blendable",
+          "atomic-vec2u-min-max",
+          "subgroup-size-control",
+          "texture-compression-unaligned",
+          "depth-clip-control",
+          "texture-compression-bc-sliced-3d",
+          "texture-formats-tier2",
+          "timestamp-query",
+          "clip-distances",
+          "shader-f16",
+          "primitive-index",
+          "texture-component-swizzle",
+          "subgroups"
+        ],
+        "limits": {
+          "maxBufferSize": 2147483648,
+          "maxStorageBufferBindingSize": 2147483644,
+          "maxStorageBuffersPerShaderStage": 16
+        },
+        "storage": {
+          "quota": 19285101989,
+          "usage": 8547683749,
+          "usageDetails": {
+            "caches": 6442748416,
+            "fileSystem": 2104934471,
+            "serviceWorkerRegistrations": 862
+          }
+        },
+        "memory": {
+          "jsUsedHeapBytes": 2808002,
+          "jsHeapLimitBytes": 4395630592,
+          "note": "JS heap only; excludes GPU/native allocations"
+        },
+        "physicalDevice": "Windows desktop / Ryzen 5 7535U / Radeon / Chrome; NOT an iPad"
+      },
+      "load": {
+        "loadMs": 6801.5,
+        "backend": "webllm",
+        "context": 4096
+      },
+      "result": {
+        "answer": "合言葉は「青いノート」です。x=-3 のとき、y 的值為 -5。",
+        "firstTokenMs": 85457.5,
+        "firstVisibleTokenMs": 85457.60000000056,
+        "totalMs": 89054.5,
+        "usage": {
+          "completion_tokens": 26,
+          "prompt_tokens": 2533,
+          "total_tokens": 2559,
+          "extra": {
+            "e2e_latency_s": 89.054,
+            "prefill_tokens_per_s": 29.64153981538679,
+            "decode_tokens_per_s": 6.963788300835654,
+            "time_to_first_token_s": 85.45440000000038,
+            "time_per_output_token_s": 0.1436
+          }
+        },
+        "finishReason": "stop",
+        "timings": null,
+        "outputTokensPerSecond": 0.29195604938548864,
+        "decodeTokensPerSecond": 6.963788300835654
+      },
+      "completed": true
+    },
+    {
+      "id": "Qwen3-4B-q4f16_1-MLC",
+      "kind": "synthetic 21-turn history retention; prior assistant turns are fixtures, not model-generated",
+      "messages": [
+        {
+          "role": "system",
+          "content": "あなたは日本の中学生の学習を手伝うアシスタントです。日本語で、結論と必要な理由を簡潔に説明してください。誤った前提は訂正してください。資料がないことや分からないことは推測で断定せず伝えてください。検索や画像解析を実行したとは言わないでください。"
+        },
+        {
+          "role": "user",
+          "content": "最初の約束を記憶してください。合言葉は「青いノート」。一次関数 y=2x+1 で x=-3 のとき y=-5 です。最後にこの2点を質問します。"
+        },
+        {
+          "role": "assistant",
+          "content": "合言葉と計算結果を確認しました。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録1。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録1を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録2。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録2を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録3。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録3を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録4。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録4を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録5。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録5を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録6。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録6を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録7。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録7を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録8。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録8を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録9。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録9を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録10。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録10を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録11。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録11を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録12。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録12を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録13。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録13を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録14。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録14を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録15。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録15を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録16。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録16を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録17。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録17を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録18。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録18を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録19。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録19を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録20。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録20を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "最初に伝えた合言葉と、x=-3 のときの y の値を答えてください。短く答えてください。"
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "platform": "Win32",
+        "hardwareConcurrency": 12,
+        "deviceMemory": 16,
+        "maxTouchPoints": 0,
+        "secureContext": true,
+        "crossOriginIsolated": false,
+        "webAssembly": true,
+        "webGPU": true,
+        "gpu": {
+          "vendor": "amd",
+          "architecture": "rdna-2",
+          "device": "",
+          "description": ""
+        },
+        "features": [
+          "depth32float-stencil8",
+          "rg11b10ufloat-renderable",
+          "texture-formats-tier1",
+          "bgra8unorm-storage",
+          "chromium-experimental-multi-draw-indirect",
+          "texture-compression-bc",
+          "dual-source-blending",
+          "chromium-experimental-sampling-resource-table",
+          "core-features-and-limits",
+          "chromium-experimental-timestamp-query-inside-passes",
+          "float32-filterable",
+          "indirect-first-instance",
+          "float32-blendable",
+          "atomic-vec2u-min-max",
+          "subgroup-size-control",
+          "texture-compression-unaligned",
+          "depth-clip-control",
+          "texture-compression-bc-sliced-3d",
+          "texture-formats-tier2",
+          "timestamp-query",
+          "shader-f16",
+          "clip-distances",
+          "primitive-index",
+          "texture-component-swizzle",
+          "subgroups"
+        ],
+        "limits": {
+          "maxBufferSize": 2147483648,
+          "maxStorageBufferBindingSize": 2147483644,
+          "maxStorageBuffersPerShaderStage": 16
+        },
+        "storage": {
+          "quota": 19279186085,
+          "usage": 8541767845,
+          "usageDetails": {
+            "caches": 6436832512,
+            "fileSystem": 2104934471,
+            "serviceWorkerRegistrations": 862
+          }
+        },
+        "memory": {
+          "jsUsedHeapBytes": 2404196,
+          "jsHeapLimitBytes": 4395630592,
+          "note": "JS heap only; excludes GPU/native allocations"
+        },
+        "physicalDevice": "Windows desktop / Ryzen 5 7535U / Radeon / Chrome; NOT an iPad"
+      },
+      "load": {
+        "loadMs": 8655,
+        "backend": "webllm",
+        "context": 4096
+      },
+      "result": {
+        "answer": "<think>\n\n</think>\n\n合言葉は「青いノート」、x=-3 のとき y=-5 です。",
+        "firstTokenMs": 198205,
+        "firstVisibleTokenMs": 198205,
+        "totalMs": 201425,
+        "usage": {
+          "completion_tokens": 23,
+          "prompt_tokens": 2537,
+          "total_tokens": 2560,
+          "extra": {
+            "e2e_latency_s": 201.425,
+            "prefill_tokens_per_s": 12.80006619506046,
+            "decode_tokens_per_s": 6.8437752753091905,
+            "time_to_first_token_s": 198.20210000000057,
+            "time_per_output_token_s": 0.14611818181812256
+          }
+        },
+        "finishReason": "stop",
+        "timings": null,
+        "outputTokensPerSecond": 0.1141864217450664,
+        "decodeTokensPerSecond": 6.8437752753091905
+      },
+      "completed": true
+    },
+    {
+      "id": "Qwen3.5-4B-q4f16_1-MLC",
+      "kind": "synthetic 21-turn history retention; prior assistant turns are fixtures, not model-generated",
+      "messages": [
+        {
+          "role": "system",
+          "content": "あなたは日本の中学生の学習を手伝うアシスタントです。日本語で、結論と必要な理由を簡潔に説明してください。誤った前提は訂正してください。資料がないことや分からないことは推測で断定せず伝えてください。検索や画像解析を実行したとは言わないでください。"
+        },
+        {
+          "role": "user",
+          "content": "最初の約束を記憶してください。合言葉は「青いノート」。一次関数 y=2x+1 で x=-3 のとき y=-5 です。最後にこの2点を質問します。"
+        },
+        {
+          "role": "assistant",
+          "content": "合言葉と計算結果を確認しました。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録1。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録1を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録2。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録2を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録3。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録3を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録4。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録4を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録5。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録5を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録6。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録6を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録7。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録7を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録8。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録8を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録9。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録9を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録10。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録10を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録11。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録11を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録12。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録12を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録13。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録13を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録14。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録14を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録15。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録15を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録16。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録16を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録17。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録17を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録18。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録18を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録19。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録19を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録20。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録20を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "最初に伝えた合言葉と、x=-3 のときの y の値を答えてください。短く答えてください。"
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "platform": "Win32",
+        "hardwareConcurrency": 12,
+        "deviceMemory": 16,
+        "maxTouchPoints": 0,
+        "secureContext": true,
+        "crossOriginIsolated": false,
+        "webAssembly": true,
+        "webGPU": true,
+        "gpu": {
+          "vendor": "amd",
+          "architecture": "rdna-2",
+          "device": "",
+          "description": ""
+        },
+        "features": [
+          "depth32float-stencil8",
+          "rg11b10ufloat-renderable",
+          "texture-formats-tier1",
+          "bgra8unorm-storage",
+          "chromium-experimental-multi-draw-indirect",
+          "texture-compression-bc",
+          "dual-source-blending",
+          "chromium-experimental-sampling-resource-table",
+          "core-features-and-limits",
+          "chromium-experimental-timestamp-query-inside-passes",
+          "float32-filterable",
+          "indirect-first-instance",
+          "float32-blendable",
+          "atomic-vec2u-min-max",
+          "subgroup-size-control",
+          "texture-compression-unaligned",
+          "depth-clip-control",
+          "texture-compression-bc-sliced-3d",
+          "timestamp-query",
+          "texture-formats-tier2",
+          "shader-f16",
+          "clip-distances",
+          "primitive-index",
+          "texture-component-swizzle",
+          "subgroups"
+        ],
+        "limits": {
+          "maxBufferSize": 2147483648,
+          "maxStorageBufferBindingSize": 2147483644,
+          "maxStorageBuffersPerShaderStage": 16
+        },
+        "storage": {
+          "quota": 19279186085,
+          "usage": 8541767845,
+          "usageDetails": {
+            "caches": 6436832512,
+            "fileSystem": 2104934471,
+            "serviceWorkerRegistrations": 862
+          }
+        },
+        "memory": {
+          "jsUsedHeapBytes": 2796880,
+          "jsHeapLimitBytes": 4395630592,
+          "note": "JS heap only; excludes GPU/native allocations"
+        },
+        "physicalDevice": "Windows desktop / Ryzen 5 7535U / Radeon / Chrome; NOT an iPad"
+      },
+      "load": {
+        "loadMs": 9380.200000000186,
+        "backend": "webllm",
+        "context": 4096
+      },
+      "result": {
+        "answer": "<think>\n\n</think>\n\n合言葉：「青いノート」\nx=-3 のときの y の値：-5",
+        "firstTokenMs": 155453.5,
+        "firstVisibleTokenMs": 155453.60000000056,
+        "totalMs": 160963.90000000037,
+        "usage": {
+          "completion_tokens": 21,
+          "prompt_tokens": 2044,
+          "total_tokens": 2065,
+          "extra": {
+            "e2e_latency_s": 160.964,
+            "prefill_tokens_per_s": 13.148888648726508,
+            "decode_tokens_per_s": 3.634183126485407,
+            "time_to_first_token_s": 155.45040000000037,
+            "time_per_output_token_s": 0.2751650000001769
+          }
+        },
+        "finishReason": "stop",
+        "timings": null,
+        "outputTokensPerSecond": 0.13046403572478024,
+        "decodeTokensPerSecond": 3.634183126485407
+      },
+      "completed": true
+    },
+    {
+      "id": "Qwen2.5-3B-GGUF-wllama-gpu",
+      "kind": "synthetic 21-turn history retention; prior assistant turns are fixtures, not model-generated",
+      "messages": [
+        {
+          "role": "system",
+          "content": "あなたは日本の中学生の学習を手伝うアシスタントです。日本語で、結論と必要な理由を簡潔に説明してください。誤った前提は訂正してください。資料がないことや分からないことは推測で断定せず伝えてください。検索や画像解析を実行したとは言わないでください。"
+        },
+        {
+          "role": "user",
+          "content": "最初の約束を記憶してください。合言葉は「青いノート」。一次関数 y=2x+1 で x=-3 のとき y=-5 です。最後にこの2点を質問します。"
+        },
+        {
+          "role": "assistant",
+          "content": "合言葉と計算結果を確認しました。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録1。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録1を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録2。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録2を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録3。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録3を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録4。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録4を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録5。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録5を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録6。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録6を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録7。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録7を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録8。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録8を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録9。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録9を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録10。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録10を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録11。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録11を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録12。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録12を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録13。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録13を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録14。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録14を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録15。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録15を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録16。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録16を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録17。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録17を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録18。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録18を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録19。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録19を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録20。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録20を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "最初に伝えた合言葉と、x=-3 のときの y の値を答えてください。短く答えてください。"
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "platform": "Win32",
+        "hardwareConcurrency": 12,
+        "deviceMemory": 16,
+        "maxTouchPoints": 0,
+        "secureContext": true,
+        "crossOriginIsolated": false,
+        "webAssembly": true,
+        "webGPU": true,
+        "gpu": {
+          "vendor": "amd",
+          "architecture": "rdna-2",
+          "device": "",
+          "description": ""
+        },
+        "features": [
+          "depth32float-stencil8",
+          "rg11b10ufloat-renderable",
+          "texture-formats-tier1",
+          "bgra8unorm-storage",
+          "chromium-experimental-multi-draw-indirect",
+          "texture-compression-bc",
+          "dual-source-blending",
+          "core-features-and-limits",
+          "chromium-experimental-sampling-resource-table",
+          "chromium-experimental-timestamp-query-inside-passes",
+          "float32-filterable",
+          "indirect-first-instance",
+          "float32-blendable",
+          "atomic-vec2u-min-max",
+          "subgroup-size-control",
+          "texture-compression-unaligned",
+          "depth-clip-control",
+          "texture-compression-bc-sliced-3d",
+          "timestamp-query",
+          "texture-formats-tier2",
+          "shader-f16",
+          "clip-distances",
+          "primitive-index",
+          "texture-component-swizzle",
+          "subgroups"
+        ],
+        "limits": {
+          "maxBufferSize": 2147483648,
+          "maxStorageBufferBindingSize": 2147483644,
+          "maxStorageBuffersPerShaderStage": 16
+        },
+        "storage": {
+          "quota": 19279186085,
+          "usage": 8541767845,
+          "usageDetails": {
+            "caches": 6436832512,
+            "fileSystem": 2104934471,
+            "serviceWorkerRegistrations": 862
+          }
+        },
+        "memory": {
+          "jsUsedHeapBytes": 2284364,
+          "jsHeapLimitBytes": 4395630592,
+          "note": "JS heap only; excludes GPU/native allocations"
+        },
+        "physicalDevice": "Windows desktop / Ryzen 5 7535U / Radeon / Chrome; NOT an iPad"
+      },
+      "load": {
+        "loadMs": 10968.700000000186,
+        "backend": "wllama",
+        "context": 4096,
+        "webGPUSupported": true,
+        "runtimeLogs": [
+          "Multithread enabled: false, pthreadPoolSize: 0",
+          "ggml_webgpu: adapter_info: vendor_id: 0 | vendor: amd | architecture: rdna-2 | device_id: 0 | name:  | device_desc: ",
+          "llama_prepare_model_devices: using device WebGPU (WebGPU) (unknown id) - 2048 MiB free",
+          "load_tensors: offloading output layer to GPU",
+          "load_tensors: offloading 35 repeating layers to GPU",
+          "load_tensors: offloaded 37/37 layers to GPU",
+          "load_tensors:          CPU model buffer size =   166.92 MiB",
+          "load_tensors:       WebGPU model buffer size =  1834.82 MiB",
+          "llama_context:        CPU  output buffer size =     2.32 MiB",
+          "llama_kv_cache:     WebGPU KV buffer size =   144.00 MiB",
+          "sched_reserve:     WebGPU compute buffer size =    20.13 MiB",
+          "sched_reserve:        CPU compute buffer size =     3.00 MiB"
+        ],
+        "nGpuLayersRequested": 99,
+        "nThreadsRequested": 1
+      },
+      "result": {
+        "answer": "合言葉は「青いノート」です。x=-3 のとき、一次関数 y=2x+1 の y 値は -5 です。",
+        "firstTokenMs": 95328.5,
+        "firstVisibleTokenMs": 95328.59999999963,
+        "totalMs": 99967.20000000019,
+        "usage": null,
+        "finishReason": "stop",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 2533,
+          "prompt_ms": 95287.799,
+          "prompt_per_token_ms": 37.618554678247136,
+          "prompt_per_second": 26.58262680618743,
+          "predicted_n": 39,
+          "predicted_ms": 4639.101,
+          "predicted_per_token_ms": 122.08160526315788,
+          "predicted_per_second": 8.191242225595003
+        },
+        "outputTokensPerSecond": null,
+        "decodeTokensPerSecond": 8.191242225595003
+      },
+      "completed": true
+    },
+    {
+      "id": "Qwen3-4B-Instruct-2507-Q3_K_M-wllama",
+      "kind": "synthetic 21-turn history retention; prior assistant turns are fixtures, not model-generated",
+      "messages": [
+        {
+          "role": "system",
+          "content": "あなたは日本の中学生の学習を手伝うアシスタントです。日本語で、結論と必要な理由を簡潔に説明してください。誤った前提は訂正してください。資料がないことや分からないことは推測で断定せず伝えてください。検索や画像解析を実行したとは言わないでください。"
+        },
+        {
+          "role": "user",
+          "content": "最初の約束を記憶してください。合言葉は「青いノート」。一次関数 y=2x+1 で x=-3 のとき y=-5 です。最後にこの2点を質問します。"
+        },
+        {
+          "role": "assistant",
+          "content": "合言葉と計算結果を確認しました。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録1。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録1を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録2。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録2を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録3。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録3を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録4。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録4を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録5。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録5を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録6。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録6を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録7。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録7を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録8。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録8を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録9。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録9を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録10。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録10を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録11。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録11を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録12。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録12を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録13。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録13を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録14。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録14を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録15。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録15を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録16。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録16を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録17。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録17を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録18。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録18を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録19。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録19を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "復習記録20。学習では、問題文に示された条件を整理し、式の意味を確認してから計算します。答えが出たら単位と符号を確かめ、元の式に代入して検算します。分からない箇所は教科書に戻って確認します。今日は、この順序を守ってノートに途中式を残しました。"
+        },
+        {
+          "role": "assistant",
+          "content": "記録20を確認しました。条件整理、計算、検算の順序ですね。"
+        },
+        {
+          "role": "user",
+          "content": "最初に伝えた合言葉と、x=-3 のときの y の値を答えてください。短く答えてください。"
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "platform": "Win32",
+        "hardwareConcurrency": 12,
+        "deviceMemory": 16,
+        "maxTouchPoints": 0,
+        "secureContext": true,
+        "crossOriginIsolated": false,
+        "webAssembly": true,
+        "webGPU": true,
+        "gpu": {
+          "vendor": "amd",
+          "architecture": "rdna-2",
+          "device": "",
+          "description": ""
+        },
+        "features": [
+          "depth32float-stencil8",
+          "rg11b10ufloat-renderable",
+          "texture-formats-tier1",
+          "bgra8unorm-storage",
+          "chromium-experimental-multi-draw-indirect",
+          "texture-compression-bc",
+          "dual-source-blending",
+          "core-features-and-limits",
+          "chromium-experimental-sampling-resource-table",
+          "chromium-experimental-timestamp-query-inside-passes",
+          "float32-filterable",
+          "indirect-first-instance",
+          "float32-blendable",
+          "atomic-vec2u-min-max",
+          "subgroup-size-control",
+          "texture-compression-unaligned",
+          "depth-clip-control",
+          "texture-compression-bc-sliced-3d",
+          "timestamp-query",
+          "texture-formats-tier2",
+          "shader-f16",
+          "clip-distances",
+          "primitive-index",
+          "texture-component-swizzle",
+          "subgroups"
+        ],
+        "limits": {
+          "maxBufferSize": 2147483648,
+          "maxStorageBufferBindingSize": 2147483644,
+          "maxStorageBuffersPerShaderStage": 16
+        },
+        "storage": {
+          "quota": 19277506725,
+          "usage": 8540088485,
+          "usageDetails": {
+            "caches": 6435153152,
+            "fileSystem": 2104934471,
+            "serviceWorkerRegistrations": 862
+          }
+        },
+        "memory": {
+          "jsUsedHeapBytes": 2395415,
+          "jsHeapLimitBytes": 4395630592,
+          "note": "JS heap only; excludes GPU/native allocations"
+        },
+        "physicalDevice": "Windows desktop / Ryzen 5 7535U / Radeon / Chrome; NOT an iPad"
+      },
+      "load": {
+        "loadMs": 11071.200000000186,
+        "backend": "wllama",
+        "context": 4096,
+        "webGPUSupported": true,
+        "runtimeLogs": [
+          "Multithread enabled: false, pthreadPoolSize: 0",
+          "ggml_webgpu: adapter_info: vendor_id: 0 | vendor: amd | architecture: rdna-2 | device_id: 0 | name:  | device_desc: ",
+          "llama_prepare_model_devices: using device WebGPU (WebGPU) (unknown id) - 2048 MiB free",
+          "load_tensors: offloading output layer to GPU",
+          "load_tensors: offloading 35 repeating layers to GPU",
+          "load_tensors: offloaded 37/37 layers to GPU",
+          "load_tensors:          CPU model buffer size =   304.28 MiB",
+          "load_tensors:       WebGPU model buffer size =  1973.78 MiB",
+          "llama_context:        CPU  output buffer size =     2.32 MiB",
+          "llama_kv_cache:     WebGPU KV buffer size =   576.00 MiB",
+          "sched_reserve:     WebGPU compute buffer size =    19.75 MiB",
+          "sched_reserve:        CPU compute buffer size =     3.50 MiB"
+        ],
+        "nGpuLayersRequested": 99,
+        "nThreadsRequested": 1
+      },
+      "result": {
+        "answer": "合言葉：青いノート  \nx = -3 のときの y の値：-5",
+        "firstTokenMs": 144342.90000000037,
+        "firstVisibleTokenMs": 144343,
+        "totalMs": 149587.7000000002,
+        "usage": null,
+        "finishReason": "stop",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 2533,
+          "prompt_ms": 144312.899,
+          "prompt_per_token_ms": 56.97311448874852,
+          "prompt_per_second": 17.55213856524357,
+          "predicted_n": 24,
+          "predicted_ms": 5244.701,
+          "predicted_per_token_ms": 228.03047826086956,
+          "predicted_per_second": 4.385378689843329
+        },
+        "outputTokensPerSecond": null,
+        "decodeTokensPerSecond": 4.385378689843329
+      },
+      "completed": true
+    }
+  ]
+}

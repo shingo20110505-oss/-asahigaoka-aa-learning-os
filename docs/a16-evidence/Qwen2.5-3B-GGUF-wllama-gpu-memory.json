@@ -1,0 +1,1646 @@
+{
+  "scope": "Only processes belonging to this isolated Chrome instance. Sum of working sets may double-count shared pages; private commit is not physical RAM; driver/GPU resident memory is not fully covered. Windows reference, not A16.",
+  "intervalMs": 10000,
+  "samples": [
+    {
+      "at": "2026-10-26T07:46:22.323Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 114425856,
+          "PrivateMemorySize64": 110403584
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 90820608,
+          "PrivateMemorySize64": 46657536
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 32710656,
+          "PrivateMemorySize64": 15745024
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 47284224,
+          "PrivateMemorySize64": 19230720
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 18944000,
+          "PrivateMemorySize64": 8273920
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 37056512,
+          "PrivateMemorySize64": 11517952
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 121098240,
+          "PrivateMemorySize64": 38318080
+        }
+      ],
+      "totalWorkingSetBytes": 462340096,
+      "totalPrivateCommitBytes": 250146816
+    },
+    {
+      "at": "2026-10-26T07:46:32.681Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 149110784,
+          "PrivateMemorySize64": 146931712
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 89714688,
+          "PrivateMemorySize64": 45178880
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32337920,
+          "PrivateMemorySize64": 15364096
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 185192448,
+          "PrivateMemorySize64": 129667072
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 49475584,
+          "PrivateMemorySize64": 18751488
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19472384,
+          "PrivateMemorySize64": 8318976
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 42024960,
+          "PrivateMemorySize64": 13549568
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 147902464,
+          "PrivateMemorySize64": 49197056
+        }
+      ],
+      "totalWorkingSetBytes": 715231232,
+      "totalPrivateCommitBytes": 426958848
+    },
+    {
+      "at": "2026-10-26T07:46:42.658Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 149397504,
+          "PrivateMemorySize64": 146935808
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 89714688,
+          "PrivateMemorySize64": 45178880
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32337920,
+          "PrivateMemorySize64": 15364096
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 243257344,
+          "PrivateMemorySize64": 183779328
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 49475584,
+          "PrivateMemorySize64": 18751488
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19472384,
+          "PrivateMemorySize64": 8318976
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 42450944,
+          "PrivateMemorySize64": 13971456
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 147918848,
+          "PrivateMemorySize64": 49197056
+        }
+      ],
+      "totalWorkingSetBytes": 774025216,
+      "totalPrivateCommitBytes": 481497088
+    },
+    {
+      "at": "2026-10-26T07:46:52.668Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 149606400,
+          "PrivateMemorySize64": 148029440
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 86237184,
+          "PrivateMemorySize64": 39120896
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32280576,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 319361024,
+          "PrivateMemorySize64": 258400256
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 49418240,
+          "PrivateMemorySize64": 18644992
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19419136,
+          "PrivateMemorySize64": 8216576
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 42647552,
+          "PrivateMemorySize64": 13824000
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 149323776,
+          "PrivateMemorySize64": 49016832
+        }
+      ],
+      "totalWorkingSetBytes": 848293888,
+      "totalPrivateCommitBytes": 550510592
+    },
+    {
+      "at": "2026-10-26T07:47:02.663Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 149614592,
+          "PrivateMemorySize64": 148041728
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83853312,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32280576,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 354512896,
+          "PrivateMemorySize64": 292847616
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 49418240,
+          "PrivateMemorySize64": 18644992
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19419136,
+          "PrivateMemorySize64": 8216576
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 42672128,
+          "PrivateMemorySize64": 13840384
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 149360640,
+          "PrivateMemorySize64": 48971776
+        }
+      ],
+      "totalWorkingSetBytes": 881131520,
+      "totalPrivateCommitBytes": 582967296
+    },
+    {
+      "at": "2026-10-26T07:47:12.671Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 149618688,
+          "PrivateMemorySize64": 148058112
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83853312,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32280576,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 359432192,
+          "PrivateMemorySize64": 297762816
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 49418240,
+          "PrivateMemorySize64": 18644992
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19419136,
+          "PrivateMemorySize64": 8216576
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 42655744,
+          "PrivateMemorySize64": 13815808
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150913024,
+          "PrivateMemorySize64": 49315840
+        }
+      ],
+      "totalWorkingSetBytes": 887590912,
+      "totalPrivateCommitBytes": 588218368
+    },
+    {
+      "at": "2026-10-26T07:47:22.680Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 147927040,
+          "PrivateMemorySize64": 145784832
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83865600,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32292864,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 359387136,
+          "PrivateMemorySize64": 298180608
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 49430528,
+          "PrivateMemorySize64": 18644992
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19480576,
+          "PrivateMemorySize64": 8232960
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 42369024,
+          "PrivateMemorySize64": 13508608
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 148897792,
+          "PrivateMemorySize64": 47169536
+        }
+      ],
+      "totalWorkingSetBytes": 883650560,
+      "totalPrivateCommitBytes": 583925760
+    },
+    {
+      "at": "2026-10-26T07:47:32.879Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3222884352,
+          "PrivateMemorySize64": 2493370368
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83865600,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1750106112,
+          "PrivateMemorySize64": 972963840
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 50012160,
+          "PrivateMemorySize64": 19030016
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19480576,
+          "PrivateMemorySize64": 8232960
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39075840,
+          "PrivateMemorySize64": 11874304
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 151040000,
+          "PrivateMemorySize64": 48779264
+        }
+      ],
+      "totalWorkingSetBytes": 5348761600,
+      "totalPrivateCommitBytes": 3606654976
+    },
+    {
+      "at": "2026-10-26T07:47:42.869Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3144417280,
+          "PrivateMemorySize64": 2421522432
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83865600,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1601818624,
+          "PrivateMemorySize64": 823898112
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 50012160,
+          "PrivateMemorySize64": 19030016
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19451904,
+          "PrivateMemorySize64": 8224768
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39075840,
+          "PrivateMemorySize64": 11874304
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150335488,
+          "PrivateMemorySize64": 48099328
+        }
+      ],
+      "totalWorkingSetBytes": 5121273856,
+      "totalPrivateCommitBytes": 3385053184
+    },
+    {
+      "at": "2026-10-26T07:47:52.826Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3168292864,
+          "PrivateMemorySize64": 2442170368
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83865600,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1655713792,
+          "PrivateMemorySize64": 879423488
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 50012160,
+          "PrivateMemorySize64": 19030016
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19451904,
+          "PrivateMemorySize64": 8224768
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39075840,
+          "PrivateMemorySize64": 11874304
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150405120,
+          "PrivateMemorySize64": 48099328
+        }
+      ],
+      "totalWorkingSetBytes": 5199114240,
+      "totalPrivateCommitBytes": 3461226496
+    },
+    {
+      "at": "2026-10-26T07:48:02.790Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3177709568,
+          "PrivateMemorySize64": 2451886080
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83865600,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1665126400,
+          "PrivateMemorySize64": 885952512
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 50012160,
+          "PrivateMemorySize64": 19030016
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19435520,
+          "PrivateMemorySize64": 8183808
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39071744,
+          "PrivateMemorySize64": 11874304
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150368256,
+          "PrivateMemorySize64": 48054272
+        }
+      ],
+      "totalWorkingSetBytes": 5217886208,
+      "totalPrivateCommitBytes": 3477385216
+    },
+    {
+      "at": "2026-10-26T07:48:12.780Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3187736576,
+          "PrivateMemorySize64": 2461769728
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83865600,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1686405120,
+          "PrivateMemorySize64": 907440128
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 50012160,
+          "PrivateMemorySize64": 19030016
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19435520,
+          "PrivateMemorySize64": 8183808
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39071744,
+          "PrivateMemorySize64": 11874304
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150368256,
+          "PrivateMemorySize64": 48054272
+        }
+      ],
+      "totalWorkingSetBytes": 5249191936,
+      "totalPrivateCommitBytes": 3508756480
+    },
+    {
+      "at": "2026-10-26T07:48:22.825Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3193499648,
+          "PrivateMemorySize64": 2466680832
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83865600,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1719992320,
+          "PrivateMemorySize64": 941723648
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 50012160,
+          "PrivateMemorySize64": 19030016
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19472384,
+          "PrivateMemorySize64": 8232960
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39059456,
+          "PrivateMemorySize64": 11845632
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150564864,
+          "PrivateMemorySize64": 48062464
+        }
+      ],
+      "totalWorkingSetBytes": 5288763392,
+      "totalPrivateCommitBytes": 3547979776
+    },
+    {
+      "at": "2026-10-26T07:48:32.788Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3196751872,
+          "PrivateMemorySize64": 2470948864
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83877888,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1726636032,
+          "PrivateMemorySize64": 948113408
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 50024448,
+          "PrivateMemorySize64": 19030016
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19423232,
+          "PrivateMemorySize64": 8179712
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39112704,
+          "PrivateMemorySize64": 11763712
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150192128,
+          "PrivateMemorySize64": 47685632
+        }
+      ],
+      "totalWorkingSetBytes": 5298315264,
+      "totalPrivateCommitBytes": 3558125568
+    },
+    {
+      "at": "2026-10-26T07:48:42.790Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3202084864,
+          "PrivateMemorySize64": 2475868160
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83877888,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1740337152,
+          "PrivateMemorySize64": 963887104
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 50024448,
+          "PrivateMemorySize64": 19030016
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19468288,
+          "PrivateMemorySize64": 8232960
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39100416,
+          "PrivateMemorySize64": 11730944
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150290432,
+          "PrivateMemorySize64": 47710208
+        }
+      ],
+      "totalWorkingSetBytes": 5317480448,
+      "totalPrivateCommitBytes": 3578863616
+    },
+    {
+      "at": "2026-10-26T07:48:52.830Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3199643648,
+          "PrivateMemorySize64": 2473603072
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83877888,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1726570496,
+          "PrivateMemorySize64": 945184768
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 50024448,
+          "PrivateMemorySize64": 19030016
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19468288,
+          "PrivateMemorySize64": 8232960
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39100416,
+          "PrivateMemorySize64": 11730944
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150298624,
+          "PrivateMemorySize64": 47718400
+        }
+      ],
+      "totalWorkingSetBytes": 5301280768,
+      "totalPrivateCommitBytes": 3557904384
+    },
+    {
+      "at": "2026-10-26T07:49:02.844Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3205746688,
+          "PrivateMemorySize64": 2479648768
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83877888,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1729273856,
+          "PrivateMemorySize64": 949256192
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 50024448,
+          "PrivateMemorySize64": 19030016
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19435520,
+          "PrivateMemorySize64": 8200192
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39100416,
+          "PrivateMemorySize64": 11730944
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150138880,
+          "PrivateMemorySize64": 47583232
+        }
+      ],
+      "totalWorkingSetBytes": 5309894656,
+      "totalPrivateCommitBytes": 3567853568
+    },
+    {
+      "at": "2026-10-26T07:49:12.846Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3200552960,
+          "PrivateMemorySize64": 2476871680
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83877888,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1728430080,
+          "PrivateMemorySize64": 951672832
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53518336,
+          "PrivateMemorySize64": 19693568
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19443712,
+          "PrivateMemorySize64": 8224768
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39100416,
+          "PrivateMemorySize64": 11730944
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150138880,
+          "PrivateMemorySize64": 47583232
+        }
+      ],
+      "totalWorkingSetBytes": 5307359232,
+      "totalPrivateCommitBytes": 3568181248
+    },
+    {
+      "at": "2026-10-26T07:49:22.853Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3196051456,
+          "PrivateMemorySize64": 2469949440
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83877888,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1729835008,
+          "PrivateMemorySize64": 949014528
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53518336,
+          "PrivateMemorySize64": 19693568
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19501056,
+          "PrivateMemorySize64": 8286208
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39100416,
+          "PrivateMemorySize64": 11730944
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150142976,
+          "PrivateMemorySize64": 47587328
+        }
+      ],
+      "totalWorkingSetBytes": 5304324096,
+      "totalPrivateCommitBytes": 3558666240
+    },
+    {
+      "at": "2026-10-26T07:49:32.883Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3201941504,
+          "PrivateMemorySize64": 2475315200
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83877888,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1731534848,
+          "PrivateMemorySize64": 950898688
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53518336,
+          "PrivateMemorySize64": 19693568
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19464192,
+          "PrivateMemorySize64": 8245248
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39096320,
+          "PrivateMemorySize64": 11726848
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150130688,
+          "PrivateMemorySize64": 47575040
+        }
+      ],
+      "totalWorkingSetBytes": 5311860736,
+      "totalPrivateCommitBytes": 3565858816
+    },
+    {
+      "at": "2026-10-26T07:49:42.909Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3194585088,
+          "PrivateMemorySize64": 2467803136
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83877888,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1731874816,
+          "PrivateMemorySize64": 950308864
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53518336,
+          "PrivateMemorySize64": 19693568
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19464192,
+          "PrivateMemorySize64": 8245248
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39096320,
+          "PrivateMemorySize64": 11694080
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150138880,
+          "PrivateMemorySize64": 47575040
+        }
+      ],
+      "totalWorkingSetBytes": 5304852480,
+      "totalPrivateCommitBytes": 3557724160
+    },
+    {
+      "at": "2026-10-26T07:49:53.062Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3202699264,
+          "PrivateMemorySize64": 2478739456
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83877888,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1728618496,
+          "PrivateMemorySize64": 951070720
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53518336,
+          "PrivateMemorySize64": 19693568
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19472384,
+          "PrivateMemorySize64": 8269824
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39096320,
+          "PrivateMemorySize64": 11694080
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150138880,
+          "PrivateMemorySize64": 47575040
+        }
+      ],
+      "totalWorkingSetBytes": 5309718528,
+      "totalPrivateCommitBytes": 3569446912
+    },
+    {
+      "at": "2026-10-26T07:50:02.893Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3203416064,
+          "PrivateMemorySize64": 2479144960
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83877888,
+          "PrivateMemorySize64": 37146624
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1731522560,
+          "PrivateMemorySize64": 954134528
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53518336,
+          "PrivateMemorySize64": 19693568
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19472384,
+          "PrivateMemorySize64": 8269824
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39096320,
+          "PrivateMemorySize64": 11694080
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150138880,
+          "PrivateMemorySize64": 47575040
+        }
+      ],
+      "totalWorkingSetBytes": 5313339392,
+      "totalPrivateCommitBytes": 3572916224
+    },
+    {
+      "at": "2026-10-26T07:50:12.885Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3212787712,
+          "PrivateMemorySize64": 2476077056
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83230720,
+          "PrivateMemorySize64": 35868672
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1730609152,
+          "PrivateMemorySize64": 949686272
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53518336,
+          "PrivateMemorySize64": 19693568
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19472384,
+          "PrivateMemorySize64": 8269824
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39096320,
+          "PrivateMemorySize64": 11694080
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150138880,
+          "PrivateMemorySize64": 47575040
+        }
+      ],
+      "totalWorkingSetBytes": 5321150464,
+      "totalPrivateCommitBytes": 3564122112
+    },
+    {
+      "at": "2026-10-26T07:50:22.873Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3201728512,
+          "PrivateMemorySize64": 2464862208
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83230720,
+          "PrivateMemorySize64": 35868672
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1624911872,
+          "PrivateMemorySize64": 843243520
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53518336,
+          "PrivateMemorySize64": 19693568
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19570688,
+          "PrivateMemorySize64": 8404992
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39096320,
+          "PrivateMemorySize64": 11694080
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150212608,
+          "PrivateMemorySize64": 47591424
+        }
+      ],
+      "totalWorkingSetBytes": 5204566016,
+      "totalPrivateCommitBytes": 3446616064
+    },
+    {
+      "at": "2026-10-26T07:50:32.924Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3201757184,
+          "PrivateMemorySize64": 2465861632
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83230720,
+          "PrivateMemorySize64": 35868672
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1652862976,
+          "PrivateMemorySize64": 871358464
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53518336,
+          "PrivateMemorySize64": 19693568
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19513344,
+          "PrivateMemorySize64": 8318976
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39096320,
+          "PrivateMemorySize64": 11694080
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150212608,
+          "PrivateMemorySize64": 47591424
+        }
+      ],
+      "totalWorkingSetBytes": 5232488448,
+      "totalPrivateCommitBytes": 3475644416
+    },
+    {
+      "at": "2026-10-26T07:50:42.918Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3200167936,
+          "PrivateMemorySize64": 2464149504
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83230720,
+          "PrivateMemorySize64": 35868672
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1668087808,
+          "PrivateMemorySize64": 886202368
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53518336,
+          "PrivateMemorySize64": 19693568
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19513344,
+          "PrivateMemorySize64": 8318976
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39096320,
+          "PrivateMemorySize64": 11694080
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150208512,
+          "PrivateMemorySize64": 47587328
+        }
+      ],
+      "totalWorkingSetBytes": 5246119936,
+      "totalPrivateCommitBytes": 3488772096
+    },
+    {
+      "at": "2026-10-26T07:50:52.937Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3208388608,
+          "PrivateMemorySize64": 2476044288
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83230720,
+          "PrivateMemorySize64": 35868672
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1674997760,
+          "PrivateMemorySize64": 895631360
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53518336,
+          "PrivateMemorySize64": 19693568
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19513344,
+          "PrivateMemorySize64": 8318976
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39157760,
+          "PrivateMemorySize64": 11702272
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150183936,
+          "PrivateMemorySize64": 47538176
+        }
+      ],
+      "totalWorkingSetBytes": 5261287424,
+      "totalPrivateCommitBytes": 3510054912
+    },
+    {
+      "at": "2026-10-26T07:51:02.928Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3198955520,
+          "PrivateMemorySize64": 2465210368
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83230720,
+          "PrivateMemorySize64": 35868672
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1690624000,
+          "PrivateMemorySize64": 909971456
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53518336,
+          "PrivateMemorySize64": 19693568
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19513344,
+          "PrivateMemorySize64": 8318976
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39149568,
+          "PrivateMemorySize64": 11694080
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150183936,
+          "PrivateMemorySize64": 47538176
+        }
+      ],
+      "totalWorkingSetBytes": 5267472384,
+      "totalPrivateCommitBytes": 3513552896
+    },
+    {
+      "at": "2026-10-26T07:51:12.955Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3205820416,
+          "PrivateMemorySize64": 2471587840
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83230720,
+          "PrivateMemorySize64": 35868672
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32296960,
+          "PrivateMemorySize64": 15257600
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1722155008,
+          "PrivateMemorySize64": 941469696
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53518336,
+          "PrivateMemorySize64": 19693568
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19513344,
+          "PrivateMemorySize64": 8318976
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39149568,
+          "PrivateMemorySize64": 11694080
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150192128,
+          "PrivateMemorySize64": 47538176
+        }
+      ],
+      "totalWorkingSetBytes": 5305876480,
+      "totalPrivateCommitBytes": 3551428608
+    },
+    {
+      "at": "2026-10-26T07:51:22.935Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3194818560,
+          "PrivateMemorySize64": 2458214400
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83410944,
+          "PrivateMemorySize64": 35958784
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32460800,
+          "PrivateMemorySize64": 15347712
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1719865344,
+          "PrivateMemorySize64": 938119168
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53723136,
+          "PrivateMemorySize64": 19828736
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19767296,
+          "PrivateMemorySize64": 8392704
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39280640,
+          "PrivateMemorySize64": 11751424
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150728704,
+          "PrivateMemorySize64": 47632384
+        }
+      ],
+      "totalWorkingSetBytes": 5294055424,
+      "totalPrivateCommitBytes": 3535245312
+    },
+    {
+      "at": "2026-10-26T07:51:32.923Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 3195039744,
+          "PrivateMemorySize64": 2456772608
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83410944,
+          "PrivateMemorySize64": 35958784
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32460800,
+          "PrivateMemorySize64": 15347712
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1719881728,
+          "PrivateMemorySize64": 937984000
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53989376,
+          "PrivateMemorySize64": 20127744
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19689472,
+          "PrivateMemorySize64": 8318976
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39280640,
+          "PrivateMemorySize64": 11751424
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 150855680,
+          "PrivateMemorySize64": 47759360
+        }
+      ],
+      "totalWorkingSetBytes": 5294608384,
+      "totalPrivateCommitBytes": 3534020608
+    },
+    {
+      "at": "2026-10-26T07:51:43.081Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 2798837760,
+          "PrivateMemorySize64": 2362150912
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83410944,
+          "PrivateMemorySize64": 35958784
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32460800,
+          "PrivateMemorySize64": 15347712
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1262637056,
+          "PrivateMemorySize64": 986062848
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 53989376,
+          "PrivateMemorySize64": 20127744
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19689472,
+          "PrivateMemorySize64": 8318976
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39313408,
+          "PrivateMemorySize64": 11808768
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 152985600,
+          "PrivateMemorySize64": 47824896
+        }
+      ],
+      "totalWorkingSetBytes": 4443324416,
+      "totalPrivateCommitBytes": 3487600640
+    },
+    {
+      "at": "2026-10-26T07:51:52.981Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 2746793984,
+          "PrivateMemorySize64": 2263904256
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83595264,
+          "PrivateMemorySize64": 36356096
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32460800,
+          "PrivateMemorySize64": 15347712
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 1319727104,
+          "PrivateMemorySize64": 989138944
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 54022144,
+          "PrivateMemorySize64": 20127744
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19718144,
+          "PrivateMemorySize64": 8327168
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39493632,
+          "PrivateMemorySize64": 11751424
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 152686592,
+          "PrivateMemorySize64": 49090560
+        }
+      ],
+      "totalWorkingSetBytes": 4448497664,
+      "totalPrivateCommitBytes": 3394043904
+    },
+    {
+      "at": "2026-10-26T07:52:00.516Z",
+      "processes": [
+        {
+          "Id": 2320,
+          "WorkingSet64": 460230656,
+          "PrivateMemorySize64": 430882816
+        },
+        {
+          "Id": 2464,
+          "WorkingSet64": 83595264,
+          "PrivateMemorySize64": 36356096
+        },
+        {
+          "Id": 4496,
+          "WorkingSet64": 32460800,
+          "PrivateMemorySize64": 15347712
+        },
+        {
+          "Id": 6100,
+          "WorkingSet64": 187019264,
+          "PrivateMemorySize64": 124895232
+        },
+        {
+          "Id": 15096,
+          "WorkingSet64": 54026240,
+          "PrivateMemorySize64": 20127744
+        },
+        {
+          "Id": 22956,
+          "WorkingSet64": 19763200,
+          "PrivateMemorySize64": 8368128
+        },
+        {
+          "Id": 23956,
+          "WorkingSet64": 39514112,
+          "PrivateMemorySize64": 11751424
+        },
+        {
+          "Id": 24328,
+          "WorkingSet64": 153513984,
+          "PrivateMemorySize64": 49844224
+        }
+      ],
+      "totalWorkingSetBytes": 1030123520,
+      "totalPrivateCommitBytes": 697573376
+    }
+  ]
+}
