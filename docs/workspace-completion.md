@@ -1,6 +1,6 @@
 # RISE workspace completion
 
-This change implements the requested workspace features without replacing the logo, public URL, or existing learning data. No paid API is introduced. Local verification is complete as described below; publication and the production bridge update remain pending.
+The workspace features are published on the original GitHub Pages URL without replacing the logo or existing learning data. The production PC bridge is running the updated implementation, and real Codex search, ordinary-chat image generation, and both account roles have passed the public-site smoke check. No paid API is introduced.
 
 ## Acceptance checklist
 
@@ -12,19 +12,22 @@ This change implements the requested workspace features without replacing the lo
 - [x] Materials: multiple-file selection for side chat, edge tap navigation and swipe, small floating AI control, image uses available canvas.
 - [x] App UI: compact controls, responsive desktop/tablet/phone, keyboard/focus support, no horizontal overflow or obstructed composer in the tested viewports.
 - [x] Local functional checks: shared file ownership, model cache retirement, browser interactions and role-separated offline history.
-- [ ] Full network tests and service-worker cold-start check in an environment with loopback connections enabled.
-- [ ] Main CI, Pages publication, production bridge restart and real Codex search/image smoke check.
+- [x] Full network tests and service-worker offline reload check with loopback connections enabled.
+- [x] Main CI, Pages publication, production bridge restart and real Codex search/image smoke check.
 
 ## Verification evidence (2026-10-26)
 
-- The Node suite passed 133 of 144 tests in the restricted session. The other 11 require a loopback socket and failed with `connect EACCES 127.0.0.1` or the resulting relay 503; they are not recorded as passing. Additional provider/atomic-save/workspace tests are in `tests/rise-chat-plugins.test.mjs`, `tests/rise-atomic-json.test.mjs`, and `tests/rise-workspace-completion.test.mjs`.
+- The initial restricted session could not exercise loopback networking. After access was enabled, the complete 147-test Node suite passed on Windows and in Linux CI. The subsequent Codex executable-discovery regression test brings the CI suite to 148 passing tests.
 - Gateway boundary checks: 7 passed.
 - Build validator: 331 public files, 114 review entries, 1,000 history entries, 150 readings; logo is byte-identical; private bridge data excluded.
-- `scripts/test-workspace-ui.mjs` passed 13 interaction groups using real Chromium, IndexedDB, and the bridge request handler through `scripts/hermetic-http.mjs`. AI responses are fixtures. Tested viewports: 1280×900, 390×844, 820×1180. Screenshots and results are under ignored `test-results/workspace/`.
+- `scripts/test-workspace-ui.mjs` passed 13 interaction groups using real Chromium, IndexedDB, loopback HTTP and the service worker in Linux CI. AI responses in this suite are fixtures. Tested viewports: 1280×900, 390×844, 820×1180. Screenshots and results are under ignored `test-results/workspace/` and the CI artifact.
 - Additional PDF attachment checks exercise a single destination, stored bytes and a local blob-frame source; the preview policy now permits local blob frames and no longer allows the retired model hosts. Native PDF rendering is not asserted because [Playwright documents a headless PDF-navigation limitation](https://playwright.dev/docs/api/class-page#page-goto). This does not verify physical iPad PDF rendering.
-- Hermetic mode makes no network connection and deliberately skips service-worker network caching. It verifies saved chat access and account separation, not an actual offline network cold start. CI runs the same test against loopback HTTP with the service worker enabled.
+- The offline check reloads the app without network access, reads the cached guest history, preserves the draft, and checks role isolation. The reconnect check injects a temporary session failure and requires automatic recovery. Hermetic mode remains available for restricted development; it is not the evidence for service-worker caching.
 - Fixed transient Windows atomic-replacement failures with bounded retries; permanent failures retain the old record. Fixed the mobile composer so attachment scrolling cannot push the send button outside the form. Hidden answers, form fields and closed disclosures are excluded from current-screen context.
-- Public deployment was not attempted after GitHub write approval was rejected under `approval policy: never`. The already-running production bridge was preserved because a replacement process could not reach its relay in this session.
+- [PR #94](https://github.com/shingo20110505-oss/-asahigaoka-aa-learning-os/pull/94) was merged into main at `7462cf8786e717025c24c65c65450cf8f1b4fea5`. [Pages run 40241843059](https://github.com/shingo20110505-oss/-asahigaoka-aa-learning-os/actions/runs/40241843059) and relay run `40241842867` completed successfully. The public browser reported build `423923ada950`, matching CI.
+- Codex desktop had replaced its versioned executable directory. The PC configuration now selects automatic discovery; every new Codex connection resolves the current installation, while explicitly configured custom executables remain respected. The regression replaces the installed executable between two resolutions without changing the process PATH.
+- A clean Chrome session exercised the actual public Pages app through AIworknavi and the relay to this PC on 2026-10-26. Guest GPT-6.1 Sol completed a hosted Apple-specification search with a confirmed search event and source link in 15.8 seconds. An ordinary chat generated an image, downloaded it and opened a decoded fullscreen preview in 27.0 seconds. Administrator GPT-6 Astra with high reasoning returned the connection-test answer in 5.5 seconds. These are individual observations, not latency guarantees. The verification conversations were deleted and both accounts logged out; existing conversations were preserved.
+- The private live-check report is `test-results/ai-server-smoke.json`; screenshots are `test-results/workspace/live-guest-search.png` and `live-chat-image.png`. They are not public build assets. The server remains running independently of the verification browser.
 
 Local UI test:
 
