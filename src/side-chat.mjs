@@ -27,5 +27,6 @@ export function createChatWorkspace({store,data}){
  const key=e=>{if(!open||document.querySelector('dialog[open]'))return;if(e.key==='Escape'){e.preventDefault();close();return;}if(e.key==='Tab'&&innerWidth<900){const controls=[...pane.querySelectorAll('button,a[href],input,textarea,select,[tabindex="0"]')].filter(x=>!x.disabled&&x.getClientRects().length),first=controls[0],last=controls.at(-1);if(e.shiftKey&&(document.activeElement===first||!pane.contains(document.activeElement))){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}};document.addEventListener('keydown',key);
  window.addEventListener('resize',layout);window.visualViewport?.addEventListener('resize',modalSync);window.visualViewport?.addEventListener('scroll',modalSync);
  host.addEventListener('click',e=>{if(e.target.closest('[data-action="back-to-material"]'))location.hash=lastPage;});
- return {ask,show,close,setRoute};
+ async function resetNavigation(){const c=await ensure();await c.ready;return c.resetNavigation();}
+ return {ask,show,close,setRoute,resetNavigation,canResumeNavigation:()=>controller?.canResumeNavigation()||false,resumeNavigation:()=>controller?.resumeNavigation()};
 }

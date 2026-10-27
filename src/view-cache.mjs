@@ -3,14 +3,15 @@
 export const viewPath = hash => (String(hash || '').replace(/^#?\/?/, '') || 'home');
 export function viewGroup(path) {
   const route = viewPath(path).split(/[/?]/)[0];
-  return ['reading','vocabulary','classical','review','memory','history','labs','focus','explore','evidence','listening'].includes(route)
-    ? 'learn' : ['materials','desk'].includes(route) ? 'notes' : route;
+  return ['reading','english-words','vocabulary','classical','review','memory','history','labs','focus','explore','evidence','listening'].includes(route)
+    ? 'learn' : ['materials','desk'].includes(route) ? 'notes' : ['ai-task','handwriting-clean'].includes(route) ? 'ai-tools' : route;
 }
 
 export class ViewCache {
   constructor({create, mount, attach, capture, restore, revision, error}) {
     Object.assign(this, {create, mount, attach, capture, restore, revision, error});
     this.entries = new Map(); this.last = new Map(); this.current = null;
+    this.parked = new Map();
     this.generation = 0; this.pending = Promise.resolve();
   }
   active(entry) { return this.current === entry && entry.activation === this.generation; }
@@ -28,17 +29,29 @@ export class ViewCache {
     }
     this.last.set(viewGroup(path), path);
   }
-  async show(path, {reload = false} = {}) {
+  park(group,entry) {
+    if(!entry?.ready)return;
+    const stack=this.parked.get(group)||[];
+    if(!stack.includes(entry))stack.push(entry);
+    this.parked.set(group,stack);
+  }
+  canResume(group) { return Boolean(this.parked.get(group)?.length); }
+  async reset(group) { return this.show(group,{fresh:true}); }
+  async resumePrevious(group) {
+    const entry=this.parked.get(group)?.pop();
+    if(entry)return this.show(entry.path,{restoreEntry:entry});
+  }
+  async show(path, {reload = false, fresh = false, restoreEntry = null} = {}) {
     path = viewPath(path);
     const ticket = ++this.generation;
     await this.pending.catch(() => {});
     if (ticket !== this.generation) return;
-    this.pending = this.switchTo(path, ticket, reload);
+    this.pending = this.switchTo(path, ticket, {reload,fresh,restoreEntry});
     return this.pending;
   }
-  async switchTo(path, ticket, reload) {
+  async switchTo(path, ticket, {reload,fresh,restoreEntry}) {
     const previous = this.current;
-    if (previous?.path === path && previous.ready && !reload) {
+    if (previous?.path === path && previous.ready && !reload && !fresh && !restoreEntry) {
       previous.activation = ticket;
       this.attach(previous);
       return;
@@ -53,6 +66,16 @@ export class ViewCache {
       }
     }
     if (ticket !== this.generation) return;
+    const group=viewGroup(path);
+    if(fresh||restoreEntry){
+      // Park the complete DOM/controller, including unsaved input and quiz state.
+      // No learning record is cleared and failed saves remain recoverable.
+      const remembered=this.entries.get(this.destination(group));
+      for(const saved of [remembered,this.entries.get(path),previous])
+        if(saved!==restoreEntry&&saved&&viewGroup(saved.path)===group)this.park(group,saved);
+      if(restoreEntry)this.entries.set(path,restoreEntry);
+      else this.entries.delete(path);
+    }
     let entry = this.entries.get(path);
     const cached = Boolean(entry?.ready);
     if (!entry) {
@@ -92,15 +115,17 @@ export class ViewCache {
   // Flush suspended drafts before importing a backup so they cannot later
   // overwrite restored data. The settings screen stays until import succeeds.
   async clearInactive() {
-    for (const entry of this.entries.values()) {
+    const all=new Set([...this.entries.values(),...[...this.parked.values()].flat()]);
+    for (const entry of all) {
       if (entry !== this.current) await entry.controller?.flush?.();
     }
-    for (const [path, entry] of this.entries) {
+    for (const entry of all) {
       if (entry === this.current) continue;
       await entry.controller?.();
-      this.entries.delete(path);
+      if(this.entries.get(entry.path)===entry)this.entries.delete(entry.path);
     }
     this.last.clear();
+    this.parked.clear();
     if (this.current) this.last.set(viewGroup(this.current.path), this.current.path);
   }
 }
