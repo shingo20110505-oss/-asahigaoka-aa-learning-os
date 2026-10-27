@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';import fs from 'node:fs/promises';import {pathToFileURL} from 'node:url';
+import {app,close} from './workspace-fixture.mjs';
+const {chromium}=await import(process.env.RISE_PLAYWRIGHT_MODULE?pathToFileURL(process.env.RISE_PLAYWRIGHT_MODULE).href:'playwright');
+const browser=await chromium.launch({headless:true,...(process.env.RISE_USE_CHROME?{channel:'chrome'}:{})});
+const context=await browser.newContext({viewport:{width:1280,height:900}}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+const output='test-results/geography';await fs.mkdir(output,{recursive:true});
+try{
+ await page.goto(app.url+'/#/geography');await page.getByRole('heading',{name:'地理を、つなげて理解する。'}).waitFor();
+ await page.getByLabel('地理を検索',{exact:true}).fill('輪中');await page.locator('#geo-nobi>summary').click();await page.locator('#geo-nobi [data-answer]>summary').click();await page.locator('#geo-nobi [data-rating=good]').click();await page.getByText('次の復習を保存しました',{exact:true}).waitFor();
+ const saved=await page.evaluate(async()=>{const {Store}=await import('./src/store.mjs');const s=new Store();await s.open();const r={cards:s.state.cards.filter(x=>x.id==='card-geo-nobi').length,due:s.state.review['geo-nobi'].due};s.db.close();s.channel?.close();return r;});assert.equal(saved.cards,1);assert.ok(saved.due>Date.now());
+ await page.screenshot({path:output+'/desktop.png'});
+ await page.getByRole('button',{name:'資料演習 16問',exact:true}).click();assert.equal(await page.locator('.geo-drill').count(),16);await page.locator('#geo-drill-rain-season [data-choice="1"]').click();assert.match(await page.locator('#geo-score').innerText(),/1問正解 \/ 1問回答/);await page.locator('#geo-drill-rain-season [data-action=related]').first().click();assert.equal(await page.locator('#geo-hemispheres').getAttribute('open'),'');
+ await page.setViewportSize({width:390,height:844});await page.getByRole('button',{name:'資料演習 16問',exact:true}).click();assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await page.screenshot({path:output+'/phone.png'});
+ await page.getByRole('button',{name:'47都道府県',exact:true}).click();assert.equal(await page.locator('.geo-places details').count(),47);await page.getByRole('button',{name:'範囲と参考資料',exact:true}).click();assert.equal(await page.locator('#geo-body section>details').count(),7);
+ await page.evaluate(async()=>{window.geographyOffline=(await import('./src/offline.mjs')).offlineState;});await page.waitForFunction(()=>window.geographyOffline().phase==='ready'&&!!navigator.serviceWorker.controller,{},{timeout:120000});await context.setOffline(true);await page.reload();await page.getByRole('heading',{name:'地理を、つなげて理解する。'}).waitFor();await page.getByLabel('地理を検索',{exact:true}).fill('輪中');await page.locator('#geo-nobi>summary').click();assert.ok(await page.locator('#geo-nobi').innerText().then(s=>s.includes('学習 1回')));assert.deepEqual(errors,[]);
+ console.log(JSON.stringify({ok:true,checks:['search','detail and answer','spaced review and flashcard','16 exercises','related lesson','390px layout','47 prefectures','curriculum coverage','offline reload and saved progress'],device:'Windows Chrome; not iPad performance'}));
+}catch(e){console.log(JSON.stringify({errors,body:(await page.locator('body').innerText()).slice(-2500)}));await page.screenshot({path:output+'/failure.png'});throw e;}finally{await browser.close();await close();}

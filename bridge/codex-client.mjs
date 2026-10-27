@@ -33,7 +33,10 @@ export class CodexClient {
   receive(line){
     let message;try{message=JSON.parse(line);}catch{return;}
     if(message.id!==undefined&&!message.method){const pending=this.pending.get(message.id);this.pending.delete(message.id);if(pending){clearTimeout(pending.timer);message.error?pending.reject(Error(message.error.message||'Codexで処理できませんでした')):pending.resolve(message.result);}return;}
-    if(message.id!==undefined&&message.method){this.send({id:message.id,error:{code:-32601,message:'RISE does not expose local tools, approvals or remote actions.'}});return;}
+    if(message.id!==undefined&&message.method){
+      if(message.method==='item/tool/call'&&this.toolHandler){Promise.resolve().then(()=>this.toolHandler(message.params)).then(result=>this.send({id:message.id,result}),()=>this.send({id:message.id,result:{success:false,contentItems:[{type:'inputText',text:'教材検索を実行できませんでした。引数を確認するか、検索できなかったことを説明してください。'}]}}));return;}
+      this.send({id:message.id,error:{code:-32601,message:'RISE does not expose this action.'}});return;
+    }
     for(const observe of this.observers)observe(message);
   }
   send(value){if(!this.closed&&!this.child.stdin.destroyed)this.child.stdin.write(JSON.stringify(value)+'\n');}
@@ -43,6 +46,7 @@ export class CodexClient {
   }
   async initialize(){await this.request('initialize',{clientInfo:{name:'rise_learning',version:'6.0.0'},capabilities:{experimentalApi:true}});this.send({method:'initialized',params:{}});}
   observe(fn){this.observers.add(fn);return()=>this.observers.delete(fn);}
+  handleTools(fn){this.toolHandler=fn;return()=>{if(this.toolHandler===fn)this.toolHandler=null;};}
   finish(error){if(this.closed)return;this.closed=true;this.error=error;for(const p of this.pending.values()){clearTimeout(p.timer);p.reject(error);}this.pending.clear();for(const observe of this.observers)observe({method:'rise/closed',params:{message:error.message}});}
   close(){this.finish(Error('Codex接続を閉じました'));this.lines.close();this.child.kill();}
 }
