@@ -1,5 +1,5 @@
 // Fixed before inference. Rubrics are never passed to the model or retrieval.
-export const VERSION='2026-10-28.2';
+export const VERSION='2026-10-28.8';
 const rows=[
  ['g1','地理','輪中ではなぜ集落や耕地の周りを堤防で囲むのですか。','低平な土地で洪水から守る。低地・洪水・堤防の関係を説明する。'],
  ['g2','地理','電照菊は、夜に光を当てるとなぜ出荷時期を調節できるのですか。','短日植物の開花を遅らせ、出荷時期を調節する。早めるとするのは誤り。'],
@@ -27,6 +27,37 @@ const rows=[
  ['u1','資料不足','写真を送っていませんが、この写真の雨温図がどの都市か教えてください。','資料がないため特定できないと明示し、写真か数値を求める。都市をでっち上げない。']
 ];
 export const QUESTIONS=rows.map(([id,subject,prompt,rubric])=>({id,subject,prompt,rubric}));
-export const SYSTEM='中学生の学習を助ける先生です。質問に日本語で正確に答えてください。結論と理由を2〜4文、必要な計算は省かず説明してください。資料や条件が不足して答えを決められないときは、その不足を明示してください。分からない事実を作らないでください。';
-export const CONDITIONS={version:VERSION,temperature:0.2,top_p:0.9,seed:42,maxTokens:512,context:4096,maxReferenceChars:1800,referenceCount:3};
-export const RELEASE_CRITERIA={physicalDevice:'iPad A16 (user confirmed, not inferred from user agent)',fullyCorrect:21,total:24,criticalConfidentErrors:0,firstVisibleMedianMs:5000,firstVisibleP95Ms:10000,totalMedianMs:20000,totalP95Ms:45000,warmLoadMs:60000,offlineReloadRequired:true,repeatedRuns:2};
+// Fixed before the first candidate is run on this set. Do not tune on these answers.
+export const HOLDOUT_QUESTIONS=[
+ ['v1','地理','やませによる冷害が起こる仕組みを説明してください。','夏の冷たく湿った北東風が東北地方の太平洋側に低温・日照不足をもたらし、稲などの生育に影響。'],
+ ['v2','地理','促成栽培をしている農家が近郊農業にも当てはまることはありますか。','ある。促成は出荷時期、近郊は大消費地への近さによる別の観点の分類。'],
+ ['v3','地理','1月に暑く7月に寒い都市は、まず北半球と南半球のどちらを考えますか。','南半球。北半球とは夏冬の時期が逆。'],
+ ['v4','地理','5万分の1の地図で6cmの距離は何kmですか。','6×50000=300000cm=3km。'],
+ ['v5','歴史','女性の国政選挙への参加について、1945年と1946年を区別してください。','1945年に法改正で女性参政権を認め、1946年の総選挙で初めて投票。'],
+ ['v6','歴史','関東大震災は西暦何年ですか。','1923年。'],
+ ['v7','古文','古文の「あやし」は、不思議だという意味だけですか。','不思議だのほか、身分が低い・粗末だ。'],
+ ['v8','古文','古文の「をかし」の基本的な意味は何ですか。','趣がある・おもしろい。単に笑えるという意味に限定しない。'],
+ ['v9','漢文','漢文の「勿れ」は何を表しますか。','なかれ。〜してはいけない、という禁止。'],
+ ['v10','漢文','漢文の「不」と「未」の否定の意味はどう違いますか。','不は〜ない。未はまだ〜ない、という未然の否定。'],
+ ['v11','英語','little と a little は意味がどう違いますか。','不可算名詞についてlittleはほとんどない、a littleは少しはある。'],
+ ['v12','英語','teach の意味と過去形を教えてください。','教える。過去形はtaught。'],
+].map(([id,subject,prompt,rubric])=>({id,subject,prompt,rubric}));
+// New untouched validation set, fixed before v8 is run. The first holdout found
+// an inflection hallucination and is now diagnostic evidence, not a tuning target.
+export const VALIDATION_QUESTIONS=[
+ ['w1','地理','扇状地に果樹園が見られるのは、土地のどの特徴を生かすためですか。','砂やれきが多く、水はけがよい。'],
+ ['w2','地理','リアス海岸の入り江が養殖に利用される理由を説明してください。','入り江は外海に比べ波が穏やかであること。'],
+ ['w3','地理','7月に最も暑く1月に寒い都市は、まずどちらの半球を考えますか。','北半球。赤道近くなど温度だけでは確定できない場合もあるが、第一候補を問う。'],
+ ['w4','地理','2万5千分の1と5万分の1の地図では、同じ土地をより詳しく表せるのはどちらですか。','2万5千分の1。縮尺の分母が小さい方。'],
+ ['w5','歴史','日本国憲法が公布された年と、施行された年を分けて答えてください。','公布1946年・施行1947年。'],
+ ['w6','歴史','日清戦争と日露戦争は、どちらが先に始まりましたか。','日清戦争。1894年開始、日露戦争は1904年開始。'],
+ ['w7','古文','古文の「いと」の意味は何ですか。','とても・たいそう。'],
+ ['w8','古文','古文の「いみじ」の基本的な意味を教えてください。','程度がはなはだしい。よい場合も悪い場合もあり、すばらしい・ひどいなど。'],
+ ['w9','漢文','漢文の「無」の意味を教えてください。','ない。存在を否定する。'],
+ ['w10','漢文','漢文の「将に」の意味を教えてください。','まさに〜んとす。今にも〜しようとする。'],
+ ['w11','英語','現在完了の since と for は、時間の表し方がどう違いますか。','sinceは開始時点、forは続いた期間。'],
+ ['w12','英語','go の意味と過去形を教えてください。','行く。過去形went。'],
+].map(([id,subject,prompt,rubric])=>({id,subject,prompt,rubric}));
+export const SYSTEM='Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so.';
+export const CONDITIONS={version:VERSION,temperature:0.2,top_p:0.9,seed:42,maxTokens:512,context:2048,parallel:1,batch:512,maxReferenceChars:600,referenceCount:2};
+export const RELEASE_CRITERIA={physicalDevice:'iPad A16 (user confirmed, not inferred from user agent)',fullyCorrect:21,total:24,holdoutFullyCorrect:10,holdoutTotal:12,criticalConfidentErrors:0,firstVisibleMedianMs:5000,firstVisibleP95Ms:10000,totalMedianMs:20000,totalP95Ms:45000,warmLoadMs:60000,offlineReloadRequired:true,repeatedRuns:2};
