@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node bridge/start.mjs",
     "test": "node --test tests/rise-*.test.mjs",
-    "build": "node scripts/build-rise.mjs && node scripts/validate-rise-build.mjs",
+    "build": "node experiments/rag/setup-runtime.mjs && node scripts/build-rise.mjs && node scripts/validate-rise-build.mjs",
     "preview": "node scripts/preview-rise.mjs"
   },
   "devDependencies": {
