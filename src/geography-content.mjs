@@ -2,8 +2,10 @@ import {foundation} from './geography/foundation.mjs';
 import {world} from './geography/world.mjs';
 import {japan} from './geography/japan.mjs';
 import {connections} from './geography/connections.mjs';
-export const geographyVersion='2026-10-27.1';
+export const geographyVersion='2026-10-28.1';
 export const geographySources={
+ flowers:{title:'愛知県：あいちの農産物・花（電照菊の仕組み）',url:'https://www.pref.aichi.jp/soshiki/engei/aichisan-hana.html'},
+ climateZones:{title:'英国気象庁：世界の気候区分',url:'https://weather.metoffice.gov.uk/climate/climate-explained/climate-zones'},
  curriculum:{title:'文部科学省：中学校学習指導要領解説 社会編',url:'https://www.mext.go.jp/content/20240919-mxt_kyoiku01-100002608.pdf'},
  maps:{title:'国土地理院：地理教育の教材・素材',url:'https://www.gsi.go.jp/CHIRIKYOUIKU/shien.html'},
  landforms:{title:'国土地理院：日本の典型地形',url:'https://web1.gsi.go.jp/kikaku/tenkei_top.html'},
@@ -23,6 +25,7 @@ export const geographyItems=geographyChapters.flatMap(ch=>ch.content.trim().spli
  const parts=line.split('|'); if(parts.length!==8)throw Error('Invalid geography row: '+parts[0]);
  const [key,title,summary,why,read,pitfall,question,answer]=parts;
  const refs=[ch.source]; if(ch.source==='japan')refs.push('climate','statistics');
+ if(key==='atsumi')refs.push('flowers');if(key==='temperate')refs.push('climateZones');
  if(key==='aichi-water')refs.push('water');if(key==='islands'||key==='territory')refs.push('territory');if(/energy/.test(key))refs.push('energy');
  return {id:'geo-'+key,key,chapter:ch.id,title,summary,why,read,pitfall,question,answer,level:comparisons.has(key)?'応用':'必修',subject:'社会',curriculum:ch.curriculum,sourceIds:[...new Set(refs)],version:geographyVersion};
 }));

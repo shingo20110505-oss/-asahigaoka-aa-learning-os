@@ -1,0 +1,1385 @@
+{
+  "method": "Manual rubric review by Codex. Complete answers include necessary reasoning and no erroneous additions. No keyword grading. PC reference only.",
+  "id": "a97a5453-b56c-428b-90c2-ba510090c266",
+  "startedAt": "2026-10-27T17:10:45.771Z",
+  "model": {
+    "id": "gemma4-e2b-q4",
+    "name": "Gemma 4 E2B IT / Q4_K_M",
+    "url": "https://huggingface.co/unsloth/gemma-4-E2B-it-GGUF/resolve/0314792d7f1f7e229411f620751375812bb9faf2/gemma-4-E2B-it-Q4_K_M.gguf",
+    "bytes": 3106738272,
+    "sha256": "740185b21d22ceb83a11c3aa62ad5842ef32c70f6096d756bbee85a1e4ec34b8",
+    "license": "Apache-2.0",
+    "conversion": "Unsloth",
+    "generation": {
+      "temperature": 1,
+      "top_p": 0.95,
+      "top_k": 64,
+      "min_p": 0,
+      "repeat_penalty": 1,
+      "presence_penalty": 0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "conditions": {
+    "version": "2026-10-28.8",
+    "temperature": 0.2,
+    "top_p": 0.9,
+    "seed": 42,
+    "maxTokens": 512,
+    "context": 2048,
+    "parallel": 1,
+    "batch": 512,
+    "maxReferenceChars": 600,
+    "referenceCount": 2,
+    "system": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so.",
+    "gpuLayers": 99,
+    "suite": "validation",
+    "modelGeneration": {
+      "temperature": 1,
+      "top_p": 0.95,
+      "top_k": 64,
+      "min_p": 0,
+      "repeat_penalty": 1,
+      "presence_penalty": 0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "searchOnly": false,
+  "cachedOnly": false,
+  "questions": [
+    {
+      "id": "w1",
+      "subject": "地理",
+      "prompt": "扇状地に果樹園が見られるのは、土地のどの特徴を生かすためですか。",
+      "rubric": "砂やれきが多く、水はけがよい。",
+      "arms": {
+        "verbatim": {
+          "answer": "扇状地\n扇状地\n山地から平地に川が出る場所に土砂が積もり、扇形の地形ができる。砂やれきが多く水はけがよい所が多い。\n勾配が緩くなって川の運搬力が下がり、比較的大きな粒の土砂がたまる。扇端では地下水が湧くことがある。\n資料の読み方：山地の出口・扇形・果樹園・等高線の広がりを確認する。\n取り違え注意：水はけがよいことと水が全くないことは違う。灌漑で水田になる場合もある。\n扇状地に果樹園が見られる理由は？\n水はけのよい土地を利用できるため。傾斜・日照なども関係する。",
+          "totalMs": 25.400000002235174,
+          "firstVisibleMs": 25.400000002235174
+        },
+        "none": {
+          "answer": "扇状地の土地の形状と土壌の特性を活かすためです。",
+          "firstVisibleMs": 2349.900000002235,
+          "totalMs": 3809.7000000029802,
+          "finishReason": "stop"
+        },
+        "rag": {
+          "answer": "水はけのよい土地を利用するため。",
+          "firstVisibleMs": 6569.699999999255,
+          "totalMs": 7389.199999999255,
+          "finishReason": "stop"
+        },
+        "assisted": {
+          "answer": "水はけのよい土地を利用するため。",
+          "firstVisibleMs": 6569.999999996275,
+          "totalMs": 7389.499999996275,
+          "finishReason": "stop",
+          "kind": "model",
+          "modelUsed": true
+        }
+      },
+      "retrieval": {
+        "ms": 25.400000002235174,
+        "trace": [
+          {
+            "query": "扇状地に果樹園が見られるのは、土地のどの特徴を生かすためですか。",
+            "ms": 19.699999999254942,
+            "ids": [
+              "geo-fans",
+              "geo-central-highland",
+              "geo-cs-farm"
+            ]
+          },
+          {
+            "query": "扇状地に果樹園が見られるのは、土地のどの特徴を生かすためですか",
+            "ms": 5,
+            "ids": [
+              "geo-fans",
+              "geo-central-highland",
+              "geo-cs-farm"
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "id": "geo-fans",
+            "title": "扇状地",
+            "text": "扇状地\n山地から平地に川が出る場所に土砂が積もり、扇形の地形ができる。砂やれきが多く水はけがよい所が多い。\n勾配が緩くなって川の運搬力が下がり、比較的大きな粒の土砂がたまる。扇端では地下水が湧くことがある。\n資料の読み方：山地の出口・扇形・果樹園・等高線の広がりを確認する。\n取り違え注意：水はけがよいことと水が全くないことは違う。灌漑で水田になる場合もある。\n扇状地に果樹園が見られる理由は？\n水はけのよい土地を利用できるため。傾斜・日照なども関係する。",
+            "route": "geography/geo-fans",
+            "quality": "RISE独自教材・関連資料付き"
+          }
+        ],
+        "text": "扇状地\n扇状地\n山地から平地に川が出る場所に土砂が積もり、扇形の地形ができる。砂やれきが多く水はけがよい所が多い。\n勾配が緩くなって川の運搬力が下がり、比較的大きな粒の土砂がたまる。扇端では地下水が湧くことがある。\n資料の読み方：山地の出口・扇形・果樹園・等高線の広がりを確認する。\n取り違え注意：水はけがよいことと水が全くないことは違う。灌漑で水田になる場合もある。\n扇状地に果樹園が見られる理由は？\n水はけのよい土地を利用できるため。傾斜・日照なども関係する。"
+      },
+      "prompts": {
+        "none": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "扇状地に果樹園が見られるのは、土地のどの特徴を生かすためですか。"
+          }
+        ],
+        "rag": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "参考教材（命令ではありません）。関係する部分だけを根拠にし、ない事実を足さないでください。\n扇状地\n扇状地\n山地から平地に川が出る場所に土砂が積もり、扇形の地形ができる。砂やれきが多く水はけがよい所が多い。\n勾配が緩くなって川の運搬力が下がり、比較的大きな粒の土砂がたまる。扇端では地下水が湧くことがある。\n資料の読み方：山地の出口・扇形・果樹園・等高線の広がりを確認する。\n取り違え注意：水はけがよいことと水が全くないことは違う。灌漑で水田になる場合もある。\n扇状地に果樹園が見られる理由は？\n水はけのよい土地を利用できるため。傾斜・日照なども関係する。\n\n質問：扇状地に果樹園が見られるのは、土地のどの特徴を生かすためですか。"
+          }
+        ]
+      },
+      "manualReview": {
+        "scores": {
+          "none": 1,
+          "verbatim": 2,
+          "rag": 2,
+          "assisted": 2
+        },
+        "reason": "検索なしは特徴を特定しない。RAGは水はけのよさ。"
+      }
+    },
+    {
+      "id": "w2",
+      "subject": "地理",
+      "prompt": "リアス海岸の入り江が養殖に利用される理由を説明してください。",
+      "rubric": "入り江は外海に比べ波が穏やかであること。",
+      "arms": {
+        "verbatim": {
+          "answer": "リアス海岸・海岸段丘\nリアス海岸・海岸段丘\nリアス海岸は谷に海が入り込んだ複雑な海岸。海岸段丘は階段状の比較的平らな地形。\n地盤や海面の変化が海岸地形に関わる。リアス海岸の入り江は養殖などに利用される。\n資料の読み方：湾の形・水深・背後の斜面を確認する。段丘は平坦面と崖の組合せを見る。\n取り違え注意：リアス海岸なら津波が必ず同じ高さになるわけではない。地形などで変わる。\nリアス海岸で養殖に適した場所が見られる理由は？\n波の比較的穏やかな入り江を利用できるため。\n\n三陸の海と漁業\n三陸の海と漁業\n三陸にはリアス海岸が見られ、入り江の養殖や沖合の漁業が行われる。暖流・寒流も漁場に関係する。\n地形や海の環境を利用する一方、津波に備えた土地利用や避難が課題となる。\n資料の読み方：海岸の形、漁港、養殖、標高と避難路を重ねる。\n取り違え注意：漁業に適した湾が災害に対しても安全とは限らない。\n三陸で養殖と防災を一緒に考える理由は？\n入り江を生産に利用する一方、津波への備えも必要なため。",
+          "totalMs": 9.5,
+          "firstVisibleMs": 9.5
+        },
+        "rag": {
+          "answer": "波の比較的穏やかな入り江を利用できるためです。",
+          "firstVisibleMs": 9574.199999999255,
+          "totalMs": 10673.199999999255,
+          "finishReason": "stop"
+        },
+        "assisted": {
+          "answer": "波の比較的穏やかな入り江を利用できるためです。",
+          "firstVisibleMs": 9574.199999999255,
+          "totalMs": 10673.199999999255,
+          "finishReason": "stop",
+          "kind": "model",
+          "modelUsed": true
+        },
+        "none": {
+          "answer": "リアス海岸の入り江は、水質が良好で、閉鎖性があるため、養殖に適しています。",
+          "firstVisibleMs": 2244.10000000149,
+          "totalMs": 4448.10000000149,
+          "finishReason": "stop"
+        }
+      },
+      "retrieval": {
+        "ms": 9.5,
+        "trace": [
+          {
+            "query": "リアス海岸の入り江が養殖に利用される理由を説明してください。",
+            "ms": 5.400000002235174,
+            "ids": [
+              "geo-coasts",
+              "geo-tohoku-coast"
+            ]
+          },
+          {
+            "query": "リアス海岸の入り江が養殖に利用される理由を説明してください",
+            "ms": 4.099999997764826,
+            "ids": [
+              "geo-coasts",
+              "geo-tohoku-coast"
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "id": "geo-coasts",
+            "title": "リアス海岸・海岸段丘",
+            "text": "リアス海岸・海岸段丘\nリアス海岸は谷に海が入り込んだ複雑な海岸。海岸段丘は階段状の比較的平らな地形。\n地盤や海面の変化が海岸地形に関わる。リアス海岸の入り江は養殖などに利用される。\n資料の読み方：湾の形・水深・背後の斜面を確認する。段丘は平坦面と崖の組合せを見る。\n取り違え注意：リアス海岸なら津波が必ず同じ高さになるわけではない。地形などで変わる。\nリアス海岸で養殖に適した場所が見られる理由は？\n波の比較的穏やかな入り江を利用できるため。",
+            "route": "geography/geo-coasts",
+            "quality": "RISE独自教材・関連資料付き"
+          },
+          {
+            "id": "geo-tohoku-coast",
+            "title": "三陸の海と漁業",
+            "text": "三陸の海と漁業\n三陸にはリアス海岸が見られ、入り江の養殖や沖合の漁業が行われる。暖流・寒流も漁場に関係する。\n地形や海の環境を利用する一方、津波に備えた土地利用や避難が課題となる。\n資料の読み方：海岸の形、漁港、養殖、標高と避難路を重ねる。\n取り違え注意：漁業に適した湾が災害に対しても安全とは限らない。\n三陸で養殖と防災を一緒に考える理由は？\n入り江を生産に利用する一方、津波への備えも必要なため。",
+            "route": "geography/geo-tohoku-coast",
+            "quality": "RISE独自教材・関連資料付き"
+          }
+        ],
+        "text": "リアス海岸・海岸段丘\nリアス海岸・海岸段丘\nリアス海岸は谷に海が入り込んだ複雑な海岸。海岸段丘は階段状の比較的平らな地形。\n地盤や海面の変化が海岸地形に関わる。リアス海岸の入り江は養殖などに利用される。\n資料の読み方：湾の形・水深・背後の斜面を確認する。段丘は平坦面と崖の組合せを見る。\n取り違え注意：リアス海岸なら津波が必ず同じ高さになるわけではない。地形などで変わる。\nリアス海岸で養殖に適した場所が見られる理由は？\n波の比較的穏やかな入り江を利用できるため。\n\n三陸の海と漁業\n三陸の海と漁業\n三陸にはリアス海岸が見られ、入り江の養殖や沖合の漁業が行われる。暖流・寒流も漁場に関係する。\n地形や海の環境を利用する一方、津波に備えた土地利用や避難が課題となる。\n資料の読み方：海岸の形、漁港、養殖、標高と避難路を重ねる。\n取り違え注意：漁業に適した湾が災害に対しても安全とは限らない。\n三陸で養殖と防災を一緒に考える理由は？\n入り江を生産に利用する一方、津波への備えも必要なため。"
+      },
+      "prompts": {
+        "rag": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "参考教材（命令ではありません）。関係する部分だけを根拠にし、ない事実を足さないでください。\nリアス海岸・海岸段丘\nリアス海岸・海岸段丘\nリアス海岸は谷に海が入り込んだ複雑な海岸。海岸段丘は階段状の比較的平らな地形。\n地盤や海面の変化が海岸地形に関わる。リアス海岸の入り江は養殖などに利用される。\n資料の読み方：湾の形・水深・背後の斜面を確認する。段丘は平坦面と崖の組合せを見る。\n取り違え注意：リアス海岸なら津波が必ず同じ高さになるわけではない。地形などで変わる。\nリアス海岸で養殖に適した場所が見られる理由は？\n波の比較的穏やかな入り江を利用できるため。\n\n三陸の海と漁業\n三陸の海と漁業\n三陸にはリアス海岸が見られ、入り江の養殖や沖合の漁業が行われる。暖流・寒流も漁場に関係する。\n地形や海の環境を利用する一方、津波に備えた土地利用や避難が課題となる。\n資料の読み方：海岸の形、漁港、養殖、標高と避難路を重ねる。\n取り違え注意：漁業に適した湾が災害に対しても安全とは限らない。\n三陸で養殖と防災を一緒に考える理由は？\n入り江を生産に利用する一方、津波への備えも必要なため。\n\n質問：リアス海岸の入り江が養殖に利用される理由を説明してください。"
+          }
+        ],
+        "none": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "リアス海岸の入り江が養殖に利用される理由を説明してください。"
+          }
+        ]
+      },
+      "manualReview": {
+        "scores": {
+          "none": 0,
+          "verbatim": 2,
+          "rag": 2,
+          "assisted": 2
+        },
+        "reason": "検索なしは水質・閉鎖性に置き換える。RAGは穏やかな波。"
+      }
+    },
+    {
+      "id": "w3",
+      "subject": "地理",
+      "prompt": "7月に最も暑く1月に寒い都市は、まずどちらの半球を考えますか。",
+      "rubric": "北半球。赤道近くなど温度だけでは確定できない場合もあるが、第一候補を問う。",
+      "arms": {
+        "verbatim": {
+          "answer": "南北半球と季節\n南北半球と季節\n北半球と南半球では夏と冬の時期が逆になる。\n地軸が傾いたまま地球が太陽の周りを公転するため、日照時間や太陽高度の季節変化が逆になる。\n資料の読み方：雨温図で最も暖かい月を先に探す。1月前後なら南半球を候補にする。\n取り違え注意：赤道付近では気温の年較差が小さく、気温だけで半球を決めにくい。\n日本の冬にオーストラリアは何の季節？\n夏。南北半球で季節が逆になるため。\n\n雨温図の解き方\n雨温図の解き方\n①暖かい月で半球、②年較差、③冬の気温、④降水の量と季節変化を確認する。\n一つの数値より複数条件の組合せで候補を絞る方が確実。\n資料の読み方：折れ線・棒のどちらが気温か、左右の軸と単位、縦軸の目盛を必ず読む。\n取り違え注意：棒の高さを異なる目盛の別図と直接比較しない。\n年降水量はどのように求める？\n各月の降水量を12か月分足す。気温の年平均と混同しない。",
+          "totalMs": 8.799999997019768,
+          "firstVisibleMs": 8.799999997019768
+        },
+        "none": {
+          "answer": "暑い都市は北半球、寒い都市は南半球を考えます。",
+          "firstVisibleMs": 2194.7999999970198,
+          "totalMs": 3780.2999999970198,
+          "finishReason": "stop"
+        },
+        "rag": {
+          "answer": "7月に最も暑く1月に寒い都市は、南半球を考えます。",
+          "firstVisibleMs": 9359.29999999702,
+          "totalMs": 11020.599999997765,
+          "finishReason": "stop"
+        },
+        "assisted": {
+          "answer": "7月に最も暑く1月に寒い都市は、南半球を考えます。",
+          "firstVisibleMs": 9359.29999999702,
+          "totalMs": 11020.599999997765,
+          "finishReason": "stop",
+          "kind": "model",
+          "modelUsed": true
+        }
+      },
+      "retrieval": {
+        "ms": 8.799999997019768,
+        "trace": [
+          {
+            "query": "7月に最も暑く1月に寒い都市は、まずどちらの半球を考えますか。",
+            "ms": 4.300000000745058,
+            "ids": [
+              "geo-hemispheres",
+              "geo-climograph",
+              "history-888",
+              "geo-temperate"
+            ]
+          },
+          {
+            "query": "7月に最も暑く1月に寒い都市は、まずどちらの半球を考えますか",
+            "ms": 4.199999999254942,
+            "ids": [
+              "geo-hemispheres",
+              "geo-climograph",
+              "history-888",
+              "geo-temperate"
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "id": "geo-hemispheres",
+            "title": "南北半球と季節",
+            "text": "南北半球と季節\n北半球と南半球では夏と冬の時期が逆になる。\n地軸が傾いたまま地球が太陽の周りを公転するため、日照時間や太陽高度の季節変化が逆になる。\n資料の読み方：雨温図で最も暖かい月を先に探す。1月前後なら南半球を候補にする。\n取り違え注意：赤道付近では気温の年較差が小さく、気温だけで半球を決めにくい。\n日本の冬にオーストラリアは何の季節？\n夏。南北半球で季節が逆になるため。",
+            "route": "geography/geo-hemispheres",
+            "quality": "RISE独自教材・関連資料付き"
+          },
+          {
+            "id": "geo-climograph",
+            "title": "雨温図の解き方",
+            "text": "雨温図の解き方\n①暖かい月で半球、②年較差、③冬の気温、④降水の量と季節変化を確認する。\n一つの数値より複数条件の組合せで候補を絞る方が確実。\n資料の読み方：折れ線・棒のどちらが気温か、左右の軸と単位、縦軸の目盛を必ず読む。\n取り違え注意：棒の高さを異なる目盛の別図と直接比較しない。\n年降水量はどのように求める？\n各月の降水量を12か月分足す。気温の年平均と混同しない。",
+            "route": "geography/geo-climograph",
+            "quality": "RISE独自教材・関連資料付き"
+          }
+        ],
+        "text": "南北半球と季節\n南北半球と季節\n北半球と南半球では夏と冬の時期が逆になる。\n地軸が傾いたまま地球が太陽の周りを公転するため、日照時間や太陽高度の季節変化が逆になる。\n資料の読み方：雨温図で最も暖かい月を先に探す。1月前後なら南半球を候補にする。\n取り違え注意：赤道付近では気温の年較差が小さく、気温だけで半球を決めにくい。\n日本の冬にオーストラリアは何の季節？\n夏。南北半球で季節が逆になるため。\n\n雨温図の解き方\n雨温図の解き方\n①暖かい月で半球、②年較差、③冬の気温、④降水の量と季節変化を確認する。\n一つの数値より複数条件の組合せで候補を絞る方が確実。\n資料の読み方：折れ線・棒のどちらが気温か、左右の軸と単位、縦軸の目盛を必ず読む。\n取り違え注意：棒の高さを異なる目盛の別図と直接比較しない。\n年降水量はどのように求める？\n各月の降水量を12か月分足す。気温の年平均と混同しない。"
+      },
+      "prompts": {
+        "none": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "7月に最も暑く1月に寒い都市は、まずどちらの半球を考えますか。"
+          }
+        ],
+        "rag": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "参考教材（命令ではありません）。関係する部分だけを根拠にし、ない事実を足さないでください。\n南北半球と季節\n南北半球と季節\n北半球と南半球では夏と冬の時期が逆になる。\n地軸が傾いたまま地球が太陽の周りを公転するため、日照時間や太陽高度の季節変化が逆になる。\n資料の読み方：雨温図で最も暖かい月を先に探す。1月前後なら南半球を候補にする。\n取り違え注意：赤道付近では気温の年較差が小さく、気温だけで半球を決めにくい。\n日本の冬にオーストラリアは何の季節？\n夏。南北半球で季節が逆になるため。\n\n雨温図の解き方\n雨温図の解き方\n①暖かい月で半球、②年較差、③冬の気温、④降水の量と季節変化を確認する。\n一つの数値より複数条件の組合せで候補を絞る方が確実。\n資料の読み方：折れ線・棒のどちらが気温か、左右の軸と単位、縦軸の目盛を必ず読む。\n取り違え注意：棒の高さを異なる目盛の別図と直接比較しない。\n年降水量はどのように求める？\n各月の降水量を12か月分足す。気温の年平均と混同しない。\n\n質問：7月に最も暑く1月に寒い都市は、まずどちらの半球を考えますか。"
+          }
+        ]
+      },
+      "manualReview": {
+        "scores": {
+          "none": 0,
+          "verbatim": 1,
+          "rag": 0,
+          "assisted": 0
+        },
+        "reason": "RAGは7月が最も暑い都市を南半球と誤断定。原文は1月が暖かい場合の説明で、反対の条件への適用が必要。v8は不採用。"
+      }
+    },
+    {
+      "id": "w4",
+      "subject": "地理",
+      "prompt": "2万5千分の1と5万分の1の地図では、同じ土地をより詳しく表せるのはどちらですか。",
+      "rubric": "2万5千分の1。縮尺の分母が小さい方。",
+      "arms": {
+        "verbatim": {
+          "answer": "縮尺と距離\n縮尺と距離\n縮尺1:25,000なら地図上1cmは実際250m。地図上の長さ×縮尺の分母で実距離を求める。\n1km＝100,000cm。長さの単位をそろえてから計算する。分母が小さい地図ほど詳しい。\n資料の読み方：4cmなら4×25,000＝100,000cm＝1kmと、単位を最後まで付ける。\n取り違え注意：画面拡大や印刷倍率が変わると、定規の実測と元の縮尺が対応しない。縮尺バーを使う。\n1:50,000の地図上3cmは？\n1.5km。3×50,000＝150,000cm。\n\n新旧地形図の比較\n新旧地形図の比較\n同じ範囲・縮尺の新旧地図から、市街地化、河川改修、農地の変化、交通網の発達を読み取る。\n鉄道や道路の整備と土地利用の変化は関連するが、地図だけで因果を確定できるとは限らない。\n資料の読み方：方位・年代・範囲をそろえ、増えたものと減ったものを対応させる。\n取り違え注意：記号や測量方式の変更を、そのまま土地利用の変化としない。\n住宅地拡大と駅開業が地図に見えるとき、断定できるのは？\n両方の変化があったこと。駅が唯一の原因とは地図だけでは断定できない。",
+          "totalMs": 7.800000000745058,
+          "firstVisibleMs": 7.800000000745058
+        },
+        "rag": {
+          "answer": "縮尺の分母が小さいほど詳しく表せます。したがって、2万5千分の1の地図の方が詳しく表せます。",
+          "firstVisibleMs": 10856.800000000745,
+          "totalMs": 13480.800000000745,
+          "finishReason": "stop"
+        },
+        "assisted": {
+          "answer": "縮尺の分母が小さいほど詳しく表せます。したがって、2万5千分の1の地図の方が詳しく表せます。",
+          "firstVisibleMs": 10857.5,
+          "totalMs": 13481.5,
+          "finishReason": "stop",
+          "kind": "model",
+          "modelUsed": true
+        },
+        "none": {
+          "answer": "2万5千分の1（1/25,000）の方が、5万分の1（1/50,000）よりも同じ土地をより詳しく表せます。",
+          "firstVisibleMs": 2280.599999997765,
+          "totalMs": 6036.599999997765,
+          "finishReason": "stop"
+        }
+      },
+      "retrieval": {
+        "ms": 7.800000000745058,
+        "trace": [
+          {
+            "query": "2万5千分の1と5万分の1の地図では、同じ土地をより詳しく表せるのはどちらですか。",
+            "ms": 4.099999997764826,
+            "ids": [
+              "geo-scale",
+              "geo-topo-change",
+              "geo-symbols",
+              "history-380",
+              "history-357"
+            ]
+          },
+          {
+            "query": "2万5千分の1と5万分の1の地図では、同じ土地をより詳しく表せるのはどちらですか",
+            "ms": 3.399999998509884,
+            "ids": [
+              "geo-scale",
+              "geo-topo-change",
+              "geo-symbols",
+              "history-380",
+              "history-357"
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "id": "geo-scale",
+            "title": "縮尺と距離",
+            "text": "縮尺と距離\n縮尺1:25,000なら地図上1cmは実際250m。地図上の長さ×縮尺の分母で実距離を求める。\n1km＝100,000cm。長さの単位をそろえてから計算する。分母が小さい地図ほど詳しい。\n資料の読み方：4cmなら4×25,000＝100,000cm＝1kmと、単位を最後まで付ける。\n取り違え注意：画面拡大や印刷倍率が変わると、定規の実測と元の縮尺が対応しない。縮尺バーを使う。\n1:50,000の地図上3cmは？\n1.5km。3×50,000＝150,000cm。",
+            "route": "geography/geo-scale",
+            "quality": "RISE独自教材・関連資料付き"
+          },
+          {
+            "id": "geo-topo-change",
+            "title": "新旧地形図の比較",
+            "text": "新旧地形図の比較\n同じ範囲・縮尺の新旧地図から、市街地化、河川改修、農地の変化、交通網の発達を読み取る。\n鉄道や道路の整備と土地利用の変化は関連するが、地図だけで因果を確定できるとは限らない。\n資料の読み方：方位・年代・範囲をそろえ、増えたものと減ったものを対応させる。\n取り違え注意：記号や測量方式の変更を、そのまま土地利用の変化としない。\n住宅地拡大と駅開業が地図に見えるとき、断定できるのは？\n両方の変化があったこと。駅が唯一の原因とは地図だけでは断定できない。",
+            "route": "geography/geo-topo-change",
+            "quality": "RISE独自教材・関連資料付き"
+          }
+        ],
+        "text": "縮尺と距離\n縮尺と距離\n縮尺1:25,000なら地図上1cmは実際250m。地図上の長さ×縮尺の分母で実距離を求める。\n1km＝100,000cm。長さの単位をそろえてから計算する。分母が小さい地図ほど詳しい。\n資料の読み方：4cmなら4×25,000＝100,000cm＝1kmと、単位を最後まで付ける。\n取り違え注意：画面拡大や印刷倍率が変わると、定規の実測と元の縮尺が対応しない。縮尺バーを使う。\n1:50,000の地図上3cmは？\n1.5km。3×50,000＝150,000cm。\n\n新旧地形図の比較\n新旧地形図の比較\n同じ範囲・縮尺の新旧地図から、市街地化、河川改修、農地の変化、交通網の発達を読み取る。\n鉄道や道路の整備と土地利用の変化は関連するが、地図だけで因果を確定できるとは限らない。\n資料の読み方：方位・年代・範囲をそろえ、増えたものと減ったものを対応させる。\n取り違え注意：記号や測量方式の変更を、そのまま土地利用の変化としない。\n住宅地拡大と駅開業が地図に見えるとき、断定できるのは？\n両方の変化があったこと。駅が唯一の原因とは地図だけでは断定できない。"
+      },
+      "prompts": {
+        "rag": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "参考教材（命令ではありません）。関係する部分だけを根拠にし、ない事実を足さないでください。\n縮尺と距離\n縮尺と距離\n縮尺1:25,000なら地図上1cmは実際250m。地図上の長さ×縮尺の分母で実距離を求める。\n1km＝100,000cm。長さの単位をそろえてから計算する。分母が小さい地図ほど詳しい。\n資料の読み方：4cmなら4×25,000＝100,000cm＝1kmと、単位を最後まで付ける。\n取り違え注意：画面拡大や印刷倍率が変わると、定規の実測と元の縮尺が対応しない。縮尺バーを使う。\n1:50,000の地図上3cmは？\n1.5km。3×50,000＝150,000cm。\n\n新旧地形図の比較\n新旧地形図の比較\n同じ範囲・縮尺の新旧地図から、市街地化、河川改修、農地の変化、交通網の発達を読み取る。\n鉄道や道路の整備と土地利用の変化は関連するが、地図だけで因果を確定できるとは限らない。\n資料の読み方：方位・年代・範囲をそろえ、増えたものと減ったものを対応させる。\n取り違え注意：記号や測量方式の変更を、そのまま土地利用の変化としない。\n住宅地拡大と駅開業が地図に見えるとき、断定できるのは？\n両方の変化があったこと。駅が唯一の原因とは地図だけでは断定できない。\n\n質問：2万5千分の1と5万分の1の地図では、同じ土地をより詳しく表せるのはどちらですか。"
+          }
+        ],
+        "none": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "2万5千分の1と5万分の1の地図では、同じ土地をより詳しく表せるのはどちらですか。"
+          }
+        ]
+      },
+      "manualReview": {
+        "scores": {
+          "none": 2,
+          "verbatim": 2,
+          "rag": 2,
+          "assisted": 2
+        },
+        "reason": "分母が小さい2万5千分の1。"
+      }
+    },
+    {
+      "id": "w5",
+      "subject": "歴史",
+      "prompt": "日本国憲法が公布された年と、施行された年を分けて答えてください。",
+      "rubric": "公布1946年・施行1947年。",
+      "arms": {
+        "verbatim": {
+          "answer": "1946年 · 日本国憲法が公布される\n1946年 日本国憲法が公布される\n1946年11月3日に公布された戦後日本の基本法。国民主権、基本的人権の尊重、平和主義を基本原理とし、天皇を日本国・日本国民統合の象徴と定めた。翌1947年5月3日に施行された。\n敗戦後、GHQの占領政策のもとで明治憲法体制を民主的に改める必要が生じ、日本政府案とGHQ案などを経て帝国議会で審議された。\n男女平等、地方自治、国会中心の政治など戦後民主主義の制度的基盤となった。\n公布1946年11月3日、施行1947年5月3日を区別。大日本帝国憲法との比較が公民分野にも直結する。\n\n1947年 · 日本国憲法が施行される\n1947年 日本国憲法が施行される\n1947年5月3日に日本国憲法が施行され、国民主権・基本的人権・平和主義にもとづく新しい政治制度が実際に始まった。国会・内閣・裁判所の三権分立、地方自治、男女平等など戦前と異なる民主的制度が整えられた。",
+          "totalMs": 8.199999999254942,
+          "firstVisibleMs": 8.199999999254942
+        },
+        "none": {
+          "answer": "公布は1946年、施行は1947年です。",
+          "firstVisibleMs": 2277.300000000745,
+          "totalMs": 3768.800000000745,
+          "finishReason": "stop"
+        },
+        "rag": {
+          "answer": "公布は1946年11月3日、施行は1947年5月3日です。",
+          "firstVisibleMs": 9436.199999999255,
+          "totalMs": 11827.5,
+          "finishReason": "stop"
+        },
+        "assisted": {
+          "answer": "公布は1946年11月3日、施行は1947年5月3日です。",
+          "firstVisibleMs": 9436.300000000745,
+          "totalMs": 11827.60000000149,
+          "finishReason": "stop",
+          "kind": "model",
+          "modelUsed": true
+        }
+      },
+      "retrieval": {
+        "ms": 8.199999999254942,
+        "trace": [
+          {
+            "query": "日本国憲法が公布された年と、施行された年を分けて答えてください。",
+            "ms": 4,
+            "ids": [
+              "history-283",
+              "history-285",
+              "history-964",
+              "history-384",
+              "history-463"
+            ]
+          },
+          {
+            "query": "日本国憲法が公布された年と、施行された年を分けて答えてください",
+            "ms": 4.199999999254942,
+            "ids": [
+              "history-283",
+              "history-285",
+              "history-964",
+              "history-384",
+              "history-463"
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "id": "history-283",
+            "title": "1946年 · 日本国憲法が公布される",
+            "text": "1946年 日本国憲法が公布される\n1946年11月3日に公布された戦後日本の基本法。国民主権、基本的人権の尊重、平和主義を基本原理とし、天皇を日本国・日本国民統合の象徴と定めた。翌1947年5月3日に施行された。\n敗戦後、GHQの占領政策のもとで明治憲法体制を民主的に改める必要が生じ、日本政府案とGHQ案などを経て帝国議会で審議された。\n男女平等、地方自治、国会中心の政治など戦後民主主義の制度的基盤となった。\n公布1946年11月3日、施行1947年5月3日を区別。大日本帝国憲法との比較が公民分野にも直結する。",
+            "route": "history/283",
+            "quality": "RISE既存年表・項目ごとの外部照合は未完了"
+          },
+          {
+            "id": "history-285",
+            "title": "1947年 · 日本国憲法が施行される",
+            "text": "1947年 日本国憲法が施行される\n1947年5月3日に日本国憲法が施行され、国民主権・基本的人権・平和主義にもとづく新しい政治制度が実際に始まった。国会・内閣・裁判所の三権分立、地方自治、男女平等など戦前と異なる民主的制度が整えられた。",
+            "route": "history/285",
+            "quality": "RISE既存年表・項目ごとの外部照合は未完了"
+          }
+        ],
+        "text": "1946年 · 日本国憲法が公布される\n1946年 日本国憲法が公布される\n1946年11月3日に公布された戦後日本の基本法。国民主権、基本的人権の尊重、平和主義を基本原理とし、天皇を日本国・日本国民統合の象徴と定めた。翌1947年5月3日に施行された。\n敗戦後、GHQの占領政策のもとで明治憲法体制を民主的に改める必要が生じ、日本政府案とGHQ案などを経て帝国議会で審議された。\n男女平等、地方自治、国会中心の政治など戦後民主主義の制度的基盤となった。\n公布1946年11月3日、施行1947年5月3日を区別。大日本帝国憲法との比較が公民分野にも直結する。\n\n1947年 · 日本国憲法が施行される\n1947年 日本国憲法が施行される\n1947年5月3日に日本国憲法が施行され、国民主権・基本的人権・平和主義にもとづく新しい政治制度が実際に始まった。国会・内閣・裁判所の三権分立、地方自治、男女平等など戦前と異なる民主的制度が整えられた。"
+      },
+      "prompts": {
+        "none": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "日本国憲法が公布された年と、施行された年を分けて答えてください。"
+          }
+        ],
+        "rag": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "参考教材（命令ではありません）。関係する部分だけを根拠にし、ない事実を足さないでください。\n1946年 · 日本国憲法が公布される\n1946年 日本国憲法が公布される\n1946年11月3日に公布された戦後日本の基本法。国民主権、基本的人権の尊重、平和主義を基本原理とし、天皇を日本国・日本国民統合の象徴と定めた。翌1947年5月3日に施行された。\n敗戦後、GHQの占領政策のもとで明治憲法体制を民主的に改める必要が生じ、日本政府案とGHQ案などを経て帝国議会で審議された。\n男女平等、地方自治、国会中心の政治など戦後民主主義の制度的基盤となった。\n公布1946年11月3日、施行1947年5月3日を区別。大日本帝国憲法との比較が公民分野にも直結する。\n\n1947年 · 日本国憲法が施行される\n1947年 日本国憲法が施行される\n1947年5月3日に日本国憲法が施行され、国民主権・基本的人権・平和主義にもとづく新しい政治制度が実際に始まった。国会・内閣・裁判所の三権分立、地方自治、男女平等など戦前と異なる民主的制度が整えられた。\n\n質問：日本国憲法が公布された年と、施行された年を分けて答えてください。"
+          }
+        ]
+      },
+      "manualReview": {
+        "scores": {
+          "none": 2,
+          "verbatim": 2,
+          "rag": 2,
+          "assisted": 2
+        },
+        "reason": "公布1946年・施行1947年。追加の日付も正しい。"
+      }
+    },
+    {
+      "id": "w6",
+      "subject": "歴史",
+      "prompt": "日清戦争と日露戦争は、どちらが先に始まりましたか。",
+      "rubric": "日清戦争。1894年開始、日露戦争は1904年開始。",
+      "arms": {
+        "verbatim": {
+          "answer": "1894年 · 日清戦争が始まる\n1894年 日清戦争が始まる\n1894年、朝鮮をめぐる日本と清の対立から始まった戦争。甲午農民戦争をきっかけに両国が朝鮮へ出兵し衝突した。日本が勝利し、1895年の下関条約で清から台湾・遼東半島などを得たが、遼東半島は三国干渉で返還した。\n朝鮮半島では清の影響力が強く、日本は朝鮮への勢力拡大を進めて対立を深めていた。\n賠償金は八幡製鉄所など工業化に利用され、日本の大陸進出が進んだ。一方、三国干渉への反発はロシアとの対立を強め、日露戦争へつながる。\n1894日清→1895下関・三国干渉→1902日英同盟→1904日露の因果ラインを覚える。\n\n1894年 · 甲午農民戦争が起こる\n1894年 甲午農民戦争が起こる\n朝鮮で東学を信仰する農民が重税・役人の腐敗・外国勢力への反発から甲午農民戦争を起こした。朝鮮政府が清へ援軍を求めると日本も出兵し、日清両軍が朝鮮に駐留して対立したことが日清戦争の直接的背景となった。",
+          "totalMs": 7.399999998509884,
+          "firstVisibleMs": 7.399999998509884
+        },
+        "rag": {
+          "answer": "日清戦争が先に始まりました。",
+          "firstVisibleMs": 10088.29999999702,
+          "totalMs": 10812.39999999851,
+          "finishReason": "stop"
+        },
+        "assisted": {
+          "answer": "日清戦争が先に始まりました。",
+          "firstVisibleMs": 10088.29999999702,
+          "totalMs": 10812.39999999851,
+          "finishReason": "stop",
+          "kind": "model",
+          "modelUsed": true
+        },
+        "none": {
+          "answer": "日清戦争が日露戦争より先に始まりました。",
+          "firstVisibleMs": 2243,
+          "totalMs": 3293.699999999255,
+          "finishReason": "stop"
+        }
+      },
+      "retrieval": {
+        "ms": 7.399999998509884,
+        "trace": [
+          {
+            "query": "日清戦争と日露戦争は、どちらが先に始まりましたか。",
+            "ms": 4.199999999254942,
+            "ids": [
+              "history-225",
+              "history-224",
+              "history-874",
+              "history-479",
+              "history-232"
+            ]
+          },
+          {
+            "query": "日清戦争と日露戦争は、どちらが先に始まりましたか",
+            "ms": 3.199999999254942,
+            "ids": [
+              "history-225",
+              "history-224",
+              "history-874",
+              "history-479",
+              "history-232"
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "id": "history-225",
+            "title": "1894年 · 日清戦争が始まる",
+            "text": "1894年 日清戦争が始まる\n1894年、朝鮮をめぐる日本と清の対立から始まった戦争。甲午農民戦争をきっかけに両国が朝鮮へ出兵し衝突した。日本が勝利し、1895年の下関条約で清から台湾・遼東半島などを得たが、遼東半島は三国干渉で返還した。\n朝鮮半島では清の影響力が強く、日本は朝鮮への勢力拡大を進めて対立を深めていた。\n賠償金は八幡製鉄所など工業化に利用され、日本の大陸進出が進んだ。一方、三国干渉への反発はロシアとの対立を強め、日露戦争へつながる。\n1894日清→1895下関・三国干渉→1902日英同盟→1904日露の因果ラインを覚える。",
+            "route": "history/225",
+            "quality": "RISE既存年表・項目ごとの外部照合は未完了"
+          },
+          {
+            "id": "history-224",
+            "title": "1894年 · 甲午農民戦争が起こる",
+            "text": "1894年 甲午農民戦争が起こる\n朝鮮で東学を信仰する農民が重税・役人の腐敗・外国勢力への反発から甲午農民戦争を起こした。朝鮮政府が清へ援軍を求めると日本も出兵し、日清両軍が朝鮮に駐留して対立したことが日清戦争の直接的背景となった。",
+            "route": "history/224",
+            "quality": "RISE既存年表・項目ごとの外部照合は未完了"
+          }
+        ],
+        "text": "1894年 · 日清戦争が始まる\n1894年 日清戦争が始まる\n1894年、朝鮮をめぐる日本と清の対立から始まった戦争。甲午農民戦争をきっかけに両国が朝鮮へ出兵し衝突した。日本が勝利し、1895年の下関条約で清から台湾・遼東半島などを得たが、遼東半島は三国干渉で返還した。\n朝鮮半島では清の影響力が強く、日本は朝鮮への勢力拡大を進めて対立を深めていた。\n賠償金は八幡製鉄所など工業化に利用され、日本の大陸進出が進んだ。一方、三国干渉への反発はロシアとの対立を強め、日露戦争へつながる。\n1894日清→1895下関・三国干渉→1902日英同盟→1904日露の因果ラインを覚える。\n\n1894年 · 甲午農民戦争が起こる\n1894年 甲午農民戦争が起こる\n朝鮮で東学を信仰する農民が重税・役人の腐敗・外国勢力への反発から甲午農民戦争を起こした。朝鮮政府が清へ援軍を求めると日本も出兵し、日清両軍が朝鮮に駐留して対立したことが日清戦争の直接的背景となった。"
+      },
+      "prompts": {
+        "rag": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "参考教材（命令ではありません）。関係する部分だけを根拠にし、ない事実を足さないでください。\n1894年 · 日清戦争が始まる\n1894年 日清戦争が始まる\n1894年、朝鮮をめぐる日本と清の対立から始まった戦争。甲午農民戦争をきっかけに両国が朝鮮へ出兵し衝突した。日本が勝利し、1895年の下関条約で清から台湾・遼東半島などを得たが、遼東半島は三国干渉で返還した。\n朝鮮半島では清の影響力が強く、日本は朝鮮への勢力拡大を進めて対立を深めていた。\n賠償金は八幡製鉄所など工業化に利用され、日本の大陸進出が進んだ。一方、三国干渉への反発はロシアとの対立を強め、日露戦争へつながる。\n1894日清→1895下関・三国干渉→1902日英同盟→1904日露の因果ラインを覚える。\n\n1894年 · 甲午農民戦争が起こる\n1894年 甲午農民戦争が起こる\n朝鮮で東学を信仰する農民が重税・役人の腐敗・外国勢力への反発から甲午農民戦争を起こした。朝鮮政府が清へ援軍を求めると日本も出兵し、日清両軍が朝鮮に駐留して対立したことが日清戦争の直接的背景となった。\n\n質問：日清戦争と日露戦争は、どちらが先に始まりましたか。"
+          }
+        ],
+        "none": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "日清戦争と日露戦争は、どちらが先に始まりましたか。"
+          }
+        ]
+      },
+      "manualReview": {
+        "scores": {
+          "none": 2,
+          "verbatim": 2,
+          "rag": 2,
+          "assisted": 2
+        },
+        "reason": "日清戦争が先。"
+      }
+    },
+    {
+      "id": "w7",
+      "subject": "古文",
+      "prompt": "古文の「いと」の意味は何ですか。",
+      "rubric": "とても・たいそう。",
+      "arms": {
+        "verbatim": {
+          "answer": "古文：いと\nいと（いと）：たいそう。とても。",
+          "totalMs": 9,
+          "firstVisibleMs": 9
+        },
+        "assisted": {
+          "answer": "いと（いと）：たいそう。とても。",
+          "kind": "source",
+          "modelUsed": false,
+          "firstVisibleMs": 9.099999997764826,
+          "totalMs": 9.099999997764826
+        },
+        "none": {
+          "answer": "「いと」は「いとこ」の古い形です。",
+          "firstVisibleMs": 2149.599999997765,
+          "totalMs": 3463.099999997765,
+          "finishReason": "stop"
+        },
+        "rag": {
+          "answer": "「いと」の意味は「たいそう」です。",
+          "firstVisibleMs": 2798.5,
+          "totalMs": 3841.5,
+          "finishReason": "stop"
+        }
+      },
+      "retrieval": {
+        "ms": 9,
+        "trace": [
+          {
+            "query": "古文の「いと」の意味は何ですか。",
+            "ms": 4.5,
+            "ids": [
+              "classical-classical-kobun-003"
+            ]
+          },
+          {
+            "query": "古文の「いと」の意味は何ですか",
+            "ms": 2.800000000745058,
+            "ids": [
+              "classical-classical-kobun-003"
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "id": "classical-classical-kobun-003",
+            "title": "古文：いと",
+            "text": "いと（いと）：たいそう。とても。",
+            "route": "classical?word=%E3%81%84%E3%81%A8",
+            "quality": "RISE既存単語教材"
+          }
+        ],
+        "text": "古文：いと\nいと（いと）：たいそう。とても。"
+      },
+      "prompts": {
+        "none": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "古文の「いと」の意味は何ですか。"
+          }
+        ],
+        "rag": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "参考教材（命令ではありません）。関係する部分だけを根拠にし、ない事実を足さないでください。\n古文：いと\nいと（いと）：たいそう。とても。\n\n質問：古文の「いと」の意味は何ですか。"
+          }
+        ]
+      },
+      "manualReview": {
+        "scores": {
+          "none": 0,
+          "verbatim": 2,
+          "rag": 2,
+          "assisted": 2
+        },
+        "reason": "検索なしはいとこ由来と誤る。RAGはたいそう。"
+      }
+    },
+    {
+      "id": "w8",
+      "subject": "古文",
+      "prompt": "古文の「いみじ」の基本的な意味を教えてください。",
+      "rubric": "程度がはなはだしい。よい場合も悪い場合もあり、すばらしい・ひどいなど。",
+      "arms": {
+        "verbatim": {
+          "answer": "古文：いみじ\nいみじ（いみじ）：程度がはなはだしい。すばらしい、またはひどい。",
+          "totalMs": 5.699999999254942,
+          "firstVisibleMs": 5.699999999254942
+        },
+        "assisted": {
+          "answer": "いみじ（いみじ）：程度がはなはだしい。すばらしい、またはひどい。",
+          "kind": "source",
+          "modelUsed": false,
+          "firstVisibleMs": 5.699999999254942,
+          "totalMs": 5.699999999254942
+        },
+        "rag": {
+          "answer": "程度がはなはだしい。すばらしい、またはひどい。",
+          "firstVisibleMs": 3402.5,
+          "totalMs": 4899.099999997765,
+          "finishReason": "stop"
+        },
+        "none": {
+          "answer": "「いみじ」は「いみじ」の古い形か、あるいは文脈によって意味が異なります。一般的な現代語としては「意味深い」や「不思議だ」といった意味合いが考えられます。",
+          "firstVisibleMs": 2232.400000002235,
+          "totalMs": 6096.900000002235,
+          "finishReason": "stop"
+        }
+      },
+      "retrieval": {
+        "ms": 5.699999999254942,
+        "trace": [
+          {
+            "query": "古文の「いみじ」の基本的な意味を教えてください。",
+            "ms": 3.199999999254942,
+            "ids": [
+              "classical-classical-kobun-004"
+            ]
+          },
+          {
+            "query": "古文の「いみじ」の基本的な意味を教えてください",
+            "ms": 2.5,
+            "ids": [
+              "classical-classical-kobun-004"
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "id": "classical-classical-kobun-004",
+            "title": "古文：いみじ",
+            "text": "いみじ（いみじ）：程度がはなはだしい。すばらしい、またはひどい。",
+            "route": "classical?word=%E3%81%84%E3%81%BF%E3%81%98",
+            "quality": "RISE既存単語教材"
+          }
+        ],
+        "text": "古文：いみじ\nいみじ（いみじ）：程度がはなはだしい。すばらしい、またはひどい。"
+      },
+      "prompts": {
+        "rag": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "参考教材（命令ではありません）。関係する部分だけを根拠にし、ない事実を足さないでください。\n古文：いみじ\nいみじ（いみじ）：程度がはなはだしい。すばらしい、またはひどい。\n\n質問：古文の「いみじ」の基本的な意味を教えてください。"
+          }
+        ],
+        "none": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "古文の「いみじ」の基本的な意味を教えてください。"
+          }
+        ]
+      },
+      "manualReview": {
+        "scores": {
+          "none": 0,
+          "verbatim": 2,
+          "rag": 2,
+          "assisted": 2
+        },
+        "reason": "検索なしは意味深い・不思議だと誤る。RAGはよい/悪い両方で程度がはなはだしい。"
+      }
+    },
+    {
+      "id": "w9",
+      "subject": "漢文",
+      "prompt": "漢文の「無」の意味を教えてください。",
+      "rubric": "ない。存在を否定する。",
+      "arms": {
+        "verbatim": {
+          "answer": "漢文：無\n無（なし）：ない。存在しない。",
+          "totalMs": 5.5,
+          "firstVisibleMs": 5.5
+        },
+        "assisted": {
+          "answer": "無（なし）：ない。存在しない。",
+          "kind": "source",
+          "modelUsed": false,
+          "firstVisibleMs": 6.099999997764826,
+          "totalMs": 6.099999997764826
+        },
+        "none": {
+          "answer": "漢文の「無」は、存在しないこと、何も存在しないことを意味します。",
+          "firstVisibleMs": 2225.800000000745,
+          "totalMs": 3860.699999999255,
+          "finishReason": "stop"
+        },
+        "rag": {
+          "answer": "「無」は「ない」「存在しない」を意味します。",
+          "firstVisibleMs": 2801.39999999851,
+          "totalMs": 4026.099999997765,
+          "finishReason": "stop"
+        }
+      },
+      "retrieval": {
+        "ms": 5.5,
+        "trace": [
+          {
+            "query": "漢文の「無」の意味を教えてください。",
+            "ms": 2.800000000745058,
+            "ids": [
+              "classical-classical-kanbun-004"
+            ]
+          },
+          {
+            "query": "漢文の「無」の意味を教えてください",
+            "ms": 2.600000001490116,
+            "ids": [
+              "classical-classical-kanbun-004"
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "id": "classical-classical-kanbun-004",
+            "title": "漢文：無",
+            "text": "無（なし）：ない。存在しない。",
+            "route": "classical?word=%E7%84%A1",
+            "quality": "RISE既存単語教材"
+          }
+        ],
+        "text": "漢文：無\n無（なし）：ない。存在しない。"
+      },
+      "prompts": {
+        "none": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "漢文の「無」の意味を教えてください。"
+          }
+        ],
+        "rag": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "参考教材（命令ではありません）。関係する部分だけを根拠にし、ない事実を足さないでください。\n漢文：無\n無（なし）：ない。存在しない。\n\n質問：漢文の「無」の意味を教えてください。"
+          }
+        ]
+      },
+      "manualReview": {
+        "scores": {
+          "none": 2,
+          "verbatim": 2,
+          "rag": 2,
+          "assisted": 2
+        },
+        "reason": "存在の否定。"
+      }
+    },
+    {
+      "id": "w10",
+      "subject": "漢文",
+      "prompt": "漢文の「将に」の意味を教えてください。",
+      "rubric": "まさに〜んとす。今にも〜しようとする。",
+      "arms": {
+        "verbatim": {
+          "answer": "漢文：将\n将（まさに…んとす）：これから…しようとする。",
+          "totalMs": 7.5,
+          "firstVisibleMs": 7.5
+        },
+        "assisted": {
+          "answer": "将（まさに…んとす）：これから…しようとする。",
+          "kind": "source",
+          "modelUsed": false,
+          "firstVisibleMs": 7.599999997764826,
+          "totalMs": 7.599999997764826
+        },
+        "rag": {
+          "answer": "「将」は「まさに～しようとする」という意味です。",
+          "firstVisibleMs": 2827.699999999255,
+          "totalMs": 3984.900000002235,
+          "finishReason": "stop"
+        },
+        "none": {
+          "answer": "「将に」は、主に「将軍に」「将として」といった意味で、役職や立場を示す際に用いられます。",
+          "firstVisibleMs": 2243.60000000149,
+          "totalMs": 4677,
+          "finishReason": "stop"
+        }
+      },
+      "retrieval": {
+        "ms": 7.5,
+        "trace": [
+          {
+            "query": "漢文の「将に」の意味を教えてください。",
+            "ms": 3.399999998509884,
+            "ids": [
+              "classical-classical-kanbun-036"
+            ]
+          },
+          {
+            "query": "漢文の「将に」の意味を教えてください",
+            "ms": 4,
+            "ids": [
+              "classical-classical-kanbun-036"
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "id": "classical-classical-kanbun-036",
+            "title": "漢文：将",
+            "text": "将（まさに…んとす）：これから…しようとする。",
+            "route": "classical?word=%E5%B0%86",
+            "quality": "RISE既存単語教材"
+          }
+        ],
+        "text": "漢文：将\n将（まさに…んとす）：これから…しようとする。"
+      },
+      "prompts": {
+        "rag": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "参考教材（命令ではありません）。関係する部分だけを根拠にし、ない事実を足さないでください。\n漢文：将\n将（まさに…んとす）：これから…しようとする。\n\n質問：漢文の「将に」の意味を教えてください。"
+          }
+        ],
+        "none": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "漢文の「将に」の意味を教えてください。"
+          }
+        ]
+      },
+      "manualReview": {
+        "scores": {
+          "none": 0,
+          "verbatim": 2,
+          "rag": 2,
+          "assisted": 2
+        },
+        "reason": "検索なしは将軍と混同。RAGはこれからしようとする。"
+      }
+    },
+    {
+      "id": "w11",
+      "subject": "英語",
+      "prompt": "現在完了の since と for は、時間の表し方がどう違いますか。",
+      "rubric": "sinceは開始時点、forは続いた期間。",
+      "arms": {
+        "verbatim": {
+          "answer": "受け身と時の流れを分けて読む\nThe bridge was built in 1980 and has been used since then.\nその橋は1980年に建設され、それ以来使われています。\nwas built は過去の受け身、has been used は現在完了の受け身です。建設された時点と、そこから現在まで続く使用を区別します。since はこの文では継続の始点を表します。\n\npresent perfect\npresent perfect：(文法で)現在完了[形]",
+          "totalMs": 29.399999998509884,
+          "firstVisibleMs": 29.399999998509884
+        },
+        "none": {
+          "answer": "sinceは特定の時点（例：2020年）から現在まで継続を表し、forは期間の長さ（例：3年間）を表します。",
+          "firstVisibleMs": 2171.599999997765,
+          "totalMs": 5208.199999999255,
+          "finishReason": "stop"
+        },
+        "rag": {
+          "answer": "sinceは継続の始点を表し、forは継続の期間を表します。",
+          "firstVisibleMs": 4812.599999997765,
+          "totalMs": 6339.19999999553,
+          "finishReason": "stop"
+        },
+        "assisted": {
+          "answer": "sinceは継続の始点を表し、forは継続の期間を表します。",
+          "firstVisibleMs": 4813.300000000745,
+          "totalMs": 6339.89999999851,
+          "finishReason": "stop",
+          "kind": "model",
+          "modelUsed": true
+        }
+      },
+      "retrieval": {
+        "ms": 29.399999998509884,
+        "trace": [
+          {
+            "query": "現在完了の since と for は、時間の表し方がどう違いますか。",
+            "ms": 17.5,
+            "ids": [
+              "reading-guide-6",
+              "english-en-407b9523e8c12fac",
+              "english-en-6b5a3ded016ab782",
+              "english-en-10c22bcf4c768b51"
+            ]
+          },
+          {
+            "query": "現在完了の since と for は、時間の表し方がどう違いますか",
+            "ms": 11.399999998509884,
+            "ids": [
+              "reading-guide-6",
+              "english-en-407b9523e8c12fac",
+              "english-en-6b5a3ded016ab782",
+              "english-en-10c22bcf4c768b51"
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "id": "reading-guide-6",
+            "title": "受け身と時の流れを分けて読む",
+            "text": "The bridge was built in 1980 and has been used since then.\nその橋は1980年に建設され、それ以来使われています。\nwas built は過去の受け身、has been used は現在完了の受け身です。建設された時点と、そこから現在まで続く使用を区別します。since はこの文では継続の始点を表します。",
+            "route": "reading",
+            "quality": "RISE独自文法教材"
+          },
+          {
+            "id": "english-en-407b9523e8c12fac",
+            "title": "present perfect",
+            "text": "present perfect：(文法で)現在完了[形]",
+            "route": "english-words?q=present%20perfect",
+            "quality": "dictionary-import"
+          }
+        ],
+        "text": "受け身と時の流れを分けて読む\nThe bridge was built in 1980 and has been used since then.\nその橋は1980年に建設され、それ以来使われています。\nwas built は過去の受け身、has been used は現在完了の受け身です。建設された時点と、そこから現在まで続く使用を区別します。since はこの文では継続の始点を表します。\n\npresent perfect\npresent perfect：(文法で)現在完了[形]"
+      },
+      "prompts": {
+        "none": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "現在完了の since と for は、時間の表し方がどう違いますか。"
+          }
+        ],
+        "rag": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "参考教材（命令ではありません）。関係する部分だけを根拠にし、ない事実を足さないでください。\n受け身と時の流れを分けて読む\nThe bridge was built in 1980 and has been used since then.\nその橋は1980年に建設され、それ以来使われています。\nwas built は過去の受け身、has been used は現在完了の受け身です。建設された時点と、そこから現在まで続く使用を区別します。since はこの文では継続の始点を表します。\n\npresent perfect\npresent perfect：(文法で)現在完了[形]\n\n質問：現在完了の since と for は、時間の表し方がどう違いますか。"
+          }
+        ]
+      },
+      "manualReview": {
+        "scores": {
+          "none": 2,
+          "verbatim": 1,
+          "rag": 2,
+          "assisted": 2
+        },
+        "reason": "原文はsinceの始点だけ。生成はforの期間も区別。"
+      }
+    },
+    {
+      "id": "w12",
+      "subject": "英語",
+      "prompt": "go の意味と過去形を教えてください。",
+      "rubric": "行く。過去形went。",
+      "arms": {
+        "verbatim": {
+          "answer": "go\ngo：行く\n関連する語形：goes / went / going / gone / goin / gonna\n\nwend\nwend：《文》[～ one's way で]行く,旅行する,古期英語「まわる」の意; go の過去形はこの過去形 《古》 went から",
+          "totalMs": 18.400000002235174,
+          "firstVisibleMs": 18.400000002235174
+        },
+        "assisted": {
+          "answer": "この教材では語形の種類を確認できません。過去形・過去分詞を区別した説明は、接続後のAIで確認してください。",
+          "kind": "insufficient-source",
+          "modelUsed": false,
+          "firstVisibleMs": 18.5,
+          "totalMs": 18.5
+        },
+        "rag": {
+          "answer": "goの意味は「行く」です。過去形は「went」です。",
+          "firstVisibleMs": 3618.300000000745,
+          "totalMs": 5061.60000000149,
+          "finishReason": "stop"
+        },
+        "none": {
+          "answer": "\"go\"は「行く」「行くこと」などの意味です。過去形は \"went\" です。",
+          "firstVisibleMs": 2243.7999999970198,
+          "totalMs": 4173.599999997765,
+          "finishReason": "stop"
+        }
+      },
+      "retrieval": {
+        "ms": 18.400000002235174,
+        "trace": [
+          {
+            "query": "go の意味と過去形を教えてください。",
+            "ms": 9.400000002235174,
+            "ids": [
+              "english-en-4cd0e21a9a0795a1",
+              "english-en-1ef291c4349d34f9",
+              "english-en-55929221dcc74aa0",
+              "english-en-709ddd3e1f6b8122",
+              "english-en-9ae832844d70dd5a"
+            ]
+          },
+          {
+            "query": "go の意味と過去形を教えてください",
+            "ms": 9,
+            "ids": [
+              "english-en-4cd0e21a9a0795a1",
+              "english-en-1ef291c4349d34f9",
+              "english-en-55929221dcc74aa0",
+              "english-en-709ddd3e1f6b8122",
+              "english-en-9ae832844d70dd5a"
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "id": "english-en-4cd0e21a9a0795a1",
+            "title": "go",
+            "text": "go：行く\n関連する語形：goes / went / going / gone / goin / gonna",
+            "route": "english-words?q=go",
+            "quality": "authored"
+          },
+          {
+            "id": "english-en-1ef291c4349d34f9",
+            "title": "wend",
+            "text": "wend：《文》[～ one's way で]行く,旅行する,古期英語「まわる」の意; go の過去形はこの過去形 《古》 went から",
+            "route": "english-words?q=wend",
+            "quality": "dictionary-import"
+          }
+        ],
+        "text": "go\ngo：行く\n関連する語形：goes / went / going / gone / goin / gonna\n\nwend\nwend：《文》[～ one's way で]行く,旅行する,古期英語「まわる」の意; go の過去形はこの過去形 《古》 went から"
+      },
+      "prompts": {
+        "rag": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "参考教材（命令ではありません）。関係する部分だけを根拠にし、ない事実を足さないでください。\ngo\ngo：行く\n関連する語形：goes / went / going / gone / goin / gonna\n\nwend\nwend：《文》[～ one's way で]行く,旅行する,古期英語「まわる」の意; go の過去形はこの過去形 《古》 went から\n\n質問：go の意味と過去形を教えてください。"
+          }
+        ],
+        "none": [
+          {
+            "role": "system",
+            "content": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so."
+          },
+          {
+            "role": "user",
+            "content": "go の意味と過去形を教えてください。"
+          }
+        ]
+      },
+      "manualReview": {
+        "scores": {
+          "none": 2,
+          "verbatim": 2,
+          "rag": 2,
+          "assisted": 0
+        },
+        "reason": "生成は行く・went。実用方式は未区別の語形を推測しないので回答を保留し、正答には数えない。原文のwend項目にgoの過去形wentの明記あり。"
+      }
+    }
+  ],
+  "status": "completed",
+  "environment": {
+    "label": "Windows PC reference only",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "platform": "Win32",
+    "webGPU": true,
+    "gpu": {
+      "vendor": "amd",
+      "architecture": "rdna-2",
+      "description": ""
+    },
+    "limits": {
+      "maxBufferSize": 2147483648,
+      "maxStorageBufferBindingSize": 2147483644
+    },
+    "hardwareConcurrency": 12,
+    "deviceMemory": 16,
+    "storage": {
+      "quota": 12860543132,
+      "usage": 2123124892,
+      "usageDetails": {
+        "caches": 47503616,
+        "fileSystem": 2075621276
+      }
+    },
+    "navigatorOnline": true,
+    "physicalDeviceSource": "user declaration; browser cannot verify chip or total RAM"
+  },
+  "manifest": {
+    "documents": 39881,
+    "corpusSha256": "6b5a2f9a9717f765c7509db2030ad20675257d811fd19e5c9389a6db835e6d11",
+    "searchSha256": "383ee5d8f2721a7739d44c5a17eff82d1062f7d212653c6443b3216660220f22",
+    "runtimeSha256": "c57e7fcb1c284ec1d63df7d0461be7c9d10ebe4293a16792d756f9ba4b134a6c"
+  },
+  "index": {
+    "fetchParseMs": 132.60000000149012,
+    "indexMs": 350.69999999925494,
+    "count": 39881
+  },
+  "load": {
+    "ms": 13244.39999999851,
+    "logs": [
+      "Multithread enabled: false, pthreadPoolSize: 0",
+      "ggml_webgpu: adapter_info: vendor_id: 0 | vendor: amd | architecture: rdna-2 | device_id: 0 | name:  | device_desc: ",
+      "llama_prepare_model_devices: using device WebGPU (WebGPU) (unknown id) - 2048 MiB free",
+      "load_tensors: offloading output layer to GPU",
+      "load_tensors: offloading 34 repeating layers to GPU",
+      "load_tensors: offloaded 36/36 layers to GPU",
+      "load_tensors:          CPU model buffer size =  1756.00 MiB",
+      "load_tensors:       WebGPU model buffer size =  1407.74 MiB",
+      "llama_context:        CPU  output buffer size =     1.00 MiB",
+      "llama_kv_cache:     WebGPU KV buffer size =    12.00 MiB",
+      "llama_kv_cache:     WebGPU KV buffer size =    12.00 MiB",
+      "sched_reserve:     WebGPU compute buffer size =   116.52 MiB",
+      "sched_reserve:        CPU compute buffer size =    26.52 MiB"
+    ],
+    "webGPUSupported": true,
+    "modelMetadata": {
+      "name": "Gemma-4-E2B-It",
+      "architecture": "gemma4",
+      "fileType": "15"
+    }
+  },
+  "warmup": {
+    "answer": "2",
+    "firstVisibleMs": 1165.8999999985099,
+    "totalMs": 1264.300000000745,
+    "finishReason": "stop"
+  },
+  "finishedAt": "2026-10-27T17:13:30.146Z",
+  "summary": {
+    "none": {
+      "count": 12,
+      "firstMedianMs": 2243,
+      "firstP95Ms": 2349.900000002235,
+      "totalMedianMs": 3860.699999999255,
+      "totalP95Ms": 6096.900000002235,
+      "accuracy": 0.5,
+      "note": "Manually graded complete-answer accuracy.",
+      "fullyCorrect": 6,
+      "partial": 1,
+      "wrong": 5
+    },
+    "verbatim": {
+      "count": 12,
+      "firstMedianMs": 8.199999999254942,
+      "firstP95Ms": 29.399999998509884,
+      "totalMedianMs": 8.199999999254942,
+      "totalP95Ms": 29.399999998509884,
+      "accuracy": 0.8333333333333334,
+      "note": "Manually graded complete-answer accuracy.",
+      "fullyCorrect": 10,
+      "partial": 2,
+      "wrong": 0
+    },
+    "rag": {
+      "count": 12,
+      "firstMedianMs": 4812.599999997765,
+      "firstP95Ms": 10856.800000000745,
+      "totalMedianMs": 6339.19999999553,
+      "totalP95Ms": 13480.800000000745,
+      "accuracy": 0.9166666666666666,
+      "note": "Manually graded complete-answer accuracy.",
+      "fullyCorrect": 11,
+      "partial": 0,
+      "wrong": 1
+    },
+    "assisted": {
+      "count": 12,
+      "firstMedianMs": 4813.300000000745,
+      "firstP95Ms": 10857.5,
+      "totalMedianMs": 6339.89999999851,
+      "totalP95Ms": 13481.5,
+      "accuracy": 0.8333333333333334,
+      "note": "Manually graded complete-answer accuracy.",
+      "fullyCorrect": 10,
+      "partial": 0,
+      "wrong": 2
+    }
+  }
+}

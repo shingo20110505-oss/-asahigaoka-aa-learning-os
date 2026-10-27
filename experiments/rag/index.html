@@ -1,1 +1,25 @@
-<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RISE｜iPad ローカルAI比較測定</title><link rel="stylesheet" href="./style.css"><main><a href="../../#/home">← RISEに戻る</a><p class="eyebrow">RISE · 比較測定専用</p><h1>教材検索で、説明はよくなる？</h1><p>同じ24問を「検索なし」「検索結果そのまま」「検索＋LLM」で比較します。通常のチャット設定は変更しません。</p><section><label>この端末<select id="device"><option value="">選んでください</option><option value="iPad A16 / user confirmed">iPad A16（設定で確認済み）</option><option value="Other iPad / not A16 confirmed">その他のiPad・機種未確認</option><option value="Windows PC reference only">Windows PC（参考測定）</option><option value="Other device">その他</option></select></label><label>比較するモデル<select id="model"></select></label><p>初回はモデルを約2.1〜2.5 GBダウンロードします。測定中はこのページを表示したままにしてください。回答はこの端末に保存し、外部へ自動送信しません。</p><div class="actions"><button id="start">3方式を測定</button><button id="search" class="sub">検索だけ先に測定</button><button id="stop" class="sub">停止</button></div><p id="status" role="status">測定画面を読み込んでいます…</p><small id="progress"></small></section><section><h2>測定結果</h2><p>時間は自動集計します。正確さは回答本文を採点して判定します。測定終了後、JSONをこのチャットに添付してください。</p><button id="export">結果JSONを保存</button><pre id="result"></pre><details><summary>生成中の回答</summary><pre id="answer"></pre></details></section><section><h2>オフラインの確認</h2><p>一度測定した後、通信を切り、このページを再読み込みして「保存済みモデルで測定」を押してください。終了後は再び通信をつなぎ、結果を保存できます。</p><button id="offline" class="sub">保存済みモデルで測定</button><details><summary>判定条件とデータ</summary><p>採用の目安は24問中21問以上の完全正答、重大な誤断定なし。回答開始の中央値5秒以下・95%点10秒以下、完了の中央値20秒以下・95%点45秒以下。iPad A16で2回、オフライン再読み込みを含めて確認します。PCの測定値をiPadの性能とは扱いません。</p><p>検索対象：RISEの地理、歴史、古文・漢文、英単語、文法。既存辞書と年表には未校閲項目もあります。個人のノートや会話履歴は使いません。モデルはUnsloth変換のQwen3 4B Instruct 2507（Apache 2.0）、wllama 3.8.1。</p><a href="https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507">モデルの公式説明</a> · <a href="https://github.com/ngxson/wllama">実行ライブラリ</a><p><button id="clear" class="sub">測定用モデルを端末から削除</button></p></details></section></main><script type="module" src="./lab.mjs"></script></html>
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RISE｜iPad ローカルAI比較測定</title><link rel="stylesheet" href="./style.css">
+<main>
+<a href="../../#/home">← RISEに戻る</a><p class="eyebrow">RISE · 比較測定専用</p>
+<h1>教材検索で、説明はよくなる？</h1>
+<p>「検索なし」「検索結果そのまま」「検索＋LLM」を同じ問題で比較します。単語は教材、明確な縮尺・時差は計算処理を優先する実用方式も別枠で測定します。この成績をLLM自体の正答率には含めません。通常のチャット設定は変更しません。</p>
+<section>
+<label>この端末<select id="device"><option value="">選んでください</option><option value="iPad A16 / user confirmed">iPad A16（設定で確認済み）</option><option value="Other iPad / not A16 confirmed">その他のiPad・機種未確認</option><option value="Windows PC reference only">Windows PC（参考測定）</option><option value="Other device">その他</option></select></label>
+<label>比較するモデル<select id="model"></select></label>
+<label>問題セット<select id="suite"><option value="development">基本の24問</option><option value="validation">最終確認問題12問</option><option value="holdout">初回確認問題12問（誤答記録あり）</option></select></label>
+<p>選んだモデルだけを初回にダウンロードします（約2.1〜3.2 GB）。保存容量と実行時のメモリは別です。測定中はこのページを表示したままにしてください。回答はこの端末に保存し、外部へ自動送信しません。</p>
+<div class="actions"><button id="smoke">短い動作確認（3問）</button><button id="start" class="sub">全問を比較</button><button id="search" class="sub">検索だけ先に測定</button><button id="stop" class="sub">停止</button></div>
+<p id="status" role="status">測定画面を読み込んでいます…</p><small id="progress"></small>
+</section>
+<section><h2>測定結果</h2><p>時間は自動集計します。正確さは回答本文を採点して判定します。測定終了後、結果JSONを保存して、このチャットに添付してください。</p><button id="export">結果JSONを保存</button><pre id="result"></pre><details><summary>生成中の回答</summary><pre id="answer"></pre></details></section>
+<section><h2>オフラインの確認</h2><p>一度測定した後、通信を切り、このページを再読み込みして「保存済みモデルで測定」を押してください。終了後は再び通信をつなぎ、結果を保存できます。</p><button id="offline" class="sub">保存済みモデルで測定</button>
+<details><summary>判定条件とデータ</summary>
+<p>採用の目安は基本24問中21問以上・確認12問中10問以上の完全正答、重大な誤断定なし。回答開始の中央値5秒以下・95%点10秒以下、完了の中央値20秒以下・95%点45秒以下。iPad A16で2回、オフライン再読み込みを含めて確認します。PCの測定値をiPadの性能とは扱いません。</p>
+<p>検索対象：RISEの地理、歴史、古文・漢文、英単語、文法。既存辞書と年表には未校閲項目もあります。個人のノートや会話履歴は使いません。測定候補はUnsloth変換のQwen3 4B、Qwen3.5 4B、Gemma 4 E2B（Apache 2.0）。実行にはwllama 3.8.1を使います。測定候補であることは採用を意味しません。</p>
+<a href="https://huggingface.co/Qwen/Qwen3.5-4B">Qwen公式</a> · <a href="https://huggingface.co/google/gemma-4-E2B-it">Gemma公式</a> · <a href="https://github.com/ngxson/wllama">実行ライブラリ</a>
+<p><button id="clear" class="sub">測定用モデルを端末から削除</button></p>
+</details></section>
+</main><script type="module" src="./lab.mjs"></script></html>
