@@ -1,4 +1,4 @@
-import {BODY_LIMIT,CHUNK_LIMIT,REQUEST_HEADERS,RESPONSE_HEADERS,validRoute,validId,selectHeaders,encode,decode,limitedBody} from './protocol.mjs';
+import {BODY_LIMIT,CHUNK_LIMIT,COMPACT_LIMIT,REQUEST_HEADERS,RESPONSE_HEADERS,validRoute,validId,selectHeaders,encode,decode,limitedBody} from './protocol.mjs';
 import {PAGES_ORIGIN} from '../src/chat-target.mjs';
 const json=(value,status=200)=>new Response(JSON.stringify(value),{status,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
 export async function authorized(request,token){if(!/^[A-Za-z0-9_-]{43,128}$/.test(token||''))return false;const supplied=request.headers.get('authorization')||'';if(supplied.length>160)return false;const hash=async s=>new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)));const [a,b]=await Promise.all([hash(supplied),hash('Bearer '+token)]);let difference=0;for(let i=0;i<a.length;i++)difference|=a[i]^b[i];return difference===0;}
@@ -53,15 +53,16 @@ export class RelayCore {
       if(this.queue.length){const items=this.queue.splice(0,8);for(const item of items){const p=this.pending.get(item.id);if(p){this.queuedBytes-=p.bodyBytes;p.bodyBytes=0;}}return json({items});}
       const items=await new Promise(resolve=>{let timer;const done=items=>{clearTimeout(timer);request.signal.removeEventListener('abort',abort);if(this.waiter===done)this.waiter=null;resolve(items);};const abort=()=>done([]);timer=setTimeout(()=>done([]),this.pollMs);this.waiter=done;request.signal.addEventListener('abort',abort,{once:true});if(request.signal.aborted)abort();});return json({items});
     }
-    let input;try{input=JSON.parse(new TextDecoder().decode(await limitedBody(request,100000)));}catch{return json({error:'Invalid body'},400);}
+    let input;try{input=JSON.parse(new TextDecoder().decode(await limitedBody(request,action==='response'?Math.ceil(COMPACT_LIMIT/3)*4+16384:100000)));}catch{return json({error:'Invalid body'},400);}
     const p=this.pending.get(input.id);if(!p)return json({error:'Request ended'},410);
     this.touch(p);
     if(action==='headers'||action==='response'){
       if(p.started||!Number.isInteger(input.status)||input.status<200||input.status>599)return json({error:'Invalid response'},400);
       let compact;
       if(action==='response'){
-        if(!/^\/api\/uploads(?:\/|$)/.test(new URL(p.request.url).pathname))return json({error:'Invalid response route'},400);
-        try{compact=decode(input.body,CHUNK_LIMIT);}catch{return json({error:'Invalid body'},400);}
+        const route=new URL(p.request.url).pathname,isFile=/^\/api\/files\/[a-f0-9-]{36}$/.test(route)&&['GET','HEAD'].includes(p.request.method);
+        if(!isFile&&!/^\/api\/uploads(?:\/|$)/.test(route))return json({error:'Invalid response route'},400);
+        try{compact=decode(input.body,isFile?COMPACT_LIMIT:CHUNK_LIMIT);}catch{return json({error:'Invalid body'},400);}
         if((p.request.method==='HEAD'||[204,205,304].includes(input.status))&&compact.length)return json({error:'Unexpected body'},400);
       }
       const headers=new Headers();for(const [name,value] of Object.entries(input.headers||{}))if(RESPONSE_HEADERS.includes(name)){if(name==='set-cookie'&&Array.isArray(value)){for(const cookie of value)if(typeof cookie==='string')headers.append(name,cookie);}else if(typeof value==='string')headers.set(name,value);}

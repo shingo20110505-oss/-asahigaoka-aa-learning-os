@@ -1,6 +1,6 @@
 import {randomUUID} from 'node:crypto';
 import {setTimeout as delay} from 'node:timers/promises';
-import {BODY_LIMIT,CHUNK_LIMIT,REQUEST_HEADERS,RESPONSE_HEADERS,validRoute,validId,selectHeaders,encode,decode,limitedBody} from '../relay/protocol.mjs';
+import {BODY_LIMIT,CHUNK_LIMIT,COMPACT_LIMIT,REQUEST_HEADERS,RESPONSE_HEADERS,validRoute,validId,selectHeaders,encode,decode,limitedBody} from '../relay/protocol.mjs';
 
 // Only this outbound connector knows the relay secret. The browser never receives it.
 export function startRelay({origin,token,localURL,fetchImpl=fetch,onStatus=()=>{}}){
@@ -18,10 +18,12 @@ export function startRelay({origin,token,localURL,fetchImpl=fetch,onStatus=()=>{
       const body=decode(item.body,BODY_LIMIT),response=await fetchImpl(new URL(item.path,local),{method:item.method,headers,body:['GET','HEAD'].includes(item.method)?undefined:body,redirect:'error',signal:controller.signal});
       const responseHeaders=selectHeaders(response.headers,RESPONSE_HEADERS);const cookies=response.headers.getSetCookie();if(cookies.length)responseHeaders['set-cookie']=cookies;
       let compact;
-      if(/^\/api\/uploads(?:\/|$)/.test(item.path)&&response.headers.get('content-type')?.includes('application/json')){
-        compact=await limitedBody(response,CHUNK_LIMIT);
+      const length=response.headers.get('content-length');
+      const finiteFile=/^\/api\/files\/[a-f0-9-]{36}$/.test(item.path)&&['GET','HEAD'].includes(item.method)&&length!==null&&Number(length)<=COMPACT_LIMIT;
+      if(finiteFile||/^\/api\/uploads(?:\/|$)/.test(item.path)&&response.headers.get('content-type')?.includes('application/json')){
+        compact=await limitedBody(response,finiteFile?COMPACT_LIMIT:CHUNK_LIMIT);
         try{await send('response',{id:item.id,status:response.status,headers:responseHeaders,body:encode(compact)},controller.signal);return;}
-        catch(error){if(error.status!==404)throw error;}
+        catch(error){if(![400,404].includes(error.status))throw error;}
       }
       await send('headers',{id:item.id,status:response.status,headers:responseHeaders},controller.signal);
       if(item.method==='HEAD'||[204,205,304].includes(response.status))return;

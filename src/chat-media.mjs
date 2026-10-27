@@ -24,8 +24,15 @@ export async function fileFingerprint(file,{signal}={}){
  signal?.throwIfAborted();return[...hash].map(x=>x.toString(16).padStart(2,'0')).join('');
 }
 export async function uploadFile(file,{api,signal,onProgress=()=>{},fingerprint}={}){
- signal?.throwIfAborted();fingerprint??=await fileFingerprint(file,{signal});signal?.throwIfAborted();const upload=await api('/uploads',{method:'POST',body:{name:file.name,size:file.size,type:file.type||'application/octet-stream',fingerprint},signal});let offset=upload.offset;const chunkSize=upload.chunkSize;
+ signal?.throwIfAborted();fingerprint??=await fileFingerprint(file,{signal});signal?.throwIfAborted();
+ // Carry the first MiB in the create request. Small images now need one round
+ // trip; old PCs ignore initialData and still use the resumable PATCH path.
+ const bytes=new Uint8Array(await file.slice(0,1024*1024).arrayBuffer());let binary='';
+ for(let i=0;i<bytes.length;i+=8192)binary+=String.fromCharCode(...bytes.subarray(i,i+8192));
+ signal?.throwIfAborted();
+ const upload=await api('/uploads',{method:'POST',body:{name:file.name,size:file.size,type:file.type||'application/octet-stream',fingerprint,initialData:btoa(binary)},signal});let offset=upload.offset;const chunkSize=upload.chunkSize;
  if(!Number.isSafeInteger(offset)||offset<0||offset>file.size||!Number.isSafeInteger(chunkSize)||chunkSize<1||chunkSize>4*1024*1024)throw Error('アップロードの応答が不正です');
+ if(upload.file){if(offset!==file.size||upload.file.id!==upload.id||upload.file.size!==file.size)throw Error('アップロードの応答が不正です');onProgress(file.size,file.size);return upload.file;}
  onProgress(offset,file.size);while(offset<file.size){if(signal?.aborted)throw new DOMException('中止しました','AbortError');const end=Math.min(file.size,offset+chunkSize);const result=await api('/uploads/'+encodeURIComponent(upload.id),{method:'PATCH',body:file.slice(offset,end),headers:{'Upload-Offset':String(offset),'Content-Type':'application/octet-stream'},signal});if(result.offset!==end)throw Error('送信位置が一致しません。再送信して再開してください。');offset=end;onProgress(offset,file.size);}
  return api('/uploads/'+encodeURIComponent(upload.id)+'/complete',{method:'POST',body:{},signal});
 }

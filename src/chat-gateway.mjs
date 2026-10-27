@@ -20,9 +20,16 @@ export function gatewayFetch(endpoint,{fetchImpl=fetch,timeoutMs=22000}={}){
 }
 
 // Fetch finite ranges so CGI/proxy buffers never need to hold a complete MP4.
-export async function downloadChatFile(url,request,{signal}={}){
- const head=await request(url,{method:'HEAD',signal});if(!head.ok)throw Error('添付を読み込めません。ログイン状態を確認してください。');
- const length=head.headers.get('content-length'),size=Number(length);if(length===null||!Number.isSafeInteger(size)||size<0)throw Error('添付のサイズを取得できません');
- const parts=[];for(let start=0;start<size;start+=1024*1024){const end=Math.min(size-1,start+1024*1024-1),r=await request(url,{headers:{Range:`bytes=${start}-${end}`},signal});if(r.status!==206||r.headers.get('content-range')!==`bytes ${start}-${end}/${size}`)throw Error('添付の読み込みが中断しました。もう一度試してください。');const part=await r.blob();if(part.size!==end-start+1)throw Error('添付のデータが不足しています');parts.push(part);}
- return new Blob(parts,{type:head.headers.get('content-type')||'application/octet-stream'});
+export async function downloadChatFile(url,request,{signal,size,type}={}){
+ signal?.throwIfAborted();
+ if(!Number.isSafeInteger(size)||size<0||!type){
+  const head=await request(url,{method:'HEAD',signal});if(!head.ok)throw Error('添付を読み込めません。ログイン状態を確認してください。');
+  const length=head.headers.get('content-length');size=Number(length);type=head.headers.get('content-type');if(length===null||!Number.isSafeInteger(size)||size<0)throw Error('添付のサイズを取得できません');
+ }
+ const controller=new AbortController(),cancel=()=>controller.abort();signal?.addEventListener('abort',cancel,{once:true});if(signal?.aborted)cancel();
+ const chunk=1024*1024,parts=[];let next=0,failure;
+ const run=async()=>{while(next<size&&!controller.signal.aborted){const start=next;next+=chunk;const end=Math.min(size-1,start+chunk-1);try{
+  const r=await request(url,{headers:{Range:`bytes=${start}-${end}`},signal:controller.signal});if(r.status!==206||r.headers.get('content-range')!==`bytes ${start}-${end}/${size}`)throw Error('添付の読み込みが中断しました。もう一度試してください。');const part=await r.blob();if(part.size!==end-start+1)throw Error('添付のデータが不足しています');parts[start/chunk]=part;
+ }catch(error){failure??=error;controller.abort();}}};
+ try{await Promise.all([run(),run()]);if(failure)throw failure;controller.signal.throwIfAborted();return new Blob(parts,{type:type||'application/octet-stream'});}finally{signal?.removeEventListener('abort',cancel);}
 }
