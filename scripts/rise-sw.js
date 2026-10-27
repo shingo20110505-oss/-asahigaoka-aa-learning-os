@@ -12,7 +12,7 @@ self.addEventListener('message',event=>{
 self.addEventListener('install',e=>e.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(SHELL.map(x=>new Request(new URL(x,self.registration.scope),{cache:'reload'})));await self.skipWaiting();})()));
 self.addEventListener('activate',e=>e.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('rise-v6-')&&key!==CACHE)await caches.delete(key);await self.clients.claim();for(const client of await self.clients.matchAll())client.postMessage({type:'RISE_OFFLINE_READY'});})()));
 self.addEventListener('fetch',e=>{
- const u=new URL(e.request.url),base=new URL(self.registration.scope);if(u.origin!==base.origin||!u.pathname.startsWith(base.pathname))return;const rel=u.pathname.slice(base.pathname.length);
+ const u=new URL(e.request.url),base=new URL(self.registration.scope);if(u.origin!==base.origin||!u.pathname.startsWith(base.pathname))return;const rel=u.pathname.slice(base.pathname.length);if(rel.startsWith('labs/'))return;
  if(base.origin===PAGES_ORIGIN&&rel.startsWith('api/')){e.respondWith(chat(e.request,rel.slice(4)+u.search));return;}
  if(e.request.method!=='GET'||/^(api\/|setup|chat-api\/)/.test(rel))return;
  if(['update.html','src/app-updater.mjs'].includes(rel)){e.respondWith(fetch(e.request,{cache:'no-store'}).catch(async()=>await(await caches.open(CACHE)).match(new URL('./'+rel,base))||Response.error()));return;}

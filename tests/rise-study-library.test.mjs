@@ -7,6 +7,8 @@ test('default corpus finds geography, both classical vocabularies, English and c
  const index=await studyIndex();assert.ok(index.count>=39800);assert.match(index.get('history-499').text,/17の目標/);assert.ok(!index.get('history-499').text.includes('男女共同参画'));
  assert.equal(index.search('no-match-xyzzzzwww',{category:'geography'}).length,0);
  const refs=await libraryReferences('日本海側 冬 雪',{category:'geography'});assert.ok(refs.length);assert.ok(refs.every(x=>x.category==='geography'));
+ assert.ok(index.search('地形図で4cmの道は何km').every(x=>x.category!=='english'));assert.ok(index.search('古文のつとめての意味').every(x=>x.category==='classical'));
+ assert.match(index.search('a few').find(x=>x.title==='a few').text,/ほとんどない/);
 });
 test('search tools support repeated searches but never arbitrary paths or unrecognized actions',async()=>{
  const seen=[];for(const query of ['輪中','電照菊']){const r=await runStudyTool({tool:'rise_search',arguments:{query,category:'geography',limit:3}},{onReferences:r=>seen.push(...r)});assert.equal(r.success,true);assert.equal(r.contentItems[0].type,'inputText');}

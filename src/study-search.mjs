@@ -12,7 +12,9 @@ export function createStudyIndex(documents){
  const average=lengths.reduce((a,b)=>a+b,0)/Math.max(docs.length,1),byId=new Map(docs.map(d=>[d.id,d]));
  function search(query,{limit=6,category='all'}={}){
   const q=normalizeSearch(query).trim().slice(0,800);if(!q)return[];
-  const dictionaryIntent=/[a-z]|英語|英単語|英訳/.test(q),eligible=d=>(category==='all'||d.category===category)&&(category!=='all'||d.category!=='english'||dictionaryIntent);
+  // Units in maths/geography (4cm, 1km, kg...) do not make a query an English lookup.
+  const latinWords=q.match(/[a-z]+(?:['-][a-z]+)*/g)||[],units=new Set(['cm','mm','km','m','kg','g','mg','ml','l','kmh','kw','kwh','hz','ha']),dictionaryIntent=/英語|英単語|英訳/.test(q)||latinWords.some(w=>!units.has(w)),specific=/古文/.test(q)&&!/漢文/.test(q)?'classical':/漢文/.test(q)&&!/古文/.test(q)?'kanbun':null;
+  const eligible=d=>(category==='all'||d.category===category)&&(category!=='all'||(!specific||d.category===specific)&&(d.category!=='english'||dictionaryIntent));
   const terms=new Set(searchTokens(q)),scores=new Map(),hits=new Map();
   for(const t of terms){const rows=postings.get(t);if(!rows)continue;const idf=Math.log(1+(docs.length-rows.length/2+.5)/(rows.length/2+.5));for(let j=0;j<rows.length;j+=2){const i=rows[j],tf=rows[j+1];if(!eligible(docs[i]))continue;scores.set(i,(scores.get(i)||0)+idf*tf*2.2/(tf+1.2*(.25+.75*lengths[i]/average)));hits.set(i,(hits.get(i)||0)+1);}}
   const latin=new Set(q.match(/[a-z0-9]+(?:['-][a-z0-9]+)*/g)||[]);
