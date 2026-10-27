@@ -46,7 +46,7 @@ export async function mount(ctx){const{main}=ctx,display=chatDisplay(main);let v
     if(disposed||ticket!==revision)throw new DOMException('画面が変わりました','AbortError');
     // Display received bytes immediately. IndexedDB persistence need not delay
     // the first frame; the explicit offline-save button still awaits it.
-    if(binding){const saved=cacheTask(()=>archive.putFile(id,blob,binding)).then(()=>{if(!disposed&&ticket===revision)return refreshCache();});mediaSaves.set(id,saved);saved.finally(()=>{if(mediaSaves.get(id)===saved)mediaSaves.delete(id);});}
+    if(binding){const saved=cacheTask(()=>archive.putFile(id,blob,binding)).then(()=>{if(!disposed&&ticket===revision)return refreshCache();});mediaSaves.set(id,saved);const clear=()=>{if(mediaSaves.get(id)===saved)mediaSaves.delete(id);};saved.then(clear,clear);}
    }
    mediaBlobs.set(id,blob);return blob;
   })();
