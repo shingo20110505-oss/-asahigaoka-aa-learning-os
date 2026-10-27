@@ -37,7 +37,9 @@ jobs:
       - name: Verify workspace interactions, responsive UI and offline history
         env:
           RISE_PLAYWRIGHT_MODULE: ${{ github.workspace }}/test-results/ui-runtime/node_modules/playwright/index.mjs
-        run: node scripts/test-workspace-ui.mjs
+        run: |
+          node scripts/test-workspace-ui.mjs
+          node scripts/test-geography-ui.mjs
       - name: Save workspace screenshots and verification results
         if: always()
         uses: actions/upload-artifact@v4

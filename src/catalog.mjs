@@ -1,4 +1,5 @@
 export const features=[
+ {id:'geography',title:'地理をつなぐ',label:'GEOGRAPHY',desc:'中学地理20章・138項目。世界6州、日本7地方、愛知の資料読解まで。',icon:'learn',tone:'green',subject:'社会'},
  {id:'english-words',title:'英単語・熟語',label:'ENGLISH WORD BANK',desc:'中学の基本語から発展の辞書まで。検索・意味確認・10語ずつの復習。',icon:'cards',tone:'blue',subject:'英語'},
  {id:'ai-tools',title:'AI学習ツール',label:'AI TOOLS',desc:'手書き消去・難易度別の類題作成・画像生成。',icon:'flask',tone:'green',subject:'AI'},
  {id:'exam',title:'旭丘・5教科対策',label:'ASAHIGAOKA',desc:'公式問題3年分から、伸ばしたい読み方・考え方を選ぶ。',icon:'learn',tone:'green',subject:'全教科'},

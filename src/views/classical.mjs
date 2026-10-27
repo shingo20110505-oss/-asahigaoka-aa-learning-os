@@ -3,8 +3,8 @@ import {classicalWords,rankLabels,selectWords,wordProgress} from '../classical-w
 import {scheduleReview} from '../domain.mjs';
 import {esc,heading,button,badge,empty,toast} from '../ui.mjs';
 
-export function mount({main,store}){
- let kind='古文',rank='all',filter='all',query='',revealed=new Set(),session=null,index=0,answer=false,saving=false;
+export function mount({main,store,query:params}){
+ const requested=params?.get('word')||'';let kind=classicalWords.find(w=>w.word===requested)?.kind||'古文',rank='all',filter='all',query=requested,revealed=new Set(),session=null,index=0,answer=false,saving=false;
  const evidenceHTML=w=>w.evidence.length?`<small class="classic-evidence">${w.evidence.map(e=>esc(classicalPapers.find(p=>p.id===e.paperId).label+' · '+e.type)).join('<br>')}</small>`:'';
  const meaningHTML=w=>esc(w.meaning)+evidenceHTML(w);
  const settings=()=>({kind,rank,filter,query}),rows=()=>selectWords(store.state,settings());
