@@ -147,6 +147,22 @@ export async function mount(ctx){const{main}=ctx,display=chatDisplay(main);let v
  async function boot(){if(booting||disposed)return;booting=true;nextReconnectAt=Date.now()+5000;try{if(!archiveReady){try{await archive.open();archiveReady=true;}catch(error){archiveIssue=error.message;}}if(archiveReady){const meta=await archive.open();if(meta.locked){resetSession();login();return;}}if(!navigator.onLine){if(!await showOffline())setup('オフラインで開ける履歴がありません。最初にオンラインでログインし、履歴の保存を完了してください。');return;}offlineView=false;if(usesHostedChat(location.hostname)){directChat??=createChatProxy({apiRoot:CHAT_ORIGIN+'/api/',store:connection,fetchImpl:gatewayFetch(CHAT_GATEWAY)});}const info=await warmChat()||await api('/status');if(!info.configured)return setup();await connect();}catch(error){if(disposed||error.name==='AbortError')return;if(error.code==='ARCHIVE_SESSION_CHANGED'){resetSession();login();return;}if(error.status===401||error.status===403){await signOut(false);return;}if(!await showOffline())setup(error.message);}finally{booting=false;if(offlineView)nextReconnectAt=Date.now()+5000;}}
  const wentOffline=()=>{if(session&&!offlineView&&!uploading&&!preparing)showOffline().catch(()=>{});};const wentOnline=()=>{if(offlineView&&!busy)boot();};window.addEventListener('offline',wentOffline);window.addEventListener('online',wentOnline);
  const ready=boot();const dispose=()=>{disposed=true;toolSheet?.disposeTool();uploadQueue.reset();archiveRun++;archive.close();viewer?.close();display.dispose();clearInterval(syncTimer);document.removeEventListener('visibilitychange',visible);window.removeEventListener('offline',wentOffline);window.removeEventListener('online',wentOnline);events?.close();abort?.abort();release();main.onclick=null;};
+ const navigationDrafts=[];
+ const navigationSnapshot=()=>({current,draft,files,reference,mode,difficulty,threadQuery,webSearch,session});
+ dispose.canResumeNavigation=()=>navigationDrafts.some(x=>x.session===session);
+ dispose.resetNavigation=()=>{
+  if(busy||preparing||uploading){toast('回答・添付の処理が続いています。完了後に入口へ戻れます。');return false;}
+  if(!session)return true;
+  navigationDrafts.push(navigationSnapshot());drafts.set(current?.id||'new',{draft,files,reference});
+  current=null;draft='';files=[];reference=null;mode='chat';difficulty='standard';threadQuery='';webSearch=false;
+  queryKey='';ctx.query=new URLSearchParams();sourceLoaded=true;display.restore();draw();return true;
+ };
+ dispose.resumeNavigation=()=>{
+  if(busy||preparing||uploading){toast('処理が完了してから前の画面を再開できます。');return false;}
+  let saved;while(navigationDrafts.length){const next=navigationDrafts.pop();if(next.session===session){saved=next;break;}}
+  if(!saved)return false;
+  const now=navigationSnapshot();({current,draft,files,reference,mode,difficulty,threadQuery,webSearch}=saved);navigationDrafts.push(now);draw();return true;
+ };
  dispose.ready=ready;dispose.restore=()=>{display.restore();display.sync();};dispose.refreshDisplay=display.sync;dispose.toggleMaximize=display.toggle;
  let queryKey=ctx.query.toString();
  dispose.applyQuery=async query=>{if(query.toString()===queryKey)return;await ready;queryKey=query.toString();ctx.query=query;sourceLoaded=false;mode=Object.hasOwn(STUDY_MODES,query.get('mode'))?query.get('mode'):'chat';await loadMaterial();if(session)draw();};

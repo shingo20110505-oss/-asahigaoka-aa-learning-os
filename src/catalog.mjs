@@ -1,4 +1,5 @@
 export const features=[
+ {id:'english-words',title:'英単語・熟語',label:'ENGLISH WORD BANK',desc:'中学の基本語から発展の辞書まで。検索・意味確認・10語ずつの復習。',icon:'cards',tone:'blue',subject:'英語'},
  {id:'ai-tools',title:'AI学習ツール',label:'AI TOOLS',desc:'手書き消去・難易度別の類題作成・画像生成。',icon:'flask',tone:'green',subject:'AI'},
  {id:'exam',title:'旭丘・5教科対策',label:'ASAHIGAOKA',desc:'公式問題3年分から、伸ばしたい読み方・考え方を選ぶ。',icon:'learn',tone:'green',subject:'全教科'},
  {id:'explore',title:'理解の実験室',label:'EXPLORE',desc:'動点・箱ひげ図・中和・遺伝。10のモデルを動かして理解する。',icon:'flask',tone:'blue',subject:'数学・理科・資料読解'},

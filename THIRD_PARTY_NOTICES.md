@@ -38,3 +38,8 @@
 - 生成スクリプト：`scripts/build-reading-dictionary.mjs`
 - RISEの既存語彙・独自の説明を優先し、未収録語に補助辞書を使用します。補助辞書の語義は文脈全体の翻訳ではありません。
 - 文法確認に使用した一次資料は `data/reading-sources.json` に記載。文法解説・追加長文20本・設問・和訳は本アプリ用の独自作成です。
+
+
+## RISE English Word Bank
+
+The independently generated database in data/english/ combines EJDict-hand (CC0 1.0), NGSL 1.2 by Charles Browne, Brent Culligan and Joseph Phillips (CC BY-SA 4.0), and existing/original RISE material. See data/english/LICENSE.txt and scripts/english-sources/README.md for attribution, source URLs, frozen revisions, changes and coverage limits. The adapted database is CC BY-SA 4.0; unrelated application code licenses are unchanged.

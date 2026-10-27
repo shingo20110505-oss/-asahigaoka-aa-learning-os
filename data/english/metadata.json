@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "version": "2026-10-27.1",
+  "license": "CC-BY-SA-4.0",
+  "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "sources": [
+    {
+      "id": "ejdict",
+      "title": "EJDict-hand",
+      "url": "https://github.com/kujirahand/EJDict",
+      "license": "CC0-1.0",
+      "revision": "9663055d59a8cb1a35078a71db7a09ff39305828"
+    },
+    {
+      "id": "ngsl",
+      "title": "NGSL 1.2 — Browne, Culligan & Phillips",
+      "url": "https://www.newgeneralservicelist.com/new-general-service-list",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "rise",
+      "title": "RISEの既存語彙・読解辞書",
+      "license": "Existing project material; retained provenance"
+    },
+    {
+      "id": "rise-original",
+      "title": "RISE独自の補足",
+      "license": "CC-BY-SA-4.0"
+    }
+  ],
+  "counts": {
+    "sourceRows": 45366,
+    "excludedProper": 3808,
+    "excludedMarked": 272,
+    "excludedInvalid": 1966,
+    "formRows": 1086,
+    "variantRows": 23,
+    "headwords": 38578,
+    "kind": {
+      "word": 33290,
+      "phrase": 5288
+    },
+    "stage": {
+      "basic": 1110,
+      "entrance": 1968,
+      "extension": 35500
+    },
+    "forms": 7061,
+    "examples": 665,
+    "translatedExamples": 8,
+    "unclassifiedPOS": 34446,
+    "ngslRanked": 2809,
+    "ngslCovered": 2809
+  },
+  "missingNGSL": [],
+  "scope": "中学基礎・高校入試準備から発展語まで。基本はNGSL頻度上位1000とRISE基礎語、入試準備は残りのNGSLと既存教材・熟語。学年別の公式指定語彙リストではありません。",
+  "limitations": [
+    "教科書全社・全版との照合は未実施。完全網羅を保証しません。",
+    "発展語には専門語・古い表現が含まれます。辞書移入語の語義と品詞は全件の人手校閲未実施。",
+    "品詞が判定できない語は未分類。例文・和訳は整備済みの語だけ表示します。",
+    "活用形と綴りの別形は見出し数に加算しません。NGSLに独立見出しがある同綴り異義語は保持します。"
+  ]
+}
