@@ -54,7 +54,9 @@ for(const compactSupported of [true,false])test('remote connector preserves isol
   assert.equal(chunk.status,200);await chunk.arrayBuffer();
   assert.equal((await request('uploads/'+upload.id+'/complete',{method:'POST',headers:guest,body:'{}'})).status,200);
   assert.equal(hostCalls.filter(x=>x==='response').length,3);if(compactSupported)assert.equal(hostCalls.filter(x=>['headers','chunk','end'].includes(x)).length,0,'three upload acknowledgments use 3 host calls instead of 9');
-  const file=await request('files/'+upload.id,{headers:guest});assert.deepEqual(Buffer.from(await file.arrayBuffer()),binary);
+  hostCalls.length=0;const file=await request('files/'+upload.id,{headers:guest});assert.deepEqual(Buffer.from(await file.arrayBuffer()),binary);
+  assert.equal(hostCalls.filter(x=>x==='response').length,1,'bounded media uses one complete response');
+  if(compactSupported)assert.equal(hostCalls.filter(x=>['headers','chunk','end'].includes(x)).length,0);
   const range=await request('files/'+upload.id,{headers:{...guest,Range:'bytes=100-999'}});assert.equal(range.status,206);assert.equal(range.headers.get('content-range'),'bytes 100-999/180000');assert.deepEqual(Buffer.from(await range.arrayBuffer()),binary.subarray(100,1000));
   assert.equal((await request('files/'+upload.id,{headers:other})).status,404);
   assert.equal((await request('threads/'+thread.id,{method:'DELETE',headers:other})).status,404);
@@ -88,4 +90,18 @@ test('compact upload acknowledgments keep body bounds, authorization and single 
  assert.equal((await host('response',{id,status:200,headers:{'content-type':'application/json','x-untrusted':'no'},body})).status,200);
  const response=await pending;assert.deepEqual(await response.json(),{offset:1048576});assert.equal(response.headers.get('x-untrusted'),null);assert.equal(relay.pending.size,0);
  assert.equal((await host('response',{id,status:200,headers:{},body})).status,410);
+});
+
+test('compact media response admits exactly one MiB and keeps non-media routes excluded',async t=>{
+ const token=secret(),origin='https://relay.example',relay=new RelayCore({RISE_RELAY_TOKEN:token},{pollMs:50,headerMs:5000});t.after(()=>relay.close());
+ const headers={Authorization:'Bearer '+token,'X-Rise-Instance':randomUUID(),'Content-Type':'application/json'};
+ const host=(action,body={})=>relay.fetch(new Request(origin+'/_rise/host/'+action,{method:'POST',headers,body:JSON.stringify(body)}));
+ await host('hello');const pending=relay.fetch(new Request(origin+'/api/files/'+randomUUID(),{headers:{Range:'bytes=0-1048575'}}));const {items}=await(await host('poll')).json(),id=items[0].id;
+ assert.equal((await host('response',{id,status:206,headers:{},body:encode(new Uint8Array(1024*1024+1))})).status,400);
+ const bytes=new Uint8Array(1024*1024).map((_,i)=>i%251);
+ assert.equal((await host('response',{id,status:206,headers:{'content-type':'image/png','content-range':'bytes 0-1048575/1048576'},body:encode(bytes)})).status,200);
+ assert.deepEqual(new Uint8Array(await(await pending).arrayBuffer()),bytes);assert.equal(relay.pending.size,0);
+ const status=relay.fetch(new Request(origin+'/api/status')),next=(await(await host('poll')).json()).items[0].id;
+ assert.equal((await host('response',{id:next,status:200,headers:{},body:''})).status,400);
+ await host('error',{id:next});assert.equal((await status).status,503);
 });
