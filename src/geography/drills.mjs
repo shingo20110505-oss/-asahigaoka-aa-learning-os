@@ -1,3 +1,4 @@
+import {expandedDrills} from './expanded-drills.mjs';
 // All numerical tables below are original teaching examples, NOT observations.
 export const geographyDrills=[
  {id:'rain-season',title:'雨温図：南北半球',kind:'climate',data:{temperature:[24,24,22,18,14,11,10,12,15,18,21,23],rain:[30,35,50,75,100,125,135,110,85,60,45,35]},question:'この例の地点で最も自然な判断は？',choices:['北半球で夏に多雨','南半球で冬に多雨','南半球で年中同じ気温','北半球で冬に乾燥'],correct:1,reason:'最も暑いのが1〜2月、最も寒いのが7月なので南半球。雨は6〜8月に多く、この地点の冬に多い。',related:['hemispheres','climograph']},
@@ -15,5 +16,6 @@ export const geographyDrills=[
  {id:'daytime',title:'都市：昼夜間人口',headers:['地域','夜間人口（万人）','昼間人口（万人）'],rows:[['A','50','80'],['B','70','55']],question:'この資料と最も整合する説明は？',choices:['Aは住宅地だけで職場がない','Aは通勤・通学の流入が流出を上回る','Bの総人口は必ず減少中','Aの高齢者割合がBより高い'],correct:1,reason:'Aの昼間人口は夜間人口より30万人多い。流入超過と整合するが、人口の年次変化や年齢構成はこの表では不明。',related:['kanto-city','multi-source']},
  {id:'energy-total',title:'電力：割合と発電量',headers:['国','総発電量（億kWh）','再生可能エネルギー割合'],rows:[['A','100','60%'],['B','400','20%']],question:'再生可能エネルギーの発電量は？',choices:['Aが60、Bが80でBが多い','Aが60、Bが20でAが多い','Aが100、Bが400','割合だけで両方同じと分かる'],correct:0,reason:'Aは100×0.6＝60、Bは400×0.2＝80億kWh。構成比と絶対量は別。',related:['europe-energy','jp-energy']},
  {id:'hazard',title:'防災：安全な経路を考える',headers:['経路','距離','地形・想定'],rows:[['A','500m','川沿いの浸水想定区域を通る'],['B','800m','高い場所を通る・土砂災害想定区域外']],question:'避難計画の検討として適切なのは？',choices:['Aが短いから常に安全','Bならどんな災害でも絶対安全','距離に加え想定災害・通行条件・避難先を確認する','どちらも地形は無関係'],correct:2,reason:'短さだけで安全は決まらない。想定は条件付きなので、災害の種類・現在の状況・避難先の適否も確かめる。',related:['hazard','disaster-types']},
- {id:'europe-farm',title:'ヨーロッパ：農業資料の照合',headers:['国の候補','牛乳生産/人（kg）','オリーブ生産/人（kg）'],rows:[['A','900','−'],['B','160','70']],question:'Aをデンマーク、Bをスペインの候補とする根拠で適切なのは？',choices:['Aの方が必ず総人口が多い','Bはオリーブ、Aは酪農の特徴と整合する','−だから必ずゼロと証明できる','Bは寒帯なのでオリーブが育つ'],correct:1,reason:'地中海沿岸の樹木作物と酪農の特徴を複数指標で照合する。「−」は欠測の場合もあるため凡例が必要。総生産量は人口がなければ比較できない。',related:['europe-farm','unit-check']}
+ {id:'europe-farm',title:'ヨーロッパ：農業資料の照合',headers:['国の候補','牛乳生産/人（kg）','オリーブ生産/人（kg）'],rows:[['A','900','−'],['B','160','70']],question:'Aをデンマーク、Bをスペインの候補とする根拠で適切なのは？',choices:['Aの方が必ず総人口が多い','Bはオリーブ、Aは酪農の特徴と整合する','−だから必ずゼロと証明できる','Bは寒帯なのでオリーブが育つ'],correct:1,reason:'地中海沿岸の樹木作物と酪農の特徴を複数指標で照合する。「−」は欠測の場合もあるため凡例が必要。総生産量は人口がなければ比較できない。',related:['europe-farm','unit-check']},
+ ...expandedDrills
 ].map(x=>({...x,id:'geo-drill-'+x.id,subject:'社会',sourceNote:'RISE独自の模式図・練習用仮想データ。実際の統計値・過去問の転載ではありません。'}));

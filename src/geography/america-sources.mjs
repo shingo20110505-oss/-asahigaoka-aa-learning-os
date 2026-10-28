@@ -1,0 +1,25 @@
+const s=(title,url,scope)=>({title,url,scope,checked:'2026-10-28'});
+export const americaSources={
+ ...Object.fromEntries([['bolivia','ボリビア'],['ecuador','エクアドル'],['colombia','コロンビア'],['venezuela','ベネズエラ'],['paraguay','パラグアイ'],['uruguay','ウルグアイ'],['guyana','ガイアナ'],['suriname','スリナム']].map(([key,name])=>['country-'+key,s('外務省：'+name+'基礎データ','https://www.mofa.go.jp/mofaj/area/'+key+'/data.html','位置・産業・文化。資源量・生産量・所得を区別し、順位は固定しない')])),
+ altiplano:s('NASA：アンデスの高原と塩湖','https://science.nasa.gov/photojournal/earth-false-color-mosaic-of-the-andes/','山脈間の高原とチチカカ湖・ウユニ塩原の位置'),
+ titicaca:s('NASA：チチカカ湖','https://science.nasa.gov/earth/earth-observatory/lake-titicaca-4070/','高原の湖とペルー・ボリビアの国境'),
+ orinoco:s('NASA：オリノコ川とカロニ川','https://science.nasa.gov/earth/earth-observatory/ciudad-guayana-venezuela-6215/','上流の地質・侵食と河川水の色'),
+ pantanal:s('UNESCO：パンタナル保全地域','https://whc.unesco.org/en/list/999/','季節的な洪水と湿地の生態系'),
+ galapagos:s('UNESCO：ガラパゴス諸島','https://whc.unesco.org/en/list/1/','火山島・隔離・海流と固有生物'),
+ coffeeColombia:s('UNESCO：コロンビアのコーヒー文化的景観の推薦資料','https://whc.unesco.org/document/115771','アンデスの標高・斜面と農業文化。面積や割合は転載しない'),
+ lithiumBrine:s('米国地質調査所：リチウム塩水鉱床モデル','https://pubs.usgs.gov/of/2013/1006/OF13-1006.pdf','乾燥した盆地と塩水中の資源。旧年の資源量・順位は利用しない'),
+ caneEthanol:s('米農務省：ブラジルのサトウキビとエタノール','https://www.ers.usda.gov/amber-waves/2011/december/can-brazil-meet-the-world-s-growing-need-for-ethanol','砂糖・燃料への加工と需要。2011年の量や将来予測は現在の値として利用しない'),
+ brasilia:s('UNESCO：ブラジリア','https://whc.unesco.org/en/list/445/','内陸に計画された首都と都市配置'),
+ ...Object.fromEntries([['usa','米国'],['cuba','キューバ'],['jamaica','ジャマイカ'],['panama','パナマ'],['costarica','コスタリカ'],['guatemala','グアテマラ']].map(([key,name])=>['country-'+key,s('外務省：'+name+'基礎データ','https://www.mofa.go.jp/mofaj/area/'+key+'/data.html','位置・産業・文化・歴史。変動する数値は本文に固定しない')])),
+ rocky:s('米国立公園局：ロッキーの地質学習資料','https://www.nps.gov/romo/learn/education/upload/Geology-Teacher-Guide-for-web.pdf','分水界・標高・雨陰と生態系'),
+ grandCanyon:s('米国立公園局：グランドキャニオンの地質','https://www.nps.gov/grca/learn/nature/grca-geology.htm','隆起・地層・川と支流による侵食'),
+ greatBasin:s('米国立公園局：グレートベースン','https://www.nps.gov/grba/planyourvisit/the-great-basin.htm','内陸流域、多くの盆地と山地、乾燥'),
+ appalachians:s('米国立公園局：衝突による山脈','https://www.nps.gov/subjects/geology/plate-tectonics-collisional-mountain-ranges.htm','アパラチアの形成と侵食'),
+ olympicRain:s('米国立公園局：オリンピック山地','https://www.nps.gov/olym/learn/nature/mountains.htm','太平洋の湿った風と雨陰'),
+ canadaLand:s('カナダ天然資源省：国土と水の地図','https://natural-resources.canada.ca/maps-tools-publications/maps/atlas-canada/land-water','地形区・水系の位置'),
+ canadaEnvironment:s('カナダ天然資源省：気候・環境地図','https://natural-resources.canada.ca/maps-tools-publications/maps/atlas-canada/climate-environment','生態地域・植生と寒冷な国土環境'),
+ canadaMinerals:s('カナダ天然資源省：鉱物と経済','https://natural-resources.canada.ca/minerals-mining/mining-data-statistics-analysis/minerals-economy','鉱業の地域・品目。年次統計の順位は転載しない'),
+ lakeSnow:s('NOAA：湖水効果の雪','https://www.nesdis.noaa.gov/about/k-12-education/ice-snow/what-lake-effect-snow','冷気と相対的に暖かい湖による水蒸気供給'),
+ panamaWater:s('パナマ運河庁：安全な運航と水','https://pancanal.com/en/safety-at-the-center-of-the-panama-canals-service-to-global-trade/','湖の淡水と水位・船の運航。過去の運用値を現在へ固定しない'),
+ sanAndreas:s('米国地質調査所：サンアンドレアス断層系','https://www.usgs.gov/publications/san-andreas-fault-system-complexities-along-a-major-transform-fault-system-and','横ずれ境界とプレート運動')
+};
