@@ -1,4 +1,22 @@
 {
- "wllama":{"version":"3.8.1","tarball":"https://registry.npmjs.org/@wllama/wllama/-/wllama-3.8.1.tgz","integrity":"sha512-Pl7BEJhPU8OHnV/yhn3DFZYhLLOdSHh+4TND79WCftHnlUAdQPAsyc/CfIOY+4mVxvf5VW3Xw3Uf7BBfotS1gw=="},
- "compat":{"version":"3.8.1","tarball":"https://registry.npmjs.org/@wllama/wllama-compat/-/wllama-compat-3.8.1.tgz","integrity":"sha512-IvmjrJ+JzDbt3w1FQq1yAmnFEiLGCceowK2Q80zW+k9ChFkPBM1ByX/9xm2xVxyd8MHC50VpuDo6SDE83k9kIQ=="}
+  "wllama": {
+    "version": "3.8.1",
+    "tarball": "https://registry.npmjs.org/@wllama/wllama/-/wllama-3.8.1.tgz",
+    "integrity": "sha512-Pl7BEJhPU8OHnV/yhn3DFZYhLLOdSHh+4TND79WCftHnlUAdQPAsyc/CfIOY+4mVxvf5VW3Xw3Uf7BBfotS1gw=="
+  },
+  "compat": {
+    "version": "3.8.1",
+    "tarball": "https://registry.npmjs.org/@wllama/wllama-compat/-/wllama-compat-3.8.1.tgz",
+    "integrity": "sha512-IvmjrJ+JzDbt3w1FQq1yAmnFEiLGCceowK2Q80zW+k9ChFkPBM1ByX/9xm2xVxyd8MHC50VpuDo6SDE83k9kIQ=="
+  },
+  "wllamaSafari": {
+    "version": "3.6.1",
+    "tarball": "https://registry.npmjs.org/@wllama/wllama/-/wllama-3.6.1.tgz",
+    "integrity": "sha512-v6cA0w6sHuaTLmUo9nSU37Sln+5YqZy/OGWp2dXWaR3ts26yLiMnKHGGbjdzQolPSPydPSKUlHHSKZgXK5Prkw=="
+  },
+  "compatSafari": {
+    "version": "3.6.1",
+    "tarball": "https://registry.npmjs.org/@wllama/wllama-compat/-/wllama-compat-3.6.1.tgz",
+    "integrity": "sha512-1zSCrZEsb+mIZAofC8RW0Z9HTbLldMOVXLkbBgBt+Ca9FxT9K8VQnEtVTw/kXCu5LBiUkpzfxP7resZCnhY6Eg=="
+  }
 }

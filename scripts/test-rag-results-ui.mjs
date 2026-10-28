@@ -126,7 +126,7 @@ async function testLegacyUpdate(browser, base, saved) {
     await page.goto(fixtureBase + 'update.html');
     await page.waitForURL(fixtureBase, { timeout: 90000 });
     await page.waitForFunction(() => !!window.lab);
-    assert.equal(await page.evaluate(() => window.lab.report.currentViewVersion), '2026-10-28.9');
+    assert.equal(await page.evaluate(() => window.lab.report.currentViewVersion), '2026-10-28.10');
     assert.equal(await page.evaluate(() => window.lab.report.runs.length), 3);
     await page.locator('#run-history').selectOption(previous.runs[0].id);
     assert.equal(await page.locator('#answers .answer-card').count(), 12);
