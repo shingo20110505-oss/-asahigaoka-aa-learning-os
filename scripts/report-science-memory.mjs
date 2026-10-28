@@ -1,0 +1,12 @@
+import fs from 'node:fs/promises';
+import {scienceItems as items,scienceUnits as units,scienceFields,scienceSources as sources,scienceVersion,normalizeScience} from '../src/science-content.mjs';
+const dir=new URL('../docs/science-memory/',import.meta.url);await fs.mkdir(dir,{recursive:true});
+const count=xs=>({total:xs.length,basic:xs.filter(x=>x.level==='basic').length,advanced:xs.filter(x=>x.level==='advanced').length});
+const byField=Object.fromEntries(Object.keys(scienceFields).map(f=>[f,count(items.filter(x=>x.field===f))]));
+const coverage=[1,2,3].flatMap(grade=>Object.keys(scienceFields).map(field=>({grade,field,...count(items.filter(x=>x.grade===grade&&x.field===field))})));
+const seenIds=new Set(),seenQ=new Set(),duplicateIds=[],duplicateQuestions=[],missingSources=[];
+for(const x of items){const q=normalizeScience(x.question).replace(/[\s？?]/g,'');if(seenIds.has(x.id))duplicateIds.push(x.id);if(seenQ.has(q))duplicateQuestions.push(x.id);seenIds.add(x.id);seenQ.add(q);for(const id of x.factIds)if(!sources[id])missingSources.push({item:x.id,source:id});}
+const report={version:scienceVersion,...count(items),units:units.length,byField,coverage,duplicateIds,duplicateQuestions,missingSources,sourceCount:Object.keys(sources).length,itemsWithExplicitReferences:items.filter(x=>x.factIds.length).length,itemsWithAdditionalReferences:items.filter(x=>x.factIds.some(id=>id!=='mext'&&sources[id]?.kind!=='scope')).length};
+await fs.writeFile(new URL('inventory.json',dir),JSON.stringify({report,units:units.map(({items,...u})=>({...u,...count(items)})),sources,items},null,2)+'\n');
+const lines=['# 中学理科・収録実測表','',`教材版 ${scienceVersion}。${report.total}項目、基本${report.basic}・発展${report.advanced}、${units.length}単元。数値計算の設問なし。`,'','|学年|分野|計|基本|発展|','|---|---|---:|---:|---:|',...coverage.map(x=>`|中${x.grade}|${scienceFields[x.field]}|${x.total}|${x.basic}|${x.advanced}|`),'','## 単元別','', '|学年|分野|単元|計|基本|発展|理科解説の本文ページ|','|---|---|---|---:|---:|---:|---|',...units.map(u=>{const n=count(u.items);return `|中${u.grade}|${scienceFields[u.field]}|${u.title}|${n.total}|${n.basic}|${n.advanced}|${u.pages}|`;}),'','## 機械検査','',`ID重複 ${duplicateIds.length}、正規化した同一設問 ${duplicateQuestions.length}、未定義の出典ID ${missingSources.length}。`,`追加の内容確認先がある項目 ${report.itemsWithAdditionalReferences}。残る項目は単元に対応する理科解説ページを基礎資料とする。全項目を複数の独立資料で検証したという数ではない。`,'','再生成：`node scripts/report-science-memory.mjs`。検査の合否は本文の科学的正しさを自動保証しない。',''];
+await fs.writeFile(new URL('coverage.md',dir),lines.join('\n'));console.log(JSON.stringify(report));

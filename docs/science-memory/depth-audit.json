@@ -1,0 +1,1592 @@
+{
+  "version": "2026-10-28.2",
+  "before": 516,
+  "after": 700,
+  "added": 184,
+  "preservedOriginalItems": 516,
+  "units": [
+    {
+      "id": "light",
+      "grade": 1,
+      "field": "physics",
+      "title": "光・鏡・凸レンズ",
+      "before": 16,
+      "after": 21,
+      "added": 5,
+      "decision": "反射・屈折・像の基本は既存で確保。乱反射、垂直入射、中心光線を追加。焦点上・光ファイバーは発展。薄いレンズというモデル条件を明記。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-light-diffuse",
+        "unit": "light",
+        "grade": 1,
+        "field": "physics",
+        "level": "basic",
+        "question": "紙の表面をいろいろな方向から見られるのは、どんな反射による？",
+        "answer": "乱反射。細かな凹凸で、光がさまざまな方向へ反射する。",
+        "reason": "目へ届く反射光が、見る方向によって得られる。",
+        "connection": "一つ一つの小さな面では反射の法則が成り立つ。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo1",
+        "keirinkan1",
+        "refraction"
+      ]
+    },
+    {
+      "id": "sound",
+      "grade": 1,
+      "field": "physics",
+      "title": "音と振動",
+      "before": 9,
+      "after": 12,
+      "added": 3,
+      "decision": "振幅・振動数・媒質は既存。Hz、共鳴、真空鈴の装置限界を補い、音の大小と高低を混同しない。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-sound-hertz",
+        "unit": "sound",
+        "grade": 1,
+        "field": "physics",
+        "level": "basic",
+        "question": "振動数の単位Hz（ヘルツ）は、何を表す？",
+        "answer": "1秒間に何回振動するかを表す単位。",
+        "reason": "同じ時間に繰り返す回数が多いほど、高い音になる。",
+        "connection": "振幅の単位ではない。音の大きさと高さを区別する。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo1",
+        "keirinkan1"
+      ]
+    },
+    {
+      "id": "force",
+      "grade": 1,
+      "field": "physics",
+      "title": "力の働きとつり合い",
+      "before": 11,
+      "after": 14,
+      "added": 3,
+      "decision": "三要素とフックの法則は既存。矢印への対応、伸びと全長、月での質量と重力の違いを具体化。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-force-spring-length",
+        "unit": "force",
+        "grade": 1,
+        "field": "physics",
+        "level": "basic",
+        "question": "ばねの長さと、ばねの伸びは同じ量？",
+        "answer": "違う。伸びは、力を加える前から増えた長さ。",
+        "reason": "フックの法則で比較するのは、もとの長さを除いた変化量。",
+        "connection": "伸びと力の関係も、ばねが弾性を保つ範囲で扱う。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo1",
+        "keirinkan1"
+      ]
+    },
+    {
+      "id": "circuit",
+      "grade": 2,
+      "field": "physics",
+      "title": "電流・電圧・抵抗",
+      "before": 16,
+      "after": 21,
+      "added": 5,
+      "decision": "直並列・計器接続は既存。端子の極性、短絡、導体の具体例、JとWの単位を補う。抵抗線の形状比較は発展。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-circuit-short-circuit",
+        "unit": "circuit",
+        "grade": 2,
+        "field": "physics",
+        "level": "basic",
+        "question": "電池の両極を導線だけで直接つなぐ短絡が危険な理由は？",
+        "answer": "抵抗が小さく、非常に大きな電流が流れて発熱するため。",
+        "reason": "導線や電池が高温になるおそれがある。",
+        "connection": "電流計だけを電池へ並列につなぐことも避ける。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2"
+      ]
+    },
+    {
+      "id": "charge",
+      "grade": 2,
+      "field": "physics",
+      "title": "静電気・電子・放射線",
+      "before": 8,
+      "after": 12,
+      "added": 4,
+      "decision": "電子・静電気・放射能は既存。電子の過不足、陰極線を曲げる根拠、自然放射線を補う。αβγの実体は発展。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-charge-electron-sign",
+        "unit": "charge",
+        "grade": 2,
+        "field": "physics",
+        "level": "basic",
+        "question": "電子を受け取った物体と、電子を失った物体はそれぞれ何に帯電する？",
+        "answer": "受け取ると－、失うと＋。",
+        "reason": "電子が－の電気を持つため。",
+        "connection": "物をこすったから＋と－の電気が無から生まれる、とは考えない。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2",
+        "radiationTypes",
+        "radiation"
+      ]
+    },
+    {
+      "id": "magnet",
+      "grade": 2,
+      "field": "physics",
+      "title": "磁界・モーター・発電",
+      "before": 12,
+      "after": 16,
+      "added": 4,
+      "decision": "右手・左手の法則と誘導は既存。磁力線の意味、向きを両方逆にする比較、誘導方向、整流子・ブラシを補う。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-magnet-field-lines",
+        "unit": "magnet",
+        "grade": 2,
+        "field": "physics",
+        "level": "basic",
+        "question": "磁力線の向きと間隔は、何を表す？",
+        "answer": "向きは磁界の向き、密な場所は磁界が強いことを表す。",
+        "reason": "磁石の外では、N極からS極へ向かうように描く。",
+        "connection": "磁力線は磁界を表す線で、空間に実在する糸ではない。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2",
+        "motor",
+        "induction"
+      ]
+    },
+    {
+      "id": "motion",
+      "grade": 3,
+      "field": "physics",
+      "title": "運動と慣性",
+      "before": 10,
+      "after": 13,
+      "added": 3,
+      "decision": "等速・慣性・落下は既存。平均と瞬間、反対向きの合力、空気抵抗を無視する落下の条件を追加。運動方程式計算は除外。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-motion-average-instant",
+        "unit": "motion",
+        "grade": 3,
+        "field": "physics",
+        "level": "basic",
+        "question": "平均の速さと瞬間の速さは、どんな違いを表す？",
+        "answer": "平均はある区間全体の移動、瞬間はごく短い時間の運動の速さを表す。",
+        "reason": "途中で速さが変わっても、区間全体には一つの平均を考えられる。",
+        "connection": "速度計の表示は瞬間の速さを知る手がかり。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3"
+      ]
+    },
+    {
+      "id": "dynamics",
+      "grade": 3,
+      "field": "physics",
+      "title": "力の合成・水圧・浮力",
+      "before": 10,
+      "after": 13,
+      "added": 3,
+      "decision": "合成・分解・浮力は既存。机と本の力の相手を具体化し、斜面の分力とばねばかりの読みの意味を補う。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-dynamics-normal-gravity",
+        "unit": "dynamics",
+        "grade": 3,
+        "field": "physics",
+        "level": "basic",
+        "question": "水平な机上で静止した本の重力と垂直抗力は、作用・反作用の一組？",
+        "answer": "違う。同じ本に働いてつり合う二力。",
+        "reason": "本への重力の反作用は、本が地球を引く力。",
+        "connection": "机が本を押す力の反作用は、本が机を押す力。対象の物体を明示して区別する。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3"
+      ]
+    },
+    {
+      "id": "energy",
+      "grade": 3,
+      "field": "physics",
+      "title": "仕事とエネルギー",
+      "before": 12,
+      "after": 16,
+      "added": 4,
+      "decision": "仕事・滑車・各エネルギーは既存。J、力学的保存の成立条件、熱伝導と対流、温度と熱量を区別。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-energy-joule-work",
+        "unit": "energy",
+        "grade": 3,
+        "field": "physics",
+        "level": "basic",
+        "question": "仕事とエネルギーに共通して使う単位は？",
+        "answer": "ジュール（J）。",
+        "reason": "仕事をすることで、物体へエネルギーを移すことができる。",
+        "connection": "仕事率のワット（W）は、仕事をする速さを表す。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3"
+      ]
+    },
+    {
+      "id": "resources",
+      "grade": 3,
+      "field": "physics",
+      "title": "発電とエネルギー資源",
+      "before": 7,
+      "after": 9,
+      "added": 2,
+      "decision": "各発電・化石燃料・再生可能の一覧は既存。共通の発電原理、地熱とバイオマスの資源名を具体化。方式別の出力計算は除外。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-resources-generator",
+        "unit": "resources",
+        "grade": 3,
+        "field": "physics",
+        "level": "basic",
+        "question": "水力・風力・火力などの発電機に共通する、電気を取り出す基本原理は？",
+        "answer": "電磁誘導。",
+        "reason": "磁石とコイルの相対的な動きなどで、コイルを通る磁界を変える。",
+        "connection": "太陽電池は、タービンで発電機を回す方式とは異なる。",
+        "factIds": [
+          "mext",
+          "induction"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3",
+        "induction"
+      ]
+    },
+    {
+      "id": "matter",
+      "grade": 1,
+      "field": "chemistry",
+      "title": "物質の性質と区別",
+      "before": 10,
+      "after": 14,
+      "added": 4,
+      "decision": "金属・有機物・混合物は既存。展性・延性という名称、有機物分類の例外、粉末の実際の識別結果を補う。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-matter-malleability",
+        "unit": "matter",
+        "grade": 1,
+        "field": "chemistry",
+        "level": "basic",
+        "question": "金属の展性と延性は、それぞれどんな性質？",
+        "answer": "展性は薄く広げられる性質、延性は細い線に伸ばせる性質。",
+        "reason": "金属箔や金属線に加工できることにつながる。",
+        "connection": "電気伝導性や金属光沢とは別の性質。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo1",
+        "keirinkan1"
+      ]
+    },
+    {
+      "id": "gases",
+      "grade": 1,
+      "field": "chemistry",
+      "title": "気体の性質と集め方",
+      "before": 13,
+      "after": 17,
+      "added": 4,
+      "decision": "性質・発生・捕集の基本は既存。水素の発生例、湿ったリトマス紙、消火だけで同定できない点、酸素の捕集条件を追加。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-gases-hydrogen-source",
+        "unit": "gases",
+        "grade": 1,
+        "field": "chemistry",
+        "level": "basic",
+        "question": "亜鉛などの金属にうすい塩酸を加えたとき、発生する代表的な気体は？",
+        "answer": "水素。",
+        "reason": "金属と酸の反応によって生じる。",
+        "connection": "銅など同じ条件で反応しにくい金属もある。水素を空気と混ぜて火を近づける実験は危険。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo1",
+        "keirinkan1",
+        "powderExperiment"
+      ]
+    },
+    {
+      "id": "solution",
+      "grade": 1,
+      "field": "chemistry",
+      "title": "水溶液・溶解度・分離",
+      "before": 12,
+      "after": 17,
+      "added": 5,
+      "decision": "溶質・再結晶・ろ過は既存。着色透明、溶けた塩のろ過、ミョウバン、ろ紙のふち・ろうとの足の操作を補う。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-solution-colored-clear",
+        "unit": "solution",
+        "grade": 1,
+        "field": "chemistry",
+        "level": "basic",
+        "question": "青色の硫酸銅水溶液は「透明」ではない？",
+        "answer": "色があっても、向こうが透けて見えるなら透明。",
+        "reason": "透明と無色は別の特徴。",
+        "connection": "細かな粒が浮く白いにごりと、溶けて色がついた水溶液を区別する。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo1",
+        "keirinkan1"
+      ]
+    },
+    {
+      "id": "state",
+      "grade": 1,
+      "field": "chemistry",
+      "title": "状態変化と蒸留",
+      "before": 12,
+      "after": 16,
+      "added": 4,
+      "decision": "三態・昇華・蒸留は既存。液化、粒子間隔、ドライアイスの物質名、沸点と圧力の条件を補う。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-state-condense",
+        "unit": "state",
+        "grade": 1,
+        "field": "chemistry",
+        "level": "basic",
+        "question": "気体が液体になる状態変化は何という？",
+        "answer": "液化。水蒸気では凝結ともいう。",
+        "reason": "粒子が近づいて液体の状態になる。",
+        "connection": "液体が固体になる凝固とは区別する。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo1",
+        "keirinkan1"
+      ]
+    },
+    {
+      "id": "lab",
+      "grade": 1,
+      "field": "chemistry",
+      "title": "器具・操作・実験の考え方",
+      "before": 11,
+      "after": 16,
+      "added": 5,
+      "decision": "逆流・突沸・目盛りなどは既存。バーナーのねじと消火順、ピペット、風袋、視差を追加。機器差・教員の指示を明記。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-lab-burner-knobs",
+        "unit": "lab",
+        "grade": 1,
+        "field": "chemistry",
+        "level": "basic",
+        "question": "ガスバーナーの二つの調節ねじは、何を変える？",
+        "answer": "ガス調節ねじは主に炎の大きさ、空気調節ねじは混ぜる空気量と炎の色。",
+        "reason": "燃料の量と、燃焼に使う空気の量を別に調節する。",
+        "connection": "適切に空気を混ぜると青い炎になる。機器ごとの説明と教員の指示に従う。",
+        "factIds": [
+          "burner"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo1",
+        "keirinkan1",
+        "burner",
+        "dainipponDetail"
+      ]
+    },
+    {
+      "id": "atoms",
+      "grade": 2,
+      "field": "chemistry",
+      "title": "原子・分子・化学式",
+      "before": 12,
+      "after": 17,
+      "added": 5,
+      "decision": "基本記号・化学式・反応式は既存。解説p.48の元素例の不足を補い、分子で区切らない物質、酸化物・炭酸塩の式を追加。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-atoms-more-symbols",
+        "unit": "atoms",
+        "grade": 2,
+        "field": "chemistry",
+        "level": "basic",
+        "question": "ヘリウム・アルミニウム・ケイ素・カリウムの元素記号は？",
+        "answer": "He・Al・Si・K。",
+        "reason": "元素記号は世界共通で、頭文字は大文字、2文字目は小文字を使う。",
+        "connection": "Alの2文字目は小文字のエル。数字の1と取り違えない。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2"
+      ]
+    },
+    {
+      "id": "reaction",
+      "grade": 2,
+      "field": "chemistry",
+      "title": "分解・化合・酸化還元",
+      "before": 14,
+      "after": 19,
+      "added": 5,
+      "decision": "分解・酸化還元・反応の生成物は既存。銀の識別、加熱前後の粉の比較、電解質添加、製鉄、式の保存対象を具体化。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-reaction-silver-identification",
+        "unit": "reaction",
+        "grade": 2,
+        "field": "chemistry",
+        "level": "basic",
+        "question": "酸化銀を加熱して残る物質を、銀と確かめる手がかりは？",
+        "answer": "磨くと金属光沢が現れ、電気を通すなどの金属の性質。",
+        "reason": "色だけでなく、性質の変化も調べる。",
+        "connection": "同時に出た気体の確認結果と合わせて、分解を判断する。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2",
+        "powderExperiment",
+        "dainipponDetail"
+      ]
+    },
+    {
+      "id": "mass-heat",
+      "grade": 2,
+      "field": "chemistry",
+      "title": "化学変化と質量・熱",
+      "before": 9,
+      "after": 12,
+      "added": 3,
+      "decision": "保存則・一定割合は既存。カイロ、具体的な吸熱反応、反復加熱の意味を追加。質量を求める演習は作らない。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-mass-heat-hand-warmer",
+        "unit": "mass-heat",
+        "grade": 2,
+        "field": "chemistry",
+        "level": "basic",
+        "question": "使い捨てカイロで利用する主な化学変化は？",
+        "answer": "鉄粉の酸化。",
+        "reason": "鉄が空気中の酸素と反応するときに熱を出す。",
+        "connection": "袋を開けることは、空気中の酸素を取り入れることにつながる。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2"
+      ]
+    },
+    {
+      "id": "ions",
+      "grade": 3,
+      "field": "chemistry",
+      "title": "原子の内部・イオン・電気分解",
+      "before": 11,
+      "after": 16,
+      "added": 5,
+      "decision": "電離・移動・塩化銅は既存。多原子イオン、電解質の実例、Cl⁻とCl₂、陽極と陰極、塩素の識別を追加。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-ions-multiatom-ion",
+        "unit": "ions",
+        "grade": 3,
+        "field": "chemistry",
+        "level": "basic",
+        "question": "水酸化物イオンと硫酸イオンの化学式は？",
+        "answer": "OH⁻とSO₄²⁻。",
+        "reason": "複数の原子がまとまって電気を帯びたイオンもある。",
+        "connection": "右上の符号は電気、右下の数字は原子数を表す。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3",
+        "dainipponDetail"
+      ]
+    },
+    {
+      "id": "acid",
+      "grade": 3,
+      "field": "chemistry",
+      "title": "酸・アルカリ・中和",
+      "before": 12,
+      "after": 17,
+      "added": 5,
+      "decision": "液性・中和・残存イオンは既存。リトマス、具体的な酸と水酸化物の式、硫酸バリウム、電気泳動の解釈を補う。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-acid-litmus",
+        "unit": "acid",
+        "grade": 3,
+        "field": "chemistry",
+        "level": "basic",
+        "question": "酸性・アルカリ性で、リトマス紙はどう変わる？",
+        "answer": "酸性では青色が赤色に、アルカリ性では赤色が青色になる。",
+        "reason": "一方の紙の色が変わらないだけでは、中性と決められない。",
+        "connection": "BTB液やフェノールフタレイン液と色の対応を混同しない。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3"
+      ]
+    },
+    {
+      "id": "battery",
+      "grade": 3,
+      "field": "chemistry",
+      "title": "金属のイオン化と電池",
+      "before": 10,
+      "after": 13,
+      "added": 3,
+      "decision": "ダニエル電池の反応と仕切りは既存。Mg→Zn→Cu、逆向きの置換、一次・二次電池の実名を追加。全金属の順位暗記は除外。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-battery-ion-order",
+        "unit": "battery",
+        "grade": 3,
+        "field": "chemistry",
+        "level": "basic",
+        "question": "マグネシウム・亜鉛・銅を、陽イオンになりやすい順に並べると？",
+        "answer": "マグネシウム→亜鉛→銅。",
+        "reason": "金属と金属イオンの間で電子が移る実験結果から比べられる。",
+        "connection": "全ての金属の順位を無制限に暗記せず、実験で比較した関係を使う。",
+        "factIds": [
+          "keirinkan3"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3"
+      ]
+    },
+    {
+      "id": "materials",
+      "grade": 3,
+      "field": "chemistry",
+      "title": "材料と資源の利用",
+      "before": 6,
+      "after": 9,
+      "added": 3,
+      "decision": "PET・PE・PVC、合金、3Rは既存。PP・PS、性質と用途の比較、再資源化の負担を補う。高分子反応式は除外。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-materials-pp-ps",
+        "unit": "materials",
+        "grade": 3,
+        "field": "chemistry",
+        "level": "basic",
+        "question": "PPとPSは、それぞれ何というプラスチック？",
+        "answer": "PPはポリプロピレン、PSはポリスチレン。",
+        "reason": "性質が違うため、容器や包装材などで使い分けられる。",
+        "connection": "発泡ポリスチレンは、内部に多くの気泡を含むポリスチレン。",
+        "factIds": [
+          "plastics"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3",
+        "plastics"
+      ]
+    },
+    {
+      "id": "observation",
+      "grade": 1,
+      "field": "biology",
+      "title": "生物の観察と分類",
+      "before": 8,
+      "after": 12,
+      "added": 4,
+      "decision": "ルーペ・顕微鏡の基本は既存。双眼実体顕微鏡、レボルバー・しぼり、薄い標本、検索表を追加。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-observation-stereo",
+        "unit": "observation",
+        "grade": 1,
+        "field": "biology",
+        "level": "basic",
+        "question": "双眼実体顕微鏡は、普通の光学顕微鏡と比べて何の観察に向く？",
+        "answer": "花や昆虫などの表面を、低倍率で立体的に見る観察。",
+        "reason": "両目に異なる方向からの像が入り、奥行きを捉えやすい。",
+        "connection": "薄い切片を透過光で見る観察とは使い分ける。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo1",
+        "keirinkan1"
+      ]
+    },
+    {
+      "id": "plants-class",
+      "grade": 1,
+      "field": "biology",
+      "title": "植物のつくりと分類",
+      "before": 14,
+      "after": 19,
+      "added": 5,
+      "decision": "花・種子・子葉・葉脈・根・胞子は既存。めしべの部位、単子葉・裸子植物の実例、胞子のう、マツの雄花雌花を補う。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-plants-class-pistil",
+        "unit": "plants-class",
+        "grade": 1,
+        "field": "biology",
+        "level": "basic",
+        "question": "めしべを構成する三つの部分は？",
+        "answer": "柱頭・花柱・子房。",
+        "reason": "柱頭についた花粉から、花柱の中などを通って花粉管が伸びる。",
+        "connection": "子房内の胚珠と、子房そのものを区別する。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo1",
+        "keirinkan1",
+        "plantEvolution"
+      ]
+    },
+    {
+      "id": "animals-class",
+      "grade": 1,
+      "field": "biology",
+      "title": "動物の分類",
+      "before": 12,
+      "after": 16,
+      "added": 4,
+      "decision": "脊椎動物5群・昆虫・軟体動物は既存。甲殻類、その他の無脊椎動物、食性と歯、殻と陸上生活を補う。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-animals-class-crustacean",
+        "unit": "animals-class",
+        "grade": 1,
+        "field": "biology",
+        "level": "basic",
+        "question": "エビやカニは、無脊椎動物のどの仲間に分類される？",
+        "answer": "節足動物の甲殻類。",
+        "reason": "外骨格と節のあるあしを持つ。",
+        "connection": "同じ水中生活でも、イカやアサリは軟体動物。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo1",
+        "keirinkan1"
+      ]
+    },
+    {
+      "id": "cells",
+      "grade": 2,
+      "field": "biology",
+      "title": "細胞・組織・器官",
+      "before": 9,
+      "after": 13,
+      "added": 4,
+      "decision": "細胞構造・染色液名・単細胞の例は既存。膜・染色体の役割、器官系、単細胞分裂と個体増殖を補う。細胞小器官の大学的詳細は除外。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-cells-membrane",
+        "unit": "cells",
+        "grade": 2,
+        "field": "biology",
+        "level": "basic",
+        "question": "細胞膜はどこにあり、どんな役割を持つ？",
+        "answer": "細胞の内外を隔て、物質の出入りに関わる。",
+        "reason": "生命活動には外部からの物質の取り込みと排出が必要。",
+        "connection": "植物では細胞膜の外側に細胞壁がある。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2"
+      ]
+    },
+    {
+      "id": "photosynthesis",
+      "grade": 2,
+      "field": "biology",
+      "title": "光合成と植物の呼吸",
+      "before": 10,
+      "after": 12,
+      "added": 2,
+      "decision": "光・材料・対照・呼吸は既存。脱色後の洗浄操作、BTBの色からCO₂を考える実験を補い、酸素検出と区別。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-photosynthesis-boil-leaf",
+        "unit": "photosynthesis",
+        "grade": 2,
+        "field": "biology",
+        "level": "basic",
+        "question": "葉のデンプンの検出で、脱色した葉を水で洗ってからヨウ素液を使う理由は？",
+        "answer": "エタノールを除き、葉を柔らかくして反応を見やすくするため。",
+        "reason": "脱色だけで終えず、試薬の色を比較できる状態に整える。",
+        "connection": "脱色のための加熱は湯せんで行い、直火を使わない。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2"
+      ]
+    },
+    {
+      "id": "plant-transport",
+      "grade": 2,
+      "field": "biology",
+      "title": "根・茎・葉と運搬",
+      "before": 8,
+      "after": 12,
+      "added": 4,
+      "decision": "根毛・道管・師管・蒸散は既存。茎と葉の配置、孔辺細胞、水面からの蒸発対策を追加。配置の例外を明記。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-plant-transport-bundle-position",
+        "unit": "plant-transport",
+        "grade": 2,
+        "field": "biology",
+        "level": "basic",
+        "question": "代表的な双子葉植物の茎で、道管と師管は維管束のどちら側にある？",
+        "answer": "道管は内側、師管は外側。",
+        "reason": "茎から葉へ続く通り道の配置を、断面で確かめられる。",
+        "connection": "例外もある。全ての植物や根の断面に同じ配置を当てはめない。",
+        "factIds": [
+          "bundleAnatomy"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2",
+        "bundleAnatomy"
+      ]
+    },
+    {
+      "id": "digestion",
+      "grade": 2,
+      "field": "biology",
+      "title": "消化と吸収",
+      "before": 11,
+      "after": 21,
+      "added": 10,
+      "decision": "消化産物・柔毛・リンパ管・胆のうは既存。ペプシン・トリプシン・リパーゼを中心に分泌元と作用場所を補う。詳細表は下記。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-digestion-pepsin",
+        "unit": "digestion",
+        "grade": 2,
+        "field": "biology",
+        "level": "basic",
+        "question": "ペプシンは、どこから出る消化液で、どこで何に働く？",
+        "answer": "胃の壁から出る胃液の酵素で、胃でタンパク質を分解する。",
+        "reason": "胃液の塩酸による酸性の環境で働き、タンパク質をより小さな断片にする。",
+        "connection": "ペプシンだけで全てがアミノ酸になるわけではない。小腸でさらに消化される。",
+        "factIds": [
+          "mext",
+          "digestionChart",
+          "proteinDigestion"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2",
+        "digestionChart",
+        "proteinDigestion",
+        "enzymeConditions",
+        "enzymeStudy",
+        "digestiveSystem"
+      ]
+    },
+    {
+      "id": "circulation",
+      "grade": 2,
+      "field": "biology",
+      "title": "血液と循環",
+      "before": 11,
+      "after": 15,
+      "added": 4,
+      "decision": "血球・ヘモグロビン・弁・循環経路は既存。動脈血という名称、四つの主要血管、毛細血管と動脈壁を追加。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-circulation-oxygenated",
+        "unit": "circulation",
+        "grade": 2,
+        "field": "biology",
+        "level": "basic",
+        "question": "動脈血と静脈血は、何に注目した呼び方？",
+        "answer": "動脈血は酸素が多い血液、静脈血は酸素が少ない血液という呼び方。",
+        "reason": "血管の名称とは分類の観点が違う。",
+        "connection": "肺静脈を流れるのは動脈血、肺動脈を流れるのは静脈血。",
+        "factIds": [
+          "circulation"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2",
+        "circulation"
+      ]
+    },
+    {
+      "id": "respiration-excretion",
+      "grade": 2,
+      "field": "biology",
+      "title": "呼吸・肝臓・腎臓",
+      "before": 8,
+      "after": 12,
+      "added": 4,
+      "decision": "肺胞・横隔膜・尿素・尿経路は既存。気管と気管支、肺模型、グリコーゲン、再吸収を補う。ネフロンの細部は除外。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-respiration-excretion-airway",
+        "unit": "respiration-excretion",
+        "grade": 2,
+        "field": "biology",
+        "level": "basic",
+        "question": "鼻や口から入った空気が肺胞へ届く主な経路は？",
+        "answer": "気管→気管支→肺胞。",
+        "reason": "気管支が肺の中で枝分かれし、多数の肺胞へつながる。",
+        "connection": "食物が通る食道とは別の経路。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2",
+        "digestion"
+      ]
+    },
+    {
+      "id": "nerves",
+      "grade": 2,
+      "field": "biology",
+      "title": "刺激と反応・運動",
+      "before": 8,
+      "after": 12,
+      "added": 4,
+      "decision": "感覚器・中枢・反射・けんは既存。末しょう神経、対になる筋肉、瞳孔の調節、脊髄以外の反射を補う。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-nerves-peripheral",
+        "unit": "nerves",
+        "grade": 2,
+        "field": "biology",
+        "level": "basic",
+        "question": "末しょう神経とは、何に対する呼び方？",
+        "answer": "脳・脊髄の中枢神経から枝分かれし、体の各部を結ぶ神経。",
+        "reason": "感覚神経は情報を中枢へ、運動神経は指令を筋肉などへ伝える。",
+        "connection": "中枢と末しょう、感覚と運動は分ける観点が異なる。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2"
+      ]
+    },
+    {
+      "id": "growth",
+      "grade": 3,
+      "field": "biology",
+      "title": "成長と細胞分裂",
+      "before": 7,
+      "after": 8,
+      "added": 1,
+      "decision": "分裂の順序・複製・根の塩酸処理は既存。分裂域と伸長する場所を比較する1項目に限定。既存の複製・分配の言い換え案は除外。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-growth-elongation",
+        "unit": "growth",
+        "grade": 3,
+        "field": "biology",
+        "level": "basic",
+        "question": "根の先端から少し後ろで、細胞が長く見えるのはなぜ？",
+        "answer": "分裂でできた細胞が伸びて成長するため。",
+        "reason": "根の成長には細胞数の増加と細胞の伸長の両方が関わる。",
+        "connection": "分裂が盛んな所と、最も伸びている所を区別する。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3"
+      ]
+    },
+    {
+      "id": "reproduction",
+      "grade": 3,
+      "field": "biology",
+      "title": "生殖と発生",
+      "before": 9,
+      "after": 11,
+      "added": 2,
+      "decision": "生殖様式・受精・減数分裂・胚は既存。ジャガイモとイチゴの茎の具体例、自家受粉と他家受粉を補う。重複する生殖細胞の説明案は除外。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-reproduction-potato-strawberry",
+        "unit": "reproduction",
+        "grade": 3,
+        "field": "biology",
+        "level": "basic",
+        "question": "ジャガイモとイチゴの栄養生殖では、どの部分が新しい個体につながる？",
+        "answer": "ジャガイモは地下の茎のいも、イチゴは地上を伸びる茎。",
+        "reason": "受精を経ず、体の一部から増える。",
+        "connection": "ジャガイモのいもを根と取り違えない。種子から増える場合とは別。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3"
+      ]
+    },
+    {
+      "id": "genetics",
+      "grade": 3,
+      "field": "biology",
+      "title": "遺伝の規則性と遺伝子",
+      "before": 10,
+      "after": 11,
+      "added": 1,
+      "decision": "純系・対立形質・分離・期待比・限界は既存。AA/Aa/aaの意味を補う。顕性は優秀という意味ではない説明の重複案は除外。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-genetics-aa-meaning",
+        "unit": "genetics",
+        "grade": 3,
+        "field": "biology",
+        "level": "basic",
+        "question": "遺伝のモデルで、AA・Aa・aaという記号は何を表す？",
+        "answer": "一組の遺伝子の組み合わせ。",
+        "reason": "両親から一つずつ受け継いだ遺伝子を、対として表す。",
+        "connection": "Aが顕性ならAAとAaは同じ形質を示しても、遺伝子の組み合わせは異なる。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3"
+      ]
+    },
+    {
+      "id": "evolution",
+      "grade": 3,
+      "field": "biology",
+      "title": "進化と共通性",
+      "before": 7,
+      "after": 9,
+      "added": 2,
+      "decision": "化石・相同器官・始祖鳥・分岐は既存。コウモリとクジラ、個体の変態との違いを追加。系統の細かな学名は除外。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-evolution-forelimbs",
+        "unit": "evolution",
+        "grade": 3,
+        "field": "biology",
+        "level": "basic",
+        "question": "コウモリの翼とクジラのひれを相同器官とする根拠は？",
+        "answer": "前あしを構成する骨の基本的な配置が共通すること。",
+        "reason": "飛行と遊泳という異なる働きでも、共通の起源を示す。",
+        "connection": "現在の用途だけを比べず、体のつくりを比べる。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3"
+      ]
+    },
+    {
+      "id": "ecology",
+      "grade": 3,
+      "field": "biology",
+      "title": "生態系と物質の循環",
+      "before": 10,
+      "after": 14,
+      "added": 4,
+      "decision": "連鎖・分解・炭素循環は既存。食物網、菌糸、分解者と消費者の重なり、物質とエネルギーの違いを補う。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-ecology-food-web",
+        "unit": "ecology",
+        "grade": 3,
+        "field": "biology",
+        "level": "basic",
+        "question": "食物網とは？",
+        "answer": "複数の食物連鎖がつながった、網目状の食べる・食べられる関係。",
+        "reason": "一種類の生物が複数の餌や天敵と関係するため。",
+        "connection": "一本の食物連鎖だけでは、実際の関係を表しきれない。",
+        "factIds": [
+          "mext"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3"
+      ]
+    },
+    {
+      "id": "environment",
+      "grade": 3,
+      "field": "biology",
+      "title": "生物多様性と環境保全",
+      "before": 6,
+      "after": 9,
+      "added": 3,
+      "decision": "多様性・外来・温暖化・保全は既存。指標生物の実名、調査条件、捕食・競争・交雑の仕組みを追加。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-environment-water-indicators",
+        "unit": "environment",
+        "grade": 3,
+        "field": "biology",
+        "level": "basic",
+        "question": "全国水生生物調査で、サワガニとユスリカ類はどのような水質の指標になる？",
+        "answer": "サワガニは「きれいな水」、対象となるユスリカ類は「とてもきたない水」の指標。",
+        "reason": "生息できる条件が種類によって違うことを利用する。",
+        "connection": "一個体だけで断定せず、複数の指標生物を調べる。ユスリカ類は指定された特徴で見分ける。",
+        "factIds": [
+          "waterIndicators"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3",
+        "waterIndicators"
+      ]
+    },
+    {
+      "id": "volcano",
+      "grade": 1,
+      "field": "earth",
+      "title": "火山とマグマ",
+      "before": 9,
+      "after": 12,
+      "added": 3,
+      "decision": "粘性・噴出物・成層火山は既存。カルデラ・軽石の穴、SiO₂と粘性を補う。活火山数など更新される数値は採録しない。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-volcano-caldera",
+        "unit": "volcano",
+        "grade": 1,
+        "field": "earth",
+        "level": "basic",
+        "question": "カルデラは、単なる噴火口の別名？",
+        "answer": "違う。大規模な噴火に伴う陥没などでできる大きなくぼ地。",
+        "reason": "地下から大量のマグマが出ることで、上の地面が落ち込むことがある。",
+        "connection": "阿蘇カルデラなどが例。火口に水がたまる火口湖とも区別する。",
+        "factIds": [
+          "volcanoDetails"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo1",
+        "keirinkan1",
+        "volcanoDetails"
+      ]
+    },
+    {
+      "id": "rocks",
+      "grade": 1,
+      "field": "earth",
+      "title": "火成岩と鉱物",
+      "before": 10,
+      "after": 14,
+      "added": 4,
+      "decision": "6岩石の対応・組織・石英長石黒雲母は既存。他の造岩鉱物名、磁鉄鉱、カンラン石、標本比較を補う。形や色だけの断定を避ける。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-rocks-dark-minerals",
+        "unit": "rocks",
+        "grade": 1,
+        "field": "earth",
+        "level": "basic",
+        "question": "火成岩に含まれる代表的な有色鉱物には、どんな名前がある？",
+        "answer": "黒雲母・角閃石・輝石・カンラン石など。",
+        "reason": "無色鉱物の石英・長石と合わせ、岩石をつくる粒を分類する。",
+        "connection": "有色鉱物は全て真っ黒とは限らず、緑色や褐色のものもある。",
+        "factIds": [
+          "mineralObservation",
+          "olivine"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo1",
+        "keirinkan1",
+        "mineralObservation",
+        "olivine"
+      ]
+    },
+    {
+      "id": "strata",
+      "grade": 1,
+      "field": "earth",
+      "title": "地層・堆積岩・化石",
+      "before": 12,
+      "after": 16,
+      "added": 4,
+      "decision": "成因・新旧・化石の役割は既存。代表化石の時代と環境、柱状図、石灰岩とチャートの生物由来を補う。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-strata-fossil-examples",
+        "unit": "strata",
+        "grade": 1,
+        "field": "earth",
+        "level": "basic",
+        "question": "三葉虫・フズリナ、恐竜・アンモナイト、ビカリア・ナウマンゾウは、それぞれどの地質時代の代表例？",
+        "answer": "順に、古生代・中生代・新生代。",
+        "reason": "時代ごとに特徴的な生物の化石を地層の年代推定に使う。",
+        "connection": "個々の生物がその時代の最初から最後まで生きたという意味ではない。",
+        "factIds": [
+          "mext",
+          "fossilEras"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo1",
+        "keirinkan1",
+        "fossilEras",
+        "fossilUse",
+        "rocks"
+      ]
+    },
+    {
+      "id": "earthquake",
+      "grade": 1,
+      "field": "earth",
+      "title": "地震とプレート",
+      "before": 10,
+      "after": 13,
+      "added": 3,
+      "decision": "震源・PS波・震度・津波は既存。四つのプレート名、地震の発生場所の分類、隆起・沈降を追加。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-earthquake-four-plates",
+        "unit": "earthquake",
+        "grade": 1,
+        "field": "earth",
+        "level": "basic",
+        "question": "日本付近で習う四つのプレートの名前は？",
+        "answer": "太平洋・フィリピン海・北アメリカ（北米）・ユーラシアプレート。",
+        "reason": "太平洋・フィリピン海プレートが陸側の下へ沈み込む。",
+        "connection": "これは中学で使う大まかな区分。研究では陸側をさらに細かく分けることもある。",
+        "factIds": [
+          "plateMechanism"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo1",
+        "keirinkan1",
+        "plateMechanism",
+        "geology"
+      ]
+    },
+    {
+      "id": "weather-observation",
+      "grade": 2,
+      "field": "earth",
+      "title": "気象観測・圧力・風",
+      "before": 10,
+      "after": 13,
+      "added": 3,
+      "decision": "気象要素と気圧風向は既存。hPa、天気図の風向線、継続観測の条件を補う。自動観測と学校の記号を混同しない。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-weather-observation-hpa",
+        "unit": "weather-observation",
+        "grade": 2,
+        "field": "earth",
+        "level": "basic",
+        "question": "天気図の気圧で使うhPaは、何と読む単位？",
+        "answer": "ヘクトパスカル。気圧という圧力の単位。",
+        "reason": "圧力を表すPa（パスカル）の100倍の単位である。",
+        "connection": "風速のm/sや湿度の％と取り違えない。ここでは単位の意味を覚える。",
+        "factIds": [
+          "weatherGuide"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2",
+        "weatherGuide"
+      ]
+    },
+    {
+      "id": "clouds",
+      "grade": 2,
+      "field": "earth",
+      "title": "湿度・露点・雲",
+      "before": 11,
+      "after": 14,
+      "added": 3,
+      "decision": "湿度・露点・凝結は既存。露点測定と雲のモデル実験、積雲・積乱雲・層雲・乱層雲の具体名を補う。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-clouds-dew-experiment",
+        "unit": "clouds",
+        "grade": 2,
+        "field": "earth",
+        "level": "basic",
+        "question": "露点を調べる実験では、冷やした金属容器の何が変わった瞬間を読む？",
+        "answer": "外側が水滴でくもり始めたときの温度。",
+        "reason": "周囲の水蒸気が凝結し始めたことが目印になる。",
+        "connection": "水をかき混ぜて温度をそろえ、冷やし過ぎた後の温度と混同しない。",
+        "factIds": [
+          "mext",
+          "keirinkan2"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2",
+        "clouds",
+        "weatherGuide"
+      ]
+    },
+    {
+      "id": "fronts",
+      "grade": 2,
+      "field": "earth",
+      "title": "気団・前線・低気圧",
+      "before": 11,
+      "after": 13,
+      "added": 2,
+      "decision": "4種の前線と高低気圧は既存。温暖前線の前方の雨域、寒冷前線通過時に同時観測する要素を補う。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-fronts-rain-side",
+        "unit": "fronts",
+        "grade": 2,
+        "field": "earth",
+        "level": "basic",
+        "question": "温暖前線の雨域は、地上の前線の前方・後方のどちらに広がりやすい？",
+        "answer": "進む向きの前方に広がりやすい。",
+        "reason": "暖気が前方の寒気の上をはい上がり、先の上空から雲をつくるため。",
+        "connection": "地上の線だけでなく、傾いた前線面を立体的に考える。",
+        "factIds": [
+          "fronts",
+          "keirinkan2"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2",
+        "fronts"
+      ]
+    },
+    {
+      "id": "japan-weather",
+      "grade": 2,
+      "field": "earth",
+      "title": "日本の天気と季節",
+      "before": 8,
+      "after": 11,
+      "added": 3,
+      "decision": "季節配置・偏西風・海陸風は既存。揚子江気団、季節風の成因、夏の太平洋高気圧を補う。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-japan-weather-yangtze",
+        "unit": "japan-weather",
+        "grade": 2,
+        "field": "earth",
+        "level": "basic",
+        "question": "揚子江気団（長江気団）の特徴と、関係の深い季節は？",
+        "answer": "暖かく乾燥し、春や秋の移動性高気圧に関係する。",
+        "reason": "大陸の比較的暖かい地域で性質がつくられる。",
+        "connection": "冷たく乾燥するシベリア気団、暖かく湿った小笠原気団と比較する。",
+        "factIds": [
+          "fronts"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo2",
+        "keirinkan2",
+        "fronts"
+      ]
+    },
+    {
+      "id": "daily-sky",
+      "grade": 3,
+      "field": "earth",
+      "title": "日周運動と観察",
+      "before": 8,
+      "after": 11,
+      "added": 3,
+      "decision": "南北の動き・透明半球・安全は既存。東西の傾いた動き、記録条件、等間隔の印の読み取りを補う。日本の中緯度に限定。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-daily-sky-east-west",
+        "unit": "daily-sky",
+        "grade": 3,
+        "field": "earth",
+        "level": "basic",
+        "question": "日本の中緯度で、真東・真西付近の星の動きを見比べると？",
+        "answer": "東では右上へ昇り、西では右下へ沈むように見える。",
+        "reason": "天の北極を中心とする日周運動を、違う方向から見ているため。",
+        "connection": "星の位置や緯度で傾きは変わる。北の空の反時計回りとも対応させる。",
+        "factIds": [
+          "mext",
+          "keirinkan3"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3"
+      ]
+    },
+    {
+      "id": "seasons",
+      "grade": 3,
+      "field": "earth",
+      "title": "公転・年周運動・季節",
+      "before": 9,
+      "after": 11,
+      "added": 2,
+      "decision": "公転・季節・至点分点は既存。夏冬の日出没方位と黄道を補う。黄道は発展、南中高度の計算は除外。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-seasons-sunrise-direction",
+        "unit": "seasons",
+        "grade": 3,
+        "field": "earth",
+        "level": "basic",
+        "question": "日本で、夏至・冬至の太陽は真東よりどちら寄りから昇る？",
+        "answer": "夏至は北寄り、冬至は南寄り。",
+        "reason": "太陽の一日の経路が季節で北側・南側へ変わるため。",
+        "connection": "日の入りも夏至は真西より北寄り、冬至は南寄りになる。",
+        "factIds": [
+          "season",
+          "keirinkan3"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3",
+        "season"
+      ]
+    },
+    {
+      "id": "moon-planets",
+      "grade": 3,
+      "field": "earth",
+      "title": "月・食・金星",
+      "before": 12,
+      "after": 15,
+      "added": 3,
+      "decision": "月相・食・金星の基本は既存。同時刻の月の移動、二つの周期、模型の視点を補う。上弦下弦や明星名の重複設問は追加しない。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-moon-planets-moon-daily-position",
+        "unit": "moon-planets",
+        "grade": 3,
+        "field": "earth",
+        "level": "basic",
+        "question": "同じ時刻に月を数日続けて観察すると、星座に対する位置はおおむねどちらへ変わる？",
+        "answer": "東へ移っていく。",
+        "reason": "月が地球の周りを公転するため。",
+        "connection": "一晩のうちに月が東から西へ動く日周運動とは、比べる時間の取り方が違う。",
+        "factIds": [
+          "mext",
+          "moon"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3",
+        "moon",
+        "moonPeriods"
+      ]
+    },
+    {
+      "id": "universe",
+      "grade": 3,
+      "field": "earth",
+      "title": "太陽系と宇宙",
+      "before": 10,
+      "after": 13,
+      "added": 3,
+      "decision": "惑星名・分類・黒点・銀河・光年は既存。小惑星と彗星、黒点形状と球形、星座の見かけと距離を補う。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-universe-small-bodies",
+        "unit": "universe",
+        "grade": 3,
+        "field": "earth",
+        "level": "basic",
+        "question": "太陽系には惑星以外に、どんな小さな天体がある？",
+        "answer": "小惑星や彗星など。",
+        "reason": "どちらも太陽の周りを回る太陽系の天体である。",
+        "connection": "彗星は氷やちりなどを含み、太陽に近づくとガスやちりを放出する。流星とは区別する。",
+        "factIds": [
+          "mext",
+          "comets"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3",
+        "comets"
+      ]
+    },
+    {
+      "id": "natural-hazards",
+      "grade": 3,
+      "field": "earth",
+      "title": "自然の恵みと災害",
+      "before": 5,
+      "after": 8,
+      "added": 3,
+      "decision": "地形・記録・浸水・斜面は既存。液状化、火砕流と溶岩流、融雪型泥流を補う。個別地域の危険判定は扱わない。",
+      "reviewed": "2026-10-28",
+      "example": {
+        "id": "sci-memory-natural-hazards-liquefaction",
+        "unit": "natural-hazards",
+        "grade": 3,
+        "field": "earth",
+        "level": "basic",
+        "question": "地震の液状化現象は、どんな地盤で起こりやすい？",
+        "answer": "地下水を多く含む、しまりのゆるい砂の地盤など。",
+        "reason": "揺れで砂粒の支え合いが崩れ、水と砂が液体のように振る舞う。",
+        "connection": "地面が熱で溶ける現象ではない。噴砂、建物の傾き、マンホールの浮上などが起こる。",
+        "factIds": [
+          "liquefaction"
+        ]
+      },
+      "sources": [
+        "mext",
+        "tokyo3",
+        "keirinkan3",
+        "liquefaction",
+        "volcanicHazards"
+      ]
+    }
+  ]
+}
