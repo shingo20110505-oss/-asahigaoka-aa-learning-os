@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import http from 'node:http';
 
 // A deterministic worker double tests stream boundaries, not model accuracy/speed.
 export async function testResultPresentation(browser, base) {
@@ -87,29 +88,43 @@ export async function testResultPresentation(browser, base) {
 }
 
 async function testLegacyUpdate(browser, base, saved) {
+  // Service-worker script fetches do not use page.route, so serve the legacy
+  // worker from a separate loopback HTTP fixture instead of mocking the browser.
+  let legacy = true;
+  const legacyWorker = `
+    self.addEventListener('install',e=>e.waitUntil((async()=>{await(await caches.open('rise-rag-lab-legacy')).put('./index.html',new Response('<p id="legacy">旧画面</p>',{headers:{'Content-Type':'text/html;charset=utf-8'}}));await self.skipWaiting();})()));
+    self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));
+    self.addEventListener('fetch',e=>{if(new URL(e.request.url).pathname.endsWith('/labs/rag/'))e.respondWith(caches.match('./index.html'));});
+  `;
+  const server = http.createServer(async (req, res) => {
+    try {
+      if (legacy && req.url === '/labs/rag/sw.js') { res.setHeader('Content-Type', 'text/javascript'); res.end(legacyWorker); return; }
+      const upstream = await fetch(new URL(req.url, base));
+      res.statusCode = upstream.status;
+      res.setHeader('Content-Type', upstream.headers.get('content-type') || 'application/octet-stream');
+      res.end(Buffer.from(await upstream.arrayBuffer()));
+    } catch { res.statusCode = 500; res.end('Fixture failed'); }
+  });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  const fixtureBase = `http://127.0.0.1:${server.address().port}/labs/rag/`;
   const context = await browser.newContext(), page = await context.newPage();
   try {
     const previous = JSON.parse(saved);
     previous.runs[0].environment.label = 'iPad A16 / user confirmed';
     delete previous.currentViewVersion;
-    await page.goto(base);
+    await page.goto(fixtureBase);
     await page.waitForFunction(() => !!window.lab);
     await page.evaluate(async report => {
       localStorage.setItem('rise-rag-lab-v1', JSON.stringify(report));
       await (await caches.open('fixture-model-cache')).put('./saved-model', new Response('unchanged model bytes'));
     }, previous);
-    await page.route('**/sw.js', route => route.fulfill({ contentType: 'text/javascript', body: `
-      self.addEventListener('install',e=>e.waitUntil((async()=>{await(await caches.open('rise-rag-lab-legacy')).put('./index.html',new Response('<p id="legacy">旧画面</p>',{headers:{'Content-Type':'text/html;charset=utf-8'}}));await self.skipWaiting();})()));
-      self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));
-      self.addEventListener('fetch',e=>{if(new URL(e.request.url).pathname.endsWith('/labs/rag/'))e.respondWith(caches.match('./index.html'));});
-    ` }));
     await page.evaluate(async () => { await navigator.serviceWorker.register('./sw.js', { scope: './' }); await navigator.serviceWorker.ready; });
     await page.waitForFunction(() => !!navigator.serviceWorker.controller);
     await page.reload();
     assert.equal(await page.locator('#legacy').innerText(), '旧画面');
-    await page.unroute('**/sw.js');
-    await page.goto(base + 'update.html');
-    await page.waitForURL(base, { timeout: 90000 });
+    legacy = false;
+    await page.goto(fixtureBase + 'update.html');
+    await page.waitForURL(fixtureBase, { timeout: 90000 });
     await page.waitForFunction(() => !!window.lab);
     assert.equal(await page.evaluate(() => window.lab.report.currentViewVersion), '2026-10-28.9');
     assert.equal(await page.evaluate(() => window.lab.report.runs.length), 3);
@@ -119,5 +134,5 @@ async function testLegacyUpdate(browser, base, saved) {
     assert.equal(await page.evaluate(() => window.lab.report.runs[0].environment.label), 'iPad A16 / user confirmed', 'historical declaration stays unchanged');
     assert.equal(await page.evaluate(async () => (await caches.match('./saved-model')).text()), 'unchanged model bytes');
     console.log('RAG update: old cache replaced; saved raw answers, declared device and unrelated model cache preserved.');
-  } finally { await context.close(); }
+  } finally { await context.close(); await new Promise(resolve => server.close(resolve)); }
 }
