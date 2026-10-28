@@ -3,7 +3,7 @@
 export const viewPath = hash => (String(hash || '').replace(/^#?\/?/, '') || 'home');
 export function viewGroup(path) {
   const route = viewPath(path).split(/[/?]/)[0];
-  return ['geography','reading','english-words','vocabulary','classical','review','memory','history','labs','focus','explore','evidence','listening'].includes(route)
+  return ['science-memory','geography','reading','english-words','vocabulary','classical','review','memory','history','labs','focus','explore','evidence','listening'].includes(route)
     ? 'learn' : ['materials','desk'].includes(route) ? 'notes' : ['ai-task','handwriting-clean'].includes(route) ? 'ai-tools' : route;
 }
 
