@@ -1,0 +1,30 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RISE｜測定画面を更新</title>
+<style>body{margin:0;font:16px/1.8 system-ui,sans-serif;background:#f7f8f6;color:#152b26}main{max-width:560px;margin:12vh auto;padding:24px}button,a{font:inherit}button{padding:10px 18px}a{color:#136b54}[hidden]{display:none}</style>
+<main><h1>測定画面を更新しています</h1><p id="status" role="status">測定結果と保存済みモデルを残して、新しい画面を準備します。</p><button id="retry" hidden>もう一度確認</button><p><a href="./">測定画面に戻る</a></p></main>
+<script type="module">
+const status=document.querySelector('#status'),retry=document.querySelector('#retry');
+async function update(){
+ retry.hidden=true;
+ try{
+  if(!navigator.onLine)throw Error('オンラインでこのページを開いてください。');
+  if(!('serviceWorker'in navigator))throw Error('このブラウザでは更新を準備できません。');
+  const response=await fetch('./version.json?check='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(15000)});
+  if(!response.ok)throw Error('更新情報を取得できませんでした。');
+  const{version}=await response.json();if(!/^[a-f0-9]{12}$/.test(version))throw Error('更新情報を確認できませんでした。');
+  let timer;const reg=await Promise.race([navigator.serviceWorker.register('./sw.js',{scope:'./',updateViaCache:'none'}).then(async reg=>{await reg.update();return reg;}),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('更新の確認が時間切れになりました。')),60000);})]).finally(()=>clearTimeout(timer));
+  const until=Date.now()+60000;
+  while(Date.now()<until){
+   const worker=navigator.serviceWorker.controller;
+   if(worker){
+    const current=await new Promise(resolve=>{const channel=new MessageChannel(),timer=setTimeout(()=>{channel.port1.close();resolve('');},1000);channel.port1.onmessage=e=>{clearTimeout(timer);channel.port1.close();resolve(e.data?.version);};worker.postMessage({type:'RISE_RAG_VERSION'},[channel.port2]);});
+    if(current===version){location.replace('./');return;}
+   }
+   if(reg.installing?.state==='redundant')throw Error('新しい画面を保存できませんでした。');
+   await new Promise(resolve=>setTimeout(resolve,250));
+  }
+  throw Error('更新がまだ完了していません。オンラインのまま再試行してください。');
+ }catch(e){status.textContent=e.message;retry.hidden=false;}
+}
+retry.addEventListener('click',update);update();
+</script></html>

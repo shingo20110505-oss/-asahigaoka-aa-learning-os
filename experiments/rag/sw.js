@@ -1,4 +1,5 @@
 const CACHE='rise-rag-lab-__VERSION__',FILES=__FILES__;
+self.addEventListener('message',e=>{if(e.data?.type==='RISE_RAG_VERSION')e.ports[0]?.postMessage({version:CACHE.slice('rise-rag-lab-'.length)});});
 self.addEventListener('install',e=>e.waitUntil((async()=>{await(await caches.open(CACHE)).addAll(FILES);await self.skipWaiting();})()));
 self.addEventListener('activate',e=>e.waitUntil((async()=>{for(const name of await caches.keys())if(name.startsWith('rise-rag-lab-')&&name!==CACHE)await caches.delete(name);await self.clients.claim();})()));
 self.addEventListener('fetch',e=>{const url=new URL(e.request.url);if(e.request.method!=='GET'||url.origin!==location.origin||!url.href.startsWith(self.registration.scope))return;const rel='./'+url.pathname.slice(new URL(self.registration.scope).pathname.length);if(!FILES.includes(rel)&&rel!=='./')return;e.respondWith((async()=>await(await caches.open(CACHE)).match(rel==='./'?'./index.html':rel)||fetch(e.request))());});

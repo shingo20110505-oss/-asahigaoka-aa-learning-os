@@ -14,7 +14,11 @@
 <div class="actions"><button id="smoke">短い動作確認（3問）</button><button id="start" class="sub">全問を比較</button><button id="search" class="sub">検索だけ先に測定</button><button id="stop" class="sub">停止</button></div>
 <p id="status" role="status">測定画面を読み込んでいます…</p><small id="progress"></small>
 </section>
-<section><h2>測定結果</h2><p>時間は自動集計します。正確さは回答本文を採点して判定します。測定終了後、結果JSONを保存して、このチャットに添付してください。</p><button id="export">結果JSONを保存</button><pre id="result"></pre><details><summary>生成中の回答</summary><pre id="answer"></pre></details></section>
+<section><h2>測定結果</h2><p>回答は問題・方式ごとに分けて表示します。正確さは未採点です。測定終了後、結果JSONを保存して、このチャットに添付してください。</p><button id="export">結果JSONを保存</button>
+<label>表示する測定<select id="run-history" disabled></select></label><p id="run-device"></p><pre id="result"></pre>
+<p>実用方式には、LLMを使わずに教材や計算結果を返す処理も含まれます。その時間をLLMの生成速度とは扱いません。</p>
+<div id="generation" hidden><h3>生成中：<span id="generation-label"></span></h3><p id="generation-question"></p><pre id="answer"></pre></div>
+<div id="answers"></div></section>
 <section><h2>オフラインの確認</h2><p>一度測定した後、通信を切り、このページを再読み込みして「保存済みモデルで測定」を押してください。終了後は再び通信をつなぎ、結果を保存できます。</p><button id="offline" class="sub">保存済みモデルで測定</button>
 <details><summary>判定条件とデータ</summary>
 <p>採用の目安は基本24問中21問以上・確認12問中10問以上の完全正答、重大な誤断定なし。回答開始の中央値5秒以下・95%点10秒以下、完了の中央値20秒以下・95%点45秒以下。iPad A16で2回、オフライン再読み込みを含めて確認します。PCの測定値をiPadの性能とは扱いません。</p>
