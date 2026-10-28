@@ -1,0 +1,116 @@
+{
+  "id": "Qwen3-4B-Instruct-2507-Q3_K_M-wllama",
+  "startedAt": "2026-10-26T08:08:24.900Z",
+  "navigatorOnline": true,
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "platform": "Win32",
+    "hardwareConcurrency": 12,
+    "deviceMemory": 16,
+    "maxTouchPoints": 0,
+    "secureContext": true,
+    "crossOriginIsolated": false,
+    "webAssembly": true,
+    "webGPU": true,
+    "gpu": {
+      "vendor": "amd",
+      "architecture": "rdna-2",
+      "device": "",
+      "description": ""
+    },
+    "features": [
+      "depth32float-stencil8",
+      "rg11b10ufloat-renderable",
+      "texture-formats-tier1",
+      "bgra8unorm-storage",
+      "chromium-experimental-multi-draw-indirect",
+      "texture-compression-bc",
+      "dual-source-blending",
+      "chromium-experimental-sampling-resource-table",
+      "core-features-and-limits",
+      "chromium-experimental-timestamp-query-inside-passes",
+      "float32-filterable",
+      "indirect-first-instance",
+      "float32-blendable",
+      "atomic-vec2u-min-max",
+      "subgroup-size-control",
+      "texture-compression-unaligned",
+      "depth-clip-control",
+      "texture-compression-bc-sliced-3d",
+      "texture-formats-tier2",
+      "timestamp-query",
+      "clip-distances",
+      "shader-f16",
+      "primitive-index",
+      "texture-component-swizzle",
+      "subgroups"
+    ],
+    "limits": {
+      "maxBufferSize": 2147483648,
+      "maxStorageBufferBindingSize": 2147483644,
+      "maxStorageBuffersPerShaderStage": 16
+    },
+    "storage": {
+      "quota": 21359064149,
+      "usage": 10621645909,
+      "usageDetails": {
+        "caches": 6441091840,
+        "fileSystem": 4180553207,
+        "serviceWorkerRegistrations": 862
+      }
+    },
+    "memory": {
+      "jsUsedHeapBytes": 3630147,
+      "jsHeapLimitBytes": 4395630592,
+      "note": "JS heap only; excludes GPU/native allocations"
+    },
+    "physicalDevice": "unspecified; UA is not hardware proof"
+  },
+  "networkControl": "worker blocks external fetch; for full-page proof also disable network before reloading",
+  "load": {
+    "loadMs": 6121.4000000003725,
+    "backend": "wllama",
+    "context": 4096,
+    "webGPUSupported": true,
+    "runtimeLogs": [
+      "Multithread enabled: false, pthreadPoolSize: 0",
+      "ggml_webgpu: adapter_info: vendor_id: 0 | vendor: amd | architecture: rdna-2 | device_id: 0 | name:  | device_desc: ",
+      "llama_prepare_model_devices: using device WebGPU (WebGPU) (unknown id) - 2048 MiB free",
+      "load_tensors: offloading output layer to GPU",
+      "load_tensors: offloading 35 repeating layers to GPU",
+      "load_tensors: offloaded 37/37 layers to GPU",
+      "load_tensors:          CPU model buffer size =   304.28 MiB",
+      "load_tensors:       WebGPU model buffer size =  1973.78 MiB",
+      "llama_context:        CPU  output buffer size =     2.32 MiB",
+      "llama_kv_cache:     WebGPU KV buffer size =   576.00 MiB",
+      "sched_reserve:     WebGPU compute buffer size =    19.75 MiB",
+      "sched_reserve:        CPU compute buffer size =     3.50 MiB"
+    ],
+    "nGpuLayersRequested": 99,
+    "nThreadsRequested": 1
+  },
+  "answer": {
+    "answer": "光合成で取り入れる気体は**二酸化炭素（CO₂）**、出す気体は**酸素（O₂）**です。",
+    "firstTokenMs": 5117,
+    "firstVisibleTokenMs": 5117.0999999996275,
+    "totalMs": 10074,
+    "usage": null,
+    "finishReason": "stop",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 110,
+      "prompt_ms": 4937.399,
+      "prompt_per_token_ms": 44.885445454545454,
+      "prompt_per_second": 22.278936743819973,
+      "predicted_n": 36,
+      "predicted_ms": 5109.801,
+      "predicted_per_token_ms": 145.9943142857143,
+      "predicted_per_second": 6.849581813460054
+    },
+    "outputTokensPerSecond": null,
+    "decodeTokensPerSecond": 6.849581813460054
+  },
+  "completed": true,
+  "fullPageReloadWithOriginServerStopped": true,
+  "uncachedFetchFailed": true
+}

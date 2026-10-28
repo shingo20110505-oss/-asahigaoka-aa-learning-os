@@ -1,0 +1,12 @@
+{
+  "scope": "Page-target CDP only. Worker/service-worker traffic is excluded; these counts are NOT model download bytes or complete network isolation proof.",
+  "requests": 17,
+  "failed": [
+    {
+      "url": "http://127.0.0.1:4327/uncached-probe-1793001367032",
+      "error": "net::ERR_FAILED"
+    }
+  ],
+  "encodedDataLength": 0,
+  "remoteRequests": 0
+}

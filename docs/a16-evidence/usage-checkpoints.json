@@ -1,0 +1,56 @@
+{
+  "stopWhenUsedPercentAtLeast": 70,
+  "windowMinutes": 10080,
+  "checkpoints": [
+    {
+      "stage": "start",
+      "usedPercent": 4,
+      "remainingPercent": 96
+    },
+    {
+      "stage": "research-complete",
+      "usedPercent": 4,
+      "remainingPercent": 96
+    },
+    {
+      "stage": "first-desktop-run",
+      "usedPercent": 5,
+      "remainingPercent": 95
+    },
+    {
+      "stage": "ui-offline-validation",
+      "usedPercent": 6,
+      "remainingPercent": 94
+    },
+    {
+      "stage": "qwen3-completed",
+      "usedPercent": 7,
+      "remainingPercent": 93
+    },
+    {
+      "stage": "qwen35-completed",
+      "usedPercent": 9,
+      "remainingPercent": 91
+    },
+    {
+      "stage": "wllama-completed",
+      "usedPercent": 10,
+      "remainingPercent": 90
+    },
+    {
+      "stage": "additional-2507-comparison",
+      "usedPercent": 12,
+      "remainingPercent": 88
+    },
+    {
+      "stage": "five-model-runs-completed",
+      "usedPercent": 12,
+      "remainingPercent": 88
+    },
+    {
+      "stage": "comparison-and-regression-complete",
+      "usedPercent": 13,
+      "remainingPercent": 87
+    }
+  ]
+}

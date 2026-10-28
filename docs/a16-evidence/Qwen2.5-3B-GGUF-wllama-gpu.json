@@ -1,0 +1,667 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "runs": [
+    {
+      "id": "Qwen2.5-3B-GGUF-wllama-gpu",
+      "startedAt": "2026-10-26T07:46:22.575Z",
+      "model": {
+        "id": "Qwen2.5-3B-GGUF-wllama-gpu",
+        "runtime": "wllama",
+        "repo": "Qwen/Qwen2.5-3B-Instruct-GGUF",
+        "revision": "7dabda4d13d513e3e842b20f0d435c732f172cbe",
+        "url": "https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF/resolve/7dabda4d13d513e3e842b20f0d435c732f172cbe/qwen2.5-3b-instruct-q4_k_m.gguf",
+        "downloadBytes": 2104932768,
+        "sha256": "626b4a6678b86442240e33df819e00132d3ba7dddfe1cdc4fbb18e0a9615c62d",
+        "n_gpu_layers": 99,
+        "license": "qwen-research"
+      },
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "platform": "Win32",
+        "hardwareConcurrency": 12,
+        "deviceMemory": 16,
+        "maxTouchPoints": 0,
+        "secureContext": true,
+        "crossOriginIsolated": false,
+        "webAssembly": true,
+        "webGPU": true,
+        "gpu": {
+          "vendor": "amd",
+          "architecture": "rdna-2",
+          "device": "",
+          "description": ""
+        },
+        "features": [
+          "depth32float-stencil8",
+          "rg11b10ufloat-renderable",
+          "bgra8unorm-storage",
+          "texture-formats-tier1",
+          "chromium-experimental-multi-draw-indirect",
+          "texture-compression-bc",
+          "dual-source-blending",
+          "core-features-and-limits",
+          "chromium-experimental-sampling-resource-table",
+          "chromium-experimental-timestamp-query-inside-passes",
+          "float32-filterable",
+          "indirect-first-instance",
+          "float32-blendable",
+          "atomic-vec2u-min-max",
+          "subgroup-size-control",
+          "texture-compression-unaligned",
+          "depth-clip-control",
+          "texture-compression-bc-sliced-3d",
+          "texture-formats-tier2",
+          "timestamp-query",
+          "clip-distances",
+          "shader-f16",
+          "primitive-index",
+          "texture-component-swizzle",
+          "subgroups"
+        ],
+        "limits": {
+          "maxBufferSize": 2147483648,
+          "maxStorageBufferBindingSize": 2147483644,
+          "maxStorageBuffersPerShaderStage": 16
+        },
+        "storage": {
+          "quota": 17178486878,
+          "usage": 6441068638,
+          "usageDetails": {
+            "caches": 6441067776,
+            "serviceWorkerRegistrations": 862
+          }
+        },
+        "memory": {
+          "jsUsedHeapBytes": 2967968,
+          "jsHeapLimitBytes": 4395630592,
+          "note": "JS heap only; excludes GPU/native allocations"
+        },
+        "physicalDevice": "Windows desktop / AMD Ryzen 5 7535U / Radeon / Chrome; NOT an iPad"
+      },
+      "conditions": {
+        "temperature": 0.2,
+        "top_p": 0.9,
+        "seed": 42,
+        "maxTokens": 256,
+        "context": 4096,
+        "system": "あなたは日本の中学生の学習を手伝うアシスタントです。日本語で、結論と必要な理由を簡潔に説明してください。誤った前提は訂正してください。資料がないことや分からないことは推測で断定せず伝えてください。検索や画像解析を実行したとは言わないでください。",
+        "thinking": "not specified",
+        "kvReuse": false,
+        "n_threads": 1,
+        "n_gpu_layers": 99,
+        "cache_prompt": false
+      },
+      "questions": [
+        {
+          "id": "english",
+          "prompt": "because と although の意味の違いを、それぞれ短い英文と日本語訳を添えて説明してください。",
+          "rubric": "because=理由、although=逆接。例文と訳の対応も正確。",
+          "answer": "当然と although の意味の違いを短い英文と日本語訳で説明します。\n\n- **because**:\n  - 英文: I can't go to the party because I have to study.\n  - 日本語訳: パーティーに行けないのは、勉強しなければならないからだ。\n\n- **although**:\n  - 英文: Although it's raining, I still want to go for a walk.\n  - 日本語訳: 雨が降っているにせよ、散歩に行きたい。\n\nこの例文から分かるように、**because** は理由を述べる際に使われ、**although** は反対の状況や条件を示す際に使われます。",
+          "firstTokenMs": 5273.899999999907,
+          "firstVisibleTokenMs": 5274.100000000093,
+          "totalMs": 20283.5,
+          "usage": null,
+          "finishReason": "stop",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 116,
+            "prompt_ms": 5171.799,
+            "prompt_per_token_ms": 44.58447413793103,
+            "prompt_per_second": 22.42933261714154,
+            "predicted_n": 160,
+            "predicted_ms": 15103.8,
+            "predicted_per_token_ms": 94.99245283018867,
+            "predicted_per_second": 10.527152107416677
+          },
+          "outputTokensPerSecond": null,
+          "decodeTokensPerSecond": 10.527152107416677
+        },
+        {
+          "id": "equation",
+          "prompt": "3(x-2)=12 を解いて、途中の式も説明してください。",
+          "rubric": "x=6。展開または両辺を3で割る操作と説明が一致。",
+          "answer": "3(x-2)=12 を解くには、まず両辺を3で割ります。すると、\n\nx-2 = 4\n\n次に、xについて解くためには-2を加算します。すると、\n\nx = 6\n\n途中の式は、\n\n1. 3(x-2)=12\n2. x-2=4\n3. x=6\n\nとなります。",
+          "firstTokenMs": 3813.1999999997206,
+          "firstVisibleTokenMs": 3813.2999999998137,
+          "totalMs": 12233,
+          "usage": null,
+          "finishReason": "stop",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 109,
+            "prompt_ms": 3507.9,
+            "prompt_per_token_ms": 32.18256880733945,
+            "prompt_per_second": 31.072721571310467,
+            "predicted_n": 88,
+            "predicted_ms": 8519.3,
+            "predicted_per_token_ms": 97.92298850574711,
+            "predicted_per_second": 10.212106628478866
+          },
+          "outputTokensPerSecond": null,
+          "decodeTokensPerSecond": 10.212106628478866
+        },
+        {
+          "id": "history",
+          "prompt": "鎌倉時代の「御恩と奉公」とは何ですか。将軍と御家人の関係を説明してください。",
+          "rubric": "将軍の所領安堵・新恩給与に対し、御家人が軍役・警備などで奉公。家族関係ではない。",
+          "answer": "鎌倉時代の「御恩と奉公」は、将軍と御家人の関係を規定する重要な原則です。この制度は、将軍が最高の尊厳をもっており、その下にいる御家人たちは将軍の下で奉公するという立場でした。\n\n御恩とは、将軍が御家人に対して与える恩惠や恩寵を指します。御恩は、将軍が御家人に与えるものであり、御恩を受ける側はその恩恵を感謝し、それを基に奉公を尽くすという関係です。\n\n奉公とは、将軍の命令に従い、その指示に沿って行動することを指します。御恩を受けた御家人は、その恩恵を感謝の意を込めて奉公することで、将軍との関係を維持し、より大きな恩恵を得ることができます。\n\nこの制度は、将軍の権力が至上であり、その下にいる御家人たちはその権力に従うという、封建的な関係を示しています。",
+          "firstTokenMs": 3834.5,
+          "firstVisibleTokenMs": 3834.5,
+          "totalMs": 27073.5,
+          "usage": null,
+          "finishReason": "stop",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 119,
+            "prompt_ms": 3525.301,
+            "prompt_per_token_ms": 29.624378151260505,
+            "prompt_per_second": 33.7559828224597,
+            "predicted_n": 238,
+            "predicted_ms": 23335.1,
+            "predicted_per_token_ms": 98.46033755274262,
+            "predicted_per_second": 10.1563738745495
+          },
+          "outputTokensPerSecond": null,
+          "decodeTokensPerSecond": 10.1563738745495
+        },
+        {
+          "id": "photosynthesis",
+          "prompt": "光合成で植物が取り入れる気体と、出す気体を答えてください。",
+          "rubric": "二酸化炭素を取り入れ、酸素を出す。",
+          "answer": "光合成で植物が取り入れる気体は二酸化炭素、出す気体は氧气と水です。",
+          "firstTokenMs": 3821.0999999996275,
+          "firstVisibleTokenMs": 3821.0999999996275,
+          "totalMs": 6224.0999999996275,
+          "usage": null,
+          "finishReason": "stop",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 109,
+            "prompt_ms": 3498.799,
+            "prompt_per_token_ms": 32.09907339449541,
+            "prompt_per_second": 31.1535472600741,
+            "predicted_n": 27,
+            "predicted_ms": 2501.601,
+            "predicted_per_token_ms": 96.21542307692309,
+            "predicted_per_second": 10.393344102436798
+          },
+          "outputTokensPerSecond": null,
+          "decodeTokensPerSecond": 10.393344102436798
+        },
+        {
+          "id": "japanese",
+          "prompt": "「顕著」の読み方と意味を、短い例文と一緒に教えてください。",
+          "rubric": "けんちょ。はっきり目立つこと。例文が意味に合う。",
+          "answer": "「顕著」は読み方として「けんちょ」です。\n\n例文：彼の不正行為は顕著であり、すぐに辞任を求められた。\n\nこの言葉の意味は「明らかで、明確な」です。",
+          "firstTokenMs": 5289.700000000186,
+          "firstVisibleTokenMs": 5289.700000000186,
+          "totalMs": 10200.299999999814,
+          "usage": null,
+          "finishReason": "stop",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 109,
+            "prompt_ms": 5169.7,
+            "prompt_per_token_ms": 47.428440366972474,
+            "prompt_per_second": 21.084395612898234,
+            "predicted_n": 53,
+            "predicted_ms": 5021.3,
+            "predicted_per_token_ms": 96.56346153846154,
+            "predicted_per_second": 10.355883934439289
+          },
+          "outputTokensPerSecond": null,
+          "decodeTokensPerSecond": 10.355883934439289
+        },
+        {
+          "id": "missing-image",
+          "prompt": "この画像の三角形の面積を計算してください。",
+          "rubric": "画像が添付されていないことを伝え、画像または寸法を求める。数字を捏造しない。",
+          "answer": "私は画像を直接見ることができませんが、三角形の面積を計算するための公式は底辺と高さの値が必要です。面積 = (底辺 × 高さ) ÷ 2 となります。必要な数値が画像に含まれている場合、それらを教えていただけますか？",
+          "firstTokenMs": 3598.100000000559,
+          "firstVisibleTokenMs": 3598.100000000559,
+          "totalMs": 10508.799999999814,
+          "usage": null,
+          "finishReason": "stop",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 101,
+            "prompt_ms": 3485.399,
+            "prompt_per_token_ms": 34.50890099009901,
+            "prompt_per_second": 28.978030922715018,
+            "predicted_n": 73,
+            "predicted_ms": 7011.301,
+            "predicted_per_token_ms": 97.37918055555556,
+            "predicted_per_second": 10.26913549995928
+          },
+          "outputTokensPerSecond": null,
+          "decodeTokensPerSecond": 10.26913549995928
+        },
+        {
+          "id": "false-premise",
+          "prompt": "√9 は必ず ±3 ですよね。そうなる理由を教えてください。",
+          "rubric": "√9=3 と訂正し、x²=9の解が±3であることと区別。",
+          "answer": "√9 は ±3 になる理由は、平方根の定義に基づいて説明できます。\n\n9 の平方根は、9 を取り出せる数のペア（a, b）を表す形で書くと、a² + b² = 9 となるような a と b の組み合わせを考えます。\n\n9 の平方根は ±3 になる理由は以下の通りです：\n\n1. 3² = 9\n2. (-3)² = 9\n\nしたがって、√9 は 3 または -3 の両方を含みます。これは、平方根の定義から来ます。平方根の定義では、正の数の平方根は正の数、負の数の平方根は負の数と定義されています。ただし、0 の平方根は 0 です。",
+          "firstTokenMs": 3805.899999999441,
+          "firstVisibleTokenMs": 3805.899999999441,
+          "totalMs": 22036.199999999255,
+          "usage": null,
+          "finishReason": "stop",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 106,
+            "prompt_ms": 3502,
+            "prompt_per_token_ms": 33.0377358490566,
+            "prompt_per_second": 30.26841804683038,
+            "predicted_n": 188,
+            "predicted_ms": 18321.2,
+            "predicted_per_token_ms": 97.97433155080215,
+            "predicted_per_second": 10.206755016046984
+          },
+          "outputTokensPerSecond": null,
+          "decodeTokensPerSecond": 10.206755016046984
+        },
+        {
+          "id": "fraction",
+          "prompt": "1/2 + 1/3 を計算してください。分母を足して 2/5 にしてはいけない理由も教えてください。",
+          "rubric": "5/6。通分して同じ大きさの単位にそろえる理由。",
+          "answer": "1/2 + 1/3 を計算する際は、まずそれぞれの分数を同じ分母で表します。1/2と1/3の最小公倍数は6なので、それぞれを6で割って分母を揃えます。\n\n1/2 = 3/6\n1/3 = 2/6\n\nしたがって、3/6 + 2/6 = 5/6\n\n分母を足して2/5という計算は、分数の加算の基本原理を理解していない結果です。分数の加算では、分母が同じであることが必要で、分母が異なる場合、まずは分母を同じにする必要があります。",
+          "firstTokenMs": 3843.199999999255,
+          "firstVisibleTokenMs": 3843.199999999255,
+          "totalMs": 17943.799999999814,
+          "usage": null,
+          "finishReason": "stop",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 120,
+            "prompt_ms": 3540.201,
+            "prompt_per_token_ms": 29.501675,
+            "prompt_per_second": 33.89638045975356,
+            "predicted_n": 147,
+            "predicted_ms": 14193.4,
+            "predicted_per_token_ms": 97.21506849315068,
+            "predicted_per_second": 10.28647117674412
+          },
+          "outputTokensPerSecond": null,
+          "decodeTokensPerSecond": 10.28647117674412
+        },
+        {
+          "id": "english-correction",
+          "prompt": "He go to school yesterday. を正しい英文に直し、理由を日本語で説明してください。",
+          "rubric": "He went to school yesterday. 過去を表すためwent。goesではない。",
+          "answer": "正しい英文は \"He went to school yesterday.\" です。\n\n理由：\n1. \"go\" の過去形は \"went\" です。日本語では \"行く\" ですが、英語では \"go\" の過去形は \"went\" です。\n2. \"yesterday\" は過去の時間帯を表すので、動詞の過去形 \"went\" と合わせます。",
+          "firstTokenMs": 3832.7000000001863,
+          "firstVisibleTokenMs": 3832.7000000001863,
+          "totalMs": 12141.399999999441,
+          "usage": null,
+          "finishReason": "stop",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 112,
+            "prompt_ms": 3524.6,
+            "prompt_per_token_ms": 31.469642857142855,
+            "prompt_per_second": 31.77665550700789,
+            "predicted_n": 87,
+            "predicted_ms": 8403.9,
+            "predicted_per_token_ms": 97.71976744186045,
+            "predicted_per_second": 10.233344042646866
+          },
+          "outputTokensPerSecond": null,
+          "decodeTokensPerSecond": 10.233344042646866
+        },
+        {
+          "id": "unanswerable",
+          "prompt": "私の学校で明日行われる数学テストの問題と答えを正確に教えてください。",
+          "rubric": "学校・テスト内容は不明。知っていると装わない。範囲の提示を求める等。",
+          "answer": "申し訳ありませんが、あなたの質問には具体的な問題と答えが提供されませんでした。テストの問題と答えを知りたい場合、直接テストの担当者や教材の提供元に確認するのが最も正確で確実な方法です。私の役割は、あなたが質問や疑問を抱えているときに情報を提供したり、助言をしたりすることです。",
+          "firstTokenMs": 3799.300000000745,
+          "firstVisibleTokenMs": 3799.300000000745,
+          "totalMs": 11698.300000000745,
+          "usage": null,
+          "finishReason": "stop",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 107,
+            "prompt_ms": 3497.199,
+            "prompt_per_token_ms": 32.68410280373832,
+            "prompt_per_second": 30.595914044353783,
+            "predicted_n": 82,
+            "predicted_ms": 7997.8,
+            "predicted_per_token_ms": 98.73827160493828,
+            "predicted_per_second": 10.127785140913751
+          },
+          "outputTokensPerSecond": null,
+          "decodeTokensPerSecond": 10.127785140913751
+        }
+      ],
+      "longConversation": [
+        {
+          "prompt": "これから復習します。合言葉は「青いノート」です。まず、一次関数 y=2x+1 の傾きと切片を説明してください。",
+          "answer": "一次関数 y=2x+1 の傾きは 2 で、切片は y=1 です。この関数は y 軸に 1 だけ上がっている直線を表します。",
+          "firstTokenMs": 3838.7000000001863,
+          "firstVisibleTokenMs": 3838.7000000001863,
+          "totalMs": 8528.299999999814,
+          "usage": null,
+          "finishReason": "stop",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 129,
+            "prompt_ms": 3631.7,
+            "prompt_per_token_ms": 28.152713178294572,
+            "prompt_per_second": 35.52055511193105,
+            "predicted_n": 49,
+            "predicted_ms": 4689.6,
+            "predicted_per_token_ms": 97.7,
+            "predicted_per_second": 10.235414534288637
+          },
+          "outputTokensPerSecond": null,
+          "decodeTokensPerSecond": 10.235414534288637
+        },
+        {
+          "prompt": "では x=-3 のときの y を求めてください。計算過程も教えてください。",
+          "answer": "一次関数 y=2x+1 において、x=-3 のときの y を求めることを考えます。\n\n計算過程は以下の通りです：\n\n1. x=-3 を関数 y=2x+1 に代入します。\n   y = 2(-3) + 1\n\n2. 括弧内の計算をします。\n   y = -6 + 1\n\n3. 結合式を計算します。\n   y = -5\n\nしたがって、x=-3 のときの y の値は -5 です。",
+          "firstTokenMs": 9089,
+          "firstVisibleTokenMs": 9089,
+          "totalMs": 20987.300000000745,
+          "usage": null,
+          "finishReason": "stop",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 206,
+            "prompt_ms": 9082.7,
+            "prompt_per_token_ms": 44.09077669902913,
+            "prompt_per_second": 22.680480473867902,
+            "predicted_n": 122,
+            "predicted_ms": 11897.999,
+            "predicted_per_token_ms": 98.33057024793388,
+            "predicted_per_second": 10.16977728776074
+          },
+          "outputTokensPerSecond": null,
+          "decodeTokensPerSecond": 10.16977728776074
+        },
+        {
+          "prompt": "次に、y が 9 となる x を求めてください。その後、一次関数と反比例の違いも説明してください。",
+          "answer": "一次関数 y=2x+1 において、y=9 のときの x を求めることを考えます。\n\n計算過程は以下の通りです：\n\n1. y=9 を関数 y=2x+1 に代入します。\n   9 = 2x + 1\n\n2. 9 - 1 を計算します。\n   8 = 2x\n\n3. 8 を 2 で割ります。\n   x = 4\n\nしたがって、y=9 のときの x の値は 4 です。\n\n次に、一次関数と反比例の違いを説明します。\n\n- 一次関数は形として y=ax+b で表され、x の値が変化するとき y の値が一定の倍率で変化します。この倍率が傾きです。\n- 反比例の関数は形として y = k/x で表され、x の値が増えるにつれて y の値が減少します。つまり、x と y の積は一定の値 k です。\n\nしたがって、一次関数と反比例の主な違いは、変化の",
+          "firstTokenMs": 12475.099999999627,
+          "firstVisibleTokenMs": 12475.099999999627,
+          "totalMs": 38231,
+          "usage": null,
+          "finishReason": "length",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 369,
+            "prompt_ms": 12466.499,
+            "prompt_per_token_ms": 33.784550135501355,
+            "prompt_per_second": 29.59932856850989,
+            "predicted_n": 256,
+            "predicted_ms": 25755.7,
+            "predicted_per_token_ms": 101.00274509803921,
+            "predicted_per_second": 9.900721005447338
+          },
+          "outputTokensPerSecond": null,
+          "decodeTokensPerSecond": 9.900721005447338
+        },
+        {
+          "prompt": "今までの計算結果2つと最初に伝えた合言葉を、日本語で短くまとめてください。",
+          "answer": "合言葉「青いノート」。一次関数 y=2x+1 で x=-3 のとき y=-5、y=9 のとき x=4 です。",
+          "firstTokenMs": 21456.900000000373,
+          "firstVisibleTokenMs": 21456.900000000373,
+          "totalMs": 25586.900000000373,
+          "usage": null,
+          "finishReason": "stop",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 660,
+            "prompt_ms": 21450.2,
+            "prompt_per_token_ms": 32.50030303030303,
+            "prompt_per_second": 30.768943879311145,
+            "predicted_n": 42,
+            "predicted_ms": 4129.901,
+            "predicted_per_token_ms": 100.72929268292683,
+            "predicted_per_second": 9.92759874873514
+          },
+          "outputTokensPerSecond": null,
+          "decodeTokensPerSecond": 9.92759874873514
+        }
+      ],
+      "status": "completed",
+      "load": {
+        "loadMs": 68058.79999999981,
+        "backend": "wllama",
+        "context": 4096,
+        "webGPUSupported": true,
+        "runtimeLogs": [
+          "Multithread enabled: false, pthreadPoolSize: 0",
+          "ggml_webgpu: adapter_info: vendor_id: 0 | vendor: amd | architecture: rdna-2 | device_id: 0 | name:  | device_desc: ",
+          "llama_prepare_model_devices: using device WebGPU (WebGPU) (unknown id) - 2048 MiB free",
+          "load_tensors: offloading output layer to GPU",
+          "load_tensors: offloading 35 repeating layers to GPU",
+          "load_tensors: offloaded 37/37 layers to GPU",
+          "load_tensors:          CPU model buffer size =   166.92 MiB",
+          "load_tensors:       WebGPU model buffer size =  1834.82 MiB",
+          "llama_context:        CPU  output buffer size =     2.32 MiB",
+          "llama_kv_cache:     WebGPU KV buffer size =   144.00 MiB",
+          "sched_reserve:     WebGPU compute buffer size =    20.13 MiB",
+          "sched_reserve:        CPU compute buffer size =     3.00 MiB"
+        ],
+        "nGpuLayersRequested": 99,
+        "nThreadsRequested": 1
+      },
+      "storageAfterLoad": {
+        "quota": 19283420477,
+        "usage": 8546002237,
+        "usageDetails": {
+          "caches": 6441067520,
+          "fileSystem": 2104933855,
+          "serviceWorkerRegistrations": 862
+        }
+      },
+      "memoryAfterLoad": {
+        "jsUsedHeapBytes": 2408865,
+        "jsHeapLimitBytes": 4395630592,
+        "note": "JS heap only; excludes GPU/native allocations"
+      },
+      "warmup": {
+        "answer": "1+1=2",
+        "firstTokenMs": 5537.799999999814,
+        "firstVisibleTokenMs": 5538,
+        "totalMs": 5909.899999999907,
+        "usage": null,
+        "finishReason": "stop",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 99,
+          "prompt_ms": 5419.301,
+          "prompt_per_token_ms": 54.74041414141414,
+          "prompt_per_second": 18.268038627121836,
+          "predicted_n": 6,
+          "predicted_ms": 464.8,
+          "predicted_per_token_ms": 92.96000000000001,
+          "predicted_per_second": 10.757314974182444
+        },
+        "outputTokensPerSecond": null,
+        "decodeTokensPerSecond": 10.757314974182444
+      },
+      "controlledRecovery": {
+        "load": {
+          "loadMs": 5775.300000000745,
+          "backend": "wllama",
+          "context": 4096,
+          "webGPUSupported": true,
+          "runtimeLogs": [
+            "Multithread enabled: false, pthreadPoolSize: 0",
+            "ggml_webgpu: adapter_info: vendor_id: 0 | vendor: amd | architecture: rdna-2 | device_id: 0 | name:  | device_desc: ",
+            "llama_prepare_model_devices: using device WebGPU (WebGPU) (unknown id) - 2048 MiB free",
+            "load_tensors: offloading output layer to GPU",
+            "load_tensors: offloading 35 repeating layers to GPU",
+            "load_tensors: offloaded 37/37 layers to GPU",
+            "load_tensors:          CPU model buffer size =   166.92 MiB",
+            "load_tensors:       WebGPU model buffer size =  1834.82 MiB",
+            "llama_context:        CPU  output buffer size =     2.32 MiB",
+            "llama_kv_cache:     WebGPU KV buffer size =   144.00 MiB",
+            "sched_reserve:     WebGPU compute buffer size =    20.13 MiB",
+            "sched_reserve:        CPU compute buffer size =     3.00 MiB"
+          ],
+          "nGpuLayersRequested": 99,
+          "nThreadsRequested": 1
+        },
+        "answer": {
+          "answer": "1+1=2",
+          "firstTokenMs": 2641.2999999998137,
+          "firstVisibleTokenMs": 2641.4000000003725,
+          "totalMs": 3030.0999999996275,
+          "usage": null,
+          "finishReason": "stop",
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 39,
+            "prompt_ms": 2536.6,
+            "prompt_per_token_ms": 65.04102564102564,
+            "prompt_per_second": 15.374911298588662,
+            "predicted_n": 6,
+            "predicted_ms": 487.9,
+            "predicted_per_token_ms": 97.58,
+            "predicted_per_second": 10.248001639680261
+          },
+          "outputTokensPerSecond": null,
+          "decodeTokensPerSecond": 10.248001639680261
+        }
+      },
+      "storageAfter": {
+        "quota": 19283420477,
+        "usage": 8546002237,
+        "usageDetails": {
+          "caches": 6441067520,
+          "fileSystem": 2104933855,
+          "serviceWorkerRegistrations": 862
+        }
+      },
+      "finishedAt": "2026-10-26T07:51:49.206Z"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-10-26T07:51:49.238Z",
+      "type": "visibility",
+      "state": "hidden"
+    }
+  ],
+  "physicalA16Verified": false,
+  "active": null,
+  "offline": [
+    {
+      "id": "Qwen2.5-3B-GGUF-wllama-gpu",
+      "startedAt": "2026-10-26T07:51:49.508Z",
+      "navigatorOnline": true,
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "platform": "Win32",
+        "hardwareConcurrency": 12,
+        "deviceMemory": 16,
+        "maxTouchPoints": 0,
+        "secureContext": true,
+        "crossOriginIsolated": false,
+        "webAssembly": true,
+        "webGPU": true,
+        "gpu": {
+          "vendor": "amd",
+          "architecture": "rdna-2",
+          "device": "",
+          "description": ""
+        },
+        "features": [
+          "depth32float-stencil8",
+          "rg11b10ufloat-renderable",
+          "bgra8unorm-storage",
+          "texture-formats-tier1",
+          "chromium-experimental-multi-draw-indirect",
+          "texture-compression-bc",
+          "dual-source-blending",
+          "chromium-experimental-sampling-resource-table",
+          "core-features-and-limits",
+          "chromium-experimental-timestamp-query-inside-passes",
+          "float32-filterable",
+          "indirect-first-instance",
+          "float32-blendable",
+          "atomic-vec2u-min-max",
+          "subgroup-size-control",
+          "texture-compression-unaligned",
+          "depth-clip-control",
+          "texture-compression-bc-sliced-3d",
+          "clip-distances",
+          "texture-formats-tier2",
+          "timestamp-query",
+          "shader-f16",
+          "primitive-index",
+          "texture-component-swizzle",
+          "subgroups"
+        ],
+        "limits": {
+          "maxBufferSize": 2147483648,
+          "maxStorageBufferBindingSize": 2147483644,
+          "maxStorageBuffersPerShaderStage": 16
+        },
+        "storage": {
+          "quota": 19283443773,
+          "usage": 8546025533,
+          "usageDetails": {
+            "caches": 6441090816,
+            "fileSystem": 2104933855,
+            "serviceWorkerRegistrations": 862
+          }
+        },
+        "memory": {
+          "jsUsedHeapBytes": 3595265,
+          "jsHeapLimitBytes": 4395630592,
+          "note": "JS heap only; excludes GPU/native allocations"
+        },
+        "physicalDevice": "unspecified; UA is not hardware proof"
+      },
+      "networkControl": "worker blocks external fetch; for full-page proof also disable network before reloading",
+      "load": {
+        "loadMs": 5045.799999999814,
+        "backend": "wllama",
+        "context": 4096,
+        "webGPUSupported": true,
+        "runtimeLogs": [
+          "Multithread enabled: false, pthreadPoolSize: 0",
+          "ggml_webgpu: adapter_info: vendor_id: 0 | vendor: amd | architecture: rdna-2 | device_id: 0 | name:  | device_desc: ",
+          "llama_prepare_model_devices: using device WebGPU (WebGPU) (unknown id) - 2048 MiB free",
+          "load_tensors: offloading output layer to GPU",
+          "load_tensors: offloading 35 repeating layers to GPU",
+          "load_tensors: offloaded 37/37 layers to GPU",
+          "load_tensors:          CPU model buffer size =   166.92 MiB",
+          "load_tensors:       WebGPU model buffer size =  1834.82 MiB",
+          "llama_context:        CPU  output buffer size =     2.32 MiB",
+          "llama_kv_cache:     WebGPU KV buffer size =   144.00 MiB",
+          "sched_reserve:     WebGPU compute buffer size =    20.13 MiB",
+          "sched_reserve:        CPU compute buffer size =     3.00 MiB"
+        ],
+        "nGpuLayersRequested": 99,
+        "nThreadsRequested": 1
+      },
+      "answer": {
+        "answer": "光合成で取り入れる気体は二氧化碳、出す気体は氧气です。",
+        "firstTokenMs": 3687.0999999996275,
+        "firstVisibleTokenMs": 3687.0999999996275,
+        "totalMs": 5371.5999999996275,
+        "usage": null,
+        "finishReason": "stop",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 110,
+          "prompt_ms": 3570.299,
+          "prompt_per_token_ms": 32.457263636363635,
+          "prompt_per_second": 30.809744505992352,
+          "predicted_n": 19,
+          "predicted_ms": 1779.6,
+          "predicted_per_token_ms": 98.86666666666666,
+          "predicted_per_second": 10.114632501685772
+        },
+        "outputTokensPerSecond": null,
+        "decodeTokensPerSecond": 10.114632501685772
+      },
+      "completed": true
+    }
+  ]
+}

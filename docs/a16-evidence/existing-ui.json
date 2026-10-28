@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "checks": [
+    "retired model cache removed",
+    "screen context excludes hidden answers, forms and closed disclosures",
+    "note selection preserves window and list scroll",
+    "split view retains draft and attaches one blob to both destinations",
+    "calendar timed multi-day recurring titles and attachments",
+    "handwriting transforms undo and page viewport preservation",
+    "search images and practice plugins stay in one conversation",
+    "multiple selected attachments and edge/centre tap fullscreen preview",
+    "explicit screen preview and inline cleanup-to-AI handoff preserves conversation",
+    "single-destination PDF attachment and local blob-frame source; native PDF rendering not asserted in headless mode",
+    "responsive desktop and phone routes; visible composer with attachments",
+    "tablet split layout and maximized chat controls",
+    "offline history and reconnect draft; guest/admin isolation"
+  ],
+  "hermetic": false
+}
