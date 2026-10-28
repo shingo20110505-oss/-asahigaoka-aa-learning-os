@@ -1,0 +1,12 @@
+import fs from 'node:fs/promises';
+import {geographyItems as items,geographyChapters,geographySources as sources,geographyTopics,geographyLevelLabel} from '../src/geography-content.mjs';
+import {geographyDrills} from '../src/geography/drills.mjs';
+const dir=new URL('../docs/geography-expansion/',import.meta.url);
+const baseline=JSON.parse(await fs.readFile(new URL('baseline.json',dir),'utf8'));
+const report={date:'2026-10-28',baseCommit:baseline.commit,before:baseline.items,after:items.length,netAdded:items.length-baseline.items,originalIdsPreserved:baseline.ids.every(id=>items.some(x=>x.id===id)),uniqueIds:new Set(items.map(x=>x.id)).size,uniqueTitles:new Set(items.map(x=>x.title)).size,drills:{before:16,after:geographyDrills.length},chapters:geographyChapters.map(c=>({id:c.id,title:c.title,before:baseline.chapters.find(b=>b.id===c.id).count,after:items.filter(x=>x.chapter===c.id).length})),topics:Object.fromEntries(geographyTopics.map(t=>[t,items.filter(x=>x.topic===t).length])),levels:Object.fromEntries(['必修','応用'].map(l=>[geographyLevelLabel(l),items.filter(x=>x.level===l).length])),sources:{registered:Object.keys(sources).length,used:new Set(items.flatMap(x=>x.sourceIds)).size,missing:[...new Set(items.flatMap(x=>x.sourceIds).filter(id=>!sources[id]))]}};
+await fs.writeFile(new URL('counts.json',dir),JSON.stringify(report,null,2)+'\n');
+const catalog=Object.entries(sources).map(([id,s])=>`## ${id}\n\n[${s.title}](${s.url})\n\n確認範囲：${s.scope||'既存教材の公的資料入口・参考資料。個別記述の逐語的な出典を意味しない。'}\n\nWeb確認日：${s.checked||'既存参照（追加分の確認記録とは別）'}\n\n参照項目：${items.filter(x=>x.sourceIds.includes(id)).map(x=>x.key).join('、')||'範囲・参考資料用'}\n`).join('\n');
+await fs.writeFile(new URL('sources.md',dir),'# 地理教材の確認資料\n\n一次資料の本文・表・地図で位置や特徴を確認し、理由・比較・問題は教材として再構成した。個々の資料の確認範囲を示す。因果関係の説明には複数資料を結びつけた解釈を含む。登録URL数は独立した事実確認の件数ではない。変動する順位・生産量・人口の最新値は追加教材へ固定していない。\n\n'+catalog);
+const inventory=items.map(x=>({id:x.id,title:x.title,chapter:x.chapter,topic:x.topic,level:geographyLevelLabel(x.level),added:!!x.expanded,sourceIds:x.sourceIds}));
+await fs.writeFile(new URL('inventory.json',dir),JSON.stringify(inventory,null,2)+'\n');
+console.log(JSON.stringify(report));
