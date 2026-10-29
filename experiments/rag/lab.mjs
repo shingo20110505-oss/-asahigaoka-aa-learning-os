@@ -7,6 +7,7 @@ import{retrieve,messagesFor,percentile}from'./retrieval.mjs';
 const KEY='rise-rag-lab-v1',models=await(await fetch('./models.json')).json();
 let report;try{report=JSON.parse(localStorage.getItem(KEY));}catch{}report??={version:VERSION,runs:[],events:[],criteria:RELEASE_CRITERIA,adopted:false};
 report.currentProtocol={version:VERSION,criteria:RELEASE_CRITERIA};report.currentViewVersion=VIEW_VERSION;
+document.querySelector('#lab-version').textContent='画面のバージョン：'+VIEW_VERSION+' ／ 測定方式：'+VERSION;
 let worker,seq=0,pending=new Map(),busy=false,indexPromise;
 export function checkpoint(){try{localStorage.setItem(KEY,JSON.stringify(report));}catch(e){report.storageError=e.message;}window.dispatchEvent(new Event('lab-update'));window.labCheckpoint?.(report);}
 function phase(text){report.active=text;checkpoint();}
@@ -77,7 +78,7 @@ if(report.active){report.events.push({type:'interrupted',phase:report.active,at:
 window.lab={models,run,stop,prepare,exportJSON,clearModel,inspect,get report(){return report;},get busy(){return busy;}};
 document.addEventListener('visibilitychange',()=>{if(busy){report.events.push({type:'visibility',value:document.visibilityState,at:new Date().toISOString()});checkpoint();}});
 document.querySelector('#model').innerHTML=models.map(m=>'<option value="'+m.id+'">'+m.name+'（'+(m.bytes/1e9).toFixed(2)+' GB）</option>').join('');
-document.querySelector('#model').value='gemma4-e2b-q4';
+document.querySelector('#model').value='gemma4-e2b-q3';
 const button=(id,fn)=>document.querySelector('#'+id).addEventListener('click',()=>Promise.resolve().then(fn).catch(e=>{document.querySelector('#status').textContent=e.message;}));
 const selection=()=>({id:document.querySelector('#model').value,suite:document.querySelector('#suite').value});
 button('inspect',inspect);

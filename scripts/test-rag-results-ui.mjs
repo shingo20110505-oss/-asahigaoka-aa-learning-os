@@ -28,6 +28,7 @@ export async function testResultPresentation(browser, base) {
   try {
     await page.goto(base);
     await page.waitForFunction(() => !!window.lab);
+    assert.equal(await page.locator('#model').inputValue(), 'gemma4-e2b-q3');
     await page.locator('#device').selectOption('iPad A16 / user confirmed');
     // Explicitly simulate the known Windows declaration mismatch on every CI OS.
     await page.evaluate(() => Object.defineProperty(navigator, 'userAgent', { configurable: true, value: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' }));
@@ -160,7 +161,8 @@ async function testLegacyUpdate(browser, base, saved) {
     await page.goto(fixtureBase + 'update.html');
     await page.waitForURL(fixtureBase, { timeout: 90000 });
     await page.waitForFunction(() => !!window.lab);
-    assert.equal(await page.evaluate(() => window.lab.report.currentViewVersion), '2026-10-29.11');
+    assert.equal(await page.evaluate(() => window.lab.report.currentViewVersion), '2026-10-30.12');
+    assert.match(await page.locator('#lab-version').innerText(), /画面のバージョン：2026-10-30.12.*測定方式：2026-10-28.8/);
     assert.equal(await page.evaluate(() => window.lab.report.runs.length), 3);
     await page.locator('#run-history').selectOption(previous.runs[0].id);
     assert.equal(await page.locator('#answers .answer-card').count(), 12);

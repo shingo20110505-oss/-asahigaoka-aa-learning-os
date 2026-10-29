@@ -3,15 +3,16 @@ import assert from 'node:assert/strict';
 import { splitGGUF } from '../experiments/rag/gguf-parts.mjs';
 import { probeModelSource, loadFailure } from '../experiments/rag/load-checks.mjs';
 
-function fixture() {
+function fixture(alignment = 32) {
   const header = Buffer.alloc(1024); let p = 0;
   const u32 = n => { header.writeUInt32LE(n, p); p += 4; };
   const u64 = n => { header.writeBigUInt64LE(BigInt(n), p); p += 8; };
   const string = s => { u64(Buffer.byteLength(s)); p += header.write(s, p); };
-  u32(0x46554747); u32(3); u64(3); u64(1);
+  u32(0x46554747); u32(3); u64(3); u64(alignment === 32 ? 1 : 2);
   string('general.architecture'); u32(8); string('test');
+  if (alignment !== 32) { string('general.alignment'); u32(4); u32(alignment); }
   for (let i = 0; i < 3; i++) { string('tensor' + i); u32(1); u64(256); u32(0); u64(i * 1024); }
-  const padded = header.subarray(0, Math.ceil(p / 32) * 32);
+  const padded = header.subarray(0, Math.ceil(p / alignment) * alignment);
   return new Blob([padded, ...[1, 2, 3].map(n => new Uint8Array(1024).fill(n))]);
 }
 
@@ -30,7 +31,7 @@ test('GGUF parts keep raw F32 tensor bytes and emit valid per-part indices and o
       else if (type === 5) { metadata[name] = b.readInt32LE(p); p += 4; }
       else assert.fail('unexpected metadata type');
     }
-    assert.deepEqual(metadata, { 'general.architecture': 'test', 'split.no': i, 'split.count': 3, 'split.tensors.count': 3 });
+    assert.deepEqual(metadata, { ...(i === 0 ? { 'general.architecture': 'test' } : {}), 'split.no': i, 'split.count': 3, 'split.tensors.count': 3 });
     assert.equal(str(), 'tensor' + i); assert.equal(b.readUInt32LE(p), 1); p += 4;
     assert.equal(b.readBigUInt64LE(p), 256n); p += 8;
     assert.equal(b.readUInt32LE(p), 0); p += 4;
@@ -38,6 +39,21 @@ test('GGUF parts keep raw F32 tensor bytes and emit valid per-part indices and o
     assert.deepEqual(b.subarray(Math.ceil(p / 32) * 32), Buffer.alloc(1024, i + 1));
   }
   assert.equal(source.size, result.sourceBytes);
+  assert.equal(result.metadataBytesWritten, result.sourceMetadataBytes);
+  assert.equal(result.metadataBytesSaved, result.sourceMetadataBytes * 2);
+  assert.equal(result.method, 'gguf-v3-blob-parts-v2');
+});
+
+test('Later GGUF shards retain non-default alignment without duplicating model metadata', async () => {
+  const result = await splitGGUF(fixture(64), { maxPartBytes: 1024 });
+  for (let i = 1; i < result.parts.length; i++) {
+    const b = Buffer.from(await result.parts[i].arrayBuffer());
+    assert.equal(Number(b.readBigUInt64LE(16)), 4);
+    assert.ok(b.includes(Buffer.from('general.alignment')));
+    assert.ok(!b.includes(Buffer.from('general.architecture')));
+    assert.equal((b.length - 1024) % 64, 0);
+    assert.deepEqual(b.subarray(b.length - 1024), Buffer.alloc(1024, i + 1));
+  }
 });
 
 test('GGUF corrupt, truncated and unbounded inputs fail before model initialization', async () => {

@@ -35,7 +35,7 @@ export async function splitGGUF(blob, { maxPartBytes = 512_000_000 } = {}) {
   if (u32() !== 0x46554747 || u32() !== 3) throw Error('分割読込はGGUF v3に対応しています。');
   const tensorCount = u64(), kvCount = u64();
   if (!tensorCount || tensorCount > 100_000 || kvCount > 100_000) throw Error('Invalid GGUF counts');
-  const metadata = [];
+  const metadata = []; let alignmentMetadata = null;
   for (let i = 0; i < kvCount; i++) {
     const start = pos, name = skipString(true), type = u32(), valueStart = pos;
     skipValue(type);
@@ -43,6 +43,7 @@ export async function splitGGUF(blob, { maxPartBytes = 512_000_000 } = {}) {
     if (name === 'general.alignment') {
       if (type !== 4) throw Error('Invalid GGUF alignment type');
       alignment = view.getUint32(valueStart, true);
+      alignmentMetadata = raw.subarray(start, pos);
     }
     metadata.push(raw.subarray(start, pos));
   }
@@ -70,8 +71,15 @@ export async function splitGGUF(blob, { maxPartBytes = 512_000_000 } = {}) {
   }
   if (group.length) groups.push(group);
   if (groups.length > 65535) throw Error('Too many GGUF parts');
+  let metadataBytesWritten = 0;
+  const sourceMetadataBytes = metadata.reduce((n, b) => n + b.byteLength, 0);
   const parts = groups.map((items, index) => {
-    const header = [uint(0x46554747, 4), uint(3, 4), uint(items.length, 8), uint(kvCount + 3, 8), ...metadata,
+    // Match llama-gguf-split: vocabulary and model metadata belong only to
+    // the first shard. Avoid repeating the serialized tokenizer in every part.
+    // Non-default alignment still has to be declared for every shard.
+    const shardMetadata = index === 0 ? metadata : alignment !== 32 ? [alignmentMetadata] : [];
+    metadataBytesWritten += shardMetadata.reduce((n, b) => n + b.byteLength, 0);
+    const header = [uint(0x46554747, 4), uint(3, 4), uint(items.length, 8), uint(shardMetadata.length + 3, 8), ...shardMetadata,
       ...key('split.no', 2, index, 2), ...key('split.count', 2, groups.length, 2), ...key('split.tensors.count', 5, tensorCount, 4)];
     let offset = 0;
     for (const t of items) { header.push(t.descriptor, uint(offset, 8)); offset += align(t.size); }
@@ -82,5 +90,5 @@ export async function splitGGUF(blob, { maxPartBytes = 512_000_000 } = {}) {
     if (part.size >= 2 ** 31) throw Error('モデル内の一つのテンソルが大きすぎて互換処理で読めません。');
     return part;
   });
-  return { parts, tensorCount, sourceBytes: blob.size, largestPartBytes: Math.max(...parts.map(p => p.size)), method: 'gguf-v3-blob-parts-v1' };
+  return { parts, tensorCount, sourceBytes: blob.size, largestPartBytes: Math.max(...parts.map(p => p.size)), sourceMetadataBytes, metadataBytesWritten, metadataBytesSaved: sourceMetadataBytes * parts.length - metadataBytesWritten, method: 'gguf-v3-blob-parts-v2' };
 }
