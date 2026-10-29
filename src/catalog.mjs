@@ -1,6 +1,6 @@
 export const features=[
  {id:'science-memory',title:'理科の暗記',label:'SCIENCE MEMORY',desc:'中1〜中3の物理・化学・生物・地学。用語と理由を、答えを隠して覚える。',icon:'flask',tone:'green',subject:'理科'},
- {id:'geography',title:'地理をつなぐ',label:'GEOGRAPHY',desc:'中学地理20章・138項目。世界6州、日本7地方、愛知の資料読解まで。',icon:'learn',tone:'green',subject:'社会'},
+ {id:'geography',title:'地理をつなぐ',label:'GEOGRAPHY',desc:'中学地理20章・920項目。世界6州、日本7地方、愛知の資料読解まで。',icon:'learn',tone:'green',subject:'社会'},
  {id:'english-words',title:'英単語・熟語',label:'ENGLISH WORD BANK',desc:'中学の基本語から発展の辞書まで。検索・意味確認・10語ずつの復習。',icon:'cards',tone:'blue',subject:'英語'},
  {id:'ai-tools',title:'AI学習ツール',label:'AI TOOLS',desc:'手書き消去・難易度別の類題作成・画像生成。',icon:'flask',tone:'green',subject:'AI'},
  {id:'exam',title:'旭丘・5教科対策',label:'ASAHIGAOKA',desc:'公式問題3年分から、伸ばしたい読み方・考え方を選ぶ。',icon:'learn',tone:'green',subject:'全教科'},
@@ -12,7 +12,7 @@ export const features=[
  {id:'classical',title:'古文・漢文の単語',label:'CLASSICAL WORDS',desc:'古文110語・漢文40語。重要度順に、意味を隠して暗記する。',icon:'cards',tone:'orange',subject:'国語'},
  {id:'review',title:'復習ライブラリ',label:'RECALL',desc:'これまでの復習を引き継いで、思い出せる知識へ。',icon:'history',tone:'green',subject:'全教科'},
  {id:'memory',title:'暗記スタジオ',label:'SPACED MEMORY',desc:'自分のカードを作って、覚えにくいものから取り戻す。',icon:'cards',tone:'purple',subject:'全教科'},
- {id:'history',title:'歴史をつなぐ',label:'CHRONOLOGIA',desc:'1,007の出来事。日本と世界、テーマの流れを比べて理解する。',icon:'history',tone:'orange',subject:'社会'},
+ {id:'history',title:'歴史をつなぐ',label:'CHRONOLOGIA',desc:'1,000の出来事。日本と世界、テーマの流れを比べて理解する。',icon:'history',tone:'orange',subject:'社会'},
  {id:'labs',title:'動かしてわかる',label:'INTERACTIVE LAB',desc:'数式とグラフ、電圧と電流。変化をその場で確かめる。',icon:'flask',tone:'blue',subject:'数学・理科'},
  {id:'notes',title:'ノート',label:'KNOWLEDGE',desc:'疑問・気づき・根拠を残して、別の知識と結ぶ。',icon:'notes',tone:'green',subject:'全教科'},
  {id:'materials',title:'マイ資料室',label:'RESOURCES',desc:'本・Web・ファイルを、学習メモと一緒に置く。',icon:'folder',tone:'purple',subject:'全教科'},
