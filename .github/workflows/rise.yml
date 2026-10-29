@@ -41,6 +41,7 @@ jobs:
           node scripts/test-workspace-ui.mjs
           node scripts/test-geography-ui.mjs
           node scripts/test-science-memory-ui.mjs
+          node scripts/test-material-search-ui.mjs
           node scripts/test-rag-lab-ui.mjs
       - name: Save workspace screenshots and verification results
         if: always()
@@ -52,6 +53,8 @@ jobs:
             test-results/workspace/result.json
             test-results/science-memory/*.png
             test-results/science-memory/result.json
+            test-results/material-search/*.png
+            test-results/material-search/result.json
             test-results/rag/phone.png
             test-results/rag/search-final.json
           if-no-files-found: ignore

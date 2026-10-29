@@ -2,7 +2,7 @@ import{esc,heading,link,button,badge,empty,dialog,toast}from'../ui.mjs';import{u
 import{historyTrails}from'../history-content.mjs';import{historyRank,HISTORY_RANKS,filterHistory,parallelGroups,yearLabel,yearDistance,yearOf,isJapan}from'../history-domain.mjs';
 const themes=[['','すべてのテーマ'],['選挙|憲法|議会|政党|参政|民主','政治参加'],['条約|外交|貿易|開国|使節|遣唐|遣隋','交流・外交'],['農|土地|地租|荘園|検地|班田|墾田','土地と農業'],['商業|産業|工業|工場|経済|恐慌|通貨|鉄道','経済・産業'],['文化|文学|宗教|仏教|キリスト|神道|芸術|教育|学問','文化・学問'],['戦争|大戦|講和|国際連|独立|冷戦','戦争と平和'],['人権|女性|差別|選挙|平等|公害|環境|SDGs','人権・環境']];
 export async function mount(ctx){
- const{main,store,data,tail}=ctx,rows=await data('history');if(!ctx.active())return;const byId=new Map(rows.map(x=>[x.id,x]));let options={query:'',period:'全部',region:'全部',theme:'',from:null,to:null,rank:'全部'},view='list',savedOnly=false,hideYears=false,hideEvents=false,limit=36,compare=[],trail=null;const masks={year:new Map(),event:new Map()};
+ const{main,store,data,tail}=ctx,rows=await data('history');if(!ctx.active())return;const byId=new Map(rows.map(x=>[x.id,x]));let options={query:'',period:'全部',region:'全部',theme:'',from:null,to:null,rank:'全部'},view='list',savedOnly=false,hideYears=false,hideEvents=false,limit=36,compare=[],trail=historyTrails.find(x=>x.id===ctx.query?.get('trail'))||null;const masks={year:new Map(),event:new Map()};
  const progress=id=>{const value=store.state.history.progress[id];return value&&typeof value==='object'?value:{};};
  const seenCount=()=>rows.filter(x=>progress(x.id).lastSeen).length;
  const visible=()=>(trail?trail.ids.map(id=>byId.get(id)).filter(Boolean):filterHistory(rows,{...options,favorites:savedOnly?store.state.history.favorites:null})).filter(x=>options.rank==='全部'||historyRank(x,progress(x.id))===options.rank);

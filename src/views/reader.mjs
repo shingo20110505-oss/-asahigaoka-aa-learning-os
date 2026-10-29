@@ -1,3 +1,4 @@
+import {readingGrammar,readingPhrases,sentenceGuides} from '../reading-explanations.mjs';
 import {esc, icon, heading, button, link, badge, empty, dialog, field, area, select, toast} from '../ui.mjs';
 import {uid, dayKey} from '../domain.mjs';
 import {paragraphs, readingItems, isReadingDue, planReadingReview, completeReading, finishReadingReview, readingNoteBody, ReadingClock} from '../reading-domain.mjs';
@@ -82,10 +83,11 @@ export async function mount(ctx) {
     assist?.dispose();stopSpeech(); clock.pause(); current = book;assist=readingAssist({main,book,lexicon,store,chat:ctx.chat,speak}); clock = new ReadingClock(); paused = false;
     if (!document.hidden) clock.start();
     draft = record().memo || ''; memoVersion = savedMemoVersion = 0; selection = ''; selectionParagraph = null; reveal = parallel = false;
-    if (location.hash !== '#/reading/'+id) history.pushState(null,'','#/reading/'+id);
+    if (location.hash !== '#/reading/'+id && !location.hash.startsWith('#/reading/'+id+'?')) history.pushState(null,'','#/reading/'+id);
     ctx.rememberPath?.();
     draw(); main.querySelector('h1')?.focus({preventScroll:true}); window.scrollTo({top:0});
   }
+  function showGuide(selected=0){dialog('長文を読む8つの手がかり',`<div class="reading-guide">${readingGuide.map((g,i)=>`<details ${i===selected?'open':''}><summary>${i+1}. ${esc(g.title)}</summary><p lang="en" class="guide-example">${esc(g.example)}</p><p>${esc(g.meaning)}</p><p>${esc(g.explanation)}</p></details>`).join('')}</div><p class="small muted">例文は読み方を説明するための独自例です。本文の自動解析・採点ではありません。</p>`);}
   const marked=(text,index)=>assist.paragraph(text,index,signals);
   function draw() {
     if (!current || !ctx.active()) return;
@@ -197,7 +199,7 @@ export async function mount(ctx) {
       if(a==='schedule'){await store.change(s=>{s.reading[id]={...s.reading[id],review:planReadingReview(s.reading[id]?.review,Number(b.dataset.days))};});draw();toast(date(record().review.due)+' に読み返す予定を入れました');}
       if(a==='unschedule'){await store.change(s=>{s.reading[id]={...s.reading[id],review:{...s.reading[id]?.review,due:null}};});draw();}
       if(a==='reflection')dialog('読み返して理解を確かめる','<p class="small muted">本文を見る前に思い出せた要点、読み違えた表現、次に確認する箇所を記録します。</p>'+area('読み返しの記録','reflection',record().reflection||'','required'),{onSubmit:async f=>{await store.change(s=>{s.reading[id]={...s.reading[id],reflection:String(f.get('reflection')),lastRevisited:Date.now()};});if(current?.id===id)draw();}});
-      if(a==='guide')dialog('長文を読む8つの手がかり',`<div class="reading-guide">${readingGuide.map((g,i)=>`<details ${i===0?'open':''}><summary>${i+1}. ${esc(g.title)}</summary><p lang="en" class="guide-example">${esc(g.example)}</p><p>${esc(g.meaning)}</p><p>${esc(g.explanation)}</p></details>`).join('')}</div><p class="small muted">例文は読み方を説明するための独自例です。本文の自動解析・採点ではありません。</p>`);
+      if(a==='guide')showGuide();
     }catch(error){toast(error.message,true);}
   };
   main.addEventListener('rise:reading-word-saved',drawWords);
@@ -214,6 +216,13 @@ export async function mount(ctx) {
   dispose.resume=()=>{document.body.classList.toggle('reading-focused',focused);if(current&&!paused&&!document.hidden)clock.start();memoStatus();startTimers();};
   startTimers();
   dispose.refresh=()=>{if(current){drawWords();drawQuiz();if(memoVersion===savedMemoVersion){draft=record().memo||'';const el=main.querySelector('#reading-memo');if(el)el.value=draft;}}else updateList();};
-  try {if(tail&&index.some(x=>x.id===tail))await open(tail);else library();} catch(error) {await dispose();throw error;}
+  try {if(tail&&index.some(x=>x.id===tail))await open(tail);else library();
+    const part=ctx.query?.get('part'),match=/^(p|t|q)-(\d+)$/.exec(part||'');
+    if(current&&match){const i=Number(match[2]);if(match[1]==='t'){parallel=true;draw();}const target=match[1]==='p'?main.querySelector(`[data-paragraph="${i}"]`):match[1]==='t'?main.querySelectorAll('.reader-translation-column p')[i+1]:main.querySelectorAll('.reader-question')[i];if(target){target.classList.add('search-destination');requestAnimationFrame(()=>{if(ctx.active())target.scrollIntoView({block:'center'});});}}
+    if(!current&&ctx.query?.has('guide'))showGuide(Math.max(0,Math.min(7,Number(ctx.query.get('guide'))||0)));
+    const explanationId=ctx.query?.get('explain'),explanation=[...readingGrammar,...readingPhrases,...Object.entries(sentenceGuides).map(([title,x],i)=>({id:'sentence-'+i,title,...x}))].find(x=>x.id===explanationId);
+    if(!current&&explanation)dialog(explanation.title||explanation.label,`<p>${esc(explanation.meaning||explanation.translation||'')}</p>${explanation.chunks?`<ul>${explanation.chunks.map(([en,ja])=>`<li>${esc(en)} — ${esc(ja)}</li>`).join('')}</ul>`:''}<p class="prose">${esc(explanation.explanation)}</p>`);
+    const word=ctx.query?.get('word');if(!current&&word&&Object.hasOwn(lexicon,word)){const entry=lexicon[word];dialog(word,`<p class="prose">${esc(entry.meaning)}</p>${entry.pos?`<p>${esc(entry.pos)}</p>`:''}${entry.example?`<blockquote>${esc(entry.example)}</blockquote>`:''}${entry.explanation?`<p>${esc(entry.explanation)}</p>`:''}`);}
+  } catch(error) {await dispose();throw error;}
   return dispose;
 }
