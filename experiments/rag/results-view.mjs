@@ -1,5 +1,5 @@
 // Presentation is versioned separately from the fixed inference protocol.
-export const VIEW_VERSION = '2026-10-28.10';
+export const VIEW_VERSION = '2026-10-29.11';
 export const ARM_LABELS = {
   none: '検索なし',
   verbatim: '検索結果そのまま',

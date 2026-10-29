@@ -83,7 +83,41 @@ export async function testResultPresentation(browser, base) {
     assert.match(await page.locator('#answers [data-arm="none"] .answer-text').first().innerText(), /^fixture-1/);
     const saved = await page.evaluate(() => localStorage.getItem('rise-rag-lab-v1'));
     await testLegacyUpdate(browser, base, saved);
+    await testInterruptedLoad(browser, base);
     console.log('RAG presentation: isolated streams, warmup hidden, history, cancellation, text safety and offline restoration passed (synthetic worker).');
+  } finally { await context.close(); }
+}
+
+async function testInterruptedLoad(browser, base) {
+  const context = await browser.newContext(), page = await context.newPage();
+  try {
+    await page.addInitScript(() => {
+      window.Worker = class {
+        postMessage({ id, op }) {
+          if (op !== 'load') return;
+          const send = (type, value) => this.onmessage?.({ data: { id, type, value } });
+          setTimeout(() => {
+            send('stage', { name: 'runtime', message: 'モデルを少量ずつ読み込んでいます' });
+            send('checks', { loadOptions: { n_batch: 128, n_ubatch: 32 }, readPatch: 'bounded-read-v1' });
+            send('logs', { at: new Date().toISOString(), lines: ['fixture native file read'] });
+          }, 0);
+        }
+        terminate() {}
+      };
+    });
+    await page.goto(base); await page.waitForFunction(() => !!window.lab);
+    await page.locator('#device').selectOption('Windows PC reference only');
+    await page.locator('#smoke').click();
+    await page.waitForFunction(() => JSON.parse(localStorage.getItem('rise-rag-lab-v1')).runs.at(-1).loadLog?.lines[0] === 'fixture native file read');
+    await page.reload(); await page.waitForFunction(() => !!window.lab);
+    const report = await page.evaluate(() => window.lab.report), last = report.runs.at(-1);
+    assert.equal(last.status, 'interrupted');
+    assert.equal(last.loadLog.lines[0], 'fixture native file read');
+    assert.equal(last.conditions.effectiveLoadOptions.n_ubatch, 32);
+    assert.ok(report.events.some(e => e.type === 'pagehide'));
+    assert.match(await page.locator('#status').innerText(), /中断/);
+    assert.equal(last.questions.length, 0);
+    console.log('RAG interrupted load: logs, effective settings and pagehide survive reload without being reported as success.');
   } finally { await context.close(); }
 }
 
@@ -126,7 +160,7 @@ async function testLegacyUpdate(browser, base, saved) {
     await page.goto(fixtureBase + 'update.html');
     await page.waitForURL(fixtureBase, { timeout: 90000 });
     await page.waitForFunction(() => !!window.lab);
-    assert.equal(await page.evaluate(() => window.lab.report.currentViewVersion), '2026-10-28.10');
+    assert.equal(await page.evaluate(() => window.lab.report.currentViewVersion), '2026-10-29.11');
     assert.equal(await page.evaluate(() => window.lab.report.runs.length), 3);
     await page.locator('#run-history').selectOption(previous.runs[0].id);
     assert.equal(await page.locator('#answers .answer-card').count(), 12);
@@ -134,5 +168,5 @@ async function testLegacyUpdate(browser, base, saved) {
     assert.equal(await page.evaluate(() => window.lab.report.runs[0].environment.label), 'iPad A16 / user confirmed', 'historical declaration stays unchanged');
     assert.equal(await page.evaluate(async () => (await caches.match('./saved-model')).text()), 'unchanged model bytes');
     console.log('RAG update: old cache replaced; saved raw answers, declared device and unrelated model cache preserved.');
-  } finally { await context.close(); await new Promise(resolve => server.close(resolve)); }
+  } finally { await context.close(); await new Promise(resolve => { server.close(resolve); server.closeAllConnections(); }); }
 }

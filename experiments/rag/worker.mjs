@@ -1,5 +1,6 @@
 import{splitGGUF}from'./gguf-parts.mjs';
 import{probeModelSource,loadFailure}from'./load-checks.mjs';
+import{READ_PATCH_VERSION,MAX_READ_BYTES}from'./runtime-read-patch.mjs';
 let engine,generation={},runtimeLogs=[],loadStage='idle';
 const send=(id,type,value)=>postMessage({id,type,value});
 const stage=(id,name,message)=>{loadStage=name;send(id,'stage',{name,message,at:new Date().toISOString()});};
@@ -9,7 +10,8 @@ onmessage=async({data:{id,op,args={}}})=>{try{
   if(args.cachedOnly){const original=fetch;self.fetch=(input,init)=>{const u=new URL(typeof input==='string'?input:input.url,location.href);if(u.origin!==location.origin)throw Error('Offline guard: model network disabled');return original(input,init);};}
   stage(id,'environment','GPU・保存容量・保存済みモデルを確認しています');
   let runtime=await import('./vendor/wllama/index.js'),folder='vendor',runtimeVersion='3.8.1';
-  const logs=runtimeLogs=[],log=(...x)=>{const line=x.join(' ');if(/gpu|buffer|backend|memory|error|thread|abort|file/i.test(line)){logs.push(line);if(logs.length>80)logs.shift();}};
+  let lastLogSent=0;
+  const logs=runtimeLogs=[],log=(...x)=>{const line=x.join(' ');if(/gpu|buffer|backend|memory|error|thread|abort|file|load|tensor/i.test(line)){logs.push(line);if(logs.length>80)logs.shift();if(loadStage==='runtime'&&(Date.now()-lastLogSent>500||/error|abort|out of memory/i.test(line))){lastLogSent=Date.now();send(id,'logs',{at:new Date().toISOString(),lines:[...logs]});}}};
   const config=()=>({default:new URL('./'+folder+'/wllama/wasm/wllama.wasm',location.href).href});
   let manager=new runtime.ModelManager({allowOffline:true,parallelDownloads:1});
   const create=()=>{const e=new runtime.Wllama(config(),{modelManager:manager,logger:{debug:log,log,warn:log,error:log}});e.setCompat({wasm:new URL('./'+folder+'/compat/wllama.wasm',location.href).href,worker:new URL('./'+folder+'/compat/wllama.js',location.href).href});return e;};
@@ -25,7 +27,8 @@ onmessage=async({data:{id,op,args={}}})=>{try{
   const saved=(await manager.getModels()).find(m=>m.url===args.model.url);
   const storage=await navigator.storage?.estimate?.().catch(()=>null);
   const adapter=await navigator.gpu?.requestAdapter().catch(()=>null);
-  const checks={runtimeVersion,compat,forcedCompat:!!args.forceCompat,cached:!!saved,webGPU:!!adapter,storage:storage||null};
+  const loadOptions={n_ctx:args.context??2048,n_parallel:args.parallel??1,n_threads:1,n_gpu_layers:args.gpuLayers===0?0:99,n_batch:compat?Math.min(args.batch??512,128):args.batch??512,n_ubatch:compat?32:args.batch??512,seed:42};
+  const checks={runtimeVersion,compat,forcedCompat:!!args.forceCompat,cached:!!saved,webGPU:!!adapter,storage:storage||null,readPatch:compat?READ_PATCH_VERSION:null,maxReadBytes:compat?MAX_READ_BYTES:null,loadOptions};
   send(id,'checks',checks);
   if(!saved){
    if(args.cachedOnly)throw Error('このモデルはまだ端末に保存されていません。一度オンラインで測定してください。');
@@ -42,8 +45,10 @@ onmessage=async({data:{id,op,args={}}})=>{try{
    stage(id,'parts','大きなモデルを互換形式で開いています（再ダウンロードなし）');
    const split=await splitGGUF(blobs[0]);blobs=split.parts;parts={count:blobs.length,tensorCount:split.tensorCount,largestPartBytes:split.largestPartBytes,method:split.method};
   }
-  stage(id,'runtime','モデルをGPU・メモリに読み込んでいます');
-  await engine.loadModel(blobs,{n_ctx:args.context??2048,n_parallel:args.parallel??1,n_threads:1,n_gpu_layers:args.gpuLayers===0?0:99,n_batch:args.batch??512,n_ubatch:args.batch??512,seed:42});
+  checks.parts=parts;send(id,'checks',checks);
+  stage(id,'runtime',compat?'モデルを少量ずつGPU・メモリに読み込んでいます':'モデルをGPU・メモリに読み込んでいます');
+  await engine.loadModel(blobs,loadOptions);
+  send(id,'logs',{at:new Date().toISOString(),lines:[...logs]});
   const meta=engine.getModelMetadata();
   if(!meta.meta?.['general.architecture'])throw Error('モデルの起動に失敗しました。'+(logs.findLast(x=>/error loading model/i.test(x))||''));
   stage(id,'ready','モデルの読み込みが完了しました');
