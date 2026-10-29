@@ -43,7 +43,7 @@ onmessage=async({data:{id,op,args={}}})=>{try{
   let blobs=await model.open(),parts=null;
   if(compat&&blobs.length===1&&blobs[0].size>=2**31){
    stage(id,'parts','大きなモデルを互換形式で開いています（再ダウンロードなし）');
-   const split=await splitGGUF(blobs[0]);blobs=split.parts;parts={count:blobs.length,tensorCount:split.tensorCount,largestPartBytes:split.largestPartBytes,method:split.method};
+   const split=await splitGGUF(blobs[0]);blobs=split.parts;parts={count:blobs.length,tensorCount:split.tensorCount,largestPartBytes:split.largestPartBytes,metadataBytesWritten:split.metadataBytesWritten,metadataBytesSaved:split.metadataBytesSaved,method:split.method};
   }
   checks.parts=parts;send(id,'checks',checks);
   stage(id,'runtime',compat?'モデルを少量ずつGPU・メモリに読み込んでいます':'モデルをGPU・メモリに読み込んでいます');
