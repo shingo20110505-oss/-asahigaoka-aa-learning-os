@@ -85,11 +85,13 @@ button('smoke',()=>run({...selection(),suite:'development',questionIds:['g2','k1
 button('start',()=>run({...selection(),cachedOnly:!navigator.onLine}));button('search',()=>run({...selection(),searchOnly:true}));button('offline',()=>run({...selection(),cachedOnly:true}));button('stop',stop);button('export',exportJSON);button('clear',clearModel);
 function render(){
  const latest=report.runs.at(-1),selected=resultsView.render(report,busy);
- document.querySelector('#status').textContent=report.active||latest?.error||(latest?.status==='completed'?'測定完了。回答を比較し、結果JSONを保存できます。':'準備できています。');
+ document.querySelector('#status').textContent=report.active||latest?.error||(latest?.status==='completed'?'測定完了。回答を比較し、結果JSONを保存できます。':latest?.status==='interrupted'?'前回の測定は途中で中断しました。直前の状態は結果JSONに残っています。':'準備できています。');
  for(const id of ['inspect','smoke','start','search','offline','clear','device','model','suite'])document.querySelector('#'+id).disabled=busy;
  document.querySelector('#result').textContent=selected?.summary?Object.entries(selected.summary).filter(([,x])=>x.count).map(([arm,x])=>ARM_LABELS[arm]+'（'+x.count+'問）\n回答開始：中央値 '+formatMs(x.firstMedianMs)+'\n完了：中央値 '+formatMs(x.totalMedianMs)+' / 95%点 '+formatMs(x.totalP95Ms)+'\n正確さ：未採点').join('\n\n'):selected?'測定中：'+selected.questions.length+'問目':'';
 }
 window.addEventListener('lab-update',render);window.addEventListener('lab-stage',e=>{if(e.detail.name!=='download')document.querySelector('#progress').textContent='';const run=report.runs.at(-1);if(run?.status==='running'){(run.loadStages??=[]).push(e.detail);}phase(e.detail.message);});
-window.addEventListener('lab-checks',e=>{const run=report.runs.at(-1);if(run?.status==='running')run.loadChecks=e.detail;checkpoint();});
+window.addEventListener('lab-checks',e=>{const run=report.runs.at(-1);if(run?.status==='running'){run.loadChecks=e.detail;run.conditions.effectiveLoadOptions=e.detail.loadOptions;}checkpoint();});
+window.addEventListener('lab-logs',e=>{const run=report.runs.at(-1);if(run?.status==='running'){run.loadLog=e.detail;checkpoint();}});
+window.addEventListener('pagehide',e=>{if(busy){report.events.push({type:'pagehide',persisted:e.persisted,phase:report.active,at:new Date().toISOString()});checkpoint();}});
 let lastProgressSave=0;
 window.addEventListener('lab-progress',e=>{const p=e.detail,run=report.runs.at(-1);document.querySelector('#progress').textContent=p.total?Math.floor(p.loaded/p.total*100)+'% · '+(p.loaded/1e6).toFixed(1)+' / '+(p.total/1e6).toFixed(1)+' MB':'受信済み '+(p.loaded/1e6).toFixed(1)+' MB';if(run?.status==='running'){run.loadProgress={...p,at:new Date().toISOString()};if(Date.now()-lastProgressSave>2000){lastProgressSave=Date.now();checkpoint();}}});render();

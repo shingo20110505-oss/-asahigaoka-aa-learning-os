@@ -1,5 +1,6 @@
 // Reproducible pinned npm assets; verify SRI; no package lifecycle scripts.
 import fs from 'node:fs/promises';import path from 'node:path';import{createHash}from'node:crypto';import{execFileSync}from'node:child_process';import{fileURLToPath}from'node:url';
+import{patchSafariReads,READ_PATCH_VERSION}from'./runtime-read-patch.mjs';
 const root=path.dirname(fileURLToPath(import.meta.url));
 const lock=JSON.parse(await fs.readFile(path.join(root,'runtime-lock.json'),'utf8'));
 for(const [name,d]of Object.entries(lock)){
@@ -9,3 +10,6 @@ for(const [name,d]of Object.entries(lock)){
  for(const [src,dest]of mappings){const out=path.join(root,folder,dest);await fs.mkdir(path.dirname(out),{recursive:true});await fs.copyFile(path.join(base,'package',src),out).catch(async e=>{if(!isCore&&src==='LICENSE'){const metadata=JSON.parse(await fs.readFile(path.join(base,'package/package.json'),'utf8'));if(metadata.license!=='MIT')throw e;await fs.copyFile(path.join(root,folder,'LICENSE.wllama'),out);}else throw e;});}
  console.log(name,d.version,'integrity verified');
 }
+const safariCore=path.join(root,'vendor-safari/wllama/index.js');
+await fs.writeFile(safariCore,patchSafariReads(await fs.readFile(safariCore,'utf8')));
+console.log('Safari file reads',READ_PATCH_VERSION);

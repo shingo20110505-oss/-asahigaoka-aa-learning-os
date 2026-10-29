@@ -1,0 +1,447 @@
+{
+  "purpose": "Diagnose physical iPad runtime interruptions and reduce transient allocations; not an A16 success or accuracy claim",
+  "ipad": {
+    "source": "User supplied PDF of lab result JSON",
+    "sourceSha256": "eeffc17f4043949f99493ab1ef017f8f188af7a0dbc6fbb2880aecabe1c16957",
+    "viewVersion": "2026-10-28.10",
+    "physicalDevice": "iPad A16, user declaration",
+    "runs": [
+      {
+        "status": "interrupted",
+        "cached": false,
+        "downloadBytes": 3106738272,
+        "lastStage": "runtime",
+        "runtime": "3.6.1",
+        "compat": true,
+        "questionsCompleted": 0,
+        "gpuLimits": {
+          "maxBufferSize": 1073741824,
+          "maxStorageBufferBindingSize": 1073741824
+        }
+      },
+      {
+        "status": "interrupted",
+        "cached": true,
+        "downloadBytes": null,
+        "lastStage": "runtime",
+        "runtime": "3.6.1",
+        "compat": true,
+        "questionsCompleted": 0,
+        "gpuLimits": {
+          "maxBufferSize": 1073741824,
+          "maxStorageBufferBindingSize": 1073741824
+        }
+      },
+      {
+        "status": "interrupted",
+        "cached": true,
+        "downloadBytes": null,
+        "lastStage": "runtime",
+        "runtime": "3.6.1",
+        "compat": true,
+        "questionsCompleted": 0,
+        "gpuLimits": {
+          "maxBufferSize": 1073741824,
+          "maxStorageBufferBindingSize": 1073741824
+        }
+      }
+    ],
+    "interpretation": "All three interrupted at runtime initialization. Exact cause and crash timestamp not recorded. Interrupted event timestamps are next page initialization, not measured crash times.",
+    "userFollowup": "Page reloaded automatically or disappeared; user did not deliberately stop the run."
+  },
+  "method": "Windows Chrome with forced wllama Safari compatibility. Instrumented Blob read requests; not total resident-memory measurement. Baseline e1, candidate g2/k1/e1, so response medians are not paired speedups.",
+  "before": {
+    "startedAt": "2026-10-29T14:02:52.069Z",
+    "status": "completed",
+    "viewVersion": "2026-10-28.10",
+    "conditions": {
+      "version": "2026-10-28.8",
+      "temperature": 0.2,
+      "top_p": 0.9,
+      "seed": 42,
+      "maxTokens": 512,
+      "context": 2048,
+      "parallel": 1,
+      "batch": 512,
+      "maxReferenceChars": 600,
+      "referenceCount": 2,
+      "system": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so.",
+      "gpuLayers": 99,
+      "forceCompat": true,
+      "suite": "development",
+      "modelGeneration": {
+        "temperature": 1,
+        "top_p": 0.95,
+        "top_k": 64,
+        "min_p": 0,
+        "repeat_penalty": 1,
+        "presence_penalty": 0,
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      }
+    },
+    "manifest": {
+      "documents": 40663,
+      "corpusSha256": "36c1fb25bf05eea274b3418a7cf14e9e0d2179937953e08b1c28f4cae38624b0",
+      "searchSha256": "383ee5d8f2721a7739d44c5a17eff82d1062f7d212653c6443b3216660220f22",
+      "runtimeSha256": "2dd4fe92268f4b0b86f60ee9149d6f127ac69af6d143453b809bd4389832faa5"
+    },
+    "load": {
+      "ms": 28092.09999999404,
+      "readMetrics": {
+        "count": 647,
+        "max": 1614807040,
+        "bytes": 3712966656
+      },
+      "logs": [
+        "load_tensors:          CPU model buffer size =  1782.25 MiB",
+        "load_tensors:       WebGPU model buffer size =  1381.49 MiB",
+        "llama_context:        CPU  output buffer size =     1.00 MiB",
+        "llama_kv_cache:     WebGPU KV buffer size =    12.00 MiB",
+        "llama_kv_cache:     WebGPU KV buffer size =    12.00 MiB",
+        "sched_reserve:     WebGPU compute buffer size =   114.51 MiB",
+        "sched_reserve:        CPU compute buffer size =    26.52 MiB"
+      ]
+    },
+    "questions": [
+      {
+        "id": "e1",
+        "prompt": "although と because は、文をつなぐ意味がどう違いますか。",
+        "arms": {
+          "verbatim": {
+            "answer": "although\nalthough：〜だけれども\n例：Although the plan costs more, it may be safer.\n\nbecause\nbecause：～なので\n関連する語形：cos",
+            "totalMs": 65.5,
+            "firstVisibleMs": 65.5
+          },
+          "assisted": {
+            "answer": "although：〜だけれども\n例：Although the plan costs more, it may be safer.\n\nbecause：～なので\n関連する語形：cos",
+            "kind": "source",
+            "modelUsed": false,
+            "firstVisibleMs": 66.5,
+            "totalMs": 66.5
+          },
+          "none": {
+            "answer": "althoughは譲歩（逆接）の意味で、対比を示します。becauseは理由を示すため、原因と結果の関係を示します。",
+            "firstVisibleMs": 3709.399999976158,
+            "totalMs": 7231.0999999940395,
+            "finishReason": "stop"
+          },
+          "rag": {
+            "answer": "Although は譲歩（逆接）を示し、because は理由を示すため、文をつなぐ意味が異なります。",
+            "firstVisibleMs": 5947.399999976158,
+            "totalMs": 8990,
+            "finishReason": "stop"
+          }
+        }
+      }
+    ],
+    "summary": {
+      "none": {
+        "count": 1,
+        "firstMedianMs": 3709.399999976158,
+        "firstP95Ms": 3709.399999976158,
+        "totalMedianMs": 7231.0999999940395,
+        "totalP95Ms": 7231.0999999940395,
+        "accuracy": null,
+        "note": "正確さは未採点。キーワード一致率を正答率にはしません。"
+      },
+      "verbatim": {
+        "count": 1,
+        "firstMedianMs": 65.5,
+        "firstP95Ms": 65.5,
+        "totalMedianMs": 65.5,
+        "totalP95Ms": 65.5,
+        "accuracy": null,
+        "note": "正確さは未採点。キーワード一致率を正答率にはしません。"
+      },
+      "rag": {
+        "count": 1,
+        "firstMedianMs": 5947.399999976158,
+        "firstP95Ms": 5947.399999976158,
+        "totalMedianMs": 8990,
+        "totalP95Ms": 8990,
+        "accuracy": null,
+        "note": "正確さは未採点。キーワード一致率を正答率にはしません。"
+      },
+      "assisted": {
+        "count": 1,
+        "firstMedianMs": 66.5,
+        "firstP95Ms": 66.5,
+        "totalMedianMs": 66.5,
+        "totalP95Ms": 66.5,
+        "accuracy": null,
+        "note": "正確さは未採点。キーワード一致率を正答率にはしません。"
+      }
+    }
+  },
+  "after": {
+    "startedAt": "2026-10-29T14:04:05.768Z",
+    "status": "completed",
+    "viewVersion": "2026-10-29.11",
+    "conditions": {
+      "version": "2026-10-28.8",
+      "temperature": 0.2,
+      "top_p": 0.9,
+      "seed": 42,
+      "maxTokens": 512,
+      "context": 2048,
+      "parallel": 1,
+      "batch": 512,
+      "maxReferenceChars": 600,
+      "referenceCount": 2,
+      "system": "Answer the question in Japanese within 150 characters. Use only relevant facts. Give a calculation with units when needed. Do not add examples, background, or dates that were not requested. If information is missing, say so.",
+      "gpuLayers": 99,
+      "forceCompat": true,
+      "suite": "development",
+      "modelGeneration": {
+        "temperature": 1,
+        "top_p": 0.95,
+        "top_k": 64,
+        "min_p": 0,
+        "repeat_penalty": 1,
+        "presence_penalty": 0,
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "effectiveLoadOptions": {
+        "n_ctx": 2048,
+        "n_parallel": 1,
+        "n_threads": 1,
+        "n_gpu_layers": 99,
+        "n_batch": 128,
+        "n_ubatch": 32,
+        "seed": 42
+      }
+    },
+    "manifest": {
+      "documents": 40663,
+      "corpusSha256": "36c1fb25bf05eea274b3418a7cf14e9e0d2179937953e08b1c28f4cae38624b0",
+      "searchSha256": "383ee5d8f2721a7739d44c5a17eff82d1062f7d212653c6443b3216660220f22",
+      "runtimeSha256": "8af116c5fd7f023f13d5499a4852a31bf15ea10ea7b96a1cfa84ac0d05a44244"
+    },
+    "load": {
+      "ms": 29615.09999999404,
+      "readMetrics": {
+        "count": 954,
+        "max": 8388608,
+        "bytes": 3712966656
+      },
+      "loadOptions": {
+        "n_ctx": 2048,
+        "n_parallel": 1,
+        "n_threads": 1,
+        "n_gpu_layers": 99,
+        "n_batch": 128,
+        "n_ubatch": 32,
+        "seed": 42
+      },
+      "readPatch": "bounded-read-v1",
+      "logs": [
+        "load_tensors:          CPU model buffer size =  1782.25 MiB",
+        "load_tensors:       WebGPU model buffer size =  1381.49 MiB",
+        "llama_context:        CPU  output buffer size =     1.00 MiB",
+        "llama_kv_cache:     WebGPU KV buffer size =    12.00 MiB",
+        "llama_kv_cache:     WebGPU KV buffer size =     9.00 MiB",
+        "sched_reserve:     WebGPU compute buffer size =     7.14 MiB",
+        "sched_reserve:        CPU compute buffer size =     1.64 MiB"
+      ]
+    },
+    "questions": [
+      {
+        "id": "g2",
+        "prompt": "電照菊は、夜に光を当てるとなぜ出荷時期を調節できるのですか。",
+        "arms": {
+          "verbatim": {
+            "answer": "渥美半島の園芸農業\n渥美半島の園芸農業\n渥美半島では温暖な気候を生かした野菜や花の栽培が行われ、施設園芸や電照菊も見られる。\nキクは日が短く夜が長い条件で花芽をつくる短日植物。夜間の照明で暗い時間を中断して花芽の形成を抑え、開花を遅らせる。温室の温度管理とは別の仕組み。\n資料の読み方：温度管理と日長管理を区別し、出荷時期・市場・用水と結び付ける。\n取り違え注意：電照菊は照明で暖めることだけが目的ではない。\n電照菊で照明を使う主な目的は？\n日長を調節して開花を遅らせ、出荷時期を調整すること。",
+            "totalMs": 15.899999976158142,
+            "firstVisibleMs": 15.899999976158142
+          },
+          "none": {
+            "answer": "電照菊は、夜間に光を当てることで、光合成を抑制し、出荷時期を調節できます。",
+            "firstVisibleMs": 4642.5999999940395,
+            "totalMs": 7654.0999999940395,
+            "finishReason": "stop"
+          },
+          "rag": {
+            "answer": "日長を調節して開花を遅らせ、出荷時期を調整するためです。",
+            "firstVisibleMs": 13862.699999988079,
+            "totalMs": 16124.699999988079,
+            "finishReason": "stop"
+          },
+          "assisted": {
+            "answer": "日長を調節して開花を遅らせ、出荷時期を調整するためです。",
+            "firstVisibleMs": 13863.09999999404,
+            "totalMs": 16125.09999999404,
+            "finishReason": "stop",
+            "kind": "model",
+            "modelUsed": true
+          }
+        }
+      },
+      {
+        "id": "k1",
+        "prompt": "古文の「うつくし」は、現代語の「美しい」と同じ意味ですか。",
+        "arms": {
+          "verbatim": {
+            "answer": "古文：うつくし\nうつくし（うつくし）：かわいらしい。いとしい。",
+            "totalMs": 9.400000005960464,
+            "firstVisibleMs": 9.400000005960464
+          },
+          "assisted": {
+            "answer": "うつくし（うつくし）：かわいらしい。いとしい。",
+            "kind": "source",
+            "modelUsed": false,
+            "firstVisibleMs": 9.700000017881393,
+            "totalMs": 9.700000017881393
+          },
+          "rag": {
+            "answer": "いいえ、古文の「うつくし」は「かわいらしい」「いとしい」という意味です。",
+            "firstVisibleMs": 6262.699999988079,
+            "totalMs": 9242.299999982119,
+            "finishReason": "stop"
+          },
+          "none": {
+            "answer": "「うつくし」は「美しい」と同じ意味ですが、文脈や時代によってニュアンスが異なります。",
+            "firstVisibleMs": 4521.5999999940395,
+            "totalMs": 7366.4000000059605,
+            "finishReason": "stop"
+          }
+        }
+      },
+      {
+        "id": "e1",
+        "prompt": "although と because は、文をつなぐ意味がどう違いますか。",
+        "arms": {
+          "verbatim": {
+            "answer": "although\nalthough：〜だけれども\n例：Although the plan costs more, it may be safer.\n\nbecause\nbecause：～なので\n関連する語形：cos",
+            "totalMs": 55.10000002384186,
+            "firstVisibleMs": 55.10000002384186
+          },
+          "assisted": {
+            "answer": "although：〜だけれども\n例：Although the plan costs more, it may be safer.\n\nbecause：～なので\n関連する語形：cos",
+            "kind": "source",
+            "modelUsed": false,
+            "firstVisibleMs": 55.400000005960464,
+            "totalMs": 55.400000005960464
+          },
+          "none": {
+            "answer": "althoughは譲歩（逆接）の意味で、対比を示します。becauseは理由を示すため、原因と結果の関係を示します。",
+            "firstVisibleMs": 4077,
+            "totalMs": 7577.199999988079,
+            "finishReason": "stop"
+          },
+          "rag": {
+            "answer": "Although は譲歩（〜だけれども）、because は理由（〜なので）を示します。",
+            "firstVisibleMs": 7256.400000035763,
+            "totalMs": 9709.800000041723,
+            "finishReason": "stop"
+          }
+        }
+      }
+    ],
+    "summary": {
+      "none": {
+        "count": 3,
+        "firstMedianMs": 4521.5999999940395,
+        "firstP95Ms": 4642.5999999940395,
+        "totalMedianMs": 7577.199999988079,
+        "totalP95Ms": 7654.0999999940395,
+        "accuracy": null,
+        "note": "正確さは未採点。キーワード一致率を正答率にはしません。"
+      },
+      "verbatim": {
+        "count": 3,
+        "firstMedianMs": 15.899999976158142,
+        "firstP95Ms": 55.10000002384186,
+        "totalMedianMs": 15.899999976158142,
+        "totalP95Ms": 55.10000002384186,
+        "accuracy": null,
+        "note": "正確さは未採点。キーワード一致率を正答率にはしません。"
+      },
+      "rag": {
+        "count": 3,
+        "firstMedianMs": 7256.400000035763,
+        "firstP95Ms": 13862.699999988079,
+        "totalMedianMs": 9709.800000041723,
+        "totalP95Ms": 16124.699999988079,
+        "accuracy": null,
+        "note": "正確さは未採点。キーワード一致率を正答率にはしません。"
+      },
+      "assisted": {
+        "count": 3,
+        "firstMedianMs": 55.400000005960464,
+        "firstP95Ms": 13863.09999999404,
+        "totalMedianMs": 55.400000005960464,
+        "totalP95Ms": 16125.09999999404,
+        "accuracy": null,
+        "note": "正確さは未採点。キーワード一致率を正答率にはしません。"
+      }
+    }
+  },
+  "result": {
+    "modelWeightsChanged": false,
+    "largestTransferBeforeBytes": 1614807040,
+    "largestTransferAfterBytes": 8388608,
+    "aggregateReadBytesMatch": true
+  },
+  "physicalIpadRetest": "pending",
+  "offline": {
+    "method": "Windows Chrome forced Safari-compatible runtime; offline, loopback server stopped, full reload; not A16",
+    "uncachedFetchBlocked": true,
+    "externalRequests": [],
+    "localWorkerRequests": 1,
+    "status": "completed",
+    "loadMs": 26989,
+    "readPatch": "bounded-read-v1",
+    "loadOptions": {
+      "n_ctx": 2048,
+      "n_parallel": 1,
+      "n_threads": 1,
+      "n_gpu_layers": 99,
+      "n_batch": 128,
+      "n_ubatch": 32,
+      "seed": 42
+    },
+    "questionCount": 3,
+    "summary": {
+      "none": {
+        "count": 3,
+        "firstMedianMs": 4064.300000011921,
+        "firstP95Ms": 4065.5999999940395,
+        "totalMedianMs": 6990.300000011921,
+        "totalP95Ms": 7857,
+        "accuracy": null,
+        "note": "正確さは未採点。キーワード一致率を正答率にはしません。"
+      },
+      "verbatim": {
+        "count": 3,
+        "firstMedianMs": 19.5,
+        "firstP95Ms": 35.69999998807907,
+        "totalMedianMs": 19.5,
+        "totalP95Ms": 35.69999998807907,
+        "accuracy": null,
+        "note": "正確さは未採点。キーワード一致率を正答率にはしません。"
+      },
+      "rag": {
+        "count": 3,
+        "firstMedianMs": 7453.499999970198,
+        "firstP95Ms": 11453.999999970198,
+        "totalMedianMs": 9813.399999976158,
+        "totalP95Ms": 13563.299999982119,
+        "accuracy": null,
+        "note": "正確さは未採点。キーワード一致率を正答率にはしません。"
+      },
+      "assisted": {
+        "count": 3,
+        "firstMedianMs": 36.29999998211861,
+        "firstP95Ms": 11454.399999976158,
+        "totalMedianMs": 36.29999998211861,
+        "totalP95Ms": 13563.699999988079,
+        "accuracy": null,
+        "note": "正確さは未採点。キーワード一致率を正答率にはしません。"
+      }
+    }
+  }
+}
