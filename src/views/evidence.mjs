@@ -1,9 +1,6 @@
+import {templates} from '../interactive-lessons.mjs';
 import{heading,link,button,esc,toast}from'../ui.mjs';import{uid}from'../domain.mjs';
-const templates={
- 国語:'資料を読むときは、数値だけでなく調査の条件も確認したい。\nなぜなら、調査対象が異なれば数値の意味も変わるからだ。\n例えば、全校生徒の回答と希望者だけの回答は、同じようには比べられない。\nしかし、条件の違いがあるからといって、すべての比較が無意味になるわけではない。',
- 英語:'We want to join an event on Saturday afternoon.\nWe can spend up to 1,000 yen per person.\nEvent A starts at 10 a.m. and costs 500 yen.\nEvent B starts at 2 p.m. and costs 800 yen.\nEvent C starts at 3 p.m. and costs 1,500 yen.',
- 社会:'A地域では、調査対象100人のうち40人が公共交通を利用した。\nB地域では、調査対象200人のうち60人が公共交通を利用した。\n人数はB地域の方が多い。\n全体に占める割合はA地域の方が高い。\nこの資料だけで、地域全体の利用者数は決められない。'
-};
+
 export async function mount({main,store,query}){const subject=Object.hasOwn(templates,query.get('subject'))?query.get('subject'):'国語';let lines=[],savedId=null;
  main.innerHTML=heading('READ WITH EVIDENCE','根拠を、見える形に。','本文・資料・条件を整理して、自分の判断と結び付ける。',link('旭丘対策へ','exam','secondary'))+`<div class="grid-2"><section class="panel"><label class="field"><span>タイトル</span><input id="evidence-title" value="${subject}の読解メモ" maxlength="150"></label><label class="field"><span>本文・自分のメモ（段落ごとに改行）</span><textarea id="evidence-source" rows="12" maxlength="30000" placeholder="教材の気になった箇所や、自分で要約した文を入力">${esc(templates[subject])}</textarea></label><p class="small muted">最初の文章は操作用のオリジナル例文です。入力内容はこの端末内で扱います。</p>${button('文を分けて整理する','split','primary')}<label class="field section-space"><span>自分の結論・選んだ答え</span><textarea id="evidence-conclusion" placeholder="何を根拠に、どう判断したか"></textarea></label><label class="field"><span>まだ確かめたいこと</span><input id="evidence-question" placeholder="例：theyが指す範囲、比較の分母"></label>${button('根拠と一緒にノートへ保存','save','secondary')}<p id="evidence-status" class="small" role="status"></p></section><section class="panel"><h2>文の役割を選ぶ</h2><p class="small muted">自動採点はしません。根拠に使う文を選び、役割を付けて考えを整理します。</p><div id="evidence-lines"></div></section></div>`;
  const roles=['未分類','主張','理由','具体例','対比・逆接','数値・事実','条件','指示語の説明','言動・心情'];

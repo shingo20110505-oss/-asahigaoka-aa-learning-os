@@ -26,3 +26,9 @@ const labSW=await fs.readFile(path.join(out,'labs/rag/sw.js'),'utf8');assert.ok(
 assert.ok(!files.some(p=>/\.gguf$/.test(p)),'Model weights must not ship in Pages');
 assert.equal(new Set(offline).size,offline.length);assert.ok(offline.every(x=>!/(api\/|setup|\.rise-private|bridge\/)/.test(x)),'Private route in offline cache');
 console.log(JSON.stringify({checkedFiles:files.length,preserved:{review:review.length,history:history.length,reading:reading.length},logo:'byte-identical',privateBridge:'excluded'}));
+
+const search=await json('data/material-search.json');
+assert.equal(search.schema,1);
+assert.equal(search.counts.reading,reading.length);assert.equal(search.documents.filter(d=>d.category==='history'&&!d.id.startsWith('history:trail-')).length,history.length);assert.equal(search.counts.review,review.length);
+assert.equal(new Set(search.documents.map(d=>d.id)).size,search.documents.length);
+assert.ok(search.documents.every(d=>!['notes','materials','cards'].includes(d.category)),'Private content must not ship in search');

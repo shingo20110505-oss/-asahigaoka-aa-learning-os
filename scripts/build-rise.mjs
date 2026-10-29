@@ -1,5 +1,6 @@
 import fs from'node:fs/promises';import path from'node:path';import{fileURLToPath}from'node:url';import{createHash}from'node:crypto';
 import{buildRagLab}from'./build-rag-lab.mjs';
+import {buildMaterialSearch} from './build-material-search.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),out=path.join(root,'dist');
 // The deletion target is an absolute, fixed child of this checkout.
 if(path.dirname(out)!==root||path.basename(out)!=='dist')throw Error('Invalid output directory');await fs.rm(out,{recursive:true,force:true});await fs.mkdir(out,{recursive:true});
@@ -10,6 +11,7 @@ await fs.writeFile(path.join(out,'manifest.webmanifest'),JSON.stringify({id:'./'
 for(const [old,route]of[['review/index.html','review'],['reading-v2/index.html','reading'],['chronologia.html','history']]){const prefix=old.includes('/')?'../':'./';await fs.mkdir(path.dirname(path.join(out,old)),{recursive:true});await fs.writeFile(path.join(out,old),`<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>RISE</title><meta http-equiv="refresh" content="0;url=${prefix}#/${route}"><p><a href="${prefix}#/${route}">新しいRISEを開く</a></p></html>`);}
 async function files(dir){const a=[];for(const e of await fs.readdir(dir,{withFileTypes:true})){const p=path.join(dir,e.name);e.isDirectory()?a.push(...await files(p)):a.push(p);}return a;}
 await buildRagLab(out);
+await buildMaterialSearch(out);
 const paths=await files(out),sw=await fs.readFile(path.join(root,'scripts/rise-sw.js'),'utf8'),hash=createHash('sha256').update(sw);for(const p of paths)hash.update(path.relative(out,p).replaceAll('\\','/')).update(await fs.readFile(p));const version=hash.digest('hex').slice(0,12),shell=['./',...paths.map(p=>'./'+path.relative(out,p).replaceAll('\\','/')).filter(p=>!p.startsWith('./labs/'))];
 for(const file of ['index.html','src/index.html','update.html','src/update.html']){const p=path.join(out,file);await fs.writeFile(p,(await fs.readFile(p,'utf8')).replaceAll('__RISE_BUILD__',version));}
 await fs.writeFile(path.join(out,'sw.js'),sw.replace('__VERSION__',version).replace('__SHELL__',JSON.stringify(shell)));await fs.writeFile(path.join(out,'.nojekyll'),'');await fs.writeFile(path.join(out,'version.json'),JSON.stringify({version,counts:{review:migration.reviewCount,history:migration.historyCount,reading:JSON.parse(await fs.readFile(path.join(root,'data/reading/index.json'),'utf8')).length}}));console.log(JSON.stringify({version,files:paths.length,output:out}));

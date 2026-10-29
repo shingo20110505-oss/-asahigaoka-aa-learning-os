@@ -68,7 +68,10 @@ test('library, route, global search, stylesheet and learn navigation are connect
  const read=file=>fs.readFile(new URL('../src/'+file,import.meta.url),'utf8');
  assert.match(await read('catalog.mjs'),/id:'science-memory'/);
  assert.match(await read('app.mjs'),/'science-memory':'science-memory'/);
- assert.match(await read('app.mjs'),/route:'science-memory\/'\+x.id/);
+ assert.match(await read('app.mjs'),/openMaterialSearch\(store\)/);
+ const {buildMaterialCatalog}=await import('../scripts/build-material-search.mjs');
+ const docs=(await buildMaterialCatalog()).documents.filter(d=>d.category==='science');
+ assert.deepEqual(docs.map(d=>d.route),items.map(x=>'science-memory/'+x.id));
  assert.match(await read('index.html'),/science-memory.css/);
  assert.equal(viewGroup('science-memory/sci-memory-light-source'),'learn');
 });
