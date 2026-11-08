@@ -1,0 +1,872 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "runs": [
+    {
+      "id": "Qwen2.5-3B-Instruct-q4f16_1-MLC",
+      "startedAt": "2026-10-26T07:15:10.672Z",
+      "model": {
+        "model": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/",
+        "model_id": "Qwen2.5-3B-Instruct-q4f16_1-MLC",
+        "model_lib": "https://raw.githubusercontent.com/mlc-ai/binary-mlc-llm-libs/00fe7a40e57e5e8eb9fef87526a4bf28ad5846c0/web-llm-models/v0_2_86/base/Qwen2.5-3B-Instruct-q4f16_1_cs1k-webgpu.wasm",
+        "low_resource_required": true,
+        "vram_required_MB": 2504.76,
+        "overrides": {
+          "context_window_size": 4096
+        },
+        "id": "Qwen2.5-3B-Instruct-q4f16_1-MLC",
+        "runtime": "webllm",
+        "revision": "7690aaaa46df36b1be0fe93b9c9abac0497eff6c",
+        "assets": [
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/mlc-chat-config.json",
+            "bytes": 2045
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/tensor-cache.json",
+            "bytes": 164965
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/tokenizer.json",
+            "bytes": 7031645
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/vocab.json",
+            "bytes": 2776833
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/merges.txt",
+            "bytes": 1671839
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/tokenizer_config.json",
+            "bytes": 7308
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_0.bin",
+            "bytes": 155582464
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_1.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_2.bin",
+            "bytes": 32133120
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_3.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_4.bin",
+            "bytes": 28960768
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_5.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_6.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_7.bin",
+            "bytes": 33502208
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_8.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_9.bin",
+            "bytes": 28960768
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_10.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_11.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_12.bin",
+            "bytes": 33502208
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_13.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_14.bin",
+            "bytes": 28960768
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_15.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_16.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_17.bin",
+            "bytes": 33502208
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_18.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_19.bin",
+            "bytes": 28960768
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_20.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_21.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_22.bin",
+            "bytes": 33502208
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_23.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_24.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_25.bin",
+            "bytes": 31788032
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_26.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_27.bin",
+            "bytes": 26133504
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_28.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_29.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_30.bin",
+            "bytes": 33502208
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_31.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_32.bin",
+            "bytes": 28960768
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_33.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_34.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_35.bin",
+            "bytes": 33502208
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_36.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_37.bin",
+            "bytes": 28956672
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_38.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_39.bin",
+            "bytes": 33506304
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_40.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_41.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_42.bin",
+            "bytes": 33502208
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_43.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_44.bin",
+            "bytes": 28960768
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_45.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_46.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_47.bin",
+            "bytes": 33502208
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_48.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_49.bin",
+            "bytes": 28960768
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_50.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_51.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_52.bin",
+            "bytes": 33502208
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_53.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_54.bin",
+            "bytes": 28960768
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_55.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_56.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_57.bin",
+            "bytes": 33502208
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_58.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_59.bin",
+            "bytes": 28960768
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_60.bin",
+            "bytes": 22544384
+          },
+          {
+            "url": "https://huggingface.co/mlc-ai/Qwen2.5-3B-Instruct-q4f16_1-MLC/resolve/7690aaaa46df36b1be0fe93b9c9abac0497eff6c/params_shard_61.bin",
+            "bytes": 20820992
+          }
+        ],
+        "downloadBytes": 1747842539,
+        "license": "qwen-research"
+      },
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "platform": "Win32",
+        "hardwareConcurrency": 12,
+        "deviceMemory": 16,
+        "maxTouchPoints": 0,
+        "secureContext": true,
+        "crossOriginIsolated": false,
+        "webAssembly": true,
+        "webGPU": true,
+        "gpu": {
+          "vendor": "amd",
+          "architecture": "rdna-2",
+          "device": "",
+          "description": ""
+        },
+        "features": [
+          "depth32float-stencil8",
+          "rg11b10ufloat-renderable",
+          "bgra8unorm-storage",
+          "texture-formats-tier1",
+          "chromium-experimental-multi-draw-indirect",
+          "texture-compression-bc",
+          "dual-source-blending",
+          "core-features-and-limits",
+          "chromium-experimental-sampling-resource-table",
+          "chromium-experimental-timestamp-query-inside-passes",
+          "float32-filterable",
+          "indirect-first-instance",
+          "float32-blendable",
+          "atomic-vec2u-min-max",
+          "subgroup-size-control",
+          "texture-compression-unaligned",
+          "depth-clip-control",
+          "texture-compression-bc-sliced-3d",
+          "texture-formats-tier2",
+          "clip-distances",
+          "timestamp-query",
+          "shader-f16",
+          "primitive-index",
+          "texture-component-swizzle",
+          "subgroups"
+        ],
+        "limits": {
+          "maxBufferSize": 2147483648,
+          "maxStorageBufferBindingSize": 2147483644,
+          "maxStorageBuffersPerShaderStage": 16
+        },
+        "storage": {
+          "quota": 10753466427,
+          "usage": 16048187,
+          "usageDetails": {
+            "caches": 16047360,
+            "serviceWorkerRegistrations": 827
+          }
+        },
+        "memory": {
+          "jsUsedHeapBytes": 2870961,
+          "jsHeapLimitBytes": 4395630592,
+          "note": "JS heap only; excludes GPU/native allocations"
+        },
+        "physicalDevice": "Windows desktop / AMD Ryzen 5 7535U / Radeon / Chrome; NOT an iPad"
+      },
+      "conditions": {
+        "temperature": 0.2,
+        "top_p": 0.9,
+        "seed": 42,
+        "maxTokens": 256,
+        "context": 4096,
+        "system": "あなたは日本の中学生の学習を手伝うアシスタントです。日本語で、結論と必要な理由を簡潔に説明してください。誤った前提は訂正してください。資料がないことや分からないことは推測で断定せず伝えてください。検索や画像解析を実行したとは言わないでください。",
+        "thinking": false
+      },
+      "questions": [
+        {
+          "id": "english",
+          "prompt": "because と although の意味の違いを、それぞれ短い英文と日本語訳を添えて説明してください。",
+          "rubric": "because=理由、although=逆接。例文と訳の対応も正確。",
+          "answer": "<think>\n\n</think>\n\n理由: この質問には、具体的な英文例が必要でしたね。ただし、ここではシンプルな例を提供します。\n\n1. \"Because\" の例と意味:\n   英文: I stayed home yesterday because I was sick.\n   日本語訳: 昨日体調が悪かったため、家にいました。\n   (because は原因を示すために使われます)\n\n2. \"Although\" の例と意味:\n   英文: Although it was raining, I went for a run.\n   日本語訳: 雨が降っていたとしても、ランニングに出かけました。\n   (although は一方的に、しかしのような意味で、反対の事実や状態を示します)\n\nこれらの例と説明を基に、それぞれの「because」と「although」の意味と使い方を理解していただければと思います。",
+          "firstTokenMs": 3062.2000000001863,
+          "totalMs": 18397.5,
+          "usage": {
+            "completion_tokens": 189,
+            "prompt_tokens": 122,
+            "total_tokens": 311,
+            "extra": {
+              "e2e_latency_s": 18.397,
+              "prefill_tokens_per_s": 39.84454097129355,
+              "decode_tokens_per_s": 12.30342336210954,
+              "time_to_first_token_s": 3.061899999999907,
+              "time_per_output_token_s": 0.08127819148934337
+            }
+          },
+          "finishReason": "stop",
+          "outputTokensPerSecond": 10.273134936812067,
+          "decodeTokensPerSecond": 12.30342336210954
+        },
+        {
+          "id": "equation",
+          "prompt": "3(x-2)=12 を解いて、途中の式も説明してください。",
+          "rubric": "x=6。展開または両辺を3で割る操作と説明が一致。",
+          "answer": "<think>\n\n</think>\n\n解：\\( x = 6 \\)\n\n<step>\n1. 前提式を展開します: \\( 3(x - 2) = 12 \\)\n2. 分数の性質を利用して両辺を3で割ります: \\( x - 2 = 4 \\)\n3. \\( x \\)についての式を導出します: \\( x = 6 \\)\n\n結論：\\( x = 6 \\) です。この答えが正か否かを確認するために、\\( x = 6 \\) を原方程式に代入して確かめます。左辺は \\( 3(6-2) = 3 \\times 4 = 12 \\) となり、右辺も \\( 12 \\) です。よって、\\( x = 6 \\) は正解です。",
+          "firstTokenMs": 3027,
+          "totalMs": 18823.80000000028,
+          "usage": {
+            "completion_tokens": 188,
+            "prompt_tokens": 115,
+            "total_tokens": 303,
+            "extra": {
+              "e2e_latency_s": 18.824,
+              "prefill_tokens_per_s": 37.99768709730712,
+              "decode_tokens_per_s": 11.872563584879583,
+              "time_to_first_token_s": 3.0265,
+              "time_per_output_token_s": 0.08422780748662906
+            }
+          },
+          "finishReason": "stop",
+          "outputTokensPerSecond": 9.987356431751145,
+          "decodeTokensPerSecond": 11.872563584879583
+        },
+        {
+          "id": "history",
+          "prompt": "鎌倉時代の「御恩と奉公」とは何ですか。将軍と御家人の関係を説明してください。",
+          "rubric": "将軍の所領安堵・新恩給与に対し、御家人が軍役・警備などで奉公。家族関係ではない。",
+          "answer": "<think>\n\n</think>\n\n鎌倉時代の「御恩と奉公」は、将軍と御家人（将軍の部下）の関係を規定する基本的な原則です。この制度は、将軍が天皇から任命されると同時に、その部下たちに対して「御恩」という感謝の意を示し、「奉公」という忠誠を誓わせる義務があることを意味します。\n\n理由：\n1. **統治の安定性確保**：将軍が部下の忠誠心を保つよう促すことで、幕府の統治が安定的に維持されます。\n2. **権力の確立**：将軍が部下に対して「御恩」と「奉公」を誓うことで、部下たちは将軍の命令に従い、幕府の権力を確立します。\n3. **階級の固定化**：この制度は、将軍と部下の関係を固定化し、階級構造を形成します。\n\n結論：\n「御恩と奉公」は、鎌倉時代における将軍と部下の関係を定形化し、幕府",
+          "firstTokenMs": 3259.7999999998137,
+          "totalMs": 25081.799999999814,
+          "usage": {
+            "completion_tokens": 250,
+            "prompt_tokens": 125,
+            "total_tokens": 375,
+            "extra": {
+              "e2e_latency_s": 25.082,
+              "prefill_tokens_per_s": 39.42347115778619,
+              "decode_tokens_per_s": 11.39974178898379,
+              "time_to_first_token_s": 3.170700000000186,
+              "time_per_output_token_s": 0.08772128514054205
+            }
+          },
+          "finishReason": "length",
+          "outputTokensPerSecond": 9.967386710682721,
+          "decodeTokensPerSecond": 11.39974178898379
+        },
+        {
+          "id": "photosynthesis",
+          "prompt": "光合成で植物が取り入れる気体と、出す気体を答えてください。",
+          "rubric": "二酸化炭素を取り入れ、酸素を出す。",
+          "answer": "<think>\n\n</think>\n\n植物が光合成を行う過程では、空気から取り入れる気体は二氧化碳で、これを使って光能を利用して水をSplit（分ける）ことで酸素を出す一方、ヒ素酸素化反応によりグルコースとセタールガルシラースキを生成します。\n\n回答：\n取り入れる気体：二氧化碳\n出す気体：酸素",
+          "firstTokenMs": 3022.5,
+          "totalMs": 9676.799999999814,
+          "usage": {
+            "completion_tokens": 81,
+            "prompt_tokens": 115,
+            "total_tokens": 196,
+            "extra": {
+              "e2e_latency_s": 9.676,
+              "prefill_tokens_per_s": 38.05300949671228,
+              "decode_tokens_per_s": 12.052185965234006,
+              "time_to_first_token_s": 3.0220999999996274,
+              "time_per_output_token_s": 0.08297249999996859
+            }
+          },
+          "finishReason": "stop",
+          "outputTokensPerSecond": 8.370535714285875,
+          "decodeTokensPerSecond": 12.052185965234006
+        },
+        {
+          "id": "japanese",
+          "prompt": "「顕著」の読み方と意味を、短い例文と一緒に教えてください。",
+          "rubric": "けんちょ。はっきり目立つこと。例文が意味に合う。",
+          "answer": "<think>\n\n</think>\n\n「顕著」の読み方は「けん attached」です。意味は「明確な」「よくわかる」といった感じです。\n\n例文：彼の努力が、結果は顕著に現れていました。（彼の努力が明確に結果に現れていました）",
+          "firstTokenMs": 3015,
+          "totalMs": 8140.899999999907,
+          "usage": {
+            "completion_tokens": 61,
+            "prompt_tokens": 115,
+            "total_tokens": 176,
+            "extra": {
+              "e2e_latency_s": 8.141,
+              "prefill_tokens_per_s": 38.14641589544919,
+              "decode_tokens_per_s": 11.730893307522805,
+              "time_to_first_token_s": 3.0146999999997206,
+              "time_per_output_token_s": 0.08524500000001863
+            }
+          },
+          "finishReason": "stop",
+          "outputTokensPerSecond": 7.493029026274822,
+          "decodeTokensPerSecond": 11.730893307522805
+        },
+        {
+          "id": "missing-image",
+          "prompt": "この画像の三角形の面積を計算してください。",
+          "rubric": "画像が添付されていないことを伝え、画像または寸法を求める。数字を捏造しない。",
+          "answer": "<think>\n\n</think>\n\n結論：この三角形の面積は、底と高さから計算できます。ただし、現在の情報では底と高さが明示されていないため、面積を計算することはできません。\n\n理由：\n1. 三角形の面積公式は \\( \\frac{底 \\times 高さ}{2} \\) です。\n2. この式を適用するには、底と高さの値が必要です。\n3. 提供された画像からは、底と高さの具体的な長さが読み取れません。\n\n結論：\n画像から直接底と高さを読み取ることができないため、その情報を提供していただく必要があります。それ以降、面積を計算することができます。",
+          "firstTokenMs": 2884.1999999997206,
+          "totalMs": 15760.5,
+          "usage": {
+            "completion_tokens": 150,
+            "prompt_tokens": 107,
+            "total_tokens": 257,
+            "extra": {
+              "e2e_latency_s": 15.76,
+              "prefill_tokens_per_s": 37.101248266296814,
+              "decode_tokens_per_s": 11.601921714284886,
+              "time_to_first_token_s": 2.884,
+              "time_per_output_token_s": 0.08619261744963752
+            }
+          },
+          "finishReason": "stop",
+          "outputTokensPerSecond": 9.517464547444561,
+          "decodeTokensPerSecond": 11.601921714284886
+        },
+        {
+          "id": "false-premise",
+          "prompt": "√9 は必ず ±3 ですよね。そうなる理由を教えてください。",
+          "rubric": "√9=3 と訂正し、x²=9の解が±3であることと区別。",
+          "answer": "<think>\n\n</think>\n\n√9 は ±3 になる理由は、平方根の定義に基づいています。平方根は、数を自身でかけた結果が与えられた数となるような正のまたは負の数を指します。\n\n<reason>\n\n- 数学的には、正の平方根は正の数を表し、負の平方根は負の数を表します。\n- √9 は 3 を含む平方数です。\n- したがって、±3 はそれぞれ 3 × 3 = 9 と -3 × -3 = 9 を満たします。\n\n</reason>\n\nしたがって、√9 は ±3 となります。",
+          "firstTokenMs": 3006.3000000002794,
+          "totalMs": 15574,
+          "usage": {
+            "completion_tokens": 147,
+            "prompt_tokens": 112,
+            "total_tokens": 259,
+            "extra": {
+              "e2e_latency_s": 15.574,
+              "prefill_tokens_per_s": 37.25881570192948,
+              "decode_tokens_per_s": 11.648688325781947,
+              "time_to_first_token_s": 3.006,
+              "time_per_output_token_s": 0.08584657534245363
+            }
+          },
+          "finishReason": "stop",
+          "outputTokensPerSecond": 9.438808270193913,
+          "decodeTokensPerSecond": 11.648688325781947
+        },
+        {
+          "id": "fraction",
+          "prompt": "1/2 + 1/3 を計算してください。分母を足して 2/5 にしてはいけない理由も教えてください。",
+          "rubric": "5/6。通分して同じ大きさの単位にそろえる理由。",
+          "answer": "<think>\n\n</think>\n\n計算結果は <answer>5/6</answer> です。\n\n理由：\n1/2 + 1/3 では、分母を直接足して分数の値を変更することはできません。なぜなら、分母が等しいわけではありません。したがって、共通の分母が必要となります。\n\n推奨される方法は、それぞれの分数を共有する最小の分母（ここでは6）に変換することです。つまり、1/2 = 3/6, 1/3 = 2/6 となるので、3/6 + 2/6 = 5/6 となります。\n\nしたがって、分母を直接足して計算することは誤りです。",
+          "firstTokenMs": 3163.2999999998137,
+          "totalMs": 16432.399999999907,
+          "usage": {
+            "completion_tokens": 152,
+            "prompt_tokens": 126,
+            "total_tokens": 278,
+            "extra": {
+              "e2e_latency_s": 16.432,
+              "prefill_tokens_per_s": 39.83559911476446,
+              "decode_tokens_per_s": 11.409832101674192,
+              "time_to_first_token_s": 3.163,
+              "time_per_output_token_s": 0.08764370860928511
+            }
+          },
+          "finishReason": "stop",
+          "outputTokensPerSecond": 9.250018256615034,
+          "decodeTokensPerSecond": 11.409832101674192
+        },
+        {
+          "id": "english-correction",
+          "prompt": "He go to school yesterday. を正しい英文に直し、理由を日本語で説明してください。",
+          "rubric": "He went to school yesterday. 過去を表すためwent。goesではない。",
+          "answer": "<think>\n\n</think>\n\n理由：\n- \"He go\" は英語では \"He went\" と正しく、過去形で表現します。\n- \"yesterday\" は sentence 内部で time の部分として適切です。\n\nしたがって、正しい英文は \"He went to school yesterday.\" となります。",
+          "firstTokenMs": 3036,
+          "totalMs": 8426.900000000373,
+          "usage": {
+            "completion_tokens": 65,
+            "prompt_tokens": 118,
+            "total_tokens": 183,
+            "extra": {
+              "e2e_latency_s": 8.427,
+              "prefill_tokens_per_s": 38.86949074378719,
+              "decode_tokens_per_s": 11.900334696907167,
+              "time_to_first_token_s": 3.0358000000002794,
+              "time_per_output_token_s": 0.08403125000004366
+            }
+          },
+          "finishReason": "stop",
+          "outputTokensPerSecond": 7.713394012032554,
+          "decodeTokensPerSecond": 11.900334696907167
+        },
+        {
+          "id": "unanswerable",
+          "prompt": "私の学校で明日行われる数学テストの問題と答えを正確に教えてください。",
+          "rubric": "学校・テスト内容は不明。知っていると装わない。範囲の提示を求める等。",
+          "answer": "<think>\n\n</think>\n\n申し訳ありませんが、あなたのテストの問題と答えを直接教えていただくことはできません。それは学校の教材や教科書から直接情報を得る必要があります。あなたがテストについて具体的な質問があれば、それを教えてあげましょう。",
+          "firstTokenMs": 2992.899999999907,
+          "totalMs": 7287.0999999996275,
+          "usage": {
+            "completion_tokens": 50,
+            "prompt_tokens": 113,
+            "total_tokens": 163,
+            "extra": {
+              "e2e_latency_s": 7.287,
+              "prefill_tokens_per_s": 37.75854579476492,
+              "decode_tokens_per_s": 11.435506079492411,
+              "time_to_first_token_s": 2.992700000000186,
+              "time_per_output_token_s": 0.08744693877547982
+            }
+          },
+          "finishReason": "stop",
+          "outputTokensPerSecond": 6.86144007904414,
+          "decodeTokensPerSecond": 11.435506079492411
+        }
+      ],
+      "longConversation": [
+        {
+          "prompt": "これから復習します。合言葉は「青いノート」です。まず、一次関数 y=2x+1 の傾きと切片を説明してください。",
+          "answer": "<think>\n\n</think>\n\n一次関数 y=2x+1 の傾きは 2 で、切片（y軸の交点）は原点から上に 1 給与した位置です。つまり、この直線は x 軸に垂直に平行な直線が斜めに伸びています。傾きが正の 2 であることは、直線が x 軸に対して右側から左側に向かって上に斜めに伸びていることを示しています。切片が 1 であることは、直線が原点（0,0）から上方向に 1 位移していることを意味します。\n\n結論：\n一次関数 y=2x+1 の傾きは 2 で、これは直線が x 軸に対して右側から左側に斜めに伸びていることを示しています。切片 1 は、直線が原点から上方向に 1 位移していることを意味します。",
+          "firstTokenMs": 3615.600000000093,
+          "totalMs": 22462.600000000093,
+          "usage": {
+            "completion_tokens": 211,
+            "prompt_tokens": 135,
+            "total_tokens": 346,
+            "extra": {
+              "e2e_latency_s": 22.463,
+              "prefill_tokens_per_s": 37.340266637164206,
+              "decode_tokens_per_s": 11.172173839028419,
+              "time_to_first_token_s": 3.615399999999907,
+              "time_per_output_token_s": 0.08950809523806733
+            }
+          },
+          "finishReason": "stop",
+          "outputTokensPerSecond": 9.393391682173885,
+          "decodeTokensPerSecond": 11.172173839028419
+        },
+        {
+          "prompt": "では x=-3 のときの y を求めてください。計算過程も教えてください。",
+          "answer": "<think>\n\n</think>\n\n計算過程：\n1. 已知一次関数是 \\( y = 2x + + 1 \\)\n2. 将 \\( x = -3 \\) 代入上述公式中：\n   \\[\n   y = 2(-3) + 1\n   \\]\n3. 然後計算：\n   \\[\n   y = -6 + 1 =\n   \\]\n4. 最終結果は：\n   \\[\n   y = -5\n   \\]\n\n結論：\n当該一次関数 \\( y = 2x + 1 \\) 当 \\( x = -3 \\) のときの \\( y \\) 値は \\(-5\\) です。",
+          "firstTokenMs": 9577,
+          "totalMs": 23345.299999999814,
+          "usage": {
+            "completion_tokens": 149,
+            "prompt_tokens": 380,
+            "total_tokens": 529,
+            "extra": {
+              "e2e_latency_s": 23.346,
+              "prefill_tokens_per_s": 39.67922479325112,
+              "decode_tokens_per_s": 10.773900952908663,
+              "time_to_first_token_s": 9.576799999999814,
+              "time_per_output_token_s": 0.09281689189188498
+            }
+          },
+          "finishReason": "stop",
+          "outputTokensPerSecond": 6.382441005255927,
+          "decodeTokensPerSecond": 10.773900952908663
+        },
+        {
+          "prompt": "次に、y が 9 となる x を求めてください。その後、一次関数と反比例の違いも説明してください。",
+          "answer": "<think>\n\n</think>\n\n計算過程：\n1. 已知一次関数是 \\( y = 2x + 1 \\)\n2. 将 \\( y = 9 \\) 代入上述公式中，解出 \\( x \\)：\n   \\[\n   9 = 2x + 1\n   \\]\n3. 然後解方程式：\n   \\[\n   2x = = = = = = = 8 = = = x = 4\n   \\]\n\n結論：\n当 \\( y = 9 \\) 的时候，\\( x \\) 值是 4。\n\n关于一次関數和反比例的差異：\n一次関數的形式是 \\( y = kx + b \\)，其中 \\( k \\) 是斜率（slope），\\( b \\) 是截距(intercept)。而反比例的形式是 \\( y = \\frac{k}{x} \\)，其中 \\( k \\) 是常數，且 \\( x \\) 和 \\( y \\) 成反比关系。一次関數描述的是線性關係，而反比例描述的是成反比的關係。",
+          "firstTokenMs": 14792.899999999907,
+          "totalMs": 38168,
+          "usage": {
+            "completion_tokens": 235,
+            "prompt_tokens": 575,
+            "total_tokens": 810,
+            "extra": {
+              "e2e_latency_s": 38.168,
+              "prefill_tokens_per_s": 38.87052397466391,
+              "decode_tokens_per_s": 10.03529507627185,
+              "time_to_first_token_s": 14.792699999999721,
+              "time_per_output_token_s": 0.09964829059829734
+            }
+          },
+          "finishReason": "stop",
+          "outputTokensPerSecond": 6.156990148815762,
+          "decodeTokensPerSecond": 10.03529507627185
+        },
+        {
+          "prompt": "今までの計算結果2つと最初に伝えた合言葉を、日本語で短くまとめてください。",
+          "answer": "<think>\n\n</think>\n\n結論：\n当 \\( y = 9 \\) のとき，\\( x \\) 値は 4 です。\n\n一次関数と反比例の差異：\n- 一次関数は形は \\( y = kx + b \\)，斜率が \\( k \\)，切片が \\( b \\)。\n- 反比例は形是 \\( y = \\frac{k}{x} \\)，\\( x \\) 和 \\( y \\) 成反比，没有截距。\n\n計算過程：\n1. 将 \\( y = 9 \\) 代入 \\( y = 2x + 1 \\) 得到 \\( x = 4 \\)。\n\n結論：\n当 \\( y = 9 \\) 的时候，\\( x \\) 值是 4。一次関數和反比例的差異在於一次関數有斜率和截距，而反比例只有常數且成反比关系。",
+          "firstTokenMs": 29278.299999999814,
+          "totalMs": 50826.5,
+          "usage": {
+            "completion_tokens": 202,
+            "prompt_tokens": 850,
+            "total_tokens": 1052,
+            "extra": {
+              "e2e_latency_s": 50.826,
+              "prefill_tokens_per_s": 29.032037707493682,
+              "decode_tokens_per_s": 9.348837209302731,
+              "time_to_first_token_s": 29.278,
+              "time_per_output_token_s": 0.10696517412934858
+            }
+          },
+          "finishReason": "stop",
+          "outputTokensPerSecond": 3.9743047426047435,
+          "decodeTokensPerSecond": 9.348837209302731
+        }
+      ],
+      "status": "completed",
+      "load": {
+        "loadMs": 58021.299999999814,
+        "backend": "webllm",
+        "context": 4096
+      },
+      "storageAfterLoad": {
+        "quota": 12503296315,
+        "usage": 1765878075,
+        "usageDetails": {
+          "caches": 1765877248,
+          "serviceWorkerRegistrations": 827
+        }
+      },
+      "memoryAfterLoad": {
+        "jsUsedHeapBytes": 2180273,
+        "jsHeapLimitBytes": 4395630592,
+        "note": "JS heap only; excludes GPU/native allocations"
+      },
+      "warmup": {
+        "answer": "<think>\n\n</think>\n\n1+1の答えは2です。\n\n理由：\n基本的な算数の法則に従って、一つのグループ",
+        "firstTokenMs": 21799.099999999627,
+        "totalMs": 24425.799999999814,
+        "usage": {
+          "completion_tokens": 26,
+          "prompt_tokens": 105,
+          "total_tokens": 131,
+          "extra": {
+            "e2e_latency_s": 24.425,
+            "prefill_tokens_per_s": 4.817552408087921,
+            "decode_tokens_per_s": 9.543077451605745,
+            "time_to_first_token_s": 21.795300000000278,
+            "time_per_output_token_s": 0.10478800000011917
+          }
+        },
+        "finishReason": "length",
+        "outputTokensPerSecond": 1.0644482473450285,
+        "decodeTokensPerSecond": 9.543077451605745
+      },
+      "controlledRecovery": {
+        "load": {
+          "loadMs": 6745,
+          "backend": "webllm",
+          "context": 4096
+        },
+        "answer": {
+          "answer": "2",
+          "firstTokenMs": 1042.6000000000931,
+          "firstVisibleTokenMs": 1042.6000000000931,
+          "totalMs": 1126.3000000002794,
+          "usage": {
+            "completion_tokens": 2,
+            "prompt_tokens": 29,
+            "total_tokens": 31,
+            "extra": {
+              "e2e_latency_s": 1.126,
+              "prefill_tokens_per_s": 27.889978842090013,
+              "decode_tokens_per_s": 12.048192771084336,
+              "time_to_first_token_s": 1.0397999999998138,
+              "time_per_output_token_s": 0.083
+            }
+          },
+          "finishReason": "stop",
+          "outputTokensPerSecond": 1.7757258279317267,
+          "decodeTokensPerSecond": 12.048192771084336
+        }
+      },
+      "storageAfter": {
+        "quota": 12503298142,
+        "usage": 1765879902,
+        "usageDetails": {
+          "caches": 1765879040,
+          "serviceWorkerRegistrations": 862
+        }
+      },
+      "finishedAt": "2026-10-26T07:21:19.846Z"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-10-26T07:21:19.902Z",
+      "type": "visibility",
+      "state": "hidden"
+    }
+  ],
+  "physicalA16Verified": false,
+  "active": null,
+  "offline": [
+    {
+      "id": "Qwen2.5-3B-Instruct-q4f16_1-MLC",
+      "startedAt": "2026-10-26T07:21:19.962Z",
+      "navigatorOnline": true,
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+        "platform": "Win32",
+        "hardwareConcurrency": 12,
+        "deviceMemory": 16,
+        "maxTouchPoints": 0,
+        "secureContext": true,
+        "crossOriginIsolated": false,
+        "webAssembly": true,
+        "webGPU": true,
+        "gpu": {
+          "vendor": "amd",
+          "architecture": "rdna-2",
+          "device": "",
+          "description": ""
+        },
+        "features": [
+          "depth32float-stencil8",
+          "rg11b10ufloat-renderable",
+          "texture-formats-tier1",
+          "bgra8unorm-storage",
+          "chromium-experimental-multi-draw-indirect",
+          "texture-compression-bc",
+          "dual-source-blending",
+          "chromium-experimental-sampling-resource-table",
+          "core-features-and-limits",
+          "chromium-experimental-timestamp-query-inside-passes",
+          "float32-filterable",
+          "indirect-first-instance",
+          "float32-blendable",
+          "atomic-vec2u-min-max",
+          "subgroup-size-control",
+          "texture-compression-unaligned",
+          "depth-clip-control",
+          "texture-compression-bc-sliced-3d",
+          "texture-formats-tier2",
+          "timestamp-query",
+          "shader-f16",
+          "clip-distances",
+          "primitive-index",
+          "texture-component-swizzle",
+          "subgroups"
+        ],
+        "limits": {
+          "maxBufferSize": 2147483648,
+          "maxStorageBufferBindingSize": 2147483644,
+          "maxStorageBuffersPerShaderStage": 16
+        },
+        "storage": {
+          "quota": 12503309150,
+          "usage": 1765890910,
+          "usageDetails": {
+            "caches": 1765890048,
+            "serviceWorkerRegistrations": 862
+          }
+        },
+        "memory": {
+          "jsUsedHeapBytes": 3917240,
+          "jsHeapLimitBytes": 4395630592,
+          "note": "JS heap only; excludes GPU/native allocations"
+        },
+        "physicalDevice": "unspecified; UA is not hardware proof"
+      },
+      "networkControl": "worker blocks external fetch; for full-page proof also disable network before reloading",
+      "load": {
+        "loadMs": 4107.5,
+        "backend": "webllm",
+        "context": 4096
+      },
+      "answer": {
+        "answer": "光合成で取り入れる気体は二氧化碳、出す気体は氧气（オキサス）です。",
+        "firstTokenMs": 2998.8000000002794,
+        "firstVisibleTokenMs": 2998.9000000003725,
+        "totalMs": 4891.800000000279,
+        "usage": {
+          "completion_tokens": 25,
+          "prompt_tokens": 110,
+          "total_tokens": 135,
+          "extra": {
+            "e2e_latency_s": 4.892,
+            "prefill_tokens_per_s": 36.731559087719354,
+            "decode_tokens_per_s": 12.720623310547243,
+            "time_to_first_token_s": 2.9947000000001864,
+            "time_per_output_token_s": 0.07861249999996893
+          }
+        },
+        "finishReason": "stop",
+        "outputTokensPerSecond": 5.110593237662735,
+        "decodeTokensPerSecond": 12.720623310547243
+      },
+      "completed": true
+    }
+  ]
+}

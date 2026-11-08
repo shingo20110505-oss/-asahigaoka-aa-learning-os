@@ -1,0 +1,16 @@
+{
+  "scope": "Page-target CDP only. Worker/service-worker traffic is excluded; these counts are NOT model download bytes or complete network isolation proof.",
+  "requests": 17,
+  "failed": [
+    {
+      "url": "https://us.aws.cdn.hf.co/xet-bridge-us/66e98aed2b824e26843793c6/5ae0c201348e276d543a1e5c0e053370e32415774095c677319f62b302b1620a?X-Xet-Cas-Uid=public&user_id=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27qwen2.5-3b-instruct-q4_k_m.gguf%3B+filename%3D%22qwen2.5-3b-instruct-q4_k_m.gguf%22%3B&xip=J3hPqJ3CnEk&Expires=1793004383&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNjZlOThhZWQyYjgyNGUyNjg0Mzc5M2M2LzVhZTBjMjAxMzQ4ZTI3NmQ1NDNhMWU1YzBlMDUzMzcwZTMyNDE1Nzc0MDk1YzY3NzMxOWY2MmIzMDJiMTYyMGFcXD9YLVhldC1DYXMtVWlkPXB1YmxpYyZ1c2VyX2lkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3cXdlbjIuNS0zYi1pbnN0cnVjdC1xNF9rX20uZ2d1ZiUzQitmaWxlbmFtZSUzRCUyMnF3ZW4yLjUtM2ItaW5zdHJ1Y3QtcTRfa19tLmdndWYlMjIlM0ImeGlwPUozaFBxSjNDbkVrIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3OTMwMDQzODN9fX1dfQ__&Signature=MEYCIQCvpeJ5AQfIpwFZWhP-hVtIQm0VahCrSmKHNGUiMfEvPQIhAMwHV1KlPeGetqehSsV6LTrG75WddcA%7EV8Ba4q1gIVYl&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F&Hash-Algorithm=SHA256",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:4327/uncached-probe-1793001109505",
+      "error": "net::ERR_FAILED"
+    }
+  ],
+  "encodedDataLength": 0,
+  "remoteRequests": 0
+}

@@ -1,0 +1,99 @@
+{
+  "id": "Qwen3-4B-q4f16_1-MLC",
+  "startedAt": "2026-10-26T07:29:41.553Z",
+  "navigatorOnline": true,
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "platform": "Win32",
+    "hardwareConcurrency": 12,
+    "deviceMemory": 16,
+    "maxTouchPoints": 0,
+    "secureContext": true,
+    "crossOriginIsolated": false,
+    "webAssembly": true,
+    "webGPU": true,
+    "gpu": {
+      "vendor": "amd",
+      "architecture": "rdna-2",
+      "device": "",
+      "description": ""
+    },
+    "features": [
+      "depth32float-stencil8",
+      "rg11b10ufloat-renderable",
+      "bgra8unorm-storage",
+      "texture-formats-tier1",
+      "chromium-experimental-multi-draw-indirect",
+      "texture-compression-bc",
+      "dual-source-blending",
+      "core-features-and-limits",
+      "chromium-experimental-sampling-resource-table",
+      "chromium-experimental-timestamp-query-inside-passes",
+      "float32-filterable",
+      "indirect-first-instance",
+      "float32-blendable",
+      "atomic-vec2u-min-max",
+      "subgroup-size-control",
+      "texture-compression-unaligned",
+      "depth-clip-control",
+      "texture-compression-bc-sliced-3d",
+      "shader-f16",
+      "timestamp-query",
+      "clip-distances",
+      "texture-formats-tier2",
+      "primitive-index",
+      "texture-component-swizzle",
+      "subgroups"
+    ],
+    "limits": {
+      "maxBufferSize": 2147483648,
+      "maxStorageBufferBindingSize": 2147483644,
+      "maxStorageBuffersPerShaderStage": 16
+    },
+    "storage": {
+      "quota": 14790630238,
+      "usage": 4053211998,
+      "usageDetails": {
+        "caches": 4053211136,
+        "serviceWorkerRegistrations": 862
+      }
+    },
+    "memory": {
+      "jsUsedHeapBytes": 3564380,
+      "jsHeapLimitBytes": 4395630592,
+      "note": "JS heap only; excludes GPU/native allocations"
+    },
+    "physicalDevice": "unspecified; UA is not hardware proof"
+  },
+  "networkControl": "worker blocks external fetch; for full-page proof also disable network before reloading",
+  "load": {
+    "loadMs": 7549,
+    "backend": "webllm",
+    "context": 4096
+  },
+  "answer": {
+    "answer": "<think>\n\n</think>\n\n光合成で取り入れる気体は二酸化炭素（CO₂）、出し気体は酸素（O₂）です。",
+    "firstTokenMs": 4207.299999999814,
+    "firstVisibleTokenMs": 4207.399999999907,
+    "totalMs": 7063.399999999907,
+    "usage": {
+      "completion_tokens": 31,
+      "prompt_tokens": 114,
+      "total_tokens": 145,
+      "extra": {
+        "e2e_latency_s": 7.063,
+        "prefill_tokens_per_s": 27.114451526972346,
+        "decode_tokens_per_s": 10.536667603260375,
+        "time_to_first_token_s": 4.204399999999906,
+        "time_per_output_token_s": 0.09490666666665737
+      }
+    },
+    "finishReason": "stop",
+    "timings": null,
+    "outputTokensPerSecond": 4.388821247557891,
+    "decodeTokensPerSecond": 10.536667603260375
+  },
+  "completed": true,
+  "fullPageReloadWithOriginServerStopped": true,
+  "uncachedFetchFailed": true
+}

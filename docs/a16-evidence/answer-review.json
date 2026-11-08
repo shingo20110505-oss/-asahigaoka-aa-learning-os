@@ -1,0 +1,152 @@
+{
+  "method": "Codex semantic review of raw Japanese answers, not keyword matching. Not an independent human assessment.",
+  "scale": {
+    "0": "Incorrect, unsupported claim, or missing the core requested explanation",
+    "1": "Core partly correct but explanation, Japanese or uncertainty handling needs correction",
+    "2": "Correct and useful for the question, including the necessary explanation"
+  },
+  "order": [
+    "english",
+    "equation",
+    "history",
+    "photosynthesis",
+    "japanese",
+    "missing-image",
+    "false-premise",
+    "fraction",
+    "english-correction",
+    "unanswerable"
+  ],
+  "models": {
+    "Qwen3-4B-q4f16_1-MLC": {
+      "scores": [
+        2,
+        2,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        2,
+        1
+      ],
+      "notes": [
+        "Examples and translations correctly distinguish reason/concession.",
+        "x=6 with matching operations.",
+        "Replaces land protection/grants and military service with generic power/loyalty.",
+        "Conflicting gas names and formula labels, including oxygen as input.",
+        "顕著 is misread as けんちゅう.",
+        "Acknowledges no visible image and requests necessary information.",
+        "Correctly distinguishes square roots of 9 from the radical expression.",
+        "Starts with 11/6 and repeatedly denies the correct 5/6.",
+        "went with correct explanation.",
+        "Does not fabricate test contents, but primarily refuses instead of clearly stating lack of knowledge."
+      ]
+    },
+    "Qwen3.5-4B-q4f16_1-MLC": {
+      "scores": [
+        1,
+        1,
+        0,
+        2,
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ],
+      "notes": [
+        "Main distinction/examples correct; incorrectly lists です as a translation of because.",
+        "Correct equations and x=6, but calls distribution an inverse operation; output truncated.",
+        "Misreads 御恩, reverses who repays whom, falsely says retainers had the same rank as shogun.",
+        "Correct gases and mechanism.",
+        "Misreads 顕著 as けんきゅう and invents character etymology; also misreads 顕微鏡.",
+        "Claims an absent image was provided and has no numerical labels.",
+        "Correct conclusion, but the reason describes multiplying 9 instead of a number whose square is 9.",
+        "Correct 5/6 and common denominator steps; the first definition of fraction is incorrect/unclear.",
+        "Correct went and past tense explanation.",
+        "States missing school-specific information and offers preparation based on scope."
+      ]
+    },
+    "Qwen2.5-3B-GGUF-wllama-gpu": {
+      "scores": [
+        1,
+        1,
+        0,
+        0,
+        2,
+        2,
+        0,
+        1,
+        2,
+        2
+      ],
+      "notes": [
+        "Reason/concession examples mostly correct, but introductory Japanese replaces because with 当然.",
+        "x=6 is correct but says to add -2 instead of +2.",
+        "Generic gratitude and obedience; fails to explain land protection/grants and military service.",
+        "Uses Chinese 氧气 and incorrectly includes water among emitted gases.",
+        "Correct reading けんちょ and meaning.",
+        "Admits inability to see image and asks for numerical data.",
+        "Agrees with false premise √9=±3 and invents an incorrect definition.",
+        "Correct numerical result but says to divide each fraction by 6 to obtain a common denominator.",
+        "Correct went and past tense explanation.",
+        "States lack of test details rather than inventing them."
+      ]
+    },
+    "Qwen2.5-3B-Instruct-q4f16_1-MLC": {
+      "scores": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        2,
+        0,
+        1,
+        0,
+        1
+      ],
+      "notes": [
+        "Translates stayed up late incorrectly as sleeping until late.",
+        "Correct x=6 and arithmetic, but labels the unchanged equation as expansion.",
+        "Incorrectly defines 御恩 as the shogun thanking the emperor.",
+        "Correct gas identities but uses Chinese 二氧化碳 in a Japanese learning answer.",
+        "Reading is the nonsensical けん attached.",
+        "Requests the missing image or dimensions without fabricating measurements.",
+        "Agrees with √9=±3, then contradicts itself with √9=3.",
+        "Correct 5/6; procedural common-denominator rule without explaining equal-size units.",
+        "Correct went but entirely false explanation involving yesterday and an invented auxiliary.",
+        "Does not invent the test, but claims a role restriction rather than clearly stating lack of knowledge."
+      ]
+    },
+    "Qwen3-4B-Instruct-2507-Q3_K_M-wllama": {
+      "scores": [
+        1,
+        2,
+        0,
+        2,
+        0,
+        2,
+        2,
+        2,
+        2,
+        1
+      ],
+      "notes": [
+        "Correct main distinction but translates I was tired as I was hungry. Truncated.",
+        "Correct x=6 and step-by-step equivalent operations; optional closing explanation truncated.",
+        "Includes land/service relationship but invents Kamakura period 1185-1573 and attributes central power to Yoshitsune. Truncated.",
+        "Correct gases and photosynthesis vs respiration distinction.",
+        "Misreads 顕著 as かんじょう, explicitly and falsely rejects けん.",
+        "States missing image and requests dimensions without fabricating them.",
+        "Correct distinction between √9 and the two square roots of 9.",
+        "Correct 5/6 with equal-size pieces and common denominator explanation.",
+        "Correct went and past-time explanation.",
+        "Does not invent the test but adds unsupported blanket legal/privacy claims about school test questions."
+      ]
+    }
+  }
+}

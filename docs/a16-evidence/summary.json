@@ -1,0 +1,391 @@
+{
+  "date": "2026-10-26",
+  "physicalA16Verified": false,
+  "environment": "Windows / Ryzen 5 7535U / Radeon RDNA2 / 16GB / HeadlessChrome 156; NOT iPad",
+  "memoryScope": "Own Chrome processes only; shared working sets may double-count, private commit is not physical RAM, GPU driver allocations not fully covered.",
+  "scores": "10 fixed questions, one sample each; Codex semantic review, 0/1/2, not independent human grading or statistical accuracy",
+  "models": [
+    {
+      "id": "Qwen2.5-3B-Instruct-q4f16_1-MLC",
+      "status": "completed",
+      "downloadAssetBytes": 1747842539,
+      "loadMs": 7526.299999999814,
+      "loadCondition": "already cached after excluded pilot",
+      "warmup": {
+        "answer": "1+1の答えは2です。",
+        "firstTokenMs": 3036.2999999998137,
+        "firstVisibleTokenMs": 3036.4000000003725,
+        "totalMs": 3747,
+        "usage": {
+          "completion_tokens": 10,
+          "prompt_tokens": 99,
+          "total_tokens": 109,
+          "extra": {
+            "e2e_latency_s": 3.747,
+            "prefill_tokens_per_s": 32.635569474204715,
+            "decode_tokens_per_s": 12.722646310425871,
+            "time_to_first_token_s": 3.0335,
+            "time_per_output_token_s": 0.07860000000004139
+          }
+        },
+        "finishReason": "stop",
+        "timings": null,
+        "outputTokensPerSecond": 2.6688017080330932,
+        "decodeTokensPerSecond": 12.722646310425871
+      },
+      "medianFirstVisibleMs": 2873.149999999907,
+      "medianDecodeTokensPerSecond": 12.106768113859939,
+      "medianTotalMs": 10854.950000000186,
+      "truncatedQuestions": 0,
+      "score": 7,
+      "fullyCorrectQuestions": 1,
+      "offlineCompleted": true,
+      "offlineLoadMs": 3960.9000000003725,
+      "controlledRecoveryLoadMs": 4405.600000000559,
+      "storageBefore": 8547681853,
+      "storageAfter": 8541765949,
+      "peakPrivateCommitBytes": 3537059840,
+      "peakSummedWorkingSetBytes": 3992825856,
+      "memorySamples": 25,
+      "conversation": [
+        {
+          "prompt": "これから復習します。合言葉は「青いノート」です。まず、一次関数 y=2x+1 の傾きと切片を説明してください。",
+          "answer": "一次関数 y=2x+1 の傾きは 2 で、切片（y軸の交点）は原点から1の高さの直線です。つまり、この関数のグラフは原点を通り、x軸方向に2つ進むごとにy軸方向に上がります。これは「青いノート」の復習にもなりますね。",
+          "firstVisibleTokenMs": 3510.5,
+          "totalMs": 10847.700000000186,
+          "promptTokens": 129,
+          "finishReason": "stop"
+        },
+        {
+          "prompt": "では x=-3 のときの y を求めてください。計算過程も教えてください。",
+          "answer": "もちろんです。\n\nx=-3 のとき、一次関数 y=2x+1 に代入すると、\n\n\\[ y = 2(-3) + 1 \\]\n\\[ y = -6 + 1 \\]\n\\[ y = -5 \\]\n\nしたがって、x=-3 のときの y 値は -5 です。この計算過程を理解していただければと思います。",
+          "firstVisibleTokenMs": 6244.0999999996275,
+          "totalMs": 13444.299999999814,
+          "promptTokens": 247,
+          "finishReason": "stop"
+        },
+        {
+          "prompt": "次に、y が 9 となる x を求めてください。その後、一次関数と反比例の違いも説明してください。",
+          "answer": "y=9 のとき、一次関数 y=2x+1 に代入すると、\n\n\\[ 9 = 2x + 1 \\]\n\\[ 8 = 2x \\]\n\\[ x = 4 \\]\n\nしたがって、y=9 のときの x 値は 4 です。\n\n一次関数と反比例の違いについて説明します：\n\n- **一次関数**：形は \\(y = mx + b\\) で、\\(m\\) が傾き、\\(b\\) が切片です。これは直線を描く関数で、変数 \\(x\\) と定数 \\(m\\) の倍数関係があります。\n\n- **反比例**：形は \\(y = \\frac{k}{x}\\) で、\\(k\\) が定数です。これは原点を中心とした双曲线を描く関数で、\\(x\\) と \\(y\\) の積が定数 \\(k\\) である関係です。\n\nつまり、一次関数では \\(y\\) が \\(x\\) の定数倍になる一方、反比例では \\(y\\) と \\(x\\) の積が定数となる関係です。",
+          "firstVisibleTokenMs": 9416.5,
+          "totalMs": 32749.799999999814,
+          "promptTokens": 373,
+          "finishReason": "length"
+        },
+        {
+          "prompt": "今までの計算結果2つと最初に伝えた合言葉を、日本語で短くまとめてください。",
+          "answer": "これまでの計算結果と合言葉をまとめてみましょう：\n\n- x=-3 のとき、y=9 となる x 値は **4** です。\n- 合言葉は **青いノート**。\n\nこれらの結果と合言葉を復習することで、一次関数と反比例の理解が深まります。",
+          "firstVisibleTokenMs": 17377.400000000373,
+          "totalMs": 24575.400000000373,
+          "promptTokens": 664,
+          "finishReason": "stop"
+        }
+      ]
+    },
+    {
+      "id": "Qwen3-4B-q4f16_1-MLC",
+      "status": "completed",
+      "downloadAssetBytes": 2278983734,
+      "loadMs": 66027.8999999999,
+      "loadCondition": "first download for this model",
+      "warmup": {
+        "answer": "<think>\n\n</think>\n\n1+1 の答えは **2** です。",
+        "firstTokenMs": 7478.299999999814,
+        "firstVisibleTokenMs": 7478.399999999907,
+        "totalMs": 9469.5,
+        "usage": {
+          "completion_tokens": 13,
+          "prompt_tokens": 103,
+          "total_tokens": 116,
+          "extra": {
+            "e2e_latency_s": 9.469,
+            "prefill_tokens_per_s": 13.780001605436908,
+            "decode_tokens_per_s": 6.040775232822961,
+            "time_to_first_token_s": 7.474600000000093,
+            "time_per_output_token_s": 0.16554166666662787
+          }
+        },
+        "finishReason": "stop",
+        "outputTokensPerSecond": 1.3728285548339405,
+        "decodeTokensPerSecond": 6.040775232822961
+      },
+      "medianFirstVisibleMs": 3875.9000000001397,
+      "medianDecodeTokensPerSecond": 9.861054187664411,
+      "medianTotalMs": 18430,
+      "truncatedQuestions": 2,
+      "score": 11,
+      "fullyCorrectQuestions": 5,
+      "offlineCompleted": true,
+      "offlineLoadMs": 7549,
+      "controlledRecoveryLoadMs": 8632.5,
+      "storageBefore": 1771800926,
+      "storageAfter": 4053211998,
+      "peakPrivateCommitBytes": null,
+      "peakSummedWorkingSetBytes": null,
+      "memorySamples": 0,
+      "conversation": [
+        {
+          "prompt": "これから復習します。合言葉は「青いノート」です。まず、一次関数 y=2x+1 の傾きと切片を説明してください。",
+          "answer": "<think>\n\n</think>\n\n一次関数 $ y = 2x + 1 $ において、**傾き**は **2** で、**切片**は **1** です。\n\n理由：  \n- 一次関数の標準形は $ y = mx + a $ で、$ m $ が傾き、$ a $ が切片です。  \n- この式 $ y = 2x + 1 $ では、$ m = 2 $、$ a = 1 $ なので、傾きは 2、切片は 1 です。",
+          "firstVisibleTokenMs": 4604.300000000279,
+          "totalMs": 17520.700000000186,
+          "promptTokens": 133,
+          "finishReason": "stop"
+        },
+        {
+          "prompt": "では x=-3 のときの y を求めてください。計算過程も教えてください。",
+          "answer": "<think>\n\n</think>\n\n$x = -3$ のときの $y$ の値を求めます。\n\n**計算過程：**  \n$ y = 2x + 1 $ に $ x = -3 $ を代入します。\n\n$$\ny = 2(-3) + 1 = -6 + 1 = -5\n$$\n\n**答え：** $ y = -5 $",
+          "firstVisibleTokenMs": 9966.299999999814,
+          "totalMs": 18207.399999999907,
+          "promptTokens": 290,
+          "finishReason": "stop"
+        },
+        {
+          "prompt": "次に、y が 9 となる x を求めてください。その後、一次関数と反比例の違いも説明してください。",
+          "answer": "<think>\n\n</think>\n\n**1. y = 9 となる x の求め方：**  \n一次関数 $ y = 2x + 1 $ で $ y = 9 $ となる $ x $ を求めます。\n\n計算過程：  \n$$\n9 = 2x + 1\n$$\n両辺から 1 を引く：\n$$\n8 = 2x\n$$\n両辺を 2 で割る：\n$$\nx = 4\n$$\n\n**答え：** $ x = 4 $\n\n---\n\n**2. 一次関数と反比例の違い：**  \n- **一次関数**：形は $ y = mx + a $ で、$ m \\neq 0 $ で、x と y の関係は直線で、傾きと切片を持つ。  \n- **反比例**：形は $ y = \\frac{a}{x} $ で、x と y が逆比例の関係で、x が 0 にならない。グラフは双曲線になる。\n\n**まとめ：**  \n一次関数は直線で、反比例は双曲線",
+          "firstVisibleTokenMs": 14384.599999999627,
+          "totalMs": 41543.5,
+          "promptTokens": 414,
+          "finishReason": "length"
+        },
+        {
+          "prompt": "今までの計算結果2つと最初に伝えた合言葉を、日本語で短くまとめてください。",
+          "answer": "<think>\n\n</think>\n\nこれまでの内容を、合言葉「青いノート」を思い出しながら、短くまとめます：\n\n**「青いノート」に基づく計算結果：**  \n- $ x = -3 $ とき、$ y = -5 $  \n- $ y = 9 $ とき、$ x = 4 $  \n**まとめ：** 一次関数の計算と違いを理解しました。",
+          "firstVisibleTokenMs": 27138.69999999972,
+          "totalMs": 36923.69999999972,
+          "promptTokens": 699,
+          "finishReason": "stop"
+        }
+      ]
+    },
+    {
+      "id": "Qwen3.5-4B-q4f16_1-MLC",
+      "status": "completed",
+      "downloadAssetBytes": 2390258276,
+      "loadMs": 76611.70000000019,
+      "loadCondition": "first download for this model",
+      "warmup": {
+        "answer": "<think>\n\n</think>\n\n2",
+        "firstTokenMs": 23710.899999999907,
+        "firstVisibleTokenMs": 23711.100000000093,
+        "totalMs": 26616.799999999814,
+        "usage": {
+          "completion_tokens": 2,
+          "prompt_tokens": 86,
+          "total_tokens": 88,
+          "extra": {
+            "e2e_latency_s": 26.616,
+            "prefill_tokens_per_s": 3.627635835980256,
+            "decode_tokens_per_s": 0.3443051921223082,
+            "time_to_first_token_s": 23.70689999999991,
+            "time_per_output_token_s": 2.904399999999907
+          }
+        },
+        "finishReason": "stop",
+        "timings": null,
+        "outputTokensPerSecond": 0.07514051275885959,
+        "decodeTokensPerSecond": 0.3443051921223082
+      },
+      "medianFirstVisibleMs": 3966.899999999907,
+      "medianDecodeTokensPerSecond": 4.100536074766968,
+      "medianTotalMs": 47805.10000000009,
+      "truncatedQuestions": 2,
+      "score": 10,
+      "fullyCorrectQuestions": 3,
+      "offlineCompleted": true,
+      "offlineLoadMs": 8131.5,
+      "controlledRecoveryLoadMs": 10211.700000000186,
+      "storageBefore": 4053212254,
+      "storageAfter": 6441075550,
+      "peakPrivateCommitBytes": 5539061760,
+      "peakSummedWorkingSetBytes": 6253563904,
+      "memorySamples": 93,
+      "conversation": [
+        {
+          "prompt": "これから復習します。合言葉は「青いノート」です。まず、一次関数 y=2x+1 の傾きと切片を説明してください。",
+          "answer": "<think>\n\n</think>\n\n結論：一次関数 $y=2x+1$ の傾きは**2**、切片は**1**です。\n\n理由：\nこの関数は $y=ax+b$ の形（$a$ は傾き、$b$ は切片）に当てはまります。\n- $x$ の係数が $2$ なので、傾きは $2$ です。\n- 定数項が $1$ なので、切片は $1$ です。\n\n※補足：「青いノート」は一般的な数学用語ではなく、特定の教材や授業の合言葉として使われている可能性が高いです。もしこれが特定の教科書や授業の暗号であれば、その文脈に依存した解釈が必要です。一般的な数学の知識として回答した場合は、もし「青いノート」が特定の暗号や隠しルールを意味している場合は、そのルールがない限り正確な解釈はできません。",
+          "firstVisibleTokenMs": 4989.5,
+          "totalMs": 51123.40000000037,
+          "promptTokens": 112,
+          "finishReason": "stop"
+        },
+        {
+          "prompt": "では x=-3 のときの y を求めてください。計算過程も教えてください。",
+          "answer": "<think>\n\n</think>\n\n結論：$x=-3$ のときの $y$ の値は**$-5$**です。\n\n理由：\n与えられた一次関数 $y=2x+1$ に $x=-3$ を代入し、計算を行います。\n1. 式に値を入れる：$y = 2 \\times (-3) + 1$\n2. 掛け算を先に計算：$2 \\times (-3) = -6$\n3. 足し算を行う：$-6 + 1 = -5$\n\nしたがって、$y=-5$ となります。\n\n※補足：「青いノート」が特定の暗号やルールを意味している場合、そのルールに従う必要があるかもしれませんが、一般的な数学計算として回答しました。もし「青いノート」が特定の計算ルールや条件を意味している場合は、そのルールがない限り正確な解釈はできません。",
+          "firstVisibleTokenMs": 14477.100000000093,
+          "totalMs": 62039,
+          "promptTokens": 330,
+          "finishReason": "stop"
+        },
+        {
+          "prompt": "次に、y が 9 となる x を求めてください。その後、一次関数と反比例の違いも説明してください。",
+          "answer": "<think>\n\n</think>\n\n結論：\n1. $y=9$ となる $x$ は**$4$**です。\n2. 一次関数と反比例の違いは、**変数の積が一定になるか、または変数の和が一定になるか**という点です。\n\n理由：\n1. **$y=9$ となる $x$ の計算**：\n   - 与えられた式 $y=2x+1$ に $y=9$ を代入します。\n   - $9 = 2x + 1$\n   - 両辺から $1$ を引く：$8 = 2x$\n   - 両辺を $2$ で割る：$x = 4$\n   - したがって、$x=4$ です。\n\n2. **一次関数と反比例の違い**：\n   - **一次関数**（$y=ax+b$）：変数 $x$ と $y$ の**和**が一定になる性質を持ちます（$y$ が $x$ に比例して増減します）。\n   - **反比例**（$y=\\frac{k}{x}$",
+          "firstVisibleTokenMs": 24655.799999999814,
+          "totalMs": 87145,
+          "promptTokens": 561,
+          "finishReason": "length"
+        },
+        {
+          "prompt": "今までの計算結果2つと最初に伝えた合言葉を、日本語で短くまとめてください。",
+          "answer": "<think>\n\n</think>\n\n結論：\n1. $x=-3$ のとき、$y=-5$\n2. $y=9$ のとき、$x=4$\n3. 合言葉：「青いノート」\n\n理由：\n- 上記は、与えられた一次関数 $y=2x+1$ を用いた計算結果と、最初にお伝えした合言葉のまとめです。\n- 反比例の説明は、最初の質問の範囲外であったため、今回は含みませんでした。",
+          "firstVisibleTokenMs": 56645.59999999963,
+          "totalMs": 83818.3999999999,
+          "promptTokens": 847,
+          "finishReason": "stop"
+        }
+      ]
+    },
+    {
+      "id": "Qwen2.5-3B-GGUF-wllama-gpu",
+      "status": "completed",
+      "downloadAssetBytes": 2104932768,
+      "loadMs": 68058.79999999981,
+      "loadCondition": "first download for this model",
+      "warmup": {
+        "answer": "1+1=2",
+        "firstTokenMs": 5537.799999999814,
+        "firstVisibleTokenMs": 5538,
+        "totalMs": 5909.899999999907,
+        "usage": null,
+        "finishReason": "stop",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 99,
+          "prompt_ms": 5419.301,
+          "prompt_per_token_ms": 54.74041414141414,
+          "prompt_per_second": 18.268038627121836,
+          "predicted_n": 6,
+          "predicted_ms": 464.8,
+          "predicted_per_token_ms": 92.96000000000001,
+          "predicted_per_second": 10.757314974182444
+        },
+        "outputTokensPerSecond": null,
+        "decodeTokensPerSecond": 10.757314974182444
+      },
+      "medianFirstVisibleMs": 3826.899999999907,
+      "medianDecodeTokensPerSecond": 10.251239771303073,
+      "medianTotalMs": 12187.19999999972,
+      "truncatedQuestions": 0,
+      "score": 11,
+      "fullyCorrectQuestions": 4,
+      "offlineCompleted": true,
+      "offlineLoadMs": 5045.799999999814,
+      "controlledRecoveryLoadMs": 5775.300000000745,
+      "storageBefore": 6441068638,
+      "storageAfter": 8546002237,
+      "peakPrivateCommitBytes": 3606654976,
+      "peakSummedWorkingSetBytes": 5348761600,
+      "memorySamples": 35,
+      "conversation": [
+        {
+          "prompt": "これから復習します。合言葉は「青いノート」です。まず、一次関数 y=2x+1 の傾きと切片を説明してください。",
+          "answer": "一次関数 y=2x+1 の傾きは 2 で、切片は y=1 です。この関数は y 軸に 1 だけ上がっている直線を表します。",
+          "firstVisibleTokenMs": 3838.7000000001863,
+          "totalMs": 8528.299999999814,
+          "promptTokens": 129,
+          "finishReason": "stop"
+        },
+        {
+          "prompt": "では x=-3 のときの y を求めてください。計算過程も教えてください。",
+          "answer": "一次関数 y=2x+1 において、x=-3 のときの y を求めることを考えます。\n\n計算過程は以下の通りです：\n\n1. x=-3 を関数 y=2x+1 に代入します。\n   y = 2(-3) + 1\n\n2. 括弧内の計算をします。\n   y = -6 + 1\n\n3. 結合式を計算します。\n   y = -5\n\nしたがって、x=-3 のときの y の値は -5 です。",
+          "firstVisibleTokenMs": 9089,
+          "totalMs": 20987.300000000745,
+          "promptTokens": 206,
+          "finishReason": "stop"
+        },
+        {
+          "prompt": "次に、y が 9 となる x を求めてください。その後、一次関数と反比例の違いも説明してください。",
+          "answer": "一次関数 y=2x+1 において、y=9 のときの x を求めることを考えます。\n\n計算過程は以下の通りです：\n\n1. y=9 を関数 y=2x+1 に代入します。\n   9 = 2x + 1\n\n2. 9 - 1 を計算します。\n   8 = 2x\n\n3. 8 を 2 で割ります。\n   x = 4\n\nしたがって、y=9 のときの x の値は 4 です。\n\n次に、一次関数と反比例の違いを説明します。\n\n- 一次関数は形として y=ax+b で表され、x の値が変化するとき y の値が一定の倍率で変化します。この倍率が傾きです。\n- 反比例の関数は形として y = k/x で表され、x の値が増えるにつれて y の値が減少します。つまり、x と y の積は一定の値 k です。\n\nしたがって、一次関数と反比例の主な違いは、変化の",
+          "firstVisibleTokenMs": 12475.099999999627,
+          "totalMs": 38231,
+          "promptTokens": 369,
+          "finishReason": "length"
+        },
+        {
+          "prompt": "今までの計算結果2つと最初に伝えた合言葉を、日本語で短くまとめてください。",
+          "answer": "合言葉「青いノート」。一次関数 y=2x+1 で x=-3 のとき y=-5、y=9 のとき x=4 です。",
+          "firstVisibleTokenMs": 21456.900000000373,
+          "totalMs": 25586.900000000373,
+          "promptTokens": 660,
+          "finishReason": "stop"
+        }
+      ]
+    },
+    {
+      "id": "Qwen3-4B-Instruct-2507-Q3_K_M-wllama",
+      "status": "completed",
+      "downloadAssetBytes": 2075618400,
+      "loadMs": 74854.59999999963,
+      "loadCondition": "first download for this model",
+      "warmup": {
+        "answer": "1+1 の答えは 2 です。",
+        "firstTokenMs": 5384.799999999814,
+        "firstVisibleTokenMs": 5385,
+        "totalMs": 6783.5,
+        "usage": null,
+        "finishReason": "stop",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 99,
+          "prompt_ms": 5105.1,
+          "prompt_per_token_ms": 51.56666666666667,
+          "prompt_per_second": 19.392372333548803,
+          "predicted_n": 12,
+          "predicted_ms": 1653.3,
+          "predicted_per_token_ms": 150.29999999999998,
+          "predicted_per_second": 6.65335994677312
+        },
+        "outputTokensPerSecond": null,
+        "decodeTokensPerSecond": 6.65335994677312
+      },
+      "medianFirstVisibleMs": 5330.299999999814,
+      "medianDecodeTokensPerSecond": 6.810562347594137,
+      "medianTotalMs": 40948.5,
+      "truncatedQuestions": 5,
+      "score": 14,
+      "fullyCorrectQuestions": 6,
+      "offlineCompleted": true,
+      "offlineLoadMs": 6121.4000000003725,
+      "controlledRecoveryLoadMs": 10970.299999999814,
+      "storageBefore": 8547682621,
+      "storageAfter": 10621622357,
+      "peakPrivateCommitBytes": 4826378240,
+      "peakSummedWorkingSetBytes": 7033208832,
+      "memorySamples": 69,
+      "conversation": [
+        {
+          "prompt": "これから復習します。合言葉は「青いノート」です。まず、一次関数 y=2x+1 の傾きと切片を説明してください。",
+          "answer": "合言葉「青いノート」は、今回の質問と関係ありません。  \nしたがって、その合言葉はこの問題の解答に影響しません。\n\n---\n\n**一次関数 $ y = 2x + 1 $ の傾きと切片の説明：**\n\n- **傾き**：2  \n  これは、$ x $ が1増えるごとに $ y $ が2増えることを意味します。つまり、関数がどのくらい急かに上昇しているかを表します。\n\n- **切片**：1  \n  これは、$ x = 0 $ のときの $ y $ の値（$ y $ 軸との交点）です。つまり、グラフが $ y $ 軸と交わる点は $ (0, 1) $ です。\n\n---\n\n✅ **結論**：  \n一次関数 $ y = 2x + 1 $ では、  \n**傾きは 2**、**切片は 1** です。\n\nこの答えは数学の基本的な知識に基づいており、誤りの前提はありません。",
+          "firstVisibleTokenMs": 5438.9000000003725,
+          "totalMs": 42164.200000000186,
+          "promptTokens": 129,
+          "finishReason": "stop"
+        },
+        {
+          "prompt": "では x=-3 のときの y を求めてください。計算過程も教えてください。",
+          "answer": "✅ **結論**：  \n$ x = -3 $ のとき、$ y = -5 $ です。\n\n---\n\n**計算過程：**\n\n一次関数の式は $ y = 2x + 1 $ です。\n\n$ x = -3 $ を代入して計算します：\n\n$$\ny = 2(-3) + 1 = -6 + 1 = -5\n$$\n\n---\n\nよって、$ x = -3 $ のとき、$ y = -5 $ です。  \nこの計算は式の基本的な代入による計算であり、正しいです。",
+          "firstVisibleTokenMs": 17045.200000000186,
+          "totalMs": 36195.60000000056,
+          "promptTokens": 405,
+          "finishReason": "stop"
+        },
+        {
+          "prompt": "次に、y が 9 となる x を求めてください。その後、一次関数と反比例の違いも説明してください。",
+          "answer": "✅ **結論**：  \n$ y = 9 $ のとき、$ x = 4 $ です。\n\n---\n\n**計算過程：**\n\n一次関数の式：$ y = 2x + 1 $  \n$ y = 9 $ となる $ x $ を求めるために、式に $ y = 9 $ を代入して解きます。\n\n$$\n9 = 2x + 1\n$$\n\n両辺から 1 を引く：\n$$\n9 - 1 = 2x \\Rightarrow 8 = 2x\n$$\n\n両辺を 2 で割る：\n$$\nx = \\frac{8}{2} = 4\n$$\n\nよって、$ y = 9 $ となる $ x $ は **4** です。\n\n---\n\n**一次関数と反比例の違い：**\n\n| 項目 | 一次関数 | 反比例関数 |\n|------|---------|-----------|\n| 式の形 | $ y = ax + b $（$ a \\neq 0 $） | $ y = \\frac{a}{x} $（$ a \\neq 0 $）",
+          "firstVisibleTokenMs": 28684.10000000056,
+          "totalMs": 68799.20000000019,
+          "promptTokens": 573,
+          "finishReason": "length"
+        },
+        {
+          "prompt": "今までの計算結果2つと最初に伝えた合言葉を、日本語で短くまとめてください。",
+          "answer": "✅ **結論（短くまとめて）：**  \n合言葉「青いノート」は問題に関係ない。  \n一次関数 $ y = 2x + 1 $ では、  \n- $ x = -3 $ のとき $ y = -5 $、  \n- $ y = 9 $ のとき $ x = 4 $。  \nこれらは正しい計算結果です。",
+          "firstVisibleTokenMs": 39866.90000000037,
+          "totalMs": 53824,
+          "promptTokens": 864,
+          "finishReason": "stop"
+        }
+      ]
+    }
+  ]
+}

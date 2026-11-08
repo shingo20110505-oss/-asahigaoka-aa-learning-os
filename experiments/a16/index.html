@@ -1,0 +1,11 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RISE A16 比較ラボ</title><link rel="stylesheet" href="style.css"><main>
+<p class="label">RISE / 独立した検証環境</p><h1>iPadの中で、どこまで学べるか。</h1><p>3B〜4B級のモデルを、同じ日本語の質問で比較します。本番の会話・学習データには接続しません。</p>
+<p class="notice">実験用です。初回は約1.7〜2.4GBを取得します。回答に誤りがあり得ます。測定値はこの端末の結果で、PCの結果をiPadの性能として扱いません。</p>
+<label>実際の端末・OS・ブラウザ<input id="device" placeholder="例: iPad (A16) / iPadOS 27.x（実際の版） / Safari"></label>
+<label>比較するモデル<select id="model"></select></label><p id="details"></p>
+<div class="actions"><button id="check">端末の対応を確認</button><button id="prepare">オフライン用に画面を保存</button><button id="run">このモデルを取得して比較</button><button id="stop">中止・メモリ解放</button></div>
+<details><summary>オフライン・復帰・保存領域の確認</summary><p>画面保存とモデル比較を完了後、機内モードにしてWi-Fiも切り、このページを再読み込みしてください。それから「保存済みモデルで回答」を押します。アプリのインストールは不要です。</p><div class="actions"><button id="offline">保存済みモデルで回答</button><button id="delete">選択モデルのキャッシュを削除</button><button id="persist">保存領域の保持を要求</button></div><p>Safariに戻った際の再読み込みや中断も記録します。ここではOSによる本物のメモリ不足を人工的に発生させません。OSがページを終了した場合、原因の特定には実機の診断が必要です。</p></details>
+<details><summary>保存済みモデルと会話して試す</summary><p>追加の学習質問や長めの会話を確認できます。入力と回答は結果JSONに含まれるため、個人情報は使わずテスト用の質問を入力してください。文脈4096、出力256トークンです。</p><label>質問<textarea id="prompt" rows="4"></textarea></label><div class="actions"><button id="chat">保存済みモデルで送信</button><button id="new-chat">新しい会話にする</button></div><pre id="conversation"></pre></details>
+<button id="context">長いテスト履歴の保持を確認</button><p>21往復分の固定履歴を渡し、先頭の情報を保持できるか確認します。過去の応答はテスト用データです。</p>
+<h2>測定状況</h2><p id="status" role="status" aria-live="polite">準備できました</p><pre id="stream"></pre><pre id="summary"></pre><button id="export">結果JSONを保存</button><p>モデルを替えると前のモデルのWorkerを終了します。削除対象は検証モデルだけです。結果には固定質問と追加のテスト会話を保存します。</p>
+</main><script type="module" src="ui.mjs"></script></html>

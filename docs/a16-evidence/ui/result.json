@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "All five candidates available without automatic model downloads",
+    "No horizontal overflow at desktop, tablet and phone layout sizes; not iPad performance",
+    "Selected model deletion preserves unrelated storage",
+    "Actual offline page reload with origin server stopped",
+    "Uncached model fails clearly offline",
+    "Result retained across offline reload",
+    "Offline chat cache miss reports an error and allows a new conversation"
+  ],
+  "errors": [],
+  "modelRequests": []
+}

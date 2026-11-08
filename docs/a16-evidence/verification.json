@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-26",
+  "baseMain": "0f5aaa80f304a0476ae34c287e092f35839a6835",
+  "remoteMainReadback": "0f5aaa80f304a0476ae34c287e092f35839a6835",
+  "publicSiteVersion": "423923ada950",
+  "localWindowsBuildVersion": "bb5ba5532661",
+  "buildNote": "Tracked app source was unchanged; Windows checkout uses CRLF while Git stores LF. Local build not published.",
+  "existingDomainTests": {"passed": 148, "failed": 0},
+  "gatewayTests": {"passed": 7, "failed": 0},
+  "existingUi": {"passed": true, "checks": 13, "inference": "fixture only", "invocationCorrection": "Initial attempt used CommonJS Playwright index.js with dynamic import and did not launch. Corrected to index.mjs; complete rerun passed."},
+  "labUi": {"passed": true, "checks": 7, "widths": [1280,820,390], "visuallyReviewed": [390,820]},
+  "buildValidation": {"checkedFiles": 331, "review": 114, "history": 1000, "reading": 150, "logo": "byte-identical", "privateBridge": "excluded"},
+  "runtimeSetup": {"webllm": "0.2.86 SRI verified", "wllama": "3.8.1 SRI verified", "lifecycleScripts": false},
+  "modelRuns": {"completed": 5, "fixedQuestionsPerModel": 10, "actualConversationTurnsPerModel": 4, "fullPageOfflineReloadsPassed": 5, "syntheticLongContextCompleted": 5, "selectedModelDeletionAssertionsPassed": 5},
+  "physicalA16Verified": false,
+  "productionChanges": false,
+  "paidInferenceRequests": 0,
+  "remainingUsagePercentAtVerification": 87
+}
