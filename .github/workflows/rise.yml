@@ -107,6 +107,19 @@ jobs:
               time.sleep(10)
           assert published == source, 'Published review bank does not match source'
           assert b'en-in-the-sky-over-place-20261123' in published, 'Review item is missing'
+          with urllib.request.urlopen(base + 'review/index.html?verify=' + expected[:16], timeout=20) as res:
+              public_page = res.read()
+          assert public_page == pathlib.Path('review/index.html').read_bytes(), 'Published Review v2 page differs from source'
+          assert b'Review v2' in public_page, 'Review v2 page not published'
+          print('public_review_v2_exact_match=success')
+          jpeg_path = 'review/assets/20260913-prefecture-population-table-source-v3.jpeg'
+          with urllib.request.urlopen(base + jpeg_path + '?verify=' + expected[:16], timeout=20) as res:
+              public_jpeg = res.read()
+              jpeg_type = res.headers.get('Content-Type', '')
+          assert public_jpeg == pathlib.Path(jpeg_path).read_bytes(), 'Review JPEG differs from source'
+          assert 'image/jpeg' in jpeg_type, 'Review JPEG content type incorrect'
+          assert public_jpeg.startswith(bytes.fromhex('ffd8ff')), 'Review JPEG invalid header'
+          print('public_review_jpeg_exact_match=success')
           print('public_review_exact_match=success')
           print('source_sha256=' + expected)
           print('public_sha256=' + hashlib.sha256(published).hexdigest())
@@ -121,5 +134,8 @@ jobs:
           assert 'public_verify=success' in deployment
           assert 'public_verify_stage=complete' in deployment
           assert 'result=success' in verification
+          assert 'review_version=1.0.72' in verification
+          assert 'review_count=115' in verification
+          assert 'review_sha256=' + expected in verification
           print('review_status_files_success=success')
           PY
