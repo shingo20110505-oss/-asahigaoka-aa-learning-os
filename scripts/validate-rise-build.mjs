@@ -6,10 +6,15 @@ import {historyAdditions} from '../src/history-content.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),out=path.join(root,'dist');
 async function walk(dir){const entries=await fs.readdir(dir,{withFileTypes:true});const nested=await Promise.all(entries.map(e=>e.isDirectory()?walk(path.join(dir,e.name)):[path.join(dir,e.name)]));return nested.flat();}
 const files=await walk(out),allowedRoots=new Set(['src','data','icons','assets','review','reading-v2','labs']);
-const allowedFiles=new Set(['index.html','update.html','manifest.webmanifest','version.json','sw.js','.nojekyll','chronologia.html']);
+const allowedFiles=new Set(['index.html','update.html','manifest.webmanifest','version.json','sw.js','.nojekyll','chronologia.html','review-bank-v1.js','DEPLOY_STATUS.txt','PUBLIC_VERIFY_STATUS.txt']);
 for(const file of files){const relative=path.relative(out,file),parts=relative.split(path.sep);assert.ok(parts.length===1?allowedFiles.has(parts[0]):allowedRoots.has(parts[0]),'Unexpected published path: '+relative);assert.ok(!/\.(php|env|pem|key|toml|ya?ml)$/i.test(file),'Private/configuration file in dist: '+relative);}
 const json=async file=>JSON.parse(await fs.readFile(path.join(out,file),'utf8'));
 const manifest=await json('data/migration-manifest.json'),review=await json('data/review.json'),history=await json('data/history.json'),reading=await json('data/reading/index.json');
+for(const file of ['review/index.html','review-bank-v1.js','DEPLOY_STATUS.txt','PUBLIC_VERIFY_STATUS.txt'])assert.ok((await fs.readFile(path.join(out,file))).equals(await fs.readFile(path.join(root,file))), 'Canonical review or verification file changed in build: '+file);
+const reviewUI=await fs.readFile(path.join(out,'review/index.html'),'utf8');
+assert.ok(reviewUI.includes('Review v2')&&reviewUI.includes("fetch('../review-bank-v1.js'"),'Review v2 must not be replaced by a redirect');
+const reviewBank=await fs.readFile(path.join(out,'review-bank-v1.js'),'utf8');
+assert.ok(reviewBank.includes('en-in-the-sky-over-place-20261123'),'Latest dedicated review entry missing');
 assert.equal(review.length,114);assert.equal(history.length,1000+historyAdditions);assert.equal(reading.length,150);
 for(let n=1;n<=130;n++)assert.ok(reading.some(x=>x.id==='rv3-'+String(n).padStart(6,'0')),'Missing original reading '+n);
 assert.deepEqual(review.map(x=>x.id).sort(),manifest.preservedReviewIds.slice().sort());
