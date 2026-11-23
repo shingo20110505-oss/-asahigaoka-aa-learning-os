@@ -16,6 +16,15 @@ self.addEventListener('fetch',e=>{
  if(base.origin===PAGES_ORIGIN&&rel.startsWith('api/')){e.respondWith(chat(e.request,rel.slice(4)+u.search));return;}
  if(e.request.method!=='GET'||/^(api\/|setup|chat-api\/)/.test(rel))return;
  if(['update.html','src/app-updater.mjs'].includes(rel)){e.respondWith(fetch(e.request,{cache:'no-store'}).catch(async()=>await(await caches.open(CACHE)).match(new URL('./'+rel,base))||Response.error()));return;}
+ // Always try the network for the canonical review data and Review v2, retaining offline fallback.
+ if(['review/','review/index.html','review-bank-v1.js'].includes(rel)){
+  e.respondWith((async()=>{
+   const cache=await caches.open(CACHE),key=new URL(rel==='review/'?'./review/index.html':'./'+rel,base);
+   try{const response=await fetch(e.request,{cache:'no-store'});if(response.ok){await cache.put(key,response.clone());return response;}}catch(_){}
+   return(await cache.match(key))||Response.error();
+  })());
+  return;
+ }
  const path='./'+rel;if(!SHELL.includes(path)&&e.request.mode!=='navigate')return;
  e.respondWith((async()=>{const cache=await caches.open(CACHE),saved=await cache.match(new URL(path,base));if(saved)return saved;try{return await fetch(e.request);}catch{if(e.request.mode==='navigate')return(await cache.match('./index.html'))||Response.error();return Response.error();}})());
 });
