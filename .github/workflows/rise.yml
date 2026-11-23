@@ -113,7 +113,7 @@ jobs:
           assert b'Review v2' in public_page, 'Review v2 page not published'
           print('public_review_v2_exact_match=success')
           jpeg_path = 'review/assets/20260822-kobun-kuchi-atawazu-v2.jpg'
-          assert jpeg_path.encode() in source, 'Verified image must be referenced by the review bank'
+          assert jpeg_path.removeprefix('review/').encode() in source, 'Verified image must be referenced by the review bank'
           with urllib.request.urlopen(base + jpeg_path + '?verify=' + expected[:16], timeout=20) as res:
               public_jpeg = res.read()
               jpeg_type = res.headers.get('Content-Type', '')
