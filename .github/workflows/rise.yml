@@ -77,3 +77,49 @@ jobs:
       - name: Deploy the checked static artifact
         id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+
+  verify-review-public:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Verify published review data SHA-256
+        run: |
+          python3 - <<'PY'
+          import hashlib, pathlib, time, urllib.request, re
+          base = 'https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/'
+          source = pathlib.Path('review-bank-v1.js').read_bytes()
+          expected = hashlib.sha256(source).hexdigest()
+          published = None
+          for n in range(24):
+              try:
+                  req = urllib.request.Request(base + 'review-bank-v1.js?verify=' + str(n) + '-' + expected[:16], headers={'Cache-Control': 'no-cache', 'User-Agent': 'rise-public-review-verify'})
+                  with urllib.request.urlopen(req, timeout=20) as response:
+                      published = response.read()
+                  if published == source:
+                      break
+                  print('Public review bank not yet current; attempt', n + 1, flush=True)
+              except Exception as exc:
+                  print('Fetch failed:', repr(exc), flush=True)
+              time.sleep(10)
+          assert published == source, 'Published review bank does not match source'
+          assert b'en-in-the-sky-over-place-20261123' in published, 'Review item is missing'
+          print('public_review_exact_match=success')
+          print('source_sha256=' + expected)
+          print('public_sha256=' + hashlib.sha256(published).hexdigest())
+          for file in ('DEPLOY_STATUS.txt','PUBLIC_VERIFY_STATUS.txt'):
+              with urllib.request.urlopen(base + file + '?verify=' + expected[:16], timeout=20) as res:
+                  remote = res.read()
+              local = pathlib.Path(file).read_bytes()
+              assert remote == local, file + ' differs from public site'
+              print(file + '_public_exact_match=success')
+          deployment = pathlib.Path('DEPLOY_STATUS.txt').read_text()
+          verification = pathlib.Path('PUBLIC_VERIFY_STATUS.txt').read_text()
+          assert 'public_verify=success' in deployment
+          assert 'public_verify_stage=complete' in deployment
+          assert 'result=success' in verification
+          print('review_status_files_success=success')
+          PY
