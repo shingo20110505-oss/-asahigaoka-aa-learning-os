@@ -134,8 +134,12 @@ jobs:
           assert 'public_verify=success' in deployment
           assert 'public_verify_stage=complete' in deployment
           assert 'result=success' in verification
-          assert 'review_version=1.0.72' in verification
-          assert 'review_count=115' in verification
+          bank_text = source.decode('utf-8')
+          bank_version = bank_text.split("AA_REVIEW_BANK_VERSION='", 1)[1].split("'", 1)[0]
+          bank_count = bank_text.count('createdAt:') + bank_text.count('"createdAt":')
+          assert bank_count >= 115, 'Review bank count unexpectedly shrank'
+          assert 'review_version=' + bank_version in verification
+          assert 'review_count=' + str(bank_count) in verification
           assert 'review_sha256=' + expected in verification
           print('review_status_files_success=success')
           PY
