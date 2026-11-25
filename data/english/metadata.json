@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "2026-10-27.1",
+  "version": "2026-11-25.1",
   "license": "CC-BY-SA-4.0",
   "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
   "sources": [
@@ -26,6 +26,58 @@
       "id": "rise-original",
       "title": "RISE独自の補足",
       "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "wiktionary/dictionaryapi",
+      "title": "Wiktionary / Free Dictionary API（dictionaryapi.dev）",
+      "url": "https://en.wiktionary.org/",
+      "license": "CC-BY-SA-3.0"
+    },
+    {
+      "id": "wiktionary/wikitext",
+      "title": "Wiktionary（wikitext直接取得）",
+      "url": "https://en.wiktionary.org/",
+      "license": "CC-BY-SA-3.0"
+    },
+    {
+      "id": "open-dict-data/ipa-dict",
+      "title": "ipa-dict (open-dict-data)",
+      "url": "https://github.com/open-dict-data/ipa-dict",
+      "license": "MIT"
+    },
+    {
+      "id": "cefrj",
+      "title": "CEFR-J Vocabulary Profile 1.5 / Octanove Vocabulary Profile C1・C2",
+      "url": "https://github.com/openlanguageprofiles/olp-en-cefrj",
+      "license": "Open Language Profiles 配布物（研究・教育利用）"
+    },
+    {
+      "id": "awl",
+      "title": "Academic Word List (Coxhead) — EAP Foundation一覧経由",
+      "url": "https://www.eapfoundation.com/vocab/academic/awllists/",
+      "license": "見出し語を事実データとして参照"
+    },
+    {
+      "id": "exam-curated",
+      "title": "RISE入試定番リスト（独自選定）",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "curated-sample",
+      "title": "RISE独自の補足（監査済みサンプル）",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "tatoeba",
+      "title": "Tatoeba（例文対訳）",
+      "url": "https://tatoeba.org/",
+      "license": "CC-BY-2.0-FR"
+    },
+    {
+      "id": "mt",
+      "title": "機械翻訳 Helsinki-NLP/opus-tatoeba-en-ja（ローカル実行）",
+      "url": "https://huggingface.co/Helsinki-NLP/opus-tatoeba-en-ja",
+      "license": "Apache-2.0"
     }
   ],
   "counts": {
@@ -35,29 +87,55 @@
     "excludedInvalid": 1966,
     "formRows": 1086,
     "variantRows": 23,
-    "headwords": 38578,
+    "headwords": 50515,
     "kind": {
-      "word": 33290,
-      "phrase": 5288
+      "word": 33612,
+      "phrase": 16903
     },
     "stage": {
-      "basic": 1110,
-      "entrance": 1968,
-      "extension": 35500
+      "basic": 1130,
+      "entrance": 11005,
+      "extension": 38380
     },
-    "forms": 7061,
-    "examples": 665,
-    "translatedExamples": 8,
-    "unclassifiedPOS": 34446,
+    "forms": 7423,
+    "examples": 42421,
+    "translatedExamples": 38195,
+    "unclassifiedPOS": 984,
     "ngslRanked": 2809,
-    "ngslCovered": 2809
+    "ngslCovered": 2809,
+    "exampleEntries": 19625,
+    "withIPA": 31243,
+    "withSenses": 49144,
+    "emptyMeaning": 0,
+    "meaningPending": 830
   },
   "missingNGSL": [],
-  "scope": "中学基礎・高校入試準備から発展語まで。基本はNGSL頻度上位1000とRISE基礎語、入試準備は残りのNGSLと既存教材・熟語。学年別の公式指定語彙リストではありません。",
+  "scope": "中学基礎・高校入試準備から発展語まで。基本はNGSL頻度上位1000とRISE基礎語、入試準備は残りのNGSLと既存教材・熟語。発展は英検準1級レベルを上限の目安に、Wiktionary由来の語義・例文・発音記号と熟語・連語を大幅に追加した辞書を含む。学年別の公式指定語彙リストではありません。",
   "limitations": [
     "教科書全社・全版との照合は未実施。完全網羅を保証しません。",
-    "発展語には専門語・古い表現が含まれます。辞書移入語の語義と品詞は全件の人手校閲未実施。",
-    "品詞が判定できない語は未分類。例文・和訳は整備済みの語だけ表示します。",
-    "活用形と綴りの別形は見出し数に加算しません。NGSLに独立見出しがある同綴り異義語は保持します。"
-  ]
+    "発展語には専門語・古い表現が含まれます。辞書移入語の語義は全件の人手校閲未実施。",
+    "品詞が判定できない語は未分類（984件）。例文は19625見出しに整備し、和訳は38195文に付けました。",
+    "活用形と綴りの別形は見出し数に加算しません。NGSLに独立見出しがある同綴り異義語は保持します。",
+    "見出し830件は、出典のある日本語の意味が確保できなかったため、意味欄に「（意味を準備中）」プレースホルダが入っています（英語の語義はあります。meaningPending フラグで識別でき、後から埋め直せます）。",
+    "例文の和訳と一部の日本語の意味には機械翻訳（ローカルモデル）を含みます。機械翻訳分は example.source=mt／出典の mt で区別でき、品質は出版水準ではありません。",
+    "熟語・連語の発音記号は出典側に無いものが多く、未収録の見出しがあります。音声は端末の読み上げ機能を使います。"
+  ],
+  "expansion": {
+    "version": "2026-11-25.1",
+    "baseHeadwords": 38578,
+    "addedHeadwords": 11937,
+    "mergedDuplicates": 2,
+    "crossFormPairs": 179,
+    "dictStatus": {
+      "done": 49144,
+      "not-found": 1371
+    },
+    "eikenBand": {
+      "basic": 1281,
+      "entrance": 15803,
+      "beyond": 20296,
+      "pre1": 13135
+    },
+    "note": "辞書化拡張（2026-11-25）。全見出しに eikenBand を付与し、取得できた見出しに発音記号・語義・例文を追加。"
+  }
 }

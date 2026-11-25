@@ -5,6 +5,7 @@ import {drawHome} from './home.mjs';
 import {warmChat} from './chat-warmup.mjs';
 warmChat();
 import {Store} from './store.mjs';
+import {loadEnglishWords} from './english-data.mjs';
 import {dayKey,DAY,weeklyMinutes} from './domain.mjs';
 import {icon,esc,heading,link,button,badge,empty,dialog,field,toast} from './ui.mjs';
 import {features} from './catalog.mjs';
@@ -22,7 +23,7 @@ const resumeButton=document.createElement('button');resumeButton.className='butt
 const gestures=new NavGesture();let navRevision=0;
 document.querySelector('.skip').onclick=e=>{e.preventDefault();main.focus();main.scrollIntoView();};
 async function loadJSON(name){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);try{const response=await fetch('./data/'+name+'.json',{signal:controller.signal});if(!response.ok)throw Error('データを読み込めませんでした。通信を確認してください。');return await response.json();}finally{clearTimeout(timer);}}
-const cache=new Map();async function data(name){if(!cache.has(name))cache.set(name,loadJSON(name).then(async value=>name==='history'?(await import('./history-content.mjs')).enrichHistory(value):value).catch(e=>{cache.delete(name);throw e;}));return cache.get(name);}
+const cache=new Map();async function data(name){if(!cache.has(name))cache.set(name,(name==='english/words'?loadEnglishWords(message=>{const el=main.querySelector('.loading');if(el)el.textContent=message;}):loadJSON(name)).then(async value=>name==='history'?(await import('./history-content.mjs')).enrichHistory(value):value).catch(e=>{cache.delete(name);throw e;}));return cache.get(name);}
 const chatWorkspace=createChatWorkspace({store,data});
 function moduleTile(f){return`<a href="${f.id==='review'?'./review/index.html':'#/'+f.id}" class="feature-card"><div class="feature-top"><span class="feature-icon ${f.tone}">${icon(f.icon,24)}</span>${badge(f.subject)}</div><p class="eyebrow">${f.label}</p><h3>${f.title}</h3><p>${f.desc}</p><span class="feature-arrow">${icon('arrow')}</span></a>`;}
 function learning(main){main.innerHTML=heading('LEARNING LIBRARY','学び方を、選ぼう。','読む、思い出す、動かす、つなげる。いま必要な学びから。')+`<div class="feature-grid full">${features.map(moduleTile).join('')}</div>`;}
