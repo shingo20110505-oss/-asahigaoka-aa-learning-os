@@ -1,15 +1,35 @@
-source_sha=6fa85e8796e0ce153cb1f8d1849dbd11b69af35b
+source_sha=e74861720c19e60b3890210dc1b073e24bafca07
 page_url=https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
-checked_at=2026-11-23T12:47:18Z
-setup=success
-preflight=success
-release_marker=success
-upload=success
+checked_at=2026-11-25T13:48:37Z
+verification_scope=review-public-assets
+deployment_run=https://github.com/shingo20110505-oss/-asahigaoka-aa-learning-os/actions/runs/45623467696
+build=success
 deploy=success
 public_verify=success
 public_verify_stage=complete
 verified_record=success
-review_bank_sha256=26e83721aefface1ef3088770cd2b0e7c4311f0c3423b87f621d8f21d62f1c35
-review_version=1.0.73
-review_count=116
-review_item_id=en-a-lot-of-lots-of-20261123
+review_bank_sha256=2f3f61b36e88099ae53180269f9db768e3e505971ad1256399cec472ef7ba002
+review_version=1.0.74
+review_count=121
+review_item_id=en-in-the-sky-over-place-20261123
+review_page_sha256=0bc3dd5ffa36101a0770190b017fc7f95cd0d72da5b154426d6c8c999466fd8e
+review_image_sha256=b80abd45696a48bb4c3f8301e27dec70e145a470148048c1ae1b389aefb4bfa3
+review_image_decode=success
+
+# Previous verification record, retained as history (2026-11-23T12:47:18Z).
+# These previous checks were not rerun by this review-public-assets verification.
+# source_sha=6fa85e8796e0ce153cb1f8d1849dbd11b69af35b
+# page_url=https://shingo20110505-oss.github.io/-asahigaoka-aa-learning-os/
+# checked_at=2026-11-23T12:47:18Z
+# setup=success
+# preflight=success
+# release_marker=success
+# upload=success
+# deploy=success
+# public_verify=success
+# public_verify_stage=complete
+# verified_record=success
+# review_bank_sha256=26e83721aefface1ef3088770cd2b0e7c4311f0c3423b87f621d8f21d62f1c35
+# review_version=1.0.73
+# review_count=116
+# review_item_id=en-a-lot-of-lots-of-20261123
