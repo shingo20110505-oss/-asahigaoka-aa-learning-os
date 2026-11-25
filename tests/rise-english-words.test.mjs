@@ -3,10 +3,11 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {freshState,validState} from '../src/domain.mjs';
 import {selectEnglishWords,rateEnglishWord} from '../src/english-words.mjs';
-const words=JSON.parse(await fs.readFile(new URL('../data/english/words.json',import.meta.url))),meta=JSON.parse(await fs.readFile(new URL('../data/english/metadata.json',import.meta.url)));
+const manifest=JSON.parse(await fs.readFile(new URL('../data/english/words-parts.json',import.meta.url)));
+const words=(await Promise.all(manifest.parts.map(async part=>{const data=JSON.parse(await fs.readFile(new URL('../data/english/'+part.file,import.meta.url)));assert.equal(data.length,part.entries);return data;}))).flat(),meta=JSON.parse(await fs.readFile(new URL('../data/english/metadata.json',import.meta.url)));
 test('large vocabulary is unique, traceable, valid Japanese and reproducible in its totals',()=>{
  assert.ok(words.length>35000);assert.equal(new Set(words.map(w=>w.id)).size,words.length);assert.equal(new Set(words.map(w=>w.word)).size,words.length);
- assert.equal(meta.counts.headwords,words.length);assert.equal(meta.counts.ngslCovered,2809);assert.deepEqual(meta.missingNGSL,[]);
+ assert.equal(manifest.totalEntries,words.length);assert.equal(meta.counts.headwords,words.length);assert.equal(meta.counts.ngslCovered,2809);assert.deepEqual(meta.missingNGSL,[]);
  for(const w of words){assert.match(w.id,/^en-[a-f0-9]{16}$/);assert.ok(w.meaning);assert.ok(!w.meaning.includes('\uFFFD'));assert.ok(['basic','entrance','extension'].includes(w.stage));assert.ok(w.pos);assert.ok(w.sources.every(id=>meta.sources.some(s=>s.id===id)));assert.ok(!w.forms.includes(w.word));}
  for(const kind of ['word','phrase'])assert.equal(meta.counts.kind[kind],words.filter(w=>w.kind===kind).length);
  for(const form of ['went','studies','walked','children'])assert.ok(!words.some(w=>w.word===form),'inflated headword: '+form);
