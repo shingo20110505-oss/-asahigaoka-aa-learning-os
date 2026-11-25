@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {freshState,validState} from '../src/domain.mjs';
-import {selectEnglishWords,rateEnglishWord,toggleEnglishFavorite} from '../src/english-words.mjs';
+import {selectEnglishWords,rateEnglishWord,toggleEnglishFavorite,posLabel} from '../src/english-words.mjs';
 const manifest=JSON.parse(await fs.readFile(new URL('../data/english/words-parts.json',import.meta.url)));
 const words=(await Promise.all(manifest.parts.map(async part=>{const data=JSON.parse(await fs.readFile(new URL('../data/english/'+part.file,import.meta.url)));assert.equal(data.length,part.entries);return data;}))).flat(),meta=JSON.parse(await fs.readFile(new URL('../data/english/metadata.json',import.meta.url)));
 test('large vocabulary is unique, traceable, valid Japanese and reproducible in its totals',()=>{
@@ -28,6 +28,15 @@ test('search supports Japanese and inflections, and progress never replaces unre
 });
 
 const entry=(n,word,extra={})=>({id:'en-'+n.toString(16).padStart(16,'0'),word,meaning:'意味',stage:'basic',kind:'word',pos:'v',forms:[],related:[],eikenBand:'basic',...extra});
+test('expanded dictionary POS aliases display in Japanese and match the existing filters without changing records',()=>{
+ const one=words.find(w=>w.word==='one'),important=words.find(w=>w.word==='important'),mixed=entry(1,'mixed example',{pos:'n/verb/adjective/adverb/pronoun/preposition/conjunction'}),proper=entry(2,'Osaka',{pos:'proper noun'}),source=[one,important,mixed,proper],state=freshState(),original=structuredClone(source);
+ assert.equal(posLabel(one.pos),'名詞');assert.equal(posLabel(important.pos),'形容詞');assert.equal(posLabel(proper.pos),'固有名詞');
+ assert.equal(posLabel(mixed.pos),'名詞・動詞・形容詞・副詞・代名詞・前置詞・接続詞');
+ for(const [pos,expected] of [['n',[one,mixed,proper]],['noun',[one,mixed,proper]],['adj',[important,mixed]],...['v','adv','pron','prep','conj'].map(pos=>[pos,[mixed]])]){
+  assert.deepEqual(selectEnglishWords(source,state,{stage:'all',pos}),expected);
+ }
+ assert.deepEqual(source,original);
+});
 test('search puts the requested headword first and retains source order within each match strength',()=>{
  const source=[entry(1,'proceed',{forms:['go']}),entry(2,'let go'),entry(3,'goal'),entry(4,'go ahead'),entry(5,'go'),entry(6,'continue',{related:['go on']})],state=freshState(),original=[...source];
  assert.deepEqual(selectEnglishWords(source,state,{stage:'all',query:'  ＧＯ  '}).map(w=>w.word),['go','goal','go ahead','let go','proceed','continue']);

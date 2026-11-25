@@ -2,8 +2,10 @@ import {scheduleReview} from './domain.mjs';
 export const stageLabels={basic:'まず覚える基本語',entrance:'入試準備',extension:'発展・辞書'};
 export const eikenBandLabels={basic:'基本語',entrance:'入試準備',pre1:'準1級の目安',beyond:'準1級超の発展語'};
 export const posLabels={n:'名詞',v:'動詞',adj:'形容詞',adv:'副詞',prep:'前置詞',conj:'接続詞',pron:'代名詞',article:'冠詞',aux:'助動詞',phrase:'熟語',interjection:'間投詞',unknown:'未分類',mixed:'複数の品詞'};
+const posAliases={noun:'n',verb:'v',adjective:'adj',adverb:'adv',preposition:'prep',conjunction:'conj',pronoun:'pron','proper noun':'n'};
+const normalizedPOS=pos=>{const token=pos.trim().toLowerCase();return Object.hasOwn(posAliases,token)?posAliases[token]:token;};
 export const wordProgress=(state,id)=>state.vocabulary[id]||{};
-export const posLabel=pos=>pos.split('/').map(x=>posLabels[x]||x).join('・');
+export const posLabel=pos=>pos.split('/').map(x=>x.trim().toLowerCase()==='proper noun'?'固有名詞':posLabels[normalizedPOS(x)]||x.trim()).join('・');
 export const normalizeEnglishSearch=value=>String(value??'').normalize('NFKC').toLowerCase().replace(/[‘’‛ʼ]/g,"'").replace(/[‐‑‒–—―−﹘]/g,'-').replace(/\s+/g,' ').trim();
 
 // Dictionary records are immutable after loading; cache normalized fields without
@@ -19,9 +21,9 @@ function indexedWord(word){
 }
 
 export function selectEnglishWords(words,state,{query='',stage='basic',kind='all',pos='all',filter='all',favoriteOnly=false,band='all',exampleOnly=false}={},now=Date.now()){
- const q=normalizeEnglishSearch(query),matches=q?[[],[],[],[]]:[[]];
+ const q=normalizeEnglishSearch(query),selectedPOS=normalizedPOS(pos),matches=q?[[],[],[],[]]:[[]];
  for(const w of words){
-  if(stage!=='all'&&w.stage!==stage||kind!=='all'&&w.kind!==kind||pos!=='all'&&!w.pos.split('/').includes(pos)||band!=='all'&&w.eikenBand!==band)continue;
+  if(stage!=='all'&&w.stage!==stage||kind!=='all'&&w.kind!==kind||selectedPOS!=='all'&&!w.pos.split('/').some(token=>normalizedPOS(token)===selectedPOS)||band!=='all'&&w.eikenBand!==band)continue;
   const p=wordProgress(state,w.id);
   if(favoriteOnly&&!p.favorite||filter==='new'&&p.repetitions||filter==='due'&&(!p.repetitions||p.due>now)||filter==='weak'&&!['again','hard'].includes(p.rating)||filter==='learned'&&!p.repetitions)continue;
   const indexed=q||exampleOnly?indexedWord(w):null;
