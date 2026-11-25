@@ -1,7 +1,10 @@
 import fs from'node:fs/promises';import path from'node:path';import{fileURLToPath}from'node:url';import{createHash}from'node:crypto';
+import {execFileSync} from 'node:child_process';
 import{buildRagLab}from'./build-rag-lab.mjs';
 import {buildMaterialSearch} from './build-material-search.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),out=path.join(root,'dist');
+// Publish the verified canonical split dictionary, never the older transport copy.
+execFileSync('python3',[path.join(root,'scripts/merge-english-words.py')],{cwd:root,stdio:'inherit'});
 // The deletion target is an absolute, fixed child of this checkout.
 if(path.dirname(out)!==root||path.basename(out)!=='dist')throw Error('Invalid output directory');await fs.rm(out,{recursive:true,force:true});await fs.mkdir(out,{recursive:true});
 const copy=async(from,to=from)=>{await fs.mkdir(path.dirname(path.join(out,to)),{recursive:true});await fs.cp(path.join(root,from),path.join(out,to),{recursive:true});};

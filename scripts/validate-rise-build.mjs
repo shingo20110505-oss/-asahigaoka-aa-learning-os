@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
 import {historyAdditions} from '../src/history-content.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),out=path.join(root,'dist');
 async function walk(dir){const entries=await fs.readdir(dir,{withFileTypes:true});const nested=await Promise.all(entries.map(e=>e.isDirectory()?walk(path.join(dir,e.name)):[path.join(dir,e.name)]));return nested.flat();}
@@ -9,6 +10,15 @@ const files=await walk(out),allowedRoots=new Set(['src','data','icons','assets',
 const allowedFiles=new Set(['index.html','update.html','manifest.webmanifest','version.json','sw.js','.nojekyll','chronologia.html','review-bank-v1.js','DEPLOY_STATUS.txt','PUBLIC_VERIFY_STATUS.txt']);
 for(const file of files){const relative=path.relative(out,file),parts=relative.split(path.sep);assert.ok(parts.length===1?allowedFiles.has(parts[0]):allowedRoots.has(parts[0]),'Unexpected published path: '+relative);assert.ok(!/\.(php|env|pem|key|toml|ya?ml)$/i.test(file),'Private/configuration file in dist: '+relative);}
 const json=async file=>JSON.parse(await fs.readFile(path.join(out,file),'utf8'));
+const [englishBytes,englishParts,englishVersion,englishMetadata]=await Promise.all([
+ fs.readFile(path.join(out,'data/english/words.json')),json('data/english/words-parts.json'),json('data/english/version.json'),json('data/english/metadata.json')
+]);
+const englishHash=createHash('sha256').update(englishBytes).digest('hex'),englishWords=JSON.parse(englishBytes.toString('utf8'));
+assert.equal(englishHash,englishParts.sha256,'Published English dictionary differs from canonical split data');
+assert.equal(englishHash,englishVersion.words.sha256,'Published English dictionary differs from advertised version');
+assert.equal(englishWords.length,englishParts.totalEntries,'Published English dictionary count differs from split manifest');
+assert.equal(englishWords.length,englishMetadata.counts.headwords,'Published English dictionary count differs from metadata');
+for(const kind of ['word','phrase'])assert.equal(englishWords.filter(word=>word.kind===kind).length,englishMetadata.counts.kind[kind],'Published English '+kind+' count differs from metadata');
 const manifest=await json('data/migration-manifest.json'),review=await json('data/review.json'),history=await json('data/history.json'),reading=await json('data/reading/index.json');
 for(const file of ['review/index.html','review-bank-v1.js','DEPLOY_STATUS.txt','PUBLIC_VERIFY_STATUS.txt'])assert.ok((await fs.readFile(path.join(out,file))).equals(await fs.readFile(path.join(root,file))), 'Canonical review or verification file changed in build: '+file);
 const reviewUI=await fs.readFile(path.join(out,'review/index.html'),'utf8');
