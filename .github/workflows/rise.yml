@@ -39,6 +39,7 @@ jobs:
           RISE_PLAYWRIGHT_MODULE: ${{ github.workspace }}/test-results/ui-runtime/node_modules/playwright/index.mjs
         run: |
           node scripts/test-workspace-ui.mjs
+          node scripts/test-english-speech-ui.mjs
           node scripts/test-geography-ui.mjs
           node scripts/test-science-memory-ui.mjs
           node scripts/test-material-search-ui.mjs
@@ -51,6 +52,8 @@ jobs:
           path: |
             test-results/workspace/*.png
             test-results/workspace/result.json
+            test-results/english-speech/*.png
+            test-results/english-speech/result.json
             test-results/science-memory/*.png
             test-results/science-memory/result.json
             test-results/material-search/*.png

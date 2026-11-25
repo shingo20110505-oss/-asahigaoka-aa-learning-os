@@ -5,6 +5,7 @@ import {paragraphs, readingItems, isReadingDue, planReadingReview, completeReadi
 import {readingGuide, paragraphRoles} from '../reading-guide.mjs';
 import {readingAssist} from '../reading-assist.mjs';
 import {ensureReadingWordCard,readingWordCard} from '../reading-vocabulary.mjs';
+import {createSpeechController} from '../speech.mjs';
 
 export async function mount(ctx) {
   const {main, store, data, tail} = ctx, [index,baseLexicon,dictionary] = await Promise.all([data('reading/index'),data('reading-lexicon'),data('reading-dictionary')]);const lexicon={...dictionary,...baseLexicon};
@@ -20,6 +21,20 @@ export async function mount(ctx) {
   const duration = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2,'0')}`;
   const date = value => value ? dayKey(value).replaceAll('-', '/') : '';
   const pressed = value => `aria-pressed="${Boolean(value)}"`;
+  const speechRates = [.6,.75,.9,1,1.15,1.3];
+  const speechRate = () => {
+    const rate = Number(store.state.settings.speechRate ?? store.state.settings.readerSpeechRate);
+    return speechRates.includes(rate) ? rate : .9;
+  };
+  const speech = createSpeechController({
+    onChange(state) {
+      audioState = state.message;
+      audioStatus();
+      if (state.status === 'error' && !disposed && ctx.active()) toast(state.message, true);
+    },
+    onVoicesChange() { syncVoiceOptions(); }
+  });
+  audioState = speech.state.message;
 
   async function save() {
     if (!current) return;
@@ -43,8 +58,38 @@ export async function mount(ctx) {
     const el = main.querySelector('#memo-status');
     if (el) el.textContent = message || (memoVersion === savedMemoVersion ? '保存済み' : '未保存の変更があります');
   }
-  function stopSpeech() { window.speechSynthesis?.cancel(); audioState = '停止中'; audioStatus(); }
-  function audioStatus() { const el = main.querySelector('#reading-audio-status'); if (el) el.textContent = audioState; }
+  function stopSpeech() { speech.stop(); }
+  function audioStatus() {
+    if (disposed || !ctx.active()) return;
+    const el = main.querySelector('#reading-audio-status');
+    if (el) el.textContent = audioState;
+    const pauseButton = main.querySelector('[data-action="pause-speech"]');
+    if (pauseButton) {
+      pauseButton.textContent = speech.state.status === 'paused' ? '再開' : '一時停止';
+      pauseButton.disabled = !['speaking','paused'].includes(speech.state.status);
+      pauseButton.setAttribute('aria-pressed', String(speech.state.status === 'paused'));
+    }
+    const stopButton = main.querySelector('[data-action="stop-speech"]');
+    if (stopButton) stopButton.disabled = !['loading','speaking','paused'].includes(speech.state.status);
+  }
+  function voiceOptions() {
+    const selected = store.state.settings.speechVoiceURI || '';
+    const missing = selected && !speech.voices.some(voice => voice.voiceURI === selected);
+    return `<option value="">${speech.voices.length ? '英語音声を自動選択' : '端末内の英語音声なし'}</option>` +
+      (missing ? `<option value="${esc(selected)}" selected>保存した音声（利用できません）</option>` : '') +
+      speech.voices.map(voice => `<option value="${esc(voice.voiceURI)}" ${voice.voiceURI === selected ? 'selected' : ''}>${esc(voice.name)} · ${esc(voice.lang)}</option>`).join('');
+  }
+  function syncVoiceOptions() {
+    if (disposed || !ctx.active()) return;
+    const select = main.querySelector('[name="speechVoiceURI"]');
+    if (select) { select.innerHTML = voiceOptions(); select.disabled = !speech.voices.length; }
+    const rate = main.querySelector('[name="speechRate"]');
+    if (rate) rate.value = String(speechRate());
+    audioStatus();
+  }
+  function speechControls() {
+    return `<div class="reader-audio">${button('全文を聴く','speak','secondary small',speech.supported?'':'disabled')}${button('一時停止','pause-speech','ghost small','disabled aria-pressed="false"')}${button('停止','stop-speech','ghost small','disabled')}<label>速度 <select name="speechRate" aria-label="読み上げ速度">${speechRates.map(n=>`<option value="${n}" ${speechRate()===n?'selected':''}>${n}倍</option>`).join('')}</select></label><label style="min-width:0;max-width:100%">端末内の英語音声 <select name="speechVoiceURI" aria-label="読み上げの英語音声" style="max-width:100%" ${speech.voices.length?'':'disabled'}>${voiceOptions()}</select></label>${button('音声テスト','test-speech','secondary small',speech.supported?'':'disabled')}${button('音声を再確認','refresh-speech-voices','ghost small',speech.supported?'':'disabled')}</div><p class="small muted">${speech.supported?'端末内の英語音声で再生します。音声がない場合は、端末の読み上げ設定で英語音声を追加してから再確認してください。速度と音声は英語辞書でも使えます。':'このブラウザは音声読み上げに対応していません。対応するブラウザで開いてください。'}</p>`;
+  }
   function library() {
     ++openTicket; assist?.dispose();assist=null;focused=false;document.body.classList.remove('reading-focused');clearTimeout(scrollTimer); stopSpeech(); clock.pause(); current = null; selection = '';
     if (location.hash.startsWith('#/reading/')) history.pushState(null, '', '#/reading');
@@ -93,16 +138,15 @@ export async function mount(ctx) {
     if (!current || !ctx.active()) return;
     assist?.close();const x = current, p = record(), paras = paragraphs(x.passage), extrasOpen=main.querySelector('#reader-extra')?.open||false;
     const font = Math.max(16,Math.min(30,Number(store.state.settings.fontSize)||19));
-    const speed = Number(store.state.settings.readerSpeechRate)||.9;
     main.innerHTML = `<div class="reader-top">${button('← ライブラリ','back','ghost')}<div class="actions">${badge('LEVEL '+x.level,'green')}${badge((index.find(i=>i.id===x.id)?.words || x.passage.trim().split(/\s+/).length)+' words')}${button(focused?'通常表示に戻る':'本文を広く表示','focus-reader','secondary small')}${button(p.favorite?'★ お気に入り':'☆ お気に入り','favorite','ghost small',pressed(p.favorite))}</div></div>` +
       `<article class="reader panel${parallel?' is-parallel':''}" style="--reading-size:${font}px"><p class="eyebrow">READ • UNDERSTAND • REVISIT</p><h1 lang="en" tabindex="-1">${esc(x.title)}</h1><div class="reader-session"><span>表示中の累計 <b id="read-time">${duration(totalTime())}</b></span>${button(paused?'計測を再開':'計測を止める','pause-clock','ghost small',pressed(paused))}</div>` +
       `<p class="reader-reading-steps">英文を読む → 根拠を確認 → 和訳と照合</p>` +
       `${p.paragraph>0 && p.paragraph<paras.length ? button('しおりの段落 '+(p.paragraph+1)+' へ','resume','secondary small') : ''}<div class="reader-tools">${button(parallel?'英文だけで読む':'英文・訳を並べる','parallel','secondary small',pressed(parallel))}${button(signals?'接続表現の目印を消す':'接続表現に目印','signals','ghost small',pressed(signals))}${button('読み方のヒント','guide','ghost small')}${button('AIに質問','reader-chat','primary small reader-chat-button')}</div><p class="reader-help-hint">単語をタップすると意味と連語を表示。「文のしくみ」で文法を確認できます。</p>` +
-      `<details class="reader-extra" id="reader-extra" ${extrasOpen?'open':''}><summary>音読・文字サイズ・選択メモ</summary><div class="reader-tools">${button('文字 −','smaller','secondary small',font<=16?'disabled':'')}${button('文字 ＋','larger','secondary small',font>=30?'disabled':'')}<span class="small muted">${font}px</span>${button('選択した語をカードに','capture','secondary small')}${button('選択部分にメモ','annotate','secondary small')}</div><div class="reader-audio">${button('全文を聴く','speak','secondary small')}${button('一時停止 / 再開','pause-speech','ghost small')}${button('停止','stop-speech','ghost small')}<label>速度 <select name="speechRate" aria-label="読み上げ速度">${[.6,.75,.9,1,1.15,1.3].map(n=>`<option value="${n}" ${speed===n?'selected':''}>${n}倍</option>`).join('')}</select></label><span class="small muted" id="reading-audio-status" role="status">${esc(audioState)}</span></div></details>` +
+      `<details class="reader-extra" id="reader-extra" ${extrasOpen?'open':''}><summary>音読・文字サイズ・選択メモ</summary><div class="reader-tools">${button('文字 −','smaller','secondary small',font<=16?'disabled':'')}${button('文字 ＋','larger','secondary small',font>=30?'disabled':'')}<span class="small muted">${font}px</span>${button('選択した語をカードに','capture','secondary small')}${button('選択部分にメモ','annotate','secondary small')}</div>${speechControls()}</details><p class="small muted" id="reading-audio-status" role="status" aria-live="polite">${esc(audioState)}</p>` +
       `${signals?'<p class="small muted">色は接続表現の候補です。so などは別の使い方もあるため、前後の文で役割を確かめます。</p>':''}<div class="reader-columns ${parallel?'parallel':''}"><div class="passage" id="passage" lang="en">${paras.map((t,i)=>`<section class="reading-paragraph"><div class="paragraph-heading"><span>PARAGRAPH ${i+1}</span>${p.paragraphRoles?.[i] && p.paragraphRoles[i]!=='未分類'?badge(p.paragraphRoles[i]):''}${button('聴く','speak-paragraph','ghost small',`data-paragraph-index="${i}" aria-label="段落 ${i+1} を聴く"`)}${button('役割をメモ','paragraph-note','ghost small',`data-paragraph-index="${i}" aria-label="段落 ${i+1} の役割をメモ"`)}${button('AIに質問','ask-paragraph','ghost small',`data-paragraph-index="${i}" aria-label="段落 ${i+1} をAIに質問"`)}${button('しおり','bookmark','ghost small',`data-paragraph-index="${i}" aria-label="段落 ${i+1} にしおり"`)}</div><p data-paragraph="${i}" tabindex="-1">${marked(t,i)}</p>${paragraphs(x.translation).length===paras.length?`<details class="reader-paragraph-translation"><summary>この段落の訳</summary><p>${esc(paragraphs(x.translation)[i])}</p></details>`:''}${p.paragraphNotes?.[i]?`<p class="paragraph-memo" lang="ja">${esc(p.paragraphNotes[i])}</p>`:''}</section>`).join('')}</div>${parallel?`<aside class="reader-translation-column" lang="ja"><h2>日本語訳</h2><p class="small muted">訳の段落区切りは英文と異なる場合があります。</p>${paragraphs(x.translation).map(t=>`<p>${esc(t)}</p>`).join('')}</aside>`:''}</div>` +
       `<div class="actions">${!parallel?button(reveal?'日本語訳を閉じる':'日本語訳を確認する','translation','secondary',pressed(reveal)):''}${button(p.completedAt?'読了を記録済み':'読了として記録','complete','primary',p.completedAt?'disabled':'')}</div>${reveal&&!parallel?`<section class="translation"><h2>日本語訳</h2><div class="prose">${esc(x.translation)}</div></section>`:''}` +
       `<section class="reader-quiz" id="reader-quiz"></section><section class="reader-saved-words" id="reader-saved-words"></section><section class="reader-note"><p class="eyebrow">MAKE IT YOUR OWN</p><h2>要点と根拠を、自分の言葉で。</h2><p class="small muted">中心となる内容を一文で。次に「なぜそう言えるか」を本文から確かめましょう。</p>${area('要約・わからなかった部分・気づき','readingMemo',draft,'id="reading-memo" placeholder="要点：\n根拠となる段落：\n読み違えた箇所："')}<div class="actions">${button('メモを保存','memo','secondary small')}${button(p.linkedNoteId?'学習ノートを更新':'学習ノートにまとめる','note','ghost small')}</div><p class="small muted" id="memo-status" role="status">${memoVersion===savedMemoVersion?'保存済み':'未保存の変更があります'}</p><div class="reader-annotations">${(p.annotations||[]).map(n=>`<article class="answer-panel"><blockquote lang="en">${esc(n.quote)}</blockquote><p>${esc(n.note)}</p>${button('注釈を編集','edit-annotation','ghost small',`data-id="${esc(n.id)}"`)}</article>`).join('')}</div></section>` +
-      `<section class="reader-review"><p class="eyebrow">COME BACK TO IT</p><h2>次は、要点を思い出す。</h2><p>読み返す日は、本文を見る前に内容を説明してから、曖昧だった段落を確かめましょう。復習を終えたら、次は3日後・7日後・14日後の順に予約します。</p>${p.reflection?`<p class="paragraph-memo">${esc(p.reflection)}</p>`:''}<div class="actions">${p.completedAt&&p.review?.due?button('復習を終える・次回を予約','review-complete','primary small'):''}${button('読み返しの記録','reflection','secondary small')}${[1,3,7,14].map(n=>button(n+'日後に復習','schedule','ghost small',`data-days="${n}"`)).join('')}</div><p class="small muted">${p.review?.due?'次の復習日：'+date(p.review.due)+' · カレンダーと「復習する」に表示します。':p.completedAt?'復習予定はありません。1・3・7・14日後から選んで再登録できます。':'初めて「読了として記録」を押すと翌日に復習を予約します。日付は1・3・7・14日後から選べます。'}${p.review?.due?link('カレンダーで確認','plan?date='+dayKey(p.review.due),'secondary small')+button('予定を解除','unschedule','ghost small'):''}</p></section></article>`;drawWords();drawQuiz();
+      `<section class="reader-review"><p class="eyebrow">COME BACK TO IT</p><h2>次は、要点を思い出す。</h2><p>読み返す日は、本文を見る前に内容を説明してから、曖昧だった段落を確かめましょう。復習を終えたら、次は3日後・7日後・14日後の順に予約します。</p>${p.reflection?`<p class="paragraph-memo">${esc(p.reflection)}</p>`:''}<div class="actions">${p.completedAt&&p.review?.due?button('復習を終える・次回を予約','review-complete','primary small'):''}${button('読み返しの記録','reflection','secondary small')}${[1,3,7,14].map(n=>button(n+'日後に復習','schedule','ghost small',`data-days="${n}"`)).join('')}</div><p class="small muted">${p.review?.due?'次の復習日：'+date(p.review.due)+' · カレンダーと「復習する」に表示します。':p.completedAt?'復習予定はありません。1・3・7・14日後から選んで再登録できます。':'初めて「読了として記録」を押すと翌日に復習を予約します。日付は1・3・7・14日後から選べます。'}${p.review?.due?link('カレンダーで確認','plan?date='+dayKey(p.review.due),'secondary small')+button('予定を解除','unschedule','ghost small'):''}</p></section></article>`;drawWords();drawQuiz();audioStatus();
   }
   function drawQuiz(){
     const host=main.querySelector('#reader-quiz');if(!host)return;
@@ -128,22 +172,15 @@ export async function mount(ctx) {
       if (found) {const paragraph=Number(found.dataset.paragraph);store.change(s=>{s.reading[id]={...s.reading[id],paragraph};}).catch(()=>{});}
     },500);
   }
-  function pagehide() { clock.pause(); save().catch(()=>{}); }
+  function pagehide() { clock.pause(); stopSpeech(); save().catch(()=>{}); }
   function visibility() {
     if (!current || !ctx.active()) return;
     if (document.hidden) {clock.pause();stopSpeech();} else if (!paused) clock.start();
     save().catch(()=>{});
   }
-  async function speak(texts) {
-    if (!window.speechSynthesis || typeof SpeechSynthesisUtterance==='undefined') return toast('このブラウザは読み上げに対応していません',true);
-    stopSpeech();const id=current.id;
-    for (let i=0;i<texts.length;i++) {
-      const u=new SpeechSynthesisUtterance(texts[i]);u.lang='en-US';u.rate=Number(store.state.settings.readerSpeechRate)||.9;
-      u.onstart=()=>{if(current?.id===id){audioState=`読み上げ中 ${i+1}/${texts.length}`;audioStatus();}};
-      u.onend=()=>{if(i===texts.length-1&&current?.id===id){audioState='読み上げ完了';audioStatus();}};
-      u.onerror=e=>{if(!['interrupted','canceled'].includes(e.error)&&current?.id===id){audioState='再生できません。端末の英語音声設定を確認してください。';audioStatus();}};
-      window.speechSynthesis.speak(u);
-    }
+  function speak(texts) {
+    if (!current || disposed || !ctx.active()) return false;
+    return speech.speak(texts, {rate:speechRate(), voiceURI:store.state.settings.speechVoiceURI || ''});
   }
   function editAnnotation(existing) {
     const id=current.id;
@@ -157,7 +194,8 @@ export async function mount(ctx) {
   };
   main.onchange=async e=>{try{
     if(e.target.name==='readingSort'){options.sort=e.target.value;page=1;updateList();}
-    if(e.target.name==='speechRate'){const rate=Number(e.target.value);stopSpeech();await store.change(s=>{s.settings.readerSpeechRate=rate;});}
+    if(e.target.name==='speechRate'){const rate=Number(e.target.value);if(!speechRates.includes(rate))return;stopSpeech();await store.change(s=>{s.settings.speechRate=rate;s.settings.readerSpeechRate=rate;});syncVoiceOptions();}
+    if(e.target.name==='speechVoiceURI'){const voiceURI=e.target.value;if(voiceURI&&!speech.voices.some(v=>v.voiceURI===voiceURI))return;stopSpeech();await store.change(s=>{s.settings.speechVoiceURI=voiceURI;});syncVoiceOptions();}
   }catch(error){toast(error.message,true);}};
   main.onclick=async e=>{
     const b=e.target.closest('[data-action]');if(!b)return;
@@ -185,9 +223,11 @@ export async function mount(ctx) {
       if(a==='favorite'){await store.change(s=>{s.reading[id]={...s.reading[id],favorite:!s.reading[id]?.favorite};});draw();}
       if(a==='bookmark'){clearTimeout(scrollTimer);await store.change(s=>{s.reading[id]={...s.reading[id],paragraph:Number(b.dataset.paragraphIndex)};});toast('段落 '+(Number(b.dataset.paragraphIndex)+1)+' にしおりを保存しました');}
       if(a==='paragraph-note'){const i=Number(b.dataset.paragraphIndex);dialog('段落 '+(i+1)+' のつながりを整理',select('段落の役割','role',paragraphRoles,record().paragraphRoles?.[i]||'未分類')+area('要点・指示語の参照先・前後とのつながり','note',record().paragraphNotes?.[i]||'','placeholder="例：theyは前段落の生徒たち。前段落の意見に対する具体例。"'),{onSubmit:async f=>{await store.change(s=>{s.reading[id]={...s.reading[id],paragraphRoles:{...s.reading[id]?.paragraphRoles,[i]:String(f.get('role'))},paragraphNotes:{...s.reading[id]?.paragraphNotes,[i]:String(f.get('note'))}};});if(current?.id===id)draw();}});}
-      if(a==='speak'||a==='speak-paragraph')await speak(a==='speak'?paragraphs(current.passage):[paragraphs(current.passage)[Number(b.dataset.paragraphIndex)]]);
+      if(a==='speak'||a==='speak-paragraph')speak(a==='speak'?paragraphs(current.passage):[paragraphs(current.passage)[Number(b.dataset.paragraphIndex)]]);
+      if(a==='test-speech')speak(['This is RISE. Let us practice English.']);
+      if(a==='refresh-speech-voices'){speech.refreshVoices();syncVoiceOptions();}
       if(a==='stop-speech')stopSpeech();
-      if(a==='pause-speech'&&window.speechSynthesis){if(window.speechSynthesis.paused){window.speechSynthesis.resume();audioState='読み上げ中';}else if(window.speechSynthesis.speaking){window.speechSynthesis.pause();audioState='一時停止中';}audioStatus();}
+      if(a==='pause-speech')speech.togglePause();
       if(a==='smaller'||a==='larger'){await store.change(s=>{s.settings.fontSize=Math.max(16,Math.min(30,(Number(s.settings.fontSize)||19)+(a==='larger'?1:-1)));});draw();}
       if(a==='complete'){const title=current.title;await save();await store.change(s=>{s.reading[id]=completeReading({...s.reading[id],title});});draw();toast(record().review?.due?'読了を記録し、'+date(record().review.due)+' のカレンダーに復習を追加しました':'読了を記録しました');}
       if(a==='memo'){await save();toast('メモを保存しました');}
@@ -210,12 +250,12 @@ export async function mount(ctx) {
     persist=setInterval(()=>{if(!disposed&&ctx.active())save().catch(()=>{});},15000);
   };
   const suspend=async()=>{++openTicket;clock.pause();clearTimeout(memoTimer);clearTimeout(scrollTimer);clearInterval(ticker);clearInterval(persist);assist?.close();stopSpeech();document.body.classList.remove('reading-focused');await save();};
-  const dispose=async()=>{assist?.dispose();main.removeEventListener('rise:reading-word-saved',drawWords);if(main.isConnected){document.body.classList.remove('reading-focused');stopSpeech();}disposed=true;++openTicket;clock.pause();clearTimeout(memoTimer);clearTimeout(scrollTimer);clearInterval(ticker);clearInterval(persist);document.removeEventListener('selectionchange',chosen);document.removeEventListener('visibilitychange',visibility);window.removeEventListener('pagehide',pagehide);window.removeEventListener('scroll',scroll);main.onclick=null;main.oninput=null;main.onchange=null;await save();};
+  const dispose=async()=>{assist?.dispose();main.removeEventListener('rise:reading-word-saved',drawWords);if(main.isConnected)document.body.classList.remove('reading-focused');disposed=true;speech.dispose();++openTicket;clock.pause();clearTimeout(memoTimer);clearTimeout(scrollTimer);clearInterval(ticker);clearInterval(persist);document.removeEventListener('selectionchange',chosen);document.removeEventListener('visibilitychange',visibility);window.removeEventListener('pagehide',pagehide);window.removeEventListener('scroll',scroll);main.onclick=null;main.oninput=null;main.onchange=null;await save();};
   dispose.suspend=suspend;
   dispose.flush=save;
-  dispose.resume=()=>{document.body.classList.toggle('reading-focused',focused);if(current&&!paused&&!document.hidden)clock.start();memoStatus();startTimers();};
+  dispose.resume=()=>{document.body.classList.toggle('reading-focused',focused);if(current&&!paused&&!document.hidden)clock.start();memoStatus();speech.refreshVoices();syncVoiceOptions();startTimers();};
   startTimers();
-  dispose.refresh=()=>{if(current){drawWords();drawQuiz();if(memoVersion===savedMemoVersion){draft=record().memo||'';const el=main.querySelector('#reading-memo');if(el)el.value=draft;}}else updateList();};
+  dispose.refresh=()=>{if(current){drawWords();drawQuiz();syncVoiceOptions();if(memoVersion===savedMemoVersion){draft=record().memo||'';const el=main.querySelector('#reading-memo');if(el)el.value=draft;}}else updateList();};
   try {if(tail&&index.some(x=>x.id===tail))await open(tail);else library();
     const part=ctx.query?.get('part'),match=/^(p|t|q)-(\d+)$/.exec(part||'');
     if(current&&match){const i=Number(match[2]);if(match[1]==='t'){parallel=true;draw();}const target=match[1]==='p'?main.querySelector(`[data-paragraph="${i}"]`):match[1]==='t'?main.querySelectorAll('.reader-translation-column p')[i+1]:main.querySelectorAll('.reader-question')[i];if(target){target.classList.add('search-destination');requestAnimationFrame(()=>{if(ctx.active())target.scrollIntoView({block:'center'});});}}
