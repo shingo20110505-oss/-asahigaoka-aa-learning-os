@@ -1,9 +1,44 @@
-import {esc, icon, safeURL} from './ui.mjs';
+import {esc, icon, safeURL, toast} from './ui.mjs';
 import {createHistoryQuiz} from './history-quiz.mjs';
 
 const modeLabels = {mixed:'ミックス', date:'年代を答える', event:'出来事を答える'};
 const quizButton = (label, action, style='secondary', extra='') =>
   `<button type="button" class="button ${style}" data-quiz-action="${action}" ${extra}>${label}</button>`;
+
+let stylesheetReady;
+function loadQuizStyles() {
+  if (stylesheetReady) return stylesheetReady;
+  stylesheetReady = new Promise((resolve, reject) => {
+    let sheet = document.getElementById('rise-history-quiz-style');
+    if (sheet?.sheet) { resolve(); return; }
+    const created = !sheet;
+    if (!sheet) {
+      sheet = document.createElement('link');
+      sheet.id = 'rise-history-quiz-style';
+      sheet.rel = 'stylesheet';
+      // A new path also works with a previously cached app shell. The existing
+      // worker can serve it online or cache it with the rest of the new build.
+      sheet.href = new URL('./history-quiz.css', import.meta.url).href;
+    }
+    const finish = success => {
+      clearTimeout(timer);
+      sheet.removeEventListener('load', loaded);
+      sheet.removeEventListener('error', failed);
+      if (success) resolve();
+      else {
+        sheet.remove();
+        stylesheetReady = null;
+        reject(Error('クイズの表示を読み込めませんでした。もう一度「クイズ」を押してください。'));
+      }
+    };
+    const loaded = () => finish(true), failed = () => finish(false);
+    const timer = setTimeout(failed, 12000);
+    sheet.addEventListener('load', loaded, {once:true});
+    sheet.addEventListener('error', failed, {once:true});
+    if (created) document.head.append(sheet);
+  });
+  return stylesheetReady;
+}
 
 // A quiz is a temporary practice session. Existing history, review progress,
 // personal ranks, notes and favorites are never written by this controller.
@@ -148,8 +183,15 @@ export function openHistoryQuiz({items, pool=items, scope='', onClose=()=>{}}) {
       else renderQuestion();
     }
   };
-  renderSetup();
-  host.showModal();
-  focus('[data-quiz-action="start"]:not(:disabled)', false);
+  loadQuizStyles().then(() => {
+    if (closed) return;
+    renderSetup();
+    host.showModal();
+    focus('[data-quiz-action="start"]:not(:disabled)', false);
+  }).catch(error => {
+    if (closed) return;
+    close();
+    toast(error.message, true);
+  });
   return close;
 }
