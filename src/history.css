@@ -11,3 +11,92 @@
 .history-context{font-size:10px;line-height:1.5;color:var(--muted);margin:5px 0 0}.history-event.compact .history-context{font-size:10px;line-height:1.5;margin:4px 0 0}.history-extra-filters{grid-template-columns:repeat(4,minmax(0,1fr))}.history-extra-filters>.field{grid-column:auto}
 @media(max-width:700px){.history-extra-filters{grid-template-columns:1fr 1fr}.history-extra-filters>.field:nth-child(3){grid-column:auto}.history-extra-filters>.field:first-child{grid-column:1/-1}}
 .history-controls #history-filter-help.history-filter-error{display:block;color:#a62c2c;font-size:12px;font-weight:600}
+
+/* Quiz controls are scoped to their own dialog; the filtered timeline stays put. */
+.history-quiz-dialog{max-width:720px;max-height:90dvh;padding:28px;overscroll-behavior:contain;scrollbar-gutter:stable}
+.history-quiz-dialog .dialog-heading{align-items:flex-start;margin-bottom:18px}
+.history-quiz-dialog .dialog-heading .eyebrow{font-size:9px;color:var(--muted);letter-spacing:.14em;margin:0 0 7px}
+.history-quiz-dialog .dialog-heading h2{font-size:23px}
+.history-quiz-dialog .icon-button{flex:none}
+.history-quiz-scope{display:flex;flex-wrap:wrap;align-items:center;gap:6px 9px;font-size:12px;line-height:1.8;background:var(--paper);padding:12px 14px;border:1px solid var(--border);border-radius:10px;overflow-wrap:anywhere}
+.history-quiz-scope>span{color:var(--muted);font-size:10px}
+.history-quiz-scope>b{color:var(--accent);margin-left:auto;font-variant-numeric:tabular-nums}
+.history-quiz-intro{margin:25px 0 22px}
+.history-quiz-intro h3{font-size:24px;line-height:1.55;margin:0 0 10px;letter-spacing:-.035em}
+.history-quiz-intro p{font-size:13px;line-height:1.8;color:var(--muted);margin:0}
+.history-quiz-modes{border:0;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.history-quiz-modes legend{font-size:12px;font-weight:650;margin-bottom:9px}
+.history-quiz-modes label{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--border);border-radius:12px;padding:14px 10px;cursor:pointer;min-width:0;background:var(--surface)}
+.history-quiz-modes input{accent-color:var(--accent);margin:3px 0 0;flex:none}
+.history-quiz-modes label:has(:checked){border-color:var(--accent);background:var(--soft)}
+.history-quiz-modes b{display:block;font-size:12px;color:var(--ink);line-height:1.65}
+.history-quiz-modes small{display:block;font-size:10px;color:var(--muted);line-height:1.7;margin-top:4px}
+.history-quiz-count{max-width:180px;margin-bottom:12px}
+.history-quiz-footer{justify-content:space-between;gap:10px;border-top:1px solid var(--border);padding-top:18px;margin-top:24px}
+.history-quiz-progress{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12px;margin:6px 0 10px;color:var(--muted)}
+.history-quiz-progress b{font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}
+.history-quiz-meter{display:block;width:100%;height:6px;border:0;border-radius:6px;overflow:hidden;accent-color:var(--accent);background:var(--border)}
+.history-quiz-meter::-webkit-progress-bar{background:var(--border);border-radius:6px}
+.history-quiz-meter::-webkit-progress-value{background:var(--accent);border-radius:6px}
+.history-quiz-meter::-moz-progress-bar{background:var(--accent);border-radius:6px}
+.history-quiz-instruction{margin:24px 0 9px}
+.history-quiz-question{font-size:21px;line-height:1.75;margin:0 0 23px;overflow-wrap:anywhere}
+.history-quiz-choices{display:grid;gap:10px}
+.history-quiz-choice{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;padding:14px;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:12px;color:var(--ink);font-size:14px;line-height:1.75}
+.history-quiz-choice:not(:disabled):hover{border-color:var(--accent);background:var(--paper)}
+.history-quiz-choice-index{width:28px;height:28px;flex:none;border-radius:8px;background:var(--paper);display:grid;place-items:center;color:var(--muted);font-size:12px;font-weight:650}
+.history-quiz-choice-label{flex:1;min-width:0;overflow-wrap:anywhere}
+.history-quiz-choice-state{font-size:10px;white-space:nowrap}
+.history-quiz-choice:disabled{opacity:1;cursor:default;color:var(--muted)}
+.history-quiz-choice.is-correct{background:#edf5eb;border-color:#6f9d77;color:#215b35}
+.history-quiz-choice.is-incorrect{background:#fff3ec;border-color:#ca8a62;color:#85451e}
+.history-quiz-choice.is-correct .history-quiz-choice-index{background:#dcecd7;color:#215b35}
+.history-quiz-choice.is-incorrect .history-quiz-choice-index{background:#f9e3d1;color:#85451e}
+.history-quiz-dialog button:focus-visible,.history-quiz-dialog summary:focus-visible,.history-quiz-dialog input:focus-visible{outline:3px solid #78a38a;outline-offset:3px}
+.history-quiz-dialog :is(.history-quiz-question,.history-quiz-feedback,.history-quiz-result):focus{outline:none}
+.history-quiz-feedback{margin-top:22px;padding:19px;border:1px solid #d4e4d1;border-radius:13px;background:#f2f7ef;scroll-margin:18px}
+.history-quiz-feedback.is-incorrect{border-color:#eedcc4;background:#fffaf2}
+.history-quiz-feedback-label{font-size:13px;font-weight:750;margin:0 0 10px;color:var(--accent)}
+.history-quiz-answer{font-size:16px;line-height:1.8;margin:0 0 11px;overflow-wrap:anywhere}
+.history-quiz-answer>b{display:block;color:var(--accent)}
+.history-quiz-explanation{font-size:13px;line-height:1.95;white-space:pre-wrap;margin:12px 0 0;overflow-wrap:anywhere}
+.history-quiz-tip{font-size:12px;line-height:1.9;border-top:1px solid #dce4d5;padding-top:12px;margin:14px 0 0;overflow-wrap:anywhere}
+.history-quiz-tip>b{display:block;font-size:11px;color:var(--muted);margin-bottom:3px}
+.history-quiz-sources{display:flex;flex-wrap:wrap;gap:12px;font-size:11px;margin-top:12px}
+.history-quiz-sources>a{text-decoration:underline;color:var(--accent);padding:4px 0}
+.history-quiz-result{text-align:center;padding:27px 16px;background:var(--soft);border-radius:16px;margin:18px 0 22px}
+.history-quiz-result .eyebrow{color:var(--accent);font-size:10px;letter-spacing:.16em}
+.history-quiz-result h3{font-size:18px;margin:0}
+.history-quiz-score{margin:12px 0 2px;line-height:1.4;font-variant-numeric:tabular-nums}
+.history-quiz-score strong{font-size:62px;color:var(--accent);font-weight:700}
+.history-quiz-score span{font-size:16px;color:var(--muted)}
+.history-quiz-rate{font-size:14px;font-weight:650;margin:0 0 12px;color:var(--accent)}
+.history-quiz-result>p:last-child{font-size:12px;line-height:1.8;margin-bottom:0}
+.history-quiz-result-actions{justify-content:center}
+.history-quiz-review-title{font-size:16px;margin:29px 0 12px}
+.history-quiz-review{border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.history-quiz-review details+details{border-top:1px solid var(--border)}
+.history-quiz-review summary{display:flex;gap:12px;align-items:center;padding:15px;cursor:pointer;font-size:13px;line-height:1.8;overflow-wrap:anywhere}
+.history-quiz-review summary>span:nth-child(2){min-width:0}
+.history-quiz-review summary b{display:block;font-size:11px;color:var(--muted)}
+.history-quiz-mark{font-size:19px;font-weight:700;flex:none;color:#955b32}
+.history-quiz-mark.is-correct{color:#347044}
+.history-quiz-review-body{padding:0 17px 18px 47px}
+@media(max-width:560px){
+ .history-quiz-dialog{width:calc(100% - 20px);max-height:92dvh;padding:19px 16px;border-radius:16px}
+ .history-quiz-dialog .dialog-heading h2{font-size:20px}
+ .history-quiz-intro h3{font-size:21px}
+ .history-quiz-modes{grid-template-columns:1fr;gap:8px}
+ .history-quiz-modes label{padding:11px 13px;align-items:center}
+ .history-quiz-modes label>span{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline}
+ .history-quiz-modes small{margin:0}
+ .history-quiz-modes input{margin:0}
+ .history-quiz-question{font-size:18px;line-height:1.8;margin-bottom:18px}
+ .history-quiz-choice{gap:9px;padding:12px 10px;font-size:13px}
+ .history-quiz-choice-index{width:25px;height:25px;font-size:11px}
+ .history-quiz-choice-state{font-size:9px}
+ .history-quiz-feedback{padding:15px 13px}
+ .history-quiz-footer .button{padding:10px 12px}
+ .history-quiz-result-actions{display:grid;grid-template-columns:1fr}
+ .history-quiz-review-body{padding-left:17px}
+}
