@@ -14,9 +14,13 @@ const [englishBytes,englishParts,englishVersion,englishMetadata]=await Promise.a
  fs.readFile(path.join(out,'data/english/words.json')),json('data/english/words-parts.json'),json('data/english/version.json'),json('data/english/metadata.json')
 ]);
 const englishHash=createHash('sha256').update(englishBytes).digest('hex'),englishWords=JSON.parse(englishBytes.toString('utf8'));
-assert.equal(englishHash,englishParts.sha256,'Published English dictionary differs from canonical split data');
+const baseVersion=JSON.parse(await fs.readFile(path.join(root,'data/english/version.json'),'utf8'));
+assert.equal(englishParts.sha256,baseVersion.words.sha256,'Canonical split data hash differs from base version');
 assert.equal(englishHash,englishVersion.words.sha256,'Published English dictionary differs from advertised version');
-assert.equal(englishWords.length,englishParts.totalEntries,'Published English dictionary count differs from split manifest');
+assert.equal(englishWords.length,englishVersion.words.entries,'Published English dictionary count differs from advertised version');
+assert.equal(englishBytes.length,englishVersion.words.bytes);
+assert.equal(englishWords.filter(word=>word.verbForms).length,englishMetadata.counts.verbParadigms);
+assert.ok(englishWords.length>englishParts.totalEntries);
 assert.equal(englishWords.length,englishMetadata.counts.headwords,'Published English dictionary count differs from metadata');
 for(const kind of ['word','phrase'])assert.equal(englishWords.filter(word=>word.kind===kind).length,englishMetadata.counts.kind[kind],'Published English '+kind+' count differs from metadata');
 const manifest=await json('data/migration-manifest.json'),review=await json('data/review.json'),history=await json('data/history.json'),reading=await json('data/reading/index.json');
@@ -47,6 +51,8 @@ console.log(JSON.stringify({checkedFiles:files.length,preserved:{review:review.l
 
 const search=await json('data/material-search.json');
 assert.equal(search.schema,1);
+assert.equal(search.counts.english,englishWords.length);
+assert.ok(search.documents.some(document=>document.category==='english' && document.title==='fall through' && document.body.includes('fell through')));
 assert.equal(search.counts.reading,reading.length);assert.equal(search.documents.filter(d=>d.category==='history'&&!d.id.startsWith('history:trail-')).length,history.length);assert.equal(search.counts.review,review.length);
 assert.equal(new Set(search.documents.map(d=>d.id)).size,search.documents.length);
 assert.ok(search.documents.every(d=>!['notes','materials','cards'].includes(d.category)),'Private content must not ship in search');

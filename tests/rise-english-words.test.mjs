@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
+import {enrichEnglishWords} from '../scripts/enrich-english-words.mjs';
 import {freshState,validState} from '../src/domain.mjs';
 import {selectEnglishWords,rateEnglishWord,toggleEnglishFavorite,posLabel} from '../src/english-words.mjs';
 const manifest=JSON.parse(await fs.readFile(new URL('../data/english/words-parts.json',import.meta.url)));
@@ -39,7 +40,7 @@ test('expanded dictionary POS aliases display in Japanese and match the existing
 });
 test('search puts the requested headword first and retains source order within each match strength',()=>{
  const source=[entry(1,'proceed',{forms:['go']}),entry(2,'let go'),entry(3,'goal'),entry(4,'go ahead'),entry(5,'go'),entry(6,'continue',{related:['go on']})],state=freshState(),original=[...source];
- assert.deepEqual(selectEnglishWords(source,state,{stage:'all',query:'  ＧＯ  '}).map(w=>w.word),['go','goal','go ahead','let go','proceed','continue']);
+ assert.deepEqual(selectEnglishWords(source,state,{stage:'all',query:'  ＧＯ  '}).map(w=>w.word),['go','proceed','goal','go ahead','let go','continue']);
  assert.deepEqual(selectEnglishWords(source,state,{stage:'all',query:'  '}),original);
  assert.deepEqual(source,original,'search must not reorder the shared dictionary');
 });
@@ -78,4 +79,25 @@ test('favorites and review ratings retain each other and unrelated learning hist
  assert.deepEqual({jp:state.vocabulary['jp-v6-001'],review:state.review},unrelated);
  const before=structuredClone(state);assert.throws(()=>toggleEnglishFavorite(state,'__proto__'));assert.deepEqual(state,before);
  validState(state);
+});
+
+test('published exam choice forms resolve exactly and verb paradigms distinguish tense and participles', async()=>{
+ const enriched=enrichEnglishWords(structuredClone(words));
+ const byWord=new Map(enriched.map(entry=>[entry.word,entry]));
+ const searchable=new Set(enriched.filter(entry=>entry.meaning&&!entry.meaning.includes('準備中')).flatMap(entry=>[entry.word,...entry.forms]));
+ const observed=(await fs.readFile(new URL('../scripts/english-sources/pre1-published-forms.txt',import.meta.url),'utf8')).trim().split('\n');
+ assert.equal(observed.length,212);
+ assert.deepEqual(observed.filter(form=>!searchable.has(form)),[]);
+ assert.ok(enriched.filter(entry=>entry.kind==='phrase').length>17000);
+ assert.equal(new Set(enriched.map(entry=>entry.id)).size,enriched.length);
+ assert.deepEqual(byWord.get('arise').verbForms,{past:['arose'],participle:['arisen'],present:['arises'],ing:['arising']});
+ assert.deepEqual(byWord.get('be').verbForms,{past:['was','were'],participle:['been'],present:['am','is','are'],ing:['being']});
+ assert.deepEqual(byWord.get('run up').verbForms,{past:['ran up'],participle:['run up'],present:['runs up'],ing:['running up']});
+ assert.deepEqual(byWord.get('submit').verbForms.past,['submitted']);
+ assert.deepEqual(byWord.get('panic').verbForms.ing,['panicking']);
+ assert.deepEqual(byWord.get('quiz').verbForms.past,['quizzed']);
+ assert.deepEqual(byWord.get('forbid').verbForms.ing,['forbidding']);
+ assert.equal(byWord.get('fall through').eikenBand,'pre1');
+ assert.equal(selectEnglishWords(enriched,freshState(),{query:'fell through',stage:'all',band:'pre1',kind:'phrase'})[0].word,'fall through');
+ assert.ok(selectEnglishWords(enriched,freshState(),{query:'arisen',stage:'all'}).some(entry=>entry.word==='arise'));
 });

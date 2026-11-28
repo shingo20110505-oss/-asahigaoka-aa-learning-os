@@ -17,10 +17,10 @@ import {intersection,circuit} from '../src/domain.mjs';
 import {textOf} from '../src/material-search.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const json=async name=>JSON.parse(await fs.readFile(path.join(root,'data',name+'.json'),'utf8'));
 const plain=html=>html.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
-export async function buildMaterialCatalog(){
- const [review,history,vocabulary,english,index,baseLexicon,dictionary]=await Promise.all(['review','history','vocabulary','english/words','reading/index','reading-lexicon','reading-dictionary'].map(json));
+export async function buildMaterialCatalog(dataDirectory=path.join(root,'data')){
+ const readData=async name=>JSON.parse(await fs.readFile(path.join(dataDirectory,name+'.json'),'utf8'));
+ const [review,history,vocabulary,english,index,baseLexicon,dictionary]=await Promise.all(['review','history','vocabulary','english/words','reading/index','reading-lexicon','reading-dictionary'].map(readData));
  const documents=[];
  const add=(category,subject,id,title,body,route,parts)=>documents.push({id:category+':'+id,category,subject,title,body:textOf(body),route,...(parts?{parts}:{})});
  for(const x of scienceItems){const unit=scienceUnits.find(u=>u.id===x.unit);add('science','理科',x.id,x.question,[unit.title,'中'+x.grade,scienceFields[x.field],x.answer,x.reason,x.connection],'science-memory/'+x.id);}
@@ -34,7 +34,7 @@ export async function buildMaterialCatalog(){
  }
  for(const x of classicalWords)add('classical','国語',x.id,x.word,[x.kind,x.reading,x.meaning],'classical?word='+encodeURIComponent(x.word));
  for(const x of english)add('english','英語',x.id,x.display||x.word,[x.word,x.meaning,x.pos,x.forms,x.variants,x.example,x.exampleJa,x.explanation,x.related],'english-words?q='+encodeURIComponent(x.word)+'&word='+encodeURIComponent(x.id));
- const books=await Promise.all(index.map(x=>json('reading/'+x.id)));
+ const books=await Promise.all(index.map(x=>readData('reading/'+x.id)));
  for(const x of books){
   const parts=[...paragraphs(x.passage).map((text,i)=>({text,label:'本文・段落'+(i+1),target:'p-'+i})),...paragraphs(x.translation).map((text,i)=>({text,label:'和訳・段落'+(i+1),target:'t-'+i})),...(x.questions||[]).map((q,i)=>({text:textOf([q.prompt,q.options,q.evidence,q.explanation]),label:'設問'+(i+1),target:'q-'+i}))];
   add('reading','英語',x.id,x.title,parts.map(p=>p.text),'reading/'+x.id,parts);
@@ -60,4 +60,4 @@ export async function buildMaterialCatalog(){
  const counts={};for(const d of documents){if(!d.title||!d.route||!d.body)throw Error('Empty search document: '+d.id);counts[d.category]=(counts[d.category]||0)+1;}
  return {schema:1,counts,documents};
 }
-export async function buildMaterialSearch(out){const catalog=await buildMaterialCatalog();await fs.writeFile(path.join(out,'data/material-search.json'),JSON.stringify(catalog));return catalog.counts;}
+export async function buildMaterialSearch(out){const catalog=await buildMaterialCatalog(path.join(out,'data'));await fs.writeFile(path.join(out,'data/material-search.json'),JSON.stringify(catalog));return catalog.counts;}

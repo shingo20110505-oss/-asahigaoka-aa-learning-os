@@ -86,6 +86,14 @@ try{
   await page.locator('[data-toggle="favoriteOnly"]').uncheck();
   checks.push('exact headword search and favorites preserve review history');
 
+  await page.locator('[data-search]').fill('fell through');
+  await page.waitForFunction(()=>document.querySelector('.english-word-toggle strong')?.textContent==='fall through');
+  await page.locator('.english-word-toggle').first().click();
+  const phraseDetail=page.locator('.english-word-detail:not([hidden])').first();
+  assert.match(await phraseDetail.innerText(),/過去形\s+fell through/);
+  assert.match(await phraseDetail.innerText(),/過去分詞\s+fallen through/);
+  checks.push('inflected phrase search and labeled verb forms');
+
   await openAudio();
   const voice=page.locator('[data-audio="voiceURI"]');
   assert.equal(await voice.inputValue(),'fixture-local-en-gb');

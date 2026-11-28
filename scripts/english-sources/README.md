@@ -26,3 +26,11 @@ Capitalized proper-name source rows, explicitly tagged vulgar/discriminatory ent
 Run `node scripts/build-english-words.mjs`, `node --test tests/rise-*.test.mjs`, `node scripts/build-rise.mjs`, then `node scripts/validate-rise-build.mjs`. No user database is migrated or cleared. New learning records use `state.vocabulary["en-..."]` through the existing Store; Japanese vocabulary IDs remain separate. The sidebar's parked views hold unsaved input in memory for the current tab session; normal reload/closing the tab is not a persistent draft backup.
 
 Source SHA-256 values use UTF-8 with LF line endings, matching the Git blobs. On Windows, normalize CRLF to LF before verifying them. The original NGSL comment whitespace is retained.
+
+## Published dictionary additions
+
+The Pages build verifies the expanded base in `data/english/words-part-*.json` against its manifests, then applies `scripts/enrich-english-words.mjs` in `dist/`. The release gets new counts, a version and a SHA-256 for the resulting dictionary. The legacy generator above rebuilds the original smaller base and is separate from this release pipeline.
+
+- `pre1-phrases.tsv` contains RISE-authored Japanese glosses for phrases and collocations selected for Pre-1 study. Its optional third field names the initial verb for inflection. Existing IDs and glosses are retained when augmenting existing entries.
+- `irregular-verbs.json` and `consonant-doubled.json` are from RosaeNLG's [english-verbs-irregular 3.4.0](https://www.npmjs.com/package/english-verbs-irregular/v/3.4.0), Apache-2.0. The published license is in `data/english/VERB-DATA-LICENSE.txt`. The build adds regular spelling rules and a small set of corrections and frequently used variants.
+- `pre1-published-forms.txt` is an alphabetical coverage fixture. It contains the unique choice spellings observed in section 1 (questions 1–18, all choices) of the 2025 third and 2026 first and second administrations on the [official Pre-1 archive](https://www.eiken.or.jp/eiken/exam/grade_p1/). The checks verify exact headword or alias matches with a Japanese gloss. The scope is those three sections and does not establish coverage of other papers or future exams.

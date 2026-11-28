@@ -45,12 +45,13 @@ def main() -> int:
         print(f"total entries {len(words)} != expected {expected_entries}", file=sys.stderr)
         return 1
     out = json.dumps(words, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
-    (DIR / "words.json").write_bytes(out)
     if sha256(out) != expected_sha or sha256(out) != manifest["sha256"]:
         print("reassembled words.json sha256 mismatch", file=sys.stderr)
         return 1
+    destination = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else DIR / "words.json"
+    destination.write_bytes(out)
     print(json.dumps({"entries": len(words), "bytes": len(out), "sha256": sha256(out)}))
-    print("merge ok: data/english/words.json reassembled and verified")
+    print(f"merge ok: {destination} reassembled and verified")
     return 0
 
 

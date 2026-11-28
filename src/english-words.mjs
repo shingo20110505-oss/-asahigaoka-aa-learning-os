@@ -14,14 +14,14 @@ const searchIndex=new WeakMap();
 function indexedWord(word){
  let indexed=searchIndex.get(word);
  if(!indexed){
-  indexed={headword:normalizeEnglishSearch(word.word),other:[word.meaning,...(word.forms||[]),...(word.related||[])].map(normalizeEnglishSearch),hasExample:Boolean(word.example?.trim()||word.senses?.some(s=>s.definitions?.some(d=>d.example?.en?.trim())))};
+  indexed={headword:normalizeEnglishSearch(word.word),forms:(word.forms||[]).map(normalizeEnglishSearch),other:[word.meaning,...(word.related||[])].map(normalizeEnglishSearch),hasExample:Boolean(word.example?.trim()||word.senses?.some(s=>s.definitions?.some(d=>d.example?.en?.trim())))};
   searchIndex.set(word,indexed);
  }
  return indexed;
 }
 
 export function selectEnglishWords(words,state,{query='',stage='basic',kind='all',pos='all',filter='all',favoriteOnly=false,band='all',exampleOnly=false}={},now=Date.now()){
- const q=normalizeEnglishSearch(query),selectedPOS=normalizedPOS(pos),matches=q?[[],[],[],[]]:[[]];
+ const q=normalizeEnglishSearch(query),selectedPOS=normalizedPOS(pos),matches=q?[[],[],[],[],[]]:[[]];
  for(const w of words){
   if(stage!=='all'&&w.stage!==stage||kind!=='all'&&w.kind!==kind||selectedPOS!=='all'&&!w.pos.split('/').some(token=>normalizedPOS(token)===selectedPOS)||band!=='all'&&w.eikenBand!==band)continue;
   const p=wordProgress(state,w.id);
@@ -29,7 +29,7 @@ export function selectEnglishWords(words,state,{query='',stage='basic',kind='all
   const indexed=q||exampleOnly?indexedWord(w):null;
   if(exampleOnly&&!indexed.hasExample)continue;
   if(!q){matches[0].push(w);continue;}
-  const rank=indexed.headword===q?0:indexed.headword.startsWith(q)?1:indexed.headword.includes(q)?2:indexed.other.some(text=>text.includes(q))?3:-1;
+  const rank=indexed.headword===q?0:indexed.forms.includes(q)?1:indexed.headword.startsWith(q)?2:indexed.headword.includes(q)?3:(indexed.forms.some(text=>text.includes(q))||indexed.other.some(text=>text.includes(q)))?4:-1;
   if(rank>=0)matches[rank].push(w);
  }
  return matches.flat();
